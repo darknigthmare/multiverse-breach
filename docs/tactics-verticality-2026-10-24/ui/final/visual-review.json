@@ -1,0 +1,129 @@
+{
+  "reviewedAt": "2026-10-25T06:24:49.475Z",
+  "reviewer": "Codex tactics_final — visual inspection using view_image of the actual saved browser captures",
+  "passed": true,
+  "integrationFreezeAt": "2026-10-25T06:21:35.273Z",
+  "browserRun": {
+    "startedAt": "2026-10-25T06:23:37.648Z",
+    "browserClosedAt": "2026-10-25T06:23:51.060Z",
+    "finishedAt": "2026-10-25T06:23:51.093Z",
+    "preliminary": false,
+    "actualCustomBattleLaunches": 3,
+    "checks": 16,
+    "pageErrors": [],
+    "allBrowserWindowsClosed": true,
+    "productionInputsStableDuringRun": true,
+    "harnessStableDuringRun": true,
+    "harnessSha256": "0a1c04df68ee445bd916efd76c3b1b00bdd8d2c6f8ec55a712c15eb43c039f65"
+  },
+  "result": {
+    "path": "docs/tactics-verticality-2026-10-24/ui/final/result.json",
+    "sha256": "241c8824f98a9e8e783a8afd9604dce884dbf1c28bdab075553f625f41476c91"
+  },
+  "dedicatedTests": {
+    "command": "npm run test:tactics-verticality",
+    "tests": 66,
+    "passed": 66,
+    "failed": 0,
+    "durationMs": 36703.502274,
+    "scope": "Run separately before the final UI browser run; no claim that this was another post-freeze test execution."
+  },
+  "reviewedScreenshots": [
+    {
+      "path": "docs/tactics-verticality-2026-10-24/ui/final/nexus-skybridge-full-height-after-ascent.png",
+      "sha256": "fe501d84c9283f549c0a3a4f422294d899970c108bc3ae449c3e5049ceb288f1",
+      "bytes": 1166263
+    },
+    {
+      "path": "docs/tactics-verticality-2026-10-24/ui/final/nexus-skybridge-ascent.png",
+      "sha256": "3579ee9e621c10d481c0702f899916738e9c6b767d529bb2d19f0791e2b0af0c",
+      "bytes": 1007545
+    },
+    {
+      "path": "docs/tactics-verticality-2026-10-24/ui/final/nexus-skybridge-mobile.png",
+      "sha256": "5e157aa3574e26370b5f85b78f5dc7462b554e3b449334883f819ccf1678e60a",
+      "bytes": 46611
+    },
+    {
+      "path": "docs/tactics-verticality-2026-10-24/ui/final/nexus_skybridge-battle.png",
+      "sha256": "f6959e5bbfc44a085ff36c329080e89aaec3b6617d0efc1b8228fe8d911d9c6a",
+      "bytes": 1100708
+    },
+    {
+      "path": "docs/tactics-verticality-2026-10-24/ui/final/ruined_terraces-battle.png",
+      "sha256": "1f68efe7b906ec761e98c4338770d78b59651727908f17288a1ad600a9bad7f6",
+      "bytes": 1117115
+    },
+    {
+      "path": "docs/tactics-verticality-2026-10-24/ui/final/cyber_catwalks-battle.png",
+      "sha256": "e06f603042879daa059b068c2d395b1cab29cb4f040f6f899a92bc7c1025da04",
+      "bytes": 1108804
+    }
+  ],
+  "observations": [
+    {
+      "capture": "nexus-skybridge-full-height-after-ascent.png",
+      "finding": "The complete real Custom battle screen is present with the terrain panel above the board and the canonical Cloud command panel below. The authored staircase, raised bridge deck, open railings and lower floor remain visually distinct. Cloud stands on the first raised stair B4, matching the panel Z 0.5."
+    },
+    {
+      "capture": "nexus-skybridge-ascent.png",
+      "finding": "The low cut reveals the floor under the bridge and the first stair with Cloud above the ground projection. The target contour and sprite support are aligned; the runtime observation corroborates the elevation and actual sprite baseline."
+    },
+    {
+      "capture": "nexus_skybridge-battle.png",
+      "finding": "After real zoom and pan the board and bridge remain visible, Cloud remains on the stair, and the highlighted inspected ground cell is separate from his occupied surface. The command and terrain panels remain within the desktop page."
+    },
+    {
+      "capture": "ruined_terraces-battle.png",
+      "finding": "The actual Custom battle shows the green lower ground, earthen/stone terrace, sloped ramp and front stair access as distinct geometry. Both combatants, ground selection, terrain controls and Cloud command labels are visible."
+    },
+    {
+      "capture": "cyber_catwalks-battle.png",
+      "finding": "The actual Custom battle shows technical lower ground, metal catwalks at a raised height and physical stair access. The enemy is drawn on the upper walkway while Cloud is on the lower left ground; extraction directive and terrain controls are visible."
+    },
+    {
+      "capture": "nexus-skybridge-mobile.png",
+      "finding": "At the actual 375px viewport the terrain panel wraps into several rows without clipping its cut, zoom, recenter or confirmation controls. Its explanatory text wraps within the panel and the controls retain usable height."
+    }
+  ],
+  "corroboratingRuntimeAscent": {
+    "from": "ground:0:3",
+    "to": "stairs:1:3",
+    "fromZ": 0,
+    "toZ": 0.5,
+    "cost": 2,
+    "transition": "stairs",
+    "actualRoute": {
+      "unitId": "cloud_ff7",
+      "path": [
+        "ground:0:3",
+        "stairs:1:3"
+      ],
+      "transitions": [
+        {
+          "from": "ground:0:3",
+          "to": "stairs:1:3",
+          "kind": "stairs",
+          "cost": 2
+        }
+      ],
+      "cost": 2
+    },
+    "renderedElevationSamples": [
+      0,
+      0.25,
+      0.5
+    ],
+    "supportY": 271.33,
+    "projectedSpriteFeetY": 271.3299865722656,
+    "absoluteFeetErrorPx": 0.000013427734359083843
+  },
+  "limitations": [
+    "The browser mounts the real CustomBattleMode with a minimal supplied player profile; it does not replay the entire App menu or an existing save import.",
+    "The confirmed UI ascent reaches the first authored stair at Z 0.5; reaching the entire Z 3 bridge through several additional player turns is covered by engine route tests rather than this browser sequence.",
+    "The browser launches all three maps, but the full movement, pause, pan and narrow-viewport sequence is exercised on Nexus skybridge.",
+    "The saved narrow-viewport screenshot covers the terrain panel, not the whole mobile battle page.",
+    "These are original procedural Nexus terrain materials, not source-certified 1:1 official environments or vertical conversions of all universes.",
+    "The existing scanline and dark HUD style is visible in the captures; this review establishes usable control layout and visible terrain geometry, not a formal accessibility contrast audit or a frame-rate claim."
+  ]
+}

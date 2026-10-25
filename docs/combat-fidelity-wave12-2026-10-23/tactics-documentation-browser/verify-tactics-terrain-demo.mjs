@@ -1,0 +1,65 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { chromium } from '/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
+const page=await browser.newPage({viewport:{width:1440,height:1050},deviceScaleFactor:1});
+const errors=[],checks=[];page.on('pageerror',error=>errors.push(error.message));
+const state=()=>page.evaluate(()=>window.terrainDemo.getState());
+const readSurfaces=()=>page.evaluate(()=>window.terrainDemo.getSurfaces());
+const check=(name,fn)=>{fn();checks.push(name);};
+try {
+ await page.goto('http://127.0.0.1:5193/docs/tactics-terrain-demo.html');
+ const surfaces=await readSurfaces(),initial=await state();
+ check('68 independent surfaces including ground and bridge at D4',()=>{assert.equal(surfaces.length,68);assert.deepEqual(surfaces.filter(s=>s.x===3&&s.y===3).map(s=>[s.id,s.z]),[['ground:3:3',0],['bridge:3:3',2]]);});
+ check('Default bridge route uses explicit stair connection at cost6',()=>{assert.equal(initial.cost,6);assert.ok(initial.path.includes('ground:2:4'));assert.ok(initial.path.includes('bridge:2:3'));assert.equal(initial.path.at(-1),'bridge:3:3');});
+ const geometry=JSON.stringify(surfaces);
+ for(const palette of ['facility','volcanic','ruins']){await page.selectOption('#palette',palette);const now=await state();assert.equal(now.cost,initial.cost);assert.deepEqual(now.path,initial.path);assert.equal(JSON.stringify(await readSurfaces()),geometry);}
+ checks.push('Three illustrative palettes preserve geometry and route rules');
+ await page.selectOption('#surface-select','ground:3:1');
+ check('Water is not a walkable destination',()=>assert.equal((awaitState=>awaitState.cost)(initial),6));
+ assert.equal((await state()).cost,Infinity);assert.equal(await page.isDisabled('#set-start'),true);
+ checks[checks.length-1]='Water is not a walkable destination and cannot become the start';
+ await page.selectOption('#surface-select','bridge:3:3');
+ for(let rotation=0;rotation<4;rotation++){
+  const picked=await page.evaluate(()=>{const p=window.terrainDemo.projectSurface('bridge:3:3');return window.terrainDemo.pick(p.x,p.y);});
+  assert.equal(picked,'bridge:3:3',`bridge center at rotation${rotation}`);
+  assert.equal((await state()).rotation,rotation);
+  assert.match(await page.textContent('#selection-info'),/Z = 2/);
+  await page.click('#rotate-right');
+ }
+ checks.push('Four rotations preserve Z2 and pick the bridge center');
+ await page.selectOption('#cutaway','ground');
+ assert.equal(await page.evaluate(()=>{const p=window.terrainDemo.projectSurface('ground:3:3');return window.terrainDemo.pick(p.x,p.y);}), 'ground:3:3');
+ await page.selectOption('#surface-select','ground:3:3');await page.click('#set-start');
+ await page.selectOption('#cutaway','all');await page.selectOption('#surface-select','bridge:3:3');
+ let now=await state();assert.ok(now.path.length>2);assert.ok(now.routeKinds.includes('escalier'));
+ await page.selectOption('#mobility','jump');now=await state();assert.ok(now.path.length>2);
+ checks.push('Cutaway picks the lower surface; shared XY cannot teleport between layers');
+ await page.focus('#scene');await page.keyboard.press(']');assert.equal((await state()).selected,'ground:3:3');
+ await page.keyboard.press('[');assert.equal((await state()).selected,'bridge:3:3');
+ await page.keyboard.press('ArrowLeft');assert.equal((await state()).selected,'bridge:2:3');
+ await page.keyboard.press('Enter');await page.keyboard.press('r');assert.equal((await state()).rotation,1);
+ checks.push('Keyboard cycles layers, moves selection and rotates the camera');
+ await page.selectOption('#surface-select','bridge:3:3');
+ await page.locator('#zoom').fill('65');await page.locator('#zoom').dispatchEvent('input');assert.equal((await state()).zoom,.65);
+ await page.locator('#zoom').fill('140');await page.locator('#zoom').dispatchEvent('input');assert.equal((await state()).zoom,1.4);
+ assert.equal(JSON.stringify(await readSurfaces()),geometry);
+ await page.uncheck('#show-faces');assert.equal((await state()).showFaces,false);await page.check('#show-faces');
+ await page.uncheck('#show-grid');assert.equal((await state()).showGrid,false);await page.check('#show-grid');
+ await page.uncheck('#show-route');assert.equal((await state()).showRoute,false);await page.check('#show-route');
+ checks.push('Zoom and face/grid/path controls preserve the terrain');
+ await page.reload();await page.screenshot({path:'/tmp/tactics-terrain-desktop.png',fullPage:true});
+ await page.click('#bridge-example');assert.equal((await state()).selected,'ground:3:3');assert.equal((await state()).cutaway,'ground');
+ await page.screenshot({path:'/tmp/tactics-terrain-cutaway.png',fullPage:true});
+ await page.click('#bridge-example');assert.equal((await state()).selected,'bridge:3:3');
+ checks.push('Bridge/lower-floor comparison button switches both the identity and cutaway');
+ await page.setViewportSize({width:375,height:900});
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth));
+ assert.ok((await page.locator('#scene').boundingBox()).width>300);
+ await page.screenshot({path:'/tmp/tactics-terrain-mobile.png',fullPage:true});
+ await page.selectOption('#surface-select','ground:0:0');assert.equal((await state()).selected,'ground:0:0');
+ checks.push('375px mobile layout has no horizontal overflow and supports selection');
+ assert.deepEqual(errors,[]);
+ const report={passed:true,checks,checkCount:checks.length,pageErrors:errors,surfaces:68,groundSurfaces:63,bridgeSurfaces:5,defaultBridgeRouteCost:6,screenshots:['/tmp/tactics-terrain-desktop.png','/tmp/tactics-terrain-cutaway.png','/tmp/tactics-terrain-mobile.png'],scope:'Standalone documentary prototype, no runtime integration'};
+ fs.writeFileSync('/tmp/tactics-terrain-browser-verification.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+} finally {await browser.close();}

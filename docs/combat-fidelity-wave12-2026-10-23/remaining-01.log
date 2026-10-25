@@ -1,0 +1,20 @@
+
+> lively-darwin@0.0.0 test:deployment-inputs
+> node --test scripts/vercelUploadManifest.test.mjs
+
+✔ accepts every tracked public path plus unrelated upload files (1.433605ms)
+✔ an omitted backgrounds junction reports each missing tracked file (1.676501ms)
+✔ coverage is case-sensitive exactly as on the Linux build host (0.237909ms)
+✔ rejects absolute paths, traversal and ambiguous separators anywhere in the upload (0.453625ms)
+✔ rejects malformed manifest objects and invalid file sizes (0.354615ms)
+✔ rejects unsafe or empty Git path inputs instead of a vacuous pass (0.214925ms)
+✔ rejects duplicate upload or Git paths rather than hiding ambiguity (0.191599ms)
+✔ the pure validator preserves frozen inputs, metadata, Unicode and spaces (0.184298ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 62.768285

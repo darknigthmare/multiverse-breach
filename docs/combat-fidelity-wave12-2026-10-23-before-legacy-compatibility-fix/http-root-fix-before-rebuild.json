@@ -1,0 +1,28 @@
+{
+  "reason": "Integration owner interrupted the first build after detecting an incorrect repository-root path in the pending HTTP proof harness. Production code and PNG files are unchanged. A fresh audited build is required; this interrupted attempt is never counted as a successful build.",
+  "receipt": {
+    "schemaVersion": 1,
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "cwd": "/workspace/multiverse-breach/",
+    "startedAt": "2026-10-23T21:21:32.959Z",
+    "finishedAt": "2026-10-23T21:22:43.020Z",
+    "exitCode": 127,
+    "signal": "SIGTERM",
+    "spawnError": null,
+    "log": "docs/combat-fidelity-wave12-2026-10-23/build.log",
+    "logSha256": "e297873c7c1020788d05da5db9e4f8b3495c0eba2894435ff5d0fc0955fedf0c",
+    "auditSha256": "b510c41507969a005550d5c6612457b526932d4107d78ec2ef6813fbe60ef5d5",
+    "auditSha256After": "b510c41507969a005550d5c6612457b526932d4107d78ec2ef6813fbe60ef5d5",
+    "auditUnchangedDuringBuild": true,
+    "receiptOrigin": "node-child-process-close-event",
+    "processId": 17362
+  },
+  "archivedAudit": "audit-before-http-root-fix.json",
+  "archivedLog": "build-interrupted-before-http-root-fix.log",
+  "previousHarnessSha256": "130f59ae13e501d428b7c239965416e584128d9f76451a7111032b8038d0ea4b",
+  "correctedHarnessSha256": "d5687204b85ae7ee74047ae916b1a33e68505daec98d3a2fb589695bc367d51d"
+}

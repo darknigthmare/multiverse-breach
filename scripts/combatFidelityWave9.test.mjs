@@ -16,8 +16,10 @@ import { STAGE_ANIMATION_PROFILES, getStageAnimationFrame, getStageAnimationProf
 import { getCharacterFormFrame } from '../src/game/combat/characterFormState.js';
 import { getSummonAnimationAssets, resolveSummonAnimationAsset } from '../src/game/combat/summonAnimationCatalog.js';
 import { COMBAT_ABILITY_OVERRIDES } from '../src/game/combat/abilities/catalog.js';
+import { HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14 } from './combatFidelityHistoricalCohortWave14.mjs';
 import { supportsNativeSuperWave9, projectNativeSuperAnchorWave9, getNativeSuperVisualStateWave9, drawNativeSuperVisualsWave9 } from '../src/game/combat/nativeSuperVisualsWave9.js';
 import { getCharacterFormAssets } from '../src/game/combat/characterFormCatalog.js';
+import { assertHistoricalPresentationOrWave13Version } from './combatPresentationVersionsWave13.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = path => readFileSync(new URL(path, root));
@@ -44,7 +46,7 @@ const noop = () => {};
 let vite, drawPixelSprite, EngineFighter;
 const engines = [];
 before(async () => {
-  vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
+  vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true, watch: null } });
   ({ drawPixelSprite } = await vite.ssrLoadModule('/src/game/renderer.js'));
   ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js'));
 });
@@ -269,9 +271,9 @@ test('all20 new base layouts contain320 real cells and render every native cell 
   assert.equal(unique.size, 320); assert.equal(draws, 1248);
 });
 
-test('all104 prior character presentation recipes remain exactly immutable', () => {
+test('all104 prior presentation snapshots stay immutable and only three explicit W13 versions replace recipes', () => {
   assert.equal(Object.keys(runtimeBaseline.presentations).length, 104);
-  for (const [id, prior] of Object.entries(runtimeBaseline.presentations)) assert.deepEqual(CHARACTER_PRESENTATIONS[id], prior, id);
+  for (const [id, prior] of Object.entries(runtimeBaseline.presentations)) assertHistoricalPresentationOrWave13Version(id, prior, CHARACTER_PRESENTATIONS[id]);
   const historicalIds = [...Object.keys(runtimeBaseline.presentations), ...wave9Ids];
   assert.equal(new Set(historicalIds).size, 124);
   const rosterPresentations = Object.keys(CHARACTER_PRESENTATIONS).filter(id => historicalIds.includes(id) && roster.has(id));
@@ -538,7 +540,11 @@ test('all twenty effective kits keep real equipment, support targets and exact s
     assert.equal(wave9Ids.includes(id), false, `${id}: no W9 kit may be excluded`);
     assert.ok(COMBAT_ABILITY_OVERRIDES[id], `${id}: new kit remains registered and covered by W11`);
   }
-  const historicalEntries = Object.entries(COMBAT_ABILITY_OVERRIDES).filter(([id]) => !wave10NewKitIds.has(id) && !wave11NewKitIds.has(id));
+  const wave13NewIds = new Set(json('docs/combat-fidelity-wave13-2026-10-24/ability-baseline-before.json').newAbilityIds);
+  assert.equal(wave13NewIds.size, 18);
+  const wave12NewIds = new Set(json('docs/combat-fidelity-wave12-2026-10-23/authored-before.json').selectedNewIds);
+  assert.equal(wave12NewIds.size, 19);
+  const historicalEntries = Object.entries(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14).filter(([id]) => !wave10NewKitIds.has(id) && !wave11NewKitIds.has(id) && !wave12NewIds.has(id) && !wave13NewIds.has(id));
   assert.deepEqual(sorted(historicalEntries.map(([id]) => id)), sorted(authoredBeforeWave11.authoredHeroIds.filter(id => !wave10NewKitIds.has(id))), 'The W9 perimeter retains every frozen prior ID except the explicit W10 additions');
   const kits = historicalEntries.map(([,kit]) => kit), slots = ['simple', 'secondary', 'defense'];
   assert.equal(kits.length, 1458); assert.equal(kits.reduce((n, kit) => n + slots.filter(slot => kit[slot]).length, 0), 4270);

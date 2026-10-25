@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "passed": false,
+  "test": {
+    "command": [
+      "npm",
+      "run",
+      "test:combat-presentation"
+    ],
+    "startedAt": "2026-10-23T21:58:40.492Z",
+    "finishedAt": "2026-10-23T21:59:28.211Z",
+    "exitCode": 1,
+    "signal": null,
+    "spawnError": null,
+    "log": "docs/combat-fidelity-wave12-2026-10-23/completion-compatibility-test.log",
+    "logSha256": "494d3b513e5459dbeecae49d0e61c62bc442e0496410e9b6dbe93a681b4fb5a9",
+    "receiptOrigin": "node-child-process-close-event"
+  },
+  "lint": {
+    "command": [
+      "npx",
+      "oxlint",
+      "scripts/combatCompletion.test.mjs"
+    ],
+    "startedAt": "2026-10-23T21:59:28.213Z",
+    "finishedAt": "2026-10-23T21:59:28.542Z",
+    "exitCode": 0,
+    "signal": null,
+    "spawnError": null,
+    "log": "docs/combat-fidelity-wave12-2026-10-23/completion-compatibility-lint.log",
+    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receiptOrigin": "node-child-process-close-event"
+  },
+  "source": "scripts/combatCompletion.test.mjs",
+  "sourceSha256Before": "fde4317ba3a2c1266e3ae47265d0bf06f6c68618083686ddc03fe54dd7c11eed",
+  "sourceSha256After": "fde4317ba3a2c1266e3ae47265d0bf06f6c68618083686ddc03fe54dd7c11eed",
+  "explicitRevisions": 21,
+  "runtimeModified": false,
+  "historicalCompletionRecordsModified": false,
+  "expectationScope": "Only21 selected W12 source-version overlays, independently checked against literal historical name/work/reference/semantics and reviewed selected version/name/semantics. Existing W7-W11 assertions retained."
+}

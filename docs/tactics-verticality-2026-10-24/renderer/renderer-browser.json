@@ -1,0 +1,1685 @@
+{
+  "passed": true,
+  "kind": "focused-renderer-module-proof",
+  "actualGameCanvasUserFlows": 0,
+  "preliminary": true,
+  "finalProductionFreezeClaimed": false,
+  "startedAt": "2026-10-24T02:05:21.189Z",
+  "browserClosedAt": "2026-10-24T02:05:25.251Z",
+  "finishedAt": "2026-10-24T02:05:25.253Z",
+  "pageErrors": [],
+  "failure": null,
+  "sourceHashesBefore": {
+    "src/game/tacticsTerrainRenderer.js": "52c2115228d7a62b15ea54fdb06886724a12df26f50c88f9ea7c1d53da2aad14",
+    "src/game/tacticsTerrain.js": "3498e48e851d7c91f046328e4d0805170a2c3e0ec12401e53d39968adc683e2d",
+    "src/game/tacticsVerticalBattlefields.js": "dc98f20bef147bd9d733cc267a353c42542e4eb763a8e1fe108594d4e6b8c847"
+  },
+  "sourceHashesAfter": {
+    "src/game/tacticsTerrainRenderer.js": "52c2115228d7a62b15ea54fdb06886724a12df26f50c88f9ea7c1d53da2aad14",
+    "src/game/tacticsTerrain.js": "3498e48e851d7c91f046328e4d0805170a2c3e0ec12401e53d39968adc683e2d",
+    "src/game/tacticsVerticalBattlefields.js": "dc98f20bef147bd9d733cc267a353c42542e4eb763a8e1fe108594d4e6b8c847"
+  },
+  "sourcesUnchangedDuringRun": true,
+  "captures": [
+    {
+      "path": "nexus_skybridge-full.png",
+      "sha256": "56030c256ce66c664b6770fafc8c2df691d4dc1d42d7cc305c39fd75b23b690f",
+      "bytes": 127773
+    },
+    {
+      "path": "nexus_skybridge-cut0.png",
+      "sha256": "cc0ee726b46ce66e3510c346783ce724b10a2482f45d973a5b5d100a93fb9e01",
+      "bytes": 117268
+    },
+    {
+      "path": "ruined_terraces-full.png",
+      "sha256": "596922e37129cf1c821f3dfd59455aafc6c30c0f8bf74a73d6b8bc018b4249ba",
+      "bytes": 118964
+    },
+    {
+      "path": "ruined_terraces-cut0.png",
+      "sha256": "70fd7857f0800e8df376933d9e89d532ec9c577ee65f3fb941af060646f545fb",
+      "bytes": 101512
+    },
+    {
+      "path": "cyber_catwalks-full.png",
+      "sha256": "4cf6d7d08a518919172426892863ba87b846e12f118931c2a5c6f98f2626d8ab",
+      "bytes": 140607
+    },
+    {
+      "path": "cyber_catwalks-cut0.png",
+      "sha256": "632c50c39e9eda4ac48a427b986e5a6137b1405fb322a6a2087428f50ead3981",
+      "bytes": 121370
+    }
+  ],
+  "checks": [
+    {
+      "map": "nexus_skybridge",
+      "cutLevel": null,
+      "surfaces": 67,
+      "visibleTopSurfaces": 67,
+      "faces": 177,
+      "actorCount": 2,
+      "guardRails": 8,
+      "overlaysCoverEveryTopSurface": true,
+      "visibleVerticesFinite": true,
+      "cutHidesUpperDecks": true,
+      "centerPicking": [
+        {
+          "id": "ground:0:0",
+          "hit": "ground:0:0"
+        },
+        {
+          "id": "ground:1:0",
+          "hit": "ground:1:0"
+        },
+        {
+          "id": "ground:2:0",
+          "hit": "ground:2:0"
+        },
+        {
+          "id": "ground:3:0",
+          "hit": "ground:3:0"
+        },
+        {
+          "id": "ground:4:0",
+          "hit": "ground:4:0"
+        },
+        {
+          "id": "ground:5:0",
+          "hit": "ground:5:0"
+        },
+        {
+          "id": "ground:6:0",
+          "hit": "ground:6:0"
+        },
+        {
+          "id": "ground:7:0",
+          "hit": "ground:7:0"
+        },
+        {
+          "id": "ground:8:0",
+          "hit": "ground:8:0"
+        },
+        {
+          "id": "ground:0:1",
+          "hit": "ground:0:1"
+        },
+        {
+          "id": "ground:1:1",
+          "hit": "ground:1:1"
+        },
+        {
+          "id": "ground:2:1",
+          "hit": "ground:2:1"
+        },
+        {
+          "id": "ground:3:1",
+          "hit": "stairs:3:3"
+        },
+        {
+          "id": "ground:4:1",
+          "hit": "bridge:4:3"
+        },
+        {
+          "id": "ground:5:1",
+          "hit": "bridge:5:3"
+        },
+        {
+          "id": "ground:6:1",
+          "hit": "bridge:6:3"
+        },
+        {
+          "id": "ground:7:1",
+          "hit": "bridge:7:3"
+        },
+        {
+          "id": "ground:8:1",
+          "hit": "ground:8:1"
+        },
+        {
+          "id": "ground:0:2",
+          "hit": "ground:0:2"
+        },
+        {
+          "id": "ground:1:2",
+          "hit": "ground:1:2"
+        },
+        {
+          "id": "ground:2:2",
+          "hit": "stairs:2:3"
+        },
+        {
+          "id": "ground:3:2",
+          "hit": null
+        },
+        {
+          "id": "ground:4:2",
+          "hit": "ground:4:2"
+        },
+        {
+          "id": "ground:5:2",
+          "hit": "ground:5:2"
+        },
+        {
+          "id": "ground:6:2",
+          "hit": "ground:6:2"
+        },
+        {
+          "id": "ground:7:2",
+          "hit": "ground:7:2"
+        },
+        {
+          "id": "ground:8:2",
+          "hit": "ground:8:2"
+        },
+        {
+          "id": "ground:0:3",
+          "hit": "ground:0:3"
+        },
+        {
+          "id": "ground:4:3",
+          "hit": "ground:4:3"
+        },
+        {
+          "id": "ground:5:3",
+          "hit": "ground:5:3"
+        },
+        {
+          "id": "ground:6:3",
+          "hit": "ground:6:3"
+        },
+        {
+          "id": "ground:7:3",
+          "hit": "ground:7:3"
+        },
+        {
+          "id": "ground:8:3",
+          "hit": "ground:8:3"
+        },
+        {
+          "id": "stairs:1:3",
+          "hit": "stairs:1:3"
+        },
+        {
+          "id": "stairs:2:3",
+          "hit": "stairs:2:3"
+        },
+        {
+          "id": "stairs:3:3",
+          "hit": "stairs:3:3"
+        },
+        {
+          "id": "bridge:4:3",
+          "hit": "bridge:4:3"
+        },
+        {
+          "id": "bridge:5:3",
+          "hit": "bridge:5:3"
+        },
+        {
+          "id": "bridge:6:3",
+          "hit": "bridge:6:3"
+        },
+        {
+          "id": "bridge:7:3",
+          "hit": "bridge:7:3"
+        },
+        {
+          "id": "ground:0:4",
+          "hit": "ground:0:4"
+        },
+        {
+          "id": "ground:1:4",
+          "hit": "ground:1:4"
+        },
+        {
+          "id": "ground:2:4",
+          "hit": "ground:2:4"
+        },
+        {
+          "id": "ground:3:4",
+          "hit": "ground:3:4"
+        },
+        {
+          "id": "ground:4:4",
+          "hit": "ground:4:4"
+        },
+        {
+          "id": "ground:5:4",
+          "hit": "ground:5:4"
+        },
+        {
+          "id": "ground:6:4",
+          "hit": "ground:6:4"
+        },
+        {
+          "id": "ground:7:4",
+          "hit": "ground:7:4"
+        },
+        {
+          "id": "ground:8:4",
+          "hit": "ground:8:4"
+        },
+        {
+          "id": "ground:0:5",
+          "hit": "ground:0:5"
+        },
+        {
+          "id": "ground:1:5",
+          "hit": "ground:1:5"
+        },
+        {
+          "id": "ground:2:5",
+          "hit": "ground:2:5"
+        },
+        {
+          "id": "ground:3:5",
+          "hit": "ground:3:5"
+        },
+        {
+          "id": "ground:4:5",
+          "hit": "ground:4:5"
+        },
+        {
+          "id": "ground:5:5",
+          "hit": "ground:5:5"
+        },
+        {
+          "id": "ground:6:5",
+          "hit": "ground:6:5"
+        },
+        {
+          "id": "ground:7:5",
+          "hit": "ground:7:5"
+        },
+        {
+          "id": "ground:8:5",
+          "hit": "ground:8:5"
+        },
+        {
+          "id": "ground:0:6",
+          "hit": "ground:0:6"
+        },
+        {
+          "id": "ground:1:6",
+          "hit": "ground:1:6"
+        },
+        {
+          "id": "ground:2:6",
+          "hit": "ground:2:6"
+        },
+        {
+          "id": "ground:3:6",
+          "hit": "ground:3:6"
+        },
+        {
+          "id": "ground:4:6",
+          "hit": "ground:4:6"
+        },
+        {
+          "id": "ground:5:6",
+          "hit": "ground:5:6"
+        },
+        {
+          "id": "ground:6:6",
+          "hit": "ground:6:6"
+        },
+        {
+          "id": "ground:7:6",
+          "hit": "ground:7:6"
+        },
+        {
+          "id": "ground:8:6",
+          "hit": "ground:8:6"
+        }
+      ]
+    },
+    {
+      "map": "nexus_skybridge",
+      "cutLevel": 0,
+      "surfaces": 67,
+      "visibleTopSurfaces": 61,
+      "faces": 141,
+      "actorCount": 1,
+      "guardRails": 0,
+      "overlaysCoverEveryTopSurface": true,
+      "visibleVerticesFinite": true,
+      "cutHidesUpperDecks": true,
+      "centerPicking": [
+        {
+          "id": "ground:0:0",
+          "hit": "ground:0:0"
+        },
+        {
+          "id": "ground:1:0",
+          "hit": "ground:1:0"
+        },
+        {
+          "id": "ground:2:0",
+          "hit": "ground:2:0"
+        },
+        {
+          "id": "ground:3:0",
+          "hit": "ground:3:0"
+        },
+        {
+          "id": "ground:4:0",
+          "hit": "ground:4:0"
+        },
+        {
+          "id": "ground:5:0",
+          "hit": "ground:5:0"
+        },
+        {
+          "id": "ground:6:0",
+          "hit": "ground:6:0"
+        },
+        {
+          "id": "ground:7:0",
+          "hit": "ground:7:0"
+        },
+        {
+          "id": "ground:8:0",
+          "hit": "ground:8:0"
+        },
+        {
+          "id": "ground:0:1",
+          "hit": "ground:0:1"
+        },
+        {
+          "id": "ground:1:1",
+          "hit": "ground:1:1"
+        },
+        {
+          "id": "ground:2:1",
+          "hit": "ground:2:1"
+        },
+        {
+          "id": "ground:3:1",
+          "hit": "ground:3:1"
+        },
+        {
+          "id": "ground:4:1",
+          "hit": "ground:4:1"
+        },
+        {
+          "id": "ground:5:1",
+          "hit": "ground:5:1"
+        },
+        {
+          "id": "ground:6:1",
+          "hit": "ground:6:1"
+        },
+        {
+          "id": "ground:7:1",
+          "hit": "ground:7:1"
+        },
+        {
+          "id": "ground:8:1",
+          "hit": "ground:8:1"
+        },
+        {
+          "id": "ground:0:2",
+          "hit": "ground:0:2"
+        },
+        {
+          "id": "ground:1:2",
+          "hit": "ground:1:2"
+        },
+        {
+          "id": "ground:2:2",
+          "hit": "ground:2:2"
+        },
+        {
+          "id": "ground:3:2",
+          "hit": "ground:3:2"
+        },
+        {
+          "id": "ground:4:2",
+          "hit": "ground:4:2"
+        },
+        {
+          "id": "ground:5:2",
+          "hit": "ground:5:2"
+        },
+        {
+          "id": "ground:6:2",
+          "hit": "ground:6:2"
+        },
+        {
+          "id": "ground:7:2",
+          "hit": "ground:7:2"
+        },
+        {
+          "id": "ground:8:2",
+          "hit": "ground:8:2"
+        },
+        {
+          "id": "ground:0:3",
+          "hit": "ground:0:3"
+        },
+        {
+          "id": "ground:4:3",
+          "hit": "ground:4:3"
+        },
+        {
+          "id": "ground:5:3",
+          "hit": "ground:5:3"
+        },
+        {
+          "id": "ground:6:3",
+          "hit": "ground:6:3"
+        },
+        {
+          "id": "ground:7:3",
+          "hit": "ground:7:3"
+        },
+        {
+          "id": "ground:8:3",
+          "hit": "ground:8:3"
+        },
+        {
+          "id": "stairs:1:3",
+          "hit": "stairs:1:3"
+        },
+        {
+          "id": "ground:0:4",
+          "hit": "ground:0:4"
+        },
+        {
+          "id": "ground:1:4",
+          "hit": "ground:1:4"
+        },
+        {
+          "id": "ground:2:4",
+          "hit": "ground:2:4"
+        },
+        {
+          "id": "ground:3:4",
+          "hit": "ground:3:4"
+        },
+        {
+          "id": "ground:4:4",
+          "hit": "ground:4:4"
+        },
+        {
+          "id": "ground:5:4",
+          "hit": "ground:5:4"
+        },
+        {
+          "id": "ground:6:4",
+          "hit": "ground:6:4"
+        },
+        {
+          "id": "ground:7:4",
+          "hit": "ground:7:4"
+        },
+        {
+          "id": "ground:8:4",
+          "hit": "ground:8:4"
+        },
+        {
+          "id": "ground:0:5",
+          "hit": "ground:0:5"
+        },
+        {
+          "id": "ground:1:5",
+          "hit": "ground:1:5"
+        },
+        {
+          "id": "ground:2:5",
+          "hit": "ground:2:5"
+        },
+        {
+          "id": "ground:3:5",
+          "hit": "ground:3:5"
+        },
+        {
+          "id": "ground:4:5",
+          "hit": "ground:4:5"
+        },
+        {
+          "id": "ground:5:5",
+          "hit": "ground:5:5"
+        },
+        {
+          "id": "ground:6:5",
+          "hit": "ground:6:5"
+        },
+        {
+          "id": "ground:7:5",
+          "hit": "ground:7:5"
+        },
+        {
+          "id": "ground:8:5",
+          "hit": "ground:8:5"
+        },
+        {
+          "id": "ground:0:6",
+          "hit": "ground:0:6"
+        },
+        {
+          "id": "ground:1:6",
+          "hit": "ground:1:6"
+        },
+        {
+          "id": "ground:2:6",
+          "hit": "ground:2:6"
+        },
+        {
+          "id": "ground:3:6",
+          "hit": "ground:3:6"
+        },
+        {
+          "id": "ground:4:6",
+          "hit": "ground:4:6"
+        },
+        {
+          "id": "ground:5:6",
+          "hit": "ground:5:6"
+        },
+        {
+          "id": "ground:6:6",
+          "hit": "ground:6:6"
+        },
+        {
+          "id": "ground:7:6",
+          "hit": "ground:7:6"
+        },
+        {
+          "id": "ground:8:6",
+          "hit": "ground:8:6"
+        }
+      ]
+    },
+    {
+      "map": "ruined_terraces",
+      "cutLevel": null,
+      "surfaces": 61,
+      "visibleTopSurfaces": 61,
+      "faces": 163,
+      "actorCount": 2,
+      "guardRails": 4,
+      "overlaysCoverEveryTopSurface": true,
+      "visibleVerticesFinite": true,
+      "cutHidesUpperDecks": true,
+      "centerPicking": [
+        {
+          "id": "ground:0:0",
+          "hit": "ground:0:0"
+        },
+        {
+          "id": "ground:1:0",
+          "hit": "ground:1:0"
+        },
+        {
+          "id": "ground:2:0",
+          "hit": "ground:2:0"
+        },
+        {
+          "id": "ground:5:0",
+          "hit": "terrace:5:1"
+        },
+        {
+          "id": "ground:6:0",
+          "hit": "terrace:6:1"
+        },
+        {
+          "id": "ground:7:0",
+          "hit": "terrace:7:1"
+        },
+        {
+          "id": "ground:8:0",
+          "hit": "ground:8:0"
+        },
+        {
+          "id": "ground:0:1",
+          "hit": "ground:0:1"
+        },
+        {
+          "id": "ground:1:1",
+          "hit": "ground:1:1"
+        },
+        {
+          "id": "ground:2:1",
+          "hit": "ground:2:1"
+        },
+        {
+          "id": "ground:3:1",
+          "hit": "ground:3:1"
+        },
+        {
+          "id": "ground:8:1",
+          "hit": "ground:8:1"
+        },
+        {
+          "id": "terrace:4:1",
+          "hit": "terrace:4:1"
+        },
+        {
+          "id": "terrace:5:1",
+          "hit": "terrace:5:1"
+        },
+        {
+          "id": "terrace:6:1",
+          "hit": "terrace:6:1"
+        },
+        {
+          "id": "terrace:7:1",
+          "hit": "terrace:7:1"
+        },
+        {
+          "id": "ground:0:2",
+          "hit": "ground:0:2"
+        },
+        {
+          "id": "ground:1:2",
+          "hit": "ground:1:2"
+        },
+        {
+          "id": "ground:2:2",
+          "hit": "ground:2:2"
+        },
+        {
+          "id": "ground:3:2",
+          "hit": "ramp:3:3"
+        },
+        {
+          "id": "ground:8:2",
+          "hit": "ground:8:2"
+        },
+        {
+          "id": "terrace:4:2",
+          "hit": "terrace:4:2"
+        },
+        {
+          "id": "terrace:5:2",
+          "hit": "terrace:5:2"
+        },
+        {
+          "id": "terrace:6:2",
+          "hit": "terrace:6:2"
+        },
+        {
+          "id": "terrace:7:2",
+          "hit": "terrace:7:2"
+        },
+        {
+          "id": "ground:0:3",
+          "hit": "ground:0:3"
+        },
+        {
+          "id": "ground:1:3",
+          "hit": "ground:1:3"
+        },
+        {
+          "id": "ground:8:3",
+          "hit": "ground:8:3"
+        },
+        {
+          "id": "ramp:2:3",
+          "hit": "ramp:2:3"
+        },
+        {
+          "id": "ramp:3:3",
+          "hit": "ramp:3:3"
+        },
+        {
+          "id": "terrace:4:3",
+          "hit": "terrace:4:3"
+        },
+        {
+          "id": "terrace:5:3",
+          "hit": "terrace:5:3"
+        },
+        {
+          "id": "terrace:6:3",
+          "hit": "terrace:6:3"
+        },
+        {
+          "id": "terrace:7:3",
+          "hit": "terrace:7:3"
+        },
+        {
+          "id": "ground:0:4",
+          "hit": "ground:0:4"
+        },
+        {
+          "id": "ground:1:4",
+          "hit": "ground:1:4"
+        },
+        {
+          "id": "ground:2:4",
+          "hit": "ground:2:4"
+        },
+        {
+          "id": "ground:3:4",
+          "hit": "ground:3:4"
+        },
+        {
+          "id": "ground:8:4",
+          "hit": "ground:8:4"
+        },
+        {
+          "id": "stairs:6:4",
+          "hit": null
+        },
+        {
+          "id": "terrace:4:4",
+          "hit": "terrace:4:4"
+        },
+        {
+          "id": "terrace:5:4",
+          "hit": "terrace:5:4"
+        },
+        {
+          "id": "terrace:7:4",
+          "hit": "terrace:7:4"
+        },
+        {
+          "id": "ground:0:5",
+          "hit": "ground:0:5"
+        },
+        {
+          "id": "ground:1:5",
+          "hit": "ground:1:5"
+        },
+        {
+          "id": "ground:2:5",
+          "hit": "ground:2:5"
+        },
+        {
+          "id": "ground:3:5",
+          "hit": "ground:3:5"
+        },
+        {
+          "id": "ground:4:5",
+          "hit": "ground:4:5"
+        },
+        {
+          "id": "ground:5:5",
+          "hit": "ground:5:5"
+        },
+        {
+          "id": "ground:7:5",
+          "hit": "ground:7:5"
+        },
+        {
+          "id": "ground:8:5",
+          "hit": "ground:8:5"
+        },
+        {
+          "id": "stairs:6:5",
+          "hit": null
+        },
+        {
+          "id": "ground:0:6",
+          "hit": "ground:0:6"
+        },
+        {
+          "id": "ground:1:6",
+          "hit": "ground:1:6"
+        },
+        {
+          "id": "ground:2:6",
+          "hit": "ground:2:6"
+        },
+        {
+          "id": "ground:3:6",
+          "hit": "ground:3:6"
+        },
+        {
+          "id": "ground:4:6",
+          "hit": "ground:4:6"
+        },
+        {
+          "id": "ground:5:6",
+          "hit": "ground:5:6"
+        },
+        {
+          "id": "ground:6:6",
+          "hit": "ground:6:6"
+        },
+        {
+          "id": "ground:7:6",
+          "hit": "ground:7:6"
+        },
+        {
+          "id": "ground:8:6",
+          "hit": "ground:8:6"
+        }
+      ]
+    },
+    {
+      "map": "ruined_terraces",
+      "cutLevel": 0,
+      "surfaces": 61,
+      "visibleTopSurfaces": 44,
+      "faces": 123,
+      "actorCount": 1,
+      "guardRails": 0,
+      "overlaysCoverEveryTopSurface": true,
+      "visibleVerticesFinite": true,
+      "cutHidesUpperDecks": true,
+      "centerPicking": [
+        {
+          "id": "ground:0:0",
+          "hit": "ground:0:0"
+        },
+        {
+          "id": "ground:1:0",
+          "hit": "ground:1:0"
+        },
+        {
+          "id": "ground:2:0",
+          "hit": "ground:2:0"
+        },
+        {
+          "id": "ground:5:0",
+          "hit": "ground:5:0"
+        },
+        {
+          "id": "ground:6:0",
+          "hit": "ground:6:0"
+        },
+        {
+          "id": "ground:7:0",
+          "hit": "ground:7:0"
+        },
+        {
+          "id": "ground:8:0",
+          "hit": "ground:8:0"
+        },
+        {
+          "id": "ground:0:1",
+          "hit": "ground:0:1"
+        },
+        {
+          "id": "ground:1:1",
+          "hit": "ground:1:1"
+        },
+        {
+          "id": "ground:2:1",
+          "hit": "ground:2:1"
+        },
+        {
+          "id": "ground:3:1",
+          "hit": "ground:3:1"
+        },
+        {
+          "id": "ground:8:1",
+          "hit": "ground:8:1"
+        },
+        {
+          "id": "ground:0:2",
+          "hit": "ground:0:2"
+        },
+        {
+          "id": "ground:1:2",
+          "hit": "ground:1:2"
+        },
+        {
+          "id": "ground:2:2",
+          "hit": "ground:2:2"
+        },
+        {
+          "id": "ground:3:2",
+          "hit": "ground:3:2"
+        },
+        {
+          "id": "ground:8:2",
+          "hit": "ground:8:2"
+        },
+        {
+          "id": "ground:0:3",
+          "hit": "ground:0:3"
+        },
+        {
+          "id": "ground:1:3",
+          "hit": "ground:1:3"
+        },
+        {
+          "id": "ground:8:3",
+          "hit": "ground:8:3"
+        },
+        {
+          "id": "ramp:2:3",
+          "hit": "ramp:2:3"
+        },
+        {
+          "id": "ground:0:4",
+          "hit": "ground:0:4"
+        },
+        {
+          "id": "ground:1:4",
+          "hit": "ground:1:4"
+        },
+        {
+          "id": "ground:2:4",
+          "hit": "ground:2:4"
+        },
+        {
+          "id": "ground:3:4",
+          "hit": "ground:3:4"
+        },
+        {
+          "id": "ground:8:4",
+          "hit": "ground:8:4"
+        },
+        {
+          "id": "ground:0:5",
+          "hit": "ground:0:5"
+        },
+        {
+          "id": "ground:1:5",
+          "hit": "ground:1:5"
+        },
+        {
+          "id": "ground:2:5",
+          "hit": "ground:2:5"
+        },
+        {
+          "id": "ground:3:5",
+          "hit": "ground:3:5"
+        },
+        {
+          "id": "ground:4:5",
+          "hit": "ground:4:5"
+        },
+        {
+          "id": "ground:5:5",
+          "hit": "ground:5:5"
+        },
+        {
+          "id": "ground:7:5",
+          "hit": "ground:7:5"
+        },
+        {
+          "id": "ground:8:5",
+          "hit": "ground:8:5"
+        },
+        {
+          "id": "stairs:6:5",
+          "hit": null
+        },
+        {
+          "id": "ground:0:6",
+          "hit": "ground:0:6"
+        },
+        {
+          "id": "ground:1:6",
+          "hit": "ground:1:6"
+        },
+        {
+          "id": "ground:2:6",
+          "hit": "ground:2:6"
+        },
+        {
+          "id": "ground:3:6",
+          "hit": "ground:3:6"
+        },
+        {
+          "id": "ground:4:6",
+          "hit": "ground:4:6"
+        },
+        {
+          "id": "ground:5:6",
+          "hit": "ground:5:6"
+        },
+        {
+          "id": "ground:6:6",
+          "hit": "ground:6:6"
+        },
+        {
+          "id": "ground:7:6",
+          "hit": "ground:7:6"
+        },
+        {
+          "id": "ground:8:6",
+          "hit": "ground:8:6"
+        }
+      ]
+    },
+    {
+      "map": "cyber_catwalks",
+      "cutLevel": null,
+      "surfaces": 80,
+      "visibleTopSurfaces": 80,
+      "faces": 222,
+      "actorCount": 2,
+      "guardRails": 10,
+      "overlaysCoverEveryTopSurface": true,
+      "visibleVerticesFinite": true,
+      "cutHidesUpperDecks": true,
+      "centerPicking": [
+        {
+          "id": "ground:0:0",
+          "hit": "ground:0:0"
+        },
+        {
+          "id": "ground:1:0",
+          "hit": "ground:1:0"
+        },
+        {
+          "id": "ground:2:0",
+          "hit": "catwalk:2:2"
+        },
+        {
+          "id": "ground:3:0",
+          "hit": "catwalk:3:2"
+        },
+        {
+          "id": "ground:4:0",
+          "hit": "catwalk:4:2"
+        },
+        {
+          "id": "ground:5:0",
+          "hit": "catwalk:5:2"
+        },
+        {
+          "id": "ground:6:0",
+          "hit": "catwalk:6:2"
+        },
+        {
+          "id": "ground:7:0",
+          "hit": "catwalk:7:2"
+        },
+        {
+          "id": "ground:8:0",
+          "hit": "catwalk:8:2"
+        },
+        {
+          "id": "ground:9:0",
+          "hit": "ground:9:0"
+        },
+        {
+          "id": "ground:0:1",
+          "hit": "ground:0:1"
+        },
+        {
+          "id": "ground:1:1",
+          "hit": "ground:1:1"
+        },
+        {
+          "id": "ground:2:1",
+          "hit": null
+        },
+        {
+          "id": "ground:3:1",
+          "hit": "ground:3:1"
+        },
+        {
+          "id": "ground:4:1",
+          "hit": "ground:4:1"
+        },
+        {
+          "id": "ground:5:1",
+          "hit": "ground:5:1"
+        },
+        {
+          "id": "ground:6:1",
+          "hit": "ground:6:1"
+        },
+        {
+          "id": "ground:7:1",
+          "hit": "ground:7:1"
+        },
+        {
+          "id": "ground:8:1",
+          "hit": "catwalk:8:3"
+        },
+        {
+          "id": "ground:9:1",
+          "hit": "ground:9:1"
+        },
+        {
+          "id": "ground:0:2",
+          "hit": "ground:0:2"
+        },
+        {
+          "id": "ground:1:2",
+          "hit": "ground:1:2"
+        },
+        {
+          "id": "ground:2:2",
+          "hit": "stairs:2:3"
+        },
+        {
+          "id": "ground:3:2",
+          "hit": "ground:3:2"
+        },
+        {
+          "id": "ground:4:2",
+          "hit": "ground:4:2"
+        },
+        {
+          "id": "ground:5:2",
+          "hit": "ground:5:2"
+        },
+        {
+          "id": "ground:6:2",
+          "hit": "ground:6:2"
+        },
+        {
+          "id": "ground:7:2",
+          "hit": "ground:7:2"
+        },
+        {
+          "id": "ground:8:2",
+          "hit": "catwalk:8:4"
+        },
+        {
+          "id": "ground:9:2",
+          "hit": "ground:9:2"
+        },
+        {
+          "id": "catwalk:2:2",
+          "hit": "catwalk:2:2"
+        },
+        {
+          "id": "catwalk:3:2",
+          "hit": "catwalk:3:2"
+        },
+        {
+          "id": "catwalk:4:2",
+          "hit": "catwalk:4:2"
+        },
+        {
+          "id": "catwalk:5:2",
+          "hit": "catwalk:5:2"
+        },
+        {
+          "id": "catwalk:6:2",
+          "hit": "catwalk:6:2"
+        },
+        {
+          "id": "catwalk:7:2",
+          "hit": "catwalk:7:2"
+        },
+        {
+          "id": "catwalk:8:2",
+          "hit": "catwalk:8:2"
+        },
+        {
+          "id": "ground:0:3",
+          "hit": "ground:0:3"
+        },
+        {
+          "id": "ground:1:3",
+          "hit": "ground:1:3"
+        },
+        {
+          "id": "ground:3:3",
+          "hit": "ground:3:3"
+        },
+        {
+          "id": "ground:4:3",
+          "hit": "ground:4:3"
+        },
+        {
+          "id": "ground:5:3",
+          "hit": "ground:5:3"
+        },
+        {
+          "id": "ground:6:3",
+          "hit": "ground:6:3"
+        },
+        {
+          "id": "ground:7:3",
+          "hit": "ground:7:3"
+        },
+        {
+          "id": "ground:8:3",
+          "hit": "catwalk:8:5"
+        },
+        {
+          "id": "ground:9:3",
+          "hit": "ground:9:3"
+        },
+        {
+          "id": "stairs:2:3",
+          "hit": null
+        },
+        {
+          "id": "catwalk:8:3",
+          "hit": "catwalk:8:3"
+        },
+        {
+          "id": "ground:0:4",
+          "hit": "ground:0:4"
+        },
+        {
+          "id": "ground:1:4",
+          "hit": "ground:1:4"
+        },
+        {
+          "id": "ground:3:4",
+          "hit": "ground:3:4"
+        },
+        {
+          "id": "ground:4:4",
+          "hit": "ground:4:4"
+        },
+        {
+          "id": "ground:5:4",
+          "hit": "ground:5:4"
+        },
+        {
+          "id": "ground:6:4",
+          "hit": "ground:6:4"
+        },
+        {
+          "id": "ground:7:4",
+          "hit": "ground:7:4"
+        },
+        {
+          "id": "ground:8:4",
+          "hit": "ground:8:4"
+        },
+        {
+          "id": "ground:9:4",
+          "hit": "ground:9:4"
+        },
+        {
+          "id": "stairs:2:4",
+          "hit": null
+        },
+        {
+          "id": "catwalk:8:4",
+          "hit": "catwalk:8:4"
+        },
+        {
+          "id": "ground:0:5",
+          "hit": "ground:0:5"
+        },
+        {
+          "id": "ground:1:5",
+          "hit": "ground:1:5"
+        },
+        {
+          "id": "ground:3:5",
+          "hit": "ground:3:5"
+        },
+        {
+          "id": "ground:4:5",
+          "hit": "ground:4:5"
+        },
+        {
+          "id": "ground:5:5",
+          "hit": "ground:5:5"
+        },
+        {
+          "id": "ground:6:5",
+          "hit": "ground:6:5"
+        },
+        {
+          "id": "ground:7:5",
+          "hit": "ground:7:5"
+        },
+        {
+          "id": "ground:8:5",
+          "hit": "ground:8:5"
+        },
+        {
+          "id": "ground:9:5",
+          "hit": "ground:9:5"
+        },
+        {
+          "id": "stairs:2:5",
+          "hit": null
+        },
+        {
+          "id": "catwalk:8:5",
+          "hit": "catwalk:8:5"
+        },
+        {
+          "id": "ground:0:6",
+          "hit": "ground:0:6"
+        },
+        {
+          "id": "ground:1:6",
+          "hit": "ground:1:6"
+        },
+        {
+          "id": "ground:2:6",
+          "hit": "ground:2:6"
+        },
+        {
+          "id": "ground:3:6",
+          "hit": "ground:3:6"
+        },
+        {
+          "id": "ground:4:6",
+          "hit": "ground:4:6"
+        },
+        {
+          "id": "ground:5:6",
+          "hit": "ground:5:6"
+        },
+        {
+          "id": "ground:6:6",
+          "hit": "ground:6:6"
+        },
+        {
+          "id": "ground:7:6",
+          "hit": "ground:7:6"
+        },
+        {
+          "id": "ground:8:6",
+          "hit": "ground:8:6"
+        },
+        {
+          "id": "ground:9:6",
+          "hit": "ground:9:6"
+        }
+      ]
+    },
+    {
+      "map": "cyber_catwalks",
+      "cutLevel": 0,
+      "surfaces": 80,
+      "visibleTopSurfaces": 68,
+      "faces": 160,
+      "actorCount": 1,
+      "guardRails": 0,
+      "overlaysCoverEveryTopSurface": true,
+      "visibleVerticesFinite": true,
+      "cutHidesUpperDecks": true,
+      "centerPicking": [
+        {
+          "id": "ground:0:0",
+          "hit": "ground:0:0"
+        },
+        {
+          "id": "ground:1:0",
+          "hit": "ground:1:0"
+        },
+        {
+          "id": "ground:2:0",
+          "hit": "ground:2:0"
+        },
+        {
+          "id": "ground:3:0",
+          "hit": "ground:3:0"
+        },
+        {
+          "id": "ground:4:0",
+          "hit": "ground:4:0"
+        },
+        {
+          "id": "ground:5:0",
+          "hit": "ground:5:0"
+        },
+        {
+          "id": "ground:6:0",
+          "hit": "ground:6:0"
+        },
+        {
+          "id": "ground:7:0",
+          "hit": "ground:7:0"
+        },
+        {
+          "id": "ground:8:0",
+          "hit": "ground:8:0"
+        },
+        {
+          "id": "ground:9:0",
+          "hit": "ground:9:0"
+        },
+        {
+          "id": "ground:0:1",
+          "hit": "ground:0:1"
+        },
+        {
+          "id": "ground:1:1",
+          "hit": "ground:1:1"
+        },
+        {
+          "id": "ground:2:1",
+          "hit": "ground:2:1"
+        },
+        {
+          "id": "ground:3:1",
+          "hit": "ground:3:1"
+        },
+        {
+          "id": "ground:4:1",
+          "hit": "ground:4:1"
+        },
+        {
+          "id": "ground:5:1",
+          "hit": "ground:5:1"
+        },
+        {
+          "id": "ground:6:1",
+          "hit": "ground:6:1"
+        },
+        {
+          "id": "ground:7:1",
+          "hit": "ground:7:1"
+        },
+        {
+          "id": "ground:8:1",
+          "hit": "ground:8:1"
+        },
+        {
+          "id": "ground:9:1",
+          "hit": "ground:9:1"
+        },
+        {
+          "id": "ground:0:2",
+          "hit": "ground:0:2"
+        },
+        {
+          "id": "ground:1:2",
+          "hit": "ground:1:2"
+        },
+        {
+          "id": "ground:2:2",
+          "hit": "ground:2:2"
+        },
+        {
+          "id": "ground:3:2",
+          "hit": "ground:3:2"
+        },
+        {
+          "id": "ground:4:2",
+          "hit": "ground:4:2"
+        },
+        {
+          "id": "ground:5:2",
+          "hit": "ground:5:2"
+        },
+        {
+          "id": "ground:6:2",
+          "hit": "ground:6:2"
+        },
+        {
+          "id": "ground:7:2",
+          "hit": "ground:7:2"
+        },
+        {
+          "id": "ground:8:2",
+          "hit": "ground:8:2"
+        },
+        {
+          "id": "ground:9:2",
+          "hit": "ground:9:2"
+        },
+        {
+          "id": "ground:0:3",
+          "hit": "ground:0:3"
+        },
+        {
+          "id": "ground:1:3",
+          "hit": "ground:1:3"
+        },
+        {
+          "id": "ground:3:3",
+          "hit": "ground:3:3"
+        },
+        {
+          "id": "ground:4:3",
+          "hit": "ground:4:3"
+        },
+        {
+          "id": "ground:5:3",
+          "hit": "ground:5:3"
+        },
+        {
+          "id": "ground:6:3",
+          "hit": "ground:6:3"
+        },
+        {
+          "id": "ground:7:3",
+          "hit": "ground:7:3"
+        },
+        {
+          "id": "ground:8:3",
+          "hit": "ground:8:3"
+        },
+        {
+          "id": "ground:9:3",
+          "hit": "ground:9:3"
+        },
+        {
+          "id": "ground:0:4",
+          "hit": "ground:0:4"
+        },
+        {
+          "id": "ground:1:4",
+          "hit": "ground:1:4"
+        },
+        {
+          "id": "ground:3:4",
+          "hit": "ground:3:4"
+        },
+        {
+          "id": "ground:4:4",
+          "hit": "ground:4:4"
+        },
+        {
+          "id": "ground:5:4",
+          "hit": "ground:5:4"
+        },
+        {
+          "id": "ground:6:4",
+          "hit": "ground:6:4"
+        },
+        {
+          "id": "ground:7:4",
+          "hit": "ground:7:4"
+        },
+        {
+          "id": "ground:8:4",
+          "hit": "ground:8:4"
+        },
+        {
+          "id": "ground:9:4",
+          "hit": "ground:9:4"
+        },
+        {
+          "id": "ground:0:5",
+          "hit": "ground:0:5"
+        },
+        {
+          "id": "ground:1:5",
+          "hit": "ground:1:5"
+        },
+        {
+          "id": "ground:3:5",
+          "hit": "ground:3:5"
+        },
+        {
+          "id": "ground:4:5",
+          "hit": "ground:4:5"
+        },
+        {
+          "id": "ground:5:5",
+          "hit": "ground:5:5"
+        },
+        {
+          "id": "ground:6:5",
+          "hit": "ground:6:5"
+        },
+        {
+          "id": "ground:7:5",
+          "hit": "ground:7:5"
+        },
+        {
+          "id": "ground:8:5",
+          "hit": "ground:8:5"
+        },
+        {
+          "id": "ground:9:5",
+          "hit": "ground:9:5"
+        },
+        {
+          "id": "stairs:2:5",
+          "hit": null
+        },
+        {
+          "id": "ground:0:6",
+          "hit": "ground:0:6"
+        },
+        {
+          "id": "ground:1:6",
+          "hit": "ground:1:6"
+        },
+        {
+          "id": "ground:2:6",
+          "hit": "ground:2:6"
+        },
+        {
+          "id": "ground:3:6",
+          "hit": "ground:3:6"
+        },
+        {
+          "id": "ground:4:6",
+          "hit": "ground:4:6"
+        },
+        {
+          "id": "ground:5:6",
+          "hit": "ground:5:6"
+        },
+        {
+          "id": "ground:6:6",
+          "hit": "ground:6:6"
+        },
+        {
+          "id": "ground:7:6",
+          "hit": "ground:7:6"
+        },
+        {
+          "id": "ground:8:6",
+          "hit": "ground:8:6"
+        },
+        {
+          "id": "ground:9:6",
+          "hit": "ground:9:6"
+        }
+      ]
+    }
+  ],
+  "overlayPixelCheck": {
+    "top": [
+      255,
+      0,
+      255,
+      255
+    ],
+    "outside": [
+      0,
+      0,
+      0,
+      255
+    ],
+    "wall": [
+      22,
+      44,
+      54,
+      255
+    ]
+  }
+}

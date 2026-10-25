@@ -190,7 +190,7 @@ test('Wave6 controlled contact keeps miss trails while previous native visual fa
     const actor = heroes.find(candidate => candidate.id === asset.heroId); if (!actor) continue;
     const source = resolveMeleeSuper(actor), base = { actor: { ...actor, x: 300, y: 350 }, profile: source,
       action: { duration: source.duration, hitAt: source.hitAt, elapsed: 0.55, facing: 1 }, target: { x: 400, y: 350 } };
-    const original = getVisual(base); if (!original || ['native-wave6', 'native-wave7', 'native-wave8', 'native-wave9', 'native-wave10', 'native-wave11'].includes(original.family)) continue;
+    const original = getVisual(base); if (!original || ['native-wave6', 'native-wave7', 'native-wave8', 'native-wave9', 'native-wave10', 'native-wave11', 'native-wave12', 'native-wave13', 'native-wave14'].includes(original.family)) continue;
     assert.deepEqual(getVisual({ ...base, contactVisual: { confirmed: false } }), original);
     previousFamilies++;
   }

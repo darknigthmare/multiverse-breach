@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "generatedAt": "2026-10-23T21:14:18.202751+00:00",
+  "heroId": "isaac",
+  "source1to1Verified": false,
+  "scope": "Native artwork and registry integrity; browser behavior has its own evidence.",
+  "result": {
+    "passed": true,
+    "heroId": "isaac",
+    "atlases": 6,
+    "states": 45,
+    "nativePoses": 180,
+    "distinctNativeRgbaFrames": 180,
+    "sourceWideCalibrations": 9,
+    "palms": 12,
+    "wrists": 12,
+    "contacts": 11,
+    "historicalManifestsPreserved": 12,
+    "actualToolAttempts": 10,
+    "successfulNativeCalls": 10,
+    "observedNativePoses": 237,
+    "discardedNativePoses": 57,
+    "canonical1to1Verified": false,
+    "proofs": [
+      {
+        "atlas": "isaac-motion-a",
+        "states": 8,
+        "nativePoses": 32,
+        "sha256": "60027a1aae8b89f035d1db353902935dadc63d7c706c3fc40492c467988dbbb5"
+      },
+      {
+        "atlas": "isaac-motion-b",
+        "states": 8,
+        "nativePoses": 32,
+        "sha256": "ea5d41af7f6abd2a6bced29a7330c6274f06629edd609abb6dd8dc3ba24f82c5"
+      },
+      {
+        "atlas": "isaac-defense",
+        "states": 8,
+        "nativePoses": 32,
+        "sha256": "66a687b0338e79a72c12843af59a867ae889ef742846652bc52dbbd5ded29d7d"
+      },
+      {
+        "atlas": "isaac-combat-a",
+        "states": 8,
+        "nativePoses": 32,
+        "sha256": "1a45b651f8fc0f1eac2a760f68d011fcc44f6ea472d9d02aae6e9816ded4afa5"
+      },
+      {
+        "atlas": "isaac-combat-b",
+        "states": 8,
+        "nativePoses": 32,
+        "sha256": "b58672e372a0aad0ccdf5e5dc7580876602732d2a547ea66e937c3d28a557612"
+      },
+      {
+        "atlas": "isaac-ledge",
+        "states": 5,
+        "nativePoses": 20,
+        "sha256": "0f11785fed4791d5cfbaa9515d6b3583264bd21a565878fc76cb0e561821ec6b"
+      }
+    ]
+  },
+  "evidenceFiles": [
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/actual-tool-calls.json",
+      "sha256": "1abc5777220412a9ab370417c6c77dcafeac0f8faf01b88683e0b46b39f6163b",
+      "bytes": 63891
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/packing-plan.json",
+      "sha256": "7a40e43763e696ed2506a609618eb319a485f9d339875a8c10c57982544df148",
+      "bytes": 22073
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/source-row-review.json",
+      "sha256": "7e6349d04e7eda63372faa7c7a0a65d71409ab4cdd920351517e285329b37bdf",
+      "bytes": 29596
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/native-hand-points.json",
+      "sha256": "654247a86c74dade6b22c6cf5524dd34e568b88a9be30ba07d7e4b3189f83acc",
+      "bytes": 956
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/hand-measurements.json",
+      "sha256": "2ef5c25f4548af8e7c7b7837325e05fc710fa156dc260d287e499e916bb5ccbe",
+      "bytes": 13436
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/verify-all-result.json",
+      "sha256": "548b20fbdca3dc85addb437099af526a9f888d53017d9ce0a6ecf58a66e8c66f",
+      "bytes": 1454
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/build-native-isaac-atlases.mjs",
+      "sha256": "06e9bc2a57ee98bfc8b718b221969f464ee93ae928407059c83e3eeb2e789e0c",
+      "bytes": 17330
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/normalize-isaac-atlases.mjs",
+      "sha256": "ec351230a0a95631eafaf6d1a8bb9127d510f8149698ae93a45c29d273176383",
+      "bytes": 337
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/measure-isaac-native-hands.mjs",
+      "sha256": "83523c1650a64bc3f5b8b9a957a5608c56620b51677ff52ec9487baa4dc15c17",
+      "bytes": 3394
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/verify-isaac-atlases.mjs",
+      "sha256": "4354cd85c139479b6b9e938478c8803009ebebdeae4cd1ddd26d340ee73c6d52",
+      "bytes": 6957
+    }
+  ],
+  "browserEvidence": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-evidence.json"
+}

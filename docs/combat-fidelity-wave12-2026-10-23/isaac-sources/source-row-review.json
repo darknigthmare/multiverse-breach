@@ -1,0 +1,923 @@
+{
+  "reviewedAt": "2026-10-23T21:14:18.166920+00:00",
+  "reviewType": "Agent visual review of generated sources and packed atlases; not independent canonical certification.",
+  "heroId": "isaac",
+  "sourceWork": "Dead Space (2008), original engineering RIG",
+  "source1to1Verified": false,
+  "identityIntent": {
+    "complete": true,
+    "outfit": "Original2008 bronze/brown ribbed level3 engineering RIG, enclosed helmet with3horizontalcyanvisorbars, heavy gloves/boots, cyan spine on the back only. Adult engineer proportions.",
+    "weapons": "Compact industrial Plasma Cutter with physical short cutting head/prongs, no conventional rifle; motion/ledge keeps it secured at hip. Physical contact rows do not emit plasma; special frame2 has compact muzzle flash from actual tool tip; guard is physical.",
+    "limitations": [
+      "Generated adapted crossover choreography, not official extracted frames or verified source1:1.",
+      "Runtime facing mirrors native artwork, including suit/equipment asymmetry.",
+      "Source-wide calibration preserves real crouch/air/hang shortening; no per-pose body warp.",
+      "Generic melee charge actions are adapted physical readiness/contact states, not a canonical chargeable plasma power.",
+      "Leading glove contact points are actual visible anatomy; labeling does not certify hidden anatomical handedness."
+    ]
+  },
+  "rows": [
+    {
+      "state": "idle",
+      "atlas": "isaac-motion-a",
+      "atlasRow": 0,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.native.png",
+      "sourceRow": 0,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Quatre répartitions de poids et positions de bras, bottes au sol ; cutter à la hanche.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "walk",
+      "atlas": "isaac-motion-a",
+      "atlasRow": 1,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.native.png",
+      "sourceRow": 1,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Alternance des jambes, changement de genou et bras entre les quatre pas.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "run",
+      "atlas": "isaac-motion-a",
+      "atlasRow": 2,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.native.png",
+      "sourceRow": 2,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Foulées distinctes, articulation bras/genoux et vue dorsale ponctuelle.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "turn",
+      "atlas": "isaac-motion-a",
+      "atlasRow": 3,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.native.png",
+      "sourceRow": 3,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Départ à gauche, deux orientations dorsales, retour à droite ; bande cyan dorsale visible sur le dos.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "jumpStart",
+      "atlas": "isaac-motion-a",
+      "atlasRow": 4,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.native.png",
+      "sourceRow": 4,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Préparation, flexion, poussée puis décollage ; flexion non agrandie.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "jumpRise",
+      "atlas": "isaac-motion-a",
+      "atlasRow": 5,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.native.png",
+      "sourceRow": 5,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Quatre positions aériennes avec genoux et bras articulés.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "jumpApex",
+      "atlas": "isaac-motion-a",
+      "atlasRow": 6,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.native.png",
+      "sourceRow": 6,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Équilibre aérien, repli puis ouvertures des membres au sommet.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "fall",
+      "atlas": "isaac-motion-a",
+      "atlasRow": 7,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.native.png",
+      "sourceRow": 7,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Jambes et bottes se préparent à la réception, sans sol ajouté.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "fastFall",
+      "atlas": "isaac-motion-b",
+      "atlasRow": 0,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-b.native.png",
+      "sourceRow": 0,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Corps replié puis extension descendante, anatomie de même échelle source.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "land",
+      "atlas": "isaac-motion-b",
+      "atlasRow": 1,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-b.native.png",
+      "sourceRow": 1,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Mains et genoux bas, compression puis remontée vers la posture debout.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "crouchEnter",
+      "atlas": "isaac-motion-b",
+      "atlasRow": 2,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-b.native.png",
+      "sourceRow": 2,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Hanches progressivement abaissées, cutter compact tenu près du corps.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "crouchIdle",
+      "atlas": "isaac-motion-b",
+      "atlasRow": 3,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-readiness.native.png",
+      "sourceRow": 2,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Quatre appuis accroupis réellement dessinés dans la source corrective.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "crouchExit",
+      "atlas": "isaac-motion-b",
+      "atlasRow": 4,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-b.native.png",
+      "sourceRow": 3,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Appui bas, genou qui se redresse, hanches qui remontent puis position debout.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "crouchCharge",
+      "atlas": "isaac-motion-b",
+      "atlasRow": 5,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-b.native.png",
+      "sourceRow": 4,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Transfert du poids vers une préparation physique basse, sans émission.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "taunt1",
+      "atlas": "isaac-motion-b",
+      "atlasRow": 6,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-b.native.png",
+      "sourceRow": 5,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Regard vers le poignet, geste vers le casque, haussement mesuré puis retour neutre.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "hitStun",
+      "atlas": "isaac-motion-b",
+      "atlasRow": 7,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-b.native.png",
+      "sourceRow": 6,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Reculs du torse et appuis de stabilisation, sans blessure.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "shieldEnter",
+      "atlas": "isaac-defense",
+      "atlasRow": 0,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.native.png",
+      "sourceRow": 0,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Avant-bras relevés et corps qui se referme ; protection physique.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "shieldHold",
+      "atlas": "isaac-defense",
+      "atlasRow": 1,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.native.png",
+      "sourceRow": 1,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Gants protecteurs proches du casque, jambes et torse changent de poids.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "shieldHit",
+      "atlas": "isaac-defense",
+      "atlasRow": 2,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.native.png",
+      "sourceRow": 2,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Reculs et jambe levée puis retour à une garde stable.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "perfectShield",
+      "atlas": "isaac-defense",
+      "atlasRow": 3,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.native.png",
+      "sourceRow": 3,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Corps bas et gant présenté puis retour protecteur ; aucun bouclier magique.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "shieldBreak",
+      "atlas": "isaac-defense",
+      "atlasRow": 4,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.native.png",
+      "sourceRow": 4,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Déséquilibre arrière, réception assise basse puis récupération partielle.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "shieldExit",
+      "atlas": "isaac-defense",
+      "atlasRow": 5,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.native.png",
+      "sourceRow": 5,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Les avant-bras redescendent, le personnage retrouve une posture debout.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "dead",
+      "atlas": "isaac-defense",
+      "atlasRow": 6,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.native.png",
+      "sourceRow": 6,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Agenouillement puis corps couché progressivement ; aucun dommage graphique.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "defeat",
+      "atlas": "isaac-defense",
+      "atlasRow": 7,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.native.png",
+      "sourceRow": 7,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Quatre positions basses d’épuisement avec cutter posé contre le corps.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "attackLight1",
+      "atlas": "isaac-combat-a",
+      "atlasRow": 0,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-a.native.png",
+      "sourceRow": 0,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Préparation de l’outil, armé haut, contact horizontal puis récupération réelle.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "attackLight2",
+      "atlas": "isaac-combat-a",
+      "atlasRow": 1,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-a.native.png",
+      "sourceRow": 1,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Changement de prise et d’appui, extension de contact puis relâchement.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "attackLight3",
+      "atlas": "isaac-combat-a",
+      "atlasRow": 2,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-a.native.png",
+      "sourceRow": 2,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Préparation puis coup de botte, jambe repliée ensuite ; cutter compact.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "crouchLight",
+      "atlas": "isaac-combat-a",
+      "atlasRow": 3,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-a.native.png",
+      "sourceRow": 3,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Outil tenu bas, frappe de proximité puis stabilisation basse.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "chargeStart",
+      "atlas": "isaac-combat-a",
+      "atlasRow": 4,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-a.native.png",
+      "sourceRow": 4,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Genoux fléchis, prise du cutter resserrée et préparation physique du haut du corps.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "chargeLoop",
+      "atlas": "isaac-combat-a",
+      "atlasRow": 5,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-readiness.native.png",
+      "sourceRow": 1,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Quatre transferts de poids de préparation issus de la corrective, sans plasma.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "chargeRelease",
+      "atlas": "isaac-combat-a",
+      "atlasRow": 6,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-a.native.png",
+      "sourceRow": 5,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Armé haut, abaissement physique de l’outil, extension puis récupération sans éclat.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "chargeRecovery",
+      "atlas": "isaac-combat-a",
+      "atlasRow": 7,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-a.native.png",
+      "sourceRow": 6,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Recul et desserrage de l’appui, retour progressif à la posture debout.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "attackRecovery",
+      "atlas": "isaac-combat-b",
+      "atlasRow": 0,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-a.native.png",
+      "sourceRow": 0,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Quatre dessins de sortie de frappe et retour stable sans émission.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "special",
+      "atlas": "isaac-combat-b",
+      "atlasRow": 1,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-a.native.png",
+      "sourceRow": 1,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Préparation du cutter, tir compact depuis la tête de coupe puis récupération sans flash.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "aerialNeutral",
+      "atlas": "isaac-combat-b",
+      "atlasRow": 2,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-a.native.png",
+      "sourceRow": 2,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Équilibre aérien et changements de membres avec cutter près du corps.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "aerialForward",
+      "atlas": "isaac-combat-b",
+      "atlasRow": 3,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-a.native.png",
+      "sourceRow": 3,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Genou et jambe changent d’extension vers l’avant ; outil compact.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "aerialDown",
+      "atlas": "isaac-combat-b",
+      "atlasRow": 4,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-b.native.png",
+      "sourceRow": 0,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Tuck puis botte dirigée vers le bas et repli avant récupération.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "intro",
+      "atlas": "isaac-combat-b",
+      "atlasRow": 5,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-b.native.png",
+      "sourceRow": 1,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Entrée et préparation mesurée de l’ingénieur, fin debout utilisée pour la calibration.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "victory",
+      "atlas": "isaac-combat-b",
+      "atlasRow": 6,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-b.native.png",
+      "sourceRow": 2,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Gestes sobres de l’ingénieur avec outil maintenu, sans nouveau pouvoir.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "ledgeAttack",
+      "atlas": "isaac-combat-b",
+      "atlasRow": 7,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-b.native.png",
+      "sourceRow": 3,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Appui bas et sortie physique vers la plate-forme ; aucune blessure.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "ledgeCatch",
+      "atlas": "isaac-ledge",
+      "atlasRow": 0,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.native.png",
+      "sourceRow": 0,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Approche du gant puis prise haute ; première pose volontairement sans attachement de contact.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "ledgeHang",
+      "atlas": "isaac-ledge",
+      "atlasRow": 1,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.native.png",
+      "sourceRow": 1,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Quatre variations réellement dessinées de suspension à un gant haut ; outil à la hanche.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "ledgeClimb",
+      "atlas": "isaac-ledge",
+      "atlasRow": 2,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-climb.native.png",
+      "sourceRow": 0,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Corrective ascendante : suspension, traction, genou qui monte et corps au-dessus du bord.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "ledgeDrop",
+      "atlas": "isaac-ledge",
+      "atlasRow": 3,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.native.png",
+      "sourceRow": 3,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Main qui se libère puis corps qui descend avec changements des bras et jambes.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    },
+    {
+      "state": "ledgeJump",
+      "atlas": "isaac-ledge",
+      "atlasRow": 4,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.native.png",
+      "sourceRow": 4,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "nativeDrawings": 4,
+      "visualObservation": "Impulsion et ouverture aérienne puis réception préparée, quatre configurations distinctes.",
+      "technicalNativePixelEvidence": "verify-all-result.json",
+      "source1to1Verified": false
+    }
+  ],
+  "sourceWideCalibrationReview": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.native.png",
+      "sourceSha256": "b76aaed86ec720871b5f95b2c969f69f867aaf4a54f680fa6ba6f24233af8fdd",
+      "uprightBodyRoi": {
+        "x": 119,
+        "y": 12,
+        "width": 92,
+        "height": 192
+      },
+      "referenceRow": 0,
+      "referenceColumn": 0,
+      "state": "idle",
+      "raisedHandsNotUsedAsBodyHeight": true,
+      "independentCanonicalAnatomyReview": false
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-b.native.png",
+      "sourceSha256": "09a9c15cb85c62c7357a42ac8d4cb21304475f70c12740bb97597658061d584b",
+      "uprightBodyRoi": {
+        "x": 141,
+        "y": 1074,
+        "width": 123,
+        "height": 222
+      },
+      "referenceRow": 5,
+      "referenceColumn": 0,
+      "state": "taunt1",
+      "raisedHandsNotUsedAsBodyHeight": true,
+      "independentCanonicalAnatomyReview": false
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.native.png",
+      "sourceSha256": "45b440c13bc5ac08c8fab0faee88caf37f3015c39ef9a07d834305ad7eb212e4",
+      "uprightBodyRoi": {
+        "x": 837,
+        "y": 1010,
+        "width": 109,
+        "height": 200
+      },
+      "referenceRow": 5,
+      "referenceColumn": 3,
+      "state": "shieldExit",
+      "raisedHandsNotUsedAsBodyHeight": true,
+      "independentCanonicalAnatomyReview": false
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-a.native.png",
+      "sourceSha256": "91b99a83bf50a621cf6f8bef11e971b3a4e796ec2a562d0cf4df76f4b8c0f75f",
+      "uprightBodyRoi": {
+        "x": 815,
+        "y": 1305,
+        "width": 130,
+        "height": 208
+      },
+      "referenceRow": 6,
+      "referenceColumn": 3,
+      "state": "chargeRecovery",
+      "raisedHandsNotUsedAsBodyHeight": true,
+      "independentCanonicalAnatomyReview": false
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.native.png",
+      "sourceSha256": "d98c9f15c29d62218c138de4ec0b19243fea31fbefae65ca585987e6f83ae956",
+      "uprightBodyRoi": {
+        "x": 145,
+        "y": 974,
+        "width": 87,
+        "height": 180
+      },
+      "referenceRow": 5,
+      "referenceColumn": 0,
+      "state": "uprightCalibration",
+      "raisedHandsNotUsedAsBodyHeight": true,
+      "independentCanonicalAnatomyReview": false
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-readiness.native.png",
+      "sourceSha256": "2d22af84d085dcbd1094324ee06ccdb7ee18c3eda072555508c87171505b0890",
+      "uprightBodyRoi": {
+        "x": 101,
+        "y": 40,
+        "width": 156,
+        "height": 323
+      },
+      "referenceRow": 0,
+      "referenceColumn": 0,
+      "state": "uprightCalibration",
+      "raisedHandsNotUsedAsBodyHeight": true,
+      "independentCanonicalAnatomyReview": false
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-a.native.png",
+      "sourceSha256": "1efa49ed47016f85eea0da4c1e9b06a9216b86062d85db2ac6d088efcb7b017f",
+      "uprightBodyRoi": {
+        "x": 986,
+        "y": 56,
+        "width": 165,
+        "height": 289
+      },
+      "referenceRow": 0,
+      "referenceColumn": 3,
+      "state": "attackRecovery",
+      "raisedHandsNotUsedAsBodyHeight": true,
+      "independentCanonicalAnatomyReview": false
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-b.native.png",
+      "sourceSha256": "506162393623ce2ff79bea3dd8b78c599b27d020d879eff21c4ce052c2c3f6e9",
+      "uprightBodyRoi": {
+        "x": 1002,
+        "y": 354,
+        "width": 171,
+        "height": 300
+      },
+      "referenceRow": 1,
+      "referenceColumn": 3,
+      "state": "intro",
+      "raisedHandsNotUsedAsBodyHeight": true,
+      "independentCanonicalAnatomyReview": false
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-climb.native.png",
+      "sourceSha256": "be8ba5db4b24843aa61d4c90f684b3a58531cd5820ec98678adb5c9d1d15c639",
+      "uprightBodyRoi": {
+        "x": 108,
+        "y": 579,
+        "width": 201,
+        "height": 405
+      },
+      "referenceRow": 1,
+      "referenceColumn": 0,
+      "state": "uprightCalibration",
+      "raisedHandsNotUsedAsBodyHeight": true,
+      "independentCanonicalAnatomyReview": false
+    }
+  ]
+}

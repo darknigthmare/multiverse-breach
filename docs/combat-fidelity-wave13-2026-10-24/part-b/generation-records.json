@@ -1,0 +1,3473 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "part": "B",
+  "selectedHeroIds": [
+    "meryl_mgs",
+    "liquid_snake",
+    "the_boss_mgs",
+    "ocelot_mgs",
+    "gray_fox",
+    "big_boss",
+    "luke",
+    "vader",
+    "ahsoka_adult",
+    "aayla_secura",
+    "darth_revan",
+    "obi_wan",
+    "yoda",
+    "darth_maul",
+    "joel_tlou",
+    "tess_tlou",
+    "tommy_tlou",
+    "dina_tlou2",
+    "abby_tlou2",
+    "hayden"
+  ],
+  "records": [
+    {
+      "heroId": "meryl_mgs",
+      "name": "Meryl Silverburgh",
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid (1998), Meryl Silverburgh at Shadow Moses",
+      "sourceReference": "https://www.konami.com/mg/mgs/",
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/meryl-mgs.png",
+      "referenceAssetSha256": "53219091a9c8ab5da895372d8994498a7ec1d82962e4385d875b9b847ebdc1ef",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/meryl_mgs.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Tir du Desert Eagle de Meryl",
+      "simpleEffect": "damage",
+      "specialActionName": "Tir ajusté du Desert Eagle de Meryl",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Short red hair and burgundy headband, olive sleeveless top, grey cargo trousers, black boots, physical Desert Eagle handgun.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/meryl_mgs-native48.png",
+          "sha256": "1953030376941147e841f69b0f0e1cf5aadadf2b5a347a27b50e7429f32be567",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/meryl_mgs-prompt.txt",
+          "promptSha256": "a73f8b3fa34b9863ddcf28b33a428856ce16f8dc08419dea76dff83b06531fd8",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/meryl_mgs-tool-result.json",
+          "toolResultSha256": "e1d28b6fbc2fea6ac5910f811d55d0d9cdf2306caab28be6204dd809f2d2442e",
+          "generatedPath": "/workspace/generated_images/exec-f4f85425-0dc3-49ed-87bc-c32ce2bd23fb.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 161,
+            "bodyBounds": {
+              "id": 5,
+              "pixels": 6382,
+              "left": 70,
+              "right": 150,
+              "top": 9,
+              "bottom": 169,
+              "width": 81,
+              "height": 161,
+              "centerX": 104.43450329050454,
+              "centerY": 89.94312127859605
+            },
+            "bodyRoi": {
+              "left": 70,
+              "top": 9,
+              "width": 81,
+              "height": 161
+            }
+          },
+          "sourceCanvasDimensions": [
+            1536,
+            1024
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "liquid_snake",
+      "name": "Liquid Snake",
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid (1998), Liquid Snake at Shadow Moses",
+      "sourceReference": "https://www.konami.com/mg/mgs/",
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/liquid-snake.png",
+      "referenceAssetSha256": "d3836ca089a9127719e91b23286966ec98174fb8115ea93fd6528c8cb927fd37",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/liquid_snake.png",
+      "targetBodyHeight": 198,
+      "simpleActionName": "Coup rapproché de Liquid",
+      "simpleEffect": "damage",
+      "specialActionName": "Enchaînement rapproché de Liquid",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult blond man, long open tan military coat, black combat trousers, dark boots and gloves. Bare-chest source costume stays nonsexual; unarmed physical strikes, no REX beam.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/liquid_snake-native48.png",
+          "sha256": "9e1a3dec3fab9020f22b43802566f9467c56ea25e142c65ad9e4f734ad7e3327",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/liquid_snake-prompt.txt",
+          "promptSha256": "ff86942882ce4fea2b7d7465440b4ccd59eb6721e1627de06c50476f032b9079",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/liquid_snake-tool-result.json",
+          "toolResultSha256": "90b79a7553ed6c5777fe2b4ae574bc527fa210260501dccb0c73d33f215ca2ae",
+          "generatedPath": "/workspace/generated_images/exec-ba5cfcff-de7b-44e8-b9df-18681aee413d.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 166,
+            "bodyBounds": {
+              "id": 5,
+              "pixels": 10454,
+              "left": 21,
+              "right": 145,
+              "top": 15,
+              "bottom": 180,
+              "width": 125,
+              "height": 166,
+              "centerX": 87.45025827434475,
+              "centerY": 104.13573751674001
+            },
+            "bodyRoi": {
+              "left": 21,
+              "top": 15,
+              "width": 125,
+              "height": 166
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "the_boss_mgs",
+      "name": "The Boss",
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid 3: Snake Eater (2004), The Boss during Operation Snake Eater (1964)",
+      "sourceReference": "https://www.konami.com/mg/mgs/",
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/the-boss-mgs.png",
+      "referenceAssetSha256": "73ae3d993bbf7187fbdf1a78215a69c35d57126d74c719c0aeeeb4603f4c0084",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/the_boss_mgs.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Coup de CQC de The Boss",
+      "simpleEffect": "damage",
+      "specialActionName": "Prise de CQC de The Boss",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult blonde woman in white-grey sneaking suit with front fastened, dark gloves and boots. Physical close-quarters grapple, no Volgin electricity or later-era equipment.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/the_boss_mgs-native48.png",
+          "sha256": "3e077d5e9df08cfd401d4a11b37ddcb57846acb8a175a4c38794df4cb3a7b5e4",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/the_boss_mgs-prompt.txt",
+          "promptSha256": "54dc7ed8894426a4705fd62bb53b37b8c0bd8c390bf29e1a91ed29feef44d88c",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/the_boss_mgs-tool-result.json",
+          "toolResultSha256": "7fdcaac57d6b2d6e34c999052d7fe1ce50279658edfea41394184a4c10c8ca69",
+          "generatedPath": "/workspace/generated_images/exec-056122cc-e7e1-4201-8975-046d0f205041.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 170,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 6763,
+              "left": 56,
+              "right": 127,
+              "top": 4,
+              "bottom": 173,
+              "width": 72,
+              "height": 170,
+              "centerX": 91.78219724974124,
+              "centerY": 88.15880526393612
+            },
+            "bodyRoi": {
+              "left": 56,
+              "top": 4,
+              "width": 72,
+              "height": 170
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "ocelot_mgs",
+      "name": "Revolver Ocelot",
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid (1998), Revolver Ocelot before losing his hand",
+      "sourceReference": "https://www.konami.com/mg/mgs/",
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/ocelot-mgs.png",
+      "referenceAssetSha256": "6e0f3572abb60a27d4eba5c5d3e9a50101bdaf34e52974db3b26eff7a03611aa",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/ocelot_mgs.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Tir du revolver d’Ocelot",
+      "simpleEffect": "damage",
+      "specialActionName": "Tir ajusté du revolver d’Ocelot",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult older man with long grey hair and moustache, brown duster, red scarf, black gloves and intact hands; Colt Single Action Army revolver.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ocelot_mgs-native48.png",
+          "sha256": "da1e8ae23ce4ee890979ac6f03db803957aabf3d3bb80f7f6de02304664164ca",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ocelot_mgs-prompt.txt",
+          "promptSha256": "b0ced52cb48adbbe622c09308f0fff109b5c5f6015f832cad499df8aabf3ee41",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ocelot_mgs-tool-result.json",
+          "toolResultSha256": "7199d1cba5d0cd7151f6f87cddec41f898cdd4183835247436a5ab6d2d0dd617",
+          "generatedPath": "/workspace/generated_images/exec-85498254-f76c-43e7-bbbb-6f5408c5f319.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 175,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 10245,
+              "left": 39,
+              "right": 137,
+              "top": 2,
+              "bottom": 176,
+              "width": 99,
+              "height": 175,
+              "centerX": 86.38857979502197,
+              "centerY": 95.20858955588092
+            },
+            "bodyRoi": {
+              "left": 39,
+              "top": 2,
+              "width": 99,
+              "height": 175
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              6,
+              5,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [
+        "Super native aim/fire/recovery cells are ordered0,2,1,3 so the existing firing drawing is third. Every native drawing is retained once; no generated pose is synthesized."
+      ],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "gray_fox",
+      "name": "Gray Fox",
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid (1998), Gray Fox in the Cyborg Ninja exoskeleton",
+      "sourceReference": "https://www.konami.com/mg/mgs/",
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/gray-fox.png",
+      "referenceAssetSha256": "64842aed0e20bd81ef88a1ca56e0fbc95bded7e783c4f0218e9448e3b8d90482",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/gray_fox.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Taille du katana de Gray Fox",
+      "simpleEffect": "damage",
+      "specialActionName": "Taille du katana de Gray Fox",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Enclosed blue-grey and orange Cyborg Ninja suit with red central eye sensor, physical straight katana. No exposed damaged body or Raiden costume.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/gray_fox-native48.png",
+          "sha256": "494e6511179115a11e9b590cb1dfad300733ea26331a80f5ee099539f6fd2b2f",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/gray_fox-prompt.txt",
+          "promptSha256": "c1b6c4caa4656869732e2310ded1df007441258f28d8ffda4b9c03cd11b17e29",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/gray_fox-tool-result.json",
+          "toolResultSha256": "0e15d97425e8bd4c62154e9f9e95f346375ffcda5099dcbc6a4ed42e8db34b9b",
+          "generatedPath": "/workspace/generated_images/exec-b6a5a987-794d-437c-bed3-0d292c47c5f3.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            9,
+            7
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 44,
+          "excludedDrawings": 4,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 166,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 7580,
+              "left": 44,
+              "right": 117,
+              "top": 13,
+              "bottom": 178,
+              "width": 74,
+              "height": 166,
+              "centerX": 79.39907651715039,
+              "centerY": 94.00527704485488
+            },
+            "bodyRoi": {
+              "left": 44,
+              "top": 13,
+              "width": 74,
+              "height": 166
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/gray_fox-correction4.png",
+          "sha256": "6b2ee38f33568f7c6effebc0ca2938a06bf5a7b4c68ab8a8983249ddc0050b65",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/gray_fox-correction4-prompt.txt",
+          "promptSha256": "86af495cddae259e871c1c944036f65a24d0a6c25637a5513d64c4e1f71749a2",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/gray_fox-correction4-tool-result.json",
+          "toolResultSha256": "e88ba7d1d528776cc67e8bc00706473142f3bfd02b8e6f8ade6cd9d0d2d1b51d",
+          "generatedPath": "/workspace/generated_images/exec-5b63c22e-8fd6-41c3-92e9-6d068c552915.png",
+          "rows": 1,
+          "rowCounts": [
+            4
+          ],
+          "nativeComponentsObserved": 4,
+          "nativeDrawingsObserved": 4,
+          "retainedDrawings": 4,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 475,
+            "bodyBounds": {
+              "id": 3,
+              "pixels": 69500,
+              "left": 51,
+              "right": 461,
+              "top": 162,
+              "bottom": 636,
+              "width": 411,
+              "height": 475,
+              "centerX": 175.55457553956833,
+              "centerY": 407.4905179856115
+            },
+            "bodyRoi": {
+              "left": 51,
+              "top": 162,
+              "width": 411,
+              "height": 475
+            }
+          },
+          "sourceCanvasDimensions": [
+            2172,
+            724
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            1,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              3,
+              4,
+              5,
+              6
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [
+        "Initial48 image has nine run-row figures and three attack figures; retain four actual run poses, exclude the extra runner and three incomplete attack drawings. A new4-pose katana strip supplies all four ordinary attack drawings."
+      ],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "big_boss",
+      "name": "Big Boss",
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid 3: Snake Eater (2004), Naked Snake after acquiring the right-eye patch",
+      "sourceReference": "https://www.konami.com/mg/mgs/",
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/big-boss.png",
+      "referenceAssetSha256": "fefae9ee9543b885299d10c01421c960a06c43ff8f72f7fef7f85b788a0ee546",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/big_boss.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Tir du M1911A1 de Naked Snake",
+      "simpleEffect": "damage",
+      "specialActionName": "Tir du M1911A1 de Naked Snake",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult dark-haired Naked Snake, green bandana, right-eye patch, olive jungle fatigues, combat webbing and boots, physical suppressed M1911A1. No Venom Snake prosthetic or horn.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/big_boss-native48.png",
+          "sha256": "1d116a013b1e60687f3289342ca53064ba0561d985236cae7257e2db772cfc5b",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/big_boss-prompt.txt",
+          "promptSha256": "2142d0ca5110c38b35953cc87837653809cfe4bdd13552d746e3a9515982ac80",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/big_boss-tool-result.json",
+          "toolResultSha256": "6ff6c9fc92bae9512f0cdc65ce7a9b9301bf1b140369c9210f2bd26fd7bbdacd",
+          "generatedPath": "/workspace/generated_images/exec-83ee3772-1618-465c-b1bb-ca133f317f8a.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 36,
+          "excludedDrawings": 12,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 171,
+            "bodyBounds": {
+              "id": 8,
+              "pixels": 11138,
+              "left": 28,
+              "right": 129,
+              "top": 13,
+              "bottom": 183,
+              "width": 102,
+              "height": 171,
+              "centerX": 76.31450888848985,
+              "centerY": 97.30265756868378
+            },
+            "bodyRoi": {
+              "left": 28,
+              "top": 13,
+              "width": 102,
+              "height": 171
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/big_boss-correction12.png",
+          "sha256": "fee7011c54f675d58b7517f065f350d22d0fe68bb996bbda3bd732e41c458026",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/big_boss-correction12-prompt.txt",
+          "promptSha256": "bbd305c78b784ebaee799a8eb862c953571855e4fbb0d86f311b384a70bfcf69",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/big_boss-correction12-tool-result.json",
+          "toolResultSha256": "2a876009ddf503581ca818d542c00505b6d59e8678976480cdb7d295ba4bf5ca",
+          "generatedPath": "/workspace/generated_images/exec-ab099539-dedb-4791-946f-edcaf16fbe92.png",
+          "rows": 3,
+          "rowCounts": [
+            4,
+            4,
+            4
+          ],
+          "nativeComponentsObserved": 12,
+          "nativeDrawingsObserved": 12,
+          "retainedDrawings": 12,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 327,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 36593,
+              "left": 47,
+              "right": 269,
+              "top": 23,
+              "bottom": 349,
+              "width": 223,
+              "height": 327,
+              "centerX": 152.1661793239144,
+              "centerY": 188.56882463859208
+            },
+            "bodyRoi": {
+              "left": 47,
+              "top": 23,
+              "width": 223,
+              "height": 327
+            }
+          },
+          "sourceCanvasDimensions": [
+            1536,
+            1024
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            1,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            1,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [
+        "Original finishing/super/ordinary-shot rows contain an incorrectly placed light in the middle of the suppressor. All twelve drawings in these three rows are excluded. New twelve-pose native source keeps the physical suppressed M1911A1 and shows aiming/recoil without any flash; the muzzle is the real forwardmost suppressor tip. Quiet legacy rows are retained unchanged at the source level."
+      ],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "luke",
+      "name": "Luke Skywalker",
+      "universe": "Star Wars",
+      "sourceWork": "Star Wars: Return of the Jedi (1983), adult Luke Skywalker aboard the second Death Star",
+      "sourceReference": "https://www.starwars.com/databank/luke-skywalker",
+      "referenceAsset": "/sprites/generated/heroes/star-wars/luke.png",
+      "referenceAssetSha256": "e7c5dc6bdf10918c7c5d63c31a27f5c6c799fe04c0aba35160edd55021e3e650",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/luke.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Taille au sabre vert de Luke",
+      "simpleEffect": "damage",
+      "specialActionName": "Enchaînement au sabre vert de Luke",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult Luke with short brown hair, black Jedi outfit, black right glove and green lightsaber. No blue blade, sequel costume or ranged Force lightning.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/luke-native48.png",
+          "sha256": "bd8f94357ccbcb0cd6c8bacffb57cc95bbab03adab85bb3bab21cef6f9b91812",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/luke-prompt.txt",
+          "promptSha256": "3acd4398dda727c862284def473903fc1e6accc59bf1537f8177f0a1bc70ce93",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/luke-tool-result.json",
+          "toolResultSha256": "5a1f53bea893bd3a02b4564ea160f68da6898e5345cf68d78630bbd6d5a2c02e",
+          "generatedPath": "/workspace/generated_images/exec-bf0e3bd3-b928-4347-8f85-cf8fb47560b8.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 160,
+            "bodyBounds": {
+              "id": 5,
+              "pixels": 7339,
+              "left": 49,
+              "right": 128,
+              "top": 18,
+              "bottom": 177,
+              "width": 80,
+              "height": 160,
+              "centerX": 88.22864150429214,
+              "centerY": 98.78062406322387
+            },
+            "bodyRoi": {
+              "left": 49,
+              "top": 18,
+              "width": 80,
+              "height": 160
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "aayla_secura",
+      "name": "Aayla Secura",
+      "universe": "Star Wars",
+      "sourceWork": "Star Wars: Revenge of the Sith (2005), adult Jedi Aayla Secura",
+      "sourceReference": "https://www.starwars.com/databank/aayla-secura",
+      "referenceAsset": "/sprites/generated/heroes/star-wars/aayla-secura.png",
+      "referenceAssetSha256": "cf118c87ddb43d9f69a132389fd8c936ee887676f8da91f8e62814bc8c75003c",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/aayla_secura.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Taille au sabre bleu d’Aayla",
+      "simpleEffect": "damage",
+      "specialActionName": "Taille au sabre bleu d’Aayla",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult blue Twi’lek Jedi with two long blue lekku and brown headwrap, brown Jedi field outfit, blue lightsaber. Source clothing framed nonsexually as ordinary field gear.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/aayla_secura-native48.png",
+          "sha256": "6835db1c6b45c8c87a7739155ee3de09d1d9473ad216dae91cf18a8012b41f1a",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/aayla_secura-prompt.txt",
+          "promptSha256": "e2657e7902ffe78e11c2948d83449ed82b2609568fb2326ec0ba89fde1cc8d57",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/aayla_secura-tool-result.json",
+          "toolResultSha256": "7dfee74efc79f7e2c03636d62ef830f8ffff64708daac89fdea6f775a151283d",
+          "generatedPath": "/workspace/generated_images/exec-8ba9b7e6-70c9-4858-ae67-7258636ece35.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            7,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 47,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 0,
+          "excludedDrawings": 48,
+          "acceptedForDelivery": false,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 165,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 7800,
+              "left": 50,
+              "right": 125,
+              "top": 10,
+              "bottom": 174,
+              "width": 76,
+              "height": 165,
+              "centerX": 87.0298717948718,
+              "centerY": 90.89730769230769
+            },
+            "bodyRoi": {
+              "left": 50,
+              "top": 10,
+              "width": 76,
+              "height": 165
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/aayla_secura-correction48.png",
+          "sha256": "7bf26cfc22934ed63f328923f4f432eed9731306f428fd2482bca31a68a8f64c",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/aayla_secura-correction48-prompt.txt",
+          "promptSha256": "7df9fb5e461315dfde4f23402dd6114a8b67fd696007230e8a29441f4e3e3a83",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/aayla_secura-correction48-tool-result.json",
+          "toolResultSha256": "c4f60a9d7b893ec55c93054345e84398a1fb630d3c26e70c9249b17777c95ec9",
+          "generatedPath": "/workspace/generated_images/exec-bb5bcaeb-d72d-4097-a718-a8b5b0678234.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 168,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 9163,
+              "left": 45,
+              "right": 130,
+              "top": 9,
+              "bottom": 176,
+              "width": 86,
+              "height": 168,
+              "centerX": 86.65633526137728,
+              "centerY": 91.79122558114155
+            },
+            "bodyRoi": {
+              "left": 45,
+              "top": 9,
+              "width": 86,
+              "height": 168
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            1,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            1,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            1,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            1,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            3,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            1,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            1,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [
+        "Initial image has blade trails joining two separate bodies. It is completely excluded; the corrected48 source has48 genuinely separate complete figures."
+      ],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "darth_revan",
+      "name": "Darth Revan",
+      "universe": "Star Wars",
+      "sourceWork": "Star Wars: Knights of the Old Republic (2003), masked Darth Revan in the selected dark-side armour",
+      "sourceReference": "https://www.starwars.com/databank/revan",
+      "referenceAsset": "/sprites/generated/heroes/star-wars/darth-revan.png",
+      "referenceAssetSha256": "78200992ef619c3e7d16907db20496df67b018c1fb99697bcf75dce3ea43169c",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/darth_revan.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Taille au sabre rouge de Revan",
+      "simpleEffect": "damage",
+      "specialActionName": "Taille au sabre rouge de Revan",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Masked adult Revan in red-brown and dark armour, black hood and cloak, one red lightsaber. No player-customized face, purple offhand blade or unrelated MMO armour.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/darth_revan-native48.png",
+          "sha256": "82d719a4a639896dd39c37d9b19e3dc87f23ffb6f3ddbc2d7e9193039604e03b",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/darth_revan-prompt.txt",
+          "promptSha256": "1a234f297e635f2b03f128090e04fd41e6cd7b936da4c8be454989937df9997f",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/darth_revan-tool-result.json",
+          "toolResultSha256": "e73da1e8a540aa1554016949869f465311bb669aa86b7e1143a8d3d2c50beb33",
+          "generatedPath": "/workspace/generated_images/exec-9a070336-a1ee-4deb-a214-ad505397129f.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 150,
+            "bodyBounds": {
+              "id": 4,
+              "pixels": 9345,
+              "left": 34,
+              "right": 132,
+              "top": 16,
+              "bottom": 165,
+              "width": 99,
+              "height": 150,
+              "centerX": 83.98619582664527,
+              "centerY": 101.18319957196361
+            },
+            "bodyRoi": {
+              "left": 34,
+              "top": 16,
+              "width": 99,
+              "height": 150
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "joel_tlou",
+      "name": "Joel",
+      "universe": "The Last of Us",
+      "sourceWork": "The Last of Us (2013), adult Joel during the autumn journey",
+      "sourceReference": "https://www.playstation.com/games/the-last-of-us/",
+      "referenceAsset": "/sprites/generated/heroes/the-last-of-us/joel-tlou.png",
+      "referenceAssetSha256": "1d1ad92afd42e65330264053233eb96153b60a0f66e5b22ac3794c8198749f37",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/joel_tlou.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Tir du revolver de Joel",
+      "simpleEffect": "damage",
+      "specialActionName": "Tir ajusté du revolver de Joel",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult bearded Joel, brown-green plaid work shirt, dark jeans, boots and worn backpack, physical revolver. No infected abilities or later severe injury.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/joel_tlou-native48.png",
+          "sha256": "05a6c2e42702b02159abe1ae119c3cac0b446195cb110dce2d5bcfccead2605b",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/joel_tlou-prompt.txt",
+          "promptSha256": "c53e7ba0244f5adb3accbc304fd85ccfe8f42da6b21244f8daad288793760bbb",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/joel_tlou-tool-result.json",
+          "toolResultSha256": "917b34a8f12fa407cee4f6c42118459e9bc4c56517ca0ebac03fa95d94befedc",
+          "generatedPath": "/workspace/generated_images/exec-9bb04b71-24af-4cc5-9cdb-e1f4e0479544.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 0,
+          "excludedDrawings": 48,
+          "acceptedForDelivery": false,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 174,
+            "bodyBounds": {
+              "id": 2,
+              "pixels": 8302,
+              "left": 62,
+              "right": 141,
+              "top": 10,
+              "bottom": 183,
+              "width": 80,
+              "height": 174,
+              "centerX": 100.7439171284028,
+              "centerY": 100.77704167670441
+            },
+            "bodyRoi": {
+              "left": 62,
+              "top": 10,
+              "width": 80,
+              "height": 174
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/joel_tlou-correction48.png",
+          "sha256": "05fd3b609d3513bd4017b6c7ecc6fef558e6a1723ec4619c495c743635765c85",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/joel_tlou-correction48-prompt.txt",
+          "promptSha256": "7cf68beff8da48e665e147c691e81040f8afa14e8d9eea554789ad8143b621ee",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/joel_tlou-correction48-tool-result.json",
+          "toolResultSha256": "f45de6cc6621a799d4d60a9a14d920bbfe90d4f43f0f2df4be88215f4e836737",
+          "generatedPath": "/workspace/generated_images/exec-a56fd5f2-9c3d-4ae8-8245-f96e84e61e82.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 32,
+          "excludedDrawings": 16,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 178,
+            "bodyBounds": {
+              "id": 2,
+              "pixels": 9245,
+              "left": 59,
+              "right": 143,
+              "top": 8,
+              "bottom": 185,
+              "width": 85,
+              "height": 178,
+              "centerX": 100.45581395348837,
+              "centerY": 101.27528393726338
+            },
+            "bodyRoi": {
+              "left": 59,
+              "top": 8,
+              "width": 85,
+              "height": 178
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/joel_tlou-correction16.png",
+          "sha256": "c7d629c4491b0d12cbb5e36086f6323a5d0f827d4cefe08eeef30ef9f35e7836",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/joel_tlou-correction16-prompt.txt",
+          "promptSha256": "b3e2fcc5d7c33b823af1fd1c5aafbb02a2666d81a61a7b696fd6a05dd5ffef1f",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/joel_tlou-correction16-tool-result.json",
+          "toolResultSha256": "48a472bc5a99b2800e650e9e581fad7b592f907e45c3682f7e76a4663dc8abfa",
+          "generatedPath": "/workspace/generated_images/exec-379abb61-3359-4919-a90b-f82d96cd33d0.png",
+          "rows": 4,
+          "rowCounts": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "nativeComponentsObserved": 16,
+          "nativeDrawingsObserved": 16,
+          "retainedDrawings": 16,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 330,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 36440,
+              "left": 83,
+              "right": 255,
+              "top": 21,
+              "bottom": 350,
+              "width": 173,
+              "height": 330,
+              "centerX": 172.64360592755213,
+              "centerY": 191.70620197585072
+            },
+            "bodyRoi": {
+              "left": 83,
+              "top": 21,
+              "width": 173,
+              "height": 330
+            }
+          },
+          "sourceCanvasDimensions": [
+            1254,
+            1254
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            1,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            1,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            1,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            1,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            3,
+            [
+              4,
+              6,
+              5,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            2,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            2,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            2,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            2,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [
+        "Initial gun was a semiautomatic pistol and is entirely excluded. Corrected48 source depicts the actual round-cylinder revolver; only its complete first32 presentation figures are retained. Its last-row cropped feet are excluded, and a new16-pose revolver basic source supplies the entire base.",
+        "Super native aim/fire/recovery cells are ordered0,2,1,3 to place the existing firing drawing third. No frame is redrawn, duplicated or counted twice."
+      ],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "tess_tlou",
+      "name": "Tess",
+      "universe": "The Last of Us",
+      "sourceWork": "The Last of Us (2013), adult Tess before the Capitol encounter",
+      "sourceReference": "https://www.playstation.com/games/the-last-of-us/",
+      "referenceAsset": "/sprites/generated/heroes/the-last-of-us/tess-tlou.png",
+      "referenceAssetSha256": "900cde78505c836ba595334a182af15b8d218a125661cc95d3cda0988e14eb21",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/tess_tlou.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Tir du pistolet de Tess",
+      "simpleEffect": "damage",
+      "specialActionName": "Tir de couverture du pistolet de Tess",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult Tess with brown hair tied back, burgundy-red short-sleeve work shirt, dark trousers and boots, ordinary handgun. No infection imagery or magical support.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/tess_tlou-native48.png",
+          "sha256": "59f37d4eef332cd1e3f4123a5b28a312e5171d5f5a0aad2c558b05e25da3afe6",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/tess_tlou-prompt.txt",
+          "promptSha256": "0154dba10643ae0f83916ee724298bea1cea066ca07f404d54de9bc29cf224fa",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/tess_tlou-tool-result.json",
+          "toolResultSha256": "3ac06f90b39a86165d23ce5b480cc930be497c4e3e862ef1a1cbcf07d7f23a29",
+          "generatedPath": "/workspace/generated_images/exec-15d60a42-9866-4af5-9dd2-3e393909574a.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 172,
+            "bodyBounds": {
+              "id": 7,
+              "pixels": 7785,
+              "left": 53,
+              "right": 131,
+              "top": 7,
+              "bottom": 178,
+              "width": 79,
+              "height": 172,
+              "centerX": 90.86384071933205,
+              "centerY": 93.95478484264612
+            },
+            "bodyRoi": {
+              "left": 53,
+              "top": 7,
+              "width": 79,
+              "height": 172
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              6,
+              5,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              0,
+              2,
+              1,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [
+        "Super native aim/fire/recovery cells are ordered0,2,1,3 so the existing firing drawing is third. Every native drawing is retained once; no generated pose is synthesized.",
+        "The ordinary action uses the same explicit aim/aim/fire/recovery cell ordering, without pixel changes or duplication."
+      ],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "tommy_tlou",
+      "name": "Tommy Miller",
+      "universe": "The Last of Us",
+      "sourceWork": "The Last of Us (2013), adult Tommy at Jackson hydroelectric dam",
+      "sourceReference": "https://www.playstation.com/games/the-last-of-us/",
+      "referenceAsset": "/sprites/generated/heroes/the-last-of-us/tommy-tlou.png",
+      "referenceAssetSha256": "b5785a8d9ace663348334e03fbc785d76212d34c4f763be0e0831ee056f27ea5",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/tommy_tlou.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Tir du fusil de Tommy",
+      "simpleEffect": "damage",
+      "specialActionName": "Tir du fusil de Tommy",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult Tommy with medium brown hair and facial hair, practical brown work jacket and jeans, two-handed physical hunting rifle. No later eye injury.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/tommy_tlou-native48.png",
+          "sha256": "0d22887509bf454a99118963eff733c45093a102734fe6c09a3a91ef324fc9b7",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/tommy_tlou-prompt.txt",
+          "promptSha256": "2e15a12ff552488b1437f29ffe44d582caaab5388a7414a96e6270a01cd57ff5",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/tommy_tlou-tool-result.json",
+          "toolResultSha256": "e5338b369d789294a756f01e86918fb22a87c4b4b87c1c05409fa867a57d291b",
+          "generatedPath": "/workspace/generated_images/exec-beafc904-af3d-4ca7-88b8-ffdafd821caa.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 174,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 8459,
+              "left": 42,
+              "right": 114,
+              "top": 3,
+              "bottom": 176,
+              "width": 73,
+              "height": 174,
+              "centerX": 78.58753989833313,
+              "centerY": 90.9062536942901
+            },
+            "bodyRoi": {
+              "left": 42,
+              "top": 3,
+              "width": 73,
+              "height": 174
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              6,
+              5,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [
+        "Super native aim/fire/recovery cells are ordered0,2,1,3 so the existing firing drawing is third. Every native drawing is retained once; no generated pose is synthesized."
+      ],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "dina_tlou2",
+      "name": "Dina",
+      "universe": "The Last of Us",
+      "sourceWork": "The Last of Us Part II (2020), adult Dina on the early Seattle journey",
+      "sourceReference": "https://www.playstation.com/games/the-last-of-us-part-ii/",
+      "referenceAsset": "/sprites/generated/heroes/the-last-of-us/dina-tlou2.png",
+      "referenceAssetSha256": "3f9e938491b55f9a3235dab36c5d249dcac248d417671ed7626df32b0303847b",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/dina_tlou2.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Tir du pistolet de Dina",
+      "simpleEffect": "damage",
+      "specialActionName": "Tir de couverture de Dina",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult Dina, dark hair tied back, grey-green hooded field jacket and dark trousers, backpack, ordinary handgun. No pregnancy imagery or child version.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/dina_tlou2-native48.png",
+          "sha256": "6c1cfa8619a7dc976cf3aa80f1e3b807f006a86dcaa22182fa7e86ac401b8f77",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/dina_tlou2-prompt.txt",
+          "promptSha256": "0203046fd2470f0c77e8e4a3c4e38c4cd804fe126a1ad9955a2f9c9d7691aeef",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/dina_tlou2-tool-result.json",
+          "toolResultSha256": "b18a9fcf02736d4bf38f4fc37e86276d836e156b134cb762a46da61001c81075",
+          "generatedPath": "/workspace/generated_images/exec-e57f829e-d677-40d3-b3e6-e25a5454ec9c.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 171,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 8207,
+              "left": 48,
+              "right": 133,
+              "top": 11,
+              "bottom": 181,
+              "width": 86,
+              "height": 171,
+              "centerX": 88.78993542098209,
+              "centerY": 94.09967101255026
+            },
+            "bodyRoi": {
+              "left": 48,
+              "top": 11,
+              "width": 86,
+              "height": 171
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "abby_tlou2",
+      "name": "Abby Anderson",
+      "universe": "The Last of Us",
+      "sourceWork": "The Last of Us Part II (2020), adult Abby on Seattle day one",
+      "sourceReference": "https://www.playstation.com/games/the-last-of-us-part-ii/",
+      "referenceAsset": "/sprites/generated/heroes/the-last-of-us/abby-tlou2.png",
+      "referenceAssetSha256": "78da1e6f289766fd69250348e07645dc2c626c88badee4b89dcce559d7982308",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/abby_tlou2.png",
+      "targetBodyHeight": 190,
+      "simpleActionName": "Tir du pistolet d’Abby",
+      "simpleEffect": "damage",
+      "specialActionName": "Tir ajusté du pistolet d’Abby",
+      "specialEffect": "damage",
+      "selectedSourceAppearance": "Adult athletic Abby with blonde braid, grey sleeveless work shirt, dark tactical trousers and backpack, ordinary military handgun. No later captivity appearance or weapon invented from injury.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/abby_tlou2-native48.png",
+          "sha256": "9b9df461166055f286bb7a403a3180bd07396a03a6f50a87a0277e9a52f296a1",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/abby_tlou2-prompt.txt",
+          "promptSha256": "54886377bcb63a3a70e374cdfd7edd82008f0a85d274c8ebeffab2aa10573eb7",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/abby_tlou2-tool-result.json",
+          "toolResultSha256": "e728580a98a47d720ea0d92f7f0501d03e9c7f5e079c5c9403da13188328198f",
+          "generatedPath": "/workspace/generated_images/exec-01d9f8f8-e030-4192-a50a-0e99d1ba8cae.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 48,
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 188,
+            "bodyBounds": {
+              "id": 2,
+              "pixels": 9702,
+              "left": 51,
+              "right": 144,
+              "top": 12,
+              "bottom": 199,
+              "width": 94,
+              "height": 188,
+              "centerX": 92.83384869099154,
+              "centerY": 106.24335188620903
+            },
+            "bodyRoi": {
+              "left": 51,
+              "top": 12,
+              "width": 94,
+              "height": 188
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            0,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            0,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            1,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            2,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            3,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ],
+        "base": [
+          [
+            0,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            4,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0,
+            5,
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    },
+    {
+      "heroId": "hayden",
+      "name": "Samuel Hayden",
+      "universe": "Doom",
+      "sourceWork": "DOOM (2016), Samuel Hayden in his intact robotic body",
+      "sourceReference": "https://doom.bethesda.net/",
+      "referenceAsset": "/sprites/generated/heroes/doom/hayden.png",
+      "referenceAssetSha256": "386d5d2438255f7983f3f68394d3ae9c8b5e37baf3787da4f0d761ba13f29073",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-b/references/hayden.png",
+      "targetBodyHeight": 210,
+      "simpleActionName": "Signal de sécurité de Hayden",
+      "simpleEffect": "guard",
+      "specialActionName": "Consigne d’évacuation de Hayden",
+      "specialEffect": "guard",
+      "selectedSourceAppearance": "Tall intact white-grey robotic director body, broad mechanical shoulders, compact head and luminous face optic. No DOOM Eternal dismembered form, Crucible or invented arm cannon.",
+      "reviewed": true,
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/hayden-native48.png",
+          "sha256": "3040cf5ff1331fd5e2bf3124184c89a54ff7bb04d6d6f672096527cbe34d07dc",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/hayden-prompt.txt",
+          "promptSha256": "c97a0d1fd40a9e6ade5dad35e2f0f176ab705841d1d5f12d3a077e9d28cb434b",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/hayden-tool-result.json",
+          "toolResultSha256": "158c7b7ec0501d3ef87d29aa2045a57d9ffbecbc359003323ad5c90c2cc614ee",
+          "generatedPath": "/workspace/generated_images/exec-db9c5f6d-ccb9-43b6-a539-6d36e094dff8.png",
+          "rows": 6,
+          "rowCounts": [
+            8,
+            8,
+            8,
+            7,
+            8,
+            8
+          ],
+          "nativeComponentsObserved": 47,
+          "nativeDrawingsObserved": 47,
+          "retainedDrawings": 0,
+          "excludedDrawings": 47,
+          "acceptedForDelivery": false,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 193,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 9958,
+              "left": 65,
+              "right": 150,
+              "top": 0,
+              "bottom": 192,
+              "width": 86,
+              "height": 193,
+              "centerX": 107.63848162281583,
+              "centerY": 96.38682466358706
+            },
+            "bodyRoi": {
+              "left": 65,
+              "top": 0,
+              "width": 86,
+              "height": 193
+            }
+          },
+          "sourceCanvasDimensions": [
+            1448,
+            1086
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/hayden-correction32.png",
+          "sha256": "35a1012dadbaa5b31a7245d9661c717a3396aaba60d334566aa3167cb633a879",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/hayden-correction32-prompt.txt",
+          "promptSha256": "e6f86fabc2fdde2d5bb4c14714c31516bbc3a2c70b0dabffee836950b9bd4f33",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/hayden-correction32-tool-result.json",
+          "toolResultSha256": "16ed46d4ec50a4fc6e8faf87ea2db6c08f5a32da469de0dfcc87627282d739b7",
+          "generatedPath": "/workspace/generated_images/exec-ef483acb-626a-47a9-909c-36b4957fa667.png",
+          "rows": 8,
+          "rowCounts": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "nativeComponentsObserved": 32,
+          "nativeDrawingsObserved": 32,
+          "retainedDrawings": 32,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 178,
+            "bodyBounds": {
+              "id": 1,
+              "pixels": 9577,
+              "left": 107,
+              "right": 192,
+              "top": 12,
+              "bottom": 189,
+              "width": 86,
+              "height": 178,
+              "centerX": 152.55226062441267,
+              "centerY": 101.44408478646758
+            },
+            "bodyRoi": {
+              "left": 107,
+              "top": 12,
+              "width": 86,
+              "height": 178
+            }
+          },
+          "sourceCanvasDimensions": [
+            1024,
+            1536
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/hayden-correction16.png",
+          "sha256": "d82353dd1154b1a3bb1cbeefd230f1f0bd766290bc82ca9cff4e086ecd8ffdf5",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/hayden-correction16-prompt.txt",
+          "promptSha256": "06f046a2c44fcf01f957fb0b178b651aed0e72d636e7d2261f265fae169e6698",
+          "toolResultFile": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/hayden-correction16-tool-result.json",
+          "toolResultSha256": "9c17134706f7930b7630844489055cff8c1a03c07af8c2319f55443fbb0b9b0c",
+          "generatedPath": "/workspace/generated_images/exec-dbd54d70-f4a4-499d-b063-1db59c8c6d90.png",
+          "rows": 4,
+          "rowCounts": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "nativeComponentsObserved": 16,
+          "nativeDrawingsObserved": 16,
+          "retainedDrawings": 16,
+          "excludedDrawings": 0,
+          "acceptedForDelivery": true,
+          "calibration": {
+            "method": "first-complete-standing-native-body-component",
+            "bodyHeight": 286,
+            "bodyBounds": {
+              "id": 4,
+              "pixels": 24449,
+              "left": 129,
+              "right": 270,
+              "top": 46,
+              "bottom": 331,
+              "width": 142,
+              "height": 286,
+              "centerX": 200.58607714016932,
+              "centerY": 188.66501697410936
+            },
+            "bodyRoi": {
+              "left": 129,
+              "top": 46,
+              "width": 142,
+              "height": 286
+            }
+          },
+          "sourceCanvasDimensions": [
+            1254,
+            1254
+          ],
+          "allSelectedBodiesAvoidGlobalCanvasEdges": true
+        }
+      ],
+      "selections": {
+        "native": [
+          [
+            1,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            4,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            5,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            6,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            1,
+            7,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ]
+        ],
+        "base": [
+          [
+            2,
+            0,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            2,
+            1,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            2,
+            2,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            2,
+            3,
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ]
+        ]
+      },
+      "correctionNotes": [
+        "Initial47-figure sheet has cropped outer heads/feet and one missing support pose; the source is entirely excluded. New32 presentation and16 basic sources provide all complete drawings with measured margins. All actions are zero-damage technical gestures."
+      ],
+      "reviewNotes": "Exact selected adult source version and practical equipment reviewed. Four different native poses per phase/state, one scalar for every retained body in each source, complete weapon/head/feet silhouettes, measured alpha margins and no source-pixel painting. Quiet presentation rows do not invent attacks; Hayden support creates no damage. The images and choreography are generated gameplay adaptations, not official animation frames or certified1:1 reproductions."
+    }
+  ],
+  "failures": [
+    {
+      "heroId": "vader",
+      "code": "moderation_blocked",
+      "requestId": "6d2fcf25-d729-4951-99a9-55280cd9fef7",
+      "receipt": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/vader-tool-result.json",
+      "receiptSha256": "83aba39b23221d820605ccfedf53c6491e46d744955ed638f212639a4b1a8a73",
+      "retryPerformed": false,
+      "imageReturned": false,
+      "initialImageReturned": false,
+      "reason": "Initial native48 request explicitly refused; no image received and no retry performed.",
+      "historicalFallbackIsNewDelivery": false,
+      "referenceAsset": "/sprites/generated/heroes/star-wars/vader.png",
+      "referenceSha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464",
+      "historicalFallbackPreserved": true
+    },
+    {
+      "heroId": "obi_wan",
+      "code": "moderation_blocked",
+      "requestId": "bce38d16-ca8b-4baf-af70-ab3b7b6f7014",
+      "receipt": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/obi_wan-tool-result.json",
+      "receiptSha256": "9cb3fd926c46e574fd54870687111ffa42ed7307bf0c722a50cb5bbbbfb6c3a4",
+      "retryPerformed": false,
+      "imageReturned": false,
+      "initialImageReturned": false,
+      "reason": "Initial native48 request explicitly refused; no image received and no retry performed.",
+      "historicalFallbackIsNewDelivery": false,
+      "referenceAsset": "/sprites/generated/heroes/star-wars/obi-wan.png",
+      "referenceSha256": "5e2dcd725a8ebbcab1a24715ced90885016ab025b8ec7dcd119774475b0a12d3",
+      "historicalFallbackPreserved": true
+    },
+    {
+      "heroId": "yoda",
+      "code": "moderation_blocked",
+      "requestId": "c7fa473f-2066-426b-83ef-a9292ccf8d51",
+      "receipt": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/yoda-tool-result.json",
+      "receiptSha256": "72c33e263510d8a29b1e2f918939cee27ac27dfe78614b69e9425fd7fedd7e24",
+      "retryPerformed": false,
+      "imageReturned": false,
+      "initialImageReturned": false,
+      "reason": "Initial native48 request explicitly refused; no image received and no retry performed.",
+      "historicalFallbackIsNewDelivery": false,
+      "referenceAsset": "/sprites/generated/heroes/star-wars/yoda.png",
+      "referenceSha256": "44b2b09fe1ca526bd2e9f24efc377f0e4e97984a867d5d6371d4e1baaa74bfc5",
+      "historicalFallbackPreserved": true
+    },
+    {
+      "heroId": "darth_maul",
+      "code": "moderation_blocked",
+      "requestId": "f23d9e50-2194-4954-9622-5d3baf0ba4b0",
+      "receipt": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/darth_maul-tool-result.json",
+      "receiptSha256": "9c047bf093288ac9323cf99623c75d0393785999cde0ef00fc9c655e17c7f4c4",
+      "retryPerformed": false,
+      "imageReturned": false,
+      "initialImageReturned": false,
+      "reason": "Initial native48 request explicitly refused; no image received and no retry performed.",
+      "historicalFallbackIsNewDelivery": false,
+      "referenceAsset": "/sprites/generated/heroes/star-wars/darth-maul.png",
+      "referenceSha256": "88ad49c11b99a5a5322252092e63029668dce6378be143db7b5d9b4e5b67dccd",
+      "historicalFallbackPreserved": true
+    },
+    {
+      "heroId": "ahsoka_adult",
+      "code": "moderation_blocked",
+      "requestId": "4484f0ed-811b-4aff-be9b-a45cf1fa8ad5",
+      "receipt": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ahsoka_adult-correction32-tool-result.json",
+      "receiptSha256": "7234435d8cb2eb81790cd4e44c2ad13ea5aab679e9bf72c964448d2f6a9eb3e9",
+      "receipts": [
+        {
+          "receipt": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ahsoka_adult-correction32-tool-result.json",
+          "receiptSha256": "7234435d8cb2eb81790cd4e44c2ad13ea5aab679e9bf72c964448d2f6a9eb3e9",
+          "requestId": "4484f0ed-811b-4aff-be9b-a45cf1fa8ad5",
+          "code": "moderation_blocked",
+          "imageReturned": false,
+          "startedAt": "2026-10-24T02:34:04.506Z",
+          "finishedAt": "2026-10-24T02:35:13.040Z"
+        },
+        {
+          "receipt": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ahsoka_adult-correction16-tool-result.json",
+          "receiptSha256": "47bf997275286ab6f3c5fe60fd0b252cd692e16c48f43741ff5e07c99b9cfa2f",
+          "requestId": "78dd8a46-0a73-4d7f-9d15-389cfe158a8f",
+          "code": "moderation_blocked",
+          "imageReturned": false,
+          "startedAt": "2026-10-24T02:34:04.506Z",
+          "finishedAt": "2026-10-24T02:35:57.215Z"
+        }
+      ],
+      "retryPerformed": false,
+      "imageReturned": false,
+      "initialImageReturned": true,
+      "rejectedNativeSources": [
+        {
+          "path": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ahsoka_adult-native48.png",
+          "sha256": "ef49efd098577d9ce7d8aa1841cf7b40159e2a7a86db2f85791aa6261066df1e",
+          "rowCounts": [
+            8,
+            8,
+            8,
+            7,
+            8,
+            8
+          ],
+          "acceptedForDelivery": false,
+          "reason": "Oversized white saber trails merge separate silhouettes; exact complete32/base16 coverage cannot be honestly reconstructed."
+        },
+        {
+          "path": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ahsoka_adult-correction48.png",
+          "sha256": "cd1e0b39be88d08f3f9c5b0f324ffcdd502fc6d323c6af6020758035fd0b23f6",
+          "rowCounts": [
+            8,
+            8,
+            7,
+            6,
+            8,
+            8
+          ],
+          "acceptedForDelivery": false,
+          "reason": "Oversized white saber trails merge separate silhouettes; exact complete32/base16 coverage cannot be honestly reconstructed."
+        }
+      ],
+      "reason": "Initial and corrected48 source images received but rejected on visual/technical review; separately prepared native32/base16 corrections were refused. No request was sent after either refusal.",
+      "native32Published": false,
+      "base16Published": false,
+      "historicalFallbackIsNewDelivery": false,
+      "referenceAsset": "/sprites/generated/heroes/star-wars/ahsoka-adult.png",
+      "referenceSha256": "33447986f3ed85a2b987b80d79d4f4494202e41f6c0faff3499d2584f1e714c8",
+      "historicalFallbackPreserved": true
+    }
+  ],
+  "allSelectedIdentitiesAccountedFor": true,
+  "source1to1Verified": false
+}

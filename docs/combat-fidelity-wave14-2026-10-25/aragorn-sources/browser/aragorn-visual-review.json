@@ -1,0 +1,135 @@
+{
+  "passed": true,
+  "heroId": "aragorn_lotr",
+  "phase": "final",
+  "reviewedAt": "2026-10-25T09:09:55.180Z",
+  "source1to1Verified": false,
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave14-2026-10-25/production-freeze.json",
+    "bytes": 224489,
+    "sha256": "b022d21ad580a45b740fc4205c9feae69852139cb2f3353926c51078356a2b02",
+    "createdAt": "2026-10-25T09:01:06.683Z"
+  },
+  "evidence": {
+    "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-evidence.json",
+    "sha256": "023d4ba18528b2d9210a89df7c5102f1754287dcfca882371a3ce2c4ee19ba0b"
+  },
+  "captures": [
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-core.png",
+      "sha256": "497ea3099d8777af403e4250a42b7c50bb53bbcf56f5c666e8b16d4952c6ac26",
+      "manuallyReviewed": true,
+      "observation": "All45 state rows inspected via six lossless review crops. Four distinct poses in each orientation, complete contained silhouettes, stable Strider leather/cloak/hair/boots, physical longsword cuts and grounded/aerial projections."
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-grips.png",
+      "sha256": "4862df8ffa85fc215ca32834dcb8142ecccce47cdc473c26b68829a545ab57cc",
+      "manuallyReviewed": true,
+      "observation": "Eight actual renderer grip draws: four native hanging poses on both ledge sides. Visible free bare hands meet the yellow edge line; sword stays sheathed."
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-movement.png",
+      "sha256": "290c512dd70481efab79d7d72cf9697a57d13df88d59dfe727df2e1eaaa7c919",
+      "manuallyReviewed": true,
+      "observation": "Real GameCanvas movement screenshot after D+Space, landing and Q turn. Aragorn is the player; correct cloak/leather identity and native melee presentation remain readable."
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-pause.png",
+      "sha256": "c32e3a0bcd216763a7128c81caba55513734048f6f0e687ceba6982dfa244eab",
+      "manuallyReviewed": true,
+      "observation": "Real GameCanvas paused screenshot matches stable actor/physics receipt; state/elapsed/position/velocity/HP preserved by sessionPaused."
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-super.png",
+      "sha256": "eacda03a890b74ae02ad0dbcb96585f060e1e8579c7dcde68c77144e521c76fd",
+      "manuallyReviewed": true,
+      "observation": "Real cold-boot keyboard L super impact: ranger sword extension, correct French action/gauge, charge0 and one enemy damage event. No Army of the Dead or magic in artwork."
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-physical-ledge.png",
+      "sha256": "0e29830f4fd372b610392c56f51ebac26c5e70f91bd01172987d505671197340",
+      "manuallyReviewed": true,
+      "observation": "All20 physical cases inspected across two lossless review crops: both camps, both sides, hold/climb/drop/jump/attack. True ascending climb moves torso above palm; drop/jump show four naturally advancing poses, attached holds/climbs meet the edge."
+    }
+  ],
+  "counts": {
+    "flows": 4,
+    "states": 45,
+    "nativePoses": 180,
+    "coreDraws": 360,
+    "controlledGripDraws": 8,
+    "physicalLedgeCases": 20,
+    "physicalGripDraws": 32
+  },
+  "actualClosures": [
+    {
+      "flow": "core",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "browserClosedAt": "2026-10-25T09:06:58.179Z",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "flow": "movement",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "browserClosedAt": "2026-10-25T09:07:05.644Z",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "flow": "super",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "browserClosedAt": "2026-10-25T09:07:11.891Z",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "flow": "physical-ledge",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "browserClosedAt": "2026-10-25T09:07:15.811Z",
+      "receiptOrigin": "node-child-process-close-event"
+    }
+  ],
+  "allBrowserWindowsClosed": true,
+  "browserClosedAt": "2026-10-25T09:07:15.811Z",
+  "resourcesUnchangedDuringRun": true,
+  "observations": {
+    "movementFourColumns": [
+      "jumpRise",
+      "fall",
+      "land",
+      "turn"
+    ],
+    "pauseStable": true,
+    "coldBootSuperNativeRow": 7,
+    "coldBootSuperNativeColumns": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "superHits": 1,
+    "retriggerAtZeroCharge": false,
+    "physicalLedgeCases": 20,
+    "attachedHandDraws": 32
+  },
+  "accountedNetworkFailures": {
+    "perFlow": 1,
+    "total": 4,
+    "resource": "Google Fonts stylesheet",
+    "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+  },
+  "javascriptErrors": 0,
+  "limitations": [
+    "Les deux orientations utilisent le miroir horizontal du runtime, y compris les asymétries de tenue et d’équipement.",
+    "Le parcours de rebord appelle directement applyPhysics et les commandes du runtime ; il ne prétend pas être un parcours clavier GameCanvas.",
+    "Les quatre poses de lâcher et de saut avancent naturellement avec la physique ; une collision, une attaque, une reprise légale ou une commande explicite peuvent interrompre la séquence.",
+    "Les moteurs, catalogues de rendu, ressources Aragorn et ancres de l’épée part A sont liés aux empreintes de ce rejeu après gel.",
+    "Une requête Google Fonts bloquée par le réseau est comptabilisée explicitement dans les rapports concernés."
+  ]
+}

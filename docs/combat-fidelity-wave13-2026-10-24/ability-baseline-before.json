@@ -1,0 +1,1917 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-10-24T01:57:34.084Z",
+  "phase": "before-wave13-integration",
+  "frozenPlanSha256": "c2c5072ee64c0a8570b1d3229c2644b6f61ff0e2c6f7cc203e821f315326388f",
+  "correction": "The frozen plan initial alreadyAuthored flags used a nonexistent accessor and are superseded only by this actual catalog measurement. Character selection, raw heroes, versions and reference hashes are unchanged.",
+  "revisionIds": [
+    "dallas_alien",
+    "parker_alien",
+    "lambert_alien",
+    "ash_alien",
+    "glados",
+    "wheatley",
+    "rincewind_dw",
+    "vimes_dw",
+    "granny_dw",
+    "twoflower_dw",
+    "death_dw",
+    "nanny_ogg_dw",
+    "meryl_mgs",
+    "liquid_snake",
+    "the_boss_mgs",
+    "ocelot_mgs",
+    "luke",
+    "vader",
+    "obi_wan",
+    "yoda",
+    "joel_tlou",
+    "tess_tlou"
+  ],
+  "newAbilityIds": [
+    "ripley",
+    "hicks",
+    "bishop",
+    "amanda_ripley",
+    "chell",
+    "atlas",
+    "pbody",
+    "doug_rattmann",
+    "gray_fox",
+    "big_boss",
+    "ahsoka_adult",
+    "aayla_secura",
+    "darth_revan",
+    "darth_maul",
+    "tommy_tlou",
+    "dina_tlou2",
+    "abby_tlou2",
+    "hayden"
+  ],
+  "authored": {
+    "dallas_alien": {
+      "universe": "Alien",
+      "sourceWork": "Alien",
+      "sourceReference": "Dallas porte un lance-flammes et suit les indications de l’équipe dans les conduits du Nostromo ; il ne reçoit pas les capacités de la créature.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Jet court du lance-flammes de Dallas",
+        "type": "beam",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "beam",
+          "shape": "line",
+          "range": 520,
+          "targetSide": "enemy",
+          "lineWidth": 32
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Suivre le contact dans les conduits",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "defense": {
+        "name": "Couvert du capitaine dans la coursive",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "parker_alien": {
+      "universe": "Alien",
+      "sourceWork": "Alien",
+      "sourceReference": "Parker est ingénieur et porte un lance-flammes dans Alien (1979) ; sa seconde action exploite son métier technique.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Jet du lance-flammes de Parker",
+        "type": "beam",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "beam",
+          "shape": "line",
+          "range": 520,
+          "targetSide": "enemy",
+          "lineWidth": 32
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Parker vérifie le matériel de bord",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "defense": {
+        "name": "Abri derrière la cloison de soute",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "lambert_alien": {
+      "universe": "Alien",
+      "sourceWork": "Alien",
+      "sourceReference": "Lambert est navigatrice du Nostromo ; lecture et communication servent à la protection sans arme de classe synthétique.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Lambert lit la route du Nostromo",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Annoncer le passage à l’équipage",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 2,
+          "reduce": 0.3
+        }
+      },
+      "defense": {
+        "name": "Abri au poste de navigation",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "ash_alien": {
+      "universe": "Alien",
+      "sourceWork": "Alien",
+      "sourceReference": "Ash possède une force d’androïde et travaille comme officier scientifique dans Alien ; l’analyse ne guérit pas les humains et la prise reste physique.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Prise mécanique de l’androïde Ash",
+        "type": "melee",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Analyse scientifique du spécimen",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "defense": {
+        "name": "Résistance du châssis d’Ash",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.55
+        },
+        "reduce": 0.55,
+        "dur": 1.2
+      }
+    },
+    "glados": {
+      "universe": "Portal",
+      "sourceWork": "Portal",
+      "sourceReference": "GLaDOS contrôle les dispositifs d’Aperture et la neurotoxine de Portal ; le danger de scène est stylisé sans instruction chimique.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "GLaDOS analyse la chambre de test",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Dispositif de neurotoxine d’Aperture",
+        "type": "area",
+        "dmg": 1.8,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "area",
+          "shape": "area",
+          "range": 380,
+          "targetSide": "enemy",
+          "areaRadius": 85
+        }
+      },
+      "defense": {
+        "name": "Protection du châssis de GLaDOS",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.6
+        },
+        "reduce": 0.6,
+        "dur": 1.2
+      }
+    },
+    "wheatley": {
+      "universe": "Portal",
+      "sourceWork": "Portal",
+      "sourceReference": "Wheatley utilise les bombes lorsqu’il contrôle le châssis dans Portal 2 ; le chargement est explicite et ne prétend pas que son petit noyau porte un canon inné.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Wheatley observe la console",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Bombe du châssis d’Aperture",
+        "type": "projectile",
+        "dmg": 1.7,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        }
+      },
+      "defense": {
+        "name": "Recul du noyau Wheatley",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "rincewind_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "Rincevent survit par la fuite et un sens aigu du danger ; aucune sorcellerie offensive fiable ne lui est attribuée.",
+      "sourceUrl": null,
+      "sourceRecord": "CAPABILITIES_LOT_3/rincewind_dw",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Rincevent repère une sortie",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Fuite dans les ruelles d’Ankh-Morpork",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 2,
+          "reduce": 0.3
+        }
+      },
+      "defense": {
+        "name": "Courir dans le sens opposé au danger",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "vimes_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "Vimaire est un policier capable de combat physique et chef de la Garde ; bâton, consigne et parade suivent ce rôle.",
+      "sourceUrl": null,
+      "sourceRecord": "CAPABILITIES_LOT_3/vimes_dw",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Bâton de guet de Vimaire",
+        "type": "melee",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Consigne de la Garde municipale",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "defense": {
+        "name": "Parade du guetteur dans la rue",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "granny_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "Mémé emploie surtout headology et discipline personnelle ; le soutien représente ces qualités sans tir magique générique.",
+      "sourceUrl": null,
+      "sourceRecord": "CAPABILITIES_LOT_3/granny_dw",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Headology de Mémé Ciredutemps",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Reprendre ses esprits à Lancre",
+        "type": "cleanse",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "cleanse",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "cleanses": true
+        }
+      },
+      "defense": {
+        "name": "Retrait prudent de la sorcière",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "twoflower_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "Deuxfleurs est un touriste optimiste avec iconographe et Bagage ; observation et refuge ne le transforment pas en mage de guerre.",
+      "sourceUrl": null,
+      "sourceRecord": "CAPABILITIES_LOT_3/twoflower_dw",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Deuxfleurs prépare l’iconographe",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Suivre la route du touriste",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 2,
+          "reduce": 0.3
+        }
+      },
+      "defense": {
+        "name": "Trouver refuge derrière le Bagage",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "death_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "La Mort guide les âmes avec détachement ; les effets protecteurs sont des adaptations de ce rôle, sans exécution automatique des adversaires.",
+      "sourceUrl": null,
+      "sourceRecord": "CAPABILITIES_LOT_3/death_dw",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "La Mort indique la voie",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Garder son calme face au passage",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 2,
+          "reduce": 0.3
+        }
+      },
+      "defense": {
+        "name": "Retrait de la silhouette au manteau noir",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "nanny_ogg_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "Nounou Ogg représente la sorcellerie communautaire et les soins pratiques de Lancre ; la récupération modeste est une adaptation, pas un sort attesté nommé.",
+      "sourceUrl": null,
+      "sourceRecord": "CAPABILITIES_LOT_3/nanny_ogg_dw",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Parole rassurante de Nounou Ogg",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "secondary": {
+        "cd": 8,
+        "name": "Soins pratiques de la sorcière de Lancre",
+        "type": "heal",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "heal",
+          "delivery": "support",
+          "shape": "single",
+          "range": 760,
+          "targetSide": "ally",
+          "healRatio": 0.15
+        }
+      },
+      "defense": {
+        "name": "Se retirer avec les sorcières",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "meryl_mgs": {
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid (1998)",
+      "sourceReference": "Meryl porte le Desert Eagle et coopère avec Snake à Shadow Moses ; la coordination ne devient pas une capacité de CQC de The Boss.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Desert Eagle de Meryl",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Annoncer le secteur libre de Shadow Moses",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "defense": {
+        "name": "Couvert de la recrue Silverburgh",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "liquid_snake": {
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid (1998), Metal Gear REX rooftop fight",
+      "sourceReference": "Le duel final de Metal Gear Solid montre Liquid au corps-à-corps ; la table reste sur ses gestes physiques de cet épisode.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Direct de Liquid sur REX",
+        "type": "melee",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Combinaison du duel sur REX",
+        "type": "melee",
+        "dmg": 1.8,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "defense": {
+        "name": "Esquive de Liquid sur la plateforme",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "the_boss_mgs": {
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid 3: Snake Eater (2004)",
+      "sourceReference": "The Boss a co-développé le CQC et l’emploie pendant Snake Eater ; prises et désarmements proviennent de cette pratique nommée.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Prise CQC de The Boss",
+        "type": "melee",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Projection et désarmement CQC",
+        "type": "melee",
+        "dmg": 1.9,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "defense": {
+        "name": "Déviation CQC de The Boss",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.6
+        },
+        "reduce": 0.6,
+        "dur": 1.2
+      }
+    },
+    "ocelot_mgs": {
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid (1998)",
+      "sourceReference": "Ocelot utilise son revolver Colt Single Action Army pendant Shadow Moses ; le couvert accompagne son rechargement physique.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Tir du Single Action Army",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Visée au revolver d’Ocelot",
+        "type": "projectile",
+        "dmg": 1.8,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        }
+      },
+      "defense": {
+        "name": "Couvert pendant le rechargement",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "luke": {
+      "sourceHeroId": "luke",
+      "universe": "Star Wars",
+      "sourceWork": "Star Wars: Return of the Jedi (1983)",
+      "sourceReference": "Adult Luke wears black and uses his green lightsaber. Force push is adapted as a bounded local force impulse. His close saber sequence is one timed impact, not a damaging Jedi mind beam or an invented telepathic attack.",
+      "identityBasis": "explicit-source-loadout",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Taille du sabre vert de Luke",
+        "type": "melee",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Poussée de Force de Luke",
+        "type": "area",
+        "dmg": 1.8,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "area",
+          "shape": "area",
+          "range": 170,
+          "targetSide": "enemy",
+          "areaRadius": 85
+        }
+      },
+      "defense": {
+        "name": "Parade du sabre de Luke",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      },
+      "special": {
+        "name": "Enchaînement au sabre de Luke",
+        "type": "melee",
+        "dmg": 5.2,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 170,
+          "targetSide": "enemy"
+        },
+        "color": "#6fe687",
+        "meterCost": 100
+      }
+    },
+    "vader": {
+      "sourceHeroId": "vader",
+      "universe": "Star Wars",
+      "sourceWork": "Star Wars original trilogy (1977–1983)",
+      "sourceReference": "Armored Darth Vader uses his red lightsaber and telekinetic Force choke. Choke is a bounded single-target damaging command without a forced instant kill or invented infection. The Imperial March is music, not an attack.",
+      "identityBasis": "explicit-source-loadout",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Taille du sabre de Vader",
+        "type": "melee",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Étranglement de Force de Vader",
+        "type": "area",
+        "dmg": 1.9,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "area",
+          "shape": "single",
+          "range": 240,
+          "targetSide": "enemy",
+          "areaRadius": 85,
+          "maxTargets": 1
+        }
+      },
+      "defense": {
+        "name": "Parade du sabre de Vader",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.55
+        },
+        "reduce": 0.55,
+        "dur": 1.2
+      },
+      "special": {
+        "name": "Enchaînement au sabre de Vader",
+        "type": "melee",
+        "dmg": 4.6,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 170,
+          "targetSide": "enemy"
+        },
+        "color": "#ee6a6a",
+        "meterCost": 100
+      }
+    },
+    "obi_wan": {
+      "universe": "Star Wars",
+      "sourceWork": "Star Wars",
+      "sourceReference": "Obi-Wan maîtrise le Soresu et son sabre ; le soutien représente la fenêtre gagnée par sa défense.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Taille du sabre d’Obi-Wan",
+        "type": "melee",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Soresu — protéger l’ouverture",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 2,
+          "reduce": 0.3
+        }
+      },
+      "defense": {
+        "name": "Parade Soresu d’Obi-Wan",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.6
+        },
+        "reduce": 0.6,
+        "dur": 1.2
+      }
+    },
+    "yoda": {
+      "universe": "Star Wars",
+      "sourceWork": "Star Wars",
+      "sourceReference": "Yoda emploie le style acrobatique Ataru ; l’allure et les dégâts sont condensés en actions de mêlée adaptées.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Taille du petit sabre de Yoda",
+        "type": "melee",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Ataru — enchaînement bondissant",
+        "type": "melee",
+        "dmg": 1.8,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 85,
+          "targetSide": "enemy"
+        }
+      },
+      "defense": {
+        "name": "Parade au sabre de Yoda",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.6
+        },
+        "reduce": 0.6,
+        "dur": 1.2
+      }
+    },
+    "joel_tlou": {
+      "sourceHeroId": "joel_tlou",
+      "universe": "The Last of Us",
+      "sourceWork": "The Last of Us (2013)",
+      "sourceReference": "Joel emploie des armes récupérées et le couvert pour protéger son trajet avec Ellie ; aucune aptitude de l’infection n’est ajoutée.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Arme de poing de Joel",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Tir de couverture au fusil de Joel",
+        "type": "projectile",
+        "dmg": 1.8,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        }
+      },
+      "defense": {
+        "name": "Couvert du trajet d’escorte",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.5
+        },
+        "reduce": 0.5,
+        "dur": 1.2
+      }
+    },
+    "tess_tlou": {
+      "sourceHeroId": "tess_tlou",
+      "universe": "The Last of Us",
+      "sourceWork": "The Last of Us (2013)",
+      "sourceReference": "Tess est une survivante armée et organise le passage des compagnons ; sa protection est tactique, pas surnaturelle.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Pistolet de Tess",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Sécuriser le passage de l’escorte",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 2,
+          "reduce": 0.3
+        }
+      },
+      "defense": {
+        "name": "Tenir un couvert avant le repli",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    }
+  },
+  "completion": {
+    "dallas_alien": {
+      "universe": "Alien",
+      "sourceWork": "Alien",
+      "sourceReference": "Alien (1979) : Dallas emporte le lance-flammes improvisé dans les conduits de ventilation pour traquer la créature.",
+      "identityBasis": "canonical-technique",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Balayage au lance-flammes du Nostromo",
+        "type": "flamethrower",
+        "dmg": 3.2,
+        "color": "#8e8c7f",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "cone",
+          "delivery": "beam",
+          "range": 430,
+          "lineWidth": 64,
+          "coneAngle": 45
+        }
+      }
+    },
+    "parker_alien": {
+      "universe": "Alien",
+      "sourceWork": "Alien",
+      "sourceReference": "Alien (1979) : Parker porte le lance-flammes lors de la recherche de provisions ; Lambert gêne sa ligne de tir dans la soute.",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Lance-flammes de l'ingénieur Parker",
+        "type": "flamethrower",
+        "dmg": 3.2,
+        "color": "#7d6d5f",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "cone",
+          "delivery": "beam",
+          "range": 430,
+          "lineWidth": 64,
+          "coneAngle": 45
+        }
+      }
+    },
+    "lambert_alien": {
+      "universe": "Alien",
+      "sourceWork": "Alien",
+      "sourceReference": "Alien (1979) : Joan Lambert est la navigatrice du Nostromo ; protection de l'équipe adaptée de son rôle de navigation.",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Navigation d'urgence de Lambert",
+        "type": "guard",
+        "dmg": 0,
+        "color": "#c6b6a3",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "group",
+          "delivery": "support",
+          "range": 760,
+          "reduce": 0.45,
+          "duration": 5
+        }
+      }
+    },
+    "ash_alien": {
+      "universe": "Alien",
+      "sourceWork": "Alien",
+      "sourceReference": "Alien (1979) : Ash révèle sa force d'androïde pendant l'affrontement avec Ripley dans le mess du Nostromo.",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Force de l'androïde Ash",
+        "type": "melee",
+        "dmg": 3.8,
+        "color": "#d8d8d8",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "single",
+          "delivery": "melee",
+          "range": 185
+        }
+      }
+    },
+    "glados": {
+      "universe": "Portal",
+      "sourceWork": "Portal",
+      "sourceReference": "Portal et Portal 2 : GLaDOS utilise les systèmes de neurotoxine d'Aperture ; danger de zone adapté de cet équipement de laboratoire.",
+      "identityBasis": "canonical-technique",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Déploiement de neurotoxine",
+        "type": "area",
+        "dmg": 3.8,
+        "color": "#dfe6e9",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "area",
+          "delivery": "area",
+          "range": 460,
+          "areaRadius": 155
+        }
+      }
+    },
+    "wheatley": {
+      "universe": "Portal",
+      "sourceWork": "Portal",
+      "sourceReference": "Portal 2, combat final : Wheatley utilise le châssis central et lance des bombes dans la chambre de test ; pas de rayon personnel ajouté.",
+      "identityBasis": "canonical-technique",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Bombes du châssis de Wheatley",
+        "type": "area",
+        "dmg": 3.3,
+        "color": "#2980b9",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "area",
+          "delivery": "area",
+          "range": 420,
+          "areaRadius": 135
+        }
+      }
+    },
+    "rincewind_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "The Colour of Magic and later novels repeatedly define Rincewind through survival by running away, not reliable offensive sorcery.",
+      "identityBasis": "canonical-role",
+      "special": {
+        "name": "Fuite stratégiquement très rapide",
+        "type": "guard",
+        "dmg": 0,
+        "color": "#c74c43",
+        "animationDuration": 1.35,
+        "hitAt": 0.55,
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "group",
+          "delivery": "support",
+          "range": 1200,
+          "duration": 5,
+          "buffMultiplier": 1.25,
+          "reduce": 0.6,
+          "healRatio": 0,
+          "cleanses": false
+        }
+      },
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true
+    },
+    "vimes_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "Sam Vimes investigates crimes and holds the City Watch together; his watchman’s command becomes defensive coordination.",
+      "identityBasis": "canonical-role",
+      "special": {
+        "name": "La Garde tient la rue",
+        "type": "guard",
+        "dmg": 0,
+        "color": "#849598",
+        "animationDuration": 1.35,
+        "hitAt": 0.55,
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "group",
+          "delivery": "support",
+          "range": 1200,
+          "duration": 5,
+          "buffMultiplier": 1.25,
+          "reduce": 0.6,
+          "healRatio": 0,
+          "cleanses": false
+        }
+      },
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true
+    },
+    "granny_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "Granny Weatherwax uses headology and Borrowing rather than showy generic wizard attacks; headology steadies the squad.",
+      "identityBasis": "canonical-role",
+      "special": {
+        "name": "Headology de Mémé Ciredutemps",
+        "type": "cleanse",
+        "dmg": 0,
+        "color": "#9999b9",
+        "animationDuration": 1.35,
+        "hitAt": 0.55,
+        "targeting": {
+          "effect": "cleanse",
+          "targetSide": "ally",
+          "shape": "group",
+          "delivery": "support",
+          "range": 1200,
+          "duration": 5,
+          "buffMultiplier": 1.25,
+          "reduce": 0.5,
+          "healRatio": 0,
+          "cleanses": true
+        }
+      },
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true
+    },
+    "twoflower_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "The Colour of Magic: Twoflower is a tourist with an iconograph and optimistic curiosity, not a trained combat mage.",
+      "identityBasis": "canonical-role",
+      "special": {
+        "name": "Optimisme du premier touriste",
+        "type": "buff",
+        "dmg": 0,
+        "color": "#efd379",
+        "animationDuration": 1.35,
+        "hitAt": 0.55,
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "ally",
+          "shape": "group",
+          "delivery": "support",
+          "range": 1200,
+          "duration": 5,
+          "buffMultiplier": 1.2,
+          "reduce": 0.5,
+          "healRatio": 0,
+          "cleanses": false
+        }
+      },
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true
+    },
+    "death_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "Death’s duties concern guiding souls, while his sword is reserved for exceptional tasks; this adapts his composed guidance as protection.",
+      "identityBasis": "canonical-role",
+      "special": {
+        "name": "Il reste encore du temps",
+        "type": "guard",
+        "dmg": 0,
+        "color": "#a8d5e7",
+        "animationDuration": 1.35,
+        "hitAt": 0.55,
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "group",
+          "delivery": "support",
+          "range": 1200,
+          "duration": 5,
+          "buffMultiplier": 1.25,
+          "reduce": 0.65,
+          "healRatio": 0,
+          "cleanses": false
+        }
+      },
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true
+    },
+    "nanny_ogg_dw": {
+      "universe": "Discworld",
+      "sourceWork": "Terry Pratchett’s Discworld novels",
+      "sourceReference": "Nanny Ogg uses practical witchcraft, common sense and community support in the Witches novels.",
+      "identityBasis": "canonical-role",
+      "special": {
+        "name": "Réconfort de Nounou Ogg",
+        "type": "heal",
+        "dmg": 0,
+        "color": "#b07c91",
+        "animationDuration": 1.35,
+        "hitAt": 0.55,
+        "targeting": {
+          "effect": "heal",
+          "targetSide": "ally",
+          "shape": "group",
+          "delivery": "support",
+          "range": 1200,
+          "duration": 5,
+          "buffMultiplier": 1.25,
+          "reduce": 0.5,
+          "healRatio": 0.24,
+          "cleanses": false
+        }
+      },
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true
+    },
+    "meryl_mgs": {
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid (1998)",
+      "sourceReference": "Meryl Silverburgh carries a Desert Eagle during the Shadow Moses incident.",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Desert Eagle de Meryl",
+        "type": "projectile",
+        "dmg": 4.5,
+        "color": "#d3c1a0",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "single",
+          "delivery": "projectile",
+          "range": 640
+        }
+      }
+    },
+    "liquid_snake": {
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid (1998), Metal Gear REX rooftop fight",
+      "sourceReference": "Liquid fights Solid Snake unarmed on REX at the end of the Shadow Moses incident; this is a close-range fist combination.",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Duel sur Metal Gear REX",
+        "type": "melee",
+        "dmg": 4.6,
+        "color": "#c8b899",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "single",
+          "delivery": "melee",
+          "range": 170
+        }
+      }
+    },
+    "the_boss_mgs": {
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid 3: Snake Eater (2004)",
+      "sourceReference": "The Boss co-developed CQC and demonstrates throws and disarms during Operation Snake Eater.",
+      "identityBasis": "canonical-technique",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "CQC de The Boss",
+        "type": "melee",
+        "dmg": 4.9,
+        "color": "#c8d4c0",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "single",
+          "delivery": "melee",
+          "range": 170
+        }
+      }
+    },
+    "ocelot_mgs": {
+      "universe": "Metal Gear",
+      "sourceWork": "Metal Gear Solid (1998)",
+      "sourceReference": "Revolver Ocelot uses his Colt Single Action Army in the Shadow Moses duel.",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Single Action Army",
+        "type": "projectile",
+        "dmg": 4.6,
+        "color": "#d5bd93",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "single",
+          "delivery": "projectile",
+          "range": 640
+        }
+      }
+    },
+    "obi_wan": {
+      "universe": "Star Wars",
+      "sourceWork": "Star Wars",
+      "sourceReference": "Star Wars : Obi-Wan Kenobi maîtrise la forme III, Soresu, centrée sur la défense au sabre laser et la déviation des tirs.",
+      "identityBasis": "canonical-technique",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Soresu — défense au sabre",
+        "type": "guard",
+        "dmg": 0,
+        "color": "#5dade2",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "self",
+          "shape": "single",
+          "delivery": "support",
+          "range": 1,
+          "reduce": 0.6,
+          "duration": 4
+        }
+      }
+    },
+    "yoda": {
+      "universe": "Star Wars",
+      "sourceWork": "Star Wars",
+      "sourceReference": "Star Wars: Attack of the Clones et Revenge of the Sith : Yoda pratique une escrime acrobatique associée à la forme IV Ataru.",
+      "identityBasis": "canonical-technique",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "special": {
+        "name": "Ataru de Yoda",
+        "type": "melee",
+        "dmg": 3.8,
+        "color": "#58d68d",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "single",
+          "delivery": "melee",
+          "range": 185
+        }
+      }
+    },
+    "joel_tlou": {
+      "universe": "The Last of Us",
+      "sourceWork": "The Last of Us (2013)",
+      "sourceReference": "Joel utilise les armes de récupération pour protéger le trajet ; tir conventionnel, sans capacité liée à l’infection.",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdapted": true,
+      "special": {
+        "name": "Tir de couverture de Joel",
+        "type": "bullet",
+        "dmg": 4.5,
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "damage",
+          "targetSide": "enemy",
+          "shape": "single",
+          "delivery": "projectile",
+          "range": 720
+        },
+        "color": "#b8cc9e"
+      }
+    },
+    "tess_tlou": {
+      "universe": "The Last of Us",
+      "sourceWork": "The Last of Us (2013)",
+      "sourceReference": "Tess organise l’acheminement d’Ellie et protège la fuite ; soutien tactique de survivante.",
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdapted": true,
+      "special": {
+        "name": "Passage sécurisé par Tess",
+        "type": "shield_aoe",
+        "dmg": 0,
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "group",
+          "delivery": "support",
+          "range": 760,
+          "reduce": 0.45,
+          "duration": 4
+        },
+        "color": "#b8cc9e"
+      }
+    }
+  }
+}

@@ -29,6 +29,7 @@ import {
   tryCatchMeleeLedge
 } from './melee/meleeCombatRuntime';
 import { MELEE_TRANSITION_DATA, transitionMeleeState } from './melee/meleeStateMachine';
+import { getMeleeAnimationManifest } from './melee/meleeAnimationManifest';
 import { MELEE_ACTIONS } from './melee/meleeInputMap';
 import {
   createCanonicalTopologyPlatforms,
@@ -50,6 +51,18 @@ import {
 
 const platformTextureCanvasCache = new Map();
 const LOCAL_P2_CONTROL = 'p2';
+
+// Keep a ledge exit's authored poses while ordinary airborne locomotion runs.
+// This is a visual interval, not a movement, collision or invulnerability lock:
+// landing, regrabbing, attacks and deliberate player inputs may still interrupt.
+const isMeleeLedgeExitPlaying = actor => {
+  if (!['ledgeDrop', 'ledgeJump'].includes(actor.state)) return false;
+  const manifest = getMeleeAnimationManifest(actor.sourceHeroId || actor.sourceId || actor.id);
+  if (manifest?.universe && manifest.universe !== actor.universe) return false;
+  const animation = manifest?.animations?.[actor.state];
+  const duration = animation?.frameCount > 0 && animation?.fps > 0 ? animation.frameCount / animation.fps : 0;
+  return actor.stateElapsed < duration;
+};
 
 const isInputPressed = (keys = {}, names = []) => names.some(name => Boolean(keys[name]));
 
@@ -608,9 +621,9 @@ export class EngineSmash {
         return distanceFrom(attacker, target) <= profile.range
           && Math.abs(Math.atan2(dy, dx * facing)) <= (profile.coneAngle || 55) * Math.PI / 360;
       }
-      if (profile.delivery === 'area' || profile.delivery === 'support' || profile.effect !== 'damage'
+      if (profile.delivery === 'radial' || profile.delivery === 'area' || profile.delivery === 'support' || profile.effect !== 'damage'
         || (profile.delivery === 'melee' && profile.shape === 'area')) {
-        const radius = profile.delivery === 'melee' && profile.shape === 'area'
+        const radius = profile.delivery === 'radial' || (profile.delivery === 'melee' && profile.shape === 'area')
           ? Math.min(profile.range, profile.areaRadius || profile.range) : profile.range;
         return Math.hypot(dx, dy) <= radius;
       }
@@ -648,7 +661,8 @@ export class EngineSmash {
         const contact = confirmNativeContact ? { hp: target.currentHp, x: target.x, y: target.y } : null;
         this.applyDamage(attacker, target, attack * profile.multiplier * comboScale * powerScale, action.knockback / 10, profile.statusEffect || null, action.guardDamage);
         if (contact && target.currentHp < contact.hp && !action.visualConfirmedContact) {
-          action.visualConfirmedContact = { confirmed: true, x: contact.x, y: contact.y };
+          action.visualConfirmedContact = { confirmed: true, x: contact.x, y: contact.y,
+            ...(profile.delivery === 'radial' ? { origin: { x: attacker.x, y: attacker.y } } : {}) };
         }
       } else if (profile.effect === 'heal') {
         const maxHp = Math.max(1, Number(target.maxHp ?? target.stats?.hp ?? target.hp) || 1);
@@ -1337,7 +1351,7 @@ export class EngineSmash {
 
     if (!actor.isLeader && !['hit', 'hitStun', 'attack', 'defense'].includes(actor.state) && !isMeleeMovementLocked(actor)) {
       actor.vx = 0;
-      actor.state = 'idle';
+      if (!isMeleeLedgeExitPlaying(actor)) actor.state = 'idle';
       actor.jumpHeld = false;
     }
     actor.vy += this.gravity * (actor.fastFallHeld ? 1.75 : 1);
@@ -1699,10 +1713,10 @@ export class EngineSmash {
         if (Math.abs(distToLeader) > 80) {
           h.vx = Math.sign(distToLeader) * 2.5;
           h.facing = Math.sign(distToLeader);
-          h.state = 'run';
+          if (!isMeleeLedgeExitPlaying(h)) h.state = 'run';
         } else {
           h.vx = 0;
-          h.state = 'idle';
+          if (!isMeleeLedgeExitPlaying(h)) h.state = 'idle';
         }
 
         const leaderDeltaY = activeHero.y - h.y;
@@ -1790,10 +1804,10 @@ export class EngineSmash {
           if (e.statusEffects?.glitched > 0) speed *= 0.5; // slow down if glitched
 
           e.vx = Math.sign(dx) * speed;
-          e.state = 'run';
+          if (!isMeleeLedgeExitPlaying(e)) e.state = 'run';
         } else {
           e.vx = 0;
-          e.state = 'idle';
+          if (!isMeleeLedgeExitPlaying(e)) e.state = 'idle';
           
           e.cooldown--;
           if (e.cooldown <= 0) {
@@ -1904,7 +1918,7 @@ export class EngineSmash {
       char.airJumps = char.isBoss ? 0 : 1;
       char.fastFallHeld = false;
       if (landedFromAir && !char.action) transitionMeleeState(char, 'land', { force: true, restart: true });
-    } else if (!isMeleeMovementLocked(char)) {
+    } else if (!isMeleeMovementLocked(char) && !isMeleeLedgeExitPlaying(char)) {
       if (char.fastFallHeld && char.vy > 0.5) {
         transitionMeleeState(char, 'fastFall', { force: true });
       } else if (char.vy < -0.45 && !(char.state === 'jumpStart' && char.stateElapsed < 0.06)) {
@@ -2400,6 +2414,13 @@ export class EngineSmash {
         ctx.rotate(action.elapsed * (profile.effect === 'cleanse' ? -5 : 5));
         ctx.strokeRect(-13, -13, 26, 26);
         ctx.restore();
+      }
+    } else if (profile.delivery === 'radial') {
+      // Local augmentation feedback stays on the caster and never becomes a tracer.
+      if (release && action.visualConfirmedContact) {
+        const origin = action.visualConfirmedContact.origin || actor;
+        const radius = Math.min(range, profile.areaRadius || range);
+        ctx.beginPath(); ctx.ellipse(origin.x, origin.y - 30, Math.max(4, radius * windup), Math.max(4, radius * windup), 0, 0, Math.PI * 2); ctx.stroke();
       }
     } else if (profile.delivery === 'area') {
       const target = action.impactPoint || this.getMeleeSuperTargets(actor, profile, facing)[0];

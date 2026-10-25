@@ -1,0 +1,837 @@
+
+> lively-darwin@0.0.0 music:audit
+> node scripts/stageMusicAudit.mjs
+
+{
+  "coverage": [
+    {
+      "universe": "Gears of War",
+      "normalizedUniverse": "Gears of War",
+      "profileId": "mus-gears-of-war",
+      "family": "militarySciFi",
+      "tempo": 115,
+      "meter": "6/8",
+      "steps": 168,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "The Predator",
+      "normalizedUniverse": "Predator",
+      "profileId": "mus-predator",
+      "family": "xenoHorror",
+      "tempo": 98,
+      "meter": "4/8",
+      "steps": 204,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Predator: Killer of Killers",
+      "normalizedUniverse": "Predator",
+      "profileId": "mus-predator",
+      "family": "xenoHorror",
+      "tempo": 129,
+      "meter": "4/8",
+      "steps": 204,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Predator: Badlands",
+      "normalizedUniverse": "Predator",
+      "profileId": "mus-predator",
+      "family": "xenoHorror",
+      "tempo": 111,
+      "meter": "4/8",
+      "steps": 204,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Daft Punk",
+      "normalizedUniverse": "Daft Punk",
+      "profileId": "mus-daft-punk",
+      "family": "electronicStage",
+      "tempo": 128,
+      "meter": "4/4",
+      "steps": 576,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Oliver Tree",
+      "normalizedUniverse": "Oliver Tree",
+      "profileId": "mus-oliver-tree",
+      "family": "electronicStage",
+      "tempo": 105,
+      "meter": "4/4",
+      "steps": 384,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Hazbin Hotel",
+      "normalizedUniverse": "Hazbin Hotel",
+      "profileId": "mus-hazbin-hotel",
+      "family": "comedyOddity",
+      "tempo": 113,
+      "meter": "4/4",
+      "steps": 208,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Vocaloid",
+      "normalizedUniverse": "Vocaloid",
+      "profileId": "mus-vocaloid",
+      "family": "electronicStage",
+      "tempo": 145,
+      "meter": "4/4",
+      "steps": 448,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Splatterhouse",
+      "normalizedUniverse": "Splatterhouse",
+      "profileId": "mus-splatterhouse",
+      "family": "survivalHorror",
+      "tempo": 78,
+      "meter": "4/4",
+      "steps": 192,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Streets of Rage",
+      "normalizedUniverse": "Streets of Rage",
+      "profileId": "mus-streets-of-rage",
+      "family": "retroArcade",
+      "tempo": 129,
+      "meter": "4/4",
+      "steps": 192,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Toy Soldiers",
+      "normalizedUniverse": "Toy Soldiers",
+      "profileId": "mus-toy-soldiers",
+      "family": "militarySciFi",
+      "tempo": 125,
+      "meter": "6/8",
+      "steps": 156,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Stargate",
+      "normalizedUniverse": "Stargate",
+      "profileId": "mus-stargate",
+      "family": "militarySciFi",
+      "tempo": 84,
+      "meter": "6/8",
+      "steps": 144,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Zombies Ate My Neighbors",
+      "normalizedUniverse": "Zombies Ate My Neighbors",
+      "profileId": "mus-zombies-ate-my-neighbors",
+      "family": "retroArcade",
+      "tempo": 136,
+      "meter": "4/4",
+      "steps": 208,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Spy x Family",
+      "normalizedUniverse": "Spy x Family",
+      "profileId": "mus-spy-x-family",
+      "family": "stealthTactical",
+      "tempo": 125,
+      "meter": "5/8",
+      "steps": 260,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "War of the Worlds",
+      "normalizedUniverse": "War of the Worlds",
+      "profileId": "mus-war-of-the-worlds",
+      "family": "militarySciFi",
+      "tempo": 133,
+      "meter": "5/4",
+      "steps": 260,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Ghostbusters",
+      "normalizedUniverse": "Ghostbusters",
+      "profileId": "mus-ghostbusters",
+      "family": "comedyOddity",
+      "tempo": 107,
+      "meter": "4/4",
+      "steps": 208,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Tremors",
+      "normalizedUniverse": "Tremors",
+      "profileId": "mus-tremors",
+      "family": "xenoHorror",
+      "tempo": 111,
+      "meter": "6/8",
+      "steps": 156,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Heavy Metal 2000",
+      "normalizedUniverse": "Heavy Metal 2000",
+      "profileId": "mus-heavy-metal-2000",
+      "family": "industrialMetal",
+      "tempo": 125,
+      "meter": "7/8",
+      "steps": 182,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Exit 8",
+      "normalizedUniverse": "Exit 8",
+      "profileId": "mus-exit-8",
+      "family": "psychologicalHorror",
+      "tempo": 62,
+      "meter": "4/4",
+      "steps": 224,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "The Thing",
+      "normalizedUniverse": "The Thing",
+      "profileId": "mus-the-thing",
+      "family": "xenoHorror",
+      "tempo": 57,
+      "meter": "5/4",
+      "steps": 290,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Starship Troopers",
+      "normalizedUniverse": "Starship Troopers",
+      "profileId": "mus-starship-troopers",
+      "family": "militarySciFi",
+      "tempo": 150,
+      "meter": "6/8",
+      "steps": 168,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Voyage de Chihiro",
+      "normalizedUniverse": "Voyage de Chihiro",
+      "profileId": "mus-voyage-de-chihiro",
+      "family": "arcaneFantasy",
+      "tempo": 88,
+      "meter": "6/8",
+      "steps": 162,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Death Note",
+      "normalizedUniverse": "Death Note",
+      "profileId": "mus-death-note",
+      "family": "stealthTactical",
+      "tempo": 123,
+      "meter": "7/8",
+      "steps": 196,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Saw",
+      "normalizedUniverse": "Saw",
+      "profileId": "mus-saw",
+      "family": "psychologicalHorror",
+      "tempo": 107,
+      "meter": "5/4",
+      "steps": 220,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "From",
+      "normalizedUniverse": "From",
+      "profileId": "mus-from",
+      "family": "psychologicalHorror",
+      "tempo": 92,
+      "meter": "6/8",
+      "steps": 156,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "House of 1000 Corpses",
+      "normalizedUniverse": "House of 1000 Corpses",
+      "profileId": "mus-house-of-1000-corpses",
+      "family": "survivalHorror",
+      "tempo": 87,
+      "meter": "12/8",
+      "steps": 312,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Iron Sky",
+      "normalizedUniverse": "Iron Sky",
+      "profileId": "mus-iron-sky",
+      "family": "militarySciFi",
+      "tempo": 151,
+      "meter": "4/4",
+      "steps": 208,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Killer Tomatoes from Outer Space",
+      "normalizedUniverse": "Killer Tomatoes from Outer Space",
+      "profileId": "mus-killer-tomatoes-from-outer-space",
+      "family": "comedyOddity",
+      "tempo": 115,
+      "meter": "7/8",
+      "steps": 210,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Sharknado",
+      "normalizedUniverse": "Sharknado",
+      "profileId": "mus-sharknado",
+      "family": "comedyOddity",
+      "tempo": 171,
+      "meter": "6/8",
+      "steps": 336,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Godzilla The Animated Series",
+      "normalizedUniverse": "Godzilla The Animated Series",
+      "profileId": "mus-godzilla-the-animated-series",
+      "family": "militarySciFi",
+      "tempo": 91,
+      "meter": "5/4",
+      "steps": 260,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Pee-wee",
+      "normalizedUniverse": "Pee-wee",
+      "profileId": "mus-pee-wee",
+      "family": "comedyOddity",
+      "tempo": 152,
+      "meter": "5/8",
+      "steps": 260,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Planete Hurlante",
+      "normalizedUniverse": "Planete Hurlante",
+      "profileId": "mus-planete-hurlante",
+      "family": "xenoHorror",
+      "tempo": 111,
+      "meter": "7/8",
+      "steps": 196,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Kazaam",
+      "normalizedUniverse": "Kazaam",
+      "profileId": "mus-kazaam",
+      "family": "electronicStage",
+      "tempo": 138,
+      "meter": "4/4",
+      "steps": 384,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "House of the Dead",
+      "normalizedUniverse": "House of the Dead",
+      "profileId": "mus-house-of-the-dead",
+      "family": "survivalHorror",
+      "tempo": 125,
+      "meter": "4/4",
+      "steps": 416,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "House of the Dead 2",
+      "normalizedUniverse": "House of the Dead 2",
+      "profileId": "mus-house-of-the-dead-2",
+      "family": "survivalHorror",
+      "tempo": 127,
+      "meter": "7/8",
+      "steps": 210,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "House of the Dead 3",
+      "normalizedUniverse": "House of the Dead 3",
+      "profileId": "mus-house-of-the-dead-3",
+      "family": "survivalHorror",
+      "tempo": 125,
+      "meter": "6/8",
+      "steps": 336,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "The Simpsons",
+      "normalizedUniverse": "The Simpsons",
+      "profileId": "mus-the-simpsons",
+      "family": "comedyOddity",
+      "tempo": 115,
+      "meter": "4/4",
+      "steps": 192,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Futurama",
+      "normalizedUniverse": "Futurama",
+      "profileId": "mus-futurama",
+      "family": "electronicStage",
+      "tempo": 142,
+      "meter": "7/8",
+      "steps": 210,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Final Fantasy VII",
+      "normalizedUniverse": "Final Fantasy VII",
+      "profileId": "mus-final-fantasy-vii",
+      "family": "animeHeroic",
+      "tempo": 146,
+      "meter": "5/4",
+      "steps": 260,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Left 4 Dead",
+      "normalizedUniverse": "Left 4 Dead",
+      "profileId": "mus-left-4-dead",
+      "family": "survivalHorror",
+      "tempo": 121,
+      "meter": "4/4",
+      "steps": 416,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Cyberpunk: Edgerunners",
+      "normalizedUniverse": "Cyberpunk: Edgerunners",
+      "profileId": "mus-cyberpunk-edgerunners",
+      "family": "cyberNetwork",
+      "tempo": 139,
+      "meter": "4/4",
+      "steps": 448,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Chainsaw Man",
+      "normalizedUniverse": "Chainsaw Man",
+      "profileId": "mus-chainsaw-man",
+      "family": "animeHeroic",
+      "tempo": 142,
+      "meter": "4/4",
+      "steps": 224,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Demon Slayer",
+      "normalizedUniverse": "Demon Slayer",
+      "profileId": "mus-demon-slayer",
+      "family": "animeHeroic",
+      "tempo": 159,
+      "meter": "6/8",
+      "steps": 168,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Steins;Gate",
+      "normalizedUniverse": "Steins;Gate",
+      "profileId": "mus-steins-gate",
+      "family": "cyberNetwork",
+      "tempo": 109,
+      "meter": "5/4",
+      "steps": 200,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Dragon Ball Z",
+      "normalizedUniverse": "Dragon Ball Z",
+      "profileId": "mus-dragon-ball-z",
+      "family": "animeHeroic",
+      "tempo": 184,
+      "meter": "4/4",
+      "steps": 128,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Tokyo Ghoul",
+      "normalizedUniverse": "Tokyo Ghoul",
+      "profileId": "mus-tokyo-ghoul",
+      "family": "animeHeroic",
+      "tempo": 108,
+      "meter": "5/4",
+      "steps": 200,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Fullmetal Alchemist",
+      "normalizedUniverse": "Fullmetal Alchemist",
+      "profileId": "mus-fullmetal-alchemist",
+      "family": "animeHeroic",
+      "tempo": 166,
+      "meter": "6/8",
+      "steps": 102,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Neon Genesis Evangelion",
+      "normalizedUniverse": "Neon Genesis Evangelion",
+      "profileId": "mus-neon-genesis-evangelion",
+      "family": "militarySciFi",
+      "tempo": 80,
+      "meter": "5/4",
+      "steps": 200,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Parasyte",
+      "normalizedUniverse": "Parasyte",
+      "profileId": "mus-parasyte",
+      "family": "xenoHorror",
+      "tempo": 149,
+      "meter": "5/4",
+      "steps": 260,
+      "policy": "original-procedural-only"
+    },
+    {
+      "universe": "Uzumaki",
+      "normalizedUniverse": "Uzumaki",
+      "profileId": "mus-uzumaki",
+      "family": "psychologicalHorror",
+      "tempo": 67,
+      "meter": "5/4",
+      "steps": 300,
+      "policy": "original-procedural-only"
+    }
+  ],
+  "states": [
+    {
+      "state": "grid",
+      "tempo": 128,
+      "density": 0.458,
+      "bossLayer": false
+    },
+    {
+      "state": "battle",
+      "tempo": 146,
+      "density": 0.954,
+      "bossLayer": false
+    },
+    {
+      "state": "boss",
+      "tempo": 142,
+      "density": 1.145,
+      "bossLayer": true
+    },
+    {
+      "state": "race",
+      "tempo": 146,
+      "density": 1.03,
+      "bossLayer": false
+    },
+    {
+      "state": "lastLap",
+      "tempo": 176,
+      "density": 1.164,
+      "bossLayer": false
+    },
+    {
+      "state": "victory",
+      "tempo": 133,
+      "density": 0.553,
+      "bossLayer": false
+    }
+  ],
+  "modes": [
+    {
+      "mode": "RPG",
+      "tempo": 96,
+      "density": 0.752
+    },
+    {
+      "mode": "Tactics",
+      "tempo": 88,
+      "density": 0.672
+    },
+    {
+      "mode": "Smash",
+      "tempo": 126,
+      "density": 0.864
+    },
+    {
+      "mode": "Fighter",
+      "tempo": 109,
+      "density": 0.88
+    },
+    {
+      "mode": "FPS",
+      "tempo": 100,
+      "density": 0.832
+    },
+    {
+      "mode": "Race",
+      "tempo": 120,
+      "density": 0.848
+    }
+  ],
+  "animeLot": [
+    {
+      "universe": "Dragon Ball Z",
+      "profileId": "mus-dragon-ball-z",
+      "modes": [
+        {
+          "mode": "Fighter",
+          "modeVariant": "combat",
+          "tempo": 158,
+          "meter": "4/4",
+          "steps": 128
+        },
+        {
+          "mode": "Smash",
+          "modeVariant": "melee",
+          "tempo": 163,
+          "meter": "4/4",
+          "steps": 128
+        },
+        {
+          "mode": "RPG",
+          "modeVariant": "rpg",
+          "tempo": 93,
+          "meter": "4/4",
+          "steps": 224
+        },
+        {
+          "mode": "Tactics",
+          "modeVariant": "tactics",
+          "tempo": 103,
+          "meter": "5/4",
+          "steps": 200
+        }
+      ],
+      "boss": {
+        "encounterVariant": "boss",
+        "tempo": 157,
+        "steps": 80
+      },
+      "worldBoss": {
+        "encounterVariant": "worldBoss",
+        "tempo": 175,
+        "steps": 80
+      }
+    },
+    {
+      "universe": "Tokyo Ghoul",
+      "profileId": "mus-tokyo-ghoul",
+      "modes": [
+        {
+          "mode": "Fighter",
+          "modeVariant": "combat",
+          "tempo": 160,
+          "meter": "4/4",
+          "steps": 256
+        },
+        {
+          "mode": "Smash",
+          "modeVariant": "melee",
+          "tempo": 176,
+          "meter": "4/4",
+          "steps": 256
+        },
+        {
+          "mode": "RPG",
+          "modeVariant": "rpg",
+          "tempo": 94,
+          "meter": "4/4",
+          "steps": 240
+        },
+        {
+          "mode": "Tactics",
+          "modeVariant": "tactics",
+          "tempo": 99,
+          "meter": "5/4",
+          "steps": 200
+        }
+      ],
+      "boss": {
+        "encounterVariant": "boss",
+        "tempo": 137,
+        "steps": 120
+      },
+      "worldBoss": {
+        "encounterVariant": "worldBoss",
+        "tempo": 153,
+        "steps": 72
+      }
+    },
+    {
+      "universe": "Fullmetal Alchemist",
+      "profileId": "mus-fullmetal-alchemist",
+      "modes": [
+        {
+          "mode": "Fighter",
+          "modeVariant": "combat",
+          "tempo": 164,
+          "meter": "4/4",
+          "steps": 128
+        },
+        {
+          "mode": "Smash",
+          "modeVariant": "melee",
+          "tempo": 156,
+          "meter": "6/8",
+          "steps": 102
+        },
+        {
+          "mode": "RPG",
+          "modeVariant": "rpg",
+          "tempo": 105,
+          "meter": "6/8",
+          "steps": 168
+        },
+        {
+          "mode": "Tactics",
+          "modeVariant": "tactics",
+          "tempo": 95,
+          "meter": "4/4",
+          "steps": 192
+        }
+      ],
+      "boss": {
+        "encounterVariant": "boss",
+        "tempo": 163,
+        "steps": 54
+      },
+      "worldBoss": {
+        "encounterVariant": "worldBoss",
+        "tempo": 171,
+        "steps": 72
+      }
+    },
+    {
+      "universe": "Neon Genesis Evangelion",
+      "profileId": "mus-neon-genesis-evangelion",
+      "modes": [
+        {
+          "mode": "Fighter",
+          "modeVariant": "combat",
+          "tempo": 149,
+          "meter": "5/4",
+          "steps": 180
+        },
+        {
+          "mode": "Smash",
+          "modeVariant": "melee",
+          "tempo": 175,
+          "meter": "7/8",
+          "steps": 126
+        },
+        {
+          "mode": "RPG",
+          "modeVariant": "rpg",
+          "tempo": 64,
+          "meter": "5/4",
+          "steps": 300
+        },
+        {
+          "mode": "Tactics",
+          "modeVariant": "tactics",
+          "tempo": 90,
+          "meter": "5/4",
+          "steps": 200
+        }
+      ],
+      "boss": {
+        "encounterVariant": "boss",
+        "tempo": 138,
+        "steps": 120
+      },
+      "worldBoss": {
+        "encounterVariant": "worldBoss",
+        "tempo": 137,
+        "steps": 72
+      }
+    }
+  ],
+  "steinsGate": {
+    "profileId": "mus-steins-gate",
+    "modes": [
+      {
+        "mode": "Combat",
+        "modeVariant": "combat",
+        "tempo": 167,
+        "meter": "4/4",
+        "steps": 256
+      },
+      {
+        "mode": "Melee",
+        "modeVariant": "melee",
+        "tempo": 155,
+        "meter": "7/8",
+        "steps": 126
+      },
+      {
+        "mode": "RPG",
+        "modeVariant": "rpg",
+        "tempo": 79,
+        "meter": "4/4",
+        "steps": 240
+      },
+      {
+        "mode": "Tactics",
+        "modeVariant": "tactics",
+        "tempo": 97,
+        "meter": "5/4",
+        "steps": 200
+      }
+    ],
+    "aliases": [
+      {
+        "mode": "Fighter",
+        "modeVariant": "combat",
+        "tempo": 137
+      },
+      {
+        "mode": "Smash",
+        "modeVariant": "melee",
+        "tempo": 163
+      }
+    ],
+    "boss": {
+      "encounterVariant": "boss",
+      "tempo": 143,
+      "density": 1.196
+    },
+    "worldBoss": {
+      "encounterVariant": "worldBoss",
+      "tempo": 180,
+      "density": 1.25,
+      "sections": [
+        "beta-attractor-lock",
+        "observed-history-feint",
+        "operation-skuld",
+        "steins-gate-world-line"
+      ]
+    }
+  },
+  "hiddenDlcFallback": {
+    "universe": "Nexus de Convergence",
+    "profileId": "mus-nexus-de-convergence"
+  },
+  "fusion": {
+    "sources": [
+      "Halo",
+      "Silent Hill"
+    ],
+    "profileId": "fusion-mus-halo-mus-silent-hill"
+  },
+  "allLoreStages": {
+    "profiles": 298,
+    "views": 1192,
+    "uniqueRuntimeKeys": 1192,
+    "dedicatedViews": 292,
+    "fusionViews": 56,
+    "proceduralUniverseViews": 844,
+    "familyFallbackViews": 0
+  }
+}

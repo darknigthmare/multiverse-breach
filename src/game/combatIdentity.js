@@ -1,3 +1,6 @@
+import { ROSTER_REINFORCEMENTS_WAVE14 } from './combat/rosterReinforcementsWave14.js';
+import { ROSTER_REINFORCEMENTS_WAVE12 } from './combat/rosterReinforcementsWave12.js';
+import { ROSTER_REINFORCEMENTS_WAVE13 } from './combat/rosterReinforcementsWave13.js';
 import { HEROES_DB } from './heroes.js';
 import { CANONICAL_COMBAT_OVERRIDES, CANONICAL_UNIVERSE_SUMMONS } from './canonicalCombatOverrides.js';
 import { CANONICAL_COMBAT_EXTENSIONS } from './combatCanonExtensions.js';
@@ -76,7 +79,7 @@ function abilityProfile(actor, slot, action) {
   const supported = beneficial.has(effect);
   const declaredDelivery = explicit.delivery || action.delivery;
   const delivery = supported ? 'support'
-    : ['melee', 'projectile', 'beam', 'area'].includes(declaredDelivery) ? declaredDelivery
+    : ['melee', 'projectile', 'beam', 'area', 'radial'].includes(declaredDelivery) ? declaredDelivery
       : /melee|slash|punch|dodge_strike|drill_smash/.test(type) ? 'melee'
         : /beam|laser/.test(type) ? 'beam'
           : /bullet|shotgun|rocket|projectile|boomerang|cannon/.test(type) ? 'projectile' : 'area';
@@ -213,7 +216,7 @@ export function resolveUniverseSummon(actor) {
   // Empty enemy shells do not acquire a made-up special merely by sharing a
   // universe string with a roster character.
   if (!slots.some(slot => hasAbility(actor[slot]))) return null;
-  const selectedPartner = ROSTER_REINFORCEMENTS_WAVE11[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE10[identity(actor)];
+  const selectedPartner = ROSTER_REINFORCEMENTS_WAVE14[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE13[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE12[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE11[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE10[identity(actor)];
   if (selectedPartner?.universe === actor.universe) {
     const performer = heroSpriteIdentities.get(selectedPartner.performerHeroId);
     const slot = selectedPartner.slot;
@@ -230,7 +233,7 @@ export function resolveUniverseSummon(actor) {
         sourceAbility: { ...clone(rawAction), slot, sourceHeroId: performer.id },
         provenance: { ...effective.provenance, kind: 'same-universe-reinforcement',
           canonicalEntity: false, entityAssetMissing: false, sourceRosterHeroId: performer.id,
-          partnerSelection: selectedPartner.sourceWave === 11 ? 'wave11-explicit-source-version' : 'wave10-explicit-source-version',
+          partnerSelection: `wave${selectedPartner.sourceWave}-explicit-source-version`,
           sourceRulesLimit: 'Real same-universe partner; one bounded effect, no invented entity or transferred biology.' }
       });
     }

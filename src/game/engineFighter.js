@@ -1,8 +1,11 @@
+import { COMBAT_SOURCE_DEFINITIONS_WAVE14 } from './combat/combatSourceDefinitionsWave14.js';
 import { drawCosmeticAtlasFrame, drawPixelSprite } from './renderer';
 import { combatBuffSource } from './combat/characterFormState';
 import { drawCharacterSuperVisuals, getCharacterSuperVisualState } from './combat/characterSuperVisuals';
 import { supportsTrackedCharacterSuperVisual } from './combat/characterSuperVisuals';
 import { supportsConfirmedCharacterSuperContact } from './combat/characterSuperVisuals.js';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE12 } from './combat/combatSourceDefinitionsWave12.js';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE13 } from './combat/combatSourceDefinitionsWave13.js';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { resolveFighterTagEntry } from './fighterTagPlacement.js';
@@ -525,6 +528,7 @@ export class EngineFighter {
       hitAt: identity.hitAt,
       base: identity.effect === 'damage' ? (fallback?.base || 9.5) * identity.multiplier : 0,
       range: identity.range,
+      areaRadius: identity.areaRadius,
       delivery: identity.delivery,
       effect: identity.effect,
       color: identity.color,
@@ -568,6 +572,7 @@ export class EngineFighter {
       hitAt: identity.hitAt,
       base: 23 * identity.multiplier,
       range: identity.range,
+      areaRadius: identity.areaRadius,
       guardDamage: 42,
       knockback: 330,
       meterCost: identity.meterCost,
@@ -870,6 +875,9 @@ export class EngineFighter {
           this.resolveSupportSuper(fighter, action);
         } else if ((action.authoredAbility || action.type === 'super') ? action.delivery === 'projectile' : action.type === 'special' && fighter.ranged) {
           this.spawnProjectile(fighter, action);
+        } else if ((action.authoredAbility || action.type === 'super') && action.delivery === 'radial') {
+          const radius = Math.min(action.range, action.areaRadius || action.range);
+          if (target && Math.hypot(target.x - fighter.x, target.y - fighter.y) <= radius) this.applyHit(fighter, target, action);
         } else if ((action.authoredAbility || action.type === 'super') && action.delivery === 'area') {
           if (target && Math.abs(target.x - fighter.x) <= action.range && Math.abs(target.y - fighter.y) < 150) this.applyHit(fighter, target, action);
         } else {
@@ -931,9 +939,9 @@ export class EngineFighter {
     const radius = action.type === 'super' ? 22 : 13;
     const target = nativeVisual ? this.getOpponent(fighter.side) : null;
     const visual = nativeVisual ? getCharacterSuperVisualState({ actor: fighter, profile: action.identity, action, target, height: 142 }) : null;
-    // W9/W10 weapons launch from their measured native barrel; earlier
+    // Authored weapon families launch from their measured native barrel; earlier
     // projectile families retain their existing origin and lifetime.
-    const nativeMuzzle = ['native-wave9', 'native-wave10', 'native-wave11'].includes(visual?.family) && visual.nativeMuzzleActive ? visual.origin : null;
+    const nativeMuzzle = ['native-wave9', 'native-wave10', 'native-wave11', 'native-wave12', 'native-wave13', 'native-wave14'].includes(visual?.family) && visual.nativeMuzzleActive ? visual.origin : null;
     const origin = nativeMuzzle || { x: fighter.x + direction * 58, y: fighter.y - 64 };
     const originDistance = (origin.x - fighter.x) * direction;
     this.projectiles.push({
@@ -1057,7 +1065,8 @@ export class EngineFighter {
       && !action.visualConfirmedContact) {
       // Cosmetic contact follows this accepted hit, including its original
       // location after a KO or knockback. Drawing never selects another victim.
-      action.visualConfirmedContact = { confirmed: true, x: target.x, y: target.y };
+      action.visualConfirmedContact = { confirmed: true, x: target.x, y: target.y,
+        ...(action.delivery === 'radial' ? { origin: { x: attacker.x, y: attacker.y } } : {}) };
     }
     attacker.meter = clamp(attacker.meter + damage * (blocked ? 0.42 : 0.82), 0, 100);
     target.meter = clamp(target.meter + damage * 0.55, 0, 100);
@@ -1680,6 +1689,13 @@ export class EngineFighter {
 
   drawScriptedPresentationEffect(ctx, sample, identity, x, feetY, facing, phase = 'fatality') {
     if (!sample.effect.active || sample.effect.kind === 'none') return;
+    // These source-specific presentation poses already contain their gestures.
+    // A cinematic has no accepted simulation contact. Do not fall through to
+    // the generic body aura or invent a shot/hit for a native W12 finale.
+    const nativeSource = COMBAT_SOURCE_DEFINITIONS_WAVE14[identity.sourceHeroId]
+      || COMBAT_SOURCE_DEFINITIONS_WAVE13[identity.sourceHeroId]
+      || COMBAT_SOURCE_DEFINITIONS_WAVE12[identity.sourceHeroId];
+    if (nativeSource && nativeSource.universe === identity.provenance?.sourceUniverse) return;
     const kind = sample.effect.kind;
     const characterVisual = getCharacterSuperVisualState({
         actor: { x, y: feetY, sourceHeroId: identity.sourceHeroId, universe: identity.provenance?.sourceUniverse,

@@ -8,6 +8,7 @@ import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { renderStageAtmosphere } from './melee/stageAtmosphere';
 import { getCharacterAnimationFrame, resolveCharacterAnimationAsset } from './combat/characterAnimationCatalog';
 import { sampleCharacterSuperMotion } from './combat/characterSuperVisuals';
+import { resolveCombatHeroSpriteActor } from './combatIdentity.js';
 import { getCharacterFormFrame } from './combat/characterFormState';
 import { resolveCharacterFormAsset } from './combat/characterFormCatalog';
 import {
@@ -886,6 +887,13 @@ const drawOriginForgeThreat = (ctx, x, y, enemy, animTime, facing, targetHeight 
 
 export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1, targetHeight = 68) => {
   if (drawOriginForgeThreat(ctx, x, y, enemy, animTime, facing, targetHeight)) return;
+  // Custom opposing squads retain their real hero identity. The shared hero
+  // renderer selects dedicated presentation cells before that hero's base PNG.
+  const heroActor = resolveCombatHeroSpriteActor(enemy);
+  if (heroActor) {
+    drawPixelSprite(ctx, x, y, heroActor, animTime, facing, targetHeight);
+    return;
+  }
   const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, enemy, animTime, facing, targetHeight, getEnemySpriteSheetSrc, () => {
     drawPixelEnemy(ctx, x, y, enemy, animTime, facing, targetHeight);
   });

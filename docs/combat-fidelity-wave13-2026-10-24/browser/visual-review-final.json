@@ -1,0 +1,540 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-25T06:24:20.526Z",
+  "passed": true,
+  "preliminary": false,
+  "source1to1Verified": false,
+  "certifiedOneToOne": false,
+  "productionFreezePath": "docs/combat-fidelity-wave13-2026-10-24/production-freeze.json",
+  "productionFreezeCreatedAt": "2026-10-25T06:21:35.273Z",
+  "productionFreezeSha256": "8154f653bc99249cd928dc9ccbc0d95b5e8b534ee8bf5e3181b30df8aaae9a0e",
+  "allBrowserWindowsClosed": true,
+  "productionInputsStableDuringRun": true,
+  "historicalPngHashesPreserved": 556,
+  "historicalRegistryHashesPreserved": 104,
+  "deliveredNative32": 35,
+  "deliveredBase16": 35,
+  "selectedCharacterCount": 40,
+  "pendingIds": [],
+  "initialRefusalIds": [
+    "darth_maul",
+    "obi_wan",
+    "vader",
+    "yoda"
+  ],
+  "sourceRejectedIds": [
+    "ahsoka_adult"
+  ],
+  "missingNativeHeroIds": [
+    "ahsoka_adult",
+    "darth_maul",
+    "obi_wan",
+    "vader",
+    "yoda"
+  ],
+  "refusalScope": "Four initial moderation refusals; Ahsoka received two invalid sources and its corrective native32/base16 requests were refused. Receipts, request IDs and rejected source hashes are bound by both final reports. No retry or refused image is counted as a delivery.",
+  "actualContactSheetsViewed": 16,
+  "nativeContactSheetsViewed": 8,
+  "baseContactSheetsViewed": 8,
+  "visualScope": "Every final contact sheet was actually viewed. Representative source column 2, both camps: all eight native phases for 35 delivered identities, all four base states for 35 delivered identities, and eight retained fallback rows for five absent identities in each type. This is one of four columns; bound actual drawImage traces check every column, both facings and all declared phases/states. Exact source-to-screen 1:1 fidelity is not certified.",
+  "findings": [
+    "The reviewed delivered native/base representatives keep complete visible bodies and equipment, with no obvious cross-cell intrusion, clipping or broken P1/P2 reflection.",
+    "Big Boss uses the corrected source12 suppressed pistol; the reviewed native fatality/super and base attack samples show a long dark suppressor with no flash in its middle.",
+    "Joel uses the accepted corrected compact handgun source; its flash is visible. Revolver cylinder detail is too small in these runtime contacts to establish independently.",
+    "Luke, Aayla and Revan retain green, blue and red blade identities; Gray Fox keeps the long blade and Death keeps the full scythe in the samples.",
+    "The five absent identities visibly use their retained historical drawings. Several fallback rows repeat existing cells, with older effects including Ahsoka blade arcs and Yoda sparks. They count as zero new dedicated poses.",
+    "The final runtime reports have no internal page errors. Each records only the expected failed Google Fonts request with net::ERR_TUNNEL_CONNECTION_FAILED."
+  ],
+  "limitations": [
+    "Visual inspection is the representative column 2, not visual inspection of every source column.",
+    "Source provenance and all four source columns are checked by hashes and bound runtime traces; those checks do not establish exact artistic fidelity."
+  ],
+  "reports": [
+    {
+      "kind": "native",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-presentations.json",
+      "sha256": "e03e20fd7b2de10d7c90e28b248efd9dd5464a89baf2fa4cf5c340748861eb29",
+      "startedAt": "2026-10-25T06:21:57.877Z",
+      "browserClosedAt": "2026-10-25T06:22:26.915Z",
+      "finishedAt": "2026-10-25T06:22:32.104Z",
+      "allBrowserWindowsClosed": true,
+      "newCharacters": 35,
+      "newFrameDraws": 2240,
+      "actualFrameDraws": 17088,
+      "historicalDrawGeometryUnchanged": 14848,
+      "refusedTracePath": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-trace.json",
+      "refusedTraceSha256": "fa355ca353a621206755c9426a06ae09ab813dded831abe1eeb55d5b9f4b6eea",
+      "refusedFrameDraws": 320,
+      "refusedCaptureCount": 5,
+      "productionInputsStableDuringRun": true
+    },
+    {
+      "kind": "base",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-corrections.json",
+      "sha256": "b0eda4ef9eae03bd6c40a1294ecf09272e88e15876d32b10f697b11668e93741",
+      "startedAt": "2026-10-25T06:21:57.846Z",
+      "browserClosedAt": "2026-10-25T06:22:24.373Z",
+      "finishedAt": "2026-10-25T06:22:31.829Z",
+      "allBrowserWindowsClosed": true,
+      "newCharacters": 35,
+      "newFrameDraws": 1120,
+      "actualFrameDraws": 6848,
+      "historicalDrawGeometryUnchanged": 5728,
+      "refusedTracePath": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/base-final-20261025062157846/refused-base-fallback-trace.json",
+      "refusedTraceSha256": "2f53c565e537b72278fa6e707f88570b521d9602d05be08dac35027e85d12346",
+      "refusedFrameDraws": 640,
+      "refusedCaptureCount": 5,
+      "productionInputsStableDuringRun": true
+    }
+  ],
+  "contactManifests": [
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-contacts.json",
+      "sha256": "ef5fe1d29fba596f01509fda97d9b736addd901c0fa5445779ff75bc1e4fa9c8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-contacts.json",
+      "sha256": "3688007b4a195182ef6c495293341f2166c764de3ab9a71e1b7becdb876c3100"
+    }
+  ],
+  "viewedContacts": [
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-a-1.png",
+      "part": "A",
+      "captureKind": "delivered",
+      "rows": 8,
+      "heroIds": [
+        "ripley",
+        "hicks",
+        "bishop",
+        "dallas_alien",
+        "parker_alien"
+      ],
+      "kind": "native",
+      "reviewer": "assets_final",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-a-2.png",
+      "part": "A",
+      "captureKind": "delivered",
+      "rows": 8,
+      "heroIds": [
+        "lambert_alien",
+        "ash_alien",
+        "amanda_ripley",
+        "chell",
+        "atlas"
+      ],
+      "kind": "native",
+      "reviewer": "assets_final",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-a-3.png",
+      "part": "A",
+      "captureKind": "delivered",
+      "rows": 8,
+      "heroIds": [
+        "pbody",
+        "glados",
+        "wheatley",
+        "doug_rattmann",
+        "rincewind_dw"
+      ],
+      "kind": "native",
+      "reviewer": "assets_final",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-a-4.png",
+      "part": "A",
+      "captureKind": "delivered",
+      "rows": 8,
+      "heroIds": [
+        "vimes_dw",
+        "granny_dw",
+        "twoflower_dw",
+        "death_dw",
+        "nanny_ogg_dw"
+      ],
+      "kind": "native",
+      "reviewer": "assets_final",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-b-1.png",
+      "part": "B",
+      "captureKind": "delivered",
+      "rows": 8,
+      "heroIds": [
+        "meryl_mgs",
+        "liquid_snake",
+        "the_boss_mgs",
+        "ocelot_mgs",
+        "gray_fox"
+      ],
+      "kind": "native",
+      "reviewer": "assets_final",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-b-2.png",
+      "part": "B",
+      "captureKind": "delivered",
+      "rows": 8,
+      "heroIds": [
+        "big_boss",
+        "luke",
+        "aayla_secura",
+        "darth_revan",
+        "joel_tlou"
+      ],
+      "kind": "native",
+      "reviewer": "assets_final",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-b-3.png",
+      "part": "B",
+      "captureKind": "delivered",
+      "rows": 8,
+      "heroIds": [
+        "tess_tlou",
+        "tommy_tlou",
+        "dina_tlou2",
+        "abby_tlou2",
+        "hayden"
+      ],
+      "kind": "native",
+      "reviewer": "assets_final",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-refused-1.png",
+      "part": "refused",
+      "captureKind": "retained-historical-fallback",
+      "rows": 8,
+      "heroIds": [
+        "darth_maul",
+        "obi_wan",
+        "vader",
+        "yoda",
+        "ahsoka_adult"
+      ],
+      "kind": "native",
+      "reviewer": "assets_final",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-a-1.png",
+      "part": "A",
+      "captureKind": "delivered",
+      "rows": 4,
+      "heroIds": [
+        "ripley",
+        "hicks",
+        "bishop",
+        "dallas_alien",
+        "parker_alien"
+      ],
+      "kind": "base",
+      "reviewer": "assets_final/refusal_check",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-a-2.png",
+      "part": "A",
+      "captureKind": "delivered",
+      "rows": 4,
+      "heroIds": [
+        "lambert_alien",
+        "ash_alien",
+        "amanda_ripley",
+        "chell",
+        "atlas"
+      ],
+      "kind": "base",
+      "reviewer": "assets_final/refusal_check",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-a-3.png",
+      "part": "A",
+      "captureKind": "delivered",
+      "rows": 4,
+      "heroIds": [
+        "pbody",
+        "glados",
+        "wheatley",
+        "doug_rattmann",
+        "rincewind_dw"
+      ],
+      "kind": "base",
+      "reviewer": "assets_final/refusal_check",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-a-4.png",
+      "part": "A",
+      "captureKind": "delivered",
+      "rows": 4,
+      "heroIds": [
+        "vimes_dw",
+        "granny_dw",
+        "twoflower_dw",
+        "death_dw",
+        "nanny_ogg_dw"
+      ],
+      "kind": "base",
+      "reviewer": "assets_final/refusal_check",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-b-1.png",
+      "part": "B",
+      "captureKind": "delivered",
+      "rows": 4,
+      "heroIds": [
+        "meryl_mgs",
+        "liquid_snake",
+        "the_boss_mgs",
+        "ocelot_mgs",
+        "gray_fox"
+      ],
+      "kind": "base",
+      "reviewer": "assets_final/refusal_check",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-b-2.png",
+      "part": "B",
+      "captureKind": "delivered",
+      "rows": 4,
+      "heroIds": [
+        "big_boss",
+        "luke",
+        "aayla_secura",
+        "darth_revan",
+        "joel_tlou"
+      ],
+      "kind": "base",
+      "reviewer": "assets_final/refusal_check",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-b-3.png",
+      "part": "B",
+      "captureKind": "delivered",
+      "rows": 4,
+      "heroIds": [
+        "tess_tlou",
+        "tommy_tlou",
+        "dina_tlou2",
+        "abby_tlou2",
+        "hayden"
+      ],
+      "kind": "base",
+      "reviewer": "assets_final/refusal_check",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-refused-1.png",
+      "part": "refused",
+      "captureKind": "retained-historical-fallback",
+      "rows": 8,
+      "heroIds": [
+        "darth_maul",
+        "obi_wan",
+        "vader",
+        "yoda",
+        "ahsoka_adult"
+      ],
+      "kind": "base",
+      "reviewer": "assets_final/refusal_check",
+      "actuallyViewedWith": "view_image",
+      "selectedSourceColumn": 2,
+      "camps": [
+        "P1",
+        "P2"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-a-1.png",
+      "sha256": "8fe4d74fff3e581bd163c5eedffc643abbdb41047830ecddba9b3aaa50129d85",
+      "bytes": 275377
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-a-2.png",
+      "sha256": "1264993fbc080b53b35c6c72c3401238c83dd3a58dbb233d334520a2896a1ba7",
+      "bytes": 244335
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-a-3.png",
+      "sha256": "83b5621a67c7eb04d06509d781e37fb32145aed155c30b53fb01ec50501453e6",
+      "bytes": 263799
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-a-4.png",
+      "sha256": "e031f0ed59a1e1f31959ff05f8bf6555365f6ecf5aa598b44816bafb044268c0",
+      "bytes": 287070
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-b-1.png",
+      "sha256": "13b74fe12029d9fd60289972661015606203ca3f782990ddf11924fb6f567d0d",
+      "bytes": 273721
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-b-2.png",
+      "sha256": "0dd9b41f7b22ca69bf30eb364bfddb3df4a706b7901a4db8e1696cdf20df2d31",
+      "bytes": 287049
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-b-3.png",
+      "sha256": "7cdd7e98de07b7555df6cb2299e5483e40d831284567e3cfab16d0593badec26",
+      "bytes": 271502
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-part-refused-1.png",
+      "sha256": "213a29aff58ad61e68cbabd7c6dc6c8c3f44d2c6dd98b7f59f08c8111fd72732",
+      "bytes": 360265
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-presentations.json",
+      "sha256": "e03e20fd7b2de10d7c90e28b248efd9dd5464a89baf2fa4cf5c340748861eb29",
+      "bytes": 28631
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-review-contacts.json",
+      "sha256": "ef5fe1d29fba596f01509fda97d9b736addd901c0fa5445779ff75bc1e4fa9c8",
+      "bytes": 4818
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-a-1.png",
+      "sha256": "c8b529ad091f5ea62acd8eb41e12ee4a0a5cc085bae6c669de4650fcbe39540b",
+      "bytes": 156731
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-a-2.png",
+      "sha256": "35037769ab13d6e0171722aeb59dca0c00ccdf90e8e5d9040cf9c94d5f027da3",
+      "bytes": 138280
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-a-3.png",
+      "sha256": "d154d428730e9fe4f3f5a023296c7a3fe95b6f4f9c4eda2b7d035d9a8e589ccb",
+      "bytes": 158529
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-a-4.png",
+      "sha256": "aa55a00a6d3fe74760f209f952b498b858b4ae32c65981e5ef9dcdbeff3cbc07",
+      "bytes": 170754
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-b-1.png",
+      "sha256": "4909d39edf3e45e7e42d8d684fefbbd07a1ac536cedc25642cc7a10b801466a6",
+      "bytes": 154217
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-b-2.png",
+      "sha256": "f8ed11d41751573d318fa8c6a25a8ab247371ec1d081e4db1922162af885bd2d",
+      "bytes": 167328
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-b-3.png",
+      "sha256": "c1ad7a1850b023e5ed84a37a77ca8d90db2d673325228ae31d9faf818bef780b",
+      "bytes": 147171
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-part-refused-1.png",
+      "sha256": "89d271aa328d69b459f4b0099f70d1518723238983224137392e825e69a0dd82",
+      "bytes": 437241
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-corrections.json",
+      "sha256": "b0eda4ef9eae03bd6c40a1294ecf09272e88e15876d32b10f697b11668e93741",
+      "bytes": 27308
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/base-review-contacts.json",
+      "sha256": "3688007b4a195182ef6c495293341f2166c764de3ab9a71e1b7becdb876c3100",
+      "bytes": 4782
+    }
+  ]
+}

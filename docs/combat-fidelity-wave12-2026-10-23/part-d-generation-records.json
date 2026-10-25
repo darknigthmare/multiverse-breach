@@ -1,0 +1,2834 @@
+{
+  "part": "D",
+  "wave": 12,
+  "records": [
+    {
+      "heroId": "fry_futurama",
+      "version": "Philip J. Fry from original Fox Futurama (1999–2003). Ordinary human young adult delivery boy, orange swept-pointed hair, red open waist-length jacket over plain white T-shirt, blue jeans, black-and-white sneakers. His only prop is a small plain brown delivery parcel, never a gun.",
+      "action": "parcel relay: prepare ordinary package, point out safe route, pass package forward, retract empty hands",
+      "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Philip J. Fry from original Fox Futurama (1999–2003). Ordinary human young adult delivery boy, orange swept-pointed hair, red open waist-length jacket over plain white T-shirt, blue jeans, black-and-white sneakers. His only prop is a small plain brown delivery parcel, never a gun.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: parcel relay: prepare ordinary package, point out safe route, pass package forward, retract empty hands. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: parcel relay: prepare ordinary package, point out safe route, pass package forward, retract empty hands.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: parcel relay: prepare ordinary package, point out safe route, pass package forward, retract empty hands. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.",
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-prompt.txt",
+      "sourceLayout": {
+        "columns": 8,
+        "rows": 6,
+        "frames": 48
+      },
+      "operation": "new-native-imagegen",
+      "referenceUse": "Old atlas inspected and archived; defective weapon rows excluded from imagegen inputs. Source-era identity specified explicitly in text.",
+      "reviewed": true,
+      "status": "accepted-reviewed",
+      "generatedPath": "/workspace/generated_images/exec-b8ca215d-0a91-4be3-b1da-47595e800528.png",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+      "sourceImageSha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330",
+      "nativeDrawingsObserved": 49,
+      "unusedSourceCells": [
+        {
+          "row": 5,
+          "column": 8,
+          "reason": "Extra ninth recovery pose emitted by provider; excluded from delivery.",
+          "source": 0
+        }
+      ],
+      "columnCutHintsByRow": {
+        "5": [
+          192,
+          384,
+          576,
+          768,
+          952,
+          1124,
+          1267,
+          1387
+        ]
+      },
+      "columnCentersByRow": {
+        "5": [
+          96,
+          288,
+          480,
+          672,
+          864,
+          1040,
+          1195.5,
+          1327,
+          1461.5
+        ]
+      },
+      "name": "Philip J. Fry",
+      "referenceAsset": "/sprites/generated/heroes/futurama/fry-futurama.png",
+      "referenceAssetSha256": "3a9ff037c20d44b1cd4ba19f67381275e89bde34f7de97b7f1bd60fa61db664f",
+      "referenceArchive": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/fry_futurama-old.png",
+      "sources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+          "sha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Philip J. Fry from original Fox Futurama (1999–2003). Ordinary human young adult delivery boy, orange swept-pointed hair, red open waist-length jacket over plain white T-shirt, blue jeans, black-and-white sneakers. His only prop is a small plain brown delivery parcel, never a gun.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: parcel relay: prepare ordinary package, point out safe route, pass package forward, retract empty hands. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: parcel relay: prepare ordinary package, point out safe route, pass package forward, retract empty hands.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: parcel relay: prepare ordinary package, point out safe route, pass package forward, retract empty hands. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\n",
+          "generatedPath": "/workspace/generated_images/exec-b8ca215d-0a91-4be3-b1da-47595e800528.png",
+          "columns": 8,
+          "rows": 6,
+          "columnCutHintsByRow": {
+            "5": [
+              192,
+              384,
+              576,
+              768,
+              952,
+              1124,
+              1267,
+              1387
+            ]
+          },
+          "columnCentersByRow": {
+            "5": [
+              96,
+              288,
+              480,
+              672,
+              864,
+              1040,
+              1195.5,
+              1327,
+              1461.5
+            ]
+          },
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 49,
+          "referenceInputs": []
+        }
+      ],
+      "poseSelections": [
+        {
+          "source": 0,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 7
+        }
+      ],
+      "reviewNotes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+    },
+    {
+      "heroId": "leela_futurama",
+      "version": "Turanga Leela from original Fox Futurama (1999–2003). Athletic adult female cyclops, EXACTLY ONE large central eye (never two eyes), long purple hair in high ponytail, white sleeveless tank top, black trousers, gray heavy boots, small wrist device on left wrist. Unarmed physical martial artist; no firearm or laser.",
+      "action": "physical martial-arts combination: balanced guard, chamber arm, direct rightward palm/punch contact with no victim, recover guard",
+      "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Turanga Leela from original Fox Futurama (1999–2003). Athletic adult female cyclops, EXACTLY ONE large central eye (never two eyes), long purple hair in high ponytail, white sleeveless tank top, black trousers, gray heavy boots, small wrist device on left wrist. Unarmed physical martial artist; no firearm or laser.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: physical martial-arts combination: balanced guard, chamber arm, direct rightward palm/punch contact with no victim, recover guard. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: physical martial-arts combination: balanced guard, chamber arm, direct rightward palm/punch contact with no victim, recover guard.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: physical martial-arts combination: balanced guard, chamber arm, direct rightward palm/punch contact with no victim, recover guard. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.",
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-prompt.txt",
+      "sourceLayout": {
+        "columns": 8,
+        "rows": 6,
+        "frames": 48
+      },
+      "operation": "new-native-imagegen",
+      "referenceUse": "Old atlas inspected and archived; defective weapon rows excluded from imagegen inputs. Source-era identity specified explicitly in text.",
+      "reviewed": true,
+      "status": "accepted-reviewed",
+      "generatedPath": "/workspace/generated_images/exec-7f284c39-6a6d-4904-8eb3-53f2f25ea6b7.png",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+      "sourceImageSha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985",
+      "name": "Leela",
+      "referenceAsset": "/sprites/generated/heroes/futurama/leela-futurama.png",
+      "referenceAssetSha256": "a2c69ac0b5efe5153fb3cf95ae827d0b6cb10c56472c576978492076d4163b2d",
+      "referenceArchive": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/leela_futurama-old.png",
+      "sources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+          "sha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Turanga Leela from original Fox Futurama (1999–2003). Athletic adult female cyclops, EXACTLY ONE large central eye (never two eyes), long purple hair in high ponytail, white sleeveless tank top, black trousers, gray heavy boots, small wrist device on left wrist. Unarmed physical martial artist; no firearm or laser.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: physical martial-arts combination: balanced guard, chamber arm, direct rightward palm/punch contact with no victim, recover guard. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: physical martial-arts combination: balanced guard, chamber arm, direct rightward palm/punch contact with no victim, recover guard.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: physical martial-arts combination: balanced guard, chamber arm, direct rightward palm/punch contact with no victim, recover guard. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\n",
+          "generatedPath": "/workspace/generated_images/exec-7f284c39-6a6d-4904-8eb3-53f2f25ea6b7.png",
+          "columns": 8,
+          "rows": 6,
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 48,
+          "referenceInputs": []
+        }
+      ],
+      "poseSelections": [
+        {
+          "source": 0,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 7
+        }
+      ],
+      "reviewNotes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+    },
+    {
+      "heroId": "bender_futurama",
+      "version": "Bender Bending Rodriguez from original Fox Futurama (1999–2003). Original canonical silvery-gray cylindrical bending robot, square black eye visor containing TWO pale yellow round eyes, long mouth grill, single thin head antenna with ball tip, barrel torso and rectangular chest door, segmented flexible tube arms and legs, mechanical hands and broad robot feet. No clothes, gun, laser or human anatomy.",
+      "action": "short mechanical contact: balanced stance, draw one articulated arm back, extend hand physically rightward, recover both arms",
+      "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Bender Bending Rodriguez from original Fox Futurama (1999–2003). Original canonical silvery-gray cylindrical bending robot, square black eye visor containing TWO pale yellow round eyes, long mouth grill, single thin head antenna with ball tip, barrel torso and rectangular chest door, segmented flexible tube arms and legs, mechanical hands and broad robot feet. No clothes, gun, laser or human anatomy.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: short mechanical contact: balanced stance, draw one articulated arm back, extend hand physically rightward, recover both arms. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: short mechanical contact: balanced stance, draw one articulated arm back, extend hand physically rightward, recover both arms.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: short mechanical contact: balanced stance, draw one articulated arm back, extend hand physically rightward, recover both arms. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.",
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-prompt.txt",
+      "sourceLayout": {
+        "columns": 8,
+        "rows": 6,
+        "frames": 48
+      },
+      "operation": "new-native-imagegen",
+      "referenceUse": "Old atlas inspected and archived; defective weapon rows excluded from imagegen inputs. Source-era identity specified explicitly in text.",
+      "reviewed": true,
+      "status": "accepted-reviewed",
+      "generatedPath": "/workspace/generated_images/exec-1684d063-4a9b-4217-b477-11b113efd347.png",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+      "sourceImageSha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e",
+      "name": "Bender",
+      "referenceAsset": "/sprites/generated/heroes/futurama/bender-futurama.png",
+      "referenceAssetSha256": "ba06fdeeafabae416dbe065ac79512066b2b3ead7d6a621c36c570eb72426b08",
+      "referenceArchive": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/bender_futurama-old.png",
+      "sources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+          "sha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Bender Bending Rodriguez from original Fox Futurama (1999–2003). Original canonical silvery-gray cylindrical bending robot, square black eye visor containing TWO pale yellow round eyes, long mouth grill, single thin head antenna with ball tip, barrel torso and rectangular chest door, segmented flexible tube arms and legs, mechanical hands and broad robot feet. No clothes, gun, laser or human anatomy.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: short mechanical contact: balanced stance, draw one articulated arm back, extend hand physically rightward, recover both arms. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: short mechanical contact: balanced stance, draw one articulated arm back, extend hand physically rightward, recover both arms.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: short mechanical contact: balanced stance, draw one articulated arm back, extend hand physically rightward, recover both arms. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\n",
+          "generatedPath": "/workspace/generated_images/exec-1684d063-4a9b-4217-b477-11b113efd347.png",
+          "columns": 8,
+          "rows": 6,
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 48,
+          "referenceInputs": []
+        }
+      ],
+      "poseSelections": [
+        {
+          "source": 0,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 7
+        }
+      ],
+      "reviewNotes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+    },
+    {
+      "heroId": "amy_futurama",
+      "version": "Amy Wong from original Fox Futurama (1999–2003). Adult East Asian human woman with short neat black bob haircut and bangs, pink cropped tracksuit jacket over simple white shirt, matching pink jogging trousers, white sneakers. Ordinary Planet Express engineering intern. She carries a small compact gray diagnostic pad. No gun, laser, magical repair effect or healing symbol.",
+      "action": "ordinary engineering diagnostic: check gray handheld pad, press a key, show a reading to the right, return pad close to body",
+      "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Amy Wong from original Fox Futurama (1999–2003). Adult East Asian human woman with short neat black bob haircut and bangs, pink cropped tracksuit jacket over simple white shirt, matching pink jogging trousers, white sneakers. Ordinary Planet Express engineering intern. She carries a small compact gray diagnostic pad. No gun, laser, magical repair effect or healing symbol.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: ordinary engineering diagnostic: check gray handheld pad, press a key, show a reading to the right, return pad close to body. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: ordinary engineering diagnostic: check gray handheld pad, press a key, show a reading to the right, return pad close to body.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: ordinary engineering diagnostic: check gray handheld pad, press a key, show a reading to the right, return pad close to body. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.",
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-prompt.txt",
+      "sourceLayout": {
+        "columns": 8,
+        "rows": 6,
+        "frames": 48
+      },
+      "operation": "new-native-imagegen",
+      "referenceUse": "Old atlas inspected and archived; defective weapon rows excluded from imagegen inputs. Source-era identity specified explicitly in text.",
+      "reviewed": true,
+      "status": "accepted-reviewed",
+      "generatedPath": "/workspace/generated_images/exec-b3b3849f-bc16-44ef-b9ce-8df087da4b64.png",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48.png",
+      "sourceImageSha256": "97e11f4ec22388ec147fc5394b12603d5aeddcdb233d651e564c339607703e95",
+      "name": "Amy Wong",
+      "referenceAsset": "/sprites/generated/heroes/futurama/amy-futurama.png",
+      "referenceAssetSha256": "2b7c07d995f145c30f31f336042514628160e6a29a93aa8d9c318a75934637f3",
+      "referenceArchive": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/amy_futurama-old.png",
+      "sources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48.png",
+          "sha256": "97e11f4ec22388ec147fc5394b12603d5aeddcdb233d651e564c339607703e95",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most62% of each cell width and62% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Amy Wong from original Fox Futurama (1999–2003). Adult East Asian human woman with short neat black bob haircut and bangs, pink cropped tracksuit jacket over simple white shirt, matching pink jogging trousers, white sneakers. Ordinary Planet Express engineering intern. She carries a small compact gray diagnostic pad. No gun, laser, magical repair effect or healing symbol.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: ordinary engineering diagnostic: check gray handheld pad, press a key, show a reading to the right, return pad close to body. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: ordinary engineering diagnostic: check gray handheld pad, press a key, show a reading to the right, return pad close to body.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: ordinary engineering diagnostic: check gray handheld pad, press a key, show a reading to the right, return pad close to body. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\nCORRECTIVE LAYOUT PRIORITY: all48figures are COMPLETE full bodies with both shoes and whole head, no torso-only crop, no overlapping rows, at least20% empty transparent vertical space between figures. Deliberately SMALL figures inside regular spacious cells. 8columns,6rows,exactly48unique full-body figures.\n",
+          "columns": 8,
+          "rows": 6,
+          "nativeDrawingsObserved": 48,
+          "tool": "image_gen",
+          "generatedPath": "/workspace/generated_images/exec-b3b3849f-bc16-44ef-b9ce-8df087da4b64.png",
+          "referenceInputs": [
+            {
+              "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-correction.png",
+              "sha256": "dd8589f658a113b9a68afd734b447297c129b504d9e7ec88e69052693f9547dc"
+            }
+          ]
+        },
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-correction.png",
+          "sha256": "dd8589f658a113b9a68afd734b447297c129b504d9e7ec88e69052693f9547dc",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-base-action-correction-prompt.txt",
+          "prompt": "Create a NEW corrective sprite strip of EXACTLY FOUR distinct FULL BODY poses in ONE HORIZONTAL ROW, four equal-width cells, generous transparent gutters. Use the referenced native sheet only to keep the same original Fox1999–2003 Amy Wong identity, clothing, colors and body proportions. This strip supplies the four bottom-left basic-action poses whose legs were missing in the reference. Every new pose MUST show complete hair, face, torso, both arms, both whole legs and both shoes, surrounded by transparent space; do not copy the cropped torso compositions. Adult East Asian Amy with black bob haircut, pink tracksuit jacket, white top, pink trousers and white sneakers, ordinary small gray diagnostic pad. Pose1 stands and checks the pad. Pose2 stands and presses a key. Pose3 stands and presents a small ordinary pad display rightward. Pose4 stands and pulls the pad calmly back to her body. No gun, beam, projected hologram, magical effect, healing icon, new character, text, floor, shadow or background. Same side/front-three-quarter view facing right, clean readable pixel art. True transparent RGBA background. Four distinct complete bodies only, not an entire48-cell sheet.\n",
+          "columns": 4,
+          "rows": 1,
+          "generatedPath": "/workspace/generated_images/exec-7463fb7f-d768-432c-8c29-a9cc775c0699.png",
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 4,
+          "referenceInputs": [
+            {
+              "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-native48.png",
+              "sha256": "c9020ff4211add21fcc74bc0679b145f9851280fe963deca1f489d913a1a5ae8"
+            }
+          ]
+        }
+      ],
+      "poseSelections": [
+        {
+          "source": 0,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 7
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 7
+        }
+      ],
+      "reviewNotes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal. Four base action cells replaced by complete native corrective drawings, including both legs and shoes. Entire initial48 is archived but inactive. Replacement48 plus four full-body diagnostic correction cells preserve regular body stature.",
+      "unusedSourceCells": [
+        {
+          "source": 0,
+          "row": 5,
+          "column": 0,
+          "reason": "Replacement basic-action drawings have inconsistent short stature; use fully reviewed complete four-pose corrective strip instead."
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 1,
+          "reason": "Replacement basic-action drawings have inconsistent short stature; use fully reviewed complete four-pose corrective strip instead."
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 2,
+          "reason": "Replacement basic-action drawings have inconsistent short stature; use fully reviewed complete four-pose corrective strip instead."
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 3,
+          "reason": "Replacement basic-action drawings have inconsistent short stature; use fully reviewed complete four-pose corrective strip instead."
+        }
+      ],
+      "historySources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-native48.png",
+          "sha256": "c9020ff4211add21fcc74bc0679b145f9851280fe963deca1f489d913a1a5ae8",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Amy Wong from original Fox Futurama (1999–2003). Adult East Asian human woman with short neat black bob haircut and bangs, pink cropped tracksuit jacket over simple white shirt, matching pink jogging trousers, white sneakers. Ordinary Planet Express engineering intern. She carries a small compact gray diagnostic pad. No gun, laser, magical repair effect or healing symbol.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: ordinary engineering diagnostic: check gray handheld pad, press a key, show a reading to the right, return pad close to body. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: ordinary engineering diagnostic: check gray handheld pad, press a key, show a reading to the right, return pad close to body.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: ordinary engineering diagnostic: check gray handheld pad, press a key, show a reading to the right, return pad close to body. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\n",
+          "generatedPath": "/workspace/generated_images/exec-c0f27516-7444-4337-8e79-e304ed8f10ee.png",
+          "columns": 8,
+          "rows": 6,
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 0,
+          "reason": "Entire first48 source superseded: cropped basic cells and touching pose silhouettes; never delivered.",
+          "referenceInputs": []
+        }
+      ],
+      "nativeDrawingsObserved": 100
+    },
+    {
+      "heroId": "hermes_futurama",
+      "version": "Hermes Conrad from original Fox Futurama (1999–2003). Stocky adult Jamaican human bureaucrat with medium-dark brown skin, short black dreadlocks, small glasses, green office jacket and green trousers, white collared shirt and orange tie, brown shoes. He holds plain clipboard and paper sheets, not a weapon. No laser or magical effect.",
+      "action": "physical paperwork coordination: hold clipboard, check a paper, point instruction rightward, gather papers calmly",
+      "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Hermes Conrad from original Fox Futurama (1999–2003). Stocky adult Jamaican human bureaucrat with medium-dark brown skin, short black dreadlocks, small glasses, green office jacket and green trousers, white collared shirt and orange tie, brown shoes. He holds plain clipboard and paper sheets, not a weapon. No laser or magical effect.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: physical paperwork coordination: hold clipboard, check a paper, point instruction rightward, gather papers calmly. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: physical paperwork coordination: hold clipboard, check a paper, point instruction rightward, gather papers calmly.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: physical paperwork coordination: hold clipboard, check a paper, point instruction rightward, gather papers calmly. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.",
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-prompt.txt",
+      "sourceLayout": {
+        "columns": 8,
+        "rows": 6,
+        "frames": 48
+      },
+      "operation": "new-native-imagegen",
+      "referenceUse": "Old atlas inspected and archived; defective weapon rows excluded from imagegen inputs. Source-era identity specified explicitly in text.",
+      "reviewed": true,
+      "status": "accepted-reviewed",
+      "generatedPath": "/workspace/generated_images/exec-0724543b-d96a-4a0d-bae6-226ecc0598e8.png",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+      "sourceImageSha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e",
+      "name": "Hermes Conrad",
+      "referenceAsset": "/sprites/generated/heroes/futurama/hermes-futurama.png",
+      "referenceAssetSha256": "5ddae1ea5de6c09479816f7a1c7f709a512fd4c195242cdec3235dca620ee43b",
+      "referenceArchive": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/hermes_futurama-old.png",
+      "sources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+          "sha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Hermes Conrad from original Fox Futurama (1999–2003). Stocky adult Jamaican human bureaucrat with medium-dark brown skin, short black dreadlocks, small glasses, green office jacket and green trousers, white collared shirt and orange tie, brown shoes. He holds plain clipboard and paper sheets, not a weapon. No laser or magical effect.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: physical paperwork coordination: hold clipboard, check a paper, point instruction rightward, gather papers calmly. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: physical paperwork coordination: hold clipboard, check a paper, point instruction rightward, gather papers calmly.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: physical paperwork coordination: hold clipboard, check a paper, point instruction rightward, gather papers calmly. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\n",
+          "generatedPath": "/workspace/generated_images/exec-0724543b-d96a-4a0d-bae6-226ecc0598e8.png",
+          "columns": 8,
+          "rows": 6,
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 48,
+          "referenceInputs": []
+        }
+      ],
+      "poseSelections": [
+        {
+          "source": 0,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 7
+        }
+      ],
+      "reviewNotes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+    },
+    {
+      "heroId": "zoidberg_futurama",
+      "version": "Dr John Zoidberg from original Fox Futurama (1999–2003). Canonical red Decapodian lobster doctor, smooth red head, dangling short red mouth tentacles, TWO eyes, red claw hands, white doctors coat over mint green shirt, gray trousers and ordinary dark shoes. No human fingers or extra arms. Plain medical clipboard only. No healing aura, cross symbol, weapon, magic or beam.",
+      "action": "cautious ordinary medical guidance: inspect clipboard, make tentative claw gesture, point to a safe withdrawal route, lower claws calmly",
+      "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Dr John Zoidberg from original Fox Futurama (1999–2003). Canonical red Decapodian lobster doctor, smooth red head, dangling short red mouth tentacles, TWO eyes, red claw hands, white doctors coat over mint green shirt, gray trousers and ordinary dark shoes. No human fingers or extra arms. Plain medical clipboard only. No healing aura, cross symbol, weapon, magic or beam.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: cautious ordinary medical guidance: inspect clipboard, make tentative claw gesture, point to a safe withdrawal route, lower claws calmly. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: cautious ordinary medical guidance: inspect clipboard, make tentative claw gesture, point to a safe withdrawal route, lower claws calmly.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: cautious ordinary medical guidance: inspect clipboard, make tentative claw gesture, point to a safe withdrawal route, lower claws calmly. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.",
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-prompt.txt",
+      "sourceLayout": {
+        "columns": 8,
+        "rows": 6,
+        "frames": 48
+      },
+      "operation": "new-native-imagegen",
+      "referenceUse": "Old atlas inspected and archived; defective weapon rows excluded from imagegen inputs. Source-era identity specified explicitly in text.",
+      "reviewed": true,
+      "status": "accepted-reviewed",
+      "generatedPath": "/workspace/generated_images/exec-cfad654e-83e9-4a8d-9411-ce5bf847d13c.png",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+      "sourceImageSha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c",
+      "name": "Zoidberg",
+      "referenceAsset": "/sprites/generated/heroes/futurama/zoidberg-futurama.png",
+      "referenceAssetSha256": "7860b089574f13f584323b29253081c15775957d5ce015482f52794434684bc1",
+      "referenceArchive": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/zoidberg_futurama-old.png",
+      "sources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+          "sha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Dr John Zoidberg from original Fox Futurama (1999–2003). Canonical red Decapodian lobster doctor, smooth red head, dangling short red mouth tentacles, TWO eyes, red claw hands, white doctors coat over mint green shirt, gray trousers and ordinary dark shoes. No human fingers or extra arms. Plain medical clipboard only. No healing aura, cross symbol, weapon, magic or beam.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: cautious ordinary medical guidance: inspect clipboard, make tentative claw gesture, point to a safe withdrawal route, lower claws calmly. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: cautious ordinary medical guidance: inspect clipboard, make tentative claw gesture, point to a safe withdrawal route, lower claws calmly.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: cautious ordinary medical guidance: inspect clipboard, make tentative claw gesture, point to a safe withdrawal route, lower claws calmly. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\n",
+          "generatedPath": "/workspace/generated_images/exec-cfad654e-83e9-4a8d-9411-ce5bf847d13c.png",
+          "columns": 8,
+          "rows": 6,
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 48,
+          "referenceInputs": []
+        }
+      ],
+      "poseSelections": [
+        {
+          "source": 0,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 7
+        }
+      ],
+      "reviewNotes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+    },
+    {
+      "heroId": "rick",
+      "version": "Rick Sanchez in Rick and Morty SEASON TWO (2015), biological human elderly scientist. Spiky pale blue hair and matching unibrow, long thin face, white lab coat, pale turquoise shirt, brown trousers, dark belt, black shoes. He carries ONE compact ordinary gray science-fiction hand PISTOL with short horizontal barrel, visibly separate from his green rectangular portal gun. Do NOT draw the green portal device, portals or green magical rays. No cybernetic variants.",
+      "action": "physical space-pistol aimed shot: lift short gray pistol, aim right with straight barrel, small warm muzzle flash AT THE BARREL TIP, lower pistol into a safe ready position",
+      "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Rick Sanchez in Rick and Morty SEASON TWO (2015), biological human elderly scientist. Spiky pale blue hair and matching unibrow, long thin face, white lab coat, pale turquoise shirt, brown trousers, dark belt, black shoes. He carries ONE compact ordinary gray science-fiction hand PISTOL with short horizontal barrel, visibly separate from his green rectangular portal gun. Do NOT draw the green portal device, portals or green magical rays. No cybernetic variants.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: physical space-pistol aimed shot: lift short gray pistol, aim right with straight barrel, small warm muzzle flash AT THE BARREL TIP, lower pistol into a safe ready position. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: physical space-pistol aimed shot: lift short gray pistol, aim right with straight barrel, small warm muzzle flash AT THE BARREL TIP, lower pistol into a safe ready position.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: physical space-pistol aimed shot: lift short gray pistol, aim right with straight barrel, small warm muzzle flash AT THE BARREL TIP, lower pistol into a safe ready position. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.",
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-prompt.txt",
+      "sourceLayout": {
+        "columns": 8,
+        "rows": 6,
+        "frames": 48
+      },
+      "operation": "new-native-imagegen",
+      "referenceUse": "Old atlas inspected and archived; defective weapon rows excluded from imagegen inputs. Source-era identity specified explicitly in text.",
+      "reviewed": true,
+      "status": "accepted-reviewed",
+      "generatedPath": "/workspace/generated_images/exec-4b0f38d7-42fb-4b0e-b02e-4b80a6af4aeb.png",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+      "sourceImageSha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52",
+      "name": "Rick Sanchez",
+      "referenceAsset": "/sprites/generated/heroes/rick-morty/rick.png",
+      "referenceAssetSha256": "53b0315b958f621921db5f05dc5b82e3a524953cc0eaf215f55362fad7061ba9",
+      "referenceArchive": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/rick-old.png",
+      "sources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+          "sha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Rick Sanchez in Rick and Morty SEASON TWO (2015), biological human elderly scientist. Spiky pale blue hair and matching unibrow, long thin face, white lab coat, pale turquoise shirt, brown trousers, dark belt, black shoes. He carries ONE compact ordinary gray science-fiction hand PISTOL with short horizontal barrel, visibly separate from his green rectangular portal gun. Do NOT draw the green portal device, portals or green magical rays. No cybernetic variants.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: physical space-pistol aimed shot: lift short gray pistol, aim right with straight barrel, small warm muzzle flash AT THE BARREL TIP, lower pistol into a safe ready position. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: physical space-pistol aimed shot: lift short gray pistol, aim right with straight barrel, small warm muzzle flash AT THE BARREL TIP, lower pistol into a safe ready position.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: physical space-pistol aimed shot: lift short gray pistol, aim right with straight barrel, small warm muzzle flash AT THE BARREL TIP, lower pistol into a safe ready position. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\n",
+          "generatedPath": "/workspace/generated_images/exec-4b0f38d7-42fb-4b0e-b02e-4b80a6af4aeb.png",
+          "columns": 8,
+          "rows": 6,
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 48,
+          "referenceInputs": []
+        },
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-correction.png",
+          "sha256": "24ed3054b19628d0d0dba065fbc9481704ff9680ec06670eaf2dd0064e4e7b2c",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-single-pistol-correction-prompt.txt",
+          "prompt": "Create a NEW corrective videogame sprite strip with EXACTLY FOUR distinct FULL BODY Rick Sanchez poses in ONE HORIZONTAL ROW, four equal cells with generous transparent gutters. Use the referenced sheet for identical season TWO2015 biological Rick identity, spiky pale-blue hair, white lab coat, light turquoise shirt, brown trousers, black shoes and clean pixel art proportions. Correct the duplicated weapon visible in the first final-flourish reference pose: Rick has ONLY ONE compact gray ordinary space PISTOL total, in his anatomical RIGHT hand. His LEFT hand must be clearly EMPTY and visibly open by his side or waist. No second pistol, no portal gun, no cybernetics. All four new poses are fully intact, head to both shoes, side/front-three-quarter facing right. Pose1 raises his SINGLE pistol diagonally, empty left hand open at his side. Pose2 brings that SINGLE pistol to a safe rightward aiming line, empty left hand open against his torso. Pose3 lowers the SINGLE pistol slightly, empty left hand opens in a small balancing gesture. Pose4 returns the SINGLE pistol close to his waist, left hand still visibly empty. No firing needed, no victim, violence, gore, effects, floor, shadow, text, grid or background. True transparent RGBA. Keep entire body inside every cell.\n",
+          "columns": 4,
+          "rows": 1,
+          "generatedPath": "/workspace/generated_images/exec-7b80576f-7d11-4321-8cc5-c1fe349bad12.png",
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 4,
+          "referenceInputs": [
+            {
+              "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+              "sha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52"
+            }
+          ]
+        }
+      ],
+      "poseSelections": [
+        {
+          "source": 0,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 7
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 7
+        }
+      ],
+      "reviewNotes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal. Final-flourish preparation replaced by one genuinely generated single-pistol pose with empty left hand. Unused malformed corrective alternative excluded.",
+      "unusedSourceCells": [
+        {
+          "source": 0,
+          "row": 2,
+          "column": 0,
+          "reason": "Original final-flourish preparation duplicated a pistol; excluded."
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 1,
+          "reason": "Unused native corrective alternative; only first pose selected."
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 2,
+          "reason": "Unused correction with malformed extra arm; never retained."
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 3,
+          "reason": "Unused native corrective alternative; only first pose selected."
+        }
+      ]
+    },
+    {
+      "heroId": "morty",
+      "version": "Morty Smith from Rick and Morty SEASON TWO (2015). Canonical human boy, round head, short light brown hair, plain yellow T-shirt, blue jeans, white sneakers. Ordinary human child/teen, fully clothed in his everyday outfit. NO weapon, no magic and no altered or evil version. Non-violent animation actions only.",
+      "action": "ordinary support signal: raise cautious palm, point to cover at right, give a clear retreat hand signal, crouch safely and lower hands",
+      "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Morty Smith from Rick and Morty SEASON TWO (2015). Canonical human boy, round head, short light brown hair, plain yellow T-shirt, blue jeans, white sneakers. Ordinary human child/teen, fully clothed in his everyday outfit. NO weapon, no magic and no altered or evil version. Non-violent animation actions only.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: ordinary support signal: raise cautious palm, point to cover at right, give a clear retreat hand signal, crouch safely and lower hands. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: ordinary support signal: raise cautious palm, point to cover at right, give a clear retreat hand signal, crouch safely and lower hands.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: ordinary support signal: raise cautious palm, point to cover at right, give a clear retreat hand signal, crouch safely and lower hands. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.",
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/morty-prompt.txt",
+      "sourceLayout": {
+        "columns": 8,
+        "rows": 6,
+        "frames": 48
+      },
+      "operation": "new-native-imagegen",
+      "referenceUse": "Old atlas inspected and archived; defective weapon rows excluded from imagegen inputs. Source-era identity specified explicitly in text.",
+      "reviewed": false,
+      "status": "blocked-explicit-refusal",
+      "failureRequestId": "b2ce8538-0e56-42f3-a3f4-445fe18660ce",
+      "retryAllowed": false
+    },
+    {
+      "heroId": "summer",
+      "version": "Summer Smith from Rick and Morty SEASON TWO (2015). Canonical ordinary human teenage girl, long oval head, orange hair in high ponytail, coral-pink sleeveless top, plain white trousers, black shoes, fully clothed everyday outfit. NO weapon, magic or wasteland costume from season3. Non-violent support gestures only.",
+      "action": "ordinary regrouping signal: lift one empty hand, point to safe ground at right, wave companions toward cover, lower hand into balanced stance",
+      "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Summer Smith from Rick and Morty SEASON TWO (2015). Canonical ordinary human teenage girl, long oval head, orange hair in high ponytail, coral-pink sleeveless top, plain white trousers, black shoes, fully clothed everyday outfit. NO weapon, magic or wasteland costume from season3. Non-violent support gestures only.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: ordinary regrouping signal: lift one empty hand, point to safe ground at right, wave companions toward cover, lower hand into balanced stance. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: ordinary regrouping signal: lift one empty hand, point to safe ground at right, wave companions toward cover, lower hand into balanced stance.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: ordinary regrouping signal: lift one empty hand, point to safe ground at right, wave companions toward cover, lower hand into balanced stance. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.",
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-prompt.txt",
+      "sourceLayout": {
+        "columns": 8,
+        "rows": 6,
+        "frames": 48
+      },
+      "operation": "new-native-imagegen",
+      "referenceUse": "Old atlas inspected and archived; defective weapon rows excluded from imagegen inputs. Source-era identity specified explicitly in text.",
+      "reviewed": true,
+      "status": "accepted-reviewed",
+      "generatedPath": "/workspace/generated_images/exec-a2fe7aaf-c2c5-4881-8287-b3887e6a529c.png",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+      "sourceImageSha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef",
+      "name": "Summer Smith",
+      "referenceAsset": "/sprites/generated/heroes/rick-morty/summer.png",
+      "referenceAssetSha256": "35ff896acb6af7fd6deab19fab03c39a6c752142977dc9ffc50da069ba4c4d67",
+      "referenceArchive": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/summer-old.png",
+      "sources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+          "sha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Summer Smith from Rick and Morty SEASON TWO (2015). Canonical ordinary human teenage girl, long oval head, orange hair in high ponytail, coral-pink sleeveless top, plain white trousers, black shoes, fully clothed everyday outfit. NO weapon, magic or wasteland costume from season3. Non-violent support gestures only.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: ordinary regrouping signal: lift one empty hand, point to safe ground at right, wave companions toward cover, lower hand into balanced stance. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: ordinary regrouping signal: lift one empty hand, point to safe ground at right, wave companions toward cover, lower hand into balanced stance.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: ordinary regrouping signal: lift one empty hand, point to safe ground at right, wave companions toward cover, lower hand into balanced stance. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\n",
+          "generatedPath": "/workspace/generated_images/exec-a2fe7aaf-c2c5-4881-8287-b3887e6a529c.png",
+          "columns": 8,
+          "rows": 6,
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 49,
+          "columnCutHintsByRow": {
+            "5": [
+              192,
+              384,
+              576,
+              744,
+              915,
+              1063,
+              1225,
+              1376
+            ]
+          },
+          "columnCentersByRow": {
+            "5": [
+              96,
+              288,
+              480,
+              672,
+              840,
+              988,
+              1144,
+              1298,
+              1448
+            ]
+          },
+          "referenceInputs": []
+        }
+      ],
+      "poseSelections": [
+        {
+          "source": 0,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 7
+        }
+      ],
+      "reviewNotes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal.",
+      "nativeDrawingsObserved": 49,
+      "unusedSourceCells": [
+        {
+          "source": 0,
+          "row": 5,
+          "column": 8,
+          "reason": "Extra ninth reaction pose emitted by provider; excluded from delivery."
+        }
+      ]
+    },
+    {
+      "heroId": "birdperson",
+      "version": "Birdperson from Rick and Morty SEASON TWO (2015), standard biological pre-Phoenixperson version. Canonical adult bird-human with long dark hair, long angular face and prominent beak-like nose, his familiar white feather cap/headpiece, bare upper torso, green trousers, birdlike feet and large NATURAL brown feathered wings. Keep recognizable original series design, wings attached at shoulder/back, not mechanical. No tuxedo, implants, cybernetics, laser, gun or Phoenixperson armor.",
+      "action": "physical wing guard: loosen natural brown wings, draw wings forward protectively, hold a close feathered guard without magic, fold wings back safely",
+      "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Birdperson from Rick and Morty SEASON TWO (2015), standard biological pre-Phoenixperson version. Canonical adult bird-human with long dark hair, long angular face and prominent beak-like nose, his familiar white feather cap/headpiece, bare upper torso, green trousers, birdlike feet and large NATURAL brown feathered wings. Keep recognizable original series design, wings attached at shoulder/back, not mechanical. No tuxedo, implants, cybernetics, laser, gun or Phoenixperson armor.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: physical wing guard: loosen natural brown wings, draw wings forward protectively, hold a close feathered guard without magic, fold wings back safely. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: physical wing guard: loosen natural brown wings, draw wings forward protectively, hold a close feathered guard without magic, fold wings back safely.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: physical wing guard: loosen natural brown wings, draw wings forward protectively, hold a close feathered guard without magic, fold wings back safely. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.",
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-prompt.txt",
+      "sourceLayout": {
+        "columns": 8,
+        "rows": 6,
+        "frames": 48
+      },
+      "operation": "new-native-imagegen",
+      "referenceUse": "Old atlas inspected and archived; defective weapon rows excluded from imagegen inputs. Source-era identity specified explicitly in text.",
+      "reviewed": true,
+      "status": "accepted-reviewed",
+      "generatedPath": "/workspace/generated_images/exec-bfcc168a-8c9e-4ec9-a5e4-2db14c169f79.png",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48.png",
+      "sourceImageSha256": "c34695eb70e7b5d5b86f10c2d116eba60d2d90ddf750df60ae52c4284c2a76a4",
+      "name": "Birdperson",
+      "referenceAsset": "/sprites/generated/heroes/rick-morty/birdperson.png",
+      "referenceAssetSha256": "240623fef286e12ba0a72e37cb245ce5175f385f31c6b80b5c215d140b18237e",
+      "referenceArchive": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/birdperson-old.png",
+      "sources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48.png",
+          "sha256": "c34695eb70e7b5d5b86f10c2d116eba60d2d90ddf750df60ae52c4284c2a76a4",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most62% of each cell width and62% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Birdperson from Rick and Morty SEASON TWO (2015), standard biological pre-Phoenixperson version. Canonical adult bird-human with long dark hair, long angular face and prominent beak-like nose, his familiar white feather cap/headpiece, bare upper torso, green trousers, birdlike feet and large NATURAL brown feathered wings. Keep recognizable original series design, wings attached at shoulder/back, not mechanical. No tuxedo, implants, cybernetics, laser, gun or Phoenixperson armor.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: physical wing guard: loosen natural brown wings, draw wings forward protectively, hold a close feathered guard without magic, fold wings back safely. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: physical wing guard: loosen natural brown wings, draw wings forward protectively, hold a close feathered guard without magic, fold wings back safely.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: physical wing guard: loosen natural brown wings, draw wings forward protectively, hold a close feathered guard without magic, fold wings back safely. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\nCORRECTIVE LAYOUT PRIORITY: all48figures are COMPLETE full bodies with both shoes and whole head, no torso-only crop, no overlapping rows, at least20% empty transparent vertical space between figures. Deliberately SMALL figures inside regular spacious cells. 8columns,6rows,exactly48unique full-body figures.\nIDENTITY CORRECTION: Match the supplied sixteen-pose Birdperson reference precisely: its conspicuous CREAM-WHITE FEATHER CREST at the TOP of the brown feather cap, white feather neck collar, brown natural wings, birdlike yellow beak-nose, green trousers, yellow bird feet and biological body. No smooth brown helmet lacking the white crest. Every pose must have the SAME white feather crest. No gun or cybernetics.\n",
+          "columns": 8,
+          "rows": 6,
+          "nativeDrawingsObserved": 48,
+          "tool": "image_gen",
+          "generatedPath": "/workspace/generated_images/exec-bfcc168a-8c9e-4ec9-a5e4-2db14c169f79.png",
+          "referenceInputs": [
+            {
+              "path": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/birdperson-original.png",
+              "sha256": "06a5bc53d69e92f3de01006bae17554b279f2c9fd4845f86a802f6d85b15f9e0"
+            }
+          ]
+        },
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-guard8.png",
+          "sha256": "e26d0dcec2f8cf55cd2a6d05ff2a75e5a68f910d04004fae0cb7d045d9152c03",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-wing-guard-correction-prompt.txt",
+          "prompt": "Create a NEW native pixel-art sprite sheet of EXACTLY EIGHT distinct complete full-body Birdperson poses, FOUR COLUMNS by TWO ROWS, generous fully transparent gutters. Match the supplied season TWO2015 biological Birdperson reference identity: obvious CREAM-WHITE FEATHER CREST on brown feather cap, white feather neck collar, long angular face with yellow beak-like nose, bare chest, green trousers, yellow bird feet, large NATURAL brown feathered wings. No gun, cybernetics or Phoenixperson. Both feet and full head must fit inside EVERY cell.\nThese are PHYSICAL DEFENSIVE WING GUARDS, not running or attacking: both feet stay planted, do not charge, leap or fly. ROW1 cells1–4:1stands balanced with natural wings slightly open;2draws both feathered wings forward around his sides;3holds a visibly CLOSED protective wrap of brown feathers across chest while face and feet remain visible;4loosens the wrap and returns to stable guard. ROW2 cells1–4:1different balanced three-quarter guard with wings at sides;2folds the near wing across the front while the far wing supports his side;3holds another close feathered protective stance with a small weight shift;4reopens both wings gently and settles. All8gestures must be distinct freshly drawn figures, no copied/mirrored pose. Keep body proportions, white crest and natural feathers consistent. No effects, shield bubble, aura, victim, violence, text, grid, floor, shadows or background. True transparent RGBA, clean pixel art,4columns×2rows8unique full bodies.\n",
+          "columns": 4,
+          "rows": 2,
+          "nativeDrawingsObserved": 8,
+          "tool": "image_gen",
+          "generatedPath": "/workspace/generated_images/exec-243125fa-8276-43db-b6aa-d8ebb3fde752.png",
+          "referenceInputs": [
+            {
+              "path": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/birdperson-original.png",
+              "sha256": "06a5bc53d69e92f3de01006bae17554b279f2c9fd4845f86a802f6d85b15f9e0"
+            }
+          ]
+        }
+      ],
+      "poseSelections": [
+        {
+          "source": 0,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 0,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 1,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 2,
+          "column": 7
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 3
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 0
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 1
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 2
+        },
+        {
+          "source": 1,
+          "row": 0,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 0
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 4,
+          "column": 7
+        },
+        {
+          "source": 1,
+          "row": 1,
+          "column": 0
+        },
+        {
+          "source": 1,
+          "row": 1,
+          "column": 1
+        },
+        {
+          "source": 1,
+          "row": 1,
+          "column": 2
+        },
+        {
+          "source": 1,
+          "row": 1,
+          "column": 3
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 4
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 5
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 6
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 7
+        }
+      ],
+      "reviewNotes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal. White feather crest harmonized with reviewed native RPG reference. Super and basic action use eight dedicated stationary natural-wing protective poses, not running.",
+      "historySources": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-native48.png",
+          "sha256": "3a19cab80b9990298dbeb440a92705360abbfa44a7c10379977f6f31d68a33c3",
+          "promptFile": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-prompt.txt",
+          "prompt": "Create ONE clean native videogame sprite sheet, pixel art with readable consistent cartoon anatomy and the canonical character identity. True transparent RGBA background. EXACTLY 48 separately drawn full-body poses, arranged as EIGHT COLUMNS by SIX ROWS. All48 cells must contain the SAME character, alone, side/front-three-quarter view facing RIGHT. Equal cell spacing with generous completely transparent gutters; no overlap between cells, no clipped hair/feet/wings/props, no floor/shadow/backdrop/text/labels/grid/numbers/watermark. Character occupies at most70% of each cell width and78% height. Every pose is a distinct native drawing, never copy-paste or horizontal mirroring. Keep the same body proportions, wardrobe, palette, equipment and pixel density in all48cells.\nCHARACTER VERSION: Birdperson from Rick and Morty SEASON TWO (2015), standard biological pre-Phoenixperson version. Canonical adult bird-human with long dark hair, long angular face and prominent beak-like nose, his familiar white feather cap/headpiece, bare upper torso, green trousers, birdlike feet and large NATURAL brown feathered wings. Keep recognizable original series design, wings attached at shoulder/back, not mechanical. No tuxedo, implants, cybernetics, laser, gun or Phoenixperson armor.\nLAYOUT, read each row LEFT to RIGHT:\nROW1 CELLS1–4 intro: neutral arrival, glance right, prepare signature prop or empty-hand guard, settle. CELLS5–8 outro: relax guard, look away, turn shoulders slightly, calm departure step.\nROW2 CELLS1–4 round victory: catch breath, raise small celebratory hand, relaxed acknowledgment, reset. CELLS5–8 round defeat: bend knees slightly, steady oneself, take a breath, recover guard.\nROW3 CELLS1–4 signature final flourish: physical wing guard: loosen natural brown wings, draw wings forward protectively, hold a close feathered guard without magic, fold wings back safely. This is a non-graphic post-match display, not an execution, injury or attack on a second person. CELLS5–8 final victory: relax shoulders, small source-coherent celebratory gesture, acknowledge companions, settled victory stance.\nROW4 CELLS1–4 final defeat: tired stance, lower shoulders, safe seated or kneeling rest, stable calm rest. No wounds, violence, suffering or death. CELLS5–8 special technique: physical wing guard: loosen natural brown wings, draw wings forward protectively, hold a close feathered guard without magic, fold wings back safely.\nROW5 CELLS1–4 basic idle: four subtly different balanced breathing/prop-check poses. CELLS5–8 basic run: four genuinely different forward running gait frames, modest stride, correct limb count, same prop.\nROW6 CELLS1–4 basic action: physical wing guard: loosen natural brown wings, draw wings forward protectively, hold a close feathered guard without magic, fold wings back safely. CELLS5–8 basic hit reaction: four gentle comic balance-recovery poses, fully intact uninjured body, no violence source or second character.\nStrict layout: eightcolumns, sixrows,48unique full bodies, transparent separation. No extra supporting characters. New hand-drawn native poses only. Faithful source-era appearance, not an official extracted asset. Render as a wide 3:2 sheet if possible.\n",
+          "generatedPath": "/workspace/generated_images/exec-db12b0a0-b776-4cbb-9b81-ce6fa7661be4.png",
+          "columns": 8,
+          "rows": 6,
+          "tool": "image_gen",
+          "nativeDrawingsObserved": 48,
+          "retainedDrawings": 0,
+          "reason": "Entire first48 source superseded: dark head cap lacked source-coherent conspicuous white feather crest.",
+          "referenceInputs": []
+        }
+      ],
+      "unusedSourceCells": [
+        {
+          "source": 0,
+          "row": 3,
+          "column": 4,
+          "reason": "Moving posture replaced by purpose-drawn stationary wing guard for actual super."
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 5,
+          "reason": "Moving posture replaced by purpose-drawn stationary wing guard for actual super."
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 6,
+          "reason": "Moving posture replaced by purpose-drawn stationary wing guard for actual super."
+        },
+        {
+          "source": 0,
+          "row": 3,
+          "column": 7,
+          "reason": "Moving posture replaced by purpose-drawn stationary wing guard for actual super."
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 0,
+          "reason": "Original guard alternatives replaced by separately drawn basic defensive poses."
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 1,
+          "reason": "Original guard alternatives replaced by separately drawn basic defensive poses."
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 2,
+          "reason": "Original guard alternatives replaced by separately drawn basic defensive poses."
+        },
+        {
+          "source": 0,
+          "row": 5,
+          "column": 3,
+          "reason": "Original guard alternatives replaced by separately drawn basic defensive poses."
+        }
+      ],
+      "nativeDrawingsObserved": 104
+    }
+  ]
+}

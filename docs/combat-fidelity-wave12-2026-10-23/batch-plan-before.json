@@ -1,0 +1,1904 @@
+{
+  "date": "2026-10-23",
+  "wave": 12,
+  "batchSize": 40,
+  "parts": {
+    "A": [
+      "pyramidhead",
+      "james_s",
+      "heather",
+      "harry_mason",
+      "alessa_gillespie",
+      "maria_sh2",
+      "cybil_bennett",
+      "claudia_wolf",
+      "regina",
+      "dylan"
+    ],
+    "B": [
+      "predator",
+      "city_hunter",
+      "dutch",
+      "anna_predator",
+      "billy_predator",
+      "mac_predator",
+      "harrigan_predator",
+      "greyback_yautja",
+      "naru",
+      "royce_predators_core"
+    ],
+    "C": [
+      "ash_williams",
+      "annie_knowby",
+      "henry_red_ed",
+      "pablo_evil_dead",
+      "kelly_evil_dead",
+      "ruby_evil_dead",
+      "isaac",
+      "carver",
+      "ellie",
+      "nicole_brennan"
+    ],
+    "D": [
+      "fry_futurama",
+      "leela_futurama",
+      "bender_futurama",
+      "amy_futurama",
+      "hermes_futurama",
+      "zoidberg_futurama",
+      "rick",
+      "morty",
+      "summer",
+      "birdperson"
+    ]
+  },
+  "heroes": [
+    {
+      "part": "A",
+      "hero": {
+        "id": "pyramidhead",
+        "name": "Pyramid Head",
+        "universe": "Silent Hill",
+        "category": "slayer",
+        "primaryColor": "#7c0a02",
+        "secondaryColor": "#d3d3d3",
+        "weaponType": "greatsword",
+        "weaponColor": "#5a5a5a",
+        "stats": {
+          "hp": 200,
+          "atk": 20,
+          "def": 14,
+          "spd": 2
+        },
+        "simple": {
+          "name": "Great Knife Sentence",
+          "type": "melee",
+          "dmg": 1.55
+        },
+        "secondary": {
+          "name": "Spear of Judgment",
+          "type": "projectile",
+          "cd": 9,
+          "dmg": 2.05
+        },
+        "defense": {
+          "name": "Rust Otherworld Ward",
+          "type": "shield",
+          "dur": 2.5,
+          "reduce": 0.72
+        },
+        "special": {
+          "name": "Execution Fog Trial",
+          "type": "darkness",
+          "dmg": 4.7,
+          "color": "#7c0a02"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/silent-hill/pyramidhead.png",
+      "referenceSha256": "11745ac6f9340341ce39818351928d30a7d7c5ef61ba08612a689fc35e764f39"
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "james_s",
+        "name": "James Sunderland",
+        "cat": "horror",
+        "color": "#7f8c8d",
+        "universe": "Silent Hill",
+        "category": "horror",
+        "primaryColor": "#7f8c8d",
+        "secondaryColor": "#7f8c8d",
+        "weaponType": "pipe",
+        "weaponColor": "#7f8c8d",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Steel Pipe Swing",
+          "type": "melee",
+          "dmg": 0.95
+        },
+        "secondary": {
+          "name": "Static Radio Warning",
+          "type": "fear",
+          "cd": 6,
+          "dmg": 1.35
+        },
+        "defense": {
+          "name": "Health Drink Breath",
+          "type": "heal",
+          "dur": 1.6,
+          "reduce": 0.58
+        },
+        "special": {
+          "name": "Lakeview Truth Break",
+          "type": "dark_aoe",
+          "dmg": 4.1,
+          "color": "#cbd8c8"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/silent-hill/james-s.png",
+      "referenceSha256": "123ca688ad313caee708d9753cb0d6f1ec9b8b53383adc07d5254efb0c4b1d58"
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "heather",
+        "name": "Heather Mason",
+        "cat": "horror",
+        "color": "#e67e22",
+        "universe": "Silent Hill",
+        "category": "horror",
+        "primaryColor": "#e67e22",
+        "secondaryColor": "#e67e22",
+        "weaponType": "gun",
+        "weaponColor": "#2b1d16",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Handgun in the Fog",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Aglaophotis Rejection",
+          "type": "magic",
+          "cd": 7,
+          "dmg": 1.55
+        },
+        "defense": {
+          "name": "Pendant Refusal",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "No God Birth",
+          "type": "ritual_aoe",
+          "dmg": 4.5,
+          "color": "#e67e22"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/silent-hill/heather.png",
+      "referenceSha256": "47cc4f83520402087285fd3a5483889738245b09cafc837d61bc238ab54b9a51"
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "harry_mason",
+        "name": "Harry Mason",
+        "cat": "horror",
+        "color": "#59656f",
+        "universe": "Silent Hill",
+        "category": "horror",
+        "primaryColor": "#59656f",
+        "secondaryColor": "#59656f",
+        "weaponType": "slash",
+        "weaponColor": "#59656f",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Harry Mason Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Harry Mason Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Harry Mason Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Harry Mason Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#59656f"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/silent-hill/harry-mason.png",
+      "referenceSha256": "3fcfe63a6e894f0c8b1ba5ce439e34073d4ac4dc0b3b7dc31e3b7d8494d7454f"
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "alessa_gillespie",
+        "name": "Alessa Gillespie",
+        "cat": "hacker",
+        "color": "#6c3483",
+        "universe": "Silent Hill",
+        "category": "hacker",
+        "primaryColor": "#6c3483",
+        "secondaryColor": "#6c3483",
+        "weaponType": "laser",
+        "weaponColor": "#6c3483",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Alessa Gillespie Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Alessa Gillespie Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Alessa Gillespie Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Alessa Gillespie Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#6c3483"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/silent-hill/alessa-gillespie.png",
+      "referenceSha256": "e1e35ff9af76d6bf0dd769d92e809cf7acda90883deda6934fc031ac4ecb1ca8"
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "maria_sh2",
+        "name": "Maria",
+        "cat": "horror",
+        "color": "#c27a7a",
+        "universe": "Silent Hill",
+        "category": "horror",
+        "primaryColor": "#c27a7a",
+        "secondaryColor": "#c27a7a",
+        "weaponType": "slash",
+        "weaponColor": "#c27a7a",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Maria Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Maria Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Maria Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Maria Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#c27a7a"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/silent-hill/maria-sh2.png",
+      "referenceSha256": "329c107422c49f44f6006e0e2b0f11e47067b744e761ac02303b79523980774c"
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "cybil_bennett",
+        "name": "Cybil Bennett",
+        "cat": "tactical",
+        "color": "#2e5f8a",
+        "universe": "Silent Hill",
+        "category": "tactical",
+        "primaryColor": "#2e5f8a",
+        "secondaryColor": "#2e5f8a",
+        "weaponType": "gun",
+        "weaponColor": "#2e5f8a",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Cybil Bennett Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Cybil Bennett Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Cybil Bennett Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Cybil Bennett Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#2e5f8a"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/silent-hill/cybil-bennett.png",
+      "referenceSha256": "e663c7b5b5ecd94f4b5168902989e1b8f792ba1d898a65298a3ba908f76e3e2d"
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "claudia_wolf",
+        "name": "Claudia Wolf",
+        "cat": "hacker",
+        "color": "#8d7b60",
+        "universe": "Silent Hill",
+        "category": "hacker",
+        "primaryColor": "#8d7b60",
+        "secondaryColor": "#8d7b60",
+        "weaponType": "laser",
+        "weaponColor": "#8d7b60",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Claudia Wolf Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Claudia Wolf Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Claudia Wolf Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Claudia Wolf Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#8d7b60"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/silent-hill/claudia-wolf.png",
+      "referenceSha256": "745b269cf953ed642dc59e0a1e425bb794fd8331fb8549c10259cd482c925053"
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "regina",
+        "name": "Regina",
+        "universe": "Dino Crisis",
+        "category": "horror",
+        "primaryColor": "#a52a2a",
+        "secondaryColor": "#1a1a1a",
+        "weaponType": "gun",
+        "weaponColor": "#2a2a2a",
+        "stats": {
+          "hp": 125,
+          "atk": 14,
+          "def": 7,
+          "spd": 7
+        },
+        "simple": {
+          "name": "SORT Glock Burst",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Tranquilizer Dart",
+          "type": "projectile",
+          "cd": 6,
+          "dmg": 1.55
+        },
+        "defense": {
+          "name": "Key Card Reposition",
+          "type": "dodge",
+          "dur": 1.9,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Third Energy Extraction",
+          "type": "temporal_aoe",
+          "dmg": 4.6,
+          "color": "#ff6b56"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dino-crisis/regina.png",
+      "referenceSha256": "66d97fe8e8547ede7db9f6cdfea9b0562581d2f28700b41ced803b0b59ded375"
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "dylan",
+        "name": "Dylan Morton",
+        "cat": "tactical",
+        "color": "#27ae60",
+        "universe": "Dino Crisis",
+        "category": "tactical",
+        "primaryColor": "#27ae60",
+        "secondaryColor": "#27ae60",
+        "weaponType": "gun",
+        "weaponColor": "#24412f",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "TRAT Rifle Cover",
+          "type": "bullet",
+          "dmg": 1.05
+        },
+        "secondary": {
+          "name": "Shotgun Raptor Stop",
+          "type": "shotgun",
+          "cd": 6,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Survivor Escort Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.78
+        },
+        "special": {
+          "name": "Edward City Heavy Line",
+          "type": "explosive_aoe",
+          "dmg": 4.7,
+          "color": "#27ae60"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dino-crisis/dylan.png",
+      "referenceSha256": "e39167be8159cd72d9303bb608e4584ed2936bb061e2cfc8b4578e49d175b960"
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "predator",
+        "name": "Yautja Hunter",
+        "universe": "Predator",
+        "category": "marine",
+        "primaryColor": "#5c524d",
+        "secondaryColor": "#00ff00",
+        "weaponType": "wristblade",
+        "weaponColor": "#a9a9a9",
+        "stats": {
+          "hp": 140,
+          "atk": 18,
+          "def": 9,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Combistick Jab",
+          "type": "melee",
+          "dmg": 1.2
+        },
+        "secondary": {
+          "name": "Plasma Caster",
+          "type": "plasma",
+          "cd": 5,
+          "dmg": 1.9
+        },
+        "defense": {
+          "name": "Cloaking Device",
+          "type": "dodge",
+          "dur": 2.5,
+          "reduce": 0.85
+        },
+        "special": {
+          "name": "Smart Disc Carnage",
+          "type": "boomerang",
+          "dmg": 4.8
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/predator/predator.png",
+      "referenceSha256": "63f01ec64ddd3fd3fd1b6dee73a7b87511e9605b74da6cc9f5f279a5f265b5ba"
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "city_hunter",
+        "name": "City Hunter",
+        "cat": "slayer",
+        "color": "#d35400",
+        "universe": "Predator",
+        "category": "slayer",
+        "primaryColor": "#d35400",
+        "secondaryColor": "#d35400",
+        "weaponType": "smart_disc",
+        "weaponColor": "#d35400",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Wristblade Slice",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Smart Disc Return",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Cloak Reposition",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Los Angeles Trophy Hunt",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#d35400"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/predator/city-hunter.png",
+      "referenceSha256": "3ede225b9a7df6f1e7f993d2044f105c8a109693a4a5b342699d6aa013a50fdb"
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "dutch",
+        "name": "Dutch Schaefer",
+        "cat": "tactical",
+        "color": "#16a085",
+        "universe": "Predator",
+        "category": "tactical",
+        "primaryColor": "#16a085",
+        "secondaryColor": "#16a085",
+        "weaponType": "gun",
+        "weaponColor": "#16a085",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "M16 Jungle Burst",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Mud Trap Counter",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Commando Tree Cover",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Get To The Chopper",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#16a085"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/predator/dutch.png",
+      "referenceSha256": "8a2c29910d79db716f08d60490a901b971d8df93e3f6e7b34b1af33c9012456a"
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "anna_predator",
+        "name": "Anna Gonsalves",
+        "cat": "tactical",
+        "color": "#8f6f45",
+        "universe": "Predator",
+        "category": "tactical",
+        "primaryColor": "#8f6f45",
+        "secondaryColor": "#8f6f45",
+        "weaponType": "gun",
+        "weaponColor": "#8f6f45",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Anna Gonsalves Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Anna Gonsalves Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Anna Gonsalves Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Anna Gonsalves Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#8f6f45"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/predator/anna-predator.png",
+      "referenceSha256": "05ed2e24d040ad93d941a4b1f191a1d3018dcc28833e23f4d4136b7423acc123"
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "billy_predator",
+        "name": "Billy Sole",
+        "cat": "slayer",
+        "color": "#3d5c3d",
+        "universe": "Predator",
+        "category": "slayer",
+        "primaryColor": "#3d5c3d",
+        "secondaryColor": "#3d5c3d",
+        "weaponType": "slash",
+        "weaponColor": "#3d5c3d",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Billy Sole Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Billy Sole Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Billy Sole Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Billy Sole Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#3d5c3d"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/predator/billy-predator.png",
+      "referenceSha256": "3fa9a6c16b47ba8fc6528498901d9f54c982cdf0ba5f556dd4e34298e38f9146"
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "mac_predator",
+        "name": "Mac Eliot",
+        "cat": "marine",
+        "color": "#4b6043",
+        "universe": "Predator",
+        "category": "marine",
+        "primaryColor": "#4b6043",
+        "secondaryColor": "#4b6043",
+        "weaponType": "gun",
+        "weaponColor": "#4b6043",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Mac Eliot Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Mac Eliot Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Mac Eliot Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Mac Eliot Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#4b6043"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/predator/mac-predator.png",
+      "referenceSha256": "946a49664de22670ef978c89fe1243ad4309aaab16b441d58b544e0088ac5368"
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "harrigan_predator",
+        "name": "Mike Harrigan",
+        "cat": "tactical",
+        "color": "#6c5f54",
+        "universe": "Predator",
+        "category": "tactical",
+        "primaryColor": "#6c5f54",
+        "secondaryColor": "#6c5f54",
+        "weaponType": "gun",
+        "weaponColor": "#6c5f54",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Mike Harrigan Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Mike Harrigan Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Mike Harrigan Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Mike Harrigan Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#6c5f54"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/predator/harrigan-predator.png",
+      "referenceSha256": "b31829d030779c7aa3a97d3faccba5333e7393467428deb9afa78e81b07a2396"
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "greyback_yautja",
+        "name": "Greyback Elder",
+        "cat": "marine",
+        "color": "#6b604c",
+        "universe": "Predator",
+        "category": "marine",
+        "primaryColor": "#6b604c",
+        "secondaryColor": "#6b604c",
+        "weaponType": "gun",
+        "weaponColor": "#6b604c",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Greyback Elder Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Greyback Elder Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Greyback Elder Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Greyback Elder Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#6b604c"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/predator/greyback-yautja.png",
+      "referenceSha256": "1284f35efb3378e4f9755f58a1a8ac197bb19fd34bb44b4bb4667425685c9fbc"
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "naru",
+        "name": "Naru",
+        "cat": "tactical",
+        "color": "#8c6a45",
+        "weaponType": "axe",
+        "weaponColor": "#8c6a45",
+        "stats": {
+          "hp": 124,
+          "atk": 12,
+          "def": 8,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Rope Tomahawk",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Mud Ambush Trap",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Medicinal Cooling Hide",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Predator Hunt Reversal",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#8c6a45"
+        },
+        "universe": "Predator",
+        "category": "tactical",
+        "primaryColor": "#8c6a45",
+        "secondaryColor": "#8c6a45"
+      },
+      "referenceAsset": "/sprites/generated/heroes/predator/naru.png",
+      "referenceSha256": "220e3f83569c4eea248e0aa8df574f2eb474169da55c0ad2bd349491752ca1da"
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "royce_predators_core",
+        "name": "Royce",
+        "cat": "tactical",
+        "color": "#3f4f3f",
+        "weaponType": "gun",
+        "weaponColor": "#3f4f3f",
+        "stats": {
+          "hp": 124,
+          "atk": 12,
+          "def": 8,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Mercenary Rifle Cut",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Game Preserve Trap",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Thermal Mask Feint",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Super Predator Ambush",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#3f4f3f"
+        },
+        "universe": "Predator",
+        "category": "tactical",
+        "primaryColor": "#3f4f3f",
+        "secondaryColor": "#3f4f3f"
+      },
+      "referenceAsset": "/sprites/generated/heroes/predator/royce-predators-core.png",
+      "referenceSha256": "25975c78167cb8bf504918abd068e0c3b5e76535da6f1751e7e1281b69d7db65"
+    },
+    {
+      "part": "C",
+      "hero": {
+        "id": "ash_williams",
+        "name": "Ash Williams",
+        "cat": "slayer",
+        "color": "#ff3f2f",
+        "weapon": "slash",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "universe": "Evil Dead",
+        "category": "slayer",
+        "primaryColor": "#ff3f2f",
+        "secondaryColor": "#ff3f2f",
+        "weaponType": "slash",
+        "weaponColor": "#ff3f2f",
+        "simple": {
+          "name": "Ash Williams Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Ash Williams Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Ash Williams Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Ash Williams Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#ff3f2f"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/evil-dead/ash-williams.png",
+      "referenceSha256": "2ec973fa6b3d3fe67e83ee586755567ecabd87aaab9e6c255509bcc6207d4377"
+    },
+    {
+      "part": "C",
+      "hero": {
+        "id": "annie_knowby",
+        "name": "Annie Knowby",
+        "cat": "hacker",
+        "color": "#ff6252",
+        "weapon": "laser",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "universe": "Evil Dead",
+        "category": "hacker",
+        "primaryColor": "#ff6252",
+        "secondaryColor": "#ff6252",
+        "weaponType": "laser",
+        "weaponColor": "#ff6252",
+        "simple": {
+          "name": "Annie Knowby Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Annie Knowby Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Annie Knowby Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Annie Knowby Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#ff6252"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/evil-dead/annie-knowby.png",
+      "referenceSha256": "b06f051deaecc16be6646e16a44bf086c5cf6a0132da64ef374c09fbae5d8ec2"
+    },
+    {
+      "part": "C",
+      "hero": {
+        "id": "henry_red_ed",
+        "name": "Henry the Red",
+        "cat": "marine",
+        "color": "#dc1c0c",
+        "weapon": "gun",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "universe": "Evil Dead",
+        "category": "marine",
+        "primaryColor": "#dc1c0c",
+        "secondaryColor": "#dc1c0c",
+        "weaponType": "gun",
+        "weaponColor": "#dc1c0c",
+        "simple": {
+          "name": "Henry the Red Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Henry the Red Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Henry the Red Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Henry the Red Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#dc1c0c"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/evil-dead/henry-red-ed.png",
+      "referenceSha256": "ab5ade4cac218aec9c0168e261d826fa3079d5d5b57c019580076e7cb84f5992"
+    },
+    {
+      "part": "C",
+      "hero": {
+        "id": "pablo_evil_dead",
+        "name": "Pablo Bolivar",
+        "cat": "hacker",
+        "color": "#8e6e53",
+        "simpleName": "Brujo Talisman Hit",
+        "secondaryName": "Necronomicon Patch",
+        "defenseName": "Trailer Door Brace",
+        "specialName": "El Brujo Ritual Seal",
+        "universe": "Evil Dead",
+        "category": "hacker",
+        "primaryColor": "#8e6e53",
+        "secondaryColor": "#8e6e53",
+        "weaponType": "laser",
+        "weaponColor": "#8e6e53",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Brujo Talisman Hit",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Necronomicon Patch",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Trailer Door Brace",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "El Brujo Ritual Seal",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#8e6e53"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/evil-dead/pablo-evil-dead.png",
+      "referenceSha256": "8ed0a078811656c75c87a43828e77f31156770ff57c6d9367b75f0607d5c8267"
+    },
+    {
+      "part": "C",
+      "hero": {
+        "id": "kelly_evil_dead",
+        "name": "Kelly Maxwell",
+        "cat": "slayer",
+        "color": "#5d6d7e",
+        "simpleName": "Meat Hammer Swing",
+        "secondaryName": "Deadite Shotgun Blast",
+        "defenseName": "Cabin Counter",
+        "specialName": "Possession Breakout",
+        "universe": "Evil Dead",
+        "category": "slayer",
+        "primaryColor": "#5d6d7e",
+        "secondaryColor": "#5d6d7e",
+        "weaponType": "slash",
+        "weaponColor": "#5d6d7e",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Meat Hammer Swing",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Deadite Shotgun Blast",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Cabin Counter",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Possession Breakout",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#5d6d7e"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/evil-dead/kelly-evil-dead.png",
+      "referenceSha256": "6153eb3758349f2413cae8b371877a7cc50ab0b0e464fb628fa75bb4a8e213fe"
+    },
+    {
+      "part": "C",
+      "hero": {
+        "id": "ruby_evil_dead",
+        "name": "Ruby Knowby",
+        "cat": "horror",
+        "color": "#7b241c",
+        "weapon": "dagger",
+        "simpleName": "Kandarian Dagger",
+        "secondaryName": "Book Page Curse",
+        "defenseName": "Immortal Bargain",
+        "specialName": "Dark One Contract",
+        "universe": "Evil Dead",
+        "category": "horror",
+        "primaryColor": "#7b241c",
+        "secondaryColor": "#7b241c",
+        "weaponType": "dagger",
+        "weaponColor": "#7b241c",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Kandarian Dagger",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Book Page Curse",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Immortal Bargain",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Dark One Contract",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#7b241c"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/evil-dead/ruby-evil-dead.png",
+      "referenceSha256": "eff893894f081487b5d1a55099b4cbe70273ad471b4182e15dffa2ebf7660db8"
+    },
+    {
+      "part": "C",
+      "hero": {
+        "id": "isaac",
+        "name": "Isaac Clarke",
+        "universe": "Dead Space",
+        "category": "marine",
+        "primaryColor": "#7e5109",
+        "secondaryColor": "#00ffff",
+        "weaponType": "plasma_cutter",
+        "weaponColor": "#1a1104",
+        "stats": {
+          "hp": 150,
+          "atk": 17,
+          "def": 11,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Cutter Vertical",
+          "type": "laser",
+          "dmg": 1.1
+        },
+        "secondary": {
+          "name": "Stasis Slowdown",
+          "type": "gravity",
+          "cd": 6,
+          "dmg": 1.6
+        },
+        "defense": {
+          "name": "RIG Heavy Shield",
+          "type": "shield",
+          "dur": 2.5,
+          "reduce": 0.85
+        },
+        "special": {
+          "name": "Telekinetic Smash",
+          "type": "gravity_aoe",
+          "dmg": 4.9
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dead-space/isaac.png",
+      "referenceSha256": "fbbc4c5b0f875f4b02a5a5e1fbe210b5dc33d6ef4db3e290a21f755bdf72cf99"
+    },
+    {
+      "part": "C",
+      "hero": {
+        "id": "carver",
+        "name": "John Carver",
+        "cat": "marine",
+        "color": "#7f8c8d",
+        "universe": "Dead Space",
+        "category": "marine",
+        "primaryColor": "#7f8c8d",
+        "secondaryColor": "#7f8c8d",
+        "weaponType": "gun",
+        "weaponColor": "#7f8c8d",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Security Rifle Burst",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Co-op Stasis Shot",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Soldier Trauma Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Tau Volantis Push",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#7f8c8d"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dead-space/carver.png",
+      "referenceSha256": "356358558dadc54fadf5fed038eaa0919c09df1303cb5250d4f329be70191296"
+    },
+    {
+      "part": "C",
+      "hero": {
+        "id": "ellie",
+        "name": "Ellie Langford",
+        "cat": "tactical",
+        "color": "#fdcb6e",
+        "universe": "Dead Space",
+        "category": "tactical",
+        "primaryColor": "#fdcb6e",
+        "secondaryColor": "#fdcb6e",
+        "weaponType": "gun",
+        "weaponColor": "#fdcb6e",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Engineer Cover Shot",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Ship Route Fix",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Eye Trauma Grit",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Sprawl Escape Vector",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#fdcb6e"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dead-space/ellie.png",
+      "referenceSha256": "dc0bb6ba52b89365c7be4756083e920c55299cda6d026a8e7350a7fff90d92bf"
+    },
+    {
+      "part": "C",
+      "hero": {
+        "id": "nicole_brennan",
+        "name": "Nicole Brennan",
+        "cat": "hacker",
+        "color": "#85c1e9",
+        "universe": "Dead Space",
+        "category": "hacker",
+        "primaryColor": "#85c1e9",
+        "secondaryColor": "#85c1e9",
+        "weaponType": "laser",
+        "weaponColor": "#85c1e9",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Nicole Brennan Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Nicole Brennan Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Nicole Brennan Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Nicole Brennan Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#85c1e9"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dead-space/nicole-brennan.png",
+      "referenceSha256": "98abc7b9c6c95d419f87be97ea2396c34237144c6a7567308e05aaf860ae6f3f"
+    },
+    {
+      "part": "D",
+      "hero": {
+        "id": "fry_futurama",
+        "name": "Philip J. Fry",
+        "cat": "hacker",
+        "color": "#55dfff",
+        "weapon": "laser",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "universe": "Futurama",
+        "category": "hacker",
+        "primaryColor": "#55dfff",
+        "secondaryColor": "#55dfff",
+        "weaponType": "laser",
+        "weaponColor": "#55dfff",
+        "simple": {
+          "name": "Philip J. Fry Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Philip J. Fry Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Philip J. Fry Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Philip J. Fry Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#55dfff"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/futurama/fry-futurama.png",
+      "referenceSha256": "3a9ff037c20d44b1cd4ba19f67381275e89bde34f7de97b7f1bd60fa61db664f"
+    },
+    {
+      "part": "D",
+      "hero": {
+        "id": "leela_futurama",
+        "name": "Leela",
+        "cat": "slayer",
+        "color": "#78ffff",
+        "weapon": "slash",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "universe": "Futurama",
+        "category": "slayer",
+        "primaryColor": "#78ffff",
+        "secondaryColor": "#78ffff",
+        "weaponType": "slash",
+        "weaponColor": "#78ffff",
+        "simple": {
+          "name": "Leela Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Leela Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Leela Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Leela Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#78ffff"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/futurama/leela-futurama.png",
+      "referenceSha256": "a2c69ac0b5efe5153fb3cf95ae827d0b6cb10c56472c576978492076d4163b2d"
+    },
+    {
+      "part": "D",
+      "hero": {
+        "id": "bender_futurama",
+        "name": "Bender",
+        "cat": "marine",
+        "color": "#32bcdc",
+        "weapon": "gun",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "universe": "Futurama",
+        "category": "marine",
+        "primaryColor": "#32bcdc",
+        "secondaryColor": "#32bcdc",
+        "weaponType": "gun",
+        "weaponColor": "#32bcdc",
+        "simple": {
+          "name": "Bender Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Bender Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Bender Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Bender Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#32bcdc"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/futurama/bender-futurama.png",
+      "referenceSha256": "ba06fdeeafabae416dbe065ac79512066b2b3ead7d6a621c36c570eb72426b08"
+    },
+    {
+      "part": "D",
+      "hero": {
+        "id": "amy_futurama",
+        "name": "Amy Wong",
+        "cat": "tactical",
+        "color": "#f5b7b1",
+        "universe": "Futurama",
+        "category": "tactical",
+        "primaryColor": "#f5b7b1",
+        "secondaryColor": "#f5b7b1",
+        "weaponType": "gun",
+        "weaponColor": "#f5b7b1",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Amy Wong Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Amy Wong Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Amy Wong Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Amy Wong Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#f5b7b1"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/futurama/amy-futurama.png",
+      "referenceSha256": "2b7c07d995f145c30f31f336042514628160e6a29a93aa8d9c318a75934637f3"
+    },
+    {
+      "part": "D",
+      "hero": {
+        "id": "hermes_futurama",
+        "name": "Hermes Conrad",
+        "cat": "hacker",
+        "color": "#27ae60",
+        "universe": "Futurama",
+        "category": "hacker",
+        "primaryColor": "#27ae60",
+        "secondaryColor": "#27ae60",
+        "weaponType": "laser",
+        "weaponColor": "#27ae60",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Hermes Conrad Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Hermes Conrad Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Hermes Conrad Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Hermes Conrad Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#27ae60"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/futurama/hermes-futurama.png",
+      "referenceSha256": "5ddae1ea5de6c09479816f7a1c7f709a512fd4c195242cdec3235dca620ee43b"
+    },
+    {
+      "part": "D",
+      "hero": {
+        "id": "zoidberg_futurama",
+        "name": "Zoidberg",
+        "cat": "horror",
+        "color": "#e74c3c",
+        "universe": "Futurama",
+        "category": "horror",
+        "primaryColor": "#e74c3c",
+        "secondaryColor": "#e74c3c",
+        "weaponType": "slash",
+        "weaponColor": "#e74c3c",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Zoidberg Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Zoidberg Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Zoidberg Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Zoidberg Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#e74c3c"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/futurama/zoidberg-futurama.png",
+      "referenceSha256": "7860b089574f13f584323b29253081c15775957d5ce015482f52794434684bc1"
+    },
+    {
+      "part": "D",
+      "hero": {
+        "id": "rick",
+        "name": "Rick Sanchez",
+        "universe": "Rick & Morty",
+        "category": "hacker",
+        "primaryColor": "#5dade2",
+        "secondaryColor": "#f4d03f",
+        "weaponType": "portalgun",
+        "weaponColor": "#7d6608",
+        "stats": {
+          "hp": 130,
+          "atk": 16,
+          "def": 8,
+          "spd": 8
+        },
+        "simple": {
+          "name": "Sci-Fi Raygun",
+          "type": "laser",
+          "dmg": 1.1
+        },
+        "secondary": {
+          "name": "Portal Fling Trap",
+          "type": "projectile",
+          "cd": 6,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Personal Bubble",
+          "type": "shield",
+          "dur": 2.5,
+          "reduce": 0.9
+        },
+        "special": {
+          "name": "Microverse Battery Overcharge",
+          "type": "beam_aoe",
+          "dmg": 5.5
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/rick-morty/rick.png",
+      "referenceSha256": "53b0315b958f621921db5f05dc5b82e3a524953cc0eaf215f55362fad7061ba9"
+    },
+    {
+      "part": "D",
+      "hero": {
+        "id": "morty",
+        "name": "Morty Smith",
+        "cat": "tactical",
+        "color": "#ffeaa7",
+        "universe": "Rick & Morty",
+        "category": "tactical",
+        "primaryColor": "#ffeaa7",
+        "secondaryColor": "#ffeaa7",
+        "weaponType": "laser",
+        "weaponColor": "#ffeaa7",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Morty Panic Shot",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Death Crystal Warning",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Nervous Dodge",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Aw Geez Reality Split",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#ffeaa7"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/rick-morty/morty.png",
+      "referenceSha256": "7f1509383e38e96f465e9163a1530f432d59ea20f924b1c27c553054e7fddb3f"
+    },
+    {
+      "part": "D",
+      "hero": {
+        "id": "summer",
+        "name": "Summer Smith",
+        "cat": "slayer",
+        "color": "#ff7675",
+        "universe": "Rick & Morty",
+        "category": "slayer",
+        "primaryColor": "#ff7675",
+        "secondaryColor": "#ff7675",
+        "weaponType": "laser",
+        "weaponColor": "#ff7675",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Teen Rebel Blast",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Mad Max Detour",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Family Armor Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Post-Apocalyptic Sister Rush",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#ff7675"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/rick-morty/summer.png",
+      "referenceSha256": "35ff896acb6af7fd6deab19fab03c39a6c752142977dc9ffc50da069ba4c4d67"
+    },
+    {
+      "part": "D",
+      "hero": {
+        "id": "birdperson",
+        "name": "Birdperson",
+        "cat": "marine",
+        "color": "#34495e",
+        "universe": "Rick & Morty",
+        "category": "marine",
+        "primaryColor": "#34495e",
+        "secondaryColor": "#34495e",
+        "weaponType": "gun",
+        "weaponColor": "#34495e",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Birdperson Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Birdperson Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Birdperson Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Birdperson Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#34495e"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/rick-morty/birdperson.png",
+      "referenceSha256": "240623fef286e12ba0a72e37cb245ce5175f385f31c6b80b5c215d140b18237e"
+    }
+  ],
+  "source1to1Verified": false
+}

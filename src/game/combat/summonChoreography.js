@@ -1,3 +1,6 @@
+import { ROSTER_SUMMON_CHOREOGRAPHIES_WAVE14, drawRosterSummonCueWave14 } from './rosterSummonChoreographyWave14.js';
+import { ROSTER_SUMMON_CHOREOGRAPHIES_WAVE12, drawRosterSummonCueWave12 } from './rosterSummonChoreographyWave12.js';
+import { ROSTER_SUMMON_CHOREOGRAPHIES_WAVE13, drawRosterSummonCueWave13 } from './rosterSummonChoreographyWave13.js';
 import { ROSTER_SUMMON_CHOREOGRAPHIES_WAVE11, drawRosterSummonCueWave11 } from './rosterSummonChoreographyWave11.js';
 import { ROSTER_SUMMON_CHOREOGRAPHIES_WAVE10, drawRosterSummonCueWave10 } from './rosterSummonChoreographyWave10.js';
 // Authored motion and effects for exact entity/action identities. These are
@@ -99,7 +102,7 @@ const entries = [
     { path: 'egret-convoy', arrival: 0.43, travelTicks: 20, holdTicks: 31, scale: 1.1, offsetX: 83, preparation: 'egret-form-up', attack: 'egret-ballistics', recovery: 'egret-depart', muzzle: [0.3, -0.36] })
 ];
 
-const allEntries = [...entries, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE8, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE9, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE10, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE11];
+const allEntries = [...entries, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE8, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE9, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE10, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE11, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE12, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE13, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE14];
 export const SUMMON_CHOREOGRAPHIES = Object.freeze(Object.fromEntries(allEntries.map(entry => [keyFor(entry.universe, entry.entityName, entry.actionName), entry])));
 if (Object.keys(SUMMON_CHOREOGRAPHIES).length !== allEntries.length) throw new Error('Duplicate exact summon choreography identity');
 export function resolveSummonChoreography(descriptor) {
@@ -365,6 +368,9 @@ const drawVines = (ctx, state, cueState) => {
 };
 
 function drawCue(ctx, state, cueState) {
+  if (drawRosterSummonCueWave14(ctx, state, cueState)) return;
+  if (drawRosterSummonCueWave13(ctx, state, cueState)) return;
+  if (drawRosterSummonCueWave12(ctx, state, cueState)) return;
   if (drawRosterSummonCueWave11(ctx, state, cueState)) return;
   if (drawRosterSummonCueWave10(ctx, state, cueState)) return;
   if (drawRosterSummonCueWave9(ctx, state, cueState)) return;

@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "preliminary": true,
+  "startedAt": "2026-10-24T02:41:35.965Z",
+  "browserClosedAt": "2026-10-24T02:41:52.831Z",
+  "finishedAt": "2026-10-24T02:41:55.409Z",
+  "failure": "AssertionError [ERR_ASSERTION]: crypt_necrodancer_aria::idle::0::-1: W12 actual geometry matrix\n+ actual - expected\n\n  {\n    a: -1,\n+   b: -0,\n-   b: 0,\n    c: 0,\n    d: 1,\n    e: 656,\n    f: 132\n  }\n\n    at file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/browser/base-corrections.mjs:141:78\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:502:9)",
+  "errors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "productionInputsStableDuringRun": true
+}

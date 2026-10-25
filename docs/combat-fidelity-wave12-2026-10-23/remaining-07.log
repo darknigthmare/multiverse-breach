@@ -1,0 +1,56 @@
+
+> lively-darwin@0.0.0 test:polish
+> node --test scripts/audioPreferences.test.mjs scripts/soundEngineGesture.test.mjs scripts/cloudSaveConflictPolicy.test.mjs scripts/titleNavigation.test.mjs scripts/titlePresentation.test.mjs scripts/kartCareerSave.test.mjs scripts/factionProgression.test.mjs scripts/specialEvents.test.mjs scripts/progressionRuntimeIntegration.test.mjs
+
+✔ audio preferences clamp independent buses and normalize mute (1.261415ms)
+✔ audio preferences survive storage round trips (0.358572ms)
+✔ corrupt storage falls back to safe defaults (0.266223ms)
+✔ no meaningful trace is a no-op (2.065359ms)
+✔ a local trace without a cloud trace is uploaded (0.214724ms)
+✔ a cloud trace without a local trace is loaded (0.13928ms)
+✔ trace flags distinguish a default payload from meaningful progress (1.239702ms)
+✔ equivalent traces are a no-op regardless of object key order (0.395357ms)
+✔ array order remains meaningful during equivalence checks (0.153652ms)
+✔ two divergent meaningful traces require confirmation (0.192881ms)
+✔ the policy does not mutate either payload (0.292171ms)
+✔ all 22 exposed faction labels own a unique mechanical contract (1.071238ms)
+✔ every runtime Thread owns an explicit lore-authored base affinity (2.49615ms)
+✔ the five reputation tracks gain ranks and apply real passive bonuses (0.469609ms)
+✔ base and narrative faction rules resolve and modify combat stats (0.567047ms)
+✔ mission outcomes award deterministic, migrated reputation xp (0.498192ms)
+✔ legacy kart career migrates inside the save-v9 portal collection (1.431892ms)
+✔ integrated career wins over stale legacy storage and is normalized (0.276948ms)
+✔ race results preserve the best time and accumulate rewards once (0.345923ms)
+✔ real combat consumes all 22 faction contracts and saved reputation passives (2.406214ms)
+✔ curated legacy affinities activate only their explicit base rule (0.722971ms)
+✔ every seasonal reward resolves to a mechanical item rendered by Hub inventory (0.412263ms)
+✔ season selection and launch share the titleDayKey-derived date at boundaries (0.665335ms)
+✔ save migration removes the legacy kart key only after the integrated save is written (0.401937ms)
+✔ seasonal mission narrative consumes its authored intro, outro and defeat fallback (0.141373ms)
+✔ sound engine creates AudioContext only after an explicit gesture unlock (2.91306ms)
+✔ the three seasonal events expose deterministic annual windows and playable stages (0.911667ms)
+✔ Yautja Hunt is active inside its window and closed outside it (14.911278ms)
+✔ a stage carries a season-specific completion id and deployment lock (0.59573ms)
+✔ season progress records attempts, victories, first clear and best grade (1.19209ms)
+✔ a missing trace opens profile creation and cannot continue (1.123246ms)
+✔ an incomplete prologue resumes without rewriting its step (0.170667ms)
+✔ a completed trace continues to the hub (0.140903ms)
+✔ title rotation exposes only owned, visible, enabled universes (10.577714ms)
+✔ title rotation is deterministic, bounded and groups owned heroes (0.454727ms)
+✔ attract cards never leak history entries that are not still owned (1.360284ms)
+✔ attract stages expose only completed victories or explicit unlocked fallbacks (0.416819ms)
+✔ attract stages exclude disabled stages and any hidden source universe (0.268586ms)
+✔ local title day key uses calendar components and rejects invalid values (0.267494ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 371.432223
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

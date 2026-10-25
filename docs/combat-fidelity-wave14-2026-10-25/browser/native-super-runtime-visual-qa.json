@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-25T09:06:28.540Z",
+  "reviewer": "Codex tactics_maps",
+  "result": "passed",
+  "scope": "Inspection visuelle de toutes les lignes des trois grilles finales et rapprochement avec les assertions des vrais moteurs après le gel de production W14.",
+  "runtimeReport": {
+    "path": "docs/combat-fidelity-wave14-2026-10-25/browser/native-super-runtime.json",
+    "sha256": "37b66d7ffbbb7cb038f312e070ab8454fb4e3fc9442bb6f7cc3adca09f6b735e",
+    "phase": "final",
+    "partial": false,
+    "productionFreezeAcknowledged": true,
+    "productionFreezePath": "docs/combat-fidelity-wave14-2026-10-25/production-freeze.json",
+    "productionFreezeSha256": "b022d21ad580a45b740fc4205c9feae69852139cb2f3353926c51078356a2b02",
+    "startedAt": "2026-10-25T09:01:56.465Z",
+    "finishedAt": "2026-10-25T09:02:23.784Z",
+    "allBrowserWindowsClosed": true,
+    "browserClosedAt": "2026-10-25T09:02:23.011Z"
+  },
+  "coverage": {
+    "identities": 40,
+    "deliveredNativeBodies": 40,
+    "historicalBodies": 0,
+    "confirmedRefusals": 0,
+    "pendingNativeBodies": 0,
+    "authoritativeFixtures": 240,
+    "tacticsFixtures": 80,
+    "physicalProjectileFixtures": 34,
+    "measuredPhysicalOrigins": 34,
+    "bodyKinds": {
+      "native32": 240
+    },
+    "tacticsBodyKinds": {
+      "native32": 80
+    },
+    "projectileFamilies": {
+      "gun": 12,
+      "bow": 3,
+      "omnitool": 1,
+      "multitool": 1
+    },
+    "viewedPartitions": 13
+  },
+  "reviewedImages": [
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/browser/native-super-runtime-grid.png",
+      "sha256": "344147c239b2d4e9b4ff000329e2cc924cfcad52d805d918a5151ac9403ac16d",
+      "width": 1800,
+      "height": 10400,
+      "rows": 40,
+      "columns": 6,
+      "inspectedWith": "view_image",
+      "reviewedPartitions": [
+        {
+          "firstRow": 1,
+          "lastRow": 8
+        },
+        {
+          "firstRow": 9,
+          "lastRow": 16
+        },
+        {
+          "firstRow": 17,
+          "lastRow": 24
+        },
+        {
+          "firstRow": 25,
+          "lastRow": 32
+        },
+        {
+          "firstRow": 33,
+          "lastRow": 40
+        }
+      ],
+      "observations": [
+        "Les40 lignes et6 colonnes RPG/Melee/Fighter des deux camps ont été vues en cinq découpes contiguës : aucun corps absent, mélange de ligne ou débordement de cellule inattendu.",
+        "Aragorn conserve son équipement de rôdeur ; les trois archers gardent leurs arcs physiques ; Mordin emploie son omni-tool et le Voyageur son multi-tool. Les silhouettes, poses et orientations opposées restent visibles.",
+        "Les sept supports montrent leur propre geste et un repère discret au sol ; Jensen conserve son seul corps et une décharge locale autour du torse. Aucun corps de victime ou partenaire ajouté au feedback radial observé."
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/browser/native-super-projectile-grid.png",
+      "sha256": "2673cc316e18759f0cec7d19bbd011eb2138d9c9d58bea19c13ab72dd27785f1",
+      "width": 1800,
+      "height": 4420,
+      "rows": 17,
+      "columns": 6,
+      "inspectedWith": "view_image",
+      "reviewedPartitions": [
+        {
+          "firstRow": 1,
+          "lastRow": 6
+        },
+        {
+          "firstRow": 7,
+          "lastRow": 12
+        },
+        {
+          "firstRow": 13,
+          "lastRow": 17
+        }
+      ],
+      "observations": [
+        "Les17 lignes et6 colonnes lancement/vol/impact des deux camps ont été vues en trois découpes contiguës : 12 armes à feu, trois arcs, un omni-tool et un multi-tool.",
+        "Legolas, Aloy et Lara gardent leurs arcs physiques dans la pose de départ. Les départs restent raccordés aux points natifs mesurés ; Mordin possède un petit projectile circulaire et le Voyageur un trait cyan fini.",
+        "Les colonnes de vol sont cadrées sur le projectile après déplacement volontaire du propriétaire pour vérifier la direction engagée ; son corps peut donc être hors de ce cadrage. Les corps au lancement et en récupération à impact sont visibles.",
+        "Les contacts restent des anneaux au point stocké. Aucun rayon continu depuis une arme abaissée ou corps supplémentaire observé."
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/browser/native-super-tactics-grid.png",
+      "sha256": "341dbade97cca33953b2148ada28cc776e5a6cd309a54d940b97f155aebfbcf2",
+      "width": 2400,
+      "height": 10400,
+      "rows": 40,
+      "columns": 8,
+      "inspectedWith": "view_image",
+      "reviewedPartitions": [
+        {
+          "firstRow": 1,
+          "lastRow": 8
+        },
+        {
+          "firstRow": 9,
+          "lastRow": 16
+        },
+        {
+          "firstRow": 17,
+          "lastRow": 24
+        },
+        {
+          "firstRow": 25,
+          "lastRow": 32
+        },
+        {
+          "firstRow": 33,
+          "lastRow": 40
+        }
+      ],
+      "observations": [
+        "Les40 lignes et8 colonnes t0/t10/t20/t32 des deux camps ont été vues en cinq découpes contiguës. Les quatre poses restent présentes et les camps gardent des orientations opposées.",
+        "Les flèches de tour et barres de camp appartiennent au rendu réel Tactics ; les séquences avancent avec stateTimer sur les étages supérieurs et inférieurs du terrain Nexus de contrôle.",
+        "Les trois arcs restent présents au relâchement ; les armes modernes, les gestes de support et la décharge locale de Jensen restent distincts. Aucun corps manquant ou débordement de cellule inattendu observé."
+      ]
+    }
+  ],
+  "checks": {
+    "allGridRowsActuallyViewed": true,
+    "unexpectedMissingBodyObserved": false,
+    "unexpectedCellClippingObserved": false,
+    "oppositeCampFacingObserved": true,
+    "physicalLaunchFlightImpactObserved": true,
+    "threePhysicalBowsRetainedAtReleaseObserved": true,
+    "omniToolAndMultiToolDistinguished": true,
+    "actorCentredTyphoonWithoutExtraBodyObserved": true,
+    "tacticsFourSamplesObserved": true,
+    "renderReadOnlyAssertionsPassed": true,
+    "productionHashBarrierPassed": true
+  },
+  "historicalFallbacks": [],
+  "limitations": [
+    "Ces fixtures utilisent les vrais moteurs et dessinateurs avec une simulation contrôlée ; elles ne constituent pas un parcours clavier dans les interfaces.",
+    "Les vignettes Tactics vérifient les poses de combat sur les étages du Nexus ; les huit nouveaux secteurs et leurs textures ont leurs preuves UI distinctes.",
+    "Les PNG, timings et effets bornés sont des adaptations. Aucune fidélité officielle source1:1 n’est certifiée."
+  ],
+  "source1to1Verified": false,
+  "runtimeErrors": [],
+  "networkNoise": {
+    "failedRequests": [
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+        "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      }
+    ],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "impact": "Une feuille Google Fonts externe a échoué via le tunnel ; toutes les assertions runtime et tous les PNG locaux ont passé."
+  },
+  "validations": [
+    {
+      "command": "node --test scripts/nativeSuperRuntimeWave14.test.mjs",
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 12827.960222,
+      "phase": "Source A et ancres publiées, avant déclaration du gel global"
+    },
+    {
+      "command": "BROWSER_BASE_URL=http://127.0.0.1:5188 W14_PRODUCTION_FROZEN=1 W14_RUNTIME_PHASE=final node docs/combat-fidelity-wave14-2026-10-25/browser/native-super-runtime.browser.mjs",
+      "passed": true,
+      "durationMs": 27319
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "observedAt": "2026-10-23T21:35:34.102Z",
+  "browserClosedAt": "2026-10-23T21:35:34.102Z",
+  "allBrowserWindowsClosed": true,
+  "liveBrowserProcesses": [],
+  "liveHarnessProcesses": [],
+  "observationCommand": [
+    "ps",
+    "-eo",
+    "pid,ppid,state,comm,args"
+  ],
+  "method": "Both tool-runner sessions completed with exit_code 0. Their SHA-pinned harness finally blocks await browser.close(). This subsequent process observation found no live Chromium browser or owned harness process. The timestamp records this observation, not the earlier exact close instant.",
+  "basis": "Both tool-runner sessions completed with exit_code 0. Their SHA-pinned harness finally blocks await browser.close(). This subsequent process observation found no live Chromium browser or owned harness process. The timestamp records this observation, not the earlier exact close instant.",
+  "reports": [
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/browser/native-presentations.json",
+      "sha256": "a3d6497a058e706441ec411f894a7c52610de3b3f5b113b06b5d0f879a1e3345",
+      "harnessPath": "docs/combat-fidelity-wave12-2026-10-23/browser/native-presentations.mjs",
+      "harnessSha256": "559b214e2c6ab308cbb3858c6869eb490f8db385948ff5b766f39a1a5fcde6f3",
+      "startedAt": "2026-10-23T21:32:17.198Z",
+      "finishedAt": "2026-10-23T21:33:07.346Z",
+      "execSessionId": 18622,
+      "observedExecExitCode": 0,
+      "exitCode": 0,
+      "browserCloseAwaitedByFinally": true,
+      "log": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/browser/native-presentations.log",
+        "sha256": "59a20e3fa6a426e311a60496777cf9a6afe6c046c0582819ad930f3295c37526",
+        "bytes": 16111
+      }
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/browser/base-corrections.json",
+      "sha256": "2fd32808adee7b7409d237c9b3dd0347e5bd26fda4c8504287d534994dcceeac",
+      "harnessPath": "docs/combat-fidelity-wave12-2026-10-23/browser/base-corrections.mjs",
+      "harnessSha256": "f84dcfaca3d07817e9ccf296b7c42b31ac67a1caf67ef141c5f1ee05b94e9e53",
+      "startedAt": "2026-10-23T21:32:17.231Z",
+      "finishedAt": "2026-10-23T21:33:05.264Z",
+      "execSessionId": 16025,
+      "observedExecExitCode": 0,
+      "exitCode": 0,
+      "browserCloseAwaitedByFinally": true,
+      "log": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/browser/base-corrections.log",
+        "sha256": "cbe0ee86c1669d1d361aebffc612ecd52a8fdcf0ea72f5063ee44aaa219502d9",
+        "bytes": 21551
+      }
+    }
+  ],
+  "source1to1Verified": false
+}

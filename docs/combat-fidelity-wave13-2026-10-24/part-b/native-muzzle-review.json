@@ -1,0 +1,2084 @@
+{
+  "schemaVersion": 1,
+  "part": "B",
+  "passed": true,
+  "heroes": 8,
+  "measurements": 64,
+  "sourceCellSize": 256,
+  "nativeAnatomyUnchanged": true,
+  "allAnchorsUseExistingBarrelPixels": true,
+  "source1to1Verified": false,
+  "method": "Manual measurements from retained 256px native cell grids, snapped within8px to existing neutral barrel-contour RGBA pixels. No generated muzzle point, static body origin, paint or duplicated drawing. Reflect X for the opposite camp; world placement still comes from the engine and measured renderScale.",
+  "registry": "src/game/combat/nativeSuperAnchorsWave13PartB.generated.json",
+  "registrySha256": "89183776f641d73a9ffd045ca43adda275974584582c043911335db7da3c3596",
+  "inputHashes": {
+    "src/game/combat/characterAnimationsWave13PartB.generated.json": "5f74e4b7dc2499a2d6c0658fbe084b97455e2b353f9f24cf81e03a350d7bbb76",
+    "public/sprites/generated/combat-character-animations-wave13-part-b/meryl_mgs.png": "76f560b90e4065aff1b2cf9c680e62c40e97acdf0179fc27e154adbddcd6fff8",
+    "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/meryl_mgs-grid.png": "30874b4aaaf10d4a39267b07a5f588a569055fd8ec429d9fac116a2ec5518957",
+    "public/sprites/generated/combat-character-animations-wave13-part-b/ocelot_mgs.png": "a034d3be63a960992a03453b8f14d3e952458ef7d6279b65c7e42fc78becdb39",
+    "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/ocelot_mgs-grid.png": "dcc23b8409b0534e6997cd74469ce639fa486d41cb08c3b1bd6bb7f72eaf80cb",
+    "public/sprites/generated/combat-character-animations-wave13-part-b/big_boss.png": "03f3f50c7173bbb55688ddcfb03e117b2a04284afe05fd13fc93e3d804ed6cd1",
+    "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/big_boss-grid.png": "951a07219b2bf66a02cd4b2be652072052e85f6b7b51dcd9fcc0527cec1db0d4",
+    "public/sprites/generated/combat-character-animations-wave13-part-b/joel_tlou.png": "3d33f38d6121c0041fc0e9043e94c0f97105adcbf50a9016b6feeba106d4e1da",
+    "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/joel_tlou-grid.png": "f62a122f61e9890e64a4cf0fda9b4c9f0c840229194123bbf1c4a2f4c0e17aff",
+    "public/sprites/generated/combat-character-animations-wave13-part-b/tess_tlou.png": "b0de6e5d71499409d8fef16c4217c476cadfae891d419dbbadfc084129f98cff",
+    "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tess_tlou-grid.png": "2d18c59e236dade4c32f8e6753aeda1e88d5fb74565ec5b18df7b5a2ae9bfb5d",
+    "public/sprites/generated/combat-character-animations-wave13-part-b/tommy_tlou.png": "044cc3052a31aacf385594b1dce61ac3bd0f2e77749432ab88053cd310ebbe0c",
+    "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tommy_tlou-grid.png": "1a9fd13464a8dd70021df3874525749c3d0fb878ec9119fe9f20a7662382cd14",
+    "public/sprites/generated/combat-character-animations-wave13-part-b/dina_tlou2.png": "f53571a27a1a0bbd93007807785c69bf20cd5ec6a9b2a25854e54868e0e0339d",
+    "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/dina_tlou2-grid.png": "c2ff24d5948df888239636f19a7579dd2f21d2992b112e559a7c99779b4c96de",
+    "public/sprites/generated/combat-character-animations-wave13-part-b/abby_tlou2.png": "c1af7aead86e31eccada573c2554bfc375e0cb3add7c07cfaccb3e4bbfa0817b",
+    "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/abby_tlou2-grid.png": "e431c697e235624143d6bba80184178e709e63355dd9a095113a9c8364e874dd"
+  },
+  "rows": [
+    {
+      "heroId": "meryl_mgs",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 192,
+        "y": 106
+      },
+      "manualGridLandmark": {
+        "x": 192,
+        "y": 106
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 192,
+        "y": 106,
+        "distance": 0,
+        "rgba": [
+          19,
+          22,
+          27,
+          185
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 64,
+        "y": 106
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/meryl_mgs-grid.png"
+    },
+    {
+      "heroId": "meryl_mgs",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 190,
+        "y": 99
+      },
+      "manualGridLandmark": {
+        "x": 191,
+        "y": 99
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 190,
+        "y": 99,
+        "distance": 1,
+        "rgba": [
+          51,
+          59,
+          64,
+          247
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 66,
+        "y": 99
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/meryl_mgs-grid.png"
+    },
+    {
+      "heroId": "meryl_mgs",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 188,
+        "y": 105
+      },
+      "manualGridLandmark": {
+        "x": 188,
+        "y": 105
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 188,
+        "y": 105,
+        "distance": 0,
+        "rgba": [
+          29,
+          29,
+          36,
+          222
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 68,
+        "y": 105
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/meryl_mgs-grid.png"
+    },
+    {
+      "heroId": "meryl_mgs",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 185,
+        "y": 137
+      },
+      "manualGridLandmark": {
+        "x": 186,
+        "y": 138
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 185,
+        "y": 137,
+        "distance": 1.4142135623730951,
+        "rgba": [
+          15,
+          10,
+          12,
+          217
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 71,
+        "y": 137
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/meryl_mgs-grid.png"
+    },
+    {
+      "heroId": "meryl_mgs",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 194,
+        "y": 116
+      },
+      "manualGridLandmark": {
+        "x": 194,
+        "y": 116
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 194,
+        "y": 116,
+        "distance": 0,
+        "rgba": [
+          8,
+          8,
+          10,
+          215
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 62,
+        "y": 116
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/meryl_mgs-grid.png"
+    },
+    {
+      "heroId": "meryl_mgs",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 192,
+        "y": 115
+      },
+      "manualGridLandmark": {
+        "x": 192,
+        "y": 115
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 192,
+        "y": 115,
+        "distance": 0,
+        "rgba": [
+          47,
+          51,
+          54,
+          224
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 64,
+        "y": 115
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/meryl_mgs-grid.png"
+    },
+    {
+      "heroId": "meryl_mgs",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 188,
+        "y": 116
+      },
+      "manualGridLandmark": {
+        "x": 188,
+        "y": 116
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 188,
+        "y": 116,
+        "distance": 0,
+        "rgba": [
+          29,
+          28,
+          29,
+          240
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 68,
+        "y": 116
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/meryl_mgs-grid.png"
+    },
+    {
+      "heroId": "meryl_mgs",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 186,
+        "y": 123
+      },
+      "manualGridLandmark": {
+        "x": 186,
+        "y": 123
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 186,
+        "y": 123,
+        "distance": 0,
+        "rgba": [
+          6,
+          9,
+          12,
+          186
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 70,
+        "y": 123
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/meryl_mgs-grid.png"
+    },
+    {
+      "heroId": "ocelot_mgs",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 207,
+        "y": 100
+      },
+      "manualGridLandmark": {
+        "x": 207,
+        "y": 100
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 207,
+        "y": 100,
+        "distance": 0,
+        "rgba": [
+          3,
+          1,
+          1,
+          209
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 49,
+        "y": 100
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/ocelot_mgs-grid.png"
+    },
+    {
+      "heroId": "ocelot_mgs",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 221,
+        "y": 120
+      },
+      "manualGridLandmark": {
+        "x": 221,
+        "y": 120
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 221,
+        "y": 120,
+        "distance": 0,
+        "rgba": [
+          131,
+          125,
+          122,
+          214
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 35,
+        "y": 120
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/ocelot_mgs-grid.png"
+    },
+    {
+      "heroId": "ocelot_mgs",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 183,
+        "y": 113
+      },
+      "manualGridLandmark": {
+        "x": 183,
+        "y": 113
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 183,
+        "y": 113,
+        "distance": 0,
+        "rgba": [
+          55,
+          37,
+          22,
+          224
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 73,
+        "y": 113
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/ocelot_mgs-grid.png"
+    },
+    {
+      "heroId": "ocelot_mgs",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 199,
+        "y": 115
+      },
+      "manualGridLandmark": {
+        "x": 200,
+        "y": 115
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 199,
+        "y": 115,
+        "distance": 1,
+        "rgba": [
+          3,
+          3,
+          4,
+          255
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 57,
+        "y": 115
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/ocelot_mgs-grid.png"
+    },
+    {
+      "heroId": "ocelot_mgs",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 214,
+        "y": 134
+      },
+      "manualGridLandmark": {
+        "x": 214,
+        "y": 134
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 214,
+        "y": 134,
+        "distance": 0,
+        "rgba": [
+          11,
+          9,
+          9,
+          242
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 42,
+        "y": 134
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/ocelot_mgs-grid.png"
+    },
+    {
+      "heroId": "ocelot_mgs",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 204,
+        "y": 133
+      },
+      "manualGridLandmark": {
+        "x": 205,
+        "y": 133
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 204,
+        "y": 133,
+        "distance": 1,
+        "rgba": [
+          39,
+          38,
+          37,
+          186
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 52,
+        "y": 133
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/ocelot_mgs-grid.png"
+    },
+    {
+      "heroId": "ocelot_mgs",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 194,
+        "y": 134
+      },
+      "manualGridLandmark": {
+        "x": 198,
+        "y": 134
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 194,
+        "y": 134,
+        "distance": 4,
+        "rgba": [
+          217,
+          213,
+          211,
+          240
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 62,
+        "y": 134
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/ocelot_mgs-grid.png"
+    },
+    {
+      "heroId": "ocelot_mgs",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 201,
+        "y": 132
+      },
+      "manualGridLandmark": {
+        "x": 206,
+        "y": 132
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 201,
+        "y": 132,
+        "distance": 5,
+        "rgba": [
+          7,
+          7,
+          7,
+          211
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 55,
+        "y": 132
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/ocelot_mgs-grid.png"
+    },
+    {
+      "heroId": "big_boss",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 174,
+        "y": 181
+      },
+      "manualGridLandmark": {
+        "x": 174,
+        "y": 181
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 174,
+        "y": 181,
+        "distance": 0,
+        "rgba": [
+          6,
+          5,
+          6,
+          193
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 82,
+        "y": 181
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/big_boss-grid.png"
+    },
+    {
+      "heroId": "big_boss",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 214,
+        "y": 106
+      },
+      "manualGridLandmark": {
+        "x": 214,
+        "y": 106
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 214,
+        "y": 106,
+        "distance": 0,
+        "rgba": [
+          7,
+          6,
+          6,
+          167
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 42,
+        "y": 106
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/big_boss-grid.png"
+    },
+    {
+      "heroId": "big_boss",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 204,
+        "y": 105
+      },
+      "manualGridLandmark": {
+        "x": 205,
+        "y": 105
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 204,
+        "y": 105,
+        "distance": 1,
+        "rgba": [
+          2,
+          1,
+          2,
+          246
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 52,
+        "y": 105
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/big_boss-grid.png"
+    },
+    {
+      "heroId": "big_boss",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 173,
+        "y": 180
+      },
+      "manualGridLandmark": {
+        "x": 174,
+        "y": 180
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 173,
+        "y": 180,
+        "distance": 1,
+        "rgba": [
+          14,
+          14,
+          14,
+          191
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 83,
+        "y": 180
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/big_boss-grid.png"
+    },
+    {
+      "heroId": "big_boss",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 183,
+        "y": 154
+      },
+      "manualGridLandmark": {
+        "x": 183,
+        "y": 154
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 183,
+        "y": 154,
+        "distance": 0,
+        "rgba": [
+          5,
+          5,
+          7,
+          247
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 73,
+        "y": 154
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/big_boss-grid.png"
+    },
+    {
+      "heroId": "big_boss",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 218,
+        "y": 142
+      },
+      "manualGridLandmark": {
+        "x": 218,
+        "y": 142
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 218,
+        "y": 142,
+        "distance": 0,
+        "rgba": [
+          4,
+          4,
+          4,
+          206
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 38,
+        "y": 142
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/big_boss-grid.png"
+    },
+    {
+      "heroId": "big_boss",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 210,
+        "y": 140
+      },
+      "manualGridLandmark": {
+        "x": 211,
+        "y": 140
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 210,
+        "y": 140,
+        "distance": 1,
+        "rgba": [
+          2,
+          1,
+          1,
+          223
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 46,
+        "y": 140
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/big_boss-grid.png"
+    },
+    {
+      "heroId": "big_boss",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 186,
+        "y": 210
+      },
+      "manualGridLandmark": {
+        "x": 188,
+        "y": 211
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 186,
+        "y": 210,
+        "distance": 2.23606797749979,
+        "rgba": [
+          4,
+          3,
+          4,
+          210
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 70,
+        "y": 210
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/big_boss-grid.png"
+    },
+    {
+      "heroId": "joel_tlou",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 148,
+        "y": 181
+      },
+      "manualGridLandmark": {
+        "x": 148,
+        "y": 181
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 148,
+        "y": 181,
+        "distance": 0,
+        "rgba": [
+          14,
+          15,
+          18,
+          252
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 108,
+        "y": 181
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/joel_tlou-grid.png"
+    },
+    {
+      "heroId": "joel_tlou",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 204,
+        "y": 94
+      },
+      "manualGridLandmark": {
+        "x": 204,
+        "y": 94
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 204,
+        "y": 94,
+        "distance": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          220
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 52,
+        "y": 94
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/joel_tlou-grid.png"
+    },
+    {
+      "heroId": "joel_tlou",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 198,
+        "y": 79
+      },
+      "manualGridLandmark": {
+        "x": 199,
+        "y": 79
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 198,
+        "y": 79,
+        "distance": 1,
+        "rgba": [
+          39,
+          25,
+          14,
+          217
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 58,
+        "y": 79
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/joel_tlou-grid.png"
+    },
+    {
+      "heroId": "joel_tlou",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 197,
+        "y": 95
+      },
+      "manualGridLandmark": {
+        "x": 197,
+        "y": 96
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 197,
+        "y": 95,
+        "distance": 1,
+        "rgba": [
+          39,
+          29,
+          27,
+          175
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 59,
+        "y": 95
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/joel_tlou-grid.png"
+    },
+    {
+      "heroId": "joel_tlou",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 208,
+        "y": 90
+      },
+      "manualGridLandmark": {
+        "x": 208,
+        "y": 90
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 208,
+        "y": 90,
+        "distance": 0,
+        "rgba": [
+          22,
+          14,
+          11,
+          181
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 48,
+        "y": 90
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/joel_tlou-grid.png"
+    },
+    {
+      "heroId": "joel_tlou",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 201,
+        "y": 99
+      },
+      "manualGridLandmark": {
+        "x": 205,
+        "y": 103
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 201,
+        "y": 99,
+        "distance": 5.656854249492381,
+        "rgba": [
+          14,
+          13,
+          14,
+          193
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 55,
+        "y": 99
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/joel_tlou-grid.png"
+    },
+    {
+      "heroId": "joel_tlou",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 196,
+        "y": 96
+      },
+      "manualGridLandmark": {
+        "x": 199,
+        "y": 96
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 196,
+        "y": 96,
+        "distance": 3,
+        "rgba": [
+          15,
+          11,
+          16,
+          217
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 60,
+        "y": 96
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/joel_tlou-grid.png"
+    },
+    {
+      "heroId": "joel_tlou",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 196,
+        "y": 93
+      },
+      "manualGridLandmark": {
+        "x": 197,
+        "y": 93
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 196,
+        "y": 93,
+        "distance": 1,
+        "rgba": [
+          16,
+          9,
+          4,
+          219
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 60,
+        "y": 93
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/joel_tlou-grid.png"
+    },
+    {
+      "heroId": "tess_tlou",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 205,
+        "y": 82
+      },
+      "manualGridLandmark": {
+        "x": 206,
+        "y": 83
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 205,
+        "y": 82,
+        "distance": 1.4142135623730951,
+        "rgba": [
+          0,
+          0,
+          0,
+          167
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 51,
+        "y": 82
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tess_tlou-grid.png"
+    },
+    {
+      "heroId": "tess_tlou",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 210,
+        "y": 86
+      },
+      "manualGridLandmark": {
+        "x": 210,
+        "y": 86
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 210,
+        "y": 86,
+        "distance": 0,
+        "rgba": [
+          4,
+          2,
+          1,
+          228
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 46,
+        "y": 86
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tess_tlou-grid.png"
+    },
+    {
+      "heroId": "tess_tlou",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 183,
+        "y": 78
+      },
+      "manualGridLandmark": {
+        "x": 183,
+        "y": 78
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 183,
+        "y": 78,
+        "distance": 0,
+        "rgba": [
+          42,
+          23,
+          17,
+          247
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 73,
+        "y": 78
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tess_tlou-grid.png"
+    },
+    {
+      "heroId": "tess_tlou",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 205,
+        "y": 82
+      },
+      "manualGridLandmark": {
+        "x": 206,
+        "y": 82
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 205,
+        "y": 82,
+        "distance": 1,
+        "rgba": [
+          4,
+          0,
+          0,
+          186
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 51,
+        "y": 82
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tess_tlou-grid.png"
+    },
+    {
+      "heroId": "tess_tlou",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 208,
+        "y": 95
+      },
+      "manualGridLandmark": {
+        "x": 209,
+        "y": 95
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 208,
+        "y": 95,
+        "distance": 1,
+        "rgba": [
+          9,
+          8,
+          5,
+          214
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 48,
+        "y": 95
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tess_tlou-grid.png"
+    },
+    {
+      "heroId": "tess_tlou",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 194,
+        "y": 94
+      },
+      "manualGridLandmark": {
+        "x": 194,
+        "y": 94
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 194,
+        "y": 94,
+        "distance": 0,
+        "rgba": [
+          19,
+          19,
+          22,
+          255
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 62,
+        "y": 94
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tess_tlou-grid.png"
+    },
+    {
+      "heroId": "tess_tlou",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 205,
+        "y": 87
+      },
+      "manualGridLandmark": {
+        "x": 207,
+        "y": 87
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 205,
+        "y": 87,
+        "distance": 2,
+        "rgba": [
+          5,
+          2,
+          2,
+          247
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 51,
+        "y": 87
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tess_tlou-grid.png"
+    },
+    {
+      "heroId": "tess_tlou",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 206,
+        "y": 99
+      },
+      "manualGridLandmark": {
+        "x": 207,
+        "y": 99
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 206,
+        "y": 99,
+        "distance": 1,
+        "rgba": [
+          13,
+          8,
+          8,
+          215
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 50,
+        "y": 99
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tess_tlou-grid.png"
+    },
+    {
+      "heroId": "tommy_tlou",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 209,
+        "y": 136
+      },
+      "manualGridLandmark": {
+        "x": 209,
+        "y": 136
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 209,
+        "y": 136,
+        "distance": 0,
+        "rgba": [
+          67,
+          82,
+          93,
+          233
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 47,
+        "y": 136
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tommy_tlou-grid.png"
+    },
+    {
+      "heroId": "tommy_tlou",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 219,
+        "y": 142
+      },
+      "manualGridLandmark": {
+        "x": 220,
+        "y": 144
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 219,
+        "y": 142,
+        "distance": 2.23606797749979,
+        "rgba": [
+          8,
+          9,
+          11,
+          181
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 37,
+        "y": 142
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tommy_tlou-grid.png"
+    },
+    {
+      "heroId": "tommy_tlou",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 195,
+        "y": 125
+      },
+      "manualGridLandmark": {
+        "x": 196,
+        "y": 125
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 195,
+        "y": 125,
+        "distance": 1,
+        "rgba": [
+          24,
+          22,
+          20,
+          252
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 61,
+        "y": 125
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tommy_tlou-grid.png"
+    },
+    {
+      "heroId": "tommy_tlou",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 204,
+        "y": 145
+      },
+      "manualGridLandmark": {
+        "x": 205,
+        "y": 145
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 204,
+        "y": 145,
+        "distance": 1,
+        "rgba": [
+          8,
+          7,
+          10,
+          172
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 52,
+        "y": 145
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tommy_tlou-grid.png"
+    },
+    {
+      "heroId": "tommy_tlou",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 209,
+        "y": 134
+      },
+      "manualGridLandmark": {
+        "x": 211,
+        "y": 134
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 209,
+        "y": 134,
+        "distance": 2,
+        "rgba": [
+          26,
+          28,
+          28,
+          235
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 47,
+        "y": 134
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tommy_tlou-grid.png"
+    },
+    {
+      "heroId": "tommy_tlou",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 206,
+        "y": 141
+      },
+      "manualGridLandmark": {
+        "x": 208,
+        "y": 143
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 206,
+        "y": 141,
+        "distance": 2.8284271247461903,
+        "rgba": [
+          15,
+          15,
+          16,
+          187
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 50,
+        "y": 141
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tommy_tlou-grid.png"
+    },
+    {
+      "heroId": "tommy_tlou",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 208,
+        "y": 137
+      },
+      "manualGridLandmark": {
+        "x": 209,
+        "y": 137
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 208,
+        "y": 137,
+        "distance": 1,
+        "rgba": [
+          52,
+          37,
+          26,
+          231
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 48,
+        "y": 137
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tommy_tlou-grid.png"
+    },
+    {
+      "heroId": "tommy_tlou",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 198,
+        "y": 151
+      },
+      "manualGridLandmark": {
+        "x": 201,
+        "y": 151
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 198,
+        "y": 151,
+        "distance": 3,
+        "rgba": [
+          64,
+          70,
+          75,
+          231
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 58,
+        "y": 151
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/tommy_tlou-grid.png"
+    },
+    {
+      "heroId": "dina_tlou2",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 203,
+        "y": 92
+      },
+      "manualGridLandmark": {
+        "x": 204,
+        "y": 92
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 203,
+        "y": 92,
+        "distance": 1,
+        "rgba": [
+          16,
+          15,
+          18,
+          238
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 53,
+        "y": 92
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/dina_tlou2-grid.png"
+    },
+    {
+      "heroId": "dina_tlou2",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 204,
+        "y": 98
+      },
+      "manualGridLandmark": {
+        "x": 204,
+        "y": 98
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 204,
+        "y": 98,
+        "distance": 0,
+        "rgba": [
+          4,
+          3,
+          3,
+          210
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 52,
+        "y": 98
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/dina_tlou2-grid.png"
+    },
+    {
+      "heroId": "dina_tlou2",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 199,
+        "y": 79
+      },
+      "manualGridLandmark": {
+        "x": 199,
+        "y": 79
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 199,
+        "y": 79,
+        "distance": 0,
+        "rgba": [
+          70,
+          42,
+          21,
+          239
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 57,
+        "y": 79
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/dina_tlou2-grid.png"
+    },
+    {
+      "heroId": "dina_tlou2",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 200,
+        "y": 97
+      },
+      "manualGridLandmark": {
+        "x": 202,
+        "y": 97
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 200,
+        "y": 97,
+        "distance": 2,
+        "rgba": [
+          6,
+          6,
+          10,
+          233
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 56,
+        "y": 97
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/dina_tlou2-grid.png"
+    },
+    {
+      "heroId": "dina_tlou2",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 210,
+        "y": 102
+      },
+      "manualGridLandmark": {
+        "x": 211,
+        "y": 102
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 210,
+        "y": 102,
+        "distance": 1,
+        "rgba": [
+          11,
+          12,
+          12,
+          243
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 46,
+        "y": 102
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/dina_tlou2-grid.png"
+    },
+    {
+      "heroId": "dina_tlou2",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 208,
+        "y": 102
+      },
+      "manualGridLandmark": {
+        "x": 209,
+        "y": 102
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 208,
+        "y": 102,
+        "distance": 1,
+        "rgba": [
+          1,
+          0,
+          1,
+          229
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 48,
+        "y": 102
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/dina_tlou2-grid.png"
+    },
+    {
+      "heroId": "dina_tlou2",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 198,
+        "y": 92
+      },
+      "manualGridLandmark": {
+        "x": 200,
+        "y": 92
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 198,
+        "y": 92,
+        "distance": 2,
+        "rgba": [
+          56,
+          36,
+          23,
+          240
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 58,
+        "y": 92
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/dina_tlou2-grid.png"
+    },
+    {
+      "heroId": "dina_tlou2",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 203,
+        "y": 99
+      },
+      "manualGridLandmark": {
+        "x": 205,
+        "y": 99
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 203,
+        "y": 99,
+        "distance": 2,
+        "rgba": [
+          10,
+          9,
+          10,
+          226
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 53,
+        "y": 99
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/dina_tlou2-grid.png"
+    },
+    {
+      "heroId": "abby_tlou2",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 175,
+        "y": 173
+      },
+      "manualGridLandmark": {
+        "x": 175,
+        "y": 174
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 175,
+        "y": 173,
+        "distance": 1,
+        "rgba": [
+          17,
+          15,
+          16,
+          231
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 81,
+        "y": 173
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/abby_tlou2-grid.png"
+    },
+    {
+      "heroId": "abby_tlou2",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 191,
+        "y": 112
+      },
+      "manualGridLandmark": {
+        "x": 191,
+        "y": 112
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 191,
+        "y": 112,
+        "distance": 0,
+        "rgba": [
+          39,
+          41,
+          45,
+          244
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 65,
+        "y": 112
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/abby_tlou2-grid.png"
+    },
+    {
+      "heroId": "abby_tlou2",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 182,
+        "y": 110
+      },
+      "manualGridLandmark": {
+        "x": 182,
+        "y": 110
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 182,
+        "y": 110,
+        "distance": 0,
+        "rgba": [
+          73,
+          46,
+          42,
+          193
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 74,
+        "y": 110
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/abby_tlou2-grid.png"
+    },
+    {
+      "heroId": "abby_tlou2",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 180,
+        "y": 115
+      },
+      "manualGridLandmark": {
+        "x": 183,
+        "y": 115
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 180,
+        "y": 115,
+        "distance": 3,
+        "rgba": [
+          11,
+          10,
+          6,
+          204
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 76,
+        "y": 115
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/abby_tlou2-grid.png"
+    },
+    {
+      "heroId": "abby_tlou2",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 162,
+        "y": 175
+      },
+      "manualGridLandmark": {
+        "x": 164,
+        "y": 179
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 162,
+        "y": 175,
+        "distance": 4.47213595499958,
+        "rgba": [
+          70,
+          45,
+          38,
+          254
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 94,
+        "y": 175
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/abby_tlou2-grid.png"
+    },
+    {
+      "heroId": "abby_tlou2",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 181,
+        "y": 128
+      },
+      "manualGridLandmark": {
+        "x": 181,
+        "y": 130
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 181,
+        "y": 128,
+        "distance": 2,
+        "rgba": [
+          25,
+          20,
+          18,
+          162
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 75,
+        "y": 128
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/abby_tlou2-grid.png"
+    },
+    {
+      "heroId": "abby_tlou2",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 181,
+        "y": 125
+      },
+      "manualGridLandmark": {
+        "x": 182,
+        "y": 125
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 181,
+        "y": 125,
+        "distance": 1,
+        "rgba": [
+          60,
+          42,
+          31,
+          238
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 75,
+        "y": 125
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/abby_tlou2-grid.png"
+    },
+    {
+      "heroId": "abby_tlou2",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 177,
+        "y": 127
+      },
+      "manualGridLandmark": {
+        "x": 180,
+        "y": 128
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 177,
+        "y": 127,
+        "distance": 3.1622776601683795,
+        "rgba": [
+          13,
+          10,
+          10,
+          175
+        ]
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 79,
+        "y": 127
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/anchor-contacts/abby_tlou2-grid.png"
+    }
+  ],
+  "reviewNotes": "Yellow cross contacts are inspection overlays only and are not production sprites. Physical projectile flight/contact and both camps are verified by the independent runtime/browser harness, not inferred here from anchor existence."
+}

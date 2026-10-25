@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "source1to1Verified": false,
+  "method": "Native transparent seam import. Every retained source RGBA sample is exact before one uniform nearest-neighbor resize. All48 distinct source drawings are required. Rejected drawings remain excluded.",
+  "results": [
+    {
+      "heroId": "aragorn_lotr",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 190,
+      "sourceBodyHeight": 147
+    },
+    {
+      "heroId": "gandalf_lotr",
+      "status": "rejected-import",
+      "error": "AssertionError [ERR_ASSERTION]: Import seam would cross visible native artwork {\"low\":300,\"high\":423,\"preferred\":361.5,\"points\":[{\"i\":128,\"v\":352,\"a\":246}]}\n\n1 !== 0\n"
+    },
+    {
+      "heroId": "legolas_lotr",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 190,
+      "sourceBodyHeight": 158
+    },
+    {
+      "heroId": "gimli_lotr",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 150,
+      "sourceBodyHeight": 135
+    },
+    {
+      "heroId": "dark_souls_chosen_undead",
+      "status": "rejected-import",
+      "error": "AssertionError [ERR_ASSERTION]: Import seam would cross visible native artwork {\"low\":483,\"high\":619,\"preferred\":551,\"points\":[{\"i\":101,\"v\":587,\"a\":128}]}\n\n1 !== 0\n"
+    },
+    {
+      "heroId": "dark_souls_solaire",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 190,
+      "sourceBodyHeight": 164
+    },
+    {
+      "heroId": "dark_souls_siegmeyer",
+      "status": "rejected-import",
+      "error": "AssertionError [ERR_ASSERTION]: Import seam would cross visible native artwork {\"low\":518,\"high\":620,\"preferred\":568.75,\"points\":[{\"i\":70,\"v\":553,\"a\":235},{\"i\":71,\"v\":559,\"a\":242},{\"i\":72,\"v\":565,\"a\":249},{\"i\":73,\"v\":571,\"a\":243}]}\n\n4 !== 0\n"
+    },
+    {
+      "heroId": "space_marine_titus",
+      "status": "rejected-import",
+      "error": "AssertionError [ERR_ASSERTION]: Import seam would cross visible native artwork {\"low\":296,\"high\":418,\"preferred\":357,\"points\":[{\"i\":114,\"v\":370,\"a\":247},{\"i\":115,\"v\":376,\"a\":246}]}\n\n2 !== 0\n"
+    },
+    {
+      "heroId": "space_marine_sidonus",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 220,
+      "sourceBodyHeight": 169
+    },
+    {
+      "heroId": "space_marine_leandros",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 220,
+      "sourceBodyHeight": 167
+    },
+    {
+      "heroId": "legacy_of_kain_kain",
+      "status": "rejected-import",
+      "error": "AssertionError [ERR_ASSERTION]: Import region would cut native body pixels\n\n9718 !== 9725\n"
+    },
+    {
+      "heroId": "legacy_of_kain_raziel",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 190,
+      "sourceBodyHeight": 154
+    },
+    {
+      "heroId": "legacy_of_kain_vorador",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 205,
+      "sourceBodyHeight": 160
+    },
+    {
+      "heroId": "ardyn_ff15",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 190,
+      "sourceBodyHeight": 146
+    },
+    {
+      "heroId": "cor_ff15",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 190,
+      "sourceBodyHeight": 166
+    },
+    {
+      "heroId": "horizon_zero_dawn_aloy",
+      "status": "technical-pass",
+      "reviewed": false,
+      "nativePoses": 32,
+      "basePoses": 16,
+      "targetBodyHeight": 190,
+      "sourceBodyHeight": 166
+    },
+    {
+      "heroId": "horizon_zero_dawn_varl",
+      "status": "rejected-import",
+      "error": "AssertionError [ERR_ASSERTION]: Import region would cut native body pixels\n\n7969 !== 7971\n"
+    }
+  ]
+}

@@ -16,10 +16,11 @@ import { getHeroMeleeAnimationFrame, getHeroSpriteSheetSrc, getSpriteSheetLayout
 import { STAGE_ANIMATION_PROFILES, getStageAnimationFrame, getStageAnimationProfile, renderStageAnimation } from '../src/game/melee/stageAnimationCatalog.js';
 import { getCharacterFormFrame } from '../src/game/combat/characterFormState.js';
 import { getSummonAnimationAssets, resolveSummonAnimationAsset } from '../src/game/combat/summonAnimationCatalog.js';
-import { COMBAT_ABILITY_OVERRIDES } from '../src/game/combat/abilities/catalog.js';
+import { HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14 } from './combatFidelityHistoricalCohortWave14.mjs';
 import { supportsNativeSuperWave11, projectNativeSuperAnchorWave11, getNativeSuperVisualStateWave11, drawNativeSuperVisualsWave11 } from '../src/game/combat/nativeSuperVisualsWave11.js';
 import { COMBAT_SOURCE_DEFINITIONS_WAVE11 } from '../src/game/combat/combatSourceDefinitionsWave11.js';
 import { getCharacterFormAssets } from '../src/game/combat/characterFormCatalog.js';
+import { assertHistoricalPresentationOrWave13Version } from './combatPresentationVersionsWave13.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = path => readFileSync(new URL(path, root));
@@ -50,7 +51,7 @@ const noop = () => {};
 let vite, drawPixelSprite, EngineFighter, EngineSmash, EngineRpg;
 const engines = [];
 before(async () => {
-  vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
+  vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true, watch: null } });
   ({ drawPixelSprite } = await vite.ssrLoadModule('/src/game/renderer.js'));
   ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js'));
   ({ EngineSmash } = await vite.ssrLoadModule('/src/game/engineSmash.js'));
@@ -262,9 +263,9 @@ test('all37 new base layouts contain592 real cells and render every native cell 
   assert.equal(unique.size, 592); assert.equal(draws, 2304);
 });
 
-test('all164 prior character presentation recipes remain exactly immutable', () => {
+test('all164 prior presentation snapshots stay immutable and only three explicit W13 versions replace recipes', () => {
   assert.equal(Object.keys(runtimeBaseline.presentations).length, 164);
-  for (const [id, prior] of Object.entries(runtimeBaseline.presentations)) assert.deepEqual(CHARACTER_PRESENTATIONS[id], prior, id);
+  for (const [id, prior] of Object.entries(runtimeBaseline.presentations)) assertHistoricalPresentationOrWave13Version(id, prior, CHARACTER_PRESENTATIONS[id]);
   const historicalIds = [...Object.keys(runtimeBaseline.presentations), ...wave11Ids];
   assert.equal(new Set(historicalIds).size, 204);
   const rosterPresentations = Object.keys(CHARACTER_PRESENTATIONS).filter(id => historicalIds.includes(id) && roster.has(id));
@@ -493,7 +494,11 @@ test(`${id} ordinary actions follow runtime impact clocks while the full super u
 }
 
 test('all40 selected source versions and four-slot kits match independent W11 identities and support roles', () => {
-  const kits=Object.values(COMBAT_ABILITY_OVERRIDES),slots=['simple','secondary','defense'];
+  const wave13NewIds = new Set(json('docs/combat-fidelity-wave13-2026-10-24/ability-baseline-before.json').newAbilityIds);
+  assert.equal(wave13NewIds.size, 18);
+  const wave12NewIds=new Set(json('docs/combat-fidelity-wave12-2026-10-23/authored-before.json').selectedNewIds);
+  assert.equal(wave12NewIds.size,19);
+  const kits=Object.entries(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14).filter(([id])=>!wave12NewIds.has(id) && !wave13NewIds.has(id)).map(([,kit])=>kit),slots=['simple','secondary','defense'];
   assert.equal(Object.keys(ABILITIES_WAVE11).length,16);assert.equal(kits.length,1491);assert.equal(kits.reduce((n,k)=>n+slots.filter(s=>k[s]).length,0),4369);assert.equal(kits.filter(k=>slots.every(s=>k[s])).length,1418);assert.equal(kits.filter(k=>!slots.every(s=>k[s])).length,73);
   assert.deepEqual(sorted(Object.keys(COMBAT_SOURCE_DEFINITIONS_WAVE11)),sorted(wave11Ids));let damage=0,support=0;
   for(const id of wave11Ids){const h=hero(id),before=structuredClone(h),def=COMBAT_SOURCE_DEFINITIONS_WAVE11[id],superAction=resolveCombatAbility(h,'special');

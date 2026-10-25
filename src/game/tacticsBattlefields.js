@@ -1,5 +1,7 @@
 import { EXPANDED_UNIVERSE_SIGNATURES } from './expandedUniverses';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
+import { TACTICS_VERTICAL_BATTLEFIELDS } from './tacticsVerticalBattlefields.js';
+import { TACTICS_UNIVERSE_BATTLEFIELDS } from './tacticsUniverseBattlefields.js';
 
 const tile = (x, y, type, label = null) => ({ x, y, type, label });
 const obstacle = (id, name, gridX, gridY, type = 'barrier', hp = 80, color = '#4a4e52') => ({
@@ -276,7 +278,9 @@ export const TACTICS_BATTLEFIELDS = {
       obstacle('overload_core_a', 'Overload Core', 4, 1, 'barrel', 45, '#ff5b5b'),
       obstacle('overload_core_b', 'Overload Core', 4, 4, 'barrel', 45, '#ff5b5b')
     ]
-  }
+  },
+  ...TACTICS_VERTICAL_BATTLEFIELDS,
+  ...TACTICS_UNIVERSE_BATTLEFIELDS
 };
 
 const getSignature = (universe) => EXPANDED_UNIVERSE_SIGNATURES[universe] || null;
@@ -338,6 +342,26 @@ export function getTacticsMissionProfile(stage = {}, battlefield = null) {
   };
 }
 
+const sourceLocationMatchers = {
+  ff7_mt_nibel_tactics: /\b(?:nibel|nibelheim)\b/i,
+  ff13_archylte_steppe_tactics: /archylte|\bgran pulse\b|steppe d.archylte/i,
+  ff15_vesperpool_tactics: /vesperpool|cleigne.*(?:marsh|marais)/i,
+  lotr_caradhras_tactics: /caradhras|redhorn|col enneigé/i,
+  lotr_ithilien_tactics: /ithilien|henneth ann[uû]n/i,
+  darksouls_darkroot_tactics: /darkroot|noiresouche/i,
+  masseffect_therum_tactics: /\btherum\b/i,
+  halo_valhalla_tactics: /valhalla/i
+};
+
+export function getUniverseTacticsBattlefield(stage = {}, { allowDefault = false } = {}) {
+  const candidates = Object.values(TACTICS_UNIVERSE_BATTLEFIELDS)
+    .filter(field => field.source.universe === stage.universe);
+  const location = [stage.name, stage.location, stage.tacticsLocation].filter(Boolean).join(' ');
+  const exact = candidates.find(field => sourceLocationMatchers[field.id]?.test(location));
+  if (exact || !allowDefault) return exact || null;
+  return candidates.find(field => field.id === 'lotr_ithilien_tactics') || candidates[0] || null;
+}
+
 export function getTacticsBattlefield(stage = {}) {
   const universe = stage.universe || '';
   const signature = getSignature(universe);
@@ -358,13 +382,16 @@ export function getTacticsBattlefield(stage = {}) {
   ].filter(Boolean).join(' ').toLowerCase();
 
   let battlefield = TACTICS_BATTLEFIELDS.training_grid;
+  const universeField = getUniverseTacticsBattlefield(stage, { allowDefault: stage.isCustomBattle === true });
   if (stage.forceBaseArena || stage.dlcSuppressedArena) battlefield = TACTICS_BATTLEFIELDS.training_grid;
   else if (stage.tacticsBattlefieldId && TACTICS_BATTLEFIELDS[stage.tacticsBattlefieldId]) battlefield = TACTICS_BATTLEFIELDS[stage.tacticsBattlefieldId];
+  else if (stage.isCustomBattle && universeField) battlefield = universeField;
   else if (stage.finalGameBoss || stage.worldBoss || /final|world boss|singularity/i.test(stage.difficulty || '')) battlefield = TACTICS_BATTLEFIELDS.boss_command_zone;
   else if (textIncludes(missionText, ['overload', 'surcharge', 'timer', 'core'])) battlefield = TACTICS_BATTLEFIELDS.boss_overload_zone;
   else if (textIncludes(missionText, ['escort', 'convoi', 'civilian', 'nexus agent'])) battlefield = TACTICS_BATTLEFIELDS.nexus_escort_route;
   else if (textIncludes(missionText, ['portal', 'rift', 'breach', 'faille'])) battlefield = TACTICS_BATTLEFIELDS.portal_lockdown;
   else if (textIncludes(missionText, ['artifact', 'artefact', 'relic', 'shard', 'origin'])) battlefield = TACTICS_BATTLEFIELDS.artifact_bastion;
+  else if (universeField) battlefield = universeField;
   else if (recentProfile?.tactics?.battlefieldId) battlefield = TACTICS_BATTLEFIELDS[recentProfile.tactics.battlefieldId] || battlefield;
   else if (textIncludes(loreText, ['halo', 'war', 'marine', 'trooper', 'front', 'battle', 'borderlands', 'stargate'])) battlefield = TACTICS_BATTLEFIELDS.war_frontline;
   else if (textIncludes(loreText, ['lab', 'facility', 'infection', 'virus', 'biohazard', 'aperture', 'black mesa'])) battlefield = TACTICS_BATTLEFIELDS.facility_lockdown;
@@ -374,7 +401,7 @@ export function getTacticsBattlefield(stage = {}) {
   else if (textIncludes(loreText, ['city', 'gotham', 'office', 'urban', 'police', 'street'])) battlefield = TACTICS_BATTLEFIELDS.urban_crossfire;
   else if (stage.difficulty === 'Very Hard' || stage.difficulty === 'Hard') battlefield = TACTICS_BATTLEFIELDS.boss_command_zone;
 
-  if (!recentProfile) return battlefield;
+  if (battlefield.modeExclusive === 'Tactics' || !recentProfile) return battlefield;
   return {
     ...battlefield,
     levelProfile: recentProfile.tactics,
@@ -385,6 +412,15 @@ export function getTacticsBattlefield(stage = {}) {
 
 export function getTacticsPickupPositions(stage = {}) {
   const field = getTacticsBattlefield(stage);
+  if (field.formatVersion === 2 && Array.isArray(field.pickupSpawns)) {
+    return field.pickupSpawns.map(spawn => {
+      const support = field.surfaces.find(surface => surface.id === spawn.surfaceId);
+      return {
+        key: spawn.surfaceId, gridX: spawn.x, gridY: spawn.y, surfaceId: spawn.surfaceId,
+        z: support?.z ?? 0
+      };
+    });
+  }
   const safeTiles = [];
   for (let y = 0; y < field.rows; y++) {
     for (let x = 0; x < field.cols; x++) {

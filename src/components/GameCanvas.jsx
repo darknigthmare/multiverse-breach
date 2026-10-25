@@ -36,12 +36,16 @@ import { SKIN_CATALOG } from '../game/narrativeSystems';
 import { getBattleItemPoolForStage } from '../game/battleItems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from '../game/spriteAssets';
 import { getSmashPickupPositions } from '../game/smashArenas';
-import { getTacticsPickupPositions } from '../game/tacticsBattlefields';
+import { getTacticsBattlefield, getTacticsPickupPositions } from '../game/tacticsBattlefields';
+import { drawTacticsEnvironment } from '../game/tacticsEnvironmentRenderer';
+import { isTacticsPickupAtSurface } from '../game/tacticsPickupSurface';
+import { getTacticsCursorDestination } from '../game/tacticsTerrainControls';
 import { resolveStageEnemyData } from '../game/stageEnemyResolver';
 import { getSpecialEventRewardById } from '../game/specialEvents';
 import GameHudThemeLayer from './GameHudThemeLayer';
 import MeleeControlsPanel from './MeleeControlsPanel';
 import RpgTargetingPanel from './RpgTargetingPanel';
+import TacticsTerrainPanel from './TacticsTerrainPanel';
 import {
   MELEE_ACTIONS,
   createDefaultMeleeInputMaps,
@@ -192,6 +196,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [activeOpponentId, setActiveOpponentId] = useState('');
   const [bossState, setBossState] = useState(null);
   const [selectedAction, setSelectedAction] = useState(null); // tactics
+  const [tacticsTerrainState, setTacticsTerrainState] = useState(null);
   const [rpgTargeting, setRpgTargeting] = useState(null);
   const [rpgTargetingWait, setRpgTargetingWait] = useState(true);
   const rpgTargetingWaitRef = useRef(true);
@@ -349,8 +354,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const resolvedPositions = currentStage.mode === 'Tactics' && engineRef.current
       ? positions.map(pos => ({
         ...pos,
-        x: engineRef.current.gridStartX + pos.gridX * engineRef.current.cellW + engineRef.current.cellW / 2,
-        y: engineRef.current.gridStartY + pos.gridY * engineRef.current.cellH + engineRef.current.cellH / 2
+        ...engineRef.current.gridToScreen(pos.gridX, pos.gridY, true, pos.surfaceId)
       }))
       : positions;
 
@@ -377,8 +381,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const arenaPickups = stage.mode === 'Smash' && engine.arena?.pickups?.length ? engine.arena.pickups : null;
     const tacticsPickups = stage.mode === 'Tactics'
       ? getTacticsPickupPositions(arenaStage).map(pos => ({
-        x: engine.gridStartX + pos.gridX * engine.cellW + engine.cellW / 2,
-        y: engine.gridStartY + pos.gridY * engine.cellH + engine.cellH / 2
+        ...pos,
+        ...engine.gridToScreen(pos.gridX, pos.gridY, true, pos.surfaceId)
       }))
       : null;
     const dropPos = arenaPickups
@@ -839,10 +843,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     activateBattleItem(next, 'shortcut');
   };
 
-  const activateTacticalPickupAtCell = (gridX, gridY) => {
-    const pickup = battlePickupsRef.current.find(item =>
-      !item.used && item.gridX === gridX && item.gridY === gridY
-    );
+  const activateTacticalPickupAtCell = (gridX, gridY, surfaceId = null) => {
+    const pickup = battlePickupsRef.current.find(item => isTacticsPickupAtSurface(item, gridX, gridY, surfaceId));
     if (!pickup) return false;
     const triggerSide = battleConfig?.opponentControl === 'p2'
       && engineRef.current?.activeUnitType === 'enemy'
@@ -1198,6 +1200,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       engineRef.current.isFinalBoss = Boolean(stage.finalGameBoss);
     } else if (stage.mode === 'Tactics') {
       engineRef.current = new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
+      setTacticsTerrainState(engineRef.current.getTerrainViewState?.() || null);
       engineRef.current.isFinalBoss = Boolean(stage.finalGameBoss);
     }
     if (!engineRef.current) {
@@ -1245,6 +1248,44 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const handleKeyDown = (e) => {
       if (sessionPausedRef.current || document.hidden || e.defaultPrevented) return;
       if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target?.tagName) || e.target?.isContentEditable) return;
+      if (stage.mode === 'Tactics' && e.target === canvasRef.current && !e.repeat && !battleCompletedRef.current) {
+        const engine = engineRef.current;
+        if (engine?.getTerrainViewState?.()?.vertical) {
+          const cursorStep = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[e.code];
+          if (cursorStep) {
+            e.preventDefault();
+            const destination = getTacticsCursorDestination(
+              engine.terrain, engine.getTerrainViewState().selectedSurface,
+              ...cursorStep, id => engine.isTerrainSurfaceVisible(id)
+            );
+            if (destination) engine.selectTerrainSurface(destination.id);
+            setTacticsTerrainState(engine.getTerrainViewState());
+            return;
+          }
+          if (e.code === 'PageUp' || e.code === 'PageDown') {
+            e.preventDefault();
+            engine.cycleTerrainLevel?.(e.code === 'PageUp' ? 1 : -1);
+            setTacticsTerrainState(engine.getTerrainViewState());
+            return;
+          }
+          if (e.code === 'BracketLeft' || e.code === 'BracketRight') {
+            e.preventDefault();
+            engine.cycleSelectedSurface?.(e.code === 'BracketRight' ? 1 : -1);
+            setTacticsTerrainState(engine.getTerrainViewState());
+            return;
+          }
+          if (e.code === 'Enter') {
+            e.preventDefault();
+            const selectedSurface = engine.getTerrainViewState().selectedSurface;
+            if (selectedSurface) {
+              const result = engine.handleSurfaceClick?.(selectedSurface.id);
+              if (result?.type === 'move') activateTacticalPickupAtCell(selectedSurface.x, selectedSurface.y, selectedSurface.id);
+              setTacticsTerrainState(engine.getTerrainViewState());
+            }
+            return;
+          }
+        }
+      }
       keysPressed.current[e.key] = true;
       keysPressed.current[e.code] = true;
       meleePressedCodesRef.current.add(e.code);
@@ -1403,10 +1444,18 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         const renderUniverse = arenaStage.forceBaseArena || arenaStage.dlcSuppressedArena
           ? 'Nexus de Convergence'
           : stage.universe;
-        const usingOpenAiBackdrop = drawUniverseBackground(ctx, renderUniverse, width, height, stage.mode, {
+        const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches || false;
+        const usingOpenAiBackdrop = stage.mode === 'Tactics'
+          ? engineRef.current?.drawDedicatedEnvironment?.(ctx, animTime, reducedMotion)
+            || drawTacticsEnvironment(ctx, {
+              battlefield: getTacticsBattlefield(arenaStage), universe: renderUniverse,
+              forceBaseArena: arenaStage.forceBaseArena, dlcSuppressedArena: arenaStage.dlcSuppressedArena,
+              width, height, animTime, reducedMotion
+            })
+          : drawUniverseBackground(ctx, renderUniverse, width, height, stage.mode, {
           stage: { ...arenaStage, universe: renderUniverse },
           elapsedSeconds: animTime / 60,
-          reducedMotion: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches || false
+          reducedMotion
         });
         if (!bootClearedRef.current) {
           bootClearedRef.current = true;
@@ -1530,8 +1579,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               const tacticalScreen = stage.mode === 'Tactics'
                 && Number.isFinite(item.gridX)
                 && Number.isFinite(item.gridY)
-                ? engine.gridToScreen?.(item.gridX, item.gridY)
+                ? engine.gridToScreen?.(item.gridX, item.gridY, true, item.surfaceId)
                 : null;
+              if (stage.mode === 'Tactics' && item.surfaceId && engine.isTerrainSurfaceVisible?.(item.surfaceId) === false) return;
               drawBattleItemPickup(
                 ctx,
                 tacticalScreen ? { ...item, ...tacticalScreen } : item,
@@ -1605,6 +1655,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             } else if (stage.mode === 'Tactics') {
               setActiveHeroId(engine.activeUnit?.id || '');
               setSelectedAction(engine.selectedAction);
+              setTacticsTerrainState(engine.getTerrainViewState?.() || null);
             }
           }
         }
@@ -1670,18 +1721,25 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       x: Math.floor((clickX - engine.gridStartX) / engine.cellW),
       y: Math.floor((clickY - engine.gridStartY) / engine.cellH)
     };
-    const gridC = grid.x;
-    const gridR = grid.y;
+    const gridC = grid.x ?? grid.col;
+    const gridR = grid.y ?? grid.row;
 
     if (gridC >= 0 && gridC < engine.cols && gridR >= 0 && gridR < engine.rows) {
-      const result = engine.handleCellClick(gridC, gridR);
-      if (result?.type === 'move') activateTacticalPickupAtCell(gridC, gridR);
+      if (grid.surfaceId && engine.getTerrainViewState?.()?.vertical) {
+        engine.selectTerrainSurface?.(grid.surfaceId);
+        setTacticsTerrainState(engine.getTerrainViewState());
+        return;
+      }
+      const result = engine.handleCellClick(gridC, gridR, grid.surfaceId);
+      if (result?.type === 'move') activateTacticalPickupAtCell(gridC, gridR, grid.surfaceId);
+      setTacticsTerrainState(engine.getTerrainViewState?.() || null);
     }
   };
 
   const handleTacticsPointerDown = (e) => {
     if (sessionPausedRef.current) return;
     if (stage.mode !== 'Tactics' || e.button !== 0 || !engineRef.current) return;
+    e.currentTarget.focus({ preventScroll: true });
     suppressTacticsClickRef.current = false;
     tacticsCameraPointerRef.current = {
       active: true,
@@ -1861,6 +1919,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     : null;
   const rpgSceneActive = stage.mode === 'RPG' && Boolean(engineRef.current?.getSummonSceneState?.()?.active);
   const getCombatantMove = (combatant, type) => {
+    if (stage.mode === 'Tactics' && engineRef.current?.verticalTerrain) {
+      const action = engineRef.current.getActionDefinition(combatant, type);
+      if (action) return action;
+    }
     if (stage.mode === 'RPG') {
       const action = getRpgCombatantAbility(combatant, type);
       if (action) return action;
@@ -2276,10 +2338,59 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           </button>
         )}
 
+        {stage.mode === 'Tactics' && (
+          <TacticsTerrainPanel
+            terrain={tacticsTerrainState}
+            lang={lang}
+            disabled={sessionPaused || battleCompleted || combatBooting}
+            zoom={engineRef.current?.getCameraState?.()?.zoom || 1}
+            onZoom={factor => {
+              if (sessionPausedRef.current) return;
+              engineRef.current?.zoomCameraAt?.(factor);
+              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+            }}
+            onResetCamera={() => {
+              if (sessionPausedRef.current) return;
+              engineRef.current?.resetCamera?.();
+              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+            }}
+            onLevelChange={level => {
+              if (sessionPausedRef.current) return;
+              engineRef.current?.setTerrainLevel?.(level);
+              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+            }}
+            onLevelCycle={direction => {
+              if (sessionPausedRef.current) return;
+              engineRef.current?.cycleTerrainLevel?.(direction);
+              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+            }}
+            onSurfaceSelect={id => {
+              if (sessionPausedRef.current) return;
+              engineRef.current?.selectTerrainSurface?.(id);
+              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+            }}
+            onSurfaceCycle={direction => {
+              if (sessionPausedRef.current) return;
+              engineRef.current?.cycleSelectedSurface?.(direction);
+              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+            }}
+            onConfirm={id => {
+              if (sessionPausedRef.current || battleCompleted) return;
+              const engine = engineRef.current;
+              const result = engine?.handleSurfaceClick?.(id);
+              const surface = engine?.getTerrainViewState?.()?.selectedSurface;
+              if (result?.type === 'move' && surface) activateTacticalPickupAtCell(surface.x, surface.y, surface.id);
+              setTacticsTerrainState(engine?.getTerrainViewState?.() || null);
+            }}
+          />
+        )}
+
         <canvas
           ref={canvasRef}
           width="1040"
           height="460"
+          tabIndex={stage.mode === 'Tactics' ? 0 : undefined}
+          aria-label={stage.mode === 'Tactics' ? (lang === 'fr' ? 'Plateau tactique : cliquer ou utiliser les flèches pour sélectionner, Entrée pour confirmer sur les terrains à plusieurs hauteurs' : 'Tactical board: click or use arrow keys to select, Enter to confirm on multi-height terrain') : undefined}
           onClick={handleCanvasClick}
           onPointerDown={handleTacticsPointerDown}
           onPointerMove={handleTacticsPointerMove}
@@ -2902,8 +3013,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               {stage.mode === 'Tactics' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
                   {lang === 'fr'
-                    ? <>Bouge sur une case <span style={{ color: '#2ecc71' }}>verte</span> ou choisis une attaque pour rester en place. Reclique l attaque ou utilise <strong>ANNULER LA VISEE</strong> avant confirmation. Maintiens le clic et glisse pour la camera; molette pour zoomer. <span style={{ color: '#4fc3f7' }}>COVER</span> reduit les tirs.</>
-                    : <>Move on a <span style={{ color: '#2ecc71' }}>green</span> cell or pick an attack to hold position. Click it again or use <strong>CANCEL TARGETING</strong> before confirming. Hold and drag to pan; use the wheel to zoom. <span style={{ color: '#4fc3f7' }}>COVER</span> reduces shots.</>}
+                    ? <>{tacticsTerrainState?.vertical ? <>Choisis une surface, puis confirme avec <strong>ALLER / CIBLER CETTE CASE</strong> ou Entrée. La coupe et la liste des surfaces permettent de choisir sous un pont. </> : <>Bouge sur une case <span style={{ color: '#2ecc71' }}>verte</span> ou choisis une attaque pour rester en place. </>}Reclique l attaque ou utilise <strong>ANNULER LA VISEE</strong> avant confirmation. Maintiens le clic et glisse pour la camera; molette pour zoomer. <span style={{ color: '#4fc3f7' }}>COVER</span> reduit les tirs.</>
+                    : <>{tacticsTerrainState?.vertical ? <>Select a surface, then use <strong>MOVE / TARGET THIS CELL</strong> or Enter. The cut and surface list let you select beneath a bridge. </> : <>Move on a <span style={{ color: '#2ecc71' }}>green</span> cell or pick an attack to hold position. </>}Click it again or use <strong>CANCEL TARGETING</strong> before confirming. Hold and drag to pan; use the wheel to zoom. <span style={{ color: '#4fc3f7' }}>COVER</span> reduces shots.</>}
                 </div>
               )}
             </>

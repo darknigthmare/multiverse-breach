@@ -16,6 +16,7 @@ import { STAGE_ANIMATION_PROFILES, getStageAnimationProfile, getStageAnimationFr
 import { MELEE_STATES } from '../src/game/melee/meleeStateMachine.js';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout, getSpriteFrameForLayout, getSpriteStateResolution } from '../src/game/spriteAssets.js';
 import { measureCombatFidelity } from './combatFidelityAudit.mjs';
+import { HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14, WAVE14_ABILITY_COUNT_DELTA, WAVE14_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave14.mjs';
 import { getCharacterAnimationAssets, getCharacterAnimationFrame, resolveCharacterAnimationAsset } from '../src/game/combat/characterAnimationCatalog.js';
 
 const root = new URL('../', import.meta.url);
@@ -24,6 +25,8 @@ const baseline = json('docs/combat-fidelity-2026-10-18/baseline.json');
 const firstCompletion = json('docs/combat-completion-2026-10-18/baseline.json');
 const additionalCompletion = json('docs/combat-completion-2026-10-18/decisive-baseline.json');
 const residualBaseline = json('docs/combat-fidelity-2026-10-18/residual-ability-baseline.json');
+const wave13NewAbilityIds = ['ripley', 'hicks', 'bishop', 'amanda_ripley', 'chell', 'atlas', 'pbody', 'doug_rattmann',
+  'gray_fox', 'big_boss', 'ahsoka_adult', 'aayla_secura', 'darth_revan', 'darth_maul', 'tommy_tlou', 'dina_tlou2', 'abby_tlou2', 'hayden'];
 // This is a separate, lore-backed correction of a previously named action,
 // not a new member of either immutable generic-slot baseline.
 const loreCorrection = { id: 'mei_zhen', universe: 'Mandate of Nine Heavens', slots: ['secondary'] };
@@ -40,7 +43,7 @@ let EngineRpg;
 let drawPixelSprite;
 const engines = [];
 before(async () => {
-  vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
+  vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true, watch: null } });
   ({ EngineRpg } = await vite.ssrLoadModule('/src/game/engineRpg.js'));
   ({ drawPixelSprite } = await vite.ssrLoadModule('/src/game/renderer.js'));
 });
@@ -110,10 +113,12 @@ test('the authored union separates1365 complete kits,72 original partial records
   const expected = [...full.map(id => ({ id, slots: ['simple', 'secondary', 'defense'] })),
     ...residualBaseline.map(entry => ({ id: entry.id, slots: entry.missingSlots })), loreCorrection];
   assert.equal(new Set(expected.map(entry => entry.id)).size, 1438, 'residual or lore-correction cohorts overlap a full kit');
-  assert.equal(Object.keys(COMBAT_ABILITY_OVERRIDES).length, 1491, 'the1475 prior identities and16 explicit W11 source-role corrections must be imported');
-  assert.deepEqual(sorted(Object.keys(COMBAT_ABILITY_OVERRIDES)), sorted([...expected.map(entry => entry.id), 'snake', 'raiden', 'otacon', 'luke', 'vader', 'han_solo', 'starfire_tt', 'beast_boy_tt', 'armstrong_mgr', 'mistral_mgr', 'monsoon_mgr', 'marcus', 'dom', 'cole', 'shepard', 'garrus', 'liara', 'motoko', 'batou', 'togusa', 'neo', 'trinity', 'morpheus', 'seraph', 'oneill', 'tealc', 'sam_carter', 'daniel_jackson', 'freeman', 'barney', 'alyx_vance', 'paladin', 'nick_v', 'dallas', 'wolf_pd', 'hoxton', 'janine_gb', 'spike_buffy', 'ronon_dex', 'elizabeth_weir', 'chloe_sgu', 'matt_scott_sgu', 'roland_bl', 'brick_bl', 'max', 'furiosa', 'nux', 'korben', 'leeloo', 'ruby_rhod', 'arthur_kaamelott', 'perceval_kaamelott', 'karadoc_kaamelott']));
+  assert.deepEqual(wave13NewAbilityIds, json('docs/combat-fidelity-wave13-2026-10-24/ability-baseline-before.json').newAbilityIds);
+  assert.ok(wave13NewAbilityIds.every(id => !expected.some(entry => entry.id === id)), 'W13 additions must not revise an original cohort');
+  assert.equal(Object.keys(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14).length, 1528, 'the1510 prior identities and18 explicit W13 source-role corrections must be imported');
+  assert.deepEqual(sorted(Object.keys(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14)), sorted([...expected.map(entry => entry.id), 'snake', 'raiden', 'otacon', 'luke', 'vader', 'han_solo', 'starfire_tt', 'beast_boy_tt', 'armstrong_mgr', 'mistral_mgr', 'monsoon_mgr', 'marcus', 'dom', 'cole', 'shepard', 'garrus', 'liara', 'motoko', 'batou', 'togusa', 'neo', 'trinity', 'morpheus', 'seraph', 'oneill', 'tealc', 'sam_carter', 'daniel_jackson', 'freeman', 'barney', 'alyx_vance', 'paladin', 'nick_v', 'dallas', 'wolf_pd', 'hoxton', 'janine_gb', 'spike_buffy', 'ronon_dex', 'elizabeth_weir', 'chloe_sgu', 'matt_scott_sgu', 'roland_bl', 'brick_bl', 'max', 'furiosa', 'nux', 'korben', 'leeloo', 'ruby_rhod', 'arthur_kaamelott', 'perceval_kaamelott', 'karadoc_kaamelott', ...json('docs/combat-fidelity-wave12-2026-10-23/authored-before.json').selectedNewIds, ...wave13NewAbilityIds]));
   for (const { id, slots } of expected) {
-    assert.deepEqual(sorted(['simple', 'secondary', 'defense'].filter(slot => COMBAT_ABILITY_OVERRIDES[id][slot])), sorted(slots), `${id}: a partial record overwrote a previously concrete action`);
+    assert.deepEqual(sorted(['simple', 'secondary', 'defense'].filter(slot => HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14[id][slot])), sorted(slots), `${id}: a partial record overwrote a previously concrete action`);
     for (const slot of slots) {
       const record = COMBAT_ABILITY_OVERRIDES[id];
       const action = record[slot];
@@ -253,8 +258,8 @@ test('45 engine states select bounded coarse poses and declare reuse instead of 
 });
 
 test('every character script has seven real frame-selection sequences and bounded interpolation', () => {
-  assert.equal(Object.keys(CHARACTER_PRESENTATIONS).length, 204);
-  assert.equal(Object.keys(CHARACTER_PRESENTATIONS).filter(id => roster.has(id)).length, 203, 'player_anchor must not inflate roster coverage');
+  assert.equal(Object.keys(CHARACTER_PRESENTATIONS).filter(id => !WAVE14_PRESENTATION_IDS.has(id)).length, 281);
+  assert.equal(Object.keys(CHARACTER_PRESENTATIONS).filter(id => roster.has(id) && !WAVE14_PRESENTATION_IDS.has(id)).length, 280, 'player_anchor must not inflate roster coverage');
   for (const [id, record] of Object.entries(CHARACTER_PRESENTATIONS)) for (const phase of PRESENTATION_PHASES) {
     const actor = roster.get(id) || { id, universe: record.universe };
     const script = resolvePresentationScript(actor, phase);
@@ -280,6 +285,13 @@ test('every character script has seven real frame-selection sequences and bounde
       assert.equal(frames.size,1,'Blocked Snape intentionally reuses one accepted idle cell');
       const asset=samplePresentationScript(script,0).asset;
       assert.equal(asset.sheet,'/sprites/generated/heroes/harry-potter/snape.png');
+      assert.equal(asset.row,0);assert.equal(asset.col,0);assert.equal(asset.dedicatedPhaseAsset,false);
+      assert.equal(resolveCharacterAnimationAsset(actor),null);
+    }else if(id==='morty'){
+      assert.equal(json('docs/combat-fidelity-wave12-2026-10-23/baseline.json').presentations.entries.some(entry=>entry.id===id),false);
+      assert.equal(frames.size,1,'Refused Morty retains one harmless historical pose');
+      const asset=samplePresentationScript(script,0).asset;
+      assert.equal(asset.sheet,'/sprites/generated/heroes/rick-morty/morty.png');
       assert.equal(asset.row,0);assert.equal(asset.col,0);assert.equal(asset.dedicatedPhaseAsset,false);
       assert.equal(resolveCharacterAnimationAsset(actor),null);
     }else assert.ok(frames.size >= 2, `${id}:${phase}: script repeats a single selected cell`);
@@ -619,18 +631,18 @@ test('the audit distinguishes raw names, effective names, missing dedicated art 
   assert.deepEqual(report.abilities.rawStrictCounts, { simple: 1330, secondary: 1387, defense: 1417 });
   assert.equal(report.abilities.rawConcreteDefenseCandidatesForReview.length, 118);
   assert.equal(report.abilities.effectiveStrictGenericSlots, 0, 'strict generic slots remain in the effective runtime');
-  assert.equal(report.abilities.authoredHeroes, 1491);
-  assert.equal(report.abilities.authoredSlots, 4369);
-  assert.equal(report.abilities.completeThreeSlotKits, 1418);
-  assert.equal(report.abilities.partialSlotKits, 73);
+  assert.equal(report.abilities.authoredHeroes - WAVE14_ABILITY_COUNT_DELTA.authoredHeroes, 1528);
+  assert.equal(report.abilities.authoredSlots - WAVE14_ABILITY_COUNT_DELTA.authoredSlots, 4480);
+  assert.equal(report.abilities.completeThreeSlotKits - WAVE14_ABILITY_COUNT_DELTA.completeThreeSlotKits, 1455);
+  assert.equal(report.abilities.partialSlotKits - WAVE14_ABILITY_COUNT_DELTA.partialSlotKits, 73);
   assert.equal(report.abilities.originalResidualCohort.heroes, 72);
   assert.equal(report.abilities.originalResidualCohort.slots, 114);
   assert.equal(report.abilities.separateLoreCorrections.heroes, 1);
   assert.equal(report.abilities.separateLoreCorrections.slots, 1);
   assert.deepEqual(report.abilities.separateLoreCorrections.entries.map(entry => entry.id), [loreCorrection.id]);
   assert.equal(report.abilities.unresolvedSlots, 0);
-  assert.equal(report.presentations.scriptedHeroes, 203);
-  assert.equal(report.presentations.scriptedPairs, 1421);
+  assert.equal(report.presentations.scriptedHeroes - WAVE14_PRESENTATION_IDS.size, 280);
+  assert.equal(report.presentations.scriptedPairs - WAVE14_PRESENTATION_IDS.size * PRESENTATION_PHASES.length, 1960);
   assert.equal(report.entities.scriptedEntities, 28);
   assert.equal(report.entities.distinctSampledTrajectories, 28);
   assert.equal(report.characterPixelBaseline.summary.pixelHashedSheets, 1905);

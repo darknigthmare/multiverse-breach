@@ -1,0 +1,1328 @@
+{
+  "passed": true,
+  "success": true,
+  "date": "2026-10-25",
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs",
+        "--refresh-character-reference-audit"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 14.092,
+      "log": "01-catalog-refresh.log",
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/auditCharacterReferenceQuality.py"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 475.157,
+      "log": "02-character-reference-audit.log",
+      "logSha256": "cc4213f4000b1d22e61d187bf3fafd97589f45d967562cafeaf3fc85d9055485"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 5.649,
+      "log": "03-catalog-build.log",
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierAssetRegistry.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.618,
+      "log": "04-asset-registry-build.log",
+      "logSha256": "0ae6d3724a446f09f64e6b22d192d46ca63237ce1f541acce4e94aae3905c82c"
+    },
+    {
+      "argv": [
+        "npm",
+        "run",
+        "rift:audit"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 6.391,
+      "log": "05-rift-audit.log",
+      "logSha256": "c2329e6e7f1c2a09d9c3031556456fc58c9efe6ca1b348a83f5bcefa25ced44d"
+    }
+  ],
+  "exitCodes": {
+    "01-catalog-refresh": 0,
+    "02-character-reference-audit": 0,
+    "03-catalog-build": 0,
+    "04-asset-registry-build": 0,
+    "05-rift-audit": 0
+  },
+  "historicalAuditScriptsUnchanged": true,
+  "historicalCatalogBuildersUnchanged": true,
+  "packageUnchanged": true,
+  "qualityThresholdsUnchanged": true,
+  "knownCaseExpectationsUnchanged": true,
+  "manualReferencePinsUnchanged": true,
+  "qualityAuditChangedForRetiredReferences": false,
+  "qualityConstantsUnchanged": {
+    "EXPECTED_CHARACTER_ARC_ENTRY_COUNT": true,
+    "EXPECTED_UNIQUE_REFERENCE_PATH_COUNT": true,
+    "ALPHA_OCCUPIED_THRESHOLD": true,
+    "STRONG_NEIGHBOR_DIFFERENCE": true,
+    "THRESHOLDS": true,
+    "KNOWN_EXPECTATIONS": true,
+    "MANUAL_APPROVED_REFERENCE_SHA256": true
+  },
+  "historicalKnownCaseReferences": [
+    {
+      "path": "/sprites/generated/heroes/buffy-the-vampire-slayer/buffy-summers.png",
+      "classification": "approved",
+      "reasons": [
+        "meets-detailed-sprite-reference-thresholds"
+      ],
+      "metrics": {
+        "fileBytes": 716809,
+        "fileSha256": "500406b3837b3085228b22a11d92507cc1c501264bf7876988e43f11bd07c098",
+        "format": "PNG",
+        "sourceMode": "RGBA",
+        "width": 1024,
+        "height": 1024,
+        "pixelCount": 1048576,
+        "hasAlpha": true,
+        "alphaLevelCount": 2,
+        "opaquePixels": 225078,
+        "alphaOccupancy": 0.214651,
+        "semiTransparentPixelShare": 0.0,
+        "occupiedBoundingBox": [
+          42,
+          12,
+          980,
+          1012
+        ],
+        "occupiedBoundingBoxFill": 0.239955,
+        "opaqueColorCount": 100412,
+        "quantizedColorCount16": 485,
+        "dominantOpaqueColorShare": 0.010272,
+        "colorEntropyBits": 15.674677,
+        "luminanceEntropyBits": 7.54381,
+        "bytesPerPixel": 0.683602,
+        "validOpaqueNeighborPairs": 440596,
+        "colorTransitionRate": 0.975229,
+        "strongDetailRate": 0.475456,
+        "meanNeighborDifference": 23.719936,
+        "tileDiversity4x4": {
+          "tileCount": 16,
+          "uniqueCoarseTileCount": 16,
+          "uniqueCoarseTileShare": 1.0
+        }
+      }
+    },
+    {
+      "path": "/sprites/generated/heroes/half-life/freeman.png",
+      "classification": "approved",
+      "reasons": [
+        "meets-detailed-sprite-reference-thresholds"
+      ],
+      "metrics": {
+        "fileBytes": 788816,
+        "fileSha256": "88f9e1269f442c9eb805f78bfd776ebd5cdbe6aba85fbc57db390464d443fd28",
+        "format": "PNG",
+        "sourceMode": "RGBA",
+        "width": 1024,
+        "height": 1024,
+        "pixelCount": 1048576,
+        "hasAlpha": true,
+        "alphaLevelCount": 117,
+        "opaquePixels": 238076,
+        "alphaOccupancy": 0.227047,
+        "semiTransparentPixelShare": 0.012413,
+        "occupiedBoundingBox": [
+          22,
+          19,
+          1007,
+          960
+        ],
+        "occupiedBoundingBoxFill": 0.256856,
+        "opaqueColorCount": 99418,
+        "quantizedColorCount16": 770,
+        "dominantOpaqueColorShare": 0.010144,
+        "colorEntropyBits": 15.571761,
+        "luminanceEntropyBits": 7.126967,
+        "bytesPerPixel": 0.752274,
+        "validOpaqueNeighborPairs": 462993,
+        "colorTransitionRate": 0.99622,
+        "strongDetailRate": 0.574905,
+        "meanNeighborDifference": 21.784057,
+        "tileDiversity4x4": {
+          "tileCount": 16,
+          "uniqueCoarseTileCount": 16,
+          "uniqueCoarseTileShare": 1.0
+        }
+      }
+    }
+  ],
+  "changedReferenceCount": 40,
+  "changedReferencePaths": 40,
+  "unchangedHistoricalReferenceCount": 0,
+  "allChangedReferencesApproved": true,
+  "qualityBindsCurrentReferenceHashes": true,
+  "previousSuccessfulRunArchive": null,
+  "rerunReason": null,
+  "authorizedReferenceClassifications": [
+    {
+      "id": "aragorn_lotr",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/aragorn_lotr.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "899a29dba25b9b075214c4f70a38c367ae5e1644e3d4624fdf00fd480be90974",
+      "qualityReportedSha256": "899a29dba25b9b075214c4f70a38c367ae5e1644e3d4624fdf00fd480be90974",
+      "authorizedSha256": "899a29dba25b9b075214c4f70a38c367ae5e1644e3d4624fdf00fd480be90974"
+    },
+    {
+      "id": "ardyn_ff15",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/ardyn_ff15.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "85aca87cd07a3198e20b843757f6af3d16c670d0c0a02fbfccde00037b6ac629",
+      "qualityReportedSha256": "85aca87cd07a3198e20b843757f6af3d16c670d0c0a02fbfccde00037b6ac629",
+      "authorizedSha256": "85aca87cd07a3198e20b843757f6af3d16c670d0c0a02fbfccde00037b6ac629"
+    },
+    {
+      "id": "cor_ff15",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/cor_ff15.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "3107f67962cb27ab513e82d396265742e9eba5cdf9799b8771f87628938e285d",
+      "qualityReportedSha256": "3107f67962cb27ab513e82d396265742e9eba5cdf9799b8771f87628938e285d",
+      "authorizedSha256": "3107f67962cb27ab513e82d396265742e9eba5cdf9799b8771f87628938e285d"
+    },
+    {
+      "id": "dark_souls_chosen_undead",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/dark_souls_chosen_undead.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "a3aee449681d17f22a8f0ec148d07f5616a9bcad5f8d694ce9a73b41c04f6c63",
+      "qualityReportedSha256": "a3aee449681d17f22a8f0ec148d07f5616a9bcad5f8d694ce9a73b41c04f6c63",
+      "authorizedSha256": "a3aee449681d17f22a8f0ec148d07f5616a9bcad5f8d694ce9a73b41c04f6c63"
+    },
+    {
+      "id": "dark_souls_siegmeyer",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/dark_souls_siegmeyer.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "bc26843082da256a816f00b52bc5d533398a4132929f6a668ef3cf1dcafe758d",
+      "qualityReportedSha256": "bc26843082da256a816f00b52bc5d533398a4132929f6a668ef3cf1dcafe758d",
+      "authorizedSha256": "bc26843082da256a816f00b52bc5d533398a4132929f6a668ef3cf1dcafe758d"
+    },
+    {
+      "id": "dark_souls_solaire",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/dark_souls_solaire.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "1c484e042f2ecc7a64e240fd2624d00299b7e9f02c5fdeb3d2e6a3108e6ba813",
+      "qualityReportedSha256": "1c484e042f2ecc7a64e240fd2624d00299b7e9f02c5fdeb3d2e6a3108e6ba813",
+      "authorizedSha256": "1c484e042f2ecc7a64e240fd2624d00299b7e9f02c5fdeb3d2e6a3108e6ba813"
+    },
+    {
+      "id": "gandalf_lotr",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/gandalf_lotr.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "9dae027a6fe14aa6bb9bdd4899efeed75db9ed7fa5cf6ff72b8cb2a25f1a2e85",
+      "qualityReportedSha256": "9dae027a6fe14aa6bb9bdd4899efeed75db9ed7fa5cf6ff72b8cb2a25f1a2e85",
+      "authorizedSha256": "9dae027a6fe14aa6bb9bdd4899efeed75db9ed7fa5cf6ff72b8cb2a25f1a2e85"
+    },
+    {
+      "id": "gimli_lotr",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/gimli_lotr.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "caf95a3cab1bc8231870c8dc73682866733ee35e36b7ce31b4ce5bec387ac3ef",
+      "qualityReportedSha256": "caf95a3cab1bc8231870c8dc73682866733ee35e36b7ce31b4ce5bec387ac3ef",
+      "authorizedSha256": "caf95a3cab1bc8231870c8dc73682866733ee35e36b7ce31b4ce5bec387ac3ef"
+    },
+    {
+      "id": "horizon_zero_dawn_aloy",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/horizon_zero_dawn_aloy.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "2f673ef8fe466cfa8a82db903c953b50b535304a08ede7a79121476ce2b90c9d",
+      "qualityReportedSha256": "2f673ef8fe466cfa8a82db903c953b50b535304a08ede7a79121476ce2b90c9d",
+      "authorizedSha256": "2f673ef8fe466cfa8a82db903c953b50b535304a08ede7a79121476ce2b90c9d"
+    },
+    {
+      "id": "horizon_zero_dawn_erend",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/horizon_zero_dawn_erend.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "3437d84e9ffd85e382c7bb5514311d2dc261f05a1a39047cd1522cbb52542bba",
+      "qualityReportedSha256": "3437d84e9ffd85e382c7bb5514311d2dc261f05a1a39047cd1522cbb52542bba",
+      "authorizedSha256": "3437d84e9ffd85e382c7bb5514311d2dc261f05a1a39047cd1522cbb52542bba"
+    },
+    {
+      "id": "horizon_zero_dawn_varl",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/horizon_zero_dawn_varl.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "1a49bdc97d259c65e9903151f207bc21c439239d2a50952c4f1e85c26cfa57da",
+      "qualityReportedSha256": "1a49bdc97d259c65e9903151f207bc21c439239d2a50952c4f1e85c26cfa57da",
+      "authorizedSha256": "1a49bdc97d259c65e9903151f207bc21c439239d2a50952c4f1e85c26cfa57da"
+    },
+    {
+      "id": "jonah_tr",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/jonah_tr.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "d3cfe4f5517a1cbe697ea75c184a4927cbf134ec27b7f15ab4aa99a95223d858",
+      "qualityReportedSha256": "d3cfe4f5517a1cbe697ea75c184a4927cbf134ec27b7f15ab4aa99a95223d858",
+      "authorizedSha256": "d3cfe4f5517a1cbe697ea75c184a4927cbf134ec27b7f15ab4aa99a95223d858"
+    },
+    {
+      "id": "lara_croft_tr",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/lara_croft_tr.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "5938496fedbde3ab88dbd79cefd380aa566cd44df9b0d604ca663f9e320fc6a5",
+      "qualityReportedSha256": "5938496fedbde3ab88dbd79cefd380aa566cd44df9b0d604ca663f9e320fc6a5",
+      "authorizedSha256": "5938496fedbde3ab88dbd79cefd380aa566cd44df9b0d604ca663f9e320fc6a5"
+    },
+    {
+      "id": "legacy_of_kain_kain",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/legacy_of_kain_kain.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "85275c734886deffcba5fe5e54481e646beb3ad202f5b673299d6e8260a18148",
+      "qualityReportedSha256": "85275c734886deffcba5fe5e54481e646beb3ad202f5b673299d6e8260a18148",
+      "authorizedSha256": "85275c734886deffcba5fe5e54481e646beb3ad202f5b673299d6e8260a18148"
+    },
+    {
+      "id": "legacy_of_kain_raziel",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/legacy_of_kain_raziel.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "2ac45fc90eac806ed7b559ed176f4dddbf30e3f2942a99d73e1fc539c743b68d",
+      "qualityReportedSha256": "2ac45fc90eac806ed7b559ed176f4dddbf30e3f2942a99d73e1fc539c743b68d",
+      "authorizedSha256": "2ac45fc90eac806ed7b559ed176f4dddbf30e3f2942a99d73e1fc539c743b68d"
+    },
+    {
+      "id": "legacy_of_kain_vorador",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/legacy_of_kain_vorador.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "a3e2488980c0b3f0b41fcacacdd07929f1f23d0409e03eb6bfaa3ad818935138",
+      "qualityReportedSha256": "a3e2488980c0b3f0b41fcacacdd07929f1f23d0409e03eb6bfaa3ad818935138",
+      "authorizedSha256": "a3e2488980c0b3f0b41fcacacdd07929f1f23d0409e03eb6bfaa3ad818935138"
+    },
+    {
+      "id": "legolas_lotr",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/legolas_lotr.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "1f0bab1898612b824386b7b4bcf5fe1f2fe99f816e28e4e8cfc9c2eb1948bb9d",
+      "qualityReportedSha256": "1f0bab1898612b824386b7b4bcf5fe1f2fe99f816e28e4e8cfc9c2eb1948bb9d",
+      "authorizedSha256": "1f0bab1898612b824386b7b4bcf5fe1f2fe99f816e28e4e8cfc9c2eb1948bb9d"
+    },
+    {
+      "id": "space_marine_leandros",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/space_marine_leandros.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "cc40bc230b7053a4da5d85816365bd2112bfeaadc8186b5ce8e0f2ba3a365ea1",
+      "qualityReportedSha256": "cc40bc230b7053a4da5d85816365bd2112bfeaadc8186b5ce8e0f2ba3a365ea1",
+      "authorizedSha256": "cc40bc230b7053a4da5d85816365bd2112bfeaadc8186b5ce8e0f2ba3a365ea1"
+    },
+    {
+      "id": "space_marine_sidonus",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/space_marine_sidonus.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "8247b53d3df1c1a90f1b47c598d37889218aa34af588e7336244b17ccf678806",
+      "qualityReportedSha256": "8247b53d3df1c1a90f1b47c598d37889218aa34af588e7336244b17ccf678806",
+      "authorizedSha256": "8247b53d3df1c1a90f1b47c598d37889218aa34af588e7336244b17ccf678806"
+    },
+    {
+      "id": "space_marine_titus",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-a/space_marine_titus.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "8e83d3be3dc1888fc6cda9205f5d358540e8907252ba0c06a8caccbdc500ab50",
+      "qualityReportedSha256": "8e83d3be3dc1888fc6cda9205f5d358540e8907252ba0c06a8caccbdc500ab50",
+      "authorizedSha256": "8e83d3be3dc1888fc6cda9205f5d358540e8907252ba0c06a8caccbdc500ab50"
+    },
+    {
+      "id": "anya_stroud",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/anya_stroud.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "9908a8fe470f6169c598a3f3bcf6f100600d4e9b964ef0d4e851fc8f0cc9269b",
+      "qualityReportedSha256": "9908a8fe470f6169c598a3f3bcf6f100600d4e9b964ef0d4e851fc8f0cc9269b",
+      "authorizedSha256": "9908a8fe470f6169c598a3f3bcf6f100600d4e9b964ef0d4e851fc8f0cc9269b"
+    },
+    {
+      "id": "ashley_williams",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/ashley_williams.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "ae95a760cacb1ff66c0521b8da95e04b217a36a9a8c692b454566f1787e661c3",
+      "qualityReportedSha256": "ae95a760cacb1ff66c0521b8da95e04b217a36a9a8c692b454566f1787e661c3",
+      "authorizedSha256": "ae95a760cacb1ff66c0521b8da95e04b217a36a9a8c692b454566f1787e661c3"
+    },
+    {
+      "id": "boone_fnv",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/boone_fnv.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "321e3774df3b242967e1043d68f7716eb65fa594e81cf6ede7321304ae2d7e8a",
+      "qualityReportedSha256": "321e3774df3b242967e1043d68f7716eb65fa594e81cf6ede7321304ae2d7e8a",
+      "authorizedSha256": "321e3774df3b242967e1043d68f7716eb65fa594e81cf6ede7321304ae2d7e8a"
+    },
+    {
+      "id": "buck_odst",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/buck_odst.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "b80a45bffa623c3e57890dae7531d318b1385f2cab630de5f684f3d52134848f",
+      "qualityReportedSha256": "b80a45bffa623c3e57890dae7531d318b1385f2cab630de5f684f3d52134848f",
+      "authorizedSha256": "b80a45bffa623c3e57890dae7531d318b1385f2cab630de5f684f3d52134848f"
+    },
+    {
+      "id": "carmine_cog",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/carmine_cog.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "732044362db65b4b4c9769edeac34c882d75f9cd0ac88eb340258f5ceb2e5313",
+      "qualityReportedSha256": "732044362db65b4b4c9769edeac34c882d75f9cd0ac88eb340258f5ceb2e5313",
+      "authorizedSha256": "732044362db65b4b4c9769edeac34c882d75f9cd0ac88eb340258f5ceb2e5313"
+    },
+    {
+      "id": "courier_six",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/courier_six.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "b596dd889a07f64550ecfa115b7798acc41efa267e82bc2885a345115af2f08d",
+      "qualityReportedSha256": "b596dd889a07f64550ecfa115b7798acc41efa267e82bc2885a345115af2f08d",
+      "authorizedSha256": "b596dd889a07f64550ecfa115b7798acc41efa267e82bc2885a345115af2f08d"
+    },
+    {
+      "id": "desmond_miles_ac",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/desmond_miles_ac.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "91f754fcca47089b2156a0cbc5221e6958f86d08d2d6c769de2097ff89da292c",
+      "qualityReportedSha256": "91f754fcca47089b2156a0cbc5221e6958f86d08d2d6c769de2097ff89da292c",
+      "authorizedSha256": "91f754fcca47089b2156a0cbc5221e6958f86d08d2d6c769de2097ff89da292c"
+    },
+    {
+      "id": "deus_ex_adam_jensen",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/deus_ex_adam_jensen.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "995669d2312ae4cbd1e88262f8ec1762e7ce9ab5f433d3772981b547d83d15e9",
+      "qualityReportedSha256": "995669d2312ae4cbd1e88262f8ec1762e7ce9ab5f433d3772981b547d83d15e9",
+      "authorizedSha256": "995669d2312ae4cbd1e88262f8ec1762e7ce9ab5f433d3772981b547d83d15e9"
+    },
+    {
+      "id": "deus_ex_alex_vega",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/deus_ex_alex_vega.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "940735c825aa54ed2b3f70adc8811313becd36c71e722829b801829c7a80b2d1",
+      "qualityReportedSha256": "940735c825aa54ed2b3f70adc8811313becd36c71e722829b801829c7a80b2d1",
+      "authorizedSha256": "940735c825aa54ed2b3f70adc8811313becd36c71e722829b801829c7a80b2d1"
+    },
+    {
+      "id": "deus_ex_faridah_malik",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/deus_ex_faridah_malik.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "6afe064f04e38b7a8677210dacbb125589ff99ed7d3d8ac1090b30b134e76818",
+      "qualityReportedSha256": "6afe064f04e38b7a8677210dacbb125589ff99ed7d3d8ac1090b30b134e76818",
+      "authorizedSha256": "6afe064f04e38b7a8677210dacbb125589ff99ed7d3d8ac1090b30b134e76818"
+    },
+    {
+      "id": "ezio_auditore_ac",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/ezio_auditore_ac.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "565157de73523e5c7761b4efef8a2d27643c0517bb5ec581d34a28c5c3928c8f",
+      "qualityReportedSha256": "565157de73523e5c7761b4efef8a2d27643c0517bb5ec581d34a28c5c3928c8f",
+      "authorizedSha256": "565157de73523e5c7761b4efef8a2d27643c0517bb5ec581d34a28c5c3928c8f"
+    },
+    {
+      "id": "kait_diaz",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/kait_diaz.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "bd5d6f57487d8d83aa7052fd9367eab595aaec0c5c47c6402d4828ca116f507a",
+      "qualityReportedSha256": "bd5d6f57487d8d83aa7052fd9367eab595aaec0c5c47c6402d4828ca116f507a",
+      "authorizedSha256": "bd5d6f57487d8d83aa7052fd9367eab595aaec0c5c47c6402d4828ca116f507a"
+    },
+    {
+      "id": "kassandra_ac",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/kassandra_ac.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "7542303e8e5d32821b95c6e1b13a3d5f41ca07d18fbbb61d7d7fa12ef494d7e6",
+      "qualityReportedSha256": "7542303e8e5d32821b95c6e1b13a3d5f41ca07d18fbbb61d7d7fa12ef494d7e6",
+      "authorizedSha256": "7542303e8e5d32821b95c6e1b13a3d5f41ca07d18fbbb61d7d7fa12ef494d7e6"
+    },
+    {
+      "id": "kelly_087",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/kelly_087.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "4460c17243afa02120c2974dd5d778d1656d729f14c7926885e4682c6251091f",
+      "qualityReportedSha256": "4460c17243afa02120c2974dd5d778d1656d729f14c7926885e4682c6251091f",
+      "authorizedSha256": "4460c17243afa02120c2974dd5d778d1656d729f14c7926885e4682c6251091f"
+    },
+    {
+      "id": "linda_058",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/linda_058.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "7048450d315fc91c7991bf1a0d71876f33dd95a6637b47503b0f303be1493d66",
+      "qualityReportedSha256": "7048450d315fc91c7991bf1a0d71876f33dd95a6637b47503b0f303be1493d66",
+      "authorizedSha256": "7048450d315fc91c7991bf1a0d71876f33dd95a6637b47503b0f303be1493d66"
+    },
+    {
+      "id": "mordin",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/mordin.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "55613bdfd26ff5374ba65d18852961b678e61d103fb8f062a3e7fa9cfb76492a",
+      "qualityReportedSha256": "55613bdfd26ff5374ba65d18852961b678e61d103fb8f062a3e7fa9cfb76492a",
+      "authorizedSha256": "55613bdfd26ff5374ba65d18852961b678e61d103fb8f062a3e7fa9cfb76492a"
+    },
+    {
+      "id": "no_mans_sky_nada",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/no_mans_sky_nada.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "b635d89bdeea3fbb3cf3582eec80b343ecf198ed123e6ff91278eeae5fba7b98",
+      "qualityReportedSha256": "b635d89bdeea3fbb3cf3582eec80b343ecf198ed123e6ff91278eeae5fba7b98",
+      "authorizedSha256": "b635d89bdeea3fbb3cf3582eec80b343ecf198ed123e6ff91278eeae5fba7b98"
+    },
+    {
+      "id": "no_mans_sky_polo",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/no_mans_sky_polo.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "1d484ce6e5d073b65d7e829bdb4251841df99ab0895a316770e4d097e0a6446b",
+      "qualityReportedSha256": "1d484ce6e5d073b65d7e829bdb4251841df99ab0895a316770e4d097e0a6446b",
+      "authorizedSha256": "1d484ce6e5d073b65d7e829bdb4251841df99ab0895a316770e4d097e0a6446b"
+    },
+    {
+      "id": "no_mans_sky_traveller",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/no_mans_sky_traveller.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "92688e3f49588a4eb058c83411ebc84cf74668c44584a595474976d458bcfc4b",
+      "qualityReportedSha256": "92688e3f49588a4eb058c83411ebc84cf74668c44584a595474976d458bcfc4b",
+      "authorizedSha256": "92688e3f49588a4eb058c83411ebc84cf74668c44584a595474976d458bcfc4b"
+    },
+    {
+      "id": "noble_six",
+      "path": "/sprites/generated/combat-character-corrections-wave14-part-b/noble_six.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "02ca3ae11adbe25e811033d24ccaf7455cc5d7e8342943404e0c8e97bee5b014",
+      "qualityReportedSha256": "02ca3ae11adbe25e811033d24ccaf7455cc5d7e8342943404e0c8e97bee5b014",
+      "authorizedSha256": "02ca3ae11adbe25e811033d24ccaf7455cc5d7e8342943404e0c8e97bee5b014"
+    }
+  ],
+  "references": [
+    {
+      "stageId": 9339,
+      "character": "Anya Stroud",
+      "previous": [
+        "/sprites/generated/heroes/gears-of-war/anya-stroud.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/anya_stroud.png"
+      ]
+    },
+    {
+      "stageId": 9341,
+      "character": "Carmine",
+      "previous": [
+        "/sprites/generated/heroes/gears-of-war/carmine-cog.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/carmine_cog.png"
+      ]
+    },
+    {
+      "stageId": 9342,
+      "character": "Kait Diaz",
+      "previous": [
+        "/sprites/generated/heroes/gears-of-war/kait-diaz.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/kait_diaz.png"
+      ]
+    },
+    {
+      "stageId": 9346,
+      "character": "Noble Six",
+      "previous": [
+        "/sprites/generated/heroes/halo/noble-six.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/noble_six.png"
+      ]
+    },
+    {
+      "stageId": 9347,
+      "character": "Edward Buck",
+      "previous": [
+        "/sprites/generated/heroes/halo/buck-odst.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/buck_odst.png"
+      ]
+    },
+    {
+      "stageId": 9348,
+      "character": "Kelly-087",
+      "previous": [
+        "/sprites/generated/heroes/halo/kelly-087.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/kelly_087.png"
+      ]
+    },
+    {
+      "stageId": 9349,
+      "character": "Linda-058",
+      "previous": [
+        "/sprites/generated/heroes/halo/linda-058.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/linda_058.png"
+      ]
+    },
+    {
+      "stageId": 9500,
+      "character": "Ashley Williams",
+      "previous": [
+        "/sprites/generated/heroes/mass-effect/ashley-williams.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/ashley_williams.png"
+      ]
+    },
+    {
+      "stageId": 9501,
+      "character": "Mordin Solus",
+      "previous": [
+        "/sprites/generated/heroes/mass-effect/mordin.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/mordin.png"
+      ]
+    },
+    {
+      "stageId": 9507,
+      "character": "Craig Boone",
+      "previous": [
+        "/sprites/generated/heroes/fallout/boone-fnv.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/boone_fnv.png"
+      ]
+    },
+    {
+      "stageId": 9508,
+      "character": "Courier Six",
+      "previous": [
+        "/sprites/generated/heroes/fallout/courier-six.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/courier_six.png"
+      ]
+    },
+    {
+      "stageId": 10114,
+      "character": "Ardyn Izunia",
+      "previous": [
+        "/sprites/generated/heroes/final-fantasy-xv/ardyn-ff15.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/ardyn_ff15.png"
+      ]
+    },
+    {
+      "stageId": 10115,
+      "character": "Cor Leonis",
+      "previous": [
+        "/sprites/generated/heroes/final-fantasy-xv/cor-ff15.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/cor_ff15.png"
+      ]
+    },
+    {
+      "stageId": 10119,
+      "character": "Lara Croft",
+      "previous": [
+        "/sprites/generated/heroes/tomb-raider/lara-croft-tr.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/lara_croft_tr.png"
+      ]
+    },
+    {
+      "stageId": 10121,
+      "character": "Jonah Maiava",
+      "previous": [
+        "/sprites/generated/heroes/tomb-raider/jonah-tr.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/jonah_tr.png"
+      ]
+    },
+    {
+      "stageId": 10140,
+      "character": "Kain",
+      "previous": [
+        "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-kain.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/legacy_of_kain_kain.png"
+      ]
+    },
+    {
+      "stageId": 10141,
+      "character": "Raziel",
+      "previous": [
+        "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-raziel.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/legacy_of_kain_raziel.png"
+      ]
+    },
+    {
+      "stageId": 10142,
+      "character": "Vorador",
+      "previous": [
+        "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-vorador.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/legacy_of_kain_vorador.png"
+      ]
+    },
+    {
+      "stageId": 10401,
+      "character": "Aragorn",
+      "previous": [
+        "/sprites/generated/heroes/the-lord-of-the-rings/aragorn-lotr.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/aragorn_lotr.png"
+      ]
+    },
+    {
+      "stageId": 10402,
+      "character": "Gandalf",
+      "previous": [
+        "/sprites/generated/heroes/the-lord-of-the-rings/gandalf-lotr.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/gandalf_lotr.png"
+      ]
+    },
+    {
+      "stageId": 10403,
+      "character": "Legolas",
+      "previous": [
+        "/sprites/generated/heroes/the-lord-of-the-rings/legolas-lotr.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/legolas_lotr.png"
+      ]
+    },
+    {
+      "stageId": 10404,
+      "character": "Gimli",
+      "previous": [
+        "/sprites/generated/heroes/the-lord-of-the-rings/gimli-lotr.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/gimli_lotr.png"
+      ]
+    },
+    {
+      "stageId": 10507,
+      "character": "Ezio Auditore",
+      "previous": [
+        "/sprites/generated/heroes/assassin-s-creed/ezio-auditore-ac.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/ezio_auditore_ac.png"
+      ]
+    },
+    {
+      "stageId": 10508,
+      "character": "Desmond Miles",
+      "previous": [
+        "/sprites/generated/heroes/assassin-s-creed/desmond-miles-ac.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/desmond_miles_ac.png"
+      ]
+    },
+    {
+      "stageId": 10509,
+      "character": "Kassandra",
+      "previous": [
+        "/sprites/generated/heroes/assassin-s-creed/kassandra-ac.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/kassandra_ac.png"
+      ]
+    },
+    {
+      "stageId": 10848,
+      "character": "Captain Demetrian Titus",
+      "previous": [
+        "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-titus.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/space_marine_titus.png"
+      ]
+    },
+    {
+      "stageId": 10849,
+      "character": "Veteran Sergeant Sidonus",
+      "previous": [
+        "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-sidonus.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/space_marine_sidonus.png"
+      ]
+    },
+    {
+      "stageId": 10850,
+      "character": "Battle-Brother Leandros",
+      "previous": [
+        "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-leandros.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/space_marine_leandros.png"
+      ]
+    },
+    {
+      "stageId": 10857,
+      "character": "Aloy",
+      "previous": [
+        "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-aloy.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/horizon_zero_dawn_aloy.png"
+      ]
+    },
+    {
+      "stageId": 10858,
+      "character": "Varl",
+      "previous": [
+        "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-varl.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/horizon_zero_dawn_varl.png"
+      ]
+    },
+    {
+      "stageId": 10859,
+      "character": "Erend",
+      "previous": [
+        "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-erend.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/horizon_zero_dawn_erend.png"
+      ]
+    },
+    {
+      "stageId": 10905,
+      "character": "The Traveller",
+      "previous": [
+        "/sprites/generated/heroes/no-man-s-sky/no-mans-sky-traveller.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/no_mans_sky_traveller.png"
+      ]
+    },
+    {
+      "stageId": 10906,
+      "character": "Priest Entity Nada",
+      "previous": [
+        "/sprites/generated/heroes/no-man-s-sky/no-mans-sky-nada.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/no_mans_sky_nada.png"
+      ]
+    },
+    {
+      "stageId": 10907,
+      "character": "Specialist Polo",
+      "previous": [
+        "/sprites/generated/heroes/no-man-s-sky/no-mans-sky-polo.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/no_mans_sky_polo.png"
+      ]
+    },
+    {
+      "stageId": 10968,
+      "character": "Chosen Undead",
+      "previous": [
+        "/sprites/generated/heroes/dark-souls/dark-souls-chosen-undead.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/dark_souls_chosen_undead.png"
+      ]
+    },
+    {
+      "stageId": 10969,
+      "character": "Solaire",
+      "previous": [
+        "/sprites/generated/heroes/dark-souls/dark-souls-solaire.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/dark_souls_solaire.png"
+      ]
+    },
+    {
+      "stageId": 10970,
+      "character": "Siegmeyer",
+      "previous": [
+        "/sprites/generated/heroes/dark-souls/dark-souls-siegmeyer.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-a/dark_souls_siegmeyer.png"
+      ]
+    },
+    {
+      "stageId": 10977,
+      "character": "Adam Jensen",
+      "previous": [
+        "/sprites/generated/heroes/deus-ex/deus-ex-adam-jensen.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/deus_ex_adam_jensen.png"
+      ]
+    },
+    {
+      "stageId": 10978,
+      "character": "Faridah Malik",
+      "previous": [
+        "/sprites/generated/heroes/deus-ex/deus-ex-faridah-malik.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/deus_ex_faridah_malik.png"
+      ]
+    },
+    {
+      "stageId": 10979,
+      "character": "Alex Vega",
+      "previous": [
+        "/sprites/generated/heroes/deus-ex/deus-ex-alex-vega.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave14-part-b/deus_ex_alex_vega.png"
+      ]
+    }
+  ],
+  "retainedHistoricalReferences": [],
+  "catalogTotalBefore": 3199,
+  "catalogTotalAfter": 3199,
+  "qualityBefore": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "qualityAfter": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "registryStatuses": {
+    "available": 1030,
+    "pending": 2169
+  },
+  "registryAvailabilityDelta": {
+    "before": {
+      "available": 1030,
+      "pending": 2169
+    },
+    "after": {
+      "available": 1030,
+      "pending": 2169
+    },
+    "changes": [],
+    "promptChangeCount": 33,
+    "promptChanges": [
+      {
+        "stageId": 9342,
+        "character": "Kait Diaz",
+        "previousPromptSha256": "638ecee69cfbd0f959346a2308fe48fea224edf5f3d58fdcb79be65a191cae18",
+        "currentPromptSha256": "62cab558cef11c5da71027e39daebec6fa13e7aa29fb4ef6f89004defe786969",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9348,
+        "character": "Kelly-087",
+        "previousPromptSha256": "ecb29b4084b96f0179677247a8faefe5e8e72141b5424bdb694249b38554f9dc",
+        "currentPromptSha256": "500e85dcb91bfb98149219cf0b2bd830b343a909e84f7a8e31def9298d9c0eaf",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9349,
+        "character": "Linda-058",
+        "previousPromptSha256": "49f0aaabd7ebde8794ff83758a6776ea87d6b7f425b83b3bc1ae98ea7faf07db",
+        "currentPromptSha256": "0ba47b0cd882be721106ae6db6628d704544c2e4e4c8c77ea650d92bfe720864",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9501,
+        "character": "Mordin Solus",
+        "previousPromptSha256": "758ae5682f216042fbae847c3e70a56ae28210cbac8af4762edbe40750b11fd5",
+        "currentPromptSha256": "e4cbe6e11e69f250cdcac0de5e29715acbaba78d805cd906d80b2ba0916e4ab6",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9507,
+        "character": "Craig Boone",
+        "previousPromptSha256": "409040f79344b509a82c0841613a843b58756271f5534de4e3f9f7d57364082b",
+        "currentPromptSha256": "599d333d67554ae8f1aba08f4a00fe74b2e48ab7c8019746c7d1d9bab8af74a1",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9508,
+        "character": "Courier Six",
+        "previousPromptSha256": "bad2cf51f1136756d5caf93212bddb86c737b8cf52771879ed788a2486e5c5d4",
+        "currentPromptSha256": "b0972992a6d2c4f159fa4da4ed62cc776fae43a239b31bf9ac26d00e9fb36634",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10114,
+        "character": "Ardyn Izunia",
+        "previousPromptSha256": "4888c0bdb8179e29d83b2be222619aebf062b9617266cb2427ae3a7ebd45d7c3",
+        "currentPromptSha256": "51f61cb04a7b3e059f7db93b4ce9ccf916f1cb9e19c524a3acfb3d1c200a1278",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10115,
+        "character": "Cor Leonis",
+        "previousPromptSha256": "410bcc050fd2d19476d3119a7b1541c2fa2018621b794e06cd35b870905be5db",
+        "currentPromptSha256": "02074bef0cd2ed7a200112249255d2cc72fe7d2694e04e727e42db58b99ec419",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10119,
+        "character": "Lara Croft",
+        "previousPromptSha256": "aa48301a1d44fb8fbd73beaa82bd2ac39b5ff983e4d87292360ce68395a7e439",
+        "currentPromptSha256": "42099800166bbd8f40db5fecebd840b3ca330a0b90940cd043a34d36091bfb4b",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10121,
+        "character": "Jonah Maiava",
+        "previousPromptSha256": "7b709135bf3245045994b7f35bea9f4a2e7a9c3f7ab3a9b68f6512a89e69660f",
+        "currentPromptSha256": "3384308d0444c34c4fcdea080efa417e3ca67bdf04ced9468ba794e272f2e696",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10140,
+        "character": "Kain",
+        "previousPromptSha256": "32e120fb87c8131e7b37dbcecaa9976425f11c44f0a7eeed1582892eede83482",
+        "currentPromptSha256": "67a401baa81c6feaa8312dd3835452778ce98dcb592ddc52719f359bc78f759a",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10141,
+        "character": "Raziel",
+        "previousPromptSha256": "d055af927947b638cc04fb52eb159e45c5c49024a8698d5ad9b0c346e18df28c",
+        "currentPromptSha256": "54707387fb727d20d8bbf53e9ed5fd43b471c5240a08ce165db4f7b3128a2523",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10142,
+        "character": "Vorador",
+        "previousPromptSha256": "80db8090e62648ecbfe9da1a20f52ab8c548cf70583eb8cbf3ee6165fc522c13",
+        "currentPromptSha256": "a5af0bf9bed81dd78672c2ff0882553d0795c930c95ebe1fdeadbd32050439db",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10401,
+        "character": "Aragorn",
+        "previousPromptSha256": "a45d760aaa7d42b35cd3bcea8bf5f6b3f7815cc026f82d7456a78a9a01898faa",
+        "currentPromptSha256": "cf4e176c8250737c1c02c62fd4fa9d9fab70ad8c5532efdacd00498934f6ea73",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10402,
+        "character": "Gandalf",
+        "previousPromptSha256": "7c1f19ee21935f78913fa301f5215bda8379e39cad36608421a40036c7e22048",
+        "currentPromptSha256": "002eb2d6f30dbc4d80f6522af9a7950f93f5ba564b1e2a50e226890725e4d36d",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10403,
+        "character": "Legolas",
+        "previousPromptSha256": "8c88f548f83fa356b00b338254811f086bcad844c226483849f062a0802154e2",
+        "currentPromptSha256": "0aa60ea83b4d5dd80743d0629bb9e1d2fbf776e5be8dc9766ec0f8a38b0e1f85",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10404,
+        "character": "Gimli",
+        "previousPromptSha256": "fb836486b3b705863284e24e7efcafa596387af52e8319048f6c0dffa73a50bf",
+        "currentPromptSha256": "38f790a972cc5e26ec5a27f089ce28576e7733db5ecacc8c6bcf04e6c0a3b665",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10507,
+        "character": "Ezio Auditore",
+        "previousPromptSha256": "24f78364022b22fdeba61c3cafb29dc685758a27497316616906fa15a77555ed",
+        "currentPromptSha256": "df32662c2d0de3ad62f9ca951b35c46186bf1f56d571a3fde6b6690957974d70",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10508,
+        "character": "Desmond Miles",
+        "previousPromptSha256": "8551657fd17ea4f7f11be29abd72cc02d4ebad0548c520f5c8fd4631e46e1e19",
+        "currentPromptSha256": "b2f0327ef7f714d2317f52d7ae9fed4806708b9945f7c626c60e59720f05a86e",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10509,
+        "character": "Kassandra",
+        "previousPromptSha256": "4d4c67a5237bd52b7a66a9296f3e0df990b17f9ba09bcaf520423da459c2096f",
+        "currentPromptSha256": "422b1509ef0125a6b189506089824b8d70515e744a4f73d7dff8fe3a610a9a72",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10848,
+        "character": "Captain Demetrian Titus",
+        "previousPromptSha256": "4b828acff844267f05f86b0cb1fac1b6642e5ff6cc62815e30d5d42dd675aa16",
+        "currentPromptSha256": "1fec2686055a16012acc0056161b7d3f555a5c9b16234014c857d31fc0115064",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10857,
+        "character": "Aloy",
+        "previousPromptSha256": "97795e9c01bf14cb8063c6d5d685d0d9b76dc93c7ecdee7fb5fcbddfe8f8d10f",
+        "currentPromptSha256": "af5fe81b8e7cf5aec8c65eb3bc299b00027934a23667394e57b7e7d24fef1770",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10858,
+        "character": "Varl",
+        "previousPromptSha256": "dde8345991f03e2d5dd4355aaad266079fa794efbfbfc8dd2c642a96bd1a5f47",
+        "currentPromptSha256": "5820fecee133dfbcdd0728a94fce38cff32aa8e7d5c29120419d0ee3b2e620b6",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10859,
+        "character": "Erend",
+        "previousPromptSha256": "02c645d1974bc99dedbe99a2e63300a2ad1d6e5357281a890f26a4655a0dba50",
+        "currentPromptSha256": "f69aca68624f4a803ca50331aa0f09bf9b7a72daa23084fd2d747ed0ad356e3d",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10905,
+        "character": "The Traveller",
+        "previousPromptSha256": "eda09cd767153172cee81cdc262221318fc4e56081e70fcb2f4054d48237f0f0",
+        "currentPromptSha256": "af411a87c10e273b9a734b38babe9e0407b45b02c503463c658098921f463619",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10906,
+        "character": "Priest Entity Nada",
+        "previousPromptSha256": "e8c1eea1d112110bb4158854570d2df7b3083d67e7b4792e366ac3f4a84f7f8e",
+        "currentPromptSha256": "f95caf3db4ed1469afe546339e2948c9b9903d1176d09265a2217010cf97b162",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10907,
+        "character": "Specialist Polo",
+        "previousPromptSha256": "e8cf15a17d2c66f2673baa8d319d3894ce9f2e447400ce2b3414f440c79e45f7",
+        "currentPromptSha256": "cb5250cd8ff02594865ba9f7b8ecd33331b7baccdaca9f136ef5b04bcafbfb89",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10968,
+        "character": "Chosen Undead",
+        "previousPromptSha256": "b7df619718da7eb7c8dda4a1a292d072b0047461fd0747202da826d6d6c9d69c",
+        "currentPromptSha256": "433cf3ac5ffe0c43619e2e6696607dcb2a030ae1d087284a4cb9699e35578f25",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10969,
+        "character": "Solaire",
+        "previousPromptSha256": "fbe0634afe61e3306e9c47850ad649cc996721d47884262670de6460e1178765",
+        "currentPromptSha256": "0298139ae6e2e171090b176afc4716bcf0b8dadc4081c636bf3a1a732521c384",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10970,
+        "character": "Siegmeyer",
+        "previousPromptSha256": "77cb790787ad9a7216cddd744590e76188597c1c258acc2af8f2ccdaa4a36de4",
+        "currentPromptSha256": "edfc80df95b7ca6ab2e894ef5e5ba7f20ae37cea092e516318f6e91e1756aa84",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10977,
+        "character": "Adam Jensen",
+        "previousPromptSha256": "c5366751dc0d930f39cd70fc57172e2f87e5cd567469f739957b85d9f138d567",
+        "currentPromptSha256": "4c993cbc1205d271051a0408c75bab7728bdc0fa0c341f1f26f53cbd8fa7ce65",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10978,
+        "character": "Faridah Malik",
+        "previousPromptSha256": "50b3d2b2608f9dc73de30c025eb6100275b1844dd3725314ca630dcb75e841c6",
+        "currentPromptSha256": "8ad8fac9146ca9075019e3895fe6d6d9b70e044b06f82d87c9d2c1524117d456",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10979,
+        "character": "Alex Vega",
+        "previousPromptSha256": "77eee771196c52a5f8d1e3bb2a7ec77db18c802ffa10d40db48194fccae8c8a8",
+        "currentPromptSha256": "b9abf1d0ff3ac3cb36620e7dedbbdd1bde8ab8e9dff0b595fa204b6a5e34cade",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      }
+    ],
+    "newlyPending": [],
+    "source": "Real before/after registry entries; no status restoration or threshold modification."
+  },
+  "revisedCharacterPromptCount": 33,
+  "sourceSha256Before": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "ec91aa87fb8af0db17086f37bd58b2bdae44e62edea69548d66823f6493bc66b"
+  },
+  "sourceSha256After": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "ec91aa87fb8af0db17086f37bd58b2bdae44e62edea69548d66823f6493bc66b"
+  },
+  "finalOutputSha256": {
+    "docs/rift-dossiers/catalog.json": "a7c2b1b331149f2040246394b18f365ffd02368b46ccba37169de72d6d125e96",
+    "docs/rift-dossiers/character-reference-quality.json": "52479771427de0d3d7170b02fa30527755a035c52e7f26622f7a959797ca0c6d",
+    "src/game/riftDossierAssets.json": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a"
+  },
+  "limitations": [
+    "Historical references retained for ; missing native base/presentation drawings are not counted as new delivery.",
+    "Any dossier marked pending after an actual prompt/reference revision remains pending; approved character references do not certify dossier-image availability."
+  ],
+  "executionResumed": false,
+  "resumption": null,
+  "executionPhased": true,
+  "continuation": {
+    "mode": "planned-final-write-phase",
+    "startedAt": "2026-10-25T09:10:28.034775+00:00",
+    "referencePhaseReceipt": {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/rift-refresh/reference-phase-receipt.json",
+      "sha256": "d9734365d8baa850bdfd66e86ac0e720e5d9e78c44430d2ce3d78434d624bedd"
+    }
+  }
+}

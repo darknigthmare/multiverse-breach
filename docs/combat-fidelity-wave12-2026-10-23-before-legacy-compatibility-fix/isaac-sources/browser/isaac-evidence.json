@@ -1,0 +1,588 @@
+{
+  "passed": true,
+  "generatedAt": "2026-10-23T21:16:30.643Z",
+  "heroId": "isaac",
+  "sourceWork": "Dead Space (2008), original engineering RIG",
+  "source1to1Verified": false,
+  "scope": "Quatre harnais Chromium : deux parcours GameCanvas par clavier et deux séquences contrôlées du vrai renderer/moteur ; aucune certification officielle 1:1.",
+  "counts": {
+    "flows": 4,
+    "states": 45,
+    "nativePoses": 180,
+    "coreDraws": 360,
+    "controlledGripDraws": 8,
+    "physicalLedgeCases": 20,
+    "physicalGripDraws": 32
+  },
+  "limitations": [
+    "Les deux orientations utilisent le miroir horizontal du runtime, y compris les asymétries de tenue et d’équipement.",
+    "Le parcours de rebord appelle directement applyPhysics et les commandes du runtime ; il ne prétend pas être un parcours clavier GameCanvas.",
+    "Le lâcher et le saut peuvent être remplacés rapidement par fall/jumpRise dans la physique actuelle ; la présence des quatre dessins ne certifie pas leur durée naturelle complète.",
+    "Les catalogues globaux encore modifiés par les autres lots sont exclus du contrôle de stabilité ; les fichiers moteurs et ressources Isaac sont liés ci-dessous.",
+    "Une requête Google Fonts bloquée par le réseau est comptabilisée explicitement dans les rapports concernés."
+  ],
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave12-2026-10-23/production-freeze.json",
+    "bytes": 130553,
+    "sha256": "9e28887b93abe727f7870d07bef1109b3ade28bfbbdf7799f9b02f016e8a83de",
+    "createdAt": "2026-10-23T21:14:59.708Z"
+  },
+  "execution": {
+    "startedAt": "2026-10-23T21:15:56.959Z",
+    "finishedAt": "2026-10-23T21:16:30.625Z",
+    "commands": [
+      {
+        "command": "node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-core-browser.mjs",
+        "exitCode": 0,
+        "log": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-core.log"
+      },
+      {
+        "command": "node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-movement-browser.mjs",
+        "exitCode": 0,
+        "log": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-movement.log"
+      },
+      {
+        "command": "node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-super-browser.mjs",
+        "exitCode": 0,
+        "log": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-super.log"
+      },
+      {
+        "command": "node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-physical-ledge-browser.mjs",
+        "exitCode": 0,
+        "log": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-physical-ledge.log"
+      }
+    ],
+    "resourcesUnchangedDuringRun": true,
+    "resourcesBefore": [
+      {
+        "path": "src/components/GameCanvas.jsx",
+        "bytes": 133689,
+        "sha256": "c45de7e475ea262fdb7b33852e9073696d3cdf10b6ddb8eb1939c61e3c8a49b4"
+      },
+      {
+        "path": "src/game/engineSmash.js",
+        "bytes": 115603,
+        "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+      },
+      {
+        "path": "src/game/renderer.js",
+        "bytes": 66075,
+        "sha256": "ea8134258b27da2c3bd01c5e01738a8084c9e720d79220e33e06eadcafdf9ee6"
+      },
+      {
+        "path": "src/game/spriteAssets.js",
+        "bytes": 39318,
+        "sha256": "64b4c0e370f7a5de876c3adf8ec7da52d6fead345f6f4393163a8f7514f3b888"
+      },
+      {
+        "path": "src/game/melee/meleeCombatRuntime.js",
+        "bytes": 17966,
+        "sha256": "e230bb9379a25f370b950695e43ff49a08d644aeea0f6321818e9c20533b75cd"
+      },
+      {
+        "path": "src/game/melee/meleeStateMachine.js",
+        "bytes": 7161,
+        "sha256": "e6e26340a9b7b8bd5c045683629598ce0897bd020084b54e90f2fd258cffb647"
+      },
+      {
+        "path": "src/game/melee/nativeMeleeManifest.js",
+        "bytes": 4519,
+        "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+      },
+      {
+        "path": "src/game/melee/isaacMeleeManifest.js",
+        "bytes": 509,
+        "sha256": "b2e6bed8884e0410dcfc46e1bbaf202cef464477995fbf723a4d408e96e7a0f1"
+      },
+      {
+        "path": "src/game/combat/isaacMeleeMotion.generated.json",
+        "bytes": 223090,
+        "sha256": "5c351cd0a5ef5bbad0f86e4ad6e4d2ce27023bf4e2af26d8af1a34222913add7"
+      },
+      {
+        "path": "src/game/combat/isaacMeleeCombat.generated.json",
+        "bytes": 233750,
+        "sha256": "d7eeca67e145e9ed31be6b268dce540847bede2f4ea88cad1e36fe5d1b5c65d9"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/packing-plan.json",
+        "bytes": 22073,
+        "sha256": "7a40e43763e696ed2506a609618eb319a485f9d339875a8c10c57982544df148"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/native-hand-points.json",
+        "bytes": 956,
+        "sha256": "654247a86c74dade6b22c6cf5524dd34e568b88a9be30ba07d7e4b3189f83acc"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/hand-measurements.json",
+        "bytes": 13436,
+        "sha256": "2ef5c25f4548af8e7c7b7837325e05fc710fa156dc260d287e499e916bb5ccbe"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/actual-tool-calls.json",
+        "bytes": 63891,
+        "sha256": "1abc5777220412a9ab370417c6c77dcafeac0f8faf01b88683e0b46b39f6163b"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/build-native-isaac-atlases.mjs",
+        "bytes": 17330,
+        "sha256": "06e9bc2a57ee98bfc8b718b221969f464ee93ae928407059c83e3eeb2e789e0c"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/normalize-isaac-atlases.mjs",
+        "bytes": 337,
+        "sha256": "ec351230a0a95631eafaf6d1a8bb9127d510f8149698ae93a45c29d273176383"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/measure-isaac-native-hands.mjs",
+        "bytes": 3394,
+        "sha256": "83523c1650a64bc3f5b8b9a957a5608c56620b51677ff52ec9487baa4dc15c17"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/verify-isaac-atlases.mjs",
+        "bytes": 6957,
+        "sha256": "4354cd85c139479b6b9e938478c8803009ebebdeae4cd1ddd26d340ee73c6d52"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-motion-a.png",
+        "bytes": 1281863,
+        "sha256": "60027a1aae8b89f035d1db353902935dadc63d7c706c3fc40492c467988dbbb5"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-motion-b.png",
+        "bytes": 1193900,
+        "sha256": "ea5d41af7f6abd2a6bced29a7330c6274f06629edd609abb6dd8dc3ba24f82c5"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-defense.png",
+        "bytes": 1493782,
+        "sha256": "66a687b0338e79a72c12843af59a867ae889ef742846652bc52dbbd5ded29d7d"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-combat-a.png",
+        "bytes": 1510320,
+        "sha256": "1a45b651f8fc0f1eac2a760f68d011fcc44f6ea472d9d02aae6e9816ded4afa5"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-combat-b.png",
+        "bytes": 1320468,
+        "sha256": "b58672e372a0aad0ccdf5e5dc7580876602732d2a547ea66e937c3d28a557612"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-ledge.png",
+        "bytes": 799306,
+        "sha256": "0f11785fed4791d5cfbaa9515d6b3583264bd21a565878fc76cb0e561821ec6b"
+      },
+      {
+        "path": "public/sprites/generated/combat-character-animations-wave12-part-c/isaac.png",
+        "bytes": 794633,
+        "sha256": "b3e2944f0b29d5e7a47b4398f933e97eef9827d566631925af85027b75487ed9"
+      },
+      {
+        "path": "public/sprites/generated/combat-character-corrections-wave12-part-c/isaac.png",
+        "bytes": 397996,
+        "sha256": "9bcc76ec2426582176c3c5af403740a2022387594ebd513f244099d9eb515887"
+      }
+    ],
+    "resourcesAfter": [
+      {
+        "path": "src/components/GameCanvas.jsx",
+        "bytes": 133689,
+        "sha256": "c45de7e475ea262fdb7b33852e9073696d3cdf10b6ddb8eb1939c61e3c8a49b4"
+      },
+      {
+        "path": "src/game/engineSmash.js",
+        "bytes": 115603,
+        "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+      },
+      {
+        "path": "src/game/renderer.js",
+        "bytes": 66075,
+        "sha256": "ea8134258b27da2c3bd01c5e01738a8084c9e720d79220e33e06eadcafdf9ee6"
+      },
+      {
+        "path": "src/game/spriteAssets.js",
+        "bytes": 39318,
+        "sha256": "64b4c0e370f7a5de876c3adf8ec7da52d6fead345f6f4393163a8f7514f3b888"
+      },
+      {
+        "path": "src/game/melee/meleeCombatRuntime.js",
+        "bytes": 17966,
+        "sha256": "e230bb9379a25f370b950695e43ff49a08d644aeea0f6321818e9c20533b75cd"
+      },
+      {
+        "path": "src/game/melee/meleeStateMachine.js",
+        "bytes": 7161,
+        "sha256": "e6e26340a9b7b8bd5c045683629598ce0897bd020084b54e90f2fd258cffb647"
+      },
+      {
+        "path": "src/game/melee/nativeMeleeManifest.js",
+        "bytes": 4519,
+        "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+      },
+      {
+        "path": "src/game/melee/isaacMeleeManifest.js",
+        "bytes": 509,
+        "sha256": "b2e6bed8884e0410dcfc46e1bbaf202cef464477995fbf723a4d408e96e7a0f1"
+      },
+      {
+        "path": "src/game/combat/isaacMeleeMotion.generated.json",
+        "bytes": 223090,
+        "sha256": "5c351cd0a5ef5bbad0f86e4ad6e4d2ce27023bf4e2af26d8af1a34222913add7"
+      },
+      {
+        "path": "src/game/combat/isaacMeleeCombat.generated.json",
+        "bytes": 233750,
+        "sha256": "d7eeca67e145e9ed31be6b268dce540847bede2f4ea88cad1e36fe5d1b5c65d9"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/packing-plan.json",
+        "bytes": 22073,
+        "sha256": "7a40e43763e696ed2506a609618eb319a485f9d339875a8c10c57982544df148"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/native-hand-points.json",
+        "bytes": 956,
+        "sha256": "654247a86c74dade6b22c6cf5524dd34e568b88a9be30ba07d7e4b3189f83acc"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/hand-measurements.json",
+        "bytes": 13436,
+        "sha256": "2ef5c25f4548af8e7c7b7837325e05fc710fa156dc260d287e499e916bb5ccbe"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/actual-tool-calls.json",
+        "bytes": 63891,
+        "sha256": "1abc5777220412a9ab370417c6c77dcafeac0f8faf01b88683e0b46b39f6163b"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/build-native-isaac-atlases.mjs",
+        "bytes": 17330,
+        "sha256": "06e9bc2a57ee98bfc8b718b221969f464ee93ae928407059c83e3eeb2e789e0c"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/normalize-isaac-atlases.mjs",
+        "bytes": 337,
+        "sha256": "ec351230a0a95631eafaf6d1a8bb9127d510f8149698ae93a45c29d273176383"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/measure-isaac-native-hands.mjs",
+        "bytes": 3394,
+        "sha256": "83523c1650a64bc3f5b8b9a957a5608c56620b51677ff52ec9487baa4dc15c17"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/verify-isaac-atlases.mjs",
+        "bytes": 6957,
+        "sha256": "4354cd85c139479b6b9e938478c8803009ebebdeae4cd1ddd26d340ee73c6d52"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-motion-a.png",
+        "bytes": 1281863,
+        "sha256": "60027a1aae8b89f035d1db353902935dadc63d7c706c3fc40492c467988dbbb5"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-motion-b.png",
+        "bytes": 1193900,
+        "sha256": "ea5d41af7f6abd2a6bced29a7330c6274f06629edd609abb6dd8dc3ba24f82c5"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-defense.png",
+        "bytes": 1493782,
+        "sha256": "66a687b0338e79a72c12843af59a867ae889ef742846652bc52dbbd5ded29d7d"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-combat-a.png",
+        "bytes": 1510320,
+        "sha256": "1a45b651f8fc0f1eac2a760f68d011fcc44f6ea472d9d02aae6e9816ded4afa5"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-combat-b.png",
+        "bytes": 1320468,
+        "sha256": "b58672e372a0aad0ccdf5e5dc7580876602732d2a547ea66e937c3d28a557612"
+      },
+      {
+        "path": "public/sprites/generated/melee-isaac-wave12/isaac-ledge.png",
+        "bytes": 799306,
+        "sha256": "0f11785fed4791d5cfbaa9515d6b3583264bd21a565878fc76cb0e561821ec6b"
+      },
+      {
+        "path": "public/sprites/generated/combat-character-animations-wave12-part-c/isaac.png",
+        "bytes": 794633,
+        "sha256": "b3e2944f0b29d5e7a47b4398f933e97eef9827d566631925af85027b75487ed9"
+      },
+      {
+        "path": "public/sprites/generated/combat-character-corrections-wave12-part-c/isaac.png",
+        "bytes": 397996,
+        "sha256": "9bcc76ec2426582176c3c5af403740a2022387594ebd513f244099d9eb515887"
+      }
+    ]
+  },
+  "flows": [
+    {
+      "id": "core",
+      "type": "controlled-real-renderer",
+      "summary": "45 états × 4 poses × 2 orientations ; 8 prises de rebord ; physique inchangée",
+      "captures": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-core.png",
+          "bytes": 1384890,
+          "sha256": "b8a991021b65dfdd41b8129599e2cad51d2afcf543e5870db08295302a25ba51"
+        },
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-grips.png",
+          "bytes": 48760,
+          "sha256": "99705b20b527577fe86d08d7d2c43c2fb0ad5a7bcd1bdd2ebc359e9660a37ad2"
+        }
+      ],
+      "traces": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-core-trace.json",
+          "bytes": 165391,
+          "sha256": "6f4037fed953e52ac70c6eeb255345289dabaff7ba9192ca722438de41963527"
+        }
+      ],
+      "harness": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-core-browser.mjs",
+        "bytes": 8047,
+        "sha256": "5443607595e6a90131c184d96dc42ed608b7a094eaa7df261b5730ef2d6f7ef1"
+      },
+      "report": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-core-result.json",
+        "bytes": 1157,
+        "sha256": "3a2045d2335486cf53999a4a0bf2d600d654e890b56a3515088a2487f678d940"
+      },
+      "engineUrl": null,
+      "rendererUrl": "/src/game/renderer.js?t=1792790052807"
+    },
+    {
+      "id": "movement",
+      "type": "real-gamecanvas-keyboard",
+      "summary": "D + Espace, maintien D jusqu’au sol, puis Q ; quatre poses par état observé ; pause stable",
+      "captures": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-movement.png",
+          "bytes": 475118,
+          "sha256": "4bcb4a15b52a850116cce46b6a730fab27f8826ddcfecfa0e56676926f167734"
+        },
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-pause.png",
+          "bytes": 474657,
+          "sha256": "97a01b450bf9bf059211d1c6b2192d543a64efc78689a1aed887358e1256fffb"
+        }
+      ],
+      "traces": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-movement-trace.json",
+          "bytes": 58241,
+          "sha256": "73c406fa1b666a39bb931b7dad62e80fe44df2df29ef0aa87bfe4326f31ac356"
+        }
+      ],
+      "harness": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-movement-browser.mjs",
+        "bytes": 9450,
+        "sha256": "3af1377f10778ca06f83fc5219bc24f65fe00e3ba98df4457959c3909a02a9f3"
+      },
+      "report": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-movement-result.json",
+        "bytes": 3882,
+        "sha256": "9903ca97acf9bd5ebd15774a6116a0b00ccc859751fad50b56dda93869ae66c5"
+      },
+      "engineUrl": "/src/game/engineSmash.js?t=1792790052807",
+      "rendererUrl": null
+    },
+    {
+      "id": "super",
+      "type": "real-gamecanvas-keyboard-cold-boot",
+      "summary": "L à 100 %, rangée native 7, charge consommée, impact unique après hitAt, second déclenchement refusé",
+      "captures": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-super.png",
+          "bytes": 500871,
+          "sha256": "fac1958441bd4f5f68f136b6d27a41dc27fed587a1b194d1d37d361b4576480f"
+        }
+      ],
+      "traces": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-super-trace.json",
+          "bytes": 16417,
+          "sha256": "811c96cda736ff27879ecfc5e14281aeea97143ccdd78387ef0e74ed35e2ce94"
+        },
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-super-draws.json",
+          "bytes": 27893,
+          "sha256": "c85035fe50960e8271c402c827aeb6fe6d3794bb915f150d4fa5221f2caf2db6"
+        }
+      ],
+      "harness": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-super-browser.mjs",
+        "bytes": 10431,
+        "sha256": "eb4b824b453f6b20645d85d0fdaf49625bb1301676f6e6f4582ea0e407e1704e"
+      },
+      "report": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-super-result.json",
+        "bytes": 1662,
+        "sha256": "a2175a6ca9ccab1d6aa5f58c42693dbe37d1c5c8c197baf72c837fa041f34c20"
+      },
+      "engineUrl": "/src/game/engineSmash.js?t=1792790052807",
+      "rendererUrl": null
+    },
+    {
+      "id": "physical-ledge",
+      "type": "controlled-real-engine-and-runtime",
+      "summary": "Prise physique, maintien, montée, lâcher, saut et attaque ; deux camps × deux côtés × cinq actions",
+      "captures": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-physical-ledge.png",
+          "bytes": 418318,
+          "sha256": "db9e85c8c9638b096e392a8039b93cb6a56e74b1c3d48bbc957a1caa54d41c41"
+        }
+      ],
+      "traces": [],
+      "harness": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-physical-ledge-browser.mjs",
+        "bytes": 8344,
+        "sha256": "49c242df1406c30174dca7a2a41caa3cc91474a67b319f23e47c34ac2178a5e4"
+      },
+      "report": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-physical-ledge-result.json",
+        "bytes": 15940,
+        "sha256": "d48a189a7e2e6a8b86735a3b4c6c6e1526bd247492158f71dc3d1f807f232f75"
+      },
+      "engineUrl": "/src/game/engineSmash.js?t=1792790052807",
+      "rendererUrl": "/src/game/renderer.js?t=1792790052807"
+    }
+  ],
+  "resources": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 133689,
+      "sha256": "c45de7e475ea262fdb7b33852e9073696d3cdf10b6ddb8eb1939c61e3c8a49b4"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 115603,
+      "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 66075,
+      "sha256": "ea8134258b27da2c3bd01c5e01738a8084c9e720d79220e33e06eadcafdf9ee6"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 39318,
+      "sha256": "64b4c0e370f7a5de876c3adf8ec7da52d6fead345f6f4393163a8f7514f3b888"
+    },
+    {
+      "path": "src/game/melee/meleeCombatRuntime.js",
+      "bytes": 17966,
+      "sha256": "e230bb9379a25f370b950695e43ff49a08d644aeea0f6321818e9c20533b75cd"
+    },
+    {
+      "path": "src/game/melee/meleeStateMachine.js",
+      "bytes": 7161,
+      "sha256": "e6e26340a9b7b8bd5c045683629598ce0897bd020084b54e90f2fd258cffb647"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/isaacMeleeManifest.js",
+      "bytes": 509,
+      "sha256": "b2e6bed8884e0410dcfc46e1bbaf202cef464477995fbf723a4d408e96e7a0f1"
+    },
+    {
+      "path": "src/game/combat/isaacMeleeMotion.generated.json",
+      "bytes": 223090,
+      "sha256": "5c351cd0a5ef5bbad0f86e4ad6e4d2ce27023bf4e2af26d8af1a34222913add7"
+    },
+    {
+      "path": "src/game/combat/isaacMeleeCombat.generated.json",
+      "bytes": 233750,
+      "sha256": "d7eeca67e145e9ed31be6b268dce540847bede2f4ea88cad1e36fe5d1b5c65d9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/packing-plan.json",
+      "bytes": 22073,
+      "sha256": "7a40e43763e696ed2506a609618eb319a485f9d339875a8c10c57982544df148"
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/native-hand-points.json",
+      "bytes": 956,
+      "sha256": "654247a86c74dade6b22c6cf5524dd34e568b88a9be30ba07d7e4b3189f83acc"
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/hand-measurements.json",
+      "bytes": 13436,
+      "sha256": "2ef5c25f4548af8e7c7b7837325e05fc710fa156dc260d287e499e916bb5ccbe"
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/actual-tool-calls.json",
+      "bytes": 63891,
+      "sha256": "1abc5777220412a9ab370417c6c77dcafeac0f8faf01b88683e0b46b39f6163b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/build-native-isaac-atlases.mjs",
+      "bytes": 17330,
+      "sha256": "06e9bc2a57ee98bfc8b718b221969f464ee93ae928407059c83e3eeb2e789e0c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/normalize-isaac-atlases.mjs",
+      "bytes": 337,
+      "sha256": "ec351230a0a95631eafaf6d1a8bb9127d510f8149698ae93a45c29d273176383"
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/measure-isaac-native-hands.mjs",
+      "bytes": 3394,
+      "sha256": "83523c1650a64bc3f5b8b9a957a5608c56620b51677ff52ec9487baa4dc15c17"
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/verify-isaac-atlases.mjs",
+      "bytes": 6957,
+      "sha256": "4354cd85c139479b6b9e938478c8803009ebebdeae4cd1ddd26d340ee73c6d52"
+    },
+    {
+      "path": "public/sprites/generated/melee-isaac-wave12/isaac-motion-a.png",
+      "bytes": 1281863,
+      "sha256": "60027a1aae8b89f035d1db353902935dadc63d7c706c3fc40492c467988dbbb5"
+    },
+    {
+      "path": "public/sprites/generated/melee-isaac-wave12/isaac-motion-b.png",
+      "bytes": 1193900,
+      "sha256": "ea5d41af7f6abd2a6bced29a7330c6274f06629edd609abb6dd8dc3ba24f82c5"
+    },
+    {
+      "path": "public/sprites/generated/melee-isaac-wave12/isaac-defense.png",
+      "bytes": 1493782,
+      "sha256": "66a687b0338e79a72c12843af59a867ae889ef742846652bc52dbbd5ded29d7d"
+    },
+    {
+      "path": "public/sprites/generated/melee-isaac-wave12/isaac-combat-a.png",
+      "bytes": 1510320,
+      "sha256": "1a45b651f8fc0f1eac2a760f68d011fcc44f6ea472d9d02aae6e9816ded4afa5"
+    },
+    {
+      "path": "public/sprites/generated/melee-isaac-wave12/isaac-combat-b.png",
+      "bytes": 1320468,
+      "sha256": "b58672e372a0aad0ccdf5e5dc7580876602732d2a547ea66e937c3d28a557612"
+    },
+    {
+      "path": "public/sprites/generated/melee-isaac-wave12/isaac-ledge.png",
+      "bytes": 799306,
+      "sha256": "0f11785fed4791d5cfbaa9515d6b3583264bd21a565878fc76cb0e561821ec6b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave12-part-c/isaac.png",
+      "bytes": 794633,
+      "sha256": "b3e2944f0b29d5e7a47b4398f933e97eef9827d566631925af85027b75487ed9"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave12-part-c/isaac.png",
+      "bytes": 397996,
+      "sha256": "9bcc76ec2426582176c3c5af403740a2022387594ebd513f244099d9eb515887"
+    }
+  ]
+}

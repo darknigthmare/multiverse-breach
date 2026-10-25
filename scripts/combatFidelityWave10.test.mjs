@@ -16,10 +16,11 @@ import { getHeroMeleeAnimationFrame, getHeroSpriteSheetSrc, getSpriteSheetLayout
 import { STAGE_ANIMATION_PROFILES, getStageAnimationFrame, getStageAnimationProfile, renderStageAnimation } from '../src/game/melee/stageAnimationCatalog.js';
 import { getCharacterFormFrame } from '../src/game/combat/characterFormState.js';
 import { getSummonAnimationAssets, resolveSummonAnimationAsset } from '../src/game/combat/summonAnimationCatalog.js';
-import { COMBAT_ABILITY_OVERRIDES } from '../src/game/combat/abilities/catalog.js';
+import { HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14 } from './combatFidelityHistoricalCohortWave14.mjs';
 import { supportsNativeSuperWave10, projectNativeSuperAnchorWave10, getNativeSuperVisualStateWave10, drawNativeSuperVisualsWave10 } from '../src/game/combat/nativeSuperVisualsWave10.js';
 import { COMBAT_SOURCE_DEFINITIONS_WAVE10 } from '../src/game/combat/combatSourceDefinitionsWave10.js';
 import { getCharacterFormAssets } from '../src/game/combat/characterFormCatalog.js';
+import { assertHistoricalPresentationOrWave13Version } from './combatPresentationVersionsWave13.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = path => readFileSync(new URL(path, root));
@@ -48,7 +49,7 @@ const noop = () => {};
 let vite, drawPixelSprite, EngineFighter, EngineSmash;
 const engines = [];
 before(async () => {
-  vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
+  vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true, watch: null } });
   ({ drawPixelSprite } = await vite.ssrLoadModule('/src/game/renderer.js'));
   ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js'));
   ({ EngineSmash } = await vite.ssrLoadModule('/src/game/engineSmash.js'));
@@ -282,9 +283,9 @@ test('all39 new base layouts contain624 real cells and render every native cell 
   assert.equal(unique.size, 624); assert.equal(draws, 2432);
 });
 
-test('all124 prior character presentation recipes remain exactly immutable', () => {
+test('all124 prior presentation snapshots stay immutable and only three explicit W13 versions replace recipes', () => {
   assert.equal(Object.keys(runtimeBaseline.presentations).length, 124);
-  for (const [id, prior] of Object.entries(runtimeBaseline.presentations)) assert.deepEqual(CHARACTER_PRESENTATIONS[id], prior, id);
+  for (const [id, prior] of Object.entries(runtimeBaseline.presentations)) assertHistoricalPresentationOrWave13Version(id, prior, CHARACTER_PRESENTATIONS[id]);
   const historicalIds = [...Object.keys(runtimeBaseline.presentations), ...wave10Ids];
   assert.equal(new Set(historicalIds).size, 164);
   const rosterPresentations = Object.keys(CHARACTER_PRESENTATIONS).filter(id => historicalIds.includes(id) && roster.has(id));
@@ -511,9 +512,13 @@ test(`${id} ordinary actions follow runtime impact clocks while the full super u
 }
 
 test('all forty source versions, real equipment and support mechanics agree with their explicit source definitions', () => {
-  // Preserve the W10 cohort and its exact1475/4321 bounds; W11 adds16 independent identities.
+  // Preserve the W10 cohort and its exact1475/4321 bounds; W11 adds16 and W12 adds19 independently frozen identities.
   assert.equal(Object.keys(ABILITIES_WAVE11).length,16);
-  const kits = Object.entries(COMBAT_ABILITY_OVERRIDES).filter(([id]) => !Object.hasOwn(ABILITIES_WAVE11,id)).map(([,entry]) => entry), slots = ['simple','secondary','defense'];
+  const wave13NewIds = new Set(json('docs/combat-fidelity-wave13-2026-10-24/ability-baseline-before.json').newAbilityIds);
+  assert.equal(wave13NewIds.size, 18);
+  const wave12NewIds = new Set(json('docs/combat-fidelity-wave12-2026-10-23/authored-before.json').selectedNewIds);
+  assert.equal(wave12NewIds.size,19);
+  const kits = Object.entries(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14).filter(([id]) => !Object.hasOwn(ABILITIES_WAVE11,id) && !wave12NewIds.has(id) && !wave13NewIds.has(id)).map(([,entry]) => entry), slots = ['simple','secondary','defense'];
   assert.equal(kits.length,1475); assert.equal(kits.reduce((n,k)=>n+slots.filter(s=>k[s]).length,0),4321);
   assert.equal(kits.filter(k=>slots.every(s=>k[s])).length,1402); assert.equal(kits.filter(k=>!slots.every(s=>k[s])).length,73);
   assert.deepEqual(sorted(Object.keys(COMBAT_SOURCE_DEFINITIONS_WAVE10)), sorted(wave10Ids));

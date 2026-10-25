@@ -1,0 +1,67 @@
+
+> lively-darwin@0.0.0 audit:oc-dlc
+> node scripts/ocDlcAssetsAudit.mjs
+
+{
+  "packs": 3,
+  "expected": {
+    "stages": 12,
+    "sheets": 30,
+    "icons": 15
+  },
+  "validated": {
+    "stages": 12,
+    "sheets": 30,
+    "icons": 15
+  },
+  "stageRegistry": [
+    {
+      "packId": "oc-dlc-drowned-dawn",
+      "generated": true,
+      "routes": [
+        "/backgrounds/lore-stages/thalassa-mnemique/combat.webp",
+        "/backgrounds/lore-stages/thalassa-mnemique/melee.webp",
+        "/backgrounds/lore-stages/thalassa-mnemique/rpg.webp",
+        "/backgrounds/lore-stages/thalassa-mnemique/tactics.webp"
+      ]
+    },
+    {
+      "packId": "oc-dlc-borrowed-hours",
+      "generated": true,
+      "routes": [
+        "/backgrounds/lore-stages/meridien-creux/combat.webp",
+        "/backgrounds/lore-stages/meridien-creux/melee.webp",
+        "/backgrounds/lore-stages/meridien-creux/rpg.webp",
+        "/backgrounds/lore-stages/meridien-creux/tactics.webp"
+      ]
+    },
+    {
+      "packId": "oc-dlc-star-garden",
+      "generated": true,
+      "routes": [
+        "/backgrounds/lore-stages/viridienne-ultime/combat.webp",
+        "/backgrounds/lore-stages/viridienne-ultime/melee.webp",
+        "/backgrounds/lore-stages/viridienne-ultime/rpg.webp",
+        "/backgrounds/lore-stages/viridienne-ultime/tactics.webp"
+      ]
+    }
+  ],
+  "stageManifest": [
+    {
+      "packId": "oc-dlc-drowned-dawn",
+      "generated": true,
+      "entries": 4
+    },
+    {
+      "packId": "oc-dlc-borrowed-hours",
+      "generated": true,
+      "entries": 4
+    },
+    {
+      "packId": "oc-dlc-star-garden",
+      "generated": true,
+      "entries": 4
+    }
+  ],
+  "errors": []
+}

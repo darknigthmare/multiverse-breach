@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-23",
+  "reviewer": "wave12_b independent review of the integration modules",
+  "method": "Actual Vite SSR execution of EngineFighter.prototype.drawScriptedPresentationEffect at fatality progress 0.6; Canvas command recorder, four identities, source inspection of all Wave12 source definitions and kits.",
+  "engineFighterSha256": "485df64b0a9e543d278ac43ecf9eb3ba96711476ed1bf59ad3be427bd9c24cc4",
+  "findings": [
+    {
+      "id": "W12-REVIEW-001",
+      "severity": "medium",
+      "module": "src/game/engineFighter.js",
+      "problem": "Scripted final presentations constructed an incomplete strict native profile without effect or delivery, then fell through to the old generic body aura.",
+      "actualCases": ["anna_predator", "dutch", "greyback_yautja", "birdperson"],
+      "actualCanvasCommandForEachCase": ["ellipse", 400, 248, 69.77211629518312, 102.87846202409766, 0, 0, 6.283185307179586],
+      "expected": "Dedicated native drawings carry the finale gesture. A presentation without accepted simulation contact adds no weapon shot, hit or magical body aura."
+    },
+    {
+      "id": "W12-REVIEW-002",
+      "severity": "low",
+      "module": "src/game/combat/combatSourceDefinitionsWave12PartC.js",
+      "problem": "Annie Knowby declared weaponType staff even though the selected 1987 book-reading version, native drawings and support kit contain a book and no staff.",
+      "actual": { "heroId": "annie_knowby", "weaponType": "staff" },
+      "expected": { "heroId": "annie_knowby", "weaponType": "book" }
+    }
+  ],
+  "resolutionOwner": "Parent integration agent; independent reviewer does not edit global modules."
+}

@@ -1,0 +1,61 @@
+{
+  "phase": "preliminary",
+  "partial": true,
+  "pendingIds": [],
+  "pendingProjectileAnchorIds": [
+    "legolas_lotr",
+    "space_marine_sidonus",
+    "space_marine_leandros",
+    "horizon_zero_dawn_aloy",
+    "lara_croft_tr"
+  ],
+  "projectileFamilies": {
+    "gun": [
+      "space_marine_sidonus",
+      "space_marine_leandros",
+      "noble_six",
+      "buck_odst",
+      "kelly_087",
+      "linda_058",
+      "ashley_williams",
+      "anya_stroud",
+      "carmine_cog",
+      "kait_diaz",
+      "boone_fnv",
+      "courier_six"
+    ],
+    "bow": [
+      "legolas_lotr",
+      "horizon_zero_dawn_aloy",
+      "lara_croft_tr"
+    ],
+    "omnitool": [
+      "mordin"
+    ],
+    "multitool": [
+      "no_mans_sky_traveller"
+    ]
+  },
+  "deliveredNativeBodies": 40,
+  "startedAt": "2026-10-25T08:55:07.203Z",
+  "finishedAt": "2026-10-25T08:55:14.380Z",
+  "allBrowserWindowsClosed": true,
+  "browserClosedAt": "2026-10-25T08:55:14.380Z",
+  "fixtureProgress": {
+    "authoritativeFixtures": 240,
+    "tacticsFixtures": 80,
+    "physicalProjectileCases": 0
+  },
+  "error": "page.evaluate: Error: legolas_lotr measured native versus pending artwork distinction\n    at must (eval at evaluate (:311:30), <anonymous>:3:50)\n    at equal (eval at evaluate (:311:30), <anonymous>:3:92)\n    at eval (eval at evaluate (:311:30), <anonymous>:150:262)\n    at async <anonymous>:337:30",
+  "stack": "page.evaluate: Error: legolas_lotr measured native versus pending artwork distinction\n    at must (eval at evaluate (:311:30), <anonymous>:3:50)\n    at equal (eval at evaluate (:311:30), <anonymous>:3:92)\n    at eval (eval at evaluate (:311:30), <anonymous>:150:262)\n    at async <anonymous>:337:30\n    at /workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/browser/native-super-runtime.browser.mjs:105:27",
+  "errors": [],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ]
+}

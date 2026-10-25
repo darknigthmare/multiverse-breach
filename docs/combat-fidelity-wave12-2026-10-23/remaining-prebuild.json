@@ -1,0 +1,415 @@
+{
+  "additionalPreflightOnly": true,
+  "startedAt": "2026-10-23T21:57:45.376Z",
+  "steps": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:deployment-inputs"
+      ],
+      "startedAt": "2026-10-23T21:57:45.377Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-01.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:57:45.682Z",
+      "spawnError": null,
+      "logSha256": "1f7509a9c82dffcb6ed165c1f521639865f814da5e5d682d0685e90432599660",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:conversation"
+      ],
+      "startedAt": "2026-10-23T21:57:45.683Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-02.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:58:53.274Z",
+      "spawnError": null,
+      "logSha256": "4d492916a6cf45475dbcba6562a62c1de5fabc328f3632dfa818368859cce3b5",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:custom"
+      ],
+      "startedAt": "2026-10-23T21:58:53.275Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-03.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:59:02.966Z",
+      "spawnError": null,
+      "logSha256": "f9bc8ab8f569306cbf87fa1a8448b12ef598eb33eec1258fef1d5e54de9fa1ea",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:boosters"
+      ],
+      "startedAt": "2026-10-23T21:59:02.967Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-04.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:59:13.121Z",
+      "spawnError": null,
+      "logSha256": "e1daf751a2bc043ebaee2b132dc1ab06d8a8f758e0b7c2936d9df641dc379ff4",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "boosters:audit"
+      ],
+      "startedAt": "2026-10-23T21:59:13.123Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-05.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:59:36.002Z",
+      "spawnError": null,
+      "logSha256": "3e6fa10eab67f098a63e5b2f6a4e3da28eb2cb4136feae01612d593eb513033a",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:extension"
+      ],
+      "startedAt": "2026-10-23T21:59:36.002Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-06.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:59:40.769Z",
+      "spawnError": null,
+      "logSha256": "c2de1d5e06b6dedc6b6b2d1fc7019debdbeb98707542c8fad5befc0c222ebadb",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:polish"
+      ],
+      "startedAt": "2026-10-23T21:59:40.769Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-07.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:59:41.395Z",
+      "spawnError": null,
+      "logSha256": "ffc7d4586aff69221a3db499b07e595a1f9259950bb6e683d5d91a5ebeda2aa6",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:cg"
+      ],
+      "startedAt": "2026-10-23T21:59:41.396Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-08.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:59:42.628Z",
+      "spawnError": null,
+      "logSha256": "45dec7b5b25947362ae6a3ad81a7672e5c3ed7b03994982bac7aa615b701fe58",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "cg:manifest:check"
+      ],
+      "startedAt": "2026-10-23T21:59:42.628Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-09.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:59:43.410Z",
+      "spawnError": null,
+      "logSha256": "2dd2490539497cc9e9063f8194b30fde92d467142fe86ffa5bb5f45e3e5a275f",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:melee"
+      ],
+      "startedAt": "2026-10-23T21:59:43.410Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-10.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:59:51.868Z",
+      "spawnError": null,
+      "logSha256": "5d1505014af66eb4690ae7bd546c03537e4db76182f94b31b8c01f0b9a6b24af",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:stages"
+      ],
+      "startedAt": "2026-10-23T21:59:51.868Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-11.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T21:59:54.075Z",
+      "spawnError": null,
+      "logSha256": "5d08ea5821eca697d2f9dd81ad6473488ab72a0fc9a42d98e07cab3500fadf4f",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:noncombat-trials"
+      ],
+      "startedAt": "2026-10-23T21:59:54.075Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-12.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:03.082Z",
+      "spawnError": null,
+      "logSha256": "21f638abb938df3f86b95d2b9b813b34df3eb467c98c3d9cafb23bfd8cdb0888",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "melee:sprites:audit"
+      ],
+      "startedAt": "2026-10-23T22:00:03.083Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-13.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:03.711Z",
+      "spawnError": null,
+      "logSha256": "dd7b57f662ac7e1feac760024f5b9809cc9e542d157a732cd0721482aec15e5d",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "sprites:provenance:audit"
+      ],
+      "startedAt": "2026-10-23T22:00:03.711Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-14.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:24.965Z",
+      "spawnError": null,
+      "logSha256": "f6f632b968cba42b5d047208b41a8997a57ed50d014fffcb182031bd90cba980",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "portals:audit"
+      ],
+      "startedAt": "2026-10-23T22:00:24.966Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-15.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:25.324Z",
+      "spawnError": null,
+      "logSha256": "26f47449f3e0cd74b5c4974641b3436bff26f60e12e8baadce1c446d088e190e",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "portals:prompts",
+        "--",
+        "--check"
+      ],
+      "startedAt": "2026-10-23T22:00:25.324Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-16.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:25.582Z",
+      "spawnError": null,
+      "logSha256": "5579f10636b6616aa06ae8e3a7d9b9f905a77a11e93b4158f0a57a65c7448f2b",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "cosmetics:audit"
+      ],
+      "startedAt": "2026-10-23T22:00:25.582Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-17.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:26.361Z",
+      "spawnError": null,
+      "logSha256": "0367b254eb3348c12a70862b4a75d7464f29760e7a523c6c28b922d320bd5de3",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:cosmetics"
+      ],
+      "startedAt": "2026-10-23T22:00:26.362Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-18.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:26.859Z",
+      "spawnError": null,
+      "logSha256": "eb2e8cd66170dffecbc2d89d293288cf6a4a0928e431e8a61dcf9ace3208860f",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "rift:audit"
+      ],
+      "startedAt": "2026-10-23T22:00:26.860Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-19.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:33.158Z",
+      "spawnError": null,
+      "logSha256": "c2329e6e7f1c2a09d9c3031556456fc58c9efe6ca1b348a83f5bcefa25ced44d",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:rift"
+      ],
+      "startedAt": "2026-10-23T22:00:33.159Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-20.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:47.420Z",
+      "spawnError": null,
+      "logSha256": "cad77492a6807d8bfd5d9b1883f38124f3a049daaa900e02ff63b0217ebcd28e",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "music:audit"
+      ],
+      "startedAt": "2026-10-23T22:00:47.420Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-21.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:47.857Z",
+      "spawnError": null,
+      "logSha256": "64ee77d38a99926323c267cae192e517829e2d4854bfac72444c72b030f1986f",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:campaign"
+      ],
+      "startedAt": "2026-10-23T22:00:47.857Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-22.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:56.856Z",
+      "spawnError": null,
+      "logSha256": "afc181e03f2f767ab623d7f94fdf92e8c87ba863f07b4adfafa941faa601f75c",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:oc-dlc"
+      ],
+      "startedAt": "2026-10-23T22:00:56.857Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-23.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:00:57.086Z",
+      "spawnError": null,
+      "logSha256": "22d10153dd1488e697c8a9de392f89ebda2f20c9cb6162b6e3e03a85f618c4a9",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:original-universes"
+      ],
+      "startedAt": "2026-10-23T22:00:57.086Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-24.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:01:01.563Z",
+      "spawnError": null,
+      "logSha256": "ddd6f6ed75cf0d65d61f21dfb06ef1b721ab3ddf79bb8bbe1685cb7e255119f2",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "audit:oc-dlc"
+      ],
+      "startedAt": "2026-10-23T22:01:01.564Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-25.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:01:01.950Z",
+      "spawnError": null,
+      "logSha256": "75a23940ef75b1fb2d6ff5fc6a38438eb5860d6596a1ddd6b897e5d488724362",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "audit:original-universes"
+      ],
+      "startedAt": "2026-10-23T22:01:01.950Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-26.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:01:18.801Z",
+      "spawnError": null,
+      "logSha256": "8c5a7b9121aadbf20ecb74ccf6e8defeb3e954d3b779221dc15164ced4b7aa4d",
+      "receiptOrigin": "node-child-process-close-event"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "check:progression"
+      ],
+      "startedAt": "2026-10-23T22:01:18.802Z",
+      "log": "docs/combat-fidelity-wave12-2026-10-23/remaining-27.log",
+      "exitCode": 0,
+      "signal": null,
+      "finishedAt": "2026-10-23T22:01:19.644Z",
+      "spawnError": null,
+      "logSha256": "509a811de3fbe49f9c1044038a1a175940785090b4f94bd458ef8df9c2cfa3fd",
+      "receiptOrigin": "node-child-process-close-event"
+    }
+  ],
+  "finishedAt": "2026-10-23T22:01:19.644Z",
+  "passed": true
+}

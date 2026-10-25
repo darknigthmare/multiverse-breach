@@ -1,0 +1,77 @@
+
+> lively-darwin@0.0.0 test:extension
+> node --test scripts/cardCatalog.test.mjs scripts/cardCollectionEngine.test.mjs scripts/cardSaveMigration.test.mjs scripts/missionAccessRules.test.mjs scripts/missionStageProjection.test.mjs scripts/missionReplayPolicy.test.mjs scripts/arcReplayMigration.test.mjs scripts/portalVisualManifest.test.mjs scripts/portalVisualCatalog.test.mjs scripts/featuredVisualProvenance.test.mjs scripts/gameCanvasCosmeticPresentation.test.mjs
+
+✔ an empty or legacy save gains both replay arrays without mutation (2.312983ms)
+✔ raw character, trio, and fusion-style stageId arcs migrate from completedStages (1.209226ms)
+✔ a staged arc is completed only by its final stage, not an intermediate stage (0.247404ms)
+✔ explicit alternative final IDs unlock the same arc when either route is complete (0.170237ms)
+✔ marked boss/final stages are preferred to catalog position (0.219461ms)
+✔ projected Hub stages use their explicit runtime ID and nested arc identity (0.164308ms)
+✔ named collections and maps normalize in deterministic supplied order (0.526284ms)
+✔ existing IDs are preserved, de-duplicated, and completed arcs always unlock replay (0.223207ms)
+✔ migration is idempotent for empty, partial, and fully completed saves (0.362568ms)
+✔ migration never rewrites completed stages, rewards, inventory, or unrelated state (0.288145ms)
+✔ arcs with no explicit final ID are skipped rather than assigned an index ID (0.223297ms)
+✔ the compatibility migration export is the same pure implementation (0.1453ms)
+✔ portal candidates become separate card, art and unlockable catalogs (9.152933ms)
+✔ a true card identity collision is diagnosed without inventing a suffix (0.427035ms)
+✔ Neon Requiem custom archive and HUD rewards receive universe-aware card definitions (0.458633ms)
+✔ copies 2-4 increase mastery and copy 5+ auto-converts only to thread dust (6.285452ms)
+✔ keep mode retains up to nine copies and converts the tenth (0.204538ms)
+✔ set milestones 10/25/50/75/90/100 can each be claimed once (1.137868ms)
+✔ opening history is compact, external to collection, and capped at 100 (0.328947ms)
+✔ legacy portal rewards create cards retroactively without removing gameplay ownership (3.552425ms)
+✔ ambiguous duplicated legacy hero ids are diagnosed instead of guessed (0.338151ms)
+✔ featured OpenAI icon ledger matches exact prompts and installed sRGB PNGs (18.941064ms)
+✔ cosmetic atlas presentations stay scoped to GameCanvas RPG, Tactics and Smash (1.609641ms)
+✔ intro, KO and victory resolve only their production atlas payload (0.156607ms)
+✔ atlas frames advance once across the configured cosmetic duration (0.190388ms)
+✔ presentation duration and facing reuse the equipped cosmetic metadata (0.139ms)
+✔ derives the four required-team rule types without mutating source metadata (1.928222ms)
+✔ derives fusion/source rules and does not manufacture missing metadata (0.214454ms)
+✔ an explicit requiredTeam is authoritative and policy flags are normalized (0.135534ms)
+✔ base access remains authoritative for ownership, level, and clear checks (0.917596ms)
+✔ a required character in reserve is refused and reported precisely (0.581268ms)
+✔ a trio accepts any order but requires exactly its three signatures (0.400355ms)
+✔ oversized or malformed exact teams are blocked structurally (0.409108ms)
+✔ universe rules enforce minCount and reject every foreign signature (7.1981ms)
+✔ the Anchor is accepted only by an explicit universe rule and never counts as its signature (1.566365ms)
+✔ universe evaluation blocks rather than inventing a roster when none is known (0.381016ms)
+✔ source rules require one active hero per source and permit unrelated allies (0.480426ms)
+✔ source rules ignore under-level representatives and auto-compose eligible reserves (0.285521ms)
+✔ completedArcIds and arcReplayUnlockedIds grant free replay with any team (0.352623ms)
+✔ missions without a canonical rule remain available after base access (0.151699ms)
+✔ auto-compose is deterministic and preserves an explicitly allowed Anchor (0.290349ms)
+✔ auto-compose reports impossible ownership and Anchor-capacity conflicts (0.236758ms)
+✔ character auto-compose replaces a non-Anchor slot when the Anchor is allowed (0.146421ms)
+✔ an invalid prepared deployment cannot bypass the App guard (0.930936ms)
+✔ free replay goes straight to battle and returns straight to the Hub (0.829943ms)
+✔ special mission rewards are granted only on first clear (0.110077ms)
+✔ legacy completed arcs bypass newly projected phase progression (0.219681ms)
+✔ free replay victories never regain first-clear bonuses (0.169316ms)
+✔ optional trials never inflate campaign first-clear progression (0.098258ms)
+✔ source partitioning is balanced, deterministic, and never exceeds the squad (1.213813ms)
+✔ every real universe arc projects playable rules and retains its legacy final ID (4076.773912ms)
+✔ portal manifest exposes approved immutable exact universe records (1.090947ms)
+✔ unknown universe resolves to the immutable Nexus production fallback (0.19873ms)
+✔ portal phases select the four progressive atlas cells (0.298791ms)
+✔ portal catalog rejects mutation attempts (0.551884ms)
+✔ the P3 manifest exposes exactly four approved production pilots (2.21198ms)
+✔ catalog lookup and resolver distinguish approved assets from the Nexus production fallback (0.171909ms)
+✔ portal reveal phases map to the sealed four-frame contract (1.326113ms)
+✔ reference dossiers preserve the required rights and portal approvals (11.164915ms)
+✔ the checked-in portal prompt manifest is deterministic (8.785828ms)
+ℹ tests 60
+ℹ suites 0
+ℹ pass 60
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4535.120588
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

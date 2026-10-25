@@ -4,6 +4,7 @@ import FighterMode from './FighterMode';
 import sound from '../game/soundEngine';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
+import { TACTICS_BATTLEFIELDS } from '../game/tacticsBattlefields';
 import {
   buildCustomEnemyCatalog,
   buildCustomEnemyData,
@@ -19,7 +20,7 @@ import {
 
 const MODE_OPTIONS = [
   { id: 'RPG', fr: 'RPG - ATB', en: 'RPG - ATB', descFr: 'Escouade contre menaces, commandes ATB.', descEn: 'Squad versus threats with ATB commands.' },
-  { id: 'Tactics', fr: 'TACTIQUE', en: 'TACTICS', descFr: 'Combat au tour par tour sur grille.', descEn: 'Turn-based combat on a grid.' },
+  { id: 'Tactics', fr: 'TACTIQUE', en: 'TACTICS', descFr: 'Combat au tour par tour, terrains et étages.', descEn: 'Turn-based combat with terrain and levels.' },
   { id: 'Smash', fr: 'MELEE', en: 'MELEE', descFr: 'Arene plateforme en temps reel.', descEn: 'Real-time platform arena.' },
   { id: 'Fighter', fr: 'COMBAT', en: 'FIGHTER', descFr: 'Duel de signatures avec tag.', descEn: 'Tag-team signature duel.' }
 ];
@@ -550,6 +551,31 @@ export default function CustomBattleMode({
               ))}
             </select>
           </label>
+          {preset.mode === 'Tactics' && (
+            <label style={{ display: 'grid', gap: 6 }}>
+              <span id="custom-tactics-terrain-label" className="fighter-section-label">{lang === 'fr' ? 'TERRAIN TACTIQUE' : 'TACTICAL TERRAIN'}</span>
+              <select
+                aria-labelledby="custom-tactics-terrain-label"
+                aria-describedby="custom-tactics-terrain-help"
+                value={preset.tacticsBattlefieldId || 'auto'}
+                onChange={event => updatePreset({ tacticsBattlefieldId: event.target.value })}
+                style={selectStyle}
+              >
+                <option value="auto">{lang === 'fr' ? 'Automatique selon le stage' : 'Automatic for stage'}</option>
+                {Object.values(TACTICS_BATTLEFIELDS).map(field => (
+                  <option key={field.id} value={field.id}>
+                    {field.label?.[lang] || field.label?.fr || field.id}
+                    {field.formatVersion === 2 ? (lang === 'fr' ? ' · plusieurs hauteurs' : ' · multiple heights') : ''}
+                  </option>
+                ))}
+              </select>
+              <small id="custom-tactics-terrain-help" style={{ color: '#a7c8cf', lineHeight: 1.5 }}>
+                {lang === 'fr'
+                  ? 'Les terrains à plusieurs hauteurs permettent de passer sur et sous les ponts. Les escaliers et les rampes relient les niveaux.'
+                  : 'Multi-height terrains let units pass over and under bridges. Stairs and ramps connect their levels.'}
+              </small>
+            </label>
+          )}
           <label style={{ display: 'grid', gap: 6 }}>
             <span className="fighter-section-label">{lang === 'fr' ? 'DIFFICULTE CPU' : 'CPU DIFFICULTY'}</span>
             <select value={preset.difficulty} onChange={event => updatePreset({ difficulty: event.target.value })} disabled={preset.opponentControl === 'p2'} style={selectStyle}>

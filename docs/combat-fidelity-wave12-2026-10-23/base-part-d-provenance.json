@@ -1,0 +1,4844 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "wave": 12,
+  "part": "D",
+  "kind": "base",
+  "provider": "OpenAI",
+  "tool": "image_gen",
+  "source1to1Verified": false,
+  "sourceGameAsset": false,
+  "networkVerified": false,
+  "sourceRecords": "docs/combat-fidelity-wave12-2026-10-23/part-d-generation-records.json",
+  "refusals": "docs/combat-fidelity-wave12-2026-10-23/part-d-request-failures.json",
+  "method": "Genuinely generated native drawings, alpha-seam segmentation, uniform scale per source, transparent packing. No procedural anatomy, pose interpolation, mirrored replacement or duplicated retained drawing.",
+  "blockedHeroIds": [
+    "morty"
+  ],
+  "entries": [
+    {
+      "id": "fry_futurama",
+      "heroId": "fry_futurama",
+      "universe": "Futurama",
+      "name": "Philip J. Fry",
+      "sheet": "/sprites/generated/combat-character-corrections-wave12-part-d/fry_futurama.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "d4b2f48366e65b0567384e4b3efab92e7be6e54d16c76f323b482b0ae744219d",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+      "sourceImageSha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+          "sha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330"
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/futurama/fry-futurama.png",
+      "referenceAssetSha256": "3a9ff037c20d44b1cd4ba19f67381275e89bde34f7de97b7f1bd60fa61db664f",
+      "referenceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/fry_futurama-old.png",
+      "sourceWork": "Futurama, série Fox originale (1999–2003), Fry livreur de Planet Express",
+      "sourceReference": "Fry is an ordinary Planet Express delivery boy in the original Fox run. A parcel relay and safe-position signal are bounded coordination adaptations, not ammunition, a parcel explosion, a laser attack or an invented psychic power. His red jacket, white shirt, blue jeans and orange hair are fixed to this period.",
+      "characterVersion": "Philip J. Fry from original Fox Futurama (1999–2003). Ordinary human young adult delivery boy, orange swept-pointed hair, red open waist-length jacket over plain white T-shirt, blue jeans, black-and-white sneakers. His only prop is a small plain brown delivery parcel, never a gun.",
+      "abilityName": "Signal de livraison de Fry",
+      "abilityEffect": "guard",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-seams-shared-scale-per-native-source",
+        "sharedScalePerSource": true,
+        "sourceScales": [
+          {
+            "scale": 1.2229299363057324,
+            "bodyHeight": 157,
+            "normalizedBodyHeight": 192
+          }
+        ],
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "frames": [
+              {
+                "left": 79,
+                "top": 42,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 56,
+                  "top": 689,
+                  "width": 84,
+                  "height": 165,
+                  "pixels": 8424
+                },
+                "output": {
+                  "left": 79,
+                  "top": 42,
+                  "width": 103,
+                  "height": 202
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 75,
+                "top": 40,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 245,
+                  "top": 696,
+                  "width": 73,
+                  "height": 167,
+                  "pixels": 7992
+                },
+                "output": {
+                  "left": 75,
+                  "top": 40,
+                  "width": 89,
+                  "height": 204
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 77,
+                "top": 50,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 438,
+                  "top": 695,
+                  "width": 88,
+                  "height": 159,
+                  "pixels": 8437
+                },
+                "output": {
+                  "left": 77,
+                  "top": 50,
+                  "width": 108,
+                  "height": 194
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 77,
+                "top": 46,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 630,
+                  "top": 692,
+                  "width": 82,
+                  "height": 162,
+                  "pixels": 8375
+                },
+                "output": {
+                  "left": 77,
+                  "top": 46,
+                  "width": 100,
+                  "height": 198
+                },
+                "scale": 1.2229299363057324
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+            "sourceImageSha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+                "sha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330"
+              }
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "frames": [
+              {
+                "left": 57,
+                "top": 65,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 806,
+                  "top": 706,
+                  "width": 137,
+                  "height": 146,
+                  "pixels": 9165
+                },
+                "output": {
+                  "left": 57,
+                  "top": 65,
+                  "width": 168,
+                  "height": 179
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 36,
+                "top": 61,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 981,
+                  "top": 704,
+                  "width": 137,
+                  "height": 150,
+                  "pixels": 10263
+                },
+                "output": {
+                  "left": 36,
+                  "top": 61,
+                  "width": 168,
+                  "height": 183
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 19,
+                "top": 59,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1159,
+                  "top": 701,
+                  "width": 151,
+                  "height": 151,
+                  "pixels": 10550
+                },
+                "output": {
+                  "left": 19,
+                  "top": 59,
+                  "width": 185,
+                  "height": 185
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 19,
+                "top": 62,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1351,
+                  "top": 705,
+                  "width": 151,
+                  "height": 149,
+                  "pixels": 10360
+                },
+                "output": {
+                  "left": 19,
+                  "top": 62,
+                  "width": 185,
+                  "height": 182
+                },
+                "scale": 1.2229299363057324
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+            "sourceImageSha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+                "sha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330"
+              }
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "frames": [
+              {
+                "left": 78,
+                "top": 56,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 55,
+                  "top": 861,
+                  "width": 86,
+                  "height": 154,
+                  "pixels": 8351
+                },
+                "output": {
+                  "left": 78,
+                  "top": 56,
+                  "width": 105,
+                  "height": 188
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 53,
+                "top": 58,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 227,
+                  "top": 864,
+                  "width": 129,
+                  "height": 152,
+                  "pixels": 9191
+                },
+                "output": {
+                  "left": 53,
+                  "top": 58,
+                  "width": 158,
+                  "height": 186
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 57,
+                "top": 59,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 422,
+                  "top": 865,
+                  "width": 138,
+                  "height": 151,
+                  "pixels": 9219
+                },
+                "output": {
+                  "left": 57,
+                  "top": 59,
+                  "width": 169,
+                  "height": 185
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 52,
+                "top": 57,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 610,
+                  "top": 863,
+                  "width": 126,
+                  "height": 153,
+                  "pixels": 8560
+                },
+                "output": {
+                  "left": 52,
+                  "top": 57,
+                  "width": 154,
+                  "height": 187
+                },
+                "scale": 1.2229299363057324
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+            "sourceImageSha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+                "sha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330"
+              }
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "frames": [
+              {
+                "left": 68,
+                "top": 52,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 815,
+                  "top": 856,
+                  "width": 114,
+                  "height": 157,
+                  "pixels": 9098
+                },
+                "output": {
+                  "left": 68,
+                  "top": 52,
+                  "width": 139,
+                  "height": 192
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 53,
+                "top": 65,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 979,
+                  "top": 869,
+                  "width": 130,
+                  "height": 146,
+                  "pixels": 9470
+                },
+                "output": {
+                  "left": 53,
+                  "top": 65,
+                  "width": 159,
+                  "height": 179
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 59,
+                "top": 83,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1139,
+                  "top": 875,
+                  "width": 114,
+                  "height": 132,
+                  "pixels": 8531
+                },
+                "output": {
+                  "left": 59,
+                  "top": 83,
+                  "width": 139,
+                  "height": 161
+                },
+                "scale": 1.2229299363057324
+              },
+              {
+                "left": 74,
+                "top": 81,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1283,
+                  "top": 883,
+                  "width": 82,
+                  "height": 133,
+                  "pixels": 7635
+                },
+                "output": {
+                  "left": 74,
+                  "top": 81,
+                  "width": 100,
+                  "height": 163
+                },
+                "scale": 1.2229299363057324
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+            "sourceImageSha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/fry_futurama-native48.png",
+                "sha256": "89d643ad7dbea0ce998bc26c1f4d17480ed0e65b7eece6f0265e4df04014f330"
+              }
+            ]
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "30b62c8dad318b7f203abca3f96543cc3221850bfd42deede0ae269f6983ab9f",
+              "47e525ccb7f038df0a97ef4921cf747e3e4fedc9b54cfd68cc788413381f2974",
+              "974e583f05aff655b3f393fc1630059303eb97c6d886c3f380e158d1a96db693",
+              "1b21e8f4dea731f844d75a912b10ca33d7aef0661c52dd6ba7e33a95c979f698"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "48e6a29e6bb5dc7abb619678792886852045b42b39ea6b44d8d3022e012ccf9a",
+              "b7024ac475211e02c6198298aec847e93ed9b3b8eee9699f988c764c40955e17",
+              "8c7f39834eece41881534e5cf2eef42104b58d8eb2b86803b148bd2d0be62e2a",
+              "d935c1247f09d5d98d0c69e815b6c599bf792692b70802ae9202a1cb36769882"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f278359a24996977b000496929a89a435f65d465323528a157696bfce8d1250b",
+              "b1ee30175ed81d4626f2f8f35849e8de3b232aecc21f23ab2ddf357bbf623991",
+              "7cbc80b982ec3400d0cf2ca64676138280959b1650259ca68727be7bdb49a1ff",
+              "fea485e5f46454c694ce00f9bb2606affeb88fee5cdc89301edf5774e0f63249"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e6ec8a5b73051b392c3f32f0e7c32d4387d03b0ac3eca32bea0f3f5a81f61b7a",
+              "efc5a14fc7ce76a641ea2e721a1b8d82f9103ec5f98f1892325bc58270982d6a",
+              "96b3c6f80f87215219c256dacea41b437a3a292466722ed4fd3ff1c247ca5224",
+              "2efa032053263a50b21523ede74ac9a5fc05326034c47c21a7d3ca835e022fc1"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+      }
+    },
+    {
+      "id": "leela_futurama",
+      "heroId": "leela_futurama",
+      "universe": "Futurama",
+      "name": "Leela",
+      "sheet": "/sprites/generated/combat-character-corrections-wave12-part-d/leela_futurama.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "091408e5e7080647b640813dd9da0e6e613534215f1ec7609e374d471aa61e1f",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+      "sourceImageSha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+          "sha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985"
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/futurama/leela-futurama.png",
+      "referenceAssetSha256": "a2c69ac0b5efe5153fb3cf95ae827d0b6cb10c56472c576978492076d4163b2d",
+      "referenceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/leela_futurama-old.png",
+      "sourceWork": "Futurama, série Fox originale (1999–2003), Leela pilote et combattante",
+      "sourceReference": "Leela is a skilled physical martial artist and Planet Express pilot. This short punch-and-kick combination uses her limbs and athletic guard, not a gun, laser or eye beam. One accepted close contact resolves damage; generated drawings do not add extra hits. Her single central eye remains a single eye.",
+      "characterVersion": "Turanga Leela from original Fox Futurama (1999–2003). Athletic adult female cyclops, EXACTLY ONE large central eye (never two eyes), long purple hair in high ponytail, white sleeveless tank top, black trousers, gray heavy boots, small wrist device on left wrist. Unarmed physical martial artist; no firearm or laser.",
+      "abilityName": "Coup de poing de Leela",
+      "abilityEffect": "damage",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-seams-shared-scale-per-native-source",
+        "sharedScalePerSource": true,
+        "sourceScales": [
+          {
+            "scale": 1.170731707317073,
+            "bodyHeight": 164,
+            "normalizedBodyHeight": 192
+          }
+        ],
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "frames": [
+              {
+                "left": 72,
+                "top": 59,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 48,
+                  "top": 730,
+                  "width": 79,
+                  "height": 158,
+                  "pixels": 7386
+                },
+                "output": {
+                  "left": 72,
+                  "top": 59,
+                  "width": 92,
+                  "height": 185
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 78,
+                "top": 72,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 245,
+                  "top": 731,
+                  "width": 82,
+                  "height": 147,
+                  "pixels": 7655
+                },
+                "output": {
+                  "left": 78,
+                  "top": 72,
+                  "width": 96,
+                  "height": 172
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 80,
+                "top": 71,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 439,
+                  "top": 731,
+                  "width": 90,
+                  "height": 148,
+                  "pixels": 7659
+                },
+                "output": {
+                  "left": 80,
+                  "top": 71,
+                  "width": 105,
+                  "height": 173
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 69,
+                "top": 72,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 622,
+                  "top": 731,
+                  "width": 85,
+                  "height": 147,
+                  "pixels": 7532
+                },
+                "output": {
+                  "left": 69,
+                  "top": 72,
+                  "width": 100,
+                  "height": 172
+                },
+                "scale": 1.170731707317073
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+            "sourceImageSha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+                "sha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985"
+              }
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "frames": [
+              {
+                "left": 61,
+                "top": 73,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 807,
+                  "top": 730,
+                  "width": 117,
+                  "height": 146,
+                  "pixels": 8122
+                },
+                "output": {
+                  "left": 61,
+                  "top": 73,
+                  "width": 137,
+                  "height": 171
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 60,
+                "top": 73,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 998,
+                  "top": 732,
+                  "width": 111,
+                  "height": 146,
+                  "pixels": 7890
+                },
+                "output": {
+                  "left": 60,
+                  "top": 73,
+                  "width": 130,
+                  "height": 171
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 52,
+                "top": 81,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1183,
+                  "top": 737,
+                  "width": 116,
+                  "height": 139,
+                  "pixels": 8051
+                },
+                "output": {
+                  "left": 52,
+                  "top": 81,
+                  "width": 136,
+                  "height": 163
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 52,
+                "top": 80,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1375,
+                  "top": 736,
+                  "width": 119,
+                  "height": 140,
+                  "pixels": 7990
+                },
+                "output": {
+                  "left": 52,
+                  "top": 80,
+                  "width": 139,
+                  "height": 164
+                },
+                "scale": 1.170731707317073
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+            "sourceImageSha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+                "sha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985"
+              }
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "frames": [
+              {
+                "left": 76,
+                "top": 81,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 52,
+                  "top": 885,
+                  "width": 100,
+                  "height": 139,
+                  "pixels": 7700
+                },
+                "output": {
+                  "left": 76,
+                  "top": 81,
+                  "width": 117,
+                  "height": 163
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 76,
+                "top": 84,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 244,
+                  "top": 887,
+                  "width": 103,
+                  "height": 137,
+                  "pixels": 7742
+                },
+                "output": {
+                  "left": 76,
+                  "top": 84,
+                  "width": 121,
+                  "height": 160
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 67,
+                "top": 85,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 428,
+                  "top": 888,
+                  "width": 130,
+                  "height": 136,
+                  "pixels": 7495
+                },
+                "output": {
+                  "left": 67,
+                  "top": 85,
+                  "width": 152,
+                  "height": 159
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 72,
+                "top": 81,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 624,
+                  "top": 885,
+                  "width": 94,
+                  "height": 139,
+                  "pixels": 7325
+                },
+                "output": {
+                  "left": 72,
+                  "top": 81,
+                  "width": 110,
+                  "height": 163
+                },
+                "scale": 1.170731707317073
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+            "sourceImageSha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+                "sha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985"
+              }
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "frames": [
+              {
+                "left": 71,
+                "top": 80,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 815,
+                  "top": 884,
+                  "width": 124,
+                  "height": 140,
+                  "pixels": 7903
+                },
+                "output": {
+                  "left": 71,
+                  "top": 80,
+                  "width": 145,
+                  "height": 164
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 58,
+                "top": 79,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 996,
+                  "top": 883,
+                  "width": 141,
+                  "height": 141,
+                  "pixels": 8319
+                },
+                "output": {
+                  "left": 58,
+                  "top": 79,
+                  "width": 165,
+                  "height": 165
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 67,
+                "top": 72,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1196,
+                  "top": 877,
+                  "width": 105,
+                  "height": 147,
+                  "pixels": 7321
+                },
+                "output": {
+                  "left": 67,
+                  "top": 72,
+                  "width": 123,
+                  "height": 172
+                },
+                "scale": 1.170731707317073
+              },
+              {
+                "left": 67,
+                "top": 86,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1388,
+                  "top": 889,
+                  "width": 105,
+                  "height": 135,
+                  "pixels": 7409
+                },
+                "output": {
+                  "left": 67,
+                  "top": 86,
+                  "width": 123,
+                  "height": 158
+                },
+                "scale": 1.170731707317073
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+            "sourceImageSha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/leela_futurama-native48.png",
+                "sha256": "35528ced3e1fe91dbc07ab00974df3a719ef25f95577f482065bd3b2e5ab0985"
+              }
+            ]
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2594a2479f00880b1f3efdcfdd313b8e0a06e299fddf0e04dcf311bcc4e5cc79",
+              "2c4628c6c582699d2d0b28aad9d2d46757d9e013184837d5ff42ac05b4d2f9bd",
+              "f8da6c82074165145c14204818f257ff69f3f518d4755470f7ec7745b3186593",
+              "2920ef086880f7ff4dbbff03b0cd7de5e0fef81c857b53332fcd346e54e5b3dd"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e4f3d21c5b6694947f07e56c433788a4cfe71d9dea865fef5ab918a5a634d804",
+              "74a0121b92b471567db09d8ee3cc7a71c8b8fc74cd57a3dbfd5887be72bae679",
+              "80863bd52fdfde747a0053e1f0645b6e19f840724d080d1c8601ebb526ffa697",
+              "617e65eef8b0eeeef354aa32554734f52593ced91f7e8a5835393e64b37175e1"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "bc6e7e7959801bc6c12b1a4ccf4538af390d23c7b73ecc91e02c4cd2c4512d86",
+              "31944cb18dd6b187441227aac4625376e406e7cb4fd68b3bab9782cf187113f0",
+              "6581cd0be1e9383da9e4efef5716baecbd7469c44cc9c89367fcc6983eabad15",
+              "31a8a07fb97d6561d0123a875ccaa450fa4d208168ccce6e4b23791d2d4481f2"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e55b2a0cd2a287dd90f3e27cb924c94f28d946966ef135e66f58006078d9c4f5",
+              "0526a6c8ceba5afa5770a6c813c6afeea38e5f31bf2b6001b3f30bf3ddb4661e",
+              "b574fcedcd7a0bab54cc1691700f48286d6e3443bafdb98cacc357781eb31dc1",
+              "480791d09dac49ba355971c10a830e2a1c34354b09c14813ca55cf39915af79c"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+      }
+    },
+    {
+      "id": "bender_futurama",
+      "heroId": "bender_futurama",
+      "universe": "Futurama",
+      "name": "Bender",
+      "sheet": "/sprites/generated/combat-character-corrections-wave12-part-d/bender_futurama.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "b853e74dc94ce31b9348a9622232a8e833205e75275ca65d48d398f5ff22ce9e",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+      "sourceImageSha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+          "sha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e"
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/futurama/bender-futurama.png",
+      "referenceAssetSha256": "ba06fdeeafabae416dbe065ac79512066b2b3ead7d6a621c36c570eb72426b08",
+      "referenceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/bender_futurama-old.png",
+      "sourceWork": "Futurama, série Fox originale (1999–2003), Bender Bending Rodríguez",
+      "sourceReference": "Bender is the gray bending robot from the original Fox run. Articulated arms, hands and a short physical charge stay mechanical. His chest compartment does not spawn weapons, his eyes do not fire beams and this authored contact sequence does not invent a plasma cannon.",
+      "characterVersion": "Bender Bending Rodriguez from original Fox Futurama (1999–2003). Original canonical silvery-gray cylindrical bending robot, square black eye visor containing TWO pale yellow round eyes, long mouth grill, single thin head antenna with ball tip, barrel torso and rectangular chest door, segmented flexible tube arms and legs, mechanical hands and broad robot feet. No clothes, gun, laser or human anatomy.",
+      "abilityName": "Percussion de la main de Bender",
+      "abilityEffect": "damage",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-seams-shared-scale-per-native-source",
+        "sharedScalePerSource": true,
+        "sourceScales": [
+          {
+            "scale": 1.0909090909090908,
+            "bodyHeight": 176,
+            "normalizedBodyHeight": 192
+          }
+        ],
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "frames": [
+              {
+                "left": 77,
+                "top": 67,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 49,
+                  "top": 724,
+                  "width": 78,
+                  "height": 162,
+                  "pixels": 7684
+                },
+                "output": {
+                  "left": 77,
+                  "top": 67,
+                  "width": 85,
+                  "height": 177
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 67,
+                "top": 67,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 232,
+                  "top": 723,
+                  "width": 87,
+                  "height": 162,
+                  "pixels": 8220
+                },
+                "output": {
+                  "left": 67,
+                  "top": 67,
+                  "width": 95,
+                  "height": 177
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 81,
+                "top": 64,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 437,
+                  "top": 724,
+                  "width": 73,
+                  "height": 165,
+                  "pixels": 6849
+                },
+                "output": {
+                  "left": 81,
+                  "top": 64,
+                  "width": 80,
+                  "height": 180
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 75,
+                "top": 63,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 623,
+                  "top": 719,
+                  "width": 83,
+                  "height": 166,
+                  "pixels": 8050
+                },
+                "output": {
+                  "left": 75,
+                  "top": 63,
+                  "width": 91,
+                  "height": 181
+                },
+                "scale": 1.0909090909090908
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+            "sourceImageSha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+                "sha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e"
+              }
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "frames": [
+              {
+                "left": 65,
+                "top": 71,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 806,
+                  "top": 724,
+                  "width": 123,
+                  "height": 159,
+                  "pixels": 8248
+                },
+                "output": {
+                  "left": 65,
+                  "top": 71,
+                  "width": 134,
+                  "height": 173
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 48,
+                "top": 74,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 983,
+                  "top": 726,
+                  "width": 122,
+                  "height": 156,
+                  "pixels": 7773
+                },
+                "output": {
+                  "left": 48,
+                  "top": 74,
+                  "width": 133,
+                  "height": 170
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 48,
+                "top": 66,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1175,
+                  "top": 721,
+                  "width": 138,
+                  "height": 163,
+                  "pixels": 8264
+                },
+                "output": {
+                  "left": 48,
+                  "top": 66,
+                  "width": 151,
+                  "height": 178
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 67,
+                "top": 69,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1384,
+                  "top": 722,
+                  "width": 125,
+                  "height": 160,
+                  "pixels": 8016
+                },
+                "output": {
+                  "left": 67,
+                  "top": 69,
+                  "width": 136,
+                  "height": 175
+                },
+                "scale": 1.0909090909090908
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+            "sourceImageSha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+                "sha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e"
+              }
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "frames": [
+              {
+                "left": 81,
+                "top": 90,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 53,
+                  "top": 883,
+                  "width": 88,
+                  "height": 141,
+                  "pixels": 6407
+                },
+                "output": {
+                  "left": 81,
+                  "top": 90,
+                  "width": 96,
+                  "height": 154
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 54,
+                "top": 98,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 220,
+                  "top": 890,
+                  "width": 114,
+                  "height": 134,
+                  "pixels": 7518
+                },
+                "output": {
+                  "left": 54,
+                  "top": 98,
+                  "width": 124,
+                  "height": 146
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 51,
+                "top": 96,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 409,
+                  "top": 888,
+                  "width": 154,
+                  "height": 136,
+                  "pixels": 6816
+                },
+                "output": {
+                  "left": 51,
+                  "top": 96,
+                  "width": 168,
+                  "height": 148
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 79,
+                "top": 96,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 627,
+                  "top": 888,
+                  "width": 87,
+                  "height": 136,
+                  "pixels": 6045
+                },
+                "output": {
+                  "left": 79,
+                  "top": 96,
+                  "width": 95,
+                  "height": 148
+                },
+                "scale": 1.0909090909090908
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+            "sourceImageSha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+                "sha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e"
+              }
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "frames": [
+              {
+                "left": 78,
+                "top": 97,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 818,
+                  "top": 889,
+                  "width": 102,
+                  "height": 135,
+                  "pixels": 7404
+                },
+                "output": {
+                  "left": 78,
+                  "top": 97,
+                  "width": 111,
+                  "height": 147
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 66,
+                "top": 102,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 999,
+                  "top": 894,
+                  "width": 123,
+                  "height": 130,
+                  "pixels": 7629
+                },
+                "output": {
+                  "left": 66,
+                  "top": 102,
+                  "width": 134,
+                  "height": 142
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 60,
+                "top": 96,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1186,
+                  "top": 888,
+                  "width": 130,
+                  "height": 136,
+                  "pixels": 7684
+                },
+                "output": {
+                  "left": 60,
+                  "top": 96,
+                  "width": 142,
+                  "height": 148
+                },
+                "scale": 1.0909090909090908
+              },
+              {
+                "left": 72,
+                "top": 101,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1389,
+                  "top": 893,
+                  "width": 114,
+                  "height": 131,
+                  "pixels": 6886
+                },
+                "output": {
+                  "left": 72,
+                  "top": 101,
+                  "width": 124,
+                  "height": 143
+                },
+                "scale": 1.0909090909090908
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+            "sourceImageSha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/bender_futurama-native48.png",
+                "sha256": "ac8aa7a0112ff7d60d52b21b2a3a0e9d2c7d46146ea1e578065902a010158a2e"
+              }
+            ]
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "08987d14caa19d09dbadcb871fef3d4a4cf0b8cca14cb78a406cff501560c7f5",
+              "6e0d06ee56fb301d5c18637f54010ece82b84ed21ff0ec5084e6c761d4430f56",
+              "fc1c300eb7d15fe4cefe55c31977ef373e54e0ba3695e8f3f8173f47d96f9944",
+              "6831bef447995abb20b7c909ebced54ad7161f7cf50810b6d666f0bc1f840704"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "99735ce06c8088f2734e09106a0e900203f04fee912bf0c022472091800e343a",
+              "76698bba1d3ce53a81e0c2fe467d3c1062dc2f9b06509f1a8c656db6990ffd8a",
+              "ee7a6e2095e91b0bc634470dbfed4be0d3c0a601cc03df8f51d7282887303aa3",
+              "ca45780303be9b19c958dd50c49f07842762f3e2f0295ea88cf1a184fe50abff"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "cb222d2fdfb9f5e2691e66c46b71cd0d5bf193f2b842f4abe2faf2a710a3c17d",
+              "3cf06b16277bda75fa9170883b8629fcb6cef879aa43596dfd703745427e05db",
+              "61b57bc0917ff636ec3892ddab993d9eaf4bd159298e3d6046b73c42ba7f400e",
+              "f1c8bc8a7d9fd5b38fa4ba46124aac540a0969ee5d8331d61740c6abd38809f8"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "79e803f170d705361e419b2362cf7811da1cd2e6ff5f35ea52bb332c30b6cae5",
+              "8adf9717116223cea6bd3c82b3c2cf6950f335461e09bcc382afa152be5a4ddd",
+              "37ded0da811633e68f7252e081c20f83a9e131253d0f205ac5b4e8c4f23f7e57",
+              "b91d324c4bb49a11ae091c8b39f10555ab2e162e59bb13d80ec9e97646949236"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+      }
+    },
+    {
+      "id": "amy_futurama",
+      "heroId": "amy_futurama",
+      "universe": "Futurama",
+      "name": "Amy Wong",
+      "sheet": "/sprites/generated/combat-character-corrections-wave12-part-d/amy_futurama.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "4163ae3d14f45f7fe2969e65abce009c4b2df13fb20b05dc8681fa81078b5fb4",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48.png",
+      "sourceImageSha256": "97e11f4ec22388ec147fc5394b12603d5aeddcdb233d651e564c339607703e95",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48.png",
+          "sha256": "97e11f4ec22388ec147fc5394b12603d5aeddcdb233d651e564c339607703e95"
+        },
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-correction.png",
+          "sha256": "dd8589f658a113b9a68afd734b447297c129b504d9e7ec88e69052693f9547dc"
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/futurama/amy-futurama.png",
+      "referenceAssetSha256": "2b7c07d995f145c30f31f336042514628160e6a29a93aa8d9c318a75934637f3",
+      "referenceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/amy_futurama-old.png",
+      "sourceWork": "Futurama, série Fox originale (1999–2003), Amy stagiaire ingénieure de Planet Express",
+      "sourceReference": "Amy is a Planet Express engineering intern in the original Fox period. Examining an ordinary handheld diagnostic pad and communicating a finding give bounded coordination buffs. She has no damaging scanner, gun, healing ray or magical repair power. The pink tracksuit and black bob haircut remain her normal outfit.",
+      "characterVersion": "Amy Wong from original Fox Futurama (1999–2003). Adult East Asian human woman with short neat black bob haircut and bangs, pink cropped tracksuit jacket over simple white shirt, matching pink jogging trousers, white sneakers. Ordinary Planet Express engineering intern. She carries a small compact gray diagnostic pad. No gun, laser, magical repair effect or healing symbol.",
+      "abilityName": "Contrôle de l’outil d’Amy",
+      "abilityEffect": "buff",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-seams-shared-scale-per-native-source",
+        "sharedScalePerSource": true,
+        "sourceScales": [
+          {
+            "scale": 1.1228070175438596,
+            "bodyHeight": 171,
+            "normalizedBodyHeight": 192
+          },
+          {
+            "scale": 0.3033175355450237,
+            "bodyHeight": 633,
+            "normalizedBodyHeight": 192.00000000000003
+          }
+        ],
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "frames": [
+              {
+                "left": 94,
+                "top": 59,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 66,
+                  "top": 730,
+                  "width": 90,
+                  "height": 165,
+                  "pixels": 9376
+                },
+                "output": {
+                  "left": 94,
+                  "top": 59,
+                  "width": 101,
+                  "height": 185
+                },
+                "scale": 1.1228070175438596
+              },
+              {
+                "left": 91,
+                "top": 65,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 255,
+                  "top": 739,
+                  "width": 85,
+                  "height": 159,
+                  "pixels": 9265
+                },
+                "output": {
+                  "left": 91,
+                  "top": 65,
+                  "width": 95,
+                  "height": 179
+                },
+                "scale": 1.1228070175438596
+              },
+              {
+                "left": 93,
+                "top": 65,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 449,
+                  "top": 740,
+                  "width": 88,
+                  "height": 159,
+                  "pixels": 9495
+                },
+                "output": {
+                  "left": 93,
+                  "top": 65,
+                  "width": 99,
+                  "height": 179
+                },
+                "scale": 1.1228070175438596
+              },
+              {
+                "left": 84,
+                "top": 65,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 633,
+                  "top": 740,
+                  "width": 88,
+                  "height": 159,
+                  "pixels": 8849
+                },
+                "output": {
+                  "left": 84,
+                  "top": 65,
+                  "width": 99,
+                  "height": 179
+                },
+                "scale": 1.1228070175438596
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48.png",
+            "sourceImageSha256": "97e11f4ec22388ec147fc5394b12603d5aeddcdb233d651e564c339607703e95",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48.png",
+                "sha256": "97e11f4ec22388ec147fc5394b12603d5aeddcdb233d651e564c339607703e95"
+              }
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "frames": [
+              {
+                "left": 55,
+                "top": 73,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 799,
+                  "top": 743,
+                  "width": 129,
+                  "height": 152,
+                  "pixels": 10638
+                },
+                "output": {
+                  "left": 55,
+                  "top": 73,
+                  "width": 145,
+                  "height": 171
+                },
+                "scale": 1.1228070175438596
+              },
+              {
+                "left": 56,
+                "top": 71,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 992,
+                  "top": 743,
+                  "width": 124,
+                  "height": 154,
+                  "pixels": 10361
+                },
+                "output": {
+                  "left": 56,
+                  "top": 71,
+                  "width": 139,
+                  "height": 173
+                },
+                "scale": 1.1228070175438596
+              },
+              {
+                "left": 46,
+                "top": 69,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1175,
+                  "top": 742,
+                  "width": 144,
+                  "height": 156,
+                  "pixels": 11202
+                },
+                "output": {
+                  "left": 46,
+                  "top": 69,
+                  "width": 162,
+                  "height": 175
+                },
+                "scale": 1.1228070175438596
+              },
+              {
+                "left": 58,
+                "top": 77,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1378,
+                  "top": 743,
+                  "width": 124,
+                  "height": 149,
+                  "pixels": 9912
+                },
+                "output": {
+                  "left": 58,
+                  "top": 77,
+                  "width": 139,
+                  "height": 167
+                },
+                "scale": 1.1228070175438596
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48.png",
+            "sourceImageSha256": "97e11f4ec22388ec147fc5394b12603d5aeddcdb233d651e564c339607703e95",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48.png",
+                "sha256": "97e11f4ec22388ec147fc5394b12603d5aeddcdb233d651e564c339607703e95"
+              }
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "frames": [
+              {
+                "left": 91,
+                "top": 52,
+                "source": 1,
+                "sourceRow": 0,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 148,
+                  "top": 50,
+                  "width": 301,
+                  "height": 633,
+                  "pixels": 126807
+                },
+                "output": {
+                  "left": 91,
+                  "top": 52,
+                  "width": 91,
+                  "height": 192
+                },
+                "scale": 0.3033175355450237
+              },
+              {
+                "left": 82,
+                "top": 51,
+                "source": 1,
+                "sourceRow": 0,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 663,
+                  "top": 48,
+                  "width": 307,
+                  "height": 635,
+                  "pixels": 122168
+                },
+                "output": {
+                  "left": 82,
+                  "top": 51,
+                  "width": 93,
+                  "height": 193
+                },
+                "scale": 0.3033175355450237
+              },
+              {
+                "left": 78,
+                "top": 52,
+                "source": 1,
+                "sourceRow": 0,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 1192,
+                  "top": 49,
+                  "width": 433,
+                  "height": 634,
+                  "pixels": 136619
+                },
+                "output": {
+                  "left": 78,
+                  "top": 52,
+                  "width": 131,
+                  "height": 192
+                },
+                "scale": 0.3033175355450237
+              },
+              {
+                "left": 83,
+                "top": 50,
+                "source": 1,
+                "sourceRow": 0,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 1753,
+                  "top": 45,
+                  "width": 296,
+                  "height": 638,
+                  "pixels": 119040
+                },
+                "output": {
+                  "left": 83,
+                  "top": 50,
+                  "width": 90,
+                  "height": 194
+                },
+                "scale": 0.3033175355450237
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-correction.png",
+            "sourceImageSha256": "dd8589f658a113b9a68afd734b447297c129b504d9e7ec88e69052693f9547dc",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-correction.png",
+                "sha256": "dd8589f658a113b9a68afd734b447297c129b504d9e7ec88e69052693f9547dc"
+              }
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "frames": [
+              {
+                "left": 47,
+                "top": 94,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 792,
+                  "top": 890,
+                  "width": 133,
+                  "height": 134,
+                  "pixels": 8400
+                },
+                "output": {
+                  "left": 47,
+                  "top": 94,
+                  "width": 149,
+                  "height": 150
+                },
+                "scale": 1.1228070175438596
+              },
+              {
+                "left": 57,
+                "top": 97,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 993,
+                  "top": 893,
+                  "width": 140,
+                  "height": 131,
+                  "pixels": 8742
+                },
+                "output": {
+                  "left": 57,
+                  "top": 97,
+                  "width": 157,
+                  "height": 147
+                },
+                "scale": 1.1228070175438596
+              },
+              {
+                "left": 80,
+                "top": 99,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1205,
+                  "top": 895,
+                  "width": 101,
+                  "height": 129,
+                  "pixels": 7680
+                },
+                "output": {
+                  "left": 80,
+                  "top": 99,
+                  "width": 113,
+                  "height": 145
+                },
+                "scale": 1.1228070175438596
+              },
+              {
+                "left": 89,
+                "top": 96,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1405,
+                  "top": 892,
+                  "width": 81,
+                  "height": 132,
+                  "pixels": 7569
+                },
+                "output": {
+                  "left": 89,
+                  "top": 96,
+                  "width": 91,
+                  "height": 148
+                },
+                "scale": 1.1228070175438596
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48.png",
+            "sourceImageSha256": "97e11f4ec22388ec147fc5394b12603d5aeddcdb233d651e564c339607703e95",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/amy_futurama-replacement48.png",
+                "sha256": "97e11f4ec22388ec147fc5394b12603d5aeddcdb233d651e564c339607703e95"
+              }
+            ]
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ff410e614392bbfb116c50eaba1cb228f0e8cc9f5ac36f0740c211f4d6e0a95d",
+              "bafb5950e4f3cfecd73945eeb83151adc7ed463a29d885353b6a3000e6275757",
+              "2a7148506ad9725a311f5830fe3e91acb1aaa386be7a92413711beeba568d092",
+              "49cea23d2d05348747e03aac06c7c90ae7e1d41d1093e790e577c3ac1fbf030e"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "99e561914981ce32ad3fae460b5f92596986ce1f4625ad5b4ea7ac576f736b73",
+              "c6151ca81e7a9260f83cb130c5aadc143d5810f6074dcd9353fefc7695f6be01",
+              "22dd047e383a5798f5ff1f815f78bda0c7c9483b559436e7aff247bc4561c8c7",
+              "528c16cc96e1141c8b9f74cf0fbfd24a71a0719ae0f65a8790cf7dbf6cf1c30f"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1845811475141180e31adc9549105b2eea0e716c94846a0924031252ece03ddf",
+              "2adc97e428f56746ca9dae87fd7c195536dc8e33d57bcd3d39254760f1f77e6f",
+              "0ab050ef7a5ab65737e3bf577b36635e4ada0509c8d3c35ff6bf4e8e4dcd1ea8",
+              "bf50627b0f2a8226c692cbf835d131fe4dd37741cbd989fcd07dfb9fd7231b87"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "50062c7d974f9080dd2564c63fde4862e08b18eccffe5a91eadd5a0c2ce8a4f0",
+              "fb677a37c98633e25a459eb1aa74fc94107b9779cf63469f03a51fcb7202ad4c",
+              "b3cce8fa6f3dabf73eff4cc2781b1f946bc3c66771c3016ad77e8f90f82e5de1",
+              "8857799f1f82163436287a18f24225586354004da4490e5498fc9f4764fe9ba8"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal. Four base action cells replaced by complete native corrective drawings, including both legs and shoes. Entire initial48 is archived but inactive. Replacement48 plus four full-body diagnostic correction cells preserve regular body stature."
+      }
+    },
+    {
+      "id": "hermes_futurama",
+      "heroId": "hermes_futurama",
+      "universe": "Futurama",
+      "name": "Hermes Conrad",
+      "sheet": "/sprites/generated/combat-character-corrections-wave12-part-d/hermes_futurama.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "5c63ba84e491c1605e5b311678245b25f99ea0e930773975724e3bd5e293f48b",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+      "sourceImageSha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+          "sha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e"
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/futurama/hermes-futurama.png",
+      "referenceAssetSha256": "5ddae1ea5de6c09479816f7a1c7f709a512fd4c195242cdec3235dca620ee43b",
+      "referenceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/hermes_futurama-old.png",
+      "sourceWork": "Futurama, série Fox originale (1999–2003), Hermes bureaucrate de Planet Express",
+      "sourceReference": "Hermes is the human bureaucrat of Planet Express. He sorts actual papers, checks a clipboard and gives work instructions. These zero-damage coordination effects do not turn paperwork, limbo or spoken orders into lasers, physical projectiles, instant healing or supernatural barriers.",
+      "characterVersion": "Hermes Conrad from original Fox Futurama (1999–2003). Stocky adult Jamaican human bureaucrat with medium-dark brown skin, short black dreadlocks, small glasses, green office jacket and green trousers, white collared shirt and orange tie, brown shoes. He holds plain clipboard and paper sheets, not a weapon. No laser or magical effect.",
+      "abilityName": "Organisation de la tournée d’Hermes",
+      "abilityEffect": "buff",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-seams-shared-scale-per-native-source",
+        "sharedScalePerSource": true,
+        "sourceScales": [
+          {
+            "scale": 1.1386138613861385,
+            "bodyHeight": 153,
+            "normalizedBodyHeight": 174.2079207920792
+          }
+        ],
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "frames": [
+              {
+                "left": 86,
+                "top": 63,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 59,
+                  "top": 689,
+                  "width": 106,
+                  "height": 159,
+                  "pixels": 11081
+                },
+                "output": {
+                  "left": 86,
+                  "top": 63,
+                  "width": 121,
+                  "height": 181
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 74,
+                "top": 68,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 241,
+                  "top": 693,
+                  "width": 109,
+                  "height": 155,
+                  "pixels": 11179
+                },
+                "output": {
+                  "left": 74,
+                  "top": 68,
+                  "width": 124,
+                  "height": 176
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 74,
+                "top": 68,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 433,
+                  "top": 693,
+                  "width": 107,
+                  "height": 155,
+                  "pixels": 10852
+                },
+                "output": {
+                  "left": 74,
+                  "top": 68,
+                  "width": 122,
+                  "height": 176
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 68,
+                "top": 64,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 619,
+                  "top": 690,
+                  "width": 105,
+                  "height": 158,
+                  "pixels": 10814
+                },
+                "output": {
+                  "left": 68,
+                  "top": 64,
+                  "width": 120,
+                  "height": 180
+                },
+                "scale": 1.1386138613861385
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+            "sourceImageSha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+                "sha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e"
+              }
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "frames": [
+              {
+                "left": 39,
+                "top": 81,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 786,
+                  "top": 702,
+                  "width": 139,
+                  "height": 143,
+                  "pixels": 10604
+                },
+                "output": {
+                  "left": 39,
+                  "top": 81,
+                  "width": 158,
+                  "height": 163
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 33,
+                "top": 81,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 973,
+                  "top": 705,
+                  "width": 142,
+                  "height": 143,
+                  "pixels": 10975
+                },
+                "output": {
+                  "left": 33,
+                  "top": 81,
+                  "width": 162,
+                  "height": 163
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 37,
+                "top": 82,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1168,
+                  "top": 704,
+                  "width": 142,
+                  "height": 142,
+                  "pixels": 10315
+                },
+                "output": {
+                  "left": 37,
+                  "top": 82,
+                  "width": 162,
+                  "height": 162
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 38,
+                "top": 79,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1361,
+                  "top": 700,
+                  "width": 134,
+                  "height": 145,
+                  "pixels": 9965
+                },
+                "output": {
+                  "left": 38,
+                  "top": 79,
+                  "width": 153,
+                  "height": 165
+                },
+                "scale": 1.1386138613861385
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+            "sourceImageSha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+                "sha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e"
+              }
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "frames": [
+              {
+                "left": 94,
+                "top": 73,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 66,
+                  "top": 864,
+                  "width": 114,
+                  "height": 150,
+                  "pixels": 11143
+                },
+                "output": {
+                  "left": 94,
+                  "top": 73,
+                  "width": 130,
+                  "height": 171
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 82,
+                "top": 74,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 248,
+                  "top": 861,
+                  "width": 119,
+                  "height": 149,
+                  "pixels": 11294
+                },
+                "output": {
+                  "left": 82,
+                  "top": 74,
+                  "width": 135,
+                  "height": 170
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 65,
+                "top": 71,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 425,
+                  "top": 863,
+                  "width": 156,
+                  "height": 152,
+                  "pixels": 11539
+                },
+                "output": {
+                  "left": 65,
+                  "top": 71,
+                  "width": 178,
+                  "height": 173
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 64,
+                "top": 72,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 616,
+                  "top": 864,
+                  "width": 99,
+                  "height": 151,
+                  "pixels": 9996
+                },
+                "output": {
+                  "left": 64,
+                  "top": 72,
+                  "width": 113,
+                  "height": 172
+                },
+                "scale": 1.1386138613861385
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+            "sourceImageSha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+                "sha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e"
+              }
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "frames": [
+              {
+                "left": 48,
+                "top": 69,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 794,
+                  "top": 861,
+                  "width": 143,
+                  "height": 154,
+                  "pixels": 11484
+                },
+                "output": {
+                  "left": 48,
+                  "top": 69,
+                  "width": 163,
+                  "height": 175
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 51,
+                "top": 78,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 988,
+                  "top": 866,
+                  "width": 150,
+                  "height": 146,
+                  "pixels": 11459
+                },
+                "output": {
+                  "left": 51,
+                  "top": 78,
+                  "width": 171,
+                  "height": 166
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 40,
+                "top": 75,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1171,
+                  "top": 866,
+                  "width": 135,
+                  "height": 148,
+                  "pixels": 11160
+                },
+                "output": {
+                  "left": 40,
+                  "top": 75,
+                  "width": 154,
+                  "height": 169
+                },
+                "scale": 1.1386138613861385
+              },
+              {
+                "left": 52,
+                "top": 73,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1373,
+                  "top": 864,
+                  "width": 100,
+                  "height": 150,
+                  "pixels": 9808
+                },
+                "output": {
+                  "left": 52,
+                  "top": 73,
+                  "width": 114,
+                  "height": 171
+                },
+                "scale": 1.1386138613861385
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+            "sourceImageSha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/hermes_futurama-native48.png",
+                "sha256": "8d41ea01a2a5dd2aea6c9e8a79bbfcd13898c445b8fef1c393650d647459f11e"
+              }
+            ]
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "30dd9890733a89054d9dbb2a78dbbf891797ae226e95eeb092b5fe1ecb9e7505",
+              "5915cfbdf5772c5a11deff576ed8dc4d52f0a34e5898b527dc55720ab3143901",
+              "f13551333d9379505f5834b96ec69a7aaf73d8eb413f60d39288a656fe11f57f",
+              "bbc4754bfea148917f89bab84a00d271885fa9947d0dbc26e481f75c79ac7b45"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8b3229d846b6ca860aee68c658c7def59ccbc61bdfa11705725152ff2783b847",
+              "5f4809d783f4850caad814e8c46345cb77b411052f0c790ca0980b119ac311ff",
+              "09564fb925ee4a7fc6e2794f4d95ecea2981f1c601f57e2707c9f73b5a565ffd",
+              "15f543dda6093eba0a3f2984ed04a4d3cf889dbceb71e43df4d809f63423388c"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a626a173d4d1698307ae31daab1090be63d9ff110b908397da47d85e6c20bb0f",
+              "bf2d4603ecfad2bccf91c9e4099fc532a54657c778586f7ebba66a1c0cdce538",
+              "4ed8e2a14c7f8c3bd00f493e94b6c383497fd2f041b8103ae8ad8117dc8e9cca",
+              "ed4bdbde91f14adb76e312b9cbf9c78c912ff390f974a83c201d7df7b45e927a"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "331d996afcbd45c2d122b89656d8d6e17a49d007761337ab90858ad79268c0c3",
+              "719a61c9c31dad74cfa8dfd0f0bb79b8c29f74c18b1f0fb5d3b729c66d078ace",
+              "8f678bdc207d2a11a58e26936bbc281614ed3d0e604319e990f32b60737c544d",
+              "899106203fccc12c862398480f1de4734b151189317e0208fe327f194e8a857c"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+      }
+    },
+    {
+      "id": "zoidberg_futurama",
+      "heroId": "zoidberg_futurama",
+      "universe": "Futurama",
+      "name": "Zoidberg",
+      "sheet": "/sprites/generated/combat-character-corrections-wave12-part-d/zoidberg_futurama.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "d727cc3d46f013bd236124611e54bd57981497330fc1e493a6910e1fc9f7911d",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+      "sourceImageSha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+          "sha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c"
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/futurama/zoidberg-futurama.png",
+      "referenceAssetSha256": "7860b089574f13f584323b29253081c15775957d5ce015482f52794434684bc1",
+      "referenceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/zoidberg_futurama-old.png",
+      "sourceWork": "Futurama, série Fox originale (1999–2003), Dr John Zoidberg",
+      "sourceReference": "Dr John Zoidberg is the red Decapodian in a white medical coat, mint shirt and gray trousers. This version uses cautious advice and withdrawal signals rather than claiming reliable human treatment. No HP regeneration, healing magic, claw projectile or beam is supplied by these gestures.",
+      "characterVersion": "Dr John Zoidberg from original Fox Futurama (1999–2003). Canonical red Decapodian lobster doctor, smooth red head, dangling short red mouth tentacles, TWO eyes, red claw hands, white doctors coat over mint green shirt, gray trousers and ordinary dark shoes. No human fingers or extra arms. Plain medical clipboard only. No healing aura, cross symbol, weapon, magic or beam.",
+      "abilityName": "Avis médical prudent de Zoidberg",
+      "abilityEffect": "guard",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-seams-shared-scale-per-native-source",
+        "sharedScalePerSource": true,
+        "sourceScales": [
+          {
+            "scale": 1.25,
+            "bodyHeight": 152,
+            "normalizedBodyHeight": 190
+          }
+        ],
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "frames": [
+              {
+                "left": 76,
+                "top": 55,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 54,
+                  "top": 695,
+                  "width": 98,
+                  "height": 151,
+                  "pixels": 9721
+                },
+                "output": {
+                  "left": 76,
+                  "top": 55,
+                  "width": 123,
+                  "height": 189
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 57,
+                "top": 54,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 231,
+                  "top": 695,
+                  "width": 99,
+                  "height": 152,
+                  "pixels": 9828
+                },
+                "output": {
+                  "left": 57,
+                  "top": 54,
+                  "width": 124,
+                  "height": 190
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 71,
+                "top": 49,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 434,
+                  "top": 691,
+                  "width": 92,
+                  "height": 156,
+                  "pixels": 9854
+                },
+                "output": {
+                  "left": 71,
+                  "top": 49,
+                  "width": 115,
+                  "height": 195
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 69,
+                "top": 55,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 625,
+                  "top": 696,
+                  "width": 92,
+                  "height": 151,
+                  "pixels": 9428
+                },
+                "output": {
+                  "left": 69,
+                  "top": 55,
+                  "width": 115,
+                  "height": 189
+                },
+                "scale": 1.25
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+            "sourceImageSha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+                "sha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c"
+              }
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "frames": [
+              {
+                "left": 36,
+                "top": 51,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 790,
+                  "top": 694,
+                  "width": 135,
+                  "height": 154,
+                  "pixels": 10747
+                },
+                "output": {
+                  "left": 36,
+                  "top": 51,
+                  "width": 169,
+                  "height": 193
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 14,
+                "top": 50,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 965,
+                  "top": 694,
+                  "width": 144,
+                  "height": 155,
+                  "pixels": 11065
+                },
+                "output": {
+                  "left": 14,
+                  "top": 50,
+                  "width": 180,
+                  "height": 194
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 19,
+                "top": 54,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1161,
+                  "top": 694,
+                  "width": 140,
+                  "height": 152,
+                  "pixels": 10731
+                },
+                "output": {
+                  "left": 19,
+                  "top": 54,
+                  "width": 175,
+                  "height": 190
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 13,
+                "top": 53,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1348,
+                  "top": 694,
+                  "width": 145,
+                  "height": 153,
+                  "pixels": 11016
+                },
+                "output": {
+                  "left": 13,
+                  "top": 53,
+                  "width": 181,
+                  "height": 191
+                },
+                "scale": 1.25
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+            "sourceImageSha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+                "sha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c"
+              }
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "frames": [
+              {
+                "left": 72,
+                "top": 58,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 51,
+                  "top": 863,
+                  "width": 112,
+                  "height": 149,
+                  "pixels": 10268
+                },
+                "output": {
+                  "left": 72,
+                  "top": 58,
+                  "width": 140,
+                  "height": 186
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 67,
+                "top": 59,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 239,
+                  "top": 864,
+                  "width": 111,
+                  "height": 148,
+                  "pixels": 10369
+                },
+                "output": {
+                  "left": 67,
+                  "top": 59,
+                  "width": 139,
+                  "height": 185
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 61,
+                "top": 61,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 426,
+                  "top": 866,
+                  "width": 126,
+                  "height": 146,
+                  "pixels": 9934
+                },
+                "output": {
+                  "left": 61,
+                  "top": 61,
+                  "width": 158,
+                  "height": 183
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 67,
+                "top": 65,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 623,
+                  "top": 869,
+                  "width": 98,
+                  "height": 143,
+                  "pixels": 9290
+                },
+                "output": {
+                  "left": 67,
+                  "top": 65,
+                  "width": 123,
+                  "height": 179
+                },
+                "scale": 1.25
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+            "sourceImageSha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+                "sha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c"
+              }
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "frames": [
+              {
+                "left": 51,
+                "top": 68,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 802,
+                  "top": 870,
+                  "width": 147,
+                  "height": 141,
+                  "pixels": 11231
+                },
+                "output": {
+                  "left": 51,
+                  "top": 68,
+                  "width": 184,
+                  "height": 176
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 29,
+                "top": 58,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 977,
+                  "top": 864,
+                  "width": 169,
+                  "height": 149,
+                  "pixels": 12576
+                },
+                "output": {
+                  "left": 29,
+                  "top": 58,
+                  "width": 211,
+                  "height": 186
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 56,
+                "top": 61,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1190,
+                  "top": 864,
+                  "width": 133,
+                  "height": 146,
+                  "pixels": 10842
+                },
+                "output": {
+                  "left": 56,
+                  "top": 61,
+                  "width": 166,
+                  "height": 183
+                },
+                "scale": 1.25
+              },
+              {
+                "left": 72,
+                "top": 54,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1395,
+                  "top": 860,
+                  "width": 91,
+                  "height": 152,
+                  "pixels": 9649
+                },
+                "output": {
+                  "left": 72,
+                  "top": 54,
+                  "width": 114,
+                  "height": 190
+                },
+                "scale": 1.25
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+            "sourceImageSha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/zoidberg_futurama-native48.png",
+                "sha256": "026f403507ab0c24adc0ffa174d551a30855b1a87c75f6d9fbf4e90a2935657c"
+              }
+            ]
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b3e2d0d2b8a83f169e6b4b47dc1c0df479bd6d7051dd30b70ae332fe8fb16ab7",
+              "267cb10295b0166f6d4ab250b78ad0553e1fa84619a8ad667af502bfd1c4f145",
+              "06eaec89ffac0087fe7842c92367b624189ab43893c5a79db0dc19c69e117dc8",
+              "ba9795082e594c529297592ca44aa37577b8b6cbc4afc2b0dd743b2fc516e7d7"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "afd092cc05b1342f089fb14d1ca2416f70aada50aeee1d2c250db3e6a0be4aea",
+              "51dddf86b39e58a93487cea0e12c02354b2fdb67ee6d25fad6873ccfcfeb0c3c",
+              "a65f5048d594338eae8f8f045369b151ab773934cba88b712af62f3193578dfd",
+              "f670fdf6d1b2f9dc316c6b0a0e73ac95e0dc4a994d678e8b01647b0bd32d016e"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b5ccecd10f58bd31b3a9dba40f3ffb301d73616fe921d7defee842ffe8616fb2",
+              "e4c64a1a888b27e76528a2659de9cdcdd5a788d0ff953ec805c9a3f605978752",
+              "aa84356607e78e395b967dbdfb5052ff10361e1835f1da8f4a5b1a3d4bb3f250",
+              "f71378af75d3ed51ce8e7a1f52d201a767452213bc2efc62a0e681c4386238c2"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e2644bf64d5c322d4f26bade8352ead4c64a09d2aeca2cd4930dd9c065b25f7f",
+              "11a3cf2b1722e37e6ed5cc62d8cf41d437b313ed279c23f98b9b525cfeecad54",
+              "db9bd195edc34ef1035b9bacfdf2c8d01593b3b91f1f91e978a92637e957766b",
+              "465426d581fb5e085960c78528c984f9f351c8196d04139cf10b10768006542d"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+      }
+    },
+    {
+      "id": "rick",
+      "heroId": "rick",
+      "universe": "Rick & Morty",
+      "name": "Rick Sanchez",
+      "sheet": "/sprites/generated/combat-character-corrections-wave12-part-d/rick.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "b761630d8671a0f92de01735a58eb073fbffd45ee88e0feecd379506c2bbd6da",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+      "sourceImageSha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+          "sha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52"
+        },
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-correction.png",
+          "sha256": "24ed3054b19628d0d0dba065fbc9481704ff9680ec06670eaf2dd0064e4e7b2c"
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/rick-morty/rick.png",
+      "referenceAssetSha256": "53b0315b958f621921db5f05dc5b82e3a524953cc0eaf215f55362fad7061ba9",
+      "referenceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/rick-old.png",
+      "sourceWork": "Rick and Morty, saison 2 (2015), Rick Sanchez humain",
+      "sourceReference": "Season2 Rick uses an ordinary compact science-fiction pistol as the selected damaging equipment. The distinct green portal gun is a transit device and is not used as a damaging blaster. The support action communicates a safe route without teleporting units, splitting reality or creating a Microverse explosion. His source-era white coat, pale cyan shirt and brown trousers remain unchanged.",
+      "characterVersion": "Rick Sanchez in Rick and Morty SEASON TWO (2015), biological human elderly scientist. Spiky pale blue hair and matching unibrow, long thin face, white lab coat, pale turquoise shirt, brown trousers, dark belt, black shoes. He carries ONE compact ordinary gray science-fiction hand PISTOL with short horizontal barrel, visibly separate from his green rectangular portal gun. Do NOT draw the green portal device, portals or green magical rays. No cybernetic variants.",
+      "abilityName": "Tir du pistolet spatial de Rick",
+      "abilityEffect": "damage",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-seams-shared-scale-per-native-source",
+        "sharedScalePerSource": true,
+        "sourceScales": [
+          {
+            "scale": 1.271523178807947,
+            "bodyHeight": 151,
+            "normalizedBodyHeight": 192
+          },
+          {
+            "scale": 0.3052464228934817,
+            "bodyHeight": 629,
+            "normalizedBodyHeight": 192
+          }
+        ],
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "frames": [
+              {
+                "left": 83,
+                "top": 47,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 61,
+                  "top": 692,
+                  "width": 63,
+                  "height": 155,
+                  "pixels": 6440
+                },
+                "output": {
+                  "left": 83,
+                  "top": 47,
+                  "width": 80,
+                  "height": 197
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 72,
+                "top": 47,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 244,
+                  "top": 692,
+                  "width": 73,
+                  "height": 155,
+                  "pixels": 6570
+                },
+                "output": {
+                  "left": 72,
+                  "top": 47,
+                  "width": 93,
+                  "height": 197
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 85,
+                "top": 47,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 446,
+                  "top": 692,
+                  "width": 67,
+                  "height": 155,
+                  "pixels": 6714
+                },
+                "output": {
+                  "left": 85,
+                  "top": 47,
+                  "width": 85,
+                  "height": 197
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 76,
+                "top": 47,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 631,
+                  "top": 691,
+                  "width": 62,
+                  "height": 155,
+                  "pixels": 6501
+                },
+                "output": {
+                  "left": 76,
+                  "top": 47,
+                  "width": 79,
+                  "height": 197
+                },
+                "scale": 1.271523178807947
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+            "sourceImageSha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+                "sha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52"
+              }
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "frames": [
+              {
+                "left": 49,
+                "top": 60,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 802,
+                  "top": 702,
+                  "width": 136,
+                  "height": 145,
+                  "pixels": 7660
+                },
+                "output": {
+                  "left": 49,
+                  "top": 60,
+                  "width": 173,
+                  "height": 184
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 45,
+                "top": 62,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 991,
+                  "top": 703,
+                  "width": 138,
+                  "height": 143,
+                  "pixels": 8209
+                },
+                "output": {
+                  "left": 45,
+                  "top": 62,
+                  "width": 175,
+                  "height": 182
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 40,
+                "top": 49,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1179,
+                  "top": 693,
+                  "width": 145,
+                  "height": 153,
+                  "pixels": 8653
+                },
+                "output": {
+                  "left": 40,
+                  "top": 49,
+                  "width": 184,
+                  "height": 195
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 61,
+                "top": 56,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1387,
+                  "top": 698,
+                  "width": 133,
+                  "height": 148,
+                  "pixels": 8271
+                },
+                "output": {
+                  "left": 61,
+                  "top": 56,
+                  "width": 169,
+                  "height": 188
+                },
+                "scale": 1.271523178807947
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+            "sourceImageSha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+                "sha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52"
+              }
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "frames": [
+              {
+                "left": 66,
+                "top": 49,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 47,
+                  "top": 861,
+                  "width": 103,
+                  "height": 153,
+                  "pixels": 7114
+                },
+                "output": {
+                  "left": 66,
+                  "top": 49,
+                  "width": 131,
+                  "height": 195
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 58,
+                "top": 52,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 233,
+                  "top": 862,
+                  "width": 121,
+                  "height": 151,
+                  "pixels": 7095
+                },
+                "output": {
+                  "left": 58,
+                  "top": 52,
+                  "width": 154,
+                  "height": 192
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 48,
+                "top": 52,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 417,
+                  "top": 862,
+                  "width": 146,
+                  "height": 151,
+                  "pixels": 7691
+                },
+                "output": {
+                  "left": 48,
+                  "top": 52,
+                  "width": 186,
+                  "height": 192
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 70,
+                "top": 52,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 626,
+                  "top": 862,
+                  "width": 86,
+                  "height": 151,
+                  "pixels": 6558
+                },
+                "output": {
+                  "left": 70,
+                  "top": 52,
+                  "width": 109,
+                  "height": 192
+                },
+                "scale": 1.271523178807947
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+            "sourceImageSha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+                "sha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52"
+              }
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "frames": [
+              {
+                "left": 64,
+                "top": 49,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 814,
+                  "top": 860,
+                  "width": 108,
+                  "height": 153,
+                  "pixels": 8284
+                },
+                "output": {
+                  "left": 64,
+                  "top": 49,
+                  "width": 137,
+                  "height": 195
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 48,
+                "top": 55,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 993,
+                  "top": 864,
+                  "width": 110,
+                  "height": 149,
+                  "pixels": 8573
+                },
+                "output": {
+                  "left": 48,
+                  "top": 55,
+                  "width": 140,
+                  "height": 189
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 35,
+                "top": 51,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1175,
+                  "top": 861,
+                  "width": 133,
+                  "height": 152,
+                  "pixels": 8294
+                },
+                "output": {
+                  "left": 35,
+                  "top": 51,
+                  "width": 169,
+                  "height": 193
+                },
+                "scale": 1.271523178807947
+              },
+              {
+                "left": 90,
+                "top": 52,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1410,
+                  "top": 863,
+                  "width": 95,
+                  "height": 151,
+                  "pixels": 6855
+                },
+                "output": {
+                  "left": 90,
+                  "top": 52,
+                  "width": 121,
+                  "height": 192
+                },
+                "scale": 1.271523178807947
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+            "sourceImageSha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/rick-native48.png",
+                "sha256": "3260b2bf1e0c836a858f5849f57f4061f1a8f680045ff54d3f1fad1e178edf52"
+              }
+            ]
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "087a26e75aaf8958d3f3d82f993ab92cfb4128ae94a8803f77ccb6287f64f741",
+              "c89293dced08d67f33e6f8a4477107ad40d39372181a8b294d544991d48c035f",
+              "5c2e321b2e2d2139b322fc5dead05550a9de0863ce28cbb9d2d68c6363a143e0",
+              "d03b180d12277b8565f6c3e1d8307e97f8697d90193ae62d99155deb5c6a3a1d"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e2c57796d8616eceb835240f482c69dcaf2481bd7ee07c97bf7b537336057880",
+              "7f2898c10f1d691c10e3412c00b77374164fabb9e5df60b85268074e0bfbd914",
+              "60ec748ee81e15d47d9eca0217a0878579c24a628505e600a4def5e3a02ad524",
+              "9f235051e109d79976a2c99134a97ecc6a4100b2e60c713a3829f978d2496a1f"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ee3738bf3e3c1698965b87e0d303738e213eff444c2c779377c006114a77a73d",
+              "894d43b508801a0b0e82b71e66bfc3eebf46c1eea1299312edb4cf2e6e79c352",
+              "565e7ce610b44432e9037622fec6431942462ea3f80a6ec0674a664e3dba1d44",
+              "71051c0976aad07167cb9bd7ba9cbd2734e7b20888a1eff91795869a68f990a9"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e07862ffb583cb322793ef603f57882a780ce411d6bc6aa5a963ab7213f1f56a",
+              "6861cfdb42f714de72669ec81ea80d56c9dc2878026217146b43a2fda1fc4c80",
+              "986f294e6667451dea69048936df4052bb29f199ed5892632d095e8adaef28d5",
+              "2fe4592fb47de162977d58f1428b95809cf7a49514300ac7b62cda4edbe753c0"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal. Final-flourish preparation replaced by one genuinely generated single-pistol pose with empty left hand. Unused malformed corrective alternative excluded."
+      }
+    },
+    {
+      "id": "summer",
+      "heroId": "summer",
+      "universe": "Rick & Morty",
+      "name": "Summer Smith",
+      "sheet": "/sprites/generated/combat-character-corrections-wave12-part-d/summer.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "9395d5bddb322222e72c900c4b297edf3e05a69dc571a56d4dea01683af97686",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+      "sourceImageSha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+          "sha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef"
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/rick-morty/summer.png",
+      "referenceAssetSha256": "35ff896acb6af7fd6deab19fab03c39a6c752142977dc9ffc50da069ba4c4d67",
+      "referenceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/summer-old.png",
+      "sourceWork": "Rick and Morty, saison 2 (2015), Summer Smith avant la tenue post-apocalyptique de saison 3",
+      "sourceReference": "Season2 Summer wears a coral-pink sleeveless top, white trousers and black shoes, with orange ponytail. This supporting version communicates a regrouping route. It does not borrow the season3 wasteland costume, rifle, psychic effects or a post-apocalyptic area attack. Her instructions do not inflict damage.",
+      "characterVersion": "Summer Smith from Rick and Morty SEASON TWO (2015). Canonical ordinary human teenage girl, long oval head, orange hair in high ponytail, coral-pink sleeveless top, plain white trousers, black shoes, fully clothed everyday outfit. NO weapon, magic or wasteland costume from season3. Non-violent support gestures only.",
+      "abilityName": "Signal de repli de Summer",
+      "abilityEffect": "guard",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-seams-shared-scale-per-native-source",
+        "sharedScalePerSource": true,
+        "sourceScales": [
+          {
+            "scale": 1.238709677419355,
+            "bodyHeight": 155,
+            "normalizedBodyHeight": 192
+          }
+        ],
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "frames": [
+              {
+                "left": 91,
+                "top": 50,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 66,
+                  "top": 689,
+                  "width": 66,
+                  "height": 157,
+                  "pixels": 6845
+                },
+                "output": {
+                  "left": 91,
+                  "top": 50,
+                  "width": 82,
+                  "height": 194
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 80,
+                "top": 48,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 249,
+                  "top": 688,
+                  "width": 69,
+                  "height": 158,
+                  "pixels": 7011
+                },
+                "output": {
+                  "left": 80,
+                  "top": 48,
+                  "width": 85,
+                  "height": 196
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 70,
+                "top": 51,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 433,
+                  "top": 691,
+                  "width": 65,
+                  "height": 156,
+                  "pixels": 6698
+                },
+                "output": {
+                  "left": 70,
+                  "top": 51,
+                  "width": 81,
+                  "height": 193
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 72,
+                "top": 50,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 627,
+                  "top": 688,
+                  "width": 67,
+                  "height": 157,
+                  "pixels": 6709
+                },
+                "output": {
+                  "left": 72,
+                  "top": 50,
+                  "width": 83,
+                  "height": 194
+                },
+                "scale": 1.238709677419355
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+            "sourceImageSha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+                "sha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef"
+              }
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "frames": [
+              {
+                "left": 41,
+                "top": 61,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 794,
+                  "top": 698,
+                  "width": 119,
+                  "height": 148,
+                  "pixels": 7401
+                },
+                "output": {
+                  "left": 41,
+                  "top": 61,
+                  "width": 147,
+                  "height": 183
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 50,
+                "top": 64,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 993,
+                  "top": 699,
+                  "width": 126,
+                  "height": 145,
+                  "pixels": 7747
+                },
+                "output": {
+                  "left": 50,
+                  "top": 64,
+                  "width": 156,
+                  "height": 180
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 40,
+                "top": 62,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1177,
+                  "top": 697,
+                  "width": 133,
+                  "height": 147,
+                  "pixels": 7996
+                },
+                "output": {
+                  "left": 40,
+                  "top": 62,
+                  "width": 165,
+                  "height": 182
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 64,
+                "top": 57,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1388,
+                  "top": 696,
+                  "width": 102,
+                  "height": 151,
+                  "pixels": 7522
+                },
+                "output": {
+                  "left": 64,
+                  "top": 57,
+                  "width": 126,
+                  "height": 187
+                },
+                "scale": 1.238709677419355
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+            "sourceImageSha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+                "sha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef"
+              }
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "frames": [
+              {
+                "left": 90,
+                "top": 52,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 65,
+                  "top": 859,
+                  "width": 100,
+                  "height": 155,
+                  "pixels": 7435
+                },
+                "output": {
+                  "left": 90,
+                  "top": 52,
+                  "width": 124,
+                  "height": 192
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 77,
+                "top": 56,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 247,
+                  "top": 861,
+                  "width": 126,
+                  "height": 152,
+                  "pixels": 7792
+                },
+                "output": {
+                  "left": 77,
+                  "top": 56,
+                  "width": 156,
+                  "height": 188
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 67,
+                "top": 58,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 431,
+                  "top": 864,
+                  "width": 126,
+                  "height": 150,
+                  "pixels": 8054
+                },
+                "output": {
+                  "left": 67,
+                  "top": 58,
+                  "width": 156,
+                  "height": 186
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 66,
+                "top": 53,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 622,
+                  "top": 860,
+                  "width": 80,
+                  "height": 154,
+                  "pixels": 7229
+                },
+                "output": {
+                  "left": 66,
+                  "top": 53,
+                  "width": 99,
+                  "height": 191
+                },
+                "scale": 1.238709677419355
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+            "sourceImageSha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+                "sha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef"
+              }
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "frames": [
+              {
+                "left": 61,
+                "top": 51,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 786,
+                  "top": 857,
+                  "width": 108,
+                  "height": 156,
+                  "pixels": 8052
+                },
+                "output": {
+                  "left": 61,
+                  "top": 51,
+                  "width": 134,
+                  "height": 193
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 65,
+                "top": 47,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 937,
+                  "top": 854,
+                  "width": 102,
+                  "height": 159,
+                  "pixels": 8489
+                },
+                "output": {
+                  "left": 65,
+                  "top": 47,
+                  "width": 126,
+                  "height": 197
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 57,
+                "top": 42,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1087,
+                  "top": 850,
+                  "width": 114,
+                  "height": 163,
+                  "pixels": 8503
+                },
+                "output": {
+                  "left": 57,
+                  "top": 42,
+                  "width": 141,
+                  "height": 202
+                },
+                "scale": 1.238709677419355
+              },
+              {
+                "left": 67,
+                "top": 61,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1249,
+                  "top": 865,
+                  "width": 100,
+                  "height": 148,
+                  "pixels": 7366
+                },
+                "output": {
+                  "left": 67,
+                  "top": 61,
+                  "width": 124,
+                  "height": 183
+                },
+                "scale": 1.238709677419355
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+            "sourceImageSha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/summer-native48.png",
+                "sha256": "519f5b7ea8723ba6b4948b4236df76760320178f1b2924262a03ad22256e02ef"
+              }
+            ]
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4dfff6db5a47bc16ad9f047f1913093979171542d9d321e5964e1f83b5c51e5b",
+              "2e2f1c0c85602e9be6dcbaaac06ed1cdff7b5e8e234895b6e49a28ecea806af8",
+              "29e7a0cd38b0da987515b392fc2e2976d4d1a75148ead6e63b60b7bac7152855",
+              "fdebb617132a6823f5973ffb2485999ff1d17be12ab6420c7b899e0a844ab5d4"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "eaac380140281730ca14900b11252e8a65eefa1f8b563159088620397914be71",
+              "a028256126d7090852d4ec32c14b9a7a08b397f4531079c27bf149d5bb08e3f5",
+              "996a8c1e87d12ef27afbb952bb4c0828d53cade7f50562e6e9006557fd5e507e",
+              "d7ad5b2ef638e51a43d5205afcbc295b3a601591ccc558294c5a26ab6c05aa1e"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "3aeebc21241e6ee4c820ae55298d06f3476387ac2a234599155b60dba4311473",
+              "7084464ee89621aaf8dd8c4917f73dba4402983eb629f36c3f5e92eb90cfc9ce",
+              "2999f73e1b960a1c129135b4e2a66f3faa966abc817dfa20bbf79111d0494d24",
+              "b2d3940860557b85b29b50c118ecf32e804c719e26352cd3fa614968a9a58842"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "87a36ec956c609b4e060ad11d04db9d04332344126f069caf9006ac248931354",
+              "767ecf4a4c143251fd5394f0f3ab6069212170978e754743394fc0ab37a096e9",
+              "11eee72754cac7e12f2dc6fac25d2db992d78d661d575c9390990956559f4212",
+              "bd0fc47b2a1bc7ade58b44d659dd4ab096c1a643ca30f47a2d9d6283a0704692"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal."
+      }
+    },
+    {
+      "id": "birdperson",
+      "heroId": "birdperson",
+      "universe": "Rick & Morty",
+      "name": "Birdperson",
+      "sheet": "/sprites/generated/combat-character-corrections-wave12-part-d/birdperson.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "a4906940b30e4780dc85a5bbae997663f4d9e38715f26e5d57eeee54e1b78c07",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48.png",
+      "sourceImageSha256": "c34695eb70e7b5d5b86f10c2d116eba60d2d90ddf750df60ae52c4284c2a76a4",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48.png",
+          "sha256": "c34695eb70e7b5d5b86f10c2d116eba60d2d90ddf750df60ae52c4284c2a76a4"
+        },
+        {
+          "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-guard8.png",
+          "sha256": "e26d0dcec2f8cf55cd2a6d05ff2a75e5a68f910d04004fae0cb7d045d9152c03"
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/rick-morty/birdperson.png",
+      "referenceAssetSha256": "240623fef286e12ba0a72e37cb245ce5175f385f31c6b80b5c215d140b18237e",
+      "referenceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-references/birdperson-old.png",
+      "sourceWork": "Rick and Morty, saison 2 (2015), Birdperson avant sa transformation en Phoenixperson",
+      "sourceReference": "Birdperson is his biological season2 version before Phoenixperson. His natural brown feathered wings fold into a physical protective stance, adapted into a bounded guard without adding flight, teleportation, healing or a supernatural force field. Cybernetic wings, implants, laser eyes and the later Phoenixperson weapons are excluded.",
+      "characterVersion": "Birdperson from Rick and Morty SEASON TWO (2015), standard biological pre-Phoenixperson version. Canonical adult bird-human with long dark hair, long angular face and prominent beak-like nose, his familiar white feather cap/headpiece, bare upper torso, green trousers, birdlike feet and large NATURAL brown feathered wings. Keep recognizable original series design, wings attached at shoulder/back, not mechanical. No tuxedo, implants, cybernetics, laser, gun or Phoenixperson armor.",
+      "abilityName": "Garde des ailes de Birdperson",
+      "abilityEffect": "guard",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-seams-shared-scale-per-native-source",
+        "sharedScalePerSource": true,
+        "sourceScales": [
+          {
+            "scale": 1.136094674556213,
+            "bodyHeight": 169,
+            "normalizedBodyHeight": 192
+          },
+          {
+            "scale": 0.4093816631130064,
+            "bodyHeight": 469,
+            "normalizedBodyHeight": 192
+          }
+        ],
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "frames": [
+              {
+                "left": 62,
+                "top": 62,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 38,
+                  "top": 739,
+                  "width": 93,
+                  "height": 160,
+                  "pixels": 9250
+                },
+                "output": {
+                  "left": 62,
+                  "top": 62,
+                  "width": 106,
+                  "height": 182
+                },
+                "scale": 1.136094674556213
+              },
+              {
+                "left": 58,
+                "top": 64,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 226,
+                  "top": 740,
+                  "width": 95,
+                  "height": 158,
+                  "pixels": 9128
+                },
+                "output": {
+                  "left": 58,
+                  "top": 64,
+                  "width": 108,
+                  "height": 180
+                },
+                "scale": 1.136094674556213
+              },
+              {
+                "left": 60,
+                "top": 63,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 420,
+                  "top": 740,
+                  "width": 96,
+                  "height": 159,
+                  "pixels": 9182
+                },
+                "output": {
+                  "left": 60,
+                  "top": 63,
+                  "width": 109,
+                  "height": 181
+                },
+                "scale": 1.136094674556213
+              },
+              {
+                "left": 61,
+                "top": 63,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 613,
+                  "top": 740,
+                  "width": 92,
+                  "height": 159,
+                  "pixels": 9370
+                },
+                "output": {
+                  "left": 61,
+                  "top": 63,
+                  "width": 105,
+                  "height": 181
+                },
+                "scale": 1.136094674556213
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48.png",
+            "sourceImageSha256": "c34695eb70e7b5d5b86f10c2d116eba60d2d90ddf750df60ae52c4284c2a76a4",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48.png",
+                "sha256": "c34695eb70e7b5d5b86f10c2d116eba60d2d90ddf750df60ae52c4284c2a76a4"
+              }
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "frames": [
+              {
+                "left": 55,
+                "top": 60,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 800,
+                  "top": 742,
+                  "width": 133,
+                  "height": 162,
+                  "pixels": 10540
+                },
+                "output": {
+                  "left": 55,
+                  "top": 60,
+                  "width": 151,
+                  "height": 184
+                },
+                "scale": 1.136094674556213
+              },
+              {
+                "left": 56,
+                "top": 60,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 993,
+                  "top": 742,
+                  "width": 129,
+                  "height": 162,
+                  "pixels": 10773
+                },
+                "output": {
+                  "left": 56,
+                  "top": 60,
+                  "width": 147,
+                  "height": 184
+                },
+                "scale": 1.136094674556213
+              },
+              {
+                "left": 37,
+                "top": 63,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1168,
+                  "top": 744,
+                  "width": 150,
+                  "height": 159,
+                  "pixels": 12357
+                },
+                "output": {
+                  "left": 37,
+                  "top": 63,
+                  "width": 170,
+                  "height": 181
+                },
+                "scale": 1.136094674556213
+              },
+              {
+                "left": 31,
+                "top": 58,
+                "source": 0,
+                "sourceRow": 4,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1355,
+                  "top": 739,
+                  "width": 146,
+                  "height": 164,
+                  "pixels": 14019
+                },
+                "output": {
+                  "left": 31,
+                  "top": 58,
+                  "width": 166,
+                  "height": 186
+                },
+                "scale": 1.136094674556213
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48.png",
+            "sourceImageSha256": "c34695eb70e7b5d5b86f10c2d116eba60d2d90ddf750df60ae52c4284c2a76a4",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48.png",
+                "sha256": "c34695eb70e7b5d5b86f10c2d116eba60d2d90ddf750df60ae52c4284c2a76a4"
+              }
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "frames": [
+              {
+                "left": 55,
+                "top": 55,
+                "source": 1,
+                "sourceRow": 1,
+                "sourceColumn": 0,
+                "sourceBounds": {
+                  "left": 13,
+                  "top": 528,
+                  "width": 347,
+                  "height": 461,
+                  "pixels": 93391
+                },
+                "output": {
+                  "left": 55,
+                  "top": 55,
+                  "width": 142,
+                  "height": 189
+                },
+                "scale": 0.4093816631130064
+              },
+              {
+                "left": 90,
+                "top": 57,
+                "source": 1,
+                "sourceRow": 1,
+                "sourceColumn": 1,
+                "sourceBounds": {
+                  "left": 482,
+                  "top": 532,
+                  "width": 252,
+                  "height": 457,
+                  "pixels": 72085
+                },
+                "output": {
+                  "left": 90,
+                  "top": 57,
+                  "width": 103,
+                  "height": 187
+                },
+                "scale": 0.4093816631130064
+              },
+              {
+                "left": 78,
+                "top": 60,
+                "source": 1,
+                "sourceRow": 1,
+                "sourceColumn": 2,
+                "sourceBounds": {
+                  "left": 837,
+                  "top": 539,
+                  "width": 235,
+                  "height": 450,
+                  "pixels": 67960
+                },
+                "output": {
+                  "left": 78,
+                  "top": 60,
+                  "width": 96,
+                  "height": 184
+                },
+                "scale": 0.4093816631130064
+              },
+              {
+                "left": 49,
+                "top": 55,
+                "source": 1,
+                "sourceRow": 1,
+                "sourceColumn": 3,
+                "sourceBounds": {
+                  "left": 1151,
+                  "top": 527,
+                  "width": 378,
+                  "height": 462,
+                  "pixels": 99516
+                },
+                "output": {
+                  "left": 49,
+                  "top": 55,
+                  "width": 155,
+                  "height": 189
+                },
+                "scale": 0.4093816631130064
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-guard8.png",
+            "sourceImageSha256": "e26d0dcec2f8cf55cd2a6d05ff2a75e5a68f910d04004fae0cb7d045d9152c03",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-guard8.png",
+                "sha256": "e26d0dcec2f8cf55cd2a6d05ff2a75e5a68f910d04004fae0cb7d045d9152c03"
+              }
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "frames": [
+              {
+                "left": 44,
+                "top": 109,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 4,
+                "sourceBounds": {
+                  "left": 790,
+                  "top": 905,
+                  "width": 136,
+                  "height": 119,
+                  "pixels": 10145
+                },
+                "output": {
+                  "left": 44,
+                  "top": 109,
+                  "width": 155,
+                  "height": 135
+                },
+                "scale": 1.136094674556213
+              },
+              {
+                "left": 54,
+                "top": 103,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 5,
+                "sourceBounds": {
+                  "left": 991,
+                  "top": 900,
+                  "width": 134,
+                  "height": 124,
+                  "pixels": 10128
+                },
+                "output": {
+                  "left": 54,
+                  "top": 103,
+                  "width": 152,
+                  "height": 141
+                },
+                "scale": 1.136094674556213
+              },
+              {
+                "left": 56,
+                "top": 121,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 6,
+                "sourceBounds": {
+                  "left": 1185,
+                  "top": 916,
+                  "width": 128,
+                  "height": 108,
+                  "pixels": 10137
+                },
+                "output": {
+                  "left": 56,
+                  "top": 121,
+                  "width": 145,
+                  "height": 123
+                },
+                "scale": 1.136094674556213
+              },
+              {
+                "left": 51,
+                "top": 103,
+                "source": 0,
+                "sourceRow": 5,
+                "sourceColumn": 7,
+                "sourceBounds": {
+                  "left": 1372,
+                  "top": 900,
+                  "width": 94,
+                  "height": 124,
+                  "pixels": 7517
+                },
+                "output": {
+                  "left": 51,
+                  "top": 103,
+                  "width": 107,
+                  "height": 141
+                },
+                "scale": 1.136094674556213
+              }
+            ],
+            "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48.png",
+            "sourceImageSha256": "c34695eb70e7b5d5b86f10c2d116eba60d2d90ddf750df60ae52c4284c2a76a4",
+            "sourceImages": [
+              {
+                "path": "docs/combat-fidelity-wave12-2026-10-23/part-d-sources/birdperson-replacement48.png",
+                "sha256": "c34695eb70e7b5d5b86f10c2d116eba60d2d90ddf750df60ae52c4284c2a76a4"
+              }
+            ]
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "11b34b59d5e96f1a3e12bead7f5f3b179db1f33e9de850e566f79503be0544cc",
+              "2588a934de5d6840381726843a68d8c4074833f1dc39d4c329bb9c16425d0c26",
+              "8b5c0cbd149f9b20779720556bc71f353d4aca2b159313dea1bc56f4fd819b1c",
+              "65181475ddb89e725ac877efcbf02c5947520ff6dd64e94c1669626605e18cc6"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f69c77897c5d9a0626b220239e2870d91ecd09571e993087d95d618a16836599",
+              "d12a18a9ae7162b6834065ac9729d3efb4d15b3065d035193f54474ccbfc58ac",
+              "9a00718b7fff165ca5f67b2f0b7cfbb80dea7ec91671da23f4072b59a5dca427",
+              "c6dd45f3270a6de614fa6c5bfeae8a2359e20a74a742a09cebc44e3e66ea84a4"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c26b1d68b973810957033ffe98cacaa85871ccd2958f244257fb9e40a8bf3741",
+              "b6b448de22669a29959a8a13420ccf409f9132ee0531c484250397dd90df404d",
+              "0dfceacf909e732ee7231f7f2397800b86581aa37061e9a2c734ce6573b52793",
+              "93e633e862709f3575a69cff2dc0f18e020d97466f80522c59b90d9f3b5b7650"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "be48a5094321c138cc85ce6e3421c4bb0cc1c69f54ea8e6ac989b9f1695e4b48",
+              "80ca1f4940638fab03c2ad5e8d4b08c64e732918ae29723f618b7e1b91d53d0e",
+              "26d89a419fe350580f43ea85e3ad9bc5cb49f042700f49d0a3d58a652681e5b0",
+              "82457632155cff584f591ca7791223f813ad40c844d6475c41e60191a37f0eae"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "All retained poses inspected visually for source-era identity, intact anatomy, source-role props and non-graphic end states. Source-exact animation timing and official frames are not certified. Morty is excluded after explicit refusal. White feather crest harmonized with reviewed native RPG reference. Super and basic action use eight dedicated stationary natural-wing protective poses, not running."
+      }
+    }
+  ]
+}

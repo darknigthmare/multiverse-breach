@@ -1,0 +1,1218 @@
+{
+  "passed": true,
+  "success": true,
+  "date": "2026-10-24",
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs",
+        "--refresh-character-reference-audit"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 5.133,
+      "log": "01-catalog-refresh.log",
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/auditCharacterReferenceQuality.py"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 404.207,
+      "log": "02-character-reference-audit.log",
+      "logSha256": "cc4213f4000b1d22e61d187bf3fafd97589f45d967562cafeaf3fc85d9055485"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 5.584,
+      "log": "03-catalog-build.log",
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierAssetRegistry.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.919,
+      "log": "04-asset-registry-build.log",
+      "logSha256": "0ae6d3724a446f09f64e6b22d192d46ca63237ce1f541acce4e94aae3905c82c"
+    },
+    {
+      "argv": [
+        "npm",
+        "run",
+        "rift:audit"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 6.469,
+      "log": "05-rift-audit.log",
+      "logSha256": "c2329e6e7f1c2a09d9c3031556456fc58c9efe6ca1b348a83f5bcefa25ced44d"
+    }
+  ],
+  "exitCodes": {
+    "01-catalog-refresh": 0,
+    "02-character-reference-audit": 0,
+    "03-catalog-build": 0,
+    "04-asset-registry-build": 0,
+    "05-rift-audit": 0
+  },
+  "historicalAuditScriptsUnchanged": true,
+  "historicalCatalogBuildersUnchanged": true,
+  "packageUnchanged": true,
+  "qualityThresholdsUnchanged": true,
+  "knownCaseExpectationsUnchanged": true,
+  "manualReferencePinsUnchanged": true,
+  "qualityAuditChangedForRetiredReferences": false,
+  "qualityConstantsUnchanged": {
+    "EXPECTED_CHARACTER_ARC_ENTRY_COUNT": true,
+    "EXPECTED_UNIQUE_REFERENCE_PATH_COUNT": true,
+    "ALPHA_OCCUPIED_THRESHOLD": true,
+    "STRONG_NEIGHBOR_DIFFERENCE": true,
+    "THRESHOLDS": true,
+    "KNOWN_EXPECTATIONS": true,
+    "MANUAL_APPROVED_REFERENCE_SHA256": true
+  },
+  "historicalKnownCaseReferences": [
+    {
+      "path": "/sprites/generated/heroes/buffy-the-vampire-slayer/buffy-summers.png",
+      "classification": "approved",
+      "reasons": [
+        "meets-detailed-sprite-reference-thresholds"
+      ],
+      "metrics": {
+        "fileBytes": 716809,
+        "fileSha256": "500406b3837b3085228b22a11d92507cc1c501264bf7876988e43f11bd07c098",
+        "format": "PNG",
+        "sourceMode": "RGBA",
+        "width": 1024,
+        "height": 1024,
+        "pixelCount": 1048576,
+        "hasAlpha": true,
+        "alphaLevelCount": 2,
+        "opaquePixels": 225078,
+        "alphaOccupancy": 0.214651,
+        "semiTransparentPixelShare": 0.0,
+        "occupiedBoundingBox": [
+          42,
+          12,
+          980,
+          1012
+        ],
+        "occupiedBoundingBoxFill": 0.239955,
+        "opaqueColorCount": 100412,
+        "quantizedColorCount16": 485,
+        "dominantOpaqueColorShare": 0.010272,
+        "colorEntropyBits": 15.674677,
+        "luminanceEntropyBits": 7.54381,
+        "bytesPerPixel": 0.683602,
+        "validOpaqueNeighborPairs": 440596,
+        "colorTransitionRate": 0.975229,
+        "strongDetailRate": 0.475456,
+        "meanNeighborDifference": 23.719936,
+        "tileDiversity4x4": {
+          "tileCount": 16,
+          "uniqueCoarseTileCount": 16,
+          "uniqueCoarseTileShare": 1.0
+        }
+      }
+    },
+    {
+      "path": "/sprites/generated/heroes/half-life/freeman.png",
+      "classification": "approved",
+      "reasons": [
+        "meets-detailed-sprite-reference-thresholds"
+      ],
+      "metrics": {
+        "fileBytes": 788816,
+        "fileSha256": "88f9e1269f442c9eb805f78bfd776ebd5cdbe6aba85fbc57db390464d443fd28",
+        "format": "PNG",
+        "sourceMode": "RGBA",
+        "width": 1024,
+        "height": 1024,
+        "pixelCount": 1048576,
+        "hasAlpha": true,
+        "alphaLevelCount": 117,
+        "opaquePixels": 238076,
+        "alphaOccupancy": 0.227047,
+        "semiTransparentPixelShare": 0.012413,
+        "occupiedBoundingBox": [
+          22,
+          19,
+          1007,
+          960
+        ],
+        "occupiedBoundingBoxFill": 0.256856,
+        "opaqueColorCount": 99418,
+        "quantizedColorCount16": 770,
+        "dominantOpaqueColorShare": 0.010144,
+        "colorEntropyBits": 15.571761,
+        "luminanceEntropyBits": 7.126967,
+        "bytesPerPixel": 0.752274,
+        "validOpaqueNeighborPairs": 462993,
+        "colorTransitionRate": 0.99622,
+        "strongDetailRate": 0.574905,
+        "meanNeighborDifference": 21.784057,
+        "tileDiversity4x4": {
+          "tileCount": 16,
+          "uniqueCoarseTileCount": 16,
+          "uniqueCoarseTileShare": 1.0
+        }
+      }
+    }
+  ],
+  "changedReferenceCount": 35,
+  "changedReferencePaths": 35,
+  "unchangedHistoricalReferenceCount": 5,
+  "allChangedReferencesApproved": true,
+  "qualityBindsCurrentReferenceHashes": true,
+  "previousSuccessfulRunArchive": null,
+  "rerunReason": null,
+  "authorizedReferenceClassifications": [
+    {
+      "id": "amanda_ripley",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/amanda_ripley.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "a10b6f1fa7a93a5cafb114a82e5dc0c8b1cd04a2e405e42d10f3bd9332760bc0",
+      "qualityReportedSha256": "a10b6f1fa7a93a5cafb114a82e5dc0c8b1cd04a2e405e42d10f3bd9332760bc0",
+      "authorizedSha256": "a10b6f1fa7a93a5cafb114a82e5dc0c8b1cd04a2e405e42d10f3bd9332760bc0"
+    },
+    {
+      "id": "ash_alien",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/ash_alien.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "55678533c68ab35269de4e0d3962c2cd509794270263505fdc5e4a52169b4ee9",
+      "qualityReportedSha256": "55678533c68ab35269de4e0d3962c2cd509794270263505fdc5e4a52169b4ee9",
+      "authorizedSha256": "55678533c68ab35269de4e0d3962c2cd509794270263505fdc5e4a52169b4ee9"
+    },
+    {
+      "id": "atlas",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/atlas.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "413881deab614fcca46dd08485e289bcd6590dd2d9e4a1053a45458f7aaa5aa6",
+      "qualityReportedSha256": "413881deab614fcca46dd08485e289bcd6590dd2d9e4a1053a45458f7aaa5aa6",
+      "authorizedSha256": "413881deab614fcca46dd08485e289bcd6590dd2d9e4a1053a45458f7aaa5aa6"
+    },
+    {
+      "id": "bishop",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/bishop.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "d01d97b6cb794d566a8abda1377094db4d942836d24e9027433e89c46f31ce48",
+      "qualityReportedSha256": "d01d97b6cb794d566a8abda1377094db4d942836d24e9027433e89c46f31ce48",
+      "authorizedSha256": "d01d97b6cb794d566a8abda1377094db4d942836d24e9027433e89c46f31ce48"
+    },
+    {
+      "id": "chell",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/chell.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "689d78193b7327c2a3bd66921795e2f115c4b7c5fc9f56303f6186cf0cf83ae8",
+      "qualityReportedSha256": "689d78193b7327c2a3bd66921795e2f115c4b7c5fc9f56303f6186cf0cf83ae8",
+      "authorizedSha256": "689d78193b7327c2a3bd66921795e2f115c4b7c5fc9f56303f6186cf0cf83ae8"
+    },
+    {
+      "id": "dallas_alien",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/dallas_alien.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "7978a826277a801295a853cca76d2a5bdb9d47201214652379c433a70545c552",
+      "qualityReportedSha256": "7978a826277a801295a853cca76d2a5bdb9d47201214652379c433a70545c552",
+      "authorizedSha256": "7978a826277a801295a853cca76d2a5bdb9d47201214652379c433a70545c552"
+    },
+    {
+      "id": "death_dw",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/death_dw.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "10523db83fa6d27bd40e6faba57d21fceb287728819688121a8492a1ead82cf5",
+      "qualityReportedSha256": "10523db83fa6d27bd40e6faba57d21fceb287728819688121a8492a1ead82cf5",
+      "authorizedSha256": "10523db83fa6d27bd40e6faba57d21fceb287728819688121a8492a1ead82cf5"
+    },
+    {
+      "id": "doug_rattmann",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/doug_rattmann.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "4cfc9d7ea22b72aa7f71f64a4ae877b81450f78fe0efb4b2f0744c9fa75ee17e",
+      "qualityReportedSha256": "4cfc9d7ea22b72aa7f71f64a4ae877b81450f78fe0efb4b2f0744c9fa75ee17e",
+      "authorizedSha256": "4cfc9d7ea22b72aa7f71f64a4ae877b81450f78fe0efb4b2f0744c9fa75ee17e"
+    },
+    {
+      "id": "glados",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/glados.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "15eee94d8482be83a15060befc9a71ff9ab0fddf1f0c0ac23cac7bef8c1010dd",
+      "qualityReportedSha256": "15eee94d8482be83a15060befc9a71ff9ab0fddf1f0c0ac23cac7bef8c1010dd",
+      "authorizedSha256": "15eee94d8482be83a15060befc9a71ff9ab0fddf1f0c0ac23cac7bef8c1010dd"
+    },
+    {
+      "id": "granny_dw",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/granny_dw.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "d6b17b57a5d24d68f4185f0f7c94a1acc448c1d9c43e4f56cbab0918eae472f9",
+      "qualityReportedSha256": "d6b17b57a5d24d68f4185f0f7c94a1acc448c1d9c43e4f56cbab0918eae472f9",
+      "authorizedSha256": "d6b17b57a5d24d68f4185f0f7c94a1acc448c1d9c43e4f56cbab0918eae472f9"
+    },
+    {
+      "id": "hicks",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/hicks.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "88f1c00e5bf9fbcd53001d7c935f72a426b6ff1651510d11d17d5d6e82a519f9",
+      "qualityReportedSha256": "88f1c00e5bf9fbcd53001d7c935f72a426b6ff1651510d11d17d5d6e82a519f9",
+      "authorizedSha256": "88f1c00e5bf9fbcd53001d7c935f72a426b6ff1651510d11d17d5d6e82a519f9"
+    },
+    {
+      "id": "lambert_alien",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/lambert_alien.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "afaa37ef9d98dbcaba502ddd98f537ae2884d9e23b1bd9579109c17bce2beea3",
+      "qualityReportedSha256": "afaa37ef9d98dbcaba502ddd98f537ae2884d9e23b1bd9579109c17bce2beea3",
+      "authorizedSha256": "afaa37ef9d98dbcaba502ddd98f537ae2884d9e23b1bd9579109c17bce2beea3"
+    },
+    {
+      "id": "nanny_ogg_dw",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/nanny_ogg_dw.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "2a92efd797cf10021282e304b3aec393bb8b6a862527857dbe395000bc638acb",
+      "qualityReportedSha256": "2a92efd797cf10021282e304b3aec393bb8b6a862527857dbe395000bc638acb",
+      "authorizedSha256": "2a92efd797cf10021282e304b3aec393bb8b6a862527857dbe395000bc638acb"
+    },
+    {
+      "id": "parker_alien",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/parker_alien.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "7217a7ac5d3ff8f898410ab203bf0575f34df3084e8563e42121ed1503a7e289",
+      "qualityReportedSha256": "7217a7ac5d3ff8f898410ab203bf0575f34df3084e8563e42121ed1503a7e289",
+      "authorizedSha256": "7217a7ac5d3ff8f898410ab203bf0575f34df3084e8563e42121ed1503a7e289"
+    },
+    {
+      "id": "pbody",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/pbody.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "06204431781872848877d215fc34aed6a0cca282ef8ca5819cc74933809a9939",
+      "qualityReportedSha256": "06204431781872848877d215fc34aed6a0cca282ef8ca5819cc74933809a9939",
+      "authorizedSha256": "06204431781872848877d215fc34aed6a0cca282ef8ca5819cc74933809a9939"
+    },
+    {
+      "id": "rincewind_dw",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/rincewind_dw.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "3e2fe01575a3bec2fdf5eb5ecbba5fa573afcc019ff183152643a213f2b12cba",
+      "qualityReportedSha256": "3e2fe01575a3bec2fdf5eb5ecbba5fa573afcc019ff183152643a213f2b12cba",
+      "authorizedSha256": "3e2fe01575a3bec2fdf5eb5ecbba5fa573afcc019ff183152643a213f2b12cba"
+    },
+    {
+      "id": "ripley",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/ripley.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "f9a374f66fec8fd432209dd46ba10d15db770d1d4c2ecf33f9cef915702aec06",
+      "qualityReportedSha256": "f9a374f66fec8fd432209dd46ba10d15db770d1d4c2ecf33f9cef915702aec06",
+      "authorizedSha256": "f9a374f66fec8fd432209dd46ba10d15db770d1d4c2ecf33f9cef915702aec06"
+    },
+    {
+      "id": "twoflower_dw",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/twoflower_dw.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "35e0d7f3170d666cc50034d4e07e2fb95d6091e78fc11222ca6a9890bd988374",
+      "qualityReportedSha256": "35e0d7f3170d666cc50034d4e07e2fb95d6091e78fc11222ca6a9890bd988374",
+      "authorizedSha256": "35e0d7f3170d666cc50034d4e07e2fb95d6091e78fc11222ca6a9890bd988374"
+    },
+    {
+      "id": "vimes_dw",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/vimes_dw.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "e0f1f15c04e044397792455e237de835e4213fe7902199a802911ab7c5998869",
+      "qualityReportedSha256": "e0f1f15c04e044397792455e237de835e4213fe7902199a802911ab7c5998869",
+      "authorizedSha256": "e0f1f15c04e044397792455e237de835e4213fe7902199a802911ab7c5998869"
+    },
+    {
+      "id": "wheatley",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/wheatley.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "2647beaf4fc30f55c157e2b55949f3f1be151c94297aaebb408d91581c1f8a1d",
+      "qualityReportedSha256": "2647beaf4fc30f55c157e2b55949f3f1be151c94297aaebb408d91581c1f8a1d",
+      "authorizedSha256": "2647beaf4fc30f55c157e2b55949f3f1be151c94297aaebb408d91581c1f8a1d"
+    },
+    {
+      "id": "aayla_secura",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/aayla_secura.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "1d0179e4b85f552c94e08c9079c28aed3e54865aa50c0b724d4e9d39b1913bde",
+      "qualityReportedSha256": "1d0179e4b85f552c94e08c9079c28aed3e54865aa50c0b724d4e9d39b1913bde",
+      "authorizedSha256": "1d0179e4b85f552c94e08c9079c28aed3e54865aa50c0b724d4e9d39b1913bde"
+    },
+    {
+      "id": "abby_tlou2",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/abby_tlou2.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "ca91482e1b6d2bf8b05597ac954ce67db49c0723e5701b92dae5c0529cdcd0a2",
+      "qualityReportedSha256": "ca91482e1b6d2bf8b05597ac954ce67db49c0723e5701b92dae5c0529cdcd0a2",
+      "authorizedSha256": "ca91482e1b6d2bf8b05597ac954ce67db49c0723e5701b92dae5c0529cdcd0a2"
+    },
+    {
+      "id": "big_boss",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/big_boss.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "cdd760785363d5d5a817be6c88fa428131ab1d4ffe5f804d92104b44f6ee1648",
+      "qualityReportedSha256": "cdd760785363d5d5a817be6c88fa428131ab1d4ffe5f804d92104b44f6ee1648",
+      "authorizedSha256": "cdd760785363d5d5a817be6c88fa428131ab1d4ffe5f804d92104b44f6ee1648"
+    },
+    {
+      "id": "darth_revan",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf",
+      "qualityReportedSha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf",
+      "authorizedSha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+    },
+    {
+      "id": "dina_tlou2",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/dina_tlou2.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "0ba97ff22d45193f1e373e950026e4c70bb08a811f57b737d07d802ae737b5dc",
+      "qualityReportedSha256": "0ba97ff22d45193f1e373e950026e4c70bb08a811f57b737d07d802ae737b5dc",
+      "authorizedSha256": "0ba97ff22d45193f1e373e950026e4c70bb08a811f57b737d07d802ae737b5dc"
+    },
+    {
+      "id": "gray_fox",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/gray_fox.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "8502d44ad4361ae5220fa05d0bbd6a08f80102d915656c07b416026c72353453",
+      "qualityReportedSha256": "8502d44ad4361ae5220fa05d0bbd6a08f80102d915656c07b416026c72353453",
+      "authorizedSha256": "8502d44ad4361ae5220fa05d0bbd6a08f80102d915656c07b416026c72353453"
+    },
+    {
+      "id": "hayden",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/hayden.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "cd0647e372671bf5db19739e44b9b6bcbd23a8922aab6fd5d22ae1d28a23ad68",
+      "qualityReportedSha256": "cd0647e372671bf5db19739e44b9b6bcbd23a8922aab6fd5d22ae1d28a23ad68",
+      "authorizedSha256": "cd0647e372671bf5db19739e44b9b6bcbd23a8922aab6fd5d22ae1d28a23ad68"
+    },
+    {
+      "id": "joel_tlou",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/joel_tlou.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "10237c3d710b691f4ebb49f5f0c0a68b73eef8de4b159a0daedd25b9fad226f6",
+      "qualityReportedSha256": "10237c3d710b691f4ebb49f5f0c0a68b73eef8de4b159a0daedd25b9fad226f6",
+      "authorizedSha256": "10237c3d710b691f4ebb49f5f0c0a68b73eef8de4b159a0daedd25b9fad226f6"
+    },
+    {
+      "id": "liquid_snake",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/liquid_snake.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "4000f10d82b79d13c9fb698566c5b30fb27fa309588b3adf2200bddaacbc346c",
+      "qualityReportedSha256": "4000f10d82b79d13c9fb698566c5b30fb27fa309588b3adf2200bddaacbc346c",
+      "authorizedSha256": "4000f10d82b79d13c9fb698566c5b30fb27fa309588b3adf2200bddaacbc346c"
+    },
+    {
+      "id": "luke",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/luke.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "5feee4bf4b31609d48bb1f74ab848f6c998ab98885dc1d896d793554128be775",
+      "qualityReportedSha256": "5feee4bf4b31609d48bb1f74ab848f6c998ab98885dc1d896d793554128be775",
+      "authorizedSha256": "5feee4bf4b31609d48bb1f74ab848f6c998ab98885dc1d896d793554128be775"
+    },
+    {
+      "id": "meryl_mgs",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/meryl_mgs.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "316a608ad5f49b5f2de8274dbfaf5ad12d639879bd5b1775729987bedb70fe42",
+      "qualityReportedSha256": "316a608ad5f49b5f2de8274dbfaf5ad12d639879bd5b1775729987bedb70fe42",
+      "authorizedSha256": "316a608ad5f49b5f2de8274dbfaf5ad12d639879bd5b1775729987bedb70fe42"
+    },
+    {
+      "id": "ocelot_mgs",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/ocelot_mgs.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "a0fdedc5e460e73c05add25088a8510b823f2d56adda2883453832b2930f6202",
+      "qualityReportedSha256": "a0fdedc5e460e73c05add25088a8510b823f2d56adda2883453832b2930f6202",
+      "authorizedSha256": "a0fdedc5e460e73c05add25088a8510b823f2d56adda2883453832b2930f6202"
+    },
+    {
+      "id": "tess_tlou",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/tess_tlou.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "6af3d00745f2c40394415a8991c55f82f6b558a07b0ea41f813f255809c18d97",
+      "qualityReportedSha256": "6af3d00745f2c40394415a8991c55f82f6b558a07b0ea41f813f255809c18d97",
+      "authorizedSha256": "6af3d00745f2c40394415a8991c55f82f6b558a07b0ea41f813f255809c18d97"
+    },
+    {
+      "id": "the_boss_mgs",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/the_boss_mgs.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "0d92475b1f339bc140b0a967ecc946e2cba62576cf993e486d17cea80dfbed9d",
+      "qualityReportedSha256": "0d92475b1f339bc140b0a967ecc946e2cba62576cf993e486d17cea80dfbed9d",
+      "authorizedSha256": "0d92475b1f339bc140b0a967ecc946e2cba62576cf993e486d17cea80dfbed9d"
+    },
+    {
+      "id": "tommy_tlou",
+      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/tommy_tlou.png",
+      "classification": "approved",
+      "changed": true,
+      "sha256": "ee82d26f735d6f533430a887d6ff847be0b2b7f25aac9578ee4e2820d82c298c",
+      "qualityReportedSha256": "ee82d26f735d6f533430a887d6ff847be0b2b7f25aac9578ee4e2820d82c298c",
+      "authorizedSha256": "ee82d26f735d6f533430a887d6ff847be0b2b7f25aac9578ee4e2820d82c298c"
+    },
+    {
+      "id": "ahsoka_adult",
+      "path": "/sprites/generated/heroes/star-wars/ahsoka-adult.png",
+      "classification": "approved",
+      "changed": false,
+      "sha256": "33447986f3ed85a2b987b80d79d4f4494202e41f6c0faff3499d2584f1e714c8",
+      "qualityReportedSha256": "33447986f3ed85a2b987b80d79d4f4494202e41f6c0faff3499d2584f1e714c8",
+      "authorizedSha256": "33447986f3ed85a2b987b80d79d4f4494202e41f6c0faff3499d2584f1e714c8"
+    },
+    {
+      "id": "darth_maul",
+      "path": "/sprites/generated/heroes/star-wars/darth-maul.png",
+      "classification": "approved",
+      "changed": false,
+      "sha256": "88ad49c11b99a5a5322252092e63029668dce6378be143db7b5d9b4e5b67dccd",
+      "qualityReportedSha256": "88ad49c11b99a5a5322252092e63029668dce6378be143db7b5d9b4e5b67dccd",
+      "authorizedSha256": "88ad49c11b99a5a5322252092e63029668dce6378be143db7b5d9b4e5b67dccd"
+    },
+    {
+      "id": "obi_wan",
+      "path": "/sprites/generated/heroes/star-wars/obi-wan.png",
+      "classification": "approved",
+      "changed": false,
+      "sha256": "5e2dcd725a8ebbcab1a24715ced90885016ab025b8ec7dcd119774475b0a12d3",
+      "qualityReportedSha256": "5e2dcd725a8ebbcab1a24715ced90885016ab025b8ec7dcd119774475b0a12d3",
+      "authorizedSha256": "5e2dcd725a8ebbcab1a24715ced90885016ab025b8ec7dcd119774475b0a12d3"
+    },
+    {
+      "id": "vader",
+      "path": "/sprites/generated/heroes/star-wars/vader.png",
+      "classification": "approved",
+      "changed": false,
+      "sha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464",
+      "qualityReportedSha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464",
+      "authorizedSha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464"
+    },
+    {
+      "id": "yoda",
+      "path": "/sprites/generated/heroes/star-wars/yoda.png",
+      "classification": "approved",
+      "changed": false,
+      "sha256": "44b2b09fe1ca526bd2e9f24efc377f0e4e97984a867d5d6371d4e1baaa74bfc5",
+      "qualityReportedSha256": "44b2b09fe1ca526bd2e9f24efc377f0e4e97984a867d5d6371d4e1baaa74bfc5",
+      "authorizedSha256": "44b2b09fe1ca526bd2e9f24efc377f0e4e97984a867d5d6371d4e1baaa74bfc5"
+    }
+  ],
+  "references": [
+    {
+      "stageId": 9204,
+      "character": "Ellen Ripley",
+      "previous": [
+        "/sprites/generated/heroes/alien/ripley.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/ripley.png"
+      ]
+    },
+    {
+      "stageId": 9209,
+      "character": "Chell",
+      "previous": [
+        "/sprites/generated/heroes/portal/chell.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/chell.png"
+      ]
+    },
+    {
+      "stageId": 9325,
+      "character": "Luke Skywalker",
+      "previous": [
+        "/sprites/generated/heroes/star-wars/luke.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/luke.png"
+      ]
+    },
+    {
+      "stageId": 9352,
+      "character": "Corporal Hicks",
+      "previous": [
+        "/sprites/generated/heroes/alien/hicks.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/hicks.png"
+      ]
+    },
+    {
+      "stageId": 9353,
+      "character": "Bishop",
+      "previous": [
+        "/sprites/generated/heroes/alien/bishop.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/bishop.png"
+      ]
+    },
+    {
+      "stageId": 9354,
+      "character": "Captain Dallas",
+      "previous": [
+        "/sprites/generated/heroes/alien/dallas-alien.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/dallas_alien.png"
+      ]
+    },
+    {
+      "stageId": 9355,
+      "character": "Parker",
+      "previous": [
+        "/sprites/generated/heroes/alien/parker-alien.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/parker_alien.png"
+      ]
+    },
+    {
+      "stageId": 9356,
+      "character": "Lambert",
+      "previous": [
+        "/sprites/generated/heroes/alien/lambert-alien.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/lambert_alien.png"
+      ]
+    },
+    {
+      "stageId": 9358,
+      "character": "Ash",
+      "previous": [
+        "/sprites/generated/heroes/alien/ash-alien.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/ash_alien.png"
+      ]
+    },
+    {
+      "stageId": 9359,
+      "character": "Amanda Ripley",
+      "previous": [
+        "/sprites/generated/heroes/alien/amanda-ripley.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/amanda_ripley.png"
+      ]
+    },
+    {
+      "stageId": 9403,
+      "character": "Atlas",
+      "previous": [
+        "/sprites/generated/heroes/portal/atlas.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/atlas.png"
+      ]
+    },
+    {
+      "stageId": 9404,
+      "character": "P-Body",
+      "previous": [
+        "/sprites/generated/heroes/portal/pbody.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/pbody.png"
+      ]
+    },
+    {
+      "stageId": 9405,
+      "character": "GLaDOS",
+      "previous": [
+        "/sprites/generated/heroes/portal/glados.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/glados.png"
+      ]
+    },
+    {
+      "stageId": 9406,
+      "character": "Wheatley",
+      "previous": [
+        "/sprites/generated/heroes/portal/wheatley.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/wheatley.png"
+      ]
+    },
+    {
+      "stageId": 9409,
+      "character": "Doug Rattmann",
+      "previous": [
+        "/sprites/generated/heroes/portal/doug-rattmann.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/doug_rattmann.png"
+      ]
+    },
+    {
+      "stageId": 9414,
+      "character": "Meryl Silverburgh",
+      "previous": [
+        "/sprites/generated/heroes/metal-gear/meryl-mgs.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/meryl_mgs.png"
+      ]
+    },
+    {
+      "stageId": 9415,
+      "character": "Liquid Snake",
+      "previous": [
+        "/sprites/generated/heroes/metal-gear/liquid-snake.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/liquid_snake.png"
+      ]
+    },
+    {
+      "stageId": 9416,
+      "character": "The Boss",
+      "previous": [
+        "/sprites/generated/heroes/metal-gear/the-boss-mgs.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/the_boss_mgs.png"
+      ]
+    },
+    {
+      "stageId": 9417,
+      "character": "Revolver Ocelot",
+      "previous": [
+        "/sprites/generated/heroes/metal-gear/ocelot-mgs.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/ocelot_mgs.png"
+      ]
+    },
+    {
+      "stageId": 9418,
+      "character": "Gray Fox",
+      "previous": [
+        "/sprites/generated/heroes/metal-gear/gray-fox.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/gray_fox.png"
+      ]
+    },
+    {
+      "stageId": 9419,
+      "character": "Big Boss",
+      "previous": [
+        "/sprites/generated/heroes/metal-gear/big-boss.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/big_boss.png"
+      ]
+    },
+    {
+      "stageId": 9510,
+      "character": "Samuel Hayden",
+      "previous": [
+        "/sprites/generated/heroes/doom/hayden.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/hayden.png"
+      ]
+    },
+    {
+      "stageId": 9534,
+      "character": "Aayla Secura",
+      "previous": [
+        "/sprites/generated/heroes/star-wars/aayla-secura.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/aayla_secura.png"
+      ]
+    },
+    {
+      "stageId": 9535,
+      "character": "Darth Revan",
+      "previous": [
+        "/sprites/generated/heroes/star-wars/darth-revan.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png"
+      ]
+    },
+    {
+      "stageId": 9624,
+      "character": "Rincewind",
+      "previous": [
+        "/sprites/generated/heroes/discworld/rincewind-dw.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/rincewind_dw.png"
+      ]
+    },
+    {
+      "stageId": 9625,
+      "character": "Sam Vimes",
+      "previous": [
+        "/sprites/generated/heroes/discworld/vimes-dw.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/vimes_dw.png"
+      ]
+    },
+    {
+      "stageId": 9626,
+      "character": "Granny Weatherwax",
+      "previous": [
+        "/sprites/generated/heroes/discworld/granny-dw.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/granny_dw.png"
+      ]
+    },
+    {
+      "stageId": 9627,
+      "character": "Twoflower",
+      "previous": [
+        "/sprites/generated/heroes/discworld/twoflower-dw.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/twoflower_dw.png"
+      ]
+    },
+    {
+      "stageId": 9628,
+      "character": "Death",
+      "previous": [
+        "/sprites/generated/heroes/discworld/death-dw.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/death_dw.png"
+      ]
+    },
+    {
+      "stageId": 9630,
+      "character": "Nanny Ogg",
+      "previous": [
+        "/sprites/generated/heroes/discworld/nanny-ogg-dw.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-a/nanny_ogg_dw.png"
+      ]
+    },
+    {
+      "stageId": 10186,
+      "character": "Joel",
+      "previous": [
+        "/sprites/generated/heroes/the-last-of-us/joel-tlou.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/joel_tlou.png"
+      ]
+    },
+    {
+      "stageId": 10187,
+      "character": "Tess",
+      "previous": [
+        "/sprites/generated/heroes/the-last-of-us/tess-tlou.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/tess_tlou.png"
+      ]
+    },
+    {
+      "stageId": 10188,
+      "character": "Tommy Miller",
+      "previous": [
+        "/sprites/generated/heroes/the-last-of-us/tommy-tlou.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/tommy_tlou.png"
+      ]
+    },
+    {
+      "stageId": 10189,
+      "character": "Dina",
+      "previous": [
+        "/sprites/generated/heroes/the-last-of-us/dina-tlou2.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/dina_tlou2.png"
+      ]
+    },
+    {
+      "stageId": 10190,
+      "character": "Abby Anderson",
+      "previous": [
+        "/sprites/generated/heroes/the-last-of-us/abby-tlou2.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/abby_tlou2.png"
+      ]
+    }
+  ],
+  "retainedHistoricalReferences": [
+    "/sprites/generated/heroes/star-wars/ahsoka-adult.png",
+    "/sprites/generated/heroes/star-wars/darth-maul.png",
+    "/sprites/generated/heroes/star-wars/obi-wan.png",
+    "/sprites/generated/heroes/star-wars/vader.png",
+    "/sprites/generated/heroes/star-wars/yoda.png"
+  ],
+  "catalogTotalBefore": 3199,
+  "catalogTotalAfter": 3199,
+  "qualityBefore": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "qualityAfter": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "registryStatuses": {
+    "available": 1030,
+    "pending": 2169
+  },
+  "registryAvailabilityDelta": {
+    "before": {
+      "available": 1030,
+      "pending": 2169
+    },
+    "after": {
+      "available": 1030,
+      "pending": 2169
+    },
+    "changes": [],
+    "promptChangeCount": 24,
+    "promptChanges": [
+      {
+        "stageId": 9353,
+        "character": "Bishop",
+        "previousPromptSha256": "272eab0b43ec45de364aff9484230d6a2d397e684c5a358c05898680289d50a7",
+        "currentPromptSha256": "576e6db9458b8846ca2ac327592c7a731e1346a5269b2eafc7178d6759e61bf3",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9354,
+        "character": "Captain Dallas",
+        "previousPromptSha256": "8f495a5b4ddfcea4a83d129d29f86760c9f1a291da53e699abdf074592737c0b",
+        "currentPromptSha256": "f767348e59a7d0118a60a3a52da06f957e8fec13b5edcdfa5001cda04b63a330",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9355,
+        "character": "Parker",
+        "previousPromptSha256": "412d7b898ede35ff4265e8e484ada19cb1d06f8fe31f4b552013d1618b249196",
+        "currentPromptSha256": "766256719ec5c6b3ed2526bcc69d033f5a88dbd38cb68a9cac804c0e7201c39d",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9356,
+        "character": "Lambert",
+        "previousPromptSha256": "2f9f099bab25cc22b13a9bf8e0f9f49c42cb8bb171175d7a11305dd5e4fe42f9",
+        "currentPromptSha256": "d417369e6d1c1ff66104b73779a890394a392f34357323c8ef4de0c943563969",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9358,
+        "character": "Ash",
+        "previousPromptSha256": "d9f4ceb4288698b907e928bfe651da0f7e9a3c6e7d8bc25647dfa2beb3535346",
+        "currentPromptSha256": "c347d93b7535de9e4db562981d06b665481fea22097bfe95ea1cbb650d1fb863",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9359,
+        "character": "Amanda Ripley",
+        "previousPromptSha256": "6a57ec5724ace6073a6824f76230ee670fccfea9a6b92fbf3bd73c1cdc70793b",
+        "currentPromptSha256": "41b04046ef095ef0a12b9bda7ac3a81f368ff182668b096a4965519e2ef18262",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9405,
+        "character": "GLaDOS",
+        "previousPromptSha256": "4d0d19c512299cc4a0aaf0e7e1d287e4de83b4658847431a23db498e2a25c101",
+        "currentPromptSha256": "70fb3b1c6b3f1f0b12c67532e45b8c498fb7bb007ee33aa6a325661acd6b87f9",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9406,
+        "character": "Wheatley",
+        "previousPromptSha256": "b7441c99e744730ae0d234d8b2154e671d48e4ebed796b7733d3a8d50c22ab55",
+        "currentPromptSha256": "604834e0af6c040524afdc06a9786c20cff889f283dbe426b18d877fc2367ed4",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9409,
+        "character": "Doug Rattmann",
+        "previousPromptSha256": "9de148f00f5a7e925ba167c49af7f6a0e796976b785a20e66144fabdcad27bed",
+        "currentPromptSha256": "28b961a4e80f56786df932d141ed9e24ed6184e970623029bfb70fc2dbd61b10",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9415,
+        "character": "Liquid Snake",
+        "previousPromptSha256": "e3fcb3d701e8888839ed6d8d8ed88b618b181c4d38778820bc265e7acdc78cf0",
+        "currentPromptSha256": "34ab1efc50074c7ea3803cba1a5225591f7c2ff8b4ab19d10e5795d3d067ae06",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9416,
+        "character": "The Boss",
+        "previousPromptSha256": "99159799c8c3f6e0850229bb7170767ffb62c8f7cd076c2118582b3554c579a8",
+        "currentPromptSha256": "3d746f5c671143dc33fffae2add96ed58e88c8a4e3dcc1c19cf3d4aac9bfe58a",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9418,
+        "character": "Gray Fox",
+        "previousPromptSha256": "b0a2dd4ee9ca9a3522f4fa476198c06224578301f14e6a002ef8a24cff9341be",
+        "currentPromptSha256": "bbf5ea22864990c75e755d6a7183a6e6792c64c8959b1bcfc27169b221101160",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9510,
+        "character": "Samuel Hayden",
+        "previousPromptSha256": "a39557b0f992377d5fbb0e9fa1c51a4a29cc62b457007c50b62f9eb7bfba0ff1",
+        "currentPromptSha256": "76377e9bc9b65ee1027f60fb0149ecfd7f7988fc27cbb1b1e027a0d1a3be173e",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9533,
+        "character": "Ahsoka Tano (Adult)",
+        "previousPromptSha256": "4a9fd095de7d28477fd6b7542dba004b47ed6f966b742df0fd4eec0d5d9732f4",
+        "currentPromptSha256": "8f68974be2310d8607ab7747a20b227ddd01e0343f2051eda6e724cdd42d14e6",
+        "referenceChanged": false,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9535,
+        "character": "Darth Revan",
+        "previousPromptSha256": "0ed5605c483bda2fd899415ad05f4da065745caa09f3fc8a94a7b7c3cdb3b9fa",
+        "currentPromptSha256": "cc7323335a8f0057f46b6e6e03a12dce2d0885ef182442d485ffc6c7a5d208a4",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9539,
+        "character": "Yoda",
+        "previousPromptSha256": "20fac95c7b7cd8ceb739db08e1e80641257466b6918072429819400194516bb3",
+        "currentPromptSha256": "a42b20a1ab7217e9fc3bb3b8e99a1284836c45a5b870050c32a84577f45b023a",
+        "referenceChanged": false,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9540,
+        "character": "Darth Maul",
+        "previousPromptSha256": "52cbacbee9ea5516b45401b9b286e77e6fd56c2938e5c738de478fad1c137659",
+        "currentPromptSha256": "eeabeaa2ef101faac8eff68399777422b227823d8ea2ee9f41b61506c3c2faca",
+        "referenceChanged": false,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9624,
+        "character": "Rincewind",
+        "previousPromptSha256": "c45aa93eb77192bda84715e40a363e9e14e9899178a98f1c73fdc4a18b7418e6",
+        "currentPromptSha256": "a004fd99cd3c9e965edbb09912d5299f16ce28ec871638a772afad742895cdd5",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9625,
+        "character": "Sam Vimes",
+        "previousPromptSha256": "cd927ae10980268d36024a6610cd5eccd6a09bf5a672fa8115a4004116651185",
+        "currentPromptSha256": "347d9e5ffbd9bb60979ce577a1b7b3453f57296c571433f0fc2635dcbbdb87e7",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9626,
+        "character": "Granny Weatherwax",
+        "previousPromptSha256": "5887d17382354efbf29e535ef607796443edffd7d51277baf2c7312f5ef763d7",
+        "currentPromptSha256": "bd80a25b3991b74ad7263bd4245f07526bae6f1a0054c0070dce961e509d8d90",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9627,
+        "character": "Twoflower",
+        "previousPromptSha256": "757aaae93d1ba7eab0309b88aa45c08e6c2bc2993278d194c93e359c50a17980",
+        "currentPromptSha256": "d8da573dd785deb59abdd3f2a26718cf656f5d92b461357676c51d7082d754af",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9628,
+        "character": "Death",
+        "previousPromptSha256": "898d31a02401a38db38143a68d0d14d28463ae8b124d5a00cda15086488203b1",
+        "currentPromptSha256": "6c869c3d4d5e31f2fbfe7ad3fe9df2dcbab92522e9cfda8e9b57255534baa490",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 9630,
+        "character": "Nanny Ogg",
+        "previousPromptSha256": "e8052d5434cf9810094d8b9793a8757d1c88c9f4bebaff7aa9114994fef702bb",
+        "currentPromptSha256": "f9de1640562d6b785a93ec522f44c434c69c51cd3984e315ff0268975800770a",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      },
+      {
+        "stageId": 10188,
+        "character": "Tommy Miller",
+        "previousPromptSha256": "2ef1d7a332df8c0e41a4362b2e03ad9540d4a4985f174c17312a0bcdcd913ab2",
+        "currentPromptSha256": "bc7ad23ad7761839c258f8c459e1534fa85cca1e458712b6ef8df32c5f339dc8",
+        "referenceChanged": true,
+        "previousStatus": "pending",
+        "currentStatus": "pending"
+      }
+    ],
+    "newlyPending": [],
+    "source": "Real before/after registry entries; no status restoration or threshold modification."
+  },
+  "revisedCharacterPromptCount": 24,
+  "sourceSha256Before": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "dc84b63e0a02452b4c9be5d0c74d27b152324577292240e6db948d7e23aeeea2"
+  },
+  "sourceSha256After": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "dc84b63e0a02452b4c9be5d0c74d27b152324577292240e6db948d7e23aeeea2"
+  },
+  "finalOutputSha256": {
+    "docs/rift-dossiers/catalog.json": "dccc17ae2b4229ecb55d4baa395ba670498f449c0e57ddd6b14afe8670b98d02",
+    "docs/rift-dossiers/character-reference-quality.json": "f8b3272ecc04386933911005bdb627ed66503cb9952077d68c9f50d5252ff2ad",
+    "src/game/riftDossierAssets.json": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a"
+  },
+  "limitations": [
+    "Historical references retained for ahsoka_adult, darth_maul, obi_wan, vader, yoda; missing native base/presentation drawings are not counted as new delivery.",
+    "Any dossier marked pending after an actual prompt/reference revision remains pending; approved character references do not certify dossier-image availability."
+  ],
+  "executionResumed": true,
+  "resumption": {
+    "mode": "resume-after-reference-audit",
+    "resumedAt": "2026-10-25T06:22:08.413842+00:00",
+    "archivedResult": {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/interrupted-after-reference-audit-20261025T062208413861Z/result.json",
+      "sha256": "d84ac931dc031cc764c6faf20abecc9d6b6964f1041b94233eeadac096d7ab37"
+    },
+    "originalStartedAt": "2026-10-24T03:01:08.837820+00:00",
+    "completedStepIds": [
+      "01-catalog-refresh",
+      "02-character-reference-audit"
+    ],
+    "runner": {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/run-sequential-refresh.py",
+      "sha256": "2c77ff4764c1ceb5956b7329d51424399a77b007710f2d806e82371931a27787"
+    },
+    "verified": {
+      "completedStepLogsAndArguments": true,
+      "historicalSourcesAndPackageUnchanged": true,
+      "frozenReferences": 40,
+      "qualityReportBindsFrozenReferences": true,
+      "registryStillBeforeFinalWrites": true
+    },
+    "basis": "The environment was replaced after the real successful reference audit. Its two completed commands remain unchanged; only commands 3–5 resume after the separate root browser-closure gate."
+  }
+}

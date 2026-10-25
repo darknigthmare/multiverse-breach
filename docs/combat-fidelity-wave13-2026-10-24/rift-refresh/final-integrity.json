@@ -1,0 +1,345 @@
+{
+  "passed": true,
+  "success": true,
+  "fiveCommandExitCodes": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "historicalScriptsAndPackageUnchanged": true,
+  "qualityBindsCurrentReferenceHashes": true,
+  "referencesChecked": 40,
+  "changedReferences": 35,
+  "retainedHistoricalReferences": 5,
+  "allChangedReferencesApproved": true,
+  "qualityThresholdsAndKnownExpectationsUnchanged": true,
+  "qualityReferenceCounts": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "registryStatuses": {
+    "available": 1030,
+    "pending": 2169
+  },
+  "revisedCharacterPromptsMeasured": 24,
+  "availabilityStatusChanges": 0,
+  "hashChecks": 67,
+  "files": [
+    {
+      "path": "scripts/buildRiftDossierCatalog.mjs",
+      "sha256": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143"
+    },
+    {
+      "path": "scripts/auditCharacterReferenceQuality.py",
+      "sha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb"
+    },
+    {
+      "path": "scripts/buildRiftDossierAssetRegistry.mjs",
+      "sha256": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "dc84b63e0a02452b4c9be5d0c74d27b152324577292240e6db948d7e23aeeea2"
+    },
+    {
+      "path": "docs/rift-dossiers/catalog.json",
+      "sha256": "dccc17ae2b4229ecb55d4baa395ba670498f449c0e57ddd6b14afe8670b98d02"
+    },
+    {
+      "path": "docs/rift-dossiers/character-reference-quality.json",
+      "sha256": "f8b3272ecc04386933911005bdb627ed66503cb9952077d68c9f50d5252ff2ad"
+    },
+    {
+      "path": "src/game/riftDossierAssets.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/interrupted-after-reference-audit-20261025T062208413861Z/result.json",
+      "sha256": "d84ac931dc031cc764c6faf20abecc9d6b6964f1041b94233eeadac096d7ab37"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/run-sequential-refresh.py",
+      "sha256": "2c77ff4764c1ceb5956b7329d51424399a77b007710f2d806e82371931a27787"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/01-catalog-refresh.log",
+      "sha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/02-character-reference-audit.log",
+      "sha256": "cc4213f4000b1d22e61d187bf3fafd97589f45d967562cafeaf3fc85d9055485"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/03-catalog-build.log",
+      "sha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/04-asset-registry-build.log",
+      "sha256": "0ae6d3724a446f09f64e6b22d192d46ca63237ce1f541acce4e94aae3905c82c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/05-rift-audit.log",
+      "sha256": "c2329e6e7f1c2a09d9c3031556456fc58c9efe6ca1b348a83f5bcefa25ced44d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/ripley.png",
+      "sha256": "f9a374f66fec8fd432209dd46ba10d15db770d1d4c2ecf33f9cef915702aec06"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/hicks.png",
+      "sha256": "88f1c00e5bf9fbcd53001d7c935f72a426b6ff1651510d11d17d5d6e82a519f9"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/bishop.png",
+      "sha256": "d01d97b6cb794d566a8abda1377094db4d942836d24e9027433e89c46f31ce48"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/dallas_alien.png",
+      "sha256": "7978a826277a801295a853cca76d2a5bdb9d47201214652379c433a70545c552"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/parker_alien.png",
+      "sha256": "7217a7ac5d3ff8f898410ab203bf0575f34df3084e8563e42121ed1503a7e289"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/lambert_alien.png",
+      "sha256": "afaa37ef9d98dbcaba502ddd98f537ae2884d9e23b1bd9579109c17bce2beea3"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/ash_alien.png",
+      "sha256": "55678533c68ab35269de4e0d3962c2cd509794270263505fdc5e4a52169b4ee9"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/amanda_ripley.png",
+      "sha256": "a10b6f1fa7a93a5cafb114a82e5dc0c8b1cd04a2e405e42d10f3bd9332760bc0"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/chell.png",
+      "sha256": "689d78193b7327c2a3bd66921795e2f115c4b7c5fc9f56303f6186cf0cf83ae8"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/atlas.png",
+      "sha256": "413881deab614fcca46dd08485e289bcd6590dd2d9e4a1053a45458f7aaa5aa6"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/pbody.png",
+      "sha256": "06204431781872848877d215fc34aed6a0cca282ef8ca5819cc74933809a9939"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/glados.png",
+      "sha256": "15eee94d8482be83a15060befc9a71ff9ab0fddf1f0c0ac23cac7bef8c1010dd"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/wheatley.png",
+      "sha256": "2647beaf4fc30f55c157e2b55949f3f1be151c94297aaebb408d91581c1f8a1d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/doug_rattmann.png",
+      "sha256": "4cfc9d7ea22b72aa7f71f64a4ae877b81450f78fe0efb4b2f0744c9fa75ee17e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/rincewind_dw.png",
+      "sha256": "3e2fe01575a3bec2fdf5eb5ecbba5fa573afcc019ff183152643a213f2b12cba"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/vimes_dw.png",
+      "sha256": "e0f1f15c04e044397792455e237de835e4213fe7902199a802911ab7c5998869"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/granny_dw.png",
+      "sha256": "d6b17b57a5d24d68f4185f0f7c94a1acc448c1d9c43e4f56cbab0918eae472f9"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/twoflower_dw.png",
+      "sha256": "35e0d7f3170d666cc50034d4e07e2fb95d6091e78fc11222ca6a9890bd988374"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/death_dw.png",
+      "sha256": "10523db83fa6d27bd40e6faba57d21fceb287728819688121a8492a1ead82cf5"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/nanny_ogg_dw.png",
+      "sha256": "2a92efd797cf10021282e304b3aec393bb8b6a862527857dbe395000bc638acb"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/meryl_mgs.png",
+      "sha256": "316a608ad5f49b5f2de8274dbfaf5ad12d639879bd5b1775729987bedb70fe42"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/liquid_snake.png",
+      "sha256": "4000f10d82b79d13c9fb698566c5b30fb27fa309588b3adf2200bddaacbc346c"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/the_boss_mgs.png",
+      "sha256": "0d92475b1f339bc140b0a967ecc946e2cba62576cf993e486d17cea80dfbed9d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/ocelot_mgs.png",
+      "sha256": "a0fdedc5e460e73c05add25088a8510b823f2d56adda2883453832b2930f6202"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/gray_fox.png",
+      "sha256": "8502d44ad4361ae5220fa05d0bbd6a08f80102d915656c07b416026c72353453"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/big_boss.png",
+      "sha256": "cdd760785363d5d5a817be6c88fa428131ab1d4ffe5f804d92104b44f6ee1648"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/luke.png",
+      "sha256": "5feee4bf4b31609d48bb1f74ab848f6c998ab98885dc1d896d793554128be775"
+    },
+    {
+      "path": "public/sprites/generated/heroes/star-wars/vader.png",
+      "sha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464"
+    },
+    {
+      "path": "public/sprites/generated/heroes/star-wars/ahsoka-adult.png",
+      "sha256": "33447986f3ed85a2b987b80d79d4f4494202e41f6c0faff3499d2584f1e714c8"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/aayla_secura.png",
+      "sha256": "1d0179e4b85f552c94e08c9079c28aed3e54865aa50c0b724d4e9d39b1913bde"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+      "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+    },
+    {
+      "path": "public/sprites/generated/heroes/star-wars/obi-wan.png",
+      "sha256": "5e2dcd725a8ebbcab1a24715ced90885016ab025b8ec7dcd119774475b0a12d3"
+    },
+    {
+      "path": "public/sprites/generated/heroes/star-wars/yoda.png",
+      "sha256": "44b2b09fe1ca526bd2e9f24efc377f0e4e97984a867d5d6371d4e1baaa74bfc5"
+    },
+    {
+      "path": "public/sprites/generated/heroes/star-wars/darth-maul.png",
+      "sha256": "88ad49c11b99a5a5322252092e63029668dce6378be143db7b5d9b4e5b67dccd"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/joel_tlou.png",
+      "sha256": "10237c3d710b691f4ebb49f5f0c0a68b73eef8de4b159a0daedd25b9fad226f6"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/tess_tlou.png",
+      "sha256": "6af3d00745f2c40394415a8991c55f82f6b558a07b0ea41f813f255809c18d97"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/tommy_tlou.png",
+      "sha256": "ee82d26f735d6f533430a887d6ff847be0b2b7f25aac9578ee4e2820d82c298c"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/dina_tlou2.png",
+      "sha256": "0ba97ff22d45193f1e373e950026e4c70bb08a811f57b737d07d802ae737b5dc"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/abby_tlou2.png",
+      "sha256": "ca91482e1b6d2bf8b05597ac954ce67db49c0723e5701b92dae5c0529cdcd0a2"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/hayden.png",
+      "sha256": "cd0647e372671bf5db19739e44b9b6bcbd23a8922aab6fd5d22ae1d28a23ad68"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/authorization.json",
+      "sha256": "b7729abbb6a926fbb205adc04f4028a0cf88898815bb8739875cce253632c474"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/allow-final-writes.json",
+      "sha256": "782a15f5264b4d12f815ac094a5dd30df42a124265e1331b440c92f2351f31fa"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/result.json",
+      "sha256": "841fd06afda68644ff27531db1eb000c29267585f27b1faa28cbeee74c75f1b4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/summary.json",
+      "sha256": "4a2aa51f36d7e7b239699fcafed51f822d9b41034b382b87e4482c1ddd40b5af"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/registry-availability-delta.json",
+      "sha256": "6487c94874e1add000a806f5917c647b9150e0b8f4d6133e19b6ddb2717b148b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/catalog-before.json",
+      "sha256": "e2ffc63c1031bb9412bbacd0a6a053386e090228a00d5fdebe488e6991dfc5bd"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/quality-before.json",
+      "sha256": "ff39bb189df8df493a2345dac90f02c7a8739dd6702f46b19cd212656a9327b2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/registry-before.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/auditCharacterReferenceQuality-before.py",
+      "sha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/summarize-refresh.py",
+      "sha256": "f2737e256ad4ac13ba1d8e561c11fac615b68bfa6e4360dc91e08c20ca02114a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/verify-refresh-integrity.py",
+      "sha256": "68016a2289b9aea8f3992bf93019c38b2287f6d2394f82f98dd7626d2db76d82"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/preparation-only.json",
+      "sha256": "37d18fa73be51ec39c7e5341d8c7b6fdc24eb75d59e5ba6bae2de774d16d775e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/README.md",
+      "sha256": "4195dd8005a3cc7be6d0976ae5de6ade0c699da806e2a069024093d53302cf97"
+    }
+  ],
+  "barrierReleasedByRoot": true,
+  "browserWindowsClosedBeforeFinalWrites": true,
+  "source1to1Verified": false,
+  "executionResumed": true,
+  "resumption": {
+    "mode": "resume-after-reference-audit",
+    "resumedAt": "2026-10-25T06:22:08.413842+00:00",
+    "archivedResult": {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/interrupted-after-reference-audit-20261025T062208413861Z/result.json",
+      "sha256": "d84ac931dc031cc764c6faf20abecc9d6b6964f1041b94233eeadac096d7ab37"
+    },
+    "originalStartedAt": "2026-10-24T03:01:08.837820+00:00",
+    "completedStepIds": [
+      "01-catalog-refresh",
+      "02-character-reference-audit"
+    ],
+    "runner": {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/run-sequential-refresh.py",
+      "sha256": "2c77ff4764c1ceb5956b7329d51424399a77b007710f2d806e82371931a27787"
+    },
+    "verified": {
+      "completedStepLogsAndArguments": true,
+      "historicalSourcesAndPackageUnchanged": true,
+      "frozenReferences": 40,
+      "qualityReportBindsFrozenReferences": true,
+      "registryStillBeforeFinalWrites": true
+    },
+    "basis": "The environment was replaced after the real successful reference audit. Its two completed commands remain unchanged; only commands 3–5 resume after the separate root browser-closure gate."
+  },
+  "limitations": [
+    "Historical references retained for ahsoka_adult, darth_maul, obi_wan, vader, yoda; missing native base/presentation drawings are not counted as new delivery.",
+    "Any dossier marked pending after an actual prompt/reference revision remains pending; approved character references do not certify dossier-image availability."
+  ]
+}

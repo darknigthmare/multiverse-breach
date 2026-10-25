@@ -1,3 +1,4 @@
+import { STAGE_ANIMATION_WAVE_12, drawStageAnimationWave12 } from './stageAnimationCatalogWave12.js';
 import { STAGE_ANIMATION_WAVE_11, WAVE_11_MODE_REFERENCE_SCENES, drawStageAnimationWave11 } from './stageAnimationCatalogWave11.js';
 import { STAGE_ANIMATION_WAVE_10, WAVE_10_MODE_REFERENCE_SCENES, drawStageAnimationWave10 } from './stageAnimationCatalogWave10.js';
 import { getUniverseStageAtmosphereDefault } from './stageAtmosphereUniverseDefaults.js';
@@ -31,6 +32,7 @@ const portalAtlas = (slug, x, y, size, frameOrder = [2, 2, 2, 3, 0, 0, 1, 1]) =>
 });
 
 export const STAGE_ANIMATION_PROFILES = Object.freeze([
+  ...STAGE_ANIMATION_WAVE_12.map(profile),
   profile({
     id: 'ff7-reactor-mako-circulation', universes: ['Final Fantasy VII'], scenePattern: /mako|reactor|r[eé]acteur/i,
     sourceWork: 'Final Fantasy VII — Mako Reactor 1', sourceReference: 'https://na.finalfantasy.com/titles/finalfantasy7',
@@ -299,6 +301,7 @@ function drawMechanism(ctx, animation, frame, width, height) {
   ctx.strokeStyle = animation.color;
   ctx.fillStyle = animation.color;
   ctx.lineWidth = Math.max(1, width / 1000);
+  if (animation.animationWave === 12 && drawStageAnimationWave12(ctx, animation, frame, width, height)) return;
   if (animation.animationWave === 11 && drawStageAnimationWave11(ctx, animation, frame, width, height)) return;
   if (animation.animationWave === 10 && drawStageAnimationWave10(ctx, animation, frame, width, height)) return;
   if (animation.animationWave === 9 && drawStageAnimationWave9(ctx, animation, frame, width, height)) return;

@@ -1,0 +1,24 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: turn draws four poses
++ actual - expected
+
+  [
+-   0,
+    1,
+    2,
+    3
+  ]
+
+    at file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-movement-browser.mjs:96:48 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [ 1, 2, 3 ],
+  expected: [ 0, 1, 2, 3 ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

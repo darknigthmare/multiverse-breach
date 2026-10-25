@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "reviewedAt": "2026-10-24T02:06:19.093Z",
+  "kind": "manual-review-of-focused-renderer-captures",
+  "actualGameCanvasUserFlows": 0,
+  "preliminary": true,
+  "captures": [
+    {
+      "path": "nexus_skybridge-full.png",
+      "sha256": "56030c256ce66c664b6770fafc8c2df691d4dc1d42d7cc305c39fd75b23b690f",
+      "bytes": 127773
+    },
+    {
+      "path": "nexus_skybridge-cut0.png",
+      "sha256": "cc0ee726b46ce66e3510c346783ce724b10a2482f45d973a5b5d100a93fb9e01",
+      "bytes": 117268
+    },
+    {
+      "path": "ruined_terraces-full.png",
+      "sha256": "596922e37129cf1c821f3dfd59455aafc6c30c0f8bf74a73d6b8bc018b4249ba",
+      "bytes": 118964
+    },
+    {
+      "path": "ruined_terraces-cut0.png",
+      "sha256": "70fd7857f0800e8df376933d9e89d532ec9c577ee65f3fb941af060646f545fb",
+      "bytes": 101512
+    },
+    {
+      "path": "cyber_catwalks-full.png",
+      "sha256": "4cf6d7d08a518919172426892863ba87b846e12f118931c2a5c6f98f2626d8ab",
+      "bytes": 140607
+    },
+    {
+      "path": "cyber_catwalks-cut0.png",
+      "sha256": "632c50c39e9eda4ac48a427b986e5a6137b1405fb322a6a2087428f50ead3981",
+      "bytes": 121370
+    }
+  ],
+  "browserReportSha256": "4d3f31b209403ed08e24f41116c8c51379e97d5dbcd826e1625c49c90fb2b9e1",
+  "observations": [
+    "Nexus skybridge shows a thin suspended platform, distinct lower floor and twelve real treads across its three access cells. The underside does not fill the passage.",
+    "Ruined terraces use stone top and wall textures, earth ramps, grass ground and distinct stair treads. The elevated solid terrace does not invent a walkable floor underneath.",
+    "Cyber catwalk uses a grate top, thin metal fascia and visible railings over a separate lower floor.",
+    "The level0 view removes elevated decks and their actors while keeping the true remaining floor and the entry ramps/stairs whose minimum height is0. The cut is a visibility filter, not a geometric excavation.",
+    "Material detail follows each face, and the full-board source image is not stretched over cliffs.",
+    "These six canvases use the shipped renderer module with simple actor markers; actual GameCanvas interactions remain a separate verification responsibility."
+  ],
+  "limits": [
+    "Original procedural material study; no claim of official texture or universe architecture fidelity.",
+    "No frame-rate claim or final production freeze claim."
+  ]
+}

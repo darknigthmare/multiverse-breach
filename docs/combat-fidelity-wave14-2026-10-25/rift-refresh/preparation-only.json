@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 2,
+  "wave": 14,
+  "createdAt": "2026-10-25T08:46:32.144373+00:00",
+  "preparationOnly": true,
+  "authorized": false,
+  "commandsExecuted": [],
+  "authorizationFileCreated": false,
+  "finalWriteGateCreated": false,
+  "historicalPythonSha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+  "sourceBaseline": "docs/combat-fidelity-wave14-2026-10-25/baseline.json",
+  "snapshots": [
+    {
+      "source": "docs/rift-dossiers/catalog.json",
+      "snapshot": "docs/combat-fidelity-wave14-2026-10-25/rift-refresh/catalog-before.json",
+      "sha256": "dccc17ae2b4229ecb55d4baa395ba670498f449c0e57ddd6b14afe8670b98d02",
+      "bytes": 10849969
+    },
+    {
+      "source": "docs/rift-dossiers/character-reference-quality.json",
+      "snapshot": "docs/combat-fidelity-wave14-2026-10-25/rift-refresh/quality-before.json",
+      "sha256": "f8b3272ecc04386933911005bdb627ed66503cb9952077d68c9f50d5252ff2ad",
+      "bytes": 3573500
+    },
+    {
+      "source": "src/game/riftDossierAssets.json",
+      "snapshot": "docs/combat-fidelity-wave14-2026-10-25/rift-refresh/registry-before.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a",
+      "bytes": 552092
+    },
+    {
+      "source": "scripts/auditCharacterReferenceQuality.py",
+      "snapshot": "docs/combat-fidelity-wave14-2026-10-25/rift-refresh/auditCharacterReferenceQuality-before.py",
+      "sha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+      "bytes": 29217
+    }
+  ],
+  "remainingBeforeExecution": "Root must freeze package and all40 current references before authorization. References-only steps1–2 are separate from gated final writes3–5. No source/threshold/pin change or pending-status restoration is authorized.",
+  "helpers": {
+    "run-sequential-refresh.py": "5dc20e2f955d6af3d2f8d7d4c57e8f33621f9537ccbe4fe3fffd9ad138caf2e7",
+    "summarize-refresh.py": "4368ebd3de36a0a5d5fa5419baa8a57c8e0389070f37092a9ac238793fb645fe",
+    "verify-refresh-integrity.py": "4b6334fd578e71d93678b99daacf23526b3549743ad190deea94136f94983ee8"
+  }
+}

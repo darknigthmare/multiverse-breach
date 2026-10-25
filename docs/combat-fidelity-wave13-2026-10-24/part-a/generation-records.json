@@ -1,0 +1,2124 @@
+{
+  "schemaVersion": 1,
+  "part": "A",
+  "wave": 13,
+  "records": [
+    {
+      "heroId": "ripley",
+      "name": "Ellen Ripley",
+      "universe": "Alien",
+      "sourceWork": "Aliens (1986), Ellen Ripley before the power-loader fight",
+      "sourceReference": "https://www.20thcenturystudios.com/movies/aliens",
+      "version": "Short curly brown hair; grey-blue civilian work clothes; two-handed M41A pulse rifle; no power loader or later-film costume.",
+      "referenceAsset": "/sprites/generated/heroes/alien/ripley.png",
+      "referenceAssetSha256": "fc125daf159e56c7df98f71a9b9881f9c21895c3ab8e6decb8484aa6fe1764ab",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/ripley-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Tir du M41A de Ripley",
+      "superName": "Rafale ajustée du M41A de Ripley",
+      "effect": "damage",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/ripley-native-original.png",
+          "sha256": "951ee4df72ce746b925a5fde1e717080560c21ae43e43e42d9a69a9f5111d212",
+          "generatedPath": "/workspace/generated_images/exec-83835882-95ba-40ab-8972-9d601cb1432b.png",
+          "prompt": "Production-ready 2D PIXEL ART game sprite atlas of ADULT ELLEN RIPLEY specifically from ALIENS (1986). Exact version: short curly dark-brown hair, blue-gray Colonial Marine utility jumpsuit with rolled sleeves and dark webbing, practical light sneakers, physical M41A pulse rifle with unmistakable olive/dark green upper receiver and short conventional barrel. Rifle held with two hands when firing. NOT Alien1979 white underwear, NOT bald Alien3, NOT Ripley8, NOT a Power Loader. A generated game adaptation, not official ripped frames. Natural human game proportions, consistent recognizable face and costume, full head-to-shoe body. Generally face SCREEN RIGHT. FULLY TRANSPARENT BACKGROUND. Exactly EIGHT columns by SIX rows,48 separate complete DIFFERENT native drawings, generous transparent gutters, no text, no labels, no grid lines, no environment, no ground shadows. Each row contains TWO four-frame sequences, columns1-4 left sequence, columns5-8 right sequence. Entire body AND rifle fit each cell; no cut heads, feet or props. Same standing-body pixel scale across all48; kneeling remains shorter. ROW1 LEFT INTRO: cautious arrival with rifle lowered, raise gaze, slight ready stance, settle. ROW1 RIGHT OUTRO: lower rifle safely, turn shoulder, step away, final walking departure. ROW2 LEFT ROUND VICTORY: controlled breath, relaxed rifle low, small confident nod, compose stance. ROW2 RIGHT ROUND DEFEAT: noninjured startle, defensive lean, one knee, rise to recovery. ROW3 LEFT FINAL PRESENTATION: rifle raised, aim at EMPTY SPACE right, one conventional brief muzzle flash at rifle barrel, recover stance. ROW3 RIGHT MATCH VICTORY: composed relief, rifle lowered, nod, settle; no gratuitous shooting. ROW4 LEFT MATCH DEFEAT: exhausted step, bend knee, kneel, tired living crouch; no wounds. ROW4 RIGHT SUPER: shoulder M41A, aim right, controlled physical burst with tiny conventional muzzle flash only at barrel, recoil/recovery; no beam or magic. ROW5 LEFT IDLE: four distinct breathing/watchful stance poses with rifle safely low. ROW5 RIGHT RUN: four different running strides, rifle close to chest. ROW6 LEFT BASIC ATTACK: ready rifle, aim, single physical gunshot into empty space, recoil. ROW6 RIGHT LIGHT HIT: startle, backward lean, guarded dip, steady recover. ALL48 drawings must be distinct and present, four timing stages per sequence, no reused drawings. No opponents, companions, gore, blood, wounds, flames, explosions, energy aura, shields or invented powers. Pixel art edges, restrained Aliens gray-blue/olive palette, crisp silhouette, no blurry painterly rendering.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/ripley-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 197,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/ripley-region-review.json",
+          "importRegionsSha256": "e5cc95101c64090e3951c695e5f4a9295bd63516a6c7eae25d49af125c618e1e",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 0,
+            "column": 1,
+            "bodyBounds": {
+              "left": 205,
+              "top": 3,
+              "width": 133,
+              "height": 197,
+              "pixels": 12018
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/ripley_correction24-native-original.png",
+          "sha256": "e0e6e0012e79c6df9c803ecb3f8dfc25528b3c6697a7bfcbb344434a24e45342",
+          "generatedPath": "/workspace/generated_images/exec-6e94bf61-d437-4b4e-b2c5-9165b9e90cf0.png",
+          "prompt": "Create24 NEW native pixel-art poses of ADULT ELLEN RIPLEY from ALIENS1986, matching the reference's correct identity: short curly brown hair, grey-blue utility clothes with rolled sleeves, dark harness, light sneakers, physical olive M41A rifle. This is an ADDITIONAL SOURCE of actual new drawings, not a crop or upscale of reference poses. Keep EXACTLY FOUR columns ×SIX rows on a PORTRAIT transparent PNG atlas. ALL24 FULL BODIES and all props completely inside own cells with generous transparent gaps and safe outer margins on every side; no cropped head or last-row shoes. One shared standing-body pixel scale in all rows, natural shorter crouches. ROW1 four INTRO poses: cautiously step in, look right, raise ready posture, settle rifle low. ROW2 four OUTRO poses: lower rifle safely, turn shoulder, step away, final departure. ROW3 four IDLE poses: four clearly different subtle breathing/watchful poses, rifle low. ROW4 four RUN poses: four distinct rightward actual running strides with rifle securely close to body. ROW5 four BASIC ATTACK poses: shoulder rifle, aim right, brief physical muzzle flash at barrel into EMPTY SPACE, recoil/recover. ROW6 four LIGHT HIT poses: startle, backward lean, guarded dip, recovery, no wounds. Generally face SCREEN RIGHT. All24 cells must be separate different whole native drawings and complete, no reusing reference drawings. Preserve costume, hairstyle and correct rifle. No opponents, other people, text, grid, scenery, cast shadow, backdrop, aura, beams, gore, blood, wounds or explosion. FULLY transparent background, no gradient or matte; crisp pixel-art clusters. Do not shrink later rows or crop any extremity.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/ripley_correction24-actual-prompt.txt",
+          "rows": 6,
+          "columns": 4,
+          "bodyHeight": 272,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/part-a/sources/ripley-native-original.png"
+          ],
+          "nativeDrawingsObserved": 24,
+          "nativeDrawingsRetainedByImport": 24,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/ripley_correction24-region-review.json",
+          "importRegionsSha256": "2c4dcc61fed6ee8480d85b42461aed782222adc1450cd8591d37a40e6f60114c",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 2,
+            "column": 0,
+            "bodyBounds": {
+              "left": 53,
+              "top": 545,
+              "width": 177,
+              "height": 272,
+              "pixels": 25116
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 1,
+          "row": 0
+        },
+        {
+          "source": 1,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 1,
+          "row": 2
+        },
+        {
+          "source": 1,
+          "row": 3
+        },
+        {
+          "source": 1,
+          "row": 4
+        },
+        {
+          "source": 1,
+          "row": 5
+        }
+      ]
+    },
+    {
+      "heroId": "hicks",
+      "name": "Corporal Hicks",
+      "universe": "Alien",
+      "sourceWork": "Aliens (1986), Corporal Dwayne Hicks in colonial marine field armour",
+      "sourceReference": "https://www.20thcenturystudios.com/movies/aliens",
+      "version": "Colonial Marine green-brown camouflage armour, short brown hair, M41A pulse rifle, optional helmet retained consistently; no acid damage.",
+      "referenceAsset": "/sprites/generated/heroes/alien/hicks.png",
+      "referenceAssetSha256": "9f57010c7a21baa9e5dde0a90f0737f608b821751bf84886f54d877a51a3a011",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/hicks-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Tir du M41A de Hicks",
+      "superName": "Tir de couverture du M41A de Hicks",
+      "effect": "damage",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/hicks-native-original.png",
+          "sha256": "4e5272c8f57f8cae35a0b7ffa84fa80bb29686dac592c8ea04f845af91dc5a6c",
+          "generatedPath": "/workspace/generated_images/exec-816de63b-1398-435a-9cdd-294afa5011f4.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Corporal Hicks, EXACTLY the version Aliens (1986), Corporal Dwayne Hicks in colonial marine field armour. Identity/costume/equipment: Colonial Marine green-brown camouflage armour, short brown hair, M41A pulse rifle, optional helmet retained consistently; no acid damage. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: raise and aim the physical olive-green M41A pulse rifle with two hands, fire one brief conventional muzzle flash into EMPTY SPACE right, recover with realistic shoulder recoil. Brown-green camouflage armour and bare short brown hair stay consistent; no helmet, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: raise and aim the physical olive-green M41A pulse rifle with two hands, fire one brief conventional muzzle flash into EMPTY SPACE right, recover with realistic shoulder recoil. Brown-green camouflage armour and bare short brown hair stay consistent; no helmet, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: raise and aim the physical olive-green M41A pulse rifle with two hands, fire one brief conventional muzzle flash into EMPTY SPACE right, recover with realistic shoulder recoil. Brown-green camouflage armour and bare short brown hair stay consistent; no helmet, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/hicks-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 144,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/hicks-region-review.json",
+          "importRegionsSha256": "fc8911186b0b3c67d8377c19bdda71112c7f196f0ab6e341b6d6bc8b7fd67eb7",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 113,
+              "top": 701,
+              "width": 83,
+              "height": 144,
+              "pixels": 6691
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "bishop",
+      "name": "Bishop",
+      "universe": "Alien",
+      "sourceWork": "Aliens (1986), Bishop before his injury",
+      "sourceReference": "https://www.20thcenturystudios.com/movies/aliens",
+      "version": "Adult android with short fair hair and pale grey-white technician coveralls; intact body and empty hands, no knife game or invented gun.",
+      "referenceAsset": "/sprites/generated/heroes/alien/bishop.png",
+      "referenceAssetSha256": "f0f260eca4ca43f4b8da52eb666263b3141990278d41c8deb444f64c61e98f53",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/bishop-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Signal de sécurité de Bishop",
+      "superName": "Vérification de sécurité de Bishop",
+      "effect": "guard",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/bishop-native-original.png",
+          "sha256": "1380caa2fca89762446770cc51fde3472b72a12ef7c31e79d8e822fa58e0e489",
+          "generatedPath": "/workspace/generated_images/exec-a7dcfcda-77be-404f-8ddd-024abd1366ed.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Bishop, EXACTLY the version Aliens (1986), Bishop before his injury. Identity/costume/equipment: Adult android with short fair hair and pale grey-white technician coveralls; intact body and empty hands, no knife game or invented gun. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: perform an unarmed technical safety check and calm directional hand signal to allies. Keep hands empty, no gun, knife, spell, physical strike or glowing effect; this android is an intact nonoffensive technician, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: perform an unarmed technical safety check and calm directional hand signal to allies. Keep hands empty, no gun, knife, spell, physical strike or glowing effect; this android is an intact nonoffensive technician, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: perform an unarmed technical safety check and calm directional hand signal to allies. Keep hands empty, no gun, knife, spell, physical strike or glowing effect; this android is an intact nonoffensive technician, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/bishop-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 143,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/bishop-region-review.json",
+          "importRegionsSha256": "b4fbde375cf86104b82f2b71289cd419fcac981f3ccb0020b362d5ec531a6394",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 189,
+              "top": 719,
+              "width": 64,
+              "height": 143,
+              "pixels": 6250
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "dallas_alien",
+      "name": "Captain Dallas",
+      "universe": "Alien",
+      "sourceWork": "Alien (1979), Captain Arthur Dallas before entering the ventilation ducts",
+      "sourceReference": "https://www.20thcenturystudios.com/movies/alien",
+      "version": "Bearded adult Nostromo captain in dark blue work jacket, practical crew trousers; empty hands, no later marine armour.",
+      "referenceAsset": "/sprites/generated/heroes/alien/dallas-alien.png",
+      "referenceAssetSha256": "12251ce533d766e64421eb56ba506f6fba3388eb0a6318a6d887da36c2ba6d37",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/dallas_alien-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Signal du capitaine Dallas",
+      "superName": "Consigne de repli de Dallas",
+      "effect": "guard",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/dallas_alien-native-original.png",
+          "sha256": "369c31aa1a952b3e1e9104415ea0ff8005b8036b0690cb12f596cba9091f087b",
+          "generatedPath": "/workspace/generated_images/exec-9c57c425-1df3-4226-a756-625e15a2bc6f.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Captain Dallas, EXACTLY the version Alien (1979), Captain Arthur Dallas before entering the ventilation ducts. Identity/costume/equipment: Bearded adult Nostromo captain in dark blue work jacket, practical crew trousers; empty hands, no later marine armour. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave generous transparent gutters and a transparent safety margin around the WHOLE48-pose atlas. All source drawings fit fully in frame. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: give an unarmed Nostromo crew safety instruction: look right, raise an open hand at waist level, point calmly along the safe route, settle. Empty hands, ordinary physical gestures, no attacks or magical effect, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: give an unarmed Nostromo crew safety instruction: look right, raise an open hand at waist level, point calmly along the safe route, settle. Empty hands, ordinary physical gestures, no attacks or magical effect, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: give an unarmed Nostromo crew safety instruction: look right, raise an open hand at waist level, point calmly along the safe route, settle. Empty hands, ordinary physical gestures, no attacks or magical effect, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions. OUTPUT MUST BE A TRUE TRANSPARENT PNG: alpha0 in every gap and background pixel, opaque crisp sprite pixels. No soft edge haze, no colored matte, no vignette, no lights behind figures, no glow. Limit visual content strictly to the 48 bodies and their clothing.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/dallas_alien-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 149,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/dallas_alien-region-review.json",
+          "importRegionsSha256": "b9e8714dcc1360b7e7043a552f5d3a664da68bbda85f9ae210a5ed18a2abcaa4",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 73,
+              "top": 706,
+              "width": 73,
+              "height": 149,
+              "pixels": 7116
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "parker_alien",
+      "name": "Parker",
+      "universe": "Alien",
+      "sourceWork": "Alien (1979), Dennis Parker aboard the Nostromo",
+      "sourceReference": "https://www.20thcenturystudios.com/movies/alien",
+      "version": "Adult Black chief engineer with dark short hair, light work shirt and dark utility trousers; empty hands, no invented powered gauntlet.",
+      "referenceAsset": "/sprites/generated/heroes/alien/parker-alien.png",
+      "referenceAssetSha256": "68becc54c29b70ebd631b15c09308a1eda5257f7a7bb456dc7e6fb30aa5a0751",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/parker_alien-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Coordination d’atelier de Parker",
+      "superName": "Organisation du passage par Parker",
+      "effect": "buff",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/parker_alien-native-original.png",
+          "sha256": "310ff17ac2bb8ce975d902e942c12641c4cbbcddeb18ac68c6ed5ae6a0cf8f23",
+          "generatedPath": "/workspace/generated_images/exec-c7ec1bec-58fc-4af3-a614-15ae21ea6ab8.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Parker, EXACTLY the version Alien (1979), Dennis Parker aboard the Nostromo. Identity/costume/equipment: Adult Black chief engineer with dark short hair, light work shirt and dark utility trousers; empty hands, no invented powered gauntlet. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave generous transparent gutters and a transparent safety margin around the WHOLE48-pose atlas. All source drawings fit fully in frame. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: coordinate ordinary engineering repairs: examine an empty hand, give a firm practical pointing instruction, nod, return hands low. Empty hands, no powered gauntlet, punch, gun, magic, aura or beam, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: coordinate ordinary engineering repairs: examine an empty hand, give a firm practical pointing instruction, nod, return hands low. Empty hands, no powered gauntlet, punch, gun, magic, aura or beam, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: coordinate ordinary engineering repairs: examine an empty hand, give a firm practical pointing instruction, nod, return hands low. Empty hands, no powered gauntlet, punch, gun, magic, aura or beam, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions. OUTPUT MUST BE A TRUE TRANSPARENT PNG: alpha0 in every gap and background pixel, opaque crisp sprite pixels. No soft edge haze, no colored matte, no vignette, no lights behind figures, no glow. Limit visual content strictly to the 48 bodies and their clothing.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/parker_alien-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 156,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/parker_alien-region-review.json",
+          "importRegionsSha256": "2648185a021a48593b68f3e5d648714091da59e57e35caecaebf7468ff4e497e",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 3,
+            "bodyBounds": {
+              "left": 634,
+              "top": 718,
+              "width": 77,
+              "height": 156,
+              "pixels": 7835
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/parker_correction8-native-original.png",
+          "sha256": "2ae6c836592a20dd204676c3a8bcabeb0670d1d860932f19341e08b042654380",
+          "generatedPath": "/workspace/generated_images/exec-37bff8c7-a57c-410a-abf1-f1d39740f981.png",
+          "prompt": "Create EIGHT NEW distinct full-body pixel-art drawings of ADULT DENNIS PARKER, chief engineer from ALIEN1979, matching the attached identity: broad-built adult Black man with short dark hair and moustache, light practical rolled-sleeve Nostromo work shirt and dark utility trousers, dark shoes. These are additional native poses, not copies or an upscale of the reference. EXACTLY FOUR columns ×TWO rows. Small enough full bodies to leave generous transparent gutters and at least48 pixels of COMPLETELY TRANSPARENT outer margin, especially BELOW EVERY SHOE on the last row. ALL8 heads, hands and whole shoes inside own cells. Same body scale across8. ROW1 four BASIC SUPPORT ACTION poses: ordinary engineering coordination, inspect empty hand, give a precise practical pointing signal right, nod and settle. ROW2 four LIGHT HIT/recovery poses: surprised lean, guarded dip, cautious crouch, composed upright recovery; no injury. The character remains an engineer, empty hands; NO punch, gun, powered gauntlet, beam, magic, particles or glowing effect. Generally face SCREEN RIGHT. No scenery, ground, cast shadows, text, labels, grid, blood, wound, opponent or other character. Fully transparent background. Crisp pixel-art clusters. Do not crop the last-row feet. There must be8 different complete native body drawings.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/parker_correction8-actual-prompt.txt",
+          "rows": 2,
+          "columns": 4,
+          "bodyHeight": 407,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/part-a/sources/parker_alien-native-original.png"
+          ],
+          "nativeDrawingsObserved": 8,
+          "nativeDrawingsRetainedByImport": 8,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/parker_correction8-region-review.json",
+          "importRegionsSha256": "024876417726f2a1bf609f2b87855b71734b367cf907592f8141e858304b557a",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 0,
+            "column": 1,
+            "bodyBounds": {
+              "left": 460,
+              "top": 73,
+              "width": 217,
+              "height": 407,
+              "pixels": 51012
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 1,
+          "row": 0
+        },
+        {
+          "source": 1,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "heroId": "lambert_alien",
+      "name": "Lambert",
+      "universe": "Alien",
+      "sourceWork": "Alien (1979), Joan Lambert aboard the Nostromo",
+      "sourceReference": "https://www.20thcenturystudios.com/movies/alien",
+      "version": "Adult navigator with short brown hair, practical Nostromo work shirt and trousers; empty hands, no marine rifle, no supernatural panic attack.",
+      "referenceAsset": "/sprites/generated/heroes/alien/lambert-alien.png",
+      "referenceAssetSha256": "ea557f71a3f3f4c38d9a1038803482af0491233245aa2d779f280906c9125db8",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/lambert_alien-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Repérage du trajet par Lambert",
+      "superName": "Indication de route de Lambert",
+      "effect": "guard",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/lambert_alien-native-original.png",
+          "sha256": "3c91ba9b40f100e682ef3c4c807013311d58a1ad22158b7e0c3611c2fb54c936",
+          "generatedPath": "/workspace/generated_images/exec-d0cc0b82-e382-468c-a841-04333bffe834.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Lambert, EXACTLY the version Alien (1979), Joan Lambert aboard the Nostromo. Identity/costume/equipment: Adult navigator with short brown hair, practical Nostromo work shirt and trousers; empty hands, no marine rifle, no supernatural panic attack. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: make an unarmed navigational safety gesture: check the route with a careful look, point toward a safe direction, raise a calm open hand, settle. Empty hands, no firearm or damaging panic power; practical adult Nostromo navigator, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: make an unarmed navigational safety gesture: check the route with a careful look, point toward a safe direction, raise a calm open hand, settle. Empty hands, no firearm or damaging panic power; practical adult Nostromo navigator, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: make an unarmed navigational safety gesture: check the route with a careful look, point toward a safe direction, raise a calm open hand, settle. Empty hands, no firearm or damaging panic power; practical adult Nostromo navigator, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/lambert_alien-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 151,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 50,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/lambert_alien-region-review.json",
+          "importRegionsSha256": "4469ca781512c33cb69b053460c990dae9f4f90dd0fecb3767a91862e586b4a2",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 3,
+            "bodyBounds": {
+              "left": 497,
+              "top": 705,
+              "width": 62,
+              "height": 151,
+              "pixels": 5992
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "ash_alien",
+      "name": "Ash",
+      "universe": "Alien",
+      "sourceWork": "Alien (1979), Ash in his intact science-officer form",
+      "sourceReference": "https://www.20thcenturystudios.com/movies/alien",
+      "version": "Intact adult android science officer, neatly combed brown hair, pale long-sleeve science shirt and cream trousers; no disassembly or improvised attack.",
+      "referenceAsset": "/sprites/generated/heroes/alien/ash-alien.png",
+      "referenceAssetSha256": "29ca36fa23d05ecbeba23a0ff58a62e8e682f35b2f4bbf4cc837ef5c3d250269",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/ash_alien-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Consultation du protocole par Ash",
+      "superName": "Lecture du protocole par Ash",
+      "effect": "buff",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/ash_alien-native-original.png",
+          "sha256": "a64b55c32849cba856893988c6d22a07b06ab9bb5b6b96cb19ba3f0a65caf2c7",
+          "generatedPath": "/workspace/generated_images/exec-148ef12e-eb51-470a-b6c8-f22e72dbf875.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Ash, EXACTLY the version Alien (1979), Ash in his intact science-officer form. Identity/costume/equipment: Intact adult android science officer, neatly combed brown hair, pale long-sleeve science shirt and cream trousers; no disassembly or improvised attack. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: read and signal an ordinary ship protocol with empty hands: glance down as if recalling a checklist, give a small precise open-hand instruction, nod, return to composed stance. Intact adult android, no weapon, aggression, disassembly, magical effect or glowing attack, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: read and signal an ordinary ship protocol with empty hands: glance down as if recalling a checklist, give a small precise open-hand instruction, nod, return to composed stance. Intact adult android, no weapon, aggression, disassembly, magical effect or glowing attack, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: read and signal an ordinary ship protocol with empty hands: glance down as if recalling a checklist, give a small precise open-hand instruction, nod, return to composed stance. Intact adult android, no weapon, aggression, disassembly, magical effect or glowing attack, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/ash_alien-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 144,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 51,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/ash_alien-region-review.json",
+          "importRegionsSha256": "1f7084d131ff8b812a24fcefbdb21ba1f5c9863e7e5edd4914e6764d42505eee",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 2,
+            "bodyBounds": {
+              "left": 430,
+              "top": 707,
+              "width": 55,
+              "height": 144,
+              "pixels": 5445
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "amanda_ripley",
+      "name": "Amanda Ripley",
+      "universe": "Alien",
+      "sourceWork": "Alien: Isolation (2014), adult Amanda Ripley aboard Sevastopol",
+      "sourceReference": "https://www.alienisolation.com/",
+      "version": "Adult woman with brown hair tied back, practical brown-grey work jacket and dark utility trousers; Sevastopol maintenance jack held as a physical tool.",
+      "referenceAsset": "/sprites/generated/heroes/alien/amanda-ripley.png",
+      "referenceAssetSha256": "7184a0a5f9e9a687c2ae31a4b56349cc0558f7cd8975cb7ab60f8262442e2d90",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/amanda_ripley-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Coup de clé de maintenance d’Amanda",
+      "superName": "Frappe de la clé de maintenance d’Amanda",
+      "effect": "damage",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/amanda_ripley-native-original.png",
+          "sha256": "ddeea525e4e0fd2b4f80a10a95688cc2cfd00f0323c30814582add79d7e09048",
+          "generatedPath": "/workspace/generated_images/exec-ceab0165-7a97-4ced-a79d-cfa2c65145fe.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Amanda Ripley, EXACTLY the version Alien: Isolation (2014), adult Amanda Ripley aboard Sevastopol. Identity/costume/equipment: Adult woman with brown hair tied back, practical brown-grey work jacket and dark utility trousers; Sevastopol maintenance jack held as a physical tool. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: brace the authentic Sevastopol maintenance jack as a physical blunt hand tool, prepare a short deliberate lateral swing into EMPTY SPACE right, finish its bounded motion, lower/recover. Correct blue-green metal maintenance jack silhouette and practical jacket; no other weapon, no magic, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: brace the authentic Sevastopol maintenance jack as a physical blunt hand tool, prepare a short deliberate lateral swing into EMPTY SPACE right, finish its bounded motion, lower/recover. Correct blue-green metal maintenance jack silhouette and practical jacket; no other weapon, no magic, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: brace the authentic Sevastopol maintenance jack as a physical blunt hand tool, prepare a short deliberate lateral swing into EMPTY SPACE right, finish its bounded motion, lower/recover. Correct blue-green metal maintenance jack silhouette and practical jacket; no other weapon, no magic, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/amanda_ripley-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 146,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/amanda_ripley-region-review.json",
+          "importRegionsSha256": "63b7bb4c82498786275f2a5796a0fd2701fbf63a92a7c18d5d25adb287b19b1e",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 3,
+            "bodyBounds": {
+              "left": 640,
+              "top": 710,
+              "width": 73,
+              "height": 146,
+              "pixels": 6591
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "chell",
+      "name": "Chell",
+      "universe": "Portal",
+      "sourceWork": "Portal 2 (2011), adult Chell in the test chambers",
+      "sourceReference": "https://www.thinkwithportals.com/",
+      "version": "Adult Chell with ponytail, white Aperture tank top, orange jumpsuit tied at waist, long-fall boots and dual-prong portal device. No device used as a damaging laser.",
+      "referenceAsset": "/sprites/generated/heroes/portal/chell.png",
+      "referenceAssetSha256": "8746d4d8639c1d5cfb9a5d1486b8604ec1e09beccdbc4aa8ae764fdfccb292c2",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/chell-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Repérage de test de Chell",
+      "superName": "Repérage de passage de Chell",
+      "effect": "guard",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/chell-native-original.png",
+          "sha256": "b2a26bf0bb0ed89ba27eb3bb86a05bd8a081b1b96112261094b8e185cafc6767",
+          "generatedPath": "/workspace/generated_images/exec-9a17950f-5ec7-4088-8fca-9ac29a9c31b7.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Chell, EXACTLY the version Portal 2 (2011), adult Chell in the test chambers. Identity/costume/equipment: Adult Chell with ponytail, white Aperture tank top, orange jumpsuit tied at waist, long-fall boots and dual-prong portal device. No device used as a damaging laser. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: operate the real Portal2 portal device as a NONOFFENSIVE route-planning tool: hold the white-and-black dual-prong device low, check right, give a careful pointing cue, settle. No emitted beam or shot, no opponent, no laser damage, no visible portal opening. Accurate adult Chell, white tank top, orange coveralls tied at waist, black ponytail, white long-fall boot shells with curved black heel supports; avoid generic sci-fi armour, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: operate the real Portal2 portal device as a NONOFFENSIVE route-planning tool: hold the white-and-black dual-prong device low, check right, give a careful pointing cue, settle. No emitted beam or shot, no opponent, no laser damage, no visible portal opening. Accurate adult Chell, white tank top, orange coveralls tied at waist, black ponytail, white long-fall boot shells with curved black heel supports; avoid generic sci-fi armour, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: operate the real Portal2 portal device as a NONOFFENSIVE route-planning tool: hold the white-and-black dual-prong device low, check right, give a careful pointing cue, settle. No emitted beam or shot, no opponent, no laser damage, no visible portal opening. Accurate adult Chell, white tank top, orange coveralls tied at waist, black ponytail, white long-fall boot shells with curved black heel supports; avoid generic sci-fi armour, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/chell-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 175,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/chell-region-review.json",
+          "importRegionsSha256": "25d9def5b7e2543fe8b70c3cde528e2e8a27c9621572128ed4ac61bd0361faf8",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 91,
+              "top": 793,
+              "width": 85,
+              "height": 175,
+              "pixels": 7913
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "atlas",
+      "name": "Atlas",
+      "universe": "Portal",
+      "sourceWork": "Portal 2 (2011), ATLAS cooperative testing robot",
+      "sourceReference": "https://www.thinkwithportals.com/",
+      "version": "Short spherical white-grey ATLAS robot, one blue optic, thin mechanical arms and legs, portal device. No P-Body silhouette or offensive portal beam.",
+      "referenceAsset": "/sprites/generated/heroes/portal/atlas.png",
+      "referenceAssetSha256": "988bcef0ef1fb76bd876235ada3ad98e47fb04b84edae9bdb9848781fbb00278",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/atlas-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 140,
+      "simpleName": "Signal de test d’ATLAS",
+      "superName": "Coordination de test d’ATLAS",
+      "effect": "buff",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/atlas-native-original.png",
+          "sha256": "92bfc31988e30826c22985609a79dbd740928dcccfd9e6329f97ae9d254fb892",
+          "generatedPath": "/workspace/generated_images/exec-e52977b6-6ec8-4955-b4ec-a019467dc078.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Atlas, EXACTLY the version Portal 2 (2011), ATLAS cooperative testing robot. Identity/costume/equipment: Short spherical white-grey ATLAS robot, one blue optic, thin mechanical arms and legs, portal device. No P-Body silhouette or offensive portal beam. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: make a NONOFFENSIVE cooperative-test signal with its real Portal2 device safely held, lean its compact spherical torso, angle its SINGLE BLUE optic toward right, raise a small cooperative hand signal, settle. Robot remains short round ATLAS with mechanical limbs, never humanoid skin or P-Body's tall orange body. No emitted beam, laser, portal or weapon damage, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: make a NONOFFENSIVE cooperative-test signal with its real Portal2 device safely held, lean its compact spherical torso, angle its SINGLE BLUE optic toward right, raise a small cooperative hand signal, settle. Robot remains short round ATLAS with mechanical limbs, never humanoid skin or P-Body's tall orange body. No emitted beam, laser, portal or weapon damage, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: make a NONOFFENSIVE cooperative-test signal with its real Portal2 device safely held, lean its compact spherical torso, angle its SINGLE BLUE optic toward right, raise a small cooperative hand signal, settle. Robot remains short round ATLAS with mechanical limbs, never humanoid skin or P-Body's tall orange body. No emitted beam, laser, portal or weapon damage, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/atlas-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 124,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/atlas-region-review.json",
+          "importRegionsSha256": "a3c17efac8d24213e20166938ebd768710e9a9209f8cfb0af0bde9afd5f2ddee",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 1,
+            "bodyBounds": {
+              "left": 263,
+              "top": 705,
+              "width": 81,
+              "height": 124,
+              "pixels": 6321
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "pbody",
+      "name": "P-Body",
+      "universe": "Portal",
+      "sourceWork": "Portal 2 (2011), P-Body cooperative testing robot",
+      "sourceReference": "https://www.thinkwithportals.com/",
+      "version": "Tall narrow white-grey P-Body robot, single orange optic, long thin mechanical limbs, portal device. No ATLAS proportions or weapon damage.",
+      "referenceAsset": "/sprites/generated/heroes/portal/pbody.png",
+      "referenceAssetSha256": "f017efa383656775f048d223fb27fe034841d8da5ef71a9a6cbe1d515bfb547e",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/pbody-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Signal de test de P-Body",
+      "superName": "Coordination de test de P-Body",
+      "effect": "buff",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/pbody-native-original.png",
+          "sha256": "172640d07f8805c4321cafa511b4444db03fc07a9cff328ac49273ddcdbc9aab",
+          "generatedPath": "/workspace/generated_images/exec-8617f056-2114-4bfc-ad67-5b8fe8c98311.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of P-Body, EXACTLY the version Portal 2 (2011), P-Body cooperative testing robot. Identity/costume/equipment: Tall narrow white-grey P-Body robot, single orange optic, long thin mechanical limbs, portal device. No ATLAS proportions or weapon damage. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: give a NONOFFENSIVE cooperative-test hand signal with the Portal2 device safely held, angle the SINGLE ORANGE optic toward right, lean its narrow tall white oval chassis, settle. Long thin arms and legs, one orange eye, no blue ATLAS sphere body. No emitted portal, laser beam, bullet or damaging attack, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: give a NONOFFENSIVE cooperative-test hand signal with the Portal2 device safely held, angle the SINGLE ORANGE optic toward right, lean its narrow tall white oval chassis, settle. Long thin arms and legs, one orange eye, no blue ATLAS sphere body. No emitted portal, laser beam, bullet or damaging attack, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: give a NONOFFENSIVE cooperative-test hand signal with the Portal2 device safely held, angle the SINGLE ORANGE optic toward right, lean its narrow tall white oval chassis, settle. Long thin arms and legs, one orange eye, no blue ATLAS sphere body. No emitted portal, laser beam, bullet or damaging attack, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/pbody-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 148,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/pbody-region-review.json",
+          "importRegionsSha256": "d0704ca537b367c6b5400b9d29760659efa60e9e53759c3f698cfde8605fdb6b",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 3,
+            "bodyBounds": {
+              "left": 591,
+              "top": 695,
+              "width": 106,
+              "height": 148,
+              "pixels": 6590
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "glados",
+      "name": "GLaDOS",
+      "universe": "Portal",
+      "sourceWork": "Portal 2 (2011), GLaDOS in her central chamber chassis",
+      "sourceReference": "https://www.thinkwithportals.com/",
+      "version": "White segmented suspended chamber chassis, black mechanical support cables, single yellow optic. Fixed suspended silhouette; do not invent humanoid legs, a gun or magical flight.",
+      "referenceAsset": "/sprites/generated/heroes/portal/glados.png",
+      "referenceAssetSha256": "dedd9980eb319aa671166f5b8cac680ffb88fe38c80dd2bdb84e6aa9ab3d7b38",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/glados-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 170,
+      "simpleName": "Indication de test de GLaDOS",
+      "superName": "Consigne de test de GLaDOS",
+      "effect": "buff",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/glados-native-original.png",
+          "sha256": "f9ed4506ef8b9fe061c5716c5eb7788e424e32230e9e97afe8b575add31fae73",
+          "generatedPath": "/workspace/generated_images/exec-5fac9f3c-fb20-4c12-8055-b70d96299493.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of GLaDOS, EXACTLY the version Portal 2 (2011), GLaDOS in her central chamber chassis. Identity/costume/equipment: White segmented suspended chamber chassis, black mechanical support cables, single yellow optic. Fixed suspended silhouette; do not invent humanoid legs, a gun or magical flight. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: mechanical settle on visible support cables, optic toward right, chassis tilt, settle. ROW1 RIGHT OUTRO: optic look aside, suspended chassis turn, retract slightly on visible support, rest. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: mechanical startle, guarded chassis pivot, lowered optic, settle; no knees or flesh. ROW3 LEFT FINAL PRESENTATION: give ordinary central-chamber instructions by tilting the real suspended segmented GLaDOS chassis and rotating the SINGLE YELLOW optic, pause, settle. The WHOLE white segmented chassis and its short black cable/support fixture must be fully contained in each cell, no wires cut at the top edge. Fixed mechanical support always visible, no human legs, arms, gun, free flight, aura or invented weapon, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: four distinct lower-power suspended chassis/optic poses; no knees or humanoid body. ROW4 RIGHT SUPER: give ordinary central-chamber instructions by tilting the real suspended segmented GLaDOS chassis and rotating the SINGLE YELLOW optic, pause, settle. The WHOLE white segmented chassis and its short black cable/support fixture must be fully contained in each cell, no wires cut at the top edge. Fixed mechanical support always visible, no human legs, arms, gun, free flight, aura or invented weapon, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four distinct mechanical transit/turn timing poses of the SAME suspended chassis on its visible cable support. NO running legs or humanoid limbs. ROW6 LEFT BASIC ACTION: give ordinary central-chamber instructions by tilting the real suspended segmented GLaDOS chassis and rotating the SINGLE YELLOW optic, pause, settle. The WHOLE white segmented chassis and its short black cable/support fixture must be fully contained in each cell, no wires cut at the top edge. Fixed mechanical support always visible, no human legs, arms, gun, free flight, aura or invented weapon, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/glados-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 133,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/glados-region-review.json",
+          "importRegionsSha256": "2987566c42c3aa6d362c8e4b0e65e6fb69c0af68625a20e33605a75dc3cfce76",
+          "anchorMode": "body-center",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 57,
+              "top": 673,
+              "width": 124,
+              "height": 133,
+              "pixels": 9250
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "wheatley",
+      "name": "Wheatley",
+      "universe": "Portal",
+      "sourceWork": "Portal 2 (2011), portable Wheatley intelligence core before the chassis transfer",
+      "sourceReference": "https://www.thinkwithportals.com/",
+      "version": "Small spherical white-black intelligence core with one blue optic and two handles; portable core presentation, no human body, giant GLaDOS chassis or invented weapon.",
+      "referenceAsset": "/sprites/generated/heroes/portal/wheatley.png",
+      "referenceAssetSha256": "7d8a76a2a9fbe4b5b10683354168640b3d00b97ca19eb12a363361f81b8091b2",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/wheatley-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 95,
+      "simpleName": "Signal du noyau Wheatley",
+      "superName": "Avertissement de Wheatley",
+      "effect": "guard",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/wheatley-native-original.png",
+          "sha256": "c6b531fa861913a4e5e014ece169ea85316259dd7d59dd434022bfe6ddad3ae5",
+          "generatedPath": "/workspace/generated_images/exec-28b7e4c2-2c7b-4395-9743-a9702c3ad3e7.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Wheatley, EXACTLY the version Portal 2 (2011), portable Wheatley intelligence core before the chassis transfer. Identity/costume/equipment: Small spherical white-black intelligence core with one blue optic and two handles; portable core presentation, no human body, giant GLaDOS chassis or invented weapon. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: four distinct optic/handle tilt and settle poses of this same small portable core. ROW1 RIGHT OUTRO: look aside, rotate optic casing, tilt on its small cradle, rest. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: mechanical startle, optic shift, guarded tilt, recover; no knees or flesh. ROW3 LEFT FINAL PRESENTATION: give a NONOFFENSIVE core warning by pivoting its single BLUE optic, angling two black carry handles, shifting the white-black PORTABLE SPHERICAL CORE slightly on its ordinary support cradle, settle. NO legs, humanoid torso, arms, giant GLaDOS chassis, weapons, free-flying magic or laser damage, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: four distinct low-power optic and handle tilt poses; same portable core, no humanoid body. ROW4 RIGHT SUPER: give a NONOFFENSIVE core warning by pivoting its single BLUE optic, angling two black carry handles, shifting the white-black PORTABLE SPHERICAL CORE slightly on its ordinary support cradle, settle. NO legs, humanoid torso, arms, giant GLaDOS chassis, weapons, free-flying magic or laser damage, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four distinct mechanical transit/optic-turn timing poses of the same portable core on its small support cradle. NO legs, feet or humanoid limbs. ROW6 LEFT BASIC ACTION: give a NONOFFENSIVE core warning by pivoting its single BLUE optic, angling two black carry handles, shifting the white-black PORTABLE SPHERICAL CORE slightly on its ordinary support cradle, settle. NO legs, humanoid torso, arms, giant GLaDOS chassis, weapons, free-flying magic or laser damage, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/wheatley-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 126,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/wheatley-region-review.json",
+          "importRegionsSha256": "53b4fedcada97ab4eba54c5084ff2d2e3ad16266d2e73923cd1ac59f7c9c5fbc",
+          "anchorMode": "body-center",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 3,
+            "bodyBounds": {
+              "left": 608,
+              "top": 683,
+              "width": 119,
+              "height": 126,
+              "pixels": 11111
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "doug_rattmann",
+      "name": "Doug Rattmann",
+      "universe": "Portal",
+      "sourceWork": "Portal 2: Lab Rat (2011), adult Doug Rattmann",
+      "sourceReference": "https://www.thinkwithportals.com/comic/",
+      "version": "Adult unshaven Aperture employee with untidy brown hair and worn laboratory clothing, portable companion cube allowed as a carried object only; no invented portal-gun combat.",
+      "referenceAsset": "/sprites/generated/heroes/portal/doug-rattmann.png",
+      "referenceAssetSha256": "a6568790d0251dbc13d4dc0dc720d11854eb4f89145ae205134ae7c0f64ac0d4",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/doug_rattmann-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Repérage de Rattmann",
+      "superName": "Indication du passage de Rattmann",
+      "effect": "guard",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/doug_rattmann-native-original.png",
+          "sha256": "764d26fcf2573e24e26dcc467fc08fad4c3faaf4f4b2a3393bd76f9ab9c2880c",
+          "generatedPath": "/workspace/generated_images/exec-d1085672-b145-438d-a9ac-8bc66500d6ac.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Doug Rattmann, EXACTLY the version Portal 2: Lab Rat (2011), adult Doug Rattmann. Identity/costume/equipment: Adult unshaven Aperture employee with untidy brown hair and worn laboratory clothing, portable companion cube allowed as a carried object only; no invented portal-gun combat. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: give a quiet NONOFFENSIVE safe-route instruction: inspect the path, point cautiously right with one ordinary hand, make a small warning gesture, settle. Keep the adult Aperture employee's untidy hair, beard and worn laboratory clothing; empty hands, no magical mural attack, invented portal gun, glowing cube or damaging flash, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: give a quiet NONOFFENSIVE safe-route instruction: inspect the path, point cautiously right with one ordinary hand, make a small warning gesture, settle. Keep the adult Aperture employee's untidy hair, beard and worn laboratory clothing; empty hands, no magical mural attack, invented portal gun, glowing cube or damaging flash, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: give a quiet NONOFFENSIVE safe-route instruction: inspect the path, point cautiously right with one ordinary hand, make a small warning gesture, settle. Keep the adult Aperture employee's untidy hair, beard and worn laboratory clothing; empty hands, no magical mural attack, invented portal gun, glowing cube or damaging flash, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/doug_rattmann-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 158,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/doug_rattmann-region-review.json",
+          "importRegionsSha256": "7f8dc1330d15a48140f0119e4fa43df687a05b2ae9701c835bfc2704ed582acc",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 95,
+              "top": 789,
+              "width": 82,
+              "height": 158,
+              "pixels": 8920
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "rincewind_dw",
+      "name": "Rincewind",
+      "universe": "Discworld",
+      "sourceWork": "The Colour of Magic (1983), adult Rincewind",
+      "sourceReference": "https://www.terrypratchettbooks.com/books/the-colour-of-magic/",
+      "version": "Thin adult wizard in battered red robe and pointed red hat marked WIZZARD, practical boots; empty hands and anxious retreat. No reliable combat magic or invented staff.",
+      "referenceAsset": "/sprites/generated/heroes/discworld/rincewind-dw.png",
+      "referenceAssetSha256": "0736a8babca7dc62cc1700eb4cef6d67895442465867e1384ec815cb0d0fe99e",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/rincewind_dw-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Recherche d’issue de Rincewind",
+      "superName": "Repli prudent de Rincewind",
+      "effect": "guard",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/rincewind_dw-native-original.png",
+          "sha256": "f5fdd7fabac67a9545e40ca6f3e89b47bf283aa7cc39351d2928cf1278021ed9",
+          "generatedPath": "/workspace/generated_images/exec-87ab0e84-789e-45a4-9a8f-ee86d42837d8.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Rincewind, EXACTLY the version The Colour of Magic (1983), adult Rincewind. Identity/costume/equipment: Thin adult wizard in battered red robe and pointed red hat marked WIZZARD, practical boots; empty hands and anxious retreat. No reliable combat magic or invented staff. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: make a grounded survival/retreat gesture: look anxiously right, raise an ordinary cautioning open hand, point to a safe way out, begin a cautious retreat and settle. Rincewind is a thin hapless adult wizard, no useful combat magic, no staff, lightning or damaging spell. Battered RED robe and RED pointed hat bearing the canonical word WIZZARD, practical boots, no generic blue wizard costume, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: make a grounded survival/retreat gesture: look anxiously right, raise an ordinary cautioning open hand, point to a safe way out, begin a cautious retreat and settle. Rincewind is a thin hapless adult wizard, no useful combat magic, no staff, lightning or damaging spell. Battered RED robe and RED pointed hat bearing the canonical word WIZZARD, practical boots, no generic blue wizard costume, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: make a grounded survival/retreat gesture: look anxiously right, raise an ordinary cautioning open hand, point to a safe way out, begin a cautious retreat and settle. Rincewind is a thin hapless adult wizard, no useful combat magic, no staff, lightning or damaging spell. Battered RED robe and RED pointed hat bearing the canonical word WIZZARD, practical boots, no generic blue wizard costume, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/rincewind_dw-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 161,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/rincewind_dw-region-review.json",
+          "importRegionsSha256": "59beef0300109b1944041173f66db41b4b34c3df1fb33ad5cee3eadd7edd1977",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 2,
+            "bodyBounds": {
+              "left": 443,
+              "top": 684,
+              "width": 75,
+              "height": 161,
+              "pixels": 7598
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "vimes_dw",
+      "name": "Sam Vimes",
+      "universe": "Discworld",
+      "sourceWork": "Guards! Guards! (1989), Captain Sam Vimes of the Night Watch",
+      "sourceReference": "https://www.terrypratchettbooks.com/books/guards-guards/",
+      "version": "Weathered adult Night Watch captain, worn breastplate over brown clothing, battered watch helmet, practical short sword. No royal-regalia outfit or supernatural law aura.",
+      "referenceAsset": "/sprites/generated/heroes/discworld/vimes-dw.png",
+      "referenceAssetSha256": "1fd2be920b1588d83b712a21a1e1e59bd3be2f1e030e8b6702eba2617d64b246",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/vimes_dw-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Coup d’épée de Vimes",
+      "superName": "Frappe de l’épée de Vimes",
+      "effect": "damage",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/vimes_dw-native-original.png",
+          "sha256": "78369be022944c2d93bab1cfc00fe66832f023b39f5eed723dc6258b71a1d5d4",
+          "generatedPath": "/workspace/generated_images/exec-67bfd27a-2441-402c-aa37-0d1015a8722e.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Sam Vimes, EXACTLY the version Guards! Guards! (1989), Captain Sam Vimes of the Night Watch. Identity/costume/equipment: Weathered adult Night Watch captain, worn breastplate over brown clothing, battered watch helmet, practical short sword. No royal-regalia outfit or supernatural law aura. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: brace the practical short straight Watch sword, prepare a bounded physical one-handed slash into EMPTY SPACE right, follow through, lower/recover. Weathered middle-aged Night Watch captain with worn ordinary breastplate, brown clothing and battered Watch helmet, never royal regalia. Keep sword entire inside own cell; no law aura, beam, magic or invented polearm, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: brace the practical short straight Watch sword, prepare a bounded physical one-handed slash into EMPTY SPACE right, follow through, lower/recover. Weathered middle-aged Night Watch captain with worn ordinary breastplate, brown clothing and battered Watch helmet, never royal regalia. Keep sword entire inside own cell; no law aura, beam, magic or invented polearm, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: brace the practical short straight Watch sword, prepare a bounded physical one-handed slash into EMPTY SPACE right, follow through, lower/recover. Weathered middle-aged Night Watch captain with worn ordinary breastplate, brown clothing and battered Watch helmet, never royal regalia. Keep sword entire inside own cell; no law aura, beam, magic or invented polearm, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/vimes_dw-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 139,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/vimes_dw-region-review.json",
+          "importRegionsSha256": "f080aaebc96f063b2e94f80bf2a8a702521418cf083deb923078d002baae26e8",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 1,
+            "bodyBounds": {
+              "left": 285,
+              "top": 683,
+              "width": 70,
+              "height": 139,
+              "pixels": 6066
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "granny_dw",
+      "name": "Granny Weatherwax",
+      "universe": "Discworld",
+      "sourceWork": "Wyrd Sisters (1988), Granny Esme Weatherwax",
+      "sourceReference": "https://www.terrypratchettbooks.com/books/wyrd-sisters/",
+      "version": "Older woman in severe plain black dress and tall black pointed witch hat, thin upright posture, empty hands. Headology represented by grounded guidance, not magical shields or fireballs.",
+      "referenceAsset": "/sprites/generated/heroes/discworld/granny-dw.png",
+      "referenceAssetSha256": "244fbd5518706de2274406c04cb96362bdb147cf197c8d94c446a1c10365e170",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/granny_dw-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Consigne de Mémé Ciredutemps",
+      "superName": "Consigne ferme de Mémé Ciredutemps",
+      "effect": "guard",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/granny_dw-native-original.png",
+          "sha256": "5b91c5418e66d3c475bd32bf4cddc2f99097411e47fc605338d35e95a470c030",
+          "generatedPath": "/workspace/generated_images/exec-3b1a63d7-851b-4276-a0f6-4a6881dd25f3.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Granny Weatherwax, EXACTLY the version Wyrd Sisters (1988), Granny Esme Weatherwax. Identity/costume/equipment: Older woman in severe plain black dress and tall black pointed witch hat, thin upright posture, empty hands. Headology represented by grounded guidance, not magical shields or fireballs. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: give a grounded headology instruction: stare firmly toward right, raise an ordinary cautioning open hand, point precisely, settle upright. Elderly severe thin woman, plain BLACK dress and BLACK pointed witch hat, empty hands. No spell, staff, magical shield, elemental blast, flight or aura, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: give a grounded headology instruction: stare firmly toward right, raise an ordinary cautioning open hand, point precisely, settle upright. Elderly severe thin woman, plain BLACK dress and BLACK pointed witch hat, empty hands. No spell, staff, magical shield, elemental blast, flight or aura, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: give a grounded headology instruction: stare firmly toward right, raise an ordinary cautioning open hand, point precisely, settle upright. Elderly severe thin woman, plain BLACK dress and BLACK pointed witch hat, empty hands. No spell, staff, magical shield, elemental blast, flight or aura, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/granny_dw-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 162,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/granny_dw-region-review.json",
+          "importRegionsSha256": "70f311b68418931732aa6fc15a39c563c725c4d15db128949dab3b7859363da1",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 3,
+            "bodyBounds": {
+              "left": 570,
+              "top": 768,
+              "width": 67,
+              "height": 162,
+              "pixels": 6486
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "twoflower_dw",
+      "name": "Twoflower",
+      "universe": "Discworld",
+      "sourceWork": "The Colour of Magic (1983), adult Twoflower",
+      "sourceReference": "https://www.terrypratchettbooks.com/books/the-colour-of-magic/",
+      "version": "Adult Agatean tourist with glasses, bright patterned tourist shirt, practical trousers and luggage strap; nonoffensive observation. No damaging camera flash or invented firearm.",
+      "referenceAsset": "/sprites/generated/heroes/discworld/twoflower-dw.png",
+      "referenceAssetSha256": "35b440c550bdd321a01bdd2ac237b41f23054ee2f6e7d2e0e41f98053fb555e2",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/twoflower_dw-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 180,
+      "simpleName": "Observation de Deuxfleurs",
+      "superName": "Repérage touristique de Deuxfleurs",
+      "effect": "buff",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/twoflower_dw-native-original.png",
+          "sha256": "00cd60f22a162d2179235668fe50a21034738f3ee8f54337e1c4a35eb295ca85",
+          "generatedPath": "/workspace/generated_images/exec-d2c3151a-88bf-46d3-a327-f965d530567e.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Twoflower, EXACTLY the version The Colour of Magic (1983), adult Twoflower. Identity/costume/equipment: Adult Agatean tourist with glasses, bright patterned tourist shirt, practical trousers and luggage strap; nonoffensive observation. No damaging camera flash or invented firearm. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: make an ordinary NONOFFENSIVE tourist observation: look carefully right through his pair of eyeglasses, indicate an interesting safe landmark with one hand, give a small friendly nod, settle. Adult Agatean human tourist, bright patterned shirt, ordinary trousers and luggage strap. No damaging camera flash, magical luggage attack, firearm or beam, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: make an ordinary NONOFFENSIVE tourist observation: look carefully right through his pair of eyeglasses, indicate an interesting safe landmark with one hand, give a small friendly nod, settle. Adult Agatean human tourist, bright patterned shirt, ordinary trousers and luggage strap. No damaging camera flash, magical luggage attack, firearm or beam, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: make an ordinary NONOFFENSIVE tourist observation: look carefully right through his pair of eyeglasses, indicate an interesting safe landmark with one hand, give a small friendly nod, settle. Adult Agatean human tourist, bright patterned shirt, ordinary trousers and luggage strap. No damaging camera flash, magical luggage attack, firearm or beam, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/twoflower_dw-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 155,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/twoflower_dw-region-review.json",
+          "importRegionsSha256": "e5d478079279522e5f8667ecfc5415822e7dc0670b5b13cd97282977fc10c327",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 89,
+              "top": 768,
+              "width": 73,
+              "height": 155,
+              "pixels": 7994
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "death_dw",
+      "name": "Death",
+      "universe": "Discworld",
+      "sourceWork": "Mort (1987), Death in his ordinary robed manifestation",
+      "sourceReference": "https://www.terrypratchettbooks.com/books/mort/",
+      "version": "Tall complete skeleton in black hooded robe, blue eye lights and long wooden-handled scythe. Physical bounded blade contact only; no instant soul removal or guaranteed kill.",
+      "referenceAsset": "/sprites/generated/heroes/discworld/death-dw.png",
+      "referenceAssetSha256": "139d55a8993509637c534cdfe3e39fd9a24274a412a409c1fc0d284df6f51e20",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/death_dw-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 210,
+      "simpleName": "Taille de la faux de la Mort",
+      "superName": "Balayage physique de la faux de la Mort",
+      "effect": "damage",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/death_dw-native-original.png",
+          "sha256": "01a100ac5d08feec1e049954f4c51a89d9bcb8b3d858a6efc59981041ddbe7a5",
+          "generatedPath": "/workspace/generated_images/exec-31f3af15-55b5-4eac-9711-7adff87127be.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Death, EXACTLY the version Mort (1987), Death in his ordinary robed manifestation. Identity/costume/equipment: Tall complete skeleton in black hooded robe, blue eye lights and long wooden-handled scythe. Physical bounded blade contact only; no instant soul removal or guaranteed kill. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: prepare and perform one bounded physical scythe movement into EMPTY SPACE right, follow through with the real long wooden shaft and curved metal blade, recover. The entire long scythe stays inside its own cell, held close and mostly upright where needed; never crop the upper blade or feet. Death is a complete tall skeleton in a BLACK hooded robe with small BLUE eye lights, no flesh, no instant soul removal, guaranteed kill, supernatural beam, skull swarm, victims or magical burst, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: prepare and perform one bounded physical scythe movement into EMPTY SPACE right, follow through with the real long wooden shaft and curved metal blade, recover. The entire long scythe stays inside its own cell, held close and mostly upright where needed; never crop the upper blade or feet. Death is a complete tall skeleton in a BLACK hooded robe with small BLUE eye lights, no flesh, no instant soul removal, guaranteed kill, supernatural beam, skull swarm, victims or magical burst, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: prepare and perform one bounded physical scythe movement into EMPTY SPACE right, follow through with the real long wooden shaft and curved metal blade, recover. The entire long scythe stays inside its own cell, held close and mostly upright where needed; never crop the upper blade or feet. Death is a complete tall skeleton in a BLACK hooded robe with small BLUE eye lights, no flesh, no instant soul removal, guaranteed kill, supernatural beam, skull swarm, victims or magical burst, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/death_dw-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 129,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/death_dw-region-review.json",
+          "importRegionsSha256": "e566d6ade22fcdeb8473d949d3461d6341ffde6b6c5af5292de7b6d47c99ed86",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "manually-reviewed-hood-crown-to-lowest-foot",
+            "sequence": 8,
+            "column": 0,
+            "fullSubjectBounds": {
+              "left": 42,
+              "top": 694,
+              "width": 132,
+              "height": 147,
+              "pixels": 7713
+            },
+            "bodyBounds": {
+              "left": 42,
+              "top": 712,
+              "width": 98,
+              "height": 129
+            },
+            "hoodCrownNativePoint": {
+              "x": 95,
+              "y": 712
+            },
+            "lowestFootY": 840,
+            "notes": "Visible hood crown at(95,712) and lowest native foot atY840 on idle0. Scythe blade and upper shaft above the hood excluded from body stature; one shared scale applies to every source pose."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "nanny_ogg_dw",
+      "name": "Nanny Ogg",
+      "universe": "Discworld",
+      "sourceWork": "Wyrd Sisters (1988), Nanny Gytha Ogg",
+      "sourceReference": "https://www.terrypratchettbooks.com/books/wyrd-sisters/",
+      "version": "Short sturdy older witch, cheerful round face, plain black dress and practical black hat, empty hands. No invented attack spell, enchanted bottle or damaging song.",
+      "referenceAsset": "/sprites/generated/heroes/discworld/nanny-ogg-dw.png",
+      "referenceAssetSha256": "77e15d46263f72dd972cf5b054dae827b16b911c260968ccee7c07e3ed0abff4",
+      "referenceArchive": "docs/combat-fidelity-wave13-2026-10-24/part-a/references/nanny_ogg_dw-historical.png",
+      "referenceUse": "Historical image is archived and visually inspected for comparison only. Generated text fixes the selected original version; defective old equipment is not treated as a source of truth.",
+      "targetBodyHeight": 165,
+      "simpleName": "Appel de Nounou Ogg",
+      "superName": "Rassemblement de Nounou Ogg",
+      "effect": "buff",
+      "reviewed": true,
+      "reviewNotes": "Generated adaptation. Every retained body must be complete, individually isolated and coherent with the selected source. Supports have ordinary nonoffensive gestures. Native pixels are imported through transparent seams; no body, equipment or alpha is repainted by code. No source1:1 certification. Every32presentation and16base cell visually reviewed in contacts; complete bodies, separated native drawings, unchanged RGBA import regions, expected source equipment and nonoffensive support semantics checked. Generated likeness and small hat lettering remain adaptations, not certified source reproduction.",
+      "sources": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/nanny_ogg_dw-native-original.png",
+          "sha256": "6177c3c9b802f83d07ed32508cf7349cce7446eb9a020c69bf309fa9d9a4f2e6",
+          "generatedPath": "/workspace/generated_images/exec-1a6a5dac-044f-4920-9eca-dc046fe3d6c6.png",
+          "prompt": "Create a production 2D PIXEL ART game sprite atlas of Nanny Ogg, EXACTLY the version Wyrd Sisters (1988), Nanny Gytha Ogg. Identity/costume/equipment: Short sturdy older witch, cheerful round face, plain black dress and practical black hat, empty hands. No invented attack spell, enchanted bottle or damaging song. Preserve this selected version and recognizable silhouette in EVERY drawing. New generated adaptation, not official ripped frames. STRICT LAYOUT: 8 columns ×6 rows =48 DIFFERENT FULL BODY native poses. Leave a completely transparent outer margin of at least64 pixels around the WHOLE48-pose atlas, and generous transparent gutters between every figure. Do NOT fill the canvas with oversized figures: make the figures smaller so all heads, hair, hats, feet, hands and props fit fully within their own cell, including the LAST ROW. No visible grid, text labels, environment, cast shadow, ground or other people. Transparent background only. Same shared standing-body pixel scale in every row; kneeling shorter naturally. Generally face screen RIGHT. Each row contains TWO four-frame sequences, columns1–4 left sequence, columns5–8 right sequence. All four timing poses of every sequence must differ, without recycling another row. ROW1 LEFT INTRO: cautious arrival, look toward right, ready posture, settle. ROW1 RIGHT OUTRO: safely lower equipment/hands, turn, step away, final walking-away pose. ROW2 LEFT FIRST ROUND VICTORY: relieved breath, straighten, modest acknowledgement, settle. ROW2 RIGHT FIRST ROUND DEFEAT: surprise, recoil, one knee, recover; no injury. ROW3 LEFT FINAL PRESENTATION: give an ordinary warm community-coordination instruction: friendly smile, raise one empty hand to gather attention, point to a safe meeting place, settle. Short sturdy ELDERLY witch Gytha Ogg with a cheerful wrinkled round face, grey hair, plain BLACK dress and practical BLACK witch hat. No staff, enchanted bottle, damaging song, spell, energy aura or invented attack; warm adult human gestures only, four distinct preparation/action/recovery poses in empty space. ROW3 RIGHT MATCH VICTORY: four distinct composed relief/acknowledgement poses, no attacks. ROW4 LEFT MATCH DEFEAT: tired step, guarded dip, kneel, exhausted living pose. ROW4 RIGHT SUPER: give an ordinary warm community-coordination instruction: friendly smile, raise one empty hand to gather attention, point to a safe meeting place, settle. Short sturdy ELDERLY witch Gytha Ogg with a cheerful wrinkled round face, grey hair, plain BLACK dress and practical BLACK witch hat. No staff, enchanted bottle, damaging song, spell, energy aura or invented attack; warm adult human gestures only, four distinct timing stages. ROW5 LEFT IDLE: four different subtle stance/breathing/gaze poses. ROW5 RIGHT RUN: four different actual strides with the correct equipment held securely. ROW6 LEFT BASIC ACTION: give an ordinary warm community-coordination instruction: friendly smile, raise one empty hand to gather attention, point to a safe meeting place, settle. Short sturdy ELDERLY witch Gytha Ogg with a cheerful wrinkled round face, grey hair, plain BLACK dress and practical BLACK witch hat. No staff, enchanted bottle, damaging song, spell, energy aura or invented attack; warm adult human gestures only, four distinct preparation/contact/recovery timing stages. ROW6 RIGHT LIGHT HIT: noninjured startle, recoil, guarded dip, steady recovery. ALL48 WHOLE DRAWINGS MUST BE PRESENT. No gore, blood, wounds, execution, victims, explosions, beam, magic shield, energy aura or invented power. Keep original tools and costume precise; no generic unarmed punch replacing the selected action. Crisp pixel-art edge clusters and consistent proportions.",
+          "promptFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/nanny_ogg_dw-actual-prompt.txt",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 149,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [],
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave13-2026-10-24/part-a/sources/nanny_ogg_dw-region-review.json",
+          "importRegionsSha256": "0209686b10438b0cf10e2e86ef8df5e33176b0e04e3ed82e83d7d53ffad219fd",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-body-import-bounds",
+            "sequence": 8,
+            "column": 2,
+            "bodyBounds": {
+              "left": 452,
+              "top": 706,
+              "width": 91,
+              "height": 149,
+              "pixels": 9548
+            },
+            "notes": "One shared scale per source. Alpha>24 locates import bounds only; retained RGBA samples are never recolored or alpha-thresholded."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    }
+  ],
+  "remainingHeroIds": [],
+  "blockedHeroIds": []
+}

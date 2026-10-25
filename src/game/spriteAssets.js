@@ -1,3 +1,15 @@
+import characterSpriteCorrectionsWave14A from './combat/characterSpriteCorrectionsWave14PartA.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave14B from './combat/characterSpriteCorrectionsWave14PartB.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave13B from './combat/characterSpriteCorrectionsWave13PartB.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave13A from './combat/characterSpriteCorrectionsWave13PartA.generated.json' with { type: 'json' };
+import { COMBAT_SOURCE_DEFINITIONS_WAVE13 } from './combat/combatSourceDefinitionsWave13.js';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE14 } from './combat/combatSourceDefinitionsWave14.js';
+import characterSpriteCorrectionsWave12C from './combat/characterSpriteCorrectionsWave12PartC.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave12D from './combat/characterSpriteCorrectionsWave12PartD.generated.json' with { type: 'json' };
+import { COMBAT_SOURCE_DEFINITIONS_WAVE12 } from './combat/combatSourceDefinitionsWave12.js';
+import characterSpriteCorrectionsWave12A from './combat/characterSpriteCorrectionsWave12PartA.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave12B from './combat/characterSpriteCorrectionsWave12PartB.generated.json' with { type: 'json' };
+import { LEGACY_POSE_FALLBACKS_WAVE12 } from './combat/characterLegacyFallbacksWave12.js';
 import { COMBAT_SOURCE_DEFINITIONS_WAVE11 } from './combat/combatSourceDefinitionsWave11.js';
 import characterSpriteCorrectionsWave11A from './combat/characterSpriteCorrectionsWave11PartA.generated.json' with { type: 'json' };
 import characterSpriteCorrectionsWave11B from './combat/characterSpriteCorrectionsWave11PartB.generated.json' with { type: 'json' };
@@ -44,9 +56,9 @@ import characterSpriteCorrectionsWave10C from './combat/characterSpriteCorrectio
 import characterSpriteCorrectionsWave10D from './combat/characterSpriteCorrectionsWave10PartD.generated.json' with { type: 'json' };
 
 const wave6BaseEntries = [...characterSpriteCorrectionsWave6A.entries, ...characterSpriteCorrectionsWave6B.entries, ...characterSpriteCorrectionsWave6C.entries];
-const calibratedBaseEntries = [...wave6BaseEntries, ...characterSpriteCorrectionsWave7A.entries, ...characterSpriteCorrectionsWave7B.entries, ...characterSpriteCorrectionsWave7C.entries, ...characterSpriteCorrectionsWave8A.entries, ...characterSpriteCorrectionsWave8B.entries, ...characterSpriteCorrectionsWave8C.entries, ...characterSpriteCorrectionsWave8D.entries, ...characterSpriteCorrectionsWave9A.entries, ...characterSpriteCorrectionsWave9B.entries, ...characterSpriteCorrectionsWave9C.entries, ...characterSpriteCorrectionsWave9D.entries, ...characterSpriteCorrectionsWave10D.entries, ...characterSpriteCorrectionsWave10C.entries, ...characterSpriteCorrectionsWave10B.entries, ...characterSpriteCorrectionsWave10A.entries, ...characterSpriteCorrectionsWave11A.entries, ...characterSpriteCorrectionsWave11B.entries, ...characterSpriteCorrectionsWave11C.entries, ...characterSpriteCorrectionsWave11D.entries];
+const calibratedBaseEntries = [...wave6BaseEntries, ...characterSpriteCorrectionsWave7A.entries, ...characterSpriteCorrectionsWave7B.entries, ...characterSpriteCorrectionsWave7C.entries, ...characterSpriteCorrectionsWave8A.entries, ...characterSpriteCorrectionsWave8B.entries, ...characterSpriteCorrectionsWave8C.entries, ...characterSpriteCorrectionsWave8D.entries, ...characterSpriteCorrectionsWave9A.entries, ...characterSpriteCorrectionsWave9B.entries, ...characterSpriteCorrectionsWave9C.entries, ...characterSpriteCorrectionsWave9D.entries, ...characterSpriteCorrectionsWave10D.entries, ...characterSpriteCorrectionsWave10C.entries, ...characterSpriteCorrectionsWave10B.entries, ...characterSpriteCorrectionsWave10A.entries, ...characterSpriteCorrectionsWave11A.entries, ...characterSpriteCorrectionsWave11B.entries, ...characterSpriteCorrectionsWave11C.entries, ...characterSpriteCorrectionsWave11D.entries, ...characterSpriteCorrectionsWave12A.entries, ...characterSpriteCorrectionsWave12B.entries, ...characterSpriteCorrectionsWave12C.entries, ...characterSpriteCorrectionsWave12D.entries, ...characterSpriteCorrectionsWave13A.entries, ...characterSpriteCorrectionsWave13B.entries, ...characterSpriteCorrectionsWave14B.entries, ...characterSpriteCorrectionsWave14A.entries];
 const correctedCharacterSprites = new Map([...characterSpriteCorrections.entries, ...characterSpriteCorrectionsWave2.entries, ...characterSpriteCorrectionsWave4.entries, ...characterSpriteCorrectionsWave5.entries, ...calibratedBaseEntries].map(entry => [entry.heroId, entry]));
-const calmSupportSheetsWave11 = new Set(Object.entries(COMBAT_SOURCE_DEFINITIONS_WAVE11)
+const calmSupportSheetsWave11 = new Set(Object.entries({ ...COMBAT_SOURCE_DEFINITIONS_WAVE11, ...COMBAT_SOURCE_DEFINITIONS_WAVE12, ...COMBAT_SOURCE_DEFINITIONS_WAVE13, ...COMBAT_SOURCE_DEFINITIONS_WAVE14 })
   .filter(([, source]) => source.effect === 'damage')
   .map(([id]) => correctedCharacterSprites.get(id)?.sheet || (id === 'harry_potter' ? '/sprites/generated/heroes/harry-potter/harry-potter.png' : null)).filter(Boolean));
 
@@ -61,11 +73,11 @@ const adaptedPresentationEntriesWave10 = buildPresentationFallbacksWave10(charac
 const adaptedPresentationSpritesWave10 = new Map(adaptedPresentationEntriesWave10.map(entry => [entry.heroId, entry]));
 const adaptedPresentationLayoutsWave10 = Object.fromEntries(adaptedPresentationEntriesWave10.map(entry => [entry.sheet, entry.layout]));
 
-const blockedLegacySourcesWave11 = new Map([...LEGACY_POSE_FALLBACKS_WAVE11,
+const blockedLegacySourcesWave11 = new Map([...LEGACY_POSE_FALLBACKS_WAVE11, ...LEGACY_POSE_FALLBACKS_WAVE12,
   { heroId: 'harry_potter', universe: 'Harry Potter', sheet: '/sprites/generated/heroes/harry-potter/harry-potter.png' }
 ].map(entry => [entry.heroId, entry]));
 
-const legacyPoseFallbackLayoutsWave11 = Object.fromEntries(LEGACY_POSE_FALLBACKS_WAVE11.map(entry => [entry.sheet, entry.layout]));
+const legacyPoseFallbackLayoutsWave11 = Object.fromEntries([...LEGACY_POSE_FALLBACKS_WAVE11, ...LEGACY_POSE_FALLBACKS_WAVE12].map(entry => [entry.sheet, entry.layout]));
 
 export const SPRITE_SHEET_META = {
   frameWidth: 256,
@@ -610,7 +622,10 @@ export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (arthurSprite) return arthurSprite;
   const haloSprite = getHaloSpriteForContext(hero, context);
   if (haloSprite) return haloSprite;
-  return `/sprites/generated/heroes/${slugifyAsset(hero.universe)}/${slugifyAsset(hero.id)}.png`;
+  const sourceId = hero.sourceHeroId || hero.sourceId || hero.id;
+  const source = COMBAT_SOURCE_DEFINITIONS_WAVE14[sourceId] || COMBAT_SOURCE_DEFINITIONS_WAVE13[sourceId];
+  const assetId = source?.universe === hero.universe ? sourceId : hero.id;
+  return `/sprites/generated/heroes/${slugifyAsset(hero.universe)}/${slugifyAsset(assetId)}.png`;
 };
 
 export const getEnemySpriteSheetSrc = (enemy) => {

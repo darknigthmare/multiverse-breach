@@ -1,0 +1,22 @@
+✖ the authored union separates1365 complete kits,72 original partial records and one lore correction (8864.296533ms)
+✔ all forty source versions, real equipment and support mechanics agree with their explicit source definitions (8986.541046ms)
+✔ all40 selected source versions and four-slot kits match independent W11 identities and support roles (9107.896089ms)
+✔ all twenty effective kits keep real equipment, support targets and exact source identities (7309.281621ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17883.599651
+
+✖ failing tests:
+
+test at scripts/combatFidelity.test.mjs:99:1
+✖ the authored union separates1365 complete kits,72 original partial records and one lore correction (8864.296533ms)
+  ReferenceError: read is not defined
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatFidelity.test.mjs:114:753)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)

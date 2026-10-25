@@ -7,6 +7,7 @@ import IntroSequence from './components/IntroSequence';
 import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB, HEROES_DB } from './game/heroes';
 import { getOpenAiBackdropSrc } from './game/renderer';
 import { resolveActiveHudTheme } from './game/cosmeticVisualAssets';
+import { TACTICS_BATTLEFIELDS } from './game/tacticsBattlefields';
 import {
   CloudSaveConflictError,
   createCloudSave,
@@ -221,6 +222,7 @@ const DEFAULT_SAVE = {
       opponentTeamIds: [],
       enemyIds: [],
       stageArchiveId: null,
+      tacticsBattlefieldId: 'auto',
       battleMusicId: null,
       stageMusicId: null,
       fieldSuperId: null,
@@ -358,6 +360,9 @@ const normalizeStoredCustomBattlePreset = (preset = {}) => {
     opponentTeamIds: uniqueIds(preset.opponentTeamIds, 3),
     enemyIds: uniqueIds(preset.enemyIds, 6),
     stageArchiveId: optionalId(preset.stageArchiveId),
+    tacticsBattlefieldId: Object.hasOwn(TACTICS_BATTLEFIELDS, preset.tacticsBattlefieldId)
+      ? preset.tacticsBattlefieldId
+      : 'auto',
     battleMusicId: optionalId(preset.battleMusicId),
     stageMusicId: optionalId(preset.stageMusicId),
     fieldSuperId: optionalId(preset.fieldSuperId),

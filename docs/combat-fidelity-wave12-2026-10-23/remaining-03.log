@@ -1,0 +1,59 @@
+
+> lively-darwin@0.0.0 test:custom
+> node --test scripts/customBattle.test.mjs
+
+✔ hero resonance belongs to Arsenal and keeps shared hero cross-links (8654.64183ms)
+✔ Custom Battle and Mosaic City use the dedicated session contract (1.359623ms)
+✔ Mosaic City freezes its loop and only leaves through controlled transitions (0.760238ms)
+✔ dedicated custom runtime freezes input and hides its direct setup exit (0.815872ms)
+✔ RPG and Tactics scheduled actions wait until the dedicated pause resumes (243.023122ms)
+✔ custom battle preset keeps unique bounded teams and valid rules (1.712556ms)
+✔ enemy catalog filters hidden universes and disabled enemy assets (5.763764ms)
+✔ custom enemy roster resolves exact selected monster, boss, and world boss (2.562991ms)
+✔ runtime custom stage carries selected content and never grants campaign currency (0.547807ms)
+✔ Fighter P2 controls the cpu side without running opponent AI (3.719798ms)
+✔ Fighter consumes cosmetic events and keeps P2 assists independent (1.62246ms)
+✔ Fighter CPU spends the same flat assist loadout when ready (0.441016ms)
+✔ RPG P2 waits at full ATB and attacks only after a manual command (4.995285ms)
+✔ Tactics gives the first fast enemy P2 a move and a targeted action (4.671065ms)
+✔ Tactics simple melee lines stop on the first character (0.938277ms)
+✔ Tactics ranged lines can select behind a unit but stay single-target (0.508889ms)
+✔ Tactics powerful piercing lines can hit two aligned characters (0.777755ms)
+✔ Tactics attack toggle returns to movement without refunding spent AP (0.478432ms)
+✔ Tactics camera pan and zoom preserve grid hit-testing (0.713407ms)
+✔ RPG anchors every custom combatant on the perspective floor (0.376378ms)
+✔ RPG and Tactics keep source hero stats immutable across synergy runtime copies (0.579485ms)
+✔ Tactics projects a widening floor board and round-trips every cell after camera changes (0.818296ms)
+✔ Tactics profiles expose diagonal, multi-axis and area footprints (0.783373ms)
+✔ Tactics finite area attacks prioritize the valid clicked target deterministically (0.502659ms)
+✔ Tactics finite target budgets remove unreachable fringe cells from enemy threats (1.03948ms)
+✔ Tactics directional footprints honor minRange before exposing ray cells (0.428508ms)
+✔ Tactics even cone and multi-axis counts normalize to symmetric aimed footprints (0.452353ms)
+✔ Tactics hero AI resolves an area target on the attack fringe through a splash anchor (1.987762ms)
+✔ Tactics hero AI accepts only targets resolved by a cardinal directional profile (1.014663ms)
+✔ Tactics enemy threat maps include complete overlapping area footprints (1.053822ms)
+✔ Tactics enemy threats and AI respect directional attack profiles (0.738736ms)
+✔ Tactics mirrors P2 pickups and keeps unknown effects neutral (0.672476ms)
+✔ Tactics shield-only and charge-only pickups never add implicit healing or enemy damage (0.286473ms)
+✔ RPG, Tactics and Smash direct hits spend pickup shields before HP (3.801902ms)
+✔ Smash P2 moves and lands a manual opponent attack (2.784885ms)
+✔ Smash semantic P4 charge resolves one hit and one mastery metric (6.386746ms)
+✔ Smash P5 PRE_MATCH_LOCK freezes every gameplay clock without Player Anchor (2.06563ms)
+✔ Smash P5 damage respects telegraph, safe zone and no-auto-KO contract (0.896493ms)
+✔ Smash P5 Competitive Full disables authored events and legacy hazards (5.0256ms)
+✔ Smash P5 dynamic topologies move riders deterministically and transform safely (1.488288ms)
+✔ Smash objective defeat preserves its result and advances the authored pose (1.368026ms)
+✔ singleRoster CPU modes spawn each selected threat exactly once (0.892958ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 42
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9424.772323
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

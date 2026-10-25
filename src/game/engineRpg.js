@@ -1,5 +1,11 @@
+import { projectNativeSummonEffectOriginWave14, usesConfirmedSummonContactWave14 } from './combat/rosterSummonChoreographyWave14';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE14 } from './combat/combatSourceDefinitionsWave14';
+import { usesConfirmedSummonContactWave12 } from './combat/rosterSummonChoreographyWave12';
+import { usesConfirmedSummonContactWave13 } from './combat/rosterSummonChoreographyWave13';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE12 } from './combat/combatSourceDefinitionsWave12';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE13 } from './combat/combatSourceDefinitionsWave13';
 import { COMBAT_SOURCE_DEFINITIONS_WAVE11 } from './combat/combatSourceDefinitionsWave11';
-import { projectNativeSummonEffectOriginWave11, usesConfirmedSummonContactWave11 } from './combat/rosterSummonChoreographyWave11';
+import { usesConfirmedSummonContactWave11 } from './combat/rosterSummonChoreographyWave11';
 // Final Fantasy Record Keeper ATB RPG Engine with Synergies & Status Effects
 import { drawPixelSprite, drawPixelEnemy, drawBoss, drawCosmeticAtlasFrame, preloadSpriteSheetSrcs } from './renderer';
 import { combatBuffSource } from './combat/characterFormState';
@@ -706,6 +712,9 @@ export class EngineRpg {
     const source = this.getRpgDamageSource(actor, profile);
     for (const target of targets) {
       if (!this.heroes.includes(target) && !this.enemies.includes(target)) continue;
+      // Actor-centred Typhoon contact rechecks the same accepted target objects
+      // at impact. Movement cannot extend its real radius or acquire a victim.
+      if (profile.delivery === 'radial' && Math.hypot(target.x - actor.x, target.y - actor.y) > Math.min(profile.range, profile.areaRadius) + .001) continue;
       const amount = (actor.stats?.atk ?? actor.atk ?? 8) * profile.multiplier;
       if (profile.effect === 'revive') {
         if (target.currentHp > 0) continue;
@@ -743,7 +752,8 @@ export class EngineRpg {
         if (visual && contact && target.currentHp < contact.hp && !visual.visualConfirmedContact) {
           // Preserve the first accepted hit, even when an earlier area target
           // was dead/protected or this victim is moved/KO'd after impact.
-          visual.visualConfirmedContact = { confirmed: true, x: contact.x, y: contact.y };
+          visual.visualConfirmedContact = { confirmed: true, x: contact.x, y: contact.y,
+            ...(profile.delivery === 'radial' ? { origin: { x: actor.x, y: actor.y } } : {}) };
         }
         if (summonVisual && contact && target.currentHp < contact.hp) {
           // W9 native weapon contact follows an accepted hit, at its original
@@ -778,7 +788,7 @@ export class EngineRpg {
     const color = descriptor.color || profile.action.color || actor.secondaryColor || actor.color || '#39c5bb';
     const choreography = resolveSummonChoreography(descriptor);
     this.activeSummon = { descriptor, actor, side, profile, targets, anchor, color, choreography, tick: 0, durationTicks, impactTick, impacted: false,
-      ...((usesConfirmedSummonContactWave9(nativeAnimation) || usesConfirmedSummonContactWave10(nativeAnimation) || usesConfirmedSummonContactWave11(nativeAnimation)) ? { visualContacts: [] } : {}) };
+      ...((usesConfirmedSummonContactWave9(nativeAnimation) || usesConfirmedSummonContactWave10(nativeAnimation) || usesConfirmedSummonContactWave11(nativeAnimation) || usesConfirmedSummonContactWave12(nativeAnimation) || usesConfirmedSummonContactWave13(nativeAnimation) || usesConfirmedSummonContactWave14(nativeAnimation)) ? { visualContacts: [] } : {}) };
     this.playSfx(descriptor.kind === 'reinforcement' ? 'confirm' : 'portal');
     return true;
   }
@@ -856,9 +866,13 @@ export class EngineRpg {
 
     actor.actionPending = true;
     if (side === 'enemy') this.enemyActionLock = true;
-    const wave11Support = profile.effect !== 'damage'
-      && COMBAT_SOURCE_DEFINITIONS_WAVE11[actor.sourceHeroId || actor.sourceId || actor.id]?.universe === actor.universe;
-    actor.state = abilityType === 'special' ? 'special' : wave11Support ? 'support' : 'attack';
+    const sourceId = actor.sourceHeroId || actor.sourceId || actor.id;
+    const sourceSupport = profile.effect !== 'damage'
+      && (COMBAT_SOURCE_DEFINITIONS_WAVE11[sourceId]?.universe === actor.universe
+        || COMBAT_SOURCE_DEFINITIONS_WAVE12[sourceId]?.universe === actor.universe
+        || COMBAT_SOURCE_DEFINITIONS_WAVE13[sourceId]?.universe === actor.universe
+        || COMBAT_SOURCE_DEFINITIONS_WAVE14[sourceId]?.universe === actor.universe);
+    actor.state = abilityType === 'special' ? 'special' : sourceSupport ? 'support' : 'attack';
     const authoredTiming = resolveCombatAbility(actor, abilityType)?.provenance.identityAuthored
       && Number.isFinite(profile.action.animationDuration) && Number.isFinite(profile.action.hitAt)
       && profile.action.hitAt > 0 && profile.action.hitAt < profile.action.animationDuration;
@@ -883,7 +897,7 @@ export class EngineRpg {
       this.playSfx(profile.effect === 'damage' ? 'shoot' : 'shield');
       // Source-curated support actions use their pose and accepted status feedback.
       // A radio order, analysis or protection must not launch a generic laser at an ally.
-      if (!actor.rpgSpecialVisual && !wave11Support) targets.forEach(target => this.emitTargetedProjectile(actor, target, color));
+      if (!actor.rpgSpecialVisual && !sourceSupport && profile.delivery !== 'radial') targets.forEach(target => this.emitTargetedProjectile(actor, target, color));
     }
     if (abilityType === 'special') {
       this.playSfx('special');
@@ -1434,7 +1448,7 @@ export class EngineRpg {
 
     const nativeAsset = resolveSummonAnimationAsset(descriptor);
     const nativeFrame = getSummonAnimationFrame(scene, choreography);
-    const effectChoreography = projectNativeSummonEffectOriginWave11(choreography, nativeAsset, nativeFrame);
+    const effectChoreography = projectNativeSummonEffectOriginWave14(choreography, nativeAsset, nativeFrame);
     const nativeMegaflare = nativeAsset?.id === 'ff7-bahamut-megaflare';
     let nativeDrawn = false;
     drawSummonChoreographyEffects(ctx, effectChoreography, 'behind', { nativeMegaflare });

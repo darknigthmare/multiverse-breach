@@ -1,0 +1,1185 @@
+{
+  "date": "2026-10-25",
+  "heroId": "aragorn_lotr",
+  "sourceWork": "The Fellowship of the Ring (2001), Strider before Amon Hen",
+  "reviewed": true,
+  "rowsReviewed": 45,
+  "nativePosesReviewed": 180,
+  "distinctRetainedNativePoses": 180,
+  "source1to1Verified": false,
+  "officialAnimationVerified": false,
+  "method": "Manual inspection of all original generated source sheets and six packed PNGs, with nearest-neighbor palm/wrist closeups. Native four-pose corrective sequences replace entire insufficient source rows. Body anatomy and palette are generated pixels; only connected-alpha segmentation, uniform source scale, nearest-neighbor resampling and atlas placement are technical processing.",
+  "identityReference": {
+    "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-identity-reference-original.png",
+    "sha256": "962df8aaa90c51dc5af021b1c9da9b14ec3e2f2fb0347bf98955fabe8bbcaf62",
+    "role": "Original W14 art-A native48 appearance reference; no reference pixels delivered as full45 poses"
+  },
+  "atlasSha256": {
+    "/sprites/generated/melee-aragorn-wave14/aragorn-motion-a.png": "0501abda47352551f69d8bcceebdcd335652ee29faaade4d52882fdf8390c2db",
+    "/sprites/generated/melee-aragorn-wave14/aragorn-motion-b.png": "aeaa2536d055acabc0fb73cc5b4790056fac133f59d5879175ea9017cd30294e",
+    "/sprites/generated/melee-aragorn-wave14/aragorn-defense.png": "f0dea22268b4ad9f39aeb994c365c304b0a832145e0a5fb18a0ccf7c02ddb90d",
+    "/sprites/generated/melee-aragorn-wave14/aragorn-combat-a.png": "123fd94b6245067619137ddbd80778cd00f2d472c9d5032b57b15091e828a855",
+    "/sprites/generated/melee-aragorn-wave14/aragorn-combat-b.png": "27d23bbea1bbc8a90649107c11e4d3aa3ff33503b74a0fc6974721ed63feaeb1",
+    "/sprites/generated/melee-aragorn-wave14/aragorn-ledge.png": "542a3fa0b52aadd39c1b19793d6174eb5605ee52b596521011e90d2e8ba51641"
+  },
+  "sourceSha256": {
+    "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png": "c0186ce1b565daead2beb78b06bc92da777cde74b63076526cca9a880333da58",
+    "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.native.png": "c6b018d6f663b4d684a6e6675501ce6759fe924c5a9098fca19854bc822dbdfa",
+    "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png": "84ab1b8d8634f147b9bdab703561e8affe22ea6aecc6228fa3fd60ada248b4b7",
+    "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.native.png": "6a1f56b4a6e4bb30f4a961f52c78de77f542a4fbfafb3fe8fbf1190d84f69790",
+    "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png": "4e998ce85564dd4366e9be2d47187b1ef77e6895a608f1c62ebd6f354aad769b",
+    "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png": "ef52b18b4e03050d333232cdbf8b9e1d61f8cb398c2fd2ce87f4f443ef64cdca",
+    "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-movement.native.png": "6aaaf0b1e1c785adcadbe24f97e71f1011b1b3ab1a50db54c057312b0c5c1859",
+    "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-complement.native.png": "319a287e8d2e065bb16b5aae77a5cd24e321aadcd8cdb9b7ca2ff090804b38b3",
+    "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-ledge.native.png": "947c6ac54f7fa62cdfe96ad96a7465c86b3c83b2ed3f62894e44a3c630419aca",
+    "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-airborne.native.png": "4e058f89f9bc0193d096cbb8952f7546a5c5fb5e54a4f863c7b40bc1a99eef39"
+  },
+  "rowReview": [
+    {
+      "atlas": "aragorn-motion-a",
+      "state": "idle",
+      "row": 0,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-a",
+        "row": 0
+      },
+      "nativePoseSha256": [
+        "527acac106aaedc4b74118c098cd17754be8b4effda8f5f9b4fbcc7e7f01d2fc",
+        "b1e0f713adf63db3c0c22a1f9a7bb3b06bb24f1be0bc925dd18a90ca11223b32",
+        "de8fcd061e0e87ebad723a459f890f5fe8c5157fe8360d448c8a3f9fd976bd21",
+        "3d86f7ffac110a2abbb5e8a518be3efec5b4ee548dcbbbb6ed0a7bf6755bb9d0"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-a",
+      "state": "walk",
+      "row": 1,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-a",
+        "row": 1
+      },
+      "nativePoseSha256": [
+        "1cdbb7a733846ebc8b1a512f226d1053581b9ecd687a2bb65dc230977254e4d8",
+        "bb34766b0a080046346bcb6e354733aaa05b0dd42673a7c634fea69321bf84e0",
+        "5b426ee8e1cac07a309016e62dac6567a2864bab8cca5c6a2cc719427d79290c",
+        "d95c2368b33502cdb33e1b09b29951f7569dbe58b128d8acee9b6dec9831cf0a"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-a",
+      "state": "run",
+      "row": 2,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-a",
+        "row": 2
+      },
+      "nativePoseSha256": [
+        "b4968f20b75d4d5731367b80e16d12625624888b23eeaf857ba8e9744fa060b4",
+        "b11802dcdb4948feef43be03fd74264bb7dc3c22f10241d35110e917a4473b44",
+        "ce9e1e325f5fbda2efa3a937661463b291a52dc6e6bf51a52988497c1c0ad54b",
+        "ab89b789cb0f5def15b82ec7484fe4ec1cea76c5dee4e28aa3e998e4c177262c"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-a",
+      "state": "turn",
+      "row": 3,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-a",
+        "row": 3
+      },
+      "nativePoseSha256": [
+        "dbf1d935e67beabbc796d9eeafd5fdcb200863ad9610c93efbd81d5cf960a0f4",
+        "08b33117faaf47a2cce004cb4aab128ce3a7ecbecef360e7f9918cace7b41c88",
+        "ff439f9709801216219be8efa3c49f295d80efb5b912431bef7eaec91e66fd97",
+        "c0be04f08d28bfe9a3f84bfbbb520c8d3de5e788a5ed9fa91062ab90b76afc25"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-a",
+      "state": "jumpStart",
+      "row": 4,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-a",
+        "row": 4
+      },
+      "nativePoseSha256": [
+        "02f76c6b0065107cf62b271573dcf5351370f7d8247cbc3daacc1d3a79add40b",
+        "575398b55707599df3b64a3ff4e643e5feb7f56b5812d51e35d48816de1c5925",
+        "0c5299fb4770fb4b9db183f900e5a3e25881ebd2fc64558e81dc6e9ae3bb46bd",
+        "ef8771a0e93b7ebaad013abb501db1685b6dc6802a37a65d72c4ca000c47c898"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-a",
+      "state": "jumpRise",
+      "row": 5,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-movement",
+        "row": 0
+      },
+      "nativePoseSha256": [
+        "53df3e3bd4ba5159364e7b93f35fdc021c5b37295147641128046d8f295c92bb",
+        "a9bac009aa102170305aa16a8c164b90d5a85f85c1cf25ae1a342fe3c4b85b41",
+        "3b6b805ddd69ccbfdfdee5d0fb9cc1b175899bf1687382c42beda07047979e02",
+        "67ccce2ccaf9cc881d9a2a03f76b99b325f6b4ea9da8ba6a8b6aaa0a88c62926"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-a",
+      "state": "jumpApex",
+      "row": 6,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-airborne",
+        "row": 0
+      },
+      "nativePoseSha256": [
+        "7666ddf6f904230d10357dc929e82823c6f5a9997d12c987ba6bc7410baa0b02",
+        "64110deb2dd19e11abd16582a3018d1e5426d9c383ab079dd2ba5418fe7ed371",
+        "6d0e6a097674cb16d92538eb7765bb8b8f55a023c84cf034b0f459e09969f4e2",
+        "294bf7080ecdbc80f247d7c9cf3b90590eece0ebae9b40f89f25a06e48f7e859"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-a",
+      "state": "fall",
+      "row": 7,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-airborne",
+        "row": 1
+      },
+      "nativePoseSha256": [
+        "cb1c0c10ba5efda10cc1f7149eaac6e90a5a9d0f2d1c71ea278edd3b1ad80447",
+        "44f12076901750175d767054973ce566a5b34ffce3618daaf64fce520dbd343e",
+        "e33ce06a8a975123fa32227910b908509d7b01f16073fd612aa09f6a92a5ed52",
+        "cec6782729785a04bc15ffa2538cb59f2ba6c6950a6223ee8ef580043ec8e247"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-b",
+      "state": "fastFall",
+      "row": 0,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-b",
+        "row": 0
+      },
+      "nativePoseSha256": [
+        "fef69fde596a514b316b582fff933a1940a799446aa2ddd72f94fc3591418223",
+        "fea60ce614d989587f9e32a83f640fa6ac59112aec1cf23c60ffa70b4db5153d",
+        "b7abf4f0f464e4461f21c26984a36b9336032ab4527b25b6e7c85b77573236f5",
+        "32eb462c08991069fdeb60059b7a260584be4b2eb707c76542672f34267f8052"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-b",
+      "state": "land",
+      "row": 1,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-b",
+        "row": 1
+      },
+      "nativePoseSha256": [
+        "fd3ddd300baeb9d1b4eef97504300ddb089038ca5e6ad1af5e4128c10d84ae98",
+        "e38b28e579f8ef13ba1bc2eb8139414f4cd58114d0da6309a0e2f3945563d524",
+        "051528746d8355a0e2f315d066791dfc2fa4467aba0dd2c65f832212972bb00b",
+        "f42d6c96e67d9ba10ad188664be8951c8cb8015cd7cb0385b9af979a4b8e876d"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-b",
+      "state": "crouchEnter",
+      "row": 2,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-b",
+        "row": 2
+      },
+      "nativePoseSha256": [
+        "72ee782b8784d048b20a7e530143b2c97138b9f4e5b8b9b3b0d6b3e40438ce89",
+        "ad27f73168fc3a814c50bbb9aff024cbaf0d819ec64ff2632235e0c31f275a6b",
+        "97fa6e2b4431263c82b502f4941ea6d91fd1919570c54ae8a2ba058e0fc3932e",
+        "eccb5dbfb623cf776ec6f1e9613650bb102b78bad4f7e7ef3234cd0e0603dba6"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-b",
+      "state": "crouchIdle",
+      "row": 3,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-b",
+        "row": 3
+      },
+      "nativePoseSha256": [
+        "452ef4f3a89e82d519166419d6626eb371e1f855c1c91372e75433f1c59f0e52",
+        "0f42581aa0edc984480477971cc6b5daa67c59025c7d41449e4dcf570ef8edf4",
+        "165dd7b849f743d11149f68f3a92e592525c787d5d0110c28abc8fca6add06d2",
+        "d70ae3798383df4bc400dd7887657d07882d8525256b985850a5e515c242cc06"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-b",
+      "state": "crouchExit",
+      "row": 4,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-b",
+        "row": 4
+      },
+      "nativePoseSha256": [
+        "f233506af867dc946ac0398ae0e7148e533653360290d798b0606f3d24d478b6",
+        "3a2ba867b130d1d7ee824f68ad5838dcb988d979a34d5e19299dca10c7be6938",
+        "7d134253881c1920168d4d73f9f4b5d989c19e94f56014f349c77fbe89000ca2",
+        "a48e47badf011ed9227857f6041708a89aea8e2d6e80bbe06d77a18f5c34e47d"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-b",
+      "state": "crouchCharge",
+      "row": 5,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-movement",
+        "row": 1
+      },
+      "nativePoseSha256": [
+        "a81700f36e31ef580fc6e69567e314dc5359663a715c6096ffbc16ae7c66099c",
+        "4bd324c4fdc20e8c07ae5033a6619c0071a218d6daddc071739379f839bb51b6",
+        "d977140b60fca210643ee10c1bd8b62b9a99f2efc488039e1abfa9520c28061f",
+        "f1eccff4979a8106a72b37a401b6b83dc399c423b6b148e92b36ca5d2a66050b"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-b",
+      "state": "taunt1",
+      "row": 6,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-b",
+        "row": 6
+      },
+      "nativePoseSha256": [
+        "4c839c3210512358ecf18914fc358dc82e36613175114101b3904929c7081b37",
+        "499cae265b7433a6e62a91a4ea12852ec00fcf06b7b1c161f5e5c4ac1739ebf0",
+        "aa8c4558f7a03b2117118cd2f9a0c5dbab874698545afb283b194b30c129285b",
+        "365c67be2ebcc2dc408c914c6541d14d9197c817085e8f928ca0b5ac7aadfeab"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-motion-b",
+      "state": "hitStun",
+      "row": 7,
+      "nativeSource": {
+        "sourceId": "aragorn-motion-b",
+        "row": 7
+      },
+      "nativePoseSha256": [
+        "b3fee22c00fa794bc9fe38145199c63d870be98e975da958f7a18f65dd5d4c06",
+        "44495e4b335239460851aec5d46e5e2c18c9ba0a9d65e5f231282af7107564d5",
+        "089873f349efd226c7a37fd5ddf4da856232f96e494ef43a7952600deeefe405",
+        "9fe9c878ca99c4be1b9ca6fa39f0d7c9e61d4ae1479778b391e0c643a0ac3288"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-defense",
+      "state": "shieldEnter",
+      "row": 0,
+      "nativeSource": {
+        "sourceId": "aragorn-defense",
+        "row": 0
+      },
+      "nativePoseSha256": [
+        "b8387d57cd7a802447aa5a9fd77245ef0b07d88a8c55fe2f1e68bb50c31e0872",
+        "cae80534a59ca002b16e2aa95ee2901ef57ca829b141b0e5724f1478a5d7db73",
+        "251e47579ad7b93e68d80d9e8191e5e9b774c01db395a9c13c6ccba8ebfd29a1",
+        "755c4639bbfe399b1a9b0b039254120c220994848fb9268274f8299653c6e179"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-defense",
+      "state": "shieldHold",
+      "row": 1,
+      "nativeSource": {
+        "sourceId": "aragorn-defense",
+        "row": 1
+      },
+      "nativePoseSha256": [
+        "ca3111d020b3829d64440262e032fd31184578d9ce5459d1f1b95d86c7f83060",
+        "170f686456c4f4b75f766951f86b0e6efe045bc771f38cf21ab7f40e45f4b237",
+        "2f87a5cf03a3ca6ab9d7c2a6798335df205adb70bffd24cfe5de8f2a119ed778",
+        "902ed2683cb61f76e502ae8bec52d5caec6e8e2e7e2a0f44cca25943b68179d3"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-defense",
+      "state": "shieldHit",
+      "row": 2,
+      "nativeSource": {
+        "sourceId": "aragorn-defense",
+        "row": 2
+      },
+      "nativePoseSha256": [
+        "894b6dd8bad33e30609e30f4430815bb1b65820899b46ca18d8aabbaf5b13b41",
+        "61d47d2b24a09ec8594210b89d93651ec5fa034eab4d8da644b8e2ae23cec314",
+        "496cc606d23991485eba5f6d445b992826aa73a08c71aed0d82d807163580196",
+        "85ce07fed282e9a0d4766fe8f027b96dcc91ead56771dfaa69fcb4dd3f2f1251"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-defense",
+      "state": "perfectShield",
+      "row": 3,
+      "nativeSource": {
+        "sourceId": "aragorn-defense",
+        "row": 3
+      },
+      "nativePoseSha256": [
+        "4a4c3d52a2d3bbb56d1806171719c8c4b8811bb0043657eada270c74f02dea1e",
+        "c2fb1f68594bab737733b61b7beffee18a5d1d76f7efd3fd6efb3ebef7ed1866",
+        "40e5c7ff0dd88eb84265c62c26a1a02dcc6f2e981db16c65f3025f49366f7ac4",
+        "d5072f8fe31ec551ca2891b2fbb936802caf8729905bb45e744c9f7d378c0598"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-defense",
+      "state": "shieldBreak",
+      "row": 4,
+      "nativeSource": {
+        "sourceId": "aragorn-defense",
+        "row": 4
+      },
+      "nativePoseSha256": [
+        "579090ff94a3aff2a098936997d297c5cd7a8e2a4dc0f12d545f2aba0eeb2d31",
+        "bc7ff680e77d43f83a1d29b9c416ea545e73d6a61f41e4eb49cdc489c968a253",
+        "04aafc038c44238756283ebd7b0a7222f6518fc4a6262213f8345239afe38632",
+        "edf76ec343e9a159dc573d6c7cd176d4894f11d23aa6a7d169da9582b265ded1"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-defense",
+      "state": "shieldExit",
+      "row": 5,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-movement",
+        "row": 2
+      },
+      "nativePoseSha256": [
+        "c7d04ca355f4f8b94e05f80d605b5684da4b14730b8edcf87621f0f0bf4984da",
+        "c34405b3aac1c941bffd863a7c146458662326642a6661f05ac5efb7935e008f",
+        "9daec63515b2391ef7445ab6b95555bef39b494c1afed33aa5122ccd78c11bac",
+        "3b08c9faaf43a81563cf0e3de989e1c1cce19c30cabb5205b84c12a4b8dda3be"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-defense",
+      "state": "dead",
+      "row": 6,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-complement",
+        "row": 2
+      },
+      "nativePoseSha256": [
+        "5aaa8437c596aa2ff05c5e037feb824e3b8b9ea7aeefe9ff1c3360886407b434",
+        "9f11c135edeaa926ecd184eda165d614b613d01b907766ffbf9678d71340a9d8",
+        "5b660ce276fc6f23d77a9276cde74a8e530d75e83c8d09de88e20cb6c032ec41",
+        "e5341850bd3f7fb13b9316199a30ddf3e62163d32bcc6fd85b17c7a6ded8b68b"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-defense",
+      "state": "defeat",
+      "row": 7,
+      "nativeSource": {
+        "sourceId": "aragorn-defense",
+        "row": 7
+      },
+      "nativePoseSha256": [
+        "e149f14e434eaac9e42c31b26d3ac7b8f5853ea43810d190c194f2aee80ae239",
+        "e925b6f295eb7fe1da0744f5f65a8f6ac13adaddfe3118510b93ec3b9c9ff3b9",
+        "6f73643ef4698d268a7b032dc0d2d0909e87e6fc7b93ba9ed52e34c62b03f21c",
+        "9febd54385965cf99223b257b3aaa14bc320bba45e20901069b6e65c16322e63"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-a",
+      "state": "attackLight1",
+      "row": 0,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-a",
+        "row": 0
+      },
+      "nativePoseSha256": [
+        "5f4618c1db7af8da2aeb21fe1de8a2b62642ec0f1837c41a446889166bbf9e7b",
+        "94271df68d8f55af265ca128f45f8ec0e8861c12ab0a4c8a78064ee3c6ae650a",
+        "7902ceb064172031cae8f8ec1222569288db08e08eec1a66aa6687dac2e3b9b7",
+        "d5fd77227971821618f0208c916d30ab9f8a96014313db871828fdf7a2f744fd"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-a",
+      "state": "attackLight2",
+      "row": 1,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-a",
+        "row": 1
+      },
+      "nativePoseSha256": [
+        "b22012fe560aafc42f401399f52c44a5744ddcd6d4247c29404bfa0102344c21",
+        "79f252b95ee3065f5848bc3f634a44ca0283a43183013acbac0119a65688c197",
+        "e077b175e41e06c5fafb21391fbb04cb810e6ddebc959cff8cfed3b7cbbf9fbe",
+        "53e19d78891122c3b3b3018fdda000949b2219e88cefe25803756ccb69e43ecb"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-a",
+      "state": "attackLight3",
+      "row": 2,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-a",
+        "row": 2
+      },
+      "nativePoseSha256": [
+        "e391679d012ef9c558d507714205f9248941d887a19afb97fa6846b933196970",
+        "e34f060ed2041a434ac1cdb019421821b8ddb078d76661f919e6396eec683c64",
+        "2cce4cbbbef824cfb10472c7afe404f10421f80ec814ecabb422dd21e7524cbf",
+        "694c8946bea5f2f4958eb64567515c67735b02bc1446a03af9124aa10f3bf8b1"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-a",
+      "state": "crouchLight",
+      "row": 3,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-a",
+        "row": 3
+      },
+      "nativePoseSha256": [
+        "8ead048cd5f62b7338090a49285c400f68a6f3e28b1de64882a7e681d23a404d",
+        "8c6903c94746c2307275de120a643215d9982cee2cbc20e9942989e6b669ff05",
+        "ad1b3193a5c3e38dc863b9f52713481c7b48ce56dab3e6842a4b5e3b6c0a1779",
+        "2bfdaadd414ee6d39ce8edfb82b5f697670548d81b244e756165a93d3ca7f594"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-a",
+      "state": "chargeStart",
+      "row": 4,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-a",
+        "row": 4
+      },
+      "nativePoseSha256": [
+        "235623e07f3c0e8bbfeadf35d53d4bd598dd512347a5334ed9659d598da7808f",
+        "05e751460fb12132663c94b9d1be538b0ea3356556a54cc3f01c5a1386d24747",
+        "75c5f9a6b529964989afa089c282148547c8c0e4a75940708fff2c99f8a3d828",
+        "d52b891352a31392a3425cc8624b58e96c5b7d300969d8d9d00d5808ed9936dd"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-a",
+      "state": "chargeLoop",
+      "row": 5,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-a",
+        "row": 5
+      },
+      "nativePoseSha256": [
+        "f4c099d9f58b5de9357fc5449cedd64f28d0ec4141dddeae31943da47acdaba8",
+        "7fea6e4ff15ff237313e0cedf88f20acbb905c54e844c70156b1f324818f815d",
+        "d5f89d208f745f5891d84db688c34967b5a84dddfc01688b69d0c6c21c70777f",
+        "b85163d1974e6233a7220c79f177967a174bae28faf544f49b39e6314df41616"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-a",
+      "state": "chargeRelease",
+      "row": 6,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-a",
+        "row": 6
+      },
+      "nativePoseSha256": [
+        "26933e1120176a014de2655276a6bfa1436e7c9ef25dcb1a6bb3d47b24a16ad0",
+        "5ad377ff375b868b762b04d984a13d189cc0eea5bd477443cfc2706717781a80",
+        "ba9f9f93a9538d8489846345cd2cc66b52f5827942e039e007c833bcb94db25e",
+        "f36c52b3bbd61a80e6075744b5a0c9466e4a33332cfef02db9e74910a565ce4a"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-a",
+      "state": "chargeRecovery",
+      "row": 7,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-a",
+        "row": 7
+      },
+      "nativePoseSha256": [
+        "acad2a66f8c3dae3b4ffc8941694814b17d5b016fd3263a9cddbbb7320c54e26",
+        "19dc6832dbe35ef631426288cdaff8ac5127c1830cf9510b3e80cd87a1423025",
+        "dd40b14ac14359d162e79a75fe61dec8a71553aca0a02a77441469258007894b",
+        "1898a5c5124a532464dd485c3b28b187192eb07609e5b18b3713b8ca056c8093"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-b",
+      "state": "attackRecovery",
+      "row": 0,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-b",
+        "row": 0
+      },
+      "nativePoseSha256": [
+        "c27d6b0e937ffa461fe04e1ef8174b2bb56db38865bfecf19bcc28a7fe4c1a5c",
+        "1bd513e41736700b8bad4f8b84a1d68cb98cbbd9f36e8d8a063db23f797c30ee",
+        "a66ee09a99c90a3ae292c03ab89b13c8b5f8921b78694cd742c84a654d1a9b2e",
+        "c247a0a4e06cae9bbf5bdeeca1f8bc6782e485c8b319d1e2bd58b45acdfa10e6"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-b",
+      "state": "special",
+      "row": 1,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-b",
+        "row": 1
+      },
+      "nativePoseSha256": [
+        "373dd562ccd28e56843c172c2286c25d3947161be06d4c49a8a778f69f0963c1",
+        "9ad5a725e19101caa8d1fc81bc646b33899d2fbdbb615728931eef067b828503",
+        "5dfe766aeae5b9fad1c8b72496770712e8db959ac6a266fd9f2e1b043d35c2b6",
+        "6ba32050e3fe2798844d689054c64b56668f8543044d33dee62944cee6336492"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-b",
+      "state": "aerialNeutral",
+      "row": 2,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-b",
+        "row": 2
+      },
+      "nativePoseSha256": [
+        "b8b11c155225a1c97669f6dac6d8d6697f4b92d44223f652dfcfec54cfde8c2d",
+        "a0335952f924353ae1db18b262eb79ca779a469c60b66d21c30a5e0bfd20ab8c",
+        "4a13198dfcd8f8da7d66faa0b00c34891ae101e8db72d26d8bb1d505974fcd6a",
+        "88a7e5fe5cbaa74fac827a1c9e15bb3794ed340622f666bec30cb754235c0b7b"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-b",
+      "state": "aerialForward",
+      "row": 3,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-complement",
+        "row": 0
+      },
+      "nativePoseSha256": [
+        "b3f834712a1286b9355bd5726fa409f14a0a9a16f6609f9e4a0d1317b884c2ab",
+        "f9ea22052760100a25c80fb21127b3d69c808adcb93488b8f776b5d70edd615e",
+        "502ab1b1e64d0a758400de824a2366fea628b660e3cdc589691ebc8464eb49fe",
+        "f4c402a44b5e8fbcef62db6b6968ac8e52e7f41bc0bc025667cd3467e322ecfc"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-b",
+      "state": "aerialDown",
+      "row": 4,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-complement",
+        "row": 1
+      },
+      "nativePoseSha256": [
+        "747bf6daaaabd7ff99e34945970e8a69c6ad4092ef3b84a85f867a4075127394",
+        "c1d33a3a818322a9367056d66ca29060383c8510dd360715904931c161175334",
+        "e2be7018a3722f3d9d9bf7a6e306c626820e142bdcc6e5798c74dbd4aa2eff01",
+        "4b41af8b285ef60901d1c2aa6086cbd22563d07b1bcd8581169e6cd1988dad83"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-b",
+      "state": "intro",
+      "row": 5,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-b",
+        "row": 5
+      },
+      "nativePoseSha256": [
+        "1e954ab145ed2055241cb8d78b0e810e195c50c5fe02e1b41ef65ec06db1e811",
+        "a91fccdb202ec76ada5ae348758f590b41f9acab6301262bccd4a636e211a8b0",
+        "bd1471c6e602a13086c6a73d2427cd4eeab8f54243848a7350bf970f808c31c4",
+        "3070cbfa16070298fd577a4196029216a290c907a74cca3059aaf51c7c37107a"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-b",
+      "state": "victory",
+      "row": 6,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-b",
+        "row": 6
+      },
+      "nativePoseSha256": [
+        "270945a26c2983637c82c45862422617b04a3400886b2c1c966704ded16d884d",
+        "c47c6d183708e56eba1a60873012f9e2e123f5516b4e009c8945b06a2a751ede",
+        "eea1ef96725b9797a2cc4de37fe3f63f1030896094fe9bea8aa7ee6dc55c294e",
+        "d1ee16733d29ef6538ea6051983aed90315b2104fb67e8f74b839643d6b51d07"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-combat-b",
+      "state": "ledgeAttack",
+      "row": 7,
+      "nativeSource": {
+        "sourceId": "aragorn-combat-b",
+        "row": 7
+      },
+      "nativePoseSha256": [
+        "8ab03a9a88339f33459feeabb60ba9a92a9eb9962a9743d17f823b098bd5f686",
+        "e20bd57ac92de3273db96e92123bbf8d714c32de2626147b1e63e82046c45b33",
+        "eaaddbc0b5c8037b601279b6a11d2a1fcad78b36296bb30f0358b9e0e95382fc",
+        "b1b26412c7c9c0aa4e98674bd0221685b433c571dbc379b6684ce053dd2b99f2"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-ledge",
+      "state": "ledgeCatch",
+      "row": 0,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-ledge",
+        "row": 0
+      },
+      "nativePoseSha256": [
+        "2ee9043f00631b234cf20c58c7a7513dfdc438e4166aa2afc3e088d306b949c5",
+        "8493fffb71a9cf2e771617df8bfb8e9bf9218c6f8e4d663f5f0ae059da90f966",
+        "006a8e4cb6b6b3e2279d171ffc1c3d71dd087df1aa331af54f55f9c54ba3867b",
+        "dd546cb12e98e990ff79bdc790d94e5b3ec1c7e1aea9d33ac5b5f668243ef947"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-ledge",
+      "state": "ledgeHang",
+      "row": 1,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-ledge",
+        "row": 1
+      },
+      "nativePoseSha256": [
+        "49e4adc525167560d81ec22f3cab2dd910f38bc5ea24113d1d969c29b975cf3a",
+        "9b3f6c2644efe7daeb52659f5a609a53bb26d286833730c7a19b50a54b09bc16",
+        "4479a90df07be91c810ff3a45abf33dca810d8e1fcd8614d9dc7f9bb78ceeb83",
+        "b8f7862348fa9afbf6532ea7d7fc85267ce9c726724a1abda5338a9d559e58da"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-ledge",
+      "state": "ledgeClimb",
+      "row": 2,
+      "nativeSource": {
+        "sourceId": "aragorn-corrective-ledge",
+        "row": 2
+      },
+      "nativePoseSha256": [
+        "5e9bfa706af2a2486f25ec852a226e9a3365167361967b5c40abf8cecd56ba44",
+        "ead91bbbd4913090b1648421793bb3996c892c770690090ca2c1fba098d2ec91",
+        "4450c549239dce56d2652fd4bc9daeae1b1ad6a90adf99283476c440a83d64b1",
+        "afc109494511e87f3a463fe44c6636ce37337ed5d4e15534d241973b8602e8e8"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-ledge",
+      "state": "ledgeDrop",
+      "row": 3,
+      "nativeSource": {
+        "sourceId": "aragorn-ledge",
+        "row": 3
+      },
+      "nativePoseSha256": [
+        "a88221e0e71a37b55a21d212b8551ad61d742d54e1a861b7649cf38102a09ee4",
+        "aa062a1e23d2e2aacd7658f5ebb9d0744f0d93ea58a991533f61e29113f20926",
+        "e83e9864b05dbf9dc3c2fc8adbc61f39b31511640616a32983840cd170a8287d",
+        "a06413f5d4bfa66d719625a165bf6af9b688064f4808822cbb8ff7276c4dfddb"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    },
+    {
+      "atlas": "aragorn-ledge",
+      "state": "ledgeJump",
+      "row": 4,
+      "nativeSource": {
+        "sourceId": "aragorn-ledge",
+        "row": 4
+      },
+      "nativePoseSha256": [
+        "2de8cf6ac6a8daf36a0a31e829a46401bb3a73679ed2597d80dfb31109a184fd",
+        "66dec39af719c79f5849b3ee5472c6f08e47a59a6dc00b6e1397c68475e1122d",
+        "eff74ea639f6922f080d8c3569ead4df23a2422dad4d00e8029f653a9f020ecb",
+        "48a7fcaa4f2fcdb31c200d5297f5d85d555acd55fed8d9e61d2fc13c277a07b9"
+      ],
+      "fourDistinctArticulatedBodies": true,
+      "fullHeadHandsCloakBootsContained": true,
+      "noCanvasClipping": true,
+      "costumeCoherent": true,
+      "physicalGameplayAdaptation": true
+    }
+  ],
+  "sourceCalibrations": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+      "reviewed": true,
+      "state": "reservedUprightStudyA",
+      "row": 8,
+      "column": 0,
+      "bodyBounds": {
+        "x": 44,
+        "y": 669,
+        "width": 89,
+        "height": 162
+      },
+      "nativeStandingBodyHeight": 162,
+      "raisedArmsExcluded": true,
+      "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions.",
+      "effectiveStandingBodyHeight": 190,
+      "sameScaleForEveryNativePose": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.native.png",
+      "reviewed": true,
+      "state": "reservedUprightStudyA",
+      "row": 8,
+      "column": 0,
+      "bodyBounds": {
+        "x": 60,
+        "y": 694,
+        "width": 88,
+        "height": 153
+      },
+      "nativeStandingBodyHeight": 153,
+      "raisedArmsExcluded": true,
+      "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions.",
+      "effectiveStandingBodyHeight": 190,
+      "sameScaleForEveryNativePose": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png",
+      "reviewed": true,
+      "state": "reservedUprightStudyA",
+      "row": 8,
+      "column": 0,
+      "bodyBounds": {
+        "x": 59,
+        "y": 665,
+        "width": 95,
+        "height": 162
+      },
+      "nativeStandingBodyHeight": 162,
+      "raisedArmsExcluded": true,
+      "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions.",
+      "effectiveStandingBodyHeight": 190,
+      "sameScaleForEveryNativePose": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.native.png",
+      "reviewed": true,
+      "state": "reservedUprightStudyA",
+      "row": 8,
+      "column": 0,
+      "bodyBounds": {
+        "x": 42,
+        "y": 701,
+        "width": 101,
+        "height": 157
+      },
+      "nativeStandingBodyHeight": 157,
+      "raisedArmsExcluded": true,
+      "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions.",
+      "effectiveStandingBodyHeight": 190,
+      "sameScaleForEveryNativePose": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png",
+      "reviewed": true,
+      "state": "reservedUprightStudyA",
+      "row": 8,
+      "column": 0,
+      "bodyBounds": {
+        "x": 41,
+        "y": 682,
+        "width": 96,
+        "height": 162
+      },
+      "nativeStandingBodyHeight": 162,
+      "raisedArmsExcluded": true,
+      "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions.",
+      "effectiveStandingBodyHeight": 190,
+      "sameScaleForEveryNativePose": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+      "reviewed": true,
+      "state": "reservedUprightStudyA",
+      "row": 8,
+      "column": 0,
+      "bodyBounds": {
+        "x": 48,
+        "y": 706,
+        "width": 94,
+        "height": 158
+      },
+      "nativeStandingBodyHeight": 158,
+      "raisedArmsExcluded": true,
+      "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions.",
+      "effectiveStandingBodyHeight": 190,
+      "sameScaleForEveryNativePose": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-movement.native.png",
+      "reviewed": true,
+      "state": "uprightCalibration",
+      "row": 3,
+      "column": 0,
+      "bodyBounds": {
+        "x": 69,
+        "y": 917,
+        "width": 171,
+        "height": 291
+      },
+      "nativeStandingBodyHeight": 291,
+      "raisedArmsExcluded": true,
+      "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions.",
+      "effectiveStandingBodyHeight": 190,
+      "sameScaleForEveryNativePose": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-complement.native.png",
+      "reviewed": true,
+      "state": "uprightCalibration",
+      "row": 3,
+      "column": 0,
+      "bodyBounds": {
+        "x": 62,
+        "y": 828,
+        "width": 223,
+        "height": 344
+      },
+      "nativeStandingBodyHeight": 344,
+      "raisedArmsExcluded": true,
+      "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions.",
+      "effectiveStandingBodyHeight": 190,
+      "sameScaleForEveryNativePose": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-ledge.native.png",
+      "reviewed": true,
+      "state": "uprightCalibration",
+      "row": 3,
+      "column": 0,
+      "bodyBounds": {
+        "x": 66,
+        "y": 929,
+        "width": 190,
+        "height": 287
+      },
+      "nativeStandingBodyHeight": 287,
+      "raisedArmsExcluded": true,
+      "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions.",
+      "effectiveStandingBodyHeight": 190,
+      "sameScaleForEveryNativePose": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-airborne.native.png",
+      "reviewed": true,
+      "state": "uprightCalibration",
+      "row": 2,
+      "column": 0,
+      "bodyBounds": {
+        "x": 106,
+        "y": 677,
+        "width": 186,
+        "height": 314
+      },
+      "nativeStandingBodyHeight": 314,
+      "raisedArmsExcluded": true,
+      "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions.",
+      "effectiveStandingBodyHeight": 190,
+      "sameScaleForEveryNativePose": true
+    }
+  ],
+  "outfit": "Adult Strider from Fellowship2001 before Amon Hen: shoulder-length dark brown hair, short beard, weathered brown leather ranger coat, dark gray-green cloak, dark trousers and leather boots.",
+  "weapons": "Conventional ranger longsword and attached dark scabbard; sheathed on locomotion and all ledge contacts with visible free bare hands. Physical cuts and forearm guards, no Anduril, Army of the Dead, magic or projectile.",
+  "paletteReview": "Consistent dark gray-green ranger cloak, weathered brown leather coat, dark hair/beard/trousers and brown boots across ten retained native sources; no recolor or palette synthesis.",
+  "exclusions": {
+    "reservedStudyBodies": 124,
+    "unusedIncorrectOrIncompleteStateBodies": 42,
+    "fullyRejectedAttemptBodies": 59,
+    "emptyPackedRows": 3,
+    "posesCountedFromStudiesOrPadding": 0,
+    "referencePosesCounted": 0
+  },
+  "corrections": [
+    "jumpRise: four genuinely airborne rising configurations.",
+    "crouchCharge: four low stationary configurations with distinct shoulders and arms.",
+    "shieldExit: forearms high guard progressively lower to upright relaxed sides.",
+    "aerialForward/aerialDown: kick/stomp and airborne recovery in all four configurations.",
+    "dead: four complete non-graphic side-resting bodies, naturally low projection.",
+    "ledgeCatch/Hang/Climb: visible free bare palms, real wrists, sword sheathed; climb changes palm-to-crown relation from above head to below knee.",
+    "jumpApex/fall: eight new unmistakably airborne configurations; no upright standing or grounded landing pose used."
+  ],
+  "hands": {
+    "palms": 12,
+    "wrists": 12,
+    "contacts": 11,
+    "measurementFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/hand-measurements.json",
+    "sha256": "fce878e621bc8144587d3470cbf870123481ea7bd75d52a7a6b9cdfb687a82a6",
+    "nativePoints": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/native-hand-points.json",
+    "nativePointsSha256": "cc506376a77de74ff938a86cf686aa8b632892c6ff4df7e407d9f055e9bb569e",
+    "closeup": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/hand-localization-review.png",
+    "closeupSha256": "3b76b3f3892bcf1dab8260a64ab9b82972e4b8e667b06d747640fb56aa808a06",
+    "packedPalmCounts": [
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      79,
+      81,
+      81,
+      81
+    ],
+    "packedWristCounts": [
+      75,
+      80,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      80,
+      81
+    ]
+  },
+  "limitations": [
+    "Original generated gameplay adaptation, not official film animation or certified source1:1.",
+    "Opposite facing is the runtime horizontal mirror, including costume/scabbard asymmetry.",
+    "Shared platform-fighter charge, physical guard, kicks and aerial movement are explicit gameplay adaptations."
+  ]
+}

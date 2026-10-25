@@ -1,0 +1,829 @@
+{
+  "date": "2026-10-24",
+  "heroId": "ripley",
+  "sourceWork": "Aliens (1986), Ellen Ripley before the power-loader fight",
+  "reviewed": true,
+  "source1to1Verified": false,
+  "rowsReviewed": 45,
+  "nativePosesReviewed": 180,
+  "reviewScope": "Six packed atlases were visually inspected after whole-body segmentation; source images and corrective rows were inspected before selection. Current atlas SHA values below bind the reviewed actual pixels.",
+  "atlasSha256": {
+    "/sprites/generated/melee-ripley-wave13/ripley-motion-a.png": "8a490e1d056cccd9ffe457a34ae038a8dde82734a23eae850e6e5381926a63a0",
+    "/sprites/generated/melee-ripley-wave13/ripley-motion-b.png": "ed5c010c867628b762885f9db62eae0b021cca7ac2455420d68d81f81b0d92bb",
+    "/sprites/generated/melee-ripley-wave13/ripley-defense.png": "8d234940438770d8e18820f37c342f090d645b4ac84745535df3ea3a5f1b0144",
+    "/sprites/generated/melee-ripley-wave13/ripley-combat-a.png": "f305a8b2d9d59a0db09f33b9c03dddb3bf96037ea7e79f3153dd076318524d7b",
+    "/sprites/generated/melee-ripley-wave13/ripley-combat-b.png": "665742e227208b1983f47e5f76f5f71eaede76caaae3fa32f2132b7e2dfa674a",
+    "/sprites/generated/melee-ripley-wave13/ripley-ledge.png": "85bb9625552ab9ddb2081c40798a21e91d9439d3624515731fcceeecbef2db8f"
+  },
+  "identity": "Short curly brown hair, adult human proportions, blue-gray work jumpsuit with rolled sleeves, dark webbing and light sneakers, M41A only; same Aliens1986 selection as the W13 source definition.",
+  "actionReview": [
+    "Locomotion uses articulated adult bodies and a slung rifle. Crouches and prone defeats remain shorter; no per-row resizing to force equal height.",
+    "Close light moves use physical stock/forearm/kick contact. Release/special have conventional barrel flash only on the declared contact pose and no flash on recovery.",
+    "Guard/parry is physical, without a drawn bubble. Charge is physical preparation, without magic. Aerial states are ordinary human motions adapted to platform combat.",
+    "Ledge catch/hang retain connected bare hand/wrist/forearm and slung rifle. The corrected climb raises torso from below the palm to above it; all four lower bodies are complete.",
+    "No initial reference pose is reused as a full45 native drawing. Rejected initial rows and cropped studies remain archived and uncounted."
+  ],
+  "rows": [
+    {
+      "atlas": "ripley-motion-a",
+      "state": "idle",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.native.png",
+      "sourceRow": 0,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "2fa9a0aba6c0c1aee06e2155d0ae995e1231d81777dcb18b5de0ac22cad612ac",
+        "ad76fa10f1a65f28036466c3eb9e3c721b40e92403e4aee55ceefea6984c7226",
+        "6cbd6e6a525e0d0c61c1987556fd2faa0e16e1273f94884d28a84754aeace53a",
+        "6f2191d9e79317730c2a0229394938c58be4fc5e3de94658ed9951db75532ffa"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-a",
+      "state": "walk",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.native.png",
+      "sourceRow": 1,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "aad13f509c408579f84e50fa88f5e2262a7d88a8c69f407e9a3bae5e3298c409",
+        "e9913911d8bdd550a6a413f1ef3b2429d23162796cedcc157d1696a06ed63599",
+        "eb6a5e88ae4327a2cc6e9a2e13e2eb073fbffc988a31e2e006d747c4b9659da4",
+        "03f751b2072ed6a9f2b1869dab83bd54f5456312e2cefdc0d273929a1a1f89dc"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-a",
+      "state": "run",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.native.png",
+      "sourceRow": 2,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "3ab2e7761c24d5bca358faff8a7d9a2b8d2270b59a24f5a1529e3c40aea6d978",
+        "5351e18e1a6ee76b32b7f48ced567405fe3cd665045338760a189db572cd7f8e",
+        "e010675117b4d13f629aaa8738f0e87736feca6759cb49cd121d3f22fb30655c",
+        "e652888a1a75684bd96255883abe629d4eae2f0565930a7ddef4af9615d23140"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-a",
+      "state": "turn",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.native.png",
+      "sourceRow": 3,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "4e91a204f0d7e868f5cb96071359307df15d219c085b270886110707f200fec9",
+        "307b529ff03b393a9993b07a316422ca2e0d6265d37e8c29e4f0722ec2f64584",
+        "ace637103e957ac486262e20f408ffab725483263aee7b52bb6ce9b3a8d36f99",
+        "4181206e0a8f1dc8331a29eb99e48e1f2c61b7cee7a8cdbd3dab6a51c6ca59c8"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-a",
+      "state": "jumpStart",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-movement.native.png",
+      "sourceRow": 0,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "9d4331fcf9f4291c7cad29ad9ac8ad1bb2e012f72157199f92ae8ef55795fa0a",
+        "8734b251e62c671ff5394b977eaf6232f3ce5e1553c7cafbc2d6ecfcf40e1faf",
+        "88c92b7633df2940e71ed39476c43b6dc86d7adb4e11ba69797795a58c16bc34",
+        "6bd75123915dfebc19c3ee1e973d9c24ce9b24aa308a0bb055c08be3a80d04df"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-a",
+      "state": "jumpRise",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.native.png",
+      "sourceRow": 4,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "a02eba018793d21bfa04c96d6b3c48a281c03a0d79ef93f19cae3fc99c82df91",
+        "2fa25aef0d0b0175289ee76bf50555a136f982038c075c4a7c847fe6c75c24c2",
+        "51415ca1999c2fa6728e78dfc6d3b86137cedd25567eb6adcf85f2fd6219f124",
+        "33100e8abc381e3da168b1cb6aeb6443b0860088a058549891cd0a360f667dc1"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-a",
+      "state": "jumpApex",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.native.png",
+      "sourceRow": 5,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "a1c16691a4c1e33454f2eb87d65f0832b5b659ecdfc352492c7371b9f1a15f6d",
+        "7bff51ba0fa6cd38d3b11c6b79ce851e14665498468927e15f6acc7cc79275cc",
+        "e7c5ad168b809c5e52f45c5c6f49908d8e6ab470faec84ee0d8290380bf27668",
+        "c9687bf4558cfbfe53b693c05b8a04eb381d4c6b2b86ddda026782c100038036"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-a",
+      "state": "fall",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.native.png",
+      "sourceRow": 6,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "698918015fac2845b3262e1030755b5a98090a4a9881bfeae4df13add8f55b13",
+        "2f088e1631a58ef20888af683eb42ed6ffaadc53ceafcc8f7c453c45339a5d7e",
+        "6329189a51db44fbda37ad7e37691c7af36e0d88b33056c95b7187fc6e039b5f",
+        "8ff64262daba59aa40fb41d8561b361da67824c8cc33ec674f87e1a8a4c23395"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-b",
+      "state": "fastFall",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.native.png",
+      "sourceRow": 0,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "5d4d2b27df56ca32aff5df32860a610edf4fc9639b5dee09be5e181df6636cc2",
+        "fa79944365514d6554c07a7cab4d9393e77bd8b9e722255ef093848c76f61d71",
+        "775d8a2f8d9c8f0e52f5e37881d7801f0d77c7f865fa42be25725e0311f19dd3",
+        "ac54f3c555c02c6ed2bfebaa998badb7bc8dda5f7b37dd107db58a004b704e7b"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-b",
+      "state": "land",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.native.png",
+      "sourceRow": 1,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "ebf5a65be58fed2c464fb0981095b19718838c6279fab974965916f2ccd822ef",
+        "9c8cfccdb7f7361adcd81d4d38ed13c79c8ebb53416e8d3793746cec489fd7fe",
+        "9c54331acd393884b18c0454880ff002097ea4b149ff0b8fc72b7975c4016b27",
+        "aa064bcafab109afe516c08fd8a6eb481ec1e2d43dd2b4a0da16ee5c074724f6"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-b",
+      "state": "crouchEnter",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.native.png",
+      "sourceRow": 2,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "6d6aad455079e68b5dd7269f5e59b9063707ebe7dfaf8238dfd2b42d7693a463",
+        "2efc2baba07a29a6f5f0143280ce5d3d82a31f7d78a170bcced43440b7239679",
+        "24db3bbd5c2035c76c66ec75947f410570eaedad204fc5061871473c98525fca",
+        "42827628ce93fd7eb790f9bc1fa29b0aa4785e12a57a48bf8e1f8dce66ff127b"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-b",
+      "state": "crouchIdle",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.native.png",
+      "sourceRow": 3,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "73c9ba41c4274c4b3b380a4fa90f336930f6b7121c38e5132d3dc68872bd8e7a",
+        "1357b3f232fd37d7d26fc252dcd6b0afb88557624794228d5bda5d018f1227f2",
+        "630c16bede1f90e8bee5ccad13c4f4b0c6026fe8c085099336b28a9f8504ae8c",
+        "01e24c14b46d17a9538365944cf82454c879b878cc22b963b056924aa5934bb4"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-b",
+      "state": "crouchExit",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.native.png",
+      "sourceRow": 4,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "81a76bc4aab650bd9e40e68eef45d777d0cb0a36f1f44792d9c2f580de312b9f",
+        "b3b2354e56782a48179e0a9eef265de17e4b8e4d0d1e02ae0fd8177c26f6604d",
+        "1bd552bde4311e2580dbccdfc2868c90b5e28e08db590c658ad9378762266f3f",
+        "6ef1ddd362afdc48630973e9edf12f3c4dfa8be85cf4b761cc2a19d42a280d16"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-b",
+      "state": "crouchCharge",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-movement.native.png",
+      "sourceRow": 1,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "a892386263b0215df1f06a9ffa7eb58da473b6161453fa117577538bb45914e1",
+        "9c3a54fc47c9093860a867aae3894a8a75cc7f86b9211ad4de3c2747090f8a47",
+        "d8441ff5781f7db09d420dc8a13c412a6ed83edd4740cf3b6d39774bf6589382",
+        "895b8f9f2ae2727d86c0e139ff97c698851e39542589d0df35359d2ef816389d"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-b",
+      "state": "taunt1",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.native.png",
+      "sourceRow": 5,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "7c11a7a524a08ef4089209b62d0c841ebe9de306268cdf0bb19e3055fae8ecf5",
+        "f75e3d49ddc0f412c87caf769b5a802dc0e2a50acc34df9490fe3b64c29f2931",
+        "0cbfa380b17e621ce9fa5582e5d586f376b1f8eb5c91b32933d90acad47b128f",
+        "64ba1e7253ca59ce9005e28f9d9de08af08fdf8e16a027cb0c4a22950cbbae9b"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-motion-b",
+      "state": "hitStun",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.native.png",
+      "sourceRow": 6,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "75399dd4000d074b9ccb3d924db5bb5297146dbcc96167b3f920c1cc75716fa1",
+        "6bae476279b74ba067661a5d699c7aace87251ca00486880e6e9789fb7e25f76",
+        "0616e58e71aa7be28b49c499fc3529f93c6ee56945f592786cf7453551fa2c31",
+        "ad69718e266037c9fbacbd4a84ed46e85d20b52c33948208286cf4128a9679df"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-defense",
+      "state": "shieldEnter",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.native.png",
+      "sourceRow": 0,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "2bf91db38703aa0f727170cd6bef9bdfd312e3c69bedb2cd23191f50862eb02a",
+        "bd9bfb1cca4651eb2517fe786df7f337fa7da6dc324e93d46a5ca17ab74ffa00",
+        "fcbc37a8e260d689872c618ce649e868d63a5841c4a9861a9b4952e6030f71bd",
+        "b880eab3ff4d4edd3a379625e247df744aa7800c46da2ec36eb1592e165aeab1"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-defense",
+      "state": "shieldHold",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.native.png",
+      "sourceRow": 1,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "c746cb8f185f2ea4b9d4e26ddc11a8d103594638f42965d7f3ae34f18a223c96",
+        "db2dab07f55ab787822dcf69150cea20f17d79677830d8c1435004069f24bad8",
+        "02e5cd8c60f976b95115064541cb01ae57b21f21e5ee21c1b5cd0a495c69bc11",
+        "7a5daa8323a6787013a9e09be175aa1445d055b9e671f7463379f1ebd156fa6d"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-defense",
+      "state": "shieldHit",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.native.png",
+      "sourceRow": 2,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "2eb5cb4a21193a04b9e16016564543a4b6033e2623e0d8a6dd3a150c9a18ccbe",
+        "fd3def15793de5df3579a1cb7071da9924378aa85f2c3a66f9a598fee28ccf75",
+        "7404823a58344fc2a637e0d5da43122a2a5ba037d918ef13ec77c933140cd8d8",
+        "4c66cf4b681b90d03d120e9993431413558a1517d72f98c59a13cd933c23e56d"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-defense",
+      "state": "perfectShield",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-movement.native.png",
+      "sourceRow": 2,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "ec3e6eade632209082e32ebef849f9a2c06c4738c85ffea6421e45f30fd4fa54",
+        "52b5663305948edaf13b43aa14832ee66ef48a6a53106f069603b933d72cb5f6",
+        "75e257533d920ab3742cd4d1ddbaf9a967f59feda5a2a3c4cf318037184cb25d",
+        "d1088a39795fbf33e2ec916373e9bce23a9096b6ab2e1945d4fb6fd39147f3b2"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-defense",
+      "state": "shieldBreak",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.native.png",
+      "sourceRow": 3,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "37c1397c269d391991e64f2bfd2f27f554663912a2892b2b83fac96cfda63c26",
+        "83e1fb97d931a1f4a90c3cc27f1fac60cc6c7e58ba1e20092bed50e2c91eca88",
+        "c8fcbc475e28559a31360caf49405b158507a246aeecfe74cdf2fac7c6e4c431",
+        "70363cc005359b81e3d44ef87eb1dc9bc50aa874136e7a817840412203bfb0e6"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-defense",
+      "state": "shieldExit",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.native.png",
+      "sourceRow": 4,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "f83dae0bc339d06d1219c4318259ed7a1103bae59c31b7e48f12ae88194ab26f",
+        "411d66b7e103cca8716877290594e2d0b9d0aa2745bed73dc8274569c521c065",
+        "fda78c1c12704e384fb2d94f72157871f54b15fc2967e050eef6a4611c3c123f",
+        "6cc302934e5fa03bbddb170cebd751366bc7a7ecbf0e987214384b49c38ddc58"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-defense",
+      "state": "dead",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.native.png",
+      "sourceRow": 5,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "9ec9297b6297b752ebb6f8c2ab52ff9fad89f93b6738475a120f5836db605e18",
+        "cd930a1fb513dd6badfa5d40d9a908a53e6bd8956bb066ee35d86efb65f4715f",
+        "79a5d4d2462430e55bd52646ab555c71c01976a8e8af7ea287f0a6bbc5337009",
+        "53c1e03a8562d2e2f8ffed1d0ae882a38b44fbe0f75f0b776114504b42818aef"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-defense",
+      "state": "defeat",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.native.png",
+      "sourceRow": 6,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "0307399c7e1e4e0fa1906c58d898e755d26eb83f8882952bd8b956c9dc25555f",
+        "7508b1554f81371148db16befa20b5385a9235cf0e64af7b92b4a5101e4d0ec5",
+        "8568c69d46c8e45e7eb630f47c8bf92a7c1d0b39a23f4343c0f2d0645a3d2cb5",
+        "fe17b2efcfd1ece8b30d6daee44e3efa9bba6c983bad78d6e9bb672ae01c40e8"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-a",
+      "state": "attackLight1",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.native.png",
+      "sourceRow": 0,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "cc09a80c23760c65a7b6f0083b143b7fc2164e352b42935db2f18f6f68f7aee0",
+        "229d5cf8be7170a89a7fa2752dc907775e32bf320f8889cfe9e0dc364ac969dc",
+        "48cfc21d79211d2014f6a4e26b6ff4e93c47adcfbf30c60a53bc1f48eca9c9ae",
+        "b1bb3024f60b7c7f3d0418b7d10098b9087a3e54e8eacb1da8f46facaa41e843"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-a",
+      "state": "attackLight2",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.native.png",
+      "sourceRow": 1,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "92aa2614f4c9d39ffd3e527764e8d99b58b0bbdfc4111e49e0c1e9718df56721",
+        "3aea3f9a1112b2a0d44cc77d699ef047de0e08c35941641543435bb9954cda22",
+        "ce71ab15b36c446b0559d60503ebf469965fb47fe9fcd10067e1a6fd2678d21d",
+        "b479814051f98837182bdcb00df611ba717235f28c762df6159ac01831bd81c0"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-a",
+      "state": "attackLight3",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.native.png",
+      "sourceRow": 2,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "bb1cf17f7679319dfae388ce1702ac816d2823f2f88987134bb9a826dd617777",
+        "24533d03d5d2ed98557a0df46f7c64a7ad896099fd98a053a179b85cee61a971",
+        "61e58b857010f5dd7fd85540232a280451880de4496f81a1013ef7e806b6fd1b",
+        "72832788f95d4f75b42962645198cc812a01eb8f162f24fc89b055cbf04df311"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-a",
+      "state": "crouchLight",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-combat.native.png",
+      "sourceRow": 1,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "99c1eaa98a108df71b964cbdc10d4f56d1fd479184b66a196a3a88d0c4742760",
+        "a53c7003b1fa13bdcab2c468d7463d9b7bd355c869e06855535049a6386a7942",
+        "ee871b4b280e991cafbc77be3f09421200a3daa4e0860be91ef5f269f7917496",
+        "0c4c94b11acb400348d1f25cc81af20fcebe287481fa2f6dfdf234c0c8f982f7"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-a",
+      "state": "chargeStart",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.native.png",
+      "sourceRow": 3,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "324a491e0c65c1871be284b60bbb62e4ec9b18cfb6e7103350641902f22cae42",
+        "0c63ebcf60e6e2b8bbe86e20a643bb343813f846b36223f98f089492239e42fe",
+        "07bf705a5cb432116ff7b142af9552b06769513bfb6c92c53414fd9626a13b98",
+        "c3caf6c7a08d2bb9511b492092ec4911ec41726c8b3ce5b10b5566968e780636"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-a",
+      "state": "chargeLoop",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.native.png",
+      "sourceRow": 4,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "01e2f0b0da8b34d7cf6b595eda083f0bbfcef36864eb9ee6c938026fc0360d55",
+        "f8f8fdd8aa11ba1bf7d6a826bbd0d1343707184daf2baf8a149cff12992ba1f9",
+        "49671822e1996447ec2b9060c0bbbf96f8146eb6594238efe9ec85d6a266903a",
+        "2adf8639a3a3cb3e57370b007dab33db1ad7a803338289e490cfa147a617e2cf"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-a",
+      "state": "chargeRelease",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.native.png",
+      "sourceRow": 5,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "8ca971585bd06a3cd814e2d6f93796c6b0d200b4d50cc4e3545e8393e8f2f2af",
+        "02396ef99c483176114c7415dfa079685b82a11cb2b2551fc8bcbe51f8b3fc6a",
+        "fc6a755a9b1918f8688cd573b3e6c75b36fa1454111d23053a3f86387c6734b4",
+        "9372a5ec0a3c6350803585d6b3bdbb342a3c57fd6698d0e0064a2db5bb6646bd"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-a",
+      "state": "chargeRecovery",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-combat.native.png",
+      "sourceRow": 0,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "bd84a1379ead9a24240e0671777dba0df97299f7753f41a718021409a71182a6",
+        "5721a2bdf16dbcb7042033be07a64d834bc718a3d9794b114aae36a66c3334fb",
+        "cd351b140ff92e78abdd8df3d5de025d02806e24406483668b043579646aaeba",
+        "ed8764f54c96e9f019589e44fbbb1dc5bdaa0c8d63181430dec13c96e385b0ac"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-b",
+      "state": "attackRecovery",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.native.png",
+      "sourceRow": 0,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "f3fd94b3db40b7e4eed5346d9e3c772770f5fcaaeb6b70c55ce1250a15a855ac",
+        "f38b6fd380e96b6994dda40538963373ada57cbcdd662ff9de8f1bbd98c1fed4",
+        "dbcf3e0e4c49ded6113bc7a51da83a99132851980106bb944c18a5fc8064a822",
+        "91f7a35cb449c3ee33256359133c7bcc0a2c4507318651c14ddc1df3fafb4191"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-b",
+      "state": "special",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.native.png",
+      "sourceRow": 1,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "bd7bed0dd7e1402432f5bfd466b6d7649434c7433bb9bb82c27eac35f67af680",
+        "cac5628a2573a718f1b5b2e3d57d54809a33732ba3b138a895fd0bfd6317fa9d",
+        "b222c2e54eaa20377728295740b7c9a93cbe8a67238213243523c0a80c794e6e",
+        "5264ab6ccf4c7c6dd1ba7352d4cde80506857085db27f73d7afbc68d8c237d47"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-b",
+      "state": "aerialNeutral",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.native.png",
+      "sourceRow": 2,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "ee53c312232db67cc6a76d5405aa2dfabe6ef687b3d1695b1772099d6cae462b",
+        "a997eaa4f265a87f7811cd9ed91801b4499d5ab535a8d48cd54aa840aff9fc1f",
+        "266b2a10d582e0c677c6d40bb1a58cee454a33c272e914d9645212f7287599e9",
+        "c1b663ae1718d062365aa227581ca98815fd3b83ac2ea09bbf87b9a69e4de192"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-b",
+      "state": "aerialForward",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.native.png",
+      "sourceRow": 3,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "7938b194537c52937c7bc03c20752c7fd21ad377b6db6d5755c0322c6a2a31d6",
+        "92bfaba66f124bf67a16a7f7357d82def7bd527707360bb174eff8e55026ce30",
+        "9535396928ab312f2f3ad3712d8603469f97fd4d2f400668b4f5db53da0df31f",
+        "31e9ad3c8b2f15888ce4e0718b44d3211f0df7875077607ecb6df753f1097186"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-b",
+      "state": "aerialDown",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-combat.native.png",
+      "sourceRow": 2,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "da531b3d542e4d7456f3df29ecca28e551fbbec46d2251d24699b3c99fabf6d5",
+        "dada3aebdb340fb92bebcc662d4cd4df146fe2ef1ea8c09c620b8cd96235170f",
+        "1abf476daec811878892f8774415765d4619318dd366a978c2caf482c8d17215",
+        "577690f5cc53d71db95e04154d9112052c0ee2ad7f8d8ea79b6ab6d57e67190b"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-b",
+      "state": "intro",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.native.png",
+      "sourceRow": 4,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "151d191b727ed7f2b0be7937370581843cb3f3d5e2ca05ffd48f51e79c93c349",
+        "9187ed391e1618539e13ead9e4b5a2799a1b65f55820f18626618dfc146fcf9a",
+        "ee4ef95f40fab5c75c2c987771f25fffc42074ef60b459afc9fda3da10aa5386",
+        "76752a14cacbb155fd9f34b646075fb23d0f4fa29e017f16cfd8f6650a30e22e"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-b",
+      "state": "victory",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.native.png",
+      "sourceRow": 5,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "f41195461f36322423e13502eb2b9a753f4ee493220e63a7aa66e7052b58b04c",
+        "c7239d98d4dc1893de38d9e988db7d0721c788be2567d111207f96f4452c2b18",
+        "caa55b6914d9b94eeff320de21e12c36a5e5458ddb7b61fe74e6f44339f3a095",
+        "cfad21316ea3a70207536b9118e432060cc2b08e0d76b4f699605caca3ab27fb"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-combat-b",
+      "state": "ledgeAttack",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-combat.native.png",
+      "sourceRow": 3,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "4e09e66f07cea1f117efeaa6f198ac3fc09fde5f6f2d874b9866327332a326a5",
+        "927f0c2f6de158752846371184d8940e8c79a777c80a9c3bcce96f8bbb4c2cea",
+        "673163be0eee0e8459812939c8da25a9b6bcb8591e4ef3063e614c1e5c7f53ba",
+        "62d681ce9bf8a7c201cab9ab43b535c449aa2b2b59ee8b66d0c5e4956eeec65f"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-ledge",
+      "state": "ledgeCatch",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.native.png",
+      "sourceRow": 0,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "ea4e294728cc4bb7cd26a4fa1ba75c49a69a858df66924d840e18a5b4094f745",
+        "84dfa8f634d278881211a41073ce4ece8c310b67f0e7cc287d2bfb94ab292a3f",
+        "4d5be2679afb4d83212362808b5f967f3c1f05c3990d045a0bb0c66e78419035",
+        "de27a3a1c5d05999287790d528e2f5e12d8328abf2cd4611fe0da0e63f075aa8"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-ledge",
+      "state": "ledgeHang",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.native.png",
+      "sourceRow": 1,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "fbb784c06f0b5914afad98911b21f88cfde3aafd4b57b64099cb76074d427ede",
+        "fdd7aa24ceb7abf72aac0ffafca0c6e6920cf0cf79a3472c975e967435855e42",
+        "528d362b3ceae82b236f74dba38f4699908a914e5a263ef3d25f7d4fd84c1383",
+        "48fe4797bc57fbc897addc8cb44e66b20190d46b12a02fcd6724166698a295f0"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-ledge",
+      "state": "ledgeClimb",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-ledge.native.png",
+      "sourceRow": 0,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "c567be3c3dfda4cdd8cb77b869608476e330045007cd643105eb41353ad321a0",
+        "3df55f84099fa99cdf145e24b8ded35d7a78e519cc2d6f1d0c405e98a60cb19a",
+        "06acf8bdfedca122938e554a454a6976edc74f88ba6be9f1c3f4f6b8d1e1c996",
+        "749d5c7320e9d8bc9d5decffa07cfce0472fc2ca62223979b5e01b3c44f0347c"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-ledge",
+      "state": "ledgeDrop",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.native.png",
+      "sourceRow": 3,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "e6e9f5e4caf562d8184b44ac0045b3f4dffca684fed26d445ac579bdec16ad8f",
+        "4952cc7b3dcd9ee9f896bb3d2655284832bd527fcd34699121c40fc69fc4f2fd",
+        "584635ed67b56ef66fbf9ed97ed95fc63609e415c6182c3dbc2ed8f9f2b0f733",
+        "e34492272a2d9e9c248d43c715e669974e5164dee4cacf9d608fdcecdb65cc23"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    },
+    {
+      "atlas": "ripley-ledge",
+      "state": "ledgeJump",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-ledge.native.png",
+      "sourceRow": 1,
+      "retainedFrames": 4,
+      "nativeFrameRgbaSha256": [
+        "7f8e6f2fd53217833911fbfa038b636126655c0b7cbed7fdd594625c2c884c6e",
+        "d1ea6bd1c9e905eab7bd46f67f236fccbb5e1bec92782987baf33be3f82ce2a4",
+        "627b4d68688c5d3ce656b18386f910eb4ac44427015d5aba7bb84efd835f8511",
+        "7adc4bf049677c7a9cbe99f55bfa7aa46b0ef317a1010527d4dc26419a8d2444"
+      ],
+      "reviewed": true,
+      "completeBody": true,
+      "genuineDistinctBodyConfigurations": true
+    }
+  ],
+  "excludedCandidateRows": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.native.png",
+      "row": 6,
+      "observedState": "discardedIncompleteChargeRecovery",
+      "candidateBodies": 4,
+      "completeBodies": 0,
+      "reason": "Incomplete candidate anatomy or clipped body, not repaired"
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.native.png",
+      "row": 6,
+      "observedState": "discardedIncorrectLedgeAttack",
+      "candidateBodies": 4,
+      "completeBodies": 4,
+      "reason": "Real complete poses, rejected for wrong selected action"
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.native.png",
+      "row": 2,
+      "observedState": "discardedIncompleteLedgeClimb",
+      "candidateBodies": 4,
+      "completeBodies": 3,
+      "reason": "Incomplete candidate anatomy or clipped body, not repaired"
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.native.png",
+      "row": 4,
+      "observedState": "uprightCalibration",
+      "candidateBodies": 4,
+      "completeBodies": 4,
+      "reason": "Reserved calibration/study, not a game-state drawing"
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.native.png",
+      "row": 5,
+      "observedState": "discardedCroppedGripStudy",
+      "candidateBodies": 4,
+      "completeBodies": 0,
+      "reason": "Incomplete candidate anatomy or clipped body, not repaired"
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.native.png",
+      "row": 6,
+      "observedState": "discardedCroppedSlingStudy",
+      "candidateBodies": 4,
+      "completeBodies": 0,
+      "reason": "Incomplete candidate anatomy or clipped body, not repaired"
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-movement.native.png",
+      "row": 3,
+      "observedState": "uprightCalibration",
+      "candidateBodies": 4,
+      "completeBodies": 4,
+      "reason": "Reserved calibration/study, not a game-state drawing"
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-ledge.native.png",
+      "row": 2,
+      "observedState": "uprightCalibration",
+      "candidateBodies": 4,
+      "completeBodies": 4,
+      "reason": "Reserved calibration/study, not a game-state drawing"
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-ledge.native.png",
+      "row": 3,
+      "observedState": "reservedGripStudy",
+      "candidateBodies": 4,
+      "completeBodies": 4,
+      "reason": "Reserved calibration/study, not a game-state drawing"
+    }
+  ],
+  "counts": {
+    "segmentedCandidateBodies": 216,
+    "completeNativeBodies": 203,
+    "retainedNativePoses": 180,
+    "unselectedCandidateBodies": 36,
+    "unselectedCompleteBodies": 23
+  }
+}

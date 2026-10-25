@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "part": "A",
+  "wave": 14,
+  "passed": true,
+  "productionFrozenAt": "2026-10-25T09:01:06.683Z",
+  "frozenPathsChecked": 49,
+  "frozenPathsUnchanged": true,
+  "evidenceOnlyPostFreezeHelper": {
+    "path": "docs/combat-fidelity-wave14-2026-10-25/part-a/verify-artwork.mjs",
+    "sha256": "513e6c63f0c3806cdd7c222b7e4f2fb5231951eceae428285d82661dccba3ecc",
+    "addedAt": "2026-10-25T09:01:08.395463+00:00",
+    "runtimeFreezeAt": "2026-10-25T09:01:06.683Z",
+    "runtimeImported": false,
+    "readOnlyAssetCheck": true,
+    "checksPassed": [
+      "execution",
+      "--check"
+    ],
+    "note": "Created 1.7 seconds after runtime freeze while its notification was arriving. It reads assets and writes only technical evidence; no frozen runtime input was modified. Root authorized final audit/build input hashes to bind this evidence helper without production refreeze."
+  },
+  "results": {
+    "heroes": 20,
+    "newPng": 40,
+    "native32": 640,
+    "base16": 320,
+    "distinctRgbaCells": 960,
+    "distinctVisibleCells": 960,
+    "uniqueSelectedSourceDrawings": 960,
+    "measuredProjectileAnchors": 40,
+    "preservedHistoricalPng": 638,
+    "preservedHistoricalRegistries": 111,
+    "imageGenCalls": 35,
+    "generatedDrawingsObserved": 1556,
+    "retainedDrawings": 960,
+    "excludedDrawings": 596,
+    "refusals": 0
+  },
+  "commands": [
+    {
+      "command": "node scripts/buildCombatCharacterAnimationsWave14PartA.mjs --check",
+      "passed": true
+    },
+    {
+      "command": "node scripts/buildCombatCharacterSpriteCorrectionsWave14PartA.mjs --check",
+      "passed": true
+    },
+    {
+      "command": "node docs/combat-fidelity-wave14-2026-10-25/part-a/verify-artwork.mjs --check",
+      "passed": true
+    }
+  ],
+  "runtimeProofs": "Final common browser proofs are owned by root and the browser/maps agents; this receipt asserts technical asset checks only."
+}

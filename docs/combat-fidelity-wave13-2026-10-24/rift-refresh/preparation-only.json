@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-24T02:41:14.900561+00:00",
+  "preparationOnly": true,
+  "authorized": false,
+  "commandsExecuted": [],
+  "authorizationFileCreated": false,
+  "finalWriteGateCreated": false,
+  "historicalPythonSha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+  "sourceBaseline": "docs/combat-fidelity-wave13-2026-10-24/baseline.json",
+  "snapshots": [
+    {
+      "source": "docs/rift-dossiers/catalog.json",
+      "snapshot": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/catalog-before.json",
+      "sha256": "e2ffc63c1031bb9412bbacd0a6a053386e090228a00d5fdebe488e6991dfc5bd",
+      "bytes": 10848122
+    },
+    {
+      "source": "docs/rift-dossiers/character-reference-quality.json",
+      "snapshot": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/quality-before.json",
+      "sha256": "ff39bb189df8df493a2345dac90f02c7a8739dd6702f46b19cd212656a9327b2",
+      "bytes": 3571514
+    },
+    {
+      "source": "src/game/riftDossierAssets.json",
+      "snapshot": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/registry-before.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a",
+      "bytes": 552092
+    },
+    {
+      "source": "scripts/auditCharacterReferenceQuality.py",
+      "snapshot": "docs/combat-fidelity-wave13-2026-10-24/rift-refresh/auditCharacterReferenceQuality-before.py",
+      "sha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+      "bytes": 29217
+    }
+  ],
+  "helpers": {
+    "run-sequential-refresh.py": "0e54248e644b860a23c357dbe5f6449f198d3b63c521051cb5f8b0f3d7016baa",
+    "summarize-refresh.py": "81e73cee976697031b3014503a983cffdef1b4d03bccb371a6c996bdc4f57b89",
+    "verify-refresh-integrity.py": "f5275aeca62c3d2d9522449bc5d98e4bb1b2f3b4e2b1d0b03eaf13580b7fd27c"
+  },
+  "remainingBeforeExecution": "Root must freeze the final package, all40 real references and production inputs, then create authorization.json. Steps3-5 require a second root signal after step02 exit0 and closure of all runtime browsers."
+}

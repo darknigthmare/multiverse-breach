@@ -384,7 +384,10 @@ assert(recentUniverseLevelsSource.includes('platformTexture') && recentUniverseL
 assert(smashEngineSource.includes('platformTextureCanvasCache') && smashEngineSource.includes('makeTextureCanvas'), 'Melee must render platform-local textures from real collision geometry.');
 assert(smashEngineSource.includes('getRecentUniverseTexturePattern') && smashEngineSource.includes('dlcSuppressedArena'), 'Melee must use OpenAI platform textures without leaking disabled DLC assets.');
 assert(tacticsEngineSource.includes('drawTileTexture') && tacticsBattlefieldsSource.includes('tileTheme'), 'Tactics must render texture details inside the real battlefield cells.');
-assert(tacticsEngineSource.includes("drawRecentUniverseTextureCover(") && tacticsEngineSource.includes("'stretch'") && tacticsEngineSource.includes('dlcSuppressedArena'), 'Tactics must map one continuous three-quarter OpenAI terrain beneath the real grid without leaking disabled DLC assets.');
+assert(tacticsEngineSource.includes('drawDedicatedEnvironment')
+  && tacticsEngineSource.includes('getGeneratedStageTexturePattern')
+  && tacticsEngineSource.includes('dlcSuppressedArena')
+  && !tacticsEngineSource.includes('drawRecentUniverseTextureCover('), 'Tactics must render its dedicated environment and tile geometry without a shared stretched scene or disabled DLC texture.');
 assert(rendererSource.includes("drawRecentUniverseTextureCover(ctx, universe, 'RPG'") && fighterEngineSource.includes("drawRecentUniverseTextureCover(ctx, this.universe, 'Combat'"), 'RPG and Combat must render their dedicated OpenAI floor quadrants.');
 assert(fighterModeSource.includes("drawUniverseBackground(ctx, arenaUniverse") && fighterModeSource.includes("'Combat'"), 'Combat mode must select its level from the active roster universe.');
 assert(gameCanvasSource.includes('handleBattleComplete, arenaStage);') && rpgEngineSource.includes('heroLanes'), 'RPG mode must align combatants with the active universe floor lanes.');
@@ -795,7 +798,7 @@ assert([
   'drawBoss(ctx, e.x, e.y, this.getRpgPresentationActor(e), animTime, e.facing',
   'drawPixelEnemy(ctx, e.x, e.y, this.getRpgPresentationActor(e), animTime, e.facing'
 ].every(call => rpgEngineSource.includes(call)), 'RPG presentation actors must retain live hero, enemy and boss orientation.');
-assert(tacticsEngineSource.includes("drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, unit.facing") && tacticsEngineSource.includes("drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, unit.facing"), 'Tactics rendering must respect live unit orientation.');
+assert(tacticsEngineSource.includes("drawPixelSprite(ctx, unit.x, unit.y, actorForDraw, animTime, unit.facing") && tacticsEngineSource.includes("drawPixelEnemy(ctx, unit.x, unit.y, actorForDraw, animTime, unit.facing"), 'Tactics presentation actors must retain live unit orientation.');
 assert(rendererSource.includes('drawBoss = (ctx, x, y, boss, animTime, facing = -1)') && rendererSource.includes('ctx.scale(facing, 1)'), 'Boss rendering must accept live orientation instead of forcing left.');
 assert(hubSource.includes('const previousNpcX = npc.x') && hubSource.includes('const horizontalTravel = npc.x - previousNpcX'), 'Mosaic City NPC facing must follow actual horizontal travel.');
 const dedicatedOcChapterKeyArts = [
@@ -1104,7 +1107,10 @@ assert(gameCanvasSource.includes('drawItemIcon'), 'Collectible lore items must r
 assert(spriteAssetsSource.includes('if (item.icon) return item.icon'), 'Collectible lore items must prefer their curated icon path over a generated fallback ID.');
 assert(rendererSource.includes('getGeneratedStageBackdropSrc'), 'Renderer must prefer generated canonical stage backdrops when available.');
 assert(smashEngineSource.includes('getGeneratedStageTexturePattern') && smashEngineSource.includes("'platforms'"), 'Melee platforms must consume their generated standalone texture atlas.');
-assert(tacticsEngineSource.includes('drawGeneratedStageTextureCover') && tacticsEngineSource.includes("'tiles'"), 'Tactics maps must consume their generated battlefield and tile atlas.');
+assert(tacticsEngineSource.includes('drawDedicatedEnvironment')
+  && tacticsEngineSource.includes('getGeneratedStageTexturePattern')
+  && tacticsEngineSource.includes("'Tactics', 'tiles'")
+  && !tacticsEngineSource.includes('drawGeneratedStageTextureCover'), 'Tactics must use its own environment and standalone Tactics tile atlas, without stretching a shared stage backdrop.');
 const featuredPickupSource = battleItemsSource.match(/\? override\.pickups\.map[\s\S]*?(?=\n\s*:\s*\['offense')/ )?.[0] || '';
 assert(
   battleItemsSource.includes('const loreItems = EQUIP_ITEMS_DB.filter(item => item.universe === universe)')

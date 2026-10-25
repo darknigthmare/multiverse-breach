@@ -15,15 +15,21 @@ import { ABILITIES_WAVE9, ABILITY_REVISIONS_WAVE9 } from './abilitiesWave9.js';
 
 import { ABILITIES_WAVE10, ABILITY_REVISIONS_WAVE10 } from './abilitiesWave10.js';
 import { ABILITIES_WAVE11, ABILITY_REVISIONS_WAVE11 } from './abilitiesWave11.js';
+import { ABILITIES_WAVE12, ABILITY_REVISIONS_WAVE12 } from './abilitiesWave12.js';
+import { ABILITIES_WAVE13, ABILITY_REVISIONS_WAVE13 } from './abilitiesWave13.js';
+import { ABILITIES_WAVE14, ABILITY_REVISIONS_WAVE14 } from './abilitiesWave14.js';
 
-const entries = [ABILITIES_LOT_2, ABILITIES_CANONICAL, ABILITIES_LOT_4, ABILITIES_LOT_1, ABILITIES_ADDITIONAL, ABILITIES_RESIDUAL, ABILITIES_LOT_3, ABILITIES_CORRECTIONS, ABILITIES_WAVE6, ABILITIES_WAVE7, ABILITIES_WAVE8, ABILITIES_WAVE9, ABILITIES_WAVE10, ABILITIES_WAVE11].flatMap(lot => Object.entries(lot));
+const entries = [ABILITIES_LOT_2, ABILITIES_CANONICAL, ABILITIES_LOT_4, ABILITIES_LOT_1, ABILITIES_ADDITIONAL, ABILITIES_RESIDUAL, ABILITIES_LOT_3, ABILITIES_CORRECTIONS, ABILITIES_WAVE6, ABILITIES_WAVE7, ABILITIES_WAVE8, ABILITIES_WAVE9, ABILITIES_WAVE10, ABILITIES_WAVE11, ABILITIES_WAVE12, ABILITIES_WAVE13, ABILITIES_WAVE14].flatMap(lot => Object.entries(lot));
 if (new Set(entries.map(([id]) => id)).size !== entries.length) throw new Error('Duplicate authored basic combat identity');
 const revisionEntries = [
   ...Object.entries(ABILITY_REVISIONS_WAVE7).map(([id, fields]) => [id, { ...fields, revisionWave: 7 }]),
   ...Object.entries(ABILITY_REVISIONS_WAVE8).map(([id, fields]) => [id, { ...fields, revisionWave: 8 }]),
   ...Object.entries(ABILITY_REVISIONS_WAVE9).map(([id, fields]) => [id, { ...fields, revisionWave: 9 }]),
   ...Object.entries(ABILITY_REVISIONS_WAVE10).map(([id, fields]) => [id, { ...fields, revisionWave: 10 }]),
-  ...Object.entries(ABILITY_REVISIONS_WAVE11).map(([id, fields]) => [id, { ...fields, revisionWave: 11 }])
+  ...Object.entries(ABILITY_REVISIONS_WAVE11).map(([id, fields]) => [id, { ...fields, revisionWave: 11 }]),
+  ...Object.entries(ABILITY_REVISIONS_WAVE12).map(([id, fields]) => [id, { ...fields, revisionWave: 12 }]),
+  ...Object.entries(ABILITY_REVISIONS_WAVE13).map(([id, fields]) => [id, { ...fields, revisionWave: 13 }]),
+  ...Object.entries(ABILITY_REVISIONS_WAVE14).map(([id, fields]) => [id, { ...fields, revisionWave: 14 }])
 ];
 if (new Set(revisionEntries.map(([id]) => id)).size !== revisionEntries.length) throw new Error('Duplicate source-version revision');
 const revisions = new Map(revisionEntries);
@@ -35,7 +41,8 @@ const revised = entries.map(([id, entry]) => {
   const { defenseName, versionNote, revisionWave, ...fields } = revision;
   return [id, Object.freeze({ ...entry, ...fields,
     sourceReference: `${entry.sourceReference} ${versionNote}`,
-    defense: defenseName ? { ...entry.defense, name: defenseName } : entry.defense,
+    defense: revisionWave >= 13 && fields.defense ? fields.defense
+      : defenseName ? { ...entry.defense, name: defenseName } : entry.defense,
     versionRevision: `wave${revisionWave}-explicit-source-version`, priorSourceWork: entry.sourceWork })];
 });
 if (revisions.size) throw new Error(`Unknown combat revision IDs: ${[...revisions.keys()].join(', ')}`);

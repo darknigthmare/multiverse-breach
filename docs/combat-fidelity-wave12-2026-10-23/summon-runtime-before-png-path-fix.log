@@ -1,0 +1,220 @@
+✖ player: silent-hill-cybil, real targets/cost/contact and native origin (7378.116505ms)
+✖ enemy: silent-hill-cybil, real targets/cost/contact and native origin (0.071738ms)
+✖ player: dino-crisis-regina, real targets/cost/contact and native origin (0.0524ms)
+✖ enemy: dino-crisis-regina, real targets/cost/contact and native origin (0.094674ms)
+✖ player: predator-dutch, real targets/cost/contact and native origin (0.101844ms)
+✖ enemy: predator-dutch, real targets/cost/contact and native origin (0.074523ms)
+✖ player: evil-dead-ash, real targets/cost/contact and native origin (0.09263ms)
+✖ enemy: evil-dead-ash, real targets/cost/contact and native origin (0.048914ms)
+✖ player: dead-space-isaac, real targets/cost/contact and native origin (0.143237ms)
+✖ enemy: dead-space-isaac, real targets/cost/contact and native origin (0.112771ms)
+✖ player: futurama-leela, real targets/cost/contact and native origin (0.067292ms)
+✖ enemy: futurama-leela, real targets/cost/contact and native origin (0.114083ms)
+✖ player: rickmorty-birdperson, real targets/cost/contact and native origin (0.034783ms)
+✖ enemy: rickmorty-birdperson, real targets/cost/contact and native origin (0.027391ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 0
+ℹ fail 14
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7551.008802
+
+✖ failing tests:
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ player: silent-hill-cybil, real targets/cost/contact and native origin (7378.116505ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ enemy: silent-hill-cybil, real targets/cost/contact and native origin (0.071738ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ player: dino-crisis-regina, real targets/cost/contact and native origin (0.0524ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ enemy: dino-crisis-regina, real targets/cost/contact and native origin (0.094674ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ player: predator-dutch, real targets/cost/contact and native origin (0.101844ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ enemy: predator-dutch, real targets/cost/contact and native origin (0.074523ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ player: evil-dead-ash, real targets/cost/contact and native origin (0.09263ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ enemy: evil-dead-ash, real targets/cost/contact and native origin (0.048914ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ player: dead-space-isaac, real targets/cost/contact and native origin (0.143237ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ enemy: dead-space-isaac, real targets/cost/contact and native origin (0.112771ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ player: futurama-leela, real targets/cost/contact and native origin (0.067292ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ enemy: futurama-leela, real targets/cost/contact and native origin (0.114083ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ player: rickmorty-birdperson, real targets/cost/contact and native origin (0.034783ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }
+
+test at docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:120:67
+✖ enemy: rickmorty-birdperson, real targets/cost/contact and native origin (0.027391ms)
+  Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/undefined'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at read (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:11:25)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/summon-runtime-validation.mjs:82:100)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/multiverse-breach/undefined'
+  }

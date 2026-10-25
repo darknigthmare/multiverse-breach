@@ -1,0 +1,457 @@
+{
+  "records": [
+    {
+      "slug": "aragorn",
+      "id": "lotr-aragorn-wave14",
+      "performerHeroId": "aragorn_lotr",
+      "entityName": "Aragorn",
+      "universe": "The Lord of the Rings",
+      "actionName": "Coupe de l’épée de rôdeur d’Aragorn",
+      "key": "The Lord of the Rings::Aragorn::Coupe de l’épée de rôdeur d’Aragorn",
+      "sourceWork": "The Fellowship of the Ring (2001), Strider before Amon Hen",
+      "role": "melee",
+      "identity": "Dark ranger cloak, weathered brown leather coat, dark hair and short beard, ranger longsword; no Anduril or Army of the Dead",
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/summon-prompts/aragorn-containment-correction.txt",
+      "prompt": "Edit this Aragorn pixel-art atlas, preserving the same adult Aragorn ranger from The Fellowship of the Ring (2001), dark green ranger cloak, weathered brown leather coat, dark hair and short beard, ordinary ranger longsword (not Anduril), same 4 columns x4 rows,16 distinct poses, RIGHT-facing. Correct the containment defect: in row3 column4, his extended sword runs beyond the right edge and is cut off. Recompose all16 figures at slightly smaller common physical scale within their cells, and move the last attack pose enough left that the ENTIRE sword blade including its tip has at least20 transparent pixels of empty gutter before the right outer canvas edge. Every sword, cloak, boot, head and hand must be fully inside each cell, with generous actual transparent alpha gutters. Preserve native1536x1024 canvas and all16 distinct arrival/preparation/physical-sword-attack/recovery poses, same body proportions, no invented weapon, no glow, no effects, no labels, no scenery, no text. Produce only this corrected atlas, transparent background.",
+      "toolArguments": {
+        "prompt": "Edit this Aragorn pixel-art atlas, preserving the same adult Aragorn ranger from The Fellowship of the Ring (2001), dark green ranger cloak, weathered brown leather coat, dark hair and short beard, ordinary ranger longsword (not Anduril), same 4 columns x4 rows,16 distinct poses, RIGHT-facing. Correct the containment defect: in row3 column4, his extended sword runs beyond the right edge and is cut off. Recompose all16 figures at slightly smaller common physical scale within their cells, and move the last attack pose enough left that the ENTIRE sword blade including its tip has at least20 transparent pixels of empty gutter before the right outer canvas edge. Every sword, cloak, boot, head and hand must be fully inside each cell, with generous actual transparent alpha gutters. Preserve native1536x1024 canvas and all16 distinct arrival/preparation/physical-sword-attack/recovery poses, same body proportions, no invented weapon, no glow, no effects, no labels, no scenery, no text. Produce only this corrected atlas, transparent background.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/generated_images/exec-256a4f2c-a02c-4a9b-a2cb-86233a609ae2.png"
+        ]
+      },
+      "referenceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/aragorn-before-containment-correction.png",
+      "identityReferenceImage": "public/sprites/generated/heroes/the-lord-of-the-rings/aragorn-lotr.png",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 2,
+      "reviewed": true,
+      "reviewNotes": "Dark ranger cloak, weathered brown leather coat, dark hair and short beard, ranger longsword; no Anduril or Army of the Dead. Sixteen native poses visually reviewed, actual transparent alpha. Arrival/preparation/action/recovery progress. The first source had a clipped sword tip in attack4; image_gen correction retained all16 poses and restored the full blade within the canvas. Bounded engine adaptation, no certified source frames.",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/aragorn-original.png",
+      "file": "/workspace/generated_images/exec-bd091d2b-2e7e-4462-ba01-fcbc2d58efc0.png",
+      "effectAnchors": null,
+      "originalSourceFile": "/workspace/generated_images/exec-256a4f2c-a02c-4a9b-a2cb-86233a609ae2.png",
+      "originalPrompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 ATTACK: four successive genuinely different controlled sword-cut poses from ready through forward physical blade contact to follow-through, with intact sword. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Aragorn; The Fellowship of the Ring (2001), Strider before Amon Hen. Costume and anatomy: Dark ranger cloak, weathered brown leather coat, dark hair and short beard, ranger longsword; no Anduril or Army of the Dead. Selected equipment: Ranger longsword. Selected source action: Coupe de l’épée de rôdeur d’Aragorn. Pose rules: Ready sword, physical controlled forward cut, recover to guard; no magic. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. No aura, magic beam, laser or magical enhancement.",
+      "originalToolArguments": {
+        "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 ATTACK: four successive genuinely different controlled sword-cut poses from ready through forward physical blade contact to follow-through, with intact sword. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Aragorn; The Fellowship of the Ring (2001), Strider before Amon Hen. Costume and anatomy: Dark ranger cloak, weathered brown leather coat, dark hair and short beard, ranger longsword; no Anduril or Army of the Dead. Selected equipment: Ranger longsword. Selected source action: Coupe de l’épée de rôdeur d’Aragorn. Pose rules: Ready sword, physical controlled forward cut, recover to guard; no magic. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. No aura, magic beam, laser or magical enhancement.",
+        "transparent_background": true
+      }
+    },
+    {
+      "slug": "legolas",
+      "id": "lotr-legolas-wave14",
+      "performerHeroId": "legolas_lotr",
+      "entityName": "Legolas",
+      "universe": "The Lord of the Rings",
+      "actionName": "Flèche du long arc de Legolas",
+      "key": "The Lord of the Rings::Legolas::Flèche du long arc de Legolas",
+      "sourceWork": "The Fellowship of the Ring (2001), Lothlorien departure",
+      "role": "bow",
+      "identity": "Long blond hair, green-brown elven tunic, quiver and Galadhrim longbow, no modern equipment",
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/summon-prompts/legolas.txt",
+      "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 ATTACK: four successive different bow poses of nock, full draw, release one physical arrow right, follow-through; bow remains correct in every pose, no firearms. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Legolas; The Fellowship of the Ring (2001), Lothlorien departure. Costume and anatomy: Long blond hair, green-brown elven tunic, quiver and Galadhrim longbow, no modern equipment. Selected equipment: Galadhrim longbow. Selected source action: Flèche du long arc de Legolas. Pose rules: Nock one physical arrow, draw bow, release arrow forward, recover. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. No aura, magic beam, laser or magical enhancement.",
+      "toolArguments": {
+        "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 ATTACK: four successive different bow poses of nock, full draw, release one physical arrow right, follow-through; bow remains correct in every pose, no firearms. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Legolas; The Fellowship of the Ring (2001), Lothlorien departure. Costume and anatomy: Long blond hair, green-brown elven tunic, quiver and Galadhrim longbow, no modern equipment. Selected equipment: Galadhrim longbow. Selected source action: Flèche du long arc de Legolas. Pose rules: Nock one physical arrow, draw bow, release arrow forward, recover. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. No aura, magic beam, laser or magical enhancement.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": "public/sprites/generated/heroes/the-lord-of-the-rings/legolas-lotr.png",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "reviewed": true,
+      "reviewNotes": "Long blond hair, green-brown elven tunic, quiver and Galadhrim longbow, no modern equipment. Sixteen native poses visually reviewed, actual transparent alpha. Arrival/preparation/action/recovery progress. Bounded engine adaptation, no certified source frames.",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/legolas-original.png",
+      "file": "/workspace/generated_images/exec-01be29b6-3f9a-4a9f-919d-81d4b4990880.png",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "attack": [
+          {
+            "x": 319,
+            "y": 94,
+            "space": "packed-native-pixels",
+            "role": "physical-arrow-release",
+            "centerAlpha": 249,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 335,
+            "y": 100,
+            "space": "packed-native-pixels",
+            "role": "physical-arrow-release",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 296,
+            "y": 102,
+            "space": "packed-native-pixels",
+            "role": "physical-arrow-release",
+            "centerAlpha": 248,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 322,
+            "y": 111,
+            "space": "packed-native-pixels",
+            "role": "physical-arrow-release",
+            "centerAlpha": 249,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "slug": "solaire",
+      "id": "darksouls-solaire-wave14",
+      "performerHeroId": "dark_souls_solaire",
+      "entityName": "Solaire",
+      "universe": "Dark Souls",
+      "actionName": "Garde du bouclier solaire de Solaire",
+      "key": "Dark Souls::Solaire::Garde du bouclier solaire de Solaire",
+      "sourceWork": "Dark Souls (2011), Solaire of Astora",
+      "role": "support",
+      "identity": "Adult knight, closed cylindrical helmet with red feather, white sun-emblem surcoat, chainmail, straight sword sheathed and round sun shield",
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/summon-prompts/solaire.txt",
+      "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 SUPPORT: four visibly different bracing and presenting the sun shield to support allies, zero damage, sword remains sheathed. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Solaire; Dark Souls (2011), Solaire of Astora. Costume and anatomy: Adult knight, closed cylindrical helmet with red feather, white sun-emblem surcoat, chainmail, straight sword sheathed and round sun shield. Selected equipment: Sun shield. Selected source action: Garde du bouclier solaire de Solaire. Pose rules: Bring actual sun shield forward into a defensive guard; no ranged sun beam or attack. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. No lightning, magical shields, aura, damaging sun attack, or healing beam.",
+      "toolArguments": {
+        "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 SUPPORT: four visibly different bracing and presenting the sun shield to support allies, zero damage, sword remains sheathed. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Solaire; Dark Souls (2011), Solaire of Astora. Costume and anatomy: Adult knight, closed cylindrical helmet with red feather, white sun-emblem surcoat, chainmail, straight sword sheathed and round sun shield. Selected equipment: Sun shield. Selected source action: Garde du bouclier solaire de Solaire. Pose rules: Bring actual sun shield forward into a defensive guard; no ranged sun beam or attack. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. No lightning, magical shields, aura, damaging sun attack, or healing beam.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": "public/sprites/generated/heroes/dark-souls/dark-souls-solaire.png",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "reviewed": true,
+      "reviewNotes": "Adult knight, closed cylindrical helmet with red feather, white sun-emblem surcoat, chainmail, straight sword sheathed and round sun shield. Sixteen native poses visually reviewed, actual transparent alpha. Arrival/preparation/action/recovery progress. Bounded engine adaptation, no certified source frames.",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/solaire-original.png",
+      "file": "/workspace/generated_images/exec-d4c8db68-eb6f-43c1-b800-e6c50b4a4060.png",
+      "effectAnchors": null
+    },
+    {
+      "slug": "noble-six",
+      "id": "halo-noble-six-wave14",
+      "performerHeroId": "noble_six",
+      "entityName": "Noble Six",
+      "universe": "Halo",
+      "actionName": "Rafale du MA37 de Noble Six",
+      "key": "Halo::Noble Six::Rafale du MA37 de Noble Six",
+      "sourceWork": "Halo: Reach (2010), default adult Noble Six",
+      "role": "gun",
+      "identity": "Opaque default grey Mark V(B) helmet and Spartan armour, amber visor, physical MA37 assault rifle; no later GEN2 armour",
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/summon-prompts/noble-six.txt",
+      "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 ATTACK: four progressive braced shot/recoil poses with physical MA37 rifle aimed right, only a tiny conventional muzzle flash in the third pose. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Noble Six; Halo: Reach (2010), default adult Noble Six. Costume and anatomy: Opaque default grey Mark V(B) helmet and Spartan armour, amber visor, physical MA37 assault rifle; no later GEN2 armour. Selected equipment: MA37 assault rifle. Selected source action: Rafale du MA37 de Noble Six. Pose rules: Shoulder actual MA37, aim, brief recoil and recover. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. No aura, magic beam, laser or magical enhancement.",
+      "toolArguments": {
+        "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 ATTACK: four progressive braced shot/recoil poses with physical MA37 rifle aimed right, only a tiny conventional muzzle flash in the third pose. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Noble Six; Halo: Reach (2010), default adult Noble Six. Costume and anatomy: Opaque default grey Mark V(B) helmet and Spartan armour, amber visor, physical MA37 assault rifle; no later GEN2 armour. Selected equipment: MA37 assault rifle. Selected source action: Rafale du MA37 de Noble Six. Pose rules: Shoulder actual MA37, aim, brief recoil and recover. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. No aura, magic beam, laser or magical enhancement.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": "public/sprites/generated/heroes/halo/noble-six.png",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 205,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "reviewed": true,
+      "reviewNotes": "Opaque default grey Mark V(B) helmet and Spartan armour, amber visor, physical MA37 assault rifle; no later GEN2 armour. Sixteen native poses visually reviewed, actual transparent alpha. Arrival/preparation/action/recovery progress. Bounded engine adaptation, no certified source frames.",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/noble-six-original.png",
+      "file": "/workspace/generated_images/exec-7fef6844-b114-487e-b3e0-93ef2d5902f4.png",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "attack": [
+          {
+            "x": 371,
+            "y": 80,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 243,
+            "neighborhoodVisiblePixelsAboveAlpha24": 67,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 363,
+            "y": 81,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 231,
+            "neighborhoodVisiblePixelsAboveAlpha24": 48,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 356,
+            "y": 79,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 238,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 347,
+            "y": 79,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 170,
+            "neighborhoodVisiblePixelsAboveAlpha24": 30,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "slug": "mordin",
+      "id": "masseffect-mordin-wave14",
+      "performerHeroId": "mordin",
+      "entityName": "Mordin Solus",
+      "universe": "Mass Effect",
+      "actionName": "Incinération du omni-outil de Mordin",
+      "key": "Mass Effect::Mordin Solus::Incinération du omni-outil de Mordin",
+      "sourceWork": "Mass Effect 2 (2010)",
+      "role": "omnitool",
+      "identity": "Adult Mordin Solus, orange-tan salarian head and facial markings, blue-white STG scientist suit, wrist omni-tool",
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/summon-prompts/mordin.txt",
+      "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 ATTACK: four successive genuinely different poses of raising the wrist omni-tool and releasing one small orange Incinerate projectile to the right; the wrist device is the emission source, NO GUN or gun-shaped object. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Mordin Solus; Mass Effect 2 (2010). Costume and anatomy: Adult Mordin Solus, orange-tan salarian head and facial markings, blue-white STG scientist suit, wrist omni-tool. Selected equipment: Wrist omni-tool. Selected source action: Incinération du omni-outil de Mordin. Pose rules: Raise actual wrist omni-tool, project one compact orange thermal tech discharge, recover; not a firearm or sustained beam. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. Tall narrow salarian head and blue-white scientist STG suit stay consistent. Only the wrist omni-tool emits the bounded orange projectile; no physical gun at all.",
+      "toolArguments": {
+        "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 ATTACK: four successive genuinely different poses of raising the wrist omni-tool and releasing one small orange Incinerate projectile to the right; the wrist device is the emission source, NO GUN or gun-shaped object. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Mordin Solus; Mass Effect 2 (2010). Costume and anatomy: Adult Mordin Solus, orange-tan salarian head and facial markings, blue-white STG scientist suit, wrist omni-tool. Selected equipment: Wrist omni-tool. Selected source action: Incinération du omni-outil de Mordin. Pose rules: Raise actual wrist omni-tool, project one compact orange thermal tech discharge, recover; not a firearm or sustained beam. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. Tall narrow salarian head and blue-white scientist STG suit stay consistent. Only the wrist omni-tool emits the bounded orange projectile; no physical gun at all.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": "public/sprites/generated/heroes/mass-effect/mordin.png",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "reviewed": true,
+      "reviewNotes": "Adult Mordin Solus, orange-tan salarian head and facial markings, blue-white STG scientist suit, wrist omni-tool. Sixteen native poses visually reviewed, actual transparent alpha. Arrival/preparation/action/recovery progress. Bounded engine adaptation, no certified source frames.",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/mordin-original.png",
+      "file": "/workspace/generated_images/exec-1ecac810-db36-4a6c-8aaf-7f6af6b4b9d0.png",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "attack": [
+          {
+            "x": 283,
+            "y": 108,
+            "space": "packed-native-pixels",
+            "role": "native-wrist-omni-tool",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 282,
+            "y": 121,
+            "space": "packed-native-pixels",
+            "role": "native-wrist-omni-tool",
+            "centerAlpha": 249,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 279,
+            "y": 111,
+            "space": "packed-native-pixels",
+            "role": "native-wrist-omni-tool",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 284,
+            "y": 115,
+            "space": "packed-native-pixels",
+            "role": "native-wrist-omni-tool",
+            "centerAlpha": 252,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "slug": "lara",
+      "id": "tombraider-lara-wave14",
+      "performerHeroId": "lara_croft_tr",
+      "entityName": "Lara Croft",
+      "universe": "Tomb Raider",
+      "actionName": "Flèche de l’arc de Lara",
+      "key": "Tomb Raider::Lara Croft::Flèche de l’arc de Lara",
+      "sourceWork": "Shadow of the Tomb Raider (2018), adult Lara",
+      "role": "bow",
+      "identity": "Adult26+ Lara, brown ponytail, practical blue-grey expedition top and trousers, necklace, physical recurve bow and quiver; no sexualized outfit",
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/summon-prompts/lara.txt",
+      "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 ATTACK: four successive different bow poses of nock, full draw, release one physical arrow right, follow-through; bow remains correct in every pose, no firearms. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Lara Croft; Shadow of the Tomb Raider (2018), adult Lara. Costume and anatomy: Adult26+ Lara, brown ponytail, practical blue-grey expedition top and trousers, necklace, physical recurve bow and quiver; no sexualized outfit. Selected equipment: Recurve bow. Selected source action: Flèche de l’arc de Lara. Pose rules: Nock one physical arrow, draw bow, release forward and recover. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. No aura, magic beam, laser or magical enhancement.",
+      "toolArguments": {
+        "prompt": "Create a fresh, originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation, not official source frames. Exactly 4 columns by 4 rows =16 visibly distinct full-body poses of ONE same adult character with consistent anatomy, costume, equipment, scale and right-facing three-quarter side battle view. Native 1536x1024 landscape canvas, transparent alpha background, generous empty alpha gutters surrounding each cell. Absolutely no labels, text, captions, numbers, grid lines, scenery, opponents or extra figures. Keep feet, hair, head, arms, held equipment and complete physical reach fully inside every cell. Row1 ARRIVAL: four successive distinct walking-to-bracing steps with equipment lowered. Row2 PREPARATION: four different progressive readying poses. Row3 ATTACK: four successive different bow poses of nock, full draw, release one physical arrow right, follow-through; bow remains correct in every pose, no firearms. Row4 RECOVERY: four different lowering-equipment and retreat steps, no more attacking. Identity and period: Lara Croft; Shadow of the Tomb Raider (2018), adult Lara. Costume and anatomy: Adult26+ Lara, brown ponytail, practical blue-grey expedition top and trousers, necklace, physical recurve bow and quiver; no sexualized outfit. Selected equipment: Recurve bow. Selected source action: Flèche de l’arc de Lara. Pose rules: Nock one physical arrow, draw bow, release forward and recover. No invented powers, no costume from a different installment, no blood, wounds or injury. Clean crisp pixel clusters with readable silhouette and hands. Every one of 16 cells must contain a newly drawn different pose, never a duplicate or a mirror. No aura, magic beam, laser or magical enhancement.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": "public/sprites/generated/heroes/tomb-raider/lara-croft-tr.png",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "reviewed": true,
+      "reviewNotes": "Adult26+ Lara, brown ponytail, practical blue-grey expedition top and trousers, necklace, physical recurve bow and quiver; no sexualized outfit. Sixteen native poses visually reviewed, actual transparent alpha. Arrival/preparation/action/recovery progress. Bounded engine adaptation, no certified source frames.",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/lara-original.png",
+      "file": "/workspace/generated_images/exec-2688bd9b-b17f-4495-a39d-638b7bec462e.png",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "attack": [
+          {
+            "x": 333,
+            "y": 112,
+            "space": "packed-native-pixels",
+            "role": "physical-arrow-release",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 72,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 329,
+            "y": 109,
+            "space": "packed-native-pixels",
+            "role": "physical-arrow-release",
+            "centerAlpha": 252,
+            "neighborhoodVisiblePixelsAboveAlpha24": 64,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 305,
+            "y": 113,
+            "space": "packed-native-pixels",
+            "role": "physical-arrow-release",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 338,
+            "y": 115,
+            "space": "packed-native-pixels",
+            "role": "physical-arrow-release",
+            "centerAlpha": 252,
+            "neighborhoodVisiblePixelsAboveAlpha24": 80,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    }
+  ],
+  "attempts": [],
+  "source1to1Verified": false
+}

@@ -42,7 +42,7 @@ test('monsters, same-name shells and wrong universes never borrow roster hero ar
 test('every roster hero has a finite super sourced from its own universe', () => {
   const before = JSON.stringify(HEROES_DB);
   const effectNames = new Set(['damage', 'heal', 'guard', 'buff', 'cleanse', 'revive']);
-  const deliveries = new Set(['melee', 'projectile', 'beam', 'area', 'support']);
+  const deliveries = new Set(['melee', 'projectile', 'beam', 'area', 'radial', 'support']);
   for (const actor of HEROES_DB) {
     const profile = resolveMeleeSuper(actor);
     assert.ok(profile, actor.id);

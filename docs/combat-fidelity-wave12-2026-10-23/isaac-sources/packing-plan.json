@@ -1,0 +1,688 @@
+{
+  "heroId": "isaac",
+  "registryStem": "isaac",
+  "universe": "Dead Space",
+  "sourceWork": "Dead Space (2008), original level-3 engineering RIG",
+  "date": "2026-10-23",
+  "archiveDir": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources",
+  "outputDir": "public/sprites/generated/melee-isaac-wave12",
+  "reference": {
+    "asset": "docs/combat-fidelity-wave12-2026-10-23/part-c-sources/isaac-48.png",
+    "savedImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-reference-native-wave12.png"
+  },
+  "correctionId": "isaac-corrective-readiness",
+  "sourceReference": "Original adapted crossover movement and physical glove/boot/tool-contact choreography based on Isaac2008 equipment. Plasma Cutter special is emitted from its actual compact cutting head. Not official exported animation, not certified frame-exact canon. Guard is physical bracing, never a RIG energy shield. The generic charge states are adapted readiness/contact, not a canonical charge-up power.",
+  "sources": [
+    {
+      "id": "isaac-motion-a",
+      "image": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.native.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 0,
+        "state": "idle",
+        "raisedArmsExcluded": false,
+        "bodyBounds": {
+          "x": 119,
+          "y": 12,
+          "width": 92,
+          "height": 192
+        },
+        "reason": "Visually reviewed upright crown-to-sole vertical body span; any lateral tool lies between these vertical extrema and contributes no height. Actual native anatomy retained; source-wide uniform scale, not source1:1 anatomy certification."
+      },
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-a.prompt.txt"
+    },
+    {
+      "id": "isaac-motion-b",
+      "image": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-b.native.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 5,
+        "column": 0,
+        "state": "taunt1",
+        "raisedArmsExcluded": false,
+        "bodyBounds": {
+          "x": 141,
+          "y": 1074,
+          "width": 123,
+          "height": 222
+        },
+        "reason": "Visually reviewed upright crown-to-sole vertical body span; any lateral tool lies between these vertical extrema and contributes no height. Actual native anatomy retained; source-wide uniform scale, not source1:1 anatomy certification."
+      },
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-motion-b.prompt.txt"
+    },
+    {
+      "id": "isaac-defense",
+      "image": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.native.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 5,
+        "column": 3,
+        "state": "shieldExit",
+        "raisedArmsExcluded": false,
+        "bodyBounds": {
+          "x": 837,
+          "y": 1010,
+          "width": 109,
+          "height": 200
+        },
+        "reason": "Visually reviewed upright crown-to-sole vertical body span; any lateral tool lies between these vertical extrema and contributes no height. Actual native anatomy retained; source-wide uniform scale, not source1:1 anatomy certification."
+      },
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-defense.prompt.txt"
+    },
+    {
+      "id": "isaac-combat-a",
+      "image": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-a.native.png",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 6,
+        "column": 3,
+        "state": "chargeRecovery",
+        "raisedArmsExcluded": false,
+        "bodyBounds": {
+          "x": 815,
+          "y": 1305,
+          "width": 130,
+          "height": 208
+        },
+        "reason": "Visually reviewed upright crown-to-sole vertical body span; any lateral tool lies between these vertical extrema and contributes no height. Actual native anatomy retained; source-wide uniform scale, not source1:1 anatomy certification."
+      },
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-a.prompt.txt"
+    },
+    {
+      "id": "isaac-ledge",
+      "image": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.native.png",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump",
+        "uprightCalibration",
+        "reservedGripStudy",
+        "reservedToolStudy"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 5,
+        "column": 0,
+        "state": "uprightCalibration",
+        "raisedArmsExcluded": false,
+        "bodyBounds": {
+          "x": 145,
+          "y": 974,
+          "width": 87,
+          "height": 180
+        },
+        "reason": "Visually reviewed upright crown-to-sole vertical body span; any lateral tool lies between these vertical extrema and contributes no height. Actual native anatomy retained; source-wide uniform scale, not source1:1 anatomy certification."
+      },
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.prompt.txt"
+    },
+    {
+      "id": "isaac-corrective-readiness",
+      "image": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-readiness.native.png",
+      "states": [
+        "uprightCalibration",
+        "chargeLoop",
+        "crouchIdle",
+        "reservedUprightStudy"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 0,
+        "state": "uprightCalibration",
+        "raisedArmsExcluded": false,
+        "bodyBounds": {
+          "x": 101,
+          "y": 40,
+          "width": 156,
+          "height": 323
+        },
+        "reason": "Visually reviewed upright crown-to-sole vertical body span; any lateral tool lies between these vertical extrema and contributes no height. Actual native anatomy retained; source-wide uniform scale, not source1:1 anatomy certification."
+      },
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-readiness.prompt.txt"
+    },
+    {
+      "id": "isaac-combat-b",
+      "image": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-a.native.png",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 3,
+        "state": "attackRecovery",
+        "raisedArmsExcluded": false,
+        "bodyBounds": {
+          "x": 986,
+          "y": 56,
+          "width": 165,
+          "height": 289
+        },
+        "reason": "Visually reviewed upright crown-to-sole vertical body span; any lateral tool lies between these vertical extrema and contributes no height. Actual native anatomy retained; source-wide uniform scale, not source1:1 anatomy certification."
+      },
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-a.prompt.txt"
+    },
+    {
+      "id": "isaac-combat-b-extra",
+      "image": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-b.native.png",
+      "states": [
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 1,
+        "column": 3,
+        "state": "intro",
+        "raisedArmsExcluded": false,
+        "bodyBounds": {
+          "x": 1002,
+          "y": 354,
+          "width": 171,
+          "height": 300
+        },
+        "reason": "Visually reviewed upright crown-to-sole vertical body span; any lateral tool lies between these vertical extrema and contributes no height. Actual native anatomy retained; source-wide uniform scale, not source1:1 anatomy certification."
+      },
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b-corrective-b.prompt.txt"
+    },
+    {
+      "id": "isaac-corrective-climb",
+      "image": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-climb.native.png",
+      "states": [
+        "ledgeClimb",
+        "uprightCalibration"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 1,
+        "column": 0,
+        "state": "uprightCalibration",
+        "raisedArmsExcluded": false,
+        "bodyBounds": {
+          "x": 108,
+          "y": 579,
+          "width": 201,
+          "height": 405
+        },
+        "reason": "Visually reviewed upright crown-to-sole vertical body span; any lateral tool lies between these vertical extrema and contributes no height. Actual native anatomy retained; source-wide uniform scale, not source1:1 anatomy certification."
+      },
+      "promptFile": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-climb.prompt.txt"
+    }
+  ],
+  "atlases": [
+    {
+      "id": "isaac-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "selection": {
+        "idle": {
+          "sourceId": "isaac-motion-a",
+          "row": 0
+        },
+        "walk": {
+          "sourceId": "isaac-motion-a",
+          "row": 1
+        },
+        "run": {
+          "sourceId": "isaac-motion-a",
+          "row": 2
+        },
+        "turn": {
+          "sourceId": "isaac-motion-a",
+          "row": 3
+        },
+        "jumpStart": {
+          "sourceId": "isaac-motion-a",
+          "row": 4
+        },
+        "jumpRise": {
+          "sourceId": "isaac-motion-a",
+          "row": 5
+        },
+        "jumpApex": {
+          "sourceId": "isaac-motion-a",
+          "row": 6
+        },
+        "fall": {
+          "sourceId": "isaac-motion-a",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "isaac-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "selection": {
+        "fastFall": {
+          "sourceId": "isaac-motion-b",
+          "row": 0
+        },
+        "land": {
+          "sourceId": "isaac-motion-b",
+          "row": 1
+        },
+        "crouchEnter": {
+          "sourceId": "isaac-motion-b",
+          "row": 2
+        },
+        "crouchIdle": {
+          "sourceId": "isaac-corrective-readiness",
+          "row": 2
+        },
+        "crouchExit": {
+          "sourceId": "isaac-motion-b",
+          "row": 3
+        },
+        "crouchCharge": {
+          "sourceId": "isaac-motion-b",
+          "row": 4
+        },
+        "taunt1": {
+          "sourceId": "isaac-motion-b",
+          "row": 5
+        },
+        "hitStun": {
+          "sourceId": "isaac-motion-b",
+          "row": 6
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-readiness.native.png",
+          "row": 0,
+          "state": "uprightCalibration",
+          "poses": 4,
+          "reason": "Native upright calibration/study only; not a delivered game state."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-readiness.native.png",
+          "row": 3,
+          "state": "reservedUprightStudy",
+          "poses": 4,
+          "reason": "Native upright calibration/study only; not a delivered game state."
+        }
+      ]
+    },
+    {
+      "id": "isaac-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "selection": {
+        "shieldEnter": {
+          "sourceId": "isaac-defense",
+          "row": 0
+        },
+        "shieldHold": {
+          "sourceId": "isaac-defense",
+          "row": 1
+        },
+        "shieldHit": {
+          "sourceId": "isaac-defense",
+          "row": 2
+        },
+        "perfectShield": {
+          "sourceId": "isaac-defense",
+          "row": 3
+        },
+        "shieldBreak": {
+          "sourceId": "isaac-defense",
+          "row": 4
+        },
+        "shieldExit": {
+          "sourceId": "isaac-defense",
+          "row": 5
+        },
+        "dead": {
+          "sourceId": "isaac-defense",
+          "row": 6
+        },
+        "defeat": {
+          "sourceId": "isaac-defense",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "isaac-combat-a",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "selection": {
+        "attackLight1": {
+          "sourceId": "isaac-combat-a",
+          "row": 0
+        },
+        "attackLight2": {
+          "sourceId": "isaac-combat-a",
+          "row": 1
+        },
+        "attackLight3": {
+          "sourceId": "isaac-combat-a",
+          "row": 2
+        },
+        "crouchLight": {
+          "sourceId": "isaac-combat-a",
+          "row": 3
+        },
+        "chargeStart": {
+          "sourceId": "isaac-combat-a",
+          "row": 4
+        },
+        "chargeLoop": {
+          "sourceId": "isaac-corrective-readiness",
+          "row": 1
+        },
+        "chargeRelease": {
+          "sourceId": "isaac-combat-a",
+          "row": 5
+        },
+        "chargeRecovery": {
+          "sourceId": "isaac-combat-a",
+          "row": 6
+        }
+      }
+    },
+    {
+      "id": "isaac-combat-b",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "selection": {
+        "attackRecovery": {
+          "sourceId": "isaac-combat-b",
+          "row": 0
+        },
+        "special": {
+          "sourceId": "isaac-combat-b",
+          "row": 1
+        },
+        "aerialNeutral": {
+          "sourceId": "isaac-combat-b",
+          "row": 2
+        },
+        "aerialForward": {
+          "sourceId": "isaac-combat-b",
+          "row": 3
+        },
+        "aerialDown": {
+          "sourceId": "isaac-combat-b-extra",
+          "row": 0
+        },
+        "intro": {
+          "sourceId": "isaac-combat-b-extra",
+          "row": 1
+        },
+        "victory": {
+          "sourceId": "isaac-combat-b-extra",
+          "row": 2
+        },
+        "ledgeAttack": {
+          "sourceId": "isaac-combat-b-extra",
+          "row": 3
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b.native.png",
+          "row": 0,
+          "state": "quality-rejected-initial-row",
+          "poses": 4,
+          "reason": "Entire initial source rejected for missing/irregular state rows; none of its29bodies selected."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b.native.png",
+          "row": 1,
+          "state": "quality-rejected-initial-row",
+          "poses": 4,
+          "reason": "Entire initial source rejected for missing/irregular state rows; none of its29bodies selected."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b.native.png",
+          "row": 2,
+          "state": "quality-rejected-initial-row",
+          "poses": 4,
+          "reason": "Entire initial source rejected for missing/irregular state rows; none of its29bodies selected."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b.native.png",
+          "row": 3,
+          "state": "quality-rejected-initial-row",
+          "poses": 4,
+          "reason": "Entire initial source rejected for missing/irregular state rows; none of its29bodies selected."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b.native.png",
+          "row": 4,
+          "state": "quality-rejected-initial-row",
+          "poses": 4,
+          "reason": "Entire initial source rejected for missing/irregular state rows; none of its29bodies selected."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b.native.png",
+          "row": 5,
+          "state": "quality-rejected-initial-row",
+          "poses": 4,
+          "reason": "Entire initial source rejected for missing/irregular state rows; none of its29bodies selected."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b.native.png",
+          "row": 6,
+          "state": "quality-rejected-initial-row",
+          "poses": 5,
+          "reason": "Entire initial source rejected for missing/irregular state rows; none of its29bodies selected."
+        }
+      ]
+    },
+    {
+      "id": "isaac-ledge",
+      "batch": "Combat",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "selection": {
+        "ledgeCatch": {
+          "sourceId": "isaac-ledge",
+          "row": 0
+        },
+        "ledgeHang": {
+          "sourceId": "isaac-ledge",
+          "row": 1
+        },
+        "ledgeClimb": {
+          "sourceId": "isaac-corrective-climb",
+          "row": 0
+        },
+        "ledgeDrop": {
+          "sourceId": "isaac-ledge",
+          "row": 3
+        },
+        "ledgeJump": {
+          "sourceId": "isaac-ledge",
+          "row": 4
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.native.png",
+          "row": 2,
+          "state": "ledgeClimb",
+          "poses": 4,
+          "reason": "Replaced by genuinely rising native climb."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.native.png",
+          "row": 5,
+          "state": "uprightCalibration",
+          "poses": 4,
+          "reason": "Native calibration/study only; excluded from delivered game states."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.native.png",
+          "row": 6,
+          "state": "reservedGripStudy",
+          "poses": 4,
+          "reason": "Native calibration/study only; excluded from delivered game states."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-ledge.native.png",
+          "row": 7,
+          "state": "reservedToolStudy",
+          "poses": 4,
+          "reason": "Native calibration/study only; excluded from delivered game states."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-corrective-climb.native.png",
+          "row": 1,
+          "state": "uprightCalibration",
+          "poses": 4,
+          "reason": "Native upright calibration only; not a delivered game state."
+        }
+      ]
+    }
+  ],
+  "incompleteInitialSources": [
+    {
+      "id": "isaac-motion-b",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "crouchIdle"
+    },
+    {
+      "id": "isaac-combat-a",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "chargeLoop"
+    },
+    {
+      "id": "isaac-combat-b",
+      "observedRows": 7,
+      "observedRowCounts": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "observedPoses": 29,
+      "expectedRows": 8,
+      "qualityRejected": true,
+      "reason": "Irregular5pose final row and a missing aerial state; entire source not selected."
+    }
+  ],
+  "rejectedSources": [
+    {
+      "id": "isaac-combat-b",
+      "path": "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/isaac-combat-b.native.png",
+      "nativePoses": 29,
+      "reason": "Quality rejection, not a safety refusal: irregular last row and missing state."
+    }
+  ],
+  "visualReview": {
+    "complete": true,
+    "outfit": "Original2008 bronze/brown ribbed level3 engineering RIG, enclosed helmet with3horizontalcyanvisorbars, heavy gloves/boots, cyan spine on the back only. Adult engineer proportions.",
+    "weapons": "Compact industrial Plasma Cutter with physical short cutting head/prongs, no conventional rifle; motion/ledge keeps it secured at hip. Physical contact rows do not emit plasma; special frame2 has compact muzzle flash from actual tool tip; guard is physical.",
+    "limitations": [
+      "Generated adapted crossover choreography, not official extracted frames or verified source1:1.",
+      "Runtime facing mirrors native artwork, including suit/equipment asymmetry.",
+      "Source-wide calibration preserves real crouch/air/hang shortening; no per-pose body warp.",
+      "Generic melee charge actions are adapted physical readiness/contact states, not a canonical chargeable plasma power.",
+      "Leading glove contact points are actual visible anatomy; labeling does not certify hidden anatomical handedness."
+    ]
+  }
+}

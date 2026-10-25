@@ -1,3 +1,8 @@
+import { drawNativeSuperVisualsWave14, getNativeSuperVisualStateWave14, sampleNativeSuperMotionWave14, supportsNativeSuperWave14, supportsTrackedProjectileVisualWave14 } from './nativeSuperVisualsWave14.js';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE14 } from './combatSourceDefinitionsWave14.js';
+import { drawNativeSuperVisualsWave13, getNativeSuperVisualStateWave13, sampleNativeSuperMotionWave13, supportsNativeSuperWave13, supportsTrackedProjectileVisualWave13 } from './nativeSuperVisualsWave13.js';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE13 } from './combatSourceDefinitionsWave13.js';
+import { drawNativeSuperVisualsWave12, getNativeSuperVisualStateWave12, supportsNativeSuperWave12, supportsTrackedProjectileVisualWave12 } from './nativeSuperVisualsWave12.js';
 import { drawNativeSuperVisualsWave11, getNativeSuperVisualStateWave11, supportsNativeSuperWave11, supportsTrackedProjectileVisualWave11 } from './nativeSuperVisualsWave11.js';
 import { drawFf8SuperVisuals, getFf8SuperVisualState, sampleNativeSuperMotion } from './ff8SuperVisuals.js';
 import { drawPartySuperVisuals, getPartySuperVisualState, samplePartySuperMotion } from './partySuperVisuals.js';
@@ -10,9 +15,9 @@ import { drawNativeSuperVisualsWave9, getNativeSuperVisualStateWave9, supportsNa
 
 import { drawNativeSuperVisualsWave10, getNativeSuperVisualStateWave10, supportsNativeSuperWave10, supportsTrackedProjectileVisualWave10 } from './nativeSuperVisualsWave10.js';
 
-export const getCharacterSuperVisualState = options => getFf8SuperVisualState(options) || getPartySuperVisualState(options) || getNativeSuperVisualStateWave4(options) || getNativeSuperVisualStateWave5(options) || getNativeSuperVisualStateWave6(options) || getNativeSuperVisualStateWave7(options) || getNativeSuperVisualStateWave8(options) || getNativeSuperVisualStateWave9(options) || getNativeSuperVisualStateWave10(options) || getNativeSuperVisualStateWave11(options);
-export const supportsTrackedCharacterSuperVisual = profile => supportsTrackedProjectileVisualWave5(profile) || supportsTrackedProjectileVisualWave6(profile) || supportsTrackedProjectileVisualWave7(profile) || supportsTrackedProjectileVisualWave8(profile) || supportsTrackedProjectileVisualWave9(profile) || supportsTrackedProjectileVisualWave10(profile) || supportsTrackedProjectileVisualWave11(profile);
-export const supportsConfirmedCharacterSuperContact = profile => supportsNativeSuperWave6(profile) || supportsNativeSuperWave7(profile) || supportsNativeSuperWave8(profile) || supportsNativeSuperWave9(profile) || supportsNativeSuperWave10(profile) || supportsNativeSuperWave11(profile);
+export const getCharacterSuperVisualState = options => getFf8SuperVisualState(options) || getPartySuperVisualState(options) || getNativeSuperVisualStateWave4(options) || getNativeSuperVisualStateWave5(options) || getNativeSuperVisualStateWave6(options) || getNativeSuperVisualStateWave7(options) || getNativeSuperVisualStateWave8(options) || getNativeSuperVisualStateWave9(options) || getNativeSuperVisualStateWave10(options) || getNativeSuperVisualStateWave11(options) || getNativeSuperVisualStateWave12(options) || getNativeSuperVisualStateWave13(options) || getNativeSuperVisualStateWave14(options);
+export const supportsTrackedCharacterSuperVisual = profile => supportsTrackedProjectileVisualWave5(profile) || supportsTrackedProjectileVisualWave6(profile) || supportsTrackedProjectileVisualWave7(profile) || supportsTrackedProjectileVisualWave8(profile) || supportsTrackedProjectileVisualWave9(profile) || supportsTrackedProjectileVisualWave10(profile) || supportsTrackedProjectileVisualWave11(profile) || supportsTrackedProjectileVisualWave12(profile) || supportsTrackedProjectileVisualWave13(profile) || supportsTrackedProjectileVisualWave14(profile);
+export const supportsConfirmedCharacterSuperContact = profile => supportsNativeSuperWave6(profile) || supportsNativeSuperWave7(profile) || supportsNativeSuperWave8(profile) || supportsNativeSuperWave9(profile) || supportsNativeSuperWave10(profile) || supportsNativeSuperWave11(profile) || supportsNativeSuperWave12(profile) || supportsNativeSuperWave13(profile) || supportsNativeSuperWave14(profile);
 export const preloadCharacterSuperAssets = actors => preloadNativeSuperAssetsWave7(actors);
 export const drawCharacterSuperVisuals = (ctx, state) => state?.family === 'party' ? drawPartySuperVisuals(ctx, state)
   : state?.family === 'native-wave4' ? drawNativeSuperVisualsWave4(ctx, state)
@@ -22,8 +27,18 @@ export const drawCharacterSuperVisuals = (ctx, state) => state?.family === 'part
           : state?.family === 'native-wave8' ? drawNativeSuperVisualsWave8(ctx, state)
             : state?.family === 'native-wave9' ? drawNativeSuperVisualsWave9(ctx, state)
               : state?.family === 'native-wave10' ? drawNativeSuperVisualsWave10(ctx, state)
-                : state?.family === 'native-wave11' ? drawNativeSuperVisualsWave11(ctx, state) : drawFf8SuperVisuals(ctx, state);
+                : state?.family === 'native-wave11' ? drawNativeSuperVisualsWave11(ctx, state)
+                  : state?.family === 'native-wave12' ? drawNativeSuperVisualsWave12(ctx, state)
+                    : state?.family === 'native-wave13' ? drawNativeSuperVisualsWave13(ctx, state) : state?.family === 'native-wave14' ? drawNativeSuperVisualsWave14(ctx, state) : drawFf8SuperVisuals(ctx, state);
 export const sampleCharacterSuperMotion = options => {
+  const wave14Source = COMBAT_SOURCE_DEFINITIONS_WAVE14[options?.heroId];
+  if (wave14Source && wave14Source.universe === options?.universe) return sampleNativeSuperMotionWave14(options);
+  // Selected W13 native poses contain their own movement. An older source
+  // version sharing the hero ID must not add a second procedural lunge.
+  const wave13Source = COMBAT_SOURCE_DEFINITIONS_WAVE13[options?.heroId];
+  if (wave13Source && wave13Source.universe === options?.universe) {
+    return sampleNativeSuperMotionWave13(options);
+  }
   const ff8 = sampleNativeSuperMotion(options);
   if (ff8.x || ff8.y) return ff8;
   const party = samplePartySuperMotion(options);

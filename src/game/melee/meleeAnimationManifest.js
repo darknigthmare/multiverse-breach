@@ -11,6 +11,9 @@ import { NEO_MELEE_MANIFEST } from './neoMeleeManifest.js';
 import { FREEMAN_MELEE_MANIFEST } from './freemanMeleeManifest.js';
 import { BUFFY_MELEE_MANIFEST } from './buffyMeleeManifest.js';
 import { ARTHUR_MELEE_MANIFEST } from './arthurMeleeManifest.js';
+import { ISAAC_MELEE_MANIFEST } from './isaacMeleeManifest.js';
+import { RIPLEY_MELEE_MANIFEST } from './ripleyMeleeManifest.js';
+import { ARAGORN_MELEE_MANIFEST } from './aragornMeleeManifest.js';
 
 const PLAYER_ANCHOR_MELEE_BASE = '/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee';
 
@@ -159,7 +162,10 @@ const MANIFESTS = Object.freeze({
   ...(NEO_MELEE_MANIFEST ? { [NEO_MELEE_MANIFEST.characterId]: NEO_MELEE_MANIFEST } : {}),
   ...(FREEMAN_MELEE_MANIFEST ? { [FREEMAN_MELEE_MANIFEST.characterId]: FREEMAN_MELEE_MANIFEST } : {}),
   ...(BUFFY_MELEE_MANIFEST ? { [BUFFY_MELEE_MANIFEST.characterId]: BUFFY_MELEE_MANIFEST } : {}),
-  ...(ARTHUR_MELEE_MANIFEST ? { [ARTHUR_MELEE_MANIFEST.characterId]: ARTHUR_MELEE_MANIFEST } : {})
+  ...(ARTHUR_MELEE_MANIFEST ? { [ARTHUR_MELEE_MANIFEST.characterId]: ARTHUR_MELEE_MANIFEST } : {}),
+  ...(ISAAC_MELEE_MANIFEST ? { [ISAAC_MELEE_MANIFEST.characterId]: ISAAC_MELEE_MANIFEST } : {}),
+  ...(RIPLEY_MELEE_MANIFEST ? { [RIPLEY_MELEE_MANIFEST.characterId]: RIPLEY_MELEE_MANIFEST } : {}),
+  ...(ARAGORN_MELEE_MANIFEST ? { [ARAGORN_MELEE_MANIFEST.characterId]: ARAGORN_MELEE_MANIFEST } : {})
 });
 
 const normalizePath = value => {

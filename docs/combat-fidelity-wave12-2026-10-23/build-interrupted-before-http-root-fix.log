@@ -1,0 +1,316 @@
+
+> lively-darwin@0.0.0 prebuild
+> npm run test:combat-fidelity && npm run test:combat-presentation && npm run test:deployment-inputs && npm run test:conversation && npm run test:custom && npm run test:boosters && npm run boosters:audit && npm run test:extension && npm run test:polish && npm run test:cg && npm run cg:manifest:check && npm run test:melee && npm run test:stages && npm run test:noncombat-trials && npm run melee:sprites:audit && npm run sprites:provenance:audit && npm run portals:audit && npm run portals:prompts -- --check && npm run cosmetics:audit && npm run test:cosmetics && npm run rift:audit && npm run test:rift && npm run music:audit && npm run test:campaign && npm run test:oc-dlc && npm run test:original-universes && npm run audit:oc-dlc && npm run audit:original-universes && npm run check:progression
+
+
+> lively-darwin@0.0.0 test:combat-fidelity
+> node --test --test-concurrency=1 scripts/combatFidelity.test.mjs scripts/combatAbilityRuntime.test.mjs scripts/fighterAuthoredActions.test.mjs scripts/combatFidelityWave2.test.mjs scripts/ff8SuperRuntimeWave2.test.mjs scripts/combatFidelityWave3.test.mjs scripts/partySuperRuntimeWave3.test.mjs scripts/combatFidelityWave4.test.mjs scripts/characterFormsWave4.test.mjs scripts/combatFidelityWave5.test.mjs scripts/nativeSuperRuntimeWave5.test.mjs scripts/fighterProjectileVisualWave5.test.mjs scripts/presentationStatureWave5.test.mjs scripts/combatFidelityWave6.test.mjs scripts/nativeSuperRuntimeWave6.test.mjs scripts/summonAnimationWave6.test.mjs scripts/combatContactVisualWave6.test.mjs scripts/meleeSupportCpuWave6.test.mjs scripts/combatFidelityWave7.test.mjs scripts/nativeSuperRuntimeWave7.test.mjs scripts/summonAnimationWave7.test.mjs scripts/combatFidelityWave8.test.mjs scripts/nativeSuperRuntimeWave8.test.mjs scripts/summonAnimationWave8.test.mjs scripts/combatFidelityWave9.test.mjs scripts/nativeSuperRuntimeWave9.test.mjs scripts/summonAnimationWave9.test.mjs scripts/combatFidelityWave10.test.mjs scripts/nativeSuperRuntimeWave10.test.mjs scripts/summonAnimationWave10.test.mjs scripts/combatFidelityWave11.test.mjs scripts/nativeSuperRuntimeWave11.test.mjs scripts/summonAnimationWave11.test.mjs scripts/combatFidelityWave12.test.mjs && node scripts/combatFidelityAudit.mjs --check && node scripts/buildCombatCharacterAnimations.mjs --check && node scripts/buildCombatCharacterSpriteCorrections.mjs --check && node scripts/buildCombatCharacterAnimationsWave2PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave3PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave3PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave4PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave4PartC.mjs --check && node scripts/buildCombatCharacterFormsWave4.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave4.mjs --check && node scripts/buildCombatCharacterAnimationsWave5PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave5PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave5PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave5.mjs --check && node docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/normalize-vegeta-motion-atlases.mjs --check && node docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/verify-vegeta-combat.mjs && node scripts/buildSummonAnimationsWave5.mjs --check && node scripts/buildCombatCharacterAnimationsWave6PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave6PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave6PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave6PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave6PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave6PartC.mjs --check && node scripts/buildSummonAnimationsWave6.mjs --check && node docs/combat-fidelity-wave6-2026-10-20/sonic-sources/normalize-sonic-motion-atlases.mjs --check && node docs/combat-fidelity-wave6-2026-10-20/sonic-sources/verify-sonic-combat.mjs --check && node scripts/buildCombatCharacterAnimationsWave7PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave7PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave7PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave7PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave7PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave7PartC.mjs --check && node scripts/buildSummonAnimationsWave7.mjs --check && node docs/combat-fidelity-wave7-2026-10-20/ragna-sources/normalize-ragna-motion-atlases.mjs --check && node docs/combat-fidelity-wave7-2026-10-20/ragna-sources/verify-ragna-combat.mjs --check && node scripts/buildCombatCharacterAnimationsWave8PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave8PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave8PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave8PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave8PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave8PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave8PartD.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave8PartD.mjs --check && node scripts/buildSummonAnimationsWave8.mjs --check && node docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/normalize-kiryu-atlases.mjs --check && node docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/verify-kiryu-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave9PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave9PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave9PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave9PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave9PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave9PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave9PartD.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave9PartD.mjs --check && node scripts/buildSummonAnimationsWave9.mjs --check && node docs/combat-fidelity-wave9-2026-10-22/chris-sources/normalize-chris-atlases.mjs --check && node docs/combat-fidelity-wave9-2026-10-22/chris-sources/verify-chris-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave10PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave10PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave10PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave10PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave10PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave10PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave10PartD.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave10PartD.mjs --check && node scripts/buildSummonAnimationsWave10.mjs --check && node docs/combat-fidelity-wave10-2026-10-23/neo-sources/normalize-neo-atlases.mjs --check && node docs/combat-fidelity-wave10-2026-10-23/freeman-sources/normalize-freeman-atlases.mjs --check && node docs/combat-fidelity-wave10-2026-10-23/neo-sources/verify-neo-atlases.mjs --check && node docs/combat-fidelity-wave10-2026-10-23/freeman-sources/verify-freeman-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave11PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave11PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave11PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave11PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave11PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave11PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave11PartD.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave11PartD.mjs --check && node scripts/buildSummonAnimationsWave11.mjs --check && node docs/combat-fidelity-wave11-2026-10-23/buffy-sources/normalize-buffy-atlases.mjs --check && node docs/combat-fidelity-wave11-2026-10-23/buffy-sources/verify-buffy-atlases.mjs --check && node docs/combat-fidelity-wave11-2026-10-23/arthur-sources/normalize-arthur-atlases.mjs --check && node docs/combat-fidelity-wave11-2026-10-23/arthur-sources/verify-arthur-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave12PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave12PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave12PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave12PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave12PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave12PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave12PartD.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave12PartD.mjs --check && node scripts/buildSummonAnimationsWave12.mjs --check && node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/normalize-isaac-atlases.mjs --check && node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/measure-isaac-native-hands.mjs --check && node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/verify-isaac-atlases.mjs --check
+
+✔ Part I techniques retain their authored identity and Sakura supports only herself (7954.293847ms)
+✔ rpg player Rasengan and Chidori spend100 once and strike one selected close opponent once (9.461736ms)
+✔ rpg player Bunshin creates only the source self buff with no ally healing or hostile impact (1.803107ms)
+✔ rpg player Chaos starts at its single source impact, pauses and expires on the existing buff clock (3.270087ms)
+✔ rpg player Chaos cannot survive a knockout or an interrupted startup (1.123042ms)
+✔ rpg opponent Rasengan and Chidori spend100 once and strike one selected close opponent once (2.166925ms)
+✔ rpg opponent Bunshin creates only the source self buff with no ally healing or hostile impact (0.925845ms)
+✔ rpg opponent Chaos starts at its single source impact, pauses and expires on the existing buff clock (2.57459ms)
+✔ rpg opponent Chaos cannot survive a knockout or an interrupted startup (0.76274ms)
+✔ melee player Rasengan and Chidori spend100 once and strike one selected close opponent once (7.146147ms)
+✔ melee player Bunshin creates only the source self buff with no ally healing or hostile impact (1.245747ms)
+✔ melee player Chaos starts at its single source impact, pauses and expires on the existing buff clock (2.258082ms)
+✔ melee player Chaos cannot survive a knockout or an interrupted startup (0.956941ms)
+✔ melee opponent Rasengan and Chidori spend100 once and strike one selected close opponent once (2.961202ms)
+✔ melee opponent Bunshin creates only the source self buff with no ally healing or hostile impact (0.965124ms)
+✔ melee opponent Chaos starts at its single source impact, pauses and expires on the existing buff clock (1.924209ms)
+✔ melee opponent Chaos cannot survive a knockout or an interrupted startup (0.589498ms)
+✔ fighter player Rasengan and Chidori spend100 once and strike one selected close opponent once (5.113946ms)
+✔ fighter player Bunshin creates only the source self buff with no ally healing or hostile impact (0.85ms)
+✔ fighter player Chaos starts at its single source impact, pauses and expires on the existing buff clock (3.461895ms)
+✔ fighter player Chaos cannot survive a knockout or an interrupted startup (0.798473ms)
+✔ fighter opponent Rasengan and Chidori spend100 once and strike one selected close opponent once (1.18785ms)
+✔ fighter opponent Bunshin creates only the source self buff with no ally healing or hostile impact (0.563879ms)
+✔ fighter opponent Chaos starts at its single source impact, pauses and expires on the existing buff clock (1.915156ms)
+✔ fighter opponent Chaos cannot survive a knockout or an interrupted startup (0.401424ms)
+✔ melee player Part I contact supers preserve their committed facing, finite range and vertical reach (3.06617ms)
+✔ melee opponent Part I contact supers preserve their committed facing, finite range and vertical reach (2.266234ms)
+✔ fighter player Part I contact supers preserve their committed facing, finite range and vertical reach (0.951083ms)
+✔ fighter opponent Part I contact supers preserve their committed facing, finite range and vertical reach (0.886145ms)
+✔ Chaos form accepts only its exact actor, source, special slot and living buff clock (0.506863ms)
+✔ Chaos finale projects four attack poses only inside its finite interval without applying a buff or changing any clock (0.594015ms)
+✔ all8 native Wave4 identities require their exact source and preserve canvas, clocks, HP and deterministic paused geometry (6.522598ms)
+✔ Rasengan and Chidori stay attached to the hand while Bunshin smoke and Chaos aura stay beside their own actor (0.831913ms)
+✔ Kamui distortion stays on the target with no eye-to-target ray; Piccolo keeps a finite beam and spiral (0.617981ms)
+✔ Chaos native body player uses its actual four state rows in all3 modes, with pure finite finale projection (7.733502ms)
+✔ Chaos native body opponent uses its actual four state rows in all3 modes, with pure finite finale projection (4.246027ms)
+✔ Melee player Wave4 target visuals use the actual foe and retain their confirmed impact after movement or death (7.831991ms)
+✔ Melee opponent Wave4 target visuals use the actual foe and retain their confirmed impact after movement or death (5.951837ms)
+✔ RPG player Chaos uses its stable real actor clock through idle and fresh support projections without mutating combat state (2.351452ms)
+✔ RPG opponent Chaos uses its stable real actor clock through idle and fresh support projections without mutating combat state (2.267376ms)
+✔ redxiii_ff7 Wave4 base correction has16 native transparent poses and draws all4 states/columns in both facings (94.167243ms)
+✔ vincent_ff7 Wave4 base correction has16 native transparent poses and draws all4 states/columns in both facings (70.540003ms)
+✔ Melee player civilian basic attack performs its authored support and cannot punch an opponent (7772.294915ms)
+✔ Melee player basic firearm reaches a distant target within its actual range once (2.095377ms)
+✔ Melee player medical secondary heals an ally and shares the legacy command path (1.444754ms)
+✔ Melee enemy civilian basic attack performs its authored support and cannot punch an opponent (0.942825ms)
+✔ Melee enemy basic firearm reaches a distant target within its actual range once (0.908403ms)
+✔ Melee enemy medical secondary heals an ally and shares the legacy command path (0.779218ms)
+✔ Melee authored support snapshots its action and interruption prevents a late heal (0.818827ms)
+✔ RPG authored basic melee approaches the real target and follows its declared impact tick (4.846906ms)
+✔ RPG custom healing defense keeps healing semantics and does not damage opponents (0.70808ms)
+✔ Melee player Mei Zhen's ancestor guides allies without attacking as a soldier (1.117749ms)
+✔ Melee player Leo's secondary and super heal others while excluding the wounded caster (1.759599ms)
+✔ RPG player Leo cannot select or heal himself with his secondary or super (1.994344ms)
+✔ Melee enemy Mei Zhen's ancestor guides allies without attacking as a soldier (0.903195ms)
+✔ Melee enemy Leo's secondary and super heal others while excluding the wounded caster (1.094234ms)
+✔ RPG enemy Leo cannot select or heal himself with his secondary or super (0.900351ms)
+✔ RPG player left edge records Snake/Raiden visual facing after physical approach (7860.918246ms)
+✔ RPG player right edge records Snake/Raiden visual facing after physical approach (1.424725ms)
+✔ RPG enemy left edge records Snake/Raiden visual facing after physical approach (1.448521ms)
+✔ RPG enemy right edge records Snake/Raiden visual facing after physical approach (1.081716ms)
+✔ Fighter player Snake/Raiden contact marks require the actual92px collision, alive target and committed facing (16.511561ms)
+✔ Fighter cpu Snake/Raiden contact marks require the actual92px collision, alive target and committed facing (8.156811ms)
+✔ Fighter player confirmed Snake/Raiden hits lock their contact point across knockback, death and repeated paused draws (7.534089ms)
+✔ Fighter cpu confirmed Snake/Raiden hits lock their contact point across knockback, death and repeated paused draws (4.46826ms)
+✔ Fighter player Lady/Parasoul keep actual projectile travel, frozen clocks and exactly one accepted impact (8.505288ms)
+✔ Fighter cpu Lady/Parasoul keep actual projectile travel, frozen clocks and exactly one accepted impact (4.920144ms)
+✖ Wave6 controlled contact keeps miss trails while previous native visual families ignore the new optional contract (13.770023ms)
+✔ Smash Snake/Raiden perfect shields keep their own feedback and reject offensive contact marks in both camps (7.9785ms)
+✔ Smash misses cannot acquire a contact when a target crosses back into range after the resolved hit (6.629009ms)
+✔ Smash accepted Snake/Raiden contacts keep the original hit point through movement and death in both camps (17.909016ms)
+✔ Smash Sonic retains only speed trails after a miss and repeated zero-delta draws keep gameplay frozen (3.908163ms)
+✔ the independent baseline preserves 4252 exact original slots and the original shared animations (7687.036006ms)
+✔ the authored union separates1365 complete kits,72 original partial records and one lore correction (52.644735ms)
+✔ Mei Zhen’s ancestor message remains nonviolent in both the secondary and entity descriptors (5.202806ms)
+✔ Mei Zhen’s ordinary and cinematic ancestor support changes buffs without harming either team (9.5492ms)
+✔ ability runtime copies preserve sourceHeroId and isolate unrelated universes and caller mutation (23.10731ms)
+✔ medical abilities preserve who and what their source technique can actually help (0.36156ms)
+✔ 45 engine states select bounded coarse poses and declare reuse instead of dedicated animation (0.859497ms)
+✔ every character script has seven real frame-selection sequences and bounded interpolation (680.17806ms)
+✔ named finales select distinct preparation/contact poses and support retains its own visual (0.510967ms)
+✔ all28 exact entities have four sampled phases and changing choreography beyond pose labels (9.469059ms)
+✔ P2 choreography mirrors P1 geometry and keeps ally support visually distinct from explosions (1.920002ms)
+✔ scene-specific mechanisms use the concrete source scene, preserve universe and advance the draw (146.793143ms)
+✔ real player summon exposes the choreography clock, freezes on pause and hits exactly once (2.262192ms)
+✔ real enemy summon exposes the choreography clock, freezes on pause and hits exactly once (0.932109ms)
+✔ RPG native-super progress uses the simulation timer and does not replace the invocation actor (0.274217ms)
+✔ real player RPG super selects its contact bitmap on the authoritative impact tick (0.982585ms)
+✔ real enemy RPG super selects its contact bitmap on the authoritative impact tick (0.638361ms)
+✔ renderer presentationFrame overrides the actual source rectangle rather than only the label (2.049739ms)
+✔ eight exact character atlases contain256 nonempty native poses with real alpha and retained provenance hashes (835.442288ms)
+✔ dedicated atlas phase and impact frames are selected by exact identity and the real renderer (5.102714ms)
+✔ Aria has a separately sourced dagger correction with16 actual base poses and exact-universe routing (59.230917ms)
+✔ the audit distinguishes raw names, effective names, missing dedicated art and unverified fidelity (8496.771638ms)
+✔ the wave9 snapshot,117 existing native records and all eight prior45-state manifests remain immutable (8454.437086ms)
+✔ the runtime union preserves117 old records and adds39 complete32 atlases plus Janine24, without inventing missing cells (3271.420933ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (112.217977ms)
+✔ all39 new base layouts contain624 real cells and render every native cell with baseline244 and its authored row scale (1934.220523ms)
+✔ all124 prior character presentation recipes remain exactly immutable (6.931855ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (43.027038ms)
+✔ the321 stage mechanisms preserve all241 prior definitions and their exact recorded render operations (169.652562ms)
+✔ Beast Boy exposes only the eight accepted T-Rex poses and refused heroes retain declared fallbacks (1.832164ms)
+✔ all fifteen prior summon bodies stay immutable and the eight new partners resolve only their exact triplets (35.091368ms)
+✔ the forty native visual helpers are deterministic projections and never mutate combat state (24.398529ms)
+✔ neo has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (462.658305ms)
+✔ neo: all45 states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (21.422093ms)
+✔ neo keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (166.086994ms)
+✔ neo ordinary actions follow runtime impact clocks while the full super uses its separate atlas (1.001366ms)
+✔ freeman has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (369.905744ms)
+✔ freeman: all45 states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (9.687067ms)
+✔ freeman keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (119.710134ms)
+✔ freeman ordinary actions follow runtime impact clocks while the full super uses its separate atlas (0.621621ms)
+✔ all forty source versions, real equipment and support mechanics agree with their explicit source definitions (7.196536ms)
+✔ Janine exposes only six accepted phases and uses declared existing-pose fallbacks for the two refused phases (4.401203ms)
+✔ neo:12 real palms and wrists remain attached to both actual ledges without mutating physics (15.032709ms)
+✔ freeman:12 real palms and wrists remain attached to both actual ledges without mutating physics (14.883854ms)
+✔ measured physical origins match actual scaled native draw rectangles on both sides, while supports and recovery stay inactive (1404.11342ms)
+✔ all99 newly retained PNGs contain2384 distinct real RGBA cells across presentations, bases,45-state sheets and partners (4963.848925ms)
+✔ real Neo and Freeman land from the last3px of a moving fall, preserve all four landing cells and keep P1/P2 velocity responsive (9.016034ms)
+
+Interrupted while running:
+
+⚠ scripts/combatFidelityWave11.test.mjs (scripts/combatFidelityWave11.test.mjs:1:1)
+✖ scripts/combatFidelityWave11.test.mjs (3165.9977ms)
+✖ scripts/combatFidelityWave12.test.mjs
+✖ scripts/combatFidelityWave2.test.mjs
+✖ scripts/combatFidelityWave3.test.mjs
+✖ scripts/combatFidelityWave4.test.mjs
+✖ scripts/combatFidelityWave5.test.mjs
+✖ scripts/combatFidelityWave6.test.mjs
+✖ scripts/combatFidelityWave7.test.mjs
+✖ scripts/combatFidelityWave8.test.mjs
+✖ scripts/combatFidelityWave9.test.mjs
+✖ scripts/ff8SuperRuntimeWave2.test.mjs
+✖ scripts/fighterAuthoredActions.test.mjs
+✖ scripts/fighterProjectileVisualWave5.test.mjs
+✖ scripts/meleeSupportCpuWave6.test.mjs
+✖ scripts/nativeSuperRuntimeWave10.test.mjs
+✖ scripts/nativeSuperRuntimeWave11.test.mjs
+✖ scripts/nativeSuperRuntimeWave5.test.mjs
+✖ scripts/nativeSuperRuntimeWave6.test.mjs
+✖ scripts/nativeSuperRuntimeWave7.test.mjs
+✖ scripts/nativeSuperRuntimeWave8.test.mjs
+✖ scripts/nativeSuperRuntimeWave9.test.mjs
+✖ scripts/partySuperRuntimeWave3.test.mjs
+✖ scripts/presentationStatureWave5.test.mjs
+✖ scripts/summonAnimationWave10.test.mjs
+✖ scripts/summonAnimationWave11.test.mjs
+✖ scripts/summonAnimationWave6.test.mjs
+✖ scripts/summonAnimationWave7.test.mjs
+✖ scripts/summonAnimationWave8.test.mjs
+✖ scripts/summonAnimationWave9.test.mjs
+ℹ tests 148
+ℹ suites 0
+ℹ pass 118
+ℹ fail 1
+ℹ cancelled 29
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69618.589239
+
+✖ failing tests:
+
+test at scripts/combatContactVisualWave6.test.mjs:179:1
+✖ Wave6 controlled contact keeps miss trails while previous native visual families ignore the new optional contract (13.770023ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      color: '#d3d3d3',
+  +   contactEligible: false,
+  +   contactVisual: {
+  +     confirmed: false
+  +   },
+  -   contactEligible: true,
+      delivery: 'melee',
+      effect: 'damage',
+      facing: 1,
+      family: 'native-wave12',
+      gameplayEffect: 'none',
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatContactVisualWave6.test.mjs:194:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { family: 'native-wave12', heroId: 'pyramidhead', name: 'Taille lente au Grand Couteau', kind: 'great-knife', effect: 'damage', supportive: false, delivery: 'melee', progress: 0.5, impactProgress: 0.41, release: true, releaseProgress: 0.15254237288135597, facing: 1, height: 72, range: 170, color: '#d3d3d3', ground: { x: 300, y: 350 }, motion: { x: 0, y: 0 }, origin: { x: 300, y: 317.6 }, target: { x: 400, y: 350 }, nativeMuzzleActive: false, nativeAnchor: null, contactEligible: false, contactVisual: { confirmed: false }, gameplayEffect: 'none', source1to1Verified: false },
+    expected: { family: 'native-wave12', heroId: 'pyramidhead', name: 'Taille lente au Grand Couteau', kind: 'great-knife', effect: 'damage', supportive: false, delivery: 'melee', progress: 0.5, impactProgress: 0.41, release: true, releaseProgress: 0.15254237288135597, facing: 1, height: 72, range: 170, color: '#d3d3d3', ground: { x: 300, y: 350 }, motion: { x: 0, y: 0 }, origin: { x: 300, y: 317.6 }, target: { x: 400, y: 350 }, nativeMuzzleActive: false, nativeAnchor: null, contactEligible: true, gameplayEffect: 'none', source1to1Verified: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/combatFidelityWave11.test.mjs:1:1
+✖ scripts/combatFidelityWave11.test.mjs (3165.9977ms)
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/combatFidelityWave12.test.mjs:1:1
+✖ scripts/combatFidelityWave12.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/combatFidelityWave2.test.mjs:1:1
+✖ scripts/combatFidelityWave2.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/combatFidelityWave3.test.mjs:1:1
+✖ scripts/combatFidelityWave3.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/combatFidelityWave4.test.mjs:1:1
+✖ scripts/combatFidelityWave4.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/combatFidelityWave5.test.mjs:1:1
+✖ scripts/combatFidelityWave5.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/combatFidelityWave6.test.mjs:1:1
+✖ scripts/combatFidelityWave6.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/combatFidelityWave7.test.mjs:1:1
+✖ scripts/combatFidelityWave7.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/combatFidelityWave8.test.mjs:1:1
+✖ scripts/combatFidelityWave8.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/combatFidelityWave9.test.mjs:1:1
+✖ scripts/combatFidelityWave9.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/ff8SuperRuntimeWave2.test.mjs:1:1
+✖ scripts/ff8SuperRuntimeWave2.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/fighterAuthoredActions.test.mjs:1:1
+✖ scripts/fighterAuthoredActions.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/fighterProjectileVisualWave5.test.mjs:1:1
+✖ scripts/fighterProjectileVisualWave5.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/meleeSupportCpuWave6.test.mjs:1:1
+✖ scripts/meleeSupportCpuWave6.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/nativeSuperRuntimeWave10.test.mjs:1:1
+✖ scripts/nativeSuperRuntimeWave10.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/nativeSuperRuntimeWave11.test.mjs:1:1
+✖ scripts/nativeSuperRuntimeWave11.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/nativeSuperRuntimeWave5.test.mjs:1:1
+✖ scripts/nativeSuperRuntimeWave5.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/nativeSuperRuntimeWave6.test.mjs:1:1
+✖ scripts/nativeSuperRuntimeWave6.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/nativeSuperRuntimeWave7.test.mjs:1:1
+✖ scripts/nativeSuperRuntimeWave7.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/nativeSuperRuntimeWave8.test.mjs:1:1
+✖ scripts/nativeSuperRuntimeWave8.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/nativeSuperRuntimeWave9.test.mjs:1:1
+✖ scripts/nativeSuperRuntimeWave9.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/partySuperRuntimeWave3.test.mjs:1:1
+✖ scripts/partySuperRuntimeWave3.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/presentationStatureWave5.test.mjs:1:1
+✖ scripts/presentationStatureWave5.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/summonAnimationWave10.test.mjs:1:1
+✖ scripts/summonAnimationWave10.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/summonAnimationWave11.test.mjs:1:1
+✖ scripts/summonAnimationWave11.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/summonAnimationWave6.test.mjs:1:1
+✖ scripts/summonAnimationWave6.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/summonAnimationWave7.test.mjs:1:1
+✖ scripts/summonAnimationWave7.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/summonAnimationWave8.test.mjs:1:1
+✖ scripts/summonAnimationWave8.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at scripts/summonAnimationWave9.test.mjs:1:1
+✖ scripts/summonAnimationWave9.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'

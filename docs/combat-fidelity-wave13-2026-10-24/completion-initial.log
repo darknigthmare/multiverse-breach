@@ -1,0 +1,113 @@
+✔ completion covers every exact identity in the independent 1089-character baseline (6.186226ms)
+✔ the 191 additional decisive-action identities are tracked separately and fill the remaining catalog exactly (1.813898ms)
+✖ every completed action carries an explicit identity basis and source scene (2.424269ms)
+✖ support completion never carries damage and offensive completion has positive damage (0.674578ms)
+✖ independent character roles retain beneficial semantics after their generic super is replaced (0.339423ms)
+✔ completed startup, impact, range and resource values are finite and ordered (24.617563ms)
+✔ resolved completion profiles cannot mutate the source hero, catalog, or another resolution (63.868576ms)
+✔ battle-prefixed identities preserve the exact source ID while foreign universes cannot borrow completion (67.024384ms)
+✔ all 1911 runtime heroes have a non-generic super, including outside the 1089 baseline (18.355633ms)
+✔ the 28 entity sheets cover the exact 82 caller profiles from the independent missing-assets baseline (0.76888ms)
+✖ the82 historical entity bindings retain their assets while ten explicit W10 callers select real partners (14.453484ms)
+✔ the 28 entity PNGs contain four distinct visible poses with real alpha and uncropped margins (185.067393ms)
+✔ normalized entity sheets retain byte-verifiable archived native sources and honest provenance (52.506039ms)
+✔ an unrelated universe, entity or action never borrows an existing entity bitmap (0.680056ms)
+✔ entity poses follow simulation arrival, preparation, one impact and return without advancing during pause (4.221561ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 11
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 945.460314
+
+✖ failing tests:
+
+test at scripts/combatCompletion.test.mjs:1104:1
+✖ every completed action carries an explicit identity basis and source scene (2.424269ms)
+  AssertionError [ERR_ASSERTION]: dallas_alien
+  + actual - expected
+  
+  + 'Alien (1979), Captain Arthur Dallas before entering the ventilation ducts'
+  - 'Alien'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatCompletion.test.mjs:1136:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Alien (1979), Captain Arthur Dallas before entering the ventilation ducts',
+    expected: 'Alien',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/combatCompletion.test.mjs:1149:1
+✖ support completion never carries damage and offensive completion has positive damage (0.674578ms)
+  AssertionError [ERR_ASSERTION]: dallas_alien
+  
+  'guard' !== 'damage'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatCompletion.test.mjs:1163:41)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'guard',
+    expected: 'damage',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/combatCompletion.test.mjs:1189:1
+✖ independent character roles retain beneficial semantics after their generic super is replaced (0.339423ms)
+  AssertionError [ERR_ASSERTION]: granny_dw
+  
+  'guard' !== 'cleanse'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatCompletion.test.mjs:1203:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'guard',
+    expected: 'cleanse',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/combatCompletion.test.mjs:1305:1
+✖ the82 historical entity bindings retain their assets while ten explicit W10 callers select real partners (14.453484ms)
+  AssertionError [ERR_ASSERTION]: chell
+  + actual - expected
+  
+  + 'Atlas'
+  - 'Turret Summon'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatCompletion.test.mjs:1332:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Atlas',
+    expected: 'Turret Summon',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

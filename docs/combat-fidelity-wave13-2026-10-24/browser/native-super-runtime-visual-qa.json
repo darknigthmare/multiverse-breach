@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-25T06:27:25.610Z",
+  "reviewer": "Codex runtime_checks",
+  "result": "passed-with-declared-historical-fallbacks",
+  "scope": "Inspection visuelle de toutes les lignes des trois grilles finales et rapprochement avec les assertions des vrais moteurs.",
+  "runtimeReport": {
+    "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-super-runtime.json",
+    "sha256": "043c526a88687d792a073f0e670a46380d049926a2eb69a2ce1221489e2bb78d",
+    "phase": "final",
+    "partial": false,
+    "productionFreezeAcknowledged": true,
+    "productionFreezePath": "docs/combat-fidelity-wave13-2026-10-24/production-freeze.json",
+    "productionFreezeSha256": "8154f653bc99249cd928dc9ccbc0d95b5e8b534ee8bf5e3181b30df8aaae9a0e",
+    "startedAt": "2026-10-25T06:25:30.544Z",
+    "finishedAt": "2026-10-25T06:25:37.224Z",
+    "allBrowserWindowsClosed": true,
+    "browserClosedAt": "2026-10-25T06:25:37.076Z"
+  },
+  "coverage": {
+    "identities": 40,
+    "deliveredNativeBodies": 35,
+    "historicalBodies": 5,
+    "authoritativeFixtures": 240,
+    "tacticsFixtures": 80,
+    "physicalProjectileFixtures": 20,
+    "bodyKinds": {
+      "native32": 210,
+      "legacy-fallback": 30
+    },
+    "tacticsBodyKinds": {
+      "native32": 70,
+      "legacy-fallback": 10
+    }
+  },
+  "reviewedImages": [
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-super-runtime-grid.png",
+      "sha256": "ecad474b2162201d800fa66fc10a98f22fbeb6a711c585b069268c31563b83dd",
+      "width": 1800,
+      "height": 10400,
+      "rows": 40,
+      "columns": 6,
+      "inspectedWith": "view_image",
+      "reviewedPartitions": [
+        {
+          "firstRow": 1,
+          "lastRow": 8
+        },
+        {
+          "firstRow": 9,
+          "lastRow": 16
+        },
+        {
+          "firstRow": 17,
+          "lastRow": 24
+        },
+        {
+          "firstRow": 25,
+          "lastRow": 32
+        },
+        {
+          "firstRow": 33,
+          "lastRow": 40
+        }
+      ],
+      "observations": [
+        "Les40 lignes et les6 colonnes RPG/Melee/Fighter des deux camps ont été vues en cinq découpes contiguës.",
+        "Les corps livrés sont visibles et orientés vers leur camp opposé; aucune cellule de corps manquante ni débordement de sprite sur une autre cellule observés.",
+        "Les cinq lignes historiques gardent leurs pixels antérieurs et restent distinctes des35 corps natifs W13."
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-super-projectile-grid.png",
+      "sha256": "710639cfc4e301e06ddcfdaba2b5433436f8dba68b68c606680aa9012e2d4e6d",
+      "width": 1800,
+      "height": 2600,
+      "rows": 10,
+      "columns": 6,
+      "inspectedWith": "view_image",
+      "reviewedPartitions": [
+        {
+          "firstRow": 1,
+          "lastRow": 8
+        },
+        {
+          "firstRow": 9,
+          "lastRow": 10
+        }
+      ],
+      "observations": [
+        "Les10 lignes et les6 colonnes lancement/vol/impact des deux camps ont été vues en deux découpes contiguës.",
+        "Les tirs apparaissent au niveau des armes lors du lancement; le vol est un trait fini dans sa propre cellule et le contact un anneau au point stocké.",
+        "Les corps en récupération restent visibles dans les cellules impact; aucune traînée continue depuis une arme abaissée observée."
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/native-super-tactics-grid.png",
+      "sha256": "02f75327fe0a3ee3f2b1b21a26e4d17ae9c420f1c93e976eb511352fe72589e3",
+      "width": 2400,
+      "height": 10400,
+      "rows": 40,
+      "columns": 8,
+      "inspectedWith": "view_image",
+      "reviewedPartitions": [
+        {
+          "firstRow": 1,
+          "lastRow": 8
+        },
+        {
+          "firstRow": 9,
+          "lastRow": 16
+        },
+        {
+          "firstRow": 17,
+          "lastRow": 24
+        },
+        {
+          "firstRow": 25,
+          "lastRow": 32
+        },
+        {
+          "firstRow": 33,
+          "lastRow": 40
+        }
+      ],
+      "observations": [
+        "Les40 lignes et les8 colonnes t0/t10/t20/t32 des deux camps ont été vues en cinq découpes contiguës.",
+        "Les poses restent dans leurs cellules, les orientations des deux camps sont opposées et les quatre échantillons de phase sont visibles.",
+        "Les indicateurs Tactics de camp accompagnent les corps; aucune disparition inattendue ni mélange de ligne observés."
+      ]
+    }
+  ],
+  "checks": {
+    "allGridRowsActuallyViewed": true,
+    "unexpectedMissingBodyObserved": false,
+    "unexpectedCellClippingObserved": false,
+    "oppositeCampFacingObserved": true,
+    "physicalLaunchFlightImpactObserved": true,
+    "tacticsFourSamplesObserved": true,
+    "renderReadOnlyAssertionsPassed": true,
+    "productionHashBarrierPassed": true
+  },
+  "historicalFallbacks": [
+    {
+      "id": "vader",
+      "sheet": "/sprites/generated/heroes/star-wars/vader.png",
+      "sha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464",
+      "deliveredNativeArtwork": false
+    },
+    {
+      "id": "obi_wan",
+      "sheet": "/sprites/generated/heroes/star-wars/obi-wan.png",
+      "sha256": "5e2dcd725a8ebbcab1a24715ced90885016ab025b8ec7dcd119774475b0a12d3",
+      "deliveredNativeArtwork": false
+    },
+    {
+      "id": "yoda",
+      "sheet": "/sprites/generated/heroes/star-wars/yoda.png",
+      "sha256": "44b2b09fe1ca526bd2e9f24efc377f0e4e97984a867d5d6371d4e1baaa74bfc5",
+      "deliveredNativeArtwork": false
+    },
+    {
+      "id": "darth_maul",
+      "sheet": "/sprites/generated/heroes/star-wars/darth-maul.png",
+      "sha256": "88ad49c11b99a5a5322252092e63029668dce6378be143db7b5d9b4e5b67dccd",
+      "deliveredNativeArtwork": false
+    },
+    {
+      "id": "ahsoka_adult",
+      "sheet": "/sprites/generated/heroes/star-wars/ahsoka-adult.png",
+      "sha256": "33447986f3ed85a2b987b80d79d4f4494202e41f6c0faff3499d2584f1e714c8",
+      "deliveredNativeArtwork": false
+    }
+  ],
+  "limitations": [
+    "Les cinq corps historiques ne constituent pas de nouveaux artworks ni des animations natives W13; leurs sources historiques sont conservées avec leur SHA.",
+    "Cette inspection valide les grilles de moteurs contrôlés; elle ne revendique pas de parcours clavier dans les interfaces ni de fidélité source1:1."
+  ],
+  "source1to1Verified": false,
+  "runtimeErrors": [],
+  "networkNoise": {
+    "failedRequests": [
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+        "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      }
+    ],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "impact": "Une feuille Google Fonts externe a échoué via le tunnel; toutes les assertions runtime et tous les PNG locaux ont passé."
+  },
+  "validations": [
+    {
+      "command": "node --test scripts/nativeSuperRuntimeWave7.test.mjs",
+      "passed": 39,
+      "failed": 0,
+      "skipped": 0,
+      "realSeconds": 11.179,
+      "durationMs": 11138.804009
+    },
+    {
+      "command": "node --test scripts/combatFidelityWave13Runtime.test.mjs",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "realSeconds": 11.205,
+      "durationMs": 11164.880141
+    },
+    {
+      "command": "BROWSER_BASE_URL=http://127.0.0.1:5188 W13_RUNTIME_PHASE=final W13_PRODUCTION_FROZEN=1 node docs/combat-fidelity-wave13-2026-10-24/browser/native-super-runtime.browser.mjs",
+      "passed": true,
+      "realSeconds": 6.744
+    }
+  ]
+}

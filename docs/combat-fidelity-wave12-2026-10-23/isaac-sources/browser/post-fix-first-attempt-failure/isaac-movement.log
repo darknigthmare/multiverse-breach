@@ -1,0 +1,25 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: jumpRise draws four poses
++ actual - expected
+
++ []
+- [
+-   0,
+-   1,
+-   2,
+-   3
+- ]
+
+    at file:///workspace/multiverse-breach/docs/combat-fidelity-wave12-2026-10-23/isaac-sources/browser/isaac-movement-browser.mjs:93:54 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [],
+  expected: [ 0, 1, 2, 3 ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

@@ -1,0 +1,5016 @@
+{
+  "schemaVersion": 1,
+  "wave": 14,
+  "date": "2026-10-25",
+  "createdAt": "2026-10-25T08:02:32.556Z",
+  "parts": {
+    "A": [
+      "aragorn_lotr",
+      "gandalf_lotr",
+      "legolas_lotr",
+      "gimli_lotr",
+      "dark_souls_chosen_undead",
+      "dark_souls_solaire",
+      "dark_souls_siegmeyer",
+      "space_marine_titus",
+      "space_marine_sidonus",
+      "space_marine_leandros",
+      "legacy_of_kain_kain",
+      "legacy_of_kain_raziel",
+      "legacy_of_kain_vorador",
+      "ardyn_ff15",
+      "cor_ff15",
+      "horizon_zero_dawn_aloy",
+      "horizon_zero_dawn_varl",
+      "horizon_zero_dawn_erend",
+      "lara_croft_tr",
+      "jonah_tr"
+    ],
+    "B": [
+      "noble_six",
+      "buck_odst",
+      "kelly_087",
+      "linda_058",
+      "ashley_williams",
+      "mordin",
+      "anya_stroud",
+      "carmine_cog",
+      "kait_diaz",
+      "ezio_auditore_ac",
+      "desmond_miles_ac",
+      "kassandra_ac",
+      "no_mans_sky_traveller",
+      "no_mans_sky_nada",
+      "no_mans_sky_polo",
+      "deus_ex_adam_jensen",
+      "deus_ex_faridah_malik",
+      "deus_ex_alex_vega",
+      "boone_fnv",
+      "courier_six"
+    ]
+  },
+  "heroes": [
+    {
+      "hero": {
+        "id": "aragorn_lotr",
+        "name": "Aragorn",
+        "cat": "slayer",
+        "color": "#e06b2f",
+        "weapon": "slash",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "universe": "The Lord of the Rings",
+        "category": "slayer",
+        "primaryColor": "#e06b2f",
+        "secondaryColor": "#e06b2f",
+        "weaponType": "slash",
+        "weaponColor": "#e06b2f",
+        "simple": {
+          "name": "Aragorn Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Aragorn Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Aragorn Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Aragorn Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#e06b2f"
+        }
+      },
+      "part": "A",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Lord of the Rings — Peter Jackson film trilogy",
+        "sourceReference": "Le Retour du Roi donne Andúril à Aragorn ; les trois gestes décrivent son escrime et non une attaque autonome de l’Armée des Morts.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/aragorn_lotr",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Taille d’Andúril",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Enchaînement d’Aragorn à Andúril",
+          "type": "melee",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Parade du rôdeur devenu roi",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Lord of the Rings — Peter Jackson film trilogy",
+        "sourceReference": "The Return of the King: Aragorn fights with the reforged sword Andúril; this action keeps his physical swordsmanship.",
+        "identityBasis": "canonical-role",
+        "special": {
+          "name": "Taille d’Andúril",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#a9b3ac",
+          "animationDuration": 1.25,
+          "hitAt": 0.5,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "melee",
+            "range": 185
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/the-lord-of-the-rings/aragorn-lotr.png",
+      "referenceSha256": "beeb694c1051f64fba030eabf2ee5bc9180eccee376ee805abc79374a3827429",
+      "source": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Fellowship of the Ring (2001), Strider before Amon Hen",
+        "appearance": "Dark ranger cloak, weathered brown leather coat, dark hair and short beard, ranger longsword; no Anduril or Army of the Dead",
+        "weapon": "Ranger longsword",
+        "actionName": "Coupe de l’épée de rôdeur d’Aragorn",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Ready sword, physical controlled forward cut, recover to guard; no magic",
+        "bodyHeight": 190,
+        "sourceReference": "https://tolkiengateway.net/wiki/Aragorn",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "gandalf_lotr",
+        "name": "Gandalf",
+        "cat": "hacker",
+        "color": "#ff8e52",
+        "weapon": "laser",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "universe": "The Lord of the Rings",
+        "category": "hacker",
+        "primaryColor": "#ff8e52",
+        "secondaryColor": "#ff8e52",
+        "weaponType": "laser",
+        "weaponColor": "#ff8e52",
+        "simple": {
+          "name": "Gandalf Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Gandalf Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Gandalf Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Gandalf Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#ff8e52"
+        }
+      },
+      "part": "A",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Lord of the Rings — Peter Jackson film trilogy",
+        "sourceReference": "La Communauté de l’Anneau montre Gandalf avec Glamdring et son bâton à Khazad-dûm ; la défense adapte la protection du passage sans inventer une pluie de boules de feu.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/gandalf_lotr",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Glamdring de Gandalf",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Tenir le passage avec le bâton",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.3
+          }
+        },
+        "defense": {
+          "name": "Garde de Gandalf au pont",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.6
+          },
+          "reduce": 0.6,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Lord of the Rings — Peter Jackson film trilogy",
+        "sourceReference": "The Fellowship of the Ring: Gandalf bars the Balrog at the bridge of Khazad-dûm with staff and sword; the adaptation is a protective stand.",
+        "identityBasis": "canonical-role",
+        "special": {
+          "name": "Vous ne passerez pas",
+          "type": "guard",
+          "dmg": 0,
+          "color": "#d7ded8",
+          "animationDuration": 1.35,
+          "hitAt": 0.55,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 1200,
+            "duration": 5,
+            "buffMultiplier": 1.25,
+            "reduce": 0.72,
+            "healRatio": 0,
+            "cleanses": false
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/the-lord-of-the-rings/gandalf-lotr.png",
+      "referenceSha256": "0ffee4eb26d5b1d2319354f9754e80810847410f72e173fc42e51f03a132f83a",
+      "source": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Fellowship of the Ring (2001), Gandalf the Grey",
+        "appearance": "Grey robe, pointed grey hat, long grey beard, wooden staff; Glamdring sheathed when staff is held; not Gandalf the White",
+        "weapon": "Wooden staff",
+        "actionName": "Garde du bâton de Gandalf le Gris",
+        "effect": "guard",
+        "delivery": "support",
+        "pose": "Raise wooden staff and brace defensively, soft local white staff light only; no bolt or damage",
+        "bodyHeight": 190,
+        "sourceReference": "https://tolkiengateway.net/wiki/Gandalf",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "legolas_lotr",
+        "name": "Legolas",
+        "cat": "tactical",
+        "color": "#bd480c",
+        "weapon": "gun",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "universe": "The Lord of the Rings",
+        "category": "tactical",
+        "primaryColor": "#bd480c",
+        "secondaryColor": "#bd480c",
+        "weaponType": "gun",
+        "weaponColor": "#bd480c",
+        "simple": {
+          "name": "Legolas Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Legolas Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Legolas Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Legolas Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#bd480c"
+        }
+      },
+      "part": "A",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Lord of the Rings — Peter Jackson film trilogy",
+        "sourceReference": "Legolas emploie l’arc et ses réflexes d’archer dans les films du Seigneur des Anneaux ; la décoche reste physique.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/legolas_lotr",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Flèche de Legolas",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Décoche rapide de l’archer elfe",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Écart agile de Legolas",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Lord of the Rings — Peter Jackson film trilogy",
+        "sourceReference": "Legolas’s rapid bow shots are repeatedly shown in the film trilogy; a limited volley preserves his elven archery.",
+        "identityBasis": "canonical-role",
+        "special": {
+          "name": "Volée d’archer de la Forêt Noire",
+          "type": "projectile",
+          "dmg": 4.2,
+          "color": "#b7cc98",
+          "animationDuration": 1.25,
+          "hitAt": 0.5,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "multi",
+            "delivery": "projectile",
+            "range": 900,
+            "maxTargets": 3
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/the-lord-of-the-rings/legolas-lotr.png",
+      "referenceSha256": "30d1180d4a0afb4eb76d31dca26df93a5aa3953d583b329df758f0ce905f5cce",
+      "source": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Fellowship of the Ring (2001), Lothlorien departure",
+        "appearance": "Long blond hair, green-brown elven tunic, quiver and Galadhrim longbow, no modern equipment",
+        "weapon": "Galadhrim longbow",
+        "actionName": "Flèche du long arc de Legolas",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Nock one physical arrow, draw bow, release arrow forward, recover",
+        "bodyHeight": 190,
+        "sourceReference": "https://tolkiengateway.net/wiki/Legolas",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "gimli_lotr",
+        "name": "Gimli",
+        "cat": "marine",
+        "color": "#bd480c",
+        "weapon": "gun",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "universe": "The Lord of the Rings",
+        "category": "marine",
+        "primaryColor": "#bd480c",
+        "secondaryColor": "#bd480c",
+        "weaponType": "gun",
+        "weaponColor": "#bd480c",
+        "simple": {
+          "name": "Gimli Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Gimli Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Gimli Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Gimli Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#bd480c"
+        }
+      },
+      "part": "A",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Lord of the Rings — Peter Jackson film trilogy",
+        "sourceReference": "Gimli combat avec ses haches naines dans la trilogie ; la garde est matérielle et aucun pouvoir runique non montré n’est ajouté.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/gimli_lotr",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Hache de Gimli",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Frappe appuyée de la hache naine",
+          "type": "melee",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Parade à la hache de Gimli",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.55
+          },
+          "reduce": 0.55,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Lord of the Rings — Peter Jackson film trilogy",
+        "sourceReference": "Gimli fights with dwarven axes at close range, including the defense of Balin’s tomb.",
+        "identityBasis": "canonical-role",
+        "special": {
+          "name": "Coup de hache de la salle de Mazarbul",
+          "type": "melee",
+          "dmg": 4.4,
+          "color": "#c79c6b",
+          "animationDuration": 1.25,
+          "hitAt": 0.5,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "area",
+            "delivery": "melee",
+            "range": 165,
+            "areaRadius": 90
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/the-lord-of-the-rings/gimli-lotr.png",
+      "referenceSha256": "dee97db72d95a40a697c37bb3988fe9a853ad6e9712b3bb9f246127c9ed9f1fb",
+      "source": {
+        "universe": "The Lord of the Rings",
+        "sourceWork": "The Fellowship of the Ring (2001)",
+        "appearance": "Adult dwarf, long reddish-brown beard, engraved dwarf helmet and mail, stout build, physical axe; visibly shorter than humans",
+        "weapon": "Dwarven axe",
+        "actionName": "Taille de la hache de Gimli",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Brace two-handed axe, physical forward axe cut, recover; no elemental wave",
+        "bodyHeight": 150,
+        "sourceReference": "https://tolkiengateway.net/wiki/Gimli",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://en.bandainamcoent.eu/dark-souls/dark-souls",
+        "visualAnchor": "Chosen Undead, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.",
+        "canonStatus": "canon protagonist or allied avatar",
+        "lore": {
+          "fr": "Chosen Undead rejoint la brèche selon son rôle canonique.",
+          "en": "Chosen Undead enters the breach in the canonical role."
+        },
+        "output": "/sprites/generated/heroes/dark-souls/dark-souls-chosen-undead.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG view. Chosen Undead. Preserve: Chosen Undead, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.",
+        "weapon": "Chosen Undead signature action",
+        "weaponType": "improvised",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Chosen Undead signature action"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Chosen Undead signature technique"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Chosen Undead defensive action"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Chosen Undead decisive action"
+        },
+        "id": "dark_souls_chosen_undead",
+        "name": "Chosen Undead",
+        "cat": "tactical",
+        "color": "#61d8ff",
+        "universe": "Dark Souls",
+        "category": "tactical",
+        "primaryColor": "#61d8ff",
+        "secondaryColor": "#61d8ff",
+        "weaponColor": "#61d8ff"
+      },
+      "part": "A",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Dark Souls",
+        "sourceWork": "Dark Souls",
+        "sourceReference": "Dark Souls, premier jeu : le Mort-vivant élu récupère sa vie avec la fiole d'Estus reçue à l'Asile ; soin personnel et non explosion universelle. Base/secondary/defense: Épée, bouclier et Estus du premier Dark Souls ; soin de jeu adapté.",
+        "sourceUrl": "https://en.bandainamcoent.eu/dark-souls/dark-souls",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Taille de l’épée du Mort-vivant élu",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 8,
+          "name": "Gorgée d’Estus du Mort-vivant élu",
+          "type": "heal",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "heal",
+            "delivery": "support",
+            "shape": "single",
+            "range": 760,
+            "targetSide": "self",
+            "healRatio": 0.15
+          }
+        },
+        "defense": {
+          "name": "Parade au bouclier du Mort-vivant élu",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Dark Souls",
+        "sourceWork": "Dark Souls",
+        "sourceUrl": "https://en.bandainamcoent.eu/dark-souls/dark-souls",
+        "sourceReference": "Dark Souls, premier jeu : le Mort-vivant élu récupère sa vie avec la fiole d'Estus reçue à l'Asile ; soin personnel et non explosion universelle.",
+        "identityBasis": "canonical-technique",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Fiole d'Estus du Mort-vivant élu",
+          "type": "heal",
+          "dmg": 0,
+          "color": "#61d8ff",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "heal",
+            "targetSide": "self",
+            "shape": "single",
+            "delivery": "support",
+            "range": 1,
+            "healRatio": 0.4
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dark-souls/dark-souls-chosen-undead.png",
+      "referenceSha256": "148176f4c01a6ba74a40e6acb4aa51e692d1cc334d9a111afce7aa7bfdd63e6e",
+      "source": {
+        "universe": "Dark Souls",
+        "sourceWork": "Dark Souls (2011), adult playable Elite Knight loadout",
+        "appearance": "Opaque Elite Knight helmet, blue surcoat, plate and chainmail, longsword and heater shield; chosen player equipment, not a fixed canonical face",
+        "weapon": "Longsword and heater shield",
+        "actionName": "Taille de l’épée du Chevalier d’élite",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Shield ready, short forward longsword cut, controlled recovery; no invented spell",
+        "bodyHeight": 190,
+        "sourceReference": "https://darksouls.wikidot.com/elite-knight-set",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://en.bandainamcoent.eu/dark-souls/dark-souls",
+        "visualAnchor": "Solaire, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.",
+        "canonStatus": "canon protagonist or allied avatar",
+        "lore": {
+          "fr": "Solaire rejoint la brèche selon son rôle canonique.",
+          "en": "Solaire enters the breach in the canonical role."
+        },
+        "output": "/sprites/generated/heroes/dark-souls/dark-souls-solaire.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG view. Solaire. Preserve: Solaire, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.",
+        "weapon": "Solaire signature action",
+        "weaponType": "improvised",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Solaire signature action"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Solaire signature technique"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Solaire defensive action"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Solaire decisive action"
+        },
+        "id": "dark_souls_solaire",
+        "name": "Solaire",
+        "cat": "tactical",
+        "color": "#84fbff",
+        "universe": "Dark Souls",
+        "category": "tactical",
+        "primaryColor": "#84fbff",
+        "secondaryColor": "#84fbff",
+        "weaponColor": "#84fbff"
+      },
+      "part": "A",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Dark Souls",
+        "sourceWork": "Dark Souls",
+        "sourceReference": "Dark Souls, premier jeu : Solaire d'Astora utilise les miracles de Lance de foudre pendant ses invocations alliées. Base/secondary/defense: Épée, miracle de foudre et Sunlight Shield du premier jeu.",
+        "sourceUrl": "https://en.bandainamcoent.eu/dark-souls/dark-souls",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Estoc de la Sunlight Straight Sword",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Lance de foudre d’Astora",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Bouclier solaire de Solaire",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Dark Souls",
+        "sourceWork": "Dark Souls",
+        "sourceUrl": "https://en.bandainamcoent.eu/dark-souls/dark-souls",
+        "sourceReference": "Dark Souls, premier jeu : Solaire d'Astora utilise les miracles de Lance de foudre pendant ses invocations alliées.",
+        "identityBasis": "canonical-technique",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Lance de foudre de Solaire",
+          "type": "projectile",
+          "dmg": 3.1,
+          "color": "#ffd967",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "projectile",
+            "range": 640
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dark-souls/dark-souls-solaire.png",
+      "referenceSha256": "661395e4b4fea39ac845bffbf3d7a0d2f0599b4680f018dca1e823e82d01d2d2",
+      "source": {
+        "universe": "Dark Souls",
+        "sourceWork": "Dark Souls (2011), Solaire of Astora",
+        "appearance": "Adult knight, closed cylindrical helmet with red feather, white sun-emblem surcoat, chainmail, straight sword sheathed and round sun shield",
+        "weapon": "Sun shield",
+        "actionName": "Garde du bouclier solaire de Solaire",
+        "effect": "guard",
+        "delivery": "support",
+        "pose": "Bring actual sun shield forward into a defensive guard; no ranged sun beam or attack",
+        "bodyHeight": 190,
+        "sourceReference": "https://darksouls.wikidot.com/solaire-of-astora",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://en.bandainamcoent.eu/dark-souls/dark-souls",
+        "visualAnchor": "Siegmeyer, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.",
+        "canonStatus": "canon protagonist or allied avatar",
+        "lore": {
+          "fr": "Siegmeyer rejoint la brèche selon son rôle canonique.",
+          "en": "Siegmeyer enters the breach in the canonical role."
+        },
+        "output": "/sprites/generated/heroes/dark-souls/dark-souls-siegmeyer.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG view. Siegmeyer. Preserve: Siegmeyer, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.",
+        "weapon": "Siegmeyer signature action",
+        "weaponType": "improvised",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Siegmeyer signature action"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Siegmeyer signature technique"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Siegmeyer defensive action"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Siegmeyer decisive action"
+        },
+        "id": "dark_souls_siegmeyer",
+        "name": "Siegmeyer",
+        "cat": "tactical",
+        "color": "#3eb5dc",
+        "universe": "Dark Souls",
+        "category": "tactical",
+        "primaryColor": "#3eb5dc",
+        "secondaryColor": "#3eb5dc",
+        "weaponColor": "#3eb5dc"
+      },
+      "part": "A",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Dark Souls",
+        "sourceWork": "Dark Souls",
+        "sourceReference": "Dark Souls, premier jeu : Siegmeyer de Catarina porte et utilise une Zweihänder ; attaque de chevalier fondée sur son équipement. Base/secondary/defense: Zweihänder et Pierce Shield de Siegmeyer.",
+        "sourceUrl": "https://en.bandainamcoent.eu/dark-souls/dark-souls",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Taille de la Zweihänder de Siegmeyer",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Revers de Catarina",
+          "type": "melee",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Garde au bouclier de Catarina",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Dark Souls",
+        "sourceWork": "Dark Souls",
+        "sourceUrl": "https://en.bandainamcoent.eu/dark-souls/dark-souls",
+        "sourceReference": "Dark Souls, premier jeu : Siegmeyer de Catarina porte et utilise une Zweihänder ; attaque de chevalier fondée sur son équipement.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Zweihänder de Catarina",
+          "type": "melee",
+          "dmg": 3.8,
+          "color": "#3eb5dc",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "melee",
+            "range": 185
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dark-souls/dark-souls-siegmeyer.png",
+      "referenceSha256": "9626227b70a8d1358e66c3775a195b2fa1245e87b09f315feedcb06066271d60",
+      "source": {
+        "universe": "Dark Souls",
+        "sourceWork": "Dark Souls (2011), Siegmeyer of Catarina",
+        "appearance": "Adult human in broad rounded silver Catarina onion armour and closed onion helmet, Zweihander; human height rather than dwarf",
+        "weapon": "Zweihander",
+        "actionName": "Taille du Zweihander de Siegmeyer",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Brace broad armour, draw physical greatsword through short forward cut, recover",
+        "bodyHeight": 190,
+        "sourceReference": "https://darksouls.wikidot.com/siegmeyer-of-catarina",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.warhammer-community.com/en-gb/articles/wr3d2srg/who-is-lieutenant-titus-the-long-and-glorious-history-of-the-space-marine-2-hero/",
+        "visualAnchor": "Very tall adult Ultramarines Captain in massive cobalt-blue Mark VII power armour, white-blue captain helm at belt, gold trim, red purity seals, chainsword and bolt pistol; original heraldic marks, no actor likeness.",
+        "canonStatus": "canon protagonist",
+        "lore": {
+          "fr": "Le capitaine Titus résiste à l’énergie du Warp et dirige la défense de Graia.",
+          "en": "Captain Titus resists Warp energy and leads Graia’s defence."
+        },
+        "weapon": "Chainsword and bolt pistol",
+        "weaponType": "blade",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Chainsword and bolt pistol"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Fury execution"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Iron Halo brace"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Ultramarines shock assault"
+        },
+        "output": "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-titus.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG battle view. Captain Demetrian Titus. Preserve: Very tall adult Ultramarines Captain in massive cobalt-blue Mark VII power armour, white-blue captain helm at belt, gold trim, red purity seals, chainsword and bolt pistol; original heraldic marks, no actor likeness. No official artwork, logos, text, actor likeness or cross-franchise costume.",
+        "id": "space_marine_titus",
+        "name": "Captain Demetrian Titus",
+        "cat": "marine",
+        "color": "#d8b13e",
+        "universe": "Warhammer 40,000: Space Marine",
+        "category": "marine",
+        "primaryColor": "#d8b13e",
+        "secondaryColor": "#d8b13e",
+        "weaponColor": "#d8b13e"
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-titus.png",
+      "referenceSha256": "7c532ac59e6e648d6624e2e7ec6a735de40b69e1c48399acae54400e15ff57f0",
+      "source": {
+        "universe": "Warhammer 40,000: Space Marine",
+        "sourceWork": "Warhammer 40,000: Space Marine (2011), Captain Titus",
+        "appearance": "First-game non-Primaris Ultramarines blue-and-gold power armour, bare adult head, captain insignia, chainsword; no Space Marine 2 lieutenant armour",
+        "weapon": "Chainsword",
+        "actionName": "Taille de l’épée tronçonneuse de Titus",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Ready chainsword, controlled close-range physical cut, recover; no opponent or injury",
+        "bodyHeight": 220,
+        "sourceReference": "https://wh40k.lexicanum.com/wiki/Demetrian_Titus",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.warhammer-community.com/en-gb/articles/wr3d2srg/who-is-lieutenant-titus-the-long-and-glorious-history-of-the-space-marine-2-hero/",
+        "visualAnchor": "Very tall scarred adult Ultramarines Veteran Sergeant in cobalt power armour with white-red veteran details, service studs and heavy bolter; no actor likeness.",
+        "canonStatus": "canon protagonist",
+        "lore": {
+          "fr": "Sidonus apporte l’expérience d’un vétéran de nombreuses campagnes.",
+          "en": "Sidonus brings the experience of a veteran of many campaigns."
+        },
+        "weapon": "Bolter",
+        "weaponType": "gun",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "type": "bullet",
+          "dmg": 1,
+          "name": "Bolter"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Veteran covering fire"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Power-armour guard"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Graia command-squad volley"
+        },
+        "output": "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-sidonus.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG battle view. Veteran Sergeant Sidonus. Preserve: Very tall scarred adult Ultramarines Veteran Sergeant in cobalt power armour with white-red veteran details, service studs and heavy bolter; no actor likeness. No official artwork, logos, text, actor likeness or cross-franchise costume.",
+        "id": "space_marine_sidonus",
+        "name": "Veteran Sergeant Sidonus",
+        "cat": "marine",
+        "color": "#fbd461",
+        "universe": "Warhammer 40,000: Space Marine",
+        "category": "marine",
+        "primaryColor": "#fbd461",
+        "secondaryColor": "#fbd461",
+        "weaponColor": "#fbd461"
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-sidonus.png",
+      "referenceSha256": "018d635d3cdaa302f2ec0dd3127b87d82829d46715344b1853c5eba83629a9bb",
+      "source": {
+        "universe": "Warhammer 40,000: Space Marine",
+        "sourceWork": "Warhammer 40,000: Space Marine (2011)",
+        "appearance": "Veteran Ultramarine, blue-and-gold non-Primaris power armour, grey-haired adult head and bionic eye, physical boltgun",
+        "weapon": "Boltgun",
+        "actionName": "Rafale du bolter de Sidonus",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Shoulder physical boltgun, aim, brief recoil, recover; no sustained laser",
+        "bodyHeight": 220,
+        "sourceReference": "https://wh40k.lexicanum.com/wiki/Sidonus",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.warhammer-community.com/en-gb/articles/wr3d2srg/who-is-lieutenant-titus-the-long-and-glorious-history-of-the-space-marine-2-hero/",
+        "visualAnchor": "Very tall younger-adult Ultramarines battle-brother in clean cobalt power armour with white squad marking and standard boltgun; no actor likeness.",
+        "canonStatus": "canon protagonist",
+        "lore": {
+          "fr": "Leandros applique strictement le Codex Astartes pendant la mission.",
+          "en": "Leandros follows the Codex Astartes strictly during the mission."
+        },
+        "weapon": "Boltgun",
+        "weaponType": "gun",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "type": "bullet",
+          "dmg": 1,
+          "name": "Boltgun"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Codex formation"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Tactical brace"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Command-squad crossfire"
+        },
+        "output": "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-leandros.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG battle view. Battle-Brother Leandros. Preserve: Very tall younger-adult Ultramarines battle-brother in clean cobalt power armour with white squad marking and standard boltgun; no actor likeness. No official artwork, logos, text, actor likeness or cross-franchise costume.",
+        "id": "space_marine_leandros",
+        "name": "Battle-Brother Leandros",
+        "cat": "tactical",
+        "color": "#b58e1b",
+        "universe": "Warhammer 40,000: Space Marine",
+        "category": "tactical",
+        "primaryColor": "#b58e1b",
+        "secondaryColor": "#b58e1b",
+        "weaponColor": "#b58e1b"
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-leandros.png",
+      "referenceSha256": "d395bc7cc01225d4855458ea023d229ace19b0d11afb56a8eb28103f7f2ce0a7",
+      "source": {
+        "universe": "Warhammer 40,000: Space Marine",
+        "sourceWork": "Warhammer 40,000: Space Marine (2011)",
+        "appearance": "Adult Ultramarine, first-game blue-and-gold non-Primaris power armour, short dark hair, physical boltgun; no later Chaplain armour",
+        "weapon": "Boltgun",
+        "actionName": "Tir du bolter de Leandros",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Brace actual boltgun, fire a short forward burst, recoil and recover",
+        "bodyHeight": 220,
+        "sourceReference": "https://wh40k.lexicanum.com/wiki/Leandros",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.aspyr.com/games/soul-reaver",
+        "visualAnchor": "Imperial Kain as an evolved pale vampire with long white hair, narrow crownlike forehead ridges, dark red-black segmented armor and the broad asymmetrical Soul Reaver.",
+        "canonStatus": "canon franchise protagonist and antihero",
+        "lore": {
+          "fr": "Kain refuse le sacrifice imposé aux Pillars et devient le Scion of Balance capable de briser le faux cycle.",
+          "en": "Kain refuses the sacrifice demanded by the Pillars and becomes the Scion of Balance who can break the false cycle."
+        },
+        "weapon": "Soul Reaver",
+        "weaponType": "blade",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Reaver slash"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Telekinetic throw"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Mist evade"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Scion of Balance"
+        },
+        "output": "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-kain.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG battle view. Kain. Preserve: Imperial Kain as an evolved pale vampire with long white hair, narrow crownlike forehead ridges, dark red-black segmented armor and the broad asymmetrical Soul Reaver. No official artwork, logos, text, actor likeness or cross-franchise costume.",
+        "id": "legacy_of_kain_kain",
+        "name": "Kain",
+        "cat": "slayer",
+        "color": "#61d2ad",
+        "universe": "Legacy of Kain",
+        "category": "slayer",
+        "primaryColor": "#61d2ad",
+        "secondaryColor": "#61d2ad",
+        "weaponColor": "#61d2ad"
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-kain.png",
+      "referenceSha256": "063c83f3a4bbeb7f4f1dada32e7c9e0ee947645f3152cab475caabf1046711e7",
+      "source": {
+        "universe": "Legacy of Kain",
+        "sourceWork": "Legacy of Kain: Defiance (2003), elder Kain",
+        "appearance": "Adult elder vampire, pale grey skin, swept white hair, red cape and dark ornate armour, physical Soul Reaver blade; no blood or wounds",
+        "weapon": "Soul Reaver sword",
+        "actionName": "Coupe de la Soul Reaver de Kain",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Controlled physical sword cut with faint blade-local green spectral light; no detached energy beam",
+        "bodyHeight": 205,
+        "sourceReference": "https://legacyofkain.fandom.com/wiki/Kain",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.aspyr.com/games/soul-reaver",
+        "visualAnchor": "Blue-gray wing-torn vampire wraith with three-fingered claws, brown cowl covering the lower face, exposed ribs and a luminous teal Wraith Blade spiraling around one arm.",
+        "canonStatus": "canon Soul Reaver and Defiance co-protagonist",
+        "lore": {
+          "fr": "Raziel revient comme dévoreur d’âmes et apprend à passer entre les royaumes matériel et spectral.",
+          "en": "Raziel returns as a soul devourer and learns to shift between the Material and Spectral Realms."
+        },
+        "entityType": "vampire-wraith",
+        "weapon": "Wraith Blade",
+        "weaponType": "magic",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "type": "energy",
+          "dmg": 1,
+          "name": "Wraith claw"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Telekinetic bolt"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Spectral shift"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Soul Reaver convergence"
+        },
+        "output": "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-raziel.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG battle view. Raziel. Preserve: Blue-gray wing-torn vampire wraith with three-fingered claws, brown cowl covering the lower face, exposed ribs and a luminous teal Wraith Blade spiraling around one arm. No official artwork, logos, text, actor likeness or cross-franchise costume.",
+        "id": "legacy_of_kain_raziel",
+        "name": "Raziel",
+        "cat": "horror",
+        "color": "#84f5d0",
+        "universe": "Legacy of Kain",
+        "category": "horror",
+        "primaryColor": "#84f5d0",
+        "secondaryColor": "#84f5d0",
+        "weaponColor": "#84f5d0"
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-raziel.png",
+      "referenceSha256": "91f8e00530c2db7700646377eea4d49640b9dc5f02e787e341de298a16738911",
+      "source": {
+        "universe": "Legacy of Kain",
+        "sourceWork": "Legacy of Kain: Soul Reaver (1999), wraith Raziel",
+        "appearance": "Adult blue spectral wraith, tattered wing stumps, brown scarf covering lower face, clawed feet, forearm spectral Reaver; non-graphic intact character",
+        "weapon": "Forearm spectral Reaver",
+        "actionName": "Taille de la Reaver spectrale de Raziel",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Brace and perform a short forearm-blade cut; green light only on attached Reaver, no detached ray",
+        "bodyHeight": 190,
+        "sourceReference": "https://legacyofkain.fandom.com/wiki/Raziel",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.aspyr.com/games/soul-reaver",
+        "visualAnchor": "Ancient green-skinned vampire with long pointed ears, black swept hair, ornate bronze-red robes and powerful clawed hands.",
+        "canonStatus": "canon ancient vampire ally",
+        "lore": {
+          "fr": "Vorador est un ancien vampire, mentor et allié intermittent dans l’histoire de Nosgoth.",
+          "en": "Vorador is an ancient vampire, mentor and intermittent ally in Nosgoth’s history."
+        },
+        "weapon": "Ancient vampire claws",
+        "weaponType": "fists",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Vampire claw"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Blood-force wave"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Ancient resilience"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Vampire citadel defense"
+        },
+        "output": "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-vorador.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG battle view. Vorador. Preserve: Ancient green-skinned vampire with long pointed ears, black swept hair, ornate bronze-red robes and powerful clawed hands. No official artwork, logos, text, actor likeness or cross-franchise costume.",
+        "id": "legacy_of_kain_vorador",
+        "name": "Vorador",
+        "cat": "marine",
+        "color": "#3eaf8a",
+        "universe": "Legacy of Kain",
+        "category": "marine",
+        "primaryColor": "#3eaf8a",
+        "secondaryColor": "#3eaf8a",
+        "weaponColor": "#3eaf8a"
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-vorador.png",
+      "referenceSha256": "79e3d8aa1209b80411216afff0d15b6a56af1cf8cc88cf92f95a463eeb7d4660",
+      "source": {
+        "universe": "Legacy of Kain",
+        "sourceWork": "Blood Omen: Legacy of Kain (1996), Vorador",
+        "appearance": "Adult green-skinned elder vampire, pointed ears, ornate rich red-brown clothing and gold ornaments, clawed hands; no blood or injury",
+        "weapon": "Vampire claws",
+        "actionName": "Griffe de Vorador",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Controlled short physical claw gesture into empty forward space and recover, no victim",
+        "bodyHeight": 205,
+        "sourceReference": "https://legacyofkain.fandom.com/wiki/Vorador",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "ardyn_ff15",
+        "name": "Ardyn Izunia",
+        "cat": "horror",
+        "color": "#7b241c",
+        "simpleName": "Starscourge Cut",
+        "secondaryName": "Royal Parry Theft",
+        "defenseName": "Immortal Feint",
+        "specialName": "Usurper Throne Collapse",
+        "universe": "Final Fantasy XV",
+        "category": "horror",
+        "primaryColor": "#7b241c",
+        "secondaryColor": "#7b241c",
+        "weaponType": "slash",
+        "weaponColor": "#7b241c",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Starscourge Cut",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Royal Parry Theft",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Immortal Feint",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Usurper Throne Collapse",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#7b241c"
+        }
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-xv/ardyn-ff15.png",
+      "referenceSha256": "d4052336e924dc596cc72dd1511f9a016f33bd7726874a6d7c200973f9b8c55d",
+      "source": {
+        "universe": "Final Fantasy XV",
+        "sourceWork": "Final Fantasy XV (2016)",
+        "appearance": "Adult Ardyn with dark fedora, auburn hair, layered black coat and red patterned scarf, one spectral royal blade",
+        "weapon": "Royal spectral blade",
+        "actionName": "Taille de la lame royale d’Ardyn",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Materialize one blade locally in hand, physical close cut and recover; no black hole or borrowed summon",
+        "bodyHeight": 190,
+        "sourceReference": "https://finalfantasy.fandom.com/wiki/Ardyn_Izunia",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "cor_ff15",
+        "name": "Cor Leonis",
+        "cat": "slayer",
+        "color": "#566573",
+        "simpleName": "Katana Draw",
+        "secondaryName": "Immortal Counter",
+        "defenseName": "Crownsguard Stance",
+        "specialName": "Lucian Veteran Rush",
+        "universe": "Final Fantasy XV",
+        "category": "slayer",
+        "primaryColor": "#566573",
+        "secondaryColor": "#566573",
+        "weaponType": "slash",
+        "weaponColor": "#566573",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Katana Draw",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Immortal Counter",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Crownsguard Stance",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Lucian Veteran Rush",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#566573"
+        }
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-xv/cor-ff15.png",
+      "referenceSha256": "f267bfc4a9b54e7677cb9867f6c6a3cbd40eb684afefc6ff71e6697e310756f2",
+      "source": {
+        "universe": "Final Fantasy XV",
+        "sourceWork": "Final Fantasy XV (2016)",
+        "appearance": "Adult Cor Leonis, short dark-grey hair, black Crownsguard jacket, practical dark trousers, physical katana",
+        "weapon": "Katana",
+        "actionName": "Taille du katana de Cor",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Two-handed katana ready, clean physical forward cut, recover; no Armiger or magic wave",
+        "bodyHeight": 190,
+        "sourceReference": "https://finalfantasy.fandom.com/wiki/Cor_Leonis",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.playstation.com/en-us/editorial/horizon-zero-dawn-the-story-so-far/",
+        "visualAnchor": "Fully clothed adult machine hunter with long braided red hair, layered practical Nora leather-and-blue textile armour, blue Focus triangle at right temple, hunter bow and override spear; original face, no actor likeness or sexualisation.",
+        "canonStatus": "canon protagonist",
+        "lore": {
+          "fr": "La chercheuse Nora utilise son Focus pour comprendre les machines et les secrets du Projet Zero Dawn.",
+          "en": "The Nora Seeker uses her Focus to understand machines and Project Zero Dawn’s secrets."
+        },
+        "weapon": "Hunter Bow",
+        "weaponType": "gun",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "type": "bullet",
+          "dmg": 1,
+          "name": "Hunter Bow"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Focus component scan"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Hunter roll"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Master Override strike"
+        },
+        "output": "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-aloy.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG battle view. Aloy. Preserve: Fully clothed adult machine hunter with long braided red hair, layered practical Nora leather-and-blue textile armour, blue Focus triangle at right temple, hunter bow and override spear; original face, no actor likeness or sexualisation. No official artwork, logos, text, actor likeness or cross-franchise costume.",
+        "id": "horizon_zero_dawn_aloy",
+        "name": "Aloy",
+        "cat": "tactical",
+        "color": "#e8812d",
+        "universe": "Horizon Zero Dawn",
+        "category": "tactical",
+        "primaryColor": "#e8812d",
+        "secondaryColor": "#e8812d",
+        "weaponColor": "#e8812d"
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-aloy.png",
+      "referenceSha256": "3c057899ab4438fd23a73783bd846f82b3895392faefb24069eda192d2170a02",
+      "source": {
+        "universe": "Horizon Zero Dawn",
+        "sourceWork": "Horizon Zero Dawn (2017), Nora Seeker adult Aloy",
+        "appearance": "Adult19+ Aloy, long braided red hair, Nora Seeker tribal armour, Hunter Bow and arrows; no Forbidden West glider or Sunwing",
+        "weapon": "Hunter Bow",
+        "actionName": "Flèche du Hunter Bow d’Aloy",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Nock physical arrow, draw Hunter Bow, release forward, recover; no unrelated laser",
+        "bodyHeight": 190,
+        "sourceReference": "https://horizon.fandom.com/wiki/Aloy",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.playstation.com/en-us/editorial/horizon-zero-dawn-the-story-so-far/",
+        "visualAnchor": "Fully clothed adult Nora warrior with dark braided hair, blue-white face paint, layered fur-and-leather Brave armour and long spear; original face, no actor likeness.",
+        "canonStatus": "canon protagonist",
+        "lore": {
+          "fr": "Le guerrier Nora aide Aloy à défendre la Terre Sacrée puis Meridian.",
+          "en": "The Nora warrior helps Aloy defend the Sacred Land and then Meridian."
+        },
+        "weapon": "Nora spear",
+        "weaponType": "blade",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Nora spear"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Brave covering strike"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Nora guard"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "All-Mother defence"
+        },
+        "output": "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-varl.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG battle view. Varl. Preserve: Fully clothed adult Nora warrior with dark braided hair, blue-white face paint, layered fur-and-leather Brave armour and long spear; original face, no actor likeness. No official artwork, logos, text, actor likeness or cross-franchise costume.",
+        "id": "horizon_zero_dawn_varl",
+        "name": "Varl",
+        "cat": "marine",
+        "color": "#ffa450",
+        "universe": "Horizon Zero Dawn",
+        "category": "marine",
+        "primaryColor": "#ffa450",
+        "secondaryColor": "#ffa450",
+        "weaponColor": "#ffa450"
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-varl.png",
+      "referenceSha256": "f6ecf7b13d7752a8b6af91ee135abb4938a94c57d160e71f826541297fd3acf5",
+      "source": {
+        "universe": "Horizon Zero Dawn",
+        "sourceWork": "Horizon Zero Dawn (2017), Nora brave Varl",
+        "appearance": "Adult Varl, dark skin, Nora warrior clothing and head braids, practical spear; no later Forbidden West equipment",
+        "weapon": "Nora spear",
+        "actionName": "Estoc de la lance de Varl",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Brace physical Nora spear and make a controlled short forward thrust, recover",
+        "bodyHeight": 190,
+        "sourceReference": "https://horizon.fandom.com/wiki/Varl",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.playstation.com/en-us/editorial/horizon-zero-dawn-the-story-so-far/",
+        "visualAnchor": "Fully clothed broad adult Oseram Vanguard with braided brown beard and mohawk, layered steel-and-leather armour, blue scarf and enormous forge hammer; original face, no actor likeness.",
+        "canonStatus": "canon protagonist",
+        "lore": {
+          "fr": "Le capitaine de l’avant-garde Oseram met son marteau au service de Meridian.",
+          "en": "The Oseram Vanguard captain puts his hammer to Meridian’s defence."
+        },
+        "weapon": "Oseram hammer",
+        "weaponType": "fists",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Oseram hammer"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Vanguard smash"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Oseram plate guard"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Meridian wallbreaker"
+        },
+        "output": "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-erend.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG battle view. Erend. Preserve: Fully clothed broad adult Oseram Vanguard with braided brown beard and mohawk, layered steel-and-leather armour, blue scarf and enormous forge hammer; original face, no actor likeness. No official artwork, logos, text, actor likeness or cross-franchise costume.",
+        "id": "horizon_zero_dawn_erend",
+        "name": "Erend",
+        "cat": "marine",
+        "color": "#c55e0a",
+        "universe": "Horizon Zero Dawn",
+        "category": "marine",
+        "primaryColor": "#c55e0a",
+        "secondaryColor": "#c55e0a",
+        "weaponColor": "#c55e0a"
+      },
+      "part": "A",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-erend.png",
+      "referenceSha256": "e1a4adb2b0131982159c5acaf254980b6e7b045ce5458545272a9a577a282489",
+      "source": {
+        "universe": "Horizon Zero Dawn",
+        "sourceWork": "Horizon Zero Dawn (2017)",
+        "appearance": "Adult Erend, reddish moustache and mohawk, heavy Oseram Vanguard metal-and-leather armour, physical heavy hammer",
+        "weapon": "Oseram hammer",
+        "actionName": "Coup du marteau d’Erend",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Raise actual heavy hammer, controlled close downward swing and recover; no invented electrical blast",
+        "bodyHeight": 205,
+        "sourceReference": "https://horizon.fandom.com/wiki/Erend",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "lara_croft_tr",
+        "name": "Lara Croft",
+        "cat": "tactical",
+        "color": "#d4a64a",
+        "weapon": "gun",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "universe": "Tomb Raider",
+        "category": "tactical",
+        "primaryColor": "#d4a64a",
+        "secondaryColor": "#d4a64a",
+        "weaponType": "gun",
+        "weaponColor": "#d4a64a",
+        "simple": {
+          "name": "Lara Croft Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Lara Croft Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Lara Croft Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Lara Croft Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#d4a64a"
+        }
+      },
+      "part": "A",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "sourceHeroId": "lara_croft_tr",
+        "universe": "Tomb Raider",
+        "sourceWork": "Tomb Raider (1996), Tomb Raider II (1997), Tomb Raider (2013)",
+        "sourceReference": "La Lara des jeux Tomb Raider classiques utilise deux pistolets et l’acrobatie ; le kit ne mélange pas ses armes avec la continuité Survivor.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Premier pistolet de Lara classique",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Deux pistolets de Croft",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "multi",
+            "range": 480,
+            "targetSide": "enemy",
+            "maxTargets": 2
+          }
+        },
+        "defense": {
+          "name": "Esquive acrobatique de Lara",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Tomb Raider",
+        "sourceWork": "Tomb Raider (1996), Tomb Raider II (1997), Tomb Raider (2013)",
+        "sourceReference": "Lara utilise ses deux pistolets dans les jeux classiques ; équipement propre à cette version d’action, sans pouvoir d’artefact inventé.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdapted": true,
+        "special": {
+          "name": "Double pistolet de Lara Croft",
+          "type": "bullet",
+          "dmg": 4.5,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "projectile",
+            "range": 720
+          },
+          "color": "#d7c09e"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/tomb-raider/lara-croft-tr.png",
+      "referenceSha256": "04439f5d6a9fedad68f2ef0671d214424738f07966a1393469cb655d28d5abac",
+      "source": {
+        "universe": "Tomb Raider",
+        "sourceWork": "Shadow of the Tomb Raider (2018), adult Lara",
+        "appearance": "Adult26+ Lara, brown ponytail, practical blue-grey expedition top and trousers, necklace, physical recurve bow and quiver; no sexualized outfit",
+        "weapon": "Recurve bow",
+        "actionName": "Flèche de l’arc de Lara",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Nock one physical arrow, draw bow, release forward and recover",
+        "bodyHeight": 190,
+        "sourceReference": "https://tombraider.fandom.com/wiki/Lara_Croft_(Survivor_Timeline)",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "jonah_tr",
+        "name": "Jonah Maiava",
+        "cat": "marine",
+        "color": "#b18327",
+        "weapon": "gun",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "universe": "Tomb Raider",
+        "category": "marine",
+        "primaryColor": "#b18327",
+        "secondaryColor": "#b18327",
+        "weaponType": "gun",
+        "weaponColor": "#b18327",
+        "simple": {
+          "name": "Jonah Maiava Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Jonah Maiava Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Jonah Maiava Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Jonah Maiava Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#b18327"
+        }
+      },
+      "part": "A",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "sourceHeroId": "jonah_tr",
+        "universe": "Tomb Raider",
+        "sourceWork": "Tomb Raider (1996), Tomb Raider II (1997), Tomb Raider (2013)",
+        "sourceReference": "Jonah Maiava aide et protège dans la continuité Survivor ; il ne reçoit pas les deux pistolets de la Lara classique.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Jonah repère la voie de secours",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Mettre les compagnons à l’abri",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.3
+          }
+        },
+        "defense": {
+          "name": "Couvert de Jonah sur le trajet",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Tomb Raider",
+        "sourceWork": "Tomb Raider (1996), Tomb Raider II (1997), Tomb Raider (2013)",
+        "sourceReference": "Jonah Maiava aide Lara et protège les survivants dans la continuité Survivor ; soutien de force et de secours, sans double pistolet de Lara.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdapted": true,
+        "special": {
+          "name": "Mise à l’abri par Jonah",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "reduce": 0.45,
+            "duration": 4
+          },
+          "color": "#d7c09e"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/tomb-raider/jonah-tr.png",
+      "referenceSha256": "764a3a51c875c3261a789d1589d02a4631439e7255a7b55e3d8fe319f3c2e394",
+      "source": {
+        "universe": "Tomb Raider",
+        "sourceWork": "Shadow of the Tomb Raider (2018)",
+        "appearance": "Adult Jonah Maiava, broad Polynesian build, short hair and beard, practical expedition shirt and outdoor equipment, backpack and radio",
+        "weapon": "Expedition radio",
+        "actionName": "Coordination de l’expédition de Jonah",
+        "effect": "buff",
+        "delivery": "support",
+        "pose": "Check radio, signal allies and settle; practical support, no conjured attack or gunfire",
+        "bodyHeight": 205,
+        "sourceReference": "https://tombraider.fandom.com/wiki/Jonah_Maiava",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "noble_six",
+        "name": "Noble Six",
+        "cat": "marine",
+        "color": "#566573",
+        "universe": "Halo",
+        "category": "marine",
+        "primaryColor": "#566573",
+        "secondaryColor": "#566573",
+        "weaponType": "gun",
+        "weaponColor": "#566573",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Noble Six Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Noble Six Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Noble Six Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Noble Six Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#566573"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "sourceHeroId": "noble_six",
+        "universe": "Halo",
+        "sourceWork": "Halo: Reach",
+        "sourceReference": "Halo: Reach : DMR et grenades sont des armes utilisables ; Armor Lock est une capacité d’armure sélectionnable, ici choisie explicitement comme équipement de Six.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Tir du DMR de Noble Six",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Grenade à fragmentation de Noble Six",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "area",
+            "range": 480,
+            "targetSide": "enemy",
+            "areaRadius": 80
+          }
+        },
+        "defense": {
+          "name": "Armor Lock de Noble Six",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.5,
+            "reduce": 0.7
+          },
+          "reduce": 0.7,
+          "dur": 1.5
+        }
+      },
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/halo/noble-six.png",
+      "referenceSha256": "ca02f0444fdb61c9a4cd4f7ca16668a7f9005e80d1c1e99ce510dddfe74b218d",
+      "source": {
+        "universe": "Halo",
+        "sourceWork": "Halo: Reach (2010), default adult Noble Six",
+        "appearance": "Opaque default grey Mark V(B) helmet and Spartan armour, amber visor, physical MA37 assault rifle; no later GEN2 armour",
+        "weapon": "MA37 assault rifle",
+        "actionName": "Rafale du MA37 de Noble Six",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Shoulder actual MA37, aim, brief recoil and recover",
+        "bodyHeight": 205,
+        "sourceReference": "https://www.halopedia.org/SPARTAN-B312",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "buck_odst",
+        "name": "Edward Buck",
+        "cat": "tactical",
+        "color": "#34495e",
+        "universe": "Halo",
+        "category": "tactical",
+        "primaryColor": "#34495e",
+        "secondaryColor": "#34495e",
+        "weaponType": "gun",
+        "weaponColor": "#34495e",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Edward Buck Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Edward Buck Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Edward Buck Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Edward Buck Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#34495e"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Halo",
+        "sourceWork": "Halo — Cortana, ODST and Blue Team continuities",
+        "sourceReference": "Buck utilise l’armement ODST et commande Alpha-Nine ; le M7S et le couvert correspondent au rôle Halo 3: ODST.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/buck_odst",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "M7S de Buck",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Regrouper Alpha-Nine",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Couvert de l’ODST dans la ville",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Halo",
+        "sourceWork": "Halo — Cortana, ODST and Blue Team continuities",
+        "sourceReference": "Halo 3: ODST: Buck leads Alpha-Nine and fights with conventional UNSC firearms.",
+        "identityBasis": "canonical-role",
+        "special": {
+          "name": "Couverture d’Alpha-Nine",
+          "type": "projectile",
+          "dmg": 4,
+          "color": "#a6b0a9",
+          "animationDuration": 1.25,
+          "hitAt": 0.5,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "cone",
+            "delivery": "projectile",
+            "range": 720,
+            "coneAngle": 35
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/halo/buck-odst.png",
+      "referenceSha256": "022755ae8d50300d8c67550e825668ca3c0b5433c699b9c6a9348b1a9b1ea3d4",
+      "source": {
+        "universe": "Halo",
+        "sourceWork": "Halo 3: ODST (2009), Buck before Spartan conversion",
+        "appearance": "Adult Edward Buck, full dark ODST combat armour and helmet with visor, physical suppressed M7S SMG; not Spartan armour",
+        "weapon": "M7S suppressed SMG",
+        "actionName": "Rafale du M7S de Buck",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Aim actual compact suppressed M7S, brief recoil and recover; muzzle at suppressor tip",
+        "bodyHeight": 190,
+        "sourceReference": "https://www.halopedia.org/Edward_Buck",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "kelly_087",
+        "name": "Kelly-087",
+        "cat": "slayer",
+        "color": "#1f7a3f",
+        "universe": "Halo",
+        "category": "slayer",
+        "primaryColor": "#1f7a3f",
+        "secondaryColor": "#1f7a3f",
+        "weaponType": "slash",
+        "weaponColor": "#1f7a3f",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Kelly-087 Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Kelly-087 Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Kelly-087 Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Kelly-087 Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#1f7a3f"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Halo",
+        "sourceWork": "Halo — Cortana, ODST and Blue Team continuities",
+        "sourceReference": "Kelly est une Spartan et l’éclaireuse rapide de Blue Team ; frappe et mobilité restent physiques sans téléportation inventée.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/kelly_087",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Percussion de la Spartan Kelly",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Percée de l’éclaireuse de Blue Team",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 760,
+            "targetSide": "self",
+            "duration": 2,
+            "reduce": 0.3
+          }
+        },
+        "defense": {
+          "name": "Décalage rapide de Kelly",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Halo",
+        "sourceWork": "Halo — Cortana, ODST and Blue Team continuities",
+        "sourceReference": "Kelly-087 is Blue Team’s exceptionally fast scout; the adaptation uses a fast close-range Spartan assault.",
+        "identityBasis": "canonical-role",
+        "special": {
+          "name": "Percée rapide de Blue Team",
+          "type": "melee",
+          "dmg": 4.2,
+          "color": "#8cc5b2",
+          "animationDuration": 1.25,
+          "hitAt": 0.5,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "melee",
+            "range": 195
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/halo/kelly-087.png",
+      "referenceSha256": "eb05435412212ea0661913c54727e88112678e6fdea8ae3be16ee594affb7a68",
+      "source": {
+        "universe": "Halo",
+        "sourceWork": "Halo 5: Guardians (2015)",
+        "appearance": "Adult Spartan Kelly-087 in white-and-grey GEN2 Hermes armour and opaque helmet, Oathsworn M45D shotgun",
+        "weapon": "Oathsworn shotgun",
+        "actionName": "Tir du fusil Oathsworn de Kelly",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Shoulder actual shotgun, one forward shot, recoil, recover",
+        "bodyHeight": 205,
+        "sourceReference": "https://www.halopedia.org/Kelly-087",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "linda_058",
+        "name": "Linda-058",
+        "cat": "tactical",
+        "color": "#255f3f",
+        "universe": "Halo",
+        "category": "tactical",
+        "primaryColor": "#255f3f",
+        "secondaryColor": "#255f3f",
+        "weaponType": "gun",
+        "weaponColor": "#255f3f",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Linda-058 Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Linda-058 Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Linda-058 Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Linda-058 Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#255f3f"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Halo",
+        "sourceWork": "Halo — Cortana, ODST and Blue Team continuities",
+        "sourceReference": "Linda est la tireuse de Blue Team associée à Nornfang ; information et couvert complètent ce fusil, sans copie des capacités de Cortana.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/linda_058",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Nornfang — visée de Linda",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Linda signale un angle de tir",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Repli de l’observatrice de Blue Team",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Halo",
+        "sourceWork": "Halo — Cortana, ODST and Blue Team continuities",
+        "sourceReference": "Linda-058 is Blue Team’s sniper and is associated with the customized SRS99 sniper rifle Nornfang.",
+        "identityBasis": "canonical-role",
+        "special": {
+          "name": "Nornfang — tir de Linda",
+          "type": "projectile",
+          "dmg": 4.7,
+          "color": "#a8b68c",
+          "animationDuration": 1.25,
+          "hitAt": 0.5,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "projectile",
+            "range": 1000
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/halo/linda-058.png",
+      "referenceSha256": "2b56c3598b33859392d240076059aa344b152c2511548ade9c8f0bb751a9c747",
+      "source": {
+        "universe": "Halo",
+        "sourceWork": "Halo 5: Guardians (2015)",
+        "appearance": "Adult Spartan Linda-058 in green GEN2 Argus armour and multi-optic opaque helmet, long red Nornfang sniper rifle",
+        "weapon": "Nornfang sniper rifle",
+        "actionName": "Tir du Nornfang de Linda",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Brace long physical sniper rifle, precise forward shot, recoil, recover",
+        "bodyHeight": 205,
+        "sourceReference": "https://www.halopedia.org/Linda-058",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "ashley_williams",
+        "name": "Ashley Williams",
+        "cat": "marine",
+        "color": "#34495e",
+        "universe": "Mass Effect",
+        "category": "marine",
+        "primaryColor": "#34495e",
+        "secondaryColor": "#34495e",
+        "weaponType": "gun",
+        "weaponColor": "#34495e",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Ashley Williams Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Ashley Williams Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Ashley Williams Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Ashley Williams Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#34495e"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "sourceHeroId": "ashley_williams",
+        "universe": "Mass Effect",
+        "sourceWork": "Mass Effect (2007) / Mass Effect 2 (2010)",
+        "sourceReference": "Ashley est une soldate humaine spécialisée dans les armes de Mass Effect ; aucune faculté biotique ne lui est attribuée.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Tir au fusil d’assaut d’Ashley",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Rafale soutenue de la soldate Williams",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Couvert militaire d’Ashley",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Mass Effect",
+        "sourceWork": "Mass Effect (2007) / Mass Effect 2 (2010)",
+        "sourceReference": "Ashley est une soldate humaine spécialisée dans les armes, non une biotique ; rafale d’arme conventionnelle.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdapted": true,
+        "special": {
+          "name": "Rafale de la soldate Ashley",
+          "type": "bullet",
+          "dmg": 4.5,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "projectile",
+            "range": 720
+          },
+          "color": "#b3cdef"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/mass-effect/ashley-williams.png",
+      "referenceSha256": "f5434572cecae6bfc1aaf4dcf63ee5e5d632fbca18db36a0049a187e96004752",
+      "source": {
+        "universe": "Mass Effect",
+        "sourceWork": "Mass Effect 3 (2012), Alliance officer Ashley",
+        "appearance": "Adult Ashley, long dark hair, blue Alliance combat armour, physical M8 Avenger assault rifle; no biotics",
+        "weapon": "M8 Avenger rifle",
+        "actionName": "Rafale du M8 Avenger d’Ashley",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Shoulder actual rifle, aim, brief recoil and recover; no biotic effects",
+        "bodyHeight": 190,
+        "sourceReference": "https://masseffect.fandom.com/wiki/Ashley_Williams",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "mordin",
+        "name": "Mordin Solus",
+        "cat": "hacker",
+        "color": "#95a5a6",
+        "universe": "Mass Effect",
+        "category": "hacker",
+        "primaryColor": "#95a5a6",
+        "secondaryColor": "#95a5a6",
+        "weaponType": "laser",
+        "weaponColor": "#95a5a6",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Mordin Solus Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Mordin Solus Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Mordin Solus Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Mordin Solus Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#95a5a6"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "sourceHeroId": "mordin",
+        "universe": "Mass Effect",
+        "sourceWork": "Mass Effect (2007) / Mass Effect 2 (2010)",
+        "sourceReference": "Mordin de Mass Effect 2 utilise arme de poing et Incinerate technologique ; l’outil ne devient pas une magie de feu.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Arme de poing de Mordin",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Incinerate de l’outil technique",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Repli derrière le poste d’analyse",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Mass Effect",
+        "sourceWork": "Mass Effect (2007) / Mass Effect 2 (2010)",
+        "sourceReference": "Mordin possède le pouvoir technologique Incinerate ; projectile incendiaire technologique, pas magie.",
+        "identityBasis": "canonical-technique",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdapted": true,
+        "special": {
+          "name": "Incinerate de Mordin",
+          "type": "fire_aoe",
+          "dmg": 4.5,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "area",
+            "delivery": "projectile",
+            "range": 700,
+            "areaRadius": 115
+          },
+          "color": "#b3cdef"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/mass-effect/mordin.png",
+      "referenceSha256": "7888bffbd367b7f5b9a530beb417cb07d4233408ba5d1d10d67ec3f3965266f5",
+      "source": {
+        "universe": "Mass Effect",
+        "sourceWork": "Mass Effect 2 (2010)",
+        "appearance": "Adult Mordin Solus, orange-tan salarian head and facial markings, blue-white STG scientist suit, wrist omni-tool",
+        "weapon": "Wrist omni-tool",
+        "actionName": "Incinération du omni-outil de Mordin",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Raise actual wrist omni-tool, project one compact orange thermal tech discharge, recover; not a firearm or sustained beam",
+        "bodyHeight": 190,
+        "sourceReference": "https://masseffect.fandom.com/wiki/Mordin_Solus",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "anya_stroud",
+        "name": "Anya Stroud",
+        "cat": "tactical",
+        "color": "#d8d3c0",
+        "universe": "Gears of War",
+        "category": "tactical",
+        "primaryColor": "#d8d3c0",
+        "secondaryColor": "#d8d3c0",
+        "weaponType": "gun",
+        "weaponColor": "#d8d3c0",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Anya Stroud Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Anya Stroud Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Anya Stroud Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Anya Stroud Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#d8d3c0"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Gears of War",
+        "sourceWork": "Gears of War",
+        "sourceReference": "La fonction de liaison CIC d’Anya fournit les informations de mission ; on ne déduit pas une arme laser de sa classe synthétique.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Anya lit le rapport du CIC",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Transmettre la position à Delta",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Protection du poste de liaison COG",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Gears of War",
+        "sourceWork": "Gears of War",
+        "sourceReference": "Gears of War : Anya Stroud assure la liaison avec le contrôle et transmet les informations tactiques à Delta Squad.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Liaison tactique CIC d'Anya",
+          "type": "buff",
+          "dmg": 0,
+          "color": "#d8d3c0",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.3,
+            "duration": 6
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/gears-of-war/anya-stroud.png",
+      "referenceSha256": "ead12cb799697de27c4e254048405f99eb7cf777598ef5b356863962ab983e3c",
+      "source": {
+        "universe": "Gears of War",
+        "sourceWork": "Gears of War 3 (2011)",
+        "appearance": "Adult Anya Stroud in practical grey-blue COG combat armour, blonde hair, physical Lancer Mk2 rifle",
+        "weapon": "Lancer Mk2",
+        "actionName": "Rafale du Lancer d’Anya",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Brace actual Lancer rifle, short burst into empty forward space, recover; no injury",
+        "bodyHeight": 190,
+        "sourceReference": "https://gearsofwar.fandom.com/wiki/Anya_Stroud",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "carmine_cog",
+        "name": "Carmine",
+        "cat": "marine",
+        "color": "#6c7a89",
+        "universe": "Gears of War",
+        "category": "marine",
+        "primaryColor": "#6c7a89",
+        "secondaryColor": "#6c7a89",
+        "weaponType": "gun",
+        "weaponColor": "#6c7a89",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Carmine Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Carmine Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Carmine Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Carmine Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#6c7a89"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Gears of War",
+        "sourceWork": "Gears of War",
+        "sourceReference": "Ce Carmine utilise le Lancer des soldats COG ; aucune biographie ou capacité exclusive d’un autre membre de la famille n’est inventée.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Courte rafale du Lancer de Carmine",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Tir d’appui du soldat Carmine",
+          "type": "projectile",
+          "dmg": 1.7,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Couvert derrière le rempart COG",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Gears of War",
+        "sourceWork": "Gears of War",
+        "sourceReference": "Gears of War : les soldats Carmine servent dans l'infanterie COG avec le Lancer ; cette entrée ne prétend pas identifier un frère particulier.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Rafale de Lancer de Carmine",
+          "type": "bullet",
+          "dmg": 3.4,
+          "color": "#6c7a89",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "projectile",
+            "range": 640
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/gears-of-war/carmine-cog.png",
+      "referenceSha256": "f1b5ce9fa54f7c38b9ea82aeac77790e068ff385dd8ed9c32c9bd370b9a0c604",
+      "source": {
+        "universe": "Gears of War",
+        "sourceWork": "Gears of War 3 (2011), specifically adult Clayton Carmine",
+        "appearance": "Clayton Carmine, opaque COG helmet, heavy grey-blue COG armour and muscular bare arms, physical Lancer Mk2; not Anthony or Benjamin",
+        "weapon": "Lancer Mk2",
+        "actionName": "Rafale du Lancer de Clayton Carmine",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Shoulder physical Lancer and fire a brief forward burst, recoil and recover",
+        "bodyHeight": 210,
+        "sourceReference": "https://gearsofwar.fandom.com/wiki/Clayton_Carmine",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "kait_diaz",
+        "name": "Kait Diaz",
+        "cat": "slayer",
+        "color": "#7b241c",
+        "universe": "Gears of War",
+        "category": "slayer",
+        "primaryColor": "#7b241c",
+        "secondaryColor": "#7b241c",
+        "weaponType": "slash",
+        "weaponColor": "#7b241c",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Kait Diaz Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Kait Diaz Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Kait Diaz Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Kait Diaz Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#7b241c"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Gears of War",
+        "sourceWork": "Gears of War",
+        "sourceReference": "Kait utilise l’armement et le combat rapproché COG ; sa parenté narrative ne devient pas une attaque de reine Locuste.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Lancer de Kait",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Percussion de la crosse de Kait",
+          "type": "melee",
+          "dmg": 1.6,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Se couvrir avec l’escouade de Kait",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Gears of War",
+        "sourceWork": "Gears of War",
+        "sourceReference": "Gears of War 4 et Gears 5 : Kait Diaz utilise le Lancer et ses équipements de combat rapproché ; aucune capacité de Hivebuster étrangère ajoutée.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Assaut au Lancer de Kait",
+          "type": "melee",
+          "dmg": 3.2,
+          "color": "#7b241c",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "melee",
+            "range": 170
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/gears-of-war/kait-diaz.png",
+      "referenceSha256": "a81761adc3967e3ab4f4b1df9c76a8101a1bf1286c6e0ec0f1b7b035404cfbf9",
+      "source": {
+        "universe": "Gears of War",
+        "sourceWork": "Gears 5 (2019), adult Kait",
+        "appearance": "Adult Kait Diaz, practical grey-blue winter COG armour with fur collar, brown hair, physical Lancer Mk3; no offensive Swarm mind-control power",
+        "weapon": "Lancer Mk3",
+        "actionName": "Rafale du Lancer de Kait",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Brace actual Lancer Mk3, aim, short recoil sequence and recover",
+        "bodyHeight": 190,
+        "sourceReference": "https://gearsofwar.fandom.com/wiki/Kait_Diaz",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "ezio_auditore_ac",
+        "name": "Ezio Auditore",
+        "cat": "slayer",
+        "color": "#d14c43",
+        "weapon": "slash",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "universe": "Assassin's Creed",
+        "category": "slayer",
+        "primaryColor": "#d14c43",
+        "secondaryColor": "#d14c43",
+        "weaponType": "slash",
+        "weaponColor": "#d14c43",
+        "simple": {
+          "name": "Ezio Auditore Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Ezio Auditore Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Ezio Auditore Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Ezio Auditore Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#d14c43"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Assassin's Creed",
+        "sourceWork": "Assassin's Creed II, III and Odyssey — distinct protagonist continuities",
+        "sourceReference": "Ezio utilise lame secrète, pistolet de poignet et escrime dans AC II et Brotherhood ; les trois gestes correspondent à ces outils.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/ezio_auditore_ac",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Estoc de la lame secrète d’Ezio",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Pistolet de poignet de Brotherhood",
+          "type": "projectile",
+          "dmg": 1.7,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Parade de l’assassin de Florence",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Assassin's Creed",
+        "sourceWork": "Assassin's Creed II, III and Odyssey — distinct protagonist continuities",
+        "sourceReference": "Assassin’s Creed II / Brotherhood: Ezio employs paired hidden blades for close-range double assassinations.",
+        "identityBasis": "canonical-technique",
+        "special": {
+          "name": "Double lame secrète",
+          "type": "melee",
+          "dmg": 4.1,
+          "color": "#d14c43",
+          "animationDuration": 1.25,
+          "hitAt": 0.5,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "multi",
+            "delivery": "melee",
+            "range": 130,
+            "maxTargets": 2
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/assassin-s-creed/ezio-auditore-ac.png",
+      "referenceSha256": "ef3bb632847bf0d52790ba55b0035fb92044a06c42a1842e58bfa380c4e7c2b4",
+      "source": {
+        "universe": "Assassin's Creed",
+        "sourceWork": "Assassin’s Creed: Brotherhood (2010), adult Ezio age40+",
+        "appearance": "Adult Ezio, white hooded robes with red sash and silver shoulder armour, wrist hidden blade and sheathed sword",
+        "weapon": "Hidden blade",
+        "actionName": "Taille de la lame secrète d’Ezio",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Extend real wrist hidden blade and make a controlled close gesture into empty space, recover; no victim or blood",
+        "bodyHeight": 190,
+        "sourceReference": "https://assassinscreed.fandom.com/wiki/Ezio_Auditore_da_Firenze",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "desmond_miles_ac",
+        "name": "Desmond Miles",
+        "cat": "hacker",
+        "color": "#f46f66",
+        "weapon": "laser",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "universe": "Assassin's Creed",
+        "category": "hacker",
+        "primaryColor": "#f46f66",
+        "secondaryColor": "#f46f66",
+        "weaponType": "laser",
+        "weaponColor": "#f46f66",
+        "simple": {
+          "name": "Desmond Miles Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Desmond Miles Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Desmond Miles Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Desmond Miles Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#f46f66"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Assassin's Creed",
+        "sourceWork": "Assassin's Creed II, III and Odyssey — distinct protagonist continuities",
+        "sourceReference": "Desmond acquiert les gestes des Assassins par l’effet de transfert et emploie une lame secrète dans AC III ; aucune magie n’est ajoutée.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/desmond_miles_ac",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Direct appris par l’effet de transfert",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Lame secrète de Desmond",
+          "type": "melee",
+          "dmg": 1.7,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Écart du coursier de l’Animus",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Assassin's Creed",
+        "sourceWork": "Assassin's Creed II, III and Odyssey — distinct protagonist continuities",
+        "sourceReference": "Assassin’s Creed III: Desmond applies assassin training acquired through the Bleeding Effect, including hidden-blade takedowns.",
+        "identityBasis": "canonical-role",
+        "special": {
+          "name": "Lame secrète — effet de transfert",
+          "type": "melee",
+          "dmg": 3.7,
+          "color": "#f46f66",
+          "animationDuration": 1.25,
+          "hitAt": 0.5,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "melee",
+            "range": 130
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/assassin-s-creed/desmond-miles-ac.png",
+      "referenceSha256": "66ab37e1d92d8d4ba2b3a70f067466787af7af3cc27aba9d53ada02c9f50cc95",
+      "source": {
+        "universe": "Assassin's Creed",
+        "sourceWork": "Assassin’s Creed III (2012), adult Desmond",
+        "appearance": "Adult Desmond, white hoodie over black shirt and jeans, short dark hair, physical wrist hidden blade; no borrowed ancestor costume",
+        "weapon": "Hidden blade",
+        "actionName": "Taille de la lame secrète de Desmond",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Extend actual wrist hidden blade, controlled close cut into empty space and recover; no magical wave",
+        "bodyHeight": 190,
+        "sourceReference": "https://assassinscreed.fandom.com/wiki/Desmond_Miles",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "kassandra_ac",
+        "name": "Kassandra",
+        "cat": "tactical",
+        "color": "#ae2920",
+        "weapon": "gun",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "universe": "Assassin's Creed",
+        "category": "tactical",
+        "primaryColor": "#ae2920",
+        "secondaryColor": "#ae2920",
+        "weaponType": "gun",
+        "weaponColor": "#ae2920",
+        "simple": {
+          "name": "Kassandra Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Kassandra Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Kassandra Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Kassandra Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#ae2920"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Assassin's Creed",
+        "sourceWork": "Assassin's Creed II, III and Odyssey — distinct protagonist continuities",
+        "sourceReference": "La lance et Sparta Kick appartiennent à l’arsenal d’Odyssey ; l’esquive est physique et ses valeurs sont adaptées.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/kassandra_ac",
+        "identityBasis": "canonical-technique",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Lance brisée de Léonidas",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Sparta Kick de Kassandra",
+          "type": "melee",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Esquive de la mercenaire",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Assassin's Creed",
+        "sourceWork": "Assassin's Creed II, III and Odyssey — distinct protagonist continuities",
+        "sourceReference": "Assassin’s Creed Odyssey: Hero Strike is an assassin ability performed with the broken Spear of Leonidas.",
+        "identityBasis": "canonical-technique",
+        "special": {
+          "name": "Hero Strike — lance de Léonidas",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#ae2920",
+          "animationDuration": 1.25,
+          "hitAt": 0.5,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "melee",
+            "range": 175
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/assassin-s-creed/kassandra-ac.png",
+      "referenceSha256": "c1302b9c8e1b379fd190bec6c6db84603c4bcdbaba9e5fadf9fc14459af4180d",
+      "source": {
+        "universe": "Assassin's Creed",
+        "sourceWork": "Assassin’s Creed Odyssey (2018), adult Kassandra",
+        "appearance": "Adult Kassandra, practical bronze-and-leather mercenary armour, tied dark hair, broken Spear of Leonidas and physical short blade; chosen playable loadout",
+        "weapon": "Broken Spear of Leonidas",
+        "actionName": "Estoc de la lance brisée de Kassandra",
+        "effect": "damage",
+        "delivery": "melee",
+        "pose": "Controlled short forward thrust with physical broken spear and recover; no invented god laser",
+        "bodyHeight": 190,
+        "sourceReference": "https://assassinscreed.fandom.com/wiki/Kassandra",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.nomanssky.com/atlas-rises-update/",
+        "visualAnchor": "Helmeted explorer in an orange-and-white exosuit with backpack, visor and Multi-Tool.",
+        "canonStatus": "canon protagonist or allied avatar",
+        "lore": {
+          "fr": "The Traveller conserve sa silhouette et sa fonction canoniques dans cette adaptation fan-made originale.",
+          "en": "The Traveller preserves the canonical silhouette and function in this original fan-made adaptation."
+        },
+        "output": "/sprites/generated/heroes/no-man-s-sky/no-mans-sky-traveller.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG view. The Traveller. Preserve: Helmeted explorer in an orange-and-white exosuit with backpack, visor and Multi-Tool. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.",
+        "weapon": "Multi-Tool Bolt",
+        "weaponType": "improvised",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Multi-Tool Bolt"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "The Traveller signature technique"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "The Traveller defensive action"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Terrain Manipulator"
+        },
+        "id": "no_mans_sky_traveller",
+        "name": "The Traveller",
+        "cat": "tactical",
+        "color": "#61d8ff",
+        "universe": "No Man's Sky",
+        "category": "tactical",
+        "primaryColor": "#61d8ff",
+        "secondaryColor": "#61d8ff",
+        "weaponColor": "#61d8ff"
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "sourceHeroId": "no_mans_sky_traveller",
+        "universe": "No Man's Sky",
+        "sourceWork": "No Man’s Sky (2016–), exocombinaison et multi-outil",
+        "sourceReference": "Le multi-outil possède un rayon d’extraction et l’exocombinaison un bouclier ; aucun pouvoir de l’Atlas ni module de lanceur non équipé n’est ajouté.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "secondary": {
+          "cd": 6,
+          "name": "Rayon d’extraction du multi-outil",
+          "type": "beam",
+          "dmg": 1.6,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "beam",
+            "shape": "line",
+            "range": 420,
+            "targetSide": "enemy",
+            "lineWidth": 32
+          }
+        },
+        "defense": {
+          "name": "Bouclier de l’exocombinaison du Voyageur",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.55
+          },
+          "reduce": 0.55,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/no-man-s-sky/no-mans-sky-traveller.png",
+      "referenceSha256": "a3c5168fe2fe9a478640d975a0c773edacfe437fa55fcf1d46060d3a94b8d20e",
+      "source": {
+        "universe": "No Man's Sky",
+        "sourceWork": "No Man’s Sky (2016), adult opaque Anomaly-suit player preset",
+        "appearance": "Opaque orange-and-white Anomaly spacesuit, closed helmet and backpack, physical multi-tool; explicitly chosen player preset not universal canonical face",
+        "weapon": "Multi-tool",
+        "actionName": "Impulsion du multi-outil du Voyageur",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Raise actual multi-tool and release one compact finite forward pulse at its emitter, recover",
+        "bodyHeight": 190,
+        "sourceReference": "https://nomanssky.fandom.com/wiki/Traveller",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.nomanssky.com/atlas-rises-update/",
+        "visualAnchor": "Korvax entity with faceted machine head, long dark robe and teal chest lights.",
+        "canonStatus": "canon non-combat participant",
+        "lore": {
+          "fr": "Priest Entity Nada conserve sa silhouette et sa fonction canoniques dans cette adaptation fan-made originale.",
+          "en": "Priest Entity Nada preserves the canonical silhouette and function in this original fan-made adaptation."
+        },
+        "output": "/sprites/generated/heroes/no-man-s-sky/no-mans-sky-nada.png",
+        "spritePrompt": "Original fan-made pixel-art environmental Trial sheet. Priest Entity Nada. Preserve: Korvax entity with faceted machine head, long dark robe and teal chest lights. Four readable objective states; no combat pose, weapon, opponent, UI, text, logo, copied official artwork or actor likeness.",
+        "nonCombat": true,
+        "trialType": "Trial",
+        "entityType": "non-combat-character-trial",
+        "objective": "Calibrate the Space Anomaly reality beacon.",
+        "objectiveFr": "Calibrer la balise de réalité de l’Anomalie spatiale.",
+        "victoryCondition": "complete-no-mans-sky-nada-objective",
+        "id": "no_mans_sky_nada",
+        "name": "Priest Entity Nada",
+        "cat": "trial",
+        "color": "#84fbff",
+        "weapon": "gun",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "universe": "No Man's Sky",
+        "category": "trial",
+        "primaryColor": "#84fbff",
+        "secondaryColor": "#84fbff",
+        "weaponType": "gun",
+        "weaponColor": "#84fbff",
+        "simple": {
+          "name": "Priest Entity Nada Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Priest Entity Nada Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Priest Entity Nada Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Priest Entity Nada Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#84fbff"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "No Man's Sky",
+        "sourceWork": "No Man's Sky",
+        "sourceReference": "Nada est une entité savante de l’Anomalie ; ses informations sont du soutien sans attaque sentinelle inventée.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Nada consulte une archive de l’Anomalie",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Partager un repère de recherche",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Retrait au poste de Nada",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "No Man's Sky",
+        "sourceWork": "No Man's Sky",
+        "sourceReference": "No Man's Sky : l'entité Korvax Nada accueille le voyageur dans l'Anomalie spatiale et partage ses connaissances sur l'Atlas ; soutien d'analyse, sans arme personnelle ajoutée.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Lecture des archives de l'Anomalie",
+          "type": "buff",
+          "dmg": 0,
+          "color": "#84fbff",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.3,
+            "duration": 6
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/no-man-s-sky/no-mans-sky-nada.png",
+      "referenceSha256": "27926ae888ae72b09c268d62d3978596f8e877677308aa7f3081d30c7c700105",
+      "source": {
+        "universe": "No Man's Sky",
+        "sourceWork": "No Man’s Sky (Beyond,2019), Priest Entity Nada",
+        "appearance": "Adult robotic Korvax Nada with metal head, blue lit face panel and red Anomaly robes, hands and data device; no weapon",
+        "weapon": "Data device",
+        "actionName": "Guidage de l’Anomalie de Nada",
+        "effect": "buff",
+        "delivery": "support",
+        "pose": "Inspect data device, signal calmly with free hand, settle; no ranged attack or conjured enemy",
+        "bodyHeight": 190,
+        "sourceReference": "https://nomanssky.fandom.com/wiki/Priest_Entity_Nada",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://www.nomanssky.com/atlas-rises-update/",
+        "visualAnchor": "Short stocky Gek specialist in padded yellow-brown exploration gear with wide amphibian head.",
+        "canonStatus": "canon non-combat participant",
+        "lore": {
+          "fr": "Specialist Polo conserve sa silhouette et sa fonction canoniques dans cette adaptation fan-made originale.",
+          "en": "Specialist Polo preserves the canonical silhouette and function in this original fan-made adaptation."
+        },
+        "output": "/sprites/generated/heroes/no-man-s-sky/no-mans-sky-polo.png",
+        "spritePrompt": "Original fan-made pixel-art environmental Trial sheet. Specialist Polo. Preserve: Short stocky Gek specialist in padded yellow-brown exploration gear with wide amphibian head. Four readable objective states; no combat pose, weapon, opponent, UI, text, logo, copied official artwork or actor likeness.",
+        "nonCombat": true,
+        "trialType": "Trial",
+        "entityType": "non-combat-character-trial",
+        "objective": "Scan and catalogue three anomalous discoveries.",
+        "objectiveFr": "Scanner et cataloguer trois découvertes anormales.",
+        "victoryCondition": "complete-no-mans-sky-polo-objective",
+        "id": "no_mans_sky_polo",
+        "name": "Specialist Polo",
+        "cat": "trial",
+        "color": "#3eb5dc",
+        "weapon": "gun",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "universe": "No Man's Sky",
+        "category": "trial",
+        "primaryColor": "#3eb5dc",
+        "secondaryColor": "#3eb5dc",
+        "weaponType": "gun",
+        "weaponColor": "#3eb5dc",
+        "simple": {
+          "name": "Specialist Polo Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Specialist Polo Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Specialist Polo Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Specialist Polo Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#3eb5dc"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "No Man's Sky",
+        "sourceWork": "No Man's Sky",
+        "sourceReference": "Polo aide à la navigation et à la recherche dans No Man’s Sky ; ses réglages ne lui donnent pas une arme spatiale personnelle.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Polo relève les coordonnées",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Calibrer le prochain repère stellaire",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Abri dans l’Anomalie de Polo",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "No Man's Sky",
+        "sourceWork": "No Man's Sky",
+        "sourceReference": "No Man's Sky : le spécialiste Gek Polo fournit des coordonnées et de l'assistance à bord de l'Anomalie spatiale ; soutien de navigation.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Calibration des coordonnées de Polo",
+          "type": "guard",
+          "dmg": 0,
+          "color": "#3eb5dc",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "reduce": 0.45,
+            "duration": 5
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/no-man-s-sky/no-mans-sky-polo.png",
+      "referenceSha256": "ef3b3aae4d7cb0fadaeeef6338671558311b29fd5763ff32a25d166266b10ea5",
+      "source": {
+        "universe": "No Man's Sky",
+        "sourceWork": "No Man’s Sky (Beyond,2019), Specialist Polo",
+        "appearance": "Adult short Gek scientist Polo, green reptilian face, goggles and practical red scientist outfit; visibly short stature, not a child",
+        "weapon": "Scientific scanner",
+        "actionName": "Calibration scientifique de Polo",
+        "effect": "buff",
+        "delivery": "support",
+        "pose": "Operate small actual scanner, make a practical reassuring gesture and settle; no gunfire or offensive beam",
+        "bodyHeight": 120,
+        "sourceReference": "https://nomanssky.fandom.com/wiki/Specialist_Polo",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://blog.jp.square-enix.com/deusex/2017/03/23/character.html",
+        "visualAnchor": "Adam Jensen, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.",
+        "canonStatus": "canon protagonist or allied avatar",
+        "lore": {
+          "fr": "Adam Jensen rejoint la brèche selon son rôle canonique.",
+          "en": "Adam Jensen enters the breach in the canonical role."
+        },
+        "output": "/sprites/generated/heroes/deus-ex/deus-ex-adam-jensen.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG view. Adam Jensen. Preserve: Adam Jensen, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.",
+        "weapon": "Adam Jensen signature action",
+        "weaponType": "improvised",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Adam Jensen signature action"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Adam Jensen signature technique"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Adam Jensen defensive action"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Adam Jensen decisive action"
+        },
+        "id": "deus_ex_adam_jensen",
+        "name": "Adam Jensen",
+        "cat": "tactical",
+        "color": "#61d8ff",
+        "universe": "Deus Ex",
+        "category": "tactical",
+        "primaryColor": "#61d8ff",
+        "secondaryColor": "#61d8ff",
+        "weaponColor": "#61d8ff"
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Deus Ex",
+        "sourceWork": "Deus Ex",
+        "sourceReference": "Deus Ex: Human Revolution : l'augmentation Typhoon d'Adam Jensen projette des micro-explosifs autour de lui ; attaque technologique de zone. Base/secondary/defense: Augmentations et piratage de Human Revolution ; pas de Nanosuit de Crysis.",
+        "sourceUrl": "https://blog.jp.square-enix.com/deusex/2017/03/23/character.html",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Frappe augmentée de Jensen",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Piratage d’accès de Jensen",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Couvert des augmentations de Jensen",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Deus Ex",
+        "sourceWork": "Deus Ex",
+        "sourceUrl": "https://blog.jp.square-enix.com/deusex/2017/03/23/character.html",
+        "sourceReference": "Deus Ex: Human Revolution : l'augmentation Typhoon d'Adam Jensen projette des micro-explosifs autour de lui ; attaque technologique de zone.",
+        "identityBasis": "canonical-technique",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Système explosif Typhoon",
+          "type": "area",
+          "dmg": 3.8,
+          "color": "#61d8ff",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "area",
+            "delivery": "area",
+            "range": 460,
+            "areaRadius": 155
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/deus-ex/deus-ex-adam-jensen.png",
+      "referenceSha256": "7111b9b54512a77c6baffb57fc064d3c1b4124d49cb775791604b81ba8a293c8",
+      "source": {
+        "universe": "Deus Ex",
+        "sourceWork": "Deus Ex: Human Revolution (2011)",
+        "appearance": "Adult Adam Jensen, black-and-gold coat, short dark hair and beard, retractable dark glasses, black mechanical forearms; no later appearance",
+        "weapon": "Typhoon augmentation",
+        "actionName": "Décharge locale du Typhoon de Jensen",
+        "effect": "damage",
+        "delivery": "radial",
+        "pose": "Brace mechanical arms and coat into compact radial system activation and recover; finite local effect, no beam, no victim",
+        "bodyHeight": 190,
+        "sourceReference": "https://deusex.fandom.com/wiki/Adam_Jensen",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://blog.jp.square-enix.com/deusex/2017/03/23/character.html",
+        "visualAnchor": "Faridah Malik, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.",
+        "canonStatus": "canon protagonist or allied avatar",
+        "lore": {
+          "fr": "Faridah Malik rejoint la brèche selon son rôle canonique.",
+          "en": "Faridah Malik enters the breach in the canonical role."
+        },
+        "output": "/sprites/generated/heroes/deus-ex/deus-ex-faridah-malik.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG view. Faridah Malik. Preserve: Faridah Malik, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.",
+        "weapon": "Faridah Malik signature action",
+        "weaponType": "improvised",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Faridah Malik signature action"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Faridah Malik signature technique"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Faridah Malik defensive action"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Faridah Malik decisive action"
+        },
+        "id": "deus_ex_faridah_malik",
+        "name": "Faridah Malik",
+        "cat": "tactical",
+        "color": "#84fbff",
+        "universe": "Deus Ex",
+        "category": "tactical",
+        "primaryColor": "#84fbff",
+        "secondaryColor": "#84fbff",
+        "weaponColor": "#84fbff"
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Deus Ex",
+        "sourceWork": "Deus Ex",
+        "sourceReference": "Deus Ex: Human Revolution : Faridah Malik, surnommée Fly Girl, pilote l'hélicoptère de transport de Jensen ; mise à l'abri adaptée de sa fonction de pilote. Base/secondary/defense: Rôle de pilote de Malik dans Human Revolution.",
+        "sourceUrl": "https://blog.jp.square-enix.com/deusex/2017/03/23/character.html",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Malik annonce la fenêtre d’atterrissage",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Fly Girl prépare l’extraction",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.3
+          }
+        },
+        "defense": {
+          "name": "Malik garde l’abri du cockpit",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Deus Ex",
+        "sourceWork": "Deus Ex",
+        "sourceUrl": "https://blog.jp.square-enix.com/deusex/2017/03/23/character.html",
+        "sourceReference": "Deus Ex: Human Revolution : Faridah Malik, surnommée Fly Girl, pilote l'hélicoptère de transport de Jensen ; mise à l'abri adaptée de sa fonction de pilote.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Extraction de Fly Girl",
+          "type": "guard",
+          "dmg": 0,
+          "color": "#84fbff",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "reduce": 0.45,
+            "duration": 5
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/deus-ex/deus-ex-faridah-malik.png",
+      "referenceSha256": "dcf700d4423b343dc043e96d090aa594250ec3aea8103431e813608ec1c39cae",
+      "source": {
+        "universe": "Deus Ex",
+        "sourceWork": "Deus Ex: Human Revolution (2011)",
+        "appearance": "Adult Faridah Malik, short dark hair, practical brown pilot jacket, flight headset and radio; not a combat cyborg",
+        "weapon": "Pilot radio",
+        "actionName": "Coordination aérienne de Malik",
+        "effect": "buff",
+        "delivery": "support",
+        "pose": "Use actual pilot radio, acknowledge allies and settle; no invented weapon, attack or augmentation",
+        "bodyHeight": 190,
+        "sourceReference": "https://deusex.fandom.com/wiki/Faridah_Malik",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "referenceUrl": "https://blog.jp.square-enix.com/deusex/2017/03/23/character.html",
+        "visualAnchor": "Alex Vega, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.",
+        "canonStatus": "canon protagonist or allied avatar",
+        "lore": {
+          "fr": "Alex Vega rejoint la brèche selon son rôle canonique.",
+          "en": "Alex Vega enters the breach in the canonical role."
+        },
+        "output": "/sprites/generated/heroes/deus-ex/deus-ex-alex-vega.png",
+        "spritePrompt": "Original fan-made pixel-art sprite sheet, three-quarter RPG view. Alex Vega. Preserve: Alex Vega, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.",
+        "weapon": "Alex Vega signature action",
+        "weaponType": "improvised",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Alex Vega signature action"
+        },
+        "secondary": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Alex Vega signature technique"
+        },
+        "defense": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Alex Vega defensive action"
+        },
+        "special": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Alex Vega decisive action"
+        },
+        "id": "deus_ex_alex_vega",
+        "name": "Alex Vega",
+        "cat": "tactical",
+        "color": "#3eb5dc",
+        "universe": "Deus Ex",
+        "category": "tactical",
+        "primaryColor": "#3eb5dc",
+        "secondaryColor": "#3eb5dc",
+        "weaponColor": "#3eb5dc"
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Deus Ex",
+        "sourceWork": "Deus Ex: Mankind Divided",
+        "sourceReference": "Deus Ex: Mankind Divided : Alex Vega est la pilote et la liaison du Juggernaut Collective. Référence propre à Mankind Divided, sans la présenter comme personnage de Human Revolution. Base/secondary/defense: Alex Vega reste la pilote de Mankind Divided, sans fausse présence dans Human Revolution.",
+        "sourceUrl": "https://blog.jp.square-enix.com/deusex/2017/03/23/character.html",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Alex transmet le contact du Collectif",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Alex prépare la liaison d’extraction",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.3
+          }
+        },
+        "defense": {
+          "name": "Alex quitte le canal compromis",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Deus Ex",
+        "sourceWork": "Deus Ex: Mankind Divided",
+        "sourceUrl": "https://blog.jp.square-enix.com/deusex/2017/03/23/character.html",
+        "sourceReference": "Deus Ex: Mankind Divided : Alex Vega est la pilote et la liaison du Juggernaut Collective. Référence propre à Mankind Divided, sans la présenter comme personnage de Human Revolution.",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "special": {
+          "name": "Liaison du Collectif par Alex Vega",
+          "type": "buff",
+          "dmg": 0,
+          "color": "#3eb5dc",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.3,
+            "duration": 6
+          }
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/deus-ex/deus-ex-alex-vega.png",
+      "referenceSha256": "5e989c3185489f43fee9568ee65af26a61a49a0576d32227bb54e67e8936e783",
+      "source": {
+        "universe": "Deus Ex",
+        "sourceWork": "Deus Ex: Mankind Divided (2016)",
+        "appearance": "Adult Alex Vega, dark skin, short asymmetric dark hair, practical dark pilot jacket, communication device; no invented offensive cybernetic power",
+        "weapon": "Communication device",
+        "actionName": "Relais de communication d’Alex Vega",
+        "effect": "buff",
+        "delivery": "support",
+        "pose": "Check actual communication device, gesture a practical signal and settle; no gun or energy attack",
+        "bodyHeight": 190,
+        "sourceReference": "https://deusex.fandom.com/wiki/Alex_Vega",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "boone_fnv",
+        "name": "Craig Boone",
+        "cat": "tactical",
+        "color": "#566573",
+        "universe": "Fallout",
+        "category": "tactical",
+        "primaryColor": "#566573",
+        "secondaryColor": "#566573",
+        "weaponType": "gun",
+        "weaponColor": "#566573",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Craig Boone Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Craig Boone Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Craig Boone Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Craig Boone Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#566573"
+        }
+      },
+      "part": "B",
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "universe": "Fallout",
+        "sourceWork": "Fallout 4 and Fallout: New Vegas companion continuities",
+        "sourceReference": "Boone emploie un fusil de précision et son identité de Spotter dans New Vegas ; le repérage reste de l’information.",
+        "sourceUrl": null,
+        "sourceRecord": "CAPABILITIES_LOT_3/boone_fnv",
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Fusil de chasse à lunette de Boone",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Spotter — repérer la cible",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Repli du poste d’observation",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "priorCompletion": {
+        "universe": "Fallout",
+        "sourceWork": "Fallout 4 and Fallout: New Vegas companion continuities",
+        "sourceReference": "Fallout: New Vegas: Craig Boone is a former 1st Recon sniper using a scoped hunting rifle and spotting targets.",
+        "identityBasis": "canonical-role",
+        "special": {
+          "name": "Tir de précision du 1st Recon",
+          "type": "projectile",
+          "dmg": 4.5,
+          "color": "#bf695a",
+          "animationDuration": 1.25,
+          "hitAt": 0.5,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "projectile",
+            "range": 950
+          }
+        },
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true
+      },
+      "referenceAsset": "/sprites/generated/heroes/fallout/boone-fnv.png",
+      "referenceSha256": "972f903b40d85e03c6566a24a0b9997b683ff35d1e29edc5df8e6a4157cec84e",
+      "source": {
+        "universe": "Fallout",
+        "sourceWork": "Fallout: New Vegas (2010), adult Craig Boone",
+        "appearance": "Adult Craig Boone, red First Recon beret, sunglasses, tan-brown recon armour, physical scoped hunting rifle",
+        "weapon": "Scoped hunting rifle",
+        "actionName": "Tir du fusil de reconnaissance de Boone",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Brace actual scoped rifle, one precise forward shot, recoil and recover",
+        "bodyHeight": 190,
+        "sourceReference": "https://fallout.fandom.com/wiki/Craig_Boone",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "hero": {
+        "id": "courier_six",
+        "name": "Courier Six",
+        "cat": "tactical",
+        "color": "#c2a76b",
+        "weaponType": "gun",
+        "weaponColor": "#c2a76b",
+        "stats": {
+          "hp": 124,
+          "atk": 12,
+          "def": 8,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Lucky Revolver Shot",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "V.A.T.S. Gamble",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Desert Ranger Cover",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Hoover Dam Wild Card",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#c2a76b"
+        },
+        "universe": "Fallout",
+        "category": "tactical",
+        "primaryColor": "#c2a76b",
+        "secondaryColor": "#c2a76b"
+      },
+      "part": "B",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "priorCompletion": null,
+      "referenceAsset": "/sprites/generated/heroes/fallout/courier-six.png",
+      "referenceSha256": "fa4f08954afca00713e64c8c4cb07b9823848c3e472e8cc283704b050de514eb",
+      "source": {
+        "universe": "Fallout",
+        "sourceWork": "Fallout: New Vegas (2010), chosen adult NCR Veteran Ranger loadout",
+        "appearance": "Adult opaque NCR Veteran Ranger combat helmet with red lenses and dark duster, physical service rifle; selected playable equipment not a fixed canonical identity",
+        "weapon": "Service rifle",
+        "actionName": "Rafale du fusil de service du Courrier",
+        "effect": "damage",
+        "delivery": "projectile",
+        "pose": "Brace actual service rifle, one short forward burst, recoil and recover",
+        "bodyHeight": 190,
+        "sourceReference": "https://fallout.fandom.com/wiki/Courier",
+        "source1to1Verified": false,
+        "networkVerified": false
+      }
+    }
+  ],
+  "source1to1Verified": false,
+  "priorAudit": {
+    "path": "docs/combat-fidelity-wave13-2026-10-24/current.json",
+    "sha256": "6f620419a286f2e2d59b8448cd2694c0834db0075745ae439c233bfcdd0b13c5"
+  },
+  "priorValidation": {
+    "path": "docs/combat-fidelity-wave13-2026-10-24/validation.json",
+    "sha256": "6b03a8569f660b6c30276d5e16371bd05ec8920ca625412d8c4b182ae0fcf43f"
+  },
+  "scope": "40 new missing native32/base16 identities, source-version kits and recipes; source-coherent distinct Tactics environments; adaptations are not officially verified1:1"
+}

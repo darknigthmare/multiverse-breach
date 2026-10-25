@@ -1,0 +1,987 @@
+{
+  "date": "2026-10-23",
+  "startedAt": "2026-10-23T21:17:15.583Z",
+  "passed": true,
+  "reviewer": "wave12_b; independent read-only review of the shared integration and other character parts",
+  "scope": "Forty curated kits and source versions, same-universe partners, native visual gates, Fighter scripted presentation, RPG target camps and selected support status behavior. Part B pixels were reviewed independently by wave12_a.",
+  "source1to1Verified": false,
+  "officialFrameComparisonPerformed": false,
+  "newScreenshots": 0,
+  "sourceHashes": {
+    "src/game/engineFighter.js": "9ae31e717cf0f1c3c02935e3c5138ae2f0f1546e62c13b8a6101eba88f7ce9e6",
+    "src/game/engineRpg.js": "4e46773d75e75676bc7a78905ac198a94169806639e5e927544dee926f885340",
+    "src/game/combatIdentity.js": "d24bf7514f51e73add9abc730ae099cf59e73588deceb8509950d8156f731a36",
+    "src/game/heroes.js": "74b60e092b30c4c68a7fb07ab902dfc03078cea307b15b9abacdc83a2a6dcc43",
+    "src/game/rpgTargeting.js": "7e26f43fb1051cd1002315430ec5c84f60fb0757418fa9f437c899f6889b0e29",
+    "src/game/combat/characterSuperVisuals.js": "04f85b51669fd93b0b2776172bf8e8bf54ccc3fdec29a288acc9962d1d05b21c",
+    "src/game/combat/nativeSuperVisualsWave12.js": "762458aea39677d7b7f6429d660a4dd5263d8febf91480bf85830290f39b7e39",
+    "src/game/combat/presentationCatalog.js": "bb386dcfc65eda194d2aeda4c56fede4f1a0e278917a013dcd71dd29dc935bd5",
+    "src/game/combat/presentationCatalogWave12.js": "70c82ce5958ffaecef67e3293b3debeac6d00564f4da124c1337fbe40b783fde",
+    "src/game/combat/combatSourceDefinitionsWave12.js": "55390c86b043615383ad06925c60009c9350de6732105c70ec05ac3d0567b626",
+    "src/game/combat/abilities/abilitiesWave12.js": "57dcc8b56fc947841f339863bd9234d21d75e588e8767c0100f28e11c2cd0edd",
+    "src/game/combat/abilities/catalog.js": "b603cf6645f85af6a6e9d44599e6cacfb088dd5e922481e4074e6d8de242a149",
+    "src/game/combat/rosterReinforcementsWave12.js": "51a646fbad088a8cb62889b3cd2d32c69b398ecdc2e52fb53395c05e94cea584",
+    "src/game/combat/rosterSummonChoreographyWave12.js": "ad0ecb29bdc1a9af57320cd051d275f773979d059b30fa5ccee13040df8943a3",
+    "src/game/combat/rosterSummonChoreographyWave11.js": "d3a6edd0cdb1253b76eddad08fbe03e79ae62ec7a3df487192b865fdb71efd9e",
+    "src/game/combat/summonAnimationCatalog.js": "a27e4f087d2622c5bccd38c233c9b4dbd0f423308ea3408c37ad6ce86fdc4a44",
+    "src/game/combat/summonChoreography.js": "2059b711f397ee2b20af6e8bf6f006fa49be1a1dc5119e19ca2c8aa6c8883216",
+    "src/game/combat/summonAnimationsWave12.generated.json": "3209abd0f564f3ff79524f654a2031937aa7a4551166a6ae24f5ce5e932cae5b",
+    "src/game/combat/combatSourceDefinitionsWave12PartA.js": "a7b6eb04f7f53190dbedef66b57df49f49e710eb8495d72f40e3e104f035e4f9",
+    "src/game/combat/abilities/abilitiesWave12PartA.js": "1efc031034834d61befe583c645860bf9d4564fb9f76b02674fd4fa917b42d49",
+    "src/game/combat/nativeSuperAnchorsWave12PartA.generated.json": "921e50a805ffcdf34c860c1d2bc88ed2ef499212e6df6a4b5ae78d8f5286a3e5",
+    "src/game/combat/characterAnimationsWave12PartA.generated.json": "3295532de4ca3aa263b58a08f048d0c5d67320b2979db22ff67f95ea51d776f3",
+    "src/game/combat/characterSpriteCorrectionsWave12PartA.generated.json": "831132c752cbfde8db502010dc5967961d18d34aacb798e089beb803faa4a3be",
+    "src/game/combat/combatSourceDefinitionsWave12PartB.js": "e5251a84608f1a1aa81f27da61bd094b067fd94964e932876e039d0fcdf5b149",
+    "src/game/combat/abilities/abilitiesWave12PartB.js": "ce467e83fb58947ccc4e68c1296353794d2e38da036281e045fb661ddcf8a254",
+    "src/game/combat/nativeSuperAnchorsWave12PartB.generated.json": "9e425fd9f5c0334c43985577fa2f3c6f3aae863075b9c74ce7ffcf0086d731c7",
+    "src/game/combat/characterAnimationsWave12PartB.generated.json": "099494a609ca673d31cbb8fb6daa40a23551f10bf367e5db7ea577eaf4570121",
+    "src/game/combat/characterSpriteCorrectionsWave12PartB.generated.json": "37e921bf0ecd2eb8e731116e65160b8fa7a5bf75c20786702f7473a5064054ca",
+    "src/game/combat/combatSourceDefinitionsWave12PartC.js": "90f712a2e6b5bb28f59eb78d990c38056c5505fc98f5267b4265ac0cb87fcc7f",
+    "src/game/combat/abilities/abilitiesWave12PartC.js": "019b4720d86c66658279ddc7e062b271613ec0c57649dff95ba850c675b17c2e",
+    "src/game/combat/nativeSuperAnchorsWave12PartC.generated.json": "2543310d286de1817baaa463c0f3cddff0b02b9de759964999d47174bb2c544e",
+    "src/game/combat/characterAnimationsWave12PartC.generated.json": "da35c4a7bc5b1a004cc597c3bb37b17ed4a4f63f0a61f2f7149922a776e8c48b",
+    "src/game/combat/characterSpriteCorrectionsWave12PartC.generated.json": "b0c2bab89f8a32ea7c97a123a6bf5fdb51d416b5ca1dff109f79f9489775eb40",
+    "src/game/combat/combatSourceDefinitionsWave12PartD.js": "62bbbee21be32c6029af70f655d0bd1a3ab9dd717e8763cc2b752403e3a6259e",
+    "src/game/combat/abilities/abilitiesWave12PartD.js": "703b6c92bd62da29f5de526f56f4a5c093638c3e2cd89824c919d8a186d8b780",
+    "src/game/combat/nativeSuperAnchorsWave12PartD.generated.json": "c72b494b3235d69acf1faec0c78da35b6fae8df738bfcf2b5aabe07f17da1d7c",
+    "src/game/combat/characterAnimationsWave12PartD.generated.json": "fa1bcc8f38fd76c8d652ef0880556943f07ca814fd0ea264522fc1d3c3caa716",
+    "src/game/combat/characterSpriteCorrectionsWave12PartD.generated.json": "6518b8eb1b76b2365d4d2d24110a01aea9bcd3905c222a774f250ef38190321a",
+    "docs/combat-fidelity-wave12-2026-10-23/batch-plan-before.json": "47e7c5dd474e6e2acb55f3b7e961bc1f2bdec8191e4754c426e9b4ce7f6aa642",
+    "docs/combat-fidelity-wave12-2026-10-23/independent-review-initial.json": "d6953c73962d2c670b57f2f0fd33b8b6dfb0ea1f98d5e9f97f0ae578909b78b5",
+    "docs/combat-fidelity-wave12-2026-10-23/independent-review.mjs": "2afcc732d20662047b08e90d95a3c1ad448434c1715fd252a08e913db47340f7",
+    "src/game/melee/stageAnimationCatalog.js": "db3c21258aa4a5857371c4a9fa96742f88db655d40ce6e5982edc861792e19bc",
+    "src/game/melee/stageAnimationCatalogWave10.js": "f1f96f77a73790b5abdac4e01b12bf413d96ea7efb4667ea9387034427c1cf5f",
+    "src/game/melee/stageAnimationCatalogWave11.js": "13549c59ce422d9e1c2b8a052cf90cc1b8a15e48562a0660d2da9d3d7c56d49d",
+    "src/game/melee/stageAnimationCatalogWave12.js": "00d1e18ba865973cf8c4efea68df8cc0dff9ec528c86274a4412f9066c82f4cb",
+    "src/game/melee/stageAnimationCatalogWave2.js": "692e71ae43e22ef5f3bf7c23d8cf74f232191ac12e2af594e335a6960052a0f5",
+    "src/game/melee/stageAnimationCatalogWave3.js": "7817b82b447c1e84cb39ddbf8c21dc981edeb68a173f0952d32c8c43d60e81a1",
+    "src/game/melee/stageAnimationCatalogWave4.js": "1210afbc7bef37559cac6191662a9c03401c49d6e78bcf8f58783cdcd82846c2",
+    "src/game/melee/stageAnimationCatalogWave5.js": "ee71ce4f63f32008470a61007670a2bb57620ab7254086640a969e3e753cc152",
+    "src/game/melee/stageAnimationCatalogWave6.js": "98dbc682a061eb19aae4de6a5cfc6dde180794d97f5ddd9be85d7eeaee72569c",
+    "src/game/melee/stageAnimationCatalogWave7.js": "c918e75c02b87ee555d23497e6faba47d8acb12369272567d5b73ce5f646c338",
+    "src/game/melee/stageAnimationCatalogWave8.js": "ebc5fdbb15b0be99c24f409580dc229dc29ec166d22a3ae11f875571d8db94ae",
+    "src/game/melee/stageAnimationCatalogWave9.js": "b10dde94bf508667d595963cf5139ba3c1a129e3244ae60e34f21b112b29a10f",
+    "docs/combat-fidelity-wave12-2026-10-23/stage-browser.json": "249d6cfa4dd46a6e8ac8814050b935ae9a7a7613df8c62e03059749df4789566",
+    "docs/combat-fidelity-wave12-2026-10-23/stage-browser.log": "1a36b7f64e972914f05797e72bb49c5ae58017f11b8391098e24802faa4e2fe2",
+    "docs/combat-fidelity-wave12-2026-10-23/stage-browser.png": "48d318dc4745c74edb3073ec334042441c371b1cd0cd5e0ca4d393ac9150e684",
+    "docs/combat-fidelity-wave12-2026-10-23/stage-browser-panel-1.png": "4120022634f82e56659bfba649f5647dcd1a88f59d095805e18939d4dc1a5f53",
+    "docs/combat-fidelity-wave12-2026-10-23/stage-browser-panel-2.png": "802a283f43ea36e704e0081bd363f88c3815bf61c0252e83407b24fb4034bdb9",
+    "docs/combat-fidelity-wave12-2026-10-23/browser/stage-animation.browser.mjs": "8317961379858550a6313adbbb392c6bfd21e11060bc29e842fdcbc295ce3a7b",
+    "docs/combat-fidelity-wave12-2026-10-23/browser/stage-animation-before.mjs": "df6a8007b07e6875bdf520fab5b058c7e40ba26dbd8d7446f2620d591e35d50a",
+    "docs/combat-fidelity-wave12-2026-10-23/production-freeze.json": "9e28887b93abe727f7870d07bef1109b3ade28bfbbdf7799f9b02f016e8a83de"
+  },
+  "checks": [
+    {
+      "name": "Forty explicit versions and all 160 role-safe resolved commands",
+      "passed": true,
+      "evaluatedAt": "2026-10-23T21:17:22.866Z",
+      "heroes": 40,
+      "commands": 160,
+      "damagingSupers": 24,
+      "supportiveSupers": 16,
+      "rows": [
+        {
+          "id": "pyramidhead",
+          "sourceWork": "Silent Hill 2 (2001), original PlayStation 2",
+          "kind": "great-knife",
+          "effect": "damage",
+          "delivery": "melee",
+          "weaponType": "greatsword"
+        },
+        {
+          "id": "james_s",
+          "sourceWork": "Silent Hill 2 (2001), original PlayStation 2",
+          "kind": "steel-pipe",
+          "effect": "damage",
+          "delivery": "melee",
+          "weaponType": "pipe"
+        },
+        {
+          "id": "heather",
+          "sourceWork": "Silent Hill 3 (2003), original PlayStation 2",
+          "kind": "handgun",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "harry_mason",
+          "sourceWork": "Silent Hill (1999), original PlayStation",
+          "kind": "handgun",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "alessa_gillespie",
+          "sourceWork": "Silent Hill (1999), apparition d’Alessa en uniforme scolaire",
+          "kind": "quiet-presence",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "none"
+        },
+        {
+          "id": "maria_sh2",
+          "sourceWork": "Silent Hill 2 (2001), Maria du jeu original",
+          "kind": "safe-route",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "none"
+        },
+        {
+          "id": "cybil_bennett",
+          "sourceWork": "Silent Hill (1999), agente de police de Brahms",
+          "kind": "police-handgun",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "claudia_wolf",
+          "sourceWork": "Silent Hill 3 (2003), Claudia humaine avant transformation",
+          "kind": "cult-instruction",
+          "effect": "buff",
+          "delivery": "support",
+          "weaponType": "none"
+        },
+        {
+          "id": "regina",
+          "sourceWork": "Dino Crisis (1999), tenue tactique d’origine",
+          "kind": "handgun",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "dylan",
+          "sourceWork": "Dino Crisis 2 (2000), soldat T.R.A.T. de l’US Army",
+          "kind": "shotgun",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "shotgun"
+        },
+        {
+          "id": "predator",
+          "sourceWork": "Predator (1987), original film continuity",
+          "kind": "wristblade",
+          "effect": "damage",
+          "delivery": "melee",
+          "weaponType": "wristblade"
+        },
+        {
+          "id": "city_hunter",
+          "sourceWork": "Predator 2 (1990), original film continuity",
+          "kind": "spear",
+          "effect": "damage",
+          "delivery": "melee",
+          "weaponType": "spear"
+        },
+        {
+          "id": "dutch",
+          "sourceWork": "Predator (1987), original film continuity",
+          "kind": "rifle",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "anna_predator",
+          "sourceWork": "Predator (1987), original film continuity",
+          "kind": "safe-route",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "unarmed"
+        },
+        {
+          "id": "billy_predator",
+          "sourceWork": "Predator (1987), original film continuity",
+          "kind": "machete",
+          "effect": "damage",
+          "delivery": "melee",
+          "weaponType": "slash"
+        },
+        {
+          "id": "mac_predator",
+          "sourceWork": "Predator (1987), original film continuity",
+          "kind": "machinegun",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "harrigan_predator",
+          "sourceWork": "Predator 2 (1990), original film continuity",
+          "kind": "pistol",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "greyback_yautja",
+          "sourceWork": "Predator 2 (1990), original film continuity",
+          "kind": "elder-trophy",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "claw"
+        },
+        {
+          "id": "naru",
+          "sourceWork": "Prey (2022), adult Naru during the hunt",
+          "kind": "hatchet",
+          "effect": "damage",
+          "delivery": "melee",
+          "weaponType": "axe"
+        },
+        {
+          "id": "royce_predators_core",
+          "sourceWork": "Predators (2010), Royce with his AA-12",
+          "kind": "shotgun",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "ash_williams",
+          "sourceWork": "Army of Darkness (1992), Ash Williams avant le retour à S-Mart",
+          "kind": "chainsaw",
+          "effect": "damage",
+          "delivery": "melee",
+          "weaponType": "chainsaw"
+        },
+        {
+          "id": "annie_knowby",
+          "sourceWork": "Evil Dead II (1987), Annie Knowby humaine et vivante",
+          "kind": "book-reading",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "book"
+        },
+        {
+          "id": "henry_red_ed",
+          "sourceWork": "Army of Darkness (1992), Henry le Rouge, guerrier humain médiéval",
+          "kind": "sword",
+          "effect": "damage",
+          "delivery": "melee",
+          "weaponType": "sword"
+        },
+        {
+          "id": "pablo_evil_dead",
+          "sourceWork": "Ash vs Evil Dead, saison 1 (2015), Pablo Bolivar avant les révélations ultérieures",
+          "kind": "ritual-support",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "unarmed"
+        },
+        {
+          "id": "kelly_evil_dead",
+          "sourceWork": "Ash vs Evil Dead, saison 1 (2015), Kelly Maxwell humaine",
+          "kind": "shotgun",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "shotgun"
+        },
+        {
+          "id": "ruby_evil_dead",
+          "sourceWork": "Ash vs Evil Dead, saison 1 (2015), Ruby aux cheveux roses",
+          "kind": "dagger-guard",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "dagger"
+        },
+        {
+          "id": "isaac",
+          "sourceWork": "Dead Space (2008), Isaac Clarke et RIG d’ingénieur niveau 3",
+          "kind": "plasma-cutter",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "plasma_cutter"
+        },
+        {
+          "id": "carver",
+          "sourceWork": "Dead Space 3 (2013), John Carver et son RIG de soldat",
+          "kind": "military-rifle",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "ellie",
+          "sourceWork": "Dead Space 2 (2011), Ellie Langford en tenue civile de pilote",
+          "kind": "rifle",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "nicole_brennan",
+          "sourceWork": "Dead Space (2008), Nicole Brennan humaine, vivante et en tenue médicale",
+          "kind": "medical-coordination",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "unarmed"
+        },
+        {
+          "id": "fry_futurama",
+          "sourceWork": "Futurama, série Fox originale (1999–2003), Fry livreur de Planet Express",
+          "kind": "parcel-relay",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "fist"
+        },
+        {
+          "id": "leela_futurama",
+          "sourceWork": "Futurama, série Fox originale (1999–2003), Leela pilote et combattante",
+          "kind": "martial-arts",
+          "effect": "damage",
+          "delivery": "melee",
+          "weaponType": "fist"
+        },
+        {
+          "id": "bender_futurama",
+          "sourceWork": "Futurama, série Fox originale (1999–2003), Bender Bending Rodríguez",
+          "kind": "robot-contact",
+          "effect": "damage",
+          "delivery": "melee",
+          "weaponType": "fist"
+        },
+        {
+          "id": "amy_futurama",
+          "sourceWork": "Futurama, série Fox originale (1999–2003), Amy stagiaire ingénieure de Planet Express",
+          "kind": "engineering-diagnostic",
+          "effect": "buff",
+          "delivery": "support",
+          "weaponType": "fist"
+        },
+        {
+          "id": "hermes_futurama",
+          "sourceWork": "Futurama, série Fox originale (1999–2003), Hermes bureaucrate de Planet Express",
+          "kind": "bureaucratic-coordination",
+          "effect": "buff",
+          "delivery": "support",
+          "weaponType": "fist"
+        },
+        {
+          "id": "zoidberg_futurama",
+          "sourceWork": "Futurama, série Fox originale (1999–2003), Dr John Zoidberg",
+          "kind": "medical-advice",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "fist"
+        },
+        {
+          "id": "rick",
+          "sourceWork": "Rick and Morty, saison 2 (2015), Rick Sanchez humain",
+          "kind": "space-pistol",
+          "effect": "damage",
+          "delivery": "projectile",
+          "weaponType": "gun"
+        },
+        {
+          "id": "morty",
+          "sourceWork": "Rick and Morty, saison 2 (2015), Morty Smith humain",
+          "kind": "cover-signal",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "fist"
+        },
+        {
+          "id": "summer",
+          "sourceWork": "Rick and Morty, saison 2 (2015), Summer Smith avant la tenue post-apocalyptique de saison 3",
+          "kind": "regroup-signal",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "fist"
+        },
+        {
+          "id": "birdperson",
+          "sourceWork": "Rick and Morty, saison 2 (2015), Birdperson avant sa transformation en Phoenixperson",
+          "kind": "wing-guard",
+          "effect": "guard",
+          "delivery": "support",
+          "weaponType": "fist"
+        }
+      ]
+    },
+    {
+      "name": "Strict native gates reject forged abilities, retain role from curation, and never mutate simulation",
+      "passed": true,
+      "evaluatedAt": "2026-10-23T21:17:22.871Z",
+      "camps": 2,
+      "aliasesPerIdentity": 3,
+      "rejectedProfiles": 400,
+      "rejectedContacts": 240,
+      "acceptedContacts": 144,
+      "renderCases": 240,
+      "simulationMutation": false,
+      "contextStylesRestored": true
+    },
+    {
+      "name": "Every scripted W12 phase in both camps excludes generic aura and unsolicited shots or impacts",
+      "passed": true,
+      "evaluatedAt": "2026-10-23T21:17:22.895Z",
+      "identities": 40,
+      "phases": 7,
+      "camps": 2,
+      "progressSamples": 4,
+      "evaluatedCalls": 2240,
+      "fatalityCases": 320,
+      "extraBodyAuras": 0,
+      "extraProjectiles": 0,
+      "extraContacts": 0
+    },
+    {
+      "name": "Forty actual same-universe performers and seven strict native partners retain their selected role",
+      "passed": true,
+      "evaluatedAt": "2026-10-23T21:17:23.022Z",
+      "selectedPartners": 40,
+      "nativePartners": 7,
+      "nativeGunPartners": 4,
+      "nativeMeleePartners": 2,
+      "nativeSupportPartners": 1,
+      "forgedDescriptors": 49,
+      "rows": [
+        {
+          "caller": "pyramidhead",
+          "performer": "cybil_bennett",
+          "callerWork": "Silent Hill 2 (2001), original PlayStation 2",
+          "performerWork": "Silent Hill (1999), agente de police de Brahms",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "james_s",
+          "performer": "cybil_bennett",
+          "callerWork": "Silent Hill 2 (2001), original PlayStation 2",
+          "performerWork": "Silent Hill (1999), agente de police de Brahms",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "heather",
+          "performer": "cybil_bennett",
+          "callerWork": "Silent Hill 3 (2003), original PlayStation 2",
+          "performerWork": "Silent Hill (1999), agente de police de Brahms",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "harry_mason",
+          "performer": "cybil_bennett",
+          "callerWork": "Silent Hill (1999), original PlayStation",
+          "performerWork": "Silent Hill (1999), agente de police de Brahms",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "alessa_gillespie",
+          "performer": "cybil_bennett",
+          "callerWork": "Silent Hill (1999), apparition d’Alessa en uniforme scolaire",
+          "performerWork": "Silent Hill (1999), agente de police de Brahms",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "maria_sh2",
+          "performer": "cybil_bennett",
+          "callerWork": "Silent Hill 2 (2001), Maria du jeu original",
+          "performerWork": "Silent Hill (1999), agente de police de Brahms",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "cybil_bennett",
+          "performer": "harry_mason",
+          "callerWork": "Silent Hill (1999), agente de police de Brahms",
+          "performerWork": "Silent Hill (1999), original PlayStation",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "claudia_wolf",
+          "performer": "cybil_bennett",
+          "callerWork": "Silent Hill 3 (2003), Claudia humaine avant transformation",
+          "performerWork": "Silent Hill (1999), agente de police de Brahms",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "regina",
+          "performer": "dylan",
+          "callerWork": "Dino Crisis (1999), tenue tactique d’origine",
+          "performerWork": "Dino Crisis 2 (2000), soldat T.R.A.T. de l’US Army",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "dylan",
+          "performer": "regina",
+          "callerWork": "Dino Crisis 2 (2000), soldat T.R.A.T. de l’US Army",
+          "performerWork": "Dino Crisis (1999), tenue tactique d’origine",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "predator",
+          "performer": "city_hunter",
+          "callerWork": "Predator (1987), original film continuity",
+          "performerWork": "Predator 2 (1990), original film continuity",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "city_hunter",
+          "performer": "greyback_yautja",
+          "callerWork": "Predator 2 (1990), original film continuity",
+          "performerWork": "Predator 2 (1990), original film continuity",
+          "effect": "guard",
+          "delivery": "support"
+        },
+        {
+          "caller": "dutch",
+          "performer": "billy_predator",
+          "callerWork": "Predator (1987), original film continuity",
+          "performerWork": "Predator (1987), original film continuity",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "anna_predator",
+          "performer": "dutch",
+          "callerWork": "Predator (1987), original film continuity",
+          "performerWork": "Predator (1987), original film continuity",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "billy_predator",
+          "performer": "dutch",
+          "callerWork": "Predator (1987), original film continuity",
+          "performerWork": "Predator (1987), original film continuity",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "mac_predator",
+          "performer": "dutch",
+          "callerWork": "Predator (1987), original film continuity",
+          "performerWork": "Predator (1987), original film continuity",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "harrigan_predator",
+          "performer": "dutch",
+          "callerWork": "Predator 2 (1990), original film continuity",
+          "performerWork": "Predator (1987), original film continuity",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "greyback_yautja",
+          "performer": "predator",
+          "callerWork": "Predator 2 (1990), original film continuity",
+          "performerWork": "Predator (1987), original film continuity",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "naru",
+          "performer": "dutch",
+          "callerWork": "Prey (2022), adult Naru during the hunt",
+          "performerWork": "Predator (1987), original film continuity",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "royce_predators_core",
+          "performer": "dutch",
+          "callerWork": "Predators (2010), Royce with his AA-12",
+          "performerWork": "Predator (1987), original film continuity",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "ash_williams",
+          "performer": "henry_red_ed",
+          "callerWork": "Army of Darkness (1992), Ash Williams avant le retour à S-Mart",
+          "performerWork": "Army of Darkness (1992), Henry le Rouge, guerrier humain médiéval",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "annie_knowby",
+          "performer": "ash_williams",
+          "callerWork": "Evil Dead II (1987), Annie Knowby humaine et vivante",
+          "performerWork": "Army of Darkness (1992), Ash Williams avant le retour à S-Mart",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "henry_red_ed",
+          "performer": "ash_williams",
+          "callerWork": "Army of Darkness (1992), Henry le Rouge, guerrier humain médiéval",
+          "performerWork": "Army of Darkness (1992), Ash Williams avant le retour à S-Mart",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "pablo_evil_dead",
+          "performer": "kelly_evil_dead",
+          "callerWork": "Ash vs Evil Dead, saison 1 (2015), Pablo Bolivar avant les révélations ultérieures",
+          "performerWork": "Ash vs Evil Dead, saison 1 (2015), Kelly Maxwell humaine",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "kelly_evil_dead",
+          "performer": "pablo_evil_dead",
+          "callerWork": "Ash vs Evil Dead, saison 1 (2015), Kelly Maxwell humaine",
+          "performerWork": "Ash vs Evil Dead, saison 1 (2015), Pablo Bolivar avant les révélations ultérieures",
+          "effect": "guard",
+          "delivery": "support"
+        },
+        {
+          "caller": "ruby_evil_dead",
+          "performer": "ash_williams",
+          "callerWork": "Ash vs Evil Dead, saison 1 (2015), Ruby aux cheveux roses",
+          "performerWork": "Army of Darkness (1992), Ash Williams avant le retour à S-Mart",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "isaac",
+          "performer": "nicole_brennan",
+          "callerWork": "Dead Space (2008), Isaac Clarke et RIG d’ingénieur niveau 3",
+          "performerWork": "Dead Space (2008), Nicole Brennan humaine, vivante et en tenue médicale",
+          "effect": "guard",
+          "delivery": "support"
+        },
+        {
+          "caller": "carver",
+          "performer": "isaac",
+          "callerWork": "Dead Space 3 (2013), John Carver et son RIG de soldat",
+          "performerWork": "Dead Space (2008), Isaac Clarke et RIG d’ingénieur niveau 3",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "ellie",
+          "performer": "isaac",
+          "callerWork": "Dead Space 2 (2011), Ellie Langford en tenue civile de pilote",
+          "performerWork": "Dead Space (2008), Isaac Clarke et RIG d’ingénieur niveau 3",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "nicole_brennan",
+          "performer": "isaac",
+          "callerWork": "Dead Space (2008), Nicole Brennan humaine, vivante et en tenue médicale",
+          "performerWork": "Dead Space (2008), Isaac Clarke et RIG d’ingénieur niveau 3",
+          "effect": "damage",
+          "delivery": "projectile"
+        },
+        {
+          "caller": "fry_futurama",
+          "performer": "leela_futurama",
+          "callerWork": "Futurama, série Fox originale (1999–2003), Fry livreur de Planet Express",
+          "performerWork": "Futurama, série Fox originale (1999–2003), Leela pilote et combattante",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "leela_futurama",
+          "performer": "fry_futurama",
+          "callerWork": "Futurama, série Fox originale (1999–2003), Leela pilote et combattante",
+          "performerWork": "Futurama, série Fox originale (1999–2003), Fry livreur de Planet Express",
+          "effect": "guard",
+          "delivery": "support"
+        },
+        {
+          "caller": "bender_futurama",
+          "performer": "leela_futurama",
+          "callerWork": "Futurama, série Fox originale (1999–2003), Bender Bending Rodríguez",
+          "performerWork": "Futurama, série Fox originale (1999–2003), Leela pilote et combattante",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "amy_futurama",
+          "performer": "leela_futurama",
+          "callerWork": "Futurama, série Fox originale (1999–2003), Amy stagiaire ingénieure de Planet Express",
+          "performerWork": "Futurama, série Fox originale (1999–2003), Leela pilote et combattante",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "hermes_futurama",
+          "performer": "leela_futurama",
+          "callerWork": "Futurama, série Fox originale (1999–2003), Hermes bureaucrate de Planet Express",
+          "performerWork": "Futurama, série Fox originale (1999–2003), Leela pilote et combattante",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "zoidberg_futurama",
+          "performer": "leela_futurama",
+          "callerWork": "Futurama, série Fox originale (1999–2003), Dr John Zoidberg",
+          "performerWork": "Futurama, série Fox originale (1999–2003), Leela pilote et combattante",
+          "effect": "damage",
+          "delivery": "melee"
+        },
+        {
+          "caller": "rick",
+          "performer": "birdperson",
+          "callerWork": "Rick and Morty, saison 2 (2015), Rick Sanchez humain",
+          "performerWork": "Rick and Morty, saison 2 (2015), Birdperson avant sa transformation en Phoenixperson",
+          "effect": "guard",
+          "delivery": "support"
+        },
+        {
+          "caller": "morty",
+          "performer": "birdperson",
+          "callerWork": "Rick and Morty, saison 2 (2015), Morty Smith humain",
+          "performerWork": "Rick and Morty, saison 2 (2015), Birdperson avant sa transformation en Phoenixperson",
+          "effect": "guard",
+          "delivery": "support"
+        },
+        {
+          "caller": "summer",
+          "performer": "birdperson",
+          "callerWork": "Rick and Morty, saison 2 (2015), Summer Smith avant la tenue post-apocalyptique de saison 3",
+          "performerWork": "Rick and Morty, saison 2 (2015), Birdperson avant sa transformation en Phoenixperson",
+          "effect": "guard",
+          "delivery": "support"
+        },
+        {
+          "caller": "birdperson",
+          "performer": "rick",
+          "callerWork": "Rick and Morty, saison 2 (2015), Birdperson avant sa transformation en Phoenixperson",
+          "performerWork": "Rick and Morty, saison 2 (2015), Rick Sanchez humain",
+          "effect": "damage",
+          "delivery": "projectile"
+        }
+      ]
+    },
+    {
+      "name": "Roster cue feedback preserves old origins and requires accepted contact, with quiet support",
+      "passed": true,
+      "evaluatedAt": "2026-10-23T21:17:23.029Z",
+      "historicalAssets": 30,
+      "oldOriginComparisons": 480,
+      "cueCases": 42,
+      "falseContactRings": 0,
+      "supportShotsOrContacts": 0
+    },
+    {
+      "name": "RPG commands reject an explicitly selected target in the wrong camp without spending resources",
+      "passed": true,
+      "evaluatedAt": "2026-10-23T21:17:23.033Z",
+      "identities": 40,
+      "camps": 2,
+      "commandsPerIdentity": 4,
+      "rejectedWrongCampSelections": 320,
+      "unchangedResourcesForRejectedActions": true,
+      "mortyAndSummerAcceptedSupportCases": 12,
+      "smithNameStatusLeak": false,
+      "genericAlliedLaser": false
+    },
+    {
+      "name": "Retain the already executed stage browser evidence and bind current files to the production freeze",
+      "passed": true,
+      "evaluatedAt": "2026-10-23T21:17:23.060Z",
+      "scenes": 14,
+      "universes": 7,
+      "originalModeRenders": 56,
+      "originalAdditionalViewports": 42,
+      "originalHistoricalCanvasSignatures": 802,
+      "currentStageSourcesMatchFreeze": true,
+      "retainedArtifacts": 7,
+      "repeatedScreenshots": 0
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "W12-REVIEW-001",
+      "severity": "medium",
+      "module": "src/game/engineFighter.js",
+      "problem": "Scripted final presentations constructed an incomplete strict native profile without effect or delivery, then fell through to the old generic body aura.",
+      "actualCases": [
+        "anna_predator",
+        "dutch",
+        "greyback_yautja",
+        "birdperson"
+      ],
+      "actualCanvasCommandForEachCase": [
+        "ellipse",
+        400,
+        248,
+        69.77211629518312,
+        102.87846202409766,
+        0,
+        0,
+        6.283185307179586
+      ],
+      "expected": "Dedicated native drawings carry the finale gesture. A presentation without accepted simulation contact adds no weapon shot, hit or magical body aura.",
+      "resolution": "Integration explicitly excludes supplemental generic scripted effects for Wave12 native presentations. The independent replay covers all 40 identities, seven phases and both facings.",
+      "verified": true
+    },
+    {
+      "id": "W12-REVIEW-002",
+      "severity": "low",
+      "module": "src/game/combat/combatSourceDefinitionsWave12PartC.js",
+      "problem": "Annie Knowby declared weaponType staff even though the selected 1987 book-reading version, native drawings and support kit contain a book and no staff.",
+      "actual": {
+        "heroId": "annie_knowby",
+        "weaponType": "staff"
+      },
+      "expected": {
+        "heroId": "annie_knowby",
+        "weaponType": "book"
+      },
+      "resolution": "The selected source definition and resolved roster metadata now use book for Annie Knowby.",
+      "verified": true
+    }
+  ],
+  "risks": [
+    {
+      "id": "SOURCE-FIDELITY",
+      "status": "declared limitation",
+      "detail": "Generated drawings and bounded combat timing are adaptations. No exact original animation or official frame comparison was performed; source 1:1 certification remains false."
+    },
+    {
+      "id": "CROSSOVER-PARTNERS",
+      "status": "declared adaptation",
+      "detail": "All 40 partners belong to the same universe and use their own action. Some relays cross source dates, protagonists and antagonists: this is game roster composition, not a canonical alliance or a literal original-world summon. Examples include Pyramid Head → Cybil, Naru → Dutch, and living Nicole → original Isaac."
+    },
+    {
+      "id": "SUPPORT-MECHANICS",
+      "status": "declared adaptation",
+      "detail": "Coordination gestures, medical advice and physical cover resolve to bounded guard or attack buffs for playability. They do not claim canonical magical shields, instant treatment, healing rays or source-accurate numerical mechanics."
+    },
+    {
+      "id": "MORTY-ART",
+      "status": "explicitly blocked",
+      "detail": "The image-generation refusal is preserved. Morty has no new 32-pose presentation atlas or 16-pose base atlas; the one calm legacy cell remains an explicitly disclosed fallback. No alias or alternate request bypass is introduced."
+    },
+    {
+      "id": "VISUAL-REVIEW-SCOPE",
+      "status": "bounded independent review",
+      "detail": "This review evaluates source metadata, executable dispatch, Canvas commands and camp/role rules. Native image quality is established by the separate recorded contact-sheet and pixel reviews; this report does not claim a fresh visual inspection of every other part."
+    }
+  ],
+  "retainedStageEvidence": {
+    "originalStartedAt": "2026-10-23T21:06:40.265Z",
+    "originalFinishedAt": "2026-10-23T21:06:48.325Z",
+    "retainedAt": "2026-10-23T21:17:23.063Z",
+    "retentionOnly": true,
+    "hashTiming": "The hashes here are measured during this independent review, after the recorded browser execution. They verify current retention and production-freeze agreement, and do not claim hashes were captured before that browser run.",
+    "artifacts": [
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/stage-browser.json",
+        "bytes": 178964,
+        "sha256": "249d6cfa4dd46a6e8ac8814050b935ae9a7a7613df8c62e03059749df4789566"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/stage-browser.log",
+        "bytes": 150,
+        "sha256": "1a36b7f64e972914f05797e72bb49c5ae58017f11b8391098e24802faa4e2fe2"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/stage-browser.png",
+        "bytes": 56196,
+        "sha256": "48d318dc4745c74edb3073ec334042441c371b1cd0cd5e0ca4d393ac9150e684",
+        "width": 1260,
+        "height": 1228
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/stage-browser-panel-1.png",
+        "bytes": 27089,
+        "sha256": "4120022634f82e56659bfba649f5647dcd1a88f59d095805e18939d4dc1a5f53",
+        "width": 1260,
+        "height": 900
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/stage-browser-panel-2.png",
+        "bytes": 32919,
+        "sha256": "802a283f43ea36e704e0081bd363f88c3815bf61c0252e83407b24fb4034bdb9",
+        "width": 1260,
+        "height": 900
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/browser/stage-animation.browser.mjs",
+        "bytes": 13180,
+        "sha256": "8317961379858550a6313adbbb392c6bfd21e11060bc29e842fdcbc295ce3a7b"
+      },
+      {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/browser/stage-animation-before.mjs",
+        "bytes": 32677,
+        "sha256": "df6a8007b07e6875bdf520fab5b058c7e40ba26dbd8d7446f2620d591e35d50a"
+      }
+    ]
+  },
+  "finishedAt": "2026-10-23T21:17:23.145Z",
+  "sourceHashesAfter": {
+    "src/game/engineFighter.js": "9ae31e717cf0f1c3c02935e3c5138ae2f0f1546e62c13b8a6101eba88f7ce9e6",
+    "src/game/engineRpg.js": "4e46773d75e75676bc7a78905ac198a94169806639e5e927544dee926f885340",
+    "src/game/combatIdentity.js": "d24bf7514f51e73add9abc730ae099cf59e73588deceb8509950d8156f731a36",
+    "src/game/heroes.js": "74b60e092b30c4c68a7fb07ab902dfc03078cea307b15b9abacdc83a2a6dcc43",
+    "src/game/rpgTargeting.js": "7e26f43fb1051cd1002315430ec5c84f60fb0757418fa9f437c899f6889b0e29",
+    "src/game/combat/characterSuperVisuals.js": "04f85b51669fd93b0b2776172bf8e8bf54ccc3fdec29a288acc9962d1d05b21c",
+    "src/game/combat/nativeSuperVisualsWave12.js": "762458aea39677d7b7f6429d660a4dd5263d8febf91480bf85830290f39b7e39",
+    "src/game/combat/presentationCatalog.js": "bb386dcfc65eda194d2aeda4c56fede4f1a0e278917a013dcd71dd29dc935bd5",
+    "src/game/combat/presentationCatalogWave12.js": "70c82ce5958ffaecef67e3293b3debeac6d00564f4da124c1337fbe40b783fde",
+    "src/game/combat/combatSourceDefinitionsWave12.js": "55390c86b043615383ad06925c60009c9350de6732105c70ec05ac3d0567b626",
+    "src/game/combat/abilities/abilitiesWave12.js": "57dcc8b56fc947841f339863bd9234d21d75e588e8767c0100f28e11c2cd0edd",
+    "src/game/combat/abilities/catalog.js": "b603cf6645f85af6a6e9d44599e6cacfb088dd5e922481e4074e6d8de242a149",
+    "src/game/combat/rosterReinforcementsWave12.js": "51a646fbad088a8cb62889b3cd2d32c69b398ecdc2e52fb53395c05e94cea584",
+    "src/game/combat/rosterSummonChoreographyWave12.js": "ad0ecb29bdc1a9af57320cd051d275f773979d059b30fa5ccee13040df8943a3",
+    "src/game/combat/rosterSummonChoreographyWave11.js": "d3a6edd0cdb1253b76eddad08fbe03e79ae62ec7a3df487192b865fdb71efd9e",
+    "src/game/combat/summonAnimationCatalog.js": "a27e4f087d2622c5bccd38c233c9b4dbd0f423308ea3408c37ad6ce86fdc4a44",
+    "src/game/combat/summonChoreography.js": "2059b711f397ee2b20af6e8bf6f006fa49be1a1dc5119e19ca2c8aa6c8883216",
+    "src/game/combat/summonAnimationsWave12.generated.json": "3209abd0f564f3ff79524f654a2031937aa7a4551166a6ae24f5ce5e932cae5b",
+    "src/game/combat/combatSourceDefinitionsWave12PartA.js": "a7b6eb04f7f53190dbedef66b57df49f49e710eb8495d72f40e3e104f035e4f9",
+    "src/game/combat/abilities/abilitiesWave12PartA.js": "1efc031034834d61befe583c645860bf9d4564fb9f76b02674fd4fa917b42d49",
+    "src/game/combat/nativeSuperAnchorsWave12PartA.generated.json": "921e50a805ffcdf34c860c1d2bc88ed2ef499212e6df6a4b5ae78d8f5286a3e5",
+    "src/game/combat/characterAnimationsWave12PartA.generated.json": "3295532de4ca3aa263b58a08f048d0c5d67320b2979db22ff67f95ea51d776f3",
+    "src/game/combat/characterSpriteCorrectionsWave12PartA.generated.json": "831132c752cbfde8db502010dc5967961d18d34aacb798e089beb803faa4a3be",
+    "src/game/combat/combatSourceDefinitionsWave12PartB.js": "e5251a84608f1a1aa81f27da61bd094b067fd94964e932876e039d0fcdf5b149",
+    "src/game/combat/abilities/abilitiesWave12PartB.js": "ce467e83fb58947ccc4e68c1296353794d2e38da036281e045fb661ddcf8a254",
+    "src/game/combat/nativeSuperAnchorsWave12PartB.generated.json": "9e425fd9f5c0334c43985577fa2f3c6f3aae863075b9c74ce7ffcf0086d731c7",
+    "src/game/combat/characterAnimationsWave12PartB.generated.json": "099494a609ca673d31cbb8fb6daa40a23551f10bf367e5db7ea577eaf4570121",
+    "src/game/combat/characterSpriteCorrectionsWave12PartB.generated.json": "37e921bf0ecd2eb8e731116e65160b8fa7a5bf75c20786702f7473a5064054ca",
+    "src/game/combat/combatSourceDefinitionsWave12PartC.js": "90f712a2e6b5bb28f59eb78d990c38056c5505fc98f5267b4265ac0cb87fcc7f",
+    "src/game/combat/abilities/abilitiesWave12PartC.js": "019b4720d86c66658279ddc7e062b271613ec0c57649dff95ba850c675b17c2e",
+    "src/game/combat/nativeSuperAnchorsWave12PartC.generated.json": "2543310d286de1817baaa463c0f3cddff0b02b9de759964999d47174bb2c544e",
+    "src/game/combat/characterAnimationsWave12PartC.generated.json": "da35c4a7bc5b1a004cc597c3bb37b17ed4a4f63f0a61f2f7149922a776e8c48b",
+    "src/game/combat/characterSpriteCorrectionsWave12PartC.generated.json": "b0c2bab89f8a32ea7c97a123a6bf5fdb51d416b5ca1dff109f79f9489775eb40",
+    "src/game/combat/combatSourceDefinitionsWave12PartD.js": "62bbbee21be32c6029af70f655d0bd1a3ab9dd717e8763cc2b752403e3a6259e",
+    "src/game/combat/abilities/abilitiesWave12PartD.js": "703b6c92bd62da29f5de526f56f4a5c093638c3e2cd89824c919d8a186d8b780",
+    "src/game/combat/nativeSuperAnchorsWave12PartD.generated.json": "c72b494b3235d69acf1faec0c78da35b6fae8df738bfcf2b5aabe07f17da1d7c",
+    "src/game/combat/characterAnimationsWave12PartD.generated.json": "fa1bcc8f38fd76c8d652ef0880556943f07ca814fd0ea264522fc1d3c3caa716",
+    "src/game/combat/characterSpriteCorrectionsWave12PartD.generated.json": "6518b8eb1b76b2365d4d2d24110a01aea9bcd3905c222a774f250ef38190321a",
+    "docs/combat-fidelity-wave12-2026-10-23/batch-plan-before.json": "47e7c5dd474e6e2acb55f3b7e961bc1f2bdec8191e4754c426e9b4ce7f6aa642",
+    "docs/combat-fidelity-wave12-2026-10-23/independent-review-initial.json": "d6953c73962d2c670b57f2f0fd33b8b6dfb0ea1f98d5e9f97f0ae578909b78b5",
+    "docs/combat-fidelity-wave12-2026-10-23/independent-review.mjs": "2afcc732d20662047b08e90d95a3c1ad448434c1715fd252a08e913db47340f7",
+    "src/game/melee/stageAnimationCatalog.js": "db3c21258aa4a5857371c4a9fa96742f88db655d40ce6e5982edc861792e19bc",
+    "src/game/melee/stageAnimationCatalogWave10.js": "f1f96f77a73790b5abdac4e01b12bf413d96ea7efb4667ea9387034427c1cf5f",
+    "src/game/melee/stageAnimationCatalogWave11.js": "13549c59ce422d9e1c2b8a052cf90cc1b8a15e48562a0660d2da9d3d7c56d49d",
+    "src/game/melee/stageAnimationCatalogWave12.js": "00d1e18ba865973cf8c4efea68df8cc0dff9ec528c86274a4412f9066c82f4cb",
+    "src/game/melee/stageAnimationCatalogWave2.js": "692e71ae43e22ef5f3bf7c23d8cf74f232191ac12e2af594e335a6960052a0f5",
+    "src/game/melee/stageAnimationCatalogWave3.js": "7817b82b447c1e84cb39ddbf8c21dc981edeb68a173f0952d32c8c43d60e81a1",
+    "src/game/melee/stageAnimationCatalogWave4.js": "1210afbc7bef37559cac6191662a9c03401c49d6e78bcf8f58783cdcd82846c2",
+    "src/game/melee/stageAnimationCatalogWave5.js": "ee71ce4f63f32008470a61007670a2bb57620ab7254086640a969e3e753cc152",
+    "src/game/melee/stageAnimationCatalogWave6.js": "98dbc682a061eb19aae4de6a5cfc6dde180794d97f5ddd9be85d7eeaee72569c",
+    "src/game/melee/stageAnimationCatalogWave7.js": "c918e75c02b87ee555d23497e6faba47d8acb12369272567d5b73ce5f646c338",
+    "src/game/melee/stageAnimationCatalogWave8.js": "ebc5fdbb15b0be99c24f409580dc229dc29ec166d22a3ae11f875571d8db94ae",
+    "src/game/melee/stageAnimationCatalogWave9.js": "b10dde94bf508667d595963cf5139ba3c1a129e3244ae60e34f21b112b29a10f",
+    "docs/combat-fidelity-wave12-2026-10-23/stage-browser.json": "249d6cfa4dd46a6e8ac8814050b935ae9a7a7613df8c62e03059749df4789566",
+    "docs/combat-fidelity-wave12-2026-10-23/stage-browser.log": "1a36b7f64e972914f05797e72bb49c5ae58017f11b8391098e24802faa4e2fe2",
+    "docs/combat-fidelity-wave12-2026-10-23/stage-browser.png": "48d318dc4745c74edb3073ec334042441c371b1cd0cd5e0ca4d393ac9150e684",
+    "docs/combat-fidelity-wave12-2026-10-23/stage-browser-panel-1.png": "4120022634f82e56659bfba649f5647dcd1a88f59d095805e18939d4dc1a5f53",
+    "docs/combat-fidelity-wave12-2026-10-23/stage-browser-panel-2.png": "802a283f43ea36e704e0081bd363f88c3815bf61c0252e83407b24fb4034bdb9",
+    "docs/combat-fidelity-wave12-2026-10-23/browser/stage-animation.browser.mjs": "8317961379858550a6313adbbb392c6bfd21e11060bc29e842fdcbc295ce3a7b",
+    "docs/combat-fidelity-wave12-2026-10-23/browser/stage-animation-before.mjs": "df6a8007b07e6875bdf520fab5b058c7e40ba26dbd8d7446f2620d591e35d50a",
+    "docs/combat-fidelity-wave12-2026-10-23/production-freeze.json": "9e28887b93abe727f7870d07bef1109b3ade28bfbbdf7799f9b02f016e8a83de"
+  },
+  "sourcesStableDuringReview": true
+}

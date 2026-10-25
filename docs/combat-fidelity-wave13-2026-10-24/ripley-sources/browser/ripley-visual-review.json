@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-25T06:29:11.154Z",
+  "heroId": "ripley",
+  "phase": "final",
+  "passed": true,
+  "status": "passed-with-documented-limitations",
+  "source1to1Verified": false,
+  "official1to1Certification": false,
+  "scope": "Revue réelle des six captures produites par le rejeu final, corroborée par les rapports/traces et une contrelecture indépendante sans navigateur.",
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave13-2026-10-24/production-freeze.json",
+    "bytes": 157747,
+    "sha256": "8154f653bc99249cd928dc9ccbc0d95b5e8b534ee8bf5e3181b30df8aaae9a0e",
+    "createdAt": "2026-10-25T06:21:35.273Z",
+    "fileCount": 1142
+  },
+  "evidence": {
+    "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-evidence.json",
+    "bytes": 54352,
+    "sha256": "8acd68648ee730b90b48d878c4c830a33771ca2575eac2aabece95329315b596"
+  },
+  "execution": {
+    "startedAt": "2026-10-25T06:26:41.358Z",
+    "finishedAt": "2026-10-25T06:27:02.013Z",
+    "browserClosedAt": "2026-10-25T06:27:01.917Z",
+    "allBrowserWindowsClosed": true,
+    "resourcesUnchangedDuringRun": true,
+    "resourceCount": 63,
+    "commands": [
+      {
+        "id": "core",
+        "exitCode": 0,
+        "browserClosedAt": "2026-10-25T06:26:45.203Z",
+        "finishedAt": "2026-10-25T06:26:45.248Z"
+      },
+      {
+        "id": "movement",
+        "exitCode": 0,
+        "browserClosedAt": "2026-10-25T06:26:52.142Z",
+        "finishedAt": "2026-10-25T06:26:52.183Z"
+      },
+      {
+        "id": "super",
+        "exitCode": 0,
+        "browserClosedAt": "2026-10-25T06:26:58.065Z",
+        "finishedAt": "2026-10-25T06:26:58.108Z"
+      },
+      {
+        "id": "physical-ledge",
+        "exitCode": 0,
+        "browserClosedAt": "2026-10-25T06:27:01.917Z",
+        "finishedAt": "2026-10-25T06:27:01.980Z"
+      }
+    ]
+  },
+  "counts": {
+    "flows": 4,
+    "states": 45,
+    "nativePoses": 180,
+    "coreDraws": 360,
+    "controlledGripDraws": 8,
+    "physicalLedgeCases": 20,
+    "physicalGripDraws": 32
+  },
+  "captures": [
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-core.png",
+      "bytes": 1250936,
+      "sha256": "31c04503f6e85b350e4da395cfba47df37ea1329d319ee1997de71695c18ed24",
+      "width": 1120,
+      "height": 8100,
+      "inspectedWith": "view_image original",
+      "observations": [
+        "45 rangées visibles, avec quatre poses par état et deux orientations. Les silhouettes restent entières ; aucun rectangle parasite ni cellule vide évident.",
+        "Marche/course, accroupissement, saut/chute, attaques, garde, rebords et états de fin ont des poses lisibles et distinctes. Tenue bleue et cheveux bruns cohérents entre les rangées.",
+        "Les armes et éclairs de tir apparaissent dans les rangées de combat concernées. Les orientations opposées sont le miroir runtime de ces mêmes poses.",
+        "La visualisation de la planche 1120 × 8100 a été réduite par le viewer à 830 × 6000 ; cette revue de planche ne certifie pas chaque détail anatomique à la résolution source."
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-grips.png",
+      "bytes": 45423,
+      "sha256": "eecf1b2e6bc3dbe69dc7acdb29090d3700a10e1243501fd5a9e0cb65438efbe4",
+      "width": 900,
+      "height": 1100,
+      "inspectedWith": "view_image original",
+      "observations": [
+        "Quatre poses de suspension sur chacun des deux bords ; main visible au point terminal de la ligne, corps sous le bord et sans découpe évidente.",
+        "Les changements de jambes et de buste sont visibles ; la main reste attachée au bord dans les huit vues."
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-movement.png",
+      "bytes": 1512245,
+      "sha256": "4bc3e8dc9a13fdfe86ff9a25a2a46834ac130568d506f30050d4c635a3059bb0",
+      "width": 1440,
+      "height": 1567,
+      "inspectedWith": "view_image original",
+      "observations": [
+        "GameCanvas complet avec Ripley au sol, adversaire à droite et panneau de commandes visible. Sprite entier et fond de scène rendu.",
+        "Cette image finale seule ne montre pas toutes les étapes du saut ou du demi-tour ; leurs quatre colonnes sont établies par le rapport et la trace du parcours clavier."
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-pause.png",
+      "bytes": 1512218,
+      "sha256": "730c3cd38ef892535ba7dee0998f567d3231f4deac9b946eb92e51c64d82d37e",
+      "width": 1440,
+      "height": 1567,
+      "inspectedWith": "view_image original",
+      "observations": [
+        "Scène et silhouette au sol cohérentes avec la capture de fin de déplacement ; pas de découpe ou déplacement visible anormal.",
+        "La stabilité de 300 ms est établie par les valeurs avant/après identiques du rapport, et non par une prétendue identité pixel à pixel des deux captures."
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-super.png",
+      "bytes": 1493816,
+      "sha256": "429ac6c7b456b45e1a8a676ed77777c471ebaf4636d95d6a3922ff50d924403f",
+      "width": 1440,
+      "height": 1567,
+      "inspectedWith": "view_image original",
+      "observations": [
+        "Ripley vise vers Cloud ; trait/effet de tir et impact visibles ; jauge de super à 0 % et état SPECIAL affichés.",
+        "Le HUD HP ennemi affiche encore 100000/100000 au gel d’impact. Cette capture seule ne prouve pas les dégâts : la trace et le rapport constatent 99939 HP après hitAt, un impact de 61 et aucun second impact.",
+        "Le nom du super rendu dans la scène est sombre sur le décor ; le nom reste lisible dans le panneau de commandes. Aucun changement de production ou de harnais effectué."
+      ]
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-physical-ledge.png",
+      "bytes": 460129,
+      "sha256": "93258946c4c93a0f74c817c9b89ae0c28241715fafc1f08691458e8d67432839",
+      "width": 1040,
+      "height": 3200,
+      "inspectedWith": "view_image original",
+      "observations": [
+        "Les vingt cas player/opponent × left/right × hold/climb/drop/jump/attack sont présents et leurs silhouettes sont entières.",
+        "Hold montre quatre poses attachées au bord ; climb passe de suspendu à au-dessus du bord. Drop et jump montrent chacun quatre poses distinctes sans plateforme maintenue sous la main.",
+        "Attack présente le départ de commande pour chaque camp/côté (colonne 0 dans ce harnais physique) ; les quatre poses de ledgeAttack sont couvertes séparément par core.",
+        "Quelques étiquettes du harnais touchent les sprites, en particulier opponent/left/drop ; ce sont des annotations de la planche de contrôle."
+      ]
+    }
+  ],
+  "independentCrosscheck": {
+    "reviewer": "ripley_final/visual_crosscheck",
+    "readOnly": true,
+    "browserLaunched": false,
+    "filesWritten": false,
+    "capturesViewed": 6,
+    "findings": [
+      "Aucun défaut visuel bloquant évident sur prises, montées, lâchers, sauts ou attaque au bord.",
+      "Super visible avec tir et jauge 0 %.",
+      "HUD HP non rafraîchi dans la capture au gel d’impact ; dégâts à établir par traces.",
+      "Texte super sombre sur décor.",
+      "Aucune certification officielle 1:1."
+    ]
+  },
+  "firstAttempt": {
+    "passed": false,
+    "archive": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed",
+    "archivedFiles": [
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-core-closure.json",
+        "bytes": 26513,
+        "sha256": "db325ae77c6e243b53f06ce4fac325b79497d5229a4c855160093fd24e476d39"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-core-result.json",
+        "bytes": 27682,
+        "sha256": "adf3e70d9e40cc3d458127f22def83b7fd04253e877889e58ef0b21f74992df9"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-core-trace.json",
+        "bytes": 162933,
+        "sha256": "a795f2431e4fcecb0b2223b80c8b186938d6c4a29b5bdf22455b19d6d0e7c220"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-core.log",
+        "bytes": 198,
+        "sha256": "98e85a3dc9687f0a5e4fffc6764aced6bc5481706b0c9c4e7e80f1321f58063e"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-core.png",
+        "bytes": 1250936,
+        "sha256": "31c04503f6e85b350e4da395cfba47df37ea1329d319ee1997de71695c18ed24"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-grips.png",
+        "bytes": 45423,
+        "sha256": "eecf1b2e6bc3dbe69dc7acdb29090d3700a10e1243501fd5a9e0cb65438efbe4"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-movement-closure.json",
+        "bytes": 26518,
+        "sha256": "d8212be6eb004795c8c70c4fa66c23dce602d0a0f3965ddebe9354efa7c0cc00"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-movement-failure.json",
+        "bytes": 71749,
+        "sha256": "0c189875160dfabe58d726fe2e6a237553ab83269d709c655929f5488db6312c"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-movement-failure.png",
+        "bytes": 1512410,
+        "sha256": "bfde78e547e0c57162fb39357668e36be3e1cebee7f48aa216195d32d8a8d925"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-movement-trace.json",
+        "bytes": 58138,
+        "sha256": "2bf9ed1b403798112093a791715b7683c6bc240ac7fc42d9eabcc0fb59e595d9"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-movement.log",
+        "bytes": 495,
+        "sha256": "19a09e63243510abba3952648fdd795699847b6d4e2376b7abe1efa2c0eab493"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-movement.png",
+        "bytes": 1512377,
+        "sha256": "08703f339f1947776770bea995998b98444057628814c92f16c7603824f1103b"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-pause.png",
+        "bytes": 1512410,
+        "sha256": "bfde78e547e0c57162fb39357668e36be3e1cebee7f48aa216195d32d8a8d925"
+      },
+      {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/attempts/final-20261025T062609-turn-col0-missed/ripley-runner-failure.json",
+        "bytes": 2069,
+        "sha256": "8695bc57ad4210d3021a95b9217ece283985c0c0db57fb189b38b597dc7eff35"
+      }
+    ],
+    "failedFlow": "movement",
+    "assertion": "turn draws four poses",
+    "expectedColumns": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "observedColumns": [
+      1,
+      2,
+      3
+    ],
+    "pageErrors": [],
+    "browserClosedAt": "2026-10-25T06:26:17.917Z",
+    "productionInputsStableDuringRun": true,
+    "interpretation": "Une capture de draw de la colonne 0 de turn a été manquée sur ce premier échantillonnage. Aucun défaut moteur établi par cette observation seule.",
+    "followup": "Rejeu complet des quatre flux sans aucune mutation de production ou de harnais : PASS, colonnes [0,1,2,3] pour jumpRise/fall/land/turn.",
+    "staleCanonicalFailureArtifactsMovedToArchive": true
+  },
+  "limitations": [
+    "Les deux orientations utilisent le miroir horizontal du runtime, y compris les asymétries de tenue et d’équipement.",
+    "Core et physical-ledge sont des séquences contrôlées du vrai renderer/moteur. Movement et super traversent le vrai GameCanvas avec clavier.",
+    "La chronologie de lâcher/saut suit les ticks physiques naturels ; une commande ou collision légale peut interrompre ces séquences.",
+    "Le premier essai a manqué la colonne 0 de turn ; cet échec de prélèvement est conservé et le rejeu complet inchangé a passé.",
+    "Une requête Google Fonts bloquée est explicitement comptabilisée dans les rapports concernés ; aucun pageerror dans les quatre flux finaux.",
+    "La capture super gelée à l’impact précède le rafraîchissement du HUD HP ; utiliser les traces/rapports pour le résultat des dégâts.",
+    "Les captures statiques et cette revue ne constituent aucune certification de fidélité officielle 1:1."
+  ],
+  "productionOrHarnessMutations": false,
+  "collectorCommand": "node docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/collect-ripley-evidence.mjs --check",
+  "collectorCheck": {
+    "passed": true,
+    "exitCode": 0,
+    "checkedAt": "2026-10-25T06:29:23.646Z",
+    "command": "node docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/collect-ripley-evidence.mjs --check",
+    "observedStdout": {
+      "passed": true,
+      "checked": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-evidence.json",
+      "flows": 4
+    },
+    "origin": "observed-exec-command-exit-and-stdout"
+  }
+}

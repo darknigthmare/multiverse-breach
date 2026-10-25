@@ -7,6 +7,9 @@ import { WAVE_8_PRESENTATION_DEFINITIONS } from './presentationCatalogWave8.js';
 import { WAVE_9_PRESENTATION_DEFINITIONS } from './presentationCatalogWave9.js';
 import { WAVE_10_PRESENTATION_DEFINITIONS } from './presentationCatalogWave10.js';
 import { WAVE_11_PRESENTATION_DEFINITIONS } from './presentationCatalogWave11.js';
+import { WAVE_12_PRESENTATION_DEFINITIONS } from './presentationCatalogWave12.js';
+import { WAVE_13_PRESENTATION_DEFINITIONS } from './presentationCatalogWave13.js';
+import { WAVE_14_PRESENTATION_DEFINITIONS } from './presentationCatalogWave14.js';
 import { getCharacterAnimationFrame } from './characterAnimationCatalog.js';
 
 export const PRESENTATION_PHASES = Object.freeze(['intro', 'outro', 'fatality', 'victory', 'defeat', 'roundVictory', 'roundDefeat']);
@@ -24,7 +27,10 @@ const beat = (at, state, frame, x = 0, y = 0, scale = 1, opacity = 1) => ({ at, 
 // These recipes interpolate existing character art. They never create hitboxes,
 // change HP, emit gameplay events, or claim to be source-game cinematics.
 const motions = {
+  nativeWave14Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
+  nativeWave13Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
   nativeWave11Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
+  nativeWave12Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
   nativeWave10Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
   bladeReady: [beat(0, 'run', 0, -42), beat(0.35, 'idle', 0), beat(0.65, 'attack', 0), beat(1, 'idle', 1)],
   fistReady: [beat(0, 'idle', 0, -18), beat(0.3, 'idle', 1), beat(0.68, 'attack', 0, 0, -4), beat(1, 'idle', 1)],
@@ -84,6 +90,7 @@ const define = (heroId, universe, sourceReference, sourceAction, phaseNames, mot
 export const CHARACTER_PRESENTATIONS = freeze({
   ...Object.fromEntries(WAVE_10_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
   ...Object.fromEntries(WAVE_11_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
+  ...Object.fromEntries(WAVE_12_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
   ...Object.fromEntries(WAVE_3_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
   ...Object.fromEntries(WAVE_6_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
   ...Object.fromEntries(WAVE_7_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
@@ -136,6 +143,8 @@ export const CHARACTER_PRESENTATIONS = freeze({
   "player_anchor": define("player_anchor", "Nexus de Convergence", "src/game/melee/meleeAnimationManifest.js : Player Anchor possède déjà les animations dédiées intro, victory, defeat et special sur les cinq sheets mêlée. Ces assets sont lus avant les poses génériques.", "Commandement d Ancrage", ["Ancrage initial d'A.R.C.A.", "Retour de l'Anchor", "Impulsion du Nexus", "Victoire de l'Anchor", "Repli de l'Anchor", "Signature de manche de l'Anchor", "L'Anchor reprend sa garde"], ["anchorIntro", "walkExit", "specialFinal", "anchorVictory", "anchorDefeat", "anchorVictory", "recover"], "nexus-grid", []),
   "arca_mirelle": define("arca_mirelle", "Nexus de Convergence", "src/game/heroes.js : Mirelle utilise les fils et cartes de résonance ; son pack melee-combat possède des lignes de défense réelles. La suture conserve son identité de trame.", "Suture du Voile", ["Mirelle prépare ses cartes", "Mirelle rassemble ses fils", "Suture du Voile, trame de Mirelle", "Mirelle referme sa trame", "Mirelle reprend appui", "Mirelle ajuste sa garde", "Mirelle reprend son souffle"], ["braceReady", "walkExit", "supportFinal", "calmWin", "collapse", "calmRound", "recover"], "suture-threads", []),
   "arca_bastion": define("arca_bastion", "Nexus de Convergence", "src/game/heroes.js et spriteAssets.js : Bastion Korr utilise son armement et ses barricades ; son pack universel possède des lignes support et special dédiées.", "Verrou de Convergence", ["Bastion prépare son rempart", "Bastion sécurise son départ", "Verrou de Convergence", "Bastion garde le secteur", "Bastion reprend appui", "Bastion vérifie son rempart", "Bastion reprend position"], ["braceReady", "walkExit", "specialFinal", "gunWin", "collapse", "calmRound", "recover"], "convergence-lock", []),
+  ...Object.fromEntries(WAVE_13_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
+  ...Object.fromEntries(WAVE_14_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
 });
 
 export function resolvePresentationScript(actor, phase) {

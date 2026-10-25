@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Tactics — textures, relief et étages · démonstrateur</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#eaf0f4;background:#10171d;font-synthesis:none;--muted:#a3b5c0;--line:#2b404e;--accent:#a1e7d3;--panel:#17242d}
+*{box-sizing:border-box}body{margin:0}a{color:#b1eddd}button,select,input{font:inherit}button,select{color:inherit;background:#223642;border:1px solid #48606e;border-radius:7px;padding:.58rem .7rem}button{cursor:pointer}button:hover{background:#304a59}button:disabled{opacity:.5;cursor:default}button:focus-visible,select:focus-visible,input:focus-visible,canvas:focus-visible,a:focus-visible{outline:3px solid #f2ce7e;outline-offset:3px}header,main,footer{max-width:1440px;margin:auto;padding:1.3rem 2rem}header{padding-top:2rem}header p{color:var(--muted);max-width:880px;line-height:1.6;margin:.6rem 0}.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-size:.73rem;font-weight:750}h1{font-size:clamp(1.65rem,3vw,2.65rem);letter-spacing:-.035em;line-height:1.12;margin:.55rem 0 .8rem}h2{font-size:1rem;margin:0 0 .8rem}h3{font-size:.84rem;margin:1.3rem 0 .6rem}.badge{display:inline-block;background:#3a3021;color:#f4d49b;border:1px solid #6c5937;border-radius:5px;padding:.35rem .5rem;font-size:.75rem}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:1rem;align-items:start}.viewport{position:sticky;top:1rem;min-height:540px;background:radial-gradient(ellipse at 50% 48%,#23313a,#111c24 72%);border:1px solid var(--line);border-radius:13px;overflow:hidden}.scene{display:block;width:100%;height:590px;touch-action:manipulation}.scene:focus{outline-offset:-5px}.view-note{position:absolute;left:1rem;top:1rem;color:#c3d3db;font-size:.74rem;background:#13212cdd;padding:.45rem .55rem;border:1px solid #334d5d;border-radius:5px;pointer-events:none}.view-footer{position:absolute;left:1rem;right:1rem;bottom:.8rem;display:flex;justify-content:space-between;gap:1rem;color:var(--muted);font-size:.73rem;pointer-events:none}.side,.controls,.explain{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.1rem}.side p,.explain p{font-size:.84rem;line-height:1.6;color:#bdccd4}.fields{display:grid;gap:.9rem}.terrain-options{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.1rem;margin-top:1rem}.terrain-options .fields{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 2rem}.field>label,.field>.label{display:block;font-size:.76rem;color:#b4c6d1;margin-bottom:.35rem}.field select{width:100%}.inline{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}.inline button{flex:1}.check{font-size:.8rem;display:flex;align-items:center;gap:.5rem;margin:.5rem 0;line-height:1.4}.check input{accent-color:var(--accent)}input[type=range]{width:100%;accent-color:var(--accent)}.section-line{border-top:1px solid var(--line);margin:1rem 0}.selection{font-variant-numeric:tabular-nums}.selection dl{display:grid;grid-template-columns:84px 1fr;gap:.55rem .35rem;font-size:.79rem;line-height:1.4}.selection dt{color:var(--muted)}.selection dd{margin:0;overflow-wrap:anywhere}.selection strong{font-size:1.05rem;color:#fff}.path-state{padding:.65rem .7rem;background:#102820;border:1px solid #346054;border-radius:7px;font-size:.78rem;line-height:1.5;color:#c3efdc}.path-state[data-valid=false]{background:#312a20;border-color:#665538;color:#f3d7a7}.controls{margin-top:1rem;display:flex;gap:1.4rem;align-items:flex-start;flex-wrap:wrap}.legend{display:flex;flex-wrap:wrap;gap:.6rem 1rem;font-size:.75rem;color:#c4d1d8}.legend span{display:inline-flex;align-items:center;gap:.4rem}.swatch{width:13px;height:13px;border:1px solid #ffffff66;display:inline-block;border-radius:2px}.help{color:var(--muted);font-size:.76rem;line-height:1.7;max-width:440px}.explain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}.explain{padding:1rem 1.15rem}.explain p{margin:0}.explain .number{font-family:ui-monospace,monospace;color:var(--accent);font-size:.78rem;margin-bottom:.5rem}.details-link{display:block;font-size:.78rem;line-height:1.5;margin-top:.8rem}footer{color:var(--muted);font-size:.75rem;line-height:1.7;padding-bottom:2rem}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1050px){header,main,footer{padding-left:1.1rem;padding-right:1.1rem}.layout{grid-template-columns:minmax(0,1fr) 270px}.scene{height:540px}.viewport{min-height:540px}.side{padding:.85rem}}
+@media(max-width:780px){.layout{grid-template-columns:1fr}.viewport{position:relative;top:0}.side{display:block}.terrain-options .fields{grid-template-columns:repeat(2,minmax(0,1fr))}.side>.section-line{display:none}.scene{height:480px}.viewport{min-height:480px}.explain-grid{grid-template-columns:1fr}.view-footer{font-size:.66rem}.controls{gap:.8rem}.view-note{font-size:.68rem}.selection h2{margin-top:0}}
+@media(max-width:450px){.side{display:block}.terrain-options .fields{grid-template-columns:1fr}.selection{margin-top:0}.scene{height:440px}.viewport{min-height:440px}.view-footer span:last-child{display:none}header{padding-top:1.4rem}.badge{font-size:.68rem}.controls{padding:.85rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Multiverse Breach · étude Tactics</div>
+  <h1>Une case n’est plus seulement un carré.</h1>
+  <p>Le dessus reçoit sa matière, les flancs montrent la hauteur, et deux surfaces peuvent partager les mêmes coordonnées. Explorez le pont, le passage inférieur et les accès aux différents niveaux.</p>
+  <span class="badge">Démonstrateur documentaire — non intégré au moteur du jeu</span>
+</header>
+<main>
+  <div class="layout">
+    <section class="viewport" aria-label="Vue du terrain">
+      <div class="view-note" id="view-note">Vue isométrique illustrative · terrain 9 × 7</div>
+      <canvas class="scene" id="scene" tabindex="0" role="img" aria-label="Terrain isométrique. Cliquez une surface ou utilisez les flèches pour choisir une case, Entrée pour la sélectionner. Le menu à droite donne accès aux surfaces du dessous." aria-describedby="keyboard-help"></canvas>
+      <div class="view-footer"><span id="scene-summary">Chargement du terrain…</span><span>Motifs illustratifs · aucune texture officielle</span></div>
+    </section>
+    <aside class="side" aria-label="Réglages et sélection">
+      <div class="selection">
+        <h2>Surface sélectionnée</h2>
+        <div class="field"><label for="surface-select">Choisir une case et son étage</label><select id="surface-select"></select></div>
+        <dl id="selection-info"></dl>
+        <div id="path-state" class="path-state" role="status" aria-live="polite"></div>
+        <div class="inline" style="margin-top:.7rem"><button id="set-start" type="button">Placer le départ ici</button></div>
+        <button id="bridge-example" type="button" style="width:100%;margin-top:.5rem">Comparer pont / dessous en D4</button>
+        <a class="details-link" href="tactics-terrain-verticality.md">Lire la proposition technique complète →</a>
+      </div>
+    </aside>
+  </div>
+  <section class="terrain-options" aria-label="Réglages du terrain">
+        <h2>Explorer le plateau</h2>
+        <div class="fields">
+          <div class="field"><label for="palette">Famille de matériaux</label><select id="palette"><option value="ruins">Cour en ruines · pierre et bois</option><option value="facility">Complexe · métal et passerelle</option><option value="volcanic">Terrain volcanique · basalte</option></select></div>
+          <div class="field"><label for="cutaway">Visibilité des étages</label><select id="cutaway"><option value="all">Tous les étages</option><option value="ground">Coupe : sous le pont</option><option value="bridge">Pont uniquement</option></select></div>
+          <div class="field"><span class="label">Orientation de la caméra</span><div class="inline"><button id="rotate-left" type="button" aria-label="Tourner la caméra de 90 degrés à gauche">↶ 90°</button><button id="rotate-right" type="button" aria-label="Tourner la caméra de 90 degrés à droite">90° ↷</button></div></div>
+          <div class="field"><label for="zoom">Zoom <output id="zoom-value" for="zoom">100 %</output></label><input id="zoom" type="range" min="65" max="140" value="100" step="5"></div>
+          <div><label class="check"><input id="show-faces" type="checkbox" checked>Faces verticales et dessous</label><label class="check"><input id="show-grid" type="checkbox" checked>Contours des surfaces</label><label class="check"><input id="show-route" type="checkbox" checked>Chemin depuis le départ</label></div>
+          <div class="field"><label for="mobility">Franchissement du personnage</label><select id="mobility"><option value="walk">Marche · escaliers et pente</option><option value="jump">Marche + saut d’un niveau</option></select></div>
+        </div>
+  </section>
+  <div class="controls">
+    <div><h2>Une même géométrie pour lire et agir</h2><div class="legend"><span><i class="swatch" style="background:#e0d091"></i>Départ ◆</span><span><i class="swatch" style="background:#8befc7"></i>Surface choisie</span><span><i class="swatch" style="background:#4caf90"></i>Chemin accessible</span><span><i class="swatch" style="background:#8aadc5"></i>Eau non praticable</span><span><i class="swatch" style="background:#927b5c"></i>Escalier / pente</span></div></div>
+    <div id="keyboard-help" class="help">Cliquez un dessus pour sélectionner sa surface. Sur le plateau : flèches = case voisine, Entrée = confirmer, <kbd>[</kbd> / <kbd>]</kbd> = surface au même XY, <kbd>R</kbd> = rotation. Le menu donne aussi accès aux surfaces cachées. L’altitude reste inchangée quand la caméra tourne.</div>
+  </div>
+  <div class="explain-grid">
+    <section class="explain"><div class="number">01 / Matière</div><h2>Dessus, tranche, raccord</h2><p>Le pavage et les planches suivent la surface. La falaise possède ses propres flancs. Un changement de palette conserve exactement la carte et ses règles.</p></section>
+    <section class="explain"><div class="number">02 / Hauteur</div><h2>Un vrai vide sous le pont</h2><p>Le tablier est une dalle mince à Z = 2. Le sol en dessous garde son identité. Le bouton de comparaison permet de choisir l’un puis l’autre en D4.</p></section>
+    <section class="explain"><div class="number">03 / Déplacement</div><h2>Des passages explicites</h2><p>Le chemin cherche parmi les surfaces, avec un coût. Les deux extrémités du pont sont reliées aux escaliers ; partager les mêmes coordonnées n’autorise jamais à changer d’étage.</p></section>
+  </div>
+  <p class="sr-only" id="canvas-announcement" aria-live="polite"></p>
+</main>
+<footer>Prototype autonome de conception : matériaux dessinés par motifs, déplacements simplifiés, aucune règle de combat 3D. Le Tactics actuellement jouable garde une grille rectangulaire de trois quarts et des cases <code>high</code> logiques, sans ces étages. <a href="../README.md">Retour au README</a>.</footer>
+<script>
+'use strict';
+(() => {
+  const canvas = document.getElementById('scene');
+  const ctx = canvas.getContext('2d');
+  const get = id => document.getElementById(id);
+  const cols = 9, rows = 7;
+  const palettes = {
+    ruins: { name:'Cour en ruines', stone:['#9d9c89','#777967','#656958'], grass:['#738d66','#536c49','#465640'], water:['#63879b','#3c647a','#28485d'], wood:['#b39768','#887044','#665537'], stairs:['#b0a185','#8d7b5e','#6f604c'], ramp:['#a69779','#807355','#665b45'], soil:['#9f8061','#7c6248','#634e3b'] },
+    facility: { name:'Complexe métallique', stone:['#8a9da7','#586f7e','#445462'], grass:['#748b85','#526f65','#3e554c'], water:['#5e9ca5','#326f7d','#24515e'], wood:['#c0ad7d','#8d805d','#645a46'], stairs:['#a2b4bd','#6b818f','#50626d'], ramp:['#92a5b2','#637b8d','#495b6a'], soil:['#8a8173','#645e54','#4d4944'] },
+    volcanic: { name:'Terrain volcanique', stone:['#8d8c91','#5b5962','#424149'], grass:['#8a8371','#625f50','#4c493e'], water:['#cf7a50','#9f4c36','#63322b'], wood:['#b29971','#826943','#584b36'], stairs:['#a49b8c','#766b5c','#584f46'], ramp:['#9d8e7c','#746450','#51463c'], soil:['#a57960','#7e5642','#583e33'] }
+  };
+  const materialNames = { stone:'Dallage', grass:'Sol végétal', water:'Eau / surface exclue', wood:'Platelage', stairs:'Marches', ramp:'Pente', soil:'Terre' };
+  const surfaces = [];
+  const add = surface => surfaces.push({ ...surface, id:`${surface.layerId}:${surface.x}:${surface.y}` });
+  for (let y=0;y<rows;y++) for(let x=0;x<cols;x++) {
+    const river = (x===3||x===4) && y!==3;
+    let z=0, material='stone', shape='flat', corners=null;
+    if(x>=6 && y<=3) { z=x===6?1:2; material='grass'; }
+    if(x===5 && y===1) { z=0.5;material='ramp';shape='ramp';corners=[0,1,1,0]; }
+    if(x===2 && y===4) { z=1;material='stairs';shape='stairs'; }
+    if(x===6 && y===4) { z=1;material='stairs';shape='stairs'; }
+    if(x>=7 && y===4) { z=2;material='grass'; }
+    if(y===6 || (x<=1 && y<=2)) material='soil';
+    if(river) { z=-0.65;material='water'; }
+    add({x,y,z,layerId:'ground',material,shape,corners,walkable:!river,cost:material==='stairs'||material==='ramp'?2:1,bottom:-1.1});
+  }
+  // A thin bridge slab, not solid pillars filling the ground underneath.
+  for(let x=2;x<=6;x++) add({x,y:3,z:2,layerId:'bridge',material:'wood',shape:'slab',walkable:true,cost:1,bottom:1.73});
+  const byId = new Map(surfaces.map(s=>[s.id,s]));
+  const explicitLinks = new Map();
+  function connect(a,b,cost,kind) {
+    for(const [from,to] of [[a,b],[b,a]]) {
+      if(!explicitLinks.has(from))explicitLinks.set(from,[]);
+      explicitLinks.get(from).push({to,cost,kind});
+    }
+  }
+  connect('ground:2:4','bridge:2:3',2,'escalier');
+  connect('ground:6:4','bridge:6:3',2,'escalier');
+  connect('ground:5:1','ground:6:1',1,'pente');
+  connect('ground:4:1','ground:5:1',1,'pente');
+  const state={rotation:0,zoom:1,palette:'ruins',cutaway:'all',showFaces:true,showGrid:true,showRoute:true,mobility:'walk',selected:'bridge:3:3',start:'ground:1:5',path:[],cost:Infinity,routeKinds:[],paint:[],width:900,height:590};
+  let compareBridge=true;
+  const label=s=>`${String.fromCharCode(65+s.x)}${s.y+1}`;
+  const number=n=>Number.isInteger(n)?String(n):n.toFixed(2).replace(/0$/,'');
+  function heightAt(s,u=.5,v=.5) { const c=s.corners;if(!c)return s.z;return c[0]*(1-u)*(1-v)+c[1]*u*(1-v)+c[2]*u*v+c[3]*(1-u)*v; }
+  function rotate(x,y) {
+    const a=x-cols/2,b=y-rows/2;
+    if(state.rotation===1)return {x:-b,y:a};
+    if(state.rotation===2)return {x:-a,y:-b};
+    if(state.rotation===3)return {x:b,y:-a};
+    return {x:a,y:b};
+  }
+  function project(x,y,z=0) {
+    const q=rotate(x,y),fit=Math.min(state.width/820,state.height/590),size=45*fit*state.zoom;
+    return {x:state.width/2+(q.x-q.y)*size,y:state.height*.53+(q.x+q.y)*size*.49-z*size*.72};
+  }
+  function topPoints(s) { return [[0,0],[1,0],[1,1],[0,1]].map(([u,v])=>project(s.x+u,s.y+v,heightAt(s,u,v))); }
+  function path(points) {ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();}
+  function polygon(points,fill,stroke='#1d2a30',line=1) {path(points);ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=line;ctx.stroke();}}
+  function visible(s) {return state.cutaway==='all'||(state.cutaway==='ground'?s.layerId==='ground':s.layerId==='bridge');}
+  function neighbors(s) {
+    if(!s.walkable)return [];
+    const edges=[];
+    for(const n of surfaces) {
+      if(!n.walkable||n.layerId!==s.layerId||Math.abs(n.x-s.x)+Math.abs(n.y-s.y)!==1)continue;
+      const dz=Math.abs(heightAt(n)-heightAt(s));
+      const stairs=(s.shape==='stairs'||n.shape==='stairs')&&dz<=1;
+      const ramp=(s.shape==='ramp'||n.shape==='ramp')&&dz<=.5;
+      const jump=state.mobility==='jump'&&dz<=1;
+      if(dz<.01||stairs||ramp||jump)edges.push({to:n.id,cost:n.cost+(jump&&!stairs&&!ramp&&dz>.01?1:0),kind:stairs?'escalier':ramp?'pente':jump&&dz>.01?'saut':'marche'});
+    }
+    for(const edge of explicitLinks.get(s.id)||[]) if(byId.get(edge.to)?.walkable)edges.push(edge);
+    return edges;
+  }
+  function route(from,to) {
+    const start=byId.get(from),end=byId.get(to);
+    if(!start?.walkable||!end?.walkable)return {path:[],cost:Infinity,kinds:[]};
+    const best=new Map([[from,0]]),previous=new Map(),open=[{id:from,cost:0}];
+    while(open.length) {
+      open.sort((a,b)=>a.cost-b.cost);const current=open.shift();
+      if(current.cost!==best.get(current.id))continue;
+      if(current.id===to)break;
+      for(const edge of neighbors(byId.get(current.id))) {
+        const cost=current.cost+edge.cost;
+        if(cost>=(best.get(edge.to)??Infinity))continue;
+        best.set(edge.to,cost);previous.set(edge.to,{id:current.id,kind:edge.kind});open.push({id:edge.to,cost});
+      }
+    }
+    if(!best.has(to))return {path:[],cost:Infinity,kinds:[]};
+    const result=[to],kinds=[];let id=to;
+    while(id!==from) {const prev=previous.get(id);if(!prev)return {path:[],cost:Infinity,kinds:[]};kinds.unshift(prev.kind);id=prev.id;result.unshift(id);}
+    return {path:result,cost:best.get(to),kinds};
+  }
+  function topTexture(s,points) {
+    const colors=palettes[state.palette][s.material];
+    ctx.save();path(points);ctx.clip();
+    const o=project(s.x,s.y,heightAt(s,0,0)),a=project(s.x+1,s.y,heightAt(s,1,0)),b=project(s.x,s.y+1,heightAt(s,0,1));
+    ctx.transform(a.x-o.x,a.y-o.y,b.x-o.x,b.y-o.y,o.x,o.y);
+    ctx.fillStyle=colors[0];ctx.fillRect(0,0,1,1);ctx.lineWidth=.018;ctx.strokeStyle=colors[1];
+    if(s.material==='wood'||s.material==='stairs') {
+      for(let i=1;i<6;i++){ctx.beginPath();ctx.moveTo(0,i/6);ctx.lineTo(1,i/6);ctx.stroke();}
+      ctx.fillStyle=colors[2];for(let i=0;i<5;i++)ctx.fillRect((i%2)*.46+.13,i/5+.04,.025,.09);
+    } else if(s.material==='water') {
+      ctx.lineWidth=.025;for(let i=0;i<4;i++){ctx.beginPath();ctx.moveTo(.1,i*.23+.14);ctx.bezierCurveTo(.3,i*.23+.05,.6,i*.23+.23,.9,i*.23+.12);ctx.stroke();}
+    } else if(s.material==='stone') {
+      ctx.strokeRect(.04,.04,.92,.92);ctx.beginPath();ctx.moveTo(.5,.04);ctx.lineTo(.5,.96);ctx.stroke();ctx.beginPath();ctx.moveTo(.04,.5);ctx.lineTo(.96,.5);ctx.stroke();
+      if(state.palette==='facility'){ctx.fillStyle=colors[2];ctx.fillRect(.16,.15,.25,.05);ctx.fillRect(.65,.7,.04,.15);}
+    } else if(s.material==='ramp') {
+      for(let i=1;i<5;i++){ctx.beginPath();ctx.moveTo(i*.2,.06);ctx.lineTo(i*.2,.94);ctx.stroke();}
+      ctx.strokeStyle='#e0d6b8';ctx.lineWidth=.035;ctx.beginPath();ctx.moveTo(.2,.5);ctx.lineTo(.8,.5);ctx.lineTo(.65,.35);ctx.moveTo(.8,.5);ctx.lineTo(.65,.65);ctx.stroke();
+    } else {
+      ctx.fillStyle=colors[1];for(let i=0;i<10;i++){const u=((i*29+s.x*7)%83)/100+.05,v=((i*37+s.y*11)%83)/100+.05;ctx.fillRect(u,v,.035,.045);}
+    }
+    ctx.restore();
+  }
+  function drawFace(face) {
+    const s=face.surface,colors=palettes[state.palette][s.material];
+    polygon(face.points,colors[face.shade],state.showGrid?'#17242b88':null);
+    const [a,b,c,d]=face.points;ctx.save();path(face.points);ctx.clip();ctx.strokeStyle='#14212c44';ctx.lineWidth=1;
+    for(let t=.22;t<1;t+=.22){ctx.beginPath();ctx.moveTo(a.x+(d.x-a.x)*t,a.y+(d.y-a.y)*t);ctx.lineTo(b.x+(c.x-b.x)*t,b.y+(c.y-b.y)*t);ctx.stroke();}
+    ctx.restore();
+  }
+  function makePaint() {
+    const items=[];
+    for(const s of surfaces.filter(visible)) {
+      const q=rotate(s.x+.5,s.y+.5),depth=q.x+q.y;
+      const points=topPoints(s),top={kind:'top',surface:s,points,depth:depth+.01};
+      if(state.showFaces) {
+        const coord=[[0,0],[1,0],[1,1],[0,1]];
+        for(let i=0;i<4;i++){
+          const j=(i+1)%4,[u,v]=coord[i],[u2,v2]=coord[j];
+          const first=project(s.x+u,s.y+v,s.bottom),second=project(s.x+u2,s.y+v2,s.bottom);
+          const cameraA=rotate(s.x+u,s.y+v),cameraB=rotate(s.x+u2,s.y+v2);
+          // Emit the two faces directed toward this orthographic camera.
+          if((cameraB.x-cameraA.x)-(cameraB.y-cameraA.y)>=0)continue;
+          items.push({kind:'face',surface:s,points:[points[i],points[j],second,first],depth:depth+.004,shade:i%2?2:1});
+        }
+      }
+      items.push(top);
+    }
+    // Thin bridge slabs interleave after the lower surfaces at the same depth.
+    items.sort((a,b)=>a.depth-b.depth||a.surface.z-b.surface.z||(a.kind==='face'?-1:1));
+    return items;
+  }
+  function draw() {
+    ctx.clearRect(0,0,state.width,state.height);
+    const glow=ctx.createRadialGradient(state.width/2,state.height*.6,15,state.width/2,state.height*.6,state.width*.46);glow.addColorStop(0,'#48635f26');glow.addColorStop(1,'#15222a00');ctx.fillStyle=glow;ctx.fillRect(0,0,state.width,state.height);
+    state.paint=makePaint();
+    for(const item of state.paint){if(item.kind==='face'){drawFace(item);continue;}topTexture(item.surface,item.points);if(state.showGrid){path(item.points);ctx.strokeStyle='#14252eaa';ctx.lineWidth=1;ctx.stroke();}}
+    if(state.showRoute&&state.path.length>1) {
+      const points=state.path.map(id=>{const s=byId.get(id);return {...project(s.x+.5,s.y+.5,heightAt(s)+.05),visible:visible(s)};});
+      ctx.strokeStyle='#122f29';ctx.lineWidth=7;ctx.lineJoin='round';ctx.lineCap='round';
+      for(let pass=0;pass<2;pass++){ctx.beginPath();let active=false;for(const p of points){if(!p.visible){active=false;continue;}if(!active){ctx.moveTo(p.x,p.y);active=true;}else ctx.lineTo(p.x,p.y);}ctx.stroke();ctx.strokeStyle='#8ceac0';ctx.lineWidth=3;}
+      for(let i=0;i<points.length;i++){const p=points[i];if(!p.visible)continue;ctx.fillStyle='#a4f2ce';ctx.beginPath();ctx.arc(p.x,p.y,3.5,0,Math.PI*2);ctx.fill();}
+    }
+    for(const [id,color] of [[state.start,'#f0d89d'],[state.selected,'#a4f5d4']]) {
+      const s=byId.get(id);if(!s||!visible(s))continue;const points=topPoints(s);path(points);ctx.lineWidth=id===state.selected?3:2;ctx.strokeStyle=color;ctx.stroke();
+      const c=project(s.x+.5,s.y+.5,heightAt(s)+.1);ctx.textAlign='center';ctx.fillStyle=color;ctx.font='bold 13px ui-monospace,monospace';ctx.fillText(id===state.start?'◆':`${label(s)} · ${number(heightAt(s))}`,c.x,c.y-10);
+    }
+    const origin=project(0,rows+.45,0),x=project(1.3,rows+.45,0),y=project(0,rows+1.75,0);
+    ctx.lineWidth=1;ctx.strokeStyle='#7faaa2';ctx.fillStyle='#a6c4bb';ctx.font='11px ui-monospace,monospace';ctx.textAlign='center';for(const [point,text] of [[x,'X'],[y,'Y']]){ctx.beginPath();ctx.moveTo(origin.x,origin.y);ctx.lineTo(point.x,point.y);ctx.stroke();ctx.fillText(text,point.x,point.y+12);}
+    get('scene-summary').textContent=`${surfaces.length} surfaces · 2 étages · caméra ${state.rotation*90}°`;
+    get('view-note').textContent=`Vue isométrique illustrative · ${state.cutaway==='ground'?'coupe sous le pont':state.cutaway==='bridge'?'pont seul':'tous les étages'}`;
+  }
+  function updateInfo(announce=true) {
+    const s=byId.get(state.selected),r=route(state.start,state.selected);state.path=r.path;state.cost=r.cost;state.routeKinds=r.kinds;
+    get('surface-select').value=s.id;
+    const material=state.palette==='volcanic'&&s.material==='water'?'Lave illustrative · bloquée':materialNames[s.material];
+    const info=[['Coordonnée',`${label(s)} · X${s.x} / Y${s.y}`],['Surface',s.layerId==='bridge'?'Pont · tablier indépendant':'Sol · niveau inférieur'],['Altitude',`Z = ${number(heightAt(s))}${s.corners?' (pente 0 → 1)':''}`],['Matière',material],['Identité',s.id]];
+    get('selection-info').replaceChildren(...info.flatMap(([key,value])=>{const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=key;dd.textContent=value;return [dt,dd];}));
+    const pathState=get('path-state');pathState.dataset.valid=String(Number.isFinite(r.cost));
+    const special=[...new Set(r.kinds.filter(k=>k!=='marche'))];
+    pathState.textContent=Number.isFinite(r.cost)?`Depuis ${label(byId.get(state.start))} (${byId.get(state.start).layerId==='bridge'?'pont':'sol'}) : ${r.cost} point${r.cost===1?'':'s'}, ${Math.max(0,r.path.length-1)} passage${r.path.length===2?'':'s'}${special.length?` · ${special.join(', ')}`:''}.`:`Surface non accessible depuis le départ${!s.walkable?' : eau/lave exclue du graphe de marche.':' avec ce profil de franchissement.'}`;
+    get('set-start').disabled=!s.walkable;
+    if(announce)get('canvas-announcement').textContent=`${label(s)}, ${s.layerId}, altitude ${number(heightAt(s))}. ${pathState.textContent}`;
+    draw();
+  }
+  function select(id) {if(byId.has(id)){state.selected=id;updateInfo();}}
+  function inside(point,polygon) {let yes=false;for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){const a=polygon[i],b=polygon[j];if((a.y>point.y)!==(b.y>point.y)&&point.x<(b.x-a.x)*(point.y-a.y)/(b.y-a.y)+a.x)yes=!yes;}return yes;}
+  function pick(x,y) {
+    for(let i=state.paint.length-1;i>=0;i--){const item=state.paint[i];if(inside({x,y},item.points))return item.surface.id;}
+    return null;
+  }
+  function resize() {const box=canvas.getBoundingClientRect(),ratio=Math.min(window.devicePixelRatio||1,2);state.width=box.width;state.height=box.height;canvas.width=Math.round(box.width*ratio);canvas.height=Math.round(box.height*ratio);ctx.setTransform(ratio,0,0,ratio,0,0);draw();}
+  function turn(delta) {state.rotation=(state.rotation+delta+4)%4;draw();}
+  for(const s of surfaces){const option=document.createElement('option');option.value=s.id;option.textContent=`${label(s)} · ${s.layerId==='bridge'?'pont':'sol'} · Z ${number(heightAt(s))}`;get('surface-select').append(option);}
+  get('surface-select').addEventListener('change',event=>select(event.target.value));
+  get('palette').addEventListener('change',event=>{state.palette=event.target.value;updateInfo(false);});
+  get('cutaway').addEventListener('change',event=>{state.cutaway=event.target.value;draw();});
+  get('mobility').addEventListener('change',event=>{state.mobility=event.target.value;updateInfo();});
+  get('rotate-left').addEventListener('click',()=>turn(-1));get('rotate-right').addEventListener('click',()=>turn(1));
+  get('zoom').addEventListener('input',event=>{state.zoom=Number(event.target.value)/100;get('zoom-value').textContent=`${event.target.value} %`;draw();});
+  for(const [id,key]of [['show-faces','showFaces'],['show-grid','showGrid'],['show-route','showRoute']])get(id).addEventListener('change',event=>{state[key]=event.target.checked;draw();});
+  get('set-start').addEventListener('click',()=>{const s=byId.get(state.selected);if(s.walkable){state.start=s.id;updateInfo();}});
+  get('bridge-example').addEventListener('click',()=>{compareBridge=!compareBridge;state.cutaway=compareBridge?'all':'ground';get('cutaway').value=state.cutaway;select(compareBridge?'bridge:3:3':'ground:3:3');});
+  canvas.addEventListener('click',event=>{const box=canvas.getBoundingClientRect(),id=pick(event.clientX-box.left,event.clientY-box.top);if(id)select(id);});
+  canvas.addEventListener('keydown',event=>{
+    const s=byId.get(state.selected),moves={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
+    if(moves[event.key]){event.preventDefault();const [dx,dy]=moves[event.key],next=surfaces.find(n=>n.layerId===s.layerId&&n.x===s.x+dx&&n.y===s.y+dy);if(next)select(next.id);}
+    else if(event.key==='['||event.key===']'){event.preventDefault();const same=surfaces.filter(n=>n.x===s.x&&n.y===s.y).sort((a,b)=>heightAt(a)-heightAt(b));const index=same.findIndex(n=>n.id===s.id),delta=event.key==='['?-1:1;select(same[(index+delta+same.length)%same.length].id);}
+    else if(event.key.toLowerCase()==='r'){event.preventDefault();turn(1);}
+    else if(event.key==='Enter'){event.preventDefault();updateInfo();}
+  });
+  window.addEventListener('resize',resize);
+  const observer=typeof ResizeObserver==='function'?new ResizeObserver(resize):null;observer?.observe(canvas);
+  // Read-only inspection hooks for the documented browser checks.
+  Object.defineProperty(window,'terrainDemo',{value:Object.freeze({getState:()=>structuredClone({...state,paint:undefined}),getSurfaces:()=>structuredClone(surfaces),route:(a,b)=>structuredClone(route(a,b)),projectSurface:id=>{const s=byId.get(id);return s?project(s.x+.5,s.y+.5,heightAt(s)):null;},pick}),writable:false});
+  resize();updateInfo(false);
+})();
+</script>
+</body>
+</html>

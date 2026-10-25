@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "passed": true,
+  "test": {
+    "command": [
+      "npm",
+      "run",
+      "test:combat-presentation"
+    ],
+    "startedAt": "2026-10-23T21:59:59.970Z",
+    "finishedAt": "2026-10-23T22:00:47.426Z",
+    "exitCode": 0,
+    "signal": null,
+    "spawnError": null,
+    "log": "docs/combat-fidelity-wave12-2026-10-23/completion-compatibility-test.log",
+    "logSha256": "e3ae5ebd536cd682af7e10631b2b31f688851722dd407af5222fbf50a410c5b9",
+    "receiptOrigin": "node-child-process-close-event"
+  },
+  "lint": {
+    "command": [
+      "npx",
+      "oxlint",
+      "scripts/combatCompletion.test.mjs"
+    ],
+    "startedAt": "2026-10-23T22:00:47.427Z",
+    "finishedAt": "2026-10-23T22:00:47.784Z",
+    "exitCode": 0,
+    "signal": null,
+    "spawnError": null,
+    "log": "docs/combat-fidelity-wave12-2026-10-23/completion-compatibility-lint.log",
+    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receiptOrigin": "node-child-process-close-event"
+  },
+  "source": "scripts/combatCompletion.test.mjs",
+  "sourceSha256Before": "42bc00102f5de6740cd4630999b64bfd3a99328ddfe6126c895087ab64163549",
+  "sourceSha256After": "42bc00102f5de6740cd4630999b64bfd3a99328ddfe6126c895087ab64163549",
+  "explicitRevisions": 21,
+  "runtimeModified": false,
+  "historicalCompletionRecordsModified": false,
+  "expectationScope": "Only21 selected W12 source-version overlays, independently checked against literal historical name/work/reference/semantics and reviewed selected version/name/semantics. Existing W7-W11 assertions retained.",
+  "previousAttempt": {
+    "archive": "docs/combat-fidelity-wave12-2026-10-23/completion-compatibility-attempt1/",
+    "exitCode": 1,
+    "reason": "An added historical-reference-prefix assertion incorrectly required the selected W12 prose to reuse the old text; exact historical catalog references and selected curation fragments remain separately asserted."
+  }
+}

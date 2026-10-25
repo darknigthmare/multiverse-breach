@@ -1,0 +1,2494 @@
+{
+  "date": "2026-10-24",
+  "wave": 13,
+  "batchSize": 40,
+  "parts": {
+    "A": [
+      "ripley",
+      "hicks",
+      "bishop",
+      "dallas_alien",
+      "parker_alien",
+      "lambert_alien",
+      "ash_alien",
+      "amanda_ripley",
+      "chell",
+      "atlas",
+      "pbody",
+      "glados",
+      "wheatley",
+      "doug_rattmann",
+      "rincewind_dw",
+      "vimes_dw",
+      "granny_dw",
+      "twoflower_dw",
+      "death_dw",
+      "nanny_ogg_dw"
+    ],
+    "B": [
+      "meryl_mgs",
+      "liquid_snake",
+      "the_boss_mgs",
+      "ocelot_mgs",
+      "gray_fox",
+      "big_boss",
+      "luke",
+      "vader",
+      "ahsoka_adult",
+      "aayla_secura",
+      "darth_revan",
+      "obi_wan",
+      "yoda",
+      "darth_maul",
+      "joel_tlou",
+      "tess_tlou",
+      "tommy_tlou",
+      "dina_tlou2",
+      "abby_tlou2",
+      "hayden"
+    ]
+  },
+  "heroes": [
+    {
+      "part": "A",
+      "hero": {
+        "id": "ripley",
+        "name": "Ellen Ripley",
+        "universe": "Alien",
+        "category": "marine",
+        "primaryColor": "#8b8589",
+        "secondaryColor": "#4682b4",
+        "weaponType": "gun",
+        "weaponColor": "#2f4f4f",
+        "stats": {
+          "hp": 130,
+          "atk": 14,
+          "def": 8,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Pulse Rifle",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "M94 Flamethrower",
+          "type": "fire",
+          "cd": 7,
+          "dmg": 1.7
+        },
+        "defense": {
+          "name": "Loader Block",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Power Loader Smash",
+          "type": "melee_aoe",
+          "dmg": 4.2
+        }
+      },
+      "source": {
+        "universe": "Alien",
+        "name": "Rafale ajustée du M41A de Ripley",
+        "kind": "pulse-rifle",
+        "effect": "damage",
+        "delivery": "projectile",
+        "sourceWork": "Aliens (1986), Ellen Ripley before the power-loader fight",
+        "sourceReference": "https://www.20thcenturystudios.com/movies/aliens",
+        "weaponType": "gun",
+        "appearance": "Short curly brown hair; grey-blue civilian work clothes; two-handed M41A pulse rifle; no power loader or later-film costume.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/alien/ripley.png",
+      "referenceSha256": "fc125daf159e56c7df98f71a9b9881f9c21895c3ab8e6decb8484aa6fe1764ab",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "hicks",
+        "name": "Corporal Hicks",
+        "cat": "tactical",
+        "color": "#7f8c8d",
+        "universe": "Alien",
+        "category": "tactical",
+        "primaryColor": "#7f8c8d",
+        "secondaryColor": "#7f8c8d",
+        "weaponType": "gun",
+        "weaponColor": "#7f8c8d",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "M41A Pulse Rifle Burst",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Shotgun Door Breach",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Colonial Marine Cover",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Hudson Corridor Hold",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#7f8c8d"
+        }
+      },
+      "source": {
+        "universe": "Alien",
+        "name": "Tir de couverture du M41A de Hicks",
+        "kind": "pulse-rifle",
+        "effect": "damage",
+        "delivery": "projectile",
+        "sourceWork": "Aliens (1986), Corporal Dwayne Hicks in colonial marine field armour",
+        "sourceReference": "https://www.20thcenturystudios.com/movies/aliens",
+        "weaponType": "gun",
+        "appearance": "Colonial Marine green-brown camouflage armour, short brown hair, M41A pulse rifle, optional helmet retained consistently; no acid damage.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/alien/hicks.png",
+      "referenceSha256": "9f57010c7a21baa9e5dde0a90f0737f608b821751bf84886f54d877a51a3a011",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "bishop",
+        "name": "Bishop",
+        "cat": "hacker",
+        "color": "#bdc3c7",
+        "universe": "Alien",
+        "category": "hacker",
+        "primaryColor": "#bdc3c7",
+        "secondaryColor": "#bdc3c7",
+        "weaponType": "scanner",
+        "weaponColor": "#bdc3c7",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Synthetic Knife Trick",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "APC Systems Bypass",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Android Self-Seal",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Dropship Remote Route",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#bdc3c7"
+        }
+      },
+      "source": {
+        "universe": "Alien",
+        "name": "Vérification de sécurité de Bishop",
+        "kind": "technical-check",
+        "effect": "guard",
+        "delivery": "support",
+        "sourceWork": "Aliens (1986), Bishop before his injury",
+        "sourceReference": "https://www.20thcenturystudios.com/movies/aliens",
+        "weaponType": "none",
+        "appearance": "Adult android with short fair hair and pale grey-white technician coveralls; intact body and empty hands, no knife game or invented gun.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/alien/bishop.png",
+      "referenceSha256": "f0f260eca4ca43f4b8da52eb666263b3141990278d41c8deb444f64c61e98f53",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "dallas_alien",
+        "name": "Captain Dallas",
+        "cat": "tactical",
+        "color": "#8e8c7f",
+        "universe": "Alien",
+        "category": "tactical",
+        "primaryColor": "#8e8c7f",
+        "secondaryColor": "#8e8c7f",
+        "weaponType": "gun",
+        "weaponColor": "#8e8c7f",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Captain Dallas Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Captain Dallas Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Captain Dallas Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Captain Dallas Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#8e8c7f"
+        }
+      },
+      "source": {
+        "universe": "Alien",
+        "name": "Consigne de repli de Dallas",
+        "kind": "crew-instruction",
+        "effect": "guard",
+        "delivery": "support",
+        "sourceWork": "Alien (1979), Captain Arthur Dallas before entering the ventilation ducts",
+        "sourceReference": "https://www.20thcenturystudios.com/movies/alien",
+        "weaponType": "none",
+        "appearance": "Bearded adult Nostromo captain in dark blue work jacket, practical crew trousers; empty hands, no later marine armour.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/alien/dallas-alien.png",
+      "referenceSha256": "12251ce533d766e64421eb56ba506f6fba3388eb0a6318a6d887da36c2ba6d37",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "parker_alien",
+        "name": "Parker",
+        "cat": "marine",
+        "color": "#7d6d5f",
+        "universe": "Alien",
+        "category": "marine",
+        "primaryColor": "#7d6d5f",
+        "secondaryColor": "#7d6d5f",
+        "weaponType": "gun",
+        "weaponColor": "#7d6d5f",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Parker Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Parker Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Parker Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Parker Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#7d6d5f"
+        }
+      },
+      "source": {
+        "universe": "Alien",
+        "name": "Organisation du passage par Parker",
+        "kind": "engineering-guidance",
+        "effect": "buff",
+        "delivery": "support",
+        "sourceWork": "Alien (1979), Dennis Parker aboard the Nostromo",
+        "sourceReference": "https://www.20thcenturystudios.com/movies/alien",
+        "weaponType": "none",
+        "appearance": "Adult Black chief engineer with dark short hair, light work shirt and dark utility trousers; empty hands, no invented powered gauntlet.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/alien/parker-alien.png",
+      "referenceSha256": "68becc54c29b70ebd631b15c09308a1eda5257f7a7bb456dc7e6fb30aa5a0751",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "lambert_alien",
+        "name": "Lambert",
+        "cat": "horror",
+        "color": "#c6b6a3",
+        "universe": "Alien",
+        "category": "horror",
+        "primaryColor": "#c6b6a3",
+        "secondaryColor": "#c6b6a3",
+        "weaponType": "slash",
+        "weaponColor": "#c6b6a3",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Lambert Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Lambert Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Lambert Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Lambert Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#c6b6a3"
+        }
+      },
+      "source": {
+        "universe": "Alien",
+        "name": "Indication de route de Lambert",
+        "kind": "navigation-guidance",
+        "effect": "guard",
+        "delivery": "support",
+        "sourceWork": "Alien (1979), Joan Lambert aboard the Nostromo",
+        "sourceReference": "https://www.20thcenturystudios.com/movies/alien",
+        "weaponType": "none",
+        "appearance": "Adult navigator with short brown hair, practical Nostromo work shirt and trousers; empty hands, no marine rifle, no supernatural panic attack.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/alien/lambert-alien.png",
+      "referenceSha256": "ea557f71a3f3f4c38d9a1038803482af0491233245aa2d779f280906c9125db8",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "ash_alien",
+        "name": "Ash",
+        "cat": "hacker",
+        "color": "#d8d8d8",
+        "universe": "Alien",
+        "category": "hacker",
+        "primaryColor": "#d8d8d8",
+        "secondaryColor": "#d8d8d8",
+        "weaponType": "laser",
+        "weaponColor": "#d8d8d8",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Ash Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Ash Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Ash Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Ash Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#d8d8d8"
+        }
+      },
+      "source": {
+        "universe": "Alien",
+        "name": "Lecture du protocole par Ash",
+        "kind": "protocol-reading",
+        "effect": "buff",
+        "delivery": "support",
+        "sourceWork": "Alien (1979), Ash in his intact science-officer form",
+        "sourceReference": "https://www.20thcenturystudios.com/movies/alien",
+        "weaponType": "none",
+        "appearance": "Intact adult android science officer, neatly combed brown hair, pale long-sleeve science shirt and cream trousers; no disassembly or improvised attack.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/alien/ash-alien.png",
+      "referenceSha256": "29ca36fa23d05ecbeba23a0ff58a62e8e682f35b2f4bbf4cc837ef5c3d250269",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "amanda_ripley",
+        "name": "Amanda Ripley",
+        "cat": "horror",
+        "color": "#7e8581",
+        "weaponType": "scanner",
+        "weaponColor": "#7e8581",
+        "stats": {
+          "hp": 118,
+          "atk": 12,
+          "def": 7,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Motion Tracker Ping",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Access Rewire Trap",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Locker Breath Hold",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Sevastopol Overload",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#7e8581"
+        },
+        "universe": "Alien",
+        "category": "horror",
+        "primaryColor": "#7e8581",
+        "secondaryColor": "#7e8581"
+      },
+      "source": {
+        "universe": "Alien",
+        "name": "Frappe de la clé de maintenance d’Amanda",
+        "kind": "maintenance-jack",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Alien: Isolation (2014), adult Amanda Ripley aboard Sevastopol",
+        "sourceReference": "https://www.alienisolation.com/",
+        "weaponType": "wrench",
+        "appearance": "Adult woman with brown hair tied back, practical brown-grey work jacket and dark utility trousers; Sevastopol maintenance jack held as a physical tool.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/alien/amanda-ripley.png",
+      "referenceSha256": "7184a0a5f9e9a687c2ae31a4b56349cc0558f7cd8975cb7ab60f8262442e2d90",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "chell",
+        "name": "Chell",
+        "universe": "Portal",
+        "category": "hacker",
+        "primaryColor": "#ff6600",
+        "secondaryColor": "#ffffff",
+        "weaponType": "portalgun",
+        "weaponColor": "#dcdcdc",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        },
+        "simple": {
+          "name": "Portal Fling",
+          "type": "projectile",
+          "dmg": 0.9
+        },
+        "secondary": {
+          "name": "Turret Summon",
+          "type": "summon",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Portal Redirect",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.9
+        },
+        "special": {
+          "name": "Neurotoxin Vent",
+          "type": "poison",
+          "dmg": 4.4
+        }
+      },
+      "source": {
+        "universe": "Portal",
+        "name": "Repérage de passage de Chell",
+        "kind": "portal-route",
+        "effect": "guard",
+        "delivery": "support",
+        "sourceWork": "Portal 2 (2011), adult Chell in the test chambers",
+        "sourceReference": "https://www.thinkwithportals.com/",
+        "weaponType": "portalgun",
+        "appearance": "Adult Chell with ponytail, white Aperture tank top, orange jumpsuit tied at waist, long-fall boots and dual-prong portal device. No device used as a damaging laser.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/portal/chell.png",
+      "referenceSha256": "8746d4d8639c1d5cfb9a5d1486b8604ec1e09beccdbc4aa8ae764fdfccb292c2",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "atlas",
+        "name": "Atlas",
+        "cat": "tactical",
+        "color": "#2980b9",
+        "universe": "Portal",
+        "category": "tactical",
+        "primaryColor": "#2980b9",
+        "secondaryColor": "#2980b9",
+        "weaponType": "portalgun",
+        "weaponColor": "#2980b9",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Blue Portal Ping",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Co-op Launch Plate",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Robot Shell Brace",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Atlas Portal Chain",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#2980b9"
+        }
+      },
+      "source": {
+        "universe": "Portal",
+        "name": "Coordination de test d’ATLAS",
+        "kind": "cooperative-test",
+        "effect": "buff",
+        "delivery": "support",
+        "sourceWork": "Portal 2 (2011), ATLAS cooperative testing robot",
+        "sourceReference": "https://www.thinkwithportals.com/",
+        "weaponType": "portalgun",
+        "appearance": "Short spherical white-grey ATLAS robot, one blue optic, thin mechanical arms and legs, portal device. No P-Body silhouette or offensive portal beam.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/portal/atlas.png",
+      "referenceSha256": "988bcef0ef1fb76bd876235ada3ad98e47fb04b84edae9bdb9848781fbb00278",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "pbody",
+        "name": "P-Body",
+        "cat": "marine",
+        "color": "#d35400",
+        "universe": "Portal",
+        "category": "marine",
+        "primaryColor": "#d35400",
+        "secondaryColor": "#d35400",
+        "weaponType": "portalgun",
+        "weaponColor": "#d35400",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Orange Portal Snap",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Hardlight Bridge Redirect",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Co-op Shell Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "P-Body Test Chamber Loop",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#d35400"
+        }
+      },
+      "source": {
+        "universe": "Portal",
+        "name": "Coordination de test de P-Body",
+        "kind": "cooperative-test",
+        "effect": "buff",
+        "delivery": "support",
+        "sourceWork": "Portal 2 (2011), P-Body cooperative testing robot",
+        "sourceReference": "https://www.thinkwithportals.com/",
+        "weaponType": "portalgun",
+        "appearance": "Tall narrow white-grey P-Body robot, single orange optic, long thin mechanical limbs, portal device. No ATLAS proportions or weapon damage.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/portal/pbody.png",
+      "referenceSha256": "f017efa383656775f048d223fb27fe034841d8da5ef71a9a6cbe1d515bfb547e",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "glados",
+        "name": "GLaDOS",
+        "cat": "hacker",
+        "color": "#dfe6e9",
+        "universe": "Portal",
+        "category": "hacker",
+        "primaryColor": "#dfe6e9",
+        "secondaryColor": "#dfe6e9",
+        "weaponType": "laser",
+        "weaponColor": "#dfe6e9",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "GLaDOS Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "GLaDOS Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "GLaDOS Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "GLaDOS Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#dfe6e9"
+        }
+      },
+      "source": {
+        "universe": "Portal",
+        "name": "Consigne de test de GLaDOS",
+        "kind": "chamber-instruction",
+        "effect": "buff",
+        "delivery": "support",
+        "sourceWork": "Portal 2 (2011), GLaDOS in her central chamber chassis",
+        "sourceReference": "https://www.thinkwithportals.com/",
+        "weaponType": "none",
+        "appearance": "White segmented suspended chamber chassis, black mechanical support cables, single yellow optic. Fixed suspended silhouette; do not invent humanoid legs, a gun or magical flight.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/portal/glados.png",
+      "referenceSha256": "dedd9980eb319aa671166f5b8cac680ffb88fe38c80dd2bdb84e6aa9ab3d7b38",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "wheatley",
+        "name": "Wheatley",
+        "cat": "hacker",
+        "color": "#2980b9",
+        "universe": "Portal",
+        "category": "hacker",
+        "primaryColor": "#2980b9",
+        "secondaryColor": "#2980b9",
+        "weaponType": "laser",
+        "weaponColor": "#2980b9",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Wheatley Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Wheatley Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Wheatley Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Wheatley Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#2980b9"
+        }
+      },
+      "source": {
+        "universe": "Portal",
+        "name": "Avertissement de Wheatley",
+        "kind": "core-warning",
+        "effect": "guard",
+        "delivery": "support",
+        "sourceWork": "Portal 2 (2011), portable Wheatley intelligence core before the chassis transfer",
+        "sourceReference": "https://www.thinkwithportals.com/",
+        "weaponType": "none",
+        "appearance": "Small spherical white-black intelligence core with one blue optic and two handles; portable core presentation, no human body, giant GLaDOS chassis or invented weapon.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/portal/wheatley.png",
+      "referenceSha256": "7d8a76a2a9fbe4b5b10683354168640b3d00b97ca19eb12a363361f81b8091b2",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "doug_rattmann",
+        "name": "Doug Rattmann",
+        "cat": "hacker",
+        "color": "#a68f66",
+        "weaponType": "terminal",
+        "weaponColor": "#a68f66",
+        "stats": {
+          "hp": 108,
+          "atk": 13,
+          "def": 7,
+          "spd": 7
+        },
+        "simple": {
+          "name": "Companion Cube Mark",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Hidden Den Route",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Schizoid Warning Mural",
+          "type": "hack",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Lab Rat Override",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#a68f66"
+        },
+        "universe": "Portal",
+        "category": "hacker",
+        "primaryColor": "#a68f66",
+        "secondaryColor": "#a68f66"
+      },
+      "source": {
+        "universe": "Portal",
+        "name": "Indication du passage de Rattmann",
+        "kind": "mural-guidance",
+        "effect": "guard",
+        "delivery": "support",
+        "sourceWork": "Portal 2: Lab Rat (2011), adult Doug Rattmann",
+        "sourceReference": "https://www.thinkwithportals.com/comic/",
+        "weaponType": "none",
+        "appearance": "Adult unshaven Aperture employee with untidy brown hair and worn laboratory clothing, portable companion cube allowed as a carried object only; no invented portal-gun combat.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/portal/doug-rattmann.png",
+      "referenceSha256": "a6568790d0251dbc13d4dc0dc720d11854eb4f89145ae205134ae7c0f64ac0d4",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "rincewind_dw",
+        "name": "Rincewind",
+        "cat": "hacker",
+        "color": "#8e44ad",
+        "weapon": "laser",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "universe": "Discworld",
+        "category": "hacker",
+        "primaryColor": "#8e44ad",
+        "secondaryColor": "#8e44ad",
+        "weaponType": "laser",
+        "weaponColor": "#8e44ad",
+        "simple": {
+          "name": "Rincewind Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Rincewind Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Rincewind Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Rincewind Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#8e44ad"
+        }
+      },
+      "source": {
+        "universe": "Discworld",
+        "name": "Repli prudent de Rincewind",
+        "kind": "survivor-retreat",
+        "effect": "guard",
+        "delivery": "support",
+        "sourceWork": "The Colour of Magic (1983), adult Rincewind",
+        "sourceReference": "https://www.terrypratchettbooks.com/books/the-colour-of-magic/",
+        "weaponType": "none",
+        "appearance": "Thin adult wizard in battered red robe and pointed red hat marked WIZZARD, practical boots; empty hands and anxious retreat. No reliable combat magic or invented staff.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/discworld/rincewind-dw.png",
+      "referenceSha256": "0736a8babca7dc62cc1700eb4cef6d67895442465867e1384ec815cb0d0fe99e",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "vimes_dw",
+        "name": "Sam Vimes",
+        "cat": "tactical",
+        "color": "#59656f",
+        "weapon": "gun",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "universe": "Discworld",
+        "category": "tactical",
+        "primaryColor": "#59656f",
+        "secondaryColor": "#59656f",
+        "weaponType": "gun",
+        "weaponColor": "#59656f",
+        "simple": {
+          "name": "Sam Vimes Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Sam Vimes Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Sam Vimes Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Sam Vimes Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#59656f"
+        }
+      },
+      "source": {
+        "universe": "Discworld",
+        "name": "Frappe de l’épée de Vimes",
+        "kind": "watch-sword",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Guards! Guards! (1989), Captain Sam Vimes of the Night Watch",
+        "sourceReference": "https://www.terrypratchettbooks.com/books/guards-guards/",
+        "weaponType": "sword",
+        "appearance": "Weathered adult Night Watch captain, worn breastplate over brown clothing, battered watch helmet, practical short sword. No royal-regalia outfit or supernatural law aura.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/discworld/vimes-dw.png",
+      "referenceSha256": "1fd2be920b1588d83b712a21a1e1e59bd3be2f1e030e8b6702eba2617d64b246",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "granny_dw",
+        "name": "Granny Weatherwax",
+        "cat": "horror",
+        "color": "#c9c2aa",
+        "weapon": "slash",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "universe": "Discworld",
+        "category": "horror",
+        "primaryColor": "#c9c2aa",
+        "secondaryColor": "#c9c2aa",
+        "weaponType": "slash",
+        "weaponColor": "#c9c2aa",
+        "simple": {
+          "name": "Granny Weatherwax Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Granny Weatherwax Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Granny Weatherwax Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Granny Weatherwax Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#c9c2aa"
+        }
+      },
+      "source": {
+        "universe": "Discworld",
+        "name": "Consigne ferme de Mémé Ciredutemps",
+        "kind": "headology-instruction",
+        "effect": "guard",
+        "delivery": "support",
+        "sourceWork": "Wyrd Sisters (1988), Granny Esme Weatherwax",
+        "sourceReference": "https://www.terrypratchettbooks.com/books/wyrd-sisters/",
+        "weaponType": "none",
+        "appearance": "Older woman in severe plain black dress and tall black pointed witch hat, thin upright posture, empty hands. Headology represented by grounded guidance, not magical shields or fireballs.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/discworld/granny-dw.png",
+      "referenceSha256": "244fbd5518706de2274406c04cb96362bdb147cf197c8d94c446a1c10365e170",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "twoflower_dw",
+        "name": "Twoflower",
+        "cat": "hacker",
+        "color": "#f4d03f",
+        "universe": "Discworld",
+        "category": "hacker",
+        "primaryColor": "#f4d03f",
+        "secondaryColor": "#f4d03f",
+        "weaponType": "laser",
+        "weaponColor": "#f4d03f",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Twoflower Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Twoflower Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Twoflower Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Twoflower Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#f4d03f"
+        }
+      },
+      "source": {
+        "universe": "Discworld",
+        "name": "Repérage touristique de Deuxfleurs",
+        "kind": "tourist-observation",
+        "effect": "buff",
+        "delivery": "support",
+        "sourceWork": "The Colour of Magic (1983), adult Twoflower",
+        "sourceReference": "https://www.terrypratchettbooks.com/books/the-colour-of-magic/",
+        "weaponType": "none",
+        "appearance": "Adult Agatean tourist with glasses, bright patterned tourist shirt, practical trousers and luggage strap; nonoffensive observation. No damaging camera flash or invented firearm.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/discworld/twoflower-dw.png",
+      "referenceSha256": "35b440c550bdd321a01bdd2ac237b41f23054ee2f6e7d2e0e41f98053fb555e2",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "death_dw",
+        "name": "Death",
+        "cat": "horror",
+        "color": "#d5dbdb",
+        "universe": "Discworld",
+        "category": "horror",
+        "primaryColor": "#d5dbdb",
+        "secondaryColor": "#d5dbdb",
+        "weaponType": "slash",
+        "weaponColor": "#d5dbdb",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Death Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Death Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Death Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Death Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#d5dbdb"
+        }
+      },
+      "source": {
+        "universe": "Discworld",
+        "name": "Balayage physique de la faux de la Mort",
+        "kind": "scythe",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Mort (1987), Death in his ordinary robed manifestation",
+        "sourceReference": "https://www.terrypratchettbooks.com/books/mort/",
+        "weaponType": "scythe",
+        "appearance": "Tall complete skeleton in black hooded robe, blue eye lights and long wooden-handled scythe. Physical bounded blade contact only; no instant soul removal or guaranteed kill.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/discworld/death-dw.png",
+      "referenceSha256": "139d55a8993509637c534cdfe3e39fd9a24274a412a409c1fc0d284df6f51e20",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "A",
+      "hero": {
+        "id": "nanny_ogg_dw",
+        "name": "Nanny Ogg",
+        "cat": "hacker",
+        "color": "#9b59b6",
+        "universe": "Discworld",
+        "category": "hacker",
+        "primaryColor": "#9b59b6",
+        "secondaryColor": "#9b59b6",
+        "weaponType": "laser",
+        "weaponColor": "#9b59b6",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Nanny Ogg Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Nanny Ogg Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Nanny Ogg Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Nanny Ogg Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#9b59b6"
+        }
+      },
+      "source": {
+        "universe": "Discworld",
+        "name": "Rassemblement de Nounou Ogg",
+        "kind": "community-coordination",
+        "effect": "buff",
+        "delivery": "support",
+        "sourceWork": "Wyrd Sisters (1988), Nanny Gytha Ogg",
+        "sourceReference": "https://www.terrypratchettbooks.com/books/wyrd-sisters/",
+        "weaponType": "none",
+        "appearance": "Short sturdy older witch, cheerful round face, plain black dress and practical black hat, empty hands. No invented attack spell, enchanted bottle or damaging song.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/discworld/nanny-ogg-dw.png",
+      "referenceSha256": "77e15d46263f72dd972cf5b054dae827b16b911c260968ccee7c07e3ed0abff4",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "meryl_mgs",
+        "name": "Meryl Silverburgh",
+        "cat": "tactical",
+        "color": "#a93226",
+        "universe": "Metal Gear",
+        "category": "tactical",
+        "primaryColor": "#a93226",
+        "secondaryColor": "#a93226",
+        "weaponType": "gun",
+        "weaponColor": "#a93226",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Meryl Silverburgh Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Meryl Silverburgh Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Meryl Silverburgh Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Meryl Silverburgh Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#a93226"
+        }
+      },
+      "source": {
+        "universe": "Metal Gear",
+        "name": "Tir ajusté du Desert Eagle de Meryl",
+        "kind": "desert-eagle",
+        "effect": "damage",
+        "delivery": "projectile",
+        "sourceWork": "Metal Gear Solid (1998), Meryl Silverburgh at Shadow Moses",
+        "sourceReference": "https://www.konami.com/mg/mgs/",
+        "weaponType": "gun",
+        "appearance": "Short red hair and burgundy headband, olive sleeveless top, grey cargo trousers, black boots, physical Desert Eagle handgun.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/meryl-mgs.png",
+      "referenceSha256": "53219091a9c8ab5da895372d8994498a7ec1d82962e4385d875b9b847ebdc1ef",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "liquid_snake",
+        "name": "Liquid Snake",
+        "cat": "slayer",
+        "color": "#7f5c38",
+        "universe": "Metal Gear",
+        "category": "slayer",
+        "primaryColor": "#7f5c38",
+        "secondaryColor": "#7f5c38",
+        "weaponType": "slash",
+        "weaponColor": "#7f5c38",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Liquid Snake Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Liquid Snake Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Liquid Snake Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Liquid Snake Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#7f5c38"
+        }
+      },
+      "source": {
+        "universe": "Metal Gear",
+        "name": "Enchaînement rapproché de Liquid",
+        "kind": "unarmed-cqc",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Metal Gear Solid (1998), Liquid Snake at Shadow Moses",
+        "sourceReference": "https://www.konami.com/mg/mgs/",
+        "weaponType": "fist",
+        "appearance": "Adult blond man, long open tan military coat, black combat trousers, dark boots and gloves. Bare-chest source costume stays nonsexual; unarmed physical strikes, no REX beam.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/liquid-snake.png",
+      "referenceSha256": "d3836ca089a9127719e91b23286966ec98174fb8115ea93fd6528c8cb927fd37",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "the_boss_mgs",
+        "name": "The Boss",
+        "cat": "marine",
+        "color": "#d7d7c5",
+        "universe": "Metal Gear",
+        "category": "marine",
+        "primaryColor": "#d7d7c5",
+        "secondaryColor": "#d7d7c5",
+        "weaponType": "gun",
+        "weaponColor": "#d7d7c5",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "The Boss Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "The Boss Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "The Boss Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "The Boss Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#d7d7c5"
+        }
+      },
+      "source": {
+        "universe": "Metal Gear",
+        "name": "Prise de CQC de The Boss",
+        "kind": "cqc",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Metal Gear Solid 3: Snake Eater (2004), The Boss during Operation Snake Eater (1964)",
+        "sourceReference": "https://www.konami.com/mg/mgs/",
+        "weaponType": "fist",
+        "appearance": "Adult blonde woman in white-grey sneaking suit with front fastened, dark gloves and boots. Physical close-quarters grapple, no Volgin electricity or later-era equipment.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/the-boss-mgs.png",
+      "referenceSha256": "73ae3d993bbf7187fbdf1a78215a69c35d57126d74c719c0aeeeb4603f4c0084",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "ocelot_mgs",
+        "name": "Revolver Ocelot",
+        "cat": "tactical",
+        "color": "#8e6e53",
+        "universe": "Metal Gear",
+        "category": "tactical",
+        "primaryColor": "#8e6e53",
+        "secondaryColor": "#8e6e53",
+        "weaponType": "gun",
+        "weaponColor": "#8e6e53",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Revolver Ocelot Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Revolver Ocelot Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Revolver Ocelot Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Revolver Ocelot Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#8e6e53"
+        }
+      },
+      "source": {
+        "universe": "Metal Gear",
+        "name": "Tir ajusté du revolver d’Ocelot",
+        "kind": "single-action-army",
+        "effect": "damage",
+        "delivery": "projectile",
+        "sourceWork": "Metal Gear Solid (1998), Revolver Ocelot before losing his hand",
+        "sourceReference": "https://www.konami.com/mg/mgs/",
+        "weaponType": "gun",
+        "appearance": "Adult older man with long grey hair and moustache, brown duster, red scarf, black gloves and intact hands; Colt Single Action Army revolver.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/ocelot-mgs.png",
+      "referenceSha256": "6e0f3572abb60a27d4eba5c5d3e9a50101bdaf34e52974db3b26eff7a03611aa",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "gray_fox",
+        "name": "Gray Fox",
+        "cat": "slayer",
+        "color": "#bfc9ca",
+        "weaponType": "blade",
+        "weaponColor": "#bfc9ca",
+        "stats": {
+          "hp": 118,
+          "atk": 15,
+          "def": 6,
+          "spd": 7
+        },
+        "simple": {
+          "name": "High-Frequency Slash",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Stealth Camo Lunge",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Ninja Parry",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Cyborg Fox Sacrifice",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#bfc9ca"
+        },
+        "universe": "Metal Gear",
+        "category": "slayer",
+        "primaryColor": "#bfc9ca",
+        "secondaryColor": "#bfc9ca"
+      },
+      "source": {
+        "universe": "Metal Gear",
+        "name": "Taille du katana de Gray Fox",
+        "kind": "ninja-katana",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Metal Gear Solid (1998), Gray Fox in the Cyborg Ninja exoskeleton",
+        "sourceReference": "https://www.konami.com/mg/mgs/",
+        "weaponType": "katana",
+        "appearance": "Enclosed blue-grey and orange Cyborg Ninja suit with red central eye sensor, physical straight katana. No exposed damaged body or Raiden costume.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/gray-fox.png",
+      "referenceSha256": "64842aed0e20bd81ef88a1ca56e0fbc95bded7e783c4f0218e9448e3b8d90482",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "big_boss",
+        "name": "Big Boss",
+        "cat": "tactical",
+        "color": "#4d5b43",
+        "weaponType": "gun",
+        "weaponColor": "#4d5b43",
+        "stats": {
+          "hp": 124,
+          "atk": 12,
+          "def": 8,
+          "spd": 6
+        },
+        "simple": {
+          "name": "CQC Takedown",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Outer Heaven Ambush",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Legendary Soldier Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Boss Protocol",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#4d5b43"
+        },
+        "universe": "Metal Gear",
+        "category": "tactical",
+        "primaryColor": "#4d5b43",
+        "secondaryColor": "#4d5b43"
+      },
+      "source": {
+        "universe": "Metal Gear",
+        "name": "Tir du M1911A1 de Naked Snake",
+        "kind": "m1911a1",
+        "effect": "damage",
+        "delivery": "projectile",
+        "sourceWork": "Metal Gear Solid 3: Snake Eater (2004), Naked Snake after acquiring the right-eye patch",
+        "sourceReference": "https://www.konami.com/mg/mgs/",
+        "weaponType": "gun",
+        "appearance": "Adult dark-haired Naked Snake, green bandana, right-eye patch, olive jungle fatigues, combat webbing and boots, physical suppressed M1911A1. No Venom Snake prosthetic or horn.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/big-boss.png",
+      "referenceSha256": "fefae9ee9543b885299d10c01421c960a06c43ff8f72f7fef7f85b788a0ee546",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "luke",
+        "name": "Luke Skywalker",
+        "universe": "Star Wars",
+        "category": "slayer",
+        "primaryColor": "#2ecc71",
+        "secondaryColor": "#3498db",
+        "weaponType": "lightsaber",
+        "weaponColor": "#6fe687",
+        "stats": {
+          "hp": 140,
+          "atk": 18,
+          "def": 9,
+          "spd": 7
+        },
+        "simple": {
+          "name": "Lightsaber Cut",
+          "type": "melee",
+          "dmg": 1.2
+        },
+        "secondary": {
+          "name": "Force Push Blast",
+          "type": "gravity",
+          "cd": 5,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Saber Deflect",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.9
+        },
+        "special": {
+          "name": "Jedi Mind Strike",
+          "type": "beam_aoe",
+          "dmg": 5.2
+        }
+      },
+      "source": {
+        "universe": "Star Wars",
+        "name": "Enchaînement au sabre vert de Luke",
+        "kind": "green-lightsaber",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Star Wars: Return of the Jedi (1983), adult Luke Skywalker aboard the second Death Star",
+        "sourceReference": "https://www.starwars.com/databank/luke-skywalker",
+        "weaponType": "lightsaber",
+        "appearance": "Adult Luke with short brown hair, black Jedi outfit, black right glove and green lightsaber. No blue blade, sequel costume or ranged Force lightning.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/star-wars/luke.png",
+      "referenceSha256": "e7c5dc6bdf10918c7c5d63c31a27f5c6c799fe04c0aba35160edd55021e3e650",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "vader",
+        "name": "Darth Vader",
+        "cat": "slayer",
+        "color": "#2d3436",
+        "universe": "Star Wars",
+        "category": "slayer",
+        "primaryColor": "#2d3436",
+        "secondaryColor": "#2d3436",
+        "weaponType": "lightsaber",
+        "weaponColor": "#ee6a6a",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Sith Saber Cut",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Force Choke Hold",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Dark Side Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Imperial March Execution",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#2d3436"
+        }
+      },
+      "source": {
+        "universe": "Star Wars",
+        "name": "Taille au sabre rouge de Vador",
+        "kind": "red-lightsaber",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Star Wars: The Empire Strikes Back (1980), Darth Vader at Bespin",
+        "sourceReference": "https://www.starwars.com/databank/darth-vader",
+        "weaponType": "lightsaber",
+        "appearance": "Black helmet and armour, chest control box, black cape, red lightsaber. Mechanical breathing stance; no unmasked injury, Force choke or fabricated lightning.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/star-wars/vader.png",
+      "referenceSha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "ahsoka_adult",
+        "name": "Ahsoka Tano (Adult)",
+        "cat": "tactical",
+        "color": "#d96f35",
+        "secondaryColor": "#f4f8ff",
+        "weaponType": "dual_lightsaber",
+        "weaponColor": "#f4f8ff",
+        "stats": {
+          "hp": 130,
+          "atk": 15,
+          "def": 9,
+          "spd": 8
+        },
+        "simple": {
+          "name": "White Saber Crosscut",
+          "type": "melee",
+          "dmg": 1.12
+        },
+        "secondary": {
+          "name": "Fulcrum Route Read",
+          "type": "force",
+          "dmg": 1.75,
+          "cd": 5
+        },
+        "defense": {
+          "name": "World Between Worlds Step",
+          "type": "dodge",
+          "dmg": 0,
+          "dur": 2.3,
+          "reduce": 0.9
+        },
+        "special": {
+          "name": "Ahsoka the White",
+          "type": "light_aoe",
+          "dmg": 4.75,
+          "color": "#f4f8ff"
+        },
+        "equipment": [
+          "Twin White Lightsabers",
+          "T-6 Shuttle Beacon",
+          "Fulcrum Archive"
+        ],
+        "incarnation": "Rebels and Ahsoka - mature former Jedi",
+        "canonStatus": "canon",
+        "universe": "Star Wars",
+        "category": "tactical",
+        "primaryColor": "#d96f35"
+      },
+      "source": {
+        "universe": "Star Wars",
+        "name": "Croisement des deux sabres blancs d’Ahsoka",
+        "kind": "dual-white-lightsabers",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Star Wars Rebels, season 2 (2015–2016), adult Ahsoka Tano",
+        "sourceReference": "https://www.starwars.com/databank/ahsoka-tano",
+        "weaponType": "lightsaber",
+        "appearance": "Adult orange-skinned Togruta with white face markings, long blue-white lekku and montrals, grey-blue practical outfit and two white lightsabers. No teenage Clone Wars outfit.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/star-wars/ahsoka-adult.png",
+      "referenceSha256": "33447986f3ed85a2b987b80d79d4f4494202e41f6c0faff3499d2584f1e714c8",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "aayla_secura",
+        "name": "Aayla Secura",
+        "cat": "slayer",
+        "color": "#4ba6d8",
+        "secondaryColor": "#6cc7ff",
+        "weaponType": "lightsaber",
+        "weaponColor": "#6cc7ff",
+        "stats": {
+          "hp": 120,
+          "atk": 15,
+          "def": 7,
+          "spd": 8
+        },
+        "simple": {
+          "name": "Blue Saber Advance",
+          "type": "melee",
+          "dmg": 1.1
+        },
+        "secondary": {
+          "name": "Felucia Flank",
+          "type": "force",
+          "dmg": 1.8,
+          "cd": 6
+        },
+        "defense": {
+          "name": "Jedi General Guard",
+          "type": "shield",
+          "dmg": 0,
+          "dur": 2,
+          "reduce": 0.82
+        },
+        "special": {
+          "name": "Commander Bly Formation",
+          "type": "force_aoe",
+          "dmg": 4.55,
+          "color": "#6cc7ff"
+        },
+        "equipment": [
+          "Blue Lightsaber",
+          "Jedi Field Bracers",
+          "Clone Command Comlink"
+        ],
+        "incarnation": "Clone Wars Jedi General",
+        "canonStatus": "canon",
+        "universe": "Star Wars",
+        "category": "slayer",
+        "primaryColor": "#4ba6d8"
+      },
+      "source": {
+        "universe": "Star Wars",
+        "name": "Taille au sabre bleu d’Aayla",
+        "kind": "blue-lightsaber",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Star Wars: Revenge of the Sith (2005), adult Jedi Aayla Secura",
+        "sourceReference": "https://www.starwars.com/databank/aayla-secura",
+        "weaponType": "lightsaber",
+        "appearance": "Adult blue Twi’lek Jedi with two long blue lekku and brown headwrap, brown Jedi field outfit, blue lightsaber. Source clothing framed nonsexually as ordinary field gear.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/star-wars/aayla-secura.png",
+      "referenceSha256": "cf118c87ddb43d9f69a132389fd8c936ee887676f8da91f8e62814bc8c75003c",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "darth_revan",
+        "name": "Darth Revan",
+        "cat": "tactical",
+        "color": "#282329",
+        "secondaryColor": "#8f4dff",
+        "weaponType": "dual_lightsaber",
+        "weaponColor": "#8f4dff",
+        "stats": {
+          "hp": 138,
+          "atk": 16,
+          "def": 9,
+          "spd": 7
+        },
+        "simple": {
+          "name": "Red Saber Judgment",
+          "type": "melee",
+          "dmg": 1.14
+        },
+        "secondary": {
+          "name": "Purple Saber Reversal",
+          "type": "force",
+          "dmg": 1.95,
+          "cd": 6
+        },
+        "defense": {
+          "name": "Revanite Mask Focus",
+          "type": "shield",
+          "dmg": 0,
+          "dur": 2.2,
+          "reduce": 0.86
+        },
+        "special": {
+          "name": "Star Forge Command",
+          "type": "force_aoe",
+          "dmg": 4.95,
+          "color": "#8f4dff"
+        },
+        "equipment": [
+          "Revan Mask",
+          "Red Lightsaber",
+          "Purple Lightsaber"
+        ],
+        "incarnation": "Knights of the Old Republic iconic masked identity",
+        "canonStatus": "legends",
+        "universe": "Star Wars",
+        "category": "tactical",
+        "primaryColor": "#282329"
+      },
+      "source": {
+        "universe": "Star Wars",
+        "name": "Taille au sabre rouge de Revan",
+        "kind": "red-lightsaber",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Star Wars: Knights of the Old Republic (2003), masked Darth Revan in the selected dark-side armour",
+        "sourceReference": "https://www.starwars.com/databank/revan",
+        "weaponType": "lightsaber",
+        "appearance": "Masked adult Revan in red-brown and dark armour, black hood and cloak, one red lightsaber. No player-customized face, purple offhand blade or unrelated MMO armour.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/star-wars/darth-revan.png",
+      "referenceSha256": "78200992ef619c3e7d16907db20496df67b018c1fb99697bcf75dce3ea43169c",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "obi_wan",
+        "name": "Obi-Wan Kenobi",
+        "cat": "slayer",
+        "color": "#5dade2",
+        "universe": "Star Wars",
+        "category": "slayer",
+        "primaryColor": "#5dade2",
+        "secondaryColor": "#5dade2",
+        "weaponType": "lightsaber",
+        "weaponColor": "#67b8ff",
+        "stats": {
+          "hp": 105,
+          "atk": 14,
+          "def": 5,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Obi-Wan Kenobi Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Obi-Wan Kenobi Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Obi-Wan Kenobi Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Obi-Wan Kenobi Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#5dade2"
+        }
+      },
+      "source": {
+        "universe": "Star Wars",
+        "name": "Contre au sabre bleu d’Obi-Wan",
+        "kind": "blue-lightsaber",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Star Wars: Revenge of the Sith (2005), adult Obi-Wan Kenobi",
+        "sourceReference": "https://www.starwars.com/databank/obi-wan-kenobi",
+        "weaponType": "lightsaber",
+        "appearance": "Adult bearded Obi-Wan with short auburn hair, cream Jedi tunic, brown belt and tall boots, blue lightsaber. No Alec Guinness older continuity or blaster.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/star-wars/obi-wan.png",
+      "referenceSha256": "5e2dcd725a8ebbcab1a24715ced90885016ab025b8ec7dcd119774475b0a12d3",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "yoda",
+        "name": "Yoda",
+        "cat": "hacker",
+        "color": "#58d68d",
+        "universe": "Star Wars",
+        "category": "hacker",
+        "primaryColor": "#58d68d",
+        "secondaryColor": "#58d68d",
+        "weaponType": "laser",
+        "weaponColor": "#58d68d",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Yoda Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Yoda Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Yoda Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Yoda Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#58d68d"
+        }
+      },
+      "source": {
+        "universe": "Star Wars",
+        "name": "Enchaînement au sabre vert de Yoda",
+        "kind": "green-lightsaber",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Star Wars: Attack of the Clones (2002), Yoda in his Jedi field robes",
+        "sourceReference": "https://www.starwars.com/databank/yoda",
+        "weaponType": "lightsaber",
+        "appearance": "Small elderly green Jedi with large ears, cream robe over brown tunic, short green lightsaber. Native small stature, no human proportions or invented lightning.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/star-wars/yoda.png",
+      "referenceSha256": "44b2b09fe1ca526bd2e9f24efc377f0e4e97984a867d5d6371d4e1baaa74bfc5",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "darth_maul",
+        "name": "Darth Maul",
+        "cat": "slayer",
+        "color": "#b72822",
+        "universe": "Star Wars",
+        "category": "slayer",
+        "primaryColor": "#a93226",
+        "secondaryColor": "#ff2d24",
+        "weaponType": "double_lightsaber",
+        "weaponColor": "#ff2d24",
+        "stats": {
+          "hp": 134,
+          "atk": 17,
+          "def": 6,
+          "spd": 9
+        },
+        "simple": {
+          "name": "Double-Bladed Saber Rush",
+          "type": "melee",
+          "dmg": 1.2
+        },
+        "secondary": {
+          "name": "Dathomirian Force Choke",
+          "type": "force",
+          "dmg": 2.05,
+          "cd": 6
+        },
+        "defense": {
+          "name": "Cybernetic Spin Parry",
+          "type": "shield",
+          "dmg": 0,
+          "dur": 1.8,
+          "reduce": 0.84
+        },
+        "special": {
+          "name": "Shadow Collective Dominion",
+          "type": "dark_aoe",
+          "dmg": 5,
+          "color": "#ff2d24"
+        },
+        "equipment": [
+          "Double-Bladed Red Lightsaber",
+          "Cybernetic Legs",
+          "Mandalore Command Seal"
+        ],
+        "incarnation": "The Clone Wars - ruler of Mandalore",
+        "canonStatus": "canon"
+      },
+      "source": {
+        "universe": "Star Wars",
+        "name": "Balayage du double sabre de Maul",
+        "kind": "double-red-lightsaber",
+        "effect": "damage",
+        "delivery": "melee",
+        "sourceWork": "Star Wars: The Phantom Menace (1999), Darth Maul before his defeat on Naboo",
+        "sourceReference": "https://www.starwars.com/databank/darth-maul",
+        "weaponType": "lightsaber",
+        "appearance": "Adult red-black tattooed Zabrak with small horns, black layered robes and boots, double-ended red lightsaber. Intact original legs, no mechanical limbs.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/star-wars/darth-maul.png",
+      "referenceSha256": "88ad49c11b99a5a5322252092e63029668dce6378be143db7b5d9b4e5b67dccd",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "joel_tlou",
+        "name": "Joel",
+        "cat": "marine",
+        "color": "#c3db8d",
+        "weapon": "gun",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "universe": "The Last of Us",
+        "category": "marine",
+        "primaryColor": "#c3db8d",
+        "secondaryColor": "#c3db8d",
+        "weaponType": "gun",
+        "weaponColor": "#c3db8d",
+        "simple": {
+          "name": "Joel Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Joel Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Joel Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Joel Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#c3db8d"
+        }
+      },
+      "source": {
+        "universe": "The Last of Us",
+        "name": "Tir ajusté du revolver de Joel",
+        "kind": "revolver",
+        "effect": "damage",
+        "delivery": "projectile",
+        "sourceWork": "The Last of Us (2013), adult Joel during the autumn journey",
+        "sourceReference": "https://www.playstation.com/games/the-last-of-us/",
+        "weaponType": "gun",
+        "appearance": "Adult bearded Joel, brown-green plaid work shirt, dark jeans, boots and worn backpack, physical revolver. No infected abilities or later severe injury.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/the-last-of-us/joel-tlou.png",
+      "referenceSha256": "1d1ad92afd42e65330264053233eb96153b60a0f66e5b22ac3794c8198749f37",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "tess_tlou",
+        "name": "Tess",
+        "cat": "tactical",
+        "color": "#7d9547",
+        "weapon": "gun",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "universe": "The Last of Us",
+        "category": "tactical",
+        "primaryColor": "#7d9547",
+        "secondaryColor": "#7d9547",
+        "weaponType": "gun",
+        "weaponColor": "#7d9547",
+        "simple": {
+          "name": "Tess Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Tess Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Tess Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Tess Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#7d9547"
+        }
+      },
+      "source": {
+        "universe": "The Last of Us",
+        "name": "Tir de couverture du pistolet de Tess",
+        "kind": "handgun",
+        "effect": "damage",
+        "delivery": "projectile",
+        "sourceWork": "The Last of Us (2013), adult Tess before the Capitol encounter",
+        "sourceReference": "https://www.playstation.com/games/the-last-of-us/",
+        "weaponType": "gun",
+        "appearance": "Adult Tess with brown hair tied back, burgundy-red short-sleeve work shirt, dark trousers and boots, ordinary handgun. No infection imagery or magical support.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/the-last-of-us/tess-tlou.png",
+      "referenceSha256": "900cde78505c836ba595334a182af15b8d218a125661cc95d3cda0988e14eb21",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "tommy_tlou",
+        "name": "Tommy Miller",
+        "cat": "marine",
+        "color": "#566573",
+        "simpleName": "Rifle Patrol Shot",
+        "secondaryName": "Jackson Ambush",
+        "defenseName": "Settlement Guard",
+        "specialName": "Sniper Overwatch",
+        "universe": "The Last of Us",
+        "category": "marine",
+        "primaryColor": "#566573",
+        "secondaryColor": "#566573",
+        "weaponType": "gun",
+        "weaponColor": "#566573",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Rifle Patrol Shot",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Jackson Ambush",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Settlement Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Sniper Overwatch",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#566573"
+        }
+      },
+      "source": {
+        "universe": "The Last of Us",
+        "name": "Tir du fusil de Tommy",
+        "kind": "hunting-rifle",
+        "effect": "damage",
+        "delivery": "projectile",
+        "sourceWork": "The Last of Us (2013), adult Tommy at Jackson hydroelectric dam",
+        "sourceReference": "https://www.playstation.com/games/the-last-of-us/",
+        "weaponType": "rifle",
+        "appearance": "Adult Tommy with medium brown hair and facial hair, practical brown work jacket and jeans, two-handed physical hunting rifle. No later eye injury.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/the-last-of-us/tommy-tlou.png",
+      "referenceSha256": "b5785a8d9ace663348334e03fbc785d76212d34c4f763be0e0831ee056f27ea5",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "dina_tlou2",
+        "name": "Dina",
+        "cat": "tactical",
+        "color": "#8d6e63",
+        "simpleName": "Switchblade Feint",
+        "secondaryName": "Horseback Escape",
+        "defenseName": "Theater Hideout",
+        "specialName": "Seattle Support Route",
+        "universe": "The Last of Us",
+        "category": "tactical",
+        "primaryColor": "#8d6e63",
+        "secondaryColor": "#8d6e63",
+        "weaponType": "gun",
+        "weaponColor": "#8d6e63",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Switchblade Feint",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Horseback Escape",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Theater Hideout",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Seattle Support Route",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#8d6e63"
+        }
+      },
+      "source": {
+        "universe": "The Last of Us",
+        "name": "Tir de couverture de Dina",
+        "kind": "handgun",
+        "effect": "damage",
+        "delivery": "projectile",
+        "sourceWork": "The Last of Us Part II (2020), adult Dina on the early Seattle journey",
+        "sourceReference": "https://www.playstation.com/games/the-last-of-us-part-ii/",
+        "weaponType": "gun",
+        "appearance": "Adult Dina, dark hair tied back, grey-green hooded field jacket and dark trousers, backpack, ordinary handgun. No pregnancy imagery or child version.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/the-last-of-us/dina-tlou2.png",
+      "referenceSha256": "3f9e938491b55f9a3235dab36c5d249dcac248d417671ed7626df32b0303847b",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "abby_tlou2",
+        "name": "Abby Anderson",
+        "cat": "marine",
+        "color": "#5d6d7e",
+        "simpleName": "WLF Rifle Burst",
+        "secondaryName": "Hammer Counter",
+        "defenseName": "Aquarium Route Guard",
+        "specialName": "Seraphite Island Breakout",
+        "universe": "The Last of Us",
+        "category": "marine",
+        "primaryColor": "#5d6d7e",
+        "secondaryColor": "#5d6d7e",
+        "weaponType": "gun",
+        "weaponColor": "#5d6d7e",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        },
+        "simple": {
+          "name": "WLF Rifle Burst",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Hammer Counter",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Aquarium Route Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Seraphite Island Breakout",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#5d6d7e"
+        }
+      },
+      "source": {
+        "universe": "The Last of Us",
+        "name": "Tir ajusté du pistolet d’Abby",
+        "kind": "military-handgun",
+        "effect": "damage",
+        "delivery": "projectile",
+        "sourceWork": "The Last of Us Part II (2020), adult Abby on Seattle day one",
+        "sourceReference": "https://www.playstation.com/games/the-last-of-us-part-ii/",
+        "weaponType": "gun",
+        "appearance": "Adult athletic Abby with blonde braid, grey sleeveless work shirt, dark tactical trousers and backpack, ordinary military handgun. No later captivity appearance or weapon invented from injury.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/the-last-of-us/abby-tlou2.png",
+      "referenceSha256": "78da1e6f289766fd69250348e07645dc2c626c88badee4b89dcce559d7982308",
+      "alreadyAuthored": false
+    },
+    {
+      "part": "B",
+      "hero": {
+        "id": "hayden",
+        "name": "Samuel Hayden",
+        "cat": "hacker",
+        "color": "#bdc3c7",
+        "universe": "Doom",
+        "category": "hacker",
+        "primaryColor": "#bdc3c7",
+        "secondaryColor": "#bdc3c7",
+        "weaponType": "laser",
+        "weaponColor": "#bdc3c7",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Argent Lance",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "UAC Facility Lock",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Cybernetic Frame Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Crucible Transfer",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#bdc3c7"
+        }
+      },
+      "source": {
+        "universe": "Doom",
+        "name": "Consigne d’évacuation de Hayden",
+        "kind": "evacuation-instruction",
+        "effect": "guard",
+        "delivery": "support",
+        "sourceWork": "DOOM (2016), Samuel Hayden in his intact robotic body",
+        "sourceReference": "https://doom.bethesda.net/",
+        "weaponType": "none",
+        "appearance": "Tall intact white-grey robotic director body, broad mechanical shoulders, compact head and luminous face optic. No DOOM Eternal dismembered form, Crucible or invented arm cannon.",
+        "source1to1Verified": false,
+        "networkVerified": false
+      },
+      "referenceAsset": "/sprites/generated/heroes/doom/hayden.png",
+      "referenceSha256": "386d5d2438255f7983f3f68394d3ae9c8b5e37baf3787da4f0d761ba13f29073",
+      "alreadyAuthored": false
+    }
+  ],
+  "source1to1Verified": false
+}

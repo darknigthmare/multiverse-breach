@@ -16,6 +16,7 @@ import { STAGE_ANIMATION_PROFILES, getStageAnimationFrame, getStageAnimationProf
 import { getCharacterFormFrame } from '../src/game/combat/characterFormState.js';
 import { getSummonAnimationAssets, resolveSummonAnimationAsset } from '../src/game/combat/summonAnimationCatalog.js';
 import { getCharacterFormAssets } from '../src/game/combat/characterFormCatalog.js';
+import { assertHistoricalPresentationOrWave13Version } from './combatPresentationVersionsWave13.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = path => readFileSync(new URL(path, root));
@@ -40,7 +41,7 @@ const noop = () => {};
 let vite, drawPixelSprite, EngineFighter;
 const engines = [];
 before(async () => {
-  vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
+  vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true, watch: null } });
   ({ drawPixelSprite } = await vite.ssrLoadModule('/src/game/renderer.js'));
   ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js'));
 });
@@ -250,9 +251,9 @@ test('all17 new base layouts contain272 real cells and render every native cell 
   assert.equal(unique.size, 272); assert.equal(draws, 1056);
 });
 
-test('all84 prior character presentation recipes remain exactly immutable', () => {
+test('all84 prior presentation snapshots stay immutable and only three explicit W13 versions replace recipes', () => {
   assert.equal(Object.keys(runtimeBaseline.presentations).length, 84);
-  for (const [id, prior] of Object.entries(runtimeBaseline.presentations)) assert.deepEqual(CHARACTER_PRESENTATIONS[id], prior, id);
+  for (const [id, prior] of Object.entries(runtimeBaseline.presentations)) assertHistoricalPresentationOrWave13Version(id, prior, CHARACTER_PRESENTATIONS[id]);
   const historicalIds = [...Object.keys(runtimeBaseline.presentations), ...wave8Ids];
   assert.equal(new Set(historicalIds).size, 104);
   const rosterPresentations = Object.keys(CHARACTER_PRESENTATIONS).filter(id => historicalIds.includes(id) && roster.has(id));

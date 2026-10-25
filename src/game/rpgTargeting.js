@@ -69,7 +69,7 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
     else shape = 'single';
   }
   if (!['single', 'group', 'multi', 'area', 'line', 'cone'].includes(shape)) shape = 'single';
-  const declaredDelivery = ['melee', 'ranged', 'projectile', 'beam', 'area', 'support', 'self'].includes(explicit.delivery);
+  const declaredDelivery = ['melee', 'ranged', 'projectile', 'beam', 'area', 'radial', 'support', 'self'].includes(explicit.delivery);
   const melee = explicit.delivery === 'melee' || (!declaredDelivery
     && (/melee|slash|punch|bite|claw|dodge_strike|drill_smash/.test(type)
       || (!type && abilityType === 'simple' && !/gun|laser|cards|staff|bow/.test(actor.weaponType || actor.weapon || ''))));
@@ -84,9 +84,9 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
     targetSide,
     excludeSelf: explicit.excludeSelf === true,
     shape,
-    delivery: targetSide === 'self' ? 'self' : beneficialEffects.has(effect) ? 'support' : melee ? 'melee' : 'ranged',
+    delivery: targetSide === 'self' ? 'self' : beneficialEffects.has(effect) ? 'support' : explicit.delivery === 'radial' ? 'radial' : melee ? 'melee' : 'ranged',
     maxTargets: shape === 'single' ? 1 : finiteTargets || (shape === 'multi' ? 2 : Infinity),
-    minTargets: Math.max(1, Math.round(positive(explicit.minTargets, 1))),
+    minTargets: explicit.delivery === 'radial' ? 0 : Math.max(1, Math.round(positive(explicit.minTargets, 1))),
     // Authored melee range describes contact after the existing RPG approach.
     // It must not prevent selecting an opponent in the opposing formation.
     range: authoredMeleeApproach ? Math.hypot(arena.width || 760, arena.height || 420)
@@ -129,12 +129,13 @@ export function resolveRpgTargets({ actor, profile, eligibleTargets, selectedTar
   const selected = ids.map(id => eligibleTargets.find(unit => rpgUnitId(unit) === id));
   if (selected.some(unit => !unit)) return { valid: false, reason: 'ineligible-target', targets: [] };
   if (!eligibleTargets.length) return { valid: false, reason: 'no-eligible-target', targets: [] };
-  if (profile.shape !== 'group' && (selected.length < profile.minTargets || selected.length > (profile.shape === 'multi' ? profile.maxTargets : 1))) {
+  if (profile.delivery !== 'radial' && profile.shape !== 'group' && (selected.length < profile.minTargets || selected.length > (profile.shape === 'multi' ? profile.maxTargets : 1))) {
     return { valid: false, reason: 'select-target', targets: [] };
   }
   let targets;
   const anchor = selected[0];
-  if (profile.shape === 'group') targets = eligibleTargets;
+  if (profile.delivery === 'radial') targets = eligibleTargets.filter(unit => Math.hypot(unit.x - actor.x, unit.y - actor.y) <= Math.min(profile.range, profile.areaRadius) + .001);
+  else if (profile.shape === 'group') targets = eligibleTargets;
   else if (profile.shape === 'single' || profile.shape === 'multi') targets = selected;
   else if (profile.shape === 'area') targets = eligibleTargets.filter(unit => Math.hypot(unit.x - anchor.x, unit.y - anchor.y) <= profile.areaRadius);
   else {

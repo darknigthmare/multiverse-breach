@@ -1,0 +1,163 @@
+{
+  "wave": 12,
+  "part": "D",
+  "passed": true,
+  "nativeHeroes": 9,
+  "baseHeroes": 9,
+  "retainedNativePoses": 288,
+  "retainedBasePoses": 144,
+  "retainedPoses": 432,
+  "newPng": 18,
+  "generationRequestsAttempted": 16,
+  "acceptedSourceImages": 14,
+  "nativeDrawingsObserved": 546,
+  "unusedOrSupersededDrawings": 114,
+  "checkedActions": 40,
+  "blockedHeroIds": [
+    "morty"
+  ],
+  "blockedNativeOrBaseDelivered": false,
+  "historicalPngPreserved": 465,
+  "historicalRegistriesPreserved": 93,
+  "checks": [
+    {
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave12PartD.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-23T21:08:36.999Z",
+      "finishedAt": "2026-10-23T21:08:44.176Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "receiptOrigin": "node-child-process-close-event",
+      "log": "part-d-native-check.log",
+      "logSha256": "5aef74042a19139b79bb638cbe8227a404f73545a5ae06151c7828bacf773e15"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave12PartD.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-23T21:08:37.003Z",
+      "finishedAt": "2026-10-23T21:08:42.321Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "receiptOrigin": "node-child-process-close-event",
+      "log": "part-d-base-check.log",
+      "logSha256": "1ea272c4eab45fb09c0215023725aa9116959d12deb5cd0b780f45dec6ba2700"
+    },
+    {
+      "argv": [
+        "node_modules/.bin/oxlint",
+        "src/game/combat/abilities/abilitiesWave12PartD.js",
+        "src/game/combat/combatSourceDefinitionsWave12PartD.js",
+        "docs/combat-fidelity-wave12-2026-10-23/part-d-builder-lib.mjs",
+        "docs/combat-fidelity-wave12-2026-10-23/part-d-final-check.mjs",
+        "scripts/buildCombatCharacterAnimationsWave12PartD.mjs",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave12PartD.mjs"
+      ],
+      "startedAt": "2026-10-23T21:08:37.004Z",
+      "finishedAt": "2026-10-23T21:08:37.062Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "receiptOrigin": "node-child-process-close-event",
+      "log": "part-d-lint.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "poses": [
+    {
+      "heroId": "fry_futurama",
+      "retainedNative32": 32,
+      "retainedBase16": 16,
+      "distinctRetainedCells": 48,
+      "nativeSheetSha256": "b29c9713244d16caabdc5c38fbd1117a18f9076220abc3c34d1f998814d64513",
+      "baseSheetSha256": "d4b2f48366e65b0567384e4b3efab92e7be6e54d16c76f323b482b0ae744219d"
+    },
+    {
+      "heroId": "leela_futurama",
+      "retainedNative32": 32,
+      "retainedBase16": 16,
+      "distinctRetainedCells": 48,
+      "nativeSheetSha256": "8b01cab8dba9d2d1bd97cb17c30e805269779df3c4c067e5290fd94afb4edf46",
+      "baseSheetSha256": "091408e5e7080647b640813dd9da0e6e613534215f1ec7609e374d471aa61e1f"
+    },
+    {
+      "heroId": "bender_futurama",
+      "retainedNative32": 32,
+      "retainedBase16": 16,
+      "distinctRetainedCells": 48,
+      "nativeSheetSha256": "6fd743f6ac68e56353714ac63cc6d218701946e190bd8c5f2c27ab2c125d280e",
+      "baseSheetSha256": "b853e74dc94ce31b9348a9622232a8e833205e75275ca65d48d398f5ff22ce9e"
+    },
+    {
+      "heroId": "amy_futurama",
+      "retainedNative32": 32,
+      "retainedBase16": 16,
+      "distinctRetainedCells": 48,
+      "nativeSheetSha256": "0bf06ff45a23fabae4b79463453d659c7d349b41247b8d85474a236ea7728a77",
+      "baseSheetSha256": "4163ae3d14f45f7fe2969e65abce009c4b2df13fb20b05dc8681fa81078b5fb4"
+    },
+    {
+      "heroId": "hermes_futurama",
+      "retainedNative32": 32,
+      "retainedBase16": 16,
+      "distinctRetainedCells": 48,
+      "nativeSheetSha256": "80f9549c049ebe0246de1a7e8e1f5cb7df2195382d9414a43db8527e952a22af",
+      "baseSheetSha256": "5c63ba84e491c1605e5b311678245b25f99ea0e930773975724e3bd5e293f48b"
+    },
+    {
+      "heroId": "zoidberg_futurama",
+      "retainedNative32": 32,
+      "retainedBase16": 16,
+      "distinctRetainedCells": 48,
+      "nativeSheetSha256": "c1503cfc5ce5d4f1660d1a43438569377abb10bc4da0988d294866e7b786e49f",
+      "baseSheetSha256": "d727cc3d46f013bd236124611e54bd57981497330fc1e493a6910e1fc9f7911d"
+    },
+    {
+      "heroId": "rick",
+      "retainedNative32": 32,
+      "retainedBase16": 16,
+      "distinctRetainedCells": 48,
+      "nativeSheetSha256": "17377013569bbcc4bcfe33f3749f846c05e647d2fa25f6aae9e7eb49195b5a76",
+      "baseSheetSha256": "b761630d8671a0f92de01735a58eb073fbffd45ee88e0feecd379506c2bbd6da"
+    },
+    {
+      "heroId": "summer",
+      "retainedNative32": 32,
+      "retainedBase16": 16,
+      "distinctRetainedCells": 48,
+      "nativeSheetSha256": "8a77c44516a5321dde67ba581e2e580bf0e345f3a49b96cee17db15a58f85b9d",
+      "baseSheetSha256": "9395d5bddb322222e72c900c4b297edf3e05a69dc571a56d4dea01683af97686"
+    },
+    {
+      "heroId": "birdperson",
+      "retainedNative32": 32,
+      "retainedBase16": 16,
+      "distinctRetainedCells": 48,
+      "nativeSheetSha256": "5271343100a5edeaf46804091b1b843bf50955b0a87fbefe3aa1e682f5d40855",
+      "baseSheetSha256": "a4906940b30e4780dc85a5bbae997663f4d9e38715f26e5d57eeee54e1b78c07"
+    }
+  ],
+  "source1to1Verified": false,
+  "browserChecksRunByThisScript": false,
+  "readOnlyRpgSourceReview": [
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/leela-original.png",
+      "sha256": "06890bcc1ba5eff2d4d22eb2c8986ed0773e49f1283ff68e24b64f503f072343",
+      "reviewed": true,
+      "notes": "Single eye, purple ponytail, white top, black trousers, physical martial actions."
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/birdperson-original.png",
+      "sha256": "06a5bc53d69e92f3de01006bae17554b279f2c9fd4845f86a802f6d85b15f9e0",
+      "reviewed": true,
+      "notes": "Biological wings, white feather crest and collar, green trousers; zero-damage wing protection, no gun/cybernetics."
+    }
+  ]
+}

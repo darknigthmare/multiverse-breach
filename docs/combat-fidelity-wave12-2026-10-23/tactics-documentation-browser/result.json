@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "checks": [
+    "68 independent surfaces including ground and bridge at D4",
+    "Default bridge route uses explicit stair connection at cost6",
+    "Three illustrative palettes preserve geometry and route rules",
+    "Water is not a walkable destination and cannot become the start",
+    "Four rotations preserve Z2 and pick the bridge center",
+    "Cutaway picks the lower surface; shared XY cannot teleport between layers",
+    "Keyboard cycles layers, moves selection and rotates the camera",
+    "Zoom and face/grid/path controls preserve the terrain",
+    "Bridge/lower-floor comparison button switches both the identity and cutaway",
+    "375px mobile layout has no horizontal overflow and supports selection"
+  ],
+  "checkCount": 10,
+  "pageErrors": [],
+  "surfaces": 68,
+  "groundSurfaces": 63,
+  "bridgeSurfaces": 5,
+  "defaultBridgeRouteCost": 6,
+  "screenshots": [
+    "/tmp/tactics-terrain-desktop.png",
+    "/tmp/tactics-terrain-cutaway.png",
+    "/tmp/tactics-terrain-mobile.png"
+  ],
+  "scope": "Standalone documentary prototype, no runtime integration"
+}

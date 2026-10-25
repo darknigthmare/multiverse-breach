@@ -1,0 +1,2323 @@
+{
+  "schemaVersion": 1,
+  "part": "A",
+  "wave": 14,
+  "records": [
+    {
+      "heroId": "aragorn_lotr",
+      "name": "Aragorn",
+      "universe": "The Lord of the Rings",
+      "sourceWork": "The Fellowship of the Ring (2001), Strider before Amon Hen",
+      "sourceReference": "https://tolkiengateway.net/wiki/Aragorn",
+      "version": "Dark ranger cloak, weathered brown leather coat, dark hair and short beard, ranger longsword; no Anduril or Army of the Dead",
+      "referenceAsset": "/sprites/generated/heroes/the-lord-of-the-rings/aragorn-lotr.png",
+      "referenceAssetSha256": "beeb694c1051f64fba030eabf2ee5bc9180eccee376ee805abc79374a3827429",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/aragorn_lotr-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Coupe de l’épée de rôdeur d’Aragorn",
+      "superName": "Coupe de l’épée de rôdeur d’Aragorn",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "aragorn_lotr",
+          "heroId": "aragorn_lotr",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-d83cd622-2d00-4c5e-9529-9cf1d093d189.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/aragorn_lotr-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Aragorn. EXACT selected incarnation: The Fellowship of the Ring (2001), Strider before Amon Hen.\n\nFIXED SOURCE APPEARANCE: Dark ranger cloak, weathered brown leather coat, dark hair and short beard, ranger longsword; no Anduril or Army of the Dead. FIXED WEAPON: Ranger longsword. FIXED ACTION: Coupe de l’épée de rôdeur d’Aragorn. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 190 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Ready sword, physical controlled forward cut, recover to guard; no magic; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Ready sword, physical controlled forward cut, recover to guard; no magic; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Ready sword, physical controlled forward cut, recover to guard; no magic; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/aragorn_lotr-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "962df8aaa90c51dc5af021b1c9da9b14ec3e2f2fb0347bf98955fabe8bbcaf62",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 147,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 49,
+              "top": 695,
+              "width": 84,
+              "height": 147,
+              "pixels": 7897
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/aragorn_lotr-region-review.json",
+          "importRegionsSha256": "efe389401da2327eeacf5bbe218027c31c4806461ee40df53f679bf1e5c06593",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "gandalf_lotr",
+      "name": "Gandalf",
+      "universe": "The Lord of the Rings",
+      "sourceWork": "The Fellowship of the Ring (2001), Gandalf the Grey",
+      "sourceReference": "https://tolkiengateway.net/wiki/Gandalf",
+      "version": "Grey robe, pointed grey hat, long grey beard, wooden staff; Glamdring sheathed when staff is held; not Gandalf the White",
+      "referenceAsset": "/sprites/generated/heroes/the-lord-of-the-rings/gandalf-lotr.png",
+      "referenceAssetSha256": "0ffee4eb26d5b1d2319354f9754e80810847410f72e173fc42e51f03a132f83a",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/gandalf_lotr-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Garde du bâton de Gandalf le Gris",
+      "superName": "Garde du bâton de Gandalf le Gris",
+      "effect": "guard",
+      "delivery": "support",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "gandalf_lotr-correction48",
+          "heroId": "gandalf_lotr",
+          "kind": "correction48",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-c4f1407f-fd41-4734-9bd1-5a05feaf44f7.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/gandalf_lotr-correction48.png",
+          "prompt": "Correct the attached SOURCE ATLAS as pixel-art animation. It contains48 figures intended for an8x6grid. Re-create all48 COMPLETE separate poses at a SMALLER shared pixel scale inside exactly8columns x6rows. Leave at least32pixels of EMPTY TRANSPARENT GAP between ALL visible equipment/extremities of adjacent figures and at least40pixels EMPTY OUTER MARGIN. No body, foot, hand or weapon may touch or overlap another cell or canvas edge. Keep each long blade/staff entirely inside its cell. Current sheet has adjacent equipment touching and some edges clipping; the correction must fully separate them. No backdrop, cast shadow, text, grid or labels. Preserve recognizable source incarnation, costume and equipment, correct four-stage action sequences, and48independently drawn distinct poses. Keep all original source instructions below. Make staff light a TINY SUBTLE white glint attached to the wooden staff tip only, with NO large light orb or halo. Staff defensive bracing, no thrust or ranged attack, no bolt. \n\nCreate a professional native pixel-art game animation SOURCE ATLAS of Gandalf. EXACT selected incarnation: The Fellowship of the Ring (2001), Gandalf the Grey.\n\nFIXED SOURCE APPEARANCE: Grey robe, pointed grey hat, long grey beard, wooden staff; Glamdring sheathed when staff is held; not Gandalf the White. FIXED WEAPON: Wooden staff. FIXED ACTION: Garde du bâton de Gandalf le Gris. Effect: guard; delivery: support.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 190 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with calm source-faithful support gestures. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with calm source-faithful support gestures. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Raise wooden staff and brace defensively, soft local white staff light only; no bolt or damage; prepare, set feet and raise the actual staff/shield, hold a firm defensive position, lower and recover. Four different limb/foot positions. This is a protective guard, zero damage, NEVER firing or striking. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Raise wooden staff and brace defensively, soft local white staff light only; no bolt or damage; prepare, set feet and raise the actual staff/shield, hold a firm defensive position, lower and recover. Four different limb/foot positions. This is a protective guard, zero damage, NEVER firing or striking. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, calm source-faithful support gestures. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Raise wooden staff and brace defensively, soft local white staff light only; no bolt or damage; prepare, set feet and raise the actual staff/shield, hold a firm defensive position, lower and recover. Four different limb/foot positions. This is a protective guard, zero damage, NEVER firing or striking. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/gandalf_lotr-correction48-prompt.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/gandalf_lotr-native-original.png"
+          ],
+          "sha256": "0e8b118be757cb76030f588d04320f025285caa1bb64dc3a6c30216dca2f5747",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 149,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 47,
+              "top": 753,
+              "width": 121,
+              "height": 149,
+              "pixels": 11516
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/gandalf_lotr-correction48-region-review.json",
+          "importRegionsSha256": "4211333c9a99b9f979441eb3cf48fa8d85cef4245d365aa6c8397887c79f4b6f",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "legolas_lotr",
+      "name": "Legolas",
+      "universe": "The Lord of the Rings",
+      "sourceWork": "The Fellowship of the Ring (2001), Lothlorien departure",
+      "sourceReference": "https://tolkiengateway.net/wiki/Legolas",
+      "version": "Long blond hair, green-brown elven tunic, quiver and Galadhrim longbow, no modern equipment",
+      "referenceAsset": "/sprites/generated/heroes/the-lord-of-the-rings/legolas-lotr.png",
+      "referenceAssetSha256": "30d1180d4a0afb4eb76d31dca26df93a5aa3953d583b329df758f0ce905f5cce",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/legolas_lotr-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Flèche du long arc de Legolas",
+      "superName": "Flèche du long arc de Legolas",
+      "effect": "damage",
+      "delivery": "projectile",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding. Original finishing/super sequences with disappearing bow at release are excluded. Eight newly generated complete physical-bow poses replace those two sequences; bow retained visibly in the left hand throughout.",
+      "sources": [
+        {
+          "key": "legolas_lotr",
+          "heroId": "legolas_lotr",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-1cdd1e8b-8dc0-455f-994b-4eec4c1d377c.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legolas_lotr-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Legolas. EXACT selected incarnation: The Fellowship of the Ring (2001), Lothlorien departure.\n\nFIXED SOURCE APPEARANCE: Long blond hair, green-brown elven tunic, quiver and Galadhrim longbow, no modern equipment. FIXED WEAPON: Galadhrim longbow. FIXED ACTION: Flèche du long arc de Legolas. Effect: damage; delivery: projectile.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 190 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Nock one physical arrow, draw bow, release arrow forward, recover; four distinct stages: physical arrow at lowered bow, raise and nock, full draw facing right with arrow nock visibly at string and arrow aligned along the bow, release and recover. Only one physical arrow, no energy or detached magical effect. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Nock one physical arrow, draw bow, release arrow forward, recover; four distinct stages: physical arrow at lowered bow, raise and nock, full draw facing right with arrow nock visibly at string and arrow aligned along the bow, release and recover. Only one physical arrow, no energy or detached magical effect. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Nock one physical arrow, draw bow, release arrow forward, recover; four distinct stages: physical arrow at lowered bow, raise and nock, full draw facing right with arrow nock visibly at string and arrow aligned along the bow, release and recover. Only one physical arrow, no energy or detached magical effect. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legolas_lotr-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "ee9d61d90f6a053148f4175cf9f490068e24462c9fd43f8d01779518e1cf23ab",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 158,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 53,
+              "top": 747,
+              "width": 79,
+              "height": 158,
+              "pixels": 8305
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legolas_lotr-region-review.json",
+          "importRegionsSha256": "5cb4899fec319a31949032a2d73cb3f7a2b869487cce278b8e7bf68e33545782",
+          "anchorMode": "native-foot-median"
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legolas_lotr-archery8.png",
+          "sha256": "8e833cab2e2aae5f8332a8af247ebf1cae1baaac4fc20ba7d2e3348675f331ae",
+          "generatedPath": "/workspace/generated_images/exec-934a355e-b74a-4aec-8e2d-371d88f0e639.png",
+          "prompt": "Create EXACTLY EIGHT NEW separate full-body PIXEL ART drawings of Legolas, selected incarnation The Fellowship of the Ring (2001), Lothlorien departure, from this identity reference. Appearance: Long blond hair, green-brown elven tunic, quiver and Galadhrim longbow, no modern equipment. Actual weapon: Galadhrim longbow. FOUR columns by TWO rows, transparent background, generous empty transparent gutters, complete full figures and entire longbow inside every separate cell. Adult fictional game character, clean detailed16bit style, same anatomy and pixel scale across all8. Face screenRIGHT. CRITICAL: the SAME COMPLETE PHYSICAL LONGBOW remains held IN THE LEFT HAND in ALL EIGHT drawings, including the RELEASE and RECOVERY frames. NEVER make the bow vanish, never replace it with an empty outstretched hand. All bow tips and curved wooden limbs stay visible. Right hand draws or releases the STRING only, left hand continues gripping the bow handle. ROW1 four-frame solo ordinary physical arrow sequence:1nock one arrow with bow low;2raise left-arm-held bow and draw string with right hand to cheek;3release arrow with right hand, STILL visibly holding FULL COMPLETE BOW in extended left hand;4lower complete bow and recover both hands. ROW2 four NEW different poses of the same four physical stages for a second controlled arrow sequence, same complete bow retained throughout. One ordinary physical arrow, no energy, detached light, magic, beam, extra weapon, motion arc, background, ground, shadow, text, labels, grid or other figures. Eight independently drawn distinct full-body poses, exact4x2layout. Non-graphic solo archery into empty space, no opponent, victim, blood, wound or violence spectacle. Leave at least32px of transparent air around each entire bow and character.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legolas_lotr-archery8-prompt.txt",
+          "rows": 2,
+          "columns": 4,
+          "bodyHeight": 383,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legolas_lotr-identity-crop.png"
+          ],
+          "nativeDrawingsObserved": 8,
+          "nativeDrawingsRetainedByImport": 8,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legolas_lotr-archery8-region-review.json",
+          "importRegionsSha256": "690a1f7592f4e0a9222509e9a7913f3dfc4718cff56ca992fa9226dcdbe99f8d",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 0,
+            "column": 0,
+            "bodyBounds": {
+              "left": 50,
+              "top": 99,
+              "width": 281,
+              "height": 383,
+              "pixels": 50095
+            },
+            "notes": "First standing nock pose: entire bow stays between head crown and lowest sole. All8correction poses share this scale, then share the original source game-body stature; kneeling naturally shorter."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 1,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 1,
+          "row": 1
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "gimli_lotr",
+      "name": "Gimli",
+      "universe": "The Lord of the Rings",
+      "sourceWork": "The Fellowship of the Ring (2001)",
+      "sourceReference": "https://tolkiengateway.net/wiki/Gimli",
+      "version": "Adult dwarf, long reddish-brown beard, engraved dwarf helmet and mail, stout build, physical axe; visibly shorter than humans",
+      "referenceAsset": "/sprites/generated/heroes/the-lord-of-the-rings/gimli-lotr.png",
+      "referenceAssetSha256": "dee97db72d95a40a697c37bb3988fe9a853ad6e9712b3bb9f246127c9ed9f1fb",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/gimli_lotr-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 150,
+      "simpleName": "Taille de la hache de Gimli",
+      "superName": "Taille de la hache de Gimli",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "gimli_lotr",
+          "heroId": "gimli_lotr",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-79c68c1e-f683-4ac6-a847-5a85cfe0b73c.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/gimli_lotr-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Gimli. EXACT selected incarnation: The Fellowship of the Ring (2001).\n\nFIXED SOURCE APPEARANCE: Adult dwarf, long reddish-brown beard, engraved dwarf helmet and mail, stout build, physical axe; visibly shorter than humans. FIXED WEAPON: Dwarven axe. FIXED ACTION: Taille de la hache de Gimli. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 150 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Brace two-handed axe, physical forward axe cut, recover; no elemental wave; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Brace two-handed axe, physical forward axe cut, recover; no elemental wave; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Brace two-handed axe, physical forward axe cut, recover; no elemental wave; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/gimli_lotr-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "55a5a66c8be30a6f65c1d258542528d5c7aa3016419be32a8648dabaf5396728",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 135,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 28,
+              "top": 768,
+              "width": 134,
+              "height": 135,
+              "pixels": 9930
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/gimli_lotr-region-review.json",
+          "importRegionsSha256": "acffee2c849d7ec97f8172cbc8b3820de0ae526b1973c2fcb3de6833c64e456c",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "dark_souls_chosen_undead",
+      "name": "Chosen Undead",
+      "universe": "Dark Souls",
+      "sourceWork": "Dark Souls (2011), adult playable Elite Knight loadout",
+      "sourceReference": "https://darksouls.wikidot.com/elite-knight-set",
+      "version": "Opaque Elite Knight helmet, blue surcoat, plate and chainmail, longsword and heater shield; chosen player equipment, not a fixed canonical face",
+      "referenceAsset": "/sprites/generated/heroes/dark-souls/dark-souls-chosen-undead.png",
+      "referenceAssetSha256": "148176f4c01a6ba74a40e6acb4aa51e692d1cc334d9a111afce7aa7bfdd63e6e",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/dark_souls_chosen_undead-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Taille de l’épée du Chevalier d’élite",
+      "superName": "Taille de l’épée du Chevalier d’élite",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "dark_souls_chosen_undead-correction48",
+          "heroId": "dark_souls_chosen_undead",
+          "kind": "correction48",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-1c6650e8-3436-4720-b1ba-51c41760bbae.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_chosen_undead-correction48.png",
+          "prompt": "Correct the attached SOURCE ATLAS as pixel-art animation. It contains48 figures intended for an8x6grid. Re-create all48 COMPLETE separate poses at a SMALLER shared pixel scale inside exactly8columns x6rows. Leave at least32pixels of EMPTY TRANSPARENT GAP between ALL visible equipment/extremities of adjacent figures and at least40pixels EMPTY OUTER MARGIN. No body, foot, hand or weapon may touch or overlap another cell or canvas edge. Keep each long blade/staff entirely inside its cell. Current sheet has adjacent equipment touching and some edges clipping; the correction must fully separate them. No backdrop, cast shadow, text, grid or labels. Preserve recognizable source incarnation, costume and equipment, correct four-stage action sequences, and48independently drawn distinct poses. Keep all original source instructions below. \n\nCreate a professional native pixel-art game animation SOURCE ATLAS of Chosen Undead. EXACT selected incarnation: Dark Souls (2011), adult playable Elite Knight loadout.\n\nFIXED SOURCE APPEARANCE: Opaque Elite Knight helmet, blue surcoat, plate and chainmail, longsword and heater shield; chosen player equipment, not a fixed canonical face. FIXED WEAPON: Longsword and heater shield. FIXED ACTION: Taille de l’épée du Chevalier d’élite. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 190 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Shield ready, short forward longsword cut, controlled recovery; no invented spell; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Shield ready, short forward longsword cut, controlled recovery; no invented spell; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Shield ready, short forward longsword cut, controlled recovery; no invented spell; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_chosen_undead-correction48-prompt.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_chosen_undead-native-original.png"
+          ],
+          "sha256": "a71ec666afd7a77839cfab97106287ce1b8711c7258a6c54399dd0f1aada3d8d",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 152,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 33,
+              "top": 778,
+              "width": 116,
+              "height": 152,
+              "pixels": 11018
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_chosen_undead-correction48-region-review.json",
+          "importRegionsSha256": "dc35b685ffb41adbd600a6d15afab7da05b2e63644f9eca30d5364decc7f04aa",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "dark_souls_solaire",
+      "name": "Solaire",
+      "universe": "Dark Souls",
+      "sourceWork": "Dark Souls (2011), Solaire of Astora",
+      "sourceReference": "https://darksouls.wikidot.com/solaire-of-astora",
+      "version": "Adult knight, closed cylindrical helmet with red feather, white sun-emblem surcoat, chainmail, straight sword sheathed and round sun shield",
+      "referenceAsset": "/sprites/generated/heroes/dark-souls/dark-souls-solaire.png",
+      "referenceAssetSha256": "661395e4b4fea39ac845bffbf3d7a0d2f0599b4680f018dca1e823e82d01d2d2",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/dark_souls_solaire-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Garde du bouclier solaire de Solaire",
+      "superName": "Garde du bouclier solaire de Solaire",
+      "effect": "guard",
+      "delivery": "support",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "dark_souls_solaire",
+          "heroId": "dark_souls_solaire",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-f8120b29-51e1-434a-8f45-c21a682bc5e7.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_solaire-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Solaire. EXACT selected incarnation: Dark Souls (2011), Solaire of Astora.\n\nFIXED SOURCE APPEARANCE: Adult knight, closed cylindrical helmet with red feather, white sun-emblem surcoat, chainmail, straight sword sheathed and round sun shield. FIXED WEAPON: Sun shield. FIXED ACTION: Garde du bouclier solaire de Solaire. Effect: guard; delivery: support.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 190 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with calm source-faithful support gestures. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with calm source-faithful support gestures. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Bring actual sun shield forward into a defensive guard; no ranged sun beam or attack; prepare, set feet and raise the actual staff/shield, hold a firm defensive position, lower and recover. Four different limb/foot positions. This is a protective guard, zero damage, NEVER firing or striking. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Bring actual sun shield forward into a defensive guard; no ranged sun beam or attack; prepare, set feet and raise the actual staff/shield, hold a firm defensive position, lower and recover. Four different limb/foot positions. This is a protective guard, zero damage, NEVER firing or striking. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, calm source-faithful support gestures. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Bring actual sun shield forward into a defensive guard; no ranged sun beam or attack; prepare, set feet and raise the actual staff/shield, hold a firm defensive position, lower and recover. Four different limb/foot positions. This is a protective guard, zero damage, NEVER firing or striking. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_solaire-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "19f578e7f41ce0169456b88a6578a1ac0e1c48cc7c359bb7797d6ed768487b12",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 164,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 42,
+              "top": 738,
+              "width": 107,
+              "height": 164,
+              "pixels": 8916
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_solaire-region-review.json",
+          "importRegionsSha256": "72b3d5fb378284e97e94044f21efa34dbc437c91f7f8f8a23c75fd2fdd178eb4",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "dark_souls_siegmeyer",
+      "name": "Siegmeyer",
+      "universe": "Dark Souls",
+      "sourceWork": "Dark Souls (2011), Siegmeyer of Catarina",
+      "sourceReference": "https://darksouls.wikidot.com/siegmeyer-of-catarina",
+      "version": "Adult human in broad rounded silver Catarina onion armour and closed onion helmet, Zweihander; human height rather than dwarf",
+      "referenceAsset": "/sprites/generated/heroes/dark-souls/dark-souls-siegmeyer.png",
+      "referenceAssetSha256": "9626227b70a8d1358e66c3775a195b2fa1245e87b09f315feedcb06066271d60",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/dark_souls_siegmeyer-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Taille du Zweihander de Siegmeyer",
+      "superName": "Taille du Zweihander de Siegmeyer",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "dark_souls_siegmeyer-correction48v2",
+          "heroId": "dark_souls_siegmeyer",
+          "kind": "correction48",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-1d27af6b-9692-4ce6-8711-ad91962fe808.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_siegmeyer-correction48v2.png",
+          "prompt": "RE-DESIGN THE LAYOUT WITH MUCH SMALLER SPRITES. The attached image is ONLY an identity/costume reference. Make an entirely NEW48-POSE ATLAS, on a LARGE transparent1536x1024 landscape canvas, exactly8columns6rows. Each standing BODY is ONLY95PIXELS HIGH, including head and feet. The full figure including LONG SWORD/SPEAR must fit inside a130pxwide x130pxhigh box. Thus every one of the48figures is SMALL with huge clean transparent gaps; leave at least50pixels between ANY equipment of neighboring figures. Do NOT reproduce the reference layout density or figure size. Uniform small scale for all48; actual game stature is calibrated later. Complete swords/spears, tips, hands, heads and feet visible inside each separate cell. No overlap, no touching. Crisp detailed pixel art, readable silhouette. No background. \n\nDetailed source identity and sequence order follow:\n\nCreate a professional native pixel-art game animation SOURCE ATLAS of Siegmeyer. EXACT selected incarnation: Dark Souls (2011), Siegmeyer of Catarina.\n\nFIXED SOURCE APPEARANCE: Adult human in broad rounded silver Catarina onion armour and closed onion helmet, Zweihander; human height rather than dwarf. FIXED WEAPON: Zweihander. FIXED ACTION: Taille du Zweihander de Siegmeyer. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body proportions remain consistent. Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Brace broad armour, draw physical greatsword through short forward cut, recover; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Brace broad armour, draw physical greatsword through short forward cut, recover; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Brace broad armour, draw physical greatsword through short forward cut, recover; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_siegmeyer-correction48v2-prompt.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_siegmeyer-native-original.png"
+          ],
+          "sha256": "30e26618877e515966f1ae4edde054e1462bef7081c7c657a6943ef40eb3c166",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 128,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 48,
+              "top": 718,
+              "width": 83,
+              "height": 128,
+              "pixels": 7007
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/dark_souls_siegmeyer-correction48v2-region-review.json",
+          "importRegionsSha256": "136658729cf48272a51151e71c8e498364e677818761553da11531b56aa35922",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "space_marine_titus",
+      "name": "Captain Demetrian Titus",
+      "universe": "Warhammer 40,000: Space Marine",
+      "sourceWork": "Warhammer 40,000: Space Marine (2011), Captain Titus",
+      "sourceReference": "https://wh40k.lexicanum.com/wiki/Demetrian_Titus",
+      "version": "First-game non-Primaris Ultramarines blue-and-gold power armour, bare adult head, captain insignia, chainsword; no Space Marine 2 lieutenant armour",
+      "referenceAsset": "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-titus.png",
+      "referenceAssetSha256": "7c532ac59e6e648d6624e2e7ec6a735de40b69e1c48399acae54400e15ff57f0",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/space_marine_titus-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 220,
+      "simpleName": "Taille de l’épée tronçonneuse de Titus",
+      "superName": "Taille de l’épée tronçonneuse de Titus",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "space_marine_titus-correction48v2",
+          "heroId": "space_marine_titus",
+          "kind": "correction48",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-afedcc17-79cd-4c3e-b75d-98aadcf68952.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/space_marine_titus-correction48v2.png",
+          "prompt": "RE-DESIGN THE LAYOUT WITH MUCH SMALLER SPRITES. The attached image is ONLY an identity/costume reference. Make an entirely NEW48-POSE ATLAS, on a LARGE transparent1536x1024 landscape canvas, exactly8columns6rows. Each standing BODY is ONLY95PIXELS HIGH, including head and feet. The full figure including LONG SWORD/SPEAR must fit inside a130pxwide x130pxhigh box. Thus every one of the48figures is SMALL with huge clean transparent gaps; leave at least50pixels between ANY equipment of neighboring figures. Do NOT reproduce the reference layout density or figure size. Uniform small scale for all48; actual game stature is calibrated later. Complete swords/spears, tips, hands, heads and feet visible inside each separate cell. No overlap, no touching. Crisp detailed pixel art, readable silhouette. No background. \n\nDetailed source identity and sequence order follow:\n\nCreate a professional native pixel-art game animation SOURCE ATLAS of Captain Demetrian Titus. EXACT selected incarnation: Warhammer 40,000: Space Marine (2011), Captain Titus.\n\nFIXED SOURCE APPEARANCE: First-game non-Primaris Ultramarines blue-and-gold power armour, bare adult head, captain insignia, chainsword; no Space Marine 2 lieutenant armour. FIXED WEAPON: Chainsword. FIXED ACTION: Taille de l’épée tronçonneuse de Titus. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body proportions remain consistent. Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Ready chainsword, controlled close-range physical cut, recover; no opponent or injury; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Ready chainsword, controlled close-range physical cut, recover; no opponent or injury; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Ready chainsword, controlled close-range physical cut, recover; no opponent or injury; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/space_marine_titus-correction48v2-prompt.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/space_marine_titus-native-original.png"
+          ],
+          "sha256": "987f9af92e9db1d88ef5ede70757b80753f2e08dd6ca463cb852502b0dc4d342",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 126,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 29,
+              "top": 732,
+              "width": 134,
+              "height": 126,
+              "pixels": 9752
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/space_marine_titus-correction48v2-region-review.json",
+          "importRegionsSha256": "009a79a8178342492977269b3525317e65e87423e264d7d9200cf7b3c480a343",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "space_marine_sidonus",
+      "name": "Veteran Sergeant Sidonus",
+      "universe": "Warhammer 40,000: Space Marine",
+      "sourceWork": "Warhammer 40,000: Space Marine (2011)",
+      "sourceReference": "https://wh40k.lexicanum.com/wiki/Sidonus",
+      "version": "Veteran Ultramarine, blue-and-gold non-Primaris power armour, grey-haired adult head and bionic eye, physical boltgun",
+      "referenceAsset": "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-sidonus.png",
+      "referenceAssetSha256": "018d635d3cdaa302f2ec0dd3127b87d82829d46715344b1853c5eba83629a9bb",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/space_marine_sidonus-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 220,
+      "simpleName": "Rafale du bolter de Sidonus",
+      "superName": "Rafale du bolter de Sidonus",
+      "effect": "damage",
+      "delivery": "projectile",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "space_marine_sidonus",
+          "heroId": "space_marine_sidonus",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-da60a76f-988c-4a65-a2b6-f50e7247050d.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/space_marine_sidonus-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Veteran Sergeant Sidonus. EXACT selected incarnation: Warhammer 40,000: Space Marine (2011).\n\nFIXED SOURCE APPEARANCE: Veteran Ultramarine, blue-and-gold non-Primaris power armour, grey-haired adult head and bionic eye, physical boltgun. FIXED WEAPON: Boltgun. FIXED ACTION: Rafale du bolter de Sidonus. Effect: damage; delivery: projectile.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 220 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Shoulder physical boltgun, aim, brief recoil, recover; no sustained laser; four stages: ready, raise and aim the actual gun right, tiny ordinary muzzle flash attached to the actual muzzle in frame THREE only, recoil and recover. No beam, tracer or floating magic. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Shoulder physical boltgun, aim, brief recoil, recover; no sustained laser; four stages: ready, raise and aim the actual gun right, tiny ordinary muzzle flash attached to the actual muzzle in frame THREE only, recoil and recover. No beam, tracer or floating magic. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Shoulder physical boltgun, aim, brief recoil, recover; no sustained laser; four stages: ready, raise and aim the actual gun right, tiny ordinary muzzle flash attached to the actual muzzle in frame THREE only, recoil and recover. No beam, tracer or floating magic. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/space_marine_sidonus-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "90c1457e939f297486bff93c20b709fac0c5f8a9047f1f324d6e2faa3cc28417",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 169,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 39,
+              "top": 729,
+              "width": 121,
+              "height": 169,
+              "pixels": 14598
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/space_marine_sidonus-region-review.json",
+          "importRegionsSha256": "27e28fb4ebc4143c7f43eefa97eb149ba0d5dfa18d761d5e7461e2b1d6b90639",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "space_marine_leandros",
+      "name": "Battle-Brother Leandros",
+      "universe": "Warhammer 40,000: Space Marine",
+      "sourceWork": "Warhammer 40,000: Space Marine (2011)",
+      "sourceReference": "https://wh40k.lexicanum.com/wiki/Leandros",
+      "version": "Adult Ultramarine, first-game blue-and-gold non-Primaris power armour, short dark hair, physical boltgun; no later Chaplain armour",
+      "referenceAsset": "/sprites/generated/heroes/warhammer-40-000-space-marine/space-marine-leandros.png",
+      "referenceAssetSha256": "d395bc7cc01225d4855458ea023d229ace19b0d11afb56a8eb28103f7f2ce0a7",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/space_marine_leandros-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 220,
+      "simpleName": "Tir du bolter de Leandros",
+      "superName": "Tir du bolter de Leandros",
+      "effect": "damage",
+      "delivery": "projectile",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "space_marine_leandros",
+          "heroId": "space_marine_leandros",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-3541a975-3def-49f3-862c-be149263e6e7.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/space_marine_leandros-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Battle-Brother Leandros. EXACT selected incarnation: Warhammer 40,000: Space Marine (2011).\n\nFIXED SOURCE APPEARANCE: Adult Ultramarine, first-game blue-and-gold non-Primaris power armour, short dark hair, physical boltgun; no later Chaplain armour. FIXED WEAPON: Boltgun. FIXED ACTION: Tir du bolter de Leandros. Effect: damage; delivery: projectile.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 220 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Brace actual boltgun, fire a short forward burst, recoil and recover; four stages: ready, raise and aim the actual gun right, tiny ordinary muzzle flash attached to the actual muzzle in frame THREE only, recoil and recover. No beam, tracer or floating magic. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Brace actual boltgun, fire a short forward burst, recoil and recover; four stages: ready, raise and aim the actual gun right, tiny ordinary muzzle flash attached to the actual muzzle in frame THREE only, recoil and recover. No beam, tracer or floating magic. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Brace actual boltgun, fire a short forward burst, recoil and recover; four stages: ready, raise and aim the actual gun right, tiny ordinary muzzle flash attached to the actual muzzle in frame THREE only, recoil and recover. No beam, tracer or floating magic. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/space_marine_leandros-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "ddb89b81a9d9d68bf0d532b6934798f7ef7a2568f7f80a6250fcfcfb6f13775d",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 167,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 24,
+              "top": 730,
+              "width": 115,
+              "height": 167,
+              "pixels": 12978
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/space_marine_leandros-region-review.json",
+          "importRegionsSha256": "190bfb5ac1b2444afc1cbcf5019c0263e457a8903a9f6b414ce6dc8153d62bbf",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "legacy_of_kain_kain",
+      "name": "Kain",
+      "universe": "Legacy of Kain",
+      "sourceWork": "Legacy of Kain: Defiance (2003), elder Kain",
+      "sourceReference": "https://legacyofkain.fandom.com/wiki/Kain",
+      "version": "Adult elder vampire, pale grey skin, swept white hair, red cape and dark ornate armour, physical Soul Reaver blade; no blood or wounds",
+      "referenceAsset": "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-kain.png",
+      "referenceAssetSha256": "063c83f3a4bbeb7f4f1dada32e7c9e0ee947645f3152cab475caabf1046711e7",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/legacy_of_kain_kain-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 205,
+      "simpleName": "Coupe de la Soul Reaver de Kain",
+      "superName": "Coupe de la Soul Reaver de Kain",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "legacy_of_kain_kain-correction48v2",
+          "heroId": "legacy_of_kain_kain",
+          "kind": "correction48",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-0397a6c7-739d-4fec-86ce-14abdf96dab7.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legacy_of_kain_kain-correction48v2.png",
+          "prompt": "RE-DESIGN THE LAYOUT WITH MUCH SMALLER SPRITES. The attached image is ONLY an identity/costume reference. Make an entirely NEW48-POSE ATLAS, on a LARGE transparent1536x1024 landscape canvas, exactly8columns6rows. Each standing BODY is ONLY95PIXELS HIGH, including head and feet. The full figure including LONG SWORD/SPEAR must fit inside a130pxwide x130pxhigh box. Thus every one of the48figures is SMALL with huge clean transparent gaps; leave at least50pixels between ANY equipment of neighboring figures. Do NOT reproduce the reference layout density or figure size. Uniform small scale for all48; actual game stature is calibrated later. Complete swords/spears, tips, hands, heads and feet visible inside each separate cell. No overlap, no touching. Crisp detailed pixel art, readable silhouette. No background. Soul Reaver is PHYSICAL GREY METAL SWORD with only a faint green edge gleam; ZERO green motion arcs, beams, trails, detached lights or crescents in any frame. \n\nDetailed source identity and sequence order follow:\n\nCreate a professional native pixel-art game animation SOURCE ATLAS of Kain. EXACT selected incarnation: Legacy of Kain: Defiance (2003), elder Kain.\n\nFIXED SOURCE APPEARANCE: Adult elder vampire, pale grey skin, swept white hair, red cape and dark ornate armour, physical Soul Reaver blade; no blood or wounds. FIXED WEAPON: Soul Reaver sword. FIXED ACTION: Coupe de la Soul Reaver de Kain. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body proportions remain consistent. Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Controlled physical sword cut with faint blade-local green spectral light; no detached energy beam; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Controlled physical sword cut with faint blade-local green spectral light; no detached energy beam; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Controlled physical sword cut with faint blade-local green spectral light; no detached energy beam; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legacy_of_kain_kain-correction48v2-prompt.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legacy_of_kain_kain-native-original.png"
+          ],
+          "sha256": "4d9da827db9a0ec1d24b328fe8ff2e115057543e90b350e9360e94b9a4131e42",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 135,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 33,
+              "top": 717,
+              "width": 124,
+              "height": 135,
+              "pixels": 9053
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legacy_of_kain_kain-correction48v2-region-review.json",
+          "importRegionsSha256": "1b4e69a69b62fb32a28e9125a38207c3bd81d3352b624a28e7c1b0e7bfc2d570",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "legacy_of_kain_raziel",
+      "name": "Raziel",
+      "universe": "Legacy of Kain",
+      "sourceWork": "Legacy of Kain: Soul Reaver (1999), wraith Raziel",
+      "sourceReference": "https://legacyofkain.fandom.com/wiki/Raziel",
+      "version": "Adult blue spectral wraith, tattered wing stumps, brown scarf covering lower face, clawed feet, forearm spectral Reaver; non-graphic intact character",
+      "referenceAsset": "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-raziel.png",
+      "referenceAssetSha256": "91f8e00530c2db7700646377eea4d49640b9dc5f02e787e341de298a16738911",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/legacy_of_kain_raziel-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Taille de la Reaver spectrale de Raziel",
+      "superName": "Taille de la Reaver spectrale de Raziel",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "legacy_of_kain_raziel",
+          "heroId": "legacy_of_kain_raziel",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-bf54c0d5-fcd5-47b6-8745-fea25c4fcd22.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legacy_of_kain_raziel-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Raziel. EXACT selected incarnation: Legacy of Kain: Soul Reaver (1999), wraith Raziel.\n\nFIXED SOURCE APPEARANCE: Adult blue spectral wraith, tattered wing stumps, brown scarf covering lower face, clawed feet, forearm spectral Reaver; non-graphic intact character. FIXED WEAPON: Forearm spectral Reaver. FIXED ACTION: Taille de la Reaver spectrale de Raziel. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 190 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Brace and perform a short forearm-blade cut; green light only on attached Reaver, no detached ray; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Brace and perform a short forearm-blade cut; green light only on attached Reaver, no detached ray; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Brace and perform a short forearm-blade cut; green light only on attached Reaver, no detached ray; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legacy_of_kain_raziel-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "2ccfad9204f88c96983ac247edc6e7981f158e03797755ce8b2b6958ce457468",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 154,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 45,
+              "top": 691,
+              "width": 111,
+              "height": 154,
+              "pixels": 8585
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legacy_of_kain_raziel-region-review.json",
+          "importRegionsSha256": "75a9daf9c0ee8a4502690f6cc318f21be88ddcf97609d4c86deb81d822c85bb1",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "legacy_of_kain_vorador",
+      "name": "Vorador",
+      "universe": "Legacy of Kain",
+      "sourceWork": "Blood Omen: Legacy of Kain (1996), Vorador",
+      "sourceReference": "https://legacyofkain.fandom.com/wiki/Vorador",
+      "version": "Adult green-skinned elder vampire, pointed ears, ornate rich red-brown clothing and gold ornaments, clawed hands; no blood or injury",
+      "referenceAsset": "/sprites/generated/heroes/legacy-of-kain/legacy-of-kain-vorador.png",
+      "referenceAssetSha256": "79e3d8aa1209b80411216afff0d15b6a56af1cf8cc88cf92f95a463eeb7d4660",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/legacy_of_kain_vorador-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 205,
+      "simpleName": "Griffe de Vorador",
+      "superName": "Griffe de Vorador",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "legacy_of_kain_vorador",
+          "heroId": "legacy_of_kain_vorador",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-23c63bd8-d52b-4c9c-a363-b4cc659441eb.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legacy_of_kain_vorador-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Vorador. EXACT selected incarnation: Blood Omen: Legacy of Kain (1996), Vorador.\n\nFIXED SOURCE APPEARANCE: Adult green-skinned elder vampire, pointed ears, ornate rich red-brown clothing and gold ornaments, clawed hands; no blood or injury. FIXED WEAPON: Vampire claws. FIXED ACTION: Griffe de Vorador. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 205 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Controlled short physical claw gesture into empty forward space and recover, no victim; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Controlled short physical claw gesture into empty forward space and recover, no victim; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Controlled short physical claw gesture into empty forward space and recover, no victim; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legacy_of_kain_vorador-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "d026e7357e4c7e8cf15b1c4b1e3570a701e03b50c16c109613e86fabcc51144a",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 160,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 37,
+              "top": 732,
+              "width": 97,
+              "height": 160,
+              "pixels": 9996
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/legacy_of_kain_vorador-region-review.json",
+          "importRegionsSha256": "7de031725f4faefaae3b4be2452435f8c1ef8657149ca7083591be4c8714508d",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "ardyn_ff15",
+      "name": "Ardyn Izunia",
+      "universe": "Final Fantasy XV",
+      "sourceWork": "Final Fantasy XV (2016)",
+      "sourceReference": "https://finalfantasy.fandom.com/wiki/Ardyn_Izunia",
+      "version": "Adult Ardyn with dark fedora, auburn hair, layered black coat and red patterned scarf, one spectral royal blade",
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-xv/ardyn-ff15.png",
+      "referenceAssetSha256": "d4052336e924dc596cc72dd1511f9a016f33bd7726874a6d7c200973f9b8c55d",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/ardyn_ff15-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Taille de la lame royale d’Ardyn",
+      "superName": "Taille de la lame royale d’Ardyn",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding. Original/correction48 row4-right run drawings are excluded from SUPER. Four newly generated planted sword-cut drawings form the source-faithful SUPER correction.",
+      "sources": [
+        {
+          "key": "ardyn_ff15-correction48",
+          "heroId": "ardyn_ff15",
+          "kind": "correction48",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-7c70445d-40fd-46e6-b9bb-7797395772aa.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/ardyn_ff15-correction48.png",
+          "prompt": "RE-DESIGN THE LAYOUT WITH MUCH SMALLER SPRITES. The attached image is ONLY an identity/costume reference. Make an entirely NEW48-POSE ATLAS, on a LARGE transparent1536x1024 landscape canvas, exactly8columns6rows. Each standing BODY is ONLY95PIXELS HIGH, including head and feet. The full figure including LONG SWORD/SPEAR must fit inside a130pxwide x130pxhigh box. Thus every one of the48figures is SMALL with huge clean transparent gaps; leave at least50pixels between ANY equipment of neighboring figures. Do NOT reproduce the reference layout density or figure size. Uniform small scale for all48; actual game stature is calibrated later. Complete swords/spears, tips, hands, heads and feet visible inside each separate cell. No overlap, no touching. Crisp detailed pixel art, readable silhouette. No background. ROW4COLUMNS5-8 SUPER is a planted CLOSE SWORD CUT with ONE royal blade IN HAND: ready, lift blade, physical slash, recover. NOT running or punching. Run is ONLYROW5COLUMNS5-8. \n\nDetailed source identity and sequence order follow:\n\nCreate a professional native pixel-art game animation SOURCE ATLAS of Ardyn Izunia. EXACT selected incarnation: Final Fantasy XV (2016).\n\nFIXED SOURCE APPEARANCE: Adult Ardyn with dark fedora, auburn hair, layered black coat and red patterned scarf, one spectral royal blade. FIXED WEAPON: Royal spectral blade. FIXED ACTION: Taille de la lame royale d’Ardyn. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body proportions remain consistent. Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Materialize one blade locally in hand, physical close cut and recover; no black hole or borrowed summon; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Materialize one blade locally in hand, physical close cut and recover; no black hole or borrowed summon; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Materialize one blade locally in hand, physical close cut and recover; no black hole or borrowed summon; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/ardyn_ff15-correction48-prompt.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/ardyn_ff15-native-original.png"
+          ],
+          "sha256": "86e793aa1186bbd53d8842ce055fe8350309103251c888fd08982a939ba5e3c7",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 144,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 45,
+              "top": 709,
+              "width": 94,
+              "height": 144,
+              "pixels": 8474
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/ardyn_ff15-correction48-region-review.json",
+          "importRegionsSha256": "80d5e38943154c5067ee52d305ed1811da7ba1424f8f3ff5d448b63ab8485293",
+          "anchorMode": "native-foot-median"
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/ardyn_ff15-super4.png",
+          "sha256": "b118714365f3a64e799bde80c73a9f9b8a9fda4955aa7fc3f5caf41df1aee434",
+          "generatedPath": "/workspace/generated_images/exec-45ebf7c5-e607-435d-9e9f-dd8e29f73b10.png",
+          "prompt": "Create a completely NEW pixel-art strip with EXACTLY FOUR separate full-body drawings of ADULT ARDYN IZUNIA from FINAL FANTASY XV2016, from this identity reference. Four columns, ONE row, transparent background, generous empty transparent gaps and outer margins. All four face screenRIGHT. Same adult auburn-haired man in dark fedora, long ornate layered black coat, red patterned scarf, dark trousers and boots. He holds ONE royal spectral sword IN HIS HAND. The sword is a single straight silver blade with only subtle local spectral gleam; no body aura or detached energy. These FOUR pictures must show a PLANTED PHYSICAL SWORD CUT, with BOTH FEET ON GROUND in every frame:1stand right-foot-forward with sword low IN HAND;2twist shoulders and lift sword above shoulder with feet planted;3make a close physical diagonal sword slash through empty space with feet planted;4withdraw sword and return to guard with feet planted. Four different clear arm/weapon positions. No running, sprinting, walking, kicking, jumping, flying or unarmed punching; no fist-forward pose. Complete sword tip and full body in every cell. Crisp clean detailed16bit pixel art; same anatomy and pixel scale all four. Solo non-graphic empty-space sword drill, no victim, opponent, blood, injury, scenery, text, labels, panels, floor or shadow. EXACTLY FOUR figures.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/ardyn_ff15-super4-prompt.txt",
+          "rows": 1,
+          "columns": 4,
+          "bodyHeight": 544,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/ardyn-identity-crop.png"
+          ],
+          "nativeDrawingsObserved": 4,
+          "nativeDrawingsRetainedByImport": 4,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/ardyn_ff15-super4-region-review.json",
+          "importRegionsSha256": "687066a993c504c750cd666f3cd7570cc1d11286297a7161d8675f012078cf04",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 0,
+            "column": 0,
+            "bodyBounds": {
+              "left": 79,
+              "top": 105,
+              "width": 408,
+              "height": 544,
+              "pixels": 102623
+            },
+            "notes": "First planted standing sword pose; sword ends above soles and below hat crown. All four correction poses share this scale, calibrated to the same190px game stature as the48-source."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 1,
+          "row": 0
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "cor_ff15",
+      "name": "Cor Leonis",
+      "universe": "Final Fantasy XV",
+      "sourceWork": "Final Fantasy XV (2016)",
+      "sourceReference": "https://finalfantasy.fandom.com/wiki/Cor_Leonis",
+      "version": "Adult Cor Leonis, short dark-grey hair, black Crownsguard jacket, practical dark trousers, physical katana",
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-xv/cor-ff15.png",
+      "referenceAssetSha256": "f267bfc4a9b54e7677cb9867f6c6a3cbd40eb684afefc6ff71e6697e310756f2",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/cor_ff15-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Taille du katana de Cor",
+      "superName": "Taille du katana de Cor",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "cor_ff15",
+          "heroId": "cor_ff15",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-9ece985e-7eab-4b0e-8bf9-e96361f13726.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/cor_ff15-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Cor Leonis. EXACT selected incarnation: Final Fantasy XV (2016).\n\nFIXED SOURCE APPEARANCE: Adult Cor Leonis, short dark-grey hair, black Crownsguard jacket, practical dark trousers, physical katana. FIXED WEAPON: Katana. FIXED ACTION: Taille du katana de Cor. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 190 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Two-handed katana ready, clean physical forward cut, recover; no Armiger or magic wave; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Two-handed katana ready, clean physical forward cut, recover; no Armiger or magic wave; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Two-handed katana ready, clean physical forward cut, recover; no Armiger or magic wave; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/cor_ff15-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "2890b5e6ed38739b2a88bd1222cbbd917ddc049e53726f7053027e0558c0bd98",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 166,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 31,
+              "top": 738,
+              "width": 138,
+              "height": 166,
+              "pixels": 8164
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/cor_ff15-region-review.json",
+          "importRegionsSha256": "ada1807c25f8b4a218c4be243328e138c6e65e8b674683e9de92100b48e189f2",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "horizon_zero_dawn_aloy",
+      "name": "Aloy",
+      "universe": "Horizon Zero Dawn",
+      "sourceWork": "Horizon Zero Dawn (2017), Nora Seeker adult Aloy",
+      "sourceReference": "https://horizon.fandom.com/wiki/Aloy",
+      "version": "Adult19+ Aloy, long braided red hair, Nora Seeker tribal armour, Hunter Bow and arrows; no Forbidden West glider or Sunwing",
+      "referenceAsset": "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-aloy.png",
+      "referenceAssetSha256": "3c057899ab4438fd23a73783bd846f82b3895392faefb24069eda192d2170a02",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/horizon_zero_dawn_aloy-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Flèche du Hunter Bow d’Aloy",
+      "superName": "Flèche du Hunter Bow d’Aloy",
+      "effect": "damage",
+      "delivery": "projectile",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding. Original finishing/super sequences with disappearing bow at release are excluded. Eight newly generated complete physical-bow poses replace those two sequences; bow retained visibly in the left hand throughout.",
+      "sources": [
+        {
+          "key": "horizon_zero_dawn_aloy",
+          "heroId": "horizon_zero_dawn_aloy",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-b66fa22b-0654-473d-9c06-500228f70ba8.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_aloy-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Aloy. EXACT selected incarnation: Horizon Zero Dawn (2017), Nora Seeker adult Aloy.\n\nFIXED SOURCE APPEARANCE: Adult19+ Aloy, long braided red hair, Nora Seeker tribal armour, Hunter Bow and arrows; no Forbidden West glider or Sunwing. FIXED WEAPON: Hunter Bow. FIXED ACTION: Flèche du Hunter Bow d’Aloy. Effect: damage; delivery: projectile.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 190 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Nock physical arrow, draw Hunter Bow, release forward, recover; no unrelated laser; four distinct stages: physical arrow at lowered bow, raise and nock, full draw facing right with arrow nock visibly at string and arrow aligned along the bow, release and recover. Only one physical arrow, no energy or detached magical effect. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Nock physical arrow, draw Hunter Bow, release forward, recover; no unrelated laser; four distinct stages: physical arrow at lowered bow, raise and nock, full draw facing right with arrow nock visibly at string and arrow aligned along the bow, release and recover. Only one physical arrow, no energy or detached magical effect. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Nock physical arrow, draw Hunter Bow, release forward, recover; no unrelated laser; four distinct stages: physical arrow at lowered bow, raise and nock, full draw facing right with arrow nock visibly at string and arrow aligned along the bow, release and recover. Only one physical arrow, no energy or detached magical effect. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_aloy-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "53dee95cbade119da15f14c4703b08e64382713f565ac2188779b4016108f82a",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 166,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 42,
+              "top": 738,
+              "width": 91,
+              "height": 166,
+              "pixels": 8610
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_aloy-region-review.json",
+          "importRegionsSha256": "6a553fc08fdee66e66a80cf97666ed84aed7da10f2668405f6bb34ac6bf705d8",
+          "anchorMode": "native-foot-median"
+        },
+        {
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_aloy-archery8.png",
+          "sha256": "73d808f4f22314110910f55ecf6a5125d2b4b259e68a419ed0835aa04d8a2dd0",
+          "generatedPath": "/workspace/generated_images/exec-35826b4e-05b7-4a49-b592-d4422c3f8a18.png",
+          "prompt": "Create EXACTLY EIGHT NEW separate full-body PIXEL ART drawings of Aloy, selected incarnation Horizon Zero Dawn (2017), Nora Seeker adult Aloy, from this identity reference. Appearance: Adult19+ Aloy, long braided red hair, Nora Seeker tribal armour, Hunter Bow and arrows; no Forbidden West glider or Sunwing. Actual weapon: Hunter Bow. FOUR columns by TWO rows, transparent background, generous empty transparent gutters, complete full figures and entire longbow inside every separate cell. Adult fictional game character, clean detailed16bit style, same anatomy and pixel scale across all8. Face screenRIGHT. CRITICAL: the SAME COMPLETE PHYSICAL LONGBOW remains held IN THE LEFT HAND in ALL EIGHT drawings, including the RELEASE and RECOVERY frames. NEVER make the bow vanish, never replace it with an empty outstretched hand. All bow tips and curved wooden limbs stay visible. Right hand draws or releases the STRING only, left hand continues gripping the bow handle. ROW1 four-frame solo ordinary physical arrow sequence:1nock one arrow with bow low;2raise left-arm-held bow and draw string with right hand to cheek;3release arrow with right hand, STILL visibly holding FULL COMPLETE BOW in extended left hand;4lower complete bow and recover both hands. ROW2 four NEW different poses of the same four physical stages for a second controlled arrow sequence, same complete bow retained throughout. One ordinary physical arrow, no energy, detached light, magic, beam, extra weapon, motion arc, background, ground, shadow, text, labels, grid or other figures. Eight independently drawn distinct full-body poses, exact4x2layout. Non-graphic solo archery into empty space, no opponent, victim, blood, wound or violence spectacle. Leave at least32px of transparent air around each entire bow and character.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_aloy-archery8-prompt.txt",
+          "rows": 2,
+          "columns": 4,
+          "bodyHeight": 456,
+          "excludesWeaponEffects": true,
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_aloy-identity-crop.png"
+          ],
+          "nativeDrawingsObserved": 8,
+          "nativeDrawingsRetainedByImport": 8,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_aloy-archery8-region-review.json",
+          "importRegionsSha256": "cef1cfad7bc5477caecb7af31182665952d69a2ff85f350a1f07d44423bf44fb",
+          "anchorMode": "native-foot-median",
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 0,
+            "column": 0,
+            "bodyBounds": {
+              "left": 38,
+              "top": 74,
+              "width": 312,
+              "height": 456,
+              "pixels": 66006
+            },
+            "notes": "First standing nock pose: entire bow stays between head crown and lowest sole. All8correction poses share this scale, then share the original source game-body stature; kneeling naturally shorter."
+          }
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 1,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 1,
+          "row": 1
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "horizon_zero_dawn_varl",
+      "name": "Varl",
+      "universe": "Horizon Zero Dawn",
+      "sourceWork": "Horizon Zero Dawn (2017), Nora brave Varl",
+      "sourceReference": "https://horizon.fandom.com/wiki/Varl",
+      "version": "Adult Varl, dark skin, Nora warrior clothing and head braids, practical spear; no later Forbidden West equipment",
+      "referenceAsset": "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-varl.png",
+      "referenceAssetSha256": "f6ecf7b13d7752a8b6af91ee135abb4938a94c57d160e71f826541297fd3acf5",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/horizon_zero_dawn_varl-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Estoc de la lance de Varl",
+      "superName": "Estoc de la lance de Varl",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "horizon_zero_dawn_varl-correction48",
+          "heroId": "horizon_zero_dawn_varl",
+          "kind": "correction48",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-b93a2eab-ec12-4589-8c90-87aa01167a88.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_varl-correction48.png",
+          "prompt": "RE-DESIGN THE LAYOUT WITH MUCH SMALLER SPRITES. The attached image is ONLY an identity/costume reference. Make an entirely NEW48-POSE ATLAS, on a LARGE transparent1536x1024 landscape canvas, exactly8columns6rows. Each standing BODY is ONLY95PIXELS HIGH, including head and feet. The full figure including LONG SWORD/SPEAR must fit inside a130pxwide x130pxhigh box. Thus every one of the48figures is SMALL with huge clean transparent gaps; leave at least50pixels between ANY equipment of neighboring figures. Do NOT reproduce the reference layout density or figure size. Uniform small scale for all48; actual game stature is calibrated later. Complete swords/spears, tips, hands, heads and feet visible inside each separate cell. No overlap, no touching. Crisp detailed pixel art, readable silhouette. No background. \n\nDetailed source identity and sequence order follow:\n\nCreate a professional native pixel-art game animation SOURCE ATLAS of Varl. EXACT selected incarnation: Horizon Zero Dawn (2017), Nora brave Varl.\n\nFIXED SOURCE APPEARANCE: Adult Varl, dark skin, Nora warrior clothing and head braids, practical spear; no later Forbidden West equipment. FIXED WEAPON: Nora spear. FIXED ACTION: Estoc de la lance de Varl. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body proportions remain consistent. Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Brace physical Nora spear and make a controlled short forward thrust, recover; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Brace physical Nora spear and make a controlled short forward thrust, recover; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Brace physical Nora spear and make a controlled short forward thrust, recover; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_varl-correction48-prompt.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_varl-native-original.png"
+          ],
+          "sha256": "a83e1f7d81ca24045ad7bb50aabf82cea1aa0fb4c3f406acb1efa0ed36dd1b94",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 137,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 51,
+              "top": 732,
+              "width": 78,
+              "height": 137,
+              "pixels": 6491
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_varl-correction48-region-review.json",
+          "importRegionsSha256": "0974f64852c07f05d753870978ac86d595dc234148827989ecf04a2c1af5f196",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "horizon_zero_dawn_erend",
+      "name": "Erend",
+      "universe": "Horizon Zero Dawn",
+      "sourceWork": "Horizon Zero Dawn (2017)",
+      "sourceReference": "https://horizon.fandom.com/wiki/Erend",
+      "version": "Adult Erend, reddish moustache and mohawk, heavy Oseram Vanguard metal-and-leather armour, physical heavy hammer",
+      "referenceAsset": "/sprites/generated/heroes/horizon-zero-dawn/horizon-zero-dawn-erend.png",
+      "referenceAssetSha256": "e1a4adb2b0131982159c5acaf254980b6e7b045ce5458545272a9a577a282489",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/horizon_zero_dawn_erend-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 205,
+      "simpleName": "Coup du marteau d’Erend",
+      "superName": "Coup du marteau d’Erend",
+      "effect": "damage",
+      "delivery": "melee",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "horizon_zero_dawn_erend-correction48",
+          "heroId": "horizon_zero_dawn_erend",
+          "kind": "correction48",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-2c1b2602-b587-445b-8fe1-43a1b4606592.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_erend-correction48.png",
+          "prompt": "RE-DESIGN LAYOUT WITH MUCH SMALLER SPRITES. The attached image is ONLY an identity/costume reference. Make a NEW48-POSE ATLAS on a LARGE transparent1536x1024 landscape canvas, exactly8columns6rows. Each standing BODY is ONLY95PIXELS HIGH, including head and feet. Full figure including hammer/radio fits within130pxwide x130pxhigh box. Thus48small figures have huge clean transparent gaps and at least40pxclear outer margin. Do NOT reproduce reference layout density or figure size. Uniform small pixel scale for every figure; game stature is calibrated later. Every complete hammer head/shaft, radio antenna, hand, head and foot stays inside its cell. No overlap, touching or clipping. Pixel art, no background, labels or grid. \n\nDetailed identity and sequence order:\n\nCreate a professional native pixel-art game animation SOURCE ATLAS of Erend. EXACT selected incarnation: Horizon Zero Dawn (2017).\n\nFIXED SOURCE APPEARANCE: Adult Erend, reddish moustache and mohawk, heavy Oseram Vanguard metal-and-leather armour, physical heavy hammer. FIXED WEAPON: Oseram hammer. FIXED ACTION: Coup du marteau d’Erend. Effect: damage; delivery: melee.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body proportions remain consistent. Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Raise actual heavy hammer, controlled close downward swing and recover; no invented electrical blast; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Raise actual heavy hammer, controlled close downward swing and recover; no invented electrical blast; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Raise actual heavy hammer, controlled close downward swing and recover; no invented electrical blast; four distinct physical stages: ready, prepare with feet/arms repositioned, controlled close movement into empty forward space, regain guard. Keep full weapon and body in every frame. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_erend-correction48-prompt.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_erend-native-original.png"
+          ],
+          "sha256": "e3fb4c9c6a81a2cef669d063829e9f00755c2c87bc17ac67cf02e79a3404857f",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 125,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 52,
+              "top": 706,
+              "width": 81,
+              "height": 125,
+              "pixels": 7152
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/horizon_zero_dawn_erend-correction48-region-review.json",
+          "importRegionsSha256": "b89605715a399f684635b00ece4e552e0fc95c110a7ee2cb33c1f33cc3b9d3f1",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "lara_croft_tr",
+      "name": "Lara Croft",
+      "universe": "Tomb Raider",
+      "sourceWork": "Shadow of the Tomb Raider (2018), adult Lara",
+      "sourceReference": "https://tombraider.fandom.com/wiki/Lara_Croft_(Survivor_Timeline)",
+      "version": "Adult26+ Lara, brown ponytail, practical blue-grey expedition top and trousers, necklace, physical recurve bow and quiver; no sexualized outfit",
+      "referenceAsset": "/sprites/generated/heroes/tomb-raider/lara-croft-tr.png",
+      "referenceAssetSha256": "04439f5d6a9fedad68f2ef0671d214424738f07966a1393469cb655d28d5abac",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/lara_croft_tr-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 190,
+      "simpleName": "Flèche de l’arc de Lara",
+      "superName": "Flèche de l’arc de Lara",
+      "effect": "damage",
+      "delivery": "projectile",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "lara_croft_tr",
+          "heroId": "lara_croft_tr",
+          "kind": "original",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-56dcf116-84f5-4579-a4ce-4db55e28d546.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/lara_croft_tr-native-original.png",
+          "prompt": "Create a professional native pixel-art game animation SOURCE ATLAS of Lara Croft. EXACT selected incarnation: Shadow of the Tomb Raider (2018), adult Lara.\n\nFIXED SOURCE APPEARANCE: Adult26+ Lara, brown ponytail, practical blue-grey expedition top and trousers, necklace, physical recurve bow and quiver; no sexualized outfit. FIXED WEAPON: Recurve bow. FIXED ACTION: Flèche de l’arc de Lara. Effect: damage; delivery: projectile.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body stature calibrates to 190 game pixels (short dwarf 150, ordinary human 190, tall 205, massive Space Marine 220). Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with equipment held safely without attacking. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with equipment held safely without attacking. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Nock one physical arrow, draw bow, release forward and recover; four distinct stages: physical arrow at lowered bow, raise and nock, full draw facing right with arrow nock visibly at string and arrow aligned along the bow, release and recover. Only one physical arrow, no energy or detached magical effect. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Nock one physical arrow, draw bow, release forward and recover; four distinct stages: physical arrow at lowered bow, raise and nock, full draw facing right with arrow nock visibly at string and arrow aligned along the bow, release and recover. Only one physical arrow, no energy or detached magical effect. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, equipment held safely without attacking. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Nock one physical arrow, draw bow, release forward and recover; four distinct stages: physical arrow at lowered bow, raise and nock, full draw facing right with arrow nock visibly at string and arrow aligned along the bow, release and recover. Only one physical arrow, no energy or detached magical effect. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/lara_croft_tr-prompt.txt",
+          "referenceInputs": [],
+          "sha256": "352a133352e66c9a8afd61a0be93978fa7e529e8f46fb7b52f1661587894a77b",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 168,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 54,
+              "top": 731,
+              "width": 85,
+              "height": 168,
+              "pixels": 7217
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/lara_croft_tr-region-review.json",
+          "importRegionsSha256": "225332434ef69fcbddbc7393881191435146efabca73012be2601594f2e01d0e",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    },
+    {
+      "heroId": "jonah_tr",
+      "name": "Jonah Maiava",
+      "universe": "Tomb Raider",
+      "sourceWork": "Shadow of the Tomb Raider (2018)",
+      "sourceReference": "https://tombraider.fandom.com/wiki/Jonah_Maiava",
+      "version": "Adult Jonah Maiava, broad Polynesian build, short hair and beard, practical expedition shirt and outdoor equipment, backpack and radio",
+      "referenceAsset": "/sprites/generated/heroes/tomb-raider/jonah-tr.png",
+      "referenceAssetSha256": "764a3a51c875c3261a789d1589d02a4631439e7255a7b55e3d8fe319f3c2e394",
+      "referenceArchive": "docs/combat-fidelity-wave14-2026-10-25/part-a/references/jonah_tr-historical.png",
+      "referenceUse": "Historical source archived with immutable SHA and inspected only for comparison. Selected source version and equipment are fixed by the batch plan and exact generation prompt; old asset defects are not source truth.",
+      "targetBodyHeight": 205,
+      "simpleName": "Coordination de l’expédition de Jonah",
+      "superName": "Coordination de l’expédition de Jonah",
+      "effect": "buff",
+      "delivery": "support",
+      "reviewed": true,
+      "reviewNotes": "New image_gen adaptation, not official frames or source1:1 certification. All48 native drawings have been reviewed for complete source-period body/equipment and coherent action. Support sequences stay nonoffensive. Original RGBA retained through transparent import seams; no repaint or alpha thresholding.",
+      "sources": [
+        {
+          "key": "jonah_tr-correction48",
+          "heroId": "jonah_tr",
+          "kind": "correction48",
+          "tool": "image_gen",
+          "provider": "OpenAI",
+          "generationId": null,
+          "jobId": null,
+          "generatedPath": "/workspace/generated_images/exec-5cf0831f-4b55-425a-8a15-61d6847bb7c3.png",
+          "archivedPath": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/jonah_tr-correction48.png",
+          "prompt": "RE-DESIGN LAYOUT WITH MUCH SMALLER SPRITES. The attached image is ONLY an identity/costume reference. Make a NEW48-POSE ATLAS on a LARGE transparent1536x1024 landscape canvas, exactly8columns6rows. Each standing BODY is ONLY95PIXELS HIGH, including head and feet. Full figure including hammer/radio fits within130pxwide x130pxhigh box. Thus48small figures have huge clean transparent gaps and at least40pxclear outer margin. Do NOT reproduce reference layout density or figure size. Uniform small pixel scale for every figure; game stature is calibrated later. Every complete hammer head/shaft, radio antenna, hand, head and foot stays inside its cell. No overlap, touching or clipping. Pixel art, no background, labels or grid. Keep practical expedition RADIO support only, never attacking or firing. The original last-row FEET were clipped; ALL SHOES and soles must be fully drawn with extra transparent bottom margin. \n\nDetailed identity and sequence order:\n\nCreate a professional native pixel-art game animation SOURCE ATLAS of Jonah Maiava. EXACT selected incarnation: Shadow of the Tomb Raider (2018).\n\nFIXED SOURCE APPEARANCE: Adult Jonah Maiava, broad Polynesian build, short hair and beard, practical expedition shirt and outdoor equipment, backpack and radio. FIXED WEAPON: Expedition radio. FIXED ACTION: Coordination de l’expédition de Jonah. Effect: buff; delivery: support.\n\nAdult fictional character. Nonsexual practical game sprites. Clean detailed 16-bit pixel art, readable coherent three-quarter side view facing screen-RIGHT. Preserve the selected incarnation, never mix later gear or abilities. Same anatomical proportions and pixel scale in all poses; standing body proportions remain consistent. Kneeling stays naturally shorter. Complete equipment and silhouette in each cell with generous empty transparent margins on every side. All swords, staff tips, bow tips, spear/hammer ends and feet completely visible.\n\nSTRICT LAYOUT: EXACTLY FORTY-EIGHT separate complete figures: EIGHT equal COLUMNS by SIX equal ROWS, regular 8 x 6 grid. Transparent background. No labels, letters, numbers, grid, panels, ground, scenery, cast shadow or other people. Each group of FOUR is one real FOUR-FRAME sequence: independently drawn different postures with visibly different feet/limbs/weapon angles. Never duplicate figures or invent additional phases. Keep identical scale across every cell. Leave generous clear alpha gutters, never overlap or clip.\n\nROW 1: columns 1-4 INTRO: four distinct quiet positions, approach with one small step, bring hands/equipment up, plant feet, settle in readiness with calm source-faithful support gestures. Columns 5-8 OUTRO: lower hands/equipment, turn shoulders, step back, settle. No firing.\n\nROW 2: columns 1-4 ROUND VICTORY: restrained nod and brief acknowledgment gesture, lift head, shift weight, settle with calm source-faithful support gestures. Columns 5-8 ROUND DEFEAT: lower shoulders, catch breath, slightly stoop, steady and recover. No attacks.\n\nROW 3: columns 1-4 FINISHING PRESENTATION: Check radio, signal allies and settle; practical support, no conjured attack or gunfire; lift actual radio, check it, signal with free hand, lower hand and settle. Four different arm/foot positions. Support only, zero damage. Non-graphic solo demonstration, no opponent. Columns 5-8 MATCH VICTORY: four distinctive calm personal acknowledgment positions, different body and hand positions from round victory, settle. No attack.\n\nROW 4: columns 1-4 MATCH DEFEAT: slowly lower posture, crouch or lean with lowered head, steady balance, settle; intact unharmed character. Columns 5-8 SUPER: a separate newly drawn four-stage sequence of Check radio, signal allies and settle; practical support, no conjured attack or gunfire; lift actual radio, check it, signal with free hand, lower hand and settle. Four different arm/foot positions. Support only, zero damage. Different actual drawings from finishing presentation, same source action and effect.\n\nROW 5: columns 1-4 IDLE: four subtle breathing and actual weight-transfer positions, visibly different shoulders/hands/feet, calm source-faithful support gestures. Columns 5-8 RUN: four real locomotion stride poses, alternating planted leg and moving leg, with equipment held safely, same stature and source costume.\n\nROW 6: columns 1-4 ORDINARY ACTION: Check radio, signal allies and settle; practical support, no conjured attack or gunfire; lift actual radio, check it, signal with free hand, lower hand and settle. Four different arm/foot positions. Support only, zero damage. Four new drawings distinct from super/finishing. Columns 5-8 HIT REACTION: four non-graphic flinch/guard/balance/recovery positions; intact character, no wounds.\n\nSolo non-graphic animation acting only, no victim, enemy, blood, injury, corpse, severing, death or graphic violence. Intro/outro/victory/defeat/idle/run/hit are calm ordinary acting and never fire, strike, emit offensive effects or gain new powers. Supports stay zero-damage in ALL sequences including SUPER and FINISHING PRESENTATION. No generalized aura, no body glow, no borrowed power. Exact 48 figures, 8 columns x 6 rows, transparent background.\n",
+          "promptFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/jonah_tr-correction48-prompt.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/part-a/sources/jonah_tr-native-original.png"
+          ],
+          "sha256": "7a2da3c7d3cccc222fefd55b2e6ce5037d75a3426bb74bb6c93d8e6f9f1f5d9c",
+          "rows": 6,
+          "columns": 8,
+          "bodyHeight": 144,
+          "excludesWeaponEffects": true,
+          "calibration": {
+            "measurementKind": "visible-native-standing-body-import-bounds",
+            "sequence": 8,
+            "column": 0,
+            "bodyBounds": {
+              "left": 66,
+              "top": 719,
+              "width": 96,
+              "height": 144,
+              "pixels": 8472
+            },
+            "notes": "Idle standing source body. Uniform scale shared by every native and base drawing. Alpha locates boundaries only; source RGBA retained."
+          },
+          "nativeDrawingsObserved": 48,
+          "nativeDrawingsRetainedByImport": 48,
+          "importRegionsFile": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/jonah_tr-correction48-region-review.json",
+          "importRegionsSha256": "356b4e5f0e73fcada3cc32ba9fa3505304474c4ae7a2013aa9aba0e5e0154183",
+          "anchorMode": "native-foot-median"
+        }
+      ],
+      "nativeSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ],
+      "baseSelections": [
+        {
+          "source": 0,
+          "row": 8
+        },
+        {
+          "source": 0,
+          "row": 9
+        },
+        {
+          "source": 0,
+          "row": 10
+        },
+        {
+          "source": 0,
+          "row": 11
+        }
+      ]
+    }
+  ],
+  "remainingHeroIds": [],
+  "blockedHeroIds": []
+}

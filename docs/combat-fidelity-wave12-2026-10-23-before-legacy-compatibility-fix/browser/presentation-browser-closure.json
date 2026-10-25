@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-23T21:17:04.785Z",
+  "browserClosedAt": "2026-10-23T21:17:04.785Z",
+  "allBrowserWindowsClosed": true,
+  "liveBrowserProcesses": [],
+  "liveHarnessProcesses": [],
+  "observationCommand": [
+    "ps",
+    "-eo",
+    "pid,ppid,state,comm,args"
+  ],
+  "basis": "Both tool-runner sessions completed with exit_code 0. Their SHA-pinned harness finally blocks await browser.close(). This subsequent process observation found no live Chromium browser or owned harness process. The timestamp records this observation, not the earlier exact close instant.",
+  "reports": [
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/browser/native-presentations.json",
+      "sha256": "d11eb3791649efdfc338a2e5d28b72ac5061476b1c09cdc75ec2b2a4c37a7694",
+      "harnessPath": "docs/combat-fidelity-wave12-2026-10-23/browser/native-presentations.mjs",
+      "harnessSha256": "559b214e2c6ab308cbb3858c6869eb490f8db385948ff5b766f39a1a5fcde6f3",
+      "startedAt": "2026-10-23T21:15:42.767Z",
+      "finishedAt": "2026-10-23T21:16:18.602Z",
+      "execSessionId": 7029,
+      "observedExecExitCode": 0,
+      "browserCloseAwaitedByFinally": true,
+      "exitCode": 0,
+      "log": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/browser/native-presentations.log",
+        "sha256": "01fd6be3f51703ae1b4d320fc7f4eee9433a0652f06b3fca1809f92e7447e8ea",
+        "bytes": 16111
+      }
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/browser/base-corrections.json",
+      "sha256": "c63f15429d9306782c71c04f14b5b8395007afe1f785b2655eefb439d9f0f987",
+      "harnessPath": "docs/combat-fidelity-wave12-2026-10-23/browser/base-corrections.mjs",
+      "harnessSha256": "f84dcfaca3d07817e9ccf296b7c42b31ac67a1caf67ef141c5f1ee05b94e9e53",
+      "startedAt": "2026-10-23T21:15:47.241Z",
+      "finishedAt": "2026-10-23T21:16:22.211Z",
+      "execSessionId": 85300,
+      "observedExecExitCode": 0,
+      "browserCloseAwaitedByFinally": true,
+      "exitCode": 0,
+      "log": {
+        "path": "docs/combat-fidelity-wave12-2026-10-23/browser/base-corrections.log",
+        "sha256": "672f2038b53132beef42edd6e7857acaead27e762ec17e93dd4b43e5f62015c5",
+        "bytes": 21551
+      }
+    }
+  ],
+  "source1to1Verified": false,
+  "passed": true,
+  "method": "Both tool-runner sessions completed with exit_code 0. Their SHA-pinned harness finally blocks await browser.close(). This subsequent process observation found no live Chromium browser or owned harness process. The timestamp records this observation, not the earlier exact close instant."
+}

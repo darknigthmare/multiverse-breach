@@ -1,0 +1,92 @@
+
+> lively-darwin@0.0.0 boosters:audit
+> node scripts/buildOriginalUniverseRuntimeBoosters.mjs --check && node scripts/portalBoosterAudit.mjs && node scripts/portalBoosterRemediationAudit.mjs && node scripts/portalBoosterEditorialAudit.mjs
+
+{
+  "mode": "check",
+  "sourcesPreserved": 20,
+  "runtimeBoosters": 20,
+  "format": "WebP",
+  "dimensions": "640x960",
+  "manifest": "public/boosters/original-worlds/runtime-manifest.json"
+}
+{
+  "runtimeUniverses": 525,
+  "catalogUniverses": 524,
+  "permanentOcBoosters": 5,
+  "uniqueAssets": 530,
+  "totalBytes": 84507212,
+  "missingUniverses": [],
+  "orphanUniverses": [],
+  "contentTotals": {
+    "universes": 525,
+    "hero": 1911,
+    "equipment": 1587,
+    "event": 525,
+    "skin": 1966,
+    "archive": 525,
+    "kart": 525,
+    "battleMusic": 525,
+    "stageMusic": 525,
+    "fieldSuper": 525,
+    "npcAssist": 525,
+    "koEffect": 525,
+    "portalEffect": 525,
+    "introPose": 525,
+    "victoryPose": 525,
+    "profileBanner": 525,
+    "profileTitle": 525,
+    "hud": 525,
+    "ocContentUpdate": 140,
+    "total": 12954
+  },
+  "contentMinimums": {
+    "hero": 3,
+    "equipment": 3,
+    "event": 1,
+    "skin": 3,
+    "archive": 1,
+    "kart": 1,
+    "battleMusic": 1,
+    "stageMusic": 1,
+    "fieldSuper": 1,
+    "npcAssist": 1,
+    "koEffect": 1,
+    "portalEffect": 1,
+    "introPose": 1,
+    "victoryPose": 1,
+    "profileBanner": 1,
+    "profileTitle": 1,
+    "hud": 1
+  },
+  "contentGaps": [],
+  "contentErrors": [],
+  "errors": []
+}
+{
+  "contractId": "multiverse-breach-portal-booster-openai-remediation-v1",
+  "entries": 53,
+  "uniqueUniverses": 53,
+  "uniqueRuntimePaths": 53,
+  "uniqueRuntimeHashes": 53,
+  "uniqueCurrentRuntimePaths": 53,
+  "uniqueCurrentRuntimeHashes": 53,
+  "originalRuntimeDerivatives": 20,
+  "verifiedBytes": 69116698,
+  "verifiedDerivativeBytes": 4006372,
+  "errors": []
+}
+{
+  "runtimeUniverses": 524,
+  "authoredWaves": 23,
+  "deterministicWaves": 501,
+  "completeWaves": 524,
+  "featuredCards": 2620,
+  "missingWaves": 0,
+  "errors": []
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

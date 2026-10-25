@@ -1,0 +1,855 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "camp": "player",
+      "side": "left",
+      "action": "hold",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 293,
+        "y": 346,
+        "side": "left"
+      },
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "contacts": [
+        {
+          "column": 0,
+          "handWorld": {
+            "x": 202,
+            "y": 49
+          }
+        },
+        {
+          "column": 1,
+          "handWorld": {
+            "x": 342,
+            "y": 49
+          }
+        },
+        {
+          "column": 2,
+          "handWorld": {
+            "x": 482,
+            "y": 49
+          }
+        },
+        {
+          "column": 3,
+          "handWorld": {
+            "x": 622,
+            "y": 49
+          }
+        }
+      ],
+      "final": {
+        "state": "ledgeHang",
+        "x": 293,
+        "y": 346,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "player",
+      "side": "left",
+      "action": "climb",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 293,
+        "y": 346,
+        "side": "left",
+        "actionStart": {
+          "state": "ledgeClimb",
+          "x": 315,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "regrab": 0
+        }
+      },
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "contacts": [
+        {
+          "column": 0,
+          "handWorld": {
+            "x": 202,
+            "y": 209
+          }
+        },
+        {
+          "column": 1,
+          "handWorld": {
+            "x": 342,
+            "y": 209
+          }
+        },
+        {
+          "column": 2,
+          "handWorld": {
+            "x": 482,
+            "y": 209
+          }
+        },
+        {
+          "column": 3,
+          "handWorld": {
+            "x": 622,
+            "y": 209
+          }
+        }
+      ],
+      "final": {
+        "state": "idle",
+        "x": 315,
+        "y": 320,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "player",
+      "side": "left",
+      "action": "drop",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 293,
+        "y": 346,
+        "side": "left",
+        "actionStart": {
+          "state": "ledgeDrop",
+          "x": 286,
+          "y": 346,
+          "vx": 0,
+          "vy": 1.8,
+          "regrab": 0.5
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "fall",
+        "x": 286,
+        "y": 347.8,
+        "vx": 0,
+        "vy": 1.8
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "player",
+      "side": "left",
+      "action": "jump",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 293,
+        "y": 346,
+        "side": "left",
+        "actionStart": {
+          "state": "ledgeJump",
+          "x": 302,
+          "y": 346,
+          "vx": 3.4,
+          "vy": -6.7,
+          "regrab": 0.5
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "jumpRise",
+        "x": 305.4,
+        "y": 339.3,
+        "vx": 3.4,
+        "vy": -6.7
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "player",
+      "side": "left",
+      "action": "attack",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 293,
+        "y": 346,
+        "side": "left",
+        "actionStart": {
+          "state": "ledgeAttack",
+          "x": 308,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "regrab": 0
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "ledgeAttack",
+        "x": 308,
+        "y": 320,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "player",
+      "side": "right",
+      "action": "hold",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 657,
+        "y": 346,
+        "side": "right"
+      },
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "contacts": [
+        {
+          "column": 0,
+          "handWorld": {
+            "x": 413,
+            "y": 849
+          }
+        },
+        {
+          "column": 1,
+          "handWorld": {
+            "x": 553,
+            "y": 849
+          }
+        },
+        {
+          "column": 2,
+          "handWorld": {
+            "x": 693,
+            "y": 849
+          }
+        },
+        {
+          "column": 3,
+          "handWorld": {
+            "x": 833,
+            "y": 849
+          }
+        }
+      ],
+      "final": {
+        "state": "ledgeHang",
+        "x": 657,
+        "y": 346,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "player",
+      "side": "right",
+      "action": "climb",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 657,
+        "y": 346,
+        "side": "right",
+        "actionStart": {
+          "state": "ledgeClimb",
+          "x": 635,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "regrab": 0
+        }
+      },
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "contacts": [
+        {
+          "column": 0,
+          "handWorld": {
+            "x": 413,
+            "y": 1009
+          }
+        },
+        {
+          "column": 1,
+          "handWorld": {
+            "x": 553,
+            "y": 1009
+          }
+        },
+        {
+          "column": 2,
+          "handWorld": {
+            "x": 693,
+            "y": 1009
+          }
+        },
+        {
+          "column": 3,
+          "handWorld": {
+            "x": 833,
+            "y": 1009
+          }
+        }
+      ],
+      "final": {
+        "state": "idle",
+        "x": 635,
+        "y": 320,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "player",
+      "side": "right",
+      "action": "drop",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 657,
+        "y": 346,
+        "side": "right",
+        "actionStart": {
+          "state": "ledgeDrop",
+          "x": 664,
+          "y": 346,
+          "vx": 0,
+          "vy": 1.8,
+          "regrab": 0.5
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "fall",
+        "x": 664,
+        "y": 347.8,
+        "vx": 0,
+        "vy": 1.8
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "player",
+      "side": "right",
+      "action": "jump",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 657,
+        "y": 346,
+        "side": "right",
+        "actionStart": {
+          "state": "ledgeJump",
+          "x": 648,
+          "y": 346,
+          "vx": -3.4,
+          "vy": -6.7,
+          "regrab": 0.5
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "jumpRise",
+        "x": 644.6,
+        "y": 339.3,
+        "vx": -3.4,
+        "vy": -6.7
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "player",
+      "side": "right",
+      "action": "attack",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 657,
+        "y": 346,
+        "side": "right",
+        "actionStart": {
+          "state": "ledgeAttack",
+          "x": 642,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "regrab": 0
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "ledgeAttack",
+        "x": 642,
+        "y": 320,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "opponent",
+      "side": "left",
+      "action": "hold",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 293,
+        "y": 346,
+        "side": "left"
+      },
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "contacts": [
+        {
+          "column": 0,
+          "handWorld": {
+            "x": 202,
+            "y": 1649
+          }
+        },
+        {
+          "column": 1,
+          "handWorld": {
+            "x": 342,
+            "y": 1649
+          }
+        },
+        {
+          "column": 2,
+          "handWorld": {
+            "x": 482,
+            "y": 1649
+          }
+        },
+        {
+          "column": 3,
+          "handWorld": {
+            "x": 622,
+            "y": 1649
+          }
+        }
+      ],
+      "final": {
+        "state": "ledgeHang",
+        "x": 293,
+        "y": 346,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "opponent",
+      "side": "left",
+      "action": "climb",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 293,
+        "y": 346,
+        "side": "left",
+        "actionStart": {
+          "state": "ledgeClimb",
+          "x": 315,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "regrab": 0
+        }
+      },
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "contacts": [
+        {
+          "column": 0,
+          "handWorld": {
+            "x": 202,
+            "y": 1809
+          }
+        },
+        {
+          "column": 1,
+          "handWorld": {
+            "x": 342,
+            "y": 1809
+          }
+        },
+        {
+          "column": 2,
+          "handWorld": {
+            "x": 482,
+            "y": 1809
+          }
+        },
+        {
+          "column": 3,
+          "handWorld": {
+            "x": 622,
+            "y": 1809
+          }
+        }
+      ],
+      "final": {
+        "state": "idle",
+        "x": 315,
+        "y": 320,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "opponent",
+      "side": "left",
+      "action": "drop",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 293,
+        "y": 346,
+        "side": "left",
+        "actionStart": {
+          "state": "ledgeDrop",
+          "x": 286,
+          "y": 346,
+          "vx": 0,
+          "vy": 1.8,
+          "regrab": 0.5
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "fall",
+        "x": 286,
+        "y": 347.8,
+        "vx": 0,
+        "vy": 1.8
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "opponent",
+      "side": "left",
+      "action": "jump",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 293,
+        "y": 346,
+        "side": "left",
+        "actionStart": {
+          "state": "ledgeJump",
+          "x": 302,
+          "y": 346,
+          "vx": 3.4,
+          "vy": -6.7,
+          "regrab": 0.5
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "jumpRise",
+        "x": 305.4,
+        "y": 339.3,
+        "vx": 3.4,
+        "vy": -6.7
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "opponent",
+      "side": "left",
+      "action": "attack",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 293,
+        "y": 346,
+        "side": "left",
+        "actionStart": {
+          "state": "ledgeAttack",
+          "x": 308,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "regrab": 0
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "ledgeAttack",
+        "x": 308,
+        "y": 320,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "opponent",
+      "side": "right",
+      "action": "hold",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 657,
+        "y": 346,
+        "side": "right"
+      },
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "contacts": [
+        {
+          "column": 0,
+          "handWorld": {
+            "x": 413,
+            "y": 2449
+          }
+        },
+        {
+          "column": 1,
+          "handWorld": {
+            "x": 553,
+            "y": 2449
+          }
+        },
+        {
+          "column": 2,
+          "handWorld": {
+            "x": 693,
+            "y": 2449
+          }
+        },
+        {
+          "column": 3,
+          "handWorld": {
+            "x": 833,
+            "y": 2449
+          }
+        }
+      ],
+      "final": {
+        "state": "ledgeHang",
+        "x": 657,
+        "y": 346,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "opponent",
+      "side": "right",
+      "action": "climb",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 657,
+        "y": 346,
+        "side": "right",
+        "actionStart": {
+          "state": "ledgeClimb",
+          "x": 635,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "regrab": 0
+        }
+      },
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "contacts": [
+        {
+          "column": 0,
+          "handWorld": {
+            "x": 413,
+            "y": 2609
+          }
+        },
+        {
+          "column": 1,
+          "handWorld": {
+            "x": 553,
+            "y": 2609
+          }
+        },
+        {
+          "column": 2,
+          "handWorld": {
+            "x": 693,
+            "y": 2609
+          }
+        },
+        {
+          "column": 3,
+          "handWorld": {
+            "x": 833,
+            "y": 2609
+          }
+        }
+      ],
+      "final": {
+        "state": "idle",
+        "x": 635,
+        "y": 320,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "opponent",
+      "side": "right",
+      "action": "drop",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 657,
+        "y": 346,
+        "side": "right",
+        "actionStart": {
+          "state": "ledgeDrop",
+          "x": 664,
+          "y": 346,
+          "vx": 0,
+          "vy": 1.8,
+          "regrab": 0.5
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "fall",
+        "x": 664,
+        "y": 347.8,
+        "vx": 0,
+        "vy": 1.8
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "opponent",
+      "side": "right",
+      "action": "jump",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 657,
+        "y": 346,
+        "side": "right",
+        "actionStart": {
+          "state": "ledgeJump",
+          "x": 648,
+          "y": 346,
+          "vx": -3.4,
+          "vy": -6.7,
+          "regrab": 0.5
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "jumpRise",
+        "x": 644.6,
+        "y": 339.3,
+        "vx": -3.4,
+        "vy": -6.7
+      },
+      "physicsPreservedByRendering": true
+    },
+    {
+      "camp": "opponent",
+      "side": "right",
+      "action": "attack",
+      "captured": {
+        "state": "ledgeCatch",
+        "x": 657,
+        "y": 346,
+        "side": "right",
+        "actionStart": {
+          "state": "ledgeAttack",
+          "x": 642,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "regrab": 0
+        }
+      },
+      "columns": [
+        0
+      ],
+      "contacts": [],
+      "final": {
+        "state": "ledgeAttack",
+        "x": 642,
+        "y": 320,
+        "vx": 0,
+        "vy": 0
+      },
+      "physicsPreservedByRendering": true
+    }
+  ],
+  "caseCount": 20,
+  "attachedDraws": 32,
+  "pageErrors": [],
+  "engineUrl": "/src/game/engineSmash.js?t=1792790052807",
+  "rendererUrl": "/src/game/renderer.js?t=1792790052807",
+  "source1to1Verified": false
+}

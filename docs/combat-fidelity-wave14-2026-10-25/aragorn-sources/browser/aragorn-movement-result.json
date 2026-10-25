@@ -1,0 +1,850 @@
+{
+  "passed": true,
+  "flow": "Real GameCanvas Smash: keyboard D+Space, hold D through landing, switch to Q",
+  "engineUrl": "/src/game/engineSmash.js?t=1792918707052",
+  "summary": {
+    "jumpRise": {
+      "updates": 26,
+      "draws": 27,
+      "elapsed": [
+        0,
+        0.016666666666666666,
+        0.03333333333333333,
+        0.05,
+        0.06666666666666667,
+        0.08333333333333333,
+        0.09999999999999999,
+        0.11666666666666665,
+        0.13333333333333333,
+        0.15,
+        0.16666666666666666,
+        0.18333333333333332,
+        0.19999999999999998,
+        0.21666666666666665,
+        0.2333333333333333,
+        0.24999999999999997,
+        0.26666666666666666,
+        0.2833333333333333,
+        0.3,
+        0.31666666666666665,
+        0.3333333333333333,
+        0.35,
+        0.36666666666666664,
+        0.3833333333333333,
+        0.39999999999999997,
+        0.41666666666666663
+      ],
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "velocities": [
+        4
+      ],
+      "facings": [
+        1
+      ]
+    },
+    "fall": {
+      "updates": 29,
+      "draws": 29,
+      "elapsed": [
+        0,
+        0.016666666666666666,
+        0.03333333333333333,
+        0.05,
+        0.06666666666666667,
+        0.08333333333333333,
+        0.09999999999999999,
+        0.11666666666666665,
+        0.13333333333333333,
+        0.15,
+        0.16666666666666666,
+        0.18333333333333332,
+        0.19999999999999998,
+        0.21666666666666665,
+        0.2333333333333333,
+        0.24999999999999997,
+        0.26666666666666666,
+        0.2833333333333333,
+        0.3,
+        0.31666666666666665,
+        0.3333333333333333,
+        0.35,
+        0.36666666666666664,
+        0.3833333333333333,
+        0.39999999999999997,
+        0.41666666666666663,
+        0.4333333333333333,
+        0.44999999999999996,
+        0.4666666666666666
+      ],
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "velocities": [
+        4
+      ],
+      "facings": [
+        1
+      ]
+    },
+    "land": {
+      "updates": 7,
+      "draws": 7,
+      "elapsed": [
+        0,
+        0.016666666666666666,
+        0.03333333333333333,
+        0.05,
+        0.06666666666666667,
+        0.08333333333333333,
+        0.09999999999999999
+      ],
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "velocities": [
+        4
+      ],
+      "facings": [
+        1
+      ]
+    },
+    "turn": {
+      "updates": 6,
+      "draws": 6,
+      "elapsed": [
+        0.016666666666666666,
+        0.03333333333333333,
+        0.05,
+        0.06666666666666667,
+        0.08333333333333333,
+        0.09999999999999999
+      ],
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "velocities": [
+        -4
+      ],
+      "facings": [
+        -1
+      ]
+    }
+  },
+  "pause": {
+    "mechanism": "GameCanvas real sessionPaused prop through root.render; stable stage/team props and engine instance",
+    "before": {
+      "state": "idle",
+      "stateElapsed": 0.2833333333333333,
+      "x": 448,
+      "y": 350,
+      "vx": 0,
+      "vy": 0,
+      "hp": 105
+    },
+    "after": {
+      "state": "idle",
+      "stateElapsed": 0.2833333333333333,
+      "x": 448,
+      "y": 350,
+      "vx": 0,
+      "vy": 0,
+      "hp": 105
+    },
+    "durationMs": 300,
+    "unchanged": true
+  },
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "screenshot": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-movement.png",
+  "schemaVersion": 1,
+  "startedAt": "2026-10-25T09:06:58.512Z",
+  "browserClosedAt": "2026-10-25T09:07:05.644Z",
+  "finishedAt": "2026-10-25T09:07:05.668Z",
+  "harness": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-movement-browser.mjs",
+  "harnessSha256": "2a7dfcf5c065f1b04a909c47c65f10a61db9cc54a7e56b2e60b866adfd15dec0",
+  "preliminary": false,
+  "phase": "final",
+  "allBrowserWindowsClosed": true,
+  "contextsBeforeClose": 1,
+  "pagesBeforeClose": 1,
+  "browserConnectedAfterClose": false,
+  "resourcesBefore": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 140197,
+      "sha256": "02677051a5f04afffc210ad42f01d73254222cf02cf54b6a4c680cf20578e4ce"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 117284,
+      "sha256": "dbe2a3f9cf4a8f4477bfcebfbaa930feb4ae096d70870bf85d4aa28533dd09ff"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 66467,
+      "sha256": "142dbe443dac0786e1b6ac98bffbb092d9b2a8069d133ff21bf8053f4e67cf24"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 40544,
+      "sha256": "cb0e5dc22c2c914a82c0b1975a5a888257e232a6180dfa979440119197cea384"
+    },
+    {
+      "path": "src/game/melee/meleeCombatRuntime.js",
+      "bytes": 17966,
+      "sha256": "e230bb9379a25f370b950695e43ff49a08d644aeea0f6321818e9c20533b75cd"
+    },
+    {
+      "path": "src/game/melee/meleeStateMachine.js",
+      "bytes": 7161,
+      "sha256": "e6e26340a9b7b8bd5c045683629598ce0897bd020084b54e90f2fd258cffb647"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/aragornMeleeManifest.js",
+      "bytes": 555,
+      "sha256": "9ae5fdc2d2d7ccd786ade059b9c2bc879804a801be65f4a9c53800d770de38dd"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 15687,
+      "sha256": "2165bfea4f2da3034b6a37df42503094c03d67c26f497c99104211833f0536bd"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "bytes": 7828,
+      "sha256": "f3e98cc92719b64f202899d6a8d355ad93cb8c24ceccf4ea472d3be29ef8bfa4"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "bytes": 6359,
+      "sha256": "47b8aacd586456ded72da70f08364a8d41fb6b1336d2f586dc3796163d890949"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave14.js",
+      "bytes": 9593,
+      "sha256": "70e83f125e973f16afa45471efabd3e7cb99e3dd9107440c5e6803708ea815e5"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave14PartA.generated.json",
+      "bytes": 2456,
+      "sha256": "f6e2d9a6cb35d9218a01936c6ef20756fc4738ce2ced53fad59c1ff823469f23"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave14PartA.generated.json",
+      "bytes": 1143111,
+      "sha256": "18309282eda37709c1ad4604ddec5f07c8b5fbf1131109e1efc6cf0d0dc66218"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave14PartA.generated.json",
+      "bytes": 599945,
+      "sha256": "95e1bee597f5d19f1039f3ca918e4723f1ca5cf77356b5e9a16896f085ee931f"
+    },
+    {
+      "path": "src/game/combat/combatSourceDefinitionsWave14.js",
+      "bytes": 31030,
+      "sha256": "6c1ee9ed34fe60afe7c8f1ebe2535d338f7fec725a1604672487d217658f7147"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesWave14Definitions.js",
+      "bytes": 11092,
+      "sha256": "18ad2d428cf652a7d65f9e5093366bcd13fb442033bd3add7993f4d00c85f222"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/source-row-review.json",
+      "bytes": 46605,
+      "sha256": "5a91b1f3325abdf643159b48bfb1cb6903cbe60c6db01e163afc5ee901ea5c7f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/native-aragorn-segmentation.mjs",
+      "bytes": 6268,
+      "sha256": "43b78edbaffc7ce49251083e32a6053325fe7efbc41831403d51959df3e59cd5"
+    },
+    {
+      "path": "src/game/combat/aragornMeleeMotion.generated.json",
+      "bytes": 257126,
+      "sha256": "b1ae06c73f638a75ada1ec015ef99b569151d787fbe5be10b6c7051cab4ff179"
+    },
+    {
+      "path": "src/game/combat/aragornMeleeCombat.generated.json",
+      "bytes": 237705,
+      "sha256": "fcc2ae5cdcf3dd3e70b3c07dc92d86b56188ec8492799c2962573f29677e8511"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/packing-plan.json",
+      "bytes": 32411,
+      "sha256": "2281502488d46acb0d9321495e4dddcdf8c0a2c937b4800d7035409059348732"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/native-hand-points.json",
+      "bytes": 2309,
+      "sha256": "cc506376a77de74ff938a86cf686aa8b632892c6ff4df7e407d9f055e9bb569e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/hand-measurements.json",
+      "bytes": 13889,
+      "sha256": "fce878e621bc8144587d3470cbf870123481ea7bd75d52a7a6b9cdfb687a82a6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/actual-tool-calls.json",
+      "bytes": 85624,
+      "sha256": "ebaa466987f88d5342ac9bc2f2092dde1e82d47b7492ae3a58331119ca192288"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/build-native-aragorn-atlases.mjs",
+      "bytes": 13479,
+      "sha256": "9d82f406c33bf06c023268389bf98c954bd9594ee74119d3e31154bc3ee0d52f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/normalize-aragorn-atlases.mjs",
+      "bytes": 361,
+      "sha256": "43de5258893e4d8770ceba4a483c430dd97f02b3b85b4d0022ff6e7b10419b43"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/measure-aragorn-native-hands.mjs",
+      "bytes": 3876,
+      "sha256": "5d6d75796ade126ed46f65ba7d61b01041842bd465c9e16e9bbc22ac0daddca4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/verify-aragorn-atlases.mjs",
+      "bytes": 10540,
+      "sha256": "65aad1ad60dff3a571fc7ead4aa2c4e8d1fb17c9b90f8479249a6edb4c3a8a87"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-identity-reference-original.png",
+      "bytes": 2287733,
+      "sha256": "962df8aaa90c51dc5af021b1c9da9b14ec3e2f2fb0347bf98955fabe8bbcaf62"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+      "bytes": 2309320,
+      "sha256": "c0186ce1b565daead2beb78b06bc92da777cde74b63076526cca9a880333da58"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.prompt.txt",
+      "bytes": 4923,
+      "sha256": "dcdb7d125667545ae41b138566d9271e53f33c40bfe166f130f71fa94c0f13bf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.native.png",
+      "bytes": 2316559,
+      "sha256": "c6b018d6f663b4d684a6e6675501ce6759fe924c5a9098fca19854bc822dbdfa"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.prompt.txt",
+      "bytes": 4922,
+      "sha256": "f582b7d29b7ece88b53e58b9b706cc2c47393b0af60cf90b6a8231428d0bb61b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png",
+      "bytes": 2383199,
+      "sha256": "84ab1b8d8634f147b9bdab703561e8affe22ea6aecc6228fa3fd60ada248b4b7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.prompt.txt",
+      "bytes": 5004,
+      "sha256": "7ca5d6b46ec62202b56c7f229e8f3f1fa3a989d31bafb944bf9b8a87df71d579"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.native.png",
+      "bytes": 2436875,
+      "sha256": "6a1f56b4a6e4bb30f4a961f52c78de77f542a4fbfafb3fe8fbf1190d84f69790"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.prompt.txt",
+      "bytes": 5188,
+      "sha256": "9cb4fc4bd93fe2f08b3dcec5be7dc3954a2aec85aa25fdcf1ac44513d46912fa"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png",
+      "bytes": 2406486,
+      "sha256": "4e998ce85564dd4366e9be2d47187b1ef77e6895a608f1c62ebd6f354aad769b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.prompt.txt",
+      "bytes": 5214,
+      "sha256": "f1ac6c6745a54fac6587fe05f4a0cd8f96aba58c9239c0762e4997e0801b1b4e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+      "bytes": 2282478,
+      "sha256": "ef52b18b4e03050d333232cdbf8b9e1d61f8cb398c2fd2ce87f4f443ef64cdca"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.prompt.txt",
+      "bytes": 5999,
+      "sha256": "6bf803854d25ab1408b64f81597f2436204dd4b8ba22f52fb9b97c2266884309"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-movement.native.png",
+      "bytes": 1545065,
+      "sha256": "6aaaf0b1e1c785adcadbe24f97e71f1011b1b3ab1a50db54c057312b0c5c1859"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-movement.prompt.txt",
+      "bytes": 3631,
+      "sha256": "52b74ffec22b23ed035c5aef950ce5affb8fdaf1a827bf13cf3613ce7f57a834"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-complement.native.png",
+      "bytes": 1699148,
+      "sha256": "319a287e8d2e065bb16b5aae77a5cd24e321aadcd8cdb9b7ca2ff090804b38b3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-complement.prompt.txt",
+      "bytes": 3791,
+      "sha256": "99b08285fc09bb237a3729c0de45d2cc45a8717ba0f559e0da9d52a03e4be69d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-ledge.native.png",
+      "bytes": 1455523,
+      "sha256": "947c6ac54f7fa62cdfe96ad96a7465c86b3c83b2ed3f62894e44a3c630419aca"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-ledge.prompt.txt",
+      "bytes": 4001,
+      "sha256": "da014933e1988a0ed41462c7b31b92bc4d5893ad32333a6d09b0326f58ff3274"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-airborne.native.png",
+      "bytes": 2166830,
+      "sha256": "4e058f89f9bc0193d096cbb8952f7546a5c5fb5e54a4f863c7b40bc1a99eef39"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-airborne.prompt.txt",
+      "bytes": 3468,
+      "sha256": "32e4d0e3d2af428094037a9aa6e684f5cba3b96da408aa3ca1246df0847f5b66"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-motion-a.png",
+      "bytes": 1251447,
+      "sha256": "0501abda47352551f69d8bcceebdcd335652ee29faaade4d52882fdf8390c2db"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-motion-b.png",
+      "bytes": 1129557,
+      "sha256": "aeaa2536d055acabc0fb73cc5b4790056fac133f59d5879175ea9017cd30294e"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-defense.png",
+      "bytes": 1052017,
+      "sha256": "f0dea22268b4ad9f39aeb994c365c304b0a832145e0a5fb18a0ccf7c02ddb90d"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-combat-a.png",
+      "bytes": 1142387,
+      "sha256": "123fd94b6245067619137ddbd80778cd00f2d472c9d5032b57b15091e828a855"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-combat-b.png",
+      "bytes": 1119868,
+      "sha256": "27d23bbea1bbc8a90649107c11e4d3aa3ff33503b74a0fc6974721ed63feaeb1"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-ledge.png",
+      "bytes": 755986,
+      "sha256": "542a3fa0b52aadd39c1b19793d6174eb5605ee52b596521011e90d2e8ba51641"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave14-part-a/aragorn_lotr.png",
+      "bytes": 509628,
+      "sha256": "e58ce24aaf364c8d1c41e949a70101d4395ada0b08adf38effae46766d6fcdfe"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave14-part-a/aragorn_lotr.png",
+      "bytes": 256017,
+      "sha256": "899a29dba25b9b075214c4f70a38c367ae5e1644e3d4624fdf00fd480be90974"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-core-browser.mjs",
+      "bytes": 8250,
+      "sha256": "210507c53722c696f9939252eabac70696fbad953d7a28270a2b5c20d37c69f1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-movement-browser.mjs",
+      "bytes": 9491,
+      "sha256": "2a7dfcf5c065f1b04a909c47c65f10a61db9cc54a7e56b2e60b866adfd15dec0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-super-browser.mjs",
+      "bytes": 10729,
+      "sha256": "4ede8b627d7b730d2299de53bf81213835f044b28d4529d8c1e521a629f45ca7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-physical-ledge-browser.mjs",
+      "bytes": 9997,
+      "sha256": "863fa2ec20a9129a1ad0e4a019306a484a757329d82eb2ad15e0944bd87515e5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-browser-receipt.mjs",
+      "bytes": 2517,
+      "sha256": "62da48417a0f8e877755ea994bf7b73f977ea9539484a596ea73dd7d52a3bf0c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/run-aragorn-browser-checks.mjs",
+      "bytes": 3825,
+      "sha256": "907b9997ca15d58759da6bd4dc07c77213b39ac8946b570c617e98a6022b875b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/collect-aragorn-evidence.mjs",
+      "bytes": 12627,
+      "sha256": "cffed491caf666d1426e63a0ef109ce9067e03ae17eb0faaf6e055992ddadf37"
+    }
+  ],
+  "resourcesAfter": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 140197,
+      "sha256": "02677051a5f04afffc210ad42f01d73254222cf02cf54b6a4c680cf20578e4ce"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 117284,
+      "sha256": "dbe2a3f9cf4a8f4477bfcebfbaa930feb4ae096d70870bf85d4aa28533dd09ff"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 66467,
+      "sha256": "142dbe443dac0786e1b6ac98bffbb092d9b2a8069d133ff21bf8053f4e67cf24"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 40544,
+      "sha256": "cb0e5dc22c2c914a82c0b1975a5a888257e232a6180dfa979440119197cea384"
+    },
+    {
+      "path": "src/game/melee/meleeCombatRuntime.js",
+      "bytes": 17966,
+      "sha256": "e230bb9379a25f370b950695e43ff49a08d644aeea0f6321818e9c20533b75cd"
+    },
+    {
+      "path": "src/game/melee/meleeStateMachine.js",
+      "bytes": 7161,
+      "sha256": "e6e26340a9b7b8bd5c045683629598ce0897bd020084b54e90f2fd258cffb647"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/aragornMeleeManifest.js",
+      "bytes": 555,
+      "sha256": "9ae5fdc2d2d7ccd786ade059b9c2bc879804a801be65f4a9c53800d770de38dd"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 15687,
+      "sha256": "2165bfea4f2da3034b6a37df42503094c03d67c26f497c99104211833f0536bd"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "bytes": 7828,
+      "sha256": "f3e98cc92719b64f202899d6a8d355ad93cb8c24ceccf4ea472d3be29ef8bfa4"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "bytes": 6359,
+      "sha256": "47b8aacd586456ded72da70f08364a8d41fb6b1336d2f586dc3796163d890949"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave14.js",
+      "bytes": 9593,
+      "sha256": "70e83f125e973f16afa45471efabd3e7cb99e3dd9107440c5e6803708ea815e5"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave14PartA.generated.json",
+      "bytes": 2456,
+      "sha256": "f6e2d9a6cb35d9218a01936c6ef20756fc4738ce2ced53fad59c1ff823469f23"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave14PartA.generated.json",
+      "bytes": 1143111,
+      "sha256": "18309282eda37709c1ad4604ddec5f07c8b5fbf1131109e1efc6cf0d0dc66218"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave14PartA.generated.json",
+      "bytes": 599945,
+      "sha256": "95e1bee597f5d19f1039f3ca918e4723f1ca5cf77356b5e9a16896f085ee931f"
+    },
+    {
+      "path": "src/game/combat/combatSourceDefinitionsWave14.js",
+      "bytes": 31030,
+      "sha256": "6c1ee9ed34fe60afe7c8f1ebe2535d338f7fec725a1604672487d217658f7147"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesWave14Definitions.js",
+      "bytes": 11092,
+      "sha256": "18ad2d428cf652a7d65f9e5093366bcd13fb442033bd3add7993f4d00c85f222"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/source-row-review.json",
+      "bytes": 46605,
+      "sha256": "5a91b1f3325abdf643159b48bfb1cb6903cbe60c6db01e163afc5ee901ea5c7f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/native-aragorn-segmentation.mjs",
+      "bytes": 6268,
+      "sha256": "43b78edbaffc7ce49251083e32a6053325fe7efbc41831403d51959df3e59cd5"
+    },
+    {
+      "path": "src/game/combat/aragornMeleeMotion.generated.json",
+      "bytes": 257126,
+      "sha256": "b1ae06c73f638a75ada1ec015ef99b569151d787fbe5be10b6c7051cab4ff179"
+    },
+    {
+      "path": "src/game/combat/aragornMeleeCombat.generated.json",
+      "bytes": 237705,
+      "sha256": "fcc2ae5cdcf3dd3e70b3c07dc92d86b56188ec8492799c2962573f29677e8511"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/packing-plan.json",
+      "bytes": 32411,
+      "sha256": "2281502488d46acb0d9321495e4dddcdf8c0a2c937b4800d7035409059348732"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/native-hand-points.json",
+      "bytes": 2309,
+      "sha256": "cc506376a77de74ff938a86cf686aa8b632892c6ff4df7e407d9f055e9bb569e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/hand-measurements.json",
+      "bytes": 13889,
+      "sha256": "fce878e621bc8144587d3470cbf870123481ea7bd75d52a7a6b9cdfb687a82a6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/actual-tool-calls.json",
+      "bytes": 85624,
+      "sha256": "ebaa466987f88d5342ac9bc2f2092dde1e82d47b7492ae3a58331119ca192288"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/build-native-aragorn-atlases.mjs",
+      "bytes": 13479,
+      "sha256": "9d82f406c33bf06c023268389bf98c954bd9594ee74119d3e31154bc3ee0d52f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/normalize-aragorn-atlases.mjs",
+      "bytes": 361,
+      "sha256": "43de5258893e4d8770ceba4a483c430dd97f02b3b85b4d0022ff6e7b10419b43"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/measure-aragorn-native-hands.mjs",
+      "bytes": 3876,
+      "sha256": "5d6d75796ade126ed46f65ba7d61b01041842bd465c9e16e9bbc22ac0daddca4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/verify-aragorn-atlases.mjs",
+      "bytes": 10540,
+      "sha256": "65aad1ad60dff3a571fc7ead4aa2c4e8d1fb17c9b90f8479249a6edb4c3a8a87"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-identity-reference-original.png",
+      "bytes": 2287733,
+      "sha256": "962df8aaa90c51dc5af021b1c9da9b14ec3e2f2fb0347bf98955fabe8bbcaf62"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+      "bytes": 2309320,
+      "sha256": "c0186ce1b565daead2beb78b06bc92da777cde74b63076526cca9a880333da58"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.prompt.txt",
+      "bytes": 4923,
+      "sha256": "dcdb7d125667545ae41b138566d9271e53f33c40bfe166f130f71fa94c0f13bf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.native.png",
+      "bytes": 2316559,
+      "sha256": "c6b018d6f663b4d684a6e6675501ce6759fe924c5a9098fca19854bc822dbdfa"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.prompt.txt",
+      "bytes": 4922,
+      "sha256": "f582b7d29b7ece88b53e58b9b706cc2c47393b0af60cf90b6a8231428d0bb61b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png",
+      "bytes": 2383199,
+      "sha256": "84ab1b8d8634f147b9bdab703561e8affe22ea6aecc6228fa3fd60ada248b4b7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.prompt.txt",
+      "bytes": 5004,
+      "sha256": "7ca5d6b46ec62202b56c7f229e8f3f1fa3a989d31bafb944bf9b8a87df71d579"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.native.png",
+      "bytes": 2436875,
+      "sha256": "6a1f56b4a6e4bb30f4a961f52c78de77f542a4fbfafb3fe8fbf1190d84f69790"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.prompt.txt",
+      "bytes": 5188,
+      "sha256": "9cb4fc4bd93fe2f08b3dcec5be7dc3954a2aec85aa25fdcf1ac44513d46912fa"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png",
+      "bytes": 2406486,
+      "sha256": "4e998ce85564dd4366e9be2d47187b1ef77e6895a608f1c62ebd6f354aad769b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.prompt.txt",
+      "bytes": 5214,
+      "sha256": "f1ac6c6745a54fac6587fe05f4a0cd8f96aba58c9239c0762e4997e0801b1b4e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+      "bytes": 2282478,
+      "sha256": "ef52b18b4e03050d333232cdbf8b9e1d61f8cb398c2fd2ce87f4f443ef64cdca"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.prompt.txt",
+      "bytes": 5999,
+      "sha256": "6bf803854d25ab1408b64f81597f2436204dd4b8ba22f52fb9b97c2266884309"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-movement.native.png",
+      "bytes": 1545065,
+      "sha256": "6aaaf0b1e1c785adcadbe24f97e71f1011b1b3ab1a50db54c057312b0c5c1859"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-movement.prompt.txt",
+      "bytes": 3631,
+      "sha256": "52b74ffec22b23ed035c5aef950ce5affb8fdaf1a827bf13cf3613ce7f57a834"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-complement.native.png",
+      "bytes": 1699148,
+      "sha256": "319a287e8d2e065bb16b5aae77a5cd24e321aadcd8cdb9b7ca2ff090804b38b3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-complement.prompt.txt",
+      "bytes": 3791,
+      "sha256": "99b08285fc09bb237a3729c0de45d2cc45a8717ba0f559e0da9d52a03e4be69d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-ledge.native.png",
+      "bytes": 1455523,
+      "sha256": "947c6ac54f7fa62cdfe96ad96a7465c86b3c83b2ed3f62894e44a3c630419aca"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-ledge.prompt.txt",
+      "bytes": 4001,
+      "sha256": "da014933e1988a0ed41462c7b31b92bc4d5893ad32333a6d09b0326f58ff3274"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-airborne.native.png",
+      "bytes": 2166830,
+      "sha256": "4e058f89f9bc0193d096cbb8952f7546a5c5fb5e54a4f863c7b40bc1a99eef39"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-airborne.prompt.txt",
+      "bytes": 3468,
+      "sha256": "32e4d0e3d2af428094037a9aa6e684f5cba3b96da408aa3ca1246df0847f5b66"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-motion-a.png",
+      "bytes": 1251447,
+      "sha256": "0501abda47352551f69d8bcceebdcd335652ee29faaade4d52882fdf8390c2db"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-motion-b.png",
+      "bytes": 1129557,
+      "sha256": "aeaa2536d055acabc0fb73cc5b4790056fac133f59d5879175ea9017cd30294e"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-defense.png",
+      "bytes": 1052017,
+      "sha256": "f0dea22268b4ad9f39aeb994c365c304b0a832145e0a5fb18a0ccf7c02ddb90d"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-combat-a.png",
+      "bytes": 1142387,
+      "sha256": "123fd94b6245067619137ddbd80778cd00f2d472c9d5032b57b15091e828a855"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-combat-b.png",
+      "bytes": 1119868,
+      "sha256": "27d23bbea1bbc8a90649107c11e4d3aa3ff33503b74a0fc6974721ed63feaeb1"
+    },
+    {
+      "path": "public/sprites/generated/melee-aragorn-wave14/aragorn-ledge.png",
+      "bytes": 755986,
+      "sha256": "542a3fa0b52aadd39c1b19793d6174eb5605ee52b596521011e90d2e8ba51641"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave14-part-a/aragorn_lotr.png",
+      "bytes": 509628,
+      "sha256": "e58ce24aaf364c8d1c41e949a70101d4395ada0b08adf38effae46766d6fcdfe"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave14-part-a/aragorn_lotr.png",
+      "bytes": 256017,
+      "sha256": "899a29dba25b9b075214c4f70a38c367ae5e1644e3d4624fdf00fd480be90974"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-core-browser.mjs",
+      "bytes": 8250,
+      "sha256": "210507c53722c696f9939252eabac70696fbad953d7a28270a2b5c20d37c69f1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-movement-browser.mjs",
+      "bytes": 9491,
+      "sha256": "2a7dfcf5c065f1b04a909c47c65f10a61db9cc54a7e56b2e60b866adfd15dec0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-super-browser.mjs",
+      "bytes": 10729,
+      "sha256": "4ede8b627d7b730d2299de53bf81213835f044b28d4529d8c1e521a629f45ca7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-physical-ledge-browser.mjs",
+      "bytes": 9997,
+      "sha256": "863fa2ec20a9129a1ad0e4a019306a484a757329d82eb2ad15e0944bd87515e5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/aragorn-browser-receipt.mjs",
+      "bytes": 2517,
+      "sha256": "62da48417a0f8e877755ea994bf7b73f977ea9539484a596ea73dd7d52a3bf0c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/run-aragorn-browser-checks.mjs",
+      "bytes": 3825,
+      "sha256": "907b9997ca15d58759da6bd4dc07c77213b39ac8946b570c617e98a6022b875b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/browser/collect-aragorn-evidence.mjs",
+      "bytes": 12627,
+      "sha256": "cffed491caf666d1426e63a0ef109ce9067e03ae17eb0faaf6e055992ddadf37"
+    }
+  ],
+  "productionInputsStableDuringRun": true,
+  "receiptOrigin": "await-browser-close-and-post-close-input-hash",
+  "source1to1Verified": false
+}

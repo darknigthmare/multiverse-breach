@@ -1,0 +1,987 @@
+{
+  "heroId": "aragorn_lotr",
+  "registryStem": "aragorn",
+  "universe": "The Lord of the Rings",
+  "sourceWork": "The Fellowship of the Ring (2001), Strider before Amon Hen",
+  "sourceReference": "https://tolkiengateway.net/wiki/Aragorn",
+  "date": "2026-10-25",
+  "archiveDir": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources",
+  "outputDir": "public/sprites/generated/melee-aragorn-wave14",
+  "reference": {
+    "asset": "docs/combat-fidelity-wave14-2026-10-25/part-a/sources/aragorn_lotr-native-original.png",
+    "savedImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-identity-reference-original.png"
+  },
+  "correctionId": null,
+  "sources": [
+    {
+      "id": "aragorn-motion-a",
+      "image": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "discarded-jumpRise",
+        "discarded-jumpApex",
+        "discarded-fall",
+        "reservedUprightStudyA",
+        "reservedUprightStudyB",
+        "reservedCloakStudy",
+        "reservedBeltStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          7,
+          8,
+          8,
+          8
+        ],
+        "missingColumnsByRow": {
+          "2": [
+            7
+          ]
+        }
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "reservedUprightStudyA",
+        "row": 8,
+        "column": 0,
+        "bodyBounds": {
+          "x": 44,
+          "y": 669,
+          "width": 89,
+          "height": 162
+        },
+        "nativeStandingBodyHeight": 162,
+        "raisedArmsExcluded": true,
+        "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions."
+      }
+    },
+    {
+      "id": "aragorn-motion-b",
+      "image": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.native.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "discarded-crouchCharge",
+        "taunt1",
+        "hitStun",
+        "reservedUprightStudyA",
+        "reservedUprightStudyB",
+        "reservedCloakStudy",
+        "reservedBeltStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "reservedUprightStudyA",
+        "row": 8,
+        "column": 0,
+        "bodyBounds": {
+          "x": 60,
+          "y": 694,
+          "width": 88,
+          "height": 153
+        },
+        "nativeStandingBodyHeight": 153,
+        "raisedArmsExcluded": true,
+        "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions."
+      }
+    },
+    {
+      "id": "aragorn-defense",
+      "image": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "discarded-shieldExit",
+        "discarded-dead",
+        "defeat",
+        "reservedUprightStudyA",
+        "reservedUprightStudyB",
+        "reservedCloakStudy",
+        "reservedBeltStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          7,
+          8,
+          8
+        ],
+        "missingColumnsByRow": {
+          "3": [
+            3
+          ]
+        }
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "reservedUprightStudyA",
+        "row": 8,
+        "column": 0,
+        "bodyBounds": {
+          "x": 59,
+          "y": 665,
+          "width": 95,
+          "height": 162
+        },
+        "nativeStandingBodyHeight": 162,
+        "raisedArmsExcluded": true,
+        "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions."
+      }
+    },
+    {
+      "id": "aragorn-combat-a",
+      "image": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.native.png",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery",
+        "reservedUprightStudyA",
+        "reservedUprightStudyB",
+        "reservedCloakStudy",
+        "reservedBeltStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "reservedUprightStudyA",
+        "row": 8,
+        "column": 0,
+        "bodyBounds": {
+          "x": 42,
+          "y": 701,
+          "width": 101,
+          "height": 157
+        },
+        "nativeStandingBodyHeight": 157,
+        "raisedArmsExcluded": true,
+        "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions."
+      }
+    },
+    {
+      "id": "aragorn-combat-b",
+      "image": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "discarded-aerialForward",
+        "discarded-aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack",
+        "reservedUprightStudyA",
+        "reservedUprightStudyB",
+        "reservedCloakStudy",
+        "reservedBeltStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "reservedUprightStudyA",
+        "row": 8,
+        "column": 0,
+        "bodyBounds": {
+          "x": 41,
+          "y": 682,
+          "width": 96,
+          "height": 162
+        },
+        "nativeStandingBodyHeight": 162,
+        "raisedArmsExcluded": true,
+        "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions."
+      }
+    },
+    {
+      "id": "aragorn-ledge",
+      "image": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+      "states": [
+        "discarded-ledgeCatch",
+        "discarded-ledgeHang",
+        "discarded-ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump",
+        "uprightCalibration",
+        "reservedGripStudy",
+        "reservedScabbardStudy",
+        "reservedUprightStudyA",
+        "reservedUprightStudyB",
+        "reservedCloakStudy",
+        "reservedBeltStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "reservedUprightStudyA",
+        "row": 8,
+        "column": 0,
+        "bodyBounds": {
+          "x": 48,
+          "y": 706,
+          "width": 94,
+          "height": 158
+        },
+        "nativeStandingBodyHeight": 158,
+        "raisedArmsExcluded": true,
+        "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions."
+      }
+    },
+    {
+      "id": "aragorn-corrective-movement",
+      "image": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-movement.native.png",
+      "states": [
+        "jumpRise",
+        "crouchCharge",
+        "shieldExit",
+        "uprightCalibration"
+      ],
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-movement.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "uprightCalibration",
+        "row": 3,
+        "column": 0,
+        "bodyBounds": {
+          "x": 69,
+          "y": 917,
+          "width": 171,
+          "height": 291
+        },
+        "nativeStandingBodyHeight": 291,
+        "raisedArmsExcluded": true,
+        "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions."
+      }
+    },
+    {
+      "id": "aragorn-corrective-complement",
+      "image": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-complement.native.png",
+      "states": [
+        "aerialForward",
+        "aerialDown",
+        "dead",
+        "uprightCalibration"
+      ],
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-complement.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "uprightCalibration",
+        "row": 3,
+        "column": 0,
+        "bodyBounds": {
+          "x": 62,
+          "y": 828,
+          "width": 223,
+          "height": 344
+        },
+        "nativeStandingBodyHeight": 344,
+        "raisedArmsExcluded": true,
+        "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions."
+      }
+    },
+    {
+      "id": "aragorn-corrective-ledge",
+      "image": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-ledge.native.png",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "uprightCalibration"
+      ],
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-ledge.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "uprightCalibration",
+        "row": 3,
+        "column": 0,
+        "bodyBounds": {
+          "x": 66,
+          "y": 929,
+          "width": 190,
+          "height": 287
+        },
+        "nativeStandingBodyHeight": 287,
+        "raisedArmsExcluded": true,
+        "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions."
+      }
+    },
+    {
+      "id": "aragorn-corrective-airborne",
+      "image": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-airborne.native.png",
+      "states": [
+        "jumpApex",
+        "fall",
+        "uprightCalibration"
+      ],
+      "promptFile": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-corrective-airborne.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "uprightCalibration",
+        "row": 2,
+        "column": 0,
+        "bodyBounds": {
+          "x": 106,
+          "y": 677,
+          "width": 186,
+          "height": 314
+        },
+        "nativeStandingBodyHeight": 314,
+        "raisedArmsExcluded": true,
+        "reason": "Manually inspected complete upright crown-to-boot-sole interval. Bare hands are lowered and ranger longsword sheathed; no raised hand, blade, scabbard or VFX determines stature. A single source-wide scale preserves crouched, hanging, prone and aerial proportions."
+      }
+    }
+  ],
+  "atlases": [
+    {
+      "id": "aragorn-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "selection": {
+        "idle": {
+          "sourceId": "aragorn-motion-a",
+          "row": 0
+        },
+        "walk": {
+          "sourceId": "aragorn-motion-a",
+          "row": 1
+        },
+        "run": {
+          "sourceId": "aragorn-motion-a",
+          "row": 2
+        },
+        "turn": {
+          "sourceId": "aragorn-motion-a",
+          "row": 3
+        },
+        "jumpStart": {
+          "sourceId": "aragorn-motion-a",
+          "row": 4
+        },
+        "jumpRise": {
+          "sourceId": "aragorn-corrective-movement",
+          "row": 0
+        },
+        "jumpApex": {
+          "sourceId": "aragorn-corrective-airborne",
+          "row": 0
+        },
+        "fall": {
+          "sourceId": "aragorn-corrective-airborne",
+          "row": 1
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+          "nativeRow": 5,
+          "poses": 3,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+          "nativeRow": 6,
+          "poses": 4,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+          "nativeRow": 7,
+          "poses": 4,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+          "nativeRow": 8,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+          "nativeRow": 9,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+          "nativeRow": 10,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-a.native.png",
+          "nativeRow": 11,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        }
+      ]
+    },
+    {
+      "id": "aragorn-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "selection": {
+        "fastFall": {
+          "sourceId": "aragorn-motion-b",
+          "row": 0
+        },
+        "land": {
+          "sourceId": "aragorn-motion-b",
+          "row": 1
+        },
+        "crouchEnter": {
+          "sourceId": "aragorn-motion-b",
+          "row": 2
+        },
+        "crouchIdle": {
+          "sourceId": "aragorn-motion-b",
+          "row": 3
+        },
+        "crouchExit": {
+          "sourceId": "aragorn-motion-b",
+          "row": 4
+        },
+        "crouchCharge": {
+          "sourceId": "aragorn-corrective-movement",
+          "row": 1
+        },
+        "taunt1": {
+          "sourceId": "aragorn-motion-b",
+          "row": 6
+        },
+        "hitStun": {
+          "sourceId": "aragorn-motion-b",
+          "row": 7
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.native.png",
+          "nativeRow": 5,
+          "poses": 4,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.native.png",
+          "nativeRow": 8,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.native.png",
+          "nativeRow": 9,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.native.png",
+          "nativeRow": 10,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-motion-b.native.png",
+          "nativeRow": 11,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        }
+      ]
+    },
+    {
+      "id": "aragorn-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "selection": {
+        "shieldEnter": {
+          "sourceId": "aragorn-defense",
+          "row": 0
+        },
+        "shieldHold": {
+          "sourceId": "aragorn-defense",
+          "row": 1
+        },
+        "shieldHit": {
+          "sourceId": "aragorn-defense",
+          "row": 2
+        },
+        "perfectShield": {
+          "sourceId": "aragorn-defense",
+          "row": 3
+        },
+        "shieldBreak": {
+          "sourceId": "aragorn-defense",
+          "row": 4
+        },
+        "shieldExit": {
+          "sourceId": "aragorn-corrective-movement",
+          "row": 2
+        },
+        "dead": {
+          "sourceId": "aragorn-corrective-complement",
+          "row": 2
+        },
+        "defeat": {
+          "sourceId": "aragorn-defense",
+          "row": 7
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png",
+          "nativeRow": 5,
+          "poses": 4,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png",
+          "nativeRow": 6,
+          "poses": 3,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png",
+          "nativeRow": 8,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png",
+          "nativeRow": 9,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png",
+          "nativeRow": 10,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-defense.native.png",
+          "nativeRow": 11,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        }
+      ]
+    },
+    {
+      "id": "aragorn-combat-a",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "selection": {
+        "attackLight1": {
+          "sourceId": "aragorn-combat-a",
+          "row": 0
+        },
+        "attackLight2": {
+          "sourceId": "aragorn-combat-a",
+          "row": 1
+        },
+        "attackLight3": {
+          "sourceId": "aragorn-combat-a",
+          "row": 2
+        },
+        "crouchLight": {
+          "sourceId": "aragorn-combat-a",
+          "row": 3
+        },
+        "chargeStart": {
+          "sourceId": "aragorn-combat-a",
+          "row": 4
+        },
+        "chargeLoop": {
+          "sourceId": "aragorn-combat-a",
+          "row": 5
+        },
+        "chargeRelease": {
+          "sourceId": "aragorn-combat-a",
+          "row": 6
+        },
+        "chargeRecovery": {
+          "sourceId": "aragorn-combat-a",
+          "row": 7
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.native.png",
+          "nativeRow": 8,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.native.png",
+          "nativeRow": 9,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.native.png",
+          "nativeRow": 10,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-a.native.png",
+          "nativeRow": 11,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        }
+      ]
+    },
+    {
+      "id": "aragorn-combat-b",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "selection": {
+        "attackRecovery": {
+          "sourceId": "aragorn-combat-b",
+          "row": 0
+        },
+        "special": {
+          "sourceId": "aragorn-combat-b",
+          "row": 1
+        },
+        "aerialNeutral": {
+          "sourceId": "aragorn-combat-b",
+          "row": 2
+        },
+        "aerialForward": {
+          "sourceId": "aragorn-corrective-complement",
+          "row": 0
+        },
+        "aerialDown": {
+          "sourceId": "aragorn-corrective-complement",
+          "row": 1
+        },
+        "intro": {
+          "sourceId": "aragorn-combat-b",
+          "row": 5
+        },
+        "victory": {
+          "sourceId": "aragorn-combat-b",
+          "row": 6
+        },
+        "ledgeAttack": {
+          "sourceId": "aragorn-combat-b",
+          "row": 7
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png",
+          "nativeRow": 3,
+          "poses": 4,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png",
+          "nativeRow": 4,
+          "poses": 4,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png",
+          "nativeRow": 8,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png",
+          "nativeRow": 9,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png",
+          "nativeRow": 10,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-combat-b.native.png",
+          "nativeRow": 11,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        }
+      ]
+    },
+    {
+      "id": "aragorn-ledge",
+      "batch": "Combat",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "selection": {
+        "ledgeCatch": {
+          "sourceId": "aragorn-corrective-ledge",
+          "row": 0
+        },
+        "ledgeHang": {
+          "sourceId": "aragorn-corrective-ledge",
+          "row": 1
+        },
+        "ledgeClimb": {
+          "sourceId": "aragorn-corrective-ledge",
+          "row": 2
+        },
+        "ledgeDrop": {
+          "sourceId": "aragorn-ledge",
+          "row": 3
+        },
+        "ledgeJump": {
+          "sourceId": "aragorn-ledge",
+          "row": 4
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+          "nativeRow": 0,
+          "poses": 4,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+          "nativeRow": 1,
+          "poses": 4,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+          "nativeRow": 2,
+          "poses": 4,
+          "reason": "Original state sequence incomplete or insufficiently articulated; replaced in full by independently generated four-pose corrective."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+          "nativeRow": 5,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+          "nativeRow": 6,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+          "nativeRow": 7,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+          "nativeRow": 8,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+          "nativeRow": 9,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+          "nativeRow": 10,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/aragorn-ledge.native.png",
+          "nativeRow": 11,
+          "poses": 4,
+          "reason": "Reserved native calibration/study, never counted as a game pose."
+        }
+      ]
+    }
+  ],
+  "visualReview": {
+    "complete": true,
+    "outfit": "Adult Strider from Fellowship2001 before Amon Hen: shoulder-length dark brown hair, short beard, weathered brown leather ranger coat, dark gray-green cloak, dark trousers and leather boots.",
+    "weapons": "Conventional ranger longsword and attached dark scabbard; sheathed on locomotion and all ledge contacts with visible free bare hands. Physical cuts and forearm guards, no Anduril, Army of the Dead, magic or projectile.",
+    "limitations": [
+      "Original generated gameplay adaptation, not official film animation or certified source1:1.",
+      "Opposite facing is the runtime horizontal mirror, including costume/scabbard asymmetry.",
+      "Shared platform-fighter charge, physical guard, kicks and aerial movement are explicit gameplay adaptations."
+    ],
+    "evidence": "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/source-row-review.json"
+  },
+  "incompleteInitialSources": [
+    {
+      "id": "aragorn-motion-a",
+      "expectedBodies": 48,
+      "observedBodies": 47,
+      "missingStatePose": "jumpRise/3"
+    },
+    {
+      "id": "aragorn-defense",
+      "expectedBodies": 48,
+      "observedBodies": 47,
+      "missingStatePose": "dead/3"
+    }
+  ],
+  "rejectedSources": [
+    {
+      "id": "aragorn-motion-a-portrait-incomplete",
+      "posesRetained": 0,
+      "reason": "28 bodies instead of32; missing/mixed final state row."
+    },
+    {
+      "id": "aragorn-motion-a-landscape32-incomplete",
+      "posesRetained": 0,
+      "reason": "31 bodies instead of32; incomplete jumpRise."
+    }
+  ]
+}

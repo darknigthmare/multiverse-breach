@@ -1,0 +1,49 @@
+{
+  "passed": false,
+  "startedAt": "2026-10-25T06:26:06.940Z",
+  "failedAt": "2026-10-25T06:26:17.968Z",
+  "commands": [
+    {
+      "id": "core",
+      "command": "node docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-core-browser.mjs",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-core-browser.mjs"
+      ],
+      "cwd": "/workspace/multiverse-breach",
+      "startedAt": "2026-10-25T06:26:06.973Z",
+      "finishedAt": "2026-10-25T06:26:10.750Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "processId": 3054,
+      "receiptOrigin": "node-child-process-close-event",
+      "log": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-core.log",
+      "logSha256": "98e85a3dc9687f0a5e4fffc6764aced6bc5481706b0c9c4e7e80f1321f58063e",
+      "report": {
+        "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-core-result.json",
+        "bytes": 27682,
+        "sha256": "adf3e70d9e40cc3d458127f22def83b7fd04253e877889e58ef0b21f74992df9"
+      },
+      "browserClosedAt": "2026-10-25T06:26:10.706Z"
+    },
+    {
+      "id": "movement",
+      "command": "node docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-movement-browser.mjs",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-movement-browser.mjs"
+      ],
+      "cwd": "/workspace/multiverse-breach",
+      "startedAt": "2026-10-25T06:26:10.755Z",
+      "finishedAt": "2026-10-25T06:26:17.968Z",
+      "exitCode": 1,
+      "signal": null,
+      "spawnError": null,
+      "processId": 3192,
+      "receiptOrigin": "node-child-process-close-event",
+      "log": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-movement.log",
+      "logSha256": "19a09e63243510abba3952648fdd795699847b6d4e2376b7abe1efa2c0eab493"
+    }
+  ]
+}

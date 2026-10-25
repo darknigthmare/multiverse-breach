@@ -1,0 +1,16 @@
+
+> lively-darwin@0.0.0 test:cosmetics
+> node --test scripts/cosmeticVisualCatalog.test.mjs
+
+✔ generated runtime catalog matches visually accepted packs on disk (55.332342ms)
+✔ scanner excludes unreviewed packs and retains an accepted pilot P3 override (4.128406ms)
+✔ scanner rejects a stale visual acceptance fingerprint (3.384111ms)
+✔ catalog check does not require 380 packs unless explicitly requested (83.533117ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 232.39611

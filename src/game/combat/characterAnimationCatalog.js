@@ -1,3 +1,11 @@
+import wave14A from './characterAnimationsWave14PartA.generated.json' with { type: 'json' };
+import wave14B from './characterAnimationsWave14PartB.generated.json' with { type: 'json' };
+import wave13B from './characterAnimationsWave13PartB.generated.json' with { type: 'json' };
+import wave13A from './characterAnimationsWave13PartA.generated.json' with { type: 'json' };
+import wave12C from './characterAnimationsWave12PartC.generated.json' with { type: 'json' };
+import wave12D from './characterAnimationsWave12PartD.generated.json' with { type: 'json' };
+import wave12A from './characterAnimationsWave12PartA.generated.json' with { type: 'json' };
+import wave12B from './characterAnimationsWave12PartB.generated.json' with { type: 'json' };
 import wave11A from './characterAnimationsWave11PartA.generated.json' with { type: 'json' };
 import wave11B from './characterAnimationsWave11PartB.generated.json' with { type: 'json' };
 import wave11C from './characterAnimationsWave11PartC.generated.json' with { type: 'json' };
@@ -43,7 +51,7 @@ import wave10D from './characterAnimationsWave10PartD.generated.json' with { typ
 
 const phaseNames = new Set(['intro', 'outro', 'roundVictory', 'roundDefeat', 'fatality', 'victory', 'defeat', 'super']);
 const assets = new Map();
-for (const entry of [...registry.entries, ...wave2A.entries, ...wave2B.entries, ...wave3A.entries, ...wave3B.entries, ...wave3C.entries, ...wave4A.entries, ...wave4B.entries, ...wave4C.entries, ...wave5A.entries, ...wave5B.entries, ...wave5C.entries, ...wave6A.entries, ...wave6B.entries, ...wave6C.entries, ...wave7A.entries, ...wave7B.entries, ...wave7C.entries, ...wave8A.entries, ...wave8B.entries, ...wave8C.entries, ...wave8D.entries, ...wave9A.entries, ...wave9B.entries, ...wave9C.entries, ...wave9D.entries, ...wave10D.entries, ...wave10C.entries, ...wave10B.entries, ...wave10A.entries, ...wave11A.entries, ...wave11B.entries, ...wave11C.entries, ...wave11D.entries]) {
+for (const entry of [...registry.entries, ...wave2A.entries, ...wave2B.entries, ...wave3A.entries, ...wave3B.entries, ...wave3C.entries, ...wave4A.entries, ...wave4B.entries, ...wave4C.entries, ...wave5A.entries, ...wave5B.entries, ...wave5C.entries, ...wave6A.entries, ...wave6B.entries, ...wave6C.entries, ...wave7A.entries, ...wave7B.entries, ...wave7C.entries, ...wave8A.entries, ...wave8B.entries, ...wave8C.entries, ...wave8D.entries, ...wave9A.entries, ...wave9B.entries, ...wave9C.entries, ...wave9D.entries, ...wave10D.entries, ...wave10C.entries, ...wave10B.entries, ...wave10A.entries, ...wave11A.entries, ...wave11B.entries, ...wave11C.entries, ...wave11D.entries, ...wave12A.entries, ...wave12B.entries, ...wave12C.entries, ...wave12D.entries, ...wave13A.entries, ...wave13B.entries, ...wave14B.entries, ...wave14A.entries]) {
   const id = entry.heroId || entry.id;
   if (!id || assets.has(id)) throw new Error(`Invalid or duplicate character animation identity: ${id}`);
   const phases = Object.freeze(Object.fromEntries(Object.entries(entry.phases).map(([phase, spec]) => [phase, Object.freeze({ ...spec })])));

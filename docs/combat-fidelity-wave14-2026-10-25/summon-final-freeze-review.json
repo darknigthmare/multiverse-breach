@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "reviewedAt": "2026-10-25T09:03:57.594Z",
+  "passed": true,
+  "preliminary": false,
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave14-2026-10-25/production-freeze.json",
+    "sha256": "b022d21ad580a45b740fc4205c9feae69852139cb2f3353926c51078356a2b02",
+    "createdAt": "2026-10-25T09:01:06.683Z",
+    "files": 1664
+  },
+  "runtime": {
+    "path": "docs/combat-fidelity-wave14-2026-10-25/summon-runtime-result.json",
+    "sha256": "56279ab5fad7b8087a413fa3fbe94365334c78cddb8caa8149084a989c560f07",
+    "startedAt": "2026-10-25T09:01:22.085Z",
+    "finishedAt": "2026-10-25T09:01:31.911Z",
+    "actualFlows": 12,
+    "frozenSourceFilesMatched": 21
+  },
+  "browser": {
+    "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-result.json",
+    "sha256": "788f4caabc91ea9434e2d2acfef31188e80bfb33f2ec8e64f09d72ef6683951d",
+    "startedAt": "2026-10-25T09:01:37.431Z",
+    "finishedAt": "2026-10-25T09:03:15.834Z",
+    "actualFlows": 12,
+    "frozenSourceFilesMatched": 446,
+    "allBrowserWindowsClosed": true,
+    "browserClosedAt": "2026-10-25T09:03:15.834Z",
+    "pageErrors": []
+  },
+  "visualInspection": {
+    "method": "Direct view_image inspection of all12 final actual GameCanvas impact PNGs after the browser run. Earlier inspection covers all six original and packed16-pose atlases and all16 physical ranged anchors.",
+    "captures": [
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-aragorn-player-impact.png",
+        "sha256": "880e4714b8907d07edb9aa9a68dffebd88d38b716876a903340f8847ae2cc72f",
+        "bytes": 58353
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-aragorn-enemy-impact.png",
+        "sha256": "616f1e410fd87d12cb744a0dc6707a15badc69b84a0486b74ac504c45b5248ee",
+        "bytes": 57953
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-legolas-player-impact.png",
+        "sha256": "84d650b8376365700a7ef59601d06e8a592714ba528704f7dfce9c2e4b348ed9",
+        "bytes": 58130
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-legolas-enemy-impact.png",
+        "sha256": "7b3fc2872512b6b68dfaefb0e08d39a4b42fd04aa4221d99a4123006355a8de6",
+        "bytes": 58026
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-solaire-player-impact.png",
+        "sha256": "79281513fb16c24b1b0d27a7ef240e814dade8917f49b8d288b9527772974fd1",
+        "bytes": 46683
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-solaire-enemy-impact.png",
+        "sha256": "e038274fa21842d6e90ccc647458e22d8fa6fb6a95554054429434d8c160cb11",
+        "bytes": 46534
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-noble-six-player-impact.png",
+        "sha256": "c72cd16099c855b4b8a93146d9bdf09e15f21fccb36d0e3b4dff7b9e58bb20ba",
+        "bytes": 55630
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-noble-six-enemy-impact.png",
+        "sha256": "45437fb9753dbc6c3a982692b693c31be706f32b1ebcdc1bce8f00f7d11e899e",
+        "bytes": 55172
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-mordin-player-impact.png",
+        "sha256": "39ff4b1be7dffbd8edc44767c267191d2da8adaca5def2ce8001b5801cf50273",
+        "bytes": 54842
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-mordin-enemy-impact.png",
+        "sha256": "ede637e49c37818e03cd1740a522aca1066849b9f3664512e1752722ac878873",
+        "bytes": 54451
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-lara-player-impact.png",
+        "sha256": "5814e00d5d61ca75ad8b8f09a31d0784cf7a3316b7bdd33f9ddf959904aeacc2",
+        "bytes": 55682
+      },
+      {
+        "path": "docs/combat-fidelity-wave14-2026-10-25/summon-wave14-lara-enemy-impact.png",
+        "sha256": "190a2eccf9a6facd4a7b3d6b2c32ab2744b7d556f5d6946fa3f3eaba2ec17b67",
+        "bytes": 55746
+      }
+    ],
+    "findings": [
+      "Aragorn: complete ranger sword and cloak in both orientations; physical contact stays next to the accepted target.",
+      "Legolas and Lara: complete bows and arrows in both orientations; release belongs to the physical bow.",
+      "Solaire: white sun surcoat, closed helmet, red plume and round shield remain visible; the real guard flows produce zero HP damage.",
+      "Noble Six: default grey Mark V(B), opaque amber visor and complete MA37; physical barrel flash mirrors with the body.",
+      "Mordin: salarian head and ME2 STG suit remain visible; orange Incinerate belongs to the wrist omni-tool, with no firearm."
+    ]
+  },
+  "productionAndHarnessEditsAfterFreeze": 0,
+  "source1to1Verified": false,
+  "networkVerified": false
+}

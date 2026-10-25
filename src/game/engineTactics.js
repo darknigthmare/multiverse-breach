@@ -4,10 +4,13 @@ import { absorbBattleItemDamage, grantBattleItemShield } from './battleItemShiel
 import { SYNERGIES_DB } from './heroes';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
-import { drawGeneratedStageTextureCover, getGeneratedStageTexturePattern } from './generatedStageAssets';
-import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
+import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { faceGridUnitToward as faceUnitToward, getGridFacingVector, getGridFacingBonus } from './tacticalFacing.js';
 import { resolveTacticsEscort, getTacticsEscortPose } from './tacticsEscort.js';
+import { normalizeTacticsTerrain } from './tacticsTerrain.js';
+import { TacticsVerticalRuntime } from './tacticsVerticalRuntime.js';
+import { drawTacticsEnvironment, getTacticsEnvironmentProfile } from './tacticsEnvironmentRenderer.js';
+import { resolveCombatAbility } from './combatIdentity.js';
 
 const COMPASS_DIRECTIONS = [
   { x: 1, y: 0 },
@@ -54,6 +57,7 @@ export class EngineTactics {
     this.timers = new Set();
     this.generatedTilePattern = null;
     this.battlefield = getTacticsBattlefield(stage);
+    this.terrain = normalizeTacticsTerrain(this.battlefield);
     this.missionProfile = getTacticsMissionProfile(stage, this.battlefield);
     this.objective = this.battlefield.objective || 'rout';
     this.objectiveTarget = this.battlefield.objectiveTarget || 1;
@@ -75,11 +79,15 @@ export class EngineTactics {
     this.rows = this.battlefield.rows || 5;
     this.cols = this.battlefield.cols || 8;
     this.perspectiveSpread = 0.34;
-    this.cellW = Math.min(66, Math.floor((this.width - 140) / this.cols));
+    this.tacticsEnvironment = getTacticsEnvironmentProfile(this.battlefield, 'Tactics', this.stage);
+    this.sourceTacticsSector = this.battlefield.modeExclusive === 'Tactics'
+      && this.battlefield.formatVersion === 2 && this.tacticsEnvironment?.sourceSpecific === true;
+    const perspectiveWidth = this.sourceTacticsSector ? 1 + this.perspectiveSpread : 1;
+    this.cellW = Math.min(66, Math.floor((this.width - 140) / (this.cols * perspectiveWidth)));
     this.gridStartY = Math.max(106, Math.round(this.height * 0.31));
     this.cellH = Math.min(
       56,
-      Math.floor(Math.max(180, this.height - this.gridStartY - 24) / this.rows)
+      Math.floor(Math.max(180, this.height - this.gridStartY - (this.sourceTacticsSector ? 56 : 24)) / this.rows)
     );
     this.gridStartX = Math.round((this.width - this.cols * this.cellW) / 2);
     // Shared perspective-camera metrics keep rendering and hit-testing aligned.
@@ -90,13 +98,17 @@ export class EngineTactics {
     this.cameraZoom = 1;
     this.minCameraZoom = 0.72;
     this.maxCameraZoom = 1.85;
-    this.tiles = this.battlefield.tiles || [];
+    this.verticalTerrain = this.terrain.vertical ? new TacticsVerticalRuntime(this) : null;
+    this.tiles = this.verticalTerrain
+      ? this.terrain.surfaces.filter(surface => surface.type !== 'normal').map(surface => ({ ...surface, surfaceId: surface.id }))
+      : this.battlefield.tiles || [];
     const artifactTile = this.tiles.find(tile => tile.type === 'artifact');
     if (artifactTile) {
       this.protectedArtifact = {
         name: artifactTile.label || 'Origin Shard',
         gridX: artifactTile.x,
         gridY: artifactTile.y,
+        surfaceId: artifactTile.surfaceId,
         hp: 140,
         maxHp: 140
       };
@@ -114,6 +126,7 @@ export class EngineTactics {
         extracted: false,
         gridX: this.battlefield.escortSpawn.x,
         gridY: this.battlefield.escortSpawn.y,
+        surfaceId: this.battlefield.escortSpawn.surfaceId,
         x: 0,
         y: 0,
         currentHp: 120,
@@ -128,6 +141,7 @@ export class EngineTactics {
       stats: { ...h.stats },
       gridX: this.battlefield.heroSpawns?.[idx]?.x ?? 0,
       gridY: this.battlefield.heroSpawns?.[idx]?.y ?? idx + 1,
+      surfaceId: this.battlefield.heroSpawns?.[idx]?.surfaceId,
       x: 0, y: 0,
       state: 'idle',
       stateTimer: 0,
@@ -138,6 +152,9 @@ export class EngineTactics {
       facing: 1,
       statusEffects: { infected: 0, glitched: 0, radiated: 0 }
     }));
+    if (this.verticalTerrain && this.objective === 'extract') {
+      this.objectiveTarget = Math.max(1, Math.min(this.objectiveTarget, this.heroes.length));
+    }
 
     // Calculate Synergy Sets
     const categoriesCount = this.heroes.reduce((acc, h) => {
@@ -171,6 +188,7 @@ export class EngineTactics {
 
     // Spawning Destructible Obstacles
     this.obstacles = (this.battlefield.obstacles || []).map(item => ({ ...item }));
+    this.verticalTerrain?.bindActors();
 
     this.turnQueue = [];
     this.activeUnit = null;
@@ -274,7 +292,11 @@ export class EngineTactics {
       || { x: this.cols - 1, y: Math.floor(this.rows / 2) };
 
     if (this.singleRoster) {
-      const reservedCells = new Set([
+      const reservedCells = new Set(this.verticalTerrain ? [
+        ...this.heroes.map(hero => hero.surfaceId),
+        ...(this.battlefield.obstacles || []).map(item => item.surfaceId),
+        this.protectedArtifact?.surfaceId, this.escortUnit?.surfaceId
+      ].filter(Boolean) : [
         ...this.heroes.map(hero => `${hero.gridX},${hero.gridY}`),
         ...(this.battlefield.obstacles || []).map(obstacle => `${obstacle.gridX},${obstacle.gridY}`),
         ...(this.protectedArtifact ? [`${this.protectedArtifact.gridX},${this.protectedArtifact.gridY}`] : []),
@@ -282,10 +304,10 @@ export class EngineTactics {
       ]);
       const spawnCandidates = [];
       const appendSpawn = (spawn) => {
-        if (!spawn || !this.isInsideGrid(spawn.x, spawn.y) || this.isBlockedTile(spawn.x, spawn.y)) return;
-        const key = `${spawn.x},${spawn.y}`;
-        if (reservedCells.has(key) || spawnCandidates.some(candidate => candidate.x === spawn.x && candidate.y === spawn.y)) return;
-        spawnCandidates.push({ x: spawn.x, y: spawn.y });
+        if (!spawn || !this.isInsideGrid(spawn.x, spawn.y) || this.isBlockedTile(spawn.x, spawn.y, spawn.surfaceId)) return;
+        const key = this.verticalTerrain ? (spawn.surfaceId || this.verticalTerrain.surface(spawn)?.id) : `${spawn.x},${spawn.y}`;
+        if (reservedCells.has(key) || spawnCandidates.some(candidate => (this.verticalTerrain ? candidate.surfaceId === spawn.surfaceId && candidate.x === spawn.x && candidate.y === spawn.y : candidate.x === spawn.x && candidate.y === spawn.y))) return;
+        spawnCandidates.push({ x: spawn.x, y: spawn.y, surfaceId: spawn.surfaceId });
       };
       [...monsterSpawns, ...bossSpawns, worldBossSpawn].forEach(appendSpawn);
       for (let c = this.cols - 1; c >= 0 && spawnCandidates.length < 6; c--) {
@@ -305,6 +327,7 @@ export class EngineTactics {
           runtimeId,
           gridX: spawn.x,
           gridY: spawn.y,
+          surfaceId: spawn.surfaceId,
           x: 0,
           y: 0,
           state: 'idle',
@@ -331,6 +354,7 @@ export class EngineTactics {
         ...template,
         gridX: spawn.x,
         gridY: spawn.y,
+        surfaceId: spawn.surfaceId,
         x: 0, y: 0,
         state: 'idle',
         stateTimer: 0,
@@ -352,6 +376,7 @@ export class EngineTactics {
         ...template,
         gridX: spawn.x,
         gridY: spawn.y,
+        surfaceId: spawn.surfaceId,
         x: 0, y: 0,
         state: 'idle',
         stateTimer: 0,
@@ -369,6 +394,7 @@ export class EngineTactics {
         ...worldBoss,
         gridX: worldBossSpawn.x,
         gridY: worldBossSpawn.y,
+        surfaceId: worldBossSpawn.surfaceId,
         x: 0, y: 0,
         state: 'idle',
         stateTimer: 0,
@@ -413,6 +439,12 @@ export class EngineTactics {
     this.movementBudget = this.activeUnit.statusEffects?.glitched > 0 ? 1 : 2;
     this.movementSpent = 0;
     this.applyStartTileEffect(this.activeUnit);
+    if (this.verticalTerrain && this.activeUnit.currentHp <= 0) {
+      this.activeUnit.state = 'dead';
+      this.activeUnit.stateTimer = 999;
+      this.endActiveTurn();
+      return;
+    }
 
     if (this.activeUnitType === 'hero') {
       this.faceNearestOpponent(this.activeUnit, this.enemies);
@@ -446,6 +478,7 @@ export class EngineTactics {
   }
 
   getReachableCells(unit, range) {
+    if (this.verticalTerrain) return this.verticalTerrain.reachable(unit, range);
     const visited = new Set([`${unit.gridX},${unit.gridY}`]);
     const queue = [{ x: unit.gridX, y: unit.gridY, dist: 0 }];
     const cells = [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
@@ -478,8 +511,9 @@ export class EngineTactics {
     return cells;
   }
 
-  getTileMoveCost(c, r, unit = null) {
-    const tile = this.getTileAt(c, r);
+  getTileMoveCost(c, r, unit = null, surfaceId = null) {
+    const tile = this.getTileAt(c, r, surfaceId);
+    if (this.verticalTerrain) return tile ? this.verticalTerrain.moveCost(tile, unit) : Infinity;
     if (!tile) return 1;
     if (tile.type === 'high') return 2;
     if (tile.type === 'heavyCover') return 2;
@@ -492,6 +526,7 @@ export class EngineTactics {
   }
 
   calculateAttackRange() {
+    if (this.verticalTerrain) return this.verticalTerrain.attackRange();
     const unit = this.activeUnit;
     this.attackRange = [];
     if (!this.selectedAction) return;
@@ -520,7 +555,10 @@ export class EngineTactics {
   }
 
   getActionDefinition(unit, actionType) {
+    if (this.verticalTerrain) return this.verticalTerrain.definition(unit, actionType);
     if (!unit || actionType === 'defense') return null;
+    const authored = resolveCombatAbility(unit, actionType === 'enemy' ? 'simple' : actionType);
+    if (authored?.delivery === 'radial') return authored.sourceAbility;
     return actionType === 'enemy' ? unit.simple || null : unit[actionType] || null;
   }
 
@@ -529,6 +567,7 @@ export class EngineTactics {
    * one contract used by range, preview, player input and AI.
    */
   getAttackProfile(unit = this.activeUnit, actionType = this.selectedAction || 'simple') {
+    if (this.verticalTerrain) return this.verticalTerrain.attackProfile(unit, actionType);
     if (!unit || actionType === 'defense') {
       return {
         actionType,
@@ -575,7 +614,7 @@ export class EngineTactics {
     const inferredRanged = explicit.ranged === true
       || explicit.delivery === 'ranged'
       || (!explicitMelee && ATTACK_TYPE_RANGED.test(attackText));
-    const delivery = explicitMelee ? 'melee' : inferredRanged ? 'ranged' : actionType === 'simple' ? 'melee' : 'ranged';
+    const delivery = explicit.delivery === 'radial' ? 'radial' : explicitMelee ? 'melee' : inferredRanged ? 'ranged' : actionType === 'simple' ? 'melee' : 'ranged';
 
     let shape = explicit.shape
       || explicit.pattern
@@ -601,6 +640,7 @@ export class EngineTactics {
       ray: 'directional'
     };
     shape = shapeAliases[String(shape).toLowerCase()] || shape;
+    if (delivery === 'radial') shape = 'radial';
 
     const role = actionType === 'enemy' ? this.getEnemyTacticsRole(unit) : null;
     const fallbackRange = actionType === 'enemy'
@@ -614,11 +654,15 @@ export class EngineTactics {
             : 1;
     const explicitRange = explicit.range ?? action.tacticsRange ?? action.range;
     let range = Math.max(0, Number.isFinite(Number(explicitRange)) ? Number(explicitRange) : fallbackRange);
-    const areaRadius = Math.max(
+    let areaRadius = Math.max(
       0,
       Number(explicit.areaRadius ?? explicit.radius ?? (shape === 'area' || shape === 'radial' ? 1 : 0)) || 0
     );
     if (shape === 'radial' && explicitRange === undefined) range = Math.max(1, areaRadius);
+    if (delivery === 'radial') {
+      range = Math.min(8, Math.max(1, Math.ceil(range / 140)));
+      areaRadius = Math.min(range, Math.max(1, Math.ceil(areaRadius / 140)));
+    }
 
     const powerful = !!(explicit.powerful ?? action.powerful);
     const inferredPierce = /pierc|penetrat|impale/i.test(attackText)
@@ -681,14 +725,20 @@ export class EngineTactics {
   }
 
   getAttackDistance(from, to, profile) {
+    if (this.verticalTerrain) return this.verticalTerrain.attackDistance(from, to, profile);
     const dx = Math.abs((to.gridX ?? to.x) - (from.gridX ?? from.x));
     const dy = Math.abs((to.gridY ?? to.y) - (from.gridY ?? from.y));
+    if (profile.delivery === 'radial') return Math.hypot(dx, dy);
     return ['line', 'directional', 'cone', 'multiAxis'].includes(profile.shape)
       ? Math.max(dx, dy)
       : dx + dy;
   }
 
   isCellInAttackPattern(from, to, profile) {
+    if (this.verticalTerrain && (to.gridX ?? to.x) === (from.gridX ?? from.x)
+      && (to.gridY ?? to.y) === (from.gridY ?? from.y) && to.surfaceId !== from.surfaceId) {
+      return profile.delivery !== 'melee';
+    }
     const dx = (to.gridX ?? to.x) - (from.gridX ?? from.x);
     const dy = (to.gridY ?? to.y) - (from.gridY ?? from.y);
     if (dx === 0 && dy === 0) return profile.minRange === 0;
@@ -721,6 +771,7 @@ export class EngineTactics {
    * instead of testing only the victim's own cell.
    */
   getAttackAnchorForTarget(attacker, target, actionType = 'simple', attackerType = 'hero') {
+    if (this.verticalTerrain) return this.verticalTerrain.anchorFor(attacker, target, actionType, attackerType);
     if (!attacker || !target) return null;
     const targetX = target.gridX ?? target.x;
     const targetY = target.gridY ?? target.y;
@@ -747,6 +798,9 @@ export class EngineTactics {
   }
 
   getActionBaseDamage(attacker, actionType) {
+    if (this.verticalTerrain) return this.verticalTerrain.baseDamage(attacker, actionType);
+    const authored = resolveCombatAbility(attacker, actionType === 'enemy' ? 'simple' : actionType);
+    if (authored?.delivery === 'radial') return authored.effect === 'damage' ? (attacker.atk || 10) * authored.multiplier : 0;
     if (!attacker) return 0;
     const attack = attacker.stats?.atk ?? attacker.atk ?? 0;
     if (actionType === 'secondary') return attack * (attacker.secondary?.dmg || 1.35);
@@ -755,6 +809,8 @@ export class EngineTactics {
   }
 
   selectAction(actionType) {
+    if (this.verticalTerrain && (this.paused || this.actionPhase === 'moving')) return false;
+    if (this.verticalTerrain && (!this.activeUnit || this.activeUnit.currentHp <= 0)) return false;
     const isHumanTurn = this.activeUnitType === 'hero'
       || (this.opponentControl === 'p2' && this.activeUnitType === 'enemy');
     if (this.gameOver || this.disposed || !isHumanTurn) return false;
@@ -816,6 +872,7 @@ export class EngineTactics {
   }
 
   getTerrainDamageModifier(attacker, defender) {
+    if (this.verticalTerrain) return this.verticalTerrain.heightModifier(attacker, defender);
     const attackerTile = this.getTileAt(attacker?.gridX, attacker?.gridY);
     const defenderTile = this.getTileAt(defender?.gridX, defender?.gridY);
     let multiplier = 1;
@@ -859,6 +916,7 @@ export class EngineTactics {
   }
 
   hasLineOfSight(from, to, actionType = 'simple') {
+    if (this.verticalTerrain) return this.verticalTerrain.lineOfSight(from, to, actionType);
     if (!from || !to) return false;
     const sx = from.gridX;
     const sy = from.gridY;
@@ -898,6 +956,7 @@ export class EngineTactics {
   }
 
   getCoverReduction(attacker, defender, actionType = 'simple') {
+    if (this.verticalTerrain) return this.verticalTerrain.coverReduction(attacker, defender, actionType);
     if (!attacker || !defender || defender.type === 'barrier' || defender.type === 'barrel') return 0;
     if (attacker.gridX === undefined || defender.gridX === undefined) return 0;
     if (actionType === 'special') return 0.15;
@@ -921,9 +980,9 @@ export class EngineTactics {
 
   applyStartTileEffect(unit) {
     if (!unit || unit.currentHp <= 0) return;
-    const tile = this.getTileAt(unit.gridX, unit.gridY);
+    const tile = this.getTileAt(unit.gridX, unit.gridY, unit.surfaceId);
     if (!tile) return;
-    const { x: px, y: py } = this.gridToScreen(unit.gridX, unit.gridY);
+    const { x: px, y: py } = this.gridToScreen(unit.gridX, unit.gridY, true, unit.surfaceId);
     if (tile.type === 'hazard' && !this.hazardsDisabled) {
       unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - 6);
       this.particles.add(px, py - 18, 0, -1, '#ff5b5b', 10, 40, 'text', 'DANGER');
@@ -933,7 +992,7 @@ export class EngineTactics {
       this.particles.add(px, py - 18, 0, -1, '#2ecc71', 10, 40, 'text', '+HP');
     }
     if (tile.type === 'portalSpawn' && this.heroes.includes(unit)) {
-      const key = `${tile.x},${tile.y}`;
+      const key = this.verticalTerrain ? tile.id : `${tile.x},${tile.y}`;
       if (!this.sealedPortalKeys.has(key)) {
         this.sealedPortalKeys.add(key);
         this.objectiveEvents++;
@@ -942,7 +1001,7 @@ export class EngineTactics {
       }
     }
     if (tile.type === 'artifact' && this.heroes.includes(unit) && this.objective === 'artifact') {
-      const key = `${tile.x},${tile.y}`;
+      const key = this.verticalTerrain ? tile.id : `${tile.x},${tile.y}`;
       if (!this.collectedArtifactKeys.has(key)) {
         this.collectedArtifactKeys.add(key);
         this.objectiveEvents++;
@@ -958,6 +1017,7 @@ export class EngineTactics {
     if (defender?.state === 'defense' && defender.defense) {
       damage *= (1 - defender.defense.reduce);
     }
+    if (this.verticalTerrain && defender?.tacticsGuardTicks > 0) damage *= (1 - defender.tacticsGuardReduce);
     const cover = this.getCoverReduction(attacker, defender, actionType);
     damage *= (1 - cover);
     const facing = this.getFacingBonus(attacker, defender);
@@ -970,6 +1030,7 @@ export class EngineTactics {
   }
 
   getEnemyThreatMap() {
+    if (this.verticalTerrain) return this.verticalTerrain.threats();
     const threatMap = new Map();
     this.enemyThreatCells = new Map();
     this.enemies.forEach(enemy => {
@@ -1014,7 +1075,8 @@ export class EngineTactics {
     };
   }
 
-  getCellPolygon(gridX, gridY, inset = 0) {
+  getCellPolygon(gridX, gridY, inset = 0, surfaceId = null) {
+    if (this.verticalTerrain) return this.verticalTerrain.polygon(gridX, gridY, inset, surfaceId);
     const points = [
       this.getPerspectivePoint(gridX, gridY),
       this.getPerspectivePoint(gridX + 1, gridY),
@@ -1033,8 +1095,8 @@ export class EngineTactics {
     }));
   }
 
-  getCellBounds(gridX, gridY, inset = 0) {
-    const polygon = this.getCellPolygon(gridX, gridY, inset);
+  getCellBounds(gridX, gridY, inset = 0, surfaceId = null) {
+    const polygon = this.getCellPolygon(gridX, gridY, inset, surfaceId);
     const xs = polygon.map(point => point.x);
     const ys = polygon.map(point => point.y);
     return {
@@ -1054,8 +1116,9 @@ export class EngineTactics {
     ctx.closePath();
   }
 
-  traceCellPath(ctx, gridX, gridY, inset = 0) {
-    this.tracePolygonPath(ctx, this.getCellPolygon(gridX, gridY, inset));
+  traceCellPath(ctx, gridX, gridY, inset = 0, surfaceId = null) {
+    const polygon = this.getCellPolygon(gridX, gridY, inset, surfaceId);
+    if (polygon.length) this.tracePolygonPath(ctx, polygon);
   }
 
   getBoardPolygon() {
@@ -1068,7 +1131,9 @@ export class EngineTactics {
   }
 
   getBoardBounds() {
-    const polygon = this.getBoardPolygon();
+    const polygon = this.verticalTerrain
+      ? this.terrain.surfaces.flatMap(surface => this.verticalTerrain.polygon(surface.x, surface.y, 0, surface.id))
+      : this.getBoardPolygon();
     const xs = polygon.map(point => point.x);
     const ys = polygon.map(point => point.y);
     return {
@@ -1081,7 +1146,9 @@ export class EngineTactics {
     };
   }
 
-  gridToScreen(gridX, gridY, centered = true) {
+  gridToScreen(gridX, gridY, centered = true, surfaceId = null) {
+    if (this.verticalTerrain) return this.verticalTerrain.position(gridX, gridY,
+      typeof centered === 'string' ? centered : surfaceId, typeof centered === 'string' ? true : centered);
     return this.getPerspectivePoint(
       gridX + (centered ? 0.5 : 0),
       gridY + (centered ? 0.5 : 0)
@@ -1089,6 +1156,7 @@ export class EngineTactics {
   }
 
   screenToGrid(screenX, screenY) {
+    if (this.verticalTerrain) return this.verticalTerrain.pick(screenX, screenY);
     const rowCoordinate = (screenY - this.gridStartY) / this.cellH;
     const boardTopWidth = this.cols * this.cellW;
     const scale = this.getPerspectiveScaleAtRow(rowCoordinate);
@@ -1100,13 +1168,15 @@ export class EngineTactics {
     };
   }
 
-  getUnitScreenPosition(gridX, gridY) {
+  getUnitScreenPosition(gridX, gridY, surfaceId = null) {
+    if (this.verticalTerrain) return this.verticalTerrain.position(gridX, gridY, surfaceId, true);
     return this.getPerspectivePoint(gridX + 0.5, gridY + 0.78);
   }
 
   getUnitRenderScale(gridY) {
     const depth = Math.max(0, Math.min(1, (gridY + 0.5) / Math.max(1, this.rows)));
-    return this.cameraZoom * (0.82 + depth * 0.22);
+    const density = this.sourceTacticsSector ? Math.max(0.64, Math.min(1, this.baseCellH / 34)) : 1;
+    return this.cameraZoom * (0.82 + depth * 0.22) * density;
   }
 
   getCameraState() {
@@ -1115,6 +1185,29 @@ export class EngineTactics {
       panX: this.gridStartX - this.baseGridStartX,
       panY: this.gridStartY - this.baseGridStartY
     };
+  }
+
+  getTerrainViewState() {
+    return this.verticalTerrain?.viewState() || { vertical: false };
+  }
+
+  drawDedicatedEnvironment(ctx, animTime, reducedMotion = false) {
+    return drawTacticsEnvironment(ctx, {
+      battlefield: this.battlefield, width: this.width, height: this.height,
+      universe: this.stage.universe, forceBaseArena: this.stage.forceBaseArena,
+      dlcSuppressedArena: this.stage.dlcSuppressedArena,
+      animTime, reducedMotion, camera: this.getCameraState()
+    });
+  }
+
+  selectTerrainSurface(id) { return this.verticalTerrain?.select(id) || false; }
+  cycleSelectedSurface(direction) { return this.verticalTerrain?.cycleSurface(direction) || false; }
+  setTerrainLevel(level) { return this.verticalTerrain?.setLevel(level) || false; }
+  cycleTerrainLevel(direction) { return this.verticalTerrain?.cycleLevel(direction) || false; }
+  isTerrainSurfaceVisible(id) { return this.verticalTerrain ? this.verticalTerrain.isVisible(id) : true; }
+  handleSurfaceClick(id) {
+    const surface = this.verticalTerrain?.surface(id);
+    return surface ? this.handleCellClick(surface.x, surface.y, surface.id) : { handled: false, reason: 'unknown-surface' };
   }
 
   clampCamera() {
@@ -1129,12 +1222,18 @@ export class EngineTactics {
 
   syncActorsToCamera() {
     [...this.heroes, ...this.enemies].forEach(unit => {
-      const screen = this.getUnitScreenPosition(unit.gridX, unit.gridY);
+      const rendered = this.verticalTerrain && unit.terrainRenderPosition;
+      const screen = rendered
+        ? this.verticalTerrain.project(rendered.x + 0.5, rendered.y + 0.5, rendered.z)
+        : this.getUnitScreenPosition(unit.gridX, unit.gridY, unit.surfaceId);
       unit.x = screen.x;
       unit.y = screen.y;
     });
     if (this.escortUnit) {
-      const screen = this.getUnitScreenPosition(this.escortUnit.gridX, this.escortUnit.gridY);
+      const rendered = this.verticalTerrain && this.escortUnit.terrainRenderPosition;
+      const screen = rendered
+        ? this.verticalTerrain.project(rendered.x + 0.5, rendered.y + 0.5, rendered.z)
+        : this.getUnitScreenPosition(this.escortUnit.gridX, this.escortUnit.gridY, this.escortUnit.surfaceId);
       this.escortUnit.x = screen.x;
       this.escortUnit.y = screen.y;
     }
@@ -1150,6 +1249,7 @@ export class EngineTactics {
   }
 
   zoomCameraAt(factor, anchorX = this.width / 2, anchorY = this.height / 2) {
+    if (this.verticalTerrain) return this.verticalTerrain.zoomAt(factor, anchorX, anchorY);
     if (!Number.isFinite(factor) || factor <= 0) return this.getCameraState();
     const previousCellW = this.cellW;
     const previousCellH = this.cellH;
@@ -1193,15 +1293,18 @@ export class EngineTactics {
     return c >= 0 && c < this.cols && r >= 0 && r < this.rows;
   }
 
-  getTileAt(c, r) {
+  getTileAt(c, r, surfaceId = null) {
+    if (this.verticalTerrain) return this.verticalTerrain.surface(surfaceId || { x: c, y: r });
     return this.tiles.find(tile => tile.x === c && tile.y === r) || null;
   }
 
-  isBlockedTile(c, r) {
+  isBlockedTile(c, r, surfaceId = null) {
+    if (this.verticalTerrain) return !this.getTileAt(c, r, surfaceId)?.walkable;
     return this.getTileAt(c, r)?.type === 'blocked';
   }
 
-  unitOccupiesCell(unit, c, r) {
+  unitOccupiesCell(unit, c, r, surfaceId = null) {
+    if (this.verticalTerrain) return this.verticalTerrain.unitOccupies(unit, c, r, surfaceId);
     if (!unit || unit.currentHp <= 0) return false;
     const footprint = unit.tacticsFootprint;
     const width = Math.max(1, Math.round(footprint?.width || 1));
@@ -1211,7 +1314,8 @@ export class EngineTactics {
     return c >= startX && c < startX + width && r >= startY && r < startY + height;
   }
 
-  isCellOccupied(c, r, ignoreUnit) {
+  isCellOccupied(c, r, ignoreUnit, surfaceId = null) {
+    if (this.verticalTerrain) return this.verticalTerrain.occupied(c, r, ignoreUnit, surfaceId);
     const heroOccupies = this.heroes.some(h => h !== ignoreUnit && this.unitOccupiesCell(h, c, r));
     const enemyOccupies = this.enemies.some(e => e !== ignoreUnit && this.unitOccupiesCell(e, c, r));
     const obstacleOccupies = this.obstacles.some(o => o.hp > 0 && o.gridX === c && o.gridY === r);
@@ -1221,6 +1325,7 @@ export class EngineTactics {
   }
 
   pushUnitHorizontally(unit, distance) {
+    if (this.verticalTerrain) return this.verticalTerrain.push(unit, distance);
     const direction = Math.sign(distance);
     // Forced movement preserves heading and stops at the first obstruction,
     // including every occupied cell of a large boss footprint.
@@ -1238,7 +1343,8 @@ export class EngineTactics {
     }
   }
 
-  getUnitAtCell(c, r) {
+  getUnitAtCell(c, r, surfaceId = null) {
+    if (this.verticalTerrain) return this.verticalTerrain.unitAt(c, r, surfaceId);
     const hero = this.heroes.find(h => this.unitOccupiesCell(h, c, r));
     if (hero) return { unit: hero, type: 'hero' };
     const enemy = this.enemies.find(e => this.unitOccupiesCell(e, c, r));
@@ -1255,6 +1361,7 @@ export class EngineTactics {
   }
 
   getAttackImpactCells(attacker, target, actionType = this.selectedAction) {
+    if (this.verticalTerrain) return this.verticalTerrain.impactCells(attacker, target, actionType);
     const profile = this.getAttackProfile(attacker, actionType);
     const targetX = target.gridX ?? target.x;
     const targetY = target.gridY ?? target.y;
@@ -1297,7 +1404,9 @@ export class EngineTactics {
     } else if (profile.shape === 'radial') {
       for (let y = attacker.gridY - profile.areaRadius; y <= attacker.gridY + profile.areaRadius; y++) {
         for (let x = attacker.gridX - profile.areaRadius; x <= attacker.gridX + profile.areaRadius; x++) {
-          if (x !== attacker.gridX || y !== attacker.gridY) append(x, y);
+          if ((x !== attacker.gridX || y !== attacker.gridY)
+            && (profile.delivery !== 'radial' || (Math.hypot(x - attacker.gridX, y - attacker.gridY) <= Math.min(profile.areaRadius, profile.range)
+              && this.hasLineOfSight(attacker, { x, y }, profile)))) append(x, y);
         }
       }
     } else if (['line', 'directional', 'cone', 'multiAxis'].includes(profile.shape)) {
@@ -1356,6 +1465,7 @@ export class EngineTactics {
   }
 
   getAttackResolutionContext(attacker, target, actionType, attackerType = this.activeUnitType) {
+    if (this.verticalTerrain) return this.verticalTerrain.resolution(attacker, target, actionType, attackerType);
     const profile = this.getAttackProfile(attacker, actionType);
     const validTypes = this.getValidAttackTargetTypes(attackerType);
     const seen = new Set();
@@ -1404,6 +1514,7 @@ export class EngineTactics {
   }
 
   getAttackThreatCellsForAnchor(attacker, target, actionType = 'enemy', attackerType = 'enemy') {
+    if (this.verticalTerrain) return this.verticalTerrain.threatCells(attacker, target, actionType, attackerType);
     const context = this.getAttackResolutionContext(attacker, target, actionType, attackerType);
     if (!Number.isFinite(context.profile.maxTargets)) return context.impactCells;
 
@@ -1440,6 +1551,9 @@ export class EngineTactics {
   }
 
   applyProfiledAttack(attacker, target, actionType, baseDamage, statusEffect = null, attackerType = this.activeUnitType) {
+    if (this.verticalTerrain) return this.verticalTerrain.applyAttack(attacker, target, actionType, baseDamage, statusEffect, attackerType);
+    const profile = this.getAttackProfile(attacker, actionType);
+    if (profile.delivery === 'radial' && !this.canAttackCell(attacker, target, profile)) return [];
     const targets = this.getAttackTargets(attacker, target, actionType, attackerType);
     targets.forEach(entry => {
       this.applyDamage(attacker, entry.unit, baseDamage, statusEffect, { actionType });
@@ -1447,7 +1561,8 @@ export class EngineTactics {
     return targets;
   }
 
-  handleCellClick(c, r) {
+  handleCellClick(c, r, surfaceId = null) {
+    if (this.verticalTerrain) return this.verticalTerrain.handleClick(c, r, surfaceId);
     const isP2EnemyTurn = this.opponentControl === 'p2' && this.activeUnitType === 'enemy';
     if (
       this.gameOver
@@ -1478,6 +1593,7 @@ export class EngineTactics {
       this.calculateAttackRange();
       return { handled: true, type: 'move', unit: this.activeUnit, x: c, y: r };
     } else if (this.actionPhase === 'action') {
+      this.calculateAttackRange();
       const inRange = this.attackRange.some(cell => cell.x === c && cell.y === r);
       if (!inRange) return { handled: false, reason: 'out-of-range' };
 
@@ -1493,6 +1609,9 @@ export class EngineTactics {
         this.activeUnitType
       );
       const validTargetTypes = this.getValidAttackTargetTypes(this.activeUnitType);
+      if (this.getAttackProfile(attacker, this.selectedAction).delivery === 'radial' && !impactedTargets.length) {
+        return { handled: false, reason: 'no-valid-target' };
+      }
       const target = clickedTarget && validTargetTypes.includes(clickedTarget.type)
         ? clickedTarget
         : impactedTargets[0] || clickedTarget || null;
@@ -1589,6 +1708,7 @@ export class EngineTactics {
   }
 
   endActiveTurn() {
+    if (this.verticalTerrain && this.activeUnit?.terrainMotion) return false;
     this.turnsElapsed++;
     this.updateTacticsObjective();
     this.applyTacticsMissionPressure();
@@ -1637,12 +1757,12 @@ export class EngineTactics {
         return;
       }
       const extractionZone = this.battlefield.extractionZone || [];
-      const inZone = extractionZone.some(cell => cell.x === this.escortUnit.gridX && cell.y === this.escortUnit.gridY);
+      const inZone = extractionZone.some(cell => (this.verticalTerrain ? this.verticalTerrain.objectiveContains(cell, this.escortUnit) : cell.x === this.escortUnit.gridX && cell.y === this.escortUnit.gridY));
       this.objectiveProgress = inZone ? 1 : 0;
       if (inZone) {
         this.escortUnit.extracted = true;
         this.escortUnit.state = getTacticsEscortPose(this.escortUnit);
-        Object.assign(this.escortUnit, this.getUnitScreenPosition(this.escortUnit.gridX, this.escortUnit.gridY));
+        Object.assign(this.escortUnit, this.getUnitScreenPosition(this.escortUnit.gridX, this.escortUnit.gridY, this.escortUnit.surfaceId));
         this.completeBattle('victory');
       }
       return;
@@ -1657,10 +1777,16 @@ export class EngineTactics {
     }
 
     if (this.objective === 'control') {
+      // Source sectors score occupation once when a real unit turn ends.
+      // Damage, pickups and other objective refreshes must not farm control.
+      if (this.sourceTacticsSector) {
+        if (this.turnsElapsed < 1 || this.lastControlEvaluationTurn === this.turnsElapsed) return;
+        this.lastControlEvaluationTurn = this.turnsElapsed;
+      }
       const objectiveTiles = this.tiles.filter(tile => tile.type === 'objective');
       const heldTiles = objectiveTiles.filter(tile => {
-        const heroOnTile = aliveHeroes.some(hero => hero.gridX === tile.x && hero.gridY === tile.y);
-        const enemyOnTile = this.enemies.some(enemy => enemy.currentHp > 0 && enemy.gridX === tile.x && enemy.gridY === tile.y);
+        const heroOnTile = aliveHeroes.some(hero => (this.verticalTerrain ? this.verticalTerrain.objectiveContains(tile, hero) : hero.gridX === tile.x && hero.gridY === tile.y));
+        const enemyOnTile = this.enemies.some(enemy => enemy.currentHp > 0 && (this.verticalTerrain ? this.verticalTerrain.objectiveContains(tile, enemy) : enemy.gridX === tile.x && enemy.gridY === tile.y));
         return heroOnTile && !enemyOnTile;
       });
       if (heldTiles.length > 0) {
@@ -1675,7 +1801,7 @@ export class EngineTactics {
     if (this.objective === 'extract') {
       const extractionZone = this.battlefield.extractionZone || [];
       aliveHeroes.forEach(hero => {
-        const inZone = extractionZone.some(cell => cell.x === hero.gridX && cell.y === hero.gridY);
+        const inZone = extractionZone.some(cell => (this.verticalTerrain ? this.verticalTerrain.objectiveContains(cell, hero) : cell.x === hero.gridX && cell.y === hero.gridY));
         if (inZone && !this.extractedHeroIds.has(hero.id)) {
           this.extractedHeroIds.add(hero.id);
           this.objectiveEvents++;
@@ -1716,6 +1842,7 @@ export class EngineTactics {
   }
 
   advanceEscortUnit() {
+    if (this.verticalTerrain) return this.verticalTerrain.advanceEscort();
     if (this.objective !== 'escort' || !this.escortUnit || this.escortUnit.currentHp <= 0) return;
     const aliveHeroes = this.heroes.filter(hero => hero.currentHp > 0);
     const hasEscort = aliveHeroes.some(hero => Math.abs(hero.gridX - this.escortUnit.gridX) + Math.abs(hero.gridY - this.escortUnit.gridY) <= 1);
@@ -1766,6 +1893,7 @@ export class EngineTactics {
   }
 
   findOpenTacticsSpawn(spawns = []) {
+    if (this.verticalTerrain) return this.verticalTerrain.openSpawn(spawns);
     const portalSpawns = this.tiles
       .filter(tile => tile.type === 'portalSpawn' && !this.sealedPortalKeys.has(`${tile.x},${tile.y}`))
       .map(tile => ({ x: tile.x, y: tile.y }));
@@ -1782,12 +1910,13 @@ export class EngineTactics {
     ]);
     if (!spawn) return;
     const pressureScale = 0.68 + this.missionProfile.pressure * 0.08;
-    const reinforcementScreen = this.getUnitScreenPosition(spawn.x, spawn.y);
+    const reinforcementScreen = this.getUnitScreenPosition(spawn.x, spawn.y, spawn.surfaceId);
     const reinforcement = {
       ...template,
       name: `${template.name} Echo ${this.reinforcementsCalled + 1}`,
       gridX: spawn.x,
       gridY: spawn.y,
+      surfaceId: spawn.surfaceId,
       x: reinforcementScreen.x,
       y: reinforcementScreen.y,
       state: 'idle',
@@ -1808,6 +1937,7 @@ export class EngineTactics {
   }
 
   applyHazardPulse() {
+    if (this.verticalTerrain) return this.verticalTerrain.hazardPulse();
     if (this.hazardsDisabled) return;
     const hazardTiles = this.tiles.filter(tile => tile.type === 'hazard');
     if (!hazardTiles.length) return;
@@ -1823,7 +1953,7 @@ export class EngineTactics {
         const dist = Math.abs(unit.gridX - tile.x) + Math.abs(unit.gridY - tile.y);
         if (dist <= radius) {
           unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - (8 + this.missionProfile.pressure * 2));
-          const { x: ux, y: uy } = this.getUnitScreenPosition(unit.gridX, unit.gridY);
+          const { x: ux, y: uy } = this.getUnitScreenPosition(unit.gridX, unit.gridY, unit.surfaceId);
           this.particles.add(ux, uy - 28, 0, -1, '#ff5b5b', 10, 38, 'text', 'PULSE');
         }
       });
@@ -1838,6 +1968,9 @@ export class EngineTactics {
     const color = pickup.color || '#39c5bb';
     const triggerX = pickup.gridX ?? this.activeUnit?.gridX ?? 0;
     const triggerY = pickup.gridY ?? this.activeUnit?.gridY ?? 0;
+    const triggerSurface = this.verticalTerrain?.surface(pickup.surfaceId
+      || (pickup.gridX === undefined && pickup.gridY === undefined ? this.activeUnit?.surfaceId : { x: triggerX, y: triggerY }));
+    if (this.verticalTerrain && !triggerSurface) return false;
     const opponentTriggered = this.opponentControl === 'p2' && triggerSide === 'enemy';
     const allies = opponentTriggered ? this.enemies : this.heroes;
     const targets = opponentTriggered ? this.heroes : this.enemies;
@@ -1852,6 +1985,7 @@ export class EngineTactics {
     const itemAttacker = {
       gridX: triggerX,
       gridY: triggerY,
+      surfaceId: triggerSurface?.id,
       stats: { atk: 1 },
       simple: { dmg: 1 },
       primaryColor: color
@@ -1908,7 +2042,8 @@ export class EngineTactics {
     const charge = Math.max(0, Number(effect.charge) || 0);
     allies.forEach(ally => {
       if (ally.currentHp <= 0) return;
-      const dist = Math.abs(ally.gridX - triggerX) + Math.abs(ally.gridY - triggerY);
+      const dist = this.verticalTerrain ? this.verticalTerrain.itemDistance(triggerSurface.id, ally)
+        : Math.abs(ally.gridX - triggerX) + Math.abs(ally.gridY - triggerY);
       if (dist <= 2) {
         const maxHp = ally.maxHp || ally.stats?.hp || ally.hp || ally.currentHp;
         ally.currentHp = Math.min(maxHp, ally.currentHp + heal);
@@ -1922,18 +2057,20 @@ export class EngineTactics {
     });
     targets.forEach(target => {
       if (target.currentHp <= 0) return;
-      const dist = Math.abs(target.gridX - triggerX) + Math.abs(target.gridY - triggerY);
+      const dist = this.verticalTerrain ? this.verticalTerrain.itemDistance(triggerSurface.id, target)
+        : Math.abs(target.gridX - triggerX) + Math.abs(target.gridY - triggerY);
       if (damage > 0 && dist <= 1) {
         this.applyDamage(itemAttacker, target, damage, null, { ignoreCover: true });
         this.tacticalItemImpact += damage;
       }
     });
-    const resourceScreen = this.gridToScreen(triggerX, triggerY);
+    const resourceScreen = this.gridToScreen(triggerX, triggerY, true, triggerSurface?.id);
     this.particles.add(resourceScreen.x, resourceScreen.y, 0, -1, color, 10, 42, 'text', 'RESSOURCE');
     return true;
   }
 
   getObjectiveFocusCells(unitType = 'hero') {
+    if (this.verticalTerrain) return this.verticalTerrain.focusCells(unitType);
     if (this.objective === 'extract') return this.battlefield.extractionZone || [];
     if (this.objective === 'control') return this.tiles.filter(tile => tile.type === 'objective').map(tile => ({ x: tile.x, y: tile.y }));
     if (this.objective === 'protect') {
@@ -1969,6 +2106,7 @@ export class EngineTactics {
   }
 
   getClosestObjectiveCell(unit, unitType = 'hero') {
+    if (this.verticalTerrain) return this.verticalTerrain.closestObjective(unit, unitType);
     const cells = this.getObjectiveFocusCells(unitType);
     if (!cells.length) return null;
     return cells.reduce((best, cell) => {
@@ -2030,6 +2168,7 @@ export class EngineTactics {
   }
 
   runEnemyAI() {
+    if (this.verticalTerrain) return this.verticalTerrain.runAI('enemy');
     if (this.gameOver || this.activeUnit.currentHp <= 0) {
       this.startTurn();
       return;
@@ -2145,6 +2284,7 @@ export class EngineTactics {
   }
 
   runHeroAI() {
+    if (this.verticalTerrain) return this.verticalTerrain.runAI('hero');
     if (this.gameOver || this.activeUnit.currentHp <= 0 || this.activeUnitType !== 'hero') return;
 
     const hero = this.activeUnit;
@@ -2315,10 +2455,11 @@ export class EngineTactics {
   }
 
   applyDamage(attacker, defender, baseDmg, statusEffect = null, options = {}) {
+    if (this.verticalTerrain && defender?.tacticsGuardTicks > 0) baseDmg *= (1 - defender.tacticsGuardReduce);
     if (defender === this.protectedArtifact) {
       const wasAlive = defender.hp > 0;
       defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
-      const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
+      const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY, defender.surfaceId);
       this.particles.add(targetPxX, targetPxY - 24, 0, -1, '#ffeb3b', 12, 42, 'text', `ARTEFACT -${Math.round(baseDmg)}`);
       if (wasAlive && defender.hp <= 0) this.updateTacticsObjective();
       return;
@@ -2330,7 +2471,7 @@ export class EngineTactics {
       defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
       this.playSfx('hit');
 
-      const { x: targetPxX, y: targetPxY } = this.gridToScreen(defender.gridX, defender.gridY);
+      const { x: targetPxX, y: targetPxY } = this.gridToScreen(defender.gridX, defender.gridY, true, defender.surfaceId);
       this.particles.add(targetPxX, targetPxY - 20, 0, -1.5, '#7f8c8d', 12, 35, 'text', `${Math.round(baseDmg)}`);
 
       if (wasAlive && defender.hp <= 0) {
@@ -2338,7 +2479,7 @@ export class EngineTactics {
         this.updateTacticsObjective();
         // Trigger Naquadah barrel explosion
         if (defender.type === 'barrel') {
-          this.triggerBarrelExplosion(defender.gridX, defender.gridY);
+          this.triggerBarrelExplosion(defender.gridX, defender.gridY, defender.surfaceId);
         }
       }
       return;
@@ -2352,21 +2493,21 @@ export class EngineTactics {
     const coverReduction = options.ignoreCover ? 0 : this.getCoverReduction(attacker, defender, options.actionType || 'simple');
     if (coverReduction > 0) {
       baseDmg *= (1 - coverReduction);
-      const { x: coverPxX, y: coverPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
+      const { x: coverPxX, y: coverPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY, defender.surfaceId);
       this.particles.add(coverPxX, coverPxY - 48, 0, -1, '#4fc3f7', 10, 42, 'text', `COVER -${Math.round(coverReduction * 100)}%`);
     }
 
     const facing = this.getFacingBonus(attacker, defender);
     if (!options.ignoreCover && facing.bonus > 0 && options.actionType !== 'special') {
       baseDmg *= (1 + facing.bonus);
-      const { x: flankPxX, y: flankPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
+      const { x: flankPxX, y: flankPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY, defender.surfaceId);
       this.particles.add(flankPxX, flankPxY - 58, 0, -1, '#ffeb3b', 10, 42, 'text', facing.label);
     }
 
     const terrain = this.getTerrainDamageModifier(attacker, defender);
     if (!options.ignoreCover && terrain.multiplier !== 1) {
       baseDmg *= terrain.multiplier;
-      const { x: terrainPxX, y: terrainPxY } = this.getUnitScreenPosition(attacker.gridX, attacker.gridY);
+      const { x: terrainPxX, y: terrainPxY } = this.getUnitScreenPosition(attacker.gridX, attacker.gridY, attacker.surfaceId);
       this.particles.add(terrainPxX, terrainPxY - 44, 0, -1, terrain.multiplier > 1 ? '#8fb3ff' : '#ff8a50', 9, 40, 'text', terrain.labels.join('+'));
     }
 
@@ -2385,7 +2526,7 @@ export class EngineTactics {
       }
       if (attacker.talent === 'suppressing_fire' && defender.stats) {
         defender.stats.def = Math.round(defender.stats.def * 0.8);
-        const { x: defPxX, y: defPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
+        const { x: defPxX, y: defPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY, defender.surfaceId);
         this.particles.add(defPxX, defPxY - 45, 0, -1.2, '#3498db', 11, 50, 'text', 'DEF DOWN');
       }
     }
@@ -2402,7 +2543,7 @@ export class EngineTactics {
     if (attacker && attacker.talent === 'lifedrain' && attacker.currentHp > 0 && attacker.gridX !== undefined) {
       const heal = Math.round(finalDmg * 0.10);
       attacker.currentHp = Math.min(attacker.maxHp, attacker.currentHp + heal);
-      const { x: atkPxX, y: atkPxY } = this.getUnitScreenPosition(attacker.gridX, attacker.gridY);
+      const { x: atkPxX, y: atkPxY } = this.getUnitScreenPosition(attacker.gridX, attacker.gridY, attacker.surfaceId);
       this.particles.add(atkPxX, atkPxY - 20, 0, -1, '#2ecc71', 11, 40, 'text', `+${heal} HP`);
     }
 
@@ -2417,11 +2558,11 @@ export class EngineTactics {
       const label = statusEffect === 'infected' ? 'INFECTED' : statusEffect === 'glitched' ? 'GLITCHED' : 'RADIATED';
       const color = statusEffect === 'infected' ? '#2ecc71' : statusEffect === 'glitched' ? '#00ff00' : '#e67e22';
       
-      const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
+      const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY, defender.surfaceId);
       this.particles.add(targetPxX, targetPxY - 35, 0, -1, color, 12, 60, 'text', label);
     }
 
-    const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
+    const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY, defender.surfaceId);
 
     this.particles.add(targetPxX, targetPxY - 20, (Math.random()-0.5)*2, -1.5, defender.isBoss ? '#f1c40f' : '#e74c3c', 14, 45, 'text', `${finalDmg}`);
     for (let i = 0; i < 5; i++) {
@@ -2440,7 +2581,8 @@ export class EngineTactics {
     }
   }
 
-  triggerBarrelExplosion(bgX, bgY) {
+  triggerBarrelExplosion(bgX, bgY, surfaceId = null) {
+    if (this.verticalTerrain) return this.verticalTerrain.barrelExplosion(bgX, bgY, surfaceId);
     const { x: centerPxX, y: centerPxY } = this.gridToScreen(bgX, bgY);
 
     this.particles.add(centerPxX, centerPxY, 0, 0, '#ff4500', 100, 30, 'glitch');
@@ -2539,7 +2681,7 @@ export class EngineTactics {
             const cap = h.statusEffects?.radiated > 0 ? h.maxHp * 0.5 : h.maxHp;
             h.currentHp = Math.min(cap, h.currentHp + heal);
             
-            const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(h.gridX, h.gridY);
+            const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(h.gridX, h.gridY, h.surfaceId);
             this.particles.add(targetPxX, targetPxY - 20, 0, -1, '#2ecc71', 12, 45, 'text', `+${heal}`);
           }
         });
@@ -2565,7 +2707,7 @@ export class EngineTactics {
           if (e.currentHp > 0) {
             e.state = 'hit';
             e.stateTimer = duration;
-            const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(e.gridX, e.gridY);
+            const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(e.gridX, e.gridY, e.surfaceId);
             this.particles.add(targetPxX, targetPxY - 15, 0, 0, '#00ff00', 8, 15, 'spark');
             if (effect === 'marker_insanity') {
               this.applyDamage({ gridX: e.gridX, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#8e44ad' }, e, 120, null, { ignoreCover: true });
@@ -2625,6 +2767,7 @@ export class EngineTactics {
   }
   update() {
     if (this.disposed) return;
+    if (this.verticalTerrain && this.paused) return;
     if (this.gameOver) {
       this.victoryTimer++;
       if (this.victoryTimer > 120 && !this.completionReported) {
@@ -2649,7 +2792,7 @@ export class EngineTactics {
 
     // Process Status Effects & timers for heroes
     this.heroes.forEach(h => {
-      const { x: targetX, y: targetY } = this.getUnitScreenPosition(h.gridX, h.gridY);
+      const { x: targetX, y: targetY } = this.getUnitScreenPosition(h.gridX, h.gridY, h.surfaceId);
       h.x += (targetX - h.x) * 0.2;
       h.y += (targetY - h.y) * 0.2;
 
@@ -2687,7 +2830,7 @@ export class EngineTactics {
 
     // Process Status Effects & timers for enemies
     this.enemies.forEach(e => {
-      const { x: targetX, y: targetY } = this.getUnitScreenPosition(e.gridX, e.gridY);
+      const { x: targetX, y: targetY } = this.getUnitScreenPosition(e.gridX, e.gridY, e.surfaceId);
       e.x += (targetX - e.x) * 0.2;
       e.y += (targetY - e.y) * 0.2;
 
@@ -2722,7 +2865,8 @@ export class EngineTactics {
     if (this.escortUnit) {
       const { x: targetX, y: targetY } = this.getUnitScreenPosition(
         this.escortUnit.gridX,
-        this.escortUnit.gridY
+        this.escortUnit.gridY,
+        this.escortUnit.surfaceId
       );
       this.escortUnit.x += (targetX - this.escortUnit.x) * 0.2;
       this.escortUnit.y += (targetY - this.escortUnit.y) * 0.2;
@@ -2733,40 +2877,13 @@ export class EngineTactics {
         }
       }
     }
+    this.verticalTerrain?.updateMotions();
   }
 
   draw(ctx, animTime) {
-    const boardBounds = this.getBoardBounds();
-    if (!this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
-      ctx.save();
-      this.tracePolygonPath(ctx, this.getBoardPolygon());
-      ctx.clip();
-      const generatedStageDrawn = drawGeneratedStageTextureCover(
-        ctx,
-        this.stage.universe,
-        'Tactics',
-        boardBounds.left,
-        boardBounds.top,
-        boardBounds.width,
-        boardBounds.height,
-        0.18,
-        'stretch',
-      );
-      if (!generatedStageDrawn) {
-        drawRecentUniverseTextureCover(
-          ctx,
-          this.stage.universe,
-          'Tactics',
-          boardBounds.left,
-          boardBounds.top,
-          boardBounds.width,
-          boardBounds.height,
-          0.18,
-          'stretch'
-        );
-      }
-      ctx.restore();
-    }
+    if (this.verticalTerrain) return this.verticalTerrain.draw(ctx, animTime);
+    // Only the standalone Tactics tile companion may texture legacy cells.
+    // A perspective-painted scene is never stretched over the playable grid.
     if (!this.generatedTilePattern && !this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
       this.generatedTilePattern = getGeneratedStageTexturePattern(ctx, this.stage.universe, 'Tactics', 'tiles');
     }
@@ -2961,16 +3078,17 @@ export class EngineTactics {
 
   drawTacticsUnit(ctx, entry, animTime) {
     const unit = entry.unit;
-    const renderScale = this.getUnitRenderScale(unit.gridY);
+    const actorForDraw = this.verticalTerrain ? this.verticalTerrain.drawActor(unit) : unit;
+    const renderScale = this.getUnitRenderScale(unit.terrainRenderPosition?.y ?? unit.gridY);
     if (entry.type === 'enemy') {
       if (unit.isBoss) {
         unit.tacticsRenderScale = renderScale;
-        drawBoss(ctx, unit.x, unit.y, unit, animTime, unit.facing);
+        drawBoss(ctx, unit.x, unit.y, this.verticalTerrain ? { ...actorForDraw, tacticsRenderScale: renderScale } : unit, animTime, unit.facing);
       } else {
-        drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, unit.facing, 68 * renderScale);
+        drawPixelEnemy(ctx, unit.x, unit.y, actorForDraw, animTime, unit.facing, 68 * renderScale);
       }
     } else {
-      drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, unit.facing, 72 * renderScale, 'tactics');
+      drawPixelSprite(ctx, unit.x, unit.y, actorForDraw, animTime, unit.facing, 72 * renderScale, 'tactics');
     }
 
     if (unit === this.activeUnit && unit.currentHp > 0) {
@@ -3009,7 +3127,7 @@ export class EngineTactics {
         if (hero.currentHp <= 0) return false;
         if (!threatenedCells) return false;
         return Array.from(threatenedCells.values())
-          .some(cell => this.unitOccupiesCell(hero, cell.x, cell.y));
+          .some(cell => this.unitOccupiesCell(hero, cell.x, cell.y, cell.surfaceId));
       });
       if (threatensHero) {
         ctx.fillStyle = '#ff8a50';

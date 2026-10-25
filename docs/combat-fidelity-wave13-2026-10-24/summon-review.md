@@ -1,0 +1,15 @@
+# Renforts RPG du lot 13
+
+Six nouvelles planches de seize poses sont réellement produites : Ellen Ripley et Hicks (Aliens, 1986, catalogue « Alien »), ATLAS (Portal 2), Sam Vimes (Guards! Guards!), Meryl Silverburgh (Metal Gear Solid, 1998) et Joel (The Last of Us, 2013). Les 96 dessins proviennent de sources image_gen dédiées à quatre phases : arrivée, préparation, action et récupération. Aucun groupe de quatre poses n’est dupliqué pour prétendre en livrer seize.
+
+Sept partenaires étaient prévus. La demande RPG d’Obi-Wan a été refusée explicitement (`85aa38a6-e108-4811-aea1-9b0dfa65b959`, `moderation_blocked`) ; elle ne produit aucun nouveau dessin. Aucune autre formulation ni autre personnage ne remplace cette demande. Ses ressources de personnage historiques restent utilisables par le repli déclaré ; elles ne comptent pas comme une invocation native16.
+
+Les huit appels image_gen regroupent six premières sources acceptées, le refus d’Obi-Wan et une correction de Joel. La première source de Joel représentait un pistolet à glissière ; elle reste archivée et exclue. La source corrigée possède le revolver à barillet visible retenu par son kit. Les prompts, arguments exacts, anciennes sources, corrections et empreintes sont conservés dans [summon-generation-records.json](summon-generation-records.json), [summon-attempts-final.json](summon-attempts-final.json) et [summon-provenance.json](summon-provenance.json).
+
+Les personnages gardent une seule échelle de corps pour les quatre phases ; le robot ATLAS conserve sa petite stature. Les cellules larges de 512 × 256 pixels préservent la portée de l’épée et des armes sans déformer les corps. La bouche de chaque arme est mesurée sur les pixels natifs des quatre poses d’action et des deux poses de préparation déjà en visée. [Revue des bouches de canon](summon-muzzle-review.json).
+
+Le moteur applique un seul impact accepté par l’invocation. Ripley, Hicks, Vimes, Meryl et Joel sont offensifs ; ATLAS coordonne les alliés par un buff sans dégât, sans tir, portail offensif, aura, nouveau membre ou arme inventée. Vimes s’approche physiquement à 48 pixels de la cible avant le contact. Le dessin ne décide ni des coûts, ni des cibles, ni des dégâts.
+
+Les premières vérifications sont explicitement préliminaires : [12 parcours SSR](summon-runtime-preliminary-result.json) et [12 parcours GameCanvas](summon-wave13-preliminary-result.json). Elles constatent dix impacts offensifs uniques, deux buffs sans dégât, 96 cellules natives par camp et 192 vérifications de réflexion des pixels dans Chromium, sans erreur JavaScript. Elles couvrent annulation sans coût, confirmation, pause, dépense unique et refus d’une seconde utilisation. Les cas SSR ajoutent bouclier, cible morte ou retirée et interruption de l’appelant. Les 556 PNG et 104 registres précédents restent identiques.
+
+Les preuves finales seront rejouées après le gel global de production et archivées séparément. Une réussite préliminaire ne signifie pas que les autres travaux du lot sont figés. Ces dessins sont des adaptations générées et revues ; la fidélité officielle 1:1 reste non certifiée.

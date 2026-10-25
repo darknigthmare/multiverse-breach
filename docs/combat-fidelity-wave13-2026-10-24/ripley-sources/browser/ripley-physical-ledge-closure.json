@@ -1,0 +1,651 @@
+{
+  "passed": true,
+  "schemaVersion": 1,
+  "startedAt": "2026-10-25T06:26:58.382Z",
+  "browserClosedAt": "2026-10-25T06:27:01.917Z",
+  "finishedAt": "2026-10-25T06:27:01.963Z",
+  "harness": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-physical-ledge-browser.mjs",
+  "harnessSha256": "2d9e51949b99d6e296bc7e19e6f69fe5c6bfab9481c2e3b7c5630648b0390e75",
+  "preliminary": false,
+  "phase": "final",
+  "allBrowserWindowsClosed": true,
+  "contextsBeforeClose": 1,
+  "pagesBeforeClose": 1,
+  "browserConnectedAfterClose": false,
+  "resourcesBefore": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 139633,
+      "sha256": "36feb2519dbd86d8725e26457fbd81bfe2f73c8909fb89eb5a65b619318d0778"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 116626,
+      "sha256": "1f17cb24e7c710e97420d57c4b0ab9efd17f2101060cd91fe1c5d422f7c1e430"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 66467,
+      "sha256": "142dbe443dac0786e1b6ac98bffbb092d9b2a8069d133ff21bf8053f4e67cf24"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 40009,
+      "sha256": "0a37e6d10c0477b09f91cd0de3208e8321919ce75af0e98ee55e7aaf36e31bf2"
+    },
+    {
+      "path": "src/game/melee/meleeCombatRuntime.js",
+      "bytes": 17966,
+      "sha256": "e230bb9379a25f370b950695e43ff49a08d644aeea0f6321818e9c20533b75cd"
+    },
+    {
+      "path": "src/game/melee/meleeStateMachine.js",
+      "bytes": 7161,
+      "sha256": "e6e26340a9b7b8bd5c045683629598ce0897bd020084b54e90f2fd258cffb647"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/ripleyMeleeManifest.js",
+      "bytes": 505,
+      "sha256": "5c18235ff7098b0abb0008796cfbce260dbae8811b3f3685d831ee182f3d857c"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 15516,
+      "sha256": "6b907806d73649d40dcc710d02243efbdf9a828926de7327fb0a2d852b50ba67"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "bytes": 7602,
+      "sha256": "1faca4e9c32cafe473d5b25517f3e78e867a2eb2e6f2bd326d4dcfb8add32021"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "bytes": 5665,
+      "sha256": "f9e5625bd5c876969bdf3a7ffb992cbb04879cefa7cfaf3e7efa6a1f96de3e56"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave13.js",
+      "bytes": 8730,
+      "sha256": "2f90bf787aa68b5aba41c37a8721203d5862ed14cbe81a9c50fa7acef6145228"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave13PartA.generated.json",
+      "bytes": 396,
+      "sha256": "208776536557c28814f1653135f349a16d448e52d57e6d72ed8c4b61f5db44cd"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave13PartA.generated.json",
+      "bytes": 1147150,
+      "sha256": "53315704a1a0f75fb37a07a3522890092b72e687a1e973181809f46fc9c4370e"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave13PartA.generated.json",
+      "bytes": 602122,
+      "sha256": "9d9dfd996d69c91ff197e6c91625290b958cc084e7de2f41eb03a657484973d1"
+    },
+    {
+      "path": "src/game/combat/combatSourceDefinitionsWave13.js",
+      "bytes": 24109,
+      "sha256": "5e129239053264fdee3f3665c90a0d83e68ac99f94bb5e2a6b9396b4c0b4f7a5"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesWave13Definitions.js",
+      "bytes": 20071,
+      "sha256": "8606e1e5a96a21035a4da4afaf8ea08da922d45d84202b1e08b8d3e86b9a230e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/source-row-review.json",
+      "bytes": 35797,
+      "sha256": "6388f9b82dc8e422cf965294ed20a35e666ab4de802c70ccca944e26723940e1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/native-ripley-segmentation.mjs",
+      "bytes": 5280,
+      "sha256": "6cf9798aedac6933faa8a6113da7376500c25768ef35317fd069926666645aac"
+    },
+    {
+      "path": "src/game/combat/ripleyMeleeMotion.generated.json",
+      "bytes": 229176,
+      "sha256": "4958f3e82f88f4e6718191a285d220d348531dc97dd95c85e94449e09cf879ee"
+    },
+    {
+      "path": "src/game/combat/ripleyMeleeCombat.generated.json",
+      "bytes": 228043,
+      "sha256": "cd800cf8f267fedf42cbafc3317ff12283913b2d119b8a65f414ec720b389643"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/packing-plan.json",
+      "bytes": 19298,
+      "sha256": "22f8a3a11cdaefac8621e09ddafc66663151efbf92f16aaaeb9f15c2c1dabc5a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/native-hand-points.json",
+      "bytes": 1101,
+      "sha256": "ae1628361a2fcbada8f53e8bf58e4e51b4b25ab8c1a111d5ca14abe159d5ba05"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/hand-measurements.json",
+      "bytes": 13766,
+      "sha256": "6c30ffdcecef9983d74b3d07b55d11b58c3bda2b65b4a42952f670afc13df79b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/actual-tool-calls.json",
+      "bytes": 65073,
+      "sha256": "1a6d3819d62c0aac5b2f2ea74172e18e4af70f43cf609f343a9bfd42b4b084e0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/build-native-ripley-atlases.mjs",
+      "bytes": 13124,
+      "sha256": "e1e2c25327aed9b7ed7e27aa59243cf11708eca410ff450a7c9b1032efb9d9aa"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/normalize-ripley-atlases.mjs",
+      "bytes": 358,
+      "sha256": "31d849bf12adb80a04ae8e85d8396986cb1537f0fc65c6d47aba401babc5d6fc"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/measure-ripley-native-hands.mjs",
+      "bytes": 3866,
+      "sha256": "2aff49d1c9543ddd50c110a5ac79285c10942b1886a592a1f25dad29c55361a2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/verify-ripley-atlases.mjs",
+      "bytes": 10777,
+      "sha256": "3fa2e4fc777ad291736bf05d44084ef8ca22cd9494e282c4ed160471f0f3496b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-identity-reference-original.png",
+      "bytes": 1996453,
+      "sha256": "951ee4df72ce746b925a5fde1e717080560c21ae43e43e42d9a69a9f5111d212"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.native.png",
+      "bytes": 2235397,
+      "sha256": "3c357a64f087d5ea07fb14a9e5db65e45e47f23b420157b3f1ff198d272f04a6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.prompt.txt",
+      "bytes": 3894,
+      "sha256": "1204f94f385f0b2e02c79d8e597598069038f2dbc8e235ae106321bc84d708f3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.native.png",
+      "bytes": 2362404,
+      "sha256": "f73c26c13e8b62d98045b69cd98b8346edea1eccd2acd5e875941e4762af9a6a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.prompt.txt",
+      "bytes": 3899,
+      "sha256": "300988de1f3070a1f90db8de9ad932b3a55c2c3a14ec92dc28ebac6133dc5a9f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.native.png",
+      "bytes": 2350565,
+      "sha256": "e75866812c38979bfa90f8cc786fd72aaa4c9cedb70b50c2abf84d05406c0160"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.prompt.txt",
+      "bytes": 3955,
+      "sha256": "8396c2af7671f0c0d7724c61d2a462fed34d1c057f343a534b6747bbb29c3a12"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.native.png",
+      "bytes": 2464016,
+      "sha256": "088a8fd92437ba08a4259d6b58da13f0a41130b573874dc412983a8b29f9e8bc"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.prompt.txt",
+      "bytes": 4232,
+      "sha256": "365f7c6a9009accc4bc38507728ec80e9a5fd911b0f66e03c2dc3989ee46220e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.native.png",
+      "bytes": 2375637,
+      "sha256": "5d579faea90fc745efcad28253fcc62085cc541e541bb942460d13b782acfa45"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.prompt.txt",
+      "bytes": 4237,
+      "sha256": "0e4634993f02df9ac637b33a2d4b4e25436df5e82652f413aff33bcf3630b4f5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.native.png",
+      "bytes": 2202555,
+      "sha256": "f3be8a33ea2333ae811b469c237ef3c8b1b6b81156b913e093c8be80b94a490e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.prompt.txt",
+      "bytes": 4915,
+      "sha256": "6097b4f8a6087481cc298616ddd585bd1b23ca82f4e76539159b1ec4f29e18e0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-movement.native.png",
+      "bytes": 2340048,
+      "sha256": "c61c16ae5bec5a7192cc99f9c06b5b876ff180914ada81965008df92ee5bc901"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-movement.prompt.txt",
+      "bytes": 3406,
+      "sha256": "a5d464c01d51142c8f58f3459fd60f5314c0c727472712c95bcd18afb04b807b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-combat.native.png",
+      "bytes": 2380230,
+      "sha256": "95ac6ae2fe761747a3edf3f18e61f9ae015435eb4ad65474c44a5d8f61032ecb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-combat.prompt.txt",
+      "bytes": 3530,
+      "sha256": "1304e6f2db121cd62d2f8ba9b7104eb37eab6167ad696e7cafd023d7c1f0995e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-ledge.native.png",
+      "bytes": 2224594,
+      "sha256": "c69f6cf5f3263bf652ca254d8decdc8101d6cffbed01c49b4b30a38b1a9f2f7a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-ledge.prompt.txt",
+      "bytes": 3975,
+      "sha256": "47c93cdc42bdb6d5d6f70c4f4c5936ba40ef38be3fbf0b66cd11c6fc0feb807d"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-motion-a.png",
+      "bytes": 1299578,
+      "sha256": "8a490e1d056cccd9ffe457a34ae038a8dde82734a23eae850e6e5381926a63a0"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-motion-b.png",
+      "bytes": 980443,
+      "sha256": "ed5c010c867628b762885f9db62eae0b021cca7ac2455420d68d81f81b0d92bb"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-defense.png",
+      "bytes": 1099674,
+      "sha256": "8d234940438770d8e18820f37c342f090d645b4ac84745535df3ea3a5f1b0144"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-combat-a.png",
+      "bytes": 1495295,
+      "sha256": "f305a8b2d9d59a0db09f33b9c03dddb3bf96037ea7e79f3153dd076318524d7b"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-combat-b.png",
+      "bytes": 1045974,
+      "sha256": "665742e227208b1983f47e5f76f5f71eaede76caaae3fa32f2132b7e2dfa674a"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-ledge.png",
+      "bytes": 629365,
+      "sha256": "85bb9625552ab9ddb2081c40798a21e91d9439d3624515731fcceeecbef2db8f"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave13-part-a/ripley.png",
+      "bytes": 1077088,
+      "sha256": "40f292d86e21333592f5257f6d5801fa92884907cfb9df0b433a4f76db2a96c2"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/ripley.png",
+      "bytes": 546077,
+      "sha256": "f9a374f66fec8fd432209dd46ba10d15db770d1d4c2ecf33f9cef915702aec06"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-core-browser.mjs",
+      "bytes": 8223,
+      "sha256": "de79aa158f3c0d140300d59c2f94a79a18618c7eb3b0f6c95506a64b9f1da813"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-movement-browser.mjs",
+      "bytes": 9451,
+      "sha256": "0e7cc9b39722c70b4bf0680696a0875a6554ce7051e2bf5e88e62e7e5991e416"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-super-browser.mjs",
+      "bytes": 10612,
+      "sha256": "d2f2c12e581b65aa256b8af8ed108e342a604472b91cf35d546ad55816d2955e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-physical-ledge-browser.mjs",
+      "bytes": 9950,
+      "sha256": "2d9e51949b99d6e296bc7e19e6f69fe5c6bfab9481c2e3b7c5630648b0390e75"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-browser-receipt.mjs",
+      "bytes": 2516,
+      "sha256": "59288876cf8e97304cd05489626daec1d17c50ffbadf56b93e6ff28f1d782a2d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/run-ripley-browser-checks.mjs",
+      "bytes": 3815,
+      "sha256": "04188c8302a675837633e6fc2ecff915f97c4034bc20ff94ab298de090c27628"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/collect-ripley-evidence.mjs",
+      "bytes": 12543,
+      "sha256": "89e3a772f000dc84600a28ed8eb15790c4ce278dbab97f6c12793353d3a80e93"
+    }
+  ],
+  "resourcesAfter": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 139633,
+      "sha256": "36feb2519dbd86d8725e26457fbd81bfe2f73c8909fb89eb5a65b619318d0778"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 116626,
+      "sha256": "1f17cb24e7c710e97420d57c4b0ab9efd17f2101060cd91fe1c5d422f7c1e430"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 66467,
+      "sha256": "142dbe443dac0786e1b6ac98bffbb092d9b2a8069d133ff21bf8053f4e67cf24"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 40009,
+      "sha256": "0a37e6d10c0477b09f91cd0de3208e8321919ce75af0e98ee55e7aaf36e31bf2"
+    },
+    {
+      "path": "src/game/melee/meleeCombatRuntime.js",
+      "bytes": 17966,
+      "sha256": "e230bb9379a25f370b950695e43ff49a08d644aeea0f6321818e9c20533b75cd"
+    },
+    {
+      "path": "src/game/melee/meleeStateMachine.js",
+      "bytes": 7161,
+      "sha256": "e6e26340a9b7b8bd5c045683629598ce0897bd020084b54e90f2fd258cffb647"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/ripleyMeleeManifest.js",
+      "bytes": 505,
+      "sha256": "5c18235ff7098b0abb0008796cfbce260dbae8811b3f3685d831ee182f3d857c"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 15516,
+      "sha256": "6b907806d73649d40dcc710d02243efbdf9a828926de7327fb0a2d852b50ba67"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "bytes": 7602,
+      "sha256": "1faca4e9c32cafe473d5b25517f3e78e867a2eb2e6f2bd326d4dcfb8add32021"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "bytes": 5665,
+      "sha256": "f9e5625bd5c876969bdf3a7ffb992cbb04879cefa7cfaf3e7efa6a1f96de3e56"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave13.js",
+      "bytes": 8730,
+      "sha256": "2f90bf787aa68b5aba41c37a8721203d5862ed14cbe81a9c50fa7acef6145228"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave13PartA.generated.json",
+      "bytes": 396,
+      "sha256": "208776536557c28814f1653135f349a16d448e52d57e6d72ed8c4b61f5db44cd"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave13PartA.generated.json",
+      "bytes": 1147150,
+      "sha256": "53315704a1a0f75fb37a07a3522890092b72e687a1e973181809f46fc9c4370e"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave13PartA.generated.json",
+      "bytes": 602122,
+      "sha256": "9d9dfd996d69c91ff197e6c91625290b958cc084e7de2f41eb03a657484973d1"
+    },
+    {
+      "path": "src/game/combat/combatSourceDefinitionsWave13.js",
+      "bytes": 24109,
+      "sha256": "5e129239053264fdee3f3665c90a0d83e68ac99f94bb5e2a6b9396b4c0b4f7a5"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesWave13Definitions.js",
+      "bytes": 20071,
+      "sha256": "8606e1e5a96a21035a4da4afaf8ea08da922d45d84202b1e08b8d3e86b9a230e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/source-row-review.json",
+      "bytes": 35797,
+      "sha256": "6388f9b82dc8e422cf965294ed20a35e666ab4de802c70ccca944e26723940e1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/native-ripley-segmentation.mjs",
+      "bytes": 5280,
+      "sha256": "6cf9798aedac6933faa8a6113da7376500c25768ef35317fd069926666645aac"
+    },
+    {
+      "path": "src/game/combat/ripleyMeleeMotion.generated.json",
+      "bytes": 229176,
+      "sha256": "4958f3e82f88f4e6718191a285d220d348531dc97dd95c85e94449e09cf879ee"
+    },
+    {
+      "path": "src/game/combat/ripleyMeleeCombat.generated.json",
+      "bytes": 228043,
+      "sha256": "cd800cf8f267fedf42cbafc3317ff12283913b2d119b8a65f414ec720b389643"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/packing-plan.json",
+      "bytes": 19298,
+      "sha256": "22f8a3a11cdaefac8621e09ddafc66663151efbf92f16aaaeb9f15c2c1dabc5a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/native-hand-points.json",
+      "bytes": 1101,
+      "sha256": "ae1628361a2fcbada8f53e8bf58e4e51b4b25ab8c1a111d5ca14abe159d5ba05"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/hand-measurements.json",
+      "bytes": 13766,
+      "sha256": "6c30ffdcecef9983d74b3d07b55d11b58c3bda2b65b4a42952f670afc13df79b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/actual-tool-calls.json",
+      "bytes": 65073,
+      "sha256": "1a6d3819d62c0aac5b2f2ea74172e18e4af70f43cf609f343a9bfd42b4b084e0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/build-native-ripley-atlases.mjs",
+      "bytes": 13124,
+      "sha256": "e1e2c25327aed9b7ed7e27aa59243cf11708eca410ff450a7c9b1032efb9d9aa"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/normalize-ripley-atlases.mjs",
+      "bytes": 358,
+      "sha256": "31d849bf12adb80a04ae8e85d8396986cb1537f0fc65c6d47aba401babc5d6fc"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/measure-ripley-native-hands.mjs",
+      "bytes": 3866,
+      "sha256": "2aff49d1c9543ddd50c110a5ac79285c10942b1886a592a1f25dad29c55361a2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/verify-ripley-atlases.mjs",
+      "bytes": 10777,
+      "sha256": "3fa2e4fc777ad291736bf05d44084ef8ca22cd9494e282c4ed160471f0f3496b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-identity-reference-original.png",
+      "bytes": 1996453,
+      "sha256": "951ee4df72ce746b925a5fde1e717080560c21ae43e43e42d9a69a9f5111d212"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.native.png",
+      "bytes": 2235397,
+      "sha256": "3c357a64f087d5ea07fb14a9e5db65e45e47f23b420157b3f1ff198d272f04a6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-a.prompt.txt",
+      "bytes": 3894,
+      "sha256": "1204f94f385f0b2e02c79d8e597598069038f2dbc8e235ae106321bc84d708f3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.native.png",
+      "bytes": 2362404,
+      "sha256": "f73c26c13e8b62d98045b69cd98b8346edea1eccd2acd5e875941e4762af9a6a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-motion-b.prompt.txt",
+      "bytes": 3899,
+      "sha256": "300988de1f3070a1f90db8de9ad932b3a55c2c3a14ec92dc28ebac6133dc5a9f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.native.png",
+      "bytes": 2350565,
+      "sha256": "e75866812c38979bfa90f8cc786fd72aaa4c9cedb70b50c2abf84d05406c0160"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-defense.prompt.txt",
+      "bytes": 3955,
+      "sha256": "8396c2af7671f0c0d7724c61d2a462fed34d1c057f343a534b6747bbb29c3a12"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.native.png",
+      "bytes": 2464016,
+      "sha256": "088a8fd92437ba08a4259d6b58da13f0a41130b573874dc412983a8b29f9e8bc"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-a.prompt.txt",
+      "bytes": 4232,
+      "sha256": "365f7c6a9009accc4bc38507728ec80e9a5fd911b0f66e03c2dc3989ee46220e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.native.png",
+      "bytes": 2375637,
+      "sha256": "5d579faea90fc745efcad28253fcc62085cc541e541bb942460d13b782acfa45"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-combat-b.prompt.txt",
+      "bytes": 4237,
+      "sha256": "0e4634993f02df9ac637b33a2d4b4e25436df5e82652f413aff33bcf3630b4f5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.native.png",
+      "bytes": 2202555,
+      "sha256": "f3be8a33ea2333ae811b469c237ef3c8b1b6b81156b913e093c8be80b94a490e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-ledge.prompt.txt",
+      "bytes": 4915,
+      "sha256": "6097b4f8a6087481cc298616ddd585bd1b23ca82f4e76539159b1ec4f29e18e0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-movement.native.png",
+      "bytes": 2340048,
+      "sha256": "c61c16ae5bec5a7192cc99f9c06b5b876ff180914ada81965008df92ee5bc901"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-movement.prompt.txt",
+      "bytes": 3406,
+      "sha256": "a5d464c01d51142c8f58f3459fd60f5314c0c727472712c95bcd18afb04b807b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-combat.native.png",
+      "bytes": 2380230,
+      "sha256": "95ac6ae2fe761747a3edf3f18e61f9ae015435eb4ad65474c44a5d8f61032ecb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-combat.prompt.txt",
+      "bytes": 3530,
+      "sha256": "1304e6f2db121cd62d2f8ba9b7104eb37eab6167ad696e7cafd023d7c1f0995e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-ledge.native.png",
+      "bytes": 2224594,
+      "sha256": "c69f6cf5f3263bf652ca254d8decdc8101d6cffbed01c49b4b30a38b1a9f2f7a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/ripley-corrective-ledge.prompt.txt",
+      "bytes": 3975,
+      "sha256": "47c93cdc42bdb6d5d6f70c4f4c5936ba40ef38be3fbf0b66cd11c6fc0feb807d"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-motion-a.png",
+      "bytes": 1299578,
+      "sha256": "8a490e1d056cccd9ffe457a34ae038a8dde82734a23eae850e6e5381926a63a0"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-motion-b.png",
+      "bytes": 980443,
+      "sha256": "ed5c010c867628b762885f9db62eae0b021cca7ac2455420d68d81f81b0d92bb"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-defense.png",
+      "bytes": 1099674,
+      "sha256": "8d234940438770d8e18820f37c342f090d645b4ac84745535df3ea3a5f1b0144"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-combat-a.png",
+      "bytes": 1495295,
+      "sha256": "f305a8b2d9d59a0db09f33b9c03dddb3bf96037ea7e79f3153dd076318524d7b"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-combat-b.png",
+      "bytes": 1045974,
+      "sha256": "665742e227208b1983f47e5f76f5f71eaede76caaae3fa32f2132b7e2dfa674a"
+    },
+    {
+      "path": "public/sprites/generated/melee-ripley-wave13/ripley-ledge.png",
+      "bytes": 629365,
+      "sha256": "85bb9625552ab9ddb2081c40798a21e91d9439d3624515731fcceeecbef2db8f"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave13-part-a/ripley.png",
+      "bytes": 1077088,
+      "sha256": "40f292d86e21333592f5257f6d5801fa92884907cfb9df0b433a4f76db2a96c2"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave13-part-a/ripley.png",
+      "bytes": 546077,
+      "sha256": "f9a374f66fec8fd432209dd46ba10d15db770d1d4c2ecf33f9cef915702aec06"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-core-browser.mjs",
+      "bytes": 8223,
+      "sha256": "de79aa158f3c0d140300d59c2f94a79a18618c7eb3b0f6c95506a64b9f1da813"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-movement-browser.mjs",
+      "bytes": 9451,
+      "sha256": "0e7cc9b39722c70b4bf0680696a0875a6554ce7051e2bf5e88e62e7e5991e416"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-super-browser.mjs",
+      "bytes": 10612,
+      "sha256": "d2f2c12e581b65aa256b8af8ed108e342a604472b91cf35d546ad55816d2955e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-physical-ledge-browser.mjs",
+      "bytes": 9950,
+      "sha256": "2d9e51949b99d6e296bc7e19e6f69fe5c6bfab9481c2e3b7c5630648b0390e75"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/ripley-browser-receipt.mjs",
+      "bytes": 2516,
+      "sha256": "59288876cf8e97304cd05489626daec1d17c50ffbadf56b93e6ff28f1d782a2d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/run-ripley-browser-checks.mjs",
+      "bytes": 3815,
+      "sha256": "04188c8302a675837633e6fc2ecff915f97c4034bc20ff94ab298de090c27628"
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/browser/collect-ripley-evidence.mjs",
+      "bytes": 12543,
+      "sha256": "89e3a772f000dc84600a28ed8eb15790c4ce278dbab97f6c12793353d3a80e93"
+    }
+  ],
+  "productionInputsStableDuringRun": true,
+  "receiptOrigin": "await-browser-close-and-post-close-input-hash"
+}

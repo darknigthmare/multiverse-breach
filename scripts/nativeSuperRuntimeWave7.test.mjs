@@ -7,7 +7,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 
 let supportsNative, getVisual, drawVisual, getCharacterVisual, drawCharacterVisual, supportsTracked, sampleMotion, sampleCharacterMotion, preloadAssets, getSummonAssets, beginMeleeShield;
-let vite, EngineRpg, EngineSmash, EngineFighter, heroes, resolveMeleeSuper, tickMeleeCombatActor, resolveCombatAbility;
+let vite, EngineRpg, EngineSmash, EngineFighter, heroes, resolveMeleeSuper, tickMeleeCombatActor, resolveCombatAbility, historicalSnapshot;
 const observations = [], originalImage = globalThis.Image;
 const engines = [], noop = () => {}, particles = { add: noop };
 const dummy = id => ({
@@ -17,6 +17,34 @@ const dummy = id => ({
   defense: { name: 'Training guard', type: 'shield', reduce: 0.4, dur: 1 }, special: { name: 'Training finish', type: 'bullet', dmg: 2 }
 });
 const hero = id => { const h = heroes.find(x => x.id === id); assert.ok(h, id); return h; };
+const revisedByWave13 = new Set(['luke', 'vader', 'obi_wan']);
+const historicalDigests = {
+  luke: '241f89edc88b5b75cfa32629344767ac97ee9b91e321946d63f06b38d35752b8',
+  vader: '1327861abf4aeb955030a26aad36e241b79a00de0193fb3516ac057289d514e3',
+  obi_wan: 'cc6a60ce98dcadd2f9f91fe2104c78faefeddeaecde36d4b94a07fb5255a6839'
+};
+const selectedWave13 = {
+  luke: { secondary: 'Contre au sabre de Luke', special: 'Enchaînement au sabre vert de Luke', sourceWork: 'Star Wars: Return of the Jedi (1983), adult Luke Skywalker aboard the second Death Star', nativeArtworkAvailable: true },
+  vader: { secondary: 'Frappe mesurée de Vador', special: 'Taille au sabre rouge de Vador', sourceWork: 'Star Wars: The Empire Strikes Back (1980), Darth Vader at Bespin', nativeArtworkAvailable: false },
+  obi_wan: { secondary: 'Contre de garde d’Obi-Wan', special: 'Contre au sabre bleu d’Obi-Wan', sourceWork: 'Star Wars: Revenge of the Sith (2005), adult Obi-Wan Kenobi', nativeArtworkAvailable: false }
+};
+// Historical profiles are explicit data fixtures, never a mutation of the live
+// selected catalog or a production resolver override. Resolve raw snapshot
+// actions under an unregistered fixture ID, then restore their recorded source
+// ID for admission to the old pure visual helper.
+function historicalAbility(id, slot = 'special') {
+  if (!revisedByWave13.has(id)) return resolveCombatAbility(hero(id), slot);
+  const basic = historicalSnapshot.authored[id], completion = historicalSnapshot.completion[id];
+  const record = basic[slot] ? basic : completion;
+  assert.ok(record?.[slot], id + ':' + slot + ' historical action missing');
+  const actor = { ...hero(id), ...basic, special: basic.special || completion.special,
+    id: 'wave7-snapshot:' + id, sourceHeroId: undefined, sourceId: undefined };
+  const profile = resolveCombatAbility(actor, slot);
+  assert.deepEqual(profile.sourceAbility.name, record[slot].name);
+  return { ...profile, id: id + (slot === 'special' ? ':super' : ':' + slot), sourceHeroId: id,
+    sourceAbility: { ...profile.sourceAbility, sourceHeroId: id },
+    provenance: { ...profile.provenance, sourceHeroId: id, sourceWork: record.sourceWork, sourceReference: record.sourceReference, identityAuthored: true } };
+}
 const hp = actors => actors.map(x => x.currentHp);
 const meter = context => context.mode === 'fighter' ? context.actor.meter : context.actor.specialCharge;
 const setMeter = (context, value) => { if (context.mode === 'fighter') context.actor.meter = value; else context.actor.specialCharge = value; };
@@ -108,6 +136,11 @@ before(async () => {
   ({ EngineSmash } = await vite.ssrLoadModule('/src/game/engineSmash.js?native-wave7'));
   ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js?native-wave7'));
   ({ HEROES_DB: heroes } = await vite.ssrLoadModule('/src/game/heroes.js'));
+  historicalSnapshot = JSON.parse(await readFile('docs/combat-fidelity-wave13-2026-10-24/ability-baseline-before.json'));
+  for (const id of revisedByWave13) {
+    const record = { authored: historicalSnapshot.authored[id], completion: historicalSnapshot.completion[id] ?? null };
+    assert.equal(createHash('sha256').update(JSON.stringify(record)).digest('hex'), historicalDigests[id], id + ': historical W7 record changed');
+  }
   ({ resolveMeleeSuper, resolveCombatAbility } = await vite.ssrLoadModule('/src/game/combatIdentity.js'));
   ({ tickMeleeCombatActor, beginMeleeShield } = await vite.ssrLoadModule('/src/game/melee/meleeCombatRuntime.js'));
   ({ supportsNativeSuperWave7: supportsNative, getNativeSuperVisualStateWave7: getVisual, drawNativeSuperVisualsWave7: drawVisual, sampleNativeSuperMotionWave7: sampleMotion, supportsTrackedProjectileVisualWave7: supportsTracked, preloadNativeSuperAssetsWave7: preloadAssets } = await vite.ssrLoadModule('/src/game/combat/nativeSuperVisualsWave7.js'));
@@ -171,9 +204,21 @@ function purePausedDraw(c) {
   return first;
 }
 
-test('18 explicit Wave7 identities dispatch purely, reject mixed identity and honor only supplied confirmed contacts', () => {
+function assertAcceptedContactArt(c, calls) {
+  const id = c.actor.sourceHeroId || c.actor.sourceId || c.actor.id;
+  if (selectedWave13[id]?.nativeArtworkAvailable === false) {
+    // A real accepted hit remains required above. Refused W13 art must produce
+    // no invented native accent, while the authoritative impact point survives.
+    assert.equal(offensiveRings(calls).length, 0, id + ': refused W13 artwork painted contact art');
+    const profile = resolveMeleeSuper(c.actor);
+    const state = getCharacterVisual({ actor: c.actor, profile, action: { duration: profile.duration, elapsed: profile.hitAt, hitAt: profile.hitAt, facing: c.facing }, target: c.targets[0], contactVisual: confirmedOf(c) });
+    assert.equal(state.family, 'native-wave13'); assert.equal(state.nativeArtworkAvailable, false);
+  } else assert.ok(offensiveRings(calls).length > 0);
+}
+
+test('18 historical Wave7 profiles still dispatch purely, reject mixed identity and honor only supplied confirmed contacts', () => {
   for (const id of nativeIds) for (const facing of [1,-1]) for (const progress of [0.15,0.55,0.9]) {
-    const actor = { ...hero(id), x: 500, y: 350, currentHp: 1000 }, profile = resolveMeleeSuper(actor);
+    const actor = { ...hero(id), x: 500, y: 350, currentHp: 1000 }, profile = historicalAbility(id);
     assert.equal(supportsNative(profile), true, id);
     assert.equal(supportsTracked(profile), trackedIds.includes(id), id);
     const options = { actor, profile, action: { duration: profile.duration, elapsed: progress * profile.duration, hitAt: profile.hitAt, facing },
@@ -197,7 +242,11 @@ test('18 explicit Wave7 identities dispatch purely, reject mixed identity and ho
       { profile: { ...profile, universe: 'Wrong' } }, { profile: { ...profile, effect: id === 'obi_wan' ? 'damage' : 'heal' } }
     ]) assert.equal(getVisual({ ...options, ...invalid }), null, id);
     assert.deepEqual(getVisual({ ...options, actor: { ...actor, id: 'local-p2', sourceHeroId: id } }), state);
-    assert.deepEqual(sampleCharacterMotion({ heroId: id, universe: actor.universe, phase: 'super', progress }), sampleMotion({ heroId: id, universe: actor.universe, phase: 'super', progress }));
+    const oldMotion = sampleMotion({ heroId: id, universe: actor.universe, phase: 'super', progress });
+    if (revisedByWave13.has(id)) {
+      assert.deepEqual(sampleCharacterMotion({ heroId: id, universe: actor.universe, phase: 'super', progress }), { x: 0, y: 0 }, id + ': selected W13 native bodies own movement');
+      if (id === 'obi_wan') assert.deepEqual(oldMotion, { x: 0, y: 0 }); else assert.ok(oldMotion.x > 0);
+    } else assert.deepEqual(sampleCharacterMotion({ heroId: id, universe: actor.universe, phase: 'super', progress }), oldMotion);
   }
   assert.equal(drawVisual(recorder().ctx, null), false);
 });
@@ -246,7 +295,7 @@ for (const mode of ['melee','fighter']) for (const side of ['player','opponent']
       const beforeHp = target.currentHp, point = { x: target.x, y: target.y };
       assert.equal(commit(c), true); atImpact(c);
       assert.ok(target.currentHp < beforeHp); assert.deepEqual(confirmedOf(c), { confirmed: true, ...point });
-      const first = purePausedDraw(c); assert.ok(offensiveRings(first).length > 0);
+      const first = purePausedDraw(c); assertAcceptedContactArt(c, first);
       target.x -= c.facing * 500; target.y -= 200;
       assert.deepEqual(render(c), first, 'Accepted point must not chase knockback or a dead target');
       const hpAfter = target.currentHp; advance(c, 0.01); assert.equal(target.currentHp, hpAfter);
@@ -272,7 +321,7 @@ for (const side of ['player','opponent']) test(`RPG ${side} all17 native supers 
       assert.equal(offensiveRings(purePausedDraw(c)).length, 0, `${id}:${reason} claimed contact without damage`);
     } else {
       const point = confirmedOf(c); assert.equal(point?.confirmed, true, id); assert.ok(targets.some((t, i) => t.currentHp < before[i]));
-      const first = purePausedDraw(c); assert.ok(offensiveRings(first).length > 0);
+      const first = purePausedDraw(c); assertAcceptedContactArt(c, first);
       targets.forEach(t => { t.x += 500; t.y += 120; t.currentHp = 0; });
       assert.deepEqual(render(c), first, `${id} contact followed a moved/dead victim`);
     }
@@ -337,35 +386,68 @@ for (const side of ['player','opponent']) test(`Fighter ${side} projectile misse
   }
 });
 
-for (const mode of ['rpg','melee','fighter']) for (const side of ['player','opponent']) test(`${mode} ${side} Star Wars loadouts and personal Soresu preserve effects without adding damage`, () => {
-  for (const id of ['luke','vader','obi_wan']) {
-    const c = make(mode, side, id, true), { actor, allies, targets } = c;
-    for (const slot of ['simple','secondary']) {
-      const p = resolveCombatAbility(actor, slot);
-      assert.equal(p.effect, id === 'obi_wan' && slot === 'secondary' ? 'guard' : 'damage');
-      assert.equal(p.healRatio, 0);
-    }
-    const defense = resolveCombatAbility(actor, 'defense'); assert.equal(defense.effect, 'guard'); assert.equal(defense.targetSide, 'self'); assert.equal(defense.multiplier, 0);
-    if (id !== 'obi_wan') { assert.equal(resolveMeleeSuper(actor).delivery, 'melee'); continue; }
-    const profile = resolveMeleeSuper(actor); assert.equal(profile.name, 'Soresu — défense au sabre'); assert.equal(profile.effect, 'guard'); assert.equal(profile.targetSide, 'self'); assert.equal(profile.multiplier, 0);
-    actor.currentHp *= 0.6; const before = hp([...allies,...targets]); assert.equal(commit(c), true); assert.equal(meter(c), 0);
-    advance(c, 0.1); const first = purePausedDraw(c); assert.equal(offensiveRings(first).length, 0); advance(c, 0.5);
-    assert.deepEqual(hp([...allies,...targets]), before, 'Soresu is personal protection, not heal or attack');
-    const active = mode === 'rpg' ? actor.rpgGuardTicks : mode === 'fighter' ? actor.superGuardSeconds : actor.meleeSuperSupport?.remaining;
-    assert.ok(active > 0); for (const other of [...allies.slice(1),...targets]) assert.ok(!(other.rpgGuardTicks || other.superGuardSeconds || other.meleeSuperSupport));
+test('historical Luke Force push, Vader choke and Obi-Wan Soresu remain pinned direct profiles distinct from selected W13', () => {
+  const luke = historicalAbility('luke', 'secondary'), vader = historicalAbility('vader', 'secondary');
+  assert.equal(luke.name, 'Poussée de Force de Luke'); assert.equal(luke.delivery, 'area'); assert.equal(luke.effect, 'damage');
+  assert.equal(vader.name, 'Étranglement de Force de Vader'); assert.equal(vader.shape, 'single'); assert.equal(vader.effect, 'damage');
+  const soresu = historicalAbility('obi_wan');
+  assert.equal(soresu.name, 'Soresu — défense au sabre'); assert.equal(soresu.effect, 'guard');
+  assert.equal(soresu.targetSide, 'self'); assert.equal(soresu.multiplier, 0); assert.equal(soresu.healRatio, 0);
+  assert.equal(soresu.guardReduce, 0.6); assert.equal(soresu.effectDuration, 4); assert.equal(soresu.meterCost, 100);
+  assert.equal(historicalAbility('obi_wan', 'secondary').effect, 'guard');
+  for (const id of revisedByWave13) {
+    const current = resolveMeleeSuper(hero(id)), expected = selectedWave13[id];
+    assert.equal(current.name, expected.special); assert.equal(current.provenance.sourceWork, expected.sourceWork);
+    assert.equal(current.effect, 'damage'); assert.equal(current.delivery, 'melee'); assert.equal(current.targetSide, 'enemy');
+    assert.equal(supportsNative(current), false, id + ': W13 must not borrow historical W7 accents');
+    const state = getCharacterVisual({ actor: { ...hero(id), x: 500, y: 350 }, profile: current,
+      action: { duration: current.duration, elapsed: current.hitAt, hitAt: current.hitAt, facing: 1 }, target: { x: 580, y: 350 }, contactVisual: { confirmed: true, x: 580, y: 350 } });
+    assert.equal(state.family, 'native-wave13'); assert.equal(state.nativeArtworkAvailable, expected.nativeArtworkAvailable);
+    assert.equal(state.source1to1Verified, false);
   }
 });
 
-for (const mode of ['rpg','melee','fighter']) for (const side of ['player','opponent']) test(`${mode} ${side} Luke/Vader/Han ordinary kits execute their real damage and personal guard slots`, () => {
-  for (const id of ['luke','vader','han_solo']) for (const slot of ['simple','secondary','defense']) {
+for (const side of ['player','opponent']) test(`Melee ${side} historical direct-profile Soresu still guards only its caller without damage or healing`, () => {
+  const c = make('melee', side, 'obi_wan', true), profile = historicalAbility('obi_wan');
+  c.actor.currentHp *= 0.6; const before = hp([...c.allies, ...c.targets]);
+  assert.equal(c.engine.triggerMeleeSuper(c.actor, profile), true); assert.equal(meter(c), 0);
+  advance(c, 0.1); assert.equal(offensiveRings(purePausedDraw(c)).length, 0); advance(c, 0.5);
+  assert.deepEqual(hp([...c.allies, ...c.targets]), before);
+  assert.equal(c.actor.meleeSuperSupport.effect, 'guard'); assert.ok(c.actor.meleeSuperSupport.remaining > 0);
+  for (const other of [...c.allies.slice(1), ...c.targets]) assert.ok(!other.meleeSuperSupport);
+});
+
+for (const mode of ['rpg','melee','fighter']) for (const side of ['player','opponent']) test(`${mode} ${side} selected W13 Star Wars saber loadouts preserve offensive supers and personal guard`, () => {
+  for (const id of ['luke','vader','obi_wan']) {
+    const c = make(mode, side, id, true), { actor, allies, targets } = c, expected = selectedWave13[id];
+    for (const slot of ['simple','secondary']) {
+      const p = resolveCombatAbility(actor, slot);
+      assert.equal(p.effect, 'damage'); assert.equal(p.delivery, 'melee'); assert.equal(p.healRatio, 0);
+      assert.equal(p.provenance.sourceWork, expected.sourceWork);
+      if (slot === 'secondary') assert.equal(p.name, expected.secondary);
+    }
+    const defense = resolveCombatAbility(actor, 'defense'); assert.equal(defense.effect, 'guard'); assert.equal(defense.targetSide, 'self'); assert.equal(defense.multiplier, 0);
+    const profile = resolveMeleeSuper(actor); assert.equal(profile.name, expected.special); assert.equal(profile.effect, 'damage'); assert.equal(profile.targetSide, 'enemy'); assert.ok(profile.multiplier > 0);
+    actor.currentHp *= 0.6; const beforeAllies = hp(allies), beforeEnemies = hp(targets);
+    assert.equal(commit(c), true); assert.equal(meter(c), 0); advance(c, 0.1); pause(c); advance(c, 1.4);
+    assert.deepEqual(hp(allies), beforeAllies, 'Selected saber attacks cannot heal or guard their own party');
+    assert.ok(targets.some((target, i) => target.currentHp < beforeEnemies[i]), id + ': selected offensive super did not hit');
+    for (const unit of allies) assert.ok(!(unit.rpgGuardTicks || unit.superGuardSeconds || unit.meleeSuperSupport));
+  }
+});
+
+for (const mode of ['rpg','melee','fighter']) for (const side of ['player','opponent']) test(`${mode} ${side} selected Luke/Vader/Obi-Wan/Han ordinary kits execute their real damage and personal guard slots`, () => {
+  for (const id of ['luke','vader','obi_wan','han_solo']) for (const slot of ['simple','secondary','defense']) {
     const c = make(mode, side, id, true), { engine, actor, allies, targets } = c;
     targets[0].x = actor.x + c.facing * 40; targets[1].x = actor.x + c.facing * 55;
     const profile = resolveCombatAbility(actor, slot), before = hp([...allies,...targets]);
     assert.ok(profile.provenance.sourceWork.startsWith('Star Wars'));
     assert.equal(profile.statusEffect, null); assert.equal(profile.healRatio, 0);
     assert.doesNotMatch(profile.name, /mind|mental|Kessel|Marche impériale/i);
-    if (slot === 'secondary' && id === 'luke') { assert.equal(profile.name, 'Poussée de Force de Luke'); assert.equal(profile.delivery, 'area'); }
-    if (slot === 'secondary' && id === 'vader') { assert.equal(profile.name, 'Étranglement de Force de Vader'); assert.equal(profile.shape, 'single'); }
+    if (selectedWave13[id]) {
+      assert.equal(profile.provenance.sourceWork, selectedWave13[id].sourceWork);
+      if (slot === 'secondary') { assert.equal(profile.name, selectedWave13[id].secondary); assert.equal(profile.delivery, 'melee'); assert.equal(profile.shape, 'single'); }
+    }
     if (id === 'han_solo' && slot !== 'defense') assert.equal(profile.delivery, 'projectile');
     assert.equal(commitSlot(c, slot), true, `${id}:${slot}`);
     advance(c, slot === 'defense' ? 0.3 : 1.6);

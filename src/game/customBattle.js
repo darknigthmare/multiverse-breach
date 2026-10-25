@@ -1,4 +1,5 @@
 import { ENEMIES_DB } from './enemies';
+import { TACTICS_BATTLEFIELDS, getUniverseTacticsBattlefield } from './tacticsBattlefields';
 import {
   STAGE_EVENT_INTENSITIES,
   STAGE_VARIANTS,
@@ -17,6 +18,7 @@ export const DEFAULT_CUSTOM_BATTLE_PRESET = Object.freeze({
   opponentTeamIds: [],
   enemyIds: [],
   stageArchiveId: null,
+  tacticsBattlefieldId: 'auto',
   battleMusicId: null,
   stageMusicId: null,
   fieldSuperId: null,
@@ -70,6 +72,9 @@ export const normalizeCustomBattlePreset = (preset = {}, options = {}) => {
     opponentTeamIds,
     enemyIds,
     stageArchiveId: optionalId(merged.stageArchiveId),
+    tacticsBattlefieldId: Object.hasOwn(TACTICS_BATTLEFIELDS, merged.tacticsBattlefieldId)
+      ? merged.tacticsBattlefieldId
+      : 'auto',
     battleMusicId: optionalId(merged.battleMusicId),
     stageMusicId: optionalId(merged.stageMusicId),
     fieldSuperId: optionalId(merged.fieldSuperId),
@@ -167,7 +172,13 @@ export const buildCustomRuntimeStage = ({
   cosmetics = {},
   nonce = 0
 }) => {
-  const universe = archive?.universe || 'Nexus de Convergence';
+  const archiveUniverse = archive?.universe || 'Nexus de Convergence';
+  const selectedTerrain = preset.mode === 'Tactics'
+    ? TACTICS_BATTLEFIELDS[preset.tacticsBattlefieldId]
+      || getUniverseTacticsBattlefield({ universe: archiveUniverse, name: archive?.name }, { allowDefault: true })
+    : null;
+  const terrainSource = selectedTerrain?.formatVersion === 2 ? selectedTerrain.source : null;
+  const universe = terrainSource?.universe || archiveUniverse;
   const cpuDifficulty = preset.opponentControl === 'cpu'
     ? {
         training: { hp: 0.82, atk: 0.78, spd: 0.86 },
@@ -212,7 +223,7 @@ export const buildCustomRuntimeStage = ({
   );
   return {
     id: `custom-${preset.mode}-${universe}-${nonce}`,
-    name: `Simulation Custom - ${universe}`,
+    name: terrainSource ? (selectedTerrain.label?.fr || selectedTerrain.id) : `Simulation Custom - ${universe}`,
     universe,
     mode: preset.mode,
     difficulty: 'Custom',
@@ -220,8 +231,10 @@ export const buildCustomRuntimeStage = ({
     goldPrize: 0,
     shardPrize: 0,
     tokenPrize: 0,
-    image: archive?.image || null,
+    image: preset.mode === 'Tactics' ? null : archive?.image || null,
     isCustomBattle: true,
+    tacticsBattlefieldId: selectedTerrain?.id || null,
+    tacticsSource: terrainSource || null,
     disableItems: !preset.items,
     disableHazards: (preset.mode !== 'Smash' && !preset.hazards)
       || preset.stageVariant === STAGE_VARIANTS.competitive
@@ -237,6 +250,7 @@ export const buildCustomRuntimeStage = ({
       stageVariant: preset.stageVariant,
       stageEventIntensity: preset.stageEventIntensity,
       stageTopologyId: preset.stageTopologyId,
+      tacticsBattlefieldId: preset.tacticsBattlefieldId || 'auto',
       skipPreMatchInTraining: preset.difficulty === 'training' && preset.skipPreMatchInTraining,
       singleRoster: true,
       enemyData: runtimeEnemyData,

@@ -1,0 +1,674 @@
+{
+  "passed": true,
+  "preliminary": false,
+  "startedAt": "2026-10-25T06:21:57.877Z",
+  "browserClosedAt": "2026-10-25T06:22:26.915Z",
+  "finishedAt": "2026-10-25T06:22:32.104Z",
+  "allBrowserWindowsClosed": true,
+  "harness": "docs/combat-fidelity-wave13-2026-10-24/browser/native-presentations.mjs",
+  "harnessSha256": "e66397c45cd896319467f3510c80ce061d2e8ffa5a1f23a5286f0dac28e638de",
+  "source1to1Verified": false,
+  "characters": 268,
+  "full32Count": 266,
+  "partialCount": 2,
+  "partialPoses": 32,
+  "partialDetails": [
+    {
+      "heroId": "beast_boy_tt",
+      "poses": 8,
+      "phases": [
+        "fatality",
+        "super"
+      ]
+    },
+    {
+      "heroId": "janine_gb",
+      "poses": 24,
+      "phases": [
+        "intro",
+        "outro",
+        "roundVictory",
+        "roundDefeat",
+        "victory",
+        "defeat"
+      ]
+    }
+  ],
+  "phases": 2136,
+  "geometryChecks": 17088,
+  "loadedImages": 275,
+  "actualFrameDraws": 17088,
+  "realDrawImageCalls": 17536,
+  "fixedProgressFrames": 17088,
+  "rejectedCrossedIdentities": 536,
+  "immutableActors": 17408,
+  "historicalFallbackFrameDraws": 128,
+  "immutableAssetRegistry": true,
+  "rendererUrl": "/src/game/renderer.js",
+  "catalogUrl": "/src/game/combat/characterAnimationCatalog.js",
+  "historicalDrawGeometryUnchanged": 14848,
+  "historicalFallbackDrawGeometryUnchanged": 128,
+  "newCharacters": 35,
+  "newFrameDraws": 2240,
+  "historicalAssetRecordsUnchanged": 233,
+  "historicalRegistryHashesPreserved": 104,
+  "historicalPngHashesPreserved": 556,
+  "historicalAudit": "docs/combat-fidelity-wave12-2026-10-23/current.json",
+  "historicalAuditSha256": "4f75b223b70be4acdaf644763b915ec7c2dd551c56dcdf4b036735614c95b13a",
+  "productionInputsUnchanged": true,
+  "productionInputsStableDuringRun": true,
+  "productionInputCount": 1162,
+  "productionInputSha256": "75110f542f69aa0cb5c7990b34a7164c599aabbd60336527ef6a4c58094cdf32",
+  "productionFreezePath": "docs/combat-fidelity-wave13-2026-10-24/production-freeze.json",
+  "productionFreezeSha256": "8154f653bc99249cd928dc9ccbc0d95b5e8b534ee8bf5e3181b30df8aaae9a0e",
+  "productionFreezeFileCount": 1142,
+  "actualDeliveredIds": [
+    "ripley",
+    "hicks",
+    "bishop",
+    "dallas_alien",
+    "parker_alien",
+    "lambert_alien",
+    "ash_alien",
+    "amanda_ripley",
+    "chell",
+    "atlas",
+    "pbody",
+    "glados",
+    "wheatley",
+    "doug_rattmann",
+    "rincewind_dw",
+    "vimes_dw",
+    "granny_dw",
+    "twoflower_dw",
+    "death_dw",
+    "nanny_ogg_dw",
+    "meryl_mgs",
+    "liquid_snake",
+    "the_boss_mgs",
+    "ocelot_mgs",
+    "gray_fox",
+    "big_boss",
+    "luke",
+    "aayla_secura",
+    "darth_revan",
+    "joel_tlou",
+    "tess_tlou",
+    "tommy_tlou",
+    "dina_tlou2",
+    "abby_tlou2",
+    "hayden"
+  ],
+  "missingNativeHeroIds": [
+    "ahsoka_adult",
+    "darth_maul",
+    "obi_wan",
+    "vader",
+    "yoda"
+  ],
+  "pendingIds": [],
+  "initialRefusalIds": [
+    "darth_maul",
+    "obi_wan",
+    "vader",
+    "yoda"
+  ],
+  "sourceRejectedIds": [
+    "ahsoka_adult"
+  ],
+  "refusals": [
+    {
+      "heroId": "darth_maul",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/darth_maul-tool-result.json",
+      "sha256": "9c047bf093288ac9323cf99623c75d0393785999cde0ef00fc9c655e17c7f4c4",
+      "code": "moderation_blocked",
+      "requestId": "f23d9e50-2194-4954-9622-5d3baf0ba4b0",
+      "classification": "initial-request-refused",
+      "initialImageReturned": false,
+      "retryPerformed": false,
+      "referenceAsset": "/sprites/generated/heroes/star-wars/darth-maul.png",
+      "referenceSha256": "88ad49c11b99a5a5322252092e63029668dce6378be143db7b5d9b4e5b67dccd"
+    },
+    {
+      "heroId": "obi_wan",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/obi_wan-tool-result.json",
+      "sha256": "9cb3fd926c46e574fd54870687111ffa42ed7307bf0c722a50cb5bbbbfb6c3a4",
+      "code": "moderation_blocked",
+      "requestId": "bce38d16-ca8b-4baf-af70-ab3b7b6f7014",
+      "classification": "initial-request-refused",
+      "initialImageReturned": false,
+      "retryPerformed": false,
+      "referenceAsset": "/sprites/generated/heroes/star-wars/obi-wan.png",
+      "referenceSha256": "5e2dcd725a8ebbcab1a24715ced90885016ab025b8ec7dcd119774475b0a12d3"
+    },
+    {
+      "heroId": "vader",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/vader-tool-result.json",
+      "sha256": "83aba39b23221d820605ccfedf53c6491e46d744955ed638f212639a4b1a8a73",
+      "code": "moderation_blocked",
+      "requestId": "6d2fcf25-d729-4951-99a9-55280cd9fef7",
+      "classification": "initial-request-refused",
+      "initialImageReturned": false,
+      "retryPerformed": false,
+      "referenceAsset": "/sprites/generated/heroes/star-wars/vader.png",
+      "referenceSha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464"
+    },
+    {
+      "heroId": "yoda",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/yoda-tool-result.json",
+      "sha256": "72c33e263510d8a29b1e2f918939cee27ac27dfe78614b69e9425fd7fedd7e24",
+      "code": "moderation_blocked",
+      "requestId": "c7fa473f-2066-426b-83ef-a9292ccf8d51",
+      "classification": "initial-request-refused",
+      "initialImageReturned": false,
+      "retryPerformed": false,
+      "referenceAsset": "/sprites/generated/heroes/star-wars/yoda.png",
+      "referenceSha256": "44b2b09fe1ca526bd2e9f24efc377f0e4e97984a867d5d6371d4e1baaa74bfc5"
+    },
+    {
+      "heroId": "ahsoka_adult",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/part-b/request-failures.json",
+      "sha256": "60edf654ecd715c1ae7a4ae2a3c3456f3bb897f4f70e1e2dd009d7e82ceb4846",
+      "code": "moderation_blocked",
+      "classification": "source-rejected-and-corrections-refused",
+      "initialImageReturned": true,
+      "initialReceipt": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ahsoka_adult-tool-result.json",
+      "initialReceiptSha256": "7dfb6c69c54771a2166ea50ead2c7028ed4383f66461bf62d65b20bd3b44605d",
+      "corrections": [
+        {
+          "receipt": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ahsoka_adult-correction32-tool-result.json",
+          "receiptSha256": "7234435d8cb2eb81790cd4e44c2ad13ea5aab679e9bf72c964448d2f6a9eb3e9",
+          "requestId": "4484f0ed-811b-4aff-be9b-a45cf1fa8ad5",
+          "code": "moderation_blocked",
+          "imageReturned": false,
+          "startedAt": "2026-10-24T02:34:04.506Z",
+          "finishedAt": "2026-10-24T02:35:13.040Z"
+        },
+        {
+          "receipt": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ahsoka_adult-correction16-tool-result.json",
+          "receiptSha256": "47bf997275286ab6f3c5fe60fd0b252cd692e16c48f43741ff5e07c99b9cfa2f",
+          "requestId": "78dd8a46-0a73-4d7f-9d15-389cfe158a8f",
+          "code": "moderation_blocked",
+          "imageReturned": false,
+          "startedAt": "2026-10-24T02:34:04.506Z",
+          "finishedAt": "2026-10-24T02:35:57.215Z"
+        }
+      ],
+      "rejectedSources": [
+        {
+          "path": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ahsoka_adult-native48.png",
+          "sha256": "ef49efd098577d9ce7d8aa1841cf7b40159e2a7a86db2f85791aa6261066df1e",
+          "rowCounts": [
+            8,
+            8,
+            8,
+            7,
+            8,
+            8
+          ],
+          "acceptedForDelivery": false,
+          "reason": "Oversized white saber trails merge separate silhouettes; exact complete32/base16 coverage cannot be honestly reconstructed."
+        },
+        {
+          "path": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/ahsoka_adult-correction48.png",
+          "sha256": "cd1e0b39be88d08f3f9c5b0f324ffcdd502fc6d323c6af6020758035fd0b23f6",
+          "rowCounts": [
+            8,
+            8,
+            7,
+            6,
+            8,
+            8
+          ],
+          "acceptedForDelivery": false,
+          "reason": "Oversized white saber trails merge separate silhouettes; exact complete32/base16 coverage cannot be honestly reconstructed."
+        }
+      ],
+      "retryPerformed": false,
+      "referenceAsset": "/sprites/generated/heroes/star-wars/ahsoka-adult.png",
+      "referenceSha256": "33447986f3ed85a2b987b80d79d4f4494202e41f6c0faff3499d2584f1e714c8"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "captures": [
+    {
+      "heroId": "ripley",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-ripley.png"
+    },
+    {
+      "heroId": "hicks",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-hicks.png"
+    },
+    {
+      "heroId": "bishop",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-bishop.png"
+    },
+    {
+      "heroId": "dallas_alien",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-dallas_alien.png"
+    },
+    {
+      "heroId": "parker_alien",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-parker_alien.png"
+    },
+    {
+      "heroId": "lambert_alien",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-lambert_alien.png"
+    },
+    {
+      "heroId": "ash_alien",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-ash_alien.png"
+    },
+    {
+      "heroId": "amanda_ripley",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-amanda_ripley.png"
+    },
+    {
+      "heroId": "chell",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-chell.png"
+    },
+    {
+      "heroId": "atlas",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-atlas.png"
+    },
+    {
+      "heroId": "pbody",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-pbody.png"
+    },
+    {
+      "heroId": "glados",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-glados.png"
+    },
+    {
+      "heroId": "wheatley",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-wheatley.png"
+    },
+    {
+      "heroId": "doug_rattmann",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-doug_rattmann.png"
+    },
+    {
+      "heroId": "rincewind_dw",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-rincewind_dw.png"
+    },
+    {
+      "heroId": "vimes_dw",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-vimes_dw.png"
+    },
+    {
+      "heroId": "granny_dw",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-granny_dw.png"
+    },
+    {
+      "heroId": "twoflower_dw",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-twoflower_dw.png"
+    },
+    {
+      "heroId": "death_dw",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-death_dw.png"
+    },
+    {
+      "heroId": "nanny_ogg_dw",
+      "part": "A",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-nanny_ogg_dw.png"
+    },
+    {
+      "heroId": "meryl_mgs",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-meryl_mgs.png"
+    },
+    {
+      "heroId": "liquid_snake",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-liquid_snake.png"
+    },
+    {
+      "heroId": "the_boss_mgs",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-the_boss_mgs.png"
+    },
+    {
+      "heroId": "ocelot_mgs",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-ocelot_mgs.png"
+    },
+    {
+      "heroId": "gray_fox",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-gray_fox.png"
+    },
+    {
+      "heroId": "big_boss",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-big_boss.png"
+    },
+    {
+      "heroId": "luke",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-luke.png"
+    },
+    {
+      "heroId": "aayla_secura",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-aayla_secura.png"
+    },
+    {
+      "heroId": "darth_revan",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-darth_revan.png"
+    },
+    {
+      "heroId": "joel_tlou",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-joel_tlou.png"
+    },
+    {
+      "heroId": "tess_tlou",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-tess_tlou.png"
+    },
+    {
+      "heroId": "tommy_tlou",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-tommy_tlou.png"
+    },
+    {
+      "heroId": "dina_tlou2",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-dina_tlou2.png"
+    },
+    {
+      "heroId": "abby_tlou2",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-abby_tlou2.png"
+    },
+    {
+      "heroId": "hayden",
+      "part": "B",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-hayden.png"
+    }
+  ],
+  "refusedCaptures": [
+    {
+      "heroId": "darth_maul",
+      "sheet": "/sprites/generated/heroes/star-wars/darth-maul.png",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-darth_maul.png"
+    },
+    {
+      "heroId": "obi_wan",
+      "sheet": "/sprites/generated/heroes/star-wars/obi-wan.png",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-obi_wan.png"
+    },
+    {
+      "heroId": "vader",
+      "sheet": "/sprites/generated/heroes/star-wars/vader.png",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-vader.png"
+    },
+    {
+      "heroId": "yoda",
+      "sheet": "/sprites/generated/heroes/star-wars/yoda.png",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-yoda.png"
+    },
+    {
+      "heroId": "ahsoka_adult",
+      "sheet": "/sprites/generated/heroes/star-wars/ahsoka-adult.png",
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-ahsoka_adult.png"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/historical-partial-fallback-trace.json",
+      "sha256": "be895f74ca51085ffb49418e61f75e872c15e8f7ad06a7bb9f726c6379e85bf3",
+      "bytes": 68243
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-aayla_secura.png",
+      "sha256": "6b723a3b9648f4ff7e838bddcd5083cac9f90b5b289092919f375887cf85620f",
+      "bytes": 279896
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-abby_tlou2.png",
+      "sha256": "2e43b5675a5c36c260b2feb62739244094825885e9269831c44e3f97c2fb7701",
+      "bytes": 247335
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-amanda_ripley.png",
+      "sha256": "77dcd3893c58b766cf69107c7a616036ec7d75e9f223a2098454f9034a74e553",
+      "bytes": 235480
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-ash_alien.png",
+      "sha256": "8f632e0fdea6b4fd9b0bbcaa68b1d5bc95cbdd8a0512b1918bae9c8faf263231",
+      "bytes": 254124
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-atlas.png",
+      "sha256": "2fa858d38d3206221a833f08e6b173685af226281954bff240d1cd55c7bfa1a8",
+      "bytes": 215974
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-big_boss.png",
+      "sha256": "d647849b56a7d2331f90b75db06766e7315c3f2c9b5f9f840a1ca6d53d0a0bd3",
+      "bytes": 287043
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-bishop.png",
+      "sha256": "1467dbbbf09aaae0a04d17ab512fe032d61ed7e6427a258a4299a91725c6c165",
+      "bytes": 269575
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-chell.png",
+      "sha256": "6763588403f95aff179e1de90aeb24833f5d8812c23cd877d639b23e128bd06b",
+      "bytes": 240010
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-dallas_alien.png",
+      "sha256": "5880d940eb1d3206ea22e971476191c676af0e4233ef63a8fae5267e835ce6c4",
+      "bytes": 262091
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-darth_revan.png",
+      "sha256": "3361f1bbbaaf552a904982822b7a23be916ed9a5b23610d2e0e35fa7df92c4cf",
+      "bytes": 319307
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-death_dw.png",
+      "sha256": "7f2dba42e65736ab74a24b8d01b64cc5d40780576821e9b13bc6eed10988d630",
+      "bytes": 434830
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-dina_tlou2.png",
+      "sha256": "ff80c18c98b9469619161f46df33e00d9e6d0c6c92ff48b74cd4e3c5d118a36b",
+      "bytes": 254888
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-doug_rattmann.png",
+      "sha256": "b23b755827ceed942f8699535ee03d2d1335b9c4c840eb44d5aef24fe210f240",
+      "bytes": 276725
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-glados.png",
+      "sha256": "d8057ef51df8fe76077294b16f85fe2525fa52a3b500ba3c72e4cf49d4bf2b8d",
+      "bytes": 306157
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-granny_dw.png",
+      "sha256": "8271025882ccdaacf09782eb85c06751443e78e7b853f4f8bd27f6cbe0df1dca",
+      "bytes": 216364
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-gray_fox.png",
+      "sha256": "065349dc771fd86d57e65962feff302ad024a80dfb38c6ce805cbd2f9508c6e2",
+      "bytes": 261935
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-hayden.png",
+      "sha256": "c3235373484f642f684b7e1ef02b0ede09403457f1ce676393f7f9711fe364ef",
+      "bytes": 322484
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-hicks.png",
+      "sha256": "34542ca393ad7819b5cbea948ec84ae47c73d1e77898d227093d8be5e39cef50",
+      "bytes": 275806
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-inputs-after.json",
+      "sha256": "2b734b74912c05def109690f4660ee1b0e40931ca6d6a69bae2e3b0a49507136",
+      "bytes": 160148
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-inputs-before.json",
+      "sha256": "2b734b74912c05def109690f4660ee1b0e40931ca6d6a69bae2e3b0a49507136",
+      "bytes": 160148
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-joel_tlou.png",
+      "sha256": "111f05a0613f45ee864a54d24ade33988e359ac4da9268254f0982e9cf8e1f24",
+      "bytes": 264346
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-lambert_alien.png",
+      "sha256": "3c97396fac519b05a720650fff554c0631c05a6eca08c9cc59f373929566ecf3",
+      "bytes": 233311
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-liquid_snake.png",
+      "sha256": "60baf0aab1d5f79686bec6aa7f9af18d63356c696537980727d30d88494dd9bb",
+      "bytes": 315117
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-luke.png",
+      "sha256": "ee619e342eed4b76a19a8cf3dcd9b24586d008e11f6891b322af0def00425f60",
+      "bytes": 257641
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-meryl_mgs.png",
+      "sha256": "4edffac5dbc9ba4349029e463f2272b8ae21169534ddbeb0d9889b0882273e44",
+      "bytes": 246749
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-nanny_ogg_dw.png",
+      "sha256": "f9738d66464c56c8e887d5a68bceb275905c420aa6c1b7ab0dd81049c8ff1a6f",
+      "bytes": 259155
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-ocelot_mgs.png",
+      "sha256": "3063948bb978068a13110970b362f3a138611fef0582d8783e863c05071b3505",
+      "bytes": 276441
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-parker_alien.png",
+      "sha256": "014c3411a9a6a108ff47a7063e1222b868b06c62578ae81af00a6d6915802cd2",
+      "bytes": 276411
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-pbody.png",
+      "sha256": "89eb5c048c0f1b0f1c30b1d191599f55683f66028015a4990da08249b378b117",
+      "bytes": 278162
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-rincewind_dw.png",
+      "sha256": "513916b243802e191357ac47dd048eb6a1f0bf1d46cd25c50733f1f2dd90d018",
+      "bytes": 252815
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-ripley.png",
+      "sha256": "8b32e727f993e20b7def14245444c65b9acac73c024ad053ae3fef9a6c083d4a",
+      "bytes": 250835
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-tess_tlou.png",
+      "sha256": "7f42e63ca2d339b620ee6b9656b04f8e9397ff6576a9a2f1f7efba8e8bbeede9",
+      "bytes": 247667
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-the_boss_mgs.png",
+      "sha256": "126d0a481dd4812d71b6ed651df3d4b5fb0270e1717f67d9ac61a6c294882209",
+      "bytes": 238954
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-tommy_tlou.png",
+      "sha256": "886a1215eeafa2b782e9d8c495779063f25ad2064cd9a75e0035b20ed65a2f3b",
+      "bytes": 249754
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-trace.json",
+      "sha256": "f727ffdb417863a69083f0d8ac2f5b041a405d879ec914986426ff7919d071c9",
+      "bytes": 9869297
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-twoflower_dw.png",
+      "sha256": "353713317ef7543f05e5f26c28e3c8343074073c06ea02c6ebdcc0eace111266",
+      "bytes": 255542
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-vimes_dw.png",
+      "sha256": "fdc9f8c7d7d098b62105ee89c62539f41ab0cbea4eb26b35d664d4f917ce5810",
+      "bytes": 256821
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/native-presentations-wheatley.png",
+      "sha256": "9cf3023f512ce712c7823ca8059119c908cd194bbe5adede61335715c10f7263",
+      "bytes": 168238
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-ahsoka_adult.png",
+      "sha256": "a88a186fc945746d76ffdb3e143929f65ec98d605d99eed3132cf41987f7f2f5",
+      "bytes": 138847
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-darth_maul.png",
+      "sha256": "d48c3f51cf46ef11ae22e446a4fa1b2d94f837a5e4bfed621358058d7fb51ebb",
+      "bytes": 142070
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-obi_wan.png",
+      "sha256": "cf44d7418a31e169196855fa9842e50132482362209eab4745decfd609e8a83b",
+      "bytes": 152693
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-trace.json",
+      "sha256": "fa355ca353a621206755c9426a06ae09ab813dded831abe1eeb55d5b9f4b6eea",
+      "bytes": 157667
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-vader.png",
+      "sha256": "ca785052983f10073e5303ef3c77f5db29dd7d446d753b119d9042f9d0aef3c0",
+      "bytes": 142342
+    },
+    {
+      "path": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877/refused-native-fallback-yoda.png",
+      "sha256": "b6f4fe537d1d8df7156b49a6303566c58de899cbbd2f3fcb0995f5084a383264",
+      "bytes": 175553
+    }
+  ],
+  "attempt": "docs/combat-fidelity-wave13-2026-10-24/browser/attempts/native-final-20261025062157877"
+}

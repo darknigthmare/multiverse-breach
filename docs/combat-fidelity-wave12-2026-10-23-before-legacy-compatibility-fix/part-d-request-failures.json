@@ -1,0 +1,38 @@
+{
+  "wave": 12,
+  "part": "D",
+  "requestsAttempted": 16,
+  "acceptedNative48Artifacts": 9,
+  "failures": [
+    {
+      "heroId": "morty",
+      "attempt": 1,
+      "reason": "explicit image_gen safety-system refusal",
+      "code": "moderation_blocked",
+      "moderationStage": "output",
+      "requestId": "b2ce8538-0e56-42f3-a3f4-445fe18660ce",
+      "retries": 0,
+      "newNative32Delivered": false,
+      "newBase16Delivered": false,
+      "retainedFallbackOnly": true,
+      "message": "Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID b2ce8538-0e56-42f3-a3f4-445fe18660ce."
+    },
+    {
+      "heroId": "bender_futurama",
+      "attempt": 1,
+      "reason": "No artifact or rejection reason retained by initial Promise.allSettled collector; failure cause unknown.",
+      "explicitRefusalObserved": false,
+      "identicalPromptRetries": 1,
+      "secondAttemptAccepted": true,
+      "acceptedArtifact": "/workspace/generated_images/exec-1684d063-4a9b-4217-b477-11b113efd347.png",
+      "notes": "The missing first result is not counted as an accepted or delivered drawing. Only the second artifact supplies retained Bender pixels."
+    }
+  ],
+  "noAliasOrRefusalBypass": true,
+  "source1to1Verified": false,
+  "acceptedArtifactsTotalIncludingCorrectionsAndReplacements": 14,
+  "nativeSourceDrawingsObserved": 546,
+  "retainedNativeDrawings": 432,
+  "unusedOrSupersededDrawings": 114,
+  "notes": "Nine initial character artifacts, two corrective strips, two replacement48 sheets and one guard8 sheet were received. Only final row/cell selections count as delivered. The original Amy48 and Birdperson48 are retained as wholly superseded sources."
+}

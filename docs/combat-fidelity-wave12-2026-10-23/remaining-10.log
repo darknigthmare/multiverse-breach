@@ -1,0 +1,49 @@
+
+> lively-darwin@0.0.0 test:melee
+> node --test scripts/meleeInputMap.test.mjs scripts/meleeStateMachine.test.mjs scripts/meleeAnimationManifest.test.mjs scripts/meleeCombatRuntime.test.mjs scripts/smashObjectiveResolution.test.mjs
+
+✔ player_anchor manifest declares strict P4 atlas identity and geometry (1.372773ms)
+✔ all 45 melee states have complete bounded metadata and a baseline (0.766257ms)
+✔ frame resolution honors variable counts, loops, clamps and start columns (0.247354ms)
+✔ five unique sources resolve from character id or object and expose 256 layouts (0.780238ms)
+✔ resolved frames expose state-specific feet and ledgeGrip anchors (0.219932ms)
+✔ manifest validator reports malformed state geometry and metadata (0.378241ms)
+✔ runtime initialization clamps mutable state and normalizes all metrics (1.663762ms)
+✔ light combo advances light1, light2 and light3 through cancel windows (0.943525ms)
+✔ charge enters hold loop, clamps, releases with scale and resolves one charged hit (0.453415ms)
+✔ crouched charge keeps a low hurtbox until release restores standing hurtbox (0.41035ms)
+✔ guard entry keeps its full simulation interval before the hold pose (0.276768ms)
+✔ perfect guard, regular reduction, finite break and delayed regeneration are deterministic (0.448858ms)
+✔ shield release and passive drain break obey finite transitions (0.345462ms)
+✔ crouch enter, idle and exit complete and block conflicting actions (0.17879ms)
+✔ descending actors catch ledges while upward, remote and regrab-locked actors do not (0.474767ms)
+✔ ledge climb, drop, jump and attack detach with finite locks and correct facing (0.6093ms)
+✔ taunt and runtime metrics remain finite across tracked actions (0.22484ms)
+✔ storage fallback returns independent defaults for missing and invalid data (3.239582ms)
+✔ legacy opponent storage migrates to cpu and invalid slots fall back safely (0.241805ms)
+✔ save and remap normalize data without mutating the source map (0.577872ms)
+✔ keyboard input resolves axes, shared bindings and engine held input (0.46379ms)
+✔ gamepad supports analog axes, deadzone fallback, buttons and ledge actions (0.37748ms)
+✔ snapshot merge and action edges report presses and releases once (1.347275ms)
+✔ input code formatting remains readable for keyboard labels (0.220733ms)
+✔ P4 exposes the complete unique 45-state roster (1.263057ms)
+✔ state priorities enforce dead, hit stun, shield break and recovery ordering (0.199461ms)
+✔ transition validation handles invalid states, action locks, force and restart (0.857685ms)
+✔ finite transition states complete at their declared boundaries (0.340684ms)
+✔ cancel windows include boundaries and reject unrelated or late transitions (0.411612ms)
+✔ action definitions and charged attack contract remain complete and clone-safe (0.301435ms)
+✔ protect objective gives artifact destruction priority on a simultaneous terminal frame (7709.78218ms)
+✔ party wipe resolves before a protect objective can win the same update (1.722661ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8214.860295
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

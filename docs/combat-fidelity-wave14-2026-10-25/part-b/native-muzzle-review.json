@@ -1,0 +1,6478 @@
+{
+  "schemaVersion": 1,
+  "part": "B",
+  "passed": true,
+  "heroes": 12,
+  "measurements": 96,
+  "sourceCellSize": 256,
+  "nativeAnatomyUnchanged": true,
+  "allAnchorsUseExistingNativePixels": true,
+  "physicalFirearmHeroes": 10,
+  "toolEmitterHeroes": 2,
+  "source1to1Verified": false,
+  "method": "Manual measurements from retained 256px native cell grids, snapped within8px to existing native barrel contour or explicitly identified omni-tool/multi-tool emitter RGBA pixels; weapon class is recorded per point. No generated muzzle point, static body origin, paint or duplicated drawing. Reflect X for the opposite camp; world placement still comes from the engine and measured renderScale.",
+  "registry": "src/game/combat/nativeSuperAnchorsWave14PartB.generated.json",
+  "registrySha256": "56e87b041867dfa638d022069f80803df89ea38ce86485019b76dcb7d4b7a982",
+  "inputHashes": {
+    "src/game/combat/characterAnimationsWave14PartB.generated.json": "09734470691fd628f0f063440824ea3506e1194bbac4f63b09b06e56fd5fb0e8",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/noble_six.png": "426e9310d40f1c31b776a819f0ad9e3c7003a3b9e11a904b0611e411fdec00a0",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/noble_six-grid.png": "00b68653bf999f0d27d3988b3811ba026291d86d38c32e0406c85762beacdee2",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/buck_odst.png": "2fcf05637093873284a924406093507bf546163d44a5afe92a64fbe88e5271cc",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/buck_odst-grid.png": "b384b3edd02348b4e69138800c627fbbf0001f5cd4202bca66e3b98c472fec41",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/kelly_087.png": "9cb899744b88684ac4d9d8c3600d2463ff903f34ce7e58c7d21aa7cc92597d65",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kelly_087-grid.png": "6ca2b354ef26703b1e337846a6f84e6d8341b54dcd06683d3678b0172e6a762d",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/linda_058.png": "c03cba25a54646d7a040b30464aea5fafe93dc05124e594671667624261e6fcf",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/linda_058-grid.png": "a97aa0040abebfe0163f84db41364abfb8188972e9c4976b5bead8ef70c826a0",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/ashley_williams.png": "e4b76a5df5db48243ad29c64c430a030e22d48c3153f78b160ee7f1aa9e97440",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/ashley_williams-grid.png": "e39983c084b00260a6eec4419ed1f663ae296bed71a10f4a363de3792797dc2a",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/anya_stroud.png": "ac7708ccb8a6e265f0d458b5e602b283d1eb56405ab083de460e47d46832ebd6",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/anya_stroud-grid.png": "adbc2228da0be2d1de383f600a2978f18d18ea1fb37768812c1419d4e17d3a26",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/carmine_cog.png": "3bb1b33c47da24e4ca867ecf238e9ab09338b464e0705883f54cfa7eeeeb4207",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/carmine_cog-grid.png": "321ca3b269e849573a57f479c5d543dda620157b95c4cdf78b8c3a5b3401c235",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/kait_diaz.png": "4d5ec1f4515a62b308818401dacdc1bb79e55e73b61080844ea34b0c47353fd1",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kait_diaz-grid.png": "d09baa7ce7b6eb4e408921a12844a062e9555f5a96f3b2e33a7a6e9e8340225e",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/boone_fnv.png": "a6a78136f0df51be8188b714c39a312214cabbc165d1d2a296836e9f2c1790b6",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/boone_fnv-grid.png": "76f3d9c8479cb819267804042b1157ce58ff43b2728ea169ce54e093d4984474",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/courier_six.png": "1f75e8574f78ecd3c4f43db922f78c1aebfa29cefe994ae96e1a469a2332d605",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/courier_six-grid.png": "0741df64ac241e14339948027f0f42a4b67e3c3d1822854529797ffb5594c9c3",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/no_mans_sky_traveller.png": "ca0bfa3117078a0fb84ab23ec24d2001ea3c9bde7bfe2944ed00a71d83c9cb5b",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/no_mans_sky_traveller-grid.png": "1151969488aefc4fd64f1c1055f8453c0c9b29f2c162f5b936ecbe7504050b99",
+    "public/sprites/generated/combat-character-animations-wave14-part-b/mordin.png": "b05620094832d4ca52e1552e17a7961ee26b342732698902239dd51f3bdb2fa7",
+    "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/mordin-grid.png": "2fc511d3dcd0d0ec9617fc542714fd6c29b822618146d8265bfcdcd9b2707709"
+  },
+  "rows": [
+    {
+      "heroId": "noble_six",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 210,
+        "y": 128
+      },
+      "manualGridLandmark": {
+        "x": 210,
+        "y": 128
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 210,
+        "y": 128,
+        "distance": 0,
+        "rgba": [
+          6,
+          6,
+          7,
+          242
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/noble_six.png",
+      "sourceImageSha256": "7f8cf599e4943f6a958d4bf68b17b7149c577454b2bc42eebf9276c44b8b1af8",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 1.0033727769412915,
+      "rowRenderScale": 1.2457982005556636,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 0,
+          "top": 378,
+          "width": 185,
+          "height": 173
+        },
+        "output": {
+          "left": 45,
+          "top": 70,
+          "width": 186,
+          "height": 174
+        },
+        "sourceBodyBounds": {
+          "id": 27,
+          "pixels": 10624,
+          "left": 16,
+          "right": 166,
+          "top": 388,
+          "bottom": 542,
+          "width": 151,
+          "height": 155,
+          "centerX": 83.17507530120481,
+          "centerY": 462.9098268072289
+        },
+        "sourceAlphaPixels": 15528,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 46,
+        "y": 128
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/noble_six-grid.png"
+    },
+    {
+      "heroId": "noble_six",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 211,
+        "y": 105
+      },
+      "manualGridLandmark": {
+        "x": 211,
+        "y": 105
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 211,
+        "y": 105,
+        "distance": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          234
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/noble_six.png",
+      "sourceImageSha256": "7f8cf599e4943f6a958d4bf68b17b7149c577454b2bc42eebf9276c44b8b1af8",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 1.0033727769412915,
+      "rowRenderScale": 1.2457982005556636,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 186,
+          "top": 376,
+          "width": 190,
+          "height": 188
+        },
+        "output": {
+          "left": 31,
+          "top": 55,
+          "width": 191,
+          "height": 189
+        },
+        "sourceBodyBounds": {
+          "id": 28,
+          "pixels": 10769,
+          "left": 204,
+          "right": 367,
+          "top": 390,
+          "bottom": 542,
+          "width": 164,
+          "height": 153,
+          "centerX": 282.7659949856068,
+          "centerY": 462.1474603027208
+        },
+        "sourceAlphaPixels": 16906,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 45,
+        "y": 105
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/noble_six-grid.png"
+    },
+    {
+      "heroId": "noble_six",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 187,
+        "y": 91
+      },
+      "manualGridLandmark": {
+        "x": 187,
+        "y": 91
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 187,
+        "y": 91,
+        "distance": 0,
+        "rgba": [
+          31,
+          8,
+          0,
+          246
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/noble_six.png",
+      "sourceImageSha256": "7f8cf599e4943f6a958d4bf68b17b7149c577454b2bc42eebf9276c44b8b1af8",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 1.0033727769412915,
+      "rowRenderScale": 1.2457982005556636,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 375,
+          "top": 366,
+          "width": 190,
+          "height": 201
+        },
+        "output": {
+          "left": 49,
+          "top": 42,
+          "width": 191,
+          "height": 202
+        },
+        "sourceBodyBounds": {
+          "id": 25,
+          "pixels": 11055,
+          "left": 383,
+          "right": 550,
+          "top": 386,
+          "bottom": 540,
+          "width": 168,
+          "height": 155,
+          "centerX": 453.37648123021256,
+          "centerY": 456.30918136589776
+        },
+        "sourceAlphaPixels": 17570,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 69,
+        "y": 91
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/noble_six-grid.png"
+    },
+    {
+      "heroId": "noble_six",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 206,
+        "y": 120
+      },
+      "manualGridLandmark": {
+        "x": 206,
+        "y": 120
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 206,
+        "y": 120,
+        "distance": 0,
+        "rgba": [
+          2,
+          2,
+          3,
+          221
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/noble_six.png",
+      "sourceImageSha256": "7f8cf599e4943f6a958d4bf68b17b7149c577454b2bc42eebf9276c44b8b1af8",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 1.0033727769412915,
+      "rowRenderScale": 1.2457982005556636,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 566,
+          "top": 380,
+          "width": 174,
+          "height": 171
+        },
+        "output": {
+          "left": 41,
+          "top": 72,
+          "width": 175,
+          "height": 172
+        },
+        "sourceBodyBounds": {
+          "id": 26,
+          "pixels": 10585,
+          "left": 580,
+          "right": 731,
+          "top": 386,
+          "bottom": 542,
+          "width": 152,
+          "height": 157,
+          "centerX": 652.4343882853094,
+          "centerY": 461.5691072272083
+        },
+        "sourceAlphaPixels": 15697,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 50,
+        "y": 120
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/noble_six-grid.png"
+    },
+    {
+      "heroId": "noble_six",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 212,
+        "y": 133
+      },
+      "manualGridLandmark": {
+        "x": 212,
+        "y": 133
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 212,
+        "y": 133,
+        "distance": 0,
+        "rgba": [
+          3,
+          3,
+          5,
+          229
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/noble_six.png",
+      "sourceImageSha256": "7f8cf599e4943f6a958d4bf68b17b7149c577454b2bc42eebf9276c44b8b1af8",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 1.0033727769412915,
+      "rowRenderScale": 1.2457982005556636,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 733,
+          "top": 565,
+          "width": 190,
+          "height": 159
+        },
+        "output": {
+          "left": 33,
+          "top": 84,
+          "width": 191,
+          "height": 160
+        },
+        "sourceBodyBounds": {
+          "id": 33,
+          "pixels": 10962,
+          "left": 745,
+          "right": 911,
+          "top": 569,
+          "bottom": 711,
+          "width": 167,
+          "height": 143,
+          "centerX": 827.8934501003466,
+          "centerY": 642.1777047983944
+        },
+        "sourceAlphaPixels": 15411,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 44,
+        "y": 133
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/noble_six-grid.png"
+    },
+    {
+      "heroId": "noble_six",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 216,
+        "y": 129
+      },
+      "manualGridLandmark": {
+        "x": 217,
+        "y": 129
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 216,
+        "y": 129,
+        "distance": 1,
+        "rgba": [
+          7,
+          5,
+          5,
+          240
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/noble_six.png",
+      "sourceImageSha256": "7f8cf599e4943f6a958d4bf68b17b7149c577454b2bc42eebf9276c44b8b1af8",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 1.0033727769412915,
+      "rowRenderScale": 1.2457982005556636,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 924,
+          "top": 550,
+          "width": 186,
+          "height": 171
+        },
+        "output": {
+          "left": 31,
+          "top": 72,
+          "width": 187,
+          "height": 172
+        },
+        "sourceBodyBounds": {
+          "id": 32,
+          "pixels": 11265,
+          "left": 934,
+          "right": 1108,
+          "top": 568,
+          "bottom": 713,
+          "width": 175,
+          "height": 146,
+          "centerX": 1020.8238792720816,
+          "centerY": 641.1389258766089
+        },
+        "sourceAlphaPixels": 15617,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 40,
+        "y": 129
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/noble_six-grid.png"
+    },
+    {
+      "heroId": "noble_six",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 188,
+        "y": 128
+      },
+      "manualGridLandmark": {
+        "x": 188,
+        "y": 128
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 188,
+        "y": 128,
+        "distance": 0,
+        "rgba": [
+          80,
+          79,
+          78,
+          244
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/noble_six.png",
+      "sourceImageSha256": "7f8cf599e4943f6a958d4bf68b17b7149c577454b2bc42eebf9276c44b8b1af8",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 1.0033727769412915,
+      "rowRenderScale": 1.2457982005556636,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1110,
+          "top": 557,
+          "width": 187,
+          "height": 160
+        },
+        "output": {
+          "left": 42,
+          "top": 83,
+          "width": 188,
+          "height": 161
+        },
+        "sourceBodyBounds": {
+          "id": 35,
+          "pixels": 11671,
+          "left": 1112,
+          "right": 1296,
+          "top": 571,
+          "bottom": 712,
+          "width": 185,
+          "height": 142,
+          "centerX": 1195.9874046782625,
+          "centerY": 638.5316596692657
+        },
+        "sourceAlphaPixels": 15926,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 68,
+        "y": 128
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/noble_six-grid.png"
+    },
+    {
+      "heroId": "noble_six",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 201,
+        "y": 138
+      },
+      "manualGridLandmark": {
+        "x": 201,
+        "y": 138
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 201,
+        "y": 138,
+        "distance": 0,
+        "rgba": [
+          10,
+          9,
+          10,
+          192
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/noble_six.png",
+      "sourceImageSha256": "7f8cf599e4943f6a958d4bf68b17b7149c577454b2bc42eebf9276c44b8b1af8",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 1.0033727769412915,
+      "rowRenderScale": 1.2457982005556636,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1293,
+          "top": 556,
+          "width": 155,
+          "height": 160
+        },
+        "output": {
+          "left": 50,
+          "top": 83,
+          "width": 156,
+          "height": 161
+        },
+        "sourceBodyBounds": {
+          "id": 34,
+          "pixels": 10520,
+          "left": 1295,
+          "right": 1444,
+          "top": 569,
+          "bottom": 713,
+          "width": 150,
+          "height": 145,
+          "centerX": 1370.7073193916349,
+          "centerY": 643.0984790874525
+        },
+        "sourceAlphaPixels": 14189,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 55,
+        "y": 138
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/noble_six-grid.png"
+    },
+    {
+      "heroId": "buck_odst",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 190,
+        "y": 142
+      },
+      "manualGridLandmark": {
+        "x": 191,
+        "y": 143
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 190,
+        "y": 142,
+        "distance": 1.4142135623730951,
+        "rgba": [
+          19,
+          19,
+          23,
+          198
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/buck_odst.png",
+      "sourceImageSha256": "449998dc9b208f2cf89129e687c2aec396cea6802409a011ddd5b241b04a1d69",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 0.9834768267552659,
+      "rowRenderScale": 1.12321015883538,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 18,
+          "top": 366,
+          "width": 127,
+          "height": 178
+        },
+        "output": {
+          "left": 70,
+          "top": 69,
+          "width": 125,
+          "height": 175
+        },
+        "sourceBodyBounds": {
+          "id": 22,
+          "pixels": 10150,
+          "left": 20,
+          "right": 141,
+          "top": 374,
+          "bottom": 538,
+          "width": 122,
+          "height": 165,
+          "centerX": 76.811921182266,
+          "centerY": 455.7325123152709
+        },
+        "sourceAlphaPixels": 12599,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 66,
+        "y": 142
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/buck_odst-grid.png"
+    },
+    {
+      "heroId": "buck_odst",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 205,
+        "y": 103
+      },
+      "manualGridLandmark": {
+        "x": 205,
+        "y": 103
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 205,
+        "y": 103,
+        "distance": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          206
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/buck_odst.png",
+      "sourceImageSha256": "449998dc9b208f2cf89129e687c2aec396cea6802409a011ddd5b241b04a1d69",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 0.9834768267552659,
+      "rowRenderScale": 1.12321015883538,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 188,
+          "top": 372,
+          "width": 160,
+          "height": 179
+        },
+        "output": {
+          "left": 64,
+          "top": 68,
+          "width": 157,
+          "height": 176
+        },
+        "sourceBodyBounds": {
+          "id": 23,
+          "pixels": 10180,
+          "left": 193,
+          "right": 332,
+          "top": 374,
+          "bottom": 538,
+          "width": 140,
+          "height": 165,
+          "centerX": 253.0237721021611,
+          "centerY": 454.3839882121807
+        },
+        "sourceAlphaPixels": 13149,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 51,
+        "y": 103
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/buck_odst-grid.png"
+    },
+    {
+      "heroId": "buck_odst",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 193,
+        "y": 95
+      },
+      "manualGridLandmark": {
+        "x": 193,
+        "y": 95
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 193,
+        "y": 95,
+        "distance": 0,
+        "rgba": [
+          70,
+          49,
+          39,
+          246
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/buck_odst.png",
+      "sourceImageSha256": "449998dc9b208f2cf89129e687c2aec396cea6802409a011ddd5b241b04a1d69",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 0.9834768267552659,
+      "rowRenderScale": 1.12321015883538,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 368,
+          "top": 371,
+          "width": 173,
+          "height": 188
+        },
+        "output": {
+          "left": 67,
+          "top": 59,
+          "width": 170,
+          "height": 185
+        },
+        "sourceBodyBounds": {
+          "id": 24,
+          "pixels": 10561,
+          "left": 370,
+          "right": 525,
+          "top": 374,
+          "bottom": 538,
+          "width": 156,
+          "height": 165,
+          "centerX": 429.9583372786668,
+          "centerY": 452.98115708739704
+        },
+        "sourceAlphaPixels": 13995,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 63,
+        "y": 95
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/buck_odst-grid.png"
+    },
+    {
+      "heroId": "buck_odst",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 207,
+        "y": 109
+      },
+      "manualGridLandmark": {
+        "x": 207,
+        "y": 109
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 207,
+        "y": 109,
+        "distance": 0,
+        "rgba": [
+          52,
+          53,
+          60,
+          248
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/buck_odst.png",
+      "sourceImageSha256": "449998dc9b208f2cf89129e687c2aec396cea6802409a011ddd5b241b04a1d69",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 0.9834768267552659,
+      "rowRenderScale": 1.12321015883538,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 541,
+          "top": 368,
+          "width": 193,
+          "height": 181
+        },
+        "output": {
+          "left": 50,
+          "top": 66,
+          "width": 190,
+          "height": 178
+        },
+        "sourceBodyBounds": {
+          "id": 27,
+          "pixels": 10244,
+          "left": 557,
+          "right": 703,
+          "top": 376,
+          "bottom": 538,
+          "width": 147,
+          "height": 163,
+          "centerX": 620.1183131589223,
+          "centerY": 455.60982038266303
+        },
+        "sourceAlphaPixels": 13053,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 49,
+        "y": 109
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/buck_odst-grid.png"
+    },
+    {
+      "heroId": "buck_odst",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 197,
+        "y": 114
+      },
+      "manualGridLandmark": {
+        "x": 198,
+        "y": 114
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 197,
+        "y": 114,
+        "distance": 1,
+        "rgba": [
+          1,
+          1,
+          3,
+          217
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/buck_odst.png",
+      "sourceImageSha256": "449998dc9b208f2cf89129e687c2aec396cea6802409a011ddd5b241b04a1d69",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 0.9834768267552659,
+      "rowRenderScale": 1.12321015883538,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 738,
+          "top": 546,
+          "width": 164,
+          "height": 181
+        },
+        "output": {
+          "left": 57,
+          "top": 66,
+          "width": 161,
+          "height": 178
+        },
+        "sourceBodyBounds": {
+          "id": 30,
+          "pixels": 10075,
+          "left": 740,
+          "right": 882,
+          "top": 558,
+          "bottom": 718,
+          "width": 143,
+          "height": 161,
+          "centerX": 810.4585607940446,
+          "centerY": 637.5588089330025
+        },
+        "sourceAlphaPixels": 12766,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 59,
+        "y": 114
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/buck_odst-grid.png"
+    },
+    {
+      "heroId": "buck_odst",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 206,
+        "y": 108
+      },
+      "manualGridLandmark": {
+        "x": 206,
+        "y": 108
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 206,
+        "y": 108,
+        "distance": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          214
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/buck_odst.png",
+      "sourceImageSha256": "449998dc9b208f2cf89129e687c2aec396cea6802409a011ddd5b241b04a1d69",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 0.9834768267552659,
+      "rowRenderScale": 1.12321015883538,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 902,
+          "top": 554,
+          "width": 174,
+          "height": 177
+        },
+        "output": {
+          "left": 41,
+          "top": 70,
+          "width": 171,
+          "height": 174
+        },
+        "sourceBodyBounds": {
+          "id": 31,
+          "pixels": 10097,
+          "left": 922,
+          "right": 1070,
+          "top": 561,
+          "bottom": 718,
+          "width": 149,
+          "height": 158,
+          "centerX": 990.9682083787263,
+          "centerY": 638.0419926710904
+        },
+        "sourceAlphaPixels": 13077,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 50,
+        "y": 108
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/buck_odst-grid.png"
+    },
+    {
+      "heroId": "buck_odst",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 193,
+        "y": 113
+      },
+      "manualGridLandmark": {
+        "x": 193,
+        "y": 113
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 193,
+        "y": 113,
+        "distance": 0,
+        "rgba": [
+          4,
+          0,
+          0,
+          247
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/buck_odst.png",
+      "sourceImageSha256": "449998dc9b208f2cf89129e687c2aec396cea6802409a011ddd5b241b04a1d69",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 0.9834768267552659,
+      "rowRenderScale": 1.12321015883538,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1092,
+          "top": 552,
+          "width": 167,
+          "height": 173
+        },
+        "output": {
+          "left": 60,
+          "top": 74,
+          "width": 164,
+          "height": 170
+        },
+        "sourceBodyBounds": {
+          "id": 32,
+          "pixels": 10029,
+          "left": 1096,
+          "right": 1254,
+          "top": 561,
+          "bottom": 718,
+          "width": 159,
+          "height": 158,
+          "centerX": 1161.0832585502044,
+          "centerY": 637.3053145876956
+        },
+        "sourceAlphaPixels": 13197,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 63,
+        "y": 113
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/buck_odst-grid.png"
+    },
+    {
+      "heroId": "buck_odst",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 201,
+        "y": 110
+      },
+      "manualGridLandmark": {
+        "x": 201,
+        "y": 110
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 201,
+        "y": 110,
+        "distance": 0,
+        "rgba": [
+          3,
+          3,
+          4,
+          231
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/buck_odst.png",
+      "sourceImageSha256": "449998dc9b208f2cf89129e687c2aec396cea6802409a011ddd5b241b04a1d69",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 0.9834768267552659,
+      "rowRenderScale": 1.12321015883538,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1288,
+          "top": 559,
+          "width": 148,
+          "height": 170
+        },
+        "output": {
+          "left": 59,
+          "top": 77,
+          "width": 146,
+          "height": 167
+        },
+        "sourceBodyBounds": {
+          "id": 33,
+          "pixels": 9826,
+          "left": 1292,
+          "right": 1433,
+          "top": 561,
+          "bottom": 718,
+          "width": 142,
+          "height": 158,
+          "centerX": 1358.472827193161,
+          "centerY": 638.4637695908814
+        },
+        "sourceAlphaPixels": 12395,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 55,
+        "y": 110
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/buck_odst-grid.png"
+    },
+    {
+      "heroId": "kelly_087",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 201,
+        "y": 117
+      },
+      "manualGridLandmark": {
+        "x": 202,
+        "y": 117
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 201,
+        "y": 117,
+        "distance": 1,
+        "rgba": [
+          40,
+          40,
+          47,
+          168
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kelly_087.png",
+      "sourceImageSha256": "e4eda80f7e3caf261f581baaf25bccafd1badb6a6f8e23dc80ecb70c1640f01b",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 0.9211750420778109,
+      "rowRenderScale": 1.3090697184122326,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 31,
+          "top": 369,
+          "width": 152,
+          "height": 184
+        },
+        "output": {
+          "left": 71,
+          "top": 75,
+          "width": 140,
+          "height": 169
+        },
+        "sourceBodyBounds": {
+          "id": 22,
+          "pixels": 9315,
+          "left": 35,
+          "right": 173,
+          "top": 375,
+          "bottom": 540,
+          "width": 139,
+          "height": 166,
+          "centerX": 92.38217928073,
+          "centerY": 450.0385399892646
+        },
+        "sourceAlphaPixels": 14171,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 55,
+        "y": 117
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kelly_087-grid.png"
+    },
+    {
+      "heroId": "kelly_087",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 187,
+        "y": 151
+      },
+      "manualGridLandmark": {
+        "x": 187,
+        "y": 151
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 187,
+        "y": 151,
+        "distance": 0,
+        "rgba": [
+          24,
+          24,
+          30,
+          189
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kelly_087.png",
+      "sourceImageSha256": "e4eda80f7e3caf261f581baaf25bccafd1badb6a6f8e23dc80ecb70c1640f01b",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 0.9211750420778109,
+      "rowRenderScale": 1.3090697184122326,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 383,
+          "top": 370,
+          "width": 146,
+          "height": 181
+        },
+        "output": {
+          "left": 67,
+          "top": 77,
+          "width": 134,
+          "height": 167
+        },
+        "sourceBodyBounds": {
+          "id": 25,
+          "pixels": 9201,
+          "left": 385,
+          "right": 515,
+          "top": 380,
+          "bottom": 539,
+          "width": 131,
+          "height": 160,
+          "centerX": 448.98206716661235,
+          "centerY": 455.1972611672644
+        },
+        "sourceAlphaPixels": 14940,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 69,
+        "y": 151
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kelly_087-grid.png"
+    },
+    {
+      "heroId": "kelly_087",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 202,
+        "y": 111
+      },
+      "manualGridLandmark": {
+        "x": 202,
+        "y": 111
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 202,
+        "y": 111,
+        "distance": 0,
+        "rgba": [
+          88,
+          74,
+          70,
+          247
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kelly_087.png",
+      "sourceImageSha256": "e4eda80f7e3caf261f581baaf25bccafd1badb6a6f8e23dc80ecb70c1640f01b",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 0.9211750420778109,
+      "rowRenderScale": 1.3090697184122326,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 190,
+          "top": 368,
+          "width": 208,
+          "height": 191
+        },
+        "output": {
+          "left": 47,
+          "top": 68,
+          "width": 192,
+          "height": 176
+        },
+        "sourceBodyBounds": {
+          "id": 23,
+          "pixels": 10075,
+          "left": 205,
+          "right": 397,
+          "top": 378,
+          "bottom": 539,
+          "width": 193,
+          "height": 162,
+          "centerX": 277.53330024813897,
+          "centerY": 447.8341439205955
+        },
+        "sourceAlphaPixels": 17088,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 54,
+        "y": 111
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kelly_087-grid.png"
+    },
+    {
+      "heroId": "kelly_087",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 197,
+        "y": 108
+      },
+      "manualGridLandmark": {
+        "x": 198,
+        "y": 108
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 197,
+        "y": 108,
+        "distance": 1,
+        "rgba": [
+          48,
+          51,
+          54,
+          200
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kelly_087.png",
+      "sourceImageSha256": "e4eda80f7e3caf261f581baaf25bccafd1badb6a6f8e23dc80ecb70c1640f01b",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 0.9211750420778109,
+      "rowRenderScale": 1.3090697184122326,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 546,
+          "top": 366,
+          "width": 184,
+          "height": 195
+        },
+        "output": {
+          "left": 61,
+          "top": 64,
+          "width": 169,
+          "height": 180
+        },
+        "sourceBodyBounds": {
+          "id": 24,
+          "pixels": 9193,
+          "left": 559,
+          "right": 696,
+          "top": 379,
+          "bottom": 540,
+          "width": 138,
+          "height": 162,
+          "centerX": 618.7651473947569,
+          "centerY": 451.49352768410745
+        },
+        "sourceAlphaPixels": 14148,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 59,
+        "y": 108
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kelly_087-grid.png"
+    },
+    {
+      "heroId": "kelly_087",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 200,
+        "y": 121
+      },
+      "manualGridLandmark": {
+        "x": 202,
+        "y": 121
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 200,
+        "y": 121,
+        "distance": 2,
+        "rgba": [
+          14,
+          12,
+          16,
+          200
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kelly_087.png",
+      "sourceImageSha256": "e4eda80f7e3caf261f581baaf25bccafd1badb6a6f8e23dc80ecb70c1640f01b",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 0.9211750420778109,
+      "rowRenderScale": 1.3090697184122326,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 709,
+          "top": 551,
+          "width": 192,
+          "height": 177
+        },
+        "output": {
+          "left": 33,
+          "top": 81,
+          "width": 177,
+          "height": 163
+        },
+        "sourceBodyBounds": {
+          "id": 27,
+          "pixels": 9209,
+          "left": 737,
+          "right": 891,
+          "top": 561,
+          "bottom": 718,
+          "width": 155,
+          "height": 158,
+          "centerX": 811.772070800304,
+          "centerY": 632.5682484526008
+        },
+        "sourceAlphaPixels": 13622,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 56,
+        "y": 121
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kelly_087-grid.png"
+    },
+    {
+      "heroId": "kelly_087",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 186,
+        "y": 156
+      },
+      "manualGridLandmark": {
+        "x": 191,
+        "y": 158
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 186,
+        "y": 156,
+        "distance": 5.385164807134505,
+        "rgba": [
+          40,
+          39,
+          40,
+          162
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kelly_087.png",
+      "sourceImageSha256": "e4eda80f7e3caf261f581baaf25bccafd1badb6a6f8e23dc80ecb70c1640f01b",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 0.9211750420778109,
+      "rowRenderScale": 1.3090697184122326,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1105,
+          "top": 551,
+          "width": 154,
+          "height": 177
+        },
+        "output": {
+          "left": 64,
+          "top": 81,
+          "width": 142,
+          "height": 163
+        },
+        "sourceBodyBounds": {
+          "id": 29,
+          "pixels": 9044,
+          "left": 1107,
+          "right": 1240,
+          "top": 561,
+          "bottom": 718,
+          "width": 134,
+          "height": 158,
+          "centerX": 1174.2464617425917,
+          "centerY": 635.3626713843432
+        },
+        "sourceAlphaPixels": 15205,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 70,
+        "y": 156
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kelly_087-grid.png"
+    },
+    {
+      "heroId": "kelly_087",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 201,
+        "y": 120
+      },
+      "manualGridLandmark": {
+        "x": 201,
+        "y": 120
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 201,
+        "y": 120,
+        "distance": 0,
+        "rgba": [
+          75,
+          51,
+          39,
+          246
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kelly_087.png",
+      "sourceImageSha256": "e4eda80f7e3caf261f581baaf25bccafd1badb6a6f8e23dc80ecb70c1640f01b",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 0.9211750420778109,
+      "rowRenderScale": 1.3090697184122326,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 916,
+          "top": 556,
+          "width": 209,
+          "height": 173
+        },
+        "output": {
+          "left": 47,
+          "top": 85,
+          "width": 193,
+          "height": 159
+        },
+        "sourceBodyBounds": {
+          "id": 28,
+          "pixels": 10174,
+          "left": 925,
+          "right": 1124,
+          "top": 561,
+          "bottom": 718,
+          "width": 200,
+          "height": 158,
+          "centerX": 1003.4161588362492,
+          "centerY": 628.9499705130726
+        },
+        "sourceAlphaPixels": 15465,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 55,
+        "y": 120
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kelly_087-grid.png"
+    },
+    {
+      "heroId": "kelly_087",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 199,
+        "y": 121
+      },
+      "manualGridLandmark": {
+        "x": 202,
+        "y": 121
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 199,
+        "y": 121,
+        "distance": 3,
+        "rgba": [
+          49,
+          51,
+          55,
+          247
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kelly_087.png",
+      "sourceImageSha256": "e4eda80f7e3caf261f581baaf25bccafd1badb6a6f8e23dc80ecb70c1640f01b",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 0.9211750420778109,
+      "rowRenderScale": 1.3090697184122326,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1285,
+          "top": 552,
+          "width": 149,
+          "height": 175
+        },
+        "output": {
+          "left": 68,
+          "top": 83,
+          "width": 137,
+          "height": 161
+        },
+        "sourceBodyBounds": {
+          "id": 30,
+          "pixels": 9048,
+          "left": 1289,
+          "right": 1429,
+          "top": 562,
+          "bottom": 719,
+          "width": 141,
+          "height": 158,
+          "centerX": 1350.3459328028293,
+          "centerY": 632.9219717064544
+        },
+        "sourceAlphaPixels": 13266,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 57,
+        "y": 121
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kelly_087-grid.png"
+    },
+    {
+      "heroId": "linda_058",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 208,
+        "y": 208
+      },
+      "manualGridLandmark": {
+        "x": 208,
+        "y": 208
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 208,
+        "y": 208,
+        "distance": 0,
+        "rgba": [
+          54,
+          51,
+          53,
+          245
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/linda_058.png",
+      "sourceImageSha256": "05a9f12ab46a886b8070210cc58b7c2fad4124f6947944d1e05be88de96238a6",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 0.7755387535268394,
+      "rowRenderScale": 1.631681322191514,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 33,
+          "top": 393,
+          "width": 182,
+          "height": 136
+        },
+        "output": {
+          "left": 75,
+          "top": 139,
+          "width": 141,
+          "height": 105
+        },
+        "sourceBodyBounds": {
+          "id": 25,
+          "pixels": 8481,
+          "left": 36,
+          "right": 208,
+          "top": 409,
+          "bottom": 526,
+          "width": 173,
+          "height": 118,
+          "centerX": 101.55712769720552,
+          "centerY": 470.1017568682938
+        },
+        "sourceAlphaPixels": 11061,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 48,
+        "y": 208
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/linda_058-grid.png"
+    },
+    {
+      "heroId": "linda_058",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 211,
+        "y": 152
+      },
+      "manualGridLandmark": {
+        "x": 211,
+        "y": 152
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 211,
+        "y": 152,
+        "distance": 0,
+        "rgba": [
+          25,
+          21,
+          21,
+          251
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/linda_058.png",
+      "sourceImageSha256": "05a9f12ab46a886b8070210cc58b7c2fad4124f6947944d1e05be88de96238a6",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 0.7755387535268394,
+      "rowRenderScale": 1.631681322191514,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 215,
+          "top": 400,
+          "width": 177,
+          "height": 160
+        },
+        "output": {
+          "left": 81,
+          "top": 120,
+          "width": 137,
+          "height": 124
+        },
+        "sourceBodyBounds": {
+          "id": 26,
+          "pixels": 8577,
+          "left": 222,
+          "right": 384,
+          "top": 410,
+          "bottom": 525,
+          "width": 163,
+          "height": 116,
+          "centerX": 275.2598810772998,
+          "centerY": 465.2766701643931
+        },
+        "sourceAlphaPixels": 12045,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 45,
+        "y": 152
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/linda_058-grid.png"
+    },
+    {
+      "heroId": "linda_058",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 210,
+        "y": 144
+      },
+      "manualGridLandmark": {
+        "x": 211,
+        "y": 144
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 210,
+        "y": 144,
+        "distance": 1,
+        "rgba": [
+          36,
+          30,
+          20,
+          200
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/linda_058.png",
+      "sourceImageSha256": "05a9f12ab46a886b8070210cc58b7c2fad4124f6947944d1e05be88de96238a6",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 0.7755387535268394,
+      "rowRenderScale": 1.631681322191514,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 393,
+          "top": 389,
+          "width": 220,
+          "height": 181
+        },
+        "output": {
+          "left": 68,
+          "top": 104,
+          "width": 171,
+          "height": 140
+        },
+        "sourceBodyBounds": {
+          "id": 27,
+          "pixels": 9581,
+          "left": 399,
+          "right": 612,
+          "top": 410,
+          "bottom": 525,
+          "width": 214,
+          "height": 116,
+          "centerX": 470.4401419476046,
+          "centerY": 464.18578436488883
+        },
+        "sourceAlphaPixels": 13680,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 46,
+        "y": 144
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/linda_058-grid.png"
+    },
+    {
+      "heroId": "linda_058",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 207,
+        "y": 193
+      },
+      "manualGridLandmark": {
+        "x": 207,
+        "y": 193
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 207,
+        "y": 193,
+        "distance": 0,
+        "rgba": [
+          46,
+          45,
+          44,
+          245
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/linda_058.png",
+      "sourceImageSha256": "05a9f12ab46a886b8070210cc58b7c2fad4124f6947944d1e05be88de96238a6",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 0.7755387535268394,
+      "rowRenderScale": 1.631681322191514,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 598,
+          "top": 377,
+          "width": 198,
+          "height": 153
+        },
+        "output": {
+          "left": 78,
+          "top": 125,
+          "width": 154,
+          "height": 119
+        },
+        "sourceBodyBounds": {
+          "id": 28,
+          "pixels": 8953,
+          "left": 601,
+          "right": 775,
+          "top": 410,
+          "bottom": 525,
+          "width": 175,
+          "height": 116,
+          "centerX": 663.0299341003016,
+          "centerY": 468.14754830782977
+        },
+        "sourceAlphaPixels": 12433,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 49,
+        "y": 193
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/linda_058-grid.png"
+    },
+    {
+      "heroId": "linda_058",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 209,
+        "y": 165
+      },
+      "manualGridLandmark": {
+        "x": 209,
+        "y": 165
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 209,
+        "y": 165,
+        "distance": 0,
+        "rgba": [
+          9,
+          7,
+          10,
+          205
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/linda_058.png",
+      "sourceImageSha256": "05a9f12ab46a886b8070210cc58b7c2fad4124f6947944d1e05be88de96238a6",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 0.7755387535268394,
+      "rowRenderScale": 1.631681322191514,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 787,
+          "top": 544,
+          "width": 185,
+          "height": 172
+        },
+        "output": {
+          "left": 69,
+          "top": 111,
+          "width": 143,
+          "height": 133
+        },
+        "sourceBodyBounds": {
+          "id": 29,
+          "pixels": 8841,
+          "left": 799,
+          "right": 968,
+          "top": 551,
+          "bottom": 705,
+          "width": 170,
+          "height": 155,
+          "centerX": 862.5196244768691,
+          "centerY": 621.9538513742789
+        },
+        "sourceAlphaPixels": 13043,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 47,
+        "y": 165
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/linda_058-grid.png"
+    },
+    {
+      "heroId": "linda_058",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 211,
+        "y": 146
+      },
+      "manualGridLandmark": {
+        "x": 211,
+        "y": 146
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 211,
+        "y": 146,
+        "distance": 0,
+        "rgba": [
+          26,
+          23,
+          22,
+          247
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/linda_058.png",
+      "sourceImageSha256": "05a9f12ab46a886b8070210cc58b7c2fad4124f6947944d1e05be88de96238a6",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 0.7755387535268394,
+      "rowRenderScale": 1.631681322191514,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 972,
+          "top": 547,
+          "width": 182,
+          "height": 168
+        },
+        "output": {
+          "left": 74,
+          "top": 114,
+          "width": 141,
+          "height": 130
+        },
+        "sourceBodyBounds": {
+          "id": 32,
+          "pixels": 8896,
+          "left": 975,
+          "right": 1150,
+          "top": 557,
+          "bottom": 705,
+          "width": 176,
+          "height": 149,
+          "centerX": 1042.1453462230215,
+          "centerY": 621.6157823741007
+        },
+        "sourceAlphaPixels": 12946,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 45,
+        "y": 146
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/linda_058-grid.png"
+    },
+    {
+      "heroId": "linda_058",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 209,
+        "y": 148
+      },
+      "manualGridLandmark": {
+        "x": 212,
+        "y": 149
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 209,
+        "y": 148,
+        "distance": 3.1622776601683795,
+        "rgba": [
+          65,
+          28,
+          7,
+          240
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/linda_058.png",
+      "sourceImageSha256": "05a9f12ab46a886b8070210cc58b7c2fad4124f6947944d1e05be88de96238a6",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 0.7755387535268394,
+      "rowRenderScale": 1.631681322191514,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1153,
+          "top": 549,
+          "width": 217,
+          "height": 164
+        },
+        "output": {
+          "left": 72,
+          "top": 117,
+          "width": 168,
+          "height": 127
+        },
+        "sourceBodyBounds": {
+          "id": 33,
+          "pixels": 9672,
+          "left": 1157,
+          "right": 1365,
+          "top": 560,
+          "bottom": 706,
+          "width": 209,
+          "height": 147,
+          "centerX": 1225.5842638544252,
+          "centerY": 620.2341811414392
+        },
+        "sourceAlphaPixels": 14401,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 47,
+        "y": 148
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/linda_058-grid.png"
+    },
+    {
+      "heroId": "linda_058",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 203,
+        "y": 178
+      },
+      "manualGridLandmark": {
+        "x": 207,
+        "y": 177
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 203,
+        "y": 178,
+        "distance": 4.123105625617661,
+        "rgba": [
+          21,
+          21,
+          21,
+          169
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/linda_058.png",
+      "sourceImageSha256": "05a9f12ab46a886b8070210cc58b7c2fad4124f6947944d1e05be88de96238a6",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 0.7755387535268394,
+      "rowRenderScale": 1.631681322191514,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1370,
+          "top": 544,
+          "width": 166,
+          "height": 165
+        },
+        "output": {
+          "left": 80,
+          "top": 116,
+          "width": 129,
+          "height": 128
+        },
+        "sourceBodyBounds": {
+          "id": 30,
+          "pixels": 8646,
+          "left": 1375,
+          "right": 1529,
+          "top": 551,
+          "bottom": 705,
+          "width": 155,
+          "height": 155,
+          "centerX": 1431.8294008790192,
+          "centerY": 623.912329400879
+        },
+        "sourceAlphaPixels": 12907,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 53,
+        "y": 178
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/linda_058-grid.png"
+    },
+    {
+      "heroId": "ashley_williams",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 194,
+        "y": 138
+      },
+      "manualGridLandmark": {
+        "x": 195,
+        "y": 138
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 194,
+        "y": 138,
+        "distance": 1,
+        "rgba": [
+          3,
+          3,
+          7,
+          202
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/ashley_williams.png",
+      "sourceImageSha256": "5784ac6edf096bda615e049649ad8806c354ca4c5158ba17dfabffd1e8a299bc",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 0.9454827225928972,
+      "rowRenderScale": 1.1289637608710519,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 0,
+          "top": 396,
+          "width": 162,
+          "height": 168
+        },
+        "output": {
+          "left": 46,
+          "top": 85,
+          "width": 153,
+          "height": 159
+        },
+        "sourceBodyBounds": {
+          "id": 22,
+          "pixels": 9764,
+          "left": 27,
+          "right": 158,
+          "top": 399,
+          "bottom": 554,
+          "width": 132,
+          "height": 156,
+          "centerX": 86.4387546087669,
+          "centerY": 478.00880786562885
+        },
+        "sourceAlphaPixels": 14033,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 62,
+        "y": 138
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/ashley_williams-grid.png"
+    },
+    {
+      "heroId": "ashley_williams",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 198,
+        "y": 109
+      },
+      "manualGridLandmark": {
+        "x": 198,
+        "y": 109
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 198,
+        "y": 109,
+        "distance": 0,
+        "rgba": [
+          53,
+          62,
+          71,
+          229
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/ashley_williams.png",
+      "sourceImageSha256": "5784ac6edf096bda615e049649ad8806c354ca4c5158ba17dfabffd1e8a299bc",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 0.9454827225928972,
+      "rowRenderScale": 1.1289637608710519,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 186,
+          "top": 387,
+          "width": 171,
+          "height": 191
+        },
+        "output": {
+          "left": 55,
+          "top": 63,
+          "width": 162,
+          "height": 181
+        },
+        "sourceBodyBounds": {
+          "id": 21,
+          "pixels": 10112,
+          "left": 200,
+          "right": 339,
+          "top": 398,
+          "bottom": 554,
+          "width": 140,
+          "height": 157,
+          "centerX": 263.28886471518985,
+          "centerY": 475.037480221519
+        },
+        "sourceAlphaPixels": 14956,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 58,
+        "y": 109
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/ashley_williams-grid.png"
+    },
+    {
+      "heroId": "ashley_williams",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 187,
+        "y": 106
+      },
+      "manualGridLandmark": {
+        "x": 187,
+        "y": 108
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 187,
+        "y": 106,
+        "distance": 2,
+        "rgba": [
+          82,
+          44,
+          25,
+          239
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/ashley_williams.png",
+      "sourceImageSha256": "5784ac6edf096bda615e049649ad8806c354ca4c5158ba17dfabffd1e8a299bc",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 0.9454827225928972,
+      "rowRenderScale": 1.1289637608710519,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 357,
+          "top": 390,
+          "width": 201,
+          "height": 186
+        },
+        "output": {
+          "left": 48,
+          "top": 68,
+          "width": 190,
+          "height": 176
+        },
+        "sourceBodyBounds": {
+          "id": 23,
+          "pixels": 10855,
+          "left": 374,
+          "right": 549,
+          "top": 399,
+          "bottom": 554,
+          "width": 176,
+          "height": 156,
+          "centerX": 441.81510824504835,
+          "centerY": 471.86651312759096
+        },
+        "sourceAlphaPixels": 16393,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 69,
+        "y": 106
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/ashley_williams-grid.png"
+    },
+    {
+      "heroId": "ashley_williams",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 199,
+        "y": 127
+      },
+      "manualGridLandmark": {
+        "x": 199,
+        "y": 127
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 199,
+        "y": 127,
+        "distance": 0,
+        "rgba": [
+          0,
+          0,
+          2,
+          214
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/ashley_williams.png",
+      "sourceImageSha256": "5784ac6edf096bda615e049649ad8806c354ca4c5158ba17dfabffd1e8a299bc",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 0.9454827225928972,
+      "rowRenderScale": 1.1289637608710519,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 558,
+          "top": 396,
+          "width": 188,
+          "height": 173
+        },
+        "output": {
+          "left": 58,
+          "top": 80,
+          "width": 178,
+          "height": 164
+        },
+        "sourceBodyBounds": {
+          "id": 24,
+          "pixels": 10039,
+          "left": 567,
+          "right": 708,
+          "top": 400,
+          "bottom": 554,
+          "width": 142,
+          "height": 155,
+          "centerX": 632.3900786930969,
+          "centerY": 477.5564299232991
+        },
+        "sourceAlphaPixels": 14032,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 57,
+        "y": 127
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/ashley_williams-grid.png"
+    },
+    {
+      "heroId": "ashley_williams",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 200,
+        "y": 133
+      },
+      "manualGridLandmark": {
+        "x": 201,
+        "y": 133
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 200,
+        "y": 133,
+        "distance": 1,
+        "rgba": [
+          1,
+          0,
+          2,
+          181
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/ashley_williams.png",
+      "sourceImageSha256": "5784ac6edf096bda615e049649ad8806c354ca4c5158ba17dfabffd1e8a299bc",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 0.9454827225928972,
+      "rowRenderScale": 1.1289637608710519,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 723,
+          "top": 558,
+          "width": 194,
+          "height": 183
+        },
+        "output": {
+          "left": 37,
+          "top": 71,
+          "width": 183,
+          "height": 173
+        },
+        "sourceBodyBounds": {
+          "id": 26,
+          "pixels": 9947,
+          "left": 752,
+          "right": 896,
+          "top": 580,
+          "bottom": 732,
+          "width": 145,
+          "height": 153,
+          "centerX": 819.3646325525284,
+          "centerY": 654.6536644214336
+        },
+        "sourceAlphaPixels": 14813,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 56,
+        "y": 133
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/ashley_williams-grid.png"
+    },
+    {
+      "heroId": "ashley_williams",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 198,
+        "y": 129
+      },
+      "manualGridLandmark": {
+        "x": 198,
+        "y": 129
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 198,
+        "y": 129,
+        "distance": 0,
+        "rgba": [
+          7,
+          6,
+          10,
+          233
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/ashley_williams.png",
+      "sourceImageSha256": "5784ac6edf096bda615e049649ad8806c354ca4c5158ba17dfabffd1e8a299bc",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 0.9454827225928972,
+      "rowRenderScale": 1.1289637608710519,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 914,
+          "top": 584,
+          "width": 179,
+          "height": 158
+        },
+        "output": {
+          "left": 42,
+          "top": 95,
+          "width": 169,
+          "height": 149
+        },
+        "sourceBodyBounds": {
+          "id": 29,
+          "pixels": 9705,
+          "left": 931,
+          "right": 1080,
+          "top": 589,
+          "bottom": 733,
+          "width": 150,
+          "height": 145,
+          "centerX": 1005.1351880473983,
+          "centerY": 660.2663575476558
+        },
+        "sourceAlphaPixels": 14817,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 58,
+        "y": 129
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/ashley_williams-grid.png"
+    },
+    {
+      "heroId": "ashley_williams",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 183,
+        "y": 130
+      },
+      "manualGridLandmark": {
+        "x": 186,
+        "y": 132
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 183,
+        "y": 130,
+        "distance": 3.6055512754639896,
+        "rgba": [
+          75,
+          45,
+          15,
+          247
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/ashley_williams.png",
+      "sourceImageSha256": "5784ac6edf096bda615e049649ad8806c354ca4c5158ba17dfabffd1e8a299bc",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 0.9454827225928972,
+      "rowRenderScale": 1.1289637608710519,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1093,
+          "top": 584,
+          "width": 189,
+          "height": 158
+        },
+        "output": {
+          "left": 55,
+          "top": 95,
+          "width": 179,
+          "height": 149
+        },
+        "sourceBodyBounds": {
+          "id": 30,
+          "pixels": 10271,
+          "left": 1106,
+          "right": 1274,
+          "top": 591,
+          "bottom": 733,
+          "width": 169,
+          "height": 143,
+          "centerX": 1170.014117417973,
+          "centerY": 659.287703242138
+        },
+        "sourceAlphaPixels": 16573,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 73,
+        "y": 130
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/ashley_williams-grid.png"
+    },
+    {
+      "heroId": "ashley_williams",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 197,
+        "y": 130
+      },
+      "manualGridLandmark": {
+        "x": 199,
+        "y": 129
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 197,
+        "y": 130,
+        "distance": 2.23606797749979,
+        "rgba": [
+          1,
+          1,
+          2,
+          181
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/ashley_williams.png",
+      "sourceImageSha256": "5784ac6edf096bda615e049649ad8806c354ca4c5158ba17dfabffd1e8a299bc",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 0.9454827225928972,
+      "rowRenderScale": 1.1289637608710519,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1270,
+          "top": 556,
+          "width": 164,
+          "height": 185
+        },
+        "output": {
+          "left": 51,
+          "top": 69,
+          "width": 155,
+          "height": 175
+        },
+        "sourceBodyBounds": {
+          "id": 28,
+          "pixels": 9971,
+          "left": 1290,
+          "right": 1424,
+          "top": 583,
+          "bottom": 733,
+          "width": 135,
+          "height": 151,
+          "centerX": 1351.2044930297864,
+          "centerY": 656.9105405676462
+        },
+        "sourceAlphaPixels": 14897,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 59,
+        "y": 130
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/ashley_williams-grid.png"
+    },
+    {
+      "heroId": "anya_stroud",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 203,
+        "y": 124
+      },
+      "manualGridLandmark": {
+        "x": 204,
+        "y": 124
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 203,
+        "y": 124,
+        "distance": 1,
+        "rgba": [
+          37,
+          42,
+          43,
+          242
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/anya_stroud.png",
+      "sourceImageSha256": "71f0978073c3f217a338ab8cc5c88a1151047ffeb2f5edce3d46ec07ef9ac652",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 0.9992233612923266,
+      "rowRenderScale": 1.1737510866999443,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 25,
+          "top": 374,
+          "width": 166,
+          "height": 164
+        },
+        "output": {
+          "left": 58,
+          "top": 80,
+          "width": 166,
+          "height": 164
+        },
+        "sourceBodyBounds": {
+          "id": 24,
+          "pixels": 8801,
+          "left": 46,
+          "right": 171,
+          "top": 382,
+          "bottom": 534,
+          "width": 126,
+          "height": 153,
+          "centerX": 95.26735598227474,
+          "centerY": 452.78434268833087
+        },
+        "sourceAlphaPixels": 12317,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 53,
+        "y": 124
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/anya_stroud-grid.png"
+    },
+    {
+      "heroId": "anya_stroud",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 205,
+        "y": 97
+      },
+      "manualGridLandmark": {
+        "x": 206,
+        "y": 98
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 205,
+        "y": 97,
+        "distance": 1.4142135623730951,
+        "rgba": [
+          32,
+          28,
+          29,
+          223
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/anya_stroud.png",
+      "sourceImageSha256": "71f0978073c3f217a338ab8cc5c88a1151047ffeb2f5edce3d46ec07ef9ac652",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 0.9992233612923266,
+      "rowRenderScale": 1.1737510866999443,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 200,
+          "top": 362,
+          "width": 175,
+          "height": 199
+        },
+        "output": {
+          "left": 54,
+          "top": 45,
+          "width": 175,
+          "height": 199
+        },
+        "sourceBodyBounds": {
+          "id": 22,
+          "pixels": 9034,
+          "left": 220,
+          "right": 352,
+          "top": 380,
+          "bottom": 534,
+          "width": 133,
+          "height": 155,
+          "centerX": 274.4545052025681,
+          "centerY": 451.5176001771087
+        },
+        "sourceAlphaPixels": 13056,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 51,
+        "y": 97
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/anya_stroud-grid.png"
+    },
+    {
+      "heroId": "anya_stroud",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 182,
+        "y": 97
+      },
+      "manualGridLandmark": {
+        "x": 186,
+        "y": 94
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 182,
+        "y": 97,
+        "distance": 5,
+        "rgba": [
+          53,
+          27,
+          20,
+          248
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/anya_stroud.png",
+      "sourceImageSha256": "71f0978073c3f217a338ab8cc5c88a1151047ffeb2f5edce3d46ec07ef9ac652",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 0.9992233612923266,
+      "rowRenderScale": 1.1737510866999443,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 377,
+          "top": 358,
+          "width": 186,
+          "height": 205
+        },
+        "output": {
+          "left": 54,
+          "top": 39,
+          "width": 186,
+          "height": 205
+        },
+        "sourceBodyBounds": {
+          "id": 23,
+          "pixels": 8990,
+          "left": 399,
+          "right": 539,
+          "top": 380,
+          "bottom": 534,
+          "width": 141,
+          "height": 155,
+          "centerX": 451.4004449388209,
+          "centerY": 451.0832035595106
+        },
+        "sourceAlphaPixels": 14217,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 74,
+        "y": 97
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/anya_stroud-grid.png"
+    },
+    {
+      "heroId": "anya_stroud",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 201,
+        "y": 103
+      },
+      "manualGridLandmark": {
+        "x": 204,
+        "y": 103
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 201,
+        "y": 103,
+        "distance": 3,
+        "rgba": [
+          27,
+          23,
+          24,
+          188
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/anya_stroud.png",
+      "sourceImageSha256": "71f0978073c3f217a338ab8cc5c88a1151047ffeb2f5edce3d46ec07ef9ac652",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 0.9992233612923266,
+      "rowRenderScale": 1.1737510866999443,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 564,
+          "top": 363,
+          "width": 176,
+          "height": 196
+        },
+        "output": {
+          "left": 53,
+          "top": 48,
+          "width": 176,
+          "height": 196
+        },
+        "sourceBodyBounds": {
+          "id": 21,
+          "pixels": 9007,
+          "left": 587,
+          "right": 713,
+          "top": 377,
+          "bottom": 534,
+          "width": 127,
+          "height": 158,
+          "centerX": 639.0173198623293,
+          "centerY": 451.239036305096
+        },
+        "sourceAlphaPixels": 14436,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 55,
+        "y": 103
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/anya_stroud-grid.png"
+    },
+    {
+      "heroId": "anya_stroud",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 204,
+        "y": 120
+      },
+      "manualGridLandmark": {
+        "x": 204,
+        "y": 120
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 204,
+        "y": 120,
+        "distance": 0,
+        "rgba": [
+          52,
+          53,
+          55,
+          194
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/anya_stroud.png",
+      "sourceImageSha256": "71f0978073c3f217a338ab8cc5c88a1151047ffeb2f5edce3d46ec07ef9ac652",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 0.9992233612923266,
+      "rowRenderScale": 1.1737510866999443,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 725,
+          "top": 532,
+          "width": 193,
+          "height": 195
+        },
+        "output": {
+          "left": 37,
+          "top": 49,
+          "width": 193,
+          "height": 195
+        },
+        "sourceBodyBounds": {
+          "id": 27,
+          "pixels": 8961,
+          "left": 760,
+          "right": 894,
+          "top": 564,
+          "bottom": 716,
+          "width": 135,
+          "height": 153,
+          "centerX": 816.4777368597255,
+          "centerY": 635.2215154558643
+        },
+        "sourceAlphaPixels": 14160,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 52,
+        "y": 120
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/anya_stroud-grid.png"
+    },
+    {
+      "heroId": "anya_stroud",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 202,
+        "y": 118
+      },
+      "manualGridLandmark": {
+        "x": 202,
+        "y": 119
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 202,
+        "y": 118,
+        "distance": 1,
+        "rgba": [
+          45,
+          48,
+          50,
+          221
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/anya_stroud.png",
+      "sourceImageSha256": "71f0978073c3f217a338ab8cc5c88a1151047ffeb2f5edce3d46ec07ef9ac652",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 0.9992233612923266,
+      "rowRenderScale": 1.1737510866999443,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 918,
+          "top": 558,
+          "width": 178,
+          "height": 170
+        },
+        "output": {
+          "left": 49,
+          "top": 74,
+          "width": 178,
+          "height": 170
+        },
+        "sourceBodyBounds": {
+          "id": 28,
+          "pixels": 8893,
+          "left": 941,
+          "right": 1073,
+          "top": 564,
+          "bottom": 716,
+          "width": 133,
+          "height": 153,
+          "centerX": 996.7276509614303,
+          "centerY": 635.1954346114921
+        },
+        "sourceAlphaPixels": 13746,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 54,
+        "y": 118
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/anya_stroud-grid.png"
+    },
+    {
+      "heroId": "anya_stroud",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 183,
+        "y": 115
+      },
+      "manualGridLandmark": {
+        "x": 185,
+        "y": 113
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 183,
+        "y": 115,
+        "distance": 2.8284271247461903,
+        "rgba": [
+          72,
+          36,
+          26,
+          245
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/anya_stroud.png",
+      "sourceImageSha256": "71f0978073c3f217a338ab8cc5c88a1151047ffeb2f5edce3d46ec07ef9ac652",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 0.9992233612923266,
+      "rowRenderScale": 1.1737510866999443,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1097,
+          "top": 540,
+          "width": 194,
+          "height": 189
+        },
+        "output": {
+          "left": 46,
+          "top": 55,
+          "width": 194,
+          "height": 189
+        },
+        "sourceBodyBounds": {
+          "id": 29,
+          "pixels": 9230,
+          "left": 1118,
+          "right": 1272,
+          "top": 564,
+          "bottom": 716,
+          "width": 155,
+          "height": 153,
+          "centerX": 1179.3863488624052,
+          "centerY": 633.6592632719394
+        },
+        "sourceAlphaPixels": 15195,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 73,
+        "y": 115
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/anya_stroud-grid.png"
+    },
+    {
+      "heroId": "anya_stroud",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 199,
+        "y": 120
+      },
+      "manualGridLandmark": {
+        "x": 202,
+        "y": 123
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 199,
+        "y": 120,
+        "distance": 4.242640687119286,
+        "rgba": [
+          22,
+          18,
+          17,
+          162
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/anya_stroud.png",
+      "sourceImageSha256": "71f0978073c3f217a338ab8cc5c88a1151047ffeb2f5edce3d46ec07ef9ac652",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 0.9992233612923266,
+      "rowRenderScale": 1.1737510866999443,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1291,
+          "top": 546,
+          "width": 147,
+          "height": 181
+        },
+        "output": {
+          "left": 57,
+          "top": 63,
+          "width": 147,
+          "height": 181
+        },
+        "sourceBodyBounds": {
+          "id": 30,
+          "pixels": 8676,
+          "left": 1310,
+          "right": 1434,
+          "top": 564,
+          "bottom": 716,
+          "width": 125,
+          "height": 153,
+          "centerX": 1362.5217842323652,
+          "centerY": 635.9473259566621
+        },
+        "sourceAlphaPixels": 13612,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 57,
+        "y": 120
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/anya_stroud-grid.png"
+    },
+    {
+      "heroId": "carmine_cog",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 213,
+        "y": 115
+      },
+      "manualGridLandmark": {
+        "x": 213,
+        "y": 115
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 213,
+        "y": 115,
+        "distance": 0,
+        "rgba": [
+          22,
+          22,
+          22,
+          185
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/carmine_cog.png",
+      "sourceImageSha256": "2b983d8efe5a374c65ed3f6a98da886259b6ae2c8eb3d4211d733cd900470e94",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 0.9952607174907595,
+      "rowRenderScale": 1.2710842684048773,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 15,
+          "top": 385,
+          "width": 178,
+          "height": 180
+        },
+        "output": {
+          "left": 43,
+          "top": 65,
+          "width": 177,
+          "height": 179
+        },
+        "sourceBodyBounds": {
+          "id": 21,
+          "pixels": 11562,
+          "left": 27,
+          "right": 189,
+          "top": 390,
+          "bottom": 547,
+          "width": 163,
+          "height": 158,
+          "centerX": 100.50458398201003,
+          "centerY": 466.93573776163294
+        },
+        "sourceAlphaPixels": 15097,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 43,
+        "y": 115
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/carmine_cog-grid.png"
+    },
+    {
+      "heroId": "carmine_cog",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 213,
+        "y": 108
+      },
+      "manualGridLandmark": {
+        "x": 213,
+        "y": 108
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 213,
+        "y": 108,
+        "distance": 0,
+        "rgba": [
+          41,
+          35,
+          35,
+          186
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/carmine_cog.png",
+      "sourceImageSha256": "2b983d8efe5a374c65ed3f6a98da886259b6ae2c8eb3d4211d733cd900470e94",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 0.9952607174907595,
+      "rowRenderScale": 1.2710842684048773,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 204,
+          "top": 388,
+          "width": 174,
+          "height": 182
+        },
+        "output": {
+          "left": 51,
+          "top": 63,
+          "width": 173,
+          "height": 181
+        },
+        "sourceBodyBounds": {
+          "id": 24,
+          "pixels": 11533,
+          "left": 208,
+          "right": 369,
+          "top": 393,
+          "bottom": 547,
+          "width": 162,
+          "height": 155,
+          "centerX": 281.02731292811933,
+          "centerY": 467.4004161969999
+        },
+        "sourceAlphaPixels": 15373,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 43,
+        "y": 108
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/carmine_cog-grid.png"
+    },
+    {
+      "heroId": "carmine_cog",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 192,
+        "y": 106
+      },
+      "manualGridLandmark": {
+        "x": 198,
+        "y": 106
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 192,
+        "y": 106,
+        "distance": 6,
+        "rgba": [
+          101,
+          59,
+          41,
+          179
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/carmine_cog.png",
+      "sourceImageSha256": "2b983d8efe5a374c65ed3f6a98da886259b6ae2c8eb3d4211d733cd900470e94",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 0.9952607174907595,
+      "rowRenderScale": 1.2710842684048773,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 381,
+          "top": 388,
+          "width": 195,
+          "height": 177
+        },
+        "output": {
+          "left": 45,
+          "top": 68,
+          "width": 194,
+          "height": 176
+        },
+        "sourceBodyBounds": {
+          "id": 23,
+          "pixels": 12206,
+          "left": 390,
+          "right": 574,
+          "top": 392,
+          "bottom": 547,
+          "width": 185,
+          "height": 156,
+          "centerX": 464.56251024086515,
+          "centerY": 464.6619695231853
+        },
+        "sourceAlphaPixels": 17378,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 64,
+        "y": 106
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/carmine_cog-grid.png"
+    },
+    {
+      "heroId": "carmine_cog",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 212,
+        "y": 114
+      },
+      "manualGridLandmark": {
+        "x": 212,
+        "y": 114
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 212,
+        "y": 114,
+        "distance": 0,
+        "rgba": [
+          65,
+          65,
+          65,
+          203
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/carmine_cog.png",
+      "sourceImageSha256": "2b983d8efe5a374c65ed3f6a98da886259b6ae2c8eb3d4211d733cd900470e94",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 0.9952607174907595,
+      "rowRenderScale": 1.2710842684048773,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 575,
+          "top": 388,
+          "width": 177,
+          "height": 175
+        },
+        "output": {
+          "left": 58,
+          "top": 70,
+          "width": 176,
+          "height": 174
+        },
+        "sourceBodyBounds": {
+          "id": 25,
+          "pixels": 11454,
+          "left": 579,
+          "right": 731,
+          "top": 393,
+          "bottom": 548,
+          "width": 153,
+          "height": 156,
+          "centerX": 645.6661428321984,
+          "centerY": 467.82215819800945
+        },
+        "sourceAlphaPixels": 16371,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 44,
+        "y": 114
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/carmine_cog-grid.png"
+    },
+    {
+      "heroId": "carmine_cog",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 205,
+        "y": 150
+      },
+      "manualGridLandmark": {
+        "x": 205,
+        "y": 151
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 205,
+        "y": 150,
+        "distance": 1,
+        "rgba": [
+          16,
+          12,
+          16,
+          186
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/carmine_cog.png",
+      "sourceImageSha256": "2b983d8efe5a374c65ed3f6a98da886259b6ae2c8eb3d4211d733cd900470e94",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 0.9952607174907595,
+      "rowRenderScale": 1.2710842684048773,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 741,
+          "top": 566,
+          "width": 186,
+          "height": 166
+        },
+        "output": {
+          "left": 31,
+          "top": 79,
+          "width": 185,
+          "height": 165
+        },
+        "sourceBodyBounds": {
+          "id": 30,
+          "pixels": 11133,
+          "left": 760,
+          "right": 918,
+          "top": 575,
+          "bottom": 721,
+          "width": 159,
+          "height": 147,
+          "centerX": 838.1173987245127,
+          "centerY": 648.4295338183778
+        },
+        "sourceAlphaPixels": 14275,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 51,
+        "y": 150
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/carmine_cog-grid.png"
+    },
+    {
+      "heroId": "carmine_cog",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 212,
+        "y": 123
+      },
+      "manualGridLandmark": {
+        "x": 212,
+        "y": 123
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 212,
+        "y": 123,
+        "distance": 0,
+        "rgba": [
+          11,
+          9,
+          9,
+          225
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/carmine_cog.png",
+      "sourceImageSha256": "2b983d8efe5a374c65ed3f6a98da886259b6ae2c8eb3d4211d733cd900470e94",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 0.9952607174907595,
+      "rowRenderScale": 1.2710842684048773,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 933,
+          "top": 566,
+          "width": 167,
+          "height": 166
+        },
+        "output": {
+          "left": 52,
+          "top": 79,
+          "width": 166,
+          "height": 165
+        },
+        "sourceBodyBounds": {
+          "id": 31,
+          "pixels": 11162,
+          "left": 937,
+          "right": 1097,
+          "top": 575,
+          "bottom": 724,
+          "width": 161,
+          "height": 150,
+          "centerX": 1009.2181508690198,
+          "centerY": 644.9436480917399
+        },
+        "sourceAlphaPixels": 14508,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 44,
+        "y": 123
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/carmine_cog-grid.png"
+    },
+    {
+      "heroId": "carmine_cog",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 189,
+        "y": 111
+      },
+      "manualGridLandmark": {
+        "x": 190,
+        "y": 111
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 189,
+        "y": 111,
+        "distance": 1,
+        "rgba": [
+          146,
+          107,
+          85,
+          246
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/carmine_cog.png",
+      "sourceImageSha256": "2b983d8efe5a374c65ed3f6a98da886259b6ae2c8eb3d4211d733cd900470e94",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 0.9952607174907595,
+      "rowRenderScale": 1.2710842684048773,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1105,
+          "top": 565,
+          "width": 191,
+          "height": 169
+        },
+        "output": {
+          "left": 47,
+          "top": 76,
+          "width": 190,
+          "height": 168
+        },
+        "sourceBodyBounds": {
+          "id": 29,
+          "pixels": 12230,
+          "left": 1111,
+          "right": 1295,
+          "top": 571,
+          "bottom": 721,
+          "width": 185,
+          "height": 151,
+          "centerX": 1186.407849550286,
+          "centerY": 639.9100572363042
+        },
+        "sourceAlphaPixels": 17531,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 67,
+        "y": 111
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/carmine_cog-grid.png"
+    },
+    {
+      "heroId": "carmine_cog",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 204,
+        "y": 134
+      },
+      "manualGridLandmark": {
+        "x": 206,
+        "y": 134
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 204,
+        "y": 134,
+        "distance": 2,
+        "rgba": [
+          48,
+          45,
+          45,
+          237
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/carmine_cog.png",
+      "sourceImageSha256": "2b983d8efe5a374c65ed3f6a98da886259b6ae2c8eb3d4211d733cd900470e94",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 0.9952607174907595,
+      "rowRenderScale": 1.2710842684048773,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1295,
+          "top": 572,
+          "width": 153,
+          "height": 162
+        },
+        "output": {
+          "left": 58,
+          "top": 83,
+          "width": 152,
+          "height": 161
+        },
+        "sourceBodyBounds": {
+          "id": 32,
+          "pixels": 10781,
+          "left": 1297,
+          "right": 1443,
+          "top": 579,
+          "bottom": 721,
+          "width": 147,
+          "height": 143,
+          "centerX": 1364.9402652815138,
+          "centerY": 647.9775531026806
+        },
+        "sourceAlphaPixels": 14693,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 52,
+        "y": 134
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/carmine_cog-grid.png"
+    },
+    {
+      "heroId": "kait_diaz",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 207,
+        "y": 149
+      },
+      "manualGridLandmark": {
+        "x": 209,
+        "y": 149
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 207,
+        "y": 149,
+        "distance": 2,
+        "rgba": [
+          67,
+          79,
+          93,
+          219
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kait_diaz.png",
+      "sourceImageSha256": "392c98a653339226f94b71854f95a5c060c2e1e97588afc526adb00f1dabd98c",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 0.9087722328627243,
+      "rowRenderScale": 1.282658216907931,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 19,
+          "top": 387,
+          "width": 163,
+          "height": 156
+        },
+        "output": {
+          "left": 63,
+          "top": 102,
+          "width": 148,
+          "height": 142
+        },
+        "sourceBodyBounds": {
+          "id": 21,
+          "pixels": 10353,
+          "left": 25,
+          "right": 179,
+          "top": 389,
+          "bottom": 536,
+          "width": 155,
+          "height": 148,
+          "centerX": 90.01864193953443,
+          "centerY": 458.60349657104223
+        },
+        "sourceAlphaPixels": 13922,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 49,
+        "y": 149
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kait_diaz-grid.png"
+    },
+    {
+      "heroId": "kait_diaz",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 204,
+        "y": 146
+      },
+      "manualGridLandmark": {
+        "x": 205,
+        "y": 146
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 204,
+        "y": 146,
+        "distance": 1,
+        "rgba": [
+          109,
+          128,
+          155,
+          230
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kait_diaz.png",
+      "sourceImageSha256": "392c98a653339226f94b71854f95a5c060c2e1e97588afc526adb00f1dabd98c",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 0.9087722328627243,
+      "rowRenderScale": 1.282658216907931,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 379,
+          "top": 389,
+          "width": 162,
+          "height": 160
+        },
+        "output": {
+          "left": 61,
+          "top": 99,
+          "width": 147,
+          "height": 145
+        },
+        "sourceBodyBounds": {
+          "id": 22,
+          "pixels": 10048,
+          "left": 381,
+          "right": 538,
+          "top": 392,
+          "bottom": 537,
+          "width": 158,
+          "height": 146,
+          "centerX": 452.86634156050957,
+          "centerY": 461.4926353503185
+        },
+        "sourceAlphaPixels": 14107,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 52,
+        "y": 146
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kait_diaz-grid.png"
+    },
+    {
+      "heroId": "kait_diaz",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 199,
+        "y": 135
+      },
+      "manualGridLandmark": {
+        "x": 201,
+        "y": 135
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 199,
+        "y": 135,
+        "distance": 2,
+        "rgba": [
+          82,
+          56,
+          38,
+          238
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kait_diaz.png",
+      "sourceImageSha256": "392c98a653339226f94b71854f95a5c060c2e1e97588afc526adb00f1dabd98c",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 0.9087722328627243,
+      "rowRenderScale": 1.282658216907931,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 194,
+          "top": 394,
+          "width": 200,
+          "height": 155
+        },
+        "output": {
+          "left": 53,
+          "top": 103,
+          "width": 182,
+          "height": 141
+        },
+        "sourceBodyBounds": {
+          "id": 24,
+          "pixels": 10722,
+          "left": 202,
+          "right": 393,
+          "top": 397,
+          "bottom": 537,
+          "width": 192,
+          "height": 141,
+          "centerX": 275.98414474911397,
+          "centerY": 460.5480320835665
+        },
+        "sourceAlphaPixels": 14473,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 57,
+        "y": 135
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kait_diaz-grid.png"
+    },
+    {
+      "heroId": "kait_diaz",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 208,
+        "y": 159
+      },
+      "manualGridLandmark": {
+        "x": 208,
+        "y": 159
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 208,
+        "y": 159,
+        "distance": 0,
+        "rgba": [
+          130,
+          147,
+          170,
+          228
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kait_diaz.png",
+      "sourceImageSha256": "392c98a653339226f94b71854f95a5c060c2e1e97588afc526adb00f1dabd98c",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 0.9087722328627243,
+      "rowRenderScale": 1.282658216907931,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 546,
+          "top": 390,
+          "width": 178,
+          "height": 153
+        },
+        "output": {
+          "left": 55,
+          "top": 105,
+          "width": 162,
+          "height": 139
+        },
+        "sourceBodyBounds": {
+          "id": 23,
+          "pixels": 10317,
+          "left": 554,
+          "right": 718,
+          "top": 395,
+          "bottom": 537,
+          "width": 165,
+          "height": 143,
+          "centerX": 626.268876611418,
+          "centerY": 462.55015993021226
+        },
+        "sourceAlphaPixels": 13127,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 48,
+        "y": 159
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kait_diaz-grid.png"
+    },
+    {
+      "heroId": "kait_diaz",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 213,
+        "y": 142
+      },
+      "manualGridLandmark": {
+        "x": 213,
+        "y": 142
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 213,
+        "y": 142,
+        "distance": 0,
+        "rgba": [
+          79,
+          80,
+          82,
+          213
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kait_diaz.png",
+      "sourceImageSha256": "392c98a653339226f94b71854f95a5c060c2e1e97588afc526adb00f1dabd98c",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 0.9087722328627243,
+      "rowRenderScale": 1.282658216907931,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 731,
+          "top": 552,
+          "width": 189,
+          "height": 170
+        },
+        "output": {
+          "left": 44,
+          "top": 90,
+          "width": 172,
+          "height": 154
+        },
+        "sourceBodyBounds": {
+          "id": 27,
+          "pixels": 10693,
+          "left": 745,
+          "right": 918,
+          "top": 569,
+          "bottom": 717,
+          "width": 174,
+          "height": 149,
+          "centerX": 823.7038249321986,
+          "centerY": 638.510894978023
+        },
+        "sourceAlphaPixels": 13922,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 43,
+        "y": 142
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kait_diaz-grid.png"
+    },
+    {
+      "heroId": "kait_diaz",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 183,
+        "y": 123
+      },
+      "manualGridLandmark": {
+        "x": 186,
+        "y": 123
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 183,
+        "y": 123,
+        "distance": 3,
+        "rgba": [
+          12,
+          8,
+          17,
+          191
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kait_diaz.png",
+      "sourceImageSha256": "392c98a653339226f94b71854f95a5c060c2e1e97588afc526adb00f1dabd98c",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 0.9087722328627243,
+      "rowRenderScale": 1.282658216907931,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1105,
+          "top": 556,
+          "width": 162,
+          "height": 172
+        },
+        "output": {
+          "left": 60,
+          "top": 88,
+          "width": 147,
+          "height": 156
+        },
+        "sourceBodyBounds": {
+          "id": 30,
+          "pixels": 9834,
+          "left": 1107,
+          "right": 1246,
+          "top": 573,
+          "bottom": 717,
+          "width": 140,
+          "height": 145,
+          "centerX": 1179.6512100874518,
+          "centerY": 641.0664022778117
+        },
+        "sourceAlphaPixels": 13725,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 73,
+        "y": 123
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kait_diaz-grid.png"
+    },
+    {
+      "heroId": "kait_diaz",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 204,
+        "y": 132
+      },
+      "manualGridLandmark": {
+        "x": 205,
+        "y": 134
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 204,
+        "y": 132,
+        "distance": 2.23606797749979,
+        "rgba": [
+          99,
+          67,
+          58,
+          184
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kait_diaz.png",
+      "sourceImageSha256": "392c98a653339226f94b71854f95a5c060c2e1e97588afc526adb00f1dabd98c",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 0.9087722328627243,
+      "rowRenderScale": 1.282658216907931,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 920,
+          "top": 547,
+          "width": 211,
+          "height": 180
+        },
+        "output": {
+          "left": 48,
+          "top": 80,
+          "width": 192,
+          "height": 164
+        },
+        "sourceBodyBounds": {
+          "id": 29,
+          "pixels": 11180,
+          "left": 922,
+          "right": 1130,
+          "top": 571,
+          "bottom": 717,
+          "width": 209,
+          "height": 147,
+          "centerX": 1007.7567978533095,
+          "centerY": 637.4897137745975
+        },
+        "sourceAlphaPixels": 15109,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 52,
+        "y": 132
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kait_diaz-grid.png"
+    },
+    {
+      "heroId": "kait_diaz",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 191,
+        "y": 143
+      },
+      "manualGridLandmark": {
+        "x": 191,
+        "y": 143
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 191,
+        "y": 143,
+        "distance": 0,
+        "rgba": [
+          98,
+          112,
+          143,
+          234
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/kait_diaz.png",
+      "sourceImageSha256": "392c98a653339226f94b71854f95a5c060c2e1e97588afc526adb00f1dabd98c",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 0.9087722328627243,
+      "rowRenderScale": 1.282658216907931,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1286,
+          "top": 556,
+          "width": 148,
+          "height": 167
+        },
+        "output": {
+          "left": 65,
+          "top": 92,
+          "width": 134,
+          "height": 152
+        },
+        "sourceBodyBounds": {
+          "id": 28,
+          "pixels": 9599,
+          "left": 1290,
+          "right": 1429,
+          "top": 570,
+          "bottom": 717,
+          "width": 140,
+          "height": 148,
+          "centerX": 1355.2170017710177,
+          "centerY": 641.3096155849568
+        },
+        "sourceAlphaPixels": 12493,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 65,
+        "y": 143
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/kait_diaz-grid.png"
+    },
+    {
+      "heroId": "boone_fnv",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 189,
+        "y": 199
+      },
+      "manualGridLandmark": {
+        "x": 190,
+        "y": 200
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 189,
+        "y": 199,
+        "distance": 1.4142135623730951,
+        "rgba": [
+          7,
+          4,
+          6,
+          160
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/boone_fnv.png",
+      "sourceImageSha256": "c2644190b0b3d450d4957388e0664cd24246f34efb8dafe20128801846156dad",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 0.8112249464470048,
+      "rowRenderScale": 1.4457636088604409,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 0,
+          "top": 363,
+          "width": 165,
+          "height": 184
+        },
+        "output": {
+          "left": 66,
+          "top": 95,
+          "width": 134,
+          "height": 149
+        },
+        "sourceBodyBounds": {
+          "id": 20,
+          "pixels": 8630,
+          "left": 31,
+          "right": 152,
+          "top": 376,
+          "bottom": 536,
+          "width": 122,
+          "height": 161,
+          "centerX": 76.758516801854,
+          "centerY": 458.91865585168017
+        },
+        "sourceAlphaPixels": 12973,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 67,
+        "y": 199
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/boone_fnv-grid.png"
+    },
+    {
+      "heroId": "boone_fnv",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 217,
+        "y": 134
+      },
+      "manualGridLandmark": {
+        "x": 217,
+        "y": 134
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 217,
+        "y": 134,
+        "distance": 0,
+        "rgba": [
+          2,
+          1,
+          0,
+          217
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/boone_fnv.png",
+      "sourceImageSha256": "c2644190b0b3d450d4957388e0664cd24246f34efb8dafe20128801846156dad",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 0.8112249464470048,
+      "rowRenderScale": 1.4457636088604409,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 165,
+          "top": 362,
+          "width": 198,
+          "height": 189
+        },
+        "output": {
+          "left": 59,
+          "top": 91,
+          "width": 161,
+          "height": 153
+        },
+        "sourceBodyBounds": {
+          "id": 24,
+          "pixels": 9494,
+          "left": 178,
+          "right": 360,
+          "top": 388,
+          "bottom": 536,
+          "width": 183,
+          "height": 149,
+          "centerX": 250.1041710554034,
+          "centerY": 455.2471034337476
+        },
+        "sourceAlphaPixels": 13814,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 39,
+        "y": 134
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/boone_fnv-grid.png"
+    },
+    {
+      "heroId": "boone_fnv",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 203,
+        "y": 113
+      },
+      "manualGridLandmark": {
+        "x": 203,
+        "y": 113
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 203,
+        "y": 113,
+        "distance": 0,
+        "rgba": [
+          3,
+          3,
+          6,
+          244
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/boone_fnv.png",
+      "sourceImageSha256": "c2644190b0b3d450d4957388e0664cd24246f34efb8dafe20128801846156dad",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 0.8112249464470048,
+      "rowRenderScale": 1.4457636088604409,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 363,
+          "top": 358,
+          "width": 204,
+          "height": 215
+        },
+        "output": {
+          "left": 75,
+          "top": 70,
+          "width": 165,
+          "height": 174
+        },
+        "sourceBodyBounds": {
+          "id": 22,
+          "pixels": 9711,
+          "left": 366,
+          "right": 555,
+          "top": 385,
+          "bottom": 536,
+          "width": 190,
+          "height": 152,
+          "centerX": 428.9371846359798,
+          "centerY": 450.62897744825455
+        },
+        "sourceAlphaPixels": 15586,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 53,
+        "y": 113
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/boone_fnv-grid.png"
+    },
+    {
+      "heroId": "boone_fnv",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 203,
+        "y": 171
+      },
+      "manualGridLandmark": {
+        "x": 204,
+        "y": 171
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 203,
+        "y": 171,
+        "distance": 1,
+        "rgba": [
+          4,
+          1,
+          1,
+          188
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/boone_fnv.png",
+      "sourceImageSha256": "c2644190b0b3d450d4957388e0664cd24246f34efb8dafe20128801846156dad",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 0.8112249464470048,
+      "rowRenderScale": 1.4457636088604409,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 567,
+          "top": 375,
+          "width": 185,
+          "height": 170
+        },
+        "output": {
+          "left": 75,
+          "top": 106,
+          "width": 150,
+          "height": 138
+        },
+        "sourceBodyBounds": {
+          "id": 23,
+          "pixels": 9066,
+          "left": 578,
+          "right": 726,
+          "top": 386,
+          "bottom": 536,
+          "width": 149,
+          "height": 151,
+          "centerX": 631.9870946393117,
+          "centerY": 459.87745422457533
+        },
+        "sourceAlphaPixels": 13895,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 53,
+        "y": 171
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/boone_fnv-grid.png"
+    },
+    {
+      "heroId": "boone_fnv",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 199,
+        "y": 166
+      },
+      "manualGridLandmark": {
+        "x": 200,
+        "y": 166
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 199,
+        "y": 166,
+        "distance": 1,
+        "rgba": [
+          10,
+          8,
+          8,
+          233
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/boone_fnv.png",
+      "sourceImageSha256": "c2644190b0b3d450d4957388e0664cd24246f34efb8dafe20128801846156dad",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 0.8112249464470048,
+      "rowRenderScale": 1.4457636088604409,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 740,
+          "top": 532,
+          "width": 173,
+          "height": 185
+        },
+        "output": {
+          "left": 65,
+          "top": 94,
+          "width": 140,
+          "height": 150
+        },
+        "sourceBodyBounds": {
+          "id": 27,
+          "pixels": 9154,
+          "left": 752,
+          "right": 907,
+          "top": 557,
+          "bottom": 711,
+          "width": 156,
+          "height": 155,
+          "centerX": 818.2752894909329,
+          "centerY": 635.2988857330129
+        },
+        "sourceAlphaPixels": 12917,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 57,
+        "y": 166
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/boone_fnv-grid.png"
+    },
+    {
+      "heroId": "boone_fnv",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 203,
+        "y": 143
+      },
+      "manualGridLandmark": {
+        "x": 205,
+        "y": 143
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 203,
+        "y": 143,
+        "distance": 2,
+        "rgba": [
+          22,
+          21,
+          22,
+          235
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/boone_fnv.png",
+      "sourceImageSha256": "c2644190b0b3d450d4957388e0664cd24246f34efb8dafe20128801846156dad",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 0.8112249464470048,
+      "rowRenderScale": 1.4457636088604409,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 904,
+          "top": 566,
+          "width": 171,
+          "height": 158
+        },
+        "output": {
+          "left": 69,
+          "top": 116,
+          "width": 139,
+          "height": 128
+        },
+        "sourceBodyBounds": {
+          "id": 31,
+          "pixels": 8992,
+          "left": 905,
+          "right": 1070,
+          "top": 570,
+          "bottom": 709,
+          "width": 166,
+          "height": 140,
+          "centerX": 976.6466859430604,
+          "centerY": 635.2506672597865
+        },
+        "sourceAlphaPixels": 13445,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 53,
+        "y": 143
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/boone_fnv-grid.png"
+    },
+    {
+      "heroId": "boone_fnv",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 195,
+        "y": 134
+      },
+      "manualGridLandmark": {
+        "x": 196,
+        "y": 134
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 195,
+        "y": 134,
+        "distance": 1,
+        "rgba": [
+          20,
+          17,
+          19,
+          233
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/boone_fnv.png",
+      "sourceImageSha256": "c2644190b0b3d450d4957388e0664cd24246f34efb8dafe20128801846156dad",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 0.8112249464470048,
+      "rowRenderScale": 1.4457636088604409,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1075,
+          "top": 514,
+          "width": 197,
+          "height": 209
+        },
+        "output": {
+          "left": 75,
+          "top": 74,
+          "width": 160,
+          "height": 170
+        },
+        "sourceBodyBounds": {
+          "id": 28,
+          "pixels": 9884,
+          "left": 1080,
+          "right": 1257,
+          "top": 557,
+          "bottom": 709,
+          "width": 178,
+          "height": 153,
+          "centerX": 1140.4787535410765,
+          "centerY": 624.9628692836908
+        },
+        "sourceAlphaPixels": 15698,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 61,
+        "y": 134
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/boone_fnv-grid.png"
+    },
+    {
+      "heroId": "boone_fnv",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 189,
+        "y": 199
+      },
+      "manualGridLandmark": {
+        "x": 190,
+        "y": 199
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 189,
+        "y": 199,
+        "distance": 1,
+        "rgba": [
+          14,
+          8,
+          7,
+          217
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/boone_fnv.png",
+      "sourceImageSha256": "c2644190b0b3d450d4957388e0664cd24246f34efb8dafe20128801846156dad",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 0.8112249464470048,
+      "rowRenderScale": 1.4457636088604409,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1272,
+          "top": 530,
+          "width": 144,
+          "height": 195
+        },
+        "output": {
+          "left": 75,
+          "top": 86,
+          "width": 117,
+          "height": 158
+        },
+        "sourceBodyBounds": {
+          "id": 26,
+          "pixels": 8748,
+          "left": 1287,
+          "right": 1413,
+          "top": 556,
+          "bottom": 710,
+          "width": 127,
+          "height": 155,
+          "centerX": 1337.8139003200731,
+          "centerY": 635.836191129401
+        },
+        "sourceAlphaPixels": 13361,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 67,
+        "y": 199
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/boone_fnv-grid.png"
+    },
+    {
+      "heroId": "courier_six",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 187,
+        "y": 186
+      },
+      "manualGridLandmark": {
+        "x": 189,
+        "y": 186
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 187,
+        "y": 186,
+        "distance": 2,
+        "rgba": [
+          18,
+          13,
+          9,
+          183
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/courier_six.png",
+      "sourceImageSha256": "6b265b5f4d6c41907fbeecb929977fa1627568d313306ce19b0537cf076aca6c",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 0.9021001339812789,
+      "rowRenderScale": 1.3001211971853883,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 17,
+          "top": 364,
+          "width": 156,
+          "height": 189
+        },
+        "output": {
+          "left": 74,
+          "top": 74,
+          "width": 141,
+          "height": 170
+        },
+        "sourceBodyBounds": {
+          "id": 22,
+          "pixels": 9543,
+          "left": 27,
+          "right": 145,
+          "top": 384,
+          "bottom": 541,
+          "width": 119,
+          "height": 158,
+          "centerX": 77.12082154458766,
+          "centerY": 466.1860002095777
+        },
+        "sourceAlphaPixels": 12721,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 69,
+        "y": 186
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/courier_six-grid.png"
+    },
+    {
+      "heroId": "courier_six",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 208,
+        "y": 115
+      },
+      "manualGridLandmark": {
+        "x": 208,
+        "y": 115
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 208,
+        "y": 115,
+        "distance": 0,
+        "rgba": [
+          5,
+          3,
+          1,
+          214
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/courier_six.png",
+      "sourceImageSha256": "6b265b5f4d6c41907fbeecb929977fa1627568d313306ce19b0537cf076aca6c",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 0.9021001339812789,
+      "rowRenderScale": 1.3001211971853883,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 174,
+          "top": 372,
+          "width": 180,
+          "height": 194
+        },
+        "output": {
+          "left": 51,
+          "top": 69,
+          "width": 162,
+          "height": 175
+        },
+        "sourceBodyBounds": {
+          "id": 23,
+          "pixels": 10106,
+          "left": 203,
+          "right": 349,
+          "top": 387,
+          "bottom": 541,
+          "width": 147,
+          "height": 155,
+          "centerX": 259.61438749257866,
+          "centerY": 463.0648129823867
+        },
+        "sourceAlphaPixels": 14166,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 48,
+        "y": 115
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/courier_six-grid.png"
+    },
+    {
+      "heroId": "courier_six",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 207,
+        "y": 110
+      },
+      "manualGridLandmark": {
+        "x": 207,
+        "y": 110
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 207,
+        "y": 110,
+        "distance": 0,
+        "rgba": [
+          23,
+          23,
+          22,
+          239
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/courier_six.png",
+      "sourceImageSha256": "6b265b5f4d6c41907fbeecb929977fa1627568d313306ce19b0537cf076aca6c",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 0.9021001339812789,
+      "rowRenderScale": 1.3001211971853883,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 368,
+          "top": 374,
+          "width": 182,
+          "height": 191
+        },
+        "output": {
+          "left": 76,
+          "top": 72,
+          "width": 164,
+          "height": 172
+        },
+        "sourceBodyBounds": {
+          "id": 24,
+          "pixels": 9817,
+          "left": 372,
+          "right": 517,
+          "top": 389,
+          "bottom": 541,
+          "width": 146,
+          "height": 153,
+          "centerX": 425.8452684119385,
+          "centerY": 462.46093511255987
+        },
+        "sourceAlphaPixels": 14144,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 49,
+        "y": 110
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/courier_six-grid.png"
+    },
+    {
+      "heroId": "courier_six",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 206,
+        "y": 124
+      },
+      "manualGridLandmark": {
+        "x": 207,
+        "y": 124
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 206,
+        "y": 124,
+        "distance": 1,
+        "rgba": [
+          12,
+          7,
+          3,
+          208
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/courier_six.png",
+      "sourceImageSha256": "6b265b5f4d6c41907fbeecb929977fa1627568d313306ce19b0537cf076aca6c",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 0.9021001339812789,
+      "rowRenderScale": 1.3001211971853883,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 562,
+          "top": 374,
+          "width": 178,
+          "height": 185
+        },
+        "output": {
+          "left": 70,
+          "top": 77,
+          "width": 161,
+          "height": 167
+        },
+        "sourceBodyBounds": {
+          "id": 21,
+          "pixels": 9634,
+          "left": 571,
+          "right": 714,
+          "top": 383,
+          "bottom": 537,
+          "width": 144,
+          "height": 155,
+          "centerX": 626.5523147187046,
+          "centerY": 461.5657047955159
+        },
+        "sourceAlphaPixels": 14066,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 50,
+        "y": 124
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/courier_six-grid.png"
+    },
+    {
+      "heroId": "courier_six",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 208,
+        "y": 134
+      },
+      "manualGridLandmark": {
+        "x": 209,
+        "y": 134
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 208,
+        "y": 134,
+        "distance": 1,
+        "rgba": [
+          24,
+          24,
+          23,
+          217
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/courier_six.png",
+      "sourceImageSha256": "6b265b5f4d6c41907fbeecb929977fa1627568d313306ce19b0537cf076aca6c",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 0.9021001339812789,
+      "rowRenderScale": 1.3001211971853883,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 720,
+          "top": 538,
+          "width": 197,
+          "height": 191
+        },
+        "output": {
+          "left": 51,
+          "top": 72,
+          "width": 178,
+          "height": 172
+        },
+        "sourceBodyBounds": {
+          "id": 27,
+          "pixels": 9825,
+          "left": 751,
+          "right": 895,
+          "top": 563,
+          "bottom": 717,
+          "width": 145,
+          "height": 155,
+          "centerX": 805.4975063613232,
+          "centerY": 640.1624427480916
+        },
+        "sourceAlphaPixels": 13748,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 48,
+        "y": 134
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/courier_six-grid.png"
+    },
+    {
+      "heroId": "courier_six",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 215,
+        "y": 129
+      },
+      "manualGridLandmark": {
+        "x": 215,
+        "y": 129
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 215,
+        "y": 129,
+        "distance": 0,
+        "rgba": [
+          49,
+          48,
+          47,
+          233
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/courier_six.png",
+      "sourceImageSha256": "6b265b5f4d6c41907fbeecb929977fa1627568d313306ce19b0537cf076aca6c",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 0.9021001339812789,
+      "rowRenderScale": 1.3001211971853883,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 912,
+          "top": 542,
+          "width": 188,
+          "height": 187
+        },
+        "output": {
+          "left": 52,
+          "top": 75,
+          "width": 170,
+          "height": 169
+        },
+        "sourceBodyBounds": {
+          "id": 29,
+          "pixels": 10274,
+          "left": 929,
+          "right": 1093,
+          "top": 568,
+          "bottom": 717,
+          "width": 165,
+          "height": 150,
+          "centerX": 995.9660307572514,
+          "centerY": 642.7498540003893
+        },
+        "sourceAlphaPixels": 14840,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 41,
+        "y": 129
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/courier_six-grid.png"
+    },
+    {
+      "heroId": "courier_six",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 201,
+        "y": 131
+      },
+      "manualGridLandmark": {
+        "x": 201,
+        "y": 131
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 201,
+        "y": 131,
+        "distance": 0,
+        "rgba": [
+          18,
+          18,
+          14,
+          179
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/courier_six.png",
+      "sourceImageSha256": "6b265b5f4d6c41907fbeecb929977fa1627568d313306ce19b0537cf076aca6c",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 0.9021001339812789,
+      "rowRenderScale": 1.3001211971853883,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1100,
+          "top": 557,
+          "width": 185,
+          "height": 172
+        },
+        "output": {
+          "left": 70,
+          "top": 89,
+          "width": 167,
+          "height": 155
+        },
+        "sourceBodyBounds": {
+          "id": 30,
+          "pixels": 10054,
+          "left": 1106,
+          "right": 1245,
+          "top": 568,
+          "bottom": 716,
+          "width": 140,
+          "height": 149,
+          "centerX": 1164.234135667396,
+          "centerY": 642.6137855579868
+        },
+        "sourceAlphaPixels": 15211,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 55,
+        "y": 131
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/courier_six-grid.png"
+    },
+    {
+      "heroId": "courier_six",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 190,
+        "y": 176
+      },
+      "manualGridLandmark": {
+        "x": 191,
+        "y": 176
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 190,
+        "y": 176,
+        "distance": 1,
+        "rgba": [
+          0,
+          0,
+          0,
+          227
+        ]
+      },
+      "emitterKind": "physical-firearm-barrel",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/courier_six.png",
+      "sourceImageSha256": "6b265b5f4d6c41907fbeecb929977fa1627568d313306ce19b0537cf076aca6c",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 0.9021001339812789,
+      "rowRenderScale": 1.3001211971853883,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1304,
+          "top": 561,
+          "width": 138,
+          "height": 161
+        },
+        "output": {
+          "left": 71,
+          "top": 99,
+          "width": 124,
+          "height": 145
+        },
+        "sourceBodyBounds": {
+          "id": 28,
+          "pixels": 9627,
+          "left": 1312,
+          "right": 1437,
+          "top": 563,
+          "bottom": 717,
+          "width": 126,
+          "height": 155,
+          "centerX": 1367.3746753921264,
+          "centerY": 644.0140230601434
+        },
+        "sourceAlphaPixels": 12450,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 66,
+        "y": 176
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/courier_six-grid.png"
+    },
+    {
+      "heroId": "no_mans_sky_traveller",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 186,
+        "y": 121
+      },
+      "manualGridLandmark": {
+        "x": 186,
+        "y": 121
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 186,
+        "y": 121,
+        "distance": 0,
+        "rgba": [
+          31,
+          107,
+          168,
+          244
+        ]
+      },
+      "emitterKind": "multi-tool-emitter",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/no_mans_sky_traveller.png",
+      "sourceImageSha256": "4d88ad19dd8de841d16292b82945b5701cb8bfcb9bb92e0e82fefb86cd4f6dcd",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 0.8949488295462158,
+      "rowRenderScale": 1.3024701896869137,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 0,
+          "top": 365,
+          "width": 183,
+          "height": 200
+        },
+        "output": {
+          "left": 52,
+          "top": 65,
+          "width": 164,
+          "height": 179
+        },
+        "sourceBodyBounds": {
+          "id": 20,
+          "pixels": 10844,
+          "left": 36,
+          "right": 152,
+          "top": 372,
+          "bottom": 538,
+          "width": 117,
+          "height": 167,
+          "centerX": 84.5326447805238,
+          "centerY": 450.91838804869053
+        },
+        "sourceAlphaPixels": 15794,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 70,
+        "y": 121
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/no_mans_sky_traveller-grid.png"
+    },
+    {
+      "heroId": "no_mans_sky_traveller",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 197,
+        "y": 133
+      },
+      "manualGridLandmark": {
+        "x": 197,
+        "y": 133
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 197,
+        "y": 133,
+        "distance": 0,
+        "rgba": [
+          12,
+          122,
+          173,
+          237
+        ]
+      },
+      "emitterKind": "multi-tool-emitter",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/no_mans_sky_traveller.png",
+      "sourceImageSha256": "4d88ad19dd8de841d16292b82945b5701cb8bfcb9bb92e0e82fefb86cd4f6dcd",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 0.8949488295462158,
+      "rowRenderScale": 1.3024701896869137,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 397,
+          "top": 369,
+          "width": 162,
+          "height": 174
+        },
+        "output": {
+          "left": 72,
+          "top": 88,
+          "width": 145,
+          "height": 156
+        },
+        "sourceBodyBounds": {
+          "id": 26,
+          "pixels": 10897,
+          "left": 408,
+          "right": 539,
+          "top": 377,
+          "bottom": 538,
+          "width": 132,
+          "height": 162,
+          "centerX": 459.4385610718546,
+          "centerY": 452.4916031935395
+        },
+        "sourceAlphaPixels": 16495,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 59,
+        "y": 133
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/no_mans_sky_traveller-grid.png"
+    },
+    {
+      "heroId": "no_mans_sky_traveller",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 193,
+        "y": 122
+      },
+      "manualGridLandmark": {
+        "x": 193,
+        "y": 122
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 193,
+        "y": 122,
+        "distance": 0,
+        "rgba": [
+          42,
+          218,
+          235,
+          200
+        ]
+      },
+      "emitterKind": "multi-tool-emitter",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/no_mans_sky_traveller.png",
+      "sourceImageSha256": "4d88ad19dd8de841d16292b82945b5701cb8bfcb9bb92e0e82fefb86cd4f6dcd",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 0.8949488295462158,
+      "rowRenderScale": 1.3024701896869137,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 184,
+          "top": 355,
+          "width": 208,
+          "height": 196
+        },
+        "output": {
+          "left": 51,
+          "top": 69,
+          "width": 186,
+          "height": 175
+        },
+        "sourceBodyBounds": {
+          "id": 21,
+          "pixels": 11714,
+          "left": 214,
+          "right": 385,
+          "top": 372,
+          "bottom": 538,
+          "width": 172,
+          "height": 167,
+          "centerX": 269.48369472426157,
+          "centerY": 447.58374594502305
+        },
+        "sourceAlphaPixels": 19064,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 63,
+        "y": 122
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/no_mans_sky_traveller-grid.png"
+    },
+    {
+      "heroId": "no_mans_sky_traveller",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 182,
+        "y": 157
+      },
+      "manualGridLandmark": {
+        "x": 182,
+        "y": 157
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 182,
+        "y": 157,
+        "distance": 0,
+        "rgba": [
+          0,
+          7,
+          48,
+          250
+        ]
+      },
+      "emitterKind": "multi-tool-emitter",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/no_mans_sky_traveller.png",
+      "sourceImageSha256": "4d88ad19dd8de841d16292b82945b5701cb8bfcb9bb92e0e82fefb86cd4f6dcd",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 0.8949488295462158,
+      "rowRenderScale": 1.3024701896869137,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 560,
+          "top": 368,
+          "width": 172,
+          "height": 175
+        },
+        "output": {
+          "left": 67,
+          "top": 87,
+          "width": 154,
+          "height": 157
+        },
+        "sourceBodyBounds": {
+          "id": 25,
+          "pixels": 10640,
+          "left": 580,
+          "right": 692,
+          "top": 376,
+          "bottom": 538,
+          "width": 113,
+          "height": 163,
+          "centerX": 628.3591165413534,
+          "centerY": 454.33458646616543
+        },
+        "sourceAlphaPixels": 14940,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 74,
+        "y": 157
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/no_mans_sky_traveller-grid.png"
+    },
+    {
+      "heroId": "no_mans_sky_traveller",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 188,
+        "y": 130
+      },
+      "manualGridLandmark": {
+        "x": 188,
+        "y": 130
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 188,
+        "y": 130,
+        "distance": 0,
+        "rgba": [
+          5,
+          17,
+          50,
+          248
+        ]
+      },
+      "emitterKind": "multi-tool-emitter",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/no_mans_sky_traveller.png",
+      "sourceImageSha256": "4d88ad19dd8de841d16292b82945b5701cb8bfcb9bb92e0e82fefb86cd4f6dcd",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 0.8949488295462158,
+      "rowRenderScale": 1.3024701896869137,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 731,
+          "top": 547,
+          "width": 182,
+          "height": 182
+        },
+        "output": {
+          "left": 55,
+          "top": 81,
+          "width": 163,
+          "height": 163
+        },
+        "sourceBodyBounds": {
+          "id": 28,
+          "pixels": 11338,
+          "left": 763,
+          "right": 884,
+          "top": 552,
+          "bottom": 721,
+          "width": 122,
+          "height": 170,
+          "centerX": 812.9969130358088,
+          "centerY": 631.7081495854648
+        },
+        "sourceAlphaPixels": 17372,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 68,
+        "y": 130
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/no_mans_sky_traveller-grid.png"
+    },
+    {
+      "heroId": "no_mans_sky_traveller",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 185,
+        "y": 145
+      },
+      "manualGridLandmark": {
+        "x": 185,
+        "y": 145
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 185,
+        "y": 145,
+        "distance": 0,
+        "rgba": [
+          0,
+          0,
+          21,
+          242
+        ]
+      },
+      "emitterKind": "multi-tool-emitter",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/no_mans_sky_traveller.png",
+      "sourceImageSha256": "4d88ad19dd8de841d16292b82945b5701cb8bfcb9bb92e0e82fefb86cd4f6dcd",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 0.8949488295462158,
+      "rowRenderScale": 1.3024701896869137,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1119,
+          "top": 550,
+          "width": 152,
+          "height": 183
+        },
+        "output": {
+          "left": 74,
+          "top": 80,
+          "width": 136,
+          "height": 164
+        },
+        "sourceBodyBounds": {
+          "id": 31,
+          "pixels": 11095,
+          "left": 1127,
+          "right": 1247,
+          "top": 561,
+          "bottom": 721,
+          "width": 121,
+          "height": 161,
+          "centerX": 1179.863992789545,
+          "centerY": 637.1513294276701
+        },
+        "sourceAlphaPixels": 16268,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 71,
+        "y": 145
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/no_mans_sky_traveller-grid.png"
+    },
+    {
+      "heroId": "no_mans_sky_traveller",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 189,
+        "y": 119
+      },
+      "manualGridLandmark": {
+        "x": 189,
+        "y": 119
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 189,
+        "y": 119,
+        "distance": 0,
+        "rgba": [
+          30,
+          249,
+          255,
+          250
+        ]
+      },
+      "emitterKind": "multi-tool-emitter",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/no_mans_sky_traveller.png",
+      "sourceImageSha256": "4d88ad19dd8de841d16292b82945b5701cb8bfcb9bb92e0e82fefb86cd4f6dcd",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 0.8949488295462158,
+      "rowRenderScale": 1.3024701896869137,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 924,
+          "top": 526,
+          "width": 195,
+          "height": 204
+        },
+        "output": {
+          "left": 64,
+          "top": 61,
+          "width": 175,
+          "height": 183
+        },
+        "sourceBodyBounds": {
+          "id": 29,
+          "pixels": 11765,
+          "left": 941,
+          "right": 1110,
+          "top": 555,
+          "bottom": 721,
+          "width": 170,
+          "height": 167,
+          "centerX": 995.8005949851254,
+          "centerY": 630.1484912877178
+        },
+        "sourceAlphaPixels": 18896,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 67,
+        "y": 119
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/no_mans_sky_traveller-grid.png"
+    },
+    {
+      "heroId": "no_mans_sky_traveller",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 180,
+        "y": 150
+      },
+      "manualGridLandmark": {
+        "x": 180,
+        "y": 150
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 180,
+        "y": 150,
+        "distance": 0,
+        "rgba": [
+          22,
+          48,
+          85,
+          255
+        ]
+      },
+      "emitterKind": "multi-tool-emitter",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/no_mans_sky_traveller.png",
+      "sourceImageSha256": "4d88ad19dd8de841d16292b82945b5701cb8bfcb9bb92e0e82fefb86cd4f6dcd",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 0.8949488295462158,
+      "rowRenderScale": 1.3024701896869137,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1298,
+          "top": 548,
+          "width": 121,
+          "height": 181
+        },
+        "output": {
+          "left": 76,
+          "top": 82,
+          "width": 108,
+          "height": 162
+        },
+        "sourceBodyBounds": {
+          "id": 30,
+          "pixels": 10740,
+          "left": 1308,
+          "right": 1415,
+          "top": 555,
+          "bottom": 721,
+          "width": 108,
+          "height": 167,
+          "centerX": 1356.6187150837989,
+          "centerY": 635.042644320298
+        },
+        "sourceAlphaPixels": 15900,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 76,
+        "y": 150
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/no_mans_sky_traveller-grid.png"
+    },
+    {
+      "heroId": "mordin",
+      "phase": "fatality",
+      "column": 0,
+      "row": 4,
+      "anchor": {
+        "x": 189,
+        "y": 106
+      },
+      "manualGridLandmark": {
+        "x": 189,
+        "y": 106
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 189,
+        "y": 106,
+        "distance": 0,
+        "rgba": [
+          198,
+          53,
+          5,
+          251
+        ]
+      },
+      "emitterKind": "wrist-omni-tool",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/mordin-correction48.png",
+      "sourceImageSha256": "460403bd6ac112e68eeb96d0aa10ff382168ac0b10f37c4c59f3a4eb5a5b3b50",
+      "sourceRow": 2,
+      "sourceColumn": 0,
+      "sourceScale": 1.0207395966135409,
+      "rowRenderScale": 1.088535327518783,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 31,
+          "top": 371,
+          "width": 156,
+          "height": 196
+        },
+        "output": {
+          "left": 70,
+          "top": 44,
+          "width": 159,
+          "height": 200
+        },
+        "sourceBodyBounds": {
+          "id": 21,
+          "pixels": 8200,
+          "left": 36,
+          "right": 164,
+          "top": 379,
+          "bottom": 547,
+          "width": 129,
+          "height": 169,
+          "centerX": 87.95182926829268,
+          "centerY": 467.0851219512195
+        },
+        "sourceAlphaPixels": 12888,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 67,
+        "y": 106
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/mordin-grid.png"
+    },
+    {
+      "heroId": "mordin",
+      "phase": "fatality",
+      "column": 1,
+      "row": 4,
+      "anchor": {
+        "x": 186,
+        "y": 118
+      },
+      "manualGridLandmark": {
+        "x": 187,
+        "y": 118
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 186,
+        "y": 118,
+        "distance": 1,
+        "rgba": [
+          243,
+          69,
+          6,
+          250
+        ]
+      },
+      "emitterKind": "wrist-omni-tool",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/mordin-correction48.png",
+      "sourceImageSha256": "460403bd6ac112e68eeb96d0aa10ff382168ac0b10f37c4c59f3a4eb5a5b3b50",
+      "sourceRow": 2,
+      "sourceColumn": 1,
+      "sourceScale": 1.0207395966135409,
+      "rowRenderScale": 1.088535327518783,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 188,
+          "top": 371,
+          "width": 152,
+          "height": 182
+        },
+        "output": {
+          "left": 52,
+          "top": 58,
+          "width": 155,
+          "height": 186
+        },
+        "sourceBodyBounds": {
+          "id": 22,
+          "pixels": 8530,
+          "left": 209,
+          "right": 336,
+          "top": 379,
+          "bottom": 547,
+          "width": 128,
+          "height": 169,
+          "centerX": 262.8514654161782,
+          "centerY": 468.14525205158264
+        },
+        "sourceAlphaPixels": 13463,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 70,
+        "y": 118
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/mordin-grid.png"
+    },
+    {
+      "heroId": "mordin",
+      "phase": "fatality",
+      "column": 2,
+      "row": 4,
+      "anchor": {
+        "x": 183,
+        "y": 128
+      },
+      "manualGridLandmark": {
+        "x": 183,
+        "y": 128
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 183,
+        "y": 128,
+        "distance": 0,
+        "rgba": [
+          185,
+          71,
+          5,
+          245
+        ]
+      },
+      "emitterKind": "wrist-omni-tool",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/mordin-correction48.png",
+      "sourceImageSha256": "460403bd6ac112e68eeb96d0aa10ff382168ac0b10f37c4c59f3a4eb5a5b3b50",
+      "sourceRow": 2,
+      "sourceColumn": 2,
+      "sourceScale": 1.0207395966135409,
+      "rowRenderScale": 1.088535327518783,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 365,
+          "top": 371,
+          "width": 182,
+          "height": 182
+        },
+        "output": {
+          "left": 48,
+          "top": 58,
+          "width": 186,
+          "height": 186
+        },
+        "sourceBodyBounds": {
+          "id": 23,
+          "pixels": 8456,
+          "left": 390,
+          "right": 508,
+          "top": 379,
+          "bottom": 547,
+          "width": 119,
+          "height": 169,
+          "centerX": 443.410004730369,
+          "centerY": 469.4208845789972
+        },
+        "sourceAlphaPixels": 13538,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 73,
+        "y": 128
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/mordin-grid.png"
+    },
+    {
+      "heroId": "mordin",
+      "phase": "fatality",
+      "column": 3,
+      "row": 4,
+      "anchor": {
+        "x": 164,
+        "y": 151
+      },
+      "manualGridLandmark": {
+        "x": 164,
+        "y": 151
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 164,
+        "y": 151,
+        "distance": 0,
+        "rgba": [
+          198,
+          78,
+          34,
+          209
+        ]
+      },
+      "emitterKind": "wrist-omni-tool",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/mordin-correction48.png",
+      "sourceImageSha256": "460403bd6ac112e68eeb96d0aa10ff382168ac0b10f37c4c59f3a4eb5a5b3b50",
+      "sourceRow": 2,
+      "sourceColumn": 3,
+      "sourceScale": 1.0207395966135409,
+      "rowRenderScale": 1.088535327518783,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 578,
+          "top": 369,
+          "width": 142,
+          "height": 184
+        },
+        "output": {
+          "left": 74,
+          "top": 56,
+          "width": 145,
+          "height": 188
+        },
+        "sourceBodyBounds": {
+          "id": 17,
+          "pixels": 8475,
+          "left": 587,
+          "right": 688,
+          "top": 376,
+          "bottom": 547,
+          "width": 102,
+          "height": 172,
+          "centerX": 630.7059587020649,
+          "centerY": 470.522005899705
+        },
+        "sourceAlphaPixels": 12339,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 92,
+        "y": 151
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/mordin-grid.png"
+    },
+    {
+      "heroId": "mordin",
+      "phase": "super",
+      "column": 0,
+      "row": 7,
+      "anchor": {
+        "x": 183,
+        "y": 130
+      },
+      "manualGridLandmark": {
+        "x": 183,
+        "y": 130
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 183,
+        "y": 130,
+        "distance": 0,
+        "rgba": [
+          199,
+          55,
+          4,
+          249
+        ]
+      },
+      "emitterKind": "wrist-omni-tool",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/mordin-correction48.png",
+      "sourceImageSha256": "460403bd6ac112e68eeb96d0aa10ff382168ac0b10f37c4c59f3a4eb5a5b3b50",
+      "sourceRow": 3,
+      "sourceColumn": 4,
+      "sourceScale": 1.0207395966135409,
+      "rowRenderScale": 1.088535327518783,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 757,
+          "top": 552,
+          "width": 164,
+          "height": 176
+        },
+        "output": {
+          "left": 59,
+          "top": 64,
+          "width": 167,
+          "height": 180
+        },
+        "sourceBodyBounds": {
+          "id": 26,
+          "pixels": 8308,
+          "left": 763,
+          "right": 896,
+          "top": 556,
+          "bottom": 721,
+          "width": 134,
+          "height": 166,
+          "centerX": 824.8677178623014,
+          "centerY": 643.8589311506981
+        },
+        "sourceAlphaPixels": 12285,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 73,
+        "y": 130
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/mordin-grid.png"
+    },
+    {
+      "heroId": "mordin",
+      "phase": "super",
+      "column": 1,
+      "row": 7,
+      "anchor": {
+        "x": 190,
+        "y": 129
+      },
+      "manualGridLandmark": {
+        "x": 190,
+        "y": 129
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 190,
+        "y": 129,
+        "distance": 0,
+        "rgba": [
+          220,
+          51,
+          2,
+          248
+        ]
+      },
+      "emitterKind": "wrist-omni-tool",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/mordin-correction48.png",
+      "sourceImageSha256": "460403bd6ac112e68eeb96d0aa10ff382168ac0b10f37c4c59f3a4eb5a5b3b50",
+      "sourceRow": 3,
+      "sourceColumn": 5,
+      "sourceScale": 1.0207395966135409,
+      "rowRenderScale": 1.088535327518783,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 940,
+          "top": 554,
+          "width": 172,
+          "height": 176
+        },
+        "output": {
+          "left": 45,
+          "top": 64,
+          "width": 176,
+          "height": 180
+        },
+        "sourceBodyBounds": {
+          "id": 28,
+          "pixels": 8414,
+          "left": 959,
+          "right": 1099,
+          "top": 560,
+          "bottom": 722,
+          "width": 141,
+          "height": 163,
+          "centerX": 1021.026859995246,
+          "centerY": 647.7713334917994
+        },
+        "sourceAlphaPixels": 13306,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 66,
+        "y": 129
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/mordin-grid.png"
+    },
+    {
+      "heroId": "mordin",
+      "phase": "super",
+      "column": 2,
+      "row": 7,
+      "anchor": {
+        "x": 173,
+        "y": 117
+      },
+      "manualGridLandmark": {
+        "x": 173,
+        "y": 117
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 173,
+        "y": 117,
+        "distance": 0,
+        "rgba": [
+          170,
+          40,
+          10,
+          248
+        ]
+      },
+      "emitterKind": "wrist-omni-tool",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/mordin-correction48.png",
+      "sourceImageSha256": "460403bd6ac112e68eeb96d0aa10ff382168ac0b10f37c4c59f3a4eb5a5b3b50",
+      "sourceRow": 3,
+      "sourceColumn": 6,
+      "sourceScale": 1.0207395966135409,
+      "rowRenderScale": 1.088535327518783,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1135,
+          "top": 555,
+          "width": 152,
+          "height": 183
+        },
+        "output": {
+          "left": 55,
+          "top": 57,
+          "width": 155,
+          "height": 187
+        },
+        "sourceBodyBounds": {
+          "id": 29,
+          "pixels": 7960,
+          "left": 1152,
+          "right": 1262,
+          "top": 560,
+          "bottom": 722,
+          "width": 111,
+          "height": 163,
+          "centerX": 1206.343718592965,
+          "centerY": 647.6482412060302
+        },
+        "sourceAlphaPixels": 12139,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 83,
+        "y": 117
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/mordin-grid.png"
+    },
+    {
+      "heroId": "mordin",
+      "phase": "super",
+      "column": 3,
+      "row": 7,
+      "anchor": {
+        "x": 160,
+        "y": 160
+      },
+      "manualGridLandmark": {
+        "x": 160,
+        "y": 160
+      },
+      "nearestNativeBarrelPixel": {
+        "x": 160,
+        "y": 160,
+        "distance": 0,
+        "rgba": [
+          252,
+          170,
+          57,
+          246
+        ]
+      },
+      "emitterKind": "wrist-omni-tool",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/part-b/sources/mordin-correction48.png",
+      "sourceImageSha256": "460403bd6ac112e68eeb96d0aa10ff382168ac0b10f37c4c59f3a4eb5a5b3b50",
+      "sourceRow": 3,
+      "sourceColumn": 7,
+      "sourceScale": 1.0207395966135409,
+      "rowRenderScale": 1.088535327518783,
+      "sourceFrameBounds": {
+        "source": {
+          "left": 1314,
+          "top": 554,
+          "width": 118,
+          "height": 173
+        },
+        "output": {
+          "left": 62,
+          "top": 67,
+          "width": 120,
+          "height": 177
+        },
+        "sourceBodyBounds": {
+          "id": 27,
+          "pixels": 7956,
+          "left": 1330,
+          "right": 1428,
+          "top": 559,
+          "bottom": 722,
+          "width": 99,
+          "height": 164,
+          "centerX": 1378.2625691302162,
+          "centerY": 647.9864253393665
+        },
+        "sourceAlphaPixels": 11244,
+        "completeNativeComponent": true
+      },
+      "sourceCellSize": 256,
+      "opposingCellAnchor": {
+        "x": 96,
+        "y": 160
+      },
+      "mirroredSameNativePixel": true,
+      "landmarkSource": "docs/combat-fidelity-wave14-2026-10-25/part-b/anchor-contacts/mordin-grid.png"
+    }
+  ],
+  "reviewNotes": "Yellow cross contacts are inspection overlays only and are not production sprites. Physical projectile flight/contact and both camps are verified by the independent runtime/browser harness, not inferred here from anchor existence."
+}
