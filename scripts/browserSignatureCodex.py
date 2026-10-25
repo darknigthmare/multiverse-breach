@@ -52,6 +52,20 @@ with sync_playwright() as p:
                     favorite=dialog.locator('.tcg-favorite-button');favorite.click()
                     assert favorite.get_attribute('aria-pressed')=='true'
                     assert page.evaluate('window.__codexAudit.changes.length')==1
+                    # The real card scroll container must keep its exit reachable.
+                    page.mouse.wheel(0,1600)
+                    page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
+                    close_bounds=dialog.locator('.tcg-close-button').evaluate('''el => {
+                        const r=el.getBoundingClientRect();
+                        return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,
+                            width:r.width,height:r.height,viewportWidth:innerWidth,viewportHeight:innerHeight,
+                            hit:el.contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2))};
+                    }''')
+                    assert (close_bounds['width']>0 and close_bounds['height']>0
+                            and close_bounds['left']>=0 and close_bounds['top']>=0
+                            and close_bounds['right']<=close_bounds['viewportWidth']+1
+                            and close_bounds['bottom']<=close_bounds['viewportHeight']+1
+                            and close_bounds['hit']), close_bounds
                 else:
                     dialog.get_by_role('searchbox').fill(expected)
                     assert dialog.locator('[data-signature-codex]').count()==1

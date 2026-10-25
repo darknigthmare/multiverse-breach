@@ -29,9 +29,11 @@ export default function CardDetailModal({ lang = 'fr', definition, entry, onClos
       onMouseDown={event => event.target === event.currentTarget && onClose?.()}
     >
       <section ref={dialogRef} tabIndex={-1} className="tcg-card-detail" role="dialog" aria-modal="true" aria-labelledby="tcg-card-detail-title">
-        <button ref={closeRef} type="button" className="tcg-close-button" onClick={onClose}>
-          {lang === 'fr' ? 'FERMER' : 'CLOSE'}
-        </button>
+        <header className="tcg-card-detail-header">
+          <button ref={closeRef} type="button" className="tcg-close-button" onClick={onClose}>
+            {lang === 'fr' ? 'FERMER' : 'CLOSE'}
+          </button>
+        </header>
         <div className="tcg-card-detail-layout">
           <CollectibleCard definition={definition} entry={entry} lang={lang} />
           <div className="tcg-card-detail-copy">
