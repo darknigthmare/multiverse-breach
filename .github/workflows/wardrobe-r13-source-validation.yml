@@ -1,0 +1,51 @@
+name: Wardrobe R13 reviewed source validation
+on:
+  push:
+    branches: [codex/wardrobe-r13-validation-20261025]
+permissions:
+  contents: write
+jobs:
+  reviewed-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            src
+            scripts
+            audit/wardrobe-r13-delivery
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Apply and verify the exact fourteen reviewed source files
+        run: python audit/wardrobe-r13-delivery/source_delivery.py prepare
+      - name: Install dependencies and test wardrobe, boosters and scene regressions
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts --no-audit --no-fund
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs --test scripts/wardrobe*.test.mjs scripts/reauditWardrobe*.test.mjs scripts/actorFidelityR9.test.mjs scripts/pngEvidence.test.mjs scripts/reauditSourceScenes.test.mjs | tee /tmp/wardrobe-r13-evidence/tests.log
+          npx oxlint --max-warnings 0 src/game/wardrobeOfficialR13.js src/game/wardrobeSourceCoverage.js scripts/wardrobeR13.test.mjs | tee /tmp/wardrobe-r13-evidence/lint.log
+          npx vite build | tee /tmp/wardrobe-r13-evidence/build.log
+      - name: Check pre-existing combat signature regressions separately
+        id: signatures
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs --test scripts/signature*.test.mjs | tee /tmp/wardrobe-r13-evidence/signatures.log
+      - name: Record separate validation scope
+        if: always()
+        run: |
+          mkdir -p /tmp/wardrobe-r13-evidence
+          printf '%s\n' 'signature_step_outcome=${{ steps.signatures.outcome }}' > /tmp/wardrobe-r13-evidence/signature-outcome.txt
+      - name: Publish only the fourteen reviewed source files to the existing PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python audit/wardrobe-r13-delivery/source_delivery.py publish
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wardrobe-r13-validation-evidence
+          path: /tmp/wardrobe-r13-evidence/
+          retention-days: 7
