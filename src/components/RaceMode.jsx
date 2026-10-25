@@ -431,7 +431,7 @@ export default function RaceMode({
   const selectedBestTime = career.bestTimes?.[trackId];
 
   const raceSystemPanel = <ImmersiveDrawer open={raceMenuOpen} onClose={closeRaceMenu} lang={lang} title={lang === 'fr' ? 'Garage & carnet de course' : 'Garage & race log'}>
-    <p>{lang === 'fr' ? 'Mirelle pilote en vue arrière : conduite, drift, objets, checkpoints et adversaires IA. La mini-carte présente le circuit vu de dessus.' : 'Mirelle drives in rear view: steering, drift, items, checkpoints and AI rivals. The minimap shows the circuit from above.'}</p>
+    <p>{lang === 'fr' ? 'Mirelle pilote en vue arrière : conduite, drift, objets, checkpoints et adversaires IA. La vue de dessus reste limitee a la mini-map.' : 'Mirelle drives in rear view: steering, drift, items, checkpoints and AI rivals. Top-down view stays limited to the minimap.'}</p>
     {raceStarted && <p role="status">{lang === 'fr' ? 'Course en pause. Les améliorations conservent la course en cours.' : 'Race paused. Upgrades preserve the current race.'}</p>}
           <div className="race-career-card">
             <span>{lang === 'fr' ? 'Carriere kart' : 'Kart career'}</span>
