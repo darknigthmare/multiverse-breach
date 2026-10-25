@@ -1,0 +1,54 @@
+name: Reviewed R14 source delivery
+on:
+  push:
+    branches: [codex/costumes-r14-reviewed-delivery-20261025]
+permissions:
+  contents: read
+jobs:
+  reviewed-source:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /audit/wardrobe-r14-delivery/
+            /public/**/*.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Apply only the fifteen reviewed source files and check their hashes
+        run: python audit/wardrobe-r14-delivery/source_delivery.py prepare
+      - name: Test wardrobe, booster and scene regressions
+        run: |
+          set -euo pipefail
+          mapfile -t tests < <(find scripts -maxdepth 1 -type f \( -name 'wardrobe*.test.mjs' -o -name '*Wardrobe*.test.mjs' -o -name 'actorFidelity*.test.mjs' -o -name 'pngEvidence.test.mjs' -o -name 'reauditSourceScenes.test.mjs' \) | sort)
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs --test "${tests[@]}" | tee /tmp/wardrobe-r14-review/tests.log
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs scripts/exportWardrobe.mjs /tmp/wardrobe-r14-review/catalogue 61549b656908ce312c75cf59e83c5d2c4c1e7d6e
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs scripts/exportWardrobeBoosters.mjs /tmp/wardrobe-r14-review/boosters 61549b656908ce312c75cf59e83c5d2c4c1e7d6e
+      - name: Targeted lint and source build without bitmap regeneration
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx oxlint --max-warnings 0 src/game/wardrobe.js src/game/wardrobeOfficialR13.js src/game/wardrobeOfficialR14.js scripts/wardrobeR14.test.mjs | tee /tmp/wardrobe-r14-review/lint.log
+          npx vite build 2>&1 | tee /tmp/wardrobe-r14-review/build.log
+      - name: Publish only tested UTF-8 sources on the feature branch, never master
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python audit/wardrobe-r14-delivery/source_delivery.py publish
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wardrobe-r14-reviewed-evidence
+          path: /tmp/wardrobe-r14-review/
+          retention-days: 14
