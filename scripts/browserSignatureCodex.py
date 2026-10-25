@@ -1,6 +1,7 @@
 """Read-only collection/booster recipes on loopback, no account or gameplay injection."""
 import json
 import os
+import traceback
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 from playwright.sync_api import sync_playwright
@@ -45,6 +46,8 @@ with sync_playwright() as p:
                     assert 'Texte sans contrat' in dialog.inner_text()
                 assert '[object Object]' not in dialog.inner_text()
                 if view=='card':
+                    # Provenance remains available through the real disclosure.
+                    dialog.locator('.tcg-card-provenance > summary').click()
                     assert 'QA object provenance' in dialog.inner_text()
                     favorite=dialog.locator('.tcg-favorite-button');favorite.click()
                     assert favorite.get_attribute('aria-pressed')=='true'
@@ -70,7 +73,7 @@ with sync_playwright() as p:
                 assert not errors,errors
                 results.append({'case':label,'ok':True})
             except Exception as exc:
-                failure={'case':label,'ok':False,'error':str(exc),'pageErrors':errors}
+                failure={'case':label,'ok':False,'error':str(exc),'traceback':traceback.format_exc(),'pageErrors':errors}
                 results.append(failure)
                 try:
                     page.screenshot(path=str(out/(label+'-FAILED.png')),full_page=True,timeout=5000)

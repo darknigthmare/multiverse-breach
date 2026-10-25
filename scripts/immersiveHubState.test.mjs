@@ -86,34 +86,86 @@ test('canvas map/radar bounds respect portrait, short landscape and desktop at b
   }
 });
 
-test('real Race and Extinction key handlers preserve native button activation inside paused menus', () => {
+test('real scene handlers resume W/E with button focus while reserving native activation and text entry', () => {
   const race = readFileSync(new URL('../src/components/RaceMode.jsx', import.meta.url), 'utf8');
   const readHandler = (source, marker = 'const onKeyDown = ') => {
     const start = source.indexOf(marker) + marker.length;
     return source.slice(start, source.indexOf('\n    };', start) + '\n    }'.length);
   };
-  let prevents = 0, fires = 0;
+  let prevents = 0, fires = 0, items = 0, collected = 0, cityInteractions = 0;
+  const moves = [];
   const keysRef = { current: {} };
   const pause = { current: true };
-  const event = button => ({ key: ' ', target: { closest: () => button ? {} : null }, preventDefault() { prevents++; } });
-  const raceKey = new Function('sessionPausedRef', 'document', 'engine', 'CONTROL_KEYS', 'normalizeKey', 'keysRef', `return (${readHandler(race)});`)(pause, { hidden: false }, { finished: false }, new Set([' ']), () => 'space', keysRef);
-  raceKey(event(false));
+  const event = (key, tagName = 'CANVAS', editable = false) => ({ key,
+    target: { tagName, isContentEditable: editable, closest: selector => (
+      (tagName === 'BUTTON' && selector.includes('button'))
+      || (tagName === 'A' && selector.includes('a[href]'))
+      || (['INPUT', 'SELECT', 'TEXTAREA'].includes(tagName) && selector.includes(tagName.toLowerCase()))
+    ) ? {} : null },
+    preventDefault() { prevents++; }
+  });
+  const engine = { finished: false, useItem() { items++; }, recoverPlayer() {} };
+  const controls = new Set([' ', 'w', 'e', 'ArrowUp']);
+  const normalizeKey = key => key === ' ' ? 'space' : key === 'ArrowUp' ? 'up' : key;
+  const raceKey = new Function('sessionPausedRef', 'document', 'engine', 'CONTROL_KEYS', 'normalizeKey', 'keysRef', `return (${readHandler(race)});`)(pause, { hidden: false }, engine, controls, normalizeKey, keysRef);
+  const raceKeyUp = new Function('sessionPausedRef', 'engine', 'CONTROL_KEYS', 'normalizeKey', 'keysRef', `return (${readHandler(race, 'const onKeyUp = ')});`)(pause, engine, controls, normalizeKey, keysRef);
+  raceKey(event('e', 'BUTTON'));
+  assert.equal(items, 0, 'garage pauses game commands');
   pause.current = false;
-  raceKey(event(true));
-  assert.equal(prevents, 0);
-  assert.deepEqual(keysRef.current, {});
-  raceKey(event(false));
-  assert.equal(prevents, 1);
-  assert.equal(keysRef.current.space, true);
-  prevents = 0;
+  raceKey(event('w', 'BUTTON'));
+  raceKey(event('e', 'BUTTON'));
+  raceKey(event('ArrowUp', 'BUTTON'));
+  assert.equal(keysRef.current.w, true, 'movement resumes after focus returns to the garage button');
+  assert.equal(keysRef.current.up, true);
+  assert.equal(items, 1, 'E remains a game command on the focused pause/garage button');
+  const beforeNative = prevents;
+  raceKey(event(' ', 'BUTTON'));
+  raceKeyUp(event(' ', 'BUTTON'));
+  raceKey(event('Enter', 'BUTTON'));
+  raceKey(event('Enter', 'A'));
+  assert.equal(prevents, beforeNative, 'Space/Enter keep native activation');
+  raceKeyUp(event('w', 'BUTTON'));
+  assert.equal(keysRef.current.w, false);
+  const beforeTyping = prevents;
+  for (const tag of ['INPUT', 'SELECT', 'TEXTAREA']) raceKey(event('w', tag));
+  raceKey(event('w', 'DIV', true));
+  assert.equal(prevents, beforeTyping);
+  assert.equal(keysRef.current.w, false);
+  raceKey(event(' '));
+  assert.equal(keysRef.current.space, true, 'canvas Space still drifts');
+
   const extinction = hub.slice(hub.indexOf('  const handleCanvasFire ='));
-  const extinctionKey = new Function('sessionPausedRef', 'stateRef', 'setMoveKey', 'fire', 'reload', 'collectLoot', 'activateRoleSkill', `return (${readHandler(extinction)});`)(pause, { current: { phase: 'running' } }, () => {}, () => { fires++; }, () => {}, () => {}, () => {});
-  extinctionKey(event(true));
-  assert.equal(prevents, 0);
+  const extinctionKey = new Function('sessionPausedRef', 'stateRef', 'setMoveKey', 'fire', 'reload', 'collectLoot', 'activateRoleSkill', `return (${readHandler(extinction)});`)(pause, { current: { phase: 'running' } }, (...args) => moves.push(args), () => { fires++; }, () => {}, () => { collected++; }, () => {});
+  extinctionKey(event('w', 'BUTTON'));
+  extinctionKey(event('e', 'BUTTON'));
+  assert.deepEqual(moves, [['forward', true]]);
+  assert.equal(collected, 1);
+  const beforeFpsNative = prevents;
+  extinctionKey(event(' ', 'BUTTON'));
+  extinctionKey(event('Enter', 'BUTTON'));
+  extinctionKey(event('Enter', 'A'));
+  extinctionKey(event('w', 'INPUT'));
+  extinctionKey(event('w', 'DIV', true));
+  assert.equal(prevents, beforeFpsNative);
   assert.equal(fires, 0);
-  extinctionKey(event(false));
-  assert.equal(prevents, 1);
-  assert.equal(fires, 1);
+  assert.equal(moves.length, 1);
+  extinctionKey(event(' '));
+  assert.equal(fires, 1, 'canvas Space still fires');
+
+  const city = hub.slice(hub.indexOf('function MosaicCityHub('), hub.indexOf('function ExtinctionRoyale('));
+  const cityState = { current: { keys: {}, destination: {}, pendingInteraction: {} } };
+  const cityKey = new Function('sessionPausedRef', 'cityMenuRef', 'stateRef', 'interactWithNearby', `return (${readHandler(city)});`)(pause, { current: false }, cityState, () => { cityInteractions++; });
+  cityKey(event('w', 'BUTTON'));
+  cityKey(event('e', 'BUTTON'));
+  assert.equal(cityState.current.keys.w, true);
+  assert.equal(cityInteractions, 1);
+  const beforeCityNative = prevents;
+  cityKey(event(' ', 'BUTTON'));
+  cityKey(event('Enter', 'BUTTON'));
+  cityKey(event('e', 'INPUT'));
+  cityKey(event('e', 'DIV', true));
+  assert.equal(prevents, beforeCityNative);
+  assert.equal(cityInteractions, 1);
 });
 
 test('the real pause focus trap yields to a modal that made its parent inert', () => {

@@ -2752,7 +2752,7 @@ function MosaicCityHub({
   useEffect(() => {
     const onKeyDown = event => {
       if (sessionPausedRef.current || cityMenuRef.current) return;
-      if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+      if (event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
       const key = event.key.toLowerCase();
       if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd', 'z', 'q'].includes(key)) {
         stateRef.current.keys[key] = true;
@@ -4417,7 +4417,9 @@ function ExtinctionRoyale({
   useEffect(() => {
     const onKeyDown = (event) => {
       if (sessionPausedRef.current || stateRef.current.phase !== 'running') return;
-      if (event.defaultPrevented || event.target?.closest?.('button, a[href], input, textarea, select, [contenteditable="true"]')) return;
+      if (event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+      if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button, [role="button"]')) return;
+      if (event.key === 'Enter' && event.target?.closest?.('a[href]')) return;
       const key = event.key.toLowerCase();
       if (key === 'w' || key === 'z' || key === 'arrowup') {
         setMoveKey('forward', true);

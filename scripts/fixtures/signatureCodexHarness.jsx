@@ -8,6 +8,7 @@ import { createCardDefinitionFromPortalCandidate } from '../../src/game/cards/ca
 import { getSignatureCodex } from '../../src/game/signatureCodex.js';
 import '../../src/index.css';
 import '../../src/components/collection/collection.css';
+import '../../src/components/collection/collectionImmersion.css';
 const query = new URLSearchParams(location.search);
 const lang = query.get('lang') === 'en' ? 'en' : 'fr';
 const view = query.get('view') === 'booster' ? 'booster' : 'card';

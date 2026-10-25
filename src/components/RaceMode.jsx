@@ -285,7 +285,9 @@ export default function RaceMode({
     animationId = requestAnimationFrame(loop);
 
     const onKeyDown = (event) => {
-      if (event.repeat || event.defaultPrevented || event.target?.closest?.('button, a[href], input, textarea, select, [contenteditable="true"]')) return;
+      if (event.repeat || event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+      if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button, [role="button"]')) return;
+      if (event.key === 'Enter' && event.target?.closest?.('a[href]')) return;
       if (sessionPausedRef.current || document.hidden || engine.finished) return;
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
@@ -303,7 +305,10 @@ export default function RaceMode({
     const onKeyUp = (event) => {
       if (!CONTROL_KEYS.has(event.key)) return;
       keysRef.current[normalizeKey(event.key)] = false;
-      if (!sessionPausedRef.current && !engine.finished && !event.target?.closest?.('button, a[href], input, textarea, select, [contenteditable="true"]')) event.preventDefault();
+      if (sessionPausedRef.current || engine.finished || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+      if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button, [role="button"]')) return;
+      if (event.key === 'Enter' && event.target?.closest?.('a[href]')) return;
+      event.preventDefault();
     };
     const clearInputs = () => {
       keysRef.current = {};

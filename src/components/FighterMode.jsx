@@ -615,8 +615,8 @@ export default function FighterMode({
       if (event.repeat || event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('[data-combat-drawer].is-paused')) return;
       if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button')) return;
       if (!CONTROL_KEYS.has(event.key)) return;
-      event.preventDefault();
       if (sessionPausedRef.current || document.hidden) return;
+      event.preventDefault();
       const key = event.key.toLowerCase();
 
       if (key === 'q') setHeldInputForSide('player', 'left', true);
@@ -668,7 +668,8 @@ export default function FighterMode({
     };
     const onKeyUp = event => {
       if (!CONTROL_KEYS.has(event.key)) return;
-      event.preventDefault();
+      // Release held combat input even if focus moved into a menu or field,
+      // without cancelling native button activation or editing on key release.
       const key = event.key.toLowerCase();
 
       if (key === 'q') setHeldInputForSide('player', 'left', false);
