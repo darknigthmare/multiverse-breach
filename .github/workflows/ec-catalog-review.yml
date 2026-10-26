@@ -1,0 +1,51 @@
+name: Extinction City catalog review inputs
+on:
+  push:
+    branches: [codex/immersive-ui-audit-2026-10-25]
+    paths: ['.github/workflows/ec-catalog-review.yml']
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /.github/workflows/
+            /docs/ui-immersion/
+            /docs/excel/Multiverse_Breach_UI_Immersion.xlsx
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+      - name: Package tracked review sources and asset inventory only
+        run: |
+          mkdir -p /tmp/ec-review
+          python3 - <<'PY'
+          import subprocess,zipfile
+          from pathlib import Path
+          names=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          with zipfile.ZipFile('/tmp/ec-review/source.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for name in names:
+                  p=Path(name)
+                  if not name or not p.is_file() or p.is_symlink():continue
+                  if name.startswith(('src/','scripts/','api/','.github/workflows/','docs/ui-immersion/','public/')) or name=='docs/excel/Multiverse_Breach_UI_Immersion.xlsx' or '/' not in name:
+                      if p.suffix.lower() in {'.js','.jsx','.mjs','.cjs','.ts','.css','.html','.json','.jsonl','.md','.py','.yml','.yaml','.xlsx','.png','.webp'}:z.write(p,name)
+              z.writestr('REVIEW_COMMIT.txt',subprocess.check_output(['git','rev-parse','HEAD']))
+              z.writestr('TRACKED_FILES.txt','\n'.join(sorted(n for n in names if n)))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ec-review-${{ github.sha }}
+          path: /tmp/ec-review/
+          retention-days: 7
