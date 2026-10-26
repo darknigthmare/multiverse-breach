@@ -49,6 +49,14 @@ jobs:
           subprocess.run(['git','apply','--binary','/tmp/reviewed.patch'],check=True)
           for f in m['files']:
               assert hashlib.sha256(Path(f['path']).read_bytes()).hexdigest()==f['afterSha256'], f['path']
+          p=Path('scripts/browserImmersiveTransitions.py')
+          old="                            page.get_by_label('Taille du HUD' if lang == 'fr' else 'HUD size', exact=True).fill('1.2')\n                            page.get_by_label('Taille du texte' if lang == 'fr' else 'Text size', exact=True).fill('1.25')"
+          new="                            hud = page.get_by_label('Taille du HUD' if lang == 'fr' else 'HUD size', exact=False)\n                            text = page.get_by_label('Taille du texte' if lang == 'fr' else 'Text size', exact=False)\n                            hud.press('Home')\n                            for _ in range(6):\n                                hud.press('ArrowRight')\n                            text.press('Home')\n                            for _ in range(5):\n                                text.press('ArrowRight')\n                            expect(hud).to_have_value('1.2')\n                            expect(text).to_have_value('1.25')"
+          text=p.read_text(); assert text.count(old)==1
+          p.write_text(text.replace(old,new))
+          updated='b00f73d37e4217df1f6e9b07b02a816b32ed82aaf8806cef9bd9d2ac95ae153c'
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==updated
+          next(f for f in m['files'] if f['path']==str(p))['afterSha256']=updated
           Path('/tmp/ui-staging-evidence/source-manifest.json').write_text(json.dumps(m,indent=2))
           PY
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -82,7 +90,7 @@ jobs:
           python3 - <<'PY'
           import base64,hashlib,json,os,urllib.request
           from pathlib import Path
-          m=json.loads(Path('docs/ui-immersion/reviewed-update.json').read_text())
+          m=json.loads(Path('/tmp/ui-staging-evidence/source-manifest.json').read_text())
           blobs=[]
           for f in m['files']:
               raw=Path(f['path']).read_bytes()
