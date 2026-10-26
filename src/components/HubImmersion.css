@@ -279,3 +279,26 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .mosaic-rpg-panel .mosaic-world-controls button { min-width: 0; }
 }
 @media (pointer: fine) { .mosaic-rpg-panel .mosaic-world-controls { display: flex; width: auto; } }
+
+/* Result/error actions remain reachable in short landscape viewports. */
+.race-mode-shell .race-result-banner { overflow-y: auto; overscroll-behavior: contain; }
+.race-mode-shell .race-result-banner > * { flex-shrink: 0; }
+@media (max-height: 460px) {
+  .race-mode-shell .race-result-banner { justify-content: flex-start; gap: 12px; padding: 16px; }
+}
+
+/* Portrait letterboxing preserves the simulation; DOM telemetry stays readable. */
+.race-world-hud > .race-telemetry { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); padding: 0; border: 0; }
+@media (orientation: portrait) {
+  .race-world-hud { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+  .race-world-hud > div:first-child { max-width: none; min-width: 0; overflow-wrap: anywhere; }
+  .race-world-hud > .race-telemetry { position: static; grid-column: 1 / -1; width: 100%; height: auto; clip-path: none; overflow: visible; max-width: none; display: grid; gap: 8px; background: none; }
+  .race-mode-shell .race-stat-grid, .race-mode-shell .race-objective-card { position: static; width: auto; height: auto; clip-path: none; overflow: visible; }
+  .race-mode-shell .race-stat-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+  .race-mode-shell .race-stat-grid > div { padding: 8px 5px; background: #04131de8; min-width: 0; }
+  .race-mode-shell .race-stat-grid span { color: #bdd6df; font-size: calc(10px * var(--game-hud-scale, 1)); overflow-wrap: anywhere; }
+  .race-mode-shell .race-stat-grid strong { font-size: calc(15px * var(--game-hud-scale, 1)); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .race-mode-shell .race-objective-card { background: #04131de8; padding: 8px; font-size: calc(12px * var(--game-hud-scale, 1)); }
+  .race-mode-shell .race-objective-card strong { font-size: inherit; }
+  .race-mode-shell .race-objective-card span, .race-mode-shell .race-objective-card small { font-size: calc(10px * var(--game-hud-scale, 1)); }
+}

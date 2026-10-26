@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
+import { createRaceRunGuard } from '../src/game/raceSessionControls.js';
 import { advanceMosaicPlayer } from '../src/game/mosaicCityRuntime.js';
 import { applyExtinctionReport, compareGearBoosts, getSceneHudLayout, normalizeExtinctionReport, normalizeHubNavigation, restoreMosaicLocation, snapshotMosaicLocation } from '../src/game/immersiveHubState.js';
 
@@ -107,7 +108,7 @@ test('real scene handlers resume W/E with button focus while reserving native ac
   const engine = { finished: false, useItem() { items++; }, recoverPlayer() {} };
   const controls = new Set([' ', 'w', 'e', 'ArrowUp']);
   const normalizeKey = key => key === ' ' ? 'space' : key === 'ArrowUp' ? 'up' : key;
-  const raceKey = new Function('sessionPausedRef', 'document', 'engine', 'CONTROL_KEYS', 'normalizeKey', 'keysRef', `return (${readHandler(race)});`)(pause, { hidden: false }, engine, controls, normalizeKey, keysRef);
+  const raceKey = new Function('runGuard', 'sessionPausedRef', 'document', 'engine', 'CONTROL_KEYS', 'normalizeKey', 'keysRef', `return (${readHandler(race)});`)(createRaceRunGuard(), pause, { hidden: false }, engine, controls, normalizeKey, keysRef);
   const raceKeyUp = new Function('sessionPausedRef', 'engine', 'CONTROL_KEYS', 'normalizeKey', 'keysRef', `return (${readHandler(race, 'const onKeyUp = ')});`)(pause, engine, controls, normalizeKey, keysRef);
   raceKey(event('e', 'BUTTON'));
   assert.equal(items, 0, 'garage pauses game commands');

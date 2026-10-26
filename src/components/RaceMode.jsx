@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { EngineRace, KART_GARAGE_UPGRADES, RACE_ASSETS, RACE_TRACKS } from '../game/engineRace';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
+import { createRaceRunGuard, createRaceTouchState } from '../game/raceSessionControls.js';
 import { applyRaceResult, normalizeKartCareer } from '../game/kartCareer';
 import sound from '../game/soundEngine';
 import { getUnlockableById } from '../game/universeUnlockables';
@@ -68,6 +69,9 @@ export default function RaceMode({
   const engineRef = useRef(null);
   const keysRef = useRef({});
   const keyPulseRef = useRef({});
+  const touchStateRef = useRef(null);
+  if (!touchStateRef.current) touchStateRef.current = createRaceTouchState();
+  const runGuardRef = useRef(null);
   const autoAccelerateRef = useRef(true);
   const raceMusicStateRef = useRef('grid');
   const onSessionEndRef = useRef(onSessionEnd);
@@ -79,6 +83,8 @@ export default function RaceMode({
   const [trackId, setTrackId] = useState(null);
   const [pilotId, setPilotId] = useState(null);
   const [raceStarted, setRaceStarted] = useState(false);
+  const [raceNonce, setRaceNonce] = useState(0);
+  const [runtimeError, setRuntimeError] = useState(false);
   const [summary, setSummary] = useState(null);
   const [autoAccelerate, setAutoAccelerate] = useState(true);
   const [snapshot, setSnapshot] = useState({
@@ -157,12 +163,19 @@ export default function RaceMode({
       bossName: bossArena ? 'A.R.C.A. Overload Core' : ''
     };
   }, [track]);
+  // Parent callbacks and collection objects may change without starting a race.
+  // A setup is captured at launch/restart; garage upgrades intentionally stay live.
+  const raceSetupRef = useRef(null);
+  raceSetupRef.current = { raceMusicStage, selectedKart };
+  const updateCareerRef = useRef(updateCareer);
+  updateCareerRef.current = updateCareer;
+
   const pilotName = playerProfile?.name?.trim() || (lang === 'fr' ? 'Ancre' : 'Anchor');
   const controlRows = useMemo(() => [
-    { label: lang === 'fr' ? 'Accel.' : 'Accel.', value: 'Z/W ou fleche haut' },
-    { label: lang === 'fr' ? 'Frein' : 'Brake', value: 'S ou fleche bas' },
-    { label: lang === 'fr' ? 'Virage' : 'Steer', value: 'Q/D ou fleches' },
-    { label: 'Drift', value: 'Espace' },
+    { label: 'Accel.', value: lang === 'fr' ? 'Z/W ou flèche haut' : 'W/Z or Up arrow' },
+    { label: lang === 'fr' ? 'Frein' : 'Brake', value: lang === 'fr' ? 'S ou flèche bas' : 'S or Down arrow' },
+    { label: lang === 'fr' ? 'Virage' : 'Steer', value: lang === 'fr' ? 'Q/D ou flèches' : 'A/D or arrow keys' },
+    { label: 'Drift', value: lang === 'fr' ? 'Espace' : 'Space' },
     { label: lang === 'fr' ? 'Objet' : 'Item', value: 'E' },
     { label: lang === 'fr' ? 'Reancrer' : 'Recover', value: 'R' }
   ], [lang]);
@@ -182,6 +195,7 @@ export default function RaceMode({
     if (sessionPaused || raceMenuOpen) {
       keysRef.current = {};
       keyPulseRef.current = {};
+      touchStateRef.current.clear();
     }
   }, [sessionPaused, raceMenuOpen]);
 
@@ -189,6 +203,9 @@ export default function RaceMode({
   useEffect(() => {
     if (sessionExitRequestRef.current === sessionExitRequest) return;
     sessionExitRequestRef.current = sessionExitRequest;
+    runGuardRef.current?.dispose();
+    touchStateRef.current.clear();
+    setRaceMenuOpen(false);
     keysRef.current = {};
     keyPulseRef.current = {};
     setRaceStarted(false);
@@ -204,11 +221,16 @@ export default function RaceMode({
   }, [raceMusicStage, raceStarted]);
 
   useEffect(() => {
-    if (!raceStarted || !track) return undefined;
+    if (!raceStarted || !RACE_TRACKS[trackId]) return undefined;
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
+    const { raceMusicStage, selectedKart } = raceSetupRef.current;
+    const runGuard = createRaceRunGuard();
+    runGuardRef.current = runGuard;
+    setRuntimeError(false);
     const engine = new EngineRace(960, 540, raceSummary => {
-      updateCareer(prev => applyRaceResult(prev, raceSummary));
+      if (!runGuard.claim()) return;
+      updateCareerRef.current(prev => applyRaceResult(prev, raceSummary));
       setSummary(raceSummary);
       setSnapshot(prev => ({ ...prev, grade: raceSummary.grade, rank: raceSummary.rank, time: raceSummary.time }));
       raceMusicStateRef.current = 'result';
@@ -229,58 +251,71 @@ export default function RaceMode({
     let snapshotTimer = 0;
 
     const loop = (now) => {
-      const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
-      const dt = steps * COMBAT_STEP_MS / 1000;
-      if (sessionPausedRef.current || document.hidden) {
-        animationId = requestAnimationFrame(loop);
-        return;
-      }
-      const pulseKeys = Object.fromEntries(
-        Object.entries(keyPulseRef.current).filter(([, expiresAt]) => expiresAt > now).map(([key]) => [key, true])
-      );
-      const mergedInputs = { ...keysRef.current, ...pulseKeys };
-      engine.setInput({
-        ...mergedInputs,
-        autoAccel: autoAccelerateRef.current,
-        manualAccel: Boolean(mergedInputs.up || mergedInputs.w)
-      });
-      for (let step = 0; step < steps; step += 1) engine.update(COMBAT_STEP_MS / 1000);
-      const ctx = canvas.getContext('2d');
-      engine.draw(ctx);
-      snapshotTimer += dt;
-      if (snapshotTimer > 0.12) {
-        snapshotTimer = 0;
-        const telemetry = engine.getTelemetry();
-        const displayedLap = Math.min(engine.player.lap + 1, engine.track.laps);
-        const nextMusicState = telemetry.raceState === 'finished'
-          ? 'result'
-          : telemetry.raceState === 'running' && displayedLap >= engine.track.laps
-            ? 'lastLap'
-            : telemetry.raceState === 'running'
-              ? 'race'
-              : 'grid';
-        if (raceMusicStateRef.current !== nextMusicState) {
-          raceMusicStateRef.current = nextMusicState;
-          sound.setStageMusicState(nextMusicState, {
-            ...raceMusicStage,
-            raceState: telemetry.raceState,
+      if (!runGuard.isActive()) return;
+      try {
+        const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
+        const dt = steps * COMBAT_STEP_MS / 1000;
+        if (sessionPausedRef.current || document.hidden) {
+          animationId = requestAnimationFrame(loop);
+          return;
+        }
+        const pulseKeys = Object.fromEntries(
+          Object.entries(keyPulseRef.current).filter(([, expiresAt]) => expiresAt > now).map(([key]) => [key, true])
+        );
+        const mergedInputs = { ...keysRef.current, ...touchStateRef.current.snapshot(), ...pulseKeys };
+        engine.setInput({
+          ...mergedInputs,
+          autoAccel: autoAccelerateRef.current,
+          manualAccel: Boolean(mergedInputs.up || mergedInputs.w)
+        });
+        for (let step = 0; step < steps; step += 1) engine.update(COMBAT_STEP_MS / 1000);
+        const ctx = canvas.getContext('2d');
+        engine.draw(ctx);
+        snapshotTimer += dt;
+        if (snapshotTimer > 0.12) {
+          snapshotTimer = 0;
+          const telemetry = engine.getTelemetry();
+          const displayedLap = Math.min(engine.player.lap + 1, engine.track.laps);
+          const nextMusicState = telemetry.raceState === 'finished'
+            ? 'result'
+            : telemetry.raceState === 'running' && displayedLap >= engine.track.laps
+              ? 'lastLap'
+              : telemetry.raceState === 'running'
+                ? 'race'
+                : 'grid';
+          if (raceMusicStateRef.current !== nextMusicState) {
+            raceMusicStateRef.current = nextMusicState;
+            sound.setStageMusicState(nextMusicState, {
+              ...raceMusicStage,
+              raceState: telemetry.raceState,
+              lap: displayedLap,
+              bossActive: nextMusicState === 'lastLap' && raceMusicStage.isBoss
+            });
+          }
+          setSnapshot({
+            rank: engine.player.rank,
             lap: displayedLap,
-            bossActive: nextMusicState === 'lastLap' && raceMusicStage.isBoss
+            speed: Math.round(Math.abs(engine.player.speed)),
+            item: engine.player.item,
+            time: engine.player.finishTime || engine.time,
+            grade: engine.player.finished ? engine.getRaceSummary().grade : null,
+            objective: engine.getObjectiveStatus(),
+            raceState: telemetry.raceState,
+            trackFactor: telemetry.trackFactor
           });
         }
-        setSnapshot({
-          rank: engine.player.rank,
-          lap: displayedLap,
-          speed: Math.round(Math.abs(engine.player.speed)),
-          item: engine.player.item,
-          time: engine.player.finishTime || engine.time,
-          grade: engine.player.finished ? engine.getRaceSummary().grade : null,
-          objective: engine.getObjectiveStatus(),
-          raceState: telemetry.raceState,
-          trackFactor: telemetry.trackFactor
-        });
+        animationId = requestAnimationFrame(loop);
+      } catch (error) {
+        console.error('Race render loop failed', error);
+        runGuard.dispose();
+        keysRef.current = {};
+        keyPulseRef.current = {};
+        touchStateRef.current.clear();
+        engine.setInput({});
+        sound.stopBgm();
+        setRaceMenuOpen(false);
+        setRuntimeError(true);
       }
-      animationId = requestAnimationFrame(loop);
     };
     animationId = requestAnimationFrame(loop);
 
@@ -288,7 +323,7 @@ export default function RaceMode({
       if (event.repeat || event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
       if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button, [role="button"]')) return;
       if (event.key === 'Enter' && event.target?.closest?.('a[href]')) return;
-      if (sessionPausedRef.current || document.hidden || engine.finished) return;
+      if (!runGuard.isActive() || sessionPausedRef.current || document.hidden || engine.finished) return;
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
       const key = normalizeKey(event.key);
@@ -313,6 +348,7 @@ export default function RaceMode({
     const clearInputs = () => {
       keysRef.current = {};
       keyPulseRef.current = {};
+      touchStateRef.current.clear();
     };
     const onVisibilityChange = () => {
       simulationClockRef.current?.reset();
@@ -323,6 +359,12 @@ export default function RaceMode({
     window.addEventListener('blur', clearInputs);
     document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
+      runGuard.dispose();
+      engine.setInput({});
+      keysRef.current = {};
+      keyPulseRef.current = {};
+      touchStateRef.current.clear();
+      if (runGuardRef.current === runGuard) runGuardRef.current = null;
       cancelAnimationFrame(animationId);
       if (simulationClockRef.current === simulationClock) simulationClockRef.current = null;
       window.removeEventListener('keydown', onKeyDown);
@@ -332,7 +374,7 @@ export default function RaceMode({
       sound.stopBgm();
       engineRef.current = null;
     };
-  }, [raceMusicStage, raceStarted, selectedKart, track, trackId, updateCareer]);
+  }, [raceStarted, trackId, raceNonce]);
 
   useEffect(() => { engineRef.current?.updateGarage(garageUpgrades); }, [garageUpgrades]);
 
@@ -342,7 +384,11 @@ export default function RaceMode({
     keyPulseRef.current = {};
     if (summary) onSessionStart?.();
     setSummary(null);
-    engineRef.current?.reset();
+    runGuardRef.current?.dispose();
+    touchStateRef.current.clear();
+    setRuntimeError(false);
+    setSnapshot({ rank: 1, lap: 1, speed: 0, item: null, time: 0, grade: null, objective: '', raceState: 'countdown', trackFactor: 1 });
+    setRaceNonce(value => value + 1);
     raceMusicStateRef.current = 'grid';
     sound.playStageBgm(raceMusicStage, 'grid');
   };
@@ -375,6 +421,9 @@ export default function RaceMode({
 
   const returnToGrid = () => {
     if (sessionPausedRef.current) return;
+    runGuardRef.current?.dispose();
+    touchStateRef.current.clear();
+    setRuntimeError(false);
     onSessionEndRef.current?.({ reason: 'acknowledged' });
     keysRef.current = {};
     keyPulseRef.current = {};
@@ -382,18 +431,23 @@ export default function RaceMode({
     setSummary(null);
   };
 
-  const activateVirtualKey = (key, active) => {
-    if (sessionPausedRef.current) {
-      keysRef.current = {};
-      keyPulseRef.current = {};
-      return;
-    }
-    keysRef.current[key] = active;
-    if (active) keyPulseRef.current[key] = performance.now() + 540;
-  };
+  const touchControlProps = key => ({
+    onPointerDown: event => {
+      if (event.button !== 0 || sessionPausedRef.current || engineRef.current?.finished || !runGuardRef.current?.isActive()) return;
+      if (touchStateRef.current.hold(event.pointerId, key)) {
+        event.currentTarget.setPointerCapture?.(event.pointerId);
+      }
+    },
+    onPointerUp: event => {
+      touchStateRef.current.release(event.pointerId);
+      if (event.currentTarget.hasPointerCapture?.(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+    },
+    onPointerCancel: event => touchStateRef.current.release(event.pointerId),
+    onLostPointerCapture: event => touchStateRef.current.release(event.pointerId)
+  });
 
   const pulseVirtualKey = (key) => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || engineRef.current?.finished || !runGuardRef.current?.isActive()) return;
     keyPulseRef.current[key] = performance.now() + 680;
   };
 
@@ -584,10 +638,25 @@ export default function RaceMode({
     <div className={`race-mode-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={activeHudTheme} mode="kart" />
       {raceSystemPanel}
-      <div className="race-world-hud" inert={Boolean(summary)}>
+      <div className="race-world-hud" inert={Boolean(summary || runtimeError)}>
         <div><strong>{track.name[lang] || track.name.fr}</strong><small>Mirelle Suture · {selectedKartName} · {pilotName}</small></div>
         <button type="button" className="btn-retro" onClick={() => setRaceMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'GARAGE / COMMANDES' : 'GARAGE / CONTROLS'}</button>
         {!dedicatedSession && onPauseRequest && <button type="button" className="btn-retro" onClick={onPauseRequest}>PAUSE</button>}
+        <div className="race-telemetry" role="region" aria-label={lang === 'fr' ? 'Telemetrie de course' : 'Race telemetry'}>
+          <div className="race-stat-grid">
+            <div><span>{lang === 'fr' ? 'Position' : 'Position'}</span><strong>{snapshot.rank}/4</strong></div>
+            <div><span>{lang === 'fr' ? 'Tour' : 'Lap'}</span><strong>{snapshot.lap}/{track.laps}</strong></div>
+            <div><span>{lang === 'fr' ? 'Vitesse' : 'Speed'}</span><strong>{snapshot.speed}</strong></div>
+            <div><span>{lang === 'fr' ? 'Temps' : 'Time'}</span><strong>{formatRaceTime(snapshot.time)}</strong></div>
+          </div>
+          <div className="race-objective-card">
+            <span>{lang === 'fr' ? 'Objectif A.R.C.A.' : 'A.R.C.A. objective'}</span>
+            <strong>{snapshot.objective || (track.objective?.type || 'podium')}</strong>
+            <small className={snapshot.trackFactor > 0.34 ? 'race-anchor-ok' : 'race-anchor-alert'}>
+              {lang === 'fr' ? 'Ancrage piste' : 'Track lock'}: {Math.round(snapshot.trackFactor * 100)}%
+            </small>
+          </div>
+        </div>
       </div>
 
       <div className="race-mode-grid">
@@ -597,7 +666,7 @@ export default function RaceMode({
             width="960"
             height="540"
             className="race-mode-canvas"
-            tabIndex={0}
+            tabIndex={summary || runtimeError ? -1 : 0}
             aria-label={lang === 'fr' ? 'Circuit kart jouable A.R.C.A.' : 'Playable A.R.C.A. kart circuit'}
             data-race-state={snapshot.raceState}
             data-speed={snapshot.speed}
@@ -609,6 +678,12 @@ export default function RaceMode({
               ? `Course ${snapshot.raceState}. Position ${snapshot.rank} sur 4. Tour ${snapshot.lap} sur ${track.laps}.`
               : `Race ${snapshot.raceState}. Position ${snapshot.rank} of 4. Lap ${snapshot.lap} of ${track.laps}.`}
           </p>
+          {runtimeError && !summary && <div className="race-result-banner" role="alert" data-race-runtime-error>
+            <strong>{lang === 'fr' ? 'COURSE INTERROMPUE' : 'RACE INTERRUPTED'}</strong>
+            <span>{lang === 'fr' ? 'Le rendu s’est arrêté. Aucun nouveau résultat n’a été attribué.' : 'Rendering stopped. No new result has been awarded.'}</span>
+            <button type="button" autoFocus className="btn-retro" onClick={resetRace}>{lang === 'fr' ? 'RECOMMENCER LA COURSE' : 'RESTART RACE'}</button>
+            <button type="button" className="btn-retro" onClick={returnToGrid}>{lang === 'fr' ? 'RETOUR À LA GRILLE' : 'BACK TO GRID'}</button>
+          </div>}
           {summary && (
             <div className="race-result-banner" role="region" aria-label={lang === 'fr' ? 'Bilan de course' : 'Race results'}>
               <strong>{lang === 'fr' ? 'COURSE STABILISEE' : 'RACE STABILIZED'} // {summary.grade}</strong>
@@ -630,20 +705,7 @@ export default function RaceMode({
           )}
         </div>
 
-        <aside className="race-side-panel" inert={Boolean(summary)}>
-          <div className="race-stat-grid">
-            <div><span>{lang === 'fr' ? 'Position' : 'Position'}</span><strong>{snapshot.rank}/4</strong></div>
-            <div><span>{lang === 'fr' ? 'Tour' : 'Lap'}</span><strong>{snapshot.lap}/{track.laps}</strong></div>
-            <div><span>{lang === 'fr' ? 'Vitesse' : 'Speed'}</span><strong>{snapshot.speed}</strong></div>
-            <div><span>{lang === 'fr' ? 'Temps' : 'Time'}</span><strong>{formatRaceTime(snapshot.time)}</strong></div>
-          </div>
-          <div className="race-objective-card">
-            <span>{lang === 'fr' ? 'Objectif A.R.C.A.' : 'A.R.C.A. objective'}</span>
-            <strong>{snapshot.objective || (track.objective?.type || 'podium')}</strong>
-            <small className={snapshot.trackFactor > 0.34 ? 'race-anchor-ok' : 'race-anchor-alert'}>
-              {lang === 'fr' ? 'Ancrage piste' : 'Track lock'}: {Math.round(snapshot.trackFactor * 100)}%
-            </small>
-          </div>
+        <aside className="race-side-panel" inert={Boolean(summary || runtimeError)}>
           <div className="race-hud-dock">
             <div className="race-cache-card">
               <span>{lang === 'fr' ? 'Cache active' : 'Active cache'}</span>
@@ -659,11 +721,11 @@ export default function RaceMode({
               </button>
             </div>
             <div className="race-touch-controls">
-              <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('up')} onPointerDown={() => activateVirtualKey('up', true)} onPointerUp={() => activateVirtualKey('up', false)} onPointerCancel={() => activateVirtualKey('up', false)} onPointerLeave={() => activateVirtualKey('up', false)}>ACC</button>
-              <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('left')} onPointerDown={() => activateVirtualKey('left', true)} onPointerUp={() => activateVirtualKey('left', false)} onPointerCancel={() => activateVirtualKey('left', false)} onPointerLeave={() => activateVirtualKey('left', false)}>GAUCHE</button>
-              <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('right')} onPointerDown={() => activateVirtualKey('right', true)} onPointerUp={() => activateVirtualKey('right', false)} onPointerCancel={() => activateVirtualKey('right', false)} onPointerLeave={() => activateVirtualKey('right', false)}>DROITE</button>
-              <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('space')} onPointerDown={() => activateVirtualKey('space', true)} onPointerUp={() => activateVirtualKey('space', false)} onPointerCancel={() => activateVirtualKey('space', false)} onPointerLeave={() => activateVirtualKey('space', false)}>DRIFT</button>
-              <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('down')} onPointerDown={() => activateVirtualKey('down', true)} onPointerUp={() => activateVirtualKey('down', false)} onPointerCancel={() => activateVirtualKey('down', false)} onPointerLeave={() => activateVirtualKey('down', false)}>{lang === 'fr' ? 'FREIN' : 'BRAKE'}</button>
+              <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('up'); }} {...touchControlProps('up')}>ACC</button>
+              <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('left'); }} {...touchControlProps('left')}>{lang === 'fr' ? 'GAUCHE' : 'LEFT'}</button>
+              <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('right'); }} {...touchControlProps('right')}>{lang === 'fr' ? 'DROITE' : 'RIGHT'}</button>
+              <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('space'); }} {...touchControlProps('space')}>DRIFT</button>
+              <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('down'); }} {...touchControlProps('down')}>{lang === 'fr' ? 'FREIN' : 'BRAKE'}</button>
               <button type="button" className="btn-retro" onClick={recoverPlayer}>{lang === 'fr' ? 'REANCRER' : 'RECOVER'}</button>
               {summary && <button type="button" className="btn-retro" onClick={resetRace}>{lang === 'fr' ? 'RELANCER' : 'RESTART'}</button>}
             </div>
