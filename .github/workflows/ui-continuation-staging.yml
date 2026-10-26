@@ -1,0 +1,104 @@
+name: UI continuation staging
+on:
+  push:
+    branches: [codex/immersive-ui-audit-2026-10-25]
+    paths: ['docs/ui-immersion/reviewed-update.*', '.github/workflows/ui-continuation-staging.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.repository == 'darknigthmare/multiverse-breach' && github.ref == 'refs/heads/codex/immersive-ui-audit-2026-10-25'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /.github/workflows/
+            /docs/ui-immersion/
+            /docs/excel/Multiverse_Breach_UI_Immersion.xlsx
+            **/*.json
+            **/*.jsonl
+      - name: Validate exact reviewed patch and source hashes
+        run: |
+          mkdir -p /tmp/ui-staging-evidence
+          python3 - <<'PY'
+          import base64,gzip,hashlib,json,subprocess
+          from pathlib import Path
+          m=json.loads(Path('docs/ui-immersion/reviewed-update.json').read_text())
+          allowed={'src/components/FighterMode.jsx','src/components/CombatDrawer.jsx','src/game/combatDialogLifecycle.js','scripts/combatDialogLifecycle.test.mjs','scripts/fixtures/fighterLifecycleHarness.jsx','scripts/fixtures/combatDrawerHarness.jsx','scripts/fixtures/combat-drawer.html','scripts/browserImmersiveTransitions.py','package.json','.github/workflows/audit-reliability.yml'}
+          assert {f['path'] for f in m['files']} == allowed
+          for f in m['files']:
+              p=Path(f['path']); assert not p.is_symlink()
+              h=hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
+              assert h == f['beforeSha256'], ('Base mismatch',str(p))
+          encoded=''.join(p.read_text().strip() for p in sorted(Path('docs/ui-immersion').glob('reviewed-update.part*')))
+          patch=gzip.decompress(base64.b64decode(encoded))
+          assert len(patch)<2000000 and hashlib.sha256(patch).hexdigest()==m['patchSha256']
+          Path('/tmp/reviewed.patch').write_bytes(patch)
+          subprocess.run(['git','apply','--check','--binary','/tmp/reviewed.patch'],check=True)
+          subprocess.run(['git','apply','--binary','/tmp/reviewed.patch'],check=True)
+          for f in m['files']:
+              assert hashlib.sha256(Path(f['path']).read_bytes()).hexdigest()==f['afterSha256'], f['path']
+          Path('/tmp/ui-staging-evidence/source-manifest.json').write_text(json.dumps(m,indent=2))
+          PY
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Unit contracts, lint and source build
+        run: |
+          set -euo pipefail
+          npm run test:ui-immersion | tee /tmp/ui-staging-evidence/ui-tests.log
+          node --test --test-concurrency=1 scripts/fixedStepClock.test.mjs scripts/reauditFighterInputs.test.mjs | tee /tmp/ui-staging-evidence/fighter-tests.log
+          npx oxlint --max-warnings 0 src/components/FighterMode.jsx src/components/CombatDrawer.jsx src/game/combatDialogLifecycle.js scripts/combatDialogLifecycle.test.mjs scripts/fixtures/combatDrawerHarness.jsx scripts/fixtures/fighterLifecycleHarness.jsx | tee /tmp/ui-staging-evidence/lint.log
+          npx vite build | tee /tmp/ui-staging-evidence/source-build.log
+      - name: Real Chromium regressions with synthetic fixtures
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/ui-playwright
+          /tmp/ui-playwright/bin/pip install playwright==1.57.0
+          /tmp/ui-playwright/bin/python -m playwright install --with-deps chromium
+          npm run dev -- --host 127.0.0.1 --port 4173 --strictPort >/tmp/ui-staging-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          /tmp/ui-playwright/bin/python scripts/browserImmersiveTransitions.py --evidence /tmp/ui-staging-evidence/transitions | tee /tmp/ui-staging-evidence/transitions.log
+          /tmp/ui-playwright/bin/python scripts/browserFighterLifecycle.py --evidence /tmp/ui-staging-evidence/fighter-existing | tee /tmp/ui-staging-evidence/fighter-existing.log
+      - name: Stage verified Git blobs only (never commit or update a branch)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64,hashlib,json,os,urllib.request
+          from pathlib import Path
+          m=json.loads(Path('docs/ui-immersion/reviewed-update.json').read_text())
+          blobs=[]
+          for f in m['files']:
+              raw=Path(f['path']).read_bytes()
+              assert hashlib.sha256(raw).hexdigest()==f['afterSha256']
+              data=json.dumps({'encoding':'base64','content':base64.b64encode(raw).decode()}).encode()
+              req=urllib.request.Request('https://api.github.com/repos/darknigthmare/multiverse-breach/git/blobs',data=data,method='POST',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'pr9-ui-review','X-GitHub-Api-Version':'2022-11-28'})
+              with urllib.request.urlopen(req,timeout=30) as r: result=json.load(r)
+              expected=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+              assert result['sha']==expected
+              blobs.append({'path':f['path'],'mode':'100644','type':'blob','sha':result['sha']})
+          Path('/tmp/ui-staging-evidence/verified-blobs.json').write_text(json.dumps(blobs,indent=2))
+          print('Verified blobs created; no commit, ref, merge or production deployment performed.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: ui-staging-${{ github.sha }}
+          path: /tmp/ui-staging-evidence/
+          retention-days: 7
