@@ -302,3 +302,31 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .race-mode-shell .race-objective-card strong { font-size: inherit; }
   .race-mode-shell .race-objective-card span, .race-mode-shell .race-objective-card small { font-size: calc(10px * var(--game-hud-scale, 1)); }
 }
+
+/* Cité / Extinction follow-up: a world surface, not a framed canvas. */
+.hub-screen .extinction-panel-active .fps-royale-canvas { border: 0; border-radius: 0; box-shadow: none; outline-offset: -3px; }
+.extinction-intel-button { color: #ffe59c; background: transparent; border: 0; padding: 0; text-align: left; font: inherit; font-weight: 700; cursor: pointer; min-height: 28px; }
+.extinction-panel-active .extinction-objective-strip { pointer-events: auto; }
+.extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(n+5) { border-color: #81a3b66b; }
+.immersive-drawer pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+.mosaic-world-log { font-size: calc(12px * var(--game-hud-scale, 1)); }
+.mosaic-rpg-panel .mosaic-world-controls button:focus-visible { outline: 3px solid #ffdc79; outline-offset: -3px; }
+@media (max-width: 760px) {
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(n+5) { grid-column: span 1; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(9),
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(10) { grid-column: span 2; }
+}
+@media (max-height: 500px) and (min-width: 600px) {
+  .mosaic-world-hud { top: calc(52px + var(--hub-hud-top)); }
+  .mosaic-rpg-stage .mosaic-city-guide { top: 130px; left: var(--hub-hud-left); max-width: min(440px, 56vw); padding: 9px; gap: 8px; }
+  .mosaic-rpg-stage .mosaic-city-guide p { font-size: 11px; line-height: 1.35; }
+  .mosaic-world-log { display: none; } /* full transmission remains in Terminal > Journal */
+  .extinction-panel-active .extinction-objective-strip { padding: 5px 9px; font-size: calc(10px * var(--game-hud-scale, 1)); max-width: 55%; }
+  .extinction-panel-active .extinction-objective-strip small { display: none; } /* full message retained in Directive */
+  .extinction-panel-active .extinction-hud-dock { grid-template-columns: minmax(180px, .85fr) minmax(0, 1.4fr); gap: 8px; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-stats > span { padding: 5px 6px; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions .btn-retro { min-height: 42px; font-size: calc(10px * var(--game-hud-scale, 1)); }
+}

@@ -79,6 +79,9 @@ import GameDisplaySettings from './GameDisplaySettings.jsx';
 import AudioControl from './AudioControl.jsx';
 import NetworkStatusBadge from './NetworkStatusBadge.jsx';
 import useSceneViewport from './useSceneViewport.js';
+import SceneHoldButton from './SceneHoldButton.jsx';
+import useModalDialog from './collection/useModalDialog.js';
+import { createSceneInputs, emptySceneAim, advanceSceneAim } from '../game/sceneInputs.js';
 import { applyExtinctionReport, compareGearBoosts, normalizeExtinctionReport, normalizeHubNavigation, restoreMosaicLocation, snapshotMosaicLocation } from '../game/immersiveHubState.js';
 
 const TAU = Math.PI * 2;
@@ -2254,7 +2257,12 @@ function MosaicCityHub({
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
   const closeCityMenu = useCallback(() => setCityMenuOpen(false), []);
   const cityMenuRef = useRef(false);
-  cityMenuRef.current = cityMenuOpen;
+  const [runtimeError, setRuntimeError] = useState(null);
+  const [renderAttempt, setRenderAttempt] = useState(0);
+  cityMenuRef.current = cityMenuOpen || Boolean(runtimeError);
+  const sceneInputsRef = useRef(createSceneInputs(['arrowup','arrowdown','arrowleft','arrowright','w','a','s','d','z','q']));
+  const npcLayoutRef = useRef('');
+  useEffect(() => () => { sceneInputsRef.current.clear(); }, []);
   const locationCallbackRef = useRef(onLocationChange);
   locationCallbackRef.current = onLocationChange;
   const restoredLocationRef = useRef(false);
@@ -2564,7 +2572,13 @@ function MosaicCityHub({
     window.addEventListener('pagehide', publish);
     return () => { window.clearInterval(checkpoint); window.removeEventListener('pagehide', publish); publish(); };
   }, []);
-  useEffect(() => { if (cityMenuOpen) stateRef.current.keys = {}; }, [cityMenuOpen]);
+  useEffect(() => {
+    if (!cityMenuOpen && !runtimeError) return;
+    sceneInputsRef.current.clear();
+    stateRef.current.keys = {};
+    stateRef.current.destination = null;
+    stateRef.current.pendingInteraction = null;
+  }, [cityMenuOpen, runtimeError]);
   const scenery = useMemo(() => getMosaicScenery(district), [district]);
   const sceneObstacles = useMemo(() => getMosaicSceneObstacles(district, zones), [district, zones]);
   stateRef.current.obstacles = sceneObstacles;
@@ -2589,6 +2603,7 @@ function MosaicCityHub({
   useEffect(() => {
     sessionPausedRef.current = sessionPaused;
     if (!sessionPaused) return;
+    sceneInputsRef.current.clear();
     stateRef.current.keys = {};
     stateRef.current.destination = null;
     stateRef.current.pendingInteraction = null;
@@ -2599,6 +2614,7 @@ function MosaicCityHub({
   useEffect(() => {
     if (sessionExitRequestRef.current === sessionExitRequest) return;
     sessionExitRequestRef.current = sessionExitRequest;
+    sceneInputsRef.current.clear();
     stateRef.current.keys = {};
     stateRef.current.destination = null;
     stateRef.current.pendingInteraction = null;
@@ -2614,6 +2630,12 @@ function MosaicCityHub({
       ]
       : ownedHeroes;
     const guideHero = currentDistrict === 'atrium' ? (safeHeroes.find(hero => hero.id === 'arca_mirelle') || BASE_HEROES_DB.find(hero => hero.id === 'arca_mirelle')) : null;
+    const layoutKey = JSON.stringify([currentDistrict, completedStages.length, zones.map(zone => [zone.id, zone.x, zone.y, zone.w, zone.h]), districtHeroes.map(hero => hero.id), guideHero?.id]);
+    if (npcLayoutRef.current === layoutKey && stateRef.current.npcs.length) {
+      for (const npc of stateRef.current.npcs) npc.hero = safeHeroes.find(hero => hero.id === npc.hero.id) || npc.hero;
+      return;
+    }
+    npcLayoutRef.current = layoutKey;
     stateRef.current.npcs = districtHeroes.filter(hero => hero.id !== guideHero?.id).slice(0, 17).map((hero, index) => {
       const zone = zones[index % Math.max(1, zones.length)] || district;
       const compatibleCount = districtHeroes.filter(other => other.id !== hero.id && (other.universe === hero.universe || other.category === hero.category)).length;
@@ -2652,6 +2674,7 @@ function MosaicCityHub({
     stateRef.current.player.y = spawn.y;
     stateRef.current.destination = null;
     stateRef.current.pendingInteraction = null;
+    sceneInputsRef.current.clear();
     stateRef.current.keys = {};
     nearbyInteractionRef.current = null;
     setNearbyLabel('');
@@ -2755,7 +2778,8 @@ function MosaicCityHub({
       if (event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
       const key = event.key.toLowerCase();
       if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd', 'z', 'q'].includes(key)) {
-        stateRef.current.keys[key] = true;
+        sceneInputsRef.current.hold(`keyboard:${event.code || key}`, key);
+        stateRef.current.keys = sceneInputsRef.current.snapshot();
         stateRef.current.destination = null;
         stateRef.current.pendingInteraction = null;
         event.preventDefault();
@@ -2766,9 +2790,11 @@ function MosaicCityHub({
       }
     };
     const onKeyUp = event => {
-      stateRef.current.keys[event.key.toLowerCase()] = false;
+      sceneInputsRef.current.release(`keyboard:${event.code || event.key.toLowerCase()}`);
+      stateRef.current.keys = sceneInputsRef.current.snapshot();
     };
     const clearInput = () => {
+      sceneInputsRef.current.clear();
       stateRef.current.keys = {};
       stateRef.current.destination = null;
       stateRef.current.pendingInteraction = null;
@@ -2883,7 +2909,7 @@ function MosaicCityHub({
       ctx.restore();
     };
 
-    const loop = (timestamp = performance.now()) => {
+    const renderFrame = (timestamp = performance.now()) => {
       if (sessionPausedRef.current || cityMenuRef.current || document.hidden) {
         lastFrame = null;
         rafId = window.requestAnimationFrame(loop);
@@ -3162,7 +3188,7 @@ function MosaicCityHub({
       const sx = miniW / district.worldW;
       const sy = miniH / district.worldH;
       ctx.strokeStyle = 'rgba(255,255,255,0.35)';
-      ctx.strokeRect(miniX + state.camera.x * sx, miniY + state.camera.y * sy, canvas.width * sx, canvas.height * sy);
+      ctx.strokeRect(miniX + state.camera.x * sx, miniY + state.camera.y * sy, Math.min(canvas.width, district.worldW - state.camera.x) * sx, Math.min(canvas.height, district.worldH - state.camera.y) * sy);
       (district.portals || []).forEach(portal => {
         ctx.fillStyle = portal.color;
         ctx.beginPath();
@@ -3174,6 +3200,16 @@ function MosaicCityHub({
 
       rafId = window.requestAnimationFrame(loop);
     };
+    const loop = timestamp => {
+      try { renderFrame(timestamp); } catch (error) {
+        cityMenuRef.current = true;
+        sceneInputsRef.current.clear();
+        stateRef.current.keys = {};
+        stateRef.current.destination = null;
+        stateRef.current.pendingInteraction = null;
+        setRuntimeError(error instanceof Error ? error.message : String(error));
+      }
+    };
     loop();
     const onClockVisibilityChange = () => { lastFrame = null; };
     document.addEventListener('visibilitychange', onClockVisibilityChange);
@@ -3181,10 +3217,10 @@ function MosaicCityHub({
       window.cancelAnimationFrame(rafId);
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
     };
-  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, sceneHudRef, sceneObstacles, scenery, unlockedUniverses.length, zones]);
+  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, renderAttempt, sceneHudRef, sceneObstacles, scenery, unlockedUniverses.length, zones]);
 
   const moveToPointer = event => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || cityMenuRef.current || (event.pointerType === 'mouse' && event.button !== 0)) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
@@ -3200,6 +3236,7 @@ function MosaicCityHub({
       .map(target => ({ ...target, distance: Math.hypot(target.x - x, target.y - y) }))
       .filter(target => target.distance <= (target.type === 'portal' ? 46 : 34))
       .sort((a, b) => a.distance - b.distance)[0];
+    sceneInputsRef.current.clear();
     stateRef.current.keys = {};
     if (clicked) {
       const preferred = { type: clicked.type, id: clicked.id };
@@ -3215,13 +3252,16 @@ function MosaicCityHub({
     sound.playSfx('click');
   };
 
-  const setVirtualKey = (key, active) => {
-    if (sessionPausedRef.current) return;
-    stateRef.current.keys[key] = active;
+  const setVirtualKey = useCallback((source, key, active) => {
+    const input = sceneInputsRef.current;
+    if (active && (sessionPausedRef.current || cityMenuRef.current)) return;
+    if (active) input.hold(source, key); else input.release(source);
+    stateRef.current.keys = input.snapshot();
     if (active) { stateRef.current.destination = null; stateRef.current.pendingInteraction = null; }
-  };
+  }, []);
 
   const clearCityDestination = () => {
+    sceneInputsRef.current.clear();
     stateRef.current.keys = {};
     stateRef.current.destination = null;
     stateRef.current.pendingInteraction = null;
@@ -3235,6 +3275,11 @@ function MosaicCityHub({
     stateRef.current.pendingInteraction = { type: 'portal', id: portal.id };
     setCityMenuOpen(false);
     setHubLog(lang === 'fr' ? `Approche du portail ${universe}. L entree se fait a proximite.` : `Approaching the ${universe} portal. Entry requires reaching it.`);
+  };
+  const recoverCity = () => {
+    // Reset any canvas transforms/save stack left by an interrupted draw.
+    if (canvasRef.current) canvasRef.current.setAttribute('width', String(canvasRef.current.width));
+    setRuntimeError(null); setRenderAttempt(value => value + 1);
   };
   const welcomeLanguage = lang === 'fr' ? 'fr' : 'en';
   const advanceWelcome = () => {
@@ -3255,6 +3300,11 @@ function MosaicCityHub({
   return (
     <div className={`glass-panel nexus-play-panel mosaic-rpg-panel ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={hudTheme} mode="nexus" />
+      <ImmersiveDrawer open={Boolean(runtimeError)} onClose={recoverCity} lang={lang} title={lang === 'fr' ? 'Affichage de la Cité interrompu' : 'City display interrupted'}>
+        <p>{lang === 'fr' ? 'Ta position est conservée. Relance l’affichage pour reprendre, sans effacer ta progression.' : 'Your position is preserved. Restart the display to resume without erasing progress.'}</p>
+        <button type="button" className="btn-retro" onClick={recoverCity}>{lang === 'fr' ? 'REPRENDRE LA CITÉ' : 'RESUME CITY'}</button>
+        <details><summary>{lang === 'fr' ? 'Diagnostic technique' : 'Technical details'}</summary><pre>{runtimeError}</pre></details>
+      </ImmersiveDrawer>
       <span className="gameplay-live-status" id="mosaic-city-controls-help">{lang === 'fr' ? 'ZQSD / WASD ou flèches : marcher. E : interagir. Terminal : destinations, journal et aide.' : 'WASD or arrows: walk. E: interact. Terminal: destinations, journal and help.'}</span>
       <div className="mosaic-world-hud">
         <div className="mosaic-location"><span>{lang === 'fr' ? 'CITÉ-MOSAÏQUE' : 'MOSAIC CITY'}</span><strong>{district.label}</strong><small>{currentZoneData?.label || 'Nexus'}</small></div>
@@ -3364,7 +3414,7 @@ function MosaicCityHub({
         <canvas ref={canvasRef} width="960" height="540" tabIndex={0} aria-label={lang === 'fr' ? 'Cite-Mosaique, zone d exploration interactive' : 'Mosaic City, interactive exploration area'} aria-describedby="mosaic-city-controls-help" className="nexus-hub-canvas mosaic-rpg-canvas" onPointerDown={moveToPointer} />
         <div className="mosaic-mobile-pad mosaic-world-controls">
           {[['arrowleft', '←'], ['arrowup', '↑'], ['arrowdown', '↓'], ['arrowright', '→']].map(([key, label]) => (
-            <button key={key} type="button" aria-label={`${lang === 'fr' ? 'Deplacement' : 'Move'} ${label}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture?.(event.pointerId); setVirtualKey(key, true); }} onPointerUp={() => setVirtualKey(key, false)} onPointerCancel={() => setVirtualKey(key, false)} onLostPointerCapture={() => setVirtualKey(key, false)} onPointerLeave={() => setVirtualKey(key, false)}>{label}</button>
+            <SceneHoldButton key={key} action={key} onInput={setVirtualKey} disabled={sessionPaused || cityMenuOpen || Boolean(runtimeError)} aria-label={`${lang === 'fr' ? 'Deplacement' : 'Move'} ${label}`}>{label}</SceneHoldButton>
           ))}
           <button type="button" title={nearbyLabel || (lang === 'fr' ? 'Approche une personne ou une borne.' : 'Approach a person or terminal.')} disabled={!nearbyLabel} onClick={interactWithNearby}>{lang === 'fr' ? 'INTERAGIR' : 'INTERACT'}</button>
         </div>
@@ -3392,7 +3442,15 @@ function ExtinctionRoyale({
   const fpsHandsRef = useRef(null);
   const fpsProjectileRef = useRef(null);
   const fpsBackdropRef = useRef(null);
-  const aimPointerRef = useRef({ active: false, pointerId: null, x: 0, moved: false });
+  const aimPointerRef = useRef(emptySceneAim());
+  const sceneInputsRef = useRef(createSceneInputs(['forward','back','strafeLeft','strafeRight','turnLeft','turnRight']));
+  useEffect(() => () => { sceneInputsRef.current.clear(); }, []);
+  const [runtimeError, setRuntimeError] = useState(null);
+  const [intelOpen, setIntelOpen] = useState(false);
+  const intelRef = useRef(false); intelRef.current = intelOpen;
+  const [renderAttempt, setRenderAttempt] = useState(0);
+  const resultRef = useRef(null);
+  const continueRef = useRef(null);
   const sessionPausedRef = useRef(sessionPaused);
   const sessionExitRequestRef = useRef(sessionExitRequest);
   const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
@@ -3573,6 +3631,8 @@ function ExtinctionRoyale({
   useEffect(() => {
     sessionPausedRef.current = sessionPaused;
     if (sessionPaused) {
+      sceneInputsRef.current.clear();
+      aimPointerRef.current = emptySceneAim();
       stateRef.current.moveKeys = {};
       stateRef.current.vx = 0;
       stateRef.current.vy = 0;
@@ -3580,10 +3640,21 @@ function ExtinctionRoyale({
     }
   }, [sessionPaused]);
 
+  useEffect(() => {
+    if (!intelOpen) return;
+    sceneInputsRef.current.clear();
+    stateRef.current.moveKeys = {};
+    stateRef.current.vx = 0; stateRef.current.vy = 0; stateRef.current.turnVel = 0;
+    aimPointerRef.current = emptySceneAim();
+  }, [intelOpen]);
+
   // Une sortie du mode n'est acceptee qu'apres la confirmation du menu pause.
   useEffect(() => {
     if (sessionExitRequestRef.current === sessionExitRequest) return;
     sessionExitRequestRef.current = sessionExitRequest;
+    sceneInputsRef.current.clear();
+    aimPointerRef.current = emptySceneAim();
+    setIntelOpen(false);
     stateRef.current = {
       ...stateRef.current,
       phase: 'ready',
@@ -3662,7 +3733,10 @@ function ExtinctionRoyale({
   }, []);
 
   const startRun = useCallback(() => {
-    if (sessionPausedRef.current || !selectedHero) return;
+    if (sessionPausedRef.current || !selectedHero || stateRef.current.phase === 'running') return;
+    sceneInputsRef.current.clear();
+    aimPointerRef.current = emptySceneAim();
+    setRuntimeError(null);
     onSessionStart?.();
     const stats = selectedHero.stats || { hp: 120, atk: 12, def: 6, spd: 5 };
     const role = roleProfile[selectedHero.category] || roleProfile.marine;
@@ -3724,7 +3798,10 @@ function ExtinctionRoyale({
 
   const finishRun = useCallback((result) => {
     const state = stateRef.current;
-    if (state.phase === 'ended') return;
+    if (state.phase !== 'running' || !['victory','defeat'].includes(result)) return;
+    sceneInputsRef.current.clear();
+    state.moveKeys = {};
+    aimPointerRef.current = emptySceneAim();
     const victory = result === 'victory';
     const victoryTitle = {
       extraction: lang === 'fr' ? 'Extraction A.R.C.A. réussie' : 'A.R.C.A. extraction successful',
@@ -3755,9 +3832,9 @@ function ExtinctionRoyale({
     const ctx = canvas.getContext('2d');
     let rafId = 0;
     const clock = createFixedStepClock();
-    const loop = (timestamp = performance.now()) => {
+    const renderFrame = (timestamp = performance.now()) => {
       const state = stateRef.current;
-      const paused = sessionPausedRef.current || document.hidden;
+      const paused = sessionPausedRef.current || document.hidden || intelRef.current;
       const simulationSteps = clock.advance(timestamp, { paused: paused || state.phase !== 'running' });
       if (paused) {
         rafId = window.requestAnimationFrame(loop);
@@ -4170,6 +4247,19 @@ function ExtinctionRoyale({
       ctx.restore();
       rafId = window.requestAnimationFrame(loop);
     };
+    const loop = timestamp => {
+      try { renderFrame(timestamp); } catch (error) {
+        const state = stateRef.current;
+        sceneInputsRef.current.clear();
+        state.moveKeys = {};
+        state.vx = 0; state.vy = 0; state.turnVel = 0;
+        aimPointerRef.current = emptySceneAim();
+        // A renderer failure is not a defeat or a reward-bearing completion.
+        if (state.phase !== 'ended') state.phase = 'error';
+        setRuntimeError(error instanceof Error ? error.message : String(error));
+        setRunSnapshot(buildRunSnapshot(state));
+      }
+    };
     loop();
     const onClockVisibilityChange = () => clock.reset();
     document.addEventListener('visibilitychange', onClockVisibilityChange);
@@ -4177,7 +4267,7 @@ function ExtinctionRoyale({
       window.cancelAnimationFrame(rafId);
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
     };
-  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, selectedHero, universeFragments, weaponProfile.color]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, renderAttempt, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, selectedHero, universeFragments, weaponProfile.color]);
 
   const triggerEnemyDrop = (enemy, state) => {
     if (Math.random() < 0.24) {
@@ -4213,7 +4303,7 @@ function ExtinctionRoyale({
   };
 
   const fire = () => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || intelRef.current) return;
     const state = stateRef.current;
     if (state.phase !== 'running') return;
     const wep = state.weapon || { type: 'pistol', ammo: state.ammo || 24, maxAmmo: 24, spread: 0.12, fireRate: 1.0, dmgMult: 1.0 };
@@ -4268,7 +4358,7 @@ function ExtinctionRoyale({
   };
 
   const reload = () => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || intelRef.current) return;
     const state = stateRef.current;
     if (state.phase !== 'running' || state.reloadPulse > 0) return;
     const weapon = state.weapon || { ammo: state.ammo || 0, maxAmmo: state.maxAmmo || 24 };
@@ -4289,17 +4379,16 @@ function ExtinctionRoyale({
     sound.playSfx('coin');
   };
 
-  const setMoveKey = (key, active) => {
+  const setMoveKey = useCallback((key, active, source = `virtual:${key}`) => {
     const state = stateRef.current;
-    if (sessionPausedRef.current) {
-      state.moveKeys = {};
-      return;
-    }
-    state.moveKeys = { ...(state.moveKeys || {}), [key]: active };
-  };
+    if (active && (sessionPausedRef.current || intelRef.current || state.phase !== 'running')) return;
+    if (active) sceneInputsRef.current.hold(source, key); else sceneInputsRef.current.release(source);
+    state.moveKeys = sceneInputsRef.current.snapshot();
+  }, []);
+  const setVirtualMove = useCallback((source, key, active) => setMoveKey(key, active, source), [setMoveKey]);
 
   const activateRoleSkill = () => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || intelRef.current) return;
     const state = stateRef.current;
     if (state.phase !== 'running') return;
     if (state.skillCooldown > 0) {
@@ -4331,7 +4420,7 @@ function ExtinctionRoyale({
   };
 
   const collectLoot = () => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || intelRef.current) return;
     const state = stateRef.current;
     if (state.phase !== 'running') return;
     const item = state.loot.find(candidate => !candidate.used && Math.hypot(candidate.wx - state.px, candidate.wy - state.py) < 1.25);
@@ -4378,32 +4467,32 @@ function ExtinctionRoyale({
   };
 
   const beginCanvasAim = (event) => {
-    if (sessionPausedRef.current || stateRef.current.phase !== 'running') return;
+    if (sessionPausedRef.current || intelRef.current || stateRef.current.phase !== 'running') return;
     if (event.pointerType === 'mouse' && event.button !== 0) return;
-    aimPointerRef.current = { active: true, pointerId: event.pointerId, x: event.clientX, moved: false };
+    if (aimPointerRef.current.active) return;
+    aimPointerRef.current = { ...emptySceneAim(), active: true, pointerId: event.pointerId, x: event.clientX, startX: event.clientX };
+    event.currentTarget.focus({ preventScroll: true });
     event.currentTarget.setPointerCapture?.(event.pointerId);
   };
 
-  const moveCanvasAim = (event) => {
-    const pointer = aimPointerRef.current;
-    if (!pointer.active || pointer.pointerId !== event.pointerId || sessionPausedRef.current) return;
-    const deltaX = event.clientX - pointer.x;
-    if (Math.abs(deltaX) > 1) {
-      stateRef.current.angle += deltaX * 0.008;
-      pointer.moved = pointer.moved || Math.abs(deltaX) > 4;
-      pointer.x = event.clientX;
-    }
+  const moveCanvasAim = event => {
+    if (sessionPausedRef.current || intelRef.current || stateRef.current.phase !== 'running') return;
+    const deltaX = advanceSceneAim(aimPointerRef.current, event.pointerId, event.clientX);
+    stateRef.current.angle += deltaX * 0.008;
   };
 
   const endCanvasAim = (event) => {
     const pointer = aimPointerRef.current;
     if (pointer.pointerId !== event.pointerId) return;
     pointer.active = false;
-    event.currentTarget.releasePointerCapture?.(event.pointerId);
+    if (event.currentTarget.hasPointerCapture?.(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
   };
 
-  const cancelCanvasAim = () => {
-    aimPointerRef.current = { active: false, pointerId: null, x: 0, moved: false };
+  const cancelCanvasAim = event => {
+    if (event && aimPointerRef.current.pointerId !== event.pointerId) return;
+    // Lost capture after a deliberate pointerup preserves the drag suppression.
+    if (event?.type === 'lostpointercapture' && !aimPointerRef.current.active) return;
+    aimPointerRef.current = { ...emptySceneAim(), moved: true };
   };
 
   const handleCanvasFire = () => {
@@ -4416,28 +4505,28 @@ function ExtinctionRoyale({
 
   useEffect(() => {
     const onKeyDown = (event) => {
-      if (sessionPausedRef.current || stateRef.current.phase !== 'running') return;
+      if (sessionPausedRef.current || intelRef.current || stateRef.current.phase !== 'running') return;
       if (event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
       if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button, [role="button"]')) return;
       if (event.key === 'Enter' && event.target?.closest?.('a[href]')) return;
       const key = event.key.toLowerCase();
       if (key === 'w' || key === 'z' || key === 'arrowup') {
-        setMoveKey('forward', true);
+        setMoveKey('forward', true, `keyboard:${event.code || key}`);
         event.preventDefault();
       } else if (key === 's' || key === 'arrowdown') {
-        setMoveKey('back', true);
+        setMoveKey('back', true, `keyboard:${event.code || key}`);
         event.preventDefault();
       } else if (key === 'a' || key === 'q') {
-        setMoveKey('strafeLeft', true);
+        setMoveKey('strafeLeft', true, `keyboard:${event.code || key}`);
         event.preventDefault();
       } else if (key === 'd') {
-        setMoveKey('strafeRight', true);
+        setMoveKey('strafeRight', true, `keyboard:${event.code || key}`);
         event.preventDefault();
       } else if (key === 'arrowleft') {
-        setMoveKey('turnLeft', true);
+        setMoveKey('turnLeft', true, `keyboard:${event.code || key}`);
         event.preventDefault();
       } else if (key === 'arrowright') {
-        setMoveKey('turnRight', true);
+        setMoveKey('turnRight', true, `keyboard:${event.code || key}`);
         event.preventDefault();
       } else if (key === ' ' || key === 'enter') {
         fire();
@@ -4456,26 +4545,27 @@ function ExtinctionRoyale({
     const onKeyUp = (event) => {
       const key = event.key.toLowerCase();
       if (key === 'w' || key === 'z' || key === 'arrowup') {
-        setMoveKey('forward', false);
+        setMoveKey('forward', false, `keyboard:${event.code || key}`);
       } else if (key === 's' || key === 'arrowdown') {
-        setMoveKey('back', false);
+        setMoveKey('back', false, `keyboard:${event.code || key}`);
       } else if (key === 'a' || key === 'q') {
-        setMoveKey('strafeLeft', false);
+        setMoveKey('strafeLeft', false, `keyboard:${event.code || key}`);
       } else if (key === 'd') {
-        setMoveKey('strafeRight', false);
+        setMoveKey('strafeRight', false, `keyboard:${event.code || key}`);
       } else if (key === 'arrowleft') {
-        setMoveKey('turnLeft', false);
+        setMoveKey('turnLeft', false, `keyboard:${event.code || key}`);
       } else if (key === 'arrowright') {
-        setMoveKey('turnRight', false);
+        setMoveKey('turnRight', false, `keyboard:${event.code || key}`);
       }
     };
     const clearMovement = () => {
       const state = stateRef.current;
+      sceneInputsRef.current.clear();
       state.moveKeys = {};
       state.vx = 0;
       state.vy = 0;
       state.turnVel = 0;
-      aimPointerRef.current = { active: false, pointerId: null, x: 0, moved: false };
+      aimPointerRef.current = emptySceneAim();
     };
     const onVisibilityChange = () => { if (document.hidden) clearMovement(); };
     window.addEventListener('keydown', onKeyDown);
@@ -4490,12 +4580,37 @@ function ExtinctionRoyale({
     };
   });
 
+  const acknowledgeRun = () => {
+    if (stateRef.current.phase !== 'ended') return;
+    stateRef.current.phase = 'ready'; stateRef.current.rewards = null; stateRef.current.result = null;
+    setRunSnapshot(buildRunSnapshot(stateRef.current)); onSessionEnd?.({ reason: 'acknowledged' });
+  };
+  useModalDialog({ open: runSnapshot.phase === 'ended' && !runtimeError, overlayRef: resultRef, dialogRef: resultRef, initialFocusRef: continueRef, onClose: () => {} });
+  const recoverRun = () => {
+    if (canvasRef.current) canvasRef.current.setAttribute('width', String(canvasRef.current.width));
+    if (stateRef.current.phase === 'ended') { setRuntimeError(null); setRenderAttempt(value => value + 1); return; }
+    stateRef.current.phase = 'ready'; stateRef.current.rewards = null; stateRef.current.result = null;
+    setRuntimeError(null); setRunSnapshot(buildRunSnapshot(stateRef.current));
+    setRenderAttempt(value => value + 1); onSessionEnd?.({ reason: 'error' });
+  };
   const runActive = runSnapshot.phase === 'running';
   const runEnded = runSnapshot.phase === 'ended';
 
   return (
     <div className={`glass-panel nexus-play-panel extinction-panel ${runActive || runEnded ? 'extinction-panel-active' : ''} ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={hudTheme} mode="fps" />
+      <ImmersiveDrawer open={Boolean(runtimeError)} onClose={recoverRun} lang={lang} title={lang === 'fr' ? 'Affichage Extinction interrompu' : 'Extinction display interrupted'}>
+        <p>{lang === 'fr' ? 'La simulation est arrêtée. Cet incident n’attribue aucune récompense supplémentaire. Retourne à la préparation pour relancer une run.' : 'The simulation has stopped. This incident grants no additional rewards. Return to preparation to start a new run.'}</p>
+        <button type="button" className="btn-retro" onClick={recoverRun}>{lang === 'fr' ? 'RETOUR À LA PRÉPARATION' : 'BACK TO PREPARATION'}</button>
+        <details><summary>{lang === 'fr' ? 'Diagnostic technique' : 'Technical details'}</summary><pre>{runtimeError}</pre></details>
+      </ImmersiveDrawer>
+      <ImmersiveDrawer open={intelOpen} onClose={() => setIntelOpen(false)} lang={lang} title={lang === 'fr' ? 'Directive et commandes' : 'Directive and controls'}>
+        <p>{objectives[runMode]}</p>
+        <p>{runSnapshot.statusText}</p>
+        <p>{lang === 'fr' ? 'ZQSD/WASD : déplacement. Flèches gauche/droite : tourner. Glisser sur la vue : viser. Toucher la vue ou Espace : tirer. R : recharger. E : récupérer un objet. Maj : capacité de rôle.' : 'WASD: movement. Left/right arrows: turn. Drag the view: aim. Tap the view or Space: fire. R: reload. E: collect an item. Shift: role ability.'}</p>
+        <p>{lang === 'fr' ? 'Format paysage conseillé. Les boutons de déplacement fonctionnent aussi avec Espace ou Entrée maintenus.' : 'Landscape recommended. Movement buttons also work by holding Space or Enter.'}</p>
+        <p>{lang === 'fr' ? 'La simulation est suspendue pendant la consultation. Fermer ce terminal ne relance aucune commande maintenue.' : 'Simulation is paused while you read. Closing this terminal does not resume held commands.'}</p>
+      </ImmersiveDrawer>
       <div className="nexus-play-copy">
         <div className="extinction-setup-copy">
           <div className="portal-focus-kicker">{lang === 'fr' ? 'ZONE D EXTINCTION / FPS ROYALE' : 'EXTINCTION ZONE / FPS ROYALE'}</div>
@@ -4534,32 +4649,32 @@ function ExtinctionRoyale({
 
         {runSnapshot.objectiveText && (
           <div className="extinction-objective-strip">
-            <strong>{lang === 'fr' ? 'OBJECTIF ACTIF' : 'ACTIVE OBJECTIVE'}</strong>
+            <button type="button" className="extinction-intel-button" onClick={() => setIntelOpen(true)} aria-haspopup="dialog" disabled={sessionPaused || runEnded}>{lang === 'fr' ? 'DIRECTIVE · COMMANDES' : 'DIRECTIVE · CONTROLS'}</button>
             <span>{runSnapshot.objectiveText}</span>
             {runSnapshot.statusText && <small>{runSnapshot.statusText}</small>}
           </div>
         )}
         {runSnapshot.rewards && (
-          <div className="nexus-play-intel extinction-result" role="region" aria-label={lang === 'fr' ? 'Bilan de la run' : 'Run results'}>
+          <div ref={resultRef} className="nexus-play-intel extinction-result" role="dialog" aria-modal="true" tabIndex={-1} aria-label={lang === 'fr' ? 'Bilan de la run' : 'Run results'}>
             <strong>{runSnapshot.rewards.title}</strong>
             <span>+{runSnapshot.rewards.gold} {lang === 'fr' ? 'Or' : 'Gold'} / +{runSnapshot.rewards.shards} {lang === 'fr' ? 'Fragments' : 'Shards'} / +{runSnapshot.rewards.modeXp} XP {lang === 'fr' ? 'Extinction' : 'Extinction'}</span>
             <small>{lang === 'fr' ? 'Récompenses transférées. Ce bilan reste ouvert jusqu’à ta validation.' : 'Rewards transferred. Results stay open until you continue.'}</small>
-            <button type="button" className="btn-retro" autoFocus onClick={() => { stateRef.current.phase = 'ready'; stateRef.current.rewards = null; stateRef.current.result = null; setRunSnapshot(buildRunSnapshot(stateRef.current)); onSessionEnd?.({ reason: 'acknowledged' }); }}>{lang === 'fr' ? 'CONTINUER' : 'CONTINUE'}</button>
+            <button ref={continueRef} type="button" className="btn-retro" onClick={acknowledgeRun}>{lang === 'fr' ? 'CONTINUER' : 'CONTINUE'}</button>
           </div>
         )}
 
         <div className="extinction-hud-dock" inert={runEnded}>
-          <div className="nexus-play-stats" role="status" aria-live="polite" aria-atomic="true">
+          <div className="nexus-play-stats" role="group" aria-label={lang === 'fr' ? 'État du combattant' : 'Fighter status'}>
             <span>{runActive ? (lang === 'fr' ? 'RUN ACTIVE' : 'RUN ACTIVE') : (lang === 'fr' ? 'PRET' : 'READY')}</span>
             <span className="extinction-health" data-critical={runSnapshot.hp <= runSnapshot.maxHp * 0.25}>
               {lang === 'fr' ? 'PV' : 'HP'} {Math.round(runSnapshot.hp)} / {Math.round(runSnapshot.maxHp)}
               <progress value={runSnapshot.hp} max={runSnapshot.maxHp} aria-label={lang === 'fr' ? 'Points de vie' : 'Health'} />
             </span>
             <span>ARM {Math.round(runSnapshot.armor || 0)}</span>
-            <span>AMMO {runSnapshot.ammo}+{runSnapshot.reserveAmmo}</span>
-            <span>WAVE {runSnapshot.wave}</span>
-            <span>KILLS {runSnapshot.kills}</span>
-            {runMode === 'extraction' && <span>BEACONS {runSnapshot.beacons}/{EXTINCTION_BEACON_TARGET}</span>}
+            <span>{lang === 'fr' ? 'MUN' : 'AMMO'} {runSnapshot.ammo}+{runSnapshot.reserveAmmo}</span>
+            <span>{lang === 'fr' ? 'VAGUE' : 'WAVE'} {runSnapshot.wave}</span>
+            <span>K.O. {runSnapshot.kills}</span>
+            {runMode === 'extraction' && <span>{lang === 'fr' ? 'BALISES' : 'BEACONS'} {runSnapshot.beacons}/{EXTINCTION_BEACON_TARGET}</span>}
           </div>
           <div className="nexus-play-actions">
             {!runActive && !runEnded && (
@@ -4573,22 +4688,17 @@ function ExtinctionRoyale({
                 <button className="btn-retro" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
                 <button className="btn-retro" onClick={activateRoleSkill} disabled={runSnapshot.skillCooldown > 0} title={lang === 'fr' ? 'Active la capacité spéciale liée au rôle du héros.' : 'Activate the selected hero role ability.'}>{runSnapshot.skillCooldown > 0 ? `ROLE ${Math.ceil(runSnapshot.skillCooldown / 60)}s` : 'ROLE'}</button>
                 <button className="btn-retro" onClick={collectLoot} disabled={!runSnapshot.nearbyLoot} title={runSnapshot.nearbyLoot || (lang === 'fr' ? 'Approche-toi d un objet ou d une balise.' : 'Move near an item or beacon.')}>{runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}</button>
-                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'} onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerCancel={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
-                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'} onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerCancel={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
-                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à gauche.' : 'Hold to strafe left.'} onPointerDown={() => setMoveKey('strafeLeft', true)} onPointerUp={() => setMoveKey('strafeLeft', false)} onPointerCancel={() => setMoveKey('strafeLeft', false)} onPointerLeave={() => setMoveKey('strafeLeft', false)}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</button>
-                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à droite.' : 'Hold to strafe right.'} onPointerDown={() => setMoveKey('strafeRight', true)} onPointerUp={() => setMoveKey('strafeRight', false)} onPointerCancel={() => setMoveKey('strafeRight', false)} onPointerLeave={() => setMoveKey('strafeRight', false)}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</button>
-                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la gauche.' : 'Hold to turn the camera left.'} onPointerDown={() => setMoveKey('turnLeft', true)} onPointerUp={() => setMoveKey('turnLeft', false)} onPointerCancel={() => setMoveKey('turnLeft', false)} onPointerLeave={() => setMoveKey('turnLeft', false)}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</button>
-                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la droite.' : 'Hold to turn the camera right.'} onPointerDown={() => setMoveKey('turnRight', true)} onPointerUp={() => setMoveKey('turnRight', false)} onPointerCancel={() => setMoveKey('turnRight', false)} onPointerLeave={() => setMoveKey('turnRight', false)}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</button>
+                <SceneHoldButton className="btn-retro" action="forward" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro" action="back" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'}>{lang === 'fr' ? 'RECUL' : 'BACK'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro" action="strafeLeft" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à gauche.' : 'Hold to strafe left.'}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro" action="strafeRight" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à droite.' : 'Hold to strafe right.'}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro" action="turnLeft" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la gauche.' : 'Hold to turn the camera left.'}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro" action="turnRight" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la droite.' : 'Hold to turn the camera right.'}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</SceneHoldButton>
               </>
             )}
           </div>
         </div>
       </div>
-      {runActive && (
-        <div className="fps-orientation-note">
-          {lang === 'fr' ? 'Format paysage conseillé · glisse pour viser · touche pour tirer' : 'Landscape recommended · drag to aim · tap to fire'}
-        </div>
-      )}
       <canvas
         ref={canvasRef}
         width="840"
@@ -4601,6 +4711,7 @@ function ExtinctionRoyale({
         onPointerMove={moveCanvasAim}
         onPointerUp={endCanvasAim}
         onPointerCancel={cancelCanvasAim}
+        onLostPointerCapture={cancelCanvasAim}
         onContextMenu={event => event.preventDefault()}
       />
     </div>
@@ -13316,3 +13427,6 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     </div>
   );
 }
+
+// Named scene exports also support isolated regression tests without real saves.
+export { MosaicCityHub, ExtinctionRoyale };

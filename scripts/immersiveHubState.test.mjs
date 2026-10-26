@@ -1,3 +1,4 @@
+import { createSceneInputs } from '../src/game/sceneInputs.js';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
@@ -136,10 +137,10 @@ test('real scene handlers resume W/E with button focus while reserving native ac
   assert.equal(keysRef.current.space, true, 'canvas Space still drifts');
 
   const extinction = hub.slice(hub.indexOf('  const handleCanvasFire ='));
-  const extinctionKey = new Function('sessionPausedRef', 'stateRef', 'setMoveKey', 'fire', 'reload', 'collectLoot', 'activateRoleSkill', `return (${readHandler(extinction)});`)(pause, { current: { phase: 'running' } }, (...args) => moves.push(args), () => { fires++; }, () => {}, () => { collected++; }, () => {});
+  const extinctionKey = new Function('intelRef', 'sessionPausedRef', 'stateRef', 'setMoveKey', 'fire', 'reload', 'collectLoot', 'activateRoleSkill', `return (${readHandler(extinction)});`)({ current: false }, pause, { current: { phase: 'running' } }, (...args) => moves.push(args), () => { fires++; }, () => {}, () => { collected++; }, () => {});
   extinctionKey(event('w', 'BUTTON'));
   extinctionKey(event('e', 'BUTTON'));
-  assert.deepEqual(moves, [['forward', true]]);
+  assert.deepEqual(moves, [['forward', true, 'keyboard:w']]);
   assert.equal(collected, 1);
   const beforeFpsNative = prevents;
   extinctionKey(event(' ', 'BUTTON'));
@@ -155,7 +156,7 @@ test('real scene handlers resume W/E with button focus while reserving native ac
 
   const city = hub.slice(hub.indexOf('function MosaicCityHub('), hub.indexOf('function ExtinctionRoyale('));
   const cityState = { current: { keys: {}, destination: {}, pendingInteraction: {} } };
-  const cityKey = new Function('sessionPausedRef', 'cityMenuRef', 'stateRef', 'interactWithNearby', `return (${readHandler(city)});`)(pause, { current: false }, cityState, () => { cityInteractions++; });
+  const cityKey = new Function('sceneInputsRef', 'sessionPausedRef', 'cityMenuRef', 'stateRef', 'interactWithNearby', `return (${readHandler(city)});`)({ current: createSceneInputs(['w','e','arrowup']) }, pause, { current: false }, cityState, () => { cityInteractions++; });
   cityKey(event('w', 'BUTTON'));
   cityKey(event('e', 'BUTTON'));
   assert.equal(cityState.current.keys.w, true);

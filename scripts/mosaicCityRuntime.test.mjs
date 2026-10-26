@@ -321,7 +321,10 @@ test('city controls retain proximity validation, focus loss cleanup and cancella
   assert.match(city, /sessionPausedRef\.current \|\| cityMenuRef\.current \|\| document\.hidden/);
   assert.match(city, /onClockVisibilityChange = \(\) => \{ lastFrame = null;/);
   assert.match(city, /addEventListener\('blur', clearInput\)/);
-  assert.match(city, /onLostPointerCapture=/);
+  assert.match(city, /<SceneHoldButton/);
+  const holdButton = readFileSync(new URL('../src/components/SceneHoldButton.jsx', import.meta.url), 'utf8');
+  assert.match(holdButton, /onLostPointerCapture=/);
+  assert.match(holdButton, /onPointerCancel=/);
   assert.match(city, /aria-describedby="mosaic-city-controls-help"/);
   assert.match(city, /interactWithNearby\(\{ type: 'zone', id: nearZoneData\.id \}\)/);
   const pointerHandler = city.slice(city.indexOf('const moveToPointer'), city.indexOf('const setVirtualKey'));
