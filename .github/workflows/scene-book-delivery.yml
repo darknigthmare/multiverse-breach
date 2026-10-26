@@ -1,0 +1,82 @@
+name: City and Extinction exact workbook delivery
+on:
+  push:
+    branches: [codex/immersive-ui-audit-2026-10-25]
+    paths: ['docs/ui-immersion/scene-book.part*', '.github/workflows/scene-book-delivery.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.repository == 'darknigthmare/multiverse-breach' && github.ref == 'refs/heads/codex/immersive-ui-audit-2026-10-25'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/ui-immersion/
+            /docs/excel/Multiverse_Breach_UI_Immersion.xlsx
+            /scripts/ui-immersion/verify-workbook.py
+      - name: Reassemble exact exported workbook; never edit spreadsheet cells
+        run: |
+          python3 - <<'PY'
+          import base64,gzip,hashlib,io,json,zipfile
+          from pathlib import Path
+          out=Path('/tmp/scene-book-evidence');out.mkdir(parents=True)
+          parts=sorted(Path('docs/ui-immersion').glob('scene-book.part*'));assert len(parts)==20
+          encoded=''.join(p.read_text().strip() for p in parts).replace('vXPfXDdX9Eo7V1','vXPfCdX9Eo7V1')
+          assert hashlib.sha256(encoded.encode()).hexdigest()=='d9c0d36ee90a19ad6c3963e3733bc9245e353080e9dc7f25c7f139ec4d7d6fc2'
+          m=json.loads(gzip.decompress(base64.b64decode(encoded)))
+          target=Path('docs/excel/Multiverse_Breach_UI_Immersion.xlsx')
+          assert hashlib.sha256(target.read_bytes()).hexdigest()==m['baseSha256']=='deed4379d2e6703e49784f4a3d65921dd1b0fce9d66d89642c232235c19e61c2'
+          source=zipfile.ZipFile(target);buff=io.BytesIO()
+          with zipfile.ZipFile(buff,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+              for entry in m['entries']:
+                  name=entry['name'];assert not name.startswith('/') and '..' not in name.split('/')
+                  old=source.read(name) if name in source.namelist() else b''
+                  raw=b''.join(old[x[0]:x[1]] if isinstance(x,list) else base64.b64decode(x) for x in entry['ops'])
+                  assert hashlib.sha256(raw).hexdigest()==entry['sha256']
+                  info=zipfile.ZipInfo(name,date_time=(2026,10,26,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o600<<16
+                  z.writestr(info,raw,compresslevel=9)
+          source.close();raw=buff.getvalue()
+          assert hashlib.sha256(raw).hexdigest()==m['targetSha256']=='3af08cf4d012a4dd4591bf56a270112b4b56569f7f1873421f2b20146e185bdf'
+          target.write_bytes(raw);files=[{'path':str(target),'sha256':m['targetSha256']}]
+          assert {f['path'] for f in m['extraFiles']}=={'docs/ui-immersion/README.md','docs/ui-immersion/city-extinction-continuation-2026-10-26.json'}
+          for f in m['extraFiles']:
+              p=Path(f['path']);assert not p.is_symlink();raw=f['content'].encode()
+              assert hashlib.sha256(raw).hexdigest()==f['sha256'];p.write_bytes(raw)
+              if p.suffix=='.json':json.loads(raw)
+              files.append({'path':str(p),'sha256':f['sha256']})
+          (out/'manifest.json').write_text(json.dumps(files,indent=2))
+          PY
+      - name: Read-only structure and formula validation
+        run: |
+          set -euo pipefail
+          python3 scripts/ui-immersion/verify-workbook.py docs/excel/Multiverse_Breach_UI_Immersion.xlsx | tee /tmp/scene-book-evidence/workbook-validation.json
+      - name: Store verified blobs without moving a reference
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64,hashlib,json,os,urllib.request
+          from pathlib import Path
+          files=json.loads(Path('/tmp/scene-book-evidence/manifest.json').read_text());blobs=[]
+          for f in files:
+              raw=Path(f['path']).read_bytes();assert hashlib.sha256(raw).hexdigest()==f['sha256']
+              req=urllib.request.Request('https://api.github.com/repos/darknigthmare/multiverse-breach/git/blobs',data=json.dumps({'encoding':'base64','content':base64.b64encode(raw).decode()}).encode(),method='POST',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'scene-book-review','X-GitHub-Api-Version':'2022-11-28'})
+              with urllib.request.urlopen(req,timeout=30) as r:result=json.load(r)
+              assert result['sha']==hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+              blobs.append({'path':f['path'],'mode':'100644','type':'blob','sha':result['sha']})
+          Path('/tmp/scene-book-evidence/verified-blobs.json').write_text(json.dumps(blobs,indent=2))
+          print('Exact exported workbook and documentation verified. No commit, ref update or deployment.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: scene-book-${{ github.sha }}
+          path: /tmp/scene-book-evidence/
+          retention-days: 14
