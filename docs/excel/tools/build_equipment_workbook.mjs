@@ -318,13 +318,6 @@ await fs.writeFile(path.join(previewDir, 'summary-inspection.ndjson'), inspectio
 const errors = await wb.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!', options: { useRegex: true, maxResults: 50 }, summary: 'Final formula error scan', maxChars: 4000 });
 await fs.writeFile(path.join(previewDir, 'formula-scan.ndjson'), errors.ndjson);
 console.log('Formula scan: ' + errors.ndjson);
-for (const job of [{ sheetName: 'Synthèse', range: 'A1:D16' }, ...previewJobs]) {
-  const preview = await wb.render({ ...job, scale: 1, format: 'png' });
-  const file = job.sheetName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll(' ', '_') + '.png';
-  await fs.writeFile(path.join(previewDir, file), new Uint8Array(await preview.arrayBuffer()));
-  console.log('Rendered ' + job.sheetName);
-  global.gc?.();
-}
 const validation = {
   sourceCommit, worksheets: sheetNames, actors: data.actors.length, catalogRecords: data.items.length,
   associations: data.associations.length, canonicalRows: canon.rows.length, sources: canon.sources.length,
@@ -346,3 +339,11 @@ await output.save(outputPath);
 validation.bytes = (await fs.stat(outputPath)).size;
 await fs.writeFile(path.join(previewDir, 'workbook-validation.json'), JSON.stringify(validation, null, 2) + '\n');
 console.log(JSON.stringify(validation, null, 2));
+// Export before rendering so image-layout caches do not overlap serialization.
+for (const job of [{ sheetName: 'Synthèse', range: 'A1:D16' }, ...previewJobs]) {
+  const preview = await wb.render({ ...job, scale: 1, format: 'png' });
+  const file = job.sheetName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll(' ', '_') + '.png';
+  await fs.writeFile(path.join(previewDir, file), new Uint8Array(await preview.arrayBuffer()));
+  console.log('Rendered ' + job.sheetName);
+  global.gc?.();
+}
