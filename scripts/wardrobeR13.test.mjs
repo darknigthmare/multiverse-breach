@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R14 } from '../src/game/wardrobeOfficialR14.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -18,13 +19,13 @@ const byKey=new Map(actors.map(a=>[wardrobeActorKey(a),a]));
 const all=getWardrobeUnlockCatalogue(),visible=[...new Set(all.map(e=>e.universe))];
 const keys=new Set(OFFICIAL_COSTUMES_R13.map(e=>e.key));
 const isNew=e=>keys.has(e.id.slice(e.id.lastIndexOf(':')+1));
-const additions=all.filter(isNew),old=all.filter(e=>!isNew(e));
+const additions=all.filter(isNew),old=all.filter(e=>!isNew(e)&&!e.id.split(':').at(-1).startsWith('r14-'));
 const pool=(universe,extra={})=>getWardrobeBoosterPool({banner:{id:`universe:${universe}`,universe},visibleUniverses:visible,...extra});
 test('R13 has 33 source definitions, 186 exact assignments, nine previously uncovered identities',()=>{
  assert.equal(OFFICIAL_COSTUMES_R13.length,33);assert.equal(keys.size,33);assert.equal(additions.length,186);
- assert.equal(new Set(additions.map(e=>e.actorKey)).size,9);assert.equal(ALL_OFFICIAL_WARDROBE.length,176);
- assert.equal(all.filter(e=>e.origin==='OFFICIAL').length,335);assert.equal(all.length,20139);
- assert.equal(new Set(all.filter(e=>e.origin==='OFFICIAL').map(e=>e.actorKey)).size,54);assert.equal(byKey.size,4936);
+ assert.equal(new Set(additions.map(e=>e.actorKey)).size,9);assert.equal(ALL_OFFICIAL_WARDROBE.length,176+OFFICIAL_COSTUMES_R14.length);
+ assert.equal(all.filter(e=>e.origin==='OFFICIAL').length,335+OFFICIAL_COSTUMES_R14.reduce((n,c)=>n+c.actorIds.length,0));assert.equal(all.length,20139+OFFICIAL_COSTUMES_R14.reduce((n,c)=>n+c.actorIds.length,0));
+ assert.equal(new Set(all.filter(e=>e.origin==='OFFICIAL'&&!e.id.split(':').at(-1).startsWith('r14-')).map(e=>e.actorKey)).size,54);assert.equal(byKey.size,4936);
 });
 test('all 19953 previous entitlement IDs retain the exact SHA-256',()=>{
  assert.equal(old.length,19953);assert.equal(createHash('sha256').update(JSON.stringify(old.map(e=>e.id).sort())).digest('hex'),'3b4fdc6ce85e908b3760b6aa0d3e45f62eb53b8c16e161b7f26c8905271d956c');

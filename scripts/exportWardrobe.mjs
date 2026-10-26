@@ -24,7 +24,7 @@ for(const actor of actors){
     incarnation:actor.incarnation||'',visualAnchor:actor.visualAnchor||'',bodyFit:'REVIEW_REQUIRED'});
 }
 const unboundResearch=[...UNBOUND_COSTUME_RESEARCH_R7,...UNBOUND_COSTUME_RESEARCH_R10,...UNBOUND_COSTUME_RESEARCH_R11,...UNBOUND_COSTUME_RESEARCH_R12,...UNBOUND_COSTUME_RESEARCH_R13];
-const summary={sourceBaseCommit,catalogueVersion:'R13',actors:actors.length,heroes:actors.filter(a=>a.kind==='hero').length,
+const summary={sourceBaseCommit,catalogueVersion:'R14',actors:actors.length,heroes:actors.filter(a=>a.kind==='hero').length,
  officialDesigns:ALL_OFFICIAL_WARDROBE.length,officialActorBindings:official.length,actorsWithOfficial:coverage.filter(c=>c.official>0).length,
  actorsAwaitingOfficialResearch:coverage.filter(c=>!c.official).length,originalParametricBriefs:original.filter(c=>c.designMethod==='PARAMETRIC_BRIEF').length,
  characterSpecificBriefs:original.filter(c=>c.designMethod==='CHARACTER_SPECIFIC_BRIEF').length,researchTargets:research.length,
