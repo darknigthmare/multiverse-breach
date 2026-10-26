@@ -69,3 +69,15 @@ bash scripts/ui-immersion/build-workbook.sh --qa-dir /tmp/multiverse-workbook-qa
 ```
 
 Le runtime d’artefacts requis et le format des preuves sont décrits dans [le guide du générateur](../../scripts/ui-immersion/README.md). Aucun outil de génération de classeur n’est ajouté aux dépendances du jeu.
+
+## Suite Cité et Extinction — 26 octobre 2026
+
+La Cité conserve ses habitants lors des réaffichages équivalents, annule le trajet automatique à l’ouverture du terminal et restaure la position après remontage. Les contrôles maintenus ont désormais chacun leur source ; le relâchement d’une touche ou d’un doigt ne libère plus un autre contrôle. La récupération graphique n’efface ni la position ni la progression.
+
+Extinction dispose d’un panneau **Directive · Commandes** suspendant la simulation, d’une visée distinguant le glissement lent du clic, de contrôles capturés et d’un bilan modal avec focus. Les quatre variantes et leur économie existante restent intactes. Une panne de rendu ne donne pas une victoire ; elle permet de revenir à la préparation.
+
+[Reçu complet, images décodées et empreintes](city-extinction-continuation-2026-10-26.json) · [Exécution réussie](https://github.com/darknigthmare/multiverse-breach/actions/runs/40279377677). **64 tests ciblés, 68 tests UI et 10 parcours Chromium réussis**, zéro erreur/avertissement de lint et compilation source réussie. Les suites unitaires se recoupent. Les quatre formats et FR/EN utilisent les médias réellement présents dans le dépôt ; fins et pannes sont injectées, le profil est préparé et le serveur est isolé.
+
+Le classeur garde **5 feuilles, 40 écrans, 39 lots** et comporte désormais **132 entrées de vérification**. Les écrans Cité/Extinction sont marqués **Partiel**, pas intégralement validés. L’aperçu du journal de la Cité reste tronqué à HUD 1,4 (texte complet dans le terminal), des silhouettes ennemies FPS restent génériques et les libellés de catalogue ne sont pas tous localisés. Quartiers/services complets, vrais périphériques, compte cloud, progression naturelle et recette consolidée des 40 écrans restent ouverts.
+
+Le workflow permanent `city-extinction-ui.yml` exige le décodage des fonds avant de valider les parcours. Le reçu précédent prouve les fichiers exacts ; il ne préjuge pas de l’état des vérifications du commit final, consultables dans [Checks](https://github.com/darknigthmare/multiverse-breach/pull/9/checks).
