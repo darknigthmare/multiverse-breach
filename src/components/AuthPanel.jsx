@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { authRecovery, authRecoveryMessage, isValidAuthEmail } from '../game/authRecovery.js';
 import './AuthCallbackScreen.css';
+import ArchiveDrawer from './collection/ArchiveDrawer.jsx';
+import './AuthImmersion.css';
+
+function AuthPanelSurface({ embedded, lang, onClose, children }) {
+  return embedded ? children : <ArchiveDrawer title={lang === 'fr' ? 'Compte et sauvegardes' : 'Account and saves'} lang={lang} onClose={onClose} className="auth-account-drawer">{children}</ArchiveDrawer>;
+}
 
 export default function AuthPanel({
   lang,
@@ -98,6 +104,7 @@ export default function AuthPanel({
             onClick={() => setOpen(prev => !prev)}
             className="btn-retro auth-panel-toggle"
             aria-expanded={panelOpen}
+            aria-haspopup="dialog"
             title={lang === 'fr' ? 'Ouvre le compte, la synchronisation et les outils de sauvegarde.' : 'Open account, synchronization, and save tools.'}
           >
             {t.account}: {account ? t.connected : t.guest}
@@ -116,6 +123,7 @@ export default function AuthPanel({
       )}
 
       {panelOpen && (
+        <AuthPanelSurface embedded={embedded} lang={lang} onClose={() => setOpen(false)}>
         <div className="glass-panel auth-panel-content">
           {account ? (
             <>
@@ -241,6 +249,7 @@ export default function AuthPanel({
 
           {error && <div className="auth-error" role="alert">{error}</div>}
         </div>
+        </AuthPanelSurface>
       )}
     </section>
   );

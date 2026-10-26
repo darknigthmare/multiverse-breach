@@ -1,7 +1,7 @@
 import { getRewardSignatureCodex, synchronizeSignatureText, withSignatureSearchText } from '../game/signatureCodex.js';
-import { trapDialogTab } from '../game/dialogFocus.js';
+import useModalDialog from './collection/useModalDialog.js';
 import SignatureCodexPanel from './SignatureCodexPanel.jsx';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { getRewardCatalogPage } from '../game/portalCatalogView';
 import { getBoosterFreeDrawRates } from '../game/portalBoosterEngine';
@@ -16,8 +16,8 @@ const rateLabel = (rate, lang) => `${((Number(rate) || 0) * 100).toLocaleString(
 export default function PortalBoosterDossier({ banner, candidates, lang, available, selected, duplicateStreak, pityLimit, isCandidateOwned, onSelect, onClose, kindLabels, kindOrder, rarities, Artwork, getRewardDetail }) {
   const dialogRef = useRef(null);
   const closeRef = useRef(null);
-  const onCloseRef = useRef(onClose);
-  onCloseRef.current = onClose;
+  const overlayRef = useRef(null);
+  useModalDialog({ overlayRef, dialogRef, initialFocusRef: closeRef, onClose });
   const [query, setQuery] = useState('');
   const [pageSize, setPageSize] = useState(24);
   const [kind, setKind] = useState('all');
@@ -41,32 +41,11 @@ export default function PortalBoosterDossier({ banner, candidates, lang, availab
   const art = getPortalBoosterPackArt(banner.id) || getPortalBoosterArt(banner.universe);
   const ownedCount = candidates.filter(isCandidateOwned).length;
 
-  useEffect(() => {
-    const previousFocus = document.activeElement;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    closeRef.current?.focus({ preventScroll: true });
-    const handleKeyDown = event => {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        event.stopPropagation();
-        onCloseRef.current?.();
-      }
-      trapDialogTab(event, dialogRef.current);
-    };
-    document.addEventListener('keydown', handleKeyDown, true);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener('keydown', handleKeyDown, true);
-      if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
-    };
-  }, []);
-
   return createPortal(
-    <div className="booster-art-lightbox" style={{ '--portal-color': banner.color }} onMouseDown={event => {
+    <div ref={overlayRef} className="booster-art-lightbox booster-dossier-overlay" style={{ '--portal-color': banner.color }} onMouseDown={event => {
       if (event.target === event.currentTarget) onClose();
     }}>
-      <section ref={dialogRef} tabIndex={-1} className="booster-art-preview-dialog booster-dossier-dialog" role="dialog" aria-modal="true" aria-labelledby="booster-dossier-title" data-booster-dossier={banner.id} style={{ width: 'min(1120px, calc(100vw - 36px))', display: 'flex', flexDirection: 'column' }}>
+      <section ref={dialogRef} tabIndex={-1} className="booster-art-preview-dialog booster-dossier-dialog" role="dialog" aria-modal="true" aria-labelledby="booster-dossier-title" data-booster-dossier={banner.id}>
         <header>
           <div>
             <span>{lang === 'fr' ? 'DOSSIER COMPLET · CONSULTATION SANS ACHAT' : 'COMPLETE DOSSIER · NO PURCHASE ON PREVIEW'}</span>

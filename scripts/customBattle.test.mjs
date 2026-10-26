@@ -191,7 +191,7 @@ test('Mosaic City freezes its loop and only leaves through controlled transition
   );
 
   assert.match(mosaicCitySource, /sessionPausedRef = useRef\(sessionPaused\)/);
-  assert.match(mosaicCitySource, /if \(sessionPausedRef\.current \|\| document\.hidden\) \{\s*lastFrame = null;\s*rafId = window\.requestAnimationFrame\(loop\)/);
+  assert.match(mosaicCitySource, /if \(sessionPausedRef\.current \|\| cityMenuRef\.current \|\| document\.hidden\) \{\s*lastFrame = null;\s*rafId = window\.requestAnimationFrame\(loop\)/);
   assert.match(mosaicCitySource, /if \(sessionPausedRef\.current\) return;\s*const state = stateRef\.current/);
   assert.match(mosaicCitySource, /onSessionEnd\?\.\(\{ reason: 'abandoned' \}\)/);
   assert.match(hubScreenSource, /finishNexusSession\(\{ reason: 'transition' \}\);\s*setActiveTab\('missions'\)/);
@@ -202,7 +202,9 @@ test('dedicated custom runtime freezes input and hides its direct setup exit', (
   assert.match(gameCanvasSource, /sessionPausedRef = useRef\(sessionPaused\)/);
   assert.match(gameCanvasSource, /engineRef\.current\?\.setPaused\?\.\(sessionPaused \|\| document\.hidden\)/);
   assert.match(gameCanvasSource, /if \(sessionPausedRef\.current \|\| document\.hidden\) \{\s*frameId = requestAnimationFrame\(tick\)/);
-  assert.match(gameCanvasSource, /\{!dedicatedSession && \(\s*<button\s*onClick=\{\(\) => onBattleEnd\('quit'\)\}/);
+  assert.match(gameCanvasSource, /\{!dedicatedSession && <button type="button" onClick=\{requestPause\} disabled=\{battleCompleted\}/);
+  assert.match(gameCanvasSource, /completionGateRef\.current\.submit\(result, report, onBattleEnd\)/);
+  assert.match(gameCanvasSource, /open=\{activeDrawer === 'leave' && !battleCompleted\}/);
   assert.match(customBattleModeSource, /sessionPaused=\{sessionPaused\}/);
   assert.match(customBattleModeSource, /dedicatedSession=\{dedicatedSession\}/);
   assert.match(engineRpgSource, /if \(this\.paused \|\| this\.isTargetingPaused\?\.\(\)\) \{[\s\S]*runWhenResumed\(\)/);

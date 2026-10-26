@@ -7,6 +7,7 @@ import traceback
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 from playwright.sync_api import sync_playwright, expect
+from browserCombatUi import open_arsenal, close_arsenal
 
 
 def main():
@@ -37,24 +38,28 @@ def main():
                     page.goto(base + '/scripts/fixtures/tactics-healing.html?' + urlencode({'lang': lang, 'side': side}), wait_until='domcontentloaded')
                     page.wait_for_function('window.__tacticsHealingAudit?.engine && !window.__tacticsHealingAudit.engine.disposed')
                     ability = page.locator('button.btn-special').filter(has_text=re.compile('HEALING WIND', re.I))
-                    panel = page.get_by_role('region', name='Soutien tactique' if lang == 'fr' else 'Tactical support')
+                    panel = page.get_by_role('region', name='Soutien tactique' if lang == 'fr' else 'Tactical support', include_hidden=True)
                     for kind in ('full', 'wall'):
                         step = kind; before = page.evaluate(f"window.__tacticsHealingAudit.prepare('{kind}')")
+                        close_arsenal(page)
                         expect(ability).to_be_enabled(); ability.click()
+                        open_arsenal(page)
                         expect(panel).to_contain_text('Aucune cible admissible' if lang == 'fr' else 'No eligible target')
                         assert panel.get_by_role('button').count() == 0
                         after = page.evaluate('window.__tacticsHealingAudit.snapshot()')
                         assert after['charge'] == 100 and after['turns'] == before['turns'] and after['hp'] == before['hp']
                     step = 'group and pause'; before = page.evaluate("window.__tacticsHealingAudit.prepare('wounded')")
+                    close_arsenal(page)
                     expect(ability).to_be_enabled(); ability.click()
+                    open_arsenal(page)
                     expect(panel).to_contain_text('50'); expect(panel).to_contain_text('5')
-                    target = panel.get_by_role('button').first
+                    target = panel.get_by_role('button', include_hidden=True).first
                     expect(target).to_contain_text('3 ')
                     expect(target).to_contain_text('+220')
                     page.locator('#qa-pause').click(); expect(target).to_be_disabled()
                     paused = page.evaluate('window.__tacticsHealingAudit.snapshot()')
                     assert paused['hp'] == before['hp'] and paused['charge'] == 100
-                    page.locator('#qa-pause').click(); expect(target).to_be_enabled()
+                    page.locator('#qa-pause').click(); open_arsenal(page); expect(target).to_be_enabled()
                     bounds = panel.bounding_box()
                     assert bounds and bounds['x'] >= -1 and bounds['x'] + bounds['width'] <= width + 1
                     page.screenshot(path=str(out / f'{name}-targets.png'), full_page=True)
@@ -63,7 +68,9 @@ def main():
                     healed = page.evaluate('window.__tacticsHealingAudit.snapshot()')
                     assert healed['charge'] == 0 and healed['enemyHP'] == before['enemyHP'] and healed['turns'] == before['turns'] + 1
                     step = 'radiation and dead ally'; before = page.evaluate("window.__tacticsHealingAudit.prepare('radiation')")
+                    close_arsenal(page)
                     expect(ability).to_be_enabled(); ability.click()
+                    open_arsenal(page)
                     target = panel.get_by_role('button').first; expect(target).to_contain_text('+10'); target.click()
                     page.wait_for_function('JSON.stringify(window.__tacticsHealingAudit.snapshot().hp) === "[200,100,0]"')
                     page.screenshot(path=str(out / f'{name}-resolved.png'), full_page=True)

@@ -51,7 +51,15 @@ test('duel and race use shared fixed simulation, freeze hidden tabs and ignore t
     const source = readFileSync(new URL(`../src/components/${name}.jsx`, import.meta.url), 'utf8');
     assert.match(source, /simulationClock\.advance\(now, \{ paused: sessionPausedRef\.current \|\| document\.hidden \}\)/);
     assert.match(source, /engine\.update\(COMBAT_STEP_MS \/ 1000\)/);
-    assert.match(source, /event\.repeat \|\| \['INPUT', 'TEXTAREA', 'SELECT'\]/);
+    const guard = source.match(/if \((event\.repeat[^;\n]+)\) return;/);
+    assert.ok(guard, `${name}: missing keyboard target guard`);
+    const ignores = new Function('event', `return Boolean(${guard[1]});`);
+    for (const tagName of ['INPUT', 'TEXTAREA', 'SELECT']) {
+      assert.equal(ignores({ repeat: false, target: { tagName } }), true, `${name}: typing in ${tagName}`);
+    }
+    assert.equal(ignores({ repeat: true, target: { tagName: 'DIV' } }), true, `${name}: repeated key`);
+    assert.equal(ignores({ repeat: false, target: { tagName: 'DIV', isContentEditable: true } }), true, `${name}: editable content`);
+    assert.equal(ignores({ repeat: false, target: { tagName: 'DIV' } }), false, `${name}: normal gameplay key`);
   }
 });
 

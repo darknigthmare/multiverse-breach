@@ -1,0 +1,79 @@
+name: Reviewed roster access
+on:
+  push:
+    branches: [codex/immersive-ui-audit-2026-10-25]
+    paths: ['docs/ec-access-review/**', '.github/workflows/ec-access-stage.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.repository == 'darknigthmare/multiverse-breach' && github.ref == 'refs/heads/codex/immersive-ui-audit-2026-10-25'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /.github/workflows/
+            /docs/ec-access-review/
+            /docs/extinction-city/
+            /docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/
+            /public/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/
+            /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+      - name: Apply exact reviewed changes
+        run: |
+          git ls-files > TRACKED_FILES.txt
+          python3 docs/ec-access-review/apply.py apply
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Contracts, workbook, lint and source build
+        run: |
+          set -euo pipefail
+          node --test scripts/sceneRosterAccess.test.mjs scripts/extinctionContent.test.mjs scripts/mosaicUniversePlaces.test.mjs scripts/scenePresentation.test.mjs scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs | tee /tmp/ec-access-evidence/unit.log
+          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionCityCatalog.test.mjs | tee /tmp/ec-access-evidence/catalog-tests.log
+          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/catalog.mjs 80a54ea5bf203b7991c213775bd3c7ec4d8b3fba /tmp/ec-access-evidence/catalog.json
+          python3 scripts/extinction-city/verify_workbook.py /tmp/ec-access-evidence/catalog.json docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx | tee /tmp/ec-access-evidence/workbook.json
+          npm run test:ui-immersion | tee /tmp/ec-access-evidence/ui.log
+          npx oxlint --max-warnings 0 src/components/HubScreen.jsx src/game/sceneRosterAccess.js scripts/sceneRosterAccess.test.mjs scripts/fixtures/cityExtinctionHarness.jsx | tee /tmp/ec-access-evidence/lint.log
+          npx vite build | tee /tmp/ec-access-evidence/source-build.log
+      - name: Real Chromium roster and existing scene regressions
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/ec-playwright
+          /tmp/ec-playwright/bin/pip install playwright==1.57.0
+          /tmp/ec-playwright/bin/python -m playwright install --with-deps chromium
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort >/tmp/ec-access-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          /tmp/ec-playwright/bin/python scripts/browserSceneRosterAccess.py --evidence /tmp/ec-access-evidence/roster | tee /tmp/ec-access-evidence/roster.log
+          /tmp/ec-playwright/bin/python scripts/browserExtinctionCatalog.py --require-art --evidence /tmp/ec-access-evidence/identity | tee /tmp/ec-access-evidence/identity.log
+          /tmp/ec-playwright/bin/python scripts/browserCityExtinction.py --require-art --evidence /tmp/ec-access-evidence/lifecycle | tee /tmp/ec-access-evidence/lifecycle.log
+          /tmp/ec-playwright/bin/python scripts/browserSceneServices.py --require-art --evidence /tmp/ec-access-evidence/services | tee /tmp/ec-access-evidence/services.log
+      - name: Store verified Git objects without updating branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 docs/ec-access-review/apply.py blobs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: ec-access-${{ github.sha }}
+          path: /tmp/ec-access-evidence/
+          retention-days: 14

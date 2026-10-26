@@ -5,6 +5,7 @@ import { createRoot } from 'react-dom/client';
 import GameCanvas from '../../src/components/GameCanvas.jsx';
 import { EngineTactics } from '../../src/game/engineTactics.js';
 import '../../src/index.css';
+import './combatHarness.css';
 
 const audit = { engine: null, results: [], updates: 0 };
 window.__tacticsAudit = audit;
@@ -55,7 +56,7 @@ export function Harness() {
   const [mounted, setMounted] = useState(true);
   const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'fr';
   return <>
-    <header style={{ padding: 12 }}>
+    <header className="combat-qa-toolbar" style={{ padding: 12 }}>
       <span>QA: synthetic Tactics setup, production controls and renderer. </span>
       <button id="qa-pause" type="button" onClick={() => setPaused(value => !value)}>QA pause</button>
       <button id="qa-unmount" type="button" onClick={() => setMounted(false)}>QA unmount</button>

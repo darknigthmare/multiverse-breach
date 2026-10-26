@@ -1,0 +1,191 @@
+{
+  "metadata": {
+    "project": "Multiverse Breach",
+    "date": "2026-10-25",
+    "baseline": "b8b2c326da45ce11ed8bd8868fca0bf266dfd31a",
+    "branch": "codex/immersive-ui-audit-2026-10-25",
+    "repository": "https://github.com/darknigthmare/multiverse-breach",
+    "prUrl": "",
+    "previewUrl": ""
+  },
+  "destinations": {
+    "01": "Écran titre : menu principal, présentation et dialogues existants conservés.",
+    "02": "Création de trace : identité locale au premier plan ; connexion dans la section Compte facultatif.",
+    "03": "Présentation narrative et crédits : mise en scène existante conservée ; fermeture et focus harmonisés.",
+    "04": "Options du titre et menus de pause : affichage partagé ; audio, langue et événement conservés.",
+    "05": "Menu Système > Compte et sauvegardes ; confirmations intégrées aux dialogues du jeu.",
+    "06": "Navigation du hub, ressources persistantes et console Directive & cycle ; menu Système pour les contrôles globaux.",
+    "07": "Espace principal du hub ; navigation et filtres contextuels conservés.",
+    "08": "Espace principal du hub ; sélection des arcs et progression conservées.",
+    "09": "Espace principal du hub ; informations de progression regroupées dans Directive & cycle > Registre.",
+    "10": "Espace principal du hub ; catégories et sous-vues de mission conservées.",
+    "11": "Briefing de mission : objectifs prioritaires, détails ouvrables et retour vers la destination d’origine.",
+    "12": "Scène de la Cité : mini-carte, objectif et interactions contextuelles ; terminal pour les dossiers et destinations.",
+    "13": "Cité : un panneau de guide actif ; gestion du guide dans le terminal, qui suspend l’exploration.",
+    "14": "Préparation Extinction : variantes et signature au premier plan ; carrière conservée.",
+    "15": "Scène Extinction : HUD aux bords, commandes et simulation conservées.",
+    "16": "Bilan Extinction dans la scène dédiée ; reçu unique, compteurs réels et carrière XP.",
+    "17": "Préparation course : Mirelle, châssis et circuits ; garage, carrière et commandes dans le terminal.",
+    "18": "Scène de course plein viewport ; terminal accessible en course avec suspension effective.",
+    "19": "Bilan de course maintenu jusqu’à Rejouer ou Changer de circuit ; commandes derrière le bilan inactives.",
+    "20": "Préparation Custom : quatre étapes revisitées librement — Mode, Équipes, Arène, Règles.",
+    "21": "Scène RPG : escouade et commandes contextuelles ; ciblage superposé ; Arsenal en direct et dossiers suspendus.",
+    "22": "Scène Tactics : commandes de tour et unité active en bord de terrain ; briefing et soutien dans les tiroirs dédiés.",
+    "23": "Scène mêlée : état/garde/charge dans le HUD, tactile sur le terrain, remappage dans Commandes en pause.",
+    "24": "Fighter : préparation versus, scène au ratio d’origine, tags compacts ; supers/assists en direct et commandes en pause.",
+    "25": "Pause campagne et sessions dédiées : reprise, sortie, affichage et commandes ; dialogues imbriqués isolés.",
+    "26": "Bilan de combat dans la scène dédiée ; validation unique du verdict et de la récompense avant retour.",
+    "27": "Bilan de campagne : résumé prioritaire et détails ouvrables ; quatre fins conservées.",
+    "28": "Fiche héros : aperçu, statistiques et progression visibles ; doctrine, dossier et apparences ouvrables ; talents au clavier.",
+    "29": "Équipe et réserves dans l’espace principal du hub ; filtres, pagination et propositions conservés.",
+    "30": "Profil et progression dans l’espace principal ; registres de cycle et collection dans Directive & cycle.",
+    "31": "Inventaire : actions et comparaison des bonus de relique ; lore ouvrable.",
+    "32": "Boutique dans l’espace principal du hub ; prix, compatibilités, achats et filtres conservés.",
+    "33": "Dossier d’univers plein viewport ; lecteur de lore à largeur de texte maîtrisée et défilement interne.",
+    "34": "Codex dans l’espace principal du hub ; texte canon dans des sections ouvrables.",
+    "35": "Galerie : image principale, bande de miniatures et filtres repliables ; zoom, comparaison et dossier dans la visionneuse.",
+    "36": "Portail : scène du booster choisi ; catalogue via Choisir un booster ; dossier complet sans achat.",
+    "37": "Scène d’ouverture : cinq cartes, retournement individuel, Tout révéler et Booster suivant.",
+    "38": "Album : Bibliothèque, Classeur et Historique ; détails de carte pour provenance, statut et planche source.",
+    "39": "Portal Lab dans Menu > Outils avancés ; Régulation conserve sa destination dans le hub.",
+    "40": "Chargement et erreurs dans la scène ; informations techniques consultables dans Détails du signal."
+  },
+  "actionTranslations": {
+    "COMBAT-01": {
+      "changes": [
+        "RPG, Tactics, mêlée et épreuves hors combat utilisent une scène fixe couvrant le viewport. Le cadre centré et le tableau de commandes sous le canevas sont remplacés par une scène et des couches contextuelles.",
+        "Le décor d’univers existant couvre la scène ; l’arène logique 1040 × 460 conserve ses proportions. La barre des sessions dédiées réserve 56 px pour protéger le HUD du moteur.",
+        "Sélection, glissement tactique et ancrage du zoom utilisent la même transformation que le canevas affiché. Les bandes de décor ne déclenchent pas de commande.",
+        "Le HUD respecte les marges de sécurité et les préférences partagées. Les formats étroits ou bas peuvent replier les détails en gardant les commandes accessibles."
+      ],
+      "validation": [
+        "scripts/combatViewport.test.mjs : 10/10 réussis ; géométrie desktop, portrait, paysage, ultralarge, décalage, rejet des bandes de décor et contrat de résultat.",
+        "Les cinq composants de combat sont analysés par transformWithOxc de Vite."
+      ],
+      "limitations": [
+        "Aucune capture locale de la branche revendiquée. Contrôle visuel et tactile à effectuer sur la preview.",
+        "La géométrie logique de jeu reste inchangée : les ratios très larges ou hauts reçoivent un fond de décor, sans étirer ni couper le combat."
+      ]
+    },
+    "COMBAT-02": {
+      "changes": [
+        "PV et ATB restent dans une bande d’escouade compacte ; les actions principales sont contextuelles en bord de terrain.",
+        "Le ciblage existant devient une couche bornée avec confirmation, annulation, estimations, sources et attente. En portrait, il remplace temporairement le dock d’actions.",
+        "Un contrôle Auto et la vitesse restent dans le HUD ; seul le doublon visuel Auto est retiré.",
+        "Reliques, événements équipés, soutien, invocations, supers terrain, assists, ennemi P2, RAAM, Pirates Curse, munitions Black Pearl et autres panneaux restent disponibles dans l’Arsenal en direct."
+      ],
+      "validation": [
+        "scripts/rpgTargetingPresentation.test.mjs : 2/2 réussis.",
+        "scripts/customBattle.test.mjs : 42/42 réussis, avec les routes réelles RPG/tactiques et les ordonnanceurs suspendus.",
+        "scripts/fixedStepClock.test.mjs : 10/10 réussis ; remise à zéro de l’horloge d’attente du ciblage RPG conservée."
+      ],
+      "limitations": [
+        "L’Arsenal est explicitement indiqué en direct et ne suspend pas le combat. Briefing, commandes et affichage suspendent la simulation."
+      ]
+    },
+    "COMBAT-03": {
+      "changes": [
+        "Commandes tactiques, annulation de ciblage et Fin du tour protégée restent accessibles sans défilement de page.",
+        "L’unité active et ses PA de déplacement apparaissent près des actions ; chronologie, coûts, portées, couvertures et marqueurs de mission du canevas sont conservés.",
+        "Les consignes d’escorte et les panneaux TacticsSupportPanel, RexEncounterPanel et SourceScenePanel restent disponibles dans le briefing ou le tiroir en direct approprié.",
+        "La distinction clic/glissement et la capture du pointeur sont conservées ; les coordonnées tiennent compte de l’affichage proportionnel."
+      ],
+      "validation": [
+        "Cas de géométrie tactique de scripts/combatViewport.test.mjs réussis.",
+        "Régressions des actions protégées et de la pause dans scripts/customBattle.test.mjs réussies.",
+        "Transitions pause/visibilité de l’horloge GameCanvas réussies."
+      ],
+      "limitations": [
+        "Aucune règle tactique, durée, réserve de mouvement, aptitude source, portée ni valeur de dégâts modifiée."
+      ]
+    },
+    "COMBAT-04": {
+      "changes": [
+        "MeleeControlsPanel sépare les jauges HUD, le tactile et les réglages, avec présentation complète antérieure conservée pour compatibilité.",
+        "Garde, charge et état restent dans le HUD ; remappage clavier et réinitialisation passent dans Commandes, en pause.",
+        "Déplacement tactile à gauche et attaques à droite ; capture, relâchement, annulation et perte de focus libèrent correctement les touches maintenues.",
+        "Le tactile est proposé automatiquement aux pointeurs grossiers et aux petits écrans ; il peut être activé explicitement dans Commandes.",
+        "Le doublon DOM de l’annonce avant-match est retiré ; l’annonce du moteur, l’annonce accessible et le raccourci propre à l’entraînement restent présents.",
+        "Clavier, fusion manette, P2 local, supers, signatures, assists et panneaux de rencontre sont conservés."
+      ],
+      "validation": [
+        "scripts/meleeInputMap.test.mjs : 7/7 réussis, avec fusion des entrées et déclenchement unique des actions.",
+        "scripts/customBattle.test.mjs : 42/42 réussis, dont avant-match et verdict des objectifs.",
+        "Les tests de pause et visibilité vérifient la libération des entrées et l’horloge sans remplacer le moteur."
+      ],
+      "limitations": [
+        "Manette physique et multitouch restent à vérifier sur appareil. Le suivi ne prétend pas que ces contrôles ou la pause étaient absents de la version auditée."
+      ]
+    },
+    "COMBAT-05": {
+      "changes": [
+        "Préparation Fighter en composition versus avec le décor réel choisi et les portraits existants ; arène, musique, super terrain, adversaire, difficulté et lancement conservés.",
+        "Duel couvrant le viewport au ratio logique 960 × 540 ; PV et chronomètre du moteur inchangés ; tags de banc compacts en surimpression.",
+        "Supers terrain et assists dans un tiroir en direct ; commandes et affichage dans un tiroir suspendu ; barre d’arène accessible.",
+        "Les deux joueurs gardent clavier et tactile. L’activation tactile est explicite et les appuis sont libérés à la perte de capture ou de focus."
+      ],
+      "validation": [
+        "scripts/reauditFighterTagRoutes.test.mjs : 16/16 réussis sur les callbacks réels et le moteur Fighter ; deux côtés, trois emplacements, pause, onglet caché et hit-stop.",
+        "Tests de remise à zéro d’horloge Fighter après pause et changement de visibilité réussis.",
+        "Compilation JSX Fighter réussie."
+      ],
+      "limitations": [
+        "Moteur, hitboxes, règles d’action et équilibre inchangés. Certification visuelle en attente de la preview commune."
+      ]
+    },
+    "COMBAT-06": {
+      "changes": [
+        "GameCanvas et Fighter exposent onPauseRequest et composent pause externe et pause des dossiers ; le moteur reste monté et l’horloge est réinitialisée aux transitions.",
+        "Les dialogues natifs isolent le focus pour les tiroirs suspendus et les bilans plein écran. Échap ne peut pas ouvrir une pause au-dessus d’un résultat.",
+        "GameCanvas distingue verdict et acquittement : onSessionComplete annonce le verdict ; onBattleEnd est envoyé une seule fois après validation. Un repli tardif ne remplace pas une victoire ou une défaite.",
+        "Fighter conserve onMatchComplete au verdict unique ; onSessionEnd attend Revanche ou Retour, pour garder l’enveloppe dédiée pendant le bilan.",
+        "Le bilan conserve objectifs, récompenses, distinction Custom, pose, score, rang, durée, revanche et retour."
+      ],
+      "validation": [
+        "Les tests de garde du résultat rejettent un verdict prématuré, un résultat invalide, le repli tardif, la double validation et la finalisation après abandon.",
+        "scripts/customBattle.test.mjs : 42/42 réussis ; entrée de pause et garde partagée vérifiées.",
+        "scripts/fixedStepClock.test.mjs : 10/10 réussis."
+      ],
+      "limitations": [
+        "App reste responsable de l’attribution des récompenses de campagne ; sa garde indépendante est suivie dans le lot APP-05.",
+        "Custom conserve l’enveloppe jusqu’à onBattleEnd ; intégration prise en charge dans le lot Hub."
+      ]
+    },
+    "COMBAT-07": {
+      "changes": [
+        "Le chargement décrit la synchronisation des signatures de combat ; la mention technique de construction OpenAI est retirée du message joueur.",
+        "Une menace indisponible invite à changer de mission ; les erreurs proposent une reprise et conservent les détails techniques dans une section ouvrable.",
+        "La mention de production P4 disparaît du titre des commandes mêlée ; l’état sans acteur est traduit.",
+        "Les tiroirs ont une taille de texte lisible, un focus visible et des cibles tactiles ; contraste et réduction des effets décoratifs suivent les préférences partagées."
+      ],
+      "validation": [
+        "Analyse JSX de GameCanvas, FighterMode, MeleeControlsPanel, CombatDrawer et CombatResultDialog réussie.",
+        "87 vérifications ciblées réussies : géométrie/résultat, horloge fixe, ciblage, tags Fighter, commandes mêlée et combat Custom."
+      ],
+      "limitations": [
+        "La réduction de mouvement agit sur l’ornement de l’interface ; les animations et durées du jeu restent inchangées."
+      ]
+    },
+    "COMBAT-08": {
+      "changes": [
+        "Les recettes navigateur ouvrent le vrai bouton Arsenal avant les invocations, signatures de mêlée, reliques et soutiens tactiques. Elles referment le tiroir avant les actions du HUD et le rouvrent après une pause externe.",
+        "Les recettes de récupération de compte passent par le vrai menu Système. La première CI avait réussi 8 cas sur 11 ; ses trois échecs attendaient le compte sans ouvrir ce menu.",
+        "Les dix scènes isolées gardent leurs commandes QA de pause et démontage dans une barre de 60 px. Cette feuille de style n’est pas importée en production.",
+        "La recette de danger tactique transforme les coordonnées intrinsèques selon le ratio affiché avant un vrai clic ; les assertions de case mortelle et de résolution du tour restent présentes.",
+        "La capture synthétique initiale de mêlée à 390 px a montré le débordement de PROVOCATION. Le libellé revient désormais à la ligne ; une assertion de géométrie vérifie les limites du bouton et du texte en portrait. Aucune action, étiquette ni fonction de caméra supprimée."
+      ],
+      "validation": [
+        "Comparaison AST des assertions Python, attentes Playwright et attentes de simulation avec e2c03dd : les 195 obligations des neuf recettes existantes sont conservées. Une assertion de limites tactiles en portrait a été ajoutée.",
+        "Python py_compile réussi pour les helpers et recettes de signature, RPG, Tactics et authentification.",
+        "Les dix fixtures JSX ont été transformées par Vite transformWithOxc ; Oxlint et git diff --check réussis.",
+        "Aucun nouveau clic forcé ni déclenchement JavaScript ajouté. Les régressions de double clic existantes restent inchangées ; la navigation ajoutée utilise les clics réguliers des locators Playwright.",
+        "Captures CI synthétiques initiales examinées en desktop et portrait : le ratio conserve les acteurs visibles, avec des marges de décor sur écran haut."
+      ],
+      "limitations": [
+        "Aucune installation ni exécution locale du navigateur. Les recettes corrigées et la nouvelle vérification de libellé attendent la prochaine CI distante.",
+        "Le portrait conserve toute l’arène horizontale et la réduit donc à l’écran. Le paysage est préférable pour les combats d’action ; caméra et géométrie du jeu restent inchangées.",
+        "Les états initiaux sont synthétiques, avec les vrais composants et moteurs ; ils ne certifient ni un appareil physique ni un compte réel."
+      ]
+    }
+  }
+}

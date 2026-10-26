@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { EngineRace, KART_GARAGE_UPGRADES, RACE_ASSETS, RACE_TRACKS } from '../game/engineRace';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
+import { createRaceRunGuard, createRaceTouchState } from '../game/raceSessionControls.js';
 import { applyRaceResult, normalizeKartCareer } from '../game/kartCareer';
 import sound from '../game/soundEngine';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import GameHudThemeLayer from './GameHudThemeLayer';
+import ImmersiveDrawer from './ImmersiveDrawer.jsx';
+import './HubImmersion.css';
 
 const CONTROL_KEYS = new Set([
   'ArrowUp',
@@ -57,6 +60,7 @@ export default function RaceMode({
   hiddenUniverses = [],
   onSessionStart,
   onSessionEnd,
+  onPauseRequest,
   sessionPaused = false,
   sessionExitRequest = 0,
   dedicatedSession = false
@@ -65,15 +69,22 @@ export default function RaceMode({
   const engineRef = useRef(null);
   const keysRef = useRef({});
   const keyPulseRef = useRef({});
+  const touchStateRef = useRef(null);
+  if (!touchStateRef.current) touchStateRef.current = createRaceTouchState();
+  const runGuardRef = useRef(null);
   const autoAccelerateRef = useRef(true);
   const raceMusicStateRef = useRef('grid');
   const onSessionEndRef = useRef(onSessionEnd);
   const sessionPausedRef = useRef(sessionPaused);
   const simulationClockRef = useRef(null);
   const sessionExitRequestRef = useRef(sessionExitRequest);
+  const [raceMenuOpen, setRaceMenuOpen] = useState(false);
+  const closeRaceMenu = useCallback(() => setRaceMenuOpen(false), []);
   const [trackId, setTrackId] = useState(null);
   const [pilotId, setPilotId] = useState(null);
   const [raceStarted, setRaceStarted] = useState(false);
+  const [raceNonce, setRaceNonce] = useState(0);
+  const [runtimeError, setRuntimeError] = useState(false);
   const [summary, setSummary] = useState(null);
   const [autoAccelerate, setAutoAccelerate] = useState(true);
   const [snapshot, setSnapshot] = useState({
@@ -103,6 +114,8 @@ export default function RaceMode({
     career.upgrades.capacitor,
     career.upgrades.stabilizer
   ]);
+  const garageUpgradesRef = useRef(garageUpgrades);
+  garageUpgradesRef.current = garageUpgrades;
   const updateCareer = useCallback(updater => {
     setPortalCollection?.(previous => {
       const currentCareer = normalizeKartCareer(previous?.raceCareer);
@@ -150,12 +163,20 @@ export default function RaceMode({
       bossName: bossArena ? 'A.R.C.A. Overload Core' : ''
     };
   }, [track]);
+  // Parent callbacks and collection objects may change without starting a race.
+  // A setup is captured at launch/restart; garage upgrades intentionally stay live.
+  const raceSetupRef = useRef(null);
+  raceSetupRef.current = { raceMusicStage, selectedKart, lang };
+  useEffect(() => { if (engineRef.current) engineRef.current.lang = lang; }, [lang]);
+  const updateCareerRef = useRef(updateCareer);
+  updateCareerRef.current = updateCareer;
+
   const pilotName = playerProfile?.name?.trim() || (lang === 'fr' ? 'Ancre' : 'Anchor');
   const controlRows = useMemo(() => [
-    { label: lang === 'fr' ? 'Accel.' : 'Accel.', value: 'Z/W ou fleche haut' },
-    { label: lang === 'fr' ? 'Frein' : 'Brake', value: 'S ou fleche bas' },
-    { label: lang === 'fr' ? 'Virage' : 'Steer', value: 'Q/D ou fleches' },
-    { label: 'Drift', value: 'Espace' },
+    { label: 'Accel.', value: lang === 'fr' ? 'Z/W ou flèche haut' : 'W/Z or Up arrow' },
+    { label: lang === 'fr' ? 'Frein' : 'Brake', value: lang === 'fr' ? 'S ou flèche bas' : 'S or Down arrow' },
+    { label: lang === 'fr' ? 'Virage' : 'Steer', value: lang === 'fr' ? 'Q/D ou flèches' : 'A/D or arrow keys' },
+    { label: 'Drift', value: lang === 'fr' ? 'Espace' : 'Space' },
     { label: lang === 'fr' ? 'Objet' : 'Item', value: 'E' },
     { label: lang === 'fr' ? 'Reancrer' : 'Recover', value: 'R' }
   ], [lang]);
@@ -170,18 +191,22 @@ export default function RaceMode({
 
   // La pause du shell dedie gele la course et vide les commandes maintenues.
   useEffect(() => {
-    sessionPausedRef.current = sessionPaused;
+    sessionPausedRef.current = sessionPaused || raceMenuOpen;
     simulationClockRef.current?.reset();
-    if (sessionPaused) {
+    if (sessionPaused || raceMenuOpen) {
       keysRef.current = {};
       keyPulseRef.current = {};
+      touchStateRef.current.clear();
     }
-  }, [sessionPaused]);
+  }, [sessionPaused, raceMenuOpen]);
 
   // Le retour au hub n'est applique qu'apres confirmation dans le menu pause.
   useEffect(() => {
     if (sessionExitRequestRef.current === sessionExitRequest) return;
     sessionExitRequestRef.current = sessionExitRequest;
+    runGuardRef.current?.dispose();
+    touchStateRef.current.clear();
+    setRaceMenuOpen(false);
     keysRef.current = {};
     keyPulseRef.current = {};
     setRaceStarted(false);
@@ -197,11 +222,16 @@ export default function RaceMode({
   }, [raceMusicStage, raceStarted]);
 
   useEffect(() => {
-    if (!raceStarted || !track) return undefined;
+    if (!raceStarted || !RACE_TRACKS[trackId]) return undefined;
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
+    const { raceMusicStage, selectedKart } = raceSetupRef.current;
+    const runGuard = createRaceRunGuard();
+    runGuardRef.current = runGuard;
+    setRuntimeError(false);
     const engine = new EngineRace(960, 540, raceSummary => {
-      updateCareer(prev => applyRaceResult(prev, raceSummary));
+      if (!runGuard.claim()) return;
+      updateCareerRef.current(prev => applyRaceResult(prev, raceSummary));
       setSummary(raceSummary);
       setSnapshot(prev => ({ ...prev, grade: raceSummary.grade, rank: raceSummary.rank, time: raceSummary.time }));
       raceMusicStateRef.current = 'result';
@@ -212,7 +242,8 @@ export default function RaceMode({
         result: raceSummary.rank === 1 ? 'victory' : 'complete'
       });
       onSessionEndRef.current?.({ reason: 'completed', report: raceSummary });
-    }, trackId, garageUpgrades, selectedKart);
+    }, trackId, garageUpgradesRef.current, selectedKart);
+    engine.lang = raceSetupRef.current.lang;
     engineRef.current = engine;
     raceMusicStateRef.current = 'grid';
     sound.playStageBgm(raceMusicStage, 'grid');
@@ -222,66 +253,81 @@ export default function RaceMode({
     let snapshotTimer = 0;
 
     const loop = (now) => {
-      const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
-      const dt = steps * COMBAT_STEP_MS / 1000;
-      if (sessionPausedRef.current || document.hidden) {
-        animationId = requestAnimationFrame(loop);
-        return;
-      }
-      const pulseKeys = Object.fromEntries(
-        Object.entries(keyPulseRef.current).filter(([, expiresAt]) => expiresAt > now).map(([key]) => [key, true])
-      );
-      const mergedInputs = { ...keysRef.current, ...pulseKeys };
-      engine.setInput({
-        ...mergedInputs,
-        autoAccel: autoAccelerateRef.current,
-        manualAccel: Boolean(mergedInputs.up || mergedInputs.w)
-      });
-      for (let step = 0; step < steps; step += 1) engine.update(COMBAT_STEP_MS / 1000);
-      const ctx = canvas.getContext('2d');
-      engine.draw(ctx);
-      snapshotTimer += dt;
-      if (snapshotTimer > 0.12) {
-        snapshotTimer = 0;
-        const telemetry = engine.getTelemetry();
-        const displayedLap = Math.min(engine.player.lap + 1, engine.track.laps);
-        const nextMusicState = telemetry.raceState === 'finished'
-          ? 'result'
-          : telemetry.raceState === 'running' && displayedLap >= engine.track.laps
-            ? 'lastLap'
-            : telemetry.raceState === 'running'
-              ? 'race'
-              : 'grid';
-        if (raceMusicStateRef.current !== nextMusicState) {
-          raceMusicStateRef.current = nextMusicState;
-          sound.setStageMusicState(nextMusicState, {
-            ...raceMusicStage,
-            raceState: telemetry.raceState,
+      if (!runGuard.isActive()) return;
+      try {
+        const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
+        const dt = steps * COMBAT_STEP_MS / 1000;
+        if (sessionPausedRef.current || document.hidden) {
+          animationId = requestAnimationFrame(loop);
+          return;
+        }
+        const pulseKeys = Object.fromEntries(
+          Object.entries(keyPulseRef.current).filter(([, expiresAt]) => expiresAt > now).map(([key]) => [key, true])
+        );
+        const mergedInputs = { ...keysRef.current, ...touchStateRef.current.snapshot(), ...pulseKeys };
+        engine.setInput({
+          ...mergedInputs,
+          autoAccel: autoAccelerateRef.current,
+          manualAccel: Boolean(mergedInputs.up || mergedInputs.w)
+        });
+        for (let step = 0; step < steps; step += 1) engine.update(COMBAT_STEP_MS / 1000);
+        const ctx = canvas.getContext('2d');
+        engine.draw(ctx);
+        snapshotTimer += dt;
+        if (snapshotTimer > 0.12) {
+          snapshotTimer = 0;
+          const telemetry = engine.getTelemetry();
+          const displayedLap = Math.min(engine.player.lap + 1, engine.track.laps);
+          const nextMusicState = telemetry.raceState === 'finished'
+            ? 'result'
+            : telemetry.raceState === 'running' && displayedLap >= engine.track.laps
+              ? 'lastLap'
+              : telemetry.raceState === 'running'
+                ? 'race'
+                : 'grid';
+          if (raceMusicStateRef.current !== nextMusicState) {
+            raceMusicStateRef.current = nextMusicState;
+            sound.setStageMusicState(nextMusicState, {
+              ...raceMusicStage,
+              raceState: telemetry.raceState,
+              lap: displayedLap,
+              bossActive: nextMusicState === 'lastLap' && raceMusicStage.isBoss
+            });
+          }
+          setSnapshot({
+            rank: engine.player.rank,
             lap: displayedLap,
-            bossActive: nextMusicState === 'lastLap' && raceMusicStage.isBoss
+            speed: Math.round(Math.abs(engine.player.speed)),
+            item: engine.player.item,
+            time: engine.player.finishTime || engine.time,
+            grade: engine.player.finished ? engine.getRaceSummary().grade : null,
+            objective: engine.getObjectiveStatus(),
+            raceState: telemetry.raceState,
+            trackFactor: telemetry.trackFactor
           });
         }
-        setSnapshot({
-          rank: engine.player.rank,
-          lap: displayedLap,
-          speed: Math.round(Math.abs(engine.player.speed)),
-          item: engine.player.item,
-          time: engine.player.finishTime || engine.time,
-          grade: engine.player.finished ? engine.getRaceSummary().grade : null,
-          objective: engine.getObjectiveStatus(),
-          raceState: telemetry.raceState,
-          trackFactor: telemetry.trackFactor
-        });
+        animationId = requestAnimationFrame(loop);
+      } catch (error) {
+        console.error('Race render loop failed', error);
+        runGuard.dispose();
+        keysRef.current = {};
+        keyPulseRef.current = {};
+        touchStateRef.current.clear();
+        engine.setInput({});
+        sound.stopBgm();
+        setRaceMenuOpen(false);
+        setRuntimeError(true);
       }
-      animationId = requestAnimationFrame(loop);
     };
     animationId = requestAnimationFrame(loop);
 
     const onKeyDown = (event) => {
-      if (event.repeat || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable) return;
+      if (event.repeat || event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+      if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button, [role="button"]')) return;
+      if (event.key === 'Enter' && event.target?.closest?.('a[href]')) return;
+      if (!runGuard.isActive() || sessionPausedRef.current || document.hidden || engine.finished) return;
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
-      if (sessionPausedRef.current || document.hidden) return;
       const key = normalizeKey(event.key);
       if (key === 'e') {
         engine.useItem();
@@ -295,12 +341,16 @@ export default function RaceMode({
     };
     const onKeyUp = (event) => {
       if (!CONTROL_KEYS.has(event.key)) return;
-      event.preventDefault();
       keysRef.current[normalizeKey(event.key)] = false;
+      if (sessionPausedRef.current || engine.finished || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+      if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button, [role="button"]')) return;
+      if (event.key === 'Enter' && event.target?.closest?.('a[href]')) return;
+      event.preventDefault();
     };
     const clearInputs = () => {
       keysRef.current = {};
       keyPulseRef.current = {};
+      touchStateRef.current.clear();
     };
     const onVisibilityChange = () => {
       simulationClockRef.current?.reset();
@@ -311,6 +361,12 @@ export default function RaceMode({
     window.addEventListener('blur', clearInputs);
     document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
+      runGuard.dispose();
+      engine.setInput({});
+      keysRef.current = {};
+      keyPulseRef.current = {};
+      touchStateRef.current.clear();
+      if (runGuardRef.current === runGuard) runGuardRef.current = null;
       cancelAnimationFrame(animationId);
       if (simulationClockRef.current === simulationClock) simulationClockRef.current = null;
       window.removeEventListener('keydown', onKeyDown);
@@ -320,14 +376,21 @@ export default function RaceMode({
       sound.stopBgm();
       engineRef.current = null;
     };
-  }, [garageUpgrades, raceMusicStage, raceStarted, selectedKart, track, trackId, updateCareer]);
+  }, [raceStarted, trackId, raceNonce]);
+
+  useEffect(() => { engineRef.current?.updateGarage(garageUpgrades); }, [garageUpgrades]);
 
   const resetRace = () => {
     if (sessionPausedRef.current) return;
     keysRef.current = {};
+    keyPulseRef.current = {};
     if (summary) onSessionStart?.();
     setSummary(null);
-    engineRef.current?.reset();
+    runGuardRef.current?.dispose();
+    touchStateRef.current.clear();
+    setRuntimeError(false);
+    setSnapshot({ rank: 1, lap: 1, speed: 0, item: null, time: 0, grade: null, objective: '', raceState: 'countdown', trackFactor: 1 });
+    setRaceNonce(value => value + 1);
     raceMusicStateRef.current = 'grid';
     sound.playStageBgm(raceMusicStage, 'grid');
   };
@@ -360,24 +423,33 @@ export default function RaceMode({
 
   const returnToGrid = () => {
     if (sessionPausedRef.current) return;
+    runGuardRef.current?.dispose();
+    touchStateRef.current.clear();
+    setRuntimeError(false);
+    onSessionEndRef.current?.({ reason: 'acknowledged' });
     keysRef.current = {};
     keyPulseRef.current = {};
     setRaceStarted(false);
     setSummary(null);
   };
 
-  const activateVirtualKey = (key, active) => {
-    if (sessionPausedRef.current) {
-      keysRef.current = {};
-      keyPulseRef.current = {};
-      return;
-    }
-    keysRef.current[key] = active;
-    if (active) keyPulseRef.current[key] = performance.now() + 540;
-  };
+  const touchControlProps = key => ({
+    onPointerDown: event => {
+      if (event.button !== 0 || sessionPausedRef.current || engineRef.current?.finished || !runGuardRef.current?.isActive()) return;
+      if (touchStateRef.current.hold(event.pointerId, key)) {
+        event.currentTarget.setPointerCapture?.(event.pointerId);
+      }
+    },
+    onPointerUp: event => {
+      touchStateRef.current.release(event.pointerId);
+      if (event.currentTarget.hasPointerCapture?.(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+    },
+    onPointerCancel: event => touchStateRef.current.release(event.pointerId),
+    onLostPointerCapture: event => touchStateRef.current.release(event.pointerId)
+  });
 
   const pulseVirtualKey = (key) => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || engineRef.current?.finished || !runGuardRef.current?.isActive()) return;
     keyPulseRef.current[key] = performance.now() + 680;
   };
 
@@ -392,7 +464,7 @@ export default function RaceMode({
   };
 
   const buyUpgrade = (upgradeId) => {
-    if (sessionPausedRef.current) return;
+    if (sessionPaused) return;
     const config = KART_GARAGE_UPGRADES[upgradeId];
     if (!config) return;
     updateCareer(prev => {
@@ -408,16 +480,73 @@ export default function RaceMode({
           [upgradeId]: currentLevel + 1
         }
       };
-      engineRef.current?.updateGarage(nextCareer.upgrades);
       return nextCareer;
     });
   };
 
   const selectedBestTime = career.bestTimes?.[trackId];
 
+  const raceSystemPanel = <ImmersiveDrawer open={raceMenuOpen} onClose={closeRaceMenu} lang={lang} title={lang === 'fr' ? 'Garage & carnet de course' : 'Garage & race log'}>
+    <p>{lang === 'fr' ? 'Mirelle pilote en vue arrière : conduite, drift, objets, checkpoints et adversaires IA. La vue de dessus reste limitee a la mini-map.' : 'Mirelle drives in rear view: steering, drift, items, checkpoints and AI rivals. Top-down view stays limited to the minimap.'}</p>
+    {raceStarted && <p role="status">{lang === 'fr' ? 'Course en pause. Les améliorations conservent la course en cours.' : 'Race paused. Upgrades preserve the current race.'}</p>}
+          <div className="race-career-card">
+            <span>{lang === 'fr' ? 'Carriere kart' : 'Kart career'}</span>
+            <div className="race-career-grid">
+              <strong>{career.garageParts}</strong><small>parts</small>
+              <strong>{career.fragments}</strong><small>fragments</small>
+              <strong>{career.xp}</strong><small>XP</small>
+              <strong>{selectedBestTime ? formatRaceTime(selectedBestTime) : '--'}</strong><small>{lang === 'fr' ? 'record' : 'best'}</small>
+            </div>
+          </div>
+          <div className="race-garage-card">
+            <span>{lang === 'fr' ? 'Garage Nexus' : 'Nexus garage'}</span>
+            <img src={RACE_ASSETS.hudGarage} alt={lang === 'fr' ? 'Garage et HUD kart de Mirelle' : 'Mirelle kart garage and HUD'} />
+            <strong>{selectedKartName}</strong>
+            <div className="race-upgrade-list">
+              {Object.entries(KART_GARAGE_UPGRADES).map(([upgradeId, upgrade]) => {
+                const level = career.upgrades[upgradeId] || 0;
+                const cost = upgrade.cost(level);
+                const capped = level >= upgrade.maxLevel;
+                return (
+                  <button
+                    key={upgradeId}
+                    type="button"
+                    className="race-upgrade-row"
+                    disabled={capped || career.garageParts < cost}
+                    onClick={() => buyUpgrade(upgradeId)}
+                  >
+                    <span>{upgrade.label[lang] || upgrade.label.fr}</span>
+                    <strong>{level}/{upgrade.maxLevel}</strong>
+                    <small>{capped ? 'MAX' : `${cost} parts`}</small>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div className="race-track-selector">
+            <span>{lang === 'fr' ? 'Grille engagee' : 'Grid engaged'}</span>
+            <strong>{track ? (track.name[lang] || track.name.fr) : (lang === 'fr' ? 'Choisir un circuit' : 'Choose a track')}</strong>
+            <small>{track?.tags.join(' / ')} / D{track?.difficulty || '--'} / {track?.laps || '--'} {lang === 'fr' ? 'tours' : 'laps'}</small>
+            {raceStarted && !dedicatedSession && (
+              <button type="button" className="btn-retro" onClick={() => { closeRaceMenu(); onSessionEndRef.current?.({ reason: 'acknowledged' }); setRaceStarted(false); setSummary(null); }}>{lang === 'fr' ? 'CHANGER LA GRILLE' : 'CHANGE GRID'}</button>
+            )}
+          </div>
+          <div className="race-control-list">
+            {controlRows.map(row => (
+              <div key={row.label}>
+                <span>{row.label}</span>
+                <strong>{row.value}</strong>
+              </div>
+            ))}
+          </div>
+    <label className="race-assist-toggle"><input type="checkbox" checked={autoAccelerate} onChange={event => setAutoAccelerate(event.target.checked)} />{lang === 'fr' ? 'Accélération assistée' : 'Assisted acceleration'}</label>
+  </ImmersiveDrawer>;
+
   if (!raceStarted) {
     return (
-      <div className={`race-mode-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
+      <div className={`race-mode-shell race-preflight-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
+        {raceSystemPanel}
+        <div className="race-preflight-utilities"><button type="button" className="btn-retro" onClick={() => setRaceMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'GARAGE · CARRIÈRE · COMMANDES' : 'GARAGE · CAREER · CONTROLS'}</button></div>
         <GameHudThemeLayer theme={activeHudTheme} mode="kart" />
         <div className="race-mode-header">
           <div>
@@ -510,21 +639,24 @@ export default function RaceMode({
   return (
     <div className={`race-mode-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={activeHudTheme} mode="kart" />
-      <div className="race-mode-header">
-        <div>
-          <div className="portal-focus-kicker">{lang === 'fr' ? 'PROTOCOLE COURSE / TEST NEXUS' : 'RACE PROTOCOL / NEXUS TEST'}</div>
-          <h3>{lang === 'fr' ? 'Circuit A.R.C.A. Kart' : 'A.R.C.A. Kart Circuit'}</h3>
-          <p>
-            {lang === 'fr'
-              ? `Pilote ${pilotName}, Mirelle ouvre la premiere plaquette jouable en camera arriere: conduite, drift, objets, checkpoints et adversaires IA. La vue de dessus reste limitee a la mini-map.`
-              : `Pilot ${pilotName}, Mirelle opens the first playable rear-camera sheet: driving, drift, items, checkpoints, and AI rivals. Top-down view stays limited to the minimap.`}
-          </p>
-        </div>
-        <div className="race-mode-pilot">
-          <img className="race-mode-pilot-icon" src={RACE_ASSETS.hudAvatar} alt="Mirelle kart HUD" />
-          <div>
-            <strong>Mirelle Suture</strong>
-            <span>{selectedKartName}</span>
+      {raceSystemPanel}
+      <div className="race-world-hud" inert={Boolean(summary || runtimeError)}>
+        <div><strong>{track.name[lang] || track.name.fr}</strong><small>Mirelle Suture · {selectedKartName} · {pilotName}</small></div>
+        <button type="button" className="btn-retro" onClick={() => setRaceMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'GARAGE / COMMANDES' : 'GARAGE / CONTROLS'}</button>
+        {!dedicatedSession && onPauseRequest && <button type="button" className="btn-retro" onClick={onPauseRequest}>PAUSE</button>}
+        <div className="race-telemetry" role="region" aria-label={lang === 'fr' ? 'Telemetrie de course' : 'Race telemetry'}>
+          <div className="race-stat-grid">
+            <div><span>{lang === 'fr' ? 'Position' : 'Position'}</span><strong>{snapshot.rank}/4</strong></div>
+            <div><span>{lang === 'fr' ? 'Tour' : 'Lap'}</span><strong>{snapshot.lap}/{track.laps}</strong></div>
+            <div><span>{lang === 'fr' ? 'Vitesse' : 'Speed'}</span><strong>{snapshot.speed}</strong></div>
+            <div><span>{lang === 'fr' ? 'Temps' : 'Time'}</span><strong>{formatRaceTime(snapshot.time)}</strong></div>
+          </div>
+          <div className="race-objective-card">
+            <span>{lang === 'fr' ? 'Objectif A.R.C.A.' : 'A.R.C.A. objective'}</span>
+            <strong>{snapshot.objective || (track.objective?.type || 'podium')}</strong>
+            <small className={snapshot.trackFactor > 0.34 ? 'race-anchor-ok' : 'race-anchor-alert'}>
+              {lang === 'fr' ? 'Ancrage piste' : 'Track lock'}: {Math.round(snapshot.trackFactor * 100)}%
+            </small>
           </div>
         </div>
       </div>
@@ -536,6 +668,7 @@ export default function RaceMode({
             width="960"
             height="540"
             className="race-mode-canvas"
+            tabIndex={summary || runtimeError ? -1 : 0}
             aria-label={lang === 'fr' ? 'Circuit kart jouable A.R.C.A.' : 'Playable A.R.C.A. kart circuit'}
             data-race-state={snapshot.raceState}
             data-speed={snapshot.speed}
@@ -547,8 +680,14 @@ export default function RaceMode({
               ? `Course ${snapshot.raceState}. Position ${snapshot.rank} sur 4. Tour ${snapshot.lap} sur ${track.laps}.`
               : `Race ${snapshot.raceState}. Position ${snapshot.rank} of 4. Lap ${snapshot.lap} of ${track.laps}.`}
           </p>
+          {runtimeError && !summary && <div className="race-result-banner" role="alert" data-race-runtime-error>
+            <strong>{lang === 'fr' ? 'COURSE INTERROMPUE' : 'RACE INTERRUPTED'}</strong>
+            <span>{lang === 'fr' ? 'Le rendu s’est arrêté. Aucun nouveau résultat n’a été attribué.' : 'Rendering stopped. No new result has been awarded.'}</span>
+            <button type="button" autoFocus className="btn-retro" onClick={resetRace}>{lang === 'fr' ? 'RECOMMENCER LA COURSE' : 'RESTART RACE'}</button>
+            <button type="button" className="btn-retro" onClick={returnToGrid}>{lang === 'fr' ? 'RETOUR À LA GRILLE' : 'BACK TO GRID'}</button>
+          </div>}
           {summary && (
-            <div className="race-result-banner">
+            <div className="race-result-banner" role="region" aria-label={lang === 'fr' ? 'Bilan de course' : 'Race results'}>
               <strong>{lang === 'fr' ? 'COURSE STABILISEE' : 'RACE STABILIZED'} // {summary.grade}</strong>
               <span>
                 {lang === 'fr'
@@ -558,7 +697,7 @@ export default function RaceMode({
               <span>
                 +{summary.rewards?.garageParts || 0} parts / +{summary.rewards?.fragments || 0} fragments / +{summary.rewards?.xp || 0} XP
               </span>
-              <button type="button" className="btn-retro" onClick={resetRace}>
+              <button type="button" autoFocus className="btn-retro" onClick={resetRace}>
                 {lang === 'fr' ? 'RELANCER' : 'RESTART'}
               </button>
               <button type="button" className="btn-retro" onClick={returnToGrid}>
@@ -568,91 +707,30 @@ export default function RaceMode({
           )}
         </div>
 
-        <aside className="race-side-panel">
-          <div className="race-stat-grid">
-            <div><span>{lang === 'fr' ? 'Position' : 'Position'}</span><strong>{snapshot.rank}/4</strong></div>
-            <div><span>{lang === 'fr' ? 'Tour' : 'Lap'}</span><strong>{snapshot.lap}/{track.laps}</strong></div>
-            <div><span>{lang === 'fr' ? 'Vitesse' : 'Speed'}</span><strong>{snapshot.speed}</strong></div>
-            <div><span>{lang === 'fr' ? 'Temps' : 'Time'}</span><strong>{formatRaceTime(snapshot.time)}</strong></div>
-          </div>
-          <div className="race-career-card">
-            <span>{lang === 'fr' ? 'Carriere kart' : 'Kart career'}</span>
-            <div className="race-career-grid">
-              <strong>{career.garageParts}</strong><small>parts</small>
-              <strong>{career.fragments}</strong><small>fragments</small>
-              <strong>{career.xp}</strong><small>XP</small>
-              <strong>{selectedBestTime ? formatRaceTime(selectedBestTime) : '--'}</strong><small>{lang === 'fr' ? 'record' : 'best'}</small>
+        <aside className="race-side-panel" inert={Boolean(summary || runtimeError)}>
+          <div className="race-hud-dock">
+            <div className="race-cache-card">
+              <span>{lang === 'fr' ? 'Cache active' : 'Active cache'}</span>
+              <strong>{snapshot.item || (lang === 'fr' ? 'vide' : 'empty')}</strong>
+              <img className="race-cache-strip" src={RACE_ASSETS.kartItems} alt={lang === 'fr' ? 'Plaquette objets kart de Mirelle' : 'Mirelle kart item sheet'} />
+              <button
+                type="button"
+                className="btn-retro"
+                onClick={triggerItem}
+                disabled={!snapshot.item || snapshot.raceState !== 'running'}
+              >
+                {snapshot.item ? (lang === 'fr' ? 'UTILISER' : 'USE') : (lang === 'fr' ? 'CACHE VIDE' : 'EMPTY CACHE')}
+              </button>
             </div>
-          </div>
-          <div className="race-objective-card">
-            <span>{lang === 'fr' ? 'Objectif A.R.C.A.' : 'A.R.C.A. objective'}</span>
-            <strong>{snapshot.objective || (track.objective?.type || 'podium')}</strong>
-            <small className={snapshot.trackFactor > 0.34 ? 'race-anchor-ok' : 'race-anchor-alert'}>
-              {lang === 'fr' ? 'Ancrage piste' : 'Track lock'}: {Math.round(snapshot.trackFactor * 100)}%
-            </small>
-          </div>
-          <div className="race-cache-card">
-            <span>{lang === 'fr' ? 'Cache active' : 'Active cache'}</span>
-            <strong>{snapshot.item || (lang === 'fr' ? 'vide' : 'empty')}</strong>
-            <img className="race-cache-strip" src={RACE_ASSETS.kartItems} alt={lang === 'fr' ? 'Plaquette objets kart de Mirelle' : 'Mirelle kart item sheet'} />
-            <button
-              type="button"
-              className="btn-retro"
-              onClick={triggerItem}
-              disabled={!snapshot.item || snapshot.raceState !== 'running'}
-            >
-              {snapshot.item ? (lang === 'fr' ? 'UTILISER' : 'USE') : (lang === 'fr' ? 'CACHE VIDE' : 'EMPTY CACHE')}
-            </button>
-          </div>
-          <div className="race-garage-card">
-            <span>{lang === 'fr' ? 'Garage Nexus' : 'Nexus garage'}</span>
-            <img src={RACE_ASSETS.hudGarage} alt={lang === 'fr' ? 'Garage et HUD kart de Mirelle' : 'Mirelle kart garage and HUD'} />
-            <strong>{selectedKartName}</strong>
-            <div className="race-upgrade-list">
-              {Object.entries(KART_GARAGE_UPGRADES).map(([upgradeId, upgrade]) => {
-                const level = career.upgrades[upgradeId] || 0;
-                const cost = upgrade.cost(level);
-                const capped = level >= upgrade.maxLevel;
-                return (
-                  <button
-                    key={upgradeId}
-                    type="button"
-                    className="race-upgrade-row"
-                    disabled={capped || career.garageParts < cost}
-                    onClick={() => buyUpgrade(upgradeId)}
-                  >
-                    <span>{upgrade.label[lang] || upgrade.label.fr}</span>
-                    <strong>{level}/{upgrade.maxLevel}</strong>
-                    <small>{capped ? 'MAX' : `${cost} parts`}</small>
-                  </button>
-                );
-              })}
+            <div className="race-touch-controls">
+              <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('up'); }} {...touchControlProps('up')}>ACC</button>
+              <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('left'); }} {...touchControlProps('left')}>{lang === 'fr' ? 'GAUCHE' : 'LEFT'}</button>
+              <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('right'); }} {...touchControlProps('right')}>{lang === 'fr' ? 'DROITE' : 'RIGHT'}</button>
+              <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('space'); }} {...touchControlProps('space')}>DRIFT</button>
+              <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('down'); }} {...touchControlProps('down')}>{lang === 'fr' ? 'FREIN' : 'BRAKE'}</button>
+              <button type="button" className="btn-retro" onClick={recoverPlayer}>{lang === 'fr' ? 'REANCRER' : 'RECOVER'}</button>
+              {summary && <button type="button" className="btn-retro" onClick={resetRace}>{lang === 'fr' ? 'RELANCER' : 'RESTART'}</button>}
             </div>
-          </div>
-          <div className="race-track-selector">
-            <span>{lang === 'fr' ? 'Grille engagee' : 'Grid engaged'}</span>
-            <strong>{track.name[lang] || track.name.fr}</strong>
-            <small>{track.tags.join(' / ')} / D{track.difficulty} / {track.laps} {lang === 'fr' ? 'tours' : 'laps'}</small>
-            {!dedicatedSession && (
-              <button type="button" className="btn-retro" onClick={returnToGrid}>{lang === 'fr' ? 'CHANGER LA GRILLE' : 'CHANGE GRID'}</button>
-            )}
-          </div>
-          <div className="race-control-list">
-            {controlRows.map(row => (
-              <div key={row.label}>
-                <span>{row.label}</span>
-                <strong>{row.value}</strong>
-              </div>
-            ))}
-          </div>
-          <div className="race-touch-controls">
-            <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('up')} onPointerDown={() => activateVirtualKey('up', true)} onPointerUp={() => activateVirtualKey('up', false)} onPointerCancel={() => activateVirtualKey('up', false)} onPointerLeave={() => activateVirtualKey('up', false)}>ACC</button>
-            <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('left')} onPointerDown={() => activateVirtualKey('left', true)} onPointerUp={() => activateVirtualKey('left', false)} onPointerCancel={() => activateVirtualKey('left', false)} onPointerLeave={() => activateVirtualKey('left', false)}>GAUCHE</button>
-            <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('right')} onPointerDown={() => activateVirtualKey('right', true)} onPointerUp={() => activateVirtualKey('right', false)} onPointerCancel={() => activateVirtualKey('right', false)} onPointerLeave={() => activateVirtualKey('right', false)}>DROITE</button>
-            <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('space')} onPointerDown={() => activateVirtualKey('space', true)} onPointerUp={() => activateVirtualKey('space', false)} onPointerCancel={() => activateVirtualKey('space', false)} onPointerLeave={() => activateVirtualKey('space', false)}>DRIFT</button>
-            <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('down')} onPointerDown={() => activateVirtualKey('down', true)} onPointerUp={() => activateVirtualKey('down', false)} onPointerCancel={() => activateVirtualKey('down', false)} onPointerLeave={() => activateVirtualKey('down', false)}>{lang === 'fr' ? 'FREIN' : 'BRAKE'}</button>
-            <button type="button" className="btn-retro" onClick={recoverPlayer}>{lang === 'fr' ? 'REANCRER' : 'RECOVER'}</button>
-            {summary && <button type="button" className="btn-retro" onClick={resetRace}>{lang === 'fr' ? 'RELANCER' : 'RESTART'}</button>}
           </div>
         </aside>
       </div>

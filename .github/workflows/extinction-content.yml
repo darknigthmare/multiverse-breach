@@ -1,0 +1,71 @@
+name: Extinction identities and City catalog
+on:
+  pull_request:
+    paths:
+      - 'src/components/HubScreen.jsx'
+      - 'src/game/**'
+      - 'scripts/**'
+      - 'docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx'
+      - '.github/workflows/extinction-content.yml'
+  push:
+    branches: [master]
+permissions:
+  contents: read
+concurrency:
+  group: extinction-content-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/
+            /public/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/
+            /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Identity, source inventory and immutable workbook contracts
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ec-evidence
+          git ls-files > TRACKED_FILES.txt
+          node --test scripts/extinctionContent.test.mjs scripts/mosaicUniversePlaces.test.mjs scripts/scenePresentation.test.mjs scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs | tee /tmp/ec-evidence/unit.log
+          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionCityCatalog.test.mjs | tee /tmp/ec-evidence/catalog-tests.log
+          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/catalog.mjs 80a54ea5bf203b7991c213775bd3c7ec4d8b3fba /tmp/ec-evidence/catalog.json
+          python3 scripts/extinction-city/verify_workbook.py /tmp/ec-evidence/catalog.json docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx | tee /tmp/ec-evidence/workbook.json
+          npm run test:ui-immersion | tee /tmp/ec-evidence/ui.log
+          npx oxlint --max-warnings 0 src/components/HubScreen.jsx src/game/extinctionContent.js src/game/mosaicUniversePlaces.js scripts/extinctionContent.test.mjs scripts/mosaicUniversePlaces.test.mjs scripts/extinctionCityCatalog.test.mjs scripts/extinction-city/catalog.mjs scripts/fixtures/cityExtinctionHarness.jsx | tee /tmp/ec-evidence/lint.log
+      - name: Real selector and personal FPS images in Chromium
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/ec-playwright
+          /tmp/ec-playwright/bin/pip install playwright==1.57.0
+          /tmp/ec-playwright/bin/python -m playwright install --with-deps chromium
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort >/tmp/ec-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          /tmp/ec-playwright/bin/python scripts/browserExtinctionCatalog.py --require-art --evidence /tmp/ec-evidence/browser | tee /tmp/ec-evidence/browser.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: extinction-content-${{ github.sha }}
+          path: /tmp/ec-evidence/
+          retention-days: 14

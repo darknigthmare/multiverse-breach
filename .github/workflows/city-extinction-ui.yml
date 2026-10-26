@@ -1,0 +1,73 @@
+name: City and Extinction immersive UI
+on:
+  pull_request:
+    paths:
+      - 'src/components/HubScreen.jsx'
+      - 'src/components/HubImmersion.css'
+      - 'src/components/SceneHoldButton.jsx'
+      - 'src/components/ImmersiveDrawer.jsx'
+      - 'src/components/collection/**'
+      - 'src/game/sceneInputs.js'
+      - 'src/game/scenePresentation.js'
+      - 'src/game/engineRace.js'
+      - 'src/game/mosaicCityRuntime.js'
+      - 'src/game/immersiveHubState.js'
+      - 'scripts/**'
+      - '.github/workflows/city-extinction-ui.yml'
+  push:
+    branches: [master]
+permissions:
+  contents: read
+concurrency:
+  group: city-extinction-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  scenes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Scene input, timing, city and progression contracts
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/scene-ui-evidence
+          git rev-parse HEAD > /tmp/scene-ui-evidence/tested-commit.txt
+          node --test --test-concurrency=1 scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs scripts/fighterRaceGameplayAudit.test.mjs scripts/scenePresentation.test.mjs | tee /tmp/scene-ui-evidence/unit.log
+          npm run test:ui-immersion | tee /tmp/scene-ui-evidence/ui-contracts.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/HubScreen.jsx src/components/SceneHoldButton.jsx src/game/sceneInputs.js scripts/sceneInputs.test.mjs scripts/fixtures/cityExtinctionHarness.jsx scripts/immersiveHubState.test.mjs scripts/mosaicCityRuntime.test.mjs src/game/scenePresentation.js scripts/scenePresentation.test.mjs | tee /tmp/scene-ui-evidence/lint.log
+      - name: Real scenes in Chromium with committed artwork
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/scene-playwright
+          /tmp/scene-playwright/bin/pip install playwright==1.57.0
+          /tmp/scene-playwright/bin/python -m playwright install --with-deps chromium
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort >/tmp/scene-ui-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          /tmp/scene-playwright/bin/python scripts/browserCityExtinction.py --require-art --evidence /tmp/scene-ui-evidence/browser | tee /tmp/scene-ui-evidence/browser.log
+          /tmp/scene-playwright/bin/python scripts/browserSceneServices.py --require-art --evidence /tmp/scene-ui-evidence/completion | tee /tmp/scene-ui-evidence/completion.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: city-extinction-${{ github.sha }}
+          path: /tmp/scene-ui-evidence/
+          retention-days: 14
