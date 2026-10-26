@@ -11,7 +11,11 @@ Le relevé dédié est établi sur **master `1460d0ebbb67f1809ac2f8b4bf76d5f8126
 - [Preuves, empreintes et limites de validation](evidence/equipment-inventory-2026-10-26.json)
 - [Extracteur reproductible](../../scripts/exportEquipmentWorkbookData.mjs) et [générateur du classeur](tools/build_equipment_workbook.mjs)
 
-Le classeur contient sept onglets et **28 359 lignes Actions** : 28 304 constats du dépôt et 55 travaux documentaires ciblés. Le corpus reconstruit couvre **22 acteurs / 21 sources** ; 41 références demandent encore un choix d’incarnation. Les catalogues et les 54 listes d’équipement n’ont pas changé depuis la version comparée du 24 octobre ; six signatures de combat ont été ajoutées. Les constats se recoupent et ne représentent pas autant de bugs observés manuellement. **La fidélité artistique 1:1 reste à vérifier.**
+Le classeur contient sept onglets et **10 232 lignes Actions couvrant 28 359 points à traiter**. Les 28 304 constats du dépôt sont conservés dans 10 177 dossiers par acteur ou occurrence d’objet ; les 55 travaux documentaires gardent leur ligne séparée. Catégories, travaux, preuves et identifiants de chaque constat restent détaillés. Un dossier ne doit être marqué terminé qu’après traitement de tous ses points ; le suivi futur se rapproche par `ID dossier` et par liste des constats. Le corpus reconstruit couvre **22 acteurs / 21 sources** ; 41 références demandent encore un choix d’incarnation.
+
+Les catalogues et les 54 listes d’équipement n’ont pas changé depuis la version comparée du 24 octobre ; six signatures de combat ont été ajoutées. Les constats se recoupent et ne représentent pas autant de bugs observés manuellement. **La fidélité artistique 1:1 reste à vérifier.**
+
+Au commit intermédiaire `c1be80b`, cinq CI réussissent. Le [Full production build de la PR](https://github.com/darknigthmare/multiverse-breach/actions/runs/40394344299/job/121823284530) rencontre la même assertion FPS Mirelle obsolète que le [master source](https://github.com/darknigthmare/multiverse-breach/actions/runs/40326700136/job/121585778141). Cet échec préexistant et ses limites sont détaillés dans le rapport ; une compilation complète réussie n’est pas revendiquée.
 
 Les compteurs R13 ci-dessous décrivent le vestiaire historique du 25 octobre. Ils ne remplacent pas le relevé actuel des armes et équipements. Les autres XLSX sont préservés.
 

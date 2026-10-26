@@ -183,16 +183,41 @@ makeTable('Références 1a1', 'Références d’armes et équipements par incarn
   canon.rows.map(a => { const s = sourceById.get(a.sourceId); return [a.actorName, a.universe, a.canonicalItemName, a.category, a.sourceEdition, a.incarnation || 'À sélectionner', label(a.relationship), a.sourceEvidence, a.visualTraits, a.continuityConstraint, a.applicationStatus, a.implementationGap, a.fidelityStatus, s.title, a.sourceType || s.type, a.sourceUrl || s.url, s.retrieval, s.limitations, a.id, a.actorKey]; }),
   [31, 28, 43, 25, 63, 60, 65, 90, 85, 90, 52, 90, 50, 63, 35, 78, 66, 90, 22, 58], 'EquipmentCanonical');
 
+// One dossier per actor or catalogue occurrence avoids repeating its identity
+// and source for every finding. Every original finding and stable ID is kept.
+const groupedFindings = new Map();
+for (const finding of data.gaps) {
+  const key = finding.entityType + ':' + finding.entityKey;
+  if (!groupedFindings.has(key)) groupedFindings.set(key, []);
+  groupedFindings.get(key).push(finding);
+}
+const numbered = values => values.map((value, index) => (index + 1) + '. ' + text(value)).join('\n');
 const actionRecords = [
-  ...data.gaps.map(a => ({ id: a.gapKey, name: a.actorName || a.itemName, universe: a.universe, type: label(a.entityType), issue: label(a.kind), priority: a.priority, action: a.action, evidence: a.evidence, observed: label(a.status), key: a.entityKey, source: a.sourceUrl })),
-  ...canon.rows.map(a => ({ id: 'canonical:' + a.id, name: a.actorName + ' — ' + a.canonicalItemName, universe: a.universe, type: 'Référence ciblée', issue: 'Référence à confronter à la dotation', priority: 'P1', action: a.implementationGap, evidence: a.sourceEvidence, observed: a.applicationStatus, key: a.actorKey, source: a.sourceUrl }))
+  ...[...groupedFindings.values()].map(findings => {
+    const a = findings[0];
+    assert.equal(new Set(findings.map(f => f.kind)).size, findings.length, 'Duplicate kind within dossier');
+    return {
+      id: 'dossier:' + a.entityType + ':' + a.entityKey,
+      name: a.actorName || a.itemName, universe: a.universe, type: label(a.entityType),
+      issue: numbered(findings.map(f => label(f.kind))),
+      priority: findings.some(f => f.priority === 'P1') ? 'P1' : 'P2',
+      action: numbered(findings.map(f => f.action)), evidence: numbered(findings.map(f => f.evidence)),
+      observed: union(findings.map(f => label(f.status))).join('\n'), key: a.entityKey,
+      source: union(findings.map(f => f.sourceUrl)).join('\n'),
+      findingCount: findings.length, findingIds: findings.map(f => f.gapKey).join('\n')
+    };
+  }),
+  ...canon.rows.map(a => ({ id: 'canonical:' + a.id, name: a.actorName + ' — ' + a.canonicalItemName, universe: a.universe, type: 'Référence ciblée', issue: 'Référence à confronter à la dotation', priority: 'P1', action: a.implementationGap, evidence: a.sourceEvidence, observed: a.applicationStatus, key: a.actorKey, source: a.sourceUrl, findingCount: 1, findingIds: 'canonical:' + a.id }))
 ];
 unique(actionRecords, 'id');
+const allFindingIds = actionRecords.flatMap(a => a.findingIds.split('\n'));
+assert.equal(allFindingIds.length, data.gaps.length + canon.rows.length);
+assert.equal(new Set(allFindingIds).size, allFindingIds.length, 'Finding lost or duplicated in dossiers');
 const actions = makeTable('Actions', 'Manquants et suivi de réalisation',
-  'Le constat reste conservé. Compléter les colonnes jaunes ; une tâche terminée sans preuve reste à vérifier.',
-  ['Priorité', 'Personnage ou objet', 'Univers', 'Type de dossier', 'Manque / vérification', 'Travail à réaliser', 'Constat et preuve source', 'État au relevé', 'Clé concernée', 'Source', 'Avancement', 'Preuve de réalisation', 'Responsable', 'Résultat du suivi', 'ID tâche'],
-  actionRecords.map(a => [a.priority, a.name, a.universe, a.type, a.issue, a.action, a.evidence, a.observed, a.key, a.source, 'À faire', '', '', '', a.id]),
-  [13, 40, 28, 23, 42, 95, 90, 43, 65, 80, 23, 80, 26, 28, 85], 'EquipmentActions');
+  'Un dossier regroupe tous les points du personnage ou de l’objet. Terminer après traitement de chaque point, avec preuve.',
+  ['Priorité', 'Personnage ou objet', 'Univers', 'Type de dossier', 'Manques / vérifications', 'Travaux à réaliser', 'Constats et preuves source', 'État au relevé', 'Clé concernée', 'Source', 'Avancement', 'Preuve de réalisation', 'Responsable', 'Résultat du suivi', 'ID dossier', 'Points regroupés', 'IDs des constats'],
+  actionRecords.map(a => [a.priority, a.name, a.universe, a.type, a.issue, a.action, a.evidence, a.observed, a.key, a.source, 'À faire', '', '', '', a.id, a.findingCount, a.findingIds]),
+  [13, 40, 28, 23, 48, 100, 95, 43, 65, 80, 23, 80, 26, 28, 85, 18, 100], 'EquipmentActions');
 actions.getRange('K7:M' + last.Actions).format.fill = colors.input;
 actions.getRange('K7:K' + last.Actions).dataValidation = { rule: { type: 'list', values: ['À faire', 'En cours', 'À vérifier', 'Terminé'] } };
 actions.getRange('N7').formulas = [['=IF(K7="Terminé",IF(L7="","Preuve manquante","Terminée avec preuve"),K7)']];
@@ -250,9 +275,10 @@ const summaryMetrics = [
   ['Affectations explicites', "=COUNTA('Affectations'!A7:A" + last.Affectations + ')', 'Déclarations d’armes, listes, accessoires et signatures conservés séparément.'],
   ['Références documentaires ciblées', "=COUNTA('Références 1a1'!A7:A" + last['Références 1a1'] + ')', 'Chaque référence précise le personnage, l’œuvre et les conditions d’application.'],
   ['Sources de la recherche ciblée', canon.sources.length, 'Le type de source et les limites sont indiqués dans chaque fiche.'],
-  ['Actions ouvertes', "=COUNTA('Actions'!O7:O" + last.Actions + ")-COUNTIFS('Actions'!N7:N" + last.Actions + ',"Terminée avec preuve")', 'Travaux d’inventaire, de recherche et de revue, pas autant de bugs démontrés.'],
-  ['Actions terminées avec preuve', "=COUNTIFS('Actions'!N7:N" + last.Actions + ',"Terminée avec preuve")', 'La preuve doit être pertinente ; sa présence ne certifie pas la qualité du résultat.'],
-  ['Nouvelles validations visuelles 1:1', 0, 'Aucune validation de sprite, animation ou comportement n’est déclarée par cet audit.']
+  ['Dossiers ouverts', "=COUNTA('Actions'!O7:O" + last.Actions + ")-COUNTIFS('Actions'!N7:N" + last.Actions + ',"Terminée avec preuve")', 'Un dossier regroupe tous les constats d’un personnage ou d’une occurrence ; les 55 références ont leurs propres lignes.'],
+  ['Dossiers terminés avec preuve', "=COUNTIFS('Actions'!N7:N" + last.Actions + ',"Terminée avec preuve")', 'Traiter tous les points du dossier. La présence d’une preuve ne certifie pas sa qualité.'],
+  ['Nouvelles validations visuelles 1:1', 0, 'Aucune validation de sprite, animation ou comportement n’est déclarée par cet audit.'],
+  ['Points regroupés dans les dossiers', "=SUM('Actions'!P7:P" + last.Actions + ')', 'Tous les constats et leurs identifiants sont conservés ; plusieurs peuvent concerner le même personnage ou objet.']
 ];
 summaryMetrics.forEach((a, i) => {
   const r = i + 7;
@@ -261,11 +287,12 @@ summaryMetrics.forEach((a, i) => {
   else summary.getRange('B' + r).values = [[a[1]]];
   summary.getRange('D' + r).values = [[a[2]]];
 });
-summary.getRange('A7:A16').format.wrapText = true;
-summary.getRange('A7:D16').format.rowHeight = 38;
-summary.getRange('B7:B16').setNumberFormat('#,##0');
-summary.getRange('B7:B16').format.font = { name: 'Arial', size: 12, bold: true, color: colors.navy };
-summary.getRange('B7:B16').format.horizontalAlignment = 'right';
+summary.getRange('A7:A17').format.wrapText = true;
+summary.getRange('D7:D17').format.wrapText = true;
+summary.getRange('A7:D17').format.rowHeight = 38;
+summary.getRange('B7:B17').setNumberFormat('#,##0');
+summary.getRange('B7:B17').format.font = { name: 'Arial', size: 12, bold: true, color: colors.navy };
+summary.getRange('B7:B17').format.horizontalAlignment = 'right';
 summary.getRange('A19:B19').values = [['À compléter en priorité', 'Lignes']];
 summary.getRange('A19:B19').format = { fill: colors.navy, font: { name: 'Arial', size: 10, bold: true, color: '#FFFFFF' }, horizontalAlignment: 'center', rowHeight: 29 };
 summary.getRange('D19').values = [['Critère de réalisation']];
@@ -281,7 +308,7 @@ const focus = [
 focus.forEach(([kind, criterion], i) => {
   const r = i + 20;
   summary.getRange('A' + r).values = [[label(kind)]];
-  summary.getRange('B' + r).formulas = [["=COUNTIFS('Actions'!E7:E" + last.Actions + ',A' + r + ')']];
+  summary.getRange('B' + r).formulas = [["=COUNTIFS('Actions'!E7:E" + last.Actions + ',"*"&A' + r + '&"*")']];
   summary.getRange('D' + r).values = [[criterion]];
 });
 summary.getRange('A20:D25').format.rowHeight = 33;
@@ -295,7 +322,7 @@ summary.getRange('D31').values = [['Les occurrences et leurs projections ne sont
 summary.getRange('A32').values = [['Compatibilité des incarnations']];
 summary.getRange('D32').values = [['Conserver les variantes séparées : Ripley 1979/1986, Luke ANH–ESB/ROTJ, armures de Chief et éditions des jeux.']];
 summary.getRange('A33').values = [['Mettre le suivi à jour']];
-summary.getRange('D33').values = [['Filtrer Actions par personnage ou univers ; remplir Avancement, Preuve de réalisation et Responsable.']];
+summary.getRange('D33').values = [['Filtrer Actions ; traiter tous les points numérotés du dossier avant de renseigner Terminé et sa preuve. Les IDs restent conservés.']];
 summary.getRange('A34').values = [['Portée de la recherche']];
 summary.getRange('D34').values = [['Le relevé du dépôt est exhaustif ; le recensement de tous les équipements des œuvres sources reste à poursuivre.']];
 summary.getRange('A28:D34').format.rowHeight = 34;
@@ -311,9 +338,10 @@ actions.getRange('K7:L7').values = [['À faire', '']];
 wb.recalculate();
 assert.equal(summary.getRange('B15').values[0][0], 0);
 for (const [cell, count] of [['B7', data.actors.length], ['B10', data.items.length], ['B11', data.associations.length], ['B12', canon.rows.length], ['B14', actionRecords.length]]) assert.equal(summary.getRange(cell).values[0][0], count, cell);
+assert.equal(summary.getRange('B17').values[0][0], allFindingIds.length);
 for (let i = 0; i < focus.length; i++) assert.equal(summary.getRange('B' + (20 + i)).values[0][0], data.gaps.filter(a => a.kind === focus[i][0]).length);
 await fs.mkdir(previewDir, { recursive: true });
-const inspection = await wb.inspect({ kind: 'table', range: "'Synthèse'!A6:D16", include: 'values,formulas', tableMaxRows: 12, tableMaxCols: 4, maxChars: 7000 });
+const inspection = await wb.inspect({ kind: 'table', range: "'Synthèse'!A6:D17", include: 'values,formulas', tableMaxRows: 12, tableMaxCols: 4, maxChars: 7500 });
 await fs.writeFile(path.join(previewDir, 'summary-inspection.ndjson'), inspection.ndjson);
 const errors = await wb.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!', options: { useRegex: true, maxResults: 50 }, summary: 'Final formula error scan', maxChars: 4000 });
 await fs.writeFile(path.join(previewDir, 'formula-scan.ndjson'), errors.ndjson);
@@ -322,6 +350,9 @@ const validation = {
   sourceCommit, worksheets: sheetNames, actors: data.actors.length, catalogRecords: data.items.length,
   associations: data.associations.length, canonicalRows: canon.rows.length, sources: canon.sources.length,
   actions: actionRecords.length, comparisonRows: comparison.metrics.length,
+  groupedDossiers: groupedFindings.size, automaticFindings: data.gaps.length,
+  documentaryFollowups: canon.rows.length, totalFindings: allFindingIds.length,
+  allFindingIdsPreserved: true,
   summaryCountsChecked: true, workflowWithAndWithoutProofChecked: true,
   testedEngine: '@oai/artifact-tool', excelDesktopTested: false, canonicalFidelityApproved: false
 };
@@ -330,6 +361,8 @@ const validation = {
 actorRows.length = 0;
 itemRows.length = 0;
 actionRecords.length = 0;
+allFindingIds.length = 0;
+groupedFindings.clear();
 for (const key of ['actors', 'items', 'associations', 'gaps']) data[key].length = 0;
 global.gc?.();
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
@@ -340,7 +373,7 @@ validation.bytes = (await fs.stat(outputPath)).size;
 await fs.writeFile(path.join(previewDir, 'workbook-validation.json'), JSON.stringify(validation, null, 2) + '\n');
 console.log(JSON.stringify(validation, null, 2));
 // Export before rendering so image-layout caches do not overlap serialization.
-for (const job of [{ sheetName: 'Synthèse', range: 'A1:D16' }, ...previewJobs]) {
+for (const job of [{ sheetName: 'Synthèse', range: 'A1:D17' }, ...previewJobs]) {
   const preview = await wb.render({ ...job, scale: 1, format: 'png' });
   const file = job.sheetName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll(' ', '_') + '.png';
   await fs.writeFile(path.join(previewDir, file), new Uint8Array(await preview.arrayBuffer()));
