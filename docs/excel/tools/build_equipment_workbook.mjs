@@ -143,6 +143,7 @@ function makeTable(name, title, subtitle, headers, rows, widths, tableName, free
   if (freezeColumns) sheet.freezePanes.freezeColumns(freezeColumns);
   previewJobs.push({ sheetName: name, range: 'A1:' + columns(Math.min(headers.length, 6) - 1) + Math.min(10, end) });
   console.log('Prepared ' + name + ': ' + rows.length + ' rows');
+  global.gc?.();
   return sheet;
 }
 
@@ -322,17 +323,26 @@ for (const job of [{ sheetName: 'Synthèse', range: 'A1:D16' }, ...previewJobs])
   const file = job.sheetName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll(' ', '_') + '.png';
   await fs.writeFile(path.join(previewDir, file), new Uint8Array(await preview.arrayBuffer()));
   console.log('Rendered ' + job.sheetName);
+  global.gc?.();
 }
-await fs.mkdir(path.dirname(outputPath), { recursive: true });
-const output = await SpreadsheetFile.exportXlsx(wb);
-await output.save(outputPath);
 const validation = {
   sourceCommit, worksheets: sheetNames, actors: data.actors.length, catalogRecords: data.items.length,
   associations: data.associations.length, canonicalRows: canon.rows.length, sources: canon.sources.length,
   actions: actionRecords.length, comparisonRows: comparison.metrics.length,
   summaryCountsChecked: true, workflowWithAndWithoutProofChecked: true,
-  testedEngine: '@oai/artifact-tool', excelDesktopTested: false, canonicalFidelityApproved: false,
-  bytes: (await fs.stat(outputPath)).size
+  testedEngine: '@oai/artifact-tool', excelDesktopTested: false, canonicalFidelityApproved: false
 };
+// The workbook owns literal cell values now. Release input projections before
+// serializing the large XLSX; --expose-gc makes this effective on limited hosts.
+actorRows.length = 0;
+itemRows.length = 0;
+actionRecords.length = 0;
+for (const key of ['actors', 'items', 'associations', 'gaps']) data[key].length = 0;
+global.gc?.();
+await fs.mkdir(path.dirname(outputPath), { recursive: true });
+console.log('Exporting validated workbook');
+const output = await SpreadsheetFile.exportXlsx(wb);
+await output.save(outputPath);
+validation.bytes = (await fs.stat(outputPath)).size;
 await fs.writeFile(path.join(previewDir, 'workbook-validation.json'), JSON.stringify(validation, null, 2) + '\n');
 console.log(JSON.stringify(validation, null, 2));

@@ -144,6 +144,8 @@ node --experimental-loader ./docs/excel/tools/json-loader.mjs \
 
 Le générateur `tools/build_equipment_workbook.mjs` utilise `@oai/artifact-tool` dans le runtime de génération, sans ajout de dépendance au jeu :
 
+Sur un environnement limité en mémoire, lancer Node avec `--expose-gc --max-old-space-size=2560`. Le générateur libère ses projections en mémoire après les contrôles, avant la sérialisation du classeur. Les données, formules et formats restent conservés dans le classeur.
+
 ```text
 build_equipment_workbook.mjs DATA.json CANON.json COMPARISON.json OUTPUT.xlsx PREVIEW_DIR
 ```
