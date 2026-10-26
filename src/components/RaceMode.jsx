@@ -166,7 +166,8 @@ export default function RaceMode({
   // Parent callbacks and collection objects may change without starting a race.
   // A setup is captured at launch/restart; garage upgrades intentionally stay live.
   const raceSetupRef = useRef(null);
-  raceSetupRef.current = { raceMusicStage, selectedKart };
+  raceSetupRef.current = { raceMusicStage, selectedKart, lang };
+  useEffect(() => { if (engineRef.current) engineRef.current.lang = lang; }, [lang]);
   const updateCareerRef = useRef(updateCareer);
   updateCareerRef.current = updateCareer;
 
@@ -242,6 +243,7 @@ export default function RaceMode({
       });
       onSessionEndRef.current?.({ reason: 'completed', report: raceSummary });
     }, trackId, garageUpgradesRef.current, selectedKart);
+    engine.lang = raceSetupRef.current.lang;
     engineRef.current = engine;
     raceMusicStateRef.current = 'grid';
     sound.playStageBgm(raceMusicStage, 'grid');

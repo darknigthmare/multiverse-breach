@@ -8,6 +8,8 @@ on:
       - 'src/components/ImmersiveDrawer.jsx'
       - 'src/components/collection/**'
       - 'src/game/sceneInputs.js'
+      - 'src/game/scenePresentation.js'
+      - 'src/game/engineRace.js'
       - 'src/game/mosaicCityRuntime.js'
       - 'src/game/immersiveHubState.js'
       - 'scripts/**'
@@ -48,9 +50,9 @@ jobs:
           set -euo pipefail
           mkdir -p /tmp/scene-ui-evidence
           git rev-parse HEAD > /tmp/scene-ui-evidence/tested-commit.txt
-          node --test --test-concurrency=1 scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs | tee /tmp/scene-ui-evidence/unit.log
+          node --test --test-concurrency=1 scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs scripts/fighterRaceGameplayAudit.test.mjs scripts/scenePresentation.test.mjs | tee /tmp/scene-ui-evidence/unit.log
           npm run test:ui-immersion | tee /tmp/scene-ui-evidence/ui-contracts.log
-          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/HubScreen.jsx src/components/SceneHoldButton.jsx src/game/sceneInputs.js scripts/sceneInputs.test.mjs scripts/fixtures/cityExtinctionHarness.jsx scripts/immersiveHubState.test.mjs scripts/mosaicCityRuntime.test.mjs | tee /tmp/scene-ui-evidence/lint.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/HubScreen.jsx src/components/SceneHoldButton.jsx src/game/sceneInputs.js scripts/sceneInputs.test.mjs scripts/fixtures/cityExtinctionHarness.jsx scripts/immersiveHubState.test.mjs scripts/mosaicCityRuntime.test.mjs src/game/scenePresentation.js scripts/scenePresentation.test.mjs | tee /tmp/scene-ui-evidence/lint.log
       - name: Real scenes in Chromium with committed artwork
         run: |
           set -euo pipefail
@@ -62,6 +64,7 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
           /tmp/scene-playwright/bin/python scripts/browserCityExtinction.py --require-art --evidence /tmp/scene-ui-evidence/browser | tee /tmp/scene-ui-evidence/browser.log
+          /tmp/scene-playwright/bin/python scripts/browserSceneServices.py --require-art --evidence /tmp/scene-ui-evidence/completion | tee /tmp/scene-ui-evidence/completion.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

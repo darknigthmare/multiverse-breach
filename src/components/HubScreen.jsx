@@ -17,6 +17,7 @@ import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_I
 import { inferNonCombatTrial } from '../game/nonCombatTrial';
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
+import { extinctionEnemyLabel, sceneJournalPreview } from '../game/scenePresentation.js';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
 import {
   FACTION_RULES,
@@ -2255,6 +2256,18 @@ function MosaicCityHub({
   const cityBackdropRef = useRef(null);
   useEffect(() => { const image = new Image(); image.src = MOSAIC_CITY_ART; cityBackdropRef.current = image; return () => { cityBackdropRef.current = null; }; }, []);
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
+  const journalRef = useRef(null);
+  const journalFocusRequestedRef = useRef(false);
+  const openJournal = () => { journalFocusRequestedRef.current = true; setCityMenuOpen(true); };
+  useEffect(() => {
+    if (!cityMenuOpen || !journalFocusRequestedRef.current) return undefined;
+    const frame = requestAnimationFrame(() => {
+      journalRef.current?.scrollIntoView({ block: 'nearest' });
+      journalRef.current?.focus({ preventScroll: true });
+      journalFocusRequestedRef.current = false;
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [cityMenuOpen]);
   const closeCityMenu = useCallback(() => setCityMenuOpen(false), []);
   const cityMenuRef = useRef(false);
   const [runtimeError, setRuntimeError] = useState(null);
@@ -2696,6 +2709,19 @@ function MosaicCityHub({
     if (!districts[currentDistrict]) switchDistrict({ target: 'atrium' });
   }, [currentDistrict, districts, switchDistrict]);
 
+  const openCityService = useCallback((callback, destination) => {
+    if (typeof callback !== 'function') return;
+    const state = stateRef.current;
+    state.destination = null;
+    state.pendingInteraction = null;
+    sceneInputsRef.current.clear();
+    state.keys = {};
+    // Snapshot before navigation: a parent need not unmount immediately.
+    locationCallbackRef.current?.(snapshotMosaicLocation(state, currentDistrictRef.current, currentZoneRef.current));
+    setCityMenuOpen(false);
+    callback(destination);
+  }, []);
+
   const interactWithNearby = useCallback((requestedTarget = null) => {
     if (sessionPausedRef.current) return;
     const state = stateRef.current;
@@ -2719,7 +2745,7 @@ function MosaicCityHub({
         ? 'Table de missions activee. Choisis ton objectif sur la carte; aucune mission ne demarre automatiquement.'
         : 'Mission board active. Choose your objective on the map; no mission starts automatically.');
       sound.playSfx('special');
-      onOpenMissions?.(zone.universe);
+      openCityService(onOpenMissions, zone.universe);
       return;
     }
     if (zone?.action === 'codex') {
@@ -2727,12 +2753,11 @@ function MosaicCityHub({
         ? (zone.universe ? `Codex local ouvert: ${zone.universe}.` : 'Archives des mondes ouvertes.')
         : (zone.universe ? `Local Codex opened: ${zone.universe}.` : 'World archives opened.'));
       sound.playSfx('confirm');
-      onOpenCodex?.(zone.universe);
+      openCityService(onOpenCodex, zone.universe);
       return;
     }
     if (['arcs', 'journal', 'party', 'inventory', 'customBattle'].includes(zone?.action)) {
-      locationCallbackRef.current?.(snapshotMosaicLocation(stateRef.current, currentDistrictRef.current, currentZoneRef.current));
-      onOpenService?.(zone.action);
+      openCityService(onOpenService, zone.action);
       return;
     }
     if (zone?.action === 'anchor') {
@@ -2770,7 +2795,7 @@ function MosaicCityHub({
       ? `${target.name} synchronise sa Trame avec ${playerName}. ${compatible.length ? `Discussion compatible avec ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} faille(s) stabilisee(s).`
       : `${target.name} synchronizes their Thread with ${playerName}. ${compatible.length ? `Compatible discussion with ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} stabilized rift(s).`);
     sound.playSfx('confirm');
-  }, [district, lang, onOpenCodex, onOpenMissions, onOpenService, playerName, recordGuide, switchDistrict, universeStageStats, zones]);
+  }, [district, lang, onOpenCodex, onOpenMissions, onOpenService, openCityService, playerName, recordGuide, switchDistrict, universeStageStats, zones]);
 
   useEffect(() => {
     const onKeyDown = event => {
@@ -3373,7 +3398,7 @@ function MosaicCityHub({
             <span>{nearZoneData.label}</span>
           </div>
         )}
-        <div className="mosaic-rpg-log" role="status" aria-live="polite">
+        <div ref={journalRef} className="mosaic-rpg-log" role="region" tabIndex={-1} aria-label={lang === 'fr' ? 'Journal de Trame' : 'Thread Log'}>
           <strong>{lang === 'fr' ? 'Journal de Trame' : 'Thread Log'}</strong>
           <span>{hubLog}</span>
         </div>
@@ -3410,7 +3435,11 @@ function MosaicCityHub({
             {guideState.status === 'active' && <button type="button" onClick={() => controlGuide('pause')}>{lang === 'fr' ? 'Pause guide' : 'Pause guide'}</button>}
           </section>
         ) : null}
-        <p className="mosaic-world-log" role="status">{hubLog}</p>
+        <button type="button" className="mosaic-world-log" onClick={openJournal} aria-haspopup="dialog" aria-label={lang === 'fr' ? 'Lire la transmission complète' : 'Read full transmission'}>
+          <strong>{lang === 'fr' ? 'TRANSMISSION · LIRE' : 'TRANSMISSION · READ'}</strong>
+          <span aria-hidden="true">{sceneJournalPreview(hubLog)}</span>
+        </button>
+        <span className="gameplay-live-status" role="status">{hubLog}</span>
         <canvas ref={canvasRef} width="960" height="540" tabIndex={0} aria-label={lang === 'fr' ? 'Cite-Mosaique, zone d exploration interactive' : 'Mosaic City, interactive exploration area'} aria-describedby="mosaic-city-controls-help" className="nexus-hub-canvas mosaic-rpg-canvas" onPointerDown={moveToPointer} />
         <div className="mosaic-mobile-pad mosaic-world-controls">
           {[['arrowleft', '←'], ['arrowup', '↑'], ['arrowdown', '↓'], ['arrowright', '→']].map(([key, label]) => (
@@ -3539,7 +3568,7 @@ function ExtinctionRoyale({
   const objectives = useMemo(() => ({
     extraction: lang === 'fr' ? 'Stabiliser 3 balises puis survivre au Champion de Trame.' : 'Stabilize 3 beacons, then survive the Thread Champion.',
     last_signal: lang === 'fr' ? 'Dernier Signal: eliminer toutes les signatures hostiles avant dissolution.' : 'Last Signal: eliminate every hostile signature before dissolution.',
-    infestation: lang === 'fr' ? 'Infestation: tenir le plus longtemps possible face aux essaims.' : 'Infestation: hold as long as possible against swarms.',
+    infestation: lang === 'fr' ? 'Infestation: survivre 60 secondes face aux essaims.' : 'Infestation: survive the swarms for 60 seconds.',
     hunt: lang === 'fr' ? 'Chasse au Champion: faire apparaitre et abattre le noyau local.' : 'Champion Hunt: expose and kill the local core.'
   }), [lang]);
 
@@ -3825,6 +3854,39 @@ function ExtinctionRoyale({
     sound.playSfx(victory ? 'victory' : 'defeat');
     onSessionEnd?.({ reason: 'completed', runId: state.runId, at: new Date().toISOString(), mode: runMode, kills: state.kills, waves: state.wave, result, rewards });
   }, [buildRunSnapshot, lang, onSessionEnd, runMode]);
+
+  const triggerEnemyDrop = useCallback((enemy, state) => {
+    if (Math.random() < 0.24) {
+      const types = ['shotgun', 'plasma', 'rocket'];
+      const chosen = types[Math.floor(Math.random() * types.length)];
+      let weaponData = null;
+      let label = '';
+      let color = '';
+      if (chosen === 'shotgun') {
+        weaponData = { type: 'shotgun', name: lang === 'fr' ? 'Fusil à pompe' : 'Shotgun', color: '#e67e22', fireRate: 1.5, spread: 0.28, dmgMult: 2.1, maxAmmo: 8 };
+        label = lang === 'fr' ? 'Fusil à pompe' : 'Shotgun';
+        color = '#e67e22';
+      } else if (chosen === 'plasma') {
+        weaponData = { type: 'plasma', name: lang === 'fr' ? 'Fusil plasma' : 'Plasma rifle', color: '#3498db', fireRate: 0.45, spread: 0.05, dmgMult: 0.65, maxAmmo: 60 };
+        label = 'Plasma';
+        color = '#3498db';
+      } else {
+        weaponData = { type: 'rocket', name: lang === 'fr' ? 'Lance-roquettes' : 'Rocket launcher', color: '#e74c3c', fireRate: 2.4, spread: 0.15, dmgMult: 4.5, maxAmmo: 4 };
+        label = lang === 'fr' ? 'Lance-roquettes' : 'Launcher';
+        color = '#e74c3c';
+      }
+      state.loot.push({
+        id: `wep-drop-${Date.now()}-${Math.random()}`,
+        type: 'weapon',
+        label,
+        wx: enemy.wx,
+        wy: enemy.wy,
+        color,
+        weaponData,
+        used: false
+      });
+    }
+  }, [lang]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -4123,7 +4185,7 @@ function ExtinctionRoyale({
           ctx.fillRect(x - w * 0.4, y - 8, w * 0.8 * Math.max(0, enemy.hp / enemy.maxHp), 4);
           ctx.fillStyle = '#fff';
           ctx.font = `${Math.max(7, 10 * scale)}px "Share Tech Mono"`;
-          ctx.fillText(enemy.kind.toUpperCase().slice(0, 12), x - w * 0.42, y - 13);
+          ctx.fillText(extinctionEnemyLabel(enemy.kind, lang).toUpperCase().slice(0, 18), x - w * 0.42, y - 13);
         });
 
       ctx.strokeStyle = state.muzzle ? '#ffea00' : 'rgba(255,255,255,0.72)';
@@ -4267,40 +4329,8 @@ function ExtinctionRoyale({
       window.cancelAnimationFrame(rafId);
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
     };
-  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, renderAttempt, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, selectedHero, universeFragments, weaponProfile.color]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, renderAttempt, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, selectedHero, triggerEnemyDrop, universeFragments, weaponProfile.color]);
 
-  const triggerEnemyDrop = (enemy, state) => {
-    if (Math.random() < 0.24) {
-      const types = ['shotgun', 'plasma', 'rocket'];
-      const chosen = types[Math.floor(Math.random() * types.length)];
-      let weaponData = null;
-      let label = '';
-      let color = '';
-      if (chosen === 'shotgun') {
-        weaponData = { type: 'shotgun', name: 'Fusil à Pompe / Shotgun', color: '#e67e22', fireRate: 1.5, spread: 0.28, dmgMult: 2.1, maxAmmo: 8 };
-        label = 'Shotgun';
-        color = '#e67e22';
-      } else if (chosen === 'plasma') {
-        weaponData = { type: 'plasma', name: 'Fusil Plasma / Plasma Rifle', color: '#3498db', fireRate: 0.45, spread: 0.05, dmgMult: 0.65, maxAmmo: 60 };
-        label = 'Plasma';
-        color = '#3498db';
-      } else {
-        weaponData = { type: 'rocket', name: 'Lance-Roquettes / Rocket Launcher', color: '#e74c3c', fireRate: 2.4, spread: 0.15, dmgMult: 4.5, maxAmmo: 4 };
-        label = 'Launcher';
-        color = '#e74c3c';
-      }
-      state.loot.push({
-        id: `wep-drop-${Date.now()}-${Math.random()}`,
-        type: 'weapon',
-        label,
-        wx: enemy.wx,
-        wy: enemy.wy,
-        color,
-        weaponData,
-        used: false
-      });
-    }
-  };
 
   const fire = () => {
     if (sessionPausedRef.current || intelRef.current) return;
@@ -4349,8 +4379,8 @@ function ExtinctionRoyale({
         triggerEnemyDrop(target, state);
       }
       state.statusText = target.hp <= 0
-        ? (lang === 'fr' ? `${target.kind} neutralisé.` : `${target.kind} neutralized.`)
-        : (lang === 'fr' ? `Impact confirmé sur ${target.kind}.` : `Confirmed hit on ${target.kind}.`);
+        ? (lang === 'fr' ? `${extinctionEnemyLabel(target.kind, lang)} neutralisé.` : `${extinctionEnemyLabel(target.kind, lang)} neutralized.`)
+        : (lang === 'fr' ? `Impact confirmé sur ${extinctionEnemyLabel(target.kind, lang)}.` : `Confirmed hit on ${extinctionEnemyLabel(target.kind, lang)}.`);
     } else {
       state.statusText = lang === 'fr' ? 'Aucune signature dans le réticule.' : 'No signature in the reticle.';
     }

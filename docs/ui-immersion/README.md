@@ -81,3 +81,7 @@ Extinction dispose d’un panneau **Directive · Commandes** suspendant la simul
 Le classeur garde **5 feuilles, 40 écrans, 39 lots** et comporte désormais **132 entrées de vérification**. Les écrans Cité/Extinction sont marqués **Partiel**, pas intégralement validés. L’aperçu du journal de la Cité reste tronqué à HUD 1,4 (texte complet dans le terminal), des silhouettes ennemies FPS restent génériques et les libellés de catalogue ne sont pas tous localisés. Quartiers/services complets, vrais périphériques, compte cloud, progression naturelle et recette consolidée des 40 écrans restent ouverts.
 
 Le workflow permanent `city-extinction-ui.yml` exige le décodage des fonds avant de valider les parcours. Le reçu précédent prouve les fichiers exacts ; il ne préjuge pas de l’état des vérifications du commit final, consultables dans [Checks](https://github.com/darknigthmare/multiverse-breach/pull/9/checks).
+
+## Suite : services et parties Extinction
+
+Voir [le compte rendu](scene-completion-2026-10-26.md) et [les preuves locales et empreintes](scene-completion-2026-10-26.json). Le classeur courant contient 144 vérifications ; les observations initiales et reçus précédents restent conservés.

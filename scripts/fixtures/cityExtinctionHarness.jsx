@@ -54,6 +54,9 @@ export function Harness(){
   const [saved,setSaved]=useState(null), [guide,setGuide]=useState(null);
   const [exit,setExit]=useState(0);
   audit.remount=()=>setMounted(true);audit.revision=revision;audit.saved=saved;
+  // Test-only prepared entry points; production has no writable QA hook.
+  audit.setLocation=location=>setSaved(location);
+  const service=(name,universe)=>{audit.services.push({service:name,universe,savedAtNavigation:audit.saves.at(-1)});setMounted(false);};
   const props={lang,heroes:catalog.map(h=>({...h,stats:{...h.stats}})),unlockedHeroes:catalog.map(h=>h.id),sessionPaused:paused,sessionExitRequest:exit,
     onSessionEnd:r=>{audit.reports.push(r);if(r.reason!=='completed')setDedicated(false);}};
   return <><header className="combat-qa-toolbar" style={{zIndex:200}}><p>QA — prepared profile; no real save.</p>
@@ -63,8 +66,8 @@ export function Harness(){
     <main className={`hub-screen ${dedicated?'is-dedicated-game':''}`} style={{paddingTop:60}}>
     {mounted && (mode==='city'?<MosaicCityHub {...props} completedStages={[]} stages={[]} playerProfile={{name:'QA'}} tutorialProgress={guide}
       onTutorialProgress={v=>setGuide(v)} savedLocation={saved} onLocationChange={v=>{audit.saves.push(v);setSaved(v);}}
-      onOpenMissions={u=>audit.services.push({service:'missions',universe:u})} onOpenCodex={u=>audit.services.push({service:'codex',universe:u})}
-      onOpenService={(service,u)=>audit.services.push({service,universe:u})}/>
+      onOpenMissions={u=>service('missions',u)} onOpenCodex={u=>service('codex',u)}
+      onOpenService={(name,u)=>service(name,u)}/>
       :<ExtinctionRoyale {...props} onSessionStart={()=>setDedicated(true)} career={{runs:0}}/>)}</main></>;
 }
 createRoot(document.getElementById('root')).render(<StrictMode><Harness/></StrictMode>);

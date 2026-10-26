@@ -26,9 +26,10 @@ def load_scene(page, mode, lang, args):
         }}''')
         page.evaluate('''({assets,params})=>{window.__sceneQaParams=params;window.__offlineMedia={loaded:[],missing:[]};
           const Original=window.Image;window.Image=class extends Original{set src(value){
+            this.originalPath=value;
             if(!assets[value]){window.__offlineMedia.missing.push(value);return;}
             this.addEventListener('load',()=>window.__offlineMedia.loaded.push(value),{once:true});super.src=assets[value];
-          }get src(){return super.src;}};
+          }get src(){return this.originalPath||super.src;}get currentSrc(){return this.originalPath||super.currentSrc;}};
         }''', {'assets': json.loads((root / 'assets.json').read_text()), 'params': f'?mode={mode}&lang={lang}'})
         page.add_script_tag(content=(root / 'offline/scene.iife.js').read_text())
     page.wait_for_function('window.__sceneQA?.state()')

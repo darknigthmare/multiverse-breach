@@ -254,9 +254,12 @@ test('the Archives Codex terminal opens the actual global archive only after app
   assert.equal(zone.universe, null, 'the global archive does not request an invented A.R.C.A. universe');
   const stateRef = { current: makeState() };
   const opened = [];
-  const source = city.slice(city.indexOf('const interactWithNearby ='), city.indexOf('  useEffect(() => {\n    const onKeyDown'));
+  const source = city.slice(city.indexOf('const openCityService ='), city.indexOf('  useEffect(() => {\n    const onKeyDown'));
   const args = {
     useCallback: callback => callback, sessionPausedRef: { current: false }, stateRef,
+    sceneInputsRef: { current: { clear() {} } }, setCityMenuOpen: () => {},
+    locationCallbackRef: { current: () => {} }, currentDistrictRef: { current: 'archives' }, currentZoneRef: { current: 'codex' },
+    snapshotMosaicLocation: (state, districtId, zoneId) => ({ player: {...state.player}, districtId, zoneId }),
     resolveMosaicInteraction, district: { portals: [] }, zones, lang: 'fr',
     setHubLog: () => {}, recordGuide: () => {}, switchDistrict: () => {},
     onOpenService: () => assert.fail('Codex cannot open another service'),

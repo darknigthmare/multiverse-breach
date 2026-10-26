@@ -1,3 +1,5 @@
+import { formatRaceObjective, raceObjectiveLabel } from './scenePresentation.js';
+
 const MIRELLE_KART_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete';
 
 export const RACE_ASSETS = {
@@ -25,13 +27,7 @@ const KART_ITEM_FRAMES = {
   cache: { col: 0, row: 0 }
 };
 
-const OBJECTIVE_LABELS = {
-  podium: 'Finir dans le podium',
-  beatRival: 'Battre le rival cible',
-  collectFragments: 'Recuperer les fragments',
-  closePortals: 'Fermer les portails',
-  timeLimit: 'Sceller avant surcharge'
-};
+
 
 const buildTrackFragments = (track) => {
   const waypoints = track.waypoints || [];
@@ -496,6 +492,7 @@ export class EngineRace {
     garageUpgrades = {},
     kartLoadout = null
   ) {
+    this.lang = 'fr';
     this.width = width;
     this.height = height;
     this.onFinish = onFinish;
@@ -589,7 +586,7 @@ export class EngineRace {
       complete: false,
       failed: false,
       collected: 0,
-      label: OBJECTIVE_LABELS[objective.type] || 'Objectif de course'
+      label: raceObjectiveLabel(objective.type, this.lang)
     };
   }
 
@@ -1288,18 +1285,8 @@ export class EngineRace {
     }
   }
 
-  getObjectiveStatus() {
-    if (!this.objective) return 'Objectif libre';
-    if (this.objective.type === 'collectFragments' || this.objective.type === 'closePortals') {
-      return `${this.objective.label}: ${this.objective.collected}/${this.objective.required}`;
-    }
-    if (this.objective.type === 'timeLimit') {
-      return `${this.objective.label}: ${Math.max(0, this.objective.seconds - this.time).toFixed(0)}s`;
-    }
-    if (this.objective.type === 'beatRival') {
-      return `${this.objective.label}: ${this.objective.rivalName || this.objective.rivalId}`;
-    }
-    return this.objective.label;
+  getObjectiveStatus(lang = this.lang) {
+    return formatRaceObjective(this.objective, this.time, lang);
   }
 
   updateProjectiles(dt) {

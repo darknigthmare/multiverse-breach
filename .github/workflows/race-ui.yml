@@ -5,6 +5,7 @@ on:
       - 'src/components/RaceMode.jsx'
       - 'src/components/HubImmersion.css'
       - 'src/game/engineRace.js'
+      - 'src/game/scenePresentation.js'
       - 'src/game/raceSessionControls.js'
       - 'scripts/**'
       - '.github/workflows/race-ui.yml'
@@ -48,7 +49,7 @@ jobs:
           set -euo pipefail
           mkdir -p /tmp/race-ui-evidence
           git rev-parse HEAD > /tmp/race-ui-evidence/tested-commit.txt
-          node --test scripts/raceSessionControls.test.mjs scripts/kartCareerSave.test.mjs scripts/fighterRaceGameplayAudit.test.mjs scripts/fixedStepClock.test.mjs scripts/immersiveHubState.test.mjs | tee /tmp/race-ui-evidence/unit.log
+          node --test scripts/raceSessionControls.test.mjs scripts/kartCareerSave.test.mjs scripts/fighterRaceGameplayAudit.test.mjs scripts/fixedStepClock.test.mjs scripts/immersiveHubState.test.mjs scripts/scenePresentation.test.mjs | tee /tmp/race-ui-evidence/unit.log
           node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/RaceMode.jsx src/game/raceSessionControls.js scripts/raceSessionControls.test.mjs scripts/fixtures/raceLifecycleHarness.jsx scripts/fixedStepClock.test.mjs scripts/immersiveHubState.test.mjs | tee /tmp/race-ui-evidence/lint.log
       - name: Chromium lifecycle and committed artwork
         run: |

@@ -330,3 +330,23 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
   .extinction-panel-active .extinction-hud-dock .nexus-play-actions .btn-retro { min-height: 42px; font-size: calc(10px * var(--game-hud-scale, 1)); }
 }
+
+/* Journal teaser is an action, never an inaccessible scroll area over the world. */
+.mosaic-rpg-panel .mosaic-world-log {
+  pointer-events: auto;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  border: 1px solid #39c5bb66;
+  border-radius: 5px;
+  bottom: calc(var(--hub-hud-bottom, 12px) + 56px * var(--game-hud-scale, 1));
+  max-height: none;
+  overflow: visible;
+}
+.mosaic-world-log strong { display: block; color: #83e7df; font-size: .78em; letter-spacing: .05em; }
+.mosaic-world-log span { display: block; margin-top: 3px; }
+.mosaic-world-log:focus-visible, .mosaic-rpg-log:focus-visible { outline: 3px solid #ffdc79; outline-offset: 2px; }
+@media (max-width: 760px) {
+  .mosaic-rpg-panel .mosaic-world-log { max-width: calc(100% - 180px); padding: 8px; }
+  .mosaic-world-log span { display: none; } /* Full transmission opens in one action. */
+}
