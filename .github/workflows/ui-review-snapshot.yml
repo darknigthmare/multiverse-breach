@@ -2,6 +2,8 @@ name: UI review snapshot
 on:
   push:
     branches: [codex/immersive-ui-audit-2026-10-25]
+    paths:
+      - '.github/workflows/ui-review-snapshot.yml'
 permissions:
   contents: read
 concurrency:
@@ -10,7 +12,7 @@ concurrency:
 jobs:
   review-snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -26,7 +28,7 @@ jobs:
             /docs/excel/Multiverse_Breach_UI_Immersion.xlsx
             **/*.json
             **/*.jsonl
-      - name: Package tracked review inputs (no credentials or installed dependencies)
+      - name: Package tracked review inputs (no credentials)
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -46,6 +48,15 @@ jobs:
               archive.writestr('REVIEW_COMMIT.txt', sha + '\n')
           (out / 'tested-source.txt').write_text(sha + '\nSource snapshot only; not a gameplay test result.\n')
           PY
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install and package exact locked test tools
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          tar -czf /tmp/ui-review/locked-node-modules.tar.gz node_modules
+          sha256sum package-lock.json /tmp/ui-review/locked-node-modules.tar.gz > /tmp/ui-review/toolchain.sha256
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: ui-review-${{ github.sha }}
