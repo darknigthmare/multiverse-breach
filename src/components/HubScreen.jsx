@@ -1,3 +1,5 @@
+import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
+import { getExtinctionRoster, getExtinctionViewmodel, getExtinctionHandFrame, drawExtinctionSchematic } from '../game/extinctionContent.js';
 import CharacterWardrobe from './CharacterWardrobe.jsx';
 import { applyActorAppearance } from '../game/wardrobe.js';
 import React, { lazy, Suspense, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
@@ -1377,35 +1379,6 @@ const getUniverseHubId = universe => `universe-${String(universe || 'nexus').toL
 const getUniverseHubColor = universe => {
   const hue = [...String(universe || 'Nexus')].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 360;
   return `hsl(${hue} 70% 52%)`;
-};
-
-const UNIVERSE_HUB_PLACES = {
-  'Resident Evil': { fr: 'Raccoon City', en: 'Raccoon City', mood: 'rues contaminees, barricades R.P.D., pharmacies pillees', type: 'city' },
-  Halo: { fr: 'Avant-poste UNSC', en: 'UNSC Outpost', mood: 'hangars blindes, balises Forerunner, silhouettes de dropship', type: 'military' },
-  'Half-Life': { fr: 'Secteur Black Mesa', en: 'Black Mesa Sector', mood: 'labos coupes, conduits HEV, resonances oranges', type: 'lab' },
-  Stargate: { fr: 'Salle de Porte SGC', en: 'SGC Gate Room', mood: 'rampe metallique, chevrons actifs, consoles A.R.C.A.', type: 'gate' },
-  'Silent Hill': { fr: 'Quartier Brumeux', en: 'Fog District', mood: 'asphalte humide, sirenes lointaines, enseignes eteintes', type: 'fog' },
-  Doom: { fr: 'Bastion UAC', en: 'UAC Bastion', mood: 'acier rouge, runes chaudes, sas de confinement', type: 'industrial' },
-  'Metal Gear': { fr: 'Plateforme Shadow Moses', en: 'Shadow Moses Platform', mood: 'neige tactique, caisses militaires, radars brouilles', type: 'military' },
-  'Final Fantasy VII': { fr: 'Secteur Mako', en: 'Mako Sector', mood: 'reacteurs verts, rails suspendus, fumee industrielle', type: 'reactor' },
-  'Tomb Raider': { fr: 'Crypte de la Relique', en: 'Relic Crypt', mood: 'pierres anciennes, torches basses, pieges scelles', type: 'ruins' },
-  'Spider: The Video Game': { fr: 'Laboratoires malefiques', en: 'Evil Labs', mood: 'circuits geants, verrerie, microprocesseurs et insectes mecaniques', type: 'lab' },
-  'The Simpsons': { fr: 'Rue de Springfield', en: 'Springfield Street', mood: 'maisons colorees, centrale au loin, enseignes absurdes', type: 'suburb' },
-  Futurama: { fr: 'New New York', en: 'New New York', mood: 'tubes de transport, neons, livraisons orbitales', type: 'futureCity' }
-};
-
-const getUniverseHubPlace = (universe, lang = 'fr') => {
-  const direct = UNIVERSE_HUB_PLACES[universe];
-  if (direct) return { ...direct, name: direct[lang] || direct.fr || direct.en };
-  const lower = String(universe || '').toLowerCase();
-  if (lower.includes('stargate')) return { ...UNIVERSE_HUB_PLACES.Stargate, name: lang === 'fr' ? `Salle de Porte ${universe}` : `${universe} Gate Room` };
-  if (lower.includes('final fantasy')) return { ...UNIVERSE_HUB_PLACES['Final Fantasy VII'], name: lang === 'fr' ? `District Cristal ${universe}` : `${universe} Crystal District` };
-  if (lower.includes('resident')) return { ...UNIVERSE_HUB_PLACES['Resident Evil'], name: 'Raccoon City' };
-  return {
-    name: lang === 'fr' ? `Quartier ${universe || 'Nexus'}` : `${universe || 'Nexus'} District`,
-    mood: lang === 'fr' ? 'decor reconstruit par la Trame, balises A.R.C.A. et fragments locaux' : 'Thread-built scenery, A.R.C.A. beacons, and local fragments',
-    type: 'generic'
-  };
 };
 
 const getArcUniverses = (arc, allHeroes = []) => {
@@ -3482,10 +3455,9 @@ function ExtinctionRoyale({
   const continueRef = useRef(null);
   const sessionPausedRef = useRef(sessionPaused);
   const sessionExitRequestRef = useRef(sessionExitRequest);
-  const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
   const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
-  const playableHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 40), [safeHeroes, unlockedSet]);
-  const [selectedHeroId, setSelectedHeroId] = useState(() => playableHeroes[0]?.id || safeHeroes[0]?.id || '');
+  const playableHeroes = useMemo(() => getExtinctionRoster(safeHeroes, unlockedHeroes), [safeHeroes, unlockedHeroes]);
+  const [selectedHeroId, setSelectedHeroId] = useState(() => playableHeroes[0]?.id || '');
   const [runMode, setRunMode] = useState('extraction');
   const [runSnapshot, setRunSnapshot] = useState({
     phase: 'ready',
@@ -3505,7 +3477,8 @@ function ExtinctionRoyale({
     result: null,
     rewards: null
   });
-  const selectedHero = playableHeroes.find(hero => hero.id === selectedHeroId) || playableHeroes[0] || safeHeroes[0] || null;
+  const selectedHero = playableHeroes.find(hero => hero.id === selectedHeroId) || playableHeroes[0] || null;
+  const viewmodel = useMemo(() => getExtinctionViewmodel(selectedHero), [selectedHero]);
   const stateRef = useRef({
     phase: 'ready',
     hp: 100,
@@ -3624,18 +3597,19 @@ function ExtinctionRoyale({
   }, [getRunObjectiveText]);
 
   useEffect(() => {
-    if (typeof Image === 'undefined') return undefined;
+    fpsHandsRef.current = null;
+    fpsProjectileRef.current = null;
+    if (typeof Image === 'undefined' || !viewmodel.src) return undefined;
     const hands = new Image();
-    const projectile = new Image();
-    hands.src = MIRELLE_COMPLETE_SPRITES.fpsHands;
-    projectile.src = MIRELLE_COMPLETE_SPRITES.fpsProjectile;
+    hands.src = viewmodel.src;
     fpsHandsRef.current = hands;
-    fpsProjectileRef.current = projectile;
+    const projectile = viewmodel.projectile ? new Image() : null;
+    if (projectile) { projectile.src = viewmodel.projectile; fpsProjectileRef.current = projectile; }
     return () => {
-      fpsHandsRef.current = null;
-      fpsProjectileRef.current = null;
+      if (fpsHandsRef.current === hands) fpsHandsRef.current = null;
+      if (fpsProjectileRef.current === projectile) fpsProjectileRef.current = null;
     };
-  }, []);
+  }, [viewmodel.src, viewmodel.projectile]);
 
   useEffect(() => {
     if (typeof Image === 'undefined' || !selectedHero?.universe) {
@@ -4262,34 +4236,27 @@ function ExtinctionRoyale({
       ctx.fill();
       ctx.restore();
 
-      if (fpsHandsRef.current?.complete && fpsHandsRef.current.naturalWidth) {
+      const handFrame = getExtinctionHandFrame(viewmodel, state);
+      if (handFrame && fpsHandsRef.current?.complete && fpsHandsRef.current.naturalWidth) {
         const sheet = fpsHandsRef.current;
-        const frameW = sheet.naturalWidth / 4;
-        const frameH = sheet.naturalHeight / 10;
-        const row = state.reloadPulse > 0 && !state.muzzle ? 6 : 0;
-        const reloadTrimTop = row === 6 ? 40 : 0;
-        const reloadTrimBottom = row === 6 ? 6 : 0;
-        const sourceH = frameH - reloadTrimTop - reloadTrimBottom;
-        const col = Math.floor(state.t / 12) % 4;
-        const handW = 300;
-        const handH = 188;
-        ctx.drawImage(
-          sheet,
-          col * frameW,
-          row * frameH + reloadTrimTop,
-          frameW,
-          sourceH,
+        const frameW = sheet.naturalWidth / handFrame.columns;
+        const frameH = sheet.naturalHeight / handFrame.rows;
+        const top = Math.min(handFrame.trim.top || 0, frameH - 1);
+        const sourceH = Math.max(1, frameH - top - (handFrame.trim.bottom || 0));
+        const handW = 300, handH = 188;
+        ctx.drawImage(sheet, handFrame.col * frameW, handFrame.row * frameH + top,
+          frameW, sourceH,
           canvas.width / 2 - handW / 2 - state.turnVel * 430 + state.vx * 85,
-          canvas.height - handH - 4,
-          handW,
-          handH
-        );
+          canvas.height - handH - 4, handW, handH);
         if (state.muzzle && fpsProjectileRef.current?.complete && fpsProjectileRef.current.naturalWidth) {
           const projectileSheet = fpsProjectileRef.current;
           ctx.globalAlpha = 0.88;
-          ctx.drawImage(projectileSheet, 0, 0, projectileSheet.naturalWidth, projectileSheet.naturalHeight, canvas.width / 2 - 205, canvas.height / 2 - 94, 410, 146);
+          ctx.drawImage(projectileSheet, 0, 0, projectileSheet.naturalWidth, projectileSheet.naturalHeight,
+            canvas.width / 2 - 205, canvas.height / 2 - 94, 410, 146);
           ctx.globalAlpha = 1;
         }
+      } else {
+        drawExtinctionSchematic(ctx, state, canvas.width, canvas.height, weaponProfile.color);
       }
       if (state.phase !== 'running') {
         ctx.fillStyle = 'rgba(0,0,0,0.72)';
@@ -4329,7 +4296,7 @@ function ExtinctionRoyale({
       window.cancelAnimationFrame(rafId);
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
     };
-  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, renderAttempt, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, selectedHero, triggerEnemyDrop, universeFragments, weaponProfile.color]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, renderAttempt, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, selectedHero, triggerEnemyDrop, universeFragments, weaponProfile.color, viewmodel]);
 
 
   const fire = () => {
@@ -4627,7 +4594,7 @@ function ExtinctionRoyale({
   const runEnded = runSnapshot.phase === 'ended';
 
   return (
-    <div className={`glass-panel nexus-play-panel extinction-panel ${runActive || runEnded ? 'extinction-panel-active' : ''} ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
+    <div data-viewmodel={viewmodel.id} className={`glass-panel nexus-play-panel extinction-panel ${runActive || runEnded ? 'extinction-panel-active' : ''} ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={hudTheme} mode="fps" />
       <ImmersiveDrawer open={Boolean(runtimeError)} onClose={recoverRun} lang={lang} title={lang === 'fr' ? 'Affichage Extinction interrompu' : 'Extinction display interrupted'}>
         <p>{lang === 'fr' ? 'La simulation est arrêtée. Cet incident n’attribue aucune récompense supplémentaire. Retourne à la préparation pour relancer une run.' : 'The simulation has stopped. This incident grants no additional rewards. Return to preparation to start a new run.'}</p>
@@ -4636,6 +4603,7 @@ function ExtinctionRoyale({
       </ImmersiveDrawer>
       <ImmersiveDrawer open={intelOpen} onClose={() => setIntelOpen(false)} lang={lang} title={lang === 'fr' ? 'Directive et commandes' : 'Directive and controls'}>
         <p>{objectives[runMode]}</p>
+        <p>{lang === 'fr' ? 'Visuel FPS : les planches personnelles disponibles sont liées à leur propriétaire. Les armes ramassées et les vues manquantes utilisent un schéma de secours, pas une illustration certifiée du personnage.' : 'FPS visuals: available personal sheets are bound to their owner. Pickup weapons and missing views use a fallback schematic, not certified character artwork.'}</p>
         <p>{runSnapshot.statusText}</p>
         <p>{lang === 'fr' ? 'ZQSD/WASD : déplacement. Flèches gauche/droite : tourner. Glisser sur la vue : viser. Toucher la vue ou Espace : tirer. R : recharger. E : récupérer un objet. Maj : capacité de rôle.' : 'WASD: movement. Left/right arrows: turn. Drag the view: aim. Tap the view or Space: fire. R: reload. E: collect an item. Shift: role ability.'}</p>
         <p>{lang === 'fr' ? 'Format paysage conseillé. Les boutons de déplacement fonctionnent aussi avec Espace ou Entrée maintenus.' : 'Landscape recommended. Movement buttons also work by holding Space or Enter.'}</p>
@@ -4670,6 +4638,7 @@ function ExtinctionRoyale({
               <option key={hero.id} value={hero.id}>{hero.name} / {hero.universe}</option>
             ))}
           </select>
+          {!playableHeroes.length && <p role="status">{lang === 'fr' ? 'Aucune signature combattante débloquée. Les personnages non combattants restent disponibles dans la Cité et leurs épreuves.' : 'No unlocked combat signature. Non-combat characters remain available in the City and their trials.'}</p>}
           <div className="nexus-play-intel">
             <strong>{weaponProfile.name}</strong>
             <span>{selectedHero?.category || 'marine'} - {(roleProfile[selectedHero?.category] || roleProfile.marine).perk}</span>
@@ -4708,7 +4677,7 @@ function ExtinctionRoyale({
           </div>
           <div className="nexus-play-actions">
             {!runActive && !runEnded && (
-              <button className="btn-retro" onClick={startRun} title={lang === 'fr' ? 'Lance une run Zone d Extinction.' : 'Start an Extinction Zone run.'}>
+              <button className="btn-retro" disabled={!selectedHero} onClick={startRun} title={lang === 'fr' ? 'Lance une run Zone d Extinction.' : 'Start an Extinction Zone run.'}>
                 {lang === 'fr' ? 'DEMARRER RUN' : 'START RUN'}
               </button>
             )}

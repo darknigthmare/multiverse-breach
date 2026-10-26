@@ -9,7 +9,7 @@ import './combatHarness.css';
 const params = new URLSearchParams(globalThis.__sceneQaParams || location.search);
 const lang = params.get('lang') === 'en' ? 'en' : 'fr';
 const mode = params.get('mode') === 'fps' ? 'fps' : 'city';
-const catalog = [createPlayerHero({name:'QA'}), ...HEROES_DB.filter(h => ['arca_mirelle','arca_bastion','arca_nova'].includes(h.id))];
+const catalog = [createPlayerHero({name:'QA'}), ...(params.get('catalog') === 'full' ? HEROES_DB : HEROES_DB.filter(h => ['arca_mirelle','arca_bastion','arca_nova'].includes(h.id)))];
 const audit = { reports: [], services: [], saves: [], mounted: true, mode };
 window.__sceneQA = audit;
 // Observe actual decoding, rather than counting requests as loaded artwork.
@@ -57,7 +57,7 @@ export function Harness(){
   // Test-only prepared entry points; production has no writable QA hook.
   audit.setLocation=location=>setSaved(location);
   const service=(name,universe)=>{audit.services.push({service:name,universe,savedAtNavigation:audit.saves.at(-1)});setMounted(false);};
-  const props={lang,heroes:catalog.map(h=>({...h,stats:{...h.stats}})),unlockedHeroes:catalog.map(h=>h.id),sessionPaused:paused,sessionExitRequest:exit,
+  const props={lang,heroes:catalog.map(h=>({...h,stats:{...h.stats}})),unlockedHeroes:params.get('owned') === 'none' ? [] : catalog.map(h=>h.id),sessionPaused:paused,sessionExitRequest:exit,
     onSessionEnd:r=>{audit.reports.push(r);if(r.reason!=='completed')setDedicated(false);}};
   return <><header className="combat-qa-toolbar" style={{zIndex:200}}><p>QA — prepared profile; no real save.</p>
     <button id="qa-render" onClick={()=>setRevision(v=>v+1)}>Render</button><button id="qa-pause" onClick={()=>setPaused(v=>!v)}>Pause</button>
