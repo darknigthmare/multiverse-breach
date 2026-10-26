@@ -103,7 +103,7 @@ Sept onglets :
 
 | Onglet | Contenu |
 |---|---|
-| Synthèse | Comptes et priorités, avec formules reliées au détail. |
+| Synthèse | Périmètre du relevé, observations de priorité figées et compteurs de suivi dynamiques. |
 | Évolutions | Comparaison des deux versions exécutées et état des PR. |
 | Personnages | Tous les acteurs, incarnations, listes, armes descriptives, sources et exclusions de combat. |
 | Armes et objets | Cinq catalogues, nature, restrictions, liens et présence des icônes. |
@@ -116,6 +116,8 @@ Les feuilles détaillées utilisent des tableaux avec filtres et des volets fig�
 **Marquer un dossier `Terminé` uniquement lorsque tous ses points sont traités**, avec une preuve qui couvre chacun d’eux. Tant qu’un point reste ouvert, conserver un statut intermédiaire. Un dossier marqué `Terminé` sans preuve affiche `Preuve manquante`. La formule vérifie la présence d’une preuve ; elle ne vérifie pas automatiquement le contenu de cette preuve ni la réalisation de chaque point.
 
 Dans Synthèse, **B14** compte les dossiers encore ouverts et **B15** les dossiers terminés avec preuve. À la livraison, ces comptes sont respectivement **10 232** et **0**. **B17** additionne la colonne P et conserve le total de **28 359 points regroupés** ; ce total de périmètre ne doit pas être confondu avec le nombre de dossiers ouverts.
+
+Les six comptes de priorité **B20 à B25** sont des **observations chiffrées figées au commit audité `1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6`**, vérifiées sur l’ensemble des constats. Ils décrivent leur fréquence au relevé et ne diminuent pas quand l’avancement d’un dossier change. Leur actualisation demande un nouvel export des données du jeu. Les compteurs de suivi **B14, B15 et B17**, ainsi que les résultats de la colonne **N** d’Actions, restent calculés par formules. Le classeur ne présente donc pas tous ses comptes comme dynamiques.
 
 Dans Personnages, `Arme décrite` reproduit le champ `weapon` du code, y compris lorsqu’il contient seulement `laser`, `gun` ou `slash`. La colonne `Famille technique` et les actions associées permettent de distinguer ces alias d’un modèle d’arme attesté. Ces libellés bruts ne certifient ni une dotation ni le comportement effectif en combat.
 

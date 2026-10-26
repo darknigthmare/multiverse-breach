@@ -293,7 +293,7 @@ summary.getRange('A7:D17').format.rowHeight = 38;
 summary.getRange('B7:B17').setNumberFormat('#,##0');
 summary.getRange('B7:B17').format.font = { name: 'Arial', size: 12, bold: true, color: colors.navy };
 summary.getRange('B7:B17').format.horizontalAlignment = 'right';
-summary.getRange('A19:B19').values = [['À compléter en priorité', 'Lignes']];
+summary.getRange('A19:B19').values = [['Constats prioritaires au commit', 'Lignes']];
 summary.getRange('A19:B19').format = { fill: colors.navy, font: { name: 'Arial', size: 10, bold: true, color: '#FFFFFF' }, horizontalAlignment: 'center', rowHeight: 29 };
 summary.getRange('D19').values = [['Critère de réalisation']];
 summary.getRange('D19').format.font.bold = true;
@@ -308,7 +308,9 @@ const focus = [
 focus.forEach(([kind, criterion], i) => {
   const r = i + 20;
   summary.getRange('A' + r).values = [[label(kind)]];
-  summary.getRange('B' + r).formulas = [["=COUNTIFS('Actions'!E7:E" + last.Actions + ',"*"&A' + r + '&"*")']];
+  // These are immutable observations from the source revision. Manual dossier
+  // progress changes B14/B15, while the original findings remain preserved.
+  summary.getRange('B' + r).values = [[data.gaps.filter(a => a.kind === kind).length]];
   summary.getRange('D' + r).values = [[criterion]];
 });
 summary.getRange('A20:D25').format.rowHeight = 33;
@@ -325,8 +327,10 @@ summary.getRange('A33').values = [['Mettre le suivi à jour']];
 summary.getRange('D33').values = [['Filtrer Actions ; traiter tous les points numérotés du dossier avant de renseigner Terminé et sa preuve. Les IDs restent conservés.']];
 summary.getRange('A34').values = [['Portée de la recherche']];
 summary.getRange('D34').values = [['Le relevé du dépôt est exhaustif ; le recensement de tous les équipements des œuvres sources reste à poursuivre.']];
-summary.getRange('A28:D34').format.rowHeight = 34;
-summary.getRange('D28:D34').format.wrapText = true;
+summary.getRange('A35').values = [['Actualisation des constats']];
+summary.getRange('D35').values = [['Les constats prioritaires sont figés au commit source. Le suivi des dossiers est calculé à partir des statuts et preuves.']];
+summary.getRange('A28:D35').format.rowHeight = 34;
+summary.getRange('D28:D35').format.wrapText = true;
 
 console.log('Checking workflow and summary');
 actions.getRange('K7').values = [['Terminé']];
@@ -353,6 +357,7 @@ const validation = {
   groupedDossiers: groupedFindings.size, automaticFindings: data.gaps.length,
   documentaryFollowups: canon.rows.length, totalFindings: allFindingIds.length,
   allFindingIdsPreserved: true,
+  priorityFindingCountsAreSourceSnapshot: true,
   summaryCountsChecked: true, workflowWithAndWithoutProofChecked: true,
   testedEngine: '@oai/artifact-tool', excelDesktopTested: false, canonicalFidelityApproved: false
 };
