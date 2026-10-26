@@ -6,6 +6,16 @@ Cette refonte applique l’audit des **40 écrans** à l’interface de Multiver
 - [Classeur Excel](../excel/Multiverse_Breach_UI_Immersion.xlsx)
 - [Preuves et état des vérifications](validation.json)
 
+## Reprise du 26 octobre 2026
+
+Le duel conserve désormais son moteur lors des rendus du parent, pauses et réglages. Une revanche explicite recrée la rencontre avec la dernière configuration. Les panneaux changent réellement entre dialogue non modal et modal natif, puis rendent le focus au bon contrôle.
+
+Preuves : **68 tests UI, 40 tests Fighter, 8 nouveaux parcours Chromium et 6 parcours Fighter existants réussis** ; lint sans erreur ni avertissement ; compilation source réussie. Les huit nouveaux parcours couvrent quatre formats de 390 à 2560 pixels et le français/anglais. Les états et combattants sont synthétiques : ce n’est pas la validation artistique de tous les écrans ni un essai de périphérique réel.
+
+[Compte rendu et empreintes des fichiers testés](continuation-2026-10-26.json) · [Exécution de preuve](https://github.com/darknigthmare/multiverse-breach/actions/runs/40268408942) · [Vérifications du commit actuel](https://github.com/darknigthmare/multiverse-breach/pull/9/checks). Les résultats historiques du 25 octobre restent archivés dans [validation-2026-10-25.json](validation-2026-10-25.json).
+
+Le classeur existant conserve ses cinq feuilles et ses 39 lots ; les lignes de preuve de reprise complètent son journal. Le fichier livré a été actualisé avec le runtime Python artifact_tool. Les descriptions de reprise et empreintes ci-dessus complètent les anciennes données du générateur ; une régénération depuis les seuls ledgers initiaux ne reproduit pas exactement ces annotations supplémentaires.
+
 ## Lire le classeur
 
 | Feuille | Contenu |

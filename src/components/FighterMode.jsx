@@ -285,6 +285,7 @@ export default function FighterMode({
   const onSessionEndRef = useRef(onSessionEnd);
   const sessionPausedRef = useRef(sessionPaused);
   const simulationClockRef = useRef(null);
+  const nextMatchSetupRef = useRef(null);
   const sessionExitRequestRef = useRef(sessionExitRequest);
   const [difficulty, setDifficulty] = useState('standard');
   const [opponentSeed, setOpponentSeed] = useState(1);
@@ -494,8 +495,53 @@ export default function FighterMode({
     return () => sound.stopBgm();
   }, [activeStageMusic, lobbyMusicStage, matchStarted]);
 
+  // Parent navigation, pause and reward writes can rebuild equivalent objects.
+  // Stage the next configuration separately; only an explicit match boundary
+  // owns the engine lifetime. In-flight actions/results must survive re-renders.
   useEffect(() => {
-    if (!matchStarted || !playerHeroes.length || !opponentHeroes.length) return undefined;
+    nextMatchSetupRef.current = {
+      activeBattleMusic,
+      activeFieldSuper,
+      arenaLevelProfile,
+      arenaUniverse,
+      battleMusicStage,
+      configuredDifficulty,
+      fighterCosmetics,
+      isCustomBattle,
+      opponentControl,
+      opponentHeroes,
+      playerHeroes
+    };
+  }, [
+    activeBattleMusic,
+    activeFieldSuper,
+    arenaLevelProfile,
+    arenaUniverse,
+    battleMusicStage,
+    configuredDifficulty,
+    fighterCosmetics,
+    isCustomBattle,
+    opponentControl,
+    opponentHeroes,
+    playerHeroes
+  ]);
+  const matchReady = playerHeroes.length > 0 && opponentHeroes.length > 0;
+
+  useEffect(() => {
+    if (!matchStarted || !matchReady) return undefined;
+    const {
+      activeBattleMusic,
+      activeFieldSuper,
+      arenaLevelProfile,
+      arenaUniverse,
+      battleMusicStage,
+      configuredDifficulty,
+      fighterCosmetics,
+      isCustomBattle,
+      opponentControl,
+      opponentHeroes,
+      playerHeroes
+    } = nextMatchSetupRef.current;
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
     inputRef.current = { player: {}, cpu: {} };
@@ -711,21 +757,7 @@ export default function FighterMode({
       if (engineRef.current === engine) engineRef.current = null;
       inputRef.current = { player: {}, cpu: {} };
     };
-  }, [
-    activeBattleMusic,
-    activeFieldSuper,
-    arenaLevelProfile,
-    arenaUniverse,
-    battleMusicStage,
-    configuredDifficulty,
-    fighterCosmetics,
-    isCustomBattle,
-    matchNonce,
-    matchStarted,
-    opponentControl,
-    opponentHeroes,
-    playerHeroes
-  ]);
+  }, [matchNonce, matchStarted, matchReady]);
 
   const startMatch = () => {
     if (sessionPausedRef.current || document.hidden || !playerHeroes.length || !opponentHeroes.length) return;

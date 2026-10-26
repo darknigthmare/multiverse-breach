@@ -1,26 +1,23 @@
 import { useEffect, useId, useRef } from 'react';
+import { createCombatDialogLifecycle } from '../game/combatDialogLifecycle.js';
 
 /** Paused reference/settings use a modal; live commands keep the battlefield
  * interactive. Both close before Escape reaches a containing session shell. */
 export default function CombatDrawer({ open, onClose, title, lang = 'fr', modal = false, children, className = '' }) {
   const ref = useRef(null);
   const titleId = useId();
-  const previousFocus = useRef(null);
+  const lifecycle = useRef(null);
   useEffect(() => {
-    const dialog = ref.current;
-    if (!dialog) return undefined;
-    if (open) {
-      previousFocus.current = document.activeElement;
-      if (!dialog.open) {
-        if (modal) dialog.showModal();
-        else dialog.show();
-      }
-      dialog.querySelector('[data-drawer-close]')?.focus({ preventScroll: true });
-    } else if (dialog.open) {
-      dialog.close();
-      if (previousFocus.current?.isConnected) previousFocus.current.focus({ preventScroll: true });
-    }
-    return undefined;
+    if (!ref.current) return undefined;
+    const controller = createCombatDialogLifecycle(ref.current);
+    lifecycle.current = controller;
+    return () => {
+      controller.dispose();
+      if (lifecycle.current === controller) lifecycle.current = null;
+    };
+  }, []);
+  useEffect(() => {
+    lifecycle.current?.sync(open, modal);
   }, [open, modal]);
   return (
     <dialog ref={ref} className={`combat-drawer ${modal ? 'is-paused' : 'is-live'} ${className}`}

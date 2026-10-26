@@ -1,12 +1,14 @@
 {
   "metadata": {
-    "date": "2026-10-25",
+    "date": "2026-10-26",
     "prUrl": "https://github.com/darknigthmare/multiverse-breach/pull/9",
     "previewUrl": "",
     "commit": "",
     "baseCommit": "b8b2c326da45ce11ed8bd8868fca0bf266dfd31a",
     "firstPublishedCodeCommit": "e2c03dd7184704c2937902535a47104a96363424",
-    "sourceState": "Corrections de revue locales, à publier avec le classeur."
+    "sourceState": "Correctifs de reprise validés dans GitHub Actions ; voir continuation-2026-10-26.json pour les empreintes exactes et la portée.",
+    "proofRun": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40268408942",
+    "historicalValidation": "validation-2026-10-25.json"
   },
   "checks": [
     {
@@ -184,15 +186,17 @@
       "limitations": []
     },
     {
-      "id": "CI-CURRENT",
-      "type": "CI distante",
-      "status": "pending",
+      "id": "CI-92A8E247",
+      "type": "CI distante — référence",
+      "status": "passed",
       "command": "Workflows GitHub de la PR #9",
-      "detail": "Nouvelle exécution attendue sur le commit des corrections et du classeur. Les contrôles de production ne sont ni supprimés ni contournés.",
+      "detail": "Fiabilité, signatures et build de production réussis sur le commit 92a8e247a4b1bb296676aa17ea5b9c7e0bbd4dc6 avant la reprise ; résultats ultérieurs distincts.",
       "actionIds": [],
       "auditIds": [],
       "evidence": [
-        "https://github.com/darknigthmare/multiverse-breach/pull/9/checks"
+        "https://github.com/darknigthmare/multiverse-breach/actions/runs/40229637237",
+        "https://github.com/darknigthmare/multiverse-breach/actions/runs/40229637284",
+        "https://github.com/darknigthmare/multiverse-breach/actions/runs/40229637338"
       ],
       "limitations": []
     },
@@ -207,6 +211,108 @@
       "evidence": [],
       "limitations": [
         "Manette physique, multitouch réel, synchronisation cloud avec un vrai compte et progression exhaustive non exécutés."
+      ]
+    },
+    {
+      "id": "RESUME-UNIT",
+      "type": "automated",
+      "status": "passed",
+      "command": "npm run test:ui-immersion",
+      "detail": "68/68 tests ; neuf nouveaux cas pour le cycle de dialogue.",
+      "actionIds": [
+        "COMBAT-05",
+        "COMBAT-06"
+      ],
+      "auditIds": [],
+      "evidence": [
+        "https://github.com/darknigthmare/multiverse-breach/actions/runs/40268408942"
+      ],
+      "limitations": [
+        "Ne certifie pas une recette artistique des 40 écrans, des appareils physiques, un vrai compte cloud ou la progression complète."
+      ]
+    },
+    {
+      "id": "RESUME-FIGHTER",
+      "type": "automated",
+      "status": "passed",
+      "command": "node --test scripts/fixedStepClock.test.mjs scripts/reauditFighterInputs.test.mjs",
+      "detail": "40/40 tests horloge et entrées Fighter.",
+      "actionIds": [],
+      "auditIds": [
+        "24"
+      ],
+      "evidence": [
+        "https://github.com/darknigthmare/multiverse-breach/actions/runs/40268408942"
+      ],
+      "limitations": [
+        "Ne certifie pas une recette artistique des 40 écrans, des appareils physiques, un vrai compte cloud ou la progression complète."
+      ]
+    },
+    {
+      "id": "RESUME-BROWSER",
+      "type": "browser-synthetic",
+      "synthetic": true,
+      "status": "passed",
+      "command": "scripts/browserImmersiveTransitions.py",
+      "detail": "8/8 scénarios, vrais composants React et moteur Fighter, données synthétiques : 1280x900 FR, 390x844 EN, 844x390 FR, 2560x1080 EN.",
+      "actionIds": [],
+      "auditIds": [
+        "24",
+        "25"
+      ],
+      "evidence": [
+        "https://github.com/darknigthmare/multiverse-breach/actions/runs/40268408942"
+      ],
+      "limitations": [
+        "Ne certifie pas une recette artistique des 40 écrans, des appareils physiques, un vrai compte cloud ou la progression complète."
+      ]
+    },
+    {
+      "id": "RESUME-EXISTING",
+      "type": "browser-synthetic",
+      "synthetic": true,
+      "status": "passed",
+      "command": "scripts/browserFighterLifecycle.py",
+      "detail": "6/6 parcours existants, dont deux erreurs de rendu injectées volontairement.",
+      "actionIds": [],
+      "auditIds": [
+        "24"
+      ],
+      "evidence": [
+        "https://github.com/darknigthmare/multiverse-breach/actions/runs/40268408942"
+      ],
+      "limitations": [
+        "Ne certifie pas une recette artistique des 40 écrans, des appareils physiques, un vrai compte cloud ou la progression complète."
+      ]
+    },
+    {
+      "id": "RESUME-LINT",
+      "type": "automated",
+      "status": "passed",
+      "command": "oxlint --max-warnings 0 (six modules/tests modifiés)",
+      "detail": "Zéro erreur et zéro avertissement.",
+      "actionIds": [],
+      "auditIds": [],
+      "evidence": [
+        "https://github.com/darknigthmare/multiverse-breach/actions/runs/40268408942"
+      ],
+      "limitations": [
+        "Ne certifie pas une recette artistique des 40 écrans, des appareils physiques, un vrai compte cloud ou la progression complète."
+      ]
+    },
+    {
+      "id": "RESUME-BUILD",
+      "type": "automated",
+      "status": "passed",
+      "command": "vite build",
+      "detail": "Compilation source réussie ; avertissement existant de taille de chunk. Médias absents du snapshot.",
+      "actionIds": [],
+      "auditIds": [],
+      "evidence": [
+        "https://github.com/darknigthmare/multiverse-breach/actions/runs/40268408942"
+      ],
+      "limitations": [
+        "Ne certifie pas une recette artistique des 40 écrans, des appareils physiques, un vrai compte cloud ou la progression complète."
       ]
     }
   ]

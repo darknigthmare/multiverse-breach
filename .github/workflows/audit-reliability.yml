@@ -62,7 +62,7 @@ jobs:
           node node_modules/oxlint/bin/oxlint --max-warnings 0
           src/game/tacticsAttackCommitment.js scripts/fixtures/tacticsAttackHarness.jsx src/game/tacticsSourceHealing.js scripts/fixtures/tacticsHealingHarness.jsx src/game/stockMedicModes.js src/game/fighterHealing.js src/game/fighterMeleeSignatures.js src/game/fighterRangedSignatures.js src/game/combatActivity.js src/game/rpgActionEconomy.js src/game/rpgActionCommitment.js
           src/game/engineFighter.js src/game/fighterControlOwnership.js src/game/originalUniverseProduction.js src/components/BuildIdentity.jsx
-          src/components/FighterMode.jsx scripts/fixtures/fighterLifecycleHarness.jsx scripts/fixtures/fighterMeleeHarness.jsx scripts/fixtures/fighterRangedHarness.jsx
+          src/components/FighterMode.jsx src/components/CombatDrawer.jsx src/game/combatDialogLifecycle.js scripts/combatDialogLifecycle.test.mjs scripts/fixtures/combatDrawerHarness.jsx scripts/fixtures/fighterLifecycleHarness.jsx scripts/fixtures/fighterMeleeHarness.jsx scripts/fixtures/fighterRangedHarness.jsx
           src/components/TacticsSupportPanel.jsx scripts/reaudit*.test.mjs scripts/tacticsFacingRuntime.test.mjs
           scripts/buildIdentity.mjs scripts/progressionAudit.mjs vite.config.js
       - name: Lint changed modules and tests
@@ -100,6 +100,7 @@ jobs:
           /tmp/multiverse-playwright/bin/python scripts/browserAuditFollowup.py --evidence /tmp/reliability-evidence/browser | tee /tmp/reliability-evidence/browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserRpgLifecycle.py --evidence /tmp/reliability-evidence/rpg-browser | tee /tmp/reliability-evidence/rpg-browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserTacticsReliability.py --evidence /tmp/reliability-evidence/tactics-browser | tee /tmp/reliability-evidence/tactics-browser.log
+          /tmp/multiverse-playwright/bin/python scripts/browserImmersiveTransitions.py --evidence /tmp/reliability-evidence/immersive-transitions | tee /tmp/reliability-evidence/immersive-transitions.log
           /tmp/multiverse-playwright/bin/python scripts/browserFighterLifecycle.py --evidence /tmp/reliability-evidence/fighter-browser | tee /tmp/reliability-evidence/fighter-browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserTacticsHealing.py --evidence /tmp/reliability-evidence/tactics-healing-browser | tee /tmp/reliability-evidence/tactics-healing-browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserTacticsAttack.py --evidence /tmp/reliability-evidence/tactics-attack-browser | tee /tmp/reliability-evidence/tactics-attack-browser.log

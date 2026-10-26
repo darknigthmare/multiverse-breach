@@ -120,7 +120,7 @@
     "test:audit-followup": "node --test --test-concurrency=1 scripts/auditAuthRecovery.test.mjs scripts/auditFollowupRegressions.test.mjs",
     "test:audit-combat": "node --test --test-concurrency=1 scripts/auditRpgLifecycle.test.mjs scripts/auditEventConsumption.test.mjs",
     "test:audit-tactics": "node --test --test-concurrency=1 scripts/auditTacticsReliability.test.mjs scripts/auditTacticsLifecycle.test.mjs scripts/auditTacticsSupport.test.mjs",
-    "test:ui-immersion": "node --test --test-concurrency=1 scripts/gameSystemImmersion.test.mjs scripts/combatViewport.test.mjs scripts/immersiveHubState.test.mjs scripts/shellImmersion.test.mjs scripts/shellImmersionPresentation.test.mjs scripts/cloudReconciliationRace.test.mjs"
+    "test:ui-immersion": "node --test --test-concurrency=1 scripts/gameSystemImmersion.test.mjs scripts/combatDialogLifecycle.test.mjs scripts/combatViewport.test.mjs scripts/immersiveHubState.test.mjs scripts/shellImmersion.test.mjs scripts/shellImmersionPresentation.test.mjs scripts/cloudReconciliationRace.test.mjs"
   },
   "dependencies": {
     "react": "^19.2.7",
