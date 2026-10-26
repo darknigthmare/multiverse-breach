@@ -1,0 +1,49 @@
+name: UI source review inputs
+on:
+  push:
+    branches: [codex/immersive-ui-audit-2026-10-25]
+    paths: ['.github/workflows/ui-source-review.yml']
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /.github/workflows/
+            /docs/ui-immersion/
+            /docs/excel/Multiverse_Breach_UI_Immersion.xlsx
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+      - name: Archive tracked review inputs only
+        run: |
+          python3 - <<'PY'
+          import subprocess,zipfile
+          from pathlib import Path
+          out=Path('/tmp/ui-review');out.mkdir(exist_ok=True)
+          with zipfile.ZipFile(out/'review-source.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for name in subprocess.check_output(['git','ls-files','-z']).decode().split('\0'):
+                  p=Path(name)
+                  if not name or not p.is_file() or p.is_symlink():continue
+                  if name.startswith(('src/','scripts/','api/','.github/workflows/','docs/ui-immersion/','public/')) or name=='docs/excel/Multiverse_Breach_UI_Immersion.xlsx' or ('/' not in name and p.suffix in {'.json','.js','.html','.md'}):
+                      z.write(p,name)
+              z.writestr('REVIEW_COMMIT.txt',subprocess.check_output(['git','rev-parse','HEAD']))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ui-review-${{ github.sha }}
+          path: /tmp/ui-review/
+          retention-days: 7
