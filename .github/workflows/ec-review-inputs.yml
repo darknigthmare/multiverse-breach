@@ -5,13 +5,10 @@ on:
     paths: ['.github/workflows/ec-review-inputs.yml']
 permissions:
   contents: read
-concurrency:
-  group: ec-review-inputs
-  cancel-in-progress: true
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 6
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -32,28 +29,37 @@ jobs:
             **/*.jsonl
             /public/images/campaign-oc/chapter-01-atrium-v1.png
             /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/
+            /public/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/
+            /public/sprites/generated/heroes/torbahead/torbahead-community-remix-curator.png
+            /public/sprites/generated/heroes/bioshock/bioshock-rapture-tenenbaum.png
             /public/backgrounds/lore-stages/nexus-de-convergence/
-      - name: Archive tracked files only
+      - name: Recover reviewed source without publishing it
         run: |
           python3 - <<'PY'
-          import subprocess,zipfile
+          import base64,gzip,hashlib,json,subprocess,zipfile
           from pathlib import Path
-          out=Path('/tmp/ec-review');out.mkdir(exist_ok=True)
-          files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          m=json.loads(Path('docs/extinction-city/review-code.json').read_text())
+          for f in m['files']:
+              p=Path(f['path']); assert not p.is_symlink()
+              assert (hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None)==f['before'],f['path']
+          encoded=''.join(p.read_text().strip() for p in sorted(Path('docs/extinction-city').glob('review-code.part*')))
+          patch=gzip.decompress(base64.b64decode(encoded))
+          assert hashlib.sha256(patch).hexdigest()==m['patchSha256']
+          Path('/tmp/ec.patch').write_bytes(patch)
+          subprocess.run(['git','apply','--check','/tmp/ec.patch'],check=True)
+          subprocess.run(['git','apply','/tmp/ec.patch'],check=True)
+          for f in m['files']:assert hashlib.sha256(Path(f['path']).read_bytes()).hexdigest()==f['after'],f['path']
+          out=Path('/tmp/ec-recovery');out.mkdir(exist_ok=True)
+          files=set(subprocess.check_output(['git','ls-files','-z']).decode().split('\0'))|{f['path'] for f in m['files']}
           with zipfile.ZipFile(out/'source.zip','w',zipfile.ZIP_DEFLATED) as z:
-              for name in files:
+              for name in sorted(files):
                   if name and Path(name).is_file() and not Path(name).is_symlink():z.write(name,name)
-              z.writestr('REVIEW_COMMIT.txt',subprocess.check_output(['git','rev-parse','HEAD']).decode())
               z.writestr('REVIEW_TREE.txt',subprocess.check_output(['git','ls-tree','-r','HEAD']).decode())
+              z.writestr('RECOVERED_PATCH.txt',m['patchSha256'])
           PY
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: tar -czf /tmp/ec-review/node-modules.tgz node_modules
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: ec-review-${{ github.sha }}
-          path: /tmp/ec-review/
+          name: ec-recovered-${{ github.sha }}
+          path: /tmp/ec-recovery/
           retention-days: 7
