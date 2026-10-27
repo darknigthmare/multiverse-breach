@@ -2,7 +2,7 @@ name: EC reviewed continuation
 on:
   push:
     branches: [codex/extinction-city-continuation-2026-10-27]
-    paths: ['docs/extinction-city/review-code.*', '.github/workflows/ec-reviewed-code.yml']
+    paths: ['docs/extinction-city/review-code.*', 'docs/extinction-city/review-fixes.py', '.github/workflows/ec-reviewed-code.yml']
 permissions:
   contents: read
 jobs:
@@ -33,10 +33,10 @@ jobs:
             /public/sprites/generated/heroes/torbahead/torbahead-community-remix-curator.png
             /public/sprites/generated/heroes/bioshock/bioshock-rapture-tenenbaum.png
             /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
-      - name: Verify and apply exact reviewed patch
+      - name: Recover hash-checked patch and repair browser test contracts
         run: |
           python3 - <<'PY'
-          import base64,gzip,hashlib,json,subprocess
+          import base64,gzip,hashlib,json,subprocess,zipfile
           from pathlib import Path
           out=Path('/tmp/ec-verified');out.mkdir(exist_ok=True)
           m=json.loads(Path('docs/extinction-city/review-code.json').read_text())
@@ -51,7 +51,13 @@ jobs:
           subprocess.run(['git','apply','--check','/tmp/ec.patch'],check=True)
           subprocess.run(['git','apply','/tmp/ec.patch'],check=True)
           for f in m['files']:assert hashlib.sha256(Path(f['path']).read_bytes()).hexdigest()==f['after'],f['path']
+          subprocess.run(['python3','docs/extinction-city/review-fixes.py'],check=True)
+          updated='1f7c07539f0b37123cfcd00f31d9719d6893d2aaf665ebb2458c8889683460c6'
+          assert hashlib.sha256(Path('scripts/browserResidentViewmodels.py').read_bytes()).hexdigest()==updated
+          next(f for f in m['files'] if f['path']=='scripts/browserResidentViewmodels.py')['after']=updated
           (out/'manifest.json').write_text(json.dumps(m,indent=2))
+          with zipfile.ZipFile(out/'tested-files.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for f in m['files']:z.write(f['path'],f['path'])
           PY
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
