@@ -2,7 +2,7 @@ name: EC reviewed continuation
 on:
   push:
     branches: [codex/extinction-city-continuation-2026-10-27]
-    paths: ['docs/extinction-city/review-code.*', 'docs/extinction-city/review-fixes.py', '.github/workflows/ec-reviewed-code.yml']
+    paths: ['docs/extinction-city/review-code.*', 'docs/extinction-city/review-fixes.py', 'docs/extinction-city/review-navigation.py', '.github/workflows/ec-reviewed-code.yml']
 permissions:
   contents: read
 jobs:
@@ -33,7 +33,7 @@ jobs:
             /public/sprites/generated/heroes/torbahead/torbahead-community-remix-curator.png
             /public/sprites/generated/heroes/bioshock/bioshock-rapture-tenenbaum.png
             /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
-      - name: Recover hash-checked patch and repair browser test contracts
+      - name: Apply hash-checked source and regression fixes
         run: |
           python3 - <<'PY'
           import base64,gzip,hashlib,json,subprocess,zipfile
@@ -54,9 +54,7 @@ jobs:
           subprocess.run(['python3','docs/extinction-city/review-fixes.py'],check=True)
           p=Path('scripts/browserResidentViewmodels.py')
           assert hashlib.sha256(p.read_bytes()).hexdigest()=='1f7c07539f0b37123cfcd00f31d9719d6893d2aaf665ebb2458c8889683460c6'
-          s=p.read_text()
-          old="resident_name=target.locator('strong').inner_text()"
-          assert s.count(old)==1
+          s=p.read_text();old="resident_name=target.locator('strong').inner_text()";assert s.count(old)==1
           s=s.replace(old,"resident_name=target.locator('strong').text_content().strip()")
           old="        before=page.evaluate('window.__sceneQA.snapshot()');page.locator('#qa-render').click()"
           new="        # The QA parent is intentionally outside the inert game dialog. Trigger\n        # its rerender programmatically without mutating the simulation.\n        before=page.evaluate('window.__sceneQA.snapshot()')\n        revision=page.evaluate('window.__sceneQA.revision')\n        page.locator('#qa-render').evaluate('node => node.click()')\n        page.wait_for_function('v => window.__sceneQA.revision === v + 1', arg=revision)"
@@ -65,6 +63,8 @@ jobs:
           assert hashlib.sha256(p.read_bytes()).hexdigest()==updated
           next(f for f in m['files'] if f['path']=='scripts/browserResidentViewmodels.py')['after']=updated
           (out/'manifest.json').write_text(json.dumps(m,indent=2))
+          subprocess.run(['python3','docs/extinction-city/review-navigation.py'],check=True)
+          m=json.loads((out/'manifest.json').read_text())
           with zipfile.ZipFile(out/'tested-files.zip','w',zipfile.ZIP_DEFLATED) as z:
               for f in m['files']:z.write(f['path'],f['path'])
           PY
@@ -76,9 +76,9 @@ jobs:
       - name: Unit, lint and source compilation
         run: |
           set -euo pipefail
-          node --test scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs scripts/extinctionContent.test.mjs scripts/mosaicUniversePlaces.test.mjs scripts/scenePresentation.test.mjs scripts/mosaicResidents.test.mjs scripts/extinctionViewmodelContract.test.mjs | tee /tmp/ec-verified/unit.log
+          node --test scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs scripts/extinctionContent.test.mjs scripts/mosaicUniversePlaces.test.mjs scripts/scenePresentation.test.mjs scripts/mosaicResidents.test.mjs scripts/mosaicResidentNavigation.test.mjs scripts/extinctionViewmodelContract.test.mjs | tee /tmp/ec-verified/unit.log
           npm run test:ui-immersion | tee /tmp/ec-verified/ui.log
-          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/HubScreen.jsx src/game/mosaicResidents.js src/game/extinctionContent.js scripts/extinctionViewmodelContract.mjs scripts/extinctionViewmodelContract.test.mjs scripts/mosaicResidents.test.mjs | tee /tmp/ec-verified/lint.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/HubScreen.jsx src/game/mosaicResidents.js src/game/mosaicCityRuntime.js src/game/extinctionContent.js scripts/extinctionViewmodelContract.mjs scripts/extinctionViewmodelContract.test.mjs scripts/mosaicResidents.test.mjs scripts/mosaicResidentNavigation.test.mjs | tee /tmp/ec-verified/lint.log
           node node_modules/vite/bin/vite.js build | tee /tmp/ec-verified/source-build.log
       - name: Actual resident navigation and FPS draw calls in Chromium
         run: |
