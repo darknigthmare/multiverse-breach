@@ -350,3 +350,13 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .mosaic-rpg-panel .mosaic-world-log { max-width: calc(100% - 180px); padding: 8px; }
   .mosaic-world-log span { display: none; } /* Full transmission opens in one action. */
 }
+
+/* Full owned resident directory, independent of the bounded world population. */
+.mosaic-resident-directory { width: 100%; min-width: 0; border-top: 1px solid #39c5bb55; padding-block: 12px; }
+.mosaic-resident-directory summary { cursor: pointer; padding-block: 10px; color: #8fe7df; }
+.mosaic-resident-directory label { display: grid; gap: 6px; margin-block: 10px; }
+.mosaic-resident-results { display: grid; gap: 8px; }
+.mosaic-resident-results button { display: grid; gap: 4px; text-align: left; min-height: 48px; width: 100%; overflow-wrap: anywhere; }
+.mosaic-resident-results span { color: #bed3dc; }
+.mosaic-resident-directory nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-block: 12px; flex-wrap: wrap; }
+.mosaic-resident-directory small { line-height: 1.5; }

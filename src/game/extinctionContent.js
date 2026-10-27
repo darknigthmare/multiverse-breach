@@ -60,3 +60,40 @@ export function drawExtinctionSchematic(ctx, state, width, height, color = '#39c
   }
   ctx.restore();
 }
+
+/** Source pixels stay in one declared cell, including every trim edge.
+ * Invalid/unloaded artwork uses the existing schematic, not a borrowed sheet.
+ */
+export function getExtinctionHandSourceRect(frame, width, height) {
+  if (!frame || !Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return null;
+  const { columns, rows, col, row } = frame;
+  if (![columns, rows].every(n => Number.isInteger(n) && n > 0)
+      || !Number.isInteger(col) || col < 0 || col >= columns
+      || !Number.isInteger(row) || row < 0 || row >= rows) return null;
+  const cellW = width / columns, cellH = height / rows;
+  if (cellW < 1 || cellH < 1) return null;
+  const edge = n => Number.isFinite(n) ? Math.max(0, n) : 0;
+  const trim = frame.trim || {};
+  const left = Math.min(edge(trim.left), cellW - 1), top = Math.min(edge(trim.top), cellH - 1);
+  const right = Math.min(edge(trim.right), cellW - left - 1), bottom = Math.min(edge(trim.bottom), cellH - top - 1);
+  return { x: col * cellW + left, y: row * cellH + top, w: cellW - left - right, h: cellH - top - bottom };
+}
+
+/** Contain the source aspect inside the existing lower-screen envelope. */
+export function getExtinctionHandPlacement(source, width, height, state = {}) {
+  if (!source || ![source.w, source.h, width, height].every(n => Number.isFinite(n) && n > 0)) return null;
+  const maxW = Math.min(300, width * 0.6), maxH = Math.min(188, height * 0.44);
+  const scale = Math.min(maxW / source.w, maxH / source.h);
+  const w = source.w * scale, h = source.h * scale;
+  const finite = n => Number.isFinite(n) ? n : 0;
+  const sway = Math.max(-maxW * 0.15, Math.min(maxW * 0.15, -finite(state.turnVel) * 430 + finite(state.vx) * 85));
+  return { x: Math.max(0, Math.min(width - w, (width - w) / 2 + sway)), y: Math.max(0, height - h - Math.min(4, height * 0.02)), w, h };
+}
+
+/** Existing firing overlay only: aspect correction does not create ballistics. */
+export function getExtinctionProjectilePlacement(sourceWidth, sourceHeight, width, height) {
+  if (![sourceWidth, sourceHeight, width, height].every(n => Number.isFinite(n) && n > 0)) return null;
+  const scale = Math.min(Math.min(410, width * 0.8) / sourceWidth, Math.min(146, height * 0.34) / sourceHeight);
+  const w = sourceWidth * scale, h = sourceHeight * scale;
+  return { x: (width - w) / 2, y: Math.max(0, Math.min(height - h, height / 2 - 94 + (146 - h) / 2)), w, h };
+}
