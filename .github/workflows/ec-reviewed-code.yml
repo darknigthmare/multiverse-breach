@@ -1,0 +1,101 @@
+name: EC reviewed continuation
+on:
+  push:
+    branches: [codex/extinction-city-continuation-2026-10-27]
+    paths: ['docs/extinction-city/review-code.*', '.github/workflows/ec-reviewed-code.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.repository == 'darknigthmare/multiverse-breach' && github.ref == 'refs/heads/codex/extinction-city-continuation-2026-10-27'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /docs/extinction-city/
+            /.github/workflows/
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/
+            /public/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/
+            /public/sprites/generated/heroes/torbahead/torbahead-community-remix-curator.png
+            /public/sprites/generated/heroes/bioshock/bioshock-rapture-tenenbaum.png
+            /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+      - name: Verify and apply exact reviewed patch
+        run: |
+          python3 - <<'PY'
+          import base64,gzip,hashlib,json,subprocess
+          from pathlib import Path
+          out=Path('/tmp/ec-verified');out.mkdir(exist_ok=True)
+          m=json.loads(Path('docs/extinction-city/review-code.json').read_text())
+          allowed={'.github/workflows/residents-viewmodels.yml','scripts/browserResidentViewmodels.py','scripts/extinctionViewmodelContract.mjs','scripts/extinctionViewmodelContract.test.mjs','scripts/mosaicResidents.test.mjs','scripts/progressionAudit.mjs','src/components/HubImmersion.css','src/components/HubScreen.jsx','src/game/extinctionContent.js','src/game/mosaicResidents.js'}
+          assert {f['path'] for f in m['files']}==allowed
+          for f in m['files']:
+              p=Path(f['path']);assert not p.is_symlink()
+              assert (hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None)==f['before'],f['path']
+          text=''.join(p.read_text().strip() for p in sorted(Path('docs/extinction-city').glob('review-code.part*')))
+          patch=gzip.decompress(base64.b64decode(text));assert len(patch)<1000000 and hashlib.sha256(patch).hexdigest()==m['patchSha256']
+          Path('/tmp/ec.patch').write_bytes(patch)
+          subprocess.run(['git','apply','--check','/tmp/ec.patch'],check=True)
+          subprocess.run(['git','apply','/tmp/ec.patch'],check=True)
+          for f in m['files']:assert hashlib.sha256(Path(f['path']).read_bytes()).hexdigest()==f['after'],f['path']
+          (out/'manifest.json').write_text(json.dumps(m,indent=2))
+          PY
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Unit, lint and source compilation
+        run: |
+          set -euo pipefail
+          node --test scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs scripts/extinctionContent.test.mjs scripts/mosaicUniversePlaces.test.mjs scripts/scenePresentation.test.mjs scripts/mosaicResidents.test.mjs scripts/extinctionViewmodelContract.test.mjs | tee /tmp/ec-verified/unit.log
+          npm run test:ui-immersion | tee /tmp/ec-verified/ui.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/HubScreen.jsx src/game/mosaicResidents.js src/game/extinctionContent.js scripts/extinctionViewmodelContract.mjs scripts/extinctionViewmodelContract.test.mjs scripts/mosaicResidents.test.mjs | tee /tmp/ec-verified/lint.log
+          node node_modules/vite/bin/vite.js build | tee /tmp/ec-verified/source-build.log
+      - name: Actual resident navigation and FPS draw calls in Chromium
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/ec-browser
+          /tmp/ec-browser/bin/pip install playwright==1.57.0
+          /tmp/ec-browser/bin/python -m playwright install --with-deps chromium
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/ec-verified/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          /tmp/ec-browser/bin/python scripts/browserResidentViewmodels.py --evidence /tmp/ec-verified/browser | tee /tmp/ec-verified/browser.log
+          /tmp/ec-browser/bin/python scripts/browserExtinctionCatalog.py --require-art --evidence /tmp/ec-verified/existing | tee /tmp/ec-verified/existing.log
+      - name: Store verified objects only, never update a ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64,hashlib,json,os,urllib.request
+          from pathlib import Path
+          m=json.loads(Path('/tmp/ec-verified/manifest.json').read_text());blobs=[]
+          for f in m['files']:
+              raw=Path(f['path']).read_bytes();assert hashlib.sha256(raw).hexdigest()==f['after']
+              req=urllib.request.Request('https://api.github.com/repos/darknigthmare/multiverse-breach/git/blobs',data=json.dumps({'encoding':'base64','content':base64.b64encode(raw).decode()}).encode(),method='POST',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'ec-verified-review'})
+              with urllib.request.urlopen(req,timeout=30) as r:result=json.load(r)
+              assert result['sha']==hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+              blobs.append({'path':f['path'],'mode':'100644','type':'blob','sha':result['sha']})
+          Path('/tmp/ec-verified/blobs.json').write_text(json.dumps(blobs,indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: ec-verified-${{ github.sha }}
+          path: /tmp/ec-verified/
+          retention-days: 14
