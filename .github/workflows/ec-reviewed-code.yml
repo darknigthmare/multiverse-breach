@@ -52,8 +52,17 @@ jobs:
           subprocess.run(['git','apply','/tmp/ec.patch'],check=True)
           for f in m['files']:assert hashlib.sha256(Path(f['path']).read_bytes()).hexdigest()==f['after'],f['path']
           subprocess.run(['python3','docs/extinction-city/review-fixes.py'],check=True)
-          updated='1f7c07539f0b37123cfcd00f31d9719d6893d2aaf665ebb2458c8889683460c6'
-          assert hashlib.sha256(Path('scripts/browserResidentViewmodels.py').read_bytes()).hexdigest()==updated
+          p=Path('scripts/browserResidentViewmodels.py')
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='1f7c07539f0b37123cfcd00f31d9719d6893d2aaf665ebb2458c8889683460c6'
+          s=p.read_text()
+          old="resident_name=target.locator('strong').inner_text()"
+          assert s.count(old)==1
+          s=s.replace(old,"resident_name=target.locator('strong').text_content().strip()")
+          old="        before=page.evaluate('window.__sceneQA.snapshot()');page.locator('#qa-render').click()"
+          new="        # The QA parent is intentionally outside the inert game dialog. Trigger\n        # its rerender programmatically without mutating the simulation.\n        before=page.evaluate('window.__sceneQA.snapshot()')\n        revision=page.evaluate('window.__sceneQA.revision')\n        page.locator('#qa-render').evaluate('node => node.click()')\n        page.wait_for_function('v => window.__sceneQA.revision === v + 1', arg=revision)"
+          assert s.count(old)==1;s=s.replace(old,new);p.write_text(s)
+          updated='42668ea1635161784f84a36d5c66cbc751c14d9ea5fff36cbc9c1c2705527781'
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==updated
           next(f for f in m['files'] if f['path']=='scripts/browserResidentViewmodels.py')['after']=updated
           (out/'manifest.json').write_text(json.dumps(m,indent=2))
           with zipfile.ZipFile(out/'tested-files.zip','w',zipfile.ZIP_DEFLATED) as z:
