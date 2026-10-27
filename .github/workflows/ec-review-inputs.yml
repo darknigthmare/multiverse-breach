@@ -5,6 +5,9 @@ on:
     paths: ['.github/workflows/ec-review-inputs.yml']
 permissions:
   contents: read
+concurrency:
+  group: ec-review-inputs
+  cancel-in-progress: true
 jobs:
   snapshot:
     runs-on: ubuntu-latest
@@ -33,7 +36,7 @@ jobs:
       - name: Archive tracked files only
         run: |
           python3 - <<'PY'
-          import json,subprocess,zipfile
+          import subprocess,zipfile
           from pathlib import Path
           out=Path('/tmp/ec-review');out.mkdir(exist_ok=True)
           files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
@@ -41,7 +44,7 @@ jobs:
               for name in files:
                   if name and Path(name).is_file() and not Path(name).is_symlink():z.write(name,name)
               z.writestr('REVIEW_COMMIT.txt',subprocess.check_output(['git','rev-parse','HEAD']).decode())
-              z.writestr('REVIEW_TREE.txt',subprocess.check_output(['git','ls-tree','-rl','HEAD']).decode())
+              z.writestr('REVIEW_TREE.txt',subprocess.check_output(['git','ls-tree','-r','HEAD']).decode())
           PY
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
