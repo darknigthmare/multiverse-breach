@@ -27,6 +27,8 @@ jobs:
             /docs/excel/Multiverse_Breach_UI_Immersion.xlsx
             **/*.json
             **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/player-anchor.png
       - name: Reconstruct exact exported bytes and verified source fixes
         run: python3 docs/extinction-city/apply-workbook-transport.py
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
