@@ -1,4 +1,4 @@
-import { verifyExtinctionViewmodelContract } from './extinctionViewmodelContract.mjs';
+import { verifyExtinctionViewmodelContract, verifyExtinctionRendererBinding } from './extinctionViewmodelContract.mjs';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { existsSync, readFileSync, statSync } from 'node:fs';
@@ -858,7 +858,7 @@ assert(
   'Mosaic City Nexus NPCs must preserve their real hero identity and movement state through the Nexus sprite renderer, returning before color fallback blocks.'
 );
 assert(hubSource.includes("drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud')") && hubSource.includes("drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud')"), 'Resonance hero icons must use cropped HUD avatars.');
-assert(hubSource.includes('fpsHandsRef') && hubSource.includes('MIRELLE_COMPLETE_SPRITES.fpsHands'), 'FPS mode must use Mirelle FPS hands and effects sheets.');
+verifyExtinctionRendererBinding(hubSource);
 assert(
   hubSource.includes("kind: completePack ? 'pack' : 'hero'") &&
   regulationImagePreviewSource.includes('preview.sheets'),

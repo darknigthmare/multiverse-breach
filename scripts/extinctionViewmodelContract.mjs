@@ -26,3 +26,17 @@ export function verifyExtinctionViewmodelContract(resolve = getExtinctionViewmod
   assert.equal(resolve({id:'arca_mirelle',activeSkin:{id:'unbound'}}).src,'');
   return true;
 }
+
+/** Source hookup guard; runtime draw calls are covered by browserResidentViewmodels. */
+export function verifyExtinctionRendererBinding(source) {
+  assert.equal(typeof source, 'string');
+  const compact = source.replace(/\s+/g, '');
+  for (const required of [
+    'getExtinctionViewmodel(selectedHero)',
+    'hands.src=viewmodel.src;',
+    'fpsHandsRef.current=hands;',
+    'projectile.src=viewmodel.projectile;',
+    'fpsProjectileRef.current=projectile;'
+  ]) assert.ok(compact.includes(required), `FPS owner-resolved rendering hookup missing: ${required}`);
+  return true;
+}

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { verifyExtinctionViewmodelContract } from './extinctionViewmodelContract.mjs';
+import { readFileSync } from 'node:fs';
+import { verifyExtinctionViewmodelContract, verifyExtinctionRendererBinding } from './extinctionViewmodelContract.mjs';
 import { getExtinctionViewmodel, getExtinctionHandFrame, getExtinctionHandSourceRect, getExtinctionHandPlacement, getExtinctionProjectilePlacement } from '../src/game/extinctionContent.js';
 test('progression contract executes current owner, reload, crop, pickup and aspect rules',()=>assert.equal(verifyExtinctionViewmodelContract(),true));
 test('the audit fails for wrong Mirelle row count',()=>assert.throws(()=>verifyExtinctionViewmodelContract(hero=>{const p=getExtinctionViewmodel(hero);return p.layout?{...p,layout:{...p.layout,rows:4}}:p;})));
@@ -29,4 +30,19 @@ test('projectile overlay keeps its own aspect without changing timing or simulat
  const box=getExtinctionProjectilePlacement(256,122,840,430);
  assert.ok(Math.abs(box.w/box.h-256/122)<1e-9);assert.ok(box.x>=0&&box.y>=0&&box.x+box.w<=840&&box.y+box.h<=430);
  assert.equal(getExtinctionProjectilePlacement(0,122,840,430),null);
+});
+
+const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
+test('progression hookup accepts the selected owner instead of a hardcoded Mirelle constant', () => {
+  assert.equal(verifyExtinctionRendererBinding(hubSource), true);
+});
+for (const [name, before, after] of [
+  ['wrong owner', 'getExtinctionViewmodel(selectedHero)', "getExtinctionViewmodel({id:'arca_mirelle'})"],
+  ['borrowed hands', 'hands.src = viewmodel.src;', "hands.src = '/borrowed-hands.png';"],
+  ['unbound hand reference', 'fpsHandsRef.current = hands;', 'fpsHandsRef.current = null;'],
+  ['borrowed effect', 'projectile.src = viewmodel.projectile;', "projectile.src = '/borrowed-effect.png';"],
+  ['unbound effect reference', 'fpsProjectileRef.current = projectile;', 'fpsProjectileRef.current = null;']
+]) test(`progression hookup rejects ${name}`, () => {
+  assert.ok(hubSource.includes(before));
+  assert.throws(() => verifyExtinctionRendererBinding(hubSource.replace(before, after)), /hookup missing/);
 });

@@ -77,10 +77,10 @@ export function buildCatalog(sourceCommit, trackedFiles) {
   const weapon=short(h.weapon)||h.weaponType||'Non renseigné';
   heroRows.push([h.id,u,h.name,h.category,nc?'Non combattant':'Combattant sous réserve de possession',continuity(h,u),visual,weapon,
    combatSlots.map(k=>`${k}: ${text(h[k]?.name||h[k])} [${actionType(h[k])}]`).join('\n'),palettes(h),model.src,assetState(model.src),
-   nc?'Hors combat':model.src?'Partiel':'À produire',nc?'Préserver les épreuves et les interactions Cité ; aucun tir ajouté.':model.src?'Planche personnelle raccordée ; recharge/variantes/validation visuelle encore partielles.':'Schéma neutre de secours ; mains et arme personnelles non produites par cette livraison.',reference(h,u),sourceUrl]);
+   nc?'Hors combat':model.src?'Partiel':'À produire',nc?'Préserver les épreuves et les interactions Cité ; aucun tir ajouté.':model.src?'Planche personnelle raccordée ; proportions et cellules vérifiées en navigateur. Recharge/variantes et validation artistique encore partielles ; pas de certification 1:1.':'Schéma neutre de secours ; mains et arme personnelles non produites par cette livraison.',reference(h,u),sourceUrl]);
   cityPeople.push([h.id,u,h.name,nc?'PNJ non combattant / épreuve':'Habitant / allié possédé',visual,citySrc,assetState(citySrc),`${layout.columns} × ${layout.rows} ; ${JSON.stringify(layout.rowByState||{})}`,
    'CITY-IDLE / CITY-WALK / CITY-TALK / CITY-USE',nc?short(h.objectiveFr||h.objective)||'Interaction pacifique à documenter':`Dialogue/activité de ${h.name} à écrire depuis le dossier ; ne pas inventer de fonction canonique.`,
-   'Le runtime affiche un échantillon de 17 habitants et Mirelle ; présence permanente de chaque acteur non garantie.',hasAsset(citySrc)?'Partiel':'À produire',sourceUrl]);
+   h.isPlayer ? 'Ancre contrôlée par le joueur ; jamais dupliquée comme habitant dans le répertoire.' : 'Répertoire de tous les habitants possédés et visibles ; groupes de 17, plus Mirelle dans l’Atrium. Rejoindre fait marcher l’Ancre vers l’identité en contournant les PNJ. Trois identités parcourues dans quatre formats ; animations et quartiers individuels encore à valider.',hasAsset(citySrc)?'Partiel':'À produire',sourceUrl]);
   if(nc)continue;
   for(const slot of combatSlots){
    const a=h[slot]||{},type=actionType(a),name=text(a.name||a)||'Non renseigné';
@@ -161,7 +161,7 @@ export function buildCatalog(sourceCommit, trackedFiles) {
  const engine=[['Traqueur','28 + 5 × vague','4','0.0025','Poursuite proche'],['Sniper','22 + 5 × vague','7','0.0015','Tir distant'],['Briseur','48 + 5 × vague','6','0.0018','Pression lourde'],['Essaim','16 + 5 × vague','2','0.0032','Pression rapide'],['Champion de Trame','180 + 40 × vague','10','0.0014','Bouclier/phase à vérifier selon le code'],['Drone Protecteur','24','3.5','0.0036','Trois drones invoqués lors de la phase de bouclier du Champion ; identité Nexus générique']];
  add('Runtime_Extinction',['Archétype actuel','PV source','Dégâts source','Vitesse source','Usage'],engine,'Les valeurs sont transcrites du moteur ; le catalogue Ennemis_FPS n’est pas son pool de spawn actuel.');
  const qa=[
- ['QA-ROSTER','Extinction','Tous les combattants possédés, y compris après le 40e','Aucune troncature ; non-combattants absents du sélecteur FPS, conservés ailleurs','Tests unitaires ajoutés','P1'],
+ ['QA-ROSTER','Extinction','Tous les combattants possédés, y compris après le 40e','Aucune troncature ; non-combattants absents du sélecteur FPS, conservés ailleurs','Partiel','P1'],
  ['QA-IDENTITY','Extinction','Mirelle / Arthur / Serj et personnage sans planche','La planche correspond à l’ID exact ; aucun corps entier ou costume inconnu déguisé en mains','Tests unitaires ajoutés','P1'],
  ['QA-LOOT','Extinction','Arme ramassée shotgun/plasma/rocket','Plus de carte de Mirelle présentée comme l’arme ramassée ; schéma identifié en attendant l’art','Tests unitaires ajoutés','P1'],
  ['QA-CITY-LANG','Cité','12 ambiances et trois familles','Texte anglais réel, mêmes noms localisés et mêmes types de quartier','Tests unitaires ajoutés','P2'],
@@ -175,10 +175,18 @@ export function buildCatalog(sourceCommit, trackedFiles) {
  ['QA-CLOUD','Les deux','Compte cloud réel','Écritures uniques, conflits et restauration sans régression','À réaliser','P1'],
  ['QA-MEDIA','Les deux','Tous les fichiers déclarés présents','Comparer visuellement à l’incarnation et à la source ; un nom de fichier ne valide pas la fidélité','À réaliser','P1'],
  ['QA-40-PAGES','Interface','40 écrans du classeur UI distinct','Recette consolidée avec vrais médias et progression','À réaliser','P1'],
- ['QA-BUNDLE','Application','Bundle de production','Mesurer poids/temps avant découpage ; conserver les catalogues et la sauvegarde','À réaliser','P2']
+ ['QA-BUNDLE','Application','Bundle de production','Mesurer poids/temps avant découpage ; conserver les catalogues et la sauvegarde','À réaliser','P2'],
+ ['QA-RESIDENT-INDEX','Cité','Répertoire de tous les habitants possédés et visibles','Recherche nom/univers/ID, pages de neuf, groupes de dix-sept ; 121 tests ciblés et 12 approches navigateur sur trois identités. Preuve : residents-fps-ci-receipt-2026-10-27.json','Partiel','P1'],
+ ['QA-RESIDENT-PATH','Cité','Cible mouvante et PNJ interposés','Détour sans traverser les corps ; six tests de navigation et quatre formats navigateur. Pas de téléportation ; source : src/game/mosaicCityRuntime.js','Partiel','P1'],
+ ['QA-RESIDENT-CANCEL','Cité','Clavier, terminal et cible supprimée','Annuler la poursuite et conserver le checkpoint ; aucune nouvelle identité possédée, aucun gain. Parcours complet des services encore ouvert','Partiel','P1'],
+ ['QA-FPS-CROP','Extinction','Mirelle sur quatre formats ; Arthur et Serj sur ordinateur','Munitions consommées, recharge réelle, drawImage dans la cellule et rapport d’aspect préservé. Hors validation artistique ou projectile physique','Partiel','P1'],
+ ['QA-PROGRESSION-CONTRACT','Build','Contrat exécutable des mains FPS','Résoudre identité, lignes et rognage au lieu de rechercher l’ancien texte dans HubScreen ; tests négatifs et replis conservés. Build intégral distinct','Partiel','P0'],
+ ['QA-CI-PUBLICATION','Les deux','Source dc95aec15309fb2f9a23e36971b30db46197f9a6','Fichiers identiques aux blobs validés : https://github.com/darknigthmare/multiverse-breach/actions/runs/40508601682 ; résultats finaux de la PR nº 11 à lire séparément','Partiel','P1'],
+ ['QA-INFESTATION-STABILITY','Extinction','Bot de partie complète Infestation','Diagnostiquer l’échec intermittent signalé dans la PR nº 10 ; ne pas réduire la difficulté ni forcer la victoire pour obtenir un test vert','À réaliser','P1'],
+ ['QA-SPARSE-MEDIA','Les deux','Décors secondaires et portraits hors sélection CI','Arthur/Serj : décors secondaires ; portrait du combattant de fin de liste : vérifier avec tous les médias. Les mains requises décodées ne prouvent pas ce chargement','À réaliser','P2']
  ];
  add('Recette_et_ouverts',['ID','Contexte','Périmètre','Critère de validation','État','Priorité'],qa,'Les tests de code ne certifient ni fidélité 1:1, ni qualité artistique, ni tous les matériels.');
- const sourcePaths=['src/game/heroes.js','src/game/enemies.js','src/game/lore.js','src/game/expandedUniverses.js','src/game/canonRosterWave.js','src/game/spriteAssets.js','src/game/playerHero.js','src/game/mosaicCityRuntime.js','src/game/scenePresentation.js','src/components/HubScreen.jsx'];
+ const sourcePaths=['src/game/heroes.js','src/game/enemies.js','src/game/lore.js','src/game/expandedUniverses.js','src/game/canonRosterWave.js','src/game/spriteAssets.js','src/game/playerHero.js','src/game/mosaicCityRuntime.js','src/game/scenePresentation.js','src/components/HubScreen.jsx','src/game/mosaicResidents.js','src/game/extinctionContent.js','scripts/extinctionViewmodelContract.mjs','docs/extinction-city/residents-fps-ci-receipt-2026-10-27.json'];
  const sources=sourcePaths.map(p=>[p,src(sourceCommit,p),'Source projet figée ; les adaptations proposées ne sont pas des faits canoniques externes']);
  sources.push(['Nouvelle logique','src/game/extinctionContent.js','Dans le commit de continuation ; inventaire produit après ces modifications'],['Quartiers localisés','src/game/mosaicUniversePlaces.js','Refactorisation du gabarit existant ; 12 traductions d’ambiance'],['Références externes','Colonnes Référence déclarée','Recopiées depuis les sources du projet ; non consultées ni revalidées lors de cet export']);
  add('Sources', ['Ressource','URL / chemin','Portée'],sources,'Aucune certification externe implicite. Les 525 univers ne prétendent pas couvrir chaque personnage jamais créé dans leur franchise.');
@@ -217,7 +225,7 @@ export function buildCatalog(sourceCommit, trackedFiles) {
 if(process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const commit=process.argv[2],output=process.argv[3];
  const trackedFile=path.join(root,'TRACKED_FILES.txt');
- const tracked=existsSync(trackedFile)?readFileSync(trackedFile,'utf8').split('\n'):execFileSync('git',['ls-files'],{cwd:root,encoding:'utf8'}).split('\n');
+ const tracked=existsSync(trackedFile)?readFileSync(trackedFile,'utf8').split('\n'):execFileSync('git',['ls-files'],{cwd:root,encoding:'utf8',maxBuffer:32*1024*1024}).split('\n');
  const catalog=buildCatalog(commit,tracked);
  catalog.dataSha256=createHash('sha256').update(JSON.stringify(catalog.tables)).digest('hex');
  if(output){mkdirSync(path.dirname(path.resolve(output)),{recursive:true});writeFileSync(output,JSON.stringify(catalog));console.log(JSON.stringify({counts:catalog.counts,rows:Object.fromEntries(Object.entries(catalog.tables).map(([k,t])=>[k,t.rows.length])),dataSha256:catalog.dataSha256}));}
