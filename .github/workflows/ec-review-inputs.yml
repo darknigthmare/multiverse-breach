@@ -1,0 +1,56 @@
+name: EC review inputs
+on:
+  push:
+    branches: [codex/extinction-city-continuation-2026-10-27]
+    paths: ['.github/workflows/ec-review-inputs.yml']
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /.github/workflows/
+            /docs/ui-immersion/
+            /docs/extinction-city/
+            /docs/excel/Multiverse_Breach_UI_Immersion.xlsx
+            /docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/backgrounds/lore-stages/nexus-de-convergence/
+      - name: Archive tracked files only
+        run: |
+          python3 - <<'PY'
+          import json,subprocess,zipfile
+          from pathlib import Path
+          out=Path('/tmp/ec-review');out.mkdir(exist_ok=True)
+          files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          with zipfile.ZipFile(out/'source.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for name in files:
+                  if name and Path(name).is_file() and not Path(name).is_symlink():z.write(name,name)
+              z.writestr('REVIEW_COMMIT.txt',subprocess.check_output(['git','rev-parse','HEAD']).decode())
+              z.writestr('REVIEW_TREE.txt',subprocess.check_output(['git','ls-tree','-rl','HEAD']).decode())
+          PY
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: tar -czf /tmp/ec-review/node-modules.tgz node_modules
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ec-review-${{ github.sha }}
+          path: /tmp/ec-review/
+          retention-days: 7
