@@ -1,16 +1,16 @@
 {
   "counts": {
-    "sprites": 369,
-    "characters": 38,
-    "referenceBased": 78,
-    "adapted": 291,
+    "sprites": 372,
+    "characters": 40,
+    "referenceBased": 80,
+    "adapted": 292,
     "byCategory": {
       "sport": 13,
       "civilian": 44,
       "military": 63,
       "swimwear": 90,
       "uniform": 58,
-      "other": 5,
+      "other": 8,
       "latex": 20,
       "maid": 40,
       "nurse": 36
@@ -48,7 +48,12 @@
     "v8NewCharacters": 1,
     "preservedBeforeV9": 368,
     "v9Additions": 1,
-    "v9NewCharacters": 1
+    "v9NewCharacters": 1,
+    "preservedBeforeV10": 369,
+    "v10Additions": 3,
+    "v10NewCharacters": 2,
+    "v10MechanicalAssets": 3,
+    "costumeCoverageCharacters": 38
   },
   "entries": [
     {
@@ -8628,6 +8633,173 @@
         {
           "label": "Capture fournie — détails de la cagoule",
           "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v9/references/hooded-guard-mask-detail.png"
+        }
+      ]
+    },
+    {
+      "characterId": "yellow-construction-mech",
+      "characterName": "Boss mécanique jaune",
+      "costumeId": "construction-reference-v10",
+      "label": {
+        "fr": "Engin de chantier — deux vues fournies",
+        "en": "Construction machine — two supplied views"
+      },
+      "provenance": "reference",
+      "isDefault": true,
+      "newCharacter": true,
+      "roleLabel": {
+        "fr": "Boss mécanique",
+        "en": "Mechanical boss"
+      },
+      "identitySourceId": "v10-construction-mech-front",
+      "notes": {
+        "fr": "Boss mécanique d’après les deux captures fournies : plateforme jaune, quatre bras de grue à pinces, portique ouvert, cabine et jambes de chantier. L’utilisateur situe ces images dans Discipline: The Hentai Academy, épisode 4. Le visuel sur fond blanc accepté est conservé avec cette version transparente.",
+        "en": "Mechanical boss based on two supplied frames: yellow platform, four crane arms with claws, open gantry, cab and construction legs. The user attributes the frames to Discipline: The Hentai Academy, episode 4. The accepted white-background artwork is retained alongside this transparent version."
+      },
+      "proportionNotes": {
+        "fr": "La quatrième jambe, les surfaces arrière et le dessous ne sont pas entièrement montrés ; ils restent complétés par symétrie ou masqués. La vue en trois quarts est une reconstruction. L’épisode n’a pas été visionné ; aucune fidélité intégrale 1:1 n’est certifiée.",
+        "en": "The fourth leg, rear surfaces and underside are not fully shown; they remain symmetrical completions or occluded. The three-quarter view is reconstructed. The episode was not viewed and complete 1:1 fidelity is not certified."
+      },
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yellow-construction-mech--construction-reference-v10.png",
+      "category": "other",
+      "available": true,
+      "revision": 10,
+      "sourceMedium": "user_reference",
+      "assetRole": "enemy",
+      "mechanical": true,
+      "newOutfit": true,
+      "costumeCoverageApplicable": false,
+      "sourceEvidenceIds": [
+        "v10-construction-mech-front",
+        "v10-construction-mech-overhead"
+      ],
+      "sourceWork": {
+        "title": "Discipline: The Hentai Academy",
+        "episode": 4,
+        "attributionBasis": "Explicit identification supplied by the user in this conversation",
+        "independentlyVerified": false,
+        "episodeVideoObtained": false,
+        "episodeVideoReviewed": false,
+        "additionalScreencapsObtained": 0,
+        "timecodes": null
+      },
+      "literalOneToOneCertified": false,
+      "referenceLinks": [
+        {
+          "label": "Capture fournie — vue frontale du boss",
+          "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v10/references/construction-mech-front.png"
+        },
+        {
+          "label": "Capture fournie — vue en plongée du boss",
+          "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v10/references/construction-mech-overhead.png"
+        }
+      ]
+    },
+    {
+      "characterId": "yellow-pilot-robot",
+      "characterName": "Robot pilote jaune",
+      "costumeId": "full-body-reference-v10",
+      "label": {
+        "fr": "Robot en pied — référence partielle",
+        "en": "Full-body robot — partial reference"
+      },
+      "provenance": "reference",
+      "isDefault": true,
+      "newCharacter": true,
+      "roleLabel": {
+        "fr": "Robot ennemi",
+        "en": "Enemy robot"
+      },
+      "identitySourceId": "v10-robot-cockpit",
+      "notes": {
+        "fr": "La capture du cockpit guide la tête rectangulaire jaune à emblème circulaire, la mâchoire olive, le plastron et les épaules segmentées grises. La nouvelle passe de rendu utilise cette capture et la première reconstruction en pied. L’épisode 4 est l’attribution donnée par l’utilisateur.",
+        "en": "The cockpit frame guides the yellow rectangular head and circular emblem, olive jaw, chest plate and gray segmented shoulders. The refinement uses that frame and the initial full-body reconstruction. Episode 4 is the attribution supplied by the user."
+      },
+      "proportionNotes": {
+        "fr": "Les mains, le bassin, les jambes et les pieds proviennent de la première interprétation : la capture ne les montre pas. Aucune nouvelle screencap du robot debout n’a été obtenue. La palette est interprétée depuis un plan nocturne ; aucune fidélité complète 1:1 n’est certifiée.",
+        "en": "Hands, pelvis, legs and feet retain the initial interpretation because the frame does not show them. No additional standing-robot screencap was obtained. Color is interpreted from a night scene; full 1:1 fidelity is not certified."
+      },
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yellow-pilot-robot--full-body-reference-v10.png",
+      "category": "other",
+      "available": true,
+      "revision": 10,
+      "sourceMedium": "user_reference",
+      "assetRole": "enemy",
+      "mechanical": true,
+      "newOutfit": true,
+      "costumeCoverageApplicable": false,
+      "sourceEvidenceIds": [
+        "v10-robot-cockpit"
+      ],
+      "sourceWork": {
+        "title": "Discipline: The Hentai Academy",
+        "episode": 4,
+        "attributionBasis": "Explicit identification supplied by the user in this conversation",
+        "independentlyVerified": false,
+        "episodeVideoObtained": false,
+        "episodeVideoReviewed": false,
+        "additionalScreencapsObtained": 0,
+        "timecodes": null
+      },
+      "literalOneToOneCertified": false,
+      "referenceLinks": [
+        {
+          "label": "Capture fournie — robot dans le cockpit",
+          "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v10/references/robot-cockpit-user-frame.png"
+        }
+      ]
+    },
+    {
+      "characterId": "yellow-pilot-robot",
+      "characterName": "Robot pilote jaune",
+      "costumeId": "fighter-cockpit-adaptation-v10",
+      "label": {
+        "fr": "Pilote avec chasseur — silhouette provisoire",
+        "en": "Pilot with fighter — provisional silhouette"
+      },
+      "provenance": "adapted",
+      "isDefault": false,
+      "newCharacter": false,
+      "roleLabel": {
+        "fr": "Chasseur piloté",
+        "en": "Piloted fighter"
+      },
+      "identitySourceId": "v10-robot-cockpit",
+      "notes": {
+        "fr": "Le pilote, son siège, l’arceau ouvert et le rebord bleu gris du cockpit s’appuient sur la capture fournie. La nouvelle passe de rendu conserve la silhouette extérieure de la première proposition ; elle ne repose sur aucune nouvelle vue de l’avion complet.",
+        "en": "The pilot, seat, raised canopy frame and blue-gray cockpit rim follow the supplied frame. The refinement retains the first proposal’s exterior silhouette; no additional view of the full aircraft was found."
+      },
+      "proportionNotes": {
+        "fr": "Le nez, les ailes, la dérive, les entrées d’air et leurs proportions sont une reconstitution provisoire. Ils ne sont pas vérifiés dans l’épisode. Des vues de profil et de dessus du chasseur sont nécessaires pour corriger sa géométrie et viser une fidélité 1:1.",
+        "en": "The nose, wings, tail fin, intakes and their proportions are provisional reconstruction. They were not checked against the episode. Side and top views are required to correct aircraft geometry toward 1:1 fidelity."
+      },
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yellow-pilot-robot--fighter-cockpit-adaptation-v10.png",
+      "category": "other",
+      "available": true,
+      "revision": 10,
+      "sourceMedium": "user_reference",
+      "assetRole": "enemy",
+      "mechanical": true,
+      "newOutfit": true,
+      "costumeCoverageApplicable": false,
+      "sourceEvidenceIds": [
+        "v10-robot-cockpit"
+      ],
+      "sourceWork": {
+        "title": "Discipline: The Hentai Academy",
+        "episode": 4,
+        "attributionBasis": "Explicit identification supplied by the user in this conversation",
+        "independentlyVerified": false,
+        "episodeVideoObtained": false,
+        "episodeVideoReviewed": false,
+        "additionalScreencapsObtained": 0,
+        "timecodes": null
+      },
+      "literalOneToOneCertified": false,
+      "referenceLinks": [
+        {
+          "label": "Capture fournie — robot dans le cockpit",
+          "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v10/references/robot-cockpit-user-frame.png"
         }
       ]
     }

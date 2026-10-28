@@ -1,0 +1,336 @@
+{
+  "generatedAtUTC": "2026-10-28T18:26:45.630Z",
+  "environment": "Headless portable Chromium; all HTTP requests intercepted and fulfilled from the local public directory; no server or external network requests.",
+  "sandboxEscalationForChromium": true,
+  "sourceHashes": {
+    "catalog": "ad6de6d2548f7fa9d24cd9a986cbd8c308ffb8a729987c867728db4648c2a033",
+    "gallery": "49c2faf24f122caa9bad33bf896bc7bffb0524a0bebb889210a41ddb46a2f5ed"
+  },
+  "catalog": {
+    "sprites": 372,
+    "identities": 40
+  },
+  "checks": [
+    {
+      "name": "Source catalogue contains 372 sprites, 40 identities and three v10 machine entries for two identities",
+      "passed": true
+    },
+    {
+      "name": "Initial gallery count matches the complete catalogue",
+      "passed": true,
+      "countText": "372 / 372 sprites · 40 identités"
+    },
+    {
+      "name": "Machines v10 filter shows exactly three cards and two identities; all three PNGs decode at their native dimensions with object-fit contain",
+      "passed": true,
+      "countText": "3 / 372 sprites · 2 identités"
+    },
+    {
+      "name": "Machine search: boss",
+      "passed": true,
+      "count": 1,
+      "countText": "1 / 372 sprites · 1 identité"
+    },
+    {
+      "name": "Machine search: robot",
+      "passed": true,
+      "count": 2,
+      "countText": "2 / 372 sprites · 1 identité"
+    },
+    {
+      "name": "Machine provenance filter: adapted",
+      "passed": true,
+      "count": 1
+    },
+    {
+      "name": "Machine provenance filter: reference",
+      "passed": true,
+      "count": 2
+    },
+    {
+      "name": "All three v10 machines remain accessible under Image fournie",
+      "passed": true
+    },
+    {
+      "name": "Aircraft carries provisional reconstruction and cockpit-reference badges; both other machines are marked based on reference",
+      "passed": true
+    },
+    {
+      "name": "Four source links are present (two boss, one robot, one aircraft), with local reference files; remote destinations were not requested",
+      "passed": true,
+      "links": 4,
+      "uniqueReferences": 3
+    },
+    {
+      "name": "Expandable notes show the complete supplied-reference and reconstruction limits for all three machines; footer does not claim certified complete 1:1 fidelity",
+      "passed": true
+    },
+    {
+      "name": "Historical filter preserved: v8-enemy",
+      "passed": true,
+      "count": 1,
+      "countText": "1 / 372 sprites · 1 identité"
+    },
+    {
+      "name": "Historical filter preserved: v9-enemy",
+      "passed": true,
+      "count": 1,
+      "countText": "1 / 372 sprites · 1 identité"
+    },
+    {
+      "name": "Historical filter preserved: v6",
+      "passed": true,
+      "count": 170,
+      "countText": "170 / 372 sprites · 36 identités"
+    },
+    {
+      "name": "Costume coverage retains 38 rows and 228 cells, with 212 delivered and no machine identities",
+      "passed": true,
+      "rows": 38,
+      "cells": 228,
+      "delivered": 212,
+      "missing": 16,
+      "caption": "38 personnages · 212 / 228 combinaisons personnage / famille livrées. Les variantes multiples restent regroupées dans une même case."
+    },
+    {
+      "name": "Dark, light and checkerboard preview backgrounds change their actual computed appearance",
+      "passed": true
+    },
+    {
+      "name": "At 390px, gallery and open coverage have no horizontal page overflow; wide table scrolls within its own region",
+      "passed": true,
+      "coverageClosed": {
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "overflow": false,
+        "coverageOpen": false,
+        "coverageClientWidth": 316,
+        "coverageScrollWidth": 850
+      },
+      "coverageOpen": {
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "overflow": false,
+        "coverageOpen": true,
+        "coverageClientWidth": 316,
+        "coverageScrollWidth": 850
+      }
+    },
+    {
+      "name": "Desktop and mobile screenshots include all three fully decoded v10 machine cards with contain image layout",
+      "passed": true
+    },
+    {
+      "name": "No JavaScript, console, external-request or local-resource errors",
+      "passed": true
+    }
+  ],
+  "loadedImages": [
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yellow-construction-mech--construction-reference-v10.png",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "objectFit": "contain",
+      "renderedWidth": 240,
+      "renderedHeight": 240,
+      "expectedNativeSize": {
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yellow-pilot-robot--full-body-reference-v10.png",
+      "naturalWidth": 1024,
+      "naturalHeight": 1536,
+      "complete": true,
+      "objectFit": "contain",
+      "renderedWidth": 240,
+      "renderedHeight": 240,
+      "expectedNativeSize": {
+        "width": 1024,
+        "height": 1536
+      }
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yellow-pilot-robot--fighter-cockpit-adaptation-v10.png",
+      "naturalWidth": 1536,
+      "naturalHeight": 1024,
+      "complete": true,
+      "objectFit": "contain",
+      "renderedWidth": 240,
+      "renderedHeight": 240,
+      "expectedNativeSize": {
+        "width": 1536,
+        "height": 1024
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "gallery-desktop.png",
+      "viewportWidth": 1060,
+      "viewportHeight": 1100,
+      "documentWidth": 1060,
+      "bodyWidth": 1060,
+      "overflow": false,
+      "coverageOpen": false,
+      "coverageClientWidth": 0,
+      "coverageScrollWidth": 970,
+      "cards": 3,
+      "imageSize": {
+        "width": 1060,
+        "height": 1614
+      }
+    },
+    {
+      "file": "gallery-mobile.png",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "overflow": false,
+      "coverageOpen": false,
+      "coverageClientWidth": 316,
+      "coverageScrollWidth": 850,
+      "cards": 3,
+      "imageSize": {
+        "width": 390,
+        "height": 3456
+      }
+    }
+  ],
+  "visualReview": {
+    "performed": true,
+    "method": "Both saved screenshots opened with view_image at original resolution after automated checks completed.",
+    "passed": true,
+    "desktop": "Three machine cards appear side by side. The boss, standing robot and aircraft are fully visible inside their preview areas. Titles, provenance badges, four source links and expandable-limit controls are readable without overlap or clipping.",
+    "mobile": "At 390px the three cards form a single column. Machines remain fully visible; labels and status text wrap within the page. The provisional-aircraft badge and cockpit-reference source remain visible. No clipped card edge, overlapping text or horizontal page overflow was observed.",
+    "scope": "Gallery layout, asset display and provenance presentation only. This visual review does not certify canonical 1:1 anatomy or aircraft geometry."
+  },
+  "chromiumVersion": "153.0.8010.0",
+  "sourceLinks": [
+    {
+      "text": "Capture fournie — vue frontale du boss",
+      "href": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v10/references/construction-mech-front.png",
+      "target": "_blank",
+      "rel": "noopener",
+      "localReferenceExists": true
+    },
+    {
+      "text": "Capture fournie — vue en plongée du boss",
+      "href": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v10/references/construction-mech-overhead.png",
+      "target": "_blank",
+      "rel": "noopener",
+      "localReferenceExists": true
+    },
+    {
+      "text": "Capture fournie — robot dans le cockpit",
+      "href": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v10/references/robot-cockpit-user-frame.png",
+      "target": "_blank",
+      "rel": "noopener",
+      "localReferenceExists": true
+    },
+    {
+      "text": "Capture fournie — robot dans le cockpit",
+      "href": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v10/references/robot-cockpit-user-frame.png",
+      "target": "_blank",
+      "rel": "noopener",
+      "localReferenceExists": true
+    }
+  ],
+  "coverage": {
+    "rows": 38,
+    "cells": 228,
+    "delivered": 212,
+    "missing": 16,
+    "identities": [
+      "akane",
+      "ova-attendant-brown-bun",
+      "eikichi",
+      "hooded-guard-red-trim",
+      "security-guard-ova",
+      "ova-guest-yellow-dress",
+      "kanae",
+      "kaori",
+      "kaoru",
+      "karen",
+      "katsuo",
+      "kawahara",
+      "kouzou",
+      "kumi",
+      "leona",
+      "linda",
+      "madoka",
+      "maiko",
+      "mami",
+      "manami",
+      "maya",
+      "ova-broadcasting-club-member",
+      "momoe",
+      "momone",
+      "nanase",
+      "ova-officer-bob",
+      "ova-officer-swept-hair",
+      "reina",
+      "ruri",
+      "saki",
+      "saori",
+      "masked-soldier-red-visor",
+      "sudou",
+      "takurou",
+      "tooru",
+      "yuri",
+      "yuuji",
+      "yuuki"
+    ],
+    "caption": "38 personnages · 212 / 228 combinaisons personnage / famille livrées. Les variantes multiples restent regroupées dans une même case."
+  },
+  "backgrounds": [
+    {
+      "selected": "dark",
+      "backgroundColor": "rgb(32, 38, 48)",
+      "backgroundImage": "none"
+    },
+    {
+      "selected": "light",
+      "backgroundColor": "rgb(226, 231, 237)",
+      "backgroundImage": "none"
+    },
+    {
+      "selected": "checker",
+      "backgroundColor": "rgb(215, 220, 226)",
+      "backgroundImage": "linear-gradient(45deg, rgb(170, 178, 188) 25%, rgba(0, 0, 0, 0) 25%), linear-gradient(-45deg, rgb(170, 178, 188) 25%, rgba(0, 0, 0, 0) 25%), linear-gradient(45deg, rgba(0, 0, 0, 0) 75%, rgb(170, 178, 188) 75%), linear-gradient(-45deg, rgba(0, 0, 0, 0) 75%, rgb(170, 178, 188) 75%)"
+    }
+  ],
+  "mobileMeasurements": {
+    "coverageClosed": {
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "overflow": false,
+      "coverageOpen": false,
+      "coverageClientWidth": 316,
+      "coverageScrollWidth": 850
+    },
+    "coverageOpen": {
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "overflow": false,
+      "coverageOpen": true,
+      "coverageClientWidth": 316,
+      "coverageScrollWidth": 850
+    }
+  },
+  "errors": [],
+  "localRequestCount": 204,
+  "uniqueLocalResourceCount": 201,
+  "passed": true
+}
