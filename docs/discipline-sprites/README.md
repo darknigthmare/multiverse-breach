@@ -1,10 +1,18 @@
 # Sprites et tenues Discipline
 
-**367 PNG individuels pour 36 identités graphiques.** Cette reprise ajoute **170 PNG** aux **197 images** publiées à `f9a9c1d`. Les objets de catalogue, objets de manifeste et octets PNG de ces 197 entrées restent identiques.
+**368 PNG individuels pour 37 identités graphiques.** L’extension v8 ajoute une **soldate masquée à visière rouge** d’après l’image fournie par l’utilisateur. Les **367 sprites précédents**, leurs objets de catalogue et leurs entrées de manifeste sont conservés. La reprise v6 avait ajouté **170 PNG** aux **197 images** publiées à `f9a9c1d`.
+
+## Ennemie masquée — ajout v8
+
+La nouvelle [soldate masquée](enemy-v8/README.md) est livrée en PNG natif **1254 × 1254**, transparent, en pied et légèrement tournée vers la droite. La galerie propose le filtre **Ennemie masquée · v8**, la source **Image fournie** et un lien vers la capture d’origine. Le catalogue contient désormais **77 rendus fondés sur références et 291 adaptations**.
+
+La visière rouge, le masque blanc, les cheveux noirs, le haut argenté, les gants sombres, la ceinture, le pantalon camouflage et les bottes reprennent la référence. Le nom est descriptif ; l’identité et l’œuvre précise restent à confirmer. Les pieds, plis et certaines proportions sont interprétés. C’est un sprite statique du catalogue graphique, sans animation ni apparition en combat ajoutée.
+
+Les tableaux et rapports **v6/v7 ci-dessous restent les états historiques de 36 identités / 367 images**. La couverture actuelle de la galerie inclut la nouvelle identité : bataille **37/37**, maid **36/37**, scolaire **31/37**, maillot **35/37**, soins **36/37**, latex **36/37**. Les autres familles n’ont pas été demandées pour cette ennemie.
 
 ## Audit des costumes originaux et de la fidélité
 
-**La collection n’est pas démontrée exhaustive et aucun rendu n’est certifié intégralement 1:1.** L’[audit v7](canonical-audit-v7/README.md) classe les **367 entrées** : **76 fondées sur références**, regroupées en **43 ensembles de versions**, et **291 adaptations**. Il consigne **75 comparaisons visuelles directes** ; la source exacte d’un ancien sprite de Yuuji n’a pas été retrouvée.
+**La collection n’est pas démontrée exhaustive et aucun rendu n’est certifié intégralement 1:1.** L’[audit v7](canonical-audit-v7/README.md), réalisé avant l’ajout de la soldate, classe ses **367 entrées** : **76 fondées sur références**, regroupées en **43 ensembles de versions**, et **291 adaptations**. Il consigne **75 comparaisons visuelles directes** ; la source exacte d’un ancien sprite de Yuuji n’a pas été retrouvée.
 
 Des costumes documentés restent absents, et des différences visibles de visage, de coiffure, de palette ou de détails vestimentaires subsistent. La couverture des familles ci-dessous décrit les variantes du projet ; elle ne constitue pas une couverture des costumes officiels. La bibliographie distingue désormais le jeu original, les ajouts d’EXCELLENT, LS, les six OAV, les deux Zero, les BD numériques et les livres. Les corpus complets n’ont pas été examinés.
 
@@ -18,7 +26,7 @@ Les maillots une pièce, shorts de bain et combinaisons courtes de natation ont 
 
 Le vestiaire reste raccordé aux trois héros existants **Saori Otokawa, Ruri Nonomiya et Takurou Hayami**. Les autres identités appartiennent au catalogue graphique. Les nouvelles entrées possèdent des identifiants distincts ; les apparences par défaut, anciennes sélections, sauvegardes et scènes verrouillées sont préservées.
 
-## Contenu récupéré
+## Contenu récupéré — état v6
 
 | Lot | PNG ajoutés |
 | --- | ---: |
@@ -47,7 +55,7 @@ Chaque PNG apparaît dans une seule catégorie principale. Les maillots brillant
 
 **Demande suivante de copie plus fidèle : non produite.** Le contexte adulte fourni par l’utilisateur a été pris en compte dans une tentative Leona utilisant une vraie photographie du costume et une pose neutre. Le système d’images a refusé cette entrée pour contenu sexuel. Aucun PNG n’a été produit par cette tentative, et aucun nouvel essai ni générateur alternatif n’a été utilisé. Les maillots sportifs précédents restent des adaptations distinctes ; ils ne sont pas présentés comme la copie fidèle demandée.
 
-## Couverture par personnage
+## Couverture par personnage — état v6, 36 identités
 
 Réf. = tenue fondée sur une référence ; Adapt. = création pour le jeu. La colonne scolaire exclut les uniformes professionnels des officières et la tenue de la domestique. Une référence partielle ne certifie pas les détails situés hors cadre.
 
@@ -106,6 +114,8 @@ Le journal contient 74 demandes précises sans sortie acceptée. Lorsqu’une au
 
 ## Contrôles et documents
 
+- [Ajout v8 : soldate masquée, référence et limites](enemy-v8/README.md)
+- [Validation de l’ajout v8](enemy-v8/validation.json)
 - [Revue de reprise v6](costumes-v6-review.md)
 - [Recherche et adaptation du style de Leona](leona-swimwear-style-research.md)
 - [Couverture et manques par famille](costumes-v6-coverage.json)

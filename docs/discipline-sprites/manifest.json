@@ -2,14 +2,14 @@
   "version": 1,
   "date": "2026-10-28",
   "counts": {
-    "sprites": 367,
-    "characters": 36,
-    "referenceBased": 76,
+    "sprites": 368,
+    "characters": 37,
+    "referenceBased": 77,
     "adapted": 291,
     "byCategory": {
       "sport": 13,
       "civilian": 44,
-      "military": 61,
+      "military": 62,
       "swimwear": 90,
       "uniform": 58,
       "other": 5,
@@ -44,7 +44,10 @@
       "latest-v6": 57,
       "recovered-unmapped-v6": 6,
       "newly-completed-v6": 3
-    }
+    },
+    "preservedBeforeV8": 367,
+    "v8Additions": 1,
+    "v8NewCharacters": 1
   },
   "pendingCharacters": [
     {
@@ -59,10 +62,21 @@
       "security-guard-ova",
       "ova-guest-yellow-dress",
       "ova-officer-bob",
-      "ova-officer-swept-hair"
+      "ova-officer-swept-hair",
+      "masked-soldier-red-visor"
     ],
     "swimwear": [
-      "maiko"
+      "maiko",
+      "masked-soldier-red-visor"
+    ],
+    "maid": [
+      "masked-soldier-red-visor"
+    ],
+    "nurse": [
+      "masked-soldier-red-visor"
+    ],
+    "latex": [
+      "masked-soldier-red-visor"
     ]
   },
   "assets": [
@@ -33252,9 +33266,132 @@
       },
       "generatorOutputSha256": "e3674c94211f9aceb104d397bf523dba27a4efc1e1444af507626f88db653f5f",
       "recoveryBatch": "completed-missing-v6"
+    },
+    {
+      "id": "masked-soldier-red-visor:urban-camouflage-reference-v8",
+      "characterId": "masked-soldier-red-visor",
+      "costumeId": "urban-camouflage-reference-v8",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/masked-soldier-red-visor--urban-camouflage-reference-v8.png",
+      "category": "military",
+      "provenance": "reference",
+      "revision": 8,
+      "sourceMedium": "user_reference",
+      "assetRole": "enemy",
+      "newCharacter": true,
+      "newOutfit": true,
+      "identitySourceId": "v8-masked-soldier-red-visor-user-reference",
+      "styleSourceId": "ova-officer-bob:ova-plum-uniform-reference-v4",
+      "canonicalCostumeCertified": false,
+      "canonicalIdentityCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-eb1d3e74-486d-49bf-873c-7738c043c481",
+        "generationIdSource": "Exact generated output filename returned by the tool; no separate server generation ID was returned.",
+        "prompt": "Use case: style-transfer.\nAsset type: one static full-body game enemy sprite for the Multiverse / Discipline review catalogue, on a truly transparent RGBA background.\nPrimary request: faithfully translate ONE anonymous adult masked female soldier from reference image 1 into the detailed pixel-art sprite style of reference image 2.\nInput images: Image 1 is the user's direct visual reference for the soldier's identity, anatomy, costume, equipment and colors. Image 2 is ONLY the existing game's pixel-art rendering style, full-body framing, scale and neutral three-quarter stance; do not borrow its face, brown hair, beret or uniform.\nSubject and invariants: a single clearly adult woman, naturally proportioned as in image 1, chin-to-shoulder-length straight black bob with side strands, forehead covered by dark headgear and a vivid narrow red visor over both eyes, a small centered gold detail above the visor, and a smooth angular white face mask covering nose, mouth and chin with the subtle vertical center seam visible in the source. Preserve the tan skin tone, opaque silver-white triangular halter top with thin dark straps and a dark underbust edge, exposed shoulders and midriff as shown, black/dark slate elbow-length gauntlet gloves with pale silver top cuffs, high-waisted loose gray/white/charcoal urban camouflage trousers, broad black belt with a simple dark metallic rectangular buckle, and tall plain black military boots. Keep the equipment silhouette and garment construction close to the screenshot, without extra armor, pouches, emblems or invented accessories.\nPose and framing: one whole character standing at attention in a calm neutral game idle stance, arms relaxed down, body turned very slightly toward the right in a three-quarter view, no pinup posture. Both feet and the complete soles of both boots must be visible, with comfortable transparent padding above the hair and below the boots. The reference crops the feet; complete them conservatively as simple matching flat black military boots. No handheld object, muzzle flash or added weapon.\nStyle: detailed 2D pixel art with deliberate crisp pixel clusters, dark contour, restrained stepped highlights and contrasting cel-shaded shadows, matching reference image 2's visual fidelity and realistic adult body proportions; not chibi, not photorealistic, not soft painterly. Preserve costume colors and restrained silhouette from image 1; do not enlarge or emphasize anatomy.\nCanvas: square single-sprite composition, preferably 1254 by 1254 native pixels if available, centered full body. Genuine transparent background with alpha, no checkerboard baked into pixels, no background scene, no floor, no cast shadow, no text, no border, no watermark, no sprite sheet and no additional characters.",
+        "promptStatus": "recorded-verbatim",
+        "transparentBackgroundRequested": true,
+        "pixelEditsAfterGeneration": false
+      },
+      "image": {
+        "sha256": "d5c3a3968ea4962ffc119fa5b1fc4f0c8c844af2b28c77ac0946926410f0606b",
+        "bytes": 527258,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          25,
+          29,
+          1230,
+          1254
+        ],
+        "visibleBoundsAlphaGt8": [
+          459,
+          31,
+          824,
+          1244
+        ],
+        "opaqueBoundsAlphaGe128": [
+          460,
+          32,
+          823,
+          1244
+        ],
+        "visibleMargins": [
+          459,
+          31,
+          430,
+          10
+        ],
+        "transparentPixelCount": 1285537
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "Single adult soldier in a neutral standing pose",
+          "Red visor, white mask, dark hair and silver top compared with user frame",
+          "Long dark gloves, pale cuffs, gray camouflage trousers and black belt preserved",
+          "Whole character, hands, both boots and soles within canvas",
+          "Native RGBA alpha preserved; no crop, resizing or pixel retouch"
+        ],
+        "reviewDocument": "enemy-v8/visual-review.json"
+      },
+      "proportionReview": {
+        "reviewed": true,
+        "method": "Visual comparison against the source-visible soldier; existing officer sprite used only for rendering style.",
+        "observations": [
+          "Adult standing silhouette and visible costume cues retained",
+          "Three-quarter right pose follows the established catalogue style"
+        ],
+        "limitations": [
+          "The source crops the closest soldiers below the lower legs; feet, soles and exact boot construction are reconstructed.",
+          "Camouflage placement, garment folds, buckle and body proportions are interpreted rather than exact traces.",
+          "No official individual name, faction or source-work attribution was established."
+        ],
+        "fullBodyOneToOneCertified": false
+      },
+      "referenceEvidence": [
+        {
+          "id": "v8-masked-soldier-red-visor-user-reference",
+          "type": "user_upload",
+          "filename": "image(20261028-172354).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v8/references/masked-soldier-user-reference.png",
+          "sourceMedium": "user_reference",
+          "role": "Primary identity, visible costume and palette; one soldier from the supplied group",
+          "sha256": "bb50c554be1660e62c6fbeb48a0cb31c1344b0c9a6f02bb8bd22fd0f3169d79a",
+          "dimensions": [
+            1729,
+            1329
+          ],
+          "directGenerationInput": true
+        },
+        {
+          "id": "v8-existing-officer-style",
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png",
+          "role": "Pixel-art rendering technique and framing only; not the soldier identity, clothing or anatomy authority",
+          "sha256": "6cb0369a798712e01419e387f5a56d53163015cbb669fd9f347d5d9776686902",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "directGenerationInput": true
+        }
+      ],
+      "fidelityNote": "Ennemie graphique d’après la capture fournie : cheveux noirs, visière rouge, masque blanc, haut argenté, longs gants sombres à manchettes claires, ceinture noire, pantalon camouflage gris et bottes noires. Nom descriptif ; identité, faction et œuvre précise non confirmées. Sprite statique ; aucune animation ni apparition en combat ajoutée. La capture ne montre pas une vue de modèle complète. Les pieds et semelles sont complétés sobrement, la pose est légèrement tournée à droite. Les plis, motifs de camouflage et proportions restent interprétés par le passage en pixel art ; aucune fidélité intégrale 1:1 certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
     }
   ],
-  "revision": 6,
+  "revision": 8,
   "preservedBaselineCommit": "f10098f69523e0c35e6f81788dfdfc1a8b897cd8",
   "preservedV3BaselineCommit": "58ca23d7bc226330bb5082cc1ba49aeadafc5de6",
   "pendingOutfitReferences": [
@@ -33373,6 +33510,12 @@
       "label": "Membre OVA — club de diffusion",
       "status": "descriptive-identity-only",
       "reason": "La feuille indique 放送部員 ; aucun nom propre n’est établi."
+    },
+    {
+      "characterId": "masked-soldier-red-visor",
+      "label": "Soldate masquée — visière rouge",
+      "status": "descriptive-identity-only",
+      "reason": "Personnage de la capture fournie par l’utilisateur ; aucun nom propre, faction ni source précise confirmé."
     }
   ],
   "researchV4": {
@@ -37106,5 +37249,19 @@
         }
       ]
     }
-  ]
+  ],
+  "preservedV8BaselineCommit": "cbce7b78631e32084f516aa8de5421de0f597fdd",
+  "extensionV8": {
+    "scope": "One supplied-reference enemy artwork; static catalogue asset only",
+    "report": "enemy-v8/README.md",
+    "validation": "enemy-v8/validation.json",
+    "addedAssetIds": [
+      "masked-soldier-red-visor:urban-camouflage-reference-v8"
+    ],
+    "historicalAudit": "canonical-audit-v7/README.md",
+    "historicalAuditAssetCount": 367,
+    "existingAssetsPreserved": true,
+    "runtimeEnemyRegistered": false,
+    "animated": false
+  }
 }

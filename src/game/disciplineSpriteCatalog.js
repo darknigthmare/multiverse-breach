@@ -8493,5 +8493,44 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
     "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-fidelity-v4.png",
     "identityReferenceDirectInput": true,
     "literalOneToOneCertified": false
+  },
+  {
+    "characterId": "masked-soldier-red-visor",
+    "characterName": "Soldate masquée — visière rouge",
+    "costumeId": "urban-camouflage-reference-v8",
+    "label": {
+      "fr": "Camouflage urbain — référence fournie",
+      "en": "Urban camouflage — supplied reference"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/masked-soldier-red-visor--urban-camouflage-reference-v8.png",
+    "provenance": "reference",
+    "category": "military",
+    "isDefault": true,
+    "available": true,
+    "revision": 8,
+    "sourceMedium": "user_reference",
+    "assetRole": "enemy",
+    "newCharacter": true,
+    "newOutfit": true,
+    "identitySourceId": "v8-masked-soldier-red-visor-user-reference",
+    "styleSourceId": "discipline-sprite-v1:ova-officer-bob:ova-plum-uniform-reference-v4",
+    "sourceEvidenceIds": [
+      "v8-masked-soldier-red-visor-user-reference"
+    ],
+    "literalOneToOneCertified": false,
+    "notes": {
+      "fr": "Ennemie graphique d’après la capture fournie : cheveux noirs, visière rouge, masque blanc, haut argenté, longs gants sombres à manchettes claires, ceinture noire, pantalon camouflage gris et bottes noires. Nom descriptif ; identité, faction et œuvre précise non confirmées. Sprite statique ; aucune animation ni apparition en combat ajoutée.",
+      "en": "Enemy artwork based on the supplied frame: black hair, red visor, white mask, silver top, long dark gloves with pale cuffs, black belt, gray camouflage trousers and black boots. Descriptive name; identity, faction and exact source work remain unconfirmed. Static sprite; no animation or combat spawning added."
+    },
+    "proportionNotes": {
+      "fr": "La capture ne montre pas une vue de modèle complète. Les pieds et semelles sont complétés sobrement, la pose est légèrement tournée à droite. Les plis, motifs de camouflage et proportions restent interprétés par le passage en pixel art ; aucune fidélité intégrale 1:1 certifiée.",
+      "en": "The frame is not a complete model sheet. Feet and soles are conservatively completed and the pose is turned slightly right. Folds, camouflage patches and proportions are interpreted in the pixel-art translation; complete 1:1 fidelity is not certified."
+    },
+    "referenceLinks": [
+      {
+        "label": "Capture fournie — référence de l’ennemie",
+        "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v8/references/masked-soldier-user-reference.png"
+      }
+    ]
   }
 ]);
