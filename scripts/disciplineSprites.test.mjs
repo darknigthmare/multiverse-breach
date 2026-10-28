@@ -158,6 +158,7 @@ test('variant links cannot replace defaults or point to a missing or different c
 
 test('independent OVA outfits keep style references separate from costume ancestry and fallback', () => {
   const outfits = DISCIPLINE_SPRITE_REGISTRY.entries.filter(row => row.newOutfit && row.sourceMedium === 'anime_ova');
+  const manifest = JSON.parse(readFileSync(new URL('../docs/discipline-sprites/manifest.json', import.meta.url), 'utf8'));
   assert.ok(outfits.length, 'Approved OVA outfits must be installed');
   for (const outfit of outfits) {
     assert.equal(outfit.provenance, 'reference');
@@ -168,15 +169,28 @@ test('independent OVA outfits keep style references separate from costume ancest
       assert.equal(outfit.isDefault, false);
     }
     assert.equal(outfit.variantOf, undefined, 'An OVA outfit must not be linked as a correction of a JGSDF costume');
-    const style = DISCIPLINE_SPRITE_REGISTRY.byId[outfit.styleSourceId];
-    assert.ok(style, outfit.id);
-    if (!outfit.newCharacter) assert.equal(style.characterId, outfit.characterId);
-    assert.notEqual(style.src, outfit.src);
+    const style = outfit.styleSourceId && DISCIPLINE_SPRITE_REGISTRY.byId[outfit.styleSourceId];
+    if (outfit.styleSourceId !== undefined) {
+      assert.ok(style, outfit.id);
+      if (!outfit.newCharacter) assert.equal(style.characterId, outfit.characterId);
+      assert.notEqual(style.src, outfit.src);
+    } else {
+      // A direct model-sheet study has no previous sprite as a style source.
+      // Require traceable source evidence instead of inventing costume ancestry.
+      assert.equal(outfit.paletteStatus, 'source-monochrome', outfit.id);
+      assert.ok(Array.isArray(outfit.sourceEvidenceIds) && outfit.sourceEvidenceIds.length, outfit.id);
+      const asset = manifest.assets.find(row => row.id === `${outfit.characterId}:${outfit.costumeId}`);
+      assert.ok(asset, outfit.id);
+      assert.equal(asset.canonicalPaletteCertified, false, outfit.id);
+      assert.equal(asset.proportionReview.fullBodyOneToOneCertified, false, outfit.id);
+      const evidenceIds = new Set(asset.referenceEvidence.map(row => row.id));
+      for (const evidenceId of outfit.sourceEvidenceIds) assert.ok(evidenceIds.has(evidenceId), evidenceId);
+    }
     const actor = actors.find(candidate => DISCIPLINE_HERO_BINDINGS[candidate.id] === outfit.characterId);
     if (!actor) continue;
     const sources = getDisciplineSpriteSources(applyActorAppearance(actor, outfit.id));
     assert.equal(sources[0], outfit.src);
-    assert.equal(sources.includes(style.src), false, 'Style references must not change the selected outfit fallback');
+    if (style) assert.equal(sources.includes(style.src), false, 'Style references must not change the selected outfit fallback');
   }
 });
 

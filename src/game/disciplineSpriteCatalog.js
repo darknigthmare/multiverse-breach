@@ -3776,5 +3776,79 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
     "newOutfit": false,
     "identitySourceId": "v4-yuuki-ova-tactical-fidelity-v4",
     "variantOf": "discipline-sprite-v1:yuuki:ova-tactical-reference-v3"
+  },
+  {
+    "characterId": "leona",
+    "characterName": "Leona Morimoto",
+    "costumeId": "ova-uniform-armband-monochrome-v5",
+    "label": {
+      "fr": "Uniforme et brassard 風紀 — étude monochrome OVA v5",
+      "en": "Uniform and 風紀 armband — OVA monochrome study v5"
+    },
+    "notes": {
+      "fr": "Étude monochrome indépendante de la planche OVA : uniforme en pied et brassard 風紀 sur le bras gauche. Coiffure, mains, jambes et mocassins comparés aux feuilles. Estimation visuelle : environ 7,4–7,6 hauteurs de tête contre 7,8–8 sur la source ; tête encore légèrement plus grande, expression plus sévère et semelles plus épaisses. La palette couleur reste inconnue. Aucun lien de correction avec la tenue VN, aucune certification intégrale 1:1.",
+      "en": "Independent monochrome study of the OVA sheet: full uniform with the 風紀 armband on her left arm. Hair, hands, legs and loafers compared with the sheets. Visual estimate: about 7.4–7.6 head lengths versus 7.8–8 in the source; head remains slightly larger, expression sterner and shoe soles thicker. Canonical colors remain unknown. No correction ancestry with the VN outfit and no full 1:1 certification."
+    },
+    "category": "uniform",
+    "provenance": "reference",
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--ova-uniform-armband-monochrome-v5.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 5,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "v5-leona-ova-uniform-armband-monochrome-v5",
+    "paletteStatus": "source-monochrome",
+    "sourceColorPaletteConfirmed": false,
+    "sourceEvidenceIds": [
+      "ova-settei-rakuma-01",
+      "ova-settei-rakuma-10"
+    ],
+    "referenceLinks": [
+      {
+        "label": "Planche en pied",
+        "url": "https://img.fril.jp/img/689573559/l/2280209791.png?1717257611="
+      },
+      {
+        "label": "Détail du brassard",
+        "url": "https://img.fril.jp/img/689573559/l/2280209821.png?1717257713="
+      }
+    ],
+    "sourceMediaNotes": "Public sale-listing scans labelled as OVA model sheets; monochrome study without verified canonical colors or studio chain of custody. No prior catalogue sprite supplied as a style or body reference."
+  },
+  {
+    "characterId": "ova-broadcasting-club-member",
+    "characterName": "Membre OVA — club de diffusion",
+    "costumeId": "ova-uniform-monochrome-v5",
+    "label": {
+      "fr": "Uniforme OVA — étude monochrome v5",
+      "en": "OVA uniform — monochrome study v5"
+    },
+    "notes": {
+      "fr": "Membre anonyme du club de diffusion, identifié par 放送部員. Étude monochrome de la petite figure en pied : environ 7,8–7,9 hauteurs de tête contre 7,8–8 sur la source ; largeur cheveux/épaules 159/345 ≈ 0,461 contre 86/187 ≈ 0,460. Cou, torse, genoux et bras croisé rapprochés du dessin. Visage, plis, contours et position de l’ourlet restent interprétés. PNG natif 1133 × 1388 conservé ; marges haut/bas de 15/14 px. La palette couleur et une identité nominative ne sont pas établies ; aucune certification intégrale 1:1.",
+      "en": "Unnamed broadcasting-club member labelled 放送部員. Monochrome study of the small full-body figure: about 7.8–7.9 head lengths versus 7.8–8 in the source; hair/shoulder width 159/345 ≈ 0.461 versus 86/187 ≈ 0.460. Neck, torso, knees and crossed-arm pose closely follow the drawing. Face, folds, contours and hem position remain interpreted. Native 1133 × 1388 PNG retained; 15/14 px top/bottom margins. Neither the canonical color palette nor a personal identity is established; no full 1:1 certification."
+    },
+    "category": "uniform",
+    "provenance": "reference",
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-broadcasting-club-member--ova-uniform-monochrome-v5.png",
+    "isDefault": true,
+    "available": true,
+    "revision": 5,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "v5-ova-broadcasting-club-member-ova-uniform-monochrome-v5",
+    "paletteStatus": "source-monochrome",
+    "sourceColorPaletteConfirmed": false,
+    "sourceEvidenceIds": [
+      "ova-settei-rakuma-09"
+    ],
+    "referenceLinks": [
+      {
+        "label": "Planche en pied",
+        "url": "https://img.fril.jp/img/689573559/l/2280209817.png?1717257709="
+      }
+    ],
+    "sourceMediaNotes": "Public sale-listing scans labelled as OVA model sheets; monochrome study without verified canonical colors or studio chain of custody. No prior catalogue sprite supplied as a style or body reference.",
+    "newCharacter": true
   }
 ]);

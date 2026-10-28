@@ -2,9 +2,9 @@
   "version": 1,
   "date": "2026-10-28",
   "counts": {
-    "sprites": 195,
-    "characters": 35,
-    "referenceBased": 74,
+    "sprites": 197,
+    "characters": 36,
+    "referenceBased": 76,
     "adapted": 121,
     "byCategory": {
       "civilian": 44,
@@ -12,18 +12,23 @@
       "other": 5,
       "sport": 13,
       "swimwear": 35,
-      "uniform": 56
+      "uniform": 58
     },
     "preservedOriginals": 132,
     "preservedBeforeV3": 154,
     "correctedVariants": 53,
-    "newOvaOutfits": 10,
+    "newOvaOutfits": 12,
     "v3Additions": 6,
-    "animeGalleryEntries": 14,
+    "animeGalleryEntries": 16,
     "preservedBeforeV4": 160,
     "v4Additions": 35,
     "v4CharacterVariants": 30,
-    "v4NewCharacters": 5
+    "v4NewCharacters": 5,
+    "preservedBeforeV5": 195,
+    "v5Additions": 2,
+    "v5NewCharacters": 1,
+    "v5CharacterVariants": 0,
+    "v5MonochromeStudies": 2
   },
   "pendingCharacters": [
     {
@@ -15332,9 +15337,353 @@
         "animated": false
       },
       "variantOf": "yuuki:ova-tactical-reference-v3"
+    },
+    {
+      "characterId": "leona",
+      "costumeId": "ova-uniform-armband-monochrome-v5",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--ova-uniform-armband-monochrome-v5.png",
+      "category": "uniform",
+      "provenance": "reference",
+      "revision": 5,
+      "sourceMedium": "anime_ova",
+      "newOutfit": true,
+      "identitySourceId": "v5-leona-ova-uniform-armband-monochrome-v5",
+      "paletteStatus": "source-monochrome",
+      "sourceColorPaletteConfirmed": false,
+      "sourceMediaNotes": "Public sale-listing scans labelled as OVA model sheets; monochrome study without verified canonical colors or studio chain of custody. No prior catalogue sprite supplied as a style or body reference.",
+      "sourceEvidenceIds": [
+        "ova-settei-rakuma-01",
+        "ova-settei-rakuma-10"
+      ],
+      "id": "leona:ova-uniform-armband-monochrome-v5",
+      "canonicalCostumeCertified": false,
+      "canonicalPaletteCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-47949c0f-24bd-4ed6-a8cc-2aa0fec854bf",
+        "generationIdSource": "Exact filename returned by the built-in image generator; not an independently verified server generation identifier.",
+        "prompt": "Use case: precise-object-edit. Image 1 is the existing full-body grayscale sprite to correct; image 2 is the authoritative full-body model sheet, using its left/front figure; image 3 is the authoritative armband close-up.\nKeep the character's exact identity, pose, long hairstyle, bow, two long curled front locks, uniform, left-arm 風紀 band, hands, slim legs, and shoes. This edit has two small changes only:\n1. Fit the complete figure more comfortably inside the same square canvas. Uniformly reduce the figure by about 7 percent and center it horizontally and vertically, leaving approximately 50 pixels of fully transparent space above the hair and below the soles on a 1254 by 1254 canvas.\n2. Reduce the head and cranial hair volume only by about 5 percent, to approach the approximately 7.8-head-height proportions of the small source figure. Preserve the neck, the full lengths of the front curled locks, the bow, and the entire body. Do not elongate or shorten the torso or legs.\nKeep all costume construction lines and the correct 風紀 characters on her left armband exactly. Keep natural hands with complete fingers. Keep thin plain loafer soles.\nDo not redesign, change pose, colorize, add a rod, add props, or add a ground shadow. Black, white and neutral grays only. Fully transparent background; no scenery, text annotations, labels, border, extra figures or panels. The whole figure must remain visible with clear margin around every extremity.",
+        "promptStatus": "recorded-verbatim",
+        "promptSha256": "65c013a65b0b00ba5ed97d49ddd4a7b808936fc4568893781bac1ecf522395a9",
+        "history": [
+          {
+            "prompt": "Use case: stylized-concept.\nAsset type: an additive monochrome production-reference game sprite of Leona Morimoto, uniform with the documented committee armband.\nImage 1: the complete clothed front model at LEFT labelled レオナ・制服 is the sole authority for body geometry, head scale, long neck, shoulder width, torso length, hips, limbs, uniform length and loafers. The back figure supplies only hair and back-garment construction.\nImage 2: the clothed detail sheet supplies the committee armband on HER LEFT upper arm and its exact double-outlined inscription 風紀. It is an accessory detail, not a new body-proportion template.\nFaithfully translate the full standing figure into crisp grayscale anime pixel art, preserving the original long-limbed silhouette and relatively small head. Keep the original front pose with just a very slight orientation to viewer's right; arms relaxed in the original model-sheet positions. Keep the face, the gathered long hair with the back bow, and the two precise curled front locks. Copy the collar, shoulder shapes, fastenings, long sleeves, pleated skirt and its borders, bands below the skirt, and the simple loafers exactly from the full-body source. Add only the documented armband around the left upper arm, positioned just below the shoulder panel. Do not add the rod from the detail view.\nNo color is established by these sources. Use only black, white and neutral grayscale; do not invent a colored palette, tinted skin or hair. Keep the light costume surfaces and dark linework of the reference. Preserve source geometry instead of using a generic large-headed character template. This is a neutral fully clothed costume reference.\nOne character only. Square1254x1254 composition on genuine transparent alpha, complete hair, hands and both shoes inside the frame with clear margins. Crisp controlled pixel clusters, restrained monochrome shading, no ground shadow, no background, no text outside the small armband inscription, no captions, no border, no watermark.",
+            "status": "superseded",
+            "reason": "Top and bottom margins only about7px; framing correction required.",
+            "generationId": "exec-fa814072-3e88-47e2-924e-e06cdba8aab8",
+            "outputSha256": "f36468c7ef2d316b95a82ac1f151ecaff13da89444d7a71c907bc4a9945857ac",
+            "dimensions": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "prompt": "Use case: precise-object-edit. Image 1 is the existing full-body grayscale sprite to correct; image 2 is the authoritative full-body model sheet, using its left/front figure; image 3 is the authoritative armband close-up.\nKeep the character's exact identity, pose, long hairstyle, bow, two long curled front locks, uniform, left-arm 風紀 band, hands, slim legs, and shoes. This edit has two small changes only:\n1. Fit the complete figure more comfortably inside the same square canvas. Uniformly reduce the figure by about 7 percent and center it horizontally and vertically, leaving approximately 50 pixels of fully transparent space above the hair and below the soles on a 1254 by 1254 canvas.\n2. Reduce the head and cranial hair volume only by about 5 percent, to approach the approximately 7.8-head-height proportions of the small source figure. Preserve the neck, the full lengths of the front curled locks, the bow, and the entire body. Do not elongate or shorten the torso or legs.\nKeep all costume construction lines and the correct 風紀 characters on her left armband exactly. Keep natural hands with complete fingers. Keep thin plain loafer soles.\nDo not redesign, change pose, colorize, add a rod, add props, or add a ground shadow. Black, white and neutral grays only. Fully transparent background; no scenery, text annotations, labels, border, extra figures or panels. The whole figure must remain visible with clear margin around every extremity.",
+            "status": "accepted",
+            "reason": "Complete figure, corrected framing, identity/uniform/armband visually reviewed; limited anatomical differences remain.",
+            "generationId": "exec-47949c0f-24bd-4ed6-a8cc-2aa0fec854bf",
+            "outputSha256": "55122ebad3b3ffe7484fdd32e19f92e0c9529be91a077eb5157906791e77f865",
+            "dimensions": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "image": {
+        "sha256": "55122ebad3b3ffe7484fdd32e19f92e0c9529be91a077eb5157906791e77f865",
+        "bytes": 578864,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          0,
+          0,
+          1224,
+          1224
+        ],
+        "visibleBoundsAlphaGt8": [
+          471,
+          69,
+          801,
+          1216
+        ],
+        "opaqueBoundsAlphaGe128": [
+          472,
+          72,
+          800,
+          1215
+        ],
+        "visibleMargins": [
+          471,
+          69,
+          453,
+          38
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "checks": [
+          "One complete clothed figure; face, clothing and source-visible proportions visually reviewed.",
+          "Source-monochrome treatment; no canonical color palette inferred.",
+          "Native image retained without resizing or pixel postprocessing."
+        ],
+        "literalOneToOneCertified": false,
+        "alphaReview": "Real transparency and positive visible margins checked; no pixel postprocessing applied."
+      },
+      "proportionReview": {
+        "verdict": "reference-monochrome-study",
+        "sourceHeadLengths": [
+          7.8,
+          8
+        ],
+        "outputHeadLengths": [
+          7.4,
+          7.6
+        ],
+        "visibleMargins": [
+          471,
+          69,
+          453,
+          38
+        ],
+        "limitations": [
+          "Head remains slightly larger than the small full-body source view; exact5percent edit not certified.",
+          "Slightly sterner expression and thicker shoe soles; line style and pose remain interpreted.",
+          "Source monochrome sheet does not certify a canonical color palette."
+        ],
+        "fullBodyOneToOneCertified": false,
+        "visualReviewCompleted": true,
+        "reviewed": true,
+        "method": "Visual comparison with the small clothed full-body source figure; approximate head-length ratios and, where recorded, width measurements. No claim of mathematical identity.",
+        "observations": [
+          "Complete Leona uniform geometry from sheet 01; left armband construction and 風紀 inscription from sheet 10.",
+          "Framing improved; the final head remains modestly larger than the source."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "id": "ova-settei-rakuma-01",
+          "type": "model_sheet_photo",
+          "url": "https://img.fril.jp/img/689573559/l/2280209791.png?1717257611=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "sourceMedium": "anime_ova",
+          "role": "Full clothed standing Leona model labelled レオナ・制服; body silhouette and clothing construction.",
+          "limitations": "Monochrome sale-listing scan; canonical color palette and studio chain of custody are not certified.",
+          "sha256": "3f9c5ea7a7c09cf9614289246f53a0bab55e8be4af08a2a01b39d0e0fc7968ca",
+          "filename": "01.png",
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "provenanceNote": "Public sale-listing scan labelled as an OVA model sheet; studio chain of custody is not verified."
+        },
+        {
+          "id": "ova-settei-rakuma-10",
+          "type": "model_sheet_photo",
+          "url": "https://img.fril.jp/img/689573559/l/2280209821.png?1717257713=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "sourceMedium": "anime_ova",
+          "role": "Accessory detail headed 社交部腕章; armband inscription 風紀 and construction; not a body-proportion authority.",
+          "limitations": "Monochrome sale-listing scan; canonical color palette and studio chain of custody are not certified.",
+          "sha256": "c7c228eddf772b1228c0bd715a5edc19edec42be74bee88c9b34afc28dac18ca",
+          "filename": "10.png",
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "provenanceNote": "Public sale-listing scan labelled as an OVA model sheet; studio chain of custody is not verified."
+        }
+      ],
+      "fidelityNote": "Étude monochrome indépendante de la planche OVA : uniforme en pied et brassard 風紀 sur le bras gauche. Coiffure, mains, jambes et mocassins comparés aux feuilles. Estimation visuelle : environ 7,4–7,6 hauteurs de tête contre 7,8–8 sur la source ; tête encore légèrement plus grande, expression plus sévère et semelles plus épaisses. La palette couleur reste inconnue. Aucun lien de correction avec la tenue VN, aucune certification intégrale 1:1.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "front-three-quarter",
+        "animated": false
+      }
+    },
+    {
+      "characterId": "ova-broadcasting-club-member",
+      "costumeId": "ova-uniform-monochrome-v5",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-broadcasting-club-member--ova-uniform-monochrome-v5.png",
+      "category": "uniform",
+      "provenance": "reference",
+      "revision": 5,
+      "sourceMedium": "anime_ova",
+      "newOutfit": true,
+      "identitySourceId": "v5-ova-broadcasting-club-member-ova-uniform-monochrome-v5",
+      "paletteStatus": "source-monochrome",
+      "sourceColorPaletteConfirmed": false,
+      "sourceMediaNotes": "Public sale-listing scans labelled as OVA model sheets; monochrome study without verified canonical colors or studio chain of custody. No prior catalogue sprite supplied as a style or body reference.",
+      "sourceEvidenceIds": [
+        "ova-settei-rakuma-09"
+      ],
+      "id": "ova-broadcasting-club-member:ova-uniform-monochrome-v5",
+      "canonicalCostumeCertified": false,
+      "canonicalPaletteCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-ffc6c85a-8d66-4915-b09b-a129e0494b37",
+        "generationIdSource": "Exact filename returned by the built-in image generator; not an independently verified server generation identifier.",
+        "prompt": "Use case: faithful isolation and cleanup of a model-sheet figure.\nExtract ONLY the SMALL FULL-BODY STANDING FIGURE at the upper right of this supplied model sheet, identified by 放送部員. Remove the sheet background, all text and all separate enlarged head studies. Faithfully reproduce the small standing figure's actual contour, relative dimensions, costume construction, expression and pose. The large heads on the left are separate studies at a different scale: NEVER use their size for the standing figure.\nTreat the standing figure as a tracing reference, not an invitation to redesign or beautify it. The source has a very small, narrow head relative to its wide structured shoulders, a slender long neck, a long fitted torso, and slim long legs. Preserve these uncommon proportions precisely rather than normalizing them to a large-headed anime style.\nGeometry targets on a 1254x1254 transparent square: total figure about1150pixels high, crown around y52, lowest sole around y1202. Head from crown to chin about145–148pixels high (about7.8head-lengths in the whole figure), hair width about135pixels, total structured shoulder width about293pixels. Thus hair width is only about46percent of shoulder width, not two-thirds. Approximate shoulder line y240, waist y475, skirt hem y675, knees y800, soles y1202. Follow the SOURCE contour whenever a line is ambiguous. These landmarks describe the source silhouette; keep the small natural head and high knees.\nPreserve exactly the narrow side-parted bob haircut, side-swept fringe, natural slim neck, the right forearm crossing the torso with hand near the opposite shoulder, the other arm lowered, rounded uniform shoulder panels, circular fastener, tie, fitted double-breasted jacket, layered central pointed tab, pleated skirt with its parallel thin hem stripes, thin bands just under the skirt, and slim plain loafers. Keep both hands, both complete legs and shoes.\nClean neutral monochrome ink and restrained grayscale, matching the source line art. No invented canonical colors, no extra shading that changes anatomy, no more volumptuous shapes, no props, no added insignia, no scenery, no ground shadow, no labels, no separate portraits, no border. All background pixels fully transparent. Do not crop any part of the figure.",
+        "promptStatus": "recorded-verbatim",
+        "promptSha256": "dda17d145bfac10b69fe34b139fd31471c427de510b4f6f6027217396a4ba2a9",
+        "history": [
+          {
+            "prompt": "Use case: stylized-concept.\nAsset type: a new static full-body game character sprite adapted faithfully from the supplied monochrome production model sheet.\nReference image: the unnamed broadcasting-club member labelled 放送部員. The complete standing figure at the upper RIGHT is the sole authority for clothing, body proportions, standing posture, hands, legs and shoes. The three head drawings are supporting identity views of this same character.\nReproduce this same fully clothed character in detailed crisp anime pixel art. Preserve the shoulder-length straight bob haircut and side-swept fringe, the face shape, the long natural neck, the relative head size, shoulder width, torso length, arm lengths and the model sheet's long leg proportions. Keep the complete uniform exactly as drawn: collar and narrow necktie, rounded shoulder panels, long sleeves, fitted buttoned jacket, pleated skirt with twin border stripes, the visible bands just below the hem, and the plain loafers. Preserve the source's quiet neutral standing pose with one forearm held across the upper torso; do not add a microphone or any other object. Use a very slight three-quarter orientation toward viewer's right while keeping the source proportions.\nThe source is monochrome and no canonical color reference exists. Render the entire sprite ONLY in black, white and neutral grayscale, keeping the model-sheet garments primarily light with dark line details. Do not invent hair, eye, uniform, trim or shoe colors. This is an explicitly monochrome source study.\nOne character only, complete head, fingers and both shoes visible, uncut silhouette with comfortable empty margins on a square 1254x1254 composition. Real transparent alpha background. No floor shadow, scenery, annotations, names, text, watermark or border.",
+            "status": "rejected-for-integration",
+            "reason": "Head too large: about6.6head-lengths vs source7.8–8, hair/shoulders0.68vs0.46.",
+            "generationId": "exec-60f81a23-7e03-4156-a2e7-d180a87fda3d",
+            "outputSha256": "24e7fa5a4082301a269fa572765d4bb350d774978cfe2cbe39abdd19a4814ac0",
+            "dimensions": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "prompt": "Use case: precise-object-edit.\nImage 1 is the sprite to correct. Image 2 is the authoritative character model sheet; use its SMALL FULL-BODY STANDING FIGURE at upper right for proportions, not the enlarged head studies.\nCorrect only the body-proportion discrepancies of image1 while preserving this character's identity, exact uniform, grayscale palette, arm pose, pixel rendering, and transparent background.\nThe first sprite has about6.6 head-lengths of total height, whereas the source figure has about7.8. Reduce the HEAD AND HAIR together by approximately18percent in height and27percent in width relative to the body. Preserve the facial features inside that smaller head. Keep the bob haircut narrow and close to the head, as on the source.\nRaise the shoulders by about4percent of total figure height and the waist by about2percent, giving the torso a little more length. Keep the neck slender and naturally connected. Keep the skirt hem at about54–55percent of the figure's height measured from the top of the hair. The overall lower-body length is already close: do NOT elongate the entire legs. Raise the knees by about2.5percent of the figure's height, slightly shortening thighs and increasing calf length, with the feet at the same relative bottom line. Make the loafers a little slimmer with thinner soles as on the model sheet.\nFit the corrected FULL figure comfortably inside a1254x1254 square, about1150pixels tall with at least45pixels of transparent clearance above the hair and below the soles. All fingers and shoes must be complete.\nKeep black, white and neutral grayscale only. No colored tint, no new costume details, no props, no scenery, no ground shadow, no letters, no labels, no border. This is a neutral fully clothed character-reference correction.",
+            "status": "rejected-for-integration",
+            "reason": "Partial correction only: about6.9head-lengths, hair/shoulders0.64; knees still too low.",
+            "generationId": "exec-3199539a-55a2-4ce3-8fc2-79bf8b7d3b87",
+            "outputSha256": "85e6d30f25f7a04a453cf29cfc8c8daf4c664b23af6d47ebcf4b8651b3cd5b49",
+            "dimensions": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "prompt": "Use case: faithful isolation and cleanup of a model-sheet figure.\nExtract ONLY the SMALL FULL-BODY STANDING FIGURE at the upper right of this supplied model sheet, identified by 放送部員. Remove the sheet background, all text and all separate enlarged head studies. Faithfully reproduce the small standing figure's actual contour, relative dimensions, costume construction, expression and pose. The large heads on the left are separate studies at a different scale: NEVER use their size for the standing figure.\nTreat the standing figure as a tracing reference, not an invitation to redesign or beautify it. The source has a very small, narrow head relative to its wide structured shoulders, a slender long neck, a long fitted torso, and slim long legs. Preserve these uncommon proportions precisely rather than normalizing them to a large-headed anime style.\nGeometry targets on a 1254x1254 transparent square: total figure about1150pixels high, crown around y52, lowest sole around y1202. Head from crown to chin about145–148pixels high (about7.8head-lengths in the whole figure), hair width about135pixels, total structured shoulder width about293pixels. Thus hair width is only about46percent of shoulder width, not two-thirds. Approximate shoulder line y240, waist y475, skirt hem y675, knees y800, soles y1202. Follow the SOURCE contour whenever a line is ambiguous. These landmarks describe the source silhouette; keep the small natural head and high knees.\nPreserve exactly the narrow side-parted bob haircut, side-swept fringe, natural slim neck, the right forearm crossing the torso with hand near the opposite shoulder, the other arm lowered, rounded uniform shoulder panels, circular fastener, tie, fitted double-breasted jacket, layered central pointed tab, pleated skirt with its parallel thin hem stripes, thin bands just under the skirt, and slim plain loafers. Keep both hands, both complete legs and shoes.\nClean neutral monochrome ink and restrained grayscale, matching the source line art. No invented canonical colors, no extra shading that changes anatomy, no more volumptuous shapes, no props, no added insignia, no scenery, no ground shadow, no labels, no separate portraits, no border. All background pixels fully transparent. Do not crop any part of the figure.",
+            "status": "accepted",
+            "reason": "Independent review confirms much closer source proportions: about7.8–7.9head-lengths and hair/shoulders159/345=0.461 against86/187=0.460. Complete figure; nativecanvas preserved without retouching.",
+            "generationId": "exec-ffc6c85a-8d66-4915-b09b-a129e0494b37",
+            "outputSha256": "8bedc55bdd407f9d07ad42341b90f6c4892e1a81ca7e56fc860ec66c0b6588e0",
+            "dimensions": [
+              1133,
+              1388
+            ]
+          }
+        ]
+      },
+      "image": {
+        "sha256": "8bedc55bdd407f9d07ad42341b90f6c4892e1a81ca7e56fc860ec66c0b6588e0",
+        "bytes": 591676,
+        "width": 1133,
+        "height": 1388,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          0,
+          12,
+          1087,
+          1388
+        ],
+        "visibleBoundsAlphaGt8": [
+          387,
+          15,
+          732,
+          1374
+        ],
+        "opaqueBoundsAlphaGe128": [
+          388,
+          16,
+          731,
+          1374
+        ],
+        "visibleMargins": [
+          387,
+          15,
+          401,
+          14
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "checks": [
+          "One complete clothed figure; face, clothing and source-visible proportions visually reviewed.",
+          "Source-monochrome treatment; no canonical color palette inferred.",
+          "Native image retained without resizing or pixel postprocessing."
+        ],
+        "literalOneToOneCertified": false,
+        "alphaReview": "Apparent background ghosts have alpha1–4/255. One main component at alpha thresholds8,128,200; no disconnected opaque islands requiring a new edit."
+      },
+      "proportionReview": {
+        "verdict": "reference-monochrome-study",
+        "visualReviewCompleted": true,
+        "sourceHeadLengths": [
+          7.8,
+          8
+        ],
+        "outputHeadLengths": [
+          7.8,
+          7.9
+        ],
+        "sourceHairWidth": 86,
+        "sourceShoulderWidth": 187,
+        "outputHairWidth": 159,
+        "outputShoulderWidth": 345,
+        "visibleMargins": [
+          387,
+          15,
+          401,
+          14
+        ],
+        "alphaReview": "Apparent background ghosts have alpha1–4/255. One main component at alpha thresholds8,128,200; no disconnected opaque islands requiring a new edit.",
+        "observations": [
+          "Narrow head, neck, torso and raised knee positions closely follow the full-body source.",
+          "Identity, uniform construction and crossed forearm pose reviewed against the small source figure.",
+          "Hair, fingers and shoes complete. Native1133x1388PNG preserved byte-for-byte; no resizing or postprocessing."
+        ],
+        "limitations": [
+          "Face, clothing folds and linework remain interpreted.",
+          "Hem position is slightly different; no mathematical pixel-for-pixel identity is certified.",
+          "Source monochrome sheet does not certify a canonical color palette.",
+          "Top/bottom margins15/14px are narrow but the complete figure remains inside the canvas."
+        ],
+        "fullBodyOneToOneCertified": false,
+        "reviewed": true,
+        "method": "Visual comparison with the small clothed full-body source figure; approximate head-length ratios and, where recorded, width measurements. No claim of mathematical identity."
+      },
+      "referenceEvidence": [
+        {
+          "id": "ova-settei-rakuma-09",
+          "type": "model_sheet_photo",
+          "url": "https://img.fril.jp/img/689573559/l/2280209817.png?1717257709=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "sourceMedium": "anime_ova",
+          "role": "Full clothed standing broadcasting-club model labelled 放送部員; small standing figure establishes clothing and proportions; enlarged portraits only support identity.",
+          "limitations": "Monochrome sale-listing scan; canonical color palette and studio chain of custody are not certified.",
+          "sha256": "3e5a1fc2b52ced050bffd20250750070ae7e5475b17f766274ddf93c41dba36e",
+          "filename": "09.png",
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "provenanceNote": "Public sale-listing scan labelled as an OVA model sheet; studio chain of custody is not verified."
+        }
+      ],
+      "fidelityNote": "Membre anonyme du club de diffusion, identifié par 放送部員. Étude monochrome de la petite figure en pied : environ 7,8–7,9 hauteurs de tête contre 7,8–8 sur la source ; largeur cheveux/épaules 159/345 ≈ 0,461 contre 86/187 ≈ 0,460. Cou, torse, genoux et bras croisé rapprochés du dessin. Visage, plis, contours et position de l’ourlet restent interprétés. PNG natif 1133 × 1388 conservé ; marges haut/bas de 15/14 px. La palette couleur et une identité nominative ne sont pas établies ; aucune certification intégrale 1:1.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "front",
+        "animated": false
+      },
+      "newCharacter": true
     }
   ],
-  "revision": 4,
+  "revision": 5,
   "preservedBaselineCommit": "f10098f69523e0c35e6f81788dfdfc1a8b897cd8",
   "preservedV3BaselineCommit": "58ca23d7bc226330bb5082cc1ba49aeadafc5de6",
   "pendingOutfitReferences": [
@@ -15344,11 +15693,24 @@
       "outfit": "Robe de soirée asymétrique",
       "status": "generation-blocked",
       "identityConfirmed": true,
-      "reason": "Feuille nommée et capture couleur retrouvées. Le générateur a refusé la sortie (filtre sexual, étape output). Aucun PNG ni nouvel essai sur cette robe.",
+      "reason": "Feuille nommée et capture couleur retrouvées. Une nouvelle tentative v5 a également été refusée à la sortie du générateur. Aucun PNG n’est installé pour cette tenue.",
       "sourceUrls": [
         "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b"
       ],
-      "generationRequestId": "ac5717cb-4ae8-4f91-a8d7-4fc92318a1f9"
+      "generationRequestId": "ac5717cb-4ae8-4f91-a8d7-4fc92318a1f9",
+      "latestGenerationRequestId": "7a44ead0-800c-4259-84c3-1cdb04a1cce2",
+      "v5GenerationBlocks": [
+        {
+          "characterId": "reina",
+          "requestedOutfit": "ova-party-dress",
+          "status": "not-generated",
+          "reason": "Image-generation output rejected by moderation; no asset installed.",
+          "requestId": "7a44ead0-800c-4259-84c3-1cdb04a1cce2",
+          "errorCode": "moderation_blocked",
+          "stage": "output",
+          "prompt": "Use case: stylized-concept.\nAsset type: one new full-body pixel-art game costume sprite, Reina Morimoto in the evening gown shown by the supplied references.\nImage 1 is the named costume model sheet. Reproduce ONLY the adult woman at the far LEFT labelled レイナ and her back-view drawing immediately to the right. That complete standing drawing is the authority for her individual proportions, silhouette, garment construction, hem, side slit and sandals.\nImage 2 is the color scene. The seated woman at LEFT is Reina. Use her face, light brown gathered hair with the long front locks, violet eyes, pale ice-blue gown and narrow matching scarf. Do not depict the woman in yellow, the phone, furniture or background.\nDraw Reina alone in an ordinary relaxed standing pose, three-quarter view facing the viewer's right, with calm expression and empty relaxed hands. Keep the model sheet's head-to-body scale, narrow natural neck, shoulder width, torso length, arm lengths and long leg proportions. Do not use chibi proportions or enlarge the head. Transfer the complete silhouette faithfully, rather than substituting a generic anime body.\nClothing: the same opaque one-shoulder draped floor-length pale-blue formal gown, diagonal neckline, gathered folds at the waist, side slit at her right, the matching long narrow neck scarf from the color frame, and the thin-strap heeled sandals from the model sheet. Keep the single-shoulder construction and the exact garment length. This is a neutral character-costume reference presentation.\nRendering: detailed crisp anime pixel art with coherent small pixel clusters and restrained shading, matching a high-resolution static game sprite. One character, complete hair, hands, gown hem and both sandals wholly inside the frame with clear margins. Square 1254 by1254 composition, genuinely transparent background, no shadow beneath the feet, no scenery, no text, no watermark, no border."
+        }
+      ]
     },
     {
       "id": "saori-casual-skirt-ova",
@@ -15434,6 +15796,12 @@
       "label": "Garde de sécurité OVA — roux",
       "status": "descriptive-identity-only",
       "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+    },
+    {
+      "characterId": "ova-broadcasting-club-member",
+      "label": "Membre OVA — club de diffusion",
+      "status": "descriptive-identity-only",
+      "reason": "La feuille indique 放送部員 ; aucun nom propre n’est établi."
     }
   ],
   "researchV4": {
@@ -15443,5 +15811,24 @@
     "entireArchiveDownloaded": false,
     "report": "reference-v4-research.json",
     "oneToOneCertified": false
-  }
+  },
+  "preservedV5BaselineCommit": "0c4f9a165a1e00f1b897246b142c1a59878f5ac0",
+  "researchV5": {
+    "report": "reference-v5-research.json",
+    "monochromeStudies": 2,
+    "sourceColorPaletteConfirmed": false,
+    "oneToOneCertified": false
+  },
+  "pendingPaletteConfirmations": [
+    {
+      "id": "leona:ova-uniform-armband-monochrome-v5",
+      "status": "source-monochrome",
+      "reason": "Étude monochrome livrée ; aucune palette couleur de cette incarnation n’est certifiée."
+    },
+    {
+      "id": "ova-broadcasting-club-member:ova-uniform-monochrome-v5",
+      "status": "source-monochrome",
+      "reason": "Étude monochrome livrée ; aucune palette couleur de cette incarnation n’est certifiée."
+    }
+  ]
 }
