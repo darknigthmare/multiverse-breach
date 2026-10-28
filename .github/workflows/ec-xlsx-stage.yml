@@ -1,0 +1,93 @@
+name: EC reviewed workbook publication
+on:
+  push:
+    branches: [codex/ec-backlog-2026-10-28]
+    paths: ['docs/extinction-city/xlsx-delivery.part*', 'docs/extinction-city/receive-workbooks.py', '.github/workflows/ec-xlsx-stage.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.repository == 'darknigthmare/multiverse-breach' && github.ref == 'refs/heads/codex/ec-backlog-2026-10-28'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /docs/extinction-city/
+            /.github/workflows/extinction-content.yml
+            /docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx
+            /docs/excel/Multiverse_Breach_UI_Immersion.xlsx
+            **/*.json
+            **/*.jsonl
+      - name: Restore reviewed bytes with full hash verification
+        run: |
+          zstd --version
+          python3 docs/extinction-city/receive-workbooks.py
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Compare immutable workbook cells and preserve verification history
+        run: |
+          set -euo pipefail
+          git ls-files > TRACKED_FILES.txt
+          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionCityCatalog.test.mjs | tee /tmp/ec-xlsx/catalog-tests.log
+          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/catalog.mjs 849ae4eea0b761df0b518a815132a458ecfca2c7 /tmp/ec-xlsx/catalog.json | tee /tmp/ec-xlsx/catalog-summary.json
+          python3 scripts/extinction-city/verify_workbook.py /tmp/ec-xlsx/catalog.json docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx | tee /tmp/ec-xlsx/production.json
+          python3 scripts/ui-immersion/verify-workbook.py docs/excel/Multiverse_Breach_UI_Immersion.xlsx --report /tmp/ec-xlsx/ui.json
+          python3 - <<'PY'
+          import hashlib,json,zipfile,xml.etree.ElementTree as ET
+          from pathlib import Path
+          out=Path('/tmp/ec-xlsx');receipt=json.loads(Path('docs/extinction-city/workbook-followup-2026-10-28.json').read_text())
+          report=json.loads((out/'production.json').read_text())
+          for key in ('sheets','tables','catalogRows','verifiedCells','catalogSha256','sha256'):
+              assert report[key]==receipt['production'][key],key
+          ui=json.loads((out/'ui.json').read_text())
+          assert report['cachedFormulaErrors']==0 and not ui['cachedErrors']
+          assert len(ui['sheets'])==5 and len(ui['tables'])==4
+          assert next(t for t in ui['tables'] if t['name']=='ImmersionVerification')['range']=='A6:H176'
+          n={'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+          def cells(path,member):
+              with zipfile.ZipFile(path) as z:root=ET.fromstring(z.read(member))
+              return {c.attrib['r']:((c.find('s:v',n).text if c.find('s:v',n) is not None else ''),(c.find('s:f',n).text if c.find('s:f',n) is not None else '')) for c in root.findall('.//s:sheetData/s:row/s:c',n)}
+          old=cells(out/'ui-before.xlsx','xl/worksheets/sheet5.xml')
+          new=cells('docs/excel/Multiverse_Breach_UI_Immersion.xlsx','xl/worksheets/sheet5.xml')
+          for row in range(7,163):
+              for col in 'ABCDEFGH':assert old.get(f'{col}{row}',('',''))==new.get(f'{col}{row}',('','')),(col,row)
+          kpis=cells('docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx','xl/worksheets/sheet1.xml')
+          for cell,expected in [('B44',7),('B46',28),('B48',1587)]:assert float(kpis[cell][0])==expected and kpis[cell][1]
+          for section,name in [('production','Multiverse_Breach_Extinction_Cite_Production.xlsx'),('ui','Multiverse_Breach_UI_Immersion.xlsx')]:
+              assert hashlib.sha256((Path('docs/excel')/name).read_bytes()).hexdigest()==receipt[section]['sha256']
+          (out/'history-kpi.json').write_text(json.dumps({'preservedHistoryRows':156,'verificationRows':170,'mechanicsKPIs':[7,28,1587],'cachedErrors':0},indent=2))
+          (out/'catalog.json').unlink();(out/'ui-before.xlsx').unlink()
+          PY
+      - name: Store five verified Git blobs without commit or ref update
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64,hashlib,json,os,urllib.request
+          from pathlib import Path
+          files=json.loads(Path('/tmp/ec-xlsx/manifest.json').read_text());blobs=[]
+          for f in files:
+              raw=Path(f['path']).read_bytes();assert hashlib.sha256(raw).hexdigest()==f['sha256']
+              req=urllib.request.Request('https://api.github.com/repos/darknigthmare/multiverse-breach/git/blobs',data=json.dumps({'encoding':'base64','content':base64.b64encode(raw).decode()}).encode(),method='POST',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'ec-xlsx-reviewed'})
+              with urllib.request.urlopen(req,timeout=30) as response:result=json.load(response)
+              assert result['sha']==hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+              blobs.append({'path':f['path'],'mode':'100644','type':'blob','sha':result['sha']})
+          Path('/tmp/ec-xlsx/blobs.json').write_text(json.dumps(blobs,indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: ec-xlsx-${{ github.sha }}
+          path: /tmp/ec-xlsx/
+          retention-days: 14
