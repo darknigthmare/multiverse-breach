@@ -2376,5 +2376,445 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
       "fr": "Variante adaptée pour le jeu ; costume non attesté comme officiel.",
       "en": "Adapted for the game; not a verified official outfit."
     }
+  },
+  {
+    "characterId": "saori",
+    "characterName": "Saori Otokawa",
+    "costumeId": "casual-reference-v2",
+    "label": {
+      "fr": "Tenue civile de référence — référence v2",
+      "en": "White blouse with black collar, denim shorts, dark ankle boots. — reference v2"
+    },
+    "category": "civilian",
+    "provenance": "reference",
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--casual-reference-v2.png",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Chevelure resserrée et lissée, mèches avant et ruban conservés; visage légèrement adouci. Les chaussures hors référence restent reconstituées. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:saori:casual",
+    "revision": 2
+  },
+  {
+    "characterId": "saori",
+    "characterName": "Saori Otokawa",
+    "costumeId": "uniform-reference-v2",
+    "label": {
+      "fr": "Uniforme noir et or — référence v2",
+      "en": "Black, gold and white uniform, pleated skirt, dark socks and ankle boots. — reference v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-reference-v2.png",
+    "provenance": "reference",
+    "category": "uniform",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Chevelure resserrée et lissée, mèches avant et ruban conservés; visage légèrement adouci. Les chaussures hors référence restent reconstituées. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:saori:uniform",
+    "revision": 2
+  },
+  {
+    "characterId": "saori",
+    "characterName": "Saori Otokawa",
+    "costumeId": "baseball-reference-v2",
+    "label": {
+      "fr": "Tenue de baseball — référence v2",
+      "en": "White/red baseball shirt, white trousers, dark sports shoes. — reference v2"
+    },
+    "category": "sport",
+    "provenance": "reference",
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--baseball-reference-v2.png",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Chevelure resserrée et lissée, mèches avant et ruban conservés; visage légèrement adouci. Les chaussures hors référence restent reconstituées. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:saori:baseball",
+    "revision": 2
+  },
+  {
+    "characterId": "ruri",
+    "characterName": "Ruri Nonomiya",
+    "costumeId": "casual-reference-v2",
+    "label": {
+      "fr": "Tenue civile de référence — référence v2",
+      "en": "Black/silver halter top, white pleated skirt, blue/white striped socks, blue/white sneakers. — reference v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-reference-v2.png",
+    "provenance": "reference",
+    "category": "civilian",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Couettes nettement affinées et plus lisses en arcs; rubans jaunes, tenue et chaussures de la version précédente conservés. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:ruri:casual",
+    "revision": 2
+  },
+  {
+    "characterId": "kaori",
+    "characterName": "Kaori Matsuno",
+    "costumeId": "outfit-reference-v2",
+    "label": {
+      "fr": "Veste blanche et jupe rouge — référence v2",
+      "en": "White jacket, black blouse, red skirt with V-shaped belt, dark stockings and shoes. — reference v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit-reference-v2.png",
+    "provenance": "reference",
+    "category": "civilian",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Grande masse de cheveux ondulés supprimée au profit de mèches droites plus sobres; visage adouci. Longueur arrière en partie interprétée, car la référence est frontale. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:kaori:outfit",
+    "revision": 2
+  },
+  {
+    "characterId": "karen",
+    "characterName": "Karen Himeki",
+    "costumeId": "uniform-reference-v2",
+    "label": {
+      "fr": "Uniforme noir et or — référence v2",
+      "en": "Black, gold and white uniform with skirt, patterned stocking tops and ankle boots. — reference v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform-reference-v2.png",
+    "provenance": "reference",
+    "category": "uniform",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Queue basse argentée affinée et lissée; lien noir, mèches avant, yeux verts et ornements de tenue conservés; léger sourire rétabli. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:karen:uniform",
+    "revision": 2
+  },
+  {
+    "characterId": "yuri",
+    "characterName": "Yuri Nishizaki",
+    "costumeId": "uniform-reference-v2",
+    "label": {
+      "fr": "Uniforme noir et or — référence v2",
+      "en": "Black, gold and white uniform, skirt, dark socks and boots. — reference v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-reference-v2.png",
+    "provenance": "reference",
+    "category": "uniform",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Chevelure bordeaux resserrée et lissée, frange affinée; yeux violets et uniforme conservés. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:yuri:uniform",
+    "revision": 2
+  },
+  {
+    "characterId": "kaori",
+    "characterName": "Kaori Matsuno",
+    "costumeId": "military-jgsdf-reference-v2",
+    "label": {
+      "fr": "Tenue de terrain JGSDF — adaptation — identité v2",
+      "en": "JGSDF field uniform — adaptation — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--military-jgsdf-reference-v2.png",
+    "provenance": "adapted",
+    "category": "military",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Volume ondulé arrière réduit ; mèches prune plus droites et resserrées autour des épaules. Tenue et accessoires conservés. La longueur arrière reste en partie interprétée, car la référence est frontale. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:kaori:military-jgsdf",
+    "revision": 2
+  },
+  {
+    "characterId": "kaori",
+    "characterName": "Kaori Matsuno",
+    "costumeId": "swimwear-sport-original-reference-v2",
+    "label": {
+      "fr": "Natation sportive — création — identité v2",
+      "en": "Sport swimwear — original design — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--swimwear-sport-original-reference-v2.png",
+    "provenance": "adapted",
+    "category": "swimwear",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Volume ondulé arrière réduit ; mèches prune plus droites et resserrées autour des épaules. Tenue et accessoires conservés. La longueur arrière reste en partie interprétée, car la référence est frontale. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:kaori:swimwear-sport-original",
+    "revision": 2
+  },
+  {
+    "characterId": "kaori",
+    "characterName": "Kaori Matsuno",
+    "costumeId": "uniform-academy-adapted-reference-v2",
+    "label": {
+      "fr": "Uniforme académique — adaptation — identité v2",
+      "en": "Academy uniform — adaptation — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--uniform-academy-adapted-reference-v2.png",
+    "provenance": "adapted",
+    "category": "uniform",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Volume ondulé arrière réduit ; mèches prune plus droites et resserrées autour des épaules. Tenue et accessoires conservés. La longueur arrière reste en partie interprétée, car la référence est frontale. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:kaori:uniform-academy-adapted",
+    "revision": 2
+  },
+  {
+    "characterId": "ruri",
+    "characterName": "Ruri Nonomiya",
+    "costumeId": "military-jgsdf-reference-v2",
+    "label": {
+      "fr": "Tenue de terrain JGSDF — adaptation — identité v2",
+      "en": "JGSDF field uniform — adaptation — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--military-jgsdf-reference-v2.png",
+    "provenance": "adapted",
+    "category": "military",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Couettes affinées en longs arcs plus lisses ; cheveux vert foncé et rubans jaunes conservés, ainsi que la tenue et les accessoires. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:ruri:military-jgsdf",
+    "revision": 2
+  },
+  {
+    "characterId": "ruri",
+    "characterName": "Ruri Nonomiya",
+    "costumeId": "swimwear-sport-original-reference-v2",
+    "label": {
+      "fr": "Natation sportive — création — identité v2",
+      "en": "Sport swimwear — original design — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--swimwear-sport-original-reference-v2.png",
+    "provenance": "adapted",
+    "category": "swimwear",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Couettes affinées en longs arcs plus lisses ; cheveux vert foncé et rubans jaunes conservés, ainsi que la tenue et les accessoires. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:ruri:swimwear-sport-original",
+    "revision": 2
+  },
+  {
+    "characterId": "ruri",
+    "characterName": "Ruri Nonomiya",
+    "costumeId": "uniform-academy-adapted-reference-v2",
+    "label": {
+      "fr": "Uniforme académique — adaptation — identité v2",
+      "en": "Academy uniform — adaptation — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--uniform-academy-adapted-reference-v2.png",
+    "provenance": "adapted",
+    "category": "uniform",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Couettes affinées en longs arcs plus lisses ; cheveux vert foncé et rubans jaunes conservés, ainsi que la tenue et les accessoires. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:ruri:uniform-academy-adapted",
+    "revision": 2
+  },
+  {
+    "characterId": "saori",
+    "characterName": "Saori Otokawa",
+    "costumeId": "rose-adapted-reference-v2",
+    "label": {
+      "fr": "Tenue rose — adaptation — identité v2",
+      "en": "Closed lavender blouse with pink bow, knee-length pink skirt, knee socks and strap shoes. — identity v2"
+    },
+    "category": "other",
+    "provenance": "adapted",
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--rose-adapted-reference-v2.png",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Chevelure bleu marine assombrie, plus lisse et resserrée dans le dos; retrait du grand éventail ondulé. Deux mèches avant et ruban blanc conservés; expression adoucie dans les limites du pixel art. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:saori:rose-adapted",
+    "revision": 2
+  },
+  {
+    "characterId": "saori",
+    "characterName": "Saori Otokawa",
+    "costumeId": "military-jgsdf-reference-v2",
+    "label": {
+      "fr": "Tenue de terrain JGSDF — adaptation — identité v2",
+      "en": "JGSDF field uniform — adaptation — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--military-jgsdf-reference-v2.png",
+    "provenance": "adapted",
+    "category": "military",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Chevelure bleu marine assombrie, plus lisse et resserrée dans le dos; retrait du grand éventail ondulé. Deux mèches avant et ruban blanc conservés; expression adoucie dans les limites du pixel art. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:saori:military-jgsdf",
+    "revision": 2
+  },
+  {
+    "characterId": "saori",
+    "characterName": "Saori Otokawa",
+    "costumeId": "swimwear-sport-original-reference-v2",
+    "label": {
+      "fr": "Natation sportive — création — identité v2",
+      "en": "Sport swimwear — original design — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--swimwear-sport-original-reference-v2.png",
+    "provenance": "adapted",
+    "category": "swimwear",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Chevelure bleu marine assombrie, plus lisse et resserrée dans le dos; retrait du grand éventail ondulé. Deux mèches avant et ruban blanc conservés; expression adoucie dans les limites du pixel art. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:saori:swimwear-sport-original",
+    "revision": 2
+  },
+  {
+    "characterId": "karen",
+    "characterName": "Karen Himeki",
+    "costumeId": "civilian-original-reference-v2",
+    "label": {
+      "fr": "Sweat vert sauge et jean — identité v2",
+      "en": "Sage hoodie and jeans — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--civilian-original-reference-v2.png",
+    "provenance": "adapted",
+    "category": "civilian",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Queue basse argentée affinée et lissée, attachée à la nuque par des liens noirs. Deux fines mèches encadrant le visage conservées; yeux verts et léger sourire rétablis. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:karen:civilian-original",
+    "revision": 2
+  },
+  {
+    "characterId": "karen",
+    "characterName": "Karen Himeki",
+    "costumeId": "military-jgsdf-reference-v2",
+    "label": {
+      "fr": "Tenue de terrain JGSDF — adaptation — identité v2",
+      "en": "JGSDF field uniform — adaptation — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--military-jgsdf-reference-v2.png",
+    "provenance": "adapted",
+    "category": "military",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Queue basse argentée affinée et lissée, attachée à la nuque par des liens noirs. Deux fines mèches encadrant le visage conservées; yeux verts et léger sourire rétablis. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:karen:military-jgsdf",
+    "revision": 2
+  },
+  {
+    "characterId": "karen",
+    "characterName": "Karen Himeki",
+    "costumeId": "swimwear-sport-original-reference-v2",
+    "label": {
+      "fr": "Natation sportive — création — identité v2",
+      "en": "Sport swimwear — original design — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--swimwear-sport-original-reference-v2.png",
+    "provenance": "adapted",
+    "category": "swimwear",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Queue basse argentée affinée et lissée, attachée à la nuque par des liens noirs. Deux fines mèches encadrant le visage conservées; yeux verts et léger sourire rétablis. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:karen:swimwear-sport-original",
+    "revision": 2
+  },
+  {
+    "characterId": "yuri",
+    "characterName": "Yuri Nishizaki",
+    "costumeId": "civilian-original-reference-v2",
+    "label": {
+      "fr": "Cardigan prune et pantalon gris — identité v2",
+      "en": "Plum cardigan and gray trousers — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--civilian-original-reference-v2.png",
+    "provenance": "adapted",
+    "category": "civilian",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Chevelure bordeaux plus longue, étroite et droite; retrait de l’éventail ondulé. Mèches devant le visage et yeux violets conservés; expression calme. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:yuri:civilian-original",
+    "revision": 2
+  },
+  {
+    "characterId": "yuri",
+    "characterName": "Yuri Nishizaki",
+    "costumeId": "military-jgsdf-reference-v2",
+    "label": {
+      "fr": "Tenue de terrain JGSDF — adaptation — identité v2",
+      "en": "JGSDF field uniform — adaptation — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--military-jgsdf-reference-v2.png",
+    "provenance": "adapted",
+    "category": "military",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Chevelure bordeaux plus longue, étroite et droite; retrait de l’éventail ondulé. Mèches devant le visage et yeux violets conservés; expression calme. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:yuri:military-jgsdf",
+    "revision": 2
+  },
+  {
+    "characterId": "yuri",
+    "characterName": "Yuri Nishizaki",
+    "costumeId": "swimwear-sport-original-reference-v2",
+    "label": {
+      "fr": "Natation sportive — création — identité v2",
+      "en": "Sport swimwear — original design — identity v2"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--swimwear-sport-original-reference-v2.png",
+    "provenance": "adapted",
+    "category": "swimwear",
+    "isDefault": false,
+    "available": true,
+    "notes": {
+      "fr": "Chevelure bordeaux plus longue, étroite et droite; retrait de l’éventail ondulé. Mèches devant le visage et yeux violets conservés; expression calme. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "en": "Hair and facial identity brought closer to the source reference. This outfit remains a game adaptation. Unseen details remain reconstructed; a complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:yuri:swimwear-sport-original",
+    "revision": 2
   }
 ]);

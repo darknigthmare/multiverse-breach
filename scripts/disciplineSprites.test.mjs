@@ -132,6 +132,30 @@ test('fallback stays on the same identity and skips unavailable entries', () => 
   assert.deepEqual(getDisciplineSpriteSources({ ...saori, disciplineSpriteId: 'bad' }, registry), []);
 });
 
+test('a corrected variant keeps its original costume before the character default in the fallback chain', () => {
+  const originalId = disciplineCostumeId('saori', 'civilian');
+  const revisedId = disciplineCostumeId('saori', 'civilian-reference-v2');
+  const catalogue = [
+    fixtureRow('uniform', { isDefault: true }),
+    fixtureRow('civilian', { category: 'civilian' }),
+    fixtureRow('civilian-reference-v2', { category: 'civilian', variantOf: originalId })
+  ];
+  const registry = createDisciplineSpriteRegistry(catalogue);
+  assert.deepEqual(getDisciplineSpriteSources({ ...saori, disciplineSpriteId: revisedId }, registry), catalogue.slice().reverse().map(row => row.src));
+  assert.deepEqual(getDisciplineSpriteSources({ ...saori, disciplineSpriteId: originalId }, registry), [catalogue[1].src, catalogue[0].src]);
+  const unavailable = createDisciplineSpriteRegistry(catalogue.map(row => row.costumeId === 'civilian' ? { ...row, available: false } : row));
+  assert.deepEqual(getDisciplineSpriteSources({ ...saori, disciplineSpriteId: revisedId }, unavailable), [catalogue[2].src, catalogue[0].src]);
+});
+
+test('variant links cannot replace defaults or point to a missing or different character', () => {
+  const original = fixtureRow('uniform', { isDefault: true });
+  const revised = fixtureRow('uniform-reference-v2', { variantOf: disciplineCostumeId('saori', 'uniform') });
+  assert.throws(() => createDisciplineSpriteRegistry([revised]), /variant origin/);
+  assert.throws(() => createDisciplineSpriteRegistry([original, { ...revised, variantOf: disciplineCostumeId('saori', 'uniform-reference-v2') }]), /variant origin/);
+  assert.throws(() => createDisciplineSpriteRegistry([{ ...original, isDefault: false }, { ...revised, isDefault: true }]), /variant origin/);
+  assert.throws(() => createDisciplineSpriteRegistry([original, { ...revised, characterId: 'ruri' }]), /variant origin/);
+});
+
 test('catalogue rejects ambiguous identities, conflicting defaults and unclassified adaptations', () => {
   assert.throws(() => createDisciplineSpriteRegistry([fixtureRow('one'), fixtureRow('one')]), /Duplicate Discipline costume/);
   assert.throws(() => createDisciplineSpriteRegistry([fixtureRow('one', { isDefault: true }), fixtureRow('two', { isDefault: true })]), /Duplicate Discipline default/);
@@ -189,6 +213,36 @@ test('actual renderer draws the full static PNG and keeps horizontal facing', as
   assert.equal(draw[1].src, costume.src);
   assert.deepEqual(draw.slice(2, 6), [0, 0, 1254, 1254]);
   assert.ok(calls.some(call => call[0] === 'scale' && call[1] === -1 && call[2] === 1));
+});
+
+test('saved corrected variants render whole and recover to the preserved costume of the same identity', async () => {
+  const revised = DISCIPLINE_SPRITE_REGISTRY.entries.filter(row => row.variantOf);
+  assert.ok(revised.length, 'Reviewed variants must be installed before this regression runs');
+  let rendered = 0;
+  for (const costume of revised) {
+    const original = DISCIPLINE_SPRITE_REGISTRY.byId[costume.variantOf];
+    assert.ok(original?.available, costume.id);
+    assert.notEqual(original.src, costume.src, costume.id);
+    const actor = actors.find(candidate => DISCIPLINE_HERO_BINDINGS[candidate.id] === costume.characterId);
+    if (!actor) continue;
+    const save = sanitizeSaveCore({ heroSkins: { [actor.id]: costume.id } }, { knownHeroIds: HEROES_DB.map(row => row.id) });
+    const dressed = applyActorAppearance(actor, save.heroSkins[actor.id]);
+    assert.equal(dressed.disciplineSpriteId, costume.id);
+    assert.equal(resolveDisciplineCostume(actor, original.id), original, 'The old saved choice remains valid');
+    for (const [failed, expected] of [[new Set(), costume.src], [new Set([costume.src]), original.src]]) {
+      const { drawPixelSprite } = await loadRenderer(failed);
+      const { ctx, calls } = canvas();
+      drawPixelSprite(ctx, 80, 120, { ...dressed, state: 'idle' }, 0);
+      await new Promise(resolve => setImmediate(resolve));
+      const draw = calls.find(call => call[0] === 'drawImage');
+      assert.ok(draw, costume.id);
+      assert.equal(draw[1].src, expected, costume.id);
+      assert.deepEqual(draw.slice(2, 6), [0, 0, 1254, 1254], costume.id);
+      assert.equal(dressed.disciplineSpriteId, costume.id, 'A network error must not alter the saved choice');
+    }
+    rendered++;
+  }
+  assert.ok(rendered, 'At least one corrected variant belongs to a registered hero');
 });
 
 test('actual renderer recovers from failed selected and default PNGs to the existing sheet', async () => {

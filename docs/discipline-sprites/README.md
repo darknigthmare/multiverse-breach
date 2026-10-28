@@ -2,13 +2,21 @@
 
 ## Livraison
 
-**132 PNG individuels pour 30 personnages**. Images entières, fond transparent réel, pose statique en trois quarts vers la droite. Les 17 anciens portraits recadrés sont exclus.
+**154 PNG individuels pour 30 personnages**, dont les 132 versions précédentes conservées et 22 nouvelles variantes de fidélité. Images entières, fond transparent réel, pose statique en trois quarts vers la droite. Les 17 anciens portraits recadrés sont exclus.
 
-31 sprites sont basés sur des références de personnages et costumes. 101 sont des adaptations identifiées. Aucun rendu n’est certifié 1:1 : les références partielles imposaient de reconstituer les parties hors cadre.
+38 sprites sont basés sur des références de personnages et costumes. 116 sont des adaptations identifiées. Aucun rendu n’est certifié 1:1 : les références partielles imposaient de reconstituer les parties hors cadre.
 
 ## Examiner les images
 
-Depuis le serveur du jeu : /reviews/discipline/. La galerie filtre par personnage, tenue et provenance et permet de changer le fond de contrôle. Les PNG restent consultables individuellement dans public/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/.
+Depuis le serveur du jeu : /reviews/discipline/index.html. La galerie filtre par personnage, tenue et provenance et permet de changer le fond de contrôle. Les PNG restent consultables individuellement dans public/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/.
+
+## Variantes de fidélité v2
+
+Les **22 nouvelles variantes** sont ajoutées séparément. Les **132 PNG précédents**, leurs identifiants, leurs sélections et leurs tenues par défaut restent inchangés. La galerie propose un filtre « Versions corrigées » et une comparaison côte à côte avec l'ancienne image.
+
+La correction porte principalement sur les coiffures et les visages. Les vêtements créés pour le jeu restent des adaptations, avec le libellé « identité v2 ». Les détails hors champ restent reconstitués ; aucune fidélité intégrale 1:1 n'est certifiée. Voir le [détail des corrections et limites](reference-v2-review.md).
+
+En cas d'échec d'une variante corrigée : nouvelle variante → ancienne tenue correspondante → tenue par défaut du personnage → ancien sprite. L'ancienne sélection sauvegardée demeure valable.
 
 ## Couverture
 
@@ -19,9 +27,9 @@ R = modèle basé sur référence ; A = adaptation créée pour ce projet ; — 
 | Akane | A | A | A | A | 5 |
 | Eikichi Ogiwara | A | R | A | A | 4 |
 | Kanae | R | A | A | A | 4 |
-| Kaori Matsuno | A | R | A | A | 4 |
+| Kaori Matsuno | A | R | A | A | 8 |
 | Kaoru Itou | R | A | A | A | 5 |
-| Karen Himeki | R | A | A | A | 4 |
+| Karen Himeki | R | A | A | A | 8 |
 | Katsuo Isobe | A | A | A | A | 5 |
 | Kawahara | A | A | A | A | 5 |
 | Kouzou Machida | A | R | A | A | 4 |
@@ -37,13 +45,13 @@ R = modèle basé sur référence ; A = adaptation créée pour ce projet ; — 
 | Momone Nishizaki | R | A | A | A | 4 |
 | Nanase Fujiwara | R | A | A | A | 4 |
 | Reina Morimoto | A | R | A | A | 4 |
-| Ruri Nonomiya | A | R | A | A | 4 |
+| Ruri Nonomiya | A | R | A | A | 8 |
 | Saki Yamagata | A | A | A | A | 4 |
-| Saori Otokawa | R | R | A | A | 6 |
+| Saori Otokawa | R | R | A | A | 12 |
 | Sudou | R | A | A | A | 4 |
 | Takurou Hayami | A | R | A | A | 4 |
 | Tooru Satou | R | A | A | A | 4 |
-| Yuri Nishizaki | R | A | A | A | 4 |
+| Yuri Nishizaki | R | A | A | A | 8 |
 | Yuuji Takigawa | R | A | A | A | 4 |
 | Yuuki Miyagishi | A | A | A | A | 6 |
 
@@ -71,3 +79,9 @@ Les nouvelles variantes de natation utilisent des vêtements de sport aquatique 
 La commande npm run test:discipline vérifie le registre, les fichiers réels, la sauvegarde, les identités, le respect des scènes verrouillées, le rendu intégral et les solutions de secours.
 
 Les originaux PNG sont copiés sans retouche ni redimensionnement. Le manifeste mesure la silhouette avec alpha > 8/255 : de faibles résidus presque transparents peuvent exister à l’extérieur. Les marges de la silhouette visible sont conservées.
+
+## Vérification finale en navigateur
+
+Contrôle réalisé avec Chromium headless et Playwright : **154 cartes**, **22 nouveaux PNG chargés** à leur taille native 1254 × 1254, comparaison sur ordinateur et sur un écran de **390 px**, sans débordement horizontal ni erreur JavaScript.
+
+La sélection réelle des variantes de **Saori et Ruri** a été vérifiée dans le vestiaire du jeu. Le canvas du jeu dessine le cadre PNG entier ; le choix est conservé après rechargement. L'ancienne sélection reste valide. Le détail mesuré est dans [browser-qa-report.json](browser-qa-report.json).

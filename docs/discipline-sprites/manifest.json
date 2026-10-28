@@ -2,18 +2,20 @@
   "version": 1,
   "date": "2026-10-28",
   "counts": {
-    "sprites": 132,
+    "sprites": 154,
     "characters": 30,
-    "referenceBased": 31,
-    "adapted": 101,
+    "referenceBased": 38,
+    "adapted": 116,
     "byCategory": {
-      "civilian": 30,
-      "military": 30,
-      "other": 3,
-      "sport": 8,
-      "swimwear": 30,
-      "uniform": 31
-    }
+      "civilian": 35,
+      "military": 35,
+      "other": 4,
+      "sport": 9,
+      "swimwear": 35,
+      "uniform": 36
+    },
+    "preservedOriginals": 132,
+    "correctedVariants": 22
   },
   "pendingCharacters": [
     {
@@ -8656,6 +8658,1796 @@
         "facing": "right",
         "animated": false
       }
+    },
+    {
+      "id": "saori:casual-reference-v2",
+      "characterId": "saori",
+      "costumeId": "casual-reference-v2",
+      "variantOf": "saori:casual",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--casual-reference-v2.png",
+      "category": "civilian",
+      "provenance": "reference",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-5d82cf7c-1420-4bf2-a68a-856fea63e682",
+        "prompt": "Use case: identity-preserve. Asset type: a NEW additive alternate full-body pixel-art game sprite for Saori Otokawa, casual outfit. Image 1 is the user's original character/design reference and is authoritative for identity, face, hair, garment cut and colors. Image 2 is the existing sprite: use it for pixel rendering, framing and the standing three-quarter-facing-right pose. Correct the deviations: give her the original gently elongated oval face and calm soft expression, dark teal eyes of restrained size, deep navy straight smooth hair falling close to the back and torso with the two long straight front locks and the white bow on the same side as the source; REMOVE the giant flared bright-blue hair fan. Preserve the white fully closed collared blouse with black collar and black pointed waist trim, 3/4 sleeves, central seam and subtle gathering. Preserve the original dark denim SHORTS, hem around mid-thigh, not a skirt, not tiny hotpants. Keep the same non-sexual neutral stance, natural unobtrusive anatomy, hands relaxed. Keep the simple black ankle shoes from the prior sprite because they complete unseen reference areas. Entire head, hands and both shoes visible with similar margins, one isolated character, genuine transparent background, square canvas preferably 1254x1254. Crisp detailed pixel-art clusters, dark outlines, limited clean shadows matching the previous sprite's game art direction, no painted blur or photorealism. No added armor, gold decorations, weapons, text, panel layout, backdrop or cast shadow. This is a new variant; do not make a before/after image.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "6b1f1ad7dd4199abad886199256bb8c3f61134ba47020745f2221891003ed4e9",
+        "bytes": 544670,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          432,
+          36,
+          890,
+          1186
+        ],
+        "visibleMargins": [
+          432,
+          36,
+          364,
+          68
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "hairstyle silhouette",
+          "reference identity"
+        ],
+        "remainingLimitations": [
+          "Pixel-art interpretation, not exact 1:1",
+          "Unseen reference details remain reconstructed"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image.png",
+          "url": null,
+          "role": "identity and visible garment design evidence",
+          "framing": "waist/thigh crop"
+        }
+      ],
+      "fidelityNote": "Chevelure resserrée et lissée, mèches avant et ruban conservés; visage légèrement adouci. Les chaussures hors référence restent reconstituées. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "saori:uniform-reference-v2",
+      "characterId": "saori",
+      "costumeId": "uniform-reference-v2",
+      "variantOf": "saori:uniform",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-reference-v2.png",
+      "category": "uniform",
+      "provenance": "reference",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-9eeb4dd1-6025-45b2-a1ec-36e33b7dd6f2",
+        "prompt": "Saori Otokawa wearing ONLY the uniform in the UPPER panel of image 1. Ignore the baseball outfit in its lower panel. Primary correction: deep navy smooth straight hair, flat close to her back, two narrow long front locks, white bow on the original side; eliminate the old sprite's large bright-blue wavy hair fan. Teal eyes, gentle long oval face. Retain the original fully closed black academic jacket, broad pale shoulder collar outlined gold, circular clasps, gold front panels with buttons, long pale tie with black/gold diamond tip, pale angular cuffs, black pleated skirt. Do not invent extra hem bands absent from the upper reference. Keep the prior sprite's socks and shoes as the reconstructed lower part. Use case: identity-preserve. NEW additive full-body detailed pixel-art game sprite variant, one isolated figure. Input 1 is the original reference and defines identity, hairstyle, colors and visible garment details; input 2 is the old sprite being corrected, and defines the standing neutral three-quarter-right game pose, pixel rendering, technical framing and reconstructed shoes. Preserve outfit category and distinctive accessories, use natural restrained anatomy and a non-sexual neutral presentation. Match the original gentle elongated face with a calm expression and eyes of restrained size, not a generic chibi/scowling face. Maintain crisp deliberate pixel clusters, dark outlines, simple game-readable highlights, no painted blur. Keep complete head, hands and both soles within frame with similar margins; square canvas preferably 1254x1254, truly transparent background, no scene, shadow, text, comparison panels or watermark. Do not add unrelated clothing, armor or weapons.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "6fa87eb000c94d281ec20e9bada8fe5c355b9e895dabf9bf2810167b54908ad2",
+        "bytes": 573767,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          433,
+          35,
+          887,
+          1200
+        ],
+        "visibleMargins": [
+          433,
+          35,
+          367,
+          54
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "hairstyle silhouette",
+          "reference identity"
+        ],
+        "remainingLimitations": [
+          "Pixel-art interpretation, not exact 1:1",
+          "Unseen reference details remain reconstructed"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(1).png",
+          "url": null,
+          "role": "identity and visible garment design evidence",
+          "framing": "upper panel; partial figure"
+        },
+        {
+          "type": "user_upload",
+          "filename": "image.png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction.",
+          "framing": "waist/thigh crop"
+        }
+      ],
+      "fidelityNote": "Chevelure resserrée et lissée, mèches avant et ruban conservés; visage légèrement adouci. Les chaussures hors référence restent reconstituées. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "saori:baseball-reference-v2",
+      "characterId": "saori",
+      "costumeId": "baseball-reference-v2",
+      "variantOf": "saori:baseball",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--baseball-reference-v2.png",
+      "category": "sport",
+      "provenance": "reference",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-7daed20f-d225-46ab-b0f8-f3fa293af0d2",
+        "prompt": "Saori Otokawa wearing ONLY the baseball uniform in the LOWER panel of image 1. Ignore the academic outfit in its upper panel. Primary correction: deep navy straight smooth long hair hanging closely down the back, two thin front locks, white bow in its original position. Eliminate the enormous flared bright-blue hair fan of the old sprite. Teal eyes, elongated gentle oval face and calm expression. Preserve white short-sleeved baseball shirt, red V collar and red vertical button strip, red horizontal chest band and sleeve bands, black undershirt glimpse at collar, white full-length baseball trousers, dark belt. Preserve the distinct dark articulated arm brace on the same arm as the old sprite/reference and red band on the other wrist. Retain the prior athletic shoes. Do not add a bat, glove, cap or writing. Use case: identity-preserve. NEW additive full-body detailed pixel-art game sprite variant, one isolated figure. Input 1 is the original reference and defines identity, hairstyle, colors and visible garment details; input 2 is the old sprite being corrected, and defines the standing neutral three-quarter-right game pose, pixel rendering, technical framing and reconstructed shoes. Preserve outfit category and distinctive accessories, use natural restrained anatomy and a non-sexual neutral presentation. Match the original gentle elongated face with a calm expression and eyes of restrained size, not a generic chibi/scowling face. Maintain crisp deliberate pixel clusters, dark outlines, simple game-readable highlights, no painted blur. Keep complete head, hands and both soles within frame with similar margins; square canvas preferably 1254x1254, truly transparent background, no scene, shadow, text, comparison panels or watermark. Do not add unrelated clothing, armor or weapons.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "4d31cfc710b474347f93485a38121305223f375e35dd79a07cadd781cd13316e",
+        "bytes": 639563,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          433,
+          15,
+          905,
+          1214
+        ],
+        "visibleMargins": [
+          433,
+          15,
+          349,
+          40
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "hairstyle silhouette",
+          "reference identity"
+        ],
+        "remainingLimitations": [
+          "Pixel-art interpretation, not exact 1:1",
+          "Unseen reference details remain reconstructed"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(1).png",
+          "url": null,
+          "role": "identity and visible garment design evidence",
+          "framing": "lower panel; partial figure"
+        },
+        {
+          "type": "user_upload",
+          "filename": "image.png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction.",
+          "framing": "waist/thigh crop"
+        }
+      ],
+      "fidelityNote": "Chevelure resserrée et lissée, mèches avant et ruban conservés; visage légèrement adouci. Les chaussures hors référence restent reconstituées. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "ruri:casual-reference-v2",
+      "characterId": "ruri",
+      "costumeId": "casual-reference-v2",
+      "variantOf": "ruri:casual",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-reference-v2.png",
+      "category": "civilian",
+      "provenance": "reference",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-b1c1d83b-7a98-4ed8-a128-f76250d86057",
+        "prompt": "Ruri Nonomiya in her existing casual outfit. Primary correction: her deep green hair is tied in TWO VERY SLENDER SMOOTH HIGH PIGTAILS, each almost a single long tapering curved lock with open air around it, held by yellow leaf-shaped ribbon bows. The original pigtails form elegant thin arcs and taper to a point; they are not big, thick, fluffy, wavy twin tails. Keep the original side fringe and purple eyes, softly longer face and cheerful gentle small smile; both eyes may be open for the game idle pose. Preserve the existing black halter top with narrow silver neckline and small heart cutout, white pleated skirt, blue/white striped socks and blue/white athletic shoes. Keep coverage and skirt length at least as in the prior sprite; don't intensify the source anatomy or add revealing details. Only improve identity, hairstyle and reference color accuracy. Use case: identity-preserve. NEW additive full-body detailed pixel-art game sprite variant, one isolated figure. Input 1 is the original reference and defines identity, hairstyle, colors and visible garment details; input 2 is the old sprite being corrected, and defines the standing neutral three-quarter-right game pose, pixel rendering, technical framing and reconstructed shoes. Preserve outfit category and distinctive accessories, use natural restrained anatomy and a non-sexual neutral presentation. Match the original gentle elongated face with a calm expression and eyes of restrained size, not a generic chibi/scowling face. Maintain crisp deliberate pixel clusters, dark outlines, simple game-readable highlights, no painted blur. Keep complete head, hands and both soles within frame with similar margins; square canvas preferably 1254x1254, truly transparent background, no scene, shadow, text, comparison panels or watermark. Do not add unrelated clothing, armor or weapons.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "aeff5d8bb6050f034fec0537c727042f1cb81a0f0efbe1c0d20d9050c8224805",
+        "bytes": 589507,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          431,
+          84,
+          907,
+          1194
+        ],
+        "visibleMargins": [
+          431,
+          84,
+          347,
+          60
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "hairstyle silhouette",
+          "reference identity"
+        ],
+        "remainingLimitations": [
+          "Pixel-art interpretation, not exact 1:1",
+          "Unseen reference details remain reconstructed"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(8).png",
+          "url": null,
+          "role": "identity and visible garment design evidence",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Couettes nettement affinées et plus lisses en arcs; rubans jaunes, tenue et chaussures de la version précédente conservés. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "kaori:outfit-reference-v2",
+      "characterId": "kaori",
+      "costumeId": "outfit-reference-v2",
+      "variantOf": "kaori:outfit",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit-reference-v2.png",
+      "category": "civilian",
+      "provenance": "reference",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-83c8a941-e041-47db-9e60-0df7b72d1bd9",
+        "prompt": "Kaori Matsuno, white jacket, fully closed black blouse and light tie, red skirt. Primary correction: original dark plum hair is straight, low-volume and ends around the shoulders/upper chest, with two narrow front locks. REMOVE the old sprite's long wavy hair mass going down to the waist. Keep her original green eyes, natural longer oval face and gentle calm expression, not a scowl. Preserve the jacket's black cuffs and red skirt with the black V-shaped waistband and small gold fastener. Use case: identity-preserve. Make one NEW additive full-body game sprite variant. Input image 1 is the authoritative original character/design reference. Input image 2 is the old sprite to correct and provides the detailed pixel-art style and full-body neutral three-quarter pose facing right. Keep the visible clothing design, colors and accessories, with a natural non-sexual neutral stance and restrained anatomy. Do not redesign the character or add equipment. Maintain coherent detailed pixel clusters, dark outlines, crisp shading, no painted blur, no chibi head. The face should follow the longer oval, subtle mouth and calmer eyes of the original reference rather than the generic short scowling face of the old sprite. Keep the prior sprite's complete shoes and legs where the reference is cropped; these are reconstructions, do not invent extra ornaments. Show one entire character, hair to both soles, hands and all accessories inside frame with similar margins. Transparent background, square canvas preferably 1254x1254, no shadow, text, watermark, frame, scenery or side-by-side comparison.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "88453f83902a9aac289a14196f55f63f9d7fd7bcd5e63eca06291ff3d473add2",
+        "bytes": 591783,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          416,
+          31,
+          916,
+          1207
+        ],
+        "visibleMargins": [
+          416,
+          31,
+          338,
+          47
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "hairstyle silhouette",
+          "reference identity"
+        ],
+        "remainingLimitations": [
+          "Pixel-art interpretation, not exact 1:1",
+          "Unseen reference details remain reconstructed"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210228).png",
+          "url": null,
+          "role": "identity and visible garment design evidence",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Grande masse de cheveux ondulés supprimée au profit de mèches droites plus sobres; visage adouci. Longueur arrière en partie interprétée, car la référence est frontale. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "karen:uniform-reference-v2",
+      "characterId": "karen",
+      "costumeId": "uniform-reference-v2",
+      "variantOf": "karen:uniform",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform-reference-v2.png",
+      "category": "uniform",
+      "provenance": "reference",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-62e30660-bd25-48a9-9678-534a2932b8d1",
+        "prompt": "Karen Himeki in the existing black, pale silver and gold fully clothed academic uniform. Primary correction: silver hair is sleek, parted and gathered into a THIN low ponytail tied at the nape with black bands; it hangs simply and close to the back. REMOVE the old sprite's enormous fluffy wavy ponytail fan. Keep the two fine straight front locks, green eyes and subtle gentle smile. Retain the source uniform's pale wide collar, circular clasps, gold panels, long pale tie with diamond tip, pleated skirt and the dark stockings with gold circle motif. Do not change hairstyle into a braid or shorten into a bob. Use case: identity-preserve. Make one NEW additive full-body game sprite variant. Input image 1 is the authoritative original character/design reference. Input image 2 is the old sprite to correct and provides the detailed pixel-art style and full-body neutral three-quarter pose facing right. Keep the visible clothing design, colors and accessories, with a natural non-sexual neutral stance and restrained anatomy. Do not redesign the character or add equipment. Maintain coherent detailed pixel clusters, dark outlines, crisp shading, no painted blur, no chibi head. The face should follow the longer oval, subtle mouth and calmer eyes of the original reference rather than the generic short scowling face of the old sprite. Keep the prior sprite's complete shoes and legs where the reference is cropped; these are reconstructions, do not invent extra ornaments. Show one entire character, hair to both soles, hands and all accessories inside frame with similar margins. Transparent background, square canvas preferably 1254x1254, no shadow, text, watermark, frame, scenery or side-by-side comparison.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "bad5156ecb2e2633f1dbdce201319ed93d9ca3e2936eb1ed5072e24cb4d1ba7c",
+        "bytes": 612720,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          437,
+          40,
+          930,
+          1213
+        ],
+        "visibleMargins": [
+          437,
+          40,
+          324,
+          41
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "hairstyle silhouette",
+          "reference identity"
+        ],
+        "remainingLimitations": [
+          "Pixel-art interpretation, not exact 1:1",
+          "Unseen reference details remain reconstructed"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210116).png",
+          "url": null,
+          "role": "identity and visible garment design evidence",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Queue basse argentée affinée et lissée; lien noir, mèches avant, yeux verts et ornements de tenue conservés; léger sourire rétabli. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "yuri:uniform-reference-v2",
+      "characterId": "yuri",
+      "costumeId": "uniform-reference-v2",
+      "variantOf": "yuri:uniform",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-reference-v2.png",
+      "category": "uniform",
+      "provenance": "reference",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-466327e1-a0f2-4a73-9d54-a0d33258a16c",
+        "prompt": "Yuri Nishizaki in the black, pale silver and gold fully clothed academic uniform. Primary correction: burgundy/magenta hair is long, straight, narrow, lying FLAT along the back; lightly separated thin fringe with face-framing locks. REMOVE the old sprite's large windblown, fluffy/wavy hair mass and solid heavy fringe. Keep violet eyes and the original calm soft expression. Retain original pale collar, circular gold-edged clasps, long light tie with gold and black diamond tip, dark sleeves, pale angular cuffs and pleated black skirt with two thin gold hem stripes. Match the distinctive original garment arrangement. Use case: identity-preserve. Make one NEW additive full-body game sprite variant. Input image 1 is the authoritative original character/design reference. Input image 2 is the old sprite to correct and provides the detailed pixel-art style and full-body neutral three-quarter pose facing right. Keep the visible clothing design, colors and accessories, with a natural non-sexual neutral stance and restrained anatomy. Do not redesign the character or add equipment. Maintain coherent detailed pixel clusters, dark outlines, crisp shading, no painted blur, no chibi head. The face should follow the longer oval, subtle mouth and calmer eyes of the original reference rather than the generic short scowling face of the old sprite. Keep the prior sprite's complete shoes and legs where the reference is cropped; these are reconstructions, do not invent extra ornaments. Show one entire character, hair to both soles, hands and all accessories inside frame with similar margins. Transparent background, square canvas preferably 1254x1254, no shadow, text, watermark, frame, scenery or side-by-side comparison.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "d2af56d09791e75e3e772c10703bbe77b4c178878a1aee57beffe81a8f70e521",
+        "bytes": 597075,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          430,
+          25,
+          918,
+          1209
+        ],
+        "visibleMargins": [
+          430,
+          25,
+          336,
+          45
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "hairstyle silhouette",
+          "reference identity"
+        ],
+        "remainingLimitations": [
+          "Pixel-art interpretation, not exact 1:1",
+          "Unseen reference details remain reconstructed"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210201).png",
+          "url": null,
+          "role": "identity and visible garment design evidence",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Chevelure bordeaux resserrée et lissée, frange affinée; yeux violets et uniforme conservés. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "kaori:military-jgsdf-reference-v2",
+      "characterId": "kaori",
+      "costumeId": "military-jgsdf-reference-v2",
+      "variantOf": "kaori:military-jgsdf",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--military-jgsdf-reference-v2.png",
+      "category": "military",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-9ad3758f-baf0-4872-9b64-c86394615732",
+        "generationIdSource": "generated output filename",
+        "prompt": "Use case: identity-preserve.\nAsset type: one additive corrective variant of an existing full-body transparent pixel-art game sprite.\nImage 1 is the EDIT TARGET, authoritative for outfit, body, pose, pixel-art style, proportions, scale and placement. Image 2 is ONLY a reference for the character's face and hair. Do not transfer clothing or body anatomy from Image 2.\nPrimary request: change ONLY hair and facial likeness on Image 1. Correct Kaori's hair and face toward Image 2: deep dark-plum hair with straight modest strands at the shoulders and upper chest, reduce the enormous lateral fan of wavy rear hair, no big curls or wind-blown hair mass. Back hair is mostly tucked visually behind shoulders with restrained volume; the front reference does not establish an exact unseen back length. Keep her green eyes, a gently elongated oval face and calm expression. The overall head must remain compatible with the original sprite proportions.\nOutfit lock: Keep the existing long-sleeved green/brown camouflage utility jacket, its pockets, belt and pouches, long matching cargo trousers, and complete black lace-up combat boots, all exactly as in Image 1. Do not alter any clothing coverage, accessories, anatomy, figure proportions, hand placement or stance. The existing adapted costume is intentional and must stay the same; this is NOT a request to reproduce Image 2's outfit.\nStyle lock: retain crisp detailed pixel art, dark pixel outlines, existing shading and palette of the outfit, same game sprite density, no smooth painted or vector restyling.\nComposition: single character, complete head, hands and both shoes visible, neutral non-sexualized standing pose facing three-quarters right, same scale and baseline as Image 1, square 1254 by 1254 canvas with a little transparent safety margin, no cropping, no scene or text.\nBackground: genuine transparent alpha, no colored background, no checkerboard painted into the image, no floor and no cast shadow. Keep everything outside the character transparent.\nNo anatomical emphasis, no extra ornament, no weapons, no new costume, no text. Produce one new separate image; preserve the original version.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "b2aca8707a51fab8f9366e2412cd2ce641b6137121359539f845db7a10d0240f",
+        "bytes": 674821,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          430,
+          52,
+          914,
+          1191
+        ],
+        "visibleMargins": [
+          430,
+          52,
+          340,
+          63
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Reduced the large wavy rear hair fan.",
+          "Smoothed and restrained dark-plum hair around shoulders.",
+          "Preserved covered adapted outfit, accessories and stance."
+        ],
+        "remainingLimitations": [
+          "The front reference does not establish exact unseen rear hair length.",
+          "Pixel-art reinterpretation, not a literal 1:1 copy.",
+          "The existing costume remains an original adaptation, not an official costume.",
+          "Facial details remain stylized; the main verified improvement is hair silhouette."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "official_uniform_reference",
+          "url": "https://www.mod.go.jp/gsdf/equipment/qe/index.html",
+          "imageUrl": "https://www.mod.go.jp/gsdf/assets/images/equipment/qe/pic07_modal.png",
+          "role": "Clothing reference only; fictional identity is preserved from the existing sprite."
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210228).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Volume ondulé arrière réduit ; mèches prune plus droites et resserrées autour des épaules. Tenue et accessoires conservés. La longueur arrière reste en partie interprétée, car la référence est frontale. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "kaori:swimwear-sport-original-reference-v2",
+      "characterId": "kaori",
+      "costumeId": "swimwear-sport-original-reference-v2",
+      "variantOf": "kaori:swimwear-sport-original",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--swimwear-sport-original-reference-v2.png",
+      "category": "swimwear",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-e8473359-2b56-477c-8959-dd08409a72a6",
+        "generationIdSource": "generated output filename",
+        "prompt": "Use case: identity-preserve.\nAsset type: one additive corrective variant of an existing full-body transparent pixel-art game sprite.\nImage 1 is the EDIT TARGET, authoritative for outfit, body, pose, pixel-art style, proportions, scale and placement. Image 2 is ONLY a reference for the character's face and hair. Do not transfer clothing or body anatomy from Image 2.\nPrimary request: change ONLY hair and facial likeness on Image 1. Correct Kaori's hair and face toward Image 2: deep dark-plum hair with straight modest strands at the shoulders and upper chest, reduce the enormous lateral fan of wavy rear hair, no big curls or wind-blown hair mass. Back hair is mostly tucked visually behind shoulders with restrained volume; the front reference does not establish an exact unseen back length. Keep her green eyes, a gently elongated oval face and calm expression. The overall head must remain compatible with the original sprite proportions.\nOutfit lock: Keep the existing fully covered athletic aquatic outfit from Image 1: high-neck long-sleeved rash guard, knee-length board shorts, all original panels, stripe colors and complete water shoes. Keep fabric opaque, dry and normally fitted. Do not alter any clothing coverage, accessories, anatomy, figure proportions, hand placement or stance. The existing adapted costume is intentional and must stay the same; this is NOT a request to reproduce Image 2's outfit.\nStyle lock: retain crisp detailed pixel art, dark pixel outlines, existing shading and palette of the outfit, same game sprite density, no smooth painted or vector restyling.\nComposition: single character, complete head, hands and both shoes visible, neutral non-sexualized standing pose facing three-quarters right, same scale and baseline as Image 1, square 1254 by 1254 canvas with a little transparent safety margin, no cropping, no scene or text.\nBackground: genuine transparent alpha, no colored background, no checkerboard painted into the image, no floor and no cast shadow. Keep everything outside the character transparent.\nNo anatomical emphasis, no extra ornament, no weapons, no new costume, no text. Produce one new separate image; preserve the original version.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "c16ffd2fbcbe4abcc88487288aec91a2697ab1f5c8eb49e558887acd4172d18e",
+        "bytes": 549876,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          430,
+          51,
+          920,
+          1187
+        ],
+        "visibleMargins": [
+          430,
+          51,
+          334,
+          67
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Reduced the large wavy rear hair fan.",
+          "Smoothed and restrained dark-plum hair around shoulders.",
+          "Preserved covered adapted outfit, accessories and stance."
+        ],
+        "remainingLimitations": [
+          "The front reference does not establish exact unseen rear hair length.",
+          "Pixel-art reinterpretation, not a literal 1:1 copy.",
+          "The existing costume remains an original adaptation, not an official costume.",
+          "Facial details remain stylized; the main verified improvement is hair silhouette."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210228).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Volume ondulé arrière réduit ; mèches prune plus droites et resserrées autour des épaules. Tenue et accessoires conservés. La longueur arrière reste en partie interprétée, car la référence est frontale. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "kaori:uniform-academy-adapted-reference-v2",
+      "characterId": "kaori",
+      "costumeId": "uniform-academy-adapted-reference-v2",
+      "variantOf": "kaori:uniform-academy-adapted",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--uniform-academy-adapted-reference-v2.png",
+      "category": "uniform",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-8e4fbc7a-7738-4a1c-804a-d7d8af73e119",
+        "generationIdSource": "generated output filename",
+        "prompt": "Use case: identity-preserve.\nAsset type: one additive corrective variant of an existing full-body transparent pixel-art game sprite.\nImage 1 is the EDIT TARGET, authoritative for outfit, body, pose, pixel-art style, proportions, scale and placement. Image 2 is ONLY a reference for the character's face and hair. Do not transfer clothing or body anatomy from Image 2.\nPrimary request: change ONLY hair and facial likeness on Image 1. Correct Kaori's hair and face toward Image 2: deep dark-plum hair with straight modest strands at the shoulders and upper chest, reduce the enormous lateral fan of wavy rear hair, no big curls or wind-blown hair mass. Back hair is mostly tucked visually behind shoulders with restrained volume; the front reference does not establish an exact unseen back length. Keep her green eyes, a gently elongated oval face and calm expression. The overall head must remain compatible with the original sprite proportions.\nOutfit lock: Keep the existing covered black-and-gold academy outfit in Image 1, including its white collared shirt, tie, blazer cut, buttons, cuffs, lower garment and complete footwear. For Kaori preserve the existing skirt with opaque dark tights; for Ruri preserve the existing long trousers. Do not alter any clothing coverage, accessories, anatomy, figure proportions, hand placement or stance. The existing adapted costume is intentional and must stay the same; this is NOT a request to reproduce Image 2's outfit.\nStyle lock: retain crisp detailed pixel art, dark pixel outlines, existing shading and palette of the outfit, same game sprite density, no smooth painted or vector restyling.\nComposition: single character, complete head, hands and both shoes visible, neutral non-sexualized standing pose facing three-quarters right, same scale and baseline as Image 1, square 1254 by 1254 canvas with a little transparent safety margin, no cropping, no scene or text.\nBackground: genuine transparent alpha, no colored background, no checkerboard painted into the image, no floor and no cast shadow. Keep everything outside the character transparent.\nNo anatomical emphasis, no extra ornament, no weapons, no new costume, no text. Produce one new separate image; preserve the original version.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "bedf426ec68b99650769c42c032d86beab4ba7f24380dd80b2fac5ab7108be5e",
+        "bytes": 534145,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          431,
+          51,
+          914,
+          1192
+        ],
+        "visibleMargins": [
+          431,
+          51,
+          340,
+          62
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Reduced the large wavy rear hair fan.",
+          "Smoothed and restrained dark-plum hair around shoulders.",
+          "Preserved covered adapted outfit, accessories and stance."
+        ],
+        "remainingLimitations": [
+          "The front reference does not establish exact unseen rear hair length.",
+          "Pixel-art reinterpretation, not a literal 1:1 copy.",
+          "The existing costume remains an original adaptation, not an official costume.",
+          "Facial details remain stylized; the main verified improvement is hair silhouette."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210228).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Volume ondulé arrière réduit ; mèches prune plus droites et resserrées autour des épaules. Tenue et accessoires conservés. La longueur arrière reste en partie interprétée, car la référence est frontale. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "ruri:military-jgsdf-reference-v2",
+      "characterId": "ruri",
+      "costumeId": "military-jgsdf-reference-v2",
+      "variantOf": "ruri:military-jgsdf",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--military-jgsdf-reference-v2.png",
+      "category": "military",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-e3b5f9ee-0974-4197-80c0-829ac9b046c5",
+        "generationIdSource": "generated output filename",
+        "prompt": "Use case: identity-preserve.\nAsset type: one additive corrective variant of an existing full-body transparent pixel-art game sprite.\nImage 1 is the EDIT TARGET, authoritative for outfit, body, pose, pixel-art style, proportions, scale and placement. Image 2 is ONLY a reference for the character's face and hair. Do not transfer clothing or body anatomy from Image 2.\nPrimary request: change ONLY hair and facial likeness on Image 1. Correct Ruri's hair and face toward Image 2: dark green hair, two very THIN smooth long curved ponytails held by the existing yellow ribbons. Each ponytail is a narrow tapered lock tracing a simple long arc, not a bulky or wavy bunch; drastically reduce ponytail thickness while preserving her recognizable silhouette. Preserve purple eyes and give a gentle calm expression, both eyes open for the game idle pose. Match the visible fringe and hair part to Image 2.\nOutfit lock: Keep the existing long-sleeved green/brown camouflage utility jacket, its pockets, belt and pouches, long matching cargo trousers, and complete black lace-up combat boots, all exactly as in Image 1. Do not alter any clothing coverage, accessories, anatomy, figure proportions, hand placement or stance. The existing adapted costume is intentional and must stay the same; this is NOT a request to reproduce Image 2's outfit.\nStyle lock: retain crisp detailed pixel art, dark pixel outlines, existing shading and palette of the outfit, same game sprite density, no smooth painted or vector restyling.\nComposition: single character, complete head, hands and both shoes visible, neutral non-sexualized standing pose facing three-quarters right, same scale and baseline as Image 1, square 1254 by 1254 canvas with a little transparent safety margin, no cropping, no scene or text.\nBackground: genuine transparent alpha, no colored background, no checkerboard painted into the image, no floor and no cast shadow. Keep everything outside the character transparent.\nNo anatomical emphasis, no extra ornament, no weapons, no new costume, no text. Produce one new separate image; preserve the original version.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "9272a7bc940ff68456acbea5e3d5e1205a9c652837b1b7798f1932872db04cbb",
+        "bytes": 701670,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          430,
+          38,
+          904,
+          1204
+        ],
+        "visibleMargins": [
+          430,
+          38,
+          350,
+          50
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Thinned the two ponytails into smooth long arcs.",
+          "Preserved yellow ribbons and dark-green hair identity.",
+          "Preserved covered adapted outfit, accessories and stance."
+        ],
+        "remainingLimitations": [
+          "Some hair curvature and facial details remain a pixel-art reinterpretation.",
+          "The existing costume remains an original adaptation, not an official costume.",
+          "Facial details remain stylized; the main verified improvement is hair silhouette."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "official_uniform_reference",
+          "url": "https://www.mod.go.jp/gsdf/equipment/qe/index.html",
+          "imageUrl": "https://www.mod.go.jp/gsdf/assets/images/equipment/qe/pic07_modal.png",
+          "role": "Clothing reference only; fictional identity is preserved from the existing sprite."
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(8).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Couettes affinées en longs arcs plus lisses ; cheveux vert foncé et rubans jaunes conservés, ainsi que la tenue et les accessoires. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "ruri:swimwear-sport-original-reference-v2",
+      "characterId": "ruri",
+      "costumeId": "swimwear-sport-original-reference-v2",
+      "variantOf": "ruri:swimwear-sport-original",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--swimwear-sport-original-reference-v2.png",
+      "category": "swimwear",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-724cec7c-b317-4b82-b818-9838c5866c19",
+        "generationIdSource": "generated output filename",
+        "prompt": "Use case: identity-preserve.\nAsset type: one additive corrective variant of an existing full-body transparent pixel-art game sprite.\nImage 1 is the EDIT TARGET, authoritative for outfit, body, pose, pixel-art style, proportions, scale and placement. Image 2 is ONLY a reference for the character's face and hair. Do not transfer clothing or body anatomy from Image 2.\nPrimary request: change ONLY hair and facial likeness on Image 1. Correct Ruri's hair and face toward Image 2: dark green hair, two very THIN smooth long curved ponytails held by the existing yellow ribbons. Each ponytail is a narrow tapered lock tracing a simple long arc, not a bulky or wavy bunch; drastically reduce ponytail thickness while preserving her recognizable silhouette. Preserve purple eyes and give a gentle calm expression, both eyes open for the game idle pose. Match the visible fringe and hair part to Image 2.\nOutfit lock: Keep the existing fully covered athletic aquatic outfit from Image 1: high-neck long-sleeved rash guard, knee-length board shorts, all original panels, stripe colors and complete water shoes. Keep fabric opaque, dry and normally fitted. Do not alter any clothing coverage, accessories, anatomy, figure proportions, hand placement or stance. The existing adapted costume is intentional and must stay the same; this is NOT a request to reproduce Image 2's outfit.\nStyle lock: retain crisp detailed pixel art, dark pixel outlines, existing shading and palette of the outfit, same game sprite density, no smooth painted or vector restyling.\nComposition: single character, complete head, hands and both shoes visible, neutral non-sexualized standing pose facing three-quarters right, same scale and baseline as Image 1, square 1254 by 1254 canvas with a little transparent safety margin, no cropping, no scene or text.\nBackground: genuine transparent alpha, no colored background, no checkerboard painted into the image, no floor and no cast shadow. Keep everything outside the character transparent.\nNo anatomical emphasis, no extra ornament, no weapons, no new costume, no text. Produce one new separate image; preserve the original version.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "b3abeff925722fc66e47c320ef570caef2e2ebca3353b7be0c2a6c5e7e7b5ae4",
+        "bytes": 573589,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          433,
+          85,
+          910,
+          1194
+        ],
+        "visibleMargins": [
+          433,
+          85,
+          344,
+          60
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Thinned the two ponytails into smooth long arcs.",
+          "Preserved yellow ribbons and dark-green hair identity.",
+          "Preserved covered adapted outfit, accessories and stance."
+        ],
+        "remainingLimitations": [
+          "Some hair curvature and facial details remain a pixel-art reinterpretation.",
+          "The existing costume remains an original adaptation, not an official costume.",
+          "Facial details remain stylized; the main verified improvement is hair silhouette."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(8).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Couettes affinées en longs arcs plus lisses ; cheveux vert foncé et rubans jaunes conservés, ainsi que la tenue et les accessoires. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "ruri:uniform-academy-adapted-reference-v2",
+      "characterId": "ruri",
+      "costumeId": "uniform-academy-adapted-reference-v2",
+      "variantOf": "ruri:uniform-academy-adapted",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--uniform-academy-adapted-reference-v2.png",
+      "category": "uniform",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-7ce3e7af-4bf7-4cb7-9d72-ee669b758ca6",
+        "generationIdSource": "generated output filename",
+        "prompt": "Use case: identity-preserve.\nAsset type: one additive corrective variant of an existing full-body transparent pixel-art game sprite.\nImage 1 is the EDIT TARGET, authoritative for outfit, body, pose, pixel-art style, proportions, scale and placement. Image 2 is ONLY a reference for the character's face and hair. Do not transfer clothing or body anatomy from Image 2.\nPrimary request: change ONLY hair and facial likeness on Image 1. Correct Ruri's hair and face toward Image 2: dark green hair, two very THIN smooth long curved ponytails held by the existing yellow ribbons. Each ponytail is a narrow tapered lock tracing a simple long arc, not a bulky or wavy bunch; drastically reduce ponytail thickness while preserving her recognizable silhouette. Preserve purple eyes and give a gentle calm expression, both eyes open for the game idle pose. Match the visible fringe and hair part to Image 2.\nOutfit lock: Keep the existing covered black-and-gold academy outfit in Image 1, including its white collared shirt, tie, blazer cut, buttons, cuffs, lower garment and complete footwear. For Kaori preserve the existing skirt with opaque dark tights; for Ruri preserve the existing long trousers. Do not alter any clothing coverage, accessories, anatomy, figure proportions, hand placement or stance. The existing adapted costume is intentional and must stay the same; this is NOT a request to reproduce Image 2's outfit.\nStyle lock: retain crisp detailed pixel art, dark pixel outlines, existing shading and palette of the outfit, same game sprite density, no smooth painted or vector restyling.\nComposition: single character, complete head, hands and both shoes visible, neutral non-sexualized standing pose facing three-quarters right, same scale and baseline as Image 1, square 1254 by 1254 canvas with a little transparent safety margin, no cropping, no scene or text.\nBackground: genuine transparent alpha, no colored background, no checkerboard painted into the image, no floor and no cast shadow. Keep everything outside the character transparent.\nNo anatomical emphasis, no extra ornament, no weapons, no new costume, no text. Produce one new separate image; preserve the original version.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "9560dd0d73e88005ca6fff2a9b72d74dee0c677564ef701a27638f23d6bdc172",
+        "bytes": 540437,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          436,
+          88,
+          909,
+          1192
+        ],
+        "visibleMargins": [
+          436,
+          88,
+          345,
+          62
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Thinned the two ponytails into smooth long arcs.",
+          "Preserved yellow ribbons and dark-green hair identity.",
+          "Preserved covered adapted outfit, accessories and stance."
+        ],
+        "remainingLimitations": [
+          "Some hair curvature and facial details remain a pixel-art reinterpretation.",
+          "The existing costume remains an original adaptation, not an official costume.",
+          "Facial details remain stylized; the main verified improvement is hair silhouette."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(8).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Couettes affinées en longs arcs plus lisses ; cheveux vert foncé et rubans jaunes conservés, ainsi que la tenue et les accessoires. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "saori:rose-adapted-reference-v2",
+      "characterId": "saori",
+      "costumeId": "rose-adapted-reference-v2",
+      "variantOf": "saori:rose-adapted",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--rose-adapted-reference-v2.png",
+      "category": "other",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-d8a0e570-5d52-42c9-9d61-8389e832a96d",
+        "prompt": "Use case: identity-preserve. Create ONE NEW additive corrected variant of this existing full-body pixel-art game sprite. Image 1 is the old sprite and the authoritative outfit, pose and pixel-rendering reference. Image 2 is an original, fully clothed identity reference for Saori Otokawa; use it ONLY for face, hairstyle and hair color, NOT for clothing. Change ONLY the facial expression/shape and hair: original deep dark navy smooth straight hair, lying close and flat down the back instead of the bright-blue wide wavy fan; two narrow long front locks and the white bow on the same side. Restore a gentle longer oval face, restrained teal eyes, calm natural expression. No chibi rounding or angry scowl. Keep all current clothing, colors, coverage, accessories, shoes, pose, body proportions and framing as in image 1. Natural non-sexual neutral standing three-quarter pose facing right; do not amplify anatomy. Detailed crisp pixel-art clusters and dark outlines matching the prior sprite. One complete character from hair to both soles, hands and shoes fully inside frame, similar generous margins, square canvas preferably 1254x1254, genuine alpha transparent background. No backdrop, cast shadow, text, watermark, weapons or extra characters. Do not make a comparison panel. Maintain the existing lavender fully closed high-neck blouse with puff sleeves, coral neck ribbon, coral sash and knee-length coral-pink pleated skirt, white knee socks and black Mary Jane shoes. Preserve this covered original adaptation exactly; do not replace it with a different outfit.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "7a23da3c3da7d1ffdf2b03696e6612963e3734c05ea3296042041e10c8bf1477",
+        "bytes": 595527,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          426,
+          45,
+          884,
+          1187
+        ],
+        "visibleMargins": [
+          426,
+          45,
+          370,
+          67
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Chevelure bleu marine assombrie, plus lisse et resserrée dans le dos; retrait du grand éventail ondulé.",
+          "Deux mèches avant et ruban blanc conservés; expression adoucie dans les limites du pixel art."
+        ],
+        "remainingLimitations": [
+          "Costume créé pour le jeu et conservé; il ne devient pas un costume officiel certifié.",
+          "Recréation en pixel art, pas copie strictement identique 1:1.",
+          "Parties hors champ des références d’identité demeurent des reconstitutions de la version précédente.",
+          "La correction principale concerne la silhouette capillaire; le visage reste stylisé."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(2).png",
+          "url": null,
+          "role": "identity and/or palette evidence; adapted clothing",
+          "framing": "partial figure"
+        },
+        {
+          "type": "user_upload",
+          "filename": "image.png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "waist/thigh crop"
+        }
+      ],
+      "fidelityNote": "Chevelure bleu marine assombrie, plus lisse et resserrée dans le dos; retrait du grand éventail ondulé. Deux mèches avant et ruban blanc conservés; expression adoucie dans les limites du pixel art. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "saori:military-jgsdf-reference-v2",
+      "characterId": "saori",
+      "costumeId": "military-jgsdf-reference-v2",
+      "variantOf": "saori:military-jgsdf",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--military-jgsdf-reference-v2.png",
+      "category": "military",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-5f6ed303-a495-4f10-ad50-4af89585b94f",
+        "prompt": "Use case: identity-preserve. Create ONE NEW additive corrected variant of this existing full-body pixel-art game sprite. Image 1 is the old sprite and the authoritative outfit, pose and pixel-rendering reference. Image 2 is an original, fully clothed identity reference for Saori Otokawa; use it ONLY for face, hairstyle and hair color, NOT for clothing. Change ONLY the facial expression/shape and hair: original deep dark navy smooth straight hair, lying close and flat down the back instead of the bright-blue wide wavy fan; two narrow long front locks and the white bow on the same side. Restore a gentle longer oval face, restrained teal eyes, calm natural expression. No chibi rounding or angry scowl. Keep all current clothing, colors, coverage, accessories, shoes, pose, body proportions and framing as in image 1. Natural non-sexual neutral standing three-quarter pose facing right; do not amplify anatomy. Detailed crisp pixel-art clusters and dark outlines matching the prior sprite. One complete character from hair to both soles, hands and shoes fully inside frame, similar generous margins, square canvas preferably 1254x1254, genuine alpha transparent background. No backdrop, cast shadow, text, watermark, weapons or extra characters. Do not make a comparison panel. Maintain the existing complete green/brown/black camouflage jacket and cargo trousers, olive utility belt and pouches, black lace-up boots, with all garments fully closed. Do not add insignia, weapon, hat or tactical equipment.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "f64a1ada7a954815b06cae981b72ad7e486afabdd2aeec7bf822a7e8143504b7",
+        "bytes": 698575,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          432,
+          35,
+          895,
+          1198
+        ],
+        "visibleMargins": [
+          432,
+          35,
+          359,
+          56
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Chevelure bleu marine assombrie, plus lisse et resserrée dans le dos; retrait du grand éventail ondulé.",
+          "Deux mèches avant et ruban blanc conservés; expression adoucie dans les limites du pixel art."
+        ],
+        "remainingLimitations": [
+          "Costume créé pour le jeu et conservé; il ne devient pas un costume officiel certifié.",
+          "Recréation en pixel art, pas copie strictement identique 1:1.",
+          "Parties hors champ des références d’identité demeurent des reconstitutions de la version précédente.",
+          "La correction principale concerne la silhouette capillaire; le visage reste stylisé."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "official_uniform_reference",
+          "url": "https://www.mod.go.jp/gsdf/equipment/qe/index.html",
+          "imageUrl": "https://www.mod.go.jp/gsdf/assets/images/equipment/qe/pic07_modal.png",
+          "role": "Clothing reference only; fictional identity is preserved from the existing sprite."
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image.png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "waist/thigh crop"
+        }
+      ],
+      "fidelityNote": "Chevelure bleu marine assombrie, plus lisse et resserrée dans le dos; retrait du grand éventail ondulé. Deux mèches avant et ruban blanc conservés; expression adoucie dans les limites du pixel art. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "saori:swimwear-sport-original-reference-v2",
+      "characterId": "saori",
+      "costumeId": "swimwear-sport-original-reference-v2",
+      "variantOf": "saori:swimwear-sport-original",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--swimwear-sport-original-reference-v2.png",
+      "category": "swimwear",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-f878dc93-6d2d-48e0-a33b-bd22c2d38a6e",
+        "prompt": "Use case: identity-preserve. Create ONE NEW additive corrected variant of this existing full-body pixel-art game sprite. Image 1 is the old sprite and the authoritative outfit, pose and pixel-rendering reference. Image 2 is an original, fully clothed identity reference for Saori Otokawa; use it ONLY for face, hairstyle and hair color, NOT for clothing. Change ONLY the facial expression/shape and hair: original deep dark navy smooth straight hair, lying close and flat down the back instead of the bright-blue wide wavy fan; two narrow long front locks and the white bow on the same side. Restore a gentle longer oval face, restrained teal eyes, calm natural expression. No chibi rounding or angry scowl. Keep all current clothing, colors, coverage, accessories, shoes, pose, body proportions and framing as in image 1. Natural non-sexual neutral standing three-quarter pose facing right; do not amplify anatomy. Detailed crisp pixel-art clusters and dark outlines matching the prior sprite. One complete character from hair to both soles, hands and shoes fully inside frame, similar generous margins, square canvas preferably 1254x1254, genuine alpha transparent background. No backdrop, cast shadow, text, watermark, weapons or extra characters. Do not make a comparison panel. Maintain the existing modest athletic aquatic outfit: high-neck long-sleeved navy and white rash guard with narrow gold piping, matching loose knee-length navy board shorts and navy water shoes. Keep this coverage and all colors unchanged; do not turn it into a swimsuit with less fabric.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "f8f80f55c2d94e16039ef304bc2580a91c83f48d9af4f6bed00edc58c75836ed",
+        "bytes": 561404,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          427,
+          41,
+          887,
+          1188
+        ],
+        "visibleMargins": [
+          427,
+          41,
+          367,
+          66
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Chevelure bleu marine assombrie, plus lisse et resserrée dans le dos; retrait du grand éventail ondulé.",
+          "Deux mèches avant et ruban blanc conservés; expression adoucie dans les limites du pixel art."
+        ],
+        "remainingLimitations": [
+          "Costume créé pour le jeu et conservé; il ne devient pas un costume officiel certifié.",
+          "Recréation en pixel art, pas copie strictement identique 1:1.",
+          "Parties hors champ des références d’identité demeurent des reconstitutions de la version précédente.",
+          "La correction principale concerne la silhouette capillaire; le visage reste stylisé."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image.png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "waist/thigh crop"
+        }
+      ],
+      "fidelityNote": "Chevelure bleu marine assombrie, plus lisse et resserrée dans le dos; retrait du grand éventail ondulé. Deux mèches avant et ruban blanc conservés; expression adoucie dans les limites du pixel art. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "karen:civilian-original-reference-v2",
+      "characterId": "karen",
+      "costumeId": "civilian-original-reference-v2",
+      "variantOf": "karen:civilian-original",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--civilian-original-reference-v2.png",
+      "category": "civilian",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-da59d2c5-fdca-4577-ab55-4fd168771d0c",
+        "prompt": "Use case: identity-preserve. Create ONE NEW additive corrected variant of the existing full-body pixel-art game sprite. Image 1 is the old sprite and the authoritative outfit, pose, body proportions, rendering and framing reference. Image 2 is the original fully clothed identity reference for Karen Himeki; use it ONLY for the face and hairstyle, NOT for the outfit. Change ONLY facial expression/shape and hair: silver hair parted and sleek, gathered into a THIN low ponytail with black bands at the nape; it falls straight close to the back. Remove the huge fluffy wavy silver ponytail fan from image 1. Preserve the two fine straight front locks, green eyes and the original gentle slight smile with a longer soft oval face; no angry scowl or chibi rounding. Keep all current clothes, garment coverage, accessories, colors, pose, natural anatomy, legs and shoes unchanged from image 1. Do not change the ponytail to a braid or short bob. Detailed crisp pixel clusters, dark outlines and clean shadows matching the existing game art. One neutral non-sexual three-quarter standing character facing right, entirely inside the square frame from head to both soles, both hands and both shoes visible, similar margins. Prefer 1254x1254, genuine alpha transparency, no ground shadow, scene, labels, watermark, weapon, comparison panel or other character. Preserve the sage-green zip hoodie with hood down and drawstrings, white fully covered T-shirt, dark gray full-length jeans and gray-white sneakers from image 1. Preserve the modest casual clothing rather than copying the reference uniform.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "777584e155e632a5b908978fdcd83217c5c78ae80293cc842b023610f293ea1e",
+        "bytes": 583056,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          438,
+          60,
+          920,
+          1208
+        ],
+        "visibleMargins": [
+          438,
+          60,
+          334,
+          46
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Queue basse argentée affinée et lissée, attachée à la nuque par des liens noirs.",
+          "Deux fines mèches encadrant le visage conservées; yeux verts et léger sourire rétablis."
+        ],
+        "remainingLimitations": [
+          "Costume créé pour le jeu et conservé; il ne devient pas un costume officiel certifié.",
+          "Recréation en pixel art, pas copie strictement identique 1:1.",
+          "Parties hors champ des références d’identité demeurent des reconstitutions de la version précédente.",
+          "La correction principale concerne la silhouette capillaire; le visage reste stylisé."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210116).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Queue basse argentée affinée et lissée, attachée à la nuque par des liens noirs. Deux fines mèches encadrant le visage conservées; yeux verts et léger sourire rétablis. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "karen:military-jgsdf-reference-v2",
+      "characterId": "karen",
+      "costumeId": "military-jgsdf-reference-v2",
+      "variantOf": "karen:military-jgsdf",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--military-jgsdf-reference-v2.png",
+      "category": "military",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-b1829d21-a4be-44fb-acb3-a97ba68615f9",
+        "prompt": "Use case: identity-preserve. Create ONE NEW additive corrected variant of the existing full-body pixel-art game sprite. Image 1 is the old sprite and the authoritative outfit, pose, body proportions, rendering and framing reference. Image 2 is the original fully clothed identity reference for Karen Himeki; use it ONLY for the face and hairstyle, NOT for the outfit. Change ONLY facial expression/shape and hair: silver hair parted and sleek, gathered into a THIN low ponytail with black bands at the nape; it falls straight close to the back. Remove the huge fluffy wavy silver ponytail fan from image 1. Preserve the two fine straight front locks, green eyes and the original gentle slight smile with a longer soft oval face; no angry scowl or chibi rounding. Keep all current clothes, garment coverage, accessories, colors, pose, natural anatomy, legs and shoes unchanged from image 1. Do not change the ponytail to a braid or short bob. Detailed crisp pixel clusters, dark outlines and clean shadows matching the existing game art. One neutral non-sexual three-quarter standing character facing right, entirely inside the square frame from head to both soles, both hands and both shoes visible, similar margins. Prefer 1254x1254, genuine alpha transparency, no ground shadow, scene, labels, watermark, weapon, comparison panel or other character. Preserve the existing closed green/brown/black camouflage jacket and cargo trousers, olive utility belt and pouches, and black lace-up boots. Do not add new insignia, a hat, rifle or tactical gear.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "75392af74312a1144c5e95dfe7b4a19079e7c4a44e02b1a193b52e08040468a7",
+        "bytes": 674751,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          453,
+          50,
+          908,
+          1210
+        ],
+        "visibleMargins": [
+          453,
+          50,
+          346,
+          44
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Queue basse argentée affinée et lissée, attachée à la nuque par des liens noirs.",
+          "Deux fines mèches encadrant le visage conservées; yeux verts et léger sourire rétablis."
+        ],
+        "remainingLimitations": [
+          "Costume créé pour le jeu et conservé; il ne devient pas un costume officiel certifié.",
+          "Recréation en pixel art, pas copie strictement identique 1:1.",
+          "Parties hors champ des références d’identité demeurent des reconstitutions de la version précédente.",
+          "La correction principale concerne la silhouette capillaire; le visage reste stylisé."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "official_uniform_reference",
+          "url": "https://www.mod.go.jp/gsdf/equipment/qe/index.html",
+          "imageUrl": "https://www.mod.go.jp/gsdf/assets/images/equipment/qe/pic07_modal.png",
+          "role": "Clothing reference only; fictional identity is preserved from the existing sprite."
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210116).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Queue basse argentée affinée et lissée, attachée à la nuque par des liens noirs. Deux fines mèches encadrant le visage conservées; yeux verts et léger sourire rétablis. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "karen:swimwear-sport-original-reference-v2",
+      "characterId": "karen",
+      "costumeId": "swimwear-sport-original-reference-v2",
+      "variantOf": "karen:swimwear-sport-original",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--swimwear-sport-original-reference-v2.png",
+      "category": "swimwear",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-f78bcf59-6fb8-4066-9fdb-17246edfe733",
+        "prompt": "Use case: identity-preserve. Create ONE NEW additive corrected variant of the existing full-body pixel-art game sprite. Image 1 is the old sprite and the authoritative outfit, pose, body proportions, rendering and framing reference. Image 2 is the original fully clothed identity reference for Karen Himeki; use it ONLY for the face and hairstyle, NOT for the outfit. Change ONLY facial expression/shape and hair: silver hair parted and sleek, gathered into a THIN low ponytail with black bands at the nape; it falls straight close to the back. Remove the huge fluffy wavy silver ponytail fan from image 1. Preserve the two fine straight front locks, green eyes and the original gentle slight smile with a longer soft oval face; no angry scowl or chibi rounding. Keep all current clothes, garment coverage, accessories, colors, pose, natural anatomy, legs and shoes unchanged from image 1. Do not change the ponytail to a braid or short bob. Detailed crisp pixel clusters, dark outlines and clean shadows matching the existing game art. One neutral non-sexual three-quarter standing character facing right, entirely inside the square frame from head to both soles, both hands and both shoes visible, similar margins. Prefer 1254x1254, genuine alpha transparency, no ground shadow, scene, labels, watermark, weapon, comparison panel or other character. Preserve the existing modest sports aquatic outfit: high-neck long-sleeved plum-and-white rash guard with white piping, loose knee-length plum board shorts and dark matching water shoes. Preserve all fabric coverage, fit and colors, with no swimsuit redesign.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "b409333f1878278600112abc1ea01ef504e24f0ba61aeddaac07c7d11cd57e19",
+        "bytes": 560647,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          431,
+          62,
+          926,
+          1206
+        ],
+        "visibleMargins": [
+          431,
+          62,
+          328,
+          48
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Queue basse argentée affinée et lissée, attachée à la nuque par des liens noirs.",
+          "Deux fines mèches encadrant le visage conservées; yeux verts et léger sourire rétablis."
+        ],
+        "remainingLimitations": [
+          "Costume créé pour le jeu et conservé; il ne devient pas un costume officiel certifié.",
+          "Recréation en pixel art, pas copie strictement identique 1:1.",
+          "Parties hors champ des références d’identité demeurent des reconstitutions de la version précédente.",
+          "La correction principale concerne la silhouette capillaire; le visage reste stylisé."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210116).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Queue basse argentée affinée et lissée, attachée à la nuque par des liens noirs. Deux fines mèches encadrant le visage conservées; yeux verts et léger sourire rétablis. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "yuri:civilian-original-reference-v2",
+      "characterId": "yuri",
+      "costumeId": "civilian-original-reference-v2",
+      "variantOf": "yuri:civilian-original",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--civilian-original-reference-v2.png",
+      "category": "civilian",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-ba3f3d20-8d40-471f-a37a-b432f5c56f05",
+        "prompt": "Use case: identity-preserve. Create ONE NEW additive corrected variant of the existing full-body pixel-art game sprite. Image 1 is the old sprite and is authoritative for outfit, pose, body proportions, pixel rendering and framing. Image 2 is the original fully clothed identity reference for Yuri Nishizaki; use it ONLY to correct the face and hairstyle, NOT for clothing. Change ONLY facial expression/shape and hair: retain burgundy/magenta hair, but make it long, STRAIGHT, narrow and lying flat along the back rather than the enormous fluffy wavy windblown fan in image 1. Restore the original lighter separated fringe and two narrow face-framing locks. Keep violet eyes and a calm softer expression with a longer gentle oval face, no angry scowl or chibi head. Preserve all current clothes, coverage, accessories, colors, pose, hands, natural unobtrusive anatomy, legs and footwear. Detailed crisp pixel-art clusters and dark outlines matching the existing sprite, clean limited shadows. One neutral non-sexual three-quarter standing character facing right, entire head and both shoes inside frame with similar margins. Square canvas preferably 1254x1254, genuine alpha transparent background. No scene, cast shadow, comparison panel, label, watermark, new equipment, weapon or additional person. Preserve the burgundy long knitted cardigan with pockets, fully covering cream crew-neck sweater, full-length gray trousers and burgundy loafers from image 1. Do not replace this casual outfit with the reference uniform.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "580858cb5f80bf1a9084b4748fa5b88f0644a388038cbc65fff125b2d240701e",
+        "bytes": 533380,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          443,
+          76,
+          902,
+          1196
+        ],
+        "visibleMargins": [
+          443,
+          76,
+          352,
+          58
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Chevelure bordeaux plus longue, étroite et droite; retrait de l’éventail ondulé.",
+          "Mèches devant le visage et yeux violets conservés; expression calme."
+        ],
+        "remainingLimitations": [
+          "Costume créé pour le jeu et conservé; il ne devient pas un costume officiel certifié.",
+          "Recréation en pixel art, pas copie strictement identique 1:1.",
+          "Parties hors champ des références d’identité demeurent des reconstitutions de la version précédente.",
+          "La correction principale concerne la silhouette capillaire; le visage reste stylisé."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210201).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Chevelure bordeaux plus longue, étroite et droite; retrait de l’éventail ondulé. Mèches devant le visage et yeux violets conservés; expression calme. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "yuri:military-jgsdf-reference-v2",
+      "characterId": "yuri",
+      "costumeId": "military-jgsdf-reference-v2",
+      "variantOf": "yuri:military-jgsdf",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--military-jgsdf-reference-v2.png",
+      "category": "military",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-447c1106-44c8-439c-b155-f4ac82fa611e",
+        "prompt": "Use case: identity-preserve. Create ONE NEW additive corrected variant of the existing full-body pixel-art game sprite. Image 1 is the old sprite and is authoritative for outfit, pose, body proportions, pixel rendering and framing. Image 2 is the original fully clothed identity reference for Yuri Nishizaki; use it ONLY to correct the face and hairstyle, NOT for clothing. Change ONLY facial expression/shape and hair: retain burgundy/magenta hair, but make it long, STRAIGHT, narrow and lying flat along the back rather than the enormous fluffy wavy windblown fan in image 1. Restore the original lighter separated fringe and two narrow face-framing locks. Keep violet eyes and a calm softer expression with a longer gentle oval face, no angry scowl or chibi head. Preserve all current clothes, coverage, accessories, colors, pose, hands, natural unobtrusive anatomy, legs and footwear. Detailed crisp pixel-art clusters and dark outlines matching the existing sprite, clean limited shadows. One neutral non-sexual three-quarter standing character facing right, entire head and both shoes inside frame with similar margins. Square canvas preferably 1254x1254, genuine alpha transparent background. No scene, cast shadow, comparison panel, label, watermark, new equipment, weapon or additional person. Preserve the existing fully closed green/brown/black camouflage jacket and cargo trousers, olive utility belt with pouches and black lace-up boots. Do not add insignia, hats, rifles or tactical equipment.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "8874dd1cdd5406f0bbbf59444246b3198e4a641e13b1fd2374947d1e84df5364",
+        "bytes": 663592,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          434,
+          73,
+          900,
+          1198
+        ],
+        "visibleMargins": [
+          434,
+          73,
+          354,
+          56
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Chevelure bordeaux plus longue, étroite et droite; retrait de l’éventail ondulé.",
+          "Mèches devant le visage et yeux violets conservés; expression calme."
+        ],
+        "remainingLimitations": [
+          "Costume créé pour le jeu et conservé; il ne devient pas un costume officiel certifié.",
+          "Recréation en pixel art, pas copie strictement identique 1:1.",
+          "Parties hors champ des références d’identité demeurent des reconstitutions de la version précédente.",
+          "La correction principale concerne la silhouette capillaire; le visage reste stylisé."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "official_uniform_reference",
+          "url": "https://www.mod.go.jp/gsdf/equipment/qe/index.html",
+          "imageUrl": "https://www.mod.go.jp/gsdf/assets/images/equipment/qe/pic07_modal.png",
+          "role": "Clothing reference only; fictional identity is preserved from the existing sprite."
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210201).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Chevelure bordeaux plus longue, étroite et droite; retrait de l’éventail ondulé. Mèches devant le visage et yeux violets conservés; expression calme. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
+    },
+    {
+      "id": "yuri:swimwear-sport-original-reference-v2",
+      "characterId": "yuri",
+      "costumeId": "swimwear-sport-original-reference-v2",
+      "variantOf": "yuri:swimwear-sport-original",
+      "revision": 2,
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--swimwear-sport-original-reference-v2.png",
+      "category": "swimwear",
+      "provenance": "adapted",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-917a0d1f-1a1d-4776-be77-4aa6263ebcf7",
+        "prompt": "Use case: identity-preserve. Create ONE NEW additive corrected variant of the existing full-body pixel-art game sprite. Image 1 is the old sprite and is authoritative for outfit, pose, body proportions, pixel rendering and framing. Image 2 is the original fully clothed identity reference for Yuri Nishizaki; use it ONLY to correct the face and hairstyle, NOT for clothing. Change ONLY facial expression/shape and hair: retain burgundy/magenta hair, but make it long, STRAIGHT, narrow and lying flat along the back rather than the enormous fluffy wavy windblown fan in image 1. Restore the original lighter separated fringe and two narrow face-framing locks. Keep violet eyes and a calm softer expression with a longer gentle oval face, no angry scowl or chibi head. Preserve all current clothes, coverage, accessories, colors, pose, hands, natural unobtrusive anatomy, legs and footwear. Detailed crisp pixel-art clusters and dark outlines matching the existing sprite, clean limited shadows. One neutral non-sexual three-quarter standing character facing right, entire head and both shoes inside frame with similar margins. Square canvas preferably 1254x1254, genuine alpha transparent background. No scene, cast shadow, comparison panel, label, watermark, new equipment, weapon or additional person. Preserve the modest athletic aquatic outfit: high-neck long-sleeved sky-blue/navy rash guard with white piping, loose knee-length navy board shorts with light-blue side panels, and navy/blue water shoes. Keep every garment's coverage and colors unchanged.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "74164778542957400779574778508dde019184c9d4a875b8f1261ddfb6c66d46",
+        "bytes": 533039,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          434,
+          76,
+          907,
+          1193
+        ],
+        "visibleMargins": [
+          434,
+          76,
+          347,
+          61
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "compared with the previous sprite and source identity",
+          "full head, hands and shoes visible",
+          "transparent background",
+          "pixel-art style preserved"
+        ],
+        "corrections": [
+          "Chevelure bordeaux plus longue, étroite et droite; retrait de l’éventail ondulé.",
+          "Mèches devant le visage et yeux violets conservés; expression calme."
+        ],
+        "remainingLimitations": [
+          "Costume créé pour le jeu et conservé; il ne devient pas un costume officiel certifié.",
+          "Recréation en pixel art, pas copie strictement identique 1:1.",
+          "Parties hors champ des références d’identité demeurent des reconstitutions de la version précédente.",
+          "La correction principale concerne la silhouette capillaire; le visage reste stylisé."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform.png",
+          "role": "Previous generated clothing and art-direction reference; identity corrected against the source image."
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261027-210201).png",
+          "url": null,
+          "role": "Original identity reference for the hairstyle and face correction; not evidence of the adapted outfit.",
+          "framing": "partial figure"
+        }
+      ],
+      "fidelityNote": "Chevelure bordeaux plus longue, étroite et droite; retrait de l’éventail ondulé. Mèches devant le visage et yeux violets conservés; expression calme. Cette tenue reste une adaptation créée pour le jeu. Les parties hors champ restent reconstituées ; fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
     }
-  ]
+  ],
+  "revision": 2,
+  "preservedBaselineCommit": "f10098f69523e0c35e6f81788dfdfc1a8b897cd8"
 }

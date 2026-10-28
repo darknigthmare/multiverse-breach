@@ -81,6 +81,14 @@ export function createDisciplineSpriteRegistry(catalogue) {
     layouts[row.src] = DISCIPLINE_STATIC_LAYOUT;
     return entry;
   });
+  for (const entry of entries) {
+    if (entry.variantOf === undefined) continue;
+    const original = typeof entry.variantOf === 'string' && Object.hasOwn(byId, entry.variantOf)
+      ? byId[entry.variantOf] : null;
+    if (!original || original.id === entry.id || original.characterId !== entry.characterId || entry.isDefault) {
+      throw new Error(`Invalid Discipline variant origin: ${entry.id}`);
+    }
+  }
   for (const rows of Object.values(byCharacter)) Object.freeze(rows);
   return Object.freeze({
     entries: Object.freeze(entries),
@@ -122,7 +130,9 @@ export function getDisciplineSpriteSources(actor, registry = DISCIPLINE_SPRITE_R
   if (!selected) return [];
   const available = registry.byCharacter[selected.characterId].filter(row => row.available);
   const fallback = available.find(row => row.isDefault) || available[0];
-  return [...new Set([selected.src, fallback?.src].filter(Boolean))];
+  const original = selected.variantOf && Object.hasOwn(registry.byId, selected.variantOf)
+    ? registry.byId[selected.variantOf] : null;
+  return [...new Set([selected.src, original?.available ? original.src : null, fallback?.src].filter(Boolean))];
 }
 
 export function getDisciplineSpriteLayout(src, registry = DISCIPLINE_SPRITE_REGISTRY) {
