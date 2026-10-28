@@ -2,14 +2,14 @@
   "version": 1,
   "date": "2026-10-28",
   "counts": {
-    "sprites": 368,
-    "characters": 37,
-    "referenceBased": 77,
+    "sprites": 369,
+    "characters": 38,
+    "referenceBased": 78,
     "adapted": 291,
     "byCategory": {
       "sport": 13,
       "civilian": 44,
-      "military": 62,
+      "military": 63,
       "swimwear": 90,
       "uniform": 58,
       "other": 5,
@@ -47,7 +47,10 @@
     },
     "preservedBeforeV8": 367,
     "v8Additions": 1,
-    "v8NewCharacters": 1
+    "v8NewCharacters": 1,
+    "preservedBeforeV9": 368,
+    "v9Additions": 1,
+    "v9NewCharacters": 1
   },
   "pendingCharacters": [
     {
@@ -63,20 +66,25 @@
       "ova-guest-yellow-dress",
       "ova-officer-bob",
       "ova-officer-swept-hair",
-      "masked-soldier-red-visor"
+      "masked-soldier-red-visor",
+      "hooded-guard-red-trim"
     ],
     "swimwear": [
       "maiko",
-      "masked-soldier-red-visor"
+      "masked-soldier-red-visor",
+      "hooded-guard-red-trim"
     ],
     "maid": [
-      "masked-soldier-red-visor"
+      "masked-soldier-red-visor",
+      "hooded-guard-red-trim"
     ],
     "nurse": [
-      "masked-soldier-red-visor"
+      "masked-soldier-red-visor",
+      "hooded-guard-red-trim"
     ],
     "latex": [
-      "masked-soldier-red-visor"
+      "masked-soldier-red-visor",
+      "hooded-guard-red-trim"
     ]
   },
   "assets": [
@@ -33389,9 +33397,150 @@
         "facing": "right",
         "animated": false
       }
+    },
+    {
+      "id": "hooded-guard-red-trim:black-suit-reference-v9",
+      "characterId": "hooded-guard-red-trim",
+      "costumeId": "black-suit-reference-v9",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/hooded-guard-red-trim--black-suit-reference-v9.png",
+      "category": "military",
+      "provenance": "reference",
+      "revision": 9,
+      "sourceMedium": "user_reference",
+      "assetRole": "enemy",
+      "roleLabel": {
+        "fr": "Ennemi",
+        "en": "Enemy"
+      },
+      "newCharacter": true,
+      "newOutfit": true,
+      "identitySourceId": "v9-hooded-guard-full-body",
+      "styleSourceId": "security-guard-ova:ova-security-reference-v4",
+      "canonicalCostumeCertified": false,
+      "canonicalIdentityCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-38aa5ffd-fe15-4a49-a871-e384b6da4660",
+        "generationIdSource": "Exact generated output filename returned by the tool; no separate server generation ID was returned.",
+        "prompt": "Use case: style-transfer.\nAsset type: one static full-body enemy sprite for the existing Multiverse / Discipline character catalogue, with genuinely transparent RGBA background.\nPrimary request: faithfully redraw the single adult male hooded henchman shown in reference image 1 as a detailed pixel-art game sprite, using reference image 2 to resolve the hood's red trim and exposed facial features.\nInput roles: Image 1 is the primary authority for the WHOLE character, individual proportions, plain black clothing, stance, gloves and narrow footwear. Image 2 is an enlarged costume/face reference of the same type of hooded henchman; draw only one person, using its details for the hood openings and red edging. Image 3 is ONLY the game's established pixel-art rendering technique and square transparent framing. Do not copy image 3's red hair, sunglasses, white shirt, weapon, belt, muscular proportions, pose or shoes.\nIdentity and silhouette: clearly adult man, lean-to-average athletic build exactly guided by image 1, relatively narrow torso and hips, modest shoulders, long slim legs, natural neck and small normal head. Preserve the slim silhouette and head-to-body relationship; do not widen the torso, give a bodybuilder chest, shorten the legs or make chibi proportions.\nCostume: plain fitted matte black / charcoal long-sleeve clothing, closed black neck, a few natural horizontal cloth folds at the waist, matching fitted black trousers, black fitted gloves with empty softly closed fists down at his sides. Close-fitting black hood completely covers scalp, ears, cheeks and neck; no visible hair. Match the distinctive narrow red vertical stripe along the center front of the hood over the forehead and nose bridge, red piping around the two oval eye openings, small central exposed nose opening, and red border around the larger rounded mouth-and-lower-face opening. Eyes, natural light skin at the eye openings and nose, lips and part of the lower face remain visible, as in image 2. Keep the mask opening shapes recognizably the same; no solid faceplate and no eye visor. Plain narrow black ankle footwear with smooth close-fitting uppers and restrained flat soles as seen in image 1, no invented laces, chunky combat soles, buckles or raised armor.\nPose and framing: same calm standing readiness as image 1, body and head in a modest three-quarter turn toward the viewer's right, arms lowered, both gloved fists visible and feet apart just enough for a legible idle silhouette. One complete person only, top of hood to both soles entirely inside the canvas. Preserve a comfortable transparent margin above the hood and below both feet, with the character roughly 90–94 percent of canvas height.\nRendering: detailed crisp 2D anime pixel art matching image 3's line and shading treatment; dark outlines, coherent tiny pixel clusters, clean stepped charcoal highlights and shadows that distinguish the black limbs from the torso. Restrained matte cloth shading, no glossy latex treatment. Neutral facial expression, not a caricature.\nCanvas: square, preferably native 1254 by 1254 pixels if available; centered full body, genuine alpha transparency. No scenery, floor, cast shadow, text, captions, watermark, border, checkerboard painted into the image, duplicate characters or sprite sheet. No weapons, armor, belts, insignia, harnesses, extra accessories or costume redesign.",
+        "promptStatus": "recorded-verbatim",
+        "transparentBackgroundRequested": true,
+        "pixelEditsAfterGeneration": false
+      },
+      "image": {
+        "sha256": "eef140ea6da7b404b80a9937ea2a55913b6298c690dbd76d9adf27c0b34a98a5",
+        "bytes": 397634,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          25,
+          31,
+          1214,
+          1234
+        ],
+        "visibleBoundsAlphaGt8": [
+          419,
+          37,
+          868,
+          1227
+        ],
+        "opaqueBoundsAlphaGe128": [
+          420,
+          38,
+          867,
+          1227
+        ],
+        "visibleMargins": [
+          419,
+          37,
+          386,
+          27
+        ],
+        "transparentPixelCount": 1290075
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "Single adult hooded man with a slim standing silhouette",
+          "Black outfit, lowered gloved fists and plain black footwear compared with full-body view",
+          "Red center stripe, red piping and separate facial openings compared with close-up",
+          "Head, hands and both feet within canvas",
+          "Native RGBA output preserved without pixel edits"
+        ],
+        "reviewDocument": "enemy-v9/visual-review.json"
+      },
+      "proportionReview": {
+        "reviewed": true,
+        "method": "Full-body and close-up user frames compared with the generated sprite; existing guard used only for pixel-art style.",
+        "observations": [
+          "Full-body reference guides the silhouette, lowered arms and footwear",
+          "Close-up clarifies the hood trim and visible facial features"
+        ],
+        "limitations": [
+          "Source perspective is translated into a catalogue three-quarter view.",
+          "Fold placement, face details and exact proportions are interpreted in pixel art.",
+          "No official individual name, faction, episode or precise source-work attribution was established."
+        ],
+        "fullBodyOneToOneCertified": false
+      },
+      "referenceEvidence": [
+        {
+          "id": "v9-hooded-guard-full-body",
+          "type": "user_upload",
+          "filename": "image(20261028-175610).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v9/references/hooded-guard-full-body.png",
+          "sourceMedium": "user_reference",
+          "role": "Primary full-body identity, slim silhouette, standing pose, black outfit, gloves and footwear",
+          "sha256": "2ff03de89ac76c8861ac87a6df7494417f7bb757534a50d88ea1123690149710",
+          "dimensions": [
+            580,
+            1539
+          ],
+          "directGenerationInput": true
+        },
+        {
+          "id": "v9-hooded-guard-mask-detail",
+          "type": "user_upload",
+          "filename": "image(20261028-175621).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v9/references/hooded-guard-mask-detail.png",
+          "sourceMedium": "user_reference",
+          "role": "Close-up authority for red hood piping, eye openings, exposed nose and mouth opening",
+          "sha256": "5d74ffde6faf9c1afb0dd9f3ca20b271013f4e0d1860ab9d7cf43ab4c0f559d6",
+          "dimensions": [
+            2048,
+            1550
+          ],
+          "directGenerationInput": true
+        },
+        {
+          "id": "v9-existing-guard-style",
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--ova-security-reference-v4.png",
+          "role": "Pixel-art technique and framing only; not identity, clothing, anatomy or equipment authority",
+          "sha256": "179c220e953eb60a6e29afd3b36a913734c11b9b58b8e894e860277d4f40be61",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "directGenerationInput": true
+        }
+      ],
+      "fidelityNote": "Ennemi graphique d’après les deux captures fournies : silhouette masculine élancée, tenue noire intégrale, gants noirs et cagoule à bande centrale et liserés rouges. Les yeux, le nez et la bouche restent visibles dans leurs ouvertures. Nom descriptif ; identité, faction et œuvre précise non confirmées. Image statique du catalogue. La vue en pied guide la silhouette et les chaussures ; le gros plan guide les ouvertures et liserés de la cagoule. La perspective, les plis, les traits et les proportions sont transposés en pixel art, sans certification intégrale 1:1. Aucun accessoire ou armement ajouté.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
     }
   ],
-  "revision": 8,
+  "revision": 9,
   "preservedBaselineCommit": "f10098f69523e0c35e6f81788dfdfc1a8b897cd8",
   "preservedV3BaselineCommit": "58ca23d7bc226330bb5082cc1ba49aeadafc5de6",
   "pendingOutfitReferences": [
@@ -33516,6 +33665,12 @@
       "label": "Soldate masquée — visière rouge",
       "status": "descriptive-identity-only",
       "reason": "Personnage de la capture fournie par l’utilisateur ; aucun nom propre, faction ni source précise confirmé."
+    },
+    {
+      "characterId": "hooded-guard-red-trim",
+      "label": "Garde cagoulé — liserés rouges",
+      "status": "descriptive-identity-only",
+      "reason": "Silhouette et costume documentés par deux captures utilisateur ; aucun nom propre, faction ou épisode confirmé."
     }
   ],
   "researchV4": {
@@ -37257,6 +37412,20 @@
     "validation": "enemy-v8/validation.json",
     "addedAssetIds": [
       "masked-soldier-red-visor:urban-camouflage-reference-v8"
+    ],
+    "historicalAudit": "canonical-audit-v7/README.md",
+    "historicalAuditAssetCount": 367,
+    "existingAssetsPreserved": true,
+    "runtimeEnemyRegistered": false,
+    "animated": false
+  },
+  "preservedV9BaselineCommit": "382fa8cd4d3b1bdad5bc7181b56d1f789f85267b",
+  "extensionV9": {
+    "scope": "One hooded male enemy artwork based on two supplied references; static catalogue asset only",
+    "report": "enemy-v9/README.md",
+    "validation": "enemy-v9/validation.json",
+    "addedAssetIds": [
+      "hooded-guard-red-trim:black-suit-reference-v9"
     ],
     "historicalAudit": "canonical-audit-v7/README.md",
     "historicalAuditAssetCount": 367,

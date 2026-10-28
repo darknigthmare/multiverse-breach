@@ -42,7 +42,7 @@ body[data-background=light]{--tile:#e2e7ed}body[data-background=checker] .stage{
 <label>Tenue<select id="category"><option value="">Toutes les tenues</option><option value="maid">Domestique / maid</option><option value="uniform">Uniforme</option><option value="swimwear">Maillots de bain</option><option value="nurse">Tenue infirmière</option><option value="military">Bataille / militaire</option><option value="latex">Toutes les tenues à effet latex</option><option value="latex-red">Combinaisons intégrales rouges</option><option value="swim-gloss">Maillot brillant · effet latex</option><option value="civilian">Civil</option><option value="aquatic-legacy">Tenues aquatiques antérieures</option><option value="sport">Sport</option><option value="other">Autres</option></select></label>
 <label>Provenance<select id="provenance"><option value="">Toutes les provenances</option><option value="reference">Basé sur une référence</option><option value="adapted">Adaptation identifiée</option></select></label>
 <label>Source<select id="source-medium"><option value="">Toutes les sources</option><option value="user_reference">Image fournie</option><option value="anime_ova">Tenues de l’animé</option><option value="visual_novel_game">Tenues du jeu</option><option value="game_adaptation">Créations pour le jeu</option></select></label>
-<label>Version<select id="version"><option value="">Toutes les versions</option><option value="v8-enemy">Ennemie masquée · v8</option><option value="v6">Nouvelles tenues · v6</option><option value="v5">Études monochromes · v5</option><option value="v4">Variantes · v4</option><option value="revised">Versions corrigées</option><option value="new-outfit">Nouvelles tenues</option><option value="original">Versions précédentes</option></select></label>
+<label>Version<select id="version"><option value="">Toutes les versions</option><option value="v9-enemy">Ennemi cagoulé · v9</option><option value="v8-enemy">Ennemie masquée · v8</option><option value="v6">Nouvelles tenues · v6</option><option value="v5">Études monochromes · v5</option><option value="v4">Variantes · v4</option><option value="revised">Versions corrigées</option><option value="new-outfit">Nouvelles tenues</option><option value="original">Versions précédentes</option></select></label>
 <label>Taille d’aperçu <output id="size-value">240 px</output><input id="size" type="range" min="72" max="320" step="8" value="240"></label>
 <label>Fond de contrôle<select id="background"><option value="dark">Sombre</option><option value="light">Clair</option><option value="checker">Damier</option></select></label>
 <button id="reset" type="button">Tout afficher</button>
@@ -152,6 +152,7 @@ function render(){
 const query=normalize($('search').value.trim());
 const version=$('version').value;
 const matchesVersion=entry=>{
+if(version==='v9-enemy')return entry.revision===9&&entry.assetRole==='enemy';
 if(version==='v8-enemy')return entry.revision===8&&entry.assetRole==='enemy';
 if(version==='v6')return entry.revision===6;
 if(version==='v5')return entry.revision===5;
@@ -174,7 +175,8 @@ if(isCorrection(entry))body.append(element('span','Version corrigée','badge rev
 if(entry.paletteStatus==='source-monochrome')body.append(element('span','Étude monochrome · palette à confirmer','badge palette'));
 if(entry.newOutfit){
 const medium=sourceMediumOf(entry);
-const badge=entry.assetRole==='enemy'?(medium==='user_reference'?'Ennemie · référence fournie':'Ennemie'):entry.newCharacter?(medium==='anime_ova'?'Personnage anonyme OVA':'Nouveau personnage'):medium==='anime_ova'?'Nouvelle tenue OVA':'Nouvelle tenue';
+const enemyLabel=entry.roleLabel?.fr||'Ennemie';
+const badge=entry.assetRole==='enemy'?(medium==='user_reference'?enemyLabel+' · référence fournie':enemyLabel):entry.newCharacter?(medium==='anime_ova'?'Personnage anonyme OVA':'Nouveau personnage'):medium==='anime_ova'?'Nouvelle tenue OVA':'Nouvelle tenue';
 body.append(element('span',badge,'badge new-outfit'));
 }
 else if(sourceNames[sourceMediumOf(entry)])body.append(element('span',sourceNames[sourceMediumOf(entry)],'badge new-outfit'));

@@ -1,14 +1,20 @@
 # Sprites et tenues Discipline
 
-**368 PNG individuels pour 37 identités graphiques.** L’extension v8 ajoute une **soldate masquée à visière rouge** d’après l’image fournie par l’utilisateur. Les **367 sprites précédents**, leurs objets de catalogue et leurs entrées de manifeste sont conservés. La reprise v6 avait ajouté **170 PNG** aux **197 images** publiées à `f9a9c1d`.
+**369 PNG individuels pour 38 identités graphiques.** L’extension v9 ajoute un **garde cagoulé noir à liserés rouges** d’après deux captures fournies. Les **368 sprites précédents**, dont la soldate masquée v8, leurs objets de catalogue et leurs entrées de manifeste sont conservés. La reprise v6 avait ajouté **170 PNG** aux **197 images** publiées à `f9a9c1d`.
+
+## Garde cagoulé — ajout v9
+
+Le [garde cagoulé à liserés rouges](enemy-v9/README.md) est livré en PNG natif **1254 × 1254**, transparent, en pied, les poings abaissés et légèrement tourné vers la droite. La vue entière guide la silhouette, la tenue et les chaussures ; le gros plan guide la bande rouge et les ouvertures de la cagoule. La galerie propose **Ennemi cagoulé · v9**, avec les deux références consultables depuis la carte.
+
+Le catalogue contient **78 rendus fondés sur références et 291 adaptations**. La couverture actuelle inclut les deux nouvelles identités militaires : bataille **38/38**, maid **36/38**, scolaire **31/38**, maillot **35/38**, soins **36/38**, latex **36/38**. Le garde est une entrée graphique statique ; son nom reste descriptif. Les proportions sont un peu plus athlétiques que la source, et les plis, liserés et chaussures sont interprétés. Aucune fidélité intégrale 1:1 n’est certifiée.
 
 ## Ennemie masquée — ajout v8
 
-La nouvelle [soldate masquée](enemy-v8/README.md) est livrée en PNG natif **1254 × 1254**, transparent, en pied et légèrement tournée vers la droite. La galerie propose le filtre **Ennemie masquée · v8**, la source **Image fournie** et un lien vers la capture d’origine. Le catalogue contient désormais **77 rendus fondés sur références et 291 adaptations**.
+La [soldate masquée](enemy-v8/README.md) est livrée en PNG natif **1254 × 1254**, transparent, en pied et légèrement tournée vers la droite. La galerie propose le filtre **Ennemie masquée · v8**, la source **Image fournie** et un lien vers la capture d’origine. Cet ajout avait porté le catalogue à **368 sprites / 37 identités**, dont **77 rendus fondés sur références et 291 adaptations**.
 
 La visière rouge, le masque blanc, les cheveux noirs, le haut argenté, les gants sombres, la ceinture, le pantalon camouflage et les bottes reprennent la référence. Le nom est descriptif ; l’identité et l’œuvre précise restent à confirmer. Les pieds, plis et certaines proportions sont interprétés. C’est un sprite statique du catalogue graphique, sans animation ni apparition en combat ajoutée.
 
-Les tableaux et rapports **v6/v7 ci-dessous restent les états historiques de 36 identités / 367 images**. La couverture actuelle de la galerie inclut la nouvelle identité : bataille **37/37**, maid **36/37**, scolaire **31/37**, maillot **35/37**, soins **36/37**, latex **36/37**. Les autres familles n’ont pas été demandées pour cette ennemie.
+Les tableaux et rapports **v6/v7 ci-dessous restent les états historiques de 36 identités / 367 images** ; les rapports v8 décrivent l’étape de **37 identités / 368 images**. La couverture actuelle est indiquée dans l’ajout v9 ci-dessus. Les autres familles de costumes n’ont pas été demandées pour ces deux ennemis.
 
 ## Audit des costumes originaux et de la fidélité
 
@@ -114,6 +120,8 @@ Le journal contient 74 demandes précises sans sortie acceptée. Lorsqu’une au
 
 ## Contrôles et documents
 
+- [Ajout v9 : garde cagoulé, deux références et limites](enemy-v9/README.md)
+- [Validation de l’ajout v9](enemy-v9/validation.json)
 - [Ajout v8 : soldate masquée, référence et limites](enemy-v8/README.md)
 - [Validation de l’ajout v8](enemy-v8/validation.json)
 - [Revue de reprise v6](costumes-v6-review.md)

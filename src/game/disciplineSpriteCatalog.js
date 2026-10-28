@@ -8532,5 +8532,53 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
         "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v8/references/masked-soldier-user-reference.png"
       }
     ]
+  },
+  {
+    "characterId": "hooded-guard-red-trim",
+    "characterName": "Garde cagoulé — liserés rouges",
+    "costumeId": "black-suit-reference-v9",
+    "label": {
+      "fr": "Combinaison noire et cagoule — références fournies",
+      "en": "Black outfit and red-trimmed hood — supplied references"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/hooded-guard-red-trim--black-suit-reference-v9.png",
+    "provenance": "reference",
+    "category": "military",
+    "isDefault": true,
+    "available": true,
+    "revision": 9,
+    "sourceMedium": "user_reference",
+    "assetRole": "enemy",
+    "roleLabel": {
+      "fr": "Ennemi",
+      "en": "Enemy"
+    },
+    "newCharacter": true,
+    "newOutfit": true,
+    "identitySourceId": "v9-hooded-guard-full-body",
+    "styleSourceId": "discipline-sprite-v1:security-guard-ova:ova-security-reference-v4",
+    "sourceEvidenceIds": [
+      "v9-hooded-guard-full-body",
+      "v9-hooded-guard-mask-detail"
+    ],
+    "literalOneToOneCertified": false,
+    "notes": {
+      "fr": "Ennemi graphique d’après les deux captures fournies : silhouette masculine élancée, tenue noire intégrale, gants noirs et cagoule à bande centrale et liserés rouges. Les yeux, le nez et la bouche restent visibles dans leurs ouvertures. Nom descriptif ; identité, faction et œuvre précise non confirmées. Image statique du catalogue.",
+      "en": "Enemy artwork based on both supplied frames: slim adult male silhouette, all-black clothing and gloves, and a hood with a red center stripe and red-edged openings. Eyes, nose and mouth remain visible. Descriptive name; identity, faction and exact source work remain unconfirmed. Static catalogue artwork."
+    },
+    "proportionNotes": {
+      "fr": "La vue en pied guide la silhouette et les chaussures ; le gros plan guide les ouvertures et liserés de la cagoule. La perspective, les plis, les traits et les proportions sont transposés en pixel art, sans certification intégrale 1:1. Aucun accessoire ou armement ajouté.",
+      "en": "The full-body view guides silhouette and footwear; the close-up guides hood openings and red trim. Perspective, folds, facial details and proportions are translated into pixel art, without complete 1:1 certification. No accessories or weapons added."
+    },
+    "referenceLinks": [
+      {
+        "label": "Capture fournie — silhouette en pied",
+        "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v9/references/hooded-guard-full-body.png"
+      },
+      {
+        "label": "Capture fournie — détails de la cagoule",
+        "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v9/references/hooded-guard-mask-detail.png"
+      }
+    ]
   }
 ]);

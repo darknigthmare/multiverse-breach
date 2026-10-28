@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-28",
+  "baselineCommit": "382fa8cd4d3b1bdad5bc7181b56d1f789f85267b",
+  "result": "passed",
+  "addedAssetId": "hooded-guard-red-trim:black-suit-reference-v9",
+  "counts": {
+    "sprites": 369,
+    "characters": 38,
+    "referenceBased": 78,
+    "adapted": 291
+  },
+  "preservation": {
+    "previousCatalogueEntriesUnchanged": 368,
+    "previousManifestAssetsUnchanged": 368,
+    "previousPngSha256Verified": 368,
+    "canonicalAuditV7Unchanged": true,
+    "previousEnemyV8RecordsUnchanged": true,
+    "nativeOutputCopiedWithoutPixelEdits": true,
+    "userReferencesCopiedByteForByte": 2,
+    "promptMatchesGenerationVerbatim": true
+  },
+  "png": {
+    "sha256": "eef140ea6da7b404b80a9937ea2a55913b6298c690dbd76d9adf27c0b34a98a5",
+    "bytes": 397634,
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "rawAlphaBounds": [
+      25,
+      31,
+      1214,
+      1234
+    ],
+    "visibleBoundsAlphaGt8": [
+      419,
+      37,
+      868,
+      1227
+    ],
+    "opaqueBoundsAlphaGe128": [
+      420,
+      38,
+      867,
+      1227
+    ],
+    "visibleMargins": [
+      419,
+      37,
+      386,
+      27
+    ],
+    "transparentPixelCount": 1290075
+  },
+  "tests": {
+    "command": "npm run test:discipline",
+    "exitCode": 0,
+    "testFilesPassed": [
+      "scripts/disciplineSprites.test.mjs",
+      "scripts/wardrobe.test.mjs"
+    ],
+    "testFilesFailed": 0
+  },
+  "build": {
+    "command": "npx --no-install vite build",
+    "exitCode": 0,
+    "modulesTransformed": 313,
+    "nodeVersion": "v24.22.1",
+    "viteVersion": "8.1.0",
+    "fullPrebuildChainRun": false,
+    "checkoutScope": "Source and relevant Discipline assets, plus the existing sprite-availability.json import; not a complete deployment-asset audit.",
+    "warnings": [
+      "Existing bundles larger than 1000 kB",
+      "npm http-proxy configuration warning",
+      "Local Node 24 differs from the repository Node 22 engine declaration"
+    ]
+  },
+  "browser": {
+    "report": "browser-qa.json",
+    "checksPassed": 15,
+    "javascriptErrors": [],
+    "httpResourceErrors": [],
+    "desktopScreenshotReviewed": true,
+    "mobile390pxScreenshotReviewed": true,
+    "horizontalOverflowAt390px": false
+  },
+  "limits": [
+    "Static artwork catalogue delivery, not an animated enemy or combat integration",
+    "Canonical identity and full-body 1:1 fidelity not certified",
+    "Local build does not replace the full prebuild chain or remote CI"
+  ]
+}
