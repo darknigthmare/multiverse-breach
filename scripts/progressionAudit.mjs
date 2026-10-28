@@ -20,6 +20,7 @@ import { BOOSTER_ART_UNIVERSES } from '../src/game/portalBoosterCatalog.js';
 import { SPECIAL_EVENTS, getSpecialEventRewardById } from '../src/game/specialEvents.js';
 import { getGridFacingBonus } from '../src/game/tacticalFacing.js';
 import { findBattlePickupSource, normalizeBattlePickupDefinition } from '../src/game/battlePickupSemantics.js';
+import { getExtinctionViewmodel, getExtinctionHandFrame } from '../src/game/extinctionContent.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const fail = (message) => {
@@ -813,9 +814,31 @@ dedicatedOcChapterKeyArts.forEach(assetRoute => {
 assert(spriteAssetsSource.includes('normalizeSpriteSrc') && spriteAssetsSource.includes('new URL(value).pathname'), 'Sprite layout lookup must normalize absolute browser URLs before matching generated sheet paths.');
 assert(rendererSource.includes('getSpriteSheetLayout') && rendererSource.includes('getSpriteFrameForLayout'), 'Renderer must crop generated sprites through per-sheet layouts.');
 assert(rendererSource.includes('sourceY') && rendererSource.includes('sourceH') && spriteAssetsSource.includes('trimByState'), 'Renderer must support per-sheet trim data to avoid adjacent OpenAI sprite bleed.');
-assert(hubSource.includes('sheet.naturalHeight / 10') && hubSource.includes('fpsProjectileRef'), 'FPS Mirelle hands must be cropped as 4x10 and use a dedicated projectile overlay.');
-assert(hubSource.includes('reloadTrimTop') && hubSource.includes('reloadTrimBottom'), 'FPS reload frames must crop away adjacent row bleed.');
-assert(hubSource.includes('reloadPulse') && hubSource.includes('state.reloadPulse > 0 && !state.muzzle ? 6 : 0') && hubSource.includes('state.muzzle = 36') && hubSource.includes('fpsProjectileRef.current') && hubSource.includes('410, 146'), 'FPS firing must keep idle hands framed and draw projectile frames as a separate overlay.');
+// FPS sheets are selected per character and their frame geometry is resolved by
+// extinctionContent. Check that contract rather than the former inline constants.
+const mirelleViewmodel = getExtinctionViewmodel({ id: 'arca_mirelle' });
+const mirelleIdleFrame = getExtinctionHandFrame(mirelleViewmodel, {});
+const mirelleReloadFrame = getExtinctionHandFrame(mirelleViewmodel, { reloadPulse: 3 });
+const mirelleFiringFrame = getExtinctionHandFrame(mirelleViewmodel, { reloadPulse: 3, muzzle: 3 });
+assert(
+  mirelleIdleFrame?.columns === 4 && mirelleIdleFrame.rows === 10 && mirelleIdleFrame.row === 0
+    && hubSource.includes('getExtinctionHandFrame(viewmodel, state)')
+    && hubSource.includes('sheet.naturalWidth / handFrame.columns')
+    && hubSource.includes('sheet.naturalHeight / handFrame.rows'),
+  'FPS Mirelle hands must use the bound 4x10 sheet and the resolved frame geometry.'
+);
+assert(
+  mirelleReloadFrame?.row === 6 && mirelleReloadFrame.trim.top === 40 && mirelleReloadFrame.trim.bottom === 6
+    && hubSource.includes('handFrame.trim.top') && hubSource.includes('handFrame.trim.bottom'),
+  'FPS Mirelle reload frames must use row 6 and crop away adjacent row bleed.'
+);
+assert(
+  mirelleFiringFrame?.phase === 'attack' && mirelleFiringFrame.row === 3
+    && mirelleViewmodel.projectile.endsWith('/arca-mirelle-fps-projectile.png')
+    && hubSource.includes('state.muzzle = 36') && hubSource.includes('fpsProjectileRef.current')
+    && hubSource.includes('ctx.drawImage(projectileSheet') && hubSource.includes('410, 146'),
+  'FPS firing must take precedence over reload and draw the dedicated projectile as a separate overlay.'
+);
 assert(raceEngineSource.includes('drawRearKartActionOverlay') && raceEngineSource.includes('KART_ITEM_FRAMES') && raceEngineSource.includes('this.images.kartItems') && raceEngineSource.includes('this.images.hudIcons'), 'Race mode must render Mirelle kart actions, item sheet, and HUD icon sheet in playable views.');
 assert(raceModeSource.includes('race-garage-card') && raceModeSource.includes('RACE_ASSETS.hudGarage') && raceModeSource.includes('RACE_ASSETS.kartItems'), 'Race tab must expose Mirelle garage and item sheets outside admin preview.');
 assert(raceEngineSource.includes('KART_TRACK_LAYOUTS') && raceEngineSource.includes('nexus_suture_eight') && raceEngineSource.includes('portal_hairpin_ritual') && raceEngineSource.includes('surfaceZones'), 'Race mode must provide varied Super-Kart-style Nexus track layouts.');
