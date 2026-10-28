@@ -39,7 +39,7 @@ body[data-background=light]{--tile:#e2e7ed}body[data-background=checker] .stage{
 <main>
 <div class="toolbar">
 <label>Personnage<input id="search" type="search" placeholder="Nom du personnage…" autocomplete="off"></label>
-<label>Tenue<select id="category"><option value="">Toutes les tenues</option><option value="maid">Domestique / maid</option><option value="uniform">Uniforme</option><option value="swimwear">Maillots de bain</option><option value="nurse">Tenue infirmière</option><option value="military">Bataille / militaire</option><option value="latex">Combinaison en latex</option><option value="civilian">Civil</option><option value="aquatic-legacy">Tenues aquatiques antérieures</option><option value="sport">Sport</option><option value="other">Autres</option></select></label>
+<label>Tenue<select id="category"><option value="">Toutes les tenues</option><option value="maid">Domestique / maid</option><option value="uniform">Uniforme</option><option value="swimwear">Maillots de bain</option><option value="nurse">Tenue infirmière</option><option value="military">Bataille / militaire</option><option value="latex">Toutes les tenues à effet latex</option><option value="latex-red">Combinaisons intégrales rouges</option><option value="swim-gloss">Maillot brillant · effet latex</option><option value="civilian">Civil</option><option value="aquatic-legacy">Tenues aquatiques antérieures</option><option value="sport">Sport</option><option value="other">Autres</option></select></label>
 <label>Provenance<select id="provenance"><option value="">Toutes les provenances</option><option value="reference">Basé sur une référence</option><option value="adapted">Adaptation identifiée</option></select></label>
 <label>Source<select id="source-medium"><option value="">Toutes les sources</option><option value="anime_ova">Tenues de l’animé</option><option value="visual_novel_game">Tenues du jeu</option><option value="game_adaptation">Créations pour le jeu</option></select></label>
 <label>Version<select id="version"><option value="">Toutes les versions</option><option value="v6">Nouvelles tenues · v6</option><option value="v5">Études monochromes · v5</option><option value="v4">Variantes · v4</option><option value="revised">Versions corrigées</option><option value="new-outfit">Nouvelles tenues</option><option value="original">Versions précédentes</option></select></label>
@@ -50,6 +50,7 @@ body[data-background=light]{--tile:#e2e7ed}body[data-background=checker] .stage{
 <details class="coverage" id="coverage">
 <summary>Couverture des six familles de tenues</summary>
 <p>Cette vue porte sur le catalogue complet et ne dépend pas des filtres. « Réf. » signifie que le costume s’appuie sur une référence ; « adapt. » désigne une création adaptée. Une adaptation d’uniforme ne confirme pas la tenue scolaire officielle. Les anciens vêtements aquatiques sont conservés séparément des maillots de bain.</p>
+<p id="coverage-red">Chargement des variantes rouges…</p>
 <div class="coverage-scroll" tabindex="0" role="region" aria-label="Tableau de couverture des tenues, défilement horizontal">
 <table><caption id="coverage-caption">Chargement de la couverture…</caption><thead><tr><th scope="col">Personnage</th><th scope="col">Domestique / maid</th><th scope="col">Uniforme scolaire</th><th scope="col">Maillot de bain</th><th scope="col">Infirmier / infirmière</th><th scope="col">Bataille</th><th scope="col">Latex</th></tr></thead><tbody id="coverage-body"></tbody></table>
 </div>
@@ -85,17 +86,22 @@ return source&&source.characterId===entry.characterId&&entryId(source)!==entryId
 }
 const legacyMaidId='discipline-sprite-v1:ova-attendant-brown-bun:ova-service-reference-v4';
 const professionalUniformCharacters=new Set(['ova-attendant-brown-bun','ova-officer-bob','ova-officer-swept-hair']);
-const isSwimsuit=entry=>entry.category==='swimwear'&&entry.revision>=6;
+const isSwimsuit=entry=>entry.category==='swimwear'&&entry.actualSwimsuit===true;
 const isLegacyAquatic=entry=>entry.category==='swimwear'&&!isSwimsuit(entry);
 function matchesCategory(entry,category){
 if(!category)return true;
 if(category==='swimwear')return isSwimsuit(entry);
 if(category==='aquatic-legacy')return isLegacyAquatic(entry);
+if(category==='latex-red')return entry.category==='latex'&&entry.requestedRedLatexVariant===true;
+if(category==='swim-gloss')return entry.requestedSwimLatexStyle===true;
+if(category==='latex')return entry.category==='latex'||entry.requestedSwimLatexStyle===true;
 if(category==='maid')return entry.category==='maid'||entryId(entry)===legacyMaidId;
 if(category==='military')return entry.category==='military'||(['ova-officer-bob','ova-officer-swept-hair'].includes(entry.characterId)&&entry.category==='uniform');
 return entry.category===category;
 }
 function categoryName(entry){
+if(entry.requestedSwimLatexStyle===true)return 'Maillot brillant · effet latex';
+if(entry.category==='latex'&&entry.requestedRedLatexVariant===true)return 'Combinaison en latex rouge';
 if(isLegacyAquatic(entry))return 'Tenue aquatique antérieure';
 if(isSwimsuit(entry))return 'Maillot de bain · v'+entry.revision;
 return categoryNames[entry.category]||entry.category;
@@ -123,6 +129,8 @@ rows.push(tr);
 }
 $('coverage-body').replaceChildren(...rows);
 $('coverage-caption').textContent=characters.size+' personnages · '+covered+' / '+characters.size*families.length+' combinaisons personnage / famille livrées. Les variantes multiples restent regroupées dans une même case.';
+const redCount=new Set(entries.filter(entry=>entry.available&&matchesCategory(entry,'swim-gloss')).map(entry=>entry.characterId)).size;
+$('coverage-red').textContent='Style maillot brillant : '+redCount+' / '+characters.size+' personnages. Les combinaisons intégrales sont conservées comme autres variantes. Les études monochromes gardent leurs niveaux de gris.';
 }
 function openComparison(revision){
 const original=comparisonOrigin(revision);

@@ -1,15 +1,16 @@
 {
-  "reviewedAtUtc": "2026-10-28T13:40:07.673459+00:00",
+  "reviewedAtUtc": "2026-10-28T14:52:03.939203+00:00",
   "scope": {
     "publishedBaselinePreserved": 197,
-    "catalogueTotal": 293,
-    "newV6SpritesReviewed": 96,
+    "catalogueTotal": 363,
+    "newV6SpritesReviewed": 166,
     "initialAcceptedRecentBatch": 57,
     "earlierAcceptedRecoveryBatch": 30,
     "additionalReviewedRecovery": 6,
     "latestGeneratedNurses": 3,
-    "catalogueSha256": "55cd8a27be5cb1cde18701f3dc393b4aad906d08585233b2832a849f3b6018df",
-    "archiveCandidatesExcluded": 4
+    "catalogueSha256": "3c10a01d88651aa1f7fbfb9f3fa185941b42a65265b37d56fc3a6a52beaa76f4",
+    "archiveCandidatesExcluded": 4,
+    "continuationSpritesReviewed": 70
   },
   "method": {
     "contactSheets": "Eight temporary contact sheets, each showing up to12 side-by-side source/output pairs, 93 outputs total. No cropping of contact thumbnails; native aspect ratio preserved.",
@@ -31,7 +32,8 @@
     ],
     "deliverablePixelsModified": false,
     "thumbnailCompositingOnlyForQA": true,
-    "duplicateCheck": "SHA256 comparison of all293 published+new catalogue assets, reporting any duplicate involving revision6."
+    "duplicateCheck": "SHA256 comparison of all 363 catalogue assets; no duplicate group involving a continuation output.",
+    "continuation": "Each accepted continuation output was individually inspected against its actual neutral identity reference by the generating reviewer. Recorded reviews and native file hashes are included below."
   },
   "result": {
     "passed": true,
@@ -47,7 +49,8 @@
     "maid": "Covered service uniforms, apron dresses or shirt/vest/trousers with apron; neutral presentation.",
     "nurse": "Professional opaque white medical dresses or tunic/trousers with closed footwear; all caps and shoes remain visible in final versions.",
     "latex": "Fully covered black/gold action suits, gloves and boots, neutral pose and closed neckline; no bondage or sexual act or erotic staging observed.",
-    "military": "Functional jackets, trousers, protective pieces, complete figures. Existing source identities remain recognizable."
+    "military": "Functional jackets, trousers, protective pieces, complete figures. Existing source identities remain recognizable.",
+    "glossSwimwear": "Opaque ordinary athletic swimwear with a glossy finish, neutral standing pose, complete figure and bare feet. Original character identity and apparent age retained; not a reproduction of bondage clothing."
   },
   "nonBlockingObservations": [
     {
@@ -4596,5 +4599,1415 @@
         "edgeTopMaximumAlpha": 0
       }
     }
-  ]
+  ],
+  "checkpointReview": {
+    "commit": "cb5a772bec13903a90d95f77f32ecb99d1355116",
+    "spritesReviewed": 96,
+    "reportSha256": "9d27aa8c8ac387f868098fc478a70404a5a086b21066eeb24757d3116b7992ce",
+    "note": "The original checkpoint report is preserved in Git history. Its contact-sheet checks apply to those 96 additions."
+  },
+  "continuationReviews": [
+    {
+      "id": "akane:gloss-swimsuit-v6",
+      "imageSha256": "d06581f10bbf5ef0de3f1721b1914a4b602495714cb6589843fb5f3f78a2dc6f",
+      "sourceIdentity": "discipline-sprite-v1:akane:tennis-adapted-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/feet, opaque red sporting swimsuit with a restrained glossy material effect, bare hands and feet, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        348,
+        53,
+        378,
+        79
+      ]
+    },
+    {
+      "id": "akane:red-action-suit-v6",
+      "imageSha256": "77eb965b17015b4834e44675e32fa1b20d41282618ffe82b38226428624f815b",
+      "sourceIdentity": "discipline-sprite-v1:akane:tennis-adapted-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "redActionSuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/boots, red fully covered functional action suit, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        348,
+        56,
+        364,
+        75
+      ]
+    },
+    {
+      "id": "eikichi:gloss-swimsuit-v6",
+      "imageSha256": "e226251621d8c846e2828fa610dcdd300ded02528525b585c47ab48f8193dd37",
+      "sourceIdentity": "discipline-sprite-v1:eikichi:suit-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/feet, opaque red sporting swimsuit with a restrained glossy material effect, bare hands and feet, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        435,
+        59,
+        338,
+        66
+      ]
+    },
+    {
+      "id": "eikichi:nurse-v6",
+      "imageSha256": "89bc7c5c7d0b71e93f34b2b0e9a4993d4cf40963b0a1ae9140e3af0d0089d6ed",
+      "sourceIdentity": "discipline-sprite-v1:eikichi:suit-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visual comparison confirms the swept light brown hair, elongated face and neck, masculine source build and neutral stance. Opaque medical tunic, full-length white trousers and closed work shoes; entire cap and shoes visible. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        436,
+        54,
+        337,
+        55
+      ]
+    },
+    {
+      "id": "eikichi:red-action-suit-v6",
+      "imageSha256": "eff478db541cae55f64e02ade4fabff0a26215d92001b23d3d7206b9fe3051c3",
+      "sourceIdentity": "discipline-sprite-v1:eikichi:suit-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "redActionSuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/boots, red fully covered functional action suit, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        433,
+        58,
+        335,
+        58
+      ]
+    },
+    {
+      "id": "kanae:red-action-suit-v6",
+      "imageSha256": "d77de31baac0f7f2942f873cfd6e90ecb5c25b948b31e4049606d57febf2aa33",
+      "sourceIdentity": "discipline-sprite-v1:kanae:uniform-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "redActionSuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/boots, red fully covered functional action suit, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        403,
+        50,
+        351,
+        43
+      ]
+    },
+    {
+      "id": "kaori:gloss-swimsuit-v6",
+      "imageSha256": "c83c77f380d51bc73331267d911e30aa3616fe59a85fe07a42f6442b63d59714",
+      "sourceIdentity": "discipline-sprite-v1:kaori:outfit-fidelity-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/feet, opaque red sporting swimsuit with a restrained glossy material effect, bare hands and feet, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        420,
+        31,
+        333,
+        52
+      ]
+    },
+    {
+      "id": "kaori:nurse-v6",
+      "imageSha256": "dfcefd2224ae50a4f26051f4d05a3b8bcb79f2714d1d5741b87e7cfa53eb90e8",
+      "sourceIdentity": "discipline-sprite-v1:kaori:outfit-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visual comparison confirms dark plum hair, green eyes, source face, build and hand placement. Functional opaque white medical dress below the knees with collar, pockets, socks and closed white shoes; cap and shoes fully within frame. Neutral presentation. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        421,
+        22,
+        330,
+        44
+      ]
+    },
+    {
+      "id": "kaori:red-action-suit-v6",
+      "imageSha256": "63b3ffad15cde8f9fbefecd5deb08af45fc517606fefb3c6bf8b889919fe3f28",
+      "sourceIdentity": "discipline-sprite-v1:kaori:outfit-fidelity-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "redActionSuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/boots, red fully covered functional action suit, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        419,
+        31,
+        337,
+        47
+      ]
+    },
+    {
+      "id": "kaori:swimsuit-v6",
+      "imageSha256": "bff54741273d1508b251087e5af7ae7c75d5297b2ff9e9a5869d8966edc51944",
+      "sourceIdentity": "discipline-sprite-v1:kaori:outfit-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Inspected generated full-body figure: plum hair and green eyes retained, neutral pose, opaque ordinary one-piece swimsuit, head/hands/feet clear of canvas. Newly visible anatomy is interpreted; exact pixel identity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        416,
+        31,
+        335,
+        47
+      ]
+    },
+    {
+      "id": "kaoru:gloss-swimsuit-v6",
+      "imageSha256": "cda274637c2c80de4c1b59088934b282bc38331de1238fab6877eb6946a5686c",
+      "sourceIdentity": "discipline-sprite-v1:kaoru:uniform-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/feet, opaque red sporting swimsuit with a restrained glossy material effect, bare hands and feet, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        443,
+        61,
+        371,
+        69
+      ]
+    },
+    {
+      "id": "kaoru:nurse-v6",
+      "imageSha256": "6c52decc6f1e977e3e3488f5b410d7dee2ad440fa65988d0ef1740ed7f19e9eb",
+      "sourceIdentity": "discipline-sprite-v1:kaoru:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visual comparison confirms long light brown hair and swept bangs, blue eyes, source face and relaxed stance. White button-front medical dress extends below the knees, with closed collar, pockets, socks and flat shoes. Full cap, hair and shoes visible; neutral presentation. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        435,
+        42,
+        369,
+        76
+      ]
+    },
+    {
+      "id": "kaoru:red-action-suit-v6",
+      "imageSha256": "a96fcf092d268d89f24a6f49029ebc90111f946909d39821d27eabf989c69c20",
+      "sourceIdentity": "discipline-sprite-v1:kaoru:uniform-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "redActionSuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/boots, red fully covered functional action suit, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        432,
+        57,
+        369,
+        65
+      ]
+    },
+    {
+      "id": "kaoru:swimsuit-v6",
+      "imageSha256": "b754d9c96ab340588b1d23eba719488c361da761d9647e3e6b7a75f6f5490a6a",
+      "sourceIdentity": "discipline-sprite-v1:kaoru:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Inspected full-body output: chestnut hair, blue eyes and neutral stance consistent; opaque athletic one-piece and complete bare feet. Previously clothed anatomy is interpreted; exact pixel identity not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        436,
+        52,
+        356,
+        50
+      ]
+    },
+    {
+      "id": "karen:gloss-swimsuit-v6",
+      "imageSha256": "e57925d420dff91fedc62f4e24a6fb65d808adfe9afbe445cf72c4de0a5b1b5c",
+      "sourceIdentity": "discipline-sprite-v1:karen:uniform-fidelity-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/feet, opaque red sporting swimsuit with a restrained glossy material effect, bare hands and feet, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        447,
+        33,
+        322,
+        46
+      ]
+    },
+    {
+      "id": "karen:nurse-v6",
+      "imageSha256": "d2a391a3c846e28db7e7847eddee8bd44f65b71ba654dc0b22b56755ee4e6768",
+      "sourceIdentity": "discipline-sprite-v1:karen:uniform-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visual comparison confirms long silver hair with black ribbon, green eyes, source face and stance. Opaque below-knee medical dress with closed collar, practical pockets, socks and flat white work shoes. Cap and both shoes entirely visible; neutral presentation. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        442,
+        16,
+        324,
+        42
+      ]
+    },
+    {
+      "id": "karen:swimsuit-v6",
+      "imageSha256": "bb68f6c10391197bfb673673adff5a1bdcd5f64df9e78d002da6b363b40cf9dd",
+      "sourceIdentity": "discipline-sprite-v1:karen:uniform-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Inspected full-body output: long silver hair, low tie and green eyes preserved; neutral stance and opaque athletic swimsuit. Feet and head fully inside transparent canvas. Exact pixel identity and previously concealed anatomy not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        446,
+        32,
+        324,
+        40
+      ]
+    },
+    {
+      "id": "katsuo:gloss-swimsuit-v6",
+      "imageSha256": "6e843d21e7f3d72dfd9c92eb91d5b87f8adab515d1dbbe2746e37b14c414672d",
+      "sourceIdentity": "discipline-sprite-v1:katsuo:baseball-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/feet, opaque red sporting swimsuit with a restrained glossy material effect, bare hands and feet, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        447,
+        50,
+        352,
+        74
+      ]
+    },
+    {
+      "id": "katsuo:nurse-v6",
+      "imageSha256": "32e03f76bd09bfa3fa6329288b0fc6f9bcf662f7c59b9a5ac3b6061493ee82d0",
+      "sourceIdentity": "discipline-sprite-v1:katsuo:baseball-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visual comparison confirms short black hair, green eyes, masculine source face and slim athletic build. Functional opaque medical tunic and full-length white trousers, modest collar and closed work shoes. Entire cap and both shoes visible; neutral pose. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        444,
+        49,
+        350,
+        63
+      ]
+    },
+    {
+      "id": "katsuo:swimsuit-v6",
+      "imageSha256": "c08fd56f40a56ecca657636cb8c474861a795203d567be7f30a6ab8d76fdfe68",
+      "sourceIdentity": "discipline-sprite-v1:katsuo:baseball-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Inspected full-body figure: black hair and green eyes consistent, neutral pose, ordinary knee-length opaque swimming trunks. Complete head, hands and feet. New visible anatomical detail interpreted, not certified 1:1."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        449,
+        57,
+        361,
+        74
+      ]
+    },
+    {
+      "id": "kawahara:gloss-swimsuit-v6",
+      "imageSha256": "cb6f2b9915c81f5a61d6e326f788a9ddbbaf1359f609134864383236c1bf48f1",
+      "sourceIdentity": "discipline-sprite-v1:kawahara:covered-medical-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/feet, opaque red sporting swimsuit with a restrained glossy material effect, bare hands and feet, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        374,
+        15,
+        359,
+        20
+      ]
+    },
+    {
+      "id": "kawahara:nurse-v6",
+      "imageSha256": "4c382e0f68769b71709a81fb32a5e57cecb2369cb34498783bbc052ba4a67181",
+      "sourceIdentity": "discipline-sprite-v1:kawahara:covered-medical-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visual comparison confirms long blue-violet hair, eyeglasses, red drop earrings, red-brown eyes and source face. Functional opaque white below-knee medical dress with closed collar, pockets, socks and closed work shoes. Entire cap and shoes visible, although cap margin is tight; neutral presentation. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        372,
+        9,
+        363,
+        25
+      ]
+    },
+    {
+      "id": "kawahara:swimsuit-v6",
+      "imageSha256": "9ed51ffa45e0168048e8458ae26d89fea5190dbfda7f801b72afd24fc53e299e",
+      "sourceIdentity": "discipline-sprite-v1:kawahara:covered-medical-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Inspected full-body figure: long blue-violet hair, glasses and reddish eyes consistent; neutral pose, ordinary opaque athletic one-piece. Complete head, hands and feet. Under-clothing anatomy interpreted, not certified 1:1."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        376,
+        13,
+        359,
+        19
+      ]
+    },
+    {
+      "id": "kouzou:nurse-v6",
+      "imageSha256": "65f3552e6b20da3e3092c3e6719612219b5fa89915b453ed783a8e1c2cb18b68",
+      "sourceIdentity": "discipline-sprite-v1:kouzou:suit-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visual comparison confirms side-parted dark-gray hair, rectangular eyeglasses, older angular face and naturally slightly stooped thin build. Functional opaque white tunic and full-length trousers, closed work shoes and modest collar. Whole cap, hands and shoes visible. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        464,
+        64,
+        362,
+        73
+      ]
+    },
+    {
+      "id": "kumi:gloss-swimsuit-v6",
+      "imageSha256": "4cbcad06cd03d8ce78d99f0df632fc0066fe7b5f4026a78d8e750733d6aecd1c",
+      "sourceIdentity": "discipline-sprite-v1:kumi:tennis-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/feet, opaque red sporting swimsuit with a restrained glossy material effect, bare hands and feet, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        419,
+        56,
+        343,
+        68
+      ]
+    },
+    {
+      "id": "leona:gloss-swimsuit-v6",
+      "imageSha256": "146cefe65591d903275db90650c2a7f035f04f320a268a45f36d3f927d23a105",
+      "sourceIdentity": "discipline-sprite-v1:leona:uniform-fidelity-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/feet, opaque red sporting swimsuit with a restrained glossy material effect, bare hands and feet, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        420,
+        47,
+        342,
+        55
+      ]
+    },
+    {
+      "id": "linda:gloss-swimsuit-v6",
+      "imageSha256": "13597d1f627f8ac37228ca654073ea19d171b764686a2b79ac6feeed3a57fdb6",
+      "sourceIdentity": "discipline-sprite-v1:linda:covered-uniform-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/feet, opaque red sporting swimsuit with a restrained glossy material effect, bare hands and feet, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        449,
+        34,
+        372,
+        55
+      ]
+    },
+    {
+      "id": "madoka:gloss-swimsuit-v6",
+      "imageSha256": "396d457169e10ef830a18bf15a00535990946dc59693aa51e1932cdebb903dce",
+      "sourceIdentity": "discipline-sprite-v1:madoka:uniform-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Reviewed against the displayed identity reference: dark hair bun, face and crossed-arm stance preserved; whole hair and both bare feet visible. Red opaque athletic one-piece with broad straps and ordinary neckline/leg openings; neutral pose and no accessory styling. Subtle colored edge pixels inherited in sprite rendering are visible at close inspection. Native PNG copied byte-for-byte."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        433,
+        77,
+        360,
+        61
+      ]
+    },
+    {
+      "id": "mami:gloss-swimsuit-v6",
+      "imageSha256": "6abcc854be453508183df3668b2e53783ed15f36c15121df5ef63ac2ac335a2f",
+      "sourceIdentity": "discipline-sprite-v1:mami:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Reviewed against the displayed identity reference: lavender waves, silver hair bands, blue eyes and neutral stance consistent. Full figure and both bare feet clear. Red opaque one-piece athletic swimwear with broad straps and ordinary neckline; restrained gloss. Thin colored edge pixels visible in native sprite rendering. Native PNG copied byte-for-byte."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        398,
+        58,
+        368,
+        66
+      ]
+    },
+    {
+      "id": "manami:gloss-swimsuit-v6",
+      "imageSha256": "bde8bc82625492a9a37c009e81906aa13910c5befde40011a267e401513e3627",
+      "sourceIdentity": "discipline-sprite-v1:manami:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Reviewed against the displayed identity reference: burgundy bob, blue eyes, face and relaxed stance consistent. Full body, hands and both bare feet uncut. Opaque red athletic one-piece, broad straps and ordinary neckline/leg openings; neutral sports presentation. Fine colored edge fringe visible. Native PNG copied byte-for-byte."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        430,
+        60,
+        373,
+        57
+      ]
+    },
+    {
+      "id": "maya:gloss-swimsuit-v6",
+      "imageSha256": "c59b0d50de1f02dfb80d31a8072efaea233bba2256df924b50d389eebf799278",
+      "sourceIdentity": "discipline-sprite-v1:maya:tennis-adapted-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Reviewed against the displayed identity reference: short purple hair, dark blue eyes and relaxed stance consistent. Full body, hands and bare feet visible. Red opaque athletic one-piece with broad straps and ordinary neckline/leg openings, restrained glossy highlights; neutral sports presentation. Native PNG copied byte-for-byte."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        447,
+        56,
+        370,
+        53
+      ]
+    },
+    {
+      "id": "maya:maid-v6",
+      "imageSha256": "9a0597c5c16cacee9bf9c8c91bb3dbaa34f056b2f56256e89a2b206caaf46176",
+      "sourceIdentity": "discipline-sprite-v1:maya:tennis-adapted-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visually compared with Maya reference: short layered purple hair, face, eye color, relaxed hands and stance remain recognizable. Full calf-length navy service dress, white apron, closed collar, opaque tights and complete shoes. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        422,
+        57,
+        369,
+        48
+      ]
+    },
+    {
+      "id": "momoe:gloss-swimsuit-v6",
+      "imageSha256": "432c301348e404ee70842c8474ca2f963f6568f2249f3c96b7a390209f783ff3",
+      "sourceIdentity": "discipline-sprite-v1:momoe:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Reviewed with identity reference: green bob with longer front strands, blue eyes and relaxed stance preserved. Complete hair outline, hands and bare feet. Red opaque athletic one-piece, ordinary neckline/leg openings and neutral pose. Fine colored edge pixels visible in native sprite rendering. Native PNG copied byte-for-byte."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        441,
+        81,
+        365,
+        66
+      ]
+    },
+    {
+      "id": "momoe:nurse-v6",
+      "imageSha256": "4f95544534e852db0f3406c108ffd20b2ba865205d51613581c84d3b8974e8f1",
+      "sourceIdentity": "discipline-sprite-v1:momoe:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Green bob and blue eyes match the supplied source; the prompt eye-colour description was corrected to the viewed input before generation. Complete cap, hair, hands and shoes; opaque closed medical dress reaching below knees, neutral pose. Native and dark/light background alpha composites inspected: no visible halo, stray object, cropping or inappropriate framing. Native PNG copied unchanged."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        444,
+        59,
+        365,
+        63
+      ]
+    },
+    {
+      "id": "momone:gloss-swimsuit-v6",
+      "imageSha256": "c613be0e56ed02f391149b4437ca4f5e1cd8abe59f9d985c6506fd5b6dbb16f7",
+      "sourceIdentity": "discipline-sprite-v1:momone:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Reviewed with identity reference: red twin ponytails and black hair ribbons, violet eyes and neutral stance preserved. Hair ribbons and both bare feet entirely within frame. Red opaque athletic one-piece with broad straps, ordinary neckline and leg openings; no additional accessories or suggestive pose. Native PNG copied byte-for-byte."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        427,
+        55,
+        359,
+        59
+      ]
+    },
+    {
+      "id": "momone:maid-v6",
+      "imageSha256": "17c4c07414531137a21df2bf16939fea9d3da0c8dc8d838997e9948a8eecb1ca",
+      "sourceIdentity": "discipline-sprite-v1:momone:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visually compared with Momone reference: red twin ponytails, black ribbons, violet eyes and facial profile preserved. Covered long navy service dress, white apron, tights and complete shoes; neutral standing pose. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        383,
+        51,
+        342,
+        53
+      ]
+    },
+    {
+      "id": "momone:nurse-v6",
+      "imageSha256": "b7ddc652b25c019c8c3e096c6d34b6c99f75eb8113591146a1d02668adb1d602",
+      "sourceIdentity": "discipline-sprite-v1:momone:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Red twin ponytails, black ribbons, violet eyes and facial features match the supplied source. Complete cap, hair, hands and shoes; opaque closed medical dress reaching below knees, neutral pose. Native and dark/light background alpha composites inspected: no visible halo, stray object, cropping or inappropriate framing. Native PNG copied unchanged."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        433,
+        23,
+        353,
+        51
+      ]
+    },
+    {
+      "id": "nanase:gloss-swimsuit-v6",
+      "imageSha256": "0c4e9699506bc0365c2896b9092041d97a65b9fe2e063348f8aa655b81b3e4db",
+      "sourceIdentity": "discipline-sprite-v1:nanase:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Reviewed with identity reference: ash-blond hairstyle, long front strands, gold hair bows and blue eyes consistent. All hair bows and both bare feet visible. Opaque red athletic one-piece with high ordinary scoop neckline, broad straps and restrained gloss. Fine colored edge fringe visible in native rendering. Native PNG copied byte-for-byte."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        428,
+        52,
+        363,
+        61
+      ]
+    },
+    {
+      "id": "nanase:maid-v6",
+      "imageSha256": "65f14dc094e547ff7bcb5b5c6dbb56276e03a91d523d981cd786b32a27dde33f",
+      "sourceIdentity": "discipline-sprite-v1:nanase:uniform-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "professionalServiceUniform": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/shoes, opaque professional household-service uniform with closed collar and full-length coverage, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        386,
+        35,
+        355,
+        51
+      ]
+    },
+    {
+      "id": "nanase:nurse-v6",
+      "imageSha256": "c8fe881dc0c50bfb82ab6976d10c4aa27c23c6d04672bbed9c900eb3b7e61fe7",
+      "sourceIdentity": "discipline-sprite-v1:nanase:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Ash-blond bob, long front locks, gold side bows and blue eyes match the supplied source. Complete cap, hair, hands and shoes; opaque closed medical dress reaching below knees, neutral pose. Native and dark/light background alpha composites inspected: no visible halo, stray object, cropping or inappropriate framing. Native PNG copied unchanged."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        424,
+        23,
+        355,
+        52
+      ]
+    },
+    {
+      "id": "ova-attendant-brown-bun:battle-v6",
+      "imageSha256": "70fe616c999b9cefdbc987a05d6045c83f019301b3de07864cf8c7cc22bcb539",
+      "sourceIdentity": "discipline-sprite-v1:ova-attendant-brown-bun:ova-service-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Individually inspected against the supplied neutral service sprite: brown rear bun, narrow front locks, red eyes and face retained. Complete figure, neutral stance, closed navy protective jacket/trousers, padded joints, gloves and flat boots; no apron or service cap. No visible cropping or background plane. Fine anime pixel rendering retained without claiming pixel-exact identity."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        450,
+        99,
+        446,
+        43
+      ]
+    },
+    {
+      "id": "ova-attendant-brown-bun:gloss-swimsuit-v6",
+      "imageSha256": "51582792e845672cbafc9f9e37bb20e0ec4bd03261c735b64a332702058b11be",
+      "sourceIdentity": "discipline-sprite-v1:ova-attendant-brown-bun:ova-service-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Reviewed with identity reference: brown rear bun, long front strands, red eyes and neutral expression consistent; service headband removed. Whole figure and both bare feet visible, natural upright stance. Opaque red athletic one-piece with ordinary broad straps and scoop neckline. Native PNG copied byte-for-byte."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        470,
+        102,
+        446,
+        42
+      ]
+    },
+    {
+      "id": "ova-attendant-brown-bun:nurse-v6",
+      "imageSha256": "2a0ef6b4ed828ee954e78eaf88961ce9cf7912a0df6a3f4ff44bf39709969e84",
+      "sourceIdentity": "discipline-sprite-v1:ova-attendant-brown-bun:ova-service-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visual comparison confirms the brown rear bun, red eyes, long front locks, face and neutral source stance. White professional medical dress reaches below the knees with closed collar, pockets and closed flat white shoes. Cap and both shoes fully visible. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        447,
+        64,
+        440,
+        34
+      ]
+    },
+    {
+      "id": "ova-broadcasting-club-member:gloss-swimsuit-v6",
+      "imageSha256": "b851c85bbb0385c0d4a5f75ed8a7dbe5d88d78552b4ccb44d0a86251cbc5a902",
+      "sourceIdentity": "discipline-sprite-v1:ova-broadcasting-club-member:ova-uniform-monochrome-v5",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Recovered raw output reviewed against the monochrome identity source: same bob, narrow face, long-limbed proportions and hand near upper chest; whole hair and both bare feet visible. Grayscale opaque athletic one-piece with ordinary neckline. Neutral presentation. Provenance association is inferred from job timing and exact identity/costume match; no tool response was received before interruption."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        430,
+        15,
+        400,
+        25
+      ]
+    },
+    {
+      "id": "ova-broadcasting-club-member:maid-v6",
+      "imageSha256": "25fe39788575585f3866503452f673ce58672edbdc45f93a8dcaf6fbb1cdc527",
+      "sourceIdentity": "discipline-sprite-v1:ova-broadcasting-club-member:ova-uniform-monochrome-v5",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visually compared with the OVA monochrome reference: bob haircut, narrow head, long neck and raised hand preserved. Entire covered service dress, apron, tights, headband and both shoes visible. Neutral grayscale preserved. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        339,
+        7,
+        338,
+        16
+      ]
+    },
+    {
+      "id": "ova-broadcasting-club-member:nurse-v6",
+      "imageSha256": "ed8fd5e279c7cfaea88a1dec2dd191e948aa60c184d864525d23b79dcac95a1a",
+      "sourceIdentity": "discipline-sprite-v1:ova-broadcasting-club-member:ova-uniform-monochrome-v5",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": false,
+        "professionalMedicalUniform": true,
+        "literalOneToOneCertified": false,
+        "notes": "Monochrome values, jaw-length bob, narrow face and hand near upper chest retained. Opaque medical dress below knees, closed collar, short sleeves and flat white shoes. Complete nurse cap and both shoes; improved transparent margin, without exact 60 px framing certification. Native PNG accepted without raster edits."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        430,
+        43,
+        401,
+        39
+      ]
+    },
+    {
+      "id": "ova-guest-yellow-dress:battle-v6",
+      "imageSha256": "75639ea7a8f9149d3eea1c8b0b23f24402c7e9162853d153379635ef79344bdb",
+      "sourceIdentity": "discipline-sprite-v1:ova-guest-yellow-dress:ova-yellow-dress-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Individually inspected against the supplied neutral yellow-dress sprite: long chestnut hair, violet-blue eyes, face and long-legged build retained. Complete figure with hair/hands/boots visible, neutral pose, closed ochre utility jacket, dark protective trousers and gloves. No exposed torso or suggestive framing. Fine anime pixel rendering retained without canonical costume certification."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        465,
+        19,
+        347,
+        18
+      ]
+    },
+    {
+      "id": "ova-guest-yellow-dress:gloss-swimsuit-v6",
+      "imageSha256": "944a6eeff478407e15a6cb370e6a85941b76664585111805f92c584e9dd6d387",
+      "sourceIdentity": "discipline-sprite-v1:ova-guest-yellow-dress:ova-yellow-dress-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Recovered raw output reviewed against the identity source: same long chestnut hair, violet-blue eyes, face and relaxed hand pose, whole figure and bare feet uncut. Red opaque athletic one-piece with broad straps and ordinary scoop neckline. Neutral presentation. Provenance association is inferred from job timing and exact identity/costume match; no tool response was received before interruption."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        464,
+        21,
+        372,
+        25
+      ]
+    },
+    {
+      "id": "ova-guest-yellow-dress:maid-v6",
+      "imageSha256": "d83b110c9026a054a29611ed3ad0823d51988102a74b2fa20f93a70159e86d73",
+      "sourceIdentity": "discipline-sprite-v1:ova-guest-yellow-dress:ova-yellow-dress-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Full generated figure visually reviewed against identity reference. Long chestnut hair, violet eyes and facial profile retained. Covered long navy service dress, full white apron, sleeves, tights and complete shoes; headwear outline visible. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        431,
+        10,
+        369,
+        13
+      ]
+    },
+    {
+      "id": "ova-guest-yellow-dress:nurse-v6",
+      "imageSha256": "b8033df50acab54ec620d8fe0ee0e82cbf180664215896435ed7b96fbea00aed",
+      "sourceIdentity": "discipline-sprite-v1:ova-guest-yellow-dress:ova-yellow-dress-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "notes": "Visual comparison confirms the long chestnut hair, violet-blue eyes, source face and relaxed hand positions. White below-knee medical dress, closed neckline, useful pockets, socks and closed flat shoes. Complete figure; nurse cap upper margin is tight at 3 visible pixels and shoe bottom margin 16 pixels, with no opaque silhouette clipped. Native PNG copied byte-for-byte, no raster pixel edits. Canonical full-body or pixel-exact fidelity is not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        463,
+        3,
+        365,
+        16
+      ]
+    },
+    {
+      "id": "ova-officer-bob:maid-v6",
+      "imageSha256": "2bdc0ad972532aee018bb25365f52197c09a944dac2e3240ba0d299e31c53b7a",
+      "sourceIdentity": "discipline-sprite-v1:ova-officer-bob:ova-plum-uniform-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "professionalServiceUniform": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/shoes, opaque professional household-service uniform with closed collar and full-length coverage, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        455,
+        24,
+        425,
+        15
+      ]
+    },
+    {
+      "id": "ova-officer-bob:nurse-v6",
+      "imageSha256": "57cc4f8c71915cd4c35dff3ebca25cbe08c3f63404a1cc90af5ed3c96e89564d",
+      "sourceIdentity": "discipline-sprite-v1:ova-officer-bob:ova-plum-uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": false,
+        "professionalMedicalUniform": true,
+        "literalOneToOneCertified": false,
+        "notes": "Brown chin-length bob, teal eyes, facial expression and relaxed standing pose consistent with the identity reference. Closed white medical tunic with pale-blue piping, full opaque trousers, flat closed work shoes and nurse cap; all extremities visible. Native transparent PNG copied without raster edits."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        453,
+        27,
+        430,
+        17
+      ]
+    },
+    {
+      "id": "ova-officer-swept-hair:gloss-swimsuit-v6",
+      "imageSha256": "965f87fd39ef242631436ecda2a50819731adb41e38a156c270b7d9190d67a71",
+      "sourceIdentity": "discipline-sprite-v1:ova-officer-swept-hair:ova-plum-uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Visually inspected: swept brown hair, blue eyes and calm officer identity consistent; opaque red athletic one-piece with restrained gloss, no accessories or suggestive pose; full figure with bare feet visible. Hidden anatomy interpreted, no literal 1:1 claim."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        443,
+        34,
+        397,
+        22
+      ]
+    },
+    {
+      "id": "ova-officer-swept-hair:maid-v6",
+      "imageSha256": "85b55307ffe3e87d0ede2351f5e32db5507d2e6ea8f82a8362b5cd5a3d073a0e",
+      "sourceIdentity": "discipline-sprite-v1:ova-officer-swept-hair:ova-plum-uniform-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "professionalServiceUniform": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/shoes, opaque professional household-service uniform with closed collar and full-length coverage, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        446,
+        35,
+        387,
+        15
+      ]
+    },
+    {
+      "id": "ova-officer-swept-hair:nurse-v6",
+      "imageSha256": "3586d8c050734549c4057721b532d59ea791065979c62857d0a4e027142e3ffd",
+      "sourceIdentity": "discipline-sprite-v1:ova-officer-swept-hair:ova-plum-uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": false,
+        "professionalMedicalUniform": true,
+        "literalOneToOneCertified": false,
+        "notes": "Swept brown hair, long side locks, blue eyes, facial expression and standing pose consistent with the identity reference. Closed white medical tunic with pale-blue details, full opaque trousers, flat closed shoes and nurse cap; complete figure visible. Native alpha preserved and bytes copied unchanged."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        448,
+        28,
+        392,
+        18
+      ]
+    },
+    {
+      "id": "reina:gloss-swimsuit-v6",
+      "imageSha256": "0717ddb2cf9523a2634d51d3975d4ccfcff3f8bfa9263100993e80e759c6f2a6",
+      "sourceIdentity": "discipline-sprite-v1:reina:suit-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Visually inspected: blonde updo, long side locks, violet eyes and neutral stance consistent. Red opaque athletic one-piece, normal neckline, no jewellery or costume accessories, full figure and bare feet. Gloss is a material effect; adaptation is not official or certified 1:1."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        428,
+        19,
+        373,
+        44
+      ]
+    },
+    {
+      "id": "reina:maid-v6",
+      "imageSha256": "ea216a717239c86cd103303b24fac0915886da15bad0845cdc5acb638dca9b45",
+      "sourceIdentity": "discipline-sprite-v1:reina:suit-fidelity-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "professionalServiceUniform": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/shoes, opaque professional household-service uniform with closed collar and full-length coverage, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        367,
+        18,
+        334,
+        31
+      ]
+    },
+    {
+      "id": "reina:nurse-v6",
+      "imageSha256": "27c164d7b28c42ea4641782c6c56e5d27e63d6a64b22412ca584f70f1e784035",
+      "sourceIdentity": "discipline-sprite-v1:reina:suit-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": false,
+        "professionalMedicalUniform": true,
+        "literalOneToOneCertified": false,
+        "notes": "Blonde updo with dark tie, long front locks, violet eyes, earrings and neutral standing pose retained. Opaque white button-front medical dress with closed collar, pale-blue piping, practical pockets, socks and closed work shoes; hem reaches the knee area. Entire hair, cap and shoes visible. Native transparent PNG retained without raster edits."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        429,
+        20,
+        366,
+        39
+      ]
+    },
+    {
+      "id": "ruri:gloss-swimsuit-v6",
+      "imageSha256": "57d905b5a3583245d92e6d97756d51008c4a0b415c8a82cf44116ebaab772eab",
+      "sourceIdentity": "discipline-sprite-v1:ruri:casual-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Visually inspected: teal twin ponytails and yellow ties, purple eyes, original apparent age and neutral stance retained. Opaque red normal sports swimsuit with restrained sheen; no accessories or suggestive pose. Full figure with hands and feet, no claimed canonical anatomy or 1:1 guarantee."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        437,
+        88,
+        342,
+        75
+      ]
+    },
+    {
+      "id": "saki:gloss-swimsuit-v6",
+      "imageSha256": "2244edaba1153cbd043231d354298dc593d655ab4ed31c4f06eab00a36199beb",
+      "sourceIdentity": "discipline-sprite-v1:saki:civilian-original-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Visually inspected: blonde curled shoulder-length hair, green eyes and neutral expression consistent; standard red opaque one-piece swimming garment with mild gloss. Complete figure, relaxed arms and bare feet. Anatomy concealed by earlier skirt remains interpreted; not an official outfit or certified 1:1."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        424,
+        53,
+        355,
+        59
+      ]
+    },
+    {
+      "id": "saki:maid-v6",
+      "imageSha256": "dc51d9603f8b1d96f3b35407229ace572a3b731e1206eb9ca75cc64c9f2d0745",
+      "sourceIdentity": "discipline-sprite-v1:saki:civilian-original-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "professionalServiceUniform": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/shoes, opaque professional household-service uniform with closed collar and full-length coverage, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        383,
+        43,
+        355,
+        51
+      ]
+    },
+    {
+      "id": "saki:nurse-v6",
+      "imageSha256": "06e8e34f7baf46ff89348708697b1f7f10491aaa6897057dead97d138bf45c2a",
+      "sourceIdentity": "discipline-sprite-v1:saki:civilian-original-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": false,
+        "professionalMedicalUniform": true,
+        "literalOneToOneCertified": false,
+        "notes": "Shoulder-length blonde curls, green eyes, slight smile and neutral source stance retained. Opaque white short-sleeve medical dress below the knees, closed rounded collar, pale-blue piping, pockets, socks and flat closed work shoes. Nurse cap, hair, hands and shoes entirely visible. Native PNG accepted without raster edits."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        430,
+        34,
+        354,
+        57
+      ]
+    },
+    {
+      "id": "saori:gloss-swimsuit-v6",
+      "imageSha256": "5da35a14b898cf81b8456542871ec89af45dbe6a7974b9218225d3f9d168fcfe",
+      "sourceIdentity": "discipline-sprite-v1:saori:uniform-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Visually inspected: long navy hair, white ribbon, teal eyes and apparent age retained. Ordinary red opaque one-piece swimwear, normal neckline, restrained sheen; neutral three-quarter pose with complete bare feet and hands. Adaptation, not official or literal 1:1."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        440,
+        42,
+        371,
+        50
+      ]
+    },
+    {
+      "id": "security-guard-ova:gloss-swimsuit-v6",
+      "imageSha256": "b69901c60e88ce3a0ab0eeae0e5d64bc310231bbac5677cd4aa712073ce4fc1d",
+      "sourceIdentity": "discipline-sprite-v1:security-guard-ova:ova-security-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Visually inspected: red swept hair, sunglasses, strong face and broad build retained. Ordinary opaque red short triathlon swim suit, no weapon/equipment, arms relaxed and feet fully visible. Clothing-hidden anatomy is newly interpreted; full-body sports presentation, no official or 1:1 claim."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        402,
+        58,
+        375,
+        51
+      ]
+    },
+    {
+      "id": "sudou:gloss-swimsuit-v6",
+      "imageSha256": "abce16d129ef3283c6230e39c5f4da181baefac089232fe9b75a4765495ca04a",
+      "sourceIdentity": "discipline-sprite-v1:sudou:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Visually inspected: side-parted brown hair, glasses, blue eyes and neutral facial identity retained. Opaque short red triathlon swimming suit, no equipment, complete bare feet and hands. Exposed limb anatomy is generated interpretation rather than a verified canonical body."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        437,
+        56,
+        374,
+        65
+      ]
+    },
+    {
+      "id": "takurou:gloss-swimsuit-v6",
+      "imageSha256": "bc35a3c1c05c32f664c284319872b30b23e437469b8185952f1d6a7547a79e38",
+      "sourceIdentity": "discipline-sprite-v1:takurou:ova-orange-proportions-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Visually inspected: brown layered fringe, grey-blue eyes, face and apparent age consistent. Short opaque red triathlon swim suit, restrained highlights, no bag or equipment, neutral pose with full feet. Clothing-hidden anatomy interpreted; not a canon or literal 1:1 claim."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        468,
+        59,
+        377,
+        63
+      ]
+    },
+    {
+      "id": "tooru:gloss-swimsuit-v6",
+      "imageSha256": "b23bf0482a288e44511cf6f23b5f02afc750f698b23e8a30936efdadf21ee5c5",
+      "sourceIdentity": "discipline-sprite-v1:tooru:uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Visually inspected: blue-grey short hair, lowered gaze and facial identity consistent; full figure in ordinary opaque short red triathlon suit, restrained sheen, no accessories. Limb anatomy under source uniform is interpreted; no exact 1:1 certification."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        469,
+        76,
+        369,
+        74
+      ]
+    },
+    {
+      "id": "yuri:gloss-swimsuit-v6",
+      "imageSha256": "42df1e4ca2ae682e94882b82cdb1c58b2d1b31598f78f272977df0ada267c829",
+      "sourceIdentity": "discipline-sprite-v1:yuri:uniform-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Output recovered after the generating tool call was interrupted: unique matching Yuri red-swimwear output created in the call window. Visually compared with submitted reference: burgundy long hair, violet eyes, original face and neutral pose; opaque ordinary red one-piece, full body and bare feet. Exact body/pixel identity not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        430,
+        28,
+        341,
+        53
+      ]
+    },
+    {
+      "id": "yuuki:maid-v6",
+      "imageSha256": "4954f43178913a1e4ac5e149f192bf5643e4e6b2564f789cf292ec32d466f6a9",
+      "sourceIdentity": "discipline-sprite-v1:yuuki:ova-tactical-fidelity-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "professionalServiceUniform": true,
+        "notes": "Generated result visually compared to its viewed reference: same individual face/hair/build and neutral pose, complete hair/hands/shoes, opaque professional household-service uniform with closed collar and full-length coverage, original fine pixel rendering. Native RGBA bytes retained. Exact 1:1 identity and canonical outfit are not certified."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        451,
+        35,
+        385,
+        32
+      ]
+    },
+    {
+      "id": "yuuki:nurse-v6",
+      "imageSha256": "e3674c94211f9aceb104d397bf523dba27a4efc1e1444af507626f88db653f5f",
+      "sourceIdentity": "discipline-sprite-v1:yuuki:ova-tactical-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": false,
+        "professionalMedicalUniform": true,
+        "literalOneToOneCertified": false,
+        "notes": "Layered blue hair, amber eyes, green cheek marking and neutral stance consistent with the identity reference. Fully opaque white closed-collar medical tunic, short sleeves, full trousers and closed flat shoes; athletic silhouette remains recognisable without exaggeration. Entire cap, hair, hands and shoes visible. Native RGBA bytes copied unchanged."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        450,
+        18,
+        385,
+        30
+      ]
+    }
+  ],
+  "independentContinuationReview": {
+    "report": "costumes-v6-continuation-visual-review.json",
+    "sha256": "3240f0ec4a72d9e2dc95f3c06814486b521e85790b8fbb3d6b6144b3b3fa4f4c",
+    "scope": {
+      "acceptedGlossVariants": 30,
+      "independentPeerMaidReview": 3,
+      "serviceNursesProducedAndReviewed": 9
+    },
+    "result": {
+      "glossAccepted": 30,
+      "maidPeerReviewAccepted": 3,
+      "blockingVisualDefects": [],
+      "all33QAImagesHaveAlpha0To255": true,
+      "uniqueSHA256Among33QAImages": 33,
+      "minimumVisibleMarginAmong33QAImages": 15,
+      "notes": "No visible wrong-character substitution, clipped hair/feet, duplicate byte content or inappropriate presentation found in this reviewed set. Gloss garments are athletic-swimwear adaptations; they are not reconstructions of the later requested Leona costume."
+    }
+  }
 }
