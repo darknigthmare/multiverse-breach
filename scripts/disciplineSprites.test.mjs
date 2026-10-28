@@ -156,6 +156,25 @@ test('variant links cannot replace defaults or point to a missing or different c
   assert.throws(() => createDisciplineSpriteRegistry([original, { ...revised, characterId: 'ruri' }]), /variant origin/);
 });
 
+test('independent OVA outfits keep style references separate from costume ancestry and fallback', () => {
+  const outfits = DISCIPLINE_SPRITE_REGISTRY.entries.filter(row => row.newOutfit && row.sourceMedium === 'anime_ova');
+  assert.ok(outfits.length, 'Approved OVA outfits must be installed');
+  for (const outfit of outfits) {
+    assert.equal(outfit.provenance, 'reference');
+    assert.equal(outfit.isDefault, false);
+    assert.equal(outfit.variantOf, undefined, 'An OVA outfit must not be linked as a correction of a JGSDF costume');
+    const style = DISCIPLINE_SPRITE_REGISTRY.byId[outfit.styleSourceId];
+    assert.ok(style, outfit.id);
+    assert.equal(style.characterId, outfit.characterId);
+    assert.notEqual(style.src, outfit.src);
+    const actor = actors.find(candidate => DISCIPLINE_HERO_BINDINGS[candidate.id] === outfit.characterId);
+    if (!actor) continue;
+    const sources = getDisciplineSpriteSources(applyActorAppearance(actor, outfit.id));
+    assert.equal(sources[0], outfit.src);
+    assert.equal(sources.includes(style.src), false, 'Style references must not change the selected outfit fallback');
+  }
+});
+
 test('catalogue rejects ambiguous identities, conflicting defaults and unclassified adaptations', () => {
   assert.throws(() => createDisciplineSpriteRegistry([fixtureRow('one'), fixtureRow('one')]), /Duplicate Discipline costume/);
   assert.throws(() => createDisciplineSpriteRegistry([fixtureRow('one', { isDefault: true }), fixtureRow('two', { isDefault: true })]), /Duplicate Discipline default/);

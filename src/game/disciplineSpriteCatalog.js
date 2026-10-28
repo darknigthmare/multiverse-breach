@@ -2816,5 +2816,143 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
     },
     "variantOf": "discipline-sprite-v1:yuri:swimwear-sport-original",
     "revision": 2
+  },
+  {
+    "characterId": "saori",
+    "characterName": "Saori Otokawa",
+    "costumeId": "ova-tactical-reference-v3",
+    "label": {
+      "fr": "Tenue tactique S.A.D — animé",
+      "en": "S.A.D tactical outfit — OVA"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--ova-tactical-reference-v3.png",
+    "provenance": "reference",
+    "category": "military",
+    "isDefault": false,
+    "available": true,
+    "revision": 3,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "ova-screenshot-20261028-055544-saori",
+    "notes": {
+      "fr": "Tenue tactique reprise des captures de l’OVA : casquette S.A.D, blouson gris, haut blanc, short à revers, gants et genouillère. Proportions visibles du visage, du cou et du torse suivies ; la pose debout et les chaussures hors champ sont reconstituées. Fidélité intégrale 1:1 non certifiée.",
+      "en": "OVA S.A.D cap, grey jacket, white top, cuffed shorts, gloves and knee protection. Visible face, neck and torso proportions guided the sprite; standing pose and unseen boots are reconstructed. A complete 1:1 likeness is not certified."
+    },
+    "styleSourceId": "discipline-sprite-v1:saori:military-jgsdf-reference-v2"
+  },
+  {
+    "characterId": "ruri",
+    "characterName": "Ruri Nonomiya",
+    "costumeId": "ova-tactical-reference-v3",
+    "label": {
+      "fr": "Tenue tactique au casque — animé",
+      "en": "Helmeted tactical outfit — OVA"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--ova-tactical-reference-v3.png",
+    "provenance": "reference",
+    "category": "military",
+    "isDefault": false,
+    "available": true,
+    "revision": 3,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "ova-screenshot-20261028-055732-ruri",
+    "notes": {
+      "fr": "Tenue tactique reprise des captures de l’OVA : casque marine, gilet bleu, haut crème, pantalon cargo, brassard et pied-de-biche allongé après comparaison. Rapport tête/épaules et silhouette du torse et des jambes contrôlés visuellement ; chaussures hors champ et pose du bras reconstituées. Fidélité intégrale 1:1 non certifiée.",
+      "en": "OVA helmet, blue vest, cream top, cargo trousers, armband and crowbar. The crowbar was lengthened after source comparison. Visible proportions were reviewed; footwear and arm pose remain interpreted. A complete 1:1 likeness is not certified."
+    },
+    "styleSourceId": "discipline-sprite-v1:ruri:military-jgsdf-reference-v2"
+  },
+  {
+    "characterId": "takurou",
+    "characterName": "Takurou Hayami",
+    "costumeId": "ova-orange-proportions-v3",
+    "label": {
+      "fr": "Tenue orange — proportions OVA v3",
+      "en": "Orange outfit — OVA proportions v3"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v3.png",
+    "provenance": "reference",
+    "category": "civilian",
+    "isDefault": false,
+    "available": true,
+    "revision": 3,
+    "sourceMedium": "anime_ova",
+    "newOutfit": false,
+    "identitySourceId": "takurou-ova-reference-80856",
+    "notes": {
+      "fr": "Correction ciblée d’après le portrait OVA : ovale du visage moins compact et cou légèrement allongé, vêtements conservés. La petite référence ne montre pas le bas du corps ; pantalon, chaussures et pose sont conservés de l’ancienne version. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Targeted correction of visible OVA proportions: less compact face outline and slightly longer neck, preserving the outfit. The small crop does not establish the lower body; trousers, shoes and pose remain from the earlier version. A complete 1:1 likeness is not certified."
+    },
+    "variantOf": "discipline-sprite-v1:takurou:ova-orange"
+  },
+  {
+    "characterId": "yuuki",
+    "characterName": "Yuuki Miyagishi",
+    "costumeId": "ova-tactical-reference-v3",
+    "label": {
+      "fr": "Tenue tactique débardeur et cargo — animé",
+      "en": "Tank top and cargo tactical outfit — OVA"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-reference-v3.png",
+    "provenance": "reference",
+    "category": "military",
+    "isDefault": false,
+    "available": true,
+    "revision": 3,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "ova-screenshot-20261028-055732-yuuki",
+    "notes": {
+      "fr": "Tenue OVA avec débardeur kaki, pantalon cargo brun, brassard rouge, gants, protections, pendentif et camouflage du visage. Cou, épaules, bras et proportions visibles du torse suivis ; la pose debout et les détails des bottes partiellement visibles restent reconstitués. Fidélité intégrale 1:1 non certifiée.",
+      "en": "OVA olive tank, brown cargo trousers, red armband, gloves, protection, pendant and face camouflage. Visible neck, shoulders, arms and torso informed the proportions; standing pose and partly visible boots remain interpreted. A complete 1:1 likeness is not certified."
+    },
+    "styleSourceId": "discipline-sprite-v1:yuuki:military-jgsdf"
+  },
+  {
+    "characterId": "maiko",
+    "characterName": "Maiko Kaneda",
+    "costumeId": "ova-tactical-reference-v3",
+    "label": {
+      "fr": "Tenue tactique avec ordinateur — animé",
+      "en": "Tactical outfit with laptop — OVA"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--ova-tactical-reference-v3.png",
+    "provenance": "reference",
+    "category": "military",
+    "isDefault": false,
+    "available": true,
+    "revision": 3,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "ova-screenshot-20261028-055732-maiko",
+    "notes": {
+      "fr": "Tenue OVA avec casque audio clair, lunettes orange, haut gris à col haut, bretelles claires, montre verte et ordinateur violet. La source montre une pose accroupie : la posture debout, le bas du pantalon et les chaussures restent reconstitués. Fidélité intégrale 1:1 non certifiée.",
+      "en": "OVA headset, orange goggles, grey high-neck top, pale straps, green watch and violet laptop. The source is crouching, so standing leg proportions, lower trousers and footwear are reconstructed. A complete 1:1 likeness is not certified."
+    },
+    "styleSourceId": "discipline-sprite-v1:maiko:military-jgsdf"
+  },
+  {
+    "characterId": "madoka",
+    "characterName": "Madoka Araki",
+    "costumeId": "ova-tactical-reference-v3",
+    "label": {
+      "fr": "Tenue tactique au gilet — animé",
+      "en": "Tactical vest outfit — OVA"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--ova-tactical-reference-v3.png",
+    "provenance": "reference",
+    "category": "military",
+    "isDefault": false,
+    "available": true,
+    "revision": 3,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "ova-screenshot-20261028-055732-madoka",
+    "notes": {
+      "fr": "Tenue utilitaire bleue de l’OVA avec gilet à poches sombre, manches à revers clairs, gants noirs et boucle de ceinture argentée. Visage, cou, épaules et silhouette du gilet suivis ; les bottes hors cadre restent reconstituées. Fidélité intégrale 1:1 non certifiée.",
+      "en": "OVA blue utility clothing, dark pocketed vest, pale rolled cuffs, black gloves and silver belt buckle. Visible face, neck, shoulders and vest silhouette guided the sprite; unseen boots are reconstructed. A complete 1:1 likeness is not certified."
+    },
+    "styleSourceId": "discipline-sprite-v1:madoka:military-jgsdf"
   }
 ]);

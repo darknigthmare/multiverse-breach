@@ -2,20 +2,24 @@
   "version": 1,
   "date": "2026-10-28",
   "counts": {
-    "sprites": 154,
+    "sprites": 160,
     "characters": 30,
-    "referenceBased": 38,
+    "referenceBased": 44,
     "adapted": 116,
     "byCategory": {
-      "civilian": 35,
-      "military": 35,
+      "civilian": 36,
+      "military": 40,
       "other": 4,
       "sport": 9,
       "swimwear": 35,
       "uniform": 36
     },
     "preservedOriginals": 132,
-    "correctedVariants": 22
+    "preservedBeforeV3": 154,
+    "correctedVariants": 23,
+    "newOvaOutfits": 5,
+    "v3Additions": 6,
+    "animeGalleryEntries": 7
   },
   "pendingCharacters": [
     {
@@ -26,7 +30,7 @@
     {
       "id": "security-guard-ova",
       "name": "Unnamed OVA security guard",
-      "reason": "No usable identity/costume image retrieved."
+      "reason": "A partial user-provided OVA screenshot, image(20261028-060014).png, shows clothed red-haired guards. They are not included in this pass covering outfits for the 30 existing characters; individual identity and off-frame lower-body details still need clarification."
     }
   ],
   "categoryGaps": {},
@@ -10446,8 +10450,796 @@
         "facing": "right",
         "animated": false
       }
+    },
+    {
+      "id": "saori:ova-tactical-reference-v3",
+      "characterId": "saori",
+      "costumeId": "ova-tactical-reference-v3",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--ova-tactical-reference-v3.png",
+      "category": "military",
+      "provenance": "reference",
+      "revision": 3,
+      "sourceMedium": "anime_ova",
+      "newOutfit": true,
+      "identitySourceId": "ova-screenshot-20261028-055544-saori",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-2b71e1c4-a76d-4d18-a6e8-8eb86c0e5b77",
+        "generationIdSource": "generated output filename",
+        "prompt": "Use case: identity-preserve. Create ONE new full-body pixel-art game sprite of Saori Otokawa in the tactical outfit actually shown in the two OVA screenshots. In images 1 and 2 she is the long straight navy-blue-haired, green-eyed woman wearing the black cap with the white letters \"S.A.D\", grey flight jacket, white shirt and grey-green cuffed shorts. Select ONLY that woman, not the other people. Images 1 and 2 are authoritative for her OVA face, visible body proportions, hairstyle and outfit. Image 3 is ONLY a rendering-style reference for crisp detailed pixel clusters and a transparent standalone game sprite; do NOT copy its body template or camouflage costume. Preserve the OVA's visible head-to-shoulder scale, elongated oval face, neck length, torso length, natural limb thickness and waist placement. Do not enlarge the head or eyes, shorten the torso or legs, narrow the waist, or standardize her build to the old game sprite. Retain smooth narrow navy hair with the two long front locks under the cap; no added white bow outside the cap. Precisely reproduce the grey jacket's standing collar, ribbed cuffs, small dark chest patch and rectangular sleeve pocket, the plain white crew-neck shirt, dark belt with a small brass rectangular buckle, and plain cuffed grey-green shorts with their source length. Keep dark gloves and the dark knee protection visible in the source; complete the unseen feet with plain dark practical boots without extra ornament. Neutral upright stance in three-quarter view facing right, arms resting naturally, non-sexual everyday character presentation. Do not add weapons, camouflage, medals or invented equipment. Preserve body proportions from the visible reference rather than using chibi proportions. Entire cap, hair, hands, knees, both boots and soles within the canvas with clear transparent margins. One static frame on a square canvas preferably 1254x1254, genuine transparent background, no floor shadow, text other than S.A.D on the cap, watermark, scenery, panels or comparison layout. This is a separate alternative asset, not a replacement of any previous costume.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "03b732b9763c99771ee12311daa966b0f6e0d87e607909d8d51a84c92de45385",
+        "bytes": 594679,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          0,
+          0,
+          1226,
+          1223
+        ],
+        "visibleBoundsAlphaGt8": [
+          405,
+          34,
+          897,
+          1220
+        ],
+        "opaqueBoundsAlphaGe128": [
+          407,
+          35,
+          895,
+          1219
+        ],
+        "visibleMargins": [
+          405,
+          34,
+          357,
+          34
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "OVA clothing and identity reference compared",
+          "visible proportions reviewed without invented measurements",
+          "full head, hands and shoes visible",
+          "transparent background and positive visible margins"
+        ],
+        "remainingLimitations": [
+          "perspective et pose différentes de la capture",
+          "parties cachées et chaussures reconstituées",
+          "fidélité intégrale 1:1 non certifiée"
+        ]
+      },
+      "proportionReview": {
+        "reviewed": true,
+        "method": "comparaison visuelle des seules régions visibles, sans mesures chiffrées inventées",
+        "visibleRegions": [
+          "visage",
+          "cou",
+          "épaules",
+          "torse",
+          "membres visibles"
+        ],
+        "limitations": [
+          "perspective et pose différentes de la capture",
+          "parties cachées et chaussures reconstituées",
+          "fidélité intégrale 1:1 non certifiée"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(20261028-055544).png",
+          "role": "OVA identity, clothing and visible proportion reference.",
+          "sourceMedium": "anime_ova",
+          "sha256": "00fad019949655c51c744e40c6e359a3365bd4cb2760b7f214fa1753268cdedc",
+          "dimensions": [
+            2048,
+            1585
+          ],
+          "id": "ova-screenshot-20261028-055544-saori"
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261028-055732).png",
+          "role": "OVA identity, clothing and visible proportion reference.",
+          "sourceMedium": "anime_ova",
+          "sha256": "45953683efe2ec758c335f81cc7e04e6e7b28cc98b57e0cadb7e7148011cfd6d",
+          "dimensions": [
+            2048,
+            1551
+          ]
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--military-jgsdf-reference-v2.png",
+          "role": "Previous sprite for pixel-art technique only; not outfit or anatomy evidence.",
+          "sha256": "f64a1ada7a954815b06cae981b72ad7e486afabdd2aeec7bf822a7e8143504b7"
+        }
+      ],
+      "fidelityNote": "Tenue tactique reprise des captures de l’OVA : casquette S.A.D, blouson gris, haut blanc, short à revers, gants et genouillère. Proportions visibles du visage, du cou et du torse suivies ; la pose debout et les chaussures hors champ sont reconstituées. Fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      },
+      "styleSourceId": "saori:military-jgsdf-reference-v2"
+    },
+    {
+      "id": "ruri:ova-tactical-reference-v3",
+      "characterId": "ruri",
+      "costumeId": "ova-tactical-reference-v3",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--ova-tactical-reference-v3.png",
+      "category": "military",
+      "provenance": "reference",
+      "revision": 3,
+      "sourceMedium": "anime_ova",
+      "newOutfit": true,
+      "identitySourceId": "ova-screenshot-20261028-055732-ruri",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-8569257d-65e6-41dc-8ebf-109afc77701a",
+        "generationIdSource": "generated output filename",
+        "prompt": "Use case: precise-object-edit. Image 1 is the generated Ruri OVA tactical sprite to correct. Image 2 is the original OVA screenshot and is authoritative ONLY for the long dark crowbar's relative size and end shape. Keep absolutely unchanged the character in image 1: identity, face, head and body proportions, helmet, green hair, vest, pale top, trousers, gloves, red armband, boots, stance, framing, pixel-art style and transparent background. Correct ONLY the undersized crowbar. The OVA crowbar is a long slender straight dark blue-black steel bar, approximately half the character's complete height when straight, with a short flattened angled/prying end rather than a broad rounded umbrella-handle hook. Make the crowbar materially longer, about twice the current bar length, and thinner with the source end shape. Let her existing gloved hand hold it near its middle so the bar can run diagonally beside her, from near upper torso height down toward her ankle, all within the canvas. Make only the minimal finger adjustment needed for a physically coherent grip. Do not enlarge the canvas or change the character's anatomy or pose. No new weapon, no text, no ground shadow. Keep both ends fully visible, keep the square 1254x1254 image and real transparency. One isolated full-body pixel-art sprite, no panels.",
+        "promptStatus": "recorded-verbatim",
+        "history": [
+          {
+            "generationId": "exec-4fd5fe79-5e6e-4b74-8886-b23bd532c534",
+            "prompt": "Use case: identity-preserve. Create ONE new full-body pixel-art game sprite of Ruri Nonomiya in the actual tactical OVA costume. In images 1 and 2 she is the green-haired, violet-eyed woman wearing the dark blue protective helmet and sleeveless navy utility vest, on the left of image 1 and to the right of the black-cap woman in image 2. Select ONLY her. The OVA screenshots define identity, visible body proportions, clothing geometry and colors. Image 3 is ONLY a pixel-art rendering reference, not a body or outfit template. Preserve the head-to-shoulder ratio, face length, neck, natural shoulder width, torso length, waist position, limb thickness and long straight trouser silhouette seen in the OVA. Do not enlarge the head or eyes, turn her into a chibi, shorten the legs, artificially slim the waist or exaggerate any anatomy. Reproduce the simple dark blue helmet with side ear guards, short green fringe and green tied hair visible behind the helmet; do not add yellow ribbons that are not visible in this helmet outfit. Keep the open navy sleeveless multi-pocket vest, pale yellow opaque top, source amount of midriff, plain full-length navy cargo trousers, wide light grey segmented belt, dark gloves and elbow protection, and the red upper-arm band as positioned in the source. Hold the dark hooked crowbar from the screenshot loosely at her side in a relaxed game idle pose; do not add guns or other equipment. Complete feet cropped out of the source with simple dark practical boots, no ornamental armor. One entire standing character, three-quarter facing right, non-sexual neutral presentation, all headgear, hair, hands, tool and both boot soles visible with transparent margins. Detailed crisp pixel clusters with clean dark outlines and restrained game-readable shading; keep the OVA build rather than reusing the old sprite silhouette. Square canvas preferably 1254x1254, real transparent background, one static frame, no floor shadow, backdrop, lettering, watermark or before/after panels. Create a separate costume alternative and preserve all earlier versions.",
+            "status": "draft-accessory-too-short"
+          },
+          {
+            "generationId": "exec-8569257d-65e6-41dc-8ebf-109afc77701a",
+            "prompt": "Use case: precise-object-edit. Image 1 is the generated Ruri OVA tactical sprite to correct. Image 2 is the original OVA screenshot and is authoritative ONLY for the long dark crowbar's relative size and end shape. Keep absolutely unchanged the character in image 1: identity, face, head and body proportions, helmet, green hair, vest, pale top, trousers, gloves, red armband, boots, stance, framing, pixel-art style and transparent background. Correct ONLY the undersized crowbar. The OVA crowbar is a long slender straight dark blue-black steel bar, approximately half the character's complete height when straight, with a short flattened angled/prying end rather than a broad rounded umbrella-handle hook. Make the crowbar materially longer, about twice the current bar length, and thinner with the source end shape. Let her existing gloved hand hold it near its middle so the bar can run diagonally beside her, from near upper torso height down toward her ankle, all within the canvas. Make only the minimal finger adjustment needed for a physically coherent grip. Do not enlarge the canvas or change the character's anatomy or pose. No new weapon, no text, no ground shadow. Keep both ends fully visible, keep the square 1254x1254 image and real transparency. One isolated full-body pixel-art sprite, no panels.",
+            "status": "accepted",
+            "referenceFilenames": [
+              "exec-4fd5fe79-5e6e-4b74-8886-b23bd532c534.png",
+              "image(20261028-055732).png"
+            ]
+          }
+        ]
+      },
+      "image": {
+        "sha256": "246ac22249efa83c9748f7950c7cd013ba87e6833518ae29c06c2baabbeefede",
+        "bytes": 616071,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          25,
+          33,
+          1202,
+          1254
+        ],
+        "visibleBoundsAlphaGt8": [
+          444,
+          49,
+          1083,
+          1226
+        ],
+        "opaqueBoundsAlphaGe128": [
+          445,
+          50,
+          1082,
+          1225
+        ],
+        "visibleMargins": [
+          444,
+          49,
+          171,
+          28
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "OVA clothing and identity reference compared",
+          "visible proportions reviewed without invented measurements",
+          "full head, hands and shoes visible",
+          "transparent background and positive visible margins"
+        ],
+        "remainingLimitations": [
+          "perspective et pose différentes de la capture",
+          "parties cachées et chaussures reconstituées",
+          "fidélité intégrale 1:1 non certifiée"
+        ]
+      },
+      "proportionReview": {
+        "reviewed": true,
+        "method": "comparaison visuelle des seules régions visibles, sans mesures chiffrées inventées",
+        "visibleRegions": [
+          "visage",
+          "cou",
+          "épaules",
+          "torse",
+          "membres visibles"
+        ],
+        "limitations": [
+          "perspective et pose différentes de la capture",
+          "parties cachées et chaussures reconstituées",
+          "fidélité intégrale 1:1 non certifiée"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(20261028-055732).png",
+          "role": "OVA identity, clothing and visible proportion reference.",
+          "sourceMedium": "anime_ova",
+          "sha256": "45953683efe2ec758c335f81cc7e04e6e7b28cc98b57e0cadb7e7148011cfd6d",
+          "dimensions": [
+            2048,
+            1551
+          ],
+          "id": "ova-screenshot-20261028-055732-ruri"
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261028-055544).png",
+          "role": "OVA identity, clothing and visible proportion reference.",
+          "sourceMedium": "anime_ova",
+          "sha256": "00fad019949655c51c744e40c6e359a3365bd4cb2760b7f214fa1753268cdedc",
+          "dimensions": [
+            2048,
+            1585
+          ]
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--military-jgsdf-reference-v2.png",
+          "role": "Previous sprite for pixel-art technique only; not outfit or anatomy evidence.",
+          "sha256": "9272a7bc940ff68456acbea5e3d5e1205a9c652837b1b7798f1932872db04cbb"
+        }
+      ],
+      "fidelityNote": "Tenue tactique reprise des captures de l’OVA : casque marine, gilet bleu, haut crème, pantalon cargo, brassard et pied-de-biche allongé après comparaison. Rapport tête/épaules et silhouette du torse et des jambes contrôlés visuellement ; chaussures hors champ et pose du bras reconstituées. Fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      },
+      "styleSourceId": "ruri:military-jgsdf-reference-v2"
+    },
+    {
+      "id": "takurou:ova-orange-proportions-v3",
+      "characterId": "takurou",
+      "costumeId": "ova-orange-proportions-v3",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v3.png",
+      "category": "civilian",
+      "provenance": "reference",
+      "revision": 3,
+      "sourceMedium": "anime_ova",
+      "newOutfit": false,
+      "identitySourceId": "takurou-ova-reference-80856",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-7183d1b2-84a5-4636-a27e-5677342d86f8",
+        "generationIdSource": "generated output filename",
+        "prompt": "Use case: identity-preserve. Make a separate corrective variant of Takurou Hayami's existing full-body pixel-art sprite. Image 1 is the actual OVA reference and is authoritative for the visible face, hair, neck, shoulders, shirt and backpack. Image 2 is the existing game sprite to edit and supplies the standing three-quarter-right pose, pixel-art rendering and the unseen lower body. Correct only the visible proportion drift: the OVA face has a gently longer oval and chin, a less broad/rounded lower face, a more naturally extended neck, and restrained eye size. Keep his original apparent age, brown short slightly tousled hair and blue-grey eyes; do not make him younger, older, muscular or chibi. Retain the source head-to-shoulder scale and natural shoulder/torso proportions; do not exaggerate or slim his build. Match the orange loose short-sleeved crew-neck shirt over dark burgundy long sleeves and the simple grey backpack straps seen in image 1. Preserve the old sprite's dark trousers, shoes, complete limbs and neutral upright idle pose because these parts are not established by the small cropped OVA reference. No invented extra accessories or logos. Hands relaxed at sides; one complete figure facing right in three-quarter view. Detailed crisp pixel clusters, clean outlines and restrained shadows compatible with the previous sprite. Keep the entire hair, hands, both feet and soles inside the canvas with transparent margins, preferably a 1254x1254 square. Actual transparent background, one static frame, no floor shadow, scenery, lettering, watermark, border or comparison panel. This is a new alternative and must not replace the existing image. The goal is fidelity to visible reference proportions, not an invented full-body redesign.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "b004d4ff7face1e24a85d4114e0f71ed37b805d67f34999fd48c99e3729b4e11",
+        "bytes": 490127,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          0,
+          49,
+          1230,
+          1222
+        ],
+        "visibleBoundsAlphaGt8": [
+          444,
+          64,
+          889,
+          1191
+        ],
+        "opaqueBoundsAlphaGe128": [
+          444,
+          64,
+          887,
+          1190
+        ],
+        "visibleMargins": [
+          444,
+          64,
+          365,
+          63
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "OVA clothing and identity reference compared",
+          "visible proportions reviewed without invented measurements",
+          "full head, hands and shoes visible",
+          "transparent background and positive visible margins"
+        ],
+        "remainingLimitations": [
+          "référence OVA de faible résolution et recadrée",
+          "bas du corps non établi par la référence",
+          "fidélité intégrale 1:1 non certifiée"
+        ]
+      },
+      "proportionReview": {
+        "reviewed": true,
+        "method": "comparaison visuelle des seules régions visibles, sans mesures chiffrées inventées",
+        "visibleRegions": [
+          "visage",
+          "cou",
+          "épaules",
+          "haut du torse"
+        ],
+        "limitations": [
+          "référence OVA de faible résolution et recadrée",
+          "bas du corps non établi par la référence",
+          "fidélité intégrale 1:1 non certifiée"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "public_reference",
+          "filename": "takurou.jpg",
+          "role": "OVA identity, clothing and visible proportion reference.",
+          "sourceMedium": "anime_ova",
+          "sha256": "7dbc46e038f89bfba2873db8291bb6b5625d46f5445215b9ad3d623f694cd0b8",
+          "dimensions": [
+            225,
+            169
+          ],
+          "id": "takurou-ova-reference-80856",
+          "url": "https://namikoi.com/characters/80856"
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange.png",
+          "role": "Previous sprite being corrected; retain clothing and off-frame lower body.",
+          "sha256": "d1768155a2e9e5023c12a3eb1b91d107c5e28f9f0a8ab722cb4e2bd7cf6dc3e0"
+        }
+      ],
+      "fidelityNote": "Correction ciblée d’après le portrait OVA : ovale du visage moins compact et cou légèrement allongé, vêtements conservés. La petite référence ne montre pas le bas du corps ; pantalon, chaussures et pose sont conservés de l’ancienne version. Fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      },
+      "variantOf": "takurou:ova-orange"
+    },
+    {
+      "id": "yuuki:ova-tactical-reference-v3",
+      "characterId": "yuuki",
+      "costumeId": "ova-tactical-reference-v3",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-reference-v3.png",
+      "category": "military",
+      "provenance": "reference",
+      "revision": 3,
+      "sourceMedium": "anime_ova",
+      "newOutfit": true,
+      "identitySourceId": "ova-screenshot-20261028-055732-yuuki",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-bd6eab4e-f41a-4c06-8076-0136d9571d9f",
+        "generationIdSource": "generated output filename; no separate generation ID field returned",
+        "prompt": "Use case: stylized-concept.\nAsset type: one new additive game character costume sprite, not a replacement of an old sprite.\nOutput: exactly one full-body character on a genuinely transparent alpha background, 1254 by 1254 square canvas. Neutral standing three-quarter view facing the viewer's right, both complete feet visible, centered with comfortable transparent margins and no ground shadow. Crisp detailed anime pixel art with clean pixel clusters, restrained shading and the same game-art finish as the style reference. No text, labels, frame, background, extra person, chibi proportions, or exaggerated anatomy.\nReference hierarchy: the anime OVA screenshot(s) define this character's identity, hairstyle, actual outfit and visible body proportions. The old camouflage sprite supplies pixel-art rendering technique only; do not copy its camouflage costume or impose its head/body template. Preserve the specific visible head, neck, shoulder, torso and limb relationships from the anime scene when making a standing version. Keep the presentation neutral and nonsexual, with practical opaque garments.\nInput image 1: anime group scene. Draw ONLY Yuuki, the short blue-haired woman standing at the far right in an olive tank top and brown cargo trousers. Input image 2: the same woman performing a kick; use it only to corroborate details, not to copy the action pose. Input image 3: old camouflage sprite, rendering style only.\nIdentity and proportions: short straight layered cobalt/navy-blue hair reaching the nape, fine forward fringe, amber-brown eyes, longer angular-oval face with a clear neck, and green diagonal camouflage marks on her cheeks. Preserve her comparatively athletic shoulders and upper arms, long torso and long limbs visible in the OVA; she must not become a small round-headed generic doll. Keep her source build without enlarging sexual anatomy.\nNew outfit: plain muted light-olive sleeveless tank top covering the abdomen, with an ordinary opaque practical neckline; loose brown/olive cargo trousers with thigh pockets; black belt with a simple silver rectangular buckle; dark kneepads with straps; black fingerless gloves and black elbow protection; red tied cloth band around the upper arm as in the standing source; small dark cord necklace with a metal tag. Neutral relaxed arms, no weapon. Use simple dark tactical boots with light grey soles, guided by the partly visible footwear in image 2; do not introduce decorative details. Keep the costume colours and construction from the OVA, no camouflage jacket, no extra armour.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "293cf6221d6d998967eb10104bf48da6be31b05c1a4fba5bc256d37b44a340fe",
+        "bytes": 591837,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          65,
+          33,
+          1240,
+          1224
+        ],
+        "visibleBoundsAlphaGt8": [
+          445,
+          39,
+          870,
+          1222
+        ],
+        "opaqueBoundsAlphaGe128": [
+          446,
+          40,
+          869,
+          1221
+        ],
+        "visibleMargins": [
+          445,
+          39,
+          384,
+          32
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "OVA clothing and identity reference compared",
+          "visible proportions reviewed without invented measurements",
+          "full head, hands and shoes visible",
+          "transparent background and positive visible margins"
+        ],
+        "remainingLimitations": [
+          "Standing pose is newly synthesized from standing and action OVA frames.",
+          "Boot silhouette is only partly visible during foreshortened action; simple completion is interpretive.",
+          "No claim of pixel-for-pixel or complete full-body 1:1 reconstruction.",
+          "Pixel-art translation retains stylized facial details; not a literal 1:1 redraw of the OVA frame."
+        ]
+      },
+      "proportionReview": {
+        "reviewed": true,
+        "method": "Visual comparison of visible regions only; no invented numeric measurements.",
+        "visibleRegions": [
+          "face",
+          "neck",
+          "shoulders",
+          "arms",
+          "torso",
+          "visible portions of the legs"
+        ],
+        "observations": [
+          "Longer angular-oval head and visible neck; no enlargement of the old sprite's compact face.",
+          "Athletic shoulders and arms, elongated torso/limbs visible in OVA; source-specific build preserved without emphasis on sexual anatomy.",
+          "Both references use perspective, and the standing source cuts off the feet; exact relative height is not established."
+        ],
+        "limitations": [
+          "Standing pose is newly synthesized from standing and action OVA frames.",
+          "Boot silhouette is only partly visible during foreshortened action; simple completion is interpretive.",
+          "No claim of pixel-for-pixel or complete full-body 1:1 reconstruction.",
+          "Pixel-art translation retains stylized facial details; not a literal 1:1 redraw of the OVA frame."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(20261028-055732).png",
+          "role": "Primary OVA identity, outfit and visible standing proportions; short blue-haired woman at far right",
+          "sourceMedium": "anime_ova",
+          "sha256": "45953683efe2ec758c335f81cc7e04e6e7b28cc98b57e0cadb7e7148011cfd6d",
+          "dimensions": [
+            2048,
+            1551
+          ],
+          "id": "ova-screenshot-20261028-055732-yuuki"
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261028-055655).png",
+          "role": "Same OVA tactical outfit in action; corroborating hair, gloves, cargo trousers, kneepads and partly visible boots",
+          "sourceMedium": "anime_ova",
+          "sha256": "316f98f86c729c196cd55fa6851f05cc46c49942dc4d8b30cab6e9ec65210c94",
+          "dimensions": [
+            2048,
+            1594
+          ]
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--military-jgsdf.png",
+          "role": "Pixel-art technique only; not outfit or anatomy authority",
+          "sha256": "eac7348da8bc92dadc4b79d765a94b5197abde72bfa6d3aec2c7efef2e4b9a34"
+        }
+      ],
+      "fidelityNote": "Tenue OVA avec débardeur kaki, pantalon cargo brun, brassard rouge, gants, protections, pendentif et camouflage du visage. Cou, épaules, bras et proportions visibles du torse suivis ; la pose debout et les détails des bottes partiellement visibles restent reconstitués. Fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      },
+      "styleSourceId": "yuuki:military-jgsdf"
+    },
+    {
+      "id": "maiko:ova-tactical-reference-v3",
+      "characterId": "maiko",
+      "costumeId": "ova-tactical-reference-v3",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--ova-tactical-reference-v3.png",
+      "category": "military",
+      "provenance": "reference",
+      "revision": 3,
+      "sourceMedium": "anime_ova",
+      "newOutfit": true,
+      "identitySourceId": "ova-screenshot-20261028-055732-maiko",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-1856ecad-db83-46ec-a25b-b682a506f3a6",
+        "generationIdSource": "generated output filename; no separate generation ID field returned",
+        "prompt": "Use case: stylized-concept.\nAsset type: one new additive game character costume sprite, not a replacement of an old sprite.\nOutput: exactly one full-body character on a genuinely transparent alpha background, 1254 by 1254 square canvas. Neutral standing three-quarter view facing the viewer's right, both complete feet visible, centered with comfortable transparent margins and no ground shadow. Crisp detailed anime pixel art with clean pixel clusters, restrained shading and the same game-art finish as the style reference. No text, labels, frame, background, extra person, chibi proportions, or exaggerated anatomy.\nReference hierarchy: the anime OVA screenshot(s) define this character's identity, hairstyle, actual outfit and visible body proportions. The old camouflage sprite supplies pixel-art rendering technique only; do not copy its camouflage costume or impose its head/body template. Preserve the specific visible head, neck, shoulder, torso and limb relationships from the anime scene when making a standing version. Keep the presentation neutral and nonsexual, with practical opaque garments.\nInput image 1: anime group scene. Draw ONLY Maiko, the brown-haired woman crouching in the front centre with orange wraparound goggles, a white/silver headset and a purple laptop. Input image 2: old camouflage sprite, rendering style only.\nIdentity and proportions: brown hair swept back into a low ponytail, long loose side strands, longer oval face and a clear neck as in the OVA; broad orange safety goggles with a dark rim cover the eyes, large white/silver over-ear headset cups. Do not use the old sprite's black eyeglasses, yellow hairclips or loose waist-length hair. Derive head-to-shoulder and arm-to-torso proportions from the anime woman's visible upper body, rather than a generic sprite body. Keep her natural source build and the blouse's loose fabric.\nNew outfit: opaque slate-grey high-neck short-sleeved top with softly gathered sleeve cuffs and darker folds at the neck; light grey/white shoulder straps of a simple harness/backpack; plain black trousers; black fingerless gloves and a green wristwatch band. Include a small blue-violet laptop, held open at waist level with one hand supporting the base and the other resting naturally near the keyboard, so the face and upper torso remain readable. Transform the crouched reference into a neutral upright standing pose, three-quarter right. The reference obscures the lower legs: complete them conservatively in plain straight black trousers and simple black practical shoes, without adding a skirt or elaborate tactical gear. No kneeling pose, no camouflage clothes, no extra tools.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "be2e497adbed028f1fe6ca332a936c155281a95ec555c27ad63a7ba4bb2bb2ea",
+        "bytes": 549892,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          33,
+          29,
+          1224,
+          1219
+        ],
+        "visibleBoundsAlphaGt8": [
+          453,
+          67,
+          944,
+          1213
+        ],
+        "opaqueBoundsAlphaGe128": [
+          454,
+          67,
+          943,
+          1212
+        ],
+        "visibleMargins": [
+          453,
+          67,
+          310,
+          41
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "OVA clothing and identity reference compared",
+          "visible proportions reviewed without invented measurements",
+          "full head, hands and shoes visible",
+          "transparent background and positive visible margins"
+        ],
+        "remainingLimitations": [
+          "Source character is crouching; standing pose and lower-leg proportions are interpretive.",
+          "Black lower garment is partly occluded; plain trousers chosen as a conservative covered completion, not certified canonical construction.",
+          "Shoes are outside the reference and are simple neutral completions.",
+          "Laptop holding pose is adapted for standing readability.",
+          "Pixel-art translation retains stylized facial details; not a literal 1:1 redraw of the OVA frame."
+        ]
+      },
+      "proportionReview": {
+        "reviewed": true,
+        "method": "Visual comparison of visible regions only; no invented numeric measurements.",
+        "visibleRegions": [
+          "face",
+          "head-to-shoulder relationship",
+          "upper torso",
+          "arms",
+          "sleeve volume"
+        ],
+        "observations": [
+          "OVA crouching pose establishes face, head-to-shoulder relation, upper torso, arms and sleeve volume.",
+          "Standing leg length and entire upright silhouette cannot be measured from the crouched source.",
+          "Source-specific loose high-neck top and narrower oval face prioritized over the old standard camouflage body."
+        ],
+        "limitations": [
+          "Source character is crouching; standing pose and lower-leg proportions are interpretive.",
+          "Black lower garment is partly occluded; plain trousers chosen as a conservative covered completion, not certified canonical construction.",
+          "Shoes are outside the reference and are simple neutral completions.",
+          "Laptop holding pose is adapted for standing readability.",
+          "Pixel-art translation retains stylized facial details; not a literal 1:1 redraw of the OVA frame."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(20261028-055732).png",
+          "role": "Primary OVA identity and outfit; brown-haired woman crouching in front with orange goggles and a purple laptop",
+          "sourceMedium": "anime_ova",
+          "sha256": "45953683efe2ec758c335f81cc7e04e6e7b28cc98b57e0cadb7e7148011cfd6d",
+          "dimensions": [
+            2048,
+            1551
+          ],
+          "id": "ova-screenshot-20261028-055732-maiko"
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--military-jgsdf.png",
+          "role": "Pixel-art technique only; not outfit or anatomy authority",
+          "sha256": "7cdd357dcbaa46669b2a8528be5317b3a2877df56abca7099f94ec04fd130328"
+        }
+      ],
+      "fidelityNote": "Tenue OVA avec casque audio clair, lunettes orange, haut gris à col haut, bretelles claires, montre verte et ordinateur violet. La source montre une pose accroupie : la posture debout, le bas du pantalon et les chaussures restent reconstitués. Fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      },
+      "styleSourceId": "maiko:military-jgsdf"
+    },
+    {
+      "id": "madoka:ova-tactical-reference-v3",
+      "characterId": "madoka",
+      "costumeId": "ova-tactical-reference-v3",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--ova-tactical-reference-v3.png",
+      "category": "military",
+      "provenance": "reference",
+      "revision": 3,
+      "sourceMedium": "anime_ova",
+      "newOutfit": true,
+      "identitySourceId": "ova-screenshot-20261028-055732-madoka",
+      "canonicalCostumeCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-951d81bb-546b-4384-9a1a-917c569fc38a",
+        "generationIdSource": "generated output filename; no separate generation ID field returned",
+        "prompt": "Use case: stylized-concept.\nAsset type: one new additive game character costume sprite, not a replacement of an old sprite.\nOutput: exactly one full-body character on a genuinely transparent alpha background, 1254 by 1254 square canvas. Neutral standing three-quarter view facing the viewer's right, both complete feet visible, centered with comfortable transparent margins and no ground shadow. Crisp detailed anime pixel art with clean pixel clusters, restrained shading and the same game-art finish as the style reference. No text, labels, frame, background, extra person, chibi proportions, or exaggerated anatomy.\nReference hierarchy: the anime OVA screenshot(s) define this character's identity, hairstyle, actual outfit and visible body proportions. The old camouflage sprite supplies pixel-art rendering technique only; do not copy its camouflage costume or impose its head/body template. Preserve the specific visible head, neck, shoulder, torso and limb relationships from the anime scene when making a standing version. Keep the presentation neutral and nonsexual, with practical opaque garments.\nInput image 1: anime group scene. Draw ONLY Madoka, the woman second from the left with two dark plum hair buns, a blue uniform and black tactical vest. Input image 2: the same woman large at the left of the closer scene; use her face, neck, sleeves and vest details. Input image 3: old camouflage sprite, rendering style only.\nIdentity and proportions: dark plum/navy hair neatly gathered into two round side buns, parted pointed fringe, violet-blue eyes and a longer oval face with a visible neck. Preserve her source head-to-shoulder relation and the straight functional silhouette created by the padded vest. Slim-to-average build, natural arms and legs, not compressed or chibi. Retain the OVA's particular facial shape rather than the old sprite's compact face.\nNew outfit: muted slate-blue/blue-violet collared utility shirt with sleeves rolled to the elbows and pale inner cuffs; a substantial charcoal-black tactical vest with rectangular front pockets, shoulder padding and a simple front closure; matching blue cargo trousers with visible thigh/knee pockets; black belt and silver rectangular buckle; plain black gloves. Keep the whole torso covered and the vest practical and boxy. Neutral upright pose with arms relaxed, no weapon or baton. The OVA cuts off the feet: complete the trousers and use simple plain black lace-up tactical boots as an understated interpretation. No camouflage fabric, no added insignia or decorative accessories.",
+        "promptStatus": "recorded-verbatim"
+      },
+      "image": {
+        "sha256": "8c8212b68851412a7e41112aa2ca5002df34789edb51f82ef62afc1d9b32ec15",
+        "bytes": 589779,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          25,
+          28,
+          1238,
+          1236
+        ],
+        "visibleBoundsAlphaGt8": [
+          445,
+          31,
+          870,
+          1231
+        ],
+        "opaqueBoundsAlphaGe128": [
+          446,
+          31,
+          869,
+          1229
+        ],
+        "visibleMargins": [
+          445,
+          31,
+          384,
+          23
+        ]
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "OVA clothing and identity reference compared",
+          "visible proportions reviewed without invented measurements",
+          "full head, hands and shoes visible",
+          "transparent background and positive visible margins"
+        ],
+        "remainingLimitations": [
+          "Feet are outside the primary OVA crop; black tactical boots are conservative completions.",
+          "A neutral three-quarter standing pose is synthesized from the OVA poses.",
+          "Secondary VN artwork used only to confirm identity, never mixed into the OVA costume.",
+          "Pixel-art translation retains stylized facial details; not a literal 1:1 redraw of the OVA frame."
+        ]
+      },
+      "proportionReview": {
+        "reviewed": true,
+        "method": "Visual comparison of visible regions only; no invented numeric measurements.",
+        "visibleRegions": [
+          "face",
+          "neck",
+          "shoulders",
+          "vest-covered torso",
+          "most of the legs"
+        ],
+        "observations": [
+          "OVA provides head, neck, shoulders, vest-covered torso and most legs in standing view.",
+          "Longer face and visible neck; boxy vest silhouette retained instead of reusing camouflage sprite anatomy.",
+          "Exact foot size, full standing height and relative character scale are not established because the frame crops the boots."
+        ],
+        "limitations": [
+          "Feet are outside the primary OVA crop; black tactical boots are conservative completions.",
+          "A neutral three-quarter standing pose is synthesized from the OVA poses.",
+          "Secondary VN artwork used only to confirm identity, never mixed into the OVA costume.",
+          "Pixel-art translation retains stylized facial details; not a literal 1:1 redraw of the OVA frame."
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "user_upload",
+          "filename": "image(20261028-055732).png",
+          "role": "Primary OVA identity, outfit and visible body proportions; twin-bun-haired woman second from left",
+          "sourceMedium": "anime_ova",
+          "sha256": "45953683efe2ec758c335f81cc7e04e6e7b28cc98b57e0cadb7e7148011cfd6d",
+          "dimensions": [
+            2048,
+            1551
+          ],
+          "id": "ova-screenshot-20261028-055732-madoka"
+        },
+        {
+          "type": "user_upload",
+          "filename": "image(20261028-055544).png",
+          "role": "Closer OVA view at left; hair buns, face, neck, vest construction and rolled sleeves",
+          "sourceMedium": "anime_ova",
+          "sha256": "00fad019949655c51c744e40c6e359a3365bd4cb2760b7f214fa1753268cdedc",
+          "dimensions": [
+            2048,
+            1585
+          ]
+        },
+        {
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--military-jgsdf.png",
+          "role": "Pixel-art technique only; not outfit or anatomy authority",
+          "sha256": "9713d99eaecee62ecada7944be1293a98f1548faa76c6898fc3e7e5ad6ae1b2e"
+        },
+        {
+          "type": "public_reference",
+          "filename": "madoka.jpg",
+          "role": "Identity check only; not a source for OVA garments or proportions",
+          "sourceMedium": "visual_novel_game",
+          "sha256": "212a63821eb45e37a4a6bfbcb3ab0296d5a897c63ec8a8ff56865d56799dda00",
+          "dimensions": [
+            250,
+            300
+          ],
+          "url": "https://www.ymgal.games/ca36219"
+        }
+      ],
+      "fidelityNote": "Tenue utilitaire bleue de l’OVA avec gilet à poches sombre, manches à revers clairs, gants noirs et boucle de ceinture argentée. Visage, cou, épaules et silhouette du gilet suivis ; les bottes hors cadre restent reconstituées. Fidélité intégrale 1:1 non certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      },
+      "styleSourceId": "madoka:military-jgsdf"
     }
   ],
-  "revision": 2,
-  "preservedBaselineCommit": "f10098f69523e0c35e6f81788dfdfc1a8b897cd8"
+  "revision": 3,
+  "preservedBaselineCommit": "f10098f69523e0c35e6f81788dfdfc1a8b897cd8",
+  "preservedV3BaselineCommit": "58ca23d7bc226330bb5082cc1ba49aeadafc5de6",
+  "pendingOutfitReferences": [
+    {
+      "scope": "other OVA dresses and officer outfits",
+      "status": "identity-not-confirmed",
+      "reason": "The available references do not securely establish named identities; no attributed sprite has been generated or installed."
+    }
+  ]
 }
