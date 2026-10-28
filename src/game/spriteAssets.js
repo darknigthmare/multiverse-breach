@@ -4,6 +4,7 @@ import {
   getMeleeAnimationSheetSources,
   getMeleeSheetLayout
 } from './melee/meleeAnimationManifest.js';
+import { getCloudMeadowSpriteLayout, getCloudMeadowSpriteSrc } from './cloudMeadowCharacters.js';
 
 export const SPRITE_SHEET_META = {
   frameWidth: 256,
@@ -577,6 +578,8 @@ export const getHeroMeleeSpriteSheetSrcs = heroOrId => (
 
 export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (!hero?.id) return '';
+  const cloudMeadowSprite = getCloudMeadowSpriteSrc(hero);
+  if (cloudMeadowSprite) return cloudMeadowSprite;
   if (Object.hasOwn(CORRECTED_CANON_HERO_SPRITES, hero.id)) return CORRECTED_CANON_HERO_SPRITES[hero.id];
   if (context === 'melee') {
     const meleeFrame = getHeroMeleeAnimationFrame(hero);
@@ -642,7 +645,8 @@ const normalizeSpriteSrc = (src) => {
 };
 
 export const getSpriteSheetLayout = (src) => (
-  getMeleeSheetLayout(src)
+  getCloudMeadowSpriteLayout(src)
+  || getMeleeSheetLayout(src)
   || SPRITE_SHEET_LAYOUTS[normalizeSpriteSrc(src)]
   || {
     columns: SPRITE_SHEET_META.columns,

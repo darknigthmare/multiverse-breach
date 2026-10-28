@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "createdDate": "2026-10-28",
+  "source": {
+    "type": "user-provided-reference",
+    "path": "public/reviews/cloud-meadow/reference.png",
+    "sha256": "0bc345c8c5499e59b14adb965184d9211e264feaba24f15288be7182210ca595"
+  },
+  "method": "Built-in ImageGen; four separate transparent character images. Three reference-guided redraws and one explicitly covered adaptation. Generated PNG bytes copied unchanged.",
+  "fidelityStatement": "No generated image is certified identical 1:1. All assets are static one-frame illustrated reference-guided redraws; source low resolution prevents certifying fine details. The female dragon deliberately has different opaque chest coverage.",
+  "files": [
+    {
+      "id": "eve",
+      "filename": "eve-reference.png",
+      "width": 1254,
+      "height": 1254,
+      "format": "PNG",
+      "mode": "RGBA",
+      "animationFrames": 1,
+      "generationTool": "image_gen__imagegen",
+      "transparentBackground": true,
+      "exactOneToOneCertified": false,
+      "provenance": "reference-guided-redraw",
+      "finalPrompt": "Use case: background-extraction. Asset type: individual transparent full-body character sprite for a game. Input image 1 is the exact edit target and sole visual authority. Isolate the specified single character as faithfully as possible from this character reference sheet. Remove the cream background and every other character and mark. Keep the ORIGINAL pose, facing direction, silhouette, body proportions, face, costume, anatomy, colors, flat illustrated line-art and simple cel-shading; do not reinterpret or beautify or add detail. Enlarge only enough to be clean and legible, retaining the same look. Square canvas with generous fully transparent margin, full figure including all extremities, no floor shadow, no text, no checkerboard graphic. Exactly one character. Subject: the HUMAN WOMAN at the upper-left, the left member of the top small human pair (the same woman is duplicated below). Adult farmer Eve. Her short auburn/burgundy bob has a curved outward tip by her cheek. Cheerful face and large cyan eyes. Dark green-black short-sleeve t-shirt, indigo-blue denim bib overalls with fitted waist, visible overall straps and cuffs tucked into tall glossy black boots. Brown leather gloves. Her arm at viewer left is bent upward with two-finger peace gesture beside head; her other gloved hand rests on her hip. Preserve the original moderate slim body proportions and slightly asymmetrical planted feet; NO tools or accessories. Preserve the slightly three-quarter body orientation and head from this exact source. Do not render the neighboring male or dragons.",
+      "referenceImagePaths": [
+        "public/reviews/cloud-meadow/reference.png"
+      ],
+      "preservedSignatures": [
+        "Auburn bob",
+        "Dark short-sleeved shirt",
+        "Blue bib overalls",
+        "Brown gloves",
+        "Tall black boots",
+        "Raised two-finger gesture",
+        "Other hand at hip"
+      ],
+      "deviations": [
+        "Generated redraw refines low-resolution source line work and shading; face, seams, scale contours and exact proportions are not pixel-identical.",
+        "Single static reference pose only; no original game animation."
+      ]
+    },
+    {
+      "id": "evan",
+      "filename": "evan-reference.png",
+      "width": 1254,
+      "height": 1254,
+      "format": "PNG",
+      "mode": "RGBA",
+      "animationFrames": 1,
+      "generationTool": "image_gen__imagegen",
+      "transparentBackground": true,
+      "exactOneToOneCertified": false,
+      "provenance": "reference-guided-redraw",
+      "finalPrompt": "Use case: background-extraction. Asset type: individual transparent full-body character sprite for a game. Input image 1 is the exact edit target and sole visual authority. Isolate the specified single character as faithfully as possible from this character reference sheet. Remove the cream background and every other character and mark. Keep the ORIGINAL pose, facing direction, silhouette, body proportions, face, costume, anatomy, colors, flat illustrated line-art and simple cel-shading; do not reinterpret or beautify or add detail. Enlarge only enough to be clean and legible, retaining the same look. Square canvas with generous fully transparent margin, full figure including all extremities, no floor shadow, no text, no checkerboard graphic. Exactly one character. Subject: the HUMAN MAN in the top pair of small humans at upper-left, the right-hand figure of that pair (duplicated below). Adult farmer Evan. Tousled short auburn/brown hair with a side-swept fringe and rear spikes, large cyan eyes, friendly small smile. Dark teal-black short-sleeved t-shirt, indigo-blue denim bib overalls with a central rounded rectangular bib pocket, brown leather gloves, tall glossy black boots. Arm at viewer right bent upward with closed small fist at shoulder/chest level, other arm hangs down in front with gloved fist. Preserve exact source adult proportions, small head relative full body, left three-quarter pose, slim waist, legs, pockets and boot silhouettes. No tools or accessories. Do not render the woman or dragons.",
+      "referenceImagePaths": [
+        "public/reviews/cloud-meadow/reference.png"
+      ],
+      "preservedSignatures": [
+        "Tousled auburn hair",
+        "Dark short-sleeved shirt",
+        "Blue bib overalls with pocket",
+        "Brown gloves",
+        "Tall black boots",
+        "Raised fist"
+      ],
+      "deviations": [
+        "Generated redraw refines low-resolution source line work and shading; face, seams, scale contours and exact proportions are not pixel-identical.",
+        "Single static reference pose only; no original game animation."
+      ]
+    },
+    {
+      "id": "dragon_female",
+      "filename": "dragon-female-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "format": "PNG",
+      "mode": "RGBA",
+      "animationFrames": 1,
+      "generationTool": "image_gen__imagegen",
+      "transparentBackground": true,
+      "exactOneToOneCertified": false,
+      "provenance": "reference-guided-adaptation",
+      "finalPrompt": "Use case: identity-preserve. Asset type: individual transparent full-body fantasy game character. Input 1 is the visual identity reference. Create only the tall female dragon at upper-right of the reference in the same neutral standing pose, with one safety adaptation: cover the whole chest with an opaque fitted dark charcoal scale-armour bodice, continuous up to the collarbones, and retain the opaque pelvis scale plate. Do not depict bare breasts or explicit anatomy. Preserve the rest of the design faithfully: narrow long upright neck, long legs and three-clawed feet, slender body proportions, dark charcoal gray scales and dark maroon shaded limbs and tail, peach and terracotta angular underside patterns on neck and abdomen, small slate-blue highlights, magenta eye, snout facing viewer-left, two swept-back horns. Arms relaxed downward. No wings. Extremely long thick maroon tail sweeps to viewer-right in a large upward loop then down to a hollow tubular/nozzle tip angled down-left, exactly as in the reference. Keep all horns, feet and tail within the frame. Original flat cel-shaded illustration, no redesign or added equipment beyond the stated opaque chest coverage. Square canvas, full body, generous transparent margins, actual transparent alpha background, no shadow, no text, no other characters. This is a non-sexual creature roster illustration.",
+      "referenceImagePaths": [
+        "public/reviews/cloud-meadow/reference.png"
+      ],
+      "preservedSignatures": [
+        "Charcoal and maroon scale palette",
+        "Peach and terracotta underside",
+        "Slate-blue highlights",
+        "Magenta eyes",
+        "Distinct horn silhouette",
+        "Digitigrade three-clawed feet",
+        "No wings",
+        "Long thick looping tail with hollow tubular tip"
+      ],
+      "deviations": [
+        "IMPORTANT: Added continuous opaque charcoal scale-armour bodice over the entire chest after first output was blocked by the image tool safety system. This is a visible costume/coverage adaptation absent from the source and must not be labeled official or exact 1:1.",
+        "Generated redraw refines low-resolution line work and shading; fine contour details and proportions are not pixel-identical.",
+        "Single static reference pose only; no original game animation."
+      ],
+      "rejectedInitialAttempt": {
+        "prompt": "Use case: background-extraction. Asset type: individual transparent full-body character sprite for a game. Input image 1 is the exact edit target and sole visual authority. Isolate the specified single character as faithfully as possible from this character reference sheet. Remove the cream background and every other character and mark. Keep the ORIGINAL pose, facing direction, silhouette, body proportions, face, costume, anatomy, colors, flat illustrated line-art and simple cel-shading; do not reinterpret or beautify or add detail. Enlarge only enough to be clean and legible, retaining the same look. Square canvas with generous fully transparent margin, full figure including all extremities, no floor shadow, no text, no checkerboard graphic. Exactly one character. Subject: the TALL SLENDER FEMALE DRAGON occupying upper-right of the sheet. Adult humanoid fantasy dragon in a neutral standing model-sheet pose. Her body stands slightly left of her enormous looping tail and her snout faces viewer-left. Preserve original long upright narrow neck, narrow waist, long athletic digitigrade legs, original chest and hips and non-graphic natural scale coverage exactly as pictured. Charcoal gray and dark maroon scales, slate-blue small highlights on dark limbs and shoulder, pale peach front of neck and torso/thigh, warm terracotta/red angular underside shadow patterns, magenta eyes, long swept-back charcoal horns with dark burgundy crest. Both arms down, gloved-looking scaled fingers. Three-clawed feet. Crucial: NO WINGS; very long thick dark maroon tail exits right hip, dips then rises into large loop at viewer-right, turns down and finishes in the pictured HOLLOW tubular/nozzle tip, pointing down-left. Do not replace with pointed tail. Keep the entire tail including the right edge and hollow tip within the image, using only original tail shape; remove the stray cropped black mark behind tip. Source female figure only, no human size comparisons or male dragon.",
+        "reason": "Output moderation rejected sexual content",
+        "response": "No image returned; one safer explicitly covered adaptation generated successfully. No filter bypass attempted."
+      }
+    },
+    {
+      "id": "dragon_male",
+      "filename": "dragon-male-reference.png",
+      "width": 1254,
+      "height": 1254,
+      "format": "PNG",
+      "mode": "RGBA",
+      "animationFrames": 1,
+      "generationTool": "image_gen__imagegen",
+      "transparentBackground": true,
+      "exactOneToOneCertified": false,
+      "provenance": "reference-guided-redraw",
+      "finalPrompt": "Use case: background-extraction. Asset type: individual transparent full-body character sprite for a game. Input image 1 is the exact edit target and sole visual authority. Isolate the specified single character as faithfully as possible from this character reference sheet. Remove the cream background and every other character and mark. Keep the ORIGINAL pose, facing direction, silhouette, body proportions, face, costume, anatomy, colors, flat illustrated line-art and simple cel-shading; do not reinterpret or beautify or add detail. Enlarge only enough to be clean and legible, retaining the same look. Square canvas with generous fully transparent margin, full figure including all extremities, no floor shadow, no text, no checkerboard graphic. Exactly one character. Subject: the BROAD MUSCULAR MALE DRAGON at bottom-right of the sheet. Adult humanoid fantasy dragon in exact neutral standing reference pose. Preserve original extremely broad shoulder/chest mass, narrow abdomen, large powerful thighs, digitigrade legs, long neck, clenched lowered hands and wide planted stance. Charcoal gray and dark burgundy/maroon scales, a few slate-blue angular highlights, pale peach throat and central torso, terracotta red angular stripes and underside shadow on chest/abdomen/thighs, dark scale plate covering pelvis exactly as shown without added anatomy. Magenta eyes, pointed snout facing left-three-quarter toward camera, pointed ears, pair of long upright asymmetrically curved charcoal/burgundy horns. No wings. Crucial: gigantic dark maroon tail comes from behind torso and loops low to viewer-left then rises to a hollow TUBULAR/NOZZLE opening at upper-left about shoulder-height, with thin gray highlight line along tail. Preserve that hollow tip and original entire sweeping tail silhouette, not a pointed tail. Feet have three claws with original posture. Full tail and horns and feet within transparent square canvas. Do not render the human size comparison figures or female dragon.",
+      "referenceImagePaths": [
+        "public/reviews/cloud-meadow/reference.png"
+      ],
+      "preservedSignatures": [
+        "Charcoal and maroon scale palette",
+        "Peach and terracotta underside",
+        "Slate-blue highlights",
+        "Magenta eyes",
+        "Distinct horn silhouette",
+        "Digitigrade three-clawed feet",
+        "No wings",
+        "Long thick looping tail with hollow tubular tip"
+      ],
+      "deviations": [
+        "Generated redraw refines low-resolution source line work and shading; face, seams, scale contours and exact proportions are not pixel-identical.",
+        "Single static reference pose only; no original game animation."
+      ]
+    }
+  ]
+}

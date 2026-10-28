@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "universe": "Cloud Meadow",
+  "counts": {
+    "characters": 4,
+    "images": 4,
+    "referenceBased": 3,
+    "adapted": 1,
+    "animationFramesPerImage": 1,
+    "pixelIdenticalCertified": 0
+  },
+  "reference": {
+    "src": "/reviews/cloud-meadow/reference.png",
+    "suppliedFilename": "image(20261028-174228).png",
+    "suppliedOn": "2026-10-28",
+    "image": {
+      "sha256": "0bc345c8c5499e59b14adb965184d9211e264feaba24f15288be7182210ca595",
+      "bytes": 489323,
+      "width": 889,
+      "height": 1204,
+      "hasAlpha": true,
+      "transparentPixels": 0,
+      "boundaryPixels": 4182,
+      "contentBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 889,
+        "height": 1204
+      }
+    }
+  },
+  "sources": [
+    {
+      "url": "https://www.patreon.com/CloudMeadow/about",
+      "purpose": "Primary source naming protagonists Evan and Eve",
+      "checkedOn": "2026-10-28"
+    }
+  ],
+  "limitations": [
+    "Reference-guided generated images, not original source-game exports or pixel-identical certified reproductions.",
+    "Female Dragon is an explicitly covered adaptation with an added opaque charcoal chest plate, absent from the supplied reference.",
+    "One static full-body pose per character; no source-game movement/combat animation is claimed.",
+    "Visual catalogue only; no invented combat stats, moves, unlocks, bosses or campaign.",
+    "Dragon labels refer to the two species models in the supplied image, not verified individual names.",
+    "Relative heights are approximate measurements from the reference, not canonical physical measurements."
+  ],
+  "entries": [
+    {
+      "id": "cloud_meadow_eve",
+      "name": "Eve",
+      "displayName": {
+        "fr": "Eve",
+        "en": "Eve"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "human",
+      "src": "/sprites/generated/heroes/cloud-meadow/eve-reference.png",
+      "referenceSrc": "/reviews/cloud-meadow/reference.png",
+      "referenceRegion": "upper-left-female-farmer",
+      "referenceRelativeHeight": 1,
+      "provenance": "generated-from-user-reference",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "auburn-bob",
+        "indigo-bib-overalls",
+        "dark-short-sleeved-shirt",
+        "brown-gloves",
+        "black-tall-boots",
+        "raised-two-finger-gesture"
+      ],
+      "description": {
+        "fr": "Carré auburn, salopette indigo, gants bruns et bottes noires. Une main sur la hanche, deux doigts levés.",
+        "en": "Auburn bob, indigo overalls, brown gloves and black boots. One hand on her hip, two fingers raised."
+      },
+      "referenceCrop": [
+        61,
+        288,
+        117,
+        332
+      ],
+      "image": {
+        "sha256": "47e0d5beb858d287fa0a1c0b5924d66ae86bbec3692db629334d08c50b123708",
+        "bytes": 463603,
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1323548,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 412,
+          "y": 36,
+          "width": 428,
+          "height": 1186
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_evan",
+      "name": "Evan",
+      "displayName": {
+        "fr": "Evan",
+        "en": "Evan"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "human",
+      "src": "/sprites/generated/heroes/cloud-meadow/evan-reference.png",
+      "referenceSrc": "/reviews/cloud-meadow/reference.png",
+      "referenceRegion": "upper-left-male-farmer",
+      "referenceRelativeHeight": 1.04,
+      "provenance": "generated-from-user-reference",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "tousled-auburn-hair",
+        "indigo-bib-overalls",
+        "dark-short-sleeved-shirt",
+        "brown-gloves",
+        "black-tall-boots",
+        "raised-fist"
+      ],
+      "description": {
+        "fr": "Cheveux auburn ébouriffés, salopette indigo, gants bruns et bottes noires. Un poing relevé près de l’épaule.",
+        "en": "Tousled auburn hair, indigo overalls, brown gloves and black boots. One fist raised beside his shoulder."
+      },
+      "referenceCrop": [
+        176,
+        277,
+        119,
+        342
+      ],
+      "image": {
+        "sha256": "94723b001f3b08b203d953ea96f8817afb647b238a208c3739205e1b15bf1eae",
+        "bytes": 443393,
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1324900,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 451,
+          "y": 40,
+          "width": 406,
+          "height": 1181
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_dragon_female",
+      "name": "Dragon femelle",
+      "displayName": {
+        "fr": "Dragon femelle",
+        "en": "Female Dragon"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "dragon",
+      "src": "/sprites/generated/heroes/cloud-meadow/dragon-female-adapted.png",
+      "referenceSrc": "/reviews/cloud-meadow/reference.png",
+      "referenceRegion": "upper-right-dragon",
+      "referenceRelativeHeight": 1.8,
+      "provenance": "generated-from-user-reference",
+      "fidelityStatus": "adapted-coverage",
+      "fidelityNote": {
+        "fr": "Adaptation : couverture d’écailles opaque ajoutée sur le buste et le bassin. Ce visuel n’est pas une reproduction 1:1.",
+        "en": "Adaptation: opaque scale coverage added over the chest and pelvis. This image is not a 1:1 reproduction."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "long-neck",
+        "swept-back-horns",
+        "magenta-eyes",
+        "charcoal-scales",
+        "peach-underside",
+        "red-angular-markings",
+        "no-wings",
+        "long-looped-hollow-tip-tail"
+      ],
+      "description": {
+        "fr": "Silhouette élancée, long cou, cornes vers l’arrière et écailles anthracite. La longue queue forme une boucle et se termine par une ouverture tubulaire.",
+        "en": "Slender silhouette, long neck, swept-back horns and charcoal scales. Her long tail loops upward and ends in a hollow tube."
+      },
+      "referenceCrop": [
+        348,
+        32,
+        541,
+        590
+      ],
+      "image": {
+        "sha256": "1606c7e9ac56a88a2162612bba7b637aa53b6be8acec223eedec164ce618f2a8",
+        "bytes": 581584,
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1216252,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 129,
+          "y": 16,
+          "width": 1118,
+          "height": 1213
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_dragon_male",
+      "name": "Dragon mâle",
+      "displayName": {
+        "fr": "Dragon mâle",
+        "en": "Male Dragon"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "dragon",
+      "src": "/sprites/generated/heroes/cloud-meadow/dragon-male-reference.png",
+      "referenceSrc": "/reviews/cloud-meadow/reference.png",
+      "referenceRegion": "lower-right-dragon",
+      "referenceRelativeHeight": 1.9,
+      "provenance": "generated-from-user-reference",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "broad-muscular-build",
+        "upright-curved-horns",
+        "magenta-eyes",
+        "charcoal-scales",
+        "peach-underside",
+        "red-angular-markings",
+        "no-wings",
+        "long-u-shaped-hollow-tip-tail"
+      ],
+      "description": {
+        "fr": "Épaules larges, membres musclés et cornes relevées. La queue dessine un grand U vers la gauche, avec une extrémité tubulaire creuse.",
+        "en": "Broad shoulders, muscular limbs and upright horns. His tail sweeps into a large U to the left, ending in a hollow tube."
+      },
+      "referenceCrop": [
+        350,
+        553,
+        523,
+        624
+      ],
+      "image": {
+        "sha256": "a126c8409bd9268d511d1b5367314230548744397f81ddb206b64ddabf2989cd",
+        "bytes": 677475,
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1128639,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 107,
+          "y": 12,
+          "width": 1092,
+          "height": 1208
+        }
+      }
+    }
+  ],
+  "provenance": {
+    "generator": "Built-in ImageGen",
+    "method": "One separate reference-guided transparent edit per character",
+    "promptFile": "docs/cloud-meadow/prompts.json",
+    "postProcessing": "None: generated PNG bytes copied unchanged into the project."
+  }
+}

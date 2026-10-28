@@ -2,6 +2,7 @@ import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicR
 import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
 import { getExtinctionRoster, getExtinctionViewmodel, getExtinctionHandFrame, getExtinctionHandSourceRect, getExtinctionHandPlacement, getExtinctionProjectilePlacement, drawExtinctionSchematic } from '../game/extinctionContent.js';
 import CharacterWardrobe from './CharacterWardrobe.jsx';
+import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { applyActorAppearance } from '../game/wardrobe.js';
 import React, { lazy, Suspense, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
@@ -11806,6 +11807,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
         {activeTab === 'collection' && (
           <div className="glass-panel" style={{ padding: '20px', borderRadius: '8px' }}>
+            {isUniverseVisible('Cloud Meadow') && matchesMediaFilter('game') && <CloudMeadowGallery lang={lang} />}
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap' }}>
               <div>
                 <h3 style={{ margin: '0 0 4px 0', fontSize: '18px', color: '#ffeb3b' }}>
