@@ -7,6 +7,7 @@ import argparse,base64,json,mimetypes
 from datetime import datetime,timezone
 from pathlib import Path
 from playwright.sync_api import sync_playwright,expect
+from mosaicMotionProof import validate_mosaic_motion
 ROOT=Path(__file__).resolve().parents[1]
 
 def open_scene(page,args,mode,lang):
@@ -82,21 +83,43 @@ def city(page,args,lang,out,name):
     first.get_by_role('button',name='LIRE LA FICHE' if lang=='fr' else 'READ RECORD',exact=True).click()
     expect(section.locator('.mosaic-exhibit-record')).to_be_visible()
     title=first.locator('strong').inner_text()
-    before=page.evaluate('window.__sceneQA.snapshot().player')
-    first.get_by_role('button',name='REJOINDRE LA VITRINE' if lang=='fr' else 'APPROACH DISPLAY',exact=True).click()
+    approach=first.get_by_role('button',name='REJOINDRE LA VITRINE' if lang=='fr' else 'APPROACH DISPLAY',exact=True)
+    # Observe the native click before React and after bubbling, then each frame.
+    # Playwright can advance its clock during actionability checks; compare with
+    # actual simulation ticks, not an assumed 100 ms across multiple tool calls.
+    approach.evaluate("""button=>{
+      const read=()=>{const s=window.__sceneQA.state();return {t:s.t,x:s.player.x,y:s.player.y,speed:s.player.speed};};
+      const proof={samples:[]};window.__exhibitMotionProof=proof;
+      let frame=0,active=false;
+      const capture=event=>{if(event.composedPath().includes(button))proof.clickBefore=read();};
+      const observe=()=>{if(!active)return;proof.samples.push(read());frame=requestAnimationFrame(observe);};
+      const bubble=event=>{if(event.composedPath().includes(button)){
+        proof.clickAfter=read();active=true;frame=requestAnimationFrame(observe);
+      }};
+      document.addEventListener('click',capture,true);window.addEventListener('click',bubble);
+      window.__stopExhibitMotionProof=()=>{
+        active=false;cancelAnimationFrame(frame);proof.samples.push(read());
+        document.removeEventListener('click',capture,true);window.removeEventListener('click',bubble);
+        return proof;
+      };
+    }""")
+    approach.click()
     expect(page.get_by_role('dialog')).to_have_count(0)
-    page.clock.run_for(100)
-    after=page.evaluate('window.__sceneQA.snapshot().player');assert abs(after['x']-before['x'])<20 and abs(after['y']-before['y'])<20,'display approach teleported player'
+    # Explicitly exercise delayed observation in ultrawide without writing position.
+    page.clock.run_for(240 if page.viewport_size['width']>=2560 else 100)
     for _ in range(80):
         page.clock.run_for(100)
         if page.get_by_role('dialog').count():break
     expect(page.get_by_role('dialog')).to_have_count(1)
     record=page.locator('.mosaic-exhibit-record');expect(record).to_contain_text(title)
+    proof=page.evaluate('window.__stopExhibitMotionProof()')
+    (out/f'{name}-motion.json').write_text(json.dumps(proof,indent=2))
+    motion=validate_mosaic_motion(proof)
     page.screenshot(path=str(out/f'{name}-display.png'))
     frozen=page.evaluate('window.__sceneQA.snapshot()');page.clock.run_for(1000);assert frozen==page.evaluate('window.__sceneQA.snapshot()')
     assert page.evaluate('window.__sceneQA.services.length')==0
     page.keyboard.press('Escape');page.clock.run_for(50)
-    return {'exhibit':title,'walked':True,'teleported':False,'grantedItems':0,'sourceLookup':True}
+    return {'exhibit':title,'walked':True,'teleported':False,'grantedItems':0,'sourceLookup':True,'motion':motion}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--url',default='http://127.0.0.1:4173');p.add_argument('--evidence',default='/tmp/ec-protocols');p.add_argument('--executable');p.add_argument('--offline-bundle');p.add_argument('--case',default='');a=p.parse_args()

@@ -74,7 +74,8 @@ def city_services(page, lang, out, name):
 def state(page):
     return page.evaluate("""()=>{const s=window.__sceneQA.state();return {phase:s.phase,t:s.t,hp:s.hp,px:s.px,py:s.py,angle:s.angle,
       ammo:s.ammo,reserveAmmo:s.reserveAmmo,skillCooldown:s.skillCooldown,reloadPulse:s.reloadPulse,wave:s.wave,
-      kills:s.kills,beacons:s.beaconsStabilized,enemies:s.enemies,loot:s.loot,result:s.result};}""")
+      kills:s.kills,beacons:s.beaconsStabilized,enemies:s.enemies,loot:s.loot,result:s.result,weaponType:s.weapon?.type,
+      protocols:s.protocols?{charge:s.protocols.charge,cooldowns:{...s.protocols.cooldowns},actions:s.protocols.profile?.actions,casts:{...s.protocols.casts}}:null};}""")
 
 
 def aim(page, current, x, y):
@@ -120,7 +121,28 @@ def full_run(page, mode, lang, out, name):
             drones=[e for e in enemies if e['kind']=='Drone Protecteur']
             pool=drones or enemies
             target=min(pool,key=lambda e:math.hypot(e['wx']-s['px'],e['wy']-s['py']))
-            aim(page,s,target['wx'],target['wy']);page.keyboard.press('Space');page.clock.run_for(350)
+            aim(page,s,target['wx'],target['wy'])
+            # The Anchor now has a melee primary: do not fire an obsolete ranged
+            # pistol loop while standing outside its reach. Only native controls
+            # are issued; stats, charge, cooldowns and outcomes remain untouched.
+            protocols=s.get('protocols') or {};kit=protocols.get('actions') or {}
+            cooldowns=protocols.get('cooldowns') or {}
+            distance=math.hypot(target['wx']-s['px'],target['wy']-s['py'])
+            if kit.get('defense') and cooldowns.get('defense',0)<=0 and distance<5:
+                page.keyboard.press('c')
+            if kit.get('secondary') and cooldowns.get('secondary',0)<=0 and distance<=kit['secondary']['range']:
+                page.keyboard.press('f')
+            if kit.get('special') and protocols.get('charge',0)>=100 and cooldowns.get('special',0)<=0 and distance<=kit['special']['range']:
+                page.keyboard.press('x')
+            primary=kit.get('simple') or {}
+            melee=s.get('weaponType')=='pistol' and primary.get('kind')=='melee'
+            if melee and distance>primary['range']*.9:
+                page.keyboard.down('w')
+                page.clock.run_for(min(180,max(17,int((distance-primary['range']*.85)/.25)*17)))
+                page.keyboard.up('w')
+            else:
+                page.keyboard.press('Space')
+                page.clock.run_for(max(350,math.ceil(primary.get('cooldown',20)*1000/60)+17) if melee else 350)
         elif s['ammo']<1 and s['reserveAmmo']>0:
             page.keyboard.press('r');page.clock.run_for(620)
         else: page.clock.run_for(350)
@@ -135,7 +157,7 @@ def full_run(page, mode, lang, out, name):
     page.screenshot(path=str(out/f'{name}-result.png'))
     page.keyboard.press('Enter')
     check(len(page.evaluate('window.__sceneQA.reports'))==2,'result acknowledgement missing')
-    return {'mode':mode,'result':s['result'],'frames':s['t'],'kills':s['kills'],'beacons':s['beacons'],'waves':sorted(waves),'inputActions':actions,'injectedEnding':False,'virtualClock':True}
+    return {'mode':mode,'result':s['result'],'frames':s['t'],'kills':s['kills'],'beacons':s['beacons'],'waves':sorted(waves),'inputActions':actions,'injectedEnding':False,'virtualClock':True,'protocolCasts':(s.get('protocols') or {}).get('casts',{})}
 
 
 def main():

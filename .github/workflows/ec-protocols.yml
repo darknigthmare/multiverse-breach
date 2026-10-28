@@ -39,6 +39,7 @@ jobs:
           mkdir -p /tmp/ec-protocols
           git rev-parse HEAD > /tmp/ec-protocols/commit.txt
           git ls-files > TRACKED_FILES.txt
+          python3 scripts/test_mosaic_motion_proof.py -v 2>&1 | tee /tmp/ec-protocols/motion-proof-tests.log
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionSignatures.test.mjs scripts/mosaicExhibits.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/extinctionCityCatalog.test.mjs | tee /tmp/ec-protocols/unit.log
           npm run test:ui-immersion | tee /tmp/ec-protocols/ui.log
           npx oxlint --max-warnings 0 src/components/HubScreen.jsx src/game/extinctionSignatures.js src/game/mosaicExhibits.js scripts/extinctionSignatures.test.mjs scripts/mosaicExhibits.test.mjs scripts/extinction-city/catalog.mjs scripts/extinctionCityCatalog.test.mjs | tee /tmp/ec-protocols/lint.log
