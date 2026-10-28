@@ -1,30 +1,29 @@
 {
   "date": "2026-10-28",
-  "validatedAtUtc": "2026-10-28T14:52:03.939203+00:00",
+  "validatedAtUtc": "2026-10-28T15:13:16.731510+00:00",
   "baselineCommit": "f9a9c1db7bbea3312e53341e5fbbdcf79c504851",
   "preservedCheckpointCommit": "cb5a772bec13903a90d95f77f32ecb99d1355116",
-  "catalogueSprites": 363,
-  "addedSprites": 166,
-  "catalogueSha256": "3c10a01d88651aa1f7fbfb9f3fa185941b42a65265b37d56fc3a6a52beaa76f4",
+  "catalogueSprites": 367,
+  "addedSprites": 170,
+  "catalogueSha256": "177e5c282703c6cc767721b6c99ab16854a73e2995ef1d43c05ad166953f6afd",
   "archivedCandidatePngs": 4,
   "tests": {
     "command": "npm run test:discipline",
     "exitCode": 0,
     "passedFiles": 2,
     "failedFiles": 0,
-    "logSha256": "3dc566a7770e1fe30e5e2b6d1390bfcac98bd1f18377c2a0506a5db78bc9bbb8"
+    "logSha256": "3f939e4e7b56280c195590af4d62c598714ca620b301415d4e05c607440adafd"
   },
   "build": {
     "command": "npx --no-install vite build",
     "exitCode": 0,
-    "catalogueSprites": 363,
-    "addedSprites": 166,
+    "catalogueSprites": 367,
+    "addedSprites": 170,
     "modulesTransformed": 313,
-    "logSha256": "24d7b10815648e10cefd3e42e5cbb64c9e8fe2759ea13e7d5844743a2b3a9854",
+    "logSha256": "0922cf63e73490a5d16c7e0cd112e76a0f895c40739dcb1e6c3509ee81f90377",
     "warnings": [
       "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.",
-      "[PLUGIN_TIMINGS] Your build spent significant time in plugins. Here is a breakdown:\n  - vite:css-post (34%)\n  - vite:build-import-analysis (16%)\n  - vite:asset (12%)\n  - vite:terser (10%)\n  - vite:prepare-out-dir (10%)\nSee https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.",
-      "(!) Some chunks are larger than 1000 kB after minification."
+      "(!) Some chunks are larger than 1000 kB after minification. Consider:"
     ],
     "scope": "Production bundle compilation. The complete repository prebuild gate is separately exercised by GitHub Actions."
   },
@@ -32,14 +31,14 @@
     "report": "costumes-v6-browser-qa-report.json",
     "passed": true,
     "checks": 22,
-    "loadedImages": 363,
+    "loadedImages": 367,
     "errors": [],
     "method": "Local Chromium with intercepted requests fulfilled from public files; no remote deployment claimed."
   },
   "visualReview": {
     "report": "costumes-v6-visual-review.json",
-    "reviewedNewSprites": 166,
-    "reviewedAfterCheckpoint": 70,
+    "reviewedNewSprites": 170,
+    "reviewedAfterCheckpoint": 74,
     "blockingDefectsObserved": 0
   },
   "preservation": {
@@ -48,7 +47,7 @@
     "manifestObjectsUnchanged": 197,
     "oldPngsUnchanged": 197,
     "publishedCheckpointPngsUnchanged": 293,
-    "newOutputsCopiedUnchanged": 166
+    "newOutputsCopiedUnchanged": 170
   },
   "gitDiffCheck": {
     "passed": true
@@ -56,26 +55,26 @@
   "fullPrebuildExecutedLocally": false,
   "scopeLimit": "The local checkout omits unrelated repository media. Full repository checks and deployment status must be read for the actual published commit.",
   "counts": {
-    "totalCatalogueSprites": 363,
+    "totalCatalogueSprites": 367,
     "baselineSpritesPreserved": 197,
     "publishedCheckpointPngsPreserved": 293,
-    "addedCatalogueSprites": 166,
-    "addedAfterPublishedCheckpoint": 70,
+    "addedCatalogueSprites": 170,
+    "addedAfterPublishedCheckpoint": 74,
     "referenceBased": 76,
-    "adapted": 287,
+    "adapted": 291,
     "identities": 36,
     "recoveredSprites": 93,
-    "newlyCompletedSprites": 73,
+    "newlyCompletedSprites": 77,
     "batches": {
       "earlier-unpublished-v6": 30,
-      "completed-missing-v6": 70,
+      "completed-missing-v6": 74,
       "latest-v6": 57,
       "recovered-unmapped-v6": 6,
       "newly-completed-v6": 3
     },
     "newByCategory": {
       "military": 19,
-      "swimwear": 51,
+      "swimwear": 55,
       "latex": 20,
       "maid": 40,
       "nurse": 36
@@ -83,30 +82,28 @@
     "coveredIdentitiesByFamily": {
       "maid": 36,
       "uniform": 31,
-      "swimwear": 32,
+      "swimwear": 35,
       "nurse": 36,
       "military": 36,
-      "latex": 33
+      "latex": 36
     },
-    "missingFamilyCells": 12,
-    "unacceptedExactRequestRecords": 78,
+    "missingFamilyCells": 6,
+    "unacceptedExactRequestRecords": 74,
     "unacceptedRequestStatuses": {
       "refused": 2,
       "pending": 22,
       "cancelled-superseded-by-user-style-direction": 45,
-      "interrupted-no-result": 2,
       "refused-content-policy": 1,
       "excluded-prior-refusal": 1,
-      "interrupted-no-accepted-output": 3,
-      "paused-user-style-change": 2
+      "interrupted-no-accepted-output": 3
     },
-    "unacceptedRequestsWithAlternativeFamilyAlreadyDelivered": 66,
+    "unacceptedRequestsWithAlternativeFamilyAlreadyDelivered": 72,
     "supersededByUserStyleClarification": 45,
     "missingAttestedSchoolUniformReferences": 19,
     "archivedCandidateFiles": 4,
     "archiveCountedAsDelivered": false,
     "earlierFullRedActionSuits": 5,
-    "glossSwimsuits": 30,
+    "glossSwimsuits": 34,
     "leonaReferenceCostumes": 0,
     "leonaReferencePilotStatus": "refused-content-policy",
     "glossSwimsuitMissing": [
@@ -115,30 +112,17 @@
         "name": "Kanae"
       },
       {
-        "characterId": "kouzou",
-        "name": "Kouzou Machida"
-      },
-      {
         "characterId": "maiko",
         "name": "Maiko Kaneda"
-      },
-      {
-        "characterId": "ova-officer-bob",
-        "name": "Officière OVA — carré châtain"
-      },
-      {
-        "characterId": "yuuji",
-        "name": "Yuuji Takigawa"
-      },
-      {
-        "characterId": "yuuki",
-        "name": "Yuuki Miyagishi"
       }
     ],
     "notes": [
       "Unaccepted exact-request records include superseded plans and refusals; they are not a count of active generations or uncovered family cells.",
       "Four archived images lack exact generation prompts and do not enter the delivered catalogue.",
       "Full red action suits and black-and-gold suits are not counted as the newly requested glossy swimsuit cut."
-    ]
+    ],
+    "mostRecentPublishedCheckpoint": "e2693a44eeee16d6b40cae671ec214459acda837",
+    "mostRecentPublishedCheckpointPngsPreserved": 363,
+    "addedSinceMostRecentCheckpoint": 4
   }
 }

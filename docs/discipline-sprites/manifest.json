@@ -2,15 +2,15 @@
   "version": 1,
   "date": "2026-10-28",
   "counts": {
-    "sprites": 363,
+    "sprites": 367,
     "characters": 36,
     "referenceBased": 76,
-    "adapted": 287,
+    "adapted": 291,
     "byCategory": {
       "sport": 13,
       "civilian": 44,
       "military": 61,
-      "swimwear": 86,
+      "swimwear": 90,
       "uniform": 58,
       "other": 5,
       "latex": 20,
@@ -33,14 +33,14 @@
     "v5CharacterVariants": 0,
     "v5MonochromeStudies": 2,
     "preservedBeforeV6": 197,
-    "v6Additions": 166,
-    "v6ActualSwimsuits": 51,
+    "v6Additions": 170,
+    "v6ActualSwimsuits": 55,
     "v6RequestedRedLatex": 5,
-    "v6GlossSwimsuits": 30,
+    "v6GlossSwimsuits": 34,
     "v6LeonaReferenceCostumes": 0,
     "v6RecoveryBatches": {
       "earlier-unpublished-v6": 30,
-      "completed-missing-v6": 70,
+      "completed-missing-v6": 74,
       "latest-v6": 57,
       "recovered-unmapped-v6": 6,
       "newly-completed-v6": 3
@@ -62,15 +62,7 @@
       "ova-officer-swept-hair"
     ],
     "swimwear": [
-      "kouzou",
-      "maiko",
-      "ova-officer-bob",
-      "yuuki"
-    ],
-    "latex": [
-      "kouzou",
-      "ova-officer-bob",
-      "yuuki"
+      "maiko"
     ]
   },
   "assets": [
@@ -20977,6 +20969,129 @@
     },
     {
       "characterId": "kouzou",
+      "costumeId": "gloss-swimsuit-v6",
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--gloss-swimsuit-v6.png",
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kouzou:suit-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "kouzou:swimwear-sport-original",
+      "requestedSwimLatexStyle": true,
+      "styleFamily": "gloss-swimwear",
+      "outfitPalette": "red",
+      "swimwearCut": "short-triathlon-suit",
+      "secondaryCategories": [
+        "latex"
+      ],
+      "id": "kouzou:gloss-swimsuit-v6",
+      "canonicalCostumeCertified": false,
+      "canonicalPaletteCertified": false,
+      "fullBodyOneToOneCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-98d623fe-b6b8-44cd-aaae-6979db76171d",
+        "generationIdSource": "Exact generated output filename; not an independently certified server identifier.",
+        "outputFilename": "exec-98d623fe-b6b8-44cd-aaae-6979db76171d.png",
+        "prompt": "Use case: identity-preserve. Asset: one static full-body pixel-art game costume, an ordinary nonsexual sports catalogue presentation.\nImage 1 is the exact person, face, hairstyle, eye colour, natural build, apparent age, neutral pose and pixel-art rendering to preserve. Keep the same identity and natural head-to-body proportions without beautifying, aging up or exaggerating any anatomy.\nReplace only all the clothing with an ordinary opaque athletic swimming suit in scarlet red, a single short triathlon-style suit with a continuous covered torso and normal short legs reaching mid-thigh, wide shoulder straps and a modest round sports neckline. The material is entirely opaque with a restrained smooth glossy latex-like surface effect and small controlled highlights, not wet or transparent. Keep a practical normal sporting fit, no sculpting or emphasis of body parts. Plain simple design, no deep neckline, very high leg cut, cutouts, decorative straps, collars or extra costume jewellery. Bare feet and bare hands, no gloves, boots, stockings, extra accessories or props. Preserve existing identity-defining hair accessories, eyeglasses and ordinary ear ornaments.\nKeep the same neutral relaxed upright three-quarter standing pose and facial expression. Match the fine crisp anime pixel clusters and stepped outlines of the supplied reference; do not switch to a smooth painted illustration or enlarge the head. Entire hair, both hands and both complete bare feet visible with generous transparent margins. One character only on a square canvas around 1254 x 1254, actual RGBA alpha transparency. No scene, shadow ground, text, watermark, extra people, panels or halo. This is a newly designed sportswear adaptation for the game, not a canonical costume or a certified pixel-for-pixel copy.",
+        "promptStatus": "recorded-verbatim",
+        "promptSha256": "47750c3cd95b54e1556526d1fba77d8c07f647b84a83bd082a98a68c2d636bdd",
+        "finalInputEvidence": [
+          {
+            "type": "existing_catalogue_sprite",
+            "id": "kouzou:suit-reference-v4",
+            "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+            "sha256": "87671e7ce829928d627303e792d05158666788e03b286623c414345dac9205e9",
+            "role": "Identity, pose, proportions and rendering reference; not official costume evidence.",
+            "usedInFinalGeneration": true
+          }
+        ],
+        "history": [
+          {
+            "status": "interrupted-no-result",
+            "prompt": "Use case: identity-preserve. Asset: one static full-body pixel-art game costume, an ordinary nonsexual sports catalogue presentation.\nImage 1 is the exact person, face, hairstyle, eye colour, natural build, apparent age, neutral pose and pixel-art rendering to preserve. Keep the same identity and natural head-to-body proportions without beautifying, aging up or exaggerating any anatomy.\nReplace only all the clothing with an ordinary opaque athletic swimming suit in scarlet red, a single short triathlon-style suit with a continuous covered torso and normal short legs reaching mid-thigh, wide shoulder straps and a modest round sports neckline. The material is entirely opaque with a restrained smooth glossy latex-like surface effect and small controlled highlights, not wet or transparent. Keep a practical normal sporting fit, no sculpting or emphasis of body parts. Plain simple design, no deep neckline, very high leg cut, cutouts, decorative straps, collars or extra costume jewellery. Bare feet and bare hands, no gloves, boots, stockings, extra accessories or props. Preserve existing identity-defining hair accessories, eyeglasses and ordinary ear ornaments.\nKeep the same neutral relaxed upright three-quarter standing pose and facial expression. Match the fine crisp anime pixel clusters and stepped outlines of the supplied reference; do not switch to a smooth painted illustration or enlarge the head. Entire hair, both hands and both complete bare feet visible with generous transparent margins. One character only on a square canvas around 1254 x 1254, actual RGBA alpha transparency. No scene, shadow ground, text, watermark, extra people, panels or halo. This is a newly designed sportswear adaptation for the game, not a canonical costume or a certified pixel-for-pixel copy.",
+            "reason": "The image-generation call was launched in the final group-0 batch. User steering interrupted orchestration; no mapped image output or refusal was returned or recovered. No retry was attempted.",
+            "toolResultReceived": false,
+            "acceptedOutputFound": false,
+            "inputs": [
+              {
+                "filename": "kouzou--suit-reference-v4.png",
+                "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+                "sha256": "87671e7ce829928d627303e792d05158666788e03b286623c414345dac9205e9"
+              }
+            ],
+            "promptSha256": "47750c3cd95b54e1556526d1fba77d8c07f647b84a83bd082a98a68c2d636bdd",
+            "promptStatus": "recorded-verbatim"
+          }
+        ]
+      },
+      "image": {
+        "sha256": "02222dcf0ed3c3b05316aeb12bc8c9d608a8fa0e806bf8c929e4b88287c8e841",
+        "bytes": 477128,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          0,
+          41,
+          1240,
+          1254
+        ],
+        "visibleBoundsAlphaGt8": [
+          467,
+          77,
+          888,
+          1173
+        ],
+        "visibleMargins": [
+          467,
+          77,
+          366,
+          81
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_catalogue_sprite",
+          "id": "kouzou:suit-reference-v4",
+          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+          "sha256": "87671e7ce829928d627303e792d05158666788e03b286623c414345dac9205e9",
+          "role": "Identity, pose, proportions and rendering reference; not official costume evidence.",
+          "usedInFinalGeneration": true
+        }
+      ],
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "literalOneToOneCertified": false,
+        "recordedReview": {
+          "completeFigure": true,
+          "identityConsistent": true,
+          "sportingSwimsuit": true,
+          "notes": "Visually compared with the viewed neutral suit reference: gray parted hair, glasses, angular older face, natural build, inclined head and original stance retained. Whole hair, hands and both bare feet visible. Opaque scarlet short triathlon-style sports suit with covered torso, ordinary round neckline and mid-thigh shorts. Fine pixel-sprite rendering retained; no scene or added props. Native RGBA bytes copied unchanged. The underlying formerly clothed body is an interpretation, not exact canonical anatomy."
+        },
+        "source": "Recovered recorded visual review; no automated certification of identity fidelity."
+      },
+      "fidelityNote": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted. Opaque nonsexual athletic adaptation of the requested glossy motif, with an ordinary swimsuit cut. Community descriptions of Leona informed the material and color direction; this is not a reproduction of her bondage outfit or a verified official costume. Short one-piece swimming suit with a triathlon-style cut.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1
+      },
+      "generatorOutputSha256": "02222dcf0ed3c3b05316aeb12bc8c9d608a8fa0e806bf8c929e4b88287c8e841",
+      "recoveryBatch": "completed-missing-v6"
+    },
+    {
+      "characterId": "kouzou",
       "costumeId": "maid-service-adapted-v6",
       "category": "maid",
       "provenance": "adapted",
@@ -27629,6 +27744,132 @@
     },
     {
       "characterId": "ova-officer-bob",
+      "costumeId": "gloss-swimsuit-v6",
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--gloss-swimsuit-v6.png",
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:ova-officer-bob:ova-plum-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "requestedSwimLatexStyle": true,
+      "styleFamily": "gloss-swimwear",
+      "outfitPalette": "red",
+      "swimwearCut": "one-piece-sports-swimsuit",
+      "secondaryCategories": [
+        "latex"
+      ],
+      "id": "ova-officer-bob:gloss-swimsuit-v6",
+      "canonicalCostumeCertified": false,
+      "canonicalPaletteCertified": false,
+      "fullBodyOneToOneCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-0381b08e-96ce-4e85-8008-4c89df70a472",
+        "generationIdSource": "Exact generated output filename; not an independently certified server identifier.",
+        "outputFilename": "exec-0381b08e-96ce-4e85-8008-4c89df70a472.png",
+        "prompt": "Use case: identity-preserve. Asset type: one full-body transparent game character sprite.\nInput image 1 is the identity and sprite-style reference. Create one new athletic swimming costume variation of this exact same character, changing the clothing only. Preserve the same apparent age, face, hairstyle, natural body proportions, head-to-body ratio, expression, stance and camera direction; do not mature or reshape the character. Chin-length light brown bob and bangs, teal eyes, same neutral facial expression and relaxed arm position. Remove the uniform beret with the work clothing; keep the actual hairstyle.\nClothing: an ordinary fully opaque one-piece athletic swimming suit, with broad shoulder straps, a modest high scoop neckline and ordinary low leg openings, practical pool-training design. No exposed midriff, cutouts, transparent panels, deep neckline or emphasized anatomy. No costume accessories, gloves, stockings, boots, jewelry or collar; both feet are bare. The suit is solid red with small restrained glossy highlights suggesting a subtle latex-like sportswear finish. Keep the reference hair, eye, and skin colors unchanged.\nPresentation: neutral standing sports character, nonsexual, no suggestive pose. Match the reference anime/pixel-sprite rendering, outlines and shading, with a slightly right-facing three-quarter angle if compatible with the original pose. Show the whole hair silhouette, all hands, both legs and both bare feet. Keep clear transparent margin above the hair and below the toes, approximately five percent on every side. Background must be truly transparent alpha, with no scenery, floor, cast shadow, text, logo, border or watermark. This is an original sport-clothing adaptation, not a claim of an official costume.",
+        "promptStatus": "recorded-verbatim",
+        "promptSha256": "4045ee00b73f7cfc5ce983ba23da3e6f0fb795358eda7f86700d282631b28c45",
+        "finalInputEvidence": [
+          {
+            "type": "existing_catalogue_sprite",
+            "id": "ova-officer-bob:ova-plum-uniform-reference-v4",
+            "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png",
+            "sha256": "6cb0369a798712e01419e387f5a56d53163015cbb669fd9f347d5d9776686902",
+            "role": "Identity, pose, proportions and rendering reference; not official costume evidence.",
+            "usedInFinalGeneration": true
+          }
+        ],
+        "history": [
+          {
+            "status": "interrupted-no-result",
+            "startedAtUtc": "2026-10-28T14:18:03.496396+00:00",
+            "interruptedAtUtc": "2026-10-28T14:25:14.869569+00:00",
+            "interruptionNote": "User interrupted function after 118.1 seconds. No returned image, output path or refusal was received, and no per-result checkpoint exists. No new gloss call submitted after updated instruction.",
+            "prompt": "Use case: identity-preserve. Asset type: one full-body transparent game character sprite.\nInput image 1 is the identity and sprite-style reference. Create one new athletic swimming costume variation of this exact same character, changing the clothing only. Preserve the same apparent age, face, hairstyle, natural body proportions, head-to-body ratio, expression, stance and camera direction; do not mature or reshape the character. Chin-length light brown bob and bangs, teal eyes, same neutral facial expression and relaxed arm position. Remove the uniform beret with the work clothing; keep the actual hairstyle.\nClothing: an ordinary fully opaque one-piece athletic swimming suit, with broad shoulder straps, a modest high scoop neckline and ordinary low leg openings, practical pool-training design. No exposed midriff, cutouts, transparent panels, deep neckline or emphasized anatomy. No costume accessories, gloves, stockings, boots, jewelry or collar; both feet are bare. The suit is solid red with small restrained glossy highlights suggesting a subtle latex-like sportswear finish. Keep the reference hair, eye, and skin colors unchanged.\nPresentation: neutral standing sports character, nonsexual, no suggestive pose. Match the reference anime/pixel-sprite rendering, outlines and shading, with a slightly right-facing three-quarter angle if compatible with the original pose. Show the whole hair silhouette, all hands, both legs and both bare feet. Keep clear transparent margin above the hair and below the toes, approximately five percent on every side. Background must be truly transparent alpha, with no scenery, floor, cast shadow, text, logo, border or watermark. This is an original sport-clothing adaptation, not a claim of an official costume.",
+            "inputs": [
+              {
+                "filename": "ova-officer-bob--ova-plum-uniform-reference-v4.png",
+                "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png",
+                "sha256": "6cb0369a798712e01419e387f5a56d53163015cbb669fd9f347d5d9776686902"
+              }
+            ],
+            "promptSha256": "4045ee00b73f7cfc5ce983ba23da3e6f0fb795358eda7f86700d282631b28c45",
+            "promptStatus": "recorded-verbatim"
+          }
+        ]
+      },
+      "image": {
+        "sha256": "da772ac5bd605783dad99506bb8a2b6b33c8dba60925a896c359999c8ba7ec8e",
+        "bytes": 484529,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          33,
+          30,
+          1224,
+          1254
+        ],
+        "visibleBoundsAlphaGt8": [
+          454,
+          32,
+          813,
+          1231
+        ],
+        "visibleMargins": [
+          454,
+          32,
+          441,
+          23
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_catalogue_sprite",
+          "id": "ova-officer-bob:ova-plum-uniform-reference-v4",
+          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png",
+          "sha256": "6cb0369a798712e01419e387f5a56d53163015cbb669fd9f347d5d9776686902",
+          "role": "Identity, pose, proportions and rendering reference; not official costume evidence.",
+          "usedInFinalGeneration": true
+        }
+      ],
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "literalOneToOneCertified": false,
+        "recordedReview": {
+          "visualReviewCompleted": true,
+          "accepted": true,
+          "completeFigure": true,
+          "identityConsistent": true,
+          "categoryConsistent": true,
+          "neutralSportsPresentation": true,
+          "nativePixelsPreserved": true,
+          "notes": "Resumed unchanged submitted prompt and reference after an interrupted call with no returned result. Visually compared against the inspected reference: light-brown bob and bangs, teal eyes, face and neutral relaxed pose consistent. Entire hair, hands and both bare feet visible. Fully opaque red one-piece athletic swimwear with broad straps and ordinary scoop neckline and leg openings. Native sprite rendering retained, with faint colored edge fringe; no pixel changes."
+        },
+        "source": "Recovered recorded visual review; no automated certification of identity fidelity."
+      },
+      "fidelityNote": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted. Opaque nonsexual athletic adaptation of the requested glossy motif, with an ordinary swimsuit cut. Community descriptions of Leona informed the material and color direction; this is not a reproduction of her bondage outfit or a verified official costume.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1
+      },
+      "generatorOutputSha256": "da772ac5bd605783dad99506bb8a2b6b33c8dba60925a896c359999c8ba7ec8e",
+      "recoveryBatch": "completed-missing-v6"
+    },
+    {
+      "characterId": "ova-officer-bob",
       "costumeId": "maid-v6",
       "category": "maid",
       "provenance": "adapted",
@@ -27969,7 +28210,6 @@
             "characterId": "ova-officer-swept-hair",
             "generationId": "exec-ed36ff7c-86b7-4c86-a566-b1dc7aac933b",
             "status": "rejected-visual-artifact",
-            "outputHint": "Generated images are saved to /workspace/scratch/50dd17c976cc/generated_images as /workspace/scratch/50dd17c976cc/generated_images/exec-ed36ff7c-86b7-4c86-a566-b1dc7aac933b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
             "prompt": "Use case: identity-preserve.\nAsset type: ONE additional static full-body game costume sprite, transparent PNG.\nInput image 1 is the edit target and sole identity, apparent-age, pose, proportions and rendering reference. Preserve pulled-back chestnut hair and separated long front locks, blue eyes, source facial profile and limb placement; change the service hat only as needed for the outfit.\nChange ONLY the clothing to a professional household-service uniform: opaque white long-sleeved shirt with closed collar, black waistcoat, small neat black bow tie, full-length dark straight trousers, practical white waist apron and closed flat black work shoes. Tailor the fabric to the unchanged body; do not reshape anatomy.\nKeep the same face, hairstyle, eye colors, head size, limb lengths, natural body proportions, neutral expression and relaxed source pose. Match the source's crisp detailed pixel/anime sprite linework and restrained shading; three-quarter orientation toward the right where present in the source. Do not enlarge the head or change apparent age.\nComposition: one complete figure from every hair tip and headwear through both entire shoes, centered with generous transparent margins at least 40 pixels on ALL sides. Keep the character's source aspect ratio. No cropping, collage, panels, additional character, floor, cast shadow, environment, text, logo or watermark.\nPresentation: ordinary functional fully opaque clothing, neutral pose and nonsexual game-art presentation. This is a new project costume adaptation, not a claim of an official canonical outfit.",
             "reason": "Small isolated gray marks at the lower right, alpha up to19, beyond the complete figure. Native result retained; no pixel processing.",
             "outputFilename": "exec-ed36ff7c-86b7-4c86-a566-b1dc7aac933b.png",
@@ -32195,6 +32435,113 @@
     },
     {
       "characterId": "yuuji",
+      "costumeId": "gloss-swimsuit-v6",
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--gloss-swimsuit-v6.png",
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:yuuji:light-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "yuuji:swimwear-sport-original",
+      "requestedSwimLatexStyle": true,
+      "styleFamily": "gloss-swimwear",
+      "outfitPalette": "red",
+      "swimwearCut": "short-triathlon-suit",
+      "secondaryCategories": [
+        "latex"
+      ],
+      "id": "yuuji:gloss-swimsuit-v6",
+      "canonicalCostumeCertified": false,
+      "canonicalPaletteCertified": false,
+      "fullBodyOneToOneCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-9711e99f-22c5-41bf-8f9a-79360989b51a",
+        "generationIdSource": "Exact generated output filename; not an independently certified server identifier.",
+        "outputFilename": "exec-9711e99f-22c5-41bf-8f9a-79360989b51a.png",
+        "prompt": "Use case: identity-preserve.\nAsset type: a single optional full-body game costume, an original nonsexual sports-swimwear adaptation.\nInput image 1 is the sole identity and rendering reference. Keep the same short spiky blue-black hair, grey-blue eyes and face, apparent age, facial proportions, individual figure, calm expression and standing orientation. Do not mature or beautify the person, alter anatomy or emphasize body features.\nChange only the clothes and their accessories into an ordinary opaque red short triathlon swimming suit, with a sleeveless athletic top, normal round neckline and shorts ending above the knees; one continuous sports garment. Use smooth technical swimming material with restrained glossy highlights, a subtle coated-fabric sheen, never wet or transparent. Barefoot. Remove the old clothes, footwear, bags, tactical face paint, weapons and equipment. No gloves, boots, collar, jewellery, fetish accessories or suggestive pose. Keep the identity-defining hair and glasses if present.\nKeep the same detailed crisp anime pixel-art clusters, stepped outlines and face/hair/skin/eye colours as the source. One figure standing neutrally, three-quarter view facing viewer's right, both arms relaxed naturally at the sides with empty hands. Genuine transparent alpha background. Entire hair/head, hands and both complete feet inside the image with generous transparent margins, preferably a square 1254x1254 canvas. No text, watermark, scenery, extra figures or props. Do not crop or zoom.",
+        "promptStatus": "recorded-verbatim",
+        "promptSha256": "4c39bbea6c96720ecf3e4a2aff0af1dd89cb42c4e2c3db709ec52d18849e24b5",
+        "finalInputEvidence": [
+          {
+            "type": "existing_catalogue_sprite",
+            "id": "yuuji:light-uniform-reference-v4",
+            "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+            "sha256": "259bece898270b0a434171493aa0046fdc38a234319535079a75e42d51b960f5",
+            "role": "Identity, pose, proportions and rendering reference; not official costume evidence.",
+            "usedInFinalGeneration": true
+          }
+        ]
+      },
+      "image": {
+        "sha256": "27b85d45e6342e2015aed84569eb2f5868749d880fc98162d0f10523e3acca81",
+        "bytes": 496118,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          0,
+          23,
+          1236,
+          1230
+        ],
+        "visibleBoundsAlphaGt8": [
+          440,
+          60,
+          884,
+          1187
+        ],
+        "visibleMargins": [
+          440,
+          60,
+          370,
+          67
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_catalogue_sprite",
+          "id": "yuuji:light-uniform-reference-v4",
+          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+          "sha256": "259bece898270b0a434171493aa0046fdc38a234319535079a75e42d51b960f5",
+          "role": "Identity, pose, proportions and rendering reference; not official costume evidence.",
+          "usedInFinalGeneration": true
+        }
+      ],
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "literalOneToOneCertified": false,
+        "recordedReview": {
+          "visualReviewCompleted": true,
+          "completeFigure": true,
+          "identityConsistent": true,
+          "actualSwimsuit": true,
+          "literalOneToOneCertified": false,
+          "notes": "Short spiky blue-black hair, grey-blue eyes, calm expression and standing orientation consistent with the identity reference. Opaque red short triathlon swimming suit, ordinary round neckline and continuous upper-body/short-leg garment with restrained glossy highlights; barefoot, empty hands and no additional accessories. Hair, hands and both complete feet inside the canvas. Native transparent PNG copied without edits."
+        },
+        "source": "Recovered recorded visual review; no automated certification of identity fidelity."
+      },
+      "fidelityNote": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted. Opaque nonsexual athletic adaptation of the requested glossy motif, with an ordinary swimsuit cut. Community descriptions of Leona informed the material and color direction; this is not a reproduction of her bondage outfit or a verified official costume. Short one-piece swimming suit with a triathlon-style cut.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1
+      },
+      "generatorOutputSha256": "27b85d45e6342e2015aed84569eb2f5868749d880fc98162d0f10523e3acca81",
+      "recoveryBatch": "completed-missing-v6"
+    },
+    {
+      "characterId": "yuuji",
       "costumeId": "latex-v6",
       "category": "latex",
       "provenance": "adapted",
@@ -32284,7 +32631,7 @@
         },
         "source": "Recovered recorded visual review; no automated certification of identity fidelity."
       },
-      "fidelityNote": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This action suit does not fulfill the newly requested glossy swimsuit cut; that style is tracked separately.",
+      "fidelityNote": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version retains its black-and-gold palette; the newly requested glossy swimsuit is separately available.",
       "staticFrame": {
         "columns": 1,
         "rows": 1
@@ -32584,6 +32931,132 @@
       },
       "generatorOutputSha256": "a76ec65d3bf87f38398e21ab706692001bee6a507db9a6213860a8640bd2d69e",
       "recoveryBatch": "latest-v6"
+    },
+    {
+      "characterId": "yuuki",
+      "costumeId": "gloss-swimsuit-v6",
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--gloss-swimsuit-v6.png",
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:yuuki:ova-tactical-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "yuuki:aquatic-covered",
+      "requestedSwimLatexStyle": true,
+      "styleFamily": "gloss-swimwear",
+      "outfitPalette": "red",
+      "swimwearCut": "one-piece-sports-swimsuit",
+      "secondaryCategories": [
+        "latex"
+      ],
+      "id": "yuuki:gloss-swimsuit-v6",
+      "canonicalCostumeCertified": false,
+      "canonicalPaletteCertified": false,
+      "fullBodyOneToOneCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-fa23f6fd-c955-4243-b6d4-2582941c168b",
+        "generationIdSource": "Exact generated output filename; not an independently certified server identifier.",
+        "outputFilename": "exec-fa23f6fd-c955-4243-b6d4-2582941c168b.png",
+        "prompt": "Use case: identity-preserve.\nAsset type: a single optional full-body game costume, an original nonsexual sports-swimwear adaptation.\nInput image 1 is the sole identity and rendering reference. Keep the same layered neck-length cobalt-blue hair with separated fringe, amber-brown eyes, angular face and original athletic build, apparent age, facial proportions, individual figure, calm expression and standing orientation. Do not mature or beautify the person, alter anatomy or emphasize body features.\nChange only the clothes and their accessories into an ordinary opaque red athletic one-piece swimming costume with broad shoulder straps, a normal high rounded neckline, standard modest leg openings and a simple continuous front. Use smooth technical swimming material with restrained glossy highlights, a subtle coated-fabric sheen, never wet or transparent. Barefoot. Remove the old clothes, footwear, bags, tactical face paint, weapons and equipment. No gloves, boots, collar, jewellery, fetish accessories or suggestive pose. Keep the identity-defining hair and glasses if present.\nKeep the same detailed crisp anime pixel-art clusters, stepped outlines and face/hair/skin/eye colours as the source. One figure standing neutrally, three-quarter view facing viewer's right, both arms relaxed naturally at the sides with empty hands. Genuine transparent alpha background. Entire hair/head, hands and both complete feet inside the image with generous transparent margins, preferably a square 1254x1254 canvas. No text, watermark, scenery, extra figures or props. Do not crop or zoom.",
+        "promptStatus": "recorded-verbatim",
+        "promptSha256": "4b739cd3bd0b21eb6d4096491b75299b550dd8e3a6d3fa608b440c881f6ad129",
+        "finalInputEvidence": [
+          {
+            "type": "existing_catalogue_sprite",
+            "id": "yuuki:ova-tactical-fidelity-v4",
+            "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-fidelity-v4.png",
+            "sha256": "71842afd9eef6fa577ce9b6c7290d0a41e9e5439c47782be766e29b55c48ac6a",
+            "role": "Identity, pose, proportions and rendering reference; not official costume evidence.",
+            "usedInFinalGeneration": true
+          }
+        ],
+        "history": [
+          {
+            "status": "interrupted-no-output",
+            "prompt": "Use case: identity-preserve.\nAsset type: a single optional full-body game costume, an original nonsexual sports-swimwear adaptation.\nInput image 1 is the sole identity and rendering reference. Keep the same layered neck-length cobalt-blue hair with separated fringe, amber-brown eyes, angular face and original athletic build, apparent age, facial proportions, individual figure, calm expression and standing orientation. Do not mature or beautify the person, alter anatomy or emphasize body features.\nChange only the clothes and their accessories into an ordinary opaque red athletic one-piece swimming costume with broad shoulder straps, a normal high rounded neckline, standard modest leg openings and a simple continuous front. Use smooth technical swimming material with restrained glossy highlights, a subtle coated-fabric sheen, never wet or transparent. Barefoot. Remove the old clothes, footwear, bags, tactical face paint, weapons and equipment. No gloves, boots, collar, jewellery, fetish accessories or suggestive pose. Keep the identity-defining hair and glasses if present.\nKeep the same detailed crisp anime pixel-art clusters, stepped outlines and face/hair/skin/eye colours as the source. One figure standing neutrally, three-quarter view facing viewer's right, both arms relaxed naturally at the sides with empty hands. Genuine transparent alpha background. Entire hair/head, hands and both complete feet inside the image with generous transparent margins, preferably a square 1254x1254 canvas. No text, watermark, scenery, extra figures or props. Do not crop or zoom.",
+            "startedAtUTC": "2026-10-28T14:53:51.473230+00:00",
+            "toolOutcome": "aborted by user after 45.9s",
+            "checkedAtUTC": "2026-10-28T15:07:11.162650+00:00",
+            "recoveryCheck": "No generated PNG modified after the recorded start time, no saved target, and no returned image result. Technical interruption; no moderation refusal.",
+            "inputs": [
+              {
+                "filename": "yuuki--ova-tactical-fidelity-v4.png",
+                "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-fidelity-v4.png",
+                "sha256": "71842afd9eef6fa577ce9b6c7290d0a41e9e5439c47782be766e29b55c48ac6a"
+              }
+            ],
+            "promptSha256": "4b739cd3bd0b21eb6d4096491b75299b550dd8e3a6d3fa608b440c881f6ad129",
+            "promptStatus": "recorded-verbatim"
+          }
+        ]
+      },
+      "image": {
+        "sha256": "279491589f8e577b1fe580d9e09adc7e43587de3a0cd416244206449c8a13d13",
+        "bytes": 502647,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          33,
+          28,
+          1224,
+          1230
+        ],
+        "visibleBoundsAlphaGt8": [
+          452,
+          33,
+          859,
+          1225
+        ],
+        "visibleMargins": [
+          452,
+          33,
+          395,
+          29
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "type": "existing_catalogue_sprite",
+          "id": "yuuki:ova-tactical-fidelity-v4",
+          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-fidelity-v4.png",
+          "sha256": "71842afd9eef6fa577ce9b6c7290d0a41e9e5439c47782be766e29b55c48ac6a",
+          "role": "Identity, pose, proportions and rendering reference; not official costume evidence.",
+          "usedInFinalGeneration": true
+        }
+      ],
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "literalOneToOneCertified": false,
+        "recordedReview": {
+          "visualReviewCompleted": true,
+          "completeFigure": true,
+          "identityConsistent": true,
+          "actualSwimsuit": true,
+          "literalOneToOneCertified": false,
+          "notes": "Layered cobalt-blue hair, amber-brown eyes, angular face, athletic build and neutral standing orientation consistent with the identity reference. Opaque red athletic one-piece with broad straps, ordinary rounded neckline and restrained highlights; tactical face paint and equipment removed as specified. Both hands and entire bare feet visible, with transparent margins. Returned directly by the generation tool after the prior user interruption; native PNG copied without raster edits."
+        },
+        "source": "Recovered recorded visual review; no automated certification of identity fidelity."
+      },
+      "fidelityNote": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted. Opaque nonsexual athletic adaptation of the requested glossy motif, with an ordinary swimsuit cut. Community descriptions of Leona informed the material and color direction; this is not a reproduction of her bondage outfit or a verified official costume.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1
+      },
+      "generatorOutputSha256": "279491589f8e577b1fe580d9e09adc7e43587de3a0cd416244206449c8a13d13",
+      "recoveryBatch": "completed-missing-v6"
     },
     {
       "characterId": "yuuki",
@@ -33514,9 +33987,11 @@
             ]
           },
           "swimwear": {
-            "delivered": false,
+            "delivered": true,
             "referenceBased": false,
-            "costumeIds": []
+            "costumeIds": [
+              "gloss-swimsuit-v6"
+            ]
           },
           "nurse": {
             "delivered": true,
@@ -33534,9 +34009,11 @@
             ]
           },
           "latex": {
-            "delivered": false,
+            "delivered": true,
             "referenceBased": false,
-            "costumeIds": []
+            "costumeIds": [
+              "gloss-swimsuit-v6"
+            ]
           }
         }
       },
@@ -34162,9 +34639,11 @@
             "costumeIds": []
           },
           "swimwear": {
-            "delivered": false,
+            "delivered": true,
             "referenceBased": false,
-            "costumeIds": []
+            "costumeIds": [
+              "gloss-swimsuit-v6"
+            ]
           },
           "nurse": {
             "delivered": true,
@@ -34181,9 +34660,11 @@
             ]
           },
           "latex": {
-            "delivered": false,
+            "delivered": true,
             "referenceBased": false,
-            "costumeIds": []
+            "costumeIds": [
+              "gloss-swimsuit-v6"
+            ]
           }
         }
       },
@@ -34664,6 +35145,7 @@
             "delivered": true,
             "referenceBased": false,
             "costumeIds": [
+              "gloss-swimsuit-v6",
               "swimsuit-v6"
             ]
           },
@@ -34685,6 +35167,7 @@
             "delivered": true,
             "referenceBased": false,
             "costumeIds": [
+              "gloss-swimsuit-v6",
               "latex-v6"
             ]
           }
@@ -34709,9 +35192,11 @@
             ]
           },
           "swimwear": {
-            "delivered": false,
+            "delivered": true,
             "referenceBased": false,
-            "costumeIds": []
+            "costumeIds": [
+              "gloss-swimsuit-v6"
+            ]
           },
           "nurse": {
             "delivered": true,
@@ -34730,9 +35215,11 @@
             ]
           },
           "latex": {
-            "delivered": false,
+            "delivered": true,
             "referenceBased": false,
-            "costumeIds": []
+            "costumeIds": [
+              "gloss-swimsuit-v6"
+            ]
           }
         }
       }
@@ -34747,18 +35234,11 @@
         "ova-officer-swept-hair"
       ],
       "swimwear": [
-        "kouzou",
-        "maiko",
-        "ova-officer-bob",
-        "yuuki"
+        "maiko"
       ],
       "nurse": [],
       "military": [],
-      "latex": [
-        "kouzou",
-        "ova-officer-bob",
-        "yuuki"
-      ]
+      "latex": []
     },
     "officialSchoolUniformReferenceMissing": [
       "akane",
@@ -34839,6 +35319,7 @@
         "karen",
         "katsuo",
         "kawahara",
+        "kouzou",
         "kumi",
         "leona",
         "linda",
@@ -34852,6 +35333,7 @@
         "ova-attendant-brown-bun",
         "ova-broadcasting-club-member",
         "ova-guest-yellow-dress",
+        "ova-officer-bob",
         "ova-officer-swept-hair",
         "reina",
         "ruri",
@@ -34861,15 +35343,13 @@
         "sudou",
         "takurou",
         "tooru",
-        "yuri"
+        "yuri",
+        "yuuji",
+        "yuuki"
       ],
       "missingCharacters": [
         "kanae",
-        "kouzou",
-        "maiko",
-        "ova-officer-bob",
-        "yuuji",
-        "yuuki"
+        "maiko"
       ],
       "sourceMonochromeCharacters": [
         "ova-broadcasting-club-member"
@@ -34882,34 +35362,10 @@
           "reason": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 7d56668d-87e1-4681-be4c-3c24e261f62a. safety_violations=[sexual].\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"sexual\\\"\\n      ]\\n    }\\n  }\\n}\")"
         },
         {
-          "characterId": "kouzou",
-          "status": "interrupted-no-result",
-          "error": null,
-          "reason": null
-        },
-        {
           "characterId": "maiko",
           "status": "excluded-prior-refusal",
           "error": null,
           "reason": null
-        },
-        {
-          "characterId": "ova-officer-bob",
-          "status": "interrupted-no-result",
-          "error": null,
-          "reason": null
-        },
-        {
-          "characterId": "yuuji",
-          "status": "paused-user-style-change",
-          "error": null,
-          "reason": "User requested more faithful source costume; no further sports-gloss generation after instruction."
-        },
-        {
-          "characterId": "yuuki",
-          "status": "paused-user-style-change",
-          "error": null,
-          "reason": "User requested more faithful source costume; no further sports-gloss generation after instruction."
         }
       ],
       "officialCostumeReproductionCertified": false,
@@ -35285,32 +35741,14 @@
       "promptSha256": "679ce0cc8388037080b0e82ba623ca730fb66baf3e39105de5ff29979b8aa30d"
     },
     {
-      "id": "kouzou:gloss-swimsuit-v6",
-      "characterId": "kouzou",
-      "kind": "swimsuit",
-      "status": "interrupted-no-result",
-      "familyDeliveredByOtherCostume": false,
-      "alternativeCostumeIds": [],
-      "countedAsDelivered": false,
-      "requestedSwimLatexStyle": true,
-      "requestedStyleDelivered": false,
-      "recordedInputs": [
-        {
-          "filename": "kouzou--suit-reference-v4.png",
-          "sha256": "87671e7ce829928d627303e792d05158666788e03b286623c414345dac9205e9",
-          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png"
-        }
-      ],
-      "prompt": "Use case: identity-preserve. Asset: one static full-body pixel-art game costume, an ordinary nonsexual sports catalogue presentation.\nImage 1 is the exact person, face, hairstyle, eye colour, natural build, apparent age, neutral pose and pixel-art rendering to preserve. Keep the same identity and natural head-to-body proportions without beautifying, aging up or exaggerating any anatomy.\nReplace only all the clothing with an ordinary opaque athletic swimming suit in scarlet red, a single short triathlon-style suit with a continuous covered torso and normal short legs reaching mid-thigh, wide shoulder straps and a modest round sports neckline. The material is entirely opaque with a restrained smooth glossy latex-like surface effect and small controlled highlights, not wet or transparent. Keep a practical normal sporting fit, no sculpting or emphasis of body parts. Plain simple design, no deep neckline, very high leg cut, cutouts, decorative straps, collars or extra costume jewellery. Bare feet and bare hands, no gloves, boots, stockings, extra accessories or props. Preserve existing identity-defining hair accessories, eyeglasses and ordinary ear ornaments.\nKeep the same neutral relaxed upright three-quarter standing pose and facial expression. Match the fine crisp anime pixel clusters and stepped outlines of the supplied reference; do not switch to a smooth painted illustration or enlarge the head. Entire hair, both hands and both complete bare feet visible with generous transparent margins. One character only on a square canvas around 1254 x 1254, actual RGBA alpha transparency. No scene, shadow ground, text, watermark, extra people, panels or halo. This is a newly designed sportswear adaptation for the game, not a canonical costume or a certified pixel-for-pixel copy.",
-      "promptSha256": "47750c3cd95b54e1556526d1fba77d8c07f647b84a83bd082a98a68c2d636bdd"
-    },
-    {
       "id": "kouzou:latex-v6",
       "characterId": "kouzou",
       "kind": "latex",
       "status": "pending",
-      "familyDeliveredByOtherCostume": false,
-      "alternativeCostumeIds": [],
+      "familyDeliveredByOtherCostume": true,
+      "alternativeCostumeIds": [
+        "gloss-swimsuit-v6"
+      ],
       "countedAsDelivered": false,
       "recordedInputs": [
         {
@@ -35347,13 +35785,15 @@
       "characterId": "kouzou",
       "kind": "latex",
       "status": "cancelled-superseded-by-user-style-direction",
-      "familyDeliveredByOtherCostume": false,
-      "alternativeCostumeIds": [],
+      "familyDeliveredByOtherCostume": true,
+      "alternativeCostumeIds": [
+        "gloss-swimsuit-v6"
+      ],
       "countedAsDelivered": false,
       "recordedStatus": "cancelled-superseded-by-user-style-direction",
       "supersededByUserStyleClarification": true,
       "replacementStyle": "gloss-swimsuit-v6",
-      "replacementStyleDelivered": false,
+      "replacementStyleDelivered": true,
       "reason": "The user clarified a different sporty swimsuit cut. No further full-cover action suit generation will be launched.",
       "recordedInputs": [
         {
@@ -35370,13 +35810,15 @@
       "characterId": "kouzou",
       "kind": "swimsuit",
       "status": "cancelled-superseded-by-user-style-direction",
-      "familyDeliveredByOtherCostume": false,
-      "alternativeCostumeIds": [],
+      "familyDeliveredByOtherCostume": true,
+      "alternativeCostumeIds": [
+        "gloss-swimsuit-v6"
+      ],
       "countedAsDelivered": false,
       "recordedStatus": "paused-user-style-change",
       "supersededByUserStyleClarification": true,
       "replacementStyle": "gloss-swimsuit-v6",
-      "replacementStyleDelivered": false,
+      "replacementStyleDelivered": true,
       "recordedInputs": [
         {
           "filename": "kouzou--suit-reference-v4.png",
@@ -36163,37 +36605,19 @@
       ]
     },
     {
-      "id": "ova-officer-bob:gloss-swimsuit-v6",
-      "characterId": "ova-officer-bob",
-      "kind": "swimsuit",
-      "status": "interrupted-no-result",
-      "familyDeliveredByOtherCostume": false,
-      "alternativeCostumeIds": [],
-      "countedAsDelivered": false,
-      "requestedSwimLatexStyle": true,
-      "requestedStyleDelivered": false,
-      "recordedInputs": [
-        {
-          "filename": "ova-officer-bob--ova-plum-uniform-reference-v4.png",
-          "sha256": "6cb0369a798712e01419e387f5a56d53163015cbb669fd9f347d5d9776686902",
-          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png"
-        }
-      ],
-      "prompt": "Use case: identity-preserve. Asset type: one full-body transparent game character sprite.\nInput image 1 is the identity and sprite-style reference. Create one new athletic swimming costume variation of this exact same character, changing the clothing only. Preserve the same apparent age, face, hairstyle, natural body proportions, head-to-body ratio, expression, stance and camera direction; do not mature or reshape the character. Chin-length light brown bob and bangs, teal eyes, same neutral facial expression and relaxed arm position. Remove the uniform beret with the work clothing; keep the actual hairstyle.\nClothing: an ordinary fully opaque one-piece athletic swimming suit, with broad shoulder straps, a modest high scoop neckline and ordinary low leg openings, practical pool-training design. No exposed midriff, cutouts, transparent panels, deep neckline or emphasized anatomy. No costume accessories, gloves, stockings, boots, jewelry or collar; both feet are bare. The suit is solid red with small restrained glossy highlights suggesting a subtle latex-like sportswear finish. Keep the reference hair, eye, and skin colors unchanged.\nPresentation: neutral standing sports character, nonsexual, no suggestive pose. Match the reference anime/pixel-sprite rendering, outlines and shading, with a slightly right-facing three-quarter angle if compatible with the original pose. Show the whole hair silhouette, all hands, both legs and both bare feet. Keep clear transparent margin above the hair and below the toes, approximately five percent on every side. Background must be truly transparent alpha, with no scenery, floor, cast shadow, text, logo, border or watermark. This is an original sport-clothing adaptation, not a claim of an official costume.",
-      "promptSha256": "4045ee00b73f7cfc5ce983ba23da3e6f0fb795358eda7f86700d282631b28c45"
-    },
-    {
       "id": "ova-officer-bob:red-action-suit-v6",
       "characterId": "ova-officer-bob",
       "kind": "latex",
       "status": "cancelled-superseded-by-user-style-direction",
-      "familyDeliveredByOtherCostume": false,
-      "alternativeCostumeIds": [],
+      "familyDeliveredByOtherCostume": true,
+      "alternativeCostumeIds": [
+        "gloss-swimsuit-v6"
+      ],
       "countedAsDelivered": false,
       "recordedStatus": "cancelled-superseded-by-user-style-direction",
       "supersededByUserStyleClarification": true,
       "replacementStyle": "gloss-swimsuit-v6",
-      "replacementStyleDelivered": false,
+      "replacementStyleDelivered": true,
       "reason": "The user clarified a different sporty swimsuit cut. No further full-cover action suit generation will be launched.",
       "recordedInputs": [
         {
@@ -36210,13 +36634,15 @@
       "characterId": "ova-officer-bob",
       "kind": "swimsuit",
       "status": "cancelled-superseded-by-user-style-direction",
-      "familyDeliveredByOtherCostume": false,
-      "alternativeCostumeIds": [],
+      "familyDeliveredByOtherCostume": true,
+      "alternativeCostumeIds": [
+        "gloss-swimsuit-v6"
+      ],
       "countedAsDelivered": false,
       "recordedStatus": "paused-user-style-change",
       "supersededByUserStyleClarification": true,
       "replacementStyle": "gloss-swimsuit-v6",
-      "replacementStyleDelivered": false,
+      "replacementStyleDelivered": true,
       "recordedInputs": [
         {
           "filename": "ova-officer-bob--ova-plum-uniform-reference-v4.png",
@@ -36608,40 +37034,20 @@
       "promptSha256": "679ce0cc8388037080b0e82ba623ca730fb66baf3e39105de5ff29979b8aa30d"
     },
     {
-      "id": "yuuji:gloss-swimsuit-v6",
-      "characterId": "yuuji",
-      "kind": "swimsuit",
-      "status": "paused-user-style-change",
-      "familyDeliveredByOtherCostume": true,
-      "alternativeCostumeIds": [
-        "swimsuit-v6"
-      ],
-      "countedAsDelivered": false,
-      "requestedSwimLatexStyle": true,
-      "requestedStyleDelivered": false,
-      "reason": "User requested more faithful source costume; no further sports-gloss generation after instruction.",
-      "recordedInputs": [
-        {
-          "filename": "yuuji--light-uniform-reference-v4.png",
-          "sha256": "259bece898270b0a434171493aa0046fdc38a234319535079a75e42d51b960f5",
-          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png"
-        }
-      ]
-    },
-    {
       "id": "yuuji:red-action-suit-v6",
       "characterId": "yuuji",
       "kind": "latex",
       "status": "cancelled-superseded-by-user-style-direction",
       "familyDeliveredByOtherCostume": true,
       "alternativeCostumeIds": [
+        "gloss-swimsuit-v6",
         "latex-v6"
       ],
       "countedAsDelivered": false,
       "recordedStatus": "cancelled-superseded-by-user-style-direction",
       "supersededByUserStyleClarification": true,
       "replacementStyle": "gloss-swimsuit-v6",
-      "replacementStyleDelivered": false,
+      "replacementStyleDelivered": true,
       "reason": "The user clarified a different sporty swimsuit cut. No further full-cover action suit generation will be launched.",
       "recordedInputs": [
         {
@@ -36654,36 +37060,19 @@
       "promptSha256": "679ce0cc8388037080b0e82ba623ca730fb66baf3e39105de5ff29979b8aa30d"
     },
     {
-      "id": "yuuki:gloss-swimsuit-v6",
-      "characterId": "yuuki",
-      "kind": "swimsuit",
-      "status": "paused-user-style-change",
-      "familyDeliveredByOtherCostume": false,
-      "alternativeCostumeIds": [],
-      "countedAsDelivered": false,
-      "requestedSwimLatexStyle": true,
-      "requestedStyleDelivered": false,
-      "reason": "User requested more faithful source costume; no further sports-gloss generation after instruction.",
-      "recordedInputs": [
-        {
-          "filename": "yuuki--ova-tactical-fidelity-v4.png",
-          "sha256": "71842afd9eef6fa577ce9b6c7290d0a41e9e5439c47782be766e29b55c48ac6a",
-          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-fidelity-v4.png"
-        }
-      ]
-    },
-    {
       "id": "yuuki:red-action-suit-v6",
       "characterId": "yuuki",
       "kind": "latex",
       "status": "cancelled-superseded-by-user-style-direction",
-      "familyDeliveredByOtherCostume": false,
-      "alternativeCostumeIds": [],
+      "familyDeliveredByOtherCostume": true,
+      "alternativeCostumeIds": [
+        "gloss-swimsuit-v6"
+      ],
       "countedAsDelivered": false,
       "recordedStatus": "cancelled-superseded-by-user-style-direction",
       "supersededByUserStyleClarification": true,
       "replacementStyle": "gloss-swimsuit-v6",
-      "replacementStyleDelivered": false,
+      "replacementStyleDelivered": true,
       "reason": "The user clarified a different sporty swimsuit cut. No further full-cover action suit generation will be launched.",
       "recordedInputs": [
         {
@@ -36700,13 +37089,15 @@
       "characterId": "yuuki",
       "kind": "swimsuit",
       "status": "cancelled-superseded-by-user-style-direction",
-      "familyDeliveredByOtherCostume": false,
-      "alternativeCostumeIds": [],
+      "familyDeliveredByOtherCostume": true,
+      "alternativeCostumeIds": [
+        "gloss-swimsuit-v6"
+      ],
       "countedAsDelivered": false,
       "recordedStatus": "paused-user-style-change",
       "supersededByUserStyleClarification": true,
       "replacementStyle": "gloss-swimsuit-v6",
-      "replacementStyleDelivered": false,
+      "replacementStyleDelivered": true,
       "recordedInputs": [
         {
           "filename": "yuuki--ova-tactical-fidelity-v4.png",

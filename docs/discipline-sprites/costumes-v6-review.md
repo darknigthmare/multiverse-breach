@@ -2,7 +2,7 @@
 
 ## Résultat
 
-La PR nº12 contenait 197 sprites à la tête `f9a9c1db7bbea3312e53341e5fbbdcf79c504851`. Cette reprise réunit 166 sorties acceptées, récupérées ou nouvellement terminées, portant le catalogue à 363 PNG pour 36 identités. Les 197 objets de catalogue, 197 objets du manifeste et 197 PNG antérieurs sont conservés strictement. Les résultats détaillés figurent dans le rapport de conservation.
+La PR nº12 contenait 197 sprites à la tête `f9a9c1db7bbea3312e53341e5fbbdcf79c504851`. Cette reprise réunit 170 sorties acceptées, récupérées ou nouvellement terminées, portant le catalogue à 367 PNG pour 36 identités. Les 197 objets de catalogue, 197 objets du manifeste et 197 PNG antérieurs sont conservés strictement. Les résultats détaillés figurent dans le rapport de conservation.
 
 ## Lots auparavant non publiés
 
@@ -16,7 +16,7 @@ Les nouvelles tenues infirmières de Manami et Maya sont terminées. Le brouillo
 
 Les nouvelles tenues de bain sont des maillots une pièce, des shorts de bain ou des combinaisons courtes de triathlon. Les 35 vêtements aquatiques antérieurs restent accessibles et sont exclus de cette couverture. Les tenues maid et infirmières sont des adaptations de vêtements de service et de soins. Les batailles personnalisées sont des tenues de jeu adaptées, sans revendication de costume canonique.
 
-Après la précision du besoin, la continuation ajoute des maillots sportifs brillants à effet latex pour 30 identités. Ils reprennent une direction rouge brillante dans des versions opaques et non sexualisées, sans copier la tenue de bondage de Leona. La figure monochrome garde ses niveaux de gris. Les combinaisons intégrales rouges et les anciennes variantes noir et or restent distinctes ; elles ne sont pas déclarées équivalentes à la nouvelle coupe de maillot.
+Après la précision du besoin, la continuation ajoute des maillots sportifs brillants à effet latex pour 34 identités. Ils reprennent une direction rouge brillante dans des versions opaques et non sexualisées, sans copier la tenue de bondage de Leona. La figure monochrome garde ses niveaux de gris. Les combinaisons intégrales rouges et les anciennes variantes noir et or restent distinctes ; elles ne sont pas déclarées équivalentes à la nouvelle coupe de maillot.
 
 Une nouvelle demande précise que les personnages sont adultes et demande une copie plus fidèle. Ce contexte est explicitement fourni au générateur dans un pilote Leona, avec le sprite neutre d’identité et la photographie Q-six du costume noir comme seconde entrée. La construction visible est demandée en rouge, avec une couverture opaque et une pose neutre. Le système d’images refuse cette entrée (`moderation_blocked`, catégorie `sexual`) : aucune sortie n’est comptée, aucun autre essai n’est lancé. Le journal conserve le prompt réel, les deux références et l’erreur reçue.
 

@@ -1,6 +1,6 @@
 # Sprites et tenues Discipline
 
-**363 PNG individuels pour 36 identités graphiques.** Cette reprise ajoute **166 PNG** aux **197 images** publiées à `f9a9c1d`. Les objets de catalogue, objets de manifeste et octets PNG de ces 197 entrées restent identiques.
+**367 PNG individuels pour 36 identités graphiques.** Cette reprise ajoute **170 PNG** aux **197 images** publiées à `f9a9c1d`. Les objets de catalogue, objets de manifeste et octets PNG de ces 197 entrées restent identiques.
 
 ## Galerie et vestiaire
 
@@ -15,7 +15,7 @@ Le vestiaire reste raccordé aux trois héros existants **Saori Otokawa, Ruri No
 | Lot | PNG ajoutés |
 | --- | ---: |
 | Reprise antérieure : maid sur modèle OVA et batailles personnalisées | 30 |
-| Familles manquantes et variantes rouges terminées dans la continuation | 70 |
+| Familles manquantes et variantes rouges terminées dans la continuation | 74 |
 | Dernière reprise : variantes déjà revues | 57 |
 | Sorties retrouvées et revues pendant cette récupération | 6 |
 | Premières sorties terminées pendant cette reprise | 3 |
@@ -28,14 +28,14 @@ Quatre autres PNG retrouvés sont conservés dans une [archive à provenance inc
 | --- | ---: | ---: |
 | Maid / service | 40 | 36 / 36 |
 | Uniforme scolaire | 0 | 31 / 36 |
-| Maillot de bain | 51 | 32 / 36 |
+| Maillot de bain | 55 | 35 / 36 |
 | Soins infirmiers | 36 | 36 / 36 |
 | Bataille | 19 | 36 / 36 |
-| Latex, famille générale | 20 | 33 / 36 |
+| Latex, famille générale | 20 | 36 / 36 |
 
 Chaque PNG apparaît dans une seule catégorie principale. Les maillots brillants contribuent aussi à la couverture de la famille latex, sans être comptés deux fois dans le total des images.
 
-**Nouvelle direction maillot brillant / effet latex : 30 / 36 identités couvertes.** Il s’agit de maillots sportifs opaques, non sexualisés, inspirés du rouge brillant demandé. Les combinaisons intégrales rouges produites avant cette précision sont conservées séparément et ne sont pas comptées dans cette nouvelle coupe. Aucun nouveau costume n’est présenté comme officiel. Les exceptions sont détaillées dans la couverture.
+**Nouvelle direction maillot brillant / effet latex : 34 / 36 identités couvertes.** Il s’agit de maillots sportifs opaques, non sexualisés, inspirés du rouge brillant demandé. Les combinaisons intégrales rouges produites avant cette précision sont conservées séparément et ne sont pas comptées dans cette nouvelle coupe. Aucun nouveau costume n’est présenté comme officiel. Les exceptions sont détaillées dans la couverture.
 
 **Demande suivante de copie plus fidèle : non produite.** Le contexte adulte fourni par l’utilisateur a été pris en compte dans une tentative Leona utilisant une vraie photographie du costume et une pose neutre. Le système d’images a refusé cette entrée pour contenu sexuel. Aucun PNG n’a été produit par cette tentative, et aucun nouvel essai ni générateur alternatif n’a été utilisé. Les maillots sportifs précédents restent des adaptations distinctes ; ils ne sont pas présentés comme la copie fidèle demandée.
 
@@ -56,7 +56,7 @@ Réf. = tenue fondée sur une référence ; Adapt. = création pour le jeu. La c
 | Karen Himeki | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
 | Katsuo Isobe | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. |
 | Kawahara | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. |
-| Kouzou Machida | Adapt. | Adapt. | Manquant | Adapt. | Adapt. | Manquant |
+| Kouzou Machida | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. |
 | Kumi Yamanaka | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. |
 | Leona Morimoto | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
 | Linda Hamilton | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. |
@@ -69,7 +69,7 @@ Réf. = tenue fondée sur une référence ; Adapt. = création pour le jeu. La c
 | Momoe Endou | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
 | Momone Nishizaki | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
 | Nanase Fujiwara | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
-| Officière OVA — carré châtain | Adapt. | Manquant | Manquant | Adapt. | Réf. | Manquant |
+| Officière OVA — carré châtain | Adapt. | Manquant | Adapt. | Adapt. | Réf. | Adapt. |
 | Officière OVA — cheveux tirés | Adapt. | Manquant | Adapt. | Adapt. | Réf. | Adapt. |
 | Reina Morimoto | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. |
 | Ruri Nonomiya | Adapt. | Adapt. | Adapt. | Adapt. | Réf. | Adapt. |
@@ -80,7 +80,7 @@ Réf. = tenue fondée sur une référence ; Adapt. = création pour le jeu. La c
 | Tooru Satou | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
 | Yuri Nishizaki | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
 | Yuuji Takigawa | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
-| Yuuki Miyagishi | Adapt. | Adapt. | Manquant | Adapt. | Réf. | Manquant |
+| Yuuki Miyagishi | Adapt. | Adapt. | Adapt. | Adapt. | Réf. | Adapt. |
 
 ## Fidélité et preuves
 
@@ -94,7 +94,7 @@ La génération vise à conserver visage, coiffure, silhouette, proportions et p
 
 19 identités n’ont pas d’uniforme scolaire attesté dans ce catalogue : Akane, Domestique OVA — chignon brun, Eikichi Ogiwara, Garde de sécurité OVA — roux, Invitée OVA — robe jaune, Kaori Matsuno, Katsuo Isobe, Kawahara, Kouzou Machida, Kumi Yamanaka, Linda Hamilton, Maya, Officière OVA — carré châtain, Officière OVA — cheveux tirés, Reina Morimoto, Ruri Nonomiya, Saki Yamagata, Takurou Hayami, Yuuki Miyagishi.
 
-Le journal contient 78 demandes précises sans sortie acceptée. Lorsqu’une autre variante remplit déjà la famille demandée, elle est indiquée par `alternativeCostumeIds` ; la famille n’est pas faussement annoncée manquante. Les anciennes opérations interrompues ne sont plus présentées comme des générations toujours actives.
+Le journal contient 74 demandes précises sans sortie acceptée. Lorsqu’une autre variante remplit déjà la famille demandée, elle est indiquée par `alternativeCostumeIds` ; la famille n’est pas faussement annoncée manquante. Les anciennes opérations interrompues ne sont plus présentées comme des générations toujours actives.
 
 ## Contrôles et documents
 

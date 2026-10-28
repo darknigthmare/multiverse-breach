@@ -5199,6 +5199,40 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
   {
     "characterId": "kouzou",
     "characterName": "Kouzou Machida",
+    "costumeId": "gloss-swimsuit-v6",
+    "label": {
+      "fr": "Maillot rouge brillant, effet latex — adaptation v6",
+      "en": "Glossy red swimwear, latex-like finish — v6 adaptation"
+    },
+    "notes": {
+      "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées. Adaptation sportive opaque et non sexualisée du motif rouge brillant demandé, avec coupe de maillot ordinaire. Les descriptions communautaires de Leona ont orienté la matière et la couleur ; il ne s’agit pas d’une copie de sa tenue de bondage ni d’un costume officiel attesté. Coupe de combinaison courte de natation, de type triathlon.",
+      "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted. Opaque nonsexual athletic adaptation of the requested glossy motif, with an ordinary swimsuit cut. Community descriptions of Leona informed the material and color direction; this is not a reproduction of her bondage outfit or a verified official costume. Short one-piece swimming suit with a triathlon-style cut."
+    },
+    "category": "swimwear",
+    "provenance": "adapted",
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--gloss-swimsuit-v6.png",
+    "available": true,
+    "isDefault": false,
+    "revision": 6,
+    "newOutfit": true,
+    "sourceMedium": "game_adaptation",
+    "styleSourceId": "discipline-sprite-v1:kouzou:suit-reference-v4",
+    "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+    "identityReferenceDirectInput": true,
+    "literalOneToOneCertified": false,
+    "actualSwimsuit": true,
+    "variantOf": "discipline-sprite-v1:kouzou:swimwear-sport-original",
+    "requestedSwimLatexStyle": true,
+    "styleFamily": "gloss-swimwear",
+    "outfitPalette": "red",
+    "swimwearCut": "short-triathlon-suit",
+    "secondaryCategories": [
+      "latex"
+    ]
+  },
+  {
+    "characterId": "kouzou",
+    "characterName": "Kouzou Machida",
     "costumeId": "maid-service-adapted-v6",
     "label": {
       "fr": "Robe de service sur modèle OVA — adaptation v6",
@@ -6970,6 +7004,39 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
   {
     "characterId": "ova-officer-bob",
     "characterName": "Officière OVA — carré châtain",
+    "costumeId": "gloss-swimsuit-v6",
+    "label": {
+      "fr": "Maillot rouge brillant, effet latex — adaptation v6",
+      "en": "Glossy red swimwear, latex-like finish — v6 adaptation"
+    },
+    "notes": {
+      "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées. Adaptation sportive opaque et non sexualisée du motif rouge brillant demandé, avec coupe de maillot ordinaire. Les descriptions communautaires de Leona ont orienté la matière et la couleur ; il ne s’agit pas d’une copie de sa tenue de bondage ni d’un costume officiel attesté.",
+      "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted. Opaque nonsexual athletic adaptation of the requested glossy motif, with an ordinary swimsuit cut. Community descriptions of Leona informed the material and color direction; this is not a reproduction of her bondage outfit or a verified official costume."
+    },
+    "category": "swimwear",
+    "provenance": "adapted",
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--gloss-swimsuit-v6.png",
+    "available": true,
+    "isDefault": false,
+    "revision": 6,
+    "newOutfit": true,
+    "sourceMedium": "game_adaptation",
+    "styleSourceId": "discipline-sprite-v1:ova-officer-bob:ova-plum-uniform-reference-v4",
+    "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png",
+    "identityReferenceDirectInput": true,
+    "literalOneToOneCertified": false,
+    "actualSwimsuit": true,
+    "requestedSwimLatexStyle": true,
+    "styleFamily": "gloss-swimwear",
+    "outfitPalette": "red",
+    "swimwearCut": "one-piece-sports-swimsuit",
+    "secondaryCategories": [
+      "latex"
+    ]
+  },
+  {
+    "characterId": "ova-officer-bob",
+    "characterName": "Officière OVA — carré châtain",
     "costumeId": "maid-v6",
     "label": {
       "fr": "Tenue de service — adaptation v6",
@@ -8208,14 +8275,48 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
   {
     "characterId": "yuuji",
     "characterName": "Yuuji Takigawa",
+    "costumeId": "gloss-swimsuit-v6",
+    "label": {
+      "fr": "Maillot rouge brillant, effet latex — adaptation v6",
+      "en": "Glossy red swimwear, latex-like finish — v6 adaptation"
+    },
+    "notes": {
+      "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées. Adaptation sportive opaque et non sexualisée du motif rouge brillant demandé, avec coupe de maillot ordinaire. Les descriptions communautaires de Leona ont orienté la matière et la couleur ; il ne s’agit pas d’une copie de sa tenue de bondage ni d’un costume officiel attesté. Coupe de combinaison courte de natation, de type triathlon.",
+      "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted. Opaque nonsexual athletic adaptation of the requested glossy motif, with an ordinary swimsuit cut. Community descriptions of Leona informed the material and color direction; this is not a reproduction of her bondage outfit or a verified official costume. Short one-piece swimming suit with a triathlon-style cut."
+    },
+    "category": "swimwear",
+    "provenance": "adapted",
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--gloss-swimsuit-v6.png",
+    "available": true,
+    "isDefault": false,
+    "revision": 6,
+    "newOutfit": true,
+    "sourceMedium": "game_adaptation",
+    "styleSourceId": "discipline-sprite-v1:yuuji:light-uniform-reference-v4",
+    "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+    "identityReferenceDirectInput": true,
+    "literalOneToOneCertified": false,
+    "actualSwimsuit": true,
+    "variantOf": "discipline-sprite-v1:yuuji:swimwear-sport-original",
+    "requestedSwimLatexStyle": true,
+    "styleFamily": "gloss-swimwear",
+    "outfitPalette": "red",
+    "swimwearCut": "short-triathlon-suit",
+    "secondaryCategories": [
+      "latex"
+    ]
+  },
+  {
+    "characterId": "yuuji",
+    "characterName": "Yuuji Takigawa",
     "costumeId": "latex-v6",
     "label": {
       "fr": "Combinaison en latex noir et or — adaptation v6",
       "en": "Black-and-gold latex action suit — v6 adaptation"
     },
     "notes": {
-      "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette combinaison ne remplit pas la nouvelle demande de maillot brillant ; la couverture de cette coupe est suivie séparément.",
-      "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This action suit does not fulfill the newly requested glossy swimsuit cut; that style is tracked separately."
+      "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version conserve sa palette noir et or ; le nouveau maillot brillant demandé est disponible séparément.",
+      "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version retains its black-and-gold palette; the newly requested glossy swimsuit is separately available."
     },
     "category": "latex",
     "provenance": "adapted",
@@ -8308,6 +8409,40 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
     "literalOneToOneCertified": false,
     "actualSwimsuit": true,
     "variantOf": "discipline-sprite-v1:yuuji:swimwear-sport-original"
+  },
+  {
+    "characterId": "yuuki",
+    "characterName": "Yuuki Miyagishi",
+    "costumeId": "gloss-swimsuit-v6",
+    "label": {
+      "fr": "Maillot rouge brillant, effet latex — adaptation v6",
+      "en": "Glossy red swimwear, latex-like finish — v6 adaptation"
+    },
+    "notes": {
+      "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées. Adaptation sportive opaque et non sexualisée du motif rouge brillant demandé, avec coupe de maillot ordinaire. Les descriptions communautaires de Leona ont orienté la matière et la couleur ; il ne s’agit pas d’une copie de sa tenue de bondage ni d’un costume officiel attesté.",
+      "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted. Opaque nonsexual athletic adaptation of the requested glossy motif, with an ordinary swimsuit cut. Community descriptions of Leona informed the material and color direction; this is not a reproduction of her bondage outfit or a verified official costume."
+    },
+    "category": "swimwear",
+    "provenance": "adapted",
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--gloss-swimsuit-v6.png",
+    "available": true,
+    "isDefault": false,
+    "revision": 6,
+    "newOutfit": true,
+    "sourceMedium": "game_adaptation",
+    "styleSourceId": "discipline-sprite-v1:yuuki:ova-tactical-fidelity-v4",
+    "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-fidelity-v4.png",
+    "identityReferenceDirectInput": true,
+    "literalOneToOneCertified": false,
+    "actualSwimsuit": true,
+    "variantOf": "discipline-sprite-v1:yuuki:aquatic-covered",
+    "requestedSwimLatexStyle": true,
+    "styleFamily": "gloss-swimwear",
+    "outfitPalette": "red",
+    "swimwearCut": "one-piece-sports-swimsuit",
+    "secondaryCategories": [
+      "latex"
+    ]
   },
   {
     "characterId": "yuuki",

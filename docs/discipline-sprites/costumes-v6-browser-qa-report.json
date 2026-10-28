@@ -2,8 +2,8 @@
   "date": "2026-10-28",
   "baselineCommit": "f9a9c1db7bbea3312e53341e5fbbdcf79c504851",
   "environment": "Headless Chromium; HTTP requests fulfilled directly from the checked-out public directory; no local server or remote deployment used.",
-  "catalogueSprites": 363,
-  "addedSprites": 166,
+  "catalogueSprites": 367,
+  "addedSprites": 170,
   "checks": [
     {
       "name": "Initial gallery count matches source catalogue",
@@ -12,7 +12,7 @@
     {
       "name": "Every PNG loads at its native dimensions",
       "passed": true,
-      "count": 363
+      "count": 367
     },
     {
       "name": "v6 filter shows exactly the new assets without incorrect correction badges",
@@ -25,7 +25,7 @@
     {
       "name": "Category swimwear",
       "passed": true,
-      "count": 51
+      "count": 55
     },
     {
       "name": "Category maid",
@@ -45,7 +45,7 @@
     {
       "name": "Category latex",
       "passed": true,
-      "count": 50
+      "count": 54
     },
     {
       "name": "Category latex-red",
@@ -55,7 +55,7 @@
     {
       "name": "Category swim-gloss",
       "passed": true,
-      "count": 30
+      "count": 34
     },
     {
       "name": "Category uniform",
@@ -1626,6 +1626,12 @@
       "ok": true
     },
     {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--gloss-swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
       "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--maid-service-adapted-v6.png",
       "width": 1254,
       "height": 1254,
@@ -2016,6 +2022,12 @@
       "ok": true
     },
     {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--gloss-swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
       "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--maid-v6.png",
       "width": 1254,
       "height": 1254,
@@ -2286,6 +2298,12 @@
       "ok": true
     },
     {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--gloss-swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
       "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--latex-v6.png",
       "width": 1254,
       "height": 1254,
@@ -2310,6 +2328,12 @@
       "ok": true
     },
     {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--gloss-swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
       "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--maid-v6.png",
       "width": 1254,
       "height": 1254,
@@ -2325,21 +2349,21 @@
   "chromiumVersion": "153.0.8010.0",
   "errors": [],
   "passed": true,
-  "catalogueSha256": "3c10a01d88651aa1f7fbfb9f3fa185941b42a65265b37d56fc3a6a52beaa76f4",
-  "completedAtUTC": "2026-10-28T14:45:08.088812+00:00",
+  "catalogueSha256": "177e5c282703c6cc767721b6c99ab16854a73e2995ef1d43c05ad166953f6afd",
+  "completedAtUTC": "2026-10-28T15:12:38.699056+00:00",
   "screenshotReview": {
     "completed": true,
-    "reviewedAtUTC": "2026-10-28T14:45:08.088812+00:00",
+    "reviewedAtUTC": "2026-10-28T15:12:38.699056+00:00",
     "captures": [
       {
         "path": "/workspace/scratch/50dd17c976cc/multiverse-breach/docs/discipline-sprites/costumes-v6-gallery-desktop.png",
-        "sha256": "2c6a6b2900cde56a8105a04b594179e3b10ca08c7dc5c4891e37aa565014640b",
-        "visualReview": "Desktop 1440 px: seven Leona v6 cards displayed in a five-column grid with a second row; complete figures, readable labels and comparison controls; no visible overlap."
+        "sha256": "08c40b4194885b1aa49370e16894084e416e00da6ed534556b018b7ea0134b1c",
+        "visualReview": "Desktop 1440 px: seven Leona v6 cards in a five-column grid and second row; updated 367-sprite count, complete figures, readable labels and comparison controls; no visible overlap."
       },
       {
         "path": "/workspace/scratch/50dd17c976cc/multiverse-breach/docs/discipline-sprites/costumes-v6-gallery-mobile.png",
-        "sha256": "3ba7e3c3fc9c2dab0e6adde4ea131973644916407505ea276ca3f814a02eaf18",
-        "visualReview": "Mobile 390 px: five Saori v6 cards stacked in a single column; controls and labels remain within the page, with complete figures and no visible horizontal overflow."
+        "sha256": "6d25ed3d5a3e857fee64f82c30053743cd5e4af9b5c059293fcdbaab9ce691cc",
+        "visualReview": "Mobile 390 px: five Saori v6 cards stacked in one column; updated 367-sprite count, controls and labels contained within the page, complete figures and no visible horizontal overflow."
       }
     ]
   }

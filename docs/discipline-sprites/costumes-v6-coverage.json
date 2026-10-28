@@ -582,9 +582,11 @@
           ]
         },
         "swimwear": {
-          "delivered": false,
+          "delivered": true,
           "referenceBased": false,
-          "costumeIds": []
+          "costumeIds": [
+            "gloss-swimsuit-v6"
+          ]
         },
         "nurse": {
           "delivered": true,
@@ -602,9 +604,11 @@
           ]
         },
         "latex": {
-          "delivered": false,
+          "delivered": true,
           "referenceBased": false,
-          "costumeIds": []
+          "costumeIds": [
+            "gloss-swimsuit-v6"
+          ]
         }
       }
     },
@@ -1230,9 +1234,11 @@
           "costumeIds": []
         },
         "swimwear": {
-          "delivered": false,
+          "delivered": true,
           "referenceBased": false,
-          "costumeIds": []
+          "costumeIds": [
+            "gloss-swimsuit-v6"
+          ]
         },
         "nurse": {
           "delivered": true,
@@ -1249,9 +1255,11 @@
           ]
         },
         "latex": {
-          "delivered": false,
+          "delivered": true,
           "referenceBased": false,
-          "costumeIds": []
+          "costumeIds": [
+            "gloss-swimsuit-v6"
+          ]
         }
       }
     },
@@ -1732,6 +1740,7 @@
           "delivered": true,
           "referenceBased": false,
           "costumeIds": [
+            "gloss-swimsuit-v6",
             "swimsuit-v6"
           ]
         },
@@ -1753,6 +1762,7 @@
           "delivered": true,
           "referenceBased": false,
           "costumeIds": [
+            "gloss-swimsuit-v6",
             "latex-v6"
           ]
         }
@@ -1777,9 +1787,11 @@
           ]
         },
         "swimwear": {
-          "delivered": false,
+          "delivered": true,
           "referenceBased": false,
-          "costumeIds": []
+          "costumeIds": [
+            "gloss-swimsuit-v6"
+          ]
         },
         "nurse": {
           "delivered": true,
@@ -1798,9 +1810,11 @@
           ]
         },
         "latex": {
-          "delivered": false,
+          "delivered": true,
           "referenceBased": false,
-          "costumeIds": []
+          "costumeIds": [
+            "gloss-swimsuit-v6"
+          ]
         }
       }
     }
@@ -1815,18 +1829,11 @@
       "ova-officer-swept-hair"
     ],
     "swimwear": [
-      "kouzou",
-      "maiko",
-      "ova-officer-bob",
-      "yuuki"
+      "maiko"
     ],
     "nurse": [],
     "military": [],
-    "latex": [
-      "kouzou",
-      "ova-officer-bob",
-      "yuuki"
-    ]
+    "latex": []
   },
   "officialSchoolUniformReferenceMissing": [
     "akane",
@@ -1907,6 +1914,7 @@
       "karen",
       "katsuo",
       "kawahara",
+      "kouzou",
       "kumi",
       "leona",
       "linda",
@@ -1920,6 +1928,7 @@
       "ova-attendant-brown-bun",
       "ova-broadcasting-club-member",
       "ova-guest-yellow-dress",
+      "ova-officer-bob",
       "ova-officer-swept-hair",
       "reina",
       "ruri",
@@ -1929,15 +1938,13 @@
       "sudou",
       "takurou",
       "tooru",
-      "yuri"
+      "yuri",
+      "yuuji",
+      "yuuki"
     ],
     "missingCharacters": [
       "kanae",
-      "kouzou",
-      "maiko",
-      "ova-officer-bob",
-      "yuuji",
-      "yuuki"
+      "maiko"
     ],
     "sourceMonochromeCharacters": [
       "ova-broadcasting-club-member"
@@ -1950,34 +1957,10 @@
         "reason": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 7d56668d-87e1-4681-be4c-3c24e261f62a. safety_violations=[sexual].\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"sexual\\\"\\n      ]\\n    }\\n  }\\n}\")"
       },
       {
-        "characterId": "kouzou",
-        "status": "interrupted-no-result",
-        "error": null,
-        "reason": null
-      },
-      {
         "characterId": "maiko",
         "status": "excluded-prior-refusal",
         "error": null,
         "reason": null
-      },
-      {
-        "characterId": "ova-officer-bob",
-        "status": "interrupted-no-result",
-        "error": null,
-        "reason": null
-      },
-      {
-        "characterId": "yuuji",
-        "status": "paused-user-style-change",
-        "error": null,
-        "reason": "User requested more faithful source costume; no further sports-gloss generation after instruction."
-      },
-      {
-        "characterId": "yuuki",
-        "status": "paused-user-style-change",
-        "error": null,
-        "reason": "User requested more faithful source costume; no further sports-gloss generation after instruction."
       }
     ],
     "officialCostumeReproductionCertified": false,

@@ -1,16 +1,16 @@
 {
-  "reviewedAtUtc": "2026-10-28T14:52:03.939203+00:00",
+  "reviewedAtUtc": "2026-10-28T15:13:16.731510+00:00",
   "scope": {
     "publishedBaselinePreserved": 197,
-    "catalogueTotal": 363,
-    "newV6SpritesReviewed": 166,
+    "catalogueTotal": 367,
+    "newV6SpritesReviewed": 170,
     "initialAcceptedRecentBatch": 57,
     "earlierAcceptedRecoveryBatch": 30,
     "additionalReviewedRecovery": 6,
     "latestGeneratedNurses": 3,
-    "catalogueSha256": "3c10a01d88651aa1f7fbfb9f3fa185941b42a65265b37d56fc3a6a52beaa76f4",
+    "catalogueSha256": "177e5c282703c6cc767721b6c99ab16854a73e2995ef1d43c05ad166953f6afd",
     "archiveCandidatesExcluded": 4,
-    "continuationSpritesReviewed": 70
+    "continuationSpritesReviewed": 74
   },
   "method": {
     "contactSheets": "Eight temporary contact sheets, each showing up to12 side-by-side source/output pairs, 93 outputs total. No cropping of contact thumbnails; native aspect ratio preserved.",
@@ -32,7 +32,7 @@
     ],
     "deliverablePixelsModified": false,
     "thumbnailCompositingOnlyForQA": true,
-    "duplicateCheck": "SHA256 comparison of all 363 catalogue assets; no duplicate group involving a continuation output.",
+    "duplicateCheck": "SHA256 comparison of all 367 catalogue assets; no duplicate group involving a continuation output.",
     "continuation": "Each accepted continuation output was individually inspected against its actual neutral identity reference by the generating reviewer. Recorded reviews and native file hashes are included below."
   },
   "result": {
@@ -5044,6 +5044,24 @@
       ]
     },
     {
+      "id": "kouzou:gloss-swimsuit-v6",
+      "imageSha256": "02222dcf0ed3c3b05316aeb12bc8c9d608a8fa0e806bf8c929e4b88287c8e841",
+      "sourceIdentity": "discipline-sprite-v1:kouzou:suit-reference-v4",
+      "review": {
+        "completeFigure": true,
+        "identityConsistent": true,
+        "sportingSwimsuit": true,
+        "notes": "Visually compared with the viewed neutral suit reference: gray parted hair, glasses, angular older face, natural build, inclined head and original stance retained. Whole hair, hands and both bare feet visible. Opaque scarlet short triathlon-style sports suit with covered torso, ordinary round neckline and mid-thigh shorts. Fine pixel-sprite rendering retained; no scene or added props. Native RGBA bytes copied unchanged. The underlying formerly clothed body is an interpretation, not exact canonical anatomy."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        467,
+        77,
+        366,
+        81
+      ]
+    },
+    {
       "id": "kouzou:nurse-v6",
       "imageSha256": "65f3552e6b20da3e3092c3e6719612219b5fa89915b453ed783a8e1c2cb18b68",
       "sourceIdentity": "discipline-sprite-v1:kouzou:suit-reference-v4",
@@ -5597,6 +5615,28 @@
       ]
     },
     {
+      "id": "ova-officer-bob:gloss-swimsuit-v6",
+      "imageSha256": "da772ac5bd605783dad99506bb8a2b6b33c8dba60925a896c359999c8ba7ec8e",
+      "sourceIdentity": "discipline-sprite-v1:ova-officer-bob:ova-plum-uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "accepted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "categoryConsistent": true,
+        "neutralSportsPresentation": true,
+        "nativePixelsPreserved": true,
+        "notes": "Resumed unchanged submitted prompt and reference after an interrupted call with no returned result. Visually compared against the inspected reference: light-brown bob and bangs, teal eyes, face and neutral relaxed pose consistent. Entire hair, hands and both bare feet visible. Fully opaque red one-piece athletic swimwear with broad straps and ordinary scoop neckline and leg openings. Native sprite rendering retained, with faint colored edge fringe; no pixel changes."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        454,
+        32,
+        441,
+        23
+      ]
+    },
+    {
       "id": "ova-officer-bob:maid-v6",
       "imageSha256": "2bdc0ad972532aee018bb25365f52197c09a944dac2e3240ba0d299e31c53b7a",
       "sourceIdentity": "discipline-sprite-v1:ova-officer-bob:ova-plum-uniform-reference-v4",
@@ -5953,6 +5993,46 @@
       ]
     },
     {
+      "id": "yuuji:gloss-swimsuit-v6",
+      "imageSha256": "27b85d45e6342e2015aed84569eb2f5868749d880fc98162d0f10523e3acca81",
+      "sourceIdentity": "discipline-sprite-v1:yuuji:light-uniform-reference-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Short spiky blue-black hair, grey-blue eyes, calm expression and standing orientation consistent with the identity reference. Opaque red short triathlon swimming suit, ordinary round neckline and continuous upper-body/short-leg garment with restrained glossy highlights; barefoot, empty hands and no additional accessories. Hair, hands and both complete feet inside the canvas. Native transparent PNG copied without edits."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        440,
+        60,
+        370,
+        67
+      ]
+    },
+    {
+      "id": "yuuki:gloss-swimsuit-v6",
+      "imageSha256": "279491589f8e577b1fe580d9e09adc7e43587de3a0cd416244206449c8a13d13",
+      "sourceIdentity": "discipline-sprite-v1:yuuki:ova-tactical-fidelity-v4",
+      "review": {
+        "visualReviewCompleted": true,
+        "completeFigure": true,
+        "identityConsistent": true,
+        "actualSwimsuit": true,
+        "literalOneToOneCertified": false,
+        "notes": "Layered cobalt-blue hair, amber-brown eyes, angular face, athletic build and neutral standing orientation consistent with the identity reference. Opaque red athletic one-piece with broad straps, ordinary rounded neckline and restrained highlights; tactical face paint and equipment removed as specified. Both hands and entire bare feet visible, with transparent margins. Returned directly by the generation tool after the prior user interruption; native PNG copied without raster edits."
+      },
+      "nativeBytesUnchanged": true,
+      "framingMargins": [
+        452,
+        33,
+        395,
+        29
+      ]
+    },
+    {
       "id": "yuuki:maid-v6",
       "imageSha256": "4954f43178913a1e4ac5e149f192bf5643e4e6b2564f789cf292ec32d466f6a9",
       "sourceIdentity": "discipline-sprite-v1:yuuki:ova-tactical-fidelity-v4",
@@ -5994,20 +6074,25 @@
   ],
   "independentContinuationReview": {
     "report": "costumes-v6-continuation-visual-review.json",
-    "sha256": "3240f0ec4a72d9e2dc95f3c06814486b521e85790b8fbb3d6b6144b3b3fa4f4c",
+    "sha256": "4a113a986e02355bde82270c7c70aa27c41ba1e88ba99d02dff208d4bcb88620",
     "scope": {
-      "acceptedGlossVariants": 30,
+      "acceptedGlossVariants": 34,
       "independentPeerMaidReview": 3,
-      "serviceNursesProducedAndReviewed": 9
+      "serviceNursesProducedAndReviewed": 9,
+      "additionalGlossComparedIndividually": 4,
+      "totalReviewedRows": 37
     },
     "result": {
-      "glossAccepted": 30,
+      "glossAccepted": 34,
       "maidPeerReviewAccepted": 3,
+      "totalReviewedRows": 37,
+      "additionalGlossAccepted": 4,
       "blockingVisualDefects": [],
-      "all33QAImagesHaveAlpha0To255": true,
-      "uniqueSHA256Among33QAImages": 33,
-      "minimumVisibleMarginAmong33QAImages": 15,
-      "notes": "No visible wrong-character substitution, clipped hair/feet, duplicate byte content or inappropriate presentation found in this reviewed set. Gloss garments are athletic-swimwear adaptations; they are not reconstructions of the later requested Leona costume."
+      "allReviewedImagesHaveAlpha0To255": true,
+      "uniqueSHA256AmongReviewedImages": 37,
+      "minimumVisibleMarginAmongReviewedImages": 15,
+      "previous33AssetHashesUnchanged": true,
+      "notes": "No visible wrong-character substitution, clipped hair/feet, duplicate byte content or inappropriate presentation found in this reviewed set. All 34 gloss garments are ordinary athletic-swimwear adaptations. They are not reconstructions of the later requested Leona costume."
     }
   }
 }
