@@ -66,18 +66,39 @@ unique(data.actors, 'actorKey');
 unique(data.items, 'itemKey');
 unique(data.associations, 'associationKey');
 unique(data.gaps, 'gapKey');
+unique(canon.rows, 'id');
+unique(canon.sources, 'sourceId');
 const actorKeys = new Set(data.actors.map(row => row.actorKey));
+const actorByKey = new Map(data.actors.map(row => [row.actorKey, row]));
 const itemKeys = new Set(data.items.map(row => row.itemKey));
 const sourceById = new Map(canon.sources.map(row => [row.sourceId, row]));
+const referencesByActor = new Map();
 for (const row of data.associations) {
   assert(actorKeys.has(row.actorKey), 'Unknown actor in association');
   if (row.itemKey) assert(itemKeys.has(row.itemKey), 'Unknown item in association');
 }
 for (const row of canon.rows) {
   assert(actorKeys.has(row.actorKey), 'Unknown actor in canonical references: ' + row.actorName);
+  const actor = actorByKey.get(row.actorKey);
+  for (const field of ['actorId', 'actorName', 'universe', 'incarnation']) {
+    assert.equal(row[field] || '', actor[field] || '', 'Canonical actor mismatch: ' + row.id + ' / ' + field);
+  }
   assert(sourceById.has(row.sourceId), 'Unknown canonical source: ' + row.sourceId);
   assert.notEqual(row.canonicalFidelityApproved, true);
+  if (!referencesByActor.has(row.actorKey)) referencesByActor.set(row.actorKey, []);
+  referencesByActor.get(row.actorKey).push(row);
 }
+const researchDate = canon.meta?.updatedOn || canon.meta?.checkedOn || data.metadata.asOfDate;
+const researchDateLabel = new Date(researchDate + 'T00:00:00Z').toLocaleDateString('fr-FR', { timeZone: 'UTC' });
+const inventoryDateLabel = new Date(data.metadata.asOfDate + 'T00:00:00Z').toLocaleDateString('fr-FR', { timeZone: 'UTC' });
+const documentedEquipment = actorKey => {
+  const editions = new Map();
+  for (const reference of referencesByActor.get(actorKey) || []) {
+    if (!editions.has(reference.sourceEdition)) editions.set(reference.sourceEdition, []);
+    editions.get(reference.sourceEdition).push(reference.canonicalItemName);
+  }
+  return [...editions].map(([edition, items]) => edition + ' : ' + [...new Set(items)].join(' ; ')).join('\n');
+};
 
 const labels = {
   hero: 'Héros', enemy: 'Adversaire', boss: 'Boss', worldBoss: 'Boss de monde',
@@ -188,12 +209,13 @@ const actorRows = data.actors.map(a => [
   a.weaponField, a.declaredEquipment, a.sourceProps, a.signatureName,
   a.weaponTypeAlias, a.visualAnchor, a.referenceUrls, label(a.equipmentStatus),
   a.associationCount, a.gapCount, label(a.sourceScope), a.sourcePath, a.sourceUrl, a.actorId, a.actorKey,
-  a.nonCombat ? 'Non-combattant déclaré' : 'Pas d’exclusion déclarée'
+  a.nonCombat ? 'Non-combattant déclaré' : 'Pas d’exclusion déclarée',
+  '', documentedEquipment(a.actorKey)
 ]);
 makeTable('Personnages', 'Équipements déclarés par personnage',
-  'Tous les acteurs actifs. Les familles techniques, pouvoirs et objets de scène gardent leur nature.',
-  ['Personnage', 'Univers', 'Type', 'Incarnation', 'Arme décrite', 'Liste equipment', 'Accessoire de scène', 'Signature résolue', 'Famille technique', 'Contraintes visuelles', 'Références', 'État de la liste', 'Associations', 'Points à compléter', 'Origine', 'Fichier source', 'Source GitHub', 'ID du jeu', 'Clé personnage', 'Exclusion du combat'],
-  actorRows, [31, 28, 18, 48, 43, 58, 42, 35, 25, 80, 65, 36, 14, 17, 28, 48, 75, 32, 58, 31], 'EquipmentActors');
+  'Données du jeu conservées. Les colonnes U et V regroupent les références documentaires et leurs éditions ; conditions dans Références 1a1.',
+  ['Personnage', 'Univers', 'Type', 'Incarnation', 'Arme décrite', 'Liste equipment', 'Accessoire de scène', 'Signature résolue', 'Famille technique', 'Contraintes visuelles', 'Références', 'État de la liste', 'Associations', 'Points à compléter', 'Origine', 'Fichier source', 'Source GitHub', 'ID du jeu', 'Clé personnage', 'Exclusion du combat', 'Références documentées', 'Équipements documentés par édition'],
+  actorRows, [31, 28, 18, 48, 43, 58, 42, 35, 25, 80, 65, 36, 14, 17, 28, 48, 75, 32, 58, 31, 21, 100], 'EquipmentActors');
 
 const itemRows = data.items.map(a => [
   a.itemName, a.universe, label(a.nature), a.catalog, a.itemId, a.slot || a.role,
@@ -214,10 +236,17 @@ makeTable('Affectations', 'Affectations explicites relevées dans le code',
   [31, 28, 46, 30, 34, 37, 90, 65, 45, 48, 75, 58, 65, 85], 'EquipmentAssociations');
 
 makeTable('Références 1a1', 'Références d’armes et équipements par incarnation',
-  'Recherche ciblée recontrôlée le 26 octobre. Les attributions conditionnelles restent à confirmer avant intégration.',
-  ['Personnage', 'Univers', 'Arme ou équipement', 'Catégorie', 'Œuvre et édition', 'Incarnation dans le jeu', 'Relation dans la source', 'Détails confirmés', 'Traits visuels', 'Compatibilité / exclusions', 'Application au jeu', 'À compléter', 'État fidélité', 'Source', 'Type de source', 'URL', 'Accès et vérification', 'Limites de la source', 'ID référence', 'Clé personnage'],
-  canon.rows.map(a => { const s = sourceById.get(a.sourceId); return [a.actorName, a.universe, a.canonicalItemName, a.category, a.sourceEdition, a.incarnation || 'À sélectionner', label(a.relationship), a.sourceEvidence, a.visualTraits, a.continuityConstraint, a.applicationStatus, a.implementationGap, a.fidelityStatus, s.title, a.sourceType || s.type, a.sourceUrl || s.url, s.retrieval, s.limitations, a.id, a.actorKey]; }),
-  [31, 28, 43, 25, 63, 60, 65, 90, 85, 90, 52, 90, 50, 63, 35, 78, 66, 90, 22, 58], 'EquipmentCanonical');
+  'Corpus enrichi le ' + researchDateLabel + '. Chaque source garde sa date de vérification ; les attributions conditionnelles restent à confirmer.',
+  ['Personnage', 'Univers', 'Arme ou équipement', 'Catégorie', 'Œuvre et édition', 'Incarnation dans le jeu', 'Relation dans la source', 'Détails confirmés', 'Traits visuels', 'Compatibilité / exclusions', 'Application au jeu', 'À compléter', 'État fidélité', 'Source', 'Type de source', 'URL', 'Accès et vérification', 'Limites de la source', 'ID référence', 'Clé personnage', 'Repère dans la source', 'Page de contexte'],
+  canon.rows.map(a => { const s = sourceById.get(a.sourceId); return [a.actorName, a.universe, a.canonicalItemName, a.category, a.sourceEdition, a.incarnation || 'À sélectionner', label(a.relationship), a.sourceEvidence, a.visualTraits, a.continuityConstraint, a.applicationStatus, a.implementationGap, a.fidelityStatus, s.title, a.sourceType || s.type, a.sourceUrl || s.url, s.retrieval, s.limitations, a.id, a.actorKey, a.evidenceLocator || s.evidenceLocator || '', s.parentUrl || '']; }),
+  [31, 28, 43, 25, 63, 60, 65, 90, 85, 90, 52, 90, 50, 63, 35, 78, 66, 90, 22, 58, 75, 78], 'EquipmentCanonical');
+// Literal comparison avoids COUNTIFS treating * and ? as wildcard patterns.
+// Every result is checked against the case-sensitive source keys before export.
+const actorSheet = sheets.Personnages;
+actorSheet.getRange('U7').formulas = [["=SUMPRODUCT(--('Références 1a1'!$T$7:$T$" + last['Références 1a1'] + '=S7))']];
+actorSheet.getRange('U7:U' + last.Personnages).fillDown();
+actorSheet.getRange('U7:U' + last.Personnages).setNumberFormat('#,##0');
+actorSheet.getRange('U7:U' + last.Personnages).format.horizontalAlignment = 'right';
 
 // One dossier per actor or catalogue occurrence avoids repeating its identity
 // and source for every finding. Every original finding and stable ID is kept.
@@ -298,7 +327,7 @@ summary.getRange('D1:D54').format.columnWidth = 102;
 summary.getRange('A2').values = [['Multiverse Breach — armes et équipements']];
 summary.getRange('A2').format.font = { name: 'Arial', size: 16, bold: true, color: colors.navy };
 summary.getRange('A2:D2').format.rowHeight = 29;
-summary.getRange('A3').values = [['Dernière version master contrôlée le 26 octobre 2026']];
+summary.getRange('A3').values = [['Inventaire du dépôt au ' + inventoryDateLabel + ' ; références documentaires enrichies le ' + researchDateLabel]];
 summary.getRange('A3').format.font = { name: 'Arial', size: 10, italic: true, color: colors.muted };
 summary.getRange('A4:D4').format.borders = { bottom: { style: 'thin', color: '#C5D3DF' } };
 summary.getRange('A6:B6').values = [['Indicateur', 'Total']];
@@ -313,7 +342,7 @@ const summaryMetrics = [
   ['Affectations explicites', "=COUNTA('Affectations'!A7:A" + last.Affectations + ')', 'Déclarations d’armes, listes, accessoires et signatures conservés séparément.'],
   ['Références documentaires ciblées', "=COUNTA('Références 1a1'!A7:A" + last['Références 1a1'] + ')', 'Chaque référence précise le personnage, l’œuvre et les conditions d’application.'],
   ['Sources de la recherche ciblée', canon.sources.length, 'Le type de source et les limites sont indiqués dans chaque fiche.'],
-  ['Dossiers ouverts', "=COUNTA('Actions'!O7:O" + last.Actions + ")-COUNTIFS('Actions'!N7:N" + last.Actions + ',"Terminée avec preuve")', 'Un dossier regroupe tous les constats d’un personnage ou d’une occurrence ; les 55 références ont leurs propres lignes.'],
+  ['Dossiers ouverts', "=COUNTA('Actions'!O7:O" + last.Actions + ")-COUNTIFS('Actions'!N7:N" + last.Actions + ',"Terminée avec preuve")', 'Un dossier regroupe tous les constats d’un personnage ou d’une occurrence ; les ' + canon.rows.length + ' références ont leurs propres lignes.'],
   ['Dossiers terminés avec preuve', "=COUNTIFS('Actions'!N7:N" + last.Actions + ',"Terminée avec preuve")', 'Traiter tous les points du dossier. La présence d’une preuve ne certifie pas sa qualité.'],
   ['Nouvelles validations visuelles 1:1', 0, 'Aucune validation de sprite, animation ou comportement n’est déclarée par cet audit.'],
   ['Points regroupés dans les dossiers', "=SUM('Actions'!P7:P" + last.Actions + ')', 'Tous les constats et leurs identifiants sont conservés ; plusieurs peuvent concerner le même personnage ou objet.']
@@ -373,6 +402,20 @@ summary.getRange('A36').values = [['Reprendre le suivi existant']];
 summary.getRange('D36').values = [['Fournir ce classeur lors de la régénération conserve les statuts, preuves et responsables par ID dossier. Un dossier modifié revient à À vérifier. Les dossiers retirés restent dans le rapport de reprise.']];
 summary.getRange('D36').format.wrapText = true;
 summary.getRange('A36:D36').format.rowHeight = 49;
+summary.getRange('A38:B38').values = [['Recherche documentaire', 'Acteurs']];
+summary.getRange('A38:B38').format = { fill: colors.navy, font: { name: 'Arial', size: 10, bold: true, color: '#FFFFFF' }, horizontalAlignment: 'center', rowHeight: 29 };
+summary.getRange('D38').values = [['Portée de la couverture']];
+summary.getRange('D38').format.font.bold = true;
+summary.getRange('A39:A40').values = [['Avec au moins une référence documentée'], ['Sans référence documentaire ciblée']];
+summary.getRange('B39').formulas = [["=COUNTIFS('Personnages'!U7:U" + last.Personnages + ',">0")']];
+summary.getRange('B40').formulas = [["=COUNTIFS('Personnages'!U7:U" + last.Personnages + ',0)']];
+summary.getRange('D39:D40').values = [['Une référence ne constitue ni une dotation exhaustive ni une validation visuelle 1:1.'], ['Filtrer Personnages, colonne U, sur zéro pour retrouver les fiches à documenter.']];
+summary.getRange('A39:D40').format.rowHeight = 38;
+summary.getRange('A39:A40').format.wrapText = true;
+summary.getRange('D39:D40').format.wrapText = true;
+summary.getRange('B39:B40').setNumberFormat('#,##0');
+summary.getRange('B39:B40').format.font = { name: 'Arial', size: 12, bold: true, color: colors.navy };
+summary.getRange('B39:B40').format.horizontalAlignment = 'right';
 
 console.log('Checking workflow and summary');
 const firstProgress = [actionRecords[0].status, actionRecords[0].proof];
@@ -391,6 +434,10 @@ wb.recalculate();
 assert.equal(summary.getRange('B15').values[0][0], completed);
 for (const [cell, count] of [['B7', data.actors.length], ['B10', data.items.length], ['B11', data.associations.length], ['B12', canon.rows.length], ['B14', actionRecords.length - completed]]) assert.equal(summary.getRange(cell).values[0][0], count, cell);
 assert.equal(summary.getRange('B17').values[0][0], allFindingIds.length);
+assert.equal(summary.getRange('B39').values[0][0], referencesByActor.size);
+assert.equal(summary.getRange('B40').values[0][0], data.actors.length - referencesByActor.size);
+const actorReferenceCounts = actorSheet.getRange('U7:U' + last.Personnages).values;
+data.actors.forEach((actor, index) => assert.equal(actorReferenceCounts[index][0], (referencesByActor.get(actor.actorKey) || []).length, 'Reference count for ' + actor.actorKey));
 for (let i = 0; i < focus.length; i++) assert.equal(summary.getRange('B' + (20 + i)).values[0][0], data.gaps.filter(a => a.kind === focus[i][0]).length);
 await fs.mkdir(previewDir, { recursive: true });
 // Persist recovery data before replacing a workbook. The immutable report also
@@ -433,6 +480,7 @@ console.log('Formula scan: ' + errors.ndjson);
 const validation = {
   sourceCommit, worksheets: sheetNames, actors: data.actors.length, catalogRecords: data.items.length,
   associations: data.associations.length, canonicalRows: canon.rows.length, sources: canon.sources.length,
+  documentedActors: referencesByActor.size, actorsWithoutDocumentaryReference: data.actors.length - referencesByActor.size,
   actions: actionRecords.length, comparisonRows: comparison.metrics.length,
   groupedDossiers: groupedFindings.size, automaticFindings: data.gaps.length,
   documentaryFollowups: canon.rows.length, totalFindings: allFindingIds.length,
@@ -449,6 +497,8 @@ itemRows.length = 0;
 actionRecords.length = 0;
 allFindingIds.length = 0;
 groupedFindings.clear();
+actorByKey.clear();
+referencesByActor.clear();
 for (const key of ['actors', 'items', 'associations', 'gaps']) data[key].length = 0;
 global.gc?.();
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
@@ -478,9 +528,15 @@ validation.bytes = (await fs.stat(outputPath)).size;
 await fs.writeFile(path.join(previewDir, 'workbook-validation.json'), JSON.stringify(validation, null, 2) + '\n');
 console.log(JSON.stringify(validation, null, 2));
 // Export before rendering so image-layout caches do not overlap serialization.
-for (const job of [{ sheetName: 'Synthèse', range: 'A1:D17' }, ...previewJobs]) {
+const documentedActorIndex = actorReferenceCounts.findIndex(row => row[0] > 0);
+const extraPreviews = [{ sheetName: 'Synthèse', range: 'A38:D40', filename: 'Synthese_couverture.png' }];
+if (documentedActorIndex >= 0) extraPreviews.push({ sheetName: 'Personnages', range: 'U' + (documentedActorIndex + 7) + ':V' + (documentedActorIndex + 7), filename: 'Personnages_references.png' });
+const recentReferenceRow = Math.max(7, last['Références 1a1'] - 1);
+extraPreviews.push({ sheetName: 'Références 1a1', range: 'G' + recentReferenceRow + ':J' + last['Références 1a1'], filename: 'References_ajouts_conditions.png' });
+extraPreviews.push({ sheetName: 'Références 1a1', range: 'U' + recentReferenceRow + ':V' + last['Références 1a1'], filename: 'References_ajouts_reperes.png' });
+for (const { filename, ...job } of [{ sheetName: 'Synthèse', range: 'A1:D17' }, ...previewJobs, ...extraPreviews]) {
   const preview = await wb.render({ ...job, scale: 1, format: 'png' });
-  const file = job.sheetName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll(' ', '_') + '.png';
+  const file = filename || job.sheetName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll(' ', '_') + '.png';
   await fs.writeFile(path.join(previewDir, file), new Uint8Array(await preview.arrayBuffer()));
   console.log('Rendered ' + job.sheetName);
   global.gc?.();

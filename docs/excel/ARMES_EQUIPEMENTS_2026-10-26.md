@@ -2,6 +2,8 @@
 
 [Ouvrir le classeur](Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx)
 
+**Relevé initial conservé :** les comptes documentaires de ce rapport décrivent le lot du 26 octobre. Le classeur courant intègre les [compléments du 28 octobre](ARMES_EQUIPEMENTS_COMPLEMENTS_2026-10-28.md) : 169 références sur 79 acteurs, 10 346 dossiers et 28 473 points. Les constats du code restent au commit source indiqué ci-dessous. La procédure de régénération et les protections du suivi continuent de s’appliquer.
+
 ## Résultat du nouveau contrôle
 
 Le relevé est recalculé sur **master `1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6`**, après la fusion de la PR #6. L’ancienne version `8ce15c779db1e911f0db8723c681a6b0b740bd78` a également été réexécutée dans un répertoire isolé, avec le même extracteur et les arbres Git complets.

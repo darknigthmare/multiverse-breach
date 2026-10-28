@@ -1,18 +1,24 @@
 # Classeurs et suivis de Multiverse Breach
 
-## Armes et équipements — contrôle du 26 octobre 2026
+## Armes et équipements — compléments du 28 octobre 2026
 
 Le relevé dédié est établi sur **master `1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6`** : **4 936 acteurs / 525 univers**, **5 241 occurrences de catalogue** et **1 500 relations explicites**. Les listes individuelles, objets, pouvoirs, techniques et projections restent distingués.
 
 - [Excel armes et équipements par personnage](Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx)
-- [Rapport des manquants et priorités](ARMES_EQUIPEMENTS_2026-10-26.md)
+- [Nouveaux équipements documentés et manquants restants — 28 octobre](ARMES_EQUIPEMENTS_COMPLEMENTS_2026-10-28.md)
+- [Relevé initial des manquants et procédure de régénération — 26 octobre](ARMES_EQUIPEMENTS_2026-10-26.md)
 - [Comparaison des deux versions avec le même extracteur](sources/equipment-comparison-2026-10-26.json)
 - [Références documentaires et restrictions d’incarnation](sources/equipment-canonical-references-2026-10-26.json)
+- [Vérifications des compléments et du classeur du 28 octobre](evidence/equipment-complements-2026-10-28.json)
 - [Vérifications de la reprise et du classeur du 27 octobre](evidence/equipment-progress-2026-10-27.json)
 - [Preuves de la livraison initiale du 26 octobre](evidence/equipment-inventory-2026-10-26.json)
 - [Extracteur reproductible](../../scripts/exportEquipmentWorkbookData.mjs), [lanceur de génération](../../scripts/buildEquipmentWorkbook.mjs) et [générateur du classeur](tools/build_equipment_workbook.mjs)
 
-Le classeur contient sept onglets et **10 232 lignes Actions couvrant 28 359 points à traiter**. Les 28 304 constats du dépôt sont conservés dans 10 177 dossiers par acteur ou occurrence d’objet ; les 55 travaux documentaires gardent leur ligne séparée. Catégories, travaux, preuves et identifiants de chaque constat restent détaillés. Un dossier ne doit être marqué terminé qu’après traitement de tous ses points. Le corpus reconstruit couvre **22 acteurs / 21 sources** ; 41 références demandent encore un choix d’incarnation.
+Le classeur contient sept onglets et **10 346 lignes Actions couvrant 28 473 points à traiter**. Les 28 304 constats du dépôt sont conservés dans 10 177 dossiers par acteur ou occurrence d’objet ; les 169 travaux documentaires gardent leur ligne séparée. Catégories, travaux, preuves et identifiants de chaque constat restent détaillés. Un dossier ne doit être marqué terminé qu’après traitement de tous ses points. Le corpus couvre partiellement **79 acteurs / 79 sources** ; **144 références** demandent encore un choix d’incarnation précise.
+
+**Le lot du 28 octobre ajoute 114 références sur 60 fiches, dont 57 nouvellement documentées**, pour Star Wars, Resident Evil, Devil May Cry, Final Fantasy VII/VIII/XIII/XV et Halo. Les 55 références initiales et leurs sources sont conservées. Les dates de vérification, restrictions d’édition, représentations sous licence et illustrations restent explicites. Les données du jeu conservent le même commit source ; l’ajout documentaire ne clôture pas une revue visuelle ni une liste d’équipement absente.
+
+Dans **Personnages**, la colonne **U** compte les références documentées et la colonne **V** les regroupe par édition. Filtrer U sur zéro retrouve les **4 857 fiches sans référence ciblée**. Le total des fiches partiellement documentées est visible en Synthèse B39, celui des fiches sans référence en B40. Dans **Références 1a1**, U donne le repère précis dans la source et V la page de contexte lorsqu’une image dispose d’une page parente. Une fiche avec une référence reste à compléter jusqu’à l’inventaire de son incarnation et au contrôle du rendu.
 
 **Reprise du suivi ajoutée le 27 octobre 2026 :** fournir l’ancien XLSX en sixième argument du lanceur pour conserver l’avancement, la preuve et le responsable par `ID dossier`, même après tri. Un nouveau constat ou un changement du contenu à examiner rouvre le dossier à `À vérifier` en conservant la preuve et le responsable. Les dossiers nouveaux commencent à `À faire` ; les dossiers disparus restent consignés dans `PREVIEW_DIR/progress-carryforward.json` pour revue, sans être déclarés terminés. Sans sixième argument, le suivi de la sortie existante est repris automatiquement ; le suivi n’est initialisé à neuf que si aucun ancien classeur ni fichier de sortie n’existe. La [procédure de régénération](ARMES_EQUIPEMENTS_2026-10-26.md#reproduire-les-données) précise la commande, les protections avant remplacement et le contrôle du rapport de reprise.
 
@@ -22,7 +28,7 @@ Dans Synthèse, les six comptes de priorité **B20:B25 sont figés au commit aud
 
 Les catalogues et les 54 listes d’équipement n’ont pas changé depuis la version comparée du 24 octobre ; six signatures de combat ont été ajoutées. Les constats se recoupent et ne représentent pas autant de bugs observés manuellement. **La fidélité artistique 1:1 reste à vérifier.**
 
-Au contrôle du **27 octobre sur `99cd93a`**, quatre CI réussissent et deux échouent. Le [Full production build](https://github.com/darknigthmare/multiverse-breach/actions/runs/40402416752/job/121851438727) rencontre la même assertion FPS Mirelle obsolète que le [master source](https://github.com/darknigthmare/multiverse-breach/actions/runs/40326700136/job/121585778141). Le [job City and Extinction immersive UI](https://github.com/darknigthmare/multiverse-breach/actions/runs/40402416723/job/121851438807) échoue sur un scénario Infestation sur 18, dont la cause profonde reste à déterminer. Le rapport conserve les références et résultats des commits précis ; ces exécutions ne valident pas les modifications ultérieures du générateur.
+Les résultats CI historiques restent datés et associés à leur commit dans les rapports de contrôle. Ils ne valident pas les modifications ultérieures. L’état courant de la branche est visible dans la [PR #10](https://github.com/darknigthmare/multiverse-breach/pull/10).
 
 Les compteurs R13 ci-dessous décrivent le vestiaire historique du 25 octobre. Ils ne remplacent pas le relevé actuel des armes et équipements. Les autres XLSX sont préservés.
 
