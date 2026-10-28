@@ -87,7 +87,7 @@ def add_front(book, data):
     s.get_range("A1:L47").format = {"font":{"name":"Aptos","size":11,"color":INK},"column_width":11,"row_height":24}
     s.merge_cells("A1:L2");s.get_range("A1").values=[["MULTIVERSE BREACH  /  EXTINCTION + CITÉ"]]
     s.get_range("A1:L2").format={"fill":NAVY,"font":{"size":20,"bold":True,"color":"#FFFFFF"},"vertical_alignment":"center"}
-    s.merge_cells("A3:L4");s.get_range("A3").values=[["Inventaire de production • Source figée du 27 octobre 2026 • Second classeur indépendant du suivi des 40 écrans"]]
+    s.merge_cells("A3:L4");s.get_range("A3").values=[["Inventaire de production • Source figée du 28 octobre 2026 • Second classeur indépendant du suivi des 40 écrans"]]
     s.get_range("A3:L4").format={"fill":PALE,"wrap_text":True,"vertical_alignment":"center","font":{"color":TEAL,"size":12}}
     cards = [
         ("A6:C6","A7:C8","UNIVERS","=COUNTA(Univers!A6:A530)"),
@@ -104,7 +104,7 @@ def add_front(book, data):
         s.get_range(label_range).format={"fill":TEAL,"font":{"color":"#FFFFFF","bold":True,"size":9},"wrap_text":True,"row_height":30,"horizontal_alignment":"center"}
         s.merge_cells(value_range);s.get_range(value_range.split(":")[0]).formulas=[[formula]]
         s.get_range(value_range).format={"fill":PALE,"font":{"size":26,"bold":True,"color":INK},"number_format":"#,##0","horizontal_alignment":"center","vertical_alignment":"center"}
-    s.merge_cells("A14:L16");s.get_range("A14").values=[["INVENTORIER N’EST PAS LIVRER L’ART\n3 personnages possèdent un raccordement partiel à une planche FPS personnelle. Les autres vues, actions individualisées, ennemis FPS, quartiers spécifiques et props sont explicitement suivis comme travaux à produire ou à adapter."]]
+    s.merge_cells("A14:L16");s.get_range("A14").values=[["INVENTORIER N’EST PAS LIVRER L’ART\n3 personnages possèdent un raccordement partiel à une planche FPS personnelle. 7 identités Nexus exécutent 28 actions FPS. Les autres kits, les animations personnelles, ennemis FPS et décors spécifiques restent ouverts. Les vitrines sont des présentoirs communs, pas de nouveaux modèles canoniques."]]
     s.get_range("A14:L16").format={"fill":AMBER,"wrap_text":True,"font":{"color":"#714C17","bold":True},"vertical_alignment":"center"}
     sections=[
         ("A18:F18","EXTINCTION  /  VUE SUBJECTIVE"),
@@ -137,7 +137,7 @@ def add_front(book, data):
     s.get_range("A36:L36").format={"fill":NAVY,"font":{"color":"#FFFFFF","bold":True}}
     s.merge_cells("A37:L38");s.get_range("A37").values=[[f"Révision source : {data['sourceCommit']}\nEmpreinte des tables : {data['dataSha256']}"]]
     s.get_range("A37:L38").format={"wrap_text":True,"font":{"size":9},"vertical_alignment":"center"}
-    s.merge_cells("A40:L41");s.get_range("A40").values=[["PR #11 : https://github.com/darknigthmare/multiverse-breach/pull/11\nLe classeur UI original est conservé : docs/excel/Multiverse_Breach_UI_Immersion.xlsx"]]
+    s.merge_cells("A40:L41");s.get_range("A40").values=[["Suite de la PR #11 fusionnée : branche codex/ec-backlog-2026-10-28\nLe classeur UI original est conservé : docs/excel/Multiverse_Breach_UI_Immersion.xlsx"]]
     s.get_range("A40:L41").format={"wrap_text":True,"font":{"color":TEAL,"size":10}}
     s.freeze_panes.freeze_rows(4)
     rules=[
@@ -146,7 +146,7 @@ def add_front(book, data):
         ["Proposition de production","Descriptions de cadrage, couches, animations, collisions et tests. Ce sont des besoins à produire, pas des capacités canoniques ni du contenu déjà livré."],
         ["Statut Partiel","Un élément existe ou un raccordement est présent. Il reste une validation visuelle/fonctionnelle. Aucun statut Partiel ne vaut fidélité 1:1."],
         ["Statut À produire","Le mode n’a pas la vue, l’animation ou le décor individuel demandé. Une image 2D de personnage entier n’est pas une paire de mains FPS."],
-        ["Statut À adapter","Le catalogue source existe, mais sa conversion au mode FPS ou à l’exploration n’est pas raccordée individuellement."],
+        ["Statut À adapter","Le catalogue source existe, mais sa conversion individuelle n’est pas raccordée. Les sept kits Nexus jouables sont marqués Partiel : art et équilibrage restent à terminer."],
         ["Statut Hors combat","Identité pacifique, épreuve ou finale particulière. Ne pas ajouter une arme, un comportement hostile ou une récompense d’élimination."],
         ["FPS / mains","Mains et appendices, gants, poignets et manches doivent correspondre à l’incarnation documentée. Cadrage stable, viseur dégagé et retour de recul cohérent."],
         ["FPS / armes","Garder les noms exacts du catalogue. Isoler arme, parties mobiles, support, émission et impact. Aucune recharge, munition, calibre ou anatomie absente ne doit être inventée."],

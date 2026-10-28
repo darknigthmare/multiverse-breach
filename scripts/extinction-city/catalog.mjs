@@ -10,6 +10,7 @@ import { LORE_DB } from '../../src/game/lore.js';
 import { getUniverseSignature } from '../../src/game/loreDescriptions.js';
 import { createPlayerHero } from '../../src/game/playerHero.js';
 import { getHeroSpriteSheetSrc, getHeroCompleteSpritePack, getEnemySpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout } from '../../src/game/spriteAssets.js';
+import { getExtinctionSignature } from '../../src/game/extinctionSignatures.js';
 import { getExtinctionViewmodel, isExtinctionCombatant } from '../../src/game/extinctionContent.js';
 import { getUniverseHubPlace } from '../../src/game/mosaicUniversePlaces.js';
 import { CANON_ROSTER_WAVE } from '../../src/game/canonRosterWave.js';
@@ -55,6 +56,7 @@ export function buildCatalog(sourceCommit, trackedFiles) {
  const assetState=p=>!p?'Non renseigné':hasAsset(p)?'Présent dans Git':'Absent de Git';
  const universeNames=[...new Set([...Object.keys(LORE_DB),...Object.keys(ENEMIES_DB),...HEROES_DB.map(h=>h.universe)])].sort();
  const heroes=[createPlayerHero(),...HEROES_DB];
+ const runtimeProfiles=new Map(heroes.map(h=>[h.id,getExtinctionSignature(h)]).filter(([,p])=>p));
  const packs=[...CANON_ROSTER_WAVE,...EXPANDED_UNIVERSES];
  const packByUniverse=new Map(packs.map(p=>[p.universe,p]));
  const reference=(a,u)=>a?.referenceUrl||packByUniverse.get(u)?.referenceUrl||LORE_DB[u]?.referenceUrl||'';
@@ -92,11 +94,13 @@ export function buildCatalog(sourceCommit, trackedFiles) {
     :/heal|buff|shield|dodge|dash/.test(type)?'Effet de soutien / déplacement ; aucune cible hostile ou munition inventée'
     :/summon/.test(type)?'Entité invoquée séparée ; apparition, activité, sortie ; identité de renfort à référencer'
     :'Projectile / onde / effet à déterminer depuis la technique source ; pas de vitesse ou calibre inventé';
+   const runtime=runtimeProfiles.get(h.id)?.actions[slot];
+   const runtimeText=runtime ? `Adaptation FPS jouable : ${runtime.kind} ; recharge ${runtime.cooldown}/60 s ; portée ${runtime.range} unités ; durée ${runtime.duration}/60 s. Réglage de jeu, pas mesure canonique. Projectiles : collision balayée et expiration ; pause et identité de session protégées. Animation personnelle non produite.` : '';
    const spec=slot==='simple'?'FPS-PRIMARY':slot==='secondary'?'FPS-SECONDARY':slot==='defense'?'FPS-DEFENSE':'FPS-SPECIAL';
    actionRows.push([`${h.id}::${slot}`,u,h.name,slot,name,type,JSON.stringify(a),weapon,visual,
-    `${spec} ; ${name}. ${emission}. Mains gauche/droite, outil et effet sur couches séparées.`,
+    runtimeText || `${spec} ; ${name}. ${emission}. Mains gauche/droite, outil et effet sur couches séparées.`,
     generic?'Nom générique : recherche requise avant adaptation':'Technique déclarée au catalogue ; adaptation FPS à valider',
-    'Non raccordé individuellement : Extinction utilise actuellement des statistiques et capacités de rôle.', 'À adapter',reference(h,u),sourceUrl]);
+    runtime ? runtimeText : 'Non raccordé individuellement : statistiques et capacités de rôle conservées.', runtime ? 'Partiel' : 'À adapter',reference(h,u),sourceUrl]);
   }
   for(const sheet of (getHeroCompleteSpritePack(h)||[]).filter(p=>/^fps/i.test(p.id)))assetRows.push([h.id,u,h.name,sheet.id,sheet.src,assetState(sheet.src),JSON.stringify(getSpriteSheetLayout(sheet.src)),model.src===sheet.src?'Raccordement mains partiel':sheet.id==='fpsProjectile'?'Projectile source raccordé au pack':'Planche inventoriée ; découpage dédié à contrôler','Aucune approbation 1:1 déduite du nom ou de la présence du fichier',src(sourceCommit,'src/game/spriteAssets.js')]);
  }
@@ -148,11 +152,11 @@ export function buildCatalog(sourceCommit, trackedFiles) {
    policy?.policy==='nonCombatFinal'?'Proposition : conserver les objectifs et entités non combattants ; pas de version létale automatique':`${adaptation} Décor lié à ${s.stageName}; comportements canoniques à valider.`,
    'Modes communs jouables ; version dédiée à cet univers non raccordée','À adapter',src(sourceCommit,'src/components/HubScreen.jsx')]);
  }
- for(const g of EQUIP_ITEMS_DB){props.push([`gear::${g.id}`,g.universe||'Non renseigné',text(g.name)||g.id,text(g.desc)||'Description source absente',`Proposition : vitrine, poste de service ou accessoire de ${getUniverseHubPlace(g.universe,'fr').name}; préserver la fonction source, pas de pouvoir supplémentaire.`,
-  'CITY-PROP / CITY-USE',`${getItemSpriteSrc(g)} — ${assetState(getItemSpriteSrc(g))}; icône/relique ≠ prop de monde`,'À adapter',src(sourceCommit,'src/game/heroes.js')]);}
+ for(const g of EQUIP_ITEMS_DB){props.push([`gear::${g.id}`,g.universe||'Non renseigné',text(g.name)||g.id,text(g.desc)||'Description source absente',`Vitrine A.R.C.A. consultable dans ${getUniverseHubPlace(g.universe,'fr').name} : recherche, pages de trois, marche vers le présentoir, fiche source et état possédé. Aucun achat, gain ni déblocage au simple examen.`,
+  'CITY-PROP / CITY-USE',`${getItemSpriteSrc(g)} — ${assetState(getItemSpriteSrc(g))}; icône/relique ≠ prop de monde ; présentoir commun, modèle personnel encore à produire`,'Partiel',src(sourceCommit,'src/game/heroes.js')]);}
  add('Univers',['Univers','Média','Thème source','Lieu source','Quartier actuel','Type actuel','Ambiance actuelle','Politique finale','Boss / finale','Extinction actuel','Cité actuelle','Référence déclarée','Source dépôt'],universeRows,'Périmètre exhaustif des univers connus du catalogue de cette révision, pas de toutes les franchises existantes.');
  add('Cite_zones',['ID zone','Univers','Zone actuelle','Action actuelle','Rectangle source','Direction artistique sourcée','Kit proposé','Intégration actuelle','Statut','Source dépôt'],zones,'Quatre zones réelles par quartier d’univers. Les coordonnées sont celles du gabarit runtime, pas des lieux géographiques officiels.');
- add('Cite_props',['ID prop','Univers','Objet / famille','Description source','Usage Cité proposé','Contrat','Ressource / limite','Statut','Source dépôt'],props,'Les reliques ne sont pas assimilées à des accessoires déjà placés dans le monde. Les trois familles de props par univers sont des besoins de production.');
+ add('Cite_props',['ID prop','Univers','Objet / famille','Description source','Usage Cité proposé','Contrat','Ressource / limite','Statut','Source dépôt'],props,'Les reliques possèdent un présentoir d’archives commun et une fiche consultable, pas un modèle individuel. Les trois familles de props spécifiques par univers restent des besoins de production.');
  add('Kits_environnement',['Univers','Quartier','Lieu source','Thème source','Type','Kit Cité proposé','Kit FPS proposé','État constaté','Statut','Référence déclarée','Source dépôt'],kits,'Spécifications proposées, distinctes des illustrations ou géométries réellement produites.');
  add('Modes_par_univers',['ID','Univers','Variante','Règle actuelle','Lieu source','Cible source','Politique','Adaptation proposée','Intégration actuelle','Statut','Source dépôt'],modes,'Quatre lignes par univers ; aucune version dédiée n’est déclarée implémentée par le seul remplissage de cette matrice.');
  add('Contrats_animation',['ID contrat','Contexte','État','Description attendue','Proposition technique','Contrainte de fidélité'],ANIMATION_CONTRACTS,'Les nombres d’images sont des propositions de production, pas des animations livrées.');
@@ -185,8 +189,13 @@ export function buildCatalog(sourceCommit, trackedFiles) {
  ['QA-INFESTATION-STABILITY','Extinction','Bot de partie complète Infestation','Diagnostiquer l’échec intermittent signalé dans la PR nº 10 ; ne pas réduire la difficulté ni forcer la victoire pour obtenir un test vert','À réaliser','P1'],
  ['QA-SPARSE-MEDIA','Les deux','Décors secondaires et portraits hors sélection CI','Arthur/Serj : décors secondaires ; portrait du combattant de fin de liste : vérifier avec tous les médias. Les mains requises décodées ne prouvent pas ce chargement','À réaliser','P2']
  ];
+ qa.push(
+ ['QA-NEXUS-PROTOCOLS','Extinction','Ancre, Mirelle, Bastion, Nova, Marrow, Sable, Loom','28 adaptations ; 28 nouveaux tests couvrant actions et vitrines. Charge, recharges, soin, garde, trajets et absence de gain ; détail dans continuation-2026-10-28.md','Partiel','P1'],
+ ['QA-NEXUS-PROJECTILES','Extinction','Fil de Résonance, Mine de Lecture, Barrage du Cartographe','Projectiles mobiles, mine armée après 30 pas, collisions balayées, expiration, bouclier champion, identité de session, pause et abandon','Partiel','P1'],
+ ['QA-CITY-EXHIBITS','Cité','Relique du catalogue par univers, hors objets désactivés','Recherche, pagination, état possédé / amélioré ; présentoir non canonique, inspection sans achat ni récompense ; approche réelle dans quatre formats','Partiel','P1'],
+ ['QA-PROTOCOL-ART','Extinction','Animation et son individuels de chaque technique','Les actions exécutables ne sont pas 28 nouvelles animations. Sept kits mécaniques, trois raccordements de mains antérieurs ; revue artistique et équilibrage humains encore ouverts','À réaliser','P1']);
  add('Recette_et_ouverts',['ID','Contexte','Périmètre','Critère de validation','État','Priorité'],qa,'Les tests de code ne certifient ni fidélité 1:1, ni qualité artistique, ni tous les matériels.');
- const sourcePaths=['src/game/heroes.js','src/game/enemies.js','src/game/lore.js','src/game/expandedUniverses.js','src/game/canonRosterWave.js','src/game/spriteAssets.js','src/game/playerHero.js','src/game/mosaicCityRuntime.js','src/game/scenePresentation.js','src/components/HubScreen.jsx','src/game/mosaicResidents.js','src/game/extinctionContent.js','scripts/extinctionViewmodelContract.mjs','docs/extinction-city/residents-fps-ci-receipt-2026-10-27.json'];
+ const sourcePaths=['src/game/extinctionSignatures.js','src/game/mosaicExhibits.js','scripts/extinctionSignatures.test.mjs','scripts/mosaicExhibits.test.mjs','scripts/browserExtinctionProtocols.py','src/game/heroes.js','src/game/enemies.js','src/game/lore.js','src/game/expandedUniverses.js','src/game/canonRosterWave.js','src/game/spriteAssets.js','src/game/playerHero.js','src/game/mosaicCityRuntime.js','src/game/scenePresentation.js','src/components/HubScreen.jsx','src/game/mosaicResidents.js','src/game/extinctionContent.js','scripts/extinctionViewmodelContract.mjs','docs/extinction-city/residents-fps-ci-receipt-2026-10-27.json'];
  const sources=sourcePaths.map(p=>[p,src(sourceCommit,p),'Source projet figée ; les adaptations proposées ne sont pas des faits canoniques externes']);
  sources.push(['Nouvelle logique','src/game/extinctionContent.js','Dans le commit de continuation ; inventaire produit après ces modifications'],['Quartiers localisés','src/game/mosaicUniversePlaces.js','Refactorisation du gabarit existant ; 12 traductions d’ambiance'],['Références externes','Colonnes Référence déclarée','Recopiées depuis les sources du projet ; non consultées ni revalidées lors de cet export']);
  add('Sources', ['Ressource','URL / chemin','Portée'],sources,'Aucune certification externe implicite. Les 525 univers ne prétendent pas couvrir chaque personnage jamais créé dans leur franchise.');
@@ -198,8 +207,8 @@ export function buildCatalog(sourceCommit, trackedFiles) {
   actionGroups.get(r[0].split('::')[0]).slots[r[3]]=`${r[4]} [${r[5]}]\nParamètres source : ${r[6]}\n${r[9]}\n${r[10]}`;
  }
  tables.Actions_FPS={headers:['ID personnage','Univers','Personnage','Primaire source et FPS','Secondaire source et FPS','Défense source et FPS','Spéciale source et FPS','Intégration / statut','Référence déclarée','Source dépôt'],
-  rows:[...actionGroups.values()].map(g=>[g.id,g.u,g.name,...combatSlots.map(k=>g.slots[k]),'À adapter : les quatre actions sont déclarées au catalogue mais ne sont pas raccordées individuellement au moteur Extinction.',g.ref,g.url]),
-  note:'Quatre actions détaillées par personnage, regroupées sur une seule ligne pour faciliter la lecture. Armes et ancrages visuels : Armes_mains_FPS. Adaptations proposées, pas des techniques déjà implémentées.'};
+  rows:[...actionGroups.values()].map(g=>[g.id,g.u,g.name,...combatSlots.map(k=>g.slots[k]),runtimeProfiles.has(g.id) ? 'Partiel — 4 actions jouables (28 pour les 7 identités Nexus). F secondaire / C défense / X ultime ; charge gagnée par les impacts. Cadrage/illustrations/audio dédiés et équilibrage encore à produire ou valider.' : 'À adapter : les quatre actions sont déclarées au catalogue mais ne sont pas raccordées individuellement au moteur Extinction.',g.ref,g.url]),
+  note:'Quatre actions détaillées par personnage, regroupées sur une seule ligne pour faciliter la lecture. Armes et ancrages visuels : Armes_mains_FPS. Sept identités Nexus possèdent quatre adaptations exécutées dans le moteur ; les autres restent des propositions. Les animations individuelles restent distinctes.'};
  const projectileGroups=new Map();
  for(const r of projectileRows){
   const [id,slot]=r[0].split('::');
@@ -208,7 +217,7 @@ export function buildCatalog(sourceCommit, trackedFiles) {
  }
  tables.Projectiles_FPS={headers:['ID personnage','Univers','Personnage','Effet primaire proposé','Effet secondaire proposé','Effet ultime proposé','Contrats communs','Statut','Référence déclarée','Source dépôt'],
   rows:[...projectileGroups.values()].map(g=>[g.id,g.u,g.name,g.slots.simple||null,g.slots.secondary||null,g.slots.special||null,
-  'Séparer émission, trajet/trace, profondeur, impact et extinction. Type, vitesse, portée, collision et durée à valider depuis la source ; une invocation ou un rayon n’est pas une balle.','À produire',g.ref,g.url]),
+  runtimeProfiles.has(g.id) ? 'Mécanique Nexus raccordée selon le type : projectile mobile / mine / rayon / onde / soutien. Dessin procédural de lecture ; pas un nouvel asset canonique. Bastion et Loom : soutien temporisé, pas PNJ autonome.' : 'Séparer émission, trajet/trace, profondeur, impact et extinction. Type, vitesse, portée, collision et durée à valider depuis la source ; une invocation ou un rayon n’est pas une balle.',runtimeProfiles.has(g.id)?'Partiel':'À produire',g.ref,g.url]),
   note:'Chaque cellule non vide de D à F est une déclinaison à produire. Vide = contact/soutien ou absence d’effet dans cette sélection, pas un fichier perdu.'};
  const zoneGroups=new Map();
  for(const r of zones){if(!zoneGroups.has(r[1]))zoneGroups.set(r[1],{u:r[1],zone:[],url:r[r.length-1]});zoneGroups.get(r[1]).zone.push(r.slice(2,-1).join(' | '));}
@@ -217,7 +226,7 @@ export function buildCatalog(sourceCommit, trackedFiles) {
  for(const r of modes){if(!modeGroups.has(r[1]))modeGroups.set(r[1],{u:r[1],mode:[],url:r[r.length-1]});modeGroups.get(r[1]).mode.push(r.slice(2,-1).join(' | '));}
  tables.Modes_par_univers={headers:['Univers','Extraction','Dernier Signal','Infestation','Chasse au Champion','Source dépôt'],rows:[...modeGroups.values()].map(g=>[g.u,...g.mode,g.url]),note:'Quatre variantes détaillées par univers, sur une ligne. Les colonnes ne constituent pas quatre cartes dédiées déjà livrées.'};
  return {schema:1,sourceCommit,scope:'Current resolved repository catalogs, plus explicitly labeled production proposals. No art approval.',
-  counts:{actionEntries:actionRows.length,projectileEntries:projectileRows.length,zoneEntries:zones.length,modeEntries:modes.length,universes:universeNames.length,heroes:heroes.length,baseHeroes:HEROES_DB.length,nonCombat:heroes.filter(nonCombat).length,
+  counts:{runtimeSignatureHeroes:runtimeProfiles.size,runtimeSignatureActions:[...runtimeProfiles.values()].reduce((n,p)=>n+Object.keys(p.actions).length,0),cityExhibitRecords:EQUIP_ITEMS_DB.length,actionEntries:actionRows.length,projectileEntries:projectileRows.length,zoneEntries:zones.length,modeEntries:modes.length,universes:universeNames.length,heroes:heroes.length,baseHeroes:HEROES_DB.length,nonCombat:heroes.filter(nonCombat).length,
    combatants:heroes.filter(isExtinctionCombatant).length,enemies:allThreats.filter(t=>t.kind==='Ennemi').length,
    bosses:allThreats.filter(t=>t.kind!=='Ennemi').length,finalePolicies:finals.length,personalFpsBindings:heroes.filter(h=>getExtinctionViewmodel(h).src).length},tables};
 }

@@ -39,3 +39,14 @@ test('source revision is pinned and invalid revisions are rejected',()=>{
  assert.equal(catalog.sourceCommit.length,40);
  assert.throws(()=>buildCatalog('main',[]));
 });
+
+test('source-bound Nexus progress never certifies all roster actions or individual world art',()=>{
+ assert.equal(catalog.counts.runtimeSignatureHeroes,7);
+ assert.equal(catalog.counts.runtimeSignatureActions,28);
+ const actions=catalog.tables.Actions_FPS.rows;
+ assert.equal(actions.filter(r=>r[7].startsWith('Partiel — 4 actions')).length,7);
+ assert.ok(actions.filter(r=>r[7].startsWith('À adapter')).length>1700);
+ const relics=catalog.tables.Cite_props.rows.filter(r=>r[0].startsWith('gear::'));
+ assert.equal(relics.length,catalog.counts.cityExhibitRecords);
+ assert.ok(relics.every(r=>r[7]==='Partiel'&&r[6].includes('modèle personnel encore à produire')));
+});

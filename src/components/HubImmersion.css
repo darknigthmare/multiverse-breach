@@ -360,3 +360,24 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
 .mosaic-resident-results span { color: #bed3dc; }
 .mosaic-resident-directory nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-block: 12px; flex-wrap: wrap; }
 .mosaic-resident-directory small { line-height: 1.5; }
+
+/* Source-bound FPS protocols and read-only City archive displays. */
+.extinction-protocol-actions { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; width:100%; }
+.extinction-protocol-actions button { min-width:0; min-height:44px; display:grid; gap:3px; padding:7px 5px; }
+.extinction-protocol-actions small { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-transform:none; }
+.extinction-signature-brief { display:grid; gap:7px; padding:12px; border-left:2px solid #39c5bb; background:rgba(3,10,18,.8); }
+.extinction-signature-brief small { color:#bdd0d5; line-height:1.5; }
+.mosaic-exhibit-section { border-top:1px solid #d9b86b; padding-top:16px; margin-top:16px; }
+.mosaic-exhibit-section:focus { outline:2px solid #d9b86b; outline-offset:4px; }
+.mosaic-exhibit-section label { display:grid; gap:6px; }
+.mosaic-exhibit-results { display:grid; gap:10px; margin-block:12px; }
+.mosaic-exhibit-results article { display:grid; gap:7px; padding:12px; border:1px solid #476075; }
+.mosaic-exhibit-section nav { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.mosaic-exhibit-record { margin-top:14px; padding:12px; border-left:2px solid #d9b86b; background:rgba(217,184,107,.08); line-height:1.6; }
+@media (max-height:500px) and (min-width:600px) { .extinction-protocol-actions button { padding:5px 3px; } }
+.extinction-panel-active .extinction-hud-dock .nexus-play-actions > .extinction-protocol-actions { grid-column:1 / -1; }
+.extinction-protocol-actions strong { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+@media (max-height:500px) and (min-width:600px) {
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns:repeat(6,minmax(0,1fr)); }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > button { grid-column:span 1; }
+}
