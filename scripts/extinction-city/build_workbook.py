@@ -87,7 +87,7 @@ def add_front(book, data):
     s.get_range("A1:L47").format = {"font":{"name":"Aptos","size":11,"color":INK},"column_width":11,"row_height":24}
     s.merge_cells("A1:L2");s.get_range("A1").values=[["MULTIVERSE BREACH  /  EXTINCTION + CITÉ"]]
     s.get_range("A1:L2").format={"fill":NAVY,"font":{"size":20,"bold":True,"color":"#FFFFFF"},"vertical_alignment":"center"}
-    s.merge_cells("A3:L4");s.get_range("A3").values=[["Inventaire de production • Source figée du 26 octobre 2026 • Second classeur indépendant du suivi des 40 écrans"]]
+    s.merge_cells("A3:L4");s.get_range("A3").values=[["Inventaire de production • Source figée du 27 octobre 2026 • Second classeur indépendant du suivi des 40 écrans"]]
     s.get_range("A3:L4").format={"fill":PALE,"wrap_text":True,"vertical_alignment":"center","font":{"color":TEAL,"size":12}}
     cards = [
         ("A6:C6","A7:C8","UNIVERS","=COUNTA(Univers!A6:A530)"),
@@ -137,7 +137,7 @@ def add_front(book, data):
     s.get_range("A36:L36").format={"fill":NAVY,"font":{"color":"#FFFFFF","bold":True}}
     s.merge_cells("A37:L38");s.get_range("A37").values=[[f"Révision source : {data['sourceCommit']}\nEmpreinte des tables : {data['dataSha256']}"]]
     s.get_range("A37:L38").format={"wrap_text":True,"font":{"size":9},"vertical_alignment":"center"}
-    s.merge_cells("A40:L41");s.get_range("A40").values=[["PR #9 : https://github.com/darknigthmare/multiverse-breach/pull/9\nLe classeur UI original est conservé : docs/excel/Multiverse_Breach_UI_Immersion.xlsx"]]
+    s.merge_cells("A40:L41");s.get_range("A40").values=[["PR #11 : https://github.com/darknigthmare/multiverse-breach/pull/11\nLe classeur UI original est conservé : docs/excel/Multiverse_Breach_UI_Immersion.xlsx"]]
     s.get_range("A40:L41").format={"wrap_text":True,"font":{"color":TEAL,"size":10}}
     s.freeze_panes.freeze_rows(4)
     rules=[
@@ -153,7 +153,7 @@ def add_front(book, data):
         ["FPS / effets","Projectiles, rayons, traces instantanées, zones, ondes et invocations sont différents. Direction, profondeur, échelle, hitbox et durée nécessitent une validation propre."],
         ["FPS / ennemis et boss","Prévoir face, dos et orientations adaptées ; déplacement, anticipation, attaque, hit et fin. Points faibles et phases doivent venir des références, pas d’un modèle générique imposé."],
         ["Cité / zones","Les quatre zones par univers sont le gabarit actuel. Construire les lieux spécifiques sans fermer les chemins, ni déplacer les actions de service hors de portée."],
-        ["Cité / habitants","Sprites, marche, repos, conversation et interaction ; tri en profondeur et occlusion. Les non-combattants restent présents. L’échantillon actuel de PNJ n’est pas toute la population."],
+        ["Cité / habitants","Sprites, marche, repos, conversation et interaction ; tri en profondeur et occlusion. Les non-combattants restent présents. Répertoire complet des habitants possédés/visibles, groupes de 17 plus la guide ; Rejoindre fait marcher l’Ancre. Seules trois identités sont parcourues dans quatre formats ; aucune certification artistique globale."],
         ["Cité / props","Séparer mobilier, signalétique, lumières, portails et objets interactifs. Un sprite d’inventaire de relique n’est pas un prop déjà placé et animé."],
         ["Apparences","Une planche de costume de base ne certifie pas un autre costume. La continuation utilise un schéma explicite lorsqu’aucune liaison de costume FPS n’existe."],
         ["Fichier ancien","Bucket Guitar Echo (Buckhead) demeure une ressource historique sans propriétaire du roster actuel. Ne pas la réaffecter automatiquement à buckethead_avatar."],
