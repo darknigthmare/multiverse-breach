@@ -1,10 +1,37 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import os from 'node:os';
+import { createHash, randomUUID } from 'node:crypto';
+import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { Workbook, SpreadsheetFile } from '@oai/artifact-tool';
+import { mergeEquipmentProgress } from './equipment_progress.mjs';
 
-const [dataPath, canonicalPath, comparisonPath, outputPath, previewDir] = process.argv.slice(2);
-if (!previewDir) throw new Error('Usage: build_equipment_workbook.mjs DATA.json CANON.json COMPARISON.json OUTPUT.xlsx PREVIEW_DIR');
+const [dataPath, canonicalPath, comparisonPath, outputPath, previewDir, explicitPreviousPath] = process.argv.slice(2);
+if (!previewDir || process.argv.length > 8) throw new Error('Usage: build_equipment_workbook.mjs DATA.json CANON.json COMPARISON.json OUTPUT.xlsx PREVIEW_DIR [PREVIOUS.xlsx]');
+const fileHash = async filename => createHash('sha256').update(await fs.readFile(filename)).digest('hex');
+const outputExists = await fs.stat(outputPath).then(() => true, error => { if (error.code === 'ENOENT') return false; throw error; });
+if (outputExists && explicitPreviousPath && path.resolve(explicitPreviousPath) !== path.resolve(outputPath)) {
+  throw new Error('OUTPUT.xlsx already exists and differs from PREVIOUS.xlsx. Choose a new output path to preserve its progress.');
+}
+const previousPath = explicitPreviousPath || (outputExists ? outputPath : undefined);
+let previousProgress = null;
+if (previousPath) {
+  const staging = await fs.mkdtemp(path.join(os.tmpdir(), 'multiverse-equipment-progress-'));
+  try {
+    const snapshotPath = path.join(staging, 'previous-progress.json');
+    const readerPath = fileURLToPath(new URL('./read_equipment_progress.mjs', import.meta.url));
+    await new Promise((resolve, reject) => {
+      const child = spawn(process.execPath, ['--max-old-space-size=2048', readerPath, previousPath, snapshotPath], { stdio: 'inherit' });
+      child.once('error', reject);
+      child.once('exit', (code, signal) => code === 0 ? resolve() : reject(new Error('Previous workbook reader failed: ' + (signal || code))));
+    });
+    previousProgress = JSON.parse(await fs.readFile(snapshotPath, 'utf8'));
+  } finally {
+    await fs.rm(staging, { recursive: true, force: true });
+  }
+}
 const data = JSON.parse(await fs.readFile(dataPath, 'utf8'));
 const canon = JSON.parse(await fs.readFile(canonicalPath, 'utf8'));
 const comparison = JSON.parse(await fs.readFile(comparisonPath, 'utf8'));
@@ -21,6 +48,15 @@ const literal = value => {
   const str = text(value);
   assert(str.length <= 32760, 'Excel cell limit exceeded');
   return /^[\s\uFEFF]*[=+@-]/u.test(str) ? "'" + str : str;
+};
+// The managed engine infers formulas from strings beginning with '='. Refuse
+// those rare manual inputs instead of silently adding a character or executing
+// them. Other text, including leading +, - and @, is preserved exactly.
+const manualText = value => {
+  assert.equal(typeof value, 'string', 'Manual progress must be text');
+  assert(!/^[\s\uFEFF]*=/u.test(value), 'Manual progress starts with =. Use ordinary text before regenerating; no workbook has been replaced.');
+  assert(value.length <= 32760, 'Excel cell limit exceeded');
+  return value;
 };
 const unique = (rows, key) => {
   assert(rows.every(row => typeof row[key] === 'string' && row[key]), 'Missing key ' + key);
@@ -97,7 +133,7 @@ const sheetNames = ['Synthèse', 'Évolutions', 'Personnages', 'Armes et objets'
 const sheets = Object.fromEntries(sheetNames.map(name => [name, wb.worksheets.add(name)]));
 const last = {};
 const previewJobs = [];
-function makeTable(name, title, subtitle, headers, rows, widths, tableName, freezeColumns = 3) {
+function makeTable(name, title, subtitle, headers, rows, widths, tableName, freezeColumns = 3, manualColumns = []) {
   const sheet = sheets[name], right = columns(headers.length - 1), end = rows.length + 6;
   assert(rows.length > 0);
   assert(rows.every(row => row.length === headers.length));
@@ -114,7 +150,7 @@ function makeTable(name, title, subtitle, headers, rows, widths, tableName, free
   sheet.getRange('A4:' + right + '4').format.borders = { bottom: { style: 'thin', color: '#C5D3DF' } };
   sheet.getRange('A6:' + right + '6').values = [headers];
   for (let at = 0; at < rows.length; at += 600) {
-    const part = rows.slice(at, at + 600).map(row => row.map(literal));
+    const part = rows.slice(at, at + 600).map(row => row.map((value, column) => manualColumns.includes(column) ? manualText(value) : literal(value)));
     sheet.getRange('A' + (at + 7) + ':' + right + (at + part.length + 6)).values = part;
   }
   const table = sheet.tables.add('A6:' + right + end, true, tableName);
@@ -192,7 +228,7 @@ for (const finding of data.gaps) {
   groupedFindings.get(key).push(finding);
 }
 const numbered = values => values.map((value, index) => (index + 1) + '. ' + text(value)).join('\n');
-const actionRecords = [
+let actionRecords = [
   ...[...groupedFindings.values()].map(findings => {
     const a = findings[0];
     assert.equal(new Set(findings.map(f => f.kind)).size, findings.length, 'Duplicate kind within dossier');
@@ -213,14 +249,16 @@ unique(actionRecords, 'id');
 const allFindingIds = actionRecords.flatMap(a => a.findingIds.split('\n'));
 assert.equal(allFindingIds.length, data.gaps.length + canon.rows.length);
 assert.equal(new Set(allFindingIds).size, allFindingIds.length, 'Finding lost or duplicated in dossiers');
+const progress = mergeEquipmentProgress(actionRecords, previousProgress);
+actionRecords = progress.records;
 const actions = makeTable('Actions', 'Manquants et suivi de réalisation',
   'Un dossier regroupe tous les points du personnage ou de l’objet. Terminer après traitement de chaque point, avec preuve.',
   ['Priorité', 'Personnage ou objet', 'Univers', 'Type de dossier', 'Manques / vérifications', 'Travaux à réaliser', 'Constats et preuves source', 'État au relevé', 'Clé concernée', 'Source', 'Avancement', 'Preuve de réalisation', 'Responsable', 'Résultat du suivi', 'ID dossier', 'Points regroupés', 'IDs des constats'],
-  actionRecords.map(a => [a.priority, a.name, a.universe, a.type, a.issue, a.action, a.evidence, a.observed, a.key, a.source, 'À faire', '', '', '', a.id, a.findingCount, a.findingIds]),
-  [13, 40, 28, 23, 48, 100, 95, 43, 65, 80, 23, 80, 26, 28, 85, 18, 100], 'EquipmentActions');
+  actionRecords.map(a => [a.priority, a.name, a.universe, a.type, a.issue, a.action, a.evidence, a.observed, a.key, a.source, a.status, a.proof, a.owner, '', a.id, a.findingCount, a.findingIds]),
+  [13, 40, 28, 23, 48, 100, 95, 43, 65, 80, 23, 80, 26, 28, 85, 18, 100], 'EquipmentActions', 3, [10, 11, 12]);
 actions.getRange('K7:M' + last.Actions).format.fill = colors.input;
 actions.getRange('K7:K' + last.Actions).dataValidation = { rule: { type: 'list', values: ['À faire', 'En cours', 'À vérifier', 'Terminé'] } };
-actions.getRange('N7').formulas = [['=IF(K7="Terminé",IF(L7="","Preuve manquante","Terminée avec preuve"),K7)']];
+actions.getRange('N7').formulas = [['=IF(K7="Terminé",IF(LEN(TRIM(CLEAN(SUBSTITUTE(L7,CHAR(160)," "))))=0,"Preuve manquante","Terminée avec preuve"),K7)']];
 actions.getRange('N7:N' + last.Actions).fillDown();
 actions.getRange('N7:N' + last.Actions).conditionalFormats.add('containsText', { text: 'Preuve manquante', format: { fill: colors.red, font: { color: '#8C2820', bold: true } } });
 actions.getRange('A7:A' + last.Actions).conditionalFormats.add('containsText', { text: 'P1', format: { fill: colors.input, font: { color: '#775118', bold: true } } });
@@ -331,20 +369,62 @@ summary.getRange('A35').values = [['Actualisation des constats']];
 summary.getRange('D35').values = [['Les constats prioritaires sont figés au commit source. Le suivi des dossiers est calculé à partir des statuts et preuves.']];
 summary.getRange('A28:D35').format.rowHeight = 34;
 summary.getRange('D28:D35').format.wrapText = true;
+summary.getRange('A36').values = [['Reprendre le suivi existant']];
+summary.getRange('D36').values = [['Fournir ce classeur lors de la régénération conserve les statuts, preuves et responsables par ID dossier. Un dossier modifié revient à À vérifier. Les dossiers retirés restent dans le rapport de reprise.']];
+summary.getRange('D36').format.wrapText = true;
+summary.getRange('A36:D36').format.rowHeight = 49;
 
 console.log('Checking workflow and summary');
+const firstProgress = [actionRecords[0].status, actionRecords[0].proof];
+const firstWasComplete = firstProgress[0] === 'Terminé' && firstProgress[1].trim() !== '';
+const completed = progress.summary.completedWithProof;
+actions.getRange('L7').values = [['']];
 actions.getRange('K7').values = [['Terminé']];
+assert.equal(actions.getRange('N7').values[0][0], 'Preuve manquante');
+actions.getRange('L7').values = [[' \t\n\u00a0 ']];
 assert.equal(actions.getRange('N7').values[0][0], 'Preuve manquante');
 actions.getRange('L7').values = [['https://example.invalid/temporary-test']];
 assert.equal(actions.getRange('N7').values[0][0], 'Terminée avec preuve');
-assert.equal(summary.getRange('B15').values[0][0], 1);
-actions.getRange('K7:L7').values = [['À faire', '']];
+assert.equal(summary.getRange('B15').values[0][0], completed - Number(firstWasComplete) + 1);
+actions.getRange('K7:L7').values = [firstProgress.map(manualText)];
 wb.recalculate();
-assert.equal(summary.getRange('B15').values[0][0], 0);
-for (const [cell, count] of [['B7', data.actors.length], ['B10', data.items.length], ['B11', data.associations.length], ['B12', canon.rows.length], ['B14', actionRecords.length]]) assert.equal(summary.getRange(cell).values[0][0], count, cell);
+assert.equal(summary.getRange('B15').values[0][0], completed);
+for (const [cell, count] of [['B7', data.actors.length], ['B10', data.items.length], ['B11', data.associations.length], ['B12', canon.rows.length], ['B14', actionRecords.length - completed]]) assert.equal(summary.getRange(cell).values[0][0], count, cell);
 assert.equal(summary.getRange('B17').values[0][0], allFindingIds.length);
 for (let i = 0; i < focus.length; i++) assert.equal(summary.getRange('B' + (20 + i)).values[0][0], data.gaps.filter(a => a.kind === focus[i][0]).length);
 await fs.mkdir(previewDir, { recursive: true });
+// Persist recovery data before replacing a workbook. The immutable report also
+// survives a failure when publishing the convenient progress-carryforward name.
+async function prepareProgressReport(outputHash, outputBytes) {
+  const progressReportPath = path.join(previewDir, 'progress-carryforward.json');
+  const archive = async bytes => {
+    const reportHash = createHash('sha256').update(bytes).digest('hex');
+    const archivePath = path.join(previewDir, 'progress-carryforward-' + reportHash + '.json');
+    await fs.writeFile(archivePath, bytes, { flag: 'wx' }).catch(async error => {
+      if (error.code !== 'EEXIST') throw error;
+      assert.deepEqual(await fs.readFile(archivePath), bytes, 'Existing progress archive differs from its content hash');
+    });
+    return archivePath;
+  };
+  const previousReport = await fs.readFile(progressReportPath).catch(error => { if (error.code === 'ENOENT') return null; throw error; });
+  if (previousReport) await archive(previousReport);
+  const reportBytes = Buffer.from(JSON.stringify({
+    schema: 'equipment-progress-carryforward-v1', sourceCommit,
+    previousWorkbook: previousProgress?.source || null, summary: progress.summary,
+    outputWorkbook: { filename: path.basename(outputPath), sha256: outputHash, bytes: outputBytes },
+    reopened: progress.reopened, retiredRecords: progress.retiredRecords,
+    retiredRecordsAreCompleted: false
+  }, null, 2) + '\n');
+  const immutablePath = await archive(reportBytes);
+  const temporaryPath = progressReportPath + '.writing-' + randomUUID();
+  try {
+    await fs.writeFile(temporaryPath, reportBytes, { flag: 'wx' });
+  } catch (error) {
+    await fs.rm(temporaryPath, { force: true });
+    throw error;
+  }
+  return { progressReportPath, temporaryPath, immutablePath };
+}
 const inspection = await wb.inspect({ kind: 'table', range: "'Synthèse'!A6:D17", include: 'values,formulas', tableMaxRows: 12, tableMaxCols: 4, maxChars: 7500 });
 await fs.writeFile(path.join(previewDir, 'summary-inspection.ndjson'), inspection.ndjson);
 const errors = await wb.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!', options: { useRegex: true, maxResults: 50 }, summary: 'Final formula error scan', maxChars: 4000 });
@@ -358,6 +438,7 @@ const validation = {
   documentaryFollowups: canon.rows.length, totalFindings: allFindingIds.length,
   allFindingIdsPreserved: true,
   priorityFindingCountsAreSourceSnapshot: true,
+  progressCarryforward: progress.summary,
   summaryCountsChecked: true, workflowWithAndWithoutProofChecked: true,
   testedEngine: '@oai/artifact-tool', excelDesktopTested: false, canonicalFidelityApproved: false
 };
@@ -373,7 +454,26 @@ global.gc?.();
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
 console.log('Exporting validated workbook');
 const output = await SpreadsheetFile.exportXlsx(wb);
-await output.save(outputPath);
+const temporaryOutput = outputPath + '.writing-' + randomUUID() + '.xlsx';
+let preparedReport;
+try {
+  await output.save(temporaryOutput);
+  preparedReport = await prepareProgressReport(await fileHash(temporaryOutput), (await fs.stat(temporaryOutput)).size);
+  if (outputExists) {
+    if (await fileHash(outputPath) !== previousProgress.source.sha256) {
+      throw new Error('OUTPUT.xlsx changed after progress was read. Re-run with the current workbook.');
+    }
+    await fs.rename(temporaryOutput, outputPath);
+  } else {
+    // link is exclusive: a new file created at the target during the build is
+    // never silently replaced. The temporary file is on the same filesystem.
+    await fs.link(temporaryOutput, outputPath);
+  }
+  await fs.rename(preparedReport.temporaryPath, preparedReport.progressReportPath);
+} finally {
+  await fs.rm(temporaryOutput, { force: true });
+  if (preparedReport) await fs.rm(preparedReport.temporaryPath, { force: true });
+}
 validation.bytes = (await fs.stat(outputPath)).size;
 await fs.writeFile(path.join(previewDir, 'workbook-validation.json'), JSON.stringify(validation, null, 2) + '\n');
 console.log(JSON.stringify(validation, null, 2));

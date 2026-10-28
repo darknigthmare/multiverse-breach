@@ -121,7 +121,19 @@ Les six comptes de priorité **B20 à B25** sont des **observations chiffrées f
 
 Dans Personnages, `Arme décrite` reproduit le champ `weapon` du code, y compris lorsqu’il contient seulement `laser`, `gun` ou `slash`. La colonne `Famille technique` et les actions associées permettent de distinguer ces alias d’un modèle d’arme attesté. Ces libellés bruts ne certifient ni une dotation ni le comportement effectif en combat.
 
-Lors d’une prochaine régénération, rapprocher les statuts, preuves et responsables déjà saisis par `ID dossier`, puis vérifier la liste des identifiants de constats en Q : si un point nouveau apparaît, rouvrir le dossier concerné. Le générateur fourni produit un nouveau relevé ; il ne reprend pas automatiquement les modifications manuelles d’un ancien XLSX.
+### Régénérer en conservant le suivi — 27 octobre 2026
+
+Le générateur accepte désormais l’ancien XLSX en **sixième argument facultatif**. Il retrouve les colonnes d’Actions par leur en-tête et rapproche les lignes par `ID dossier`, même après un tri du tableau. Les valeurs déjà saisies dans **Avancement, Preuve de réalisation et Responsable** sont reprises pour chaque dossier inchangé.
+
+Si un nouveau constat apparaît, ou si le contenu ou la source à examiner change, le dossier revient à **`À vérifier`**. Sa preuve et son responsable restent conservés pour faciliter la revue. Le seul changement de SHA dans une URL GitHub pointant vers le même fichier ne suffit pas à rouvrir le dossier. Un dossier nouveau commence à **`À faire`**. Un dossier absent du nouveau relevé n’est pas déclaré terminé : son ancien suivi est conservé dans le rapport de reprise **`PREVIEW_DIR/progress-carryforward.json`**, avec les motifs de réouverture et le bilan des rapprochements.
+
+Avant de remplacer le XLSX, le générateur conserve le rapport précédent et le nouveau rapport sous `progress-carryforward-<empreinte>.json`. Le nouveau rapport contient l’empreinte et la taille du XLSX généré. Le nom courant `progress-carryforward.json` est ensuite actualisé. Conserver ces archives avec le suivi : elles préservent les dossiers retirés lors des générations antérieures, même si l’actualisation du nom courant échoue.
+
+Si `OUTPUT.xlsx` existe et que le sixième argument est omis, son suivi est repris automatiquement. Un fichier de sortie existant ne peut pas être remplacé en prenant le suivi d’un autre `PREVIOUS.xlsx` : le générateur demande alors un nouveau chemin de sortie. Un relevé neuf, sans ancien classeur ni sortie existante, initialise les dossiers à `À faire`.
+
+Les identifiants dupliqués, en-têtes requis absents et statuts invalides interrompent la reprise avant le remplacement du fichier de sortie. Les champs manuels doivent contenir du texte : les formules et les textes commençant par `=` sont explicitement refusés, en laissant la sortie intacte, car le moteur peut interpréter ce préfixe comme une formule. Les préfixes `+`, `-` et `@` sont conservés exactement.
+
+L’export est d’abord écrit dans un fichier temporaire, puis renommé après réussite. Conserver l’ancien XLSX jusqu’à vérification du nouveau fichier et du rapport de reprise. Cette reprise des saisies ne valide ni le contenu des preuves ni la fidélité artistique des équipements.
 
 ## Vérifications et reprise
 
@@ -131,11 +143,19 @@ L’extracteur conservé et le jeu de données complet ont été retrouvés avec
 
 Le classeur est contrôlé avec le moteur de génération : compteurs, formules, cas de suivi avec et sans preuve, export ZIP/XML et aperçus. Aucune ouverture dans Excel Desktop, nouvelle visite du jeu, certification visuelle globale ou validation de toutes les animations n’est revendiquée.
 
+**Reprise du 27 octobre :** la nouvelle extraction reproduit exactement le JSON du relevé initial et les **17 tests d’export** réussissent à nouveau. **18 tests de fusion** vérifient les identifiants, les tris, les ajouts, les modifications, les retraits et la conservation des saisies. Un essai Excel avec lignes et colonnes inversées passe **118 vérifications indépendantes** : deux dossiers rouverts, un nouveau, un retiré conservé, et un dossier terminé avec preuve. Deux régénérations successives sans sixième argument conservent toutes les valeurs et formules de cet essai. Les tests d’échec de lecture ou d’archivage du rapport laissent le fichier de sortie intact. Les preuves détaillées sont dans [le contrôle du 27 octobre](evidence/equipment-progress-2026-10-27.json).
+
+Le classeur complet régénéré conserve les **10 232 dossiers et les 28 359 identifiants de constat**, les saisies initiales et les cinq feuilles de données. Les **10 251 formules** disposent de leurs résultats enregistrés, sans erreur détectée. Les changements visibles portent sur la note de reprise de Synthèse et la formule de suivi d’Actions, qui ne compte plus les espaces, tabulations ou retours de ligne seuls comme une preuve. Aucun dossier du relevé initial n’a été déclaré terminé par cette mise à jour.
+
 ### État des CI de la PR
 
 Sur le commit intermédiaire `c1be80ba5e73c2d53f73cc86c7365cb13fa88447`, **cinq CI réussissent** : [Signature combat](https://github.com/darknigthmare/multiverse-breach/actions/runs/40394344272), [City and Extinction immersive UI](https://github.com/darknigthmare/multiverse-breach/actions/runs/40394344309), [Race immersive UI](https://github.com/darknigthmare/multiverse-breach/actions/runs/40394344379), [Extinction identities and City catalog](https://github.com/darknigthmare/multiverse-breach/actions/runs/40394344455) et [Reliability and source build](https://github.com/darknigthmare/multiverse-breach/actions/runs/40394344369).
 
 Le [job Full production build de cette PR](https://github.com/darknigthmare/multiverse-breach/actions/runs/40394344299/job/121823284530) échoue dans `scripts/progressionAudit.mjs:816`. Le [job du master source](https://github.com/darknigthmare/multiverse-breach/actions/runs/40326700136/job/121585778141) présentait déjà exactement la même erreur avant la PR. Le contrôle recherche l’ancien texte `sheet.naturalHeight / 10` dans le rendu FPS de Mirelle ; le code utilise désormais `handFrame.rows`, résolu par le profil du personnage. La grille 4 × 10 et le projectile séparé restent déclarés. Ce défaut du contrôle textuel est préexistant et indépendant des neuf fichiers d’audit publiés à ce commit. Il ne prouve pas, à lui seul, un défaut visuel. Aucune réussite de compilation complète ni correction de ce contrôle n’est revendiquée ici.
+
+**Contrôle du 27 octobre sur le commit livré `99cd93a9dee4f4695be1b6989344fb74d1922418` : quatre CI réussissent et deux échouent.** Les réussites concernent [Signature combat](https://github.com/darknigthmare/multiverse-breach/actions/runs/40402416862), [Race immersive UI](https://github.com/darknigthmare/multiverse-breach/actions/runs/40402416908), [Extinction identities and City catalog](https://github.com/darknigthmare/multiverse-breach/actions/runs/40402416981) et [Reliability and source build](https://github.com/darknigthmare/multiverse-breach/actions/runs/40402416804).
+
+Le [Full production build de `99cd93a`](https://github.com/darknigthmare/multiverse-breach/actions/runs/40402416752/job/121851438727) est terminé en échec sur la même assertion Mirelle préexistante. Le [job City and Extinction immersive UI](https://github.com/darknigthmare/multiverse-breach/actions/runs/40402416723/job/121851438807) réussit 17 scénarios sur 18 ; seul `fps-1280x900-fr-infestation` échoue, avec le bot vaincu après 89 éliminations, à 3 360 frames. Ce scénario avait réussi au commit intermédiaire alors que le code du jeu, du bot, les dépendances et le workflow n’ont pas changé. Sa cause profonde reste à déterminer. Ces résultats sont attachés au commit indiqué et ne constituent pas une validation des modifications ultérieures du générateur.
 
 ### Reproduire les données
 
@@ -156,14 +176,21 @@ node --experimental-loader ./docs/excel/tools/json-loader.mjs \
   scripts/exportEquipmentWorkbookData.test.mjs
 ```
 
-Le générateur `tools/build_equipment_workbook.mjs` utilise `@oai/artifact-tool` dans le runtime de génération, sans ajout de dépendance au jeu :
-
-Le générateur utilise `--expose-gc` et une limite de tas de **3 072 Mio** (`--max-old-space-size=3072`). Le regroupement d’Actions réduit le nombre de lignes et de formules tout en conservant tous les constats. Les projections temporaires sont libérées après les contrôles et le fichier XLSX est sérialisé avant les aperçus pour séparer leurs besoins mémoire. Les données, formules et formats prévus restent conservés dans le classeur.
+Les tests de rapprochement du suivi ne nécessitent ni classeur ni dépendance de génération :
 
 ```bash
-"$CODEX_PRIMARY_RUNTIME_NODE" --expose-gc --max-old-space-size=3072 \
-  build_equipment_workbook.mjs \
-  DATA.json CANON.json COMPARISON.json OUTPUT.xlsx PREVIEW_DIR
+node docs/excel/tools/equipment_progress.test.mjs
 ```
 
-Le fichier de comparaison livré contient les deux exports rapprochés et les informations de PR nécessaires au générateur. Les empreintes, contrôles et limites de la livraison sont conservés dans [les preuves](evidence/equipment-inventory-2026-10-26.json).
+Le générateur `docs/excel/tools/build_equipment_workbook.mjs` utilise `@oai/artifact-tool` dans le runtime de génération, sans ajout de dépendance au jeu. Le lanceur `scripts/buildEquipmentWorkbook.mjs` prépare un dossier temporaire privé, y copie le générateur et ses modules de reprise, puis raccorde les dépendances indiquées par `CODEX_PRIMARY_RUNTIME_NODE_MODULES`. Les variables `CODEX_PRIMARY_RUNTIME_NODE` et `CODEX_PRIMARY_RUNTIME_NODE_MODULES` doivent désigner le runtime fourni et ses modules. Le dossier temporaire est supprimé à la fin.
+
+Le lanceur active `--expose-gc` et une limite de tas de **3 072 Mio** (`--max-old-space-size=3072`) pour le générateur. La lecture de l’ancien XLSX utilise un processus séparé limité à **2 048 Mio**, terminé avant la construction du nouveau classeur. Le regroupement d’Actions réduit le nombre de lignes et de formules tout en conservant tous les constats. Les projections temporaires sont libérées après les contrôles et le fichier XLSX est sérialisé avant les aperçus pour séparer leurs besoins mémoire. Les données, formules et formats prévus restent conservés dans le classeur.
+
+```bash
+"$CODEX_PRIMARY_RUNTIME_NODE" scripts/buildEquipmentWorkbook.mjs \
+  DATA.json CANON.json COMPARISON.json OUTPUT.xlsx PREVIEW_DIR PREVIOUS.xlsx
+```
+
+Cette commande part de la racine du dépôt. Remplacer `PREVIOUS.xlsx` par le classeur contenant le suivi à conserver ; un nouveau chemin de sortie permet de garder l’original. Omettre le sixième argument pour reprendre automatiquement `OUTPUT.xlsx` s’il existe, ou créer un relevé neuf s’il n’existe pas. Le rapport `PREVIEW_DIR/progress-carryforward.json` permet d’examiner les dossiers repris, rouverts, nouveaux ou disparus.
+
+Le fichier de comparaison livré contient les deux exports rapprochés et les informations de PR nécessaires au générateur. Les [preuves initiales du 26 octobre](evidence/equipment-inventory-2026-10-26.json) décrivent la première livraison ; les [vérifications de reprise du 27 octobre](evidence/equipment-progress-2026-10-27.json) décrivent la mise à jour du générateur et du classeur.
