@@ -3,11 +3,13 @@ import { getOfficialCostumes, getOriginalCostumes, getWardrobeEffects, getWardro
   wardrobeActorKey, resolveWardrobeEffect, wardrobeSelectionStatus, isSafeWardrobeReference } from '../game/wardrobe.js';
 import { filterWardrobeEntries } from '../game/wardrobeProduction.js';
 import { getWardrobeOwnership, getWardrobeBoosterRoutes } from '../game/wardrobeBoosterRewards.js';
+import { getDisciplineCostumes, resolveDisciplineCostume, DISCIPLINE_PROVENANCE_LABELS, DISCIPLINE_CATEGORY_LABELS } from '../game/disciplineSprites.js';
 import './CharacterWardrobe.css';
 
 export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readOnly=false,inventory=[]}) {
   const l=lang==='fr'?'fr':'en',fr=l==='fr';
-  const [section,setSection]=useState('official');
+  const produced=useMemo(()=>getDisciplineCostumes(actor),[actor]);
+  const [section,setSection]=useState(produced.length?'produced':'official');
   const [query,setQuery]=useState('');
   const key=wardrobeActorKey(actor);
   const official=useMemo(()=>getOfficialCostumes(actor),[actor]);
@@ -15,16 +17,20 @@ export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readO
   const effects=useMemo(()=>getWardrobeEffects(actor),[actor]);
   const research=useMemo(()=>getWardrobeResearchTargets(actor),[actor]);
   if(!key)return null;
-  const groups={official,original:originals,effects};
+  const groups={produced,official,original:originals,effects};
   const visible=filterWardrobeEntries(groups[section],query);
   const selected=wardrobeSelectionStatus(actor,selectedId);
   const routes=getWardrobeBoosterRoutes(actor);
   return <div className="character-wardrobe__body">
-    <p className="character-wardrobe__notice">{fr
-      ? 'Officiel décrit la provenance, pas une validation 1:1 du sprite. Les costumes sont à produire ; seuls les effets au sol sont équipables. Aucun changement de statistiques.'
-      : 'Official describes provenance, not 1:1 sprite approval. Outfits still need artwork; only ground effects can be equipped. No statistic changes.'}</p>
+    <p className="character-wardrobe__notice">{produced.length
+      ? (fr
+        ? 'Les tenues livrées utilisent des sprites statiques en pied. Leur provenance distingue les références des adaptations. Les tenues et effets disponibles sont équipables, sans changement de statistiques ; les concepts restent à produire.'
+        : 'Delivered outfits use static full-body sprites. Their provenance distinguishes references from adaptations. Available outfits and effects can be equipped without statistic changes; concepts still need artwork.')
+      : (fr
+        ? 'Officiel décrit la provenance, pas une validation 1:1 du sprite. Les costumes sont à produire ; seuls les effets au sol sont équipables. Aucun changement de statistiques.'
+        : 'Official describes provenance, not 1:1 sprite approval. Outfits still need artwork; only ground effects can be equipped. No statistic changes.')}</p>
     <div className="character-wardrobe__sections" role="group" aria-label={fr?'Catégories du vestiaire':'Wardrobe categories'}>
-      {[[ 'official',fr?'Officiels':'Official',official.length ],['original',fr?'Créations Nexus':'Nexus concepts',originals.length],['effects',fr?'Effets disponibles':'Available effects',effects.length]].map(([id,label,count])=>
+      {[...(produced.length?[[ 'produced',fr?'Tenues disponibles':'Available outfits',produced.length ]]:[]),[ 'official',fr?'Officiels':'Official',official.length ],['original',fr?'Créations Nexus':'Nexus concepts',originals.length],['effects',fr?'Effets disponibles':'Available effects',effects.length]].map(([id,label,count])=>
         <button type="button" key={id} aria-pressed={section===id} onClick={()=>{setSection(id);setQuery('');}}>{label} <span>{count}</span></button>)}
     </div>
     <label style={{display:'block',marginBottom:12}}>{fr?'Rechercher une tenue ou une époque':'Search an outfit or era'}
@@ -39,7 +45,8 @@ export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readO
     <div className="character-wardrobe__cards">
       {visible.map(item=><article className="character-wardrobe__card" key={item.id}>
         <h5>{item.name[l]}</h5>
-        {item.nature !== 'procedural-effect' && <div className="character-wardrobe__ownership">
+        {item.nature==='generated-static-costume' && <img className="character-wardrobe__sprite" src={item.src} alt={item.name[l]} loading="lazy" />}
+        {!['procedural-effect','generated-static-costume'].includes(item.nature) && <div className="character-wardrobe__ownership">
           <strong>{getWardrobeOwnership(item,inventory)==='UNLOCKED_ARTWORK_PENDING'
             ? (fr?'Droit débloqué — graphismes à produire':'Entitlement unlocked — artwork pending')
             : (fr?'À débloquer dans les boosters correspondants':'Unlock in the matching boosters')}</strong>
@@ -47,7 +54,9 @@ export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readO
             {' '}{fr?'Obtenu comme bonus gratuit, en plus des cinq cartes. Ne débloque pas le personnage.':'Granted as a free bonus in addition to the five cards. Does not unlock the character.'}</p>
           <details><summary>{fr?'Boosters compatibles':'Compatible boosters'}</summary><ul>{routes.map(id=><li key={id}>{id}</li>)}</ul></details>
         </div>}
-        <span className="character-wardrobe__badge">{item.nature==='procedural-effect'
+        <span className="character-wardrobe__badge">{item.nature==='generated-static-costume'
+          ? `${DISCIPLINE_PROVENANCE_LABELS[item.provenance][l]} · ${DISCIPLINE_CATEGORY_LABELS[item.category][l]}`
+          : item.nature==='procedural-effect'
           ? (fr?'Effet procédural, pas un costume':'Procedural effect, not an outfit')
           : item.origin==='OFFICIAL' ? (fr?'Source officielle — graphismes à produire':'Official source — artwork pending')
           : (fr?'Concept original — graphismes à produire':'Original concept — artwork pending')}</span>
@@ -72,8 +81,9 @@ export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readO
         </details>}
         {item.equippable && !readOnly && onSelect
           ? <button type="button" aria-pressed={selectedId===item.id} onClick={()=>{
-              if(resolveWardrobeEffect(actor,item.id))onSelect(item.id);
-            }}>{selectedId===item.id?(fr?'Équipé':'Equipped'):(fr?'Équiper l’effet':'Equip effect')}</button>
+              if(resolveWardrobeEffect(actor,item.id) || resolveDisciplineCostume(actor,item.id))onSelect(item.id);
+            }}>{selectedId===item.id?(fr?'Équipé':'Equipped')
+              : item.nature==='generated-static-costume'?(fr?'Équiper la tenue':'Equip outfit'):(fr?'Équiper l’effet':'Equip effect')}</button>
           : <span className="character-wardrobe__muted">{item.equippable
               ? (fr?'Consultation uniquement — pas de sélection de skin ennemi':'Read only — no enemy skin selection')
               : (fr?'Non équipable : aucune planche dédiée livrée':'Not equippable: no dedicated sheet delivered')}</span>}
@@ -90,7 +100,7 @@ export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readO
     </details>}
     {!readOnly && onSelect && <div className="character-wardrobe__footer">
       <button type="button" onClick={()=>onSelect(null)}>{fr?'Revenir à l’apparence d’origine':'Restore origin appearance'}</button>
-      <p>{fr?'Les effets Nexus sont désactivés dans les scènes à incarnation verrouillée.':'Nexus effects are disabled in incarnation-locked scenes.'}</p>
+      <p>{fr?'Les tenues et effets sélectionnés sont désactivés dans les scènes à incarnation verrouillée.':'Selected outfits and effects are disabled in incarnation-locked scenes.'}</p>
       {selected==='ASSET_PENDING' && <p role="status">{fr?'La sélection sauvegardée attend ses graphismes : l’apparence d’origine est utilisée.':'Saved selection needs artwork: origin appearance is used.'}</p>}
     </div>}
   </div>;

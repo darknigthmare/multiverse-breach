@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Discipline — catalogue des sprites</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,sans-serif;background:#101318;color:#edf0f4;--preview-size:240px;--tile:#202630}
+*{box-sizing:border-box}body{margin:0}header,main{max-width:1440px;margin:auto;padding:28px}
+header{padding-top:40px;padding-bottom:18px}h1{font-size:clamp(26px,4vw,44px);margin:6px 0 12px;letter-spacing:-1.4px}
+.kicker{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#d9b777}p{line-height:1.55;color:#b4bdcb;max-width:850px}
+.toolbar{display:flex;gap:14px;align-items:end;flex-wrap:wrap;padding:18px 0 22px;border-top:1px solid #333a46}
+label{display:flex;flex-direction:column;gap:7px;font-size:12px;color:#c3cbd7}
+input,select,button{font:inherit;color:#f3f4f7;background:#202630;border:1px solid #45505f;border-radius:7px;padding:10px 12px}
+input[type=search]{min-width:240px}input[type=range]{padding:10px 0;min-width:180px}button,a{cursor:pointer}button:hover,a:hover{color:#f5d58e}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #d9b777;outline-offset:3px}
+.status{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:0 0 22px;color:#aab6c8;font-size:13px}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:18px}
+.card{background:#181d25;border:1px solid #333c49;border-radius:11px;overflow:hidden}
+.stage{height:calc(var(--preview-size) + 24px);min-height:96px;display:flex;justify-content:center;align-items:center;background:var(--tile);padding:12px}
+.stage img{width:var(--preview-size);height:var(--preview-size);max-width:100%;object-fit:contain;image-rendering:pixelated}
+.card-body{padding:16px}h2{font-size:16px;margin:0 0 9px}.costume{font-size:13px;color:#c4cbd6;min-height:38px;margin:0 0 11px}.badge{display:inline-block;font-size:11px;line-height:1.5;color:#f3d692;background:#3d3420;border-radius:5px;padding:4px 7px;margin:0 4px 8px 0}.badge.reference{color:#a8dac9;background:#203d35}.category{background:#293849;color:#b7d2ed}a{display:block;font-size:12px;color:#c8d6e7;margin-top:9px;text-underline-offset:3px}
+#empty{padding:40px;border:1px dashed #586479;border-radius:10px}
+footer{border-top:1px solid #333a46;padding:22px 0;margin-top:28px;font-size:13px;color:#aab6c8;line-height:1.65}
+body[data-background=light]{--tile:#e2e7ed}body[data-background=checker] .stage{background-color:#d7dce2;background-image:linear-gradient(45deg,#aab2bc 25%,transparent 25%),linear-gradient(-45deg,#aab2bc 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#aab2bc 75%),linear-gradient(-45deg,transparent 75%,#aab2bc 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}
+@media(max-width:600px){header,main{padding:20px}input[type=search]{min-width:200px}#grid{grid-template-columns:repeat(auto-fill,minmax(175px,1fr))}.card-body{padding:12px}}
+</style>
+</head>
+<body data-background="dark">
+<header>
+<div class="kicker">Multiverse Breach · Revue des costumes</div>
+<h1>Discipline</h1>
+<p>Sprites individuels en pied, avec fond transparent. Les tenues basées sur des références et les adaptations créées pour le jeu sont identifiées sur chaque carte. Les images sont statiques.</p>
+</header>
+<main>
+<div class="toolbar">
+<label>Personnage<input id="search" type="search" placeholder="Nom du personnage…" autocomplete="off"></label>
+<label>Tenue<select id="category"><option value="">Toutes les tenues</option><option value="uniform">Uniforme</option><option value="civilian">Civil</option><option value="military">Militaire</option><option value="swimwear">Natation</option><option value="sport">Sport</option><option value="other">Autres</option></select></label>
+<label>Provenance<select id="provenance"><option value="">Toutes les provenances</option><option value="reference">Basé sur une référence</option><option value="adapted">Adaptation identifiée</option></select></label>
+<label>Taille d’aperçu <output id="size-value">240 px</output><input id="size" type="range" min="72" max="320" step="8" value="240"></label>
+<label>Fond de contrôle<select id="background"><option value="dark">Sombre</option><option value="light">Clair</option><option value="checker">Damier</option></select></label>
+<button id="reset" type="button">Tout afficher</button>
+</div>
+<div class="status"><span id="count" role="status" aria-live="polite">Chargement du catalogue…</span><span>1 PNG = 1 personnage + 1 tenue</span></div>
+<section id="grid" aria-label="Sprites des personnages"></section>
+<p id="empty" hidden>Aucun sprite ne correspond à ces filtres.</p>
+<footer>
+<p>Les détails hors cadre des références ont été reconstitués. Aucune image n’est certifiée comme une reproduction officielle complète 1:1. Les uniformes militaires utilisent une tenue réelle comme référence de vêtement ; leur attribution à ces personnages est une adaptation.</p>
+<p>Le vestiaire du jeu est raccordé à Saori, Ruri et Takurou, les trois héros déjà enregistrés. Les autres personnages sont livrés dans le catalogue graphique. Miyuki Umezaki et le garde anonyme de l’OVA restent en attente d’une référence exploitable.</p>
+</footer>
+</main>
+<script type="module">
+const $=id=>document.getElementById(id);
+const categoryNames={uniform:'Uniforme',civilian:'Civil',military:'Militaire',swimwear:'Natation',sport:'Sport',other:'Autre'};
+let entries=[];
+const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+function element(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
+function render(){
+const query=normalize($('search').value.trim());
+const filtered=entries.filter(e=>(!query||normalize(e.characterName+' '+e.characterId+' '+e.label.fr).includes(query))&&(!$('category').value||e.category===$('category').value)&&(!$('provenance').value||e.provenance===$('provenance').value));
+const fragment=document.createDocumentFragment();
+for(const entry of filtered){
+const card=element('article',undefined,'card');
+const stage=element('div',undefined,'stage');
+const img=element('img');img.src=entry.src;img.alt=entry.characterName+' — '+entry.label.fr;img.loading='lazy';img.decoding='async';img.width=1254;img.height=1254;
+stage.append(img);
+const body=element('div',undefined,'card-body');body.append(element('h2',entry.characterName),element('p',entry.label.fr,'costume'));
+body.append(element('span',entry.provenance==='reference'?'Basé sur référence':'Adaptation identifiée','badge '+entry.provenance),element('span',categoryNames[entry.category]||entry.category,'badge category'));
+const link=element('a','Ouvrir le PNG');link.href=entry.src;link.target='_blank';link.rel='noopener';body.append(link);card.append(stage,body);fragment.append(card);
+}
+$('grid').replaceChildren(fragment);$('empty').hidden=filtered.length>0;
+$('count').textContent=filtered.length+' / '+entries.length+' sprites · '+new Set(filtered.map(e=>e.characterId)).size+' personnages';
+}
+for(const id of ['search','category','provenance'])$(id).addEventListener('input',render);
+$('background').addEventListener('change',()=>{document.body.dataset.background=$('background').value;});
+$('size').addEventListener('input',()=>{const size=Number($('size').value);document.documentElement.style.setProperty('--preview-size',size+'px');$('size-value').value=size+' px';});
+$('reset').addEventListener('click',()=>{for(const id of ['search','category','provenance'])$(id).value='';render();});
+try{const response=await fetch('./catalog.json');if(!response.ok)throw new Error('Catalogue HTTP '+response.status);const data=await response.json();entries=data.entries;render();}
+catch(error){$('count').textContent='Le catalogue n’a pas pu être chargé. Ouvrir cette galerie depuis le serveur du jeu.';console.error(error);}
+</script>
+</body>
+</html>

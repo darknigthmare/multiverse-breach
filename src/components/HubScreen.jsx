@@ -2,6 +2,7 @@ import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
 import { getExtinctionRoster, getExtinctionViewmodel, getExtinctionHandFrame, drawExtinctionSchematic } from '../game/extinctionContent.js';
 import CharacterWardrobe from './CharacterWardrobe.jsx';
 import { applyActorAppearance } from '../game/wardrobe.js';
+import { DISCIPLINE_SPRITE_REGISTRY } from '../game/disciplineSprites.js';
 import React, { lazy, Suspense, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
 import { getTranslation } from '../game/translation';
@@ -5579,6 +5580,9 @@ export default function HubScreen({
       const map = new Map(spriteAvailability.groups.flatMap(group => group.outputs.map(output => [output, { output, available: true, source: group.source }])));
       Object.values(MIRELLE_COMPLETE_SPRITES).forEach(output => {
         map.set(output, { output, available: true, source: 'openai-complete-pack' });
+      });
+      DISCIPLINE_SPRITE_REGISTRY.entries.filter(entry => entry.available).forEach(entry => {
+        map.set(entry.src, { output: entry.src, available: true, source: 'generated-static-costume' });
       });
       return map;
     },
