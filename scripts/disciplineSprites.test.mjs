@@ -1,13 +1,16 @@
 import assert from 'node:assert/strict';
 import { after, before, test } from 'node:test';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { createServer } from 'vite';
 import { HEROES_DB } from '../src/game/heroes.js';
 import { sanitizeSaveCore } from '../src/game/saveValidation.js';
 import { applyActorAppearance, wardrobeSelectionStatus } from '../src/game/wardrobe.js';
+import { DISCIPLINE_SPRITE_CATALOG } from '../src/game/disciplineSpriteCatalog.js';
 import {
+  DISCIPLINE_CATEGORY_LABELS,
   DISCIPLINE_COSTUME_BASE,
   DISCIPLINE_HERO_BINDINGS,
   DISCIPLINE_SPRITE_REGISTRY,
@@ -72,6 +75,59 @@ test('each available catalogue file is an installed RGBA PNG with nonzero dimens
     assert.equal(file.subarray(0, 8).toString('hex'), '89504e470d0a1a0a', entry.src);
     assert.equal(file[25], 6, `${entry.src}: expected RGBA PNG`);
     assert.ok(file.readUInt32BE(16) > 0 && file.readUInt32BE(20) > 0, entry.src);
+  }
+});
+
+test('published gallery and manifest match the installed catalogue without missing or duplicate assets', () => {
+  const gallery = JSON.parse(readFileSync(new URL('../public/reviews/discipline/catalog.json', import.meta.url), 'utf8'));
+  const manifest = JSON.parse(readFileSync(new URL('../docs/discipline-sprites/manifest.json', import.meta.url), 'utf8'));
+  assert.deepEqual(gallery.entries, DISCIPLINE_SPRITE_CATALOG);
+  assert.deepEqual(gallery.counts, manifest.counts);
+  assert.equal(gallery.counts.sprites, DISCIPLINE_SPRITE_CATALOG.length);
+  assert.equal(gallery.counts.characters, new Set(DISCIPLINE_SPRITE_CATALOG.map(row => row.characterId)).size);
+  assert.equal(gallery.counts.referenceBased, DISCIPLINE_SPRITE_CATALOG.filter(row => row.provenance === 'reference').length);
+  assert.equal(gallery.counts.adapted, DISCIPLINE_SPRITE_CATALOG.filter(row => row.provenance === 'adapted').length);
+  const categories = {};
+  for (const row of DISCIPLINE_SPRITE_CATALOG) categories[row.category] = (categories[row.category] || 0) + 1;
+  assert.deepEqual(gallery.counts.byCategory, categories);
+  const byId = new Map(manifest.assets.map(asset => [asset.id, asset]));
+  assert.equal(byId.size, manifest.assets.length, 'Manifest asset IDs must be unique');
+  assert.equal(byId.size, DISCIPLINE_SPRITE_CATALOG.length);
+  for (const row of DISCIPLINE_SPRITE_CATALOG) {
+    const asset = byId.get(`${row.characterId}:${row.costumeId}`);
+    assert.ok(asset, row.src);
+    for (const key of ['characterId', 'costumeId', 'src', 'category', 'provenance']) {
+      assert.equal(asset[key], row[key], `${row.src}: manifest ${key}`);
+    }
+    if (!row.available) continue;
+    const file = readFileSync(new URL(`../public${row.src}`, import.meta.url));
+    assert.equal(createHash('sha256').update(file).digest('hex'), asset.image.sha256, `${row.src}: image content`);
+    assert.equal(file.readUInt32BE(16), asset.image.width, `${row.src}: native width`);
+    assert.equal(file.readUInt32BE(20), asset.image.height, `${row.src}: native height`);
+  }
+});
+
+test('new costume families remain static adaptations and do not change old selections or defaults', () => {
+  const original = fixtureRow('uniform', { isDefault: true });
+  const additions = ['maid', 'nurse', 'latex', 'swimwear'].map(category => fixtureRow(`${category}-v6`, {
+    category, provenance: 'adapted', revision: 6, newOutfit: true,
+    sourceMedium: 'game_adaptation', styleSourceId: disciplineCostumeId('saori', 'uniform')
+  }));
+  const registry = createDisciplineSpriteRegistry([original, ...additions]);
+  const costumes = getDisciplineCostumes(saori, registry);
+  assert.equal(costumes.length, additions.length + 1);
+  assert.equal(resolveDisciplineCostume(saori, disciplineCostumeId('saori', 'uniform'), registry).src, original.src);
+  for (const addition of additions) {
+    const selectedId = disciplineCostumeId('saori', addition.costumeId);
+    const selected = resolveDisciplineCostume(saori, selectedId, registry);
+    assert.equal(selected.provenance, 'adapted');
+    assert.equal(selected.isDefault, false);
+    assert.equal(selected.sourceMedium, 'game_adaptation');
+    assert.ok(DISCIPLINE_CATEGORY_LABELS[addition.category].fr);
+    assert.ok(DISCIPLINE_CATEGORY_LABELS[addition.category].en);
+    assert.equal(getDisciplineSpriteLayout(selected.src, registry), DISCIPLINE_STATIC_LAYOUT);
+    assert.deepEqual(getDisciplineSpriteSources({ ...saori, disciplineSpriteId: selectedId }, registry), [selected.src, original.src]);
+    assert.equal(resolveDisciplineCostume({ ...saori, id: 'discipline_ruri_nonomiya' }, selectedId, registry), null);
   }
 });
 
@@ -329,5 +385,7 @@ test('actual wardrobe displays delivered outfits with provenance and selection c
   assert.match(markup, /Équiper la tenue/);
   assert.equal((markup.match(/class="character-wardrobe__sprite"/g) || []).length, costumes.length);
   if (costumes.some(row => row.provenance === 'adapted')) assert.match(markup, /Adaptation identifiée/);
+  if (costumes.some(row => row.category === 'swimwear' && !(row.revision >= 6))) assert.match(markup, /Tenue aquatique antérieure/);
+  if (costumes.some(row => row.category === 'swimwear' && row.revision >= 6)) assert.match(markup, /Maillot de bain/);
   assert.doesNotMatch(markup, /Source officielle — graphismes à produire/);
 });

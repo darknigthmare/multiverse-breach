@@ -55,7 +55,10 @@ export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readO
           <details><summary>{fr?'Boosters compatibles':'Compatible boosters'}</summary><ul>{routes.map(id=><li key={id}>{id}</li>)}</ul></details>
         </div>}
         <span className="character-wardrobe__badge">{item.nature==='generated-static-costume'
-          ? `${DISCIPLINE_PROVENANCE_LABELS[item.provenance][l]} · ${DISCIPLINE_CATEGORY_LABELS[item.category][l]}`
+          ? `${DISCIPLINE_PROVENANCE_LABELS[item.provenance][l]} · ${item.category==='swimwear'
+            ? (item.revision>=6 ? (fr?'Maillot de bain':'Swimming costume')
+              : (fr?'Tenue aquatique antérieure':'Earlier aquatic outfit'))
+            : DISCIPLINE_CATEGORY_LABELS[item.category][l]}`
           : item.nature==='procedural-effect'
           ? (fr?'Effet procédural, pas un costume':'Procedural effect, not an outfit')
           : item.origin==='OFFICIAL' ? (fr?'Source officielle — graphismes à produire':'Official source — artwork pending')

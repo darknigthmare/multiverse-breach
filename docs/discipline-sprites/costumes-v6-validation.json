@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-28",
+  "baselineCommit": "f9a9c1db7bbea3312e53341e5fbbdcf79c504851",
+  "catalogueSprites": 293,
+  "addedSprites": 96,
+  "archivedCandidatePngs": 4,
+  "tests": {
+    "command": "npm run test:discipline",
+    "exitCode": 0,
+    "passedFiles": 2,
+    "failedFiles": 0,
+    "logSha256": "bc09058d1d20b3371d4dded9c1143558e6314ac36b1573f312357692289e6c80"
+  },
+  "build": {
+    "command": "npx --no-install vite build",
+    "exitCode": 0,
+    "catalogueSprites": 293,
+    "addedSprites": 96,
+    "modulesTransformed": 313,
+    "seconds": 3.2,
+    "warnings": [
+      "Existing large minified chunks over 1000 kB",
+      "Vite plugin timing advisory",
+      "npm environment http-proxy configuration warning"
+    ],
+    "scope": "Vite production bundle compilation; full package prebuild gate not run by this command.",
+    "log": "recovery-v6/vite-build-final.log"
+  },
+  "browser": {
+    "report": "costumes-v6-browser-qa-report.json",
+    "passed": true,
+    "checks": 20,
+    "loadedImages": 293,
+    "errors": [],
+    "method": "Local Chromium with intercepted requests fulfilled from public files; no remote deployment claimed."
+  },
+  "visualReview": {
+    "report": "costumes-v6-visual-review.json",
+    "reviewedNewSprites": 96,
+    "blockingDefectsObserved": 0
+  },
+  "preservation": {
+    "report": "costumes-v6-preservation.json",
+    "catalogueObjectsUnchanged": 197,
+    "manifestObjectsUnchanged": 197,
+    "oldPngsUnchanged": 197,
+    "newOutputsCopiedUnchanged": 96
+  },
+  "gitDiffCheck": {
+    "passed": true
+  },
+  "fullPrebuildExecutedLocally": false,
+  "scopeLimit": "The local checkout omits unrelated repository media; Vite compilation and targeted tests do not assert the full repository prebuild gate. GitHub checks on the new commit are separate.",
+  "counts": {
+    "totalCatalogueSprites": 293,
+    "baselineSpritesPreserved": 197,
+    "addedCatalogueSprites": 96,
+    "referenceBased": 76,
+    "adapted": 217,
+    "identities": 36,
+    "recoveredSprites": 93,
+    "newlyCompletedSprites": 3,
+    "batches": {
+      "earlier-unpublished-v6": 30,
+      "latest-v6": 57,
+      "recovered-unmapped-v6": 6,
+      "newly-completed-v6": 3
+    },
+    "newByCategory": {
+      "military": 17,
+      "latex": 15,
+      "maid": 30,
+      "nurse": 18,
+      "swimwear": 16
+    },
+    "coveredIdentitiesByFamily": {
+      "maid": 26,
+      "uniform": 31,
+      "swimwear": 16,
+      "nurse": 18,
+      "military": 34,
+      "latex": 15
+    },
+    "missingFamilyCells": 76,
+    "pendingExactJobs": 61,
+    "pendingExactJobsWithAlternativeFamilyAlreadyDelivered": 9,
+    "missingAttestedSchoolUniformReferences": 19,
+    "archivedCandidateFiles": 4,
+    "archiveCountedAsDelivered": false,
+    "newRedLatexVariants": 0,
+    "yuriFinalInputsCorrectlyRecorded": true,
+    "notes": [
+      "The 61 pending exact jobs are not the exhaustive count of all missing family cells.",
+      "Four archived candidate images lack exact prompts and do not enter the catalogue total.",
+      "The requested red Leona-like latex variant remains unfulfilled by the black-and-gold variants."
+    ]
+  }
+}

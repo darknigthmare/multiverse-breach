@@ -1,16 +1,19 @@
 {
   "counts": {
-    "sprites": 197,
+    "sprites": 293,
     "characters": 36,
     "referenceBased": 76,
-    "adapted": 121,
+    "adapted": 217,
     "byCategory": {
-      "civilian": 44,
-      "military": 42,
-      "other": 5,
       "sport": 13,
-      "swimwear": 35,
-      "uniform": 58
+      "civilian": 44,
+      "military": 59,
+      "swimwear": 51,
+      "uniform": 58,
+      "other": 5,
+      "latex": 15,
+      "maid": 30,
+      "nurse": 18
     },
     "preservedOriginals": 132,
     "preservedBeforeV3": 154,
@@ -26,7 +29,16 @@
     "v5Additions": 2,
     "v5NewCharacters": 1,
     "v5CharacterVariants": 0,
-    "v5MonochromeStudies": 2
+    "v5MonochromeStudies": 2,
+    "preservedBeforeV6": 197,
+    "v6Additions": 96,
+    "v6ActualSwimsuits": 16,
+    "v6RecoveryBatches": {
+      "earlier-unpublished-v6": 30,
+      "latest-v6": 57,
+      "recovered-unmapped-v6": 6,
+      "newly-completed-v6": 3
+    }
   },
   "entries": [
     {
@@ -3878,6 +3890,2473 @@
       ],
       "sourceMediaNotes": "Public sale-listing scans labelled as OVA model sheets; monochrome study without verified canonical colors or studio chain of custody. No prior catalogue sprite supplied as a style or body reference.",
       "newCharacter": true
+    },
+    {
+      "characterId": "akane",
+      "characterName": "Akane",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:akane:tennis-adapted-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "akane",
+      "characterName": "Akane",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:akane:tennis-adapted-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "akane",
+      "characterName": "Akane",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:akane:tennis-adapted-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "akane",
+      "characterName": "Akane",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:akane:tennis-adapted-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "akane",
+      "characterName": "Akane",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:akane:tennis-adapted-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "akane",
+      "characterName": "Akane",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Maillot de bain une pièce — adaptation v6",
+        "en": "One-piece swimsuit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:akane:tennis-adapted-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:akane:swimwear-sport-original"
+    },
+    {
+      "characterId": "eikichi",
+      "characterName": "Eikichi Ogiwara",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:eikichi:suit-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "eikichi",
+      "characterName": "Eikichi Ogiwara",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:eikichi:suit-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "eikichi",
+      "characterName": "Eikichi Ogiwara",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:eikichi:suit-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "eikichi",
+      "characterName": "Eikichi Ogiwara",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:eikichi:suit-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "eikichi",
+      "characterName": "Eikichi Ogiwara",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Short de bain — adaptation v6",
+        "en": "Swim trunks — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:eikichi:suit-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:eikichi:swimwear-sport-original"
+    },
+    {
+      "characterId": "kanae",
+      "characterName": "Kanae",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kanae:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kanae",
+      "characterName": "Kanae",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kanae:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "kanae",
+      "characterName": "Kanae",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kanae:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kanae",
+      "characterName": "Kanae",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kanae:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kanae",
+      "characterName": "Kanae",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Maillot de bain une pièce — adaptation v6",
+        "en": "One-piece swimsuit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kanae:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:kanae:swimwear-sport-original"
+    },
+    {
+      "characterId": "kaori",
+      "characterName": "Kaori Matsuno",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kaori:outfit-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kaori",
+      "characterName": "Kaori Matsuno",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kaori:outfit-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kaoru",
+      "characterName": "Kaoru Itou",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kaoru:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kaoru",
+      "characterName": "Kaoru Itou",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kaoru:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "karen",
+      "characterName": "Karen Himeki",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:karen:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "karen",
+      "characterName": "Karen Himeki",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:karen:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "katsuo",
+      "characterName": "Katsuo Isobe",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:katsuo:baseball-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--baseball-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "katsuo",
+      "characterName": "Katsuo Isobe",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:katsuo:baseball-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--baseball-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kawahara",
+      "characterName": "Kawahara",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kawahara:covered-medical-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--covered-medical-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kawahara",
+      "characterName": "Kawahara",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kawahara:covered-medical-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--covered-medical-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kouzou",
+      "characterName": "Kouzou Machida",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kouzou:suit-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kouzou",
+      "characterName": "Kouzou Machida",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kouzou:suit-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kumi",
+      "characterName": "Kumi Yamanaka",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kumi:tennis-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kumi",
+      "characterName": "Kumi Yamanaka",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kumi:tennis-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "kumi",
+      "characterName": "Kumi Yamanaka",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kumi:tennis-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kumi",
+      "characterName": "Kumi Yamanaka",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kumi:tennis-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "kumi",
+      "characterName": "Kumi Yamanaka",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Maillot de bain une pièce — adaptation v6",
+        "en": "One-piece swimsuit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:kumi:tennis-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:kumi:swimwear-sport-original"
+    },
+    {
+      "characterId": "leona",
+      "characterName": "Leona Morimoto",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. La référence est monochrome ; aucune palette canonique n’est déduite. Un faible résidu chromatique éventuel du rendu n’établit aucune couleur officielle.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. The reference is monochrome; no canonical palette is inferred. Any slight chromatic residue in the rendering is not official color evidence."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:leona:ova-uniform-armband-monochrome-v5",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--ova-uniform-armband-monochrome-v5.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "paletteStatus": "source-monochrome",
+      "sourceColorPaletteConfirmed": false
+    },
+    {
+      "characterId": "leona",
+      "characterName": "Leona Morimoto",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:leona:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "leona",
+      "characterName": "Leona Morimoto",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. La référence est monochrome ; aucune palette canonique n’est déduite. Un faible résidu chromatique éventuel du rendu n’établit aucune couleur officielle.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. The reference is monochrome; no canonical palette is inferred. Any slight chromatic residue in the rendering is not official color evidence."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:leona:ova-uniform-armband-monochrome-v5",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--ova-uniform-armband-monochrome-v5.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "paletteStatus": "source-monochrome",
+      "sourceColorPaletteConfirmed": false
+    },
+    {
+      "characterId": "leona",
+      "characterName": "Leona Morimoto",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:leona:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "leona",
+      "characterName": "Leona Morimoto",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:leona:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "leona",
+      "characterName": "Leona Morimoto",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Maillot de bain une pièce — adaptation v6",
+        "en": "One-piece swimsuit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:leona:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:leona:swimwear-sport-original"
+    },
+    {
+      "characterId": "linda",
+      "characterName": "Linda Hamilton",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:linda:covered-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "linda",
+      "characterName": "Linda Hamilton",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:linda:covered-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "linda",
+      "characterName": "Linda Hamilton",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:linda:covered-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "linda",
+      "characterName": "Linda Hamilton",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:linda:covered-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "linda",
+      "characterName": "Linda Hamilton",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Maillot de bain une pièce — adaptation v6",
+        "en": "One-piece swimsuit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:linda:covered-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:linda:swimwear-sport-original"
+    },
+    {
+      "characterId": "madoka",
+      "characterName": "Madoka Araki",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:madoka:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "madoka",
+      "characterName": "Madoka Araki",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:madoka:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "madoka",
+      "characterName": "Madoka Araki",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:madoka:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "madoka",
+      "characterName": "Madoka Araki",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:madoka:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "madoka",
+      "characterName": "Madoka Araki",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Maillot de bain une pièce — adaptation v6",
+        "en": "One-piece swimsuit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:madoka:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:madoka:swimwear-sport-original"
+    },
+    {
+      "characterId": "maiko",
+      "characterName": "Maiko Kaneda",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:maiko:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "maiko",
+      "characterName": "Maiko Kaneda",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:maiko:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "maiko",
+      "characterName": "Maiko Kaneda",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:maiko:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "maiko",
+      "characterName": "Maiko Kaneda",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:maiko:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "mami",
+      "characterName": "Mami Nakai",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:mami:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "mami",
+      "characterName": "Mami Nakai",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:mami:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "mami",
+      "characterName": "Mami Nakai",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:mami:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "mami",
+      "characterName": "Mami Nakai",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Maillot de bain une pièce — adaptation v6",
+        "en": "One-piece swimsuit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:mami:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:mami:swimwear-sport-original"
+    },
+    {
+      "characterId": "manami",
+      "characterName": "Manami",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:manami:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "manami",
+      "characterName": "Manami",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:manami:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "manami",
+      "characterName": "Manami",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:manami:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "maya",
+      "characterName": "Maya",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:maya:tennis-adapted-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--tennis-adapted-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "maya",
+      "characterName": "Maya",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:maya:tennis-adapted-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--tennis-adapted-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "momoe",
+      "characterName": "Momoe Endou",
+      "costumeId": "battle-personalized-adapted-v6",
+      "label": {
+        "fr": "Tenue de bataille personnalisée — adaptation v6",
+        "en": "Personalized battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--battle-personalized-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:momoe:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "momoe",
+      "characterName": "Momoe Endou",
+      "costumeId": "maid-service-adapted-v6",
+      "label": {
+        "fr": "Robe de service sur modèle OVA — adaptation v6",
+        "en": "OVA-inspired service dress — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--maid-service-adapted-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:momoe:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "ova-broadcasting-club-member",
+      "characterName": "Membre OVA — club de diffusion",
+      "costumeId": "battle-v6",
+      "label": {
+        "fr": "Tenue de bataille — adaptation v6",
+        "en": "Battle outfit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. La référence est monochrome ; aucune palette canonique n’est déduite. Un faible résidu chromatique éventuel du rendu n’établit aucune couleur officielle.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. The reference is monochrome; no canonical palette is inferred. Any slight chromatic residue in the rendering is not official color evidence."
+      },
+      "category": "military",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-broadcasting-club-member--battle-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:ova-broadcasting-club-member:ova-uniform-monochrome-v5",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-broadcasting-club-member--ova-uniform-monochrome-v5.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "paletteStatus": "source-monochrome",
+      "sourceColorPaletteConfirmed": false
+    },
+    {
+      "characterId": "ruri",
+      "characterName": "Ruri Nonomiya",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:ruri:casual-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "ruri",
+      "characterName": "Ruri Nonomiya",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:ruri:casual-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "ruri",
+      "characterName": "Ruri Nonomiya",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:ruri:casual-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "ruri",
+      "characterName": "Ruri Nonomiya",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Maillot de bain une pièce — adaptation v6",
+        "en": "One-piece swimsuit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:ruri:casual-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:ruri:swimwear-sport-original-reference-v2"
+    },
+    {
+      "characterId": "saori",
+      "characterName": "Saori Otokawa",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:saori:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "saori",
+      "characterName": "Saori Otokawa",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:saori:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "saori",
+      "characterName": "Saori Otokawa",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:saori:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "saori",
+      "characterName": "Saori Otokawa",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Maillot de bain une pièce — adaptation v6",
+        "en": "One-piece swimsuit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:saori:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:saori:swimwear-sport-original-reference-v2"
+    },
+    {
+      "characterId": "security-guard-ova",
+      "characterName": "Garde de sécurité OVA — roux",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:security-guard-ova:ova-security-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--ova-security-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "security-guard-ova",
+      "characterName": "Garde de sécurité OVA — roux",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:security-guard-ova:ova-security-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--ova-security-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "security-guard-ova",
+      "characterName": "Garde de sécurité OVA — roux",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Short de bain — adaptation v6",
+        "en": "Swim trunks — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:security-guard-ova:ova-security-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--ova-security-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true
+    },
+    {
+      "characterId": "sudou",
+      "characterName": "Sudou",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:sudou:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "sudou",
+      "characterName": "Sudou",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:sudou:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "sudou",
+      "characterName": "Sudou",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:sudou:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "sudou",
+      "characterName": "Sudou",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Short de bain — adaptation v6",
+        "en": "Swim trunks — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:sudou:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:sudou:swimwear-sport-original"
+    },
+    {
+      "characterId": "takurou",
+      "characterName": "Takurou Hayami",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:takurou:ova-orange-proportions-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "takurou",
+      "characterName": "Takurou Hayami",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:takurou:ova-orange-proportions-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "takurou",
+      "characterName": "Takurou Hayami",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:takurou:ova-orange-proportions-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "takurou",
+      "characterName": "Takurou Hayami",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Short de bain — adaptation v6",
+        "en": "Swim trunks — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:takurou:ova-orange-proportions-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:takurou:swimwear-sport-original"
+    },
+    {
+      "characterId": "tooru",
+      "characterName": "Tooru Satou",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:tooru:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "tooru",
+      "characterName": "Tooru Satou",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:tooru:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "tooru",
+      "characterName": "Tooru Satou",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:tooru:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "tooru",
+      "characterName": "Tooru Satou",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Short de bain — adaptation v6",
+        "en": "Swim trunks — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:tooru:uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:tooru:swimwear-sport-original"
+    },
+    {
+      "characterId": "yuri",
+      "characterName": "Yuri Nishizaki",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:yuri:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "yuri",
+      "characterName": "Yuri Nishizaki",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:yuri:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "yuri",
+      "characterName": "Yuri Nishizaki",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. La correction finale utilise seulement le brouillon infirmière ; le sprite d’identité affiché appartient à sa chaîne de génération initiale, pas aux entrées directes de ce dernier appel.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. The final correction uses only the nursing draft. The displayed identity sprite belongs to that draft’s initial generation chain and is not a direct input of the final call."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:yuri:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": false,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "yuri",
+      "characterName": "Yuri Nishizaki",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Maillot de bain une pièce — adaptation v6",
+        "en": "One-piece swimsuit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:yuri:uniform-fidelity-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-fidelity-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:yuri:swimwear-sport-original-reference-v2"
+    },
+    {
+      "characterId": "yuuji",
+      "characterName": "Yuuji Takigawa",
+      "costumeId": "latex-v6",
+      "label": {
+        "fr": "Combinaison en latex noir et or — adaptation v6",
+        "en": "Black-and-gold latex action suit — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Cette version ne satisfait pas la demande de variante rouge de type Leona ; cette variante reste à produire.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. This version does not fulfill the requested red Leona-like variant; that variant remains outstanding."
+      },
+      "category": "latex",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--latex-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:yuuji:light-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "requestedRedLatexVariant": false,
+      "outfitPalette": "black-and-gold"
+    },
+    {
+      "characterId": "yuuji",
+      "characterName": "Yuuji Takigawa",
+      "costumeId": "maid-v6",
+      "label": {
+        "fr": "Tenue de service — adaptation v6",
+        "en": "Service uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "maid",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--maid-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:yuuji:light-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "yuuji",
+      "characterName": "Yuuji Takigawa",
+      "costumeId": "nurse-v6",
+      "label": {
+        "fr": "Tenue infirmière — adaptation v6",
+        "en": "Nursing uniform — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit."
+      },
+      "category": "nurse",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--nurse-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:yuuji:light-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false
+    },
+    {
+      "characterId": "yuuji",
+      "characterName": "Yuuji Takigawa",
+      "costumeId": "swimsuit-v6",
+      "label": {
+        "fr": "Short de bain — adaptation v6",
+        "en": "Swim trunks — v6 adaptation"
+      },
+      "notes": {
+        "fr": "Tenue créée pour le jeu à partir du sprite d’identité indiqué. La revue visuelle porte sur le visage, la coiffure, la silhouette et le cadrage ; elle ne certifie pas une reproduction intégrale 1:1 de l’illustration canonique. Costume adapté, non attesté comme tenue officielle de Discipline. Maillot de bain réel ; les anciens vêtements aquatiques restent disponibles séparément. Les parties auparavant masquées sont interprétées.",
+        "en": "New game outfit using the specified identity sprite. Visual review covers face, hairstyle, silhouette and framing; it does not certify a literal 1:1 reproduction of canonical artwork. Adapted costume, not an attested official Discipline outfit. Actual swimming costume; previous aquatic clothing remains separately available. Previously obscured body details are interpreted."
+      },
+      "category": "swimwear",
+      "provenance": "adapted",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--swimsuit-v6.png",
+      "available": true,
+      "isDefault": false,
+      "revision": 6,
+      "newOutfit": true,
+      "sourceMedium": "game_adaptation",
+      "styleSourceId": "discipline-sprite-v1:yuuji:light-uniform-reference-v4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+      "identityReferenceDirectInput": true,
+      "literalOneToOneCertified": false,
+      "actualSwimsuit": true,
+      "variantOf": "discipline-sprite-v1:yuuji:swimwear-sport-original"
     }
   ],
   "pendingCharacters": [

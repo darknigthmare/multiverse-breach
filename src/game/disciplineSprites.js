@@ -28,6 +28,9 @@ export const DISCIPLINE_CATEGORY_LABELS = Object.freeze({
   civilian: Object.freeze({ fr: 'Tenue civile', en: 'Civilian outfit' }),
   military: Object.freeze({ fr: 'Tenue militaire', en: 'Military outfit' }),
   swimwear: Object.freeze({ fr: 'Natation', en: 'Swimwear' }),
+  maid: Object.freeze({ fr: 'Tenue de domestique', en: 'Maid outfit' }),
+  nurse: Object.freeze({ fr: 'Tenue infirmière', en: 'Nursing uniform' }),
+  latex: Object.freeze({ fr: 'Combinaison en latex', en: 'Latex suit' }),
   sport: Object.freeze({ fr: 'Sport', en: 'Sport' }),
   other: Object.freeze({ fr: 'Autre tenue', en: 'Other outfit' })
 });

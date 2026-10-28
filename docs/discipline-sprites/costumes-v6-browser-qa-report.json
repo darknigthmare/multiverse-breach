@@ -1,0 +1,1894 @@
+{
+  "date": "2026-10-28",
+  "baselineCommit": "f9a9c1db7bbea3312e53341e5fbbdcf79c504851",
+  "environment": "Headless Chromium; HTTP requests fulfilled directly from the checked-out public directory; no local server or remote deployment used.",
+  "catalogueSprites": 293,
+  "addedSprites": 96,
+  "checks": [
+    {
+      "name": "Initial gallery count matches source catalogue",
+      "passed": true
+    },
+    {
+      "name": "Every PNG loads at its native dimensions",
+      "passed": true,
+      "count": 293
+    },
+    {
+      "name": "v6 filter shows exactly the new assets without incorrect correction badges",
+      "passed": true
+    },
+    {
+      "name": "Corrected-version filter excludes newly invented outfits",
+      "passed": true
+    },
+    {
+      "name": "Category swimwear",
+      "passed": true,
+      "count": 16
+    },
+    {
+      "name": "Category maid",
+      "passed": true,
+      "count": 31
+    },
+    {
+      "name": "Category nurse",
+      "passed": true,
+      "count": 18
+    },
+    {
+      "name": "Category military",
+      "passed": true,
+      "count": 61
+    },
+    {
+      "name": "Category latex",
+      "passed": true,
+      "count": 15
+    },
+    {
+      "name": "Category uniform",
+      "passed": true,
+      "count": 58
+    },
+    {
+      "name": "All 35 old aquatic outfits remain in their own filter",
+      "passed": true
+    },
+    {
+      "name": "Historical v4 and v5 filters preserved",
+      "passed": true
+    },
+    {
+      "name": "All v6 costumes are clearly identified game adaptations",
+      "passed": true
+    },
+    {
+      "name": "New outfit comparison uses its actual identity sprite rather than unrelated costume ancestry",
+      "passed": true,
+      "costume": "discipline-sprite-v1:saori:swimsuit-v6",
+      "styleSourceId": "discipline-sprite-v1:saori:uniform-fidelity-v4"
+    },
+    {
+      "name": "Character search and all three backgrounds",
+      "passed": true
+    },
+    {
+      "name": "Native aspect ratios are preserved with contain layout",
+      "passed": true,
+      "nonsquareFiles": [
+        {
+          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-broadcasting-club-member--ova-uniform-monochrome-v5.png",
+          "width": 1133,
+          "height": 1388
+        },
+        {
+          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--maid-service-adapted-v6.png",
+          "width": 1024,
+          "height": 1536
+        },
+        {
+          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--maid-service-adapted-v6.png",
+          "width": 1024,
+          "height": 1536
+        },
+        {
+          "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-broadcasting-club-member--battle-v6.png",
+          "width": 1133,
+          "height": 1388
+        }
+      ]
+    },
+    {
+      "name": "390px mobile layout and scrolling coverage table have no page overflow",
+      "passed": true
+    },
+    {
+      "name": "All 216 coverage cells agree with delivered asset manifest",
+      "passed": true
+    },
+    {
+      "name": "All mobile review cards are loaded before the full-page capture",
+      "passed": true
+    },
+    {
+      "name": "No browser JavaScript or local resource errors",
+      "passed": true
+    }
+  ],
+  "loadedImages": [
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--light-uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--baseball.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--covered-medical.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--alternate.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--casual.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--baseball.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--tennis-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momone--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momone--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momone--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momone--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/nanase--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/nanase--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/nanase--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/nanase--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/reina--suit.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/reina--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/reina--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/reina--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saki--aquatic-covered.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saki--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saki--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saki--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--casual.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--rose-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--baseball.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--uniform-academy-adapted.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--civilian-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--swimwear-sport-original.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--baseball.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--casual-covered.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--military-jgsdf.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--tracksuit.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--aquatic-covered.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--school-trousers.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--casual-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--baseball-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--military-jgsdf-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--swimwear-sport-original-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--uniform-academy-adapted-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--military-jgsdf-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--swimwear-sport-original-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--uniform-academy-adapted-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--rose-adapted-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--military-jgsdf-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--swimwear-sport-original-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--civilian-original-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--military-jgsdf-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--swimwear-sport-original-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--civilian-original-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--military-jgsdf-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--swimwear-sport-original-reference-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--ova-tactical-reference-v3.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--ova-tactical-reference-v3.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v3.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-reference-v3.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--ova-tactical-reference-v3.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--ova-tactical-reference-v3.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit-fidelity-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform-fidelity-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--baseball-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--covered-medical-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform-fidelity-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform-fidelity-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--tennis-adapted-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momone--uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/nanase--uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-attendant-brown-bun--ova-service-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-guest-yellow-dress--ova-yellow-dress-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-swept-hair--ova-plum-uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/reina--suit-fidelity-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-fidelity-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saki--civilian-original-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-fidelity-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--ova-security-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-fidelity-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-fidelity-v4.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--ova-uniform-armband-monochrome-v5.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-broadcasting-club-member--ova-uniform-monochrome-v5.png",
+      "width": 1133,
+      "height": 1388,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--maid-service-adapted-v6.png",
+      "width": 1024,
+      "height": 1536,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--maid-service-adapted-v6.png",
+      "width": 1024,
+      "height": 1536,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--battle-personalized-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--maid-service-adapted-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-broadcasting-club-member--battle-v6.png",
+      "width": 1133,
+      "height": 1388,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--latex-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--maid-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--nurse-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    },
+    {
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--swimsuit-v6.png",
+      "width": 1254,
+      "height": 1254,
+      "ok": true
+    }
+  ],
+  "chromiumVersion": "153.0.8010.0",
+  "errors": [],
+  "passed": true,
+  "screenshotReview": {
+    "reviewed": true,
+    "files": [
+      "costumes-v6-gallery-desktop.png",
+      "costumes-v6-gallery-mobile.png"
+    ],
+    "notes": [
+      "Desktop Leona v6 cards inspected: costume labels, monochrome notices, comparison buttons and full-body images visible without clipping.",
+      "390px Saori v6 mobile capture inspected: controls and cards readable, all four images loaded, no horizontal page overflow."
+    ]
+  }
+}

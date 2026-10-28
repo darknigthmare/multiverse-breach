@@ -1,86 +1,109 @@
 # Sprites et tenues Discipline
 
-**197 PNG individuels pour 36 identités graphiques.** La v5 ajoute deux études monochromes tirées de feuilles OVA en pied : Leona avec brassard 風紀 et un membre anonyme du club de diffusion. Les 195 objets et images antérieurs sont conservés intégralement.
+**293 PNG individuels pour 36 identités graphiques.** Cette reprise ajoute **96 PNG** aux **197 images** publiées à `f9a9c1d`. Les objets de catalogue, objets de manifeste et octets PNG de ces 197 entrées restent identiques.
 
-Le catalogue comprend 76 rendus basés sur références et 121 adaptations identifiées. La provenance sur référence ne certifie pas les couleurs ou les proportions non établies.
+## Galerie et vestiaire
 
-## Examiner les versions
+Ouvrir `/reviews/discipline/index.html` depuis le serveur du jeu. Le filtre **Nouvelles tenues · v6** regroupe les ajouts récupérés. Les vues antérieures v4/v5 restent disponibles. Le tableau de couverture indique séparément les six familles demandées.
 
-Ouvrir `/reviews/discipline/index.html` depuis le serveur du jeu. Le filtre **« Études monochromes · v5 »** affiche les deux ajouts et leurs liens vers les planches. **« Variantes · v4 »** conserve les 35 ajouts précédents ; **« Versions corrigées »** rassemble les révisions avec leur comparaison côte à côte. Les filtres de provenance et de support distinguent les costumes du jeu, les modèles OVA et les adaptations.
+Les maillots de bain une pièce et shorts de bain ont leur propre filtre. Les 35 anciennes tenues aquatiques sont conservées séparément et ne comptent pas comme nouveaux maillots. Les PNG sont des images statiques **1 colonne × 1 ligne**, avec dimensions et transparence natives ; aucune image n’est transformée pendant l’intégration.
 
-Les PNG sont installés dans `public/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/`. Ils sont en pied, transparents et statiques : **1 colonne × 1 ligne**. Les études v5 reprennent l’orientation des poses des planches. Les dimensions natives peuvent varier ; un cadre unique n’est pas une garantie de fidélité visuelle 1:1. Aucune animation n’est revendiquée.
+Le vestiaire reste raccordé aux trois héros existants **Saori Otokawa, Ruri Nonomiya et Takurou Hayami**. Les autres identités appartiennent au catalogue graphique. Les nouvelles entrées possèdent des identifiants distincts ; les apparences par défaut, anciennes sélections, sauvegardes et scènes verrouillées sont préservées.
 
-## Livraison v5
+## Contenu récupéré
 
-Les deux études utilisent seulement leurs planches OVA. Aucun lien d’ascendance avec une tenue VN/JGSDF ni référence de style non utilisée n’est ajouté. Le monochrome ne détermine pas la palette canonique.
+| Lot | PNG ajoutés |
+| --- | ---: |
+| Reprise antérieure : maid sur modèle OVA et batailles personnalisées | 30 |
+| Dernière reprise : variantes déjà revues | 57 |
+| Sorties retrouvées et revues pendant cette récupération | 6 |
+| Nouvelles sorties terminées pendant cette reprise | 3 |
 
-- [Revue v5 et limites des proportions](reference-v5-review.md)
-- [Recherche v5 et références manquantes](reference-v5-research.json)
-- [Conservation des 195 images et objets](reference-v5-preservation.json)
-- [Manifeste : prompts, sources et SHA-256](manifest.json)
-- [Validation technique v5](reference-v5-validation.json) et [contrôle navigateur v5](reference-v5-browser-qa-report.json)
+Les 30 variantes de la reprise antérieure étaient absentes de la PR. Elles restent distinctes des nouvelles tenues ayant le même thème : une tenue de service sur modèle OVA et une autre variante de service ne sont pas des doublons de fichier.
 
-## Couverture du catalogue
+Quatre autres PNG retrouvés sont conservés dans une [archive à provenance incomplète](recovered-unattributed/README.md). Leurs identités candidates sont documentées, mais leurs prompts exacts n’ont pas été retrouvés. Ils sont exclus du catalogue et du total livré ; aucun prompt n’a été inventé pour les y intégrer.
 
-R = basé sur une référence ; A = adaptation ; R + A = les deux. Ces indications ne certifient pas une tenue canonique complète.
+| Famille | Nouveaux PNG | Identités couvertes |
+| --- | ---: | ---: |
+| Maid / service | 30 | 26 / 36 |
+| Uniforme scolaire | 0 | 31 / 36 |
+| Maillot de bain | 16 | 16 / 36 |
+| Soins infirmiers | 18 | 18 / 36 |
+| Bataille | 17 | 34 / 36 |
+| Latex, famille générale | 15 | 15 / 36 |
 
-| Personnage | Uniforme | Civil | Militaire | Natation | Autres / sport | Total |
-| --- | --- | --- | --- | --- | --- | ---: |
-| Akane | A | A | A | A | A | 6 |
-| Domestique OVA — chignon brun | R | — | — | — | — | 1 |
-| Eikichi Ogiwara | A | R | A | A | — | 5 |
-| Garde de sécurité OVA — roux | — | — | R | — | — | 1 |
-| Invitée OVA — robe jaune | — | R | — | — | — | 1 |
-| Kanae | R | A | A | A | — | 5 |
-| Kaori Matsuno | A | R | A | A | — | 9 |
-| Kaoru Itou | R | A | A | A | — | 6 |
-| Karen Himeki | R | A | A | A | — | 9 |
-| Katsuo Isobe | A | A | A | A | R | 6 |
-| Kawahara | A | A | A | A | A | 6 |
-| Kouzou Machida | A | R | A | A | — | 5 |
-| Kumi Yamanaka | A | A | A | A | R | 6 |
-| Leona Morimoto | R | A | A | A | R | 7 |
-| Linda Hamilton | A | A | A | A | — | 5 |
-| Madoka Araki | R | A | R + A | A | — | 6 |
-| Maiko Kaneda | R | R | R + A | A | R | 7 |
-| Mami Nakai | R | A | A | A | — | 5 |
-| Manami | R | A | A | A | — | 5 |
-| Maya | A | A | A | A | A | 6 |
-| Membre OVA — club de diffusion | R | — | — | — | — | 1 |
-| Momoe Endou | R | A | A | A | — | 5 |
-| Momone Nishizaki | R | A | A | A | — | 5 |
-| Nanase Fujiwara | R | A | A | A | — | 5 |
-| Officière OVA — carré châtain | R | — | — | — | — | 1 |
-| Officière OVA — cheveux tirés | R | — | — | — | — | 1 |
-| Reina Morimoto | A | R | A | A | — | 5 |
-| Ruri Nonomiya | A | R | R + A | A | — | 10 |
-| Saki Yamagata | A | A | A | A | — | 5 |
-| Saori Otokawa | R | R | R + A | A | R + A | 14 |
-| Sudou | R | A | A | A | — | 5 |
-| Takurou Hayami | A | R | A | A | — | 6 |
-| Tooru Satou | R | A | A | A | — | 5 |
-| Yuri Nishizaki | R | A | A | A | — | 9 |
-| Yuuji Takigawa | R | A | A | A | — | 5 |
-| Yuuki Miyagishi | A | A | R + A | A | R + A | 8 |
+**Latex rouge de type Leona : encore à produire.** Les combinaisons noir et or et les éventuelles études monochromes remplissent uniquement la famille générale « latex ». Elles ne satisfont pas cette demande de couleur et de modèle. Aucun nouveau costume n’est présenté comme officiel.
 
-## Intégration au moteur
+## Couverture par personnage
 
-Le vestiaire reste relié aux trois héros existants : Saori Otokawa, Ruri Nonomiya et Takurou Hayami. Les autres identités sont des entrées graphiques, sans nouveau héros jouable ni statistiques. Les choix sont enregistrés dans `heroSkins` ; sans sélection explicite, les apparences antérieures sont préservées. Les scènes à incarnation verrouillée restent respectées.
+Réf. = tenue fondée sur une référence ; Adapt. = création pour le jeu. La colonne scolaire exclut les uniformes professionnels des officières et la tenue de la domestique. Une référence partielle ne certifie pas les détails situés hors cadre.
 
-En cas d’échec de chargement d’une révision : nouvelle variante → version précédente correspondante → tenue par défaut du même personnage → ancien sprite. Les références de technique graphique ne modifient pas cette chaîne. Les deux études v5 n’inventent aucun lien d’ascendance avec une ancienne tenue.
+| Personnage | Maid / service | Scolaire | Maillot | Soins | Bataille | Latex |
+| --- | --- | --- | --- | --- | --- | --- |
+| Akane | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. |
+| Domestique OVA — chignon brun | Réf. | Manquant | Manquant | Manquant | Manquant | Manquant |
+| Eikichi Ogiwara | Adapt. | Adapt. | Adapt. | Manquant | Adapt. | Adapt. |
+| Garde de sécurité OVA — roux | Adapt. | Manquant | Adapt. | Adapt. | Réf. | Manquant |
+| Invitée OVA — robe jaune | Manquant | Manquant | Manquant | Manquant | Manquant | Manquant |
+| Kanae | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
+| Kaori Matsuno | Adapt. | Adapt. | Manquant | Manquant | Adapt. | Manquant |
+| Kaoru Itou | Adapt. | Réf. | Manquant | Manquant | Adapt. | Manquant |
+| Karen Himeki | Adapt. | Réf. | Manquant | Manquant | Adapt. | Manquant |
+| Katsuo Isobe | Adapt. | Adapt. | Manquant | Manquant | Adapt. | Manquant |
+| Kawahara | Adapt. | Adapt. | Manquant | Manquant | Adapt. | Manquant |
+| Kouzou Machida | Adapt. | Adapt. | Manquant | Manquant | Adapt. | Manquant |
+| Kumi Yamanaka | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. |
+| Leona Morimoto | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
+| Linda Hamilton | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. |
+| Madoka Araki | Adapt. | Réf. | Adapt. | Adapt. | Réf. | Adapt. |
+| Maiko Kaneda | Adapt. | Réf. | Manquant | Adapt. | Réf. | Adapt. |
+| Mami Nakai | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Manquant |
+| Manami | Adapt. | Réf. | Manquant | Adapt. | Adapt. | Manquant |
+| Maya | Manquant | Adapt. | Manquant | Adapt. | Adapt. | Manquant |
+| Membre OVA — club de diffusion | Manquant | Réf. | Manquant | Manquant | Adapt. | Manquant |
+| Momoe Endou | Adapt. | Réf. | Manquant | Manquant | Adapt. | Manquant |
+| Momone Nishizaki | Manquant | Réf. | Manquant | Manquant | Adapt. | Manquant |
+| Nanase Fujiwara | Manquant | Réf. | Manquant | Manquant | Adapt. | Manquant |
+| Officière OVA — carré châtain | Manquant | Manquant | Manquant | Manquant | Réf. | Manquant |
+| Officière OVA — cheveux tirés | Manquant | Manquant | Manquant | Manquant | Réf. | Manquant |
+| Reina Morimoto | Manquant | Adapt. | Manquant | Manquant | Adapt. | Manquant |
+| Ruri Nonomiya | Adapt. | Adapt. | Adapt. | Adapt. | Réf. | Adapt. |
+| Saki Yamagata | Manquant | Adapt. | Manquant | Manquant | Adapt. | Manquant |
+| Saori Otokawa | Adapt. | Réf. | Adapt. | Adapt. | Réf. | Adapt. |
+| Sudou | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
+| Takurou Hayami | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. | Adapt. |
+| Tooru Satou | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
+| Yuri Nishizaki | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
+| Yuuji Takigawa | Adapt. | Réf. | Adapt. | Adapt. | Adapt. | Adapt. |
+| Yuuki Miyagishi | Manquant | Adapt. | Manquant | Manquant | Réf. | Manquant |
 
-## Versions précédentes
+## Fidélité et preuves
 
-- [V4 : 30 variantes et 5 figures OVA](reference-v4-review.md) — 195 PNG.
-- [V3 : tenues tactiques OVA et Takurou](anime-v3-review.md) — 160 PNG.
-- [V2 : identité et coiffures](reference-v2-review.md) — 154 PNG.
+Chaque ajout conserve le prompt exact, les empreintes de ses entrées de génération, le SHA-256 de la sortie native et la revue visuelle enregistrée. Le sprite d’identité utilisé appartient au même personnage. Les entrées sont décrites selon leur rôle réel : identité directe, modèle de vêtement ou brouillon corrigé. Pour Yuri, le dernier appel ne reçoit que le brouillon infirmière ; son sprite d’identité d’origine est enregistré comme ancêtre de la chaîne, sans être présenté comme une entrée directe de la correction. Un `styleSourceId` ne constitue pas une nouvelle preuve officielle.
 
-La [validation technique v4](reference-v4-validation.json) et la [validation navigateur v4](reference-v4-browser-qa-report.json) conservent leurs résultats historiques ; les validations v5 sont distinctes.
+La génération vise à conserver visage, coiffure, silhouette, proportions et pose. La revue visuelle ne garantit ni une égalité pixel pour pixel ni des proportions canoniques complètes quand la référence originale était recadrée. Le costume, les détails nouvellement exposés et les plis restent interprétés. Les études issues de références monochromes restent identifiées sans palette canonique inventée.
 
-Les tenues JGSDF utilisent un [vêtement réel documenté](https://www.mod.go.jp/gsdf/equipment/qe/index.html) comme source ; leur attribution aux personnages reste une adaptation. Les créations de sport aquatique et les uniformes sans référence individuelle gardent également leur provenance adaptée.
+## Manques conservés dans le suivi
 
-## Références et limites
+**Miyuki Umezaki** reste sans référence d’identité habillée complète exploitable et sans PNG fictif. Les nouvelles variantes non produites, refusées ou incomplètes sont exclues du décompte livré.
 
-Miyuki reste en attente. Les identités proches restent distinctes : **Yuuji / Yuuki**, **Kaori / Kaoru**, **Momone / Momoe**, ainsi que les supports VN/OVA. Les figures anonymes ne reçoivent aucun nom inventé. Les parties non documentées, les différences de proportions et les palettes inconnues sont signalées individuellement.
+19 identités n’ont pas d’uniforme scolaire attesté dans ce catalogue : Akane, Domestique OVA — chignon brun, Eikichi Ogiwara, Garde de sécurité OVA — roux, Invitée OVA — robe jaune, Kaori Matsuno, Katsuo Isobe, Kawahara, Kouzou Machida, Kumi Yamanaka, Linda Hamilton, Maya, Officière OVA — carré châtain, Officière OVA — cheveux tirés, Reina Morimoto, Ruri Nonomiya, Saki Yamagata, Takurou Hayami, Yuuki Miyagishi.
 
-Aucun PNG antérieur n’est remplacé. Les mesures alpha utilisent le seuil > 8/255 ; des résidus presque transparents peuvent exister en dehors de la silhouette mesurée. Les PNG finaux ne sont pas retouchés par script.
+Le journal contient 61 demandes précises sans sortie acceptée. Lorsqu’une autre variante remplit déjà la famille demandée, elle est indiquée par `alternativeCostumeIds` ; la famille n’est pas faussement annoncée manquante. Les anciennes opérations interrompues ne sont plus présentées comme des générations toujours actives.
+
+## Contrôles et documents
+
+- [Revue de reprise v6](costumes-v6-review.md)
+- [Couverture et manques par famille](costumes-v6-coverage.json)
+- [Journal de récupération](costumes-v6-recovery.json)
+- [Archive des quatre candidats sans prompt exact](recovered-unattributed/index.json)
+- [Prompts, entrées et historique](costumes-v6-generation.json)
+- [Conservation exacte des 197 entrées antérieures](costumes-v6-preservation.json)
+- [Manifeste complet et empreintes](manifest.json)
+- [Validation technique v6](costumes-v6-validation.json)
+- [Revue visuelle des nouveaux sprites](costumes-v6-visual-review.json)
+- [Contrôle navigateur v6](costumes-v6-browser-qa-report.json)
+- [Revue v5 : études monochromes](reference-v5-review.md)
+- [Revue v4 : fidélité et sources](reference-v4-review.md)
+
+Les rapports de validation indiquent le nombre exact d’images contrôlées. Un ancien rapport portant sur 238 images ne valide pas automatiquement les ajouts de cette reprise.

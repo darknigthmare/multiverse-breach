@@ -1,0 +1,4600 @@
+{
+  "reviewedAtUtc": "2026-10-28T13:40:07.673459+00:00",
+  "scope": {
+    "publishedBaselinePreserved": 197,
+    "catalogueTotal": 293,
+    "newV6SpritesReviewed": 96,
+    "initialAcceptedRecentBatch": 57,
+    "earlierAcceptedRecoveryBatch": 30,
+    "additionalReviewedRecovery": 6,
+    "latestGeneratedNurses": 3,
+    "catalogueSha256": "55cd8a27be5cb1cde18701f3dc393b4aad906d08585233b2832a849f3b6018df",
+    "archiveCandidatesExcluded": 4
+  },
+  "method": {
+    "contactSheets": "Eight temporary contact sheets, each showing up to12 side-by-side source/output pairs, 93 outputs total. No cropping of contact thumbnails; native aspect ratio preserved.",
+    "supplementalNativeInspections": [
+      "manami:nurse-v6",
+      "maya:nurse-v6",
+      "yuri:nurse-v6",
+      "yuri:maid-v6",
+      "leona:nurse-v6",
+      "kawahara:battle-personalized-adapted-v6"
+    ],
+    "priorNativeRecoveryInspections": [
+      "security-guard-ova:swimsuit-v6",
+      "security-guard-ova:maid-v6",
+      "security-guard-ova:nurse-v6",
+      "ova-broadcasting-club-member:battle-v6",
+      "kanae:nurse-v6",
+      "mami:nurse-v6"
+    ],
+    "deliverablePixelsModified": false,
+    "thumbnailCompositingOnlyForQA": true,
+    "duplicateCheck": "SHA256 comparison of all293 published+new catalogue assets, reporting any duplicate involving revision6."
+  },
+  "result": {
+    "passed": true,
+    "visibleBlockingDefects": [],
+    "duplicateByteGroupsInvolvingV6": [],
+    "wrongCharacterAssignmentsObserved": 0,
+    "wrongCategoriesObserved": 0,
+    "visibleHeadHandsFeetCroppingObserved": 0,
+    "inappropriatePresentationObserved": 0
+  },
+  "categoryReview": {
+    "swimwear": "Ordinary opaque athletic one-piece suits or swim shorts, neutral standing poses; no erotic framing, exposed genitals or underwear substitution observed.",
+    "maid": "Covered service uniforms, apron dresses or shirt/vest/trousers with apron; neutral presentation.",
+    "nurse": "Professional opaque white medical dresses or tunic/trousers with closed footwear; all caps and shoes remain visible in final versions.",
+    "latex": "Fully covered black/gold action suits, gloves and boots, neutral pose and closed neckline; no bondage or sexual act or erotic staging observed.",
+    "military": "Functional jackets, trousers, protective pieces, complete figures. Existing source identities remain recognizable."
+  },
+  "nonBlockingObservations": [
+    {
+      "id": "yuri:maid-v6",
+      "finding": "Very small upper margin; full native image initially appears to show a top-edge fragment because transparency viewer exposes near-transparent color. Actual top row maximum alpha2/255, main solid headband starts at y10; composited enlargement confirms complete outline and visible margin.",
+      "recommendation": "Keep native PNG unchanged; do not classify faint alpha halo as a cropped coiffe."
+    },
+    {
+      "id": "kaori:maid-service-adapted-v6",
+      "finding": "Native 1024x1536 image with maximum alpha254 rather than255. Transparent background and visually opaque foreground are present.",
+      "recommendation": "Preserve original native dimensions and alpha values; do not normalize pixels."
+    },
+    {
+      "id": "kawahara:battle-personalized-adapted-v6",
+      "finding": "Head and boots close to canvas, visible margins14px top and19px bottom; full outline remains present.",
+      "recommendation": "Accepted as delivered; no current crop defect."
+    },
+    {
+      "id": "leona:nurse-v6",
+      "finding": "Upper visible margin14px; full cap outline present.",
+      "recommendation": "Accepted as delivered."
+    },
+    {
+      "id": "ova-broadcasting-club-member:battle-v6",
+      "finding": "Native dimensions1133x1388; grayscale rendering follows provided monochrome identity source.",
+      "recommendation": "Preserve monochrome and native aspect ratio. No canonical color claim."
+    }
+  ],
+  "limits": [
+    "This review checks obvious visual identity continuity, framing and costume classification; it does not certify canonical anatomy, canonical costume design or literal1:1/pixel-for-pixel fidelity.",
+    "Source identities often derive from previous generated full-body sprites and partial original references; newly visible legs/arms/torso cannot be treated as canonically established.",
+    "Most new images use finely shaded anime/pixel-sprite rendering; they are static one-frame assets, not animation sheets.",
+    "No pixel editing was applied to delivered images. Contact sheets and enlarged/composited crops are temporary QA artifacts only.",
+    "The197 baseline images were checked for SHA duplicates but not reopened for a new full aesthetic audit; requested scope is the96 additions."
+  ],
+  "assets": [
+    {
+      "id": "akane:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--battle-personalized-adapted-v6.png",
+      "sha256": "e772263e902920405a2153d3f4321026eac1bd7efb06b328e2e8ee4bda9595ff",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          346,
+          52,
+          899,
+          1187
+        ],
+        "visibleMarginsAlphaGt8": [
+          346,
+          52,
+          355,
+          67
+        ],
+        "solidBoundsAlphaGt128": [
+          347,
+          55,
+          898,
+          1184
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "akane:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--latex-v6.png",
+      "sha256": "04bd769131cc16db370421e00b92d749fd2ef9868af1975ecfe6b19eab570167",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          346,
+          54,
+          887,
+          1187
+        ],
+        "visibleMarginsAlphaGt8": [
+          346,
+          54,
+          367,
+          67
+        ],
+        "solidBoundsAlphaGt128": [
+          347,
+          55,
+          886,
+          1185
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "akane:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--maid-service-adapted-v6.png",
+      "sha256": "1df7c5fc15f0297ebb920a26ebdbe447f3266c28e9b84db138ab8209eea9373f",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          348,
+          57,
+          866,
+          1204
+        ],
+        "visibleMarginsAlphaGt8": [
+          348,
+          57,
+          388,
+          50
+        ],
+        "solidBoundsAlphaGt128": [
+          349,
+          57,
+          865,
+          1203
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "akane:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--maid-v6.png",
+      "sha256": "eb3505c03ceaad521ff00b037a7d198d6538222fc7117a2691703f1efdaeb736",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          332,
+          41,
+          921,
+          1209
+        ],
+        "visibleMarginsAlphaGt8": [
+          332,
+          41,
+          333,
+          45
+        ],
+        "solidBoundsAlphaGt128": [
+          333,
+          42,
+          920,
+          1209
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "akane:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--nurse-v6.png",
+      "sha256": "d45618e1ca8c47c067744fc90d8c35b1192b624d8fd1029b5c469c5caae6a831",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          339,
+          32,
+          881,
+          1192
+        ],
+        "visibleMarginsAlphaGt8": [
+          339,
+          32,
+          373,
+          62
+        ],
+        "solidBoundsAlphaGt128": [
+          340,
+          33,
+          880,
+          1191
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "akane:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--swimsuit-v6.png",
+      "sha256": "a55ae5dddbb5b0620bdd36c0235b95c3b648f8da8aa77f4e5df56f17066f9a4b",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          348,
+          55,
+          878,
+          1182
+        ],
+        "visibleMarginsAlphaGt8": [
+          348,
+          55,
+          376,
+          72
+        ],
+        "solidBoundsAlphaGt128": [
+          349,
+          58,
+          877,
+          1179
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "eikichi:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--battle-personalized-adapted-v6.png",
+      "sha256": "43fe2875fb04a7326000c19e2f54b17938314ffb2ef6ce9833ede96fb23f7217",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          427,
+          58,
+          917,
+          1200
+        ],
+        "visibleMarginsAlphaGt8": [
+          427,
+          58,
+          337,
+          54
+        ],
+        "solidBoundsAlphaGt128": [
+          428,
+          60,
+          916,
+          1198
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "eikichi:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--latex-v6.png",
+      "sha256": "e104fe639df86317ba48c84d07598e75d16c21ee2a68e40700c0d23b66456e2b",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          434,
+          60,
+          923,
+          1199
+        ],
+        "visibleMarginsAlphaGt8": [
+          434,
+          60,
+          331,
+          55
+        ],
+        "solidBoundsAlphaGt128": [
+          435,
+          60,
+          922,
+          1198
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "eikichi:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--maid-service-adapted-v6.png",
+      "sha256": "502d23af1cac69203eb7c5896962c4863d623d94eff3a2251dbdc3ef85d6ca41",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          396,
+          62,
+          902,
+          1201
+        ],
+        "visibleMarginsAlphaGt8": [
+          396,
+          62,
+          352,
+          53
+        ],
+        "solidBoundsAlphaGt128": [
+          397,
+          62,
+          901,
+          1200
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "eikichi:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--maid-v6.png",
+      "sha256": "ee5994881f8c81e7b98a8e3bb6870dfa740f9ed4cd65dc1f0a5908384a338fa9",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          436,
+          60,
+          917,
+          1202
+        ],
+        "visibleMarginsAlphaGt8": [
+          436,
+          60,
+          337,
+          52
+        ],
+        "solidBoundsAlphaGt128": [
+          436,
+          61,
+          916,
+          1199
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "eikichi:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--swimsuit-v6.png",
+      "sha256": "e09de920abd57952d51dd916d513cdb00bbba93f824b9ad98e17e8a5c0e110df",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          426,
+          57,
+          917,
+          1197
+        ],
+        "visibleMarginsAlphaGt8": [
+          426,
+          57,
+          337,
+          57
+        ],
+        "solidBoundsAlphaGt128": [
+          426,
+          57,
+          916,
+          1196
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kanae:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--battle-personalized-adapted-v6.png",
+      "sha256": "fa85e6a99cd5a384977a0e776c6082d4ec835867628d50d07a8fc9710360bf7c",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-01.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          407,
+          51,
+          902,
+          1207
+        ],
+        "visibleMarginsAlphaGt8": [
+          407,
+          51,
+          352,
+          47
+        ],
+        "solidBoundsAlphaGt128": [
+          409,
+          53,
+          901,
+          1206
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kanae:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--latex-v6.png",
+      "sha256": "b105d8e7dda060f808887f5034d383be95d8a70cd179c5e20e3a0792d074adf8",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          405,
+          52,
+          899,
+          1209
+        ],
+        "visibleMarginsAlphaGt8": [
+          405,
+          52,
+          355,
+          45
+        ],
+        "solidBoundsAlphaGt128": [
+          406,
+          52,
+          898,
+          1207
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kanae:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--maid-service-adapted-v6.png",
+      "sha256": "23adfe25fd8895e1f4c7cca6eb86bd9011445d9c1211639e10647fa3d4fea64a",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          405,
+          51,
+          897,
+          1206
+        ],
+        "visibleMarginsAlphaGt8": [
+          405,
+          51,
+          357,
+          48
+        ],
+        "solidBoundsAlphaGt128": [
+          406,
+          53,
+          896,
+          1205
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kanae:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--nurse-v6.png",
+      "sha256": "085ffad544e306009639aa58ad1171757f204f332fca640bac6e888de0e6da49",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          403,
+          29,
+          894,
+          1210
+        ],
+        "visibleMarginsAlphaGt8": [
+          403,
+          29,
+          360,
+          44
+        ],
+        "solidBoundsAlphaGt128": [
+          404,
+          30,
+          892,
+          1209
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kanae:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--swimsuit-v6.png",
+      "sha256": "75f6f3194cac966246be56e4248134fa0ee96f6bb6f582a70b0f3e2b1beeed07",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          380,
+          37,
+          906,
+          1209
+        ],
+        "visibleMarginsAlphaGt8": [
+          380,
+          37,
+          348,
+          45
+        ],
+        "solidBoundsAlphaGt128": [
+          381,
+          38,
+          905,
+          1208
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kaori:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--battle-personalized-adapted-v6.png",
+      "sha256": "dd4c3ff3597eecf328a30204c7262e57f1c92aa0784da10fec2e4efc36892f9c",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit-fidelity-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          411,
+          32,
+          913,
+          1211
+        ],
+        "visibleMarginsAlphaGt8": [
+          411,
+          32,
+          341,
+          43
+        ],
+        "solidBoundsAlphaGt128": [
+          412,
+          32,
+          912,
+          1210
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kaori:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--maid-service-adapted-v6.png",
+      "sha256": "97a29fcd229d7b629586af9963e65ec459256356fbb89a543b8003c7b5eb6160",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit-fidelity-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "visibleBoundsAlphaGt8": [
+          236,
+          108,
+          855,
+          1481
+        ],
+        "visibleMarginsAlphaGt8": [
+          236,
+          108,
+          169,
+          55
+        ],
+        "solidBoundsAlphaGt128": [
+          236,
+          109,
+          854,
+          1481
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kaoru:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--battle-personalized-adapted-v6.png",
+      "sha256": "e97a732a79052ce38e88f905702c626d7d0e9729bb3bfcc383677a3ea0b2e49c",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--uniform-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          435,
+          60,
+          889,
+          1187
+        ],
+        "visibleMarginsAlphaGt8": [
+          435,
+          60,
+          365,
+          67
+        ],
+        "solidBoundsAlphaGt128": [
+          436,
+          61,
+          888,
+          1186
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kaoru:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--maid-service-adapted-v6.png",
+      "sha256": "b30236b4a4cf381c1ec8267b4238cfb562280507ae41f7596b480b7a78a28eb4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--uniform-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          416,
+          62,
+          890,
+          1194
+        ],
+        "visibleMarginsAlphaGt8": [
+          416,
+          62,
+          364,
+          60
+        ],
+        "solidBoundsAlphaGt128": [
+          417,
+          62,
+          889,
+          1194
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "karen:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--battle-personalized-adapted-v6.png",
+      "sha256": "ef9049690f67e8f7f23e20aadc9dfb190f6182fd12407436e133d13d02e67e5e",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform-fidelity-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          438,
+          34,
+          933,
+          1219
+        ],
+        "visibleMarginsAlphaGt8": [
+          438,
+          34,
+          321,
+          35
+        ],
+        "solidBoundsAlphaGt128": [
+          439,
+          35,
+          932,
+          1218
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "karen:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--maid-service-adapted-v6.png",
+      "sha256": "f78ce3f13af4bc4ea23818ffdd3a1bda03dcc232948957e7bc9294c0eff3fbf8",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform-fidelity-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          413,
+          57,
+          934,
+          1208
+        ],
+        "visibleMarginsAlphaGt8": [
+          413,
+          57,
+          320,
+          46
+        ],
+        "solidBoundsAlphaGt128": [
+          414,
+          58,
+          933,
+          1207
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "katsuo:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--battle-personalized-adapted-v6.png",
+      "sha256": "898645a420f9d2883bdfc5184654772e9c154802fd8b68d7e4ea7a3a962e8239",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--baseball-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          437,
+          58,
+          897,
+          1192
+        ],
+        "visibleMarginsAlphaGt8": [
+          437,
+          58,
+          357,
+          62
+        ],
+        "solidBoundsAlphaGt128": [
+          439,
+          58,
+          896,
+          1192
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "katsuo:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--maid-service-adapted-v6.png",
+      "sha256": "9a92aca970cac3b6763cbf8648f2bf081a6fd9d1aed1ff69b51888e2c92455fd",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--baseball-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-02.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          418,
+          61,
+          891,
+          1193
+        ],
+        "visibleMarginsAlphaGt8": [
+          418,
+          61,
+          363,
+          61
+        ],
+        "solidBoundsAlphaGt128": [
+          418,
+          62,
+          890,
+          1192
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kawahara:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--battle-personalized-adapted-v6.png",
+      "sha256": "a983fb5e78f5ef3614d9faa5610256bbae107e4112c20501ad346b35ed5477e9",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--covered-medical-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          377,
+          14,
+          899,
+          1235
+        ],
+        "visibleMarginsAlphaGt8": [
+          377,
+          14,
+          355,
+          19
+        ],
+        "solidBoundsAlphaGt128": [
+          378,
+          14,
+          898,
+          1233
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kawahara:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--maid-service-adapted-v6.png",
+      "sha256": "163f91b834478c652e12762295b3cc02e03d8433752f3bea169508db0f1fed7d",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--covered-medical-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "visibleBoundsAlphaGt8": [
+          220,
+          81,
+          814,
+          1489
+        ],
+        "visibleMarginsAlphaGt8": [
+          220,
+          81,
+          210,
+          47
+        ],
+        "solidBoundsAlphaGt128": [
+          220,
+          82,
+          813,
+          1489
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kouzou:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--battle-personalized-adapted-v6.png",
+      "sha256": "9fa0b8787d32db64ab618e8ded3523466f5236e71af054e2ac0043f9c6dba3c0",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          464,
+          83,
+          894,
+          1180
+        ],
+        "visibleMarginsAlphaGt8": [
+          464,
+          83,
+          360,
+          74
+        ],
+        "solidBoundsAlphaGt128": [
+          466,
+          83,
+          893,
+          1180
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kouzou:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--maid-service-adapted-v6.png",
+      "sha256": "568439df74ae89ef8a666e5c4de56d694c2865f7e02d6bdf89ac65bcc247cd51",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          410,
+          83,
+          891,
+          1187
+        ],
+        "visibleMarginsAlphaGt8": [
+          410,
+          83,
+          363,
+          67
+        ],
+        "solidBoundsAlphaGt128": [
+          410,
+          83,
+          890,
+          1185
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kumi:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--battle-personalized-adapted-v6.png",
+      "sha256": "9fdd48a193e904a35ae3a122281152ee99c8bfa47d4a29ed8acaf6a1b7190907",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          419,
+          57,
+          912,
+          1186
+        ],
+        "visibleMarginsAlphaGt8": [
+          419,
+          57,
+          342,
+          68
+        ],
+        "solidBoundsAlphaGt128": [
+          420,
+          58,
+          911,
+          1186
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kumi:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--latex-v6.png",
+      "sha256": "13287ca166cc127d787ce6ea120b55a4affc445de9825f34302e418b018fae09",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          419,
+          57,
+          921,
+          1188
+        ],
+        "visibleMarginsAlphaGt8": [
+          419,
+          57,
+          333,
+          66
+        ],
+        "solidBoundsAlphaGt128": [
+          421,
+          57,
+          920,
+          1188
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kumi:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--maid-v6.png",
+      "sha256": "df6ad843e9d7c2c2c618efbb5bae6d9c32792099d5471cf8301a18474e0b4c72",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          390,
+          42,
+          915,
+          1205
+        ],
+        "visibleMarginsAlphaGt8": [
+          390,
+          42,
+          339,
+          49
+        ],
+        "solidBoundsAlphaGt128": [
+          391,
+          44,
+          914,
+          1204
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kumi:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--nurse-v6.png",
+      "sha256": "a0292c2d11479dd767ffee18df124316e30c483bde58e2c7eab52ed9d2ebd1d1",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          405,
+          24,
+          928,
+          1205
+        ],
+        "visibleMarginsAlphaGt8": [
+          405,
+          24,
+          326,
+          49
+        ],
+        "solidBoundsAlphaGt128": [
+          406,
+          26,
+          925,
+          1204
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "kumi:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--swimsuit-v6.png",
+      "sha256": "bbd0435567c6998be8bcc2985f469d96de5f778cc26fcb70c48e9d3e2dd41c34",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          411,
+          52,
+          912,
+          1187
+        ],
+        "visibleMarginsAlphaGt8": [
+          411,
+          52,
+          342,
+          67
+        ],
+        "solidBoundsAlphaGt128": [
+          412,
+          55,
+          911,
+          1185
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "leona:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--battle-personalized-adapted-v6.png",
+      "sha256": "22189f771cad5e912a24323ec996777ea247dd1899fb6939311ed5fbc3d808a9",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--ova-uniform-armband-monochrome-v5.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          465,
+          68,
+          809,
+          1217
+        ],
+        "visibleMarginsAlphaGt8": [
+          465,
+          68,
+          445,
+          37
+        ],
+        "solidBoundsAlphaGt128": [
+          465,
+          69,
+          809,
+          1216
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "leona:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--latex-v6.png",
+      "sha256": "fabba57b82d89969a0ba04adab833fcbb24fd53481f6ca2138188811641efc78",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform-fidelity-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          426,
+          33,
+          923,
+          1216
+        ],
+        "visibleMarginsAlphaGt8": [
+          426,
+          33,
+          331,
+          38
+        ],
+        "solidBoundsAlphaGt128": [
+          426,
+          34,
+          922,
+          1214
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "leona:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--maid-service-adapted-v6.png",
+      "sha256": "0c2cd7e40f838f983372bddd65bd91edf74426768eff0af9ec5c9f611cb57cd8",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--ova-uniform-armband-monochrome-v5.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-03.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          434,
+          71,
+          834,
+          1218
+        ],
+        "visibleMarginsAlphaGt8": [
+          434,
+          71,
+          420,
+          36
+        ],
+        "solidBoundsAlphaGt128": [
+          435,
+          72,
+          833,
+          1218
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "leona:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--maid-v6.png",
+      "sha256": "8a5dd79ec25ae91c532df9fc44bc9420c2bc3a403b4709cbcc9f072aead37ce7",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform-fidelity-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          406,
+          27,
+          925,
+          1207
+        ],
+        "visibleMarginsAlphaGt8": [
+          406,
+          27,
+          329,
+          47
+        ],
+        "solidBoundsAlphaGt128": [
+          407,
+          29,
+          924,
+          1206
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "leona:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--nurse-v6.png",
+      "sha256": "5e3b32e1cc863af7242b07a92fd429d592634dfb0a3fe04afe89e85c88892779",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform-fidelity-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          421,
+          14,
+          922,
+          1211
+        ],
+        "visibleMarginsAlphaGt8": [
+          421,
+          14,
+          332,
+          43
+        ],
+        "solidBoundsAlphaGt128": [
+          422,
+          15,
+          922,
+          1208
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "leona:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--swimsuit-v6.png",
+      "sha256": "4215ee0b328c1f1dc9a570522b08dde2cb2dda57cfa6b629eaf61e6eac83e653",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform-fidelity-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          427,
+          36,
+          906,
+          1201
+        ],
+        "visibleMarginsAlphaGt8": [
+          427,
+          36,
+          348,
+          53
+        ],
+        "solidBoundsAlphaGt128": [
+          428,
+          39,
+          905,
+          1199
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "linda:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--battle-personalized-adapted-v6.png",
+      "sha256": "07878cf9153621f1e435ed2e92fcd89a2076a39c007692268e611289d3a883a2",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          437,
+          35,
+          886,
+          1210
+        ],
+        "visibleMarginsAlphaGt8": [
+          437,
+          35,
+          368,
+          44
+        ],
+        "solidBoundsAlphaGt128": [
+          438,
+          36,
+          885,
+          1210
+        ],
+        "edgeTopMaximumAlpha": 1
+      }
+    },
+    {
+      "id": "linda:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--latex-v6.png",
+      "sha256": "ca3867c69e33d8f3c832d9f618eec5bc04690edf3cc39f1f2ce8e8ff9499cda8",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          432,
+          33,
+          885,
+          1209
+        ],
+        "visibleMarginsAlphaGt8": [
+          432,
+          33,
+          369,
+          45
+        ],
+        "solidBoundsAlphaGt128": [
+          433,
+          34,
+          884,
+          1208
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "linda:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--maid-v6.png",
+      "sha256": "95008cd8d99230f7883cee5c7bcb0be5ff921d5c9b6a50255525b9a9b4e00ac5",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          416,
+          27,
+          878,
+          1218
+        ],
+        "visibleMarginsAlphaGt8": [
+          416,
+          27,
+          376,
+          36
+        ],
+        "solidBoundsAlphaGt128": [
+          417,
+          28,
+          877,
+          1215
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "linda:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--nurse-v6.png",
+      "sha256": "ad29d47697143eb5d56c286738f1fa92152da3390083940f35985aa495037da3",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          440,
+          38,
+          885,
+          1204
+        ],
+        "visibleMarginsAlphaGt8": [
+          440,
+          38,
+          369,
+          50
+        ],
+        "solidBoundsAlphaGt128": [
+          442,
+          39,
+          884,
+          1203
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "linda:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--swimsuit-v6.png",
+      "sha256": "368a167e4a9fe39bd2a327f06ac4bc83fb5270ff9a213af1a32e05639341a759",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          439,
+          35,
+          887,
+          1203
+        ],
+        "visibleMarginsAlphaGt8": [
+          439,
+          35,
+          367,
+          51
+        ],
+        "solidBoundsAlphaGt128": [
+          441,
+          36,
+          886,
+          1200
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "madoka:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--latex-v6.png",
+      "sha256": "32c8e9fe844097548c54bec188bb41f606ec5a8f48275ec168e62ea5098babce",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          432,
+          75,
+          891,
+          1204
+        ],
+        "visibleMarginsAlphaGt8": [
+          432,
+          75,
+          363,
+          50
+        ],
+        "solidBoundsAlphaGt128": [
+          433,
+          75,
+          890,
+          1203
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "madoka:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--maid-service-adapted-v6.png",
+      "sha256": "ac0290f5ac048fd73e4ec3863d7b6432d083732bb72b31f7fd816694903f671d",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          395,
+          73,
+          900,
+          1220
+        ],
+        "visibleMarginsAlphaGt8": [
+          395,
+          73,
+          354,
+          34
+        ],
+        "solidBoundsAlphaGt128": [
+          396,
+          75,
+          899,
+          1218
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "madoka:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--maid-v6.png",
+      "sha256": "378d98b682ce658633704f2845cd1ee48bbbfbeada4b337be73528feec79bb62",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          411,
+          45,
+          891,
+          1207
+        ],
+        "visibleMarginsAlphaGt8": [
+          411,
+          45,
+          363,
+          47
+        ],
+        "solidBoundsAlphaGt128": [
+          412,
+          45,
+          890,
+          1206
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "madoka:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--nurse-v6.png",
+      "sha256": "20a3884bdec0b5de5debc5504f51edea8daedb66be441d0e19917aad9a97201e",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-04.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          432,
+          46,
+          891,
+          1211
+        ],
+        "visibleMarginsAlphaGt8": [
+          432,
+          46,
+          363,
+          43
+        ],
+        "solidBoundsAlphaGt128": [
+          432,
+          46,
+          890,
+          1209
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "madoka:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--swimsuit-v6.png",
+      "sha256": "21f2ff5cbbe403831cf930e91824a3f9857480d5b65f98e690f952f413bc6fdb",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          443,
+          74,
+          890,
+          1194
+        ],
+        "visibleMarginsAlphaGt8": [
+          443,
+          74,
+          364,
+          60
+        ],
+        "solidBoundsAlphaGt128": [
+          444,
+          75,
+          889,
+          1193
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "maiko:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--latex-v6.png",
+      "sha256": "d22b05f5f5b71bc352a89d194dd6a8f7da0f20afc22ea105d224db28a235a920",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform-fidelity-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          429,
+          66,
+          906,
+          1191
+        ],
+        "visibleMarginsAlphaGt8": [
+          429,
+          66,
+          348,
+          63
+        ],
+        "solidBoundsAlphaGt128": [
+          429,
+          66,
+          905,
+          1190
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "maiko:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--maid-service-adapted-v6.png",
+      "sha256": "7582342ecab296bd855570677a49aefad2f8bf88c1f44496a3746b7858eb408b",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform-fidelity-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          402,
+          58,
+          887,
+          1209
+        ],
+        "visibleMarginsAlphaGt8": [
+          402,
+          58,
+          367,
+          45
+        ],
+        "solidBoundsAlphaGt128": [
+          403,
+          59,
+          886,
+          1209
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "maiko:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--maid-v6.png",
+      "sha256": "4d9bd595d797b210224d060fb77a09e5d5afc01195bf790541215e7496b05c90",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform-fidelity-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          415,
+          45,
+          898,
+          1191
+        ],
+        "visibleMarginsAlphaGt8": [
+          415,
+          45,
+          356,
+          63
+        ],
+        "solidBoundsAlphaGt128": [
+          415,
+          45,
+          897,
+          1191
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "maiko:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--nurse-v6.png",
+      "sha256": "3cba255d0fb965a1734994f3047ae810424b3fa91724af39edda4309700288dd",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform-fidelity-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          432,
+          49,
+          902,
+          1195
+        ],
+        "visibleMarginsAlphaGt8": [
+          432,
+          49,
+          352,
+          59
+        ],
+        "solidBoundsAlphaGt128": [
+          433,
+          50,
+          901,
+          1193
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "mami:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--battle-personalized-adapted-v6.png",
+      "sha256": "f6508e8ae08a558d0789dcb1c59aaee9fa71190d777921da511a8e3a36f6fba0",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          400,
+          59,
+          886,
+          1195
+        ],
+        "visibleMarginsAlphaGt8": [
+          400,
+          59,
+          368,
+          59
+        ],
+        "solidBoundsAlphaGt128": [
+          400,
+          60,
+          885,
+          1194
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "mami:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--maid-v6.png",
+      "sha256": "bdaacd703c2d04d37d7154301f96e61addca8421cf91a77376821942a61f3fb1",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          390,
+          44,
+          903,
+          1192
+        ],
+        "visibleMarginsAlphaGt8": [
+          390,
+          44,
+          351,
+          62
+        ],
+        "solidBoundsAlphaGt128": [
+          391,
+          44,
+          902,
+          1192
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "mami:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--nurse-v6.png",
+      "sha256": "47cbb26af1df8d54d79e27ddece29d9820bc08eb1e512c5aa726e61e0f4709db",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          400,
+          37,
+          894,
+          1190
+        ],
+        "visibleMarginsAlphaGt8": [
+          400,
+          37,
+          360,
+          64
+        ],
+        "solidBoundsAlphaGt128": [
+          401,
+          40,
+          893,
+          1189
+        ],
+        "edgeTopMaximumAlpha": 1
+      }
+    },
+    {
+      "id": "mami:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--swimsuit-v6.png",
+      "sha256": "5aec5e51901348e43a5de1ab2a46578e74914e73d7fdd33e302b24454163276e",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform-reference-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          400,
+          59,
+          886,
+          1182
+        ],
+        "visibleMarginsAlphaGt8": [
+          400,
+          59,
+          368,
+          72
+        ],
+        "solidBoundsAlphaGt128": [
+          401,
+          60,
+          885,
+          1181
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "manami:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--battle-personalized-adapted-v6.png",
+      "sha256": "dbe9d2363121fcc9f2a6f720adc0c4ef968f6322905c71dcf7b9490b68a2d296",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--uniform-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          430,
+          60,
+          884,
+          1207
+        ],
+        "visibleMarginsAlphaGt8": [
+          430,
+          60,
+          370,
+          47
+        ],
+        "solidBoundsAlphaGt128": [
+          431,
+          61,
+          883,
+          1206
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "manami:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--maid-service-adapted-v6.png",
+      "sha256": "8be40709c4592fc371e8cde05e304c4f4820f9b6a61b636285a1cc4dd7271fb1",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--uniform-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          406,
+          61,
+          880,
+          1211
+        ],
+        "visibleMarginsAlphaGt8": [
+          406,
+          61,
+          374,
+          43
+        ],
+        "solidBoundsAlphaGt128": [
+          407,
+          61,
+          879,
+          1211
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "manami:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--nurse-v6.png",
+      "sha256": "9ff171bff13a9bb3951b5ecc0719d36de87a251e360cff791af5339b402d424c",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--uniform-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "full native output inspection and previously viewed source reference",
+      "contactSheet": null,
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          425,
+          52,
+          883,
+          1203
+        ],
+        "visibleMarginsAlphaGt8": [
+          425,
+          52,
+          371,
+          51
+        ],
+        "solidBoundsAlphaGt128": [
+          428,
+          55,
+          882,
+          1202
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "maya:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--battle-personalized-adapted-v6.png",
+      "sha256": "1f62a909b53fa7a04f43ce5b8d8af5ca06512e3b58e852b67b76ee4f6dae3a37",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--tennis-adapted-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-05.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          434,
+          55,
+          897,
+          1206
+        ],
+        "visibleMarginsAlphaGt8": [
+          434,
+          55,
+          357,
+          48
+        ],
+        "solidBoundsAlphaGt128": [
+          434,
+          56,
+          894,
+          1205
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "maya:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--nurse-v6.png",
+      "sha256": "c433ef452366685b32fcc9324145b42ea24cab7ccc26c924c850165c79233415",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--tennis-adapted-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "full native output inspection and previously viewed source reference",
+      "contactSheet": null,
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          443,
+          40,
+          890,
+          1199
+        ],
+        "visibleMarginsAlphaGt8": [
+          443,
+          40,
+          364,
+          55
+        ],
+        "solidBoundsAlphaGt128": [
+          445,
+          41,
+          889,
+          1197
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "momoe:battle-personalized-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--battle-personalized-adapted-v6.png",
+      "sha256": "7cd11d39a0b32f0305c3c7fe9aa29f5dda0c1e2ca2ffcaa7ebc13a91f2c178bf",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--uniform-reference-v4.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          437,
+          80,
+          885,
+          1197
+        ],
+        "visibleMarginsAlphaGt8": [
+          437,
+          80,
+          369,
+          57
+        ],
+        "solidBoundsAlphaGt128": [
+          440,
+          81,
+          884,
+          1196
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "momoe:maid-service-adapted-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--maid-service-adapted-v6.png",
+      "sha256": "0b2ef36a17aeb5e38ff10f4146fa1eb949772763d79bb2a94f783868cab4d424",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--uniform-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          413,
+          81,
+          889,
+          1196
+        ],
+        "visibleMarginsAlphaGt8": [
+          413,
+          81,
+          365,
+          58
+        ],
+        "solidBoundsAlphaGt128": [
+          413,
+          82,
+          888,
+          1195
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "ova-broadcasting-club-member:battle-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-broadcasting-club-member--battle-v6.png",
+      "sha256": "ac12f8ebfea32f8aedf7d01a0cea4d6575af113869f58dd08fa05420bdfe2b88",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-broadcasting-club-member--ova-uniform-monochrome-v5.png",
+      "category": "military",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1133,
+          1388
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          408,
+          15,
+          742,
+          1374
+        ],
+        "visibleMarginsAlphaGt8": [
+          408,
+          15,
+          391,
+          14
+        ],
+        "solidBoundsAlphaGt128": [
+          409,
+          16,
+          741,
+          1373
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "ruri:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--latex-v6.png",
+      "sha256": "611749992435b141b368612f6c2ddd18d0fe4cb001edbf4f855e2923466df213",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-fidelity-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          430,
+          55,
+          925,
+          1215
+        ],
+        "visibleMarginsAlphaGt8": [
+          430,
+          55,
+          329,
+          39
+        ],
+        "solidBoundsAlphaGt128": [
+          430,
+          56,
+          924,
+          1214
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "ruri:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--maid-v6.png",
+      "sha256": "c6d7d29a8d3abe6ec32119ddd44d733c0dc4dc81ecef5c3dc992d052ea26a6c6",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-fidelity-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          367,
+          79,
+          913,
+          1197
+        ],
+        "visibleMarginsAlphaGt8": [
+          367,
+          79,
+          341,
+          57
+        ],
+        "solidBoundsAlphaGt128": [
+          368,
+          79,
+          912,
+          1196
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "ruri:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--nurse-v6.png",
+      "sha256": "bb7629a9e79d06855f9f057970ff7e47d84abaeee7dc29e4638fdacfc367a8a8",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-fidelity-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          435,
+          58,
+          908,
+          1205
+        ],
+        "visibleMarginsAlphaGt8": [
+          435,
+          58,
+          346,
+          49
+        ],
+        "solidBoundsAlphaGt128": [
+          435,
+          60,
+          907,
+          1203
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "ruri:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--swimsuit-v6.png",
+      "sha256": "16941c0896c85bc950fae1433cb09b2c72bdf107a6e75d04b8db7e3ba9c2cbe6",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-fidelity-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          437,
+          86,
+          913,
+          1187
+        ],
+        "visibleMarginsAlphaGt8": [
+          437,
+          86,
+          341,
+          67
+        ],
+        "solidBoundsAlphaGt128": [
+          440,
+          87,
+          912,
+          1186
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "saori:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--latex-v6.png",
+      "sha256": "53463bb08d48b1ec33c300307cdca695c488dcf747a624a930b7fdfb34fb92a4",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-fidelity-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          432,
+          42,
+          888,
+          1218
+        ],
+        "visibleMarginsAlphaGt8": [
+          432,
+          42,
+          366,
+          36
+        ],
+        "solidBoundsAlphaGt128": [
+          432,
+          42,
+          887,
+          1215
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "saori:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--maid-v6.png",
+      "sha256": "24b464a38d8d063b1684478f57fed0023592e2664f0b971c5e4844060208e587",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-fidelity-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          389,
+          46,
+          901,
+          1213
+        ],
+        "visibleMarginsAlphaGt8": [
+          389,
+          46,
+          353,
+          41
+        ],
+        "solidBoundsAlphaGt128": [
+          390,
+          46,
+          900,
+          1212
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "saori:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--nurse-v6.png",
+      "sha256": "7939e2c84b7582fec742ca08226235c1e8f6df24c2798a0dd95cdb205e310420",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-fidelity-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          435,
+          34,
+          879,
+          1212
+        ],
+        "visibleMarginsAlphaGt8": [
+          435,
+          34,
+          375,
+          42
+        ],
+        "solidBoundsAlphaGt128": [
+          436,
+          35,
+          878,
+          1211
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "saori:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--swimsuit-v6.png",
+      "sha256": "08ad0d9fd388bc2d44f3578581cfcef21687011d768f4769bf199ce001462a1d",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-fidelity-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          440,
+          43,
+          882,
+          1207
+        ],
+        "visibleMarginsAlphaGt8": [
+          440,
+          43,
+          372,
+          47
+        ],
+        "solidBoundsAlphaGt128": [
+          441,
+          44,
+          881,
+          1207
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "security-guard-ova:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--maid-v6.png",
+      "sha256": "7810f941c9698c484d87bccc784dce138fc99252c41c074d46c9f3c3bfadf42e",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--ova-security-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-06.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          401,
+          58,
+          902,
+          1224
+        ],
+        "visibleMarginsAlphaGt8": [
+          401,
+          58,
+          352,
+          30
+        ],
+        "solidBoundsAlphaGt128": [
+          402,
+          59,
+          901,
+          1224
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "security-guard-ova:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--nurse-v6.png",
+      "sha256": "44c009dcf2bac3449482174fdf61a02b0465159892c7a62808eb5f231cd49670",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--ova-security-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          396,
+          56,
+          887,
+          1226
+        ],
+        "visibleMarginsAlphaGt8": [
+          396,
+          56,
+          367,
+          28
+        ],
+        "solidBoundsAlphaGt128": [
+          397,
+          57,
+          886,
+          1226
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "security-guard-ova:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--swimsuit-v6.png",
+      "sha256": "0a3fb6ae45c6a6caa42a532f84a71bb5e36faccf3522fa66fa8105fa5477b86d",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--ova-security-reference-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          404,
+          57,
+          903,
+          1215
+        ],
+        "visibleMarginsAlphaGt8": [
+          404,
+          57,
+          351,
+          39
+        ],
+        "solidBoundsAlphaGt128": [
+          405,
+          59,
+          902,
+          1214
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "sudou:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--latex-v6.png",
+      "sha256": "03e63fb23e65829283129482bc463139394dcb1c3758bb1151b07405eec85fa1",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform-reference-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          434,
+          56,
+          879,
+          1200
+        ],
+        "visibleMarginsAlphaGt8": [
+          434,
+          56,
+          375,
+          54
+        ],
+        "solidBoundsAlphaGt128": [
+          434,
+          57,
+          878,
+          1198
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "sudou:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--maid-v6.png",
+      "sha256": "bdccf49d53e2f5baa3947a6cd7d6546e058c31c29844a865f103afb8e07c14a7",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          427,
+          53,
+          883,
+          1192
+        ],
+        "visibleMarginsAlphaGt8": [
+          427,
+          53,
+          371,
+          62
+        ],
+        "solidBoundsAlphaGt128": [
+          428,
+          55,
+          882,
+          1190
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "sudou:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--nurse-v6.png",
+      "sha256": "2a70c956026888c56d9ba6251e20f19695dd04dadea78ef8b7cf0eb7441617a2",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          443,
+          41,
+          882,
+          1195
+        ],
+        "visibleMarginsAlphaGt8": [
+          443,
+          41,
+          372,
+          59
+        ],
+        "solidBoundsAlphaGt128": [
+          444,
+          41,
+          881,
+          1194
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "sudou:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--swimsuit-v6.png",
+      "sha256": "6410e5d5f89ea6da4f135534cc221462f3951a7efe50cee72c7a8f3fca6f48e7",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform-reference-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          436,
+          54,
+          871,
+          1192
+        ],
+        "visibleMarginsAlphaGt8": [
+          436,
+          54,
+          383,
+          62
+        ],
+        "solidBoundsAlphaGt128": [
+          438,
+          57,
+          870,
+          1191
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "takurou:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--latex-v6.png",
+      "sha256": "60fa85a65e4be65373fd12b6a8a5dd67b856f28da19644fb99ce9ea7d6a01f19",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          453,
+          57,
+          888,
+          1192
+        ],
+        "visibleMarginsAlphaGt8": [
+          453,
+          57,
+          366,
+          62
+        ],
+        "solidBoundsAlphaGt128": [
+          454,
+          58,
+          887,
+          1192
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "takurou:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--maid-v6.png",
+      "sha256": "a2470f68bdee5220f6e00af388de8818f3b441b978e8df636b340cb7981d9f34",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          460,
+          59,
+          892,
+          1202
+        ],
+        "visibleMarginsAlphaGt8": [
+          460,
+          59,
+          362,
+          52
+        ],
+        "solidBoundsAlphaGt128": [
+          462,
+          60,
+          891,
+          1199
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "takurou:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--nurse-v6.png",
+      "sha256": "321e2c0ad5c8a8f962bc67b732c4dcb2105834d2314c2db69bb85bae8ec36f6e",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          453,
+          58,
+          887,
+          1195
+        ],
+        "visibleMarginsAlphaGt8": [
+          453,
+          58,
+          367,
+          59
+        ],
+        "solidBoundsAlphaGt128": [
+          456,
+          59,
+          885,
+          1194
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "takurou:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--swimsuit-v6.png",
+      "sha256": "de3a806e7d8f09237af0b94e47e8143ac0f6c727cfa87561b8d7aecfb3d5cc27",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          455,
+          57,
+          878,
+          1188
+        ],
+        "visibleMarginsAlphaGt8": [
+          455,
+          57,
+          376,
+          66
+        ],
+        "solidBoundsAlphaGt128": [
+          457,
+          58,
+          877,
+          1186
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "tooru:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--latex-v6.png",
+      "sha256": "61b00bb09def7ad7844c48ef089f5c8304904fb0dc3e6c8f6b90c75923ba7fb0",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform-reference-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          456,
+          60,
+          890,
+          1203
+        ],
+        "visibleMarginsAlphaGt8": [
+          456,
+          60,
+          364,
+          51
+        ],
+        "solidBoundsAlphaGt128": [
+          458,
+          62,
+          889,
+          1201
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "tooru:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--maid-v6.png",
+      "sha256": "41be62348f4c8be3893e9382ad3f77fbabd01b6128bd89070fa7d2e17b7ac6bd",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-07.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          460,
+          69,
+          888,
+          1212
+        ],
+        "visibleMarginsAlphaGt8": [
+          460,
+          69,
+          366,
+          42
+        ],
+        "solidBoundsAlphaGt128": [
+          462,
+          70,
+          886,
+          1211
+        ],
+        "edgeTopMaximumAlpha": 1
+      }
+    },
+    {
+      "id": "tooru:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--nurse-v6.png",
+      "sha256": "4f1bd10dc663424855b5aaea4693c2f9274ce17e22b8cab4dcc15d5aa4e0f8ed",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-08.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          456,
+          60,
+          885,
+          1196
+        ],
+        "visibleMarginsAlphaGt8": [
+          456,
+          60,
+          369,
+          58
+        ],
+        "solidBoundsAlphaGt128": [
+          457,
+          63,
+          884,
+          1193
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "tooru:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--swimsuit-v6.png",
+      "sha256": "62f3afa1b1cf9bf262626d4a7924dc0a93e9b97b39919297ef0cbc75212071ce",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform-reference-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-08.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          463,
+          51,
+          888,
+          1207
+        ],
+        "visibleMarginsAlphaGt8": [
+          463,
+          51,
+          366,
+          47
+        ],
+        "solidBoundsAlphaGt128": [
+          464,
+          53,
+          887,
+          1207
+        ],
+        "edgeTopMaximumAlpha": 1
+      }
+    },
+    {
+      "id": "yuri:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--latex-v6.png",
+      "sha256": "54b543f12fde1c21540a0c0891517061902356b88b1a9faef8895c47810aa0b5",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-fidelity-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-08.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          424,
+          26,
+          917,
+          1212
+        ],
+        "visibleMarginsAlphaGt8": [
+          424,
+          26,
+          337,
+          42
+        ],
+        "solidBoundsAlphaGt128": [
+          425,
+          27,
+          916,
+          1212
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "yuri:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--maid-v6.png",
+      "sha256": "df03c9885f5397122af13190c5734a54224a2c64387359f688ba42b7a9e7ea8e",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-fidelity-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-08.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          389,
+          9,
+          920,
+          1214
+        ],
+        "visibleMarginsAlphaGt8": [
+          389,
+          9,
+          334,
+          40
+        ],
+        "solidBoundsAlphaGt128": [
+          390,
+          10,
+          919,
+          1213
+        ],
+        "edgeTopMaximumAlpha": 2
+      }
+    },
+    {
+      "id": "yuri:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--nurse-v6.png",
+      "sha256": "7ae491f2cd7280fbf06c7a494d5edd949ae1d263508a5161dc6feb227a2e9acc",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-fidelity-v4.png",
+      "category": "nurse",
+      "reviewMethod": "full native output inspection and previously viewed source reference",
+      "contactSheet": null,
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          428,
+          75,
+          909,
+          1190
+        ],
+        "visibleMarginsAlphaGt8": [
+          428,
+          75,
+          345,
+          64
+        ],
+        "solidBoundsAlphaGt128": [
+          429,
+          75,
+          908,
+          1190
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "yuri:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--swimsuit-v6.png",
+      "sha256": "c3508bd3644f68dc5f185586d3092de90ffc17e77b2baacfb7a2b35a4d378e45",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-fidelity-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-08.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          425,
+          22,
+          921,
+          1206
+        ],
+        "visibleMarginsAlphaGt8": [
+          425,
+          22,
+          333,
+          48
+        ],
+        "solidBoundsAlphaGt128": [
+          426,
+          24,
+          920,
+          1206
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "yuuji:latex-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--latex-v6.png",
+      "sha256": "e3218a1bd2d109666125c6930de51fcf7ed0d28af611603bc21ece7d2639e75f",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+      "category": "latex",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-08.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          430,
+          59,
+          891,
+          1195
+        ],
+        "visibleMarginsAlphaGt8": [
+          430,
+          59,
+          363,
+          59
+        ],
+        "solidBoundsAlphaGt128": [
+          431,
+          60,
+          890,
+          1192
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "yuuji:maid-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--maid-v6.png",
+      "sha256": "28c8cd10a833316a81697e93739bf324b8ee443896f72e40204c65ae5d6b4766",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+      "category": "maid",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-08.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          428,
+          59,
+          899,
+          1203
+        ],
+        "visibleMarginsAlphaGt8": [
+          428,
+          59,
+          355,
+          51
+        ],
+        "solidBoundsAlphaGt128": [
+          428,
+          61,
+          898,
+          1201
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "yuuji:nurse-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--nurse-v6.png",
+      "sha256": "75b8ec86f3886d84c2617f2267aa9d44f8852e36b7d0f4a0ee870d8a01964af8",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+      "category": "nurse",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-08.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          435,
+          41,
+          896,
+          1204
+        ],
+        "visibleMarginsAlphaGt8": [
+          435,
+          41,
+          358,
+          50
+        ],
+        "solidBoundsAlphaGt128": [
+          436,
+          42,
+          895,
+          1202
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    },
+    {
+      "id": "yuuji:swimsuit-v6",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--swimsuit-v6.png",
+      "sha256": "a76ec65d3bf87f38398e21ab706692001bee6a507db9a6213860a8640bd2d69e",
+      "identityReferenceSrc": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+      "category": "swimwear",
+      "reviewMethod": "reference-result contact sheet",
+      "contactSheet": "visual-contact/sheet-08.jpg",
+      "identityConsistentAtVisualReview": true,
+      "completeVisibleFigure": true,
+      "categoryConsistent": true,
+      "neutralNonsexualPresentation": true,
+      "obviousMisassignedCharacter": false,
+      "visibleFigureClipping": false,
+      "accepted": true,
+      "canonicalFidelityOneToOneCertified": false,
+      "metrics": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "visibleBoundsAlphaGt8": [
+          424,
+          33,
+          886,
+          1212
+        ],
+        "visibleMarginsAlphaGt8": [
+          424,
+          33,
+          368,
+          42
+        ],
+        "solidBoundsAlphaGt128": [
+          425,
+          33,
+          885,
+          1212
+        ],
+        "edgeTopMaximumAlpha": 0
+      }
+    }
+  ]
+}
