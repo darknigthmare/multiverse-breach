@@ -1,0 +1,52 @@
+name: EC backlog source snapshot
+on:
+  push:
+    branches: [codex/ec-backlog-2026-10-28]
+    paths: ['.github/workflows/ec-backlog-snapshot.yml']
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /.github/workflows/
+            /docs/extinction-city/
+            /docs/ui-immersion/
+            /docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx
+            /docs/excel/Multiverse_Breach_UI_Immersion.xlsx
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/
+            /public/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/
+            /public/backgrounds/lore-stages/nexus-de-convergence/
+      - name: Capture tracked material without credentials
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess,zipfile
+          out=Path('/tmp/ec-snapshot');out.mkdir()
+          with zipfile.ZipFile(out/'source.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for name in subprocess.check_output(['git','ls-files','-z']).decode().split('\0'):
+                  p=Path(name)
+                  if name and p.is_file() and not p.is_symlink(): z.write(p,name)
+              z.writestr('REVIEW_COMMIT.txt',subprocess.check_output(['git','rev-parse','HEAD']))
+              z.writestr('REVIEW_TREE.txt',subprocess.check_output(['git','ls-tree','-r','HEAD']))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ec-backlog-source
+          path: /tmp/ec-snapshot/
+          retention-days: 7
