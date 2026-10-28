@@ -1,0 +1,71 @@
+name: City residents and FPS framing
+on:
+  pull_request:
+    paths:
+      - 'src/components/HubScreen.jsx'
+      - 'src/components/HubImmersion.css'
+      - 'src/game/extinctionContent.js'
+      - 'src/game/mosaicResidents.js'
+      - 'src/game/spriteAssets.js'
+      - 'scripts/**'
+      - '.github/workflows/residents-viewmodels.yml'
+  push:
+    branches: [master]
+permissions:
+  contents: read
+concurrency:
+  group: residents-viewmodels-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/
+            /public/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/
+            /public/sprites/generated/heroes/torbahead/torbahead-community-remix-curator.png
+            /public/sprites/generated/heroes/bioshock/bioshock-rapture-tenenbaum.png
+            /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Resident coverage and executable FPS progression contracts
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ec-framing
+          git rev-parse HEAD > /tmp/ec-framing/commit.txt
+          node --test scripts/mosaicResidentNavigation.test.mjs scripts/mosaicResidents.test.mjs scripts/extinctionViewmodelContract.test.mjs scripts/extinctionContent.test.mjs | tee /tmp/ec-framing/unit.log
+          npm run test:ui-immersion | tee /tmp/ec-framing/ui.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/HubScreen.jsx src/game/mosaicResidents.js src/game/extinctionContent.js scripts/extinctionViewmodelContract.mjs scripts/extinctionViewmodelContract.test.mjs scripts/mosaicResidents.test.mjs | tee /tmp/ec-framing/lint.log
+      - name: Actual scenes and draw calls with repository artwork
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/ec-browser
+          /tmp/ec-browser/bin/pip install playwright==1.57.0
+          /tmp/ec-browser/bin/python -m playwright install --with-deps chromium
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/ec-framing/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          /tmp/ec-browser/bin/python scripts/browserResidentViewmodels.py --evidence /tmp/ec-framing/browser | tee /tmp/ec-framing/browser.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: residents-viewmodels-${{ github.sha }}
+          path: /tmp/ec-framing/
+          retention-days: 14

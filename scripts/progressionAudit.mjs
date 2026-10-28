@@ -1,3 +1,4 @@
+import { verifyExtinctionViewmodelContract, verifyExtinctionRendererBinding } from './extinctionViewmodelContract.mjs';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { existsSync, readFileSync, statSync } from 'node:fs';
@@ -20,7 +21,6 @@ import { BOOSTER_ART_UNIVERSES } from '../src/game/portalBoosterCatalog.js';
 import { SPECIAL_EVENTS, getSpecialEventRewardById } from '../src/game/specialEvents.js';
 import { getGridFacingBonus } from '../src/game/tacticalFacing.js';
 import { findBattlePickupSource, normalizeBattlePickupDefinition } from '../src/game/battlePickupSemantics.js';
-import { getExtinctionViewmodel, getExtinctionHandFrame } from '../src/game/extinctionContent.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const fail = (message) => {
@@ -814,31 +814,9 @@ dedicatedOcChapterKeyArts.forEach(assetRoute => {
 assert(spriteAssetsSource.includes('normalizeSpriteSrc') && spriteAssetsSource.includes('new URL(value).pathname'), 'Sprite layout lookup must normalize absolute browser URLs before matching generated sheet paths.');
 assert(rendererSource.includes('getSpriteSheetLayout') && rendererSource.includes('getSpriteFrameForLayout'), 'Renderer must crop generated sprites through per-sheet layouts.');
 assert(rendererSource.includes('sourceY') && rendererSource.includes('sourceH') && spriteAssetsSource.includes('trimByState'), 'Renderer must support per-sheet trim data to avoid adjacent OpenAI sprite bleed.');
-// FPS sheets are selected per character and their frame geometry is resolved by
-// extinctionContent. Check that contract rather than the former inline constants.
-const mirelleViewmodel = getExtinctionViewmodel({ id: 'arca_mirelle' });
-const mirelleIdleFrame = getExtinctionHandFrame(mirelleViewmodel, {});
-const mirelleReloadFrame = getExtinctionHandFrame(mirelleViewmodel, { reloadPulse: 3 });
-const mirelleFiringFrame = getExtinctionHandFrame(mirelleViewmodel, { reloadPulse: 3, muzzle: 3 });
-assert(
-  mirelleIdleFrame?.columns === 4 && mirelleIdleFrame.rows === 10 && mirelleIdleFrame.row === 0
-    && hubSource.includes('getExtinctionHandFrame(viewmodel, state)')
-    && hubSource.includes('sheet.naturalWidth / handFrame.columns')
-    && hubSource.includes('sheet.naturalHeight / handFrame.rows'),
-  'FPS Mirelle hands must use the bound 4x10 sheet and the resolved frame geometry.'
-);
-assert(
-  mirelleReloadFrame?.row === 6 && mirelleReloadFrame.trim.top === 40 && mirelleReloadFrame.trim.bottom === 6
-    && hubSource.includes('handFrame.trim.top') && hubSource.includes('handFrame.trim.bottom'),
-  'FPS Mirelle reload frames must use row 6 and crop away adjacent row bleed.'
-);
-assert(
-  mirelleFiringFrame?.phase === 'attack' && mirelleFiringFrame.row === 3
-    && mirelleViewmodel.projectile.endsWith('/arca-mirelle-fps-projectile.png')
-    && hubSource.includes('state.muzzle = 36') && hubSource.includes('fpsProjectileRef.current')
-    && hubSource.includes('ctx.drawImage(projectileSheet') && hubSource.includes('410, 146'),
-  'FPS firing must take precedence over reload and draw the dedicated projectile as a separate overlay.'
-);
+verifyExtinctionViewmodelContract();
+assert(hubSource.includes('getExtinctionHandFrame(viewmodel, state)') && hubSource.includes('getExtinctionHandSourceRect(handFrame, sheet.naturalWidth, sheet.naturalHeight)') && hubSource.includes('getExtinctionHandPlacement(handSource'), 'FPS renderer must use the verified identity, crop and aspect contract.');
+assert(hubSource.includes('reloadPulse') && hubSource.includes('state.muzzle = 36') && hubSource.includes('fpsProjectileRef.current') && hubSource.includes('projectileSheet.naturalWidth'), 'FPS firing must keep a dedicated projectile overlay and existing fire/reload timing.');
 assert(raceEngineSource.includes('drawRearKartActionOverlay') && raceEngineSource.includes('KART_ITEM_FRAMES') && raceEngineSource.includes('this.images.kartItems') && raceEngineSource.includes('this.images.hudIcons'), 'Race mode must render Mirelle kart actions, item sheet, and HUD icon sheet in playable views.');
 assert(raceModeSource.includes('race-garage-card') && raceModeSource.includes('RACE_ASSETS.hudGarage') && raceModeSource.includes('RACE_ASSETS.kartItems'), 'Race tab must expose Mirelle garage and item sheets outside admin preview.');
 assert(raceEngineSource.includes('KART_TRACK_LAYOUTS') && raceEngineSource.includes('nexus_suture_eight') && raceEngineSource.includes('portal_hairpin_ritual') && raceEngineSource.includes('surfaceZones'), 'Race mode must provide varied Super-Kart-style Nexus track layouts.');
@@ -880,7 +858,7 @@ assert(
   'Mosaic City Nexus NPCs must preserve their real hero identity and movement state through the Nexus sprite renderer, returning before color fallback blocks.'
 );
 assert(hubSource.includes("drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud')") && hubSource.includes("drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud')"), 'Resonance hero icons must use cropped HUD avatars.');
-assert(hubSource.includes('fpsHandsRef') && hubSource.includes('MIRELLE_COMPLETE_SPRITES.fpsHands'), 'FPS mode must use Mirelle FPS hands and effects sheets.');
+verifyExtinctionRendererBinding(hubSource);
 assert(
   hubSource.includes("kind: completePack ? 'pack' : 'hero'") &&
   regulationImagePreviewSource.includes('preview.sheets'),

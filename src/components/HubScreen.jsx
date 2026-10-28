@@ -1,5 +1,6 @@
+import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicResidents.js';
 import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
-import { getExtinctionRoster, getExtinctionViewmodel, getExtinctionHandFrame, drawExtinctionSchematic } from '../game/extinctionContent.js';
+import { getExtinctionRoster, getExtinctionViewmodel, getExtinctionHandFrame, getExtinctionHandSourceRect, getExtinctionHandPlacement, getExtinctionProjectilePlacement, drawExtinctionSchematic } from '../game/extinctionContent.js';
 import CharacterWardrobe from './CharacterWardrobe.jsx';
 import { applyActorAppearance } from '../game/wardrobe.js';
 import { DISCIPLINE_SPRITE_REGISTRY } from '../game/disciplineSprites.js';
@@ -2304,6 +2305,11 @@ function MosaicCityHub({
   const controlGuide = command => commitGuide(transitionMosaicGuide(guideRef.current, command));
   const [destinationQuery, setDestinationQuery] = useState('');
   const [destinationPage, setDestinationPage] = useState(0);
+  const [residentQuery, setResidentQuery] = useState('');
+  const [residentPage, setResidentPage] = useState(0);
+  const [residentGroups, setResidentGroups] = useState({});
+  const [residentTarget, setResidentTarget] = useState(null);
+  const residentCacheRef = useRef({ district: '', entries: new Map() });
   const [nearHeroId, setNearHeroId] = useState(null);
   const [nearZoneId, setNearZoneId] = useState(null);
   const [selectedHeroId, setSelectedHeroId] = useState(null);
@@ -2570,6 +2576,12 @@ function MosaicCityHub({
   const sceneObstacles = useMemo(() => getMosaicSceneObstacles(district, zones), [district, zones]);
   stateRef.current.obstacles = sceneObstacles;
 
+  const residentCatalog = useMemo(() => getMosaicResidentCatalog(safeHeroes, unlockedHeroes, district.universe), [safeHeroes, unlockedHeroes, district.universe]);
+  const residentGuide = currentDistrict === 'atrium' ? (safeHeroes.find(hero => hero.id === 'arca_mirelle') || BASE_HEROES_DB.find(hero => hero.id === 'arca_mirelle')) : null;
+  const residentView = useMemo(() => getMosaicResidentView(residentCatalog, {
+    group: residentGroups[currentDistrict] || 0, guideId: residentGuide?.id, query: residentQuery, page: residentPage
+  }), [residentCatalog, residentGroups, currentDistrict, residentGuide?.id, residentQuery, residentPage]);
+
   const selectedHero = ownedHeroes.find(hero => hero.id === selectedHeroId) || null;
   const nearHero = ownedHeroes.find(hero => hero.id === nearHeroId) || null;
   const leadHero = selectedHero || nearHero || ownedHeroes[0];
@@ -2610,20 +2622,24 @@ function MosaicCityHub({
   }, [commitGuide, onSessionEnd, sessionExitRequest]);
 
   useEffect(() => {
-    const districtHeroes = district.universe
-      ? [
-        ...ownedHeroes.filter(hero => hero.universe === district.universe),
-        ...ownedHeroes.filter(hero => hero.universe !== district.universe)
-      ]
-      : ownedHeroes;
-    const guideHero = currentDistrict === 'atrium' ? (safeHeroes.find(hero => hero.id === 'arca_mirelle') || BASE_HEROES_DB.find(hero => hero.id === 'arca_mirelle')) : null;
-    const layoutKey = JSON.stringify([currentDistrict, completedStages.length, zones.map(zone => [zone.id, zone.x, zone.y, zone.w, zone.h]), districtHeroes.map(hero => hero.id), guideHero?.id]);
+    const districtHeroes = residentCatalog;
+    const guideHero = residentGuide;
+    const visibleResidents = residentView.groupItems;
+    const layoutKey = JSON.stringify([currentDistrict, completedStages.length, zones.map(zone => [zone.id, zone.x, zone.y, zone.w, zone.h]), visibleResidents.map(hero => hero.id), guideHero?.id]);
+    const sameResidentDistrict = residentCacheRef.current.district === currentDistrict;
+    if (!sameResidentDistrict) residentCacheRef.current = { district: currentDistrict, entries: new Map() };
+    const cache = residentCacheRef.current.entries;
+    const allowed = new Set(districtHeroes.map(hero => hero.id));
+    for (const id of cache.keys()) if (!allowed.has(id)) cache.delete(id);
     if (npcLayoutRef.current === layoutKey && stateRef.current.npcs.length) {
       for (const npc of stateRef.current.npcs) npc.hero = safeHeroes.find(hero => hero.id === npc.hero.id) || npc.hero;
       return;
     }
     npcLayoutRef.current = layoutKey;
-    stateRef.current.npcs = districtHeroes.filter(hero => hero.id !== guideHero?.id).slice(0, 17).map((hero, index) => {
+    if (sameResidentDistrict) for (const npc of stateRef.current.npcs) if (!npc.isGuide) cache.set(npc.hero.id, npc);
+    stateRef.current.npcs = visibleResidents.map((hero, index) => {
+      const previous = cache.get(hero.id);
+      if (previous) return { ...previous, hero };
       const zone = zones[index % Math.max(1, zones.length)] || district;
       const compatibleCount = districtHeroes.filter(other => other.id !== hero.id && (other.universe === hero.universe || other.category === hero.category)).length;
       const routine = compatibleCount && index % 4 === 1 ? 'talk' : index % 3 === 0 ? 'walk' : 'idle';
@@ -2645,12 +2661,26 @@ function MosaicCityHub({
       };
     });
     if (guideHero) stateRef.current.npcs.unshift({ hero: guideHero, x: 910, y: 520, baseX: 910, baseY: 520, zoneId: 'atrium', routine: 'idle', phase: 0, facing: -1, isGuide: true });
-  }, [completedStages.length, currentDistrict, district, ownedHeroes, safeHeroes, sceneObstacles, zones]);
+  }, [completedStages.length, currentDistrict, district, residentCatalog, residentGuide, residentView.groupItems, safeHeroes, sceneObstacles, zones]);
+
+  useEffect(() => {
+    if (!residentTarget) return;
+    if (residentTarget.district !== currentDistrict || sessionPaused || runtimeError) { setResidentTarget(null); return; }
+    if (cityMenuOpen) return;
+    const npc = stateRef.current.npcs.find(entry => entry.hero.id === residentTarget.id);
+    if (npc) {
+      stateRef.current.destination = clampMosaicPosition(npc, district);
+      stateRef.current.pendingInteraction = { type: 'npc', id: npc.hero.id };
+    }
+    setResidentTarget(null);
+  }, [residentTarget, currentDistrict, sessionPaused, runtimeError, cityMenuOpen, district, residentView.groupItems]);
 
   const switchDistrict = useCallback((portal) => {
     if (sessionPausedRef.current) return;
     const target = districts[portal.target] || districts.atrium;
     const spawn = clampMosaicPosition(portal.spawn || target.spawn, target);
+    setResidentTarget(null);
+    setResidentQuery(''); setResidentPage(0);
     currentDistrictRef.current = target.id;
     currentZoneRef.current = target.id;
     nearHeroRef.current = null;
@@ -3275,6 +3305,16 @@ function MosaicCityHub({
     setCityMenuOpen(false);
     setHubLog(lang === 'fr' ? `Approche du portail ${universe}. L entree se fait a proximite.` : `Approaching the ${universe} portal. Entry requires reaching it.`);
   };
+  const approachResident = entry => {
+    if (sessionPausedRef.current || !residentCatalog.some(hero => hero.id === entry.hero.id)) return;
+    clearCityDestination();
+    nearHeroRef.current = null; nearHeroIdRef.current = null; setNearHeroId(null);
+    nearbyInteractionRef.current = null; setNearbyLabel('');
+    setResidentGroups(previous => ({ ...previous, [currentDistrict]: entry.group }));
+    setResidentTarget({ id: entry.hero.id, district: currentDistrict });
+    setCityMenuOpen(false);
+    setHubLog(lang === 'fr' ? `Approche de ${entry.hero.name}. La synchronisation se fait à proximité.` : `Approaching ${entry.hero.name}. Synchronization requires reaching them.`);
+  };
   const recoverCity = () => {
     // Reset any canvas transforms/save stack left by an interrupted draw.
     if (canvasRef.current) canvasRef.current.setAttribute('width', String(canvasRef.current.width));
@@ -3325,6 +3365,25 @@ function MosaicCityHub({
           <span>{district.label}</span>
           <span>{currentZoneData?.label || 'Nexus'}</span>
         </div>
+        <details className="mosaic-resident-directory">
+          <summary>{lang === 'fr' ? 'Habitants disponibles' : 'Available residents'} · {residentView.total}</summary>
+          <label><span>{lang === 'fr' ? 'Rechercher un habitant' : 'Find a resident'}</span>
+            <input type="search" className="nexus-select" value={residentQuery} onChange={event => { clearCityDestination(); setResidentQuery(event.target.value); setResidentPage(0); }} />
+          </label>
+          <p role="status">{residentView.matching} / {residentView.total} · {lang === 'fr' ? 'Groupe présent' : 'Present group'} {residentView.group + 1} / {residentView.groupCount}</p>
+          <div className="mosaic-resident-results">
+            {residentView.items.map(entry => <button key={entry.hero.id} type="button" className="btn-retro" data-resident-id={entry.hero.id} onClick={() => approachResident(entry)}>
+              <strong>{entry.hero.name}</strong><span>{entry.hero.universe}</span><small>{lang === 'fr' ? 'Rejoindre' : 'Approach'} · {lang === 'fr' ? 'groupe' : 'group'} {entry.group + 1}</small>
+            </button>)}
+          </div>
+          {!residentView.matching && <p>{lang === 'fr' ? 'Aucun habitant possédé ne correspond.' : 'No owned resident matches.'}</p>}
+          <nav aria-label={lang === 'fr' ? 'Pages des habitants' : 'Resident pages'}>
+            <button type="button" className="btn-retro" disabled={!residentView.page} onClick={() => setResidentPage(residentView.page - 1)}>{lang === 'fr' ? 'Précédent' : 'Previous'}</button>
+            <span>{residentView.page + 1} / {residentView.pageCount}</span>
+            <button type="button" className="btn-retro" disabled={residentView.page + 1 >= residentView.pageCount} onClick={() => setResidentPage(residentView.page + 1)}>{lang === 'fr' ? 'Suivant' : 'Next'}</button>
+          </nav>
+          <small>{lang === 'fr' ? '17 habitants au plus par groupe, plus Mirelle dans l’Atrium. Rejoindre change le groupe présent et fait marcher l’Ancre ; aucun personnage n’est débloqué.' : 'Up to 17 residents per group, plus Mirelle in the Atrium. Approach changes the present group and walks the Anchor there; no character is unlocked.'}</small>
+        </details>
         {currentDistrict === 'threads' ? (
           <section className="nexus-play-intel" aria-label={lang === 'fr' ? 'Catalogue des quartiers disponibles' : 'Available district catalog'}>
             <strong>{lang === 'fr' ? 'Toutes tes destinations disponibles' : 'All your available destinations'}</strong>
@@ -4238,23 +4297,20 @@ function ExtinctionRoyale({
       ctx.restore();
 
       const handFrame = getExtinctionHandFrame(viewmodel, state);
-      if (handFrame && fpsHandsRef.current?.complete && fpsHandsRef.current.naturalWidth) {
-        const sheet = fpsHandsRef.current;
-        const frameW = sheet.naturalWidth / handFrame.columns;
-        const frameH = sheet.naturalHeight / handFrame.rows;
-        const top = Math.min(handFrame.trim.top || 0, frameH - 1);
-        const sourceH = Math.max(1, frameH - top - (handFrame.trim.bottom || 0));
-        const handW = 300, handH = 188;
-        ctx.drawImage(sheet, handFrame.col * frameW, handFrame.row * frameH + top,
-          frameW, sourceH,
-          canvas.width / 2 - handW / 2 - state.turnVel * 430 + state.vx * 85,
-          canvas.height - handH - 4, handW, handH);
+      const sheet = fpsHandsRef.current;
+      const handSource = sheet?.complete ? getExtinctionHandSourceRect(handFrame, sheet.naturalWidth, sheet.naturalHeight) : null;
+      const handPlacement = getExtinctionHandPlacement(handSource, canvas.width, canvas.height, state);
+      if (handSource && handPlacement) {
+        ctx.drawImage(sheet, handSource.x, handSource.y, handSource.w, handSource.h,
+          handPlacement.x, handPlacement.y, handPlacement.w, handPlacement.h);
         if (state.muzzle && fpsProjectileRef.current?.complete && fpsProjectileRef.current.naturalWidth) {
           const projectileSheet = fpsProjectileRef.current;
-          ctx.globalAlpha = 0.88;
-          ctx.drawImage(projectileSheet, 0, 0, projectileSheet.naturalWidth, projectileSheet.naturalHeight,
-            canvas.width / 2 - 205, canvas.height / 2 - 94, 410, 146);
-          ctx.globalAlpha = 1;
+          const effect = getExtinctionProjectilePlacement(projectileSheet.naturalWidth, projectileSheet.naturalHeight, canvas.width, canvas.height);
+          if (effect) {
+            ctx.globalAlpha = 0.88;
+            ctx.drawImage(projectileSheet, 0, 0, projectileSheet.naturalWidth, projectileSheet.naturalHeight, effect.x, effect.y, effect.w, effect.h);
+            ctx.globalAlpha = 1;
+          }
         }
       } else {
         drawExtinctionSchematic(ctx, state, canvas.width, canvas.height, weaponProfile.color);
