@@ -41,7 +41,7 @@ body[data-background=light]{--tile:#e2e7ed}body[data-background=checker] .stage{
 <label>Tenue<select id="category"><option value="">Toutes les tenues</option><option value="uniform">Uniforme</option><option value="civilian">Civil</option><option value="military">Militaire</option><option value="swimwear">Natation</option><option value="sport">Sport</option><option value="other">Autres</option></select></label>
 <label>Provenance<select id="provenance"><option value="">Toutes les provenances</option><option value="reference">Basé sur une référence</option><option value="adapted">Adaptation identifiée</option></select></label>
 <label>Source<select id="source-medium"><option value="">Toutes les sources</option><option value="anime_ova">Tenues de l’animé</option><option value="visual_novel_game">Tenues du jeu</option></select></label>
-<label>Version<select id="version"><option value="">Toutes les versions</option><option value="revised">Versions corrigées</option><option value="new-outfit">Nouvelles tenues</option><option value="original">Versions précédentes</option></select></label>
+<label>Version<select id="version"><option value="">Toutes les versions</option><option value="v4">Dernières variantes · v4</option><option value="revised">Versions corrigées</option><option value="new-outfit">Nouvelles tenues</option><option value="original">Versions précédentes</option></select></label>
 <label>Taille d’aperçu <output id="size-value">240 px</output><input id="size" type="range" min="72" max="320" step="8" value="240"></label>
 <label>Fond de contrôle<select id="background"><option value="dark">Sombre</option><option value="light">Clair</option><option value="checker">Damier</option></select></label>
 <button id="reset" type="button">Tout afficher</button>
@@ -51,7 +51,7 @@ body[data-background=light]{--tile:#e2e7ed}body[data-background=checker] .stage{
 <p id="empty" hidden>Aucun sprite ne correspond à ces filtres.</p>
 <footer>
 <p>Les détails hors cadre des références ont été reconstitués. Aucune image n’est certifiée comme une reproduction officielle complète 1:1. Les variantes militaires JGSDF utilisent une tenue réelle comme référence de vêtement ; leur attribution à ces personnages est une adaptation.</p>
-<p>Le vestiaire du jeu est raccordé à Saori, Ruri et Takurou, les trois héros déjà enregistrés. Les autres personnages sont livrés dans le catalogue graphique. Miyuki Umezaki reste en attente d’une référence exploitable. Les gardes anonymes de l’OVA ne sont pas inclus dans ce lot.</p>
+<p>Le vestiaire du jeu est raccordé à Saori, Ruri et Takurou, les trois héros déjà enregistrés. Les autres personnages sont livrés dans le catalogue graphique. Les personnages anonymes de l’OVA portent un intitulé descriptif : aucun nom non confirmé ne leur est attribué. Miyuki Umezaki reste en attente d’une référence exploitable.</p>
 </footer>
 </main>
 <dialog id="comparison" aria-labelledby="comparison-title">
@@ -87,6 +87,7 @@ function render(){
 const query=normalize($('search').value.trim());
 const version=$('version').value;
 const matchesVersion=entry=>{
+if(version==='v4')return entry.revision===4;
 if(version==='revised')return Boolean(entry.variantOf);
 if(version==='new-outfit')return Boolean(entry.newOutfit);
 if(version==='original')return !entry.variantOf&&!entry.newOutfit;
@@ -102,7 +103,7 @@ stage.append(img);
 const body=element('div',undefined,'card-body');body.append(element('h2',entry.characterName),element('p',entry.label.fr,'costume'));
 body.append(element('span',entry.provenance==='reference'?'Basé sur référence':'Adaptation identifiée','badge '+entry.provenance),element('span',categoryNames[entry.category]||entry.category,'badge category'));
 if(entry.variantOf)body.append(element('span','Version corrigée','badge revision'));
-if(entry.newOutfit)body.append(element('span',sourceMediumOf(entry)==='anime_ova'?'Nouvelle tenue OVA':'Nouvelle tenue','badge new-outfit'));
+if(entry.newOutfit)body.append(element('span',entry.newCharacter?'Personnage anonyme OVA':sourceMediumOf(entry)==='anime_ova'?'Nouvelle tenue OVA':'Nouvelle tenue','badge new-outfit'));
 else if(sourceNames[sourceMediumOf(entry)])body.append(element('span',sourceNames[sourceMediumOf(entry)],'badge new-outfit'));
 const link=element('a','Ouvrir le PNG');link.href=entry.src;link.target='_blank';link.rel='noopener';body.append(link);
 if(entry.newOutfit&&(entry.notes?.fr||entry.proportionNotes?.fr)){

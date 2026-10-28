@@ -1,103 +1,84 @@
 # Sprites et tenues Discipline
 
-## Livraison
+**195 PNG individuels pour 35 identités graphiques.** La dernière passe ajoute **30 variantes de fidélité — une par personnage existant — et 5 figures anonymes de l’OVA**. Les **160 versions précédentes sont conservées à l’identique**.
 
-**160 PNG individuels pour 30 personnages**, dont les 154 versions précédentes conservées, 5 nouvelles tenues OVA et une correction ciblée de Takurou. Images entières, fond transparent réel, pose statique en trois quarts vers la droite. Les 17 anciens portraits recadrés sont exclus.
+Le catalogue comprend 74 rendus basés sur références et 121 adaptations identifiées. Les références partielles ne certifient pas les détails hors cadre ni une reproduction corporelle intégrale 1:1.
 
-44 sprites sont basés sur des références de personnages et costumes. 116 sont des adaptations identifiées. Aucun rendu n’est certifié 1:1 : les références partielles imposaient de reconstituer les parties hors cadre.
+## Examiner les versions
 
-## Examiner les images
+Ouvrir `/reviews/discipline/index.html` depuis le serveur du jeu. Le filtre **« Dernières variantes · v4 »** affiche les 35 ajouts. Le filtre **« Versions corrigées »** montre toutes les révisions. Une comparaison côte à côte reste disponible avec la version précédente. Les filtres de provenance et de support distinguent les costumes sur références des adaptations.
 
-Depuis le serveur du jeu : /reviews/discipline/index.html. La galerie filtre par personnage, tenue et provenance et permet de changer le fond de contrôle. Les PNG restent consultables individuellement dans public/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/.
+Les PNG sont installés dans `public/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/`. Chaque fichier est une image en pied statique sur fond transparent, **1 colonne × 1 ligne**, en trois quarts vers la droite. Ce format de cadre ne signifie pas une fidélité visuelle 1:1 et aucune animation n’est revendiquée.
 
-## Tenues de l’animé et proportions visibles — v3
+## Livraison v4
 
-Les **6 ajouts v3** comprennent les tenues tactiques OVA de Saori, Ruri, Yuuki, Maiko et Madoka, ainsi qu’une correction ciblée du visage et du cou de Takurou en tenue orange. Les **154 entrées et PNG précédents sont conservés à l’identique**.
+Les nouvelles variantes suivent les formes visibles des références : visage, cou, coiffure et proportions documentées. Les parties non montrées conservent l’interprétation précédente, avec une note par personnage. Les nouvelles figures des captures sont un garde roux, deux officières distinctes, une domestique au chignon brun et une invitée en robe jaune. Leur identité nominative n’est pas inventée.
 
-Les cinq costumes tactiques sont de nouvelles tenues issues des captures OVA. Ils ne remplacent pas les variantes JGSDF et ne portent aucun `variantOf` vers celles-ci. Les sprites JGSDF servent uniquement de référence de technique graphique. Takurou reste une correction de sa tenue OVA orange précédente.
+La recherche a couvert les 30 personnages et trouvé de nouvelles pistes : tenues civiles, robes de soirée, costume western et tenue infirmière. Certaines restent non livrées faute de références utilisables suffisantes ; la génération de la robe de Reina a été bloquée. La revue donne l’état exact, y compris les limites des rendus terminés.
 
-Le filtre **« Tenues de l’animé »** affiche les six ajouts et l’ancienne tenue orange de Takurou, déjà identifiée OVA, sans modifier son entrée. Les filtres **« Nouvelles tenues »** et **« Versions corrigées »** distinguent les deux types d’ajouts. Les nouvelles cartes donnent leurs notes de proportions et de limites. Voir [la revue OVA v3](anime-v3-review.md).
+- [Revue v4 et tableau des 30 variantes](reference-v4-review.md)
+- [Recherche des références et tenues manquantes](reference-v4-research.json)
+- [Manifeste : prompts, références, provenance et empreintes](manifest.json)
+- [Validation navigateur v4](reference-v4-browser-qa-report.json)
+- [Validation technique v4](reference-v4-validation.json)
 
-Les proportions suivies sont celles effectivement visibles dans les sources. Pour Maiko accroupie, la station debout, le bas du pantalon et les chaussures restent reconstitués. Les captures ne certifient pas les pieds, les tailles relatives complètes ou toutes les longueurs cachées. Les références de robes et de tenues d’officières restent sans attribution nominative fiable ; aucun sprite supplémentaire ne leur est attribué.
+## Couverture du catalogue
 
-## Variantes de fidélité v2
+R = basé sur une référence ; A = adaptation ; R + A = les deux provenances. Une lettre ne certifie pas un costume complet canonique. Les lignes anonymes ne revendiquent que les tenues effectivement illustrées.
 
-Les **22 nouvelles variantes** sont ajoutées séparément. Les **132 PNG précédents**, leurs identifiants, leurs sélections et leurs tenues par défaut restent inchangés. La galerie propose un filtre « Versions corrigées » et une comparaison côte à côte avec l'ancienne image.
-
-La correction porte principalement sur les coiffures et les visages. Les vêtements créés pour le jeu restent des adaptations, avec le libellé « identité v2 ». Les détails hors champ restent reconstitués ; aucune fidélité intégrale 1:1 n'est certifiée. Voir le [détail des corrections et limites](reference-v2-review.md).
-
-En cas d'échec d'une variante corrigée : nouvelle variante → ancienne tenue correspondante → tenue par défaut du personnage → ancien sprite. L'ancienne sélection sauvegardée demeure valable.
-
-## Couverture
-
-R = modèle basé sur référence ; A = adaptation créée pour ce projet ; R + A = les deux provenances sont disponibles ; — = en attente. Une lettre ne certifie pas une fidélité canonique complète.
-
-| Personnage | Uniforme | Civil | Militaire | Natation | Total |
-| --- | --- | --- | --- | --- | ---: |
-| Akane | A | A | A | A | 5 |
-| Eikichi Ogiwara | A | R | A | A | 4 |
-| Kanae | R | A | A | A | 4 |
-| Kaori Matsuno | A | R | A | A | 8 |
-| Kaoru Itou | R | A | A | A | 5 |
-| Karen Himeki | R | A | A | A | 8 |
-| Katsuo Isobe | A | A | A | A | 5 |
-| Kawahara | A | A | A | A | 5 |
-| Kouzou Machida | A | R | A | A | 4 |
-| Kumi Yamanaka | A | A | A | A | 5 |
-| Leona Morimoto | R | A | A | A | 5 |
-| Linda Hamilton | A | A | A | A | 4 |
-| Madoka Araki | R | A | R + A | A | 5 |
-| Maiko Kaneda | R | R | R + A | A | 6 |
-| Mami Nakai | R | A | A | A | 4 |
-| Manami | R | A | A | A | 4 |
-| Maya | A | A | A | A | 5 |
-| Momoe Endou | R | A | A | A | 4 |
-| Momone Nishizaki | R | A | A | A | 4 |
-| Nanase Fujiwara | R | A | A | A | 4 |
-| Reina Morimoto | A | R | A | A | 4 |
-| Ruri Nonomiya | A | R | R + A | A | 9 |
-| Saki Yamagata | A | A | A | A | 4 |
-| Saori Otokawa | R | R | R + A | A | 13 |
-| Sudou | R | A | A | A | 4 |
-| Takurou Hayami | A | R | A | A | 5 |
-| Tooru Satou | R | A | A | A | 4 |
-| Yuri Nishizaki | R | A | A | A | 8 |
-| Yuuji Takigawa | R | A | A | A | 4 |
-| Yuuki Miyagishi | A | A | R + A | A | 7 |
+| Personnage | Uniforme | Civil | Militaire | Natation | Autres / sport | Total |
+| --- | --- | --- | --- | --- | --- | ---: |
+| Akane | A | A | A | A | A | 6 |
+| Eikichi Ogiwara | A | R | A | A | — | 5 |
+| Kanae | R | A | A | A | — | 5 |
+| Kaori Matsuno | A | R | A | A | — | 9 |
+| Kaoru Itou | R | A | A | A | — | 6 |
+| Karen Himeki | R | A | A | A | — | 9 |
+| Katsuo Isobe | A | A | A | A | R | 6 |
+| Kawahara | A | A | A | A | A | 6 |
+| Kouzou Machida | A | R | A | A | — | 5 |
+| Kumi Yamanaka | A | A | A | A | R | 6 |
+| Leona Morimoto | R | A | A | A | R | 6 |
+| Linda Hamilton | A | A | A | A | — | 5 |
+| Madoka Araki | R | A | R + A | A | — | 6 |
+| Maiko Kaneda | R | R | R + A | A | R | 7 |
+| Mami Nakai | R | A | A | A | — | 5 |
+| Manami | R | A | A | A | — | 5 |
+| Maya | A | A | A | A | A | 6 |
+| Momoe Endou | R | A | A | A | — | 5 |
+| Momone Nishizaki | R | A | A | A | — | 5 |
+| Nanase Fujiwara | R | A | A | A | — | 5 |
+| Domestique OVA — chignon brun | R | — | — | — | — | 1 |
+| Invitée OVA — robe jaune | — | R | — | — | — | 1 |
+| Officière OVA — carré châtain | R | — | — | — | — | 1 |
+| Officière OVA — cheveux tirés | R | — | — | — | — | 1 |
+| Reina Morimoto | A | R | A | A | — | 5 |
+| Ruri Nonomiya | A | R | R + A | A | — | 10 |
+| Saki Yamagata | A | A | A | A | — | 5 |
+| Saori Otokawa | R | R | R + A | A | R + A | 14 |
+| Garde de sécurité OVA — roux | — | — | R | — | — | 1 |
+| Sudou | R | A | A | A | — | 5 |
+| Takurou Hayami | A | R | A | A | — | 6 |
+| Tooru Satou | R | A | A | A | — | 5 |
+| Yuri Nishizaki | R | A | A | A | — | 9 |
+| Yuuji Takigawa | R | A | A | A | — | 5 |
+| Yuuki Miyagishi | A | A | R + A | A | R + A | 8 |
 
 ## Intégration au moteur
 
-- Le catalogue couvre tous les personnages dessinés. Le vestiaire est raccordé aux trois héros qui existent déjà dans HEROES_DB : discipline_saori_otokawa, discipline_ruri_nonomiya, discipline_takurou_hayami.
-- Les tenues sont sélectionnées via heroSkins, sauvegardé par le jeu. Les statistiques, les déblocages et le statut nonCombat restent ceux du roster existant.
-- Chaque PNG est enregistré en **1 colonne × 1 ligne** pour tous les états. Aucun découpage 4×4 et aucune animation ne sont revendiqués.
-- En cas d’échec de chargement : costume choisi → tenue par défaut du même personnage → ancien sprite. Le choix sauvegardé est conservé.
-- Sans sélection explicite, le sprite antérieur est utilisé. Les scènes à incarnation verrouillée gardent leur apparence de source.
-- Les autres personnages disposent des images et du registre ; cette PR ne crée pas de statistiques ni de personnages jouables supplémentaires.
+Le vestiaire est relié aux trois héros existants : Saori Otokawa, Ruri Nonomiya et Takurou Hayami. Les autres identités disposent de leurs images et du registre ; aucun nouveau héros jouable ni statistique n’est créé. Les choix sont enregistrés dans `heroSkins`. Sans sélection explicite, l’apparence antérieure est conservée ; les scènes à incarnation verrouillée restent respectées.
+
+En cas d’échec de chargement d’une révision : nouvelle variante → version précédente correspondante → tenue par défaut du même personnage → ancien sprite. Les références de technique graphique ne modifient pas cette chaîne.
+
+## Versions précédentes
+
+- V3 : cinq tenues tactiques OVA indépendantes et une correction de Takurou, portant le catalogue à 160 images. [Revue v3](anime-v3-review.md).
+- V2 : 22 variantes de coiffures et d’identité, ajoutées aux 132 PNG d’origine. [Revue v2](reference-v2-review.md).
+
+Les tenues JGSDF utilisent un [vêtement réel documenté](https://www.mod.go.jp/gsdf/equipment/qe/index.html) comme source ; leur attribution aux personnages reste une adaptation. Les créations de sport aquatique et les uniformes sans référence individuelle gardent également leur provenance adaptée.
 
 ## Références et limites
 
-Les noms proches restent distincts : **Yuuji / Yuuki**, **Kaori / Kaoru**, **Momone / Momoe**. Les sources détaillées, identifiants de génération, empreintes SHA-256, dimensions et limites sont dans [manifest.json](manifest.json). Les prompts disponibles de cette livraison sont enregistrés verbatim ; ceux des anciens tours qui ne sont plus disponibles sont signalés comme tels.
+Les identités proches restent distinctes : **Yuuji / Yuuki**, **Kaori / Kaoru**, **Momone / Momoe**. Les supports VN et OVA sont séparés. Miyuki Umezaki reste sans sprite faute de référence de tenue exploitable. Le garde OVA, précédemment en attente, est maintenant présent sous un nom descriptif.
 
-Les variantes JGSDF reprennent la tenue de terrain illustrée sur la [page officielle JGSDF des équipements](https://www.mod.go.jp/gsdf/equipment/qe/index.html) ([photo](https://www.mod.go.jp/gsdf/assets/images/equipment/qe/pic07_modal.png)). Il s’agit de l’adaptation d’un vêtement réel, pas d’un costume officiel de Discipline. Les cinq tenues tactiques OVA ont leurs propres sources de l’animé et leurs propres identifiants.
-
-Les nouvelles variantes de natation utilisent des vêtements de sport aquatique opaques (haut de protection, short ou pantalon selon la variante). Les uniformes académiques ajoutés sans source individuelle sont également des adaptations identifiées.
-
-**Miyuki Umezaki reste sans sprite** : une référence d’identité et de tenue exploitable manque encore. **Les gardes OVA anonymes disposent d’une référence partielle**, la capture utilisateur `image(20261028-060014).png`, où ils apparaissent roux et habillés. Ils ne sont pas intégrés dans cette passe consacrée aux tenues des 30 personnages existants ; leur identité individuelle et les détails du bas du corps hors champ restent à préciser.
-
-## Contrôles
-
-La commande npm run test:discipline vérifie le registre, les fichiers réels, la sauvegarde, les identités, le respect des scènes verrouillées, le rendu intégral et les solutions de secours.
-
-Les originaux PNG sont copiés sans retouche ni redimensionnement. Le manifeste mesure la silhouette avec alpha > 8/255 : de faibles résidus presque transparents peuvent exister à l’extérieur. Les marges de la silhouette visible sont conservées.
-
-## Vérification en navigateur du lot v3
-
-Contrôle réalisé avec Chromium headless et Playwright sur le contenu final : **160 cartes**, **5 nouvelles tenues**, **7 entrées au filtre OVA**, **23 versions corrigées** et **6 PNG v3 chargés** à leur taille native de 1254 × 1254. La comparaison de Takurou fonctionne sur ordinateur et sur un écran de **390 px**, sans débordement horizontal ni erreur JavaScript. Les notes de proportions de Maiko sont consultables.
-
-Les tenues OVA de **Saori et Ruri** et la correction de **Takurou** ont été équipées dans le vrai vestiaire. Le canvas du jeu dessine leur cadre entier ; les trois choix sont conservés après rechargement. L’ancienne sélection v2 reste valide. Le rapport détaillé est dans [anime-v3-browser-qa-report.json](anime-v3-browser-qa-report.json).
-
-## Vérification en navigateur du lot v2
-
-Contrôle réalisé avec Chromium headless et Playwright : **154 cartes**, **22 nouveaux PNG chargés** à leur taille native 1254 × 1254, comparaison sur ordinateur et sur un écran de **390 px**, sans débordement horizontal ni erreur JavaScript.
-
-La sélection réelle des variantes de **Saori et Ruri** a été vérifiée dans le vestiaire du jeu. Le canvas du jeu dessine le cadre PNG entier ; le choix est conservé après rechargement. L'ancienne sélection reste valide. Le détail mesuré est dans [browser-qa-report.json](browser-qa-report.json).
+Aucun fichier antérieur n’est supprimé ou remplacé. Les contrôles d’alpha mesurent la silhouette avec alpha > 8/255 ; de faibles résidus presque transparents peuvent exister en dehors. Les PNG finaux ne sont pas retouchés par script.

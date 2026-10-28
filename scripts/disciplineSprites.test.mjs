@@ -161,11 +161,16 @@ test('independent OVA outfits keep style references separate from costume ancest
   assert.ok(outfits.length, 'Approved OVA outfits must be installed');
   for (const outfit of outfits) {
     assert.equal(outfit.provenance, 'reference');
-    assert.equal(outfit.isDefault, false);
+    if (outfit.newCharacter) {
+      assert.equal(Object.values(DISCIPLINE_HERO_BINDINGS).includes(outfit.characterId), false,
+        'Anonymous artwork must not create a playable hero binding');
+    } else {
+      assert.equal(outfit.isDefault, false);
+    }
     assert.equal(outfit.variantOf, undefined, 'An OVA outfit must not be linked as a correction of a JGSDF costume');
     const style = DISCIPLINE_SPRITE_REGISTRY.byId[outfit.styleSourceId];
     assert.ok(style, outfit.id);
-    assert.equal(style.characterId, outfit.characterId);
+    if (!outfit.newCharacter) assert.equal(style.characterId, outfit.characterId);
     assert.notEqual(style.src, outfit.src);
     const actor = actors.find(candidate => DISCIPLINE_HERO_BINDINGS[candidate.id] === outfit.characterId);
     if (!actor) continue;

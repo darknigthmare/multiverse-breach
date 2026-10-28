@@ -2954,5 +2954,827 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
       "en": "OVA blue utility clothing, dark pocketed vest, pale rolled cuffs, black gloves and silver belt buckle. Visible face, neck, shoulders and vest silhouette guided the sprite; unseen boots are reconstructed. A complete 1:1 likeness is not certified."
     },
     "styleSourceId": "discipline-sprite-v1:madoka:military-jgsdf"
+  },
+  {
+    "characterId": "akane",
+    "characterName": "Akane",
+    "costumeId": "tennis-adapted-reference-v4",
+    "label": {
+      "fr": "Fidélité v4 (adaptation)",
+      "en": "Fidelity v4 (adapted)"
+    },
+    "provenance": "adapted",
+    "category": "sport",
+    "notes": {
+      "fr": "Variante additive fondée sur les éléments visibles ; proportions hors champ conservées et non certifiées 1:1.",
+      "en": "Additive revision based on visible evidence; unseen proportions retained and not certified 1:1."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "undetermined",
+    "newOutfit": false,
+    "identitySourceId": "v4-akane-tennis-adapted-reference-v4",
+    "identitySourceMedium": "anime_ova",
+    "variantOf": "discipline-sprite-v1:akane:tennis-adapted"
+  },
+  {
+    "characterId": "eikichi",
+    "characterName": "Eikichi Ogiwara",
+    "costumeId": "suit-reference-v4",
+    "label": {
+      "fr": "Costume violet — fidélité v4",
+      "en": "Purple suit — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "civilian",
+    "notes": {
+      "fr": "Cheveux plus clairs et moins gonflés, visage allongé, cou et épaules du costume suivis sur la référence. La source est coupée à la taille : pantalon, mains au repos et chaussures restent ceux de l’ancienne version. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Reference-guided refinement of visible likeness and proportions. Existing clothing and body regions outside the source crop are preserved; full-body 1:1 fidelity is not certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/eikichi--suit-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-eikichi-suit-reference-v4",
+    "variantOf": "discipline-sprite-v1:eikichi:suit"
+  },
+  {
+    "characterId": "kanae",
+    "characterName": "Kanae",
+    "costumeId": "uniform-reference-v4",
+    "label": {
+      "fr": "Fidélité v4",
+      "en": "Fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Variante additive fondée sur les éléments visibles ; proportions hors champ conservées et non certifiées 1:1.",
+      "en": "Additive revision based on visible evidence; unseen proportions retained and not certified 1:1."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-kanae-uniform-reference-v4",
+    "identitySourceMedium": "visual_novel_game",
+    "variantOf": "discipline-sprite-v1:kanae:uniform"
+  },
+  {
+    "characterId": "kaori",
+    "characterName": "Kaori Matsuno",
+    "costumeId": "outfit-fidelity-v4",
+    "label": {
+      "fr": "Tenue civile — fidélité v4",
+      "en": "Civilian outfit — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "civilian",
+    "notes": {
+      "fr": "Cheveux raccourcis jusqu'aux épaules/omoplates conformément au dessin fourni. Frange, yeux verts et sourire doux rapprochés de la référence. Col et cravate affinés ; tenue existante conservée. Référence coupée au-dessus des genoux ; jambes et chaussures non vérifiables. Pose et perspective différentes de l'illustration source.",
+      "en": "Corrects the overlong plum hair toward the reference shoulder-length silhouette, face, green eyes and collar. The reference crops above the knees; legs and shoes remain the existing continuation."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit-fidelity-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-kaori-outfit-fidelity-v4",
+    "variantOf": "discipline-sprite-v1:kaori:outfit-reference-v2"
+  },
+  {
+    "characterId": "kaoru",
+    "characterName": "Kaoru Itou",
+    "costumeId": "uniform-reference-v4",
+    "label": {
+      "fr": "Uniforme noir et or — fidélité v4",
+      "en": "Black and gold uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Cheveux bruns plus droits et moins ondulés, contour du visage et épaules du col rapprochés de la planche aux cheveux longs. La planche établit le haut de la silhouette et la jupe mais coupe les pieds. La pose neutre et les chaussures sont conservées ; ne pas mélanger la tenue claire aux cheveux courts. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Reference-guided refinement of visible likeness and proportions. Existing clothing and body regions outside the source crop are preserved; full-body 1:1 fidelity is not certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaoru--uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-kaoru-uniform-reference-v4",
+    "variantOf": "discipline-sprite-v1:kaoru:uniform"
+  },
+  {
+    "characterId": "karen",
+    "characterName": "Karen Himeki",
+    "costumeId": "uniform-fidelity-v4",
+    "label": {
+      "fr": "Uniforme — fidélité v4",
+      "en": "Uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Visage plus doux, yeux verts et sourire discret. Cheveux argentés lisses, queue basse fine et attache noire. Col, cravate et galons conservés avec contours plus propres. Référence coupée avant les genoux ; chaussures non attestées. Attache noire et longueur de queue restent une interprétation du portrait.",
+      "en": "Refines the soft oval face, green eyes, smooth silver hair and fine low ponytail with a black tie. The reference crops above the knees and does not certify the shoes or complete standing proportions."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform-fidelity-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-karen-uniform-fidelity-v4",
+    "variantOf": "discipline-sprite-v1:karen:uniform-reference-v2"
+  },
+  {
+    "characterId": "katsuo",
+    "characterName": "Katsuo Isobe",
+    "costumeId": "baseball-reference-v4",
+    "label": {
+      "fr": "Tenue de baseball — fidélité v4",
+      "en": "Baseball outfit — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "sport",
+    "notes": {
+      "fr": "Coupe noire plus courte, yeux verts, visage et épaules naturelles rapprochés du portrait de baseball. Le portrait s’arrête à la taille : la ceinture, le pantalon et les chaussures conservent les éléments antérieurs et ne sont pas certifiés par la source. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Reference-guided refinement of visible likeness and proportions. Existing clothing and body regions outside the source crop are preserved; full-body 1:1 fidelity is not certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/katsuo--baseball-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-katsuo-baseball-reference-v4",
+    "variantOf": "discipline-sprite-v1:katsuo:baseball"
+  },
+  {
+    "characterId": "kawahara",
+    "characterName": "Kawahara",
+    "costumeId": "covered-medical-reference-v4",
+    "label": {
+      "fr": "Fidélité v4 (adaptation)",
+      "en": "Fidelity v4 (adapted)"
+    },
+    "provenance": "adapted",
+    "category": "other",
+    "notes": {
+      "fr": "Variante additive fondée sur les éléments visibles ; proportions hors champ conservées et non certifiées 1:1.",
+      "en": "Additive revision based on visible evidence; unseen proportions retained and not certified 1:1."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--covered-medical-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "undetermined",
+    "newOutfit": false,
+    "identitySourceId": "v4-kawahara-covered-medical-reference-v4",
+    "identitySourceMedium": "anime_ova",
+    "variantOf": "discipline-sprite-v1:kawahara:covered-medical"
+  },
+  {
+    "characterId": "kouzou",
+    "characterName": "Kouzou Machida",
+    "costumeId": "suit-reference-v4",
+    "label": {
+      "fr": "Costume gris — fidélité v4",
+      "en": "Grey suit — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "civilian",
+    "notes": {
+      "fr": "Chevelure grise plaquée, lunettes fines, visage anguleux et ligne des épaules rapprochés du portrait. La vue est recadrée à la taille et ne fixe pas les jambes ou les chaussures ; leur construction précédente est conservée. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Reference-guided refinement of visible likeness and proportions. Existing clothing and body regions outside the source crop are preserved; full-body 1:1 fidelity is not certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kouzou--suit-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-kouzou-suit-reference-v4",
+    "variantOf": "discipline-sprite-v1:kouzou:suit"
+  },
+  {
+    "characterId": "kumi",
+    "characterName": "Kumi Yamanaka",
+    "costumeId": "tennis-reference-v4",
+    "label": {
+      "fr": "Fidélité v4",
+      "en": "Fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "sport",
+    "notes": {
+      "fr": "Variante additive fondée sur les éléments visibles ; proportions hors champ conservées et non certifiées 1:1.",
+      "en": "Additive revision based on visible evidence; unseen proportions retained and not certified 1:1."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-kumi-tennis-reference-v4",
+    "identitySourceMedium": "visual_novel_game",
+    "variantOf": "discipline-sprite-v1:kumi:tennis"
+  },
+  {
+    "characterId": "leona",
+    "characterName": "Leona Morimoto",
+    "costumeId": "uniform-fidelity-v4",
+    "label": {
+      "fr": "Uniforme — fidélité v4",
+      "en": "Uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Silhouette plus allongée à partir du dessin d'animation habillé. Bottines remplacées par des mocassins simples montrés sur la feuille. Cheveux arrière resserrés et deux mèches spiralées frontales définies. Costume de base et palette issus du VN, géométrie et chaussures aidées par une feuille OVA monochrome : combinaison explicitement documentée. La feuille ne certifie pas les couleurs des chaussures ni une fidélité OVA intégrale. Proportions visuelles rapprochées, sans mesures 1:1 garanties.",
+      "en": "Keeps the VN uniform and palette; a monochrome OVA model sheet supports the elongated clothed silhouette and plain loafers replacing the invented boots. This mixed reference support does not certify a complete OVA version or exact 1:1 proportions."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform-fidelity-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-leona-uniform-fidelity-v4",
+    "sourceMediaNotes": "Existing visual-novel uniform and color palette, corrected with an OVA monochrome model sheet for clothed silhouette and loafers. Mixed reference support; not a certified all-OVA variant.",
+    "variantOf": "discipline-sprite-v1:leona:uniform"
+  },
+  {
+    "characterId": "linda",
+    "characterName": "Linda Hamilton",
+    "costumeId": "covered-uniform-reference-v4",
+    "label": {
+      "fr": "Fidélité v4 (adaptation)",
+      "en": "Fidelity v4 (adapted)"
+    },
+    "provenance": "adapted",
+    "category": "uniform",
+    "notes": {
+      "fr": "Variante additive fondée sur les éléments visibles ; proportions hors champ conservées et non certifiées 1:1.",
+      "en": "Additive revision based on visible evidence; unseen proportions retained and not certified 1:1."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "undetermined",
+    "newOutfit": false,
+    "identitySourceId": "v4-linda-covered-uniform-reference-v4",
+    "identitySourceMedium": "anime_ova",
+    "variantOf": "discipline-sprite-v1:linda:covered-uniform"
+  },
+  {
+    "characterId": "madoka",
+    "characterName": "Madoka Araki",
+    "costumeId": "uniform-fidelity-v4",
+    "label": {
+      "fr": "Uniforme — fidélité v4",
+      "en": "Uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Visage et cou moins comprimés. Chignons compacts, frange séparée et expression sérieuse conservés. Bras croisés et panneaux blancs plus naturels. Portrait de référence 250×300 coupé aux hanches. Jambes, collants et chaussures ne sont pas établis par la source.",
+      "en": "Refines the face, visible neck, compact buns and crossed arms from the named VN uniform portrait. The low-resolution portrait ends at the hips and does not establish legs or footwear."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform-fidelity-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-madoka-uniform-fidelity-v4",
+    "variantOf": "discipline-sprite-v1:madoka:uniform"
+  },
+  {
+    "characterId": "maiko",
+    "characterName": "Maiko Kaneda",
+    "costumeId": "uniform-fidelity-v4",
+    "label": {
+      "fr": "Uniforme — fidélité v4",
+      "en": "Uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Grand éventail de cheveux retiré ; cheveux maintenant proches et étroits derrière le dos. Visage ovale plus long, lunettes fines et cou mieux visible. Col et panneaux blancs clarifiés. Référence du buste seulement ; bas de jupe, jambes et chaussures restent une continuation du sprite. Attache arrière peu lisible dans le rendu ; aucune exactitude complète de la coiffure arrière revendiquée.",
+      "en": "Removes the broad invented hair fan and refines the longer oval face, glasses, neck and collar. The source is partial; skirt hem, legs and shoes remain a continuation of the existing sprite."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform-fidelity-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-maiko-uniform-fidelity-v4",
+    "variantOf": "discipline-sprite-v1:maiko:uniform"
+  },
+  {
+    "characterId": "mami",
+    "characterName": "Mami Nakai",
+    "costumeId": "uniform-reference-v4",
+    "label": {
+      "fr": "Fidélité v4",
+      "en": "Fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Variante additive fondée sur les éléments visibles ; proportions hors champ conservées et non certifiées 1:1.",
+      "en": "Additive revision based on visible evidence; unseen proportions retained and not certified 1:1."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-mami-uniform-reference-v4",
+    "identitySourceMedium": "visual_novel_game",
+    "variantOf": "discipline-sprite-v1:mami:uniform"
+  },
+  {
+    "characterId": "manami",
+    "characterName": "Manami",
+    "costumeId": "uniform-reference-v4",
+    "label": {
+      "fr": "Fidélité v4",
+      "en": "Fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Variante additive fondée sur les éléments visibles ; proportions hors champ conservées et non certifiées 1:1.",
+      "en": "Additive revision based on visible evidence; unseen proportions retained and not certified 1:1."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-manami-uniform-reference-v4",
+    "identitySourceMedium": "visual_novel_game",
+    "variantOf": "discipline-sprite-v1:manami:uniform"
+  },
+  {
+    "characterId": "maya",
+    "characterName": "Maya",
+    "costumeId": "tennis-adapted-reference-v4",
+    "label": {
+      "fr": "Fidélité v4 (adaptation)",
+      "en": "Fidelity v4 (adapted)"
+    },
+    "provenance": "adapted",
+    "category": "sport",
+    "notes": {
+      "fr": "Visage et regard affinés d’après le portrait OVA, frange et mèches courtes violettes resserrées. Le polo, le pantalon de sport, les chaussures et la silhouette de la version précédente sont conservés. Cette tenue reste une adaptation ; le portrait ne permet pas de vérifier les proportions du corps entier.",
+      "en": "Face, eyes, fringe and short violet hair refined from the OVA portrait. The existing polo, track trousers, shoes and body silhouette are preserved. This clothing remains an adaptation; the portrait cannot verify full-body proportions."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--tennis-adapted-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "undetermined",
+    "newOutfit": false,
+    "identitySourceId": "v4-maya-tennis-adapted-reference-v4",
+    "identitySourceMedium": "anime_ova",
+    "variantOf": "discipline-sprite-v1:maya:tennis-adapted"
+  },
+  {
+    "characterId": "momoe",
+    "characterName": "Momoe Endou",
+    "costumeId": "uniform-reference-v4",
+    "label": {
+      "fr": "Fidélité v4",
+      "en": "Fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Carré vert lissé, mèches avant resserrées et traits du visage affinés d’après le portrait du jeu. L’uniforme noir, crème et or ainsi que la silhouette en pied précédente sont conservés. Le portrait ne montre pas les jambes ni les chaussures : leurs proportions restent une interprétation de la version précédente.",
+      "en": "Green bob, narrow front locks and facial features refined from the game portrait. The black, cream and gold uniform and prior full-body silhouette are retained. The portrait does not show legs or shoes; their proportions remain the previous version's interpretation."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-momoe-uniform-reference-v4",
+    "identitySourceMedium": "visual_novel_game",
+    "variantOf": "discipline-sprite-v1:momoe:uniform"
+  },
+  {
+    "characterId": "momone",
+    "characterName": "Momone Nishizaki",
+    "costumeId": "uniform-reference-v4",
+    "label": {
+      "fr": "Fidélité v4",
+      "en": "Fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Variante discrète du visage et de la coiffure : traits légèrement affinés et contours des couettes rouges lissés d’après le portrait VN. Les rubans, l’uniforme, les jambes et les chaussures restent cohérents avec la version précédente. La référence partielle ne permet pas de certifier la stature ni les proportions du corps entier.",
+      "en": "A subtle face and hair revision: slightly finer features and smoother red twin-tail contours based on the VN portrait. Ribbons, uniform, legs and shoes remain consistent with the previous version. The partial reference cannot certify total stature or full-body proportions."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momone--uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-momone-uniform-reference-v4",
+    "identitySourceMedium": "visual_novel_game",
+    "variantOf": "discipline-sprite-v1:momone:uniform"
+  },
+  {
+    "characterId": "nanase",
+    "characterName": "Nanase Fujiwara",
+    "costumeId": "uniform-reference-v4",
+    "label": {
+      "fr": "Uniforme noir et or — fidélité v4",
+      "en": "Black and gold uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Chevelure blond cendré et mèches lissées, grands nœuds, ovale du visage et cou rapprochés de la référence. La référence s’arrête au haut des cuisses : jupe complète, jambes, collants et chaussures conservent la construction de la version précédente. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Reference-guided refinement of visible likeness and proportions. Existing clothing and body regions outside the source crop are preserved; full-body 1:1 fidelity is not certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/nanase--uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-nanase-uniform-reference-v4",
+    "variantOf": "discipline-sprite-v1:nanase:uniform"
+  },
+  {
+    "characterId": "ova-attendant-brown-bun",
+    "characterName": "Domestique OVA — chignon brun",
+    "costumeId": "ova-service-reference-v4",
+    "label": {
+      "fr": "Robe de service marine et tablier — animé",
+      "en": "Navy service dress and apron — OVA"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Domestique anonyme au chignon brun, première femme entièrement visible à gauche de la capture. Coiffe, col blanc, ruban rouge, manches et tablier à volants repris de l’image. Le bas de la robe, les collants et les chaussures sont reconstitués ; cette silhouette ne représente pas toutes les femmes du groupe.",
+      "en": "Unnamed attendant with a brown bun, the first fully visible woman at the left of the source. Cap, white collar, red ribbon, sleeves and ruffled apron follow the frame. Lower dress, stockings and shoes are reconstructed; this figure does not represent all women in the group."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-attendant-brown-bun--ova-service-reference-v4.png",
+    "isDefault": true,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "v4-ova-attendant-brown-bun-ova-service-reference-v4",
+    "newCharacter": true,
+    "styleSourceId": "discipline-sprite-v1:maiko:ova-tactical-reference-v3"
+  },
+  {
+    "characterId": "ova-guest-yellow-dress",
+    "characterName": "Invitée OVA — robe jaune",
+    "costumeId": "ova-yellow-dress-reference-v4",
+    "label": {
+      "fr": "Robe jaune à bordure en pointes — animé",
+      "en": "Yellow dress with pointed hem — OVA"
+    },
+    "provenance": "reference",
+    "category": "civilian",
+    "notes": {
+      "fr": "Femme anonyme debout à droite dans la scène de soirée : longs cheveux châtain clair, yeux lavande, robe jaune à bordure sombre et manches à volants. Visage, cou et coupe visible suivis. Jambes basses, chaussures, arrière de la coiffure et portions cachées par la table restent reconstitués ; aucun nom de personnage n’est affirmé.",
+      "en": "Unnamed standing woman at the right of the evening scene: long light-brown hair, lavender eyes, yellow dress with dark edging and ruffled sleeves. Visible face, neck and garment shape follow the frame. Lower legs, shoes, rear hair and regions hidden by the table are reconstructed; no named character identity is asserted."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-guest-yellow-dress--ova-yellow-dress-reference-v4.png",
+    "isDefault": true,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "v4-ova-guest-yellow-dress-ova-yellow-dress-reference-v4",
+    "newCharacter": true,
+    "styleSourceId": "discipline-sprite-v1:maiko:ova-tactical-reference-v3"
+  },
+  {
+    "characterId": "ova-officer-bob",
+    "characterName": "Officière OVA — carré châtain",
+    "costumeId": "ova-plum-uniform-reference-v4",
+    "label": {
+      "fr": "Uniforme blanc et prune — animé",
+      "en": "White and plum uniform — OVA"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Officière anonyme debout à l’arrière de la capture : carré châtain, yeux verts, béret prune, col et épaulettes assortis. Visage, cou et épaules suivis. Le pantalon prune et les chaussures noires complètent le bas du corps hors cadre ; ils ne sont pas attestés par cette vue.",
+      "en": "Unnamed standing officer at the back of the source frame: light brown bob, green eyes, plum beret, collar and epaulettes. Visible face, neck and shoulders guide the sprite. Plum trousers and black shoes complete the off-frame lower body and are not established by this view."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png",
+    "isDefault": true,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "v4-ova-officer-bob-ova-plum-uniform-reference-v4",
+    "newCharacter": true,
+    "styleSourceId": "discipline-sprite-v1:maiko:ova-tactical-reference-v3"
+  },
+  {
+    "characterId": "ova-officer-swept-hair",
+    "characterName": "Officière OVA — cheveux tirés",
+    "costumeId": "ova-plum-uniform-reference-v4",
+    "label": {
+      "fr": "Uniforme blanc à poches prune — animé",
+      "en": "White uniform with plum pocket flaps — OVA"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Officière anonyme assise au premier plan de la capture : cheveux bruns tirés, yeux bleus, béret, poches à rabats prune et petits boutons dorés. Proportions du visage, du cou et des épaules suivies. La posture debout, le pantalon, les chaussures et l’arrière caché de la coiffure restent reconstitués.",
+      "en": "Unnamed foreground officer: swept-back brown hair, blue eyes, beret, plum pocket flaps and small gold buttons. Visible face, neck and shoulder relationships follow the frame. Standing pose, trousers, shoes and hidden rear hairstyle are reconstructed."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-swept-hair--ova-plum-uniform-reference-v4.png",
+    "isDefault": true,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "v4-ova-officer-swept-hair-ova-plum-uniform-reference-v4",
+    "newCharacter": true,
+    "styleSourceId": "discipline-sprite-v1:maiko:ova-tactical-reference-v3"
+  },
+  {
+    "characterId": "reina",
+    "characterName": "Reina Morimoto",
+    "costumeId": "suit-fidelity-v4",
+    "label": {
+      "fr": "Tailleur violet — fidélité v4",
+      "en": "Purple suit — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "civilian",
+    "notes": {
+      "fr": "Visage ovale adouci et petite bouche calme. Chignon compact et deux mèches avant plus droites. Costume violet/or, pose et silhouette existants conservés. Correction limitée au visage et aux cheveux ; aucune nouvelle proportion du corps revendiquée. Pieds et jambes hors de la référence : détails conservés du sprite. Cette variante du costume existant est distincte de la robe de soirée dont la génération root a été bloquée.",
+      "en": "Refines only the face, compact blonde updo and straight front locks; the existing purple-and-gold suit and body silhouette are retained. This is separate from the blocked new evening-dress attempt; unseen lower details are not verified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/reina--suit-fidelity-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-reina-suit-fidelity-v4",
+    "variantOf": "discipline-sprite-v1:reina:suit"
+  },
+  {
+    "characterId": "ruri",
+    "characterName": "Ruri Nonomiya",
+    "costumeId": "casual-fidelity-v4",
+    "label": {
+      "fr": "Tenue civile — fidélité v4",
+      "en": "Casual outfit — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "civilian",
+    "notes": {
+      "fr": "Visage adouci et sourire discret. Couettes plus fines et silhouette capillaire resserrée. Vêtements, chaussures et pose conservés. Révision subtile, sans garantie métrique 1:1. Référence coupée avant les pieds ; chaussures conservées sans certification canonique.",
+      "en": "Refines the soft face, narrow green twin tails, collar and pleats while preserving the existing outfit. The reference crops the feet, so shoe design and lower-body continuation are retained, not canonically verified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-fidelity-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-ruri-casual-fidelity-v4",
+    "variantOf": "discipline-sprite-v1:ruri:casual-reference-v2"
+  },
+  {
+    "characterId": "saki",
+    "characterName": "Saki Yamagata",
+    "costumeId": "civilian-original-reference-v4",
+    "label": {
+      "fr": "Pull bleu et jupe marine — identité v4",
+      "en": "Blue sweater and navy skirt — identity v4"
+    },
+    "provenance": "adapted",
+    "category": "civilian",
+    "notes": {
+      "fr": "Frange blonde de côté, pointes recourbées, yeux verts et visage rapprochés du portrait ; corps et vêtements conservés. Le portrait ne montre aucune tenue complète ni proportions corporelles. Le pull bleu, la jupe marine, les collants et les chaussures restent une création adapted ; le corps antérieur est conservé. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Reference-guided refinement of visible likeness and proportions. Existing clothing and body regions outside the source crop are preserved; full-body 1:1 fidelity is not certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saki--civilian-original-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "undetermined",
+    "newOutfit": false,
+    "identitySourceId": "v4-saki-civilian-original-reference-v4",
+    "identitySourceMedium": "visual_novel_game",
+    "variantOf": "discipline-sprite-v1:saki:civilian-original"
+  },
+  {
+    "characterId": "saori",
+    "characterName": "Saori Otokawa",
+    "costumeId": "uniform-fidelity-v4",
+    "label": {
+      "fr": "Uniforme — fidélité v4",
+      "en": "Uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Face légèrement allongée et cou mieux dégagé. Chevelure bleu marine plus droite, mèches avant séparées. Col et panneaux blancs mieux définis. Ruban blanc encore plus grand que la référence souhaitée. Source d'uniforme partielle ; chaussures et proportions des jambes héritées du sprite. La feuille OVA sert seulement d'appui pour le visage.",
+      "en": "Refines the oval face, neck, straight navy hair and uniform details. The small OVA head sheet supports identity only; the outfit remains the VN uniform. Bow size and unseen leg/foot details remain approximate."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-fidelity-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-saori-uniform-fidelity-v4",
+    "variantOf": "discipline-sprite-v1:saori:uniform-reference-v2"
+  },
+  {
+    "characterId": "security-guard-ova",
+    "characterName": "Garde de sécurité OVA — roux",
+    "costumeId": "ova-security-reference-v4",
+    "label": {
+      "fr": "Tee-shirt blanc et lunettes bleues — animé",
+      "en": "White T-shirt and blue glasses — OVA"
+    },
+    "provenance": "reference",
+    "category": "military",
+    "notes": {
+      "fr": "Garde anonyme roux de la capture OVA : visage anguleux, lunettes bleues, tee-shirt blanc, pantalon noir, ceinture, bracelets et arme. Proportions du haut du corps suivies ; bas des jambes et chaussures hors cadre reconstitués. L’identité individuelle n’est pas nommée dans la source.",
+      "en": "Unnamed red-haired guard from the OVA frame. Angular face, blue glasses, white T-shirt, black trousers, belt, wristbands and rifle follow the reference. Visible upper-body proportions are retained; lower legs and shoes are reconstructed. No named identity is asserted."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/security-guard-ova--ova-security-reference-v4.png",
+    "isDefault": true,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "anime_ova",
+    "newOutfit": true,
+    "identitySourceId": "v4-security-guard-ova-ova-security-reference-v4",
+    "newCharacter": true,
+    "styleSourceId": "discipline-sprite-v1:takurou:ova-orange-proportions-v3"
+  },
+  {
+    "characterId": "sudou",
+    "characterName": "Sudou",
+    "costumeId": "uniform-reference-v4",
+    "label": {
+      "fr": "Uniforme clair — fidélité v4",
+      "en": "Light uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Retouche discrète de la chevelure et du contour visage/cou d’après la référence ; lunettes et uniforme conservés. Les yeux restent stylisés. Portrait partiel jusqu’à la taille : jambes, chaussures et proportions non visibles conservées de l’ancien sprite. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Reference-guided refinement of visible likeness and proportions. Existing clothing and body regions outside the source crop are preserved; full-body 1:1 fidelity is not certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/sudou--uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-sudou-uniform-reference-v4",
+    "variantOf": "discipline-sprite-v1:sudou:uniform"
+  },
+  {
+    "characterId": "takurou",
+    "characterName": "Takurou Hayami",
+    "costumeId": "ova-orange-proportions-v4",
+    "label": {
+      "fr": "Tenue orange — fidélité OVA v4",
+      "en": "Orange outfit — OVA fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "civilian",
+    "notes": {
+      "fr": "Frange brune et contour latéral des cheveux rapprochés de l’OVA ; traits du visage affinés sans amplifier la correction v3. Référence OVA de 225 × 169 px, limitée au haut du corps. Bas du corps, chaussures et pose de la v3 conservés ; aucune mesure corporelle intégrale n’est déduite. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Reference-guided refinement of visible likeness and proportions. Existing clothing and body regions outside the source crop are preserved; full-body 1:1 fidelity is not certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/takurou--ova-orange-proportions-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "anime_ova",
+    "newOutfit": false,
+    "identitySourceId": "v4-takurou-ova-orange-proportions-v4",
+    "variantOf": "discipline-sprite-v1:takurou:ova-orange-proportions-v3"
+  },
+  {
+    "characterId": "tooru",
+    "characterName": "Tooru Satou",
+    "costumeId": "uniform-reference-v4",
+    "label": {
+      "fr": "Uniforme clair — fidélité v4",
+      "en": "Light uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Coupe bleu-vert plus courte, profil du visage allongé et épaules rapprochés de la référence. La source est un profil recadré à la taille ; les longueurs des jambes et les chaussures restent celles du sprite précédent. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Reference-guided refinement of visible likeness and proportions. Existing clothing and body regions outside the source crop are preserved; full-body 1:1 fidelity is not certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/tooru--uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-tooru-uniform-reference-v4",
+    "variantOf": "discipline-sprite-v1:tooru:uniform"
+  },
+  {
+    "characterId": "yuri",
+    "characterName": "Yuri Nishizaki",
+    "costumeId": "uniform-fidelity-v4",
+    "label": {
+      "fr": "Uniforme — fidélité v4",
+      "en": "Uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Raffinement subtil du visage calme, de la frange et des contours des cheveux bordeaux ; silhouette et vêtements de v2 conservés. Les différences d’identité importantes avaient déjà été réduites en v2. La source s’arrête au-dessus des genoux : jambes, chaussures et proportions complètes ne sont pas vérifiables 1:1.",
+      "en": "Subtle refinement of the calm face, fringe and burgundy hair contours; v2 silhouette and clothing are retained. Major identity mismatches had already been reduced in v2. The source ends above the knees, so legs, footwear and complete proportions cannot be verified 1:1."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-fidelity-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-yuri-uniform-fidelity-v4",
+    "variantOf": "discipline-sprite-v1:yuri:uniform-reference-v2"
+  },
+  {
+    "characterId": "yuuji",
+    "characterName": "Yuuji Takigawa",
+    "costumeId": "light-uniform-reference-v4",
+    "label": {
+      "fr": "Uniforme clair — fidélité v4",
+      "en": "Light uniform — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "uniform",
+    "notes": {
+      "fr": "Coiffure sombre davantage balayée vers l’arrière, longues mèches fines, visage et cou rapprochés du portrait. La source s’arrête à la taille : jambes et chaussures conservées, sans certification de leurs proportions. Fidélité intégrale 1:1 non certifiée.",
+      "en": "Reference-guided refinement of visible likeness and proportions. Existing clothing and body regions outside the source crop are preserved; full-body 1:1 fidelity is not certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuji--light-uniform-reference-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "visual_novel_game",
+    "newOutfit": false,
+    "identitySourceId": "v4-yuuji-light-uniform-reference-v4",
+    "variantOf": "discipline-sprite-v1:yuuji:light-uniform"
+  },
+  {
+    "characterId": "yuuki",
+    "characterName": "Yuuki Miyagishi",
+    "costumeId": "ova-tactical-fidelity-v4",
+    "label": {
+      "fr": "Tenue tactique OVA — fidélité v4",
+      "en": "OVA tactical outfit — fidelity v4"
+    },
+    "provenance": "reference",
+    "category": "military",
+    "notes": {
+      "fr": "Visage plus anguleux et cou naturel. Modelé des bras moins facetté, tout en conservant sa carrure. Tenue olive, poches, gants et protections conservés ; semelles claires visibles. Les prises OVA ont une perspective différente ; elles ne certifient pas les proportions en position neutre. Pieds du plan debout coupés ; détail des semelles appuyé par une vue d'action.",
+      "en": "Refines the OVA face, natural neck and less angular arm shading; preserves the visible olive tactical outfit. Standing-frame feet are cropped and the action view only supports sole details, so exact neutral proportions cannot be certified."
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-fidelity-v4.png",
+    "isDefault": false,
+    "available": true,
+    "revision": 4,
+    "sourceMedium": "anime_ova",
+    "newOutfit": false,
+    "identitySourceId": "v4-yuuki-ova-tactical-fidelity-v4",
+    "variantOf": "discipline-sprite-v1:yuuki:ova-tactical-reference-v3"
   }
 ]);
