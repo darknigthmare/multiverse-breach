@@ -164,6 +164,31 @@ test('empty CG-delivery receipt preserves actual refusal, while atlas and wrong-
   assert.equal(history.byJob.has('beta/CG04'), false);
 });
 
+test('dated partial CG continuations retain their own history while incomplete empty plans and atlas records stay excluded', t => {
+  const f = fixture(t);
+  const putJson = (file, value) => f.put(file, JSON.stringify(value));
+  const initialPlan = 'docs/cg/alpha-initial-plan.json';
+  const continuationPlan = 'docs/cg/alpha-continuation-plan.json';
+  putJson(initialPlan, {characterId: 'alpha', slots: SLOT_IDS.map(slot => ({slot}))});
+  putJson(continuationPlan, {characterId: 'alpha', slots: SLOT_IDS.slice(1).map(slot => ({slot}))});
+  putJson('docs/cg/alpha-initial.json', {characterId: 'alpha', entries: [{id: 'cg:alpha:01'}], planFile: initialPlan});
+  putJson('docs/cg/alpha-continuation.json', {characterId: 'alpha', entries: SLOT_IDS.slice(1).map(slot => ({id: `cg:alpha:${slot}`})),
+    planFile: continuationPlan, revisionAttempts: [{slot: 'CG09', status: 'replaced-proposal'}], unattemptedSlots: ['CG15']});
+  putJson('docs/cg/empty-partial.json', {characterId: 'alpha', entries: [], planFile: continuationPlan, blockedSlots: ['CG08']});
+  putJson('docs/cg/atlas-partial.json', {characterId: 'alpha', entries: [{id: 'atlas:alpha'}], planFile: continuationPlan, blockedSlots: ['CG08']});
+  for (const [label, slots] of [['duplicate', [...SLOT_IDS.slice(1, -1), 'CG02']], ['invalid', [...SLOT_IDS.slice(1, -1), 'CG16']], ['null', [null]]]) {
+    const planFile = `docs/cg/${label}-plan.json`;
+    putJson(planFile, {characterId: 'alpha', slots: slots.map(slot => slot === null ? null : {slot})});
+    putJson(`docs/cg/${label}-receipt.json`, {characterId: 'alpha', entries: [{id: 'cg:alpha:02'}], planFile, blockedSlots: ['CG08']});
+  }
+  const history = loadCgGenerationHistory(f.root, new Set(['alpha']));
+  assert.deepEqual(history.receipts.map(r => r.path).sort(), ['docs/cg/alpha-continuation.json', 'docs/cg/alpha-initial.json']);
+  assert.equal(history.byJob.get('alpha/CG09')[0].kind, 'revision-attempt');
+  assert.equal(history.byJob.get('alpha/CG09')[0].receiptFile, 'docs/cg/alpha-continuation.json');
+  assert.equal(history.byJob.get('alpha/CG15')[0].kind, 'non-attempt');
+  assert.equal(history.byJob.has('alpha/CG08'), false);
+});
+
 test('rendered work fiche applies the same whole-roster instruction without claiming an image was generated', t => {
   const f = fixture(t);
   const rendered = renderGlobalJob(f.build(), 'beta', 'CG02');

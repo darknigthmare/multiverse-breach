@@ -37,6 +37,21 @@ export const ROI_BURGONDE_BOSS_SPRITE = '/sprites/generated/bosses/kaamelott/roi
 // Reviewed sprite corrections have their own audited sheets. Historical PNGs
 // remain available with their original provenance and as documented variants.
 export const CORRECTED_CANON_HERO_SPRITES = Object.freeze({
+  nyme_first_song: "/sprites/generated/heroes/mythos-primordia/nyme-first-song-v2-fidelity-wave11-2026-10-26.png",
+  oona_vell: "/sprites/generated/heroes/the-drowned-testament/oona-vell-v2-fidelity-wave11-2026-10-28.png",
+  rumi_illa: "/sprites/generated/heroes/tawantinsuyu-the-split-sun/rumi-illa-v2-fidelity-wave11-2026-10-26.png",
+  melantho_seer: "/sprites/generated/heroes/aegea-war-of-the-moirai/melantho-seer-v2-fidelity-wave11-2026-10-26.png",
+  daichi_kurogane: "/sprites/generated/heroes/yomi-no-kage/daichi-kurogane-v2-fidelity-wave11-2026-10-26.png",
+  nova_bell: "/sprites/generated/heroes/helios-56/nova-bell-v2-fidelity-wave11-2026-10-26.png",
+  wei_long: "/sprites/generated/heroes/mandate-of-nine-heavens/wei-long-v2-fidelity-wave11-2026-10-26.png",
+  sten_ulfsson: "/sprites/generated/heroes/nine-realms-last-twilight/sten-ulfsson-v2-fidelity-wave11-2026-10-26.png",
+  aura_7: "/sprites/generated/heroes/helios-56/aura-7-v2-fidelity-wave11-2026-10-26.png",
+  numa_corvinus: "/sprites/generated/heroes/imperium-aeternum/numa-corvinus-v2-fidelity-wave11-2026-10-26.png",
+  merek_flint: "/sprites/generated/heroes/the-aether-crown/merek-flint-v2-fidelity-wave11-2026-10-26.png",
+  taset_lioness: "/sprites/generated/heroes/kemet-the-devoured-sun/taset-lioness-v2-fidelity-wave11-2026-10-26.png",
+  brother_ors: "/sprites/generated/heroes/meridian-clockwork/brother-ors-v2-fidelity-wave11-2026-10-26.png",
+  cassian_varro: '/sprites/generated/heroes/imperium-aeternum/cassian-varro-v2-fidelity-wave11-2026-10-26.png',
+  ilya_cross: '/sprites/generated/heroes/iron-tempest/ilya-cross-v2-fidelity-wave11-2026-10-26.png',
   thaleia_naxos: '/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png',
   mei_zhen: '/sprites/generated/heroes/mandate-of-nine-heavens/mei-zhen-v2-fidelity-wave10-2026-10-25.png',
   yrsa_rune_binder: '/sprites/generated/heroes/nine-realms-last-twilight/yrsa-rune-binder-v2-fidelity-wave10-2026-10-25.png',
@@ -81,6 +96,66 @@ export const CORRECTED_CANON_HERO_SPRITES = Object.freeze({
 });
 
 export const CORRECTED_HERO_SPRITE_VARIANTS = Object.freeze({
+  nyme_first_song: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Fidélité V2 — Nyme, 16 poses revues", src: CORRECTED_CANON_HERO_SPRITES.nyme_first_song, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/mythos-primordia/nyme-first-song.png", current: false })
+  ]),
+  oona_vell: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-28", label: "Fidélité V2 — Oona Vell, 16 poses revues", src: CORRECTED_CANON_HERO_SPRITES.oona_vell, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/the-drowned-testament/oona-vell.png", current: false })
+  ]),
+  rumi_illa: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Rumi Illa — référence V2, seize poses revues", src: CORRECTED_CANON_HERO_SPRITES.rumi_illa, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/tawantinsuyu-the-split-sun/rumi-illa.png", current: false })
+  ]),
+  melantho_seer: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Melantho — référence V2, seize poses revues", src: CORRECTED_CANON_HERO_SPRITES.melantho_seer, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/aegea-war-of-the-moirai/melantho-seer.png", current: false })
+  ]),
+  daichi_kurogane: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Daichi Kurogane — référence V2, seize poses revues", src: CORRECTED_CANON_HERO_SPRITES.daichi_kurogane, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/yomi-no-kage/daichi-kurogane.png", current: false })
+  ]),
+  nova_bell: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Nova Bell — référence V2, seize poses revues", src: CORRECTED_CANON_HERO_SPRITES.nova_bell, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/helios-56/nova-bell.png", current: false })
+  ]),
+  wei_long: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Wei Long — référence V2, seize poses revues", src: CORRECTED_CANON_HERO_SPRITES.wei_long, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/mandate-of-nine-heavens/wei-long.png", current: false })
+  ]),
+  sten_ulfsson: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Portrait V2 — fourrure grise, étoffes bleues et lance à deux pointes", src: CORRECTED_CANON_HERO_SPRITES.sten_ulfsson, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/nine-realms-last-twilight/sten-ulfsson.png", current: false })
+  ]),
+  aura_7: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Portrait V2 — robot ivoire et rouge, écran cyan, gantelet droit et bouclier gauche", src: CORRECTED_CANON_HERO_SPRITES.aura_7, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/helios-56/aura-7.png", current: false })
+  ]),
+  numa_corvinus: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Portrait V2 — robes bleu nuit et or, sandales et bâton d’augure droit", src: CORRECTED_CANON_HERO_SPRITES.numa_corvinus, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/imperium-aeternum/numa-corvinus.png", current: false })
+  ]),
+  merek_flint: Object.freeze([
+    Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Portrait V2 — armure acier et bronze, foyer orange et marteau à vapeur", src: CORRECTED_CANON_HERO_SPRITES.merek_flint, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/the-aether-crown/merek-flint.png", current: false })
+  ]),
+  taset_lioness: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave11-2026-10-26', label: "Portrait V2 — drapé ivoire, étoffe rouille, lance droite et bouclier gauche", src: CORRECTED_CANON_HERO_SPRITES.taset_lioness, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/kemet-the-devoured-sun/taset-lioness.png", current: false })
+  ]),
+  brother_ors: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave11-2026-10-26', label: "Portrait V2 — implants en laiton, robe ivoire, cape rouille et masse rigide", src: CORRECTED_CANON_HERO_SPRITES.brother_ors, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/meridian-clockwork/brother-ors.png", current: false })
+  ]),
+  cassian_varro: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave11-2026-10-26', label: 'Portrait V2 — armure noire, cape rouge, gladius droit et scutum gauche', src: CORRECTED_CANON_HERO_SPRITES.cassian_varro, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/imperium-aeternum/cassian-varro.png', current: false })
+  ]),
+  ilya_cross: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave11-2026-10-26', label: 'Portrait V2 — cheveux noirs, écharpe ocre et lame à rotor gauche', src: CORRECTED_CANON_HERO_SPRITES.ilya_cross, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/iron-tempest/ilya-cross.png', current: false })
+  ]),
   thaleia_naxos: Object.freeze([
     Object.freeze({ id: 'v2-fidelity-wave10-2026-10-25', label: "Portrait V2 — drapés bleu/ivoire, épée droite et fils violets", src: CORRECTED_CANON_HERO_SPRITES.thaleia_naxos, current: true }),
     Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos.png', current: false })

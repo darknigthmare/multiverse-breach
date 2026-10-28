@@ -8,11 +8,13 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { validateAgentBatches } from './cgAgentBatches.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
-export const DEFAULT_DATE = '2026-10-25';
+export const DEFAULT_DATE = '2026-10-26';
 export const PROMPT_FILE = 'docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt';
-export const MANIFEST_FILE = `docs/cg/roster-global-batch-wave10-${DEFAULT_DATE}.json`;
+export const MANIFEST_FILE = `docs/cg/roster-global-batch-wave11-${DEFAULT_DATE}.json`;
+export const AGENT_BATCH_PLAN_FILE = `docs/cg/roster-agent-batches-40-${DEFAULT_DATE}.json`;
 export const SLOT_IDS = Array.from({ length: 15 }, (_, index) => `CG${String(index + 1).padStart(2, '0')}`);
 const INPUT_FILES = {
   plan: 'docs/cg/roster-production-2026-10-18.json',
@@ -67,6 +69,7 @@ Les CG spéciales suivent les exemples et règles du pilote, en respectant l’a
 Donne à chaque CG une vraie nouvelle pose ou composition, une action, un angle et un décor propres. Pour CG02 et CG03, où aucun corps n’est demandé, varie la présentation de l’objet ou l’architecture de la scène. Une recoloration, un autre recadrage ou un fond changé sur la même pose ne suffit pas. Chaque décor doit respecter la technologie, les matériaux, la période, l’architecture, les lieux et les limites de l’univers ; un lieu original compatible ne doit pas être présenté comme une capture officielle.
 
 EXÉCUTION ET PARALLÉLISATION
+Organise les personnages encore incomplets par lots de 40 personnages par agent, selon ${AGENT_BATCH_PLAN_FILE}. Le dernier lot peut contenir le reliquat. Chaque personnage appartient à un seul lot ; les séries déjà complètes et les N/A documentés restent préservés. Dans les limites de concurrence disponibles, attribue un lot actif à chaque producteur et conserve les autres lots en attente, sans prétendre qu'ils s'exécutent en arrière-plan. Chaque agent vérifie les références et traite les quinze créneaux applicables de ses 40 personnages ; un lot attribué ou préparé ne compte pas comme 40 séries produites. Confie la revue des fichiers réels à un autre agent et conserve un responsable unique des registres et de l'Excel.
 Exécute cette même consigne sur chaque liaison personnage/créneau du manifeste, en parallèle pour les sujets indépendants et avec un propriétaire unique des registres partagés. Commence par les travaux dont la référence et le thème sont établis, puis résous les références et briefs manquants du reste du roster. Un rendu de fiche par le script est une instruction de travail, jamais une image produite. Une consigne unique n’est pas une promesse qu’un appel d’image peut rendre des dizaines de milliers de fichiers : utilise le nombre d’appels réellement nécessaire et conserve les limites des outils.
 Pour une image, transmets au générateur la bonne référence et les seuls appuis de décor/équipement/costume autorisés pour ce job. Génère un fichier individuel propre et inspectable, avec le personnage entier et l’équipement non tronqué lorsque le thème le demande ; aucune planche géante du roster ou galerie de miniatures ne remplace les CG individuelles. Pour corriger une différence visuelle, utilise une vraie génération ou édition d’image ; un redimensionnement ou une recoloration technique n’est pas un redessin. Réserve les traitements de format à la mise au ratio, aux exports et au rangement, avec leurs preuves distinctes.
 Conserve les anciennes CG, atlas, sources et essais remplacés avec leurs empreintes. Ajoute les corrections comme versions datées et accessibles en variantes. Ne réécris pas les rapports historiques figés. Si un service refuse une demande ou ne rend aucun fichier, conserve le refus réel, son créneau, le stade, la catégorie communiquée et le reçu ; n’invente pas de succès, ne contourne pas ce refus et poursuis les sujets non affectés. Une non-tentative reste distincte d’un refus et d’un N/A.
@@ -137,8 +140,14 @@ export function loadCgGenerationHistory(root, subjectIds) {
     const plan = readJson(root, raw.planFile);
     const plannedSlots = Array.isArray(plan.slots) ? plan.slots : Array.isArray(plan.entries) ? plan.entries : [];
     const planOwner = plan.characterId || plan.heroId;
-    const uniqueSlots = new Set(plannedSlots.map(item => slotId(item.slot || item.id || item.cgSlot || item.cg)).filter(Boolean));
-    if (planOwner !== id || plannedSlots.length !== 15 || uniqueSlots.size !== 15) continue;
+    const uniqueSlots = new Set(plannedSlots.map(item => slotId(item?.slot || item?.id || item?.cgSlot || item?.cg)).filter(Boolean));
+    const validCgPlan = plannedSlots.length > 0 && plannedSlots.length <= 15 && uniqueSlots.size === plannedSlots.length;
+    const hasCgEntries = raw.entries.length > 0 && raw.entries.length <= 15
+      && raw.entries.every(entry => typeof entry?.id === 'string' && entry.id.startsWith('cg:'));
+    // Dated continuations may cover only their newly delivered CG slots. Empty
+    // receipts still require a full fifteen-slot plan to distinguish CG refusal
+    // histories from sprite attempts and source-only documents.
+    if (planOwner !== id || !validCgPlan || (raw.entries.length ? !hasCgEntries : plannedSlots.length !== 15)) continue;
     const pin = filePin(root, file);
     receipts.push({ ...pin, characterId: id, planFile: raw.planFile,
       historicalRefusalEvidenceFiles: raw.historicalRefusalEvidenceFiles || [],
@@ -472,6 +481,8 @@ export function createGlobalBatch({ root, plan, bible, inputs, generationHistory
       changedPoseAndChangedSettingRequiredPerCg: true,
       existingVariantsMustRemainAccessible: true,
       oneInstructionMayRequireMultipleRealImageCalls: true,
+      charactersPerAgent: 40,
+      agentAssignmentIsNotDeliveredArtwork: true,
       automaticBackgroundGenerationOrSchedulingConfigured: false
     },
     generationReceiptPins: generationHistory.receipts,
@@ -487,6 +498,8 @@ export function buildCgGlobalBatch(root = ROOT, { date = DEFAULT_DATE, manifestF
   const pilot = readJson(root, INPUT_FILES.pilot);
   const roster = readJson(root, INPUT_FILES.roster);
   const revisions = readJson(root, INPUT_FILES.revisions);
+  const agentBatchPlan = existsSync(path.resolve(root, AGENT_BATCH_PLAN_FILE)) ? readJson(root, AGENT_BATCH_PLAN_FILE) : null;
+  if (agentBatchPlan) inputs.agentBatches = filePin(root, AGENT_BATCH_PLAN_FILE);
   const history = loadCgGenerationHistory(root, new Set(plan.subjects.map(subject => subject.characterId)));
   const atlasHistory = loadAtlasCorrectionHistory(root, bible, date);
   const currentVisualReviews = new Map([...pilot.entries, ...roster.entries].map(entry => [entry.id, entry.visualReview || null]));
@@ -494,6 +507,7 @@ export function buildCgGlobalBatch(root = ROOT, { date = DEFAULT_DATE, manifestF
   const batch = createGlobalBatch({ root, plan, bible, inputs, generationHistory: history, atlasHistory, currentVisualReviews, date, manifestFile });
   assert.equal(batch.summary.actualDeliveredCg, pilot.entries.length + roster.entries.length, 'Every current gallery CG needs exactly one matrix slot');
   batch.summary.registeredVersions = pilot.entries.length + roster.entries.length + revisions.revisions.length;
+  if (agentBatchPlan) batch.agentBatching = { ...validateAgentBatches(agentBatchPlan, plan), plan: inputs.agentBatches };
   return batch;
 }
 

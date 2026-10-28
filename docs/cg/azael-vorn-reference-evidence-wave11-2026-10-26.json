@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "azael_vorn",
+  "heroId": "azael_vorn",
+  "characterName": "Azael Vorn",
+  "incarnation": "Infernum: Nine Pits — Azael Vorn, canon original du projet (2026) — selected current V2",
+  "status": "internal-current-v2-portrait-inspected-source-qualified-with-limitations",
+  "sourceKind": "original-project-internal-canon",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": true,
+  "oldAtlasActuallyViewed": true,
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/infernum_nine_pits/heroes/azael_vorn.png",
+      "sha256": "e905841f32e7e468f7cb04a2cc7aa4da690ab9f6a60246fb23c69e8bb14877cd",
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "viewed": true,
+      "inspected": true
+    },
+    {
+      "path": "/sprites/generated/heroes/infernum-nine-pits/azael-vorn.png",
+      "sha256": "f0018c3a2e5d129bbee0388690778f52341352541ae61bd2167386a3ad7993f1",
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Red-skinned humanoid demon with two curved ridged black horns, pointed ears, long dark tousled swept-back hair, long tattered burgundy coat with high collar, full dark trousers and pointed clawed armored boots."
+    ],
+    "face": [
+      "Red skin, strong angular clean-shaven face, orange glowing eyes, two black horns, pointed ears."
+    ],
+    "equipment": [
+      "Anatomical RIGHT hand holds black/orange jagged hellblade with ornate dark crossguard; visible blade continues beyond LEFT canvas edge, so full blade length and terminal point profile are UNKNOWN. Grip/guard near hand are visible. Belt carries full small caged orange lanterns."
+    ],
+    "costume": [
+      "Burgundy long high collar coat, dark spiked metal asymmetric shoulder armor, red shirt, several black/brown belts with silver buckles, dark trousers and black metal shin plates/boots tipped orange claw shapes."
+    ]
+  },
+  "scopeLimitations": [
+    "Internal original-project authority only; no external franchise certification.",
+    "Single front three-quarter portrait; hidden reverse geometry and unreadable fine marks unknown. Absolute 1:1 fidelity is not certified.",
+    "Chronological age not established; retain apparent source proportions, opaque family-safe clothing and no romance.",
+    "Old atlas pale human dark-haired brawler in black coat, no red skin/horns/pointed ears/hellblade/lantern cages.",
+    "Reinspection confirms major hellblade POINT clipped by source LEFT edge, not merely tiny hilt details. Full-length isolated blade or exposed terminal-point depictions need matching internal canonical visual support; do not invent generic point to call1:1. Empty environment and fully documented belt-lantern object remain independently available."
+  ],
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actuallyRead": true,
+    "universeKey": "infernum_nine_pits",
+    "heroRecord": {
+      "id": "azael_vorn",
+      "name": "Azael Vorn",
+      "category": "slayer",
+      "combatRole": "démon transfuge / assaut",
+      "loreRole": "Démon original issu du troisième gouffre, révolté contre le commerce des fautes.",
+      "primaryColor": "#611a1a",
+      "secondaryColor": "#ff7b00",
+      "weaponType": "hellblade",
+      "stats": {
+        "hp": 150,
+        "atk": 19,
+        "def": 9,
+        "spd": 6
+      },
+      "simple": {
+        "name": "Griffe de Scorie",
+        "type": "melee",
+        "dmg": 1.2
+      },
+      "secondary": {
+        "name": "Charge de Soufre",
+        "type": "fire",
+        "cd": 6,
+        "dmg": 2.1
+      },
+      "defense": {
+        "name": "Peau de Basalte",
+        "type": "shield",
+        "dur": 2.4,
+        "reduce": 0.82
+      },
+      "special": {
+        "name": "Couronne Brisée de Vharos",
+        "type": "fire_aoe",
+        "dmg": 5.2,
+        "color": "#e63946"
+      },
+      "universe": "Infernum: Nine Pits",
+      "sourceType": "original",
+      "weaponColor": "#ff7b00"
+    },
+    "worldLore": {
+      "origin": {
+        "fr": "Infernum est un enfer entièrement fictif divisé en neuf gouffres économiques et judiciaires où les démons administrent contrats, châtiments et circulation des âmes."
+      },
+      "breach": {
+        "fr": "Le Sans-Auteur alimente le Trône Rouge avec les regrets de toutes les Trames et veut rendre chaque faute éternellement exploitable."
+      },
+      "coreConflict": {
+        "fr": "Distinguer responsabilité et possession, rendre possible la réparation et renverser l’infrastructure sans effacer les âmes."
+      }
+    },
+    "stages": [
+      {
+        "id": "hell_market_contracts",
+        "name": {
+          "fr": "Marché des Contrats Brûlants",
+          "en": "Market of Burning Contracts"
+        },
+        "mode": "Smash",
+        "difficulty": "Hard",
+        "objectiveType": "control",
+        "boss": "Duc Vharos des Trois Couronnes",
+        "setting": {
+          "fr": "Échoppes suspendues, chaînes-plateformes et offres de combat qui changent les règles."
+        },
+        "universe": "Infernum: Nine Pits",
+        "sourceUniverses": [
+          "Infernum: Nine Pits"
+        ],
+        "sourceType": "original",
+        "stageKey": "hell_market_contracts"
+      },
+      {
+        "id": "hell_pit_auditors",
+        "name": {
+          "fr": "Gouffre des Auditeurs",
+          "en": "Pit of Auditors"
+        },
+        "mode": "Tactics",
+        "difficulty": "Very Hard",
+        "objectiveType": "disable",
+        "boss": "Auditeur des Péchés",
+        "setting": {
+          "fr": "Grille comptable où trois registres doivent être détruits avant la clôture du tour fiscal infernal."
+        },
+        "universe": "Infernum: Nine Pits",
+        "sourceUniverses": [
+          "Infernum: Nine Pits"
+        ],
+        "sourceType": "original",
+        "stageKey": "hell_pit_auditors"
+      },
+      {
+        "id": "hell_red_throne",
+        "name": {
+          "fr": "Salle du Trône Rouge",
+          "en": "Hall of the Red Throne"
+        },
+        "mode": "RPG",
+        "difficulty": "Expert",
+        "objectiveType": "overload",
+        "boss": "Trône Rouge du Premier Péché",
+        "setting": {
+          "fr": "Boss à jauges de dette, regret et témoignage; tuer les âmes augmente sa puissance."
+        },
+        "universe": "Infernum: Nine Pits",
+        "sourceUniverses": [
+          "Infernum: Nine Pits"
+        ],
+        "sourceType": "original",
+        "stageKey": "hell_red_throne"
+      }
+    ]
+  },
+  "sourceRefs": [
+    "/images/oc-worlds/v2/infernum_nine_pits/heroes/azael_vorn.png",
+    "src/game/originalUniversesManifest.json"
+  ],
+  "correctedInspectionHistory": [
+    {
+      "previousDescription": "Hilt and end geometry near source left edge incompletely visible.",
+      "actualReinspection": "Full V2 source reopened individually: hand/guard and grip area visible near image centreleft, but jagged black/orange BLADE POINT extends beyond native LEFT canvas edge; complete blade length/terminal profile unestablished.",
+      "sourceActuallyReopened": true,
+      "pixelsChanged": false
+    }
+  ],
+  "slotReferenceConstraints": {
+    "identityFaceCostume": "qualified-internal-selected-v2-with-limitations",
+    "fullHellblade": "needs-matching-internal-visual-support-for-unseen-terminal-profile",
+    "CG02ScopedAlternative": "Complete caged belt lantern is fully visible equipment option; does not qualify missing sword point.",
+    "CG03": "empty-original-world-environment-ready"
+  },
+  "independentMissingEquipmentReview": {
+    "path": ".tmp/cg-wave11-2026-10-26/coordination/azael-local-equipment-review/azael-missing-blade-tip-local-review.json",
+    "sha256": "7186e61ebbf57f8fe2421d84b50036cf3615938b377026e30601d9208160d58c",
+    "reviewer": "/root/wave11_coordination",
+    "result": "no-matching-local-terminal-profile-after-26-actual-image-views",
+    "notes": "Distinct daggers/swords of other Infernum entities do not qualify Azael blade; old SVG/atlas are not matching source authority."
+  },
+  "equipmentLanternActualReinspection": {
+    "actuallyViewedOriginalAndNearestCrop": true,
+    "sameSourceInspectionCrop": {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/azael-vorn/source-lanterns-inspection-only.png",
+      "sha256": "6e19d71a4c20fb4f2d43eef59ba05bfc91d9fc818ee0057a27d74c301a51d901",
+      "usedAsIndependentAuthority": false
+    },
+    "visibleFeatures": "Thin darkiron/silver vertical bars and plain thin horizontal rings, tall narrow cage, skeletal OPEN arched bar top, small ring/loop and flat round bottom. Plain orange light/fire; no face/soul/body inferred. Exact hidden barcount/rear attachment unknown.",
+    "correctedPromptInterpretation": "Earlier02prompt ambiguous domedcap produced opaque roof/diamond spikes absent source; originaldraft preserved, genuine02r2 removes those additions.",
+    "hellbladeScopeUnchanged": "Terminalblade shape and length remain unqualified; no body/atlas containing blade attempted."
+  }
+}

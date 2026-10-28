@@ -37,7 +37,8 @@ DOCS = ROOT / "docs" / "cg"
 PLAN = DOCS / "roster-production-2026-10-18.json"
 BIBLE = DOCS / "roster-fidelity-bible-2026-10-18.json"
 DEFAULT_OUTPUT = DOCS / "Multiverse_Breach_Fidelite_CG.xlsx"
-GLOBAL_BATCH = DOCS / "roster-global-batch-wave10-2026-10-25.json"
+GLOBAL_BATCH = DOCS / "roster-global-batch-wave11-2026-10-26.json"
+AGENT_BATCHES = DOCS / "roster-agent-batches-40-2026-10-26.json"
 GLOBAL_PROMPT = DOCS / "PROMPT_GLOBAL_ROSTER_1_1.txt"
 LINK_BASE = DOCS
 THUMBNAIL_CACHE = ROOT / ".tmp" / "cg-fidelity-workbook-thumbnails" / "v1"
@@ -469,6 +470,7 @@ def collect_visual_evidence(bible: dict) -> dict:
         ):
             return
         purpose = item.get("referencePurpose")
+        purpose = {"costume": "costume-only", "equipment": "equipment-only"}.get(purpose, purpose)
         if item.get("referenceScope") == "iconic-outfit-only" or role == "independent-iconic-outfit-reference":
             purpose = "costume-only"
         elif not purpose and (role == "independent-equipment-reference" or "weapon-reference" in role or "weapon-reload-reference" in role):
@@ -598,7 +600,10 @@ def collect_production_notes() -> dict:
         digits = str(value).removeprefix("CG")
         return f"CG{int(digits):02}" if digits.isdigit() and 1 <= int(digits) <= 15 else None
 
-    receipts = set(DOCS.glob("*complete-*.json")) | set(DOCS.glob("*wave[0-9]-*.json"))
+    receipts = set(DOCS.glob("*complete-*.json")) | {
+        path for path in DOCS.glob("*.json")
+        if re.search(r"-wave\d+-\d{4}-\d{2}-\d{2}\.json$", path.name)
+    }
     for path in sorted(receipts):
         receipt = read_json(path, {})
         entries = receipt.get("entries") or []
@@ -861,6 +866,7 @@ def build(output: Path, no_images=False) -> dict:
         ("Univers", "Cohérence par univers"),
         ("Sources", "Références et niveau de preuve"),
         ("Règles CG", "Thèmes imposés et limites des transformations"),
+        ("Lots de 40", "Affectations par agent et livraisons réelles de chaque personnage"),
         ("Traçabilité", "Données sources, méthode et reconstruction"),
     ], 23):
         link_cell(home.cell(row, 2), f"#'{sheet}'!A1", label)
@@ -1216,6 +1222,47 @@ def build(output: Path, no_images=False) -> dict:
         append_row(rules_ws, [template["id"], template.get("typeOptions"), template.get("themeBrief"), template.get("poseBrief"), template.get("backgroundOptions"), template.get("themeSource"), template.get("resolutionRule")])
     finish_table(rules_ws, "T_ReglesCG", {1: 12, 2: 30, 3: 75, 4: 70, 5: 75, 6: 55, 7: 80}, 90)
 
+    batches_ws = base_sheet(wb, "Lots de 40", [
+        "Lot", "Agent responsable", "État d'affectation", "ID personnage", "Personnage", "Univers",
+        "CG livrées", "N/A documentés", "CG restantes", "Référence visuelle", "Sprite actuel",
+        "Plan des affectations", "Limite de lecture",
+    ], "Un lot contient 40 personnages, sauf le dernier reliquat. Les livraisons viennent du catalogue actuel; une affectation ne produit aucune image.")
+    agent_batch_summary = {"available": AGENT_BATCHES.is_file(), "imageGenerationImpliedByAssignment": False}
+    if AGENT_BATCHES.is_file():
+        assignments = read_json(AGENT_BATCHES)
+        subjects_by_id = {s["characterId"]: s for s in subjects}
+        assigned_ids = set()
+        active_lots = 0
+        for lot in assignments["lots"]:
+            active_lots += lot["status"] == "running"
+            for char_id in lot["characterIds"]:
+                assert char_id not in assigned_ids and char_id in subjects_by_id, "Invalid or duplicate batch assignment"
+                assigned_ids.add(char_id)
+                subject = subjects_by_id[char_id]
+                readiness = bible.get(char_id, {}).get("readiness", {})
+                source_status = readiness.get("visualReference", "À qualifier")
+                if isinstance(source_status, dict):
+                    source_status = source_status.get("status", "À qualifier")
+                sprite_status = readiness.get("currentSprite", {})
+                if isinstance(sprite_status, dict):
+                    sprite_status = sprite_status.get("status", "Non revu")
+                delivered_count = delivered_by_subject[char_id]
+                na_count = na_by_subject[char_id]
+                append_row(batches_ws, [
+                    lot["lotId"], lot.get("owner") or "Non affecté", lot["status"], char_id,
+                    subject["characterName"], subject["universe"], delivered_count, na_count,
+                    15 - delivered_count - na_count, source_status, sprite_status,
+                    "Affectations", "Référence à vérifier avant production; aucune certification absolue 1:1.",
+                ])
+                link_cell(batches_ws.cell(batches_ws.max_row, 12), os.path.relpath(AGENT_BATCHES, LINK_BASE), "Affectations et états")
+        agent_batch_summary.update({
+            "plan": str(AGENT_BATCHES.relative_to(ROOT)), "batchSize": assignments["batchSize"],
+            "lots": len(assignments["lots"]), "assignedSubjects": len(assigned_ids),
+            "runningLots": active_lots,
+            "subjectsInRunningLots": sum(len(lot["characterIds"]) for lot in assignments["lots"] if lot["status"] == "running"),
+        })
+    finish_table(batches_ws, "T_Lots40", {1: 15, 2: 29, 3: 26, 4: 29, 5: 28, 6: 28, 7: 15, 8: 17, 9: 15, 10: 48, 11: 48, 12: 28, 13: 65}, 44)
+
     evidence_ws = base_sheet(wb, "Traçabilité", ["Élément", "Valeur", "Règle / interprétation"], "Données et limites de cette reconstruction. Le classeur sert à contrôler la fidélité; il ne constitue pas un certificat canon.", "B4")
     timestamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
     trace_rows = [
@@ -1324,6 +1371,7 @@ def build(output: Path, no_images=False) -> dict:
         "workbookSha256": hashlib.sha256(output.read_bytes()).hexdigest(),
         "manualRowsPreserved": {k: len(v) for k, v in manual.items()},
         "globalBatch": global_batch,
+        "agentBatches": agent_batch_summary,
     }
     output.with_suffix(".summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return summary

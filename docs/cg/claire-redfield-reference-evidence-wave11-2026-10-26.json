@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "claire_redfield",
+  "heroId": "claire_redfield",
+  "characterName": "Claire Redfield",
+  "incarnationProposal": {
+    "label": "Resident Evil 2 original (1998)",
+    "status": "proposed-production-incarnation",
+    "evidence": [
+      "docs/cg/roster-fidelity-authored-locks-2026-10-18.json"
+    ]
+  },
+  "status": "researched-needs-reference-image",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "references": [
+    {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-05/research/search-3.json",
+      "sha256": "2588d33f631718a40593a502846354a6d85c5b94f337db38945615b1dffcbfdf",
+      "role": "actual-web-search-transcript-not-image-source",
+      "query": "Claire Redfield Resident Evil 2 1998 official full body render",
+      "viewed": false,
+      "usedForIdentity": false
+    }
+  ],
+  "actualFetchAttempts": [
+    {
+      "receiptFile": ".tmp/cg-wave11-2026-10-26/lot-05/research/fetches/claire-redfield-source.json",
+      "receiptSha256": "859d0543094eae1b97a7c9e3fa2518fccffbe17969dc6ba30630596c80be443a",
+      "name": "claire-redfield-source",
+      "url": "https://cdn.mobygames.com/promos/1456047-resident-evil-2-render-claire.jpg",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "viewed": false
+    }
+  ],
+  "actualVisualObservations": [
+    "Actual fetch https://cdn.mobygames.com/promos/1456047-resident-evil-2-render-claire.jpg → <urlopen error Tunnel connection failed: 403 Forbidden>. A network failure is not a provider image-generation refusal or N/A."
+  ],
+  "sourceImageQualified": false,
+  "sourceRefs": [
+    "https://game.capcom.com/residentevil/en/news_topics-201806121500.html",
+    "https://game.capcom.com/residentevil/en/exfile-2-6.html",
+    "https://www.capcom.co.jp/ir/english/data/oar/2018/develop/re2.html",
+    "docs/cg/roster-fidelity-authored-locks-2026-10-18.json"
+  ],
+  "scopeLimitations": [
+    "Search results, prose and URL candidates do not qualify identity images.",
+    "No genuine new CG or sprite created for this subject yet; source resolution continues.",
+    "Old project art and generic gameplay equipment cannot establish the external selected incarnation."
+  ],
+  "newGenerationAttempts": 0,
+  "newProviderRefusals": 0,
+  "newCgImages": 0,
+  "blockReason": "Search results alone do not qualify a source; download and actual image inspection still required."
+}

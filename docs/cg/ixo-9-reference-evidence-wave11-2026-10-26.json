@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "ixo_9",
+  "heroId": "ixo_9",
+  "characterName": "Ixo-9",
+  "incarnation": "Ilyr Concordat — selected individual Ixo-9 V2 original-project portrait2026",
+  "qualificationStatus": "internal-selected-original-project-reference-inspected",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/ilyr_concordat/heroes/ixo_9.png",
+      "sha256": "b5edc20da450a13088888f66d9b356286e36d25c2cb6c182d8f924b99b8978be",
+      "bytes": 2487572,
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "referencePurpose": "identity",
+      "canonicalProjectReference": true,
+      "viewed": true,
+      "inspected": true,
+      "viewedAt": "2026-10-26T08:26:59.275952+00:00",
+      "status": "internal-current-selected-portrait-inspected",
+      "provenance": "Exact selected source restored by root, actually opened in current session."
+    },
+    {
+      "path": "/sprites/generated/heroes/ilyr-concordat/ixo-9.png",
+      "sha256": "4f7dcc061e83440edd5d8d79c79c713726cb2bced97e44378ec90a6d79fe66db",
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "actuallyViewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Tall slender nonhuman synthetic avatar with two articulated arms and legs, elongated mechanical feet with split claw toes; many clustered dark violet spherical ocular nodes form head rather than human face; shredded layered violet shroud."
+    ],
+    "face": [
+      "No human facial anatomy. Clustered ball-shaped head nodes with bright violet circular lenses and small antennae/tendrils; exact hidden rear node count unknown."
+    ],
+    "costume": [
+      "Black/gunmetal segmented organic-mechanical limbs, violet joint circles and long torn purple draped cloak fastened by small violet lens at neck/chest."
+    ],
+    "equipment": [
+      "Floating dark spherical Nym drone nodes with violet central lens and multiple pointed lower appendages. Source anatomical LEFT hand reaches toward large violet round network node, RIGHT hand raised open; no gun or blade. Hidden rear appendage count and internal mechanics unresolved."
+    ],
+    "palette": [
+      "Dark gunmetal black, deep violet robe, lavender luminous nodes, restrained cyan environment grid."
+    ]
+  },
+  "scopeLimitations": [
+    "Internal original-project selected V2 source only, no external franchise authority or absolute1:1 certification.",
+    "Chronological age unknown; all themes family-safe, opaque, nonromantic.",
+    "Single front/three-quarter source, hidden reverse geometry and tiny illegible insignia unknown.",
+    "Old atlas generic white armored humanoid robot with blue visor and no node-cluster head or robe; source silhouette/anatomy/equipment differ majorly.",
+    "Old atlas remains byte-identical; actual divergence justifies new atlas.",
+    "CG05 Nexus adaptation; CG09-11 fan art; CG12-15 hypothetical WhatIf with one CG13 option and one CG15 option. All new settings original universe-compatible interpretations."
+  ],
+  "sourceRefs": [
+    "src/game/originalUniversesManifest.json",
+    "/images/oc-worlds/v2/ilyr_concordat/heroes/ixo_9.png"
+  ],
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actuallyRead": true,
+    "actualRecordRead": {
+      "worldKey": "ilyr_concordat",
+      "lore": {
+        "origin": {
+          "fr": "Le Concordat d’Ilyr est un space opera original sans humains dans son noyau : cinq espèces ont bâti une paix fragile autour de voies de résonance et d’une assemblée orbitale."
+        },
+        "breach": {
+          "fr": "La Brèche réveille les Architectes Pâles, machines antiques qui confondent compatibilité et uniformité."
+        },
+        "coreConflict": {
+          "fr": "Préserver la coopération sans effacer les différences biologiques, politiques et mentales des espèces."
+        }
+      },
+      "hero": {
+        "id": "ixo_9",
+        "name": "Ixo-9",
+        "category": "hacker",
+        "combatRole": "réseau collectif / drones",
+        "loreRole": "Avatar mobile d’un collectif Nym distribué, conçu pour dialoguer avec les esprits individuels.",
+        "primaryColor": "#36213e",
+        "secondaryColor": "#c77dff",
+        "weaponType": "swarm_nodes",
+        "stats": {
+          "hp": 108,
+          "atk": 13,
+          "def": 6,
+          "spd": 10
+        },
+        "simple": {
+          "name": "Nœud Essaim",
+          "type": "bullet",
+          "dmg": 0.9
+        },
+        "secondary": {
+          "name": "Consensus Forcé",
+          "type": "glitch",
+          "cd": 5,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Répartition de Corps",
+          "type": "dodge",
+          "dur": 2.3,
+          "reduce": 0.9
+        },
+        "special": {
+          "name": "Chœur Nym Non Unanime",
+          "type": "summon_aoe",
+          "dmg": 4.8,
+          "color": "#c77dff"
+        },
+        "universe": "Ilyr Concordat",
+        "sourceType": "original",
+        "weaponColor": "#c77dff"
+      },
+      "stages": [
+        {
+          "id": "alien_orbital_concordat",
+          "name": {
+            "fr": "Assemblée orbitale d’Ilyr",
+            "en": "Ilyr Orbital Assembly"
+          },
+          "mode": "Tactics",
+          "difficulty": "Hard",
+          "objectiveType": "control",
+          "boss": "Archonte Sevrix",
+          "setting": {
+            "fr": "Cinq secteurs biologiquement distincts; tenir un quorum exige au moins trois espèces alliées."
+          },
+          "universe": "Ilyr Concordat",
+          "sourceUniverses": [
+            "Ilyr Concordat"
+          ],
+          "sourceType": "original",
+          "stageKey": "alien_orbital_concordat"
+        },
+        {
+          "id": "alien_nym_living_moon",
+          "name": {
+            "fr": "Lune vivante Nym",
+            "en": "Nym Living Moon"
+          },
+          "mode": "Smash",
+          "difficulty": "Very Hard",
+          "objectiveType": "survive",
+          "boss": "Vaisseau-Chœur du Schisme Nym",
+          "setting": {
+            "fr": "Surface organique qui reconfigure les plateformes selon le consensus du vaisseau."
+          },
+          "universe": "Ilyr Concordat",
+          "sourceUniverses": [
+            "Ilyr Concordat"
+          ],
+          "sourceType": "original",
+          "stageKey": "alien_nym_living_moon"
+        },
+        {
+          "id": "alien_pale_lattice",
+          "name": {
+            "fr": "Treillis de l’Architecte Pâle",
+            "en": "Pale Architect Lattice"
+          },
+          "mode": "RPG",
+          "difficulty": "Expert",
+          "objectiveType": "overload",
+          "boss": "L’Architecte Pâle",
+          "setting": {
+            "fr": "Matrice abstraite où chaque phase retire une propriété : couleur, espèce, distance, puis choix."
+          },
+          "universe": "Ilyr Concordat",
+          "sourceUniverses": [
+            "Ilyr Concordat"
+          ],
+          "sourceType": "original",
+          "stageKey": "alien_pale_lattice"
+        }
+      ]
+    }
+  },
+  "incarnationDecision": {
+    "selectedPortrait": "public/images/oc-worlds/v2/ilyr_concordat/heroes/ixo_9.png",
+    "previousRuntimeSprite": "/sprites/generated/heroes/ilyr-concordat/ixo-9.png",
+    "reason": "Old atlas generic white armored humanoid robot with blue visor and no node-cluster head or robe; source silhouette/anatomy/equipment differ majorly."
+  },
+  "sourceReinspection2026Oct28": {
+    "sourceAndOldAtlasActuallyOpened": true,
+    "observedSource": "Tall slender gunmetal synthetic body with a head made from multiple overlapping dark spherical lens nodes, many violet circular eyes and thin antennae/cables; no human face. Long shredded violet shroud, segmented arms and legs, long split claw feet. Floating spherical Nym drones with violet lenses and three lower prongs. Source LEFT hand extends toward large round network node; RIGHT open hand raised.",
+    "oldAtlasDivergence": "White armored humanoid robot with single blue visor, no clustered spherical head, violet shroud or Nym drones; preserved as historical variant.",
+    "viewedAt": "2026-10-28T09:21:48.324316+00:00",
+    "canonicalFidelityApproved": false
+  },
+  "costumeSupportCg13Only": {
+    "path": "/workspace/multiverse-breach/.tmp/cg-wave11-2026-10-26/lot-01/miku/reference-research/official-costume.jpg",
+    "sha256": "6ea84f01c71f7bc63c4c3f4fa73f99bcc3c65b53ddac2326f839b1b0e6c8c882",
+    "url": "https://piapro.net/intl/images/official_cos_miku.jpg",
+    "originPage": "https://piapro.net/intl/en_character.html",
+    "referencePurpose": "costume-only",
+    "actuallyViewed": true,
+    "scope": "Official original Miku gray collared tunic, teal tie, black pleated skirt with teal hem and detached black sleeves with teal edges. Adapt costume over unchanged NONHUMAN Ixo body in CG13 only. No transfer of Miku face, skin, hair, headset, age, body proportions or 01 mark; retain Ixo claw feet. Original source portrait remains sole Ixo identity authority.",
+    "canonicalFidelityApproved": false
+  },
+  "sourceEquipmentCountReinspection28": {
+    "actuallyViewed": true,
+    "sourceCropFile": ".tmp/cg-wave11-2026-10-26/lot-01/ixo-9/source-one-drone-inspection-only.png",
+    "sameBitmapOnly": true,
+    "scope": "Visible source drone has multiple overlapping pointed lower appendages. Exact count of rear appendages and concealed hinge geometry unresolved; earlier concise three-prong wording must not be treated as complete engineering count. No second identity source.",
+    "historicalPriorWording": "Floating dark spherical Nym drone nodes with violet central lens and three-prong lower structures."
+  },
+  "partialDeliveryScope": {
+    "selectedAcceptedSlots": [
+      "CG01",
+      "CG02",
+      "CG03",
+      "CG04",
+      "CG05",
+      "CG06",
+      "CG07"
+    ],
+    "unattemptedSlots": [
+      "CG08",
+      "CG09",
+      "CG10",
+      "CG11",
+      "CG12",
+      "CG13",
+      "CG14",
+      "CG15"
+    ],
+    "sourceImageUntouched": true,
+    "noAgeOrHiddenCountCertification": true,
+    "closureReason": "technical environment instability and disk reserve; no provider refusal and no N/A inferred"
+  }
+}

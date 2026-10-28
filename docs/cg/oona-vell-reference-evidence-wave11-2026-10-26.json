@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "oona_vell",
+  "heroId": "oona_vell",
+  "characterName": "Oona Vell",
+  "incarnation": "The Drowned Testament — Oona Vell, canon original du projet (2026) — selected current V2",
+  "status": "internal-current-v2-portrait-inspected-source-qualified-with-limitations",
+  "sourceKind": "original-project-internal-canon",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": true,
+  "oldAtlasActuallyViewed": true,
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/drowned_testament/heroes/oona_vell.png",
+      "sha256": "5510d160f63162686c4690060ee274d1cf03816f6a5d00ab7097898ee0c2d533",
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "viewed": true,
+      "inspected": true
+    },
+    {
+      "path": "/sprites/generated/heroes/the-drowned-testament/oona-vell.png",
+      "sha256": "a1c96a87b1adbb5c7e12fe914bf08c4f07b27c5357d2b6b908d53d95b946b9a7",
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Human slender figure with dark braided loose updo, long ragged PURPLE cloak over dark outfit, loose dark trousers and tall dark lace boots."
+    ],
+    "face": [
+      "Pale violet-light skin, dark eyes, black/dark violet hair in messy braided pinned bun with a small purple flower ornament, no short bluecoat ponytail identity."
+    ],
+    "equipment": [
+      "Anatomical RIGHT hand (viewer left) holds small top ring/chain suspending large round dream compass: brass/silver circular frame around bright purple orb, pale radial spokes, dangling beads/gems and purple pointer at bottom. LEFT hand open. Purple floating map can be contextual magic, not clothing."
+    ],
+    "costume": [
+      "Ragged violet/purple cloak, dark cross-wrap inner top, belts, round silver compass at waist with purple gems, gray forearm wrappings, loose black trousers and high lace boots."
+    ]
+  },
+  "scopeLimitations": [
+    "Internal original-project authority only; no external franchise certification.",
+    "Single front three-quarter portrait; hidden reverse geometry and unreadable fine marks unknown. Absolute 1:1 fidelity is not certified.",
+    "Chronological age not established; retain apparent source proportions, opaque family-safe clothing and no romance.",
+    "Old atlas fitted blue long coat over pale shirt, no purple ragged cloak or suspended circular dream compass."
+  ],
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actuallyRead": true,
+    "universeKey": "drowned_testament",
+    "heroRecord": {
+      "id": "oona_vell",
+      "name": "Oona Vell",
+      "category": "horror",
+      "combatRole": "rêve / mobilité impossible",
+      "loreRole": "Cartographe de rêves qui revient avec des cartes valables seulement lorsque personne ne les regarde directement.",
+      "primaryColor": "#4a235a",
+      "secondaryColor": "#c77dff",
+      "weaponType": "dream_compass",
+      "stats": {
+        "hp": 120,
+        "atk": 14,
+        "def": 7,
+        "spd": 10
+      },
+      "simple": {
+        "name": "Aiguille Onirique",
+        "type": "magic",
+        "dmg": 0.95
+      },
+      "secondary": {
+        "name": "Angle Dormant",
+        "type": "teleport",
+        "cd": 5,
+        "dmg": 1.8
+      },
+      "defense": {
+        "name": "Réveil Latéral",
+        "type": "dodge",
+        "dur": 2.3,
+        "reduce": 0.9
+      },
+      "special": {
+        "name": "Carte du Rivage qui n’Existe Pas",
+        "type": "fear_aoe",
+        "dmg": 4.9,
+        "color": "#c77dff"
+      },
+      "universe": "The Drowned Testament",
+      "sourceType": "original",
+      "weaponColor": "#c77dff"
+    },
+    "worldLore": {
+      "origin": {
+        "fr": "Le Testament Noyé est un univers d’horreur cosmique entièrement original : Greywake, ville-port, découvre une intelligence sous-marine décrite par des textes impossibles."
+      },
+      "breach": {
+        "fr": "La Brèche rend le texte auto-réplicatif et permet au Dormeur derrière la Marée de lire en retour les archives d’A.R.C.A."
+      },
+      "coreConflict": {
+        "fr": "Étudier l’inconnu sans le réduire, résister à la soumission narrative et empêcher une connaissance de devenir un culte automatique."
+      }
+    },
+    "stages": [
+      {
+        "id": "lovecraft_greywake_harbor",
+        "name": {
+          "fr": "Port de Greywake à marée basse",
+          "en": "Greywake Harbor at Low Tide"
+        },
+        "mode": "Smash",
+        "difficulty": "Hard",
+        "objectiveType": "survive",
+        "boss": "Le Phare qui Regarde",
+        "setting": {
+          "fr": "Quais inclinés, cloches, eau montante et faisceau du phare comme danger mobile."
+        },
+        "universe": "The Drowned Testament",
+        "sourceUniverses": [
+          "The Drowned Testament"
+        ],
+        "sourceType": "original",
+        "stageKey": "lovecraft_greywake_harbor"
+      },
+      {
+        "id": "lovecraft_impossible_observatory",
+        "name": {
+          "fr": "Observatoire des Angles Impossibles",
+          "en": "Observatory of Impossible Angles"
+        },
+        "mode": "Tactics",
+        "difficulty": "Very Hard",
+        "objectiveType": "artifact",
+        "boss": "Cartographe des Angles Impossibles",
+        "setting": {
+          "fr": "Grille non euclidienne simulée par téléportations, cases superposées et trois cartes à récupérer."
+        },
+        "universe": "The Drowned Testament",
+        "sourceUniverses": [
+          "The Drowned Testament"
+        ],
+        "sourceType": "original",
+        "stageKey": "lovecraft_impossible_observatory"
+      },
+      {
+        "id": "lovecraft_abyssal_basilica",
+        "name": {
+          "fr": "Basilique sous la Marée",
+          "en": "Basilica Beneath the Tide"
+        },
+        "mode": "RPG",
+        "difficulty": "Expert",
+        "objectiveType": "overload",
+        "boss": "Le Dormeur derrière la Marée",
+        "setting": {
+          "fr": "Sanctuaire englouti, Pression de Rêve globale et pages du Testament servant de boucliers de phase."
+        },
+        "universe": "The Drowned Testament",
+        "sourceUniverses": [
+          "The Drowned Testament"
+        ],
+        "sourceType": "original",
+        "stageKey": "lovecraft_abyssal_basilica"
+      }
+    ]
+  },
+  "sourceRefs": [
+    "/images/oc-worlds/v2/drowned_testament/heroes/oona_vell.png",
+    "src/game/originalUniversesManifest.json"
+  ]
+}

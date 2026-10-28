@@ -23,7 +23,8 @@ const deliveredTheme = entry => {
  const brief = text(entry.themeBrief);
  if (brief.length >= 20) return brief;
  const detail = text(entry.promptSummary);
- return detail.includes(brief) ? detail : unique([brief, detail]).join(' — ');
+ const expanded = detail.includes(brief) ? detail : unique([brief, detail]).join(' — ');
+ return expanded.length >= 20 ? expanded : unique([expanded, text(entry.poseBrief || entry.poseDescription)]).join(' — ');
 };
 const publicFile = value => path.resolve(ROOT, 'public', value.replace(/^\//, '').replace(/^public\//, ''));
 const localFile = value => /^\/(?:sprites|cg|visuals|images)\//.test(value) ? publicFile(value) : path.isAbsolute(value) && existsSync(value) ? value : path.resolve(ROOT, value.replace(/^\//, ''));

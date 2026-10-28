@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "kait_diaz",
+  "characterName": "Kait Diaz",
+  "incarnation": "Gears 5 (2019)",
+  "status": "needs-reference-researched-not-visually-qualified",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": false,
+  "referenceImagesQualified": [],
+  "actualAttempts": [
+    {
+      "url": "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+      "attemptedAt": "2026-10-26T08:15:13.925928+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "result": "fetch-failed-reference-unqualified",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ],
+  "blockingFindings": [
+    "Gears E-Day article does not establish Kait Gears5 winter outfit; inspect exact character image required."
+  ],
+  "preservation": "No old source/art/atlas changed; all prior CG slots and N/A remain preserved.",
+  "generationStatus": "not-attempted-pending-identity-reference",
+  "toolRefusals": 0,
+  "actualAdditionalAttempts": [
+    {
+      "url": "https://mcfarlane.com/toys/kait-diaz-winter-armor/",
+      "attemptedAt": "2026-10-28T09:35:34.493972+00:00",
+      "kind": "official-licensee-incarnation-specific-product-page-discovery-not-yet-visual-qualification",
+      "result": "fetch-failed-no-visual-qualification",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://mcfarlane.com/?s=kait",
+      "attemptedAt": "2026-10-28T09:41:30.249613+00:00",
+      "kind": "official-licensee-site-search-discovery-not-visual-qualification",
+      "statusCode": 200,
+      "finalUrl": "https://www.mcfarlane.com/?s=kait",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 796461,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/kait-diaz/research/mcfarlane-search-2026-10-28.html",
+      "sha256": "223083a8446ce3a1866f1f7e5e73757d0590482a4709cdf32e09f389712dbab6",
+      "result": "fetched-search-not-image-qualified",
+      "relevantDiscoveredLinks": [
+        "https:\\/\\/www.mcfarlane.com\\/?s=kait"
+      ]
+    },
+    {
+      "url": "https://html.duckduckgo.com/html/?q=Gears%205%20Kait%20Diaz%20winter%20armor%20Storm%20Collectibles%20official",
+      "query": "Gears 5 Kait Diaz winter armor Storm Collectibles official",
+      "attemptedAt": "2026-10-28T09:46:11.759679+00:00",
+      "kind": "public-search-discovery-only-not-identity-authority",
+      "result": "fetch-failed-no-visual-qualification",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ],
+  "discovery28OctLimit": "McFarlane candidate legacy product paths returned actual404; query pages200 display modern Wix Landing without matching character product, so no visual identity qualification. Public discovery search failed at network tunnel403, no alternate alias or repeated blocked request attempted. Needs-reference remains, distinct from an ImageGen refusal."
+}

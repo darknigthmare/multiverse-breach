@@ -30,7 +30,12 @@ const deliveredTheme = entry => {
   const detail = text(entry.promptSummary);
   // A short heading such as "Victoire" is not a complete production brief.
   // Retain its meaning through the actual documented prompt, not filler text.
-  return detail.includes(brief) ? detail : unique([brief, detail]).join(' — ');
+  const expanded = detail.includes(brief) ? detail : unique([brief, detail]).join(' — ');
+  if (expanded.length >= 20) return expanded;
+  // Some receipts use the same short title for both fields. Their documented
+  // scene composition still supplies the actual brief without rewriting the
+  // delivered receipt or inventing a theme from a generic template.
+  return unique([expanded, text(entry.poseBrief || entry.poseDescription)]).join(' — ');
 };
 const digest = value => createHash('sha256').update(value).digest('hex');
 const publicFile = name => path.join(ROOT, 'public', name.replace(/^\//, ''));

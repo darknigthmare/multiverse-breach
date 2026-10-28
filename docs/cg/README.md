@@ -1,30 +1,32 @@
 # Production CG — fidélité et variantes
 
-Ce dossier conserve le pilote historique de *Multiverse Breach* — 48 illustrations CG01–CG08 et 35 variantes applicables CG09–CG15, soit 83 sources — et suit ses corrections ainsi que l’extension des CG au roster complet.
+## Reprise du 28 octobre 2026 — lots de 40, vague 11
 
-## Reprise du 25 octobre 2026 — vague 10 et consigne commune
+Les [lots par agent](roster-agent-batches-40-2026-10-26.json) couvrent les 1 848 séries initialement incomplètes, en groupes de 40 (dernier reliquat : 8). Le [point de livraison](FIDELITY_PROGRESS_WAVE11_2026-10-26.md) compte **376 nouvelles CG intégrées, soit 1346 CG au total**, et **15 nouveaux atlas**, avec chaque ancien accessible en variante. Les cinq lots de 40 restent incomplets et en pause technique après des coupures de l’exécuteur et la saturation du stockage. Le [classeur](Multiverse_Breach_Fidelite_CG.xlsx) couvre 1346 CG. La [consigne unique](PROMPT_GLOBAL_ROSTER_1_1.txt) et le [manifeste](roster-global-batch-wave11-2026-10-26.json) conservent les thèmes spéciaux, les poses et décors distincts ainsi que les limites des références.
+
+## Historique du 25 octobre 2026 — vague 10 et consigne commune
 
 La [consigne unique pour tout le roster](PROMPT_GLOBAL_ROSTER_1_1.txt) et le [manifeste complet du 25 octobre](roster-global-batch-wave10-2026-10-25.json) couvrent **1 912 personnages, 525 univers et 28 680 emplacements CG**. Les règles restent identiques ; seul le chemin d’entrée du manifeste est actualisé. Une fiche préparée ne devient pas une image produite.
 
 Cette vague livre **75 nouvelles CG : cinq séries complètes de quinze** pour Thaleia de Naxos, Mei Zhen, Yrsa Lieuse-de-Runes, Sumaq Khipu et Rei Kagetsu, avec poses et décors distincts, ainsi que **cinq atlas, soit 80 poses redessinées et revues indépendamment**. Les anciens atlas restent accessibles en variantes ; les **2 967 médias CG antérieurs** sont inchangés.
 
-La galerie contient **970 CG pour 71 personnages, dont 64 séries complètes applicables**, avec **1064 versions et 3 192 médias enregistrés**. Le [classeur Excel](Multiverse_Breach_Fidelite_CG.xlsx), son [guide](EXCEL_FIDELITE.md) et son [audit indépendant](Multiverse_Breach_Fidelite_CG.validation.json) suivent les références, variantes et vrais blocages. **27 702 emplacements restent à produire**, avec huit N/A inchangés. Les variantes familiales et les limites des sources restent documentées, sans certification absolue de fidélité 1:1.
+À son terme, la galerie contenait **970 CG pour 71 personnages, dont 64 séries complètes applicables**, avec **1064 versions et 3 192 médias enregistrés**. Le [classeur Excel](Multiverse_Breach_Fidelite_CG.xlsx), son [guide](EXCEL_FIDELITE.md) et son [audit indépendant](Multiverse_Breach_Fidelite_CG.validation.json) suivent les références, variantes et vrais blocages. **27 702 emplacements restaient à produire à cette étape**, avec huit N/A inchangés. Les variantes familiales et les limites des sources restent documentées, sans certification absolue de fidélité 1:1.
 
 Points d’entrée : [aperçu des cinq séries](screenshots/roster-wave10-overview-2026-10-25.webp), [bilan de la vague](FIDELITY_PROGRESS_WAVE10_2026-10-25.md), [quinze CG par personnage et comparaisons d’atlas](reviews/wave10-2026-10-25/README.md), [audit des médias](fidelity-delivery-wave10-2026-10-25.json). Le [plan](roster-production-2026-10-18.md) et la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) gardent leurs noms stables avec les données courantes.
 
-Le contrôle courant utilise `node scripts/auditCgFidelityDelivery.mjs --write --date 2026-10-25 --output docs/cg/fidelity-delivery-wave10-2026-10-25.json`. `npm run cg:global:batch:check` contrôle le manifeste ; `npm run cg:global:prompt -- mei_zhen CG01` affiche une fiche sans générer une image. Les [manifestes du 23](roster-global-batch-2026-10-23.json), [du 24](roster-global-batch-2026-10-24.json) et [du 25, vague 9](roster-global-batch-2026-10-25.json) restent figés.
+Les rapports historiques restent figés. Le contrôle courant s’écrit dans un nouveau rapport : `node scripts/auditCgFidelityDelivery.mjs --write --date 2026-10-28 --output docs/cg/fidelity-delivery-wave11-2026-10-28.json`. `npm run cg:global:batch:check` contrôle le manifeste ; `npm run cg:global:prompt -- mei_zhen CG01` affiche une fiche sans générer une image. Les [manifestes du 23](roster-global-batch-2026-10-23.json), [du 24](roster-global-batch-2026-10-24.json) et [du 25, vague 9](roster-global-batch-2026-10-25.json) restent figés.
 
 ## Historique du 25 octobre 2026 — vague 9
 
 Cette vague a livré **75 CG** pour Doros Main-de-Bronze, Lin Yue, Eira Hrafnsdóttir, Killa Mayu et Aoi Mikazuki, ainsi que cinq atlas de seize poses. À son terme, la galerie contenait **895 CG pour 66 personnages, dont 59 séries complètes applicables**, avec **989 versions et 2 967 médias**. **27 777 emplacements** restaient à produire, avec huit N/A inchangés. Les 2 742 médias CG antérieurs étaient conservés.
 
-Le [bilan de la vague 9](FIDELITY_PROGRESS_WAVE9_2026-10-25.md), ses [planches et revues](reviews/wave9-2026-10-25/README.md), ses [contrôles finaux](reviews/wave9-2026-10-25/final-checks.json) et le [manifeste du 25](roster-global-batch-2026-10-25.json) sont historiques et figés. Le classeur, le guide, le plan, la bible et le nouveau manifeste portent les données courantes de la vague 10 ci-dessus.
+Le [bilan de la vague 9](FIDELITY_PROGRESS_WAVE9_2026-10-25.md), ses [planches et revues](reviews/wave9-2026-10-25/README.md), ses [contrôles finaux](reviews/wave9-2026-10-25/final-checks.json) et le [manifeste du 25](roster-global-batch-2026-10-25.json) sont historiques et figés. Le classeur, le guide, le plan, la bible et le nouveau manifeste portent les données courantes de la vague 11 ci-dessus.
 
 ## Historique du 24 octobre 2026 — vague 8
 
 Cette vague a livré **75 CG** pour Imani Quell, Bram Quill, Lio Ferrante, Anton Rook et Khepri-Sen, ainsi que cinq atlas de seize poses. À son terme, la galerie contenait **820 CG pour 61 personnages, dont 54 séries complètes applicables**, avec **914 versions et 2 742 médias**. **27 852 emplacements** restaient à produire, avec huit N/A inchangés. Les 2 517 médias CG antérieurs étaient conservés.
 
-Le [bilan de la vague 8](FIDELITY_PROGRESS_WAVE8_2026-10-24.md), ses [planches et revues](reviews/wave8-2026-10-24/README.md), ses [contrôles finaux](reviews/wave8-2026-10-24/final-checks.json) et le [manifeste du 24](roster-global-batch-2026-10-24.json) sont historiques et figés. Le classeur, le guide, le plan, la bible et le nouveau manifeste portent les données courantes de la vague 10 ci-dessus.
+Le [bilan de la vague 8](FIDELITY_PROGRESS_WAVE8_2026-10-24.md), ses [planches et revues](reviews/wave8-2026-10-24/README.md), ses [contrôles finaux](reviews/wave8-2026-10-24/final-checks.json) et le [manifeste du 24](roster-global-batch-2026-10-24.json) sont historiques et figés. Le classeur, le guide, le plan, la bible et le nouveau manifeste portent les données courantes de la vague 11 ci-dessus.
 
 ## Historique du 23 octobre 2026 — vague 7
 
@@ -36,7 +38,7 @@ Cette vague a livré **75 nouvelles CG : cinq séries complètes de quinze** pou
 
 Points d’entrée : [aperçu des cinq séries](screenshots/roster-wave7-overview-2026-10-23.webp), [bilan de la vague](FIDELITY_PROGRESS_WAVE7_2026-10-23.md), [index des CG et comparaisons d’atlas](reviews/wave7-2026-10-23/README.md), [audit des médias](fidelity-delivery-wave7-2026-10-23.json). Le [plan](roster-production-2026-10-18.md) et la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) gardent leurs noms stables avec les données courantes.
 
-Le manifeste du 23 et les rapports de cette vague restent figés. Le classeur, le guide, le plan, la bible et le nouveau manifeste portent les données courantes de la vague 10 ci-dessus.
+Le manifeste du 23 et les rapports de cette vague restent figés. Le classeur, le guide, le plan, la bible et le nouveau manifeste portent les données courantes de la vague 11 ci-dessus.
 
 ## Historique du 23 octobre 2026 — vague 6
 
@@ -48,7 +50,7 @@ Cette vague a livré **75 nouvelles CG : cinq séries complètes de quinze** pou
 
 Points d’entrée : [aperçu des cinq séries](screenshots/roster-wave6-overview-2026-10-23.webp), [bilan de la vague](FIDELITY_PROGRESS_WAVE6_2026-10-23.md), [index des CG et comparaisons d’atlas](reviews/wave6-2026-10-23/README.md), [audit des médias](fidelity-delivery-wave6-2026-10-23.json). Le [plan](roster-production-2026-10-18.md) et la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) gardent leurs noms stables avec les données courantes.
 
-Les rapports de cette vague restent figés ; le classeur, le guide, le plan, la bible et le manifeste portent les données courantes de la vague 10 ci-dessus.
+Les rapports de cette vague restent figés ; le classeur, le guide, le plan, la bible et le manifeste portent les données courantes de la vague 11 ci-dessus.
 
 ## Historique du 22 octobre 2026 — vague 5
 
@@ -72,7 +74,7 @@ Points d’entrée historiques : [aperçu des neuf séries](screenshots/roster-w
 
 À cette étape, le classeur regroupait les 1 912 personnages, 525 univers et 28 680 emplacements, avec **28 152 emplacements restant à produire** et 12 écarts majeurs de sprites encore ouverts. Les huit N/A documentés et les refus historiques demeuraient distincts. Le [classeur](Multiverse_Breach_Fidelite_CG.xlsx), son [audit](Multiverse_Breach_Fidelite_CG.validation.json), son [guide](EXCEL_FIDELITE.md), le [plan](roster-production-2026-10-18.md) et la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) ont depuis été actualisés à la vague 10 décrite plus haut.
 
-L’[audit CG de cette vague](fidelity-delivery-wave4-2026-10-20.json) contrôle 1 842 fichiers distincts, dont les 249 du pilote historique. Ce rapport historique reste figé ; pour contrôler les données courantes, utiliser la commande de la vague 10 indiquée plus haut avec son nom de sortie explicite.
+L’[audit CG de cette vague](fidelity-delivery-wave4-2026-10-20.json) contrôle 1 842 fichiers distincts, dont les 249 du pilote historique. Ce rapport historique reste figé ; pour contrôler les données courantes, utiliser la commande de la vague 11 indiquée plus haut avec son nom de sortie explicite.
 
 ## Historique du 20 octobre 2026 — vague 3
 

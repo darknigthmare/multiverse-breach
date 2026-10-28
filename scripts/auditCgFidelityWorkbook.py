@@ -33,6 +33,49 @@ def rows(sheet):
     return (dict(zip(header, row)) for row in sheet.iter_rows(min_row=4, values_only=True))
 
 
+def audit_agent_batches(workbook, plan, expected_media, bible_by_id):
+    assignment_file = ROOT / "docs/cg/roster-agent-batches-40-2026-10-26.json"
+    if not assignment_file.is_file():
+        return {"available": False}
+    assignment = json.loads(assignment_file.read_text())
+    assert "Lots de 40" in workbook.sheetnames, "Missing agent ownership sheet"
+    expected = {}
+    for lot in assignment["lots"]:
+        for character_id in lot["characterIds"]:
+            assert character_id not in expected, "Duplicate subject in assignment source"
+            expected[character_id] = lot
+    current_by_subject = Counter(character_id for character_id, _ in expected_media)
+    plan_by_id = {subject["characterId"]: subject for subject in plan["subjects"]}
+    actual = set()
+    for row in rows(workbook["Lots de 40"]):
+        character_id = row["ID personnage"]
+        assert character_id in expected and character_id not in actual, "Missing, foreign or repeated agent row"
+        actual.add(character_id)
+        lot = expected[character_id]
+        subject = plan_by_id[character_id]
+        assert row["Lot"] == lot["lotId"]
+        assert row["Agent responsable"] == (lot.get("owner") or "Non affecté")
+        assert row["État d'affectation"] == lot["status"]
+        assert row["Personnage"] == subject["characterName"] and row["Univers"] == subject["universe"]
+        na = sum(str(cell.get("status", "")).startswith("not-applicable") for cell in subject["matrix"].values())
+        assert row["CG livrées"] == current_by_subject[character_id], "Assigned work became a fictional delivery"
+        assert row["N/A documentés"] == na
+        assert row["CG restantes"] == 15 - current_by_subject[character_id] - na
+        readiness = bible_by_id[character_id].get("readiness", {})
+        reference = readiness.get("visualReference", "À qualifier")
+        if isinstance(reference, dict):
+            reference = reference.get("status", "À qualifier")
+        sprite = readiness.get("currentSprite", {})
+        if isinstance(sprite, dict):
+            sprite = sprite.get("status", "Non revu")
+        assert row["Référence visuelle"] == reference and row["Sprite actuel"] == sprite
+    assert actual == set(expected)
+    assert actual.isdisjoint(assignment["baselineCompleteCharacterIds"])
+    return {"available": True, "batchSize": assignment["batchSize"], "lots": len(assignment["lots"]),
+            "assignedRowsMatched": len(actual), "baselineCompleteSubjectsExcluded": len(assignment["baselineCompleteCharacterIds"]),
+            "runtimeCgCountsMatched": True, "assignmentIsNotDelivery": True}
+
+
 def audit_global_batch(book, plan):
     summary = json.loads(book.with_suffix(".summary.json").read_text(encoding="utf-8"))
     batch = summary.get("globalBatch") or {}
@@ -148,6 +191,7 @@ def audit(book):
     assert len({row["Univers"] for row in roster_rows}) == plan["summary"]["universes"]
     assert all(row["Incarnation / continuité"] for row in roster_rows), "A missing identity must be explicit"
     bible_by_id = {subject["characterId"]: subject for subject in bible["subjects"]}
+    agent_batch_checks = audit_agent_batches(workbook, plan, expected_media, bible_by_id)
     selected_sprite_checks = 0
     for row in roster_rows:
         if row["ID personnage"] == "seyra_tal":
@@ -243,6 +287,34 @@ def audit(book):
         "thaleia_naxos": "aegea_moirai", "mei_zhen": "mandate_nine_heavens",
         "yrsa_rune_binder": "nine_realms_last_twilight",
         "sumaq_khipu": "tawantinsuyu_split_sun", "rei_kagetsu": "yomi_no_kage",
+        "astra_vey": "mythos_primordia",
+        "aura_7": "helios_56",
+        "azael_vorn": "infernum_nine_pits",
+        "brokk_embervein": "valedor_shattered_crown",
+        "brother_ors": "meridian_clockwork",
+        "cassian_varro": "imperium_aeternum",
+        "daichi_kurogane": "yomi_no_kage",
+        "elise_varenne": "aevum_fracture",
+        "goruk_ash_tusk": "valedor_shattered_crown",
+        "ilya_cross": "iron_tempest",
+        "ixo_9": "ilyr_concordat",
+        "jonas_mire": "drowned_testament",
+        "korr_venn": "ilyr_concordat",
+        "korun_stoneborn": "mythos_primordia",
+        "melantho_seer": "aegea_moirai",
+        "merek_flint": "aether_crown",
+        "milo_quill": "crownless_sea",
+        "morcant_bound": "infernum_nine_pits",
+        "nova_bell": "helios_56",
+        "numa_corvinus": "imperium_aeternum",
+        "nyme_first_song": "mythos_primordia",
+        "oona_vell": "drowned_testament",
+        "rumi_illa": "tawantinsuyu_split_sun",
+        "safiya_nadir": "aevum_fracture",
+        "sten_ulfsson": "nine_realms_last_twilight",
+        "taset_lioness": "kemet_devoured_sun",
+        "tomas_grey": "aevum_fracture",
+        "wei_long": "mandate_nine_heavens",
     }
     v2_original_identities = set()
     for row in rows(workbook["Comparaisons"]):
@@ -358,6 +430,7 @@ def audit(book):
         "partialWaveRefusalAndNonAttemptChecks": partial_state_checks,
         "mistralRefusalAndNonAttemptChecks": mistral_state_checks,
         "globalBatchChecks": global_batch_checks,
+        "agentBatchChecks": agent_batch_checks,
         "allCurrentMediaMatchRuntime": True, "plannedImagesPresentedAsDelivered": 0,
         "certifiesVisualResemblance": False,
     }
