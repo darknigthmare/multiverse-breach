@@ -258,6 +258,78 @@ try {
       assert.equal(await page.getByTestId('open-settings').evaluate(element => element === document.activeElement), true);
     });
 
+    for (const activation of ['Enter', 'NumpadEnter', 'KeyW']) {
+      await check(`a native held ${activation} cannot become an unintended remap`, async () => {
+        await page.getByTestId('open-settings').click();
+        const dialog = page.locator('dialog[open]'); await dialog.waitFor();
+        const left = dialog.getByRole('button', { name: /^JOUEUR 1 \/ GAUCHE:/ });
+        await left.focus();
+        await page.keyboard.down(activation);
+        if (activation === 'KeyW') await left.click();
+        assert.equal(await left.getAttribute('aria-pressed'), 'true');
+        await page.keyboard.down(activation);
+        assert.equal(await left.getAttribute('aria-pressed'), 'true', 'Repeat must leave capture pending');
+        const repeated = await page.evaluate(code => window.__heldInputEvents
+          .filter(event => event.type === 'keydown' && event.code === code).at(-1), activation);
+        assert.equal(repeated.repeat, true); assert.equal(repeated.trusted, true);
+        await page.keyboard.up(activation);
+        await page.keyboard.press('KeyA');
+        assert.equal(await left.getAttribute('aria-label'), 'JOUEUR 1 / GAUCHE: A');
+        assert.equal(await left.getAttribute('aria-pressed'), 'false');
+        await dialog.getByRole('button', { name: 'RÉINITIALISER', exact: true }).click();
+        assert.equal(await left.getAttribute('aria-label'), 'JOUEUR 1 / GAUCHE: Q');
+        await page.keyboard.press('Escape'); await state({ 'settings-open': false });
+      });
+    }
+
+    await check('opposite-axis conflict preserves bindings, supports Escape and accepts a free key', async () => {
+      await page.getByTestId('open-settings').click();
+      const dialog = page.locator('dialog[open]'); await dialog.waitFor();
+      const left = dialog.getByRole('button', { name: /^JOUEUR 1 \/ GAUCHE:/ });
+      const right = dialog.getByRole('button', { name: /^JOUEUR 1 \/ DROITE:/ });
+      await left.click(); await page.keyboard.press('KeyD');
+      assert.equal(await left.getAttribute('aria-pressed'), 'true');
+      assert.match(await dialog.locator('[role="status"]').textContent(), /GAUCHE.*D.*DROITE.*autre touche/);
+      assert.equal(await right.getAttribute('aria-label'), 'JOUEUR 1 / DROITE: D');
+      await page.keyboard.press('Escape'); await state({ 'settings-open': true });
+      assert.equal(await left.getAttribute('aria-label'), 'JOUEUR 1 / GAUCHE: Q');
+      await left.click(); await page.keyboard.press('KeyD'); await page.keyboard.press('KeyA');
+      assert.equal(await left.getAttribute('aria-label'), 'JOUEUR 1 / GAUCHE: A');
+      assert.equal(await right.getAttribute('aria-label'), 'JOUEUR 1 / DROITE: D');
+      await dialog.getByRole('button', { name: 'RÉINITIALISER', exact: true }).click();
+      await page.keyboard.press('Escape'); await state({ 'settings-open': false });
+    });
+
+    await check('Space activation and a fresh Enter still produce an intentional remap', async () => {
+      await page.getByTestId('open-settings').click();
+      const dialog = page.locator('dialog[open]'); await dialog.waitFor();
+      const left = dialog.getByRole('button', { name: /^JOUEUR 1 \/ GAUCHE:/ });
+      await left.focus(); await page.keyboard.press('Space');
+      assert.equal(await left.getAttribute('aria-pressed'), 'true');
+      await page.keyboard.press('Enter');
+      assert.equal(await left.getAttribute('aria-label'), 'JOUEUR 1 / GAUCHE: ENTER');
+      assert.equal(await left.getAttribute('aria-pressed'), 'false');
+      await dialog.getByRole('button', { name: 'RÉINITIALISER', exact: true }).click();
+      await page.keyboard.press('Escape'); await state({ 'settings-open': false });
+    });
+
+    await check('focus leaving the panel and reset both cancel a rejected remap', async () => {
+      await page.getByTestId('open-settings').click();
+      const dialog = page.locator('dialog[open]'); await dialog.waitFor();
+      const left = dialog.getByRole('button', { name: /^JOUEUR 1 \/ GAUCHE:/ });
+      await left.click(); await page.keyboard.press('KeyD');
+      assert.equal(await left.getAttribute('aria-pressed'), 'true');
+      await dialog.locator('[data-drawer-close]').focus();
+      assert.equal(await left.getAttribute('aria-pressed'), 'false');
+      assert.equal(await left.getAttribute('aria-label'), 'JOUEUR 1 / GAUCHE: Q');
+      await left.click(); await page.keyboard.press('KeyD');
+      assert.equal(await left.getAttribute('aria-pressed'), 'true');
+      await dialog.getByRole('button', { name: 'RÉINITIALISER', exact: true }).click();
+      assert.equal(await left.getAttribute('aria-pressed'), 'false');
+      assert.equal(await left.getAttribute('aria-label'), 'JOUEUR 1 / GAUCHE: Q');
+      await page.keyboard.press('Escape'); await state({ 'settings-open': false });
+    });
+
     await state({ guard: false, charge: false, 'fighter-left': false, 'scene-forward': false });
     assert.deepEqual(errors, []);
     console.log(JSON.stringify({ browser: browser.version(), viewport: { width: 900, height: 700 },

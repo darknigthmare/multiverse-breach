@@ -34,6 +34,9 @@ Relire ces points d'entrée dans la branche courante avant toute modification.
 | Déplacement en Ville et Extinction | `src/components/HubScreen.jsx`, `src/components/SceneHoldButton.jsx`, `src/game/sceneInputs.js` | Relâcher par source physique, même si le caractère ou le focus change. Après une pause, un menu ou une perte de focus, un déplacement exige un nouvel appui ; la répétition clavier ne recrée pas la commande effacée. |
 | Pause de la simulation Extinction | `src/components/HubScreen.jsx`, `src/game/fixedStepClock.js` | Réinitialiser l'horloge à l'ouverture et à la fermeture de chaque pause, même sans image affichée pendant celle-ci. La première image de reprise ne rattrape aucun temps passé en pause. |
 | Boutons tactiles et activation clavier | `src/components/HeldControlButton.jsx`, `src/game/heldControlInput.js`, `src/components/MeleeControlsPanel.jsx` | Chaque doigt et touche d'activation possède sa source ; seul le dernier relâchement termine l'action. Le registre de la scène reste la référence après un tag, une pause ou un remplacement de combat. |
+| Réaffectation des commandes | `src/components/MeleeControlsPanel.jsx`, `src/game/melee/meleeInputMap.js` | Attendre une nouvelle pression, sans capturer la répétition d'une touche déjà maintenue. Refuser une touche de la direction opposée sur le même axe et le même joueur ; conserver les alias contextuels et les affectations de l'autre joueur. |
+| Accès facultatif aux manettes | `src/components/GameCanvas.jsx`, `src/game/browserGamepads.js` | Une API absente ou refusée ne doit pas interrompre les commandes clavier et tactiles. Préserver les indices des manettes et réessayer aux lectures suivantes. |
+| Replays de vérification Extinction | `scripts/browserSceneServices.py`, `scripts/fixtures/cityExtinctionHarness.jsx` | Fixer une graine documentée et l'horloge avant START, puis comparer les états observés, décisions et tirages de deux contextes frais. Conserver les assertions de victoire et les traces d'échec ; ne pas choisir une nouvelle graine pour faire passer un scénario. |
 | Assets | `src/game/renderer.js`, `spriteAssets.js`, `cosmeticVisualAssets.js` | Réutiliser les registres, règles d'atlas, variantes et chargements ; examiner le rendu au format réel. |
 | Sauvegarde | `src/App.jsx`, `src/game/localSaveGuard.js`, `saveValidation.js`, `saveRecovery.js`, `safeStorage.js`, `cloudSaveConflictPolicy.js` | Le garde doit partir des octets exacts lus avec la progression, y compris un emplacement vide. Une erreur de lecture initiale bloque les écritures automatiques jusqu'à récupération explicite. Préserver schémas, migrations et stratégies de conflit ; ce contrôle optimiste ne rend pas deux écritures simultanées atomiques. |
 | Audio et préférences locales | `src/game/soundEngine.js`, `audioPreferences.js`, `safeStorage.js`, `melee/meleeInputMap.js` | Un arrêt explicite annule la demande musicale ; un effet sonore ne la relance pas. La sourdine conserve la dernière scène demandée pour la reprise. Respecter le démarrage après interaction et les préférences ; l'accès refusé au stockage ne doit pas interrompre l'initialisation audio ni l'application des commandes. |
@@ -93,6 +96,10 @@ La [continuation sur l'audio et le démarrage des sauvegardes](GAMEDEV_SESSION_R
 documente l'annulation d'une musique, la reprise après sourdine et la protection
 de la progression entre chargement et initialisation de son garde.
 
+La [continuation sur les affectations, manettes et replays](GAMEDEV_INPUT_AND_REPLAY_2026-10-29.md)
+documente la capture d'une nouvelle touche, les conflits de direction, le refus
+natif de l'API manette et la comparaison des parcours Extinction.
+
 Choisir les suites liées au comportement modifié. Les commandes ci-dessous sont
 des points d'entrée existants, pas un compte rendu de tests déjà exécutés.
 
@@ -128,6 +135,8 @@ Elle vérifie notamment deux contacts tactiles natifs, les touches Espace/Entré
 la capture du pointeur et la reprise après nettoyage. Elle monte aussi le vrai
 bouton de déplacement Ville/Extinction pour distinguer Entrée du pavé numérique,
 rejeter une répétition clavier après nettoyage et conserver le focus au pointeur.
+Le panneau de mêlée vérifie aussi les répétitions lors d'une réaffectation,
+les conflits entre directions opposées et l'annulation par Échap ou perte de focus.
 La rejouer avec
 `PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:input-browser`.
 
@@ -145,6 +154,26 @@ Les migrations du catalogue, la navigation et le suivi React interne aux fonctio
 extraites sont remplacés ; il ne s'agit pas d'un test de l'App complète ou du cloud.
 La rejouer avec
 `PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:save-browser`.
+
+La sixième fixture extrait le vrai lecteur de commandes de `GameCanvas` et
+importe ses helpers. Un contexte HTTPS reçoit une vraie politique
+`Permissions-Policy: gamepad=()` ; les deux joueurs doivent conserver leurs
+commandes clavier et tactiles malgré le `SecurityError` natif. Les touches
+proviennent du navigateur ; les appuis tactiles sont préparés dans le registre
+de scène. L'absence de l'API est simulée séparément. La reprise après navigation
+concerne un nouveau document ; un test unitaire couvre l'échec puis la réussite
+dans la même instance. Aucun périphérique physique ni combat complet n'est testé.
+La rejouer avec
+`PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:gamepad-browser`.
+
+Le workflow [City and Extinction immersive UI](../../.github/workflows/city-extinction-ui.yml)
+exécute les services de Ville et deux parcours par mode FPS avec les assets du
+dépôt. `scripts/browserSceneServices.py --replays 2` conserve une empreinte des
+états observés et des décisions ainsi que les traces détaillées. La graine et
+l'horloge sont contrôlées dans la fixture seulement. Une égalité de replays
+établit la répétabilité de ce scénario dans cet environnement ; elle ne mesure
+ni les performances ni la fidélité artistique et ne couvre pas toutes les
+graines ou tous les champs internes de la simulation.
 
 ## Utiliser les outils d'assets fournis
 

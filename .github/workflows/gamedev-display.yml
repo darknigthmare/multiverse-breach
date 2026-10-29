@@ -69,6 +69,7 @@ jobs:
           test -s .tmp/gamedev-display/scripts/fixtures/gamedev-inputs.html
           test -s .tmp/gamedev-display/scripts/fixtures/gamedev-audio.html
           test -s .tmp/gamedev-display/scripts/fixtures/gamedev-save.html
+          test -s .tmp/gamedev-display/scripts/fixtures/gamedev-gamepad.html
       - name: Install pinned browser test tooling separately from the game
         env:
           PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/gamedev-browsers
@@ -88,6 +89,7 @@ jobs:
           npm run test:gamedev:input-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/input-browser.log"
           npm run test:gamedev:audio-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/audio-browser.log"
           npm run test:gamedev:save-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/save-browser.log"
+          npm run test:gamedev:gamepad-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/gamepad-browser.log"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

@@ -1,6 +1,7 @@
 import { useId, useMemo, useState } from 'react';
 import {
   MELEE_REMAPPABLE_SLOTS,
+  findMeleeAxisConflict,
   formatMeleeInputCode,
   normalizeMeleeInputMaps
 } from '../game/melee/meleeInputMap';
@@ -146,6 +147,8 @@ export default function MeleeControlsPanel({
         bindings: 'AFFECTATIONS',
         touch: 'COMMANDES TACTILES',
         press: 'APPUYEZ SUR UNE TOUCHE',
+        conflict: 'est déjà affectée à',
+        retry: 'Choisissez une autre touche.',
         cancelled: 'Remappage annule.',
         instructions: 'Sélectionnez une affectation pour changer sa touche.',
         resetDone: 'Réinitialisation des commandes demandée.',
@@ -161,6 +164,8 @@ export default function MeleeControlsPanel({
         bindings: 'BINDINGS',
         touch: 'TOUCH CONTROLS',
         press: 'PRESS A KEY',
+        conflict: 'is already assigned to',
+        retry: 'Choose another key.',
         cancelled: 'Remapping cancelled.',
         instructions: 'Select a binding to change its key.',
         resetDone: 'Control reset requested.',
@@ -207,6 +212,9 @@ export default function MeleeControlsPanel({
     if (!capture) return;
     event.preventDefault();
     event.stopPropagation();
+    // The activation key may still be held when capture opens. Wait for a
+    // fresh press, while consuming repeats so they cannot click or escape.
+    if (event.repeat) return;
     if (event.code === 'Escape') {
       setCapture(null);
       setAnnouncement(copy.cancelled);
@@ -215,6 +223,11 @@ export default function MeleeControlsPanel({
     if (!event.code || event.code === 'Unidentified') return;
     const targetSlot = MELEE_REMAPPABLE_SLOTS.find(slot => slot.id === capture.slot);
     const label = targetSlot ? slotLabel(targetSlot) : capture.slot;
+    const conflict = findMeleeAxisConflict(normalizedMaps, capture.side, capture.slot, event.code);
+    if (conflict) {
+      setAnnouncement(`${sideLabel(capture.side)} / ${label}: ${formatCode(event.code, isFrench)} ${copy.conflict} ${slotLabel(conflict)}. ${copy.retry}`);
+      return;
+    }
     onRemap?.(capture.side, capture.slot, event.code);
     setCapture(null);
     setAnnouncement(`${sideLabel(capture.side)} / ${label}: ${formatCode(event.code, isFrench)}.`);

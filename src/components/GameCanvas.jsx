@@ -68,6 +68,7 @@ import { getSmashAbilityProfile, getSmashAbilityTargets } from '../game/smashAbi
 import { isMeleeMovementLocked } from '../game/melee/meleeCombatRuntime';
 import { getBlackPearlSourceAmmunition } from '../game/canonBlackPearlSourceKits.js';
 import { createSceneInputs } from '../game/sceneInputs.js';
+import { readBrowserGamepads } from '../game/browserGamepads.js';
 import {
   MELEE_ACTIONS,
   MELEE_REMAPPABLE_SLOTS,
@@ -1365,9 +1366,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const maps = meleeInputMapsRef.current;
       const map = side === 'cpu' ? maps.cpu : maps.player;
       const keyboard = readKeyboardMeleeInput(meleePressedCodesRef.current, map);
-      const gamepads = typeof navigator !== 'undefined' && navigator.getGamepads
-        ? navigator.getGamepads()
-        : [];
+      const gamepads = readBrowserGamepads();
       const gamepad = readGamepadMeleeInput(gamepads?.[side === 'cpu' ? 1 : 0]);
       const touch = getTouchMeleeSnapshot(new Set(Object.keys(meleeTouchHeldRef.current[side].snapshot())));
       return mergeMeleeInputSnapshots(keyboard, gamepad, touch);

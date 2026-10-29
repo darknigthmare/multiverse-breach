@@ -124,12 +124,25 @@ export const saveMeleeInputMaps = (maps, storage) => {
   return normalized;
 };
 
+// Contextual aliases (down/crouch/drop, attack/ledge attack) are intentional.
+// Only the opposite directions of one player's axis cancel each other out.
+export const findMeleeAxisConflict = (maps, side, slot, code) => {
+  const target = MELEE_REMAPPABLE_SLOTS.find(entry => entry.id === slot);
+  const nextCode = String(code || '').trim();
+  if (!target?.polarity || !nextCode) return null;
+  const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
+  const opposite = target.polarity === 'negative' ? 'positive' : 'negative';
+  const normalized = normalizeMeleeInputMaps(maps);
+  if (!normalized[resolvedSide][target.action][opposite].includes(nextCode)) return null;
+  return MELEE_REMAPPABLE_SLOTS.find(entry => entry.action === target.action && entry.polarity === opposite) || null;
+};
+
 export const replaceMeleeBinding = (maps, side, slot, code) => {
   const normalized = normalizeMeleeInputMaps(maps);
   const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
   const target = MELEE_REMAPPABLE_SLOTS.find(entry => entry.id === slot);
   const nextCode = String(code || '').trim();
-  if (!target || !nextCode) return normalized;
+  if (!target || !nextCode || findMeleeAxisConflict(normalized, resolvedSide, slot, nextCode)) return normalized;
   const next = cloneValue(normalized);
   if (target.polarity) next[resolvedSide][target.action][target.polarity] = [nextCode];
   else next[resolvedSide][target.action] = [nextCode];

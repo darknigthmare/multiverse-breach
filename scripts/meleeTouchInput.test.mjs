@@ -3,6 +3,7 @@ import { before, after, test } from 'node:test';
 import { readFileSync } from 'node:fs';
 import { createServer } from 'vite';
 import { createSceneInputs } from '../src/game/sceneInputs.js';
+import { readBrowserGamepads } from '../src/game/browserGamepads.js';
 import {
   MELEE_ACTIONS, MELEE_REMAPPABLE_SLOTS, createDefaultMeleeInputMaps,
   diffMeleeActionEdges, mergeMeleeInputSnapshots, readGamepadMeleeInput,
@@ -44,7 +45,7 @@ function fixture() {
   const env = {
     useRef: current => ({ current }), createSceneInputs,
     MELEE_TOUCH_SLOTS: MELEE_REMAPPABLE_SLOTS.map(slot => slot.id),
-    MELEE_ACTIONS, diffMeleeActionEdges, mergeMeleeInputSnapshots, readGamepadMeleeInput, readKeyboardMeleeInput,
+    MELEE_ACTIONS, diffMeleeActionEdges, mergeMeleeInputSnapshots, readGamepadMeleeInput, readKeyboardMeleeInput, readBrowserGamepads,
     engineRef: { current: engine }, keysPressed: { current: {} },
     meleePressedCodesRef: { current: new Set() },
     meleePreviousInputRef: { current: { player: null, cpu: null } },
