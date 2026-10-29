@@ -119,6 +119,28 @@ rapports de backlog sont des inventaires datés ; leurs totaux ne doivent pas
 fichier manquant identifié pour cette pose et conserve explicitement les
 animations en attente.
 
+## Synchronisation du classeur de production
+
+La CI du commit `73f37cc` a relevé une conséquence de l'installation :
+`Boss_FPS!I450` indiquait encore « Absent de Git ». Le classeur de production
+et son reçu sont actualisés explicitement à partir de l'arbre complet de ce
+commit, qui contient 16 534 fichiers suivis. Les vérificateurs sont conservés.
+
+Une seule cellule de contenu change : `Boss_FPS!I450` devient « Présent dans
+Git ». Les 17 675 liens sources sont rattachés à `73f37cc`, et les deux cellules
+de date et de traçabilité de `Synthese` sont actualisées. Les 21 onglets,
+20 tables, 17 732 lignes de catalogue, styles et autres cellules sont préservés.
+Les 14 formules sont recalculées ; elles comptent des lignes et des catégories
+de héros, sans dépendre du statut de disponibilité de cette image. Leurs
+résultats restent identiques et aucune erreur calculée n'est détectée.
+
+Le vérificateur existant valide 210 518 cellules. Le classeur d'interface
+conserve son empreinte exacte. Le
+[reçu de vérification](../extinction-city/workbook-followup-2026-10-27.json)
+conserve le contexte de l'échec initial et distingue les vérifications locales
+des exécutions CI du commit final. Cette actualisation d'inventaire ne vaut
+pas approbation d'une adaptation FPS ou d'un ensemble d'animations.
+
 ## Environnement des contrôles navigateur
 
 Le commit d'entrées `9384f99f` a validé 202 tests gamedev, les six fixtures et
