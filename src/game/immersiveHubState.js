@@ -51,7 +51,7 @@ export const getSceneCanvasSize = (width, height, logicalHeight) => ({
 export const getSceneHudLayout = ({ width, height, logicalHeight, hudScale = 1, safeArea = 12 }) => {
   const units = logicalHeight / Math.max(1, height);
   const scale = Math.max(0.9, Math.min(1.4, hudScale));
-  const edge = Math.max(12, Math.min(32, safeArea));
+  const edge = Math.max(0, Math.min(32, safeArea));
   const mapWidth = Math.min(154 * scale, width * 0.34);
   const mapHeight = mapWidth * 92 / 154;
   const mapBottom = edge + (width <= 760 ? 64 * scale : 0);

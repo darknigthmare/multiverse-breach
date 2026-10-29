@@ -21,6 +21,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineSmash } from '../game/engineSmash';
 import { EngineRpg } from '../game/engineRpg';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
+import { createReducedMotionReader } from '../game/reducedMotion.js';
 import { rpgUnitId } from '../game/rpgTargeting';
 import { drawRpgTargeting, pickRpgTarget } from '../game/rpgTargetingPresentation';
 import { grantBattleItemShield } from '../game/battleItemShield';
@@ -125,12 +126,15 @@ function CosmeticAtlasPresentation({ mode, type, side = 'player', cosmetic }) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return undefined;
 
+    const reducedMotion = createReducedMotionReader();
     let animationFrameId = 0;
     let startedAt = null;
     const draw = timestamp => {
       if (startedAt === null) startedAt = timestamp;
       const elapsedMs = Math.min(durationMs, Math.max(0, timestamp - startedAt));
-      const frame = getGameCanvasCosmeticFrame(atlas, elapsedMs, durationMs);
+      // A static representative frame keeps the cosmetic readable. Lifetime
+      // still uses real elapsed time, so reducing motion cannot prolong it.
+      const frame = getGameCanvasCosmeticFrame(atlas, reducedMotion() ? durationMs / 2 : elapsedMs, durationMs);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawCosmeticAtlasFrame(
         ctx,
@@ -1412,6 +1416,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     let combatTime = 0;
     const simulationClock = createFixedStepClock();
     simulationClockRef.current = simulationClock;
+    const reducedMotion = createReducedMotionReader();
     let lastHudSyncTimestamp = -Infinity;
     let frameId;
 
@@ -1564,7 +1569,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           if (signature) {
             const actor = [...engine.heroes, ...engine.enemies].find(unit => rpgUnitId(unit) === signature.actorId);
             drawSignatureCinematic(ctx, signature, actor, drawPixelSprite, {
-              reducedMotion: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true
+              reducedMotion: reducedMotion()
             });
           }
           if (stage.mode === 'RPG') drawRpgTargeting(ctx, engine.getTargetingState?.(), [...engine.heroes, ...engine.enemies]);
@@ -3036,3 +3041,4 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     </div>
   );
 }
+

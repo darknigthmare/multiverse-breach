@@ -1,5 +1,19 @@
 # React + Vite
 
+## Multiverse game-development guides
+
+See [AGENTS.md](AGENTS.md) and the [Multiverse development guide](docs/development/GAMEDEV_GUIDE.md)
+for the project-specific use of the pinned gamedev skills, engine entry points,
+and verification criteria. The selected guides are included in this repository.
+
+```bash
+npm run check:gamedev-guides
+npm run test:gamedev
+```
+
+The guidance integrity check and focused display regressions also run through
+the existing production `prebuild` checks.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:
@@ -14,3 +28,4 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the Oxlint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+
