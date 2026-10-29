@@ -1,8 +1,37 @@
-// Artwork records only. These four reference designs do not declare combat kits,
+import { ADDITIONAL_CLOUD_MEADOW_REFERENCES, ADDITIONAL_CLOUD_MEADOW_ARTWORK } from './cloudMeadowAdditionalCharacters.js';
+
+// Artwork records only. These reference designs do not declare combat kits,
 // unlock rewards, an invented Cloud Meadow campaign, or source-game animations.
 export const CLOUD_MEADOW_UNIVERSE = 'Cloud Meadow';
 export const CLOUD_MEADOW_REVIEW_PATH = '/reviews/cloud-meadow/index.html';
 export const CLOUD_MEADOW_REFERENCE_SRC = '/reviews/cloud-meadow/reference.png';
+export const CLOUD_MEADOW_INITIAL_REFERENCE_ID = 'original-dragons-2026-10-28';
+
+export const CLOUD_MEADOW_REFERENCES = Object.freeze([
+  {
+    id: CLOUD_MEADOW_INITIAL_REFERENCE_ID,
+    src: CLOUD_MEADOW_REFERENCE_SRC,
+    suppliedFilename: 'image(20261028-174228).png',
+    suppliedOn: '2026-10-28',
+    label: { fr: 'Eve, Evan et les dragons', en: 'Eve, Evan and the dragons' }
+  },
+  ...ADDITIONAL_CLOUD_MEADOW_REFERENCES
+].map(reference => Object.freeze({ ...reference, label: Object.freeze({ ...reference.label }) })));
+
+const referencesById = new Map(CLOUD_MEADOW_REFERENCES.map(reference => [reference.id, reference]));
+
+export const CLOUD_MEADOW_SCALE_GROUPS = Object.freeze([
+  Object.freeze({
+    id: 'original-dragon-sheet',
+    referenceId: CLOUD_MEADOW_INITIAL_REFERENCE_ID,
+    baselineCharacterId: 'cloud_meadow_eve',
+    label: Object.freeze({ fr: 'Première planche · base Eve', en: 'Original sheet · Eve baseline' }),
+    note: Object.freeze({
+      fr: 'Rapports de hauteur approximatifs mesurés uniquement sur la première planche, avec Eve comme base 1. Il ne s’agit pas de tailles officielles. Aucune comparaison de taille n’est déduite entre les différentes planches.',
+      en: 'Approximate height ratios measured only within the original sheet, with Eve as 1. These are not official heights. No size comparison is inferred between separate sheets.'
+    })
+  })
+]);
 
 export const CLOUD_MEADOW_STATIC_LAYOUT = Object.freeze({
   columns: 1,
@@ -16,8 +45,11 @@ export const CLOUD_MEADOW_STATIC_LAYOUT = Object.freeze({
 
 const assetBase = '/sprites/generated/heroes/cloud-meadow/';
 const artwork = ({
-  id, name, englishName = name, file, kind, referenceRegion, relativeHeight, traits, description,
+  id, name, englishName = name, file, kind, referenceRegion = '',
+  referenceId = CLOUD_MEADOW_INITIAL_REFERENCE_ID, referenceCrop,
+  relativeHeight = null, scaleGroupId = null, traits, description,
   fidelityStatus = 'reference-based-generated',
+  provenance = 'generated-from-user-reference',
   fidelityNote = {
     fr: 'Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.',
     en: 'Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy.'
@@ -29,11 +61,15 @@ const artwork = ({
   universe: CLOUD_MEADOW_UNIVERSE,
   kind,
   src: `${assetBase}${file}`,
-  referenceSrc: CLOUD_MEADOW_REFERENCE_SRC,
+  referenceId,
+  referenceSrc: referencesById.get(referenceId)?.src || '',
+  referenceCrop: Object.freeze([...referenceCrop]),
   referenceRegion,
   // Approximate relationship measured in the supplied sheet, not a canon height.
   referenceRelativeHeight: relativeHeight,
-  provenance: 'generated-from-user-reference',
+  scaleGroupId,
+  provenance,
+  generationMode: fidelityStatus === 'description-based-adaptation' ? 'text-description' : 'reference-image',
   fidelityStatus,
   fidelityNote: Object.freeze(fidelityNote),
   canonicalFidelityApproved: false,
@@ -46,6 +82,7 @@ const artwork = ({
 export const CLOUD_MEADOW_CHARACTERS = Object.freeze([
   artwork({
     id: 'cloud_meadow_eve', name: 'Eve', file: 'eve-reference.png', kind: 'human',
+    referenceCrop: [61, 288, 117, 332], scaleGroupId: 'original-dragon-sheet',
     referenceRegion: 'upper-left-female-farmer', relativeHeight: 1,
     traits: ['auburn-bob', 'indigo-bib-overalls', 'dark-short-sleeved-shirt', 'brown-gloves', 'black-tall-boots', 'raised-two-finger-gesture'],
     description: {
@@ -55,6 +92,7 @@ export const CLOUD_MEADOW_CHARACTERS = Object.freeze([
   }),
   artwork({
     id: 'cloud_meadow_evan', name: 'Evan', file: 'evan-reference.png', kind: 'human',
+    referenceCrop: [176, 277, 119, 342], scaleGroupId: 'original-dragon-sheet',
     referenceRegion: 'upper-left-male-farmer', relativeHeight: 1.04,
     traits: ['tousled-auburn-hair', 'indigo-bib-overalls', 'dark-short-sleeved-shirt', 'brown-gloves', 'black-tall-boots', 'raised-fist'],
     description: {
@@ -65,6 +103,7 @@ export const CLOUD_MEADOW_CHARACTERS = Object.freeze([
   artwork({
     id: 'cloud_meadow_dragon_female', name: 'Dragon femelle', englishName: 'Female Dragon',
     file: 'dragon-female-adapted.png', kind: 'dragon',
+    referenceCrop: [348, 32, 541, 590], scaleGroupId: 'original-dragon-sheet',
     fidelityStatus: 'adapted-coverage',
     fidelityNote: {
       fr: 'Adaptation : couverture d’écailles opaque ajoutée sur le buste et le bassin. Ce visuel n’est pas une reproduction 1:1.',
@@ -80,13 +119,15 @@ export const CLOUD_MEADOW_CHARACTERS = Object.freeze([
   artwork({
     id: 'cloud_meadow_dragon_male', name: 'Dragon mâle', englishName: 'Male Dragon',
     file: 'dragon-male-reference.png', kind: 'dragon',
+    referenceCrop: [350, 553, 523, 624], scaleGroupId: 'original-dragon-sheet',
     referenceRegion: 'lower-right-dragon', relativeHeight: 1.9,
     traits: ['broad-muscular-build', 'upright-curved-horns', 'magenta-eyes', 'charcoal-scales', 'peach-underside', 'red-angular-markings', 'no-wings', 'long-u-shaped-hollow-tip-tail'],
     description: {
       fr: 'Épaules larges, membres musclés et cornes relevées. La queue dessine un grand U vers la gauche, avec une extrémité tubulaire creuse.',
       en: 'Broad shoulders, muscular limbs and upright horns. His tail sweeps into a large U to the left, ending in a hollow tube.'
     }
-  })
+  }),
+  ...ADDITIONAL_CLOUD_MEADOW_ARTWORK.map(artwork)
 ]);
 
 const byId = new Map(CLOUD_MEADOW_CHARACTERS.map(character => [character.id, character]));
@@ -94,6 +135,19 @@ const sourcePaths = new Set(CLOUD_MEADOW_CHARACTERS.map(character => character.s
 
 export function getCloudMeadowCharacter(id) {
   return typeof id === 'string' ? byId.get(id) || null : null;
+}
+
+export function getCloudMeadowReference(id) {
+  return typeof id === 'string' ? referencesById.get(id) || null : null;
+}
+
+export function filterCloudMeadowCharacters({ referenceId = '', query = '' } = {}) {
+  const normalizedQuery = query.trim().toLocaleLowerCase();
+  return CLOUD_MEADOW_CHARACTERS.filter(character =>
+    (!referenceId || character.referenceId === referenceId)
+    && (!normalizedQuery || [character.displayName.fr, character.displayName.en, character.kind]
+      .some(value => value.toLocaleLowerCase().includes(normalizedQuery)))
+  );
 }
 
 export function getCloudMeadowSpriteSrc(actor) {

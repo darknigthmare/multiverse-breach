@@ -6,10 +6,15 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { HEROES_DB } from '../src/game/heroes.js';
 import {
   CLOUD_MEADOW_CHARACTERS,
+  CLOUD_MEADOW_REFERENCES,
+  CLOUD_MEADOW_INITIAL_REFERENCE_ID,
   CLOUD_MEADOW_REVIEW_PATH,
+  CLOUD_MEADOW_SCALE_GROUPS,
   CLOUD_MEADOW_STATIC_LAYOUT,
   CLOUD_MEADOW_UNIVERSE,
   getCloudMeadowCharacter,
+  getCloudMeadowReference,
+  filterCloudMeadowCharacters,
   getCloudMeadowSpriteLayout,
   getCloudMeadowSpriteSrc
 } from '../src/game/cloudMeadowCharacters.js';
@@ -18,6 +23,7 @@ import {
   getSpriteFrameForLayout,
   getSpriteSheetLayout
 } from '../src/game/spriteAssets.js';
+import { inspectCloudMeadowImage, validateCloudMeadowAssociations } from './buildCloudMeadowReview.mjs';
 
 register('./cloudMeadowTestLoader.mjs', import.meta.url);
 const [{ drawPixelSprite, drawCombatantBust }, { default: CloudMeadowGallery }] = await Promise.all([
@@ -25,21 +31,31 @@ const [{ drawPixelSprite, drawCombatantBust }, { default: CloudMeadowGallery }] 
   import('../src/components/CloudMeadowGallery.jsx')
 ]);
 
-const expectedIds = [
+const initialIds = [
   'cloud_meadow_eve', 'cloud_meadow_evan',
   'cloud_meadow_dragon_female', 'cloud_meadow_dragon_male'
 ];
+const additionalIds = [
+  'jaero', 'kiram', 'yonten', 'brontide', 'garst', 'camellia', 'goldra', 'kreyton', 'fio', 'kaleida',
+  'dark_armored_knight', 'bronze_armored_warrior', 'harpy_egg_keeper', 'masked_egg_keeper',
+  'teacup_spirit', 'chain_anchor_warrior', 'golden_slime', 'pink_haired_gunner', 'halo_mage',
+  'golden_barmaid', 'mantis_warrior', 'crystal_mage', 'diving_suit', 'lamia_female', 'coral_mermaid',
+  'cat_female', 'crab', 'cyclops_female', 'centaur_female', 'lamia_male', 'wolf_female', 'holstaur_male', 'harpy_male'
+].map(id => `cloud_meadow_${id}`);
 
-test('the four reference identities remain artwork records without invented gameplay or certification', () => {
-  assert.deepEqual(CLOUD_MEADOW_CHARACTERS.map(character => character.id), expectedIds);
-  assert.equal(new Set(CLOUD_MEADOW_CHARACTERS.map(character => character.src)).size, 4);
+test('reference identities remain separate artwork records without invented gameplay or certification', () => {
+  assert.deepEqual(CLOUD_MEADOW_CHARACTERS.map(character => character.id), [...initialIds, ...additionalIds]);
+  assert.equal(CLOUD_MEADOW_CHARACTERS.length, 37);
+  assert.equal(new Set(CLOUD_MEADOW_CHARACTERS.map(character => character.src)).size, CLOUD_MEADOW_CHARACTERS.length);
   assert.equal(HEROES_DB.filter(hero => hero.universe === CLOUD_MEADOW_UNIVERSE).length, 0);
   for (const character of CLOUD_MEADOW_CHARACTERS) {
     assert.equal(getCloudMeadowCharacter(character.id), character);
     assert.equal(character.animationFrames, 1);
     assert.equal(character.canonicalFidelityApproved, false);
-    assert.equal(character.provenance, 'generated-from-user-reference');
-    assert.equal(character.fidelityStatus, character.id === 'cloud_meadow_dragon_female' ? 'adapted-coverage' : 'reference-based-generated');
+    const fromDescription = character.fidelityStatus === 'description-based-adaptation';
+    assert.equal(character.provenance, fromDescription ? 'generated-from-reference-description' : 'generated-from-user-reference');
+    assert.equal(character.generationMode, fromDescription ? 'text-description' : 'reference-image');
+    assert.ok(['reference-based-generated', 'adapted-coverage', 'description-based-adaptation'].includes(character.fidelityStatus));
     assert.ok(character.fidelityNote.fr);
     assert.ok(character.fidelityNote.en);
     assert.ok(Object.isFrozen(character));
@@ -47,11 +63,55 @@ test('the four reference identities remain artwork records without invented game
       assert.equal(Object.hasOwn(character, field), false, `${character.id}: ${field}`);
     }
   }
-  assert.ok(CLOUD_MEADOW_CHARACTERS[2].traits.includes('no-wings'));
-  assert.ok(CLOUD_MEADOW_CHARACTERS[2].src.endsWith('/dragon-female-adapted.png'));
-  assert.match(CLOUD_MEADOW_CHARACTERS[2].fidelityNote.fr, /buste et le bassin/);
-  assert.match(CLOUD_MEADOW_CHARACTERS[2].fidelityNote.en, /not a 1:1 reproduction/);
-  assert.ok(CLOUD_MEADOW_CHARACTERS[3].traits.includes('long-u-shaped-hollow-tip-tail'));
+  const femaleDragon = getCloudMeadowCharacter('cloud_meadow_dragon_female');
+  assert.ok(femaleDragon.traits.includes('no-wings'));
+  assert.ok(femaleDragon.src.endsWith('/dragon-female-adapted.png'));
+  assert.equal(femaleDragon.fidelityStatus, 'adapted-coverage');
+  assert.match(femaleDragon.fidelityNote.fr, /buste et le bassin/);
+  assert.match(femaleDragon.fidelityNote.en, /not a 1:1 reproduction/);
+  assert.ok(getCloudMeadowCharacter('cloud_meadow_dragon_male').traits.includes('long-u-shaped-hollow-tip-tail'));
+  const descriptions = CLOUD_MEADOW_CHARACTERS.filter(character => character.fidelityStatus === 'description-based-adaptation');
+  assert.equal(descriptions.length, 8);
+  assert.ok(descriptions.every(character => character.referenceId === 'monsters_20261029'));
+  assert.ok(descriptions.every(character => character.src.endsWith('-adapted.png')));
+  assert.deepEqual(CLOUD_MEADOW_CHARACTERS.filter(character => character.fidelityStatus === 'adapted-coverage').map(character => character.id), [
+    'cloud_meadow_dragon_female', 'cloud_meadow_kreyton', 'cloud_meadow_kaleida',
+    'cloud_meadow_teacup_spirit', 'cloud_meadow_golden_slime', 'cloud_meadow_pink_haired_gunner',
+    'cloud_meadow_halo_mage', 'cloud_meadow_lamia_female', 'cloud_meadow_coral_mermaid'
+  ]);
+});
+
+test('each selection uses its own source and the original scale never extends to unrelated sheets', async () => {
+  const references = await Promise.all(CLOUD_MEADOW_REFERENCES.map(async reference => ({
+    ...reference, image: await inspectCloudMeadowImage(reference.src, false)
+  })));
+  validateCloudMeadowAssociations(CLOUD_MEADOW_CHARACTERS, references, CLOUD_MEADOW_SCALE_GROUPS);
+  assert.deepEqual(CLOUD_MEADOW_CHARACTERS.filter(character => character.scaleGroupId !== null).map(character => character.id), initialIds);
+  for (const character of CLOUD_MEADOW_CHARACTERS) {
+    assert.equal(character.referenceSrc, getCloudMeadowReference(character.referenceId).src);
+    if (!initialIds.includes(character.id)) {
+      assert.equal(character.referenceRelativeHeight, null);
+      assert.equal(character.scaleGroupId, null);
+    }
+  }
+  const first = CLOUD_MEADOW_CHARACTERS[0];
+  const altered = changes => [{ ...first, ...changes }, ...CLOUD_MEADOW_CHARACTERS.slice(1)];
+  assert.throws(() => validateCloudMeadowAssociations(altered({ referenceSrc: '/wrong.png' }), references, CLOUD_MEADOW_SCALE_GROUPS), /incorrect reference association/);
+  assert.throws(() => validateCloudMeadowAssociations(altered({ referenceCrop: [880, 1200, 50, 50] }), references, CLOUD_MEADOW_SCALE_GROUPS), /crop outside/);
+  assert.throws(() => validateCloudMeadowAssociations(altered({ scaleGroupId: 'another-sheet' }), references, CLOUD_MEADOW_SCALE_GROUPS), /crosses reference sheets/);
+  assert.throws(() => validateCloudMeadowAssociations([first, first], references, CLOUD_MEADOW_SCALE_GROUPS), /duplicate character ID/);
+});
+
+test('source and name filters preserve distinct identities and expose an empty result', () => {
+  assert.deepEqual(filterCloudMeadowCharacters({ referenceId: CLOUD_MEADOW_INITIAL_REFERENCE_ID }).map(character => character.id), initialIds);
+  assert.deepEqual(filterCloudMeadowCharacters({ query: '  FEMALE DRAGON  ' }).map(character => character.id), ['cloud_meadow_dragon_female']);
+  assert.deepEqual(filterCloudMeadowCharacters({ referenceId: 'unknown-sheet' }), []);
+  assert.deepEqual(filterCloudMeadowCharacters({ query: 'not-a-cloud-meadow-character' }), []);
+  assert.equal(getCloudMeadowReference('__proto__'), null);
+  assert.equal(CLOUD_MEADOW_REFERENCES.length, 4);
+  assert.deepEqual(['companions_20261029', 'npcs_20261029', 'monsters_20261029'].map(referenceId => filterCloudMeadowCharacters({ referenceId }).length), [10, 15, 8]);
+  assert.notEqual(getCloudMeadowCharacter('cloud_meadow_lamia_female').src, getCloudMeadowCharacter('cloud_meadow_lamia_male').src);
+  assert.notEqual(getCloudMeadowCharacter('cloud_meadow_lamia_female').referenceId, getCloudMeadowCharacter('cloud_meadow_lamia_male').referenceId);
 });
 
 test('source resolution requires the exact registered ID and universe in every rendering context', () => {
@@ -146,14 +206,16 @@ test('Cloud Meadow portraits contain the full tail and body without changing leg
   assert.equal(legacy[5], 175 * 0.68);
 });
 
-test('the collection gallery exposes four named selections and the detailed source comparison', () => {
+test('the collection gallery exposes every named selection, source filters and a targeted comparison', () => {
   for (const lang of ['fr', 'en']) {
     const html = renderToStaticMarkup(React.createElement(CloudMeadowGallery, { lang }));
-    assert.equal((html.match(/aria-pressed=/g) || []).length, 4);
+    assert.equal((html.match(/aria-pressed=/g) || []).length, CLOUD_MEADOW_CHARACTERS.length);
     assert.equal((html.match(/aria-pressed="true"/g) || []).length, 1);
-    assert.ok(html.includes(`href="${CLOUD_MEADOW_REVIEW_PATH}"`));
+    assert.ok(html.includes(`href="${CLOUD_MEADOW_REVIEW_PATH}#cloud_meadow_eve"`));
     assert.ok(html.includes('object-fit:contain'));
     for (const character of CLOUD_MEADOW_CHARACTERS) assert.ok(html.includes(character.displayName[lang]));
+    for (const reference of CLOUD_MEADOW_REFERENCES) assert.ok(html.includes(`value="${reference.id}"`));
+    assert.ok(html.includes('type="search"'));
     assert.ok(html.includes(CLOUD_MEADOW_CHARACTERS[0].src));
     assert.ok(html.includes(CLOUD_MEADOW_CHARACTERS[0].fidelityNote[lang]));
   }

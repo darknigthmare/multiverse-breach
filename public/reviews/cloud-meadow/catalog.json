@@ -1,21 +1,29 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "universe": "Cloud Meadow",
   "counts": {
-    "characters": 4,
-    "images": 4,
-    "referenceBased": 3,
-    "adapted": 1,
+    "characters": 37,
+    "images": 37,
+    "referenceSheets": 4,
+    "referenceBased": 20,
+    "adapted": 9,
+    "descriptionBased": 8,
     "animationFramesPerImage": 1,
     "pixelIdenticalCertified": 0
   },
   "reference": {
+    "id": "original-dragons-2026-10-28",
     "src": "/reviews/cloud-meadow/reference.png",
     "suppliedFilename": "image(20261028-174228).png",
     "suppliedOn": "2026-10-28",
+    "label": {
+      "fr": "Eve, Evan et les dragons",
+      "en": "Eve, Evan and the dragons"
+    },
     "image": {
       "sha256": "0bc345c8c5499e59b14adb965184d9211e264feaba24f15288be7182210ca595",
       "bytes": 489323,
+      "format": "png",
       "width": 889,
       "height": 1204,
       "hasAlpha": true,
@@ -29,20 +37,147 @@
       }
     }
   },
+  "references": [
+    {
+      "id": "original-dragons-2026-10-28",
+      "src": "/reviews/cloud-meadow/reference.png",
+      "suppliedFilename": "image(20261028-174228).png",
+      "suppliedOn": "2026-10-28",
+      "label": {
+        "fr": "Eve, Evan et les dragons",
+        "en": "Eve, Evan and the dragons"
+      },
+      "image": {
+        "sha256": "0bc345c8c5499e59b14adb965184d9211e264feaba24f15288be7182210ca595",
+        "bytes": 489323,
+        "format": "png",
+        "width": 889,
+        "height": 1204,
+        "hasAlpha": true,
+        "transparentPixels": 0,
+        "boundaryPixels": 4182,
+        "contentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 889,
+          "height": 1204
+        }
+      }
+    },
+    {
+      "id": "companions_20261029",
+      "src": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "suppliedFilename": "image(20261029-062548).png",
+      "suppliedOn": "2026-10-29",
+      "label": {
+        "fr": "Dix compagnons",
+        "en": "Ten companions"
+      },
+      "image": {
+        "sha256": "925e56daeea6828d7995ba5fcf2dc56c57fad46fc79f88a2128e61a2db043683",
+        "bytes": 1202449,
+        "format": "png",
+        "width": 1280,
+        "height": 1291,
+        "hasAlpha": true,
+        "transparentPixels": 1105549,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 54,
+          "y": 5,
+          "width": 1167,
+          "height": 1273
+        }
+      }
+    },
+    {
+      "id": "npcs_20261029",
+      "src": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "suppliedFilename": "image(20261029-062552).png",
+      "suppliedOn": "2026-10-29",
+      "label": {
+        "fr": "Quinze silhouettes et créatures",
+        "en": "Fifteen character and creature designs"
+      },
+      "image": {
+        "sha256": "50a1f042f9fe4bdd4e3170a28ca835be74a8af7aa396a17950856a1c1cdc9c46",
+        "bytes": 774643,
+        "format": "png",
+        "width": 1280,
+        "height": 707,
+        "hasAlpha": true,
+        "transparentPixels": 599902,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 23,
+          "y": 17,
+          "width": 1212,
+          "height": 676
+        }
+      }
+    },
+    {
+      "id": "monsters_20261029",
+      "src": "/reviews/cloud-meadow/sources/monsters-2026-10-29.png",
+      "suppliedFilename": "image(20261029-062557).png",
+      "suppliedOn": "2026-10-29",
+      "label": {
+        "fr": "Huit modèles de monstres",
+        "en": "Eight monster designs"
+      },
+      "image": {
+        "sha256": "224c6320efdba283a37b808dbabd0ff8d5b47b3c486c9ba9815911312bc044c9",
+        "bytes": 409774,
+        "format": "png",
+        "width": 1280,
+        "height": 362,
+        "hasAlpha": true,
+        "transparentPixels": 293370,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 23,
+          "y": 5,
+          "width": 1230,
+          "height": 349
+        }
+      }
+    }
+  ],
+  "scaleGroups": [
+    {
+      "id": "original-dragon-sheet",
+      "referenceId": "original-dragons-2026-10-28",
+      "baselineCharacterId": "cloud_meadow_eve",
+      "label": {
+        "fr": "Première planche · base Eve",
+        "en": "Original sheet · Eve baseline"
+      },
+      "note": {
+        "fr": "Rapports de hauteur approximatifs mesurés uniquement sur la première planche, avec Eve comme base 1. Il ne s’agit pas de tailles officielles. Aucune comparaison de taille n’est déduite entre les différentes planches.",
+        "en": "Approximate height ratios measured only within the original sheet, with Eve as 1. These are not official heights. No size comparison is inferred between separate sheets."
+      }
+    }
+  ],
   "sources": [
     {
       "url": "https://www.patreon.com/CloudMeadow/about",
       "purpose": "Primary source naming protagonists Evan and Eve",
       "checkedOn": "2026-10-28"
+    },
+    {
+      "url": "https://steamcommunity.com/app/1223750/discussions/0/4361250264578954844/",
+      "purpose": "Forum answer selected by a moderator listing the ten companion names; source-sheet appearance matching is a separate visual identification",
+      "checkedOn": "2026-10-29"
     }
   ],
   "limitations": [
-    "Reference-guided generated images, not original source-game exports or pixel-identical certified reproductions.",
-    "Female Dragon is an explicitly covered adaptation with an added opaque charcoal chest plate, absent from the supplied reference.",
+    "Generated illustrations; reference-image and text-description methods are distinguished per entry. These are not original source-game exports or pixel-identical certified reproductions.",
+    "Coverage adaptations are identified on each affected artwork; added outfits are not presented as official costumes.",
+    "Description-based adaptations use neutral text descriptions only; their comparison sheet was not supplied to the image generator.",
     "One static full-body pose per character; no source-game movement/combat animation is claimed.",
     "Visual catalogue only; no invented combat stats, moves, unlocks, bosses or campaign.",
-    "Dragon labels refer to the two species models in the supplied image, not verified individual names.",
-    "Relative heights are approximate measurements from the reference, not canonical physical measurements."
+    "Descriptive creature labels identify the visible source designs, not unverified individual canon names.",
+    "Relative heights apply only inside an explicitly measured reference-sheet group; no cross-sheet or canonical physical size is inferred."
   ],
   "entries": [
     {
@@ -55,10 +190,19 @@
       "universe": "Cloud Meadow",
       "kind": "human",
       "src": "/sprites/generated/heroes/cloud-meadow/eve-reference.png",
+      "referenceId": "original-dragons-2026-10-28",
       "referenceSrc": "/reviews/cloud-meadow/reference.png",
+      "referenceCrop": [
+        61,
+        288,
+        117,
+        332
+      ],
       "referenceRegion": "upper-left-female-farmer",
       "referenceRelativeHeight": 1,
+      "scaleGroupId": "original-dragon-sheet",
       "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
       "fidelityStatus": "reference-based-generated",
       "fidelityNote": {
         "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
@@ -79,15 +223,10 @@
         "fr": "Carré auburn, salopette indigo, gants bruns et bottes noires. Une main sur la hanche, deux doigts levés.",
         "en": "Auburn bob, indigo overalls, brown gloves and black boots. One hand on her hip, two fingers raised."
       },
-      "referenceCrop": [
-        61,
-        288,
-        117,
-        332
-      ],
       "image": {
         "sha256": "47e0d5beb858d287fa0a1c0b5924d66ae86bbec3692db629334d08c50b123708",
         "bytes": 463603,
+        "format": "png",
         "width": 1254,
         "height": 1254,
         "hasAlpha": true,
@@ -111,10 +250,19 @@
       "universe": "Cloud Meadow",
       "kind": "human",
       "src": "/sprites/generated/heroes/cloud-meadow/evan-reference.png",
+      "referenceId": "original-dragons-2026-10-28",
       "referenceSrc": "/reviews/cloud-meadow/reference.png",
+      "referenceCrop": [
+        176,
+        277,
+        119,
+        342
+      ],
       "referenceRegion": "upper-left-male-farmer",
       "referenceRelativeHeight": 1.04,
+      "scaleGroupId": "original-dragon-sheet",
       "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
       "fidelityStatus": "reference-based-generated",
       "fidelityNote": {
         "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
@@ -135,15 +283,10 @@
         "fr": "Cheveux auburn ébouriffés, salopette indigo, gants bruns et bottes noires. Un poing relevé près de l’épaule.",
         "en": "Tousled auburn hair, indigo overalls, brown gloves and black boots. One fist raised beside his shoulder."
       },
-      "referenceCrop": [
-        176,
-        277,
-        119,
-        342
-      ],
       "image": {
         "sha256": "94723b001f3b08b203d953ea96f8817afb647b238a208c3739205e1b15bf1eae",
         "bytes": 443393,
+        "format": "png",
         "width": 1254,
         "height": 1254,
         "hasAlpha": true,
@@ -167,10 +310,19 @@
       "universe": "Cloud Meadow",
       "kind": "dragon",
       "src": "/sprites/generated/heroes/cloud-meadow/dragon-female-adapted.png",
+      "referenceId": "original-dragons-2026-10-28",
       "referenceSrc": "/reviews/cloud-meadow/reference.png",
+      "referenceCrop": [
+        348,
+        32,
+        541,
+        590
+      ],
       "referenceRegion": "upper-right-dragon",
       "referenceRelativeHeight": 1.8,
+      "scaleGroupId": "original-dragon-sheet",
       "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
       "fidelityStatus": "adapted-coverage",
       "fidelityNote": {
         "fr": "Adaptation : couverture d’écailles opaque ajoutée sur le buste et le bassin. Ce visuel n’est pas une reproduction 1:1.",
@@ -193,15 +345,10 @@
         "fr": "Silhouette élancée, long cou, cornes vers l’arrière et écailles anthracite. La longue queue forme une boucle et se termine par une ouverture tubulaire.",
         "en": "Slender silhouette, long neck, swept-back horns and charcoal scales. Her long tail loops upward and ends in a hollow tube."
       },
-      "referenceCrop": [
-        348,
-        32,
-        541,
-        590
-      ],
       "image": {
         "sha256": "1606c7e9ac56a88a2162612bba7b637aa53b6be8acec223eedec164ce618f2a8",
         "bytes": 581584,
+        "format": "png",
         "width": 1254,
         "height": 1254,
         "hasAlpha": true,
@@ -225,10 +372,19 @@
       "universe": "Cloud Meadow",
       "kind": "dragon",
       "src": "/sprites/generated/heroes/cloud-meadow/dragon-male-reference.png",
+      "referenceId": "original-dragons-2026-10-28",
       "referenceSrc": "/reviews/cloud-meadow/reference.png",
+      "referenceCrop": [
+        350,
+        553,
+        523,
+        624
+      ],
       "referenceRegion": "lower-right-dragon",
       "referenceRelativeHeight": 1.9,
+      "scaleGroupId": "original-dragon-sheet",
       "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
       "fidelityStatus": "reference-based-generated",
       "fidelityNote": {
         "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
@@ -251,15 +407,10 @@
         "fr": "Épaules larges, membres musclés et cornes relevées. La queue dessine un grand U vers la gauche, avec une extrémité tubulaire creuse.",
         "en": "Broad shoulders, muscular limbs and upright horns. His tail sweeps into a large U to the left, ending in a hollow tube."
       },
-      "referenceCrop": [
-        350,
-        553,
-        523,
-        624
-      ],
       "image": {
         "sha256": "a126c8409bd9268d511d1b5367314230548744397f81ddb206b64ddabf2989cd",
         "bytes": 677475,
+        "format": "png",
         "width": 1254,
         "height": 1254,
         "hasAlpha": true,
@@ -270,6 +421,1953 @@
           "y": 12,
           "width": 1092,
           "height": 1208
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_jaero",
+      "name": "Jaero",
+      "displayName": {
+        "fr": "Jaero",
+        "en": "Jaero"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "mandrake",
+      "src": "/sprites/generated/heroes/cloud-meadow/jaero-reference.png",
+      "referenceId": "companions_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "referenceCrop": [
+        48,
+        179,
+        166,
+        453
+      ],
+      "referenceRegion": "top-row-1",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "sunflower-petals",
+        "green-plant-body",
+        "yellow-waistcoat",
+        "red-rose",
+        "dark-boots"
+      ],
+      "description": {
+        "fr": "Visage mauve entouré de pétales jaunes, veste verte et jaune, rose rouge et bottes sombres.",
+        "en": "Purple face framed by yellow petals, green and yellow jacket, red rose and dark boots."
+      },
+      "image": {
+        "sha256": "31b2c8ecfbfb716658f99d9e88ad564b9eedf193bbe232e29c8046bbf74d5359",
+        "bytes": 1443979,
+        "format": "png",
+        "width": 1024,
+        "height": 1536,
+        "hasAlpha": true,
+        "transparentPixels": 1185895,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 262,
+          "y": 18,
+          "width": 484,
+          "height": 1494
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_kiram",
+      "name": "Kiram",
+      "displayName": {
+        "fr": "Kiram",
+        "en": "Kiram"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "human",
+      "src": "/sprites/generated/heroes/cloud-meadow/kiram-reference.png",
+      "referenceId": "companions_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "referenceCrop": [
+        225,
+        148,
+        248,
+        483
+      ],
+      "referenceRegion": "top-row-2",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "black-hair",
+        "beard",
+        "teal-waistcoat",
+        "crossed-brown-belts",
+        "brown-bracers"
+      ],
+      "description": {
+        "fr": "Homme barbu aux cheveux noirs, gilet turquoise, chemise claire et larges protections de cuir.",
+        "en": "Bearded man with black hair, teal waistcoat, pale shirt and broad leather guards."
+      },
+      "image": {
+        "sha256": "e105a54c59a80b46de49c8172b587791dfb3d373d6e449889d9c05ebcf143455",
+        "bytes": 752427,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1158684,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 313,
+          "y": 40,
+          "width": 639,
+          "height": 1170
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_yonten",
+      "name": "Yonten",
+      "displayName": {
+        "fr": "Yonten",
+        "en": "Yonten"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "yeti",
+      "src": "/sprites/generated/heroes/cloud-meadow/yonten-reference.png",
+      "referenceId": "companions_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "referenceCrop": [
+        472,
+        101,
+        245,
+        545
+      ],
+      "referenceRegion": "top-row-3",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "pale-hair",
+        "large-hands",
+        "indigo-tunic",
+        "red-sash",
+        "fur-cuffs"
+      ],
+      "description": {
+        "fr": "Grand yéti clair, tunique indigo ornée, ceinture rouge, poignets de fourrure et mains imposantes.",
+        "en": "Tall pale yeti with an ornate indigo tunic, red sash, fur cuffs and large hands."
+      },
+      "image": {
+        "sha256": "95a8e995cf7dbe4630d812347660f579ee1a384f724cd4a7cd94ab91b11e9097",
+        "bytes": 616514,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1260121,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 373,
+          "y": 32,
+          "width": 516,
+          "height": 1203
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_brontide",
+      "name": "Brontide",
+      "displayName": {
+        "fr": "Brontide",
+        "en": "Brontide"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "drake",
+      "src": "/sprites/generated/heroes/cloud-meadow/brontide-reference.png",
+      "referenceId": "companions_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "referenceCrop": [
+        672,
+        119,
+        436,
+        523
+      ],
+      "referenceRegion": "top-row-4",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "dark-drake-scales",
+        "cream-chest",
+        "blue-striped-trousers",
+        "brown-belts",
+        "long-tail"
+      ],
+      "description": {
+        "fr": "Drake sombre au torse clair, pantalon rayé bleu, ceintures brunes, bottes hautes et longue queue.",
+        "en": "Dark drake with a pale chest, blue striped trousers, brown belts, tall boots and a long tail."
+      },
+      "image": {
+        "sha256": "b79a18ebe6e8751760d5e94f28d80ffdf5d88c6f33c5f804d1f7ced57c5c6662",
+        "bytes": 743419,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1165066,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 161,
+          "y": 16,
+          "width": 973,
+          "height": 1205
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_garst",
+      "name": "Garst",
+      "displayName": {
+        "fr": "Garst",
+        "en": "Garst"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "spirit",
+      "src": "/sprites/generated/heroes/cloud-meadow/garst-reference.png",
+      "referenceId": "companions_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "referenceCrop": [
+        1029,
+        181,
+        196,
+        453
+      ],
+      "referenceRegion": "top-row-5",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "blue-face",
+        "pale-hair",
+        "brown-hood",
+        "layered-armor",
+        "long-coat"
+      ],
+      "description": {
+        "fr": "Visage bleu sous une capuche brune, mèche claire, armure segmentée et long manteau sombre.",
+        "en": "Blue face beneath a brown hood, pale hair, segmented armour and a long dark coat."
+      },
+      "image": {
+        "sha256": "f947d243c841ce5a0817506926a199512bc48ae6f48b300f59074f2eb8ecb973",
+        "bytes": 751394,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1145661,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 382,
+          "y": 12,
+          "width": 508,
+          "height": 1230
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_camellia",
+      "name": "Camellia",
+      "displayName": {
+        "fr": "Camellia",
+        "en": "Camellia"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "companion",
+      "src": "/sprites/generated/heroes/cloud-meadow/camellia-reference.png",
+      "referenceId": "companions_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "referenceCrop": [
+        101,
+        868,
+        140,
+        410
+      ],
+      "referenceRegion": "bottom-row-1",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "red-gown",
+        "black-eye-mask",
+        "red-hair-flower",
+        "dark-trim",
+        "lace-up-shoes"
+      ],
+      "description": {
+        "fr": "Robe rouge longue à bordures sombres, masque noir, fleur rouge dans les cheveux et chaussures lacées.",
+        "en": "Long red gown with dark trim, black eye mask, red hair flower and lace-up shoes."
+      },
+      "image": {
+        "sha256": "7d514d33840bfaa941ad6b5171c497701d8876e17c9784715419605550611e81",
+        "bytes": 587256,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1224536,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 400,
+          "y": 5,
+          "width": 467,
+          "height": 1220
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_goldra",
+      "name": "Goldra",
+      "displayName": {
+        "fr": "Goldra",
+        "en": "Goldra"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "drake",
+      "src": "/sprites/generated/heroes/cloud-meadow/goldra-reference.png",
+      "referenceId": "companions_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "referenceCrop": [
+        208,
+        759,
+        298,
+        510
+      ],
+      "referenceRegion": "bottom-row-2",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "pale-long-hair",
+        "gold-eyes",
+        "dark-long-coat",
+        "brown-gauntlets",
+        "curved-tail"
+      ],
+      "description": {
+        "fr": "Drake aux cheveux clairs, yeux dorés, manteau sombre à longues pans, gantelets bruns et queue recourbée.",
+        "en": "Drake with pale hair, golden eyes, a long dark coat, brown gauntlets and a curved tail."
+      },
+      "image": {
+        "sha256": "7b5b04450146c9a113ebddf83fda70fe9c71fc99f23ad76eae250032a0f878c1",
+        "bytes": 836006,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1159252,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 233,
+          "y": 26,
+          "width": 744,
+          "height": 1204
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_kreyton",
+      "name": "Kreyton",
+      "displayName": {
+        "fr": "Kreyton",
+        "en": "Kreyton"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "ogre",
+      "src": "/sprites/generated/heroes/cloud-meadow/kreyton-adapted.png",
+      "referenceId": "companions_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "referenceCrop": [
+        520,
+        650,
+        288,
+        625
+      ],
+      "referenceRegion": "bottom-row-3",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "adapted-coverage",
+      "fidelityNote": {
+        "fr": "Adaptation : une tenue opaque a été ajoutée ou sa couverture renforcée. La silhouette et les couleurs proviennent de la référence ; la tenue adaptée ne constitue pas une reproduction 1:1.",
+        "en": "Adaptation: opaque clothing was added or its coverage increased. The silhouette and colours come from the reference; the adapted outfit is not a 1:1 reproduction."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "green-skin",
+        "red-bob",
+        "stone-shoulder-spikes",
+        "brown-bracers",
+        "brown-greaves",
+        "opaque-outfit"
+      ],
+      "description": {
+        "fr": "Grande ogresse verte aux cheveux roux, pointes de pierre sur les épaules, bracelets et jambières bruns. Couverture du vêtement renforcée.",
+        "en": "Tall green ogre with red hair, stone shoulder spikes, brown bracers and greaves. Clothing coverage increased."
+      },
+      "image": {
+        "sha256": "e13e30051d0fab4f44c9d709e393295f92199effbf042d94307aee75cc6c085a",
+        "bytes": 694896,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1210646,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 337,
+          "y": 15,
+          "width": 598,
+          "height": 1210
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_fio",
+      "name": "Fio",
+      "displayName": {
+        "fr": "Fio",
+        "en": "Fio"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "rabbit",
+      "src": "/sprites/generated/heroes/cloud-meadow/fio-reference.png",
+      "referenceId": "companions_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "referenceCrop": [
+        822,
+        790,
+        185,
+        485
+      ],
+      "referenceRegion": "bottom-row-4",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "long-pink-ears",
+        "teal-and-pink-hair",
+        "black-vest",
+        "blue-shorts",
+        "mechanical-gauntlet"
+      ],
+      "description": {
+        "fr": "Longues oreilles roses, mèche turquoise, gilet noir, short bleu et grand gantelet mécanique.",
+        "en": "Long pink ears, teal fringe, black vest, blue shorts and a large mechanical gauntlet."
+      },
+      "image": {
+        "sha256": "dfc01e6049f85d5f189e7f33d57afec2b5518430b6788b5af6261511a7110880",
+        "bytes": 533960,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1324812,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 434,
+          "y": 13,
+          "width": 453,
+          "height": 1226
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_kaleida",
+      "name": "Kaleida",
+      "displayName": {
+        "fr": "Kaleida",
+        "en": "Kaleida"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "brownie",
+      "src": "/sprites/generated/heroes/cloud-meadow/kaleida-adapted.png",
+      "referenceId": "companions_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/companions-2026-10-29.png",
+      "referenceCrop": [
+        1022,
+        1050,
+        194,
+        231
+      ],
+      "referenceRegion": "bottom-row-5",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "adapted-coverage",
+      "fidelityNote": {
+        "fr": "Adaptation : une tenue opaque a été ajoutée ou sa couverture renforcée. La silhouette et les couleurs proviennent de la référence ; la tenue adaptée ne constitue pas une reproduction 1:1.",
+        "en": "Adaptation: opaque clothing was added or its coverage increased. The silhouette and colours come from the reference; the adapted outfit is not a 1:1 reproduction."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "small-blue-brownie",
+        "large-ears",
+        "long-dark-hair",
+        "glowing-orb",
+        "red-and-gold-opaque-clothing"
+      ],
+      "description": {
+        "fr": "Petite brownie bleue aux grandes oreilles et cheveux sombres, tenant un orbe lumineux. Tenue rouge et or rendue entièrement opaque.",
+        "en": "Small blue brownie with large ears and dark hair, holding a glowing orb. Red and gold clothing made fully opaque."
+      },
+      "image": {
+        "sha256": "60580d033072a3fb8d1891d35dd1c779bd5509ebbd8a68e1585e5e44c857c42e",
+        "bytes": 954233,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1069441,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 264,
+          "y": 25,
+          "width": 797,
+          "height": 1199
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_dark_armored_knight",
+      "name": "Chevalier en armure sombre",
+      "displayName": {
+        "fr": "Chevalier en armure sombre",
+        "en": "Dark-armoured Knight"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "armored-warrior",
+      "src": "/sprites/generated/heroes/cloud-meadow/dark-armored-knight-reference.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        15,
+        10,
+        235,
+        355
+      ],
+      "referenceRegion": "top-row-1",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "dark-full-plate",
+        "horned-helmet",
+        "oversized-greatsword",
+        "pale-tabard"
+      ],
+      "description": {
+        "fr": "Armure intégrale bleu noir, casque pointu, tabard clair et épée démesurée levée au-dessus de l’épaule. Nom individuel non confirmé.",
+        "en": "Blue-black full plate, pointed helmet, pale tabard and an enormous sword raised over the shoulder. Individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "4c29e4913f16504ab4c98163e7bcaca865b6480094d4b6965a2d22e7d5d69cd5",
+        "bytes": 698787,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1217488,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 195,
+          "y": 30,
+          "width": 924,
+          "height": 1202
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_bronze_armored_warrior",
+      "name": "Guerrier en armure de bronze",
+      "displayName": {
+        "fr": "Guerrier en armure de bronze",
+        "en": "Bronze-armoured Warrior"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "armored-warrior",
+      "src": "/sprites/generated/heroes/cloud-meadow/bronze-armored-warrior-reference.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        170,
+        45,
+        220,
+        325
+      ],
+      "referenceRegion": "top-row-2",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "bronze-armor",
+        "long-plated-skirt",
+        "pole-weapon",
+        "large-spiked-mace"
+      ],
+      "description": {
+        "fr": "Armure de bronze et longue jupe de plaques, avec une arme à long manche et une grosse tête de masse à pointes. Nom individuel non confirmé.",
+        "en": "Bronze armour and a long plated skirt, with a pole weapon and a large spiked mace head. Individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "cd804db9a4e8a19b6e2ef8603b7618601312fe818199e217bc8fc4d1ec3bc33c",
+        "bytes": 969354,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1002287,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 225,
+          "y": 11,
+          "width": 856,
+          "height": 1232
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_harpy_egg_keeper",
+      "name": "Gardienne ailée à l’œuf",
+      "displayName": {
+        "fr": "Gardienne ailée à l’œuf",
+        "en": "Winged Egg Keeper"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "winged-character",
+      "src": "/sprites/generated/heroes/cloud-meadow/harpy-egg-keeper-reference.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        385,
+        120,
+        120,
+        245
+      ],
+      "referenceRegion": "top-row-3",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "teal-hair",
+        "green-feathered-gown",
+        "speckled-egg",
+        "yellow-legs"
+      ],
+      "description": {
+        "fr": "Chevelure turquoise, plumage vert en longue robe, pattes jaunes et œuf tacheté tenu à la main. Nom individuel non confirmé.",
+        "en": "Teal hair, green feathers forming a long gown, yellow legs and a speckled egg held in one hand. Individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "a1b2fabf5fd649ce2f1e5a90a272dc6a4c9099ee2d0f5b72165bf2b361273d5e",
+        "bytes": 785995,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1104818,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 377,
+          "y": 9,
+          "width": 580,
+          "height": 1241
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_masked_egg_keeper",
+      "name": "Gardien masqué à l’œuf",
+      "displayName": {
+        "fr": "Gardien masqué à l’œuf",
+        "en": "Masked Egg Keeper"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "masked-character",
+      "src": "/sprites/generated/heroes/cloud-meadow/masked-egg-keeper-reference.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        505,
+        78,
+        125,
+        290
+      ],
+      "referenceRegion": "top-row-4",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "oval-pale-mask",
+        "long-black-neck",
+        "black-and-gold-coat",
+        "speckled-egg"
+      ],
+      "description": {
+        "fr": "Silhouette élancée au visage ovale clair, long cou noir, habit noir et or et œuf tacheté. Nom individuel non confirmé.",
+        "en": "Slender figure with a pale oval face, long black neck, black and gold clothing and a speckled egg. Individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "aeedfb0f39e189b3f0721eb1f94850e9f9c9e3fc632493af8bd9c68bca1113b6",
+        "bytes": 493063,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1307548,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 394,
+          "y": 32,
+          "width": 597,
+          "height": 1188
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_teacup_spirit",
+      "name": "Esprit dans une coupe",
+      "displayName": {
+        "fr": "Esprit dans une coupe",
+        "en": "Cup Spirit"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "spirit",
+      "src": "/sprites/generated/heroes/cloud-meadow/teacup-spirit-adapted.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        628,
+        28,
+        310,
+        318
+      ],
+      "referenceRegion": "top-row-5",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "adapted-coverage",
+      "fidelityNote": {
+        "fr": "Adaptation : une tenue opaque a été ajoutée ou sa couverture renforcée. La silhouette et les couleurs proviennent de la référence ; la tenue adaptée ne constitue pas une reproduction 1:1.",
+        "en": "Adaptation: opaque clothing was added or its coverage increased. The silhouette and colours come from the reference; the adapted outfit is not a 1:1 reproduction."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "blue-skin",
+        "short-pale-hair",
+        "heart-motif-cup",
+        "pink-magical-ribbons",
+        "opaque-beige-wraps"
+      ],
+      "description": {
+        "fr": "Esprit bleu dans une grande coupe ivoire ornée de cœurs roses, entouré de rubans magiques. Bandages et tissu beige rendus pleinement opaques.",
+        "en": "Blue spirit in a large ivory cup decorated with pink hearts, surrounded by magical ribbons. Beige wraps made fully opaque."
+      },
+      "image": {
+        "sha256": "733b5781f8740795d93d50d8b7b96e6d8fc13e0d28819dd73de0a2c01506f18b",
+        "bytes": 1290797,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 790308,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 57,
+          "y": 20,
+          "width": 1170,
+          "height": 1189
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_chain_anchor_warrior",
+      "name": "Guerrier à la chaîne et à l’ancre",
+      "displayName": {
+        "fr": "Guerrier à la chaîne et à l’ancre",
+        "en": "Chain-and-anchor Warrior"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "skeletal-warrior",
+      "src": "/sprites/generated/heroes/cloud-meadow/chain-anchor-warrior-reference.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        928,
+        72,
+        325,
+        305
+      ],
+      "referenceRegion": "top-row-6",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "skeletal-face",
+        "gold-spiked-armor",
+        "dark-red-coat",
+        "pale-trousers",
+        "chain-and-anchor"
+      ],
+      "description": {
+        "fr": "Visage squelettique, épaulières dorées à pointes, manteau rouge sombre et grande ancre reliée par une chaîne. Nom individuel non confirmé.",
+        "en": "Skeletal face, spiked gold pauldrons, dark red coat and a large anchor attached by a chain. Individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "635d98ff7e70cd1c821dbfe23e42a549ca0b3c4da86ce8ddcddacfea8a1b809d",
+        "bytes": 1240914,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 968358,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 94,
+          "y": 72,
+          "width": 1146,
+          "height": 1118
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_golden_slime",
+      "name": "Slime dorée",
+      "displayName": {
+        "fr": "Slime dorée",
+        "en": "Golden Slime"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "slime",
+      "src": "/sprites/generated/heroes/cloud-meadow/golden-slime-adapted.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        24,
+        442,
+        112,
+        255
+      ],
+      "referenceRegion": "bottom-row-1",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "adapted-coverage",
+      "fidelityNote": {
+        "fr": "Adaptation : une tenue opaque a été ajoutée ou sa couverture renforcée. La silhouette et les couleurs proviennent de la référence ; la tenue adaptée ne constitue pas une reproduction 1:1.",
+        "en": "Adaptation: opaque clothing was added or its coverage increased. The silhouette and colours come from the reference; the adapted outfit is not a 1:1 reproduction."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "golden-gel-body",
+        "swept-hair",
+        "turquoise-eyes",
+        "opaque-golden-outfit"
+      ],
+      "description": {
+        "fr": "Silhouette humanoïde de gel doré, cheveux relevés et yeux turquoise. Tenue opaque ajoutée pour cette adaptation.",
+        "en": "Humanoid golden gel silhouette with swept hair and teal eyes. Opaque clothing added for this adaptation."
+      },
+      "image": {
+        "sha256": "ea5442130f45ce7398c62f09e96e04e1a811129fc15fc2297f0b8de21163d821",
+        "bytes": 612704,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1221132,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 362,
+          "y": 21,
+          "width": 538,
+          "height": 1200
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_pink_haired_gunner",
+      "name": "Canonnière aux cheveux roses",
+      "displayName": {
+        "fr": "Canonnière aux cheveux roses",
+        "en": "Pink-haired Gunner"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "gunner",
+      "src": "/sprites/generated/heroes/cloud-meadow/pink-haired-gunner-adapted.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        120,
+        544,
+        130,
+        155
+      ],
+      "referenceRegion": "bottom-row-2",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "adapted-coverage",
+      "fidelityNote": {
+        "fr": "Adaptation : une tenue opaque a été ajoutée ou sa couverture renforcée. La silhouette et les couleurs proviennent de la référence ; la tenue adaptée ne constitue pas une reproduction 1:1.",
+        "en": "Adaptation: opaque clothing was added or its coverage increased. The silhouette and colours come from the reference; the adapted outfit is not a 1:1 reproduction."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "short-stature",
+        "long-pink-hair",
+        "dark-eye-cover",
+        "oversized-black-cannon",
+        "opaque-outfit"
+      ],
+      "description": {
+        "fr": "Canonnière de petite taille, longue chevelure rose, masque sombre et canon noir disproportionné. Tenue opaque ajoutée ; nom individuel non confirmé.",
+        "en": "Short gunner with long pink hair, dark eye covering and an oversized black cannon. Opaque outfit added; individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "fe3fe0b041f2e1711711d2542e53ba69609d24c5c741c4b305ad88da20dc3a35",
+        "bytes": 905219,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1016636,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 54,
+          "y": 131,
+          "width": 1105,
+          "height": 1070
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_halo_mage",
+      "name": "Mage à l’auréole",
+      "displayName": {
+        "fr": "Mage à l’auréole",
+        "en": "Halo Mage"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "mage",
+      "src": "/sprites/generated/heroes/cloud-meadow/halo-mage-adapted.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        176,
+        441,
+        183,
+        257
+      ],
+      "referenceRegion": "bottom-row-3",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "adapted-coverage",
+      "fidelityNote": {
+        "fr": "Adaptation : une tenue opaque a été ajoutée ou sa couverture renforcée. La silhouette et les couleurs proviennent de la référence ; la tenue adaptée ne constitue pas une reproduction 1:1.",
+        "en": "Adaptation: opaque clothing was added or its coverage increased. The silhouette and colours come from the reference; the adapted outfit is not a 1:1 reproduction."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "white-voluminous-hair",
+        "pale-blue-skin",
+        "golden-halo",
+        "golden-orbs",
+        "black-boots"
+      ],
+      "description": {
+        "fr": "Cheveux blancs volumineux, peau bleu pâle, auréole et sphères dorées, hautes bottes noires. Haut opaque ajouté ; nom individuel non confirmé.",
+        "en": "Voluminous white hair, pale blue skin, golden halo and orbs, tall black boots. Opaque top added; individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "004789677aa83bb0afd61a42623cb07acfca0b00efb42cd00c5d3dbaea1c0825",
+        "bytes": 843925,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1082220,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 146,
+          "y": 3,
+          "width": 927,
+          "height": 1245
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_golden_barmaid",
+      "name": "Serveuse dorée",
+      "displayName": {
+        "fr": "Serveuse dorée",
+        "en": "Golden Barmaid"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "barmaid",
+      "src": "/sprites/generated/heroes/cloud-meadow/golden-barmaid-reference.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        338,
+        443,
+        114,
+        253
+      ],
+      "referenceRegion": "bottom-row-4",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "golden-skin-and-hair",
+        "white-blouse",
+        "dark-corset",
+        "black-trousers",
+        "serving-cloche"
+      ],
+      "description": {
+        "fr": "Serveuse dorée en blouse blanche et corset sombre, pantalon noir et plateau à cloche. Nom individuel non confirmé.",
+        "en": "Golden barmaid in a white blouse and dark corset, black trousers and a serving cloche. Individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "e61845601cdcba1b97e7b2df6b40b7857037140e4f6a5b7988fdbf1a4aefca6f",
+        "bytes": 686337,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1230646,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 277,
+          "y": 38,
+          "width": 630,
+          "height": 1188
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_mantis_warrior",
+      "name": "Guerrier mante",
+      "displayName": {
+        "fr": "Guerrier mante",
+        "en": "Mantis Warrior"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "mantis",
+      "src": "/sprites/generated/heroes/cloud-meadow/mantis-warrior-reference.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        456,
+        371,
+        152,
+        333
+      ],
+      "referenceRegion": "bottom-row-5",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "long-antennae",
+        "green-carapace",
+        "pale-arm-plates",
+        "red-sash",
+        "long-red-cloth"
+      ],
+      "description": {
+        "fr": "Mante humanoïde verte, longues antennes, plaques claires et étoffes rouges nouées à la taille. Ancien modèle ; nom individuel non confirmé.",
+        "en": "Green humanoid mantis with long antennae, pale plates and red cloth tied at the waist. Older design; individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "8caea01bf6112c6e67078a21e9da6396b426bd8f8e86c429d7b72606942c7f8c",
+        "bytes": 702874,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1251435,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 346,
+          "y": 13,
+          "width": 561,
+          "height": 1227
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_crystal_mage",
+      "name": "Mage au cristal",
+      "displayName": {
+        "fr": "Mage au cristal",
+        "en": "Crystal Mage"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "mage",
+      "src": "/sprites/generated/heroes/cloud-meadow/crystal-mage-reference.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        641,
+        437,
+        107,
+        260
+      ],
+      "referenceRegion": "bottom-row-6",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "pale-short-hair",
+        "pointed-ears",
+        "purple-crystal",
+        "dark-long-coat",
+        "orange-and-red-trim"
+      ],
+      "description": {
+        "fr": "Mage aux cheveux clairs et oreilles pointues, cristal violet en main, long manteau noir aux pans rouges et orange. Nom individuel non confirmé.",
+        "en": "Pale-haired mage with pointed ears, a purple crystal in hand and a long black coat with red and orange panels. Individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "1446a1949f7665afe60844329af85e1b04e55021d2cdf0fe3d90ea3eaf46ecdc",
+        "bytes": 668175,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1213069,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 411,
+          "y": 33,
+          "width": 496,
+          "height": 1190
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_diving_suit",
+      "name": "Explorateur en scaphandre",
+      "displayName": {
+        "fr": "Explorateur en scaphandre",
+        "en": "Diving-suit Explorer"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "armored-explorer",
+      "src": "/sprites/generated/heroes/cloud-meadow/diving-suit-reference.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        750,
+        463,
+        104,
+        236
+      ],
+      "referenceRegion": "bottom-row-7",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "reference-based-generated",
+      "fidelityNote": {
+        "fr": "Recréation générée d’après la référence fournie. Il ne s’agit pas du fichier original ni d’une copie exacte pixel par pixel.",
+        "en": "Generated recreation based on the supplied reference. This is not the original file or an exact pixel-for-pixel copy."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "blue-dome-helmet",
+        "round-bronze-ports",
+        "brown-diving-suit",
+        "dark-boots"
+      ],
+      "description": {
+        "fr": "Casque à dôme bleu et oculaires ronds de bronze, épaisse combinaison brune et bottes sombres. Nom individuel non confirmé.",
+        "en": "Blue-domed helmet with round bronze ports, a thick brown suit and dark boots. Individual name unconfirmed."
+      },
+      "image": {
+        "sha256": "c911b321b45fa6f4a412c2059a110052bd42a62cb22ae7c7ce4b2773a90a492b",
+        "bytes": 1280346,
+        "format": "png",
+        "width": 1024,
+        "height": 1536,
+        "hasAlpha": true,
+        "transparentPixels": 1071839,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 174,
+          "y": 66,
+          "width": 676,
+          "height": 1413
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_lamia_female",
+      "name": "Lamia femelle",
+      "displayName": {
+        "fr": "Lamia femelle",
+        "en": "Female Lamia"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "lamia",
+      "src": "/sprites/generated/heroes/cloud-meadow/lamia-female-adapted.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        864,
+        437,
+        195,
+        260
+      ],
+      "referenceRegion": "bottom-row-8",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "adapted-coverage",
+      "fidelityNote": {
+        "fr": "Adaptation : une tenue opaque a été ajoutée ou sa couverture renforcée. La silhouette et les couleurs proviennent de la référence ; la tenue adaptée ne constitue pas une reproduction 1:1.",
+        "en": "Adaptation: opaque clothing was added or its coverage increased. The silhouette and colours come from the reference; the adapted outfit is not a 1:1 reproduction."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "blue-cobra-hood",
+        "cream-underside",
+        "gold-border",
+        "floating-crystals",
+        "coiled-tail",
+        "opaque-chest-cover"
+      ],
+      "description": {
+        "fr": "Lamia bleue à capuchon de cobra, dessous crème bordé d’or et cristaux flottants. Couverture opaque ajoutée au buste ; modèle distinct du mâle.",
+        "en": "Blue lamia with a cobra hood, gold-edged cream underside and floating crystals. Opaque chest coverage added; distinct from the male design."
+      },
+      "image": {
+        "sha256": "d53eb6c83f1f0a8fcba0104cd531b25372a9ffea6c8e540f69dd0af9691e6eba",
+        "bytes": 1215838,
+        "format": "png",
+        "width": 1086,
+        "height": 1448,
+        "hasAlpha": true,
+        "transparentPixels": 900519,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 74,
+          "y": 67,
+          "width": 971,
+          "height": 1348
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_coral_mermaid",
+      "name": "Sirène au corail rose",
+      "displayName": {
+        "fr": "Sirène au corail rose",
+        "en": "Pink-coral Mermaid"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "mermaid",
+      "src": "/sprites/generated/heroes/cloud-meadow/coral-serpent-adapted.png",
+      "referenceId": "npcs_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/npcs-2026-10-29.png",
+      "referenceCrop": [
+        1061,
+        462,
+        180,
+        233
+      ],
+      "referenceRegion": "bottom-row-9",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-user-reference",
+      "generationMode": "reference-image",
+      "fidelityStatus": "adapted-coverage",
+      "fidelityNote": {
+        "fr": "Adaptation : une tenue opaque a été ajoutée ou sa couverture renforcée. La silhouette et les couleurs proviennent de la référence ; la tenue adaptée ne constitue pas une reproduction 1:1.",
+        "en": "Adaptation: opaque clothing was added or its coverage increased. The silhouette and colours come from the reference; the adapted outfit is not a 1:1 reproduction."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "pink-coral-hair",
+        "pale-blue-face",
+        "dark-coiled-tail",
+        "pink-fins",
+        "raised-hand",
+        "opaque-bodice"
+      ],
+      "description": {
+        "fr": "Sirène au visage bleu clair, chevelure de corail rose, queue sombre enroulée et main levée. Corsage opaque ajouté.",
+        "en": "Mermaid with a pale blue face, pink coral-like hair, dark coiled tail and raised hand. Opaque bodice added."
+      },
+      "image": {
+        "sha256": "86112dfaff2914e3dff9f3c3ec5b0f3f8905088bfd45eff6fd7fc57d673784e7",
+        "bytes": 1230891,
+        "format": "png",
+        "width": 1103,
+        "height": 1426,
+        "hasAlpha": true,
+        "transparentPixels": 913817,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 89,
+          "y": 23,
+          "width": 947,
+          "height": 1384
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_cat_female",
+      "name": "Chatte humanoïde",
+      "displayName": {
+        "fr": "Chatte humanoïde",
+        "en": "Female Cat"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "cat",
+      "src": "/sprites/generated/heroes/cloud-meadow/cat-female-adapted.png",
+      "referenceId": "monsters_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/monsters-2026-10-29.png",
+      "referenceCrop": [
+        19,
+        128,
+        133,
+        222
+      ],
+      "referenceRegion": "single-row-1",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-reference-description",
+      "generationMode": "text-description",
+      "fidelityStatus": "description-based-adaptation",
+      "fidelityNote": {
+        "fr": "Nouvelle illustration adaptée d’après une description visuelle neutre. La planche source a été refusée comme entrée par le générateur et ne lui a pas été transmise pour cette variante. Une fidélité 1:1 n’est pas certifiée.",
+        "en": "New adapted illustration made from a neutral visual description. The source sheet was rejected as generator input and was not sent to the generator for this variant. 1:1 fidelity is not certified."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "orange-fur",
+        "white-front",
+        "pointed-ears",
+        "long-curled-tail",
+        "opaque-outfit"
+      ],
+      "description": {
+        "fr": "Féline orange et blanche aux oreilles pointues, main levée et longue queue recourbée. Tenue opaque ajoutée.",
+        "en": "Orange and white feline with pointed ears, raised hand and long curled tail. Opaque clothing added."
+      },
+      "image": {
+        "sha256": "dc02cf7c41016092acc6c7e1b8e9220883376b69494699526ff1f3c91ea3793e",
+        "bytes": 606399,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1263565,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 370,
+          "y": 17,
+          "width": 659,
+          "height": 1181
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_crab",
+      "name": "Crabe humanoïde",
+      "displayName": {
+        "fr": "Crabe humanoïde",
+        "en": "Humanoid Crab"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "crab",
+      "src": "/sprites/generated/heroes/cloud-meadow/crab-adapted.png",
+      "referenceId": "monsters_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/monsters-2026-10-29.png",
+      "referenceCrop": [
+        102,
+        109,
+        185,
+        242
+      ],
+      "referenceRegion": "single-row-2",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-reference-description",
+      "generationMode": "text-description",
+      "fidelityStatus": "description-based-adaptation",
+      "fidelityNote": {
+        "fr": "Nouvelle illustration adaptée d’après une description visuelle neutre. La planche source a été refusée comme entrée par le générateur et ne lui a pas été transmise pour cette variante. Une fidélité 1:1 n’est pas certifiée.",
+        "en": "New adapted illustration made from a neutral visual description. The source sheet was rejected as generator input and was not sent to the generator for this variant. 1:1 fidelity is not certified."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "red-carapace",
+        "oversized-left-claw",
+        "pale-blue-hair",
+        "pointed-legs",
+        "dark-chest-plate"
+      ],
+      "description": {
+        "fr": "Carapace rouge, grande pince relevée, chevelure bleu pâle et jambes articulées en pointe.",
+        "en": "Red carapace, large raised claw, pale blue hair and pointed articulated legs."
+      },
+      "image": {
+        "sha256": "3371ae3ac22d5d1f01b50d0ae86c46b8012e1f5711569434f968e17d4ccabe8c",
+        "bytes": 764414,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1241841,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 248,
+          "y": 12,
+          "width": 763,
+          "height": 1228
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_cyclops_female",
+      "name": "Cyclope femelle",
+      "displayName": {
+        "fr": "Cyclope femelle",
+        "en": "Female Cyclops"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "cyclops",
+      "src": "/sprites/generated/heroes/cloud-meadow/cyclops-female-adapted.png",
+      "referenceId": "monsters_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/monsters-2026-10-29.png",
+      "referenceCrop": [
+        251,
+        27,
+        249,
+        327
+      ],
+      "referenceRegion": "single-row-3",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-reference-description",
+      "generationMode": "text-description",
+      "fidelityStatus": "description-based-adaptation",
+      "fidelityNote": {
+        "fr": "Nouvelle illustration adaptée d’après une description visuelle neutre. La planche source a été refusée comme entrée par le générateur et ne lui a pas été transmise pour cette variante. Une fidélité 1:1 n’est pas certifiée.",
+        "en": "New adapted illustration made from a neutral visual description. The source sheet was rejected as generator input and was not sent to the generator for this variant. 1:1 fidelity is not certified."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "massive-stone-body",
+        "red-hair",
+        "dark-rock-plates",
+        "large-fists",
+        "yellow-abdominal-eye",
+        "opaque-armor"
+      ],
+      "description": {
+        "fr": "Cyclope massive aux cheveux roux, plaques rocheuses sombres, énormes poings et œil jaune abdominal. Armure opaque ajoutée.",
+        "en": "Massive red-haired cyclops with dark stone plates, enormous fists and a yellow abdominal eye. Opaque armour added."
+      },
+      "image": {
+        "sha256": "105e3efa4ab0b8f8aee42add2952b76eb02d0c7402d1777550de3cb54118a4f1",
+        "bytes": 1497802,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 888726,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 123,
+          "y": 13,
+          "width": 1007,
+          "height": 1225
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_centaur_female",
+      "name": "Centaure femelle",
+      "displayName": {
+        "fr": "Centaure femelle",
+        "en": "Female Centaur"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "centaur",
+      "src": "/sprites/generated/heroes/cloud-meadow/centaur-female-adapted.png",
+      "referenceId": "monsters_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/monsters-2026-10-29.png",
+      "referenceCrop": [
+        475,
+        62,
+        213,
+        290
+      ],
+      "referenceRegion": "single-row-4",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-reference-description",
+      "generationMode": "text-description",
+      "fidelityStatus": "description-based-adaptation",
+      "fidelityNote": {
+        "fr": "Nouvelle illustration adaptée d’après une description visuelle neutre. La planche source a été refusée comme entrée par le générateur et ne lui a pas été transmise pour cette variante. Une fidélité 1:1 n’est pas certifiée.",
+        "en": "New adapted illustration made from a neutral visual description. The source sheet was rejected as generator input and was not sent to the generator for this variant. 1:1 fidelity is not certified."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "blonde-high-ponytail",
+        "tan-and-white-horse-body",
+        "four-hooves",
+        "dark-wristbands",
+        "opaque-tunic"
+      ],
+      "description": {
+        "fr": "Centaure blonde à queue-de-cheval haute, corps de cheval fauve et blanc, quatre sabots et bracelets sombres. Tunique opaque ajoutée.",
+        "en": "Blonde centaur with a high ponytail, tan and white horse body, four hooves and dark wristbands. Opaque tunic added."
+      },
+      "image": {
+        "sha256": "d3b146cd014aa0f65e6abb0194fb1b64f5e2309e88e301e84888090011180dfa",
+        "bytes": 1252155,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1008133,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 186,
+          "y": 2,
+          "width": 870,
+          "height": 1238
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_lamia_male",
+      "name": "Lamia mâle",
+      "displayName": {
+        "fr": "Lamia mâle",
+        "en": "Male Lamia"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "lamia",
+      "src": "/sprites/generated/heroes/cloud-meadow/lamia-male-adapted.png",
+      "referenceId": "monsters_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/monsters-2026-10-29.png",
+      "referenceCrop": [
+        649,
+        73,
+        209,
+        280
+      ],
+      "referenceRegion": "single-row-5",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-reference-description",
+      "generationMode": "text-description",
+      "fidelityStatus": "description-based-adaptation",
+      "fidelityNote": {
+        "fr": "Nouvelle illustration adaptée d’après une description visuelle neutre. La planche source a été refusée comme entrée par le générateur et ne lui a pas été transmise pour cette variante. Une fidélité 1:1 n’est pas certifiée.",
+        "en": "New adapted illustration made from a neutral visual description. The source sheet was rejected as generator input and was not sent to the generator for this variant. 1:1 fidelity is not certified."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "blue-cobra-hood",
+        "cream-segmented-underside",
+        "gold-border",
+        "coiled-tail",
+        "arms-at-sides"
+      ],
+      "description": {
+        "fr": "Lamia bleue au long cou et capuchon de cobra, dessous crème segmenté et queue enroulée. Bras abaissés, sans cristaux.",
+        "en": "Blue lamia with a long neck and cobra hood, segmented cream underside and coiled tail. Arms lowered, without crystals."
+      },
+      "image": {
+        "sha256": "d2e81c4296fab5d2ac30b48554e104099e5754ad7071d8869115b38b8a619809",
+        "bytes": 1527919,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 853673,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 72,
+          "y": 6,
+          "width": 1128,
+          "height": 1241
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_wolf_female",
+      "name": "Louve humanoïde",
+      "displayName": {
+        "fr": "Louve humanoïde",
+        "en": "Female Wolf"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "wolf",
+      "src": "/sprites/generated/heroes/cloud-meadow/wolf-female-adapted.png",
+      "referenceId": "monsters_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/monsters-2026-10-29.png",
+      "referenceCrop": [
+        854,
+        87,
+        159,
+        266
+      ],
+      "referenceRegion": "single-row-6",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-reference-description",
+      "generationMode": "text-description",
+      "fidelityStatus": "description-based-adaptation",
+      "fidelityNote": {
+        "fr": "Nouvelle illustration adaptée d’après une description visuelle neutre. La planche source a été refusée comme entrée par le générateur et ne lui a pas été transmise pour cette variante. Une fidélité 1:1 n’est pas certifiée.",
+        "en": "New adapted illustration made from a neutral visual description. The source sheet was rejected as generator input and was not sent to the generator for this variant. 1:1 fidelity is not certified."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "charcoal-fur",
+        "grey-hair",
+        "large-bushy-tail",
+        "digitigrade-legs",
+        "hand-on-hip",
+        "opaque-outfit"
+      ],
+      "description": {
+        "fr": "Louve grise et anthracite, oreilles dressées, grande queue touffue et main sur la hanche. Tenue opaque ajoutée.",
+        "en": "Grey and charcoal wolf with upright ears, a large bushy tail and one hand on her hip. Opaque clothing added."
+      },
+      "image": {
+        "sha256": "7a2076bebebecd88138a7a49a48253b2ff90ea5016ca368cfed8b6da5dd7faf5",
+        "bytes": 724860,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1268700,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 274,
+          "y": 102,
+          "width": 650,
+          "height": 1068
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_holstaur_male",
+      "name": "Holstaur mâle",
+      "displayName": {
+        "fr": "Holstaur mâle",
+        "en": "Male Holstaur"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "holstaur",
+      "src": "/sprites/generated/heroes/cloud-meadow/holstaur-male-adapted.png",
+      "referenceId": "monsters_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/monsters-2026-10-29.png",
+      "referenceCrop": [
+        1016,
+        89,
+        125,
+        263
+      ],
+      "referenceRegion": "single-row-7",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-reference-description",
+      "generationMode": "text-description",
+      "fidelityStatus": "description-based-adaptation",
+      "fidelityNote": {
+        "fr": "Nouvelle illustration adaptée d’après une description visuelle neutre. La planche source a été refusée comme entrée par le générateur et ne lui a pas été transmise pour cette variante. Une fidélité 1:1 n’est pas certifiée.",
+        "en": "New adapted illustration made from a neutral visual description. The source sheet was rejected as generator input and was not sent to the generator for this variant. 1:1 fidelity is not certified."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "white-hair",
+        "cow-ears-and-horns",
+        "black-and-white-limbs",
+        "neck-bell",
+        "opaque-brown-tunic",
+        "brown-knee-length-trousers"
+      ],
+      "description": {
+        "fr": "Holstaur aux cheveux blancs, cornes et oreilles bovines, membres tachetés et cloche au cou. Tunique brune et pantalon opaque ajoutés pour couvrir le torse et le bassin.",
+        "en": "White-haired holstaur with bovine horns and ears, spotted limbs and a neck bell. A brown tunic and opaque trousers were added to cover the torso and pelvis."
+      },
+      "image": {
+        "sha256": "a23d6b920d412b1f1fbf42e793bbc4ed10f2cdeee7a1f9d2def493408a62d57f",
+        "bytes": 1045107,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 1114842,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 182,
+          "y": 11,
+          "width": 760,
+          "height": 1224
+        }
+      }
+    },
+    {
+      "id": "cloud_meadow_harpy_male",
+      "name": "Harpie mâle",
+      "displayName": {
+        "fr": "Harpie mâle",
+        "en": "Male Harpy"
+      },
+      "universe": "Cloud Meadow",
+      "kind": "harpy",
+      "src": "/sprites/generated/heroes/cloud-meadow/harpy-male-adapted.png",
+      "referenceId": "monsters_20261029",
+      "referenceSrc": "/reviews/cloud-meadow/sources/monsters-2026-10-29.png",
+      "referenceCrop": [
+        1146,
+        153,
+        112,
+        199
+      ],
+      "referenceRegion": "single-row-8",
+      "referenceRelativeHeight": null,
+      "scaleGroupId": null,
+      "provenance": "generated-from-reference-description",
+      "generationMode": "text-description",
+      "fidelityStatus": "description-based-adaptation",
+      "fidelityNote": {
+        "fr": "Nouvelle illustration adaptée d’après une description visuelle neutre. La planche source a été refusée comme entrée par le générateur et ne lui a pas été transmise pour cette variante. Une fidélité 1:1 n’est pas certifiée.",
+        "en": "New adapted illustration made from a neutral visual description. The source sheet was rejected as generator input and was not sent to the generator for this variant. 1:1 fidelity is not certified."
+      },
+      "canonicalFidelityApproved": false,
+      "animationFrames": 1,
+      "animationStatus": "static-reference-pose",
+      "traits": [
+        "green-feathers",
+        "red-and-green-hair",
+        "spread-wings",
+        "golden-bird-legs",
+        "feathered-waist"
+      ],
+      "description": {
+        "fr": "Harpie au plumage vert, ailes ouvertes, cheveux rouges et verts, taille emplumée et longues pattes dorées.",
+        "en": "Green-feathered harpy with spread wings, red and green hair, a feathered waist and long golden bird legs."
+      },
+      "image": {
+        "sha256": "de79d9d66df481251be735cce7786c5ec3df8428d716c0cfadb3e2cfdc1341e8",
+        "bytes": 1791236,
+        "format": "png",
+        "width": 1254,
+        "height": 1254,
+        "hasAlpha": true,
+        "transparentPixels": 808103,
+        "boundaryPixels": 0,
+        "contentBounds": {
+          "x": 17,
+          "y": 9,
+          "width": 1220,
+          "height": 1232
         }
       }
     }
