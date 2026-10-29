@@ -35,8 +35,8 @@ Relire ces points d'entrée dans la branche courante avant toute modification.
 | Pause de la simulation Extinction | `src/components/HubScreen.jsx`, `src/game/fixedStepClock.js` | Réinitialiser l'horloge à l'ouverture et à la fermeture de chaque pause, même sans image affichée pendant celle-ci. La première image de reprise ne rattrape aucun temps passé en pause. |
 | Boutons tactiles et activation clavier | `src/components/HeldControlButton.jsx`, `src/game/heldControlInput.js`, `src/components/MeleeControlsPanel.jsx` | Chaque doigt et touche d'activation possède sa source ; seul le dernier relâchement termine l'action. Le registre de la scène reste la référence après un tag, une pause ou un remplacement de combat. |
 | Assets | `src/game/renderer.js`, `spriteAssets.js`, `cosmeticVisualAssets.js` | Réutiliser les registres, règles d'atlas, variantes et chargements ; examiner le rendu au format réel. |
-| Sauvegarde | `src/game/saveValidation.js`, `saveRecovery.js`, `safeStorage.js`, `cloudSaveConflictPolicy.js` | Préserver les schémas, migrations et stratégies de conflit existants. |
-| Audio et préférences locales | `src/game/soundEngine.js`, `audioPreferences.js`, `safeStorage.js`, `melee/meleeInputMap.js` | Respecter le démarrage après interaction et les préférences ; l'accès refusé au stockage ne doit pas interrompre l'initialisation audio ni l'application des commandes. |
+| Sauvegarde | `src/App.jsx`, `src/game/localSaveGuard.js`, `saveValidation.js`, `saveRecovery.js`, `safeStorage.js`, `cloudSaveConflictPolicy.js` | Le garde doit partir des octets exacts lus avec la progression, y compris un emplacement vide. Une erreur de lecture initiale bloque les écritures automatiques jusqu'à récupération explicite. Préserver schémas, migrations et stratégies de conflit ; ce contrôle optimiste ne rend pas deux écritures simultanées atomiques. |
+| Audio et préférences locales | `src/game/soundEngine.js`, `audioPreferences.js`, `safeStorage.js`, `melee/meleeInputMap.js` | Un arrêt explicite annule la demande musicale ; un effet sonore ne la relance pas. La sourdine conserve la dernière scène demandée pour la reprise. Respecter le démarrage après interaction et les préférences ; l'accès refusé au stockage ne doit pas interrompre l'initialisation audio ni l'application des commandes. |
 
 Les noms de fichiers abrégés dans une ligne partagent le dossier `src/game/`.
 Les exemples Godot ou Unity des guides sont des illustrations de concepts ;
@@ -89,6 +89,10 @@ La [continuation sur la reprise en Ville et Extinction](GAMEDEV_SCENE_RESUME_202
 documente le relâchement physique, les répétitions clavier après nettoyage,
 les deux touches Entrée et les transitions de pause sans image intermédiaire.
 
+La [continuation sur l'audio et le démarrage des sauvegardes](GAMEDEV_SESSION_RELIABILITY_2026-10-29.md)
+documente l'annulation d'une musique, la reprise après sourdine et la protection
+de la progression entre chargement et initialisation de son garde.
+
 Choisir les suites liées au comportement modifié. Les commandes ci-dessous sont
 des points d'entrée existants, pas un compte rendu de tests déjà exécutés.
 
@@ -126,6 +130,21 @@ bouton de déplacement Ville/Extinction pour distinguer Entrée du pavé numéri
 rejeter une répétition clavier après nettoyage et conserver le focus au pointeur.
 La rejouer avec
 `PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:input-browser`.
+
+La quatrième fixture utilise le vrai `SoundEngine`, ses nœuds Web Audio natifs
+et `AudioControl`. Elle vérifie sept transitions d'arrêt, de déverrouillage et
+de sourdine, sans mesurer la qualité audible du mixage. La rejouer avec
+`PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:audio-browser`.
+
+La cinquième fixture extrait à la compilation les fonctions de chargement,
+d'initialisation, de persistance et d'import d'`App`. Deux pages de même origine
+partagent le vrai `localStorage` ; le test sépare volontairement le chargement
+de la création du garde pour reproduire une écriture concurrente. Une seconde
+régression injecte une seule erreur de lecture, puis rétablit la méthode native.
+Les migrations du catalogue, la navigation et le suivi React interne aux fonctions
+extraites sont remplacés ; il ne s'agit pas d'un test de l'App complète ou du cloud.
+La rejouer avec
+`PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:save-browser`.
 
 ## Utiliser les outils d'assets fournis
 

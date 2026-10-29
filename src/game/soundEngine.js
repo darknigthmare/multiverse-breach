@@ -102,7 +102,7 @@ export class SoundEngine {
     this.applyOutputSettings();
     this.persistSettings();
     if (mute) {
-      this.stopBgm();
+      this.stopBgmPlayback();
       if (this.ctx && this.ctx.state === 'running') {
         this.ctx.suspend();
       }
@@ -411,15 +411,13 @@ export class SoundEngine {
       }, 'battle');
     }
 
-    this.bgmRequest = null;
-    this.currentMusicPlan = null;
     this.stopBgm();
     return null;
   }
 
   startMusicPlan(plan, { arcaIdent = false } = {}) {
     if (!this.ctx || !plan?.steps?.length) return;
-    this.stopBgm();
+    this.stopBgmPlayback();
     this.currentMusicPlan = plan;
     this.currentTempo = plan.tempo;
     this.beatIndex = 0;
@@ -708,6 +706,17 @@ export class SoundEngine {
   }
 
   stopBgm() {
+    // A scene exit, completion or error cancels even a request still waiting
+    // for its first gesture. Later SFX/unmute must not resurrect that scene.
+    this.bgmTheme = null;
+    this.bgmRequest = null;
+    this.currentMusicPlan = null;
+    this.stopBgmPlayback();
+  }
+
+  // Muting and replacing a plan stop its sources while keeping the latest
+  // scene request available for the intended restart.
+  stopBgmPlayback() {
     if (this.bgmInterval) {
       clearInterval(this.bgmInterval);
       this.bgmInterval = null;

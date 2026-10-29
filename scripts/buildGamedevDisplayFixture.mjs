@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { readFile } from 'node:fs/promises';
+import createGamedevSaveFixturePlugin from './fixtures/gamedevSaveFixturePlugin.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const outDir = resolve(root, '.tmp/gamedev-display');
@@ -41,16 +42,16 @@ const touchFixture = {
   }
 };
 
-// Compile only the real preference/input controls and their fixtures. The public
+// Compile the real preference/input/audio controls and App save closures. The public
 // asset library and the application's production prebuild are separate checks.
 await build({
   root,
   configFile: false,
-  plugins: [touchFixture, react()],
+  plugins: [touchFixture, createGamedevSaveFixturePlugin(root), react()],
   publicDir: false,
   build: {
     outDir,
     emptyOutDir: true,
-    rollupOptions: { input: ['gamedev-display', 'gamedev-storage', 'gamedev-inputs'].map(name => resolve(root, `scripts/fixtures/${name}.html`)) }
+    rollupOptions: { input: ['gamedev-display', 'gamedev-storage', 'gamedev-inputs', 'gamedev-audio', 'gamedev-save'].map(name => resolve(root, `scripts/fixtures/${name}.html`)) }
   }
 });
