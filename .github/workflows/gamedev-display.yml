@@ -35,8 +35,6 @@ jobs:
   display:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    env:
-      PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/gamedev-browsers
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -68,12 +66,15 @@ jobs:
           npm run build:gamedev:fixture 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/fixture-build.log"
           test -s .tmp/gamedev-display/scripts/fixtures/gamedev-display.html
       - name: Install pinned browser test tooling separately from the game
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/gamedev-browsers
         run: |
           set -euo pipefail
           npm install --prefix "$RUNNER_TEMP/gamedev-playwright" --no-audit --no-fund --no-package-lock --ignore-scripts playwright@1.62.1
           node "$RUNNER_TEMP/gamedev-playwright/node_modules/playwright/cli.js" install --with-deps chromium
       - name: Real display controls and Canvas in Chromium
         env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/gamedev-browsers
           PLAYWRIGHT_MODULE_PATH: file://${{ runner.temp }}/gamedev-playwright/node_modules/playwright/index.mjs
           PLAYWRIGHT_FIXTURE_DIR: .tmp/gamedev-display
         run: |
