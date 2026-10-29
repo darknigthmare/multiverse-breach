@@ -11,6 +11,7 @@ export default function DisplayHarness() {
     const canvas = canvasRef.current;
     const reducedMotion = createReducedMotionReader();
     let frameId;
+    let presentationFrame = 0;
     const draw = () => {
       const layout = hudLayoutRef.current;
       if (layout) {
@@ -28,6 +29,7 @@ export default function DisplayHarness() {
         canvas.dataset.mapRight = String(rect.width - (map.x + map.width) / layout.unitsPerCssPixel);
         canvas.dataset.radarRight = String(rect.width - (radar.x + radar.radius) / layout.unitsPerCssPixel);
         canvas.dataset.reducedMotion = String(reducedMotion());
+        canvas.dataset.presentationFrame = String(++presentationFrame);
       }
       frameId = requestAnimationFrame(draw);
     };

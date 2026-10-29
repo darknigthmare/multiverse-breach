@@ -120,10 +120,11 @@
     "test:audit-followup": "node --test --test-concurrency=1 scripts/auditAuthRecovery.test.mjs scripts/auditFollowupRegressions.test.mjs",
     "test:audit-combat": "node --test --test-concurrency=1 scripts/auditRpgLifecycle.test.mjs scripts/auditEventConsumption.test.mjs",
     "test:audit-tactics": "node --test --test-concurrency=1 scripts/auditTacticsReliability.test.mjs scripts/auditTacticsLifecycle.test.mjs scripts/auditTacticsSupport.test.mjs",
-    "test:ui-immersion": "node --test --test-concurrency=1 scripts/gameSystemImmersion.test.mjs scripts/combatDialogLifecycle.test.mjs scripts/combatViewport.test.mjs scripts/immersiveHubState.test.mjs scripts/shellImmersion.test.mjs scripts/shellImmersionPresentation.test.mjs scripts/cloudReconciliationRace.test.mjs scripts/sceneHudPreferences.test.mjs scripts/reducedMotion.test.mjs",
+    "test:ui-immersion": "node --test --test-concurrency=1 scripts/gameSystemImmersion.test.mjs scripts/combatDialogLifecycle.test.mjs scripts/combatViewport.test.mjs scripts/immersiveHubState.test.mjs scripts/shellImmersion.test.mjs scripts/shellImmersionPresentation.test.mjs scripts/cloudReconciliationRace.test.mjs scripts/sceneHudPreferences.test.mjs scripts/reducedMotion.test.mjs scripts/raceKeyboardInput.test.mjs",
     "check:gamedev-guides": "node scripts/checkGamedevGuidance.mjs",
-    "test:gamedev": "npm run check:gamedev-guides && node --test scripts/sceneHudPreferences.test.mjs scripts/reducedMotion.test.mjs",
-    "test:gamedev:browser": "node scripts/browserDisplayPreferences.mjs"
+    "test:gamedev": "npm run check:gamedev-guides && node --test scripts/sceneHudPreferences.test.mjs scripts/reducedMotion.test.mjs scripts/raceKeyboardInput.test.mjs",
+    "test:gamedev:browser": "node scripts/browserDisplayPreferences.mjs",
+    "build:gamedev:fixture": "node scripts/buildGamedevDisplayFixture.mjs"
   },
   "dependencies": {
     "react": "^19.2.7",

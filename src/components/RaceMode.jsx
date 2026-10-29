@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { EngineRace, KART_GARAGE_UPGRADES, RACE_ASSETS, RACE_TRACKS } from '../game/engineRace';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
-import { createRaceRunGuard, createRaceTouchState } from '../game/raceSessionControls.js';
+import { createRaceKeyboardState, createRaceRunGuard, createRaceTouchState } from '../game/raceSessionControls.js';
 import { applyRaceResult, normalizeKartCareer } from '../game/kartCareer';
 import sound from '../game/soundEngine';
 import { getUnlockableById } from '../game/universeUnlockables';
@@ -68,6 +68,8 @@ export default function RaceMode({
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const keysRef = useRef({});
+  const keyboardStateRef = useRef(null);
+  if (!keyboardStateRef.current) keyboardStateRef.current = createRaceKeyboardState();
   const keyPulseRef = useRef({});
   const touchStateRef = useRef(null);
   if (!touchStateRef.current) touchStateRef.current = createRaceTouchState();
@@ -194,6 +196,7 @@ export default function RaceMode({
     sessionPausedRef.current = sessionPaused || raceMenuOpen;
     simulationClockRef.current?.reset();
     if (sessionPaused || raceMenuOpen) {
+      keyboardStateRef.current.clear();
       keysRef.current = {};
       keyPulseRef.current = {};
       touchStateRef.current.clear();
@@ -207,6 +210,7 @@ export default function RaceMode({
     runGuardRef.current?.dispose();
     touchStateRef.current.clear();
     setRaceMenuOpen(false);
+    keyboardStateRef.current.clear();
     keysRef.current = {};
     keyPulseRef.current = {};
     setRaceStarted(false);
@@ -310,6 +314,7 @@ export default function RaceMode({
       } catch (error) {
         console.error('Race render loop failed', error);
         runGuard.dispose();
+        keyboardStateRef.current.clear();
         keysRef.current = {};
         keyPulseRef.current = {};
         touchStateRef.current.clear();
@@ -337,17 +342,22 @@ export default function RaceMode({
         engine.recoverPlayer();
         return;
       }
-      keysRef.current[key] = true;
+      keyboardStateRef.current.hold(event, key);
+      keysRef.current = keyboardStateRef.current.snapshot();
     };
     const onKeyUp = (event) => {
+      // A key can be released over a field or with a different character.
+      // Its physical owner still has to be removed before filtering UI input.
+      keyboardStateRef.current.release(event);
+      keysRef.current = keyboardStateRef.current.snapshot();
       if (!CONTROL_KEYS.has(event.key)) return;
-      keysRef.current[normalizeKey(event.key)] = false;
       if (sessionPausedRef.current || engine.finished || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
       if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button, [role="button"]')) return;
       if (event.key === 'Enter' && event.target?.closest?.('a[href]')) return;
       event.preventDefault();
     };
     const clearInputs = () => {
+      keyboardStateRef.current.clear();
       keysRef.current = {};
       keyPulseRef.current = {};
       touchStateRef.current.clear();
@@ -363,6 +373,7 @@ export default function RaceMode({
     return () => {
       runGuard.dispose();
       engine.setInput({});
+      keyboardStateRef.current.clear();
       keysRef.current = {};
       keyPulseRef.current = {};
       touchStateRef.current.clear();
@@ -382,6 +393,7 @@ export default function RaceMode({
 
   const resetRace = () => {
     if (sessionPausedRef.current) return;
+    keyboardStateRef.current.clear();
     keysRef.current = {};
     keyPulseRef.current = {};
     if (summary) onSessionStart?.();
@@ -397,6 +409,7 @@ export default function RaceMode({
 
   const selectTrack = (nextTrackId) => {
     if (sessionPausedRef.current) return;
+    keyboardStateRef.current.clear();
     keysRef.current = {};
     setSummary(null);
     setTrackId(nextTrackId);
@@ -414,6 +427,7 @@ export default function RaceMode({
   const startRace = () => {
     if (sessionPausedRef.current || !pilotId || !trackId) return;
     onSessionStart?.();
+    keyboardStateRef.current.clear();
     keysRef.current = {};
     keyPulseRef.current = {};
     setSummary(null);
@@ -427,6 +441,7 @@ export default function RaceMode({
     touchStateRef.current.clear();
     setRuntimeError(false);
     onSessionEndRef.current?.({ reason: 'acknowledged' });
+    keyboardStateRef.current.clear();
     keysRef.current = {};
     keyPulseRef.current = {};
     setRaceStarted(false);
@@ -737,3 +752,4 @@ export default function RaceMode({
     </div>
   );
 }
+

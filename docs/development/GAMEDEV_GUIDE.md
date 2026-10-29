@@ -29,6 +29,7 @@ Relire ces points d'entrée dans la branche courante avant toute modification.
 | Simulation et temps | `src/components/GameCanvas.jsx`, `src/game/fixedStepClock.js` | La simulation de combat possède déjà un pas fixe ; distinguer les mises à jour de simulation et les images affichées. |
 | Combat et objectifs | `src/game/engineSmash.js`, `engineRpg.js`, `engineTactics.js`, `src/game/battleCompletionGate.js` | Réutiliser les moteurs et la résolution de combat ; vérifier récompenses, fin unique et retour au hub. |
 | Présentation et contrôle | `src/components/GameCanvas.jsx`, `src/game/combatViewport.js`, `combatDialogLifecycle.js`, `dialogFocus.js` | Garder les coordonnées écran/monde cohérentes ; un menu doit avoir un propriétaire d'entrée explicite. |
+| Commandes de course | `src/components/RaceMode.jsx`, `src/game/raceSessionControls.js`, `sceneInputs.js` | Conserver la source de chaque touche/pointeur ; relâcher un alias ne doit pas neutraliser un autre appui. Effacer les commandes manuelles à la pause et à la perte de focus. |
 | Assets | `src/game/renderer.js`, `spriteAssets.js`, `cosmeticVisualAssets.js` | Réutiliser les registres, règles d'atlas, variantes et chargements ; examiner le rendu au format réel. |
 | Sauvegarde | `src/game/saveValidation.js`, `saveRecovery.js`, `safeStorage.js`, `cloudSaveConflictPolicy.js` | Préserver les schémas, migrations et stratégies de conflit existants. |
 | Audio | `src/game/soundEngine.js`, `audioPreferences.js` | Respecter le démarrage après interaction, les préférences et le nettoyage des sources. |
@@ -70,8 +71,9 @@ projet et signaler cette limite ; ne pas prétendre avoir chargé le guide.
 
 ## Commandes existantes à réutiliser
 
-La [première application et ses résultats](GAMEDEV_APPLICATION_2026-10-29.md)
-décrit les corrections de préférences Canvas et leur validation.
+L'[application et ses résultats](GAMEDEV_APPLICATION_2026-10-29.md)
+décrit les corrections de préférences Canvas, de commandes de course et leur
+validation.
 
 Choisir les suites liées au comportement modifié. Les commandes ci-dessous sont
 des points d'entrée existants, pas un compte rendu de tests déjà exécutés.
@@ -88,12 +90,18 @@ des points d'entrée existants, pas un compte rendu de tests déjà exécutés.
 | Assets et registres | `npm run sprites:availability:check`, `npm run sprites:manifest:check`, `npm run sprites:provenance:audit` |
 | Code et production | `npm run lint`, `npm run build` |
 | Intégrité des guides | `node scripts/checkGamedevGuidance.mjs` |
-| Première application des guides | `npm run test:gamedev` ; test navigateur facultatif : `npm run test:gamedev:browser` |
+| Régressions issues des guides | `npm run test:gamedev` ; fixture navigateur : `npm run build:gamedev:fixture`, puis `PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:browser` |
 
 `npm run build` exécute aussi `prebuild`, qui lance les contrôles du dépôt.
 Distinguer la compilation Vite seule d'une validation complète. Les audits
 d'assets nécessitent leurs fichiers réels ; un checkout partiel ne permet pas
 de conclure à leur absence dans la version publiée.
+
+Le workflow [Gamedev display browser](../../.github/workflows/gamedev-display.yml)
+exécute la fixture d'affichage dans Chromium pour les changements concernés.
+Playwright est installé pour ce contrôle uniquement. La fixture monte les vrais
+réglages et le hook de disposition Canvas ; elle ne monte pas un combat complet
+ni les cinématiques de `GameCanvas`.
 
 ## Utiliser les outils d'assets fournis
 

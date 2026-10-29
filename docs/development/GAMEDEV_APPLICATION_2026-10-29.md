@@ -1,10 +1,12 @@
-# Première application des guides — 29 octobre 2026
+# Application des guides — 29 octobre 2026
 
 ## Objectif et changements
 
 Cette passe intègre les guides dans le dépôt et applique `game-ui-ux` aux
-préférences d'affichage existantes. Le jeu conserve React/Vite et ses moteurs
-Canvas 2D. La cartographie et les critères de travail sont dans
+préférences d'affichage existantes. La continuation utilise `input-systems`,
+chargé à la même révision épinglée, pour corriger les alias clavier du mode
+course. Le jeu conserve React/Vite et ses moteurs Canvas 2D. La cartographie et
+les critères de travail sont dans
 [GAMEDEV_GUIDE.md](GAMEDEV_GUIDE.md).
 
 ### Marges de la minimap de la cité et du radar FPS
@@ -33,6 +35,23 @@ Les atlas affichent une image représentative fixe en mode réduit. Leur durée
 de vie reste fondée sur le temps réel ; les dégâts, les commandes et l'horloge
 de simulation n'utilisent pas ce réglage.
 
+### Touches maintenues du mode course
+
+Le scénario « maintenir Flèche gauche, maintenir Q, relâcher Q » neutralisait
+la direction alors que la flèche était encore maintenue. Les deux touches
+écrivaient le même booléen `left` ; relâcher l'une annulait donc l'autre. Le même
+défaut concernait Z / Flèche haut.
+
+L'état clavier conserve maintenant chaque source physique et l'action attribuée
+à sa pression. Le relâchement retire uniquement cette source, même si la casse
+ou le focus a changé. Le moteur reçoit les actions encore maintenues ; les
+touches d'objet et de récupération restent des actions ponctuelles.
+
+Les réinitialisations de pause, perte de focus, onglet masqué, redémarrage,
+sortie et démontage effacent aussi les sources clavier. La reprise des commandes
+manuelles nécessite une nouvelle pression. L'accélération assistée conserve son
+fonctionnement et les sources tactiles restent indépendantes.
+
 ## Validation exécutée
 
 Environnement local : Node 24.22.1, Vite 8.1.0, Chromium 153.0.8010.0.
@@ -40,9 +59,11 @@ Le dépôt cible Node 22.x ; cette validation locale ne remplace pas son passage
 
 | Vérification | Résultat et portée |
 | --- | --- |
-| `npm run test:ui-immersion` | 9 fichiers de tests réussis, dont les nouvelles régressions de marges et de mouvement réduit. |
+| `npm run test:ui-immersion` | 10 fichiers de tests réussis, dont les nouvelles régressions de marges, de mouvement réduit et de commandes de course. |
 | `node scripts/sceneHudPreferences.test.mjs` | 4 tests réussis ; 153 combinaisons de dimensions, d'échelle et de marge traversent les fonctions réelles réglage → CSS → disposition Canvas. |
 | `node scripts/reducedMotion.test.mjs` | 6 tests réussis : priorité locale/système, changements en direct, contexte sans média-query et indépendance des documents. Une seule création de média-query sur 600 lectures est vérifiée. |
+| `node scripts/raceKeyboardInput.test.mjs` | 20 tests réussis sur les véritables gestionnaires : alias dans les deux ordres de relâchement, changement de caractère/focus, formulaires, actions ponctuelles, nettoyage et reprise. |
+| Suites existantes course et entrées | `raceSessionControls` 9/9, `fighterRaceGameplayAudit` 6/6, `kartCareerSave` 3/3, `sceneInputs` 14/14 et `immersiveHubState` 12/12 ; ces tests sont exécutés directement sous Node. |
 | `node scripts/fixedStepClock.test.mjs` | 10 tests réussis, dont les cadences 30/60/120/144 Hz et les transitions de pause/onglet masqué. |
 | `node scripts/combatViewport.test.mjs` | 10 tests réussis de coordonnées et de résolution de combat ; cette suite fait aussi partie de `test:ui-immersion`. |
 | Oxlint sur les fichiers JavaScript/JSX modifiés | Réussi. |
@@ -50,17 +71,37 @@ Le dépôt cible Node 22.x ; cette validation locale ne remplace pas son passage
 | Compilation Vite de l'application | Réussie : 312 modules compilés. Le compilateur signale des blocs volumineux ; cette passe ne mesure pas leur coût de chargement. |
 | Test Chromium de la fixture d'affichage | Réussi en 1366×768, 360×800 et 844×390, sans erreur JavaScript de page. |
 
+Le scénario clavier a aussi été rejoué avant/après avec les véritables
+gestionnaires et `EngineRace.getPlayerInput()` : garder Flèche gauche enfoncée
+après avoir relâché Q produit désormais `turn = -1` au lieu de `0`. Garder
+Flèche haut enfoncée après avoir relâché Z conserve `manualAccel = true`, au
+lieu de `false`. Cette reproduction s'exécute sous Node ; elle ne constitue pas
+un parcours de course au navigateur.
+
 Le test navigateur monte les vrais `GameDisplaySettings`,
 `GameDisplayPreferencesSync` et `useSceneViewport`, puis dessine les emplacements
 de minimap/radar calculés. Il manipule les curseurs au clavier, vérifie les
 marges 0/6/32 px avec l'échelle du HUD à 140 %, change les préférences locale et
 système de mouvement et restaure la marge par défaut à 12 px.
 
+Le test a ensuite été renforcé pour mesurer les pixels réellement dessinés :
+sur le viewport 1366×768, les dimensions de la minimap et du radar suivent les
+échelles 90 %, 100 % et 140 %, avec la marge conservée à 32 px. La vérification
+compare les dimensions observées à la première mesure, sans recopier la formule
+de disposition. Ce passage Chromium 153 a réussi sans erreur de page. Les trois
+formats d'écran conservent les contrôles de marges 0/6/32 px à 140 %.
+
 Il valide les réglages et leur liaison au Canvas. Il ne constitue pas une
 partie complète ni une revue visuelle de tous les costumes ou des cinématiques.
 La compilation Vite a utilisé un checkout de sources et le registre d'assets
 importé ; les audits `prebuild` nécessitant l'ensemble des médias n'ont pas été
 exécutés localement. Aucun gain de FPS n'est revendiqué.
+
+La première révision publiée, `9f42e1652f3a57485287102eca8154c1d5b3e9f2`, a
+ensuite réussi les sept workflows GitHub, dont
+[le build de production complet avec `prebuild`](https://github.com/darknigthmare/multiverse-breach/actions/runs/40853438388).
+Cette observation concerne cette révision ; chaque mise à jour de la PR relance
+ses propres contrôles.
 
 ## Rejouer les vérifications
 
@@ -78,25 +119,18 @@ Les variables facultatives `PLAYWRIGHT_MODULE_PATH`,
 d'utiliser une installation de test existante, sans modifier les dépendances
 du jeu. `PLAYWRIGHT_CHROMIUM_ARGS` est un tableau JSON.
 
-Si les sockets d'écoute locaux sont indisponibles, compiler la fixture :
+Pour compiler la fixture et utiliser les mêmes fichiers que le workflow :
 
 ```bash
-node --input-type=module - <<'JS'
-import { build } from 'vite';
-import react from '@vitejs/plugin-react';
-await build({
-  configFile: false,
-  plugins: [react()],
-  publicDir: false,
-  build: {
-    outDir: '.tmp/gamedev-display',
-    emptyOutDir: true,
-    rollupOptions: { input: 'scripts/fixtures/gamedev-display.html' }
-  }
-});
-JS
+npm run build:gamedev:fixture
 PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:browser
 ```
 
 Ce mode fournit les fichiers compilés directement au navigateur par les routes
 Playwright ; aucune connexion au domaine fictif `multiverse.test` n'est envoyée.
+
+Le workflow [Gamedev display browser](../../.github/workflows/gamedev-display.yml)
+utilise Node 22 et une version fixée de Playwright, installée dans le dossier
+temporaire du runner. Il compile la fixture sans copier les médias de production
+et exécute les interactions dans Chromium. Les dépendances livrées avec le jeu
+ne changent pas.
