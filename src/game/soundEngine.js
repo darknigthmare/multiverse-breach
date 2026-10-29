@@ -1,9 +1,10 @@
 // Web Audio API Retro 8-bit Sound Synthesizer
 import { resolveStageMusicProfile } from './stageMusicProfiles.js';
 import { readAudioPreferences, writeAudioPreferences } from './audioPreferences.js';
+import { getBrowserStorage } from './safeStorage.js';
 
 export class SoundEngine {
-  constructor({ storage = globalThis?.localStorage } = {}) {
+  constructor({ storage = getBrowserStorage() } = {}) {
     const preferences = readAudioPreferences(storage);
     this.storage = storage;
     this.ctx = null;

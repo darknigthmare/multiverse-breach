@@ -6,7 +6,7 @@ import { resolve } from 'node:path';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const outDir = resolve(root, '.tmp/gamedev-display');
 
-// Compile only the real display controls and their Canvas fixture. The public
+// Compile only the real preference controls and their fixtures. The public
 // asset library and the application's production prebuild are separate checks.
 await build({
   root,
@@ -16,6 +16,6 @@ await build({
   build: {
     outDir,
     emptyOutDir: true,
-    rollupOptions: { input: resolve(root, 'scripts/fixtures/gamedev-display.html') }
+    rollupOptions: { input: ['gamedev-display', 'gamedev-storage'].map(name => resolve(root, `scripts/fixtures/${name}.html`)) }
   }
 });

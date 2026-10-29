@@ -1,3 +1,5 @@
+import { readStorageValue, writeStorageValue } from '../safeStorage.js';
+
 export const MELEE_INPUT_MAP_VERSION = 1;
 export const MELEE_INPUT_STORAGE_KEY = 'multiverseBreach.meleeInputMap.v1';
 
@@ -105,19 +107,20 @@ export const normalizeMeleeInputMaps = source => ({
 
 export const createDefaultMeleeInputMaps = () => normalizeMeleeInputMaps(cloneValue(DEFAULT_MELEE_INPUT_MAPS));
 
-export const loadMeleeInputMaps = (storage = globalThis?.localStorage) => {
-  if (!storage?.getItem) return createDefaultMeleeInputMaps();
+export const loadMeleeInputMaps = storage => {
+  const stored = readStorageValue(MELEE_INPUT_STORAGE_KEY, storage);
   try {
-    const parsed = JSON.parse(storage.getItem(MELEE_INPUT_STORAGE_KEY) || 'null');
+    const parsed = JSON.parse(stored.ok ? stored.value || 'null' : 'null');
     return normalizeMeleeInputMaps(parsed);
   } catch {
     return createDefaultMeleeInputMaps();
   }
 };
 
-export const saveMeleeInputMaps = (maps, storage = globalThis?.localStorage) => {
+export const saveMeleeInputMaps = (maps, storage) => {
   const normalized = normalizeMeleeInputMaps(maps);
-  if (storage?.setItem) storage.setItem(MELEE_INPUT_STORAGE_KEY, JSON.stringify(normalized));
+  // Applying controls must still work when the browser cannot persist them.
+  writeStorageValue(MELEE_INPUT_STORAGE_KEY, JSON.stringify(normalized), storage);
   return normalized;
 };
 
@@ -231,3 +234,4 @@ export const formatMeleeInputCode = code => String(code || '')
   .replace('ShiftRight', 'SHIFT D')
   .replace('Space', 'ESPACE')
   .toUpperCase();
+

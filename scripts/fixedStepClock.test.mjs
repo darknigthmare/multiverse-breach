@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createRaceKeyboardState, createRaceTouchState } from '../src/game/raceSessionControls.js';
+import { createFighterHeldInputs } from '../src/game/fighterControlOwnership.js';
 import { createFixedStepClock } from '../src/game/fixedStepClock.js';
 
 const simulate = (refreshRate, speed = 1) => {
@@ -50,6 +51,7 @@ const transitionEnvironment = clock => {
   document: { hidden: false }, engine, engineRef: { current: engine },
   touchStateRef: { current: createRaceTouchState() },
   keyboardStateRef: { current: createRaceKeyboardState() },
+  heldInputsRef: { current: createFighterHeldInputs() },
   inputRef: { current: {} }, keysRef: { current: {} }, keyPulseRef: { current: {} },
   tacticsCameraPointerRef: { current: {} }, suppressTacticsClickRef: { current: false },
   clearMeleeControls() {}, clearMeleeInput() {}, clearInputs() {}

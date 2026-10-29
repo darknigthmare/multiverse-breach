@@ -30,9 +30,10 @@ Relire ces points d'entrée dans la branche courante avant toute modification.
 | Combat et objectifs | `src/game/engineSmash.js`, `engineRpg.js`, `engineTactics.js`, `src/game/battleCompletionGate.js` | Réutiliser les moteurs et la résolution de combat ; vérifier récompenses, fin unique et retour au hub. |
 | Présentation et contrôle | `src/components/GameCanvas.jsx`, `src/game/combatViewport.js`, `combatDialogLifecycle.js`, `dialogFocus.js` | Garder les coordonnées écran/monde cohérentes ; un menu doit avoir un propriétaire d'entrée explicite. |
 | Commandes de course | `src/components/RaceMode.jsx`, `src/game/raceSessionControls.js`, `sceneInputs.js` | Conserver la source de chaque touche/pointeur ; relâcher un alias ne doit pas neutraliser un autre appui. Effacer les commandes manuelles à la pause et à la perte de focus. |
+| Commandes de duel | `src/components/FighterMode.jsx`, `src/game/fighterControlOwnership.js` | Conserver les sources par camp et par combattant actif ; un tag ou K.O. efface les commandes du combattant remplacé. |
 | Assets | `src/game/renderer.js`, `spriteAssets.js`, `cosmeticVisualAssets.js` | Réutiliser les registres, règles d'atlas, variantes et chargements ; examiner le rendu au format réel. |
 | Sauvegarde | `src/game/saveValidation.js`, `saveRecovery.js`, `safeStorage.js`, `cloudSaveConflictPolicy.js` | Préserver les schémas, migrations et stratégies de conflit existants. |
-| Audio | `src/game/soundEngine.js`, `audioPreferences.js` | Respecter le démarrage après interaction, les préférences et le nettoyage des sources. |
+| Audio et préférences locales | `src/game/soundEngine.js`, `audioPreferences.js`, `safeStorage.js`, `melee/meleeInputMap.js` | Respecter le démarrage après interaction et les préférences ; l'accès refusé au stockage ne doit pas interrompre l'initialisation audio ni l'application des commandes. |
 
 Les noms de fichiers abrégés dans une ligne partagent le dossier `src/game/`.
 Les exemples Godot ou Unity des guides sont des illustrations de concepts ;
@@ -75,6 +76,9 @@ L'[application et ses résultats](GAMEDEV_APPLICATION_2026-10-29.md)
 décrit les corrections de préférences Canvas, de commandes de course et leur
 validation.
 
+La [continuation sur les réglages et le duel](GAMEDEV_RESILIENCE_2026-10-29.md)
+documente le stockage indisponible et les alias de déplacement/garde.
+
 Choisir les suites liées au comportement modifié. Les commandes ci-dessous sont
 des points d'entrée existants, pas un compte rendu de tests déjà exécutés.
 
@@ -99,9 +103,11 @@ de conclure à leur absence dans la version publiée.
 
 Le workflow [Gamedev display browser](../../.github/workflows/gamedev-display.yml)
 exécute la fixture d'affichage dans Chromium pour les changements concernés.
-Playwright est installé pour ce contrôle uniquement. La fixture monte les vrais
-réglages et le hook de disposition Canvas ; elle ne monte pas un combat complet
-ni les cinématiques de `GameCanvas`.
+Playwright est installé pour ce contrôle uniquement. Les fixtures montent les
+vrais réglages et le hook de disposition Canvas, puis le singleton audio et le
+panneau de commandes avec stockage normal ou refusé par le navigateur. Elles ne
+montent pas un combat complet ni les cinématiques de `GameCanvas`. Rejouer le
+second scénario avec `PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:storage-browser`.
 
 ## Utiliser les outils d'assets fournis
 
