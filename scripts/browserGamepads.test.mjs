@@ -3,6 +3,7 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { createSceneInputs } from '../src/game/sceneInputs.js';
 import { readBrowserGamepads } from '../src/game/browserGamepads.js';
+import { createMeleeGamepadInput } from '../src/game/melee/meleeGamepadInput.js';
 import {
   MELEE_ACTIONS, MELEE_REMAPPABLE_SLOTS, createDefaultMeleeInputMaps,
   mergeMeleeInputSnapshots, readGamepadMeleeInput, readKeyboardMeleeInput
@@ -41,7 +42,9 @@ function fixture() {
   const env = {
     MELEE_ACTIONS, mergeMeleeInputSnapshots, readGamepadMeleeInput, readKeyboardMeleeInput, readBrowserGamepads,
     meleeInputMapsRef: { current: createDefaultMeleeInputMaps() },
-    meleePressedCodesRef: { current: codes }, meleeTouchHeldRef: { current: held }
+    meleePressedCodesRef: { current: codes }, meleeTouchHeldRef: { current: held },
+    meleeTouchCancelVersionRef: { current: { player: 0, cpu: 0 } },
+    meleeGamepadInputRef: { current: { player: createMeleeGamepadInput(), cpu: createMeleeGamepadInput() } }
   };
   const read = new Function(...Object.keys(env), `${touchSnapshot}\n${reader}\nreturn readMeleeInput;`)(...Object.values(env));
   return { read, codes, held };

@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { createServer } from 'vite';
 import { createSceneInputs } from '../src/game/sceneInputs.js';
 import { readBrowserGamepads } from '../src/game/browserGamepads.js';
+import { createMeleeGamepadInput } from '../src/game/melee/meleeGamepadInput.js';
 import {
   MELEE_ACTIONS, MELEE_REMAPPABLE_SLOTS, createDefaultMeleeInputMaps,
   diffMeleeActionEdges, mergeMeleeInputSnapshots, readGamepadMeleeInput,
@@ -16,7 +17,7 @@ const section = (start, end) => {
   assert.ok(first >= 0 && last > first, `Missing real GameCanvas route: ${start}`);
   return source.slice(first, last);
 };
-const init = section('  const meleeTouchHeldRef = useRef(', '  const meleeNeutralGateRef = ');
+const init = section('  const meleeTouchHeldRef = useRef(', '  const tacticsCameraPointerRef = ');
 const snapshot = section('const getTouchMeleeSnapshot = ', 'const getStableNumericSeed = ');
 const callbacks = section('  const handleMeleeTouchAction = ', '  // Une pause pilotee par le shell');
 const reader = section('    const readMeleeInput = ', '    const dispatchMeleeInputEdges = ');
@@ -43,16 +44,15 @@ function fixture() {
   assert.equal(engine.isMatchInputLocked(), false);
   const noop = () => {}, clock = {};
   const env = {
-    useRef: current => ({ current }), createSceneInputs,
+    useRef: current => ({ current }), createSceneInputs, createMeleeGamepadInput,
     MELEE_TOUCH_SLOTS: MELEE_REMAPPABLE_SLOTS.map(slot => slot.id),
     MELEE_ACTIONS, diffMeleeActionEdges, mergeMeleeInputSnapshots, readGamepadMeleeInput, readKeyboardMeleeInput, readBrowserGamepads,
     engineRef: { current: engine }, keysPressed: { current: {} },
     meleePressedCodesRef: { current: new Set() },
     meleePreviousInputRef: { current: { player: null, cpu: null } },
-    meleeNeutralGateRef: { current: { player: false, cpu: false } },
     meleeInputMapsRef: { current: createDefaultMeleeInputMaps() },
     navigator: { getGamepads: () => [] }, window: { removeEventListener: noop },
-    document: { removeEventListener: noop }, handleKeyDown: noop, handleKeyUp: noop, handleVisibilityChange: noop,
+    document: { removeEventListener: noop }, handleKeyDown: noop, handleKeyUp: noop, handleVisibilityChange: noop, handleGamepadDisconnected: noop,
     cancelAnimationFrame: noop, frameId: 1, simulationClock: clock, simulationClockRef: { current: clock },
     clearManagedTimer: noop, battleItemLogTimerRef: {}, battleAnomalyTimerRef: {}, customPresentationTimerRef: {},
     knockoutActorStateRef: { current: { heroes: new Map(), enemies: new Map() } }, sound: { stopBgm: noop }
@@ -184,20 +184,34 @@ test('the existing reset cancels charging and clears every source without firing
   assert.equal(f.env.meleePressedCodesRef.current.size, 0);
   assert.equal(Object.values(f.read('player').actions).some(Boolean), false);
   assert.equal(Object.values(f.read('cpu').actions).some(Boolean), false);
-  assert.deepEqual(f.env.meleeNeutralGateRef.current, { player: true, cpu: true });
+  f.step(); f.step('cpu');
+  assert.equal(f.actor.action, null, 'an empty sample after cancellation must not launch a charged attack');
 });
 
 test('after reset, a fresh pointer works and an old late release cannot erase it', () => {
   const f = fixture();
   f.input('moveLeft', 'down', 'pointer:old');
-  f.clear(); f.step();
-  assert.equal(f.env.meleeNeutralGateRef.current.player, false);
+  f.clear();
   f.input('moveRight', 'down', 'pointer:fresh');
   f.input('moveLeft', 'up', 'pointer:old');
   assert.equal(f.read('player').horizontal, 1, 'the old left hold must not be reconstructed');
   f.input('moveRight', 'down', 'pointer:second');
   f.input('moveRight', 'up', 'pointer:fresh');
   assert.equal(f.read('player').horizontal, 1);
+});
+
+test('the first fresh touch after reset starts charging without an intervening neutral frame', () => {
+  const f = fixture();
+  f.input('chargedAttack', 'down', 'pointer:old'); f.step();
+  assert.equal(f.actor.charging, true);
+  f.clear();
+  f.input('chargedAttack', 'down', 'pointer:fresh'); f.step();
+  assert.equal(f.actor.charging, true, 'a fresh owner must be admitted on the first resumed frame');
+  assert.equal(f.actor.action, null);
+  f.input('chargedAttack', 'cancel', 'pointer:old'); f.step();
+  assert.equal(f.actor.charging, true, 'late cancellation of the old owner must preserve the new charge');
+  f.input('chargedAttack', 'up', 'pointer:fresh'); f.step();
+  assert.equal(f.actor.action?.id, 'charged');
 });
 
 test('real stage/roster effect cleanup clears the previous engine and owner registry', () => {

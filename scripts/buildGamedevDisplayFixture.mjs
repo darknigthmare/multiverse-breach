@@ -28,10 +28,11 @@ const touchFixture = {
     return `
       import { useRef } from 'react';
       import { createSceneInputs } from '/src/game/sceneInputs.js';
+      import { createMeleeGamepadInput } from '/src/game/melee/meleeGamepadInput.js';
       import { MELEE_ACTIONS, MELEE_REMAPPABLE_SLOTS } from '/src/game/melee/meleeInputMap.js';
       ${section('const MELEE_TOUCH_SLOTS = ', 'const getStableNumericSeed = ')}
       export function useMeleeTouchFixture() {
-        ${section('  const meleeTouchHeldRef = useRef(', '  const meleeNeutralGateRef = ')}
+        ${section('  const meleeTouchHeldRef = useRef(', '  const tacticsCameraPointerRef = ')}
         ${section('  const handleMeleeTouchAction = ', '  const clearMeleeControls = ')}
         return {
           onInput: handleMeleeTouchAction,

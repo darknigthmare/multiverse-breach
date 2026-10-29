@@ -35,7 +35,8 @@ Relire ces points d'entrée dans la branche courante avant toute modification.
 | Pause de la simulation Extinction | `src/components/HubScreen.jsx`, `src/game/fixedStepClock.js` | Réinitialiser l'horloge à l'ouverture et à la fermeture de chaque pause, même sans image affichée pendant celle-ci. La première image de reprise ne rattrape aucun temps passé en pause. |
 | Boutons tactiles et activation clavier | `src/components/HeldControlButton.jsx`, `src/game/heldControlInput.js`, `src/components/MeleeControlsPanel.jsx` | Chaque doigt et touche d'activation possède sa source ; seul le dernier relâchement termine l'action. Le registre de la scène reste la référence après un tag, une pause ou un remplacement de combat. |
 | Réaffectation des commandes | `src/components/MeleeControlsPanel.jsx`, `src/game/melee/meleeInputMap.js` | Attendre une nouvelle pression, sans capturer la répétition d'une touche déjà maintenue. Refuser une touche de la direction opposée sur le même axe et le même joueur ; conserver les alias contextuels et les affectations de l'autre joueur. |
-| Accès facultatif aux manettes | `src/components/GameCanvas.jsx`, `src/game/browserGamepads.js` | Une API absente ou refusée ne doit pas interrompre les commandes clavier et tactiles. Préserver les indices des manettes et réessayer aux lectures suivantes. |
+| Accès facultatif et déconnexion des manettes | `src/components/GameCanvas.jsx`, `src/game/browserGamepads.js`, `src/game/melee/meleeGamepadInput.js` | Une API absente ou refusée ne doit pas interrompre les commandes clavier et tactiles. Préserver les indices des manettes et réessayer aux lectures suivantes. Une déconnexion annule la charge détenue seulement par cette source ; son retour exige un état neutre propre à la manette, sans bloquer les autres sources. |
+| Annulation et reprise des commandes de mêlée | `src/components/GameCanvas.jsx`, `src/game/sceneInputs.js`, `src/game/melee/meleeCombatRuntime.js` | Distinguer relâchement volontaire et annulation d'un propriétaire réel. Une charge annulée ne lance pas de coup ; un autre propriétaire maintenu la conserve. Ignorer les répétitions des touches effacées à la pause ou à la perte de focus, puis accepter un nouvel appui dès la première image de reprise. |
 | Replays de vérification Extinction | `scripts/browserSceneServices.py`, `scripts/fixtures/cityExtinctionHarness.jsx` | Fixer une graine documentée et l'horloge avant START, puis comparer les états observés, décisions et tirages de deux contextes frais. Conserver les assertions de victoire et les traces d'échec ; ne pas choisir une nouvelle graine pour faire passer un scénario. |
 | Assets | `src/game/renderer.js`, `spriteAssets.js`, `cosmeticVisualAssets.js` | Réutiliser les registres, règles d'atlas, variantes et chargements ; examiner le rendu au format réel. |
 | Sauvegarde | `src/App.jsx`, `src/game/localSaveGuard.js`, `saveValidation.js`, `saveRecovery.js`, `safeStorage.js`, `cloudSaveConflictPolicy.js` | Le garde doit partir des octets exacts lus avec la progression, y compris un emplacement vide. Une erreur de lecture initiale bloque les écritures automatiques jusqu'à récupération explicite. Préserver schémas, migrations et stratégies de conflit ; ce contrôle optimiste ne rend pas deux écritures simultanées atomiques. |
@@ -99,6 +100,9 @@ de la progression entre chargement et initialisation de son garde.
 La [continuation sur les affectations, manettes et replays](GAMEDEV_INPUT_AND_REPLAY_2026-10-29.md)
 documente la capture d'une nouvelle touche, les conflits de direction, le refus
 natif de l'API manette et la comparaison des parcours Extinction.
+Le [rapport d'annulation et de reprise des commandes](GAMEDEV_INPUT_CANCELLATION_2026-10-29.md)
+documente les déconnexions de manette, les annulations tactiles et la reprise
+immédiate au clavier ou au tactile après nettoyage des commandes.
 
 Choisir les suites liées au comportement modifié. Les commandes ci-dessous sont
 des points d'entrée existants, pas un compte rendu de tests déjà exécutés.
@@ -163,6 +167,16 @@ proviennent du navigateur ; les appuis tactiles sont préparés dans le registre
 de scène. L'absence de l'API est simulée séparément. La reprise après navigation
 concerne un nouveau document ; un test unitaire couvre l'échec puis la réussite
 dans la même instance. Aucun périphérique physique ni combat complet n'est testé.
+Cette fixture exécute aussi le dispatcher, le callback tactile et les méthodes
+de charge et de garde extraits du code courant, avec deux acteurs du runtime
+réel. Elle vérifie 17 scénarios, dont les déconnexions, le retour au neutre propre
+à la manette, les propriétaires concurrents et les annulations du vrai bouton
+tactile. Les états de manette et le signal de déconnexion sont simulés ; les
+événements de pointeur proviennent du navigateur. La progression du runtime va
+jusqu'au callback de résolution du coup, sans calcul des dégâts d'un combat complet.
+Le gestionnaire clavier complet est couvert séparément par
+`scripts/meleeKeyboardLifecycle.test.mjs` ; le clavier de cette fixture utilise
+un pont vers le registre d'entrée.
 La rejouer avec
 `PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:gamepad-browser`.
 

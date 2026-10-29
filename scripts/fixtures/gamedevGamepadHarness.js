@@ -1,4 +1,7 @@
 import { createGamepadFixture } from 'virtual:gamedev-gamepad-reader';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import HeldControlButton from '../../src/components/HeldControlButton.jsx';
 
 const input = createGamepadFixture();
 const held = { player: false, cpu: false };
@@ -10,11 +13,11 @@ const nativeProbe = () => {
     return { available: true, ok: false, error: error.name };
   }
 };
-const sample = () => {
-  let inputs = null, readError = null;
-  try { inputs = input.read(); }
+const sample = (frames = 0) => {
+  let inputs = null, actors = null, readError = null;
+  try { ({ inputs, actors } = frames ? input.advance(frames) : input.sample()); }
   catch (error) { readError = { name: error.name, message: error.message }; }
-  const state = { native: nativeProbe(), inputs, readError };
+  const state = { native: nativeProbe(), inputs, actors, readError };
   document.getElementById('state').textContent = JSON.stringify(state, null, 2);
   return state;
 };
@@ -33,5 +36,17 @@ for (const [side, action] of [['player', 'shield'], ['cpu', 'chargedAttack']]) {
     sample();
   });
 }
-window.__gamedevGamepads = { sample, nativeProbe };
+createRoot(document.getElementById('actual-controls')).render(
+  React.createElement(HeldControlButton, {
+    id: 'actual-touch-charge',
+    onInput(source, phase) { input.touchEvent('chargedAttack', phase, source); sample(); },
+    style: { minWidth: 220, minHeight: 70, margin: 16 }
+  }, 'Hold actual charge control')
+);
+window.__gamedevGamepads = {
+  sample, nativeProbe,
+  clear: () => input.clear(),
+  advance: frames => sample(frames),
+  touch(side, action, down) { input.touch(side, action, down); return sample(); }
+};
 sample();
