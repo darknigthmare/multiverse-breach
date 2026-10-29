@@ -67,8 +67,10 @@ import BlackPearlAmmoPanel from './BlackPearlAmmoPanel';
 import { getSmashAbilityProfile, getSmashAbilityTargets } from '../game/smashAbilityProfiles.js';
 import { isMeleeMovementLocked } from '../game/melee/meleeCombatRuntime';
 import { getBlackPearlSourceAmmunition } from '../game/canonBlackPearlSourceKits.js';
+import { createSceneInputs } from '../game/sceneInputs.js';
 import {
   MELEE_ACTIONS,
+  MELEE_REMAPPABLE_SLOTS,
   createDefaultMeleeInputMaps,
   diffMeleeActionEdges,
   getMeleeActionsForCode,
@@ -80,6 +82,8 @@ import {
   saveMeleeInputMaps,
   toEngineHeldInput
 } from '../game/melee/meleeInputMap';
+
+const MELEE_TOUCH_SLOTS = MELEE_REMAPPABLE_SLOTS.map(slot => slot.id);
 
 const getTouchMeleeSnapshot = heldSlots => {
   const held = heldSlots instanceof Set ? heldSlots : new Set();
@@ -188,7 +192,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const keysPressed = useRef({});
   const meleePressedCodesRef = useRef(new Set());
   const meleePreviousInputRef = useRef({ player: null, cpu: null });
-  const meleeTouchHeldRef = useRef({ player: new Set(), cpu: new Set() });
+  const meleeTouchHeldRef = useRef({
+    player: createSceneInputs(MELEE_TOUCH_SLOTS),
+    cpu: createSceneInputs(MELEE_TOUCH_SLOTS)
+  });
   const meleeNeutralGateRef = useRef({ player: false, cpu: false });
   const tacticsCameraPointerRef = useRef({
     active: false,
@@ -285,10 +292,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     setMeleeInputMaps(saveMeleeInputMaps(createDefaultMeleeInputMaps()));
   };
 
-  const handleMeleeTouchAction = (slot, phase) => {
+  const handleMeleeTouchAction = (slot, phase, source) => {
     const held = meleeTouchHeldRef.current.player;
-    if (phase === 'down') held.add(slot);
-    else held.delete(slot);
+    // Keep legacy action-only callers while separating every physical owner.
+    const owner = `${slot}:${typeof source === 'string' && source ? source : 'legacy'}`;
+    if (phase === 'down') held.hold(owner, slot);
+    else held.release(owner);
   };
 
   const clearMeleeControls = () => {
@@ -1360,7 +1369,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         ? navigator.getGamepads()
         : [];
       const gamepad = readGamepadMeleeInput(gamepads?.[side === 'cpu' ? 1 : 0]);
-      const touch = getTouchMeleeSnapshot(meleeTouchHeldRef.current[side]);
+      const touch = getTouchMeleeSnapshot(new Set(Object.keys(meleeTouchHeldRef.current[side].snapshot())));
       return mergeMeleeInputSnapshots(keyboard, gamepad, touch);
     };
 
@@ -1664,6 +1673,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         heroes: new Map(),
         enemies: new Map()
       };
+      clearMeleeControls();
       engineRef.current?.dispose?.();
       engineRef.current = null;
       sound.stopBgm();

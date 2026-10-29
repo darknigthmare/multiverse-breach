@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import HeldControlButton from './HeldControlButton.jsx';
 import { EngineFighter, resolveFighterCosmetics } from '../game/engineFighter';
 import { createFighterHeldInputs, synchronizeFighterControlOwners } from '../game/fighterControlOwnership.js';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
@@ -810,7 +811,7 @@ export default function FighterMode({
     engineRef.current?.triggerAssist(side);
   };
 
-  const setHeldInput = (key, active, side = 'player') => {
+  const setHeldInput = (key, active, side = 'player', source) => {
     if (sessionPausedRef.current || document.hidden || !engineRef.current || engineRef.current.disposed || engineRef.current.finished) {
       heldInputsRef.current.clear();
       inputRef.current = { player: {}, cpu: {} };
@@ -818,7 +819,7 @@ export default function FighterMode({
       return;
     }
     synchronizeFighterControlOwners(engineRef.current, inputRef, inputOwnersRef, heldInputsRef.current);
-    heldInputsRef.current.setTouch(side, key, active);
+    heldInputsRef.current.setTouch(side, key, active, source);
     inputRef.current = heldInputsRef.current.snapshot();
   };
 
@@ -1153,11 +1154,11 @@ export default function FighterMode({
           style={{ gridTemplateColumns: 'repeat(5, minmax(44px, 1fr))' }}
         >
           <span style={{ gridColumn: '1 / -1', color: '#39c5bb', fontSize: 9 }}>J1 / P1</span>
-          <button type="button" title={lang === 'fr' ? 'Gauche' : 'Left'} onPointerDown={() => setHeldInput('left', true)} onPointerUp={() => setHeldInput('left', false)} onPointerCancel={() => setHeldInput('left', false)} onLostPointerCapture={() => setHeldInput('left', false)} onBlur={() => setHeldInput('left', false)} onPointerLeave={() => setHeldInput('left', false)}>&larr;</button>
-          <button type="button" title={lang === 'fr' ? 'Accroupi' : 'Crouch'} onPointerDown={() => setHeldInput('down', true)} onPointerUp={() => setHeldInput('down', false)} onPointerCancel={() => setHeldInput('down', false)} onLostPointerCapture={() => setHeldInput('down', false)} onBlur={() => setHeldInput('down', false)} onPointerLeave={() => setHeldInput('down', false)}>&darr;</button>
+          <HeldControlButton title={lang === 'fr' ? 'Gauche' : 'Left'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('left', phase === 'down', 'player', source)}>&larr;</HeldControlButton>
+          <HeldControlButton title={lang === 'fr' ? 'Accroupi' : 'Crouch'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('down', phase === 'down', 'player', source)}>&darr;</HeldControlButton>
           <button type="button" title={lang === 'fr' ? 'Saut' : 'Jump'} onClick={() => triggerAction('jump')}>&uarr;</button>
-          <button type="button" title={lang === 'fr' ? 'Droite' : 'Right'} onPointerDown={() => setHeldInput('right', true)} onPointerUp={() => setHeldInput('right', false)} onPointerCancel={() => setHeldInput('right', false)} onLostPointerCapture={() => setHeldInput('right', false)} onBlur={() => setHeldInput('right', false)} onPointerLeave={() => setHeldInput('right', false)}>&rarr;</button>
-          <button type="button" title={lang === 'fr' ? 'Garde [E]' : 'Guard [E]'} onPointerDown={() => setHeldInput('guard', true)} onPointerUp={() => setHeldInput('guard', false)} onPointerCancel={() => setHeldInput('guard', false)} onLostPointerCapture={() => setHeldInput('guard', false)} onBlur={() => setHeldInput('guard', false)} onPointerLeave={() => setHeldInput('guard', false)}>E</button>
+          <HeldControlButton title={lang === 'fr' ? 'Droite' : 'Right'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('right', phase === 'down', 'player', source)}>&rarr;</HeldControlButton>
+          <HeldControlButton title={lang === 'fr' ? 'Garde [E]' : 'Guard [E]'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('guard', phase === 'down', 'player', source)}>E</HeldControlButton>
         </div>
         <div aria-label={lang === 'fr' ? 'Actions tactiles J1' : 'P1 touch actions'}>
           <span style={{ gridColumn: '1 / -1', color: '#39c5bb', fontSize: 9 }}>
@@ -1177,11 +1178,11 @@ export default function FighterMode({
               style={{ gridTemplateColumns: 'repeat(5, minmax(44px, 1fr))' }}
             >
               <span style={{ gridColumn: '1 / -1', color: '#ff8c50', fontSize: 9 }}>J2 / P2</span>
-              <button type="button" title={lang === 'fr' ? 'J2 gauche' : 'P2 left'} onPointerDown={() => setHeldInput('left', true, 'cpu')} onPointerUp={() => setHeldInput('left', false, 'cpu')} onPointerCancel={() => setHeldInput('left', false, 'cpu')} onLostPointerCapture={() => setHeldInput('left', false, 'cpu')} onBlur={() => setHeldInput('left', false, 'cpu')} onPointerLeave={() => setHeldInput('left', false, 'cpu')}>&larr;</button>
-              <button type="button" title={lang === 'fr' ? 'J2 accroupi' : 'P2 crouch'} onPointerDown={() => setHeldInput('down', true, 'cpu')} onPointerUp={() => setHeldInput('down', false, 'cpu')} onPointerCancel={() => setHeldInput('down', false, 'cpu')} onLostPointerCapture={() => setHeldInput('down', false, 'cpu')} onBlur={() => setHeldInput('down', false, 'cpu')} onPointerLeave={() => setHeldInput('down', false, 'cpu')}>&darr;</button>
+              <HeldControlButton title={lang === 'fr' ? 'J2 gauche' : 'P2 left'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('left', phase === 'down', 'cpu', source)}>&larr;</HeldControlButton>
+              <HeldControlButton title={lang === 'fr' ? 'J2 accroupi' : 'P2 crouch'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('down', phase === 'down', 'cpu', source)}>&darr;</HeldControlButton>
               <button type="button" title={lang === 'fr' ? 'J2 saut' : 'P2 jump'} onClick={() => triggerAction('jump', 'cpu')}>&uarr;</button>
-              <button type="button" title={lang === 'fr' ? 'J2 droite' : 'P2 right'} onPointerDown={() => setHeldInput('right', true, 'cpu')} onPointerUp={() => setHeldInput('right', false, 'cpu')} onPointerCancel={() => setHeldInput('right', false, 'cpu')} onLostPointerCapture={() => setHeldInput('right', false, 'cpu')} onBlur={() => setHeldInput('right', false, 'cpu')} onPointerLeave={() => setHeldInput('right', false, 'cpu')}>&rarr;</button>
-              <button type="button" title={lang === 'fr' ? 'Garde J2 [U]' : 'P2 guard [U]'} onPointerDown={() => setHeldInput('guard', true, 'cpu')} onPointerUp={() => setHeldInput('guard', false, 'cpu')} onPointerCancel={() => setHeldInput('guard', false, 'cpu')} onLostPointerCapture={() => setHeldInput('guard', false, 'cpu')} onBlur={() => setHeldInput('guard', false, 'cpu')} onPointerLeave={() => setHeldInput('guard', false, 'cpu')}>U</button>
+              <HeldControlButton title={lang === 'fr' ? 'J2 droite' : 'P2 right'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('right', phase === 'down', 'cpu', source)}>&rarr;</HeldControlButton>
+              <HeldControlButton title={lang === 'fr' ? 'Garde J2 [U]' : 'P2 guard [U]'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('guard', phase === 'down', 'cpu', source)}>U</HeldControlButton>
             </div>
             <div aria-label={lang === 'fr' ? 'Actions tactiles J2' : 'P2 touch actions'}>
               <span style={{ gridColumn: '1 / -1', color: '#ff8c50', fontSize: 9 }}>

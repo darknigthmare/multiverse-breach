@@ -3,6 +3,7 @@ import { before, after, afterEach, test } from 'node:test';
 import { readFileSync } from 'node:fs';
 import { createServer } from 'vite';
 import { createFighterHeldInputs, synchronizeFighterControlOwners } from '../src/game/fighterControlOwnership.js';
+import { createHeldControlInput } from '../src/game/heldControlInput.js';
 
 const source = readFileSync(new URL('../src/components/FighterMode.jsx', import.meta.url), 'utf8');
 const section = (start, end) => {
@@ -21,6 +22,7 @@ const event = (key, code, extra = {}) => ({
   key, code, repeat: false, defaultPrevented: false,
   target: { tagName: 'CANVAS', closest: () => null },
   preventDefault() { this.defaultPrevented = true; },
+  stopPropagation() { this.propagationStopped = true; },
   ...extra
 });
 
@@ -152,6 +154,46 @@ test('keyboard and existing touch holds release independently on both camps', ()
     assert.equal(f.engine.inputs[side].left, true, 'keyboard survives touch release');
     f.up(event(...key)); f.step();
     assert.equal(f.engine.inputs[side].left, false);
+  }
+});
+
+test('each camp retains direction and guard until its final touch source releases', () => {
+  for (const side of ['player', 'cpu']) for (const control of ['left', 'right', 'down', 'guard']) {
+    const f = fixture('p2');
+    f.touch(control, true, side, 'pointer:1'); f.touch(control, true, side, 'pointer:2');
+    f.touch(control, false, side, 'pointer:2'); f.step();
+    assert.equal(f.engine.inputs[side][control], true, `${side} ${control}`);
+    f.touch(control, false, side, 'pointer:1'); f.step();
+    assert.equal(f.engine.inputs[side][control], false, `${side} ${control}`);
+  }
+});
+
+test('held UI controls, gameplay keys and the other player release independently', () => {
+  const f = fixture('p2');
+  const button = createHeldControlInput({ sourcePrefix: 'p1-guard', onInput: (source, phase) => f.touch('guard', phase === 'down', 'player', source) });
+  button.onKeyDown(event(' ', 'Space')); button.onKeyDown(event('Enter', 'Enter'));
+  f.down(event('e', 'KeyE')); f.touch('guard', true, 'cpu', 'p2-pointer');
+  button.onKeyUp(event('Enter', 'Enter')); f.up(event('e', 'KeyE')); f.step();
+  assert.equal(f.engine.getActive('player').guarding, true);
+  button.onBlur(); f.step();
+  assert.equal(f.engine.getActive('player').guarding, false);
+  assert.equal(f.engine.getActive('cpu').guarding, true);
+});
+
+test('a fresh UI pointer works after tag without restoring the old pointer owner', () => {
+  for (const side of ['player', 'cpu']) {
+    const f = fixture('p2');
+    const button = createHeldControlInput({ sourcePrefix: 'guard', onInput: (source, phase) => f.touch('guard', phase === 'down', side, source) });
+    const pointer = id => ({ ...event('', ''), pointerId: id, button: 0, currentTarget: {} });
+    button.onPointerDown(pointer(1));
+    const departed = f.engine.getActive(side);
+    f.tag(1, side);
+    assert.notEqual(f.engine.getActive(side), departed);
+    assert.deepEqual(f.controls(side), {});
+    button.onPointerDown(pointer(2)); button.onPointerUp(pointer(1)); f.step();
+    assert.equal(f.engine.inputs[side].guard, true);
+    button.onPointerUp(pointer(2)); f.step();
+    assert.equal(f.engine.inputs[side].guard, false);
   }
 });
 

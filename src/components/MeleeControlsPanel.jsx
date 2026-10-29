@@ -5,6 +5,7 @@ import {
   normalizeMeleeInputMaps
 } from '../game/melee/meleeInputMap';
 import { CHARGED_ATTACK_DATA } from '../game/melee/meleeStateMachine';
+import HeldControlButton from './HeldControlButton.jsx';
 
 const SLOT_LABELS = Object.freeze({
   moveLeft: { fr: 'GAUCHE', en: 'LEFT' },
@@ -225,23 +226,6 @@ export default function MeleeControlsPanel({
     onReset?.();
   };
 
-  const emitTouch = (event, action, phase) => {
-    event.preventDefault();
-    if (disabled && phase === 'down') return;
-    if (phase === 'down') event.currentTarget.setPointerCapture?.(event.pointerId);
-    if (phase === 'up' && event.currentTarget.hasPointerCapture?.(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    }
-    onTouchAction?.(action, phase);
-  };
-
-  const emitTouchFromKey = (event, action, phase) => {
-    if (event.key !== ' ' && event.key !== 'Enter') return;
-    if (phase === 'down' && event.repeat) return;
-    event.preventDefault();
-    onTouchAction?.(action, phase);
-  };
-
   const renderBindings = (side, label) => (
     <fieldset
       style={{
@@ -370,21 +354,14 @@ export default function MeleeControlsPanel({
               || SLOT_LABELS[control.id]?.[isFrench ? 'fr' : 'en']
               || control.id;
             return (
-              <button
+              <HeldControlButton
                 key={control.id}
                 type="button"
                 aria-label={label}
                 data-touch-slot={control.id}
                 disabled={disabled}
                 title={label}
-                draggable={false}
-                onPointerDown={event => emitTouch(event, control.id, 'down')}
-                onPointerUp={event => emitTouch(event, control.id, 'up')}
-                onPointerCancel={event => emitTouch(event, control.id, 'cancel')}
-                onLostPointerCapture={event => emitTouch(event, control.id, 'cancel')}
-                onBlur={() => onTouchAction?.(control.id, 'cancel')}
-                onKeyDown={event => emitTouchFromKey(event, control.id, 'down')}
-                onKeyUp={event => emitTouchFromKey(event, control.id, 'up')}
+                onInput={(source, phase) => onTouchAction?.(control.id, phase, source)}
                 style={{
                   ...retroButtonStyle,
                   minHeight: 42,
@@ -398,7 +375,7 @@ export default function MeleeControlsPanel({
               >
                 <b aria-hidden="true" style={{ color: '#62f3e8', fontSize: 14 }}>{control.glyph}</b>
                 <small style={{ font: 'inherit', fontSize: 8 }}>{label}</small>
-              </button>
+              </HeldControlButton>
             );
           })}
         </div>
@@ -406,3 +383,4 @@ export default function MeleeControlsPanel({
     </section>
   );
 }
+

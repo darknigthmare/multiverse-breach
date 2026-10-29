@@ -31,6 +31,7 @@ Relire ces points d'entrée dans la branche courante avant toute modification.
 | Présentation et contrôle | `src/components/GameCanvas.jsx`, `src/game/combatViewport.js`, `combatDialogLifecycle.js`, `dialogFocus.js` | Garder les coordonnées écran/monde cohérentes ; un menu doit avoir un propriétaire d'entrée explicite. |
 | Commandes de course | `src/components/RaceMode.jsx`, `src/game/raceSessionControls.js`, `sceneInputs.js` | Conserver la source de chaque touche/pointeur ; relâcher un alias ne doit pas neutraliser un autre appui. Effacer les commandes manuelles à la pause et à la perte de focus. |
 | Commandes de duel | `src/components/FighterMode.jsx`, `src/game/fighterControlOwnership.js` | Conserver les sources par camp et par combattant actif ; un tag ou K.O. efface les commandes du combattant remplacé. |
+| Boutons tactiles et activation clavier | `src/components/HeldControlButton.jsx`, `src/game/heldControlInput.js`, `src/components/MeleeControlsPanel.jsx` | Chaque doigt et touche d'activation possède sa source ; seul le dernier relâchement termine l'action. Le registre de la scène reste la référence après un tag, une pause ou un remplacement de combat. |
 | Assets | `src/game/renderer.js`, `spriteAssets.js`, `cosmeticVisualAssets.js` | Réutiliser les registres, règles d'atlas, variantes et chargements ; examiner le rendu au format réel. |
 | Sauvegarde | `src/game/saveValidation.js`, `saveRecovery.js`, `safeStorage.js`, `cloudSaveConflictPolicy.js` | Préserver les schémas, migrations et stratégies de conflit existants. |
 | Audio et préférences locales | `src/game/soundEngine.js`, `audioPreferences.js`, `safeStorage.js`, `melee/meleeInputMap.js` | Respecter le démarrage après interaction et les préférences ; l'accès refusé au stockage ne doit pas interrompre l'initialisation audio ni l'application des commandes. |
@@ -79,6 +80,9 @@ validation.
 La [continuation sur les réglages et le duel](GAMEDEV_RESILIENCE_2026-10-29.md)
 documente le stockage indisponible et les alias de déplacement/garde.
 
+La [continuation sur les appuis simultanés](GAMEDEV_HELD_CONTROLS_2026-10-29.md)
+documente les sources tactiles/clavier, les charges et le nettoyage entre combats.
+
 Choisir les suites liées au comportement modifié. Les commandes ci-dessous sont
 des points d'entrée existants, pas un compte rendu de tests déjà exécutés.
 
@@ -108,6 +112,11 @@ vrais réglages et le hook de disposition Canvas, puis le singleton audio et le
 panneau de commandes avec stockage normal ou refusé par le navigateur. Elles ne
 montent pas un combat complet ni les cinématiques de `GameCanvas`. Rejouer le
 second scénario avec `PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:storage-browser`.
+La troisième fixture monte les vrais boutons de commande et le panneau de mêlée,
+avec les fonctions d'entrée de `GameCanvas` extraites lors de la compilation.
+Elle vérifie notamment deux contacts tactiles natifs, les touches Espace/Entrée,
+la capture du pointeur et la reprise après nettoyage. La rejouer avec
+`PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:input-browser`.
 
 ## Utiliser les outils d'assets fournis
 

@@ -19,10 +19,10 @@ export function createFighterHeldInputs() {
       const source = keyboardSource(event);
       for (const inputs of sides.values()) inputs.release(source);
     },
-    setTouch(side, control, active) {
+    setTouch(side, control, active, owner = 'legacy') {
       const inputs = sides.get(side);
-      if (!inputs) return false;
-      const source = `touch:${control}`;
+      if (!inputs || typeof owner !== 'string' || !owner) return false;
+      const source = `touch:${control}:${owner}`;
       if (active) return inputs.hold(source, control);
       inputs.release(source);
       return true;

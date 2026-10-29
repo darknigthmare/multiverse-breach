@@ -13,14 +13,15 @@ npm run test:gamedev
 
 The guidance integrity check and focused display/input/storage regressions also run
 through the existing production `prebuild` checks. The `Gamedev display browser`
-workflow checks the actual settings and Canvas layout in Chromium on relevant
-pull requests. To run the same compiled fixture with an available Playwright
+workflow checks the actual settings, Canvas layout and held controls in Chromium
+on relevant pull requests. To run the compiled fixtures with an available Playwright
 installation:
 
 ```bash
 npm run build:gamedev:fixture
 PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:browser
 PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:storage-browser
+PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:input-browser
 ```
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.

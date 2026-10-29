@@ -26,7 +26,7 @@
     "cg:manifest": "node scripts/buildCgManifest.mjs",
     "cg:manifest:check": "node scripts/buildCgManifest.mjs --check",
     "cg:review:variants": "node scripts/buildCgVariantReviewSheet.mjs",
-    "test:melee": "node --test scripts/meleeInputMap.test.mjs scripts/meleeStateMachine.test.mjs scripts/meleeAnimationManifest.test.mjs scripts/meleeCombatRuntime.test.mjs scripts/smashObjectiveResolution.test.mjs scripts/meleeStorageFallback.test.mjs",
+    "test:melee": "node --test scripts/meleeInputMap.test.mjs scripts/meleeStateMachine.test.mjs scripts/meleeAnimationManifest.test.mjs scripts/meleeCombatRuntime.test.mjs scripts/smashObjectiveResolution.test.mjs scripts/meleeStorageFallback.test.mjs scripts/meleeTouchInput.test.mjs",
     "test:stages": "node --test scripts/stageTopologyCatalog.test.mjs scripts/stageEventEngine.test.mjs",
     "test:noncombat-trials": "node --test scripts/nonCombatTrial.test.mjs scripts/canonRosterWave.test.mjs scripts/canonRosterWaveExpansion.test.mjs scripts/canonRosterNewBatch.test.mjs scripts/enemyRosterIdentityContracts.test.mjs scripts/spriteCatalogContracts.test.mjs scripts/wave6NonCombatObjectives.test.mjs scripts/saturninEscortContract.test.mjs",
     "melee:sprites:audit": "node scripts/meleeSpriteAudit.mjs",
@@ -120,12 +120,13 @@
     "test:audit-followup": "node --test --test-concurrency=1 scripts/auditAuthRecovery.test.mjs scripts/auditFollowupRegressions.test.mjs",
     "test:audit-combat": "node --test --test-concurrency=1 scripts/auditRpgLifecycle.test.mjs scripts/auditEventConsumption.test.mjs",
     "test:audit-tactics": "node --test --test-concurrency=1 scripts/auditTacticsReliability.test.mjs scripts/auditTacticsLifecycle.test.mjs scripts/auditTacticsSupport.test.mjs",
-    "test:ui-immersion": "node --test --test-concurrency=1 scripts/gameSystemImmersion.test.mjs scripts/combatDialogLifecycle.test.mjs scripts/combatViewport.test.mjs scripts/immersiveHubState.test.mjs scripts/shellImmersion.test.mjs scripts/shellImmersionPresentation.test.mjs scripts/cloudReconciliationRace.test.mjs scripts/sceneHudPreferences.test.mjs scripts/reducedMotion.test.mjs scripts/raceKeyboardInput.test.mjs scripts/fighterKeyboardInput.test.mjs",
+    "test:ui-immersion": "node --test --test-concurrency=1 scripts/gameSystemImmersion.test.mjs scripts/combatDialogLifecycle.test.mjs scripts/combatViewport.test.mjs scripts/immersiveHubState.test.mjs scripts/shellImmersion.test.mjs scripts/shellImmersionPresentation.test.mjs scripts/cloudReconciliationRace.test.mjs scripts/sceneHudPreferences.test.mjs scripts/reducedMotion.test.mjs scripts/raceKeyboardInput.test.mjs scripts/fighterKeyboardInput.test.mjs scripts/heldControlInput.test.mjs",
     "check:gamedev-guides": "node scripts/checkGamedevGuidance.mjs",
-    "test:gamedev": "npm run check:gamedev-guides && node --test scripts/sceneHudPreferences.test.mjs scripts/reducedMotion.test.mjs scripts/raceKeyboardInput.test.mjs scripts/audioStorageFallback.test.mjs scripts/meleeStorageFallback.test.mjs scripts/fighterKeyboardInput.test.mjs",
+    "test:gamedev": "npm run check:gamedev-guides && node --test scripts/sceneHudPreferences.test.mjs scripts/reducedMotion.test.mjs scripts/raceKeyboardInput.test.mjs scripts/audioStorageFallback.test.mjs scripts/meleeStorageFallback.test.mjs scripts/fighterKeyboardInput.test.mjs scripts/heldControlInput.test.mjs scripts/meleeTouchInput.test.mjs",
     "test:gamedev:browser": "node scripts/browserDisplayPreferences.mjs",
     "build:gamedev:fixture": "node scripts/buildGamedevDisplayFixture.mjs",
-    "test:gamedev:storage-browser": "node scripts/browserStoragePreferences.mjs"
+    "test:gamedev:storage-browser": "node scripts/browserStoragePreferences.mjs",
+    "test:gamedev:input-browser": "node scripts/browserHeldControls.mjs"
   },
   "dependencies": {
     "react": "^19.2.7",
