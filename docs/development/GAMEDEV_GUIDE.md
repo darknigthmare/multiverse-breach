@@ -103,6 +103,9 @@ natif de l'API manette et la comparaison des parcours Extinction.
 Le [rapport d'annulation et de reprise des commandes](GAMEDEV_INPUT_CANCELLATION_2026-10-29.md)
 documente les déconnexions de manette, les annulations tactiles et la reprise
 immédiate au clavier ou au tactile après nettoyage des commandes.
+Le [dossier Crustaceous Rex](GAMEDEV_C_REX_2026-10-29.md) documente un fichier
+manquant vérifié à distance, sa comparaison aux références de production, le
+layout statique explicite et les animations encore à produire.
 
 Choisir les suites liées au comportement modifié. Les commandes ci-dessous sont
 des points d'entrée existants, pas un compte rendu de tests déjà exécutés.
