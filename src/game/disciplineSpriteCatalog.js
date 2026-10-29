@@ -8747,5 +8747,53 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
         "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v10/references/robot-cockpit-user-frame.png"
       }
     ]
+  },
+  {
+    "characterId": "red-hood-harness-guard",
+    "characterName": "Garde masqué — cagoule rouge",
+    "costumeId": "black-harness-reference-v11",
+    "label": {
+      "fr": "Harnais noir et cagoule à rivets — références fournies",
+      "en": "Black harness and riveted red hood — supplied references"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/red-hood-harness-guard--black-harness-reference-v11.png",
+    "provenance": "reference",
+    "category": "military",
+    "isDefault": true,
+    "available": true,
+    "revision": 11,
+    "sourceMedium": "user_reference",
+    "assetRole": "enemy",
+    "roleLabel": {
+      "fr": "Ennemi",
+      "en": "Enemy"
+    },
+    "newCharacter": true,
+    "newOutfit": true,
+    "identitySourceId": "v11-red-hood-mask-detail",
+    "styleSourceId": "discipline-sprite-v1:hooded-guard-red-trim:black-suit-reference-v9",
+    "sourceEvidenceIds": [
+      "v11-red-hood-mask-detail",
+      "v11-red-hood-group-full-body"
+    ],
+    "literalOneToOneCertified": false,
+    "notes": {
+      "fr": "Ennemi graphique d’après les deux captures fournies : homme adulte à cagoule rouge couvrant le nez, petits rivets argentés, harnais noir à anneau central, ceinture et gants rouges, bas noir et hautes bottes sombres à revers rouges. Nom descriptif ; identité individuelle et faction non confirmées. Image statique du catalogue.",
+      "en": "Enemy artwork based on both supplied frames: adult man with a red hood covering the nose, small silver rivets, a black chest harness with a central ring, red waist belt and gloves, black lower costume and tall dark boots with red cuffs. Descriptive name; individual identity and faction remain unconfirmed. Static catalogue artwork."
+    },
+    "proportionNotes": {
+      "fr": "Le gros plan guide la cagoule et l’anneau ; la vue du groupe guide la silhouette et l’ensemble du costume. La pose en trois quarts, les proportions, les rivets et les plis sont transposés en pixel art. La silhouette est plus athlétique que certains personnages très minces de la capture. Aucune reproduction intégrale 1:1 n’est certifiée.",
+      "en": "The close-up guides the hood and ring; the group view guides silhouette and the complete costume. The three-quarter pose, proportions, rivets and folds are translated into pixel art. The silhouette is more athletic than some very slender figures in the frame. Complete 1:1 fidelity is not certified."
+    },
+    "referenceLinks": [
+      {
+        "label": "Capture fournie — détails du masque et du harnais",
+        "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v11/references/red-hood-mask-detail.png"
+      },
+      {
+        "label": "Capture fournie — silhouettes en pied",
+        "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v11/references/red-hood-group-full-body.png"
+      }
+    ]
   }
 ]);

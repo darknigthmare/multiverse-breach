@@ -1,0 +1,53 @@
+{
+  "assetId": "red-hood-harness-guard:black-harness-reference-v11",
+  "reviewDate": "2026-10-28",
+  "reviewers": [
+    "primary assistant",
+    "independent visual-review agent"
+  ],
+  "readyForStaticCatalogue": true,
+  "blockingDefects": [],
+  "preservedVisualCues": [
+    "Single adult male standing in a neutral full-body pose",
+    "Red hood covers the nose and neck; separate eye and mouth openings and silver rivets retained",
+    "Central metal ring and two dark diagonal chest straps retained",
+    "Red waist belt, short red gloves, opaque black lower costume and tall dark boots with red cuffs retained",
+    "Head, both hands and both boots inside the visible frame",
+    "Native RGBA output preserved byte-for-byte without pixel edits"
+  ],
+  "observedDifferences": [
+    "More pronounced arm, chest and thigh musculature; slightly less slender than some figures in the group frame",
+    "Rivets are more regular and sharply defined; exact count and placement are interpreted",
+    "More neutral expression, narrower mouth opening and less widened eyes than the close-up",
+    "Gloves and fists are bulkier; boot soles, folds and highlights more detailed than the frame",
+    "Brighter reds and stronger contrasts in the pixel-art translation"
+  ],
+  "alphaReview": {
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "visibleBoundsAlphaGt8": [
+      418,
+      37,
+      891,
+      1227
+    ],
+    "visibleMargins": [
+      418,
+      37,
+      363,
+      27
+    ],
+    "nonzeroAlphaTouchesCanvasEdge": true,
+    "maximumCanvasEdgeAlpha": 1,
+    "visibleAlphaGt8TouchesCanvasEdge": false,
+    "fringeInspection": "Red fringe pixels around arms, torso and thighs are predominantly alpha 1/255, with at most 4/255 in the reviewed samples. The independent reviewer calculated compositing on #111 and #eee; the raw-preview color fringe is negligible after normal alpha compositing."
+  },
+  "canonicalIdentityCertified": false,
+  "fullBodyOneToOneCertified": false,
+  "pixelRetouchPerformed": false
+}

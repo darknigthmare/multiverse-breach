@@ -2,14 +2,14 @@
   "version": 1,
   "date": "2026-10-28",
   "counts": {
-    "sprites": 372,
-    "characters": 40,
-    "referenceBased": 80,
+    "sprites": 373,
+    "characters": 41,
+    "referenceBased": 81,
     "adapted": 292,
     "byCategory": {
       "sport": 13,
       "civilian": 44,
-      "military": 63,
+      "military": 64,
       "swimwear": 90,
       "uniform": 58,
       "other": 8,
@@ -55,7 +55,10 @@
     "v10Additions": 3,
     "v10NewCharacters": 2,
     "v10MechanicalAssets": 3,
-    "costumeCoverageCharacters": 38
+    "costumeCoverageCharacters": 39,
+    "preservedBeforeV11": 372,
+    "v11Additions": 1,
+    "v11NewCharacters": 1
   },
   "pendingCharacters": [
     {
@@ -72,24 +75,29 @@
       "ova-officer-bob",
       "ova-officer-swept-hair",
       "masked-soldier-red-visor",
-      "hooded-guard-red-trim"
+      "hooded-guard-red-trim",
+      "red-hood-harness-guard"
     ],
     "swimwear": [
       "maiko",
       "masked-soldier-red-visor",
-      "hooded-guard-red-trim"
+      "hooded-guard-red-trim",
+      "red-hood-harness-guard"
     ],
     "maid": [
       "masked-soldier-red-visor",
-      "hooded-guard-red-trim"
+      "hooded-guard-red-trim",
+      "red-hood-harness-guard"
     ],
     "nurse": [
       "masked-soldier-red-visor",
-      "hooded-guard-red-trim"
+      "hooded-guard-red-trim",
+      "red-hood-harness-guard"
     ],
     "latex": [
       "masked-soldier-red-visor",
-      "hooded-guard-red-trim"
+      "hooded-guard-red-trim",
+      "red-hood-harness-guard"
     ]
   },
   "assets": [
@@ -34020,9 +34028,158 @@
         "facing": "left",
         "animated": false
       }
+    },
+    {
+      "id": "red-hood-harness-guard:black-harness-reference-v11",
+      "characterId": "red-hood-harness-guard",
+      "costumeId": "black-harness-reference-v11",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/red-hood-harness-guard--black-harness-reference-v11.png",
+      "category": "military",
+      "provenance": "reference",
+      "revision": 11,
+      "sourceMedium": "user_reference",
+      "assetRole": "enemy",
+      "roleLabel": {
+        "fr": "Ennemi",
+        "en": "Enemy"
+      },
+      "newCharacter": true,
+      "newOutfit": true,
+      "identitySourceId": "v11-red-hood-mask-detail",
+      "styleSourceId": "hooded-guard-red-trim:black-suit-reference-v9",
+      "canonicalCostumeCertified": false,
+      "canonicalIdentityCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-9feb350b-776a-41eb-bc0c-b357305b9475",
+        "generationIdSource": "Exact generated output filename returned by the tool; no separate server generation ID was returned.",
+        "prompt": "Create ONE production-ready static full-body enemy sprite for the existing Discipline sprite catalogue in a 2D video game.\n\nREFERENCE AUTHORITY:\n1. image(20261028-184657).png is the close-up authority for the RED HOOD, the small silver rivets, facial openings and the chest harness ring.\n2. image(20261028-184718).png is the full-body authority for the adult man's lean build, proportions, costume, colors, hands and boots. Create ONE representative guard, not the group.\n3. hooded-guard-red-trim--black-suit-reference-v9.png is ONLY the visual rendering and framing guide: detailed clean pixel art, stepped pixel contours, compact color clusters, restrained cel-like shading, full figure on transparency. Do NOT copy this third image's black outfit, face, hood design or shoes.\n\nCHARACTER AND FIDELITY:\nA clearly adult male henchman, lean and long-limbed with moderately defined anatomy as in the group reference. Preserve the source proportions; avoid broad superhero shoulders, a bodybuilder redesign or bulky armor.\nAn entirely deep red/burgundy close-fitting hood covers the head, nose and neck, flaring into a short cowl at the shoulders. It has small pale metallic round rivets arranged across the forehead and down the cheeks as seen in the close-up. The hood has separate horizontal eye openings showing human eyes and a small horizontal mouth opening showing a restrained clenched-teeth expression. The nose remains covered by the red material. No black center stripe, no goggles, no zipper, no spikes or horns.\nThe upper torso, arms and thighs are bare, with the warm light tan skin and simple anatomical shading seen in the reference. A simple very dark navy/black chest harness has a small silver circular ring at the base of the throat/upper chest, with broad straps descending diagonally outward across the pectorals and around the sides, matching the reference. Preserve its simple visible construction; do not add a new collar, chains, extra belts or elaborate hardware.\nA rust-red waist belt/waistband above opaque plain black brief-shaped lower costume, faithfully matching the fully covered groin in the source. Non-explicit neutral game-character presentation, without anatomical genital detail or sexual emphasis.\nDark red/burgundy fitted gloves ending at the wrists, both hands lowered in relaxed closed fists.\nTall very dark navy/black boots reaching just below the knees, with broad red cuffs at their upper edge. Plain fitted boot shafts and simple dark feet matching the group view, no laces, armor or added buckles.\nEmpty hands. No weapon or prop.\n\nCOMPOSITION AND OUTPUT:\nOne isolated standing figure, viewed in a near-front three-quarter direction facing slightly toward the viewer's right, shoulders relaxed, feet moderately apart, both arms down. Preserve all the costume cues while using a neutral catalogue idle pose.\nThe whole hood, both hands, both legs and both boot soles must be visible, with a small clear transparent margin on every side. Center the complete figure on a square canvas and match the previous sprite's scale.\nUse crisp polished pixel-art rendering consistent with the third image, not a smooth painterly illustration, not a 3D render and not a photograph.\nOutput a single native 1254 x 1254 PNG with a truly transparent alpha background. No floor, ground shadow, background, scenery, checkerboard pattern, text, title, labels, frame, multiple poses or sprite sheet.",
+        "promptStatus": "recorded-verbatim",
+        "transparentBackgroundRequested": true,
+        "pixelEditsAfterGeneration": false
+      },
+      "image": {
+        "sha256": "cd54a3eab76d78e91e333a9de905c27622eec0d18fccb35fd6395fad60600776",
+        "bytes": 517079,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          0,
+          29,
+          1230,
+          1254
+        ],
+        "visibleBoundsAlphaGt8": [
+          418,
+          37,
+          891,
+          1227
+        ],
+        "opaqueBoundsAlphaGe128": [
+          419,
+          39,
+          890,
+          1226
+        ],
+        "visibleMargins": [
+          418,
+          37,
+          363,
+          27
+        ],
+        "transparentPixelCount": 1262364
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "Single adult male standing in a neutral full-body pose",
+          "Red hood covers the nose and neck; separate eye and mouth openings and silver rivets retained",
+          "Central metal ring and two dark diagonal chest straps retained",
+          "Red waist belt, short red gloves, opaque black lower costume and tall dark boots with red cuffs retained",
+          "Head, both hands and both boots inside the visible frame",
+          "Native RGBA output preserved byte-for-byte without pixel edits"
+        ],
+        "reviewDocument": "enemy-v11/visual-review.json"
+      },
+      "proportionReview": {
+        "reviewed": true,
+        "method": "Direct comparison of the supplied close-up and group frame with the generated sprite; v9 guard used only as a rendering and framing guide.",
+        "observations": [
+          "The close-up documents the red nose-covering hood, silver rivets and chest ring",
+          "The group frame documents the exposed torso, harness, gloves, waist belt, lower costume and tall boots"
+        ],
+        "limitations": [
+          "Source perspective translated into a neutral catalogue three-quarter view.",
+          "Proportions, rivet placement, folds and footwear details interpreted in pixel art.",
+          "Individual name and faction not established."
+        ],
+        "fullBodyOneToOneCertified": false,
+        "observedDifferences": [
+          "More pronounced arm, chest and thigh musculature; slightly less slender than some figures in the group frame",
+          "Rivets are more regular and sharply defined; exact count and placement are interpreted",
+          "More neutral expression, narrower mouth opening and less widened eyes than the close-up",
+          "Gloves and fists are bulkier; boot soles, folds and highlights more detailed than the frame",
+          "Brighter reds and stronger contrasts in the pixel-art translation"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "id": "v11-red-hood-mask-detail",
+          "type": "user_upload",
+          "filename": "image(20261028-184657).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v11/references/red-hood-mask-detail.png",
+          "sourceMedium": "user_reference",
+          "role": "Close-up authority for the red hood covering the nose, silver rivets, facial openings and chest harness ring",
+          "sha256": "357d25db2154423bdf09a6ea73a377e6007001be712d2b0f0a2788a76952d2db",
+          "dimensions": [
+            1174,
+            1804
+          ],
+          "directGenerationInput": true
+        },
+        {
+          "id": "v11-red-hood-group-full-body",
+          "type": "user_upload",
+          "filename": "image(20261028-184718).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v11/references/red-hood-group-full-body.png",
+          "sourceMedium": "user_reference",
+          "role": "Full-body authority for the adult lean silhouette, harness, waist belt, black lower costume, red gloves and tall boots with red cuffs",
+          "sha256": "00e8fc515a608c1ab101bf222eba4ce95ffe8d438e65d8ecbc68f8fbdb069fbd",
+          "dimensions": [
+            1272,
+            1089
+          ],
+          "directGenerationInput": true
+        },
+        {
+          "id": "v11-existing-hooded-guard-style",
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/hooded-guard-red-trim--black-suit-reference-v9.png",
+          "role": "Pixel-art technique and framing only; not identity, clothing, hood design or proportions authority",
+          "sha256": "eef140ea6da7b404b80a9937ea2a55913b6298c690dbd76d9adf27c0b34a98a5",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "directGenerationInput": true
+        }
+      ],
+      "fidelityNote": "Ennemi graphique d’après les deux captures fournies : homme adulte à cagoule rouge couvrant le nez, petits rivets argentés, harnais noir à anneau central, ceinture et gants rouges, bas noir et hautes bottes sombres à revers rouges. Nom descriptif ; identité individuelle et faction non confirmées. Image statique du catalogue. Le gros plan guide la cagoule et l’anneau ; la vue du groupe guide la silhouette et l’ensemble du costume. La pose en trois quarts, les proportions, les rivets et les plis sont transposés en pixel art. La silhouette est plus athlétique que certains personnages très minces de la capture. Aucune reproduction intégrale 1:1 n’est certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
     }
   ],
-  "revision": 10,
+  "revision": 11,
   "preservedBaselineCommit": "f10098f69523e0c35e6f81788dfdfc1a8b897cd8",
   "preservedV3BaselineCommit": "58ca23d7bc226330bb5082cc1ba49aeadafc5de6",
   "pendingOutfitReferences": [
@@ -34165,6 +34322,12 @@
       "label": "Robot pilote jaune",
       "status": "descriptive-identity-only",
       "reason": "Épisode 4 identifié par l’utilisateur ; aucun nom propre mécanique confirmé. Références partielles consignées en v10."
+    },
+    {
+      "characterId": "red-hood-harness-guard",
+      "label": "Garde masqué — cagoule rouge",
+      "status": "descriptive-identity-only",
+      "reason": "Silhouette et costume documentés par deux captures utilisateur ; aucun nom individuel ni faction confirmé."
     }
   ],
   "researchV4": {
@@ -37974,5 +38137,19 @@
       ],
       "reason": "Two provided views do not expose these areas completely."
     }
-  ]
+  ],
+  "preservedV11BaselineCommit": "a66c8391b3fc38d230987c662e4b22023e7232b9",
+  "extensionV11": {
+    "scope": "One adult red-hooded guard with black harness based on two supplied references; static catalogue asset only",
+    "report": "enemy-v11/README.md",
+    "validation": "enemy-v11/validation.json",
+    "addedAssetIds": [
+      "red-hood-harness-guard:black-harness-reference-v11"
+    ],
+    "historicalAudit": "canonical-audit-v7/README.md",
+    "historicalAuditAssetCount": 367,
+    "existingAssetsPreserved": true,
+    "runtimeEnemyRegistered": false,
+    "animated": false
+  }
 }

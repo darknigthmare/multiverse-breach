@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-28",
+  "baselineCommit": "a66c8391b3fc38d230987c662e4b22023e7232b9",
+  "result": "passed",
+  "addedAssetId": "red-hood-harness-guard:black-harness-reference-v11",
+  "counts": {
+    "sprites": 373,
+    "characters": 41,
+    "referenceBased": 81,
+    "adapted": 292,
+    "costumeCoverageCharacters": 39
+  },
+  "preservation": {
+    "previousCatalogueEntriesUnchanged": 372,
+    "previousManifestAssetsUnchanged": 372,
+    "previousPngSha256Verified": 372,
+    "canonicalAuditV7Unchanged": true,
+    "previousEnemyV8V9V10RecordsUnchanged": true,
+    "nativeOutputCopiedWithoutPixelEdits": true,
+    "userReferencesCopiedByteForByte": 2,
+    "promptMatchesGenerationVerbatim": true,
+    "all373ImageHashesUnique": true
+  },
+  "png": {
+    "sha256": "cd54a3eab76d78e91e333a9de905c27622eec0d18fccb35fd6395fad60600776",
+    "bytes": 517079,
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "rawAlphaBounds": [
+      0,
+      29,
+      1230,
+      1254
+    ],
+    "visibleBoundsAlphaGt8": [
+      418,
+      37,
+      891,
+      1227
+    ],
+    "opaqueBoundsAlphaGe128": [
+      419,
+      39,
+      890,
+      1226
+    ],
+    "visibleMargins": [
+      418,
+      37,
+      363,
+      27
+    ],
+    "transparentPixelCount": 1262364
+  },
+  "tests": {
+    "command": "npm run test:discipline",
+    "exitCode": 0,
+    "testFilesPassed": [
+      "scripts/disciplineSprites.test.mjs",
+      "scripts/wardrobe.test.mjs"
+    ],
+    "testsPassed": 49,
+    "testsFailed": 0,
+    "durationMs": 7853.567085
+  },
+  "build": {
+    "command": "npx --no-install vite build",
+    "exitCode": 0,
+    "modulesTransformed": 313,
+    "durationSeconds": 1.98,
+    "nodeVersion": "v24.22.1",
+    "viteVersion": "8.1.0",
+    "fullPrebuildChainRun": false,
+    "checkoutScope": "Source and relevant Discipline assets, plus the existing sprite-availability.json import; not a complete deployment-asset audit.",
+    "warnings": [
+      "Existing bundles larger than 1000 kB",
+      "npm http-proxy configuration warning",
+      "Local Node 24 differs from the repository Node 22 engine declaration"
+    ]
+  },
+  "browser": {
+    "report": "browser-qa.json",
+    "checksPassed": 17,
+    "javascriptErrors": [],
+    "httpResourceErrors": [],
+    "desktopScreenshotReviewed": true,
+    "mobile390pxScreenshotReviewed": true,
+    "horizontalOverflowAt390px": false,
+    "previousEnemyFiltersAndMachinesPreserved": true
+  },
+  "limits": [
+    "Static artwork catalogue delivery, not an animated enemy or combat integration",
+    "Canonical individual identity and full-body 1:1 fidelity not certified",
+    "Local build does not replace the full prebuild chain or remote CI"
+  ]
+}
