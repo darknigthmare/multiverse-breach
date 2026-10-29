@@ -77,7 +77,7 @@ utilise la version Node 22 prévue par le projet.
 | Régressions existantes de temps | `extinctionTiming.test.mjs` : 4/4 ; `fixedStepClock.test.mjs` : 10/10. |
 | `npm run test:gamedev` | Les 10 fichiers de tests passent ; intégrité des 23 fichiers amont vérifiée. |
 | `npm run test:ui-immersion` | Les 14 fichiers de tests passent. |
-| Oxlint ciblé | Les six fichiers JavaScript/JSX modifiés passent. |
+| Oxlint ciblé | Les sept fichiers JavaScript/JSX modifiés passent. |
 | Compilation Vite de l'application | Réussie ; les audits `prebuild` complets restent distincts. |
 | Compilation des trois fixtures existantes | Réussie, 42 modules. |
 | Navigateur, fixture de commandes | 18 scénarios réussis à 900 × 700, dont les trois nouveaux cas Ville/Extinction ; aucune erreur de page. |
@@ -95,8 +95,21 @@ npm run build:gamedev:fixture
 PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:input-browser
 ```
 
-Une relecture indépendante du candidat final n'a pas relevé de bloqueur. Les
-preuves locales ci-dessus précèdent la publication ; le statut des workflows
+Une relecture indépendante du candidat final n'a pas relevé de bloqueur. Le
+premier passage GitHub a ensuite détecté une assertion ancienne de
+`mosaicCityRuntime.test.mjs` qui cherchait les gestionnaires directement dans
+`SceneHoldButton`. Ce contrôle suit désormais la délégation vers
+`HeldControlButton` et son gestionnaire d'appuis, tout en conservant les
+vérifications d'annulation et de propagation clavier. Les scénarios natifs
+d'annulation déjà exécutés restent applicables au même code du jeu.
+
+Le test de raccordement corrigé passe seul et sa relecture indépendante conserve
+tous les contrats voisins. Dans la suite City complète locale, 33 cas passent ;
+le seul autre cas exige le bitmap réel du Nexus et son manifeste, absents du
+checkout partiel. Ce contrôle d'asset reste intact et est exécuté dans le workflow
+City/Extinction avec les fichiers réels du dépôt.
+
+Les preuves locales ci-dessus précèdent la publication ; le statut des workflows
 sur le commit publié reste indiqué séparément dans la PR.
 
 ## Portée des preuves
