@@ -8795,5 +8795,48 @@ export const DISCIPLINE_SPRITE_CATALOG = Object.freeze([
         "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v11/references/red-hood-group-full-body.png"
       }
     ]
+  },
+  {
+    "characterId": "black-suit-agent-bob",
+    "characterName": "Agente ennemie — combinaison noire",
+    "costumeId": "black-catsuit-reference-v12",
+    "label": {
+      "fr": "Carré noir et combinaison — référence fournie",
+      "en": "Black bob and full-body outfit — supplied reference"
+    },
+    "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/black-suit-agent-bob--black-catsuit-reference-v12.png",
+    "provenance": "reference",
+    "category": "military",
+    "isDefault": true,
+    "available": true,
+    "revision": 12,
+    "sourceMedium": "user_reference",
+    "assetRole": "enemy",
+    "roleLabel": {
+      "fr": "Ennemie",
+      "en": "Enemy"
+    },
+    "newCharacter": true,
+    "newOutfit": true,
+    "identitySourceId": "v12-black-suit-agents-user-reference",
+    "styleSourceId": "discipline-sprite-v1:ova-officer-bob:ova-plum-uniform-reference-v4",
+    "sourceEvidenceIds": [
+      "v12-black-suit-agents-user-reference"
+    ],
+    "literalOneToOneCertified": false,
+    "notes": {
+      "fr": "Agente adulte fondée sur la femme à droite de la capture fournie : carré noir à frange droite, yeux brun-rouge, combinaison noire opaque à col montant, manches longues, reflets bleu nuit et mains nues. Le nom est descriptif ; l’identité individuelle et la faction ne sont pas confirmées. Image statique du catalogue.",
+      "en": "Adult agent based on the woman on the right of the supplied frame: black bob with straight bangs, reddish-brown eyes, opaque black high-neck outfit, long sleeves, midnight-blue highlights and bare hands. The name is descriptive; individual identity and faction remain unconfirmed. Static catalogue artwork."
+    },
+    "proportionNotes": {
+      "fr": "La capture est en contre-plongée et ne montre pas les chevilles ni les pieds. La pose neutre, les proportions en pied, le raccord du bas des jambes et les chaussures noires simples sont transposés ou complétés. Une ouverture involontaire au flanc du premier rendu a été corrigée. La répartition des reflets et les traits restent interprétés ; aucune fidélité intégrale 1:1 n’est certifiée.",
+      "en": "The low-angle frame does not show ankles or feet. The neutral pose, full-body proportions, lower-leg transitions and plain black footwear are translated or completed. An unintended flank opening in the first render was corrected. Highlight placement and facial details remain interpreted; complete 1:1 fidelity is not certified."
+    },
+    "referenceLinks": [
+      {
+        "label": "Capture fournie — agentes en combinaison noire",
+        "url": "https://github.com/darknigthmare/multiverse-breach/blob/codex/discipline-sprites-costumes-2026-10-28/docs/discipline-sprites/enemy-v12/references/black-suit-agents-user-reference.png"
+      }
+    ]
   }
 ]);

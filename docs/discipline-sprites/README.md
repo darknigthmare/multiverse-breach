@@ -1,12 +1,20 @@
 # Sprites, tenues et machines Discipline
 
-**373 PNG individuels pour 41 identités graphiques.** L’extension v11 ajoute le **garde à cagoule rouge et harnais noir** d’après deux captures fournies. Les **372 sprites précédents**, leurs objets de catalogue et leurs entrées de manifeste sont conservés, y compris les trois machines v10. La reprise v6 avait ajouté **170 PNG** aux **197 images** publiées à `f9a9c1d`.
+**374 PNG individuels pour 42 identités graphiques.** L’extension v12 ajoute une **agente en combinaison noire** d’après la capture fournie. Les **373 sprites précédents**, leurs objets de catalogue et leurs entrées de manifeste sont conservés, y compris le garde rouge v11 dont la publication interrompue a été terminée au commit `02d726f`. La reprise v6 avait ajouté **170 PNG** aux **197 images** publiées à `f9a9c1d`.
+
+## Agente en combinaison noire — ajout v12
+
+L’[agente aux cheveux noirs](enemy-v12/README.md) est livrée en PNG natif **1254 × 1254**, transparent, en pied et légèrement tournée vers la droite. La femme de droite dans la capture guide le visage, la coiffure, le col montant, la combinaison noire à reflets bleu nuit et les mains nues. Les chevilles et chaussures, hors cadre, sont complétées. Une seconde passe a corrigé une ouverture involontaire au flanc du premier rendu.
+
+Le catalogue compte désormais **82 rendus fondés sur références et 292 adaptations**. La couverture des costumes concerne **40 identités et 214 / 240 combinaisons personnage / famille** : bataille **40/40**, maid **36/40**, scolaire **31/40**, maillot **35/40**, soins **36/40**, latex **36/40**. Les deux identités mécaniques v10 restent exclues.
+
+La galerie propose **Agente en combinaison · v12** et la capture est consultable depuis sa carte. Le nom est descriptif ; la pose, les proportions et les reflets sont interprétés. Aucune fidélité intégrale 1:1 n’est certifiée. Cette entrée enrichit le catalogue graphique statique ; les autres familles de costumes ne font pas partie de la demande.
 
 ## Garde au masque rouge — ajout v11
 
 Le [garde à cagoule rouge](enemy-v11/README.md) est livré en PNG natif **1254 × 1254**, transparent, en pied, légèrement tourné vers la droite. Le gros plan guide la cagoule couvrant le nez, les rivets et l’anneau du harnais ; la vue du groupe guide la silhouette, les gants, la ceinture et les bottes à revers rouges. La galerie propose **Ennemi au masque rouge · v11**, avec les deux références consultables depuis sa carte.
 
-Le catalogue compte désormais **81 rendus fondés sur références et 292 adaptations**. La couverture des costumes concerne **39 identités et 213 / 234 combinaisons personnage / famille** : bataille **39/39**, maid **36/39**, scolaire **31/39**, maillot **35/39**, soins **36/39**, latex **36/39**. Les deux identités mécaniques v10 restent exclues de cette couverture.
+À l’issue de la v11, le catalogue comptait **373 sprites / 41 identités**, dont **81 rendus fondés sur références et 292 adaptations**. À cette étape, la couverture des costumes concernait **39 identités et 213 / 234 combinaisons personnage / famille** : bataille **39/39**, maid **36/39**, scolaire **31/39**, maillot **35/39**, soins **36/39**, latex **36/39**. Les deux identités mécaniques v10 restent exclues de cette couverture.
 
 Le garde est une entrée graphique statique. Son nom est descriptif ; sa musculature, ses rivets, son expression et certains détails des gants et des bottes sont interprétés. Aucune fidélité intégrale 1:1 n’est certifiée. Les autres familles de costumes ne font pas partie de cette demande.
 
@@ -38,7 +46,7 @@ La [soldate masquée](enemy-v8/README.md) est livrée en PNG natif **1254 × 125
 
 La visière rouge, le masque blanc, les cheveux noirs, le haut argenté, les gants sombres, la ceinture, le pantalon camouflage et les bottes reprennent la référence. Le nom est descriptif ; l’identité et l’œuvre précise restent à confirmer. Les pieds, plis et certaines proportions sont interprétés. C’est un sprite statique du catalogue graphique, sans animation ni apparition en combat ajoutée.
 
-Les tableaux et rapports **v6/v7 ci-dessous restent les états historiques de 36 identités / 367 images** ; les rapports v8 décrivent l’étape de **37 identités / 368 images** et ceux de v9 l’étape de **38 identités / 369 images**. Les rapports v10 décrivent l’étape de **40 identités / 372 images**. Les totaux actuels et la couverture sont indiqués dans l’ajout v11 ci-dessus. Les autres familles de costumes n’ont pas été demandées pour les trois ennemis humains v8, v9 et v11.
+Les tableaux et rapports **v6/v7 ci-dessous restent les états historiques de 36 identités / 367 images** ; les rapports v8 décrivent l’étape de **37 identités / 368 images** et ceux de v9 l’étape de **38 identités / 369 images**. Les rapports v10 décrivent l’étape de **40 identités / 372 images**. Les rapports v11 décrivent l’étape de **41 identités / 373 images**. Les totaux actuels et la couverture sont indiqués dans l’ajout v12 ci-dessus. Les autres familles de costumes n’ont pas été demandées pour les quatre ennemis humains v8, v9, v11 et v12.
 
 ## Audit des costumes originaux et de la fidélité
 
@@ -50,7 +58,7 @@ Consulter les [manques et pistes](canonical-audit-v7/gaps.json), les [comparaiso
 
 ## Galerie et vestiaire
 
-Ouvrir `/reviews/discipline/index.html` depuis le serveur du jeu. Le filtre **Ennemi au masque rouge · v11** isole le nouveau garde et **Machines · v10** regroupe les trois machines. Les filtres des ennemis v8/v9, **Nouvelles tenues · v6** et les vues antérieures v4/v5 restent disponibles. Le tableau de couverture indique séparément les six familles demandées pour les personnages concernés par les costumes.
+Ouvrir `/reviews/discipline/index.html` depuis le serveur du jeu. Le filtre **Agente en combinaison · v12** isole la nouvelle agente ; **Ennemi au masque rouge · v11** retrouve le garde rouge et **Machines · v10** regroupe les trois machines. Les filtres des ennemis v8/v9, **Nouvelles tenues · v6** et les vues antérieures v4/v5 restent disponibles. Le tableau de couverture indique séparément les six familles demandées pour les personnages concernés par les costumes.
 
 Les maillots une pièce, shorts de bain et combinaisons courtes de natation ont leur propre filtre. Les 35 anciennes tenues aquatiques sont conservées séparément et ne comptent pas comme nouveaux maillots. Les PNG sont des images statiques **1 colonne × 1 ligne**, affichées en entier. Les versions transparentes v10 et leurs images sources sont distinguées dans leur dossier de provenance.
 
@@ -146,6 +154,8 @@ Le journal contient 74 demandes précises sans sortie acceptée. Lorsqu’une au
 
 ## Contrôles et documents
 
+- [Ajout v12 : agente en combinaison noire, correction et limites](enemy-v12/README.md)
+- [Validation de l’ajout v12](enemy-v12/validation.json)
 - [Ajout v11 : garde au masque rouge, deux références et limites](enemy-v11/README.md)
 - [Validation de l’ajout v11](enemy-v11/validation.json)
 - [Ajout v10 : machines jaunes, références et reconstitutions](enemy-v10/README.md)

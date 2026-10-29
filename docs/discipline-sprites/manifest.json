@@ -2,14 +2,14 @@
   "version": 1,
   "date": "2026-10-28",
   "counts": {
-    "sprites": 373,
-    "characters": 41,
-    "referenceBased": 81,
+    "sprites": 374,
+    "characters": 42,
+    "referenceBased": 82,
     "adapted": 292,
     "byCategory": {
       "sport": 13,
       "civilian": 44,
-      "military": 64,
+      "military": 65,
       "swimwear": 90,
       "uniform": 58,
       "other": 8,
@@ -55,10 +55,13 @@
     "v10Additions": 3,
     "v10NewCharacters": 2,
     "v10MechanicalAssets": 3,
-    "costumeCoverageCharacters": 39,
+    "costumeCoverageCharacters": 40,
     "preservedBeforeV11": 372,
     "v11Additions": 1,
-    "v11NewCharacters": 1
+    "v11NewCharacters": 1,
+    "preservedBeforeV12": 373,
+    "v12Additions": 1,
+    "v12NewCharacters": 1
   },
   "pendingCharacters": [
     {
@@ -76,28 +79,33 @@
       "ova-officer-swept-hair",
       "masked-soldier-red-visor",
       "hooded-guard-red-trim",
-      "red-hood-harness-guard"
+      "red-hood-harness-guard",
+      "black-suit-agent-bob"
     ],
     "swimwear": [
       "maiko",
       "masked-soldier-red-visor",
       "hooded-guard-red-trim",
-      "red-hood-harness-guard"
+      "red-hood-harness-guard",
+      "black-suit-agent-bob"
     ],
     "maid": [
       "masked-soldier-red-visor",
       "hooded-guard-red-trim",
-      "red-hood-harness-guard"
+      "red-hood-harness-guard",
+      "black-suit-agent-bob"
     ],
     "nurse": [
       "masked-soldier-red-visor",
       "hooded-guard-red-trim",
-      "red-hood-harness-guard"
+      "red-hood-harness-guard",
+      "black-suit-agent-bob"
     ],
     "latex": [
       "masked-soldier-red-visor",
       "hooded-guard-red-trim",
-      "red-hood-harness-guard"
+      "red-hood-harness-guard",
+      "black-suit-agent-bob"
     ]
   },
   "assets": [
@@ -34177,9 +34185,168 @@
         "facing": "right",
         "animated": false
       }
+    },
+    {
+      "id": "black-suit-agent-bob:black-catsuit-reference-v12",
+      "characterId": "black-suit-agent-bob",
+      "costumeId": "black-catsuit-reference-v12",
+      "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/black-suit-agent-bob--black-catsuit-reference-v12.png",
+      "category": "military",
+      "provenance": "reference",
+      "revision": 12,
+      "sourceMedium": "user_reference",
+      "assetRole": "enemy",
+      "roleLabel": {
+        "fr": "Ennemie",
+        "en": "Enemy"
+      },
+      "newCharacter": true,
+      "newOutfit": true,
+      "identitySourceId": "v12-black-suit-agents-user-reference",
+      "styleSourceId": "ova-officer-bob:ova-plum-uniform-reference-v4",
+      "canonicalCostumeCertified": false,
+      "canonicalIdentityCertified": false,
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-7aa73e8a-5095-432a-8b82-d9053457bd45",
+        "generationIdSource": "Exact final generated output filename returned by the tool; no separate server generation ID was returned.",
+        "prompt": "Make one very small, targeted costume correction to the attached generated pixel-art sprite. The first image, exec-912806f3-1f66-4b60-a555-b42224e7be8a.png, is the exact image to edit. The second image is the original costume reference; the WOMAN ON THE RIGHT is the chosen model.\n\nCORRECT ONLY THIS DEFECT:\nOn the viewer's LEFT side of the torso, just below the upper arm beside the waist, there is a tiny peach skin-colored triangle. In the 1254 x 1254 target canvas this is approximately x572–595, y414–448. This is an unintended opening. Replace that entire small peach triangle with opaque near-black/dark-navy outfit material, smoothly continuing the adjacent black bodysuit and its restrained blue shading. The outfit must be fully closed at the flank, as on the right-hand woman in the reference. Do not add a patch seam, a buckle, or any new decorative element.\n\nPRESERVE EVERYTHING ELSE:\nPreserve the same single adult woman's face, dark red-brown eyes, shoulder-length black bob and blunt fringe, pose, silhouette, body proportions, high collar, long sleeves, bare hands, outfit highlights, legs, and plain low black footwear. Preserve the crisp pixel-art technique, full-body framing, scale, and existing transparent background. Do not change the face or expression. Do not add accessories, weapons, gloves, exposed skin, extra details, text or a ground shadow.\nThe fully opaque black garment should cover the torso, arms and legs continuously. Only the face and bare hands are exposed.\nReturn one corrected native 1254 x 1254 PNG with true alpha transparency, keeping every body part within the original canvas. No collage, before/after layout, background, captions or labels.",
+        "promptStatus": "recorded-verbatim",
+        "transparentBackgroundRequested": true,
+        "pixelEditsAfterGeneration": false,
+        "imageGenerationPasses": 2,
+        "correctionReason": "Close an unintended skin-colored flank opening to match the continuous outfit of the right-hand reference figure.",
+        "historyDocument": "enemy-v12/generation.json"
+      },
+      "image": {
+        "sha256": "204c827265600288e0a38784167037efe4a3a9c65389336ae1d59a5cd8963794",
+        "bytes": 484999,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          0,
+          23,
+          1230,
+          1254
+        ],
+        "visibleBoundsAlphaGt8": [
+          435,
+          26,
+          842,
+          1236
+        ],
+        "opaqueBoundsAlphaGe128": [
+          436,
+          27,
+          841,
+          1235
+        ],
+        "visibleMargins": [
+          435,
+          26,
+          412,
+          18
+        ],
+        "transparentPixelCount": 1268024
+      },
+      "qualityReview": {
+        "visualReviewCompleted": true,
+        "checks": [
+          "Single adult female agent based on the right-hand reference figure",
+          "Black bob with straight bangs, reddish-brown eyes and high collar retained",
+          "Opaque black outfit, long sleeves, blue highlights and two bare hands retained",
+          "Unintended flank opening corrected to continuous black/navy material",
+          "Full head, hands and both reconstructed footwear soles inside canvas",
+          "Native RGBA final output copied byte-for-byte without additional pixel edits"
+        ],
+        "reviewDocument": "enemy-v12/visual-review.json"
+      },
+      "proportionReview": {
+        "reviewed": true,
+        "method": "Compare final output directly with the right-hand woman in the supplied frame and inspect the corrected flank against the initial render.",
+        "observations": [
+          "Face, bob, high collar, long sleeves and bare hands are visible in the reference",
+          "Plain lower legs and footwear complete an unseen source region"
+        ],
+        "limitations": [
+          "The reference uses a low-angle camera and crops before the ankles and feet.",
+          "Full-body proportions, idle pose, highlights and footwear are interpreted.",
+          "No individual official name or faction was established."
+        ],
+        "fullBodyOneToOneCertified": false,
+        "observedDifferences": [
+          "Neutral catalogue pose replaces the low-angle pose in the reference",
+          "Full-body proportions, face details and highlight placement are interpreted in pixel art",
+          "Ankles, lower-leg transitions, black footwear and soles are reconstructed because the source crops them"
+        ]
+      },
+      "referenceEvidence": [
+        {
+          "id": "v12-black-suit-agents-user-reference",
+          "type": "user_upload",
+          "filename": "image(20261029-061645).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v12/references/black-suit-agents-user-reference.png",
+          "sourceMedium": "user_reference",
+          "role": "Identity and visible costume of the adult woman on the right; feet and ankles are not shown",
+          "sha256": "25e1b9364bddd8761198adf8eeb6c8071d3d9b3512c33885f6d767f06828f263",
+          "dimensions": [
+            1169,
+            2048
+          ],
+          "directGenerationInput": true,
+          "usedInStages": [
+            "initial",
+            "close-flank"
+          ]
+        },
+        {
+          "id": "v12-officer-style",
+          "type": "existing_sprite",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png",
+          "role": "Initial generation pixel-art technique and framing only; not identity or costume authority",
+          "sha256": "6cb0369a798712e01419e387f5a56d53163015cbb669fd9f347d5d9776686902",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "directGenerationInput": false,
+          "usedInStages": [
+            "initial"
+          ],
+          "finalGenerationRelation": "Ancestor through the first generated render; not passed directly to the correction"
+        },
+        {
+          "id": "v12-first-render",
+          "type": "generated_intermediate",
+          "repositoryPath": "docs/discipline-sprites/enemy-v12/previous-renders/black-suit-agent-open-flank.png",
+          "role": "Direct correction target with an unintended skin-colored flank triangle; superseded and excluded from catalogue",
+          "sha256": "c36d53fb031b927ecdfdab0a34df9d6e84daf80fa477993745b1afe2e0070b2e",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "directGenerationInput": true,
+          "usedInStages": [
+            "close-flank"
+          ]
+        }
+      ],
+      "fidelityNote": "Agente adulte fondée sur la femme à droite de la capture fournie : carré noir à frange droite, yeux brun-rouge, combinaison noire opaque à col montant, manches longues, reflets bleu nuit et mains nues. Le nom est descriptif ; l’identité individuelle et la faction ne sont pas confirmées. Image statique du catalogue. La capture est en contre-plongée et ne montre pas les chevilles ni les pieds. La pose neutre, les proportions en pied, le raccord du bas des jambes et les chaussures noires simples sont transposés ou complétés. Une ouverture involontaire au flanc du premier rendu a été corrigée. La répartition des reflets et les traits restent interprétés ; aucune fidélité intégrale 1:1 n’est certifiée.",
+      "staticFrame": {
+        "columns": 1,
+        "rows": 1,
+        "facing": "right",
+        "animated": false
+      }
     }
   ],
-  "revision": 11,
+  "revision": 12,
   "preservedBaselineCommit": "f10098f69523e0c35e6f81788dfdfc1a8b897cd8",
   "preservedV3BaselineCommit": "58ca23d7bc226330bb5082cc1ba49aeadafc5de6",
   "pendingOutfitReferences": [
@@ -34328,6 +34495,12 @@
       "label": "Garde masqué — cagoule rouge",
       "status": "descriptive-identity-only",
       "reason": "Silhouette et costume documentés par deux captures utilisateur ; aucun nom individuel ni faction confirmé."
+    },
+    {
+      "characterId": "black-suit-agent-bob",
+      "label": "Agente ennemie — combinaison noire",
+      "status": "descriptive-identity-only",
+      "reason": "Apparence fondée sur la femme à droite de la capture ; aucun nom individuel ni faction confirmé."
     }
   ],
   "researchV4": {
@@ -38145,6 +38318,20 @@
     "validation": "enemy-v11/validation.json",
     "addedAssetIds": [
       "red-hood-harness-guard:black-harness-reference-v11"
+    ],
+    "historicalAudit": "canonical-audit-v7/README.md",
+    "historicalAuditAssetCount": 367,
+    "existingAssetsPreserved": true,
+    "runtimeEnemyRegistered": false,
+    "animated": false
+  },
+  "preservedV12BaselineCommit": "02d726f87e41e3cd9d41b85c961eee0a4b8ac13f",
+  "extensionV12": {
+    "scope": "One adult female enemy based on the right-hand woman in the supplied image; static catalogue asset only",
+    "report": "enemy-v12/README.md",
+    "validation": "enemy-v12/validation.json",
+    "addedAssetIds": [
+      "black-suit-agent-bob:black-catsuit-reference-v12"
     ],
     "historicalAudit": "canonical-audit-v7/README.md",
     "historicalAuditAssetCount": 367,
