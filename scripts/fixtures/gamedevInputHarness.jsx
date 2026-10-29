@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import HeldControlButton from '../../src/components/HeldControlButton.jsx';
+import SceneHoldButton from '../../src/components/SceneHoldButton.jsx';
 import MeleeControlsPanel from '../../src/components/MeleeControlsPanel.jsx';
 import CombatDrawer from '../../src/components/CombatDrawer.jsx';
 import { createFighterHeldInputs } from '../../src/game/fighterControlOwnership.js';
+import { createSceneInputs } from '../../src/game/sceneInputs.js';
 import { createDefaultMeleeInputMaps, replaceMeleeBinding, toEngineHeldInput } from '../../src/game/melee/meleeInputMap.js';
 import { useMeleeTouchFixture } from 'virtual:gamedev-melee-touch';
 
@@ -15,6 +17,8 @@ export default function InputHarness() {
   const [maps, setMaps] = useState(createDefaultMeleeInputMaps);
   const fighter = useRef(null);
   if (!fighter.current) fighter.current = createFighterHeldInputs();
+  const scene = useRef(null);
+  if (!scene.current) scene.current = createSceneInputs(['forward']);
   const melee = useMeleeTouchFixture();
   const update = () => refresh(value => value + 1);
   const snapshot = melee.snapshot();
@@ -26,12 +30,13 @@ export default function InputHarness() {
     <div className="fixture-controls">
       <label><input data-testid="disable-controls" type="checkbox" checked={disabled} onChange={event => setDisabled(event.target.checked)} /> Disable controls</label>
       <label><input data-testid="mount-controls" type="checkbox" checked={mounted} onChange={event => setMounted(event.target.checked)} /> Mount controls</label>
-      <button type="button" data-testid="reset-scene" onClick={() => { melee.clear(); fighter.current.clear(); update(); }}>Reset scene registry</button>
+      <button type="button" data-testid="reset-scene" onClick={() => { melee.clear(); fighter.current.clear(); scene.current.clear(); update(); }}>Reset scene registry</button>
       <button type="button" data-testid="focus-target">Focus target</button>
       <button type="button" data-testid="open-settings" onClick={() => setSettingsOpen(true)}>Open settings</button>
     </div>
     <output data-testid="input-state" data-guard={String(held.guard)} data-charge={String(snapshot.actions.ChargedAttack)}
       data-horizontal={snapshot.horizontal} data-fighter-left={String(Boolean(fighter.current.snapshot().player.left))}
+      data-scene-forward={String(Boolean(scene.current.snapshot().forward))}
       data-disabled={String(disabled)} data-mounted={String(mounted)} data-settings-open={String(settingsOpen)}
       style={{ display: 'block', padding: 8, minHeight: 20 }}>{JSON.stringify({ ...held, charge: snapshot.actions.ChargedAttack })}</output>
     {mounted && <>
@@ -40,6 +45,15 @@ export default function InputHarness() {
         onInput={(source, phase) => { fighter.current.setTouch('player', 'left', phase === 'down', source); update(); }}>
         Fighter left
       </HeldControlButton>
+      <SceneHoldButton data-testid="scene-forward" action="forward" disabled={disabled}
+        style={{ minHeight: 46, minWidth: 180, marginBlock: 10 }}
+        onInput={(source, action, active) => {
+          if (active) scene.current.hold(source, action);
+          else scene.current.release(source);
+          update();
+        }}>
+        Scene forward
+      </SceneHoldButton>
       <MeleeControlsPanel presentation="touch" maps={maps} disabled={disabled}
         onTouchAction={(...args) => { melee.onInput(...args); update(); }} />
     </>}

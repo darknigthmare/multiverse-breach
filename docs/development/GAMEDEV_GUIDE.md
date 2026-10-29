@@ -31,6 +31,8 @@ Relire ces points d'entrée dans la branche courante avant toute modification.
 | Présentation et contrôle | `src/components/GameCanvas.jsx`, `src/game/combatViewport.js`, `combatDialogLifecycle.js`, `dialogFocus.js` | Garder les coordonnées écran/monde cohérentes ; un menu doit avoir un propriétaire d'entrée explicite. |
 | Commandes de course | `src/components/RaceMode.jsx`, `src/game/raceSessionControls.js`, `sceneInputs.js` | Conserver la source de chaque touche/pointeur ; relâcher un alias ne doit pas neutraliser un autre appui. Effacer les commandes manuelles à la pause et à la perte de focus. |
 | Commandes de duel | `src/components/FighterMode.jsx`, `src/game/fighterControlOwnership.js` | Conserver les sources par camp et par combattant actif ; un tag ou K.O. efface les commandes du combattant remplacé. |
+| Déplacement en Ville et Extinction | `src/components/HubScreen.jsx`, `src/components/SceneHoldButton.jsx`, `src/game/sceneInputs.js` | Relâcher par source physique, même si le caractère ou le focus change. Après une pause, un menu ou une perte de focus, un déplacement exige un nouvel appui ; la répétition clavier ne recrée pas la commande effacée. |
+| Pause de la simulation Extinction | `src/components/HubScreen.jsx`, `src/game/fixedStepClock.js` | Réinitialiser l'horloge à l'ouverture et à la fermeture de chaque pause, même sans image affichée pendant celle-ci. La première image de reprise ne rattrape aucun temps passé en pause. |
 | Boutons tactiles et activation clavier | `src/components/HeldControlButton.jsx`, `src/game/heldControlInput.js`, `src/components/MeleeControlsPanel.jsx` | Chaque doigt et touche d'activation possède sa source ; seul le dernier relâchement termine l'action. Le registre de la scène reste la référence après un tag, une pause ou un remplacement de combat. |
 | Assets | `src/game/renderer.js`, `spriteAssets.js`, `cosmeticVisualAssets.js` | Réutiliser les registres, règles d'atlas, variantes et chargements ; examiner le rendu au format réel. |
 | Sauvegarde | `src/game/saveValidation.js`, `saveRecovery.js`, `safeStorage.js`, `cloudSaveConflictPolicy.js` | Préserver les schémas, migrations et stratégies de conflit existants. |
@@ -83,6 +85,10 @@ documente le stockage indisponible et les alias de déplacement/garde.
 La [continuation sur les appuis simultanés](GAMEDEV_HELD_CONTROLS_2026-10-29.md)
 documente les sources tactiles/clavier, les charges et le nettoyage entre combats.
 
+La [continuation sur la reprise en Ville et Extinction](GAMEDEV_SCENE_RESUME_2026-10-29.md)
+documente le relâchement physique, les répétitions clavier après nettoyage,
+les deux touches Entrée et les transitions de pause sans image intermédiaire.
+
 Choisir les suites liées au comportement modifié. Les commandes ci-dessous sont
 des points d'entrée existants, pas un compte rendu de tests déjà exécutés.
 
@@ -115,7 +121,10 @@ second scénario avec `PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:
 La troisième fixture monte les vrais boutons de commande et le panneau de mêlée,
 avec les fonctions d'entrée de `GameCanvas` extraites lors de la compilation.
 Elle vérifie notamment deux contacts tactiles natifs, les touches Espace/Entrée,
-la capture du pointeur et la reprise après nettoyage. La rejouer avec
+la capture du pointeur et la reprise après nettoyage. Elle monte aussi le vrai
+bouton de déplacement Ville/Extinction pour distinguer Entrée du pavé numérique,
+rejeter une répétition clavier après nettoyage et conserver le focus au pointeur.
+La rejouer avec
 `PLAYWRIGHT_FIXTURE_DIR=.tmp/gamedev-display npm run test:gamedev:input-browser`.
 
 ## Utiliser les outils d'assets fournis

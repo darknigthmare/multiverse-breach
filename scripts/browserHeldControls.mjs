@@ -33,10 +33,11 @@ try {
     page.on('pageerror', error => errors.push(error.message));
     await page.addInitScript(() => {
       window.__heldInputEvents = [];
-      for (const type of ['pointerdown', 'pointerup', 'pointercancel', 'gotpointercapture', 'lostpointercapture']) {
+      for (const type of ['pointerdown', 'pointerup', 'pointercancel', 'gotpointercapture', 'lostpointercapture', 'keydown', 'keyup']) {
         window.addEventListener(type, event => {
-          const button = event.target?.closest?.('[data-touch-slot], [data-testid="fighter-left"]');
+          const button = event.target?.closest?.('[data-touch-slot], [data-testid="fighter-left"], [data-testid="scene-forward"]');
           window.__heldInputEvents.push({ type, pointerId: event.pointerId, trusted: event.isTrusted,
+            code: event.code, repeat: event.repeat,
             slot: button?.dataset.touchSlot || button?.dataset.testid || null });
         }, true);
       }
@@ -78,6 +79,44 @@ try {
     await check('native Space + Enter preserve guard until the last release', () => heldKeys(guard, 'guard'));
     await check('native Space + Enter preserve charge until the last release', () => heldKeys(charge, 'charge'));
     await check('the shared button feeds the real Fighter ownership registry', () => heldKeys(page.getByTestId('fighter-left'), 'fighter-left'));
+
+    await check('scene movement keeps main Enter and NumpadEnter independent', async () => {
+      const scene = page.getByTestId('scene-forward');
+      await scene.focus();
+      for (const [first, last] of [['Enter', 'NumpadEnter'], ['NumpadEnter', 'Enter']]) {
+        await page.keyboard.down('Enter');
+        await page.keyboard.down('NumpadEnter');
+        await state({ 'scene-forward': true });
+        await page.keyboard.up(first); await state({ 'scene-forward': true });
+        await page.keyboard.up(last); await state({ 'scene-forward': false });
+      }
+      const codes = await page.evaluate(() => window.__heldInputEvents
+        .filter(event => event.type === 'keydown' && event.trusted && event.slot === 'scene-forward')
+        .map(event => event.code));
+      assert.ok(codes.includes('Enter') && codes.includes('NumpadEnter'), 'Distinct physical key codes must come from native events');
+    });
+
+    await check('scene reset rejects native key repeat until a fresh activation', async () => {
+      await page.getByTestId('scene-forward').focus();
+      await page.keyboard.down('Space'); await state({ 'scene-forward': true });
+      await toggle('reset-scene'); await state({ 'scene-forward': false });
+      await page.keyboard.down('Space'); await state({ 'scene-forward': false });
+      assert.equal(await page.evaluate(() => window.__heldInputEvents
+        .filter(event => event.type === 'keydown' && event.slot === 'scene-forward').at(-1).repeat), true);
+      await page.keyboard.down('Enter'); await state({ 'scene-forward': true });
+      await page.keyboard.up('Space'); await state({ 'scene-forward': true });
+      await page.keyboard.up('Enter'); await state({ 'scene-forward': false });
+    });
+
+    await check('scene pointer activation still focuses the actual movement button', async () => {
+      const scene = page.getByTestId('scene-forward');
+      await page.getByTestId('focus-target').focus();
+      const box = await scene.boundingBox(); assert.ok(box);
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+      await page.mouse.down(); await state({ 'scene-forward': true });
+      assert.equal(await scene.evaluate(element => document.activeElement === element), true);
+      await page.mouse.up(); await state({ 'scene-forward': false });
+    });
 
     await check('two native touches on one guard survive either first release', async () => {
       const [a, b] = await points();
@@ -219,13 +258,13 @@ try {
       assert.equal(await page.getByTestId('open-settings').evaluate(element => element === document.activeElement), true);
     });
 
-    await state({ guard: false, charge: false, 'fighter-left': false });
+    await state({ guard: false, charge: false, 'fighter-left': false, 'scene-forward': false });
     assert.deepEqual(errors, []);
     console.log(JSON.stringify({ browser: browser.version(), viewport: { width: 900, height: 700 },
       passed: checked.length, cases: checked,
       native: ['CDP multi-touch and pointer cancellation', 'DOM pointer capture and focus', 'mouse and keyboard input', 'native combat dialog'],
       synthetic: ['window blur/focus events', 'document.hidden override and visibilitychange', 'fixture controls drive scene reset, disabled and mount state'],
-      scope: 'Real control components, Fighter registry and extracted GameCanvas touch callback/mapping; no full combat simulation.',
+      scope: 'Real control components including City/FPS SceneHoldButton, scene/Fighter registries and extracted GameCanvas touch callback/mapping; no full combat simulation.',
       pageErrors: errors }, null, 2));
   } finally { await context.close(); }
 } finally { await browser.close(); }
