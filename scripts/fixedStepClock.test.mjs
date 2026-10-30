@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createRaceTouchState } from '../src/game/raceSessionControls.js';
+import { createRaceKeyboardState, createRaceTouchState } from '../src/game/raceSessionControls.js';
+import { createFighterHeldInputs } from '../src/game/fighterControlOwnership.js';
 import { createFixedStepClock } from '../src/game/fixedStepClock.js';
 
 const simulate = (refreshRate, speed = 1) => {
@@ -49,6 +50,8 @@ const transitionEnvironment = clock => {
   simulationClockRef: { current: clock }, sessionPausedRef: { current: false }, sessionPaused: false, raceMenuOpen: false,
   document: { hidden: false }, engine, engineRef: { current: engine },
   touchStateRef: { current: createRaceTouchState() },
+  keyboardStateRef: { current: createRaceKeyboardState() },
+  heldInputsRef: { current: createFighterHeldInputs() },
   inputRef: { current: {} }, keysRef: { current: {} }, keyPulseRef: { current: {} },
   tacticsCameraPointerRef: { current: {} }, suppressTacticsClickRef: { current: false },
   clearMeleeControls() {}, clearMeleeInput() {}, clearInputs() {}
@@ -124,3 +127,4 @@ test('RPG targeting wait transitions also reset the clock independently of the s
   runComponentTransition(effect[1], transitionEnvironment(clock));
   assert.equal(clock.advance(520), 0);
 });
+

@@ -1,3 +1,5 @@
+import { DISCIPLINE_SPRITE_REGISTRY } from '../game/disciplineSprites.js';
+import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { getMosaicExhibits, getMosaicExhibitView, getMosaicExhibitZones, drawMosaicService } from '../game/mosaicExhibits.js';
 import { getExtinctionSignature, createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols } from '../game/extinctionSignatures.js';
 import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicResidents.js';
@@ -2834,11 +2836,12 @@ function MosaicCityHub({
       if (event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
       const key = event.key.toLowerCase();
       if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd', 'z', 'q'].includes(key)) {
+        event.preventDefault();
+        if (event.repeat) return;
         sceneInputsRef.current.hold(`keyboard:${event.code || key}`, key);
         stateRef.current.keys = sceneInputsRef.current.snapshot();
         stateRef.current.destination = null;
         stateRef.current.pendingInteraction = null;
-        event.preventDefault();
       }
       if (key === 'e' && !event.repeat) {
         event.preventDefault();
@@ -3542,6 +3545,7 @@ function ExtinctionRoyale({
   const fpsHandsRef = useRef(null);
   const fpsProjectileRef = useRef(null);
   const fpsBackdropRef = useRef(null);
+  const simulationClockRef = useRef(null);
   const aimPointerRef = useRef(emptySceneAim());
   const sceneInputsRef = useRef(createSceneInputs(['forward','back','strafeLeft','strafeRight','turnLeft','turnRight']));
   useEffect(() => () => { sceneInputsRef.current.clear(); }, []);
@@ -3735,6 +3739,7 @@ function ExtinctionRoyale({
   // Le menu pause du shell dedie gele la simulation et relache les mouvements.
   useEffect(() => {
     sessionPausedRef.current = sessionPaused;
+    simulationClockRef.current?.reset();
     if (sessionPaused) {
       sceneInputsRef.current.clear();
       aimPointerRef.current = emptySceneAim();
@@ -3746,6 +3751,7 @@ function ExtinctionRoyale({
   }, [sessionPaused]);
 
   useEffect(() => {
+    simulationClockRef.current?.reset();
     if (!intelOpen) return;
     sceneInputsRef.current.clear();
     stateRef.current.moveKeys = {};
@@ -3975,6 +3981,7 @@ function ExtinctionRoyale({
     const ctx = canvas.getContext('2d');
     let rafId = 0;
     const clock = createFixedStepClock();
+    simulationClockRef.current = clock;
     const renderFrame = (timestamp = performance.now()) => {
       const state = stateRef.current;
       const paused = sessionPausedRef.current || document.hidden || intelRef.current;
@@ -4399,6 +4406,7 @@ function ExtinctionRoyale({
     return () => {
       window.cancelAnimationFrame(rafId);
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
+      if (simulationClockRef.current === clock) simulationClockRef.current = null;
     };
   }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, renderAttempt, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, selectedHero, triggerEnemyDrop, universeFragments, weaponProfile.color, viewmodel]);
 
@@ -4614,6 +4622,12 @@ function ExtinctionRoyale({
       if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button, [role="button"]')) return;
       if (event.key === 'Enter' && event.target?.closest?.('a[href]')) return;
       const key = event.key.toLowerCase();
+      // Cleared movement requires a fresh press; keep the existing fire and
+      // discrete-action repeat behavior below unchanged.
+      if (event.repeat && ['w', 'z', 'arrowup', 's', 'arrowdown', 'a', 'q', 'd', 'arrowleft', 'arrowright'].includes(key)) {
+        event.preventDefault();
+        return;
+      }
       if (key === 'w' || key === 'z' || key === 'arrowup') {
         setMoveKey('forward', true, `keyboard:${event.code || key}`);
         event.preventDefault();
@@ -4650,20 +4664,10 @@ function ExtinctionRoyale({
       }
     };
     const onKeyUp = (event) => {
-      const key = event.key.toLowerCase();
-      if (key === 'w' || key === 'z' || key === 'arrowup') {
-        setMoveKey('forward', false, `keyboard:${event.code || key}`);
-      } else if (key === 's' || key === 'arrowdown') {
-        setMoveKey('back', false, `keyboard:${event.code || key}`);
-      } else if (key === 'a' || key === 'q') {
-        setMoveKey('strafeLeft', false, `keyboard:${event.code || key}`);
-      } else if (key === 'd') {
-        setMoveKey('strafeRight', false, `keyboard:${event.code || key}`);
-      } else if (key === 'arrowleft') {
-        setMoveKey('turnLeft', false, `keyboard:${event.code || key}`);
-      } else if (key === 'arrowright') {
-        setMoveKey('turnRight', false, `keyboard:${event.code || key}`);
-      }
+      // Release the recorded physical owner even if the character or focused
+      // element changed after keydown. Other keyboard/touch owners stay held.
+      sceneInputsRef.current.release(`keyboard:${event.code || event.key.toLowerCase()}`);
+      stateRef.current.moveKeys = sceneInputsRef.current.snapshot();
     };
     const clearMovement = () => {
       const state = stateRef.current;
@@ -5708,6 +5712,9 @@ export default function HubScreen({
       const map = new Map(spriteAvailability.groups.flatMap(group => group.outputs.map(output => [output, { output, available: true, source: group.source }])));
       Object.values(MIRELLE_COMPLETE_SPRITES).forEach(output => {
         map.set(output, { output, available: true, source: 'openai-complete-pack' });
+      });
+      DISCIPLINE_SPRITE_REGISTRY.entries.filter(entry => entry.available).forEach(entry => {
+        map.set(entry.src, { output: entry.src, available: true, source: 'generated-static-costume' });
       });
       return map;
     },
@@ -11881,6 +11888,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
         {activeTab === 'collection' && (
           <div className="glass-panel" style={{ padding: '20px', borderRadius: '8px' }}>
+            {isUniverseVisible('Cloud Meadow') && matchesMediaFilter('game') && <CloudMeadowGallery lang={lang} />}
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap' }}>
               <div>
                 <h3 style={{ margin: '0 0 4px 0', fontSize: '18px', color: '#ffeb3b' }}>

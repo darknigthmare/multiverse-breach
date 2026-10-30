@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-28",
+  "baselineCommit": "cbce7b78631e32084f516aa8de5421de0f597fdd",
+  "result": "passed",
+  "addedAssetId": "masked-soldier-red-visor:urban-camouflage-reference-v8",
+  "counts": {
+    "sprites": 368,
+    "characters": 37,
+    "referenceBased": 77,
+    "adapted": 291
+  },
+  "preservation": {
+    "previousCatalogueEntriesUnchanged": 367,
+    "previousManifestAssetsUnchanged": 367,
+    "previousPngSha256Verified": 367,
+    "canonicalAuditV7Unchanged": true,
+    "nativeOutputCopiedWithoutPixelEdits": true,
+    "userReferenceCopiedByteForByte": true,
+    "promptMatchesGenerationVerbatim": true
+  },
+  "png": {
+    "sha256": "d5c3a3968ea4962ffc119fa5b1fc4f0c8c844af2b28c77ac0946926410f0606b",
+    "bytes": 527258,
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "rawAlphaBounds": [
+      25,
+      29,
+      1230,
+      1254
+    ],
+    "visibleBoundsAlphaGt8": [
+      459,
+      31,
+      824,
+      1244
+    ],
+    "opaqueBoundsAlphaGe128": [
+      460,
+      32,
+      823,
+      1244
+    ],
+    "visibleMargins": [
+      459,
+      31,
+      430,
+      10
+    ],
+    "transparentPixelCount": 1285537
+  },
+  "tests": {
+    "command": "npm run test:discipline",
+    "exitCode": 0,
+    "testFilesPassed": [
+      "scripts/disciplineSprites.test.mjs",
+      "scripts/wardrobe.test.mjs"
+    ],
+    "testFilesFailed": 0
+  },
+  "build": {
+    "command": "npx --no-install vite build",
+    "exitCode": 0,
+    "modulesTransformed": 313,
+    "nodeVersion": "v24.22.1",
+    "viteVersion": "8.1.0",
+    "fullPrebuildChainRun": false,
+    "checkoutScope": "Source and relevant Discipline assets, plus the existing sprite-availability.json import; not a complete deployment-asset audit.",
+    "warnings": [
+      "Existing bundles larger than 1000 kB",
+      "npm http-proxy configuration warning",
+      "Local Node 24 differs from the repository Node 22 engine declaration"
+    ]
+  },
+  "browser": {
+    "report": "browser-qa.json",
+    "checksPassed": 14,
+    "javascriptErrors": [],
+    "httpResourceErrors": [],
+    "desktopScreenshotReviewed": true,
+    "mobile390pxScreenshotReviewed": true,
+    "horizontalOverflowAt390px": false
+  },
+  "limits": [
+    "Static artwork catalogue delivery, not an animated enemy or combat integration",
+    "Canonical identity and full-body 1:1 fidelity not certified",
+    "Local build does not replace the full prebuild chain or remote CI"
+  ]
+}

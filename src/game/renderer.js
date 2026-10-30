@@ -12,7 +12,7 @@ import {
   getEnemySpriteSheetSrc,
   getHeroMeleeAnimationFrame,
   getHeroMeleeSpriteSheetSrcs,
-  getHeroSpriteSheetSrc,
+  getHeroSpriteSheetSources,
   getItemSpriteSrc,
   getSpriteFrameForLayout,
   getSpriteSheetLayout,
@@ -55,6 +55,15 @@ const getCachedSpriteSheet = (src) => {
   }
   spriteSheetCache.set(src, entry);
   return entry;
+};
+
+const getFirstAvailableSpriteSheet = sources => {
+  const candidates = Array.isArray(sources) ? sources : [sources];
+  for (const src of candidates) {
+    const entry = getCachedSpriteSheet(src);
+    if (entry && entry.status !== 'error') return entry;
+  }
+  return null;
 };
 
 const queueSpriteSheetRedraw = (entry, ctx, draw) => {
@@ -159,11 +168,11 @@ export const drawItemIcon = (ctx, x, y, item, animTime, targetSize = 36) => {
 };
 
 export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero') => {
-  const src = kind === 'hero'
-    ? getHeroSpriteSheetSrc(entity, 'tactics')
+  const sources = kind === 'hero'
+    ? getHeroSpriteSheetSources(entity, 'tactics')
     : getEnemySpriteSheetSrc(entity);
-  const entry = getCachedSpriteSheet(src);
-  if (!entry || entry.status === 'error') return false;
+  const entry = getFirstAvailableSpriteSheet(sources);
+  if (!entry) return false;
   if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
     queueSpriteSheetRedraw(entry, ctx, () => {
       drawCombatantBust(ctx, x, y, width, height, entity, kind);
@@ -180,8 +189,10 @@ export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero
   const sourceY = frame.row * frameHeight + (trim.top || 0);
   const sourceW = Math.max(1, frameWidth - (trim.left || 0) - (trim.right || 0));
   const trimmedH = Math.max(1, frameHeight - (trim.top || 0) - (trim.bottom || 0));
-  const sourceH = Math.max(1, trimmedH * 0.68);
-  const scale = Math.max(width / sourceW, height / sourceH);
+  const sourceH = Math.max(1, layout.fullBodyPortrait ? trimmedH : trimmedH * 0.68);
+  const scale = layout.fullBodyPortrait
+    ? Math.min(width / sourceW, height / sourceH)
+    : Math.max(width / sourceW, height / sourceH);
   const drawW = sourceW * scale;
   const drawH = sourceH * scale;
 
@@ -328,8 +339,8 @@ const drawMeleeManifestSpriteSheet = (
 };
 
 const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHeight, srcGetter, redrawWhenResolved, context = 'auto') => {
-  const entry = getCachedSpriteSheet(srcGetter(entity, context));
-  if (!entry || entry.status === 'error') return 'missing';
+  const entry = getFirstAvailableSpriteSheet(srcGetter(entity, context));
+  if (!entry) return 'missing';
   if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
     queueSpriteSheetRedraw(entry, ctx, () => {
       redrawWhenResolved?.();
@@ -459,7 +470,7 @@ export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targ
     if (meleeManifestStatus !== 'missing') return;
   }
 
-  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSrc, () => {
+  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSources, () => {
     drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
   }, context);
   if (generatedStatus !== 'missing') {

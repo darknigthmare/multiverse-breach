@@ -26,6 +26,16 @@ export function normalizeDisplayPreferences(input) {
   };
 }
 
+// Canvas overlays read the same bounded values that the settings screen writes.
+// In particular, a chosen 0 px margin is a value, not a missing CSS property.
+export function readSceneHudPreferences(style) {
+  const preferences = normalizeDisplayPreferences({
+    hudScale: Number.parseFloat(style?.getPropertyValue?.('--game-hud-scale')),
+    safeArea: Number.parseFloat(style?.getPropertyValue?.('--game-safe-area'))
+  });
+  return { hudScale: preferences.hudScale, safeArea: preferences.safeArea };
+}
+
 export function readDisplayPreferences(storage) {
   const stored = readStorageValue(DISPLAY_PREFERENCES_KEY, storage);
   try { return normalizeDisplayPreferences(stored.ok ? JSON.parse(stored.value) : null); }

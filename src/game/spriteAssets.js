@@ -1,3 +1,5 @@
+import { DISCIPLINE_SPRITE_LAYOUTS, getDisciplineSpriteLayout, getDisciplineSpriteSources } from './disciplineSprites.js';
+import { getCloudMeadowSpriteLayout, getCloudMeadowSpriteSrc } from './cloudMeadowCharacters.js';
 import {
   getMeleeAnimationFrame,
   getMeleeAnimationManifest,
@@ -200,6 +202,16 @@ export const HALO_COMPLETE_SPRITE_PACKS = {
 };
 
 export const SPRITE_SHEET_LAYOUTS = {
+  ...DISCIPLINE_SPRITE_LAYOUTS,
+  '/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png': {
+    // One complete static figure. Movement/combat animation is not supplied.
+    columns: 1,
+    rows: 1,
+    // Native 1254 px image: retain the silhouette and 24 px below its feet,
+    // matching the generated-sprite renderer's source-space ground offset.
+    trim: { bottom: 69 },
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
   '/sprites/generated/bosses/the-aether-crown/lord-pneuma.png': {
     columns: 1,
     rows: 1,
@@ -575,8 +587,10 @@ export const getHeroMeleeSpriteSheetSrcs = heroOrId => (
   getMeleeAnimationSheetSources(heroOrId)
 );
 
-export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
+const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (!hero?.id) return '';
+  const cloudMeadowSprite = getCloudMeadowSpriteSrc(hero);
+  if (cloudMeadowSprite) return cloudMeadowSprite;
   if (Object.hasOwn(CORRECTED_CANON_HERO_SPRITES, hero.id)) return CORRECTED_CANON_HERO_SPRITES[hero.id];
   if (context === 'melee') {
     const meleeFrame = getHeroMeleeAnimationFrame(hero);
@@ -598,6 +612,15 @@ export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (haloSprite) return haloSprite;
   return `/sprites/generated/heroes/${slugifyAsset(hero.universe)}/${slugifyAsset(hero.id)}.png`;
 };
+
+export const getHeroSpriteSheetSources = (hero, context = 'auto') => [...new Set([
+  ...getDisciplineSpriteSources(hero),
+  getOriginalHeroSpriteSheetSrc(hero, context)
+].filter(Boolean))];
+
+export const getHeroSpriteSheetSrc = (hero, context = 'auto') => (
+  getHeroSpriteSheetSources(hero, context)[0] || ''
+);
 
 export const getEnemySpriteSheetSrc = (enemy) => {
   if (!enemy?.name) return '';
@@ -642,7 +665,9 @@ const normalizeSpriteSrc = (src) => {
 };
 
 export const getSpriteSheetLayout = (src) => (
-  getMeleeSheetLayout(src)
+  getDisciplineSpriteLayout(src)
+  || getCloudMeadowSpriteLayout(src)
+  || getMeleeSheetLayout(src)
   || SPRITE_SHEET_LAYOUTS[normalizeSpriteSrc(src)]
   || {
     columns: SPRITE_SHEET_META.columns,

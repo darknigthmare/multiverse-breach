@@ -10,6 +10,7 @@
 .character-wardrobe__cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:10px}
 .character-wardrobe__card{border:1px solid #35505b;border-radius:6px;padding:12px;min-width:0;background:#101f29}
 .character-wardrobe__card h5{font-size:15px;line-height:1.4;margin:0 0 8px}
+.character-wardrobe__sprite{display:block;width:100%;height:224px;object-fit:contain;image-rendering:pixelated;margin:8px 0 12px;background:radial-gradient(ellipse,#1d3541,#0a151d);border-radius:4px}
 .character-wardrobe__card p{margin:8px 0}
 .character-wardrobe__badge{display:inline-block;color:#ffe0a8;font-size:12px;line-height:1.5}
 .character-wardrobe__card a{display:inline-block;padding:6px 0;color:#91deff;text-decoration:underline}

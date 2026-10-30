@@ -1,3 +1,4 @@
+import { getFighterSupplementalDefinition } from './fighterSupplementalSignatures.js';
 import { getFighterRangedDefinition } from './fighterRangedSignatures.js';
 // Fighter contact scheduler: close combat plus explicitly listed direct-fire adaptations.
 // No new roster/unlock or source choreography: one confirmed active opponent,
@@ -30,7 +31,7 @@ const HIT_AT = 0.45;
 const RECOVERY = 0.47;
 
 export function getFighterContactDefinition(actor) {
-  const ranged = getFighterRangedDefinition(actor);
+  const ranged = getFighterRangedDefinition(actor) || getFighterSupplementalDefinition(actor);
   if (ranged) return ranged;
   if (actor?.fighterAttacks?.super || actor?.special?.fighterProfile) return null;
   const d = resolveSourceSignature(actor);
