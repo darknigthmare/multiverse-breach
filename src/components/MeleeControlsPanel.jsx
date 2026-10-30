@@ -1,10 +1,12 @@
 import { useId, useMemo, useState } from 'react';
 import {
   MELEE_REMAPPABLE_SLOTS,
+  findMeleeAxisConflict,
   formatMeleeInputCode,
   normalizeMeleeInputMaps
 } from '../game/melee/meleeInputMap';
 import { CHARGED_ATTACK_DATA } from '../game/melee/meleeStateMachine';
+import HeldControlButton from './HeldControlButton.jsx';
 
 const SLOT_LABELS = Object.freeze({
   moveLeft: { fr: 'GAUCHE', en: 'LEFT' },
@@ -145,6 +147,8 @@ export default function MeleeControlsPanel({
         bindings: 'AFFECTATIONS',
         touch: 'COMMANDES TACTILES',
         press: 'APPUYEZ SUR UNE TOUCHE',
+        conflict: 'est déjà affectée à',
+        retry: 'Choisissez une autre touche.',
         cancelled: 'Remappage annule.',
         instructions: 'Sélectionnez une affectation pour changer sa touche.',
         resetDone: 'Réinitialisation des commandes demandée.',
@@ -160,6 +164,8 @@ export default function MeleeControlsPanel({
         bindings: 'BINDINGS',
         touch: 'TOUCH CONTROLS',
         press: 'PRESS A KEY',
+        conflict: 'is already assigned to',
+        retry: 'Choose another key.',
         cancelled: 'Remapping cancelled.',
         instructions: 'Select a binding to change its key.',
         resetDone: 'Control reset requested.',
@@ -206,6 +212,9 @@ export default function MeleeControlsPanel({
     if (!capture) return;
     event.preventDefault();
     event.stopPropagation();
+    // The activation key may still be held when capture opens. Wait for a
+    // fresh press, while consuming repeats so they cannot click or escape.
+    if (event.repeat) return;
     if (event.code === 'Escape') {
       setCapture(null);
       setAnnouncement(copy.cancelled);
@@ -214,6 +223,11 @@ export default function MeleeControlsPanel({
     if (!event.code || event.code === 'Unidentified') return;
     const targetSlot = MELEE_REMAPPABLE_SLOTS.find(slot => slot.id === capture.slot);
     const label = targetSlot ? slotLabel(targetSlot) : capture.slot;
+    const conflict = findMeleeAxisConflict(normalizedMaps, capture.side, capture.slot, event.code);
+    if (conflict) {
+      setAnnouncement(`${sideLabel(capture.side)} / ${label}: ${formatCode(event.code, isFrench)} ${copy.conflict} ${slotLabel(conflict)}. ${copy.retry}`);
+      return;
+    }
     onRemap?.(capture.side, capture.slot, event.code);
     setCapture(null);
     setAnnouncement(`${sideLabel(capture.side)} / ${label}: ${formatCode(event.code, isFrench)}.`);
@@ -223,23 +237,6 @@ export default function MeleeControlsPanel({
     setCapture(null);
     setAnnouncement(copy.resetDone);
     onReset?.();
-  };
-
-  const emitTouch = (event, action, phase) => {
-    event.preventDefault();
-    if (disabled && phase === 'down') return;
-    if (phase === 'down') event.currentTarget.setPointerCapture?.(event.pointerId);
-    if (phase === 'up' && event.currentTarget.hasPointerCapture?.(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    }
-    onTouchAction?.(action, phase);
-  };
-
-  const emitTouchFromKey = (event, action, phase) => {
-    if (event.key !== ' ' && event.key !== 'Enter') return;
-    if (phase === 'down' && event.repeat) return;
-    event.preventDefault();
-    onTouchAction?.(action, phase);
   };
 
   const renderBindings = (side, label) => (
@@ -370,21 +367,14 @@ export default function MeleeControlsPanel({
               || SLOT_LABELS[control.id]?.[isFrench ? 'fr' : 'en']
               || control.id;
             return (
-              <button
+              <HeldControlButton
                 key={control.id}
                 type="button"
                 aria-label={label}
                 data-touch-slot={control.id}
                 disabled={disabled}
                 title={label}
-                draggable={false}
-                onPointerDown={event => emitTouch(event, control.id, 'down')}
-                onPointerUp={event => emitTouch(event, control.id, 'up')}
-                onPointerCancel={event => emitTouch(event, control.id, 'cancel')}
-                onLostPointerCapture={event => emitTouch(event, control.id, 'cancel')}
-                onBlur={() => onTouchAction?.(control.id, 'cancel')}
-                onKeyDown={event => emitTouchFromKey(event, control.id, 'down')}
-                onKeyUp={event => emitTouchFromKey(event, control.id, 'up')}
+                onInput={(source, phase) => onTouchAction?.(control.id, phase, source)}
                 style={{
                   ...retroButtonStyle,
                   minHeight: 42,
@@ -398,7 +388,7 @@ export default function MeleeControlsPanel({
               >
                 <b aria-hidden="true" style={{ color: '#62f3e8', fontSize: 14 }}>{control.glyph}</b>
                 <small style={{ font: 'inherit', fontSize: 8 }}>{label}</small>
-              </button>
+              </HeldControlButton>
             );
           })}
         </div>
@@ -406,3 +396,4 @@ export default function MeleeControlsPanel({
     </section>
   );
 }
+

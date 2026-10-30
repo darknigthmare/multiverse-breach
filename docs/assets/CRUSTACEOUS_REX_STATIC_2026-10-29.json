@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-29",
+  "scope": "One generated full-body static boss image; no completed animation sheet or exact 1:1 certification.",
+  "kind": "boss",
+  "id": "godzilla-the-animated-series-crustaceous-rex",
+  "name": "Crustaceous Rex",
+  "universe": "Godzilla The Animated Series",
+  "output": "/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png",
+  "referenceUrl": "https://www.scifijapan.com/anime-animation/godzilla-the-series",
+  "visualAnchor": "Crustaceous Rex from Godzilla: The Series (1998), following the Sony Pictures/Adelaide Productions model sheet: dark olive-brown ridged carapace with small cream spikes, ochre segmented underside, extremely elongated segmented forelimbs ending in broad claw-fingered walking hands, small hind limbs, a narrow beak-shaped head opening into a red flower-like mouth, and numerous flexible head tentacles. Preserve this hunched long-armed silhouette rather than ordinary crab pincers or a lobster tail; no invented shell-breaking transformation.",
+  "references": [
+    {
+      "role": "published-production-reference",
+      "url": "https://www.scifijapan.com/anime-animation/godzilla-the-series"
+    },
+    {
+      "role": "Sony/Adelaide anatomical model sheet",
+      "url": "https://www.scifijapan.com/images/Ep/02crex1.jpg"
+    },
+    {
+      "role": "episode colors and broad tentacles",
+      "url": "https://www.scifijapan.com/images/GTSmain/zzz.jpg"
+    },
+    {
+      "role": "existing game illustration style only; not anatomy",
+      "url": "https://github.com/darknigthmare/multiverse-breach/blob/9384f99f004d95488d4393936d56f28e64340330/public/sprites/generated/bosses/godzilla-the-animated-series/cyber-godzilla.png"
+    }
+  ],
+  "referenceCredit": "Sony Pictures Family Entertainment / © 1998 Toho Co., Ltd. / Adelaide Productions, Inc., reproduced by SciFi Japan.",
+  "referenceImagesRedistributed": false,
+  "generation": {
+    "provider": "OpenAI",
+    "interface": "built-in image_gen",
+    "model": "not reported by tool",
+    "generationId": "exec-99fca49e-a48e-4455-84e6-fd32cc47e289",
+    "transparentBackground": true,
+    "initial": {
+      "generationId": "exec-e50fc536-595c-4c1d-9dee-876a955ca2d5",
+      "prompt": "Use case: stylized-concept. Asset type: one full-body transparent 2D boss sprite for the existing Multiverse Breach game. Create Crustaceous Rex from Godzilla: The Series (1998), following reference image1 (the official front/side production model sheet) with maximum anatomical fidelity. Image2 is an episode color/reference image; only the ochre creature on the left is C-Rex. Image3 is the EXISTING GAME ART, only a reference for sprite rendering style and outline/detail density; do not depict Cyber-Godzilla or copy any of its reptilian/robot anatomy.\nProduce exactly ONE single full-body pose on a square1024x1024 transparent canvas, not a sheet, no grid, no labels. Three-quarter side battle view facing RIGHT, entire silhouette inside canvas with clear padding, broad front walking hands on the same ground baseline at approximately90%canvasheight. Keep every tentacle/claw/spine uncropped. Long hunched body with ridged dark olive-brown carapace, cream tapered dorsal and elbow spikes, ochre-gold segmented underside and limbs. Its distinctive silhouette is carried on TWO EXTREMELY LONG segmented forelimbs: narrow upper arms, massive elongated bowed forearms and wide claw-fingered walking HANDS with separate ivory claws resting on the ground. The arm reach and lean high hunched shell must match the original model; preserve TWO small folded/spindly rear legs under the rear body. Preserve the original tapered narrow pointed beak-like head and red eye, with its mouth slightly open showing the red flower-like inner flaps from image1, not a generic toothed dinosaur jaw. Many long thin flexible orange/ochre tentacles originate near the head and stream/drape naturally as in the model. Preserve the exact shell proportions, rear appendages, hand shape and elongated segmented anatomy from the reference. No oversized crab pincers, no lobster body or lobster tail, no extra arms, no generic Godzilla/spider/biped redesign, no invented armor or broken-shell transformation.\nUse crisp detailed hand-painted 2D battle-sprite/cel shading, clean dark contour, limited controlled highlights, readable at128-256px gameplay size, matching the game's thirdreference in illustration finish while prioritizing the firstreference's anatomy. Neutral combat-ready grounded pose, clearly separated limbs and tentacles. True alpha transparency; no scenery, floor, oval shadow, effects, other creature, text, border or watermark.",
+      "promptSha256": "4918d5bb73a8a354d661da369c9c679bbb1467c0ccea5f5cb7d38f53a07b7428",
+      "imageSha256": "ac6c691400059c642f6e570a457d7a89a18fbaaaebd0daa592070f9e3b451d97",
+      "disposition": "rejected; not distributed",
+      "review": "Head tentacles too thin; invented articulated hind legs; walking hands too bulky."
+    },
+    "prompt": "Use case: precise-object-edit. Image1 is the EDIT TARGET, a generated transparent game sprite of Crustaceous Rex. Image2 is the OFFICIAL production model sheet and must govern exact anatomy/proportions. Image3 is the episode reference for the broad tentacles. Correct ONLY the three anatomical mismatches in image1 while retaining its full-body single pose, facing RIGHT, olive/ochre/red palette, intact ridged shell, cream spines, floral mouth, clean dark outline and transparent background.\n1) Replace the dense beard of many hair-thin dangling tendrils with the FEW visible broad smooth flat tapered tentacles matching image2 and image3. Match the visible count, substantial width, attachments and flowing shapes in the official model; do not add decorative strands. They must be clear ribbon-like appendages at small sprite scale, not hair or a squid beard.\n2) The small paired rear appendages under the abdomen must follow the frontal official model exactly: simple slender curved/tapered green-ochre hook/fork-like rear limbs. Remove the invented bird-like articulated shins, ankle joints and toe claws in image1. Do not invent knees, extra joints or dinosaur feet.\n3) Make the very long walking forearms and especially the near palm/fingers more slender and proportionately smaller, matching image2's original elongated lanky silhouette. Keep the immense ARM LENGTH, bowed segments, walking hands and individual cream claws. Reduce excessive bulk of the near hand by about20% relative to the body; no crab pincers, lobster claws or muscular human fists. Preserve stable grounded hand placement.\nThe desired result is a much more literal rendition of the Sony/Adelaide model, not a redesigned monster. Keep the entire subject visible with padding on all sides, grounded tips near92%height, no clipped tentacles. One square single-frame sprite, full transparent alpha, no additional object, no scenery, no ground/shadow, no text or watermark. Do not make a sprite sheet and do not change the camera or colors.",
+    "promptSha256": "50abf2fdac32642e8299931a136dd1efd6c9b84ed89dfad2d233f507af7fab0e",
+    "editTargetSha256": "ac6c691400059c642f6e570a457d7a89a18fbaaaebd0daa592070f9e3b451d97"
+  },
+  "image": {
+    "format": "png",
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "bytes": 1084360,
+    "sha256": "5d758f8884a14065eb835e300dda13085baf68a296458d4326d0486917a9d2bc"
+  },
+  "processing": {
+    "operation": "Original generated PNG copied byte-for-byte; no pixel edits, resizing, frame duplication or recoloring.",
+    "bytesUnchangedFromGeneration": true,
+    "alphaBoundsThreshold": 1,
+    "visibleAlphaBounds": {
+      "left": 46,
+      "top": 107,
+      "right": 1236,
+      "bottom": 1161
+    },
+    "boundsConvention": "right and bottom are exclusive; visible means alpha > 1",
+    "visiblePixels": 435245,
+    "fullyTransparentPixels": 1110167,
+    "maximumAlphaOutsideRenderRectangle": 1
+  },
+  "layout": {
+    "columns": 1,
+    "rows": 1,
+    "frameCount": 1,
+    "animated": false,
+    "trim": {
+      "bottom": 69
+    },
+    "sourceRectangle": {
+      "x": 0,
+      "y": 0,
+      "width": 1254,
+      "height": 1185
+    },
+    "groundOffsetSourcePixels": 24,
+    "statesSharingStaticFrame": [
+      "idle",
+      "run",
+      "attack",
+      "defense",
+      "support",
+      "special",
+      "hit",
+      "dead"
+    ]
+  },
+  "animationStatus": "pending",
+  "fileAvailable": true,
+  "provenanceStatus": "recorded-static-imagegen",
+  "historicalAnimationLedgerModified": false,
+  "visualReview": {
+    "status": "close-to-reference",
+    "reviewedAt": "2026-10-29",
+    "method": "Independent comparison of V2 with the published model sheet, episode still and existing game style reference.",
+    "observations": [
+      "Broad tapered head tentacles replace the rejected thin tendrils.",
+      "Small simple hooked hind appendages replace invented articulated feet.",
+      "Long slender walking forearms and smaller clawed hands restore the model silhouette."
+    ],
+    "canonicalFidelityApproved": false,
+    "exactOneToOneStatus": "unverified",
+    "limitations": [
+      "Single static pose only; every combat state uses the same image.",
+      "No animation, moveset or whole-game fidelity certification."
+    ]
+  },
+  "canonicalFidelityApproved": false
+}

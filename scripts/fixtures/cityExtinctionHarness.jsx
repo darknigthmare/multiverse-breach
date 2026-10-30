@@ -12,6 +12,23 @@ const mode = params.get('mode') === 'fps' ? 'fps' : 'city';
 const catalog = [createPlayerHero({name:'QA'}), ...(params.get('catalog') === 'full' ? HEROES_DB : HEROES_DB.filter(h => ['arca_mirelle','arca_bastion','arca_nova'].includes(h.id)))];
 const audit = { reports: [], services: [], saves: [], mounted: true, mode };
 window.__sceneQA = audit;
+// Test environment only: the bot fixes randomness before START, while gameplay
+// remains driven by the real scene and input events. Each replay gets a fresh
+// browser context. The production scene never imports this fixture.
+audit.prepareReplay = seed => {
+  if (!Number.isInteger(seed) || seed < 0 || seed > 0xffffffff) throw new Error('Expected a uint32 scenario seed');
+  if (mode !== 'fps' || audit.state()?.phase !== 'ready') throw new Error('Seed the FPS fixture before starting the run');
+  let value = seed, calls = 0;
+  Math.random = () => {
+    value = (value + 0x6d2b79f5) >>> 0;
+    let mixed = Math.imul(value ^ (value >>> 15), value | 1);
+    mixed ^= mixed + Math.imul(mixed ^ (mixed >>> 7), mixed | 61);
+    calls++;
+    return ((mixed ^ (mixed >>> 14)) >>> 0) / 4294967296;
+  };
+  audit.replayRandom = () => ({ algorithm: 'mulberry32-v1', seed, calls, state: value });
+  return audit.replayRandom();
+};
 // Observe actual decoding, rather than counting requests as loaded artwork.
 audit.media = [];
 const NativeImage = window.Image;

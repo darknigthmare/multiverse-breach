@@ -1266,8 +1266,8 @@ function App() {
   if (!localSaveGuardRef.current && typeof window !== 'undefined') {
     let storage;
     try { storage = window.localStorage; } catch { /* The guard reports denied persistence without crashing the screen. */ }
-    localSaveGuardRef.current = createLocalSaveGuard(storage, SAVE_KEY);
-    if (['invalid-save', 'backup-failed'].includes(initialLoad.issue)) localSaveGuardRef.current.block(initialLoad.issue);
+    localSaveGuardRef.current = createLocalSaveGuard(storage, SAVE_KEY, initialLoad.raw);
+    if (['invalid-save', 'backup-failed', 'persistence-failed'].includes(initialLoad.issue)) localSaveGuardRef.current.block(initialLoad.issue);
   }
   const [localSaveIssue, setLocalSaveIssue] = useState(initialLoad.issue);
   const rotationTransactionRef = useRef(false);

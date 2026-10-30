@@ -1,15 +1,15 @@
 {
   "schema": 1,
-  "sourceCommit": "dc95aec15309fb2f9a23e36971b30db46197f9a6",
-  "sourceRun": 40508601682,
+  "sourceCommit": "73f37cc1524ee83dad648767f1cc7acd34199b67",
+  "sourceRun": 40966543189,
   "production": {
     "sheets": 21,
     "tables": 20,
     "catalogRows": 17732,
     "qaRows": 23,
     "verifiedCells": 210518,
-    "catalogSha256": "8f81d4806e8cc3d2cbc54e8e0026c32ab28d3fad63a29ecf3dce874ec961dddb",
-    "sha256": "1623737ccc9388424bcbd866e72e98454b4b90af28064eba26f8f25c882682e6"
+    "catalogSha256": "f14131e4f8690d9a16c6e57b0c822cbc82aa292136aa287f4da0572613160b19",
+    "sha256": "e79617122cb5522ebd3f505ff1080b5b7dde011e2918314080f70a76774a8fab"
   },
   "ui": {
     "sheets": 5,
@@ -41,8 +41,35 @@
     "personalFpsBindings": 3
   },
   "limits": [
-    "No new art or personal FPS action implementation.",
+    "This workbook refresh adds no art or personal FPS action implementation; recorded asset availability does not approve its FPS adaptation.",
     "No full forty-screen, physical device or real cloud certification.",
     "Final commit CI separate from verified-source run."
-  ]
+  ],
+  "sourceRunStatus": "failed-on-stale-production-workbook; source catalog tests passed",
+  "refresh": {
+    "date": "2026-10-29",
+    "previousSourceCommit": "dc95aec15309fb2f9a23e36971b30db46197f9a6",
+    "previousSourceRun": 40508601682,
+    "sourceTree": "fc069d26c8106f7f67d315f88ec7b5bae33edd1b",
+    "trackedFiles": 16534,
+    "inventoryTruncated": false,
+    "reason": "The newly tracked C-Rex PNG made Boss_FPS!I450 stale.",
+    "catalogContentChanges": [
+      {
+        "sheet": "Boss_FPS",
+        "cell": "I450",
+        "before": "Absent de Git",
+        "after": "Présent dans Git"
+      }
+    ],
+    "sourceLinksRepinned": 17675,
+    "summaryCellsUpdated": [
+      "Synthese!A3",
+      "Synthese!A37"
+    ],
+    "nativeTablesPreserved": 20,
+    "formulasPreservedAndRecalculated": 14,
+    "unrelatedCellsAndStylesPreserved": true,
+    "verification": "Existing production and UI workbook verifiers and 6 source catalog tests pass locally. Final-commit CI is separate."
+  }
 }
