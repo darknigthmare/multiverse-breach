@@ -140,7 +140,11 @@ test('the real generated-sprite draw routine keeps the silhouette grounded at ga
   const renderer = await readFile(atRoot('src/game/renderer.js'), 'utf8');
   const start = renderer.indexOf('const drawGeneratedSpriteSheet = ');
   const end = renderer.indexOf('export class ParticleSystem', start);
+  const sourceLookupStart = renderer.indexOf('const getFirstAvailableSpriteSheet = ');
+  const sourceLookupEnd = renderer.indexOf('const queueSpriteSheetRedraw = ', sourceLookupStart);
   assert.ok(start >= 0 && end > start, 'real renderer extraction markers');
+  assert.ok(sourceLookupStart >= 0 && sourceLookupEnd > sourceLookupStart,
+    'production sprite-source fallback must remain part of the renderer test');
   const image = {
     currentSrc: `https://multiverse.test${output}`, src: output,
     complete: true, naturalWidth: info.width, naturalHeight: info.height
@@ -149,7 +153,7 @@ test('the real generated-sprite draw routine keeps the silhouette grounded at ga
   // separately verifies native image decoding and Canvas pixels via drawBoss.
   const draw = new Function('getCachedSpriteSheet', 'getSpriteSheetLayout',
     'getSpriteFrameForLayout', 'drawMirelleItemVfx',
-    `${renderer.slice(start, end)}\nreturn drawGeneratedSpriteSheet;`)(
+    `${renderer.slice(sourceLookupStart, sourceLookupEnd)}\n${renderer.slice(start, end)}\nreturn drawGeneratedSpriteSheet;`)(
     src => { assert.equal(src, output); return { status: 'ready', image }; },
     getSpriteSheetLayout, getSpriteFrameForLayout, () => {}
   );
