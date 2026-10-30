@@ -73,49 +73,11 @@ jobs:
           git ls-files > TRACKED_FILES.txt
           node --test scripts/extinctionContent.test.mjs scripts/mosaicUniversePlaces.test.mjs scripts/scenePresentation.test.mjs scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs scripts/mosaicResidentNavigation.test.mjs scripts/mosaicResidents.test.mjs scripts/extinctionViewmodelContract.test.mjs | tee /tmp/ec-evidence/unit.log
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionCityCatalog.test.mjs | tee /tmp/ec-evidence/catalog-tests.log
-          # The production XLSX is the immutable 28-Oct snapshot. C-Rex art was
-          # added on 29-Oct, after its pinned source revision. The new exact
-          # master workbook is preserved at docs/excel/archives/*CRex*.xlsx.
-          # Never silently rewrite the snapshot or claim an absent old image.
+          # Freeze asset availability to the 28-Oct workbook's source revision.
+          # The C-Rex PNG was installed after that revision. Do not rewrite
+          # either immutable workbook merely because a newer PNG exists.
           cp TRACKED_FILES.txt /tmp/ec-evidence/tracked-current.txt
-          grep -v '^public/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png
-          python3 scripts/ui-immersion/verify-workbook.py docs/excel/Multiverse_Breach_UI_Immersion.xlsx --report /tmp/ec-evidence/ui-workbook.json
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          root=Path('/tmp/ec-evidence')
-          receipt=json.loads((root/'workbook-receipt.json').read_text())
-          report=json.loads((root/'workbook.json').read_text())
-          for key in ('sheets','tables','catalogRows','verifiedCells','catalogSha256','sha256'):
-              if report[key]!=receipt['production'][key]:
-                  raise ValueError(f'Production workbook verification differs from its receipt: {key}')
-          ui=json.loads((root/'ui-workbook.json').read_text())
-          if report['cachedFormulaErrors']!=0 or ui['cachedErrors']:
-              raise ValueError('Workbook contains cached formula errors')
-          if len(ui['sheets'])!=receipt['ui']['sheets'] or len(ui['tables'])!=receipt['ui']['tables']:
-              raise ValueError('UI workbook structure differs from its receipt')
-          print(json.dumps({'production':report,'uiSheets':len(ui['sheets']),'uiTables':len(ui['tables']),'uiCachedErrors':ui['cachedErrors']}))
-          PY
-          npm run test:ui-immersion | tee /tmp/ec-evidence/ui.log
-          npx oxlint --max-warnings 0 src/components/HubScreen.jsx src/game/extinctionContent.js src/game/mosaicUniversePlaces.js scripts/extinctionContent.test.mjs scripts/mosaicUniversePlaces.test.mjs scripts/extinctionCityCatalog.test.mjs scripts/extinction-city/catalog.mjs scripts/fixtures/cityExtinctionHarness.jsx | tee /tmp/ec-evidence/lint.log
-      - name: Real selector and personal FPS images in Chromium
-        run: |
-          set -euo pipefail
-          python3 -m venv /tmp/ec-playwright
-          /tmp/ec-playwright/bin/pip install playwright==1.57.0
-          /tmp/ec-playwright/bin/python -m playwright install --with-deps chromium
-          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort >/tmp/ec-evidence/server.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
-          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
-          /tmp/ec-playwright/bin/python scripts/browserExtinctionCatalog.py --require-art --evidence /tmp/ec-evidence/browser | tee /tmp/ec-evidence/browser.log
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: extinction-content-${{ github.sha }}
-          path: /tmp/ec-evidence/
-          retention-days: 14
- /tmp/ec-evidence/tracked-current.txt > TRACKED_FILES.txt
+          grep -Fvx -- 'public/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png' /tmp/ec-evidence/tracked-current.txt > TRACKED_FILES.txt
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/catalog.mjs "$EC_WORKBOOK_SOURCE_REVISION" /tmp/ec-evidence/catalog.json | tee /tmp/ec-evidence/catalog-summary.json
           cp /tmp/ec-evidence/tracked-current.txt TRACKED_FILES.txt
           python3 scripts/extinction-city/verify_workbook.py /tmp/ec-evidence/catalog.json docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx | tee /tmp/ec-evidence/workbook.json
