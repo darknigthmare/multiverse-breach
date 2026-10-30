@@ -1,3 +1,4 @@
+import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicResidents.js';
 import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
 import { getExtinctionRoster, getExtinctionViewmodel, getExtinctionHandFrame, getExtinctionHandSourceRect, getExtinctionHandPlacement, getExtinctionProjectilePlacement, drawExtinctionSchematic } from '../game/extinctionContent.js';
@@ -11808,6 +11809,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
         {activeTab === 'collection' && (
           <div className="glass-panel" style={{ padding: '20px', borderRadius: '8px' }}>
+            {isUniverseVisible('Cloud Meadow') && matchesMediaFilter('game') && <CloudMeadowGallery lang={lang} />}
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap' }}>
               <div>
                 <h3 style={{ margin: '0 0 4px 0', fontSize: '18px', color: '#ffeb3b' }}>
