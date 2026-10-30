@@ -326,8 +326,23 @@ test('city controls retain proximity validation, focus loss cleanup and cancella
   assert.match(city, /addEventListener\('blur', clearInput\)/);
   assert.match(city, /<SceneHoldButton/);
   const holdButton = readFileSync(new URL('../src/components/SceneHoldButton.jsx', import.meta.url), 'utf8');
-  assert.match(holdButton, /onLostPointerCapture=/);
-  assert.match(holdButton, /onPointerCancel=/);
+  const sharedButton = readFileSync(new URL('../src/components/HeldControlButton.jsx', import.meta.url), 'utf8');
+  const heldInput = readFileSync(new URL('../src/game/heldControlInput.js', import.meta.url), 'utf8');
+  // The scene adapter preserves its action contract; the shared component and
+  // input helper now own cancellation and prevent activation keys from leaking.
+  assert.match(holdButton, /import HeldControlButton from '\.\/HeldControlButton\.jsx'/);
+  assert.match(holdButton, /<HeldControlButton/);
+  assert.match(holdButton, /onInput\(source, action, phase === 'down'\)/);
+  assert.match(sharedButton, /createHeldControlInput\(/);
+  assert.match(sharedButton, /onLostPointerCapture=\{input\.onLostPointerCapture\}/);
+  assert.match(sharedButton, /onPointerCancel=\{input\.onPointerCancel\}/);
+  assert.match(sharedButton, /onKeyDown=\{input\.onKeyDown\} onKeyUp=\{input\.onKeyUp\}/);
+  assert.match(heldInput, /onPointerCancel\(event\) \{ release\(pointerSource\(event\), 'cancel'\); \}/);
+  assert.match(heldInput, /onLostPointerCapture\(event\) \{ release\(pointerSource\(event\), 'cancel'\); \}/);
+  const keyDown = heldInput.slice(heldInput.indexOf('    onKeyDown(event)'), heldInput.indexOf('    onKeyUp(event)'));
+  const keyUp = heldInput.slice(heldInput.indexOf('    onKeyUp(event)'), heldInput.indexOf('    onBlur()'));
+  assert.match(keyDown, /event\.preventDefault\(\);\s*event\.stopPropagation\(\);/);
+  assert.match(keyUp, /event\.preventDefault\(\);\s*event\.stopPropagation\(\);/);
   assert.match(city, /aria-describedby="mosaic-city-controls-help"/);
   assert.match(city, /interactWithNearby\(\{ type: 'zone', id: nearZoneData\.id \}\)/);
   const pointerHandler = city.slice(city.indexOf('const moveToPointer'), city.indexOf('const setVirtualKey'));

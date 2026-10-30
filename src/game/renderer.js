@@ -189,8 +189,10 @@ export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero
   const sourceY = frame.row * frameHeight + (trim.top || 0);
   const sourceW = Math.max(1, frameWidth - (trim.left || 0) - (trim.right || 0));
   const trimmedH = Math.max(1, frameHeight - (trim.top || 0) - (trim.bottom || 0));
-  const sourceH = Math.max(1, trimmedH * 0.68);
-  const scale = Math.max(width / sourceW, height / sourceH);
+  const sourceH = Math.max(1, layout.fullBodyPortrait ? trimmedH : trimmedH * 0.68);
+  const scale = layout.fullBodyPortrait
+    ? Math.min(width / sourceW, height / sourceH)
+    : Math.max(width / sourceW, height / sourceH);
   const drawW = sourceW * scale;
   const drawH = sourceH * scale;
 

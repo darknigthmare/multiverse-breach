@@ -21,6 +21,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineSmash } from '../game/engineSmash';
 import { EngineRpg } from '../game/engineRpg';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
+import { createReducedMotionReader } from '../game/reducedMotion.js';
 import { rpgUnitId } from '../game/rpgTargeting';
 import { drawRpgTargeting, pickRpgTarget } from '../game/rpgTargetingPresentation';
 import { grantBattleItemShield } from '../game/battleItemShield';
@@ -66,19 +67,24 @@ import BlackPearlAmmoPanel from './BlackPearlAmmoPanel';
 import { getSmashAbilityProfile, getSmashAbilityTargets } from '../game/smashAbilityProfiles.js';
 import { isMeleeMovementLocked } from '../game/melee/meleeCombatRuntime';
 import { getBlackPearlSourceAmmunition } from '../game/canonBlackPearlSourceKits.js';
+import { createSceneInputs } from '../game/sceneInputs.js';
+import { readBrowserGamepads } from '../game/browserGamepads.js';
+import { createMeleeGamepadInput } from '../game/melee/meleeGamepadInput.js';
 import {
   MELEE_ACTIONS,
+  MELEE_REMAPPABLE_SLOTS,
   createDefaultMeleeInputMaps,
   diffMeleeActionEdges,
   getMeleeActionsForCode,
   loadMeleeInputMaps,
   mergeMeleeInputSnapshots,
-  readGamepadMeleeInput,
   readKeyboardMeleeInput,
   replaceMeleeBinding,
   saveMeleeInputMaps,
   toEngineHeldInput
 } from '../game/melee/meleeInputMap';
+
+const MELEE_TOUCH_SLOTS = MELEE_REMAPPABLE_SLOTS.map(slot => slot.id);
 
 const getTouchMeleeSnapshot = heldSlots => {
   const held = heldSlots instanceof Set ? heldSlots : new Set();
@@ -125,12 +131,15 @@ function CosmeticAtlasPresentation({ mode, type, side = 'player', cosmetic }) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return undefined;
 
+    const reducedMotion = createReducedMotionReader();
     let animationFrameId = 0;
     let startedAt = null;
     const draw = timestamp => {
       if (startedAt === null) startedAt = timestamp;
       const elapsedMs = Math.min(durationMs, Math.max(0, timestamp - startedAt));
-      const frame = getGameCanvasCosmeticFrame(atlas, elapsedMs, durationMs);
+      // A static representative frame keeps the cosmetic readable. Lifetime
+      // still uses real elapsed time, so reducing motion cannot prolong it.
+      const frame = getGameCanvasCosmeticFrame(atlas, reducedMotion() ? durationMs / 2 : elapsedMs, durationMs);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawCosmeticAtlasFrame(
         ctx,
@@ -184,8 +193,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const keysPressed = useRef({});
   const meleePressedCodesRef = useRef(new Set());
   const meleePreviousInputRef = useRef({ player: null, cpu: null });
-  const meleeTouchHeldRef = useRef({ player: new Set(), cpu: new Set() });
-  const meleeNeutralGateRef = useRef({ player: false, cpu: false });
+  const meleeTouchHeldRef = useRef({
+    player: createSceneInputs(MELEE_TOUCH_SLOTS),
+    cpu: createSceneInputs(MELEE_TOUCH_SLOTS)
+  });
+  const meleeTouchCancelVersionRef = useRef({ player: 0, cpu: 0 });
+  const meleeGamepadInputRef = useRef({
+    player: createMeleeGamepadInput(),
+    cpu: createMeleeGamepadInput()
+  });
   const tacticsCameraPointerRef = useRef({
     active: false,
     pointerId: null,
@@ -281,10 +297,17 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     setMeleeInputMaps(saveMeleeInputMaps(createDefaultMeleeInputMaps()));
   };
 
-  const handleMeleeTouchAction = (slot, phase) => {
+  const handleMeleeTouchAction = (slot, phase, source) => {
     const held = meleeTouchHeldRef.current.player;
-    if (phase === 'down') held.add(slot);
-    else held.delete(slot);
+    // Keep legacy action-only callers while separating every physical owner.
+    const owner = `${slot}:${typeof source === 'string' && source ? source : 'legacy'}`;
+    if (phase === 'down') held.hold(owner, slot);
+    else if (held.release(owner) && phase === 'cancel' && slot === 'chargedAttack'
+      && !held.snapshot().chargedAttack) {
+      // Only cancelling the final touch owner terminates its charge source.
+      // A stale lost-capture callback must not cancel a later independent hold.
+      meleeTouchCancelVersionRef.current.player++;
+    }
   };
 
   const clearMeleeControls = () => {
@@ -295,7 +318,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     meleePreviousInputRef.current = { player: null, cpu: null };
     meleeTouchHeldRef.current.player.clear();
     meleeTouchHeldRef.current.cpu.clear();
-    meleeNeutralGateRef.current = { player: true, cpu: true };
+    meleeTouchCancelVersionRef.current = { player: 0, cpu: 0 };
+    meleeGamepadInputRef.current.player.reset();
+    meleeGamepadInputRef.current.cpu.reset();
   };
 
   // Une pause pilotee par le shell vide les controles sans reconstruire le moteur.
@@ -1284,6 +1309,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       if (sessionPausedRef.current || document.hidden || e.defaultPrevented) return;
       if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target?.tagName) || e.target?.isContentEditable || e.target?.closest?.('[data-combat-drawer].is-paused')) return;
       if ([' ', 'Enter'].includes(e.key) && e.target?.closest?.('button')) return;
+      // A blur or pause clears ownership even if the physical key stays
+      // down. Its auto-repeat must not recreate a command on return.
+      if (stage.mode === 'Smash' && e.repeat && !meleePressedCodesRef.current.has(e.code)) {
+        const maps = meleeInputMapsRef.current;
+        const isBound = getMeleeActionsForCode(e.code, maps.player).length
+          || (battleConfig?.opponentControl === 'p2' && getMeleeActionsForCode(e.code, maps.cpu).length);
+        if (isBound) e.preventDefault();
+        return;
+      }
       keysPressed.current[e.key] = true;
       keysPressed.current[e.code] = true;
       meleePressedCodesRef.current.add(e.code);
@@ -1343,34 +1377,40 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       if (document.hidden) clearMeleeInput();
     };
 
+    const handleGamepadDisconnected = (event) => {
+      const index = event.gamepad?.index;
+      if (index === 0 || index === 1) {
+        meleeGamepadInputRef.current[index === 0 ? 'player' : 'cpu'].disconnect();
+      }
+    };
+
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
     window.addEventListener('blur', clearMeleeInput);
+    window.addEventListener('gamepaddisconnected', handleGamepadDisconnected);
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
     const readMeleeInput = (side) => {
       const maps = meleeInputMapsRef.current;
       const map = side === 'cpu' ? maps.cpu : maps.player;
       const keyboard = readKeyboardMeleeInput(meleePressedCodesRef.current, map);
-      const gamepads = typeof navigator !== 'undefined' && navigator.getGamepads
-        ? navigator.getGamepads()
-        : [];
-      const gamepad = readGamepadMeleeInput(gamepads?.[side === 'cpu' ? 1 : 0]);
-      const touch = getTouchMeleeSnapshot(meleeTouchHeldRef.current[side]);
-      return mergeMeleeInputSnapshots(keyboard, gamepad, touch);
+      const gamepads = readBrowserGamepads();
+      const gamepad = meleeGamepadInputRef.current[side].read(gamepads?.[side === 'cpu' ? 1 : 0]);
+      const touch = getTouchMeleeSnapshot(new Set(Object.keys(meleeTouchHeldRef.current[side].snapshot())));
+      return {
+        ...mergeMeleeInputSnapshots(keyboard, gamepad.snapshot, touch),
+        gamepad,
+        touchChargeCancellation: meleeTouchCancelVersionRef.current[side]
+      };
     };
 
     const dispatchMeleeInputEdges = (engine, side, current) => {
-      if (meleeNeutralGateRef.current[side]) {
-        const hasInput = Math.abs(Number(current?.horizontal) || 0) > 0.35
-          || Math.abs(Number(current?.vertical) || 0) > 0.35
-          || Object.values(current?.actions || {}).some(Boolean);
-        meleePreviousInputRef.current[side] = current;
-        if (!hasInput) meleeNeutralGateRef.current[side] = false;
-        return true;
-      }
       const previous = meleePreviousInputRef.current[side];
       const edges = diffMeleeActionEdges(previous, current);
+      const padChargeLost = previous?.gamepad?.snapshot?.actions?.[MELEE_ACTIONS.chargedAttack]
+        && (!current.gamepad?.connected || previous.gamepad.generation !== current.gamepad.generation);
+      const touchChargeCancelled = previous
+        && previous.touchChargeCancellation !== current.touchChargeCancellation;
       meleePreviousInputRef.current[side] = current;
 
       edges.pressed.forEach(action => {
@@ -1402,16 +1442,19 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       });
 
       edges.released.forEach(action => {
-        if (action === MELEE_ACTIONS.chargedAttack) engine.releaseChargedMeleeAttack?.(side);
+        if (action === MELEE_ACTIONS.chargedAttack) {
+          if (padChargeLost || touchChargeCancelled) engine.cancelChargedMeleeAttack?.(side);
+          else engine.releaseChargedMeleeAttack?.(side);
+        }
         if (action === MELEE_ACTIONS.shield) engine.setMeleeShield?.(side, false);
       });
-      return false;
     };
 
     let animTime = 0;
     let combatTime = 0;
     const simulationClock = createFixedStepClock();
     simulationClockRef.current = simulationClock;
+    const reducedMotion = createReducedMotionReader();
     let lastHudSyncTimestamp = -Infinity;
     let frameId;
 
@@ -1463,12 +1506,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           let meleeHeldP2 = {};
           if (stage.mode === 'Smash') {
             const playerInput = readMeleeInput('player');
-            const playerNeutralGated = dispatchMeleeInputEdges(engine, 'player', playerInput);
-            meleeHeldP1 = playerNeutralGated ? {} : toEngineHeldInput(playerInput);
+            dispatchMeleeInputEdges(engine, 'player', playerInput);
+            meleeHeldP1 = toEngineHeldInput(playerInput);
             if (battleConfig?.opponentControl === 'p2') {
               const opponentInput = readMeleeInput('cpu');
-              const opponentNeutralGated = dispatchMeleeInputEdges(engine, 'cpu', opponentInput);
-              meleeHeldP2 = opponentNeutralGated ? {} : toEngineHeldInput(opponentInput);
+              dispatchMeleeInputEdges(engine, 'cpu', opponentInput);
+              meleeHeldP2 = toEngineHeldInput(opponentInput);
             }
           }
           const actorsObservedDuringUpdate = {
@@ -1564,7 +1607,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           if (signature) {
             const actor = [...engine.heroes, ...engine.enemies].find(unit => rpgUnitId(unit) === signature.actorId);
             drawSignatureCinematic(ctx, signature, actor, drawPixelSprite, {
-              reducedMotion: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true
+              reducedMotion: reducedMotion()
             });
           }
           if (stage.mode === 'RPG') drawRpgTargeting(ctx, engine.getTargetingState?.(), [...engine.heroes, ...engine.enemies]);
@@ -1649,6 +1692,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
       window.removeEventListener('blur', clearMeleeInput);
+      window.removeEventListener('gamepaddisconnected', handleGamepadDisconnected);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       cancelAnimationFrame(frameId);
       if (simulationClockRef.current === simulationClock) simulationClockRef.current = null;
@@ -1659,6 +1703,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         heroes: new Map(),
         enemies: new Map()
       };
+      clearMeleeControls();
       engineRef.current?.dispose?.();
       engineRef.current = null;
       sound.stopBgm();
@@ -3036,3 +3081,4 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     </div>
   );
 }
+

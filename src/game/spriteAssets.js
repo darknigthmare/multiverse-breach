@@ -1,10 +1,11 @@
+import { DISCIPLINE_SPRITE_LAYOUTS, getDisciplineSpriteLayout, getDisciplineSpriteSources } from './disciplineSprites.js';
+import { getCloudMeadowSpriteLayout, getCloudMeadowSpriteSrc } from './cloudMeadowCharacters.js';
 import {
   getMeleeAnimationFrame,
   getMeleeAnimationManifest,
   getMeleeAnimationSheetSources,
   getMeleeSheetLayout
 } from './melee/meleeAnimationManifest.js';
-import { DISCIPLINE_SPRITE_LAYOUTS, getDisciplineSpriteLayout, getDisciplineSpriteSources } from './disciplineSprites.js';
 
 export const SPRITE_SHEET_META = {
   frameWidth: 256,
@@ -202,6 +203,15 @@ export const HALO_COMPLETE_SPRITE_PACKS = {
 
 export const SPRITE_SHEET_LAYOUTS = {
   ...DISCIPLINE_SPRITE_LAYOUTS,
+  '/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png': {
+    // One complete static figure. Movement/combat animation is not supplied.
+    columns: 1,
+    rows: 1,
+    // Native 1254 px image: retain the silhouette and 24 px below its feet,
+    // matching the generated-sprite renderer's source-space ground offset.
+    trim: { bottom: 69 },
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
   '/sprites/generated/bosses/the-aether-crown/lord-pneuma.png': {
     columns: 1,
     rows: 1,
@@ -579,6 +589,8 @@ export const getHeroMeleeSpriteSheetSrcs = heroOrId => (
 
 const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (!hero?.id) return '';
+  const cloudMeadowSprite = getCloudMeadowSpriteSrc(hero);
+  if (cloudMeadowSprite) return cloudMeadowSprite;
   if (Object.hasOwn(CORRECTED_CANON_HERO_SPRITES, hero.id)) return CORRECTED_CANON_HERO_SPRITES[hero.id];
   if (context === 'melee') {
     const meleeFrame = getHeroMeleeAnimationFrame(hero);
@@ -601,9 +613,6 @@ const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
   return `/sprites/generated/heroes/${slugifyAsset(hero.universe)}/${slugifyAsset(hero.id)}.png`;
 };
 
-// An explicit costume selection can fail independently of the original sheet.
-// Keep the source order so the renderer can recover from a missing PNG without
-// changing the saved choice or discarding an existing character's artwork.
 export const getHeroSpriteSheetSources = (hero, context = 'auto') => [...new Set([
   ...getDisciplineSpriteSources(hero),
   getOriginalHeroSpriteSheetSrc(hero, context)
@@ -657,6 +666,7 @@ const normalizeSpriteSrc = (src) => {
 
 export const getSpriteSheetLayout = (src) => (
   getDisciplineSpriteLayout(src)
+  || getCloudMeadowSpriteLayout(src)
   || getMeleeSheetLayout(src)
   || SPRITE_SHEET_LAYOUTS[normalizeSpriteSrc(src)]
   || {

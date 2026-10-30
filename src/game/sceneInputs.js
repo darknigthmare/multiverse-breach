@@ -6,7 +6,7 @@ export function createSceneInputs(actions = []) {
       if (typeof source !== 'string' || !source || !allowed.has(action)) return false;
       owners.set(source, action); return true;
     },
-    release(source) { owners.delete(source); },
+    release(source) { return owners.delete(source); },
     clear() { owners.clear(); },
     snapshot() { return Object.fromEntries([...owners.values()].map(action => [action, true])); }
   };
