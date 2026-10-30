@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-28",
+  "browser": "Chromium via Playwright",
+  "result": "passed",
+  "counts": {
+    "sprites": 373,
+    "identities": 41,
+    "costumeApplicableIdentities": 39,
+    "coveredFamilyCells": 213,
+    "totalFamilyCells": 234
+  },
+  "checks": [
+    "373 catalogue cards rendered across 41 identities",
+    "Costume coverage is 213 of 234 family cells for 39 applicable identities; both machine identities remain excluded",
+    "Dedicated v11 enemy filter returns the red-hood guard only",
+    "New native 1254 by 1254 PNG loaded successfully",
+    "Correct masculine supplied-reference badge and no cross-identity style comparison",
+    "Both red-hood mask-detail and full-body group source links present",
+    "Fidelity notes and limitations visible on the new card",
+    "Desktop gallery screenshot captured with light alpha-compositing background",
+    "Checkerboard control background rendered",
+    "390 px mobile layout has no horizontal overflow",
+    "Six supplied-reference entries filter down to the three reference-based military enemies",
+    "Search by cagoule rouge resolves only the new sprite",
+    "Historical v6 filter still shows 170 outfits",
+    "Previous v8 masked soldier retains its dedicated filter and feminine badge",
+    "Previous v9 hooded guard retains its dedicated filter and masculine badge",
+    "All three v10 machine cards remain accessible, the fighter retains its provisional reconstruction badge, and coverage remains independent of filters",
+    "No JavaScript, console or HTTP resource error during tested flows"
+  ],
+  "checkCount": 17,
+  "errors": [],
+  "requestsFailed": [],
+  "screenshots": [
+    "gallery-desktop.png",
+    "gallery-mobile.png"
+  ],
+  "scope": "New v11 enemy card, source links, composed filters, v8-v10 preservation, machine coverage exclusions, new native PNG loading, desktop and mobile layout; not an in-game combat test or proof that all lazy-loaded images were fetched.",
+  "screenshotVisualReview": {
+    "completed": true,
+    "desktop": "Reviewed the full desktop capture on a light background: complete head, hands and both boots fit within the card; labels, source links and expanded fidelity notes are readable.",
+    "checkerboard": "Reviewed the checkerboard capture at gallery preview size: transparent surroundings and leg separation are visible; no apparent opaque rectangle or distracting alpha fringe at this display size.",
+    "mobile": "Reviewed the 390 px capture on the dark background: controls, card, complete figure, notes and footer fit without clipping or horizontal overflow.",
+    "limitations": "These screenshots verify gallery presentation at preview scale, not pixel-perfect source fidelity or hidden details of the references."
+  }
+}

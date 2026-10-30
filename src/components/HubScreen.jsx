@@ -1,3 +1,4 @@
+import { DISCIPLINE_SPRITE_REGISTRY } from '../game/disciplineSprites.js';
 import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicResidents.js';
 import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
@@ -5638,6 +5639,9 @@ export default function HubScreen({
       const map = new Map(spriteAvailability.groups.flatMap(group => group.outputs.map(output => [output, { output, available: true, source: group.source }])));
       Object.values(MIRELLE_COMPLETE_SPRITES).forEach(output => {
         map.set(output, { output, available: true, source: 'openai-complete-pack' });
+      });
+      DISCIPLINE_SPRITE_REGISTRY.entries.filter(entry => entry.available).forEach(entry => {
+        map.set(entry.src, { output: entry.src, available: true, source: 'generated-static-costume' });
       });
       return map;
     },

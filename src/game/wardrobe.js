@@ -10,6 +10,7 @@ import { OFFICIAL_WARDROBE } from './wardrobeOfficial.js';
 import { ORIGINAL_COLLECTIONS, SIGNATURE_DESIGNS } from './wardrobeOriginals.js';
 import { OFFICIAL_COSTUME_EXTENSION, ORIGINAL_COLLECTION_EXTENSION, SIGNATURE_DESIGN_EXTENSION, WARDROBE_RESEARCH_TARGETS } from './wardrobeExpansion.js';
 import { getCostumeProductionContract, assertUniqueWardrobeEntries } from './wardrobeProduction.js';
+import { resolveDisciplineCostume } from './disciplineSprites.js';
 
 const L = (fr,en) => Object.freeze({fr,en});
 export const WARDROBE_VERSION = 9;
@@ -114,6 +115,9 @@ const LEGACY_COLOR_KEYS=['primaryColor','secondaryColor','weaponColor','color'];
 export function applyActorAppearance(actor,selectedId,legacyCatalog={},options={}) {
   if(!actor || !wardrobeActorKey(actor))return actor;
   if(!selectedId || selectedId==='default' || options.sourceLocked)return actor;
+  const costume=resolveDisciplineCostume(actor,selectedId);
+  if(costume)return {...actor,disciplineSpriteId:costume.id,activeSkin:{id:costume.id,name:costume.label,colors:{},
+    kind:'generated-static-costume',canonical:false,provenance:costume.provenance}};
   const effect=resolveWardrobeEffect(actor,selectedId);
   if(effect)return {...actor,wardrobeEffect:selectedId,activeSkin:{id:selectedId,name:effect.name,colors:{},
     kind:'procedural-effect',canonical:false}};
@@ -127,6 +131,7 @@ export function applyActorAppearance(actor,selectedId,legacyCatalog={},options={
 }
 export function wardrobeSelectionStatus(actor,selectedId) {
   if(!selectedId || selectedId==='default')return 'ORIGIN';
+  if(resolveDisciplineCostume(actor,selectedId))return 'GENERATED_STATIC_COSTUME';
   if(resolveWardrobeEffect(actor,selectedId))return 'PROCEDURAL_EFFECT';
   if([...getOfficialCostumes(actor),...getOriginalCostumes(actor)].some(c=>c.id===selectedId))return 'ASSET_PENDING';
   return 'UNKNOWN_OR_LEGACY';

@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-28",
+  "method": "Independent visual review of real Chromium alpha compositing on dark, light and checker backgrounds; root review of light-background and source-comparison screenshots.",
+  "nativePixelsModified": false,
+  "passedForGraphicCatalogue": true,
+  "episodeReviewed": false,
+  "newScreencapsObtained": 0,
+  "oneToOneCertified": false,
+  "screenshots": [
+    "qa/alpha-light.png",
+    "qa/source-comparison.png"
+  ],
+  "observations": {
+    "yellow-construction-mech:construction-reference-v10": [
+      "Four crane arms, gray claws, three visible feet, open platform and gantry, cab and Japanese signs visually retained from accepted white-background illustration.",
+      "Transparent background visible between arms, gantry posts and legs; white sign plaques remain part of the opaque subject.",
+      "Sharper contours and more saturated colors than the accepted white-background image; this is a new generated output, not a pixel-identical extraction.",
+      "Rear surfaces, underside and fourth leg are not fully established by the two user frames."
+    ],
+    "yellow-pilot-robot:full-body-reference-v10": [
+      "Head, hands and feet wholly visible; clean silhouette on all three backgrounds.",
+      "Rectangular yellow faceless head, circular emblem, olive stepped neck and gray radial shoulders follow the cropped cockpit reference.",
+      "Hands, pelvis, legs and feet remain the first reconstruction; no new full-body source was found.",
+      "Changes are described as rendering and contour refinement; no corrected canonical lower-body geometry is claimed."
+    ],
+    "yellow-pilot-robot:fighter-cockpit-adaptation-v10": [
+      "Full nose, both wingtips and tail visible, with native landscape proportions retained.",
+      "Tall gray canopy frame and seat, pilot head and segmented shoulders are legible and coherent with the supplied cockpit crop.",
+      "Opening inside the canopy frame is transparent; no white plate or visible glow remains.",
+      "Exterior aircraft geometry is inherited provisional reconstruction; no full-aircraft screencap or episode viewing supports it."
+    ]
+  },
+  "alphaReview": {
+    "darkLightCheckerVisuallyReviewed": true,
+    "visibleWhiteHalo": false,
+    "visibleBackgroundRectangle": false,
+    "sourceHashesUnchangedBeforeAfterBrowserReview": true,
+    "note": "RGB values in fully transparent pixels can appear in previews that omit alpha compositing. In Chromium, alpha-zero pixels reproduce the background exactly."
+  }
+}

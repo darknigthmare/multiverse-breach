@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-29",
+  "assetId": "black-suit-agent-bob:black-catsuit-reference-v12",
+  "selectedReferenceFigure": "Right-hand adult woman",
+  "provider": "OpenAI",
+  "interface": "built-in image_gen",
+  "pixelEditsOutsideImageGeneration": false,
+  "stages": [
+    {
+      "id": "initial",
+      "prompt": "Create ONE production-ready static full-body female enemy sprite for the existing Discipline catalogue in a 2D video game.\n\nREFERENCE AUTHORITY:\n1. image(20261029-061645).png is the sole identity and costume reference. It shows two similar clearly adult women in opaque black full-body outfits. Use the WOMAN ON THE RIGHT as the consistent face, hair and outfit model. Create only one woman, not the pair.\n2. ova-officer-bob--ova-plum-uniform-reference-v4.png is ONLY a rendering/framing reference for the project's polished pixel-art sprites: crisp stepped outlines, compact color clusters, restrained cel shading, full figure on transparency. Do NOT copy the officer's uniform, beret, brown hair, eyes, equipment or identity.\n\nFAITHFUL VISIBLE CHARACTER:\nA clearly adult woman with a mature anime face, warm light peach skin, dark reddish-brown eyes, and a calm confident slight smile as in the right-hand reference figure.\nStraight black/dark navy bob hair reaching toward the shoulders, blunt straight bangs divided into distinct short locks, subtle cool slate-blue highlights. Match her hair silhouette and mature facial proportions; no headwear, mask, goggles or jewelry.\nAn opaque very dark black/navy one-piece full-length outfit with a close high collar enclosing the neck, long fitted sleeves ending at the wrists, and long fitted legs. The reference's broad controlled blue highlights describe the smooth slightly glossy material; retain the deep near-black base color. The garment is continuous and undecorated. Preserve the reference adult build without exaggerating or emphasizing anatomy, using a neutral catalogue game-character presentation. No transparency, cutouts, exposed midriff, cleavage, anatomical nipple or genital details.\nBoth hands are BARE as shown in the source, with natural skin fingers, no gloves.\nNo belt, shoulder armor, badges, pockets, holster, weapon, zippers or invented decorations.\n\nUNSEEN FEET:\nThe supplied screenshot cuts off before the ankles and feet, so complete only the missing lower leg ends and feet conservatively: plain close-fitting black footwear with low flat soles, visually continuous with the outfit, with no laces, large heels, contrasting cuffs or added hardware. These feet are a practical reconstruction, not a claim of source-verified costume details.\n\nPOSE AND FORMAT:\nOne isolated woman standing in a neutral idle catalogue pose, near-front three-quarter view facing slightly toward the viewer's right. Arms relaxed downward, bare hands naturally relaxed, feet modestly apart. Translate the source's low-angle camera into a clear neutral full-body game sprite.\nKeep the complete hair, both hands, both legs and both footwear soles inside the canvas, with a small clean transparent margin on every side. Center the figure at the same overall scale as the style reference.\nRender polished detailed pixel art matching the second image, with crisp contour pixels and deliberate flat highlight clusters, not a smooth painting, photo, 3D render or vector graphic.\nOutput one native 1254 x 1254 square PNG with a true transparent alpha background. No floor, ground shadow, scenery, checkerboard pattern, text, watermark, title, labels, frame, multiple poses or sprite sheet.",
+      "promptFile": "prompts/initial.txt",
+      "promptStatus": "recorded-verbatim",
+      "directInputs": [
+        {
+          "id": "v12-black-suit-agents-user-reference",
+          "type": "user_upload",
+          "filename": "image(20261029-061645).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v12/references/black-suit-agents-user-reference.png",
+          "sourceMedium": "user_reference",
+          "role": "Identity and visible costume of the adult woman on the right; feet and ankles are not shown",
+          "sha256": "25e1b9364bddd8761198adf8eeb6c8071d3d9b3512c33885f6d767f06828f263",
+          "dimensions": [
+            1169,
+            2048
+          ],
+          "directGenerationInput": true,
+          "usedInStages": [
+            "initial",
+            "close-flank"
+          ]
+        },
+        {
+          "id": "v12-officer-style",
+          "asset": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ova-officer-bob--ova-plum-uniform-reference-v4.png",
+          "sha256": "6cb0369a798712e01419e387f5a56d53163015cbb669fd9f347d5d9776686902",
+          "role": "Style and framing only"
+        }
+      ],
+      "output": {
+        "generatedFilename": "exec-912806f3-1f66-4b60-a555-b42224e7be8a.png",
+        "repositoryPath": "docs/discipline-sprites/enemy-v12/previous-renders/black-suit-agent-open-flank.png",
+        "image": {
+          "sha256": "c36d53fb031b927ecdfdab0a34df9d6e84daf80fa477993745b1afe2e0070b2e",
+          "bytes": 474664,
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "rawAlphaBounds": [
+            0,
+            25,
+            1224,
+            1254
+          ],
+          "visibleBoundsAlphaGt8": [
+            435,
+            27,
+            842,
+            1234
+          ],
+          "opaqueBoundsAlphaGe128": [
+            436,
+            28,
+            841,
+            1233
+          ],
+          "visibleMargins": [
+            435,
+            27,
+            412,
+            20
+          ],
+          "transparentPixelCount": 1272893
+        }
+      },
+      "acceptedForCatalogue": false,
+      "reason": "Unintended skin-colored flank triangle x572-595/y414-448, not attested on the selected right-hand woman; 209 warm pixels at alpha237-253 in the reviewed region."
+    },
+    {
+      "id": "close-flank",
+      "prompt": "Make one very small, targeted costume correction to the attached generated pixel-art sprite. The first image, exec-912806f3-1f66-4b60-a555-b42224e7be8a.png, is the exact image to edit. The second image is the original costume reference; the WOMAN ON THE RIGHT is the chosen model.\n\nCORRECT ONLY THIS DEFECT:\nOn the viewer's LEFT side of the torso, just below the upper arm beside the waist, there is a tiny peach skin-colored triangle. In the 1254 x 1254 target canvas this is approximately x572–595, y414–448. This is an unintended opening. Replace that entire small peach triangle with opaque near-black/dark-navy outfit material, smoothly continuing the adjacent black bodysuit and its restrained blue shading. The outfit must be fully closed at the flank, as on the right-hand woman in the reference. Do not add a patch seam, a buckle, or any new decorative element.\n\nPRESERVE EVERYTHING ELSE:\nPreserve the same single adult woman's face, dark red-brown eyes, shoulder-length black bob and blunt fringe, pose, silhouette, body proportions, high collar, long sleeves, bare hands, outfit highlights, legs, and plain low black footwear. Preserve the crisp pixel-art technique, full-body framing, scale, and existing transparent background. Do not change the face or expression. Do not add accessories, weapons, gloves, exposed skin, extra details, text or a ground shadow.\nThe fully opaque black garment should cover the torso, arms and legs continuously. Only the face and bare hands are exposed.\nReturn one corrected native 1254 x 1254 PNG with true alpha transparency, keeping every body part within the original canvas. No collage, before/after layout, background, captions or labels.",
+      "promptFile": "prompts/close-flank.txt",
+      "promptStatus": "recorded-verbatim",
+      "directInputs": [
+        {
+          "id": "v12-first-render",
+          "type": "generated_intermediate",
+          "repositoryPath": "docs/discipline-sprites/enemy-v12/previous-renders/black-suit-agent-open-flank.png",
+          "role": "Direct correction target with an unintended skin-colored flank triangle; superseded and excluded from catalogue",
+          "sha256": "c36d53fb031b927ecdfdab0a34df9d6e84daf80fa477993745b1afe2e0070b2e",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "directGenerationInput": true,
+          "usedInStages": [
+            "close-flank"
+          ]
+        },
+        {
+          "id": "v12-black-suit-agents-user-reference",
+          "type": "user_upload",
+          "filename": "image(20261029-061645).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v12/references/black-suit-agents-user-reference.png",
+          "sourceMedium": "user_reference",
+          "role": "Identity and visible costume of the adult woman on the right; feet and ankles are not shown",
+          "sha256": "25e1b9364bddd8761198adf8eeb6c8071d3d9b3512c33885f6d767f06828f263",
+          "dimensions": [
+            1169,
+            2048
+          ],
+          "directGenerationInput": true,
+          "usedInStages": [
+            "initial",
+            "close-flank"
+          ]
+        }
+      ],
+      "output": {
+        "generatedFilename": "exec-7aa73e8a-5095-432a-8b82-d9053457bd45.png",
+        "repositoryPath": "public/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/black-suit-agent-bob--black-catsuit-reference-v12.png",
+        "image": {
+          "sha256": "204c827265600288e0a38784167037efe4a3a9c65389336ae1d59a5cd8963794",
+          "bytes": 484999,
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "rawAlphaBounds": [
+            0,
+            23,
+            1230,
+            1254
+          ],
+          "visibleBoundsAlphaGt8": [
+            435,
+            26,
+            842,
+            1236
+          ],
+          "opaqueBoundsAlphaGe128": [
+            436,
+            27,
+            841,
+            1235
+          ],
+          "visibleMargins": [
+            435,
+            26,
+            412,
+            18
+          ],
+          "transparentPixelCount": 1268024
+        }
+      },
+      "purpose": "Replace the small flank opening with continuous black/navy outfit material",
+      "acceptedForCatalogue": true,
+      "acceptanceReview": "visual-review.json"
+    }
+  ],
+  "feetSourceStatus": "Reconstructed because ankles and feet are outside the supplied frame",
+  "fullBodyOneToOneCertified": false
+}

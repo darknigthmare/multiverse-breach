@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-29",
+  "baselineCommit": "02d726f87e41e3cd9d41b85c961eee0a4b8ac13f",
+  "result": "passed",
+  "addedAssetId": "black-suit-agent-bob:black-catsuit-reference-v12",
+  "counts": {
+    "sprites": 374,
+    "characters": 42,
+    "referenceBased": 82,
+    "adapted": 292,
+    "costumeCoverageCharacters": 40
+  },
+  "preservation": {
+    "previousCatalogueEntriesUnchanged": 373,
+    "previousManifestAssetsUnchanged": 373,
+    "previousPngSha256Verified": 373,
+    "historicalAuditV7AndEnemyV8V9V10V11Unchanged": true,
+    "nativeFinalOutputCopiedWithoutPixelEdits": true,
+    "supersededFirstRenderPreservedByteForByte": true,
+    "userReferenceCopiedByteForByte": true,
+    "bothPromptsMatchActualGenerationInputs": true,
+    "all374ImageHashesUnique": true
+  },
+  "correction": {
+    "generationPasses": 2,
+    "flankOpeningRemoved": true,
+    "finalIndependentVisualReview": "accepted",
+    "history": "generation.json",
+    "review": "visual-review.json"
+  },
+  "png": {
+    "sha256": "204c827265600288e0a38784167037efe4a3a9c65389336ae1d59a5cd8963794",
+    "bytes": 484999,
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "rawAlphaBounds": [
+      0,
+      23,
+      1230,
+      1254
+    ],
+    "visibleBoundsAlphaGt8": [
+      435,
+      26,
+      842,
+      1236
+    ],
+    "opaqueBoundsAlphaGe128": [
+      436,
+      27,
+      841,
+      1235
+    ],
+    "visibleMargins": [
+      435,
+      26,
+      412,
+      18
+    ],
+    "transparentPixelCount": 1268024
+  },
+  "tests": {
+    "command": "npm run test:discipline",
+    "exitCode": 0,
+    "testFilesPassed": [
+      "scripts/disciplineSprites.test.mjs",
+      "scripts/wardrobe.test.mjs"
+    ],
+    "testsPassed": 49,
+    "testsFailed": 0,
+    "durationMs": 3228.991133
+  },
+  "build": {
+    "command": "npx --no-install vite build",
+    "exitCode": 0,
+    "modulesTransformed": 313,
+    "durationSeconds": 0.68,
+    "nodeVersion": "v24.22.1",
+    "viteVersion": "8.1.0",
+    "fullPrebuildChainRun": false,
+    "checkoutScope": "Source and relevant Discipline assets, plus the existing sprite-availability.json import; not a complete deployment-asset audit.",
+    "warnings": [
+      "Existing bundles larger than 1000 kB",
+      "npm http-proxy configuration warning",
+      "Local Node 24 differs from the repository Node 22 engine declaration"
+    ]
+  },
+  "browser": {
+    "report": "browser-qa.json",
+    "checksPassed": 18,
+    "javascriptErrors": [],
+    "httpResourceErrors": [],
+    "desktopScreenshotReviewed": true,
+    "mobile390pxScreenshotReviewed": true,
+    "horizontalOverflowAt390px": false,
+    "previousEnemyFiltersAndMachinesPreserved": true
+  },
+  "limits": [
+    "Static artwork catalogue delivery, not an animated enemy or combat integration",
+    "Footwear and lower-leg transitions reconstructed from a reference cropped above the ankles",
+    "Canonical individual identity and full-body 1:1 fidelity not certified",
+    "Local build does not replace the full prebuild chain or remote CI"
+  ]
+}
