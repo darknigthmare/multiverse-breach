@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
+import { tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy } from '../src/game/extinctionSignatures.js';
 import { createFixedStepClock } from '../src/game/fixedStepClock.js';
 import { createSceneInputs, emptySceneAim } from '../src/game/sceneInputs.js';
 
@@ -41,6 +42,9 @@ const makeHarness = () => {
   const state = makeState();
   const environment = {
     createFixedStepClock,
+    tickExtinctionProtocols,
+    mitigateExtinctionProtocolDamage,
+    damageExtinctionEnemy,
     simulationClockRef: { current: null },
     sessionPausedRef: { current: false },
     sessionPaused: false,
