@@ -23,7 +23,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   scenes:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -64,7 +64,7 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
           /tmp/scene-playwright/bin/python scripts/browserCityExtinction.py --require-art --evidence /tmp/scene-ui-evidence/browser | tee /tmp/scene-ui-evidence/browser.log
-          /tmp/scene-playwright/bin/python scripts/browserSceneServices.py --require-art --evidence /tmp/scene-ui-evidence/completion | tee /tmp/scene-ui-evidence/completion.log
+          /tmp/scene-playwright/bin/python scripts/browserSceneServices.py --require-art --replays 2 --evidence /tmp/scene-ui-evidence/completion | tee /tmp/scene-ui-evidence/completion.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

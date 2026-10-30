@@ -2,7 +2,7 @@ import { before, after, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createServer } from 'vite';
-import { synchronizeFighterControlOwners as syncOwners } from '../src/game/fighterControlOwnership.js';
+import { createFighterHeldInputs, synchronizeFighterControlOwners as syncOwners } from '../src/game/fighterControlOwnership.js';
 let vite, Fighter;
 const source = readFileSync(new URL('../src/components/FighterMode.jsx', import.meta.url), 'utf8');
 function section(start, end) {
@@ -12,7 +12,7 @@ function section(start, end) {
 }
 // Execute the actual component callbacks with their real engine and closure
 // dependencies. No fake trigger method or duplicate implementation of tagging.
-const bindRoutes = new Function('engine', 'engineRef', 'inputRef', 'inputOwnersRef',
+const bindRoutes = new Function('engine', 'engineRef', 'inputRef', 'inputOwnersRef', 'heldInputsRef',
   'sessionPausedRef', 'document', 'opponentControl', 'synchronizeFighterControlOwners',
   section('const CONTROL_KEYS = ', 'const DIFFICULTIES = ')
   + section('const clearInputs = () => {', 'const onVisibilityChange = () => {')
@@ -34,9 +34,10 @@ function fixture(side = 'player', slot = 1, opponentControl = 'p2') {
   }
   assert.equal(e.canTag(side, slot), true);
   const buffer = { current: { player: {}, cpu: {} } }, owners = { current: null };
+  const heldInputsRef = { current: createFighterHeldInputs() };
   const paused = { current: false }, doc = { hidden: false };
-  syncOwners(e, buffer, owners);
-  const routes = bindRoutes(e, { current: e }, buffer, owners, paused, doc, opponentControl, syncOwners);
+  syncOwners(e, buffer, owners, heldInputsRef.current);
+  const routes = bindRoutes(e, { current: e }, buffer, owners, heldInputsRef, paused, doc, opponentControl, syncOwners);
   return { e, buffer, routes, paused, doc };
 }
 
@@ -94,7 +95,7 @@ for (const control of ['cpu', 'p2']) {
         const release = keyboardEvent('ArrowLeft', target);
         routes.keyUp(release);
         assert.equal(release.preventCount, 0, `${target.tagName}: keyup must remain native`);
-        assert.equal(buffer.current[side].left, false, `${target.tagName}: stale movement must be released`);
+        assert.equal(Boolean(buffer.current[side].left), false, `${target.tagName}: stale movement must be released`);
         e.setSideInput(side, buffer.current[side]);
         assert.equal(e.inputs[side].left, false);
       }
@@ -110,7 +111,7 @@ for (const control of ['cpu', 'p2']) {
       paused.current = false;
       const move = keyboardEvent('d'); routes.keyboard(move);
       assert.equal(move.preventCount, 1); assert.equal(buffer.current.player.right, true);
-      routes.keyUp(keyboardEvent('d')); assert.equal(buffer.current.player.right, false);
+      routes.keyUp(keyboardEvent('d')); assert.equal(Boolean(buffer.current.player.right), false);
       const attack = keyboardEvent('f'); routes.keyboard(attack);
       assert.equal(attack.preventCount, 1); assert.equal(e.getActive('player').state, 'attack');
       assert.ok(e.getActive('player').action);

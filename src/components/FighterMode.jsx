@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import HeldControlButton from './HeldControlButton.jsx';
 import { EngineFighter, resolveFighterCosmetics } from '../game/engineFighter';
-import { synchronizeFighterControlOwners } from '../game/fighterControlOwnership.js';
+import { createFighterHeldInputs, synchronizeFighterControlOwners } from '../game/fighterControlOwnership.js';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
 import { ParticleSystem, getOpenAiBackdropSrc, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
@@ -281,6 +282,8 @@ export default function FighterMode({
   const engineRef = useRef(null);
   const inputRef = useRef({ player: {}, cpu: {} });
   const inputOwnersRef = useRef(null);
+  const heldInputsRef = useRef(null);
+  if (!heldInputsRef.current) heldInputsRef.current = createFighterHeldInputs();
   const onMatchCompleteRef = useRef(onMatchComplete);
   const onSessionEndRef = useRef(onSessionEnd);
   const sessionPausedRef = useRef(sessionPaused);
@@ -322,7 +325,10 @@ export default function FighterMode({
     sessionPausedRef.current = sessionPaused;
     simulationClockRef.current?.reset();
     engineRef.current?.setPaused(sessionPaused || document.hidden);
-    if (sessionPaused) inputRef.current = { player: {}, cpu: {} };
+    if (sessionPaused) {
+      heldInputsRef.current.clear();
+      inputRef.current = { player: {}, cpu: {} };
+    }
   }, [sessionPaused]);
 
   // Une demande de sortie confirmee depuis le menu pause ramene le duel au lobby.
@@ -334,6 +340,7 @@ export default function FighterMode({
     setMatchStarted(false);
     setSummary(null);
     setSnapshot(emptySnapshot);
+    heldInputsRef.current.clear();
     inputRef.current = { player: {}, cpu: {} };
     onSessionEndRef.current?.({ reason: 'abandoned' });
   }, [sessionExitRequest]);
@@ -544,6 +551,7 @@ export default function FighterMode({
     } = nextMatchSetupRef.current;
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
+    heldInputsRef.current.clear();
     inputRef.current = { player: {}, cpu: {} };
     setSummary(null);
     setSnapshot(emptySnapshot);
@@ -599,7 +607,7 @@ export default function FighterMode({
       }
     );
     engineRef.current = engine;
-    synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
+    synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef, heldInputsRef.current);
     engine.setPaused(sessionPausedRef.current || document.hidden);
     sound.playStageBgm(battleMusicStage, activeBattleMusic?.state || 'battle');
 
@@ -618,12 +626,12 @@ export default function FighterMode({
           animationId = requestAnimationFrame(loop);
           return;
         }
-        synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
+        synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef, heldInputsRef.current);
         engine.setSideInput('player', inputRef.current.player);
         engine.setSideInput('cpu', inputRef.current.cpu);
         for (let step = 0; step < steps; step += 1) {
           engine.update(COMBAT_STEP_MS / 1000);
-          synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
+          synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef, heldInputsRef.current);
           particles.update();
         }
         const ctx = canvas.getContext('2d');
@@ -643,6 +651,8 @@ export default function FighterMode({
         // A stopped renderer must not leave inputs active or award a victory.
         console.error('Fighter render loop failed', error);
         engine.dispose();
+        heldInputsRef.current.clear();
+        inputRef.current = { player: {}, cpu: {} };
         setRuntimeError(true);
         if (!engine.completionReported) onSessionEndRef.current?.({ reason: 'error' });
       }
@@ -650,36 +660,38 @@ export default function FighterMode({
     animationId = requestAnimationFrame(loop);
 
     const clearInputs = () => {
+      heldInputsRef.current.clear();
       inputRef.current = { player: {}, cpu: {} };
       engine.clearInputs();
     };
-    const setHeldInputForSide = (side, control, active) => {
-      synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
-      inputRef.current[side][control] = active;
+    const setHeldInputForSide = (side, control, event) => {
+      synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef, heldInputsRef.current);
+      heldInputsRef.current.holdKey(event, side, control);
+      inputRef.current = heldInputsRef.current.snapshot();
     };
     const onKeyDown = event => {
       if (event.repeat || event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('[data-combat-drawer].is-paused')) return;
       if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button')) return;
       if (!CONTROL_KEYS.has(event.key)) return;
-      if (sessionPausedRef.current || document.hidden) return;
+      if (sessionPausedRef.current || document.hidden || engine.disposed || engine.finished) return;
       event.preventDefault();
       const key = event.key.toLowerCase();
 
-      if (key === 'q') setHeldInputForSide('player', 'left', true);
-      else if (key === 'd') setHeldInputForSide('player', 'right', true);
-      else if (key === 's') setHeldInputForSide('player', 'down', true);
-      else if (key === 'e') setHeldInputForSide('player', 'guard', true);
+      if (key === 'q') setHeldInputForSide('player', 'left', event);
+      else if (key === 'd') setHeldInputForSide('player', 'right', event);
+      else if (key === 's') setHeldInputForSide('player', 'down', event);
+      else if (key === 'e') setHeldInputForSide('player', 'guard', event);
 
       if (opponentControl === 'p2') {
-        if (key === 'arrowleft') setHeldInputForSide('cpu', 'left', true);
-        else if (key === 'arrowright') setHeldInputForSide('cpu', 'right', true);
-        else if (key === 'arrowdown') setHeldInputForSide('cpu', 'down', true);
-        else if (key === 'u') setHeldInputForSide('cpu', 'guard', true);
+        if (key === 'arrowleft') setHeldInputForSide('cpu', 'left', event);
+        else if (key === 'arrowright') setHeldInputForSide('cpu', 'right', event);
+        else if (key === 'arrowdown') setHeldInputForSide('cpu', 'down', event);
+        else if (key === 'u') setHeldInputForSide('cpu', 'guard', event);
       } else {
-        if (['arrowleft', 'a'].includes(key)) setHeldInputForSide('player', 'left', true);
-        else if (key === 'arrowright') setHeldInputForSide('player', 'right', true);
-        else if (key === 'arrowdown') setHeldInputForSide('player', 'down', true);
-        else if (key === 'shift' || key === 'i') setHeldInputForSide('player', 'guard', true);
+        if (['arrowleft', 'a'].includes(key)) setHeldInputForSide('player', 'left', event);
+        else if (key === 'arrowright') setHeldInputForSide('player', 'right', event);
+        else if (key === 'arrowdown') setHeldInputForSide('player', 'down', event);
+        else if (key === 'shift' || key === 'i') setHeldInputForSide('player', 'guard', event);
       }
 
       if (event.repeat) return;
@@ -710,30 +722,14 @@ export default function FighterMode({
         else if (key === 'u') engine.triggerPlayerAction('super');
         else if (key === 'o') engine.triggerFieldSuper();
       }
-      synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
+      synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef, heldInputsRef.current);
     };
     const onKeyUp = event => {
-      if (!CONTROL_KEYS.has(event.key)) return;
-      // Release held combat input even if focus moved into a menu or field,
-      // without cancelling native button activation or editing on key release.
-      const key = event.key.toLowerCase();
-
-      if (key === 'q') setHeldInputForSide('player', 'left', false);
-      else if (key === 'd') setHeldInputForSide('player', 'right', false);
-      else if (key === 's') setHeldInputForSide('player', 'down', false);
-      else if (key === 'e') setHeldInputForSide('player', 'guard', false);
-
-      if (opponentControl === 'p2') {
-        if (key === 'arrowleft') setHeldInputForSide('cpu', 'left', false);
-        else if (key === 'arrowright') setHeldInputForSide('cpu', 'right', false);
-        else if (key === 'arrowdown') setHeldInputForSide('cpu', 'down', false);
-        else if (key === 'u') setHeldInputForSide('cpu', 'guard', false);
-      } else {
-        if (['arrowleft', 'a'].includes(key)) setHeldInputForSide('player', 'left', false);
-        else if (key === 'arrowright') setHeldInputForSide('player', 'right', false);
-        else if (key === 'arrowdown') setHeldInputForSide('player', 'down', false);
-        else if (key === 'shift' || key === 'i') setHeldInputForSide('player', 'guard', false);
-      }
+      // Release the recorded physical owner even if its character or focus
+      // changed. Native activation and editing still receive the key release.
+      synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef, heldInputsRef.current);
+      heldInputsRef.current.releaseKey(event);
+      inputRef.current = heldInputsRef.current.snapshot();
     };
     const onVisibilityChange = () => {
       simulationClockRef.current?.reset();
@@ -755,6 +751,7 @@ export default function FighterMode({
       document.removeEventListener('visibilitychange', onVisibilityChange);
       sound.stopBgm();
       if (engineRef.current === engine) engineRef.current = null;
+      heldInputsRef.current.clear();
       inputRef.current = { player: {}, cpu: {} };
     };
   }, [matchNonce, matchStarted, matchReady]);
@@ -763,6 +760,8 @@ export default function FighterMode({
     if (sessionPausedRef.current || document.hidden || !playerHeroes.length || !opponentHeroes.length) return;
     if (summary) onSessionEndRef.current?.({ reason: 'completed', report: summary });
     engineRef.current?.dispose();
+    heldInputsRef.current.clear();
+    inputRef.current = { player: {}, cpu: {} };
     setRuntimeError(false);
     onSessionStart?.();
     setSummary(null);
@@ -783,6 +782,7 @@ export default function FighterMode({
     setMatchStarted(false);
     setSummary(null);
     setSnapshot(emptySnapshot);
+    heldInputsRef.current.clear();
     inputRef.current = { player: {}, cpu: {} };
     sound.playSfx('click');
     const exitHandler = typeof customConfig?.onExit === 'function'
@@ -811,20 +811,22 @@ export default function FighterMode({
     engineRef.current?.triggerAssist(side);
   };
 
-  const setHeldInput = (key, active, side = 'player') => {
-    if (sessionPausedRef.current || document.hidden) {
+  const setHeldInput = (key, active, side = 'player', source) => {
+    if (sessionPausedRef.current || document.hidden || !engineRef.current || engineRef.current.disposed || engineRef.current.finished) {
+      heldInputsRef.current.clear();
       inputRef.current = { player: {}, cpu: {} };
       engineRef.current?.clearInputs();
       return;
     }
-    synchronizeFighterControlOwners(engineRef.current, inputRef, inputOwnersRef);
-    inputRef.current[side][key] = active;
+    synchronizeFighterControlOwners(engineRef.current, inputRef, inputOwnersRef, heldInputsRef.current);
+    heldInputsRef.current.setTouch(side, key, active, source);
+    inputRef.current = heldInputsRef.current.snapshot();
   };
 
   const triggerTag = (index, side = 'player') => {
     if (sessionPausedRef.current || document.hidden) return;
     engineRef.current?.triggerSideAction(side, 'tag', index);
-    synchronizeFighterControlOwners(engineRef.current, inputRef, inputOwnersRef);
+    synchronizeFighterControlOwners(engineRef.current, inputRef, inputOwnersRef, heldInputsRef.current);
   };
 
   const playerSnapshot = snapshot.player || emptySnapshot.player;
@@ -1152,11 +1154,11 @@ export default function FighterMode({
           style={{ gridTemplateColumns: 'repeat(5, minmax(44px, 1fr))' }}
         >
           <span style={{ gridColumn: '1 / -1', color: '#39c5bb', fontSize: 9 }}>J1 / P1</span>
-          <button type="button" title={lang === 'fr' ? 'Gauche' : 'Left'} onPointerDown={() => setHeldInput('left', true)} onPointerUp={() => setHeldInput('left', false)} onPointerCancel={() => setHeldInput('left', false)} onLostPointerCapture={() => setHeldInput('left', false)} onBlur={() => setHeldInput('left', false)} onPointerLeave={() => setHeldInput('left', false)}>&larr;</button>
-          <button type="button" title={lang === 'fr' ? 'Accroupi' : 'Crouch'} onPointerDown={() => setHeldInput('down', true)} onPointerUp={() => setHeldInput('down', false)} onPointerCancel={() => setHeldInput('down', false)} onLostPointerCapture={() => setHeldInput('down', false)} onBlur={() => setHeldInput('down', false)} onPointerLeave={() => setHeldInput('down', false)}>&darr;</button>
+          <HeldControlButton title={lang === 'fr' ? 'Gauche' : 'Left'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('left', phase === 'down', 'player', source)}>&larr;</HeldControlButton>
+          <HeldControlButton title={lang === 'fr' ? 'Accroupi' : 'Crouch'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('down', phase === 'down', 'player', source)}>&darr;</HeldControlButton>
           <button type="button" title={lang === 'fr' ? 'Saut' : 'Jump'} onClick={() => triggerAction('jump')}>&uarr;</button>
-          <button type="button" title={lang === 'fr' ? 'Droite' : 'Right'} onPointerDown={() => setHeldInput('right', true)} onPointerUp={() => setHeldInput('right', false)} onPointerCancel={() => setHeldInput('right', false)} onLostPointerCapture={() => setHeldInput('right', false)} onBlur={() => setHeldInput('right', false)} onPointerLeave={() => setHeldInput('right', false)}>&rarr;</button>
-          <button type="button" title={lang === 'fr' ? 'Garde [E]' : 'Guard [E]'} onPointerDown={() => setHeldInput('guard', true)} onPointerUp={() => setHeldInput('guard', false)} onPointerCancel={() => setHeldInput('guard', false)} onLostPointerCapture={() => setHeldInput('guard', false)} onBlur={() => setHeldInput('guard', false)} onPointerLeave={() => setHeldInput('guard', false)}>E</button>
+          <HeldControlButton title={lang === 'fr' ? 'Droite' : 'Right'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('right', phase === 'down', 'player', source)}>&rarr;</HeldControlButton>
+          <HeldControlButton title={lang === 'fr' ? 'Garde [E]' : 'Guard [E]'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('guard', phase === 'down', 'player', source)}>E</HeldControlButton>
         </div>
         <div aria-label={lang === 'fr' ? 'Actions tactiles J1' : 'P1 touch actions'}>
           <span style={{ gridColumn: '1 / -1', color: '#39c5bb', fontSize: 9 }}>
@@ -1176,11 +1178,11 @@ export default function FighterMode({
               style={{ gridTemplateColumns: 'repeat(5, minmax(44px, 1fr))' }}
             >
               <span style={{ gridColumn: '1 / -1', color: '#ff8c50', fontSize: 9 }}>J2 / P2</span>
-              <button type="button" title={lang === 'fr' ? 'J2 gauche' : 'P2 left'} onPointerDown={() => setHeldInput('left', true, 'cpu')} onPointerUp={() => setHeldInput('left', false, 'cpu')} onPointerCancel={() => setHeldInput('left', false, 'cpu')} onLostPointerCapture={() => setHeldInput('left', false, 'cpu')} onBlur={() => setHeldInput('left', false, 'cpu')} onPointerLeave={() => setHeldInput('left', false, 'cpu')}>&larr;</button>
-              <button type="button" title={lang === 'fr' ? 'J2 accroupi' : 'P2 crouch'} onPointerDown={() => setHeldInput('down', true, 'cpu')} onPointerUp={() => setHeldInput('down', false, 'cpu')} onPointerCancel={() => setHeldInput('down', false, 'cpu')} onLostPointerCapture={() => setHeldInput('down', false, 'cpu')} onBlur={() => setHeldInput('down', false, 'cpu')} onPointerLeave={() => setHeldInput('down', false, 'cpu')}>&darr;</button>
+              <HeldControlButton title={lang === 'fr' ? 'J2 gauche' : 'P2 left'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('left', phase === 'down', 'cpu', source)}>&larr;</HeldControlButton>
+              <HeldControlButton title={lang === 'fr' ? 'J2 accroupi' : 'P2 crouch'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('down', phase === 'down', 'cpu', source)}>&darr;</HeldControlButton>
               <button type="button" title={lang === 'fr' ? 'J2 saut' : 'P2 jump'} onClick={() => triggerAction('jump', 'cpu')}>&uarr;</button>
-              <button type="button" title={lang === 'fr' ? 'J2 droite' : 'P2 right'} onPointerDown={() => setHeldInput('right', true, 'cpu')} onPointerUp={() => setHeldInput('right', false, 'cpu')} onPointerCancel={() => setHeldInput('right', false, 'cpu')} onLostPointerCapture={() => setHeldInput('right', false, 'cpu')} onBlur={() => setHeldInput('right', false, 'cpu')} onPointerLeave={() => setHeldInput('right', false, 'cpu')}>&rarr;</button>
-              <button type="button" title={lang === 'fr' ? 'Garde J2 [U]' : 'P2 guard [U]'} onPointerDown={() => setHeldInput('guard', true, 'cpu')} onPointerUp={() => setHeldInput('guard', false, 'cpu')} onPointerCancel={() => setHeldInput('guard', false, 'cpu')} onLostPointerCapture={() => setHeldInput('guard', false, 'cpu')} onBlur={() => setHeldInput('guard', false, 'cpu')} onPointerLeave={() => setHeldInput('guard', false, 'cpu')}>U</button>
+              <HeldControlButton title={lang === 'fr' ? 'J2 droite' : 'P2 right'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('right', phase === 'down', 'cpu', source)}>&rarr;</HeldControlButton>
+              <HeldControlButton title={lang === 'fr' ? 'Garde J2 [U]' : 'P2 guard [U]'} disabled={!matchStarted || sessionPaused || Boolean(summary) || runtimeError} onInput={(source, phase) => setHeldInput('guard', phase === 'down', 'cpu', source)}>U</HeldControlButton>
             </div>
             <div aria-label={lang === 'fr' ? 'Actions tactiles J2' : 'P2 touch actions'}>
               <span style={{ gridColumn: '1 / -1', color: '#ff8c50', fontSize: 9 }}>
