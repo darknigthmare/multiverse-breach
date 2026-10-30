@@ -1,4 +1,4 @@
-"""Native Fighter direct-fire controls, isolated initial state; no account writes."""
+"""Native Fighter contact controls, isolated initial state; no account writes."""
 import argparse
 import json
 import os
@@ -15,7 +15,12 @@ out = Path(args.evidence)
 out.mkdir(parents=True, exist_ok=True)
 cases = [(1280, 'fr', 'player', 'barret_ff7'), (390, 'en', 'cpu', 'irvine_ff8'),
          (390, 'fr', 'player', 'goku_dbz'), (1280, 'en', 'cpu', 'vortigaunt_ally'),
-         (1280, 'fr', 'cpu', 'team_fortress_2_scout'), (390, 'en', 'player', 'quake_franchise_ranger')]
+         (1280, 'fr', 'cpu', 'team_fortress_2_scout'), (390, 'en', 'player', 'quake_franchise_ranger'),
+         (1280, 'fr', 'player', 'leia'), (390, 'en', 'cpu', 'leia'),
+         (390, 'fr', 'player', 'leia_organa'), (1280, 'en', 'cpu', 'leia_organa'),
+         (1280, 'fr', 'player', 'doom_marine_classic'), (390, 'en', 'cpu', 'doom_marine_classic'),
+         (390, 'fr', 'player', 'zell_ff8'), (1280, 'en', 'cpu', 'zell_ff8'),
+         (1280, 'fr', 'cpu', 'Quake::Makron — Quake II'), (390, 'en', 'cpu', 'Halo::Elite Minor')]
 results = []
 with sync_playwright() as pw:
     opts = {'headless': True, 'args': ['--no-sandbox']}
@@ -31,7 +36,7 @@ with sync_playwright() as pw:
             page.on('pageerror', lambda error: errors.append(str(error)))
             page.on('console', lambda m: errors.append(m.text) if m.type == 'error' and m.text.startswith('Fighter render loop failed') else None)
             page.route('**/*', lambda r: r.continue_() if urlparse(r.request.url).hostname in ('127.0.0.1', 'localhost') else r.abort())
-            name = f'ranged-{actor}-{width}-{lang}-{side}'
+            name = re.sub(r'[^a-zA-Z0-9_.-]', '-', f'ranged-{actor}-{width}-{lang}-{side}')
             result = {'case': name, 'passed': False, 'step': 'load'}
             try:
                 page.goto(args.base + '/scripts/fixtures/fighter-ranged.html?' + urlencode({'actor': actor, 'lang': lang}))
@@ -54,12 +59,12 @@ with sync_playwright() as pw:
                 page.locator('#qa-pause').click()
                 expect(button).to_be_enabled()
                 assert initial['name'] in button.get_attribute('title')
-                result['step'] = 'native-direct-fire-command'
+                result['step'] = 'native-source-command'
                 if width == 390:
                     button.click()
                 else:
                     page.keyboard.press(key.lower())
-                page.wait_for_function('side => window.__fighterRanged.engine.getActive(side).action?.meleeSignature?.delivery === "ranged"', arg=side)
+                page.wait_for_function('([side,delivery]) => window.__fighterRanged.engine.getActive(side).action?.meleeSignature?.delivery === delivery', arg=[side, initial['delivery']])
                 page.locator('#qa-pause').click()
                 page.wait_for_function('window.__fighterRanged.engine.paused')
                 snapshot = 'side => {const q=window.__fighterRanged,e=q.engine;return {elapsed:e.getActive(side).action?.elapsed,hp:e.getOpponent(side).currentHp,hits:q.hits.length};}'
