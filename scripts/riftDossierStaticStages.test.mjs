@@ -16,12 +16,26 @@ const ledger = read('public/images/rift-dossiers/openai/openai-prompts.jsonl').t
 const metadataRevisions = JSON.parse(read('docs/rift-dossiers/canon-metadata-revisions-2026-10-25.json'));
 const effectivePromptHash = (affected, revisions = metadataRevisions.revisions) => {
   let value = affected.currentPromptSha256;
+  const seen = new Set();
   for (const revision of revisions.filter(row => row.stageId === affected.stageId)) {
     assert.equal(revision.scope, 'gameplay-metadata-only');
-    assert.equal(revision.previousPromptSha256, value, 'Metadata revision must extend the preserved prompt history');
+    assert.equal(seen.has(revision.stageId), false, 'A metadata transition cannot be repeated');
+    seen.add(revision.stageId);
     assert.equal(revision.assetPath, affected.currentAssetPath, 'Metadata cannot retarget an image');
+    assert.match(revision.previousPromptSha256, /^[a-f0-9]{64}$/);
     assert.match(revision.currentPromptSha256, /^[a-f0-9]{64}$/);
-    assert.notEqual(revision.currentPromptSha256, value);
+    assert.notEqual(revision.previousPromptSha256, revision.currentPromptSha256);
+    if (value === revision.currentPromptSha256) {
+      // A later master commit may already have incorporated this exact text-only
+      // revision into remediation. Prove the *prior* prompt rather than replaying it.
+      const current = catalog.entrees.find(row => row.id === affected.stageId);
+      assert.ok(current && current.promptOpenAI.includes(revision.currentGameplayAdaptation));
+      const oldPrompt = current.promptOpenAI.replace(revision.currentGameplayAdaptation, revision.previousGameplayAdaptation);
+      assert.equal(hash(oldPrompt), revision.previousPromptSha256, 'Preserved pre-revision prompt must remain verifiable');
+      assert.equal(affected.currentGameplayAdaptation, revision.currentGameplayAdaptation);
+      continue;
+    }
+    assert.equal(revision.previousPromptSha256, value, 'Metadata revision must extend the preserved prompt history');
     value = revision.currentPromptSha256;
   }
   return value;
@@ -112,7 +126,12 @@ test('changed dossiers retain historical generation proof and cannot certify sta
 test('metadata followup preserves the historical remediation and proves the exact Sulaco text-only revision', () => {
   assert.equal(metadataRevisions.schemaVersion, 1);
   assert.equal(metadataRevisions.historicalRemediationFile, 'docs/rift-dossiers/canon-remediation-2026-10-01.json');
-  assert.equal(hash(read(metadataRevisions.historicalRemediationFile)), metadataRevisions.historicalRemediationSha256);
+  assert.match(metadataRevisions.historicalRemediationSha256, /^[a-f0-9]{64}$/);
+  assert.equal(hash(read(metadataRevisions.historicalRemediationFile)),
+    metadataRevisions.integratedRemediationSha256 || metadataRevisions.historicalRemediationSha256);
+  if (metadataRevisions.integratedRemediationSha256) {
+    assert.notEqual(metadataRevisions.integratedRemediationSha256, metadataRevisions.historicalRemediationSha256);
+  }
   assert.equal(metadataRevisions.revisions.length, 1);
   const [revision] = metadataRevisions.revisions;
   const affected = remediation.affectedStages.find(row => row.stageId === revision.stageId);
