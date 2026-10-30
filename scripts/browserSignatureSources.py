@@ -5,6 +5,7 @@ import re
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 from playwright.sync_api import sync_playwright
+from browserCombatUi import open_arsenal
 
 base = os.environ.get('AUDIT_BASE_URL', 'http://127.0.0.1:4173')
 assert urlparse(base).hostname in ('127.0.0.1', 'localhost'), 'Only a loopback test server is allowed'
@@ -72,6 +73,7 @@ with sync_playwright() as playwright:
                     page.get_by_role('button', name=re.compile('Confirmer les cibles|Confirm targets')).click()
                 else:
                     side = 'opponent' if '::' in source else 'player'
+                    open_arsenal(page)
                     page.locator(f'[data-signature-super="{side}"]').click()
                 page.wait_for_function('window.__sourceAudit.engine.signatureDirector.busy')
                 page.wait_for_function('window.__sourceAudit.engine.signatureDirector.snapshot()?.tick >= 16')

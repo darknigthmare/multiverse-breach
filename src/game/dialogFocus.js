@@ -19,3 +19,13 @@ export function trapDialogTab(event, root) {
     event.preventDefault(); first.focus();
   }
 }
+
+/** Closed native dialogs stay mounted and must not swallow the global pause key. */
+export function hasActiveModal(doc = globalThis.document) {
+  if (!doc) return false;
+  return [...doc.querySelectorAll('[aria-modal="true"]')].some(element => {
+    if (element.tagName === 'DIALOG' && !element.open) return false;
+    if (element.closest('[hidden], [inert]') || element.getAttribute('aria-hidden') === 'true') return false;
+    return element.getClientRects().length > 0;
+  });
+}

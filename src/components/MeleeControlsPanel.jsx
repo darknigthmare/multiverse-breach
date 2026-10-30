@@ -1,10 +1,12 @@
 import { useId, useMemo, useState } from 'react';
 import {
   MELEE_REMAPPABLE_SLOTS,
+  findMeleeAxisConflict,
   formatMeleeInputCode,
   normalizeMeleeInputMaps
 } from '../game/melee/meleeInputMap';
 import { CHARGED_ATTACK_DATA } from '../game/melee/meleeStateMachine';
+import HeldControlButton from './HeldControlButton.jsx';
 
 const SLOT_LABELS = Object.freeze({
   moveLeft: { fr: 'GAUCHE', en: 'LEFT' },
@@ -127,12 +129,17 @@ export default function MeleeControlsPanel({
   onReset,
   runtimeActor,
   onTouchAction,
-  trial = false
+  trial = false,
+  presentation = 'all',
+  disabled = false
 }) {
   const isFrench = lang === 'fr';
+  const showSettings = presentation === 'all' || presentation === 'settings';
+  const showMeters = presentation === 'all' || presentation === 'hud';
+  const showTouch = presentation === 'all' || presentation === 'touch';
   const copy = isFrench
     ? {
-        title: 'COMMANDES MÊLÉE / P4',
+        title: 'COMMANDES MÊLÉE',
         guard: 'GARDE',
         state: 'ÉTAT',
         charge: 'CHARGE',
@@ -140,6 +147,8 @@ export default function MeleeControlsPanel({
         bindings: 'AFFECTATIONS',
         touch: 'COMMANDES TACTILES',
         press: 'APPUYEZ SUR UNE TOUCHE',
+        conflict: 'est déjà affectée à',
+        retry: 'Choisissez une autre touche.',
         cancelled: 'Remappage annule.',
         instructions: 'Sélectionnez une affectation pour changer sa touche.',
         resetDone: 'Réinitialisation des commandes demandée.',
@@ -147,7 +156,7 @@ export default function MeleeControlsPanel({
         player2: 'JOUEUR 2'
       }
     : {
-        title: 'MELEE CONTROLS / P4',
+        title: 'MELEE CONTROLS',
         guard: 'GUARD',
         state: 'STATE',
         charge: 'CHARGE',
@@ -155,6 +164,8 @@ export default function MeleeControlsPanel({
         bindings: 'BINDINGS',
         touch: 'TOUCH CONTROLS',
         press: 'PRESS A KEY',
+        conflict: 'is already assigned to',
+        retry: 'Choose another key.',
         cancelled: 'Remapping cancelled.',
         instructions: 'Select a binding to change its key.',
         resetDone: 'Control reset requested.',
@@ -201,6 +212,9 @@ export default function MeleeControlsPanel({
     if (!capture) return;
     event.preventDefault();
     event.stopPropagation();
+    // The activation key may still be held when capture opens. Wait for a
+    // fresh press, while consuming repeats so they cannot click or escape.
+    if (event.repeat) return;
     if (event.code === 'Escape') {
       setCapture(null);
       setAnnouncement(copy.cancelled);
@@ -209,6 +223,11 @@ export default function MeleeControlsPanel({
     if (!event.code || event.code === 'Unidentified') return;
     const targetSlot = MELEE_REMAPPABLE_SLOTS.find(slot => slot.id === capture.slot);
     const label = targetSlot ? slotLabel(targetSlot) : capture.slot;
+    const conflict = findMeleeAxisConflict(normalizedMaps, capture.side, capture.slot, event.code);
+    if (conflict) {
+      setAnnouncement(`${sideLabel(capture.side)} / ${label}: ${formatCode(event.code, isFrench)} ${copy.conflict} ${slotLabel(conflict)}. ${copy.retry}`);
+      return;
+    }
     onRemap?.(capture.side, capture.slot, event.code);
     setCapture(null);
     setAnnouncement(`${sideLabel(capture.side)} / ${label}: ${formatCode(event.code, isFrench)}.`);
@@ -218,22 +237,6 @@ export default function MeleeControlsPanel({
     setCapture(null);
     setAnnouncement(copy.resetDone);
     onReset?.();
-  };
-
-  const emitTouch = (event, action, phase) => {
-    event.preventDefault();
-    if (phase === 'down') event.currentTarget.setPointerCapture?.(event.pointerId);
-    if (phase === 'up' && event.currentTarget.hasPointerCapture?.(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    }
-    onTouchAction?.(action, phase);
-  };
-
-  const emitTouchFromKey = (event, action, phase) => {
-    if (event.key !== ' ' && event.key !== 'Enter') return;
-    if (phase === 'down' && event.repeat) return;
-    event.preventDefault();
-    onTouchAction?.(action, phase);
   };
 
   const renderBindings = (side, label) => (
@@ -305,7 +308,9 @@ export default function MeleeControlsPanel({
 
   return (
     <section
-      aria-labelledby={titleId}
+      className={`melee-controls-panel melee-controls-${presentation}`}
+      aria-labelledby={showSettings ? titleId : undefined}
+      aria-label={!showSettings ? copy.title : undefined}
       onKeyDownCapture={handleCaptureKey}
       onBlur={event => {
         if (capture && !event.currentTarget.contains(event.relatedTarget)) {
@@ -313,18 +318,18 @@ export default function MeleeControlsPanel({
           setAnnouncement(copy.cancelled);
         }
       }}
-      style={panelStyle}
+      style={presentation === 'all' || presentation === 'settings' ? panelStyle : undefined}
     >
-      <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+      {showSettings && <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
         <h2 id={titleId} style={{ margin: 0, color: '#62f3e8', fontSize: 12, letterSpacing: '0.12em' }}>
           {copy.title}
         </h2>
         <button type="button" onClick={resetBindings} style={{ ...retroButtonStyle, minHeight: 29, padding: '4px 8px', color: '#ffbd69', borderColor: 'rgba(255, 189, 105, 0.5)' }}>
           {copy.reset}
         </button>
-      </header>
+      </header>}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 5 }}>
+      {showMeters && <div className="melee-live-meters" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 5 }}>
         <div style={{ padding: 6, border: '1px solid rgba(57, 197, 187, 0.18)', background: 'rgba(0, 0, 0, 0.22)' }}>
           <span style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4, color: '#9db8bc' }}>
             <b>{copy.guard}</b><output>{guardPercent}%</output>
@@ -343,36 +348,33 @@ export default function MeleeControlsPanel({
             {readableState(runtimeActor, isFrench)}
           </output>
         </div>
-      </div>
+      </div>}
 
-      <p id={liveId} role="status" aria-live="polite" aria-atomic="true" style={{ minHeight: 13, margin: 0, color: capture ? '#ffe66d' : '#8fa8ad' }}>
+      {showSettings && <p id={liveId} role="status" aria-live="polite" aria-atomic="true" style={{ minHeight: 13, margin: 0, color: capture ? '#ffe66d' : '#8fa8ad' }}>
         {announcement || copy.instructions}
-      </p>
+      </p>}
 
-      <div style={{ display: 'grid', gridTemplateColumns: localP2 ? 'repeat(auto-fit, minmax(270px, 1fr))' : '1fr', gap: 7 }}>
+      {showSettings && <div style={{ display: 'grid', gridTemplateColumns: localP2 ? 'repeat(auto-fit, minmax(270px, 1fr))' : '1fr', gap: 7 }}>
         {renderBindings('player', copy.player)}
         {localP2 && renderBindings('cpu', copy.player2)}
-      </div>
+      </div>}
 
-      <fieldset style={{ margin: 0, padding: '7px 8px 8px', border: '1px solid rgba(57, 197, 187, 0.22)', borderRadius: 4 }}>
+      {showTouch && <fieldset className="melee-touch-field" style={{ margin: 0, padding: '7px 8px 8px', border: '1px solid rgba(57, 197, 187, 0.22)', borderRadius: 4 }}>
         <legend style={{ padding: '0 5px', color: '#62f3e8', letterSpacing: '0.1em' }}>{copy.touch}</legend>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 5 }}>
+        <div className="melee-touch-buttons" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 5 }}>
           {TOUCH_CONTROLS.map(control => {
             const label = (trial ? TRIAL_SLOT_LABELS[control.id] : null)?.[isFrench ? 'fr' : 'en']
               || SLOT_LABELS[control.id]?.[isFrench ? 'fr' : 'en']
               || control.id;
             return (
-              <button
+              <HeldControlButton
                 key={control.id}
                 type="button"
                 aria-label={label}
+                data-touch-slot={control.id}
+                disabled={disabled}
                 title={label}
-                draggable={false}
-                onPointerDown={event => emitTouch(event, control.id, 'down')}
-                onPointerUp={event => emitTouch(event, control.id, 'up')}
-                onPointerCancel={event => emitTouch(event, control.id, 'cancel')}
-                onKeyDown={event => emitTouchFromKey(event, control.id, 'down')}
-                onKeyUp={event => emitTouchFromKey(event, control.id, 'up')}
+                onInput={(source, phase) => onTouchAction?.(control.id, phase, source)}
                 style={{
                   ...retroButtonStyle,
                   minHeight: 42,
@@ -386,11 +388,12 @@ export default function MeleeControlsPanel({
               >
                 <b aria-hidden="true" style={{ color: '#62f3e8', fontSize: 14 }}>{control.glyph}</b>
                 <small style={{ font: 'inherit', fontSize: 8 }}>{label}</small>
-              </button>
+              </HeldControlButton>
             );
           })}
         </div>
-      </fieldset>
+      </fieldset>}
     </section>
   );
 }
+

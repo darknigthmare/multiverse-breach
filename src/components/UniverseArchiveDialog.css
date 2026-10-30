@@ -2,6 +2,14 @@
   flex: 1 1 auto;
   overscroll-behavior: contain;
 }
+.universe-archive-overlay { position: fixed; inset: 0; z-index: 1400; background: #02070c; color: #e6f4f0; }
+.universe-archive-reader { width: 100%; height: 100dvh; max-width: none; overflow: hidden; display: flex; flex-direction: column; background: radial-gradient(ellipse at 85% 15%, #123c4444, transparent 70%), #060c13; padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); box-sizing: border-box; }
+.universe-archive-reader > div:first-child { flex-shrink: 0; padding-inline: max(20px, env(safe-area-inset-left)) !important; }
+.universe-archive-reader > [data-archive-section] { min-height: 0; overflow: auto; scrollbar-gutter: stable; padding-inline: max(24px, env(safe-area-inset-left)) !important; align-content: start; }
+.universe-archive-reader [data-archive-close], .universe-archive-reader button { min-height: 40px; }
+.universe-archive-reader .universe-archive-lore { max-width: 88ch; max-height: 17dvh; overflow-y: auto; overscroll-behavior: contain; padding-right: 12px; font-size: .9rem !important; line-height: 1.65 !important; }
+.universe-archive-reader :focus-visible { outline: 2px solid var(--archive-accent); outline-offset: 3px; }
+.universe-archive-reader > [data-archive-section] p { max-width: 88ch; font-size: .9rem !important; line-height: 1.65 !important; }
 .universe-archive-lore:focus-visible {
   outline: 2px solid #39c5bb;
   outline-offset: 3px;

@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R14 } from '../src/game/wardrobeOfficialR14.js';
 import { OFFICIAL_COSTUMES_R13 } from '../src/game/wardrobeOfficialR13.js';
 import { OFFICIAL_COSTUMES_R12 } from '../src/game/wardrobeOfficialR12.js';
 import { OFFICIAL_COSTUMES_R11 } from '../src/game/wardrobeOfficialR11.js';
@@ -22,13 +23,13 @@ for(const row of OFFICIAL_COSTUMES_R7)test(`R7 exact actor and immutable moveset
  const item=getOfficialCostumes(actor).find(x=>x.key===row.key);assert.ok(item);assert.ok(item.visualSpec.fr&&item.visualSpec.en);
  assert.equal(item.equippable,false);assert.equal(applyActorAppearance(actor,item.id),actor);assert.equal(item.production.fidelityCriteria.length,10);
 });
-test('all 64 R7 definitions retained alongside the R9 extension',()=>assert.equal(ALL_OFFICIAL_WARDROBE.length,64+OFFICIAL_COSTUMES_R9.length+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length)+OFFICIAL_COSTUMES_R12.length+OFFICIAL_COSTUMES_R13.length));
+test('all 64 R7 definitions retained alongside the R9 extension',()=>assert.equal(ALL_OFFICIAL_WARDROBE.length,64+OFFICIAL_COSTUMES_R9.length+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length)+OFFICIAL_COSTUMES_R12.length+OFFICIAL_COSTUMES_R13.length+OFFICIAL_COSTUMES_R14.length));
 test('Raiden Cyborg Ninja is not rebound to Gray Fox or MGS2 Raiden',()=>{
  assert.equal(getOfficialCostumes({id:'gray_fox',universe:'Metal Gear'}).length,0);
  assert.equal(getOfficialCostumes({id:'raiden',universe:'Metal Gear'}).length,0);
  assert.equal(getOfficialCostumes(raiden).length,5);
 });
-test('Agent 47 gets only six named suits, not associated pack weapons',()=>{const rows=getOfficialCostumes({id:'hitman_woa_agent_47',universe:'HITMAN — World of Assassination'});assert.equal(rows.length,6);for(const row of rows)assert.ok(!row.weapon&&!row.stats&&!row.special);});
+test('Agent 47 retains the six R7 named suits, not associated pack weapons',()=>{const rows=getOfficialCostumes({id:'hitman_woa_agent_47',universe:'HITMAN — World of Assassination'}).filter(c=>OFFICIAL_COSTUMES_R7.some(r=>r.key===c.key));assert.equal(rows.length,6);for(const row of rows)assert.ok(!row.weapon&&!row.stats&&!row.special);});
 test('Barry title-level evidence stays explicitly distinguished',()=>{const row=ALL_OFFICIAL_WARDROBE.find(x=>x.key==='rev2-barry-commandant');assert.equal(row.sourceEvidence,'PUBLISHER_PRODUCT_TITLE_ONLY');assert.equal(row.artApproval,'NOT_REVIEWED');});
 test('Chris research partial, no assertion of exhaustive official list',()=>assert.equal(getWardrobeCoverage({id:'chris_redfield',universe:'Resident Evil'}).sourceResearch,'PARTIAL_DOCUMENTED'));
 test('criteria total exactly 100',()=>assert.equal(criteria.reduce((n,c)=>n+c.max,0),100));

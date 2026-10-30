@@ -38,6 +38,7 @@ import {
   beginMeleeCharge,
   beginMeleeLightCombo,
   beginMeleeShield,
+  cancelMeleeCharge,
   cancelMeleeHeldInputs,
   getMeleeHurtbox,
   initializeMeleeActorRuntime,
@@ -550,6 +551,10 @@ export class EngineSmash {
   releaseChargedMeleeAttack(side = 'player') {
     if (this.gameOver || this.isMatchInputLocked()) return false;
     return releaseMeleeCharge(this.getMeleeActor(side));
+  }
+
+  cancelChargedMeleeAttack(side = 'player') {
+    return cancelMeleeCharge(this.getMeleeActor(side));
   }
 
   setMeleeShield(side = 'player', held = false) {

@@ -10,8 +10,9 @@ concurrency:
   cancel-in-progress: true
 jobs:
   signatures:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    # Chromium and OS dependencies may take several minutes to download.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:

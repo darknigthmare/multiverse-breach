@@ -8,6 +8,7 @@ import { ENEMIES_DB } from '../../src/game/enemies.js';
 import { SIGNATURE_SOURCE_KITS } from '../../src/game/signatureSourceKits.js';
 import { getFighterContactDefinition } from '../../src/game/fighterMeleeSignatures.js';
 import '../../src/index.css';
+import './combatHarness.css';
 const q = new URLSearchParams(location.search);
 const lang = q.get('lang') === 'en' ? 'en' : 'fr';
 const id = q.get('actor') || 'barret_ff7';
@@ -54,7 +55,7 @@ audit.prepare = (side, distance = 'near') => {
 };
 export default function Harness() {
   const [paused, pause] = useState(true), [mounted, mount] = useState(true);
-  return <><header><p>Source contact QA — real controls, synthetic start, no campaign reward</p>
+  return <><header className="combat-qa-toolbar"><p>Source contact QA — real controls, synthetic start, no campaign reward</p>
     <button id="qa-pause" onClick={() => pause(v => !v)}>QA pause</button>
     <button id="qa-unmount" onClick={() => mount(false)}>QA unmount</button>
   </header>{mounted && <FighterMode lang={lang} heroes={heroes} unlockedHeroes={ids} activeTeam={ids}

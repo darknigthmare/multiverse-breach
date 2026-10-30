@@ -1,6 +1,40 @@
-# Suivi Multiverse Breach — R13, 25 octobre 2026
+# Classeurs et suivis de Multiverse Breach
 
-## Version actuelle et périmètre
+## Armes et équipements — compléments du 28 octobre 2026
+
+Le relevé dédié est établi sur **master `1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6`** : **4 936 acteurs / 525 univers**, **5 241 occurrences de catalogue** et **1 500 relations explicites**. Les listes individuelles, objets, pouvoirs, techniques et projections restent distingués.
+
+- [Excel armes et équipements par personnage](Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx)
+- [Nouveaux équipements documentés et manquants restants — 28 octobre](ARMES_EQUIPEMENTS_COMPLEMENTS_2026-10-28.md)
+- [Relevé initial des manquants et procédure de régénération — 26 octobre](ARMES_EQUIPEMENTS_2026-10-26.md)
+- [Comparaison des deux versions avec le même extracteur](sources/equipment-comparison-2026-10-26.json)
+- [Références documentaires et restrictions d’incarnation](sources/equipment-canonical-references-2026-10-26.json)
+- [Vérifications des compléments et du classeur du 28 octobre](evidence/equipment-complements-2026-10-28.json)
+- [Vérifications de la reprise et du classeur du 27 octobre](evidence/equipment-progress-2026-10-27.json)
+- [Preuves de la livraison initiale du 26 octobre](evidence/equipment-inventory-2026-10-26.json)
+- [Extracteur reproductible](../../scripts/exportEquipmentWorkbookData.mjs), [lanceur de génération](../../scripts/buildEquipmentWorkbook.mjs) et [générateur du classeur](tools/build_equipment_workbook.mjs)
+
+Le classeur contient sept onglets et **10 346 lignes Actions couvrant 28 473 points à traiter**. Les 28 304 constats du dépôt sont conservés dans 10 177 dossiers par acteur ou occurrence d’objet ; les 169 travaux documentaires gardent leur ligne séparée. Catégories, travaux, preuves et identifiants de chaque constat restent détaillés. Un dossier ne doit être marqué terminé qu’après traitement de tous ses points. Le corpus couvre partiellement **79 acteurs / 79 sources** ; **144 références** demandent encore un choix d’incarnation précise.
+
+**Le lot du 28 octobre ajoute 114 références sur 60 fiches, dont 57 nouvellement documentées**, pour Star Wars, Resident Evil, Devil May Cry, Final Fantasy VII/VIII/XIII/XV et Halo. Les 55 références initiales et leurs sources sont conservées. Les dates de vérification, restrictions d’édition, représentations sous licence et illustrations restent explicites. Les données du jeu conservent le même commit source ; l’ajout documentaire ne clôture pas une revue visuelle ni une liste d’équipement absente.
+
+Dans **Personnages**, la colonne **U** compte les références documentées et la colonne **V** les regroupe par édition. Filtrer U sur zéro retrouve les **4 857 fiches sans référence ciblée**. Le total des fiches partiellement documentées est visible en Synthèse B39, celui des fiches sans référence en B40. Dans **Références 1a1**, U donne le repère précis dans la source et V la page de contexte lorsqu’une image dispose d’une page parente. Une fiche avec une référence reste à compléter jusqu’à l’inventaire de son incarnation et au contrôle du rendu.
+
+**Reprise du suivi ajoutée le 27 octobre 2026 :** fournir l’ancien XLSX en sixième argument du lanceur pour conserver l’avancement, la preuve et le responsable par `ID dossier`, même après tri. Un nouveau constat ou un changement du contenu à examiner rouvre le dossier à `À vérifier` en conservant la preuve et le responsable. Les dossiers nouveaux commencent à `À faire` ; les dossiers disparus restent consignés dans `PREVIEW_DIR/progress-carryforward.json` pour revue, sans être déclarés terminés. Sans sixième argument, le suivi de la sortie existante est repris automatiquement ; le suivi n’est initialisé à neuf que si aucun ancien classeur ni fichier de sortie n’existe. La [procédure de régénération](ARMES_EQUIPEMENTS_2026-10-26.md#reproduire-les-données) précise la commande, les protections avant remplacement et le contrôle du rapport de reprise.
+
+Les rapports sont conservés sous `progress-carryforward-<empreinte>.json` avant remplacement du XLSX, avec l’empreinte du fichier auquel ils correspondent. Cela préserve les dossiers retirés même si la publication du rapport courant échoue. Les formules et les saisies manuelles commençant par `=` sont refusées avant remplacement du XLSX ; les préfixes `+`, `-` et `@` restent inchangés.
+
+Dans Synthèse, les six comptes de priorité **B20:B25 sont figés au commit audité** et vérifiés sur les constats. Ils décrivent le relevé initial, sans diminuer au changement de statut. Les compteurs de suivi **B14/B15/B17** et les résultats en **N** d’Actions restent dynamiques. Un nouvel export est nécessaire pour actualiser les observations du dépôt.
+
+Les catalogues et les 54 listes d’équipement n’ont pas changé depuis la version comparée du 24 octobre ; six signatures de combat ont été ajoutées. Les constats se recoupent et ne représentent pas autant de bugs observés manuellement. **La fidélité artistique 1:1 reste à vérifier.**
+
+Les résultats CI historiques restent datés et associés à leur commit dans les rapports de contrôle. Ils ne valident pas les modifications ultérieures. L’état courant de la branche est visible dans la [PR #10](https://github.com/darknigthmare/multiverse-breach/pull/10).
+
+Les compteurs R13 ci-dessous décrivent le vestiaire historique du 25 octobre. Ils ne remplacent pas le relevé actuel des armes et équipements. Les autres XLSX sont préservés.
+
+## Historique vestiaire R13 — 25 octobre 2026
+
+### Version actuelle et périmètre
 
 Le code R13 `4aa64f4540e245bf8306ffdb7beaeedaa72873ba` part de la tête exacte `e09265fa5a6b75caa8b66b6784629ea69cd0da8a` et préserve les travaux R12 et les corrections de combat intervenues depuis.
 
@@ -17,7 +51,7 @@ Le contrôle des listes de source tient maintenant compte des composants et édi
 
 **Aucun nouveau PNG, costume équipable ou certification artistique 1:1 dans R13.** Une acquisition est un droit conservé, pas une preuve de production graphique.
 
-## Compteurs de la version R13
+### Compteurs de la version R13
 
 4 936 acteurs / 525 univers / 3 206 stages conservés. 176 définitions officielles, 335 associations sur 54 identités ; 60 concepts personnalisés et quatre collections communes. 20 139 droits, tous rattachés aux 530 routes de boosters. Les 19 953 anciens identifiants sont préservés.
 
@@ -25,13 +59,13 @@ Le registre contient 30 721 actions ouvertes (17 328 P1 / 13 393 P2 de travail).
 
 312 identités sont explicitement originales. Parmi les 4 624 identités externes ou non résolues, 4 570 n'ont pas encore de variante officielle documentée. **Le recensement de toutes les tenues et des personnages absents des franchises n'est pas terminé.**
 
-## Vérifications de R13
+### Vérifications de R13
 
 [Run dédié 40165144880](https://github.com/darknigthmare/multiverse-breach/actions/runs/40165144880) réussi : 1 204 tests vestiaire/boosters/fidélité/scènes, 1 027 contrôles de combat dans une suite séparée, lint ciblé sans erreur/avertissement et compilation Vite des sources réussie. Les mêmes tests locaux ne sont pas additionnés une seconde fois.
 
 Quatorze fichiers source/tests publiés correspondent aux empreintes locales et à l'arbre reconstruit. Aucun prébuild complet des bitmaps, nouveau parcours navigateur ou contrôle Vercel n'est revendiqué. Les images et costumes n'ont pas été validés par ces tests.
 
-## Classeurs et exports
+### Classeurs et exports
 
 Le classeur R13 livré dans la conversation contient onze onglets : synthèse, acteurs, synthèse des manquants, officiels, ajouts R13, boosters, recherches, originaux, périmètres, modèle de revue et sources. **Le CSV joint contient les 30 721 actions détaillées**, sans les présenter comme autant de défauts graphiques observés manuellement.
 
@@ -43,7 +77,7 @@ Le classeur R13 livré dans la conversation contient onze onglets : synthèse, a
 
 Le catalogue historique original perdu n'est pas présenté comme restauré.
 
-## Historique conservé
+### Historique conservé
 
 [R12](COSTUMES_MANQUANTS_R12_2026-10-25.md) · [R11](COSTUMES_FIDELITE_R11_2026-10-25.md) · [R10](COSTUMES_FIDELITE_R10_2026-10-25.md) · [R9](MANQUANTS_PERSONNAGES_R9_2026-10-24.md).
 

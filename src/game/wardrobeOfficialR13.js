@@ -58,14 +58,22 @@ magicka.push(make('Magicka',MAGICKA_WEARERS_R13,'r13-magicka-survival-hat',"Wiza
  'Hat only. Record its silhouette, base and occlusion on all three avatars; do not distribute Sharp Sword, Staff +1 or Meteor Shower with this right. The source lists a wearable item, not a full outfit.',
  {sourceAcquisition:'PAID_DLC_IN_SOURCE',sourceGameplayTransferred:false}));
 export const OFFICIAL_COSTUMES_R13=Object.freeze([...payday,...magicka]);
-// Every source scope declares a boundary; completion never means the entire wardrobe is known.
-export const WARDROBE_SOURCE_SCOPES_R13=Object.freeze([
- ...PAYDAY_NAMED_PACKS_R13.map(p=>({id:p.id,sourceId:p.sourceId,work:p.work,universe:'Payday',actorIds:PAYDAY_WEARERS_R13})),
- {id:'magicka-gamer-named-robes',sourceId:'paradox-gamer',work:'Magicka (2011) — Gamer Bundle',universe:'Magicka',actorIds:MAGICKA_WEARERS_R13},
- {id:'magicka-survival-wearable-only',sourceId:'paradox-survival',work:"Magicka (2011) — Wizard's Survival Kit",universe:'Magicka',actorIds:MAGICKA_WEARERS_R13}
-].flatMap(s=>s.actorIds.map(actorId=>Object.freeze({id:s.id,universe:s.universe,actorId,sourceUrl:sources.get(s.sourceId).url,checkedOn,
+// Independent source requirements: never generate expectations from the delivered
+// OFFICIAL_COSTUMES_R13 list, otherwise a missing entry can silently remove its own check.
+const sourceRequirements=[
+ ...PAYDAY_NAMED_PACKS_R13.map(p=>({id:p.id,sourceId:p.sourceId,work:p.work,universe:'Payday',actorIds:PAYDAY_WEARERS_R13,
+  items:p.items.map(i=>({key:`r13-${p.id}-${i.slug}`,name:i.name,nature:i.component==='outfit-only'?'official-costume':'official-accessory',component:i.component,sourceMode:'PAYDAY2_PC_SHARED_COSMETIC'}))})),
+ {id:'magicka-gamer-named-robes',sourceId:'paradox-gamer',work:'Magicka (2011) — Gamer Bundle',universe:'Magicka',actorIds:MAGICKA_WEARERS_R13,
+  items:[{key:'r13-magicka-gamer-zombie',name:'Zombie Robe',nature:'official-model',component:'robe-model'},
+   {key:'r13-magicka-gamer-tentacle',name:'Tentacle Robe',nature:'official-model',component:'robe-model'},
+   {key:'r13-magicka-gamer-epic',name:'Epic Robe',nature:'official-costume',component:'outfit-only'}].map(i=>({...i,sourceMode:'MAGICKA1_PC_PLAYER_ROBE'}))},
+ {id:'magicka-survival-wearable-only',sourceId:'paradox-survival',work:"Magicka (2011) — Wizard's Survival Kit",universe:'Magicka',actorIds:MAGICKA_WEARERS_R13,
+  items:[{key:'r13-magicka-survival-hat',name:"Wizard's Hat",nature:'official-accessory',component:'headwear',sourceMode:'MAGICKA1_PC_PLAYER_ROBE'}]}
+];
+export const WARDROBE_SOURCE_SCOPES_R13=Object.freeze(sourceRequirements.flatMap(s=>s.actorIds.map(actorId=>Object.freeze({
+ id:s.id,universe:s.universe,actorId,sourceUrl:sources.get(s.sourceId).url,checkedOn,
  boundary:'Named cosmetic components in this exact source only; wearer-specific imagery and whole-character wardrobe completeness remain unverified.',
- expectedItems:Object.freeze(OFFICIAL_COSTUMES_R13.filter(e=>e.coverageScopeId===s.id).map(e=>Object.freeze({key:e.key,name:e.name.en,nature:e.nature,component:e.component,sourceWork:e.sourceWork,sourceMode:e.sourceMode})))
+ expectedItems:Object.freeze(s.items.map(i=>Object.freeze({...i,sourceWork:s.work})))
 }))));
 export const WARDROBE_RESEARCH_R13=Object.freeze([
  ...PAYDAY_WEARERS_R13.map(id=>Object.freeze({universe:'Payday',id,key:'r13-payday-wearer-fit',sourceUrl:sources.get('starbreeze-megacity').url,status:'PER_WEARER_VISUAL_REFERENCE_REQUIRED',

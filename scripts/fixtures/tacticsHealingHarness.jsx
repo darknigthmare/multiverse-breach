@@ -5,6 +5,7 @@ import GameCanvas from '../../src/components/GameCanvas.jsx';
 import { EngineTactics } from '../../src/game/engineTactics.js';
 import { HEROES_DB } from '../../src/game/heroes.js';
 import '../../src/index.css';
+import './combatHarness.css';
 const query = new URLSearchParams(location.search);
 const side = query.get('side') === 'enemy' ? 'enemy' : 'hero';
 const lang = query.get('lang') === 'en' ? 'en' : 'fr';
@@ -67,7 +68,7 @@ audit.prepare = kind => {
 };
 export function Harness() {
   const [paused, setPaused] = useState(false), [mounted, setMounted] = useState(true);
-  return <><header style={{ padding: 12 }}><span>Isolated tactical source healing QA. </span>
+  return <><header className="combat-qa-toolbar" style={{ padding: 12 }}><span>Isolated tactical source healing QA. </span>
     <button id="qa-pause" onClick={() => setPaused(v => !v)}>QA pause</button>
     <button id="qa-unmount" onClick={() => setMounted(false)}>QA unmount</button></header>
     {mounted && <GameCanvas lang={lang} playerProfile={{ name: 'QA Anchor' }} activeTeam={team} stage={stage}

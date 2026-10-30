@@ -6,6 +6,7 @@ import { EngineFighter } from '../../src/game/engineFighter.js';
 import { HEROES_DB } from '../../src/game/heroes.js';
 import { getFighterMeleeDefinition } from '../../src/game/fighterMeleeSignatures.js';
 import '../../src/index.css';
+import './combatHarness.css';
 const q = new URLSearchParams(location.search);
 const lang = q.get('lang') === 'en' ? 'en' : 'fr';
 const actorId = q.get('actor') || 'cloud_ff7';
@@ -42,7 +43,7 @@ audit.prepare = (side, far = false) => {
 };
 export default function Harness() {
   const [paused, setPausedState] = useState(true), [mounted, setMounted] = useState(true);
-  return <><header><p>Isolated contact-super QA — real controls, no campaign rewards</p>
+  return <><header className="combat-qa-toolbar"><p>Isolated contact-super QA — real controls, no campaign rewards</p>
     <button id="qa-pause" onClick={() => setPausedState(value => !value)}>QA pause</button>
     <button id="qa-unmount" onClick={() => setMounted(false)}>QA unmount</button>
   </header>{mounted && <FighterMode lang={lang} heroes={heroes} unlockedHeroes={ids} activeTeam={ids}

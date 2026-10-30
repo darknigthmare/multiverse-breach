@@ -5,6 +5,7 @@ import re
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 from playwright.sync_api import sync_playwright
+from browserCombatUi import open_arsenal
 
 base = os.environ.get('AUDIT_BASE_URL', 'http://127.0.0.1:4173')
 assert urlparse(base).hostname in ('127.0.0.1', 'localhost')
@@ -47,6 +48,7 @@ with sync_playwright() as pw:
                 page.wait_for_timeout(150)
                 if mode == 'Smash':
                     side = 'opponent' if info['side'] == 'enemy' else 'player'
+                    open_arsenal(page)
                     page.locator(f'[data-signature-super="{side}"]').click()
                 else:
                     page.get_by_role('button', name=re.compile(re.escape(info['name']), re.I)).click()

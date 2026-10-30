@@ -6,7 +6,9 @@ import FighterMode from '../../src/components/FighterMode.jsx';
 import { EngineFighter } from '../../src/game/engineFighter.js';
 import { HEROES_DB } from '../../src/game/heroes.js';
 import '../../src/index.css';
+import './combatHarness.css';
 const q = new URLSearchParams(location.search);
+const unstableProps = q.get('rerender') === '1';
 const lang = q.get('lang') === 'en' ? 'en' : 'fr';
 const heroIds = [q.get('scenario') === 'healing' ? 'aerith_ff7' : 'team_fortress_2_medic', 'cloud_ff7', 'barret_ff7'];
 const heroes = heroIds.map(id => {
@@ -56,12 +58,22 @@ audit.injectDrawFailure = () => {
 };
 export default function Harness() {
   const [paused, setPaused] = useState(false), [mounted, setMounted] = useState(true);
-  return <><header><p>Isolated Fighter QA: prepared state, real controls, no campaign rewards.</p>
-    <button id="qa-pause" onClick={() => setPaused(value => !value)}>QA pause</button>
-    <button id="qa-unmount" onClick={() => setMounted(false)}>QA unmount</button>
-  </header>{mounted && <FighterMode lang={lang} heroes={heroes} unlockedHeroes={heroIds}
-    activeTeam={team} heroLevels={levels} portalCollection={collection} hiddenUniverses={hidden}
-    disabledAssets={disabled} customConfig={config} sessionPaused={paused}
-    onMatchComplete={report => audit.results.push(report)} onSessionEnd={result => audit.exits.push(result)} />}</>;
+  const [revision, setRevision] = useState(0);
+  const [nextDifficulty, setNextDifficulty] = useState('training');
+  const liveProps = unstableProps ? {
+    heroes: heroes.map(hero => ({ ...hero, stats: { ...hero.stats } })),
+    unlockedHeroes: [...heroIds], activeTeam: [...team], heroLevels: { ...levels },
+    portalCollection: { ...collection }, hiddenUniverses: [...hidden], disabledAssets: { ...disabled },
+    customConfig: { ...config, difficulty: nextDifficulty, playerTeamIds: [...config.playerTeamIds], opponentTeamIds: [...config.opponentTeamIds] }
+  } : { heroes, unlockedHeroes: heroIds, activeTeam: team, heroLevels: levels,
+    portalCollection: collection, hiddenUniverses: hidden, disabledAssets: disabled, customConfig: config };
+  return <><header className="combat-qa-toolbar"><p>Isolated Fighter QA: prepared state, real controls, no campaign rewards.</p>
+    <button id="qa-pause" onClick={() => setPaused(value => !value)}>Pause</button>
+    {unstableProps && <><button id="qa-rerender" onClick={() => setRevision(value => value + 1)}>Render {revision}</button>
+    <button id="qa-expert" onClick={() => setNextDifficulty('expert')}>Next</button></>}
+    <button id="qa-unmount" onClick={() => setMounted(false)}>Unmount</button>
+  </header>{mounted && <FighterMode lang={lang} {...liveProps} sessionPaused={paused}
+    onMatchComplete={report => { audit.results.push(report); if (unstableProps) setRevision(value => value + 1); }}
+    onSessionEnd={result => audit.exits.push(result)} />}</>;
 }
 createRoot(document.getElementById('root')).render(<StrictMode><Harness /></StrictMode>);

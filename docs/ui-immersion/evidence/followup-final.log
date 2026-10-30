@@ -1,0 +1,34 @@
+✔ disk-loaded identity handles same-user cross-tab event during a committed PATCH (1741.219121ms)
+✔ disk-loaded identity handles other-user cross-tab event during a committed PATCH (0.952575ms)
+✔ disk-loaded identity handles logout cross-tab event during a committed PATCH (0.575349ms)
+✔ disk-loaded identity handles corrupt cross-tab event during a committed PATCH (0.448252ms)
+✔ session subscription seeds a persisted identity without a separate initial read (0.873138ms)
+✔ sprite index replacement is atomic (success) (1.76205ms)
+✔ sprite index replacement is atomic (write) (0.74556ms)
+✔ sprite index replacement is atomic (rename) (0.545545ms)
+✔ actual import handler fr/success leaves cloud untouched until local adoption (0.391568ms)
+✔ actual import handler fr/backup-failed leaves cloud untouched until local adoption (0.366962ms)
+✔ actual import handler fr/invalid leaves cloud untouched until local adoption (0.140347ms)
+✔ actual import handler en/success leaves cloud untouched until local adoption (0.097293ms)
+✔ actual import handler en/backup-failed leaves cloud untouched until local adoption (0.123852ms)
+✔ actual import handler en/invalid leaves cloud untouched until local adoption (0.150953ms)
+✔ an account that finishes connecting during import cannot autosave the imported trace without an explicit cloud choice (0.394202ms)
+✔ shared healing rejects malformed HP (NaN) without mutating its target (0.148819ms)
+✔ shared healing rejects malformed HP (Infinity) without mutating its target (0.059248ms)
+✔ shared healing rejects malformed HP (-Infinity) without mutating its target (0.056153ms)
+✔ shared healing rejects malformed HP (undefined) without mutating its target (0.049012ms)
+✔ shared healing rejects malformed HP (40) without mutating its target (0.046709ms)
+✔ a fallen ally never counts as a defeated enemy or as objective progress in Smash (3.198019ms)
+✔ Smash damage totals and returned damage exclude overkill (0.565214ms)
+✔ Smash damage taken cannot exceed an ally remaining HP (0.404668ms)
+✔ Smash rejects invalid damage NaN (0.425157ms)
+✔ Smash rejects invalid damage Infinity (0.273374ms)
+✔ Smash rejects invalid damage -50 (0.294435ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1793.480916
