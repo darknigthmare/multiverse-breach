@@ -260,7 +260,7 @@ test('the Archives Codex terminal opens the actual global archive only after app
     sceneInputsRef: { current: { clear() {} } }, setCityMenuOpen: () => {},
     locationCallbackRef: { current: () => {} }, currentDistrictRef: { current: 'archives' }, currentZoneRef: { current: 'codex' },
     snapshotMosaicLocation: (state, districtId, zoneId) => ({ player: {...state.player}, districtId, zoneId }),
-    resolveMosaicInteraction, district: { portals: [] }, zones, lang: 'fr',
+    resolveMosaicInteraction, district: { portals: [] }, zones, exhibits: [], lang: 'fr',
     setHubLog: () => {}, recordGuide: () => {}, switchDistrict: () => {},
     onOpenService: () => assert.fail('Codex cannot open another service'),
     onOpenCodex: universe => opened.push(universe), onOpenMissions: () => assert.fail('Codex cannot open missions'),

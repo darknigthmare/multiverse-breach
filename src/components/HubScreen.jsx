@@ -1,5 +1,7 @@
 import { DISCIPLINE_SPRITE_REGISTRY } from '../game/disciplineSprites.js';
 import CloudMeadowGallery from './CloudMeadowGallery.jsx';
+import { getMosaicExhibits, getMosaicExhibitView, getMosaicExhibitZones, drawMosaicService } from '../game/mosaicExhibits.js';
+import { getExtinctionSignature, createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols } from '../game/extinctionSignatures.js';
 import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicResidents.js';
 import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
 import { getExtinctionRoster, getExtinctionViewmodel, getExtinctionHandFrame, getExtinctionHandSourceRect, getExtinctionHandPlacement, getExtinctionProjectilePlacement, drawExtinctionSchematic } from '../game/extinctionContent.js';
@@ -2215,6 +2217,8 @@ function MosaicCityHub({
   completedStages,
   stages = [],
   playerProfile,
+  inventory = [],
+  disabledGearIds = [],
   tutorialProgress = null,
   onTutorialProgress,
   onOpenMissions,
@@ -2307,6 +2311,11 @@ function MosaicCityHub({
   const [destinationQuery, setDestinationQuery] = useState('');
   const [destinationPage, setDestinationPage] = useState(0);
   const [residentQuery, setResidentQuery] = useState('');
+  const [exhibitQuery, setExhibitQuery] = useState('');
+  const [exhibitPage, setExhibitPage] = useState(0);
+  const [selectedExhibitId, setSelectedExhibitId] = useState(null);
+  const exhibitFocusRef = useRef(null);
+  const exhibitFocusPending = useRef(false);
   const [residentPage, setResidentPage] = useState(0);
   const [residentGroups, setResidentGroups] = useState({});
   const [residentTarget, setResidentTarget] = useState(null);
@@ -2437,7 +2446,10 @@ function MosaicCityHub({
   };
   }, [lang, unlockedUniverses, visibleThreadUniverses]);
   const district = districts[currentDistrict] || districts.atrium;
-  const zones = useMemo(() => {
+  const exhibits = useMemo(() => getMosaicExhibits(EQUIP_ITEMS_DB, district.universe, { inventory, disabled: disabledGearIds, lang }), [district.universe, inventory, disabledGearIds, lang]);
+  const exhibitView = useMemo(() => getMosaicExhibitView(exhibits, { query: exhibitQuery, page: exhibitPage }), [exhibits, exhibitQuery, exhibitPage]);
+  const selectedExhibit = exhibits.find(entry => entry.id === selectedExhibitId) || null;
+  const baseZones = useMemo(() => {
     const source = visibleThreadUniverses;
     if (district.universe) {
       const universe = district.universe;
@@ -2549,6 +2561,12 @@ function MosaicCityHub({
       ...threadRooms
     ];
   }, [currentDistrict, district, lang, universeStageStats, visibleThreadUniverses]);
+  const zones = useMemo(() => [...baseZones, ...getMosaicExhibitZones(district, exhibitView.items, lang)], [baseZones, district, exhibitView.items, lang]);
+  useEffect(() => {
+    if (!cityMenuOpen || !exhibitFocusPending.current) return undefined;
+    const frame = requestAnimationFrame(() => { exhibitFocusRef.current?.focus({ preventScroll: true }); exhibitFocusRef.current?.scrollIntoView({ block: 'nearest' }); exhibitFocusPending.current = false; });
+    return () => cancelAnimationFrame(frame);
+  }, [cityMenuOpen, selectedExhibitId]);
   useEffect(() => {
     if (restoredLocationRef.current) return;
     restoredLocationRef.current = true;
@@ -2682,6 +2700,7 @@ function MosaicCityHub({
     const spawn = clampMosaicPosition(portal.spawn || target.spawn, target);
     setResidentTarget(null);
     setResidentQuery(''); setResidentPage(0);
+    setExhibitQuery(''); setExhibitPage(0); setSelectedExhibitId(null);
     currentDistrictRef.current = target.id;
     currentZoneRef.current = target.id;
     nearHeroRef.current = null;
@@ -2744,6 +2763,15 @@ function MosaicCityHub({
       return;
     }
     const zone = interaction.type === 'zone' ? interaction.target : null;
+    if (zone?.action === 'exhibit') {
+      const entry = exhibits.find(item => item.id === zone.exhibitId);
+      if (!entry) return;
+      setSelectedExhibitId(entry.id);
+      exhibitFocusPending.current = true;
+      setCityMenuOpen(true);
+      setHubLog(lang === 'fr' ? `Vitrine consultée : ${entry.name}. Aucun objet attribué.` : `Display inspected: ${entry.name}. No item granted.`);
+      return;
+    }
     if (zone?.action === 'mission') {
       recordGuide('objective');
       setHubLog(lang === 'fr'
@@ -2800,7 +2828,7 @@ function MosaicCityHub({
       ? `${target.name} synchronise sa Trame avec ${playerName}. ${compatible.length ? `Discussion compatible avec ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} faille(s) stabilisee(s).`
       : `${target.name} synchronizes their Thread with ${playerName}. ${compatible.length ? `Compatible discussion with ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} stabilized rift(s).`);
     sound.playSfx('confirm');
-  }, [district, lang, onOpenCodex, onOpenMissions, onOpenService, openCityService, playerName, recordGuide, switchDistrict, universeStageStats, zones]);
+  }, [district, exhibits, lang, onOpenCodex, onOpenMissions, onOpenService, openCityService, playerName, recordGuide, switchDistrict, universeStageStats, zones]);
 
   useEffect(() => {
     const onKeyDown = event => {
@@ -3076,6 +3104,7 @@ function MosaicCityHub({
       }
 
       zones.forEach(zone => {
+        if (zone.action === 'exhibit') return;
         const pulse = 0.08 + Math.sin(state.t * 0.035 + zone.x) * 0.025;
         const zoneDimmed = district.universe && districtProgress < 0.15 && zone.action !== 'mission';
         const zoneActive = zone.id === activeZone.id || zone.id === nearZoneRef.current?.id;
@@ -3174,14 +3203,7 @@ function MosaicCityHub({
           if (npc.type === 'terminal') {
             const zone = npc.zone;
             const anchor = getMosaicZoneAnchor(zone);
-            ctx.fillStyle = 'rgba(0,0,0,0.8)';
-            ctx.fillRect(anchor.x - 22, anchor.y - 18, 44, 36);
-            ctx.strokeStyle = zone.color;
-            ctx.lineWidth = 2;
-            ctx.strokeRect(anchor.x - 22, anchor.y - 18, 44, 36);
-            ctx.fillStyle = zone.color;
-            ctx.font = '18px "Share Tech Mono"';
-            ctx.fillText(zone.action === 'mission' ? '!' : zone.action === 'codex' ? '?' : '+', anchor.x - 5, anchor.y + 6);
+            drawMosaicService(ctx, zone, anchor);
             return;
           }
           if (npc.isPlayer) {
@@ -3414,6 +3436,23 @@ function MosaicCityHub({
             <em>{districtStats?.cleared || 0}/{districtStats?.total || 0} {lang === 'fr' ? 'failles locales stabilisees' : 'local rifts stabilized'}</em>
           </div>
         )}
+        {district.universe && <section ref={exhibitFocusRef} tabIndex={-1} className="mosaic-exhibit-section" aria-label={lang === 'fr' ? 'Vitrines du quartier' : 'District displays'}>
+          <h3>{lang === 'fr' ? 'RELIQUES · ARCHIVES' : 'RELICS · ARCHIVES'}</h3>
+          <p>{lang === 'fr' ? 'Ces vitrines présentent les objets du catalogue de cet univers. Consulter ne débloque ni ne donne un objet.' : 'These displays present this universe’s catalog items. Inspecting never unlocks or grants an item.'}</p>
+          <label>{lang === 'fr' ? 'Rechercher une relique' : 'Find a relic'}<input type="search" className="nexus-select" value={exhibitQuery} onChange={event => { clearCityDestination(); setExhibitQuery(event.target.value); setExhibitPage(0); }} /></label>
+          <div className="mosaic-exhibit-results">{exhibitView.items.map(entry => <article key={entry.id} data-exhibit-id={entry.id}>
+            <strong>{entry.name}</strong><small>{entry.owned ? (lang === 'fr' ? 'Possédé' : 'Owned') : (lang === 'fr' ? 'Archive · non possédé' : 'Archive · not owned')}</small>
+            <button type="button" className="btn-retro" onClick={() => { clearCityDestination(); const zone = zones.find(z => z.exhibitId === entry.id); if (!zone) return; stateRef.current.destination = getMosaicZoneAnchor(zone); stateRef.current.pendingInteraction = { type: 'zone', id: zone.id }; setCityMenuOpen(false); }}>{lang === 'fr' ? 'REJOINDRE LA VITRINE' : 'APPROACH DISPLAY'}</button>
+            <button type="button" className="btn-retro" onClick={() => setSelectedExhibitId(entry.id)}>{lang === 'fr' ? 'LIRE LA FICHE' : 'READ RECORD'}</button>
+          </article>)}</div>
+          {!exhibitView.matching && <p>{lang === 'fr' ? 'Aucune relique visible dans cette recherche.' : 'No visible relic matches this search.'}</p>}
+          <nav aria-label={lang === 'fr' ? 'Pages des vitrines' : 'Display pages'}>
+            <button type="button" className="btn-retro" disabled={exhibitView.page === 0} onClick={() => setExhibitPage(exhibitView.page - 1)}>{lang === 'fr' ? 'Précédent' : 'Previous'}</button>
+            <span>{exhibitView.page + 1}/{exhibitView.pages} · {exhibitView.matching}</span>
+            <button type="button" className="btn-retro" disabled={exhibitView.page + 1 >= exhibitView.pages} onClick={() => setExhibitPage(exhibitView.page + 1)}>{lang === 'fr' ? 'Suivant' : 'Next'}</button>
+          </nav>
+          {selectedExhibit && <div className="mosaic-exhibit-record" role="region" aria-label={lang === 'fr' ? 'Fiche de relique' : 'Relic record'}><strong>{selectedExhibit.name}</strong><p>{selectedExhibit.description || (lang === 'fr' ? 'Description source non renseignée.' : 'No source description supplied.')}</p><small>{lang === 'fr' ? 'Présentation d archive A.R.C.A. ; modèle de monde personnel encore à produire.' : 'A.R.C.A. archive display; personal world model still to be produced.'}</small></div>}
+        </section>}
         {leadHero && (
           <div className="nexus-play-intel">
             <strong>{leadHero.name || 'Ancre'}</strong>
@@ -3542,6 +3581,7 @@ function ExtinctionRoyale({
   });
   const selectedHero = playableHeroes.find(hero => hero.id === selectedHeroId) || playableHeroes[0] || null;
   const viewmodel = useMemo(() => getExtinctionViewmodel(selectedHero), [selectedHero]);
+  const signatureProfile = useMemo(() => getExtinctionSignature(selectedHero), [selectedHero]);
   const stateRef = useRef({
     phase: 'ready',
     hp: 100,
@@ -3651,6 +3691,9 @@ function ExtinctionRoyale({
       loot: state.loot?.filter(item => item.used && item.type !== 'beacon').length || 0,
       beacons: state.beaconsStabilized || 0,
       skillCooldown: state.skillCooldown || 0,
+      signatureCharge: state.protocols?.charge || 0,
+      signatureCooldowns: { ...state.protocols?.cooldowns },
+      signatureGuard: (state.protocols?.guard || 0) > 0 || (state.protocols?.barricade || 0) > 0,
       nearbyLoot: nearbyLoot?.label || null,
       objectiveText: getRunObjectiveText(state),
       statusText: state.statusText || null,
@@ -3726,6 +3769,7 @@ function ExtinctionRoyale({
     stateRef.current = {
       ...stateRef.current,
       phase: 'ready',
+      protocols: createExtinctionProtocolState(null, null),
       hp: 100,
       maxHp: 100,
       ammo: 24,
@@ -3859,10 +3903,13 @@ function ExtinctionRoyale({
       result: null,
       rewards: null
     };
+    next.heroId = selectedHero.id;
+    next.heroCategory = selectedHero.category;
+    next.protocols = createExtinctionProtocolState(signatureProfile, next.runId);
     stateRef.current = next;
     setRunSnapshot(buildRunSnapshot(next));
     sound.playSfx('levelup');
-  }, [buildEnemies, buildLoot, buildRunSnapshot, lang, objectives, onSessionStart, roleProfile, runMode, selectedHero, universeFragments, weaponProfile]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, lang, objectives, onSessionStart, roleProfile, runMode, selectedHero, signatureProfile, universeFragments, weaponProfile]);
 
   const finishRun = useCallback((result) => {
     const state = stateRef.current;
@@ -3886,6 +3933,7 @@ function ExtinctionRoyale({
         : (lang === 'fr' ? 'Repli d Ancre: donnees conservees' : 'Anchor retreat: contact data preserved')
     };
     state.phase = 'ended';
+    if (state.protocols) { state.protocols.projectiles = []; state.protocols.effects = []; }
     state.result = result;
     state.rewards = rewards;
     state.statusText = rewards.title;
@@ -3954,6 +4002,8 @@ function ExtinctionRoyale({
         state.skillCooldown = Math.max(0, (state.skillCooldown || 0) - 1);
         state.hitMarkerTimer = Math.max(0, (state.hitMarkerTimer || 0) - 1);
         state.screenShake = Math.max(0, (state.screenShake || 0) - 0.55);
+
+        tickExtinctionProtocols(state, triggerEnemyDrop);
 
         // Boss Shielding Phase Check
         const boss = state.enemies.find(enemy => enemy.kind === 'Champion de Trame');
@@ -4042,9 +4092,10 @@ function ExtinctionRoyale({
             .filter(enemy => enemy.hp > 0 && Math.hypot(enemy.wx - state.px, enemy.wy - state.py) < 1.25)
             .reduce((sum, enemy) => sum + enemy.dmg, 0);
           if (pressure > 0) {
-            const absorbed = Math.min(state.armor, Math.ceil(pressure * 0.5));
+            const guarded = mitigateExtinctionProtocolDamage(state, pressure);
+            const absorbed = Math.min(state.armor, Math.ceil(guarded * 0.5));
             state.armor -= absorbed;
-            state.hp = Math.max(0, state.hp - Math.max(1, pressure - absorbed));
+            state.hp = Math.max(0, state.hp - Math.max(0, guarded - absorbed));
           }
         }
         if (state.t % 110 === 0 && state.zone < 0.55) {
@@ -4055,12 +4106,7 @@ function ExtinctionRoyale({
             .filter(enemy => enemy.hp > 0)
             .sort((a, b) => projectWorld(a, state).dist - projectWorld(b, state).dist)[0];
           if (target) {
-            target.hp -= 14;
-            if (target.hp <= 0 && !target.counted) {
-              target.counted = true;
-              state.kills += 1;
-              triggerEnemyDrop(target, state);
-            }
+            damageExtinctionEnemy(state, target, 14, triggerEnemyDrop);
           }
         }
         if (state.hp > 0 && state.enemies.every(enemy => enemy.hp <= 0)) {
@@ -4072,6 +4118,7 @@ function ExtinctionRoyale({
               ? `Vague ${state.wave} nettoyée: rejoins la balise et utilise LOOT / E.`
               : `Wave ${state.wave} cleared: reach the beacon and use LOOT / E.`;
           } else {
+            if (state.protocols) state.protocols.projectiles = [];
             const nextWave = state.wave + 1;
             if (state.enemies.some(enemy => enemy.kind === 'Champion de Trame')) {
               finishRun('victory');
@@ -4302,6 +4349,7 @@ function ExtinctionRoyale({
       ctx.fill();
       ctx.restore();
 
+      drawExtinctionProtocols(ctx, state, canvas.width, canvas.height, projectWorld, { ownerId: viewmodel.id, image: fpsProjectileRef.current });
       const handFrame = getExtinctionHandFrame(viewmodel, state);
       const sheet = fpsHandsRef.current;
       const handSource = sheet?.complete ? getExtinctionHandSourceRect(handFrame, sheet.naturalWidth, sheet.naturalHeight) : null;
@@ -4363,10 +4411,25 @@ function ExtinctionRoyale({
   }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, renderAttempt, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, selectedHero, triggerEnemyDrop, universeFragments, weaponProfile.color, viewmodel]);
 
 
+  const activateSignature = (slot) => {
+    if (sessionPausedRef.current || intelRef.current) return false;
+    const state = stateRef.current;
+    const result = activateExtinctionProtocol(state, slot, { onKill: triggerEnemyDrop, lang });
+    if (result.activated) {
+      sound.playSfx(slot === 'defense' ? 'shield' : slot === 'simple' ? 'confirm' : 'special');
+      setRunSnapshot(buildRunSnapshot(state));
+    }
+    return result.activated;
+  };
+
   const fire = () => {
     if (sessionPausedRef.current || intelRef.current) return;
     const state = stateRef.current;
     if (state.phase !== 'running') return;
+    if (state.protocols?.profile?.actions.simple && state.weapon?.type === 'pistol') {
+      activateSignature('simple');
+      return;
+    }
     const wep = state.weapon || { type: 'pistol', ammo: state.ammo || 24, maxAmmo: 24, spread: 0.12, fireRate: 1.0, dmgMult: 1.0 };
     if (state.reloadPulse > 0) return;
     if (state.t - (state.lastFireTime || 0) < wep.fireRate * 18) return;
@@ -4399,16 +4462,10 @@ function ExtinctionRoyale({
       }
 
       const closeBonus = selectedHero?.category === 'slayer' && projectWorld(target, state).dist < 2.2 ? 1.45 : 1;
-      target.hp -= Math.round(34 * role.dmg * closeBonus * wep.dmgMult);
+      damageExtinctionEnemy(state, target, Math.round(34 * role.dmg * closeBonus * wep.dmgMult), triggerEnemyDrop, 8);
       state.hitMarkerTimer = 6;
       state.screenShake = 5.5 + wep.dmgMult * 1.5;
 
-      if (target.hp <= 0 && !target.counted) {
-        target.counted = true;
-        state.kills += 1;
-        if (selectedHero?.category === 'horror') state.hp = Math.min(state.maxHp, state.hp + 8);
-        triggerEnemyDrop(target, state);
-      }
       state.statusText = target.hp <= 0
         ? (lang === 'fr' ? `${extinctionEnemyLabel(target.kind, lang)} neutralisé.` : `${extinctionEnemyLabel(target.kind, lang)} neutralized.`)
         : (lang === 'fr' ? `Impact confirmé sur ${extinctionEnemyLabel(target.kind, lang)}.` : `Confirmed hit on ${extinctionEnemyLabel(target.kind, lang)}.`);
@@ -4502,13 +4559,7 @@ function ExtinctionRoyale({
       state.turret = Math.max(state.turret, 500);
     } else if (item.type === 'ultimate') {
       state.enemies.forEach(enemy => {
-        const wasAlive = enemy.hp > 0;
-        enemy.hp -= 95;
-        if (wasAlive && enemy.hp <= 0 && !enemy.counted) {
-          enemy.counted = true;
-          state.kills += 1;
-          triggerEnemyDrop(enemy, state);
-        }
+        damageExtinctionEnemy(state, enemy, 95, triggerEnemyDrop);
       });
     } else if (item.type === 'weapon') {
       state.weapon = { ...item.weaponData, ammo: item.weaponData.maxAmmo };
@@ -4604,6 +4655,9 @@ function ExtinctionRoyale({
       } else if (key === 'e') {
         collectLoot();
         event.preventDefault();
+      } else if (['f', 'c', 'x'].includes(key)) {
+        if (!event.repeat) activateSignature({ f: 'secondary', c: 'defense', x: 'special' }[key]);
+        event.preventDefault();
       } else if (key === 'shift') {
         activateRoleSkill();
         event.preventDefault();
@@ -4650,6 +4704,7 @@ function ExtinctionRoyale({
     setRuntimeError(null); setRunSnapshot(buildRunSnapshot(stateRef.current));
     setRenderAttempt(value => value + 1); onSessionEnd?.({ reason: 'error' });
   };
+  const activeSignature = stateRef.current.phase === 'running' ? stateRef.current.protocols?.profile : signatureProfile;
   const runActive = runSnapshot.phase === 'running';
   const runEnded = runSnapshot.phase === 'ended';
 
@@ -4699,6 +4754,11 @@ function ExtinctionRoyale({
             ))}
           </select>
           {!playableHeroes.length && <p role="status">{lang === 'fr' ? 'Aucune signature combattante débloquée. Les personnages non combattants restent disponibles dans la Cité et leurs épreuves.' : 'No unlocked combat signature. Non-combat characters remain available in the City and their trials.'}</p>}
+          {signatureProfile && <section className="extinction-signature-brief" aria-label={lang === 'fr' ? 'Actions personnelles disponibles' : 'Available personal actions'}>
+            <strong>{lang === 'fr' ? 'PROTOCOLES DE SIGNATURE' : 'SIGNATURE PROTOCOLS'}</strong>
+            {Object.entries(signatureProfile.actions).map(([slot, action]) => <span key={slot}>{slot === 'simple' ? (lang === 'fr' ? 'TIR / FRAPPE' : 'FIRE / STRIKE') : {secondary: 'F', defense: 'C', special: 'X'}[slot]} · {getLocalizedText(action.name, lang)}</span>)}
+            <small>{lang === 'fr' ? 'Adaptation jouable des actions source. Visuels personnels incomplets ; armes ramassées et capacité de rôle conservées.' : 'Playable adaptation of source actions. Personal artwork remains incomplete; pickup weapons and role ability are preserved.'}</small>
+          </section>}
           <div className="nexus-play-intel">
             <strong>{weaponProfile.name}</strong>
             <span>{selectedHero?.category || 'marine'} - {(roleProfile[selectedHero?.category] || roleProfile.marine).perk}</span>
@@ -4733,6 +4793,7 @@ function ExtinctionRoyale({
             <span>{lang === 'fr' ? 'MUN' : 'AMMO'} {runSnapshot.ammo}+{runSnapshot.reserveAmmo}</span>
             <span>{lang === 'fr' ? 'VAGUE' : 'WAVE'} {runSnapshot.wave}</span>
             <span>K.O. {runSnapshot.kills}</span>
+            {activeSignature && <span>{lang === 'fr' ? 'ULTIME' : 'ULTIMATE'} {Math.floor(runSnapshot.signatureCharge || 0)}/100{runSnapshot.signatureGuard ? (lang === 'fr' ? ' · GARDE' : ' · GUARD') : ''}</span>}
             {runMode === 'extraction' && <span>{lang === 'fr' ? 'BALISES' : 'BEACONS'} {runSnapshot.beacons}/{EXTINCTION_BEACON_TARGET}</span>}
           </div>
           <div className="nexus-play-actions">
@@ -4747,6 +4808,18 @@ function ExtinctionRoyale({
                 <button className="btn-retro" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
                 <button className="btn-retro" onClick={activateRoleSkill} disabled={runSnapshot.skillCooldown > 0} title={lang === 'fr' ? 'Active la capacité spéciale liée au rôle du héros.' : 'Activate the selected hero role ability.'}>{runSnapshot.skillCooldown > 0 ? `ROLE ${Math.ceil(runSnapshot.skillCooldown / 60)}s` : 'ROLE'}</button>
                 <button className="btn-retro" onClick={collectLoot} disabled={!runSnapshot.nearbyLoot} title={runSnapshot.nearbyLoot || (lang === 'fr' ? 'Approche-toi d un objet ou d une balise.' : 'Move near an item or beacon.')}>{runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}</button>
+                {activeSignature && <div className="extinction-protocol-actions" role="group" aria-label={lang === 'fr' ? 'Protocoles personnels' : 'Personal protocols'}>
+                  {[['secondary', 'F', 'SECONDAIRE', 'SECONDARY'], ['defense', 'C', 'DÉFENSE', 'DEFENSE'], ['special', 'X', 'ULTIME', 'ULTIMATE']].map(([slot, key, fr, en]) => {
+                    const action = activeSignature.actions[slot];
+                    if (!action) return null;
+                    const cooldown = Math.ceil((runSnapshot.signatureCooldowns?.[slot] || 0) / 60);
+                    const label = getLocalizedText(action.name, lang);
+                    return <button key={slot} type="button" className="btn-retro" data-protocol={slot}
+                      aria-label={`${lang === 'fr' ? fr : en}: ${label}`} title={label}
+                      disabled={sessionPaused || intelOpen || cooldown > 0 || (slot === 'special' && (runSnapshot.signatureCharge || 0) < 100)}
+                      onClick={() => activateSignature(slot)}><strong>{key} {lang === 'fr' ? fr : en}</strong><small>{cooldown ? `${cooldown}s` : slot === 'special' ? `${Math.floor(runSnapshot.signatureCharge || 0)}/100` : label}</small></button>;
+                  })}
+                </div>}
                 <SceneHoldButton className="btn-retro" action="forward" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</SceneHoldButton>
                 <SceneHoldButton className="btn-retro" action="back" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'}>{lang === 'fr' ? 'RECUL' : 'BACK'}</SceneHoldButton>
                 <SceneHoldButton className="btn-retro" action="strafeLeft" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à gauche.' : 'Hold to strafe left.'}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</SceneHoldButton>
@@ -10131,6 +10204,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             completedStages={completedStages}
             stages={visibleStages}
             playerProfile={playerProfile}
+            inventory={inventory}
+            disabledGearIds={disabledAssets.gear || []}
             savedLocation={activityProgress.mosaicLocation}
             onLocationChange={next => setActivityProgress(previous => JSON.stringify(previous.mosaicLocation) === JSON.stringify(next) ? previous : { ...previous, mosaicLocation: next })}
             onOpenService={service => {

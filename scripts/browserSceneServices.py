@@ -89,7 +89,8 @@ def state(page):
     return page.evaluate("""()=>{const s=window.__sceneQA.state();return {phase:s.phase,t:s.t,hp:s.hp,maxHp:s.maxHp,armor:s.armor,
       px:s.px,py:s.py,angle:s.angle,vx:s.vx,vy:s.vy,turnVel:s.turnVel,keys:s.moveKeys,weapon:s.weapon,
       ammo:s.ammo,reserveAmmo:s.reserveAmmo,skillCooldown:s.skillCooldown,reloadPulse:s.reloadPulse,wave:s.wave,
-      kills:s.kills,beacons:s.beaconsStabilized,enemies:s.enemies,loot:s.loot,glitchZones:s.glitchZones,result:s.result};}""")
+      kills:s.kills,beacons:s.beaconsStabilized,enemies:s.enemies,loot:s.loot,glitchZones:s.glitchZones,result:s.result,
+      weaponType:s.weapon?.type,protocols:s.protocols?{charge:s.protocols.charge,cooldowns:{...s.protocols.cooldowns},actions:s.protocols.profile?.actions,casts:{...s.protocols.casts}}:null};}""")
 
 
 def aim(page, current, x, y):
@@ -166,8 +167,29 @@ def full_run(page, mode, lang, out, name, record):
                 drones=[e for e in enemies if e['kind']=='Drone Protecteur']
                 pool=drones or enemies
                 target=min(pool,key=lambda e:math.hypot(e['wx']-s['px'],e['wy']-s['py']))
-                aim(page,s,target['wx'],target['wy']);page.keyboard.press('Space');page.clock.run_for(350)
-                action={'kind':'fire','target':target['id'],'milliseconds':350,'skill':skill}
+                aim(page,s,target['wx'],target['wy'])
+                # The original Anchor now uses a melee primary. Real key input
+                # is recorded alongside the deterministic decision trace.
+                protocol=s.get('protocols') or {};kit=protocol.get('actions') or {}
+                cooldowns=protocol.get('cooldowns') or {}
+                distance=math.hypot(target['wx']-s['px'],target['wy']-s['py'])
+                commands=[]
+                if kit.get('defense') and cooldowns.get('defense',0)<=0 and distance<5:
+                    page.keyboard.press('c');commands.append('defense')
+                if kit.get('secondary') and cooldowns.get('secondary',0)<=0 and distance<=kit['secondary']['range']:
+                    page.keyboard.press('f');commands.append('secondary')
+                if kit.get('special') and protocol.get('charge',0)>=100 and cooldowns.get('special',0)<=0 and distance<=kit['special']['range']:
+                    page.keyboard.press('x');commands.append('special')
+                primary=kit.get('simple') or {}
+                melee=s.get('weaponType')=='pistol' and primary.get('kind')=='melee'
+                if melee and distance>primary['range']*.9:
+                    duration=min(180,max(17,int((distance-primary['range']*.85)/.25)*17))
+                    page.keyboard.down('w');page.clock.run_for(duration);page.keyboard.up('w')
+                    action={'kind':'approach-melee','target':target['id'],'milliseconds':duration,'skill':skill,'protocolCommands':commands}
+                else:
+                    duration=max(350,math.ceil(primary.get('cooldown',20)*1000/60)+17) if melee else 350
+                    page.keyboard.press('Space');page.clock.run_for(duration)
+                    action={'kind':'fire','target':target['id'],'milliseconds':duration,'skill':skill,'protocolCommands':commands}
             elif s['ammo']<1 and s['reserveAmmo']>0:
                 page.keyboard.press('r');page.clock.run_for(620)
                 action={'kind':'reload','milliseconds':620,'skill':skill}
@@ -176,7 +198,8 @@ def full_run(page, mode, lang, out, name, record):
                 action={'kind':'wait','milliseconds':350,'skill':skill}
             s=observe(action)
             if actions%50==0:print(f'PROGRESS {name}: action {actions}, frame {s["t"]}, HP {s["hp"]}',flush=True)
-        record.update(mode=mode,result=s['result'],frames=s['t'],hp=s['hp'],kills=s['kills'],beacons=s['beacons'],waves=sorted(waves),inputActions=actions,injectedEnding=False,virtualClock=True)
+        record.update(mode=mode,result=s['result'],frames=s['t'],hp=s['hp'],kills=s['kills'],beacons=s['beacons'],waves=sorted(waves),inputActions=actions,injectedEnding=False,virtualClock=True,
+                      protocolCasts=(s.get('protocols') or {}).get('casts',{}))
         check(s['phase']=='ended',f'run did not end: {mode} {s["t"]} frames, {actions} actions')
         reports=page.evaluate('window.__sceneQA.reports')
         check(len(reports)==1 and reports[0]['mode']==mode,'missing/duplicate completion')

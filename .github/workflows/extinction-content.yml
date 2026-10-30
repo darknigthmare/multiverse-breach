@@ -30,7 +30,7 @@ jobs:
             !/*/
             /src/
             /scripts/
-            /docs/extinction-city/workbook-followup-2026-10-27.json
+            /docs/extinction-city/workbook-followup-2026-10-28.json
             /docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx
             /docs/excel/Multiverse_Breach_UI_Immersion.xlsx
             **/*.json
@@ -53,7 +53,7 @@ jobs:
           python3 - <<'PY'
           import hashlib,json,os,re
           from pathlib import Path
-          receipt=json.loads(Path('docs/extinction-city/workbook-followup-2026-10-27.json').read_text())
+          receipt=json.loads(Path('docs/extinction-city/workbook-followup-2026-10-28.json').read_text())
           revision=receipt.get('sourceCommit')
           if receipt.get('schema')!=1 or not isinstance(revision,str) or not re.fullmatch(r'[0-9a-f]{40}',revision):
               raise ValueError('Workbook receipt must pin a full immutable source commit')

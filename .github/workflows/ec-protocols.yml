@@ -1,0 +1,63 @@
+name: Nexus FPS protocols and City exhibits
+on:
+  pull_request:
+    paths: ['src/**', 'scripts/**', '.github/workflows/ec-protocols.yml']
+  push:
+    branches: [master]
+permissions:
+  contents: read
+concurrency:
+  group: ec-protocols-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Executable contracts and source build
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ec-protocols
+          git rev-parse HEAD > /tmp/ec-protocols/commit.txt
+          git ls-files > TRACKED_FILES.txt
+          python3 scripts/test_mosaic_motion_proof.py -v 2>&1 | tee /tmp/ec-protocols/motion-proof-tests.log
+          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionSignatures.test.mjs scripts/mosaicExhibits.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/extinctionCityCatalog.test.mjs | tee /tmp/ec-protocols/unit.log
+          npm run test:ui-immersion | tee /tmp/ec-protocols/ui.log
+          npx oxlint --max-warnings 0 src/components/HubScreen.jsx src/game/extinctionSignatures.js src/game/mosaicExhibits.js scripts/extinctionSignatures.test.mjs scripts/mosaicExhibits.test.mjs scripts/extinction-city/catalog.mjs scripts/extinctionCityCatalog.test.mjs | tee /tmp/ec-protocols/lint.log
+          npx vite build | tee /tmp/ec-protocols/source-build.log
+      - name: Real browser controls and collision-safe display visits
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/ec-browser
+          /tmp/ec-browser/bin/pip install playwright==1.57.0
+          /tmp/ec-browser/bin/python -m playwright install --with-deps chromium
+          npm run dev -- --host 127.0.0.1 --port 4173 --strictPort >/tmp/ec-protocols/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          /tmp/ec-browser/bin/python scripts/browserExtinctionProtocols.py --evidence /tmp/ec-protocols/browser | tee /tmp/ec-protocols/browser.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: ec-protocols-${{ github.sha }}
+          path: /tmp/ec-protocols/
+          retention-days: 14
