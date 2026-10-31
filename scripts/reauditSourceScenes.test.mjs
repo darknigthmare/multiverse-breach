@@ -380,9 +380,9 @@ test('Prey 2022: story props enter and leave the board at the actual narrative b
  assert.deepEqual({
    herb:shown('herb'),trapper:shown('trapper'),flintlock:shown('flintlock'),
    mask:shown('mask'),mounted:shown('mask_mount'),trophy:shown('trophy'),
-   bog:shown('bog'),village:shown('village')
+   bog:shown('bog'),sarii:shown('sarii'),village:shown('village')
  },{herb:true,trapper:true,flintlock:false,mask:false,mounted:false,
-    trophy:false,bog:true,village:true});
+    trophy:false,bog:true,sarii:true,village:true});
  doCommand(e,'herb');
  assert.equal(shown('herb'),false,'consumed flower cannot still be available on ground');
  assert.equal(shown('flintlock'),false,'gun cue stays hidden until bait is prepared');
@@ -419,4 +419,36 @@ test('Prey 2022: prop gating is source-identity specific and does not mutate the
  assert.equal(isSourceScenePropVisible(null,{id:'mask'}),false);
  assert.equal(isSourceScenePropVisible({definition:d,done:[]},{id:'mask'}),false);
  assert.equal(JSON.stringify(d.field.props),original);
+});
+
+test('Prey 2022: Sarii remains a scene companion through the bog, not stranded in a village on the battle board',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ const dog=d.field.props.find(p=>p.id==='sarii');
+ const exit=d.field.props.find(p=>p.id==='village');
+ assert.equal(dog.kind,'companion');assert.equal(dog.label,'SARII');
+ assert.equal(exit.kind,'exit');assert.equal(exit.label,'RETURN PATH');
+ assert.equal(e.getSourceSceneState().companionAid,null);
+ assert.equal(e.sourceScene.sariiDistraction,false);
+ assert.equal(e.heroes.length,1);
+ assert.equal(e.enemies.length,0);
+ for(const id of ['herb','bait','flintlock','take_mask','set_mask'])doCommand(e,id);
+ assert.equal(e.getSourceSceneState().companionAid,null);
+ doCommand(e,'bog');
+ assert.equal(e.getSourceSceneState().companionAid,'sarii_distraction');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/Sarii distracts/);
+ assert.equal(e.heroes.length,1,'dog must not be a free attack unit');
+ walkTo(e,{x:5,y:4});settle(e);
+ const t=e.turnSerial;
+ e.sourceScene.sariiDistraction=false;
+ assert.equal(e.triggerSourceSceneAction('redirect',t),false,'fidelity step cannot bypass the companion assist');
+ e.sourceScene.sariiDistraction=true;
+ assert.equal(e.triggerSourceSceneAction('redirect',t),true);
+ settle(e);
+ doCommand(e,'trophy');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/Sarii accompanies/);
+ doCommand(e,'return');
+ assert.equal(e.battleResult,'victory');
+ assert.equal(e.getCombatSummary().sourceEncounter.companionAid,'sarii_distraction');
+ for(let i=0;i<300;i++)e.update();
+ assert.equal(e.testCallbacks.length,1);
 });
