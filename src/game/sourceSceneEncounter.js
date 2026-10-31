@@ -31,7 +31,7 @@ export function getSourceSceneDanger(scene) {
   const d=scene.definition, done=scene.done;
   // Cold mud masks the Hunter's thermal search until the river removes it.
   // After the log trap, the remaining threat is the wrist self-destruct clock.
-  if (d.material==='jungle' && (done.has('crush') || (done.has('mud') && !done.has('wash'))) return [];
+  if (d.material==='jungle' && (done.has('crush') || (done.has('mud') && !done.has('wash')))) return [];
   if (d.material==='silo' && done.has('ignite')) return [];
   if (d.material==='hangar' && done.has('grapple')) return [];
   if (d.material==='shuttle' && done.has('harness')) return [];
