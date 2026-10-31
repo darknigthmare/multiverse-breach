@@ -203,6 +203,14 @@ export const HALO_COMPLETE_SPRITE_PACKS = {
 
 export const SPRITE_SHEET_LAYOUTS = {
   ...DISCIPLINE_SPRITE_LAYOUTS,
+  '/sprites/generated/bosses/predator/feral-predator.png': {
+    // Reuse the existing full-body Prey Feral image as one static figure.
+    // No invented animation frames or 4x4 cropping of a single character.
+    // Film 2022 visual acceptance and independent animation still pending.
+    columns: 1,
+    rows: 1,
+    rowByState: { idle:0,run:0,attack:0,defense:0,support:0,special:0,hit:0,dead:0 }
+  },
   '/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png': {
     // One complete static figure. Movement/combat animation is not supplied.
     columns: 1,
