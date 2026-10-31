@@ -4,7 +4,7 @@ const cellName=cell=>`${String.fromCharCode(65+cell.x)}${cell.y+1}`;
 export default function SourceScenePanel({scene,lang='fr',locked=false,onCommand}) {
   if(!scene)return null;
   const fr=lang==='fr',language=fr?'fr':'en';
-  const reason={position:fr?'Rejoindre la case':'Reach this cell',prerequisite:fr?'Étapes préalables requises':'Prerequisites required',inactive:fr?'Commandes indisponibles':'Commands unavailable',empty:fr?'Indisponible / épuisé':'Unavailable / exhausted',done:fr?'Terminé':'Done'};
+  const reason={position:fr?'Rejoindre la case':'Reach this cell',prerequisite:fr?'Étapes préalables requises':'Prerequisites required',inactive:fr?'Commandes indisponibles':'Commands unavailable',empty:fr?'Indisponible / épuisé':'Unavailable / exhausted',alignment:fr?'Aligner le masque vers le marécage':'Aim the mask toward the bog',done:fr?'Terminé':'Done'};
   return <section className="source-scene-panel" aria-label={scene.name[language]}>
     <h3>{scene.name[language]}</h3>
     <p>{scene.objective[language].objective}</p>
