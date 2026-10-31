@@ -350,8 +350,10 @@ test('Prey 2022: the bone targeting mask requires authentic line-up above the bo
  assert.equal(e.aimSourceSceneMask(6,4,start),false,'stale token cannot silently correct a shot');
  settle(e);
  assert.deepEqual(e.getSourceSceneState().maskAimTarget,{x:5,y:4});
+ assert.match(e.getSourceSceneState().sourceBeat.en,/wrong ray/);
  assert.ok(e.getSourceSceneState().maskAim.options.some(o=>o.selected&&o.cell.x===5));
  doCommand(e,'bog');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/points elsewhere/);
  walkTo(e,{x:5,y:4});settle(e);
  const token=e.turnSerial;
  assert.equal(e.triggerSourceSceneAction('redirect',token),false,'wrong guide target cannot kill Feral');
@@ -361,6 +363,7 @@ test('Prey 2022: the bone targeting mask requires authentic line-up above the bo
  walkTo(e,{x:6,y:2});settle(e);
  assert.equal(e.aimSourceSceneMask(6,4,e.turnSerial),true,'realigned from mount');
  settle(e);
+ assert.match(e.getSourceSceneState().sourceBeat.en,/correctly aligned/);
  walkTo(e,{x:5,y:4});settle(e);
  assert.equal(e.triggerSourceSceneAction('redirect',e.turnSerial),true,'correct mask target redirects Feral projectile');
  settle(e);assert.deepEqual(sceneApi.getSourceSceneDanger(e.sourceScene),[]);
