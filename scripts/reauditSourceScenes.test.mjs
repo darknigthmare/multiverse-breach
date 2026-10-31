@@ -161,7 +161,7 @@ test('Predator 1987: the Dutch finale uses the original Hunter, never a generic 
  assert.equal(d.threatName,'Jungle Hunter');assert.equal(d.material,'jungle');
  assert.equal(d.commands.length,9);assert.equal(d.commands.at(-1).id,'escape');
  const dutch=HEROES_DB.find(h=>h.id==='dutch'&&h.universe==='Predator');
- assert.match(dutch.incarnation,/1987/);assert.equal(dutch.visualReviewStatus,'pending');
+ assert.ok(dutch);assert.match(d.incarnation,/1987/);assert.equal(d.visualReviewStatus,'pending');
  assert.ok(d.referenceUrls.every(url=>url.startsWith('https://')));
  const e=make(d);assert.equal(e.objective,'source_scene');assert.equal(e.enemies.length,0);
  if(e.sourceScene.threat)e.sourceScene.threat.currentHp=0;
