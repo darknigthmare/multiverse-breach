@@ -16,6 +16,7 @@ export function createSourceSceneEncounter(stage, heroes, enemiesData = {}) {
     .filter(Boolean).find(e => e.name === definition.threatName);
   return { definition, actor, actorId:actor.id, actorUniverse:actor.universe, actorLifetime:0,
     done:new Set(), turns:0, complete:false, failed:false, reason:'', decoys:3, diversionTurns:0,
+    escapeTurnsRemaining:null,
     lastEndTurn:0, log:[], threat:sourceThreat ? {...sourceThreat,universe:sourceThreat.universe || definition.universe,state:'idle',stateTimer:0} : null };
 }
 const living = actor => !!actor && Number.isFinite(actor.currentHp) && actor.currentHp > 0 && actor.state !== 'dead';
@@ -28,6 +29,9 @@ export function validateSceneActor(engine) {
 export function getSourceSceneDanger(scene) {
   if (!scene || scene.complete || scene.failed) return [];
   const d=scene.definition, done=scene.done;
+  // Cold mud masks the Hunter's thermal search until the river removes it.
+  // After the log trap, the remaining threat is the wrist self-destruct clock.
+  if (d.material==='jungle' && (done.has('crush') || (done.has('mud') && !done.has('wash'))) return [];
   if (d.material==='silo' && done.has('ignite')) return [];
   if (d.material==='hangar' && done.has('grapple')) return [];
   if (d.material==='shuttle' && done.has('harness')) return [];
@@ -52,6 +56,11 @@ export function executeSourceSceneCommand(engine, id, token) {
   const command=scene.definition.commands.find(c=>c.id===id);
   if (command.repeatable) { scene.decoys--; scene.diversionTurns=2; }
   else scene.done.add(id);
+  if (scene.definition.material==='jungle' && id==='crush') {
+    // The triggering turn itself is counted below; display eight subsequent
+    // turn endings to reach shelter, never grant a free post-expiry action.
+    scene.escapeTurnsRemaining=scene.definition.selfDestructTurnLimit+1;
+  }
   scene.log.push({command:id,turn:token,cell:{x:scene.actor.gridX,y:scene.actor.gridY}});
   if (command.final) scene.complete=true;
   engine.objectiveEvents++;
@@ -74,7 +83,7 @@ export function advanceSourceScene(engine, advanceTurn=false) {
   const danger=getSourceSceneDanger(scene);
   if (danger.some(p=>p.x===scene.actor.gridX && p.y===scene.actor.gridY)) {
     const before=scene.actor.currentHp;
-    const damage=Math.max(1,Math.round(scene.actor.maxHp*0.16));
+    const damage=Math.max(1,Math.round(scene.actor.maxHp*(scene.definition.material==='jungle'?0.10:0.16)));
     // Native guard, damage feedback and KO invalidation remain authoritative.
     engine.applyDamage({name:scene.definition.threatName,gridX:scene.definition.threatCell.x,
       gridY:scene.definition.threatCell.y,stats:{atk:1,def:0},simple:{dmg:1}},scene.actor,damage,null,{ignoreCover:true});
@@ -82,6 +91,12 @@ export function advanceSourceScene(engine, advanceTurn=false) {
   }
   scene.turns++;
   scene.diversionTurns=Math.max(0,scene.diversionTurns-1);
+  if (scene.definition.material==='jungle' && scene.done.has('crush')) {
+    scene.escapeTurnsRemaining=Math.max(0,(scene.escapeTurnsRemaining||0)-1);
+    if (scene.escapeTurnsRemaining===0) {
+      scene.failed=true;scene.reason='self_destruct';engine.completeBattle('defeat');return;
+    }
+  }
   if (!validateSceneActor(engine)) { scene.failed=true;scene.reason='protagonist_lost';engine.completeBattle('defeat'); }
   else if (scene.turns>=scene.definition.turnLimit) { scene.failed=true;scene.reason='turn_limit';engine.completeBattle('defeat'); }
 }
@@ -92,7 +107,9 @@ export function getSourceSceneState(engine) {
   return {id:d.sourceSceneId,name:{fr:d.nameFr,en:d.name},incarnation:d.incarnation,
     objective:d.briefing,turnToken:engine.turnSerial,turns:s.turns,turnLimit:d.turnLimit,
     complete:s.complete,failed:s.failed,reason:s.reason,progress:s.done.size,target:d.commands.filter(c=>!c.repeatable).length,
-    decoys:s.decoys,danger:getSourceSceneDanger(s),artApproved:false,
+    decoys:s.decoys,escapeTurnsRemaining:s.escapeTurnsRemaining,
+    thermalConcealment:d.material==='jungle'&&s.done.has('mud')&&!s.done.has('wash'),
+    danger:getSourceSceneDanger(s),artApproved:false,
     commands:d.commands.map(c=>({id:c.id,label:c.label,cell:c.cell,anywhere:!!c.anywhere,done:s.done.has(c.id),
       ...getSourceSceneCommandState(engine,c.id)}))};
 }
@@ -100,7 +117,8 @@ export function getSourceSceneSummary(scene) {
   if (!scene) return null;
   return {kind:'source_scene',id:scene.definition.sourceSceneId,incarnation:scene.definition.incarnation,
     complete:scene.complete,failed:scene.failed,reason:scene.reason,turns:scene.turns,
-    commands:scene.log.map(e=>({...e,cell:{...e.cell}})),decoysRemaining:scene.decoys,artApproved:false};
+    commands:scene.log.map(e=>({...e,cell:{...e.cell}})),decoysRemaining:scene.decoys,
+    escapeTurnsRemaining:scene.escapeTurnsRemaining,artApproved:false};
 }
 /** Find a true shortest path, not greedy Manhattan movement around the blocked silo. */
 export function sourceSceneRoute(engine, target) {
