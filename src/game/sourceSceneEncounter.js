@@ -266,7 +266,7 @@ export function getSourceSceneSummary(scene) {
   if (!scene) return null;
   return {kind:'source_scene',id:scene.definition.sourceSceneId,incarnation:scene.definition.incarnation,
     complete:scene.complete,failed:scene.failed,reason:scene.reason,turns:scene.turns,
-    commands:scene.log.map(e=>({...e,cell:{...e.cell}})),decoysRemaining:scene.decoys,
+    commands:scene.log.map(e=>({...e,cell:{...e.cell},...(e.target?{target:{...e.target}}:{})})),decoysRemaining:scene.decoys,
     escapeTurnsRemaining:scene.escapeTurnsRemaining,
     honorTrophy:scene.complete&&scene.definition.material==='ship'&&scene.done.has('gift')
       ? 'Raphael Adolini 1715':null,
