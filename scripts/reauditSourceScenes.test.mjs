@@ -3,11 +3,12 @@ import { afterEach, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 register('./sourceSceneTestLoader.mjs', import.meta.url);
-const [{EngineTactics},{HEROES_DB},{ENEMIES_DB},{SOURCE_SCENE_STAGES,resolveSourceScene,getSourceSceneBattlefield},sceneApi,{resolveStageEnemyData},{getCanonicalEncounterBriefing},{evaluateMissionAccess},{readStaticStages}]=await Promise.all([
+const [{EngineTactics},{HEROES_DB},{ENEMIES_DB},{SOURCE_SCENE_STAGES,resolveSourceScene,getSourceSceneBattlefield,isSourceScenePropVisible},sceneApi,{resolveStageEnemyData},{getCanonicalEncounterBriefing},{evaluateMissionAccess},{readStaticStages},spriteApi]=await Promise.all([
   import('../src/game/engineTactics.js'),import('../src/game/heroes.js'),import('../src/game/enemies.js'),
   import('../src/game/sourceSceneStages.js'),import('../src/game/sourceSceneEncounter.js'),
   import('../src/game/stageEnemyResolver.js'),import('../src/game/canonEncounterBriefing.js'),
-  import('../src/game/missions/missionAccessRules.js'),import('./riftDossierStaticStages.mjs')
+  import('../src/game/missions/missionAccessRules.js'),import('./riftDossierStaticStages.mjs'),
+  import('../src/game/spriteAssets.js')
 ]);
 const engines=[];
 const make=(stage,team)=>{
@@ -32,7 +33,19 @@ function walkTo(e,cell){
  }
  assert.fail('Route did not arrive');
 }
-function doCommand(e,id){settle(e);const c=e.sourceScene.definition.commands.find(c=>c.id===id);if(!c.anywhere)walkTo(e,c.cell);assert.equal(e.triggerSourceSceneAction(id,e.turnSerial),true,id);settle(e);}
+function doCommand(e,id){
+ settle(e);
+ // Route-based fixtures must use the same native aiming command as a player.
+ // A wrong aim remains wrong; the helper only selects the bog ray if unset.
+ if(e.sourceScene.definition.material==='prey' && id==='sarii_hatchet' && !e.sourceScene.maskAimTarget){
+  assert.equal(e.aimSourceSceneMask(6,4,e.turnSerial),true,'set bone-mask guidance ray');
+  settle(e);
+ }
+ const c=e.sourceScene.definition.commands.find(c=>c.id===id);
+ if(!c.anywhere)walkTo(e,c.cell);
+ assert.equal(e.triggerSourceSceneAction(id,e.turnSerial),true,id);
+ settle(e);
+}
 
 for(const d of SOURCE_SCENE_STAGES){
  test(`${d.id}: exact native stage, no fallback army or automatic empty-arena victory`,()=>{
@@ -147,7 +160,7 @@ test('Blast Pit: diversion has finite stock, two turn endings, no invented bonus
 test('Existing static stage inventory is retained, new scenes appended separately',()=>{
  const hub=readFileSync(new URL('../src/components/HubScreen.jsx',import.meta.url),'utf8');
  assert.equal(readStaticStages(hub).length,39);assert.equal((hub.match(/insertBeforeMetaStage\(SOURCE_SCENE_STAGES\)/g)||[]).length,1);
- assert.equal(new Set(SOURCE_SCENE_STAGES.map(s=>s.id)).size,5);
+ assert.equal(new Set(SOURCE_SCENE_STAGES.map(s=>s.id)).size,6);
 });
 test('Legacy combat still spawns its original active opponents',()=>{
  const unit=HEROES_DB[0],enemy={name:'QA',hp:50,atk:1,spd:1};
@@ -282,4 +295,255 @@ test('Predator 2: correct manual extraction grants one victory and records the 1
  assert.ok(summary.escapeTurnsRemaining>0);
  for(let i=0;i<300;i++)e.update();
  assert.equal(e.testCallbacks.length,1,'one completion callback, no double rewards');
+});
+
+test('Prey 2022: Naru and Feral are exact 1719 roles, never silver Jungle Hunter or City Hunter',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106);
+ assert.ok(d);assert.equal(d.material,'prey');assert.equal(d.universe,'Prey');
+ assert.equal(d.sceneLead.id,'naru_prey');assert.equal(d.threatName,'Feral Predator');
+ assert.match(d.incarnation,/2022/);assert.match(d.incarnation,/1719/);
+ assert.match(d.visualAnchor,/bone\/skull biomask/);
+ assert.match(d.visualAnchor,/no flying plasma cannon/i);
+ assert.equal(d.commands.length,10);
+ const naru=HEROES_DB.find(hero=>hero.id==='naru_prey'&&hero.universe==='Prey');
+ assert.ok(naru,'Naru exists in current authoritative hero roster');
+ const e=make(d);
+ assert.equal(e.heroes.length,1);assert.equal(e.heroes[0].id,'naru_prey');
+ assert.equal(e.sourceScene.threat?.name,'Feral Predator');
+ assert.equal(e.enemies.length,0);
+ const expectedSrc='/sprites/generated/bosses/predator/feral-predator.png';
+ assert.equal(spriteApi.getEnemySpriteSheetSrc(e.sourceScene.threat),expectedSrc);
+ const layout=spriteApi.getSpriteSheetLayout(expectedSrc);
+ assert.equal(layout.columns,1);
+ assert.equal(layout.rows,1);
+ assert.equal(spriteApi.getSpriteFrameForLayout('hit',999,layout).col,0);
+ assert.equal(spriteApi.getSpriteFrameForLayout('run',999,layout).row,0);
+ assert.equal(e.getSourceSceneState().maskAimTarget,null);
+ if(e.sourceScene.threat)e.sourceScene.threat.currentHp=0;
+ for(let n=0;n<120;n++)e.update();
+ assert.equal(e.gameOver,false,'Feral HP and the empty generic roster never resolve a source duel');
+});
+test('Prey 2022: herb blocks thermal pressure but a flintlock shot can still attract pursuit',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ assert.ok(sceneApi.getSourceSceneDanger(e.sourceScene).length);
+ doCommand(e,'herb');
+ assert.equal(e.getSourceSceneState().thermalConcealment,true);
+ assert.deepEqual(sceneApi.getSourceSceneDanger(e.sourceScene),[]);
+ assert.match(e.getSourceSceneState().sourceBeat.en,/lowers Naru/);
+ doCommand(e,'bait');
+ assert.equal(e.getSourceSceneState().thermalConcealment,true);
+ doCommand(e,'flintlock');
+ assert.equal(e.getSourceSceneState().thermalConcealment,true,'flintlock noise does not cancel medicinal effect');
+ assert.ok(sceneApi.getSourceSceneDanger(e.sourceScene).length,'audible shot attracts hunter despite low heat');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/not noise or direct sight/);
+});
+test('Prey 2022: the bone targeting mask requires authentic line-up above the bog',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ assert.equal(e.triggerSourceSceneAction('redirect',e.turnSerial),false);
+ for(const id of ['herb','bait','flintlock','take_mask','set_mask'])doCommand(e,id);
+ assert.equal(e.getSourceSceneState().maskAimTarget,null,'mounting the mask must not auto-aim');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/mask itself does not fire/);
+ assert.equal(e.getSourceSceneState().maskAim.options.length,3);
+ assert.equal(e.triggerSourceSceneAction('redirect',e.turnSerial),false,'target not yet trapped');
+ const start=e.turnSerial;
+ assert.equal(e.aimSourceSceneMask(5,4,start),true,'Naru can aim at a wrong column');
+ assert.equal(e.aimSourceSceneMask(6,4,start),false,'stale token cannot silently correct a shot');
+ settle(e);
+ assert.deepEqual(e.getSourceSceneState().maskAimTarget,{x:5,y:4});
+ assert.match(e.getSourceSceneState().sourceBeat.en,/wrong ray/);
+ assert.ok(e.getSourceSceneState().maskAim.options.some(o=>o.selected&&o.cell.x===5));
+ doCommand(e,'sarii_hatchet');
+ doCommand(e,'bog');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/points elsewhere/);
+ walkTo(e,{x:5,y:4});settle(e);
+ const token=e.turnSerial;
+ assert.equal(e.triggerSourceSceneAction('redirect',token),false,'wrong guide target cannot kill Feral');
+ assert.equal(e.getSourceSceneState().commands.find(c=>c.id==='redirect').reason,'alignment');
+ assert.equal(e.aimSourceSceneMask(6,4,token),false,'remote re-aim is forbidden');
+ assert.equal(e.sourceScene.done.has('redirect'),false);
+ walkTo(e,{x:6,y:2});settle(e);
+ assert.equal(e.aimSourceSceneMask(6,4,e.turnSerial),true,'realigned from mount');
+ settle(e);
+ assert.match(e.getSourceSceneState().sourceBeat.en,/correctly aligned/);
+ walkTo(e,{x:5,y:4});settle(e);
+ assert.equal(e.triggerSourceSceneAction('redirect',e.turnSerial),true,'correct mask target redirects Feral projectile');
+ settle(e);assert.deepEqual(sceneApi.getSourceSceneDanger(e.sourceScene),[]);
+ assert.equal(e.getSourceSceneState().thermalConcealment,false,'after final shot no active hunt');
+});
+test('Prey 2022: a trophy alone is not a reward and returning to the village wins exactly once',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ for(const id of ['herb','bait','flintlock','take_mask','set_mask','sarii_hatchet','bog','redirect','trophy'])doCommand(e,id);
+ assert.equal(e.getSourceSceneState().narrativeProof,'Feral Predator head');
+ assert.equal(e.getCombatSummary().sourceEncounter.narrativeProof,null,'unfinished village return cannot grant epilogue proof');
+ assert.equal(e.battleResult,null);
+ doCommand(e,'return');
+ assert.equal(e.battleResult,'victory');
+ const summary=e.getCombatSummary().sourceEncounter;
+ assert.equal(summary.narrativeProof,'Feral Predator head');
+ assert.equal(summary.artApproved,false);
+ assert.equal(summary.maskAimTarget.x,6);
+ assert.equal(summary.commands.at(-1).command,'return');
+ for(let n=0;n<300;n++)e.update();
+ assert.equal(e.testCallbacks.length,1,'no duplicate reward on repeated updates');
+});
+test('Cross-film Adolini 1715: 1719 origin and 1990 gift are not invented as a save-item transfer',()=>{
+ const a=SOURCE_SCENE_STAGES.find(stage=>stage.id===50105);
+ const b=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106);
+ assert.match(a.briefing.en.objective,/Adolini 1715/);
+ assert.match(b.briefing.en.objective,/Raphael/);
+ assert.equal(a.material,'ship');assert.equal(b.material,'prey');
+ assert.notEqual(a.sceneLead.id,b.sceneLead.id);
+ const e=make(b);
+ assert.equal(e.getSourceSceneState().honorTrophy,null);
+ assert.equal(e.getSourceSceneState().narrativeProof,null);
+ assert.equal(e.getCombatSummary().sourceEncounter.narrativeProof,null);
+});
+
+test('Prey 2022: story props enter and leave the board at the actual narrative beats',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ const props=new Map(d.field.props.map(p=>[p.id,p]));
+ const shown=id=>isSourceScenePropVisible(e.sourceScene,props.get(id));
+ assert.deepEqual({
+   herb:shown('herb'),trapper:shown('trapper'),flintlock:shown('flintlock'),
+   mask:shown('mask'),mounted:shown('mask_mount'),trophy:shown('trophy'),
+   bog:shown('bog'),sarii:shown('sarii'),village:shown('village')
+ },{herb:true,trapper:true,flintlock:false,mask:false,mounted:false,
+    trophy:false,bog:true,sarii:true,village:true});
+ doCommand(e,'herb');
+ assert.equal(shown('herb'),false,'consumed flower cannot still be available on ground');
+ assert.equal(shown('flintlock'),false,'gun cue stays hidden until bait is prepared');
+ doCommand(e,'bait');
+ assert.equal(shown('flintlock'),true);
+ assert.equal(shown('mask'),false,'bone mask is still on the Feral Predator before the shot');
+ doCommand(e,'flintlock');
+ assert.equal(shown('flintlock'),false);
+ assert.equal(shown('trapper'),false);
+ assert.equal(shown('mask'),true,'the shot drops the targeting mask at Naru’s next waypoint');
+ doCommand(e,'take_mask');
+ assert.equal(shown('mask'),false,'stolen mask must not remain lying on the ground');
+ assert.equal(shown('mask_mount'),false,'the carried mask is not yet planted at the bog');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/holds the stolen bone mask/);
+ doCommand(e,'set_mask');
+ assert.equal(shown('mask_mount'),true);
+ assert.equal(e.getSourceSceneState().maskAimTarget,null,'placing the mask does not align it automatically');
+ assert.equal(shown('trophy'),false,'dead Feral trophy cannot be present before the guided bolt');
+ doCommand(e,'sarii_hatchet');
+ doCommand(e,'bog');
+ doCommand(e,'redirect');
+ assert.equal(shown('trophy'),true);
+ doCommand(e,'trophy');
+ assert.equal(shown('trophy'),false,'retrieved trophy must not respawn in the pit');
+ assert.equal(e.battleResult,null);
+ doCommand(e,'return');
+ assert.equal(e.battleResult,'victory');
+});
+test('Prey 2022: prop gating is source-identity specific and does not mutate the historical boards',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106);
+ const original=JSON.stringify(d.field.props);
+ const other=SOURCE_SCENE_STAGES.find(stage=>stage.id===50105);
+ const e=make(other);
+ for(const prop of other.field.props)assert.equal(isSourceScenePropVisible(e.sourceScene,prop),true);
+ assert.equal(isSourceScenePropVisible(null,{id:'mask'}),false);
+ assert.equal(isSourceScenePropVisible({definition:d,done:[]},{id:'mask'}),false);
+ assert.equal(JSON.stringify(d.field.props),original);
+});
+
+test('Prey 2022: Sarii remains a scene companion through the bog, not stranded in a village on the battle board',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ const dog=d.field.props.find(p=>p.id==='sarii');
+ const exit=d.field.props.find(p=>p.id==='village');
+ assert.equal(dog.kind,'companion');assert.equal(dog.label,'SARII');
+ assert.equal(exit.kind,'exit');assert.equal(exit.label,'RETURN PATH');
+ assert.equal(e.getSourceSceneState().companionAid,null);
+ assert.equal(e.sourceScene.sariiHatchetReturned,false);
+ assert.equal(e.heroes.length,1);
+ assert.equal(e.enemies.length,0);
+ for(const id of ['herb','bait','flintlock','take_mask','set_mask'])doCommand(e,id);
+ assert.equal(e.getSourceSceneState().companionAid,null);
+ doCommand(e,'sarii_hatchet');
+ assert.equal(e.getSourceSceneState().companionAid,'sarii_returns_hatchet');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/Sarii brings back/);
+ assert.equal(e.heroes.length,1,'dog remains a protected story companion');
+ doCommand(e,'bog');
+ assert.equal(e.getSourceSceneState().companionAid,'sarii_returns_hatchet');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/correctly aligned/);
+ assert.equal(e.heroes.length,1,'dog must not be a free attack unit');
+ walkTo(e,{x:5,y:4});settle(e);
+ const t=e.turnSerial;
+ e.sourceScene.sariiHatchetReturned=false;
+ assert.equal(e.triggerSourceSceneAction('redirect',t),false,'fidelity step cannot bypass the companion assist');
+ e.sourceScene.sariiHatchetReturned=true;
+ assert.equal(e.triggerSourceSceneAction('redirect',t),true);
+ settle(e);
+ doCommand(e,'trophy');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/Sarii accompanies/);
+ doCommand(e,'return');
+ assert.equal(e.battleResult,'victory');
+ assert.equal(e.getCombatSummary().sourceEncounter.companionAid,'sarii_returns_hatchet');
+ for(let i=0;i<300;i++)e.update();
+ assert.equal(e.testCallbacks.length,1);
+});
+
+test('Prey 2022: mask-aim interaction is one turn, guarded and only for the active source hero',()=>{
+ const prey=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(prey);
+ assert.equal(e.getSourceSceneState().maskAim,null);
+ assert.equal(e.aimSourceSceneMask(6,4,e.turnSerial),false,'cannot aim without placing the bone mask');
+ for(const id of ['herb','bait','flintlock','take_mask','set_mask'])doCommand(e,id);
+ assert.equal(e.getSourceSceneState().maskAim.available,true);
+ const turn=e.turnSerial,turns=e.turnsElapsed;
+ for(const [x,y] of [[-1,4],[6,-1],[6,5],[6.1,4],[NaN,4],[6,Infinity]]){
+  assert.equal(e.aimSourceSceneMask(x,y,turn),false,'only authored aim rays can be selected');
+ }
+ for(const invalid of [null,undefined,NaN,Infinity,String(turn),turn-1]){
+  assert.equal(e.aimSourceSceneMask(6,4,invalid),false,'token cannot be forged');
+ }
+ assert.equal(e.turnsElapsed,turns);
+ e.setPaused(true);
+ assert.equal(e.aimSourceSceneMask(6,4,turn),false,'pause blocks aiming');
+ e.setPaused(false);
+ assert.equal(e.aimSourceSceneMask(6,4,turn),true);
+ assert.equal(e.turnsElapsed,turns+1);
+ assert.equal(e.aimSourceSceneMask(6,4,turn),false,'duplicate or stale turn is rejected');
+ settle(e);
+ assert.equal(e.aimSourceSceneMask(6,4,e.turnSerial),false,'same ray cannot double-spend AP');
+ assert.equal(e.getSourceSceneState().maskAim.options.filter(o=>o.selected).length,1);
+ assert.equal(e.sourceScene.log.filter(x=>x.command==='aim_mask').length,1);
+ const result=e.getCombatSummary().sourceEncounter;
+ const exportedAim=result.commands.find(x=>x.command==='aim_mask');
+ assert.deepEqual(exportedAim.target,{x:6,y:4});
+ exportedAim.target.x=-99;
+ assert.equal(e.sourceScene.log.find(x=>x.command==='aim_mask').target.x,6,'report cannot mutate native action history');
+ assert.equal(e.sourceScene.done.has('redirect'),false);
+});
+test('Prey 2022: autoplay deliberately aims the bone mask, then finishes true 1719 story',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ e.autoBattle=true;e.runHeroAI();
+ for(let i=0;i<20000&&!e.gameOver;i++)e.update();
+ assert.equal(e.battleResult,'victory');
+ const entries=e.sourceScene.log;
+ const placed=entries.findIndex(x=>x.command==='set_mask');
+ const aimed=entries.findIndex(x=>x.command==='aim_mask');
+ const helped=entries.findIndex(x=>x.command==='sarii_hatchet');
+ const lured=entries.findIndex(x=>x.command==='bog');
+ const guided=entries.findIndex(x=>x.command==='redirect');
+ assert.ok(placed>=0&&placed<aimed&&aimed<helped&&helped<lured&&lured<guided);
+ assert.deepEqual(e.getCombatSummary().sourceEncounter.maskAimTarget,{x:6,y:4});
+ assert.equal(entries[aimed].target.x,6);
+ assert.equal(e.sourceScene.log.filter(x=>x.command==='aim_mask').length,1);
+ assert.equal(e.getCombatSummary().sourceEncounter.narrativeProof,'Feral Predator head');
+});
+test('Prey 2022: mission UI dispatches real aim action while the legacy scenes remain unaffected',()=>{
+ const game=readFileSync(new URL('../src/components/GameCanvas.jsx',import.meta.url),'utf8');
+ const panel=readFileSync(new URL('../src/components/SourceScenePanel.jsx',import.meta.url),'utf8');
+ const presentation=readFileSync(new URL('../src/game/sourceScenePresentation.js',import.meta.url),'utf8');
+ assert.match(game,/handleSourceSceneMaskAim/);
+ assert.match(game,/onAim=\{handleSourceSceneMaskAim\}/);
+ assert.match(panel,/scene\.maskAim\.options\.map/);
+ assert.match(panel,/aria-pressed=\{option\.selected\}/);
+ assert.match(presentation,/const aim=s\.maskAimTarget/);
+ for(const id of [50101,50102,50103,50104,50105]){
+  const d=SOURCE_SCENE_STAGES.find(s=>s.id===id),e=make(d);
+  assert.equal(e.getSourceSceneState().maskAim,null);
+  assert.equal(e.aimSourceSceneMask(6,4,e.turnSerial),false);
+ }
 });
