@@ -2508,8 +2508,6 @@ Object.assign(heroOverrides, {
   }
 });
 
-
-
 Object.entries(heroOverrides).forEach(([id, override]) => {
   const hero = HEROES_DB.find(item => item.id === id);
   if (hero) Object.assign(hero, override);
