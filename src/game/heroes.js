@@ -2508,6 +2508,22 @@ Object.assign(heroOverrides, {
   }
 });
 
+
+ // 1987 finale canon lock. Preserve the existing Dutch gameplay loadout from
+ // LORE_ACCURATE_HERO_OVERRIDES; only supply source-edition and visual identity.
+if (heroOverrides.dutch) Object.assign(heroOverrides.dutch, {
+  incarnation: 'Predator (1987) - Dutch Schaefer / jungle river and trap finale',
+  referenceUrl: 'https://www.20thcenturystudios.com/movies/predator',
+  referenceUrls: [
+    'https://www.20thcenturystudios.com/movies/predator',
+    'https://d23.com/20th-century-fox-spooktacular-1980s-predator/'
+  ],
+  visualAnchor: 'Dutch in the original 1987 jungle finale: short dark hair, mud-covered bare arms and torso, ripped jungle fatigues and dark trousers, improvised wooden bow, knife and suspended log trap. Not an armored Predator, not City Hunter, no high-tech gauntlet, and no alien technology carried by Dutch.',
+  equipment: ['Combat knife', 'Improvised bow and stakes', 'Suspended log counterweight trap', 'Cold river mud camouflage'],
+  canonStatus: 'Predator (1987) final-scene identity and equipment locked; RPG/Smash abilities are gameplay adaptations',
+  visualReviewStatus: 'pending'
+});
+
 Object.entries(heroOverrides).forEach(([id, override]) => {
   const hero = HEROES_DB.find(item => item.id === id);
   if (hero) Object.assign(hero, override);
