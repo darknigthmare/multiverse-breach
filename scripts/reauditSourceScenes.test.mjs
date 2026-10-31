@@ -3,7 +3,7 @@ import { afterEach, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 register('./sourceSceneTestLoader.mjs', import.meta.url);
-const [{EngineTactics},{HEROES_DB},{ENEMIES_DB},{SOURCE_SCENE_STAGES,resolveSourceScene,getSourceSceneBattlefield},sceneApi,{resolveStageEnemyData},{getCanonicalEncounterBriefing},{evaluateMissionAccess},{readStaticStages},spriteApi]=await Promise.all([
+const [{EngineTactics},{HEROES_DB},{ENEMIES_DB},{SOURCE_SCENE_STAGES,resolveSourceScene,getSourceSceneBattlefield,isSourceScenePropVisible},sceneApi,{resolveStageEnemyData},{getCanonicalEncounterBriefing},{evaluateMissionAccess},{readStaticStages},spriteApi]=await Promise.all([
   import('../src/game/engineTactics.js'),import('../src/game/heroes.js'),import('../src/game/enemies.js'),
   import('../src/game/sourceSceneStages.js'),import('../src/game/sourceSceneEncounter.js'),
   import('../src/game/stageEnemyResolver.js'),import('../src/game/canonEncounterBriefing.js'),
@@ -371,4 +371,52 @@ test('Cross-film Adolini 1715: 1719 origin and 1990 gift are not invented as a s
  assert.equal(e.getSourceSceneState().honorTrophy,null);
  assert.equal(e.getSourceSceneState().narrativeProof,null);
  assert.equal(e.getCombatSummary().sourceEncounter.narrativeProof,null);
+});
+
+test('Prey 2022: story props enter and leave the board at the actual narrative beats',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ const props=new Map(d.field.props.map(p=>[p.id,p]));
+ const shown=id=>isSourceScenePropVisible(e.sourceScene,props.get(id));
+ assert.deepEqual({
+   herb:shown('herb'),trapper:shown('trapper'),flintlock:shown('flintlock'),
+   mask:shown('mask'),mounted:shown('mask_mount'),trophy:shown('trophy'),
+   bog:shown('bog'),village:shown('village')
+ },{herb:true,trapper:true,flintlock:false,mask:false,mounted:false,
+    trophy:false,bog:true,village:true});
+ doCommand(e,'herb');
+ assert.equal(shown('herb'),false,'consumed flower cannot still be available on ground');
+ assert.equal(shown('flintlock'),false,'gun cue stays hidden until bait is prepared');
+ doCommand(e,'bait');
+ assert.equal(shown('flintlock'),true);
+ assert.equal(shown('mask'),false,'bone mask is still on the Feral Predator before the shot');
+ doCommand(e,'flintlock');
+ assert.equal(shown('flintlock'),false);
+ assert.equal(shown('trapper'),false);
+ assert.equal(shown('mask'),true,'the shot drops the targeting mask at Naru’s next waypoint');
+ doCommand(e,'take_mask');
+ assert.equal(shown('mask'),false,'stolen mask must not remain lying on the ground');
+ assert.equal(shown('mask_mount'),false,'the carried mask is not yet planted at the bog');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/holds the stolen bone mask/);
+ doCommand(e,'set_mask');
+ assert.equal(shown('mask_mount'),true);
+ assert.deepEqual(e.getSourceSceneState().maskAimTarget,{x:6,y:4});
+ assert.equal(shown('trophy'),false,'dead Feral trophy cannot be present before the guided bolt');
+ doCommand(e,'bog');
+ doCommand(e,'redirect');
+ assert.equal(shown('trophy'),true);
+ doCommand(e,'trophy');
+ assert.equal(shown('trophy'),false,'retrieved trophy must not respawn in the pit');
+ assert.equal(e.battleResult,null);
+ doCommand(e,'return');
+ assert.equal(e.battleResult,'victory');
+});
+test('Prey 2022: prop gating is source-identity specific and does not mutate the historical boards',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106);
+ const original=JSON.stringify(d.field.props);
+ const other=SOURCE_SCENE_STAGES.find(stage=>stage.id===50105);
+ const e=make(other);
+ for(const prop of other.field.props)assert.equal(isSourceScenePropVisible(e.sourceScene,prop),true);
+ assert.equal(isSourceScenePropVisible(null,{id:'mask'}),false);
+ assert.equal(isSourceScenePropVisible({definition:d,done:[]},{id:'mask'}),false);
+ assert.equal(JSON.stringify(d.field.props),original);
 });
