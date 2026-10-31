@@ -241,16 +241,16 @@ export const SOURCE_SCENE_STAGES = [
       'https://www.20thcenturystudios.com/movies/prey',
       'https://www.whattowatch.com/features/prey-ending-explained'
     ],
-    visualAnchor: 'Prey (2022), Comanche territory in 1719: young Naru in period-accurate earth-toned clothing with rope-tethered hatchet and Raphael’s flintlock, Sarii the dog sheltered; Feral Predator has lean body, bone/skull biomask, archaic projectile bolt launcher and distinctive shield, not Jungle Hunter silver mask or City Hunter smart disc. Bog and positioned targeting mask turn Feral’s own projectile against its head. No flying plasma cannon, Yautja starship duel or crossover adversaries.',
+    visualAnchor: 'Prey (2022), Comanche territory in 1719: young Naru in period-accurate earth-toned clothing with rope-tethered hatchet and Raphael’s flintlock, Sarii the dog remaining a noncombat companion during the hunt; Feral Predator has lean body, bone/skull biomask, archaic projectile bolt launcher and distinctive shield, not Jungle Hunter silver mask or City Hunter smart disc. Bog and positioned targeting mask turn Feral’s own projectile against its head. No flying plasma cannon, Yautja starship duel or crossover adversaries.',
     sceneLead: { id: 'naru_prey', universe: 'Prey' }, threatName: 'Feral Predator',
     briefing: {
       fr: {
         objective: 'Naru seule, en 1719 : après avoir compris les limites de la vision thermique du Feral Predator et perdu Taabe, mange la plante médicinale refroidissante, prépare le piège avec le trappeur survivant, utilise le pistolet de Raphaël pour distraire et blesser le chasseur, récupère son masque de visée en os, place-le face au marécage, attire-y le chasseur et détourne son propre projectile grâce aux pointeurs du masque. Reprends la preuve du duel et rejoins le village avec Sarii. Aucun adversaire crossover et aucune victoire par simple baisse de PV.',
-        adaptation: commonAdaptation.fr + ' Le duel final et le retour au village sont condensés en une grille 9×7. Le marécage a déjà été découvert auparavant ; le masque dirige les projectiles, il ne lance pas de tir de plasma. La plante réduit la signature thermique sans supprimer les autres moyens de repérage. Le chien Sarii n est pas un combattant. Total adapté : 48 tours ; positions, vitesse et dégâts non certifiés cinématographiquement.'
+        adaptation: commonAdaptation.fr + ' Le duel final et le retour au village sont condensés en une grille 9×7. Le marécage a déjà été découvert auparavant ; le masque dirige les projectiles, il ne lance pas de tir de plasma. La plante réduit la signature thermique sans supprimer les autres moyens de repérage. Sarii intervient par une diversion scénarisée, sans devenir un héros jouable. La dernière case est une sortie vers le village, pas un village dans le marécage. Total adapté : 48 tours ; positions, vitesse et dégâts non certifiés cinématographiquement.'
       },
       en: {
         objective: 'Naru alone, in 1719: after learning the Feral Predator’s thermal weakness and losing Taabe, eat the cooling medicinal herb, arrange a trap using the surviving French trapper, use Raphael’s flintlock to wound and distract the hunter, steal its bone targeting mask, aim that mask at the bog, draw the hunter into the mire and let its own guided projectile return to its head. Recover proof of the duel and return to the Comanche village with Sarii. No crossover enemies or HP-only victory.',
-        adaptation: commonAdaptation.en + ' The film finale and village return are compressed to one 9×7 grid. Naru previously discovered the bog; the bone mask GUIDES the Feral Predator’s projectiles, it does not fire plasma. The herb lowers thermal visibility without preventing hearing or direct sight. Sarii is a protected noncombat marker. Adapted limit: 48 turns; geometry, speeds and damage are not film-certified.'
+        adaptation: commonAdaptation.en + ' The film finale and village return are compressed to one 9×7 grid. Naru previously discovered the bog; the bone mask GUIDES the Feral Predator’s projectiles, it does not fire plasma. The herb lowers thermal visibility without preventing hearing or direct sight. Sarii assists through a scripted distraction without becoming a playable fighter. The last cell represents the route back to the village, not a village inside the bog. Adapted limit: 48 turns; geometry, speeds and damage are not film-certified.'
       }
     },
     turnLimit: 48,
@@ -265,7 +265,8 @@ export const SOURCE_SCENE_STAGES = [
         { id: 'mask_mount', x: 6, y: 2, label: 'AIMING MASK', kind: 'target' },
         { id: 'bog', x: 6, y: 4, label: 'BOG', kind: 'bog' },
         { id: 'trophy', x: 6, y: 4, label: 'PROOF', kind: 'trophy' },
-        { id: 'village', x: 0, y: 2, label: 'VILLAGE / SARII', kind: 'refuge' }
+        { id: 'sarii', x: 1, y: 4, label: 'SARII', kind: 'companion' },
+        { id: 'village', x: 0, y: 2, label: 'RETURN PATH', kind: 'exit' }
       ]
     },
     commands: [
