@@ -68,8 +68,14 @@ guerre Yautja–Xenomorph crossover.
 La grille, le découpage en 9 commandes, la disposition des plantes et
 des arbres, les chiffres de dégâts et les tours ne sont **pas des captures
 du montage du film**. Ce sont des adaptations de gameplay. Le fond Canvas
-est un **schéma original** et la silhouette de l'ennemi utilise un
-asset existant, non certifié visuellement.
+est un **schéma original**. La silhouette ennemie réutilise
+`/sprites/generated/bosses/predator/feral-predator.png` : le jeu possède
+ce PNG dans les assets de `Predator`, pas dans le dossier de boss `Prey`.
+La mission fait le raccord **uniquement pour ce Feral**, en rendu **une
+pose entière 1×1** plutôt qu'un recadrage erroné en 4×4. Le portrait,
+les proportions, la version sans masque et les animations restent **à
+valider** sur des captures du film. Ce raccord ne valide ni ne remplace
+l'apparence officielle de 2022.
 
 ## Le pistolet Raphael Adolini 1715 : ne pas inventer de passation
 
