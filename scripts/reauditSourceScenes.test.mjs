@@ -3,11 +3,12 @@ import { afterEach, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 register('./sourceSceneTestLoader.mjs', import.meta.url);
-const [{EngineTactics},{HEROES_DB},{ENEMIES_DB},{SOURCE_SCENE_STAGES,resolveSourceScene,getSourceSceneBattlefield},sceneApi,{resolveStageEnemyData},{getCanonicalEncounterBriefing},{evaluateMissionAccess},{readStaticStages}]=await Promise.all([
+const [{EngineTactics},{HEROES_DB},{ENEMIES_DB},{SOURCE_SCENE_STAGES,resolveSourceScene,getSourceSceneBattlefield},sceneApi,{resolveStageEnemyData},{getCanonicalEncounterBriefing},{evaluateMissionAccess},{readStaticStages},spriteApi]=await Promise.all([
   import('../src/game/engineTactics.js'),import('../src/game/heroes.js'),import('../src/game/enemies.js'),
   import('../src/game/sourceSceneStages.js'),import('../src/game/sourceSceneEncounter.js'),
   import('../src/game/stageEnemyResolver.js'),import('../src/game/canonEncounterBriefing.js'),
-  import('../src/game/missions/missionAccessRules.js'),import('./riftDossierStaticStages.mjs')
+  import('../src/game/missions/missionAccessRules.js'),import('./riftDossierStaticStages.mjs'),
+  import('../src/game/spriteAssets.js')
 ]);
 const engines=[];
 const make=(stage,team)=>{
@@ -298,6 +299,13 @@ test('Prey 2022: Naru and Feral are exact 1719 roles, never silver Jungle Hunter
  assert.equal(e.heroes.length,1);assert.equal(e.heroes[0].id,'naru_prey');
  assert.equal(e.sourceScene.threat?.name,'Feral Predator');
  assert.equal(e.enemies.length,0);
+ const expectedSrc='/sprites/generated/bosses/predator/feral-predator.png';
+ assert.equal(spriteApi.getEnemySpriteSheetSrc(e.sourceScene.threat),expectedSrc);
+ const layout=spriteApi.getSpriteSheetLayout(expectedSrc);
+ assert.equal(layout.columns,1);
+ assert.equal(layout.rows,1);
+ assert.equal(spriteApi.getSpriteFrameForLayout('hit',999,layout).col,0);
+ assert.equal(spriteApi.getSpriteFrameForLayout('run',999,layout).row,0);
  assert.equal(e.getSourceSceneState().maskAimTarget,null);
  if(e.sourceScene.threat)e.sourceScene.threat.currentHp=0;
  for(let n=0;n<120;n++)e.update();
