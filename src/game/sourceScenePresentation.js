@@ -211,13 +211,25 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
     label({x:6,y:2},'LOG DOWN','#fff0bd');
   }
   if(d.material==='prey'&&s.done.has('set_mask')){
-    // Draw the real geometry asserted by the controller (vertical mask/bog
-    // alignment). The mask is a guidance device, not a plasma gun.
-    const mask=engine.gridToScreen(6,2),bog=engine.gridToScreen(6,4);
-    ctx.save();ctx.setLineDash([5,4]);ctx.strokeStyle='#d94b3b';ctx.lineWidth=2;
-    ctx.beginPath();ctx.moveTo(mask.x,mask.y-24);ctx.lineTo(bog.x,bog.y-16);ctx.stroke();
-    ctx.restore();
-    if(s.done.has('bog')&&!s.done.has('redirect'))label({x:6,y:4},'BOLT TARGET','#ffb885');
+    // The guidance ray follows the player's selected target. Do not draw an
+    // automatically perfect lock or an invented plasma shot from the mask.
+    const mount=d.field.props.find(p=>p.id==='mask_mount');
+    const bog=d.field.props.find(p=>p.id==='bog');
+    const aim=s.maskAimTarget;
+    if(mount && aim && !s.done.has('redirect')){
+      const origin=engine.gridToScreen(mount.x,mount.y);
+      const target=engine.gridToScreen(aim.x,aim.y);
+      const aligned=bog && aim.x===bog.x && aim.y===bog.y;
+      ctx.save();ctx.setLineDash([5,4]);
+      ctx.strokeStyle=aligned?'#b4f3d4':'#e77762';ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(origin.x,origin.y-24);
+      ctx.lineTo(target.x,target.y-16);ctx.stroke();
+      ctx.setLineDash([]);ctx.beginPath();ctx.arc(target.x,target.y-16,5,0,Math.PI*2);ctx.stroke();
+      ctx.restore();
+      if(s.done.has('bog')&&aligned)label(bog,'BOLT TARGET','#ffb885');
+    } else if(mount && !s.done.has('redirect')){
+      label(mount,'AIM REQUIRED','#f7d8a3');
+    }
   }
   if(d.material==='ship' && s.done.has('duel') && !s.complete) {
     // The elder is a non-hostile witness; a pre-existing unverified sprite.
