@@ -43,6 +43,35 @@ Modifier le masque ou viser une autre case empêche de terminer le duel.
 Le masque ne tire pas de projectile : c'est l'arme du chasseur qui tire,
 puis suit les pointeurs de son masque positionné au bord de la mare.
 
+### Ciblage réellement jouable — correctif du 31 octobre
+
+La pose du masque **ne règle plus automatiquement la bonne cible**.
+Le panneau tactique affiche trois colonnes de visée (cases F5, G5 et H5
+dans les repères visibles, correspondant aux coordonnées moteur
+`{x:5,y:4}`, `{x:6,y:4}` et `{x:7,y:4}`).
+Seule G5 est alignée sur le Feral Predator dans le marécage.
+L'action est réellement exécutée par `EngineTactics.aimSourceSceneMask` :
+Naru doit être vivante et sur la case du masque posé, disposer du tour
+actif, ne pas être en pause et utiliser un jeton de tour actuel.
+**Chaque orientation consomme une fin de tour**, même erronée ; une
+même orientation, un jeton périmé, une cible hors liste ou une commande
+depuis la mare sont refusés. Pour corriger une direction erronée,
+Naru doit retourner près du masque avant le tir final.
+
+Le rayon visible suit **le choix effectif du joueur** ; il n'est
+ni une trace automatiquement parfaite ni un tir émis par le masque.
+Les contrôles sont lisibles sur mobile, au clavier et en FR/EN ;
+le mode de bataille automatique emprunte la grille, retourne au
+masque si nécessaire et règle lui aussi G5, sans court-circuiter le
+contrôle des prérequis. Les tests exigent une action d'orientation
+`aim_mask` entre `set_mask` et `bog`, puis le tir retourné
+`redirect` avant la preuve de victoire. Ni les autres cinq scènes,
+ni les PV du chasseur, ni le registre des héros n'ont changé.
+
+Ces trois secteurs, leur disposition et le coût d'un tour sont des
+**adaptations de gameplay**, sans prétention de chorégraphie 1:1.
+
+
 Le trophée `Feral Predator head` est une **preuve narrative** du dénouement :
 il est affichable au cours de la scène, mais ne devient partie du rapport
 de victoire qu'une fois la mission terminée au village. Il n'ajoute aucun
