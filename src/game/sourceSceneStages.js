@@ -169,6 +169,63 @@ export const SOURCE_SCENE_STAGES = [
       [[3,4],[4,4]], [[5,4],[6,4]], [[6,3],[5,3]], [[4,2],[5,2]]
     ],
     threatCell: { x: 7, y: 3 }, accent: '#c8ad65', material: 'jungle'
+  },
+  // Predator 2 (1990) is a different hunt: Harrigan DISARMS the roof countdown
+  // before this separate trophy-ship finale. No 1987 wrist-bomb victory template.
+  {
+    ...base(50105, 'predator_2_lost_tribe_ship_1990', 'Predator', 'harrigan_predator',
+      'Predator 2 (1990) — Los Angeles subterranean Lost Tribe ship / trophy chamber',
+      'Predator 2 — Lost Tribe Ship', 'Predator 2 — vaisseau du clan perdu'),
+    bossName: 'City Hunter Predator', enemyRoster: ['City Hunter Predator'],
+    referenceUrl: 'https://www.20thcenturystudios.com/movies/predator-2',
+    referenceUrls: [
+      'https://www.20thcenturystudios.com/movies/predator-2',
+      'https://catalog.afi.com/Film/58654-PREDATOR-2'
+    ],
+    visualAnchor: 'Predator 2 (1990) climax, Los Angeles subterranean Predator spacecraft. Dark ribbed techno-organic chamber and trophy wall with many skulls including a Xenomorph skull as a static cameo; injured City Hunter with smart disc, Lost Tribe witnesses, Greyback presenting a Raphael Adolini 1715 flintlock, then ship engine launch. No jungle log trap, 1987 Jungle Hunter, Alien Queen or playable Xenomorph opponent.',
+    sceneLead: { id: 'harrigan_predator', universe: 'Predator' }, threatName: 'City Hunter Predator',
+    briefing: {
+      fr: {
+        objective: 'Harrigan seul : après avoir désarmé le dispositif au poignet du City Hunter sur le toit, poursuis-le dans son vaisseau souterrain de Los Angeles. Traverse la salle des trophées, résiste au filet, libère-toi avec le disque intelligent récupéré puis vaincs le City Hunter avec cette arme. Le clan reprend son mort sans combattre ; reçois de l Ancien un pistolet à silex marqué Raphael Adolini 1715. Dès l allumage des moteurs, gagne la sortie avant le souffle du décollage. Aucun massacre du clan ni victoire par PV.',
+        adaptation: commonAdaptation.fr + ' Le duel du toit et son autodestruction désamorcée sont des événements antérieurs, pas un nouveau compte à rebours ici. Salle des trophées, filet, duel, Ancien et échappée condensés en une carte 9×7. Le pistolet est une preuve narrative, pas un équipement gratuit ajouté à l inventaire. Décollage sur 8 fins de tour, limite totale de 38 tours, graphismes et gestes non certifiés 1:1.'
+      },
+      en: {
+        objective: 'Harrigan alone: after disarming the City Hunter wrist device on the roof, follow the wounded hunter into its underground Los Angeles ship. Cross the trophy room, survive the net, cut free with the recovered smart disc and defeat the City Hunter using that disc. The Lost Tribe retrieves its fallen member rather than attacking; receive Greyback elder’s Raphael Adolini 1715 flintlock. When the engines ignite, reach the cavern exit before take-off blast. No clan massacre or ordinary HP victory.',
+        adaptation: commonAdaptation.en + ' The rooftop duel and already-disarmed wrist device happen before this scene, not another countdown here. Trophy room, net, duel, elder and escape are compressed into one 9×7 tactical map. The flintlock is narrative evidence, NOT a free inventory item. An eight-turn launch window and 38-turn total are gameplay adaptations; visuals and choreography are not certified 1:1.'
+      }
+    },
+    turnLimit: 38, shipLaunchTurnLimit: 8,
+    field: {
+      rows: 7, cols: 9, heroSpawns: [{ x: 0, y: 3 }],
+      blocked: [[2,0],[3,0],[4,0],[8,0],[8,1],[8,5],[8,6],[2,6],[3,6]],
+      props: [
+        { id: 'entrance', x: 1, y: 3, label: 'HATCH', kind: 'airlock' },
+        { id: 'trophies', x: 2, y: 2, label: 'TROPHIES', kind: 'trophy' },
+        { id: 'net', x: 3, y: 3, label: 'NET', kind: 'net' },
+        { id: 'duel', x: 5, y: 3, label: 'DUEL', kind: 'arena' },
+        { id: 'tribe', x: 6, y: 2, label: 'CLAN', kind: 'refuge' },
+        { id: 'engine', x: 6, y: 4, label: 'ENGINES', kind: 'generator' },
+        { id: 'tunnel', x: 0, y: 5, label: 'CAVE EXIT', kind: 'ladder' }
+      ]
+    },
+    commands: [
+      command('enter', 1, 3, 'Franchir le sas du vaisseau', 'Enter the hidden ship'),
+      command('trophies', 2, 2, 'Observer la salle des trophées', 'Inspect the trophy chamber', ['enter']),
+      command('net', 3, 3, 'Survivre à l embuscade au filet', 'Survive the net ambush', ['trophies']),
+      command('cut_net', 3, 3, 'Couper le filet avec le Smart Disc', 'Cut the net with the smart disc', ['net']),
+      command('duel', 5, 3, 'Vaincre le City Hunter avec son disque', 'Defeat City Hunter using its own disc', ['cut_net']),
+      command('tribe', 6, 2, 'Laisser le clan reprendre son mort', 'Let the Lost Tribe reclaim its fallen hunter', ['duel']),
+      command('gift', 6, 2, 'Recevoir le pistolet Adolini 1715', 'Receive the Adolini 1715 flintlock', ['tribe']),
+      command('ignite', 6, 4, 'Repérer le démarrage des moteurs', 'Detect the engines powering up', ['gift']),
+      command('escape', 0, 5, 'Fuir le souffle du vaisseau', 'Escape the ship take-off blast', ['ignite'], { final: true })
+    ],
+    dangerPatterns: [
+      [[3,2],[4,2]], [[4,3],[5,3]], [[3,4],[4,4]], [[5,2],[5,4]]
+    ],
+    launchDangerPatterns: [
+      [[6,4],[5,4]], [[5,4],[4,4]], [[4,4],[3,4]], [[3,3],[2,3]]
+    ],
+    threatCell: { x: 5, y: 3 }, accent: '#84c7b6', material: 'ship'
   }
 ];
 
