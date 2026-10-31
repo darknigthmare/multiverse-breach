@@ -254,6 +254,9 @@ export const SOURCE_SCENE_STAGES = [
       }
     },
     turnLimit: 48,
+    // Only one of three player-selectable mask directions intersects the bog.
+    // Aiming uses a native turn rather than an automatic correct lock.
+    maskAimCandidates: [[5,4],[6,4],[7,4]],
     field: {
       rows: 7, cols: 9, heroSpawns: [{ x: 0, y: 3 }],
       blocked: [[2,0],[4,0],[7,0],[0,6],[3,6],[8,6]],
