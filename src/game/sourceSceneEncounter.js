@@ -16,7 +16,7 @@ export function createSourceSceneEncounter(stage, heroes, enemiesData = {}) {
     .filter(Boolean).find(e => e.name === definition.threatName);
   return { definition, actor, actorId:actor.id, actorUniverse:actor.universe, actorLifetime:0,
     done:new Set(), turns:0, complete:false, failed:false, reason:'', decoys:3, diversionTurns:0,
-    escapeTurnsRemaining:null,maskAimTarget:null,
+    escapeTurnsRemaining:null,maskAimTarget:null,sariiDistraction:false,
     lastEndTurn:0, log:[], threat:sourceThreat ? {...sourceThreat,
       universe:sourceThreat.universe || definition.universe,
       // Prey is a dedicated catalog universe but its existing Feral bitmap
@@ -65,6 +65,11 @@ export function getSourceSceneCommandState(engine, id) {
   if (scene.done.has(id)) return {enabled:false,reason:'done'};
   if (command.repeatable && (scene.decoys<=0 || scene.done.has('ignite'))) return {enabled:false,reason:'empty'};
   if (!command.requires.every(r=>scene.done.has(r))) return {enabled:false,reason:'prerequisite'};
+  if (scene.definition.material==='prey' && id==='redirect' && !scene.sariiDistraction) {
+    // In this condensed encounter Sarii's help is a story beat of the bog
+    // lure, not a second playable unit or a free crossover attack.
+    return {enabled:false,reason:'prerequisite'};
+  }
   if (scene.definition.material==='prey' && id==='redirect') {
     // Mask steering is meaningful: it must point along the bog column.
     // Naru cannot use a generic attack or tamper with the mask to skip this.
@@ -89,6 +94,11 @@ export function executeSourceSceneCommand(engine, id, token) {
     // The triggering turn itself is counted below; display eight subsequent
     // turn endings to reach shelter, never grant a free post-expiry action.
     scene.escapeTurnsRemaining=scene.definition.selfDestructTurnLimit+1;
+  }
+  if (scene.definition.material==='prey' && id==='bog') {
+    // Sarii distracts the wounded hunter during Naru's final lure.
+    // A scene-only state; no extra party slot, health pool or save item.
+    scene.sariiDistraction=true;
   }
   if (scene.definition.material==='prey' && id==='set_mask') {
     const mask=scene.definition.field.props.find(p=>p.id==='mask_mount');
@@ -155,16 +165,16 @@ export function getSourceSceneBeat(scene) {
   }
   if (material==='prey') {
     if (d.has('trophy')) return {
-      fr:'Naru a récupéré la preuve du duel. Sarii est à l’abri au village ; ramenez-la à sa communauté.',
-      en:'Naru has recovered proof of the hunt. Sarii is safely by the village; return to her community.'
+      fr:'Naru a récupéré la preuve du duel. Sarii l’accompagne jusqu’au village par le chemin de sortie.',
+      en:'Naru has recovered proof of the hunt. Sarii accompanies her along the return route to their village.'
     };
     if (d.has('redirect')) return {
       fr:'Le projectile guidé du Feral Predator a suivi le masque et frappé sa propre tête. Aucune arme à plasma.',
       en:'The Feral Predator’s guided bolt followed the mask and struck its own head. No plasma cannon.'
     };
     if (d.has('bog')) return {
-      fr:'Le chasseur est prisonnier du marécage ; ses projectiles suivront le masque placé face à lui.',
-      en:'The hunter is mired in the bog; its projectile will follow the mask aimed toward it.'
+      fr:'Sarii détourne brièvement l’attention du Feral Predator, enlisé dans la vase ; les projectiles suivront le masque placé face à lui.',
+      en:'Sarii distracts the Feral Predator as it sinks in the bog; its projectile will follow the mask aimed toward it.'
     };
     if (d.has('set_mask')) return {
       fr:'Le masque osseux est orienté vers le marécage, sans tirer lui-même de projectile.',
@@ -211,6 +221,7 @@ export function getSourceSceneState(engine) {
     honorTrophy:d.material==='ship'&&s.done.has('gift')?'Raphael Adolini 1715':null,
     narrativeProof:d.material==='prey'&&s.done.has('trophy')?'Feral Predator head':null,
     maskAimTarget:d.material==='prey'&&s.maskAimTarget?{...s.maskAimTarget}:null,
+    companionAid:d.material==='prey'&&s.sariiDistraction?'sarii_distraction':null,
     thermalConcealment:(d.material==='jungle'&&s.done.has('mud')&&!s.done.has('wash'))
       ||(d.material==='prey'&&s.done.has('herb')&&!s.done.has('redirect')),
     danger:getSourceSceneDanger(s),artApproved:false,
@@ -228,6 +239,7 @@ export function getSourceSceneSummary(scene) {
     narrativeProof:scene.complete&&scene.definition.material==='prey'&&scene.done.has('trophy')
       ? 'Feral Predator head':null,
     maskAimTarget:scene.definition.material==='prey'&&scene.maskAimTarget?{...scene.maskAimTarget}:null,
+    companionAid:scene.definition.material==='prey'&&scene.sariiDistraction?'sarii_distraction':null,
     artApproved:false};
 }
 /** Find a true shortest path, not greedy Manhattan movement around the blocked silo. */
