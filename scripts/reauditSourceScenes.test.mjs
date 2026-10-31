@@ -286,16 +286,16 @@ test('Predator 2: correct manual extraction grants one victory and records the 1
 
 test('Prey 2022: Naru and Feral are exact 1719 roles, never silver Jungle Hunter or City Hunter',()=>{
  const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106);
- assert.ok(d);assert.equal(d.material,'prey');assert.equal(d.universe,'Predator');
- assert.equal(d.sceneLead.id,'naru');assert.equal(d.threatName,'Feral Predator');
+ assert.ok(d);assert.equal(d.material,'prey');assert.equal(d.universe,'Prey');
+ assert.equal(d.sceneLead.id,'naru_prey');assert.equal(d.threatName,'Feral Predator');
  assert.match(d.incarnation,/2022/);assert.match(d.incarnation,/1719/);
  assert.match(d.visualAnchor,/bone\/skull biomask/);
  assert.match(d.visualAnchor,/no flying plasma cannon/i);
  assert.equal(d.commands.length,9);
- const naru=HEROES_DB.find(hero=>hero.id==='naru'&&hero.universe==='Predator');
+ const naru=HEROES_DB.find(hero=>hero.id==='naru_prey'&&hero.universe==='Prey');
  assert.ok(naru,'Naru exists in current authoritative hero roster');
  const e=make(d);
- assert.equal(e.heroes.length,1);assert.equal(e.heroes[0].id,'naru');
+ assert.equal(e.heroes.length,1);assert.equal(e.heroes[0].id,'naru_prey');
  assert.equal(e.sourceScene.threat?.name,'Feral Predator');
  assert.equal(e.enemies.length,0);
  assert.equal(e.getSourceSceneState().maskAimTarget,null);
