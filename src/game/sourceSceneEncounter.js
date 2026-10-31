@@ -22,7 +22,9 @@ export function createSourceSceneEncounter(stage, heroes, enemiesData = {}) {
       // Prey is a dedicated catalog universe but its existing Feral bitmap
       // resides in the Predator boss archive. Bind only this exact actor;
       // leave all legacy enemy templates and other film variants untouched.
-      ...(definition.material==='prey' && !sourceThreat.spriteSource
+      // Prey catalog's default path is absent, even if the enemy already
+      // carries that non-existent candidate; source-lock this one identity.
+      ...(definition.material==='prey'
         ? {spriteSource:'/sprites/generated/bosses/predator/feral-predator.png'} : {}),
       state:'idle',stateTimer:0} : null };
 }
