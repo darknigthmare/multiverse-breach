@@ -42,10 +42,11 @@
         "https://www.20thcenturystudios.com/movies/prey",
         "https://www.whattowatch.com/features/prey-ending-explained"
       ],
-      "path": null,
-      "status": "OPEN_NOT_GENERATED",
+      "path": "/sprites/generated/heroes/prey/naru-prey.png",
+      "status": "REUSED_EXISTING_ART_UNVERIFIED",
       "visualReviewStatus": "pending",
-      "artApproved": false
+      "artApproved": false,
+      "notes": "Base hero bitmap is already present in the dedicated Prey hero folder. The single sprite still requires source-film visual, proportion, costume and animation checks; this task is for 1:1 review and missing variants, not a nonexistent base file."
     },
     {
       "id": "prey-2022-02",
@@ -282,5 +283,9 @@
     }
   ],
   "existingAssetReused": "/sprites/generated/bosses/predator/feral-predator.png",
-  "reuseApprovedAsCanon": false
+  "reuseApprovedAsCanon": false,
+  "existingVisualsReused": [
+    "/sprites/generated/heroes/prey/naru-prey.png",
+    "/sprites/generated/bosses/predator/feral-predator.png"
+  ]
 }
