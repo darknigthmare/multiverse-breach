@@ -16,7 +16,7 @@ export function createSourceSceneEncounter(stage, heroes, enemiesData = {}) {
     .filter(Boolean).find(e => e.name === definition.threatName);
   return { definition, actor, actorId:actor.id, actorUniverse:actor.universe, actorLifetime:0,
     done:new Set(), turns:0, complete:false, failed:false, reason:'', decoys:3, diversionTurns:0,
-    escapeTurnsRemaining:null,maskAimTarget:null,sariiDistraction:false,
+    escapeTurnsRemaining:null,maskAimTarget:null,sariiHatchetReturned:false,
     lastEndTurn:0, log:[], threat:sourceThreat ? {...sourceThreat,
       universe:sourceThreat.universe || definition.universe,
       // Prey is a dedicated catalog universe but its existing Feral bitmap
@@ -65,7 +65,7 @@ export function getSourceSceneCommandState(engine, id) {
   if (scene.done.has(id)) return {enabled:false,reason:'done'};
   if (command.repeatable && (scene.decoys<=0 || scene.done.has('ignite'))) return {enabled:false,reason:'empty'};
   if (!command.requires.every(r=>scene.done.has(r))) return {enabled:false,reason:'prerequisite'};
-  if (scene.definition.material==='prey' && id==='redirect' && !scene.sariiDistraction) {
+  if (scene.definition.material==='prey' && id==='redirect' && !scene.sariiHatchetReturned) {
     // In this condensed encounter Sarii's help is a story beat of the bog
     // lure, not a second playable unit or a free crossover attack.
     return {enabled:false,reason:'prerequisite'};
@@ -129,10 +129,10 @@ export function executeSourceSceneCommand(engine, id, token) {
     // turn endings to reach shelter, never grant a free post-expiry action.
     scene.escapeTurnsRemaining=scene.definition.selfDestructTurnLimit+1;
   }
-  if (scene.definition.material==='prey' && id==='bog') {
-    // Sarii distracts the wounded hunter during Naru's final lure.
-    // A scene-only state; no extra party slot, health pool or save item.
-    scene.sariiDistraction=true;
+  if (scene.definition.material==='prey' && id==='sarii_hatchet') {
+    // Sarii brings Naru back her tethered hatchet during the forest duel.
+    // It is a protected story event, not a separate attack unit or inventory item.
+    scene.sariiHatchetReturned=true;
   }
   if (scene.definition.material==='prey' && id==='set_mask') {
     // Placement does NOT silently aim at the Feral Predator. The player
@@ -209,10 +209,20 @@ export function getSourceSceneBeat(scene) {
       const bog=scene.definition.field.props.find(p=>p.id==='bog');
       const aligned=bog && scene.maskAimTarget?.x===bog.x && scene.maskAimTarget?.y===bog.y;
       return aligned
-        ? {fr:'Sarii détourne le chasseur enlisé dans la vase ; le viseur du masque est correctement aligné.',
-          en:'Sarii distracts the hunter mired in the bog; the bone mask ray is correctly aligned.'}
-        : {fr:'Sarii détourne le chasseur dans le marécage, mais le masque pointe ailleurs. Revenez le régler.',
-          en:'Sarii distracts the hunter in the bog, but the mask points elsewhere. Return and realign it.'};
+        ? {fr:'Naru a amené le Feral Predator dans la vase. Le viseur du masque est correctement aligné.',
+          en:'Naru has lured the Feral Predator into the bog. The bone-mask ray is correctly aligned.'}
+        : {fr:'Naru a attiré le chasseur dans le marécage, mais le masque pointe ailleurs. Revenez le régler.',
+          en:'Naru has lured the hunter into the bog, but the mask points elsewhere. Return and realign it.'};
+    }
+    if (d.has('sarii_hatchet')) {
+      const target=scene.maskAimTarget;
+      const bog=scene.definition.field.props.find(p=>p.id==='bog');
+      const aligned=bog && target?.x===bog.x && target?.y===bog.y;
+      return aligned
+        ? {fr:'Sarii rapporte la hache reliée à Naru. Le masque vise correctement la vase.',
+          en:'Sarii brings back Naru’s rope hatchet. The mask is correctly aimed at the bog.'}
+        : {fr:'Sarii rapporte la hache reliée à Naru. Il reste à régler le masque vers la vase.',
+          en:'Sarii brings back Naru’s rope hatchet. The mask still needs to be aimed at the bog.'};
     }
     if (d.has('set_mask')) {
       const target=scene.maskAimTarget;
@@ -272,7 +282,7 @@ export function getSourceSceneState(engine) {
     narrativeProof:d.material==='prey'&&s.done.has('trophy')?'Feral Predator head':null,
     maskAimTarget:d.material==='prey'&&s.maskAimTarget?{...s.maskAimTarget}:null,
     maskAim:getSourceSceneMaskAimState(engine),
-    companionAid:d.material==='prey'&&s.sariiDistraction?'sarii_distraction':null,
+    companionAid:d.material==='prey'&&s.sariiHatchetReturned?'sarii_returns_hatchet':null,
     thermalConcealment:(d.material==='jungle'&&s.done.has('mud')&&!s.done.has('wash'))
       ||(d.material==='prey'&&s.done.has('herb')&&!s.done.has('redirect')),
     danger:getSourceSceneDanger(s),artApproved:false,
@@ -290,7 +300,7 @@ export function getSourceSceneSummary(scene) {
     narrativeProof:scene.complete&&scene.definition.material==='prey'&&scene.done.has('trophy')
       ? 'Feral Predator head':null,
     maskAimTarget:scene.definition.material==='prey'&&scene.maskAimTarget?{...scene.maskAimTarget}:null,
-    companionAid:scene.definition.material==='prey'&&scene.sariiDistraction?'sarii_distraction':null,
+    companionAid:scene.definition.material==='prey'&&scene.sariiHatchetReturned?'sarii_returns_hatchet':null,
     artApproved:false};
 }
 /** Find a true shortest path, not greedy Manhattan movement around the blocked silo. */
