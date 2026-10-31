@@ -205,14 +205,31 @@ export function getSourceSceneBeat(scene) {
       fr:'Le projectile guidé du Feral Predator a suivi le masque et frappé sa propre tête. Aucune arme à plasma.',
       en:'The Feral Predator’s guided bolt followed the mask and struck its own head. No plasma cannon.'
     };
-    if (d.has('bog')) return {
-      fr:'Sarii détourne brièvement l’attention du Feral Predator, enlisé dans la vase ; les projectiles suivront le masque placé face à lui.',
-      en:'Sarii distracts the Feral Predator as it sinks in the bog; its projectile will follow the mask aimed toward it.'
-    };
-    if (d.has('set_mask')) return {
-      fr:'Le masque osseux est orienté vers le marécage, sans tirer lui-même de projectile.',
-      en:'The bone mask is aimed at the bog; the mask itself does not fire a projectile.'
-    };
+    if (d.has('bog')) {
+      const bog=scene.definition.field.props.find(p=>p.id==='bog');
+      const aligned=bog && scene.maskAimTarget?.x===bog.x && scene.maskAimTarget?.y===bog.y;
+      return aligned
+        ? {fr:'Sarii détourne le chasseur enlisé dans la vase ; le viseur du masque est correctement aligné.',
+          en:'Sarii distracts the hunter mired in the bog; the bone mask ray is correctly aligned.'}
+        : {fr:'Sarii détourne le chasseur dans le marécage, mais le masque pointe ailleurs. Revenez le régler.',
+          en:'Sarii distracts the hunter in the bog, but the mask points elsewhere. Return and realign it.'};
+    }
+    if (d.has('set_mask')) {
+      const target=scene.maskAimTarget;
+      const bog=scene.definition.field.props.find(p=>p.id==='bog');
+      if (!target) return {
+        fr:'Le masque osseux est posé. Sélectionnez une direction : le masque ne tire pas de projectile.',
+        en:'The bone mask has been mounted. Choose a firing ray; the mask itself does not fire a projectile.'
+      };
+      if (bog && target.x===bog.x && target.y===bog.y) return {
+        fr:'Le rayon du masque est aligné sur le marécage. Le masque ne tire pas lui-même.',
+        en:'The mask ray is aligned with the bog. The mask itself does not fire a projectile.'
+      };
+      return {
+        fr:'Le masque vise la mauvaise colonne. Revenez à sa position pour corriger le tir.',
+        en:'The mask points along the wrong ray. Return to its mount to re-aim.'
+      };
+    }
     if (d.has('take_mask')) return {
       fr:'Naru tient désormais le masque osseux volé : placez son viseur vers la mare. La variante graphique sans masque est encore à produire.',
       en:'Naru now holds the stolen bone mask: aim its targeting system toward the bog. Maskless character art still needs production.'
