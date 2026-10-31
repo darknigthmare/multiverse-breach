@@ -77,6 +77,37 @@ les proportions, la version sans masque et les animations restent **à
 valider** sur des captures du film. Ce raccord ne valide ni ne remplace
 l'apparence officielle de 2022.
 
+
+## Correctif du 31 octobre — continuité visuelle des objets (après QA)
+
+Le moteur ne doit pas afficher **simultanément** le masque sur le sol,
+celui placé au-dessus du marécage et le trophée final. La présentation
+utilise maintenant `isSourceScenePropVisible` sur l'état effectif du
+contrôleur, sans modifier les coordonnées ou les commandes de mission.
+
+- La plante disparaît du sol une fois consommée.
+- La présence du trappeur cesse après le coup de feu et le pistolet n'est
+  présenté comme repère d'action qu'entre la préparation du leurre et le tir.
+- Le masque osseux tombe après le tir, reste au sol jusqu'au ramassage,
+  puis n'apparaît sur le dispositif de visée qu'après sa pose effective.
+- La preuve de victoire n'apparaît qu'après l'impact du projectile
+  retourné, puis disparaît de la grille dès sa récupération.
+- Le marécage et le village restent visibles comme éléments de décor.
+
+Le Feral utilise encore sa **pose bitmap existante à masque** : ce lot
+**ne produit pas** une version sans masque certifiée 1:1. Le jeu affiche
+explicitement `MASK OFF · VARIANT PENDING` durant cette phase et le
+texte d'étape est contextualisé en français/anglais, afin de ne pas
+faire passer l'ancien PNG pour une animation canonique nouvelle.
+La fabrication de la version sans masque reste ouverte sous la tâche
+`prey-2022-04` du backlog graphique.
+
+Deux tests de bout en bout de `EngineTactics` valident désormais
+l'apparition et la disparition de chaque repère à travers le trajet
+manuel de Naru, l'absence de récompense avant le retour au village,
+le respect des objets des cinq autres missions et l'absence de mutation
+permanente des définitions.
+
 ## Le pistolet Raphael Adolini 1715 : ne pas inventer de passation
 
 Le film *Prey* situe Naru dans une période qui **précède** *Predator 2*
