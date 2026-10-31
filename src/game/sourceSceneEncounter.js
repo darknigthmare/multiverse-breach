@@ -83,6 +83,40 @@ export function getSourceSceneCommandState(engine, id) {
   if (!command.anywhere && (scene.actor.gridX!==command.cell.x || scene.actor.gridY!==command.cell.y)) return {enabled:false,reason:'position'};
   return {enabled:true,reason:''};
 }
+/** A genuine turn-cost aiming action, separate from the mask placement command. */
+export function getSourceSceneMaskAimState(engine) {
+  const scene=engine.sourceScene, d=scene?.definition;
+  if (d?.material!=='prey' || !scene.done.has('set_mask') || scene.done.has('redirect')
+    || scene.complete || scene.failed) return null;
+  const mount=d.field.props.find(p=>p.id==='mask_mount');
+  const options=(d.maskAimCandidates||[]).map(([x,y])=>({
+    cell:{x,y},
+    selected:scene.maskAimTarget?.x===x && scene.maskAimTarget?.y===y
+  }));
+  const available=Boolean(mount && validateSceneActor(engine)
+    && !engine.disposed && !engine.paused && !engine.gameOver
+    && engine.canCommandActiveUnit() && engine.activeUnit===scene.actor
+    && engine.activeUnitType==='hero'
+    && scene.actor.gridX===mount.x && scene.actor.gridY===mount.y);
+  return {available, mountCell:mount?{x:mount.x,y:mount.y}:null, options};
+}
+
+export function aimSourceSceneMask(engine,x,y,token) {
+  const scene=engine.sourceScene;
+  if (!Number.isInteger(token) || token!==engine.turnSerial
+    || !Number.isInteger(x) || !Number.isInteger(y)) return false;
+  const state=getSourceSceneMaskAimState(engine);
+  if (!state?.available || !state.options.some(o=>o.cell.x===x && o.cell.y===y)
+    || (scene.maskAimTarget?.x===x && scene.maskAimTarget?.y===y)) return false;
+  // The mask guides Feral's own launcher. A wrong ray is a real, reversible
+  // decision that costs one turn; it cannot execute the finale by itself.
+  scene.maskAimTarget={x,y};
+  scene.log.push({command:'aim_mask',turn:token,cell:{x:scene.actor.gridX,y:scene.actor.gridY},target:{x,y}});
+  engine.playSfx('click');
+  engine.endActiveTurn();
+  return true;
+}
+
 export function executeSourceSceneCommand(engine, id, token) {
   const scene=engine.sourceScene;
   if (!scene || !Number.isInteger(token) || token!==engine.turnSerial
@@ -101,10 +135,9 @@ export function executeSourceSceneCommand(engine, id, token) {
     scene.sariiDistraction=true;
   }
   if (scene.definition.material==='prey' && id==='set_mask') {
-    const mask=scene.definition.field.props.find(p=>p.id==='mask_mount');
-    const bog=scene.definition.field.props.find(p=>p.id==='bog');
-    scene.maskAimTarget=mask && bog && mask.x===bog.x && mask.y<bog.y
-      ? {x:bog.x,y:bog.y} : null;
+    // Placement does NOT silently aim at the Feral Predator. The player
+    // must now choose the bone-mask guidance ray using the native command UI.
+    scene.maskAimTarget=null;
   }
   if (scene.definition.material==='ship' && id==='ignite') {
     // Unlike the 1987 wrist bomb, the 1990 rooftop bomb is already disabled.
@@ -221,6 +254,7 @@ export function getSourceSceneState(engine) {
     honorTrophy:d.material==='ship'&&s.done.has('gift')?'Raphael Adolini 1715':null,
     narrativeProof:d.material==='prey'&&s.done.has('trophy')?'Feral Predator head':null,
     maskAimTarget:d.material==='prey'&&s.maskAimTarget?{...s.maskAimTarget}:null,
+    maskAim:getSourceSceneMaskAimState(engine),
     companionAid:d.material==='prey'&&s.sariiDistraction?'sarii_distraction':null,
     thermalConcealment:(d.material==='jungle'&&s.done.has('mud')&&!s.done.has('wash'))
       ||(d.material==='prey'&&s.done.has('herb')&&!s.done.has('redirect')),
@@ -265,6 +299,28 @@ export function sourceSceneRoute(engine, target) {
 export function runSourceSceneAI(engine) {
   const s=engine.sourceScene;
   if (!s || !validateSceneActor(engine) || !engine.canCommandActiveUnit() || engine.activeUnit!==s.actor) return false;
+  // Autoplay must physically return to the mounted mask and set its ray
+  // before heading into the bog; never cheat by toggling the final flag.
+  if (s.definition.material==='prey' && s.done.has('set_mask') && !s.done.has('redirect')) {
+    const bog=s.definition.field.props.find(p=>p.id==='bog');
+    const aim=s.maskAimTarget;
+    if (bog && (aim?.x!==bog.x || aim?.y!==bog.y)) {
+      const mount=s.definition.field.props.find(p=>p.id==='mask_mount');
+      if (!mount) {engine.endActiveTurn();return true;}
+      if (s.actor.gridX!==mount.x || s.actor.gridY!==mount.y) {
+        if (engine.actionPhase==='action') engine.cancelSelectedAction();
+        const route=sourceSceneRoute(engine,mount.cell||{x:mount.x,y:mount.y});
+        const available=Math.max(0,engine.movementBudget-engine.movementSpent);
+        const step=route.filter(c=>c.cost<=available).at(-1);
+        if (step) engine.handleCellClick(step.x,step.y);
+        if (s.actor.gridX!==mount.x || s.actor.gridY!==mount.y) {
+          engine.endActiveTurn();return true;
+        }
+      }
+      if (!aimSourceSceneMask(engine,bog.x,bog.y,engine.turnSerial)) engine.endActiveTurn();
+      return true;
+    }
+  }
   const pending=s.definition.commands.filter(c=>!c.repeatable&&!s.done.has(c.id)&&c.requires.every(r=>s.done.has(r)));
   const target=pending.map(c=>({command:c,path:sourceSceneRoute(engine,c.cell)}))
     .filter(p=>p.path.length || (p.command.cell.x===s.actor.gridX&&p.command.cell.y===s.actor.gridY))
