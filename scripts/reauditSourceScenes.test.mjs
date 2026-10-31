@@ -147,7 +147,7 @@ test('Blast Pit: diversion has finite stock, two turn endings, no invented bonus
 test('Existing static stage inventory is retained, new scenes appended separately',()=>{
  const hub=readFileSync(new URL('../src/components/HubScreen.jsx',import.meta.url),'utf8');
  assert.equal(readStaticStages(hub).length,39);assert.equal((hub.match(/insertBeforeMetaStage\(SOURCE_SCENE_STAGES\)/g)||[]).length,1);
- assert.equal(new Set(SOURCE_SCENE_STAGES.map(s=>s.id)).size,4);
+ assert.equal(new Set(SOURCE_SCENE_STAGES.map(s=>s.id)).size,5);
 });
 test('Legacy combat still spawns its original active opponents',()=>{
  const unit=HEROES_DB[0],enemy={name:'QA',hp:50,atk:1,spd:1};
@@ -201,4 +201,85 @@ test('Predator 1987: reaching shelter wins while preserving the existing complet
  assert.ok(e.getCombatSummary().sourceEncounter.escapeTurnsRemaining>0);
  for(let n=0;n<300;n++)e.update();
  assert.equal(e.testCallbacks.length,1);
+});
+
+test('Predator 1987: unmasked duel and secondary log trap keep the film beats distinct',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50104),e=make(d);
+ assert.match(e.getSourceSceneState().sourceBeat.en,/Dutch/);
+ for(const id of ['mud','bow','rig','lure','disrupt','wash'])doCommand(e,id);
+ assert.match(e.getSourceSceneState().sourceBeat.en,/removes its mask and shoulder cannon/);
+ doCommand(e,'bait');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/avoids the sharpened-stake trap/);
+ assert.equal(e.getSourceSceneState().escapeTurnsRemaining,null);
+ doCommand(e,'crush');
+ assert.equal(e.getSourceSceneState().countdownLabel.en,'SELF-DESTRUCT');
+});
+test('Predator 2: exact 1990 source-locked ship, Harrigan and original City Hunter',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50105);
+ assert.ok(d);assert.equal(d.material,'ship');assert.equal(d.universe,'Predator');
+ assert.equal(d.sceneLead.id,'harrigan_predator');assert.equal(d.threatName,'City Hunter Predator');
+ assert.equal(d.commands.length,9);assert.equal(d.commands.at(-1).id,'escape');
+ assert.ok(d.referenceUrls.some(url=>url.includes('catalog.afi.com')));
+ assert.match(d.incarnation,/Predator 2 \(1990\)/);
+ const h=HEROES_DB.find(hero=>hero.id==='harrigan_predator'&&hero.universe==='Predator');
+ assert.ok(h,'the global legacy Harrigan roster is retained');
+ const e=make(d);
+ assert.equal(e.heroes.length,1);assert.equal(e.heroes[0].id,h.id);
+ assert.equal(e.enemies.length,0);
+ assert.equal(e.sourceScene.threat?.name,'City Hunter Predator');
+ e.sourceScene.threat.currentHp=0;
+ for(let i=0;i<100;i++)e.update();
+ assert.equal(e.gameOver,false,'raw boss HP depletion cannot bypass story');
+ assert.equal(e.getSourceSceneState().honorTrophy,null);
+});
+test('Predator 2: net disables manual and AI movement until the recovered smart disc cuts it',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50105),e=make(d);
+ for(const id of ['enter','trophies','net'])doCommand(e,id);
+ settle(e);
+ assert.equal(e.sourceScene.actor.gridX,3);
+ assert.equal(e.sourceScene.actor.gridY,3);
+ assert.match(e.getSourceSceneState().sourceBeat.en,/caught in the net/);
+ assert.equal(e.handleCellClick(4,3).handled,false);
+ assert.equal(e.sourceScene.actor.gridX,3);
+ assert.equal(e.triggerSourceSceneAction('duel',e.turnSerial),false);
+ doCommand(e,'cut_net');
+ assert.notEqual(e.canOccupyCell(e.sourceScene.actor,4,3),false);
+});
+test('Predator 2: the Lost Tribe does not attack, and the honor pistol is narrative-only',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50105),e=make(d);
+ for(const id of ['enter','trophies','net','cut_net','duel'])doCommand(e,id);
+ assert.deepEqual(sceneApi.getSourceSceneDanger(e.sourceScene),[]);
+ assert.match(e.getSourceSceneState().sourceBeat.en,/recover the body/);
+ assert.equal(e.getSourceSceneState().honorTrophy,null);
+ doCommand(e,'tribe');doCommand(e,'gift');
+ assert.equal(e.getSourceSceneState().honorTrophy,'Raphael Adolini 1715');
+ assert.equal(e.getCombatSummary().sourceEncounter.honorTrophy,null,
+   'having received a clue is not proof of a completed escape');
+});
+test('Predator 2: ship launch, not wrist self-destruct, expires after 8 turn endings',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50105),e=make(d);
+ for(const id of ['enter','trophies','net','cut_net','duel','tribe','gift','ignite'])doCommand(e,id);
+ assert.equal(e.getSourceSceneState().escapeTurnsRemaining,8);
+ assert.equal(e.getSourceSceneState().countdownLabel.en,'SHIP LAUNCH');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/already disabled/);
+ assert.ok(sceneApi.getSourceSceneDanger(e.sourceScene).length>0);
+ for(let i=0;i<7&&!e.gameOver;i++){settle(e);e.skipActiveTurn();}
+ assert.equal(e.battleResult,null);
+ settle(e);e.skipActiveTurn();
+ assert.equal(e.battleResult,'defeat');
+ assert.equal(e.sourceScene.reason,'ship_takeoff_blast');
+ assert.equal(e.getCombatSummary().sourceEncounter.honorTrophy,null);
+ assert.equal(e.triggerSourceSceneAction('escape',e.turnSerial),false);
+});
+test('Predator 2: correct manual extraction grants one victory and records the 1715 gift',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50105),e=make(d);
+ for(const c of d.commands)doCommand(e,c.id);
+ assert.equal(e.battleResult,'victory');
+ const summary=e.getCombatSummary().sourceEncounter;
+ assert.equal(summary.honorTrophy,'Raphael Adolini 1715');
+ assert.equal(summary.artApproved,false);
+ assert.equal(summary.commands.at(-1).command,'escape');
+ assert.ok(summary.escapeTurnsRemaining>0);
+ for(let i=0;i<300;i++)e.update();
+ assert.equal(e.testCallbacks.length,1,'one completion callback, no double rewards');
 });
