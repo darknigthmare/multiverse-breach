@@ -147,7 +147,7 @@ test('Blast Pit: diversion has finite stock, two turn endings, no invented bonus
 test('Existing static stage inventory is retained, new scenes appended separately',()=>{
  const hub=readFileSync(new URL('../src/components/HubScreen.jsx',import.meta.url),'utf8');
  assert.equal(readStaticStages(hub).length,39);assert.equal((hub.match(/insertBeforeMetaStage\(SOURCE_SCENE_STAGES\)/g)||[]).length,1);
- assert.equal(new Set(SOURCE_SCENE_STAGES.map(s=>s.id)).size,5);
+ assert.equal(new Set(SOURCE_SCENE_STAGES.map(s=>s.id)).size,6);
 });
 test('Legacy combat still spawns its original active opponents',()=>{
  const unit=HEROES_DB[0],enemy={name:'QA',hp:50,atk:1,spd:1};
@@ -282,4 +282,85 @@ test('Predator 2: correct manual extraction grants one victory and records the 1
  assert.ok(summary.escapeTurnsRemaining>0);
  for(let i=0;i<300;i++)e.update();
  assert.equal(e.testCallbacks.length,1,'one completion callback, no double rewards');
+});
+
+test('Prey 2022: Naru and Feral are exact 1719 roles, never silver Jungle Hunter or City Hunter',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106);
+ assert.ok(d);assert.equal(d.material,'prey');assert.equal(d.universe,'Predator');
+ assert.equal(d.sceneLead.id,'naru');assert.equal(d.threatName,'Feral Predator');
+ assert.match(d.incarnation,/2022/);assert.match(d.incarnation,/1719/);
+ assert.match(d.visualAnchor,/bone\/skull biomask/);
+ assert.match(d.visualAnchor,/no flying plasma cannon/i);
+ assert.equal(d.commands.length,9);
+ const naru=HEROES_DB.find(hero=>hero.id==='naru'&&hero.universe==='Predator');
+ assert.ok(naru,'Naru exists in current authoritative hero roster');
+ const e=make(d);
+ assert.equal(e.heroes.length,1);assert.equal(e.heroes[0].id,'naru');
+ assert.equal(e.sourceScene.threat?.name,'Feral Predator');
+ assert.equal(e.enemies.length,0);
+ assert.equal(e.getSourceSceneState().maskAimTarget,null);
+ if(e.sourceScene.threat)e.sourceScene.threat.currentHp=0;
+ for(let n=0;n<120;n++)e.update();
+ assert.equal(e.gameOver,false,'Feral HP and the empty generic roster never resolve a source duel');
+});
+test('Prey 2022: herb blocks thermal pressure but a flintlock shot can still attract pursuit',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ assert.ok(sceneApi.getSourceSceneDanger(e.sourceScene).length);
+ doCommand(e,'herb');
+ assert.equal(e.getSourceSceneState().thermalConcealment,true);
+ assert.deepEqual(sceneApi.getSourceSceneDanger(e.sourceScene),[]);
+ assert.match(e.getSourceSceneState().sourceBeat.en,/lowers Naru/);
+ doCommand(e,'bait');
+ assert.equal(e.getSourceSceneState().thermalConcealment,true);
+ doCommand(e,'flintlock');
+ assert.equal(e.getSourceSceneState().thermalConcealment,true,'flintlock noise does not cancel medicinal effect');
+ assert.ok(sceneApi.getSourceSceneDanger(e.sourceScene).length,'audible shot attracts hunter despite low heat');
+ assert.match(e.getSourceSceneState().sourceBeat.en,/not noise or direct sight/);
+});
+test('Prey 2022: the bone targeting mask requires authentic line-up above the bog',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ assert.equal(e.triggerSourceSceneAction('redirect',e.turnSerial),false);
+ for(const id of ['herb','bait','flintlock','take_mask','set_mask'])doCommand(e,id);
+ assert.deepEqual(e.getSourceSceneState().maskAimTarget,{x:6,y:4});
+ assert.match(e.getSourceSceneState().sourceBeat.en,/mask itself does not fire/);
+ assert.equal(e.triggerSourceSceneAction('redirect',e.turnSerial),false,'target not yet trapped');
+ doCommand(e,'bog');
+ walkTo(e,{x:5,y:4});settle(e);
+ const token=e.turnSerial;
+ e.sourceScene.maskAimTarget={x:5,y:4};
+ assert.equal(e.triggerSourceSceneAction('redirect',token),false,'wrong guide target cannot kill Feral');
+ assert.equal(e.getSourceSceneState().commands.find(c=>c.id==='redirect').reason,'alignment');
+ assert.equal(e.sourceScene.done.has('redirect'),false);
+ e.sourceScene.maskAimTarget={x:6,y:4};
+ assert.equal(e.triggerSourceSceneAction('redirect',token),true,'correct mask target redirects Feral projectile');
+ settle(e);assert.deepEqual(sceneApi.getSourceSceneDanger(e.sourceScene),[]);
+ assert.equal(e.getSourceSceneState().thermalConcealment,false,'after final shot no active hunt');
+});
+test('Prey 2022: a trophy alone is not a reward and returning to the village wins exactly once',()=>{
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ for(const id of ['herb','bait','flintlock','take_mask','set_mask','bog','redirect','trophy'])doCommand(e,id);
+ assert.equal(e.getSourceSceneState().narrativeProof,'Feral Predator head');
+ assert.equal(e.getCombatSummary().sourceEncounter.narrativeProof,null,'unfinished village return cannot grant epilogue proof');
+ assert.equal(e.battleResult,null);
+ doCommand(e,'return');
+ assert.equal(e.battleResult,'victory');
+ const summary=e.getCombatSummary().sourceEncounter;
+ assert.equal(summary.narrativeProof,'Feral Predator head');
+ assert.equal(summary.artApproved,false);
+ assert.equal(summary.maskAimTarget.x,6);
+ assert.equal(summary.commands.at(-1).command,'return');
+ for(let n=0;n<300;n++)e.update();
+ assert.equal(e.testCallbacks.length,1,'no duplicate reward on repeated updates');
+});
+test('Cross-film Adolini 1715: 1719 origin and 1990 gift are not invented as a save-item transfer',()=>{
+ const a=SOURCE_SCENE_STAGES.find(stage=>stage.id===50105);
+ const b=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106);
+ assert.match(a.briefing.en.objective,/Adolini 1715/);
+ assert.match(b.briefing.en.objective,/Raphael/);
+ assert.equal(a.material,'ship');assert.equal(b.material,'prey');
+ assert.notEqual(a.sceneLead.id,b.sceneLead.id);
+ const e=make(b);
+ assert.equal(e.getSourceSceneState().honorTrophy,null);
+ assert.equal(e.getSourceSceneState().narrativeProof,null);
+ assert.equal(e.getCombatSummary().sourceEncounter.narrativeProof,null);
 });
