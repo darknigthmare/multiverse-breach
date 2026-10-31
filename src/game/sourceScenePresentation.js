@@ -11,14 +11,14 @@ export function drawSourceSceneBackdrop(ctx, stage, width, height) {
   const d=resolveSourceScene(stage);
   if(!d)return false;
   ctx.save();
-  ctx.fillStyle=d.material==='ship'?'#0b1616':d.material==='jungle'?'#0d2019':d.material==='shuttle'?'#17292e':d.material==='silo'?'#211d18':'#151e28';
+  ctx.fillStyle=d.material==='prey'?'#1c3029':d.material==='ship'?'#0b1616':d.material==='jungle'?'#0d2019':d.material==='shuttle'?'#17292e':d.material==='silo'?'#211d18':'#151e28';
   ctx.fillRect(0,0,width,height);
-  ctx.strokeStyle=d.material==='ship'?'#3b625d':d.material==='jungle'?'#376243':d.material==='shuttle'?'#819d9f':'#52606c';ctx.lineWidth=2;
+  ctx.strokeStyle=d.material==='prey'?'#527752':d.material==='ship'?'#3b625d':d.material==='jungle'?'#376243':d.material==='shuttle'?'#819d9f':'#52606c';ctx.lineWidth=2;
   for(let x=0;x<width;x+=Math.max(50,width/9)) {
     ctx.beginPath();ctx.moveTo(x,70);ctx.lineTo(width/2+(x-width/2)*0.75,height);ctx.stroke();
   }
   ctx.fillStyle=d.accent;ctx.fillRect(0,72,width,3);
-  ctx.fillStyle=d.material==='ship'?'#14312d':d.material==='jungle'?'#18372a':d.material==='silo'?'#30291f':'#263845';ctx.fillRect(0,76,width,28);
+  ctx.fillStyle=d.material==='prey'?'#24432f':d.material==='ship'?'#14312d':d.material==='jungle'?'#18372a':d.material==='silo'?'#30291f':'#263845';ctx.fillRect(0,76,width,28);
   ctx.fillStyle=d.accent;ctx.font='bold 12px monospace';ctx.textAlign='center';
   ctx.fillText(d.name,width/2,94);
   if(d.material==='hangar') {
@@ -29,6 +29,20 @@ export function drawSourceSceneBackdrop(ctx, stage, width, height) {
   } else if(d.material==='shuttle') {
     ctx.strokeStyle='#aac2c4';ctx.lineWidth=10;ctx.strokeRect(width*0.08,112,width*0.84,height*0.60);
     ctx.fillStyle='#080f17';ctx.fillRect(width*0.38,114,width*0.24,22);
+  } else if(d.material==='prey') {
+    // 1719 forest clearing and familiar bog, not the 1987 rainforest or a
+    // generic Yautja ship. Schematic staging; real reference-art review pending.
+    ctx.fillStyle='#27412c';
+    for(let i=0;i<13;i++){
+      const x=width*((i+0.2)/13),top=105+(i%4)*9;
+      ctx.fillRect(x,top,7+(i%3)*3,height*0.54);
+      ctx.beginPath();ctx.ellipse(x+5,top+25,25+(i%4)*9,32,0,0,Math.PI*2);ctx.fill();
+    }
+    ctx.fillStyle='#5e6641';ctx.fillRect(0,height*0.72,width,height*0.28);
+    ctx.fillStyle='#364a3c';
+    ctx.beginPath();ctx.ellipse(width*0.70,height*0.79,width*0.15,height*0.12,0,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='#9b9873';ctx.lineWidth=3;
+    ctx.beginPath();ctx.ellipse(width*0.70,height*0.79,width*0.15,height*0.12,0,0,Math.PI*2);ctx.stroke();
   } else if(d.material==='ship') {
     // Original geometric ship schematic, NOT a captured or approved film background.
     ctx.fillStyle='#132722';ctx.fillRect(width*0.11,114,width*0.78,height*0.58);
@@ -75,6 +89,8 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
   const cell=(x,y,fill)=>{ctx.fillStyle=fill;engine.traceCellPath(ctx,x,y,3);ctx.fill();};
   const label=(p,value,color='#e5edf0')=>{const at=engine.gridToScreen(p.x,p.y);ctx.fillStyle=color;ctx.textAlign='center';ctx.font='bold 9px monospace';ctx.fillText(value,at.x,at.y+5);};
   for(const p of d.field.props) {
+    // The trophy must not be visible before the Feral Predator is defeated.
+    if(d.material==='prey'&&p.id==='trophy'&&!s.done.has('redirect'))continue;
     const at=engine.gridToScreen(p.x,p.y),bounds=engine.getCellBounds(p.x,p.y,4);
     cell(p.x,p.y,p.kind==='pit'||p.kind==='airlock'?'#04090c':p.kind==='refuge'?'#213e41':'#344049');
     ctx.strokeStyle=p.kind==='refuge'?'#6cc8bc':d.accent;ctx.lineWidth=2;
@@ -89,6 +105,22 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
     if(p.kind==='trap'){
       ctx.strokeStyle='#b98e4f';ctx.lineWidth=5;
       ctx.beginPath();ctx.moveTo(at.x-13,at.y-11);ctx.lineTo(at.x+12,at.y-22);ctx.stroke();
+    }
+    if(p.kind==='herb'){
+      ctx.strokeStyle='#94a64d';ctx.lineWidth=2;
+      for(let i=-1;i<=1;i++){
+        ctx.beginPath();ctx.moveTo(at.x,at.y);ctx.lineTo(at.x+i*7,at.y-16);ctx.stroke();
+        ctx.fillStyle='#d5a44e';ctx.beginPath();ctx.arc(at.x+i*7,at.y-16,3,0,Math.PI*2);ctx.fill();
+      }
+    }
+    if(p.kind==='bog'){
+      ctx.fillStyle='#40472f';ctx.beginPath();
+      ctx.ellipse(at.x,at.y-4,18,7,0,0,Math.PI*2);ctx.fill();
+    }
+    if(p.kind==='bone_mask'||p.kind==='target'){
+      ctx.strokeStyle='#e5d7b7';ctx.lineWidth=2;
+      ctx.beginPath();ctx.arc(at.x,at.y-12,9,Math.PI,2*Math.PI);ctx.stroke();
+      ctx.fillStyle='#ead5b8';ctx.fillRect(at.x-7,at.y-12,14,5);
     }
     if(p.kind==='trophy'){
       ctx.fillStyle='#b9c9b2';
@@ -116,11 +148,12 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
     if(ready){cell(c.cell.x,c.cell.y,'rgba(69,201,158,0.25)');label(c.cell,'◆','#baffd6');}
   }
   for(const p of getSourceSceneDanger(s)){cell(p.x,p.y,'rgba(255,80,48,0.42)');label(p,'!','#fff0c9');}
-  const threatVisible=!s.complete && !(d.material==='hangar'&&s.done.has('outer')) && !(d.material==='shuttle'&&s.done.has('harpoon')) && !(d.material==='silo'&&s.done.has('ignite')) && !(d.material==='jungle'&&s.done.has('crush')) && !(d.material==='ship'&&s.done.has('duel'));
+  const threatVisible=!s.complete && !(d.material==='hangar'&&s.done.has('outer')) && !(d.material==='shuttle'&&s.done.has('harpoon')) && !(d.material==='silo'&&s.done.has('ignite')) && !(d.material==='jungle'&&s.done.has('crush')) && !(d.material==='ship'&&s.done.has('duel')) && !(d.material==='prey'&&s.done.has('redirect'));
   let pos=d.threatCell;
   if(d.material==='hangar'&&s.done.has('grapple'))pos=s.done.has('inner')?{x:6,y:3}:{x:s.actor.gridX+0.4,y:s.actor.gridY};
   if(d.material==='shuttle'&&s.done.has('flush'))pos={x:5,y:2};
   if(d.material==='jungle'&&s.done.has('wash'))pos=s.done.has('bait')?{x:6,y:3}:{x:6,y:4};
+  if(d.material==='prey'&&s.done.has('take_mask'))pos=s.done.has('bog')?{x:6,y:4}:{x:6,y:3};
   const at=engine.gridToScreen(pos.x,pos.y);
   if(threatVisible && d.material==='jungle' && JUNGLE_HUNTER_HERO) {
     // Reuse the existing 1987-character sheet (not an independently approved boss bitmap).
@@ -149,6 +182,15 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
   if(d.material==='jungle'&&s.done.has('crush')) {
     cell(6,2,'rgba(207,163,85,0.45)');
     label({x:6,y:2},'LOG DOWN','#fff0bd');
+  }
+  if(d.material==='prey'&&s.done.has('set_mask')){
+    // Draw the real geometry asserted by the controller (vertical mask/bog
+    // alignment). The mask is a guidance device, not a plasma gun.
+    const mask=engine.gridToScreen(6,2),bog=engine.gridToScreen(6,4);
+    ctx.save();ctx.setLineDash([5,4]);ctx.strokeStyle='#d94b3b';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(mask.x,mask.y-24);ctx.lineTo(bog.x,bog.y-16);ctx.stroke();
+    ctx.restore();
+    if(s.done.has('bog')&&!s.done.has('redirect'))label({x:6,y:4},'BOLT TARGET','#ffb885');
   }
   if(d.material==='ship' && s.done.has('duel') && !s.complete) {
     // The elder is a non-hostile witness; a pre-existing unverified sprite.
