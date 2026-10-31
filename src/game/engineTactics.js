@@ -1367,6 +1367,11 @@ export class EngineTactics {
   canOccupyCell(unit, c, r) {
     if (this.sourceScene?.definition.material === 'shuttle' && this.sourceScene.done.has('harness')
       && unit === this.sourceScene.actor && (c !== unit.gridX || r !== unit.gridY)) return false;
+    // Predator 2: the recovered smart disc must cut the net before Harrigan
+    // can move; AI and manual movement share the same collision rule.
+    if (this.sourceScene?.definition.material === 'ship'
+      && this.sourceScene.done.has('net') && !this.sourceScene.done.has('cut_net')
+      && unit === this.sourceScene.actor && (c !== unit.gridX || r !== unit.gridY)) return false;
     if (!unit || !this.isInsideGrid(c, r)) return false;
     if (!unit.tacticsFootprint) return !this.isCellOccupied(c, r, unit);
     if ((unit.tacticsFootprint.width || 1) > this.cols || (unit.tacticsFootprint.height || 1) > this.rows) return false;

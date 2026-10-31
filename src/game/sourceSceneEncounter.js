@@ -16,6 +16,7 @@ export function createSourceSceneEncounter(stage, heroes, enemiesData = {}) {
     .filter(Boolean).find(e => e.name === definition.threatName);
   return { definition, actor, actorId:actor.id, actorUniverse:actor.universe, actorLifetime:0,
     done:new Set(), turns:0, complete:false, failed:false, reason:'', decoys:3, diversionTurns:0,
+    escapeTurnsRemaining:null,
     lastEndTurn:0, log:[], threat:sourceThreat ? {...sourceThreat,universe:sourceThreat.universe || definition.universe,state:'idle',stateTimer:0} : null };
 }
 const living = actor => !!actor && Number.isFinite(actor.currentHp) && actor.currentHp > 0 && actor.state !== 'dead';
@@ -28,6 +29,16 @@ export function validateSceneActor(engine) {
 export function getSourceSceneDanger(scene) {
   if (!scene || scene.complete || scene.failed) return [];
   const d=scene.definition, done=scene.done;
+  // Cold mud masks the Hunter's thermal search until the river removes it.
+  // After the log trap, the remaining threat is the wrist self-destruct clock.
+  if (d.material==='jungle' && (done.has('crush') || (done.has('mud') && !done.has('wash')))) return [];
+  // The clan is non-hostile once its champion falls; subsequent threats come
+  // from the spacecraft's engines, not invented enemy Predators.
+  if (d.material==='ship' && done.has('duel') && !done.has('ignite')) return [];
+  if (d.material==='ship' && done.has('ignite')) {
+    const patterns=d.launchDangerPatterns || [];
+    return (patterns[scene.turns % patterns.length] || []).map(([x,y])=>({x,y}));
+  }
   if (d.material==='silo' && done.has('ignite')) return [];
   if (d.material==='hangar' && done.has('grapple')) return [];
   if (d.material==='shuttle' && done.has('harness')) return [];
@@ -52,6 +63,16 @@ export function executeSourceSceneCommand(engine, id, token) {
   const command=scene.definition.commands.find(c=>c.id===id);
   if (command.repeatable) { scene.decoys--; scene.diversionTurns=2; }
   else scene.done.add(id);
+  if (scene.definition.material==='jungle' && id==='crush') {
+    // The triggering turn itself is counted below; display eight subsequent
+    // turn endings to reach shelter, never grant a free post-expiry action.
+    scene.escapeTurnsRemaining=scene.definition.selfDestructTurnLimit+1;
+  }
+  if (scene.definition.material==='ship' && id==='ignite') {
+    // Unlike the 1987 wrist bomb, the 1990 rooftop bomb is already disabled.
+    // This counter only represents the ship's lethal departure blast.
+    scene.escapeTurnsRemaining=scene.definition.shipLaunchTurnLimit+1;
+  }
   scene.log.push({command:id,turn:token,cell:{x:scene.actor.gridX,y:scene.actor.gridY}});
   if (command.final) scene.complete=true;
   engine.objectiveEvents++;
@@ -74,7 +95,7 @@ export function advanceSourceScene(engine, advanceTurn=false) {
   const danger=getSourceSceneDanger(scene);
   if (danger.some(p=>p.x===scene.actor.gridX && p.y===scene.actor.gridY)) {
     const before=scene.actor.currentHp;
-    const damage=Math.max(1,Math.round(scene.actor.maxHp*0.16));
+    const damage=Math.max(1,Math.round(scene.actor.maxHp*(scene.definition.material==='jungle'?0.10:0.16)));
     // Native guard, damage feedback and KO invalidation remain authoritative.
     engine.applyDamage({name:scene.definition.threatName,gridX:scene.definition.threatCell.x,
       gridY:scene.definition.threatCell.y,stats:{atk:1,def:0},simple:{dmg:1}},scene.actor,damage,null,{ignoreCover:true});
@@ -82,9 +103,38 @@ export function advanceSourceScene(engine, advanceTurn=false) {
   }
   scene.turns++;
   scene.diversionTurns=Math.max(0,scene.diversionTurns-1);
+  if (scene.escapeTurnsRemaining!==null) {
+    scene.escapeTurnsRemaining=Math.max(0,scene.escapeTurnsRemaining-1);
+    if (scene.escapeTurnsRemaining===0) {
+      scene.failed=true;
+      scene.reason=scene.definition.material==='ship'?'ship_takeoff_blast':'self_destruct';
+      engine.completeBattle('defeat');return;
+    }
+  }
   if (!validateSceneActor(engine)) { scene.failed=true;scene.reason='protagonist_lost';engine.completeBattle('defeat'); }
   else if (scene.turns>=scene.definition.turnLimit) { scene.failed=true;scene.reason='turn_limit';engine.completeBattle('defeat'); }
 }
+/** Player-visible source beats are assertions about the current story route, not art approvals. */
+export function getSourceSceneBeat(scene) {
+  if (!scene) return null;
+  const d=scene.done, material=scene.definition.material;
+  if (material==='jungle') {
+    if (d.has('crush')) return {fr:'Le Jungle Hunter déclenche son autodestruction au poignet. Rejoignez l’abri.',en:'The Jungle Hunter arms its wrist self-destruct. Get to cover.'};
+    if (d.has('bait')) return {fr:'Le chasseur contourne les pieux. Le contrepoids de secours reste votre seule chance.',en:'The hunter avoids the sharpened-stake trap. The backup log counterweight is your last chance.'};
+    if (d.has('wash')) return {fr:'La rivière a effacé la boue. Le chasseur retire son masque et son canon d’épaule pour le duel au corps à corps.',en:'The river has washed off the mud. The hunter removes its mask and shoulder cannon for a hand-to-hand duel.'};
+    if (d.has('mud')) return {fr:'La boue froide masque votre signature thermique jusqu’à la traversée de l’eau.',en:'Cold mud masks your thermal signature until you cross water.'};
+    return {fr:'Dutch est seul dans la jungle face au chasseur de 1987.',en:'Dutch is alone in the jungle against the 1987 hunter.'};
+  }
+  if (material==='ship') {
+    if (d.has('ignite')) return {fr:'Les moteurs du vaisseau s’allument. Le dispositif d’autodestruction du toit avait déjà été neutralisé : fuyez le souffle du décollage.',en:'The ship engines ignite. The rooftop wrist bomb was already disabled: flee the take-off blast.'};
+    if (d.has('gift')) return {fr:'L’Ancien remet le pistolet « Raphael Adolini 1715 » comme trophée d’honneur, sans rejoindre le combat.',en:'The elder hands over the “Raphael Adolini 1715” flintlock as an honor trophy, without entering combat.'};
+    if (d.has('duel')) return {fr:'Le City Hunter est vaincu par son propre disque. Le clan arrive pour reprendre le corps, sans nouvelle bataille.',en:'City Hunter is defeated by its own disc. The clan arrives to recover the body, not to start another fight.'};
+    if (d.has('net')) return {fr:'Le filet retient Harrigan : coupez-le avec le disque intelligent récupéré sur le toit.',en:'Harrigan is caught in the net: cut free with the smart disc recovered on the rooftop.'};
+    return {fr:'Le vaisseau caché sous Los Angeles abrite les trophées du clan. Le City Hunter n’a pas encore été vaincu.',en:'The ship hidden beneath Los Angeles houses the tribe’s trophies. The City Hunter is still alive.'};
+  }
+  return null;
+}
+
 export function getSourceSceneState(engine) {
   const s=engine.sourceScene;
   if (!s) return null;
@@ -92,7 +142,13 @@ export function getSourceSceneState(engine) {
   return {id:d.sourceSceneId,name:{fr:d.nameFr,en:d.name},incarnation:d.incarnation,
     objective:d.briefing,turnToken:engine.turnSerial,turns:s.turns,turnLimit:d.turnLimit,
     complete:s.complete,failed:s.failed,reason:s.reason,progress:s.done.size,target:d.commands.filter(c=>!c.repeatable).length,
-    decoys:s.decoys,danger:getSourceSceneDanger(s),artApproved:false,
+    decoys:s.decoys,escapeTurnsRemaining:s.escapeTurnsRemaining,
+    countdownLabel:d.material==='ship'
+      ? {fr:'DÉCOLLAGE',en:'SHIP LAUNCH'} : {fr:'AUTODESTRUCTION',en:'SELF-DESTRUCT'},
+    sourceBeat:getSourceSceneBeat(s),
+    honorTrophy:d.material==='ship'&&s.done.has('gift')?'Raphael Adolini 1715':null,
+    thermalConcealment:d.material==='jungle'&&s.done.has('mud')&&!s.done.has('wash'),
+    danger:getSourceSceneDanger(s),artApproved:false,
     commands:d.commands.map(c=>({id:c.id,label:c.label,cell:c.cell,anywhere:!!c.anywhere,done:s.done.has(c.id),
       ...getSourceSceneCommandState(engine,c.id)}))};
 }
@@ -100,7 +156,11 @@ export function getSourceSceneSummary(scene) {
   if (!scene) return null;
   return {kind:'source_scene',id:scene.definition.sourceSceneId,incarnation:scene.definition.incarnation,
     complete:scene.complete,failed:scene.failed,reason:scene.reason,turns:scene.turns,
-    commands:scene.log.map(e=>({...e,cell:{...e.cell}})),decoysRemaining:scene.decoys,artApproved:false};
+    commands:scene.log.map(e=>({...e,cell:{...e.cell}})),decoysRemaining:scene.decoys,
+    escapeTurnsRemaining:scene.escapeTurnsRemaining,
+    honorTrophy:scene.complete&&scene.definition.material==='ship'&&scene.done.has('gift')
+      ? 'Raphael Adolini 1715':null,
+    artApproved:false};
 }
 /** Find a true shortest path, not greedy Manhattan movement around the blocked silo. */
 export function sourceSceneRoute(engine, target) {
