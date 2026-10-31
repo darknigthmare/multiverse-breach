@@ -5,7 +5,7 @@
 Cette mission **Tactics source-locked** est une sixième scène distincte. Elle
 prolonge les missions 50101–50105 sans remplacer les 39 missions statiques,
 les modes classiques, les données de héros ou les inventaires historiques.
-La Naru déjà enregistrée dans l'univers dédié `Prey` (ID `naru_prey`) est requise ; Sarii reste son **compagnon de scène protégé**, aide à détourner l'attention du chasseur au marécage, sans devenir une unité combattante. Taabe est déjà mort dans le récit et aucun autre personnage
+La Naru déjà enregistrée dans l'univers dédié `Prey` (ID `naru_prey`) est requise ; Sarii reste son **compagnon de scène protégé** et rapporte sa hache reliée pendant le duel, avant l'entrée dans la vase, sans devenir une unité combattante. Taabe est déjà mort dans le récit et aucun autre personnage
 ne devient un équipier artificiel. Le boss n'est pas le Jungle Hunter de 1987
 ni le City Hunter de 1990 : il s'agit du **Feral Predator de Prey (2022)**.
 
@@ -16,14 +16,15 @@ ni le City Hunter de 1990 : il s'agit du **Feral Predator de Prey (2022)**.
 3. Tirer avec le pistolet à silex enseigné/donné par Raphaël et attirer
    le chasseur.
 4. Lui dérober son masque de visée osseux.
-5. Placer ce masque **face au marécage**, pointant les projectiles guidés.
-6. Attirer le Feral Predator dans la vase où Naru a précédemment failli se noyer.
-7. Faire retourner le projectile du **lance-projectiles** du chasseur dans
+5. Poser le masque osseux près du marécage et régler sa visée.
+6. Récupérer **la hache reliée rapportée par Sarii** durant le duel.
+7. Attirer le Feral Predator dans la vase où Naru a précédemment failli se noyer.
+8. Faire retourner le projectile du **lance-projectiles** du chasseur dans
    sa propre tête par l'orientation du masque, pas par un canon à plasma.
-8. Récupérer la preuve de la victoire.
-9. Rejoindre le village de Naru et Sarii en sécurité.
+9. Récupérer la preuve de la victoire.
+10. Rejoindre le village de Naru et Sarii en sécurité.
 
-**Règles contrôlées :** 9 commandes situées sur une grille 9×7 ;
+**Règles contrôlées :** 10 commandes situées sur une grille 9×7 ;
 48 tours maximum ; itinéraire contrôlé par le vrai moteur Tactics et les PA ;
 pas de victoire par baisse de PV ni par absence d'ennemis génériques.
 Les commandes exigent prérequis et cellule correspondante, le token du tour,
@@ -64,7 +65,7 @@ Les contrôles sont lisibles sur mobile, au clavier et en FR/EN ;
 le mode de bataille automatique emprunte la grille, retourne au
 masque si nécessaire et règle lui aussi G5, sans court-circuiter le
 contrôle des prérequis. Les tests exigent une action d'orientation
-`aim_mask` entre `set_mask` et `bog`, puis le tir retourné
+`aim_mask` puis `sarii_hatchet` entre `set_mask` et `bog`, puis le tir retourné
 `redirect` avant la preuve de victoire. Ni les autres cinq scènes,
 ni les PV du chasseur, ni le registre des héros n'ont changé.
 
@@ -93,7 +94,7 @@ modernes, Smart Disc du City Hunter, casque métallique du Jungle Hunter,
 canon à plasma d'un film différent, équipements ultérieurs du Feral ou
 guerre Yautja–Xenomorph crossover.
 
-La grille, le découpage en 9 commandes, la disposition des plantes et
+La grille, le découpage en 10 commandes, la disposition des plantes et
 des arbres, les chiffres de dégâts et les tours ne sont **pas des captures
 du montage du film**. Ce sont des adaptations de gameplay. Le fond Canvas
 est un **schéma original**. La silhouette ennemie réutilise
@@ -120,7 +121,7 @@ contrôleur, sans modifier les coordonnées ou les commandes de mission.
   puis n'apparaît sur le dispositif de visée qu'après sa pose effective.
 - La preuve de victoire n'apparaît qu'après l'impact du projectile
   retourné, puis disparaît de la grille dès sa récupération.
-- Le marécage reste visible. **Sarii est présent dans la forêt**, puis son repère se rapproche du marécage lors de sa diversion scénarisée. La dernière case signale le **chemin vers le village**, pas un village placé dans le marais.
+- Le marécage reste visible. **Sarii est présent dans la forêt**, puis son repère se rapproche de Naru lorsqu'il lui rapporte sa hache avant l'étape du marécage. La dernière case signale le **chemin vers le village**, pas un village placé dans le marais.
 
 Le Feral utilise encore sa **pose bitmap existante à masque** : ce lot
 **ne produit pas** une version sans masque certifiée 1:1. Le jeu affiche
@@ -169,16 +170,17 @@ Le contrôle de production GitHub doit être **vert avant fusion**.
 
 Une comparaison complémentaire aux descriptions du film a confirmé que Sarii
 **aide Naru lors du duel final**, au lieu de rester au village. La carte
-regroupe donc un chien compagnon noncombattant, une diversion scénarisée
-au moment du leurre dans le marécage et une sortie de forêt orientée vers
-le village. Les déplacements de Sarii sont des repères tactiques adaptés,
+regroupe donc un chien compagnon noncombattant, le **retour de la hache reliée**
+lors du duel (commande `sarii_hatchet`), puis l'attraction du Feral dans
+le marécage, enfin une sortie de forêt orientée vers le village. Les déplacements de Sarii sont des repères tactiques adaptés,
 **pas** des positions film 1:1. Le `companionAid` de l'état et du rapport
 final constitue une preuve de progression, sans modifier la base des héros
 ou créer d'attaque magique et de récompense non canon.
 
 Sources comparées :
 [Radio Times — finale avec Sarii](https://c01.purpledshub.com/radiotimes/rss_feed/prey-ending-explained/),
-[Ready Steady Cut — Sarii aide Naru](https://readysteadycut.com/2022/08/06/prey-2022-ending-explained-hulu-film/).
+[Ready Steady Cut — Sarii aide Naru](https://readysteadycut.com/2022/08/06/prey-2022-ending-explained-hulu-film/),
+[AvP Galaxy — Naru, description détaillée de la hache rapportée par Sarii](https://www.avpgalaxy.net/characters/naru/).
 
 La version 1:1 du corps, des proportions, de la robe, des animations et des
 gestes du chien (tâche `prey-2022-09`) reste **ouverte**. Le repère Canvas
