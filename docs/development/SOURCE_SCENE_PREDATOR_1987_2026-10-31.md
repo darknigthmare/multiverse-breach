@@ -50,9 +50,11 @@ déjà utilisée pour son héros d'origine, sans nouvelle image approuvée.
 
 ## État des visuels et contenus encore ouverts
 
-- **Sprite Dutch final 1987** : la fiche précise désormais la bonne incarnation,
-  la tenue de jungle boueuse, les accessoires et les sources. Les PNG existants
-  n'ont pas été comparés image par image : statut `pending`.
+- **Sprite Dutch final 1987** : la **fiche de mission 50104** précise
+  l'incarnation, la tenue de jungle boueuse, les accessoires et les sources.
+  Le registre global des héros et le classeur Extinction historique restent
+  inchangés ; la fiche générale de Dutch demeure à compléter. Les PNG
+  existants n'ont pas été comparés image par image : statut `pending`.
 - **Jungle Hunter** : le moteur réutilise son image de personnage existante
   et n'affirme pas disposer de nouvelles animations spécialisées (camouflage,
   perte de biomask, blessures, activation du dispositif au poignet).
