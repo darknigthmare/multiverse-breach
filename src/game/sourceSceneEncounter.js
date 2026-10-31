@@ -17,7 +17,14 @@ export function createSourceSceneEncounter(stage, heroes, enemiesData = {}) {
   return { definition, actor, actorId:actor.id, actorUniverse:actor.universe, actorLifetime:0,
     done:new Set(), turns:0, complete:false, failed:false, reason:'', decoys:3, diversionTurns:0,
     escapeTurnsRemaining:null,maskAimTarget:null,
-    lastEndTurn:0, log:[], threat:sourceThreat ? {...sourceThreat,universe:sourceThreat.universe || definition.universe,state:'idle',stateTimer:0} : null };
+    lastEndTurn:0, log:[], threat:sourceThreat ? {...sourceThreat,
+      universe:sourceThreat.universe || definition.universe,
+      // Prey is a dedicated catalog universe but its existing Feral bitmap
+      // resides in the Predator boss archive. Bind only this exact actor;
+      // leave all legacy enemy templates and other film variants untouched.
+      ...(definition.material==='prey' && !sourceThreat.spriteSource
+        ? {spriteSource:'/sprites/generated/bosses/predator/feral-predator.png'} : {}),
+      state:'idle',stateTimer:0} : null };
 }
 const living = actor => !!actor && Number.isFinite(actor.currentHp) && actor.currentHp > 0 && actor.state !== 'dead';
 export function validateSceneActor(engine) {
