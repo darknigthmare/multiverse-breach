@@ -12,6 +12,8 @@ export default function SourceScenePanel({scene,lang='fr',locked=false,onCommand
       {scene.complete?(fr?'Objectif terminé':'Objective complete'):scene.failed?(fr?'Rencontre échouée':'Encounter failed'):
         `${fr?'Étapes':'Steps'} ${scene.progress}/${scene.target} · ${fr?'Tours':'Turns'} ${scene.turns}/${scene.turnLimit}`}
       {!scene.complete&&!scene.failed&&scene.danger.length>0&&<span> · {fr?'Danger à la fin du tour':'Danger at turn end'} : {scene.danger.map(cellName).join(', ')}</span>}
+      {!scene.complete&&!scene.failed&&scene.thermalConcealment&&<span> · {fr?'Camouflage thermique : actif':'Thermal concealment: active'}</span>}
+      {!scene.complete&&!scene.failed&&typeof scene.escapeTurnsRemaining==='number'&&<span> · {fr?'AUTODESTRUCTION :':'SELF-DESTRUCT:'} {scene.escapeTurnsRemaining} {fr?'fins de tour':'turn endings'}</span>}
     </p>
     <div className="source-scene-commands">
       {scene.commands.map(c=><button key={c.id} type="button" disabled={locked||!c.enabled}
