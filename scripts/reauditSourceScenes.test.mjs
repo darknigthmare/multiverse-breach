@@ -147,10 +147,58 @@ test('Blast Pit: diversion has finite stock, two turn endings, no invented bonus
 test('Existing static stage inventory is retained, new scenes appended separately',()=>{
  const hub=readFileSync(new URL('../src/components/HubScreen.jsx',import.meta.url),'utf8');
  assert.equal(readStaticStages(hub).length,39);assert.equal((hub.match(/insertBeforeMetaStage\(SOURCE_SCENE_STAGES\)/g)||[]).length,1);
- assert.equal(new Set(SOURCE_SCENE_STAGES.map(s=>s.id)).size,3);
+ assert.equal(new Set(SOURCE_SCENE_STAGES.map(s=>s.id)).size,4);
 });
 test('Legacy combat still spawns its original active opponents',()=>{
  const unit=HEROES_DB[0],enemy={name:'QA',hp:50,atk:1,spd:1};
  const e=new EngineTactics(960,600,[unit],{monsters:[enemy],bosses:[enemy]}, {add(){}},()=>{},()=>{}, {id:999,universe:'Nexus de Convergence',mode:'Tactics'});engines.push(e);
  assert.equal(e.sourceScene,null);assert.equal(e.enemies.length,5);assert.equal(e.selectAction('simple'),true);
+});
+
+test('Predator 1987: the Dutch finale uses the original Hunter, never a generic fight',()=>{
+ const d=SOURCE_SCENE_STAGES.find(scene=>scene.id===50104);
+ assert.ok(d);assert.equal(d.universe,'Predator');assert.equal(d.sceneLead.id,'dutch');
+ assert.equal(d.threatName,'Jungle Hunter');assert.equal(d.material,'jungle');
+ assert.equal(d.commands.length,9);assert.equal(d.commands.at(-1).id,'escape');
+ const dutch=HEROES_DB.find(h=>h.id==='dutch'&&h.universe==='Predator');
+ assert.match(dutch.incarnation,/1987/);assert.equal(dutch.visualReviewStatus,'pending');
+ assert.ok(d.referenceUrls.every(url=>url.startsWith('https://')));
+ const e=make(d);assert.equal(e.objective,'source_scene');assert.equal(e.enemies.length,0);
+ if(e.sourceScene.threat)e.sourceScene.threat.currentHp=0;
+ for(let n=0;n<120;n++)e.update();
+ assert.equal(e.gameOver,false,'HP or an empty roster must not automatically win this scene');
+});
+test('Predator 1987: mud masks thermal search and the river removes concealment',()=>{
+ const d=SOURCE_SCENE_STAGES.find(scene=>scene.id===50104),e=make(d);
+ assert.ok(sceneApi.getSourceSceneDanger(e.sourceScene).length>0);
+ doCommand(e,'mud');
+ assert.equal(e.getSourceSceneState().thermalConcealment,true);
+ assert.deepEqual(sceneApi.getSourceSceneDanger(e.sourceScene),[]);
+ for(const id of ['bow','rig','lure','disrupt','wash'])doCommand(e,id);
+ assert.equal(e.getSourceSceneState().thermalConcealment,false);
+ assert.ok(sceneApi.getSourceSceneDanger(e.sourceScene).length>0);
+ assert.equal(e.sourceScene.done.has('crush'),false);
+});
+test('Predator 1987: the log triggers an eight-turn self-destruct escape, not an HP victory',()=>{
+ const d=SOURCE_SCENE_STAGES.find(scene=>scene.id===50104),e=make(d);
+ for(const id of ['mud','bow','rig','lure','disrupt','wash','bait','crush'])doCommand(e,id);
+ assert.equal(e.sourceScene.done.has('crush'),true);
+ assert.deepEqual(sceneApi.getSourceSceneDanger(e.sourceScene),[]);
+ assert.equal(e.getSourceSceneState().escapeTurnsRemaining,8);
+ assert.equal(e.battleResult,null);
+ for(let i=0;i<7&&!e.gameOver;i++){settle(e);e.skipActiveTurn();}
+ assert.equal(e.battleResult,null);
+ settle(e);e.skipActiveTurn();
+ assert.equal(e.battleResult,'defeat');
+ assert.equal(e.sourceScene.reason,'self_destruct');
+ assert.equal(e.triggerSourceSceneAction('escape',e.turnSerial),false);
+});
+test('Predator 1987: reaching shelter wins while preserving the existing completion/reward gate',()=>{
+ const d=SOURCE_SCENE_STAGES.find(scene=>scene.id===50104),e=make(d);
+ for(const id of d.commands.map(c=>c.id))doCommand(e,id);
+ assert.equal(e.battleResult,'victory');
+ assert.equal(e.getCombatSummary().sourceEncounter.complete,true);
+ assert.ok(e.getCombatSummary().sourceEncounter.escapeTurnsRemaining>0);
+ for(let n=0;n<300;n++)e.update();
+ assert.equal(e.testCallbacks.length,1);
 });
