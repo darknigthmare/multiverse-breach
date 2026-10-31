@@ -1,19 +1,23 @@
 import { resolveSourceScene } from './sourceSceneStages.js';
 import { getSourceSceneDanger } from './sourceSceneEncounter.js';
+import { HEROES_DB } from './heroes.js';
+import { drawPixelSprite } from './renderer.js';
+
+const JUNGLE_HUNTER_HERO = HEROES_DB.find(hero => hero.id==='predator' && hero.universe==='Predator');
 
 /** Distinct in-engine schematics; existing actor PNGs are reused, not certified 1:1. */
 export function drawSourceSceneBackdrop(ctx, stage, width, height) {
   const d=resolveSourceScene(stage);
   if(!d)return false;
   ctx.save();
-  ctx.fillStyle=d.material==='shuttle'?'#17292e':d.material==='silo'?'#211d18':'#151e28';
+  ctx.fillStyle=d.material==='jungle'?'#0d2019':d.material==='shuttle'?'#17292e':d.material==='silo'?'#211d18':'#151e28';
   ctx.fillRect(0,0,width,height);
-  ctx.strokeStyle=d.material==='shuttle'?'#819d9f':'#52606c';ctx.lineWidth=2;
+  ctx.strokeStyle=d.material==='jungle'?'#376243':d.material==='shuttle'?'#819d9f':'#52606c';ctx.lineWidth=2;
   for(let x=0;x<width;x+=Math.max(50,width/9)) {
     ctx.beginPath();ctx.moveTo(x,70);ctx.lineTo(width/2+(x-width/2)*0.75,height);ctx.stroke();
   }
   ctx.fillStyle=d.accent;ctx.fillRect(0,72,width,3);
-  ctx.fillStyle=d.material==='silo'?'#30291f':'#263845';ctx.fillRect(0,76,width,28);
+  ctx.fillStyle=d.material==='jungle'?'#18372a':d.material==='silo'?'#30291f':'#263845';ctx.fillRect(0,76,width,28);
   ctx.fillStyle=d.accent;ctx.font='bold 12px monospace';ctx.textAlign='center';
   ctx.fillText(d.name,width/2,94);
   if(d.material==='hangar') {
@@ -24,6 +28,19 @@ export function drawSourceSceneBackdrop(ctx, stage, width, height) {
   } else if(d.material==='shuttle') {
     ctx.strokeStyle='#aac2c4';ctx.lineWidth=10;ctx.strokeRect(width*0.08,112,width*0.84,height*0.60);
     ctx.fillStyle='#080f17';ctx.fillRect(width*0.38,114,width*0.24,22);
+  } else if(d.material==='jungle') {
+    // River, canopy and log are schematic staging; no unverified film stills.
+    ctx.fillStyle='#122c20';
+    for(let i=0;i<14;i++) {
+      const x=width*(i/13);
+      ctx.fillRect(x,102+(i%3)*7,10+(i%3)*5,height*0.48);
+      ctx.beginPath();ctx.arc(x+5,125+(i%3)*7,28+(i%4)*7,0,Math.PI*2);ctx.fill();
+    }
+    ctx.fillStyle='rgba(36,89,112,0.6)';
+    ctx.beginPath();ctx.moveTo(0,height*0.78);ctx.lineTo(width*0.54,height*0.65);
+    ctx.lineTo(width,height*0.84);ctx.lineTo(width,height);ctx.lineTo(0,height);ctx.fill();
+    ctx.strokeStyle='#8c6c38';ctx.lineWidth=9;
+    ctx.beginPath();ctx.moveTo(width*0.57,height*0.43);ctx.lineTo(width*0.76,height*0.43);ctx.stroke();
   } else {
     ctx.strokeStyle='#ab7133';ctx.lineWidth=3;
     ctx.beginPath();ctx.ellipse(width/2,height*0.60,width*0.25,height*0.22,0,0,Math.PI*2);ctx.stroke();
@@ -47,6 +64,18 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
     if(p.kind==='ladder')for(let i=0;i<4;i++){ctx.beginPath();ctx.moveTo(at.x-7,bounds.top+5+i*6);ctx.lineTo(at.x+7,bounds.top+5+i*6);ctx.stroke();}
     if(p.kind==='valve'){ctx.beginPath();ctx.arc(at.x,at.y-9,9,0,Math.PI*2);ctx.stroke();}
     if(p.kind==='generator'){ctx.fillStyle='#549d74';ctx.fillRect(at.x-11,at.y-14,22,7);}
+    if(p.kind==='mud'||p.kind==='river'){
+      ctx.fillStyle=p.kind==='mud'?'#4c4e35':'#2e7790';
+      ctx.beginPath();ctx.ellipse(at.x,at.y-8,15,6,0,0,Math.PI*2);ctx.fill();
+    }
+    if(p.kind==='trap'){
+      ctx.strokeStyle='#b98e4f';ctx.lineWidth=5;
+      ctx.beginPath();ctx.moveTo(at.x-13,at.y-11);ctx.lineTo(at.x+12,at.y-22);ctx.stroke();
+    }
+    if(p.kind==='fire'&&s.done.has('lure')){
+      ctx.fillStyle='#ffae44';ctx.beginPath();ctx.moveTo(at.x,at.y-27);
+      ctx.lineTo(at.x-9,at.y-8);ctx.lineTo(at.x+9,at.y-8);ctx.fill();
+    }
     label(p,p.label);
   }
   for(const c of d.commands.filter(c=>!c.repeatable)) {
@@ -55,13 +84,20 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
     if(ready){cell(c.cell.x,c.cell.y,'rgba(69,201,158,0.25)');label(c.cell,'◆','#baffd6');}
   }
   for(const p of getSourceSceneDanger(s)){cell(p.x,p.y,'rgba(255,80,48,0.42)');label(p,'!','#fff0c9');}
-  const threatVisible=!s.complete && !(d.material==='hangar'&&s.done.has('outer')) && !(d.material==='shuttle'&&s.done.has('harpoon')) && !(d.material==='silo'&&s.done.has('ignite'));
+  const threatVisible=!s.complete && !(d.material==='hangar'&&s.done.has('outer')) && !(d.material==='shuttle'&&s.done.has('harpoon')) && !(d.material==='silo'&&s.done.has('ignite')) && !(d.material==='jungle'&&s.done.has('crush'));
   let pos=d.threatCell;
   if(d.material==='hangar'&&s.done.has('grapple'))pos=s.done.has('inner')?{x:6,y:3}:{x:s.actor.gridX+0.4,y:s.actor.gridY};
   if(d.material==='shuttle'&&s.done.has('flush'))pos={x:5,y:2};
+  if(d.material==='jungle'&&s.done.has('wash'))pos=s.done.has('bait')?{x:6,y:3}:{x:6,y:4};
   const at=engine.gridToScreen(pos.x,pos.y);
-  if(threatVisible && s.threat && drawEnemy) drawEnemy(ctx,at.x,at.y,s.threat,animTime,-1,d.material==='hangar'?112:76);
-  else if(threatVisible && d.material==='silo') {
+  if(threatVisible && d.material==='jungle' && JUNGLE_HUNTER_HERO) {
+    // Reuse the existing 1987-character sheet (not an independently approved boss bitmap).
+    ctx.save();ctx.globalAlpha=s.done.has('disrupt')?1:0.58;
+    drawPixelSprite(ctx,at.x,at.y,{...JUNGLE_HUNTER_HERO,state:'idle'},animTime,-1,92,'tactics');
+    ctx.restore();
+  } else if(threatVisible && s.threat && drawEnemy) {
+    drawEnemy(ctx,at.x,at.y,s.threat,animTime,-1,d.material==='hangar'?112:76);
+  } else if(threatVisible && d.material==='silo') {
     // Three schematic stalks; authored animation/GoldSrc model comparison is still pending.
     for(let i=0;i<3;i++) {
       const dx=(i-1)*20, bend=Math.sin(animTime*0.025+i)*10;
@@ -77,6 +113,10 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
   }
   if(s.done.has('ignite')&&d.material==='silo') {
     cell(4,3,'#e9ac3e');label({x:4,y:3},'CLEAR','#fff0bd');
+  }
+  if(d.material==='jungle'&&s.done.has('crush')) {
+    cell(6,2,'rgba(207,163,85,0.45)');
+    label({x:6,y:2},'LOG DOWN','#fff0bd');
   }
   ctx.restore();
 }
