@@ -88,9 +88,13 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
   ctx.save();
   const cell=(x,y,fill)=>{ctx.fillStyle=fill;engine.traceCellPath(ctx,x,y,3);ctx.fill();};
   const label=(p,value,color='#e5edf0')=>{const at=engine.gridToScreen(p.x,p.y);ctx.fillStyle=color;ctx.textAlign='center';ctx.font='bold 9px monospace';ctx.fillText(value,at.x,at.y+5);};
-  for(const p of d.field.props) {
+  for(const prop of d.field.props) {
     // Avoid prematurely drawing a mask, trophy or other story prop before its beat.
-    if(!isSourceScenePropVisible(s,p))continue;
+    if(!isSourceScenePropVisible(s,prop))continue;
+    // Sarii stays with Naru; his noncombat scene marker moves near the bog
+    // when he distracts the Feral Predator. This is a schematic, not a sprite.
+    const p=d.material==='prey'&&prop.id==='sarii'&&s.sariiDistraction
+      ? {...prop,x:5,y:5} : prop;
     const at=engine.gridToScreen(p.x,p.y),bounds=engine.getCellBounds(p.x,p.y,4);
     cell(p.x,p.y,p.kind==='pit'||p.kind==='airlock'?'#04090c':p.kind==='refuge'?'#213e41':'#344049');
     ctx.strokeStyle=p.kind==='refuge'?'#6cc8bc':d.accent;ctx.lineWidth=2;
@@ -105,6 +109,23 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
     if(p.kind==='trap'){
       ctx.strokeStyle='#b98e4f';ctx.lineWidth=5;
       ctx.beginPath();ctx.moveTo(at.x-13,at.y-11);ctx.lineTo(at.x+12,at.y-22);ctx.stroke();
+    }
+    if(p.kind==='companion'){
+      // Provisional dog-shaped tactical marker; Sarii's 2022 PNG remains open.
+      ctx.fillStyle='#c8ac82';
+      ctx.beginPath();ctx.ellipse(at.x-2,at.y-11,10,5,0,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(at.x+10,at.y-16,6,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.moveTo(at.x+8,at.y-20);ctx.lineTo(at.x+9,at.y-29);
+      ctx.lineTo(at.x+15,at.y-21);ctx.fill();
+      ctx.lineWidth=2;ctx.strokeStyle='#c8ac82';
+      for(const dx of [-8,4]){
+        ctx.beginPath();ctx.moveTo(at.x+dx,at.y-9);ctx.lineTo(at.x+dx,at.y+1);ctx.stroke();
+      }
+    }
+    if(p.kind==='exit'&&d.material==='prey'){
+      ctx.fillStyle='#e5d69c';
+      ctx.beginPath();ctx.moveTo(at.x-10,at.y-14);ctx.lineTo(at.x+1,at.y-21);
+      ctx.lineTo(at.x+1,at.y-7);ctx.fill();
     }
     if(p.kind==='herb'){
       ctx.strokeStyle='#94a64d';ctx.lineWidth=2;
