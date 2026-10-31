@@ -114,6 +114,61 @@ export const SOURCE_SCENE_STAGES = [
     ],
     dangerPatterns: [[[2,2],[2,3],[2,4]],[[3,1],[4,1],[5,1]],[[6,2],[6,3],[6,4]],[[3,5],[4,5],[5,5]]],
     threatCell: { x: 4, y: 3 }, accent: '#df883e', material: 'silo'
+  },
+
+  // 1987 film finale: the Hunter is beaten by terrain and timing, not depleted HP.
+  // The board compresses the river, night ambush, counterweight and escape route.
+  {
+    ...base(50104, 'predator_1987_jungle_finale', 'Predator', 'dutch',
+      'Predator (1987) — Dutch / Jungle Hunter final confrontation',
+      'Predator 1987 — Jungle Finale', 'Predator 1987 — duel final dans la jungle'),
+    bossName: 'Jungle Hunter', enemyRoster: ['Jungle Hunter'],
+    referenceUrl: 'https://www.20thcenturystudios.com/movies/predator',
+    referenceUrls: [
+      'https://www.20thcenturystudios.com/movies/predator',
+      'https://d23.com/20th-century-fox-spooktacular-1980s-predator/'
+    ],
+    visualAnchor: 'Predator (1987) nighttime jungle and riverbank: mud-covered Dutch, improvised wooden bow and stakes, signal fire, suspended log counterweight, original Jungle Hunter with silver biomask and shoulder caster, then wrist self-destruct. No City Hunter smart disc, Feral bone mask, or alien hive.',
+    sceneLead: { id: 'dutch', universe: 'Predator' }, threatName: 'Jungle Hunter',
+    briefing: {
+      fr: {
+        objective: 'Dutch seul : utilise la boue froide pour masquer sa chaleur, fabrique arc et pieux, prépare une bûche à contrepoids, puis attire le Jungle Hunter avec un brasier. Endommage son camouflage, traverse la rivière qui enlève ta boue, dévie-le vers le piège et libère la bûche. Dès son autodestruction activée, rejoins l abri avant la fin du compte à rebours. Le tuer en diminuant ses PV ne remplace pas le piège.',
+        adaptation: commonAdaptation.fr + ' Neuf commandes de scénario condensent le duel final du film en grille 2D. La rivière enlève la protection thermique ; le piège ne peut être déclenché avant la préparation. Échelle, distances, agressions et minuteur (8 fins de tour après la bûche) sont des adaptations, non la chorégraphie exacte du film. Maximum : 38 tours. Assets existants non certifiés visuellement.'
+      },
+      en: {
+        objective: 'Dutch alone: use cold mud to hide your heat, make a bow and stakes, rig a log counterweight, then lure the Jungle Hunter with a signal fire. Disrupt his cloak, cross the river and lose your mud cover, draw him toward the trap and release the log. Once his wrist self-destruct starts, reach shelter before the countdown ends. Ordinary HP damage cannot replace the trap.',
+        adaptation: commonAdaptation.en + ' Nine story commands compress the film finale into a 2D grid. The river removes thermal concealment; the counterweight requires preparation. Scale, distances, hazards and countdown (8 turn endings after the log) adapt the film rather than reproduce exact choreography. Maximum: 38 turns. Existing art is not visually certified.'
+      }
+    },
+    turnLimit: 38, selfDestructTurnLimit: 8,
+    field: {
+      rows: 7, cols: 9, heroSpawns: [{ x: 0, y: 3 }],
+      blocked: [[2,0],[4,0],[7,0],[2,6],[4,6],[7,6]],
+      props: [
+        { id: 'mud', x: 1, y: 3, label: 'MUD', kind: 'mud' },
+        { id: 'bow', x: 3, y: 1, label: 'BOW / STAKES', kind: 'camp' },
+        { id: 'counterweight', x: 6, y: 2, label: 'LOG', kind: 'trap' },
+        { id: 'signalFire', x: 5, y: 4, label: 'FIRE', kind: 'fire' },
+        { id: 'river', x: 5, y: 5, label: 'RIVER', kind: 'river' },
+        { id: 'bait', x: 6, y: 3, label: 'AMBUSH', kind: 'trap' },
+        { id: 'shelter', x: 0, y: 1, label: 'COVER', kind: 'refuge' }
+      ]
+    },
+    commands: [
+      command('mud', 1, 3, 'Camouflage à la boue froide', 'Apply cold mud camouflage'),
+      command('bow', 3, 1, 'Fabriquer l arc et les pieux', 'Make bow and stakes', ['mud']),
+      command('rig', 6, 2, 'Préparer la bûche à contrepoids', 'Rig the log counterweight', ['bow']),
+      command('lure', 5, 4, 'Allumer le brasier de défi', 'Light the challenge fire', ['rig']),
+      command('disrupt', 6, 4, 'Briser le camouflage du chasseur', 'Disable the hunter cloak', ['lure']),
+      command('wash', 5, 5, 'Traverser la rivière, perdre la boue', 'Cross river and lose mud cover', ['disrupt']),
+      command('bait', 6, 3, 'Attirer le chasseur près du piège', 'Draw the hunter toward the trap', ['wash']),
+      command('crush', 6, 2, 'Libérer le contrepoids sur le chasseur', 'Drop the counterweight on the hunter', ['bait']),
+      command('escape', 0, 1, 'Se mettre à couvert de l explosion', 'Take shelter from the explosion', ['crush'], { final: true })
+    ],
+    dangerPatterns: [
+      [[3,4],[4,4]], [[5,4],[6,4]], [[6,3],[5,3]], [[4,2],[5,2]]
+    ],
+    threatCell: { x: 7, y: 3 }, accent: '#c8ad65', material: 'jungle'
   }
 ];
 
