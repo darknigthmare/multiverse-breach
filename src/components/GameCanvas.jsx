@@ -1949,6 +1949,14 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const engine = engineRef.current;
     if (engine?.triggerSourceSceneAction?.(id, token)) { setSelectedAction(null); setTeamState([...engine.heroes]); }
   };
+  const handleSourceSceneMaskAim = (x, y, token) => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked || opponentHasCommand) return;
+    const engine = engineRef.current;
+    if (engine?.aimSourceSceneMask?.(x, y, token)) {
+      setSelectedAction(null);
+      setTeamState([...engine.heroes]);
+    }
+  };
   const rexEncounter = stage.mode === 'Tactics' ? engineRef.current?.getRexEncounterState?.() : null;
   const sourceAmmoHero = stage.mode === 'Smash' ? engineRef.current?.getActiveHero?.() || activeHeroObj : activeHeroObj;
   const sourceAmmunition = getBlackPearlSourceAmmunition(sourceAmmoHero);
@@ -2915,7 +2923,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             onCommand={handleRaamCommand}
           />}
           {stage.mode === 'Tactics' && <SourceScenePanel scene={sourceScene} lang={lang}
-            locked={sessionPaused || battleCompleted || preMatchLocked} onCommand={handleSourceSceneCommand} />}
+            locked={sessionPaused || battleCompleted || preMatchLocked} onCommand={handleSourceSceneCommand}
+            onAim={handleSourceSceneMaskAim} />}
           {stage.mode === 'Tactics' && !opponentHasCommand && <RexEncounterPanel
             encounter={rexEncounter} hero={engineRef.current?.activeUnit || activeHeroObj} lang={lang}
             paused={sessionPaused || battleCompleted || preMatchLocked} selectedAction={selectedAction}
