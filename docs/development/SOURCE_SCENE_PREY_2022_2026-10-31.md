@@ -5,7 +5,7 @@
 Cette mission **Tactics source-locked** est une sixième scène distincte. Elle
 prolonge les missions 50101–50105 sans remplacer les 39 missions statiques,
 les modes classiques, les données de héros ou les inventaires historiques.
-Une Naru de l'univers `Predator` est requise ; Sarii est un repère protégé
+La Naru déjà enregistrée dans l'univers dédié `Prey` (ID `naru_prey`) est requise ; Sarii est un repère protégé
 **hors combat**, Taabe est déjà mort dans le récit et aucun autre personnage
 ne devient un équipier artificiel. Le boss n'est pas le Jungle Hunter de 1987
 ni le City Hunter de 1990 : il s'agit du **Feral Predator de Prey (2022)**.
