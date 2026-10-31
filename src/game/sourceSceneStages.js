@@ -286,6 +286,27 @@ export const SOURCE_SCENE_STAGES = [
   }
 ];
 
+
+// Story props are not permanent battlefield fixtures. In particular, Prey's
+// bone targeting mask cannot be on the ground, carried and mounted at once.
+// This only gates schematic props; the actual command target remains visible
+// through the existing 'ready' highlight even before its prop is revealed.
+export function isSourceScenePropVisible(scene, prop) {
+  if (!scene || !prop || typeof prop.id !== 'string') return false;
+  if (scene.definition?.material !== 'prey') return true;
+  const done = scene.done;
+  if (!(done instanceof Set)) return false;
+  switch (prop.id) {
+    case 'herb': return !done.has('herb');
+    case 'trapper': return !done.has('flintlock');
+    case 'flintlock': return done.has('bait') && !done.has('flintlock');
+    case 'mask': return done.has('flintlock') && !done.has('take_mask');
+    case 'mask_mount': return done.has('set_mask');
+    case 'trophy': return done.has('redirect') && !done.has('trophy');
+    default: return true;
+  }
+}
+
 export function resolveSourceScene(stage) {
   if (!stage || stage.customBattle || stage.isCustomBattle || stage.isCustom
     || stage.forceBaseArena || stage.dlcSuppressedArena) return null;
