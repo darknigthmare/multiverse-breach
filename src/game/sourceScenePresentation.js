@@ -1,4 +1,4 @@
-import { resolveSourceScene } from './sourceSceneStages.js';
+import { resolveSourceScene, isSourceScenePropVisible } from './sourceSceneStages.js';
 import { getSourceSceneDanger } from './sourceSceneEncounter.js';
 import { HEROES_DB } from './heroes.js';
 import { drawPixelSprite } from './renderer.js';
@@ -89,8 +89,8 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
   const cell=(x,y,fill)=>{ctx.fillStyle=fill;engine.traceCellPath(ctx,x,y,3);ctx.fill();};
   const label=(p,value,color='#e5edf0')=>{const at=engine.gridToScreen(p.x,p.y);ctx.fillStyle=color;ctx.textAlign='center';ctx.font='bold 9px monospace';ctx.fillText(value,at.x,at.y+5);};
   for(const p of d.field.props) {
-    // The trophy must not be visible before the Feral Predator is defeated.
-    if(d.material==='prey'&&p.id==='trophy'&&!s.done.has('redirect'))continue;
+    // Avoid prematurely drawing a mask, trophy or other story prop before its beat.
+    if(!isSourceScenePropVisible(s,p))continue;
     const at=engine.gridToScreen(p.x,p.y),bounds=engine.getCellBounds(p.x,p.y,4);
     cell(p.x,p.y,p.kind==='pit'||p.kind==='airlock'?'#04090c':p.kind==='refuge'?'#213e41':'#344049');
     ctx.strokeStyle=p.kind==='refuge'?'#6cc8bc':d.accent;ctx.lineWidth=2;
@@ -162,6 +162,12 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
     ctx.restore();
   } else if(threatVisible && s.threat && drawEnemy) {
     drawEnemy(ctx,at.x,at.y,s.threat,animTime,-1,d.material==='hangar'?112:76);
+    if(d.material==='prey'&&s.done.has('take_mask')){
+      // This one-frame pre-existing Feral image may still show its original
+      // mask: display a clear review marker, NEVER imply maskless art exists.
+      ctx.fillStyle='#f2d29d';ctx.font='bold 9px monospace';ctx.textAlign='center';
+      ctx.fillText('MASK OFF · VARIANT PENDING',at.x,at.y-83);
+    }
   } else if(threatVisible && d.material==='silo') {
     // Three schematic stalks; authored animation/GoldSrc model comparison is still pending.
     for(let i=0;i<3;i++) {
