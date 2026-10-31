@@ -5,8 +5,7 @@
 Cette mission **Tactics source-locked** est une sixième scène distincte. Elle
 prolonge les missions 50101–50105 sans remplacer les 39 missions statiques,
 les modes classiques, les données de héros ou les inventaires historiques.
-La Naru déjà enregistrée dans l'univers dédié `Prey` (ID `naru_prey`) est requise ; Sarii est un repère protégé
-**hors combat**, Taabe est déjà mort dans le récit et aucun autre personnage
+La Naru déjà enregistrée dans l'univers dédié `Prey` (ID `naru_prey`) est requise ; Sarii reste son **compagnon de scène protégé**, aide à détourner l'attention du chasseur au marécage, sans devenir une unité combattante. Taabe est déjà mort dans le récit et aucun autre personnage
 ne devient un équipier artificiel. Le boss n'est pas le Jungle Hunter de 1987
 ni le City Hunter de 1990 : il s'agit du **Feral Predator de Prey (2022)**.
 
@@ -92,7 +91,7 @@ contrôleur, sans modifier les coordonnées ou les commandes de mission.
   puis n'apparaît sur le dispositif de visée qu'après sa pose effective.
 - La preuve de victoire n'apparaît qu'après l'impact du projectile
   retourné, puis disparaît de la grille dès sa récupération.
-- Le marécage et le village restent visibles comme éléments de décor.
+- Le marécage reste visible. **Sarii est présent dans la forêt**, puis son repère se rapproche du marécage lors de sa diversion scénarisée. La dernière case signale le **chemin vers le village**, pas un village placé dans le marais.
 
 Le Feral utilise encore sa **pose bitmap existante à masque** : ce lot
 **ne produit pas** une version sans masque certifiée 1:1. Le jeu affiche
@@ -136,3 +135,23 @@ résumé, récompense unique, refus de victoire prématurée et refus de
 superposition avec les précédentes scènes.
 
 Le contrôle de production GitHub doit être **vert avant fusion**.
+
+## Correctif de fidélité — Sarii et le véritable chemin du village
+
+Une comparaison complémentaire aux descriptions du film a confirmé que Sarii
+**aide Naru lors du duel final**, au lieu de rester au village. La carte
+regroupe donc un chien compagnon noncombattant, une diversion scénarisée
+au moment du leurre dans le marécage et une sortie de forêt orientée vers
+le village. Les déplacements de Sarii sont des repères tactiques adaptés,
+**pas** des positions film 1:1. Le `companionAid` de l'état et du rapport
+final constitue une preuve de progression, sans modifier la base des héros
+ou créer d'attaque magique et de récompense non canon.
+
+Sources comparées :
+[Radio Times — finale avec Sarii](https://c01.purpledshub.com/radiotimes/rss_feed/prey-ending-explained/),
+[Ready Steady Cut — Sarii aide Naru](https://readysteadycut.com/2022/08/06/prey-2022-ending-explained-hulu-film/).
+
+La version 1:1 du corps, des proportions, de la robe, des animations et des
+gestes du chien (tâche `prey-2022-09`) reste **ouverte**. Le repère Canvas
+est volontairement schématique et ne remplace pas une illustration approuvée.
+
