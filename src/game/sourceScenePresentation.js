@@ -91,10 +91,10 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
   for(const prop of d.field.props) {
     // Avoid prematurely drawing a mask, trophy or other story prop before its beat.
     if(!isSourceScenePropVisible(s,prop))continue;
-    // Sarii stays with Naru; his noncombat scene marker moves near the bog
-    // when he distracts the Feral Predator. This is a schematic, not a sprite.
-    const p=d.material==='prey'&&prop.id==='sarii'&&s.sariiDistraction
-      ? {...prop,x:5,y:5} : prop;
+    // Sarii returns Naru's rope hatchet during the duel before the bog.
+    // Move the protected dog marker near her; art remains schematic.
+    const p=d.material==='prey'&&prop.id==='sarii'&&s.sariiHatchetReturned
+      ? {...prop,x:4,y:3} : prop;
     const at=engine.gridToScreen(p.x,p.y),bounds=engine.getCellBounds(p.x,p.y,4);
     cell(p.x,p.y,p.kind==='pit'||p.kind==='airlock'?'#04090c':p.kind==='refuge'?'#213e41':'#344049');
     ctx.strokeStyle=p.kind==='refuge'?'#6cc8bc':d.accent;ctx.lineWidth=2;
@@ -209,6 +209,9 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
   if(d.material==='jungle'&&s.done.has('crush')) {
     cell(6,2,'rgba(207,163,85,0.45)');
     label({x:6,y:2},'LOG DOWN','#fff0bd');
+  }
+  if(d.material==='prey'&&s.done.has('sarii_hatchet')&&!s.done.has('bog')){
+    label({x:5,y:3},'HATCHET BACK','#c8deab');
   }
   if(d.material==='prey'&&s.done.has('set_mask')){
     // The guidance ray follows the player's selected target. Do not draw an
