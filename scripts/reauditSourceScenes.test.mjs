@@ -499,6 +499,11 @@ test('Prey 2022: mask-aim interaction is one turn, guarded and only for the acti
  assert.equal(e.aimSourceSceneMask(6,4,e.turnSerial),false,'same ray cannot double-spend AP');
  assert.equal(e.getSourceSceneState().maskAim.options.filter(o=>o.selected).length,1);
  assert.equal(e.sourceScene.log.filter(x=>x.command==='aim_mask').length,1);
+ const result=e.getCombatSummary().sourceEncounter;
+ const exportedAim=result.commands.find(x=>x.command==='aim_mask');
+ assert.deepEqual(exportedAim.target,{x:6,y:4});
+ exportedAim.target.x=-99;
+ assert.equal(e.sourceScene.log.find(x=>x.command==='aim_mask').target.x,6,'report cannot mutate native action history');
  assert.equal(e.sourceScene.done.has('redirect'),false);
 });
 test('Prey 2022: autoplay deliberately aims the bone mask, then finishes true 1719 story',()=>{
