@@ -16,7 +16,7 @@ export function createSourceSceneEncounter(stage, heroes, enemiesData = {}) {
     .filter(Boolean).find(e => e.name === definition.threatName);
   return { definition, actor, actorId:actor.id, actorUniverse:actor.universe, actorLifetime:0,
     done:new Set(), turns:0, complete:false, failed:false, reason:'', decoys:3, diversionTurns:0,
-    escapeTurnsRemaining:null,
+    escapeTurnsRemaining:null,maskAimTarget:null,
     lastEndTurn:0, log:[], threat:sourceThreat ? {...sourceThreat,universe:sourceThreat.universe || definition.universe,state:'idle',stateTimer:0} : null };
 }
 const living = actor => !!actor && Number.isFinite(actor.currentHp) && actor.currentHp > 0 && actor.state !== 'dead';
@@ -32,6 +32,9 @@ export function getSourceSceneDanger(scene) {
   // Cold mud masks the Hunter's thermal search until the river removes it.
   // After the log trap, the remaining threat is the wrist self-destruct clock.
   if (d.material==='jungle' && (done.has('crush') || (done.has('mud') && !done.has('wash')))) return [];
+  // The cooling herb hides Naru from thermal targeting, not sound. Her
+  // flintlock shot draws the Feral Predator's attention back to this area.
+  if (d.material==='prey' && (done.has('redirect') || (done.has('herb') && !done.has('flintlock')))) return [];
   // The clan is non-hostile once its champion falls; subsequent threats come
   // from the spacecraft's engines, not invented enemy Predators.
   if (d.material==='ship' && done.has('duel') && !done.has('ignite')) return [];
@@ -53,6 +56,16 @@ export function getSourceSceneCommandState(engine, id) {
   if (scene.done.has(id)) return {enabled:false,reason:'done'};
   if (command.repeatable && (scene.decoys<=0 || scene.done.has('ignite'))) return {enabled:false,reason:'empty'};
   if (!command.requires.every(r=>scene.done.has(r))) return {enabled:false,reason:'prerequisite'};
+  if (scene.definition.material==='prey' && id==='redirect') {
+    // Mask steering is meaningful: it must point along the bog column.
+    // Naru cannot use a generic attack or tamper with the mask to skip this.
+    const mask=scene.definition.field.props.find(p=>p.id==='mask_mount');
+    const bog=scene.definition.field.props.find(p=>p.id==='bog');
+    if (!mask || !bog || mask.x!==bog.x || mask.y>=bog.y
+      || scene.maskAimTarget?.x!==bog.x || scene.maskAimTarget?.y!==bog.y) {
+      return {enabled:false,reason:'alignment'};
+    }
+  }
   if (!command.anywhere && (scene.actor.gridX!==command.cell.x || scene.actor.gridY!==command.cell.y)) return {enabled:false,reason:'position'};
   return {enabled:true,reason:''};
 }
@@ -67,6 +80,12 @@ export function executeSourceSceneCommand(engine, id, token) {
     // The triggering turn itself is counted below; display eight subsequent
     // turn endings to reach shelter, never grant a free post-expiry action.
     scene.escapeTurnsRemaining=scene.definition.selfDestructTurnLimit+1;
+  }
+  if (scene.definition.material==='prey' && id==='set_mask') {
+    const mask=scene.definition.field.props.find(p=>p.id==='mask_mount');
+    const bog=scene.definition.field.props.find(p=>p.id==='bog');
+    scene.maskAimTarget=mask && bog && mask.x===bog.x && mask.y<bog.y
+      ? {x:bog.x,y:bog.y} : null;
   }
   if (scene.definition.material==='ship' && id==='ignite') {
     // Unlike the 1987 wrist bomb, the 1990 rooftop bomb is already disabled.
@@ -125,6 +144,36 @@ export function getSourceSceneBeat(scene) {
     if (d.has('mud')) return {fr:'La boue froide masque votre signature thermique jusqu’à la traversée de l’eau.',en:'Cold mud masks your thermal signature until you cross water.'};
     return {fr:'Dutch est seul dans la jungle face au chasseur de 1987.',en:'Dutch is alone in the jungle against the 1987 hunter.'};
   }
+  if (material==='prey') {
+    if (d.has('trophy')) return {
+      fr:'Naru a récupéré la preuve du duel. Sarii est à l’abri au village ; ramenez-la à sa communauté.',
+      en:'Naru has recovered proof of the hunt. Sarii is safely by the village; return to her community.'
+    };
+    if (d.has('redirect')) return {
+      fr:'Le projectile guidé du Feral Predator a suivi le masque et frappé sa propre tête. Aucune arme à plasma.',
+      en:'The Feral Predator’s guided bolt followed the mask and struck its own head. No plasma cannon.'
+    };
+    if (d.has('bog')) return {
+      fr:'Le chasseur est prisonnier du marécage ; ses projectiles suivront le masque placé face à lui.',
+      en:'The hunter is mired in the bog; its projectile will follow the mask aimed toward it.'
+    };
+    if (d.has('set_mask')) return {
+      fr:'Le masque osseux est orienté vers le marécage, sans tirer lui-même de projectile.',
+      en:'The bone mask is aimed at the bog; the mask itself does not fire a projectile.'
+    };
+    if (d.has('flintlock')) return {
+      fr:'Le pistolet a alerté le chasseur. La plante réduit encore la chaleur visible, pas le son ni la vue directe.',
+      en:'The flintlock has alerted the hunter. The herb still lowers visible heat, not noise or direct sight.'
+    };
+    if (d.has('herb')) return {
+      fr:'La plante médicinale diminue la signature thermique de Naru. Préparez l’embuscade.',
+      en:'The medicinal herb lowers Naru’s heat signature. Prepare the ambush.'
+    };
+    return {
+      fr:'Naru, seule après la mort de Taabe, doit vaincre le Feral Predator de 1719 par son propre ciblage.',
+      en:'Naru, alone after Taabe’s death, must defeat the 1719 Feral Predator through its own targeting system.'
+    };
+  }
   if (material==='ship') {
     if (d.has('ignite')) return {fr:'Les moteurs du vaisseau s’allument. Le dispositif d’autodestruction du toit avait déjà été neutralisé : fuyez le souffle du décollage.',en:'The ship engines ignite. The rooftop wrist bomb was already disabled: flee the take-off blast.'};
     if (d.has('gift')) return {fr:'L’Ancien remet le pistolet « Raphael Adolini 1715 » comme trophée d’honneur, sans rejoindre le combat.',en:'The elder hands over the “Raphael Adolini 1715” flintlock as an honor trophy, without entering combat.'};
@@ -147,7 +196,10 @@ export function getSourceSceneState(engine) {
       ? {fr:'DÉCOLLAGE',en:'SHIP LAUNCH'} : {fr:'AUTODESTRUCTION',en:'SELF-DESTRUCT'},
     sourceBeat:getSourceSceneBeat(s),
     honorTrophy:d.material==='ship'&&s.done.has('gift')?'Raphael Adolini 1715':null,
-    thermalConcealment:d.material==='jungle'&&s.done.has('mud')&&!s.done.has('wash'),
+    narrativeProof:d.material==='prey'&&s.done.has('trophy')?'Feral Predator head':null,
+    maskAimTarget:d.material==='prey'&&s.maskAimTarget?{...s.maskAimTarget}:null,
+    thermalConcealment:(d.material==='jungle'&&s.done.has('mud')&&!s.done.has('wash'))
+      ||(d.material==='prey'&&s.done.has('herb')&&!s.done.has('redirect')),
     danger:getSourceSceneDanger(s),artApproved:false,
     commands:d.commands.map(c=>({id:c.id,label:c.label,cell:c.cell,anywhere:!!c.anywhere,done:s.done.has(c.id),
       ...getSourceSceneCommandState(engine,c.id)}))};
@@ -160,6 +212,9 @@ export function getSourceSceneSummary(scene) {
     escapeTurnsRemaining:scene.escapeTurnsRemaining,
     honorTrophy:scene.complete&&scene.definition.material==='ship'&&scene.done.has('gift')
       ? 'Raphael Adolini 1715':null,
+    narrativeProof:scene.complete&&scene.definition.material==='prey'&&scene.done.has('trophy')
+      ? 'Feral Predator head':null,
+    maskAimTarget:scene.definition.material==='prey'&&scene.maskAimTarget?{...scene.maskAimTarget}:null,
     artApproved:false};
 }
 /** Find a true shortest path, not greedy Manhattan movement around the blocked silo. */
