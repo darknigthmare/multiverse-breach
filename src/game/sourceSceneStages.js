@@ -232,7 +232,7 @@ export const SOURCE_SCENE_STAGES = [
   // redirects the Feral Predator's own guided projectile at a bog target.
   // The target dies from the returned projectile, not generic HP subtraction.
   {
-    ...base(50106, 'prey_1719_naru_feral_bog', 'Predator', 'naru',
+    ...base(50106, 'prey_1719_naru_feral_bog', 'Prey', 'naru_prey',
       'Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale',
       'Prey — Naru and the Bog', 'Prey — Naru et le marécage'),
     bossName: 'Feral Predator', enemyRoster: ['Feral Predator'],
@@ -242,7 +242,7 @@ export const SOURCE_SCENE_STAGES = [
       'https://www.whattowatch.com/features/prey-ending-explained'
     ],
     visualAnchor: 'Prey (2022), Comanche territory in 1719: young Naru in period-accurate earth-toned clothing with rope-tethered hatchet and Raphael’s flintlock, Sarii the dog sheltered; Feral Predator has lean body, bone/skull biomask, archaic projectile bolt launcher and distinctive shield, not Jungle Hunter silver mask or City Hunter smart disc. Bog and positioned targeting mask turn Feral’s own projectile against its head. No flying plasma cannon, Yautja starship duel or crossover adversaries.',
-    sceneLead: { id: 'naru', universe: 'Predator' }, threatName: 'Feral Predator',
+    sceneLead: { id: 'naru_prey', universe: 'Prey' }, threatName: 'Feral Predator',
     briefing: {
       fr: {
         objective: 'Naru seule, en 1719 : après avoir compris les limites de la vision thermique du Feral Predator et perdu Taabe, mange la plante médicinale refroidissante, prépare le piège avec le trappeur survivant, utilise le pistolet de Raphaël pour distraire et blesser le chasseur, récupère son masque de visée en os, place-le face au marécage, attire-y le chasseur et détourne son propre projectile grâce aux pointeurs du masque. Reprends la preuve du duel et rejoins le village avec Sarii. Aucun adversaire crossover et aucune victoire par simple baisse de PV.',
