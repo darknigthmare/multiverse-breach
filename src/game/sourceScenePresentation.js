@@ -144,11 +144,22 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
       ctx.fillStyle='#ead5b8';ctx.fillRect(at.x-7,at.y-12,14,5);
     }
     if(p.kind==='trophy'){
-      ctx.fillStyle='#b9c9b2';
-      for(let i=0;i<3;i++){
-        ctx.beginPath();ctx.ellipse(at.x-11+i*11,at.y-12,5,6,0,0,Math.PI*2);ctx.fill();
-        ctx.fillStyle='#0c1615';ctx.fillRect(at.x-14+i*11,at.y-14,6,3);
+      if(d.material==='prey'){
+        // The 1719 proof is one severed Feral head, not the Lost Tribe's
+        // 1990 wall of multiple skulls. Schematic only; artwork still pending.
+        ctx.fillStyle='#7f715d';ctx.beginPath();
+        ctx.ellipse(at.x,at.y-11,11,12,0,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle='#c6bca4';ctx.lineWidth=3;
+        ctx.beginPath();ctx.moveTo(at.x-8,at.y-12);ctx.lineTo(at.x-12,at.y-3);
+        ctx.moveTo(at.x+8,at.y-12);ctx.lineTo(at.x+12,at.y-3);ctx.stroke();
+      } else {
+        // The 1990 Lost Tribe ship has a separate wall of skull trophies.
         ctx.fillStyle='#b9c9b2';
+        for(let i=0;i<3;i++){
+          ctx.beginPath();ctx.ellipse(at.x-11+i*11,at.y-12,5,6,0,0,Math.PI*2);ctx.fill();
+          ctx.fillStyle='#0c1615';ctx.fillRect(at.x-14+i*11,at.y-14,6,3);
+          ctx.fillStyle='#b9c9b2';
+        }
       }
     }
     if(p.kind==='net' && s.done.has('net') && !s.done.has('cut_net')){
