@@ -170,6 +170,10 @@ export function getSourceSceneBeat(scene) {
       fr:'Le masque osseux est orienté vers le marécage, sans tirer lui-même de projectile.',
       en:'The bone mask is aimed at the bog; the mask itself does not fire a projectile.'
     };
+    if (d.has('take_mask')) return {
+      fr:'Naru tient désormais le masque osseux volé : placez son viseur vers la mare. La variante graphique sans masque est encore à produire.',
+      en:'Naru now holds the stolen bone mask: aim its targeting system toward the bog. Maskless character art still needs production.'
+    };
     if (d.has('flintlock')) return {
       fr:'Le pistolet a alerté le chasseur. La plante réduit encore la chaleur visible, pas le son ni la vue directe.',
       en:'The flintlock has alerted the hunter. The herb still lowers visible heat, not noise or direct sight.'
