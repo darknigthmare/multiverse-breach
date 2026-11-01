@@ -292,6 +292,27 @@ export const SOURCE_SCENE_STAGES = [
 ];
 
 
+// Sarii stays a non-combat story marker, but must visibly accompany Naru
+// after returning her tethered hatchet. A fixed tile would leave him behind
+// during the bog duel and the journey to the village.
+export function getSourceSceneCompanionCell(scene, prop) {
+  if (!scene || !prop) return null;
+  const fallback = { x: prop.x, y: prop.y };
+  if (scene.definition?.material !== 'prey' || prop.id !== 'sarii'
+    || !(scene.done instanceof Set) || !scene.done.has('sarii_hatchet')) return fallback;
+  const actor = scene.actor, field = scene.definition.field;
+  if (!Number.isInteger(actor?.gridX) || !Number.isInteger(actor?.gridY) || !field) return fallback;
+  const forbidden = new Set((field.blocked || []).map(([x, y]) => `${x},${y}`));
+  const adjacent = [
+    { x: actor.gridX - 1, y: actor.gridY },
+    { x: actor.gridX, y: actor.gridY + 1 },
+    { x: actor.gridX, y: actor.gridY - 1 },
+    { x: actor.gridX + 1, y: actor.gridY }
+  ];
+  return adjacent.find(({ x, y }) => x >= 0 && x < field.cols
+    && y >= 0 && y < field.rows && !forbidden.has(`${x},${y}`)) || fallback;
+}
+
 // Story props are not permanent battlefield fixtures. In particular, Prey's
 // bone targeting mask cannot be on the ground, carried and mounted at once.
 // This only gates schematic props; the actual command target remains visible
