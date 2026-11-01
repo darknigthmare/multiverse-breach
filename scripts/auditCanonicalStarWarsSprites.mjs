@@ -22,8 +22,37 @@ export const REVIEW_COLUMNS = Object.freeze([
   'actorId','character','incarnation','spritePath','fileSha256','byteSize',
   'pngWidth','pngHeight','bitDepth','colorType','gridColumns','gridRows',
   'frameWidth','frameHeight','equipment','prosthetics','sourceUrl',
-  'sourceKind','silhouetteReview','weaponReview','animationReview'
+  'sourceKind','silhouetteReview','weaponReview','animationReview','visualReferenceUrl','observedDefect'
 ]);
+/** Exact-byte visual findings from GitHub artifact 13103845643. A replaced PNG
+ * returns to PENDING, never to certified, until reviewed separately.
+ */
+export const EXACT_SOURCE_ART_BLOCKERS = Object.freeze({
+  "ahsoka_padawan": {
+    "sha256": "1a7f3488717f94d3789982e6acb1f7e961f9298c4b065cbdd3f8af89c9448b3c",
+    "silhouetteReview": "BLOCKED_FANTASY_MAGE_NOT_EARLY_PADAWAN",
+    "weaponReview": "BLOCKED_GREEN_LIGHTSABER_ABSENT",
+    "animationReview": "BLOCKED_REPLACE_SHEET_FIRST",
+    "observedDefect": "The 16 cells show brown-robed fantasy magic props (staff, sphere, book), but no green lightsaber or early Padawan fighting sheet"
+  },
+  "ahsoka": {
+    "sha256": "d5c49fd412868d187aca84241af1a191ffa55337a248982f2e79edd0daff22f3",
+    "silhouetteReview": "BLOCKED_FANTASY_ROBES_NOT_SIEGE_UNIFORM",
+    "weaponReview": "BLOCKED_TWIN_BLUE_LIGHTSABERS_ABSENT",
+    "animationReview": "BLOCKED_REPLACE_SHEET_FIRST",
+    "observedDefect": "The 16 cells show blue fantasy robes and a staff/book; the two blue Siege of Mandalore sabers are absent"
+  },
+  "darth_revan": {
+    "sha256": "78200992ef619c3e7d16907db20496df67b018c1fb99697bcf75dce3ea43169c",
+    "silhouetteReview": "PENDING_KOTOR_I_MASK_DETAIL_COMPARISON",
+    "weaponReview": "BLOCKED_RED_AND_PURPLE_PAIR_IN_KOTOR_I",
+    "animationReview": "BLOCKED_REPLACE_DUAL_WEAPON_FRAMES",
+    "observedDefect": "The existing 4x4 sheet visibly equips simultaneous purple and red sabers throughout a KOTOR I one-red-saber edition"
+  }
+});
+export const EXTRA_VISUAL_SOURCES = Object.freeze({
+  ahsoka_adult:'https://www.starwars.com/news/star-wars-rebels-costume-and-lightsaber-color-guide-for-ahsoka-tano'
+});
 const pngSignature = Buffer.from([137,80,78,71,13,10,26,10]);
 const actors = [...(expansions['Star Wars'] || []), ...Object.values(overrides)];
 const csvCell = value => '"'+String(value ?? '').replaceAll('"','""')+'"';
@@ -48,6 +77,8 @@ export function buildEditionSpriteAudit({projectRoot=root}={}) {
     const fileSha256=createHash('sha256').update(raw).digest('hex');
     assert.ok(!shaSeen.has(fileSha256),'Distinct editions share identical asset bytes: '+spritePath);
     shaSeen.add(fileSha256);
+    const lock=EXACT_SOURCE_ART_BLOCKERS[actorId];
+    const reviewed=lock?.sha256===fileSha256 ? lock : null;
     assert.match(actor.referenceUrl,/^https:\/\//,actorId);
     const sourceKind=actor.referenceUrl.includes('crls.501st.com')?'501ST_COSTUME_REFERENCE':'STARWARS_OFFICIAL';
     // Generic renderer uses a 4×4 grid when no special layout is registered.
@@ -60,9 +91,11 @@ export function buildEditionSpriteAudit({projectRoot=root}={}) {
       equipment:(actor.equipment||[]).join(' | '),
       prosthetics:(actor.bodyProsthetics||[]).join(' | '),
       sourceUrl:actor.referenceUrl,sourceKind,
-      silhouetteReview:'PENDING_HUMAN_SOURCE_COMPARISON',
-      weaponReview:'PENDING_HUMAN_SOURCE_COMPARISON',
-      animationReview:'PENDING_PLAYABLE_CAPTURE'
+      silhouetteReview:reviewed?.silhouetteReview || 'PENDING_HUMAN_SOURCE_COMPARISON',
+      weaponReview:reviewed?.weaponReview || 'PENDING_HUMAN_SOURCE_COMPARISON',
+      animationReview:reviewed?.animationReview || 'PENDING_PLAYABLE_CAPTURE',
+      visualReferenceUrl:EXTRA_VISUAL_SOURCES[actorId] || actor.referenceUrl,
+      observedDefect:reviewed?.observedDefect || ''
     };
   });
   const csv=[REVIEW_COLUMNS,...rows.map(row=>REVIEW_COLUMNS.map(column=>row[column]))]
@@ -77,5 +110,5 @@ if(directlyInvoked){
   else if(process.argv.includes('--check')){
     assert.equal(readFileSync(output,'utf8'),csv,'Star Wars sprite audit is stale, run --write');
   } else throw Error('Use --write to create the review or --check to verify it');
-  for(const row of rows) console.log(row.actorId+' '+row.pngWidth+'x'+row.pngHeight+' '+row.byteSize+' bytes '+row.fileSha256.slice(0,10)+' (visual review pending)');
+  for(const row of rows) console.log(row.actorId+' '+row.pngWidth+'x'+row.pngHeight+' '+row.byteSize+' bytes '+row.fileSha256.slice(0,10)+' ('+row.weaponReview+')');
 }
