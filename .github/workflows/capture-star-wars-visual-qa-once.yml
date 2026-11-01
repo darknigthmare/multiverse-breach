@@ -1,0 +1,37 @@
+name: One-time Star Wars sprite sheet visual QA collection
+on:
+  push:
+    branches: [codex/equipment-incarnation-fidelity-2026-11-01]
+    paths: ['.github/workflows/capture-star-wars-visual-qa-once.yml']
+permissions:
+  contents: read
+jobs:
+  image-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /public/sprites/generated/heroes/star-wars/
+      - name: Confirm seven canonical edition sprite source files
+        run: |
+          set -euo pipefail
+          for name in ahsoka-padawan ahsoka ahsoka-adult aayla-secura darth-maul darth-revan darth-talon; do
+            test -s "public/sprites/generated/heroes/star-wars/${name}.png"
+          done
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: visual-review-star-wars-source-sheets
+          path: |
+            public/sprites/generated/heroes/star-wars/ahsoka-padawan.png
+            public/sprites/generated/heroes/star-wars/ahsoka.png
+            public/sprites/generated/heroes/star-wars/ahsoka-adult.png
+            public/sprites/generated/heroes/star-wars/aayla-secura.png
+            public/sprites/generated/heroes/star-wars/darth-maul.png
+            public/sprites/generated/heroes/star-wars/darth-revan.png
+            public/sprites/generated/heroes/star-wars/darth-talon.png
+          retention-days: 7
+          if-no-files-found: error
