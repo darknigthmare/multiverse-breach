@@ -28,6 +28,8 @@ const fighter = ({
   name,
   cat,
   color,
+  // Fallback renderer uses primaryColor; source fighter templates previously only exposed color.
+  primaryColor: color,
   secondaryColor: accent,
   weaponType,
   weaponColor: accent,
@@ -233,12 +235,17 @@ const ahsokaAdult = fighter({
   stats: { hp: 130, atk: 15, def: 9, spd: 8 },
   simple: action('White Saber Crosscut', 'melee', 1.12),
   secondary: action('Fulcrum Route Read', 'force', 1.75, { cd: 5 }),
-  defense: action('World Between Worlds Step', 'dodge', 0, { dur: 2.3, reduce: 0.9 }),
-  special: action('Ahsoka the White', 'light_aoe', 4.75, { color: '#f4f8ff' }),
+  defense: action('Fulcrum Evasive Guard', 'dodge', 0, { dur: 2.3, reduce: 0.9 }),
+  // Original 2D gameplay adaptation: neither a canon Force-time-step nor
+  // the later white-cloak appearance of Ahsoka in the Rebels epilogue.
+  special: action('Fulcrum Twin-Saber Sweep', 'light_aoe', 4.75, { color: '#f4f8ff' }),
   equipment: ['Twin White Lightsabers'],
   incarnation: 'Star Wars Rebels - Fulcrum era (adult former Jedi)',
   referenceUrl: 'https://www.starwars.com/databank/ahsokas-lightsabers',
-  equipmentSource: 'Star Wars Databank — white-bladed pair in the rebellion era',
+  referenceUrls: ['https://www.starwars.com/databank/ahsoka-tano', 'https://www.starwars.com/databank/malachor-sith-temple'],
+  visualAnchor: 'Star Wars Rebels Fulcrum era: two white-bladed sabers, Rebels-era outfit; NOT the later white-cloaked epilogue or New Republic outfit',
+  combatMoveStatus: 'ADAPTATION_DE_JEU_NON_TELEPORTATION_TEMPORELLE',
+  equipmentSource: 'Star Wars Databank — Fulcrum uses the white-bladed pair; Ezra rescues her through the World Between Worlds, which is not her personal dodge power',
   equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
@@ -273,7 +280,8 @@ const darthMaul = fighter({
   secondary: action('Dathomirian Force Choke', 'force', 2.05, { cd: 6 }),
   defense: action('Cybernetic Spin Parry', 'shield', 0, { dur: 1.8, reduce: 0.84 }),
   special: action('Shadow Collective Dominion', 'dark_aoe', 5.0, { color: '#ff2d24' }),
-  equipment: ['Double-Bladed Red Lightsaber (The Clone Wars S7)', 'Mandalorian-Issue Humanoid Cybernetic Legs'],
+  equipment: ['Double-Bladed Red Lightsaber (The Clone Wars S7)'],
+  bodyProsthetics: ['Mandalorian-Issue Humanoid Cybernetic Legs'],
   incarnation: 'The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)',
   referenceUrl: 'https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide',
   referenceUrls: [
@@ -282,7 +290,7 @@ const darthMaul = fighter({
     'https://www.starwars.com/news/what-is-the-darksaber',
     'https://www.starwars.com/news/star-wars-maul-shadow-lord-leg-list'
   ],
-  equipmentSource: 'The Phantom Apprentice (S7E10) — sabre rouge double ; jambes humanoïdes de fabrication mandalorienne (Eminence). Demi-sabre, Darksaber et anciens types de jambes relèvent d’autres scènes.',
+  equipmentSource: 'The Phantom Apprentice (S7E10) — double red saber is equipped; Mandalorian-issued humanoid mechanical legs are intrinsic prostheses, not removable loot. Earlier half-saber, Darksaber and legs belong to other scenes.',
   visualAnchor: 'The Clone Wars S7: red double blade, Mandalorian-issued humanoid prosthetic legs (not Lotho Minor spider legs or Talzin claw legs)',
   equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
@@ -658,17 +666,17 @@ export const SOLAR_OPPOSITES_SIREN_STAR_WARS_CHARACTER_PLAQUES = {
     clearance: 'SW-AHAD',
     rankFr: 'Fulcrum et ancienne Jedi',
     rankEn: 'Fulcrum and former Jedi',
-    roleFr: 'Mentorat, lecture de Force et verrou temporel',
-    roleEn: 'Mentorship, Force reading, and temporal lock',
+    roleFr: 'Renseignement Fulcrum, duels et mentorat des rebelles',
+    roleEn: 'Fulcrum intelligence, dueling, and mentoring rebel cells',
     callSign: 'Fulcrum',
-    originFr: 'Rebellion / Nouvelle Republique - apres l Ordre 66',
-    originEn: 'Rebellion / New Republic - after Order 66',
-    dossierFr: 'Dans sa Trame d origine, Ahsoka adulte a survecu a la chute de la Republique, construit deux sabres blancs avec des cristaux purifies et servi la Rebellion sous le nom de Fulcrum. Elle affronte la verite d Anakin devenu Darth Vader, traverse le Monde entre les Mondes grace a Ezra, puis poursuit Thrawn et Ezra au-dela des routes galactiques connues. Cette incarnation n est plus definie par un rang Jedi: elle choisit ce qu elle transmet et ce qu elle refuse de reproduire.',
-    dossierEn: 'In her origin Thread, adult Ahsoka survived the fall of the Republic, built two white lightsabers from purified crystals, and served the Rebellion under the Fulcrum identity. She confronts the truth of Anakin as Darth Vader, crosses the World Between Worlds through Ezra, then pursues Thrawn and Ezra beyond known galactic routes. This incarnation is no longer defined by Jedi rank: she chooses what to pass on and what she refuses to repeat.',
+    originFr: 'Star Wars Rebels - Rebellion contre l Empire',
+    originEn: 'Star Wars Rebels - rebellion against the Empire',
+    dossierFr: 'Cette incarnation Star Wars Rebels suit Ahsoka en agente de renseignement Fulcrum pendant la rebellion contre l Empire. Elle porte deux sabres blancs, soutient l equipage du Ghost et affronte les Inquisiteurs puis Darth Vader au temple de Malachor. Plus tard, Ezra la sauve du duel par le Monde entre les Mondes: cette intervention est un evenement du recit, pas un pouvoir de teleportation dont Ahsoka disposerait au combat. Sa periode de Nouvelle Republique et son manteau blanc d epilogue doivent disposer de fiches et sprites differents.',
+    dossierEn: 'This Star Wars Rebels incarnation follows Ahsoka as the Fulcrum intelligence operative opposing the Empire. She carries two white lightsabers, works with the Ghost crew, and faces Inquisitors and Darth Vader at the Malachor Sith temple. Ezra later rescues her through the World Between Worlds: this is a story event, not a combat teleportation power she can freely cast. Her New Republic era and white-cloaked epilogue portrayal require distinct actor editions and visual references.',
     breachFr: 'Les portails du Nexus ressemblent dangereusement au Monde entre les Mondes, mais Ahsoka reconnait qu ils n en suivent pas les lois. Elle devient la gardienne des routes qui montrent le passe sans autoriser sa consommation. Le Sans-Auteur lui offre un passage ou Anakin ne tombe jamais; elle le ferme parce qu il efface Luke, Leia, Ezra et toutes les decisions nees de cette perte. Sa victoire n est pas d obtenir une histoire parfaite, mais d empecher le Nexus de prendre la memoire pour une permission de reecrire.',
     breachEn: 'Nexus portals resemble the World Between Worlds dangerously closely, but Ahsoka recognizes that they do not follow its laws. She becomes guardian of routes that show the past without allowing it to be consumed. The Authorless offers her a passage where Anakin never falls; she closes it because it erases Luke, Leia, Ezra, and every choice born from that loss. Her victory is not obtaining a perfect history, but preventing the Nexus from mistaking memory for permission to rewrite.',
-    doctrineFr: 'Deux sabres blancs, lecture Fulcrum, pas intertemporel limite et mentorat de cellule.',
-    doctrineEn: 'Twin white sabers, Fulcrum analysis, limited intertime step, and cell mentorship.',
+    doctrineFr: 'Deux sabres blancs, renseignement Fulcrum, garde evasive et balayage de combat adapte au jeu (pas de saut temporel).',
+    doctrineEn: 'Twin white sabers, Fulcrum intelligence, evasive guard and adapted combat sweep; no personal time travel skill.',
     threatFr: 'Risque A.R.C.A.: tout portail imitant le Monde entre les Mondes doit etre considere hostile jusqu a preuve causale contraire.',
     threatEn: 'A.R.C.A. risk: any portal imitating the World Between Worlds must be treated as hostile until causally proven otherwise.',
     tags: ['Star Wars', 'Ahsoka', 'Fulcrum', 'White Sabers', 'Tactical']

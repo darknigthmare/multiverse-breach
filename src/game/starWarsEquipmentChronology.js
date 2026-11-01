@@ -51,7 +51,7 @@ export const STAR_WARS_EQUIPMENT_CHRONOLOGY = Object.freeze([
     "implementation": "ACTIVE",
     "sourceUrl": "https://www.starwars.com/databank/ahsokas-lightsabers",
     "evidence": "Databank : later twin white plasma blades during rebellion",
-    "constraint": "Exclude the blue Siege of Mandalore blades",
+    "constraint": "Two white sabers in Fulcrum era; no temporal dodge or white-cloak epilogue ability transferred to this playable edition",
     "visual": "NON_VALIDEE_1A1"
   },
   {
@@ -102,9 +102,10 @@ export const STAR_WARS_EQUIPMENT_CHRONOLOGY = Object.freeze([
     "kind": "ANATOMIE_PROTHESE",
     "implementation": "ACTIVE",
     "sourceUrl": "https://www.starwars.com/news/star-wars-maul-shadow-lord-leg-list",
-    "evidence": "Official 2026 guide: Death Watch fitted humanoid Mandalorian-grade prosthetics in Eminence, remaining through end of The Clone Wars",
-    "constraint": "S7 morphology must not reuse Lotho Minor spider limbs or the earlier Talzin claw-shaped legs",
-    "visual": "NON_VALIDEE_1A1"
+    "evidence": "StarWars.com Maul legs study: Death Watch fitted permanent humanoid cybernetic limbs in Eminence; these stay attached in the S7 duel",
+    "constraint": "Permanent Mandalorian-issue anatomical prostheses: record in bodyProsthetics, never equipment[] or transferable battle loot",
+    "visual": "NON_VALIDEE_1A1",
+    "runtimeField": "bodyProsthetics"
   },
   {
     "id": "SW-MAUL-SPIDER",

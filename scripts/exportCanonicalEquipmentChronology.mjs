@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { STAR_WARS_EQUIPMENT_CHRONOLOGY } from '../src/game/starWarsEquipmentChronology.js';
-export const TIMELINE_FIELDS = Object.freeze(['id','actorId','actorName','edition','item','kind','implementation','sourceUrl','evidence','constraint','visual']);
+export const TIMELINE_FIELDS = Object.freeze(['id','actorId','actorName','edition','item','kind','implementation','sourceUrl','evidence','constraint','visual','runtimeField']);
 const csvCell = value => '"'+String(value ?? '').replaceAll('"','""')+'"';
 export function buildTimelineCsv() {
   return [TIMELINE_FIELDS, ...STAR_WARS_EQUIPMENT_CHRONOLOGY.map(row => TIMELINE_FIELDS.map(field => row[field]))]

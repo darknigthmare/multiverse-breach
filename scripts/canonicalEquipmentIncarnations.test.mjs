@@ -18,6 +18,13 @@ test('Ahsoka equipment is locked to three playable source periods', () => {
   assert.deepEqual(early.equipment, ['Green Lightsaber']);
   assert.deepEqual(siege.equipment, ['Twin Blue Lightsabers']);
   assert.deepEqual(rebels.equipment, ['Twin White Lightsabers']);
+  assert.equal(rebels.defense.name,'Fulcrum Evasive Guard');
+  assert.equal(rebels.special.name,'Fulcrum Twin-Saber Sweep');
+  assert.equal(rebels.combatMoveStatus,'ADAPTATION_DE_JEU_NON_TELEPORTATION_TEMPORELLE');
+  assert.match(rebels.visualAnchor,/NOT the later white-cloaked epilogue/);
+  assert.match(plaques.ahsoka_adult.dossier.en,/Ezra later rescues her/);
+  assert.match(plaques.ahsoka_adult.doctrine.fr,/pas de saut temporel/);
+  assert.ok(!/World Between Worlds Step|Ahsoka the White/.test(rebels.defense.name+' '+rebels.special.name));
   assert.match(early.incarnation, /early Padawan/);
   assert.match(siege.incarnation, /Season 7, Siege of Mandalore/);
   assert.match(rebels.incarnation, /Rebels - Fulcrum/);
@@ -37,7 +44,9 @@ test('Maul S7E10 uses a double-bladed weapon; the older half-saber and Darksaber
   assert.equal(maul.weaponType, 'double_lightsaber');
   assert.equal(maul.simple.name, 'Mandalore Twin-Blade Assault');
   assert.equal(maul.incarnation, 'The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)');
-  assert.deepEqual(maul.equipment, ['Double-Bladed Red Lightsaber (The Clone Wars S7)', 'Mandalorian-Issue Humanoid Cybernetic Legs']);
+  assert.deepEqual(maul.equipment, ['Double-Bladed Red Lightsaber (The Clone Wars S7)']);
+  assert.deepEqual(maul.bodyProsthetics,['Mandalorian-Issue Humanoid Cybernetic Legs']);
+  assert.ok(!maul.equipment.some(label => /Cybernetic Legs/i.test(label)));
   assert.equal(maul.referenceUrl, 'https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide');
   assert.ok(maul.referenceUrls.includes('https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice'));
   assert.equal(maul.equipmentEvidenceStatus, sourced);
@@ -55,8 +64,12 @@ test('Timeline separates non-playable chronology from equipped in-game labels', 
     assert.match(row.sourceUrl, /^https:\/\/(?:www\.starwars\.com|crls\.501st\.com|www\.swtor\.com)\//);
     const gameActor = get(row.actorId);
     assert.ok(gameActor, row.actorId);
-    if (row.implementation === 'ACTIVE') assert.ok(gameActor.equipment.includes(row.item), row.id);
-    else assert.ok(!gameActor.equipment.includes(row.item), row.id);
+    const field=row.runtimeField || 'equipment';
+    assert.ok(['equipment','bodyProsthetics'].includes(field),row.id);
+    const carried=Array.isArray(gameActor[field])?gameActor[field]:[];
+    if (row.implementation === 'ACTIVE') assert.ok(carried.includes(row.item), row.id);
+    else assert.ok(!carried.includes(row.item), row.id);
+    if (row.kind==='ANATOMIE_PROTHESE') assert.ok(!gameActor.equipment.includes(row.item), row.id);
   }
   assert.equal(chronology.filter(row=>row.implementation === 'ACTIVE').length, 10);
   assert.equal(chronology.filter(row=>row.implementation === 'REFERENCE_ONLY').length, 12);
@@ -68,11 +81,14 @@ test('Published CSV has a single exact reproducible source and required evidence
   const file=new URL('../docs/excel/equipment-incarnation-matrix-2026-11-01.csv',import.meta.url);
   assert.equal(readFileSync(file,'utf8'), buildTimelineCsv());
   for (const row of chronology) { assert.ok(row.evidence.length>20);assert.ok(row.constraint.length>20); }
+  const maulLeg=chronology.find(row=>row.id==='SW-MAUL-LEGS');
+  assert.equal(maulLeg.runtimeField,'bodyProsthetics');
 });
 
 test('Maul prosthetic editions and Aayla’s restricted kit stay separate', () => {
   const maul=get('darth_maul'), aayla=get('aayla_secura');
-  assert.equal(maul.equipment[1], 'Mandalorian-Issue Humanoid Cybernetic Legs');
+  assert.deepEqual(maul.bodyProsthetics,['Mandalorian-Issue Humanoid Cybernetic Legs']);
+  assert.equal(chronology.find(row=>row.id==='SW-MAUL-LEGS')?.runtimeField,'bodyProsthetics');
   assert.ok(maul.referenceUrls.includes('https://www.starwars.com/news/star-wars-maul-shadow-lord-leg-list'));
   assert.match(maul.visualAnchor, /not Lotho Minor spider legs/);
   assert.deepEqual(aayla.equipment, ['Blue Lightsaber']);
@@ -128,4 +144,15 @@ test('All scoped primary and additional source URLs remain secure official links
       const u=new URL(link);assert.equal(u.protocol,'https:');assert.equal(u.hostname,'www.starwars.com');
     }
   }
+});
+
+test('Fallback heroes retain their actual body palette independently from weapon accent', () => {
+  for (const id of ['ahsoka_padawan','ahsoka','ahsoka_adult','aayla_secura','darth_maul','darth_revan','darth_talon']) {
+    const hero=get(id);
+    assert.match(hero.primaryColor,/^#[0-9a-fA-F]{6}$/,id);
+    assert.equal(hero.primaryColor,hero.color,id);
+    assert.match(hero.weaponColor,/^#[0-9a-fA-F]{6}$/,id);
+  }
+  assert.equal(get('darth_revan').weaponColor,'#ff4242');
+  assert.equal(get('ahsoka').weaponColor,'#4ea8ff');
 });
