@@ -1,0 +1,47 @@
+name: Refresh rift dossier catalog once
+on:
+  push:
+    branches: [codex/equipment-incarnation-fidelity-2026-11-01]
+    paths: ['.github/workflows/refresh-rift-catalog-once.yml']
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    if: github.repository == 'darknigthmare/multiverse-breach'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+          lfs: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Regenerate with the real source and verify the deterministic catalog
+        run: |
+          set -euo pipefail
+          node scripts/buildRiftDossierCatalog.mjs
+          node scripts/buildRiftDossierCatalog.mjs --check
+          git diff --check
+          git diff --stat -- docs/rift-dossiers/catalog.json
+      - name: Publish only the regenerated catalog to this branch
+        env:
+          GH_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          test "$GH_BRANCH" = 'codex/equipment-incarnation-fidelity-2026-11-01'
+          git add -- docs/rift-dossiers/catalog.json
+          unexpected=$(git diff --cached --name-only | grep -Fvx 'docs/rift-dossiers/catalog.json' || true)
+          test -z "$unexpected"
+          if git diff --cached --quiet; then
+            echo 'Catalog already matches current source; no commit required'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Regénérer les dossiers de failles après les corrections des dotations'
+          git push origin HEAD:"$GH_BRANCH"
