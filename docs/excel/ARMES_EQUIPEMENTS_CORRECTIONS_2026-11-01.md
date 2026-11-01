@@ -82,3 +82,7 @@ Références : https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii ; https://w
 Source : https://crls.501st.com/tfe/darth-talon
 
 L'audit Excel CSV [matrice](equipment-incarnation-matrix-2026-11-01.csv) et [delta](equipment-continuity-locks-2026-11-01.csv) gagnent **10 dossiers** : la matrice couvre **25** cas (10 entrées actives, 12 références de variantes ou de tenues, 3 exclusions de dotation), tandis que le CSV correctif contient **30 constats**. Ces numéros sont les enregistrements du **lot ciblé**, pas l'état exhaustif des milliers de personnages du jeu. Les sprites, animations et poignées ne sont pas certifiés 1:1.
+
+### Consistance des fiches descriptives Revan (01/11/2026)
+
+Le même verrou **KOTOR I / sabre rouge unique** est désormais reporté dans `SOLAR_OPPOSITES_SIREN_STAR_WARS_CHARACTER_PLAQUES.darth_revan` : rang, dossier français et anglais et doctrine de combat. La narration générale peut évoquer l'amnésie, le destin du personnage et ses variantes, mais elle ne présente plus le duo rouge/violet comme kit physique de l'édition jouable KOTOR I. Le test canonique vérifie maintenant la concordance entre fiche narrative et inventaire.

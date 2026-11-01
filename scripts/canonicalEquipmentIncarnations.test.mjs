@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { readFileSync } from 'node:fs';
 import {
+  SOLAR_OPPOSITES_SIREN_STAR_WARS_CHARACTER_PLAQUES as plaques,
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS as expansions,
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES as overrides
 } from '../src/game/solarOppositesSirenStarWarsPack.js';
@@ -96,6 +97,10 @@ test('Revan single red Sith preset never silently inherits LEGO dual red-and-pur
   assert.ok(revan.referenceUrls.some(u=>u.includes('lego-rebuild-the-galaxy')));
   assert.equal(revan.referenceUrl,'https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii');
   assert.match(revan.visualAnchor,/NOT the SWTOR flat-chin mask/);
+  assert.match(plaques.darth_revan.dossier.fr,/un seul sabre rouge/);
+  assert.match(plaques.darth_revan.dossier.en,/one red lightsaber/);
+  assert.match(plaques.darth_revan.doctrine.fr,/KOTOR I/);
+  assert.ok(!plaques.darth_revan.dossier.en.includes('and red and purple sabers'));
   assert.equal(chronology.find(row=>row.id==='SW-REVAN-KOTORII-DUAL')?.implementation,'REFERENCE_ONLY');
   assert.equal(chronology.find(row=>row.id==='SW-REVAN-SWTOR-FALLEN')?.implementation,'REFERENCE_ONLY');
   assert.equal(chronology.find(row=>row.id==='SW-REVAN-LEGO').implementation,'REFERENCE_ONLY');
