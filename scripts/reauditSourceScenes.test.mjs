@@ -547,3 +547,53 @@ test('Prey 2022: mission UI dispatches real aim action while the legacy scenes r
   assert.equal(e.aimSourceSceneMask(6,4,e.turnSerial),false);
  }
 });
+
+
+test('Prey 2022: Sarii follows Naru to the bog and village route without becoming a fighter', async()=>{
+ const {getSourceSceneCompanionCell}=await import('../src/game/sourceSceneStages.js');
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ const dog=d.field.props.find(p=>p.id==='sarii');
+ assert.deepEqual(getSourceSceneCompanionCell(e.sourceScene,dog),{x:1,y:4});
+ for(const id of ['herb','bait','flintlock','take_mask','set_mask','sarii_hatchet'])doCommand(e,id);
+ assert.deepEqual(getSourceSceneCompanionCell(e.sourceScene,dog),{x:4,y:3},'Sarii reaches Naru when returning the hatchet');
+ const original={...dog};
+ const originalActorCell={x:e.sourceScene.actor.gridX,y:e.sourceScene.actor.gridY};
+ const blocked=new Set(d.field.blocked.map(([x,y])=>`${x},${y}`));
+ for(const [x,y] of [[6,4],[0,2],[0,5],[4,1],[1,0]]) {
+   e.sourceScene.actor.gridX=x;e.sourceScene.actor.gridY=y;
+   const companion=getSourceSceneCompanionCell(e.sourceScene,dog);
+   assert.equal(Math.abs(companion.x-x)+Math.abs(companion.y-y),1,'Sarii remains adjacent to Naru');
+   assert.ok(companion.x>=0&&companion.x<d.field.cols&&companion.y>=0&&companion.y<d.field.rows);
+   assert.ok(!blocked.has(`${companion.x},${companion.y}`),'the protected companion avoids blocked cells');
+ }
+ e.sourceScene.actor.gridX=originalActorCell.x;e.sourceScene.actor.gridY=originalActorCell.y;
+ assert.deepEqual(dog,original,'source definition remains unchanged');
+ assert.equal(e.heroes.length,1,'Sarii does not become an invented combat unit');
+});
+
+test('Prey 2022: masked Feral bitmap disappears when the mask is stolen, without fabricated replacement art',async()=>{
+ const {drawSourceSceneBoard}=await import('../src/game/sourceScenePresentation.js');
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(d);
+ const labels=[];
+ const ctx=new Proxy({fillText(value){labels.push(value);}},{
+   get(target,key){return key in target?target[key]:()=>{};},
+   set(target,key,value){target[key]=value;return true;}
+ });
+ let spriteCalls=0;
+ const render=()=>{
+   labels.length=0;spriteCalls=0;
+   drawSourceSceneBoard(ctx,e,12,()=>{spriteCalls++;});
+   return {spriteCalls,labels:[...labels]};
+ };
+ assert.ok(e.sourceScene.threat,'the original masked Feral threat is resolved');
+ assert.equal(render().spriteCalls,1,'before the theft, the existing masked bitmap is still usable');
+ for(const id of ['herb','bait','flintlock','take_mask'])doCommand(e,id);
+ let frame=render();
+ assert.equal(frame.spriteCalls,0,'a bitmap still wearing the stolen mask cannot be drawn as unmasked Feral');
+ assert.ok(frame.labels.includes('FERAL / MASK OFF'));
+ assert.ok(frame.labels.includes('ART PENDING'));
+ for(const id of ['set_mask','sarii_hatchet','bog','redirect'])doCommand(e,id);
+ frame=render();
+ assert.equal(frame.spriteCalls,0,'defeated Feral is not rendered during the aftermath');
+ assert.ok(!frame.labels.includes('ART PENDING'),'placeholder no longer appears after the guided bolt');
+});
