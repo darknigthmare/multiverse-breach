@@ -88,3 +88,20 @@ Les trois scènes antérieures restent inchangées. Le compteur de leurs tests
 de présence passe de 3 à 4; les 39 missions statiques historiques sont conservées.
 Le mode Smash, le RPG, les menus, les portraits et la progression générale
 n'ont pas été retirés ou remplacés.
+
+
+## Correctif du 1er novembre — masque du Jungle Hunter et représentation provisoire
+
+La scène 50104 annonçait que le Jungle Hunter retire son biomask et son
+canon d'épaule pour le duel, mais le moteur affichait ensuite son ancien
+sprite (apparence masquée). À partir de l'événement `wash`, ce bitmap
+incompatible n'est plus représenté : un **localisateur tactique neutre**
+indique la menace jusqu'au déclenchement du contrepoids `crush`.
+Avant le duel, le sprite existant reste utilisable. Après `crush`,
+le localisateur disparaît. Le même contrat de non-usurpation graphique
+s'applique au Feral Predator démasqué de *Prey (2022)*.
+
+Ceci n'est **pas** une création de sprite officiel sans masque ; cette
+variante, les proportions, la position du canon d'épaule et les animations
+du duel nécessitent toujours référence visuelle et validation native.
+Une régression de rendu est ajoutée à `scripts/reauditSourceScenes.test.mjs`.
