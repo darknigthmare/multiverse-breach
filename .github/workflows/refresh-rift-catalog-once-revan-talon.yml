@@ -1,0 +1,47 @@
+name: One-time Revan Talon rift catalog source sync
+on:
+  push:
+    branches: [codex/equipment-incarnation-fidelity-2026-11-01]
+    paths: ['.github/workflows/refresh-rift-catalog-once-revan-talon.yml']
+permissions:
+  contents: write
+jobs:
+  rederive:
+    if: github.repository == 'darknigthmare/multiverse-breach'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+          lfs: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Regenerate full rift dossier catalog from the corrected lore
+        run: |
+          set -euo pipefail
+          node scripts/buildRiftDossierCatalog.mjs
+          node scripts/buildRiftDossierCatalog.mjs --check
+          git diff --check
+          git diff --stat -- docs/rift-dossiers/catalog.json
+      - name: Commit only the reproducible generated catalog to this PR
+        env:
+          GH_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          test "$GH_BRANCH" = 'codex/equipment-incarnation-fidelity-2026-11-01'
+          git add -- docs/rift-dossiers/catalog.json
+          other=$(git diff --cached --name-only | grep -Fvx 'docs/rift-dossiers/catalog.json' || true)
+          test -z "$other"
+          if git diff --cached --quiet; then
+            echo 'Source catalog already synchronized'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Synchroniser les dossiers de failles Revan/Talon sur leur equipement distingue'
+          git push origin HEAD:"$GH_BRANCH"
