@@ -1,0 +1,52 @@
+name: Canonical equipment chronology
+on:
+  pull_request:
+    paths:
+      - 'src/game/solarOppositesSirenStarWarsPack.js'
+      - 'src/game/starWarsEquipmentChronology.js'
+      - 'scripts/canonicalEquipmentIncarnations.test.mjs'
+      - 'scripts/exportCanonicalEquipmentChronology.mjs'
+      - 'docs/excel/equipment-incarnation-matrix-2026-11-01.csv'
+      - '.github/workflows/equipment-chronology.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'src/game/solarOppositesSirenStarWarsPack.js'
+      - 'src/game/starWarsEquipmentChronology.js'
+      - 'scripts/canonicalEquipmentIncarnations.test.mjs'
+      - 'scripts/exportCanonicalEquipmentChronology.mjs'
+      - 'docs/excel/equipment-incarnation-matrix-2026-11-01.csv'
+      - '.github/workflows/equipment-chronology.yml'
+permissions:
+  contents: read
+concurrency:
+  group: equipment-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  canon-source-lock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /src/game/solarOppositesSirenStarWarsPack.js
+            /src/game/starWarsEquipmentChronology.js
+            /scripts/canonicalEquipmentIncarnations.test.mjs
+            /scripts/exportCanonicalEquipmentChronology.mjs
+            /docs/excel/equipment-incarnation-matrix-2026-11-01.csv
+            /package.json
+            /.github/workflows/equipment-chronology.yml
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Verify canonical editions and equipment contracts
+        run: |
+          set -euo pipefail
+          node --check src/game/solarOppositesSirenStarWarsPack.js
+          node --check src/game/starWarsEquipmentChronology.js
+          node --test scripts/canonicalEquipmentIncarnations.test.mjs
+      - name: Verify reproducible Excel chronology
+        run: npm run equipment:chronology:check
