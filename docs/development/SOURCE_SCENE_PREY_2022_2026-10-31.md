@@ -211,3 +211,23 @@ sélection effective du rendu masqué / absent / provisoire. Le rendu Canvas
 schématique et les assets non approuvés ne deviennent pas « 1:1 » par cette
 correction ; une revue sur captures du film et en navigateur est toujours
 requise avant validation graphique.
+
+## Correctif du 1er novembre — retour audio des interactions
+
+Un audit des appels `playSfx` a révélé trois identifiants utilisés par
+l'interface et les moteurs mais absents du synthétiseur : `click`,
+`confirm` et `explosion`. Ils sont maintenant implémentés comme effets
+**originaux**, routés vers le volume d'effets et non vers la musique.
+
+Dans la scène 50106, le tir au pistolet à silex déclenche désormais un
+signal de tir (`shoot`), le retour de la hache par Sarii un signal de lame
+(`slash`), l'impact du projectile guidé un signal d'impact (`hit`),
+et le trophée un ramassage (`coin`). L'orientation correcte du masque
+reçoit `confirm`, une mauvaise direction conserve `click`; aucune
+direction de visée ne déclenche un tir avant la véritable action `redirect`.
+Ce retour audio est un repère de gameplay synthétique, **pas** une
+reproduction 1:1 de la bande-son, des armes ou des sons du film.
+
+Tests : `scripts/audioLifecycle.test.mjs` pour les trois effets et leur
+routing ; `scripts/reauditSourceScenes.test.mjs` pour les commandes
+effectivement jouables et la cohérence du masque.
