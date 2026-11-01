@@ -597,3 +597,25 @@ test('Prey 2022: masked Feral bitmap disappears when the mask is stolen, without
  assert.equal(frame.spriteCalls,0,'defeated Feral is not rendered during the aftermath');
  assert.ok(!frame.labels.includes('ART PENDING'),'placeholder no longer appears after the guided bolt');
 });
+
+
+test('Predator 1987: the river duel no longer falsely reuses a biomasked Jungle Hunter portrait',async()=>{
+ const {drawSourceSceneBoard,needsSourceSceneMasklessPlaceholder}=await import('../src/game/sourceScenePresentation.js');
+ const d=SOURCE_SCENE_STAGES.find(stage=>stage.id===50104),e=make(d);
+ const labels=[];
+ const ctx=new Proxy({fillText(value){labels.push(value);}},{
+   get(target,key){return key in target?target[key]:()=>{};},
+   set(target,key,value){target[key]=value;return true;}
+ });
+ const render=()=>{labels.length=0;drawSourceSceneBoard(ctx,e,10,()=>{});return [...labels];};
+ assert.equal(needsSourceSceneMasklessPlaceholder(e.sourceScene),false);
+ assert.ok(!render().includes('ART PENDING'),'the biomask is still worn before the river');
+ for(const id of ['mud','bow','rig','lure','disrupt','wash'])doCommand(e,id);
+ assert.equal(needsSourceSceneMasklessPlaceholder(e.sourceScene),true);
+ const frame=render();
+ assert.ok(frame.includes('JUNGLE / MASK OFF'),'the duel uses an explicit neutral locator');
+ assert.ok(frame.includes('ART PENDING'),'no unsupported unmasked 1987 art is claimed');
+ for(const id of ['bait','crush'])doCommand(e,id);
+ assert.equal(needsSourceSceneMasklessPlaceholder(e.sourceScene),false);
+ assert.ok(!render().includes('ART PENDING'),'the hunter has been crushed and the locator is gone');
+});
