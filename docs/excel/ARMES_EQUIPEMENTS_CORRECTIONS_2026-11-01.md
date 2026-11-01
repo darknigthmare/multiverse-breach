@@ -56,3 +56,25 @@ Chaque ligne est fixée par œuvre, période, nature, source et statut (en jeu /
 ## Rendu de secours des sabres — correctif moteur
 
 Le renderer natif ne possédait aucune branche pour `lightsaber`, `dual_lightsaber` et `double_lightsaber` lorsqu'un sprite généré était manquant. La PR ajoute un **fallback procédural** : une lame simple, deux sabres indépendants ou une poignée centrale à deux lames opposées, avec teinte d'énergie issue du personnage. Le sprite généré vérifié reste **prioritaire**, grâce à `drawGeneratedSpriteSheet` ; aucun PNG existant n'est remplacé. Trois tests dans `scripts/energyBladeFallback.test.mjs` contrôlent la géométrie et les instructions Canvas. La validation visuelle exacte du personnage **reste à faire**.
+
+## Second lot : deux personnages Legends — Revan et Darth Talon (1er novembre 2026)
+
+### Darth Revan : séparation des œuvres et des armes
+
+- Profil jouable désormais documenté comme **preset Sith (Star Wars: The Old Republic, Legends)** avec **un seul sabre rouge**. L'accent d'interface reste violet, mais la lame de secours du renderer est rouge grâce au `weaponColor` spécifique.
+- L'ancien duo rouge/violet fixe n'est plus attribué à SWTOR sans preuve. Dans l'entretien officiel de 2020 sur le sabre Force FX de Revan, la couleur **rouge ou violette** est présentée selon le côté Sith/Jedi ; cela décrit une alternative de teinte, pas deux poignées simultanées.
+- La présence **simultanée** de sabres rouge et violet est explicitement rapportée en **2025** pour sa représentation dans `LEGO Star Wars: Rebuild the Galaxy — Pieces of the Past` : représentation **distincte**, référencée mais non automatiquement équipée au profil SWTOR.
+- Le masque de Revan est désormais rangé dans `costumeParts` : il ne devient pas un objet de combat interchangeable ; le modèle exact reste à vérifier visuellement. Les techniques de combat du projet sont des adaptations et ne sont pas déclarées reproductions 1:1.
+
+Sources : https://www.starwars.com/news/darth-revan-force-fx-elite-lightsaber ; https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts ; https://www.starwars.com/games-apps/knights-of-the-old-republic
+
+### Darth Talon : protections distinctes et marquages corporels
+
+- Arme portée : **sabre rouge**, poignée à allure organique selon la référence costume.
+- Protections portées : **Forearm and Bicep Armor** et **Leg Armor** au lieu de l'ancien `One Sith Armor` générique.
+- Tenue reconstruite sous `costumeParts` (bandeau, sangles, gants, ceinture, bottes) ; tatouages noirs sous `bodyMarkings` plutôt que dans `equipment[]`.
+- **Important** : la référence `501st Costume Reference Library` est un guide communautaire approuvé pour le cosplay. Elle décrit des formes et pièces de costume, mais **n'est pas une validation Lucasfilm pixel-par-pixel des sprites du jeu ni une preuve de toutes les scènes des comics**.
+
+Source : https://crls.501st.com/tfe/darth-talon
+
+L'audit Excel CSV [matrice](equipment-incarnation-matrix-2026-11-01.csv) et [delta](equipment-continuity-locks-2026-11-01.csv) gagnent **10 dossiers** : la matrice couvre **23** cas (10 entrées actives, 10 références de variantes ou de tenues, 3 exclusions de dotation), tandis que le CSV correctif contient **28 constats**. Ces numéros sont les enregistrements du **lot ciblé**, pas l'état exhaustif des milliers de personnages du jeu. Les sprites, animations et poignées ne sont pas certifiés 1:1.

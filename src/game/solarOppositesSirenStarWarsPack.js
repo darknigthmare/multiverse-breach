@@ -293,15 +293,31 @@ const darthRevan = fighter({
   cat: 'tactical',
   color: '#282329',
   accent: '#8f4dff',
-  weaponType: 'dual_lightsaber',
+  // This is the SWTOR-era Sith combat preset. The LEGO dual-wield cameo is
+  // a different edition, not a second saber permanently equipped here.
+  weaponType: 'lightsaber',
+  weaponColor: '#ff4242',
   stats: { hp: 138, atk: 16, def: 9, spd: 7 },
   simple: action('Red Saber Judgment', 'melee', 1.14),
-  secondary: action('Purple Saber Reversal', 'force', 1.95, { cd: 6 }),
+  secondary: action('Force Reversal', 'force', 1.95, { cd: 6 }),
   defense: action('Revanite Mask Focus', 'shield', 0, { dur: 2.2, reduce: 0.86 }),
   special: action('Star Forge Command', 'force_aoe', 4.95, { color: '#8f4dff' }),
-  equipment: ['Revan Mask', 'Red Lightsaber', 'Purple Lightsaber'],
-  incarnation: 'Knights of the Old Republic iconic masked identity',
-  canonStatus: 'legends'
+  equipment: ['Red Lightsaber'],
+  costumeParts: ['Revan Mask (Legends identity; individual model requires visual review)'],
+  alternateIncarnations: [
+    'Jedi-aligned purple-bladed Revan — separate blade color / alignment',
+    'LEGO Star Wars: Rebuild the Galaxy — Pieces of the Past, red and purple dual-wield cameo'
+  ],
+  incarnation: 'Star Wars: The Old Republic - Sith-side Revan (Legends combat preset)',
+  canonStatus: 'legends',
+  referenceUrl: 'https://www.starwars.com/news/darth-revan-force-fx-elite-lightsaber',
+  referenceUrls: [
+    'https://www.starwars.com/games-apps/knights-of-the-old-republic',
+    'https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts'
+  ],
+  visualAnchor: 'SWTOR-inspired Sith Revan: a single red lightsaber in this game preset; character mask and body model still require 1:1 inspection',
+  equipmentSource: 'StarWars.com / Hasbro interview: SWTOR-inspired Revan hilt can display red OR purple; simultaneous dual blades are explicitly a separate 2025 LEGO appearance.',
+  equipmentEvidenceStatus: 'SWTOR_VARIANTE_SITH_PRESET_OFFICIELLE_VISUEL_A_VALIDER'
 });
 
 const darthTalon = fighter({
@@ -316,9 +332,21 @@ const darthTalon = fighter({
   secondary: action('Twi lek Hunter Lunge', 'force', 1.95, { cd: 5 }),
   defense: action('Sith Tattoo Focus', 'dodge', 0, { dur: 1.8, reduce: 0.84 }),
   special: action('Hand of Darth Krayt', 'dark_aoe', 4.85, { color: '#ef2828' }),
-  equipment: ['Red Lightsaber', 'One Sith Armor', 'Ritual Sith Tattoos'],
-  incarnation: 'Star Wars Legacy - Hand of Darth Krayt',
-  canonStatus: 'legends'
+  // 501st's approved costume-reference model lists distinct protective pieces.
+  // Tattoos are skin markings, not detachable loot or a magic inventory item.
+  equipment: ['Red Lightsaber', 'Forearm and Bicep Armor', 'Leg Armor'],
+  costumeParts: [
+    'Armored Bandeau', 'Armored Hand Strap', 'Black Gloves',
+    'Belt with Front Buckle Plate and Straps', 'Black Boots and Leggings'
+  ],
+  bodyMarkings: ['Black Sith Ritual Tattoos (face, chest, abdomen, arms, legs and lekku)'],
+  incarnation: 'Star Wars: Legacy (Legends) - One Sith Hand of Darth Krayt',
+  canonStatus: 'legends',
+  referenceUrl: 'https://crls.501st.com/tfe/darth-talon',
+  referenceUrls: ['https://starwars.fandom.com/wiki/Darth_Talon'],
+  visualAnchor: 'Legacy Darth Talon: red Lethan Twi-lek, black ritual tattoos, sleeveless armored bandeau, separate arm and leg plates; actual comic and sprite match unverified',
+  equipmentSource: '501st Costume Reference Library, Legends visual costume reconstruction; reference for garment/armor shape, NOT a Lucasfilm certificate for in-game art.',
+  equipmentEvidenceStatus: 'LEGENDS_COSTUME_501ST_APPROUVEE_SPRITE_NON_VERIFIE'
 });
 
 export const SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS = {
@@ -748,8 +776,8 @@ export const SOLAR_OPPOSITES_SIREN_STAR_WARS_REFERENCE_ENTRIES = [
   ['Ahsoka Tano (Adult)', 'Star Wars Rebels Fulcrum-era former Jedi with twin white lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_adult, ['https://www.starwars.com/databank/ahsokas-lightsabers', 'https://www.starwars.com/databank/ahsoka-tano']],
   ['Aayla Secura', 'Clone Wars Twi lek Jedi General', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.aayla_secura, ['https://www.starwars.com/databank/aayla-secura']],
   ['Darth Maul', 'The Clone Wars S7 Siege of Mandalore: red double-bladed duel weapon and cybernetic legs', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_maul, ['https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide', 'https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice', 'https://www.starwars.com/databank/maul']],
-  ['Darth Revan', 'Knights of the Old Republic iconic masked Legends identity', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_revan, ['https://www.starwars.com/news/from-a-certain-point-of-view-whos-the-best-star-wars-games-character', 'https://www.starwars.com/news/darth-revan-force-fx-elite-lightsaber']],
-  ['Darth Talon', 'Star Wars Legacy red Twi lek One Sith Hand', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_talon, ['https://starwars.fandom.com/wiki/Darth_Talon']]
+  ['Darth Revan', 'Star Wars The Old Republic Sith Revan - one red-bladed weapon (LEGO dual wield is a separate appearance)', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_revan, ['https://www.starwars.com/news/darth-revan-force-fx-elite-lightsaber', 'https://www.starwars.com/games-apps/knights-of-the-old-republic', 'https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts']],
+  ['Darth Talon', 'Star Wars Legacy One Sith Hand: ritual body markings and distinct 501st-reference protective plates', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_talon, ['https://crls.501st.com/tfe/darth-talon', 'https://starwars.fandom.com/wiki/Darth_Talon']]
 ].map(([character, incarnation, output, referencePages]) => ({
   character,
   incarnation,
