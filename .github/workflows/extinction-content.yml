@@ -78,8 +78,33 @@ jobs:
           # either immutable workbook merely because a newer PNG exists.
           cp TRACKED_FILES.txt /tmp/ec-evidence/tracked-current.txt
           grep -Fvx -- 'public/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png' /tmp/ec-evidence/tracked-current.txt > TRACKED_FILES.txt
+          # Rebuild the frozen workbook's catalogue from the ACTUAL actor
+          # pack it was authored against, not the new Ahsoka/Maul references.
+          # Do not change the historical XLSX, hashes, counts or receipt.
+          historical_pack=/tmp/ec-evidence/solarOppositesSirenStarWarsPack.pinned.js
+          runtime_pack=src/game/solarOppositesSirenStarWarsPack.js
+          live_backup=$(mktemp)
+          cp "$runtime_pack" "$live_backup"
+          restore_runtime_pack() {
+            cp "$live_backup" "$runtime_pack"
+            rm -f "$live_backup"
+          }
+          trap restore_runtime_pack EXIT
+          curl --fail --silent --show-error --location --retry 3 \
+            "https://raw.githubusercontent.com/darknigthmare/multiverse-breach/${EC_WORKBOOK_SOURCE_REVISION}/src/game/solarOppositesSirenStarWarsPack.js" \
+            --output "$historical_pack"
+          if [ "$(git hash-object "$historical_pack")" != "1e97d287e5f19b2d378a496dacf380722c3cb9ec" ]; then
+            echo "Pinned historical actor pack does not match the recorded Git blob" >&2
+            exit 1
+          fi
+          cp "$historical_pack" "$runtime_pack"
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/catalog.mjs "$EC_WORKBOOK_SOURCE_REVISION" /tmp/ec-evidence/catalog.json | tee /tmp/ec-evidence/catalog-summary.json
+          restore_runtime_pack
+          trap - EXIT
           cp /tmp/ec-evidence/tracked-current.txt TRACKED_FILES.txt
+          # Also export the LIVE metadata: new official source URLs belong in
+          # this report, never retrospectively in the immutable workbook.
+          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/catalog.mjs "$(git rev-parse HEAD)" /tmp/ec-evidence/catalog-current.json > /tmp/ec-evidence/catalog-current-summary.json
           python3 scripts/extinction-city/verify_workbook.py /tmp/ec-evidence/catalog.json docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx | tee /tmp/ec-evidence/workbook.json
           python3 scripts/ui-immersion/verify-workbook.py docs/excel/Multiverse_Breach_UI_Immersion.xlsx --report /tmp/ec-evidence/ui-workbook.json
           python3 - <<'PY'
