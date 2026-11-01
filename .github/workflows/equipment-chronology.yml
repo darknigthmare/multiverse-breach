@@ -4,6 +4,9 @@ on:
     paths:
       - 'src/game/solarOppositesSirenStarWarsPack.js'
       - 'src/game/starWarsEquipmentChronology.js'
+      - 'src/game/renderer.js'
+      - 'src/game/energyBladeFallback.js'
+      - 'scripts/energyBladeFallback.test.mjs'
       - 'scripts/canonicalEquipmentIncarnations.test.mjs'
       - 'scripts/exportCanonicalEquipmentChronology.mjs'
       - 'docs/excel/equipment-incarnation-matrix-2026-11-01.csv'
@@ -13,6 +16,9 @@ on:
     paths:
       - 'src/game/solarOppositesSirenStarWarsPack.js'
       - 'src/game/starWarsEquipmentChronology.js'
+      - 'src/game/renderer.js'
+      - 'src/game/energyBladeFallback.js'
+      - 'scripts/energyBladeFallback.test.mjs'
       - 'scripts/canonicalEquipmentIncarnations.test.mjs'
       - 'scripts/exportCanonicalEquipmentChronology.mjs'
       - 'docs/excel/equipment-incarnation-matrix-2026-11-01.csv'
@@ -34,6 +40,9 @@ jobs:
           sparse-checkout: |
             /src/game/solarOppositesSirenStarWarsPack.js
             /src/game/starWarsEquipmentChronology.js
+            /src/game/renderer.js
+            /src/game/energyBladeFallback.js
+            /scripts/energyBladeFallback.test.mjs
             /scripts/canonicalEquipmentIncarnations.test.mjs
             /scripts/exportCanonicalEquipmentChronology.mjs
             /docs/excel/equipment-incarnation-matrix-2026-11-01.csv
@@ -47,6 +56,8 @@ jobs:
           set -euo pipefail
           node --check src/game/solarOppositesSirenStarWarsPack.js
           node --check src/game/starWarsEquipmentChronology.js
-          node --test scripts/canonicalEquipmentIncarnations.test.mjs
+          node --check src/game/renderer.js
+          node --check src/game/energyBladeFallback.js
+          node --test scripts/canonicalEquipmentIncarnations.test.mjs scripts/energyBladeFallback.test.mjs
       - name: Verify reproducible Excel chronology
         run: npm run equipment:chronology:check

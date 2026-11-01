@@ -1,4 +1,5 @@
 import { drawWardrobeEffect } from './wardrobeEffects.js';
+import { drawFallbackEnergyBlades } from './energyBladeFallback.js';
 
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
@@ -675,6 +676,12 @@ const drawWeapon = (ctx, x, y, type, color, animTime) => {
   ctx.fillStyle = color;
 
   switch (type) {
+    case 'lightsaber':
+    case 'dual_lightsaber':
+    case 'double_lightsaber':
+      // Only when no generated sprite can be displayed. No claims of 1:1 sprite fidelity.
+      drawFallbackEnergyBlades(ctx, type, color);
+      break;
     case 'gun':
       // Gun barrel & handle
       ctx.fillRect(0, -2, 8, 3);

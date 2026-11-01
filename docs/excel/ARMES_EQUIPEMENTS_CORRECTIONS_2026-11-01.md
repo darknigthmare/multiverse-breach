@@ -52,3 +52,7 @@ Chaque ligne est fixée par œuvre, période, nature, source et statut (en jeu /
 2. Contrôler le rendu effectif des actions double-lame et des parades (les champs moteur d'arme ne prouvent pas les animations).
 3. Régénérer l'Excel exhaustif contre le dernier code, puis recalculer les lacunes de chaque personnage, les icônes et les éditions ; ne pas utiliser les chiffres historiques comme état courant.
 4. Étendre cette matrice aux autres personnages source-lockés, sans fusionner des éditions différentes et sans inventer de propriétés hors scène.
+
+## Rendu de secours des sabres — correctif moteur
+
+Le renderer natif ne possédait aucune branche pour `lightsaber`, `dual_lightsaber` et `double_lightsaber` lorsqu'un sprite généré était manquant. La PR ajoute un **fallback procédural** : une lame simple, deux sabres indépendants ou une poignée centrale à deux lames opposées, avec teinte d'énergie issue du personnage. Le sprite généré vérifié reste **prioritaire**, grâce à `drawGeneratedSpriteSheet` ; aucun PNG existant n'est remplacé. Trois tests dans `scripts/energyBladeFallback.test.mjs` contrôlent la géométrie et les instructions Canvas. La validation visuelle exacte du personnage **reste à faire**.
