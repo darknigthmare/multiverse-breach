@@ -6,6 +6,30 @@ import { drawPixelSprite } from './renderer.js';
 const JUNGLE_HUNTER_HERO = HEROES_DB.find(hero => hero.id==='predator' && hero.universe==='Predator');
 const GREYBACK_ELDER_HERO = HEROES_DB.find(hero => hero.id==='greyback_yautja' && hero.universe==='Predator');
 
+// These two film finales remove their hunters' masks. Existing catalog
+// bitmaps only establish the masked appearance. Never display the same
+// masked head after it has been taken off, or invent an unreviewed face.
+export function needsSourceSceneMasklessPlaceholder(scene) {
+  if (!scene || !(scene.done instanceof Set) || scene.complete) return false;
+  const kind=scene.definition?.material;
+  return (kind==='jungle' && scene.done.has('wash') && !scene.done.has('crush'))
+    || (kind==='prey' && scene.done.has('take_mask') && !scene.done.has('redirect'));
+}
+
+function drawUnapprovedUnmaskedLocator(ctx, at, title) {
+  ctx.save();
+  ctx.strokeStyle='#f2d29d';ctx.lineWidth=2;
+  ctx.setLineDash([4,3]);ctx.strokeRect(at.x-16,at.y-43,32,36);
+  ctx.setLineDash([]);
+  ctx.beginPath();ctx.arc(at.x,at.y-25,8,0,Math.PI*2);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(at.x-24,at.y-25);ctx.lineTo(at.x-10,at.y-25);
+  ctx.moveTo(at.x+10,at.y-25);ctx.lineTo(at.x+24,at.y-25);ctx.stroke();
+  ctx.fillStyle='#f2d29d';ctx.font='bold 9px monospace';ctx.textAlign='center';
+  ctx.fillText(title,at.x,at.y-63);
+  ctx.fillText('ART PENDING',at.x,at.y-52);
+  ctx.restore();
+}
+
 /** Distinct in-engine schematics; existing actor PNGs are reused, not certified 1:1. */
 export function drawSourceSceneBackdrop(ctx, stage, width, height) {
   const d=resolveSourceScene(stage);
@@ -188,25 +212,14 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
   if(d.material==='jungle'&&s.done.has('wash'))pos=s.done.has('bait')?{x:6,y:3}:{x:6,y:4};
   if(d.material==='prey'&&s.done.has('take_mask'))pos=s.done.has('bog')?{x:6,y:4}:{x:6,y:3};
   const at=engine.gridToScreen(pos.x,pos.y);
-  if(threatVisible && d.material==='jungle' && JUNGLE_HUNTER_HERO) {
+  if(threatVisible && needsSourceSceneMasklessPlaceholder(s)) {
+    // A locator communicates danger but makes no unsupported anatomy claim.
+    drawUnapprovedUnmaskedLocator(ctx,at,
+      d.material==='jungle'?'JUNGLE / MASK OFF':'FERAL / MASK OFF');
+  } else if(threatVisible && d.material==='jungle' && JUNGLE_HUNTER_HERO) {
     // Reuse the existing 1987-character sheet (not an independently approved boss bitmap).
     ctx.save();ctx.globalAlpha=s.done.has('disrupt')?1:0.58;
     drawPixelSprite(ctx,at.x,at.y,{...JUNGLE_HUNTER_HERO,state:'idle'},animTime,-1,92,'tactics');
-    ctx.restore();
-  } else if(threatVisible && d.material==='prey' && s.done.has('take_mask')) {
-    // The only available Feral bitmap still wears its bone mask. After Naru
-    // removes the mask, do not re-use that visibly incorrect masked portrait.
-    // This is a neutral tactical locator, NOT an invented unmasked character.
-    ctx.save();
-    ctx.strokeStyle='#f2d29d';ctx.lineWidth=2;
-    ctx.setLineDash([4,3]);ctx.strokeRect(at.x-16,at.y-43,32,36);
-    ctx.setLineDash([]);
-    ctx.beginPath();ctx.arc(at.x,at.y-25,8,0,Math.PI*2);ctx.stroke();
-    ctx.beginPath();ctx.moveTo(at.x-24,at.y-25);ctx.lineTo(at.x-10,at.y-25);
-    ctx.moveTo(at.x+10,at.y-25);ctx.lineTo(at.x+24,at.y-25);ctx.stroke();
-    ctx.fillStyle='#f2d29d';ctx.font='bold 9px monospace';ctx.textAlign='center';
-    ctx.fillText('FERAL / MASK OFF',at.x,at.y-63);
-    ctx.fillText('ART PENDING',at.x,at.y-52);
     ctx.restore();
   } else if(threatVisible && s.threat && drawEnemy) {
     drawEnemy(ctx,at.x,at.y,s.threat,animTime,-1,d.material==='hangar'?112:76);
