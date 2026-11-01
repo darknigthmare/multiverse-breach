@@ -36,7 +36,7 @@ test('Maul S7E10 uses a double-bladed weapon; the older half-saber and Darksaber
   assert.equal(maul.weaponType, 'double_lightsaber');
   assert.equal(maul.simple.name, 'Mandalore Twin-Blade Assault');
   assert.equal(maul.incarnation, 'The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)');
-  assert.deepEqual(maul.equipment, ['Double-Bladed Red Lightsaber (The Clone Wars S7)', 'Cybernetic Legs']);
+  assert.deepEqual(maul.equipment, ['Double-Bladed Red Lightsaber (The Clone Wars S7)', 'Mandalorian-Issue Humanoid Cybernetic Legs']);
   assert.equal(maul.referenceUrl, 'https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide');
   assert.ok(maul.referenceUrls.includes('https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice'));
   assert.equal(maul.equipmentEvidenceStatus, sourced);
@@ -46,10 +46,10 @@ test('Maul S7E10 uses a double-bladed weapon; the older half-saber and Darksaber
 
 test('Timeline separates non-playable chronology from equipped in-game labels', () => {
   const identities = new Set();
-  assert.equal(chronology.length, 8);
+  assert.equal(chronology.length, 13);
   for (const row of chronology) {
     assert.ok(!identities.has(row.id), row.id); identities.add(row.id);
-    assert.ok(['ACTIVE', 'REFERENCE_ONLY'].includes(row.implementation));
+    assert.ok(['ACTIVE', 'REFERENCE_ONLY', 'EXCLUDED_UNVERIFIED'].includes(row.implementation));
     assert.equal(row.visual, 'NON_VALIDEE_1A1');
     assert.match(row.sourceUrl, /^https:\/\/www\.starwars\.com\//);
     const gameActor = get(row.actorId);
@@ -57,8 +57,9 @@ test('Timeline separates non-playable chronology from equipped in-game labels', 
     if (row.implementation === 'ACTIVE') assert.ok(gameActor.equipment.includes(row.item), row.id);
     else assert.ok(!gameActor.equipment.includes(row.item), row.id);
   }
-  assert.equal(chronology.filter(row=>row.implementation === 'ACTIVE').length, 5);
-  assert.equal(chronology.filter(row=>row.implementation === 'REFERENCE_ONLY').length, 3);
+  assert.equal(chronology.filter(row=>row.implementation === 'ACTIVE').length, 6);
+  assert.equal(chronology.filter(row=>row.implementation === 'REFERENCE_ONLY').length, 5);
+  assert.equal(chronology.filter(row=>row.implementation === 'EXCLUDED_UNVERIFIED').length, 2);
   assert.equal(chronology.find(row=>row.id==='SW-MAUL-DARK')?.kind,'ARME_SCENE_HISTORIQUE');
 });
 
@@ -66,6 +67,20 @@ test('Published CSV has a single exact reproducible source and required evidence
   const file=new URL('../docs/excel/equipment-incarnation-matrix-2026-11-01.csv',import.meta.url);
   assert.equal(readFileSync(file,'utf8'), buildTimelineCsv());
   for (const row of chronology) { assert.ok(row.evidence.length>20);assert.ok(row.constraint.length>20); }
+});
+
+test('Maul prosthetic editions and Aayla’s restricted kit stay separate', () => {
+  const maul=get('darth_maul'), aayla=get('aayla_secura');
+  assert.equal(maul.equipment[1], 'Mandalorian-Issue Humanoid Cybernetic Legs');
+  assert.ok(maul.referenceUrls.includes('https://www.starwars.com/news/star-wars-maul-shadow-lord-leg-list'));
+  assert.match(maul.visualAnchor, /not Lotho Minor spider legs/);
+  assert.deepEqual(aayla.equipment, ['Blue Lightsaber']);
+  assert.equal(aayla.equipmentEvidenceStatus,'ARME_ATTESTEE_MODELE_ET_VISUEL_A_VALIDER');
+  assert.equal(aayla.referenceUrl,'https://www.starwars.com/databank/aayla-secura');
+  for(const key of ['SW-MAUL-SPIDER','SW-MAUL-TALZIN','SW-AAYLA-BRACER','SW-AAYLA-COMLINK']) {
+    const entry=chronology.find(v=>v.id===key);assert.ok(entry);
+    assert.notEqual(entry.implementation,'ACTIVE');
+  }
 });
 
 test('All scoped primary and additional source URLs remain secure official links', () => {

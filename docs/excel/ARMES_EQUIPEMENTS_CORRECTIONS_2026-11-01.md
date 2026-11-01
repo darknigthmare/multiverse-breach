@@ -9,7 +9,7 @@
 | Ahsoka Tano, début Padawan | Un sabre vert | Star Wars Databank, Ahsoka's lightsabers | La seconde lame verte shoto apparaît plus tard |
 | Ahsoka Tano, Siège de Mandalore S7 | Deux sabres bleus | StarWars.com, Old Friends Not Forgotten, 20 avril 2020 | Ne pas confondre avec la paire blanche de Rebels |
 | Ahsoka Tano, Rebels/Fulcrum | Deux sabres blancs | Star Wars Databank, Ahsoka's lightsabers | Ne pas reprendre les sabres bleus de S7 |
-| **Maul, S7E10, The Phantom Apprentice** | **Sabre rouge double lame + jambes cybernétiques** | Guide et récapitulatif officiel S7E10 | Le demi-sabre rouge est antérieur ; le Darksaber appartient à un autre contexte |
+| **Maul, S7E10, The Phantom Apprentice** | **Sabre rouge double lame + jambes humanoïdes mandaloriennes** | Guide S7E10 et étude officielle des prothèses 2026 | Le demi-sabre rouge est antérieur ; le Darksaber appartient à un autre contexte |
 
 La précédente version de cette PR avait substitué **à tort** la demi-lame rouge à l'arme double de Maul en saison 7. La source spécifique à l'épisode prime sur la page Databank qui décrit l'étape antérieure du Shadow Collective. Le modèle exact de la poignée S7 ne peut pas être affirmé identique à la poignée intacte du film *The Phantom Menace*.
 
@@ -18,6 +18,10 @@ La précédente version de cette PR avait substitué **à tort** la demi-lame ro
 - **Ahsoka, Padawan plus tardive :** deux lames vertes, dont un shoto plus court. C'est une variante historiquement documentée et non une mise à jour silencieuse de l'avatar Padawan précoce.
 - **Maul, début Shadow Collective :** moitié de son ancien sabre rouge, à une seule lame. Référence distincte du duel S7.
 - **Maul, après Shades of Reason :** le **Darksaber** n'est pas seulement décoratif ; Maul l'a effectivement utilisé au combat, mais ce n'est pas l'arme par défaut du duel final de S7.
+- **Maul, Brothers (Lotho Minor)** : jambes mécaniques arachnéennes de récupération.
+- **Maul, Revenge (Dathomir)** : jambes griffues refaites par Talzin.
+- **Maul, Eminence et S7** : jambes humanoïdes mandaloriennes. Ces trois morphologies ne sont **pas interchangeables**.
+- **Aayla Secura** : sabre laser conservé, brassards et comlink particuliers retirés du kit faute d'attribution primaire explicite ; la couleur et le modèle du sabre restent soumis à contrôle visuel.
 - Les jambes cybernétiques sont des **prothèses** du personnage, pas une arme amovible ni un loot universel.
 
 Chaque ligne est fixée par œuvre, période, nature, source et statut (en jeu / référence seulement) dans [la matrice de chronologie importable dans Excel](equipment-incarnation-matrix-2026-11-01.csv). Le [delta correctif 11+ lignes](equipment-continuity-locks-2026-11-01.csv) conserve l'historique des retraits de dotations non étayées.
@@ -31,6 +35,8 @@ Chaque ligne est fixée par œuvre, période, nature, source et statut (en jeu /
 - Maul, ancienne demi-lame et Shadow Collective : https://www.starwars.com/databank/darth-mauls-lightsaber
 - Maul, usage effectif du Darksaber : https://www.starwars.com/news/what-is-the-darksaber
 - Dave Filoni, préférence pour les deux lames plutôt que le Darksaber : https://www.starwars.com/news/dave-filoni-interview-star-wars-rebels-season-three
+- Maul, générations de jambes (art et descriptions officiels, mars 2026) : https://www.starwars.com/news/star-wars-maul-shadow-lord-leg-list
+- Aayla Secura, fiche officielle (attributions limitées) : https://www.starwars.com/databank/aayla-secura
 
 ## Contrôles reproductibles
 

@@ -254,8 +254,11 @@ const aaylaSecura = fighter({
   secondary: action('Felucia Flank', 'force', 1.8, { cd: 6 }),
   defense: action('Jedi General Guard', 'shield', 0, { dur: 2.0, reduce: 0.82 }),
   special: action('Commander Bly Formation', 'force_aoe', 4.55, { color: '#6cc7ff' }),
-  equipment: ['Blue Lightsaber', 'Jedi Field Bracers', 'Clone Command Comlink'],
-  incarnation: 'Clone Wars Jedi General'
+  equipment: ['Blue Lightsaber'],
+  incarnation: 'The Clone Wars - Aayla Secura as Jedi General',
+  referenceUrl: 'https://www.starwars.com/databank/aayla-secura',
+  equipmentSource: 'Star Wars Databank — sabre attesté ; les attributs secondaires et leur appartenance à Aayla ne sont pas établis.',
+  equipmentEvidenceStatus: 'ARME_ATTESTEE_MODELE_ET_VISUEL_A_VALIDER'
 });
 
 const darthMaul = fighter({
@@ -270,15 +273,17 @@ const darthMaul = fighter({
   secondary: action('Dathomirian Force Choke', 'force', 2.05, { cd: 6 }),
   defense: action('Cybernetic Spin Parry', 'shield', 0, { dur: 1.8, reduce: 0.84 }),
   special: action('Shadow Collective Dominion', 'dark_aoe', 5.0, { color: '#ff2d24' }),
-  equipment: ['Double-Bladed Red Lightsaber (The Clone Wars S7)', 'Cybernetic Legs'],
+  equipment: ['Double-Bladed Red Lightsaber (The Clone Wars S7)', 'Mandalorian-Issue Humanoid Cybernetic Legs'],
   incarnation: 'The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)',
   referenceUrl: 'https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide',
   referenceUrls: [
     'https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice',
     'https://www.starwars.com/databank/darth-mauls-lightsaber',
-    'https://www.starwars.com/news/what-is-the-darksaber'
+    'https://www.starwars.com/news/what-is-the-darksaber',
+    'https://www.starwars.com/news/star-wars-maul-shadow-lord-leg-list'
   ],
-  equipmentSource: 'The Phantom Apprentice (S7E10) — Maul manie une arme rouge à double lame ; demi-sabre et Darksaber sont d’autres étapes du récit, pas son kit S7.',
+  equipmentSource: 'The Phantom Apprentice (S7E10) — sabre rouge double ; jambes humanoïdes de fabrication mandalorienne (Eminence). Demi-sabre, Darksaber et anciens types de jambes relèvent d’autres scènes.',
+  visualAnchor: 'The Clone Wars S7: red double blade, Mandalorian-issued humanoid prosthetic legs (not Lotho Minor spider legs or Talzin claw legs)',
   equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
