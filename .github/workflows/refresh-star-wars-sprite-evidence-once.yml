@@ -1,0 +1,52 @@
+name: Refresh Star Wars source-locked sprite evidence and rift catalog once
+on:
+  push:
+    branches: [codex/equipment-incarnation-fidelity-2026-11-01]
+    paths: ['.github/workflows/refresh-star-wars-sprite-evidence-once.yml']
+permissions:
+  contents: write
+jobs:
+  refresh:
+    if: github.repository == 'darknigthmare/multiverse-breach'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+          lfs: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Generate and verify source/PNG evidence without treating it as visual certification
+        run: |
+          set -euo pipefail
+          node scripts/auditCanonicalStarWarsSprites.mjs --write
+          node scripts/auditCanonicalStarWarsSprites.mjs --check
+          node --test scripts/canonicalEquipmentIncarnations.test.mjs scripts/energyBladeFallback.test.mjs scripts/canonicalStarWarsSpriteEvidence.test.mjs
+      - name: Rebuild the 3199 derived rift dossiers against the corrected actor metadata
+        run: |
+          set -euo pipefail
+          node scripts/buildRiftDossierCatalog.mjs
+          node scripts/buildRiftDossierCatalog.mjs --check
+          git diff --check
+      - name: Publish only the two verified derived snapshots
+        env:
+          GH_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          test "$GH_BRANCH" = 'codex/equipment-incarnation-fidelity-2026-11-01'
+          git add -- docs/rift-dossiers/catalog.json docs/excel/star-wars-edition-sprite-review-2026-11-01.csv
+          unexpected=$(git diff --cached --name-only | grep -Ev '^(docs/rift-dossiers/catalog.json|docs/excel/star-wars-edition-sprite-review-2026-11-01.csv)$' || true)
+          test -z "$unexpected"
+          if git diff --cached --quiet; then
+            echo 'Snapshots already synchronized'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Recalculer les 3199 dossiers et les 7 signatures PNG d editions Star Wars'
+          git push origin HEAD:"$GH_BRANCH"

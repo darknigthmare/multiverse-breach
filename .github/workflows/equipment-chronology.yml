@@ -7,6 +7,10 @@ on:
       - 'src/game/renderer.js'
       - 'src/game/energyBladeFallback.js'
       - 'scripts/energyBladeFallback.test.mjs'
+      - 'scripts/auditCanonicalStarWarsSprites.mjs'
+      - 'scripts/canonicalStarWarsSpriteEvidence.test.mjs'
+      - 'docs/excel/star-wars-edition-sprite-review-2026-11-01.csv'
+      - 'public/sprites/generated/heroes/star-wars/**'
       - 'scripts/canonicalEquipmentIncarnations.test.mjs'
       - 'scripts/exportCanonicalEquipmentChronology.mjs'
       - 'docs/excel/equipment-incarnation-matrix-2026-11-01.csv'
@@ -19,6 +23,10 @@ on:
       - 'src/game/renderer.js'
       - 'src/game/energyBladeFallback.js'
       - 'scripts/energyBladeFallback.test.mjs'
+      - 'scripts/auditCanonicalStarWarsSprites.mjs'
+      - 'scripts/canonicalStarWarsSpriteEvidence.test.mjs'
+      - 'docs/excel/star-wars-edition-sprite-review-2026-11-01.csv'
+      - 'public/sprites/generated/heroes/star-wars/**'
       - 'scripts/canonicalEquipmentIncarnations.test.mjs'
       - 'scripts/exportCanonicalEquipmentChronology.mjs'
       - 'docs/excel/equipment-incarnation-matrix-2026-11-01.csv'
@@ -43,6 +51,10 @@ jobs:
             /src/game/renderer.js
             /src/game/energyBladeFallback.js
             /scripts/energyBladeFallback.test.mjs
+            /scripts/auditCanonicalStarWarsSprites.mjs
+            /scripts/canonicalStarWarsSpriteEvidence.test.mjs
+            /docs/excel/star-wars-edition-sprite-review-2026-11-01.csv
+            /public/sprites/generated/heroes/star-wars/
             /scripts/canonicalEquipmentIncarnations.test.mjs
             /scripts/exportCanonicalEquipmentChronology.mjs
             /docs/excel/equipment-incarnation-matrix-2026-11-01.csv
@@ -58,6 +70,9 @@ jobs:
           node --check src/game/starWarsEquipmentChronology.js
           node --check src/game/renderer.js
           node --check src/game/energyBladeFallback.js
-          node --test scripts/canonicalEquipmentIncarnations.test.mjs scripts/energyBladeFallback.test.mjs
+          node --check scripts/auditCanonicalStarWarsSprites.mjs
+          node --test scripts/canonicalEquipmentIncarnations.test.mjs scripts/energyBladeFallback.test.mjs scripts/canonicalStarWarsSpriteEvidence.test.mjs
       - name: Verify reproducible Excel chronology
         run: npm run equipment:chronology:check
+      - name: Verify source-sprite file identities and review ledger
+        run: node scripts/auditCanonicalStarWarsSprites.mjs --check
