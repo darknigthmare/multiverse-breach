@@ -105,3 +105,13 @@ Ceci n'est **pas** une création de sprite officiel sans masque ; cette
 variante, les proportions, la position du canon d'épaule et les animations
 du duel nécessitent toujours référence visuelle et validation native.
 Une régression de rendu est ajoutée à `scripts/reauditSourceScenes.test.mjs`.
+
+## Audio original et séquence finale — 1er novembre
+
+Le moteur audio reconnaît les nouveaux identifiants `click`,
+`confirm` et `explosion`, auparavant silencieux. Pour la
+mission 50104, l'impact du contrepoids `crush` emploie un
+retour `hit`, et l'étape `escape` un signal synthétique
+`explosion` indiquant la fin du compte à rebours. Ces effets
+utilisent le bus SFX commun et les réglages de volume, sans
+échantillons des films et sans certification sonore 1:1.
