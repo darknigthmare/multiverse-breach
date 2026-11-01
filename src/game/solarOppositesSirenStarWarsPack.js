@@ -21,7 +21,8 @@ const fighter = ({
   special,
   equipment,
   incarnation,
-  canonStatus = 'canon'
+  canonStatus = 'canon',
+  ...fidelityMetadata
 }) => ({
   id,
   name,
@@ -37,7 +38,8 @@ const fighter = ({
   special,
   equipment,
   incarnation,
-  canonStatus
+  canonStatus,
+  ...fidelityMetadata
 });
 
 const plaque = ({
@@ -195,8 +197,11 @@ const ahsokaPadawan = fighter({
   secondary: action('Padawan Force Leap', 'force', 1.7, { cd: 5 }),
   defense: action('Shien Deflection', 'shield', 0, { dur: 1.9, reduce: 0.82 }),
   special: action('Skyguy Battlefield Lesson', 'force_aoe', 4.35, { color: '#7ed957' }),
-  equipment: ['Green Lightsaber', 'Padawan Comlink', 'Clone Wars Field Bracers'],
-  incarnation: 'The Clone Wars - early Padawan, age fourteen'
+  equipment: ['Green Lightsaber'],
+  incarnation: 'The Clone Wars - early Padawan, age fourteen',
+  referenceUrl: 'https://www.starwars.com/databank/ahsokas-lightsabers',
+  equipmentSource: 'Star Wars Databank — Ahsoka lightsabers, early Padawan',
+  equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
 const ahsokaSiege = fighter({
@@ -211,8 +216,11 @@ const ahsokaSiege = fighter({
   secondary: action('Mandalore Throne-Room Counter', 'force', 1.95, { cd: 5 }),
   defense: action('Order 66 Deflection', 'shield', 0, { dur: 2.1, reduce: 0.86 }),
   special: action('Siege of Mandalore Break', 'force_aoe', 4.8, { color: '#4ea8ff' }),
-  equipment: ['Twin Blue Lightsabers', 'Mandalorian Siege Tunic', 'Fulcrum Frequency'],
-  incarnation: 'The Clone Wars - Siege of Mandalore'
+  equipment: ['Twin Blue Lightsabers'],
+  incarnation: 'The Clone Wars - Season 7, Siege of Mandalore',
+  referenceUrl: 'https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-old-friends-not-forgotten',
+  equipmentSource: 'Star Wars / The Clone Wars S7E9 — Anakin returns her blue-bladed sabers',
+  equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
 const ahsokaAdult = fighter({
@@ -227,8 +235,11 @@ const ahsokaAdult = fighter({
   secondary: action('Fulcrum Route Read', 'force', 1.75, { cd: 5 }),
   defense: action('World Between Worlds Step', 'dodge', 0, { dur: 2.3, reduce: 0.9 }),
   special: action('Ahsoka the White', 'light_aoe', 4.75, { color: '#f4f8ff' }),
-  equipment: ['Twin White Lightsabers', 'T-6 Shuttle Beacon', 'Fulcrum Archive'],
-  incarnation: 'Rebels and Ahsoka - mature former Jedi'
+  equipment: ['Twin White Lightsabers'],
+  incarnation: 'Star Wars Rebels - Fulcrum era (adult former Jedi)',
+  referenceUrl: 'https://www.starwars.com/databank/ahsokas-lightsabers',
+  equipmentSource: 'Star Wars Databank — white-bladed pair in the rebellion era',
+  equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
 const aaylaSecura = fighter({
@@ -253,14 +264,19 @@ const darthMaul = fighter({
   cat: 'slayer',
   color: '#b72822',
   accent: '#ff2d24',
-  weaponType: 'double_lightsaber',
+  weaponType: 'lightsaber',
   stats: { hp: 134, atk: 17, def: 6, spd: 9 },
-  simple: action('Double-Bladed Saber Rush', 'melee', 1.2),
+  simple: action('Surviving Half-Saber Strike', 'melee', 1.2),
   secondary: action('Dathomirian Force Choke', 'force', 2.05, { cd: 6 }),
   defense: action('Cybernetic Spin Parry', 'shield', 0, { dur: 1.8, reduce: 0.84 }),
   special: action('Shadow Collective Dominion', 'dark_aoe', 5.0, { color: '#ff2d24' }),
-  equipment: ['Double-Bladed Red Lightsaber', 'Cybernetic Legs', 'Mandalore Command Seal'],
-  incarnation: 'The Clone Wars - ruler of Mandalore'
+  equipment: ['Surviving Single-Bladed Red Lightsaber', 'Cybernetic Legs'],
+  sourceProps: ['Darksaber (Mandalore leadership symbol; scene-specific rather than fixed default loadout)'],
+  incarnation: 'The Clone Wars - Shadow Collective, ruler of Mandalore',
+  referenceUrl: 'https://www.starwars.com/databank/darth-mauls-lightsaber',
+  referenceUrls: ['https://www.starwars.com/databank/darksaber'],
+  equipmentSource: 'Star Wars Databank — surviving half of the Naboo saber / Darksaber continuity',
+  equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
 const darthRevan = fighter({
