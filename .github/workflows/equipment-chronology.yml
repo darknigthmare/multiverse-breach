@@ -4,6 +4,7 @@ on:
     paths:
       - 'src/game/solarOppositesSirenStarWarsPack.js'
       - 'src/game/starWarsEquipmentChronology.js'
+      - 'src/game/signatureSourceWave2.js'
       - 'src/game/renderer.js'
       - 'src/game/energyBladeFallback.js'
       - 'scripts/energyBladeFallback.test.mjs'
@@ -20,6 +21,7 @@ on:
     paths:
       - 'src/game/solarOppositesSirenStarWarsPack.js'
       - 'src/game/starWarsEquipmentChronology.js'
+      - 'src/game/signatureSourceWave2.js'
       - 'src/game/renderer.js'
       - 'src/game/energyBladeFallback.js'
       - 'scripts/energyBladeFallback.test.mjs'
@@ -48,6 +50,7 @@ jobs:
           sparse-checkout: |
             /src/game/solarOppositesSirenStarWarsPack.js
             /src/game/starWarsEquipmentChronology.js
+            /src/game/signatureSourceWave2.js
             /src/game/renderer.js
             /src/game/energyBladeFallback.js
             /scripts/energyBladeFallback.test.mjs
@@ -68,6 +71,7 @@ jobs:
           set -euo pipefail
           node --check src/game/solarOppositesSirenStarWarsPack.js
           node --check src/game/starWarsEquipmentChronology.js
+          node --check src/game/signatureSourceWave2.js
           node --check src/game/renderer.js
           node --check src/game/energyBladeFallback.js
           node --check scripts/auditCanonicalStarWarsSprites.mjs
