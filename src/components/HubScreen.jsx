@@ -8703,13 +8703,15 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
         entry.counts.items < 3 ||
         entry.counts.event < 1)
   ));
-  const getMediaTypeLabel = (mediaType) => {
+  // Used while building collection diagnostics above: a function declaration is
+  // hoisted, unlike a const arrow function, so filtered archives cannot hit TDZ.
+  function getMediaTypeLabel(mediaType) {
     if (mediaType === 'game') return 'Game';
     if (mediaType === 'movie') return 'Movie';
     if (mediaType === 'series') return lang === 'fr' ? 'Serie' : 'Series';
     if (mediaType === 'music') return lang === 'fr' ? 'Musique' : 'Music';
     return 'Web / Manga';
-  };
+  }
 
   const finalOcStoryStage = BASE_OC_STAGES.find(stage => stage.campaignFinale)
     || BASE_OC_STAGES[BASE_OC_STAGES.length - 1]

@@ -137,7 +137,16 @@ test('metadata followup preserves the historical remediation and proves the exac
   const affected = remediation.affectedStages.find(row => row.stageId === revision.stageId);
   const current = catalog.entrees.find(row => row.id === revision.stageId);
   assert.equal(revision.stageId, 3);
-  assert.equal(revision.previousGameplayAdaptation, affected.currentGameplayAdaptation);
+  // The historical remediation can either precede this append-only metadata
+  // transition or already include it after a master merge. Never demand the
+  // pre-revision description from an integrated, independently hashed record.
+  if (metadataRevisions.integratedRemediationSha256) {
+    assert.equal(affected.currentGameplayAdaptation, revision.currentGameplayAdaptation);
+    assert.equal(affected.currentPromptSha256, revision.currentPromptSha256);
+  } else {
+    assert.equal(affected.currentGameplayAdaptation, revision.previousGameplayAdaptation);
+    assert.equal(affected.currentPromptSha256, revision.previousPromptSha256);
+  }
   assert.equal(revision.currentGameplayAdaptation, CANON_PRIORITY_STAGES.hadleysQueen.gameplayAdaptation);
   assert.equal(current.promptOpenAI.split(revision.currentGameplayAdaptation).length, 2);
   const historicalPrompt = current.promptOpenAI.replace(revision.currentGameplayAdaptation, revision.previousGameplayAdaptation);
