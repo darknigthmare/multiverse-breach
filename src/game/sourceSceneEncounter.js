@@ -83,6 +83,21 @@ export function getSourceSceneCommandState(engine, id) {
   if (!command.anywhere && (scene.actor.gridX!==command.cell.x || scene.actor.gridY!==command.cell.y)) return {enabled:false,reason:'position'};
   return {enabled:true,reason:''};
 }
+// Original synthesized cues follow a film-specific action, not a generic
+// confirmation click. Never imply sampled film audio or a plasma weapon.
+const SOURCE_SCENE_ACTION_AUDIO = Object.freeze({
+  prey: Object.freeze({
+    flintlock: 'shoot', take_mask: 'coin', sarii_hatchet: 'slash',
+    bog: 'hit', redirect: 'hit', trophy: 'coin', return: 'shield'
+  }),
+  jungle: Object.freeze({ crush: 'hit', escape: 'explosion' }),
+  ship: Object.freeze({ cut_net: 'slash', duel: 'slash', gift: 'coin', ignite: 'explosion' }),
+  silo: Object.freeze({ ignite: 'explosion' })
+});
+export function getSourceSceneAudioCue(material, id, final = false) {
+  return SOURCE_SCENE_ACTION_AUDIO[material]?.[id] || (final ? 'shield' : 'click');
+}
+
 /** A genuine turn-cost aiming action, separate from the mask placement command. */
 export function getSourceSceneMaskAimState(engine) {
   const scene=engine.sourceScene, d=scene?.definition;
@@ -112,7 +127,9 @@ export function aimSourceSceneMask(engine,x,y,token) {
   // decision that costs one turn; it cannot execute the finale by itself.
   scene.maskAimTarget={x,y};
   scene.log.push({command:'aim_mask',turn:token,cell:{x:scene.actor.gridX,y:scene.actor.gridY},target:{x,y}});
-  engine.playSfx('click');
+  const bog = scene.definition.field.props.find(prop => prop.id === 'bog');
+  const aligned = bog && bog.x === x && bog.y === y;
+  engine.playSfx(aligned ? 'confirm' : 'click');
   engine.endActiveTurn();
   return true;
 }
@@ -147,7 +164,7 @@ export function executeSourceSceneCommand(engine, id, token) {
   scene.log.push({command:id,turn:token,cell:{x:scene.actor.gridX,y:scene.actor.gridY}});
   if (command.final) scene.complete=true;
   engine.objectiveEvents++;
-  engine.playSfx(command.final?'shield':'click');
+  engine.playSfx(getSourceSceneAudioCue(scene.definition.material, id, command.final));
   engine.endActiveTurn();
   return true;
 }
