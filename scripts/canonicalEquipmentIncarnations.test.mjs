@@ -7,6 +7,7 @@ import {
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES as overrides
 } from '../src/game/solarOppositesSirenStarWarsPack.js';
 import { STAR_WARS_EQUIPMENT_CHRONOLOGY as chronology } from '../src/game/starWarsEquipmentChronology.js';
+import { SIGNATURE_WAVE2_ROWS } from '../src/game/signatureSourceWave2.js';
 import { buildTimelineCsv } from './exportCanonicalEquipmentChronology.mjs';
 
 const starWars = expansions['Star Wars'];
@@ -155,4 +156,16 @@ test('Fallback heroes retain their actual body palette independently from weapon
   }
   assert.equal(get('darth_revan').weaponColor,'#ff4242');
   assert.equal(get('ahsoka').weaponColor,'#4ea8ff');
+});
+
+test('source Wave 2 engine signature accepts the current Rebels Fulcrum special name',()=>{
+  const target=get('ahsoka_adult');
+  const wave=SIGNATURE_WAVE2_ROWS.find(row=>row.actorId==='ahsoka_adult');
+  assert.ok(wave);
+  assert.equal(wave.legacyName,target.special.name);
+  assert.equal(wave.name,'White Sabers Combination');
+  assert.equal(wave.hits,2);
+  assert.equal(wave.color,'#f4f8ff');
+  assert.notEqual(wave.legacyName,'Ahsoka the White');
+  assert.equal(get('ahsoka').special.name,'Siege of Mandalore Break');
 });

@@ -42,7 +42,7 @@ const enemy = (universe, enemyName, legacyName, name, style, range, source, extr
 });
 export const SIGNATURE_WAVE2_ROWS = Object.freeze([
   hero("Star Wars", "ahsoka_padawan", "Skyguy Battlefield Lesson", "Padawan Lightsaber Combination", "slash", 88, "sw-ahsoka", {"hits":2,"color":"#7ed957","note":saberNote}),
-  hero("Star Wars", "ahsoka_adult", "Ahsoka the White", "White Sabers Combination", "slash", 88, "sw-ahsoka", {"hits":2,"color":"#f4f8ff","note":saberNote}),
+  hero("Star Wars", "ahsoka_adult", "Fulcrum Twin-Saber Sweep", "White Sabers Combination", "slash", 88, "sw-ahsoka", {"hits":2,"color":"#f4f8ff","note":saberNote}),
   hero("Star Wars", "ahsoka", "Siege of Mandalore Break", "Mandalore Twin Sabers", "slash", 88, "sw-ahsoka", {"hits":2,"color":"#4ea8ff","note":saberNote}),
   hero("Star Wars", "aayla_secura", "Commander Bly Formation", "Aayla Lightsaber Combination", "slash", 88, "sw-aayla", {"hits":2,"color":"#6cc7ff","note":saberNote}),
   hero("Star Wars", "obi_wan", "Obi-Wan Kenobi Origin Burst", "Obi-Wan Lightsaber Riposte", "slash", 88, "sw-obiwan", {"hits":2,"color":"#72caff","note":saberNote}),
