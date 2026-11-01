@@ -619,3 +619,41 @@ test('Predator 1987: the river duel no longer falsely reuses a biomasked Jungle 
  assert.equal(needsSourceSceneMasklessPlaceholder(e.sourceScene),false);
  assert.ok(!render().includes('ART PENDING'),'the hunter has been crushed and the locator is gone');
 });
+
+
+test('Source scenes: audio feedback follows authored 1719 actions without plasma or silent control cues',()=>{
+ const cue=sceneApi.getSourceSceneAudioCue;
+ assert.equal(cue('prey','flintlock'),'shoot');
+ assert.equal(cue('prey','redirect'),'hit','guided bolt impact does not imply a plasma cannon');
+ assert.equal(cue('prey','sarii_hatchet'),'slash');
+ assert.equal(cue('jungle','escape',true),'explosion');
+ assert.equal(cue('ship','gift'),'coin');
+ assert.equal(cue('silo','ignite'),'explosion');
+ assert.equal(cue('unknown','nonexistent'),'click');
+ assert.equal(cue('unknown','final',true),'shield');
+
+ const stage=SOURCE_SCENE_STAGES.find(stage=>stage.id===50106),e=make(stage);
+ const sounds=[];e.playSfx=value=>sounds.push(value);
+ const step=(id,expected)=>{
+   const before=sounds.length;doCommand(e,id);
+   assert.ok(sounds.slice(before).includes(expected),id+' must sound like '+expected);
+ };
+ step('herb','click');
+ step('bait','click');
+ step('flintlock','shoot');
+ step('take_mask','coin');
+ step('set_mask','click');
+ assert.equal(e.aimSourceSceneMask(5,4,e.turnSerial),true);
+ assert.equal(sounds.at(-1),'click','bad guidance direction must not sound like confirmation');
+ settle(e);
+ assert.equal(e.aimSourceSceneMask(6,4,e.turnSerial),true);
+ assert.equal(sounds.at(-1),'confirm','aligned guide receives confirmation without firing');
+ settle(e);
+ step('sarii_hatchet','slash');
+ step('bog','hit');
+ step('redirect','hit');
+ step('trophy','coin');
+ step('return','shield');
+ assert.equal(e.battleResult,'victory');
+ assert.equal(e.sourceScene.done.has('redirect'),true);
+});
