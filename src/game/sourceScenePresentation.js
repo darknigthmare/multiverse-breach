@@ -1,4 +1,4 @@
-import { resolveSourceScene, isSourceScenePropVisible } from './sourceSceneStages.js';
+import { resolveSourceScene, isSourceScenePropVisible, getSourceSceneCompanionCell } from './sourceSceneStages.js';
 import { getSourceSceneDanger } from './sourceSceneEncounter.js';
 import { HEROES_DB } from './heroes.js';
 import { drawPixelSprite } from './renderer.js';
@@ -91,10 +91,11 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
   for(const prop of d.field.props) {
     // Avoid prematurely drawing a mask, trophy or other story prop before its beat.
     if(!isSourceScenePropVisible(s,prop))continue;
-    // Sarii returns Naru's rope hatchet during the duel before the bog.
-    // Move the protected dog marker near her; art remains schematic.
-    const p=d.material==='prey'&&prop.id==='sarii'&&s.sariiHatchetReturned
-      ? {...prop,x:4,y:3} : prop;
+    // Follow Naru on the actual tactical board, without inventing a second
+    // combatant or teleporting the story marker onto blocked terrain.
+    const companionCell=d.material==='prey'&&prop.id==='sarii'
+      ? getSourceSceneCompanionCell(s,prop) : null;
+    const p=companionCell ? {...prop,...companionCell} : prop;
     const at=engine.gridToScreen(p.x,p.y),bounds=engine.getCellBounds(p.x,p.y,4);
     cell(p.x,p.y,p.kind==='pit'||p.kind==='airlock'?'#04090c':p.kind==='refuge'?'#213e41':'#344049');
     ctx.strokeStyle=p.kind==='refuge'?'#6cc8bc':d.accent;ctx.lineWidth=2;
@@ -192,14 +193,23 @@ export function drawSourceSceneBoard(ctx, engine, animTime, drawEnemy) {
     ctx.save();ctx.globalAlpha=s.done.has('disrupt')?1:0.58;
     drawPixelSprite(ctx,at.x,at.y,{...JUNGLE_HUNTER_HERO,state:'idle'},animTime,-1,92,'tactics');
     ctx.restore();
+  } else if(threatVisible && d.material==='prey' && s.done.has('take_mask')) {
+    // The only available Feral bitmap still wears its bone mask. After Naru
+    // removes the mask, do not re-use that visibly incorrect masked portrait.
+    // This is a neutral tactical locator, NOT an invented unmasked character.
+    ctx.save();
+    ctx.strokeStyle='#f2d29d';ctx.lineWidth=2;
+    ctx.setLineDash([4,3]);ctx.strokeRect(at.x-16,at.y-43,32,36);
+    ctx.setLineDash([]);
+    ctx.beginPath();ctx.arc(at.x,at.y-25,8,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(at.x-24,at.y-25);ctx.lineTo(at.x-10,at.y-25);
+    ctx.moveTo(at.x+10,at.y-25);ctx.lineTo(at.x+24,at.y-25);ctx.stroke();
+    ctx.fillStyle='#f2d29d';ctx.font='bold 9px monospace';ctx.textAlign='center';
+    ctx.fillText('FERAL / MASK OFF',at.x,at.y-63);
+    ctx.fillText('ART PENDING',at.x,at.y-52);
+    ctx.restore();
   } else if(threatVisible && s.threat && drawEnemy) {
     drawEnemy(ctx,at.x,at.y,s.threat,animTime,-1,d.material==='hangar'?112:76);
-    if(d.material==='prey'&&s.done.has('take_mask')){
-      // This one-frame pre-existing Feral image may still show its original
-      // mask: display a clear review marker, NEVER imply maskless art exists.
-      ctx.fillStyle='#f2d29d';ctx.font='bold 9px monospace';ctx.textAlign='center';
-      ctx.fillText('MASK OFF · VARIANT PENDING',at.x,at.y-83);
-    }
   } else if(threatVisible && d.material==='silo') {
     // Three schematic stalks; authored animation/GoldSrc model comparison is still pending.
     for(let i=0;i<3;i++) {
