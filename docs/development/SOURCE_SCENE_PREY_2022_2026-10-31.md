@@ -186,3 +186,28 @@ La version 1:1 du corps, des proportions, de la robe, des animations et des
 gestes du chien (tâche `prey-2022-09`) reste **ouverte**. Le repère Canvas
 est volontairement schématique et ne remplace pas une illustration approuvée.
 
+
+## Correctif du 1er novembre — cohérence visible, sans fausse validation 1:1
+
+Dans la scène 50106, le Feral Predator utilisait encore après le vol du masque
+le bitmap existant représentant **la version masquée**. Le texte d'avertissement
+ne suffisait pas : on voyait simultanément le masque volé et le masque encore
+porté. Tant qu'une variante sans masque référencée et vérifiée n'est pas
+installée (tâche `prey-2022-04`), le rendu substitue **un marqueur tactique
+neutre**, et non une fausse représentation de son visage. Avant la prise,
+l'ancien bitmap masqué reste utilisé ; après le tir retourné, ni ce bitmap
+ni le marqueur ne représentent le chasseur vaincu.
+
+Le repère de **Sarii** accompagne désormais la cellule actuelle de Naru après
+l'événement `sarii_hatchet`, y compris autour du marécage et sur le chemin
+du retour. Les cellules bloquées et les bordures de la grille sont respectées.
+Il s'agit d'un suivi visuel, **sans ajouter Sarii à l'escouade combattante**,
+sans modifier l'état de mission, les tours, le ciblage, les récompenses ni
+les archives. L'animation et les proportions officielles de Sarii restent à
+faire et à valider (`prey-2022-09`).
+
+Deux tests de régression couvrent la position du repère compagnon et la
+sélection effective du rendu masqué / absent / provisoire. Le rendu Canvas
+schématique et les assets non approuvés ne deviennent pas « 1:1 » par cette
+correction ; une revue sur captures du film et en navigateur est toujours
+requise avant validation graphique.
