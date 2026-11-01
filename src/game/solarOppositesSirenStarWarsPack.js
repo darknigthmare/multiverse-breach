@@ -264,18 +264,21 @@ const darthMaul = fighter({
   cat: 'slayer',
   color: '#b72822',
   accent: '#ff2d24',
-  weaponType: 'lightsaber',
+  weaponType: 'double_lightsaber',
   stats: { hp: 134, atk: 17, def: 6, spd: 9 },
-  simple: action('Surviving Half-Saber Strike', 'melee', 1.2),
+  simple: action('Mandalore Twin-Blade Assault', 'melee', 1.2),
   secondary: action('Dathomirian Force Choke', 'force', 2.05, { cd: 6 }),
   defense: action('Cybernetic Spin Parry', 'shield', 0, { dur: 1.8, reduce: 0.84 }),
   special: action('Shadow Collective Dominion', 'dark_aoe', 5.0, { color: '#ff2d24' }),
-  equipment: ['Surviving Single-Bladed Red Lightsaber', 'Cybernetic Legs'],
-  sourceProps: ['Darksaber (Mandalore leadership symbol; scene-specific rather than fixed default loadout)'],
-  incarnation: 'The Clone Wars - Shadow Collective, ruler of Mandalore',
-  referenceUrl: 'https://www.starwars.com/databank/darth-mauls-lightsaber',
-  referenceUrls: ['https://www.starwars.com/databank/darksaber'],
-  equipmentSource: 'Star Wars Databank — surviving half of the Naboo saber / Darksaber continuity',
+  equipment: ['Double-Bladed Red Lightsaber (The Clone Wars S7)', 'Cybernetic Legs'],
+  incarnation: 'The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)',
+  referenceUrl: 'https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide',
+  referenceUrls: [
+    'https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice',
+    'https://www.starwars.com/databank/darth-mauls-lightsaber',
+    'https://www.starwars.com/news/what-is-the-darksaber'
+  ],
+  equipmentSource: 'The Phantom Apprentice (S7E10) — Maul manie une arme rouge à double lame ; demi-sabre et Darksaber sont d’autres étapes du récit, pas son kit S7.',
   equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
@@ -739,7 +742,7 @@ export const SOLAR_OPPOSITES_SIREN_STAR_WARS_REFERENCE_ENTRIES = [
   ['Ahsoka Tano (Siege of Mandalore)', 'The Clone Wars final-season Mandalore outfit with twin blue lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka, ['https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-old-friends-not-forgotten', 'https://www.starwars.com/series/clone-wars/old-friends-not-forgotten-episode-guide']],
   ['Ahsoka Tano (Adult)', 'Star Wars Rebels Fulcrum-era former Jedi with twin white lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_adult, ['https://www.starwars.com/databank/ahsokas-lightsabers', 'https://www.starwars.com/databank/ahsoka-tano']],
   ['Aayla Secura', 'Clone Wars Twi lek Jedi General', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.aayla_secura, ['https://www.starwars.com/databank/aayla-secura']],
-  ['Darth Maul', 'The Clone Wars Shadow Collective Mandalore ruler: surviving single-bladed red half-saber and cybernetic legs', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_maul, ['https://www.starwars.com/databank/darth-mauls-lightsaber', 'https://www.starwars.com/databank/darksaber', 'https://www.starwars.com/databank/maul']],
+  ['Darth Maul', 'The Clone Wars S7 Siege of Mandalore: red double-bladed duel weapon and cybernetic legs', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_maul, ['https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide', 'https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice', 'https://www.starwars.com/databank/maul']],
   ['Darth Revan', 'Knights of the Old Republic iconic masked Legends identity', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_revan, ['https://www.starwars.com/news/from-a-certain-point-of-view-whos-the-best-star-wars-games-character', 'https://www.starwars.com/news/darth-revan-force-fx-elite-lightsaber']],
   ['Darth Talon', 'Star Wars Legacy red Twi lek One Sith Hand', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_talon, ['https://starwars.fandom.com/wiki/Darth_Talon']]
 ].map(([character, incarnation, output, referencePages]) => ({
