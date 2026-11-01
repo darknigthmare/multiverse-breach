@@ -293,8 +293,8 @@ const darthRevan = fighter({
   cat: 'tactical',
   color: '#282329',
   accent: '#8f4dff',
-  // This is the SWTOR-era Sith combat preset. The LEGO dual-wield cameo is
-  // a different edition, not a second saber permanently equipped here.
+  // This is the KOTOR I masked Sith costume/combat edition. KOTOR II, late SWTOR,
+  // and LEGO have independently documented alternate saber presentations.
   weaponType: 'lightsaber',
   weaponColor: '#ff4242',
   stats: { hp: 138, atk: 16, def: 9, spd: 7 },
@@ -303,21 +303,26 @@ const darthRevan = fighter({
   defense: action('Revanite Mask Focus', 'shield', 0, { dur: 2.2, reduce: 0.86 }),
   special: action('Star Forge Command', 'force_aoe', 4.95, { color: '#8f4dff' }),
   equipment: ['Red Lightsaber'],
-  costumeParts: ['Revan Mask (Legends identity; individual model requires visual review)'],
-  alternateIncarnations: [
-    'Jedi-aligned purple-bladed Revan — separate blade color / alignment',
-    'LEGO Star Wars: Rebuild the Galaxy — Pieces of the Past, red and purple dual-wield cameo'
+  costumeParts: [
+    'KOTOR I Revan Mask (weathered rust red and graphite, two-pronged chin)',
+    'Dark Hood and Capelet', 'Armored Cuirass and Vambraces'
   ],
-  incarnation: 'Star Wars: The Old Republic - Sith-side Revan (Legends combat preset)',
+  alternateIncarnations: [
+    'KOTOR II costume reference: two lightsabers, one red and one purple',
+    'SWTOR: Fallen Revan red blade and Redeemed Revan purple blade are separately listed',
+    'LEGO Rebuild the Galaxy (2025): red-and-purple dual-wield cameo'
+  ],
+  incarnation: 'Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)',
   canonStatus: 'legends',
-  referenceUrl: 'https://www.starwars.com/news/darth-revan-force-fx-elite-lightsaber',
+  referenceUrl: 'https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii',
   referenceUrls: [
     'https://www.starwars.com/games-apps/knights-of-the-old-republic',
+    'https://www.swtor.com/info/news/article/20201209-0',
     'https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts'
   ],
-  visualAnchor: 'SWTOR-inspired Sith Revan: a single red lightsaber in this game preset; character mask and body model still require 1:1 inspection',
-  equipmentSource: 'StarWars.com / Hasbro interview: SWTOR-inspired Revan hilt can display red OR purple; simultaneous dual blades are explicitly a separate 2025 LEGO appearance.',
-  equipmentEvidenceStatus: 'SWTOR_VARIANTE_SITH_PRESET_OFFICIELLE_VISUEL_A_VALIDER'
+  visualAnchor: 'KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces; one red blade, NOT the SWTOR flat-chin mask',
+  equipmentSource: '501st CRL: KOTOR I permits a single red blade, KOTOR II depicts two red/purple blades; SWTOR hilts are a separate edition. Approved cosplay reference only, not an in-game art certificate.',
+  equipmentEvidenceStatus: 'KOTOR1_VARIANTE_SITH_REFERENCE_COSTUME_VISUEL_NON_CERTIFIE'
 });
 
 const darthTalon = fighter({
@@ -776,7 +781,7 @@ export const SOLAR_OPPOSITES_SIREN_STAR_WARS_REFERENCE_ENTRIES = [
   ['Ahsoka Tano (Adult)', 'Star Wars Rebels Fulcrum-era former Jedi with twin white lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_adult, ['https://www.starwars.com/databank/ahsokas-lightsabers', 'https://www.starwars.com/databank/ahsoka-tano']],
   ['Aayla Secura', 'Clone Wars Twi lek Jedi General', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.aayla_secura, ['https://www.starwars.com/databank/aayla-secura']],
   ['Darth Maul', 'The Clone Wars S7 Siege of Mandalore: red double-bladed duel weapon and cybernetic legs', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_maul, ['https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide', 'https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice', 'https://www.starwars.com/databank/maul']],
-  ['Darth Revan', 'Star Wars The Old Republic Sith Revan - one red-bladed weapon (LEGO dual wield is a separate appearance)', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_revan, ['https://www.starwars.com/news/darth-revan-force-fx-elite-lightsaber', 'https://www.starwars.com/games-apps/knights-of-the-old-republic', 'https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts']],
+  ['Darth Revan', 'KOTOR I masked Sith: one red lightsaber; KOTOR II red/purple duel and SWTOR masks/hilts are distinct depictions', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_revan, ['https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii', 'https://www.starwars.com/games-apps/knights-of-the-old-republic', 'https://www.swtor.com/info/news/article/20201209-0']],
   ['Darth Talon', 'Star Wars Legacy One Sith Hand: ritual body markings and distinct 501st-reference protective plates', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_talon, ['https://crls.501st.com/tfe/darth-talon', 'https://starwars.fandom.com/wiki/Darth_Talon']]
 ].map(([character, incarnation, output, referencePages]) => ({
   character,

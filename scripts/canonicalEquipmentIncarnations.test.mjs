@@ -46,19 +46,19 @@ test('Maul S7E10 uses a double-bladed weapon; the older half-saber and Darksaber
 
 test('Timeline separates non-playable chronology from equipped in-game labels', () => {
   const identities = new Set();
-  assert.equal(chronology.length, 23);
+  assert.equal(chronology.length, 25);
   for (const row of chronology) {
     assert.ok(!identities.has(row.id), row.id); identities.add(row.id);
     assert.ok(['ACTIVE', 'REFERENCE_ONLY', 'EXCLUDED_UNVERIFIED'].includes(row.implementation));
     assert.equal(row.visual, 'NON_VALIDEE_1A1');
-    assert.match(row.sourceUrl, /^https:\/\/(?:www\.starwars\.com|crls\.501st\.com)\//);
+    assert.match(row.sourceUrl, /^https:\/\/(?:www\.starwars\.com|crls\.501st\.com|www\.swtor\.com)\//);
     const gameActor = get(row.actorId);
     assert.ok(gameActor, row.actorId);
     if (row.implementation === 'ACTIVE') assert.ok(gameActor.equipment.includes(row.item), row.id);
     else assert.ok(!gameActor.equipment.includes(row.item), row.id);
   }
   assert.equal(chronology.filter(row=>row.implementation === 'ACTIVE').length, 10);
-  assert.equal(chronology.filter(row=>row.implementation === 'REFERENCE_ONLY').length, 10);
+  assert.equal(chronology.filter(row=>row.implementation === 'REFERENCE_ONLY').length, 12);
   assert.equal(chronology.filter(row=>row.implementation === 'EXCLUDED_UNVERIFIED').length, 3);
   assert.equal(chronology.find(row=>row.id==='SW-MAUL-DARK')?.kind,'ARME_SCENE_HISTORIQUE');
 });
@@ -88,12 +88,16 @@ test('Revan single red Sith preset never silently inherits LEGO dual red-and-pur
   assert.equal(revan.weaponType, 'lightsaber');
   assert.equal(revan.weaponColor, '#ff4242');
   assert.deepEqual(revan.equipment, ['Red Lightsaber']);
-  assert.match(revan.incarnation,/The Old Republic - Sith-side/);
+  assert.match(revan.incarnation,/Knights of the Old Republic I - masked/);
   assert.equal(revan.canonStatus,'legends');
   assert.ok(revan.costumeParts.some(label=>/Mask/.test(label)));
   assert.equal(revan.secondary.name,'Force Reversal');
-  assert.equal(revan.equipmentEvidenceStatus,'SWTOR_VARIANTE_SITH_PRESET_OFFICIELLE_VISUEL_A_VALIDER');
+  assert.equal(revan.equipmentEvidenceStatus,'KOTOR1_VARIANTE_SITH_REFERENCE_COSTUME_VISUEL_NON_CERTIFIE');
   assert.ok(revan.referenceUrls.some(u=>u.includes('lego-rebuild-the-galaxy')));
+  assert.equal(revan.referenceUrl,'https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii');
+  assert.match(revan.visualAnchor,/NOT the SWTOR flat-chin mask/);
+  assert.equal(chronology.find(row=>row.id==='SW-REVAN-KOTORII-DUAL')?.implementation,'REFERENCE_ONLY');
+  assert.equal(chronology.find(row=>row.id==='SW-REVAN-SWTOR-FALLEN')?.implementation,'REFERENCE_ONLY');
   assert.equal(chronology.find(row=>row.id==='SW-REVAN-LEGO').implementation,'REFERENCE_ONLY');
   assert.ok(!revan.equipment.some(item=>/Purple|LEGO|Mask/.test(item)));
 });
