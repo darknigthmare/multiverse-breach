@@ -5726,9 +5726,13 @@ export default function HubScreen({
     const completePack = getHeroCompleteSpritePack(hero);
     const src = completePack?.[0]?.src || getHeroSpriteSheetSrc(hero, 'nexus');
     const entry = spriteOutputMap.get(src);
+    const rejectedSourceArt = getQuarantinedCanonSprite(hero);
     return {
       src,
       ready: Boolean(entry) || Boolean(completePack?.length),
+      // This is an archival file availability flag, never a visual approval.
+      reviewRejected: Boolean(rejectedSourceArt),
+      reviewReason: rejectedSourceArt?.reason || null,
       source: entry?.source || (completePack ? 'openai-complete-pack' : null),
       kind: completePack ? 'pack' : 'hero',
       sheets: completePack || null
@@ -12763,14 +12767,14 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                     {spriteInfo ? (
                       <button
                         type="button"
-                        title={spriteInfo.ready ? (lang === 'fr' ? 'Sprite OpenAI disponible' : 'OpenAI sprite available') : (lang === 'fr' ? 'Pas encore de sprite OpenAI' : 'No OpenAI sprite yet')}
+                        title={spriteInfo.reviewRejected ? (lang === 'fr' ? 'Archive de sprite non conforme — revue administrateur uniquement' : 'Rejected sprite archive — administrator review only') : spriteInfo.ready ? (lang === 'fr' ? 'Sprite OpenAI disponible' : 'OpenAI sprite available') : (lang === 'fr' ? 'Pas encore de sprite OpenAI' : 'No OpenAI sprite yet')}
                         aria-haspopup="dialog"
                         aria-label={`${lang === 'fr' ? 'Afficher l image IA de' : 'Show AI image for'} ${title}`}
                         onClick={() => openSpritePreview(spriteInfo, title, subtitle)}
                         disabled={!spriteInfo.ready}
                         style={spriteButtonStyle(spriteInfo.ready)}
                       >
-                        IA
+                        {spriteInfo.reviewRejected ? 'OLD' : 'IA'}
                       </button>
                     ) : <span style={{ width: '24px' }} />}
                   </div>
