@@ -62,10 +62,12 @@ test('confirmed wrong Star Wars actor art is quarantined by exact source incarna
   assert.deepEqual(Object.keys(QUARANTINED_CANON_SPRITES).sort(),
     ['ahsoka','ahsoka_padawan','darth_revan'].sort());
   for(const [id,record] of Object.entries(QUARANTINED_CANON_SPRITES)) {
-    const hero=actors.find(actor=>actor.id===id);
-    assert.ok(hero,id);
+    const sourceActor=actors.find(actor=>actor.id===id);
+    assert.ok(sourceActor,id);
+    // Pack templates intentionally omit the universe; heroes.js adds it
+    // when installing the actor in the live roster.
+    const hero={...sourceActor,universe:'Star Wars'};
     assert.equal(hero.incarnation,record.incarnation,id+' incarnation must match');
-    assert.equal(hero.universe,'Star Wars',id);
     assert.equal(record.universe,'Star Wars');
     assert.equal(record.asset,rows[id].spritePath,'archive must keep original PNG path');
     assert.equal(record.sha256,EXACT_SOURCE_ART_BLOCKERS[id].sha256,
@@ -78,9 +80,9 @@ test('confirmed wrong Star Wars actor art is quarantined by exact source incarna
       'unreviewed costume flags must never override the source-art review gate');
   }
   for(const id of EDITION_IDS.filter(id=>!QUARANTINED_CANON_SPRITES[id])) {
-    const hero=actors.find(actor=>actor.id===id);
-    assert.ok(hero,id);
-    assert.equal(getQuarantinedCanonSprite(hero),null,
+    const sourceActor=actors.find(actor=>actor.id===id);
+    assert.ok(sourceActor,id);
+    assert.equal(getQuarantinedCanonSprite({...sourceActor,universe:'Star Wars'}),null,
       'unreviewed is not the same as a proven inaccurate bitmap');
   }
 });
