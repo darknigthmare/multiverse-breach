@@ -19,7 +19,7 @@ from io import BytesIO
 from pathlib import Path
 from typing import Any
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageCms, ImageOps
 from openpyxl import Workbook, load_workbook
 from openpyxl.chart import BarChart, Reference
 from openpyxl.drawing.image import Image as XLImage
@@ -39,6 +39,7 @@ BIBLE = DOCS / "roster-fidelity-bible-2026-10-18.json"
 DEFAULT_OUTPUT = DOCS / "Multiverse_Breach_Fidelite_CG.xlsx"
 GLOBAL_BATCH = DOCS / "roster-global-batch-wave11-2026-10-26.json"
 AGENT_BATCHES = DOCS / "roster-agent-batches-40-2026-10-26.json"
+REFERENCE_USE_CORRECTIONS = DOCS / "reference-use-corrections-wave12-2026-11-01.json"
 GLOBAL_PROMPT = DOCS / "PROMPT_GLOBAL_ROSTER_1_1.txt"
 LINK_BASE = DOCS
 THUMBNAIL_CACHE = ROOT / ".tmp" / "cg-fidelity-workbook-thumbnails" / "v1"
@@ -132,6 +133,70 @@ def local_path(raw: str | None) -> Path | None:
     else:
         p = ROOT / clean.lstrip("/")
     return p if p.is_file() else None
+
+
+def load_reference_use_corrections() -> list[dict]:
+    """Only restrict exact existing reference tuples, without qualifying images."""
+    if not REFERENCE_USE_CORRECTIONS.is_file():
+        return []
+    document = read_json(REFERENCE_USE_CORRECTIONS)
+    if document.get("schemaVersion") != 1 or not isinstance(document.get("corrections"), list):
+        raise ValueError("Invalid reference-use corrections document")
+    seen = set()
+    for rule in document["corrections"]:
+        def relative_file(value):
+            return isinstance(value, str) and value and not Path(value).is_absolute() and not any(
+                part in ("", ".", "..") for part in re.split(r"[\\/]", value))
+        identity = (rule.get("characterId"), rule.get("legacyPath"))
+        if (not isinstance(rule.get("id"), str) or not rule["id"]
+                or not re.fullmatch(r"[a-z0-9_:-]+", rule.get("characterId") or "")
+                or not isinstance(rule.get("fromPurpose"), str) or not rule["fromPurpose"]
+                or not isinstance(rule.get("referenceScope"), str)
+                or not all(relative_file(rule.get(field)) for field in ("legacyPath", "currentPath", "authorityFile"))
+                or not all(re.fullmatch(r"[a-f0-9]{64}", rule.get(field) or "") for field in ("sha256", "authoritySha256"))
+                or rule.get("toPurpose") != "body-costume-support" or rule.get("usedForIdentity") is not False
+                or identity in seen):
+            raise ValueError("Invalid restrictive reference-use correction")
+        seen.add(identity)
+    return document["corrections"]
+
+
+def apply_reference_use_correction(char_id: str, item: dict, corrections: list[dict]) -> dict:
+    rule = next((rule for rule in corrections if rule["characterId"] == char_id and rule["legacyPath"] == item.get("path")), None)
+    if not rule:
+        return item
+    previous = item.get("referenceUseCorrection") or {}
+    already_restricted = (previous.get("id") == rule["id"] and item.get("referencePurpose") == rule["toPurpose"]
+                          and item.get("usedForIdentity") is False
+                          and (previous.get("original") or {}).get("referencePurpose") == rule["fromPurpose"])
+    if not already_restricted and item.get("referencePurpose") != rule["fromPurpose"]:
+        return item
+    def checked(name, expected, label):
+        file = ROOT / name
+        if not file.is_file() or hashlib.sha256(file.read_bytes()).hexdigest() != expected:
+            raise ValueError(f"Reference-use correction {rule['id']}: {label} SHA-256 mismatch or missing file")
+        return file
+    if item.get("sha256") != rule["sha256"]:
+        raise ValueError(f"Reference-use correction {rule['id']}: declared legacy SHA-256 mismatch")
+    checked(rule["legacyPath"], rule["sha256"], "legacy bitmap")
+    checked(rule["currentPath"], rule["sha256"], "current bitmap")
+    authority = read_json(checked(rule["authorityFile"], rule["authoritySha256"], "frozen authority"))
+    if ((authority.get("characterId") or authority.get("heroId")) != char_id or not any(
+            reference.get("path") == rule["currentPath"] and reference.get("sha256") == rule["sha256"]
+            and reference.get("referencePurpose") == rule["toPurpose"] and reference.get("usedForIdentity") is False
+            and reference.get("referenceScope") == rule["referenceScope"]
+            for reference in authority.get("references", []))):
+        raise ValueError(f"Reference-use correction {rule['id']}: current body-support authority does not match")
+    if already_restricted:
+        return item
+    return {**item, "referencePurpose": rule["toPurpose"], "usedForIdentity": False,
+            "referenceScope": rule["referenceScope"], "referenceUseCorrection": {
+                "id": rule["id"], "correctionFile": str(REFERENCE_USE_CORRECTIONS.relative_to(ROOT)),
+                "original": {field: item[field] for field in ("referencePurpose", "referenceScope", "scope", "usedForIdentity", "role", "sourceFile") if field in item},
+                "legacyPath": rule["legacyPath"], "legacySha256": rule["sha256"], "currentPath": rule["currentPath"],
+                "authorityFile": rule["authorityFile"], "authoritySha256": rule["authoritySha256"],
+                "toPurpose": rule["toPurpose"], "usedForIdentity": False, "legacyAndCurrentHashesVerified": True,
+                "authorityHashVerified": True, "additionalIndependentSource": False, "identityUseRestrictedOnly": True}}
 
 
 def ref_lines(refs: Any) -> str:
@@ -314,13 +379,27 @@ def link_cell(cell, target: str | Path | None, label: str | None = None):
 
 def image_bytes(path: Path, size: tuple[int, int]) -> BytesIO:
     stat = path.stat()
-    fingerprint = f"{path.resolve()}|{stat.st_size}|{stat.st_mtime_ns}|{size[0]}x{size[1]}|png-white-v1"
+    fingerprint = f"{path.resolve()}|{stat.st_size}|{stat.st_mtime_ns}|{size[0]}x{size[1]}|png-white-icc-srgb-v2"
     key = hashlib.sha256(fingerprint.encode("utf-8")).hexdigest()
     cache = THUMBNAIL_CACHE / f"{key}.png"
     if cache.is_file():
         return BytesIO(cache.read_bytes())
     with Image.open(path) as source:
-        im = ImageOps.exif_transpose(source).convert("RGBA")
+        oriented = ImageOps.exif_transpose(source)
+        im = oriented.convert("RGBA")
+        if profile_bytes := oriented.info.get("icc_profile"):
+            try:
+                profile = ImageCms.ImageCmsProfile(BytesIO(profile_bytes))
+                color_source = oriented if oriented.mode in {"RGB", "CMYK", "LAB", "L"} else oriented.convert("RGB")
+                managed = ImageCms.profileToProfile(color_source, profile, ImageCms.createProfile("sRGB"), outputMode="RGB")
+            except (ImageCms.PyCMSError, OSError, ValueError):
+                # Malformed/unsupported metadata must not remove an otherwise
+                # readable thumbnail; unprofiled images keep the original path.
+                pass
+            else:
+                alpha = im.getchannel("A")
+                im = managed.convert("RGBA")
+                im.putalpha(alpha)
         im.thumbnail(size, Image.Resampling.LANCZOS)
         canvas = Image.new("RGB", size, "#f4f6fa")
         canvas.paste(im, ((size[0] - im.width) // 2, (size[1] - im.height) // 2), im)
@@ -407,10 +486,12 @@ def collect_visual_evidence(bible: dict) -> dict:
     result = defaultdict(list)
     seen = {}
     scoped_reuses = []
+    reference_use_corrections = load_reference_use_corrections()
 
     def add(char_id, item, base=ROOT, receipt="", resolve_reuse=False):
         if not char_id or not isinstance(item, dict):
             return
+        item = apply_reference_use_correction(char_id, item, reference_use_corrections)
         if item.get("excludedFromGeneration") or item.get("excluded"):
             return
         raw = item.get("path") or item.get("localPath") or item.get("file")

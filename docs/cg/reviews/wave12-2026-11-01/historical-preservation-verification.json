@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-02T03:46:48.891Z",
+  "reviewer": "/root",
+  "verificationCodeOriginallyPreparedBy": "/root/alien_storage_audit",
+  "status": "passed-conservation-check",
+  "scope": "Conservation only: original media, registry entries, revisions, sprite selectors and variants. New artwork fidelity is assessed by its separate generation and independent review receipts.",
+  "baselinePins": {
+    ".tmp/cg-alien-2026-11-01/baseline/baseline.json": "c1d9ebd7cfdf717e14bbd01b3e725469fdd5fb111862956674ac2223f0d9fe17",
+    ".tmp/cg-alien-2026-11-01/baseline/registered-media-before.json": "f000685fc52d0dbe0a9805a6ab92f33ab296568aa07991d29416720816b5b40d",
+    ".tmp/cg-alien-2026-11-01/baseline/runtime-sprites-before.json": "dec5888ae6dbec2d72c31080433f2e3d46330358e952f4d9ac714ddd10835a39"
+  },
+  "baselineCommit": "fdb548620163302329b7b5f545a8757297f4572b",
+  "originalCgRegistryEntriesPreserved": 1263,
+  "additionalCgRegistryEntries": 60,
+  "originalCgMediaPreserved": 4320,
+  "originalRevisionsByteIdentical": true,
+  "historicalApplicabilityUnchanged": true,
+  "originalSpriteAndVariantMediaPreserved": 2000,
+  "originalCorrectionsUnchanged": 56,
+  "originalVariantMapsUnchanged": 56,
+  "heroCount": 1912,
+  "selectionCount": 9560,
+  "changedSelections": 20,
+  "unchangedSelections": 9540,
+  "expectedCorrections": [
+    "bishop",
+    "greyback_yautja",
+    "predator",
+    "ripley"
+  ],
+  "newCorrections": [
+    {
+      "characterId": "ripley",
+      "newSelectedAtlas": {
+        "path": "/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png",
+        "sha256": "9ace11dc65acf293675cbbd934a371688091b10dd4bff7112e2cd7b2aa09b35d",
+        "bytes": 591827
+      },
+      "preservedPreviousAtlasPaths": [
+        "/sprites/generated/heroes/alien/ripley.png"
+      ],
+      "newCompleteSpritePack": [
+        {
+          "id": "fidelity-wave12-2026-11-01",
+          "label": "Ripley — Nostromo 1979, tenue et équipement corrigés",
+          "src": "/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png",
+          "current": true
+        },
+        {
+          "id": "original",
+          "label": "Ancien atlas du projet conservé",
+          "src": "/sprites/generated/heroes/alien/ripley.png",
+          "current": false
+        }
+      ]
+    },
+    {
+      "characterId": "predator",
+      "newSelectedAtlas": {
+        "path": "/sprites/generated/heroes/predator/predator-v2-fidelity-wave12-2026-11-01.png",
+        "sha256": "14c9b09cd7854c804d8daa0f60b0968c93ac7f9ede921e38b3185e9efec0b53b",
+        "bytes": 720188
+      },
+      "preservedPreviousAtlasPaths": [
+        "/sprites/generated/heroes/predator/predator.png"
+      ],
+      "newCompleteSpritePack": [
+        {
+          "id": "fidelity-wave12-2026-11-01",
+          "label": "Jungle Hunter — Predator 1987, fidélité revue et 16 poses (2026-11-01)",
+          "src": "/sprites/generated/heroes/predator/predator-v2-fidelity-wave12-2026-11-01.png",
+          "current": true
+        },
+        {
+          "id": "original",
+          "label": "Ancien atlas du projet conservé",
+          "src": "/sprites/generated/heroes/predator/predator.png",
+          "current": false
+        }
+      ]
+    },
+    {
+      "characterId": "bishop",
+      "newSelectedAtlas": {
+        "path": "/sprites/generated/heroes/alien/bishop-v2-fidelity-wave12-2026-11-01.png",
+        "sha256": "e84a413fea3b757f8b2ff88a3dc38d8c6257d0c528e00d3e37450a7f61b71829",
+        "bytes": 697878
+      },
+      "preservedPreviousAtlasPaths": [
+        "/sprites/generated/heroes/alien/bishop.png"
+      ],
+      "newCompleteSpritePack": [
+        {
+          "id": "fidelity-wave12-2026-11-01",
+          "label": "Bishop — Aliens 1986, fidélité revue et 16 poses (2026-11-01)",
+          "src": "/sprites/generated/heroes/alien/bishop-v2-fidelity-wave12-2026-11-01.png",
+          "current": true
+        },
+        {
+          "id": "original",
+          "label": "Ancien atlas du projet conservé",
+          "src": "/sprites/generated/heroes/alien/bishop.png",
+          "current": false
+        }
+      ]
+    },
+    {
+      "characterId": "greyback_yautja",
+      "newSelectedAtlas": {
+        "path": "/sprites/generated/heroes/predator/greyback-yautja-v2-fidelity-wave12-2026-11-01.png",
+        "sha256": "e5436632e464d92f27ca397b7691c50974ecd12bda784f880cd7b80d2914a60e",
+        "bytes": 778183
+      },
+      "preservedPreviousAtlasPaths": [
+        "/sprites/generated/heroes/predator/greyback-yautja.png"
+      ],
+      "newCompleteSpritePack": [
+        {
+          "id": "fidelity-wave12-2026-11-01",
+          "label": "Greyback — Predator 2, fidélité revue et 16 poses (2026-11-01)",
+          "src": "/sprites/generated/heroes/predator/greyback-yautja-v2-fidelity-wave12-2026-11-01.png",
+          "current": true
+        },
+        {
+          "id": "original",
+          "label": "Ancien atlas du projet conservé",
+          "src": "/sprites/generated/heroes/predator/greyback-yautja.png",
+          "current": false
+        }
+      ]
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "src/game/heroes.js",
+      "sha256": "99e103e87fdb1ff6e56108a1614f5a60400c836d21affba76cf6e3bf372604c1",
+      "bytes": 140776
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "dfe37c385f8cd94c4252c85feacfcd4715c3037d0cc74c39edbd6109fee4d2aa",
+      "bytes": 59750
+    },
+    {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "139253686bc20f4701a2fb2e0843b63501e21355f6711b7d5b7314a787ca5a22",
+      "bytes": 9139593
+    },
+    {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee",
+      "bytes": 202193
+    }
+  ],
+  "filesModifiedByVerifier": 0,
+  "newVisualInspectionClaimed": false,
+  "perfectFidelityCertified": false
+}

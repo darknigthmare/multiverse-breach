@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "recordedAt": "2026-11-01T01:43:11.508488+00:00",
+  "characterId": "bishop",
+  "reviewer": "/root/alien_quality_review",
+  "status": "passed-independent-Bishop-runtime-transition-review",
+  "scope": "Targeted Bishop post-import review only; no global4320-CG/2000-sprite conservation rerun. All89 producer-frozen files,16frame replay, old Bishop/bishop_aliens assets, current/original variants,9contexts per Bishop and56 prior correction/variant maps verified.",
+  "rootTransition": {
+    "path": ".tmp/cg-alien-2026-11-01/runtime-integrations/bishop/transition.json",
+    "sha256": "92d366dda6c2cf2ec1f589c21d28f9af3f6a1a0b73a09ea048ee26eaa24240c0",
+    "bytes": 2082
+  },
+  "consumedPreRuntimeGate": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/bishop-atlas/bishop-before-runtime-gate.json",
+    "sha256": "f0393f3a92e768764caa67b7074f5c299ec13c01cbab61801cc77378f4696003"
+  },
+  "postRuntimeCompanion": {
+    "path": "docs/cg/bishop-sprite-wave12-2026-11-01.json",
+    "sha256": "0b68824bee5bbf758e32d143bf7ba6ade81ace832e44aebeb414c6cfc3bb73eb",
+    "bytes": 15220
+  },
+  "producerAtlasFreeze": {
+    "path": ".tmp/cg-alien-2026-11-01/lot-01/bishop/atlas/producer-atlas-freeze-wave12-2026-11-01.json",
+    "sha256": "508453d6d9c6b5d6b8a8df365f7840d9f25be9c09eb0076edccf261e2aceb2d3",
+    "bytes": 39935
+  },
+  "immutableCompanionFieldsSha256": "5d32defd0a6c4ffd485f61265ddc1964af9e34ac4a8eb17dfcd19342f16b8839",
+  "actualChangedCompanionFields": [
+    "status",
+    "previousAtlas.accessibleAsVariant",
+    "previousAtlas.pendingRootRuntimeIntegration",
+    "runtimeSelectionChanged",
+    "runtimeSelectionPending",
+    "oldAtlasAccessibleAsVariant"
+  ],
+  "onlySixAuthorizedCompanionFieldsChanged": true,
+  "producerFrozenFilesReverified": 89,
+  "independentVisualReview": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/bishop-sprite-independent-review.json",
+    "sha256": "9ea04fa9dd06dd1adcf57564e316a8a9f0374bb200211508954231384e4d3086",
+    "bytes": 45557
+  },
+  "independentPreRuntimePixelProof": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/bishop-sprite-independent-pixel-proof.json",
+    "sha256": "49d9706047b8e16e78679d22f9a75b8f0fd8972d8b88bc419b1034c4527d375a",
+    "bytes": 20093
+  },
+  "independentPostRuntimeSelectorAndPixelProof": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/bishop-sprite-runtime-selector-proof.json",
+    "sha256": "4fa1850b3bbb48120f78986ae6436353fa0c381521b7f65c81a5af921201a46c",
+    "bytes": 20526
+  },
+  "currentAtlas": {
+    "path": "public/sprites/generated/heroes/alien/bishop-v2-fidelity-wave12-2026-11-01.png",
+    "sha256": "e84a413fea3b757f8b2ff88a3dc38d8c6257d0c528e00d3e37450a7f61b71829",
+    "bytes": 697878
+  },
+  "previousAtlasPreserved": {
+    "path": "public/sprites/generated/heroes/alien/bishop.png",
+    "sha256": "f0f260eca4ca43f4b8da52eb666263b3141990278d41c8deb444f64c61e98f53",
+    "bytes": 764880
+  },
+  "newAtlasIsCurrentAndOldAtlasAccessibleAsOriginalVariant": true,
+  "distinctBishopAliensSelectorAndArtworkPreserved": true,
+  "existing56CorrectionAndVariantMappingsPreserved": true,
+  "auditScriptOnlyExpectedNewCommandAppended": true,
+  "sourceReferencesAndCGGelPreserved": true,
+  "frozenQaAndPixelProofUnchanged": true,
+  "reviewerPixelsModified": false,
+  "reviewerRuntimeWrites": false,
+  "canonicalFidelityApproved": false
+}

@@ -37,6 +37,10 @@ export const ROI_BURGONDE_BOSS_SPRITE = '/sprites/generated/bosses/kaamelott/roi
 // Reviewed sprite corrections have their own audited sheets. Historical PNGs
 // remain available with their original provenance and as documented variants.
 export const CORRECTED_CANON_HERO_SPRITES = Object.freeze({
+  ripley: "/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png",
+  predator: "/sprites/generated/heroes/predator/predator-v2-fidelity-wave12-2026-11-01.png",
+  greyback_yautja: "/sprites/generated/heroes/predator/greyback-yautja-v2-fidelity-wave12-2026-11-01.png",
+  bishop: "/sprites/generated/heroes/alien/bishop-v2-fidelity-wave12-2026-11-01.png",
   nyme_first_song: "/sprites/generated/heroes/mythos-primordia/nyme-first-song-v2-fidelity-wave11-2026-10-26.png",
   oona_vell: "/sprites/generated/heroes/the-drowned-testament/oona-vell-v2-fidelity-wave11-2026-10-28.png",
   rumi_illa: "/sprites/generated/heroes/tawantinsuyu-the-split-sun/rumi-illa-v2-fidelity-wave11-2026-10-26.png",
@@ -96,6 +100,22 @@ export const CORRECTED_CANON_HERO_SPRITES = Object.freeze({
 });
 
 export const CORRECTED_HERO_SPRITE_VARIANTS = Object.freeze({
+  ripley: Object.freeze([
+    Object.freeze({ id: "fidelity-wave12-2026-11-01", label: "Ripley — Nostromo 1979, tenue et équipement corrigés", src: CORRECTED_CANON_HERO_SPRITES.ripley, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/alien/ripley.png", current: false })
+  ]),
+  predator: Object.freeze([
+    Object.freeze({ id: "fidelity-wave12-2026-11-01", label: "Jungle Hunter — Predator 1987, fidélité revue et 16 poses (2026-11-01)", src: CORRECTED_CANON_HERO_SPRITES.predator, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/predator/predator.png", current: false })
+  ]),
+  greyback_yautja: Object.freeze([
+    Object.freeze({ id: "fidelity-wave12-2026-11-01", label: "Greyback — Predator 2, fidélité revue et 16 poses (2026-11-01)", src: CORRECTED_CANON_HERO_SPRITES.greyback_yautja, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/predator/greyback-yautja.png", current: false })
+  ]),
+  bishop: Object.freeze([
+    Object.freeze({ id: "fidelity-wave12-2026-11-01", label: "Bishop — Aliens 1986, fidélité revue et 16 poses (2026-11-01)", src: CORRECTED_CANON_HERO_SPRITES.bishop, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/alien/bishop.png", current: false })
+  ]),
   nyme_first_song: Object.freeze([
     Object.freeze({ id: "v2-fidelity-wave11-2026-10-26", label: "Fidélité V2 — Nyme, 16 poses revues", src: CORRECTED_CANON_HERO_SPRITES.nyme_first_song, current: true }),
     Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/mythos-primordia/nyme-first-song.png", current: false })

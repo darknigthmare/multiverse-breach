@@ -5,7 +5,8 @@ import { createHash } from 'node:crypto';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { discoverCgSourceEvidenceFiles, loadCgSourceEvidence, loadQualifiedCgIdentityLocks } from './cgSourceEvidence.mjs';
+import { applyCgReferenceUseCorrection, discoverCgSourceEvidenceFiles, loadCgSourceEvidence, loadQualifiedCgIdentityLocks,
+  loadCgReferenceUseCorrections, REFERENCE_USE_CORRECTIONS_FILE } from './cgSourceEvidence.mjs';
 import { HEROES_DB } from '../src/game/heroes.js';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
@@ -16,6 +17,49 @@ const fixture = t => {
   const image = name => { mkdirSync(path.dirname(path.join(root, name)), { recursive: true }); writeFileSync(path.join(root, name), Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Wl6T7AAAAAASUVORK5CYII=', 'base64')); return name; };
   return { root, write, image };
 };
+
+test('exact historical reference-use corrections restrict Bishop body images without changing other identities or trusting bad hashes', t => {
+  const actual = loadCgSourceEvidence(ROOT).get('bishop');
+  const identity = loadQualifiedCgIdentityLocks(ROOT).get('bishop').identityVisualReferences;
+  assert.equal(identity.length, 2, 'Only the historical/current aliases of the film face remain identity inputs');
+  assert.ok(identity.every(ref => ref.sha256 === 'e46b5f36ee394d58c5c7ae41a44cb3ee8e35891207c956f82f9d7d5d9ed9e98d'));
+  const body = actual.references.filter(ref => ['ad6cc777d241e815eb775219ff2b58ccc3abca35a56132db66582aad0d5e09a2',
+    '22ffaf0709467e93276b644476b43553769a8f192625cc5c97ba8d0ab30febaf'].includes(ref.sha256));
+  assert.equal(body.length, 4);
+  assert.ok(body.every(ref => ref.referencePurpose === 'body-costume-support' && ref.usedForIdentity === false));
+  assert.equal(body.filter(ref => ref.referenceUseCorrection).length, 2);
+
+  const f = fixture(t), film = f.image('film.png'), old = f.image('old-body.png'), current = f.image('current-body.png');
+  const sha256 = createHash('sha256').update(readFileSync(path.join(f.root, old))).digest('hex');
+  const authority = 'docs/cg/current-reference-evidence.json';
+  f.write(authority, { characterId: 'bishop', references: [{ path: current, sha256,
+    referencePurpose: 'body-costume-support', usedForIdentity: false, referenceScope: 'licensed-body-only-not-face' }] });
+  const rule = { id: 'restricted-body-use', characterId: 'bishop', legacyPath: old, currentPath: current, sha256,
+    fromPurpose: 'identity', toPurpose: 'body-costume-support', usedForIdentity: false, referenceScope: 'licensed-body-only-not-face',
+    authorityFile: authority, authoritySha256: createHash('sha256').update(readFileSync(path.join(f.root, authority))).digest('hex') };
+  f.write(REFERENCE_USE_CORRECTIONS_FILE, { schemaVersion: 1, corrections: [rule] });
+  const receipt = 'docs/cg/historical-source-evidence.json';
+  f.write(receipt, { characterId: 'bishop', incarnation: 'Concrete film model', visualLocks: { face: 'Specific film face and dark swept-back hair' },
+    references: [{ path: film, sha256, viewed: true, referencePurpose: 'identity' },
+      { path: old, sha256, viewed: true, referencePurpose: 'identity', role: 'licensed-sculpt-body' }] });
+  f.write('docs/cg/other-source-evidence.json', { characterId: 'other', incarnation: 'Other concrete model',
+    visualLocks: { face: 'Different specifically documented model face' },
+    references: [{ path: old, sha256, viewed: true, referencePurpose: 'identity' }] });
+  const before = readFileSync(path.join(f.root, receipt));
+  const fixed = loadCgSourceEvidence(f.root).get('bishop').references.find(ref => ref.path === old);
+  assert.equal(fixed.referencePurpose, 'body-costume-support');
+  assert.equal(fixed.usedForIdentity, false);
+  assert.equal(fixed.referenceUseCorrection.original.referencePurpose, 'identity');
+  assert.equal(fixed.referenceUseCorrection.additionalIndependentSource, false);
+  assert.deepEqual(applyCgReferenceUseCorrection(f.root, 'bishop', fixed, loadCgReferenceUseCorrections(f.root)), fixed, 'Restriction is idempotent');
+  const locks = loadQualifiedCgIdentityLocks(f.root);
+  assert.deepEqual(locks.get('bishop').identityVisualReferences.map(ref => ref.path), [film]);
+  assert.deepEqual(locks.get('other').identityVisualReferences.map(ref => ref.path), [old], 'Exact owner predicate leaves other characters unchanged');
+  assert.equal(loadCgSourceEvidence(f.root).get('other').references[0].referenceUseCorrection, undefined);
+  assert.deepEqual(readFileSync(path.join(f.root, receipt)), before, 'Historical receipt bytes are immutable');
+  writeFileSync(path.join(f.root, current), Buffer.from('altered bitmap'));
+  assert.throws(() => loadCgSourceEvidence(f.root), /current bitmap SHA-256 mismatch/, 'Do not silently qualify through a bad current alias');
+});
 
 test('actual Dante identity excludes Nero/V environment screenshots and weapon-only images', () => {
   const lock = loadQualifiedCgIdentityLocks(ROOT).get('devil_may_cry_dante');

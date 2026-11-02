@@ -3,6 +3,7 @@
 
 # CG source images and the embedded-image workbook exceed a single Git push.
 /public/cg/**/*2026-10-*.png filter=lfs diff=lfs merge=lfs -text
+/public/cg/**/*2026-11-*.png filter=lfs diff=lfs merge=lfs -text
 /docs/cg/*.xlsx filter=lfs diff=lfs merge=lfs -text
 
 # Wave 6 archives are byte-hashed evidence; never convert their line endings.

@@ -1,6 +1,10 @@
 # Production CG — fidélité et variantes
 
-## Reprise du 28 octobre 2026 — lots de 40, vague 11
+## Reprise du 1er novembre 2026 — Alien et associés, vague 12
+
+**60 nouvelles CG et quatre atlas de seize poses** sont livrés pour Bishop, Ellen Ripley, Jungle Hunter et Greyback ; les anciens atlas restent disponibles en variantes. Le catalogue compte **1 406 CG**. Le [bilan de la vague](FIDELITY_PROGRESS_WAVE12_2026-11-01.md), le [classeur](Multiverse_Breach_Fidelite_CG.xlsx) et la [file prioritaire de 40 + 26 personnages](alien-associated-priority-batches-wave12-2026-11-01.json) distinguent les quatre séries terminées des **62 personnages encore à produire** dans ce périmètre.
+
+## Historique du 28 octobre 2026 — lots de 40, vague 11
 
 Les [lots par agent](roster-agent-batches-40-2026-10-26.json) couvrent les 1 848 séries initialement incomplètes, en groupes de 40 (dernier reliquat : 8). Le [point de livraison](FIDELITY_PROGRESS_WAVE11_2026-10-26.md) compte **376 nouvelles CG intégrées, soit 1346 CG au total**, et **15 nouveaux atlas**, avec chaque ancien accessible en variante. Les cinq lots de 40 restent incomplets et en pause technique après des coupures de l’exécuteur et la saturation du stockage. Le [classeur](Multiverse_Breach_Fidelite_CG.xlsx) couvre 1346 CG. La [consigne unique](PROMPT_GLOBAL_ROSTER_1_1.txt) et le [manifeste](roster-global-batch-wave11-2026-10-26.json) conservent les thèmes spéciaux, les poses et décors distincts ainsi que les limites des références.
 
@@ -14,7 +18,7 @@ Cette vague livre **75 nouvelles CG : cinq séries complètes de quinze** pour T
 
 Points d’entrée : [aperçu des cinq séries](screenshots/roster-wave10-overview-2026-10-25.webp), [bilan de la vague](FIDELITY_PROGRESS_WAVE10_2026-10-25.md), [quinze CG par personnage et comparaisons d’atlas](reviews/wave10-2026-10-25/README.md), [audit des médias](fidelity-delivery-wave10-2026-10-25.json). Le [plan](roster-production-2026-10-18.md) et la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) gardent leurs noms stables avec les données courantes.
 
-Les rapports historiques restent figés. Le contrôle courant s’écrit dans un nouveau rapport : `node scripts/auditCgFidelityDelivery.mjs --write --date 2026-10-28 --output docs/cg/fidelity-delivery-wave11-2026-10-28.json`. `npm run cg:global:batch:check` contrôle le manifeste ; `npm run cg:global:prompt -- mei_zhen CG01` affiche une fiche sans générer une image. Les [manifestes du 23](roster-global-batch-2026-10-23.json), [du 24](roster-global-batch-2026-10-24.json) et [du 25, vague 9](roster-global-batch-2026-10-25.json) restent figés.
+Les rapports historiques restent figés. Le contrôle courant s’écrit dans un nouveau rapport : `node scripts/auditCgFidelityDelivery.mjs --write --date 2026-11-01 --output docs/cg/fidelity-delivery-wave12-2026-11-01.json`. `npm run cg:global:batch:check` contrôle le manifeste ; `npm run cg:global:prompt -- mei_zhen CG01` affiche une fiche sans générer une image. Les [manifestes du 23](roster-global-batch-2026-10-23.json), [du 24](roster-global-batch-2026-10-24.json) et [du 25, vague 9](roster-global-batch-2026-10-25.json) restent figés.
 
 ## Historique du 25 octobre 2026 — vague 9
 

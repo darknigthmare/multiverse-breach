@@ -1,5 +1,69 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
+
+export const REFERENCE_USE_CORRECTIONS_FILE = 'docs/cg/reference-use-corrections-wave12-2026-11-01.json';
+const digest = bytes => createHash('sha256').update(bytes).digest('hex');
+const relativeFile = value => typeof value === 'string' && value && !path.isAbsolute(value)
+  && !value.split(/[\\/]/).some(part => !part || part === '..' || part === '.');
+const shaPattern = /^[a-f0-9]{64}$/;
+
+/** Restrict an existing reference's use; never add or qualify a source image. */
+export function loadCgReferenceUseCorrections(root) {
+  const file = path.resolve(root, REFERENCE_USE_CORRECTIONS_FILE);
+  if (!existsSync(file)) return [];
+  const document = JSON.parse(readFileSync(file, 'utf8'));
+  if (document.schemaVersion !== 1 || !Array.isArray(document.corrections)) throw new Error('Invalid reference-use corrections document');
+  const seen = new Set();
+  return document.corrections.map(rule => {
+    const identity = `${rule.characterId}|${rule.legacyPath}`;
+    if (typeof rule.id !== 'string' || !rule.id || !/^[a-z0-9_:-]+$/.test(rule.characterId || '')
+      || typeof rule.fromPurpose !== 'string' || !rule.fromPurpose || typeof rule.referenceScope !== 'string'
+      || !relativeFile(rule.legacyPath) || !relativeFile(rule.currentPath)
+      || !relativeFile(rule.authorityFile) || !shaPattern.test(rule.sha256 || '')
+      || !shaPattern.test(rule.authoritySha256 || '') || !rule.fromPurpose
+      || rule.toPurpose !== 'body-costume-support' || rule.usedForIdentity !== false
+      || seen.has(identity)) throw new Error('Invalid restrictive reference-use correction');
+    seen.add(identity);
+    return { ...rule, correctionFile: REFERENCE_USE_CORRECTIONS_FILE };
+  });
+}
+
+export function applyCgReferenceUseCorrection(root, characterId, reference, corrections = loadCgReferenceUseCorrections(root)) {
+  const rule = corrections.find(item => item.characterId === characterId && item.legacyPath === reference.path);
+  if (!rule) return reference;
+  const previous = reference.referenceUseCorrection;
+  const alreadyRestricted = previous?.id === rule.id && reference.referencePurpose === rule.toPurpose
+    && reference.usedForIdentity === false && previous.original?.referencePurpose === rule.fromPurpose;
+  if (!alreadyRestricted && reference.referencePurpose !== rule.fromPurpose) return reference;
+  const checked = (name, expected, label) => {
+    const file = path.resolve(root, name);
+    if (!existsSync(file) || !statSync(file).isFile() || digest(readFileSync(file)) !== expected) {
+      throw new Error(`Reference-use correction ${rule.id}: ${label} SHA-256 mismatch or missing file`);
+    }
+    return file;
+  };
+  if (reference.sha256 !== rule.sha256) throw new Error(`Reference-use correction ${rule.id}: declared legacy SHA-256 mismatch`);
+  checked(rule.legacyPath, rule.sha256, 'legacy bitmap');
+  checked(rule.currentPath, rule.sha256, 'current bitmap');
+  const authority = JSON.parse(readFileSync(checked(rule.authorityFile, rule.authoritySha256, 'frozen authority'), 'utf8'));
+  if ((authority.characterId || authority.heroId) !== characterId || !(authority.references || []).some(item =>
+    item.path === rule.currentPath && item.sha256 === rule.sha256
+    && item.referencePurpose === rule.toPurpose && item.usedForIdentity === false
+    && item.referenceScope === rule.referenceScope)) {
+    throw new Error(`Reference-use correction ${rule.id}: current body-support authority does not match`);
+  }
+  if (alreadyRestricted) return reference;
+  return { ...reference, referencePurpose: rule.toPurpose, usedForIdentity: false,
+    referenceScope: rule.referenceScope,
+    referenceUseCorrection: { id: rule.id, correctionFile: rule.correctionFile,
+      original: Object.fromEntries(['referencePurpose', 'referenceScope', 'scope', 'usedForIdentity', 'role', 'sourceFile']
+        .filter(field => Object.hasOwn(reference, field)).map(field => [field, reference[field]])),
+      legacyPath: rule.legacyPath, legacySha256: rule.sha256, currentPath: rule.currentPath,
+      authorityFile: rule.authorityFile, authoritySha256: rule.authoritySha256,
+      toPurpose: rule.toPurpose, usedForIdentity: false, legacyAndCurrentHashesVerified: true,
+      authorityHashVerified: true, additionalIndependentSource: false, identityUseRestrictedOnly: true } };
+}
 
 const list = value => value == null ? [] : Array.isArray(value) ? value : [value];
 const text = value => typeof value === 'string' ? value.trim() : value?.label || value?.fr || value?.en || '';
@@ -86,13 +150,14 @@ const compareRank = (a, b) => {
 /** Merge source receipts, retaining purpose/scope and incompatible histories. */
 export function loadCgSourceEvidence(root) {
   const groups = new Map();
+  const corrections = loadCgReferenceUseCorrections(root);
   for (const file of discoverCgSourceEvidenceFiles(root)) {
     const raw = JSON.parse(readFileSync(path.resolve(root, file), 'utf8'));
     const id = raw.characterId || raw.heroId;
     if (!id || Array.isArray(raw)) continue;
     const document = { ...raw, file, visualLocks: locksFrom(raw) };
     const refs = [...list(raw.references), ...(raw.path || raw.localPath ? [raw] : [])];
-    document.references = refs.map(ref => normalizeReference(ref, document));
+    document.references = refs.map(ref => applyCgReferenceUseCorrection(root, id, normalizeReference(ref, document), corrections));
     groups.set(id, [...(groups.get(id) || []), document]);
   }
   const result = new Map();
