@@ -115,4 +115,7 @@ test('mission, codex and fighter portraits suppress rejected art but archival sp
   assert.match(fighter,/if \(!src\) \{\s+setLoaded\(false\);/);
   assert.match(fighter,/artBlocked \? 'ART' : initials/);
   assert.match(hub,/const getHeroSpriteInfo = useCallback/,'archive and administrative asset inspector are preserved');
+  assert.match(hub,/reviewRejected: Boolean\(rejectedSourceArt\)/);
+  assert.match(hub,/spriteInfo\.reviewRejected \? 'OLD' : 'IA'/);
+  assert.match(hub,/administrator review only/,'known-bad source art remains visible for protected archive review');
 });
