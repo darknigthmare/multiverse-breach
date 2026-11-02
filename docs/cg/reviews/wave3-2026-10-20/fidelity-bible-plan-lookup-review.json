@@ -1,0 +1,1285 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "status": "passed",
+  "scope": "Read-only semantic lookup against all eleven real wave3 plans and current delivery receipts; numeric and CGxx slot forms supported. Delivered observations intentionally take priority over superseded planned gestures.",
+  "bible": {
+    "path": "docs/cg/roster-fidelity-bible-2026-10-18.json",
+    "sha256": "1e2b585f61013edcd3bfea6a0450451f7c4e7f788bf2b6db97052b9f6d1774fc"
+  },
+  "summary": {
+    "plans": 11,
+    "slots": 165,
+    "deliveredCells": 116,
+    "nonDeliveredAuthoredCells": 49,
+    "lostSlots": 0
+  },
+  "plans": [
+    {
+      "characterId": "stitch_626",
+      "planFile": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+      "planSha256": "9a8fd8130d35dde3d90d2999e7e898a1dd302f8066e4218f87d5aba9e0eafb10",
+      "receiptFile": "docs/cg/stitch-wave3-2026-10-20.json",
+      "receiptSha256": "b9619032021f284fa3f73b5054e3976d503d3f06caf1e2c01b4f52b52009c5d8",
+      "slotSyntax": "number",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "needs-reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/stitch-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/stitch-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/stitch-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    },
+    {
+      "characterId": "jack_sparrow_potc",
+      "planFile": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+      "planSha256": "c00324e19e2156c5de5acef952eb7cebc343e32984fd38b2bacf57ab3189d8e5",
+      "receiptFile": "docs/cg/jack-sparrow-wave3-2026-10-20.json",
+      "receiptSha256": "78efdec0b6362688111d9b3b77dd2f4feb4a960a1c332cdeb3cc4ddcb8dd0114",
+      "slotSyntax": "number",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "needs-reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/jack-sparrow-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    },
+    {
+      "characterId": "raven_tt",
+      "planFile": "docs/cg/raven-wave3-plan-2026-10-20.json",
+      "planSha256": "085b448147b789a6ba9a21800dbbff87b6c76ff3750fee9221c57631386a9dbe",
+      "receiptFile": "docs/cg/raven-wave3-2026-10-20.json",
+      "receiptSha256": "b28867232cb0c74070ed05f22dc456c227dde73f545e42e1e64407dc38233fca",
+      "slotSyntax": "number",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "generated",
+          "authoredSource": "docs/cg/raven-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/raven-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/raven-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/raven-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "generated",
+          "authoredSource": "docs/cg/raven-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "generated",
+          "authoredSource": "docs/cg/raven-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/raven-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/raven-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/raven-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/raven-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/raven-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/raven-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/raven-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/raven-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "needs-theme/reference",
+          "authoredSource": "docs/cg/raven-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    },
+    {
+      "characterId": "starfire_tt",
+      "planFile": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+      "planSha256": "4d5c3ee6ef23b92c41bce04a892b7448a6759df4ec6444425e724c9fa0cde8e7",
+      "receiptFile": "docs/cg/starfire-wave3-2026-10-20.json",
+      "receiptSha256": "eeb436de47601961a23027f9ab2f24bd006ceba96748248c2cfb367d9de6a693",
+      "slotSyntax": "string",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "blocked-service-refusal",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/starfire-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/starfire-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "blocked-service-refusal",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "unattempted-after-two-distinct-body-refusals",
+          "authoredSource": "docs/cg/starfire-wave3-plan-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    },
+    {
+      "characterId": "arca_loom",
+      "planFile": "docs/cg/loom-ivara-wave3-plan-2026-10-20.json",
+      "planSha256": "9fec72e8c02c034b32eb4e58ae73e20d5a62ed892d543c024acf76bf34a7aed4",
+      "receiptFile": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+      "receiptSha256": "6a2c843fe5d6f2ecd769c5c6c058f9aeea86544106921d4fee59eefae7abc214",
+      "slotSyntax": "number",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "generated",
+          "authoredSource": "docs/cg/loom-ivara-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    },
+    {
+      "characterId": "arca_nadir",
+      "planFile": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "planSha256": "be543111c6eadbee7dd576722198dfb5c4c152f3eccfa3781b8f0833842be584",
+      "receiptFile": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+      "receiptSha256": "789ce2ce85e2976de9d435947c14d42feead90d54fb8d5129ecc4fc743767915",
+      "slotSyntax": "number",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "generated",
+          "authoredSource": "docs/cg/nadir-kest-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    },
+    {
+      "characterId": "arca_sable",
+      "planFile": "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+      "planSha256": "b4c038adc29d8aea3d16b3e82c92c0e035a85146aa066b3f7db229ea4a438b31",
+      "receiptFile": "docs/cg/sable-orison-wave3-2026-10-20.json",
+      "receiptSha256": "b9cd0c5e26725960c7796ab504bba7c475ee817e0eb3a2dbb77f7cd3ff9b5b03",
+      "slotSyntax": "number",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "generated",
+          "authoredSource": "docs/cg/sable-orison-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    },
+    {
+      "characterId": "arca_tessera",
+      "planFile": "docs/cg/tessera-vale-wave3-plan-2026-10-20.json",
+      "planSha256": "07e33328d3b937eff8daa464ebb328b3e1131dbc4348e63a433c38052c37e2e0",
+      "receiptFile": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+      "receiptSha256": "fd83af426336e5b3f56322fcfd99a21b34c36a8e77a4842d9580d8a40b35387a",
+      "slotSyntax": "string",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "generated",
+          "authoredSource": "docs/cg/tessera-vale-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    },
+    {
+      "characterId": "arca_quillon",
+      "planFile": "docs/cg/quillon-rusk-wave3-plan-2026-10-20.json",
+      "planSha256": "440667f2c13a90427f9a8ffe75970654ef1364281922b587e24b6e727741a7cf",
+      "receiptFile": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+      "receiptSha256": "042472b167f3609555356cf1b5221e8a701299e1185c81c26a4a28defce1a0fa",
+      "slotSyntax": "number",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "generated",
+          "authoredSource": "docs/cg/quillon-rusk-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    },
+    {
+      "characterId": "arca_oryn",
+      "planFile": "docs/cg/oryn-xile-wave3-plan-2026-10-20.json",
+      "planSha256": "5f96023759040d9b3785a1b83b25292806b5cd4ee837df3d1c5bdc3092ebe2bd",
+      "receiptFile": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+      "receiptSha256": "82f5c89df1753e9222c178c0e5c82afb187b1440d8d99425b3a454bfc0b4a2c7",
+      "slotSyntax": "number",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "generated",
+          "authoredSource": "docs/cg/oryn-xile-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    },
+    {
+      "characterId": "arca_elyra",
+      "planFile": "docs/cg/elyra-null-wave3-plan-2026-10-20.json",
+      "planSha256": "7b7aa97de87610698209d5d1779cab17495cb63ae26d4f01f575cb41e99a0980",
+      "receiptFile": "docs/cg/elyra-null-wave3-2026-10-20.json",
+      "receiptSha256": "e50c091d1bda021ec8560d2d535f56c775c2fb443a7a13e6c8be4c4cfcf2e214",
+      "slotSyntax": "string",
+      "cells": [
+        {
+          "slot": "CG01",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG02",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG03",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG04",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG05",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG06",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG07",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG08",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG09",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG10",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG11",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG12",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG13",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG14",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        },
+        {
+          "slot": "CG15",
+          "status": "generated",
+          "authoredSource": "docs/cg/elyra-null-wave3-2026-10-20.json",
+          "themeAndPoseMatchCurrentAuthorSource": true,
+          "backgroundMatchesCurrentDeliveredDescriptionOrAllAuthoredPlanes": true
+        }
+      ]
+    }
+  ],
+  "canonicalFidelityApproved": false
+}

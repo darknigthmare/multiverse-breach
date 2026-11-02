@@ -141,18 +141,29 @@ test('the real generated-sprite draw routine keeps the silhouette grounded at ga
   const start = renderer.indexOf('const drawGeneratedSpriteSheet = ');
   const end = renderer.indexOf('export class ParticleSystem', start);
   assert.ok(start >= 0 && end > start, 'real renderer extraction markers');
+  const resolverStart = renderer.indexOf('const getFirstAvailableSpriteSheet = ');
+  const resolverEnd = renderer.indexOf('const queueSpriteSheetRedraw = ', resolverStart);
+  assert.ok(resolverStart >= 0 && resolverEnd > resolverStart, 'real source-list resolver extraction markers');
   const image = {
     currentSrc: `https://multiverse.test${output}`, src: output,
     complete: true, naturalWidth: info.width, naturalHeight: info.height
   };
-  // This focused test executes the production function; the browser fixture
-  // separately verifies native image decoding and Canvas pixels via drawBoss.
-  const draw = new Function('getCachedSpriteSheet', 'getSpriteSheetLayout',
+  const loadedEntry = { status: 'ready', image };
+  const unavailableSource = '/sprites/test-unavailable.png';
+  // Execute the production draw and source-list resolver with a controlled cache;
+  // the browser fixture separately verifies native decoding and Canvas pixels.
+  const { draw, resolveSource } = new Function('getCachedSpriteSheet', 'getSpriteSheetLayout',
     'getSpriteFrameForLayout', 'drawMirelleItemVfx',
-    `${renderer.slice(start, end)}\nreturn drawGeneratedSpriteSheet;`)(
-    src => { assert.equal(src, output); return { status: 'ready', image }; },
+    `${renderer.slice(resolverStart, resolverEnd)}\n${renderer.slice(start, end)}\nreturn { draw: drawGeneratedSpriteSheet, resolveSource: getFirstAvailableSpriteSheet };`)(
+    src => {
+      assert.ok(src === output || src === unavailableSource);
+      return src === output ? loadedEntry : { status: 'error' };
+    },
     getSpriteSheetLayout, getSpriteFrameForLayout, () => {}
   );
+  assert.equal(resolveSource(output), loadedEntry, 'a single boss source remains supported');
+  assert.equal(resolveSource([unavailableSource, output]), loadedEntry, 'an unavailable first source falls back to the reviewed PNG');
+  assert.equal(resolveSource([unavailableSource]), null, 'a fully unavailable source list is not drawn');
   const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-8, `${actual} != ${expected}`);
   for (const height of [96, 126, 240]) for (const facing of [-1, 1]) for (const state of states) {
     const calls = [];

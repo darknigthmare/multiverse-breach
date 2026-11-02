@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-25",
+  "reviewedAt": "2026-10-25T07:50:41.775706+00:00",
+  "reviewer": "/root/wave10_coordination",
+  "scope": "Five old then-selected atlases personally opened and compared with their five actual currently selected internal V2 portraits before wave10 runtime integration. Findings bind only old bitmap paths and hashes, never future corrected selections.",
+  "baselineRuntimeSnapshot": {
+    "path": ".tmp/cg-wave10-2026-10-25/runtime-baseline-before-integration.json",
+    "sha256": "d5e2dc126325ab7a7e8be78a3ecb59c17bad5a67289791841c0b4e22fff4d401"
+  },
+  "internalOriginalAuthorities": 5,
+  "newExternalIdentitySources": 0,
+  "referenceCopiesCountAsNewIndependentSource": false,
+  "independentFromFiveNewAtlasAndCgProducers": true,
+  "newArtworkViewedByThisReview": false,
+  "visualInspectionPerformed": {
+    "currentInternalV2Portraits": 5,
+    "oldSelectedAtlases": 5,
+    "oldRuntimeContextBindingsChecked": 25
+  },
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "findings": [
+    {
+      "characterId": "thaleia_naxos",
+      "incarnation": "Aegea: War of the Moirai — Thaleia de Naxos current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "thaleia_naxos",
+        "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos.png",
+        "sha256": "918947aaeccffdbdeafb1732c0ce76d8b1fc9dcba4c77084e8f8a6562d818067",
+        "bytes": 1008075,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-right-sword-left-violet-threads-and-divergent-drape-sandals",
+      "observed": [
+        "L’ancien atlas montre une longue chevelure brune, un diadème doré, une robe blanche et bleue bordée d’or, des protections de jambes dorées et des mains vides dans les seize cellules.",
+        "Le portrait V2 sélectionné montre les cheveux bruns relevés avec des mèches libres et un ruban bleu, un large drapé blanc aux épaules, un vêtement bleu sombre à grands pans bordés d’or, des sangles brunes, des bijoux dorés et des sandales brunes lacées haut.",
+        "La main anatomique droite tient une épée droite entière à lame claire et garde dorée. La main anatomique gauche tient un faisceau de longs fils violets ; les statues et têtes de pierre autour sont des éléments séparés du décor.",
+        "L’épée, les fils violets, le drapé d’épaule, les sangles et les sandales brunes ne sont pas restitués par les mains vides, le diadème et les hautes protections dorées de l’ancien atlas. Les fils ne deviennent pas des membres supplémentaires."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/aegea_moirai/heroes/thaleia_naxos.png",
+          "sha256": "21bdfe0dec7e3ecae26e36c3efa4390d21ec9ec8832ef5e0a448f6bd0ec218c7",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave10-2026-10-25/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou un usage d’équipement ne devient pas une nouvelle source indépendante.",
+          "La source établit l’épée droite, les fils violets et le vêtement visible ; les faces cachées de l’épée, les attaches des fils et les minuscules gravures ne sont pas certifiées.",
+          "Les statues et les têtes de pierre sont des éléments de contexte distincts ; elles ne deviennent ni une seconde identité humaine ni un équipement corporel de Thaleia.",
+          "Le constat concerne exclusivement le chemin et le SHA de l’ancien atlas avant correction ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave10-2026-10-25/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave10_coordination"
+      ],
+      "reviewedAt": "2026-10-25T07:50:41.775706+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "mei_zhen",
+      "incarnation": "Mandate of Nine Heavens — Mei Zhen current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "mei_zhen",
+        "path": "/sprites/generated/heroes/mandate-of-nine-heavens/mei-zhen.png",
+        "sha256": "e17df3e4b33638efc66b065f955f9771e43b29f60e41083c1524a09fe1180eb2",
+        "bytes": 908045,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "divergent-short-white-costume-and-missing-bell-guard-sword",
+      "observed": [
+        "L’ancien atlas montre une longue queue de cheveux noirs, un haut blanc court à liserés rouges, une ceinture rouge, un pantalon sombre et les mains vides.",
+        "La V2 sélectionnée montre une coiffure noire relevée avec de nombreux ornements dorés et pendants rouges, une longue robe bordeaux et ivoire, des manches très larges, des motifs dorés, une ceinture noire et or avec chaînes et pendentifs, et des chaussures bordeaux.",
+        "La main anatomique droite tient la longue poignée d’une grande lame claire, avec une volumineuse pièce de garde bronze en forme de cloche. La main anatomique gauche est ouverte et levée ; les figures spectrales dans le fond restent des entités distinctes.",
+        "Les longs pans bordeaux, les larges manches ivoire, l’équipement entier et les ornements précis divergent du précédent uniforme blanc et pantalon sombre sans arme. Aucune nouvelle figure humaine n’est déduite comme partie de son anatomie."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/mandate_nine_heavens/heroes/mei_zhen.png",
+          "sha256": "70a6df87290200ab7bc354f418bafc0e4ab01eb75e8ad48366a07daabc620441",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave10-2026-10-25/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou un usage d’équipement ne devient pas une nouvelle source indépendante.",
+          "La forme visible de la grande garde bronze et la lame entière sont l’autorité ; leur mécanisme interne ou leur revers caché ne sont pas établis.",
+          "Les figures spectrales de fond sont distinctes du personnage. Le nom et l’apparence ne prouvent pas d’âge précis : les scènes restent familiales, couvertes et sans romance.",
+          "Le constat concerne exclusivement le chemin et le SHA de l’ancien atlas avant correction ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave10-2026-10-25/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave10_coordination"
+      ],
+      "reviewedAt": "2026-10-25T07:50:41.775706+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "yrsa_rune_binder",
+      "incarnation": "Nine Realms: Last Twilight — Yrsa Lieuse-de-Runes current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "yrsa_rune_binder",
+        "path": "/sprites/generated/heroes/nine-realms-last-twilight/yrsa-rune-binder.png",
+        "sha256": "36629484a717fdbd93f4c0cbd17ca1dffbc1b64f0e724ec3d2c839cb1e7ebf15",
+        "bytes": 989779,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "divergent-brown-hair-short-blue-tunic-and-missing-long-purple-cloak-staff",
+      "observed": [
+        "L’ancien atlas montre des cheveux bruns, une tunique bleue courte à liserés dorés, de la fourrure claire aux épaules, des gants, un pantalon et des bottes sombres ; les mains sont vides.",
+        "La source V2 montre de très longs cheveux blond pâle tressés, une grande cape violette déchiquetée portant des motifs clairs et cyan, des vêtements sombres, des ceintures et sacoches brunes, des pendants cyan et de grandes bottes sanglées à fourrure.",
+        "La main anatomique droite tient un long bâton brun torsadé, terminé par une grande spirale de bois ou de ramures avec une orbe violette. La main anatomique gauche ouverte commande des signes lumineux violets et cyan séparés du corps.",
+        "La longue cape violette, les tresses pâles et le bâton entier définissent une autre silhouette que la tunique bleue courte, les cheveux bruns et les poings nus du précédent atlas. Les signes lumineux ne sont ni des doigts ni des bras supplémentaires."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/nine_realms_last_twilight/heroes/yrsa_rune_binder.png",
+          "sha256": "8fa4123779d716fe46bad7cb5294538b23726efa6c3084f17bce0e337077dbd0",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave10-2026-10-25/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou un usage d’équipement ne devient pas une nouvelle source indépendante.",
+          "Le bâton torsadé, la spirale à orbe violette et la longue cape sont visibles ; les runes minuscules, les poches fermées et les faces cachées ne sont pas entièrement définies.",
+          "Aucun âge chiffré ni filiation externe n’est déduit des tresses claires ou des motifs de runes.",
+          "Le constat concerne exclusivement le chemin et le SHA de l’ancien atlas avant correction ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave10-2026-10-25/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave10_coordination"
+      ],
+      "reviewedAt": "2026-10-25T07:50:41.775706+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "sumaq_khipu",
+      "incarnation": "Tawantinsuyu: The Split Sun — Sumaq Khipu current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "sumaq_khipu",
+        "path": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/sumaq-khipu.png",
+        "sha256": "623751f5dcf5a618c622b76ec03ff7ed960a772247e0c91579f61d195244072c",
+        "bytes": 1039665,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "divergent-short-white-red-costume-and-missing-violet-coif-long-knotted-cords",
+      "observed": [
+        "L’ancien atlas montre un bandeau étroit rouge et or, une longue tresse noire, un vêtement court ivoire bordé de rouge, une cape rouge, des sandales et les mains vides.",
+        "Le portrait V2 montre une coiffe violette et ocre à motifs, de longs cheveux noirs tressés, un grand manteau ou poncho violet, ocre et or, une jupe sombre longue à grands panneaux violets, une ceinture tissée et une sacoche brune.",
+        "La main anatomique droite porte un long support horizontal entouré de cordons, d’où pendent de longues mèches nouées multicolores. La main anatomique gauche écarte d’autres cordons du faisceau ; ces cordons restent séparés des franges du vêtement.",
+        "La coiffe, la silhouette longue violette, la sacoche et le grand faisceau de cordons ne sont pas présents dans la tenue courte blanche et rouge de l’ancien atlas. Le faisceau ne remplace pas les deux mains humaines visibles."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/sumaq_khipu.png",
+          "sha256": "c94a76a1f9e54a28cd097401c7b8af853d5deb60462500f56d35757cf9efa666",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave10-2026-10-25/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou un usage d’équipement ne devient pas une nouvelle source indépendante.",
+          "Les cordons sont décrits par leurs formes et couleurs réellement visibles ; leur contenu historique, leur lecture et les détails cachés des nœuds ne sont pas certifiés.",
+          "La cible suit la physionomie de l’unique portrait. Aucune majorité, origine supplémentaire ou mécanique invisible des cordons n’est inventée.",
+          "Le constat concerne exclusivement le chemin et le SHA de l’ancien atlas avant correction ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave10-2026-10-25/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave10_coordination"
+      ],
+      "reviewedAt": "2026-10-25T07:50:41.775706+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "rei_kagetsu",
+      "incarnation": "Yomi no Kage — Rei Kagetsu current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "rei_kagetsu",
+        "path": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu.png",
+        "sha256": "80d62b3f485d3dcefa7302f9ee5aa91d87fcb5c966bdb37742570bc2807060ab",
+        "bytes": 917278,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "divergent-sleeveless-black-red-ninja-and-missing-long-blue-robe-talisman-fan",
+      "observed": [
+        "L’ancien atlas montre une longue queue de cheveux sombres, un vêtement noir sans manches, une écharpe et des liens rouges, un pantalon sombre et les mains vides.",
+        "La V2 sélectionnée montre les cheveux bleu nuit relevés, une longue tenue bleu nuit à grandes manches et pans très longs, des liserés et motifs dorés, une écharpe bleu sombre, de nombreuses sacoches et attaches brunes, et des sandales sombres à plateforme.",
+        "La main anatomique droite présente un grand talisman papier clair marqué de signes sombres et entouré de cyan. La main anatomique gauche tient un grand éventail rituel clair et doré, partiellement replié, avec ses longues lames ou bandes visibles.",
+        "La robe longue bleue, les manches, les accessoires de ceinture, le talisman et l’éventail entier divergent du précédent ninja court noir et rouge sans équipement. Les esprits du fond et les rubans cyan ne deviennent pas des parties du corps de Rei."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/yomi_no_kage/heroes/rei_kagetsu.png",
+          "sha256": "4976ff611d70e9962ad8fc8b38c2c65cd909c86042c6996ba0c5363ecf7c68fd",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave10-2026-10-25/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou un usage d’équipement ne devient pas une nouvelle source indépendante.",
+          "Le grand talisman et l’éventail clair et doré restent des équipements distincts dans les mains indiquées ; le texte minuscule, le revers et les mécanismes cachés ne sont pas certifiés.",
+          "Les esprits du fond ne sont pas des membres de Rei. L’ancien costume ninja n’établit pas l’âge du portrait actuel ; les variantes restent familiales et sans romance.",
+          "Le constat concerne exclusivement le chemin et le SHA de l’ancien atlas avant correction ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave10-2026-10-25/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave10_coordination"
+      ],
+      "reviewedAt": "2026-10-25T07:50:41.775706+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    }
+  ]
+}

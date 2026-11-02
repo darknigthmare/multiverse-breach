@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-20",
+  "reviewer": "referentiel_canon",
+  "scope": "Wave4 exact runtime sprite comparison; older wave records remain unchanged. A later selected replacement is not judged by an old file SHA.",
+  "canonicalFidelityApproved": false,
+  "findings": [
+    {
+      "characterId": "elara_voss",
+      "incarnation": "Elara Voss — original project V2 production portrait target, The Aether Crown",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/the-aether-crown/elara-voss.png",
+        "sha256": "ab91a7b94adc4aba23c885d1f2bbd0a1bee6b727b1d72e6a01f8122db32a49ff",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedInRuntime": false
+      },
+      "status": "historical-selected-sprite-difference-superseded-by-reviewed-v2-replacement",
+      "observed": [
+        "Runtime atlas has a navy/gold coat and long high ponytail; V2 portrait establishes burgundy/gold coat, black corset/white blouse and loose high curled hair.",
+        "Current atlas presents unarmed close-combat gestures; source V2 depicts an ornate cyan rapier/right hand and brass/cyan pistol/left hand.",
+        "Several last-row current frames already lose the top of the head at their original frame border; this is a separate technical framing problem."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png",
+          "sha256": "b684fd073a009907d21b0d8be36818c8bdeaac35a67596168a16b5198fd4a1b4",
+          "viewed": true,
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "provenance": "Original project V2 portrait explicitly referenced by hero.portrait and production.audiovisual.portrait, recovered as the real Git LFS PNG."
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "original-project-v2-identity-qualified-replacement-reviewed-with-source-limitations",
+        "limitations": [
+          "Portrait is internal original canon, not an external franchise reference.",
+          "Rapier point lies outside the source frame; exact tip/complete length not established.",
+          "A current sprite correction must be independently reviewed before promotion; this record does not certify a new image."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "installed-and-selected-after-independent-sixteen-frame-review",
+        "outputProduced": true,
+        "serviceRefusalForAtlas": false,
+        "openFrames": [],
+        "outputPath": "/sprites/generated/heroes/the-aether-crown/elara-voss-v2-fidelity-wave4-2026-10-20.png",
+        "outputSha256": "bbc66a11cc60ae6c1df8fa5baa3d7d27deadba1059fd6088a1254b79d5a35699",
+        "auditFile": "docs/audits/elara-voss-v2-reference-sprite-fidelity-wave4-2026-10-20.json",
+        "independentReviewFile": "docs/cg/reviews/wave4-2026-10-20/elara-voss-sprite-independent-review.json"
+      },
+      "canonicalFidelityApproved": false
+    },
+    {
+      "characterId": "nyra_vale",
+      "incarnation": "Nyra Vale — Neon Requiem individual current V2 portrait target",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/neon-requiem/nyra-vale.png",
+        "sha256": "f40fd1b382927de6b269a58863f317573d543f21f00652ba04ab072f9552fe9c",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedInRuntime": false
+      },
+      "status": "historical-selected-sprite-difference-superseded-by-reviewed-v2-replacement",
+      "observed": [
+        "Current runtime atlas uses dark hair with violet streaks, a short dark jacket and purple boot soles; the selected V2 portrait establishes long asymmetric turquoise hair with shaved implanted opposite temple, a long black cyan-edged coat with magenta lining and cyan boot soles.",
+        "Current atlas depicts unarmed fighting poses without the rectangular cyan/magenta cyberdeck or memory-key motif established by the individual V2 portrait and original Neon Requiem lore."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png",
+          "sha256": "8f14ea6f6daa0bd8dcb8dda860ac72549356fb520387ab970351781f7ce5255f",
+          "viewed": true,
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "original-project-v2-identity-qualified-replacement-reviewed-with-source-limitations",
+        "limitations": [
+          "Internal individual original project portrait, not an external franchise source.",
+          "Far coat fringe and hidden cyberdeck mechanics are not fully established by the portrait; no perfect fidelity certification."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "installed-and-selected-after-independent-sixteen-frame-review",
+        "outputProduced": true,
+        "serviceRefusalForAtlas": false,
+        "openFrames": [],
+        "outputPath": "/sprites/generated/heroes/neon-requiem/nyra-vale-v2-fidelity-wave4-2026-10-20.png",
+        "outputSha256": "3d5191674fbf4290aad965f17b9e15127fb4b1ff93013b94a25a01b55d348a7b",
+        "auditFile": "docs/audits/nyra-vale-v2-reference-sprite-fidelity-wave4-2026-10-20.json",
+        "independentReviewFile": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-sprite-independent-review.json",
+        "targetedCounterreview": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-sprite-canon-counterreview.json"
+      },
+      "canonicalFidelityApproved": false,
+      "evidenceFile": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-current-sprite-review.json"
+    },
+    {
+      "characterId": "crash_bandicoot",
+      "incarnation": "Crash Bandicoot4 It’s About Time(2020), base Toys for Bob design from actual official Activision screenshots/keyart",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/crash-bandicoot/crash-bandicoot.png",
+        "sha256": "b5436a3c3256a012527c6fbb225f89a0b0cb9bd560360634ef54d90cd9b1a2c2",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedInRuntime": true
+      },
+      "status": "current-selected-sprite-too-far-from-qualified-crash4-incarnation-correction-needed",
+      "observed": [
+        "Selected sprite remains recognizable Crash but uses a more compact classic-style head/torso and short narrow jagged hair tufts, unlike the broad flowing red-orange swept tuft and larger rounded expressive eye/muzzle proportions documented for Crash4.",
+        "Selected blue cropped trousers and small red shoes broadly preserve Crash colors but do not establish the specific broad light rolled denim cuffs and rounded broad-toe sneaker design seen in official Crash4 reveal01.",
+        "Selected nose is rendered mostly black/grey while the official keyart uses a warm dark-maroon nose."
+      ],
+      "sourceComparison": [
+        {
+          "path": "docs/cg/references/wave4-2026-10-20/crash-bandicoot/official-keyart-foreground.png",
+          "url": "https://www.crashbandicoot.com/content/dam/atvi/Crash/crash-touchui/quantum/home/hero/Header_Keyart_FG.png",
+          "sha256": "7b556f658d637432c97d24474851218ddceb39b8924b6dbd9829f930a1c39280",
+          "actuallyViewed": true,
+          "viewed": true,
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity"
+        },
+        {
+          "path": "docs/cg/references/wave4-2026-10-20/crash-bandicoot/official-launch-crash.jpg",
+          "url": "https://www.crashbandicoot.com/content/dam/atvi/Crash/crash-touchui/quantum/home/gallery/CB4_Screenshot_Launch_1_Crash.jpg",
+          "sha256": "086f3a279d80eae740c7bb6566f29f03228ad26db2adb26e3866171b6515573b",
+          "actuallyViewed": true,
+          "viewed": true,
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity"
+        },
+        {
+          "path": "docs/cg/references/wave4-2026-10-20/crash-bandicoot/official-reveal-01.png",
+          "url": "https://www.crashbandicoot.com/content/dam/atvi/Crash/crash-touchui/quantum/home/gallery/Quantum_Screenshot_Marketing_Reveal_01.png",
+          "sha256": "7e047643f8e329264f6b02df490b98557b5eb36f594de676379874fedcdf06f8",
+          "actuallyViewed": true,
+          "viewed": true,
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity"
+        },
+        {
+          "path": "docs/cg/references/wave4-2026-10-20/crash-bandicoot/official-reveal-04.png",
+          "url": "https://www.crashbandicoot.com/content/dam/atvi/Crash/crash-touchui/quantum/home/gallery/Quantum_Screenshot_Marketing_Reveal_04.png",
+          "sha256": "809aec6c189a1024540cb98669c31fdcfcf0df39dfe9a9047902e9f8fdec5359",
+          "actuallyViewed": true,
+          "viewed": true,
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity"
+        }
+      ],
+      "evidenceFile": "docs/cg/reviews/wave4-2026-10-20/crash-bandicoot-current-sprite-review.json",
+      "sourceCoverageDecision": {
+        "status": "official-crash4-source-qualified-selected-project-sprite-incarnation-diverges",
+        "limitations": [
+          "Read-only visual comparison, not a full16-cell independent animation QA.",
+          "Generated project sprite is never promoted as independent franchise authority.",
+          "No perfect1:1 certification and no source game assigned to the older rendering."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "not-attempted-for-sprite-atlas-in-this-wave",
+        "serviceRefusalForAtlas": false,
+        "outputProduced": false
+      },
+      "canonicalFidelityApproved": false
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "nyme_first_song",
+  "heroId": "nyme_first_song",
+  "characterName": "Nyme du Premier Chant",
+  "incarnation": "Mythos Primordia — selected individual Nyme du Premier Chant V2 original-project portrait2026",
+  "qualificationStatus": "internal-selected-original-project-reference-inspected",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/mythos_primordia/heroes/nyme_first_song.png",
+      "sha256": "43ffe79a49eeb10fe653944d4d3fb3b10ed19660dbc33b78ef1c84021feaf659",
+      "bytes": 2404318,
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "referencePurpose": "identity",
+      "canonicalProjectReference": true,
+      "viewed": true,
+      "inspected": true,
+      "viewedAt": "2026-10-26T08:26:59.269537+00:00",
+      "status": "internal-current-selected-portrait-inspected",
+      "provenance": "Exact selected source restored by root, actually opened in current session."
+    },
+    {
+      "path": "/sprites/generated/heroes/mythos-primordia/nyme-first-song.png",
+      "sha256": "3cc8682505b639eb5836f0a03b33576ce04dffc90484700f92ce4d31f7ff9f96",
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "actuallyViewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Human woman with long flowing deep purple hair and layered flowing violet/magenta ceremonial dress, thin gold chains with large pink circular gem ornaments and long detached draped sleeves, bare source feet with gem chains."
+    ],
+    "face": [
+      "Medium brown skin, calm face with closed source eyes, long purple strands and gold/pink circular hair ornaments; hidden iris color unknown."
+    ],
+    "costume": [
+      "Opaque dark purple bodice and long flowing layered violet skirts, gold/pink jewel necklaces/belt chains/earrings/anklets. Source has one visible thigh through side opening; family-safe variants keep opaque coverage."
+    ],
+    "equipment": [
+      "Voice is manifest signature, no handheld weapon visible. CG02 may show source circular pink-gem gold vocal ornaments alone, not invent staff/sword/microphone. Pink sound ribbons and abstract stone cosmos are contextual magic."
+    ],
+    "palette": [
+      "Deep purple, violet, magenta/pink gem glow, gold chains, brown skin."
+    ]
+  },
+  "scopeLimitations": [
+    "Internal original-project selected V2 source only, no external franchise authority or absolute1:1 certification.",
+    "Chronological age unknown; all themes family-safe, opaque, nonromantic.",
+    "Single front/three-quarter source, hidden reverse geometry and tiny illegible insignia unknown.",
+    "Old atlas dark armored high-neck longcoat, blue short cape, braid and boots; source long flowing purple hair/gem chains/violet gown/bare feet differ.",
+    "Old atlas remains byte-identical; actual divergence justifies new atlas.",
+    "CG05 Nexus adaptation; CG09-11 fan art; CG12-15 hypothetical WhatIf with one CG13 option and one CG15 option. All new settings original universe-compatible interpretations."
+  ],
+  "sourceRefs": [
+    "src/game/originalUniversesManifest.json",
+    "/images/oc-worlds/v2/mythos_primordia/heroes/nyme_first_song.png"
+  ],
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actuallyRead": true,
+    "actualRecordRead": {
+      "worldKey": "mythos_primordia",
+      "lore": {
+        "origin": {
+          "fr": "Mythos Primordia est la réponse au libellé incomplet « Univers Mythologie » : un panthéon totalement original, antérieur en apparence aux cultures connues mais sans prétendre les remplacer."
+        },
+        "breach": {
+          "fr": "Le Sans-Auteur fabrique un Dieu d’Avant les Noms pour imposer une origine unique à toutes les Trames."
+        },
+        "coreConflict": {
+          "fr": "Défendre la pluralité des commencements et permettre aux archétypes de changer plutôt que de devenir des prisons narratives."
+        }
+      },
+      "hero": {
+        "id": "nyme_first_song",
+        "name": "Nyme du Premier Chant",
+        "category": "tactical",
+        "combatRole": "soin / création sonore",
+        "loreRole": "Chanteuse dont la mélodie donne temporairement une forme aux choses encore sans nom.",
+        "primaryColor": "#6a2c70",
+        "secondaryColor": "#ff70a6",
+        "weaponType": "voice",
+        "stats": {
+          "hp": 124,
+          "atk": 12,
+          "def": 9,
+          "spd": 8
+        },
+        "simple": {
+          "name": "Note de Forme",
+          "type": "sound",
+          "dmg": 0.9
+        },
+        "secondary": {
+          "name": "Chœur des Possibles",
+          "type": "sound",
+          "cd": 6,
+          "dmg": 1.55
+        },
+        "defense": {
+          "name": "Berceuse de Matière",
+          "type": "shield",
+          "dur": 2.6,
+          "reduce": 0.87
+        },
+        "special": {
+          "name": "Le Monde se souvient de son Chant",
+          "type": "music_aoe",
+          "dmg": 4.3,
+          "color": "#ff70a6"
+        },
+        "universe": "Mythos Primordia",
+        "sourceType": "original",
+        "weaponColor": "#ff70a6"
+      },
+      "stages": [
+        {
+          "id": "primordia_first_temple",
+          "name": {
+            "fr": "Temple avant les Dieux",
+            "en": "Temple Before Gods"
+          },
+          "mode": "Tactics",
+          "difficulty": "Hard",
+          "objectiveType": "artifact",
+          "boss": "Mère des Masques",
+          "setting": {
+            "fr": "Architecture inachevée où trois symboles doivent recevoir des significations différentes."
+          },
+          "universe": "Mythos Primordia",
+          "sourceUniverses": [
+            "Mythos Primordia"
+          ],
+          "sourceType": "original",
+          "stageKey": "primordia_first_temple"
+        },
+        {
+          "id": "primordia_shoreless_sea",
+          "name": {
+            "fr": "Mer Sans Rivage",
+            "en": "Shoreless Sea"
+          },
+          "mode": "Smash",
+          "difficulty": "Very Hard",
+          "objectiveType": "survive",
+          "boss": "Mer Sans Rivage",
+          "setting": {
+            "fr": "Îles apparaissant au rythme du Premier Chant; tomber signifie entrer dans une mémoire aléatoire."
+          },
+          "universe": "Mythos Primordia",
+          "sourceUniverses": [
+            "Mythos Primordia"
+          ],
+          "sourceType": "original",
+          "stageKey": "primordia_shoreless_sea"
+        },
+        {
+          "id": "primordia_archive_unborn",
+          "name": {
+            "fr": "Archive des Mythes à Naître",
+            "en": "Archive of Unborn Myths"
+          },
+          "mode": "RPG",
+          "difficulty": "Expert",
+          "objectiveType": "overload",
+          "boss": "Le Dieu d’Avant les Noms",
+          "setting": {
+            "fr": "Bibliothèque cosmique dont les pages vierges deviennent les phases du world boss."
+          },
+          "universe": "Mythos Primordia",
+          "sourceUniverses": [
+            "Mythos Primordia"
+          ],
+          "sourceType": "original",
+          "stageKey": "primordia_archive_unborn"
+        }
+      ]
+    }
+  },
+  "incarnationDecision": {
+    "selectedPortrait": "public/images/oc-worlds/v2/mythos_primordia/heroes/nyme_first_song.png",
+    "previousRuntimeSprite": "/sprites/generated/heroes/mythos-primordia/nyme-first-song.png",
+    "reason": "Old atlas dark armored high-neck longcoat, blue short cape, braid and boots; source long flowing purple hair/gem chains/violet gown/bare feet differ."
+  },
+  "sourceDetailInspection": {
+    "sourcePath": "public/images/oc-worlds/v2/mythos_primordia/heroes/nyme_first_song.png",
+    "sourceSha256": "43ffe79a49eeb10fe653944d4d3fb3b10ed19660dbc33b78ef1c84021feaf659",
+    "cropPath": ".tmp/cg-wave11-2026-10-26/lot-01/nyme-first-song/source-chest-medallion-inspection-only.png",
+    "cropSha256": "78b714951d35581400d7e80e4c208fd96e8b320942f779d4f502742754a63477",
+    "operation": "Unretouched same-bitmap crop420,310,width185,height150 for front-visible ornament inspection only. Not independent reference or hiddengeometry authority.",
+    "actuallyViewed": true,
+    "usedForSlot": "CG02r2-visible-ornament-only"
+  },
+  "selectedThemesFinal": {
+    "CG13": "ONE masculine genderSwap only; source gown/hair/jewels unchanged, no age/outfit alternative.",
+    "CG15": "ONE explicitly hypothetical firstStep event: first public song, same source appearance/proportions, no younger age or verified source chronology."
+  },
+  "completedGenerationLimits": [
+    "All15selected natives actually inspected, RGB1086x1448 exact3:4, no anisotropic source formatting needed.",
+    "Chest medallion crop is same bitmap, object-visible support only, not second identity source; fine tabs/beads/clasp remain unresolved.",
+    "Three actual unselected drafts preserved:02invented satellitegem mount;07left hair canvas clipping;08one foot hidden under gown.",
+    "Actual freehand sides and foot stance documented from selected pixels; hidden leg/knee order under gown unknown. Source eyes kept closed, iris color unknown."
+  ]
+}

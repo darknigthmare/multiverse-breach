@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "characterId": "seyra_tal",
+  "heroId": "seyra_tal",
+  "characterName": "Seyra Tal",
+  "incarnation": "Ilyr Concordat — current selected V2 internal original-project portrait2026",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "oldAtlas": {
+    "path": "public/sprites/generated/heroes/ilyr-concordat/seyra-tal.png",
+    "sha256": "2e02cbb8c851e738959ce906adc7f3c8aa4463b21a2f3c4d98cfccaadb059f8c",
+    "bytes": 790209,
+    "accessibleAsVariant": true
+  },
+  "newAtlas": {
+    "path": "public/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+    "sha256": "7aacd129804187c238215cc440ad97560f70bf092b4ece3b752391a2c06e4e63",
+    "bytes": 937145
+  },
+  "publicAuditFile": "docs/audits/seyra-tal-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+  "publicAudit": {
+    "path": "docs/audits/seyra-tal-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+    "sha256": "4f0bf781dc0c2b9af8c388364e389e8d8cba53ffccb9d85f134169098bb59c4f",
+    "bytes": 13107
+  },
+  "sourceReviewFile": "docs/cg/seyra-tal-reference-evidence-wave7-2026-10-23.json",
+  "reference": {
+    "path": "public/images/oc-worlds/v2/ilyr_concordat/heroes/seyra_tal.png",
+    "sha256": "1aa75604977fde631c5629d99039ef2b4f9fdfe8728822e5a3a4ab04b8b0ffc9",
+    "bytes": 2478392
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave7-2026-10-23/seyra-tal-sprite-independent-review.json",
+    "sha256": "16dd41756684bb97396770b137561aa007fc16003c5f707454bf82578a1f0daf",
+    "bytes": 21648,
+    "status": "sixteen-frames-independently-accepted-with-source-limitations",
+    "framesAccepted": 16,
+    "framesActuallyReviewed": 16,
+    "reviewer": "/root/cg_aurelia_wave7"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave7-2026-10-23/seyra-tal-sprite-independent-review.json",
+  "independentReviewSha256": "16dd41756684bb97396770b137561aa007fc16003c5f707454bf82578a1f0daf",
+  "successfulNativeImageGenOutputs": 7,
+  "newProviderRefusals": 0,
+  "whollyUnselectedNativeDrafts": [
+    {
+      "path": "/workspace/generated_images/exec-41dc04bb-bd15-4e94-ad78-3318e4be397d.png",
+      "sha256": "9252076fa9dc533990e326a1b2244715d965b36b29e0f381ec63e49032dcb524",
+      "selectedFrames": [],
+      "reason": "Initial sixteen-pose sheet had several cape/weapon tips clipped at canvas and virtual cell edges. Retained fully unselected pending genuine atlas reframe.",
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/seyra-tal/atlas-sixteen-poses.txt",
+      "bytes": 2320220
+    },
+    {
+      "path": "/workspace/generated_images/exec-9f329d55-c8c7-479a-9791-6f071fcf9ff5.png",
+      "sha256": "0a81781c032e310ecf99cb1c3136ba1c8f14a088727357d06b330999a91871cb",
+      "selectedFrames": [],
+      "reason": "True reframe preserved too-tight sheet composition, several lance/cape tips still clipped at canvas. Fully unselected; replace with genuinely generated four-pose groups.",
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/seyra-tal/atlas-sixteen-poses-reframe.txt",
+      "bytes": 2127130
+    }
+  ],
+  "selectedNativeSources": [
+    {
+      "path": "/workspace/generated_images/exec-ad0ef5a0-3114-4978-9762-d437aedd466f.png",
+      "sha256": "9dc858d7a4a981dd6669ca3f10b519bec27be704da8a2511a5ee30e2f9d3dc00",
+      "selectedFrames": [
+        1,
+        2,
+        4
+      ],
+      "producerActuallyViewed": true,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/seyra-tal/atlas-group1-four-poses.txt",
+      "bytes": 1238863
+    },
+    {
+      "path": "/workspace/generated_images/exec-0df047e4-c8e6-4550-9ae1-0d11d4404b9a.png",
+      "sha256": "997b56ac440703c5ccc214003a62b5740e28add6f1e5731bb754cb02d72641c1",
+      "selectedFrames": [
+        5,
+        7
+      ],
+      "producerActuallyViewed": true,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/seyra-tal/atlas-group2-four-poses.txt",
+      "bytes": 1069801
+    },
+    {
+      "path": "/workspace/generated_images/exec-4a6d911d-bc08-4998-a91b-877556882bd9.png",
+      "sha256": "9cb9c31f5842024096678b63ee06c5434acca7122ebc14ec373b71b1fcb05d2d",
+      "selectedFrames": [
+        9,
+        11,
+        12
+      ],
+      "producerActuallyViewed": true,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/seyra-tal/atlas-group3-four-poses.txt",
+      "bytes": 1343659
+    },
+    {
+      "path": "/workspace/generated_images/exec-da448bef-e672-4888-a457-5d5fcb7c021a.png",
+      "sha256": "f7cdf0e7318845c98dd0cdd1a715a78405736dc4b0509155d0a1d0b1609405c9",
+      "selectedFrames": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "producerActuallyViewed": true,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/seyra-tal/atlas-group4-four-poses.txt",
+      "bytes": 1365474
+    },
+    {
+      "path": "/workspace/generated_images/exec-b7fb670f-6e47-4bc3-b062-ee19656fb356.png",
+      "sha256": "9a946e284166e6027a15494b3e61a86e609642da55a8477a76e9a9f43fc80e74",
+      "selectedFrames": [
+        3,
+        6,
+        8,
+        10
+      ],
+      "producerActuallyViewed": true,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/seyra-tal/atlas-four-left-hand-corrections.txt",
+      "bytes": 1601013
+    }
+  ],
+  "nativeLedger": {
+    "path": ".tmp/cg-wave7-2026-10-23/seyra-tal/atlas-native-ledger.json",
+    "sha256": "7469d11551b34dbb07026dfc6653225fff2fee04f11c71a073c266d9275a02fb",
+    "bytes": 2801
+  },
+  "sourceIsTechnicalCompositeNotSingleToolNative": true,
+  "selectedNativeContributors": 5,
+  "genuineCorrectivePoseFrames": [
+    3,
+    6,
+    8,
+    10
+  ],
+  "technicalProof": {
+    "path": ".tmp/cg-wave7-2026-10-23/seyra-tal/atlas-assembly-proof.json",
+    "sha256": "ec8b105d1c387a6a5adddb16d6e94f749870d6518398162fd80af60b1a79de0e",
+    "bytes": 9268
+  },
+  "frames": 16,
+  "minimumGuard": 14,
+  "visibleFootBaselinesByCell": [
+    241,
+    241,
+    241,
+    241,
+    241,
+    241,
+    241,
+    241,
+    241,
+    241,
+    241,
+    241,
+    241,
+    241,
+    241,
+    241
+  ],
+  "semanticPaintingPerformed": false,
+  "mirroringPerformed": false,
+  "perPoseResizingPerformed": false,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "historicalAtlasUnchanged": true,
+  "canonicalFidelityApproved": false,
+  "limitations": [
+    "Current internal original-project portrait is the identity authority; anatomical LEFT holds the single lance and RIGHT remains free.",
+    "The original portrait does not expose exact spearhead tip/butt geometry, reverse costume construction or hidden joints; those interpretations remain limited, with no perfect1:1 certification.",
+    "Seven genuine ImageGen outputs retained: two full sheets wholly unused, four four-pose groups contribute twelve original poses, and one genuine four-pose corrective native supplies03/06/08/10 after independent laterality rejection.",
+    "Final source is a technical composite of whole unpainted/unmirrored RGBA components. All corrective alpha>12 pixels assigned exactly once; original twelve whole pose cells unchanged before common nearest normalization."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-23",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "characterId": "doomslayer",
+  "publishedAt": "2026-10-18",
+  "incarnation": "DOOM Eternal (2020), base Praetor Suit",
+  "status": "installed-and-selected-with-source-limitations",
+  "canonicalFidelityApproved": false,
+  "sourceEvidenceFile": "docs/cg/doomslayer-reference-evidence-wave2-2026-10-18.json",
+  "promptFile": "docs/cg/prompts/wave2-2026-10-18/doomslayer/sprite-eternal-atlas-v2.txt",
+  "proposedOutput": "/sprites/generated/heroes/doom/doomslayer-eternal-2020-fidelity-2026-10-18.png",
+  "source": {
+    "sha256": "1889385e32bce79b641ca5ba5032f18f904f12628a0e5fc15005f19bd4809e83",
+    "bytes": 1626679,
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "format": "png"
+  },
+  "normalized": {
+    "sha256": "b5b8cecca222497eb1f0b9789c1cf557a7e2aa5119a87a46d1c24b1680aebdc8",
+    "bytes": 865622,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "formatInspection": {
+    "nonemptyCells": 16,
+    "minimumGuard": 15,
+    "visiblePixelsByCell": [
+      14876,
+      14919,
+      13976,
+      14969,
+      14345,
+      14320,
+      12837,
+      14045,
+      14158,
+      13701,
+      15671,
+      14493,
+      13727,
+      13471,
+      12949,
+      13811
+    ],
+    "visibleFootBaselinesByCell": [
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240
+    ]
+  },
+  "normalization": {
+    "mode": "component-layout",
+    "sourceVisiblePixels": 468792,
+    "assignedVisiblePixels": 468792,
+    "alphaThreshold": 12,
+    "operation": "Frame component extraction, common nearest scaling and transparent4x4 packing only; no synthesized body parts or pose edits."
+  },
+  "historicalAsset": {
+    "path": "public/sprites/generated/heroes/doom/doomslayer.png",
+    "sha256": "812ae8bd775b780078adebfa953551ab397c6be45e7c7a791b5d432d3a53d791",
+    "bytes": 1017388,
+    "retained": true
+  },
+  "rejectedAttempts": [
+    {
+      "attempt": 1,
+      "selected": false,
+      "reason": "Red energy wrist blade instead of solid metal, insufficient Meathook detail and frame spacing. Replaced by a new ImageGen generation without old atlas conditioning."
+    }
+  ],
+  "visualReview": {
+    "status": "close-to-reference",
+    "canonicalFidelityApproved": false,
+    "notes": [
+      "Sixteen distinct full-body poses in the four local animation rows.",
+      "Green visor, exposed biceps, left forearm blade housing and left shoulder launcher compared to real official references.",
+      "Steel blade in cell11 and small shoulder flame in cell12; no gore or invented exposed face."
+    ],
+    "limitations": [
+      "Not a360-degree source model or an exact original game animation trace.",
+      "Small engravings, hidden surfaces and precise equipment dimensions remain interpreted at sprite scale.",
+      "Independent review accepted this candidate with source limitations; root installation and runtime selection have not yet occurred."
+    ]
+  },
+  "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/doom-slayer-sprite-independent-review.json",
+  "targetFileInstalled": true,
+  "runtimeSelectionChanged": true,
+  "installation": {
+    "performed": true,
+    "auditFile": "docs/audits/doomslayer-reference-sprite-fidelity-2026-10-18.json"
+  }
+}

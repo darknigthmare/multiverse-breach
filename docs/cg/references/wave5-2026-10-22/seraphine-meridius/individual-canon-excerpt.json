@@ -1,0 +1,68 @@
+{
+  "universe": "Meridian Clockwork",
+  "lore": {
+    "origin": {
+      "fr": "Méridiana est une cité-Renaissance régie par une horloge astronomique. Ressorts, contrepoids, automates et calculs mécaniques organisent le travail, les naissances et jusqu’au nombre de minutes accordées à chaque citoyen."
+    },
+    "breach": {
+      "fr": "Le Grand Horloger découvre que les Éclats d’Origine peuvent remonter un mécanisme au-delà de sa durée normale. Il commence à voler des minutes aux autres Trames afin que Méridiana demeure éternellement à midi."
+    },
+    "coreConflict": {
+      "fr": "Rendre le temps aux habitants, distinguer mémoire et chronologie, puis empêcher le Chronophage d’avaler toutes les versions d’une même journée."
+    }
+  },
+  "visual": {
+    "motif": "clockworkcity",
+    "colors": {
+      "sky": [
+        "#18304a",
+        "#f0c879"
+      ],
+      "floor": "#4a3728",
+      "grid": "#f6d68a",
+      "accent": "#2e79b9"
+    }
+  },
+  "hero": {
+    "id": "seraphine_meridius",
+    "name": "Seraphine Meridius",
+    "category": "tactical",
+    "combatRole": "duelliste / tempo",
+    "loreRole": "Capitaine de la Garde des Heures devenue protectrice des minutes libres.",
+    "primaryColor": "#263f66",
+    "secondaryColor": "#f6d68a",
+    "weaponType": "spring_rapier",
+    "stats": {
+      "hp": 125,
+      "atk": 15,
+      "def": 8,
+      "spd": 8
+    },
+    "simple": {
+      "name": "Estoc d’Échappement",
+      "type": "melee",
+      "dmg": 1.05
+    },
+    "secondary": {
+      "name": "Minute Volée",
+      "type": "dash",
+      "cd": 5,
+      "dmg": 1.8
+    },
+    "defense": {
+      "name": "Parade à Contrepoids",
+      "type": "shield",
+      "dur": 2.0,
+      "reduce": 0.82
+    },
+    "special": {
+      "name": "Treizième Coup",
+      "type": "time_aoe",
+      "dmg": 4.7,
+      "color": "#f6d68a"
+    },
+    "universe": "Meridian Clockwork",
+    "sourceType": "original",
+    "weaponColor": "#f6d68a"
+  }
+}

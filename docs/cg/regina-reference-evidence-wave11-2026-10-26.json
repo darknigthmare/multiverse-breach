@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "regina",
+  "heroId": "regina",
+  "characterName": "Regina",
+  "incarnationProposal": {
+    "label": "Dino Crisis original (1999)",
+    "status": "proposed-production-incarnation",
+    "evidence": [
+      "docs/cg/roster-fidelity-authored-locks-2026-10-18.json"
+    ]
+  },
+  "status": "needs-reference-incarnation-mismatch-inspected",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "references": [
+    {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-05/research/search-1.json",
+      "sha256": "bc07c88501120cbb79ffa4e5ae0472a7a1271045a0f62160961120d267e0bc52",
+      "role": "actual-web-search-transcript-not-image-source",
+      "query": "Regina Dino Crisis 1999 official character render Capcom",
+      "viewed": false,
+      "usedForIdentity": false
+    },
+    {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-05/research/fetches/regina-wiki-source.png",
+      "sha256": "e47765002af9de8f59d9ca547624d115516b7d744a1a628fb896478335f8bde1",
+      "bytes": 94154,
+      "viewed": true,
+      "actuallyViewed": true,
+      "viewedAt": "2026-10-26T09:43:56.716320+00:00",
+      "role": "rejected-or-insufficient-source-candidate",
+      "usedForIdentity": false
+    }
+  ],
+  "actualFetchAttempts": [
+    {
+      "receiptFile": ".tmp/cg-wave11-2026-10-26/lot-05/research/fetches/regina-wiki.json",
+      "receiptSha256": "9b41ec92089fc848d3c92fe7272cec18f560a660866041744537b10e660ce6dd",
+      "name": "regina-wiki",
+      "url": "https://en.wikipedia.org/wiki/Regina_(Dino_Crisis)",
+      "finalUrl": "https://en.wikipedia.org/wiki/Regina_(Dino_Crisis)",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "path": ".tmp/cg-wave11-2026-10-26/lot-05/research/fetches/regina-wiki.html",
+      "sha256": "16406bc514d8376106de6e19c835f63513074f30d72d90f7d51f89d0044b8c24",
+      "bytes": 156871,
+      "viewed": false,
+      "imageCandidates": [
+        "/static/apple-touch/wikipedia.png",
+        "https://en.wikipedia.org/wiki/File:Regina_(Dino_Crisis).png",
+        "//upload.wikimedia.org/wikipedia/en/d/d4/Regina_%28Dino_Crisis%29.png?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled",
+        "//thumb.wikimedia.org/wikipedia/en/thumb/9/96/Symbol_category_class.svg/20px-Symbol_category_class.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
+      ]
+    },
+    {
+      "receiptFile": ".tmp/cg-wave11-2026-10-26/lot-05/research/fetches/regina-source.json",
+      "receiptSha256": "b33c333906ce3132c751a616694e6643f284a200da2f11d1f6fa0ac570f04657",
+      "name": "regina-source",
+      "url": "https://cdn.mobygames.com/promos/1421377-dino-crisis-concept-art-regina.jpg",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "viewed": false
+    },
+    {
+      "receiptFile": ".tmp/cg-wave11-2026-10-26/lot-05/research/fetches/regina.json",
+      "receiptSha256": "50c77dbfeaf0a00f126a164ab796fe46e83fd6d5eb909a428346a5e530270a23",
+      "characterId": "regina",
+      "url": "https://www.mobygames.com/game/2822/dino-crisis/promo/group-6108/image-72911/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.mobygames.com/game/2822/dino-crisis/promo/group-6108/image-72911/",
+      "sha256": "392a86fbc186a39019b3c6d07d368c9ecac847d82acc320d165cb2a8bf2410a2",
+      "contentType": "text/html; charset=utf-8",
+      "imageCandidates": [
+        "https://www.mobygames.com/static/img/moby-avatar.png",
+        "https://www.mobygames.com/static/img/logo.37887f87.png",
+        "/static/img/icon-user.png",
+        "https://www.mobygames.com/static/img/logo.37887f87.png",
+        "https://cdn.mobygames.com/promos/1421377-dino-crisis-concept-art-regina.jpg"
+      ]
+    }
+  ],
+  "actualVisualObservations": [
+    "Actual fetch https://cdn.mobygames.com/promos/1421377-dino-crisis-concept-art-regina.jpg → <urlopen error Tunnel connection failed: 403 Forbidden>. A network failure is not a provider image-generation refusal or N/A.",
+    "Actually opened complete 236x421 figure with red bob, black sleeveless body/tights, tall boots and two guns; metadata page actually opened https://en.wikipedia.org/wiki/File:Regina_(Dino_Crisis).png explicitly says render done for Dino Crisis2 (not1999). Bitmap is altered Wiki low-resolution mirror, not source for target firstgame."
+  ],
+  "sourceImageQualified": false,
+  "sourceRefs": [
+    "https://store.steampowered.com/app/4249130/DINO_CRISIS/",
+    "https://www.capcom.co.jp/ir/english/business/salesdata.html",
+    "docs/cg/roster-fidelity-authored-locks-2026-10-18.json"
+  ],
+  "scopeLimitations": [
+    "Search results, prose and URL candidates do not qualify identity images.",
+    "No genuine new CG or sprite created for this subject yet; source resolution continues.",
+    "Old project art and generic gameplay equipment cannot establish the external selected incarnation."
+  ],
+  "newGenerationAttempts": 0,
+  "newProviderRefusals": 0,
+  "newCgImages": 0,
+  "blockReason": "Incarnation mismatch: opened candidate DinoCrisis2, selected1999; exact1999 promotional candidate cdn.mobygames proxy403 remains."
+}

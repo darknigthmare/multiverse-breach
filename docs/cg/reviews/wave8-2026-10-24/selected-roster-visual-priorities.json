@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-24",
+  "reviewedAt": "2026-10-24T01:58:34.953385+00:00",
+  "reviewer": "/root/wave8_coordination",
+  "scope": "Five old then-selected atlases personally opened and compared with their five actual currently selected internal V2 portraits before wave8 runtime integration. Findings bind only the old bitmap paths and hashes, not future corrected atlas selections.",
+  "baselineRuntimeSnapshot": {
+    "path": ".tmp/cg-wave8-2026-10-24/runtime-baseline-before-integration.json",
+    "sha256": "fbdb65acaf8388885356c4dbd52a0e1b7c5cbfd03f3ddf3fb349cfb916bf2fe3"
+  },
+  "internalOriginalAuthorities": 5,
+  "newExternalIdentitySources": 0,
+  "referenceCopiesCountAsNewIndependentSource": false,
+  "independentFromFiveNewAtlasAndCgProducers": true,
+  "newArtworkViewedByThisReview": false,
+  "visualInspectionPerformed": {
+    "currentInternalV2Portraits": 5,
+    "oldSelectedAtlases": 5,
+    "oldRuntimeContextBindingsChecked": 25
+  },
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "findings": [
+    {
+      "characterId": "imani_quell",
+      "incarnation": "Neon Requiem — Imani Quell current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "imani_quell",
+        "path": "/sprites/generated/heroes/neon-requiem/imani-quell.png",
+        "sha256": "2d9097e27b6bf356ffe0afd9509af854a9f986a6258b6c2212a0652c497b435d",
+        "bytes": 880841,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-long-yellow-medical-coat-and-right-hand-medical-drone",
+      "observed": [
+        "L’ancien atlas représente une femme en veste noire courte et haut violet découvrant le ventre, pantalon noir à attaches violettes, bottes sombres et dreadlocks à accents violets ; ses seize poses ont les mains vides.",
+        "La V2 sélectionnée conserve la peau brune et des dreadlocks sombres en queue haute, mais impose de grandes attaches dorées, un manteau jaune long à doublure cyan, une combinaison sombre couvrante, des bottes jaunes à éclairages cyan, des fioles et une sacoche médicale.",
+        "Le dispositif médical jaune/noir à croix cyan est tenu du côté de la main anatomique droite, tandis que la gauche ouverte commande un drone volant jaune à croix cyan. Ces objets et le volume long du manteau sont absents de l’ancien atlas.",
+        "Une recoloration violette ne rétablit pas le manteau médical jaune, le matériel de soin, le ventre couvert et les grandes bottes de la source actuelle."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/neon_requiem/heroes/imani_quell.png",
+          "sha256": "c3cb7634f1da60106cd40654f66f4d1e47c37e5c2f8d81fc569c96e50822479e",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou son usage d’équipement n’est pas une nouvelle source indépendante.",
+          "Une vue ne qualifie pas toutes les pièces cachées des drones ni chaque attache médicale du dos ; les petits symboles cyan ne deviennent pas des textes lisibles officiels.",
+          "Les silhouettes de passants et autres drones du fond contextualisent Neon Requiem ; elles ne sont pas des sources d’identité supplémentaires.",
+          "Le constat s’applique seulement au chemin et au SHA de l’ancien atlas à l’instant de cette revue ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave8_coordination"
+      ],
+      "reviewedAt": "2026-10-24T01:58:34.953385+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "bram_quill",
+      "incarnation": "The Aether Crown — Bram Quill current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "bram_quill",
+        "path": "/sprites/generated/heroes/the-aether-crown/bram-quill.png",
+        "sha256": "c047710378f548ecac97e655539dea98fb5272e7d170a226b8cdee9de46c6244",
+        "bytes": 966846,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-left-giant-wrench-forehead-goggles-and-cyan-calf-wraps",
+      "observed": [
+        "L’ancien atlas montre un jeune homme aux cheveux bruns souples, long manteau marine à liserés dorés, chemise claire et bottes brunes ; toutes les mains sont vides.",
+        "La V2 sélectionnée montre des cheveux noirs très hérissés, deux lunettes mécaniques bronze à verres cyan sur le front, un foulard gris, un manteau marine/bronze à grands revers, des protections mécaniques et des bandes cyan sur les mollets.",
+        "La grande clé mécanique ouverte bronze et cyan est tenue de la main anatomique gauche ; la droite ouverte accompagne des plans holographiques cyan. L’outil et les lunettes sont deux volumes majeurs absents des seize anciennes poses.",
+        "Les petits drones de la source sont des objets séparés ; les doigts et les mains humaines ne deviennent ni des pinces mécaniques ni une nouvelle anatomie. Le manteau marine partagé ne suffit pas à qualifier l’ancien équipement."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/aether_crown/heroes/bram_quill.png",
+          "sha256": "10c13af2db62e5a24528f979eb0a8e2bb1c0c5adbefcb5db51e0af76d3cf6d52",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou son usage d’équipement n’est pas une nouvelle source indépendante.",
+          "Le visage a une apparence jeune ; aucun âge adulte n’est déduit. Les thèmes de loisir et de service restent familiaux et sans romance, avec les proportions de la source.",
+          "La référence ne fournit pas un modèle de rotation de la clé, du revers de manteau ou des drones ; les faces cachées et microgravures restent limitées.",
+          "Le constat s’applique seulement au chemin et au SHA de l’ancien atlas à l’instant de cette revue ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave8_coordination"
+      ],
+      "reviewedAt": "2026-10-24T01:58:34.953385+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "lio_ferrante",
+      "incarnation": "Meridian Clockwork — Lio Ferrante current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "lio_ferrante",
+        "path": "/sprites/generated/heroes/meridian-clockwork/lio-ferrante.png",
+        "sha256": "0bb4585ad3ed54541722b1498848359be535a24a351d628c4f42bbd6a2ba37ff",
+        "bytes": 987418,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-right-cyan-cannon-mechanical-earpiece-and-copper-coat",
+      "observed": [
+        "L’ancien atlas représente un jeune homme brun en manteau bleu marine à liserés jaunes, chemise claire, pantalon brun et bottes bronze ; les seize poses ont les mains vides.",
+        "La V2 sélectionnée porte une longue veste ou un manteau brun cuivré à doublure bleue, une écharpe bleue, une chemise ivoire, un harnais brun, des fioles bleues à la taille et de grandes bottes mécaniques.",
+        "Une oreillette mécanique bronze avec bras secondaire est visible du côté droit de la tête ; la main anatomique droite tient un gros canon bronze à bouche cyan, et la gauche ouverte commande une petite roue ou sphère d’engrenages à aura cyan.",
+        "Le canon, l’oreillette, l’écharpe et les pans cuivrés constituent des repères distincts de la tenue marine générique de l’ancien atlas."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/meridian_clockwork/heroes/lio_ferrante.png",
+          "sha256": "33e29a8860faf61ab08a169399acdd005c4e94b10e8a6f2c940088505efcc302",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou son usage d’équipement n’est pas une nouvelle source indépendante.",
+          "L’apparence jeune ne prouve pas la majorité ; aucun âge inventé, thèmes familiaux et non romantiques, proportions maintenues.",
+          "La vue ne qualifie pas les mécanismes internes du canon, les attaches cachées de l’oreillette ni toutes les faces de la roue volante.",
+          "Le constat s’applique seulement au chemin et au SHA de l’ancien atlas à l’instant de cette revue ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave8_coordination"
+      ],
+      "reviewedAt": "2026-10-24T01:58:34.953385+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "anton_rook",
+      "incarnation": "Iron Tempest — Anton Rook current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "anton_rook",
+        "path": "/sprites/generated/heroes/iron-tempest/anton-rook.png",
+        "sha256": "ffb0f63aa9146fa03d1098c1e73b16cb9e01f8b98d711a421698ac2c0706b27e",
+        "bytes": 971234,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-two-handed-rotary-cannon-long-leather-apron-and-left-pauldron",
+      "observed": [
+        "L’ancien atlas montre un homme brun à barbe courte en long manteau bleu marine à doublure rouge, ceinture et bottes sombres ; les mains sont vides dans toutes les cellules.",
+        "La V2 sélectionnée montre une barbe sombre volumineuse, une chemise ou veste bleue à manches retroussées, un long tablier de cuir brun, de lourdes bottes et une épaulière rivetée métallique à bandes orange sur l’épaule anatomique gauche.",
+        "Le canon rotatif énorme noir et cuivre/orange doit être tenu avec la droite à la prise arrière ou détente et la gauche sous l’avant. La longueur du faisceau de canons et le tablier définissent la silhouette actuelle, absente de l’ancien atlas.",
+        "Une petite arme, des poings vides ou un manteau à doublure rouge ne restituent pas le volume du canon rotatif, la prise à deux mains et le tablier de la V2."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/iron_tempest/heroes/anton_rook.png",
+          "sha256": "5ef00237c5b89a9b846c53a6790b14750fcd307a41377dfb33c42b7fb59e8b5b",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou son usage d’équipement n’est pas une nouvelle source indépendante.",
+          "La source établit la barbe, le tablier et la prise à deux mains ; les pièces mécaniques internes et le revers caché de l’épaule ne sont pas une géométrie certifiée.",
+          "Les locomotives et dirigeables définissent le contexte industriel d’Iron Tempest et ne justifient aucun emprunt de personnage tiers.",
+          "Le constat s’applique seulement au chemin et au SHA de l’ancien atlas à l’instant de cette revue ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave8_coordination"
+      ],
+      "reviewedAt": "2026-10-24T01:58:34.953385+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "khepri_sen",
+      "incarnation": "Kemet: The Devoured Sun — Khepri-Sen current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "khepri_sen",
+        "path": "/sprites/generated/heroes/kemet-the-devoured-sun/khepri-sen.png",
+        "sha256": "4ec0712a74d543d1c25714ac7bcdf19abcdaceb33e4d04cac3059929964e0664",
+        "bytes": 999997,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "divergent-female-short-costume-instead-of-male-teal-robed-staff-and-watch-identity",
+      "observed": [
+        "L’ancien atlas présente une silhouette féminine à cheveux bleus longs et bandeau doré, courte tenue blanche découvrant les jambes, accessoires bleus/or et mains vides ; les proportions, le visage et la tenue divergent.",
+        "La V2 sélectionnée montre un homme humain à peau brune et cheveux noirs ondulés courts, grands drapés sarcelle et ivoire, longue étoffe frangée dorée, collier et ceinture dorés, mollets bandés sarcelle et sandales.",
+        "La main anatomique gauche tient un long bâton doré simple à bandes vertes ; la droite tient un objet rond doré à verre bleu et chaînette, analogue à une montre de poche, distinct du médaillon bleu porté à la ceinture.",
+        "La source interne ne qualifie ni tête de scarabée inventée ni remplacement du drapé long par une courte tenue générique égyptienne. L’équipement, la chevelure et l’identité masculine doivent suivre ce portrait précis."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/kemet_devoured_sun/heroes/khepri_sen.png",
+          "sha256": "26830c1508238bd4aa62b244eadc8a177bf6ee230534a5aec9f3fc1e497e0c23",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou son usage d’équipement n’est pas une nouvelle source indépendante.",
+          "Le personnage source est humain ; le nom ne qualifie pas une anatomie animale, un masque de scarabée ou une identité mythologique externe de substitution.",
+          "Le drapé cache certaines attaches et l’arrière de la tenue ; les détails hors champ ne sont pas certifiés. L’objet rond et sa chaînette sont des formes réellement visibles, pas une preuve de mécanique interne.",
+          "Le constat s’applique seulement au chemin et au SHA de l’ancien atlas à l’instant de cette revue ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave8_coordination"
+      ],
+      "reviewedAt": "2026-10-24T01:58:34.953385+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    }
+  ]
+}

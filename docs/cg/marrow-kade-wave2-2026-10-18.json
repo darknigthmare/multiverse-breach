@@ -1,0 +1,1899 @@
+{
+  "schemaVersion": 1,
+  "characterId": "arca_marrow",
+  "heroId": "arca_marrow",
+  "characterName": "Marrow Kade",
+  "incarnation": "Nexus de Convergence — Marrow Kade, current unmasked universal project sprite (2026)",
+  "publishedAt": "2026-10-18",
+  "status": "complete",
+  "plannedSlots": 15,
+  "deliveredNewSlots": 15,
+  "entries": [
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:characterSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Identité courante sans masque",
+        "en": "Marrow Kade — Current unmasked identity"
+      },
+      "type": "characterSolo",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-characterSolo-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Identité courante sans masque ; Debout de trois quarts, lame de fracture abaissée dans la main gauche, main droite près du col, regard calme vers la droite et pieds décalés.",
+        "en": "Current unmasked identity. Original project composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/character-solo-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/character-solo-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 1,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg01.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-condemned-threshold-court-wave2-2026-10-18",
+      "backgroundDescription": "Cour originale des seuils condamnés de la Cité-Mosaïque",
+      "background": {
+        "location": "Cour originale des seuils condamnés de la Cité-Mosaïque",
+        "foreground": "Pavés d’ivoire mouillés et fine ligne de sceau corail",
+        "midground": "Trois balises dorées et porte rectangulaire scellée",
+        "background": "Terrasses d’archives claires et grand anneau causal turquoise",
+        "lighting": "Reflets cyan de causalité et petites lumières dorées au crépuscule"
+      },
+      "poseId": "marrow-kade-cg01-condemned-threshold-court",
+      "poseBrief": "Debout de trois quarts, lame de fracture abaissée dans la main gauche, main droite près du col, regard calme vers la droite et pieds décalés.",
+      "poseDescription": "Debout de trois quarts, lame de fracture abaissée dans la main gauche, main droite près du col, regard calme vers la droite et pieds décalés.",
+      "themeBrief": "Identité courante sans masque",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Debout de trois quarts, lame de fracture abaissée dans la main gauche, main droite près du col, regard calme vers la droite et pieds décalés.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/character-solo-wave2-2026-10-18.png",
+          "sha256": "52d6c59d5b3042aa380d1719ca286a8ee61701d3201e2a8affa99bcc9b0ab4d1",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2948654,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/character-solo-wave2-2026-10-18.webp",
+          "sha256": "3ae0faf8875b0eefec67e41e53d5c66ec31bd1914cd4238c0cb6b67d243e86e7",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 947222,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/character-solo-wave2-2026-10-18-thumb.webp",
+          "sha256": "c72e1adeece5847f96e091ec135bc26c5a27d61ee37544910ef4e07255e20ccd",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 88322,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:weaponSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Lame de fracture",
+        "en": "Marrow Kade — Fracture blade"
+      },
+      "type": "weaponSolo",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-weaponSolo-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Lame de fracture ; Une seule lame cristalline rouge-corail veinée blanc-or, présentée en diagonale sur deux cales de quartz ; aucun personnage ni main.",
+        "en": "Fracture blade. Original project composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/signature-weapon-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/signature-weapon-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 2,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg02.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-fracture-blade-display-wave2-2026-10-18",
+      "backgroundDescription": "Niche originale de présentation de la lame de fracture",
+      "background": {
+        "location": "Niche originale de présentation de la lame de fracture",
+        "foreground": "Trois éclats de portail sur un rebord noir poli",
+        "midground": "Lame corail sur deux supports de quartz et velours sombre",
+        "background": "Murs d’ivoire, montures dorées et étroites bandes turquoise",
+        "lighting": "Lumière neutre des archives et réfractions rouge or du cristal"
+      },
+      "poseId": "marrow-kade-cg02-fracture-blade-display",
+      "poseBrief": "Une seule lame cristalline rouge-corail veinée blanc-or, présentée en diagonale sur deux cales de quartz ; aucun personnage ni main.",
+      "poseDescription": "Une seule lame cristalline rouge-corail veinée blanc-or, présentée en diagonale sur deux cales de quartz ; aucun personnage ni main.",
+      "themeBrief": "Lame de fracture seule",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Une seule lame cristalline rouge-corail veinée blanc-or, présentée en diagonale sur deux cales de quartz ; aucun personnage ni main.",
+          "Composition d’équipement ou de décor sans personnage principal ; le thème est contrôlé selon son slot.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/signature-weapon-wave2-2026-10-18.png",
+          "sha256": "3d095ecc8155d38fd39eb311bdd694450f1d22683e09f465927ae2b0acc45aa4",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2415799,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/signature-weapon-wave2-2026-10-18.webp",
+          "sha256": "a6d1db0ad156f4061e59cd83f955c03b17aa11d7ea9a7b0b69b3455797b70fed",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 643340,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/signature-weapon-wave2-2026-10-18-thumb.webp",
+          "sha256": "189b9a50e2af933a5ccb4a8a0fb2c32cd6634ab3634bed7018a83d27740cced3",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 64014,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:decorSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Aile des trois portails",
+        "en": "Marrow Kade — Three-portal wing"
+      },
+      "type": "decorSolo",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-decorSolo-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Aile des trois portails ; Vue profonde sur trois anciens portails refroidis et une passerelle d’ivoire au-dessus d’un vide causal, sans personnage ni arme.",
+        "en": "Three-portal wing. Original project composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/decor-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/decor-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 3,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg03-remove-character.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-three-cooled-portal-wing-wave2-2026-10-18",
+      "backgroundDescription": "Aile originale des trois portails refroidis de la Fonderie",
+      "background": {
+        "location": "Aile originale des trois portails refroidis de la Fonderie",
+        "foreground": "Passerelle d’ivoire vide et mains courantes dorées",
+        "midground": "Trois immenses arches de cristal corail veiné de lumière",
+        "background": "Galeries étagées ivoire et cages à éclats suspendues vides",
+        "lighting": "Grande voûte lumineuse, or pâle et conduits turquoise"
+      },
+      "poseId": "marrow-kade-cg03-three-cooled-portal-wing",
+      "poseBrief": "Vue profonde sur trois anciens portails refroidis et une passerelle d’ivoire au-dessus d’un vide causal, sans personnage ni arme.",
+      "poseDescription": "Vue profonde sur trois anciens portails refroidis et une passerelle d’ivoire au-dessus d’un vide causal, sans personnage ni arme.",
+      "themeBrief": "Décor seul cohérent",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Vue profonde sur trois anciens portails refroidis et une passerelle d’ivoire au-dessus d’un vide causal, sans personnage ni arme.",
+          "Composition d’équipement ou de décor sans personnage principal ; le thème est contrôlé selon son slot.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/decor-wave2-2026-10-18.png",
+          "sha256": "27997a073e267d7e359eac8866b23f1fa6abdcdf9d6605bb78cee5970107ea35",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2850932,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/decor-wave2-2026-10-18.webp",
+          "sha256": "e956271ead690377aaedffc6df385856a3cb7f6704c19961da4d62d43d44f053",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 888654,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/decor-wave2-2026-10-18-thumb.webp",
+          "sha256": "be7dab1fd0a6e1cbc4b794ded88793db0f6eab21e46c6d1282e25ffc2467f0e7",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 84566,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:coherentScene:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Lecture du registre des dettes",
+        "en": "Marrow Kade — Reading the debt registry"
+      },
+      "type": "coherentScene",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-coherentScene-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Lecture du registre des dettes ; Un genou replié sur le rebord du bureau, lame abaissée en main droite et doigts gauches suivant la fracture corail du sceau dans le registre.",
+        "en": "Reading the debt registry. Original project composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/coherent-scene-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/coherent-scene-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 4,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg04.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-debt-registry-examination-wave2-2026-10-18",
+      "backgroundDescription": "Salle originale d’examen des registres de dettes A.R.C.A.",
+      "background": {
+        "location": "Salle originale d’examen des registres de dettes A.R.C.A.",
+        "foreground": "Cartes d’index et banc bas devant un bureau clair",
+        "midground": "Registre ouvert, sceau corail et anneau de lecture turquoise",
+        "background": "Tiroirs d’archives violets et fenêtres sur la pluie calme",
+        "lighting": "Lampe de travail chaude et faible lumière corail du sceau"
+      },
+      "poseId": "marrow-kade-cg04-debt-registry-examination",
+      "poseBrief": "Un genou replié sur le rebord du bureau, lame abaissée en main droite et doigts gauches suivant la fracture corail du sceau dans le registre.",
+      "poseDescription": "Un genou replié sur le rebord du bureau, lame abaissée en main droite et doigts gauches suivant la fracture corail du sceau dans le registre.",
+      "themeBrief": "Scène cohérente — lecture de sceau",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Un genou replié sur le rebord du bureau, lame abaissée en main droite et doigts gauches suivant la fracture corail du sceau dans le registre.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/coherent-scene-wave2-2026-10-18.png",
+          "sha256": "4ce81779c59d44fd536d2f2b55a9578bac9cd728ca38597cee30d5e03461508c",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2714096,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/coherent-scene-wave2-2026-10-18.webp",
+          "sha256": "a6c225336fce17b2ff27356d63403810768acc8eaf75ae5b1f5bc73381311e04",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 848056,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/coherent-scene-wave2-2026-10-18-thumb.webp",
+          "sha256": "72f1159147e822ff1a23249e8466eff0b365e119c42278851042762fcfc36152",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 76588,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:actionScene:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Coupe-Sceau en mouvement",
+        "en": "Marrow Kade — Seal-cutting leap"
+      },
+      "type": "actionScene",
+      "family": "Nexus",
+      "rarity": "stable",
+      "canonStatus": "nexus-variant",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-actionScene-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Coupe-Sceau en mouvement ; En saut tournant, jambes repliées et lame gauche tranchant un sceau géométrique vide en diagonale ; bras droit en contrepoids.",
+        "en": "Seal-cutting leap. Original project composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/action-scene-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/action-scene-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 5,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg05-margin-correction.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-causal-bridge-seal-cut-wave2-2026-10-18",
+      "backgroundDescription": "Pont causal original entre deux portails effondrés",
+      "background": {
+        "location": "Pont causal original entre deux portails effondrés",
+        "foreground": "Bord de plate-forme ivoire au-dessus du vide turquoise",
+        "midground": "Dalles suspendues et sceau vide brisé par une lame",
+        "background": "Deux monolithes de portail inclinés dans une brume ambrée",
+        "lighting": "Éclat corail de fracture et ciel clair turquoise or"
+      },
+      "poseId": "marrow-kade-cg05-causal-bridge-seal-cut",
+      "poseBrief": "En saut tournant, jambes repliées et lame gauche tranchant un sceau géométrique vide en diagonale ; bras droit en contrepoids.",
+      "poseDescription": "En saut tournant, jambes repliées et lame gauche tranchant un sceau géométrique vide en diagonale ; bras droit en contrepoids.",
+      "themeBrief": "Action sans victime — Coupe-Sceau",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "En saut tournant, jambes repliées et lame gauche tranchant un sceau géométrique vide en diagonale ; bras droit en contrepoids.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/action-scene-wave2-2026-10-18.png",
+          "sha256": "7df7d2b6ea7dd0c17634a1478970b22d0ed595ac2fd0a26c943eb920333a1758",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 3209426,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/action-scene-wave2-2026-10-18.webp",
+          "sha256": "9d803c96c293a43c074324ccd5b2c5fb96dd41c51daa9bbb0aeca452ff3a06aa",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1048318,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/action-scene-wave2-2026-10-18-thumb.webp",
+          "sha256": "2e5d12265918724dd9f7d7747ef25d3558e7bd271a58c355d34ab05c882e7a1a",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 92032,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:introPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Descente des balises",
+        "en": "Marrow Kade — Descending the beacons"
+      },
+      "type": "introPose",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-introPose-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Descente des balises ; Descend un escalier en spirale, main droite sur la rampe, lame gauche abaissée et manteau suivant son mouvement.",
+        "en": "Descending the beacons. Original project composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/intro-pose-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/intro-pose-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 6,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg06.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-name-beacon-spiral-stair-wave2-2026-10-18",
+      "backgroundDescription": "Tour originale des balises de nom à l’aube",
+      "background": {
+        "location": "Tour originale des balises de nom à l’aube",
+        "foreground": "Marches d’ivoire en spirale et petites balises géométriques",
+        "midground": "Rampe dorée et haut cylindre ouvert de l’escalier",
+        "background": "Cité-Mosaïque au lever du jour entre des fenêtres turquoise",
+        "lighting": "Lumière pêche de l’aube et balises d’escalier cyan"
+      },
+      "poseId": "marrow-kade-cg06-name-beacon-spiral-stair",
+      "poseBrief": "Descend un escalier en spirale, main droite sur la rampe, lame gauche abaissée et manteau suivant son mouvement.",
+      "poseDescription": "Descend un escalier en spirale, main droite sur la rampe, lame gauche abaissée et manteau suivant son mouvement.",
+      "themeBrief": "Entrée — Pas Entre Deux",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Descend un escalier en spirale, main droite sur la rampe, lame gauche abaissée et manteau suivant son mouvement.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/intro-pose-wave2-2026-10-18.png",
+          "sha256": "46ddf33ee04be05ca328dec6f31254e60479ebed35afe2156d526466065c0411",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2632974,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/intro-pose-wave2-2026-10-18.webp",
+          "sha256": "e90367e450ceac5c0624641788f8233f584336ba0f600f735cb83aae20e3d793",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 832014,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/intro-pose-wave2-2026-10-18-thumb.webp",
+          "sha256": "bd9c0d50b87f1305b4a520dd9cd1f8593987575ebd6eb5f8eac85f65c221dc84",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 76538,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:victoryPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Victoire après la pluie",
+        "en": "Marrow Kade — Victory after rain"
+      },
+      "type": "victoryPose",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-victoryPose-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Victoire après la pluie ; Debout sur une dalle claire, lame gauche levée verticalement et bras droit ouvert, menton relevé sans cri.",
+        "en": "Victory after rain. Original project composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/victory-pose-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/victory-pose-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 7,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg07.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-six-locks-rain-bridge-wave2-2026-10-18",
+      "backgroundDescription": "Pont original des six Verrous après une averse",
+      "background": {
+        "location": "Pont original des six Verrous après une averse",
+        "foreground": "Petites flaques claires et fragment de sceau inoffensif",
+        "midground": "Dalle ronde et six piliers géométriques bas du pont",
+        "background": "Terrasses vertes et anneaux de portail sous un faible arc-en-ciel",
+        "lighting": "Lumière dorée après pluie et reflets corail de la lame"
+      },
+      "poseId": "marrow-kade-cg07-six-locks-rain-bridge",
+      "poseBrief": "Debout sur une dalle claire, lame gauche levée verticalement et bras droit ouvert, menton relevé sans cri.",
+      "poseDescription": "Debout sur une dalle claire, lame gauche levée verticalement et bras droit ouvert, menton relevé sans cri.",
+      "themeBrief": "Victoire sans trophée",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Debout sur une dalle claire, lame gauche levée verticalement et bras droit ouvert, menton relevé sans cri.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/victory-pose-wave2-2026-10-18.png",
+          "sha256": "83c25c17b18e41573badbd8d50454623b54570cb83ed15f3cc80ff05d85bb2fc",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 3059245,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/victory-pose-wave2-2026-10-18.webp",
+          "sha256": "ade91f068a2be944622ac20eafa525a2c3656f86395705e09fa6d18ab2eac420",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 983762,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/victory-pose-wave2-2026-10-18-thumb.webp",
+          "sha256": "76c45a8876b0772df48cc8769bec1149fab9ceb2d4c01f1d8178e19a011dec41",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 91632,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:defeatPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Repli dans les archives",
+        "en": "Marrow Kade — Archive retreat"
+      },
+      "type": "defeatPose",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-defeatPose-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Repli dans les archives ; Genou droit au sol et jambe gauche en avant, main gauche soutenant le front et main droite tenant la lame posée au sol ; posture de fatigue sans plaie.",
+        "en": "Archive retreat. Original project composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/defeat-pose-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/defeat-pose-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 8,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg08.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-abandoned-archive-shelter-wave2-2026-10-18",
+      "backgroundDescription": "Abri original des archives abandonnées de la Cité",
+      "background": {
+        "location": "Abri original des archives abandonnées de la Cité",
+        "foreground": "Feuillets tombés et anciennes mosaïques usées au sol",
+        "midground": "Petits cabinets endommagés et banc de pierre pâle",
+        "background": "Lourd volet d’archives fermé laissant filtrer du turquoise",
+        "lighting": "Poussière dans une lumière lavande et faible lampe ambrée"
+      },
+      "poseId": "marrow-kade-cg08-abandoned-archive-shelter",
+      "poseBrief": "Genou droit au sol et jambe gauche en avant, main gauche soutenant le front et main droite tenant la lame posée au sol ; posture de fatigue sans plaie.",
+      "poseDescription": "Genou droit au sol et jambe gauche en avant, main gauche soutenant le front et main droite tenant la lame posée au sol ; posture de fatigue sans plaie.",
+      "themeBrief": "Défaite non gore",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Genou droit au sol et jambe gauche en avant, main gauche soutenant le front et main droite tenant la lame posée au sol ; posture de fatigue sans plaie.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/defeat-pose-wave2-2026-10-18.png",
+          "sha256": "966eacddcbbfec789995f0104c1a9732fb0c492e0d303d82f4d2390188ebc826",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2503754,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/defeat-pose-wave2-2026-10-18.webp",
+          "sha256": "e7bb68108177aabfb102f39fda1f643eb248042e0d722e2e67da0ce5f1ab9a6d",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 708700,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/defeat-pose-wave2-2026-10-18-thumb.webp",
+          "sha256": "0c706b8a04ebb4dfffcb686bdf241414e5d24af5bb2081493d0b4f80d52be043",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 68942,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:beachFamily:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Carte du rivage (FanArt)",
+        "en": "Marrow Kade — Shoreline map (FanArt)"
+      },
+      "type": "beachFamily",
+      "family": "Fan Art",
+      "rarity": "rare",
+      "canonStatus": "fan-art",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-beachFamily-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Carte du rivage (FanArt) ; Assis sur un rocher plat, bottes sur le sable, déplie une carte de rivage à deux mains ; lame rangée à la hanche, aucune arme active.",
+        "en": "Shoreline map (FanArt). Original What If composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/beach-family-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/beach-family-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 9,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg09.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-pocket-beach-chalk-arches-wave2-2026-10-18",
+      "backgroundDescription": "Plage de poche originale du Nexus aux arches de craie",
+      "background": {
+        "location": "Plage de poche originale du Nexus aux arches de craie",
+        "foreground": "Sable propre, rocher plat et petit seau à coquillages bleu",
+        "midground": "Carte de rivage dépliée au-dessus des bottes sur le sable",
+        "background": "Mares de marée lilas turquoise, arches blanches et voilier vert",
+        "lighting": "Jour doux et lumineux avec reflets tranquilles de bord de mer"
+      },
+      "poseId": "marrow-kade-cg09-pocket-beach-chalk-arches",
+      "poseBrief": "Assis sur un rocher plat, bottes sur le sable, déplie une carte de rivage à deux mains ; lame rangée à la hanche, aucune arme active.",
+      "poseDescription": "Assis sur un rocher plat, bottes sur le sable, déplie une carte de rivage à deux mains ; lame rangée à la hanche, aucune arme active.",
+      "themeBrief": "Plage familiale FanArt (scène originale non canon)",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Assis sur un rocher plat, bottes sur le sable, déplie une carte de rivage à deux mains ; lame rangée à la hanche, aucune arme active.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/beach-family-wave2-2026-10-18.png",
+          "sha256": "fe58da21ab2f7f09ce698de53c126b0f308a16226bf55d4fbbcbec4456b40c67",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2894178,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/beach-family-wave2-2026-10-18.webp",
+          "sha256": "5761937a3cb64290cf9b71d7c11ba18ddf96e15ff72955865d09703400f43d3e",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 949870,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/beach-family-wave2-2026-10-18-thumb.webp",
+          "sha256": "f2ccf4465c6f0814e3e2b3c4e94b1cbe434f89df2ca8ac3ae5150cc9e22c3ee5",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 89458,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:maidService:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Service aux archives (FanArt)",
+        "en": "Marrow Kade — Archive housekeeping (FanArt)"
+      },
+      "type": "maidService",
+      "family": "Fan Art",
+      "rarity": "rare",
+      "canonStatus": "fan-art",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-maidService-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Service aux archives (FanArt) ; Sur le premier degré d’un escabeau, plumeau levé en main gauche vers la vaisselle et main droite stabilisant le bois ; tablier pratique porté sur le manteau conservé.",
+        "en": "Archive housekeeping (FanArt). Original What If composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/maid-service-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/maid-service-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 10,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg10.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-archive-restoration-pantry-wave2-2026-10-18",
+      "backgroundDescription": "Office original de restauration des archives et vaisselle",
+      "background": {
+        "location": "Office original de restauration des archives et vaisselle",
+        "foreground": "Chiffons pliés et seau d’eau claire au pied d’un escabeau",
+        "midground": "Étagères ivoire, bols céramiques et dossiers sans lettres",
+        "background": "Fenêtre ronde turquoise et plantes retombantes vertes",
+        "lighting": "Soleil chaud d’après-midi filtré par le vitrage coloré"
+      },
+      "poseId": "marrow-kade-cg10-archive-restoration-pantry",
+      "poseBrief": "Sur le premier degré d’un escabeau, plumeau levé en main gauche vers la vaisselle et main droite stabilisant le bois ; tablier pratique porté sur le manteau conservé.",
+      "poseDescription": "Sur le premier degré d’un escabeau, plumeau levé en main gauche vers la vaisselle et main droite stabilisant le bois ; tablier pratique porté sur le manteau conservé.",
+      "themeBrief": "Service familial FanArt (scène originale non canon)",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Sur le premier degré d’un escabeau, plumeau levé en main gauche vers la vaisselle et main droite stabilisant le bois ; tablier pratique porté sur le manteau conservé.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/maid-service-wave2-2026-10-18.png",
+          "sha256": "17270c100986b5f9b8a4843efad4a4aa5dd692cf5e969198b2f84646ced5a6f8",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2770866,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/maid-service-wave2-2026-10-18.webp",
+          "sha256": "bea03fd3ff42c5fbb28de5f94151b1b7883b219faff6d25bc27c8ff38739ecb6",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 877336,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/maid-service-wave2-2026-10-18-thumb.webp",
+          "sha256": "ce15e5572e7ee57b3e9f6bd522a05773384d0842fd32549a4c01249ef6c898dd",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 86474,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:goofy:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Papillon de papier (FanArt)",
+        "en": "Marrow Kade — Paper butterfly (FanArt)"
+      },
+      "type": "goofy",
+      "family": "Fan Art",
+      "rarity": "rare",
+      "canonStatus": "fan-art",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-goofy-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Papillon de papier (FanArt) ; Assis jambes croisées sur un coussin parmi des papiers, index droit approchant le papillon de papier posé au nez et paume gauche ouverte ; lame inactive à la hanche.",
+        "en": "Paper butterfly (FanArt). Original What If composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/goofy-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/goofy-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 11,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg11-margin-correction.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-causal-origami-workshop-wave2-2026-10-18",
+      "backgroundDescription": "Atelier original d’origami causal de la Cité-Mosaïque",
+      "background": {
+        "location": "Atelier original d’origami causal de la Cité-Mosaïque",
+        "foreground": "Feuilles pastel, coussin tissé et petite grue pliée",
+        "midground": "Table basse de bois pâle et mobile géométrique lumineux",
+        "background": "Étagères de modèles de papier et haute fenêtre ronde",
+        "lighting": "Lumière dorée joueuse et quelques reflets corail du papier"
+      },
+      "poseId": "marrow-kade-cg11-causal-origami-workshop",
+      "poseBrief": "Assis jambes croisées sur un coussin parmi des papiers, index droit approchant le papillon de papier posé au nez et paume gauche ouverte ; lame inactive à la hanche.",
+      "poseDescription": "Assis jambes croisées sur un coussin parmi des papiers, index droit approchant le papillon de papier posé au nez et paume gauche ouverte ; lame inactive à la hanche.",
+      "themeBrief": "Gag FanArt (scène originale non canon)",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Assis jambes croisées sur un coussin parmi des papiers, index droit approchant le papillon de papier posé au nez et paume gauche ouverte ; lame inactive à la hanche.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/goofy-wave2-2026-10-18.png",
+          "sha256": "1b9768f18066809f22a63b33323a8b37aae52c718feae6d3a4f041be418b38de",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2690448,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/goofy-wave2-2026-10-18.webp",
+          "sha256": "ced804aaa0355d12192b6d67883c0e4091f119aafe452ebe8c1977e18c9ffbaf",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 805114,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/goofy-wave2-2026-10-18-thumb.webp",
+          "sha256": "dfb87b40ea2296f49b497f4c87c2db1c591cca1116505582a2822259ab1ed89f",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 83148,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:alignmentSwap:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Alignement conciliateur (What If)",
+        "en": "Marrow Kade — Reconciliatory alignment (What If)"
+      },
+      "type": "alignmentSwap",
+      "family": "What If",
+      "rarity": "anomaly",
+      "canonStatus": "what-if",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-alignmentSwap-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Alignement conciliateur (What If) ; Genou droit au sol et jambe gauche devant, main gauche ouverte sous une pousse lumineuse ; main droite abaissant la lame cyan vers le sol, même cicatrice conservée.",
+        "en": "Reconciliatory alignment (What If). Original What If composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/alignment-swap-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/alignment-swap-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 12,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg12.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-portal-reconciliation-garden-wave2-2026-10-18",
+      "backgroundDescription": "Jardin original de réconciliation des portails alternatifs",
+      "background": {
+        "location": "Jardin original de réconciliation des portails alternatifs",
+        "foreground": "Pierres d’ivoire et petite vasque de lumière turquoise",
+        "midground": "Pousse lumineuse au-dessus d’un bassin et grand anneau couvert de lierre",
+        "background": "Terrasses de jardin calmes noyées dans une brume bleue",
+        "lighting": "Lueurs cyan et or douces de la variante conciliatrice"
+      },
+      "poseId": "marrow-kade-cg12-portal-reconciliation-garden",
+      "poseBrief": "Genou droit au sol et jambe gauche devant, main gauche ouverte sous une pousse lumineuse ; main droite abaissant la lame cyan vers le sol, même cicatrice conservée.",
+      "poseDescription": "Genou droit au sol et jambe gauche devant, main gauche ouverte sous une pousse lumineuse ; main droite abaissant la lame cyan vers le sol, même cicatrice conservée.",
+      "themeBrief": "Alignement inversé What If",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Genou droit au sol et jambe gauche devant, main gauche ouverte sous une pousse lumineuse ; main droite abaissant la lame cyan vers le sol, même cicatrice conservée.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/alignment-swap-wave2-2026-10-18.png",
+          "sha256": "b5646419052374a7fbbc0c3cb6139255963e7c72f579afae009a5949817844a6",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 3109028,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/alignment-swap-wave2-2026-10-18.webp",
+          "sha256": "542699ccb82832913ab43a9277f96004c24992d91643d5ea0203f9577c2beaac",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1030468,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/alignment-swap-wave2-2026-10-18-thumb.webp",
+          "sha256": "e634f33d52897c18be7fc4b4175acc22d30f7bcffed290da21235473b167521e",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 103812,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:genderSwap:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Présentation féminine (What If)",
+        "en": "Marrow Kade — Feminine presentation (What If)"
+      },
+      "type": "genderSwap",
+      "family": "What If",
+      "rarity": "anomaly",
+      "canonStatus": "what-if",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-genderSwap-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Présentation féminine (What If) ; Assise de biais sur un bloc hexagonal flottant, genou gauche relevé et avant-bras gauche posé dessus ; main droite tenant la lame au repos, même cicatrice droite et mèche blanche.",
+        "en": "Feminine presentation (What If). Original What If composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/gender-swap-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/gender-swap-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 13,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg13.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-debt-mirror-passage-wave2-2026-10-18",
+      "backgroundDescription": "Passage original des miroirs de dette sous arbres argentés",
+      "background": {
+        "location": "Passage original des miroirs de dette sous arbres argentés",
+        "foreground": "Deux grands miroirs circulaires encastrés dans un dallage clair",
+        "midground": "Bloc hexagonal flottant et cadres de miroir dorés",
+        "background": "Branches argentées et toits d’ivoire sous un ciel violet",
+        "lighting": "Lumière mauve douce et accents corail de la lame au repos"
+      },
+      "poseId": "marrow-kade-cg13-debt-mirror-passage",
+      "poseBrief": "Assise de biais sur un bloc hexagonal flottant, genou gauche relevé et avant-bras gauche posé dessus ; main droite tenant la lame au repos, même cicatrice droite et mèche blanche.",
+      "poseDescription": "Assise de biais sur un bloc hexagonal flottant, genou gauche relevé et avant-bras gauche posé dessus ; main droite tenant la lame au repos, même cicatrice droite et mèche blanche.",
+      "themeBrief": "Une seule alternative CG13 — présentation féminine What If",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Assise de biais sur un bloc hexagonal flottant, genou gauche relevé et avant-bras gauche posé dessus ; main droite tenant la lame au repos, même cicatrice droite et mèche blanche.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité.",
+          "Une seule alternative CG13 : présentation féminine What If, même famille faciale/cicatrice/mèche et même équipement ; aucun sexe biologique ni âge établi par l’image."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/gender-swap-wave2-2026-10-18.png",
+          "sha256": "4b9207c297cc8d2e612acb37a50b298247f75171dd7138f435ed60c46d3f1076",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 3277856,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/gender-swap-wave2-2026-10-18.webp",
+          "sha256": "dde234cac63ab4ec111009e9bde243ffacdc6f75e1152ba662d86cc57168da41",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1070356,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/gender-swap-wave2-2026-10-18-thumb.webp",
+          "sha256": "5722c0e0a7107c24fa0e4735a01aed9daa9ea89698cc0c4f665dd8c2a75f4e26",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 94278,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:zombieVersion:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Corruption des registres (What If)",
+        "en": "Marrow Kade — Registry corruption (What If)"
+      },
+      "type": "zombieVersion",
+      "family": "What If",
+      "rarity": "anomaly",
+      "canonStatus": "what-if",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-zombieVersion-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Corruption des registres (What If) ; À un genou, bras droit levé vers des filaments de corruption et lame gauche plantée dans une dalle ; vêtements fissurés d’énergie, corps intact.",
+        "en": "Registry corruption (What If). Original What If composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/zombie-version-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/zombie-version-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 14,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg14.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-erased-registry-depot-wave2-2026-10-18",
+      "backgroundDescription": "Dépôt original des registres effacés et cages causales",
+      "background": {
+        "location": "Dépôt original des registres effacés et cages causales",
+        "foreground": "Couvertures de registres ternies et bande de sol turquoise fissurée",
+        "midground": "Cages causales cubiques contenant des éclats turquoise et rayons sombres",
+        "background": "Panneaux blancs clos interrompus par une faille noire géométrique",
+        "lighting": "Ambiance violette basse et filaments lumineux corail turquoise"
+      },
+      "poseId": "marrow-kade-cg14-erased-registry-depot",
+      "poseBrief": "À un genou, bras droit levé vers des filaments de corruption et lame gauche plantée dans une dalle ; vêtements fissurés d’énergie, corps intact.",
+      "poseDescription": "À un genou, bras droit levé vers des filaments de corruption et lame gauche plantée dans une dalle ; vêtements fissurés d’énergie, corps intact.",
+      "themeBrief": "Corruption non gore What If",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "À un genou, bras droit levé vers des filaments de corruption et lame gauche plantée dans une dalle ; vêtements fissurés d’énergie, corps intact.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/zombie-version-wave2-2026-10-18.png",
+          "sha256": "be1b2647b9e0677346e503cb7a0eb388e15ac60e12023624d0c996d73f38d766",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2837842,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/zombie-version-wave2-2026-10-18.webp",
+          "sha256": "9fced260dd6fab9a9e86023817a67ea77716848809d4abf748b94c64453c8826",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 888846,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/zombie-version-wave2-2026-10-18-thumb.webp",
+          "sha256": "ea2069bb3d2c15cb374cb14b4d87cee66e8322d892d5c3427063fabdaff52747",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 83194,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-marrow:futureExperienced:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-marrow",
+      "characterId": "arca_marrow",
+      "characterName": "Marrow Kade",
+      "title": {
+        "fr": "Marrow Kade — Gardien expérimenté (What If)",
+        "en": "Marrow Kade — Experienced guardian (What If)"
+      },
+      "type": "futureExperienced",
+      "family": "What If",
+      "rarity": "anomaly",
+      "canonStatus": "what-if",
+      "continuityId": "original-project-marrow-kade-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "marrow-current-unmasked-project-sprite-pack-viewed-2026-10-18",
+      "promptId": "cg-marrow-kade-futureExperienced-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Gardien expérimenté (What If) ; Adossé à une balustrade, bras croisés et chevilles croisées, tête tournée pour montrer la même cicatrice droite ; lame rangée et tempes discrètement grisonnantes.",
+        "en": "Experienced guardian (What If). Original What If composition based on the selected Marrow sprite and authored Nexus lore."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "src/game/spriteAssets.js",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "credits": {
+        "fr": "Marrow Kade, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Marrow Kade, original Multiverse Breach character; artwork generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_marrow"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-marrow/future-experienced-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-marrow/future-experienced-openai-v1-thumb.webp",
+      "heroId": "arca_marrow",
+      "slotNumber": 15,
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg15.txt",
+      "referenceReviewFile": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+      "backgroundId": "marrow-kade-threshold-guardian-terrace-wave2-2026-10-18",
+      "backgroundDescription": "Terrasse originale des gardiens de seuil au crépuscule",
+      "background": {
+        "location": "Terrasse originale des gardiens de seuil au crépuscule",
+        "foreground": "Pavés pâles usés et une petite balise de nom discrète",
+        "midground": "Longue balustrade d’ivoire et joints de réparation corail",
+        "background": "Nombreuses flèches de portail de la Cité sous un ciel orange violet",
+        "lighting": "Lumière latérale chaude et petits points turquoise de la ville"
+      },
+      "poseId": "marrow-kade-cg15-threshold-guardian-terrace",
+      "poseBrief": "Adossé à une balustrade, bras croisés et chevilles croisées, tête tournée pour montrer la même cicatrice droite ; lame rangée et tempes discrètement grisonnantes.",
+      "poseDescription": "Adossé à une balustrade, bras croisés et chevilles croisées, tête tournée pour montrer la même cicatrice droite ; lame rangée et tempes discrètement grisonnantes.",
+      "themeBrief": "Une seule alternative CG15 — expérimenté futur What If",
+      "themeSource": [
+        "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Adossé à une balustrade, bras croisés et chevilles croisées, tête tournée pour montrer la même cicatrice droite ; lame rangée et tempes discrètement grisonnantes.",
+          "Identité sans masque du pack courant : cheveux noirs courts/mèche blanche, cicatrice droite, manteau noir-prune à pans magenta et lame de fracture comparés au canon interne.",
+          "Décor original distinct et pose réellement obtenue contrôlés ; aucun autre personnage du Nexus utilisé comme identité."
+        ],
+        "limitations": [
+          "Le canon de référence est interne au projet ; aucun visuel officiel d’une licence externe n’est revendiqué.",
+          "Les petits pixels du visage, la forme fine de la cicatrice et les gravures de tenue/arme sont interprétés à grande échelle ; aucune certification parfaite1:1.",
+          "Âge non établi : toutes les scènes restent familiales et sans romance.",
+          "Les nouveaux détails d’architecture sont des compositions originales cohérentes avec le Nexus, pas la reproduction d’une salle préexistante."
+        ],
+        "independentReview": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json"
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/future-experienced-wave2-2026-10-18.png",
+          "sha256": "5fb4f6acbcb894bc3b4e20a752aaac795881d78e5c3d8ace1307c30daf9a56d2",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 2786315,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/future-experienced-wave2-2026-10-18.webp",
+          "sha256": "5cc587bd577308ab3cf4f9d2302899ab51d43a94753efc44c8e4962128f54dd2",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 883452,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-marrow/future-experienced-wave2-2026-10-18-thumb.webp",
+          "sha256": "0387c2af6735a06b6db717adb0d8d7768acf8d9cd7b65495d7ea37bea3e18d85",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 83346,
+          "channels": 3
+        }
+      }
+    }
+  ],
+  "applicability": [
+    {
+      "characterId": "arca_marrow",
+      "slot": 1,
+      "type": "characterSolo",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 2,
+      "type": "weaponSolo",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 3,
+      "type": "decorSolo",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 4,
+      "type": "coherentScene",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 5,
+      "type": "actionScene",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 6,
+      "type": "introPose",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 7,
+      "type": "victoryPose",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 8,
+      "type": "defeatPose",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 9,
+      "type": "beachFamily",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 10,
+      "type": "maidService",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 11,
+      "type": "goofy",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 12,
+      "type": "alignmentSwap",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 13,
+      "type": "genderSwap",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 14,
+      "type": "zombieVersion",
+      "status": "generated"
+    },
+    {
+      "characterId": "arca_marrow",
+      "slot": 15,
+      "type": "futureExperienced",
+      "status": "generated"
+    }
+  ],
+  "planFile": "docs/cg/marrow-kade-wave2-plan-2026-10-18.json",
+  "referenceEvidence": "docs/cg/marrow-kade-reference-evidence-wave2-2026-10-18.json",
+  "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json",
+  "rejectedAttempts": 3,
+  "rejectedAttemptReviews": [
+    {
+      "slot": 3,
+      "selected": false,
+      "sha256": "228335afadf4fc9ea40935ea92dba9df47e6cf162509c43d02693940855a6dfd",
+      "bytes": 3019440,
+      "reason": "Décor seul : premier essai contenait indûment un personnage ; retiré par ImageGen, correction sélectionnée.",
+      "correctionPromptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg03-remove-character.txt"
+    },
+    {
+      "slot": 5,
+      "selected": false,
+      "sha256": "def7e5feed7546dad1a92cf3e19d211e4aa77e9938b13dbc2581cfa525a90c5b",
+      "bytes": 3123298,
+      "reason": "Pan supérieur gauche du manteau coupé au bord ; cadrage élargi par ImageGen, correction sélectionnée.",
+      "correctionPromptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg05-margin-correction.txt"
+    },
+    {
+      "slot": 11,
+      "selected": false,
+      "sha256": "0592a37c4aa521800bb16dca32e7796a7bf3692fe4dbd7d43932a3614a66b667",
+      "bytes": 2564827,
+      "reason": "Petit pan inférieur gauche du manteau coupé ; cadrage élargi par ImageGen et correction courante acceptée à la QA indépendante.",
+      "correctionPromptFile": "docs/cg/prompts/wave2-2026-10-18/marrow-kade/cg11-margin-correction.txt"
+    }
+  ],
+  "blockedSlots": [],
+  "unattemptedSlots": [],
+  "notes": [
+    "Original project identity is the selected unmasked universal32-frame pack, not the old masked variant.",
+    "Unknown age; family-only and no-romance across all slots.",
+    "CG13 selects only feminine presentation; CG15 selects only futureExperienced.",
+    "Historical images and global runtime registry are not modified by this artist delivery."
+  ]
+}

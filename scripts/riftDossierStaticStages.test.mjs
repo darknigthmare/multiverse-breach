@@ -137,7 +137,13 @@ test('metadata followup preserves the historical remediation and proves the exac
   const affected = remediation.affectedStages.find(row => row.stageId === revision.stageId);
   const current = catalog.entrees.find(row => row.id === revision.stageId);
   assert.equal(revision.stageId, 3);
-  assert.equal(revision.previousGameplayAdaptation, affected.currentGameplayAdaptation);
+  if (affected.currentPromptSha256 === revision.currentPromptSha256) {
+    assert.ok(metadataRevisions.integratedRemediationSha256, 'An incorporated revision must pin the integrated remediation');
+    assert.equal(affected.currentGameplayAdaptation, revision.currentGameplayAdaptation);
+  } else {
+    assert.equal(affected.currentPromptSha256, revision.previousPromptSha256);
+    assert.equal(affected.currentGameplayAdaptation, revision.previousGameplayAdaptation);
+  }
   assert.equal(revision.currentGameplayAdaptation, CANON_PRIORITY_STAGES.hadleysQueen.gameplayAdaptation);
   assert.equal(current.promptOpenAI.split(revision.currentGameplayAdaptation).length, 2);
   const historicalPrompt = current.promptOpenAI.replace(revision.currentGameplayAdaptation, revision.previousGameplayAdaptation);
@@ -155,7 +161,9 @@ test('metadata followup rejects broken history, changed image paths and repeated
   const affected = remediation.affectedStages.find(row => row.stageId === 3);
   for (const patch of [{ previousPromptSha256: '0'.repeat(64) }, { assetPath: '/different.webp' },
     { scope: 'image-approved' }, { currentPromptSha256: 'bad' },
-    { currentPromptSha256: original.previousPromptSha256 }]) {
+    { currentPromptSha256: original.previousPromptSha256 },
+    { previousGameplayAdaptation: `${original.previousGameplayAdaptation} altered` },
+    { currentGameplayAdaptation: `${original.currentGameplayAdaptation} altered` }]) {
     assert.throws(() => effectivePromptHash(affected, [{ ...original, ...patch }]));
   }
   assert.throws(() => effectivePromptHash(affected, [original, original]));

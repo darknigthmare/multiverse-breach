@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "milo_quill",
+  "reviewer": "/root/lot_01_wave11",
+  "producer": "/root/lot_02_wave11",
+  "independent": true,
+  "status": "pass",
+  "createdAt": "2026-10-26T14:05:22.014Z",
+  "receipt": {
+    "path": "docs/cg/milo-quill-wave11-2026-10-26.json",
+    "sha256": "96715f20881e2c6604ac2bdf0460923c8d27776d4dc390d61cabf7a99361d07e"
+  },
+  "sourceEvidenceSha256": "68403910a18d9250712572024a77c7b881b55209ee74f4a08b94028c7e73fcca",
+  "planSha256": "c3152a0575c769fa7b240f89aa9102554ae9c2d7022924bf253408d99fd369dd",
+  "visualReviewFile": "docs/cg/reviews/wave11-2026-10-26/milo-quill-independent-review.json",
+  "visualReviewActuallyPerformedSeparately": true,
+  "selectedNativesReplayed": 1,
+  "exportsReplayedByteExact": 3,
+  "strictNativeRgbSources": 0,
+  "fullFrameNearestConditionedSources": 1,
+  "recoveredImageUrlNativesByteChecked": 0,
+  "preservedUnselectedDrafts": 0,
+  "canonicalFidelityApproved": false,
+  "limitations": [
+    "Technical byte replay verifies delivery transforms and provenance pins, not absolute visual fidelity.",
+    "Visual source/native inspection performed separately by this actual independent reviewer; source-hidden reverse geometry and fine panel markings remain limited."
+  ],
+  "rows": [
+    {
+      "slot": "CG01",
+      "nativePath": "/workspace/generated_images/exec-9ac16596-eb2e-46df-b3c3-4a6e6cfad6ea.png",
+      "nativeSha256": "5719bdb9ea639c6172c0acd569b0b891ca9ca83dc6b2244a1b38ed84b9cec89d",
+      "nativeSize": [
+        1087,
+        1447
+      ],
+      "sourceRgbIdenticalToDeclaredFullFrameOperation": true,
+      "sourcePngByteExactReplay": true,
+      "formatOnlyConditioning": true,
+      "cropUsed": false,
+      "semanticPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-crownless-sea/milo-quill/character-solo-wave11-2026-10-26.png",
+          "sha256": "1ceed7db4a0aa1a82893bda2430a56778b1b3226853a919700a7c44c1cc897b4",
+          "bytes": 4124409,
+          "width": 1086,
+          "height": 1448,
+          "byteExactReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-crownless-sea/milo-quill/character-solo-wave11-2026-10-26.webp",
+          "sha256": "f261788e9abe05d3154820f2357e1095d37059f6283f7006ca42c3fa918b4a4f",
+          "bytes": 1191072,
+          "width": 1536,
+          "height": 2048,
+          "byteExactReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-crownless-sea/milo-quill/character-solo-wave11-2026-10-26-thumb.webp",
+          "sha256": "1caabaaf379a15d67d2d158ff3e79a7004b30d7c4eb51da4e5f8493a78038b5c",
+          "bytes": 87886,
+          "width": 384,
+          "height": 512,
+          "byteExactReplay": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-01",
+  "reviewedAt": "2026-11-01T02:18:46.901583+00:00",
+  "reviewer": "/root/alien_quality_review",
+  "scope": "One old then-selected Ripley1979 runtime atlas personally compared with three actual qualified photographs. Finding binds only the old bitmap path/SHA and does not apply automatically to future corrected selections. No other roster member is newly visually audited by this file.",
+  "findingScopeCharacterIds": [
+    "ripley"
+  ],
+  "newExternalDownloadsByThisReview": 0,
+  "referenceCopiesCountAsNewIndependentSource": false,
+  "visualInspectionPerformed": {
+    "qualifiedReferenceBitmaps": 3,
+    "oldSelectedAtlases": 1,
+    "oldAtlasAlsoViewedWithNeutralAlpha": true,
+    "newAtlasOrCGActuallyReviewed": 0
+  },
+  "independentComparison": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/old-runtime-source-comparison.json",
+    "sha256": "a9bfd73ede28858ff789d8c42423cf11166668218cc23c2f9499719592494b03",
+    "bytes": 14303
+  },
+  "findings": [
+    {
+      "characterId": "ripley",
+      "characterName": "Ellen Ripley",
+      "incarnation": "Ellen Ripley portrayed by Sigourney Weaver, Alien1979 Nostromo blue-gray crew coveralls",
+      "priority": "P0-major-incarnation-equipment-correction",
+      "status": "source-qualified-existing-selected-sprite-too-far-correction-needed-production-not-authorized",
+      "findingKind": "historical-current-old-selected-bitmap-only",
+      "selectedAsset": {
+        "characterId": "ripley",
+        "path": "/sprites/generated/heroes/alien/ripley.png",
+        "sha256": "fc125daf159e56c7df98f71a9b9881f9c21895c3ab8e6decb8484aa6fe1764ab",
+        "bytes": 818640,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "auto",
+          "rpg",
+          "tactics",
+          "melee",
+          "nexus",
+          "collection",
+          "hud",
+          "fps",
+          "kart",
+          "race"
+        ]
+      },
+      "inspection": "Whole actual old4x4 runtime sheet and all three qualified photographs personally opened; old atlas also viewed through an actual neutral-matte rendering to avoid hidden-RGB/alpha false findings. No new atlas generated or reviewed.",
+      "category": "1979-Nostromo-source-versus-green-rifle-and-later-power-loader-incarnation-mix",
+      "observed": [
+        "La cible1979 montre les cheveux bruns foncés bouclés jusqu’aux épaules, une combinaison de travail bleu-gris, un col crème sur haut sombre/olive, des manches retroussées et un petit insigne ailé sur la poitrine anatomique gauche. Le visage de film4 est la seule autorité détaillée d’actrice ; film3 montre Ripley deuxième depuis la gauche et confirme surtout torse/hanche.",
+        "Les huit premières cellules de l’ancien atlas affichent un grand objet noir de type fusil, avec poignée supérieure rectangulaire et long corps perforé, des sangles/poches extérieures et une tenue principalement verte. Ce montage diffère du lance-flammes gris1979 appuyé par la photo licenciée (cylindre arrière gris, bouteille rouge suspendue, tuyau supérieur et embout sombre court). Aucun modèle exact du fusil ancien n’est certifié.",
+        "Les cellules9–10 utilisent un autre ensemble de lance-flammes avec réservoir dorsal et effets de feu ; les cellules11–12 ajoutent un grand chargeur mécanique jaune. Ce chargeur mélange une autre période du personnage avec la cible Nostromo1979, qui exclut le power-loader et le fusilM41/Aliens1986.",
+        "La tenue verte, le dispositif d’arme et le chargeur mécanique constituent les écarts principaux. Les différences de visage/hair au niveau réduit du sprite restent secondaires et ne servent pas de rejet automatique."
+      ],
+      "partialMatches": [
+        "L’ancien sprite garde une silhouette humaine féminine, des cheveux bruns bouclés et des chaussures lacées : il ne s’agit pas d’un personnage sans aucun rapport.",
+        "Des formes de combinaison et des badges de manches sont présents ; les petits signes/lettres exacts et la position d’une montre ne sont pas assez lisibles dans l’ancien atlas pour affirmer une inversion ou absence certaine."
+      ],
+      "uncertainAndNonFindings": [
+        "La construction exacte de la semelle ancienne n’est pas certifiée au pixel près. Le verdict de correction ne repose pas sur une accusation automatique de talon bloc. La future cible doit néanmoins garder les bottines grises lacées à semelle mince continue et talon peu profond de la même source NECA.",
+        "Les traits d’actrice, la teinte exacte des iris, les petits badges et les détails cachés ne sont pas certifiés1:1 par cette comparaison réduite.",
+        "Des lignes blanches visibles dans le premier aperçu transparent disparaissent sur le rendu alpha neutre réellement ouvert : aucune critique de grille opaque ou bordure n’est retenue."
+      ],
+      "sourceComparison": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "referenceScope": "primary-actor-face-hair-and-upper-coveralls-only",
+          "usedForIdentity": true,
+          "viewed": true,
+          "independentlyViewed": true,
+          "actuallyViewedByThisReviewer": true,
+          "newIndependentSourceCreatedByThisReview": false
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-3.jpeg",
+          "sha256": "379a96d7c4448fd18a71671a58debe28c585912d6ea18e3b2ed444d6a03dbc8f",
+          "bytes": 120772,
+          "referencePurpose": "identity-support",
+          "referenceScope": "second-primary-film-Ripley-second-from-left-torso-hip-and-setting-only",
+          "usedForIdentity": true,
+          "viewed": true,
+          "independentlyViewed": true,
+          "actuallyViewedByThisReviewer": true,
+          "newIndependentSourceCreatedByThisReview": false
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "referenceScope": "licensed-full-body-costume-boots-LEFT-watch-and-1979-flamethrower-only-not-face",
+          "usedForIdentity": false,
+          "viewed": true,
+          "independentlyViewed": true,
+          "actuallyViewedByThisReviewer": true,
+          "newIndependentSourceCreatedByThisReview": false
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "primary-film-face-and-upper-costume-qualified-licensed-body-equipment-support-bounded",
+        "primaryDetailedFilmFaceSources": 1,
+        "additionalFilmTorsoHipSupportFrames": 1,
+        "licensedBodyCostumeEquipmentSupportImages": 1,
+        "licensedSupportUsedAsPrimaryFaceIdentity": false,
+        "sameCopiesCountAsNewIndependentSource": false,
+        "limitations": [
+          "Film4 détaille le visage/cheveux/haut de tenue. Film3 apporte torse/hanche et contexte, sans servir de preuve indépendante des pieds. Les autres membres d’équipage sont exclus.",
+          "NECA soutient tenue complète, montre anatomiqueLEFT, bottines et lance-flammes1979 ; son visage plastique n’est pas l’autorité d’actrice.",
+          "La semelle de la source est mince et continue avec talon peu profond. Le nombre exact d’œillets, d’ouvertures de l’embout et le routage arrière caché de sangle ne sont pas établis.",
+          "Aucun Jonesy, exosquelette jaune, fusilM41, cloneRipley8, costume spatial ou détail arrière inventé n’est autorisé par la cible sélectionnée."
+        ]
+      },
+      "sourceEvidenceFile": "docs/cg/ripley-reference-evidence-wave12-2026-11-01.json",
+      "sourceEvidenceAtReviewSnapshot": {
+        "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/source-evidence-at-review.json",
+        "sha256": "fc35019f39febdf3a4aa3373476ef3bb5f2e014be2672a61cf0bf00433c840b6",
+        "bytes": 13897
+      },
+      "sourceEvidenceLiveShaAtReview": "fc35019f39febdf3a4aa3373476ef3bb5f2e014be2672a61cf0bf00433c840b6",
+      "preserveOriginal": {
+        "path": "/sprites/generated/heroes/alien/ripley.png",
+        "sha256": "fc125daf159e56c7df98f71a9b9881f9c21895c3ab8e6decb8484aa6fe1764ab",
+        "preserveOriginalBytes": true,
+        "futureVariantId": "original",
+        "currentlyExposedAsAlternateVariant": false
+      },
+      "distinctIdPreservation": {
+        "characterId": "ripley_aliens",
+        "runtimePath": "/sprites/generated/heroes/aliens/ripley-aliens.png",
+        "asset": {
+          "path": "public/sprites/generated/heroes/aliens/ripley-aliens.png",
+          "sha256": "1a287c731c1972da8c1fc01ca795430eb329b11993be05fc3cdfe6d298c51661",
+          "bytes": 888226
+        },
+        "runtimeBindingChecked": true,
+        "bitmapActuallyViewedByThisReview": false,
+        "mustNotBeMergedOrChanged": true
+      },
+      "correctionAttempt": {
+        "status": "not-authorized-not-started",
+        "atlasGenerationCalls": 0,
+        "actualGeneratedAtlasNativeOutputs": 0,
+        "serviceRefusalForAtlas": false,
+        "softwareCorrectionApplied": false,
+        "runtimeSelectionChanged": false,
+        "productionDecision": "Root decides only after all15 RipleyCG are completed and actual remaining disk budget is accounted. This review alone does not authorize atlas production."
+      },
+      "proposedAtlasContract": {
+        "proposalOnly": true,
+        "notProductionAuthorization": true,
+        "actualNativePages": 4,
+        "nativeLayout": "Four real transparentRGBA2x2 full-body pages, TL/TR/BL/BR to one final animation row each.",
+        "targetLayout": "1024x1024RGBA,4x4 cells256, rows idle/run/source-compatible flamethrower action/intact hit-recovery.",
+        "sourceScope": "Default conditioning film4 actor-face plus NECA body/equipment support; film3 consulted at torso/context scope, avoid other-crew contamination. Headset optional only in a deliberately authored communications pose.",
+        "poses": "Front/three-quarter source-supported whole-body poses; no invented reverse/sole/weapon-underside view. Full gray lace boots with thin continuous sole/shallow heel; anatomical LEFT watch and LEFT chest wing.",
+        "equipment": "If carried, whole source1979 gray flamethrower with red hanging bottle and source-visible sling routing; no M41 or power-loader. Exact muzzle-hole count and hidden closed sling loop not invented.",
+        "pixelPipeline": "Whole connected-pose extraction/translation only, alpha>12 preserved before one common nearest scale,4px bounded weak fringe, finalguard>=12. No mirrored/duplicated poses, member replacement, semantic painting or selective recoloring.",
+        "qa": "Actual four natives and all16 final cells viewed; actual arguments/results/prompts/input hashes retained; independent RGBA assembly/normalizer replay and root-only selector/original-variant transition.",
+        "helperTemplatesToCopyOnly": [
+          ".tmp/cg-alien-2026-11-01/quality/bishop-atlas/replay-whole-rgba.py",
+          ".tmp/cg-alien-2026-11-01/quality/bishop-atlas/replay-normalized-atlas.mjs",
+          ".tmp/cg-alien-2026-11-01/lot-01/bishop/atlas/assemble-atlas-wave12.py",
+          ".tmp/cg-alien-2026-11-01/lot-01/bishop/atlas/pack-atlas-wave12.mjs"
+        ],
+        "helperCaveat": "Copy/adapt to NEW Ripley paths and actual source roles only after authorization; never execute hardcoded old paths or modify any previous gels/hardlinked native."
+      },
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "reviewedAt": "2026-11-01T02:18:46.901583+00:00"
+    }
+  ],
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "atlasProductionAuthorizedByThisReview": false,
+  "runtimeRegistryChangedByReviewer": false
+}

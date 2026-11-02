@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "characterId": "jax_rook",
+  "characterName": "Jax Rook",
+  "operationKind": "genuine-v2-reference-imagegen-redraw-with-three-true-right-hand-pose-corrections",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "continuity": "current-selected-individual-v2-original-project-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/neon_requiem/heroes/jax_rook.png",
+    "sha256": "991d671c83f3aab4b2471c87d62773097941823468b273def59c9c9f11d5cf26",
+    "bytes": 2412928,
+    "format": "png"
+  },
+  "image": {
+    "sha256": "edfa020552e933cfd90ea1ab37d750e6a170933cb0d6bb59cda203cae9e961ec",
+    "bytes": 801925,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/neon-requiem/jax-rook-v2-fidelity-wave5-2026-10-22.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/jax-rook-v2-reference-sprite-fidelity-wave5-2026-10-22.json",
+    "sha256": "174c67aff1c75469579468074f9a768aef5e6c46c223778c8b2c00246506e7ac"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave5-2026-10-22/jax-rook-sprite-independent-review.json",
+    "sha256": "ca5a1fab09cf4661d49219e06099ee8a0e29a4e603b51bed572a97076faa2fb3",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/neon-requiem/jax-rook.png",
+    "sha256": "f0b10b9a9e0f568de83402f558bdc29c078e34760ed3cab48c231981e6bc2661",
+    "preserved": true
+  },
+  "sourceAssembly": {
+    "sha256": "5649998cf63e465d4fb322b0e18c98540ed144d4552c15659cc14ca199cf533a",
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 4,
+    "selectedFramesFromWholeAtlasNative": 13,
+    "individualCorrectedFrames": [
+      11,
+      13,
+      15
+    ],
+    "thirteenRgbaCellsUnchangedBeforeFinalNormalization": true,
+    "finalCommonNearestScale": 0.9914529914529915,
+    "minimumGuard": 16,
+    "baselines": [
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239
+    ],
+    "privateEvidenceSha256": "41cf2f85391e28b3cfcbb702074ded5ccaf9c4e72ec9cb3dc68a55d6a4944a25",
+    "semanticEditsInTechnicalPacking": false
+  },
+  "successfulAtlasGenerationAttempts": 4,
+  "retainedUnselectedWholeOrIndividualAttempts": 0,
+  "initialWholeNativeRejectedPoseCellsRetained": [
+    11,
+    13,
+    15
+  ],
+  "refusals": 0,
+  "runtimeSelectionChangedByProducer": false,
+  "screenshots": [
+    "docs/cg/screenshots/jax-rook-sprite-comparison-wave5-2026-10-22.webp"
+  ],
+  "limitations": [
+    "Currently selected V2 portrait is original-project internal authority, not an external official franchise reference.",
+    "Source is chiefly three-quarter rear; hidden front armor, fine face/iris and concealed mechanical geometry remain interpreted.",
+    "Right-hand monofilament control explicitly corrected by genuine ImageGen redraw in11/13/15; no mirroring or manual painting.",
+    "Technical component/nearest packing preserves all source pixels above alpha12 before resizing and does not certify perfect visual fidelity."
+  ],
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-sprite-independent-review.json",
+  "independentReviewSha256": "ca5a1fab09cf4661d49219e06099ee8a0e29a4e603b51bed572a97076faa2fb3"
+}

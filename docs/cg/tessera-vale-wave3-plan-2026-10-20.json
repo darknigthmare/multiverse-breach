@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "characterId": "arca_tessera",
+  "characterName": "Tessera Vale",
+  "universeKey": "nexus-de-convergence",
+  "characterKey": "arca-tessera",
+  "incarnation": "Nexus de Convergence — Tessera Vale, current original project selected atlas and Cell ZERO dossier (2026)",
+  "referenceEvidence": "docs/cg/tessera-vale-reference-evidence-wave3-2026-10-20.json",
+  "sourceLimits": [
+    "This is an original project character. Its retained selected atlas and own dossier provide internal visual/lore authority, not an external official franchise reference.",
+    "The source is16small pixel-art frames, not a high-resolution character turnaround. Iris/microtexture details and hidden angles remain approximate.",
+    "Anatomical LEFT pink faceted leg/hip/temple versus dark RIGHT is compared against frontal and rear frames. No new medical explanation or skin condition inferred.",
+    "New environments are original coherent Nexus scenes, not exact existing-background reconstructions.",
+    "Equipment comes from visible pink diamond-shaped shard/cards in the atlas plus Tessera-specific skill/dossier; generic weaponType alone is never a source.",
+    "Reference atlas originals and all previous media remain byte-identical; derived inspection crops are not independent references."
+  ],
+  "slots": [
+    {
+      "slot": "CG01",
+      "slotNumber": 1,
+      "type": "characterSolo",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Référence entière de Tessera Vale courante, facettes roses à GAUCHE anatomique et côté DROIT sombre, identité sans transformation.",
+      "poseBrief": "Debout de trois quarts, main droite ouverte à hauteur du ventre et main gauche soutenant une petite carte-losange en lévitation; jambes séparées, regard calme vers le côté.",
+      "backgroundId": "tessera-vale-wave3-cg01",
+      "poseId": "tessera-vale-wave3-cg01",
+      "background": {
+        "location": "Galerie des deux mémoires, balcon original de la Cité-Mosaïque.",
+        "foreground": "Sol ivoire en petits hexagones et faible rebord de métal sombre.",
+        "midground": "Tessera entière, côtés asymétriques dégagés et longs pans roses/prune flottant vers l’arrière.",
+        "background": "Baies décalées ouvrant sur deux vues non identiques de la même ville et piliers d’archive or.",
+        "lighting": "Lumière de matin ivoire et rose, faible reflet magenta des facettes."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/01-characterSolo.txt"
+    },
+    {
+      "slot": "CG02",
+      "slotNumber": 2,
+      "type": "weaponSolo",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Équipement signature seul : trois cartes-éclats losanges roses à liseré ivoire-or, aucune arme ni partie de corps inventée.",
+      "poseBrief": "Trois éclats losanges présentés seuls à différentes inclinaisons autour d’un support d’archive bas; objet central plus grand et deux plus petits de côté.",
+      "backgroundId": "tessera-vale-wave3-cg02",
+      "poseId": "tessera-vale-wave3-cg02",
+      "background": {
+        "location": "Table de calibration des contradictions, salle originale des Archives statiques.",
+        "foreground": "Plateau sombre marqué de lignes fines or sans caractères ni chiffres.",
+        "midground": "Trois cartes-éclats cristallines roses et bord ivoire-or suspendues avec petites ombres séparées.",
+        "background": "Étagères de reliquaires vides et boucle d’analyse très fine suspendue au plafond.",
+        "lighting": "Lumière latérale blanche douce, reflets roses et transparence contenue des objets."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/02-weaponSolo.txt"
+    },
+    {
+      "slot": "CG03",
+      "slotNumber": 3,
+      "type": "decorSolo",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Décor Nexus seul : la salle originale du Juge des Trames où les possibilités témoignent, sans personnage.",
+      "poseBrief": "Vue d’architecture axiale en plongée douce depuis un escalier latéral, trois niveaux de passerelles et un cercle de témoignage vide.",
+      "backgroundId": "tessera-vale-wave3-cg03",
+      "poseId": "tessera-vale-wave3-cg03",
+      "background": {
+        "location": "Chambre de témoignage du Juge des Trames, interprétation originale cohérente Nexus.",
+        "foreground": "Marches d’ivoire usé, fine rampe or et un fil lumineux rose traversant une rainure.",
+        "midground": "Cercle de témoignage vide sur une plate-forme ronde, pupitres sans sièges dominants.",
+        "background": "Hautes arches d’archive et deux verrières montrant des lumières de mémoire différentes.",
+        "lighting": "Lumière de midi diffuse depuis les verrières, violet doux dans les alcôves."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/03-decorSolo.txt"
+    },
+    {
+      "slot": "CG04",
+      "slotNumber": 4,
+      "type": "coherentScene",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Tessera choisit de nommer ses deux mémoires plutôt que remplacer la vie de quelqu’un, doctrine personnelle source.",
+      "poseBrief": "Assise de trois quarts sur un banc bas, main droite touchant un petit carnet fermé et gauche tenant deux éclats distincts; buste légèrement incliné attentif.",
+      "backgroundId": "tessera-vale-wave3-cg04",
+      "poseId": "tessera-vale-wave3-cg04",
+      "background": {
+        "location": "Petite salle d’entretien originale de la cellule ZERO, calme et non carcérale.",
+        "foreground": "Banc de pierre et carnet sans texte sur une tablette, tasse simple posée à distance.",
+        "midground": "Tessera entière avec deux cartes roses distinctes à gauche, attitude réfléchie.",
+        "background": "Deux fenêtres étroites, étagère de dossiers anonymes et mur ivoire à joints or.",
+        "lighting": "Après-midi tamisé, lumière ambre chaude et rose discret autour des cartes."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/04-coherentScene.txt"
+    },
+    {
+      "slot": "CG05",
+      "slotNumber": 5,
+      "type": "actionScene",
+      "family": "Nexus",
+      "canonStatus": "nexus-variant",
+      "themeBrief": "Action Nexus documentée : Éclat Contradictoire dévie une attaque en montrant deux possibilités qui ne remplacent personne.",
+      "poseBrief": "Fente diagonale vers l’avant sur le pied droit, jambe gauche rose allongée derrière; main droite dirigeant trois éclats roses en arc, main gauche ouverte vers l’arrière.",
+      "backgroundId": "tessera-vale-wave3-cg05",
+      "poseId": "tessera-vale-wave3-cg05",
+      "background": {
+        "location": "Passerelle brisée originale au-dessus d’un canal de la Cité-Mosaïque.",
+        "foreground": "Morceau de rambarde et gouttes figées au-dessus de l’eau, aucun blessé.",
+        "midground": "Tessera entière en action, trois éclats distincts et mince trace de route évitée non humanoïde.",
+        "background": "Ponts d’ivoire décalés, circulation vide et une faille pâle haute entre deux immeubles.",
+        "lighting": "Crépuscule violet, reflets magenta d’éclats et étincelle blanche de déviation."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/05-actionScene.txt"
+    },
+    {
+      "slot": "CG06",
+      "slotNumber": 6,
+      "type": "introPose",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Entrée de Tessera dans la cellule ZERO après le verdict, personne nouvelle portant son propre nom.",
+      "poseBrief": "Franchissement d’une porte avec pied gauche rose posé sur le seuil, main droite retenant le bord du manteau et gauche levée en salut simple.",
+      "backgroundId": "tessera-vale-wave3-cg06",
+      "poseId": "tessera-vale-wave3-cg06",
+      "background": {
+        "location": "Vestibule original du quartier cellule ZERO dans l’Atrium A.R.C.A.",
+        "foreground": "Seuil de pierre claire et mince bande d’éclairage au ras du sol.",
+        "midground": "Tessera entière de profil trois quarts entre les portes entrouvertes, cartes au repos près du manteau.",
+        "background": "Couloir d’ivoire, banquette sobre et silhouettes architecturales abstraites sans autre personne.",
+        "lighting": "Lumière cyan douce du couloir opposée à un halo rose chaud autour de Tessera."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/06-introPose.txt"
+    },
+    {
+      "slot": "CG07",
+      "slotNumber": 7,
+      "type": "victoryPose",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Victoire source : sauver une personne sans effacer sa mémoire ni prendre sa place, joie sobre.",
+      "poseBrief": "Debout sur un petit degré, épaules ouvertes et deux mains ramenées devant le cœur tenant un éclat unique; visage souriant soulagé.",
+      "backgroundId": "tessera-vale-wave3-cg07",
+      "poseId": "tessera-vale-wave3-cg07",
+      "background": {
+        "location": "Cour de restitution originale des Archives avec jardin rouvert.",
+        "foreground": "Fleurs pâles en pots simples et plaque de pierre sans écriture.",
+        "midground": "Tessera entière, pans de manteau retombant calmement et un seul éclat rose stable.",
+        "background": "Arches d’archives ouvertes et arbre ivoire dont les feuilles roses sont légères.",
+        "lighting": "Soleil doré de fin de journée, ombres longues et atmosphère apaisée."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/07-victoryPose.txt"
+    },
+    {
+      "slot": "CG08",
+      "slotNumber": 8,
+      "type": "defeatPose",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Repli vivant et digne après saturation des souvenirs possibles, sans gore ni destruction anatomique.",
+      "poseBrief": "À genou sur la jambe droite sombre, genou gauche rose relevé; main gauche sur la tempe gauche rose et main droite au sol pour s’équilibrer.",
+      "backgroundId": "tessera-vale-wave3-cg08",
+      "poseId": "tessera-vale-wave3-cg08",
+      "background": {
+        "location": "Alcôve de transit originale sous une arcade de la Forge d’Origine.",
+        "foreground": "Dalles fendues, deux cartes-éclats tombées et poussière légère sans sang.",
+        "midground": "Tessera entière en récupération, pans de manteau entourant le genou au sol.",
+        "background": "Grille de forge fermée et canal lumineux au pied du mur, voie de repli dégagée.",
+        "lighting": "Faible lumière rose de secours et faisceau blanc calme au fond."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/08-defeatPose.txt"
+    },
+    {
+      "slot": "CG09",
+      "slotNumber": 9,
+      "type": "beachFamily",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "themeBrief": "Loisir familial dans un bassin de Nexus : tenue de sport couvrante prune, identité asymétrique rose conservée, aucune romance.",
+      "poseBrief": "Assise sur la berge, deux jambes étendues côte à côte vers l’eau et main droite lançant un petit galet plat, gauche posée sur la serviette.",
+      "backgroundId": "tessera-vale-wave3-cg09",
+      "poseId": "tessera-vale-wave3-cg09",
+      "background": {
+        "location": "Lagon intérieur original du Nexus sous verrière, plage de repos surveillée sans foule.",
+        "foreground": "Galet plat en ricochet, serviette rose opaque et petits cailloux doux.",
+        "midground": "Tessera en tunique sport ample et pantalon court couvrant, facettes de jambe gauche visibles sous le tissu adapté; cheveux et marque gauche inchangés.",
+        "background": "Eau turquoise peu profonde, colonnes ivoire et palmiers de verre stylisés sous verrière.",
+        "lighting": "Lumière chaude filtrée, reflets roses doux et aucun cadrage suggestif."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/09-beachFamily.txt"
+    },
+    {
+      "slot": "CG10",
+      "slotNumber": 10,
+      "type": "maidService",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "themeBrief": "Service familial volontaire à la cantine ZERO : tablier opaque ivoire sur tenue couvrante prune, aucun fanservice.",
+      "poseBrief": "En marche latérale, main droite portant un plateau de trois bols stables et gauche tenant une carafe; visage concentré mais serein.",
+      "backgroundId": "tessera-vale-wave3-cg10",
+      "poseId": "tessera-vale-wave3-cg10",
+      "background": {
+        "location": "Cuisine-cantine originale de la cellule ZERO, distribution de repas après extraction.",
+        "foreground": "Petit chariot, torchon plié et deux bols vides au bord d’une table.",
+        "midground": "Tessera entière en tablier pratique couvrant et bottes ordinaires, facettes gauche et cheveux rose/prune reconnaissables.",
+        "background": "Buffet bas d’ivoire et boîtes de provisions anonymes sur étagère or.",
+        "lighting": "Éclairage chaud de service et petite fenêtre nocturne bleu sombre."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/10-maidService.txt"
+    },
+    {
+      "slot": "CG11",
+      "slotNumber": 11,
+      "type": "goofy",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "themeBrief": "Gag doux : les éclats roses refusent de rentrer dans leur rangement sans changer l’identité de Tessera.",
+      "poseBrief": "Debout en équilibre sur pied gauche rose, pied droit légèrement relevé; deux mains tentant de fermer une petite boîte d’où sortent trois éclats en éventail, expression surprise amusée.",
+      "backgroundId": "tessera-vale-wave3-cg11",
+      "poseId": "tessera-vale-wave3-cg11",
+      "background": {
+        "location": "Petit atelier de rangement original à la Cité-Mosaïque.",
+        "foreground": "Boîte sombre ouverte, ruban de tissu et quelques séparateurs ivoire au sol.",
+        "midground": "Tessera entière buste incliné en arrière, cartes roses rebelles suspendues sans collision avec le visage.",
+        "background": "Casiers bas en damier et rideau prune entrouvert sur une pièce claire.",
+        "lighting": "Lumière de matin comique et reflets roses précis sur les bords de boîte."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/11-goofy.txt"
+    },
+    {
+      "slot": "CG12",
+      "slotNumber": 12,
+      "type": "alignmentSwap",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "WhatIf de doctrine : Tessera accepte la logique des remplacements de la Forge, froide usurpatrice au lieu d’affirmer des vies nouvelles.",
+      "poseBrief": "Trois quarts arrière, main gauche tendue au-dessus d’un siège vide comme pour choisir une mémoire et droite fermée derrière le dos; tête tournée froide.",
+      "backgroundId": "tessera-vale-wave3-cg12",
+      "poseId": "tessera-vale-wave3-cg12",
+      "background": {
+        "location": "Bureau de sélection original de la Forge sous une fausse lumière parfaite, WhatIf non canon.",
+        "foreground": "Rangée de dossiers muets fermés et dalle réfléchissante sans silhouette humaine.",
+        "midground": "Tessera garde cheveux prune et rose à gauche, même manteau légèrement plus rigide et éclats roses alignés strictement.",
+        "background": "Trônes vides identiques en perspective, fenêtres de mémoire opaques et grand anneau de forge.",
+        "lighting": "Lumière blanche stérile, ombres prune et magenta froid sans rouge sang."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/12-alignmentSwap.txt"
+    },
+    {
+      "slot": "CG13",
+      "slotNumber": 13,
+      "type": "genderSwap",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "WhatIf de genre seulement : Tessera Vale version masculine de même âge indéterminé et même tenue source; facettes anatomiques GAUCHES maintenues.",
+      "poseBrief": "Debout de profil contre un pilier, bras droit replié tenant un petit éclat au niveau des yeux et gauche pendant librement; jambes croisées au niveau des chevilles.",
+      "backgroundId": "tessera-vale-wave3-cg13",
+      "poseId": "tessera-vale-wave3-cg13",
+      "background": {
+        "location": "Passage d’archives original entre deux jardins suspendus du Nexus.",
+        "foreground": "Pied de pilier ivoire et jardinière d’herbes violettes, sol en pavés roses pâles.",
+        "midground": "Version masculine de Tessera, visage et corps sans exagération, bob prune/rose et tenue asymétrique identiques, pas de costume croisé.",
+        "background": "Passerelles vertes et verrières d’or, ville floue visible entre les feuilles.",
+        "lighting": "Lumière de fin d’après-midi rose et vert doux, visage lisible."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/13-genderSwap.txt"
+    },
+    {
+      "slot": "CG14",
+      "slotNumber": 14,
+      "type": "zombieVersion",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "WhatIf de corruption de mémoire non graphique : facettes roses parasitées de fines lignes blanches, choix personnel luttant contre le remplacement.",
+      "poseBrief": "Buste penché de trois quarts, pieds bien au sol; main droite tenant son propre poignet gauche levé dont partent deux éclats tremblants, expression résistante consciente.",
+      "backgroundId": "tessera-vale-wave3-cg14",
+      "poseId": "tessera-vale-wave3-cg14",
+      "background": {
+        "location": "Galerie de mémoires abandonnée originale du Nexus après panne.",
+        "foreground": "Cadres vides à terre et très fines particules lumineuses, aucune chair blessée.",
+        "midground": "Tessera entière garde corps unique et rose à gauche; lignes blanches contenues sur les seules surfaces roses, pas de nouvelles blessures.",
+        "background": "Vitres de mémoire grisées et portes ouvertes sur un couloir vide sombre.",
+        "lighting": "Lumière violette basse, rose des éclats et une seule bande blanche de secours."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/14-zombieVersion.txt"
+    },
+    {
+      "slot": "CG15",
+      "slotNumber": 15,
+      "type": "firstStep",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "WhatIf temporel : premier choix autonome de Tessera juste après son verdict des Archives, ni rajeunissement ni remplacement d’une autre personne.",
+      "poseBrief": "Descend une marche de profil, jambe droite sombre en avant et gauche rose sur la marche haute; main gauche ouverte libérant un éclat et droite tenant le bord du manteau.",
+      "backgroundId": "tessera-vale-wave3-cg15",
+      "poseId": "tessera-vale-wave3-cg15",
+      "background": {
+        "location": "Escalier de sortie original du Juge des Trames vers un quai d’Atrium.",
+        "foreground": "Trois marches ivoire usées et petit éclat rose s’éloignant dans l’air.",
+        "midground": "Tessera entière traverse le seuil en gardant son asymétrie source et expression déterminée.",
+        "background": "Quai courbe, mer de brouillard pâle et premiers toits de la Cité-Mosaïque.",
+        "lighting": "Aube dorée pâle, ombres roses discrètes et horizon nouveau clairement ouvert."
+      },
+      "status": "planned-not-produced",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/tessera/15-firstStep.txt"
+    }
+  ],
+  "canonicalFidelityApproved": false
+}

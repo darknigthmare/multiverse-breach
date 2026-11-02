@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "safiya_nadir",
+  "heroId": "safiya_nadir",
+  "characterName": "Safiya Nadir",
+  "incarnation": "Aevum Fracture — Safiya Nadir, canon original du projet (2026) — selected current V2",
+  "status": "internal-current-v2-portrait-inspected-source-qualified-with-limitations",
+  "sourceKind": "original-project-internal-canon",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": true,
+  "oldAtlasActuallyViewed": true,
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/aevum_fracture/heroes/safiya_nadir.png",
+      "sha256": "064446c3c72a249fe2afc1cbcb6df0b24228baa1710abff3d65b77c0ed9825cc",
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "viewed": true,
+      "inspected": true,
+      "canonicalProjectReference": true,
+      "referencePurpose": "identity"
+    },
+    {
+      "path": "/sprites/generated/heroes/aevum-fracture/safiya-nadir.png",
+      "sha256": "7094d8c5adf16f6472db3d31a01aeb447b88676985d1a8098ab7e426ad1eb623",
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Human medium-brown skin, purple hood and pale lavender scarf, long split purple coat over dark full trousers, high lace purple boots."
+    ],
+    "face": [
+      "Warm medium-brown skin, dark expressive eyes, short dark hair mostly under hood, one purple dangling earring; small silver square buckle on hood."
+    ],
+    "equipment": [
+      "Two hands carry large rectangular archive projector at chest: anatomical RIGHT hand on rear grip (viewer left), LEFT hand supports forward underside; dark gray/purple body with silver blocks and large circular lavender luminous front lens aimed viewer right, projecting floating document panels. Device is archive projector, not generic rifle."
+    ],
+    "costume": [
+      "Purple hooded long split coat with lavender inner panel/scarf, dark full trousers, leather cross-body straps/belts and pouches, small purple vials, dark gloves and tall purple boots."
+    ]
+  },
+  "scopeLimitations": [
+    "Internal original-project authority only; no external franchise certification.",
+    "Single front three-quarter portrait; hidden reverse geometry and unreadable fine marks unknown. Absolute 1:1 fidelity is not certified.",
+    "Chronological age not established; retain apparent source proportions, opaque family-safe clothing and no romance.",
+    "Old atlas navy/gold short tunic, white loose trousers, high ponytail, no purple hood or archive projector."
+  ],
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actuallyRead": true,
+    "universeKey": "aevum_fracture",
+    "heroRecord": {
+      "id": "safiya_nadir",
+      "name": "Safiya Nadir",
+      "category": "hacker",
+      "combatRole": "archives / contre-propagande",
+      "loreRole": "Historienne de l’Assemblée Océanique qui conserve des sources contradictoires au lieu d’élire une vérité officielle.",
+      "primaryColor": "#5a189a",
+      "secondaryColor": "#e0aaff",
+      "weaponType": "archive_projector",
+      "stats": {
+        "hp": 112,
+        "atk": 13,
+        "def": 7,
+        "spd": 10
+      },
+      "simple": {
+        "name": "Projection de Source",
+        "type": "beam",
+        "dmg": 0.9
+      },
+      "secondary": {
+        "name": "Note de Bas de Page",
+        "type": "glitch",
+        "cd": 5,
+        "dmg": 1.8
+      },
+      "defense": {
+        "name": "Référence Croisée",
+        "type": "shield",
+        "dur": 2.4,
+        "reduce": 0.86
+      },
+      "special": {
+        "name": "Archives des Vies Non Advenues",
+        "type": "glitch_aoe",
+        "dmg": 4.9,
+        "color": "#c77dff"
+      },
+      "universe": "Aevum Fracture",
+      "sourceType": "original",
+      "weaponColor": "#e0aaff"
+    },
+    "worldLore": {
+      "origin": {
+        "fr": "Aevum Fracture est une uchronie entièrement fictive où quatre versions d’une même capitale et de ses nations se superposent après l’invention du Moteur chronal."
+      },
+      "breach": {
+        "fr": "Le Sans-Auteur propose de résoudre les contradictions en choisissant une seule ligne victorieuse et en transformant les autres populations en erreurs."
+      },
+      "coreConflict": {
+        "fr": "Conserver les sources, les témoins et les conséquences de plusieurs histoires sans romantiser une timeline comme monde parfait."
+      }
+    },
+    "stages": [
+      {
+        "id": "uchronia_four_midnights",
+        "name": {
+          "fr": "Capitale aux Quatre Minuits",
+          "en": "Capital of Four Midnights"
+        },
+        "mode": "Smash",
+        "difficulty": "Hard",
+        "objectiveType": "control",
+        "boss": "Général Qui-N’a-Jamais-Perdu",
+        "setting": {
+          "fr": "Quatre skylines alternent toutes les trente secondes et changent armes, plateformes et dangers."
+        },
+        "universe": "Aevum Fracture",
+        "sourceUniverses": [
+          "Aevum Fracture"
+        ],
+        "sourceType": "original",
+        "stageKey": "uchronia_four_midnights"
+      },
+      {
+        "id": "uchronia_ministry_correct_history",
+        "name": {
+          "fr": "Ministère de l’Histoire Correcte",
+          "en": "Ministry of Correct History"
+        },
+        "mode": "Tactics",
+        "difficulty": "Very Hard",
+        "objectiveType": "artifact",
+        "boss": "Ministre d’Hier",
+        "setting": {
+          "fr": "Archives labyrinthiques où trois sources contradictoires doivent être placées dans le même dossier."
+        },
+        "universe": "Aevum Fracture",
+        "sourceUniverses": [
+          "Aevum Fracture"
+        ],
+        "sourceType": "original",
+        "stageKey": "uchronia_ministry_correct_history"
+      },
+      {
+        "id": "uchronia_one_history_engine",
+        "name": {
+          "fr": "Moteur de l’Histoire Unique",
+          "en": "One True History Engine"
+        },
+        "mode": "RPG",
+        "difficulty": "Expert",
+        "objectiveType": "overload",
+        "boss": "Moteur de l’Histoire Unique",
+        "setting": {
+          "fr": "Boss à quatre timelines; un choix sauvegardé dans une ligne modifie les trois autres sans les remplacer."
+        },
+        "universe": "Aevum Fracture",
+        "sourceUniverses": [
+          "Aevum Fracture"
+        ],
+        "sourceType": "original",
+        "stageKey": "uchronia_one_history_engine"
+      }
+    ]
+  },
+  "sourceRefs": [
+    "/images/oc-worlds/v2/aevum_fracture/heroes/safiya_nadir.png",
+    "src/game/originalUniversesManifest.json"
+  ],
+  "sourceAuthority": "internalCanonicalOriginalProject",
+  "reinspection28Oct": {
+    "sourceActuallyOpened": true,
+    "historicalAtlasActuallyOpened": true,
+    "sourceSha256": "064446c3c72a249fe2afc1cbcb6df0b24228baa1710abff3d65b77c0ed9825cc",
+    "oldAtlasSha256": "7094d8c5adf16f6472db3d31a01aeb447b88676985d1a8098ab7e426ad1eb623",
+    "inspectedAt": "2026-10-28T08:47:47.212585+00:00",
+    "actualNotes": "Purple hood with square silver buckle, lavender wrapped scarf, short black hair partly visible, warm brown face/dark eyes/dangling purple earring. Long split purple coat with lavender center tails, opaque dark full trousers and two high purple lace boots. ONE large darkgray/silver rectangular archive projector, RIGHT rear pistol-grip viewerLEFT and LEFT forward underside, big round violet lens toward viewerRIGHT. Source document panels contextual, no hidden unreadable writing certified. Old atlas ponytail/navy-gold tunic/white trousers/no hood or projector materially divergent."
+  }
+}

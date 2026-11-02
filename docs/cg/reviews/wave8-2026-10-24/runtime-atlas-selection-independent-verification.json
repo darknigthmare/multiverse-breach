@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "checkedAt": "2026-10-24T02:52:50.289Z",
+  "reviewer": "/root/wave8_coordination",
+  "status": "passed",
+  "scope": "Runtime atlas selections only, after explicit root freeze; CG registry and CG media are not claimed frozen or audited by this report.",
+  "baseline": {
+    "path": ".tmp/cg-wave8-2026-10-24/runtime-baseline-before-integration.json",
+    "sha256": "fbdb65acaf8388885356c4dbd52a0e1b7c5cbfd03f3ddf3fb349cfb916bf2fe3"
+  },
+  "runtimeSource": {
+    "path": "src/game/spriteAssets.js",
+    "sha256": "4936018b6b475566f4a124ad943bb05188d1515cefa3ace850d88f94a39d3131"
+  },
+  "contextsChecked": [
+    "rpg",
+    "tactics",
+    "melee",
+    "fps",
+    "kart"
+  ],
+  "correctedHeroSubjects": 31,
+  "correctedHeroContextChecks": 155,
+  "previousCorrectedSubjectsUnchanged": 26,
+  "previousVariantsUnchanged": true,
+  "unchangedOtherHeroSelections": 1907,
+  "oldAtlasFilesPreserved": 5,
+  "previousCorrectedAndVariantFilesPreserved": 56,
+  "atlasSelections": [
+    {
+      "characterId": "imani_quell",
+      "currentPath": "/sprites/generated/heroes/neon-requiem/imani-quell-v2-fidelity-wave8-2026-10-24.png",
+      "currentSha256": "1f395d569faafa49c43c6867c0506eceec5ac234013b6e2ac8440ca7b64d30e3",
+      "previousPath": "/sprites/generated/heroes/neon-requiem/imani-quell.png",
+      "previousSha256": "2d9097e27b6bf356ffe0afd9509af854a9f986a6258b6c2212a0652c497b435d",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/imani-quell-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+        "sha256": "3310eef8d71fc5deceac2fe349aad51aeafc2f1253cf278d7e49da0febb807ee"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave8-2026-10-24/imani-quell-sprite-independent-review.json",
+        "sha256": "352a3a1c5f0a3a6fb82d8b1c71e1b9c04f8c8936ffa8301171e465542f3d7075"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "bram_quill",
+      "currentPath": "/sprites/generated/heroes/the-aether-crown/bram-quill-v2-fidelity-wave8-2026-10-24.png",
+      "currentSha256": "2e612083f93c6cfa419ea43102a4e4fda2cdfa6a84ff9b1f8e9425c40f79bb69",
+      "previousPath": "/sprites/generated/heroes/the-aether-crown/bram-quill.png",
+      "previousSha256": "c047710378f548ecac97e655539dea98fb5272e7d170a226b8cdee9de46c6244",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/bram-quill-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+        "sha256": "7145b2f347c02764b1577b6008b5f8943fa1ad167758e25bb880cc42532b5f31"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave8-2026-10-24/bram-quill-sprite-independent-review.json",
+        "sha256": "9f7d18f86358e411da2dcbd6132e07a3802bf30ddb1e0457ff3278c9dee4833d"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          241,
+          242,
+          242,
+          241,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "lio_ferrante",
+      "currentPath": "/sprites/generated/heroes/meridian-clockwork/lio-ferrante-v2-fidelity-wave8-2026-10-24.png",
+      "currentSha256": "6c705005fc1623528201559c715c0c2d68360a5f0587d2d6d685a9a6f2c8897d",
+      "previousPath": "/sprites/generated/heroes/meridian-clockwork/lio-ferrante.png",
+      "previousSha256": "0bb4585ad3ed54541722b1498848359be535a24a351d628c4f42bbd6a2ba37ff",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/lio-ferrante-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+        "sha256": "e8dfc0220216737855f53087be97e10dbcc69e71b4a18e32c2a70c531833eb2a"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-sprite-independent-review.json",
+        "sha256": "3cc8e60bf6a0ab6be6b18b94a73d4d7f3cf5c818b21fbb85336a92bad98ad527"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 16,
+        "visibleFootBaselinesByCell": [
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239
+        ]
+      }
+    },
+    {
+      "characterId": "anton_rook",
+      "currentPath": "/sprites/generated/heroes/iron-tempest/anton-rook-v2-fidelity-wave8-2026-10-24.png",
+      "currentSha256": "e9a96d6b7f7ec0a5f9903c1f68e029f77de89d2764e299b903743c00bccb1098",
+      "previousPath": "/sprites/generated/heroes/iron-tempest/anton-rook.png",
+      "previousSha256": "ffb0f63aa9146fa03d1098c1e73b16cb9e01f8b98d711a421698ac2c0706b27e",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/anton-rook-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+        "sha256": "ef4e1530448fcc20cc007a68819831494fcf2c3ff4689cfdaed0400f547be373"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave8-2026-10-24/anton-rook-sprite-independent-review.json",
+        "sha256": "d63e208242d7cd60154b9b918ab72fe1ad246bdd2093431dc98147dc56de086d"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "khepri_sen",
+      "currentPath": "/sprites/generated/heroes/kemet-the-devoured-sun/khepri-sen-v2-fidelity-wave8-2026-10-24.png",
+      "currentSha256": "c13ff34fbfc64b2ccbba0d494ffc6188612ed700beb576cf6cb2a501a0fe89e7",
+      "previousPath": "/sprites/generated/heroes/kemet-the-devoured-sun/khepri-sen.png",
+      "previousSha256": "4ec0712a74d543d1c25714ac7bcdf19abcdaceb33e4d04cac3059929964e0664",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/khepri-sen-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+        "sha256": "af1a3cc0c025f944fc0636292b685acc628b99e879cd846c6e148cd7910eae06"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-sprite-independent-review.json",
+        "sha256": "41f1373e521e96c77a4369d1337c4d4bbc194e04cbef1b11e0eb5397a9d307d2"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 15,
+        "visibleFootBaselinesByCell": [
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240
+        ]
+      }
+    }
+  ],
+  "frozenInputPins": [
+    {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "2ab3b5a89add3368b15ee5224e547ad9aa7e35b0b2a7bca24e2b8d75feb6d8a6"
+    },
+    {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "4936018b6b475566f4a124ad943bb05188d1515cefa3ace850d88f94a39d3131"
+    },
+    {
+      "path": "docs/cg/imani-quell-sprite-wave8-2026-10-24.json",
+      "sha256": "d49b86f2e405591b73a7200197c93fda47c66536b640a3717af018dd7b7e4883"
+    },
+    {
+      "path": "docs/audits/imani-quell-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+      "sha256": "3310eef8d71fc5deceac2fe349aad51aeafc2f1253cf278d7e49da0febb807ee"
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/imani-quell-sprite-independent-review.json",
+      "sha256": "352a3a1c5f0a3a6fb82d8b1c71e1b9c04f8c8936ffa8301171e465542f3d7075"
+    },
+    {
+      "path": "docs/cg/bram-quill-sprite-wave8-2026-10-24.json",
+      "sha256": "d6b472a669f59d0d5deea7bc1d66e588b41e5e11affdf854ef6bc3b21c9bfa1d"
+    },
+    {
+      "path": "docs/audits/bram-quill-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+      "sha256": "7145b2f347c02764b1577b6008b5f8943fa1ad167758e25bb880cc42532b5f31"
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/bram-quill-sprite-independent-review.json",
+      "sha256": "9f7d18f86358e411da2dcbd6132e07a3802bf30ddb1e0457ff3278c9dee4833d"
+    },
+    {
+      "path": "docs/cg/lio-ferrante-sprite-wave8-2026-10-24.json",
+      "sha256": "cc685b8cb8e6807139c2abc7a02660bb11a69b62c9c3bac5b68742db7d571562"
+    },
+    {
+      "path": "docs/audits/lio-ferrante-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+      "sha256": "e8dfc0220216737855f53087be97e10dbcc69e71b4a18e32c2a70c531833eb2a"
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-sprite-independent-review.json",
+      "sha256": "3cc8e60bf6a0ab6be6b18b94a73d4d7f3cf5c818b21fbb85336a92bad98ad527"
+    },
+    {
+      "path": "docs/cg/anton-rook-sprite-wave8-2026-10-24.json",
+      "sha256": "951a831e9770c00d7b283e3b965124ca0d3f41aaba30448e1307a14fe60a13d8"
+    },
+    {
+      "path": "docs/audits/anton-rook-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+      "sha256": "ef4e1530448fcc20cc007a68819831494fcf2c3ff4689cfdaed0400f547be373"
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/anton-rook-sprite-independent-review.json",
+      "sha256": "d63e208242d7cd60154b9b918ab72fe1ad246bdd2093431dc98147dc56de086d"
+    },
+    {
+      "path": "docs/cg/khepri-sen-sprite-wave8-2026-10-24.json",
+      "sha256": "a7ae3465f35d5a29f50fd1817e8551d05e5b82d98a32a9f06b0514cc2fe0cc3f"
+    },
+    {
+      "path": "docs/audits/khepri-sen-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+      "sha256": "af1a3cc0c025f944fc0636292b685acc628b99e879cd846c6e148cd7910eae06"
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-sprite-independent-review.json",
+      "sha256": "41f1373e521e96c77a4369d1337c4d4bbc194e04cbef1b11e0eb5397a9d307d2"
+    }
+  ],
+  "certifiesPerfectVisualFidelity": false,
+  "visualReviewScope": "Verifies bindings to independent sixteen-frame reviews. Does not add a new full sixteen-frame visual review; verifies the five independent review bindings."
+}

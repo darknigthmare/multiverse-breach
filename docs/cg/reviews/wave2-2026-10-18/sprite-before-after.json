@@ -1,0 +1,489 @@
+{
+  "schemaVersion": 1,
+  "publishedAt": "2026-10-18",
+  "purpose": "Verifiable 3x3 sprite comparison using real external sources and actual historical/current frame 0 files.",
+  "output": {
+    "path": "docs/cg/reviews/wave2-2026-10-18/sprite-before-after.webp",
+    "sha256": "ced2f92cb5b17c192c45603dc96954f8cba510aef88505644910d167f730b1ee",
+    "bytes": 575572,
+    "width": 1528,
+    "height": 1826,
+    "format": "webp",
+    "lossless": true
+  },
+  "columns": [
+    "Source réellement consultée",
+    "Ancien atlas · frame 0",
+    "Atlas courant · frame 0"
+  ],
+  "rows": [
+    {
+      "heroId": "devil_may_cry_dante",
+      "label": "Dante — Devil May Cry 5 (2019)",
+      "runtimeSelectionVerifiedAgainst": "src/game/spriteAssets.js#CORRECTED_CANON_HERO_SPRITES",
+      "cells": [
+        {
+          "label": "Source réellement consultée",
+          "kind": "official-promotional-render-third-party-mirror",
+          "generated": false,
+          "sourceWasConsulted": true,
+          "input": {
+            "path": "docs/cg/references/wave2-2026-10-18/dante/dante-dmc5-official-render-mirror.png",
+            "sha256": "343b5f35d3ad061e6dea846805ac6ba2f1915848a7927fa3bfd7f32040d6a670",
+            "bytes": 1437376,
+            "width": 1936,
+            "height": 4605,
+            "actualFormat": "webp",
+            "channels": 4
+          },
+          "sourceRecord": {
+            "evidenceFile": "docs/cg/dante-reference-evidence-wave2-2026-10-18.json",
+            "url": "https://static.wikia.nocookie.net/devilmaycry/images/c/c2/Dante_DMC5.png/revision/latest",
+            "sha256": "343b5f35d3ad061e6dea846805ac6ba2f1915848a7927fa3bfd7f32040d6a670",
+            "role": "official-DMC5-promotional-render-wiki-mirror",
+            "viewed": true,
+            "limitations": null
+          },
+          "technicalCrop": {
+            "left": 0,
+            "top": 0,
+            "width": 1936,
+            "height": 4605,
+            "coordinateSpace": "original-source-image",
+            "reason": "Visible alpha bounds plus 8 pixel padding, no character retouch",
+            "alphaThreshold": 12
+          },
+          "display": {
+            "left": 175,
+            "top": 186,
+            "width": 177,
+            "height": 420,
+            "kernel": "lanczos3",
+            "fit": "contain",
+            "characterMirrored": false,
+            "background": "#9eabb7"
+          },
+          "caption": "Rendu promotionnel officiel / miroir",
+          "caption2": "Source externe réelle · aucune CG générée"
+        },
+        {
+          "label": "Ancien atlas · frame 0",
+          "kind": "historical-project-generated-sprite",
+          "generated": true,
+          "sourceWasConsulted": false,
+          "input": {
+            "path": "public/sprites/generated/heroes/devil-may-cry/devil-may-cry-dante.png",
+            "sha256": "6b45e4263a8ba47313b93d466a1a623918c86dc36c91e45e4f509aff7e3a7511",
+            "bytes": 677702,
+            "width": 1024,
+            "height": 1024,
+            "actualFormat": "png",
+            "channels": 4
+          },
+          "atlasFrame": {
+            "index": 0,
+            "row": 0,
+            "column": 0,
+            "columns": 4,
+            "rows": 4,
+            "exactExtraction": {
+              "left": 0,
+              "top": 0,
+              "width": 256,
+              "height": 256
+            },
+            "decodedRgbaSha256": "ff5dc0c788c7be055a0c8dc167025a3cb84011aa76c83338c3fa5258f69be8ac"
+          },
+          "technicalCrop": {
+            "left": 67,
+            "top": 12,
+            "width": 121,
+            "height": 240,
+            "coordinateSpace": "extracted-frame 0",
+            "reason": "Visible alpha bounds plus 8 pixel padding, no character retouch",
+            "alphaThreshold": 12
+          },
+          "display": {
+            "left": 658,
+            "top": 186,
+            "width": 212,
+            "height": 420,
+            "kernel": "nearest",
+            "fit": "contain",
+            "characterMirrored": false,
+            "background": "#9eabb7"
+          },
+          "caption": "Variante historique conservée",
+          "caption2": "Première case extraite du fichier original"
+        },
+        {
+          "label": "Atlas courant · frame 0",
+          "kind": "current-project-generated-sprite",
+          "generated": true,
+          "sourceWasConsulted": false,
+          "input": {
+            "path": "public/sprites/generated/heroes/devil-may-cry/dante-dmc5-2019-fidelity-2026-10-18.png",
+            "sha256": "f11ee49ab2b99661f84dc15020ae3118bcfd00bb173e2c2d55393f7faf36d0c3",
+            "bytes": 991095,
+            "width": 1024,
+            "height": 1024,
+            "actualFormat": "png",
+            "channels": 4
+          },
+          "atlasFrame": {
+            "index": 0,
+            "row": 0,
+            "column": 0,
+            "columns": 4,
+            "rows": 4,
+            "exactExtraction": {
+              "left": 0,
+              "top": 0,
+              "width": 256,
+              "height": 256
+            },
+            "decodedRgbaSha256": "1c4daeab25e7890eb1e5e6c600fc9902ee204029fc1d77c7fcf8571633e7177b"
+          },
+          "technicalCrop": {
+            "left": 68,
+            "top": 13,
+            "width": 119,
+            "height": 236,
+            "coordinateSpace": "extracted-frame 0",
+            "reason": "Visible alpha bounds plus 8 pixel padding, no character retouch",
+            "alphaThreshold": 12
+          },
+          "display": {
+            "left": 1158,
+            "top": 186,
+            "width": 212,
+            "height": 420,
+            "kernel": "nearest",
+            "fit": "contain",
+            "characterMirrored": false,
+            "background": "#9eabb7"
+          },
+          "caption": "Atlas corrigé sélectionné dans le jeu",
+          "caption2": "Première case extraite du fichier courant"
+        }
+      ]
+    },
+    {
+      "heroId": "doomslayer",
+      "label": "Doom Slayer — DOOM Eternal (2020)",
+      "runtimeSelectionVerifiedAgainst": "src/game/spriteAssets.js#CORRECTED_CANON_HERO_SPRITES",
+      "cells": [
+        {
+          "label": "Source réellement consultée",
+          "kind": "official-publisher-trailer-promotional-full-body-frame",
+          "generated": false,
+          "sourceWasConsulted": true,
+          "input": {
+            "path": "docs/cg/references/wave2-2026-10-18/doomslayer/eternal-hires-full-body-82s.jpg",
+            "sha256": "319b7ed646758b3983c4a1c27ba0ad1b319ec24c81f7f2870e232f89b8ae46bf",
+            "bytes": 141337,
+            "width": 1920,
+            "height": 1080,
+            "actualFormat": "jpeg",
+            "channels": 3
+          },
+          "sourceRecord": {
+            "evidenceFile": "docs/cg/doomslayer-reference-evidence-wave2-2026-10-18.json",
+            "url": "https://steamcdn-a.akamaihd.net/steam/apps/256778598/movie_max.mp4",
+            "sha256": "319b7ed646758b3983c4a1c27ba0ad1b319ec24c81f7f2870e232f89b8ae46bf",
+            "role": "publisher-trailer-high-resolution-full-body-reference",
+            "viewed": true,
+            "limitations": [
+              "Official1080p final promotional model stance with both legs/boots visible. Strong orange lighting alters color and lower boots partly overlap foreground demon shapes; not a neutral360-degree sheet."
+            ]
+          },
+          "technicalCrop": {
+            "left": 700,
+            "top": 110,
+            "width": 590,
+            "height": 900,
+            "coordinateSpace": "original-source-image",
+            "reason": "Declared rectangular full-body promotional crop, original pixels unchanged",
+            "alphaThreshold": 12
+          },
+          "display": {
+            "left": 126,
+            "top": 750,
+            "width": 275,
+            "height": 420,
+            "kernel": "lanczos3",
+            "fit": "contain",
+            "characterMirrored": false,
+            "background": "#9eabb7"
+          },
+          "caption": "Modèle promo officiel / vidéo à 82 s",
+          "caption2": "Éclairage et occultations d’origine conservés"
+        },
+        {
+          "label": "Ancien atlas · frame 0",
+          "kind": "historical-project-generated-sprite",
+          "generated": true,
+          "sourceWasConsulted": false,
+          "input": {
+            "path": "public/sprites/generated/heroes/doom/doomslayer.png",
+            "sha256": "812ae8bd775b780078adebfa953551ab397c6be45e7c7a791b5d432d3a53d791",
+            "bytes": 1017388,
+            "width": 1024,
+            "height": 1024,
+            "actualFormat": "png",
+            "channels": 4
+          },
+          "atlasFrame": {
+            "index": 0,
+            "row": 0,
+            "column": 0,
+            "columns": 4,
+            "rows": 4,
+            "exactExtraction": {
+              "left": 0,
+              "top": 0,
+              "width": 256,
+              "height": 256
+            },
+            "decodedRgbaSha256": "e43c9753811925481d8c7153dc189f3acfcf8b916577cc03823595d163a18232"
+          },
+          "technicalCrop": {
+            "left": 34,
+            "top": 9,
+            "width": 190,
+            "height": 240,
+            "coordinateSpace": "extracted-frame 0",
+            "reason": "Visible alpha bounds plus 8 pixel padding, no character retouch",
+            "alphaThreshold": 12
+          },
+          "display": {
+            "left": 597,
+            "top": 750,
+            "width": 333,
+            "height": 420,
+            "kernel": "nearest",
+            "fit": "contain",
+            "characterMirrored": false,
+            "background": "#9eabb7"
+          },
+          "caption": "Variante historique conservée",
+          "caption2": "Première case extraite du fichier original"
+        },
+        {
+          "label": "Atlas courant · frame 0",
+          "kind": "current-project-generated-sprite",
+          "generated": true,
+          "sourceWasConsulted": false,
+          "input": {
+            "path": "public/sprites/generated/heroes/doom/doomslayer-eternal-2020-fidelity-2026-10-18.png",
+            "sha256": "b5b8cecca222497eb1f0b9789c1cf557a7e2aa5119a87a46d1c24b1680aebdc8",
+            "bytes": 865622,
+            "width": 1024,
+            "height": 1024,
+            "actualFormat": "png",
+            "channels": 4
+          },
+          "atlasFrame": {
+            "index": 0,
+            "row": 0,
+            "column": 0,
+            "columns": 4,
+            "rows": 4,
+            "exactExtraction": {
+              "left": 0,
+              "top": 0,
+              "width": 256,
+              "height": 256
+            },
+            "decodedRgbaSha256": "d1746b54a8469da6a303a2b719c86ee855ba3bca191f4d4708a96de16a205a98"
+          },
+          "technicalCrop": {
+            "left": 47,
+            "top": 51,
+            "width": 162,
+            "height": 198,
+            "coordinateSpace": "extracted-frame 0",
+            "reason": "Visible alpha bounds plus 8 pixel padding, no character retouch",
+            "alphaThreshold": 12
+          },
+          "display": {
+            "left": 1092,
+            "top": 750,
+            "width": 344,
+            "height": 420,
+            "kernel": "nearest",
+            "fit": "contain",
+            "characterMirrored": false,
+            "background": "#9eabb7"
+          },
+          "caption": "Atlas corrigé sélectionné dans le jeu",
+          "caption2": "Première case extraite du fichier courant"
+        }
+      ]
+    },
+    {
+      "heroId": "chris_redfield",
+      "label": "Chris Redfield — Resident Evil 1 (1996)",
+      "runtimeSelectionVerifiedAgainst": "src/game/spriteAssets.js#CORRECTED_CANON_HERO_SPRITES",
+      "cells": [
+        {
+          "label": "Source réellement consultée",
+          "kind": "official-finalized-concept-art-third-party-mirror",
+          "generated": false,
+          "sourceWasConsulted": true,
+          "input": {
+            "path": "docs/cg/references/chris-redfield-re1-1996/RE1ChrisConceptArtwork.png",
+            "sha256": "cb0ac8b7ac20ed2ce55fcf935f6eb5cff2c1ef76462a5dacaa31e8cc1962c31b",
+            "bytes": 114796,
+            "width": 623,
+            "height": 1278,
+            "actualFormat": "webp",
+            "channels": 4
+          },
+          "sourceRecord": {
+            "evidenceFile": "docs/cg/chris-redfield-reference-evidence-2026-10-18.json",
+            "url": "https://static.wikia.nocookie.net/residentevil/images/0/05/RE1ChrisConceptArtwork.png/revision/latest",
+            "sha256": "cb0ac8b7ac20ed2ce55fcf935f6eb5cff2c1ef76462a5dacaa31e8cc1962c31b",
+            "role": "official-character-artwork-rehosted",
+            "viewed": true,
+            "limitations": "Finalized1996concept art identified by fan-maintained game gallery; official artwork on third-party host, not independently verified original publication scan."
+          },
+          "technicalCrop": {
+            "left": 23,
+            "top": 45,
+            "width": 548,
+            "height": 1197,
+            "coordinateSpace": "original-source-image",
+            "reason": "Visible alpha bounds plus 8 pixel padding, no character retouch",
+            "alphaThreshold": 12
+          },
+          "display": {
+            "left": 168,
+            "top": 1314,
+            "width": 192,
+            "height": 420,
+            "kernel": "lanczos3",
+            "fit": "contain",
+            "characterMirrored": false,
+            "background": "#9eabb7"
+          },
+          "caption": "Concept final officiel 1996 / miroir",
+          "caption2": "Source externe réelle · aucune CG générée"
+        },
+        {
+          "label": "Ancien atlas · frame 0",
+          "kind": "historical-project-generated-sprite",
+          "generated": true,
+          "sourceWasConsulted": false,
+          "input": {
+            "path": "public/sprites/generated/heroes/resident-evil/chris-redfield.png",
+            "sha256": "69c395511c288b9950af06a81c58728aab7d7aecdef23058b8cfaec513c2417a",
+            "bytes": 835580,
+            "width": 1024,
+            "height": 1024,
+            "actualFormat": "png",
+            "channels": 4
+          },
+          "atlasFrame": {
+            "index": 0,
+            "row": 0,
+            "column": 0,
+            "columns": 4,
+            "rows": 4,
+            "exactExtraction": {
+              "left": 0,
+              "top": 0,
+              "width": 256,
+              "height": 256
+            },
+            "decodedRgbaSha256": "ebdb86beb40957a59786a4703b49ca4afc52e35b830a3a8a3f25dc310e4b5e93"
+          },
+          "technicalCrop": {
+            "left": 70,
+            "top": 4,
+            "width": 116,
+            "height": 248,
+            "coordinateSpace": "extracted-frame 0",
+            "reason": "Visible alpha bounds plus 8 pixel padding, no character retouch",
+            "alphaThreshold": 12
+          },
+          "display": {
+            "left": 666,
+            "top": 1314,
+            "width": 196,
+            "height": 420,
+            "kernel": "nearest",
+            "fit": "contain",
+            "characterMirrored": false,
+            "background": "#9eabb7"
+          },
+          "caption": "Variante historique conservée",
+          "caption2": "Première case extraite du fichier original"
+        },
+        {
+          "label": "Atlas courant · frame 0",
+          "kind": "current-project-generated-sprite",
+          "generated": true,
+          "sourceWasConsulted": false,
+          "input": {
+            "path": "public/sprites/generated/heroes/resident-evil/chris-redfield-re1-1996-fidelity-2026-10-18.png",
+            "sha256": "758d421495de61ed9200e4490475e10385772408a91965cec83968c08941279a",
+            "bytes": 921559,
+            "width": 1024,
+            "height": 1024,
+            "actualFormat": "png",
+            "channels": 4
+          },
+          "atlasFrame": {
+            "index": 0,
+            "row": 0,
+            "column": 0,
+            "columns": 4,
+            "rows": 4,
+            "exactExtraction": {
+              "left": 0,
+              "top": 0,
+              "width": 256,
+              "height": 256
+            },
+            "decodedRgbaSha256": "765660f52075c0ed5cce13e01f58d4f9a43ee6255e5da2c52c5ca254fdf31d86"
+          },
+          "technicalCrop": {
+            "left": 59,
+            "top": 16,
+            "width": 138,
+            "height": 233,
+            "coordinateSpace": "extracted-frame 0",
+            "reason": "Visible alpha bounds plus 8 pixel padding, no character retouch",
+            "alphaThreshold": 12
+          },
+          "display": {
+            "left": 1139,
+            "top": 1314,
+            "width": 249,
+            "height": 420,
+            "kernel": "nearest",
+            "fit": "contain",
+            "characterMirrored": false,
+            "background": "#9eabb7"
+          },
+          "caption": "Atlas corrigé sélectionné dans le jeu",
+          "caption2": "Première case extraite du fichier courant"
+        }
+      ]
+    }
+  ],
+  "operations": [
+    "Decode original raster files without content edits.",
+    "Extract exact top-left frame 0 from each 1024x1024 four-by-four atlas.",
+    "Technical alpha-bound or declared rectangular crop; no mirrored/recolored/synthesized character pixels.",
+    "Contain-scale external sources with Lanczos3 and pixel sprites with nearest neighbor.",
+    "Composite unchanged images on neutral canvas with labels."
+  ],
+  "canonicalFidelityApproved": false,
+  "notes": [
+    "The source column contains only real externally published artwork or an official publisher trailer frame, never generated CG.",
+    "Doom uses the actual official1080p promotional model frame at 82 s from the consulted trailer, because the Steam cover key art obscures feet; original light and foreground occlusion are retained.",
+    "Reference posing, lighting and proportion differ; this comparison does not certify perfect1:1 detail."
+  ]
+}

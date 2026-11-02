@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "rick",
+  "heroId": "rick",
+  "characterName": "Rick Sanchez",
+  "incarnationProposal": {
+    "label": "Rick and Morty - Rick C-137",
+    "status": "proposed-production-incarnation",
+    "evidence": [
+      "docs/cg/roster-fidelity-authored-locks-2026-10-18.json"
+    ]
+  },
+  "status": "full-body-candidate-inspected-needs-provenance",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "references": [
+    {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-05/research/search-1.json",
+      "sha256": "bc07c88501120cbb79ffa4e5ae0472a7a1271045a0f62160961120d267e0bc52",
+      "role": "actual-web-search-transcript-not-image-source",
+      "query": "Rick Sanchez C-137 official Adult Swim character full body",
+      "viewed": false,
+      "usedForIdentity": false
+    },
+    {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-05/research/fetches/rick-wiki-body.png",
+      "sha256": "3020bda1287ed3713b74c70a6b0fee10085c1436c225dc6d8bf95e8c98f3f734",
+      "viewed": true,
+      "actuallyViewed": true,
+      "role": "appearance-candidate-with-unverified-original-provenance",
+      "referencePurpose": "candidate-only",
+      "usedForIdentity": false
+    }
+  ],
+  "actualFetchAttempts": [
+    {
+      "receiptFile": ".tmp/cg-wave11-2026-10-26/lot-05/research/fetches/rick-official.json",
+      "receiptSha256": "0673093211d673bb26516adbdce8470b8f0cf9e4f2f91069d670a713e302ae57",
+      "name": "rick-official",
+      "url": "https://www.adultswim.com/rick-and-morty",
+      "finalUrl": "https://www.adultswim.com/rick-and-morty",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "path": ".tmp/cg-wave11-2026-10-26/lot-05/research/fetches/rick-official.html",
+      "sha256": "c08e189874164f1a62f5b883003c444a6bbc31d22208048fadfe276faf0051af",
+      "bytes": 126686,
+      "viewed": false,
+      "imageCandidates": [
+        "https://static.adultswim.com/2025-04/RaM-Logo-1400x423.png?w=1200",
+        "https://static.adultswim.com/2025-07/HBOMax-RickAndMorty-1920x1080.jpg?w=160",
+        "https://static.adultswim.com/2025-04/as-ram-logo.png?w=160",
+        "https://static.adultswim.com/2026-06/RAM_S9_09_907_SaluteYourMorts-Preferred.png?w=160",
+        "https://static.adultswim.com/2025-07/HBOMax-RickAndMorty-1920x1080.jpg?w=160",
+        "https://static.adultswim.com/2025-04/as-ram-logo.png?w=160",
+        "https://static.adultswim.com/2026-06/RAM_S9_09_907_SaluteYourMorts-Preferred.png?w=160",
+        "https://static.adultswim.com/2025-04/RaM-ElasticMan-1920x1080.jpg?w=160",
+        "https://static.adultswim.com/2025-04/virtual%20rickalyt.png?w=160",
+        "https://static.adultswim.com/2025-04/GoRickYourself-1920x1080.jpg?w=160",
+        "https://static.adultswim.com/2026-08/ram%20invention.png?w=160",
+        "https://static.adultswim.com/2026-07/curtis%20wendigo.png?w=160",
+        "https://static.adultswim.com/2026-08/2026_RAM_PostPremiere-Images_908_01.png?w=160",
+        "https://static.adultswim.com/2026-07/ram%20spicy.png?w=160",
+        "https://static.adultswim.com/2025-04/ram%20shop.png?w=160",
+        "https://static.adultswim.com/2025-04/RaM-Shop-DigitalDVD-1920x1080.jpg?w=160",
+        "https://i.cdn.turner.com/adultswim/big/img/footer/georgia.png"
+      ]
+    }
+  ],
+  "actualVisualObservations": [
+    "Fullbody219x456Wiki image actuallyopened: tall pale thin Rick, blue-grey spiky hair/unibrow, long white coat/turquoise shirt/brown trousers/yellow belt/white socks/black shoes, LEFT raised grey portaldevice with greenlight. Filepage actuallyopened cites2013Fanart.tv upload byadamforeman, not a directlyverifiedAdultSwimsource, so appearance supportsresearch but originalprovenance/C137matching remains unresolved. Oldatlas actuallyopened, unarmed."
+  ],
+  "sourceImageQualified": false,
+  "sourceRefs": [
+    "https://www.adultswim.com/rick-and-morty",
+    "https://www.adultswim.com/videos/rick-and-morty/",
+    "docs/cg/roster-fidelity-authored-locks-2026-10-18.json"
+  ],
+  "scopeLimitations": [
+    "Search results, prose and URL candidates do not qualify identity images.",
+    "No genuine new CG or sprite created for this subject yet; source resolution continues.",
+    "Old project art and generic gameplay equipment cannot establish the external selected incarnation."
+  ],
+  "newGenerationAttempts": 0,
+  "newProviderRefusals": 0,
+  "newCgImages": 0,
+  "blockReason": "Wiki image comesviaFanart.tv; seekfirstparty/canonmatchingvisualcorroboration beforegeneration."
+}

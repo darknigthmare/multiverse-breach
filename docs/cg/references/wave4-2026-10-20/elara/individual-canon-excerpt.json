@@ -1,0 +1,71 @@
+{
+  "sourceFile": "src/game/originalUniversesManifest.json",
+  "scope": "AetherCrown world/Elara-specific internal canon excerpt",
+  "key": "aether_crown",
+  "universe": "The Aether Crown",
+  "visual": {
+    "motif": "skyfoundry",
+    "colors": {
+      "sky": [
+        "#7a5b3a",
+        "#172333"
+      ],
+      "floor": "#3d2d22",
+      "grid": "#e7b85a",
+      "accent": "#65d8ff"
+    }
+  },
+  "lore": {
+    "origin": {
+      "fr": "L’archipel d’Aerolith flotte au-dessus d’un océan de nuages. La Couronne de Laiton contrôle les chaudières, les routes aériennes et l’éther respirable, tandis que les quartiers inférieurs survivent grâce à des machines réparées depuis des générations."
+    },
+    "breach": {
+      "fr": "Une tempête de Brèche alimente le Moteur-Léviathan, navire-usine capable d’aspirer l’éther d’autres Trames. Le Sans-Auteur transforme l’inégalité industrielle en loi cosmique : certains mondes auraient le droit de respirer, les autres non."
+    },
+    "coreConflict": {
+      "fr": "Briser le monopole de l’éther, libérer les îles ouvrières et empêcher la Couronne de convertir le Nexus en empire atmosphérique."
+    }
+  },
+  "hero": {
+    "id": "elara_voss",
+    "name": "Elara Voss",
+    "category": "tactical",
+    "combatRole": "duelliste / commandement",
+    "loreRole": "Capitaine corsaire qui ouvre les routes interdites aux quartiers bas.",
+    "primaryColor": "#7d2235",
+    "secondaryColor": "#d8b25c",
+    "weaponType": "rapier_pistol",
+    "stats": {
+      "hp": 128,
+      "atk": 14,
+      "def": 8,
+      "spd": 7
+    },
+    "simple": {
+      "name": "Tir de Pont",
+      "type": "bullet",
+      "dmg": 1.0
+    },
+    "secondary": {
+      "name": "Fente Barométrique",
+      "type": "melee",
+      "cd": 6,
+      "dmg": 1.9
+    },
+    "defense": {
+      "name": "Parapluie Blindé",
+      "type": "shield",
+      "dur": 2.3,
+      "reduce": 0.8
+    },
+    "special": {
+      "name": "Mutinerie des Cieux",
+      "type": "summon_aoe",
+      "dmg": 4.6,
+      "color": "#65d8ff"
+    },
+    "universe": "The Aether Crown",
+    "sourceType": "original",
+    "weaponColor": "#d8b25c"
+  }
+}

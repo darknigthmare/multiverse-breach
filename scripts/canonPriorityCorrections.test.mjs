@@ -8,7 +8,7 @@ import { ENEMIES_DB } from '../src/game/enemies.js';
 import { CANON_PRIORITY_STAGES } from '../src/game/canonPriorityStages.js';
 import { SOURCE_SCENE_STAGES } from '../src/game/sourceSceneStages.js';
 import { resolveStageEnemyData } from '../src/game/stageEnemyResolver.js';
-import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
+import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
 import { readStaticStages } from './riftDossierStaticStages.mjs';
 
 const heroKit = hero => JSON.stringify([
@@ -18,6 +18,8 @@ const heroKit = hero => JSON.stringify([
 test('Ripley 1979 and Ripley 1986 keep separate source equipment and saved hero IDs', () => {
   const nostromo = getHeroById('ripley');
   const sulaco = getHeroById('ripley_aliens');
+  assert.equal(nostromo.id, 'ripley');
+  assert.equal(sulaco.id, 'ripley_aliens');
   assert.equal(nostromo.universe, 'Alien');
   assert.equal(sulaco.universe, 'Aliens');
   assert.match(nostromo.incarnation, /1979.*Nostromo/);
@@ -29,7 +31,7 @@ test('Ripley 1979 and Ripley 1986 keep separate source equipment and saved hero 
   assert.match(heroKit(sulaco), /M41A/);
   assert.match(heroKit(sulaco), /M240/);
   assert.match(sulaco.special.name, /Power Loader/);
-  assert.equal(getHeroSpriteSheetSrc(nostromo), '/sprites/generated/heroes/alien/ripley.png');
+  assert.equal(getHeroSpriteSheetSrc(nostromo), '/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png');
   assert.equal(getHeroSpriteSheetSrc(sulaco), '/sprites/generated/heroes/aliens/ripley-aliens.png');
 });
 
@@ -40,7 +42,32 @@ test('the 1987 Jungle Hunter excludes later Predator weapons while preserving pr
   assert.doesNotMatch(heroKit(hunter), /disc|combi.?stick/i);
   assert.match(hunter.simple.name, /Wristblade/);
   assert.equal(hunter.secondary.type, 'plasma');
-  assert.equal(getHeroSpriteSheetSrc(hunter), '/sprites/generated/heroes/predator/predator.png');
+  assert.equal(getHeroSpriteSheetSrc(hunter), '/sprites/generated/heroes/predator/predator-v2-fidelity-wave12-2026-11-01.png');
+});
+
+test('the four reviewed Alien and Predator sprites keep their historical atlases as accessible variants', () => {
+  const corrections = [
+    ['ripley', '/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png', '/sprites/generated/heroes/alien/ripley.png'],
+    ['predator', '/sprites/generated/heroes/predator/predator-v2-fidelity-wave12-2026-11-01.png', '/sprites/generated/heroes/predator/predator.png'],
+    ['bishop', '/sprites/generated/heroes/alien/bishop-v2-fidelity-wave12-2026-11-01.png', '/sprites/generated/heroes/alien/bishop.png'],
+    ['greyback_yautja', '/sprites/generated/heroes/predator/greyback-yautja-v2-fidelity-wave12-2026-11-01.png', '/sprites/generated/heroes/predator/greyback-yautja.png']
+  ];
+  for (const [heroId, current, original] of corrections) {
+    const hero = getHeroById(heroId);
+    assert.equal(hero.id, heroId, 'the saved hero identity remains stable');
+    for (const context of ['auto', 'rpg', 'tactics', 'melee', 'nexus', 'collection', 'hud', 'fps']) {
+      assert.equal(getHeroSpriteSheetSrc(hero, context), current, `${heroId} in ${context}`);
+    }
+    const variants = getHeroCompleteSpritePack(hero);
+    assert.ok(Array.isArray(variants), `${heroId} exposes its reviewed and historical sheets`);
+    assert.equal(variants.filter(variant => variant.current).length, 1);
+    assert.equal(variants.find(variant => variant.current)?.src, current);
+    assert.equal(variants.find(variant => variant.id === 'original')?.src, original);
+    assert.equal(variants.find(variant => variant.id === 'original')?.current, false);
+  }
+  const sulaco = getHeroById('ripley_aliens');
+  assert.equal(getHeroSpriteSheetSrc(sulaco), '/sprites/generated/heroes/aliens/ripley-aliens.png');
+  assert.equal(getHeroCompleteSpritePack(sulaco), null, 'the separate 1986 incarnation receives no 1979 correction pack');
 });
 
 test('the final Freeman runtime override stays in Half-Life 2 instead of restoring the gluon gun', () => {

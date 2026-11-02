@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "characterId": "jax_rook",
+  "characterName": "Jax Rook",
+  "universeKey": "neon-requiem",
+  "characterKey": "jax-rook",
+  "incarnation": "Neon Requiem — Jax Rook, portrait V2 individuel actuellement sélectionné",
+  "referenceEvidence": "docs/cg/jax-rook-reference-evidence-wave5-2026-10-22.json",
+  "sourceLimits": [
+    "Autorité canon interne originale du projet; aucune référence externe de franchise ni certification automatique1:1.",
+    "Portrait individuel actuellement choisi par HEROES_DB. Vue principalement arrière trois-quarts : l’armure frontale, petits logos/iris et géométrie cachée ne sont pas entièrement qualifiés. Préserver sans surinterpréter les détails visibles.",
+    "L’ancienne image runtime est conservée exclusivement pour comparaison historique et n’établit pas l’identité V2.",
+    "Le même portrait est réutilisé pour équipement CG02 et vocabulaire de décor CG03, sans ajouter de nouvelle source indépendante.",
+    "Apparence et proportions de la référence conservées; âge documentaire inconnu, scènes familiales sans romance. CG09–11 Fan Art; CG12–15 What If; CG05 Nexus du jeu.",
+    "Tous les décors sont de nouvelles compositions cohérentes, pas des plans officiels préexistants."
+  ],
+  "slots": [
+    {
+      "slot": "CG01",
+      "slotNumber": 1,
+      "type": "characterSolo",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Jax V2 entier, identité et équipement personnels inchangés.",
+      "poseBrief": "Debout de trois quarts face, jambes ouvertes, main droite tenant la poignée baissée, ligne magenta reposant en S devant lui, main gauche sur une sangle; tête légèrement de profil.",
+      "backgroundId": "jax-rook-wave5-cg01",
+      "poseId": "jax-rook-wave5-cg01",
+      "background": {
+        "location": "Terrasse de ventilation originale au-dessus de la Ligne-Pluie.",
+        "foreground": "Grille sombre humide et petite borne cyan au bord inférieur.",
+        "midground": "Jax entier séparé de tous les éléments du décor, câble entier au sol.",
+        "background": "Conduits hauts et tours décalées percées de rares fenêtres magenta.",
+        "lighting": "Aube artificielle violette et lumière cyan douce, visage lisible."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/01-characterSolo.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG02",
+      "slotNumber": 2,
+      "type": "weaponSolo",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Monofilament signature entier seul, poignée noire, câble segmenté magenta et pointe métallique; aucun corps.",
+      "poseBrief": "Composition d’objet seul : poignée horizontale à gauche sur deux petits supports, câble souple en double boucle espacée, pointe triangulaire posée à droite sans rien couper.",
+      "backgroundId": "jax-rook-wave5-cg02",
+      "poseId": "jax-rook-wave5-cg02",
+      "background": {
+        "location": "Atelier original de maintenance clandestine sous Nadir-9.",
+        "foreground": "Table graphite propre à angles bas et support gris sans inscriptions.",
+        "midground": "Monofilament entier exposé seul, poignée et pointe intégrales bien espacées.",
+        "background": "Tiroirs de composants flous et outils neutres suspendus au fond.",
+        "lighting": "Éclairage d’atelier froid violet et reflet magenta du câble."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/02-weaponSolo.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG03",
+      "slotNumber": 3,
+      "type": "decorSolo",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Lieu seul cohérent de Nadir-9, sans personnage ni arme personnelle.",
+      "poseBrief": "Vue plongeante d’un échangeur de rails mémoriels sur cinq niveaux, grandes diagonales architecturales; aucun personnage.",
+      "backgroundId": "jax-rook-wave5-cg03",
+      "poseId": "jax-rook-wave5-cg03",
+      "background": {
+        "location": "Échangeur original des archives civiques Helix.",
+        "foreground": "Passerelle noire mouillée et garde-corps en panneaux continus de verre cyan; aucune silhouette humaine.",
+        "midground": "Passerelles larges vides croisées entre grands cylindres d’archives remplis uniquement de cubes et puces géométriques lumineux.",
+        "background": "Tours noires massives et grand noyau de données magenta loin au fond.",
+        "lighting": "Nuit violette sous pluie fine, balises cyan étagées."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/03-decorSolo-empty-glass-architecture-v3.txt",
+      "originalPromptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/03-decorSolo.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG04",
+      "slotNumber": 4,
+      "type": "coherentScene",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Ancien récupérateur de dettes, Jax protège les identités libérées en réparant un verrou de mémoire civil.",
+      "poseBrief": "Assis sur une caisse basse, buste penché, deux avant-bras vers un verrou fixé au mur à gauche, arme désactivée enroulée dans un étui ouvert au pied.",
+      "backgroundId": "jax-rook-wave5-cg04",
+      "poseId": "jax-rook-wave5-cg04",
+      "background": {
+        "location": "Alcôve originale d’un refuge Ghostline.",
+        "foreground": "Petite caisse à outils fermée et flaque ovale à l’écart des pieds.",
+        "midground": "Jax entier assis, visage de profil, gants en intervention technique.",
+        "background": "Mur de capsules mémorielles anonymes, rideau de câbles et porte sombre.",
+        "lighting": "Lampe de maintenance cyan et faibles reflets magenta."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/04-coherentScene-single-blade-grip-revision.txt",
+      "originalPromptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/04-coherentScene.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG05",
+      "slotNumber": 5,
+      "type": "actionScene",
+      "family": "Nexus",
+      "canonStatus": "nexus-variant",
+      "themeBrief": "Action Nexus Ruée Monofilament, adaptation du jeu sans ennemi blessé.",
+      "poseBrief": "Fente basse vers la gauche, jambe avant fléchie et arrière tendue; bras droit étendu dessine un grand arc de câble vers un anneau de données vide, gauche en contrepoids.",
+      "backgroundId": "jax-rook-wave5-cg05",
+      "poseId": "jax-rook-wave5-cg05",
+      "background": {
+        "location": "Viaduc original de transit entre tours Ghostline.",
+        "foreground": "Pavés noirs avec reflets en lignes courbes, aucun corps au sol.",
+        "midground": "Jax entier en mouvement, monofilament complet loin du visage et des membres.",
+        "background": "Pylônes de suspension et silhouettes d’antenne dans le brouillard violet.",
+        "lighting": "Impulsion magenta vive et pluie cyan en diagonale."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/05-actionScene.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG06",
+      "slotNumber": 6,
+      "type": "introPose",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Arrivée discrète du personnage, incarnation V2 intacte.",
+      "poseBrief": "Trois quarts arrière marchant vers la droite, botte droite levée au-dessus d’une marche basse, bras droit tenant la poignée rabattue derrière, regard tourné vers la nouvelle station.",
+      "backgroundId": "jax-rook-wave5-cg06",
+      "poseId": "jax-rook-wave5-cg06",
+      "background": {
+        "location": "Quai original d’un ascenseur-métro désert de Nadir-9.",
+        "foreground": "Bord de quai haut noir et bande cyan sans texte.",
+        "midground": "Jax entier franchit le seuil sous deux lampes étroites.",
+        "background": "Portes de wagon ouvertes et tunnel vertical plongé dans le violet.",
+        "lighting": "Contrejour cyan doux et halo magenta au loin."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/06-introPose.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG07",
+      "slotNumber": 7,
+      "type": "victoryPose",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Victoire contenue après libération d’un accès mémoriel.",
+      "poseBrief": "Debout sur jambe droite, botte gauche sur un bloc bas, main gauche au poing devant la poitrine, droite tenant la poignée basse; tête relevée sans crier.",
+      "backgroundId": "jax-rook-wave5-cg07",
+      "poseId": "jax-rook-wave5-cg07",
+      "background": {
+        "location": "Toit original d’un relais Ghostline enfin restauré.",
+        "foreground": "Deux blocs de maintenance intacts sur une dalle large.",
+        "midground": "Jax en entier, cape retombant du côté libre, câble rangé en boucle basse.",
+        "background": "Antennes d’archives qui se rallument en cyan dans des tours éloignées.",
+        "lighting": "Clair de lune artificiel froid, petites lumières magenta."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/07-victoryPose.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG08",
+      "slotNumber": 8,
+      "type": "defeatPose",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "themeBrief": "Repli vivant non graphique; fatigue du système mécanique, sans blessure ouverte.",
+      "poseBrief": "Accroupi de profil derrière un pilier, coude gauche sur genou, tête légèrement baissée, droite gardant la poignée immobile au sol; deux bottes visibles.",
+      "backgroundId": "jax-rook-wave5-cg08",
+      "poseId": "jax-rook-wave5-cg08",
+      "background": {
+        "location": "Coursive originale de refuge après une panne du réseau.",
+        "foreground": "Dalle sombre, rares particules lumineuses sans débris blessants.",
+        "midground": "Jax entier bas près d’un pilier à gauche, silhouette dégagée.",
+        "background": "Grand rideau de pluie et passerelle sans lumière derrière lui.",
+        "lighting": "Éclairage d’urgence violet doux et batterie magenta faible."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/08-defeatPose.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG09",
+      "slotNumber": 9,
+      "type": "beachFamily",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "themeBrief": "Fan Art de repos familial sur plage artificielle de Nadir-9, identité et armure de base conservées.",
+      "poseBrief": "Assis de profil sur un rebord bas, deux jambes pliées, bottes séparées dans le sable, mains posées sur les genoux; arme désactivée posée à côté, cape derrière.",
+      "backgroundId": "jax-rook-wave5-cg09",
+      "poseId": "jax-rook-wave5-cg09",
+      "background": {
+        "location": "Jardin-plage artificiel original sous dôme municipal.",
+        "foreground": "Sable noir propre, petit coquillage en verre et vague basse.",
+        "midground": "Jax habillé en entier au bord d’un bassin calme, cape posée derrière.",
+        "background": "Palmier artificiel noir et grand dôme transparent avec tours magenta extérieures.",
+        "lighting": "Journée artificielle turquoise très douce et ombres violettes."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/09-beachFamily.txt",
+      "plannedPoseBrief": "Assis de profil sur un rebord bas, jambes étendues mais pieds séparés sur le sable, mains ouvertes reposant sur les genoux, arme désactivée rangée à côté.",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG10",
+      "slotNumber": 10,
+      "type": "maidService",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "themeBrief": "Fan Art service familial : tablier de travail sur armure source, pas de tenue sexualisée.",
+      "poseBrief": "Debout penché légèrement vers la droite, main gauche tient un petit plateau avec deux tasses, droite verse une théière; bottes parallèles, monofilament rangé hors action.",
+      "backgroundId": "jax-rook-wave5-cg10",
+      "poseId": "jax-rook-wave5-cg10",
+      "background": {
+        "location": "Comptoir original d’une cantine Ghostline.",
+        "foreground": "Comptoir bas gris et petite plante de métal non envahissante.",
+        "midground": "Jax entier servant des tasses, tablier gris clair sur son armure graphite.",
+        "background": "Étagères cyan, porte de cuisine et pluie magenta dans une baie étroite.",
+        "lighting": "Éclairage chaud de cantine tempéré de cyan."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/10-maidService.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG11",
+      "slotNumber": 11,
+      "type": "goofy",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "themeBrief": "Fan Art comique : un petit drone de lessive accroche un pan de sa cape, sans modifier son anatomie.",
+      "poseBrief": "En équilibre sur la jambe gauche, droite levée, bras droit ouvert et levé vers la droite tandis que le drone accroche le pan arrière de sa cape à gauche; bras gauche naturellement caché par la cape, monofilament rangé à la hanche.",
+      "backgroundId": "jax-rook-wave5-cg11",
+      "poseId": "jax-rook-wave5-cg11",
+      "background": {
+        "location": "Buanderie technique originale sur une terrasse de quartier.",
+        "foreground": "Panier bas fermé et une chaussette propre près d’une grille.",
+        "midground": "Jax entier, cape suspendue par un petit crochet au drone loin de sa tête.",
+        "background": "Cordes de linge technique, conduits et grands immeubles distants.",
+        "lighting": "Lampes de buanderie cyan et clignotement magenta comique discret."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/11-goofy.txt",
+      "plannedPoseBrief": "En équilibre sur la jambe gauche, droite levée légèrement, bras gauche levé vers un petit drone porteur de chaussette, bras droit bas et ouvert; air surpris contenu.",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG12",
+      "slotNumber": 12,
+      "type": "alignmentSwap",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "What If Jax redevenu collecteur Helix Crown : alignement oppressif inversé, même visage et implants, pas une tenue canon.",
+      "poseBrief": "Debout trois quarts arrière sur un podium bas, bras gauche derrière le dos, droit vertical avec poignée inactive; tête se tourne froidement vers le spectateur.",
+      "backgroundId": "jax-rook-wave5-cg12",
+      "poseId": "jax-rook-wave5-cg12",
+      "background": {
+        "location": "Salle originale de saisie contractuelle de Helix Crown.",
+        "foreground": "Sol noir poli et deux marches sans lettrage.",
+        "midground": "Jax entier en uniforme de commande noir et blanc, mêmes pièces mécaniques magenta et cheveux noirs.",
+        "background": "Arches de stockage très symétriques, grand sceau lumineux abstrait sans mots.",
+        "lighting": "Éclairage blanc glacial et magenta corporatif strict."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/12-alignmentSwap.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG13",
+      "slotNumber": 13,
+      "type": "genderSwap",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "What If genderSwap uniquement : Jaxa Rook, mêmes tenue exosquelette graphite/magenta, équipement et texture de cheveux, pas de costume croisé.",
+      "poseBrief": "Debout de profil gauche, jambe arrière croisée derrière l’appui sans fusion, deux mains autour de la poignée basse; visage féminin anguleux et cheveux noirs hérissés source.",
+      "backgroundId": "jax-rook-wave5-cg13",
+      "poseId": "jax-rook-wave5-cg13",
+      "background": {
+        "location": "Galerie originale de relais au-dessus d’un canal de données.",
+        "foreground": "Garde-corps bas et reflets de lignes cyan dans l’eau sombre.",
+        "midground": "Jaxa entière en profil, cape noire déchirée visible, monofilament rangé en courbe basse.",
+        "background": "Ponts de fibre et colonnes de serveurs en terrasses irrégulières.",
+        "lighting": "Ambiance de crépuscule violet et liserés magenta."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/13-genderSwap.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG14",
+      "slotNumber": 14,
+      "type": "zombieVersion",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "What If corruption zombie du système mnésique, non graphique : pâleur cendrée, signal magenta brisé, pas de plaies ni nouveaux membres.",
+      "poseBrief": "Buste incliné de trois quarts face, deux jambes stables décalées, avant-bras mécaniques suspendus devant, tête penchée; poignée dans droite et câble immobile au sol.",
+      "backgroundId": "jax-rook-wave5-cg14",
+      "poseId": "jax-rook-wave5-cg14",
+      "background": {
+        "location": "Chambre originale de quarantaine d’un vieux coffre Helix.",
+        "foreground": "Poussière lumineuse violet pâle et sol quadrillé intact.",
+        "midground": "Jax entier pâle, yeux magenta discrets, exosquelette identique avec lueurs discontinues.",
+        "background": "Casiers de mémoire noirs inclinés par perspective et porte de sas circulaire fermée.",
+        "lighting": "Éclairage pulsé magenta très doux, lisibilité du visage conservée."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/14-zombieVersion.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    },
+    {
+      "slot": "CG15",
+      "slotNumber": 15,
+      "type": "futureExperienced",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "What If futur expérimenté uniquement : Jax plus expérimenté, quelques mèches grises et patine, mêmes proportions et équipement.",
+      "poseBrief": "Appuyé légèrement contre une rambarde de dos trois quarts, coude gauche sur la barre, main droite tenant la poignée inactive le long de la cuisse; regard calme vers la ville.",
+      "backgroundId": "jax-rook-wave5-cg15",
+      "poseId": "jax-rook-wave5-cg15",
+      "background": {
+        "location": "Belvédère original sur un quartier Ghostline reconstruit.",
+        "foreground": "Rambarde noire entière, végétation de bac sobre au coin du cadre.",
+        "midground": "Jax entier avec quelques mèches argentées dans les cheveux noirs, cape ancienne réparée sans changer sa silhouette.",
+        "background": "Tours résidentielles asymétriques, ponts de données cyan et ciel violet devenu plus clair.",
+        "lighting": "Lumière bleue du matin municipal et reflet magenta tamisé."
+      },
+      "status": "generated-independently-reviewed",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/jax-rook/15-futureExperienced.txt",
+      "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json"
+    }
+  ]
+}

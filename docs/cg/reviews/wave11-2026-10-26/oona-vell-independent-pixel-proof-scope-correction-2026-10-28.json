@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "characterId": "oona_vell",
+  "reviewer": "/root/lot_02_wave11",
+  "operation": "explicit-correction-of-legacy-cardinality-field-name-without-modifying-frozen-proof",
+  "referencedProof": {
+    "path": "docs/cg/reviews/wave11-2026-10-26/oona-vell-partial08-independent-pixel-proof.json",
+    "sha256": "fdcab4b8be83d13c3e693bd3a7114a0a51062e49fcab47f553a3dafca022194b"
+  },
+  "legacyFieldName": "all45ExportsByteExact",
+  "correction": "The field name was copied from a15CG/45asset template and is misleading for this partial delivery. It must not be interpreted as45 actual exports. Actual counts and individual compared asset rows below govern scope.",
+  "actualNativesCompared": 8,
+  "actualExportsCompared": 24,
+  "allActualExportsByteExact": true,
+  "allActualAssetHashesReconfirmed": true,
+  "noFortyFiveExportComparisonClaim": true,
+  "status": "pass-with-explicit-scope-correction",
+  "canonicalFidelityApproved": false
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "joey",
+  "characterName": "Joey Wheeler",
+  "incarnation": "Joey Wheeler — Yu-Gi-Oh Duel Monsters anime (2000)",
+  "status": "needs-reference-researched-not-visually-qualified",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": false,
+  "referenceImagesQualified": [],
+  "actualAttempts": [
+    {
+      "url": "https://www.yugioh-card.com/en/watch/",
+      "attemptedAt": "2026-10-26T08:15:16.128673+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "result": "fetch-failed-reference-unqualified",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.db.yugioh-card.com/yugiohdb/card-search.action",
+      "attemptedAt": "2026-10-26T08:15:16.150585+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "result": "fetch-failed-reference-unqualified",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.yugioh-card.com/en/about/new-to-ygo/",
+      "attemptedAt": "2026-10-26T08:15:16.220973+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "result": "fetch-failed-reference-unqualified",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.yugioh.com/characters/joey-wheeler",
+      "kind": "search-discovered-source-page-no-visual-qualification",
+      "statusCode": 200,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/joey/research/discovered-official.html",
+      "sha256": "f6ce96c0ef4d1dff982974ee87a698afc6eb5b0b87cb2258ddfb1c3c3f7ab4cf",
+      "result": "fetched-needs-image-extraction-and-inspection"
+    },
+    {
+      "url": "https://uploads2.yugioh.com/character/5/detail/detail/joey-l.png?1375717061",
+      "kind": "official-page-linked-image-download-not-yet-inspected",
+      "result": "download-failed-needs-reference",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ],
+  "blockingFindings": [
+    "Fetched page or URL/snippet is not visual reference authority. Need incarnation-matching image bytes and actual inspection."
+  ],
+  "preservation": "No old source/art/atlas changed; all prior CG slots and N/A remain preserved.",
+  "generationStatus": "not-attempted-pending-identity-reference",
+  "toolRefusals": 0
+}

@@ -45,7 +45,7 @@ import {
   getOcCampaignEnding,
   getOcCampaignMission
 } from '../game/ocCampaign';
-import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
+import { CORRECTED_CANON_HERO_SPRITES, getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { OPENAI_COSMETIC_VISUALS, resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
@@ -5712,6 +5712,9 @@ export default function HubScreen({
       const map = new Map(spriteAvailability.groups.flatMap(group => group.outputs.map(output => [output, { output, available: true, source: group.source }])));
       Object.values(MIRELLE_COMPLETE_SPRITES).forEach(output => {
         map.set(output, { output, available: true, source: 'openai-complete-pack' });
+      });
+      Object.entries(CORRECTED_CANON_HERO_SPRITES).forEach(([heroId, output]) => {
+        map.set(output, { output, available: true, source: heroId === 'arca_elyra' ? 'existing-project-frame-packing' : 'openai-reference-correction' });
       });
       DISCIPLINE_SPRITE_REGISTRY.entries.filter(entry => entry.available).forEach(entry => {
         map.set(entry.src, { output: entry.src, available: true, source: 'generated-static-costume' });

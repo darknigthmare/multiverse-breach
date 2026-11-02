@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "characterId": "aurelia_marcellina",
+  "heroId": "aurelia_marcellina",
+  "characterName": "Aurelia Marcellina",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-sixteen-pose-redraw-and-one-real-grip-correction",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "perfect1to1Certified": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/imperium_aeternum/heroes/aurelia_marcellina.png",
+    "sha256": "49ecbbb631fc3b3e12a093f2d744b1bab88aa7369525779bd9b68a5cff328824",
+    "bytes": 2546267,
+    "format": "png"
+  },
+  "image": {
+    "sha256": "9bffee414117793ff228671d542300266c68e9fe9321f537b718bbe6084c37e2",
+    "bytes": 1210255,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/imperium-aeternum/aurelia-marcellina-v2-fidelity-wave7-2026-10-23.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/aurelia-marcellina-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+    "sha256": "ab49ba7ae02c60392ebc744d20050737721e78ffa32540d6dd9feed26cb3cd4a"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave7-2026-10-23/aurelia-marcellina-sprite-independent-review.json",
+    "sha256": "c11a7a1bc5a9d02addcf4e17458dcd63d65c4215f78161626f66ff4652612287",
+    "accepted": true,
+    "allAccepted": true,
+    "acceptedFrames": 16,
+    "framesActuallyReviewed": 16,
+    "reviewer": "/root/cg_ysara_wave7"
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/imperium-aeternum/aurelia-marcellina.png",
+    "sha256": "b7606b93b466251a0d40af5f9d2bd4d4b7801890ac5906329feef92d312fb30b",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "runtimeSelectionIntegrationPending": false
+  },
+  "sourceAssembly": {
+    "sha256": "fb36fd2aeac34700c961dbf0677aa2e67bd775290f7d48247246fdd7be3a52a8",
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 2,
+    "selectedFramesFromWholeAtlasNative": 15,
+    "individualCorrectedFrames": [
+      7
+    ],
+    "fifteenWholeRgbaComponentsUnchangedBeforeFinalNormalization": true,
+    "retainedPriorVisiblePixels": 609298,
+    "newCorrectedPoseVisiblePixelsAfterDensityNormalization": 38608,
+    "assignedSelectedVisiblePixels": 647906,
+    "correctedWholePoseDensityNormalization": {
+      "operation": "uniform-nearest-whole-pose-fit-to-prior-pose-height",
+      "heightRatio": 0.24693376941946035,
+      "widthRatio": 0.24688057040998218,
+      "integerDimensionsRounded": true,
+      "targetWidth": 277,
+      "targetHeight": 302,
+      "semanticPainting": false,
+      "mirroring": false
+    },
+    "explicitSatelliteBinding": {
+      "componentArea": 3,
+      "bounds": {
+        "left": 888,
+        "top": 617,
+        "right": 889,
+        "bottom": 618
+      },
+      "assignedFrame": 11,
+      "nearestBboxDistance": 1,
+      "nextNearestFrame": 7,
+      "nextDistance": 3,
+      "reason": "Actually inspected nearest-neighbor crop proves three orange pixels belong to the upper flame of frame11, below frame7 sandal; all original RGBA values and coordinates relative to frame11 retained.",
+      "inspectionPath": ".tmp/cg-wave7-2026-10-23/aurelia-marcellina/satellite-rank42-inspection.png",
+      "noGeneralAmbiguityThresholdRelaxed": true
+    },
+    "finalCommonNearestScale": 0.6904761904761905,
+    "minimumGuard": 15,
+    "baselines": [
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240
+    ],
+    "privateEvidenceSha256": "925edf5df9e4b5d9a6eeac01cab68d093022a1bf23d1d34aba2773f2763dcc9d",
+    "semanticEditsInTechnicalPacking": false,
+    "mirroring": false
+  },
+  "successfulAtlasGenerationAttempts": 3,
+  "retainedWhollyUnselectedNativeAttempts": 1,
+  "selectedNativeContributors": 2,
+  "nativeLedger": {
+    "path": ".tmp/cg-wave7-2026-10-23/aurelia-marcellina/atlas-native-ledger.json",
+    "sha256": "41a08047f8fb8570692d4d72c34f47928998e6dc5ff16f799d9d46f4aae8bde2"
+  },
+  "refusals": 0,
+  "sourceReviewFile": "docs/cg/aurelia-marcellina-reference-evidence-wave7-2026-10-23.json",
+  "limitations": [
+    "Selected V2 portrait is original internal project canon, not an external franchise source.",
+    "One portrait does not qualify unseen garment/back/weapon geometry or exact tiny facial details.",
+    "A genuine correction restores actual anatomical RIGHT-hand control of the spear in pose07; fifteen whole prior components remain unchanged before final common normalization.",
+    "Three explicitly inspected orange pixels are bound to the flame of frame11; no other ambiguity threshold is relaxed and no semantic pixels are painted.",
+    "Old atlas is preserved; root selects the new runtime path and exposes the old variant in a separate shared integration.",
+    "Visual acceptance, exact pixel reproduction and complete frame counts do not certify perfect visual1:1."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-23",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave7-2026-10-23/aurelia-marcellina-sprite-independent-review.json",
+  "independentReviewSha256": "c11a7a1bc5a9d02addcf4e17458dcd63d65c4215f78161626f66ff4652612287"
+}
