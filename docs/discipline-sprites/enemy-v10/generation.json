@@ -1,0 +1,319 @@
+{
+  "date": "2026-10-28",
+  "baselineCommit": "0890b60c507543803cd11fa56fc2d4b5152e05aa",
+  "sourceWork": {
+    "title": "Discipline: The Hentai Academy",
+    "episode": 4,
+    "attributionBasis": "Explicit identification supplied by the user in this conversation",
+    "independentlyVerified": false,
+    "episodeVideoObtained": false,
+    "episodeVideoReviewed": false,
+    "additionalScreencapsObtained": 0,
+    "timecodes": null
+  },
+  "assets": [
+    {
+      "assetId": "yellow-construction-mech:construction-reference-v10",
+      "sourceWork": {
+        "title": "Discipline: The Hentai Academy",
+        "episode": 4,
+        "attributionBasis": "Explicit identification supplied by the user in this conversation",
+        "independentlyVerified": false,
+        "episodeVideoObtained": false,
+        "episodeVideoReviewed": false,
+        "additionalScreencapsObtained": 0,
+        "timecodes": null
+      },
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-bf62bbd2-01b1-4ee8-84f9-4f2318b29867",
+        "generationIdSource": "Exact output filename returned by the tool; no separate server generation ID was returned.",
+        "prompt": "Use case: image-edit, background removal for an existing game sprite. Edit ONLY the attached accepted yellow construction-machine boss illustration. Preserve the complete machine, its four golden articulated crane arms, four three-finger gray claws, rectangular open deck, narrow gray gantry and black fixtures, front cab, all visible support legs and feet, two front gray pipes, and the Japanese signs 安全第一 and 森本組 exactly as drawn. Preserve the camera angle, panel geometry, line art, colors, scale relationships and entire silhouette. Remove the plain white background and replace it with genuine alpha transparency, including white gaps inside the overhead gantry and between the arms and legs. Retain the white surfaces of the three Japanese plaques because they belong to the machine. Keep the metal, ochre panels and signs fully opaque. Clean hard anime cel edges with modest antialiasing, no glow, haze, vignette, white halo, drop shadow, floor or scenery. Do not redraw or redesign the machine, add details, lettering, weapons or people. One complete machine with clear transparent margins around all raised elbows, claws and feet. Return a single native RGBA PNG.",
+        "promptStatus": "recorded-verbatim",
+        "promptFile": "enemy-v10/prompts/boss-alpha.txt",
+        "transparentBackgroundRequested": true,
+        "pixelEditsAfterGeneration": false,
+        "directInputEvidenceIds": [
+          "v10-boss-accepted-original"
+        ]
+      },
+      "image": {
+        "sha256": "9989d9cade70743ae32b74cfa21f6e2467e128bc1e5ed9b555e35bd737e5e3b1",
+        "bytes": 1423820,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "rawAlphaBounds": [
+          0,
+          0,
+          1253,
+          1254
+        ],
+        "visibleBoundsAlphaGt8": [
+          27,
+          9,
+          1206,
+          1220
+        ],
+        "opaqueBoundsAlphaGe128": [
+          28,
+          10,
+          1206,
+          1218
+        ],
+        "visibleMargins": [
+          27,
+          9,
+          48,
+          34
+        ],
+        "transparentPixelCount": 794652
+      },
+      "referenceEvidence": [
+        {
+          "id": "v10-construction-mech-front",
+          "type": "user_upload",
+          "filename": "image(20261028-175033).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v10/references/construction-mech-front.png",
+          "sourceMedium": "user_reference",
+          "role": "Front arms, claw construction, open gantry, pipes and Japanese signs; used for the accepted original reconstruction, not resubmitted for alpha-only edit.",
+          "sha256": "f6752bfe76c38ecc784438aac28d5c1063f95a1b3c43fd98bc87ef584aa3e74e",
+          "dimensions": [
+            2048,
+            1777
+          ],
+          "directGenerationInput": false,
+          "canonicalEvidence": true
+        },
+        {
+          "id": "v10-construction-mech-overhead",
+          "type": "user_upload",
+          "filename": "image(20261028-175104).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v10/references/construction-mech-overhead.png",
+          "sourceMedium": "user_reference",
+          "role": "Deck, cab, side walkway, support legs and feet; used for the accepted original reconstruction, not resubmitted for alpha-only edit.",
+          "sha256": "b407b95c444c754e0cb30d92702035c8763ce27e1fdb36755d7810b7e89abf4d",
+          "dimensions": [
+            2048,
+            1540
+          ],
+          "directGenerationInput": false,
+          "canonicalEvidence": true
+        },
+        {
+          "id": "v10-boss-accepted-original",
+          "type": "prior_generated_artwork",
+          "filename": "exec-22da9588-e9c5-4a22-848b-f52ef36e3977.png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v10/previous-renders/construction-mech-white-background.png",
+          "sourceMedium": "generated_reconstruction",
+          "role": "Accepted full machine rendering, the sole direct input for transparent-background extraction; reconstructed surfaces remain inferred.",
+          "sha256": "f0d50f43322f90ca33633a6e7fb1600ca566a5a812054e6981a1542f3be9212e",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "directGenerationInput": true,
+          "canonicalEvidence": false
+        }
+      ]
+    },
+    {
+      "assetId": "yellow-pilot-robot:full-body-reference-v10",
+      "sourceWork": {
+        "title": "Discipline: The Hentai Academy",
+        "episode": 4,
+        "attributionBasis": "Explicit identification supplied by the user in this conversation",
+        "independentlyVerified": false,
+        "episodeVideoObtained": false,
+        "episodeVideoReviewed": false,
+        "additionalScreencapsObtained": 0,
+        "timecodes": null
+      },
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-00ea8029-a5c2-4d96-afd0-7a000f62fe8b",
+        "generationIdSource": "Exact output filename returned by the tool; no separate server generation ID was returned.",
+        "prompt": "Use case: identity-preserving image-edit for a full-body mechanical game sprite. Image 1 is the supplied anime screencap and is authoritative ONLY for the visible head, neck, upper torso and shoulder construction. Image 2 is our prior whole-body reconstruction, which should retain its pose and lower-body design; the parts below the screencap are provisional artwork, not a documented canonical design. Produce one complete standing robot, retaining the full silhouette and all limbs from image 2 while carefully matching the visible robot in image 1. Use the plain tall rectangular mustard-ochre head with softly rounded upper corners, small circular gray emblem with muted orange-red V high on the face, no eyes, two short rectangular yellow blocks at the bottom of the face, round gray side pivot, and broad dark olive stepped jaw and neck. Preserve the narrow pale-gray horizontal chest inset, yellow torso, radial segmented silver-gray shoulder joints and yellow circular shoulder caps. Keep the original simple anime cel drawing, crisp dark outlines and restrained flat shading. Avoid the overly saturated yellow and luminous soft halo of image 2. Keep hands, hips, legs and feet from image 2 without inventing new machinery; one robot only, same three-quarter standing pose, all feet and head visible with clean margins. This is a cleanup and correction of visible reference details, NOT a claim to recover unseen episode frames. Make the entire background genuinely alpha-transparent, clear both outside the silhouette and in gaps between limbs. The robot itself must be opaque. Absolutely no glow, gray fog, drop shadow, gradient backdrop, floor, scenery, text, annotations, weapons or extra accessories. Single native RGBA PNG, portrait canvas.",
+        "promptStatus": "recorded-verbatim",
+        "promptFile": "enemy-v10/prompts/robot-refinement.txt",
+        "transparentBackgroundRequested": true,
+        "pixelEditsAfterGeneration": false,
+        "directInputEvidenceIds": [
+          "v10-robot-cockpit",
+          "v10-robot-prior-full-body"
+        ]
+      },
+      "image": {
+        "sha256": "5b84be028e5d268503b6733104a7dd9bee7fc4fa609079073db0fdb385f38838",
+        "bytes": 1572251,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "rawAlphaBounds": [
+          0,
+          13,
+          996,
+          1520
+        ],
+        "visibleBoundsAlphaGt8": [
+          159,
+          15,
+          875,
+          1513
+        ],
+        "opaqueBoundsAlphaGe128": [
+          160,
+          16,
+          874,
+          1512
+        ],
+        "visibleMargins": [
+          159,
+          15,
+          149,
+          23
+        ],
+        "transparentPixelCount": 912477
+      },
+      "referenceEvidence": [
+        {
+          "id": "v10-robot-cockpit",
+          "type": "user_upload",
+          "filename": "image(20261028-174121).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v10/references/robot-cockpit-user-frame.png",
+          "sourceMedium": "user_reference",
+          "role": "Only supplied source for the head, upper torso, radial shoulders, pilot seat, raised canopy frame and cockpit rim; legs and exterior aircraft are outside the crop.",
+          "sha256": "fc46a93e2909e4d4b8fe9845336011f28efcf894e17ad3ac8a8d7f547983ef62",
+          "dimensions": [
+            396,
+            463
+          ],
+          "directGenerationInput": true,
+          "canonicalEvidence": true
+        },
+        {
+          "id": "v10-robot-prior-full-body",
+          "type": "prior_generated_artwork",
+          "filename": "exec-61ac9074-2217-4f1b-8b98-4a676ef4ea7c.png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v10/previous-renders/robot-full-body-provisional.png",
+          "sourceMedium": "generated_reconstruction",
+          "role": "Previous generated full-body interpretation; keeps pose and provisional lower-body construction, not source evidence for off-frame limbs.",
+          "sha256": "7e32caefc43c5fb1bcbc6bc03d8af22d4926bb5c398bceee20e6647b7c982fbd",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "directGenerationInput": true,
+          "canonicalEvidence": false
+        }
+      ]
+    },
+    {
+      "assetId": "yellow-pilot-robot:fighter-cockpit-adaptation-v10",
+      "sourceWork": {
+        "title": "Discipline: The Hentai Academy",
+        "episode": 4,
+        "attributionBasis": "Explicit identification supplied by the user in this conversation",
+        "independentlyVerified": false,
+        "episodeVideoObtained": false,
+        "episodeVideoReviewed": false,
+        "additionalScreencapsObtained": 0,
+        "timecodes": null
+      },
+      "generation": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-aa9c5b17-4295-4491-8afd-5ab5ba65da80",
+        "generationIdSource": "Exact output filename returned by the tool; no separate server generation ID was returned.",
+        "prompt": "Use case: identity-preserving image-edit for a mechanical vehicle game sprite. Image 1 is the actual supplied anime cockpit screencap and is the ONLY source authority for the robot pilot, seat, raised canopy frame and visible blue-gray cockpit rim. Image 2 is an earlier provisional reconstruction of a complete fighter; preserve its exterior aircraft design and angle rather than inventing another silhouette. The full fuselage, nose, wings, tail and intakes are provisional and are not established by the cropped screencap. Clean and improve this existing illustration using image 1 for the visible cockpit details. Match the mustard-ochre rectangular faceless robot head, tiny gray circular emblem with muted orange-red V, two short rectangular blocks at the lower face, olive stepped jaw/neck, round side pivot, silver radial shoulder segments with yellow circular caps, yellow chest with narrow pale-gray horizontal inset, tall blocky gray seat and arching canopy frame behind it. Robot sits down in the cockpit; maintain believable scale and perspective within the existing airplane. Keep the whole plane in the frame, including the full pointed nose, both wingtips and tail, with a comfortable transparent margin. Preserve the blue-gray anime cel-shaded aircraft body and crisp dark contours. Keep existing visible control grips only; add no weapons or markings. Remove ALL surrounding glow, blue-gray fog and gradient halo from image 2. The outside and every empty gap must be genuine alpha transparency; the aircraft, pilot and seat are opaque. No floor, shadow, scene, clouds, text, annotations, checkerboard drawn into the image, border or watermark. One complete airplane with its yellow robot pilot, single native RGBA PNG, landscape canvas. This edit improves the known cockpit and sprite cutout quality; it does not invent additional screencaps or certify the provisional exterior.",
+        "promptStatus": "recorded-verbatim",
+        "promptFile": "enemy-v10/prompts/aircraft-refinement.txt",
+        "transparentBackgroundRequested": true,
+        "pixelEditsAfterGeneration": false,
+        "directInputEvidenceIds": [
+          "v10-robot-cockpit",
+          "v10-aircraft-prior-provisional"
+        ]
+      },
+      "image": {
+        "sha256": "ac0432501987fa263ca334b7cf5b4ed313482de77ea75f04ec3279b507f278b9",
+        "bytes": 1576324,
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "rawAlphaBounds": [
+          0,
+          23,
+          1535,
+          998
+        ],
+        "visibleBoundsAlphaGt8": [
+          15,
+          26,
+          1522,
+          986
+        ],
+        "opaqueBoundsAlphaGe128": [
+          15,
+          26,
+          1522,
+          985
+        ],
+        "visibleMargins": [
+          15,
+          26,
+          14,
+          38
+        ],
+        "transparentPixelCount": 914558
+      },
+      "referenceEvidence": [
+        {
+          "id": "v10-robot-cockpit",
+          "type": "user_upload",
+          "filename": "image(20261028-174121).png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v10/references/robot-cockpit-user-frame.png",
+          "sourceMedium": "user_reference",
+          "role": "Only supplied source for the head, upper torso, radial shoulders, pilot seat, raised canopy frame and cockpit rim; legs and exterior aircraft are outside the crop.",
+          "sha256": "fc46a93e2909e4d4b8fe9845336011f28efcf894e17ad3ac8a8d7f547983ef62",
+          "dimensions": [
+            396,
+            463
+          ],
+          "directGenerationInput": true,
+          "canonicalEvidence": true
+        },
+        {
+          "id": "v10-aircraft-prior-provisional",
+          "type": "prior_generated_artwork",
+          "filename": "exec-c7d2cfa9-0d79-43b7-b312-6f8732453541.png",
+          "repositoryPath": "docs/discipline-sprites/enemy-v10/previous-renders/robot-fighter-provisional.png",
+          "sourceMedium": "generated_reconstruction",
+          "role": "Previous generated fighter; aircraft exterior, nose, wing, intake and tail geometry are provisional, not canonical source evidence.",
+          "sha256": "4e1df8d28a51aae1944aedc19939bc3206089cec7fd258869534f36bfe51b71d",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "directGenerationInput": true,
+          "canonicalEvidence": false
+        }
+      ]
+    }
+  ],
+  "previousOutputsPreserved": true
+}

@@ -1,0 +1,204 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "pr": 9,
+  "base": "d91522070941e429968527956606fcf6b71e3c6b",
+  "sourceSnapshot": "c7ce3caf85a84a17b491bf524d2e894dec67a13a",
+  "sources": [
+    {
+      "path": "src/components/HubScreen.jsx",
+      "sha256": "15086a75d349e4a4a4798b56117d4cc7eca365d0623b6fedc2c5a14094c5eb9a"
+    },
+    {
+      "path": "src/components/HubImmersion.css",
+      "sha256": "b13ba84dbeba4dd44d6ef438ef876eed16ea5ed5df7b0d78b239d9509337a37c"
+    },
+    {
+      "path": "src/components/RaceMode.jsx",
+      "sha256": "c69892a91f9153c7e80f0eb4197dd49c0f9e0374a93c5870b3d9491cdbae7d3f"
+    },
+    {
+      "path": "src/game/engineRace.js",
+      "sha256": "bf228f5a1ef585e19910e0951dd9dfab0bd596c72259083f80e68036c05170e9"
+    },
+    {
+      "path": "src/game/scenePresentation.js",
+      "sha256": "0bf8140ef5f177fa0f9b20b24991966d9a4d9f60d8e6890720282a56ca703193"
+    },
+    {
+      "path": "scripts/scenePresentation.test.mjs",
+      "sha256": "8ddc4523ea13dd1f8796e64c230b3ad20e8fbb4b0b7be2e39705eed0c2cd5bac"
+    },
+    {
+      "path": "scripts/browserCityExtinction.py",
+      "sha256": "13c04fcaaba6b06a2392bac28cb1ba577746f53600d18a33964bd1fcaeddb373"
+    },
+    {
+      "path": "scripts/browserSceneServices.py",
+      "sha256": "652680c67da1119af2feb09bfe64de9c0cd33199870537bbf803efb949b8f1c6"
+    },
+    {
+      "path": "scripts/fixtures/cityExtinctionHarness.jsx",
+      "sha256": "d21d19e28c7e76408523b83486aa0243af46c53aa3a3488092f8b3378c40b7f4"
+    },
+    {
+      "path": "scripts/mosaicCityRuntime.test.mjs",
+      "sha256": "7d2eada422f36dc2eed8fc5bb9b40d67b9446b05d4f885b7c9c936ddd6ddfefb"
+    },
+    {
+      "path": ".github/workflows/city-extinction-ui.yml",
+      "sha256": "4bba42ebcaee5d8e506b9d55d5d37ef6a1809adbf571ce85cacc864a0b6842f2"
+    },
+    {
+      "path": ".github/workflows/race-ui.yml",
+      "sha256": "7a886bd14bf29493384a789ade1116ac9733b72353f60c472eb7a99005ad331c"
+    }
+  ],
+  "local": {
+    "unit": {
+      "passed": 81,
+      "total": 81
+    },
+    "uiContracts": {
+      "passed": 68,
+      "total": 68,
+      "overlap": true
+    },
+    "lint": {
+      "errors": 0,
+      "warnings": 0,
+      "files": 7
+    },
+    "sourceBuild": "passed; snapshot only, bundle warning remains",
+    "city": {
+      "scope": "City: prepared service entry locations and ownership. Extinction: input-driven complete runs, read-only bot and virtual clock; no terminal-state injection. No real account or physical hardware.",
+      "passed": 4,
+      "total": 4,
+      "cases": [
+        {
+          "name": "city-390x844-en-services",
+          "passed": true,
+          "serviceTransitions": 9,
+          "preparedLocations": true
+        },
+        {
+          "name": "city-1280x900-fr-services",
+          "passed": true,
+          "serviceTransitions": 9,
+          "preparedLocations": true
+        },
+        {
+          "name": "city-844x390-fr-services",
+          "passed": true,
+          "serviceTransitions": 9,
+          "preparedLocations": true
+        },
+        {
+          "name": "city-2560x1080-en-services",
+          "passed": true,
+          "serviceTransitions": 9,
+          "preparedLocations": true
+        }
+      ]
+    },
+    "extinction": {
+      "scope": "City: prepared service entry locations and ownership. Extinction: input-driven complete runs, read-only bot and virtual clock; no terminal-state injection. No real account or physical hardware.",
+      "passed": 4,
+      "total": 4,
+      "cases": [
+        {
+          "name": "fps-1280x900-fr-extraction",
+          "passed": true,
+          "mode": "extraction",
+          "result": "victory",
+          "frames": 1138,
+          "kills": 34,
+          "beacons": 3,
+          "waves": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "inputActions": 61,
+          "injectedEnding": false,
+          "virtualClock": true
+        },
+        {
+          "name": "fps-1280x900-en-last_signal",
+          "passed": true,
+          "mode": "last_signal",
+          "result": "victory",
+          "frames": 1570,
+          "kills": 48,
+          "beacons": 0,
+          "waves": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "inputActions": 74,
+          "injectedEnding": false,
+          "virtualClock": true
+        },
+        {
+          "name": "fps-1280x900-fr-infestation",
+          "passed": true,
+          "mode": "infestation",
+          "result": "victory",
+          "frames": 3600,
+          "kills": 99,
+          "beacons": 0,
+          "waves": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "inputActions": 173,
+          "injectedEnding": false,
+          "virtualClock": true
+        },
+        {
+          "name": "fps-1280x900-en-hunt",
+          "passed": true,
+          "mode": "hunt",
+          "result": "victory",
+          "frames": 820,
+          "kills": 22,
+          "beacons": 0,
+          "waves": [
+            1,
+            2,
+            3
+          ],
+          "inputActions": 39,
+          "injectedEnding": false,
+          "virtualClock": true
+        }
+      ]
+    }
+  },
+  "workbook": {
+    "path": "docs/excel/Multiverse_Breach_UI_Immersion.xlsx",
+    "sha256": "3865e2d96486c7275bab8a4f7f9c095b06fe16c17109218277121c5d02aa0402",
+    "sheets": 5,
+    "screens": 40,
+    "actions": 39,
+    "checks": 144
+  },
+  "limits": [
+    "Local browser replay injects a compiled fixture with exact media bytes because localhost navigation is administratively unavailable; CI must separately verify HTTP-served fixtures.",
+    "City: prepared entry positions, 9 services at 4 viewport sizes; service callbacks checked, destination screens not mounted.",
+    "Extinction: default prepared Anchor; read-only bot uses keyboard/pointer input and virtual clock. No health, kills or ending injected. Not a human balance/performance test.",
+    "Physical controller, real multitouch, real account, cloud integration and full 40-screen visual review not performed.",
+    "No new enemy artwork; other untranslated catalog copy and large bundles remain.",
+    "No merge or production promotion."
+  ]
+}

@@ -178,7 +178,21 @@ def apply_reference_use_correction(char_id: str, item: dict, corrections: list[d
         return file
     if item.get("sha256") != rule["sha256"]:
         raise ValueError(f"Reference-use correction {rule['id']}: declared legacy SHA-256 mismatch")
-    checked(rule["legacyPath"], rule["sha256"], "legacy bitmap")
+    # Private archives may be absent in a checkout. Broken symlinks and access
+    # errors still fail instead of being mistaken for a missing archive.
+    legacy_present = True
+    ancestor = ROOT
+    for component in rule["legacyPath"].split("/"):
+        ancestor = ancestor / component
+        try:
+            ancestor.lstat()
+        except FileNotFoundError:
+            legacy_present = False
+            break
+        if ancestor.is_symlink():
+            ancestor.stat()
+    if legacy_present:
+        checked(rule["legacyPath"], rule["sha256"], "legacy bitmap")
     checked(rule["currentPath"], rule["sha256"], "current bitmap")
     authority = read_json(checked(rule["authorityFile"], rule["authoritySha256"], "frozen authority"))
     if ((authority.get("characterId") or authority.get("heroId")) != char_id or not any(
@@ -187,9 +201,11 @@ def apply_reference_use_correction(char_id: str, item: dict, corrections: list[d
             and reference.get("referenceScope") == rule["referenceScope"]
             for reference in authority.get("references", []))):
         raise ValueError(f"Reference-use correction {rule['id']}: current body-support authority does not match")
-    if already_restricted:
-        return item
-    return {**item, "referencePurpose": rule["toPurpose"], "usedForIdentity": False,
+    if not legacy_present and not (rule["legacyPath"].startswith(".tmp/")
+            and rule["currentPath"].startswith("docs/cg/references/")
+            and rule["authorityFile"].startswith("docs/cg/")):
+        checked(rule["legacyPath"], rule["sha256"], "legacy bitmap")
+    restricted = item if already_restricted else {**item, "referencePurpose": rule["toPurpose"], "usedForIdentity": False,
             "referenceScope": rule["referenceScope"], "referenceUseCorrection": {
                 "id": rule["id"], "correctionFile": str(REFERENCE_USE_CORRECTIONS.relative_to(ROOT)),
                 "original": {field: item[field] for field in ("referencePurpose", "referenceScope", "scope", "usedForIdentity", "role", "sourceFile") if field in item},
@@ -197,6 +213,12 @@ def apply_reference_use_correction(char_id: str, item: dict, corrections: list[d
                 "authorityFile": rule["authorityFile"], "authoritySha256": rule["authoritySha256"],
                 "toPurpose": rule["toPurpose"], "usedForIdentity": False, "legacyAndCurrentHashesVerified": True,
                 "authorityHashVerified": True, "additionalIndependentSource": False, "identityUseRestrictedOnly": True}}
+    metadata = {**restricted["referenceUseCorrection"], "legacyAndCurrentHashesVerified": legacy_present}
+    for field in ("legacyArchiveAvailable", "legacyHashVerifiedInThisRun", "currentBitmapHashVerified"):
+        metadata.pop(field, None)
+    if not legacy_present:
+        metadata.update(legacyArchiveAvailable=False, legacyHashVerifiedInThisRun=False, currentBitmapHashVerified=True)
+    return {**restricted, "referenceUseCorrection": metadata}
 
 
 def ref_lines(refs: Any) -> str:

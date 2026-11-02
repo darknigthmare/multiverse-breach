@@ -5,6 +5,7 @@ import re
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 from playwright.sync_api import sync_playwright
+from browserCombatUi import open_arsenal
 
 base = os.environ.get('AUDIT_BASE_URL', 'http://127.0.0.1:4173')
 assert urlparse(base).hostname in ('127.0.0.1', 'localhost'), 'Only a loopback test server is allowed'
@@ -20,6 +21,12 @@ cases = [
     ('Smash', 'ahsoka_adult', 390, 'fr'), ('Smash', 'Star Wars::Droideka Shield Droid', 1280, 'en'),
     ('Smash', 'Hexen::Traductus', 390, 'fr'), ('Smash', 'Quake::Strogg Gladiator', 1280, 'en'),
     ('Smash', 'team_fortress_2_scout', 390, 'fr'), ('Smash', 'Half-Life::Combine Gunship', 1280, 'en'),
+    ('RPG', 'seifer_ff8', 1280, 'fr'), ('Smash', 'seifer_ff8', 390, 'en'),
+    ('RPG', 'laguna_ff8', 390, 'en'), ('Smash', 'laguna_ff8', 1280, 'fr'),
+    ('RPG', 'zell_ff8', 1280, 'en'), ('Smash', 'zell_ff8', 390, 'fr'),
+    ('RPG', 'irvine_ff8', 390, 'fr'), ('Smash', 'irvine_ff8', 1280, 'en'),
+    ('RPG', 'Final Fantasy VII::Midgar Zolom', 1280, 'fr'), ('Smash', 'Final Fantasy VII::Midgar Zolom', 390, 'en'),
+    ('RPG', 'Final Fantasy VII::Sweeper Machine', 390, 'en'), ('Smash', 'Final Fantasy VII::Sweeper Machine', 1280, 'fr'),
 ]
 results = []
 with sync_playwright() as playwright:
@@ -34,10 +41,12 @@ with sync_playwright() as playwright:
             page = context.new_page()
             errors = []
             page.on('pageerror', lambda error: errors.append(str(error)))
+            page.on('console', lambda message: errors.append(message.text) if message.type == 'error' and message.text.startswith('Combat render loop failed') else None)
             label = f'{mode}-{source.replace("::", "-").replace(" ", "-")}-{width}-{lang}'
             try:
                 page.goto(base + '/scripts/fixtures/signature-source.html?' + urlencode({'mode': mode, 'source': source, 'lang': lang}))
                 page.wait_for_function('window.__sourceAudit?.engine?.signatureDirector', timeout=40000)
+                assert page.evaluate('window.__sourceAudit.definition.key') == source
                 page.evaluate('''() => {
                   const a=window.__sourceAudit,e=a.engine;
                   e.syncPreMatchFromServer?.(3000);e.completeMeleeIntros?.();
@@ -64,6 +73,7 @@ with sync_playwright() as playwright:
                     page.get_by_role('button', name=re.compile('Confirmer les cibles|Confirm targets')).click()
                 else:
                     side = 'opponent' if '::' in source else 'player'
+                    open_arsenal(page)
                     page.locator(f'[data-signature-super="{side}"]').click()
                 page.wait_for_function('window.__sourceAudit.engine.signatureDirector.busy')
                 page.wait_for_function('window.__sourceAudit.engine.signatureDirector.snapshot()?.tick >= 16')
@@ -89,8 +99,12 @@ with sync_playwright() as playwright:
                 assert not errors, errors
                 results.append({'case': label, 'ok': True, 'contacts': len(after['contacts']), 'pausedAt': snap['tick']})
             except Exception as error:
-                page.screenshot(path=str(out / (label + '-FAILED.png')), full_page=True)
-                results.append({'case': label, 'ok': False, 'error': str(error), 'pageErrors': errors})
+                failure = {'case': label, 'ok': False, 'error': str(error), 'pageErrors': errors}
+                results.append(failure)
+                try:
+                    page.screenshot(path=str(out / (label + '-FAILED.png')), full_page=True, timeout=5000)
+                except Exception as capture_error:
+                    failure['captureError'] = str(capture_error)
             finally:
                 context.close()
                 (out / 'results.json').write_text(json.dumps(results, indent=2), encoding='utf-8')

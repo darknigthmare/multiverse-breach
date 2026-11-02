@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import CollectibleCard from '../cards/CollectibleCard';
+import { matchesCollectionCard } from './collectionView.js';
 
 const PAGE_SIZE = 12;
 
@@ -17,17 +18,9 @@ export default function UniverseBinder({
   onSelectCard
 }) {
   const [page, setPage] = useState(0);
-  const filteredDefinitions = useMemo(() => definitions.filter(definition => {
-    const entry = cards[definition.id];
-    if (selectedUniverse !== 'all' && definition.universe !== selectedUniverse) return false;
-    if (rarity !== 'all' && definition.rarityId !== rarity) return false;
-    if (kind !== 'all' && definition.kind !== kind) return false;
-    if (canonStatus !== 'all' && definition.canonStatus !== canonStatus) return false;
-    if (ownedOnly && !entry) return false;
-    if (favoritesOnly && !entry?.favorite) return false;
-    if (!query) return true;
-    return definition.searchText?.includes(query);
-  }), [canonStatus, cards, definitions, favoritesOnly, kind, ownedOnly, query, rarity, selectedUniverse]);
+  const filteredDefinitions = useMemo(() => definitions.filter(definition => matchesCollectionCard(definition, cards, {
+    selectedUniverse, rarity, kind, canonStatus, ownedOnly, favoritesOnly, query
+  })), [canonStatus, cards, definitions, favoritesOnly, kind, ownedOnly, query, rarity, selectedUniverse]);
   const pageCount = Math.max(1, Math.ceil(filteredDefinitions.length / PAGE_SIZE));
   const safePage = Math.min(page, pageCount - 1);
   const visibleDefinitions = filteredDefinitions.slice(

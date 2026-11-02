@@ -1,5 +1,7 @@
 # Production CG — fidélité et variantes
 
+[Vérification d’intégration à master](MASTER_INTEGRATION_2026-11-02.md) : hub, galerie, variantes, références Rift et classeur synchronisés.
+
 ## Reprise du 1er novembre 2026 — Alien et associés, vague 12
 
 **60 nouvelles CG et quatre atlas de seize poses** sont livrés pour Bishop, Ellen Ripley, Jungle Hunter et Greyback ; les anciens atlas restent disponibles en variantes. Le catalogue compte **1 406 CG**. Le [bilan de la vague](FIDELITY_PROGRESS_WAVE12_2026-11-01.md), le [classeur](Multiverse_Breach_Fidelite_CG.xlsx) et la [file prioritaire de 40 + 26 personnages](alien-associated-priority-batches-wave12-2026-11-01.json) distinguent les quatre séries terminées des **62 personnages encore à produire** dans ce périmètre.

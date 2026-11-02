@@ -1,0 +1,40 @@
+name: Full production build
+on:
+  pull_request:
+  push:
+    branches: [master]
+permissions:
+  contents: read
+concurrency:
+  group: production-build-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  production-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          lfs: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Same build lifecycle as Vercel, including assets and progression
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/production-evidence
+          git rev-parse HEAD > /tmp/production-evidence/tested-commit.txt
+          node --version > /tmp/production-evidence/node-version.txt
+          npm run build 2>&1 | tee /tmp/production-evidence/build.log
+          cp dist/build-info.json /tmp/production-evidence/build-info.json
+          test -s dist/index.html
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: production-build-${{ github.sha }}
+          path: /tmp/production-evidence/
+          retention-days: 7

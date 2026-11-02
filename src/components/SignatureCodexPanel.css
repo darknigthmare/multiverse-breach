@@ -1,0 +1,9 @@
+/* The full dossier is not the compact one-line reward manifest.
+   Keep the rule scoped so unrelated pack cards retain their compact layout. */
+.booster-dossier-dialog .booster-reward-manifest-group > p {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}

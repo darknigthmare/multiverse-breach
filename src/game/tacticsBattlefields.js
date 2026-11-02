@@ -1,3 +1,4 @@
+import { getSourceSceneBattlefield, resolveSourceScene } from './sourceSceneStages.js';
 import { EXPANDED_UNIVERSE_SIGNATURES } from './expandedUniverses';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 
@@ -334,6 +335,7 @@ const difficultyRank = (difficulty = 'Medium') => ({
 }[difficulty] ?? 1);
 
 export function getTacticsMissionProfile(stage = {}, battlefield = null) {
+  if (resolveSourceScene(stage)) return {tier:'source-scene',label:{fr:'Rencontre source',en:'Source encounter'},reinforcementEvery:0,hazardPulseEvery:0,hazardRadius:0,pressure:0};
   const rank = difficultyRank(stage.difficulty);
   const tags = battlefield?.tags || [];
   const hasHazards = tags.includes('hazard') || (battlefield?.tiles || []).some(cell => cell.type === 'hazard');
@@ -380,6 +382,8 @@ export function getTacticsMissionProfile(stage = {}, battlefield = null) {
 }
 
 export function getTacticsBattlefield(stage = {}) {
+  const sourceField = getSourceSceneBattlefield(stage);
+  if (sourceField) return sourceField;
   const universe = stage.universe || '';
   const signature = getSignature(universe);
   const recentProfile = stage.forceBaseArena || stage.dlcSuppressedArena

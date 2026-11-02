@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "pr": 9,
+  "featureCommit": "f0dba26d6f0722265d4b7f061dcd8466cdc17d98",
+  "featureChecks": [
+    { "name": "City and Extinction immersive UI", "runId": 40280056682, "conclusion": "success" },
+    { "name": "Reliability and source build", "runId": 40280056659, "conclusion": "success" },
+    { "name": "Signature combat", "runId": 40280056808, "conclusion": "success" },
+    { "name": "Race immersive UI", "runId": 40280056493, "conclusion": "success" },
+    { "name": "Full production build", "runId": 40280056619, "conclusion": "cancelled", "note": "Job cancelled during the full build. Not counted as a successful build or a demonstrated code failure." }
+  ],
+  "sourceVerification": {
+    "runId": 40279377677,
+    "conclusion": "success",
+    "sceneUnitPassed": 64,
+    "sceneUnitTotal": 64,
+    "newUnitTestsIncluded": 14,
+    "existingUIUnitPassed": 68,
+    "existingUIUnitTotal": 68,
+    "countsOverlap": true,
+    "chromiumPassed": 10,
+    "chromiumTotal": 10,
+    "injectedRendererFaultCases": 2,
+    "sourceBuild": "success",
+    "lintFiles": 7,
+    "lintWarnings": 0,
+    "lintErrors": 0,
+    "scope": "Actual City and Extinction components and required committed artwork, prepared profile and injected terminal states; not ten full natural gameplay sessions."
+  },
+  "workbookVerification": {
+    "runId": 40281240164,
+    "conclusion": "success",
+    "file": "docs/excel/Multiverse_Breach_UI_Immersion.xlsx",
+    "sha256": "3af08cf4d012a4dd4591bf56a270112b4b56569f7f1873421f2b20146e185bdf",
+    "gitBlobSha": "bd107d0f539ddbda33f5b4e604f40550c879bb86",
+    "sheets": 5,
+    "screens": 40,
+    "actionLots": 39,
+    "verificationRows": 132,
+    "cachedFormulaErrors": 0,
+    "note": "The historical SCENES-CI entry records preparation state; this receipt adds results observed after preparation without rewriting history."
+  },
+  "publication": {
+    "sourceChangedAfterFeatureCommit": false,
+    "temporaryTransportRemovedFromFinalTree": true,
+    "merged": false,
+    "productionPromoted": false,
+    "note": "This receipt describes the checked feature commit. Checks on later documentation commits must be inspected separately."
+  },
+  "remaining": [
+    "All city districts and service interactions, full natural sessions in every Extinction variant, consolidated forty-screen visual and progression QA.",
+    "City journal preview at enlarged HUD scale; complete text remains in the Terminal.",
+    "Generic Extinction enemy silhouettes and remaining mixed-language catalogue labels, including Race objectives.",
+    "Physical gamepad, real multi-touch hardware and real cloud account.",
+    "Full production build on the final branch head and existing bundle-size warning."
+  ]
+}

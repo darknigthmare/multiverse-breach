@@ -1,0 +1,100 @@
+{
+  "revision": 4,
+  "status": "passed",
+  "baselineCommit": "ef23793eaaf472dbc8e56426949ceb405f5d07bf",
+  "counts": {
+    "sprites": 195,
+    "characters": 35,
+    "referenceBased": 74,
+    "adapted": 121,
+    "byCategory": {
+      "civilian": 44,
+      "military": 42,
+      "other": 5,
+      "sport": 13,
+      "swimwear": 35,
+      "uniform": 56
+    },
+    "preservedOriginals": 132,
+    "preservedBeforeV3": 154,
+    "correctedVariants": 53,
+    "newOvaOutfits": 10,
+    "v3Additions": 6,
+    "animeGalleryEntries": 14,
+    "preservedBeforeV4": 160,
+    "v4Additions": 35,
+    "v4CharacterVariants": 30,
+    "v4NewCharacters": 5
+  },
+  "preservation": {
+    "baselineCommit": "ef23793eaaf472dbc8e56426949ceb405f5d07bf",
+    "baselineEntriesPreserved": 160,
+    "baselineManifestAssetsPreserved": 160,
+    "baselinePngsPreserved": 160,
+    "newImagesVerified": 35,
+    "noOverwrites": true
+  },
+  "environment": {
+    "nodeVersion": "v24.22.1",
+    "npmVersion": "11.9.0",
+    "viteVersion": "8.1.0"
+  },
+  "localCommands": [
+    {
+      "command": "npm run test:discipline",
+      "exitCode": 0,
+      "status": "passed",
+      "reportedDurationMs": 5346.221622,
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "testFiles": [
+        "scripts/disciplineSprites.test.mjs",
+        "scripts/wardrobe.test.mjs"
+      ]
+    },
+    {
+      "command": "npx vite build",
+      "exitCode": 0,
+      "status": "passed",
+      "reportedDurationSeconds": 1.85,
+      "transformedModules": 312,
+      "outputDirectory": "dist"
+    }
+  ],
+  "sourceAudit": {
+    "status": "pass",
+    "findings": [],
+    "referenceRecordsWithHashes": 54,
+    "note": "The two model-sheet hashes initially absent during independent audit were added and checked from the same local images by root."
+  },
+  "browser": {
+    "passed": true,
+    "report": "reference-v4-browser-qa-report.json",
+    "pageErrors": []
+  },
+  "validatedSourceSha256": {
+    "src/game/disciplineSpriteCatalog.js": "ccf74dca8164ea76ed297b5d9edc864ed92f1191d6b2556194e016f767f1b084",
+    "public/reviews/discipline/catalog.json": "8df30bf7dd68c70eb3e7510cfb91f270ad0fd40b78c3995a74fbc11cb44d735c",
+    "public/reviews/discipline/index.html": "f94b53a13c1f4f4f6ced8beb170d2430e47c63571bfd6f7d61812ca87cc451da",
+    "scripts/disciplineSprites.test.mjs": "00a321bb0380ebb78cdcdd573452185aeb9819d0b56e9af9eedbbd0c35a8e055"
+  },
+  "fullMediaBuildRunLocally": false,
+  "knownPriorCiFailure": {
+    "commit": "ef23793eaaf472dbc8e56426949ceb405f5d07bf",
+    "workflow": "Full production build",
+    "runUrl": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40658336437",
+    "file": "scripts/progressionAudit.mjs",
+    "assertion": "FPS Mirelle hands must be cropped as 4x10 and use a dedicated projectile overlay",
+    "preExistingOutsideDiscipline": true,
+    "auditFileUnchangedByPullRequest": true
+  },
+  "limitations": [
+    "Most identity references are partial; full-body 1:1 fidelity is not certified.",
+    "Five new OVA figures have descriptive identities, with unobserved lower-body regions explicitly reconstructed.",
+    "Reina evening-dress generation was blocked; no output or retry for that outfit."
+  ]
+}

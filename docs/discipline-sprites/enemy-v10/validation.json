@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-28",
+  "baselineCommit": "0890b60c507543803cd11fa56fc2d4b5152e05aa",
+  "status": "passed",
+  "counts": {
+    "sprites": 372,
+    "characters": 40,
+    "referenceBased": 80,
+    "adapted": 292,
+    "byCategory": {
+      "sport": 13,
+      "civilian": 44,
+      "military": 63,
+      "swimwear": 90,
+      "uniform": 58,
+      "other": 8,
+      "latex": 20,
+      "maid": 40,
+      "nurse": 36
+    },
+    "preservedOriginals": 132,
+    "preservedBeforeV3": 154,
+    "correctedVariants": 53,
+    "newOvaOutfits": 12,
+    "v3Additions": 6,
+    "animeGalleryEntries": 16,
+    "preservedBeforeV4": 160,
+    "v4Additions": 35,
+    "v4CharacterVariants": 30,
+    "v4NewCharacters": 5,
+    "preservedBeforeV5": 195,
+    "v5Additions": 2,
+    "v5NewCharacters": 1,
+    "v5CharacterVariants": 0,
+    "v5MonochromeStudies": 2,
+    "preservedBeforeV6": 197,
+    "v6Additions": 170,
+    "v6ActualSwimsuits": 55,
+    "v6RequestedRedLatex": 5,
+    "v6GlossSwimsuits": 34,
+    "v6LeonaReferenceCostumes": 0,
+    "v6RecoveryBatches": {
+      "earlier-unpublished-v6": 30,
+      "completed-missing-v6": 74,
+      "latest-v6": 57,
+      "recovered-unmapped-v6": 6,
+      "newly-completed-v6": 3
+    },
+    "preservedBeforeV8": 367,
+    "v8Additions": 1,
+    "v8NewCharacters": 1,
+    "preservedBeforeV9": 368,
+    "v9Additions": 1,
+    "v9NewCharacters": 1,
+    "preservedBeforeV10": 369,
+    "v10Additions": 3,
+    "v10NewCharacters": 2,
+    "v10MechanicalAssets": 3,
+    "costumeCoverageCharacters": 38
+  },
+  "preservation": {
+    "baselineCatalogueEntries": 369,
+    "unchangedCatalogueEntries": 369,
+    "baselineManifestAssets": 369,
+    "unchangedManifestAssets": 369,
+    "baselinePngFiles": 369,
+    "unchangedPngFilesVerifiedBySha256": 369,
+    "preservedV8AndV9": true,
+    "newCatalogueEntries": 3,
+    "newGraphicIdentities": 2,
+    "all372ImageHashesUnique": true,
+    "fingerprintOfPreservedIdHashPairs": "897e1f6ca213b08d77a120f230fe7ab82f503db673c0e2b9b02d2d30438aeeb6"
+  },
+  "checks": [
+    {
+      "command": "npm run test:discipline",
+      "exitCode": 0,
+      "passedFiles": 2,
+      "failedFiles": 0,
+      "durationMs": 52216.210989
+    },
+    {
+      "command": "npx --no-install vite build",
+      "exitCode": 0,
+      "modulesTransformed": 313,
+      "durationSeconds": 10.92
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    },
+    {
+      "name": "catalogue/manifest counts, new PNG hashes and RGBA signatures",
+      "passed": true
+    },
+    {
+      "name": "all prior catalogue and manifest objects unchanged; 369 PNG SHA-256 checks",
+      "passed": true
+    },
+    {
+      "name": "visual review on dark/light/checker backgrounds",
+      "passed": true,
+      "report": "visual-review.json"
+    },
+    {
+      "name": "Browser gallery QA and desktop/mobile visual review",
+      "passed": true,
+      "report": "browser-qa.json",
+      "checks": 19
+    }
+  ],
+  "browserReport": "browser-qa.json",
+  "buildWarnings": [
+    "npm reports an unknown http-proxy environment setting.",
+    "Some existing generated bundles exceed the 1000 kB warning threshold."
+  ],
+  "fullPrebuildExecuted": false,
+  "scope": {
+    "staticFrame": {
+      "columns": 1,
+      "rows": 1
+    },
+    "runtimeEnemyRegistered": false,
+    "animated": false,
+    "newEpisodeFrames": 0,
+    "literalOneToOneCertified": false
+  },
+  "browserChecks": 19,
+  "internalDocumentationLinksChecked": 22
+}

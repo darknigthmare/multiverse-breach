@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Optional gamepad access fixture</title></head>
+  <body>
+    <main>
+      <h1>Optional gamepad access</h1>
+      <p>Actual GameCanvas reader, dispatcher and charge/shield runtime methods.
+        Keyboard events are native; buttons prepare held touch state. Controlled
+        device snapshots exercise disconnects. No full combat or physical controller.</p>
+      <button id="touch-player">Toggle player touch shield</button>
+      <button id="touch-cpu">Toggle opponent touch charge</button>
+      <div id="actual-controls"></div>
+      <pre id="state"></pre>
+    </main>
+    <script type="module" src="./gamedevGamepadHarness.js"></script>
+  </body>
+</html>

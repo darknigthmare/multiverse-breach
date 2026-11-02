@@ -1,0 +1,1740 @@
+{
+  "schema": "equipment-progress-delivery-evidence-v1",
+  "workDate": "2026-10-27",
+  "userTimezone": "Europe/Paris",
+  "repository": "https://github.com/darknigthmare/multiverse-breach",
+  "pullRequest": 10,
+  "previousDeliveryCommit": "99cd93a9dee4f4695be1b6989344fb74d1922418",
+  "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+  "sourceMasterUnchangedWhenRechecked": true,
+  "scope": "Preserve and review manual equipment progress when regenerating the existing seven-sheet workbook; no game data or artwork change.",
+  "workbook": {
+    "path": "docs/excel/Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx",
+    "bytes": 3208604,
+    "sha256": "afc73cbbab1574c1a7220ca184eca7415f24c936c18b654c258194c690c2d855",
+    "gitBlob": "f6ebb7a767c393c63921bbd1b40c085d85f4b41e"
+  },
+  "extraction": {
+    "path": "equipment-workbook-data.json",
+    "bytes": 53945223,
+    "sha256": "251aaf1815cf2a0471c3fd6dcf0703b6c286b126d7a2e1b77bd94e653a77ee80",
+    "gitBlob": "d937d9e19e7b5e253090486c75cca43426d2072c",
+    "identicalToInitialExtraction": true,
+    "sourceFilesVerified": 213
+  },
+  "sourceFiles": [
+    {
+      "path": "docs/excel/ARMES_EQUIPEMENTS_2026-10-26.md",
+      "bytes": 25599,
+      "sha256": "64a325623cf718e0389a5580a7529bdcdcaab168571b3561d5f16caeba9bb84f",
+      "gitBlob": "d72b926a0e0a930fed8d61db0668a765bb538403"
+    },
+    {
+      "path": "docs/excel/README.md",
+      "bytes": 9539,
+      "sha256": "f96b19988aea8f014b68ce82e93cef2b4ceef3d0c73940e92ce8fa553ae2842a",
+      "gitBlob": "c9a74bce12aab75c101421243a789aae72587567"
+    },
+    {
+      "path": "docs/excel/tools/build_equipment_workbook.mjs",
+      "bytes": 35139,
+      "sha256": "8f0283a9b426f11b55b372cfdf6d1b43ab3b0216a75e25f0b2e14a103049671c",
+      "gitBlob": "c7d5955624a2aef8ba67a90c633c49ad4e9bc3fd"
+    },
+    {
+      "path": "docs/excel/tools/equipment_progress.mjs",
+      "bytes": 13177,
+      "sha256": "902b9876d74793f6ee50293333e437c16e9d586203ef5a2601d8e9d690c515f2",
+      "gitBlob": "0ed209db76d02d1605eebcdd4377441802abb24f"
+    },
+    {
+      "path": "docs/excel/tools/equipment_progress.test.mjs",
+      "bytes": 14715,
+      "sha256": "6c52d1946eb4835d83b669e036ee17dc9893af8ba20f1346b3dd7f3746aef35e",
+      "gitBlob": "a6931d5ed7b23178b80d1fc8ffd4929fc4b67b79"
+    },
+    {
+      "path": "docs/excel/tools/read_equipment_progress.mjs",
+      "bytes": 2122,
+      "sha256": "3c98240dfd108a4fc1f88b1763fcb380fcdb30ac9180eec6777c3e32e9e8ebe7",
+      "gitBlob": "0d372352faeff3d9ec6e73b50ae164fdf0071160"
+    },
+    {
+      "path": "scripts/buildEquipmentWorkbook.mjs",
+      "bytes": 1958,
+      "sha256": "d51978a8a00afeaa95bbd3fc5018254b8728c4a775c0cbc8b3c5d7ae52a7c3c7",
+      "gitBlob": "77bd104385b8972315ec725c7319922659777fec"
+    }
+  ],
+  "unchangedInputs": [
+    {
+      "path": "scripts/exportEquipmentWorkbookData.mjs",
+      "bytes": 34860,
+      "sha256": "ebf7a241c8be03a933134d98cabc942267679c99831a9da3a006ebc10034b91b",
+      "gitBlob": "f308281aa206ee4226538877f5aceaf044df33b4"
+    },
+    {
+      "path": "scripts/exportEquipmentWorkbookData.test.mjs",
+      "bytes": 16488,
+      "sha256": "d20f344e494be5f2f2e932260b23570cf8c00dc6c0c487025e9ac9be02ccbb5b",
+      "gitBlob": "c24bf4489ec66656e2d1502f7c289d6ad1e8c2ad"
+    },
+    {
+      "path": "docs/excel/sources/equipment-canonical-references-2026-10-26.json",
+      "bytes": 86833,
+      "sha256": "2bbc073f5e82a181e8e20c37db0c3b0e81fbc340b4d6e641a0a895509fb64e9f",
+      "gitBlob": "048765b720e123b7d874c9931e62547112477304"
+    },
+    {
+      "path": "docs/excel/sources/equipment-comparison-2026-10-26.json",
+      "bytes": 30453,
+      "sha256": "66732d0755f437469593f427a2d85c3b9d19c4c59eaaf23f78c27fa6cd96f28b",
+      "gitBlob": "911b2ccbb18e153edf2173607b32d084b4541dc4"
+    }
+  ],
+  "tests": {
+    "inventoryExport": {
+      "tests": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "7e2a61016661369d0515ee97914e93a5f502965388d482a4fbc3a5abe58809e1",
+      "log": "(node:5) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"./docs/excel/tools/json-loader.mjs\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ anatomy, natural powers, and creatures in equipment remain non-gear (2.441957ms)\n✔ summon and event identity override a weapon-like displayed name (1.477552ms)\n✔ scene props, clothing, original designs, and unknown materiality stay separate (1.908336ms)\n✔ holsters and magazines are distinct from their weapons; plural blades and suits remain recognizable (0.494733ms)\n✔ render aliases do not erase multiword descriptions copied into weaponType (2.208197ms)\n✔ references accept HTTPS sources only and reject credentials or executable protocols (28.09064ms)\n✔ asset membership uses the full supplied Git tree without probing sparse media (0.684089ms)\n✔ shop parser keeps static projections and rejects unrecognized source shapes (24.91227ms)\n✔ inventory ownership does not become a default equipped assignment (5.426094ms)\n✔ actor keys preserve adversaries without IDs and different incarnations (2.064144ms)\n✔ CSV escapes embedded quotes and formula prefixes while retaining Unicode (0.274049ms)\n✔ export preserves every exact runtime actor and all registry cardinalities (7.33629ms)\n✔ sourceOwner and cross-incarnation exclusions create no fabricated assignment (6.796504ms)\n✔ sourceItemId resolves only explicit same-universe catalog IDs (226.225544ms)\n✔ resolved signatures are derived techniques, not newly equipped physical items (11.156613ms)\n✔ all relationships and gaps point to real rows and never award 1:1 approval (71.948137ms)\n✔ original identities use internal design requirements and icon counts distinguish duplicate paths (384.694351ms)\nℹ tests 17\nℹ suites 0\nℹ pass 17\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 791.056137\n"
+    },
+    "progressMerge": {
+      "tests": 18,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "0890991fec3a9edb4c6aabeb9ac7a8db45057858add5f52a7988f4ea2e31176d",
+      "log": "✔ all four manual statuses and exact input strings survive a row reorder (4.379761ms)\n✔ headers are mapped by exact name even after every column is moved (0.615837ms)\n✔ the calculated result is optional and never used as saved progress (0.562986ms)\n✔ new dossiers start À faire and do not borrow another dossier’s proof (0.705353ms)\n✔ a new finding reopens a completed dossier while retaining its evidence (0.969763ms)\n✔ changed review content reopens the same stable IDs for every A:J field (3.57471ms)\n✔ both reopening reasons are retained without overwriting manual columns (0.413831ms)\n✔ removed dossiers retain all prior progress and are never auto-completed (0.28269ms)\n✔ removing finding IDs alone does not close or reopen unchanged review work (0.276259ms)\n✔ whitespace-only proof is not counted as completed with proof (0.561294ms)\n✔ normalization of review cells does not normalize manual proof or owner (0.231986ms)\n✔ repinning this repository’s source commit preserves progress but path and external URL changes reopen it (0.83538ms)\n✔ literal formula-looking strings remain safe text; actual formula objects are rejected (1.743743ms)\n✔ invalid headers, incomplete rows, missing IDs and invalid statuses fail closed (1.054176ms)\n✔ duplicate dossier and finding IDs are rejected in both old and current data (1.4407ms)\n✔ a finding cannot silently migrate to a different dossier and inherit a wrong review (0.794184ms)\n✔ JSON snapshot callers receive the same strict validation as worksheet imports (1.160021ms)\n✔ no previous snapshot initializes all records and an empty new set retains all retired records (0.469199ms)\nℹ tests 18\nℹ suites 0\nℹ pass 18\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 39.628911\n"
+    },
+    "independentFixture": {
+      "schema": "equipment-carryforward-independent-fixture-review-v1",
+      "reviewedAtUtc": "2026-10-27T23:13:38.491988+00:00",
+      "previous": {
+        "path": "/tmp/equipment-resume-2026-10-27/fixture-previous.xlsx",
+        "sha256": "9a8655d8f0282ce995934d91df546510d322942c383889a37ae029ec9c4d2f3e"
+      },
+      "result": {
+        "path": "/tmp/equipment-resume-2026-10-27/fixture-result-v2.xlsx",
+        "sha256": "664438e92a549baf447debc6e4eb966a823baab04f209a62f423c55628fd4c2e",
+        "bytes": 28176
+      },
+      "passed": true,
+      "checks": [
+        {
+          "name": "sheet order",
+          "passed": true
+        },
+        {
+          "name": "ZIP CRC",
+          "passed": true
+        },
+        {
+          "name": "formula errors",
+          "passed": true
+        },
+        {
+          "name": "all formula caches saved",
+          "passed": true
+        },
+        {
+          "name": "6 native tables",
+          "passed": true
+        },
+        {
+          "name": "native Actions range",
+          "passed": true
+        },
+        {
+          "name": "previous columns genuinely reordered",
+          "passed": true
+        },
+        {
+          "name": "previous row order differs",
+          "passed": true
+        },
+        {
+          "name": "new dossier identified by stable ID",
+          "passed": true
+        },
+        {
+          "name": "retired dossier identified by stable ID",
+          "passed": true
+        },
+        {
+          "name": "current dossier IDs exact",
+          "passed": true
+        },
+        {
+          "name": "same status",
+          "passed": true
+        },
+        {
+          "name": "same exact Preuve de réalisation",
+          "passed": true
+        },
+        {
+          "name": "same exact Responsable",
+          "passed": true
+        },
+        {
+          "name": "same original review content A:J",
+          "passed": true
+        },
+        {
+          "name": "same original finding IDs",
+          "passed": true
+        },
+        {
+          "name": "same original grouped point count",
+          "passed": true
+        },
+        {
+          "name": "same result cache",
+          "passed": true
+        },
+        {
+          "name": "same input is literal K",
+          "passed": true
+        },
+        {
+          "name": "same input is literal L",
+          "passed": true
+        },
+        {
+          "name": "same input is literal M",
+          "passed": true
+        },
+        {
+          "name": "added status",
+          "passed": true
+        },
+        {
+          "name": "added exact Preuve de réalisation",
+          "passed": true
+        },
+        {
+          "name": "added exact Responsable",
+          "passed": true
+        },
+        {
+          "name": "added original review content A:J",
+          "passed": true
+        },
+        {
+          "name": "added original finding IDs",
+          "passed": true
+        },
+        {
+          "name": "added original grouped point count",
+          "passed": true
+        },
+        {
+          "name": "added result cache",
+          "passed": true
+        },
+        {
+          "name": "added input is literal K",
+          "passed": true
+        },
+        {
+          "name": "added input is literal L",
+          "passed": true
+        },
+        {
+          "name": "added input is literal M",
+          "passed": true
+        },
+        {
+          "name": "changed status",
+          "passed": true
+        },
+        {
+          "name": "changed exact Preuve de réalisation",
+          "passed": true
+        },
+        {
+          "name": "changed exact Responsable",
+          "passed": true
+        },
+        {
+          "name": "changed original review content A:J",
+          "passed": true
+        },
+        {
+          "name": "changed original finding IDs",
+          "passed": true
+        },
+        {
+          "name": "changed original grouped point count",
+          "passed": true
+        },
+        {
+          "name": "changed result cache",
+          "passed": true
+        },
+        {
+          "name": "changed input is literal K",
+          "passed": true
+        },
+        {
+          "name": "changed input is literal L",
+          "passed": true
+        },
+        {
+          "name": "changed input is literal M",
+          "passed": true
+        },
+        {
+          "name": "inProgress status",
+          "passed": true
+        },
+        {
+          "name": "inProgress exact Preuve de réalisation",
+          "passed": true
+        },
+        {
+          "name": "inProgress exact Responsable",
+          "passed": true
+        },
+        {
+          "name": "inProgress original review content A:J",
+          "passed": true
+        },
+        {
+          "name": "inProgress original finding IDs",
+          "passed": true
+        },
+        {
+          "name": "inProgress original grouped point count",
+          "passed": true
+        },
+        {
+          "name": "inProgress result cache",
+          "passed": true
+        },
+        {
+          "name": "inProgress input is literal K",
+          "passed": true
+        },
+        {
+          "name": "inProgress input is literal L",
+          "passed": true
+        },
+        {
+          "name": "inProgress input is literal M",
+          "passed": true
+        },
+        {
+          "name": "noProof status",
+          "passed": true
+        },
+        {
+          "name": "noProof exact Preuve de réalisation",
+          "passed": true
+        },
+        {
+          "name": "noProof exact Responsable",
+          "passed": true
+        },
+        {
+          "name": "noProof original review content A:J",
+          "passed": true
+        },
+        {
+          "name": "noProof original finding IDs",
+          "passed": true
+        },
+        {
+          "name": "noProof original grouped point count",
+          "passed": true
+        },
+        {
+          "name": "noProof result cache",
+          "passed": true
+        },
+        {
+          "name": "noProof input is literal K",
+          "passed": true
+        },
+        {
+          "name": "noProof input is literal L",
+          "passed": true
+        },
+        {
+          "name": "noProof input is literal M",
+          "passed": true
+        },
+        {
+          "name": "newlyAdded status",
+          "passed": true
+        },
+        {
+          "name": "newlyAdded new tracking blank",
+          "passed": true
+        },
+        {
+          "name": "newlyAdded original review content A:J",
+          "passed": true
+        },
+        {
+          "name": "newlyAdded original finding IDs",
+          "passed": true
+        },
+        {
+          "name": "newlyAdded original grouped point count",
+          "passed": true
+        },
+        {
+          "name": "newlyAdded result cache",
+          "passed": true
+        },
+        {
+          "name": "newlyAdded input is literal K",
+          "passed": true
+        },
+        {
+          "name": "newlyAdded input is literal L",
+          "passed": true
+        },
+        {
+          "name": "newlyAdded input is literal M",
+          "passed": true
+        },
+        {
+          "name": "canonical status",
+          "passed": true
+        },
+        {
+          "name": "canonical exact Preuve de réalisation",
+          "passed": true
+        },
+        {
+          "name": "canonical exact Responsable",
+          "passed": true
+        },
+        {
+          "name": "canonical original review content A:J",
+          "passed": true
+        },
+        {
+          "name": "canonical original finding IDs",
+          "passed": true
+        },
+        {
+          "name": "canonical original grouped point count",
+          "passed": true
+        },
+        {
+          "name": "canonical result cache",
+          "passed": true
+        },
+        {
+          "name": "canonical input is literal K",
+          "passed": true
+        },
+        {
+          "name": "canonical input is literal L",
+          "passed": true
+        },
+        {
+          "name": "canonical input is literal M",
+          "passed": true
+        },
+        {
+          "name": "minus-leading proof exact",
+          "passed": true
+        },
+        {
+          "name": "plus-leading owner exact",
+          "passed": true
+        },
+        {
+          "name": "intentional proof edge spaces preserved",
+          "passed": true
+        },
+        {
+          "name": "intentional owner edge spaces preserved",
+          "passed": true
+        },
+        {
+          "name": "whitespace-only proof preserved",
+          "passed": true
+        },
+        {
+          "name": "whitespace-only proof not completion",
+          "passed": true
+        },
+        {
+          "name": "independent summary",
+          "passed": true
+        },
+        {
+          "name": "JSON receipt summary",
+          "passed": true
+        },
+        {
+          "name": "receipt pins previous XLSX",
+          "passed": true
+        },
+        {
+          "name": "retired records not completed",
+          "passed": true
+        },
+        {
+          "name": "retired record count",
+          "passed": true
+        },
+        {
+          "name": "retired ID",
+          "passed": true
+        },
+        {
+          "name": "retired tracking exact",
+          "passed": true
+        },
+        {
+          "name": "retired finding IDs exact",
+          "passed": true
+        },
+        {
+          "name": "all fixture findings exactly once",
+          "passed": true
+        },
+        {
+          "name": "summary B7",
+          "passed": true
+        },
+        {
+          "name": "summary B8",
+          "passed": true
+        },
+        {
+          "name": "summary B9",
+          "passed": true
+        },
+        {
+          "name": "summary B10",
+          "passed": true
+        },
+        {
+          "name": "summary B11",
+          "passed": true
+        },
+        {
+          "name": "summary B12",
+          "passed": true
+        },
+        {
+          "name": "summary B13",
+          "passed": true
+        },
+        {
+          "name": "summary B14",
+          "passed": true
+        },
+        {
+          "name": "summary B15",
+          "passed": true
+        },
+        {
+          "name": "summary B17",
+          "passed": true
+        },
+        {
+          "name": "Personnages source IDs",
+          "passed": true
+        },
+        {
+          "name": "Personnages source values [\"A Nightmare on Elm Street\",\"id:nightmare_elm_street_boiler_room_labyrinth\"]",
+          "passed": true
+        },
+        {
+          "name": "Personnages source values [\"A Nightmare on Elm Street\",\"id:nightmare_elm_street_boiler_room_steam_gate\"]",
+          "passed": true
+        },
+        {
+          "name": "Personnages source values [\"Metal Gear\",\"id:snake\"]",
+          "passed": true
+        },
+        {
+          "name": "Armes et objets source IDs",
+          "passed": true
+        },
+        {
+          "name": "Armes et objets source values [\"BATTLE\",\"28 Days Later\",\"28_days_later_field_relic\"]",
+          "passed": true
+        },
+        {
+          "name": "Armes et objets source values [\"BATTLE\",\"28 Days Later\",\"28_days_later_summon\"]",
+          "passed": true
+        },
+        {
+          "name": "Armes et objets source values [\"BATTLE\",\"28 Days Later\",\"28_days_later_survival_cache\"]",
+          "passed": true
+        },
+        {
+          "name": "Affectations source IDs",
+          "passed": true
+        },
+        {
+          "name": "Affectations source values [\"[\\\"A Nightmare on Elm Street\\\",\\\"id:nightmare_elm_street_boiler_room_labyrinth\\\"]\",\"weapon\",\"Boiler Room Labyrinth canonical attack\"]",
+          "passed": true
+        },
+        {
+          "name": "Affectations source values [\"[\\\"A Nightmare on Elm Street\\\",\\\"id:nightmare_elm_street_boiler_room_steam_gate\\\"]\",\"weapon\",\"Boiler-Room Steam Gate canonical attack\"]",
+          "passed": true
+        },
+        {
+          "name": "Références 1a1 source IDs",
+          "passed": true
+        },
+        {
+          "name": "Références 1a1 source values REF-EQP-R2-20261026-001",
+          "passed": true
+        }
+      ],
+      "checksCount": 118,
+      "failures": [],
+      "independentSummary": {
+        "total": 7,
+        "previous": 7,
+        "new": 1,
+        "matched": 6,
+        "reopened": 2,
+        "retired": 1,
+        "completedWithProof": 1
+      },
+      "formulaCount": 26,
+      "limitations": [
+        "Formula caches inspected; no new recalculation performed by independent reviewer",
+        "No Excel Desktop verification"
+      ]
+    },
+    "inputGuards": {
+      "passed": true,
+      "checks": [
+        {
+          "case": "formula_input",
+          "rejected": true,
+          "outputUnchanged": true,
+          "exitCode": 1
+        },
+        {
+          "case": "different_existing_output",
+          "rejected": true,
+          "outputUnchanged": true,
+          "exitCode": 1
+        }
+      ]
+    },
+    "publicationFailureGuards": {
+      "schema": "equipment-publication-failure-independent-review-v1",
+      "reviewedAtUtc": "2026-10-27T23:16:40.412601+00:00",
+      "executed": true,
+      "passed": true,
+      "cases": [
+        {
+          "name": "current-report-is-directory",
+          "beforeWorkbookSha256": "9a8655d8f0282ce995934d91df546510d322942c383889a37ae029ec9c4d2f3e",
+          "beforeWorkbookBytes": 7026,
+          "output": "/tmp/equipment-resume-2026-10-27/qa-publication-guard-cases/current-report-is-directory/existing-output.xlsx",
+          "previewDir": "/tmp/equipment-resume-2026-10-27/qa-publication-guard-cases/current-report-is-directory/previews",
+          "exitCode": 1,
+          "afterWorkbookSha256": "9a8655d8f0282ce995934d91df546510d322942c383889a37ae029ec9c4d2f3e",
+          "afterWorkbookBytes": 7026,
+          "unchangedWorkbook": true,
+          "passed": true,
+          "logTail": "Read previous equipment progress: 7 dossiers\nPrepared Personnages: 3 rows\nPrepared Armes et objets: 3 rows\nPrepared Affectations: 2 rows\nPrepared Références 1a1: 1 rows\nPrepared Actions: 7 rows\nPrepared Évolutions: 11 rows\nChecking workflow and summary\nFormula scan: {\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}\nExporting validated workbook\nInspect result written to file: /tmp/equipment-resume-2026-10-27/qa-publication-guard-cases/current-report-is-directory/existing-output.xlsx.writing-c0e82483-205c-4e38-864a-67181f99bffc.xlsx.inspect.ndjson\nnode:internal/fs/promises:1261\n    const bytesRead = (await PromisePrototypeThen(\n                       ^\n\nError: EISDIR: illegal operation on a directory, read\n    at async readFileHandle (node:internal/fs/promises:1261:24)\n    at async prepareProgressReport (file:///tmp/multiverse-equipment-builder-626Xdd/build_equipment_workbook.mjs:409:26)\n    at async file:///tmp/multiverse-equipment-builder-626Xdd/build_equipment_workbook.mjs:461:20 {\n  errno: -21,\n  code: 'EISDIR',\n  syscall: 'read'\n}\n\nNode.js v24.22.1\n"
+        },
+        {
+          "name": "archive-report-is-directory",
+          "beforeWorkbookSha256": "9a8655d8f0282ce995934d91df546510d322942c383889a37ae029ec9c4d2f3e",
+          "beforeWorkbookBytes": 7026,
+          "output": "/tmp/equipment-resume-2026-10-27/qa-publication-guard-cases/archive-report-is-directory/existing-output.xlsx",
+          "previewDir": "/tmp/equipment-resume-2026-10-27/qa-publication-guard-cases/archive-report-is-directory/previews",
+          "exitCode": 1,
+          "afterWorkbookSha256": "9a8655d8f0282ce995934d91df546510d322942c383889a37ae029ec9c4d2f3e",
+          "afterWorkbookBytes": 7026,
+          "unchangedWorkbook": true,
+          "passed": true,
+          "logTail": "Read previous equipment progress: 7 dossiers\nPrepared Personnages: 3 rows\nPrepared Armes et objets: 3 rows\nPrepared Affectations: 2 rows\nPrepared Références 1a1: 1 rows\nPrepared Actions: 7 rows\nPrepared Évolutions: 11 rows\nChecking workflow and summary\nFormula scan: {\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}\nExporting validated workbook\nInspect result written to file: /tmp/equipment-resume-2026-10-27/qa-publication-guard-cases/archive-report-is-directory/existing-output.xlsx.writing-ad39d110-1f87-4369-90f5-933b8ccc07ab.xlsx.inspect.ndjson\nnode:internal/fs/promises:1261\n    const bytesRead = (await PromisePrototypeThen(\n                       ^\n\nError: EISDIR: illegal operation on a directory, read\n    at async readFileHandle (node:internal/fs/promises:1261:24)\n    at async file:///tmp/multiverse-equipment-builder-qjqvE9/build_equipment_workbook.mjs:405:24\n    at async archive (file:///tmp/multiverse-equipment-builder-qjqvE9/build_equipment_workbook.mjs:403:5)\n    at async prepareProgressReport (file:///tmp/multiverse-equipment-builder-qjqvE9/build_equipment_workbook.mjs:410:23)\n    at async file:///tmp/multiverse-equipment-builder-qjqvE9/build_equipment_workbook.mjs:461:20 {\n  errno: -21,\n  code: 'EISDIR',\n  syscall: 'read'\n}\n\nNode.js v24.22.1\n",
+          "previousReportUnchanged": true
+        }
+      ]
+    },
+    "automaticReuse": {
+      "schema": "equipment-auto-reuse-independent-review-v1",
+      "reviewedAtUtc": "2026-10-27T23:17:09.711703+00:00",
+      "passed": true,
+      "cases": [
+        {
+          "iteration": 1,
+          "passed": true,
+          "checks": {
+            "exit_zero": true,
+            "entire_cell_values_unchanged": true,
+            "entire_formula_text_and_cache_unchanged": true,
+            "all_action_fields_unchanged": true,
+            "seven_matched_no_new_reopened_or_retired": true,
+            "report_pins_previous_binary": true,
+            "report_pins_generated_binary": true,
+            "report_pins_output_size": true,
+            "immutable_report_exists_and_matches": true,
+            "retired_records_empty": true,
+            "no_formula_errors": true
+          },
+          "previousSha256": "664438e92a549baf447debc6e4eb966a823baab04f209a62f423c55628fd4c2e",
+          "outputSha256": "9b20eb8695c017983a84786bc1c96f3bab58ab9accb75588283cd3622d149f43",
+          "reportSha256": "ac565f9484d2e13dd18ca70ca7d6be25029f645366e03d69eed609c9886b966a",
+          "report": {
+            "schema": "equipment-progress-carryforward-v1",
+            "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+            "previousWorkbook": {
+              "filename": "tracked-output.xlsx",
+              "sha256": "664438e92a549baf447debc6e4eb966a823baab04f209a62f423c55628fd4c2e",
+              "bytes": 28176
+            },
+            "summary": {
+              "total": 7,
+              "previous": 7,
+              "new": 0,
+              "matched": 7,
+              "reopened": 0,
+              "retired": 0,
+              "completedWithProof": 1
+            },
+            "outputWorkbook": {
+              "filename": "tracked-output.xlsx",
+              "sha256": "9b20eb8695c017983a84786bc1c96f3bab58ab9accb75588283cd3622d149f43",
+              "bytes": 28180
+            },
+            "reopened": [],
+            "retiredRecords": [],
+            "retiredRecordsAreCompleted": false
+          }
+        },
+        {
+          "iteration": 2,
+          "passed": true,
+          "checks": {
+            "exit_zero": true,
+            "entire_cell_values_unchanged": true,
+            "entire_formula_text_and_cache_unchanged": true,
+            "all_action_fields_unchanged": true,
+            "seven_matched_no_new_reopened_or_retired": true,
+            "report_pins_previous_binary": true,
+            "report_pins_generated_binary": true,
+            "report_pins_output_size": true,
+            "immutable_report_exists_and_matches": true,
+            "retired_records_empty": true,
+            "no_formula_errors": true,
+            "previous_report_archived_exactly": true
+          },
+          "previousSha256": "9b20eb8695c017983a84786bc1c96f3bab58ab9accb75588283cd3622d149f43",
+          "outputSha256": "6b40e06b4b160ff4bbcb21bbb85f5224533e7bde1a6afba0c4c825c5d56832a4",
+          "reportSha256": "bb03157bbde0ff9ecf7a069622bb4e28900c7d2eeb4f06cb2a7add07df1ca1d5",
+          "report": {
+            "schema": "equipment-progress-carryforward-v1",
+            "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+            "previousWorkbook": {
+              "filename": "tracked-output.xlsx",
+              "sha256": "9b20eb8695c017983a84786bc1c96f3bab58ab9accb75588283cd3622d149f43",
+              "bytes": 28180
+            },
+            "summary": {
+              "total": 7,
+              "previous": 7,
+              "new": 0,
+              "matched": 7,
+              "reopened": 0,
+              "retired": 0,
+              "completedWithProof": 1
+            },
+            "outputWorkbook": {
+              "filename": "tracked-output.xlsx",
+              "sha256": "6b40e06b4b160ff4bbcb21bbb85f5224533e7bde1a6afba0c4c825c5d56832a4",
+              "bytes": 28178
+            },
+            "reopened": [],
+            "retiredRecords": [],
+            "retiredRecordsAreCompleted": false
+          }
+        }
+      ],
+      "noSixthArgumentInEitherInvocation": true
+    }
+  },
+  "fullWorkbook": {
+    "builderValidation": {
+      "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+      "worksheets": [
+        "Synthèse",
+        "Évolutions",
+        "Personnages",
+        "Armes et objets",
+        "Affectations",
+        "Références 1a1",
+        "Actions"
+      ],
+      "actors": 4936,
+      "catalogRecords": 5241,
+      "associations": 1500,
+      "canonicalRows": 55,
+      "sources": 21,
+      "actions": 10232,
+      "comparisonRows": 11,
+      "groupedDossiers": 10177,
+      "automaticFindings": 28304,
+      "documentaryFollowups": 55,
+      "totalFindings": 28359,
+      "allFindingIdsPreserved": true,
+      "priorityFindingCountsAreSourceSnapshot": true,
+      "progressCarryforward": {
+        "total": 10232,
+        "previous": 10232,
+        "new": 0,
+        "matched": 10232,
+        "reopened": 0,
+        "retired": 0,
+        "completedWithProof": 0
+      },
+      "summaryCountsChecked": true,
+      "workflowWithAndWithoutProofChecked": true,
+      "testedEngine": "@oai/artifact-tool",
+      "excelDesktopTested": false,
+      "canonicalFidelityApproved": false,
+      "bytes": 3208604
+    },
+    "carryforwardReceipt": {
+      "schema": "equipment-progress-carryforward-v1",
+      "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+      "previousWorkbook": {
+        "filename": "Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx",
+        "sha256": "899fb6f741093ec633cfbd60496cdd13ce008ad63de2c8aa3ee4850f763fe657",
+        "bytes": 3198971
+      },
+      "summary": {
+        "total": 10232,
+        "previous": 10232,
+        "new": 0,
+        "matched": 10232,
+        "reopened": 0,
+        "retired": 0,
+        "completedWithProof": 0
+      },
+      "reopened": [],
+      "retiredRecords": [],
+      "retiredRecordsAreCompleted": false
+    },
+    "independentReview": {
+      "schema": "equipment-complete-workbook-independent-review-v1",
+      "reviewedAtUtc": "2026-10-27T23:19:34.079460+00:00",
+      "baselineSha256": "899fb6f741093ec633cfbd60496cdd13ce008ad63de2c8aa3ee4850f763fe657",
+      "workbook": {
+        "path": "/workspace/scratch/5f2cb68eafd3/outputs/equipment_2026_10_27/Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx",
+        "sha256": "afc73cbbab1574c1a7220ca184eca7415f24c936c18b654c258194c690c2d855",
+        "bytes": 3208604
+      },
+      "passed": true,
+      "checksCount": 131,
+      "checks": [
+        {
+          "name": "new ZIP/XML intrinsic audit",
+          "passed": true
+        },
+        {
+          "name": "sheet order",
+          "passed": true
+        },
+        {
+          "name": "native tables and filters",
+          "passed": true
+        },
+        {
+          "name": "formula count preserved",
+          "passed": true
+        },
+        {
+          "name": "all formula caches present",
+          "passed": true
+        },
+        {
+          "name": "action IDs identical",
+          "passed": true
+        },
+        {
+          "name": "all 10232 dossiers preserve review content, progress and IDs",
+          "passed": true
+        },
+        {
+          "name": "all result formulas strengthened and caches correct",
+          "passed": true
+        },
+        {
+          "name": "actions dossierCount",
+          "passed": true
+        },
+        {
+          "name": "actions statuts",
+          "passed": true
+        },
+        {
+          "name": "actions resultatsCaches",
+          "passed": true
+        },
+        {
+          "name": "actions proofsNonBlank",
+          "passed": true
+        },
+        {
+          "name": "actions ownersNonBlank",
+          "passed": true
+        },
+        {
+          "name": "actions pointCount",
+          "passed": true
+        },
+        {
+          "name": "actions uniquePointCount",
+          "passed": true
+        },
+        {
+          "name": "actions duplicateFindingIds",
+          "passed": true
+        },
+        {
+          "name": "actions contentA_J_QSha256",
+          "passed": true
+        },
+        {
+          "name": "actions trackingK_MSha256",
+          "passed": true
+        },
+        {
+          "name": "Synthèse preserved pane",
+          "passed": true
+        },
+        {
+          "name": "Synthèse preserved validations",
+          "passed": true
+        },
+        {
+          "name": "Synthèse preserved conditionalFormats",
+          "passed": true
+        },
+        {
+          "name": "Synthèse preserved view",
+          "passed": true
+        },
+        {
+          "name": "Évolutions preserved pane",
+          "passed": true
+        },
+        {
+          "name": "Évolutions preserved validations",
+          "passed": true
+        },
+        {
+          "name": "Évolutions preserved conditionalFormats",
+          "passed": true
+        },
+        {
+          "name": "Évolutions preserved view",
+          "passed": true
+        },
+        {
+          "name": "Évolutions all values and formulas preserved",
+          "passed": true
+        },
+        {
+          "name": "Personnages preserved pane",
+          "passed": true
+        },
+        {
+          "name": "Personnages preserved validations",
+          "passed": true
+        },
+        {
+          "name": "Personnages preserved conditionalFormats",
+          "passed": true
+        },
+        {
+          "name": "Personnages preserved view",
+          "passed": true
+        },
+        {
+          "name": "Personnages all values and formulas preserved",
+          "passed": true
+        },
+        {
+          "name": "Armes et objets preserved pane",
+          "passed": true
+        },
+        {
+          "name": "Armes et objets preserved validations",
+          "passed": true
+        },
+        {
+          "name": "Armes et objets preserved conditionalFormats",
+          "passed": true
+        },
+        {
+          "name": "Armes et objets preserved view",
+          "passed": true
+        },
+        {
+          "name": "Armes et objets all values and formulas preserved",
+          "passed": true
+        },
+        {
+          "name": "Affectations preserved pane",
+          "passed": true
+        },
+        {
+          "name": "Affectations preserved validations",
+          "passed": true
+        },
+        {
+          "name": "Affectations preserved conditionalFormats",
+          "passed": true
+        },
+        {
+          "name": "Affectations preserved view",
+          "passed": true
+        },
+        {
+          "name": "Affectations all values and formulas preserved",
+          "passed": true
+        },
+        {
+          "name": "Références 1a1 preserved pane",
+          "passed": true
+        },
+        {
+          "name": "Références 1a1 preserved validations",
+          "passed": true
+        },
+        {
+          "name": "Références 1a1 preserved conditionalFormats",
+          "passed": true
+        },
+        {
+          "name": "Références 1a1 preserved view",
+          "passed": true
+        },
+        {
+          "name": "Références 1a1 all values and formulas preserved",
+          "passed": true
+        },
+        {
+          "name": "Actions preserved pane",
+          "passed": true
+        },
+        {
+          "name": "Actions preserved validations",
+          "passed": true
+        },
+        {
+          "name": "Actions preserved conditionalFormats",
+          "passed": true
+        },
+        {
+          "name": "Actions preserved view",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A2",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A3",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A6",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B6",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D6",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A7",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B7",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D7",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A8",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B8",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D8",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A9",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B9",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D9",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A10",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B10",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D10",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A11",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B11",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D11",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A12",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B12",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D12",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A13",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B13",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D13",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A14",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B14",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D14",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A15",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B15",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D15",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A16",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B16",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D16",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A17",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B17",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D17",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A19",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B19",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D19",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A20",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B20",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D20",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A21",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B21",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D21",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A22",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B22",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D22",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A23",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B23",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D23",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A24",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B24",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D24",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A25",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell B25",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D25",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A28",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D28",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A29",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D29",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A31",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D31",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A32",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D32",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A33",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D33",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A34",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D34",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell A35",
+          "passed": true
+        },
+        {
+          "name": "existing summary cell D35",
+          "passed": true
+        },
+        {
+          "name": "only new summary note cells",
+          "passed": true
+        },
+        {
+          "name": "new note label",
+          "passed": true
+        },
+        {
+          "name": "source previous workbook hash",
+          "passed": true
+        },
+        {
+          "name": "full progress summary",
+          "passed": true
+        },
+        {
+          "name": "no dossiers reopened",
+          "passed": true
+        },
+        {
+          "name": "no dossiers retired",
+          "passed": true
+        },
+        {
+          "name": "retirements never called completed",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "rowsComparedByStableId": 10232,
+      "findingIdsCompared": 28359,
+      "formulaCachesVerified": 10251,
+      "sourceSheetsPreserved": 5,
+      "stylesXmlUnchanged": true,
+      "receiptHasGeneratedWorkbookHash": false,
+      "limitations": [
+        "Formula caches inspected; independent reviewer does not recalculate them",
+        "Visual QA delegated to primary agent",
+        "Excel Desktop not exercised"
+      ],
+      "nativeXmlPreservation": {
+        "schema": "equipment-native-xml-preservation-independent-v1",
+        "passed": true,
+        "checksCount": 30,
+        "checks": [
+          {
+            "name": "archive members unchanged",
+            "passed": true
+          },
+          {
+            "name": "xl/workbook.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/styles.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/theme/theme1.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/sharedStrings.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "summary row 36 height 49",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/sheet1.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/sheet2.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/tables/table1.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/sheet3.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/tables/table2.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/sheet4.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/tables/table3.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/sheet5.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/tables/table4.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/sheet6.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/tables/table5.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "10232 authorized Actions formula changes",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/sheet7.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/tables/table6.xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "_rels/.rels unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/_rels/workbook.xml.rels unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/_rels/sheet2.xml.rels unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/_rels/sheet3.xml.rels unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/_rels/sheet4.xml.rels unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/_rels/sheet5.xml.rels unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/_rels/sheet6.xml.rels unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "xl/worksheets/_rels/sheet7.xml.rels unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "[Content_Types].xml unchanged outside authorized edits",
+            "passed": true
+          },
+          {
+            "name": "staged generation source reconstructed exactly",
+            "passed": true
+          }
+        ],
+        "generationProvenance": {
+          "generationBuilderSha256": "8e0e11c87160493577241ebe5b57e3a5a755eb019617da5bd9f7fc876e085d85",
+          "generationBuilderVerifiedByReversingPatch": true,
+          "deliveredBuilderSha256": "8f0283a9b426f11b55b372cfdf6d1b43ab3b0216a75e25f0b2e14a103049671c",
+          "postStartPatchSha256": "4b22c3a02c78e1b5c007f235680e2e1b39e18a777d6103bcfad9190269222d10",
+          "patchHunks": 4,
+          "patchScope": "Only random temporary names, durable report journaling, archive validation and atomic publication; no cell, formula or layout edit",
+          "deliveredIoCodeVerifiedSeparately": [
+            "qa-publication-guard-cases/qa-report.json",
+            "qa-auto-roundtrip/qa-report.json"
+          ],
+          "fullWorkbookNotRegeneratedForIoOnlyPatch": true
+        },
+        "normalization": "Generated relationship IDs resolved to exact unchanged Type/Target/TargetMode; no target ignored",
+        "allowedEdits": [
+          "Actions N7:N10238 formula text",
+          "Synthèse A36 and D36 text/style, row36 height49"
+        ]
+      }
+    },
+    "nativeXmlReview": {
+      "schema": "equipment-native-xml-preservation-independent-v1",
+      "passed": true,
+      "checksCount": 30,
+      "checks": [
+        {
+          "name": "archive members unchanged",
+          "passed": true
+        },
+        {
+          "name": "xl/workbook.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/styles.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/theme/theme1.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/sharedStrings.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "summary row 36 height 49",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/sheet1.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/sheet2.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/tables/table1.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/sheet3.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/tables/table2.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/sheet4.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/tables/table3.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/sheet5.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/tables/table4.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/sheet6.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/tables/table5.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "10232 authorized Actions formula changes",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/sheet7.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/tables/table6.xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "_rels/.rels unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/_rels/workbook.xml.rels unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/_rels/sheet2.xml.rels unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/_rels/sheet3.xml.rels unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/_rels/sheet4.xml.rels unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/_rels/sheet5.xml.rels unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/_rels/sheet6.xml.rels unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "xl/worksheets/_rels/sheet7.xml.rels unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "[Content_Types].xml unchanged outside authorized edits",
+          "passed": true
+        },
+        {
+          "name": "staged generation source reconstructed exactly",
+          "passed": true
+        }
+      ],
+      "generationProvenance": {
+        "generationBuilderSha256": "8e0e11c87160493577241ebe5b57e3a5a755eb019617da5bd9f7fc876e085d85",
+        "generationBuilderVerifiedByReversingPatch": true,
+        "deliveredBuilderSha256": "8f0283a9b426f11b55b372cfdf6d1b43ab3b0216a75e25f0b2e14a103049671c",
+        "postStartPatchSha256": "4b22c3a02c78e1b5c007f235680e2e1b39e18a777d6103bcfad9190269222d10",
+        "patchHunks": 4,
+        "patchScope": "Only random temporary names, durable report journaling, archive validation and atomic publication; no cell, formula or layout edit",
+        "deliveredIoCodeVerifiedSeparately": [
+          "qa-publication-guard-cases/qa-report.json",
+          "qa-auto-roundtrip/qa-report.json"
+        ],
+        "fullWorkbookNotRegeneratedForIoOnlyPatch": true
+      },
+      "normalization": "Generated relationship IDs resolved to exact unchanged Type/Target/TargetMode; no target ignored",
+      "allowedEdits": [
+        "Actions N7:N10238 formula text",
+        "Synthèse A36 and D36 text/style, row36 height49"
+      ]
+    },
+    "buildExitCode": 0,
+    "readbackRenderExitCode": 0
+  },
+  "generatorProvenance": {
+    "fullBuildExecutedBuilderSha256": "8e0e11c87160493577241ebe5b57e3a5a755eb019617da5bd9f7fc876e085d85",
+    "publishedBuilderSha256": "8f0283a9b426f11b55b372cfdf6d1b43ab3b0216a75e25f0b2e14a103049671c",
+    "postStartChanges": "After the complete build started, publication was hardened to persist immutable progress reports before replacement. The patch changes only temporary names and publication/journaling, not cells, formulas or layout. Final publication code passed two forced-I/O-error cases and two successive real-XLSX regenerations.",
+    "postStartPatchSha256": "4b22c3a02c78e1b5c007f235680e2e1b39e18a777d6103bcfad9190269222d10",
+    "postStartPatch": "--- /tmp/multiverse-equipment-builder-2WngQl/build_equipment_workbook.mjs\t2026-10-27 19:13:45.444837628 -0400\n+++ docs/excel/tools/build_equipment_workbook.mjs\t2026-10-27 19:15:39.364659500 -0400\n@@ -2,7 +2,7 @@\n import path from 'node:path';\n import assert from 'node:assert/strict';\n import os from 'node:os';\n-import { createHash } from 'node:crypto';\n+import { createHash, randomUUID } from 'node:crypto';\n import { spawn } from 'node:child_process';\n import { fileURLToPath } from 'node:url';\n import { Workbook, SpreadsheetFile } from '@oai/artifact-tool';\n@@ -393,20 +393,37 @@\n assert.equal(summary.getRange('B17').values[0][0], allFindingIds.length);\n for (let i = 0; i < focus.length; i++) assert.equal(summary.getRange('B' + (20 + i)).values[0][0], data.gaps.filter(a => a.kind === focus[i][0]).length);\n await fs.mkdir(previewDir, { recursive: true });\n-async function writeProgressReport() {\n+// Persist recovery data before replacing a workbook. The immutable report also\n+// survives a failure when publishing the convenient progress-carryforward name.\n+async function prepareProgressReport(outputHash, outputBytes) {\n   const progressReportPath = path.join(previewDir, 'progress-carryforward.json');\n-  const previousReport = await fs.readFile(progressReportPath).catch(error => { if (error.code === 'ENOENT') return null; throw error; });\n-  if (previousReport) {\n-    const reportHash = createHash('sha256').update(previousReport).digest('hex');\n+  const archive = async bytes => {\n+    const reportHash = createHash('sha256').update(bytes).digest('hex');\n     const archivePath = path.join(previewDir, 'progress-carryforward-' + reportHash + '.json');\n-    await fs.writeFile(archivePath, previousReport, { flag: 'wx' }).catch(error => { if (error.code !== 'EEXIST') throw error; });\n-  }\n-  await fs.writeFile(progressReportPath, JSON.stringify({\n+    await fs.writeFile(archivePath, bytes, { flag: 'wx' }).catch(async error => {\n+      if (error.code !== 'EEXIST') throw error;\n+      assert.deepEqual(await fs.readFile(archivePath), bytes, 'Existing progress archive differs from its content hash');\n+    });\n+    return archivePath;\n+  };\n+  const previousReport = await fs.readFile(progressReportPath).catch(error => { if (error.code === 'ENOENT') return null; throw error; });\n+  if (previousReport) await archive(previousReport);\n+  const reportBytes = Buffer.from(JSON.stringify({\n     schema: 'equipment-progress-carryforward-v1', sourceCommit,\n     previousWorkbook: previousProgress?.source || null, summary: progress.summary,\n+    outputWorkbook: { filename: path.basename(outputPath), sha256: outputHash, bytes: outputBytes },\n     reopened: progress.reopened, retiredRecords: progress.retiredRecords,\n     retiredRecordsAreCompleted: false\n   }, null, 2) + '\\n');\n+  const immutablePath = await archive(reportBytes);\n+  const temporaryPath = progressReportPath + '.writing-' + randomUUID();\n+  try {\n+    await fs.writeFile(temporaryPath, reportBytes, { flag: 'wx' });\n+  } catch (error) {\n+    await fs.rm(temporaryPath, { force: true });\n+    throw error;\n+  }\n+  return { progressReportPath, temporaryPath, immutablePath };\n }\n const inspection = await wb.inspect({ kind: 'table', range: \"'Synthèse'!A6:D17\", include: 'values,formulas', tableMaxRows: 12, tableMaxCols: 4, maxChars: 7500 });\n await fs.writeFile(path.join(previewDir, 'summary-inspection.ndjson'), inspection.ndjson);\n@@ -437,9 +454,11 @@\n await fs.mkdir(path.dirname(outputPath), { recursive: true });\n console.log('Exporting validated workbook');\n const output = await SpreadsheetFile.exportXlsx(wb);\n-const temporaryOutput = outputPath + '.writing-' + process.pid + '.xlsx';\n+const temporaryOutput = outputPath + '.writing-' + randomUUID() + '.xlsx';\n+let preparedReport;\n try {\n   await output.save(temporaryOutput);\n+  preparedReport = await prepareProgressReport(await fileHash(temporaryOutput), (await fs.stat(temporaryOutput)).size);\n   if (outputExists) {\n     if (await fileHash(outputPath) !== previousProgress.source.sha256) {\n       throw new Error('OUTPUT.xlsx changed after progress was read. Re-run with the current workbook.');\n@@ -450,11 +469,12 @@\n     // never silently replaced. The temporary file is on the same filesystem.\n     await fs.link(temporaryOutput, outputPath);\n   }\n+  await fs.rename(preparedReport.temporaryPath, preparedReport.progressReportPath);\n } finally {\n   await fs.rm(temporaryOutput, { force: true });\n+  if (preparedReport) await fs.rm(preparedReport.temporaryPath, { force: true });\n }\n validation.bytes = (await fs.stat(outputPath)).size;\n-await writeProgressReport();\n await fs.writeFile(path.join(previewDir, 'workbook-validation.json'), JSON.stringify(validation, null, 2) + '\\n');\n console.log(JSON.stringify(validation, null, 2));\n // Export before rendering so image-layout caches do not overlap serialization.\n",
+    "reversePatchReconstructsExecutedBuilder": true,
+    "managedRuntimeBundleVersion": "26.1022.11436"
+  },
+  "visualReview": {
+    "passed": true,
+    "allSevenBuilderPreviewsProduced": true,
+    "reviewedAfterReadback": [
+      {
+        "path": "final-summary-notes.png",
+        "bytes": 94460,
+        "sha256": "fa1b64f9900d32f3bf346ce8e1f9ae205fcd4bff5b7a9e6446bfbfb52c771d20",
+        "gitBlob": "af17b9b2b5d7890e466a756fb31ab60d67008716",
+        "range": "'Synthèse'!A28:D36",
+        "review": "New carryforward note fits, wraps legibly and preserves surrounding source notes."
+      },
+      {
+        "path": "final-progress.png",
+        "bytes": 22548,
+        "sha256": "e9d4c919745594ce6d03d1a1b1182e8fa6f431e039d1b272861b57d6b9a58f3e",
+        "gitBlob": "c32322730002c10bc16f4fb790ce18bed18333a5",
+        "range": "'Actions'!K6:N10",
+        "review": "Input columns and calculated results remain legible; pixels identical to reviewed baseline."
+      }
+    ],
+    "unchangedViewsNotRepeatedlyReviewed": true,
+    "scope": "Changed note and affected progress view; entire workbook content and native formatting checked independently."
+  },
+  "historicalCiRechecked": {
+    "commit": "99cd93a9dee4f4695be1b6989344fb74d1922418",
+    "successfulRunIds": [
+      40402416908,
+      40402416862,
+      40402416804,
+      40402416981
+    ],
+    "failedRuns": [
+      {
+        "id": 40402416752,
+        "job": 121851438727,
+        "name": "Full production build",
+        "cause": "progressionAudit.mjs:816 still expects sheet.naturalHeight / 10; same immediate failure on source master.",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40402416752/job/121851438727"
+      },
+      {
+        "id": 40402416723,
+        "job": 121851438807,
+        "name": "City and Extinction immersive UI",
+        "cause": "17/18 scenarios pass; Infestation bot defeated after 89 kills at frame 3360. Root cause undetermined.",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40402416723/job/121851438807"
+      }
+    ],
+    "notResultsForTheNewCommit": true
+  },
+  "limitations": [
+    "Excel Desktop not tested.",
+    "No new canonical research, new sprites or artistic 1:1 approvals.",
+    "Completion checks require a nonempty proof but do not validate its quality.",
+    "Manual fields containing formulas or starting with = are rejected before replacement because the spreadsheet engine would otherwise infer a formula."
+  ]
+}

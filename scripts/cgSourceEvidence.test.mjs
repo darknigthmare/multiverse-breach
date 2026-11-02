@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync, symlinkSync, unlinkSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import os from 'node:os';
 import path from 'node:path';
@@ -21,13 +21,26 @@ const fixture = t => {
 test('exact historical reference-use corrections restrict Bishop body images without changing other identities or trusting bad hashes', t => {
   const actual = loadCgSourceEvidence(ROOT).get('bishop');
   const identity = loadQualifiedCgIdentityLocks(ROOT).get('bishop').identityVisualReferences;
-  assert.equal(identity.length, 2, 'Only the historical/current aliases of the film face remain identity inputs');
+  const filmSha = 'e46b5f36ee394d58c5c7ae41a44cb3ee8e35891207c956f82f9d7d5d9ed9e98d';
+  const availableFilmAliases = actual.references.filter(ref => ref.sha256 === filmSha
+    && existsSync(path.join(ROOT, ref.path)));
+  assert.equal(identity.length, availableFilmAliases.length, 'Only available film aliases remain identity inputs');
+  assert.ok(identity.some(ref => ref.path === 'docs/cg/references/wave12-2026-11-01/bishop/primary-film-aliens1986.jpeg'));
   assert.ok(identity.every(ref => ref.sha256 === 'e46b5f36ee394d58c5c7ae41a44cb3ee8e35891207c956f82f9d7d5d9ed9e98d'));
   const body = actual.references.filter(ref => ['ad6cc777d241e815eb775219ff2b58ccc3abca35a56132db66582aad0d5e09a2',
     '22ffaf0709467e93276b644476b43553769a8f192625cc5c97ba8d0ab30febaf'].includes(ref.sha256));
   assert.equal(body.length, 4);
   assert.ok(body.every(ref => ref.referencePurpose === 'body-costume-support' && ref.usedForIdentity === false));
   assert.equal(body.filter(ref => ref.referenceUseCorrection).length, 2);
+  for (const ref of body.filter(item => item.referenceUseCorrection)) {
+    const legacyPresent = existsSync(path.join(ROOT, ref.path));
+    assert.equal(ref.referenceUseCorrection.legacyAndCurrentHashesVerified, legacyPresent);
+    if (!legacyPresent) {
+      assert.equal(ref.referenceUseCorrection.legacyArchiveAvailable, false);
+      assert.equal(ref.referenceUseCorrection.legacyHashVerifiedInThisRun, false);
+      assert.equal(ref.referenceUseCorrection.currentBitmapHashVerified, true);
+    }
+  }
 
   const f = fixture(t), film = f.image('film.png'), old = f.image('old-body.png'), current = f.image('current-body.png');
   const sha256 = createHash('sha256').update(readFileSync(path.join(f.root, old))).digest('hex');
@@ -59,6 +72,72 @@ test('exact historical reference-use corrections restrict Bishop body images wit
   assert.deepEqual(readFileSync(path.join(f.root, receipt)), before, 'Historical receipt bytes are immutable');
   writeFileSync(path.join(f.root, current), Buffer.from('altered bitmap'));
   assert.throws(() => loadCgSourceEvidence(f.root), /current bitmap SHA-256 mismatch/, 'Do not silently qualify through a bad current alias');
+});
+
+test('a missing private archive keeps public hashes and body-only authority mandatory, including already restricted references', t => {
+  const f = fixture(t), old = f.image('.tmp/archive/body.png');
+  const current = f.image('docs/cg/references/body.png'), film = f.image('film.png');
+  const oldFile = path.join(f.root, old), currentFile = path.join(f.root, current);
+  const bitmap = readFileSync(currentFile), hash = bytes => createHash('sha256').update(bytes).digest('hex');
+  const authority = 'docs/cg/current-reference-evidence.json', authorityFile = path.join(f.root, authority);
+  const source = { characterId: 'bishop', references: [{ path: current, sha256: hash(bitmap),
+    referencePurpose: 'body-costume-support', usedForIdentity: false, referenceScope: 'licensed-body-only-not-face' }] };
+  f.write(authority, source);
+  const authorityBytes = readFileSync(authorityFile);
+  const rule = { id: 'private-body-use', characterId: 'bishop', legacyPath: old, currentPath: current,
+    sha256: hash(bitmap), fromPurpose: 'identity', toPurpose: 'body-costume-support', usedForIdentity: false,
+    referenceScope: 'licensed-body-only-not-face', authorityFile: authority, authoritySha256: hash(authorityBytes) };
+  const reference = { path: old, sha256: rule.sha256, referencePurpose: 'identity', viewed: true };
+  const apply = item => applyCgReferenceUseCorrection(f.root, 'bishop', item, [rule]);
+  const present = apply(reference);
+  assert.equal(present.referenceUseCorrection.legacyAndCurrentHashesVerified, true);
+  assert.equal(Object.hasOwn(present.referenceUseCorrection, 'legacyArchiveAvailable'), false);
+  unlinkSync(oldFile);
+  const absent = apply(reference), metadata = absent.referenceUseCorrection;
+  assert.equal(absent.usedForIdentity, false);
+  assert.equal(absent.referencePurpose, 'body-costume-support');
+  assert.equal(metadata.legacyAndCurrentHashesVerified, false);
+  assert.equal(metadata.legacyArchiveAvailable, false);
+  assert.equal(metadata.legacyHashVerifiedInThisRun, false);
+  assert.equal(metadata.currentBitmapHashVerified, true);
+  assert.equal(metadata.authorityHashVerified, true);
+  assert.deepEqual(apply(present), absent, 'Previously serialized metadata must not falsely attest the missing archive');
+  assert.deepEqual(apply(absent), absent, 'Missing-archive restriction remains idempotent');
+  assert.equal(applyCgReferenceUseCorrection(f.root, 'other', reference, [rule]), reference);
+  assert.equal(apply({ ...reference, referencePurpose: 'environment-only' }).referenceUseCorrection, undefined);
+  assert.throws(() => apply({ ...reference, sha256: '0'.repeat(64) }), /declared legacy SHA-256 mismatch/);
+
+  writeFileSync(currentFile, 'altered public bitmap');
+  assert.throws(() => apply(reference), /current bitmap SHA-256 mismatch/);
+  assert.throws(() => apply(absent), /current bitmap SHA-256 mismatch/);
+  writeFileSync(currentFile, bitmap);
+  writeFileSync(authorityFile, 'altered authority');
+  assert.throws(() => apply(reference), /frozen authority SHA-256 mismatch/);
+  assert.throws(() => apply(absent), /frozen authority SHA-256 mismatch/);
+  const wrongAuthority = { ...source, references: [{ ...source.references[0], usedForIdentity: true }] };
+  f.write(authority, wrongAuthority);
+  const wrongRule = { ...rule, authoritySha256: hash(readFileSync(authorityFile)) };
+  assert.throws(() => applyCgReferenceUseCorrection(f.root, 'bishop', reference, [wrongRule]), /body-support authority does not match/);
+  writeFileSync(authorityFile, authorityBytes);
+
+  writeFileSync(oldFile, 'altered archive');
+  assert.throws(() => apply(reference), /legacy bitmap SHA-256 mismatch/);
+  assert.throws(() => apply(absent), /legacy bitmap SHA-256 mismatch/);
+  writeFileSync(oldFile, bitmap);
+  assert.deepEqual(apply(absent), present, 'Restored archive returns the exact prior workspace metadata');
+  unlinkSync(oldFile);
+  symlinkSync('missing-target.png', oldFile);
+  assert.throws(() => apply(reference), /ENOENT/, 'A broken archive symlink is not an absent private file');
+  unlinkSync(oldFile);
+  const publicLegacy = 'docs/cg/references/missing-body.png';
+  assert.throws(() => applyCgReferenceUseCorrection(f.root, 'bishop', { ...reference, path: publicLegacy },
+    [{ ...rule, legacyPath: publicLegacy }]), /legacy bitmap SHA-256 mismatch/, 'Only private archives can be absent');
+
+  f.write(REFERENCE_USE_CORRECTIONS_FILE, { schemaVersion: 1, corrections: [rule] });
+  f.write('docs/cg/historical-source-evidence.json', { characterId: 'bishop', incarnation: 'Concrete film model',
+    visualLocks: { face: 'Specific film face and dark swept-back hair' },
+    references: [{ path: film, sha256: rule.sha256, viewed: true, referencePurpose: 'identity' }, reference] });
+  assert.deepEqual(loadQualifiedCgIdentityLocks(f.root).get('bishop').identityVisualReferences.map(ref => ref.path), [film]);
 });
 
 test('actual Dante identity excludes Nero/V environment screenshots and weapon-only images', () => {

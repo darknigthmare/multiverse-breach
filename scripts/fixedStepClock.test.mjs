@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createRaceKeyboardState, createRaceTouchState } from '../src/game/raceSessionControls.js';
+import { createFighterHeldInputs } from '../src/game/fighterControlOwnership.js';
 import { createFixedStepClock } from '../src/game/fixedStepClock.js';
 
 const simulate = (refreshRate, speed = 1) => {
@@ -42,13 +44,19 @@ test('invalid time, clock rollback and lag remain bounded', () => {
 
 const componentSource = name => readFileSync(new URL(`../src/components/${name}.jsx`, import.meta.url), 'utf8');
 const runComponentTransition = (body, environment) => new Function(...Object.keys(environment), body)(...Object.values(environment));
-const transitionEnvironment = clock => ({
-  simulationClockRef: { current: clock }, sessionPausedRef: { current: false }, sessionPaused: false,
-  document: { hidden: false }, engineRef: { current: { setPaused() {} } },
+const transitionEnvironment = clock => {
+  const engine = { paused: false, calls: [], setPaused(value) { this.paused = value; this.calls.push(value); } };
+  return ({
+  simulationClockRef: { current: clock }, sessionPausedRef: { current: false }, sessionPaused: false, raceMenuOpen: false,
+  document: { hidden: false }, engine, engineRef: { current: engine },
+  touchStateRef: { current: createRaceTouchState() },
+  keyboardStateRef: { current: createRaceKeyboardState() },
+  heldInputsRef: { current: createFighterHeldInputs() },
   inputRef: { current: {} }, keysRef: { current: {} }, keyPulseRef: { current: {} },
   tacticsCameraPointerRef: { current: {} }, suppressTacticsClickRef: { current: false },
   clearMeleeControls() {}, clearMeleeInput() {}, clearInputs() {}
-});
+  });
+};
 
 for (const component of ['GameCanvas', 'FighterMode', 'RaceMode']) {
   test(`${component} visibility transitions discard hidden time even when no RAF runs`, () => {
@@ -65,8 +73,16 @@ for (const component of ['GameCanvas', 'FighterMode', 'RaceMode']) {
       // No advance({paused:true}) occurs: browsers normally suppress hidden RAF.
       environment.document.hidden = true;
       runComponentTransition(handler[1], environment);
+      if (component === 'FighterMode') assert.equal(environment.engine.paused, true);
       environment.document.hidden = false;
       runComponentTransition(handler[1], environment);
+      if (component === 'FighterMode') {
+        assert.equal(environment.engine.paused, false);
+        assert.deepEqual(environment.engine.calls, [true, false]);
+        environment.sessionPausedRef.current = true;
+        runComponentTransition(handler[1], environment);
+        assert.equal(environment.engine.paused, true, 'visibility must not unpause a shell pause');
+      }
       const impactTicksRemaining = 6;
       assert.equal(impactTicksRemaining - clock.advance(520, { speed }), impactTicksRemaining, 'pending hit fired on resume');
       assert.equal(clock.advance(540, { speed }), speed);
@@ -75,7 +91,7 @@ for (const component of ['GameCanvas', 'FighterMode', 'RaceMode']) {
 
   test(`${component} shell pause and resume reset elapsed time without reconstructing the engine`, () => {
     const source = componentSource(component);
-    const effect = source.match(/useEffect\(\(\) => \{\s*(sessionPausedRef\.current = sessionPaused;[\s\S]*?)\}, \[sessionPaused\]\);/);
+    const effect = source.match(/useEffect\(\(\) => \{\s*(sessionPausedRef\.current = sessionPaused(?: \|\| raceMenuOpen)?;[\s\S]*?)\}, \[sessionPaused(?:, raceMenuOpen)?\]\);/);
     assert.ok(effect, 'missing shell pause effect');
     const clock = createFixedStepClock();
     const environment = transitionEnvironment(clock);
@@ -86,6 +102,14 @@ for (const component of ['GameCanvas', 'FighterMode', 'RaceMode']) {
     runComponentTransition(effect[1], environment);
     environment.sessionPaused = false;
     runComponentTransition(effect[1], environment);
+    if (component === 'RaceMode') {
+      environment.raceMenuOpen = true;
+      runComponentTransition(effect[1], environment);
+      assert.equal(environment.sessionPausedRef.current, true, 'garage must freeze the race');
+      environment.raceMenuOpen = false;
+      runComponentTransition(effect[1], environment);
+      assert.equal(environment.sessionPausedRef.current, false);
+    }
     assert.equal(environment.engineRef.current, sameEngine);
     assert.equal(clock.advance(520), 0);
     assert.equal(clock.advance(540), 1);
@@ -103,3 +127,4 @@ test('RPG targeting wait transitions also reset the clock independently of the s
   runComponentTransition(effect[1], transitionEnvironment(clock));
   assert.equal(clock.advance(520), 0);
 });
+

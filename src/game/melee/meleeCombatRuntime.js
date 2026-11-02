@@ -156,6 +156,20 @@ export const releaseMeleeCharge = actor => {
   return startDefinedAction(actor, 'charged', powerScale);
 };
 
+// Device/focus cancellation is not a deliberate release. Leave independent
+// held controls, a committed action and higher-priority actor states intact.
+export const cancelMeleeCharge = actor => {
+  initializeMeleeActorRuntime(actor);
+  if (!actor?.charging) return false;
+  actor.charging = false;
+  actor.chargeHoldSeconds = 0;
+  if (!actor.action && !actor.guarding && actor.shieldBreakTimer <= 0 && !actor.ledge
+    && !isMeleePresentationLocked(actor) && !isMeleeHitLocked(actor)) {
+    transitionMeleeState(actor, actor.crouching ? 'crouchIdle' : 'idle', { force: true });
+  }
+  return true;
+};
+
 export const beginMeleeShield = actor => {
   initializeMeleeActorRuntime(actor);
   if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || isMeleeHitLocked(actor) || actor.action || actor.guardMeter <= 0 || actor.shieldBreakTimer > 0 || actor.ledge) return false;

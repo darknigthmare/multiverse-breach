@@ -33,12 +33,12 @@
   "availableCounts": {
     "heroes": 1912,
     "enemies": 608,
-    "bosses": 712,
+    "bosses": 713,
     "trials": 334,
     "items": 1597,
     "finales": 55,
     "stages": 304,
-    "total": 5522
+    "total": 5523
   },
   "verifiedOpenAiCounts": {
     "heroes": 1101,
@@ -53,12 +53,12 @@
   "missingCounts": {
     "heroes": 0,
     "enemies": 910,
-    "bosses": 795,
+    "bosses": 794,
     "trials": 0,
     "items": 0,
     "finales": 0,
     "stages": 888,
-    "total": 2593
+    "total": 2592
   },
   "entries": [
     {
@@ -66582,22 +66582,31 @@
       "universe": "Godzilla The Animated Series",
       "output": "/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png",
       "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
+        "width": 1254,
+        "height": 1254,
+        "columns": 1,
         "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
+          "idle"
         ]
       },
-      "referenceUrl": "https://godzillatheseries.fandom.com/wiki/Crustaceous_Rex",
-      "visualAnchor": "Exact red-brown giant crustacean anatomy from the series, enormous claws, layered shell and low amphibious stance.",
-      "spritePrompt": "Use case: stylized-concept. Asset type: transparent game sprite sheet for a 2D canvas battle game. Create one original highly detailed dark-fantasy pixel-art animation sheet, 1024x1024, exactly 4 columns x 4 rows, sixteen equal 256x256 cells. One boss entity only, except for a canonically inseparable duo or trio explicitly required by the visual lock; full body, three-quarter side battle angle facing right, centered with identical scale and anatomy in every cell. Row 1 idle breathing, row 2 walk or run cycle, row 3 canonical signature attack, row 4 hit or recoil cycle. Perfectly flat solid #00ff00 chroma background, no floor, no cast shadow, no text, no labels, no border, no watermark, no cropped limbs and no duplicate subject. Subject: Crustaceous Rex from Godzilla The Animated Series. Visual lock: Exact red-brown giant crustacean anatomy from the series, enormous claws, layered shell and low amphibious stance. Canonical combat identity: massive_claws; signature action: Crustacean Crushing Grip. Gameplay phases: Uses claw slams and armored body charges Then Cracked shell exposes vulnerable tissue below 40 percent health. Do not add Nexus armor, cross-franchise equipment, alternate-era clothing or anatomy that is absent from the reference.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "referenceUrl": "https://www.scifijapan.com/anime-animation/godzilla-the-series",
+      "visualAnchor": "Crustaceous Rex from Godzilla: The Series (1998), following the Sony Pictures/Adelaide Productions model sheet: dark olive-brown ridged carapace with small cream spikes, ochre segmented underside, extremely elongated segmented forelimbs ending in broad claw-fingered walking hands, small hind limbs, a narrow beak-shaped head opening into a red flower-like mouth, and numerous flexible head tentacles. Preserve this hunched long-armed silhouette rather than ordinary crab pincers or a lobster tail; no invented shell-breaking transformation.",
+      "spritePrompt": "Use case: precise-object-edit. Image1 is the EDIT TARGET, a generated transparent game sprite of Crustaceous Rex. Image2 is the OFFICIAL production model sheet and must govern exact anatomy/proportions. Image3 is the episode reference for the broad tentacles. Correct ONLY the three anatomical mismatches in image1 while retaining its full-body single pose, facing RIGHT, olive/ochre/red palette, intact ridged shell, cream spines, floral mouth, clean dark outline and transparent background.\n1) Replace the dense beard of many hair-thin dangling tendrils with the FEW visible broad smooth flat tapered tentacles matching image2 and image3. Match the visible count, substantial width, attachments and flowing shapes in the official model; do not add decorative strands. They must be clear ribbon-like appendages at small sprite scale, not hair or a squid beard.\n2) The small paired rear appendages under the abdomen must follow the frontal official model exactly: simple slender curved/tapered green-ochre hook/fork-like rear limbs. Remove the invented bird-like articulated shins, ankle joints and toe claws in image1. Do not invent knees, extra joints or dinosaur feet.\n3) Make the very long walking forearms and especially the near palm/fingers more slender and proportionately smaller, matching image2's original elongated lanky silhouette. Keep the immense ARM LENGTH, bowed segments, walking hands and individual cream claws. Reduce excessive bulk of the near hand by about20% relative to the body; no crab pincers, lobster claws or muscular human fists. Preserve stable grounded hand placement.\nThe desired result is a much more literal rendition of the Sony/Adelaide model, not a redesigned monster. Keep the entire subject visible with padding on all sides, grounded tips near92%height, no clipped tentacles. One square single-frame sprite, full transparent alpha, no additional object, no scenery, no ground/shadow, no text or watermark. Do not make a sprite sheet and do not change the camera or colors.",
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "recorded-static-imagegen",
+      "generationId": "exec-99fca49e-a48e-4455-84e6-fd32cc47e289",
+      "outputSha256": "5d758f8884a14065eb835e300dda13085baf68a296458d4326d0486917a9d2bc",
+      "provenanceRecord": "docs/assets/CRUSTACEOUS_REX_STATIC_2026-10-29.json",
+      "frameCount": 1,
+      "animated": false,
+      "animationStatus": "pending",
+      "renderTrim": {
+        "bottom": 69
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false,
+      "exactOneToOneStatus": "unverified"
     },
     {
       "kind": "boss",

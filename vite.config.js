@@ -1,9 +1,13 @@
+import { getBuildIdentity, buildIdentityPlugin } from './scripts/buildIdentity.mjs';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+const identity = getBuildIdentity();
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), buildIdentityPlugin(identity)],
+  define: { __MULTIVERSE_BUILD__: JSON.stringify(identity) },
   build: {
     chunkSizeWarningLimit: 1000,
     rollupOptions: {

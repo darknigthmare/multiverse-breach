@@ -1,0 +1,152 @@
+{
+  "date": "2026-10-28",
+  "phase": "pre-publication-v5",
+  "baselineCommit": "0c4f9a165a1e00f1b897246b142c1a59878f5ac0",
+  "catalog": {
+    "sprites": 197,
+    "characters": 36,
+    "referenceBased": 76,
+    "adapted": 121,
+    "newMonochromeStudies": 2
+  },
+  "preservation": {
+    "catalogueObjects": 195,
+    "manifestObjects": 195,
+    "pngs": 195,
+    "comparison": "Exact object equality and SHA-256",
+    "report": "reference-v5-preservation.json"
+  },
+  "acceptedImageSources": [
+    {
+      "id": "leona:ova-uniform-armband-monochrome-v5",
+      "generationOutput": "exec-47949c0f-24bd-4ed6-a8cc-2aa0fec854bf.png",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "55122ebad3b3ffe7484fdd32e19f92e0c9529be91a077eb5157906791e77f865"
+    },
+    {
+      "id": "ova-broadcasting-club-member:ova-uniform-monochrome-v5",
+      "generationOutput": "exec-ffc6c85a-8d66-4915-b09b-a129e0494b37.png",
+      "nativeDimensions": [
+        1133,
+        1388
+      ],
+      "sha256": "8bedc55bdd407f9d07ad42341b90f6c4892e1a81ca7e56fc860ec66c0b6588e0"
+    }
+  ],
+  "tests": [
+    {
+      "command": "npm run test:discipline",
+      "result": "passed",
+      "files": [
+        "scripts/disciplineSprites.test.mjs",
+        "scripts/wardrobe.test.mjs"
+      ],
+      "testFilesPassed": 2,
+      "testFilesFailed": 0
+    },
+    {
+      "command": "npx vite build",
+      "result": "passed",
+      "modules": 313,
+      "durationSeconds": 2.73,
+      "warning": "Existing bundle-size warning for chunks larger than1000kB."
+    }
+  ],
+  "browser": {
+    "result": "passed",
+    "report": "reference-v5-browser-qa-report.json",
+    "nativeImagesLoaded": 197,
+    "zeroPageErrors": true,
+    "mobileWidth": 390,
+    "noHorizontalOverflow": true,
+    "preservedV4Comparison": true,
+    "backgrounds": [
+      "dark",
+      "light",
+      "checker"
+    ],
+    "nonSquareSpriteAspectRatioPreserved": true
+  },
+  "independentReview": {
+    "result": "passed-with-documented-artwork-limitations",
+    "sourceEvidenceHashesChecked": true,
+    "noNewPlayableHero": true,
+    "onlyExistingHeroBindings": [
+      "saori",
+      "ruri",
+      "takurou"
+    ],
+    "fullBodyOneToOneCertified": false,
+    "canonicalColorPaletteCertified": false
+  },
+  "baselineRemoteCI": {
+    "commit": "0c4f9a165a1e00f1b897246b142c1a59878f5ac0",
+    "allEightPassed": true,
+    "workflows": [
+      {
+        "id": 40682785028,
+        "name": "City and Extinction immersive UI",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40682785028"
+      },
+      {
+        "id": 40682784816,
+        "name": "Race immersive UI",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40682784816"
+      },
+      {
+        "id": 40682784957,
+        "name": "Extinction identities and City catalog",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40682784957"
+      },
+      {
+        "id": 40682784916,
+        "name": "Signature combat",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40682784916"
+      },
+      {
+        "id": 40682784846,
+        "name": "Wardrobe regression",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40682784846"
+      },
+      {
+        "id": 40682784919,
+        "name": "City residents and FPS framing",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40682784919"
+      },
+      {
+        "id": 40682784858,
+        "name": "Full production build",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40682784858"
+      },
+      {
+        "id": 40682784993,
+        "name": "Reliability and source build",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40682784993"
+      }
+    ]
+  },
+  "limitations": [
+    "Full production lifecycle is not rerun locally because the sparse checkout intentionally omits unrelated media. The exact published v5 commit will receive its own CI runs.",
+    "The two entries are monochrome model-sheet studies; source palettes are unconfirmed and exact whole-body pixel identity is not claimed.",
+    "Miyuki, the full Linda western outfit and other incomplete source outfits remain open; Reina dress generation was rejected and no asset was installed."
+  ]
+}

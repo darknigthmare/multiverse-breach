@@ -1,0 +1,27 @@
+✔ another tab saving during cloud load aborts reconciliation without rebasing or overwriting (3.475519ms)
+✔ local gameplay updated while cloud load awaits is uploaded from the fresh ref, not the old render (2.012109ms)
+✔ new local progress made during load prevents automatic replacement by a previously eligible cloud trace (15.875042ms)
+✔ automatic cloud restoration succeeds with an unchanged baseline and never rebases (0.749406ms)
+✔ applySave refuses implicit external changes but an explicitly authorized adoption succeeds (0.520658ms)
+✔ confirmed divergent cloud choice is explicitly authorized and remains usable (0.376505ms)
+✔ storage becoming inaccessible during cloud load fails closed without touching player state (0.274996ms)
+✔ missing guard cannot authorize even an explicit application (0.25782ms)
+✔ a delayed cloud restoration is ignored after new-trace (0.324469ms)
+✔ a delayed cloud restoration is ignored after sign-out (0.262087ms)
+✔ a delayed cloud restoration is ignored after import (0.179906ms)
+✔ a delayed cloud restoration is ignored after other-account (0.190671ms)
+✔ a delayed network error cannot suspend a replacement session (0.261586ms)
+✔ authorized cloud adoption backs up the exact replaced local save (0.193416ms)
+✔ a pending in-game cloud decision cannot restore after sign-out (0.320053ms)
+✔ a pending in-game cloud decision cannot restore after new-trace (0.230701ms)
+✔ a pending in-game cloud decision cannot restore after other-account (0.211091ms)
+✔ another tab changing the trace while the in-game choice is open cannot be silently overwritten (0.357708ms)
+✔ local progress changing during a pending choice requires a new comparison (0.351869ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35.999466

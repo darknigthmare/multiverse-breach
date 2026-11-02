@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "pr": 9,
+  "run": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40284794110",
+  "testedTransportCommit": "29fcde9903c0f506585cf61e309bcee359169639",
+  "appliedToBase": "c7ce3caf85a84a17b491bf524d2e894dec67a13a",
+  "conclusion": "success",
+  "unitTargeted": { "passed": 81, "total": 81, "newPresentationTests": 11 },
+  "unitUI": { "passed": 68, "total": 68, "note": "Overlapping suites: do not add as unique test counts." },
+  "newBrowserChecks": {
+    "scope": "City: prepared service entry locations and ownership. Extinction: input-driven complete runs, read-only bot and virtual clock; no terminal-state injection. No real account or physical hardware.",
+    "passed": 8,
+    "total": 8,
+    "cases": [
+      { "name": "city-390x844-en-services", "passed": true, "serviceTransitions": 9, "preparedLocations": true },
+      { "name": "city-1280x900-fr-services", "passed": true, "serviceTransitions": 9, "preparedLocations": true },
+      { "name": "city-844x390-fr-services", "passed": true, "serviceTransitions": 9, "preparedLocations": true },
+      { "name": "city-2560x1080-en-services", "passed": true, "serviceTransitions": 9, "preparedLocations": true },
+      { "name": "fps-1280x900-fr-extraction", "passed": true, "mode": "extraction", "result": "victory", "frames": 1143, "kills": 34, "beacons": 3, "waves": [1, 2, 3, 4], "inputActions": 61, "injectedEnding": false, "virtualClock": true },
+      { "name": "fps-1280x900-en-last_signal", "passed": true, "mode": "last_signal", "result": "victory", "frames": 1566, "kills": 48, "beacons": 0, "waves": [1, 2, 3, 4, 5], "inputActions": 73, "injectedEnding": false, "virtualClock": true },
+      { "name": "fps-1280x900-fr-infestation", "passed": true, "mode": "infestation", "result": "victory", "frames": 3600, "kills": 96, "beacons": 0, "waves": [1, 2, 3, 4, 5, 6, 7], "inputActions": 176, "injectedEnding": false, "virtualClock": true },
+      { "name": "fps-1280x900-en-hunt", "passed": true, "mode": "hunt", "result": "victory", "frames": 752, "kills": 22, "beacons": 0, "waves": [1, 2, 3], "inputActions": 36, "injectedEnding": false, "virtualClock": true }
+    ]
+  },
+  "existingBrowserChecks": {
+    "passed": 10,
+    "total": 10,
+    "scope": "Actual City/Extinction components; prepared ownership; injected terminal states and faults. Not full natural runs or physical touch.",
+    "offline": false,
+    "cases": [
+      { "name": "city-1280x900-fr-lifecycle", "passed": true, "injectedFault": false, "allRecordedImagesLoaded": true },
+      { "name": "city-390x844-en-lifecycle", "passed": true, "injectedFault": false, "allRecordedImagesLoaded": true },
+      { "name": "city-844x390-fr-lifecycle", "passed": true, "injectedFault": false, "allRecordedImagesLoaded": true },
+      { "name": "city-2560x1080-en-lifecycle", "passed": true, "injectedFault": false, "allRecordedImagesLoaded": true },
+      { "name": "fps-1280x900-fr-lifecycle", "passed": true, "injectedFault": false, "allRecordedImagesLoaded": true },
+      { "name": "fps-390x844-en-lifecycle", "passed": true, "injectedFault": false, "allRecordedImagesLoaded": true },
+      { "name": "fps-844x390-fr-lifecycle", "passed": true, "injectedFault": false, "allRecordedImagesLoaded": true },
+      { "name": "fps-2560x1080-en-lifecycle", "passed": true, "injectedFault": false, "allRecordedImagesLoaded": true },
+      { "name": "city-390x844-fr-fault", "passed": true, "injectedFault": true, "allRecordedImagesLoaded": true },
+      { "name": "fps-844x390-en-fault", "passed": true, "injectedFault": true, "allRecordedImagesLoaded": true }
+    ]
+  },
+  "cityServiceTransitions": 36,
+  "lint": { "errors": 0, "warnings": 0, "files": 7 },
+  "sourceBuild": { "conclusion": "success", "scope": "Vite source snapshot, not full artwork/prebuild lifecycle. Existing bundle-size warning remains." },
+  "workbook": {
+    "path": "docs/excel/Multiverse_Breach_UI_Immersion.xlsx",
+    "sha256": "3865e2d96486c7275bab8a4f7f9c095b06fe16c17109218277121c5d02aa0402",
+    "sheets": 5, "screens": 40, "actionLots": 39, "verificationRows": 144, "cachedFormulaErrors": 0, "tables": 4,
+    "note": "SUITE-CI preserves preparation state; this receipt adds the later successful CI result."
+  },
+  "artifact": { "id": 12633681871, "sha256": "c42efe52cbb7e0c2d7cdd190cc14e84a564a3350f4259deb61a8b33d95273ca2" },
+  "visualReview": [
+    "390x844 EN at HUD/text 140%: short transmission button clears touch controls; the complete text is readable in the focused terminal journal. QA toolbar is fixture-only.",
+    "1280x900 FR Infestation: real victory after 3600 simulated frames; result dialog and continue button visible."
+  ],
+  "limits": [
+    "City service entrances and ownership are prepared. Destinations are intercepted by a test parent, not rendered as actual game screens.",
+    "The four full Extinction runs use default Anchor, input automation and a virtual clock; no damage, health, kills or victory state injected. Not a human balancing or performance assessment.",
+    "Existing ten lifecycle scenarios still use prepared terminal states and two deliberately injected rendering faults.",
+    "Not all districts, hero/weapon combinations, forty screens or production preview have been fully reviewed.",
+    "No physical controller, real multitouch device, cloud account, merge or production promotion.",
+    "Generic enemy silhouettes and other mixed catalog labels remain."
+  ],
+  "verifiedBlobs": [
+    { "path": "src/components/HubScreen.jsx", "sha": "b86d2c253dfd1cbb4d175f6320de0add793c0d55" },
+    { "path": "src/components/HubImmersion.css", "sha": "38cabaaa81113598602f74b90bfbd00371477fac" },
+    { "path": "src/components/RaceMode.jsx", "sha": "65466ca6e1da6aeca5a03e40978b159913805ed8" },
+    { "path": "src/game/engineRace.js", "sha": "dca57484c43933217a54f4b212237526ad4fca0b" },
+    { "path": "src/game/scenePresentation.js", "sha": "d4239ffd0c8dc46cfd414f9c476421b25abc606e" },
+    { "path": "scripts/scenePresentation.test.mjs", "sha": "88a552cac276463be9bfc4d462eb783b77464b90" },
+    { "path": "scripts/browserCityExtinction.py", "sha": "eeac47fe8b829f6f22f0a257d7548ba38832a794" },
+    { "path": "scripts/browserSceneServices.py", "sha": "ed21aa8e3c002442ef0ce5536181685b6e94b0a0" },
+    { "path": "scripts/fixtures/cityExtinctionHarness.jsx", "sha": "70f37849a4ecdfac1acd8a2cc5be4ebef34b7de2" },
+    { "path": "scripts/mosaicCityRuntime.test.mjs", "sha": "faa375a8e8fe8c5d47ba1cf8a7730fba22a7a0f5" },
+    { "path": ".github/workflows/city-extinction-ui.yml", "sha": "279a8bb4e417acc1d280810d3d54d7d52228c20a" },
+    { "path": ".github/workflows/race-ui.yml", "sha": "7aa19778d098dfd94f464782b6e35498d67ac9af" },
+    { "path": "docs/ui-immersion/scene-completion-2026-10-26.json", "sha": "1ba2df2ff5c986177e1f03a0fd10bcca262a3214" },
+    { "path": "docs/ui-immersion/scene-completion-2026-10-26.md", "sha": "50ae6815f0cd52622adf1a969cb0c84c046de4fe" },
+    { "path": "docs/ui-immersion/README.md", "sha": "fcb36ced1d175c73d685678a2aff4286e46e3a1a" },
+    { "path": "docs/excel/Multiverse_Breach_UI_Immersion.xlsx", "sha": "f4f6d9ae3c1b4505cdf4b4725dd6ef513b6808a0" }
+  ]
+}

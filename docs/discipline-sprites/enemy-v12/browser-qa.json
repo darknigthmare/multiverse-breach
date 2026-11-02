@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-29",
+  "browser": "Chromium via Playwright",
+  "result": "passed",
+  "counts": {
+    "sprites": 374,
+    "identities": 42,
+    "costumeApplicableIdentities": 40,
+    "coveredFamilyCells": 214,
+    "totalFamilyCells": 240
+  },
+  "checks": [
+    "374 catalogue cards rendered across 42 identities",
+    "Costume coverage is 214 of 240 family cells for 40 applicable identities; both machine identities remain excluded",
+    "Dedicated v12 enemy filter returns the black-suit agent only",
+    "New native 1254 by 1254 PNG loaded successfully",
+    "Correct feminine supplied-reference badge and no cross-identity style comparison",
+    "Supplied black-suit agents source link present",
+    "Fidelity notes and limitations visible on the new card",
+    "Desktop gallery screenshot captured with light alpha-compositing background",
+    "Checkerboard control background rendered",
+    "390 px mobile layout has no horizontal overflow",
+    "Seven supplied-reference entries filter down to the four reference-based military enemies",
+    "Search by black-suit-agent-bob resolves only the new sprite",
+    "Historical v6 filter still shows 170 outfits",
+    "Previous v8 masked soldier retains its dedicated filter and feminine badge",
+    "Previous v9 hooded guard retains its dedicated filter and masculine badge",
+    "Previous v11 red-hood guard retains its dedicated filter and masculine badge",
+    "All three v10 machine cards remain accessible, the fighter retains its provisional reconstruction badge, and coverage remains independent of filters",
+    "No JavaScript, console or HTTP resource error during tested flows"
+  ],
+  "checkCount": 18,
+  "errors": [],
+  "requestsFailed": [],
+  "screenshots": [
+    "gallery-desktop.png",
+    "gallery-mobile.png"
+  ],
+  "scope": "New v12 enemy card, source link, composed filters, v8-v11 preservation, machine coverage exclusions, new native PNG loading, desktop and mobile layout; not an in-game combat test or proof that all lazy-loaded images were fetched.",
+  "chromiumVersion": "153.0.8010.0",
+  "screenshotVisualReview": {
+    "completed": true,
+    "desktop": "Reviewed the desktop capture on a light background: full hair, bare hands and both shoes fit inside the sprite card; the black suit remains opaque, with the side closure visible at preview scale. Labels, source link and expanded notes are readable.",
+    "checkerboard": "Reviewed the checkerboard capture at gallery preview size: transparent surroundings and the separation between limbs are visible; no apparent opaque background rectangle or distracting alpha fringe at this display size.",
+    "mobile": "Reviewed the 390 px capture on the dark background: controls, entire figure, feminine enemy badge, notes and footer fit without clipping or horizontal overflow.",
+    "limitations": "Screenshot review verifies gallery presentation at preview scale. The source cuts off the feet, so these views do not certify the completed shoes, full-body proportions or literal source fidelity."
+  }
+}

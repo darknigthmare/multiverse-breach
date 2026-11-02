@@ -1,0 +1,304 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "pr": 9,
+  "baseCommit": "d45652fb08bf3bacf51812d8e253631549b9b5e8",
+  "scope": "Course A.R.C.A. : préparation, garage, conduite et bilan. Aucun contenu, mode ni prix supprimé.",
+  "changes": [
+    "Une session conserve son moteur après rendu parent, pause et achat garage ; configuration actualisée à la revanche explicite.",
+    "Garde de réception unique par session ; les callbacks périmés ne récompensent pas une autre course.",
+    "Commandes maintenues par pointeur, capture et relâchement ; activation clavier distincte.",
+    "Erreur de rendu traitée avec arrêt des entrées et actions recommencer/changer de circuit, sans récompense.",
+    "Télémétrie DOM visible en portrait, échelle HUD ; résultats défilants en faible hauteur et cache remise à zéro à la revanche."
+  ],
+  "verification": {
+    "historicalBaseCI": [
+      {
+        "name": "Reliability and source build",
+        "run": 40269423554,
+        "conclusion": "success"
+      },
+      {
+        "name": "Signature combat",
+        "run": 40269423464,
+        "conclusion": "success"
+      },
+      {
+        "name": "Full production build",
+        "run": 40269423586,
+        "conclusion": "success"
+      }
+    ],
+    "unit": {
+      "passed": 40,
+      "total": 40,
+      "newTests": 9
+    },
+    "browserOffline": {
+      "scope": "RaceMode + EngineRace; seeded career, synthetic completion/failure, no real account or physical controller. Offline mode has no artwork validation.",
+      "results": [
+        {
+          "name": "race-1280x900-fr-lifecycle",
+          "passed": true,
+          "step": "complete",
+          "mediaRequired": false
+        },
+        {
+          "name": "race-390x844-en-lifecycle",
+          "passed": true,
+          "step": "complete",
+          "mediaRequired": false
+        },
+        {
+          "name": "race-844x390-fr-lifecycle",
+          "passed": true,
+          "step": "complete",
+          "mediaRequired": false
+        },
+        {
+          "name": "race-2560x1080-en-lifecycle",
+          "passed": true,
+          "step": "complete",
+          "mediaRequired": false
+        },
+        {
+          "name": "race-1280x900-en-fault",
+          "passed": true,
+          "step": "complete",
+          "mediaRequired": false
+        },
+        {
+          "name": "race-390x844-fr-fault",
+          "passed": true,
+          "step": "complete",
+          "mediaRequired": false
+        }
+      ],
+      "passed": 6,
+      "total": 6
+    },
+    "lint": {
+      "errors": 0,
+      "warnings": 0,
+      "files": 6
+    },
+    "reproductionBefore": {
+      "rerenderBefore": {
+        "engine": 0,
+        "resets": 1,
+        "time": 0,
+        "lap": 0,
+        "x": 480,
+        "y": 474,
+        "keys": {
+          "autoAccel": true,
+          "manualAccel": false
+        },
+        "upgrades": {
+          "engine": 0,
+          "grip": 0,
+          "capacitor": 0,
+          "stabilizer": 0
+        },
+        "reported": false
+      },
+      "rerenderAfter": {
+        "engine": 1,
+        "resets": 2,
+        "time": 0,
+        "lap": 0,
+        "x": 480,
+        "y": 474,
+        "keys": {
+          "autoAccel": true,
+          "manualAccel": false
+        },
+        "upgrades": {
+          "engine": 0,
+          "grip": 0,
+          "capacitor": 0,
+          "stabilizer": 0
+        },
+        "reported": false
+      },
+      "upgradeBefore": {
+        "engine": 1,
+        "resets": 2,
+        "time": 0,
+        "lap": 0,
+        "x": 480,
+        "y": 474,
+        "keys": {
+          "autoAccel": true,
+          "manualAccel": false
+        },
+        "upgrades": {
+          "engine": 0,
+          "grip": 0,
+          "capacitor": 0,
+          "stabilizer": 0
+        },
+        "reported": false
+      },
+      "upgradeAfter": {
+        "engine": 2,
+        "resets": 3,
+        "time": 0,
+        "lap": 0,
+        "x": 480,
+        "y": 474,
+        "keys": {},
+        "upgrades": {
+          "engine": 1,
+          "grip": 0,
+          "capacitor": 0,
+          "stabilizer": 0
+        },
+        "reported": false
+      },
+      "pageErrors": []
+    },
+    "reproductionAfter": {
+      "rerenderBefore": {
+        "engine": 0,
+        "resets": 1,
+        "time": 0,
+        "lap": 0,
+        "x": 480,
+        "y": 474,
+        "keys": {
+          "autoAccel": true,
+          "manualAccel": false
+        },
+        "upgrades": {
+          "engine": 0,
+          "grip": 0,
+          "capacitor": 0,
+          "stabilizer": 0
+        },
+        "reported": false
+      },
+      "rerenderAfter": {
+        "engine": 0,
+        "resets": 1,
+        "time": 0,
+        "lap": 0,
+        "x": 480,
+        "y": 474,
+        "keys": {
+          "autoAccel": true,
+          "manualAccel": false
+        },
+        "upgrades": {
+          "engine": 0,
+          "grip": 0,
+          "capacitor": 0,
+          "stabilizer": 0
+        },
+        "reported": false
+      },
+      "upgradeBefore": {
+        "engine": 0,
+        "resets": 1,
+        "time": 0,
+        "lap": 0,
+        "x": 480,
+        "y": 474,
+        "keys": {
+          "autoAccel": true,
+          "manualAccel": false
+        },
+        "upgrades": {
+          "engine": 0,
+          "grip": 0,
+          "capacitor": 0,
+          "stabilizer": 0
+        },
+        "reported": false
+      },
+      "upgradeAfter": {
+        "engine": 0,
+        "resets": 1,
+        "time": 0,
+        "lap": 0,
+        "x": 480,
+        "y": 474,
+        "keys": {
+          "autoAccel": true,
+          "manualAccel": false
+        },
+        "upgrades": {
+          "engine": 1,
+          "grip": 0,
+          "capacitor": 0,
+          "stabilizer": 0
+        },
+        "reported": false
+      },
+      "pageErrors": []
+    },
+    "ciAdded": {
+      "workflow": ".github/workflows/race-ui.yml",
+      "requiresCommittedImages": 7,
+      "statusAtDocumentPreparation": "not-yet-run",
+      "results": "https://github.com/darknigthmare/multiverse-breach/pull/9/checks"
+    }
+  },
+  "limits": [
+    "Six parcours isolés, carrière initiale et verdict préparés ; pas de course complète ni de campagne validée.",
+    "Chromium local rendu hors ligne sur about:blank avec stockage en mémoire ; navigation localhost bloquée par politique. Aucun média validé localement.",
+    "Pas de manette physique, multitouch réel, compte cloud ni recette artistique consolidée des 40 écrans.",
+    "Les libellés d’objectif dessinés par le moteur restent en français dans certains cas."
+  ],
+  "files": [
+    {
+      "path": "src/components/RaceMode.jsx",
+      "sha256": "737b94eeb71022cd793cd9582674387c5e5abcfda951082db43b984a3f2da606"
+    },
+    {
+      "path": "src/components/HubImmersion.css",
+      "sha256": "88a4d70324849be250028cd9affb62e64fbb54a5fdb90375ace5164182344548"
+    },
+    {
+      "path": "src/game/raceSessionControls.js",
+      "sha256": "6bd86f143d00472326d09d265b1f0e44b2a363ac5fe1d76cd1205b2d2075dafa"
+    },
+    {
+      "path": "scripts/raceSessionControls.test.mjs",
+      "sha256": "30c3e6e220fda091739772f19cb43973397e831699b07567cf8808dbc0f99e8a"
+    },
+    {
+      "path": "scripts/fixedStepClock.test.mjs",
+      "sha256": "1fe3188125ae8cf2c554c343fd3060062a8846d551b12c40fe076622d08ff245"
+    },
+    {
+      "path": "scripts/immersiveHubState.test.mjs",
+      "sha256": "f97df8aa0aec861cea5f06492fd19190c358ce95626077ebd2ca331f7da7111b"
+    },
+    {
+      "path": "scripts/fixtures/raceLifecycleHarness.jsx",
+      "sha256": "973bd5de86816e56d385163242c3326a9275598b8ee36e88375aabac5bf253f7"
+    },
+    {
+      "path": "scripts/fixtures/race-lifecycle.html",
+      "sha256": "87946cf4b6e44ac5f48c7e4454ebfdf272e1539654e4d397d63e266b2f075b31"
+    },
+    {
+      "path": "scripts/browserRaceImmersion.py",
+      "sha256": "dfac4a8fbf09d7966bbbd3948df7daa9950107212db25c29fa14b146265a5728"
+    },
+    {
+      "path": ".github/workflows/race-ui.yml",
+      "sha256": "18555cfe740e0cb333076cd76ddd896530505336d0a932d52f312b693614f9e9"
+    }
+  ],
+  "workbook": {
+    "path": "docs/excel/Multiverse_Breach_UI_Immersion.xlsx",
+    "sheets": 5,
+    "screens": 40,
+    "actionLots": 39,
+    "verificationRows": 118,
+    "cachedFormulaErrors": 0,
+    "sha256": "deed4379d2e6703e49784f4a3d65921dd1b0fce9d66d89642c232235c19e61c2"
+  }
+}

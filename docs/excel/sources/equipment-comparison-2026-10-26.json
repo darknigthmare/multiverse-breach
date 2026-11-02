@@ -1,0 +1,698 @@
+{
+  "schemaVersion": "equipment-comparison-v1",
+  "asOfDate": "2026-10-26",
+  "previousCommit": "8ce15c779db1e911f0db8723c681a6b0b740bd78",
+  "currentCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+  "previousUrl": "https://github.com/darknigthmare/multiverse-breach/tree/8ce15c779db1e911f0db8723c681a6b0b740bd78",
+  "currentUrl": "https://github.com/darknigthmare/multiverse-breach/tree/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+  "methodLabel": "Deux exports réellement exécutés sur les deux SHA, avec le même extracteur et les arbres Git complets.",
+  "normalization": "Pour comparer le contenu, sourceUrl/sourceCommit/asOfDate sont retirés ; les SHA à l’intérieur des chaînes sont remplacés par un marqueur identique. Les autres champs sont comparés.",
+  "sameExtractor": true,
+  "extractorSha256": "ebf7a241c8be03a933134d98cabc942267679c99831a9da3a006ebc10034b91b",
+  "sourceCatalogDigestBefore": "3589a551e16fbe79e20e82793f17fecccf4d78b68d5121779fad857895151f7f",
+  "sourceCatalogDigestAfter": "3589a551e16fbe79e20e82793f17fecccf4d78b68d5121779fad857895151f7f",
+  "sourceCatalogDigestScope": "Empreinte des données des catalogues runtime pour garantir absence de mutation ; les signatures dérivées et tous les fichiers source sont contrôlés séparément.",
+  "metrics": [
+    {
+      "metric": "actors",
+      "label": "Acteurs actifs",
+      "before": 4936,
+      "after": 4936,
+      "delta": 0,
+      "interpretation": "Aucune identité active ajoutée ou retirée."
+    },
+    {
+      "metric": "catalogRecords",
+      "label": "Entrées des cinq catalogues",
+      "before": 5241,
+      "after": 5241,
+      "delta": 0,
+      "interpretation": "Catalogues résolus identiques ; occurrences et projections conservées, pas un nombre d’objets physiques."
+    },
+    {
+      "metric": "actorsWithDeclaredEquipment",
+      "label": "Acteurs avec equipment[]",
+      "before": 54,
+      "after": 54,
+      "delta": 0,
+      "interpretation": "Aucune nouvelle dotation individuelle déclarée."
+    },
+    {
+      "metric": "declaredEquipmentEntries",
+      "label": "Libellés equipment[]",
+      "before": 141,
+      "after": 141,
+      "delta": 0,
+      "interpretation": "Les 141 déclarations restent identiques."
+    },
+    {
+      "metric": "actorsWithNamedWeaponFields",
+      "label": "Champs weapon descriptifs",
+      "before": 1234,
+      "after": 1234,
+      "delta": 0,
+      "interpretation": "Les libellés multimots et les noms de modèle restent conservés sans attribution canonique déduite."
+    },
+    {
+      "metric": "sourceSignatures",
+      "label": "Techniques signées résolues",
+      "before": 118,
+      "after": 124,
+      "delta": 6,
+      "interpretation": "Six techniques supplémentaires de la vague 6 ; aucune conversion en équipement porté."
+    },
+    {
+      "metric": "associations",
+      "label": "Relations déclarées",
+      "before": 1494,
+      "after": 1500,
+      "delta": 6,
+      "interpretation": "Les six nouvelles relations sont uniquement des techniques signées."
+    },
+    {
+      "metric": "gaps",
+      "label": "Points ouverts recalculés",
+      "before": 28304,
+      "after": 28304,
+      "delta": 0,
+      "interpretation": "Même méthode sur les deux SHA : aucun point d’équipement fermé par les changements runtime."
+    },
+    {
+      "metric": "sourceFilesVerified",
+      "label": "Fichiers source vérifiés",
+      "before": 194,
+      "after": 213,
+      "delta": 19,
+      "interpretation": "Périmètre chargé et vérifié par empreintes Git ; inclut des modules nouveaux hors catalogue équipement."
+    },
+    {
+      "metric": "uniqueIconStatuses.ABSENT_DANS_GIT",
+      "label": "Chemins d’icônes absents, uniques",
+      "before": 1184,
+      "after": 1184,
+      "delta": 0,
+      "interpretation": "Présence dans les arbres Git complets ; aucun contrôle des pixels ou accord de fidélité implicite."
+    },
+    {
+      "metric": "uniqueIconStatuses.PRESENT_DANS_GIT",
+      "label": "Chemins d’icônes présents, uniques",
+      "before": 1571,
+      "after": 1571,
+      "delta": 0,
+      "interpretation": "Présence dans les arbres Git complets ; aucun contrôle des pixels ou accord de fidélité implicite."
+    }
+  ],
+  "sections": {
+    "actors": {
+      "key": "actorKey",
+      "before": 4936,
+      "after": 4936,
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "key": "[\"Final Fantasy VII\",\"name:Midgar Zolom\"]",
+          "fields": [
+            "associationCount",
+            "signature",
+            "signatureName"
+          ],
+          "before": {
+            "associationCount": 0,
+            "signature": null,
+            "signatureName": ""
+          },
+          "after": {
+            "associationCount": 1,
+            "signature": {
+              "hits": 1,
+              "shape": "group",
+              "kind": "personal",
+              "distribution": "all",
+              "effect": "damage",
+              "note": "Original FFVII Beta attack family against the confirmed enemy group. No Enemy Skill learning, forced ejection, remake Midgardsormr identity, MP economy, fire weakness bypass or burn status.",
+              "delivery": "ranged",
+              "directional": false,
+              "color": "#ff9c52",
+              "key": "Final Fantasy VII::Midgar Zolom",
+              "enemyName": "Midgar Zolom",
+              "universe": "Final Fantasy VII",
+              "legacyName": null,
+              "name": "Beta",
+              "style": "fire",
+              "range": 400,
+              "source": "ff7-beta",
+              "wave": 6,
+              "sourceWork": "Final Fantasy VII (1997)",
+              "evidenceLevel": "secondary-gameplay-reference",
+              "fidelity": "source-described-adaptation",
+              "canonicalFidelityApproved": false,
+              "referenceUrl": "https://guides.gamercorner.net/ffvii/monsters/midgar-zolom",
+              "visualStatus": "existing-artwork; source animation missing",
+              "windupTicks": 30,
+              "revealTicks": 24,
+              "hitGapTicks": 1,
+              "outroTicks": 24
+            },
+            "signatureName": "Beta"
+          }
+        },
+        {
+          "key": "[\"Final Fantasy VII\",\"name:Sweeper Machine\"]",
+          "fields": [
+            "associationCount",
+            "signature",
+            "signatureName"
+          ],
+          "before": {
+            "associationCount": 0,
+            "signature": null,
+            "signatureName": ""
+          },
+          "after": {
+            "associationCount": 1,
+            "signature": {
+              "hits": 1,
+              "shape": "single",
+              "kind": "personal",
+              "distribution": "all",
+              "effect": "damage",
+              "note": "Original FFVII Sweeper W Machine Gun: one confirmed enemy and one damage contact. No Smoke Shot blindness, remake stagger system or automatic highest-HP retargeting.",
+              "delivery": "ranged",
+              "directional": true,
+              "color": "#ffc179",
+              "key": "Final Fantasy VII::Sweeper Machine",
+              "enemyName": "Sweeper Machine",
+              "universe": "Final Fantasy VII",
+              "legacyName": null,
+              "name": "W Machine Gun",
+              "style": "barrage",
+              "range": 330,
+              "source": "ff7-sweeper",
+              "wave": 6,
+              "sourceWork": "Final Fantasy VII (1997)",
+              "evidenceLevel": "secondary-gameplay-reference",
+              "fidelity": "source-described-adaptation",
+              "canonicalFidelityApproved": false,
+              "referenceUrl": "https://guides.gamercorner.net/ffvii/monsters/sweeper",
+              "visualStatus": "existing-artwork; source animation missing",
+              "windupTicks": 30,
+              "revealTicks": 24,
+              "hitGapTicks": 1,
+              "outroTicks": 24
+            },
+            "signatureName": "W Machine Gun"
+          }
+        },
+        {
+          "key": "[\"Final Fantasy VIII\",\"id:irvine_ff8\"]",
+          "fields": [
+            "associationCount",
+            "signature",
+            "signatureName"
+          ],
+          "before": {
+            "associationCount": 0,
+            "signature": null,
+            "signatureName": ""
+          },
+          "after": {
+            "associationCount": 1,
+            "signature": {
+              "hits": 6,
+              "shape": "single",
+              "kind": "personal",
+              "distribution": "all",
+              "effect": "damage",
+              "note": "Fast Ammo shot family: six scheduled contacts on one confirmed enemy. Six is a bounded Nexus burst, not the source time/ammunition-dependent shot count. No inventory ammunition, Armor Shot defense bypass or replacement target is granted.",
+              "delivery": "ranged",
+              "directional": true,
+              "color": "#ffc179",
+              "key": "irvine_ff8",
+              "actorId": "irvine_ff8",
+              "universe": "Final Fantasy VIII",
+              "legacyName": "Fast Ammo Barrage",
+              "name": "Quick Shot",
+              "style": "barrage",
+              "range": 370,
+              "source": "ff8-quick-shot",
+              "wave": 6,
+              "sourceWork": "Final Fantasy VIII (1999)",
+              "evidenceLevel": "secondary-gameplay-reference",
+              "fidelity": "source-described-adaptation",
+              "canonicalFidelityApproved": false,
+              "referenceUrl": "https://guides.gamercorner.net/ffviii/limit-breaks/quick-shot",
+              "visualStatus": "existing-artwork; source animation missing",
+              "windupTicks": 30,
+              "revealTicks": 24,
+              "hitGapTicks": 8,
+              "outroTicks": 24
+            },
+            "signatureName": "Quick Shot"
+          }
+        },
+        {
+          "key": "[\"Final Fantasy VIII\",\"id:laguna_ff8\"]",
+          "fields": [
+            "associationCount",
+            "signature",
+            "signatureName"
+          ],
+          "before": {
+            "associationCount": 0,
+            "signature": null,
+            "signatureName": ""
+          },
+          "after": {
+            "associationCount": 1,
+            "signature": {
+              "hits": 1,
+              "shape": "group",
+              "kind": "personal",
+              "distribution": "all",
+              "effect": "damage",
+              "note": "Group damage follows the referenced Limit Break. One damage contact, not a claim of one animated bullet. Grenade, hanging traversal and exact machine-gun choreography are not implemented.",
+              "delivery": "ranged",
+              "directional": false,
+              "color": "#ffc179",
+              "key": "laguna_ff8",
+              "actorId": "laguna_ff8",
+              "universe": "Final Fantasy VIII",
+              "legacyName": "Laguna Loire Origin Burst",
+              "name": "Desperado",
+              "style": "barrage",
+              "range": 380,
+              "source": "ff8-desperado",
+              "wave": 6,
+              "sourceWork": "Final Fantasy VIII (1999)",
+              "evidenceLevel": "secondary-gameplay-reference",
+              "fidelity": "source-described-adaptation",
+              "canonicalFidelityApproved": false,
+              "referenceUrl": "https://guides.gamercorner.net/ffviii/limit-breaks/desperado",
+              "visualStatus": "existing-artwork; source animation missing",
+              "windupTicks": 30,
+              "revealTicks": 24,
+              "hitGapTicks": 1,
+              "outroTicks": 24
+            },
+            "signatureName": "Desperado"
+          }
+        },
+        {
+          "key": "[\"Final Fantasy VIII\",\"id:seifer_ff8\"]",
+          "fields": [
+            "associationCount",
+            "signature",
+            "signatureName"
+          ],
+          "before": {
+            "associationCount": 0,
+            "signature": null,
+            "signatureName": ""
+          },
+          "after": {
+            "associationCount": 1,
+            "signature": {
+              "hits": 1,
+              "shape": "group",
+              "kind": "personal",
+              "distribution": "all",
+              "effect": "damage",
+              "note": "Fire Cross attack family; one group contact. Ranged energy presentation, not an added fire status or elemental bypass. Range, meter and timings are Nexus adaptations; no gunblade trigger or new transformation.",
+              "delivery": "ranged",
+              "directional": false,
+              "color": "#ffe4ab",
+              "key": "seifer_ff8",
+              "actorId": "seifer_ff8",
+              "universe": "Final Fantasy VIII",
+              "legacyName": "Seifer Almasy Origin Burst",
+              "name": "No Mercy",
+              "style": "slash",
+              "range": 330,
+              "source": "ff8-no-mercy",
+              "wave": 6,
+              "sourceWork": "Final Fantasy VIII (1999)",
+              "evidenceLevel": "secondary-gameplay-reference",
+              "fidelity": "source-described-adaptation",
+              "canonicalFidelityApproved": false,
+              "referenceUrl": "https://guides.gamercorner.net/ffviii/limit-breaks/no-mercy",
+              "visualStatus": "existing-artwork; source animation missing",
+              "windupTicks": 30,
+              "revealTicks": 24,
+              "hitGapTicks": 1,
+              "outroTicks": 24
+            },
+            "signatureName": "No Mercy"
+          }
+        },
+        {
+          "key": "[\"Final Fantasy VIII\",\"id:zell_ff8\"]",
+          "fields": [
+            "associationCount",
+            "signature",
+            "signatureName"
+          ],
+          "before": {
+            "associationCount": 0,
+            "signature": null,
+            "signatureName": ""
+          },
+          "after": {
+            "associationCount": 1,
+            "signature": {
+              "hits": 1,
+              "shape": "group",
+              "kind": "personal",
+              "distribution": "all",
+              "effect": "damage",
+              "note": "Duel finisher adapted as a short-range group impact, following the cited target description. No world traversal, teleportation, Duel input chain, Combat King acquisition or exact choreography. This is a gameplay adaptation, not a certified source-targeting reproduction.",
+              "delivery": "melee",
+              "directional": false,
+              "color": "#a6def5",
+              "key": "zell_ff8",
+              "actorId": "zell_ff8",
+              "universe": "Final Fantasy VIII",
+              "legacyName": "My Final Heaven",
+              "name": "My Final Heaven",
+              "style": "radial",
+              "range": 120,
+              "source": "ff8-final-heaven",
+              "wave": 6,
+              "sourceWork": "Final Fantasy VIII (1999)",
+              "evidenceLevel": "secondary-gameplay-reference",
+              "fidelity": "source-described-adaptation",
+              "canonicalFidelityApproved": false,
+              "referenceUrl": "https://guides.gamercorner.net/ffviii/limit-breaks/my-final-heaven",
+              "visualStatus": "existing-artwork; source animation missing",
+              "windupTicks": 18,
+              "revealTicks": 24,
+              "hitGapTicks": 1,
+              "outroTicks": 24
+            },
+            "signatureName": "My Final Heaven"
+          }
+        }
+      ],
+      "changedFieldCounts": {
+        "associationCount": 6,
+        "signature": 6,
+        "signatureName": 6
+      }
+    },
+    "items": {
+      "key": "itemKey",
+      "before": 5241,
+      "after": 5241,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "changedFieldCounts": {}
+    },
+    "associations": {
+      "key": "associationKey",
+      "before": 1494,
+      "after": 1500,
+      "added": [
+        {
+          "associationKey": "[\"[\\\"Final Fantasy VIII\\\",\\\"id:irvine_ff8\\\"]\",\"sourceSignature\",\"Quick Shot\"]",
+          "actorKey": "[\"Final Fantasy VIII\",\"id:irvine_ff8\"]",
+          "actorId": "irvine_ff8",
+          "actorName": "Irvine Kinneas",
+          "universe": "Final Fantasy VIII",
+          "incarnation": "",
+          "itemKey": "",
+          "label": "Quick Shot",
+          "relationship": "TECHNIQUE_SIGNEE_NON_EQUIPEMENT",
+          "nature": "TECHNIQUE_DE_COMBAT",
+          "natureBasis": "Signature résolue : technique ou invocation, sans inventaire d’objet porté déduit.",
+          "evidenceField": "sourceSignature",
+          "evidence": "resolveSourceSignature(HEROES_DB[835] after overrides) => Quick Shot",
+          "referenceUrls": [
+            "https://guides.gamercorner.net/ffviii/limit-breaks/quick-shot"
+          ],
+          "sourcePath": "src/game/signatureSourceKits.js",
+          "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+          "catalogBindingStatus": "AUCUN_ID_OBJET_EXPLICITE",
+          "fidelityStatus": "DECLARATION_DU_CODE_A_VERIFIER",
+          "canonicalFidelityApproved": false
+        },
+        {
+          "associationKey": "[\"[\\\"Final Fantasy VIII\\\",\\\"id:laguna_ff8\\\"]\",\"sourceSignature\",\"Desperado\"]",
+          "actorKey": "[\"Final Fantasy VIII\",\"id:laguna_ff8\"]",
+          "actorId": "laguna_ff8",
+          "actorName": "Laguna Loire",
+          "universe": "Final Fantasy VIII",
+          "incarnation": "",
+          "itemKey": "",
+          "label": "Desperado",
+          "relationship": "TECHNIQUE_SIGNEE_NON_EQUIPEMENT",
+          "nature": "TECHNIQUE_DE_COMBAT",
+          "natureBasis": "Signature résolue : technique ou invocation, sans inventaire d’objet porté déduit.",
+          "evidenceField": "sourceSignature",
+          "evidence": "resolveSourceSignature(HEROES_DB[832] after overrides) => Desperado",
+          "referenceUrls": [
+            "https://guides.gamercorner.net/ffviii/limit-breaks/desperado"
+          ],
+          "sourcePath": "src/game/signatureSourceKits.js",
+          "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+          "catalogBindingStatus": "AUCUN_ID_OBJET_EXPLICITE",
+          "fidelityStatus": "DECLARATION_DU_CODE_A_VERIFIER",
+          "canonicalFidelityApproved": false
+        },
+        {
+          "associationKey": "[\"[\\\"Final Fantasy VIII\\\",\\\"id:seifer_ff8\\\"]\",\"sourceSignature\",\"No Mercy\"]",
+          "actorKey": "[\"Final Fantasy VIII\",\"id:seifer_ff8\"]",
+          "actorId": "seifer_ff8",
+          "actorName": "Seifer Almasy",
+          "universe": "Final Fantasy VIII",
+          "incarnation": "",
+          "itemKey": "",
+          "label": "No Mercy",
+          "relationship": "TECHNIQUE_SIGNEE_NON_EQUIPEMENT",
+          "nature": "TECHNIQUE_DE_COMBAT",
+          "natureBasis": "Signature résolue : technique ou invocation, sans inventaire d’objet porté déduit.",
+          "evidenceField": "sourceSignature",
+          "evidence": "resolveSourceSignature(HEROES_DB[831] after overrides) => No Mercy",
+          "referenceUrls": [
+            "https://guides.gamercorner.net/ffviii/limit-breaks/no-mercy"
+          ],
+          "sourcePath": "src/game/signatureSourceKits.js",
+          "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+          "catalogBindingStatus": "AUCUN_ID_OBJET_EXPLICITE",
+          "fidelityStatus": "DECLARATION_DU_CODE_A_VERIFIER",
+          "canonicalFidelityApproved": false
+        },
+        {
+          "associationKey": "[\"[\\\"Final Fantasy VIII\\\",\\\"id:zell_ff8\\\"]\",\"sourceSignature\",\"My Final Heaven\"]",
+          "actorKey": "[\"Final Fantasy VIII\",\"id:zell_ff8\"]",
+          "actorId": "zell_ff8",
+          "actorName": "Zell Dincht",
+          "universe": "Final Fantasy VIII",
+          "incarnation": "",
+          "itemKey": "",
+          "label": "My Final Heaven",
+          "relationship": "TECHNIQUE_SIGNEE_NON_EQUIPEMENT",
+          "nature": "TECHNIQUE_DE_COMBAT",
+          "natureBasis": "Signature résolue : technique ou invocation, sans inventaire d’objet porté déduit.",
+          "evidenceField": "sourceSignature",
+          "evidence": "resolveSourceSignature(HEROES_DB[833] after overrides) => My Final Heaven",
+          "referenceUrls": [
+            "https://guides.gamercorner.net/ffviii/limit-breaks/my-final-heaven"
+          ],
+          "sourcePath": "src/game/signatureSourceKits.js",
+          "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+          "catalogBindingStatus": "AUCUN_ID_OBJET_EXPLICITE",
+          "fidelityStatus": "DECLARATION_DU_CODE_A_VERIFIER",
+          "canonicalFidelityApproved": false
+        },
+        {
+          "associationKey": "[\"[\\\"Final Fantasy VII\\\",\\\"name:Midgar Zolom\\\"]\",\"sourceSignature\",\"Beta\"]",
+          "actorKey": "[\"Final Fantasy VII\",\"name:Midgar Zolom\"]",
+          "actorId": "",
+          "actorName": "Midgar Zolom",
+          "universe": "Final Fantasy VII",
+          "incarnation": "",
+          "itemKey": "",
+          "label": "Beta",
+          "relationship": "TECHNIQUE_SIGNEE_NON_EQUIPEMENT",
+          "nature": "TECHNIQUE_DE_COMBAT",
+          "natureBasis": "Signature résolue : technique ou invocation, sans inventaire d’objet porté déduit.",
+          "evidenceField": "sourceSignature",
+          "evidence": "resolveSourceSignature(ENEMIES_DB[\"Final Fantasy VII\"].monsters[2] after overrides) => Beta",
+          "referenceUrls": [
+            "https://guides.gamercorner.net/ffvii/monsters/midgar-zolom"
+          ],
+          "sourcePath": "src/game/signatureSourceKits.js",
+          "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+          "catalogBindingStatus": "AUCUN_ID_OBJET_EXPLICITE",
+          "fidelityStatus": "DECLARATION_DU_CODE_A_VERIFIER",
+          "canonicalFidelityApproved": false
+        },
+        {
+          "associationKey": "[\"[\\\"Final Fantasy VII\\\",\\\"name:Sweeper Machine\\\"]\",\"sourceSignature\",\"W Machine Gun\"]",
+          "actorKey": "[\"Final Fantasy VII\",\"name:Sweeper Machine\"]",
+          "actorId": "",
+          "actorName": "Sweeper Machine",
+          "universe": "Final Fantasy VII",
+          "incarnation": "",
+          "itemKey": "",
+          "label": "W Machine Gun",
+          "relationship": "TECHNIQUE_SIGNEE_NON_EQUIPEMENT",
+          "nature": "TECHNIQUE_DE_COMBAT",
+          "natureBasis": "Signature résolue : technique ou invocation, sans inventaire d’objet porté déduit.",
+          "evidenceField": "sourceSignature",
+          "evidence": "resolveSourceSignature(ENEMIES_DB[\"Final Fantasy VII\"].monsters[4] after overrides) => W Machine Gun",
+          "referenceUrls": [
+            "https://guides.gamercorner.net/ffvii/monsters/sweeper"
+          ],
+          "sourcePath": "src/game/signatureSourceKits.js",
+          "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+          "catalogBindingStatus": "AUCUN_ID_OBJET_EXPLICITE",
+          "fidelityStatus": "DECLARATION_DU_CODE_A_VERIFIER",
+          "canonicalFidelityApproved": false
+        }
+      ],
+      "removed": [],
+      "changed": [],
+      "changedFieldCounts": {}
+    },
+    "gaps": {
+      "key": "gapKey",
+      "before": 28304,
+      "after": 28304,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "changedFieldCounts": {}
+    }
+  },
+  "newSignatures": [
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:irvine_ff8\"]",
+      "actorName": "Irvine Kinneas",
+      "universe": "Final Fantasy VIII",
+      "signatureName": "Quick Shot",
+      "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+      "referenceUrls": [
+        "https://guides.gamercorner.net/ffviii/limit-breaks/quick-shot"
+      ],
+      "physicalEquipmentAdded": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:laguna_ff8\"]",
+      "actorName": "Laguna Loire",
+      "universe": "Final Fantasy VIII",
+      "signatureName": "Desperado",
+      "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+      "referenceUrls": [
+        "https://guides.gamercorner.net/ffviii/limit-breaks/desperado"
+      ],
+      "physicalEquipmentAdded": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:seifer_ff8\"]",
+      "actorName": "Seifer Almasy",
+      "universe": "Final Fantasy VIII",
+      "signatureName": "No Mercy",
+      "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+      "referenceUrls": [
+        "https://guides.gamercorner.net/ffviii/limit-breaks/no-mercy"
+      ],
+      "physicalEquipmentAdded": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:zell_ff8\"]",
+      "actorName": "Zell Dincht",
+      "universe": "Final Fantasy VIII",
+      "signatureName": "My Final Heaven",
+      "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+      "referenceUrls": [
+        "https://guides.gamercorner.net/ffviii/limit-breaks/my-final-heaven"
+      ],
+      "physicalEquipmentAdded": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Midgar Zolom\"]",
+      "actorName": "Midgar Zolom",
+      "universe": "Final Fantasy VII",
+      "signatureName": "Beta",
+      "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+      "referenceUrls": [
+        "https://guides.gamercorner.net/ffvii/monsters/midgar-zolom"
+      ],
+      "physicalEquipmentAdded": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Sweeper Machine\"]",
+      "actorName": "Sweeper Machine",
+      "universe": "Final Fantasy VII",
+      "signatureName": "W Machine Gun",
+      "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceKits.js",
+      "referenceUrls": [
+        "https://guides.gamercorner.net/ffvii/monsters/sweeper"
+      ],
+      "physicalEquipmentAdded": false
+    }
+  ],
+  "methodologyCorrection": {
+    "historicalReportedGaps": 28335,
+    "historicalReportedStatus": "Compte observé lors de la méthode précédente, non utilisé comme résultat du replay homogène.",
+    "replayedBaselineGaps": 28304,
+    "currentGaps": 28304,
+    "deltaFromHistoricalReport": -31,
+    "runtimeGapDelta": 0,
+    "explanation": "La baisse de 31 points par rapport au compte historique de 28 335 provient du tri lexical corrigé (étuis, munitions, formes plurielles, combinaisons et machines). Les faux positifs Round Glasses et Round Table Dossier sont exclus de la règle des munitions. Les deux sources recalculées aboutissent à 28 304 points ouverts : aucun correctif de dotation ou de rendu n’est déduit de cette baisse méthodologique."
+  },
+  "validation": {
+    "focusedTests": 17,
+    "passed": 17,
+    "failed": 0,
+    "foreignKeysChecked": true,
+    "allCanonicalFidelityApprovedFalse": true,
+    "noGameplayFilesModified": true
+  },
+  "exports": {
+    "previous": {
+      "equipment-workbook-data.json": "df83b31dc1e357a68684805a6a80a16efef2e2da626c627a84582381692a5b0e",
+      "summary.json": "fbe562506e55f9de9ac29640badfa0342cd588b1863031b240e8dbcaaeb88d8a",
+      "actors.csv": "1735e69a470c6010d4be58fa38a9fbf24c791a492fcb5eb43cdf86755ab1a2c9",
+      "items.csv": "25f5188c035f2218530c3640d3bd12cfb2e057b0ed1abb00ba1f8e3a2808eeef",
+      "associations.csv": "5bb76faa7ede1d639858aecff6d553e4316465dc6d6097df8e8aad21d2804026",
+      "gaps.csv": "210f7eae024df2c89b46df25249df4a19ff9502f8ea0117777555002429d9c8a"
+    },
+    "current": {
+      "equipment-workbook-data.json": "251aaf1815cf2a0471c3fd6dcf0703b6c286b126d7a2e1b77bd94e653a77ee80",
+      "summary.json": "ccf7fd1603ae22af5f3e99aec8a04727632a9ee91300609c472dac39ad8532b2",
+      "actors.csv": "b4a41d90431f1b51268b4dd4936d1a50fbc2a904d0ba9524a27a9be04f4b6b0b",
+      "items.csv": "32734ee858783f03848bd3b8e8b6e096ac4b9089aed20a626e308ad587db9dda",
+      "associations.csv": "e114397bfd9897cf6ad78ff0437e18e74591ece7708da575aedd222e3cfa5e5d",
+      "gaps.csv": "73ace5987707df6e045043baa5eb78b8b13721d0fa4a3ee7ada9495a75fe3382"
+    }
+  },
+  "githubStatus": [
+    {
+      "subject": "master 1460d0e",
+      "state": "Version auditée",
+      "consequence": "Le classeur est recalculé sur la branche principale actuelle. Les catalogues restent ceux de cette version exacte.",
+      "url": "https://github.com/darknigthmare/multiverse-breach/tree/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6"
+    },
+    {
+      "subject": "PR #6",
+      "state": "Fusionnée",
+      "consequence": "Les travaux précédents de costumes et signatures sont intégrés. Le classeur armes/équipements interrompu n’avait pas été publié.",
+      "url": "https://github.com/darknigthmare/multiverse-breach/pull/6"
+    },
+    {
+      "subject": "PR #7",
+      "state": "Ouverte, conflits",
+      "consequence": "13 adaptations de techniques Fighter restent hors master. Trois CI de sa tête réussissent, mais l’historique Sulaco exige une réconciliation. Aucun équipement physique ajouté.",
+      "url": "https://github.com/darknigthmare/multiverse-breach/pull/7"
+    },
+    {
+      "subject": "Relevé historique du 24 octobre",
+      "state": "Méthode corrigée",
+      "consequence": "Les 28 335 anciens constats deviennent 28 304 avec le classement corrigé des étuis et accessoires. Ce delta de −31 n’est pas une amélioration du jeu.",
+      "url": "https://github.com/darknigthmare/multiverse-breach/tree/8ce15c779db1e911f0db8723c681a6b0b740bd78"
+    }
+  ]
+}

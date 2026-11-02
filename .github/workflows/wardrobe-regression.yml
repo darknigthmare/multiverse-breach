@@ -1,0 +1,87 @@
+name: Wardrobe regression
+on:
+  push:
+    branches: [codex/costumes-fidelite-r14-2026-10-25]
+  pull_request:
+    paths: ['src/game/wardrobe*.js', 'src/components/CharacterWardrobe*', 'scripts/*Wardrobe*.mjs', 'scripts/wardrobe*.mjs', '.github/workflows/wardrobe-regression.yml']
+permissions:
+  contents: read
+concurrency:
+  group: wardrobe-${{ github.event.pull_request.head.ref || github.ref }}
+  cancel-in-progress: true
+jobs:
+  wardrobe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /public/**/*.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Archive exact source without downloading bitmap blobs
+        run: |
+          mkdir -p /tmp/wardrobe-review
+          python - <<'PY'
+          import hashlib,json,pathlib,subprocess,zipfile
+          root=pathlib.Path.cwd();out=pathlib.Path('/tmp/wardrobe-review')
+          sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          rows=[]
+          for line in subprocess.check_output(['git','ls-tree','-r','-z','HEAD']).split(b'\0'):
+              if not line: continue
+              head,name=line.split(b'\t',1);mode,kind,oid=head.decode().split()
+              if kind=='blob': rows.append({'path':name.decode(),'sha':oid,'type':kind})
+          (out/'source-tree.json').write_text(json.dumps({'sha':sha,'truncated':False,'tree':rows}))
+          with zipfile.ZipFile(out/'source-snapshot.zip','w',zipfile.ZIP_DEFLATED) as z:
+              manifest=[]
+              for e in rows:
+                  p=pathlib.Path(e['path'])
+                  include=(p.parts[0] in ('src','scripts','api') and p.suffix in ('.js','.jsx','.json','.mjs','.css','.py','.html')) or (p.parts[0]=='public' and p.suffix=='.json') or (len(p.parts)==1 and p.suffix in ('.json','.js','.mjs','.html'))
+                  if not include: continue
+                  b=(root/p).read_bytes()
+                  assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==e['sha'],e['path']
+                  z.writestr(e['path'],b);manifest.append({**e,'size':len(b)})
+              z.writestr('source-snapshot.json',json.dumps({'commit':sha,'files':manifest}))
+          print(json.dumps({'commit':sha,'verifiedSourceFiles':len(manifest)}))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: wardrobe-exact-source
+          path: |
+            /tmp/wardrobe-review/source-snapshot.zip
+            /tmp/wardrobe-review/source-tree.json
+          retention-days: 14
+      - name: Test wardrobe, boosters, fidelity and source-scene regressions
+        run: |
+          set -euo pipefail
+          mapfile -t tests < <(find scripts -maxdepth 1 -type f \( -name 'wardrobe*.test.mjs' -o -name '*Wardrobe*.test.mjs' -o -name 'actorFidelity*.test.mjs' -o -name 'pngEvidence.test.mjs' -o -name 'reauditSourceScenes.test.mjs' \) | sort)
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs --test "${tests[@]}" | tee /tmp/wardrobe-review/tests.log
+      - name: Export live catalogue and booster routes
+        run: |
+          set -euo pipefail
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs scripts/exportWardrobe.mjs /tmp/wardrobe-review/catalogue "$(git rev-parse HEAD)"
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs scripts/exportWardrobeBoosters.mjs /tmp/wardrobe-review/boosters "$(git rev-parse HEAD)"
+      - name: Build sources without regenerating bitmap library
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx vite build 2>&1 | tee /tmp/wardrobe-review/build.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wardrobe-source-review
+          path: |
+            /tmp/wardrobe-review/*.log
+            /tmp/wardrobe-review/catalogue/
+            /tmp/wardrobe-review/boosters/
+          retention-days: 14

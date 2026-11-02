@@ -1,12 +1,11 @@
-import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useDeferredValue, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import CardDetailModal from './CardDetailModal';
 import UniverseBinder from './UniverseBinder';
+import useModalDialog from './useModalDialog.js';
+import { buildCollectionUniverseSummaries, normalizeCollectionSearch as normalizeSearch } from './collectionView.js';
 import './collection.css';
-
-const normalizeSearch = value => String(value || '')
-  .normalize('NFD')
-  .replace(/[\u0300-\u036f]/g, '')
-  .toLocaleLowerCase();
+import './collectionImmersion.css';
 
 const getText = (value, lang, fallback = '') => {
   if (typeof value === 'string') return value;
@@ -30,6 +29,8 @@ export default function CollectionHome({
   onClaimMilestone
 }) {
   const closeRef = useRef(null);
+  const overlayRef = useRef(null);
+  const dialogRef = useRef(null);
   const [view, setView] = useState('library');
   const [selectedUniverse, setSelectedUniverse] = useState('all');
   const [selectedCardId, setSelectedCardId] = useState(null);
@@ -42,19 +43,7 @@ export default function CollectionHome({
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = normalizeSearch(deferredQuery.trim());
 
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    const onKeyDown = event => {
-      if (event.key === 'Escape' && !selectedCardId) onClose?.();
-    };
-    document.body.style.overflow = 'hidden';
-    document.addEventListener('keydown', onKeyDown);
-    closeRef.current?.focus();
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener('keydown', onKeyDown);
-    };
-  }, [onClose, selectedCardId]);
+  useModalDialog({ overlayRef, dialogRef, initialFocusRef: closeRef, onClose });
 
   const searchableDefinitions = useMemo(() => definitions.map(definition => ({
     ...definition,
@@ -71,34 +60,11 @@ export default function CollectionHome({
     () => new Map(searchableDefinitions.map(definition => [definition.id, definition])),
     [searchableDefinitions]
   );
-  const universeSummaries = useMemo(() => {
-    const byUniverse = new Map();
-    searchableDefinitions.forEach(definition => {
-      const summary = byUniverse.get(definition.universe) || {
-        universe: definition.universe,
-        total: 0,
-        owned: 0,
-        anomalies: 0,
-        favorites: 0,
-        pilot: false
-      };
-      const entry = cards[definition.id];
-      summary.total += 1;
-      summary.owned += Number(Boolean(entry));
-      summary.anomalies += Number(Boolean(entry && definition.rarityId === 'anomaly'));
-      summary.favorites += Number(Boolean(entry?.favorite));
-      summary.pilot ||= definition.visualStatus === 'pilot';
-      byUniverse.set(definition.universe, summary);
-    });
-    return Array.from(byUniverse.values()).sort((a, b) => {
-      if (b.favorites !== a.favorites) return b.favorites - a.favorites;
-      if (b.owned !== a.owned) return b.owned - a.owned;
-      return a.universe.localeCompare(b.universe, lang);
-    });
-  }, [cards, lang, searchableDefinitions]);
-  const visibleUniverseSummaries = universeSummaries.filter(summary => (
-    !normalizedQuery || normalizeSearch(summary.universe).includes(normalizedQuery)
-  ));
+  const universeSummaries = useMemo(() => buildCollectionUniverseSummaries(searchableDefinitions, cards, {
+    query: normalizedQuery, rarity, kind, canonStatus, ownedOnly, favoritesOnly
+  }, lang), [searchableDefinitions, cards, normalizedQuery, rarity, kind, canonStatus, ownedOnly, favoritesOnly, lang]);
+  const visibleUniverseSummaries = universeSummaries.filter(summary => summary.matching > 0);
+  const matchingCount = visibleUniverseSummaries.reduce((total, summary) => total + summary.matching, 0);
   const ownedCount = searchableDefinitions.reduce(
     (total, definition) => total + Number(Boolean(cards[definition.id])),
     0
@@ -133,12 +99,12 @@ export default function CollectionHome({
     if (cards[cardId]?.seen === false) onUpdateCard?.(cardId, { seen: true });
   };
 
-  return (
-    <div className="tcg-album-overlay" data-tcg-album="open">
-      <section className="tcg-album" role="dialog" aria-modal="true" aria-labelledby="tcg-album-title">
+  const content = (
+    <div ref={overlayRef} className="tcg-album-overlay" data-tcg-album="open">
+      <section ref={dialogRef} tabIndex={-1} className="tcg-album" role="dialog" aria-modal="true" aria-labelledby="tcg-album-title">
         <header className="tcg-album-header">
           <div>
-            <span>A.R.C.A. / TCG ARCHIVE v1</span>
+            <span>A.R.C.A. / ARCHIVES</span>
             <h1 id="tcg-album-title">{lang === 'fr' ? 'ALBUM DES TRAMES' : 'THREAD ALBUM'}</h1>
             <p>
               {lang === 'fr'
@@ -178,6 +144,8 @@ export default function CollectionHome({
           ))}
         </nav>
 
+        {view !== 'history' && <details className="tcg-filter-drawer" open>
+          <summary>{lang === 'fr' ? 'Recherche et filtres' : 'Search and filters'} <span>{matchingCount} {lang === 'fr' ? 'cartes' : 'cards'}</span></summary>
         <div className="tcg-album-toolbar">
           <label className="tcg-search-field">
             <span>{lang === 'fr' ? 'RECHERCHE' : 'SEARCH'}</span>
@@ -214,8 +182,13 @@ export default function CollectionHome({
           <label className="tcg-toggle"><input type="checkbox" checked={ownedOnly} onChange={event => setOwnedOnly(event.target.checked)} />{lang === 'fr' ? 'OBTENUES' : 'OWNED'}</label>
           <label className="tcg-toggle"><input type="checkbox" checked={favoritesOnly} onChange={event => setFavoritesOnly(event.target.checked)} />{lang === 'fr' ? 'FAVORIS' : 'FAVORITES'}</label>
         </div>
+        <p className="tcg-filter-scope" role="status">{lang === 'fr'
+          ? (view === 'library' ? 'Seuls les classeurs contenant des cartes correspondant aux filtres sont affichés. La progression reste calculée sur le set complet.' : 'Les filtres s’appliquent aux cartes du classeur sélectionné.')
+          : (view === 'library' ? 'Only binders containing matching cards are shown. Completion still uses the full set.' : 'Filters apply to cards in the selected binder.')}</p>
+        </details>}
 
         <main className="tcg-album-content">
+          <details className="tcg-album-about"><summary>{lang === 'fr' ? 'Informations sur l’Album' : 'About the Album'}</summary><p>A.R.C.A. / TCG ARCHIVE v1 · {lang === 'fr' ? 'Les statuts provisoires, les planches sources et la provenance restent consultables dans la fiche de chaque carte. Les cartes obtenues, copies, maîtrise et finitions sont conservées.' : 'Provisional status, source sheets and provenance remain available in every card record. Owned cards, copies, mastery and finishes are preserved.'}</p></details>
           {view === 'library' ? (
             <section aria-labelledby="tcg-library-title">
               <div className="tcg-section-title">
@@ -224,13 +197,13 @@ export default function CollectionHome({
               </div>
               <div className="tcg-universe-grid">
                 <button type="button" className="tcg-universe-tile tcg-universe-all" onClick={() => openBinder('all')}>
-                  <span>NEXUS INDEX</span><strong>{lang === 'fr' ? 'TOUTES LES TRAMES' : 'ALL THREADS'}</strong><small>{ownedCount}/{searchableDefinitions.length}</small>
+                  <span>NEXUS INDEX</span><strong>{lang === 'fr' ? 'TOUTES LES TRAMES' : 'ALL THREADS'}</strong><small>{matchingCount} {lang === 'fr' ? 'cartes correspondent' : 'matching cards'}</small>
                 </button>
                 {visibleUniverseSummaries.map(summary => {
                   const progress = summary.total ? Math.round((summary.owned / summary.total) * 100) : 0;
                   return (
                     <button key={summary.universe} type="button" className="tcg-universe-tile" onClick={() => openBinder(summary.universe)}>
-                      <span>{summary.pilot ? 'PILOTE VISUEL' : 'ARCHIVE DRAFT'}</span>
+                      <span>{summary.matching} {lang === 'fr' ? 'CARTES CORRESPONDANTES' : 'MATCHING CARDS'}</span>
                       <strong>{summary.universe}</strong>
                       <small>{summary.owned}/{summary.total} / {progress}%</small>
                       <i aria-hidden="true"><b style={{ width: `${progress}%` }} /></i>
@@ -238,6 +211,7 @@ export default function CollectionHome({
                   );
                 })}
               </div>
+              {visibleUniverseSummaries.length === 0 && <p className="tcg-empty-state" role="status">{lang === 'fr' ? 'Aucun classeur ne contient de carte correspondant à ces filtres.' : 'No binder contains cards matching these filters.'}</p>}
             </section>
           ) : null}
 
@@ -320,4 +294,5 @@ export default function CollectionHome({
       </section>
     </div>
   );
+  return typeof document === 'undefined' ? content : createPortal(content, document.body);
 }

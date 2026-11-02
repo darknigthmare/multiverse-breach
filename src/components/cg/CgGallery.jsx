@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import useModalDialog from '../collection/useModalDialog.js';
 import { CG_GALLERY_CATALOG } from '../../game/cg/cgRosterCatalog';
 import {
   CG_REVISION_REGISTRY,
@@ -11,6 +13,7 @@ import {
   isCgUnlocked
 } from '../../game/cg/cgSchema';
 import './cgGallery.css';
+import './cgImmersion.css';
 
 export const CG_FAVORITES_STORAGE_KEY = 'multiverse-breach-cg-gallery-favorites-v1';
 
@@ -113,6 +116,8 @@ export default function CgGallery({
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [favoriteIds, setFavoriteIds] = useState(loadFavoriteIds);
   const [selectedCgId, setSelectedCgId] = useState(null);
+  const [previewCgId, setPreviewCgId] = useState(null);
+  const [fullscreenMessage, setFullscreenMessage] = useState('');
   const [zoom, setZoom] = useState(1);
   const [selectedRevisionId, setSelectedRevisionId] = useState(null);
   const [comparisonMode, setComparisonMode] = useState(null);
@@ -165,6 +170,10 @@ export default function CgGallery({
     universeFilter
   ]);
 
+  const previewRecord = filteredEntries.find(record => record.definition.id === previewCgId)
+    || filteredEntries.find(record => record.unlocked && record.media.imagePath)
+    || filteredEntries[0] || null;
+
   const selectedRecord = selectedCgId
     ? galleryEntries.find(({ definition }) => definition.id === selectedCgId) || null
     : null;
@@ -207,35 +216,12 @@ export default function CgGallery({
     if (selectedCgId && !selectedMedia?.imagePath) setSelectedCgId(null);
   }, [selectedCgId, selectedMedia?.imagePath]);
 
-  useEffect(() => {
-    if (!selectedCg || !selectedRecord?.unlocked || typeof document === 'undefined') return undefined;
-    const previousOverflow = document.body.style.overflow;
-    const trigger = lightboxTriggerRef.current;
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        setSelectedCgId(null);
-        return;
-      }
-      if (event.key === 'Tab') {
-        const focusable = Array.from(lightboxRef.current?.querySelectorAll(
-          'a[href], button:not([disabled]), select:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
-        ) || []).filter((element) => !element.hidden && element.getClientRects().length > 0);
-        if (focusable.length === 0) {
-          event.preventDefault();
-          return;
-        }
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (event.shiftKey && (document.activeElement === first || !lightboxRef.current?.contains(document.activeElement))) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
-        return;
-      }
+  useModalDialog({
+    open: Boolean(selectedCg && selectedMedia?.imagePath),
+    overlayRef: lightboxRef, dialogRef: lightboxRef, initialFocusRef: closeLightboxRef,
+    onClose: () => closeLightbox(),
+    onKeyDown: event => {
+      if (event.target?.matches('input, select, textarea')) return;
       if (event.key === '+' || event.key === '=') {
         event.preventDefault();
         setZoom((current) => clampZoom(current + 0.25));
@@ -248,17 +234,8 @@ export default function CgGallery({
         event.preventDefault();
         setZoom(1);
       }
-    };
-
-    document.body.style.overflow = 'hidden';
-    document.addEventListener('keydown', handleKeyDown);
-    closeLightboxRef.current?.focus();
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener('keydown', handleKeyDown);
-      if (trigger?.isConnected) trigger.focus();
-    };
-  }, [selectedCg, selectedRecord?.unlocked]);
+    }
+  });
 
   const toggleFavorite = (cgId) => {
     setFavoriteIds((current) => {
@@ -275,6 +252,7 @@ export default function CgGallery({
     setZoom(1);
     setSelectedRevisionId(null);
     setComparisonMode(null);
+    setFullscreenMessage('');
     setSelectedCgId(record.definition.id);
   };
 
@@ -295,7 +273,7 @@ export default function CgGallery({
 
   const closeLightbox = () => {
     if (typeof document !== 'undefined' && document.fullscreenElement === lightboxRef.current) {
-      void document.exitFullscreen?.();
+      void document.exitFullscreen?.().catch(() => {});
     }
     setSelectedCgId(null);
     setZoom(1);
@@ -303,12 +281,15 @@ export default function CgGallery({
     setComparisonMode(null);
   };
 
-  const toggleFullscreen = () => {
+  const toggleFullscreen = async () => {
     if (typeof document === 'undefined' || !lightboxRef.current) return;
-    if (document.fullscreenElement === lightboxRef.current) {
-      void document.exitFullscreen?.();
-    } else {
-      void lightboxRef.current.requestFullscreen?.();
+    try {
+      if (document.fullscreenElement === lightboxRef.current) await document.exitFullscreen?.();
+      else if (lightboxRef.current.requestFullscreen) await lightboxRef.current.requestFullscreen();
+      else throw new Error('fullscreen-unavailable');
+      setFullscreenMessage('');
+    } catch {
+      setFullscreenMessage(locale === 'fr' ? 'Le plein écran système est indisponible. La visionneuse reste ouverte sur toute la fenêtre.' : 'System fullscreen is unavailable. The viewer still fills the window.');
     }
   };
 
@@ -322,16 +303,16 @@ export default function CgGallery({
   };
 
   return (
-    <section className="cg-gallery" aria-labelledby="cg-gallery-title">
+    <section className="cg-gallery cg-gallery-immersive" aria-labelledby="cg-gallery-title">
       <header className="cg-gallery__header">
         <div>
           <span className="cg-gallery__eyebrow">A.R.C.A. / CG ARCHIVE</span>
           <h1 id="cg-gallery-title">{locale === 'fr' ? 'Galerie CG' : 'CG Gallery'}</h1>
-          <p>
+          <details className="cg-gallery__about"><summary>{locale === 'fr' ? 'À propos des illustrations' : 'About the illustrations'}</summary><p>
             {locale === 'fr'
               ? 'Illustrations originales du projet créées avec OpenAI. Les fan-arts sont non officiels et ne reproduisent aucun visuel éditeur.'
               : 'Original project illustrations created with OpenAI. Fan art is unofficial and does not reproduce publisher artwork.'}
-          </p>
+          </p></details>
         </div>
         <div className="cg-gallery__header-actions">
           <span>{unlockedCount}/{catalog.length} {locale === 'fr' ? 'déverrouillées' : 'unlocked'}</span>
@@ -366,6 +347,7 @@ export default function CgGallery({
         ))}
       </nav>
 
+      <details className="cg-gallery__filter-drawer"><summary>{locale === 'fr' ? 'Filtres' : 'Filters'} · {filteredEntries.length} {locale === 'fr' ? 'illustrations' : 'illustrations'}</summary>
       <div className="cg-gallery__filters" aria-label={locale === 'fr' ? 'Filtres de galerie' : 'Gallery filters'}>
         <label>
           <span>{locale === 'fr' ? 'UNIVERS' : 'UNIVERSE'}</span>
@@ -414,10 +396,18 @@ export default function CgGallery({
           {locale === 'fr' ? 'RÉINITIALISER' : 'RESET'}
         </button>
       </div>
+      </details>
 
-      <div className="cg-gallery__result-heading">
+      <div className="cg-gallery__result-heading" aria-live="polite">
         <strong>{getText(FAMILY_LABELS[activeFamily], locale, activeFamily)}</strong>
         <span>{filteredEntries.length} {locale === 'fr' ? 'résultat(s)' : 'result(s)'}</span>
+      </div>
+
+      <div className="cg-gallery__stage">
+        {previewRecord?.unlocked && previewRecord.media.imagePath ? <button type="button" className="cg-gallery__stage-open" onClick={event => openLightbox(previewRecord, event.currentTarget)} aria-label={`${locale === 'fr' ? 'Agrandir' : 'Enlarge'} ${getText(previewRecord.definition.title, locale)}`}>
+          <img src={previewRecord.media.imagePath} alt={getImageAlt(previewRecord.definition, getText(previewRecord.definition.title, locale), locale)} decoding="async" draggable="false" />
+          <span><strong>{getText(previewRecord.definition.title, locale)}</strong><small>{getText(previewRecord.definition.universeName, locale)} · {locale === 'fr' ? 'Agrandir / zoom / comparaison' : 'Enlarge / zoom / compare'}</small></span>
+        </button> : <div className="cg-gallery__stage-empty" role="status"><strong>{locale === 'fr' ? 'Archives de la Trame' : 'Thread archives'}</strong><p>{locale === 'fr' ? 'Choisis une famille ou ajuste les filtres. Les illustrations liées à un héros se révèlent avec sa progression.' : 'Choose a family or adjust the filters. Hero illustrations become available through progression.'}</p></div>}
       </div>
 
       <div
@@ -434,7 +424,7 @@ export default function CgGallery({
           return (
             <article
               key={entry.id}
-              className={`cg-gallery-card ${record.unlocked ? 'is-unlocked' : 'is-locked'}`}
+              className={`cg-gallery-card ${record.unlocked ? 'is-unlocked' : 'is-locked'} ${previewRecord?.definition.id === entry.id ? 'is-previewed' : ''}`}
               data-cg-family={entry.family}
               data-cg-type={entry.type}
               data-cg-character={entry.characterId}
@@ -444,9 +434,10 @@ export default function CgGallery({
                 type="button"
                 className="cg-gallery-card__open"
                 disabled={!record.unlocked}
-                onClick={(event) => openLightbox(record, event.currentTarget)}
+                onClick={() => setPreviewCgId(entry.id)}
+                aria-pressed={previewRecord?.definition.id === entry.id}
                 aria-label={record.unlocked
-                  ? `${locale === 'fr' ? 'Ouvrir' : 'Open'} ${title}`
+                  ? `${locale === 'fr' ? 'Afficher' : 'Preview'} ${title}`
                   : `${title}, ${locale === 'fr' ? 'verrouillé' : 'locked'}`}
               >
                 <span className="cg-gallery-card__media">
@@ -504,11 +495,12 @@ export default function CgGallery({
         </div>
       ) : null}
 
-      {selectedCg && selectedMedia?.imagePath ? (
+      {selectedCg && selectedMedia?.imagePath ? createPortal(
         <div
           ref={lightboxRef}
           className="cg-lightbox"
           role="dialog"
+          tabIndex={-1}
           aria-modal="true"
           aria-labelledby="cg-lightbox-title"
           onMouseDown={(event) => event.target === event.currentTarget && closeLightbox()}
@@ -568,6 +560,7 @@ export default function CgGallery({
                 <button ref={closeLightboxRef} type="button" onClick={closeLightbox}>{locale === 'fr' ? 'FERMER' : 'CLOSE'}</button>
               </div>
             </header>
+            {fullscreenMessage && <p className="cg-fullscreen-message" role="status">{fullscreenMessage}</p>}
 
             <div className="cg-lightbox__layout">
               <div className={`cg-lightbox__viewport ${compareWithBase || compareWithPrevious ? 'is-comparing' : ''}`}>
@@ -607,7 +600,8 @@ export default function CgGallery({
                 )}
               </div>
 
-              <aside className="cg-lightbox__details">
+              <details className="cg-lightbox__details"><summary>{locale === 'fr' ? 'Dossier, crédits et sources' : 'Record, credits and sources'}</summary>
+                <div className="cg-lightbox__details-content">
                 <div className="cg-lightbox__badges">
                   <span>{selectedCg.family}</span>
                   <span>{getText(TYPE_LABELS[selectedCg.type], locale, selectedCg.type)}</span>
@@ -654,10 +648,14 @@ export default function CgGallery({
                   {favoriteIds.has(selectedCg.id) ? '★ ' : '☆ '}
                   {locale === 'fr' ? 'FAVORI' : 'FAVORITE'}
                 </button>
-              </aside>
+                </div>
+              </details>
             </div>
+            <nav className="cg-lightbox__filmstrip" aria-label={locale === 'fr' ? 'Illustrations de la sélection' : 'Illustrations in this selection'}>
+              {filteredEntries.filter(record => record.unlocked && record.media.imagePath).map(record => <button key={record.definition.id} type="button" aria-pressed={record.definition.id === selectedCgId} onClick={() => { setPreviewCgId(record.definition.id); openLightbox(record); }} aria-label={getText(record.definition.title, locale)}><img src={record.media.thumbnailPath || record.media.imagePath} alt="" loading="lazy" /></button>)}
+            </nav>
           </section>
-        </div>
+        </div>, document.body
       ) : null}
     </section>
   );

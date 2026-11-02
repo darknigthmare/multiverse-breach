@@ -1,0 +1,1211 @@
+{
+  "scope": {
+    "project": "Multiverse Breach",
+    "reference": "Version déployée, identifiée par le build visible 5f44cf34 et figée au commit indiqué",
+    "commit": "5f44cf344d1a9fbb0dbd7c899510b7dd16cf25d6",
+    "build": "5f44cf34",
+    "date": "2026-10-25",
+    "evidence": "code et observations visuelles",
+    "website": "https://multiverse-breach.vercel.app/",
+    "method": "Lecture des sources correspondant au déploiement, croisée avec un parcours navigateur en français sur une nouvelle sauvegarde locale invitée (viewport 1363 × 936). Les pièces jointes plus anciennes servent de contexte, pas de preuve de l’état courant. Les observations de 42 captures originales sont répertoriées séparément.",
+    "limitation": "Inspection des surfaces identifiées et parcours représentatifs : tous les contenus verrouillés et toutes les variantes ne sont pas visités. Mobile, manette physique, ultralarge, synchronisation cloud, ouverture de booster, victoire complète et fins de campagne ne sont pas validés. Les risques de récompenses sont établis dans le code et restent à reproduire.",
+    "coverage": "40 fiches regroupent les écrans et leurs états proches. Chaque liste states précise les sous-vues couvertes ; les catégories et fonctions existantes sont conservées.",
+    "sourceNote": "Instantané de l’audit initial du déploiement 5f44cf34. Les observations navigateur de cet audit ne valident pas la branche de refonte."
+  },
+  "summary": "La version actuelle possède déjà un titre plein viewport, un prologue séparé, une navigation groupée, des sessions dédiées et plusieurs dialogues correctement gérés. La priorité consiste à donner la surface de jeu aux environnements et à leur HUD : cité, combats, course et Extinction restent accompagnés de cadres, panneaux ou commandes hors scène. Le portail et les archives doivent exploiter le viewport avec des zones de lecture internes. Les informations et fonctions sont à réorganiser sans retrait ; les confirmations, zooms d’image et colonnes de texte peuvent rester centrés ou limités lorsque leur usage le justifie. Un point de stabilité distinct doit être traité : le chemin de fin d’Extinction annonce des récompenses dont le callback parent ignore le rapport. Le parcours de résultat hors session dédiée présente aussi un risque de sortie par abandon avant validation de la victoire, à confirmer et sécuriser.",
+  "preserved": [
+    {
+      "title": "Titre et onboarding déjà modernisés",
+      "description": "Conserver menu titre, Continuer, Nouvelle trace, création séparée, option locale, prologue multi-scènes, relecture, options audio, crédits et présentation automatique.",
+      "evidence": "code",
+      "sources": [
+        "src/components/IntroSequence.jsx:94–785"
+      ]
+    },
+    {
+      "title": "Navigation et préparation existantes",
+      "description": "Préserver cinq groupes, quinze onglets internes, dix catégories de missions, vues chapitres/carte/répertoire/journal, recherches, filtres, pagination et presets.",
+      "evidence": "code",
+      "sources": [
+        "src/components/HubScreen.jsx:1277–1340",
+        "src/components/HubScreen.jsx:8559–8640",
+        "src/components/CustomBattleMode.jsx:443–677"
+      ]
+    },
+    {
+      "title": "Entrées et mécanismes de combat",
+      "description": "Garder ciblage RPG, attente ATB, caméra tactique, annulation et fin de tour, remappage mêlée, manette et tactile, supers, assistances et règles spécifiques aux rencontres.",
+      "evidence": "code",
+      "sources": [
+        "src/components/GameCanvas.jsx:60–88",
+        "src/components/GameCanvas.jsx:2828–3001"
+      ]
+    },
+    {
+      "title": "Pause et dialogues accessibles",
+      "description": "Réutiliser le gel des sessions dédiées, les confirmations, la gestion du focus et les modales existantes. Les bonnes implémentations servent de base commune.",
+      "evidence": "code",
+      "sources": [
+        "src/components/HubScreen.jsx:244–357",
+        "src/components/IntroSequence.jsx:112–156",
+        "src/components/PortalBoosterDossier.jsx:44–63"
+      ]
+    },
+    {
+      "title": "Collections et provenance",
+      "description": "Conserver album, filtres, paliers, historique, favoris, dossiers, galerie, comparaison, zoom et plein écran. Les métadonnées techniques sont rangées, pas effacées.",
+      "evidence": "code",
+      "sources": [
+        "src/components/collection/CollectionHome.jsx:169–319",
+        "src/components/cg/CgGallery.jsx:300–597"
+      ]
+    },
+    {
+      "title": "Progression et protection des données",
+      "description": "Préserver sauvegardes de secours, conflits cloud, confirmations d’achat, verrouillages de transaction, règles de récompense et relecture sans nouveau gain.",
+      "evidence": "code",
+      "sources": [
+        "src/App.jsx:2151–2420",
+        "src/components/PortalScreen.jsx:1393–1516"
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "id": "01",
+      "title": "Écran titre et présentation automatique",
+      "priority": "P2",
+      "status": "Bonne base à harmoniser",
+      "evidence": "code",
+      "states": [
+        "Titre",
+        "Continuer",
+        "Nouvelle trace",
+        "Présentation automatique"
+      ],
+      "observation": "Le titre dispose déjà d’un décor couvrant le viewport, d’un menu distinct, d’une reprise de progression et d’une présentation automatique des archives déverrouillées. Sa structure est sensiblement plus immersive que les anciennes pièces jointes.",
+      "recommendation": "Prendre cet écran comme référence pour les autres espaces. Renforcer la priorité de Continuer ou Nouvelle trace, présenter les événements comme une information secondaire et garder la scène visible derrière les commandes.",
+      "preserve": "Conserver Continuer, Nouvelle trace, Collection, Options, Crédits, la relecture du prologue et la présentation automatique. Les dialogues possèdent déjà une gestion du focus.",
+      "acceptance": "Les actions principales doivent rester visibles sans défilement en paysage. Une reprise doit retrouver la progression existante, et une fermeture de dialogue doit restituer le focus au contrôle d’origine.",
+      "sources": [
+        "src/components/IntroSequence.jsx:112–156",
+        "src/components/IntroSequence.jsx:346–418",
+        "src/components/IntroSequence.jsx:544–665",
+        "src/index.css:6136–6205"
+      ]
+    },
+    {
+      "id": "02",
+      "title": "Création de l’Ancre",
+      "priority": "P1",
+      "status": "Présentation à renforcer",
+      "evidence": "code",
+      "states": [
+        "Identité",
+        "Création locale",
+        "Connexion incorporée"
+      ],
+      "observation": "La création est déjà séparée du titre. Elle associe un panneau d’identité, la cellule de secours et un compte incorporé, avec un bouton permettant de continuer en local.",
+      "recommendation": "Mettre l’Ancre et ses compagnons au premier plan dans une scène de présentation. Garder les champs nécessaires à proximité du personnage, et réserver le panneau de connexion à un choix clairement facultatif.",
+      "preserve": "Préserver le nom, sa limite de saisie, le profil local, la connexion cloud et le passage au prologue. Ne pas présenter une création d’avatar complète comme une fonction déjà fournie ici.",
+      "acceptance": "La validation doit rester accessible avec le clavier virtuel ouvert. Le retour au titre ne doit pas créer une nouvelle partie accidentelle ni modifier les récompenses des compagnons.",
+      "sources": [
+        "src/components/IntroSequence.jsx:670–728",
+        "src/App.jsx:2502–2533",
+        "src/index.css:6299–6398"
+      ]
+    },
+    {
+      "id": "03",
+      "title": "Prologue et transmissions A.R.C.A.",
+      "priority": "P2",
+      "status": "Bonne base narrative",
+      "evidence": "code",
+      "states": [
+        "Scènes du prologue",
+        "Relecture",
+        "Passer"
+      ],
+      "observation": "Le prologue comprend déjà plusieurs scènes, des images propres, une progression, Précédent, Suivant, Passer et une entrée dans le Nexus. Sa composition partage le fond plein viewport du titre.",
+      "recommendation": "Conserver ce parcours et améliorer le cadrage des illustrations, l’espace des sous-titres et la distinction entre récit et transmission. Les commandes techniques persistantes doivent rester discrètes pendant la lecture.",
+      "preserve": "Préserver toutes les scènes, le texte intégral, la relecture depuis le titre, la reprise et le saut du prologue. Une largeur limitée pour le texte reste souhaitable.",
+      "acceptance": "Chaque scène doit rester lisible sans texte coupé sur les petits écrans. Passer, terminer et reprendre doivent conduire au même état de progression attendu, sans modifier les choix ou récompenses.",
+      "sources": [
+        "src/components/IntroSequence.jsx:1–76",
+        "src/components/IntroSequence.jsx:732–785",
+        "src/App.jsx:2522–2526",
+        "src/index.css:8730–8738"
+      ]
+    },
+    {
+      "id": "04",
+      "title": "Options, crédits et confirmations du titre",
+      "priority": "P1",
+      "status": "Options à compléter",
+      "evidence": "code",
+      "states": [
+        "Options",
+        "Crédits et licences",
+        "Confirmation de nouvelle trace"
+      ],
+      "observation": "Le menu Options propose déjà langue, volumes musique et effets, mute et variante événementielle. Les dialogues de crédits et de nouvelle trace existent et gèrent Échap, le focus et l’arrière-plan inactif.",
+      "recommendation": "Ajouter des rubriques Affichage, HUD, commandes et accessibilité, puis rendre ces réglages accessibles depuis la pause. Conserver des fenêtres centrées pour les confirmations courtes ; un écran complet convient aux réglages nombreux.",
+      "preserve": "Préserver les volumes séparés, les choix linguistiques, les événements, les crédits et la confirmation de nouvelle partie. La réduction des animations suivant la préférence système existe déjà.",
+      "acceptance": "Changer un réglage ne doit pas relancer une partie. Les menus doivent fonctionner au clavier, conserver le focus, rendre l’annulation claire et proposer une sortie sûre du plein écran système.",
+      "sources": [
+        "src/components/IntroSequence.jsx:94–310",
+        "src/index.css:7985–8008",
+        "src/index.css:8984–8997"
+      ]
+    },
+    {
+      "id": "05",
+      "title": "Compte, synchronisation et sauvegardes",
+      "priority": "P1",
+      "status": "Rangement amélioré, dialogues à intégrer",
+      "evidence": "code",
+      "states": [
+        "Compte",
+        "Cloud",
+        "Outils de trace locale",
+        "Conflit de sauvegarde"
+      ],
+      "observation": "Le compte flottant n’apparaît plus que dans le hub et le portail boutique. Les outils locaux sont rangés dans un volet, mais export, import, purge et conflits cloud utilisent encore des dialogues du navigateur.",
+      "recommendation": "Présenter ces opérations dans un écran Compte et sauvegardes commun au menu système. Employer des libellés explicites, montrer le statut local ou cloud et intégrer les confirmations dans l’habillage du jeu.",
+      "preserve": "Conserver connexion, inscription, récupération, renvoi de confirmation, synchronisation, copie de secours, export, import et purge. Les protections contre l’écrasement et les conflits doivent rester intactes.",
+      "acceptance": "Une annulation doit préserver la progression. Les messages doivent correspondre à l’action réelle, le remplacement d’une sauvegarde doit rester explicite et les erreurs doivent être lisibles sans masquer la récupération.",
+      "sources": [
+        "src/App.jsx:2151–2214",
+        "src/App.jsx:2274–2285",
+        "src/App.jsx:2408–2420",
+        "src/App.jsx:2482–2498",
+        "src/components/AuthPanel.jsx:88–245"
+      ]
+    },
+    {
+      "id": "06",
+      "title": "Hub et navigation générale",
+      "priority": "P1",
+      "status": "Coque à transformer",
+      "evidence": "code",
+      "states": [
+        "Cinq groupes de navigation",
+        "Quinze onglets",
+        "Ressources et directives"
+      ],
+      "observation": "Le hub possède déjà cinq groupes cohérents, quinze onglets internes et un accès séparé au portail. Hors partie, plusieurs bandes se succèdent : titre, ressources, directive, métriques, navigation et filtre média.",
+      "recommendation": "Garder cette arborescence, mais composer une coque de jeu occupant le viewport avec navigation latérale ou basse et décor contextuel. Réserver la directive complète à l’accueil ou aux opérations ; ailleurs, utiliser un rappel discret.",
+      "preserve": "Conserver chaque destination, les monnaies utiles, les métriques de cycle, les filtres et les messages Nexus. Les sessions dédiées cachent déjà les bandes générales pendant certains modes.",
+      "acceptance": "Une matrice de correspondance doit garantir que chaque contrôle actuel reste accessible. Le passage entre sections doit garder sélection, filtres et progression sans obliger à reparcourir une longue page.",
+      "sources": [
+        "src/components/HubScreen.jsx:1277–1340",
+        "src/components/HubScreen.jsx:9115–9310",
+        "src/index.css:8594–8664",
+        "src/index.css:8158–8180"
+      ]
+    },
+    {
+      "id": "07",
+      "title": "Index des opérations et catégories de missions",
+      "priority": "P1",
+      "status": "Sélecteur encore documentaire",
+      "evidence": "code",
+      "states": [
+        "Missions des univers",
+        "Campagne OC",
+        "Actes annexes OC",
+        "Univers OC",
+        "Arcs",
+        "Fusions",
+        "Épreuves"
+      ],
+      "observation": "L’index regroupe dix catégories sous forme de grandes cartes illustrées, avec description et compteur. Ces catégories couvrent les missions d’univers, le contenu original, les arcs, les fusions et les épreuves.",
+      "recommendation": "Transformer l’index en sélection d’opérations avec une grande illustration pour la catégorie active, une liste courte de choix et une action claire. La présentation doit utiliser la hauteur disponible sans empiler toutes les fiches.",
+      "preserve": "Conserver les dix catégories, leurs compteurs, leurs conditions d’accès et la recherche. RPG, Tactics et Smash restent des types de mission et des filtres, pas de nouveaux onglets inventés.",
+      "acceptance": "Chaque catégorie doit être atteignable au clavier et au tactile. Les descriptions complètes restent accessibles dans le dossier, et les catégories verrouillées indiquent la raison plutôt que de disparaître sans explication.",
+      "sources": [
+        "src/components/HubScreen.jsx:8559–8640",
+        "src/components/HubScreen.jsx:9439–9508"
+      ]
+    },
+    {
+      "id": "08",
+      "title": "Campagne et bibliothèques originales",
+      "priority": "P1",
+      "status": "Architecture existante à mieux cadrer",
+      "evidence": "code",
+      "states": [
+        "Campagne OC",
+        "Chronique",
+        "Chapitres",
+        "Actes annexes OC",
+        "Univers OC"
+      ],
+      "observation": "La campagne originale possède déjà une chronique et des chapitres distincts de la carte et du répertoire. Les actes annexes et les univers originaux disposent de catégories et de bibliothèques propres.",
+      "recommendation": "Présenter la campagne comme un livre de chapitres ou une salle de commandement plein écran. La mission sélectionnée apporte son décor, son contexte et l’action Continuer ou Revoir, tandis que les bibliothèques restent consultables par section.",
+      "preserve": "Préserver chapitres, missions annexes, activation des bibliothèques, exigences, variantes et états terminés. Le travail porte sur le cadrage et les transitions, sans refaire une séparation déjà réalisée.",
+      "acceptance": "Le joueur doit identifier sa prochaine mission et retrouver un chapitre déjà vu. Changer de vue doit conserver le chapitre sélectionné et ne pas réattribuer les récompenses de première réussite.",
+      "sources": [
+        "src/components/HubScreen.jsx:8573–8593",
+        "src/components/HubScreen.jsx:9691–9720",
+        "src/components/HubScreen.jsx:8868–8943"
+      ]
+    },
+    {
+      "id": "09",
+      "title": "Carte, répertoire, journal et épreuves",
+      "priority": "P1",
+      "status": "Vues existantes à rendre immersives",
+      "evidence": "code",
+      "states": [
+        "Carte des failles",
+        "Répertoire",
+        "Journal",
+        "Épreuves sans combat",
+        "Failles fusionnées"
+      ],
+      "observation": "La carte, le répertoire et le journal sont déjà compartimentés. Les missions d’univers, les épreuves sans combat et les failles fusionnées utilisent ces vues, avec leurs objectifs et protocoles particuliers.",
+      "recommendation": "Faire de la carte la surface principale de l’écran, avec inspecteur à la sélection et journal ouvrable. Utiliser le répertoire pour la recherche précise, sans afficher simultanément toutes les descriptions autour de la carte.",
+      "preserve": "Conserver toutes les missions, les filtres, le journal et les protocoles de fusion. Les épreuves hors combat disposent déjà d’un traitement spécifique de leur titre et objectif.",
+      "acceptance": "Une sélection dans le répertoire doit pointer la même mission sur la carte. Les épreuves doivent afficher leurs véritables règles, et chaque détail de fusion doit rester accessible sans défilement du document de jeu.",
+      "sources": [
+        "src/components/HubScreen.jsx:8868–8943",
+        "src/components/HubScreen.jsx:10168–10212",
+        "src/App.jsx:801–860"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Arcs de faction, d’univers, personnels et trio",
+      "priority": "P1",
+      "status": "Navigation dédiée à mettre en scène",
+      "evidence": "code",
+      "states": [
+        "Arcs de faction",
+        "Arcs d’univers",
+        "Arcs personnels",
+        "Arcs trio"
+      ],
+      "observation": "Les arcs possèdent déjà des navigateurs et une sélection de groupe, puis des chapitres ou une carte. Ils ne sont plus tous déversés dans une seule page de missions.",
+      "recommendation": "Utiliser une présentation adaptée à leur sens : conseil pour les factions, atlas pour les univers, dossier de héros pour l’arc personnel et scène des trois signatures pour le trio. Les chapitres restent la navigation principale.",
+      "preserve": "Conserver progression, verrous, introductions, relecture, composition requise et missions associées. Ne pas recréer des onglets ou une navigation de groupe qui existent déjà.",
+      "acceptance": "La relation entre arc, chapitre et mission doit rester évidente. Revenir depuis une introduction ou une fiche doit retrouver le même arc, et un passage visuel ne doit jamais valider une mission.",
+      "sources": [
+        "src/components/HubScreen.jsx:9586–9650",
+        "src/components/HubScreen.jsx:9840–9842"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Dossier de mission et briefing narratif",
+      "priority": "P1",
+      "status": "Informations à hiérarchiser",
+      "evidence": "code",
+      "states": [
+        "Dossier de sélection",
+        "Préparation",
+        "Briefing",
+        "Introduction de mission"
+      ],
+      "observation": "Le dossier de sélection comporte déjà prérequis, ressources, déploiement et aides à la composition. Le briefing qui suit utilise un fond plein écran mais empile narration, tags et modificateurs avant son unique action Lancer.",
+      "recommendation": "Présenter d’abord Objectif, équipe, prérequis essentiels et récompense attendue. Garder contexte, menaces et conséquences dans des panneaux ; ajouter un retour clair vers la préparation depuis le briefing sans perdre la sélection.",
+      "preserve": "Préserver tous les détails, les liens vers équipe et portail, les objectifs d’escorte et les règles des épreuves. Les textes doivent rester relisibles et ne pas être supprimés.",
+      "acceptance": "Les actions Lancer et Retour doivent tenir dans le viewport. Toute règle indispensable à la réussite reste visible, tandis que la consultation du dossier ne modifie ni l’équipe ni l’état de mission.",
+      "sources": [
+        "src/components/HubScreen.jsx:4920–5150",
+        "src/components/HubScreen.jsx:9630–9650",
+        "src/App.jsx:801–963",
+        "src/App.jsx:2598–2606"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Cité-Mosaïque : exploration",
+      "priority": "P1",
+      "status": "Scène encore encadrée",
+      "evidence": "code",
+      "states": [
+        "Exploration",
+        "Quartiers",
+        "Déplacements",
+        "HUD cité"
+      ],
+      "observation": "La cité bénéficie déjà d’une session dédiée qui masque la navigation générale. Elle conserve cependant des colonnes explicatives et une scène encadrée dans une coque centrée, plutôt qu’un environnement occupant tout l’écran.",
+      "recommendation": "Donner le viewport à l’exploration. Placer uniquement quartier, objectif court, minimap, interaction et pause dans le HUD ; ouvrir le journal, les statistiques et les destinations depuis une tablette ou une borne.",
+      "preserve": "Conserver déplacements clavier et tactiles, interactions, quartiers, raccourcis et informations. Le ratio du canvas est protégé par ses styles importés : ne pas conclure à un étirement certain sans mesure.",
+      "acceptance": "Le monde doit rester visible sans défilement pour atteindre une action. Changer de taille doit préserver ratio et coordonnées d’interaction, et revenir d’un dossier doit retrouver le quartier et la position utiles.",
+      "sources": [
+        "src/components/HubScreen.jsx:2208–2264",
+        "src/components/HubScreen.jsx:3199–3322",
+        "src/components/HubScreen.jsx:9321–9350",
+        "src/index.css:8158–8180",
+        "src/index.css:8316–8328"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Cité : tutoriel, destinations et services",
+      "priority": "P1",
+      "status": "Sous-parcours à intégrer au monde",
+      "evidence": "code",
+      "states": [
+        "Accueil de Mirelle",
+        "Guide",
+        "Atlas des destinations",
+        "Atelier et archives"
+      ],
+      "observation": "L’exploration affiche plusieurs blocs d’accueil et de guide ainsi que des relectures. L’atlas des destinations dispose déjà de recherche et pagination. Certaines zones de service nommées n’ont pas d’action reliée dans leurs définitions.",
+      "recommendation": "Montrer une transmission ou une tâche tutorielle à la fois, puis ranger sa relecture dans Aide. Ouvrir l’atlas à la demande et relier les services aux écrans existants lorsque leur fonction est disponible.",
+      "preserve": "Conserver tous les tutoriels, destinations, descriptions et raccourcis. Le passage Cité vers Missions ou Codex transmet déjà l’univers ; préserver cette amélioration au lieu de la présenter comme absente.",
+      "acceptance": "Chaque borne doit mener à une fonction réelle ou expliquer son état. Retourner au monde doit conserver le point de reprise, et fermer une aide ne doit pas désactiver la progression tutorielle.",
+      "sources": [
+        "src/components/HubScreen.jsx:2463–2473",
+        "src/components/HubScreen.jsx:3217–3238",
+        "src/components/HubScreen.jsx:3278–3303",
+        "src/components/HubScreen.jsx:9334–9350"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Zone d’Extinction : préparation",
+      "priority": "P1",
+      "status": "Sélection à scénariser",
+      "evidence": "code",
+      "states": [
+        "Choix de variante",
+        "Choix du héros",
+        "Déploiement Extinction"
+      ],
+      "observation": "La préparation propose déjà les variantes de mode, le héros, une description et le rôle avant lancement. La forme actuelle repose surtout sur des sélecteurs et des explications regroupés dans un panneau.",
+      "recommendation": "Construire une présentation de déploiement avec le héros et l’environnement dominants, les variantes sous forme de choix lisibles et les consignes dans un briefing court. La configuration détaillée peut rester dans un sous-menu.",
+      "preserve": "Conserver les quatre variantes, tous les héros autorisés, les descriptions de rôle et les conditions de lancement. Ne pas remplacer les paramètres par une sélection visuelle moins complète.",
+      "acceptance": "Lancer doit utiliser exactement la configuration affichée. Revenir d’une partie ou annuler doit retrouver les choix, et les contrôles doivent rester accessibles sans imposer la lecture de toute la documentation.",
+      "sources": [
+        "src/components/HubScreen.jsx:4435–4474",
+        "src/components/HubScreen.jsx:5183–5256"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Zone d’Extinction : partie",
+      "priority": "P1",
+      "status": "Vue FPS à faire dominer",
+      "evidence": "code",
+      "states": [
+        "Combat FPS",
+        "Objectifs",
+        "Commandes tactiles"
+      ],
+      "observation": "Pendant la partie, la configuration est masquée, mais statistiques, objectif et plusieurs boutons occupent encore une zone avant le canvas. Le cadre actif reste plafonné en largeur dans la session dédiée.",
+      "recommendation": "Faire de la vue FPS le fond de l’écran et y ancrer munitions, santé et objectif. Ranger les explications détaillées en pause, et placer les commandes tactiles près des zones d’usage selon le périphérique.",
+      "preserve": "Conserver tous les contrôles de tir et de déplacement, les variantes, l’état de la session et les informations nécessaires. L’interface doit rester lisible même lorsque le décor est lumineux ou chargé.",
+      "acceptance": "Aucune commande indispensable ne doit demander de faire défiler la page pendant le tir. Pause, reprise et changement de visibilité doivent conserver la session et éviter les entrées maintenues involontaires.",
+      "sources": [
+        "src/components/HubScreen.jsx:4475–4535",
+        "src/index.css:8395–8400",
+        "src/components/HubScreen.jsx:5313–5335"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Zone d’Extinction : bilan et récompenses",
+      "priority": "P0",
+      "status": "Incohérence de propagation à corriger",
+      "evidence": "code",
+      "states": [
+        "Fin de session",
+        "Bilan",
+        "Gains affichés"
+      ],
+      "observation": "La fin de session transmet un rapport contenant résultat et récompenses. Le callback parent récupéré ferme la session sans exploiter ce rapport, alors que le bilan annonce des gains d’or, fragments et expérience.",
+      "recommendation": "Vérifier ce chemin par une victoire contrôlée puis raccorder le bilan à la progression, ou expliciter un résultat de simulation si aucun gain ne doit être attribué. Présenter ensuite le bilan dans la scène avec une sortie volontaire.",
+      "preserve": "Conserver le rapport, ses scores, son résultat et ses gains prévus. Ne pas ajouter une deuxième attribution lors de la fermeture, de la reprise ou de l’affichage du résultat.",
+      "acceptance": "Les valeurs avant et après une victoire doivent correspondre aux gains affichés. Revoir ou fermer le bilan ne doit pas les multiplier ; un abandon ne doit pas être traité comme une victoire.",
+      "sources": [
+        "src/components/HubScreen.jsx:3650–3679",
+        "src/components/HubScreen.jsx:4493–4497",
+        "src/components/HubScreen.jsx:5220–5223"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Course A.R.C.A. : garage et préparation",
+      "priority": "P1",
+      "status": "Garage à mettre en scène",
+      "evidence": "code",
+      "states": [
+        "Pilote",
+        "Châssis",
+        "Circuit",
+        "Aides",
+        "Garage"
+      ],
+      "observation": "La préparation propose actuellement Mirelle Suture comme pilote, avec choix du châssis, du circuit et de l’aide d’autoaccélération. Ces décisions sont présentées comme un panneau de configuration plutôt qu’une grille de départ.",
+      "recommendation": "Utiliser un garage ou une grille plein écran avec le kart sélectionné, Mirelle et un aperçu du circuit. Ranger les réglages complémentaires dans leurs rubriques et garder un résumé de course avant lancement.",
+      "preserve": "Préserver tous les déblocages, choix de véhicule, aides et paramètres. Les achats et améliorations existants doivent rester accessibles dans le garage, sans être supprimés pour simplifier la présentation.",
+      "acceptance": "Lancement et retour doivent conserver le pilote, le châssis, le circuit et les aides. Le joueur doit comprendre ce qui est disponible, équipé ou verrouillé sans devoir essayer chaque sélection.",
+      "sources": [
+        "src/components/RaceMode.jsx:419–507",
+        "src/components/RaceMode.jsx:571–655"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Course A.R.C.A. : course active",
+      "priority": "P1",
+      "status": "Piste trop accompagnée de panneaux",
+      "evidence": "code",
+      "states": [
+        "Course",
+        "HUD",
+        "Objets",
+        "Commandes"
+      ],
+      "observation": "La course utilise un canvas avec panneau latéral contenant statistiques, carrière, objectif, objet, garage, circuit et aide. Un texte de développement est encore placé dans l’en-tête de la vue active.",
+      "recommendation": "Donner toute la surface à la piste, avec classement, tour, temps, vitesse et objet dans un HUD compact. Déplacer carrière, achats, améliorations et descriptions vers la préparation ou la pause ; garder les commandes tactiles adaptées.",
+      "preserve": "Conserver objet actif, aides, statistiques, carrière et garage. Réécrire les messages de développement en indications utiles au joueur, tout en laissant les détails techniques accessibles dans les outils.",
+      "acceptance": "Les virages et concurrents doivent rester visibles derrière le HUD. Aucun achat ne doit détourner une commande de conduite, et l’ouverture d’une pause ne doit ni avancer la course ni réinitialiser le véhicule.",
+      "sources": [
+        "src/components/RaceMode.jsx:513–529",
+        "src/components/RaceMode.jsx:571–655",
+        "src/index.css:969–1031"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Course A.R.C.A. : résultat",
+      "priority": "P1",
+      "status": "Bilan à mieux détacher de la course",
+      "evidence": "code",
+      "states": [
+        "Arrivée",
+        "Bilan",
+        "Rejouer",
+        "Retour garage"
+      ],
+      "observation": "La course affiche déjà un bandeau de fin avec rang, temps, objectif et récompenses. Ce résultat reste intégré à la composition actuelle du canvas et de son environnement de panneaux.",
+      "recommendation": "Présenter un podium ou un bilan sur la scène, avec place, temps et gains immédiatement lisibles, puis un détail de carrière ouvrable. Mettre Rejouer, Changer de circuit et Quitter dans une zone d’action stable.",
+      "preserve": "Conserver toutes les statistiques et récompenses de carrière existantes ainsi que la progression enregistrée. Le résultat ne doit pas devenir une seconde occasion d’appliquer les mêmes gains.",
+      "acceptance": "Les valeurs annoncées doivent correspondre à la carrière après fermeture. Rejouer doit conserver la configuration voulue, changer de circuit doit retrouver le garage, et quitter doit rendre le contrôle au bon menu.",
+      "sources": [
+        "src/components/RaceMode.jsx:550–567",
+        "src/components/RaceMode.jsx:571–655"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "Combat custom : configuration",
+      "priority": "P1",
+      "status": "Formulaire à organiser en lobby",
+      "evidence": "code",
+      "states": [
+        "Mode",
+        "Équipes",
+        "Arène",
+        "Règles",
+        "Presets"
+      ],
+      "observation": "La configuration custom regroupe quatre modes, contrôle adverse, équipes, adversaires, arène, difficulté, musiques, supers, objets, dangers et règles de mêlée. Le contenu est riche mais forme un long ensemble de réglages.",
+      "recommendation": "Construire un lobby en étapes Mode, Équipes, Arène et Règles, avec portraits et scène sélectionnée en grand. Garder un résumé permanent et un bouton de lancement stable ; les réglages avancés restent consultables.",
+      "preserve": "Préserver toutes les options, recherches, presets et sélections. Réécrire les libellés de développement pour expliquer les effets en jeu, sans retirer les paramètres nécessaires aux simulations détaillées.",
+      "acceptance": "Un aller-retour depuis le combat doit restituer le preset complet. Le résumé doit refléter exactement les règles appliquées, et chaque option masquée doit avoir une destination claire dans le lobby.",
+      "sources": [
+        "src/components/CustomBattleMode.jsx:443–677",
+        "src/components/CustomBattleMode.jsx:377–438"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Combat RPG",
+      "priority": "P1",
+      "status": "Combat encore présenté dans une page",
+      "evidence": "code",
+      "states": [
+        "Combat RPG",
+        "Ciblage",
+        "ATB",
+        "Objets",
+        "Rencontres spécifiques"
+      ],
+      "observation": "Le RPG partage une colonne centrée comprenant en-tête, barres, canvas et tableau d’actions. Le ciblage, l’attente ATB, les reliques et les panneaux propres aux rencontres existent déjà sous la scène.",
+      "recommendation": "Passer à un champ de bataille plein viewport avec portraits, santé et ATB ancrés sur les bords, commandes contextuelles et cible clairement indiquée. Ouvrir inventaire et renseignements sans déplacer la scène hors de l’écran.",
+      "preserve": "Conserver ciblage, confirmation, annulation, mode d’attente, automatique, vitesse, reliques et mécanismes spécifiques aux boss. Les règles d’action ne doivent pas changer pendant cette refonte de présentation.",
+      "acceptance": "Le joueur doit sélectionner une action et sa cible sans défilement. Les coordonnées doivent rester correctes après redimensionnement, et le mode d’attente doit garder exactement son comportement durant la sélection.",
+      "sources": [
+        "src/components/GameCanvas.jsx:2032–2152",
+        "src/components/GameCanvas.jsx:2287–2372",
+        "src/components/GameCanvas.jsx:2594–2606",
+        "src/components/GameCanvas.jsx:2828–2849"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "Combat tactique",
+      "priority": "P1",
+      "status": "Terrain à rendre prioritaire",
+      "evidence": "code",
+      "states": [
+        "Déplacement",
+        "Visée",
+        "Caméra",
+        "Soutien",
+        "Fin de tour"
+      ],
+      "observation": "Le terrain tactique partage le cadre du GameCanvas et son panneau inférieur. Déplacement de caméra, zoom, annulation de visée, fin de tour, soutien et informations d’escorte sont déjà présents.",
+      "recommendation": "Étendre le terrain au viewport, avec unité active et points d’action près des commandes, ordre des tours en bande compacte et objectif court. Montrer portées, trajectoires, couvertures et ressources dans le terrain ; garder le détail dans un inspecteur.",
+      "preserve": "Préserver déplacement, zoom, ciblage, annulation, fin de tour, soutien, artefacts et mécanismes de mission. Ne pas réclamer leur création comme s’ils manquaient encore.",
+      "acceptance": "Toutes les cases utiles doivent rester sélectionnables sans défilement de page. Panoramique et sélection doivent rester distincts, une annulation doit conserver les points d’action non dépensés et le HUD ne doit pas masquer la cible.",
+      "sources": [
+        "src/components/GameCanvas.jsx:2083–2083",
+        "src/components/GameCanvas.jsx:2351–2370",
+        "src/components/GameCanvas.jsx:2840–2845",
+        "src/components/GameCanvas.jsx:2873–3001"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "Combat mêlée Smash",
+      "priority": "P1",
+      "status": "Arène à sortir du cadre de page",
+      "evidence": "code",
+      "states": [
+        "Mêlée",
+        "Avant-match",
+        "Supers",
+        "Commandes",
+        "Épreuves associées"
+      ],
+      "observation": "La mêlée utilise un canvas encadré et un panneau de contrôles externe. Remappage, manette et tactile existent déjà. L’annonce d’avant-match est rendue à la fois dans le DOM et au centre du canvas.",
+      "recommendation": "Faire de l’arène le fond de jeu, avec informations des combattants, objectif et charges en HUD. Unifier l’annonce transitoire ; ranger aide et remappage dans Commandes et superposer les touches tactiles utiles.",
+      "preserve": "Conserver toutes les entrées, supers, objets, assistances, annonces, topologies et variantes. La zone de combat et ses règles de caméra ne doivent pas être déformées pour remplir artificiellement un écran.",
+      "acceptance": "Les entrées clavier, manette et tactile doivent rester équivalentes après déplacement des boutons. Une pause doit vider les commandes maintenues ; le HUD ne doit pas réduire la visibilité des bords de l’arène.",
+      "sources": [
+        "src/components/GameCanvas.jsx:60–88",
+        "src/components/GameCanvas.jsx:246–289",
+        "src/components/GameCanvas.jsx:2324–2372",
+        "src/components/GameCanvas.jsx:2700–2715",
+        "src/components/GameCanvas.jsx:2983–2994",
+        "src/components/GameCanvas.jsx:2323–2331",
+        "src/game/engineSmash.js:2636–2655"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Combat A.R.C.A. Fighter : sélection, duel et résultat",
+      "priority": "P1",
+      "status": "Duel à recentrer sur les combattants",
+      "evidence": "code",
+      "states": [
+        "Lobby Fighter",
+        "Duel",
+        "Tag",
+        "Résultat",
+        "Revanche"
+      ],
+      "observation": "Fighter possède déjà son lobby, ses équipes, la difficulté ou le contrôle local adverse, puis une vue active avec canvas, panneau latéral et commandes. Remplaçants, supers, assistances et revanche sont disponibles.",
+      "recommendation": "Utiliser un lobby visuel, puis une arène plein viewport avec barres, temps, remplaçants et charges intégrés au HUD. Déplacer les listes de commandes dans l’aide ; faire du résultat une transition de fin de duel.",
+      "preserve": "Conserver composition, changements de combattant, contrôle J2, difficulté, supers, assistances, résultat, revanche et retour au lobby. Le moteur sait déjà suivre la pause sans reconstruction.",
+      "acceptance": "Un duel doit rester entièrement contrôlable sans scroll. J1 et J2 doivent garder leurs commandes séparées, les remplacements autorisés doivent rester identifiables et une revanche ne doit pas perdre la configuration.",
+      "sources": [
+        "src/components/FighterMode.jsx:307–325",
+        "src/components/FighterMode.jsx:830–960",
+        "src/components/FighterMode.jsx:963–1087",
+        "src/components/FighterMode.jsx:1201–1278"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Pause et retour des sessions",
+      "priority": "P1",
+      "status": "Comportement à unifier",
+      "evidence": "code",
+      "states": [
+        "Pause",
+        "Reprise",
+        "Abandon"
+      ],
+      "observation": "Les sessions dédiées du hub ont déjà une pause avec reprise, abandon, Échap, focus et arrière-plan inactif. En revanche, le parcours campagne rend GameCanvas sans les propriétés qui raccordent cette pause.",
+      "recommendation": "Réutiliser la pause existante dans les missions et unifier la navigation système. Donner accès aux options et à l’aide, avec retour à la session sans reconstruire le moteur ni changer son état.",
+      "preserve": "Préserver le gel de simulation, les confirmations d’abandon, le nettoyage des entrées et la restitution du focus. Une petite modale centrée reste adaptée à une pause courte.",
+      "acceptance": "Vérifier séparément cité, course, Extinction, Fighter, custom et missions. Ouvrir un sous-menu puis reprendre doit conserver la scène, et un retour navigateur ou une perte de visibilité ne doit pas déclencher d’action involontaire.",
+      "sources": [
+        "src/components/HubScreen.jsx:244–357",
+        "src/components/HubScreen.jsx:5313–5335",
+        "src/components/GameCanvas.jsx:273–289",
+        "src/App.jsx:2609–2639"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "Victoire, défaite et débriefing de mission",
+      "priority": "P0",
+      "status": "Flux de sortie à sécuriser, présentation à hiérarchiser",
+      "evidence": "code",
+      "states": [
+        "Résultat combat",
+        "Victoire",
+        "Défaite",
+        "Débriefing",
+        "Conséquences"
+      ],
+      "observation": "Le résultat s’affiche dans le canvas, puis ouvre un débriefing riche. Hors session dédiée, le bouton de repli reste rendu alors que la victoire n’est transmise qu’après validation du résultat : risque de sortie comme abandon.",
+      "recommendation": "Vérifier ce flux avant la refonte et sécuriser la sortie une fois le combat terminé. Présenter ensuite résultat, rang et gains, avec Butin, Performance, Conséquences et Journal en sous-vues.",
+      "preserve": "Préserver tous les chiffres, les conséquences durables et les différences entre simulation custom et mission récompensée. Les transitions doivent rester découplées de l’attribution unique des gains.",
+      "acceptance": "Fermer ou accélérer le résultat ne doit pas dupliquer les récompenses. Les gains doivent correspondre au profil, l’instabilité doit rester visible avant une nouvelle mission et le retour doit conduire au contexte attendu.",
+      "sources": [
+        "src/components/GameCanvas.jsx:1972–2008",
+        "src/components/GameCanvas.jsx:2505–2590",
+        "src/App.jsx:873–959",
+        "src/App.jsx:2642–2649",
+        "src/components/GameCanvas.jsx:2135–2149"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "Registre primordial et fins de campagne",
+      "priority": "P2",
+      "status": "Mise en scène à enrichir",
+      "evidence": "code",
+      "states": [
+        "Choix de fin",
+        "Épilogue",
+        "Conséquences",
+        "Crédits"
+      ],
+      "observation": "La finale propose déjà quatre issues, indique les fins vues et la dernière inscrite, puis déroule des scènes avec conséquences et crédits. Ce contenu forme un véritable embranchement narratif existant.",
+      "recommendation": "Présenter le choix dans le registre diégétique, avec une composition visuelle distincte pour chaque issue, puis donner davantage de place à l’épilogue. Réserver les détails de chronique et les crédits à leurs étapes.",
+      "preserve": "Conserver les quatre fins, leurs textes, scènes, conséquences et historique. Les commandes centrées ou une colonne de lecture limitée restent pertinentes pour ce moment de décision.",
+      "acceptance": "Le choix sélectionné doit correspondre à la fin enregistrée. Relire une issue ne doit pas effacer les autres, et les passages entre scènes doivent rester accessibles au clavier et au tactile sans masquer leur texte.",
+      "sources": [
+        "src/App.jsx:966–1127",
+        "src/App.jsx:2652–2660",
+        "src/index.css:5782–5849"
+      ]
+    },
+    {
+      "id": "28",
+      "title": "Résonance héroïque et fiche de héros",
+      "priority": "P1",
+      "status": "Fiche trop cumulative",
+      "evidence": "code",
+      "states": [
+        "Roster",
+        "Caractéristiques",
+        "Capacités",
+        "Apparence",
+        "Talents",
+        "Dossier"
+      ],
+      "observation": "Le roster a déjà recherche, pagination et boutons de sélection. La fiche accumule portrait, statistiques, lore, équipement, apparence et talents. Les talents restent des div cliquables sans prise en charge clavier équivalente.",
+      "recommendation": "Mettre le héros en grand, avec rubriques Caractéristiques, Capacités, Équipement, Apparence et Dossier. Garder le roster dans un volet et rendre les choix de talents utilisables au clavier comme les boutons de héros.",
+      "preserve": "Préserver tous les héros autorisés, variantes, statistiques, techniques, talents, descriptions et actions. Le partage de sélection entre héros et inventaire existe déjà et doit être conservé.",
+      "acceptance": "Changer de héros doit mettre à jour chaque sous-vue sans mélange de données. Les textes complets restent consultables, et revenir de l’équipement doit retrouver le même personnage, le même filtre et la même page.",
+      "sources": [
+        "src/components/HubScreen.jsx:5270–5270",
+        "src/components/HubScreen.jsx:10597–10981",
+        "src/components/HubScreen.jsx:9046–9055",
+        "src/components/HubScreen.jsx:10949–10974"
+      ]
+    },
+    {
+      "id": "29",
+      "title": "Cellule d’Ancre : équipe et réserves",
+      "priority": "P1",
+      "status": "Composition à rendre plus visuelle",
+      "evidence": "code",
+      "states": [
+        "Équipe",
+        "Réserves",
+        "Synergies",
+        "Propositions",
+        "Autoéquipement"
+      ],
+      "observation": "La cellule est déjà séparée du profil. Elle réunit équipe, synergies, réserves et propositions assistées, avec des outils de préparation utiles à la constitution du groupe.",
+      "recommendation": "Présenter une salle de préparation dominée par les trois emplacements de l’équipe. Ouvrir les réserves à côté de l’emplacement choisi, afficher les synergies pertinentes et garder les recommandations comme aide contextuelle.",
+      "preserve": "Conserver propositions, réserves, autoéquipement, avertissements, synergies et règles d’effectif. Les informations complètes restent dans les fiches, sans multiplier les panneaux sur l’écran principal.",
+      "acceptance": "Chaque remplacement doit rendre visibles son effet sur l’équipe et ses synergies. Une annulation doit préserver la composition précédente ; retour d’une fiche et reprise de préparation doivent retrouver le personnage et la réserve sélectionnés.",
+      "sources": [
+        "src/components/HubScreen.jsx:11054–11468",
+        "src/components/HubScreen.jsx:11281–11300"
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Dossier d’Ancre et personnalisation",
+      "priority": "P1",
+      "status": "Profil à présenter comme un espace de jeu",
+      "evidence": "code",
+      "states": [
+        "Apparence",
+        "Titre et bannière",
+        "Profil",
+        "Partage",
+        "HUD cosmétique"
+      ],
+      "observation": "Le Dossier d’Ancre est déjà une page séparée avec bannière, titre, profil, code ami, collection et panneau de personnalisation. Certains textes évoquent encore un futur point de contact multijoueur.",
+      "recommendation": "Utiliser une scène d’identité ou un vestiaire, avec aperçu dominant et rubriques Apparence, Présentation et Profil. Les détails de collection et de partage peuvent être ouverts à la demande sans encombrer la personnalisation.",
+      "preserve": "Préserver tous les éléments cosmétiques déverrouillés, titres, bannières, informations publiques et règles de visibilité. Ne pas transformer les mentions de futur multijoueur en promesse de fonctions opérationnelles.",
+      "acceptance": "Un changement cosmétique doit être prévisualisable et retrouver son état après retour au jeu. Les options verrouillées doivent expliquer leur condition, et les informations publiques ne doivent pas changer au simple survol.",
+      "sources": [
+        "src/components/HubScreen.jsx:10983–11052",
+        "src/components/PortalScreen.jsx:2144–2147"
+      ]
+    },
+    {
+      "id": "31",
+      "title": "Équipement des héros et inventaire",
+      "priority": "P1",
+      "status": "Atelier à composer autour du personnage",
+      "evidence": "code",
+      "states": [
+        "Emplacements",
+        "Catalogue",
+        "Équipement",
+        "Détails"
+      ],
+      "observation": "L’équipement offre déjà listes, emplacements, filtres et pagination. La richesse des objets et des états impose cependant plusieurs ensembles de contrôles qui peuvent prendre le pas sur le personnage équipé.",
+      "recommendation": "Composer un atelier avec silhouette ou portrait, emplacements autour du personnage, catalogue voisin et comparaison de l’objet sélectionné. Ranger description longue et lore dans une fiche, en gardant effets et compatibilité visibles.",
+      "preserve": "Conserver tous les slots, objets, filtres, recherches, pagination, compatibilités et indications d’équipement ailleurs. La refonte ne doit pas réduire le nombre de choix ou masquer les restrictions.",
+      "acceptance": "Équiper ou retirer doit actualiser simultanément le slot, l’inventaire et les statistiques utiles. Une sélection incompatible reste explicite ; changer de héros doit conserver une navigation lisible et empêcher une attribution au mauvais personnage.",
+      "sources": [
+        "src/components/HubScreen.jsx:11642–11970",
+        "src/components/HubScreen.jsx:11647–11670",
+        "src/components/HubScreen.jsx:11774–11795"
+      ]
+    },
+    {
+      "id": "32",
+      "title": "Échange de signaux et boutique",
+      "priority": "P1",
+      "status": "Catalogue à transformer en comptoir",
+      "evidence": "code",
+      "states": [
+        "Boutique",
+        "Recherche",
+        "Fiche objet",
+        "Achat"
+      ],
+      "observation": "La boutique possède déjà recherche et pagination, et les objets peuvent utiliser des images avec repli. Elle reste structurée comme un catalogue de cartes et de commandes dans le hub.",
+      "recommendation": "Créer un comptoir d’armurerie plein viewport : objet choisi en grand, catalogue compact, prix, solde et effet proches de l’action Acheter. Les explications et variantes restent disponibles dans une fiche détaillée.",
+      "preserve": "Conserver tous les objets, monnaies, filtres, états acquis ou verrouillés et règles d’achat. La présentation immersive ne doit pas rendre le coût moins visible ou confondre consultation et achat.",
+      "acceptance": "Chaque achat doit correspondre à l’objet sélectionné et à son prix affiché. Les états insuffisant, déjà acquis et indisponible doivent être compréhensibles ; le retour à une fiche conserve page et filtre.",
+      "sources": [
+        "src/components/HubScreen.jsx:11972–12160",
+        "src/components/HubScreen.jsx:125–145"
+      ]
+    },
+    {
+      "id": "33",
+      "title": "Collection d’univers et dossier d’univers",
+      "priority": "P1",
+      "status": "Archives à exploiter sur toute la surface",
+      "evidence": "code",
+      "states": [
+        "Collection",
+        "Franchises",
+        "Dossier d’univers",
+        "Personnages",
+        "Menaces",
+        "Objets",
+        "Monde vivant",
+        "Missions"
+      ],
+      "observation": "La collection du hub rassemble compteurs, franchises et univers. Le dossier dispose déjà d’onglets personnages et menaces, objets, monde vivant conditionnel, missions et arcs, ainsi que précédent et suivant.",
+      "recommendation": "Faire de la collection un atlas ou une galerie plein viewport, puis ouvrir un dossier d’univers complet avec index et illustration. Garder les onglets existants et réserver la longue lecture à une zone confortable.",
+      "preserve": "Préserver complétion, listes, navigation entre univers, missions, arcs et détails conditionnels. Le dialogue possède déjà Échap et gestion du focus ; il ne faut pas présenter ces comportements comme absents.",
+      "acceptance": "La fermeture doit retrouver l’univers sélectionné dans la collection. Les onglets doivent conserver leur contenu, les liens de mission doivent viser le bon univers et aucune information ne doit disparaître lors du passage au plein écran.",
+      "sources": [
+        "src/components/HubScreen.jsx:11470–11630",
+        "src/components/HubScreen.jsx:12495–12580",
+        "src/components/UniverseArchiveDialog.jsx:37–38"
+      ]
+    },
+    {
+      "id": "34",
+      "title": "Codex et lore",
+      "priority": "P1",
+      "status": "Lecteur à rendre cohérent avec le jeu",
+      "evidence": "code",
+      "states": [
+        "Canon",
+        "Univers",
+        "Groupes",
+        "Personnages",
+        "Fusions"
+      ],
+      "observation": "Le Codex est déjà organisé en cinq rubriques : Canon, Univers, Groupes, Personnages et Fusions. Il constitue un espace de consultation dense où la lisibilité doit primer sur la taille des panneaux.",
+      "recommendation": "Présenter un lecteur diégétique occupant l’écran, avec index à gauche, page principale et liens contextuels. Garder les paragraphes dans une largeur de lecture raisonnable ; le plein écran concerne le support, pas l’étirement de chaque ligne.",
+      "preserve": "Conserver les cinq rubriques, tous les textes, la distinction des statuts et les relations entre fiches. Les recherches ou liens existants doivent mener au même contenu.",
+      "acceptance": "Le joueur doit retrouver sa rubrique et sa position après ouverture d’une fiche associée. Les textes doivent être lisibles avec une taille d’interface augmentée, et la navigation clavier ne doit pas traverser le jeu derrière le lecteur.",
+      "sources": [
+        "src/components/HubScreen.jsx:12906–13140",
+        "src/components/HubScreen.jsx:9334–9350"
+      ]
+    },
+    {
+      "id": "35",
+      "title": "Galerie CG, aperçu et comparaison",
+      "priority": "P1",
+      "status": "Image à remettre au premier plan",
+      "evidence": "code",
+      "states": [
+        "Grille",
+        "Familles",
+        "Filtres",
+        "Zoom",
+        "Comparaison",
+        "Plein écran",
+        "Crédits"
+      ],
+      "observation": "La galerie comporte déjà quatre familles, des filtres, favoris, zoom, comparaison et bouton plein écran. Les informations de provenance et de production occupent également une place importante dans la fiche.",
+      "recommendation": "Faire de l’image l’écran principal, avec bande de vignettes et filtres ouvrables. Regrouper prompt, continuité, dates, crédits et références dans Détails ou Crédits ; conserver les indications nécessaires à la compréhension du contenu.",
+      "preserve": "Préserver Canon, Nexus, Fan Art, What If, les cinq filtres, favoris, zoom, comparaison et plein écran existants. Une image peut rester centrée et conserver son ratio naturel.",
+      "acceptance": "Zoom et comparaison ne doivent pas recadrer involontairement une partie de l’image. Fermer l’aperçu doit retrouver la vignette et les filtres, et l’ensemble des crédits doit rester consultable.",
+      "sources": [
+        "src/components/cg/CgGallery.jsx:300–597",
+        "src/components/cg/CgGallery.jsx:549–585"
+      ]
+    },
+    {
+      "id": "36",
+      "title": "Portail : catalogue, rotation et dossier booster",
+      "priority": "P1",
+      "status": "Boutique encore organisée en page longue",
+      "evidence": "code",
+      "states": [
+        "Catalogue",
+        "Rotation",
+        "Recherche",
+        "Dossier",
+        "Aperçu d’illustration"
+      ],
+      "observation": "Le portail V2 empile commandes, titre, recherche, rotation, catalogue, dossier actif et scène. Le dossier complet existe déjà avec prix, probabilités, garanties, recherche, pagination et sélection sans achat.",
+      "recommendation": "Présenter une salle de portail plein viewport, un rail de sélection et une scène dominante. Ouvrir catalogue exhaustif, rotation et dossier dans des panneaux dédiés ; garder coût, solde et action visibles avant toute ouverture.",
+      "preserve": "Conserver groupes OC et franchises, recherche, renouvellement payant sécurisé, disponibilité, contenus, taux et garanties. Le dossier possède déjà focus trap et défilement interne ; préserver cette base.",
+      "acceptance": "Sélectionner, consulter une illustration et ouvrir doivent rester trois actions distinctes. Toute modification de rotation conserve sa confirmation, et le retour d’un dossier doit restituer le pack et la position du catalogue.",
+      "sources": [
+        "src/components/PortalScreen.jsx:1680–1930",
+        "src/components/PortalBoosterDossier.jsx:44–77",
+        "src/components/PortalBoosterDossier.jsx:109–144",
+        "src/index.css:9001–9018",
+        "src/index.css:9162–9171",
+        "src/index.css:9339–9344"
+      ]
+    },
+    {
+      "id": "37",
+      "title": "Portail : ouverture et révélation des cartes",
+      "priority": "P1",
+      "status": "Animation à agrandir sans toucher aux règles",
+      "evidence": "code",
+      "states": [
+        "Ouverture",
+        "Révélation",
+        "Tout révéler",
+        "Résultat",
+        "Booster suivant"
+      ],
+      "observation": "Le système actuel ouvre des boosters de cinq cartes, avec phases d’animation, révélation individuelle, Tout révéler et bouton suivant. Des gardes empêchent certaines actions concurrentes et des statuts sont annoncés.",
+      "recommendation": "Utiliser toute la salle pour la séquence, montrer les cartes et leur statut en grand, puis ouvrir la fiche choisie. Les commandes de révélation doivent rester accessibles sans descendre sous la scène.",
+      "preserve": "Conserver nombre de cartes, garanties, doublons, remboursements, crédits gratuits, nettoyage des timers et protections contre les doubles actions. Ne pas réintroduire l’ancien système x1/x10 des pièces jointes.",
+      "acceptance": "Passer visuellement, révéler rapidement ou revenir au catalogue ne doit jamais changer le tirage ni facturer deux fois. Chaque carte obtenue doit être retrouvable dans l’album, avec le même remboursement et la même provenance.",
+      "sources": [
+        "src/components/PortalScreen.jsx:1393–1482",
+        "src/components/PortalScreen.jsx:1710–1718",
+        "src/components/PortalScreen.jsx:2086–2141",
+        "src/index.css:9521–9527",
+        "src/index.css:10375–10376"
+      ]
+    },
+    {
+      "id": "38",
+      "title": "Album : bibliothèque, classeur, historique et fiche carte",
+      "priority": "P1",
+      "status": "Grand écran encore présenté comme feuille",
+      "evidence": "code",
+      "states": [
+        "Bibliothèque",
+        "Classeur",
+        "Historique",
+        "Paliers",
+        "Fiche carte",
+        "Favoris"
+      ],
+      "observation": "L’album conserve une feuille centrée avec défilement global. Bibliothèque, Classeur et Historique existent, avec filtres, paliers, pagination et fiches. Certains filtres restent visibles hors du classeur auquel ils s’appliquent ; leur portée doit être explicite.",
+      "recommendation": "Fixer navigation et actions, faire défiler seulement la collection et annoncer la portée des filtres. Donner à chaque carte une pose ou illustration principale ; garder planches, provenance et statut provisoire dans les détails.",
+      "preserve": "Préserver cartes, maîtrise, finitions, favoris, paliers, historique des cent entrées et critères de canon. Une fiche centrée reste pertinente ; les visuels provisoires doivent rester identifiés honnêtement.",
+      "acceptance": "Chaque filtre visible doit agir sur la vue affichée ou annoncer sa portée. Fermer une fiche doit retrouver sélection et page, sans fuite de focus vers le portail situé derrière.",
+      "sources": [
+        "src/components/collection/CollectionHome.jsx:45–57",
+        "src/components/collection/CollectionHome.jsx:169–319",
+        "src/components/collection/UniverseBinder.jsx:19–84",
+        "src/components/collection/CardDetailModal.jsx:17–84",
+        "src/components/collection/collection.css:1–24"
+      ]
+    },
+    {
+      "id": "39",
+      "title": "Régulation, Portal Lab et inspecteurs",
+      "priority": "P2",
+      "status": "Outils à ranger sans les retirer",
+      "evidence": "code",
+      "states": [
+        "Régulation",
+        "Portal Lab",
+        "Inspecteur d’assets",
+        "Diagnostics",
+        "Contenu legacy"
+      ],
+      "observation": "La Régulation rassemble des outils de contenu et des inspecteurs accessibles. Portal Lab P3 reste un bouton direct de la boutique. Certains contenus legacy subsistent dans des branches dont l’accès n’est pas établi.",
+      "recommendation": "Réunir les outils techniques dans une rubrique avancée avec retour cohérent, sans leur imposer une fausse fonction narrative. Vérifier la destination des contenus legacy avant toute refonte ou suppression de blocs.",
+      "preserve": "Conserver activation de contenus, inspecteurs, prévisualisations, diagnostics et fonctions de suivi. Les previews peuvent rester centrées ; les informations de provenance ou de validation doivent demeurer disponibles.",
+      "acceptance": "Aucune fonction ne doit devenir inaccessible après rangement. Chaque outil doit avoir une destination documentée, les données non validées restent signalées et une inspection ne doit pas modifier involontairement la progression.",
+      "sources": [
+        "src/components/HubScreen.jsx:12162–12494",
+        "src/components/HubScreen.jsx:9842–9842",
+        "src/components/HubScreen.jsx:9928–9928",
+        "src/components/HubScreen.jsx:10008–10008",
+        "src/components/HubScreen.jsx:10213–10213",
+        "src/components/PortalScreen.jsx:1734–1744"
+      ]
+    },
+    {
+      "id": "40",
+      "title": "Chargement, erreurs et récupération",
+      "priority": "P1",
+      "status": "États système à harmoniser",
+      "evidence": "code",
+      "states": [
+        "Chargement",
+        "Erreur combat",
+        "Erreur hub",
+        "Sauvegarde bloquée",
+        "Récupération"
+      ],
+      "observation": "Des écrans de chargement A.R.C.A. et des récupérations pour erreurs de combat ou de hub existent déjà. Ils affichent parfois le message technique brut. Une alerte spécifique protège les sauvegardes lors d’un incident.",
+      "recommendation": "Utiliser des transitions liées au lieu ou au mode, avec une activité honnête plutôt qu’un pourcentage fictif. Afficher une explication joueur et un retour sûr ; placer les détails techniques dans un volet copiable.",
+      "preserve": "Conserver récupérations, alertes de sauvegarde, exports de secours et messages de conflit. Le centrage d’un chargement ou d’une confirmation courte est approprié et ne nécessite pas une refonte arbitraire.",
+      "acceptance": "Un échec ne doit provoquer ni écran noir sans sortie ni écrasement de progression. Les boutons de récupération doivent rester accessibles au clavier, et fermer le diagnostic ne doit pas masquer une sauvegarde toujours bloquée.",
+      "sources": [
+        "src/App.jsx:1128–1238",
+        "src/App.jsx:2470–2480",
+        "src/components/PortalScreen.jsx:1653–1677"
+      ]
+    }
+  ],
+  "crossCutting": [
+    {
+      "id": "T01",
+      "title": "Distinguer viewport et plein écran système",
+      "priority": "P1",
+      "evidence": "code",
+      "observation": "Le root occupe déjà toute la largeur, mais des enfants et sessions restent plafonnés. Le titre utilise déjà une hauteur dynamique ; cela ne prouve pas l’existence d’une commande plein écran système partout.",
+      "recommendation": "Construire une coque de jeu qui remplit toujours la surface disponible, puis proposer une commande plein écran système distincte avec sortie et repli. Préserver les ratios de scène et les coordonnées des interactions.",
+      "sources": [
+        "src/index.css:33–40",
+        "src/index.css:4884–4901",
+        "src/index.css:6136–6146",
+        "src/index.css:8158–8180"
+      ]
+    },
+    {
+      "id": "T02",
+      "title": "Répartir informations vitales et détails",
+      "priority": "P1",
+      "evidence": "code",
+      "observation": "Plusieurs modes placent objectifs, statistiques, commandes et explications autour du canvas, ce qui limite la place accordée à l’environnement.",
+      "recommendation": "Garder santé, ressources de combat, cible, objectif et action disponibles dans le HUD. Placer aide, lore, historique, carrière et réglages dans leurs menus. La diégèse ne doit jamais réduire la lecture d’une information nécessaire.",
+      "sources": [
+        "src/components/GameCanvas.jsx:2032–2372",
+        "src/components/GameCanvas.jsx:2594–3009",
+        "src/components/RaceMode.jsx:571–655"
+      ]
+    },
+    {
+      "id": "T03",
+      "title": "Ne pas supprimer le scroll avant de reloger le contenu",
+      "priority": "P1",
+      "evidence": "code",
+      "observation": "Le body ne bloque que le débordement horizontal. Les sessions dédiées et plusieurs overlays défilent encore comme une page entière.",
+      "recommendation": "Définir une zone de scène stable et des listes ou lecteurs avec défilement interne. Ne pas appliquer simplement overflow hidden aux écrans actuels : toute information et toute action doivent disposer d’une destination accessible.",
+      "sources": [
+        "src/index.css:12–17",
+        "src/index.css:8158–8180",
+        "src/components/collection/collection.css:1–24"
+      ]
+    },
+    {
+      "id": "T04",
+      "title": "Mobile, thèmes HUD et zones sûres",
+      "priority": "P1",
+      "evidence": "code",
+      "observation": "Une surcharge mobile ajoute des marges hautes et basses importantes aux modes portant un thème HUD. Le portail impose aussi une scène minimale très haute sur petit écran.",
+      "recommendation": "Remplacer les réserves de place fixes par une composition adaptée à la surface, aux zones sûres et au périphérique. Tester paysage, portrait, clavier virtuel, petit écran et thème équipé ; ne pas généraliser un sélecteur conditionnel à tous les modes.",
+      "sources": [
+        "src/index.css:10450–10455",
+        "src/index.css:10375–10376",
+        "src/index.css:8704–8738"
+      ]
+    },
+    {
+      "id": "T05",
+      "title": "Navigation, focus et continuité de session",
+      "priority": "P1",
+      "evidence": "code",
+      "observation": "Les dialogues du titre, des dossiers et des fiches cartes possèdent de bonnes bases. L’album principal et certains parcours restent différents dans leur gestion du retour ; la cité utilise une position locale au composant.",
+      "recommendation": "Unifier entrée et restitution du focus, Échap, retour de sous-menu et préservation des sélections. Un menu doit laisser retrouver la même mission, équipe, carte, quartier ou preset, sans reconstruire une partie active.",
+      "sources": [
+        "src/components/IntroSequence.jsx:112–156",
+        "src/components/collection/CollectionHome.jsx:45–57",
+        "src/components/collection/CardDetailModal.jsx:17–33",
+        "src/components/HubScreen.jsx:2208–2264"
+      ]
+    },
+    {
+      "id": "T06",
+      "title": "Lisibilité, tailles et effets",
+      "priority": "P2",
+      "evidence": "code",
+      "observation": "Des légendes et données de collection utilisent de petites tailles. Une réduction globale des animations et des traitements spécifiques aux cartes existent déjà.",
+      "recommendation": "Prévoir une échelle de texte et de HUD, des états lisibles autrement que par la couleur et des descriptions accessibles à la demande. Conserver l’identité pixel et Nexus ; tester le contraste réel sur les scènes plutôt que le supposer.",
+      "sources": [
+        "src/components/collection/collection.css:107–122",
+        "src/components/GameCanvas.jsx:2883–3001",
+        "src/index.css:8984–8997",
+        "src/components/collection/collection.css:199–202"
+      ]
+    },
+    {
+      "id": "T07",
+      "title": "Vocabulaire joueur et outils avancés",
+      "priority": "P2",
+      "evidence": "code",
+      "observation": "Des mentions de version, production, runtime ou diagnostic restent dans course, custom, portail et album.",
+      "recommendation": "Présenter les choix selon leur effet en jeu. Ranger versions, prompts, provenance détaillée et outils de régulation dans des rubriques accessibles. Continuer à signaler clairement ce qui est provisoire, indisponible ou non validé.",
+      "sources": [
+        "src/components/RaceMode.jsx:513–529",
+        "src/components/CustomBattleMode.jsx:580–649",
+        "src/components/PortalScreen.jsx:1734–1744",
+        "src/components/collection/CollectionHome.jsx:141–165",
+        "src/components/collection/CardDetailModal.jsx:71–71"
+      ]
+    },
+    {
+      "id": "T08",
+      "title": "Contrat de conservation avant refonte",
+      "priority": "P0",
+      "evidence": "code",
+      "observation": "Le jeu comporte de nombreux parcours, callbacks, transactions et contenus conditionnels. Certaines branches legacy n’ont pas de destination établie et le bilan d’Extinction n’exploite pas son rapport côté parent.",
+      "recommendation": "Dresser un inventaire contrôle par contrôle avec ancienne et nouvelle destination, vérifier les branches difficiles à atteindre et contrôler les gains avant/après. La modernisation visuelle ne doit ni effacer une fonction ni modifier la progression.",
+      "sources": [
+        "src/components/HubScreen.jsx:3678–3679",
+        "src/components/HubScreen.jsx:5220–5223",
+        "src/components/HubScreen.jsx:9842–10213",
+        "src/App.jsx:2151–2420"
+      ]
+    },
+    {
+      "id": "T09",
+      "title": "Sortie après victoire et raccordement de la pause",
+      "priority": "P0",
+      "evidence": "code",
+      "observation": "En campagne, GameCanvas n’est pas raccordé à la pause du hub. Son repli direct reste rendu hors session dédiée, tandis que le résultat victorieux est transmis seulement lors de sa validation.",
+      "recommendation": "Faire une vérification ciblée du repli depuis un résultat terminé. Désambiguïser quitter la partie, valider le résultat et revenir au menu ; garantir l’application unique de la politique de récompenses sans convertir une victoire en abandon par navigation.",
+      "sources": [
+        "src/App.jsx:2609–2639",
+        "src/components/GameCanvas.jsx:2135–2149",
+        "src/components/GameCanvas.jsx:2568–2588"
+      ]
+    }
+  ],
+  "plan": [
+    {
+      "step": 1,
+      "title": "Sécuriser les états et l’inventaire des fonctions",
+      "priority": "P0",
+      "evidence": "code",
+      "actions": [
+        "Confirmer le bilan Extinction par une victoire contrôlée et raccorder les gains à leur politique réelle.",
+        "Vérifier la sortie par repli depuis un résultat victorieux hors session dédiée et sécuriser la validation unique.",
+        "Établir la destination de chaque contrôle, branche legacy et service nommé.",
+        "Figer des sauvegardes de test et les valeurs de progression avant migration."
+      ],
+      "acceptance": "Aucune récompense annoncée sans effet prévu ; aucun double gain ; toutes les fonctions actuelles ont une destination documentée.",
+      "sources": [
+        "src/components/HubScreen.jsx:3650–3679",
+        "src/components/HubScreen.jsx:5220–5223",
+        "src/components/HubScreen.jsx:9842–10213",
+        "src/components/GameCanvas.jsx:2135–2149",
+        "src/components/GameCanvas.jsx:2568–2588"
+      ]
+    },
+    {
+      "step": 2,
+      "title": "Poser la coque de jeu et le menu système",
+      "priority": "P1",
+      "evidence": "code",
+      "actions": [
+        "Définir viewport, zones HUD, zones de lecture et règles de défilement interne.",
+        "Réutiliser pause et focus existants ; intégrer Options, Aide et Sauvegardes.",
+        "Tester les thèmes HUD, le retour de menus et la hauteur disponible sur mobile."
+      ],
+      "acceptance": "Scène stable, commandes accessibles sans scroll global, ratio et coordonnées corrects, session inchangée à la reprise.",
+      "sources": [
+        "src/index.css:4884–4901",
+        "src/index.css:8158–8180",
+        "src/index.css:10450–10455"
+      ]
+    },
+    {
+      "step": 3,
+      "title": "Refondre d’abord les scènes jouables",
+      "priority": "P1",
+      "evidence": "code",
+      "actions": [
+        "Étendre cité, RPG, tactique, mêlée, Fighter, Extinction et course à la surface de jeu.",
+        "Reloger les explications et outils hors de l’action tout en gardant le HUD vital.",
+        "Vérifier clavier, pointeur, tactile et manette là où ils sont déjà pris en charge."
+      ],
+      "acceptance": "Chaque mode est jouable dans son viewport et conserve toutes ses commandes, règles et états de pause.",
+      "sources": [
+        "src/components/GameCanvas.jsx:2032–3009",
+        "src/components/FighterMode.jsx:963–1278",
+        "src/components/RaceMode.jsx:513–655"
+      ]
+    },
+    {
+      "step": 4,
+      "title": "Harmoniser préparation, résultats et collections",
+      "priority": "P1",
+      "evidence": "code",
+      "actions": [
+        "Recomposer missions, équipe, héros, équipement, boutique, portail et album.",
+        "Garder des dossiers complets et des actions primaires toujours visibles.",
+        "Relier les résultats à leurs conséquences et préserver les sélections au retour."
+      ],
+      "acceptance": "Tous les contenus restent consultables ; aucune perte de filtre, preset, objet, récit ou récompense.",
+      "sources": [
+        "src/components/HubScreen.jsx:9439–13140",
+        "src/components/PortalScreen.jsx:1680–2282",
+        "src/components/collection/CollectionHome.jsx:169–319"
+      ]
+    },
+    {
+      "step": 5,
+      "title": "Finaliser lisibilité et parcours visuels",
+      "priority": "P2",
+      "evidence": "code",
+      "actions": [
+        "Harmoniser labels, styles de focus, tailles de texte, transitions et effets réduits.",
+        "Conserver centrage des confirmations, zooms et largeurs de lecture utiles.",
+        "Vérifier des parcours représentatifs en 1366×768, 1920×1080, ultralarge et mobile paysage, puis les lecteurs en portrait."
+      ],
+      "acceptance": "Captures et parcours montrent une interface cohérente ; aucune donnée inaccessible ou commande masquée ; limites restantes explicitement consignées.",
+      "sources": [
+        "src/components/IntroSequence.jsx:112–156",
+        "src/index.css:8984–8997",
+        "src/components/collection/collection.css:169–202"
+      ]
+    }
+  ]
+}

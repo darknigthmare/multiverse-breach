@@ -1,0 +1,98 @@
+name: Gamedev display browser
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.nvmrc'
+      - 'vite.config.js'
+      - 'AGENTS.md'
+      - 'docs/development/**'
+      - 'vendor/gamedev-skills/**'
+      - '.github/workflows/gamedev-display.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.nvmrc'
+      - 'vite.config.js'
+      - 'AGENTS.md'
+      - 'docs/development/**'
+      - 'vendor/gamedev-skills/**'
+      - '.github/workflows/gamedev-display.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: gamedev-display-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  display:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /docs/development/
+            /vendor/gamedev-skills/
+            /.github/workflows/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Guidance integrity and focused behavior tests
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/gamedev-display-evidence"
+          git rev-parse HEAD > "$RUNNER_TEMP/gamedev-display-evidence/tested-commit.txt"
+          node --version > "$RUNNER_TEMP/gamedev-display-evidence/node-version.txt"
+          npm run test:gamedev 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/unit.log"
+      - name: Build the isolated game fixtures
+        run: |
+          set -euo pipefail
+          npm run build:gamedev:fixture 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/fixture-build.log"
+          test -s .tmp/gamedev-display/scripts/fixtures/gamedev-display.html
+          test -s .tmp/gamedev-display/scripts/fixtures/gamedev-storage.html
+          test -s .tmp/gamedev-display/scripts/fixtures/gamedev-inputs.html
+          test -s .tmp/gamedev-display/scripts/fixtures/gamedev-audio.html
+          test -s .tmp/gamedev-display/scripts/fixtures/gamedev-save.html
+          test -s .tmp/gamedev-display/scripts/fixtures/gamedev-gamepad.html
+      - name: Install pinned browser test tooling separately from the game
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/gamedev-browsers
+        run: |
+          set -euo pipefail
+          npm install --prefix "$RUNNER_TEMP/gamedev-playwright" --no-audit --no-fund --no-package-lock --ignore-scripts playwright@1.62.1
+          node "$RUNNER_TEMP/gamedev-playwright/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Display, controls, audio and save lifecycle in Chromium
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/gamedev-browsers
+          PLAYWRIGHT_MODULE_PATH: file://${{ runner.temp }}/gamedev-playwright/node_modules/playwright/index.mjs
+          PLAYWRIGHT_FIXTURE_DIR: .tmp/gamedev-display
+        run: |
+          set -euo pipefail
+          npm run test:gamedev:browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/browser.log"
+          npm run test:gamedev:storage-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/storage-browser.log"
+          npm run test:gamedev:input-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/input-browser.log"
+          npm run test:gamedev:audio-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/audio-browser.log"
+          npm run test:gamedev:save-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/save-browser.log"
+          npm run test:gamedev:gamepad-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/gamepad-browser.log"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: gamedev-display-${{ github.sha }}
+          path: ${{ runner.temp }}/gamedev-display-evidence/
+          retention-days: 7

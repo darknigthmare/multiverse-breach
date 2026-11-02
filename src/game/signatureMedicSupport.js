@@ -9,7 +9,9 @@ const sourceId = actor => actor?.sourceId || actor?.id;
 const universe = actor => actor?.sourceUniverse || actor?.universe;
 export const STOCK_UBER_TICKS = 480;
 
-export function createSignatureMedicSupport(engine, mode) {
+export function createSignatureMedicSupport(engine, mode, geometry = {}) {
+  const reachable = geometry.reachable || ((a, b, range) => positioned(a) && positioned(b)
+    && Math.hypot(a.x - b.x, a.y - b.y) <= range);
   const links = new Map();
   const sideOf = actor => engine.heroes?.includes(actor) ? 'player' : engine.enemies?.includes(actor) ? 'enemy' : null;
   const validCaster = link => !engine.disposed && !engine.gameOver && alive(link.caster)
@@ -17,8 +19,7 @@ export function createSignatureMedicSupport(engine, mode) {
     && sourceId(link.caster) === link.sourceId && universe(link.caster) === link.universe
     && link.remaining > 0 && (!link.caster.medigunType || link.caster.medigunType === 'stock');
   const validPatient = link => alive(link.patient) && sideOf(link.patient) === link.side
-    && positioned(link.patient) && positioned(link.caster)
-    && Math.hypot(link.patient.x - link.caster.x, link.patient.y - link.caster.y) <= link.range;
+    && reachable(link.caster, link.patient, link.range);
   const prune = () => {
     for (const [caster, link] of links) {
       if (!validCaster(link)) links.delete(caster);
@@ -31,7 +32,7 @@ export function createSignatureMedicSupport(engine, mode) {
     && alive(caster) && !!sideOf(caster) && alive(patient) && sideOf(patient) === sideOf(caster)
     && positioned(caster) && positioned(patient) && Number.isFinite(definition.range) && definition.range > 0
     && (!caster.medigunType || caster.medigunType === 'stock')
-    && Math.hypot(patient.x - caster.x, patient.y - caster.y) <= definition.range;
+    && reachable(caster, patient, definition.range);
   const grant = (caster, patient, definition) => {
     prune();
     if (engine.disposed || engine.gameOver || engine.paused || !canLink(caster, patient, definition) || links.has(caster)) return false;
@@ -46,10 +47,17 @@ export function createSignatureMedicSupport(engine, mode) {
     return [...links.values()].some(link => link.caster !== ignoreCaster && (link.caster === actor || link.patient === actor));
   };
   const release = caster => links.delete(caster);
-  const advance = () => {
+  const onKnockout = actor => {
+    // This notification must precede a possible same-tick resurrection. Pruning
+    // from the next frame alone cannot observe a life that has already ended.
+    links.delete(actor);
+    for (const link of links.values()) if (link.patient === actor) link.patient = null;
+  };
+  const advance = (ticks = 1) => {
+    if (!Number.isFinite(ticks) || ticks <= 0) return;
     prune();
     if (engine.paused || engine.isTargetingPaused?.() || engine.isMatchInputLocked?.()) return;
-    for (const link of links.values()) link.remaining--;
+    for (const link of links.values()) link.remaining = Math.max(0, link.remaining - ticks);
     prune();
   };
   const blockHit = (attacker, defender, damage, knockback = 10) => {
@@ -93,5 +101,5 @@ export function createSignatureMedicSupport(engine, mode) {
       }
     } finally { ctx.restore(); }
   };
-  return { canLink, grant, active, protects, release, advance, blockHit, snapshot, draw, dispose: () => links.clear() };
+  return { canLink, grant, active, protects, release, onKnockout, advance, blockHit, snapshot, draw, dispose: () => links.clear() };
 }

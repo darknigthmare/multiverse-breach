@@ -1,3 +1,5 @@
+import { getBrowserStorage, readStorageValue, writeStorageValue } from './safeStorage.js';
+
 export const AUDIO_PREFERENCES_KEY = 'multiverse_breach_audio_preferences_v1';
 
 export const DEFAULT_AUDIO_PREFERENCES = Object.freeze({
@@ -18,25 +20,19 @@ export const normalizeAudioPreferences = (preferences = {}) => ({
   muted: preferences.muted === true
 });
 
-export const readAudioPreferences = (storage = globalThis?.localStorage) => {
-  if (!storage?.getItem) return { ...DEFAULT_AUDIO_PREFERENCES };
+export const readAudioPreferences = (storage = getBrowserStorage()) => {
+  const { ok, value: raw } = readStorageValue(AUDIO_PREFERENCES_KEY, storage);
+  if (!ok || !raw) return { ...DEFAULT_AUDIO_PREFERENCES };
   try {
-    const raw = storage.getItem(AUDIO_PREFERENCES_KEY);
-    return raw
-      ? normalizeAudioPreferences(JSON.parse(raw))
-      : { ...DEFAULT_AUDIO_PREFERENCES };
+    return normalizeAudioPreferences(JSON.parse(raw));
   } catch {
     return { ...DEFAULT_AUDIO_PREFERENCES };
   }
 };
 
-export const writeAudioPreferences = (preferences, storage = globalThis?.localStorage) => {
+export const writeAudioPreferences = (preferences, storage = getBrowserStorage()) => {
   const normalized = normalizeAudioPreferences(preferences);
-  if (!storage?.setItem) return normalized;
-  try {
-    storage.setItem(AUDIO_PREFERENCES_KEY, JSON.stringify(normalized));
-  } catch {
-    // Device preferences are best effort; audio remains usable in memory.
-  }
+  // Device preferences are best effort; audio remains usable in memory.
+  writeStorageValue(AUDIO_PREFERENCES_KEY, JSON.stringify(normalized), storage);
   return normalized;
 };

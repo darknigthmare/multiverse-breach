@@ -1,6 +1,14 @@
 import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import AuthPanel from './AuthPanel';
+import GameDisplaySettings from './GameDisplaySettings.jsx';
+import useModalDialog from './collection/useModalDialog.js';
+import { HEROES_DB } from '../game/heroes.js';
+import { getHeroSpriteSheetSrc } from '../game/spriteAssets.js';
+import { getCardArtPresentation } from './cards/cardArtPresentation.js';
+import './IntroImmersion.css';
+
+const RESCUE_CELL = HEROES_DB.filter(hero => ['arca_mirelle', 'arca_bastion'].includes(hero.id));
 
 const PROLOGUE_SCENES = [
   {
@@ -108,58 +116,14 @@ function IntroTitleDialog({
   const titleId = useId();
   const dialogRef = useRef(null);
   const initialFocusRef = useRef(null);
-
-  useEffect(() => {
-    if (!dialog) return undefined;
-    const previousFocus = document.activeElement;
-    const previousOverflow = document.body.style.overflow;
-    const appRoot = document.getElementById('root');
-    const previousAriaHidden = appRoot?.getAttribute('aria-hidden');
-    const wasInert = Boolean(appRoot?.inert);
-    const handleKeyDown = event => {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        onClose();
-        return;
-      }
-      if (event.key !== 'Tab') return;
-      const focusable = [...dialogRef.current.querySelectorAll('button, input, a[href]')]
-        .filter(element => !element.disabled);
-      if (!focusable.length) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.body.style.overflow = 'hidden';
-    initialFocusRef.current?.focus();
-    if (appRoot) {
-      appRoot.inert = true;
-      appRoot.setAttribute('aria-hidden', 'true');
-    }
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener('keydown', handleKeyDown);
-      if (appRoot) {
-        appRoot.inert = wasInert;
-        if (previousAriaHidden === null) appRoot.removeAttribute('aria-hidden');
-        else appRoot.setAttribute('aria-hidden', previousAriaHidden);
-      }
-      window.requestAnimationFrame(() => previousFocus?.focus?.());
-    };
-  }, [dialog, onClose]);
+  const overlayRef = useRef(null);
+  useModalDialog({ open: Boolean(dialog), overlayRef, dialogRef, initialFocusRef, onClose });
 
   if (!dialog) return null;
 
   const content = (
     <div
+      ref={overlayRef}
       className="intro-title-dialog-backdrop"
       onMouseDown={event => {
         if (event.target === event.currentTarget) onClose();
@@ -167,11 +131,13 @@ function IntroTitleDialog({
     >
       <section
         ref={dialogRef}
+        tabIndex={-1}
         className="intro-title-dialog"
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
       >
+        <button ref={initialFocusRef} type="button" className="intro-dialog-dismiss" onClick={onClose} aria-label={lang === 'fr' ? 'Fermer la fenêtre' : 'Close dialog'}>×</button>
         {dialog === 'newTrace' && (
           <>
             <span className="intro-dialog-kicker">A.R.C.A. / RESET LOCAL</span>
@@ -187,7 +153,7 @@ function IntroTitleDialog({
               </div>
             )}
             <div className="intro-dialog-actions">
-              <button ref={initialFocusRef} type="button" className="btn-retro" onClick={onClose}>
+              <button type="button" className="btn-retro" onClick={onClose}>
                 {lang === 'fr' ? 'ANNULER' : 'CANCEL'}
               </button>
               <button
@@ -208,6 +174,7 @@ function IntroTitleDialog({
           <>
             <span className="intro-dialog-kicker">A.R.C.A. / DEVICE</span>
             <h2 id={titleId}>{lang === 'fr' ? 'Options' : 'Options'}</h2>
+            <GameDisplaySettings lang={lang} />
             <div className="intro-option-row">
               <div>
                 <strong>{lang === 'fr' ? 'Langue' : 'Language'}</strong>
@@ -282,7 +249,7 @@ function IntroTitleDialog({
               </div>
             </fieldset>
             <div className="intro-dialog-actions">
-              <button ref={initialFocusRef} type="button" className="btn-retro" onClick={onClose}>
+              <button type="button" className="btn-retro" onClick={onClose}>
                 {lang === 'fr' ? 'FERMER' : 'CLOSE'}
               </button>
             </div>
@@ -299,7 +266,7 @@ function IntroTitleDialog({
               <p>React / React DOM / Vite — {lang === 'fr' ? 'licences distribuees par leurs projets respectifs.' : 'licenses distributed by their respective projects.'}</p>
             </div>
             <div className="intro-dialog-actions">
-              <button ref={initialFocusRef} type="button" className="btn-retro" onClick={onClose}>
+              <button type="button" className="btn-retro" onClick={onClose}>
                 {lang === 'fr' ? 'FERMER' : 'CLOSE'}
               </button>
             </div>
@@ -691,7 +658,7 @@ export default function IntroSequence({
           </header>
 
           <div className="intro-profile-layout">
-            <div className="intro-identity-panel">
+            <form className="intro-identity-panel" onSubmit={event => { event.preventDefault(); if (validName) onStartLocal(); }}>
               <label htmlFor="player-name-input">{lang === 'fr' ? 'Nom de l Ancre' : 'Anchor name'}</label>
               <input
                 id="player-name-input"
@@ -706,16 +673,18 @@ export default function IntroSequence({
                 <strong>{playerName} / Mirelle Suture / Bastion Korr</strong>
               </div>
               <button
-                type="button"
+                type="submit"
                 className="btn-retro intro-local-action"
                 disabled={!validName}
-                onClick={onStartLocal}
                 title={lang === 'fr' ? 'Cree un profil seulement sur cet appareil puis lance le prologue.' : 'Create a profile only on this device, then start the prologue.'}
               >
                 {lang === 'fr' ? 'CONTINUER EN LOCAL' : 'CONTINUE LOCALLY'}
               </button>
-            </div>
+              <p className="intro-local-explanation">{lang === 'fr' ? 'Ta progression est enregistrée sur cet appareil. Le compte reste facultatif et peut être lié plus tard.' : 'Progress is saved on this device. An account is optional and can be connected later.'}</p>
+            </form>
 
+            <details className="intro-optional-account" open={Boolean(account)}>
+              <summary>{lang === 'fr' ? 'Compte et synchronisation · facultatif' : 'Account and synchronization · optional'}</summary>
             <AuthPanel
               {...authProps}
               lang={lang}
@@ -723,6 +692,17 @@ export default function IntroSequence({
               cloudStatus={cloudStatus}
               variant="embedded"
             />
+            </details>
+          </div>
+        </section>
+        <section className="intro-rescue-preview" aria-label={lang === 'fr' ? 'Ta première cellule' : 'Your first squad'}>
+          <span className="intro-rescue-kicker">{lang === 'fr' ? 'CELLULE ZERO · NEXUS' : 'CELL ZERO · NEXUS'}</span>
+          <div className="intro-rescue-portraits">
+            <figure className="intro-anchor-preview"><div aria-hidden="true">{playerName.slice(0, 2).toUpperCase()}</div><figcaption><strong>{playerName}</strong><span>{lang === 'fr' ? 'Ancre · Commandement' : 'Anchor · Command'}</span></figcaption></figure>
+            {RESCUE_CELL.map(hero => {
+              const artwork = getCardArtPresentation({ image: getHeroSpriteSheetSrc(hero, 'collection'), source: 'project-sprite' });
+              return <figure key={hero.id}><div className="intro-rescue-pose" style={artwork.style || { backgroundImage: `url(${artwork.src})`, backgroundSize: 'contain', backgroundPosition: 'center' }} aria-hidden="true" /><figcaption><strong>{hero.name}</strong><span>{hero.id === 'arca_mirelle' ? (lang === 'fr' ? 'Soutien · Suture' : 'Support · Suture') : (lang === 'fr' ? 'Protection · Rempart' : 'Protection · Bulwark')}</span></figcaption></figure>;
+            })}
           </div>
         </section>
       </main>

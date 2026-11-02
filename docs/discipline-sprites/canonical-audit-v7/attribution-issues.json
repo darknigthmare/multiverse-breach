@@ -1,0 +1,132 @@
+{
+  "issues": [
+    {
+      "issueId": "six-anonymous-role-identities",
+      "severity": "evidence-limit",
+      "explanation": "Six graphic identities have descriptive role names, not verified personal names. They must not be automatically mapped to cast-list names, including Zero names.",
+      "records": [
+        {
+          "characterId": "ova-attendant-brown-bun",
+          "label": "Domestique OVA — chignon brun",
+          "status": "descriptive-identity-only",
+          "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+        },
+        {
+          "characterId": "ova-guest-yellow-dress",
+          "label": "Invitée OVA — robe jaune",
+          "status": "descriptive-identity-only",
+          "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+        },
+        {
+          "characterId": "ova-officer-bob",
+          "label": "Officière OVA — carré châtain",
+          "status": "descriptive-identity-only",
+          "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+        },
+        {
+          "characterId": "ova-officer-swept-hair",
+          "label": "Officière OVA — cheveux tirés",
+          "status": "descriptive-identity-only",
+          "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+        },
+        {
+          "characterId": "security-guard-ova",
+          "label": "Garde de sécurité OVA — roux",
+          "status": "descriptive-identity-only",
+          "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+        },
+        {
+          "characterId": "ova-broadcasting-club-member",
+          "label": "Membre OVA — club de diffusion",
+          "status": "descriptive-identity-only",
+          "reason": "La feuille indique 放送部員 ; aucun nom propre n’est établi."
+        }
+      ],
+      "source": "docs/discipline-sprites/manifest.json#/pendingIdentityAttributions"
+    },
+    {
+      "issueId": "linda-western-not-leona",
+      "severity": "attribution-correction",
+      "details": {
+        "requested_phrase": "Leona western OVA",
+        "documented_candidate": "Linda western OVA",
+        "reason": "reference-v4-research.json pendingOutfits identifies linda-western-ova; no evidence for a Leona western costume."
+      },
+      "source": "docs/discipline-sprites/reference-v5-research.json#/missingCostumeReview/name_correction"
+    },
+    {
+      "issueId": "anonymous-yellow-guest",
+      "severity": "identity-unconfirmed",
+      "details": {
+        "reference": "image(20261028-055812).png",
+        "subject": "Standing woman in yellow at right",
+        "status": "identity_unconfirmed",
+        "reason": "No named color or model-sheet match establishes Kaori or Leona. Different eye/hair details prevent attribution by resemblance alone."
+      },
+      "source": "docs/discipline-sprites/reference-v4-research.json#/groups/a/unresolvedShotIdentities/0"
+    },
+    {
+      "issueId": "guards-not-sudou",
+      "severity": "identity-unconfirmed",
+      "explanation": "The anonymous guard is not identified as Sudou merely because cast lists combine guard/Sudo credits.",
+      "source": "docs/discipline-sprites/reference-v4-research.json#/groups/c/annex/1"
+    },
+    {
+      "issueId": "maya-profile-homonym",
+      "severity": "wrong-source-risk",
+      "explanation": "Prior research distinguishes the Discipline profile /maya-5 from the unrelated /maya profile.",
+      "source": "docs/discipline-sprites/reference-v4-research.json#/groups/b/records/7/inconclusiveOrMissing"
+    },
+    {
+      "issueId": "vn-art-reused-on-ova-profile",
+      "severity": "medium-attribution-risk",
+      "affectedCharacters": [
+        "mami",
+        "manami",
+        "saki",
+        "miyuki"
+      ],
+      "explanation": "An OVA category on a secondary page does not turn its reused VN portrait into evidence of an OVA costume.",
+      "sources": [
+        "docs/discipline-sprites/reference-v4-research.json#/groups/b/records/5",
+        "docs/discipline-sprites/reference-v4-research.json#/groups/b/records/6",
+        "docs/discipline-sprites/reference-v4-research.json#/groups/c/sourceQualityNotes",
+        "docs/discipline-sprites/reference-v5-research.json#/missingCostumeReview/items/2"
+      ]
+    },
+    {
+      "issueId": "kaoru-incarnations-not-interchangeable",
+      "severity": "identity-costume-mixing-risk",
+      "ids": [
+        "kaoru:uniform",
+        "kaoru:light-uniform",
+        "kaoru:uniform-reference-v4"
+      ],
+      "explanation": "The long-haired black/gold-uniform and short-haired light-uniform source appearances are distinct and must not be mixed.",
+      "source": "docs/discipline-sprites/reference-v4-research.json#/groups/c/additionalOutfitLeads/1"
+    },
+    {
+      "issueId": "leona-v4-mixed-vn-ova",
+      "severity": "mixed-media-reconstruction",
+      "id": "leona:uniform-fidelity-v4",
+      "explanation": "VN palette/base outfit combined with OVA monochrome geometry and shoes. This is explicitly recorded; it is not a faithful copy of one single incarnation.",
+      "source": "docs/discipline-sprites/manifest.json#/assets/170"
+    },
+    {
+      "issueId": "partial-clothing-sources-for-five-adapted-only-identities",
+      "severity": "canonical-evidence-gap",
+      "characterIds": [
+        "akane",
+        "kawahara",
+        "linda",
+        "maya",
+        "saki"
+      ],
+      "explanation": "Face/head evidence and sports/occupational biography do not authenticate the invented complete garments.",
+      "sources": [
+        "docs/discipline-sprites/reference-v4-research.json#/groups/b",
+        "docs/discipline-sprites/reference-v4-research.json#/groups/c/characters/1"
+      ]
+    }
+  ]
+}

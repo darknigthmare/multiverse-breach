@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
@@ -291,8 +292,167 @@ test('reserve regulation hides every new roster CG by the universe name used in 
   }
 });
 
-test('production plan and concise report reproduce from the current inputs', async () => {
+test('production plan and concise report reproduce from the current inputs', async t => {
   const rebuilt = await buildCgRosterProductionPlan();
-  assert.equal(serializeCgRosterProductionPlan(rebuilt), readFileSync(path.join(ROOT, 'docs/cg/roster-production-2026-10-18.json'), 'utf8'));
-  assert.equal(buildCgRosterProductionReport(rebuilt), readFileSync(path.join(ROOT, 'docs/cg/roster-production-2026-10-18.md'), 'utf8'));
+  const publishedText = readFileSync(path.join(ROOT, 'docs/cg/roster-production-2026-10-18.json'), 'utf8');
+  const reportText = readFileSync(path.join(ROOT, 'docs/cg/roster-production-2026-10-18.md'), 'utf8');
+  const digest = value => createHash('sha256').update(value).digest('hex');
+  const assertExact = (actual, expected, label) => {
+    assert.equal(digest(actual), digest(expected), label);
+    assert.ok(actual === expected, label);
+  };
+  const rebuiltText = serializeCgRosterProductionPlan(rebuilt);
+  if (digest(rebuiltText) === digest(publishedText)) {
+    assertExact(rebuiltText, publishedText, 'Complete workspace plan must reproduce byte-for-byte');
+    assertExact(buildCgRosterProductionReport(rebuilt), reportText, 'Concise report must reproduce byte-for-byte');
+    t.diagnostic('Exact production snapshot; no source-availability projection used.');
+    return;
+  }
+
+  // Published inspection history can outlive a private research checkout. Only
+  // these known subjects may lose physically absent private image aliases.
+  const privateSourceSubjects = new Set(['predator', 'miku', 'noble_six', 'buck', 'bishop', 'sam_carter', 'rin', 'meiko']);
+  const unproducedFoundations = new Set(['miku', 'noble_six', 'buck', 'sam_carter', 'rin']);
+  const preservation = JSON.parse(readFileSync(path.join(ROOT,
+    'docs/cg/Multiverse_Breach_Fidelite_CG.preservation-validation.json'), 'utf8'));
+  const sourcePins = preservation.productionRebuild.frozenInputSignatures;
+  const fallbackBytes = readFileSync(path.join(ROOT, 'scripts/fixtures/cg-private-source-fallbacks.json'));
+  assert.equal(digest(fallbackBytes), 'e6e906db182c881c25649c6c79772c08282ebaf90878dfb900b78ac4d86624fe',
+    'Unqualified fallback contract changed; review its readable values and source inputs explicitly');
+  const fallbacks = JSON.parse(fallbackBytes);
+  assert.equal(fallbacks.notIdentityAuthority, true);
+  const dossiers = JSON.parse(readFileSync(path.join(ROOT, 'docs/rift-dossiers/catalog.json'), 'utf8')).entrees;
+  const p0 = JSON.parse(readFileSync(path.join(ROOT, 'docs/audits/fidelity-p0-wave4-2026-10-01.json'), 'utf8')).entries;
+  const pick = (object, fields) => Object.fromEntries(fields.filter(key => Object.hasOwn(object, key))
+    .map(key => [key, object[key]]));
+  const imageFile = reference => /^\/(?:sprites|cg|visuals|images)\//.test(reference.path)
+    ? path.join(ROOT, 'public', reference.path.slice(1)) : path.resolve(ROOT, reference.path);
+  const projected = structuredClone(rebuilt), projectedIds = [], lostQualification = new Set();
+  assert.equal(rebuilt.subjects.length, plan.subjects.length);
+  for (const [index, published] of plan.subjects.entries()) {
+    const current = rebuilt.subjects[index];
+    assert.equal(current.characterId, published.characterId, `Subject order changed at ${index}`);
+    const references = published.identity.identityVisualReferences || [];
+    const missing = references.filter(reference => !existsSync(imageFile(reference)));
+    if (!missing.length) continue;
+    const id = published.characterId;
+    assert.ok(privateSourceSubjects.has(id), `${id}: unexpected missing identity bitmap`);
+    assert.ok(missing.every(reference => /(?:^|\/)\.tmp\//.test(reference.path)), `${id}: a public bitmap is missing`);
+    assert.ok(published.identity.sourceEvidenceFiles?.length, `${id}: missing public source receipts`);
+    // Validate receipt bytes before allowing any metadata projection. Changed
+    // source declarations are a regression even when their images are absent.
+    for (const file of published.identity.sourceEvidenceFiles) {
+      assert.ok(file.startsWith('docs/cg/'), `${id}: source receipt must be public`);
+      assert.match(sourcePins[file] || '', /^[a-f0-9]{64}$/, `${id}: source receipt has no frozen public pin`);
+      const bytes = readFileSync(path.join(ROOT, file));
+      assert.equal(digest(bytes), sourcePins[file], `${id}: source receipt changed: ${file}`);
+      const source = JSON.parse(bytes);
+      assert.equal(source.characterId || source.heroId, id, `${id}: wrong source receipt owner`);
+    }
+    const available = references.filter(reference => existsSync(imageFile(reference)));
+    for (const reference of available) {
+      assert.ok(statSync(imageFile(reference)).isFile(), `${id}: identity bitmap is not a file`);
+      assert.equal(digest(readFileSync(imageFile(reference))), reference.sha256, `${id}: identity bitmap changed`);
+    }
+    assertExact(JSON.stringify(current.identity.identityVisualReferences || []), JSON.stringify(available),
+      `${id}: current identity references must be exactly the available published subset`);
+    assert.equal(current.identity.visualFidelityApproved, false, `${id}: unavailable evidence cannot approve fidelity`);
+    if (available.length) {
+      const expected = { ...published.identity, identityVisualReferences: available };
+      assertExact(JSON.stringify(current.identity), JSON.stringify(expected), `${id}: available-source identity metadata changed`);
+      projected.subjects[index].identity = published.identity;
+    } else {
+      assert.equal(current.identity.evidenceStatus, 'needs-reference', `${id}: absent images cannot qualify identity`);
+      assert.ok(current.identity.missing.some(value => value.startsWith('Ouvrir une référence visuelle source')),
+        `${id}: missing images must remain an explicit production prerequisite`);
+      assert.deepEqual(Object.keys(current.identity), Object.keys(published.identity)
+        .filter(key => !['sourceEvidenceFiles', 'identityVisualReferences'].includes(key)), `${id}: unexpected identity fields`);
+      const contract = fallbacks.cases[id];
+      assert.ok(contract, `${id}: no reviewed unqualified fallback contract`);
+      assert.equal(digest(JSON.stringify(contract.expectedIdentity)), contract.expectedIdentitySha256);
+      assert.deepEqual(contract.publicSourceReceipts, published.identity.sourceEvidenceFiles.map(file =>
+        ({ path: file, sha256: sourcePins[file] })), `${id}: fallback source-receipt contract changed`);
+      const hero = HEROES_DB.find(item => item.id === id);
+      const dossier = dossiers.find(item => item.id === published.characterArcStageId);
+      const pilot = CG_CATALOG.find(item => item.characterId === id && item.type === 'characterSolo');
+      assert.ok(hero && dossier, `${id}: fallback source declarations are missing`);
+      const inputs = {
+        hero: pick(hero, fallbacks.heroInputFields),
+        dossier: { id: dossier.id, lockPresent: Boolean(dossier.verrouSourcePersonnage),
+          verrouSourcePersonnage: dossier.verrouSourcePersonnage
+            ? pick(dossier.verrouSourcePersonnage, fallbacks.dossierLockInputFields) : null,
+          referenceUrls: dossier.referenceUrls || [] },
+        pilot: pilot ? pick(pilot, ['id', 'continuityId', 'sourceRefs', 'promptSummary']) : null,
+        p0: p0.some(item => item.id === id)
+      };
+      assert.equal(digest(JSON.stringify(inputs)), contract.sourceInputsSha256,
+        `${id}: public HEROES/dossier/pilot/P0 fallback inputs changed`);
+      assertExact(JSON.stringify(inputs), JSON.stringify(contract.sourceInputs),
+        `${id}: readable public fallback declarations differ from their contract`);
+      for (const field of fallbacks.expectedFields) {
+        assert.ok(Object.hasOwn(current.identity, field), `${id}.identity.${field}: fallback field missing`);
+        assertExact(JSON.stringify(current.identity[field]), JSON.stringify(contract.expectedIdentity[field]),
+          `${id}.identity.${field}: fallback metadata changed before projection`);
+      }
+      const availabilityFields = new Set(['incarnation', 'identityLock', 'equipment', 'sourceRefs',
+        'evidenceStatus', 'sourceEvidenceFiles', 'identityVisualReferences', 'missing']);
+      projected.subjects[index].identity = Object.fromEntries(Object.keys(published.identity).map(key =>
+        [key, availabilityFields.has(key) ? published.identity[key] : current.identity[key]]));
+      lostQualification.add(id);
+    }
+    projectedIds.push(id);
+  }
+  assert.ok(projectedIds.length > 0, 'Plan drift has no physically absent, pinned private source explanation');
+  const projectedCells = [];
+  for (const [index, published] of plan.entries.entries()) {
+    const current = rebuilt.entries[index];
+    assert.equal(current?.id, published.id, `Entry order changed at ${index}`);
+    if (!lostQualification.has(published.characterId) || published.type !== 'characterSolo'
+      || published.generatedImageCount !== 0) continue;
+    const id = published.characterId;
+    assert.ok(unproducedFoundations.has(id), `${id}: unexpected unproduced CG01 projection`);
+    for (const entry of [published, current]) {
+      assert.equal(entry.status, 'needs-reference', `${id}: delivered or blocked cells cannot be projected`);
+      assert.equal(entry.generatedImageCount, 0);
+      assert.equal(entry.galleryRegistered, false);
+      assert.equal(entry.currentAssets, null);
+      assert.equal(entry.themeStatus, 'needs-reference');
+    }
+    const subjectIndex = rebuilt.subjects.findIndex(subject => subject.characterId === id);
+    const identity = rebuilt.subjects[subjectIndex].identity;
+    assert.deepEqual(current.themeSource, [...new Set([...identity.sourceRefs, 'docs/cg/CG_PILOT_REFERENCE_AUDIT.md'])]);
+    assert.equal(current.themeContinuity, identity.incarnation);
+    assert.deepEqual(current.missing, identity.missing);
+    for (const field of ['themeSource', 'themeContinuity', 'missing']) projected.entries[index][field] = published[field];
+    const currentCell = rebuilt.subjects[subjectIndex].matrix.CG01;
+    const publishedCell = plan.subjects[subjectIndex].matrix.CG01;
+    assert.equal(currentCell.entryId, published.id);
+    assert.equal(currentCell.generatedImageCount, 0);
+    assert.equal(currentCell.status, 'needs-reference');
+    assert.deepEqual(currentCell.themeSource, current.themeSource);
+    assert.deepEqual(publishedCell.themeSource, published.themeSource);
+    // CG01 mirrors only themeSource into the matrix; every other cell field,
+    // all delivered artwork, and the remaining matrix stay byte-exact below.
+    projected.subjects[subjectIndex].matrix.CG01.themeSource = publishedCell.themeSource;
+    projectedCells.push(id);
+  }
+  assert.equal(projectedCells.length, new Set(projectedCells).size);
+  const projectedText = serializeCgRosterProductionPlan(projected);
+  const firstDifference = (actual, expected, location = 'plan') => {
+    if (actual === expected) return null;
+    if (!actual || !expected || typeof actual !== 'object' || typeof expected !== 'object') return location;
+    const keys = Object.keys(expected);
+    if (Object.keys(actual).join('\0') !== keys.join('\0')) return `${location}.keys`;
+    for (const key of keys) {
+      const changed = firstDifference(actual[key], expected[key], `${location}.${key}`);
+      if (changed) return changed;
+    }
+    return null;
+  };
+  const unexpectedPath = digest(projectedText) === digest(publishedText) ? null : firstDifference(projected, plan);
+  assertExact(projectedText, publishedText,
+    `Plan changed outside pinned private-source identity and unproduced CG01 metadata${unexpectedPath ? ` at ${unexpectedPath}` : ''}`);
+  assertExact(buildCgRosterProductionReport(projected), reportText,
+    'Concise report must remain exact after the validated source-availability projection');
+  t.diagnostic(`Pinned private sources unavailable for ${projectedIds.join(', ')}; derived unproduced CG01 only: ${projectedCells.join(', ')}.`);
 });

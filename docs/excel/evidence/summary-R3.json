@@ -1,0 +1,68 @@
+{
+  "sourceCommit": "5f44cf344d1a9fbb0dbd7c899510b7dd16cf25d6",
+  "sourceTree": "69e7bfd3635d022942ad01277d0b1088a73472c2",
+  "date": "2026-10-24",
+  "scope": "Source metadata and resolver-path audit; 25 first-cell visual pre-reviews; no art approval or fresh HTTP playback.",
+  "summary": {
+    "actors": 4936,
+    "stages": 3203,
+    "packs": 172,
+    "stageReferencesFound": 414,
+    "stageReferencesAmbiguous": 0,
+    "stageReferenceConflicts": 0,
+    "resolverProbes": 18325,
+    "actorsWithMissingRaster": 1477,
+    "actorsWithStaticRaster": 10,
+    "actorsWithStaticGameplayRaster": 9,
+    "verifiedSourceFiles": 221,
+    "historicalP0Candidates": 24,
+    "p0ExternalCanon": 22,
+    "originalIdentityReclassifications": 2,
+    "artApprovals": 0
+  },
+  "stageWorkbookDelta": {
+    "restoredBlankReferences": 323,
+    "existingReferencesPreserved": 91,
+    "priorityUnchanged": true
+  },
+  "missingRasterByActorKind": {
+    "enemy": 785,
+    "boss": 492,
+    "worldBoss": 200
+  },
+  "activePriorities": {
+    "P0": 22,
+    "P1": 3561,
+    "P2": 4072,
+    "P3": 484
+  },
+  "sourceSnapshotVerification": {
+    "files": 627,
+    "mismatches": 0
+  },
+  "tests": {
+    "command": "node --test docs/excel/tools/fidelityEvidence.test.mjs",
+    "passed": 38,
+    "failed": 0,
+    "skipped": 0
+  },
+  "workbooks": [
+    {
+      "name": "Multiverse_Breach_Audit_Fidelite_1a1_Priorites_R3_2026-10-24.xlsx",
+      "bytes": 1891874,
+      "sha256": "2f66ef3e48cba6c63a379516cc5a484d84a8bda26fc821df8e58ec79359a2c05",
+      "sheets": 19,
+      "formulaErrorCells": [],
+      "unintendedChangesInPriorCells": 0
+    },
+    {
+      "name": "Multiverse_Breach_Suivi_Combats_RECONSTITUE_R3_2026-10-24.xlsx",
+      "bytes": 794645,
+      "sha256": "d76aef6b6edd77551dfa52bcee93dd3136f659d3b2ac7f3a2f0a5b8ed26bf50d",
+      "sheets": 7,
+      "formulaErrorCells": [],
+      "unintendedChangesInPriorCells": 0
+    }
+  ],
+  "binaryDelivery": "Conversation only; repository XLSX files remain R1. R2 and R3 additions are not asserted published as XLSX."
+}

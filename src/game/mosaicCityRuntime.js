@@ -172,6 +172,16 @@ export const resolveMosaicInteraction = (player, scene, preferred = null) => {
     .sort((a, b) => a.distance - b.distance)[0] || null;
 };
 
+// Automatic routes respect the same NPC bodies as manual movement. The
+// rectangles are conservative navigation envelopes; physical collision remains
+// circular and unchanged. A pending target stays approachable, not pass-through.
+export const getMosaicNavigationObstacles = state => [
+  ...(state.obstacles || []),
+  ...(state.npcs || []).filter(npc => Number.isFinite(npc.x) && Number.isFinite(npc.y)
+    && !(state.pendingInteraction?.type === 'npc' && npc.hero?.id === state.pendingInteraction.id))
+    .map((npc, index) => ({ id: `resident-${npc.hero?.id || index}`, x: npc.x - 14, y: npc.y - 14, w: 28, h: 28 }))
+];
+
 // Update in elapsed time, not display frames. Axis sliding avoids walking
 // through NPC bodies; every substep remains bounded even on a delayed frame.
 export const advanceMosaicPlayer = (state, district, elapsedMs = 1000 / 60) => {
@@ -184,11 +194,33 @@ export const advanceMosaicPlayer = (state, district, elapsedMs = 1000 / 60) => {
     state.destinationRoute = null;
     state.pendingInteraction = null;
   }
+  // A resident can continue walking after the directory was closed. Keep the
+  // requested identity, not its old coordinates; menus/manual input clear it.
+  if (!dx && !dy && state.pendingInteraction?.type === 'npc') {
+    const target = (state.npcs || []).find(npc => npc.hero?.id === state.pendingInteraction.id);
+    if (!target) {
+      state.destination = null;
+      state.destinationRoute = null;
+      state.pendingInteraction = null;
+    } else if (Math.hypot(target.x - state.player.x, target.y - state.player.y) <= MOSAIC_INTERACTION_RANGE.npc) {
+      state.destination = null;
+      state.destinationRoute = null;
+    } else if (!state.destination || Math.hypot(target.x - state.destination.x, target.y - state.destination.y) > 14) {
+      state.destination = { x: target.x, y: target.y };
+    }
+  }
   let remaining = Infinity;
   if (state.destination && !dx && !dy) {
     const requested = clampMosaicPosition(state.destination, district);
-    if (!state.destinationRoute || state.destinationRoute.x !== requested.x || state.destinationRoute.y !== requested.y) {
-      state.destinationRoute = { ...requested, points: planMosaicPath(state.player, requested, district, state.obstacles || []) };
+    // Refresh bounded routes at most every quarter second as people wander.
+    // Planning and movement never move or unlock another entity.
+    if (state.destinationRoute) state.destinationRoute.ageMs = (state.destinationRoute.ageMs || 0) + seconds * 1000;
+    if (!state.destinationRoute || state.destinationRoute.x !== requested.x || state.destinationRoute.y !== requested.y || state.destinationRoute.ageMs >= 250) {
+      const navigation = getMosaicNavigationObstacles(state);
+      const origin = findMosaicWalkablePosition(state.player, district, navigation);
+      const points = origin ? planMosaicPath(origin, requested, district, navigation) : [];
+      if (origin && points.length && Math.hypot(origin.x - state.player.x, origin.y - state.player.y) > 0.5) points.unshift(origin);
+      state.destinationRoute = { ...requested, points, ageMs: 0 };
     }
     while (state.destinationRoute.points.length && Math.hypot(state.destinationRoute.points[0].x - state.player.x, state.destinationRoute.points[0].y - state.player.y) <= 0.5) state.destinationRoute.points.shift();
     const destination = state.destinationRoute.points[0];
@@ -233,7 +265,10 @@ export const advanceMosaicPlayer = (state, district, elapsedMs = 1000 / 60) => {
     state.destinationRoute.points.shift();
     if (!state.destinationRoute.points.length) state.destination = null;
   }
-  if (state.destination && distance > 0 && moved < 0.01) state.destination = null;
+  if (state.destination && distance > 0 && moved < 0.01) {
+    if (state.pendingInteraction?.type === 'npc') state.destinationRoute = null;
+    else state.destination = null;
+  }
   if (!state.destination) state.destinationRoute = null;
   return moved;
 };

@@ -14,6 +14,7 @@ import time
 import traceback
 from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright, expect
+from browserCombatUi import open_arsenal
 
 PREPARE = """() => {
   const e = window.__rpgAudit.engine;
@@ -141,6 +142,7 @@ def main():
                   const original=e.triggerCombatEvent.bind(e);
                   e.triggerCombatEvent=effect=>{window.__rpgAudit.events.push(effect);return original(effect);};
                 }""")
+                open_arsenal(page)
                 button = page.get_by_role('button', name=re.compile('MALLETTE VACCIN ANTIVIRAL'))
                 expect(button).to_be_enabled()
                 button.evaluate('button => {button.click();button.click();}')

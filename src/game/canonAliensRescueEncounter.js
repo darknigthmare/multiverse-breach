@@ -21,7 +21,7 @@ export function createAliensRescueEncounter(stage, arena, width, height) {
     rescuePoint: { x: width * 0.67, y: height * 0.78, radius: ALIENS_RESCUE_BALANCE.interactionRadius },
     exitPoint: { x: width * 0.12, y: height * 0.78, radius: ALIENS_RESCUE_BALANCE.interactionRadius },
     sourceMechanics: 'Free Newt from the hive and leave the atmosphere processor together; killing the Queen in the hive is not the objective.',
-    adaptation: 'Three combat waves precede the rescue. The 2D route and two interaction markers compress the nest, lifts, stairs and landing platform. Newt has no HP or damageable combat entity. Queen damage is nonlethal. Ripley Aliens uses her M41A, M240, hive cover and M41A grenade here with adapted combat ranges and effects; power-loader actions remain in other contexts. The Sulaco power-loader finale remains separate and unimplemented.'
+    adaptation: 'Three combat waves precede the rescue. The 2D route and two interaction markers compress the nest, lifts, stairs and landing platform. Newt has no HP or damageable combat entity. Queen damage is nonlethal. Ripley Aliens uses her M41A, M240, hive cover and M41A grenade here with adapted combat ranges and effects; power-loader actions remain in other contexts. The separate Sulaco tactical reconstruction (50101) follows this rescue; source choreography and artwork remain partial.'
   };
 }
 

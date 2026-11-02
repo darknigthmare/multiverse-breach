@@ -8,6 +8,7 @@ import { SIGNATURE_SOURCE_KITS } from '../../src/game/signatureSourceKits.js';
 import { ENEMIES_DB } from '../../src/game/enemies.js';
 import { HEROES_DB } from '../../src/game/heroes.js';
 import '../../src/index.css';
+import './combatHarness.css';
 const query = new URLSearchParams(location.search);
 const key = query.get('source') || 'team_fortress_2_medic';
 const definition = Object.hasOwn(SIGNATURE_SOURCE_KITS, key) ? SIGNATURE_SOURCE_KITS[key] : SIGNATURE_SOURCE_KITS.team_fortress_2_medic;
@@ -35,7 +36,7 @@ const stage = { id: 'qa-stock-support', name: 'Synthetic support fixture', unive
     enemyData: { customRoster: opponents, monsters: opponents, bosses: [], worldBoss: null } } };
 export default function Harness() {
   const [mounted, setMounted] = useState(true);
-  return <><header><p>Isolated synthetic state; real GameCanvas, input, targeting and engines.</p>
+  return <><header className="combat-qa-toolbar"><p>Isolated synthetic state; real GameCanvas, input, targeting and engines.</p>
     <button id="qa-unmount" onClick={() => setMounted(false)}>QA unmount</button></header>
     {mounted && <GameCanvas lang={lang} playerProfile={{ name: 'QA' }} activeTeam={team} stage={stage}
       heroLevels={{}} equippedGear={{}} equippedEventItems={{}} heroTalents={{}} heroSkins={{}} completedStages={[]}

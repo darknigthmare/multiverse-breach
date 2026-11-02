@@ -1,0 +1,226 @@
+[
+  {
+    "id": "APP-01",
+    "auditIds": [
+      "04",
+      "25"
+    ],
+    "status": "Implémenté",
+    "files": [
+      "src/components/GameDisplaySettings.jsx",
+      "src/game/displayPreferences.js",
+      "src/components/game-system.css"
+    ],
+    "changes": [
+      "Préférences d’affichage persistantes séparées de la progression : texte, HUD, marge, contraste, mouvement.",
+      "Plein écran système sur geste utilisateur, avec repli sur toute la surface disponible si indisponible.",
+      "Synchronisation des réglages entre panneaux et onglets."
+    ],
+    "validation": [
+      "5 tests gameSystemImmersion incluent stockage, valeurs bornées et secours en cas de stockage indisponible."
+    ],
+    "limitations": [
+      "La mise à l’échelle du texte vise les interfaces DOM ; les textes dessinés dans les anciens moteurs canvas conservent leur taille logique.",
+      "Validation visuelle sur différentes résolutions en cours."
+    ]
+  },
+  {
+    "id": "APP-02",
+    "auditIds": [
+      "05",
+      "06",
+      "25"
+    ],
+    "status": "Implémenté",
+    "files": [
+      "src/App.jsx",
+      "src/components/GameSystemMenu.jsx",
+      "src/components/GameSystemDialog.jsx",
+      "src/game/gameDialogQueue.js"
+    ],
+    "changes": [
+      "Audio, connexion, compte et sauvegardes regroupés dans le menu Système pour dégager les scènes.",
+      "Remplacement des alert/confirm/prompt natifs par des dialogues intégrés au jeu.",
+      "File d’attente des décisions, focus modal, isolation des fenêtres parentes et restitution du focus."
+    ],
+    "validation": [
+      "Test de sérialisation des décisions et rejet des confirmations périmées.",
+      "Tests des fenêtres imbriquées dans shellImmersion."
+    ],
+    "limitations": [
+      "La synchronisation cloud réelle n’est pas exécutée avec un compte utilisateur."
+    ]
+  },
+  {
+    "id": "APP-03",
+    "auditIds": [
+      "05"
+    ],
+    "status": "Implémenté",
+    "files": [
+      "src/App.jsx",
+      "scripts/cloudReconciliationRace.test.mjs"
+    ],
+    "changes": [
+      "Après une confirmation asynchrone, contrôle de la session cloud, de la sauvegarde locale et de toute progression survenue pendant l’attente.",
+      "Les imports conservent la copie de secours et les resets préservent l’archive cloud."
+    ],
+    "validation": [
+      "19 tests cloudReconciliationRace passent, dont 5 nouveaux scénarios de décisions retardées."
+    ],
+    "limitations": []
+  },
+  {
+    "id": "APP-04",
+    "auditIds": [
+      "21",
+      "22",
+      "23",
+      "25"
+    ],
+    "status": "Implémenté",
+    "files": [
+      "src/App.jsx",
+      "src/components/CampaignPauseMenu.jsx"
+    ],
+    "changes": [
+      "Pause commune aux missions de campagne, avec reprise, options, commandes et confirmation du repli.",
+      "Échap ouvre la pause ; changement d’onglet met en pause sans reprise automatique.",
+      "La simulation reste montée et suspendue ; un résultat acquis ne peut plus ouvrir un repli."
+    ],
+    "validation": [
+      "Compilation Vite et lint ciblé passent.",
+      "Horloge des moteurs couverte par fixedStepClock."
+    ],
+    "limitations": [
+      "Recette interactive du clavier/manette sur la preview à compléter."
+    ]
+  },
+  {
+    "id": "APP-05",
+    "auditIds": [
+      "26"
+    ],
+    "status": "Implémenté",
+    "files": [
+      "src/App.jsx",
+      "src/game/battleCompletionGate.js",
+      "scripts/gameSystemImmersion.test.mjs"
+    ],
+    "changes": [
+      "Un jeton unique par lancement verrouille la remise de récompenses.",
+      "Les doubles callbacks, appels d’anciennes sessions et résultats après restauration d’une sauvegarde sont refusés."
+    ],
+    "validation": [
+      "Test victoire répétée, repli après victoire, ancien callback après relancement et invalidation."
+    ],
+    "limitations": []
+  },
+  {
+    "id": "APP-06",
+    "auditIds": [
+      "11",
+      "26",
+      "27"
+    ],
+    "status": "Implémenté",
+    "files": [
+      "src/App.jsx",
+      "src/components/game-system.css"
+    ],
+    "changes": [
+      "Briefing avec retour à la préparation et actions fixes dans le panneau de lecture.",
+      "Bilan présentant les ressources d’abord ; rapport détaillé, conséquences et toutes récompenses disponibles en sous-menu.",
+      "Les quatre fins existantes sont conservées, avec lecture interne adaptée au viewport."
+    ],
+    "validation": [
+      "Compilation Vite ; contrats de récompenses/campagne existants à recontrôler globalement."
+    ],
+    "limitations": [
+      "Les visuels et textes narratifs existants sont conservés."
+    ]
+  },
+  {
+    "id": "APP-07",
+    "auditIds": [
+      "40"
+    ],
+    "status": "Implémenté",
+    "files": [
+      "src/App.jsx",
+      "src/components/game-system.css"
+    ],
+    "changes": [
+      "Écrans de récupération gardent leur retour explicite ; diagnostic technique dans une section dépliable.",
+      "Chargements de scène existants conservés, sans faux pourcentage."
+    ],
+    "validation": [
+      "Compilation Vite ; frontières d’erreur existantes conservées."
+    ],
+    "limitations": [
+      "Chargements réseau lents non encore simulés."
+    ]
+  },
+  {
+    "id": "APP-08",
+    "auditIds": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40"
+    ],
+    "status": "En vérification",
+    "files": [
+      "package.json",
+      ".github/workflows/audit-reliability.yml",
+      "docs/excel/Multiverse_Breach_UI_Immersion.xlsx"
+    ],
+    "changes": [
+      "Ajout du contrôle test:ui-immersion au prebuild et à la CI existante, sans retirer les validations de production.",
+      "Classeur de suivi des 40 écrans, conservation des fonctions et preuves de test."
+    ],
+    "validation": [
+      "Compilation des sources réussie avec Vite 8.1.0 / Node 24.22.1.",
+      "Suites de régression globales en cours."
+    ],
+    "limitations": [
+      "Prébuild complet des médias laissé à la CI du dépôt complet ; checkout local partiel."
+    ]
+  }
+]

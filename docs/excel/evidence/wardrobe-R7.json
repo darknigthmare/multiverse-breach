@@ -1,0 +1,101 @@
+{
+  "version": "R7",
+  "date": "2026-10-24",
+  "sourceBaseCommit": "9342f65666939e9283a0a9f4e5879ea73392d12c",
+  "summary": {
+    "sourceBaseCommit": "9342f65666939e9283a0a9f4e5879ea73392d12c",
+    "catalogueVersion": "R7",
+    "actors": 4936,
+    "heroes": 1912,
+    "officialDesigns": 64,
+    "officialActorBindings": 67,
+    "actorsWithOfficial": 24,
+    "actorsAwaitingOfficialResearch": 4912,
+    "originalParametricBriefs": 19744,
+    "characterSpecificBriefs": 60,
+    "researchTargets": 3,
+    "unboundCostumeCandidates": 3,
+    "fullCostumeSheetsProduced": 0,
+    "artisticApprovals": 0,
+    "sharedGroundEffects": 3,
+    "note": "Source-backed outfit inventory and original design briefs. Full costume artwork is pending; procedural effects are separate. This is not a complete official-costume census."
+  },
+  "localTests": {
+    "passed": 289,
+    "failed": 0,
+    "skipped": 0,
+    "previousTests": 220,
+    "newTests": 69
+  },
+  "jsx": {
+    "scope": "JSX syntax transpilation only; not a Vite build or browser execution",
+    "file": "src/components/CharacterWardrobe.jsx",
+    "diagnostics": []
+  },
+  "reviewCli": {
+    "emptyTemplateCreated": true,
+    "incompleteReviewExitCode": 2,
+    "realArtApproved": false,
+    "scope": "Local PNG headers/dimensions/hashes and record consistency, not full PNG decoding, visual judgment or FPS/kart certification"
+  },
+  "newFullBuild": false,
+  "newBrowserRun": false,
+  "newProductionCheck": false,
+  "artApprovals": 0,
+  "newCostumeSheets": 0,
+  "workbook": {
+    "name": "Multiverse_Costumes_Fidelite_R7_2026-10-24.xlsx",
+    "bytes": 458353,
+    "sha256": "04e5d4f5ed29891eacae1589b04cf211c74a9760e6a910904fcbce18ca439198",
+    "sheets": 8,
+    "formulaErrorCells": [],
+    "delivery": "Conversation file only; repository historical XLSX files are not replaced"
+  },
+  "files": [
+    {
+      "path": "src/game/wardrobeOfficialR7.js",
+      "gitBlob": "21d2a1583fc965b06a55a7eb167aa5b8fbfb0295",
+      "sha256": "f33c0cc00340ab2664d00b6b521887d3dd657fd5b48b64bc071bea0461ab28cb"
+    },
+    {
+      "path": "src/game/wardrobeFidelity.js",
+      "gitBlob": "43c7ee7b306fcfc13084e244080b42e53fd182a0",
+      "sha256": "30e3102a920aec855c40287f13a6d398604db189510b2d46be3f5dc3a5cae1a1"
+    },
+    {
+      "path": "scripts/reviewWardrobeFidelity.mjs",
+      "gitBlob": "f393c895444bade79b1ae446dddb89cf1d149eef",
+      "sha256": "531285226cc899295a06a0596c67b33b71971a9f93e6a404a06779ab911ba5e6"
+    },
+    {
+      "path": "src/game/wardrobe.js",
+      "gitBlob": "ad8cbc1d4145f436f66d10661391eeb557092b80",
+      "sha256": "3a90f32996d712fb97283e7ca02e6f160e28653dc1958737f7ab9c61a39a5e48"
+    },
+    {
+      "path": "src/game/wardrobeProduction.js",
+      "gitBlob": "b6c83b8c4c1f492c6186693495270dae2df86c0b",
+      "sha256": "9410873f9e726523eddb13401e2796f289db48e22134a575452ba18d1b92d014"
+    },
+    {
+      "path": "src/components/CharacterWardrobe.jsx",
+      "gitBlob": "1fc217c9fdbb0150648f91d0fd23c00b9cd45494",
+      "sha256": "97238facb8ec9af47992168bd3a08aa29f2f90bfa62a143c2375678f171834c2"
+    },
+    {
+      "path": "scripts/exportWardrobe.mjs",
+      "gitBlob": "9f8c75bc7a5e0d71e3acb58911b7f2644119bdb7",
+      "sha256": "76248931301302e86932d3b014b66914f440ab52e00a432c1e841210a9a854c5"
+    },
+    {
+      "path": "scripts/reauditWardrobeCatalog.test.mjs",
+      "gitBlob": "9e15c9632b9ca9fd26520b74b3594d82e2159c97",
+      "sha256": "43d8ba8ac0f85e9f013492a6beff3a83b8381d78987539e1d952976a578f0331"
+    },
+    {
+      "path": "scripts/reauditWardrobeFidelityR7.test.mjs",
+      "gitBlob": "5721cfd03f47cda14ac46724bfa537a1560c269d",
+      "sha256": "ec04a364768b23f3f32afbd17195de4ca26feadc14be6da3975f5c1eb3b75d98"
+    }
+  ]
+}

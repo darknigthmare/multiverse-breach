@@ -1,3 +1,4 @@
+import { resolveSourceScene } from './sourceSceneStages.js';
 const DEFAULT_FALLBACK_MONSTER = {
   name: 'Nexus Residue',
   hp: 80,
@@ -69,6 +70,12 @@ export function resolveStageEnemyData({
   const availableMonsters = cloneList(monsters);
   const availableBosses = cloneList(bosses);
   const availableWorldBoss = cloneEnemy(worldBoss);
+  const sourceScene = resolveSourceScene(stage);
+  if (sourceScene) {
+    // Environmental threats never become a fallback army. Rendering reuses only an exact source identity.
+    const threat = [...availableBosses, ...availableMonsters, availableWorldBoss].find(e => e?.name === sourceScene.threatName);
+    return { monsters: [], bosses: threat ? [threat] : [], worldBoss: null, sourceSceneId: sourceScene.sourceSceneId };
+  }
   const rosterNames = getRosterNames(stage);
   const hasExplicitRoster = Array.isArray(stage.enemyRoster) || stage.enemyRosterExclusive === true;
 

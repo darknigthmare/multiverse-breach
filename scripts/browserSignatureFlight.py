@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 from playwright.sync_api import sync_playwright
+from browserCombatUi import open_arsenal
 
 base = os.environ.get('AUDIT_BASE_URL', 'http://127.0.0.1:4173')
 assert urlparse(base).hostname in ('127.0.0.1', 'localhost')
@@ -39,6 +40,7 @@ with sync_playwright() as pw:
                 }''')
                 page.wait_for_timeout(200)
                 side = 'opponent' if '::' in key else 'player'
+                open_arsenal(page)
                 page.locator(f'[data-signature-super="{side}"]').click()
                 page.wait_for_function('window.__sourceAudit.engine.signatureDirector.getProjectileState().length === 1')
                 before = page.evaluate('''() => { const a=window.__sourceAudit;a.engine.setPaused(true);return {flights:a.engine.signatureDirector.getProjectileState(),hp:a.target.currentHp,initialHp:a.hp,charge:a.actor.specialCharge}; }''')

@@ -1,3 +1,4 @@
+import { resolveSourceScene } from './sourceSceneStages.js';
 import { CANON_PRIORITY_STAGES } from './canonPriorityStages.js';
 import { isCanonPiratesCurseStage } from './canonPiratesCurseEncounter.js';
 import { isCanonRexStage } from './canonRexEncounter.js';
@@ -17,9 +18,9 @@ const briefings = Object.freeze({
   },
   3: {
     fr: { objective: 'Traversez la ruche, rejoignez le repère NEWT puis libérez-la. Rejoignez ensuite la sortie avec son porteur vivant et évacuez. La Reine peut être repoussée ; la tuer ne constitue pas l’objectif.',
-      adaptation: 'Les vagues et la route 2D condensent le sauvetage dans le processeur. Newt est un repère non ciblable. La défaite du porteur fait échouer l’évacuation. Le duel au power loader à bord du Sulaco reste une scène distincte à réaliser.' },
+      adaptation: 'Les vagues et la route 2D condensent le sauvetage dans le processeur. Newt est un repère non ciblable. La défaite du porteur fait échouer l’évacuation. La mission tactique Sulaco (50101) poursuit séparément cette évacuation ; sa grille et sa chorégraphie restent adaptées.' },
     en: { objective: 'Cross the hive, reach the NEWT marker and free her. Then reach the exit with her living carrier and evacuate. The Queen can be repelled; killing her is not the objective.',
-      adaptation: 'Waves and the 2D route condense the processor rescue. Newt is a non-targetable marker. Losing her carrier fails the evacuation. The power-loader duel aboard the Sulaco remains a separate scene to implement.' }
+      adaptation: 'Waves and the 2D route condense the processor rescue. Newt is a non-targetable marker. Losing her carrier fails the evacuation. The separate Sulaco tactical mission (50101) follows this evacuation; its grid and choreography remain adapted.' }
   },
   10: {
     fr: { objective: 'Détruisez les trois cristaux de soin pour empêcher la recharge des vingt sphères. Affaiblissez Nihilanth ou sa réserve d’énergie, puis montez sur les plateformes pour frapper le cerveau lorsque sa tête s’ouvre. Les coups sur le corps ne peuvent pas le tuer.',
@@ -43,6 +44,8 @@ const briefings = Object.freeze({
 
 export function getCanonicalEncounterBriefing(stage, lang = 'fr') {
   if (!stage || stage.customBattle || stage.isCustomBattle || stage.isCustom) return null;
+  const scene = resolveSourceScene(stage);
+  if (scene) return scene.briefing[lang === 'fr' ? 'fr' : 'en'];
   if (isCanonPiratesCurseStage(stage)) return briefings[269][lang === 'fr' ? 'fr' : 'en'];
   if (Number(stage.id) === 12) return isCanonRexStage(stage) ? briefings[12][lang === 'fr' ? 'fr' : 'en'] : null;
   const source = Object.values(CANON_PRIORITY_STAGES).find(entry => entry.id === Number(stage.id));

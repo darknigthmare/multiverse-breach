@@ -1,0 +1,3062 @@
+{
+  "date": "2026-10-28",
+  "baselineCommit": "ef23793eaaf472dbc8e56426949ceb405f5d07bf",
+  "charactersReviewed": [
+    "akane",
+    "eikichi",
+    "kanae",
+    "kaori",
+    "kaoru",
+    "karen",
+    "katsuo",
+    "kawahara",
+    "kouzou",
+    "kumi",
+    "leona",
+    "linda",
+    "madoka",
+    "maiko",
+    "mami",
+    "manami",
+    "maya",
+    "momoe",
+    "momone",
+    "nanase",
+    "reina",
+    "ruri",
+    "saki",
+    "saori",
+    "sudou",
+    "takurou",
+    "tooru",
+    "yuri",
+    "yuuji",
+    "yuuki"
+  ],
+  "scope": "Reference search for all 30 existing characters; additive fidelity revisions and separately identified OVA figures.",
+  "coverage": {
+    "existingCharacters": 30,
+    "newFidelityVariants": 30,
+    "newAnonymousOvaFigures": 5,
+    "all84ModelSheetsInspected": false,
+    "publicPreviewImagesInspected": 12
+  },
+  "method": [
+    "Separate visual-novel portraits from OVA frames and named animation model sheets.",
+    "Use only visible evidence for body relationships; preserve or identify reconstructed hidden regions.",
+    "Reject AI and LoRA galleries as proof of original clothing.",
+    "Keep unconfirmed individual identities descriptive rather than assigning a named character."
+  ],
+  "groups": {
+    "a": {
+      "revision": 4,
+      "group": "A",
+      "date": "2026-10-28T09:06:06.369373+00:00",
+      "charactersCovered": [
+        "saori",
+        "ruri",
+        "yuuki",
+        "maiko",
+        "madoka",
+        "leona",
+        "reina",
+        "kaori",
+        "karen",
+        "yuri"
+      ],
+      "scope": "Ten additive existing-outfit identity/fidelity variants plus research of independently attested missing OVA outfits. Root integrates results; original PNGs remain unchanged.",
+      "baseline": {
+        "requestedCommit": "ef23793eaaf472dbc8e56426949ceb405f5d07bf",
+        "localObservedHeadAtStart": "7c31b1b",
+        "manifestSpriteCount": 160,
+        "manifestRevision": 3
+      },
+      "summary": {
+        "tenCharacterCoverage": true,
+        "namedMissingOutfitDesignsAttested": [
+          "Saori OVA civilian short skirt",
+          "Reina OVA evening dress",
+          "Leona OVA party dress"
+        ],
+        "newGenerationReadyFromResearch": [],
+        "strongNewFullBodyCorrection": "Leona uniform model sheet provides standing geometry and loafers.",
+        "archive84SheetsDownloaded": false,
+        "previewImagesDownloadedAndInspected": 12,
+        "excludedImagesNotUsedForGeneration": true
+      },
+      "sources": [
+        {
+          "id": "archived-ova-official",
+          "url": "https://web.archive.org/web/20060624040935/http://www.amorz.com/discipline/index.html",
+          "type": "archived_primary_title_page",
+          "supports": "OVA title/cast identity for Saori, Yuuki, Ruri, Maiko, Leona and Takurou; does not establish all outfits."
+        },
+        {
+          "id": "settei-gallery",
+          "url": "https://setteidreams.net/settei/discipline/",
+          "type": "third_party_scan_archive",
+          "supports": "Gallery advertises 84 Discipline design images. The index was readable; raster gallery images and RAR could not be retrieved."
+        },
+        {
+          "id": "settei-archive-updates",
+          "url": "https://setteidreams.net/archive-of-updates",
+          "type": "third_party_scan_archive",
+          "supports": "Archive lists Discipline addition on 2025-01-25, scans credited to Gamer101_123."
+        },
+        {
+          "id": "settei-public-download",
+          "url": "https://setteidreams.net/downloads/Settei_Discipline.rar",
+          "type": "public_archive_link",
+          "downloaded": false,
+          "failure": "Web parser did not support archive; direct read-only download returned HTTP 403. No access-control bypass attempted. No 84-page archive was extracted or inspected."
+        },
+        {
+          "id": "rakuma-ten-preview",
+          "url": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "type": "public_sale_listing_with_scanned_production_drawings",
+          "supports": "Ten downloadable preview images labelled OVA DISCIPLINE setting materials, 84 sheets. Named Japanese labels support identities. Public listing provenance does not establish a studio chain of custody."
+        },
+        {
+          "id": "rakuma-two-preview",
+          "url": "https://item.fril.jp/472295f91ae459dc10279eff1b1b483b",
+          "type": "public_sale_listing_with_scanned_production_drawings",
+          "supports": "Two preview photographs: one excluded body-comparison image; one combined named Saori/Yuuki civilian design photograph."
+        },
+        {
+          "id": "madoka-named-vn",
+          "url": "https://www.ymgal.games/ca36219",
+          "type": "secondary_named_vn_character_page",
+          "imageUrl": "https://cdn.ymgal.games/archive/main/12/127e6e11dadb478aa6f378f4d6b46847.jpg",
+          "supports": "Named Madoka portrait, two compact side buns and uniform. It is VN evidence, not itself an OVA frame."
+        },
+        {
+          "id": "ova-roster",
+          "url": "https://www.animecharactersdatabase.com/source.php?id=1668&tab=Characters",
+          "type": "secondary_roster",
+          "supports": "OVA roster context; not sufficient proof of a particular costume."
+        },
+        {
+          "id": "vn-roster",
+          "url": "https://www.animecharactersdatabase.com/source.php?id=1784&tab=Characters",
+          "type": "secondary_roster",
+          "supports": "Separate VN roster prevents treating all visual-novel designs as OVA costumes."
+        }
+      ],
+      "setteiPreviewInventory": [
+        {
+          "index": 1,
+          "url": "https://img.fril.jp/img/689573559/l/2280209791.png?1717257611=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "bytes": 356054,
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "sha256": "3f9c5ea7a7c09cf9614289246f53a0bab55e8be4af08a2a01b39d0e0fc7968ca",
+          "downloaded": true,
+          "useStatus": "usable_clothed",
+          "visualDescription": "Named Leona uniform model sheet: complete front and partial back figures, shoe construction and limb proportions. Monochrome; color is not established by this sheet."
+        },
+        {
+          "index": 2,
+          "url": "https://img.fril.jp/img/689573559/l/2280209792.png?1717257662=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "bytes": 121026,
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "sha256": "9fc69583ee44b5b76e8cf9079af014616c0b0e5b3bc7c29e2813654687f1f590",
+          "downloaded": true,
+          "useStatus": "documentary_only",
+          "visualDescription": "Named Reina and Leona party dresses, full front/back and sandals. Reina matches seated left person in user frame 055812. Reina party generation was blocked by root; Leona color is unverified."
+        },
+        {
+          "index": 3,
+          "url": "https://img.fril.jp/img/689573559/l/2280209795.png?1717257666=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "bytes": 87920,
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "sha256": "0332d99bf1fb9b0d187a448dc0329da48edd7aee7612c5510c70eb191b769cbf",
+          "downloaded": true,
+          "useStatus": "excluded",
+          "visualDescription": "Unclothed body-comparison sheet; not used as a generation input or proportion authority."
+        },
+        {
+          "index": 4,
+          "url": "https://img.fril.jp/img/689573559/l/2280209797.png?1717257675=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "bytes": 122530,
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "sha256": "54fbb49090a9c0e3681ce8eafc9e2ba71f593ce3d09fdf21a633b9371a0ff4ae",
+          "downloaded": true,
+          "useStatus": "usable_neutral_head",
+          "visualDescription": "Named Saori face model sheet, front/profile/three-quarter. No outfit or full-body evidence."
+        },
+        {
+          "index": 5,
+          "url": "https://img.fril.jp/img/689573559/l/2280209800.png?1717257679=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "bytes": 697354,
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "sha256": "aecc9200d248fa34e1c46eb2b15176f443dd613719b74a33c314f03ebefad433",
+          "downloaded": true,
+          "useStatus": "excluded_reproduction",
+          "visualDescription": "Named Momone nurse design is attested, but sexualized cutouts/undergarment detail excluded from generation. Group B informed."
+        },
+        {
+          "index": 6,
+          "url": "https://img.fril.jp/img/689573559/l/2280209804.png?1717257688=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "bytes": 146430,
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "sha256": "353f3976261f26ba0c5bd48c600cca094e6a45502e1897ea78748dd0dc47a752",
+          "downloaded": true,
+          "useStatus": "excluded",
+          "visualDescription": "Revealing swimming-club designs; unidentified members, excluded from generation."
+        },
+        {
+          "index": 7,
+          "url": "https://img.fril.jp/img/689573559/l/2280209808.png?1717257693=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "bytes": 242181,
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "sha256": "9822f0269c322c3d86571e1af402e5ca8cf6e084f1e37af4a4aa3a7f7f844c29",
+          "downloaded": true,
+          "useStatus": "usable_neutral_head",
+          "visualDescription": "Named Kawahara face design with rimless-glasses annotation; group B received this reference."
+        },
+        {
+          "index": 8,
+          "url": "https://img.fril.jp/img/689573559/l/2280209813.png?1717257697=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "bytes": 84581,
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "sha256": "4ea25cd7dde4f9b3ad1134422790948011990ddbb2c1387810db2c41b423b0fc",
+          "downloaded": true,
+          "useStatus": "excluded",
+          "visualDescription": "Named Saki microbikini design; excluded from generation. Group C informed."
+        },
+        {
+          "index": 9,
+          "url": "https://img.fril.jp/img/689573559/l/2280209817.png?1717257709=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "bytes": 209305,
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "sha256": "3e5a1fc2b52ced050bffd20250750070ae7e5475b17f766274ddf93c41dba36e",
+          "downloaded": true,
+          "useStatus": "usable_anonymous_role",
+          "visualDescription": "Broadcasting-club member in full uniform, labelled by role only. Do not assign a named character without evidence."
+        },
+        {
+          "index": 10,
+          "url": "https://img.fril.jp/img/689573559/l/2280209821.png?1717257713=",
+          "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+          "bytes": 174963,
+          "dimensions": [
+            1080,
+            1080
+          ],
+          "sha256": "c7c228eddf772b1228c0bd715a5edc19edec42be74bee88c9b34afc28dac18ca",
+          "downloaded": true,
+          "useStatus": "usable_clothed_detail",
+          "visualDescription": "Leona uniform social-club arm-band detail, lettering and attachment. Accessory variation rather than a completely new full outfit."
+        }
+      ],
+      "characterMatrix": [
+        {
+          "characterId": "saori",
+          "alreadyRealized": [
+            {
+              "costumeId": "uniform",
+              "provenance": "reference",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform.png"
+            },
+            {
+              "costumeId": "casual",
+              "provenance": "reference",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--casual.png"
+            },
+            {
+              "costumeId": "baseball",
+              "provenance": "reference",
+              "category": "sport",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--baseball.png"
+            },
+            {
+              "costumeId": "rose-adapted",
+              "provenance": "adapted",
+              "category": "other",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--rose-adapted.png"
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--military-jgsdf.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--swimwear-sport-original.png"
+            },
+            {
+              "costumeId": "casual-reference-v2",
+              "provenance": "reference",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--casual-reference-v2.png"
+            },
+            {
+              "costumeId": "uniform-reference-v2",
+              "provenance": "reference",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--uniform-reference-v2.png"
+            },
+            {
+              "costumeId": "baseball-reference-v2",
+              "provenance": "reference",
+              "category": "sport",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--baseball-reference-v2.png"
+            },
+            {
+              "costumeId": "rose-adapted-reference-v2",
+              "provenance": "adapted",
+              "category": "other",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--rose-adapted-reference-v2.png"
+            },
+            {
+              "costumeId": "military-jgsdf-reference-v2",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--military-jgsdf-reference-v2.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original-reference-v2",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--swimwear-sport-original-reference-v2.png"
+            },
+            {
+              "costumeId": "ova-tactical-reference-v3",
+              "provenance": "reference",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/saori--ova-tactical-reference-v3.png"
+            }
+          ],
+          "selectedExistingVariant": {
+            "baseCostumeId": "uniform-reference-v2",
+            "targetCostumeId": "uniform-fidelity-v4",
+            "sourceMedium": "visual_novel_game",
+            "focus": [
+              "longer softly oval face and natural neck",
+              "straight dark-navy back hair and narrower front locks",
+              "uniform collar and trim"
+            ],
+            "references": [
+              {
+                "type": "user_upload",
+                "url": null,
+                "filename": "image(1).png",
+                "available": true,
+                "width": 273,
+                "height": 1024,
+                "sha256": "ddd56cdc1d44bdb24391a351b42bf5b4e6614c7b7956e776c0fa66dc90258025",
+                "role": "Upper uniform panel; lower baseball panel is not this variant.",
+                "limitations": "Partial figure; lower legs and footwear not established."
+              },
+              {
+                "type": "model_sheet_photo",
+                "url": "https://img.fril.jp/img/689573559/l/2280209797.png?1717257675=",
+                "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+                "role": "Named Saori face-only support",
+                "limitations": "OVA head drawing does not prove the VN uniform or lower-body design."
+              }
+            ],
+            "supportingReferenceMedia": [
+              "visual_novel_game",
+              "anime_ova"
+            ],
+            "sourceMediaNotes": "VN uniform; OVA head sheet used for face support only."
+          },
+          "newAttestedCandidates": [
+            {
+              "costume": "OVA civilian buttoned shirt and short skirt",
+              "status": "attested_but_standalone_safe_input_unavailable",
+              "newOutfit": true,
+              "evidence": [
+                {
+                  "url": "https://img.fril.jp/img/707910931/l/2359527207.jpg?1725008379=",
+                  "listingUrl": "https://item.fril.jp/472295f91ae459dc10279eff1b1b483b",
+                  "visible": "Left labelled 音川沙織 私服; complete front, skirt back and shoes."
+                }
+              ],
+              "supports": [
+                "short skirt differs from prior VN shorts",
+                "buttoned shirt with rolled sleeves; monochrome sheet does not certify color",
+                "belt and plain low-heeled slip-on shoes",
+                "complete clothed standing proportions"
+              ],
+              "limitations": [
+                "Monochrome design does not establish color.",
+                "Combined photograph includes another character construction drawing unsuitable as a generation input; no standalone neutral Saori-only public image found.",
+                "No code crop or retouch performed to remove that material."
+              ],
+              "action": "Treat as a separate OVA outfit if a suitable standalone source becomes available; do not rewrite the existing VN shorts costume."
+            }
+          ],
+          "otherMissingOutfitsStatus": "Only the listed source-supported candidates are asserted; no exhaustive completeness claim.",
+          "proportionCertification": {
+            "literalOneToOneCertified": false,
+            "reason": "Only visible clothed relationships can be corrected. Cropped limbs, perspective, pose and source-medium differences prevent a whole-body 1:1 guarantee."
+          },
+          "generationStatus": {
+            "status": "accepted",
+            "costumeId": "uniform-fidelity-v4",
+            "recordFile": "group-a-assets.json",
+            "wholeBodyOneToOneCertified": false
+          }
+        },
+        {
+          "characterId": "ruri",
+          "alreadyRealized": [
+            {
+              "costumeId": "casual",
+              "provenance": "reference",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual.png"
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--military-jgsdf.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--swimwear-sport-original.png"
+            },
+            {
+              "costumeId": "uniform-academy-adapted",
+              "provenance": "adapted",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--uniform-academy-adapted.png"
+            },
+            {
+              "costumeId": "casual-reference-v2",
+              "provenance": "reference",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--casual-reference-v2.png"
+            },
+            {
+              "costumeId": "military-jgsdf-reference-v2",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--military-jgsdf-reference-v2.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original-reference-v2",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--swimwear-sport-original-reference-v2.png"
+            },
+            {
+              "costumeId": "uniform-academy-adapted-reference-v2",
+              "provenance": "adapted",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--uniform-academy-adapted-reference-v2.png"
+            },
+            {
+              "costumeId": "ova-tactical-reference-v3",
+              "provenance": "reference",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/ruri--ova-tactical-reference-v3.png"
+            }
+          ],
+          "selectedExistingVariant": {
+            "baseCostumeId": "casual-reference-v2",
+            "targetCostumeId": "casual-fidelity-v4",
+            "sourceMedium": "visual_novel_game",
+            "focus": [
+              "soft oval face and restrained smile",
+              "narrow dark-green twin tails and smaller yellow ties",
+              "visible collar, waistband and pleats"
+            ],
+            "references": [
+              {
+                "type": "user_upload",
+                "url": null,
+                "filename": "image(8).png",
+                "available": true,
+                "width": 817,
+                "height": 1828,
+                "sha256": "c812d6b28b1a79d5542382fe0b3a276ad6d697ffcfc33a3d3eaa2d25062046fe",
+                "role": "Named clothed Ruri casual color drawing.",
+                "limitations": "Lower legs/footwear cropped; source pose differs from neutral sprite stance."
+              }
+            ]
+          },
+          "newAttestedCandidates": [],
+          "otherMissingOutfitsStatus": "No additional named neutral costume could be securely confirmed from the inspected public evidence.",
+          "proportionCertification": {
+            "literalOneToOneCertified": false,
+            "reason": "Only visible clothed relationships can be corrected. Cropped limbs, perspective, pose and source-medium differences prevent a whole-body 1:1 guarantee."
+          },
+          "generationStatus": {
+            "status": "accepted",
+            "costumeId": "casual-fidelity-v4",
+            "recordFile": "group-a-assets.json",
+            "wholeBodyOneToOneCertified": false
+          }
+        },
+        {
+          "characterId": "yuuki",
+          "alreadyRealized": [
+            {
+              "costumeId": "baseball",
+              "provenance": "reference",
+              "category": "sport",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--baseball.png"
+            },
+            {
+              "costumeId": "casual-covered",
+              "provenance": "adapted",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--casual-covered.png"
+            },
+            {
+              "costumeId": "school-trousers",
+              "provenance": "adapted",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--school-trousers.png"
+            },
+            {
+              "costumeId": "tracksuit",
+              "provenance": "adapted",
+              "category": "sport",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--tracksuit.png"
+            },
+            {
+              "costumeId": "aquatic-covered",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--aquatic-covered.png"
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--military-jgsdf.png"
+            },
+            {
+              "costumeId": "ova-tactical-reference-v3",
+              "provenance": "reference",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuuki--ova-tactical-reference-v3.png"
+            }
+          ],
+          "selectedExistingVariant": {
+            "baseCostumeId": "ova-tactical-reference-v3",
+            "targetCostumeId": "ova-tactical-fidelity-v4",
+            "sourceMedium": "anime_ova",
+            "focus": [
+              "angular face and natural neck",
+              "gentler source-like arm contour and shading",
+              "olive tactical palette, pockets and sole details"
+            ],
+            "references": [
+              {
+                "type": "user_upload",
+                "url": null,
+                "filename": "image(20261028-055732).png",
+                "available": true,
+                "width": 2048,
+                "height": 1551,
+                "sha256": "45953683efe2ec758c335f81cc7e04e6e7b28cc98b57e0cadb7e7148011cfd6d",
+                "role": "Yuuki standing at far right; same OVA tactical outfit.",
+                "limitations": "Feet cropped; perspective affects proportions."
+              },
+              {
+                "type": "user_upload",
+                "url": null,
+                "filename": "image(20261028-055655).png",
+                "available": true,
+                "width": 2048,
+                "height": 1594,
+                "sha256": "316f98f86c729c196cd55fa6851f05cc46c49942dc4d8b30cab6e9ec65210c94",
+                "role": "Yuuki action view, supporting boot sole evidence only.",
+                "limitations": "Foreshortened action pose cannot establish neutral standing body proportions."
+              }
+            ]
+          },
+          "newAttestedCandidates": [],
+          "otherMissingOutfitsStatus": "No additional named neutral costume could be securely confirmed from the inspected public evidence.",
+          "proportionCertification": {
+            "literalOneToOneCertified": false,
+            "reason": "Only visible clothed relationships can be corrected. Cropped limbs, perspective, pose and source-medium differences prevent a whole-body 1:1 guarantee."
+          },
+          "generationStatus": {
+            "status": "accepted",
+            "costumeId": "ova-tactical-fidelity-v4",
+            "recordFile": "group-a-assets.json",
+            "wholeBodyOneToOneCertified": false
+          }
+        },
+        {
+          "characterId": "maiko",
+          "alreadyRealized": [
+            {
+              "costumeId": "uniform",
+              "provenance": "reference",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--uniform.png"
+            },
+            {
+              "costumeId": "casual",
+              "provenance": "reference",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--casual.png"
+            },
+            {
+              "costumeId": "baseball",
+              "provenance": "reference",
+              "category": "sport",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--baseball.png"
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--military-jgsdf.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--swimwear-sport-original.png"
+            },
+            {
+              "costumeId": "ova-tactical-reference-v3",
+              "provenance": "reference",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maiko--ova-tactical-reference-v3.png"
+            }
+          ],
+          "selectedExistingVariant": {
+            "baseCostumeId": "uniform",
+            "targetCostumeId": "uniform-fidelity-v4",
+            "sourceMedium": "visual_novel_game",
+            "focus": [
+              "replace invented broad back-hair fan by narrow gathered hair",
+              "longer face, restrained glasses and natural neck",
+              "collar/shoulder-panel construction"
+            ],
+            "references": [
+              {
+                "type": "user_upload",
+                "url": null,
+                "filename": "image(7).png",
+                "available": true,
+                "width": 292,
+                "height": 526,
+                "sha256": "2e26c1621042477f38f4fdb2b297904267b78a928622b2079e081956dab83264",
+                "role": "Named clothed Maiko uniform color drawing.",
+                "limitations": "Partial body; skirt hem, lower legs and shoes not fully shown."
+              }
+            ]
+          },
+          "newAttestedCandidates": [],
+          "otherMissingOutfitsStatus": "No additional named neutral costume could be securely confirmed from the inspected public evidence.",
+          "proportionCertification": {
+            "literalOneToOneCertified": false,
+            "reason": "Only visible clothed relationships can be corrected. Cropped limbs, perspective, pose and source-medium differences prevent a whole-body 1:1 guarantee."
+          },
+          "generationStatus": {
+            "status": "accepted",
+            "costumeId": "uniform-fidelity-v4",
+            "recordFile": "group-a-assets.json",
+            "wholeBodyOneToOneCertified": false
+          }
+        },
+        {
+          "characterId": "madoka",
+          "alreadyRealized": [
+            {
+              "costumeId": "uniform",
+              "provenance": "reference",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--uniform.png"
+            },
+            {
+              "costumeId": "civilian-original",
+              "provenance": "adapted",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--civilian-original.png"
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--military-jgsdf.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--swimwear-sport-original.png"
+            },
+            {
+              "costumeId": "ova-tactical-reference-v3",
+              "provenance": "reference",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/madoka--ova-tactical-reference-v3.png"
+            }
+          ],
+          "selectedExistingVariant": {
+            "baseCostumeId": "uniform",
+            "targetCostumeId": "uniform-fidelity-v4",
+            "sourceMedium": "visual_novel_game",
+            "focus": [
+              "longer oval face and natural neck",
+              "compact buns and serious expression",
+              "natural crossed-arm overlap and white shoulder panels"
+            ],
+            "references": [
+              {
+                "type": "named_secondary_reference",
+                "url": "https://www.ymgal.games/ca36219",
+                "imageUrl": "https://cdn.ymgal.games/archive/main/12/127e6e11dadb478aa6f378f4d6b46847.jpg",
+                "available": true,
+                "width": 250,
+                "height": 300,
+                "sha256": "212a63821eb45e37a4a6bfbcb3ab0296d5a897c63ec8a8ff56865d56799dda00",
+                "role": "Named Madoka uniform portrait",
+                "limitations": "250x300 portrait ends at hips; lower-body dimensions and footwear unverified."
+              }
+            ]
+          },
+          "newAttestedCandidates": [],
+          "otherMissingOutfitsStatus": "No additional named neutral costume could be securely confirmed from the inspected public evidence.",
+          "proportionCertification": {
+            "literalOneToOneCertified": false,
+            "reason": "Only visible clothed relationships can be corrected. Cropped limbs, perspective, pose and source-medium differences prevent a whole-body 1:1 guarantee."
+          },
+          "generationStatus": {
+            "status": "accepted",
+            "costumeId": "uniform-fidelity-v4",
+            "recordFile": "group-a-assets.json",
+            "wholeBodyOneToOneCertified": false
+          }
+        },
+        {
+          "characterId": "leona",
+          "alreadyRealized": [
+            {
+              "costumeId": "uniform",
+              "provenance": "reference",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--uniform.png"
+            },
+            {
+              "costumeId": "alternate",
+              "provenance": "reference",
+              "category": "other",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--alternate.png"
+            },
+            {
+              "costumeId": "civilian-original",
+              "provenance": "adapted",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--civilian-original.png"
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--military-jgsdf.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/leona--swimwear-sport-original.png"
+            }
+          ],
+          "selectedExistingVariant": {
+            "baseCostumeId": "uniform",
+            "targetCostumeId": "uniform-fidelity-v4",
+            "sourceMedium": "visual_novel_game",
+            "focus": [
+              "full-body OVA uniform silhouette and limb lengths",
+              "replace invented ankle boots with plain loafers from design sheet",
+              "narrower straight hair and two defined front spiral locks"
+            ],
+            "references": [
+              {
+                "type": "user_upload",
+                "url": null,
+                "filename": "image(9).png",
+                "available": true,
+                "width": 850,
+                "height": 1813,
+                "sha256": "cca5d6e7367439c9c3a5d7ee0fc5dde8ca17a9f648fa6e513eff9b82db75afce",
+                "role": "Named Leona uniform color drawing; color and identity authority.",
+                "limitations": "VN color source; partial body."
+              },
+              {
+                "type": "model_sheet_photo",
+                "url": "https://img.fril.jp/img/689573559/l/2280209791.png?1717257611=",
+                "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+                "role": "Named Leona OVA uniform complete front, partial back and shoes geometry",
+                "limitations": "Monochrome source; cannot certify its colors. Variant explicitly combines OVA geometry and existing VN palette."
+              }
+            ],
+            "supportingReferenceMedia": [
+              "visual_novel_game",
+              "anime_ova"
+            ],
+            "sourceMediaNotes": "Costume and palette remain VN; OVA monochrome model sheet supports clothed geometry and loafers only."
+          },
+          "newAttestedCandidates": [
+            {
+              "costume": "OVA party dress",
+              "status": "attested_design_color_unverified",
+              "newOutfit": true,
+              "evidence": [
+                {
+                  "url": "https://img.fril.jp/img/689573559/l/2280209792.png?1717257662=",
+                  "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+                  "visible": "Right labelled レオナ パーティドレス, front/back and sandals."
+                }
+              ],
+              "limitations": [
+                "No securely attributed clothed color frame of this dress found.",
+                "Do not map the unbraided woman at the right of screenshot 055812 to Leona on hair color alone."
+              ],
+              "action": "Document as missing; do not invent dress color or silently label another woman Leona."
+            },
+            {
+              "costume": "Uniform with social-club arm band",
+              "status": "attested_accessory_variation",
+              "newOutfit": false,
+              "evidence": [
+                {
+                  "url": "https://img.fril.jp/img/689573559/l/2280209821.png?1717257713=",
+                  "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+                  "visible": "Label 社交部腕章, full arm-band detail and Leona profile."
+                }
+              ],
+              "limitations": [
+                "Monochrome accessory detail; not a new complete outfit."
+              ],
+              "action": "Optional future uniform-accessory variant after color corroboration."
+            }
+          ],
+          "otherMissingOutfitsStatus": "Only the listed source-supported candidates are asserted; no exhaustive completeness claim.",
+          "proportionCertification": {
+            "literalOneToOneCertified": false,
+            "reason": "Only visible clothed relationships can be corrected. Cropped limbs, perspective, pose and source-medium differences prevent a whole-body 1:1 guarantee."
+          },
+          "generationStatus": {
+            "status": "accepted",
+            "costumeId": "uniform-fidelity-v4",
+            "recordFile": "group-a-assets.json",
+            "wholeBodyOneToOneCertified": false
+          }
+        },
+        {
+          "characterId": "reina",
+          "alreadyRealized": [
+            {
+              "costumeId": "suit",
+              "provenance": "reference",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/reina--suit.png"
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/reina--military-jgsdf.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/reina--swimwear-sport-original.png"
+            },
+            {
+              "costumeId": "uniform-academy-adapted",
+              "provenance": "adapted",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/reina--uniform-academy-adapted.png"
+            }
+          ],
+          "selectedExistingVariant": {
+            "baseCostumeId": "suit",
+            "targetCostumeId": "suit-fidelity-v4",
+            "sourceMedium": "visual_novel_game",
+            "focus": [
+              "longer oval face and softer chin",
+              "compact black-tied blonde updo",
+              "straight front locks and restrained mouth"
+            ],
+            "references": [
+              {
+                "type": "user_upload",
+                "url": null,
+                "filename": "image(20261027-210215).png",
+                "available": true,
+                "width": 849,
+                "height": 1735,
+                "sha256": "2e70c30ac9db436959bde708f0248b56c4afb82ceec8a2db6d3c074a59a85cb8",
+                "role": "Named Reina color drawing; head, hair and earrings only.",
+                "limitations": "Partial figure; existing body silhouette and suit retained. No full-body proportion correction claimed."
+              }
+            ]
+          },
+          "newAttestedCandidates": [
+            {
+              "costume": "OVA asymmetrical evening dress",
+              "status": "attested_generation_blocked",
+              "newOutfit": true,
+              "evidence": [
+                {
+                  "url": "https://img.fril.jp/img/689573559/l/2280209792.png?1717257662=",
+                  "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+                  "visible": "Left labelled レイナ パーティドレス, full front/back and sandals."
+                },
+                {
+                  "type": "user_upload",
+                  "url": null,
+                  "filename": "image(20261028-055812).png",
+                  "available": true,
+                  "width": 2048,
+                  "height": 1691,
+                  "sha256": "798a4a3b4fb114b8753b33b6694b192be098339299fb68c87ba1ebf97431e53a",
+                  "role": "Seated woman at left matches named Reina design hair/updo, long front locks and dress.",
+                  "limitations": "Seated/cropped legs; exact standing proportions from monochrome design only."
+                }
+              ],
+              "supports": [
+                "Reina identity stronger than earlier tentative v3 attribution",
+                "asymmetrical long dress with one shoulder and strappy shoes"
+              ],
+              "limitations": [
+                "Generation by root failed output moderation; no image produced.",
+                "No retry or rewording attempted."
+              ],
+              "generationBlock": {
+                "requestId": "ac5717cb-4ae8-4f91-a8d7-4fc92318a1f9",
+                "reason": "output moderation sexual",
+                "handledBy": "root"
+              },
+              "action": "Keep documented blocked; existing suit fidelity edit is a separate requested variant."
+            }
+          ],
+          "otherMissingOutfitsStatus": "Only the listed source-supported candidates are asserted; no exhaustive completeness claim.",
+          "proportionCertification": {
+            "literalOneToOneCertified": false,
+            "reason": "Only visible clothed relationships can be corrected. Cropped limbs, perspective, pose and source-medium differences prevent a whole-body 1:1 guarantee."
+          },
+          "generationStatus": {
+            "status": "accepted",
+            "costumeId": "suit-fidelity-v4",
+            "recordFile": "group-a-assets.json",
+            "wholeBodyOneToOneCertified": false
+          }
+        },
+        {
+          "characterId": "kaori",
+          "alreadyRealized": [
+            {
+              "costumeId": "outfit",
+              "provenance": "reference",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit.png"
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--military-jgsdf.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--swimwear-sport-original.png"
+            },
+            {
+              "costumeId": "uniform-academy-adapted",
+              "provenance": "adapted",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--uniform-academy-adapted.png"
+            },
+            {
+              "costumeId": "outfit-reference-v2",
+              "provenance": "reference",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--outfit-reference-v2.png"
+            },
+            {
+              "costumeId": "military-jgsdf-reference-v2",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--military-jgsdf-reference-v2.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original-reference-v2",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--swimwear-sport-original-reference-v2.png"
+            },
+            {
+              "costumeId": "uniform-academy-adapted-reference-v2",
+              "provenance": "adapted",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kaori--uniform-academy-adapted-reference-v2.png"
+            }
+          ],
+          "selectedExistingVariant": {
+            "baseCostumeId": "outfit-reference-v2",
+            "targetCostumeId": "outfit-fidelity-v4",
+            "sourceMedium": "visual_novel_game",
+            "focus": [
+              "shoulder-length plum hair instead of waist-length hair",
+              "soft oval face, green eyes and natural neck",
+              "white/black collar, tie and button-seam detail"
+            ],
+            "references": [
+              {
+                "type": "user_upload",
+                "url": null,
+                "filename": "image(20261027-210228).png",
+                "available": true,
+                "width": 697,
+                "height": 1758,
+                "sha256": "21c8098d4a2f9b7e091db4b9d0d6ecd616e9035f675e86ce95ab5646d7df7bdb",
+                "role": "Named Kaori clothed color drawing.",
+                "limitations": "Cropped above knees; lower legs and shoes retained as unverified continuation."
+              }
+            ]
+          },
+          "newAttestedCandidates": [],
+          "otherMissingOutfitsStatus": "No additional named neutral costume could be securely confirmed from the inspected public evidence.",
+          "proportionCertification": {
+            "literalOneToOneCertified": false,
+            "reason": "Only visible clothed relationships can be corrected. Cropped limbs, perspective, pose and source-medium differences prevent a whole-body 1:1 guarantee."
+          },
+          "generationStatus": {
+            "status": "accepted",
+            "costumeId": "outfit-fidelity-v4",
+            "recordFile": "group-a-assets.json",
+            "wholeBodyOneToOneCertified": false
+          }
+        },
+        {
+          "characterId": "karen",
+          "alreadyRealized": [
+            {
+              "costumeId": "uniform",
+              "provenance": "reference",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform.png"
+            },
+            {
+              "costumeId": "civilian-original",
+              "provenance": "adapted",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--civilian-original.png"
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--military-jgsdf.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--swimwear-sport-original.png"
+            },
+            {
+              "costumeId": "uniform-reference-v2",
+              "provenance": "reference",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--uniform-reference-v2.png"
+            },
+            {
+              "costumeId": "civilian-original-reference-v2",
+              "provenance": "adapted",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--civilian-original-reference-v2.png"
+            },
+            {
+              "costumeId": "military-jgsdf-reference-v2",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--military-jgsdf-reference-v2.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original-reference-v2",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/karen--swimwear-sport-original-reference-v2.png"
+            }
+          ],
+          "selectedExistingVariant": {
+            "baseCostumeId": "uniform-reference-v2",
+            "targetCostumeId": "uniform-fidelity-v4",
+            "sourceMedium": "visual_novel_game",
+            "focus": [
+              "softer oval face, green eyes and small smile",
+              "smooth silver hair with fine low ponytail and black tie",
+              "natural neck and uniform seam placement"
+            ],
+            "references": [
+              {
+                "type": "user_upload",
+                "url": null,
+                "filename": "image(20261027-210116).png",
+                "available": true,
+                "width": 868,
+                "height": 1729,
+                "sha256": "9400562938839db1a904ce60f64f3a1f6bb5e9cc5bea69459a3e094a6492d7cd",
+                "role": "Named Karen uniform color drawing.",
+                "limitations": "Cropped above knees; lower legs and shoes not established."
+              }
+            ]
+          },
+          "newAttestedCandidates": [],
+          "otherMissingOutfitsStatus": "No additional named neutral costume could be securely confirmed from the inspected public evidence.",
+          "proportionCertification": {
+            "literalOneToOneCertified": false,
+            "reason": "Only visible clothed relationships can be corrected. Cropped limbs, perspective, pose and source-medium differences prevent a whole-body 1:1 guarantee."
+          },
+          "generationStatus": {
+            "status": "accepted",
+            "costumeId": "uniform-fidelity-v4",
+            "recordFile": "group-a-assets.json",
+            "wholeBodyOneToOneCertified": false
+          }
+        },
+        {
+          "characterId": "yuri",
+          "alreadyRealized": [
+            {
+              "costumeId": "uniform",
+              "provenance": "reference",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform.png"
+            },
+            {
+              "costumeId": "civilian-original",
+              "provenance": "adapted",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--civilian-original.png"
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--military-jgsdf.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--swimwear-sport-original.png"
+            },
+            {
+              "costumeId": "uniform-reference-v2",
+              "provenance": "reference",
+              "category": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--uniform-reference-v2.png"
+            },
+            {
+              "costumeId": "civilian-original-reference-v2",
+              "provenance": "adapted",
+              "category": "civilian",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--civilian-original-reference-v2.png"
+            },
+            {
+              "costumeId": "military-jgsdf-reference-v2",
+              "provenance": "adapted",
+              "category": "military",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--military-jgsdf-reference-v2.png"
+            },
+            {
+              "costumeId": "swimwear-sport-original-reference-v2",
+              "provenance": "adapted",
+              "category": "swimwear",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/yuri--swimwear-sport-original-reference-v2.png"
+            }
+          ],
+          "selectedExistingVariant": {
+            "baseCostumeId": "uniform-reference-v2",
+            "targetCostumeId": "uniform-fidelity-v4",
+            "sourceMedium": "visual_novel_game",
+            "focus": [
+              "longer calm face and natural neck",
+              "narrow straight burgundy hair and fine fringe",
+              "reduce vivid magenta highlights; refine collar/tie"
+            ],
+            "references": [
+              {
+                "type": "user_upload",
+                "url": null,
+                "filename": "image(20261027-210201).png",
+                "available": true,
+                "width": 685,
+                "height": 1666,
+                "sha256": "4e6df551a013f9d5dd8fc4fcbe37ce388dc24f6b4a09a2a1d53e3902573d603f",
+                "role": "Named Yuri uniform color drawing.",
+                "limitations": "Cropped above knees; lower legs and shoes not established.",
+                "name": "image(20261027-210201).png",
+                "sourceMedium": "visual_novel_game",
+                "medium": "visual_novel_game"
+              }
+            ]
+          },
+          "newAttestedCandidates": [],
+          "otherMissingOutfitsStatus": "No additional named neutral costume could be securely confirmed from the inspected public evidence.",
+          "proportionCertification": {
+            "literalOneToOneCertified": false,
+            "reason": "Only visible clothed relationships can be corrected. Cropped limbs, perspective, pose and source-medium differences prevent a whole-body 1:1 guarantee."
+          },
+          "generationStatus": {
+            "status": "accepted",
+            "costumeId": "uniform-fidelity-v4",
+            "recordFile": "group-a-assets.json",
+            "wholeBodyOneToOneCertified": false
+          }
+        }
+      ],
+      "unresolvedShotIdentities": [
+        {
+          "reference": "image(20261028-055812).png",
+          "subject": "Standing woman in yellow at right",
+          "status": "identity_unconfirmed",
+          "reason": "No named color or model-sheet match establishes Kaori or Leona. Different eye/hair details prevent attribution by resemblance alone."
+        },
+        {
+          "reference": "image(20261028-055831).png",
+          "subject": "Two white/plum uniformed officers",
+          "status": "identity_unconfirmed",
+          "reason": "No reliable named head reference found. May be documented as separate anonymous roles by root, not transferred to named characters."
+        },
+        {
+          "reference": "image(20261028-060013).png",
+          "subject": "Domestic-service uniform group",
+          "status": "identity_unconfirmed",
+          "reason": "No reliable named match for group A; do not invent names or costumes for the ten characters."
+        }
+      ],
+      "excludedEvidence": [
+        "AI/LoRA model pages and generated image galleries are not canonical proof.",
+        "Nude or sexualized model-sheet previews excluded as generation inputs and from body-proportion measurement.",
+        "055928 screenshot excluded from generation."
+      ],
+      "researchLimits": [
+        "The archive advertises 84 sheets; only 12 listing preview photographs were inspected, not all 84 sheets.",
+        "Public listing photos are secondary scans with Japanese production labels, not verified studio-hosted originals.",
+        "No episode numbers or timecodes were established for user-uploaded OVA frames.",
+        "Prior VN costume drawings are labelled as VN evidence and are not automatically reclassified as OVA costumes.",
+        "All source downloads were read-only; no archive access-control bypass was attempted."
+      ]
+    },
+    "b": {
+      "revision": 4,
+      "group": "B",
+      "createdAt": "2026-10-28T09:05:42.552799+00:00",
+      "baselineCommit": "ef23793eaaf472dbc8e56426949ceb405f5d07bf",
+      "baselineSprites": 160,
+      "groupCharacterCount": 10,
+      "groupExistingSpriteCount": 44,
+      "researchScope": "Authentic visual references and local uploads; VN and OVA are separated. No AI/LoRA images accepted as canonical evidence.",
+      "summary": {
+        "additiveExistingOutfitRevisionsPlanned": 10,
+        "missingOutfitsWithPartialVisualEvidence": 2,
+        "additionalNeutralFullBodyOutfitsReadyForGeneration": 0,
+        "fullBodyProportionsCertified": 0
+      },
+      "globalLimits": [
+        "SetteiDreams lists 84 sheets, but archive download returned403; only 10 public Rakuma previews were obtained. Do not claim the full archive was inspected.",
+        "No neutral complete body reference with both feet found for this group; no claim of literal whole-body1:1.",
+        "The masked troop frame image(20261028-055928).png was reviewed again; it does not identify a GroupB character.",
+        "AI/LoRA material and wrong-character search results excluded.",
+        "Source category labels are not taken as proof of image medium; duplicated VN portraits on OVA profile sites remain classifiedVN."
+      ],
+      "records": [
+        {
+          "characterId": "akane",
+          "characterName": "Akane",
+          "alreadyMade": [
+            {
+              "id": "akane:tennis-adapted",
+              "costumeId": "tennis-adapted",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--tennis-adapted.png",
+              "category": "sport",
+              "provenance": "adapted"
+            },
+            {
+              "id": "akane:civilian-original",
+              "costumeId": "civilian-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--civilian-original.png",
+              "category": "civilian",
+              "provenance": "adapted"
+            },
+            {
+              "id": "akane:military-jgsdf",
+              "costumeId": "military-jgsdf",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--military-jgsdf.png",
+              "category": "military",
+              "provenance": "adapted"
+            },
+            {
+              "id": "akane:swimwear-sport-original",
+              "costumeId": "swimwear-sport-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--swimwear-sport-original.png",
+              "category": "swimwear",
+              "provenance": "adapted"
+            },
+            {
+              "id": "akane:uniform-academy-adapted",
+              "costumeId": "uniform-academy-adapted",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/akane--uniform-academy-adapted.png",
+              "category": "uniform",
+              "provenance": "adapted"
+            }
+          ],
+          "selectedRevision": {
+            "baseCostumeId": "tennis-adapted",
+            "costumeId": "tennis-adapted-reference-v4",
+            "provenance": "adapted",
+            "sourceMedium": "undetermined",
+            "identityReferences": [
+              {
+                "url": "https://mywaifulist.moe/waifu/akane",
+                "webRef": "turn38search4",
+                "framing": "face, neck and shoulders",
+                "role": "visible facial identity and hair palette only",
+                "sha256": "712d5ced4b46482e4dcd472a77658b89ac012a06718b9af5f6ccc5953400e569",
+                "dimensions": [
+                  300,
+                  314
+                ],
+                "bytes": 31139
+              }
+            ],
+            "visibleCorrections": [
+              "Longer, narrower facial oval; burgundy eyes and quieter expression.",
+              "Muted brick-red hair and less inflated upper/front hair."
+            ],
+            "proportionScope": "Only visible head/neck relationships. Preserve existing torso/limbs/legs/height where reference is cropped.",
+            "remainingLimitations": [
+              "Rear hair length is not fully shown and remains inherited.",
+              "Torso, limbs, legs, feet and covered sports outfit remain the prior adaptation."
+            ],
+            "confidence": {
+              "identity": "high",
+              "visibleHeadCorrection": "high",
+              "wholeBodyProportions": "not_established"
+            },
+            "identitySourceMedium": "anime_ova"
+          },
+          "confirmedMissingOutfitCandidates": [],
+          "additionalEvidence": [],
+          "inconclusiveOrMissing": [
+            "Tennis-club membership is documented, but no neutral complete tennis outfit/model sheet found. Current tennis attire stays adapted.",
+            "YMgal illustration with suggestive bent pose was not used as a neutral costume source."
+          ],
+          "neutralFullBodyWithFeetFound": false
+        },
+        {
+          "characterId": "kanae",
+          "characterName": "Kanae",
+          "alreadyMade": [
+            {
+              "id": "kanae:uniform",
+              "costumeId": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--uniform.png",
+              "category": "uniform",
+              "provenance": "reference"
+            },
+            {
+              "id": "kanae:civilian-original",
+              "costumeId": "civilian-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--civilian-original.png",
+              "category": "civilian",
+              "provenance": "adapted"
+            },
+            {
+              "id": "kanae:military-jgsdf",
+              "costumeId": "military-jgsdf",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--military-jgsdf.png",
+              "category": "military",
+              "provenance": "adapted"
+            },
+            {
+              "id": "kanae:swimwear-sport-original",
+              "costumeId": "swimwear-sport-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kanae--swimwear-sport-original.png",
+              "category": "swimwear",
+              "provenance": "adapted"
+            }
+          ],
+          "selectedRevision": {
+            "baseCostumeId": "uniform",
+            "costumeId": "uniform-reference-v4",
+            "provenance": "reference",
+            "sourceMedium": "visual_novel_game",
+            "identityReferences": [
+              {
+                "url": "https://www.ymgal.games/ca46297",
+                "webRef": "turn29view1",
+                "framing": "bust/waist",
+                "role": "visible facial identity, hair and upper uniform",
+                "sha256": "cdc158575f630e8f7c7421b11aaf7a2c0c35db87795eaf763be73cae29b1ed5a",
+                "dimensions": [
+                  250,
+                  300
+                ],
+                "bytes": 22275
+              }
+            ],
+            "visibleCorrections": [
+              "Longer facial oval and less round cheeks/chin.",
+              "Smoother honey-brown upper hair; exact headband and twisted side section retained."
+            ],
+            "proportionScope": "Only visible head/neck relationships. Preserve existing torso/limbs/legs/height where reference is cropped.",
+            "remainingLimitations": [
+              "The reference stops at the waist; body height, lower garment, leg proportions and shoes are inherited, not verified.",
+              "Back hair length below the crop is inherited."
+            ],
+            "confidence": {
+              "identity": "high",
+              "visibleHeadCorrection": "high",
+              "wholeBodyProportions": "not_established"
+            },
+            "identitySourceMedium": "visual_novel_game"
+          },
+          "confirmedMissingOutfitCandidates": [],
+          "additionalEvidence": [],
+          "inconclusiveOrMissing": [
+            "No distinct outfit beyond the VN uniform portrait was visually established.",
+            "No neutral full-body model sheet with both feet found."
+          ],
+          "neutralFullBodyWithFeetFound": false
+        },
+        {
+          "characterId": "kawahara",
+          "characterName": "Kawahara",
+          "alreadyMade": [
+            {
+              "id": "kawahara:covered-medical",
+              "costumeId": "covered-medical",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--covered-medical.png",
+              "category": "other",
+              "provenance": "adapted"
+            },
+            {
+              "id": "kawahara:civilian-original",
+              "costumeId": "civilian-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--civilian-original.png",
+              "category": "civilian",
+              "provenance": "adapted"
+            },
+            {
+              "id": "kawahara:military-jgsdf",
+              "costumeId": "military-jgsdf",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--military-jgsdf.png",
+              "category": "military",
+              "provenance": "adapted"
+            },
+            {
+              "id": "kawahara:swimwear-sport-original",
+              "costumeId": "swimwear-sport-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--swimwear-sport-original.png",
+              "category": "swimwear",
+              "provenance": "adapted"
+            },
+            {
+              "id": "kawahara:uniform-academy-adapted",
+              "costumeId": "uniform-academy-adapted",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kawahara--uniform-academy-adapted.png",
+              "category": "uniform",
+              "provenance": "adapted"
+            }
+          ],
+          "selectedRevision": {
+            "baseCostumeId": "covered-medical",
+            "costumeId": "covered-medical-reference-v4",
+            "provenance": "adapted",
+            "sourceMedium": "undetermined",
+            "identityReferences": [
+              {
+                "url": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+                "imageUrl": "https://img.fril.jp/img/689573559/l/2280209808.png?1717257693=",
+                "framing": "named production head sheet, multiple views",
+                "role": "face shape, fringe, rimless glasses and earrings",
+                "sha256": "9822f0269c322c3d86571e1af402e5ca8cf6e084f1e37af4a4aa3a7f7f844c29",
+                "dimensions": [
+                  1080,
+                  1080
+                ],
+                "bytes": 242181
+              },
+              {
+                "url": "https://mywaifulist.moe/waifu/kawahara-sensei",
+                "webRef": "turn46view2",
+                "framing": "head portrait",
+                "role": "OVA colour corroboration",
+                "sha256": "694b46c5658588603e780e3c580c497136d6f8b09c1fc592d6c09a9e7746ba4a",
+                "dimensions": [
+                  300,
+                  300
+                ],
+                "bytes": 25125
+              }
+            ],
+            "visibleCorrections": [
+              "Elongated mature face, defined nose and fine rimless glasses from the named head sheet.",
+              "Violet-blue straight upper hair, red earrings and brown eyes corroborated by OVA portrait."
+            ],
+            "proportionScope": "Only visible head/neck relationships. Preserve existing torso/limbs/legs/height where reference is cropped.",
+            "remainingLimitations": [
+              "No full-body model sheet available; body and clothing are preserved adaptations.",
+              "Unshown rear hair length remains inherited."
+            ],
+            "confidence": {
+              "identity": "high",
+              "visibleHeadCorrection": "high",
+              "wholeBodyProportions": "not_established"
+            },
+            "identitySourceMedium": "anime_ova"
+          },
+          "confirmedMissingOutfitCandidates": [],
+          "additionalEvidence": [],
+          "inconclusiveOrMissing": [
+            "Named OVA head model sheet improves identity only; it does not show a medical outfit or body proportions.",
+            "Current coat/turtleneck/trousers stay adapted."
+          ],
+          "neutralFullBodyWithFeetFound": false
+        },
+        {
+          "characterId": "kumi",
+          "characterName": "Kumi Yamanaka",
+          "alreadyMade": [
+            {
+              "id": "kumi:tennis",
+              "costumeId": "tennis",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--tennis.png",
+              "category": "sport",
+              "provenance": "reference"
+            },
+            {
+              "id": "kumi:civilian-original",
+              "costumeId": "civilian-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--civilian-original.png",
+              "category": "civilian",
+              "provenance": "adapted"
+            },
+            {
+              "id": "kumi:military-jgsdf",
+              "costumeId": "military-jgsdf",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--military-jgsdf.png",
+              "category": "military",
+              "provenance": "adapted"
+            },
+            {
+              "id": "kumi:swimwear-sport-original",
+              "costumeId": "swimwear-sport-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--swimwear-sport-original.png",
+              "category": "swimwear",
+              "provenance": "adapted"
+            },
+            {
+              "id": "kumi:uniform-academy-adapted",
+              "costumeId": "uniform-academy-adapted",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/kumi--uniform-academy-adapted.png",
+              "category": "uniform",
+              "provenance": "adapted"
+            }
+          ],
+          "selectedRevision": {
+            "baseCostumeId": "tennis",
+            "costumeId": "tennis-reference-v4",
+            "provenance": "reference",
+            "sourceMedium": "visual_novel_game",
+            "identityReferences": [
+              {
+                "url": "https://www.ymgal.games/ca46260",
+                "webRef": "turn33view3",
+                "framing": "bust/waist",
+                "role": "visible facial identity, straight brown hair, upper outfit",
+                "sha256": "a70deb2952ef2d382365a8bf5de9893cf3b6f0f9f2c52f3bb8c242062a3c3091",
+                "dimensions": [
+                  250,
+                  300
+                ],
+                "bytes": 21112
+              }
+            ],
+            "visibleCorrections": [
+              "Less rounded facial oval, blue eye shape and more precise nose.",
+              "Smoother straight chestnut hair and narrow front locks."
+            ],
+            "proportionScope": "Only visible head/neck relationships. Preserve existing torso/limbs/legs/height where reference is cropped.",
+            "remainingLimitations": [
+              "Main source ends at the waist; no verified lower-body proportions or shoes.",
+              "A low-resolution supplementary mid-thigh image suggests a different lower wrap shape but is insufficient for a confident garment reconstruction; current lower outfit retained."
+            ],
+            "confidence": {
+              "identity": "high",
+              "visibleHeadCorrection": "high",
+              "wholeBodyProportions": "not_established"
+            },
+            "identitySourceMedium": "visual_novel_game"
+          },
+          "confirmedMissingOutfitCandidates": [],
+          "additionalEvidence": [
+            {
+              "url": "https://www.animecharactersdatabase.com/fr/characters.php?id=14115",
+              "imageUrl": "https://ami.animecharactersdatabase.com/./images/discipline/Yamanaka_Kumi.gif",
+              "sourceMedium": "visual_novel",
+              "framing": "mid-thigh, feet absent",
+              "note": "Filename full refers to full downloaded image, not a full-body source."
+            }
+          ],
+          "inconclusiveOrMissing": [
+            "Tennis outfit is already represented. Supplementary 107x242 GIF reaches mid-thigh, not feet; lower wrap details are too limited for confident redesign.",
+            "OVA portrait is a separate medium and does not establish a clearly distinct complete outfit."
+          ],
+          "neutralFullBodyWithFeetFound": false
+        },
+        {
+          "characterId": "linda",
+          "characterName": "Linda Hamilton",
+          "alreadyMade": [
+            {
+              "id": "linda:covered-uniform",
+              "costumeId": "covered-uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--covered-uniform.png",
+              "category": "uniform",
+              "provenance": "adapted"
+            },
+            {
+              "id": "linda:civilian-original",
+              "costumeId": "civilian-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--civilian-original.png",
+              "category": "civilian",
+              "provenance": "adapted"
+            },
+            {
+              "id": "linda:military-jgsdf",
+              "costumeId": "military-jgsdf",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--military-jgsdf.png",
+              "category": "military",
+              "provenance": "adapted"
+            },
+            {
+              "id": "linda:swimwear-sport-original",
+              "costumeId": "swimwear-sport-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/linda--swimwear-sport-original.png",
+              "category": "swimwear",
+              "provenance": "adapted"
+            }
+          ],
+          "selectedRevision": {
+            "baseCostumeId": "covered-uniform",
+            "costumeId": "covered-uniform-reference-v4",
+            "provenance": "adapted",
+            "sourceMedium": "undetermined",
+            "identityReferences": [
+              {
+                "url": "https://www.animecharactersdatabase.com/characters.php?id=14101&imgid=145365",
+                "imageUrl": "https://www.animecharactersdatabase.com/uploads/chars/36226-486833371.png",
+                "webRef": "turn40view1",
+                "framing": "face portrait with hat hiding crown",
+                "role": "face, eye colour and visible blonde front locks only",
+                "sha256": "747ff4a6720741c4677c6f65b5fc60971ccf627ab19c918a9e17d294d10a23bf",
+                "dimensions": [
+                  398,
+                  309
+                ],
+                "bytes": 170274
+              }
+            ],
+            "visibleCorrections": [
+              "Longer facial oval with a defined nose/lips and green-teal eyes.",
+              "Smoother visible blonde front locks."
+            ],
+            "proportionScope": "Only visible head/neck relationships. Preserve existing torso/limbs/legs/height where reference is cropped.",
+            "remainingLimitations": [
+              "Hat obscures crown in authentic portrait; existing ponytail and crown remain unverified and unchanged.",
+              "Body proportions and covered uniform stay adapted; no cowboy costume transfer."
+            ],
+            "confidence": {
+              "identity": "medium-high",
+              "visibleHeadCorrection": "high",
+              "wholeBodyProportions": "not_established"
+            },
+            "identitySourceMedium": "anime_ova"
+          },
+          "confirmedMissingOutfitCandidates": [
+            {
+              "candidateId": "ova-western-outfit",
+              "sourceMedium": "anime_ova",
+              "status": "visible_upper_outfit_attested_partial_only",
+              "evidence": [
+                {
+                  "url": "https://www.animecharactersdatabase.com/characters.php?id=14101&imgid=145365",
+                  "imageUrl": "https://www.animecharactersdatabase.com/uploads/chars/36226-486833371.png",
+                  "webRef": "turn40view1",
+                  "visible": "Brown cowboy hat, blonde front locks and partial dark choker/vest collar."
+                },
+                {
+                  "url": "https://mywaifulist.moe/waifu/linda-hamilton",
+                  "visible": "Upper western garment visible but bust-focused framing; not used as a generation input."
+                }
+              ],
+              "notInBaseline": true,
+              "readyForNeutralFullBodyGeneration": false,
+              "reason": "No neutral complete garment or leg/foot view. Head crop cannot authenticate the bottom half."
+            }
+          ],
+          "additionalEvidence": [
+            {
+              "url": "https://www.ymgal.games/ca36224",
+              "webRef": "turn33view2",
+              "sourceMedium": "visual_novel",
+              "evidenceType": "biographical text only",
+              "note": "Baseball involvement does not prove a specific costume."
+            }
+          ],
+          "inconclusiveOrMissing": [
+            "YMgal biography mentions baseball participation, but no actual baseball garment image was found. Textual lead only.",
+            "Cowboy hat hides the crown: original sprite ponytail cannot be authenticated by this portrait."
+          ],
+          "neutralFullBodyWithFeetFound": false
+        },
+        {
+          "characterId": "mami",
+          "characterName": "Mami Nakai",
+          "alreadyMade": [
+            {
+              "id": "mami:uniform",
+              "costumeId": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--uniform.png",
+              "category": "uniform",
+              "provenance": "reference"
+            },
+            {
+              "id": "mami:civilian-original",
+              "costumeId": "civilian-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--civilian-original.png",
+              "category": "civilian",
+              "provenance": "adapted"
+            },
+            {
+              "id": "mami:military-jgsdf",
+              "costumeId": "military-jgsdf",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--military-jgsdf.png",
+              "category": "military",
+              "provenance": "adapted"
+            },
+            {
+              "id": "mami:swimwear-sport-original",
+              "costumeId": "swimwear-sport-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/mami--swimwear-sport-original.png",
+              "category": "swimwear",
+              "provenance": "adapted"
+            }
+          ],
+          "selectedRevision": {
+            "baseCostumeId": "uniform",
+            "costumeId": "uniform-reference-v4",
+            "provenance": "reference",
+            "sourceMedium": "visual_novel_game",
+            "identityReferences": [
+              {
+                "url": "https://www.ymgal.games/ca46295",
+                "webRef": "turn29view2",
+                "framing": "bust/waist",
+                "role": "visible face, hair arrangement and upper uniform",
+                "sha256": "f46b4b6b8bd08e912b4cc44bc294913d36918918ae7b46caf5f1677e1429505b",
+                "dimensions": [
+                  250,
+                  300
+                ],
+                "bytes": 24461
+              }
+            ],
+            "visibleCorrections": [
+              "Longer/slimmer facial oval and finer blue eyes.",
+              "More controlled visible lavender curls, silver front-lock cuffs retained."
+            ],
+            "proportionScope": "Only visible head/neck relationships. Preserve existing torso/limbs/legs/height where reference is cropped.",
+            "remainingLimitations": [
+              "Reference stops near waist and does not establish body height, legs or shoes.",
+              "Rear curl length below crop remains inherited."
+            ],
+            "confidence": {
+              "identity": "high",
+              "visibleHeadCorrection": "high",
+              "wholeBodyProportions": "not_established"
+            },
+            "identitySourceMedium": "visual_novel_game"
+          },
+          "confirmedMissingOutfitCandidates": [],
+          "additionalEvidence": [],
+          "inconclusiveOrMissing": [
+            "Only the VN uniform portrait established; MyWaifuList reuses the same VN art despite its OVA category label.",
+            "No neutral complete alternate outfit/full-body view found."
+          ],
+          "neutralFullBodyWithFeetFound": false
+        },
+        {
+          "characterId": "manami",
+          "characterName": "Manami",
+          "alreadyMade": [
+            {
+              "id": "manami:uniform",
+              "costumeId": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--uniform.png",
+              "category": "uniform",
+              "provenance": "reference"
+            },
+            {
+              "id": "manami:civilian-original",
+              "costumeId": "civilian-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--civilian-original.png",
+              "category": "civilian",
+              "provenance": "adapted"
+            },
+            {
+              "id": "manami:military-jgsdf",
+              "costumeId": "military-jgsdf",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--military-jgsdf.png",
+              "category": "military",
+              "provenance": "adapted"
+            },
+            {
+              "id": "manami:swimwear-sport-original",
+              "costumeId": "swimwear-sport-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/manami--swimwear-sport-original.png",
+              "category": "swimwear",
+              "provenance": "adapted"
+            }
+          ],
+          "selectedRevision": {
+            "baseCostumeId": "uniform",
+            "costumeId": "uniform-reference-v4",
+            "provenance": "reference",
+            "sourceMedium": "visual_novel_game",
+            "identityReferences": [
+              {
+                "url": "https://www.ymgal.games/ca46298",
+                "webRef": "turn29view3",
+                "framing": "bust/waist",
+                "role": "visible face, bob silhouette and upper uniform",
+                "sha256": "652cd6b33bf15daa76522b7e2712ff7315e263745ace8df560eb389ca5e9b89d",
+                "dimensions": [
+                  250,
+                  300
+                ],
+                "bytes": 21149
+              }
+            ],
+            "visibleCorrections": [
+              "Longer oval face, less round cheeks and fine blue eyes.",
+              "Smooth short ruby-red bob and straighter fringe instead of inflated/spiky silhouette."
+            ],
+            "proportionScope": "Only visible head/neck relationships. Preserve existing torso/limbs/legs/height where reference is cropped.",
+            "remainingLimitations": [
+              "Waist-up reference cannot verify total height, lower uniform or leg/foot proportions; those stay inherited."
+            ],
+            "confidence": {
+              "identity": "high",
+              "visibleHeadCorrection": "high",
+              "wholeBodyProportions": "not_established"
+            },
+            "identitySourceMedium": "visual_novel_game"
+          },
+          "confirmedMissingOutfitCandidates": [],
+          "additionalEvidence": [],
+          "inconclusiveOrMissing": [
+            "Only the VN uniform portrait established; MyWaifuList reuses the same VN art despite its OVA category label.",
+            "No neutral complete alternate outfit/full-body view found."
+          ],
+          "neutralFullBodyWithFeetFound": false
+        },
+        {
+          "characterId": "maya",
+          "characterName": "Maya",
+          "alreadyMade": [
+            {
+              "id": "maya:tennis-adapted",
+              "costumeId": "tennis-adapted",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--tennis-adapted.png",
+              "category": "sport",
+              "provenance": "adapted"
+            },
+            {
+              "id": "maya:civilian-original",
+              "costumeId": "civilian-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--civilian-original.png",
+              "category": "civilian",
+              "provenance": "adapted"
+            },
+            {
+              "id": "maya:military-jgsdf",
+              "costumeId": "military-jgsdf",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--military-jgsdf.png",
+              "category": "military",
+              "provenance": "adapted"
+            },
+            {
+              "id": "maya:swimwear-sport-original",
+              "costumeId": "swimwear-sport-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--swimwear-sport-original.png",
+              "category": "swimwear",
+              "provenance": "adapted"
+            },
+            {
+              "id": "maya:uniform-academy-adapted",
+              "costumeId": "uniform-academy-adapted",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/maya--uniform-academy-adapted.png",
+              "category": "uniform",
+              "provenance": "adapted"
+            }
+          ],
+          "selectedRevision": {
+            "baseCostumeId": "tennis-adapted",
+            "costumeId": "tennis-adapted-reference-v4",
+            "provenance": "adapted",
+            "sourceMedium": "undetermined",
+            "identityReferences": [
+              {
+                "url": "https://mywaifulist.moe/waifu/maya-5",
+                "webRef": "turn46view1",
+                "framing": "face, neck and shoulders",
+                "role": "animated facial identity and visible haircut only",
+                "sha256": "ae7e53c1d4e7843369a08a2deafbfde82ff6fe21f7e65cecf04b0bc2c16a627a",
+                "dimensions": [
+                  300,
+                  453
+                ],
+                "bytes": 37964
+              }
+            ],
+            "visibleCorrections": [
+              "Longer oval face, refined blue eyes and defined nose.",
+              "Muted purple layered cut, finer side bangs and nape wisps."
+            ],
+            "proportionScope": "Only visible head/neck relationships. Preserve existing torso/limbs/legs/height where reference is cropped.",
+            "remainingLimitations": [
+              "Head/shoulder crop gives no body height or leg measurements; original body is preserved.",
+              "Sports polo and track trousers remain an original adaptation."
+            ],
+            "confidence": {
+              "identity": "high",
+              "visibleHeadCorrection": "high",
+              "wholeBodyProportions": "not_established"
+            },
+            "identitySourceMedium": "anime_ova"
+          },
+          "confirmedMissingOutfitCandidates": [],
+          "additionalEvidence": [],
+          "inconclusiveOrMissing": [
+            "Tennis-club text and neutral animated head portrait found, not a complete tennis outfit. Current sportswear stays adapted.",
+            "The plain MyWaifuList /maya URL is a different character; the correct Discipline profile is /maya-5.",
+            "Partially undressed YMgal image was not used as a costume source."
+          ],
+          "neutralFullBodyWithFeetFound": false
+        },
+        {
+          "characterId": "momoe",
+          "characterName": "Momoe Endou",
+          "alreadyMade": [
+            {
+              "id": "momoe:uniform",
+              "costumeId": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--uniform.png",
+              "category": "uniform",
+              "provenance": "reference"
+            },
+            {
+              "id": "momoe:civilian-original",
+              "costumeId": "civilian-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--civilian-original.png",
+              "category": "civilian",
+              "provenance": "adapted"
+            },
+            {
+              "id": "momoe:military-jgsdf",
+              "costumeId": "military-jgsdf",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--military-jgsdf.png",
+              "category": "military",
+              "provenance": "adapted"
+            },
+            {
+              "id": "momoe:swimwear-sport-original",
+              "costumeId": "swimwear-sport-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momoe--swimwear-sport-original.png",
+              "category": "swimwear",
+              "provenance": "adapted"
+            }
+          ],
+          "selectedRevision": {
+            "baseCostumeId": "uniform",
+            "costumeId": "uniform-reference-v4",
+            "provenance": "reference",
+            "sourceMedium": "visual_novel_game",
+            "identityReferences": [
+              {
+                "url": "https://www.ymgal.games/ca36220",
+                "webRef": "turn33view5",
+                "framing": "user-uploaded named portrait to hips",
+                "role": "visible VN identity, green bob and upper uniform",
+                "sha256": "fc10a41f0b7db28cfd8283cdcb0e1c324358c1045e594d4a3a811c45c283e025",
+                "dimensions": [
+                  756,
+                  1273
+                ],
+                "bytes": 1707318
+              }
+            ],
+            "visibleCorrections": [
+              "Longer softer oval face and finer blue eyes.",
+              "Smoother green bob with finer fringe and longer thin front locks."
+            ],
+            "proportionScope": "Only visible head/neck relationships. Preserve existing torso/limbs/legs/height where reference is cropped.",
+            "remainingLimitations": [
+              "Reference is cropped above the legs; lower outfit, stature and shoe design remain inherited.",
+              "Separate OVA frame corroborates the uniform but is not used to mix drawing styles."
+            ],
+            "confidence": {
+              "identity": "high",
+              "visibleHeadCorrection": "high",
+              "wholeBodyProportions": "not_established"
+            },
+            "identitySourceMedium": "visual_novel_game"
+          },
+          "confirmedMissingOutfitCandidates": [],
+          "additionalEvidence": [
+            {
+              "url": "https://www.animecharactersdatabase.com/photo.php?type_id=1&imgid=90467",
+              "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/41611-673426270.jpg",
+              "webRef": "turn71view0",
+              "sourceMedium": "anime_ova",
+              "framing": "two character heads and upper uniforms",
+              "note": "Momoe right, Ruri left; same upper uniform. Not used to mix VN identity with OVA styling."
+            }
+          ],
+          "inconclusiveOrMissing": [
+            "Baseball participation is mentioned in profile text but no baseball garment reference found.",
+            "ACDB photo90467 is a neutral OVA uniform scene with Ruri; it confirms the familiar upper uniform, not a new outfit."
+          ],
+          "neutralFullBodyWithFeetFound": false
+        },
+        {
+          "characterId": "momone",
+          "characterName": "Momone Nishizaki",
+          "alreadyMade": [
+            {
+              "id": "momone:uniform",
+              "costumeId": "uniform",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momone--uniform.png",
+              "category": "uniform",
+              "provenance": "reference"
+            },
+            {
+              "id": "momone:civilian-original",
+              "costumeId": "civilian-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momone--civilian-original.png",
+              "category": "civilian",
+              "provenance": "adapted"
+            },
+            {
+              "id": "momone:military-jgsdf",
+              "costumeId": "military-jgsdf",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momone--military-jgsdf.png",
+              "category": "military",
+              "provenance": "adapted"
+            },
+            {
+              "id": "momone:swimwear-sport-original",
+              "costumeId": "swimwear-sport-original",
+              "src": "/sprites/generated/heroes/discipline-the-record-of-a-crusade/costumes/momone--swimwear-sport-original.png",
+              "category": "swimwear",
+              "provenance": "adapted"
+            }
+          ],
+          "selectedRevision": {
+            "baseCostumeId": "uniform",
+            "costumeId": "uniform-reference-v4",
+            "provenance": "reference",
+            "sourceMedium": "visual_novel_game",
+            "identityReferences": [
+              {
+                "url": "https://www.ymgal.games/ca35207",
+                "webRef": "turn33view4",
+                "framing": "user-uploaded VN portrait to upper thighs",
+                "role": "visible face, twin tails, black ribbons and uniform",
+                "sha256": "46c80ce385151a151637068cb75163173af5742a2a8b237268d0260495235e81",
+                "dimensions": [
+                  798,
+                  1705
+                ],
+                "bytes": 2227940
+              }
+            ],
+            "visibleCorrections": [
+              "Longer facial oval and finer violet eyes.",
+              "Slimmer smoother crimson twin tails, black ribbons and side fringe preserved."
+            ],
+            "proportionScope": "Only visible head/neck relationships. Preserve existing torso/limbs/legs/height where reference is cropped.",
+            "remainingLimitations": [
+              "Reference stops at upper thighs; legs and shoes remain inherited rather than authenticated.",
+              "Nurse outfit is separately documented and is not part of this uniform edit."
+            ],
+            "confidence": {
+              "identity": "high",
+              "visibleHeadCorrection": "high",
+              "wholeBodyProportions": "not_established"
+            },
+            "identitySourceMedium": "visual_novel_game"
+          },
+          "confirmedMissingOutfitCandidates": [
+            {
+              "candidateId": "ova-pink-nurse-outfit",
+              "sourceMedium": "anime_ova",
+              "status": "outfit_confirmed_but_not_selected_for_exact_reproduction",
+              "evidence": [
+                {
+                  "url": "https://mywaifulist.moe/waifu/momone-nishizaki",
+                  "webRef": "turn70search7",
+                  "visible": "Pink nurse cap and pink high-collar short-sleeved upper garment."
+                },
+                {
+                  "url": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+                  "imageUrl": "https://img.fril.jp/img/689573559/l/2280209800.png?1717257679=",
+                  "visible": "Named production sheet 桃音 ナース服, inspected by agent A; sexualized garment opening/lingerie details."
+                }
+              ],
+              "notInBaseline": true,
+              "readyForNeutralFullBodyGeneration": false,
+              "reason": "Named full outfit sheet is not a neutral costume to reproduce. Bust crop does not establish a fully covered lower garment. No generation of this outfit attempted."
+            }
+          ],
+          "additionalEvidence": [],
+          "inconclusiveOrMissing": [
+            "Known VN uniform is the current revision target. The OVA nurse disguise remains separately documented.",
+            "No neutral full-body nurse view suitable for exact covered reconstruction found."
+          ],
+          "neutralFullBodyWithFeetFound": false
+        }
+      ]
+    },
+    "c": {
+      "scope": "Groupe C : dix personnages existants, plus Miyuki et gardes OVA en annexe",
+      "baselineCommit": "ef23793eaaf472dbc8e56426949ceb405f5d07bf",
+      "researchStatus": "existing-reference audit complete; high-resolution settei archive not available",
+      "characters": [
+        {
+          "characterId": "nanase",
+          "characterName": "Nanase Fujiwara",
+          "currentSpriteCount": 4,
+          "currentCostumes": [
+            {
+              "costumeId": "uniform",
+              "category": "uniform",
+              "provenance": "reference",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "civilian-original",
+              "category": "civilian",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "category": "military",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "category": "swimwear",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            }
+          ],
+          "chosenBaseCostumeId": "uniform",
+          "proposedCostumeId": "uniform-reference-v4",
+          "referenceEvidence": [
+            {
+              "type": "user_upload",
+              "filename": "image(20261027-210240).png",
+              "url": "https://www.ymgal.games/ca34404",
+              "sourceMedium": "visual_novel_game",
+              "role": "Identity, visible clothing and visible proportions; crop limitations apply.",
+              "dimensions": [
+                817,
+                1201
+              ],
+              "sha256": "bb231370eaf2355f5458fea567a6f7732be50bf806daa3153a053fa22bb04170",
+              "visuallyInspected": true
+            }
+          ],
+          "observedCostume": "Uniforme noir et or",
+          "visibleCorrectionPlan": "Chevelure blond cendré et mèches lissées, grands nœuds, ovale du visage et cou rapprochés de la référence.",
+          "bodyLimitations": "La référence s’arrête au haut des cuisses : jupe complète, jambes, collants et chaussures conservent la construction de la version précédente.",
+          "newDistinctOutfitConfirmed": false,
+          "fullBodySourceFound": false,
+          "proposedStatus": "additive-fidelity-revision",
+          "requiresCanonicalClothingClaim": false
+        },
+        {
+          "characterId": "saki",
+          "characterName": "Saki Yamagata",
+          "currentSpriteCount": 4,
+          "currentCostumes": [
+            {
+              "costumeId": "aquatic-covered",
+              "category": "swimwear",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "civilian-original",
+              "category": "civilian",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "category": "military",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "uniform-academy-adapted",
+              "category": "uniform",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            }
+          ],
+          "chosenBaseCostumeId": "civilian-original",
+          "proposedCostumeId": "civilian-original-reference-v4",
+          "referenceEvidence": [
+            {
+              "type": "public_reference",
+              "filename": "saki-vn-ymgal.jpg",
+              "url": "https://www.ymgal.games/ca46263",
+              "sourceMedium": "visual_novel_game",
+              "role": "Identity and visible anatomy only; no outfit evidence.",
+              "dimensions": [
+                168,
+                191
+              ],
+              "sha256": "516ba427062ee2939a2247605b1dd48d8760bbd28e0f4036fd7b0ef6562e2264",
+              "visuallyInspected": true
+            }
+          ],
+          "observedCostume": "Pull bleu et jupe marine",
+          "visibleCorrectionPlan": "Frange blonde de côté, pointes recourbées, yeux verts et visage rapprochés du portrait ; corps et vêtements conservés.",
+          "bodyLimitations": "Le portrait ne montre aucune tenue complète ni proportions corporelles. Le pull bleu, la jupe marine, les collants et les chaussures restent une création adapted ; le corps antérieur est conservé.",
+          "newDistinctOutfitConfirmed": false,
+          "fullBodySourceFound": false,
+          "proposedStatus": "additive-fidelity-revision",
+          "requiresCanonicalClothingClaim": false
+        },
+        {
+          "characterId": "eikichi",
+          "characterName": "Eikichi Ogiwara",
+          "currentSpriteCount": 4,
+          "currentCostumes": [
+            {
+              "costumeId": "suit",
+              "category": "civilian",
+              "provenance": "reference",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "category": "military",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "category": "swimwear",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "uniform-academy-adapted",
+              "category": "uniform",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            }
+          ],
+          "chosenBaseCostumeId": "suit",
+          "proposedCostumeId": "suit-reference-v4",
+          "referenceEvidence": [
+            {
+              "type": "public_reference",
+              "filename": "eikichi.jpg",
+              "url": "https://www.ymgal.games/ca46254",
+              "sourceMedium": "visual_novel_game",
+              "role": "Identity, visible clothing and visible proportions; crop limitations apply.",
+              "dimensions": [
+                256,
+                300
+              ],
+              "sha256": "29f096520c1c2bb35b777bb4a796d58d1885f5268b61e714aca6414ae91912f6",
+              "visuallyInspected": true
+            }
+          ],
+          "observedCostume": "Costume violet",
+          "visibleCorrectionPlan": "Cheveux plus clairs et moins gonflés, visage allongé, cou et épaules du costume suivis sur la référence.",
+          "bodyLimitations": "La source est coupée à la taille : pantalon, mains au repos et chaussures restent ceux de l’ancienne version.",
+          "newDistinctOutfitConfirmed": false,
+          "fullBodySourceFound": false,
+          "proposedStatus": "additive-fidelity-revision",
+          "requiresCanonicalClothingClaim": false
+        },
+        {
+          "characterId": "kaoru",
+          "characterName": "Kaoru Itou",
+          "currentSpriteCount": 5,
+          "currentCostumes": [
+            {
+              "costumeId": "uniform",
+              "category": "uniform",
+              "provenance": "reference",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "civilian-original",
+              "category": "civilian",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "category": "military",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "category": "swimwear",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "light-uniform",
+              "category": "uniform",
+              "provenance": "reference",
+              "sourceMedium": null,
+              "variantOf": null
+            }
+          ],
+          "chosenBaseCostumeId": "uniform",
+          "proposedCostumeId": "uniform-reference-v4",
+          "referenceEvidence": [
+            {
+              "type": "user_upload",
+              "filename": "image(20261027-210136).png",
+              "url": "https://www.ymgal.games/ca36223",
+              "sourceMedium": "visual_novel_game",
+              "role": "Identity, visible clothing and visible proportions; crop limitations apply.",
+              "dimensions": [
+                1809,
+                1710
+              ],
+              "sha256": "fba994fa49bdda1d02d1f5bd0032a48c912c86bd765d33150a51f5e7f9b6a3dc",
+              "visuallyInspected": true
+            }
+          ],
+          "observedCostume": "Uniforme noir et or",
+          "visibleCorrectionPlan": "Cheveux bruns plus droits et moins ondulés, contour du visage et épaules du col rapprochés de la planche aux cheveux longs.",
+          "bodyLimitations": "La planche établit le haut de la silhouette et la jupe mais coupe les pieds. La pose neutre et les chaussures sont conservées ; ne pas mélanger la tenue claire aux cheveux courts.",
+          "newDistinctOutfitConfirmed": false,
+          "fullBodySourceFound": false,
+          "proposedStatus": "additive-fidelity-revision",
+          "requiresCanonicalClothingClaim": false
+        },
+        {
+          "characterId": "katsuo",
+          "characterName": "Katsuo Isobe",
+          "currentSpriteCount": 5,
+          "currentCostumes": [
+            {
+              "costumeId": "baseball",
+              "category": "sport",
+              "provenance": "reference",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "civilian-original",
+              "category": "civilian",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "category": "military",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "category": "swimwear",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "uniform-academy-adapted",
+              "category": "uniform",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            }
+          ],
+          "chosenBaseCostumeId": "baseball",
+          "proposedCostumeId": "baseball-reference-v4",
+          "referenceEvidence": [
+            {
+              "type": "public_reference",
+              "filename": "katsuo.jpg",
+              "url": "https://www.ymgal.games/ca36222",
+              "sourceMedium": "visual_novel_game",
+              "role": "Identity, visible clothing and visible proportions; crop limitations apply.",
+              "dimensions": [
+                250,
+                300
+              ],
+              "sha256": "4a77699c4b0a87902931f3aa253bdc429b511e57348cd9941edf567e8d40f66a",
+              "visuallyInspected": true
+            }
+          ],
+          "observedCostume": "Tenue de baseball",
+          "visibleCorrectionPlan": "Coupe noire plus courte, yeux verts, visage et épaules naturelles rapprochés du portrait de baseball.",
+          "bodyLimitations": "Le portrait s’arrête à la taille : la ceinture, le pantalon et les chaussures conservent les éléments antérieurs et ne sont pas certifiés par la source.",
+          "newDistinctOutfitConfirmed": false,
+          "fullBodySourceFound": false,
+          "proposedStatus": "additive-fidelity-revision",
+          "requiresCanonicalClothingClaim": false
+        },
+        {
+          "characterId": "kouzou",
+          "characterName": "Kouzou Machida",
+          "currentSpriteCount": 4,
+          "currentCostumes": [
+            {
+              "costumeId": "suit",
+              "category": "civilian",
+              "provenance": "reference",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "category": "military",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "category": "swimwear",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "uniform-academy-adapted",
+              "category": "uniform",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            }
+          ],
+          "chosenBaseCostumeId": "suit",
+          "proposedCostumeId": "suit-reference-v4",
+          "referenceEvidence": [
+            {
+              "type": "public_reference",
+              "filename": "kouzou.jpg",
+              "url": "https://www.ymgal.games/ca36229",
+              "sourceMedium": "visual_novel_game",
+              "role": "Identity, visible clothing and visible proportions; crop limitations apply.",
+              "dimensions": [
+                250,
+                300
+              ],
+              "sha256": "03936811c6fe50cd52eae1027e3fa4f652dcf259473f7b0da015531aba61f230",
+              "visuallyInspected": true
+            }
+          ],
+          "observedCostume": "Costume gris",
+          "visibleCorrectionPlan": "Chevelure grise plaquée, lunettes fines, visage anguleux et ligne des épaules rapprochés du portrait.",
+          "bodyLimitations": "La vue est recadrée à la taille et ne fixe pas les jambes ou les chaussures ; leur construction précédente est conservée.",
+          "newDistinctOutfitConfirmed": false,
+          "fullBodySourceFound": false,
+          "proposedStatus": "additive-fidelity-revision",
+          "requiresCanonicalClothingClaim": false
+        },
+        {
+          "characterId": "sudou",
+          "characterName": "Sudou",
+          "currentSpriteCount": 4,
+          "currentCostumes": [
+            {
+              "costumeId": "uniform",
+              "category": "uniform",
+              "provenance": "reference",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "civilian-original",
+              "category": "civilian",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "category": "military",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "category": "swimwear",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            }
+          ],
+          "chosenBaseCostumeId": "uniform",
+          "proposedCostumeId": "uniform-reference-v4",
+          "referenceEvidence": [
+            {
+              "type": "public_reference",
+              "filename": "sudou.jpg",
+              "url": "https://www.ymgal.games/ca42266",
+              "sourceMedium": "visual_novel_game",
+              "role": "Identity, visible clothing and visible proportions; crop limitations apply.",
+              "dimensions": [
+                250,
+                300
+              ],
+              "sha256": "8ecaa34e377c2d7b9faebac47eae5b3e3c4d8ffd45c3e23eb8fcd4610711f0eb",
+              "visuallyInspected": true
+            }
+          ],
+          "observedCostume": "Uniforme clair",
+          "visibleCorrectionPlan": "Raie et mèches brunes plus plates, lunettes fines, visage long et cou rapprochés de la référence.",
+          "bodyLimitations": "Portrait partiel jusqu’à la taille : jambes, chaussures et proportions non visibles conservées de l’ancien sprite.",
+          "newDistinctOutfitConfirmed": false,
+          "fullBodySourceFound": false,
+          "proposedStatus": "additive-fidelity-revision",
+          "requiresCanonicalClothingClaim": false
+        },
+        {
+          "characterId": "takurou",
+          "characterName": "Takurou Hayami",
+          "currentSpriteCount": 5,
+          "currentCostumes": [
+            {
+              "costumeId": "ova-orange",
+              "category": "civilian",
+              "provenance": "reference",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "category": "military",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "category": "swimwear",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "uniform-academy-adapted",
+              "category": "uniform",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "ova-orange-proportions-v3",
+              "category": "civilian",
+              "provenance": "reference",
+              "sourceMedium": "anime_ova",
+              "variantOf": "discipline-sprite-v1:takurou:ova-orange"
+            }
+          ],
+          "chosenBaseCostumeId": "ova-orange-proportions-v3",
+          "proposedCostumeId": "ova-orange-proportions-v4",
+          "referenceEvidence": [
+            {
+              "type": "public_reference",
+              "filename": "takurou.jpg",
+              "url": "https://namikoi.com/characters/80856",
+              "sourceMedium": "anime_ova",
+              "role": "Identity, visible clothing and visible proportions; crop limitations apply.",
+              "dimensions": [
+                225,
+                169
+              ],
+              "sha256": "7dbc46e038f89bfba2873db8291bb6b5625d46f5445215b9ad3d623f694cd0b8",
+              "visuallyInspected": true
+            }
+          ],
+          "observedCostume": "Tenue orange — proportions OVA v3",
+          "visibleCorrectionPlan": "Frange brune et contour latéral des cheveux rapprochés de l’OVA ; traits du visage affinés sans amplifier la correction v3.",
+          "bodyLimitations": "Référence OVA de 225 × 169 px, limitée au haut du corps. Bas du corps, chaussures et pose de la v3 conservés ; aucune mesure corporelle intégrale n’est déduite.",
+          "newDistinctOutfitConfirmed": false,
+          "fullBodySourceFound": false,
+          "proposedStatus": "additive-fidelity-revision",
+          "requiresCanonicalClothingClaim": false
+        },
+        {
+          "characterId": "tooru",
+          "characterName": "Tooru Satou",
+          "currentSpriteCount": 4,
+          "currentCostumes": [
+            {
+              "costumeId": "uniform",
+              "category": "uniform",
+              "provenance": "reference",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "civilian-original",
+              "category": "civilian",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "category": "military",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "category": "swimwear",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            }
+          ],
+          "chosenBaseCostumeId": "uniform",
+          "proposedCostumeId": "uniform-reference-v4",
+          "referenceEvidence": [
+            {
+              "type": "public_reference",
+              "filename": "tooru.jpg",
+              "url": "https://www.ymgal.games/ca46259",
+              "sourceMedium": "visual_novel_game",
+              "role": "Identity, visible clothing and visible proportions; crop limitations apply.",
+              "dimensions": [
+                250,
+                300
+              ],
+              "sha256": "1d5b355e80fbd4971287a14a3def2bbf4a91fe19c95140f54fd94368b13b6b76",
+              "visuallyInspected": true
+            }
+          ],
+          "observedCostume": "Uniforme clair",
+          "visibleCorrectionPlan": "Coupe bleu-vert plus courte, profil du visage allongé et épaules rapprochés de la référence.",
+          "bodyLimitations": "La source est un profil recadré à la taille ; les longueurs des jambes et les chaussures restent celles du sprite précédent.",
+          "newDistinctOutfitConfirmed": false,
+          "fullBodySourceFound": false,
+          "proposedStatus": "additive-fidelity-revision",
+          "requiresCanonicalClothingClaim": false
+        },
+        {
+          "characterId": "yuuji",
+          "characterName": "Yuuji Takigawa",
+          "currentSpriteCount": 4,
+          "currentCostumes": [
+            {
+              "costumeId": "light-uniform",
+              "category": "uniform",
+              "provenance": "reference",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "civilian-original",
+              "category": "civilian",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "military-jgsdf",
+              "category": "military",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            },
+            {
+              "costumeId": "swimwear-sport-original",
+              "category": "swimwear",
+              "provenance": "adapted",
+              "sourceMedium": null,
+              "variantOf": null
+            }
+          ],
+          "chosenBaseCostumeId": "light-uniform",
+          "proposedCostumeId": "light-uniform-reference-v4",
+          "referenceEvidence": [
+            {
+              "type": "public_reference",
+              "filename": "yuuji.jpg",
+              "url": "https://www.ymgal.games/ca46256",
+              "sourceMedium": "visual_novel_game",
+              "role": "Identity, visible clothing and visible proportions; crop limitations apply.",
+              "dimensions": [
+                250,
+                300
+              ],
+              "sha256": "e8d04a09a426118b0d8af04a5f708d107cc20d069e2fab9f372c17421688e9a3",
+              "visuallyInspected": true
+            }
+          ],
+          "observedCostume": "Uniforme clair",
+          "visibleCorrectionPlan": "Coiffure sombre davantage balayée vers l’arrière, longues mèches fines, visage et cou rapprochés du portrait.",
+          "bodyLimitations": "La source s’arrête à la taille : jambes et chaussures conservées, sans certification de leurs proportions.",
+          "newDistinctOutfitConfirmed": false,
+          "fullBodySourceFound": false,
+          "proposedStatus": "additive-fidelity-revision",
+          "requiresCanonicalClothingClaim": false
+        }
+      ],
+      "summary": {
+        "characters": 10,
+        "currentSpritesInGroup": 43,
+        "plannedAdditiveFidelityRevisions": 10,
+        "newDistinctNamedOutfitsConfirmed": 0,
+        "fullBodyNeutralSourcesFound": 0
+      },
+      "additionalOutfitLeads": [
+        {
+          "characters": [
+            "nanase",
+            "yuuji"
+          ],
+          "outfit": "baseball",
+          "status": "text-only lead, not visually established",
+          "urls": [
+            "https://www.ymgal.games/ca34404",
+            "https://www.ymgal.games/ca46256"
+          ],
+          "reason": "Leur participation au baseball est indiquée par les fiches ; aucune image habillée nommée d’une tenue différente n’a été consultée. Aucun transfert de costume depuis Katsuo ou Saori."
+        },
+        {
+          "characterId": "kaoru",
+          "outfits": [
+            "uniform",
+            "light-uniform"
+          ],
+          "status": "both already present",
+          "reason": "Cheveux longs et uniforme noir/or sur la planche fournie ; cheveux courts et chemise claire sur le portrait VN. Ne pas mélanger ces deux apparences."
+        },
+        {
+          "characterId": "takurou",
+          "outfit": "VN school uniform",
+          "status": "not visually established",
+          "url": "https://www.ymgal.games/ca34400",
+          "reason": "Le portrait public VN retrouvé est limité au visage et ne montre aucune tenue neutre ; il ne justifie pas une nouvelle tenue ni une substitution au modèle OVA."
+        }
+      ],
+      "annex": [
+        {
+          "characterId": "miyuki",
+          "currentSprites": 0,
+          "status": "identity portrait found, neutral clothed outfit reference still missing",
+          "sources": [
+            {
+              "page": "https://www.ymgal.games/ca46296",
+              "usableForClothing": false
+            },
+            {
+              "page": "https://mywaifulist.moe/waifu/miyuki-umezaki",
+              "usableForClothing": false
+            }
+          ],
+          "finding": "Les deux fiches reprennent le même portrait VN recadré/agrandi ; la classification OVA de la fiche ne transforme pas cette image en preuve OVA. Pas de référence habillée neutre de tenue entière consultée. Ne pas générer de costume prétendument canonique à partir de ce crop."
+        },
+        {
+          "characterId": "security-guard-ova",
+          "currentSprites": 0,
+          "status": "anonymous clothed OVA model partially documented, possible independent addition for root review",
+          "referenceEvidence": [
+            {
+              "type": "user_upload",
+              "filename": "image(20261028-060014).png",
+              "url": null,
+              "sourceMedium": "anime_ova",
+              "role": "Primary user-provided OVA screenshot; anonymous group identity and visible outfit.",
+              "dimensions": [
+                2048,
+                1535
+              ],
+              "sha256": "f1635a919f5755b3b884dd965be5f8610dab0313c4f9630d314633baedcc74f8",
+              "visuallyInspected": true
+            }
+          ],
+          "visibleOutfit": "Cheveux roux lissés en arrière, lunettes bleues enveloppantes, T-shirt blanc ample à manches courtes, bracelets noirs, ceinture sombre à boucle rectangulaire et œillets, pantalon sombre brillant ; arme portée dans la capture.",
+          "visibleProportions": "Adultes à large carrure, cou et bras forts, visage anguleux ; proportions visibles jusqu’aux cuisses.",
+          "limitations": [
+            "Groupe de gardes anonymes : aucun nom individuel attribué.",
+            "Bas des jambes et chaussures hors champ.",
+            "Aucune assimilation à Sudou au seul motif que des crédits regroupent Guard/Sudo."
+          ],
+          "historicalScopeNote": "L’exclusion de ces gardes dans v3 était une limite de ce lot, pas une interdiction pour la portée v4."
+        }
+      ],
+      "sourceQualityNotes": [
+        "Les pixels consultés proviennent de captures utilisateur et de portraits de jeu publiés sur des fiches nommées ; les sites sont des miroirs/catalologues, pas une certification éditoriale complète.",
+        "Les portraits Saki et Miyuki sur MyWaifuList sont des recadrages/agrandissements des portraits VN YMGal ; ils ne prouvent aucune tenue OVA.",
+        "Sources IA/LoRA et homonymes d’autres séries exclus ; la présence d’un nom dans un générique ne suffit pas à attribuer une tenue à un photogramme.",
+        "Archive Settei_Discipline.rar identifiée mais téléchargement 403 signalé par l’agent A. Ses dix aperçus consultés ne donnent pas de nouvelle référence neutre nommée du groupe C ; la planche de Saki signalée est hors périmètre neutre et exclue."
+      ],
+      "sources": [
+        {
+          "url": "https://www.ymgal.games/ga10057",
+          "role": "VN title and named character index"
+        },
+        {
+          "url": "https://www.animecharactersdatabase.com/source.php?id=1784&tab=Characters",
+          "role": "Secondary character identity cross-check; game, not OVA costume proof"
+        },
+        {
+          "url": "https://www.imdb.com/title/tt3686492/fullcredits/",
+          "role": "OVA cast cross-check only, not visual outfit proof"
+        },
+        {
+          "url": "https://setteidreams.net/settei/discipline/",
+          "role": "Possible model-sheet archive, access incomplete; no unseen sheet treated as evidence"
+        }
+      ]
+    }
+  },
+  "pendingOutfits": [
+    {
+      "id": "reina-evening-ova",
+      "characterId": "reina",
+      "outfit": "Robe de soirée asymétrique",
+      "status": "generation-blocked",
+      "identityConfirmed": true,
+      "reason": "Feuille nommée et capture couleur retrouvées. Le générateur a refusé la sortie (filtre sexual, étape output). Aucun PNG ni nouvel essai sur cette robe.",
+      "sourceUrls": [
+        "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b"
+      ],
+      "generationRequestId": "ac5717cb-4ae8-4f91-a8d7-4fc92318a1f9"
+    },
+    {
+      "id": "saori-casual-skirt-ova",
+      "characterId": "saori",
+      "outfit": "Tenue civile OVA à jupe",
+      "status": "documented-not-rendered",
+      "reason": "Feuille monochrome photographiée retrouvée avec silhouette et chaussures. Elle partage son image avec une étude non retenue ; une référence isolée exploitable et une confirmation couleur manquent. Cette jupe OVA reste distincte du short VN déjà dessiné.",
+      "sourceUrls": [
+        "https://item.fril.jp/472295f91ae459dc10279eff1b1b483b"
+      ]
+    },
+    {
+      "id": "leona-evening-ova",
+      "characterId": "leona",
+      "outfit": "Robe de soirée de Leona",
+      "status": "documented-not-rendered",
+      "reason": "Feuille nommée monochrome retrouvée. La palette et une référence neutre exploitable de cette tenue restent à compléter ; aucun rendu ajouté.",
+      "sourceUrls": [
+        "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b"
+      ]
+    },
+    {
+      "id": "linda-western-ova",
+      "characterId": "linda",
+      "outfit": "Tenue avec chapeau western",
+      "status": "partial-reference",
+      "reason": "Portrait OVA : visage, mèches et chapeau visibles ; coupe complète de la tenue, jambes et chaussures non établies. La nouvelle variante du costume existant corrige seulement les éléments d’identité visibles.",
+      "sourceUrls": [
+        "https://www.animecharactersdatabase.com/characters.php?id=14101"
+      ]
+    },
+    {
+      "id": "momone-nurse-ova",
+      "characterId": "momone",
+      "outfit": "Tenue infirmière",
+      "status": "reference-not-suitable",
+      "reason": "Une feuille nominative partielle a été retrouvée, mais sa présentation sexualisée ne fournit pas une référence retenue pour une reproduction neutre 1:1. Aucun costume infirmier ajouté.",
+      "sourceUrls": [
+        "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b"
+      ]
+    },
+    {
+      "id": "additional-baseball-outfits",
+      "characterIds": [
+        "linda",
+        "momoe",
+        "nanase",
+        "yuuji"
+      ],
+      "outfit": "Tenues de baseball supplémentaires",
+      "status": "text-only-leads",
+      "reason": "Des mentions de participation au baseball ont été trouvées ; elles ne prouvent ni la coupe ni les couleurs d’un costume individuel. Aucun uniforme transféré depuis un autre personnage."
+    }
+  ],
+  "anonymousFigures": [
+    {
+      "characterId": "ova-attendant-brown-bun",
+      "label": "Domestique OVA — chignon brun",
+      "status": "descriptive-identity-only",
+      "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+    },
+    {
+      "characterId": "ova-guest-yellow-dress",
+      "label": "Invitée OVA — robe jaune",
+      "status": "descriptive-identity-only",
+      "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+    },
+    {
+      "characterId": "ova-officer-bob",
+      "label": "Officière OVA — carré châtain",
+      "status": "descriptive-identity-only",
+      "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+    },
+    {
+      "characterId": "ova-officer-swept-hair",
+      "label": "Officière OVA — cheveux tirés",
+      "status": "descriptive-identity-only",
+      "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+    },
+    {
+      "characterId": "security-guard-ova",
+      "label": "Garde de sécurité OVA — roux",
+      "status": "descriptive-identity-only",
+      "reason": "La silhouette de la capture est identifiée, mais aucun nom propre n’est établi."
+    }
+  ],
+  "generationBlocks": [
+    {
+      "characterId": "reina",
+      "outfit": "evening dress",
+      "requestId": "ac5717cb-4ae8-4f91-a8d7-4fc92318a1f9",
+      "code": "moderation_blocked",
+      "category": "sexual",
+      "stage": "output",
+      "imageProduced": false,
+      "retryAttempted": false
+    }
+  ],
+  "finalDeliveredIds": [
+    "akane:tennis-adapted-reference-v4",
+    "eikichi:suit-reference-v4",
+    "kanae:uniform-reference-v4",
+    "kaori:outfit-fidelity-v4",
+    "kaoru:uniform-reference-v4",
+    "karen:uniform-fidelity-v4",
+    "katsuo:baseball-reference-v4",
+    "kawahara:covered-medical-reference-v4",
+    "kouzou:suit-reference-v4",
+    "kumi:tennis-reference-v4",
+    "leona:uniform-fidelity-v4",
+    "linda:covered-uniform-reference-v4",
+    "madoka:uniform-fidelity-v4",
+    "maiko:uniform-fidelity-v4",
+    "mami:uniform-reference-v4",
+    "manami:uniform-reference-v4",
+    "maya:tennis-adapted-reference-v4",
+    "momoe:uniform-reference-v4",
+    "momone:uniform-reference-v4",
+    "nanase:uniform-reference-v4",
+    "ova-attendant-brown-bun:ova-service-reference-v4",
+    "ova-guest-yellow-dress:ova-yellow-dress-reference-v4",
+    "ova-officer-bob:ova-plum-uniform-reference-v4",
+    "ova-officer-swept-hair:ova-plum-uniform-reference-v4",
+    "reina:suit-fidelity-v4",
+    "ruri:casual-fidelity-v4",
+    "saki:civilian-original-reference-v4",
+    "saori:uniform-fidelity-v4",
+    "security-guard-ova:ova-security-reference-v4",
+    "sudou:uniform-reference-v4",
+    "takurou:ova-orange-proportions-v4",
+    "tooru:uniform-reference-v4",
+    "yuri:uniform-fidelity-v4",
+    "yuuji:light-uniform-reference-v4",
+    "yuuki:ova-tactical-fidelity-v4"
+  ]
+}

@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import GameCanvas from '../../src/components/GameCanvas.jsx';
 import { EngineRpg } from '../../src/game/engineRpg.js';
 import '../../src/index.css';
+import './combatHarness.css';
 
 const audit = { engine: null, results: [], updates: 0 };
 window.__rpgAudit = audit;
@@ -23,7 +24,7 @@ export function Harness() {
   const [mounted, setMounted] = useState(true);
   const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'fr';
   return <>
-    <header style={{ padding: 12 }}>
+    <header className="combat-qa-toolbar" style={{ padding: 12 }}>
       <span>QA: synthetic RPG fixture, production controls and renderer. </span>
       <button id="qa-pause" type="button" onClick={() => setPaused(value => !value)}>QA pause</button>
       <button type="button" onClick={() => setMounted(false)}>QA unmount</button>

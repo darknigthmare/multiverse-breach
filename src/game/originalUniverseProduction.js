@@ -1,3 +1,4 @@
+import { RPG_ACTION_ATB_COST } from './rpgActionEconomy.js';
 const ORIGINAL_CONTENT_NOTICE = Object.freeze({
   en: 'Entirely original content created for Multiverse Breach.',
   fr: 'Contenu entièrement original créé pour Multiverse Breach.'
@@ -336,10 +337,10 @@ export function buildHeroProduction(world, hero, heroIndex) {
       }),
       RPG: Object.freeze({
         commands: Object.freeze([
-          Object.freeze({ move: simple, atbCost: 35 }),
-          Object.freeze({ move: secondary, atbCost: 65, cooldownTurns: 2 }),
-          Object.freeze({ move: defense, atbCost: 45, durationTurns: 1 }),
-          Object.freeze({ move: special, atbCost: 100, requiresLimit: true })
+          Object.freeze({ move: simple, atbCost: RPG_ACTION_ATB_COST }),
+          Object.freeze({ move: secondary, atbCost: RPG_ACTION_ATB_COST }),
+          Object.freeze({ move: defense, atbCost: RPG_ACTION_ATB_COST }),
+          Object.freeze({ move: special, atbCost: RPG_ACTION_ATB_COST, requiresLimit: true })
         ]),
         formationPreference: heroIndex === 1 ? 'front' : heroIndex === 2 ? 'rear' : 'middle'
       }),

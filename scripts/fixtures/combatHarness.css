@@ -1,0 +1,26 @@
+/* Only isolated QA pages import this sheet. Keep their external pause/unmount
+   controls visible above the production fullscreen scene, like a session shell. */
+.combat-qa-toolbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 250;
+  box-sizing: border-box;
+  height: 60px;
+  padding: 8px 12px !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #101923;
+  color: #fff;
+  border-bottom: 1px solid #778a9a;
+  font: 12px/1.3 monospace;
+}
+.combat-qa-toolbar > p,
+.combat-qa-toolbar > span { margin: 0; flex: 1; }
+.combat-qa-toolbar > button { min-height: 44px; flex: 0 0 auto; padding: 4px 12px; }
+body:has(.combat-qa-toolbar) .combat-immersive-surface { --combat-shell-top: 60px; }
+@media (max-width: 760px) {
+  .combat-qa-toolbar > p,
+  .combat-qa-toolbar > span { display: none; }
+  .combat-qa-toolbar::before { content: 'QA'; margin-right: auto; }
+}

@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-28",
+  "browser": "Chromium via Playwright",
+  "result": "passed",
+  "checks": [
+    "369 catalogue cards rendered",
+    "Coverage updated to 38 identities / 212 of 228 family cells",
+    "Dedicated v9 enemy filter returns the new soldier only",
+    "Native 1254 by 1254 PNG loaded successfully",
+    "Correct supplied-reference enemy badge and no cross-identity style comparison",
+    "Both full-body and close-up source links present",
+    "Fidelity limitations visible on the card",
+    "Desktop gallery screenshot captured with light alpha-compositing background",
+    "Checkerboard control background rendered",
+    "390 px mobile layout has no horizontal overflow",
+    "Source, military and provenance filters compose correctly",
+    "Search by cagoulé resolves the new sprite",
+    "Historical v6 filter still shows 170 outfits",
+    "Previous masked soldier retains its v8 filter and feminine badge",
+    "No JavaScript, console or HTTP resource error during tested flows"
+  ],
+  "checkCount": 15,
+  "errors": [],
+  "requestsFailed": [],
+  "screenshots": [
+    "gallery-desktop.png",
+    "gallery-mobile.png"
+  ],
+  "scope": "New enemy card, filters, provenance, native PNG loading, desktop and mobile layout; not an in-game combat test."
+}

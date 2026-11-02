@@ -1,3 +1,5 @@
+import { readStorageValue, writeStorageValue } from '../safeStorage.js';
+
 export const MELEE_INPUT_MAP_VERSION = 1;
 export const MELEE_INPUT_STORAGE_KEY = 'multiverseBreach.meleeInputMap.v1';
 
@@ -105,20 +107,34 @@ export const normalizeMeleeInputMaps = source => ({
 
 export const createDefaultMeleeInputMaps = () => normalizeMeleeInputMaps(cloneValue(DEFAULT_MELEE_INPUT_MAPS));
 
-export const loadMeleeInputMaps = (storage = globalThis?.localStorage) => {
-  if (!storage?.getItem) return createDefaultMeleeInputMaps();
+export const loadMeleeInputMaps = storage => {
+  const stored = readStorageValue(MELEE_INPUT_STORAGE_KEY, storage);
   try {
-    const parsed = JSON.parse(storage.getItem(MELEE_INPUT_STORAGE_KEY) || 'null');
+    const parsed = JSON.parse(stored.ok ? stored.value || 'null' : 'null');
     return normalizeMeleeInputMaps(parsed);
   } catch {
     return createDefaultMeleeInputMaps();
   }
 };
 
-export const saveMeleeInputMaps = (maps, storage = globalThis?.localStorage) => {
+export const saveMeleeInputMaps = (maps, storage) => {
   const normalized = normalizeMeleeInputMaps(maps);
-  if (storage?.setItem) storage.setItem(MELEE_INPUT_STORAGE_KEY, JSON.stringify(normalized));
+  // Applying controls must still work when the browser cannot persist them.
+  writeStorageValue(MELEE_INPUT_STORAGE_KEY, JSON.stringify(normalized), storage);
   return normalized;
+};
+
+// Contextual aliases (down/crouch/drop, attack/ledge attack) are intentional.
+// Only the opposite directions of one player's axis cancel each other out.
+export const findMeleeAxisConflict = (maps, side, slot, code) => {
+  const target = MELEE_REMAPPABLE_SLOTS.find(entry => entry.id === slot);
+  const nextCode = String(code || '').trim();
+  if (!target?.polarity || !nextCode) return null;
+  const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
+  const opposite = target.polarity === 'negative' ? 'positive' : 'negative';
+  const normalized = normalizeMeleeInputMaps(maps);
+  if (!normalized[resolvedSide][target.action][opposite].includes(nextCode)) return null;
+  return MELEE_REMAPPABLE_SLOTS.find(entry => entry.action === target.action && entry.polarity === opposite) || null;
 };
 
 export const replaceMeleeBinding = (maps, side, slot, code) => {
@@ -126,7 +142,7 @@ export const replaceMeleeBinding = (maps, side, slot, code) => {
   const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
   const target = MELEE_REMAPPABLE_SLOTS.find(entry => entry.id === slot);
   const nextCode = String(code || '').trim();
-  if (!target || !nextCode) return normalized;
+  if (!target || !nextCode || findMeleeAxisConflict(normalized, resolvedSide, slot, nextCode)) return normalized;
   const next = cloneValue(normalized);
   if (target.polarity) next[resolvedSide][target.action][target.polarity] = [nextCode];
   else next[resolvedSide][target.action] = [nextCode];
@@ -231,3 +247,4 @@ export const formatMeleeInputCode = code => String(code || '')
   .replace('ShiftRight', 'SHIFT D')
   .replace('Space', 'ESPACE')
   .toUpperCase();
+

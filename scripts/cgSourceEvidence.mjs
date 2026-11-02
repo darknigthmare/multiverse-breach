@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, lstatSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 
@@ -44,7 +44,17 @@ export function applyCgReferenceUseCorrection(root, characterId, reference, corr
     return file;
   };
   if (reference.sha256 !== rule.sha256) throw new Error(`Reference-use correction ${rule.id}: declared legacy SHA-256 mismatch`);
-  checked(rule.legacyPath, rule.sha256, 'legacy bitmap');
+  // A checkout need not contain private archives. Inspect each existing path
+  // component so a broken symlink or access error is not treated as absence.
+  let legacyPresent = true, ancestor = path.resolve(root);
+  for (const component of rule.legacyPath.split('/')) {
+    ancestor = path.join(ancestor, component);
+    let info;
+    try { info = lstatSync(ancestor); }
+    catch (error) { if (error.code !== 'ENOENT') throw error; legacyPresent = false; break; }
+    if (info.isSymbolicLink()) statSync(ancestor);
+  }
+  if (legacyPresent) checked(rule.legacyPath, rule.sha256, 'legacy bitmap');
   checked(rule.currentPath, rule.sha256, 'current bitmap');
   const authority = JSON.parse(readFileSync(checked(rule.authorityFile, rule.authoritySha256, 'frozen authority'), 'utf8'));
   if ((authority.characterId || authority.heroId) !== characterId || !(authority.references || []).some(item =>
@@ -53,8 +63,11 @@ export function applyCgReferenceUseCorrection(root, characterId, reference, corr
     && item.referenceScope === rule.referenceScope)) {
     throw new Error(`Reference-use correction ${rule.id}: current body-support authority does not match`);
   }
-  if (alreadyRestricted) return reference;
-  return { ...reference, referencePurpose: rule.toPurpose, usedForIdentity: false,
+  if (!legacyPresent && !(rule.legacyPath.startsWith('.tmp/')
+    && rule.currentPath.startsWith('docs/cg/references/') && rule.authorityFile.startsWith('docs/cg/'))) {
+    checked(rule.legacyPath, rule.sha256, 'legacy bitmap');
+  }
+  const restricted = alreadyRestricted ? reference : { ...reference, referencePurpose: rule.toPurpose, usedForIdentity: false,
     referenceScope: rule.referenceScope,
     referenceUseCorrection: { id: rule.id, correctionFile: rule.correctionFile,
       original: Object.fromEntries(['referencePurpose', 'referenceScope', 'scope', 'usedForIdentity', 'role', 'sourceFile']
@@ -63,6 +76,12 @@ export function applyCgReferenceUseCorrection(root, characterId, reference, corr
       authorityFile: rule.authorityFile, authoritySha256: rule.authoritySha256,
       toPurpose: rule.toPurpose, usedForIdentity: false, legacyAndCurrentHashesVerified: true,
       authorityHashVerified: true, additionalIndependentSource: false, identityUseRestrictedOnly: true } };
+  const metadata = { ...restricted.referenceUseCorrection, legacyAndCurrentHashesVerified: legacyPresent };
+  for (const field of ['legacyArchiveAvailable', 'legacyHashVerifiedInThisRun', 'currentBitmapHashVerified']) delete metadata[field];
+  if (!legacyPresent) Object.assign(metadata, {
+    legacyArchiveAvailable: false, legacyHashVerifiedInThisRun: false, currentBitmapHashVerified: true
+  });
+  return { ...restricted, referenceUseCorrection: metadata };
 }
 
 const list = value => value == null ? [] : Array.isArray(value) ? value : [value];

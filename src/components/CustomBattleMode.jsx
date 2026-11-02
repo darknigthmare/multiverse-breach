@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import GameCanvas from './GameCanvas';
 import FighterMode from './FighterMode';
 import sound from '../game/soundEngine';
+import { drawPixelSprite } from '../game/renderer';
+import './HubImmersion.css';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import {
@@ -72,7 +74,7 @@ function TeamPicker({ title, heroes, selectedIds, onChange, max = 3, accent = '#
   return (
     <section style={panelStyle}>
       <div className="fighter-section-label" style={{ color: accent, marginBottom: 9 }}>{title}</div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 7, maxHeight: 220, overflow: 'auto' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 7, maxHeight: '50dvh', overflow: 'auto' }}>
         {heroes.map(hero => {
           const selected = selectedSet.has(hero.id);
           return (
@@ -94,6 +96,7 @@ function TeamPicker({ title, heroes, selectedIds, onChange, max = 3, accent = '#
                 opacity: !selected && selectedIds.length >= max ? 0.42 : 1
               }}
             >
+              <canvas aria-hidden="true" width="96" height="88" style={{ width: 72, height: 66, display: 'block', margin: '0 auto 6px' }} ref={canvas => { if (!canvas) return; const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, 96, 88); drawPixelSprite(ctx, 48, 64, hero, 0, 1, 60, 'nexus'); }} />
               <strong style={{ display: 'block', fontSize: 10 }}>{selected ? '◆ ' : '◇ '}{hero.name}</strong>
               <small style={{ display: 'block', marginTop: 4, color: hero.primaryColor || accent, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {hero.universe}
@@ -203,13 +206,16 @@ export default function CustomBattleMode({
   disabledAssets = {},
   onSessionStart,
   onSessionEnd,
+  onPauseRequest,
   sessionPaused = false,
   sessionExitRequest = 0,
   dedicatedSession = false
 }) {
   const [phase, setPhase] = useState('setup');
+  const [lobbyStep, setLobbyStep] = useState(0);
   const [runtimeNonce, setRuntimeNonce] = useState(0);
   const sessionActiveRef = useRef(false);
+  const pendingBattleReportRef = useRef(null);
   const sessionExitRequestRef = useRef(sessionExitRequest);
   const hiddenSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
   const disabledHeroSet = useMemo(() => new Set(disabledAssets.heroes || []), [disabledAssets.heroes]);
@@ -359,7 +365,8 @@ export default function CustomBattleMode({
 
   const returnToSetup = (reason = 'quit') => {
     setPhase('setup');
-    endDedicatedSession({ reason: reason === 'quit' ? 'abandoned' : reason });
+    endDedicatedSession({ ...pendingBattleReportRef.current, reason: reason === 'quit' ? 'abandoned' : 'completed', result: reason });
+    pendingBattleReportRef.current = null;
   };
 
   const launch = () => {
@@ -367,6 +374,7 @@ export default function CustomBattleMode({
     if (!preset.playerTeamIds.length) return;
     if (preset.mode === 'Fighter' && !preset.opponentTeamIds.length) return;
     if (preset.mode !== 'Fighter' && !enemyData.customRoster.length) return;
+    pendingBattleReportRef.current = null;
     beginDedicatedSession();
     setRuntimeNonce(previous => previous + 1);
     setPhase(preset.mode === 'Fighter' ? 'fighter' : 'battle');
@@ -391,9 +399,10 @@ export default function CustomBattleMode({
         customBattle={runtimeStage.customBattle}
         hudTheme={resolveActiveHudTheme(portalCollection)}
         onSessionComplete={(result, summary) => {
-          endDedicatedSession({ reason: 'completed', result, summary });
+          pendingBattleReportRef.current = { result, summary };
         }}
         onBattleEnd={(result) => returnToSetup(result)}
+        onPauseRequest={onPauseRequest}
         sessionPaused={sessionPaused}
         dedicatedSession={dedicatedSession}
       />
@@ -431,7 +440,8 @@ export default function CustomBattleMode({
             endDedicatedSession(report);
             if (report.reason === 'abandoned') setPhase('setup');
           }}
-          sessionPaused={sessionPaused}
+          onPauseRequest={onPauseRequest}
+        sessionPaused={sessionPaused}
           dedicatedSession={dedicatedSession}
         />
       </div>
@@ -440,7 +450,7 @@ export default function CustomBattleMode({
 
   const modeInfo = MODE_OPTIONS.find(mode => mode.id === preset.mode) || MODE_OPTIONS[0];
   return (
-    <div className="glass-panel" data-testid="custom-battle-mode" style={{ padding: 18, borderRadius: 8, display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 14 }}>
+    <div className="glass-panel custom-battle-lobby" data-testid="custom-battle-mode" style={{ padding: 18, borderRadius: 8, display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 14 }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(250px, 100%), 1fr))', alignItems: 'end', gap: 12, minWidth: 0 }}>
         <div>
           <div style={{ color: '#39c5bb', fontSize: 10, letterSpacing: 2 }}>A.R.C.A. / SIMULATION LIBRE</div>
@@ -458,7 +468,10 @@ export default function CustomBattleMode({
         </div>
       </div>
 
-      <section style={{ ...panelStyle, display: 'grid', gap: 10 }}>
+      <nav className="custom-lobby-steps" aria-label={lang === 'fr' ? 'Étapes de préparation' : 'Setup steps'}>
+        {(lang === 'fr' ? ['MODE', 'ÉQUIPES', 'ARÈNE', 'RÈGLES'] : ['MODE', 'TEAMS', 'ARENA', 'RULES']).map((label, index) => <button key={label} type="button" aria-current={lobbyStep === index ? 'step' : undefined} onClick={() => setLobbyStep(index)}><b>{index + 1}</b><span>{label}</span></button>)}
+      </nav>
+      <section hidden={lobbyStep !== 0} aria-label={lang === 'fr' ? 'Mode de combat' : 'Battle mode'} style={{ ...panelStyle, display: 'grid', gap: 10 }}>
         <div className="fighter-section-label">{lang === 'fr' ? 'SYSTEME DE COMBAT' : 'BATTLE SYSTEM'}</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 8 }}>
           {MODE_OPTIONS.map(mode => (
@@ -508,7 +521,7 @@ export default function CustomBattleMode({
         </div>
       </section>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12 }}>
+      <div hidden={lobbyStep !== 1} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 12 }}>
         <TeamPicker
           title={lang === 'fr' ? 'ESCOUADE P1' : 'P1 SQUAD'}
           heroes={availableHeroes}
@@ -536,10 +549,10 @@ export default function CustomBattleMode({
         )}
       </div>
 
-      <section style={{ ...panelStyle, display: 'grid', gap: 12 }}>
-        <div className="fighter-section-label">{lang === 'fr' ? 'STAGE, SON ET TRAME' : 'STAGE, SOUND, AND THREAD'}</div>
+      <section hidden={lobbyStep !== 2 && lobbyStep !== 3} style={{ ...panelStyle, display: 'grid', gap: 12 }}>
+        <div className="fighter-section-label">{lobbyStep === 2 ? (lang === 'fr' ? 'ARÈNE & AMBIANCE' : 'ARENA & ATMOSPHERE') : (lang === 'fr' ? 'RÈGLES DU COMBAT' : 'BATTLE RULES')}</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(180px, 100%), 1fr))', gap: 10 }}>
-          <label style={{ display: 'grid', gap: 6 }}>
+          <label hidden={lobbyStep !== 2} style={{ display: 'grid', gap: 6 }}>
             <span className="fighter-section-label">{lang === 'fr' ? 'STAGE' : 'STAGE'}</span>
             <select value={preset.stageArchiveId || ''} onChange={event => updatePreset({ stageArchiveId: event.target.value || null })} style={selectStyle}>
               <option value="">{lang === 'fr' ? 'Nexus - arene de simulation' : 'Nexus simulation arena'}</option>
@@ -550,7 +563,7 @@ export default function CustomBattleMode({
               ))}
             </select>
           </label>
-          <label style={{ display: 'grid', gap: 6 }}>
+          <label hidden={lobbyStep !== 3} style={{ display: 'grid', gap: 6 }}>
             <span className="fighter-section-label">{lang === 'fr' ? 'DIFFICULTE CPU' : 'CPU DIFFICULTY'}</span>
             <select value={preset.difficulty} onChange={event => updatePreset({ difficulty: event.target.value })} disabled={preset.opponentControl === 'p2'} style={selectStyle}>
               <option value="training">{lang === 'fr' ? 'Entrainement' : 'Training'}</option>
@@ -558,10 +571,10 @@ export default function CustomBattleMode({
               <option value="expert">Expert</option>
             </select>
           </label>
-          <LoadoutSelect label={lang === 'fr' ? 'MUSIQUE DU STAGE' : 'STAGE MUSIC'} value={preset.stageMusicId} onChange={id => updatePreset({ stageMusicId: id })} options={ownedStageMusic} defaultLabel={lang === 'fr' ? 'Automatique selon le stage' : 'Automatic for stage'} lang={lang} />
-          <LoadoutSelect label={lang === 'fr' ? 'MUSIQUE DU COMBAT' : 'BATTLE MUSIC'} value={preset.battleMusicId} onChange={id => updatePreset({ battleMusicId: id })} options={ownedBattleMusic} defaultLabel={lang === 'fr' ? 'Automatique selon le combat' : 'Automatic for battle'} lang={lang} />
-          <LoadoutSelect label={lang === 'fr' ? 'SUPER DE TERRAIN' : 'FIELD SUPER'} value={preset.fieldSuperId} onChange={id => updatePreset({ fieldSuperId: id })} options={ownedFieldSupers} defaultLabel={lang === 'fr' ? 'Aucun super de terrain' : 'No field super'} lang={lang} />
-          {preset.mode !== 'Fighter' && (
+          <div hidden={lobbyStep !== 2}><LoadoutSelect label={lang === 'fr' ? 'MUSIQUE DU STAGE' : 'STAGE MUSIC'} value={preset.stageMusicId} onChange={id => updatePreset({ stageMusicId: id })} options={ownedStageMusic} defaultLabel={lang === 'fr' ? 'Automatique selon le stage' : 'Automatic for stage'} lang={lang} /></div>
+          <div hidden={lobbyStep !== 2}><LoadoutSelect label={lang === 'fr' ? 'MUSIQUE DU COMBAT' : 'BATTLE MUSIC'} value={preset.battleMusicId} onChange={id => updatePreset({ battleMusicId: id })} options={ownedBattleMusic} defaultLabel={lang === 'fr' ? 'Automatique selon le combat' : 'Automatic for battle'} lang={lang} /></div>
+          <div hidden={lobbyStep !== 3}><LoadoutSelect label={lang === 'fr' ? 'SUPER DE TERRAIN' : 'FIELD SUPER'} value={preset.fieldSuperId} onChange={id => updatePreset({ fieldSuperId: id })} options={ownedFieldSupers} defaultLabel={lang === 'fr' ? 'Aucun super de terrain' : 'No field super'} lang={lang} /></div>
+          {preset.mode !== 'Fighter' && lobbyStep === 3 && (
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'end', gap: 8 }}>
               {[
                 { key: 'items', fr: 'Objets', en: 'Items' },
@@ -575,9 +588,9 @@ export default function CustomBattleMode({
             </div>
           )}
         </div>
-        {preset.mode === 'Smash' && (
+        {preset.mode === 'Smash' && lobbyStep === 3 && (
           <fieldset className="custom-melee-stage-rules">
-            <legend>{lang === 'fr' ? 'REGLES P5 DU STAGE MELEE' : 'P5 MELEE STAGE RULES'}</legend>
+            <legend>{lang === 'fr' ? 'RÈGLES DE L’ARÈNE MÊLÉE' : 'MELEE ARENA RULES'}</legend>
             <label>
               <span className="fighter-section-label">{lang === 'fr' ? 'VARIANTE' : 'VARIANT'}</span>
               <select
@@ -609,7 +622,7 @@ export default function CustomBattleMode({
                 <option value={STAGE_EVENT_INTENSITIES.full}>Full</option>
               </select>
               {preset.stageVariant === STAGE_VARIANTS.competitive && (
-                <small>{lang === 'fr' ? 'Competitive force Off au runtime.' : 'Competitive forces Off at runtime.'}</small>
+                <small>{lang === 'fr' ? 'La variante compétitive désactive les événements du décor.' : 'The competitive variant disables stage events.'}</small>
               )}
             </label>
             <label>
@@ -639,22 +652,22 @@ export default function CustomBattleMode({
             </div>
           </fieldset>
         )}
-        {selectedArchive?.image && (
+        {lobbyStep === 2 && selectedArchive?.image && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(180px, 100%), 1fr))', gap: 12, alignItems: 'center', padding: 10, border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.04)' }}>
             <img src={selectedArchive.image} alt="" style={{ width: 180, maxWidth: '100%', maxHeight: 110, objectFit: 'cover', border: '1px solid #31545a', boxSizing: 'border-box' }} />
             <div>
               <strong style={{ color: selectedArchive.color || '#39c5bb' }}>{selectedArchive.universe}</strong>
               <p style={{ margin: '5px 0 0', color: '#8ea6ab', fontSize: 10, lineHeight: 1.45 }}>
                 {lang === 'fr'
-                  ? `Le stage debloque est adapte automatiquement au moteur ${modeInfo.fr}.`
-                  : `The unlocked stage is automatically adapted to the ${modeInfo.en} engine.`}
+                  ? `Cette arène débloquée sera utilisée pour ton combat ${modeInfo.fr}.`
+                  : `This unlocked arena will host your ${modeInfo.en} battle.`}
               </p>
             </div>
           </div>
         )}
       </section>
 
-      {preset.opponentControl === 'p2' && (
+      {lobbyStep === 3 && preset.opponentControl === 'p2' && (
         <div style={{ padding: 10, border: '1px solid rgba(255,138,80,0.38)', background: 'rgba(255,138,80,0.08)', color: '#ffd4bd', fontSize: 10, lineHeight: 1.5 }}>
           {preset.mode === 'Tactics' || preset.mode === 'RPG'
             ? (lang === 'fr' ? 'P2 prend les commandes pendant les tours/ATB ennemis. La souris est partagee en Tactique.' : 'P2 takes control during enemy turns/ATB. The mouse is shared in Tactics.')
@@ -662,7 +675,13 @@ export default function CustomBattleMode({
         </div>
       )}
 
+      <footer className="custom-lobby-footer">
+        <div className="custom-lobby-summary"><strong>{lang === 'fr' ? modeInfo.fr : modeInfo.en} · {preset.opponentControl === 'p2' ? 'P2 LOCAL' : 'CPU'}</strong><span>{preset.playerTeamIds.map(id => availableHeroes.find(hero => hero.id === id)?.name || id).join(' / ')} → {selectedArchive ? localized(selectedArchive, lang, selectedArchive.universe) : 'Nexus'}</span></div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          {lobbyStep > 0 && <button type="button" className="btn-retro" onClick={() => setLobbyStep(step => step - 1)}>{lang === 'fr' ? 'PRÉCÉDENT' : 'PREVIOUS'}</button>}
+          {lobbyStep < 3 && <button type="button" className="btn-retro" onClick={() => setLobbyStep(step => step + 1)}>{lang === 'fr' ? 'SUIVANT' : 'NEXT'}</button>}
       <button
+        hidden={lobbyStep !== 3}
         type="button"
         className="btn-retro"
         onClick={launch}
@@ -671,6 +690,8 @@ export default function CustomBattleMode({
       >
         {lang === 'fr' ? `LANCER ${modeInfo.fr} — ${preset.opponentControl === 'p2' ? 'P2 LOCAL' : 'CPU'}` : `LAUNCH ${modeInfo.en} — ${preset.opponentControl === 'p2' ? 'LOCAL P2' : 'CPU'}`}
       </button>
+        </div>
+      </footer>
     </div>
   );
 }

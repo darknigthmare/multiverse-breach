@@ -6,8 +6,9 @@ import { createServer } from 'vite';
 import { getHeroById } from '../src/game/heroes.js';
 import { ENEMIES_DB } from '../src/game/enemies.js';
 import { CANON_PRIORITY_STAGES } from '../src/game/canonPriorityStages.js';
+import { SOURCE_SCENE_STAGES } from '../src/game/sourceSceneStages.js';
 import { resolveStageEnemyData } from '../src/game/stageEnemyResolver.js';
-import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
+import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
 import { readStaticStages } from './riftDossierStaticStages.mjs';
 
 const heroKit = hero => JSON.stringify([
@@ -17,6 +18,8 @@ const heroKit = hero => JSON.stringify([
 test('Ripley 1979 and Ripley 1986 keep separate source equipment and saved hero IDs', () => {
   const nostromo = getHeroById('ripley');
   const sulaco = getHeroById('ripley_aliens');
+  assert.equal(nostromo.id, 'ripley');
+  assert.equal(sulaco.id, 'ripley_aliens');
   assert.equal(nostromo.universe, 'Alien');
   assert.equal(sulaco.universe, 'Aliens');
   assert.match(nostromo.incarnation, /1979.*Nostromo/);
@@ -28,7 +31,7 @@ test('Ripley 1979 and Ripley 1986 keep separate source equipment and saved hero 
   assert.match(heroKit(sulaco), /M41A/);
   assert.match(heroKit(sulaco), /M240/);
   assert.match(sulaco.special.name, /Power Loader/);
-  assert.equal(getHeroSpriteSheetSrc(nostromo), '/sprites/generated/heroes/alien/ripley.png');
+  assert.equal(getHeroSpriteSheetSrc(nostromo), '/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png');
   assert.equal(getHeroSpriteSheetSrc(sulaco), '/sprites/generated/heroes/aliens/ripley-aliens.png');
 });
 
@@ -39,7 +42,32 @@ test('the 1987 Jungle Hunter excludes later Predator weapons while preserving pr
   assert.doesNotMatch(heroKit(hunter), /disc|combi.?stick/i);
   assert.match(hunter.simple.name, /Wristblade/);
   assert.equal(hunter.secondary.type, 'plasma');
-  assert.equal(getHeroSpriteSheetSrc(hunter), '/sprites/generated/heroes/predator/predator.png');
+  assert.equal(getHeroSpriteSheetSrc(hunter), '/sprites/generated/heroes/predator/predator-v2-fidelity-wave12-2026-11-01.png');
+});
+
+test('the four reviewed Alien and Predator sprites keep their historical atlases as accessible variants', () => {
+  const corrections = [
+    ['ripley', '/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png', '/sprites/generated/heroes/alien/ripley.png'],
+    ['predator', '/sprites/generated/heroes/predator/predator-v2-fidelity-wave12-2026-11-01.png', '/sprites/generated/heroes/predator/predator.png'],
+    ['bishop', '/sprites/generated/heroes/alien/bishop-v2-fidelity-wave12-2026-11-01.png', '/sprites/generated/heroes/alien/bishop.png'],
+    ['greyback_yautja', '/sprites/generated/heroes/predator/greyback-yautja-v2-fidelity-wave12-2026-11-01.png', '/sprites/generated/heroes/predator/greyback-yautja.png']
+  ];
+  for (const [heroId, current, original] of corrections) {
+    const hero = getHeroById(heroId);
+    assert.equal(hero.id, heroId, 'the saved hero identity remains stable');
+    for (const context of ['auto', 'rpg', 'tactics', 'melee', 'nexus', 'collection', 'hud', 'fps']) {
+      assert.equal(getHeroSpriteSheetSrc(hero, context), current, `${heroId} in ${context}`);
+    }
+    const variants = getHeroCompleteSpritePack(hero);
+    assert.ok(Array.isArray(variants), `${heroId} exposes its reviewed and historical sheets`);
+    assert.equal(variants.filter(variant => variant.current).length, 1);
+    assert.equal(variants.find(variant => variant.current)?.src, current);
+    assert.equal(variants.find(variant => variant.id === 'original')?.src, original);
+    assert.equal(variants.find(variant => variant.id === 'original')?.current, false);
+  }
+  const sulaco = getHeroById('ripley_aliens');
+  assert.equal(getHeroSpriteSheetSrc(sulaco), '/sprites/generated/heroes/aliens/ripley-aliens.png');
+  assert.equal(getHeroCompleteSpritePack(sulaco), null, 'the separate 1986 incarnation receives no 1979 correction pack');
 });
 
 test('the final Freeman runtime override stays in Half-Life 2 instead of restoring the gluon gun', () => {
@@ -93,7 +121,15 @@ test('LV-426 selects the 1986 Queen and warriors, without a Predalien or later f
   assert.doesNotMatch(selected.bosses[0].equipment.join(' '), /spit|acid/i);
   assert.match(stage.gameplayAdaptation, /Rescue Newt.*evacuation.*living carrier/);
   assert.match(stage.gameplayAdaptation, /Queen damage is nonlethal/);
-  assert.match(stage.gameplayAdaptation, /Sulaco.*separate and unimplemented/);
+  // The Sulaco follow-up now exists. Verify the boundary and prerequisite,
+  // rather than requiring the obsolete phrase 'unimplemented' in the briefing.
+  const sulaco = SOURCE_SCENE_STAGES.find(scene => scene.sourceSceneId === 'sulaco_cargo_airlock_1986');
+  assert.ok(sulaco);
+  assert.notEqual(sulaco.id, stage.id);
+  assert.equal(sulaco.requiredLeadInStageId, stage.id);
+  assert.equal(sulaco.mode, 'Tactics');
+  assert.equal(sulaco.requiredTeam.heroId, 'ripley_aliens');
+  assert.match(stage.gameplayAdaptation, /Sulaco/);
   assert.equal(getEnemySpriteSheetSrc({ ...selected.bosses[0], universe: stage.universe }), '/sprites/generated/bosses/alien/alien-queen.png');
 });
 
@@ -115,9 +151,9 @@ test('the four repaired static missions preserve saved IDs, modes, rewards and t
   const contracts = [
     [CANON_PRIORITY_STAGES.lightmassTrain, 1, 'RPG', 40, 15],
     [CANON_PRIORITY_STAGES.metropolisScarab, 2, 'Tactics', 40, 15],
-    [CANON_PRIORITY_STAGES.hadleysQueen, 3, 'Smash', 45, 15],
     [CANON_PRIORITY_STAGES.xenNihilanth, 10, 'Smash', 75, 25]
   ];
+  contracts.splice(2, 0, [CANON_PRIORITY_STAGES.hadleysQueen, 3, 'Smash', 45, 15]);
   const source = await readFile(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
   const stages = readStaticStages(source);
   for (const [stage, id, mode, gold, shards] of contracts) {

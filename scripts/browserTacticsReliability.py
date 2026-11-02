@@ -13,6 +13,7 @@ import time
 import traceback
 from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright, expect
+from browserCombatUi import open_arsenal, close_arsenal, click_combat_point
 
 
 def main():
@@ -47,8 +48,11 @@ def main():
                     before = page.evaluate("window.__tacticsAudit.prepare('heal')")
                     heal = page.get_by_role('button', name=re.compile('QA HEAL', re.I))
                     expect(heal).to_be_enabled(); heal.click()
-                    panel = page.get_by_role('region', name='Soutien tactique' if lang == 'fr' else 'Tactical support')
-                    target = panel.get_by_role('button', name=re.compile('QA Anchor'))
+                    open_arsenal(page)
+                    # External pause closes the drawer. Retain a hidden locator only
+                    # for its disabled-state assertion; reopen before any interaction.
+                    panel = page.get_by_role('region', name='Soutien tactique' if lang == 'fr' else 'Tactical support', include_hidden=True)
+                    target = panel.get_by_role('button', name=re.compile('QA Anchor'), include_hidden=True)
                     expect(target).to_contain_text('+10')
                     # Choosing a skill remains free; pause blocks both the target and end-turn.
                     assert page.evaluate('window.__tacticsAudit.engine.heroes[1].cooldown') == 0
@@ -56,7 +60,7 @@ def main():
                     ending = page.get_by_role('button', name=re.compile('FINIR LE TOUR' if lang == 'fr' else 'END TURN'))
                     expect(ending).to_be_disabled()
                     assert page.evaluate('window.__tacticsAudit.engine.turnsElapsed') == before['turns']
-                    page.locator('#qa-pause').click(); expect(target).to_be_enabled()
+                    page.locator('#qa-pause').click(); open_arsenal(page); expect(target).to_be_enabled()
                     box = panel.bounding_box(); assert box and box['x'] >= -1 and box['x'] + box['width'] <= width + 1
                     page.screenshot(path=str(output / f'{prefix}-heal-targets.png'), full_page=True)
                     # Two synchronous real DOM clicks hit the actual React handler only once.
@@ -67,8 +71,10 @@ def main():
                     assert page.evaluate('window.__tacticsAudit.engine.heroes[1].cooldown > 0')
 
                     page.evaluate("window.__tacticsAudit.prepare('cleanse')")
+                    close_arsenal(page)
                     clean = page.get_by_role('button', name=re.compile('QA CLEANSE', re.I))
                     expect(clean).to_be_enabled(); clean.click()
+                    open_arsenal(page)
                     expect(panel).to_contain_text('Retire : infection' if lang == 'fr' else 'Removes: infection')
                     panel.get_by_role('button', name=re.compile('QA Anchor')).click()
                     page.wait_for_function('window.__tacticsAudit.engine.heroes[0].statusEffects.infected === 0')
@@ -76,12 +82,16 @@ def main():
                     assert page.evaluate('window.__tacticsAudit.engine.heroes[0].currentHp <= 100')
 
                     page.evaluate("window.__tacticsAudit.prepare('occupied')")
+                    close_arsenal(page)
                     revive = page.get_by_role('button', name=re.compile('QA REVIVE', re.I))
                     expect(revive).to_be_enabled(); revive.click()
+                    open_arsenal(page)
                     expect(panel).to_contain_text('Aucune cible admissible' if lang == 'fr' else 'No eligible target')
                     assert page.evaluate('window.__tacticsAudit.engine.heroes[1].cooldown') == 0
                     page.evaluate("window.__tacticsAudit.prepare('revive')")
+                    close_arsenal(page)
                     expect(revive).to_be_enabled(); revive.click()
+                    open_arsenal(page)
                     target = panel.get_by_role('button', name=re.compile('QA Anchor'))
                     expect(target).to_contain_text('+60'); target.click()
                     page.wait_for_function('window.__tacticsAudit.engine.heroes[0].currentHp === 60')
@@ -90,11 +100,11 @@ def main():
 
                     # Actual canvas click on a lethal tile must end, rather than strand, the turn.
                     page.evaluate("window.__tacticsAudit.prepare('hazard')")
+                    close_arsenal(page)
                     page.wait_for_function("window.__tacticsAudit.engine.activeUnit?.id === 'arca_mirelle'")
                     point = page.evaluate('window.__tacticsAudit.engine.gridToScreen(2,2)')
-                    canvas = page.locator('canvas').first
-                    size = canvas.evaluate('(c) => ({width:c.width,height:c.height})'); box = canvas.bounding_box()
-                    canvas.click(position={'x':point['x'] * box['width']/size['width'], 'y':point['y'] * box['height']/size['height']})
+                    canvas = page.locator('canvas.combat-stage-canvas')
+                    click_combat_point(canvas, point)
                     page.wait_for_function('window.__tacticsAudit.engine.heroes[1].currentHp === 0')
                     page.wait_for_function("window.__tacticsAudit.engine.activeUnit?.id !== 'arca_mirelle'")
                     page.locator('#qa-unmount').click()
