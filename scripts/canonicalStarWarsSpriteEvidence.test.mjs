@@ -100,3 +100,19 @@ test('core Canvas rendering quarantines known bad actor art but retains the proc
   assert.match(assets,/getHeroSpriteSheetSources/);
   assert.match(renderer,/drawFallbackEnergyBlades\(ctx, type, color\)/);
 });
+
+
+test('mission, codex and fighter portraits suppress rejected art but archival sprite paths remain indexed', () => {
+  const hub=readFileSync(new URL('../src/components/HubScreen.jsx',import.meta.url),'utf8');
+  const fighter=readFileSync(new URL('../src/components/FighterMode.jsx',import.meta.url),'utf8');
+  assert.match(hub,/const artBlocked = Boolean\(getQuarantinedCanonSprite\(hero\)\)/);
+  assert.match(hub,/const src = hero && !artBlocked \? getHeroSpriteSheetSrc\(hero, 'melee'\) : ''/);
+  assert.match(hub,/const rejectedSourceArt = getQuarantinedCanonSprite\(hero\)/);
+  assert.match(hub,/backgroundImage: spriteSrc \? `url\(/);
+  assert.match(hub,/ART À REFAIRE/);
+  assert.match(fighter,/const artBlocked = Boolean\(getQuarantinedCanonSprite\(hero\)\)/);
+  assert.match(fighter,/const src = artBlocked \? '' : getHeroSpriteSheetSrc\(hero, 'melee'\)/);
+  assert.match(fighter,/if \(!src\) \{\s+setLoaded\(false\);/);
+  assert.match(fighter,/artBlocked \? 'ART' : initials/);
+  assert.match(hub,/const getHeroSpriteInfo = useCallback/,'archive and administrative asset inspector are preserved');
+});
