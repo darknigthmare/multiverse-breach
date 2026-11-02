@@ -67,20 +67,34 @@ jobs:
           Path('/tmp/ec-evidence/workbook-receipt.json').write_text(json.dumps(receipt,indent=2))
           print(json.dumps({'sourceRevision':revision,'workbookHashes':'verified','checkout':Path('/tmp/ec-evidence/tested-commit.txt').read_text().strip()}))
           PY
+      - name: Checkout immutable workbook source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.EC_WORKBOOK_SOURCE_REVISION }}
+          path: .tmp/extinction-workbook-source
+          persist-credentials: false
+          fetch-depth: 1
+          lfs: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /src/
+            /scripts/
+            /package.json
       - name: Identity, source inventory and immutable workbook contracts
         run: |
           set -euo pipefail
           git ls-files > TRACKED_FILES.txt
           node --test scripts/extinctionContent.test.mjs scripts/mosaicUniversePlaces.test.mjs scripts/scenePresentation.test.mjs scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs scripts/mosaicResidentNavigation.test.mjs scripts/mosaicResidents.test.mjs scripts/extinctionViewmodelContract.test.mjs | tee /tmp/ec-evidence/unit.log
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionCityCatalog.test.mjs | tee /tmp/ec-evidence/catalog-tests.log
-          # The production XLSX is the immutable 28-Oct snapshot. C-Rex art was
-          # added on 29-Oct, after its pinned source revision. The new exact
-          # master workbook is preserved at docs/excel/archives/*CRex*.xlsx.
-          # Never silently rewrite the snapshot or claim an absent old image.
+          # Retain the tested HEAD inventory separately from the immutable XLSX snapshot.
           cp TRACKED_FILES.txt /tmp/ec-evidence/tracked-current.txt
-          grep -v '^public/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex\.png$' /tmp/ec-evidence/tracked-current.txt > TRACKED_FILES.txt
-          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/catalog.mjs "$EC_WORKBOOK_SOURCE_REVISION" /tmp/ec-evidence/catalog.json | tee /tmp/ec-evidence/catalog-summary.json
-          cp /tmp/ec-evidence/tracked-current.txt TRACKED_FILES.txt
+          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/catalog.mjs "$(git rev-parse HEAD)" /tmp/ec-evidence/catalog-current.json | tee /tmp/ec-evidence/catalog-current-summary.json
+          git -C .tmp/extinction-workbook-source ls-files | tee /tmp/ec-evidence/tracked-workbook-source.txt > .tmp/extinction-workbook-source/TRACKED_FILES.txt
+          (
+            cd .tmp/extinction-workbook-source
+            test "$(git rev-parse HEAD)" = "$EC_WORKBOOK_SOURCE_REVISION"
+            node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/catalog.mjs "$EC_WORKBOOK_SOURCE_REVISION" /tmp/ec-evidence/catalog.json | tee /tmp/ec-evidence/catalog-summary.json
+          )
           python3 scripts/extinction-city/verify_workbook.py /tmp/ec-evidence/catalog.json docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx | tee /tmp/ec-evidence/workbook.json
           python3 scripts/ui-immersion/verify-workbook.py docs/excel/Multiverse_Breach_UI_Immersion.xlsx --report /tmp/ec-evidence/ui-workbook.json
           python3 - <<'PY'
