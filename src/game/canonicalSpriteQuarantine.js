@@ -26,7 +26,7 @@ export const QUARANTINED_CANON_SPRITES = Object.freeze({
   }),
   darth_revan: Object.freeze({
     universe: 'Star Wars',
-    incarnation: 'Star Wars: Knights of the Old Republic',
+    incarnation: 'Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)',
     asset: '/sprites/generated/heroes/star-wars/darth-revan.png',
     sha256: '78200992ef619c3e7d16907db20496df67b018c1fb99697bcf75dce3ea43169c',
     reason: 'KOTOR_I_WRONG_RED_PURPLE_PAIR'
