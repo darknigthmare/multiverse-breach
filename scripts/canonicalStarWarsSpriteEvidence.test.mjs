@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { buildEditionSpriteAudit,EDITION_IDS,REVIEW_COLUMNS,EXACT_SOURCE_ART_BLOCKERS } from './auditCanonicalStarWarsSprites.mjs';
+import { QUARANTINED_CANON_SPRITES, getQuarantinedCanonSprite } from '../src/game/canonicalSpriteQuarantine.js';
+import { SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS, SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES } from '../src/game/solarOppositesSirenStarWarsPack.js';
 
 test('seven edition-specific PNG sources exist and have different file fingerprints',()=>{
   const {rows}=buildEditionSpriteAudit();
@@ -49,4 +51,50 @@ test('known incorrect pictures are blocked by exact file SHA until replacement',
   for(const id of ['ahsoka_adult','aayla_secura','darth_maul','darth_talon']){
     assert.equal(byId[id].weaponReview,'PENDING_HUMAN_SOURCE_COMPARISON');
   }
+});
+
+test('confirmed wrong Star Wars actor art is quarantined by exact source incarnation without deleting its PNG', () => {
+  const rows=Object.fromEntries(buildEditionSpriteAudit().rows.map(row=>[row.actorId,row]));
+  const actors=[
+    ...SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS['Star Wars'],
+    ...Object.values(SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES)
+  ];
+  assert.deepEqual(Object.keys(QUARANTINED_CANON_SPRITES).sort(),
+    ['ahsoka','ahsoka_padawan','darth_revan'].sort());
+  for(const [id,record] of Object.entries(QUARANTINED_CANON_SPRITES)) {
+    const hero=actors.find(actor=>actor.id===id);
+    assert.ok(hero,id);
+    assert.equal(hero.incarnation,record.incarnation,id+' incarnation must match');
+    assert.equal(hero.universe,'Star Wars',id);
+    assert.equal(record.universe,'Star Wars');
+    assert.equal(record.asset,rows[id].spritePath,'archive must keep original PNG path');
+    assert.equal(record.sha256,EXACT_SOURCE_ART_BLOCKERS[id].sha256,
+      'quarantine must correspond to a reviewed and fingerprinted wrong sheet');
+    assert.equal(getQuarantinedCanonSprite(hero),record);
+    assert.equal(getQuarantinedCanonSprite({...hero,universe:'Other'}),null);
+    assert.equal(getQuarantinedCanonSprite({...hero,incarnation:'another version'}),null,
+      'an alternate incarnation cannot inherit the visual rejection');
+    assert.equal(getQuarantinedCanonSprite({...hero,sourceLockedArtApproved:true}),record,
+      'unreviewed costume flags must never override the source-art review gate');
+  }
+  for(const id of EDITION_IDS.filter(id=>!QUARANTINED_CANON_SPRITES[id])) {
+    const hero=actors.find(actor=>actor.id===id);
+    assert.ok(hero,id);
+    assert.equal(getQuarantinedCanonSprite(hero),null,
+      'unreviewed is not the same as a proven inaccurate bitmap');
+  }
+});
+
+test('core Canvas rendering quarantines known bad actor art but retains the procedural weapon and archival assets', () => {
+  const renderer=readFileSync(new URL('../src/game/renderer.js',import.meta.url),'utf8');
+  const assets=readFileSync(new URL('../src/game/spriteAssets.js',import.meta.url),'utf8');
+  assert.match(renderer,/getQuarantinedCanonSprite\(character\)/);
+  assert.match(renderer,/quarantinedArt \? 'missing' : drawGeneratedSpriteSheet/);
+  assert.match(renderer,/if \(context === 'melee' && !quarantinedArt\)/);
+  assert.match(renderer,/getQuarantinedCanonSprite\(entity\)/);
+  assert.match(renderer,/drawQuarantinedCombatantBust/);
+  assert.match(renderer,/drawWeapon\(ctx, armX \+ 12, armY, weaponType, weaponColor, animTime\)/);
+  assert.match(renderer,/ART PENDING/);
+  assert.match(assets,/getHeroSpriteSheetSources/);
+  assert.match(renderer,/drawFallbackEnergyBlades\(ctx, type, color\)/);
 });
