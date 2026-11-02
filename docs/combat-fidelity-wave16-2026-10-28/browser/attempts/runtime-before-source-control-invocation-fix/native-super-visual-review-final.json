@@ -1,0 +1,218 @@
+{
+  "passed": true,
+  "preliminary": false,
+  "reviewedAt": "2026-11-01T00:57:31.054Z",
+  "actualCapturesInspected": 2,
+  "actualContactSheetsViewed": 2,
+  "actualInspectionOperations": 13,
+  "reviewedRuntimeCaptures": 720,
+  "reviewedProtectionFrames": 96,
+  "reviewedRenderedCells": 816,
+  "allBrowserWindowsClosed": true,
+  "browserClosedAt": "2026-11-01T00:55:11.347Z",
+  "productionFreezeSha256": "b75fee086dcc50c6c31413bee2098ef8335b38ed5b8347e706feeda9a1121d21",
+  "source1to1Verified": false,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+      "sha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+      "bytes": 4605365,
+      "inspected": true,
+      "observation": "Actually opened all 12 consecutive nonoverlapping 1440×2400 crops of the new final main image, covering all 120 character rows and six engine/camp columns. Native bodies, equipment, selected effects and differing mode scales are visible. Detailed crop observations are recorded below; at peak Kon the large Fox head occludes Aki and is not claimed as an unobstructed caster view."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-protection-companion-contact-sheet.png",
+      "sha256": "6bc86b08008078a94d959a1865c7f099cf83eda5eba37bc482b804b7f55caeef",
+      "bytes": 534888,
+      "inspected": true,
+      "observation": "Actually opened the complete new final 3840×1440 companion sheet: six engine/camp rows and 16 cells each. Chalice full body and one separate gold shield/red heart/white wing companion are visible through arrival, guard, absorb and departure, with opposite facing in enemy rows and no duplicate independent companion apparent."
+    }
+  ],
+  "report": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-runtime.json",
+    "sha256": "c9d6b7f1d94188897e7a0379c02c7ee628d95ac8b89bcaef33f189fb4dab0ffb",
+    "bytes": 3700295
+  },
+  "reviewMethod": {
+    "contactSheet": "Twelve actual nonoverlapping crop views, source Y ranges0..2399 through26400..28799, retaining all six case columns.",
+    "companionSheet": "One actual whole-image view after final browser closure.",
+    "cropFilesTemporaryOnly": true,
+    "runtimeCropViews": [
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Crash spin, Coco laptop support, Aku mask, Jim worm whip, Peter transformation, Princess, Guybrush sword, Elaine, Stan and Cuphead white head beam remain distinct across six engine/camp columns."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 2400,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Mugman active spectral effect and Chalice protective companion are visible separately from Deponia support gestures, Sam/Max bodies and Beat/Gum skate silhouettes in all six columns."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 4800,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Corn skate posture, Abe blue chant, Munch seated body, Stranger live-ammo weapon, Meat Boy and Bandage Girl small bodies, Brownie, Commander Video rainbow trails and Sackboy weapon remain visible."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 7200,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Toggle large plush body, Wallace gesture, Gromit small quadruped, Wendolene cloth, Agent Xtra, Alfred, Whiskey dog and the three fish retain their differing silhouettes in each mode and facing."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 9600,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Sev/Rico/Echo firearms and muzzle flashes, Cooper rifle, larger BT cannon, Sarah pistol, Tank support gesture, Johnny, Panam and blue Laserkraftwerk release remain legible in six columns."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 12000,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Anya and Set support gestures, Nilin orange arc, Caine long sword, Nilin infiltration rings, Senua native gesture, Rambo bow, Sam support, Hiro curved blade and Mikiko green shot remain distinct."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 14400,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Superfly flash, Frank gesture, Chuck paired chainsaw sweep, Nick ground attack, Warren industrial tool, Irina support, Rocky punch, Jackie darkness orb and Jenny/Johnny support are drawn in both camps."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 16800,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Chumbucket support, cyan winged Aya, Daniel shot, Maeda gesture, Ishikawa blue tablet, blue Tachikoma, Tenenbaum support, Newton device, Apollo punch and David shot remain distinguishable."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 19200,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Tsubaki cape and blade, Hakumen long blade counter pose, Angel black coat, Spike blue suit, Faye shot, Jet mechanical arm, Edward arm blade, Alphonse armour, Roy glove flame and Akane cyan release are visible."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 21600,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Kogami muzzle flash, Ginoza gesture, Frieren/Fern white staff beams, Stark axe, Saitama extended punch, Genos orange beam, Tatsumaki green energy, Kirito dual blades and Asuna rapier are visible."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 24000,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Klein blade, Denji chainsaws, Power hammer, MEIKO and KAITO support, Oracle apron, Invincible flight, Eve pink barrier and Robot orange shot remain distinct. Kon Fox head naturally occludes Aki at this peak; this image does not prove an unobstructed caster view."
+      },
+      {
+        "source": "docs/combat-fidelity-wave16-2026-10-28/browser/native-super-contact-sheet.png",
+        "sourceSha256": "92700835ed9f966e433f7b1f00eea8928936b13818433a857b02c1fe40f93709",
+        "crop": {
+          "x": 0,
+          "y": 26400,
+          "width": 1440,
+          "height": 2400
+        },
+        "actualCasesInCrop": 60,
+        "inspected": true,
+        "observation": "Yugo portals, Amalia foliage, Percedal sword, Uzi green railgun, N claws, V shot, Blitzø/Moxxie flashes, Millie axe and Izutsumi clawed silhouette remain visible across the six columns."
+      }
+    ],
+    "mainImageViewedAsWhole": false,
+    "mainImageFullyCoveredByTwelveActualCropViews": true,
+    "companionImageViewedAsWhole": true,
+    "requestedImageDetail": "original",
+    "displayNote": "The tool returned display-resized previews for 1440×2400 and3840×1440 images; source PNGs and crop rectangles retain original pixels.",
+    "executionNote": "All twelve crops and whole companion sheet were freshly reopened after the inclusive12571file freeze rerun closed2026-11-01T00:55:11.347Z; report and image SHA fingerprints were recomputed from current files."
+  },
+  "mechanics": {
+    "physicalProjectiles": 68,
+    "allMeasuredReleaseColumn2": true,
+    "kiritoNative16AndNative32AllSixCases": true,
+    "protectionCompanionBothFacingsByMode": {
+      "fighter": true,
+      "rpg": true,
+      "melee": true
+    },
+    "tacticsScope": "Separate240case domain validates board cells, surfaces, range and line of sight; this review makes no anatomical blade collision claim for Tactics."
+  },
+  "limits": "Authored pixel adaptations and engine timings are not certified official1:1 frames. This review records actual source-specific rendering and functional contracts with source provenance and limitations preserved.",
+  "reviewCountUnit": "Two distinct inspected source PNG files. The main file was inspected through12actual crops, the companion file through1whole view:13viewing operations cover816rendered cells, not816PNG files."
+}

@@ -1,0 +1,86 @@
+✖ rpg player: Wave15 projectile feedback waits for release and accepted contact (11946.920146ms)
+✖ rpg opponent: Wave15 projectile feedback waits for release and accepted contact (2.145396ms)
+✖ melee player: Wave15 projectile feedback waits for release and accepted contact (5.730593ms)
+✖ melee opponent: Wave15 projectile feedback waits for release and accepted contact (1.948799ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12468.979045
+
+✖ failing tests:
+
+test at scripts/nativeSuperRuntimeWave15.test.mjs:119:59
+✖ rpg player: Wave15 projectile feedback waits for release and accepted contact (11946.920146ms)
+  AssertionError [ERR_ASSERTION]: unreal_1998_gina: projectile feedback left the aiming pose before hitAt
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave15.test.mjs:126:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/nativeSuperRuntimeWave15.test.mjs:119:59
+✖ rpg opponent: Wave15 projectile feedback waits for release and accepted contact (2.145396ms)
+  AssertionError [ERR_ASSERTION]: unreal_1998_gina: projectile feedback left the aiming pose before hitAt
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave15.test.mjs:126:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/nativeSuperRuntimeWave15.test.mjs:119:59
+✖ melee player: Wave15 projectile feedback waits for release and accepted contact (5.730593ms)
+  AssertionError [ERR_ASSERTION]: unreal_1998_gina: projectile feedback left the aiming pose before hitAt
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave15.test.mjs:126:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/nativeSuperRuntimeWave15.test.mjs:119:59
+✖ melee opponent: Wave15 projectile feedback waits for release and accepted contact (1.948799ms)
+  AssertionError [ERR_ASSERTION]: unreal_1998_gina: projectile feedback left the aiming pose before hitAt
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave15.test.mjs:126:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,3 +1,6 @@
+import { ROSTER_REINFORCEMENTS_WAVE15 } from './combat/rosterReinforcementsWave15.js';
+import { ROSTER_PARTNERS_WAVE16 } from './combat/rosterPartnersWave16.js';
+import { ROSTER_REINFORCEMENTS_WAVE16, CANONICAL_SUMMONS_WAVE16 } from './combat/rosterReinforcementsWave16.js';
 import { ROSTER_REINFORCEMENTS_WAVE14 } from './combat/rosterReinforcementsWave14.js';
 import { ROSTER_REINFORCEMENTS_WAVE12 } from './combat/rosterReinforcementsWave12.js';
 import { ROSTER_REINFORCEMENTS_WAVE13 } from './combat/rosterReinforcementsWave13.js';
@@ -15,7 +18,7 @@ import { ROSTER_REINFORCEMENTS_WAVE11 } from './combat/rosterReinforcementsWave1
 // actual source-game animation are different claims; no animation is certified
 // by resolving one of these profiles.
 const beneficial = new Set(['heal', 'guard', 'buff', 'cleanse', 'revive']);
-const effects = new Set(['damage', ...beneficial]);
+const effects = new Set(['damage', 'control', ...beneficial]);
 const allowedStatuses = new Set(['infected', 'glitched', 'radiated']);
 const slots = ['special', 'secondary', 'simple'];
 const heroSpriteIdentities = new Map(HEROES_DB.map(hero => [hero.id, hero]));
@@ -77,14 +80,18 @@ function abilityProfile(actor, slot, action) {
       : /cleanse|purify/.test(type) ? 'cleanse' : /buff|support/.test(type) ? 'buff'
         : /shield|guard/.test(type) ? 'guard' : 'damage');
   const supported = beneficial.has(effect);
+  const controlled = effect === 'control' && (identity(actor) === 'borderlands_2_maya_phaselock' && actor.universe === 'Borderlands 2'
+    || identity(actor) === 'oddworld_abe_possession' && actor.universe === 'Oddworld' && explicit.controlKind === 'possession'
+    || identity(actor) === 'akane_tsunemori' && actor.universe === 'Psycho-Pass' && explicit.controlKind === 'paralyzer'
+      && explicit.authorization === 'sibyl-s1e21-exception');
   const declaredDelivery = explicit.delivery || action.delivery;
-  const delivery = supported ? 'support'
+  const delivery = controlled ? 'control' : supported ? 'support'
     : ['melee', 'projectile', 'beam', 'area', 'radial'].includes(declaredDelivery) ? declaredDelivery
       : /melee|slash|punch|dodge_strike|drill_smash/.test(type) ? 'melee'
         : /beam|laser/.test(type) ? 'beam'
           : /bullet|shotgun|rocket|projectile|boomerang|cannon/.test(type) ? 'projectile' : 'area';
   const side = explicit.targetSide || action.targetSide;
-  const targetSide = ['self', 'ally', 'enemy'].includes(side) ? side
+  const targetSide = controlled ? 'enemy' : ['self', 'ally', 'enemy'].includes(side) ? side
     : side === 'allies' ? 'ally' : side === 'enemies' ? 'enemy' : supported ? 'ally' : 'enemy';
   const aliases = { all: 'group', allies: 'group', enemies: 'group', aoe: 'area', zone: 'area', ray: 'line' };
   const declaredShape = explicit.shape || explicit.pattern || (typeof action.targeting === 'string' ? action.targeting : null);
@@ -97,13 +104,26 @@ function abilityProfile(actor, slot, action) {
     delivery,
     targetSide,
     excludeSelf: explicit.excludeSelf === true,
-    shape: ['single', 'group', 'multi', 'area', 'line', 'cone'].includes(shape) ? shape : fallbackShape,
+    shape: controlled ? 'single' : ['single', 'group', 'multi', 'area', 'line', 'cone'].includes(shape) ? shape : fallbackShape,
     range: finite(explicit.range ?? action.range ?? action.rpgRange, delivery === 'melee' ? 170 : delivery === 'support' ? 760 : 640, 1),
     areaRadius: finite(explicit.areaRadius ?? explicit.radius ?? action.areaRadius, 135, 1),
     lineWidth: finite(explicit.lineWidth ?? action.lineWidth, 48, 1),
     coneAngle: clamp(finite(explicit.coneAngle ?? action.coneAngle, 55, 1), 1, 180),
     maxTargets: finite(explicit.maxTargets ?? action.maxTargets, shape === 'single' ? 1 : 8, 1),
-    multiplier: finite(action.dmg, 1),
+    multiplier: controlled ? 0 : finite(action.dmg, 1),
+    ...(controlled ? { controlKind: explicit.controlKind || null,
+      controlDuration: clamp(finite(explicit.controlDuration ?? explicit.duration, 2.4, .1), .1, 8), controlTurns: 1, minTargets: 1,
+      ...(explicit.authorization ? { authorization: explicit.authorization } : {}),
+      ...(explicit.channelDuration ? { channelDuration: explicit.channelDuration } : {}) } : {}),
+    ...(explicit.requiresExplicitTargetEligibility !== undefined ? { requiresExplicitTargetEligibility: explicit.requiresExplicitTargetEligibility } : {}),
+    ...(explicit.hitSequence ? { hitSequence: clone(explicit.hitSequence) } : {}),
+    ...(explicit.postSequenceStunDuration ? { postSequenceStunDuration: explicit.postSequenceStunDuration } : {}),
+    ...(explicit.invulnerabilityKind ? { invulnerabilityKind: explicit.invulnerabilityKind,
+      invulnerabilityDuration: explicit.invulnerabilityDuration ?? explicit.duration } : {}),
+    ...(explicit.shieldKind ? { shieldKind: explicit.shieldKind, shieldHits: explicit.shieldHits } : {}),
+    ...(explicit.counterKind ? { counterKind: explicit.counterKind,
+      counterWindowDuration: explicit.counterWindowDuration, counterMultiplier: explicit.counterMultiplier,
+      counterRange: explicit.counterRange, counterRequiresIncomingContact: explicit.counterRequiresIncomingContact } : {}),
     duration,
     healRatio: clamp(finite(explicit.healRatio ?? action.healRatio, 0), 0, 1),
     guardReduce: clamp(finite(explicit.reduce ?? action.reduce, 0.4), 0, 0.95),
@@ -216,25 +236,31 @@ export function resolveUniverseSummon(actor) {
   // Empty enemy shells do not acquire a made-up special merely by sharing a
   // universe string with a roster character.
   if (!slots.some(slot => hasAbility(actor[slot]))) return null;
-  const selectedPartner = ROSTER_REINFORCEMENTS_WAVE14[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE13[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE12[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE11[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE10[identity(actor)];
+  const sourceSummon = CANONICAL_SUMMONS_WAVE16[identity(actor)];
+  if (sourceSummon?.universe === actor.universe && hasAbility(sourceSummon.action))
+    return attachCombatEntityAsset(canonicalSummon(actor, sourceSummon));
+  const selectedPartner = ROSTER_REINFORCEMENTS_WAVE16[identity(actor)] || ROSTER_PARTNERS_WAVE16[identity(actor)]
+    || ROSTER_REINFORCEMENTS_WAVE15[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE14[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE13[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE12[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE11[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE10[identity(actor)];
   if (selectedPartner?.universe === actor.universe) {
     const performer = heroSpriteIdentities.get(selectedPartner.performerHeroId);
     const slot = selectedPartner.slot;
     const effective = performer?.universe === actor.universe && resolveCombatAbility(performer, slot);
     if (effective && performer.id !== identity(actor)) {
-      const rawAction = effective.sourceAbility;
+      const rawAction = selectedPartner.actionOverride
+        ? { ...clone(selectedPartner.actionOverride), sourceHeroId: performer.id } : effective.sourceAbility;
       const action = resolvedAction(performer, slot, rawAction);
       return attachCombatEntityAsset({
         id: `${identity(actor)}:reinforcement:${performer.id}:${slot}`,
         name: `${performer.name} — ${action.name}`, universe: actor.universe,
         kind: 'reinforcement', entityName: performer.name, performer: clone(performer), performerRole: 'reinforcement',
-        action, color: effective.color, duration: 3.2, impactAt: 1.65,
-        visualStyle: effective.delivery, sourceHeroId: performer.id,
+        action, color: effective.color, duration: selectedPartner.duration || 3.2, impactAt: selectedPartner.impactAt || 1.65,
+        visualStyle: action.targeting.delivery, sourceHeroId: performer.id,
         sourceAbility: { ...clone(rawAction), slot, sourceHeroId: performer.id },
         provenance: { ...effective.provenance, kind: 'same-universe-reinforcement',
+          sourceAbilityName: action.name,
           canonicalEntity: false, entityAssetMissing: false, sourceRosterHeroId: performer.id,
           partnerSelection: `wave${selectedPartner.sourceWave}-explicit-source-version`,
-          sourceRulesLimit: 'Real same-universe partner; one bounded effect, no invented entity or transferred biology.' }
+          sourceRulesLimit: selectedPartner.adaptationNote || 'Real same-universe partner; one bounded effect, no invented entity or transferred biology.' }
       });
     }
   }

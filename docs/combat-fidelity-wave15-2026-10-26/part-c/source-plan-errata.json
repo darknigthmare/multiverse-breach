@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-26T09:01:57.945205+00:00",
+  "beforeAnyGenerationForAffectedHero": false,
+  "beforeCorrectiveGenerationForAffectedHero": true,
+  "originalFrozenPlanSha256": "4199c46e0dd7d8c66a02a61e350c8ffe58d665c1fa336169c7973e84873e2776",
+  "initialImageReturnedBeforeClarification": {
+    "image": "sources/evolve_val.png",
+    "receipt": "sources/evolve_val-result.json",
+    "allInitialDrawingsExcluded": true,
+    "reason": "The Medgun source generation was already in flight when the source correction arrived; the returned source is preserved and wholly excluded. No retrospective pre-generation claim."
+  },
+  "corrections": [
+    {
+      "heroId": "evolve_val",
+      "field": "sourceWork",
+      "before": "Evolve (2015), original Val Medic",
+      "after": "Evolve (2015), original Val Medic using Healing Burst",
+      "reason": "Healing Burst is Val's nearby group/self heal; Medgun is single-ally. Corrected source/mechanics before requesting corrective Healing Burst art."
+    },
+    {
+      "heroId": "evolve_val",
+      "field": "appearance",
+      "before": "Adult blonde female medic with practical white and grey field suit and hard armour panels, ponytail, gloves and boots, original Medgun held as a medical tool",
+      "after": "Adult blonde Val with ponytail, practical original white-grey medic field suit, gloves and boots, medical backpack with Healing Burst trigger; Medgun rests safely slung and inactive, no healing ray",
+      "reason": "Healing Burst is Val's nearby group/self heal; Medgun is single-ally. Corrected source/mechanics before requesting corrective Healing Burst art."
+    },
+    {
+      "heroId": "evolve_val",
+      "field": "weapon",
+      "before": "Val Medgun",
+      "after": "Healing Burst medical backpack and trigger; inactive slung Medgun",
+      "reason": "Healing Burst is Val's nearby group/self heal; Medgun is single-ally. Corrected source/mechanics before requesting corrective Healing Burst art."
+    },
+    {
+      "heroId": "evolve_val",
+      "field": "actionName",
+      "before": "Soin du Medgun de Val",
+      "after": "Soin du Healing Burst de Val",
+      "reason": "Healing Burst is Val's nearby group/self heal; Medgun is single-ally. Corrected source/mechanics before requesting corrective Healing Burst art."
+    },
+    {
+      "heroId": "evolve_val",
+      "field": "name",
+      "before": "Soin du Medgun de Val",
+      "after": "Soin du Healing Burst de Val",
+      "reason": "Healing Burst is Val's nearby group/self heal; Medgun is single-ally. Corrected source/mechanics before requesting corrective Healing Burst art."
+    },
+    {
+      "heroId": "evolve_val",
+      "field": "pose",
+      "before": "Raise or consult the actual Val Medgun and relay a calm support instruction; no offensive flash, physical shot or damage",
+      "after": "Brace medical backpack, place hand on actual Healing Burst trigger, activate one compact healing burst from the backpack on third pose, recover; slung Medgun remains inactive, no medical ray or offensive flash",
+      "reason": "Healing Burst is Val's nearby group/self heal; Medgun is single-ally. Corrected source/mechanics before requesting corrective Healing Burst art."
+    },
+    {
+      "heroId": "evolve_val",
+      "field": "kind",
+      "before": "val-medgun",
+      "after": "val-healing-burst",
+      "reason": "Healing Burst is Val's nearby group/self heal; Medgun is single-ally. Corrected source/mechanics before requesting corrective Healing Burst art."
+    },
+    {
+      "heroId": "evolve_val",
+      "field": "healingRange",
+      "before": null,
+      "after": 220,
+      "reason": "Healing Burst is Val's nearby group/self heal; Medgun is single-ally. Corrected source/mechanics before requesting corrective Healing Burst art."
+    },
+    {
+      "heroId": "evolve_val",
+      "field": "healingShape",
+      "before": null,
+      "after": "group",
+      "reason": "Healing Burst is Val's nearby group/self heal; Medgun is single-ally. Corrected source/mechanics before requesting corrective Healing Burst art."
+    },
+    {
+      "heroId": "evolve_val",
+      "field": "includesSelf",
+      "before": null,
+      "after": true,
+      "reason": "Healing Burst is Val's nearby group/self heal; Medgun is single-ally. Corrected source/mechanics before requesting corrective Healing Burst art."
+    }
+  ]
+}

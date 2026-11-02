@@ -1,0 +1,37 @@
+✔ W15 composes three disjoint groups of40 and exactly42 new /78 source-version revisions (2.655478ms)
+✔ W15 resolves480 explicitly named slots with source equipment, zero-damage supports and exact super delivery (9.143569ms)
+✔ W15 same-universe non-self relays use the selected partner action without transferring powers across universes (14.245929ms)
+✔ W15 source-specific safety and role constraints remain real mechanics (0.618013ms)
+✔ W15 native helpers reject changed identities, source universes, effects and delivery without inventing native availability (4.603087ms)
+✖ W15 final native coverage has120 presentation32 and120 exact-universe base16 bindings (1.125638ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 664.126312
+
+✖ failing tests:
+
+test at scripts/combatFidelityWave15.test.mjs:160:1
+✖ W15 final native coverage has120 presentation32 and120 exact-universe base16 bindings (1.125638ms)
+  AssertionError [ERR_ASSERTION]: Every selected identity requires native32 artwork or an explicitly reviewed scope correction
+  
+  71 !== 120
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatFidelityWave15.test.mjs:162:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 71,
+    expected: 120,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,15 @@
+{
+  "createdAt": "2026-10-28T09:55:12.266Z",
+  "sourcePlanFrozenBeforeProduction": true,
+  "firstFailedSsrAttempt": {
+    "command": "node --test --test-concurrency=1 scripts/tacticsUniverseRoutingWave16.test.mjs scripts/tacticsUniverseRuntimeWave16.test.mjs",
+    "exitCode": 1,
+    "log": "docs/tactics-universes-2026-10-28/preliminary/initial-routing-runtime-import-failure.log",
+    "cause": "Concurrent central integration still imported an uppercase WAVE15 export from the new W16 native visual module. Integration owner diagnosed and repaired; no map assertion was relaxed."
+  },
+  "files": {
+    "docs/tactics-universes-2026-10-28/source-plan-before.json": "3522fb7e3daa3ff209fe7a346bf0a15465d0b1fad0be4eaac5549277162b4c50",
+    "docs/tactics-universes-2026-10-28/baseline-tactics-stages-before.json": "6063699c4e2e8424d7f9eb1574aabe6a433801442c2ec8cc1239020a6725503f",
+    "docs/tactics-universes-2026-10-28/harness.mjs": "1cbde634b792a28864c4b946d84dfe41e36b58462823e65c0ec95621ce9ebdfc"
+  }
+}

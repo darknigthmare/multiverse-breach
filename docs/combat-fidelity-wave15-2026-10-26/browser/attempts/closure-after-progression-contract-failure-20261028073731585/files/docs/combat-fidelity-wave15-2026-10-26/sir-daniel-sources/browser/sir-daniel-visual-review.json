@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "wave": 15,
+  "heroId": "sir_daniel_fortesque",
+  "passed": true,
+  "preliminary": false,
+  "phase": "final",
+  "reviewedAt": "2026-10-26T13:08:46.705Z",
+  "reviewer": "/root/cohort_scout",
+  "actualCapturesInspected": 6,
+  "sourceReport": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-evidence.json",
+    "sha256": "cb30714fa6b6924a1df3fb815f25f4cfd14c9da686c6e35d044013fcd5409bed",
+    "bytes": 53691
+  },
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/production-freeze.json",
+    "sha256": "9513197e64731b0b4dbe510c4a321a1c6ac3831d3afdab56543570660917eb55",
+    "bytes": 479036
+  },
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-core.png",
+      "sha256": "4624de8ce9da9ec0325c1ee376915436ffd9d79a26f631fb92c47e1198eeb636",
+      "bytes": 1481493,
+      "inspected": true,
+      "passed": true,
+      "notes": "45 rangées parcourues entièrement par sept recadrages ; quatre dessins dans chaque orientation. Squelette, cape sombre et armure lisibles ; épée courte tenue dans les quatre poses de chargeRelease et parades à la lame sans bouclier ; la montée change réellement la position relative de la paume et du torse."
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-grips.png",
+      "sha256": "ed4d4a0ab9da578d74566a99fff5dbab271424b842db59a80441be7b84cb74dc",
+      "bytes": 50944,
+      "inspected": true,
+      "passed": true,
+      "notes": "Huit prises visibles inspectées : la paume atteint le rebord dans les deux orientations ; ni le poignet ni l’arme ne se substituent à la main."
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-movement.png",
+      "sha256": "0e7effeb4acecdbf9e5843b743e1d190269ebbd795f1faf73cb33af216b0eca0",
+      "bytes": 496157,
+      "inspected": true,
+      "passed": true,
+      "notes": "Vue GameCanvas complète inspectée : Sir Daniel est visible sur la plateforme, avec la bonne silhouette et le panneau de commandes réel. Les quatre poses des états jumpRise/fall/land/turn sont établies par la trace clavier du nouveau parcours."
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-pause.png",
+      "sha256": "4b6712b5179e58c2d0d40783925ea77b48ceceb0e02a297ce8e39938234936a0",
+      "bytes": 496061,
+      "inspected": true,
+      "passed": true,
+      "notes": "Vue complète de pause inspectée : corps et interface restent lisibles ; aucun écran de pause absent n’est inventé. La stabilité de l’horloge et de la physique est vérifiée dans le reçu de ce parcours."
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-super.png",
+      "sha256": "01148a0459dd593be9224f559d977e3b345d567f170a196d0df9b30e49015511",
+      "bytes": 520367,
+      "inspected": true,
+      "passed": true,
+      "notes": "Capture du nouveau déclenchement clavier inspectée : épée physique devant Sir Daniel, adversaire en réaction, nom Taille de l’épée de Sir Daniel et jauge à0%. Le moment et l’unicité de l’impact sont contrôlés par les traces réelles."
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-physical-ledge.png",
+      "sha256": "b6d63727dd3ee7264bb9b630605df2415e3bbe5f3262f1855cc8ad1fa1861442",
+      "bytes": 611653,
+      "inspected": true,
+      "passed": true,
+      "notes": "Vingt lignes inspectées par deux recadrages complets : deux camps, deux côtés, maintien/montée/lâcher/saut/attaque. Les mains tiennent les rebords pendant le maintien et la montée ; drop/jump montrent quatre poses distinctes sans prise résiduelle."
+    }
+  ],
+  "derivedInspectedCrops": [
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/review-final/core-0.png",
+      "sha256": "8c8c04b789852c5ed144b81ce531076e89c74fc6e7aa0b8ef149758a549241a6",
+      "bytes": 188862,
+      "inspected": true,
+      "countedAsAdditionalOriginalCapture": false
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/review-final/core-1.png",
+      "sha256": "059dd117d9a4a4a4b6746bbe88ee7c3a81fadd4505e39cca19f2a9055c6dc332",
+      "bytes": 190507,
+      "inspected": true,
+      "countedAsAdditionalOriginalCapture": false
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/review-final/core-2.png",
+      "sha256": "0babf929601f353169d6f8309b3aea4c50620f09a6f317f23a7bc9ddc2c79cbd",
+      "bytes": 208786,
+      "inspected": true,
+      "countedAsAdditionalOriginalCapture": false
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/review-final/core-3.png",
+      "sha256": "abd70deebf22554f70e63c53203d3c6cfe65099f2a73cb533b40cb6e29f61004",
+      "bytes": 222472,
+      "inspected": true,
+      "countedAsAdditionalOriginalCapture": false
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/review-final/core-4.png",
+      "sha256": "849688386ff3a5afe6da097c488352f638ca7d29875718d9dc4ea4069697a43c",
+      "bytes": 217192,
+      "inspected": true,
+      "countedAsAdditionalOriginalCapture": false
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/review-final/core-5.png",
+      "sha256": "25019a304f4482b8442b0f0bc8ae1d7ac64339b2679dd652d9aac11ea3335495",
+      "bytes": 210856,
+      "inspected": true,
+      "countedAsAdditionalOriginalCapture": false
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/review-final/core-6.png",
+      "sha256": "52b6c8dae6deac9b6f3992181dd2997d807105264453f8bf57f8467bc1ed4ea5",
+      "bytes": 82567,
+      "inspected": true,
+      "countedAsAdditionalOriginalCapture": false
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/review-final/physical-ledge-0.png",
+      "sha256": "d43b1852eaa594fcc354735e9725716b07dd0c042b768d57bf124f3a1ec53e7f",
+      "bytes": 282896,
+      "inspected": true,
+      "countedAsAdditionalOriginalCapture": false
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/review-final/physical-ledge-1.png",
+      "sha256": "0a1eab84c90131e96865a5f572c5e2395504db1047806b967be5fa241f6525e3",
+      "bytes": 284912,
+      "inspected": true,
+      "countedAsAdditionalOriginalCapture": false
+    }
+  ],
+  "method": "JSON neuf construit exclusivement depuis le rapport final du gel3 et ses six captures actuelles. Inspection effective par view_image : sept recadrages core, deux recadrages rebord et les quatre autres images complètes, tous ouverts après le nouveau rejeu.",
+  "limitations": [
+    "Les deux orientations utilisent le miroir horizontal du runtime, qui inverse les asymétries de tenue et d’équipement.",
+    "Les mouvements de rebord sont des adaptations jouables du moteur ; cette revue ne certifie pas une fidélité officielle1:1."
+  ],
+  "source1to1Verified": false
+}

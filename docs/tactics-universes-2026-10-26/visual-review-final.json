@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/build_diagnostic",
+  "passed": true,
+  "preliminary": false,
+  "reviewedAt": "2026-10-28T07:45:44.082Z",
+  "actuallyViewedWith": "functions.exec tools.view_image for each of the 10 fresh PNG screenshots",
+  "actualCapturesInspected": 10,
+  "actualCustomBattleLaunches": 6,
+  "actualSourceSectorLaunches": 4,
+  "actualLegacyControlLaunches": 2,
+  "checksObserved": 18,
+  "browserClosedAt": "2026-10-28T07:42:41.300Z",
+  "allBrowserWindowsClosed": true,
+  "report": {
+    "path": "docs/tactics-universes-2026-10-26/result.json",
+    "sha256": "68f5e6ae93f3f719bde5f31bd8ef453ad568c02e990bc402bf80ae0fb7facf7d",
+    "bytes": 142536
+  },
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/production-freeze.json",
+    "sha256": "18f4fbec0dfe58881a3019018a59d725a8733e7cd6e8df5b42cf788432b37f8a",
+    "bytes": 440143
+  },
+  "artifacts": [
+    {
+      "path": "docs/tactics-universes-2026-10-26/ff8_dollet_tactics-desktop.png",
+      "sha256": "980e643b59456e49c73bc9957b7799941a25efeb5cee93ae0753f1af5ef265e7",
+      "bytes": 276243,
+      "inspected": true,
+      "observation": "Plateau pavé ocre, deux reliefs et coursives visibles ; façades littorales et lampadaire distincts. Les unités apparaissent sur les surfaces sélectionnables."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-26/ff8_dollet_tactics-mobile.png",
+      "sha256": "a236d1934717d03c2e4b4415a491162256366d6979dd32e114e3d8cba72ace64",
+      "bytes": 175399,
+      "inspected": true,
+      "observation": "À 375 px, coupe, zoom, choix de case et confirmation restent visibles dans la colonne ; plateau réduit et actions du personnage ne débordent pas latéralement."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-26/re_spencer_courtyard_tactics-desktop.png",
+      "sha256": "2a8a31df9dae9388dd0915dcd2f26fdb8c3b001582be8b0a4ada93b40adfee22",
+      "bytes": 302987,
+      "inspected": true,
+      "observation": "Cour de pierre claire, deux parties du bassin bleu, passage central surélevé et éléments de jardin visibles ; géométrie distincte de Dollet."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-26/re_spencer_courtyard_tactics-mobile.png",
+      "sha256": "f5bdcf8c444da9a78e7f7736d02ae081e9f135f1e949d212cbc26c0221a0e771",
+      "bytes": 181593,
+      "inspected": true,
+      "observation": "La cour et son bassin restent reconnaissables sur mobile ; contrôles de hauteur et confirmation de déplacement sont lisibles."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-26/fallout_red_rock_tactics-desktop.png",
+      "sha256": "5970e451a5e6d3af4863756eff0cc16556ae928f567cb64ff86acb1d5b0b0289",
+      "bytes": 421658,
+      "inspected": true,
+      "observation": "Grès rouge, masses rocheuses, corniches et chemins de canyon visibles ; palette et volumes distincts des cartes urbaines."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-26/fallout_red_rock_tactics-mobile.png",
+      "sha256": "5afdb53f0e94f7f94e84cf83daef27086d900b184ffa2e94428d8e982a354fcf",
+      "bytes": 189633,
+      "inspected": true,
+      "observation": "Le canyon rouge apparaît sous les commandes mobiles ; case, niveau Z et matière red-rock-sandstone sont affichés au-dessus des actions."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-26/halflife_white_forest_tactics-desktop.png",
+      "sha256": "11d2fb3396d219421a0fed9c746d0afe4f6f53e40ec03e24f479fc532feb04fe",
+      "bytes": 370239,
+      "inspected": true,
+      "observation": "Sol herbeux, arbres, ravine bleue et pont gris entre les deux rives visibles, avec rocher et pylône de fond."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-26/halflife_white_forest_tactics-mobile.png",
+      "sha256": "5836eb5b70daea05bc00eb5d3a4e6216c660cf3a807cb56a851e46c2a5f04a6d",
+      "bytes": 185877,
+      "inspected": true,
+      "observation": "Pont et deux rives visibles dans le cadre mobile ; coupe, zoom, matière herbeuse et confirmation restent dans la colonne."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-26/nexus_skybridge-desktop.png",
+      "sha256": "18c6228e651b29f28c2d4ec47f5d6826c1e7e523731613ea96b8c7460399a909",
+      "bytes": 263687,
+      "inspected": true,
+      "observation": "Contrôle historique : escalier à gauche et passerelle à rambardes à droite surplombent le sol inférieur ; unités et coûts de déplacement sont présents."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-26/training_grid-desktop.png",
+      "sha256": "622ba035d7ed39bb6bece9e2403c8bb54fe88db67c4705e32fe42b40ae34199d",
+      "bytes": 166360,
+      "inspected": true,
+      "observation": "Contrôle historique : grille plate, zones de déplacement vertes et couverts cyan se distinguent des terrains verticaux d’univers."
+    }
+  ],
+  "method": "Fresh manual review of the 6 real CustomBattleMode to GameCanvas executions after gel4. Four source sectors have desktop/mobile views; two legacy controls have desktop views. Screenshots show adapted layouts without asserting official source-map equivalence.",
+  "source1to1Verified": false,
+  "canonicalLayoutVerified": false,
+  "productionFilesChangedByReview": false
+}

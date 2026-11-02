@@ -1,7 +1,17 @@
+import { projectSourceBladeContactWave16, intersectsSourceBladeHurtboxWave16 } from './combat/combatBladeContactWave16.js';
+import { canBeginSourceProtectionWave16, hasSourceProtectionProfileWave16, armSourceProtectionWave16,
+  interceptSourceProtectionHitWave16, interceptSourceEnvironmentalHitWave16, advanceSourceCombatStatusesWave16, clearSourceCombatStatusesWave16, noteSourceDamageWave16,
+  isSourceImmobilizedWave16, getPossessedBodyWave16, releaseSourcePossessionWave16,
+  sourceEffectiveSideWave16, beginSourceControlWave16, getPossessedSligActionWave16,
+  canSourceControlTargetWave16, projectSourceSligMuzzleWave16, drawSourceCombatStatusWave16 } from './combat/sourceCombatRuntimeWave16.js';
+import { isSourceControlProfileWave16 } from './combat/combatControlWave16.js';
+import { isPhaselockProfile, canPhaselockTarget, applyPhaselockControl, isCombatControlled, holdCombatControl, drawCombatControl } from './combat/combatControlWave15.js';
+import { getSourceHitSequenceWave16, allocateSourceSequenceDamageWave16,
+  sequenceTargetStillAcceptedWave16 } from './combat/combatHitSequenceWave16.js';
 // Super Smash Bros Mêlée Mode Engine with Synergies & Status Effects
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { combatBuffSource } from './combat/characterFormState';
-import { absorbBattleItemDamage } from './battleItemShield';
+import { absorbBattleItemDamage, previewBattleItemDamage } from './battleItemShield';
 import { drawCharacterSuperVisuals, getCharacterSuperVisualState } from './combat/characterSuperVisuals';
 import { supportsConfirmedCharacterSuperContact } from './combat/characterSuperVisuals.js';
 import { SYNERGIES_DB } from './heroes';
@@ -491,9 +501,23 @@ export class EngineSmash {
    * all call this API so the combat rules never depend on physical key names.
    */
   triggerMeleeAction(side, actionName) {
-    if (this.gameOver || this.isMatchInputLocked()) return false;
-    const actor = this.getMeleeActor(side);
-    if (!actor || actor.currentHp <= 0) return false;
+    if (this.disposed || this.paused || this.gameOver || this.isMatchInputLocked()) return false;
+    const source = this.getMeleeActor(side), actors = [...this.heroes, ...this.enemies];
+    const possessed = getPossessedBodyWave16(source, actors);
+    if (possessed && actionName === MELEE_ACTIONS.special) return releaseSourcePossessionWave16(source, actors);
+    const actor = possessed || source;
+    if (!actor || actor.currentHp <= 0 || isSourceImmobilizedWave16(actor)
+      || actor.sourceControlWave16?.inputProxy && this.sourceSideWave16(actor) !== (['cpu', 'opponent', 'p2'].includes(side) ? 'enemy' : 'player')) return false;
+    if (possessed) {
+      if (actionName !== MELEE_ACTIONS.attackLight || actor.action) return false;
+      const rifle = getPossessedSligActionWave16(actor);
+      if (!rifle || !beginMeleeAction(actor, 'light1')) return false;
+      actor.action = { ...actor.action, sourceSligRifle: true, duration: .55, hitAt: .24,
+        abilityProfile: { sourceHeroId: 'oddworld_slig', universe: 'Oddworld', name: rifle.name,
+          effect: 'damage', delivery: 'projectile', targetSide: 'enemy', shape: 'single', range: 480,
+          multiplier: 1, sourceAbility: rifle }, facing: actor.facing };
+      return true;
+    }
 
     if (actor.ledge) {
       if (actionName === MELEE_ACTIONS.climb) return performMeleeLedgeAction(actor, 'climb');
@@ -525,17 +549,19 @@ export class EngineSmash {
   }
 
   beginChargedMeleeAttack(side = 'player') {
-    if (this.gameOver || this.isMatchInputLocked()) return false;
-    return beginMeleeCharge(this.getMeleeActor(side));
+    if (this.disposed || this.paused || this.gameOver || this.isMatchInputLocked()) return false;
+    const actor = this.getMeleeActor(side);
+    if (actor?.sourceControlWave16?.inputProxy) return false;
+    return beginMeleeCharge(actor);
   }
 
   releaseChargedMeleeAttack(side = 'player') {
-    if (this.gameOver || this.isMatchInputLocked()) return false;
+    if (this.disposed || this.paused || this.gameOver || this.isMatchInputLocked()) return false;
     return releaseMeleeCharge(this.getMeleeActor(side));
   }
 
   setMeleeShield(side = 'player', held = false) {
-    if (this.gameOver || this.isMatchInputLocked()) return false;
+    if (this.disposed || this.paused || this.gameOver || this.isMatchInputLocked()) return false;
     const actor = this.getMeleeActor(side);
     return held ? beginMeleeShield(actor) : releaseMeleeShield(actor);
   }
@@ -546,6 +572,7 @@ export class EngineSmash {
 
   resolveMeleeActionHit(attacker, action) {
     if (this.gameOver || attacker.currentHp <= 0) return 0;
+    if (action.sourceSligRifle) return this.spawnSourceRifleProjectileWave16(attacker, action);
     if (action.id === 'super') return this.resolveMeleeSuperHit(attacker, action);
     if (action.abilityProfile) {
       const hits = this.resolveMeleeSuperHit(attacker, action);
@@ -590,16 +617,109 @@ export class EngineSmash {
     return resolveMeleeSuper(actor);
   }
 
+  advanceSourceBladeApproachWave16(actor, action, dt) {
+    const approach = action.sourceBladeApproachWave16;
+    if (!approach || action.elapsed >= action.hitAt || approach.cancelled) { if (approach) actor.vx = 0; return; }
+    const target = [...this.heroes, ...this.enemies].find(unit => (unit.battleId || unit.runtimeId || unit.id) === approach.targetId);
+    if (!target || target.currentHp <= 0 || Math.hypot(target.x - approach.startX, target.y - approach.startY) > 190) {
+      approach.cancelled = true; actor.vx = 0; return;
+    }
+    const distance = Math.min(200 * dt, Math.max(0, approach.maxDistance - approach.attempted));
+    const dx = approach.facing * distance, body = getMeleeHurtbox(actor);
+    const sweep = { left: Math.min(body.left, body.left + dx), right: Math.max(body.right, body.right + dx), top: body.top, bottom: body.bottom };
+    const blocked = this.platforms.some(platform => !platform.oneWay && !platform.passThrough
+      && sweep.right > platform.x1 && sweep.left < platform.x2
+      && sweep.bottom > platform.y + .001 && sweep.top < platform.y + (platform.thickness || 12));
+    if (blocked) { approach.cancelled = true; approach.blockedByPlatform = true; actor.vx = 0; return; }
+    actor.vx = dx; // Production applyPhysics owns the actual motion and landing.
+    approach.attempted += distance;
+  }
+
+  sourceSideWave16(actor) {
+    return sourceEffectiveSideWave16(actor, [...this.heroes, ...this.enemies], unit => this.heroes.includes(unit) ? 'player' : 'enemy');
+  }
+  getSourceControlTargetsWave16(actor, profile, lockedId = null) {
+    return [...this.heroes, ...this.enemies].filter(target => this.sourceSideWave16(target) !== this.sourceSideWave16(actor)
+      && (!lockedId || (target.battleId || target.runtimeId || target.id) === lockedId)
+      && canSourceControlTargetWave16(actor, target, profile, { platforms: this.platforms, height: 72 }))
+      .sort((a, b) => Math.hypot(a.x - actor.x, a.y - actor.y) - Math.hypot(b.x - actor.x, b.y - actor.y)).slice(0, 1);
+  }
   triggerMeleeSuper(actor, profile = resolveMeleeSuper(actor)) {
+    if (this.disposed || this.paused) return false;
+    if (releaseSourcePossessionWave16(actor, [...this.heroes, ...this.enemies])) return true;
+    if (!canBeginSourceProtectionWave16(actor, profile)) return false;
+    const sourceControlTarget = isSourceControlProfileWave16(profile) ? this.getSourceControlTargetsWave16(actor, profile)[0] : null;
+    if (isSourceControlProfileWave16(profile) && !sourceControlTarget) return false;
+    const controlTarget = isPhaselockProfile(profile) ? this.getMeleePhaselockTargets(actor, profile)[0] : null;
+    if (isPhaselockProfile(profile) && !controlTarget) return false;
     if (this.gameOver || this.isMatchInputLocked() || !beginMeleeSuper(actor, profile)) return false;
+    if (sourceControlTarget) actor.action.controlTargetId = sourceControlTarget.battleId || sourceControlTarget.runtimeId || sourceControlTarget.id;
+    if (controlTarget) actor.action.controlTargetId = controlTarget.battleId || controlTarget.runtimeId || controlTarget.id;
+    if (getSourceHitSequenceWave16(profile)) actor.action.sequenceTargetIds = this.getMeleeSuperTargets(actor, profile, actor.action.facing)
+      .map(target => target.battleId || target.runtimeId || target.id);
+    if (profile.sourceHeroId === 'kirito_sao') {
+      const target = [...this.heroes, ...this.enemies].find(unit => actor.action.sequenceTargetIds?.includes(unit.battleId || unit.runtimeId || unit.id));
+      if (target) actor.action.sourceBladeApproachWave16 = { startX: actor.x, startY: actor.y,
+        targetId: target.battleId || target.runtimeId || target.id, facing: actor.action.facing, attempted: 0,
+        maxDistance: Math.min(80, Math.max(0, Math.abs(target.x - actor.x) - 30)) };
+    }
     this.playSfx('special');
     this.particles.add(actor.x, actor.y - 72, 0, -0.35, profile.color, 12, 70, 'text', profile.name);
     return true;
   }
 
-  getMeleeSuperTargets(attacker, profile, facing = attacker.facing) {
-    const allies = this.heroes.includes(attacker) ? this.heroes : this.enemies;
+  beginMeleeSourceCounterWave16(actor, target, counter) {
+    if (!this.heroes.includes(target) && !this.enemies.includes(target)) return false;
+    const profile = { ...resolveMeleeSuper(actor), counterTriggered: true, effect: 'damage', delivery: 'melee',
+      targetSide: 'enemy', multiplier: counter.multiplier, range: 190, shape: 'single' };
+    actor.facing = Math.sign(target.x - actor.x) || actor.facing;
+    actor.action = { id: 'super', superProfile: profile, sourceCounterWave16: true,
+      counterTargetId: target.battleId || target.runtimeId || target.id,
+      counterDashRemaining: Math.min(140, Math.max(0, Math.abs(target.x - actor.x) - 40)),
+      facing: actor.facing, elapsed: 0, duration: .8, hitAt: .35, hitApplied: false,
+      knockback: 100, guardDamage: 24, recoveryState: 'idle', recoveryDuration: .1 };
+    transitionMeleeState(actor, 'attack', { force: true, restart: true });
+    return true;
+  }
+
+  spawnSourceRifleProjectileWave16(actor, action) {
+    const origin = projectSourceSligMuzzleWave16(actor, 72, 2);
+    if (!origin?.emits) return 0;
+    const target = [...this.heroes, ...this.enemies].filter(unit => unit.currentHp > 0
+      && this.sourceSideWave16(unit) !== this.sourceSideWave16(actor))
+      .sort((a, b) => Math.abs(a.x - actor.x) - Math.abs(b.x - actor.x))[0];
+    const dx = target ? target.x - origin.x : action.facing * 480;
+    const dy = target ? target.y - 30 - origin.y : 0, length = Math.max(1, Math.hypot(dx, dy));
+    (this.sourceRifleProjectilesWave16 ||= []).push({ owner: actor, side: this.sourceSideWave16(actor), x: origin.x, y: origin.y,
+      vx: dx / length * 8, vy: dy / length * 8, life: 60, origin: { ...origin }, rangeOrigin: { x: actor.x, y: actor.y }, range: 480 });
+    return 1;
+  }
+  updateSourceRifleProjectilesWave16() {
+    this.sourceRifleProjectilesWave16 = (this.sourceRifleProjectilesWave16 || []).filter(projectile => {
+      projectile.x += projectile.vx; projectile.y += projectile.vy; projectile.life--;
+      const target = [...this.heroes, ...this.enemies].find(unit => unit.currentHp > 0
+        && unit !== projectile.owner && this.sourceSideWave16(unit) !== projectile.side
+        && Math.hypot(unit.x - projectile.rangeOrigin.x, unit.y - projectile.rangeOrigin.y) <= projectile.range + .001
+        && Math.abs(unit.x - projectile.x) <= 20 && Math.abs(unit.y - 30 - projectile.y) <= 32);
+      if (target) { this.applyDamage(projectile.owner, target,
+        projectile.owner.stats?.atk || projectile.owner.atk || 13, 10, null, 8, { delivery: 'projectile', sourceAttackSideWave16: projectile.side }); return false; }
+      return projectile.life > 0 && Math.hypot(projectile.x - projectile.rangeOrigin.x, projectile.y - projectile.rangeOrigin.y) <= projectile.range;
+    });
+  }
+
+  getMeleePhaselockTargets(attacker, profile, lockedId = null) {
     const opponents = this.heroes.includes(attacker) ? this.enemies : this.heroes;
+    return opponents.filter(target => (!lockedId || (target.battleId || target.runtimeId || target.id) === lockedId)
+      && canPhaselockTarget(attacker, target, profile, { platforms: this.platforms, renderHeight: 72 }))
+      .sort((a, b) => Math.hypot(a.x - attacker.x, a.y - attacker.y) - Math.hypot(b.x - attacker.x, b.y - attacker.y)).slice(0, 1);
+  }
+
+  getMeleeSuperTargets(attacker, profile, facing = attacker.facing) {
+    if (isSourceControlProfileWave16(profile)) return this.getSourceControlTargetsWave16(attacker, profile);
+    if (isPhaselockProfile(profile)) return this.getMeleePhaselockTargets(attacker, profile);
+    const allActors = [...this.heroes, ...this.enemies];
+    const allies = allActors.filter(unit => this.sourceSideWave16(unit) === this.sourceSideWave16(attacker));
+    const opponents = allActors.filter(unit => this.sourceSideWave16(unit) !== this.sourceSideWave16(attacker));
     const candidates = profile.targetSide === 'self' ? [attacker]
       : profile.targetSide === 'enemy' || (!profile.targetSide && profile.effect === 'damage') ? opponents : allies;
     const eligible = candidates.filter(target => {
@@ -648,18 +768,57 @@ export class EngineSmash {
 
   resolveMeleeSuperHit(attacker, action) {
     const profile = action.superProfile || action.abilityProfile;
+    const sourceSequence = getSourceHitSequenceWave16(profile), sequenceHit = action.sourceSequenceImpact;
     if (!profile || action.impactResolved || this.gameOver || attacker.currentHp <= 0 || attacker.action !== action) return 0;
-    action.impactResolved = true;
-    const targets = this.getMeleeSuperTargets(attacker, profile, action.facing);
+    if (sourceSequence) {
+      if (!sequenceHit || action.lastSequenceImpactIndex === sequenceHit.index) return 0;
+      action.lastSequenceImpactIndex = sequenceHit.index;
+      action.impactResolved = sequenceHit.final;
+    } else action.impactResolved = true;
+    const currentTargets = isSourceControlProfileWave16(profile)
+      ? this.getSourceControlTargetsWave16(attacker, profile, action.controlTargetId || '__no-accepted-target__')
+      : isPhaselockProfile(profile)
+      ? this.getMeleePhaselockTargets(attacker, profile, action.controlTargetId || '__no-accepted-target__')
+      : this.getMeleeSuperTargets(attacker, profile, action.facing);
+    const physicallyAccepted = profile.sourceHeroId === 'kirito_sao' && sourceSequence ? currentTargets.filter(target => {
+      const approach = action.sourceBladeApproachWave16;
+      const blade = projectSourceBladeContactWave16(attacker, profile, sequenceHit.time, 72), box = getMeleeHurtbox(target);
+      const overlap = !!approach && !approach.cancelled && Math.hypot(target.x - approach.startX, target.y - approach.startY) <= 190
+        && intersectsSourceBladeHurtboxWave16(blade, box);
+      (action.sourceBladeContactsWave16 ||= []).push({ index: sequenceHit.index, blade, hurtbox: box,
+        physicalOverlap: overlap, acceptedDamage: false });
+      return overlap;
+    }) : currentTargets;
+    const boundTargets = action.sourceCounterWave16 ? physicallyAccepted.filter(target => (target.battleId || target.runtimeId || target.id) === action.counterTargetId) : physicallyAccepted;
+    const targets = sourceSequence ? sequenceTargetStillAcceptedWave16(action, boundTargets,
+      target => target.battleId || target.runtimeId || target.id) : boundTargets;
     if (targets[0]) action.impactPoint = { x: targets[0].x, y: targets[0].y - 30 };
     const attack = Math.max(1, Number(attacker.stats?.atk ?? attacker.atk) || 1);
     const confirmNativeContact = supportsConfirmedCharacterSuperContact(profile);
     targets.forEach(target => {
-      if (profile.effect === 'damage') {
+      if (isSourceControlProfileWave16(profile)) {
+        if (beginSourceControlWave16(attacker, target, profile, { hostile: true, channelCompleted: true }))
+          action.visualConfirmedContact = { confirmed: true, control: profile.controlKind, x: target.x, y: target.y,
+            targetId: target.battleId || target.runtimeId || target.id };
+      } else if (isPhaselockProfile(profile)) {
+        if (applyPhaselockControl(target, profile, attacker, { lift: 44 })) {
+          action.visualConfirmedContact = { confirmed: true, control: 'phaselock', x: target.x, y: target.y,
+            targetId: target.battleId || target.runtimeId || target.id };
+        }
+      } else if (profile.effect === 'damage') {
         const comboScale = action.abilityProfile && /^light[123]$/.test(action.id) ? action.base / 9.5 : 1;
         const powerScale = action.abilityProfile ? Math.max(0.1, Number(action.powerScale) || 1) : 1;
         const contact = confirmNativeContact ? { hp: target.currentHp, x: target.x, y: target.y } : null;
-        this.applyDamage(attacker, target, attack * profile.multiplier * comboScale * powerScale, action.knockback / 10, profile.statusEffect || null, action.guardDamage);
+        this.applyDamage(attacker, target, attack * profile.multiplier * comboScale * powerScale,
+          sourceSequence && !sequenceHit.final ? 0 : action.knockback / 10, profile.statusEffect || null,
+          action.guardDamage * (sourceSequence ? sequenceHit.fraction : 1), {
+            delivery: profile.delivery,
+            ...(sourceSequence ? { sequenceParent: action, sequenceFraction: sequenceHit.fraction, sequenceFinal: sequenceHit.final } : {})
+          });
+        if (profile.sourceHeroId === 'kirito_sao') {
+          const bladeContact = action.sourceBladeContactsWave16?.findLast(entry => entry.index === sequenceHit.index);
+          if (bladeContact) { bladeContact.acceptedDamage = contact && target.currentHp < contact.hp; bladeContact.damage = contact ? contact.hp - target.currentHp : 0; }
+        }
         if (contact && target.currentHp < contact.hp && !action.visualConfirmedContact) {
           action.visualConfirmedContact = { confirmed: true, x: contact.x, y: contact.y,
             ...(profile.delivery === 'radial' ? { origin: { x: attacker.x, y: attacker.y } } : {}) };
@@ -672,6 +831,7 @@ export class EngineSmash {
         target.currentHp += restored;
         this.particles.add(target.x, target.y - 42, 0, -1, profile.color, 12, 50, 'text', `+${Math.round(restored)}`);
       } else if (profile.effect === 'revive') {
+        if (target.combatControl) target.combatControl = null;
         const maxHp = Math.max(1, Number(target.maxHp ?? target.stats?.hp ?? target.hp) || 1);
         target.currentHp = Math.max(1, Math.round(maxHp * Math.max(0.01, Math.min(1, profile.reviveRatio || 0.3))));
         target.action = null;
@@ -690,6 +850,8 @@ export class EngineSmash {
         statuses.forEach(status => {
           if (target.statusEffects && status in target.statusEffects) target.statusEffects[status] = 0;
         });
+      } else if (profile.effect === 'guard' && hasSourceProtectionProfileWave16(profile)) {
+        armSourceProtectionWave16(attacker, profile, target);
       } else if (profile.effect === 'guard' || profile.effect === 'buff') {
         target.meleeSuperSupport = {
           source: combatBuffSource(attacker, profile),
@@ -723,6 +885,7 @@ export class EngineSmash {
   }
 
   triggerOpponentAbility(abilityType) {
+    if (isCombatControlled(this.getActiveOpponent()) || this.getActiveOpponent()?.sourceControlWave16?.inputProxy) return false;
     if (!this.isLocalP2 || this.gameOver || this.isMatchInputLocked()) return false;
     const opponent = this.getActiveOpponent();
     if (
@@ -893,6 +1056,8 @@ export class EngineSmash {
   }
 
   triggerAbility(hero, abilityType) {
+    if (this.disposed || this.paused || this.gameOver) return false;
+    if (isCombatControlled(hero) || isSourceImmobilizedWave16(hero) || hero?.sourceControlWave16?.inputProxy || hero?.sourcePossessionBodyWave16) return false;
     if (hero.currentHp <= 0 || hero.state === 'dead' || this.gameOver || this.isMatchInputLocked()) return;
     if (['simple', 'secondary', 'defense'].includes(abilityType) && resolveCombatAbility(hero, abilityType)?.provenance.identityAuthored) {
       return this.triggerAuthoredMeleeAbility(hero, abilityType);
@@ -950,7 +1115,10 @@ export class EngineSmash {
   }
 
   triggerAuthoredMeleeAbility(actor, slot) {
+    if (isCombatControlled(actor) || isSourceImmobilizedWave16(actor) || actor?.sourceControlWave16?.inputProxy || actor?.sourcePossessionBodyWave16) return false;
     const profile = resolveCombatAbility(actor, slot);
+    const controlTarget = isPhaselockProfile(profile) ? this.getMeleePhaselockTargets(actor, profile)[0] : null;
+    if (isPhaselockProfile(profile) && !controlTarget) return false;
     if (!profile?.provenance.identityAuthored || actor.action || actor.meleeRecoveryTimer > 0 || actor.shieldBreakTimer > 0) return false;
     if (slot === 'secondary' && actor.cooldown > 0) return false;
     if (slot === 'defense') {
@@ -963,6 +1131,7 @@ export class EngineSmash {
     }
     const started = slot === 'simple' ? beginMeleeLightCombo(actor) : beginMeleeAction(actor, 'special');
     if (started) {
+      if (controlTarget) actor.action.controlTargetId = controlTarget.battleId || controlTarget.runtimeId || controlTarget.id;
       if (slot === 'secondary') actor.cooldown = Math.round((Number(profile.sourceAbility.cd) || 4) * 60);
       this.playSfx(profile.effect !== 'damage' ? 'shield' : profile.delivery === 'melee' ? 'slash' : 'shoot');
     }
@@ -970,7 +1139,7 @@ export class EngineSmash {
   }
 
   triggerCombatEvent(effect) {
-    if (this.gameOver || this.isMatchInputLocked()) return false;
+    if (this.disposed || this.paused || this.gameOver || this.isMatchInputLocked()) return false;
     this.itemTriggers++;
     this.playSfx('special');
     this.particles.add(this.width/2, this.height/2, 0, 0, '#ffffff', 300, 35, 'glitch');
@@ -1105,8 +1274,14 @@ export class EngineSmash {
   }
 
 
-  applyDamage(attacker, defender, baseDmg, knockbackForce = 10, statusEffect = null, guardDamage = 8) {
-    if (this.gameOver || defender.currentHp <= 0) return 0;
+  applyDamage(attacker, defender, baseDmg, knockbackForce = 10, statusEffect = null, guardDamage = 8, sourceOptions = {}) {
+    if (this.disposed || this.gameOver || defender.currentHp <= 0) return 0;
+    if ([...this.heroes, ...this.enemies].includes(attacker)
+      && (sourceOptions.sourceAttackSideWave16 || this.sourceSideWave16(attacker)) === this.sourceSideWave16(defender)) return 0;
+    if (defender.sourceProtectionWave16?.kind === 'mugman-super-art-ii' && interceptSourceProtectionHitWave16(defender, attacker, baseDmg, {
+      delivery: sourceOptions.delivery || 'melee', attackKind: sourceOptions.attackKind || '',
+      onCounter: counter => this.beginMeleeSourceCounterWave16(defender, attacker, counter)
+    })) return 0;
     if (attacker.meleeSuperSupport?.effect === 'buff') baseDmg *= attacker.meleeSuperSupport.buffMultiplier;
     if (defender.meleeSuperSupport?.effect === 'guard') baseDmg *= 1 - defender.meleeSuperSupport.guardReduce;
     const guardResult = absorbMeleeGuardHit(defender, {
@@ -1138,7 +1313,17 @@ export class EngineSmash {
     }
     const variance = (Math.random() * 0.2) + 0.9;
     const defenseFactor = Math.max(0.72, 1 - getEffectiveCombatDefense(defender, attacker) * 0.01);
-    const finalDmg = absorbBattleItemDamage(defender, Math.round(baseDmg * variance * defenseFactor));
+    const potentialDmg = Math.round(baseDmg * variance * defenseFactor);
+    const splitDmg = sourceOptions.sequenceParent
+      ? allocateSourceSequenceDamageWave16(sourceOptions.sequenceParent, defender.battleId || defender.runtimeId || defender.id,
+        potentialDmg, potentialDmg * sourceOptions.sequenceFraction) : potentialDmg;
+    const afterItemPreview = previewBattleItemDamage(defender, splitDmg);
+    if (defender.sourceProtectionWave16?.kind !== 'mugman-super-art-ii'
+      && interceptSourceProtectionHitWave16(defender, attacker, afterItemPreview, {
+        delivery: sourceOptions.delivery || 'melee', attackKind: sourceOptions.attackKind || '',
+        onCounter: counter => this.beginMeleeSourceCounterWave16(defender, attacker, counter)
+      })) return 0;
+    const finalDmg = absorbBattleItemDamage(defender, splitDmg);
     if (this.heroes.includes(attacker) && this.enemies.includes(defender)) {
       this.damageDealt += finalDmg;
     } else if (this.enemies.includes(attacker) && this.heroes.includes(defender)) {
@@ -1146,13 +1331,15 @@ export class EngineSmash {
     }
     
     defender.currentHp = Math.max(0, defender.currentHp - finalDmg);
+    if (finalDmg > 0) noteSourceDamageWave16(defender);
     
     const dir = attacker.x < defender.x ? 1 : -1;
     const bossWeight = defender.isBoss ? 0.55 : 1;
     const terrainWeight = this.arena.tags?.includes('wide') ? 1.12 : this.arena.tags?.includes('pit') ? 0.88 : 1;
     const knockback = knockbackForce * bossWeight * terrainWeight;
     defender.vx = dir * knockback;
-    defender.vy = Math.min(defender.vy, -2.5 - Math.min(5, knockbackForce * 0.08));
+    defender.vy = sourceOptions.sequenceParent && !sourceOptions.sequenceFinal ? 0
+      : Math.min(defender.vy, -2.5 - Math.min(5, knockbackForce * 0.08));
     defender.recoveryLock = defender.isBoss ? 28 : 18;
     
     if (defender.state !== 'defense' && !guardResult.guarded) {
@@ -1182,6 +1369,7 @@ export class EngineSmash {
     }
 
     if (defender.currentHp <= 0) {
+      if (defender.combatControl) defender.combatControl = null;
       transitionMeleeState(defender, 'dead', { force: true, restart: true });
       defender.stateTimer = 60;
       if (!defender.wasCountedDefeated) {
@@ -1219,9 +1407,13 @@ export class EngineSmash {
   }
 
   updateLocalVersusMovement(actor, target, keys = {}, side = 'p1') {
-    if (!actor || actor.currentHp <= 0) return;
+    const source = actor, possessed = getPossessedBodyWave16(source, [...this.heroes, ...this.enemies]);
+    if (possessed) { actor = possessed; target = [...this.heroes, ...this.enemies].find(unit => unit.currentHp > 0
+      && this.sourceSideWave16(unit) !== this.sourceSideWave16(actor)); }
+    else if (actor?.sourceControlWave16?.inputProxy) return;
+    if (!actor || actor.currentHp <= 0 || isSourceImmobilizedWave16(actor)) return;
     initializeMeleeActorRuntime(actor);
-    const guardPressed = isInputPressed(keys, ['guard', 'Shield']);
+    const guardPressed = !possessed && isInputPressed(keys, ['guard', 'Shield']);
     if (guardPressed) beginMeleeShield(actor);
     else if (actor.guarding) releaseMeleeShield(actor);
 
@@ -1275,7 +1467,7 @@ export class EngineSmash {
       if (target && ['idle', 'crouchIdle'].includes(actor.state)) actor.facing = target.x >= actor.x ? 1 : -1;
     }
 
-    if (jumpPressed && !actor.jumpHeld) {
+    if (!possessed && jumpPressed && !actor.jumpHeld) {
       const grounded = this.isOnGround(actor);
       if (grounded || actor.airJumps > 0) {
         actor.vy = grounded ? this.jumpVelocity : this.jumpVelocity * 0.82;
@@ -1299,7 +1491,8 @@ export class EngineSmash {
     }
 
     tickMeleeCombatActor(actor, 1 / 60, {
-      resolveActionHit: (source, action) => this.resolveMeleeActionHit(source, action)
+      resolveActionHit: (source, action) => this.resolveMeleeActionHit(source, action),
+        advanceSourceApproach: (source, action, dt) => this.advanceSourceBladeApproachWave16(source, action, dt)
     });
 
     if (actor.cooldown > 0) actor.cooldown--;
@@ -1314,7 +1507,7 @@ export class EngineSmash {
     if (actor.statusEffects?.infected > 0) {
       actor.statusEffects.infected--;
       if (actor.statusEffects.infected % 60 === 0) {
-        actor.currentHp = Math.max(1, actor.currentHp - 3);
+        if (!interceptSourceEnvironmentalHitWave16(actor, 3, { kind: 'infection', contact: false })) { actor.currentHp = Math.max(1, actor.currentHp - 3); noteSourceDamageWave16(actor); }
         this.particles.add(actor.x, actor.y - 12, (Math.random() - 0.5) * 2, -1, '#2ecc71', 4, 20, 'spark');
       }
     }
@@ -1447,7 +1640,8 @@ export class EngineSmash {
       ));
       actors.forEach(actor => {
         const damage = Math.max(1, Math.round(actor.maxHp * definition.damageRatio * intensityScale));
-        actor.currentHp = Math.max(1, actor.currentHp - damage);
+        if (interceptSourceEnvironmentalHitWave16(actor, damage, { kind: 'stage-event', contact: true })) return;
+        actor.currentHp = Math.max(1, actor.currentHp - damage); noteSourceDamageWave16(actor);
         actor.vx += actor.x < this.width / 2 ? -definition.knockback * intensityScale : definition.knockback * intensityScale;
         actor.vy = Math.min(actor.vy, -2.5 * intensityScale);
         if (this.heroes.includes(actor)) this.hazardHits += 1;
@@ -1462,7 +1656,8 @@ export class EngineSmash {
     } else if (definition.effect === 'assist') {
       this.enemies.filter(enemy => enemy.currentHp > 0).forEach(enemy => {
         const damage = Math.max(1, Math.round(enemy.maxHp * definition.damageRatio * intensityScale));
-        enemy.currentHp = Math.max(1, enemy.currentHp - damage);
+        if (interceptSourceEnvironmentalHitWave16(enemy, damage, { kind: 'stage-assist', contact: true })) return;
+        enemy.currentHp = Math.max(1, enemy.currentHp - damage); noteSourceDamageWave16(enemy);
       });
       this.heroes.filter(hero => hero.currentHp > 0).forEach(hero => {
         hero.stageSpeedBoostMs = definition.heroSpeedMs;
@@ -1514,6 +1709,8 @@ export class EngineSmash {
 
   /** Keep the authored result pose stable after the combat simulation stops. */
   setMeleeOutcomeStates(result) {
+    clearSourceCombatStatusesWave16([...this.heroes, ...this.enemies], 'battle-complete');
+    this.sourceRifleProjectilesWave16 = [];
     this.meleeOutcomeResult = result;
     [...this.heroes, ...this.enemies].forEach(hero => {
       hero.action = null;
@@ -1560,6 +1757,8 @@ export class EngineSmash {
     if (this.advancePreMatchLock(timing.preMatchDeltaMs)) return;
     if (this.advanceMeleeIntro()) return;
 
+    advanceSourceCombatStatusesWave16([...this.heroes, ...this.enemies], 1 / 60);
+    this.updateSourceRifleProjectilesWave16();
     this.updateStageFlow(timing.stageDeltaMs);
 
     this.ensureLocalVersusLeaders();
@@ -1579,6 +1778,7 @@ export class EngineSmash {
   }
 
   update(keysPressed = {}, keysP2 = {}, timing = {}) {
+    if (this.paused || this.disposed) return;
     if (this.isLocalP2) {
       this.updateLocalVersus(keysPressed, keysP2, timing);
       return;
@@ -1599,6 +1799,8 @@ export class EngineSmash {
     if (this.advancePreMatchLock(timing.preMatchDeltaMs)) return;
     if (this.advanceMeleeIntro()) return;
 
+    advanceSourceCombatStatusesWave16([...this.heroes, ...this.enemies], 1 / 60);
+    this.updateSourceRifleProjectilesWave16();
     this.updateStageFlow(timing.stageDeltaMs);
 
     const heroesAlive = this.heroes.some(h => h.currentHp > 0);
@@ -1662,7 +1864,8 @@ export class EngineSmash {
       }
 
       tickMeleeCombatActor(h, 1 / 60, {
-        resolveActionHit: (source, action) => this.resolveMeleeActionHit(source, action)
+        resolveActionHit: (source, action) => this.resolveMeleeActionHit(source, action),
+        advanceSourceApproach: (source, action, dt) => this.advanceSourceBladeApproachWave16(source, action, dt)
       });
 
       if (h.cooldown > 0) h.cooldown--;
@@ -1678,7 +1881,7 @@ export class EngineSmash {
       if (h.statusEffects?.infected > 0) {
         h.statusEffects.infected--;
         if (h.statusEffects.infected % 60 === 0) {
-          h.currentHp = Math.max(1, h.currentHp - 3);
+          if (!interceptSourceEnvironmentalHitWave16(h, 3, { kind: 'infection', contact: false })) { h.currentHp = Math.max(1, h.currentHp - 3); noteSourceDamageWave16(h); }
           this.particles.add(h.x, h.y - 12, (Math.random()-0.5)*2, -1, '#2ecc71', 4, 20, 'spark');
         }
       }
@@ -1747,7 +1950,8 @@ export class EngineSmash {
       }
 
       tickMeleeCombatActor(e, 1 / 60, {
-        resolveActionHit: (source, action) => this.resolveMeleeActionHit(source, action)
+        resolveActionHit: (source, action) => this.resolveMeleeActionHit(source, action),
+        advanceSourceApproach: (source, action, dt) => this.advanceSourceBladeApproachWave16(source, action, dt)
       });
 
       if (e.stateTimer > 0) {
@@ -1762,7 +1966,7 @@ export class EngineSmash {
       if (e.statusEffects?.infected > 0) {
         e.statusEffects.infected--;
         if (e.statusEffects.infected % 60 === 0) {
-          e.currentHp = Math.max(1, e.currentHp - 3);
+          if (!interceptSourceEnvironmentalHitWave16(e, 3, { kind: 'infection', contact: false })) { e.currentHp = Math.max(1, e.currentHp - 3); noteSourceDamageWave16(e); }
           this.particles.add(e.x, e.y - 12, (Math.random()-0.5)*2, -1, '#2ecc71', 4, 20, 'spark');
         }
       }
@@ -1780,7 +1984,7 @@ export class EngineSmash {
       const target = this.getClosestHero(e);
       // Legacy enemy strikes use stateTimer, not an action object. Respect
       // their recovery so AI cannot cancel the pose and turn on the next frame.
-      if (target && !['attack', 'defense', 'hit', 'hitStun', 'shieldBreak'].includes(e.state) && !isMeleeMovementLocked(e) && !this.gameOver) {
+      if (!e.sourceControlWave16?.inputProxy && !e.sourcePossessionBodyWave16 && !isSourceImmobilizedWave16(e) && target && !['attack', 'defense', 'hit', 'hitStun', 'shieldBreak'].includes(e.state) && !isMeleeMovementLocked(e) && !this.gameOver) {
         const dx = target.x - e.x;
         const dy = target.y - e.y;
         if (dx !== 0) e.facing = Math.sign(dx);
@@ -1896,6 +2100,7 @@ export class EngineSmash {
   }
 
   applyPhysics(char) {
+    if (holdCombatControl(char)) return;
     if (char.ledge) {
       char.vx = 0;
       char.vy = 0;
@@ -2015,7 +2220,8 @@ export class EngineSmash {
         const onHazard = actor.x >= hazard.x1 && actor.x <= hazard.x2 && Math.abs(actor.y - hazard.y) < 20;
         if (!onHazard || this.hazardTick % 30 !== 0) return;
         const intensityScale = this.stageTopologyProfile.eventIntensity === STAGE_EVENT_INTENSITIES.light ? 0.5 : 1;
-        actor.currentHp = Math.max(1, actor.currentHp - hazard.damage * intensityScale);
+        if (interceptSourceEnvironmentalHitWave16(actor, hazard.damage * intensityScale, { kind: 'arena-hazard', contact: true })) return;
+        actor.currentHp = Math.max(1, actor.currentHp - hazard.damage * intensityScale); noteSourceDamageWave16(actor);
         if (this.heroes.includes(actor)) this.hazardHits++;
         actor.vx += hazard.knockX ? (actor.x < (hazard.x1 + hazard.x2) / 2 ? -hazard.knockX : hazard.knockX) : 0;
         actor.vy = hazard.knockY || Math.min(actor.vy, -3);
@@ -2277,9 +2483,11 @@ export class EngineSmash {
       } else if (e.isBoss) {
         drawBoss(ctx, e.x, e.y, e, animTime, e.facing);
       } else {
-        drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing);
+        drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing, e.sourceEnemyId === 'oddworld_slig' && e.universe === 'Oddworld' ? 72 : 68);
       }
 
+      drawCombatControl(ctx, e, 72);
+      drawSourceCombatStatusWave16(ctx, e, 72);
       if (e.currentHp > 0) {
         const barWidth = e.isBoss ? 80 : 30;
         const barHeight = e.isBoss ? 6 : 4;
@@ -2308,6 +2516,8 @@ export class EngineSmash {
     this.heroes.forEach(h => {
       const visualActor = this.getMeleeVisualActor(h);
       drawPixelSprite(ctx, visualActor.x, visualActor.y, visualActor, animTime, visualActor.facing, 72, 'melee');
+      drawCombatControl(ctx, h, 72);
+      drawSourceCombatStatusWave16(ctx, h, 72);
 
       if (h.id === this.activeHeroId && h.currentHp > 0) {
         ctx.fillStyle = '#39c5bb';
@@ -2329,6 +2539,11 @@ export class EngineSmash {
       }
     });
 
+    for (const projectile of this.sourceRifleProjectilesWave16 || []) {
+      ctx.save(); ctx.strokeStyle = '#ffe0a1'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(projectile.x - projectile.vx, projectile.y - projectile.vy);
+      ctx.lineTo(projectile.x, projectile.y); ctx.stroke(); ctx.restore();
+    }
     [...this.heroes, ...this.enemies].forEach(actor => {
       this.drawMeleeSuper(ctx, actor);
       this.drawMeleePresentation(ctx, actor);
@@ -2786,6 +3001,14 @@ export class EngineSmash {
 
   getObjectiveText(lang = 'fr') {
     return getSmashObjectiveText(this.arena, lang);
+  }
+
+  dispose() {
+    this.disposed = true;
+    clearSourceCombatStatusesWave16([...this.heroes, ...this.enemies], 'scene-exit');
+    this.sourceRifleProjectilesWave16 = [];
+    for (const actor of [...this.heroes, ...this.enemies]) { actor.action = null; actor.queuedMeleeAction = null; }
+    this.onComplete = () => {};
   }
 
   getCombatSummary(result = null) {

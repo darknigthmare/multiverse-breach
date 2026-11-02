@@ -1,0 +1,47 @@
+✔ audio preferences clamp independent buses and normalize mute (1.730733ms)
+✔ audio preferences survive storage round trips (0.327805ms)
+✔ corrupt storage falls back to safe defaults (0.298601ms)
+✔ no meaningful trace is a no-op (1.397521ms)
+✔ a local trace without a cloud trace is uploaded (0.150747ms)
+✔ a cloud trace without a local trace is loaded (0.104869ms)
+✔ trace flags distinguish a default payload from meaningful progress (1.225921ms)
+✔ equivalent traces are a no-op regardless of object key order (0.327965ms)
+✔ array order remains meaningful during equivalence checks (0.120822ms)
+✔ two divergent meaningful traces require confirmation (0.130377ms)
+✔ the policy does not mutate either payload (0.518153ms)
+✔ all 22 exposed faction labels own a unique mechanical contract (1.190367ms)
+✔ every runtime Thread owns an explicit lore-authored base affinity (3.252061ms)
+✔ the five reputation tracks gain ranks and apply real passive bonuses (0.348807ms)
+✔ base and narrative faction rules resolve and modify combat stats (0.680198ms)
+✔ mission outcomes award deterministic, migrated reputation xp (0.375878ms)
+✔ legacy kart career migrates inside the save-v9 portal collection (1.499834ms)
+✔ integrated career wins over stale legacy storage and is normalized (0.147322ms)
+✔ race results preserve the best time and accumulate rewards once (0.279903ms)
+✔ real combat consumes all 22 faction contracts and saved reputation passives (2.688199ms)
+✔ curated legacy affinities activate only their explicit base rule (0.929063ms)
+✔ every seasonal reward resolves to a mechanical item rendered by Hub inventory (0.800498ms)
+✔ season selection and launch share the titleDayKey-derived date at boundaries (0.939589ms)
+✔ save migration removes the legacy kart key only after the integrated save is written (0.426284ms)
+✔ seasonal mission narrative consumes its authored intro, outro and defeat fallback (0.219471ms)
+✔ sound engine creates AudioContext only after an explicit gesture unlock (2.643402ms)
+✔ the three seasonal events expose deterministic annual windows and playable stages (1.116305ms)
+✔ Yautja Hunt is active inside its window and closed outside it (19.68145ms)
+✔ a stage carries a season-specific completion id and deployment lock (0.625274ms)
+✔ season progress records attempts, victories, first clear and best grade (1.849032ms)
+✔ a missing trace opens profile creation and cannot continue (0.968382ms)
+✔ an incomplete prologue resumes without rewriting its step (0.178339ms)
+✔ a completed trace continues to the hub (0.15268ms)
+✔ title rotation exposes only owned, visible, enabled universes (16.828421ms)
+✔ title rotation is deterministic, bounded and groups owned heroes (0.472013ms)
+✔ attract cards never leak history entries that are not still owned (1.721409ms)
+✔ attract stages expose only completed victories or explicit unlocked fallbacks (0.461857ms)
+✔ attract stages exclude disabled stages and any hidden source universe (0.2051ms)
+✔ local title day key uses calendar components and rejects invalid values (0.484602ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 414.673874

@@ -1,3 +1,5 @@
+import { TACTICS_ENVIRONMENT_PROFILES_WAVE15, drawTacticsLandmarksWave15, drawTacticsSceneryWave15 } from './tacticsUniversePresentationWave15.js';
+import { TACTICS_ENVIRONMENT_PROFILES_WAVE16, drawTacticsLandmarksWave16, drawTacticsSceneryWave16 } from './tacticsUniversePresentationWave16.js';
 // Dedicated environments for every Tactics board, including source sectors
 // and the older Nexus grids. These draw the horizon around real geometry;
 // they never borrow another engine's backdrop or define a walkable tile.
@@ -43,6 +45,7 @@ const PROFILES = Object.freeze({
     accent: '#c6d4d1', architecture: 'forerunner'
   }
 });
+const RUNTIME_PROFILES = Object.freeze({ ...PROFILES, ...TACTICS_ENVIRONMENT_PROFILES_WAVE15, ...TACTICS_ENVIRONMENT_PROFILES_WAVE16 });
 const LEGACY_PROFILES = Object.freeze({
   nexus: { sky: ['#10232f', '#33525c'], ground: '#203b44', haze: '#75a5aa', far: '#466773', near: '#294c58', ridge: 'city', flora: 'none', accent: '#7fbbb5', architecture: 'none' },
   industrial: { sky: ['#35434e', '#82918f'], ground: '#455258', haze: '#b9c5be', far: '#6c7f85', near: '#4b626b', ridge: 'city', flora: 'none', accent: '#a2bfc0', architecture: 'none' },
@@ -60,6 +63,7 @@ const alpha = (hex, opacity) => {
 };
 
 export const TACTICS_ENVIRONMENT_BIOMES = Object.freeze(Object.keys(PROFILES));
+export const TACTICS_RUNTIME_ENVIRONMENT_BIOMES = Object.freeze(Object.keys(RUNTIME_PROFILES));
 
 export function getTacticsEnvironmentProfile(battlefield, mode = 'Tactics', options = {}) {
   if (mode !== 'Tactics' || !battlefield?.id) return null;
@@ -97,8 +101,8 @@ export function getTacticsEnvironmentProfile(battlefield, mode = 'Tactics', opti
       adaptation: 'Original tactical-board landscape using the universe material family; no exact source location is claimed.'
     };
   }
-  if (battlefield.modeExclusive !== 'Tactics' || battlefield.formatVersion !== 2 || !PROFILES[presentation.biome]) return null;
-  const selected = PROFILES[presentation.biome];
+  if (battlefield.modeExclusive !== 'Tactics' || battlefield.formatVersion !== 2 || !RUNTIME_PROFILES[presentation.biome]) return null;
+  const selected = RUNTIME_PROFILES[presentation.biome];
   // An authored palette may tune an original sector. It does not select another
   // universe's image or make an arbitrary background path part of the runtime.
   const palette = Object.fromEntries(Object.entries(presentation.palette || {})
@@ -198,6 +202,8 @@ function forest(ctx, profile, width, horizon, seed, pan) {
 }
 
 function architecturalLandmarks(ctx, profile, width, horizon, pan) {
+  if (drawTacticsLandmarksWave16(ctx, profile, width, horizon, pan)) return;
+  if (drawTacticsLandmarksWave15(ctx, profile, width, horizon, pan)) return;
   const x = width * 0.84 + pan, y = horizon + 2;
   if (profile.architecture === 'mako-industrial') {
     polygon(ctx, [[x - 18, y + 14], [x - 12, y - 35], [x + 18, y - 35], [x + 27, y + 14]], alpha(profile.near, 0.82));
@@ -319,6 +325,8 @@ export function getTacticsSceneryBounds(obstacle, point, width, height) {
 // The caller supplies a real obstacle's support and physical height. Artwork
 // never adds a blocker, changes HP or expands its collision footprint.
 export function drawTacticsScenery(ctx, { obstacle, point, width, height } = {}) {
+  if (drawTacticsSceneryWave16(ctx, { obstacle, point, width, height })) return true;
+  if (drawTacticsSceneryWave15(ctx, { obstacle, point, width, height })) return true;
   const kind = obstacle?.sceneryKind;
   if (!kind || !['tree', 'boulder', 'ruin-wall', 'mako-conduit', 'prothean-generator', 'forerunner-pylon', 'wooden-crate'].includes(kind)) return false;
   const w = Math.max(4, width), h = Math.max(8, height), color = obstacle.color || '#6e7a6c';

@@ -1,0 +1,42 @@
+✔ W15 Phaselock admits only Maya control/control enemy single0dmg and keeps range/opaque-floor geometry (11573.301792ms)
+✔ W15 melee player: rejected dead/immune/boss/invulnerable/out-of-range target keeps full meter (3.293932ms)
+✔ W15 melee player: one accepted bind cancels windup, suspends movement and actions, expires on simulation time with no damage or protective buff (10.053554ms)
+✔ W15 melee player: a moved/dead/newly immune committed target is revalidated without acquiring a late target (3.025827ms)
+✔ W15 melee opponent: rejected dead/immune/boss/invulnerable/out-of-range target keeps full meter (1.840728ms)
+✔ W15 melee opponent: one accepted bind cancels windup, suspends movement and actions, expires on simulation time with no damage or protective buff (3.94221ms)
+✔ W15 melee opponent: a moved/dead/newly immune committed target is revalidated without acquiring a late target (1.412582ms)
+✔ W15 fighter player: rejected dead/immune/boss/invulnerable/out-of-range target keeps full meter (2.713666ms)
+✔ W15 fighter player: one accepted bind cancels windup, suspends movement and actions, expires on simulation time with no damage or protective buff (4.70401ms)
+✔ W15 fighter player: a moved/dead/newly immune committed target is revalidated without acquiring a late target (2.862952ms)
+✔ W15 fighter opponent: rejected dead/immune/boss/invulnerable/out-of-range target keeps full meter (2.028596ms)
+✔ W15 fighter opponent: one accepted bind cancels windup, suspends movement and actions, expires on simulation time with no damage or protective buff (1.853988ms)
+✔ W15 fighter opponent: a moved/dead/newly immune committed target is revalidated without acquiring a late target (1.141834ms)
+✔ W15 Melee Phaselock rechecks a newly occluding floor before impact and keeps the accepted action target (0.789171ms)
+✔ W15 controlled death clears only the bind and never revives or consumes a shield (0.526905ms)
+✔ W15 melee player: secondary bind validates before cooldown and releases after1.2 simulation seconds (2.54423ms)
+✔ W15 melee opponent: secondary bind validates before cooldown and releases after1.2 simulation seconds (1.621248ms)
+✔ W15 fighter player: secondary bind validates before cooldown and releases after1.2 simulation seconds (0.913279ms)
+✔ W15 fighter opponent: secondary bind validates before cooldown and releases after1.2 simulation seconds (0.859678ms)
+✔ W15 melee: actual lethal damage clears Phaselock before any later revival (0.876883ms)
+✔ W15 fighter: actual lethal damage clears Phaselock before any later revival (0.713667ms)
+✔ W15 HealingBurst is exactly Val nearby group/self healing, separated from Medgun and enemy control (11169.994553ms)
+✔ W15 rpg player: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (7.049772ms)
+✔ W15 rpg player: an ally moving out of220px during startup is not healed remotely (0.782331ms)
+✔ W15 rpg opponent: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (2.99396ms)
+✔ W15 rpg opponent: an ally moving out of220px during startup is not healed remotely (1.001762ms)
+✔ W15 melee player: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (6.363617ms)
+✔ W15 melee player: an ally moving out of220px during startup is not healed remotely (0.581067ms)
+✔ W15 melee opponent: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (2.581898ms)
+✔ W15 melee opponent: an ally moving out of220px during startup is not healed remotely (0.945387ms)
+✔ W15 fighter player: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (2.992828ms)
+✔ W15 fighter player: an ally moving out of220px during startup is not healed remotely (0.432733ms)
+✔ W15 fighter opponent: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (0.897776ms)
+✔ W15 fighter opponent: an ally moving out of220px during startup is not healed remotely (0.35164ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23685.126382

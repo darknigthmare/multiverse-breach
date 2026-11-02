@@ -1152,6 +1152,18 @@ const mergeEnemyExpansion = (target, additions = {}) => {
 mergeEnemyExpansion(ENEMIES_DB, CANON_ENEMY_EXPANSION);
 mergeEnemyExpansion(ENEMIES_DB, LORE_ACCURATE_ENEMY_EXPANSIONS);
 
+// Only this existing canonical Slig is admitted by Abe's W16 possession.
+// Slogs, Interns, humanoid heroes and name-based guesses do not acquire it.
+if (ENEMIES_DB.Oddworld?.monsters?.some(enemy => enemy.id === 'oddworld_slig'
+  && enemy.canonStatus === 'canon enemy' && (enemy.universe === undefined || enemy.universe === 'Oddworld'))) {
+  const roster = ensureMutableEnemyRoster(ENEMIES_DB, 'Oddworld');
+  roster.monsters = roster.monsters.map(enemy => enemy.id === 'oddworld_slig' && enemy.canonStatus === 'canon enemy'
+    && (enemy.universe === undefined || enemy.universe === 'Oddworld')
+    ? { ...enemy, universe: 'Oddworld', sourceEnemyId: 'oddworld_slig', species: 'slig', possessionEligible: true,
+      possessionSource: "Oddworld: Abe's Oddysee (1997), Slig possession; existing enemy and artwork, no new roster identity." }
+    : enemy);
+}
+
 new Set([...Object.keys(ENEMIES_DB), ...BASE_NON_COMBAT_POLICY_ALIASES]).forEach(universe => {
   const currentRoster = ENEMIES_DB[universe];
   const finalePolicy = currentRoster?.finalePolicy || getResolvedLoreWorldBossPolicy(universe);

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/build_diagnostic",
+  "passed": true,
+  "preliminary": false,
+  "reviewedAt": "2026-10-28T07:45:44.084Z",
+  "actuallyViewedWith": "functions.exec tools.view_image for each of the 2 fresh contact sheets",
+  "actualContactSheetsViewed": 2,
+  "actualCanvasFramesInspected": 40,
+  "actualStudiesInspected": 10,
+  "report": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/browser/stages-wave15.json",
+    "sha256": "5d35cb3e26af945684928146027731838cfe95dd523f89bfd222dccdccfccff0",
+    "bytes": 14003
+  },
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/production-freeze.json",
+    "sha256": "18f4fbec0dfe58881a3019018a59d725a8733e7cd6e8df5b42cf788432b37f8a",
+    "bytes": 440143
+  },
+  "browserClosedAt": "2026-10-28T07:42:27.967Z",
+  "allBrowserWindowsClosed": true,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/browser/attempts/stages-final-20261028074219326/stage-studies-1.png",
+      "sha256": "f32ee8da6301fede5f2f614c3b7000a89201b79e0b73fa20a0aaafefdb9e95de",
+      "bytes": 70907,
+      "inspected": true,
+      "observation": "Cinq études et quatre instants par étude réellement vus : grille du portail Hexen, ouverture polygonale MDK, ventilateur de métro Soldier of Fortune, cloison GTFO et vent sur le toit Kamurocho. Géométrie filaire volontairement discrète ; décors natifs complets non représentés."
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/browser/attempts/stages-final-20261028074219326/stage-studies-2.png",
+      "sha256": "9ec3fb3f94158c88988a20db4e294270c86cf30728668266118259af2051dcb9",
+      "bytes": 81373,
+      "inspected": true,
+      "observation": "Cinq études et quatre instants par étude réellement vus : eau du temple Killer Instinct, bannières Magicka, rideau Goemon, végétation et vent de Shear, puis gouttière sous pluie Killing Floor 2. Les variations de lignes et courbes sont visibles et restent de faible contraste."
+    }
+  ],
+  "notes": [
+    "Each contact contains 5 rows and 4 actual Canvas samples per row, generated after gel4.",
+    "Observed output is subtle architectural vector animation. This review does not assert complete stage artwork, a complete playable battle or official 1:1 animation.",
+    "The report confirms complete cycles, reduced-motion stability, four mode bindings, stage immutability and no JavaScript page errors. One external Google Fonts request failed with the recorded proxy tunnel error."
+  ],
+  "source1to1Verified": false,
+  "productionFilesChangedByReview": false
+}

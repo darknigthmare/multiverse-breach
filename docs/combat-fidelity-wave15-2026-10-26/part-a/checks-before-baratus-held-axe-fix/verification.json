@@ -1,0 +1,1264 @@
+{
+  "schemaVersion": 1,
+  "wave": 15,
+  "part": "A",
+  "passed": true,
+  "sourcePlanSha256": "f6cc9213b714927b2f4c234cdbecffb502801893e20b68106c29b6185e0d615d",
+  "heroes": 40,
+  "nativeAtlases": 40,
+  "nativePoses": 1280,
+  "baseAtlases": 40,
+  "basePoses": 640,
+  "newProductionPngFiles": 80,
+  "distinctNativeDrawings": 1920,
+  "generationCalls": 52,
+  "observedDrawings": 2168,
+  "excludedDrawings": 248,
+  "refusedCalls": 0,
+  "historicalPreservation": {
+    "pngFiles": 730,
+    "registryFiles": 118,
+    "byteIdentical": true
+  },
+  "nativeMuzzleAnchors": {
+    "heroes": 32,
+    "points": 256,
+    "sha256": "ec8ca8f6d5385fb527b0cf6ec3ff3dcf3c1c2583cd850475209384089ff1296d",
+    "physicalCellPixelsVerified": true
+  },
+  "source1to1Verified": false,
+  "references": [
+    {
+      "heroId": "unreal_1998_gina",
+      "referenceAsset": "/sprites/generated/heroes/unreal/unreal-1998-gina.png",
+      "sha256": "57a9a0fe816b9c44f8217ae3c8763e7143473785155140be842bb037f89865b9"
+    },
+    {
+      "heroId": "unreal_1998_dante",
+      "referenceAsset": "/sprites/generated/heroes/unreal/unreal-1998-dante.png",
+      "sha256": "4596d67f8644d16a301fc4519c734a694ad0b1f4083d835dbb390720d5e1791f"
+    },
+    {
+      "heroId": "unreal_1998_kurgan",
+      "referenceAsset": "/sprites/generated/heroes/unreal/unreal-1998-kurgan.png",
+      "sha256": "3557ec97bd757985e885b7219f2f3289ec92238f263cd787ec625a14b1520fd8"
+    },
+    {
+      "heroId": "unreal_tournament_malcom",
+      "referenceAsset": "/sprites/generated/heroes/unreal-tournament/unreal-tournament-malcom.png",
+      "sha256": "503474468be745fccfbfda9a3c1d542f91f29de086de5838fdaf5a2171abda35"
+    },
+    {
+      "heroId": "unreal_tournament_brock",
+      "referenceAsset": "/sprites/generated/heroes/unreal-tournament/unreal-tournament-brock.png",
+      "sha256": "1f65718b82f5412a1bf0422ae59f3b214966b4120667f5c87c6fb2d5b0aeb1fc"
+    },
+    {
+      "heroId": "unreal_tournament_lauren",
+      "referenceAsset": "/sprites/generated/heroes/unreal-tournament/unreal-tournament-lauren.png",
+      "sha256": "48c995d03dd93812e7ce1a70b05a802e13364f0ccc1aade704ace9bd43f63847"
+    },
+    {
+      "heroId": "quake_franchise_ranger",
+      "referenceAsset": "/sprites/generated/heroes/quake/quake-franchise-ranger.png",
+      "sha256": "a80471d1c52db180e35f23cc6be8008227fce1fe9ca20d769c5763a36f54e367"
+    },
+    {
+      "heroId": "quake_franchise_bitterman",
+      "referenceAsset": "/sprites/generated/heroes/quake/quake-franchise-bitterman.png",
+      "sha256": "43feb10a3045fb1e25fd66fe3d9e0f6ad65bd1e1e59532e3cc189eb388955dfb"
+    },
+    {
+      "heroId": "quake_franchise_matthew_kane",
+      "referenceAsset": "/sprites/generated/heroes/quake/quake-franchise-matthew-kane.png",
+      "sha256": "831a08e16727f405f56a5e18c35d7c1aaadc4114e05f57b1f1877d20ad393432"
+    },
+    {
+      "heroId": "duke_nukem",
+      "referenceAsset": "/sprites/generated/heroes/duke-nukem/duke-nukem.png",
+      "sha256": "0e4a2bfa7fad0aed82e4884b91635c64c802b3077cb0765f41ed8a4561fb42c8"
+    },
+    {
+      "heroId": "duke_nukem_captain_dylan",
+      "referenceAsset": "/sprites/generated/heroes/duke-nukem/duke-nukem-captain-dylan.png",
+      "sha256": "24fa2223127eab9845965640f311a45f7ba06551bf841face03297ba431403ff"
+    },
+    {
+      "heroId": "duke_nukem_edf_trooper",
+      "referenceAsset": "/sprites/generated/heroes/duke-nukem/duke-nukem-edf-trooper.png",
+      "sha256": "ba16f25a84347e115aac132f78b7df38e30a06ac7ce7ddc317bc10864862ccdd"
+    },
+    {
+      "heroId": "marathon_classic_security_officer",
+      "referenceAsset": "/sprites/generated/heroes/marathon/marathon-classic-security-officer.png",
+      "sha256": "7d6970cf3dc36d457345296d4f8949a65bfafb3ff3882afcd596118cb4a65ebd"
+    },
+    {
+      "heroId": "marathon_classic_robert_blake",
+      "referenceAsset": "/sprites/generated/heroes/marathon/marathon-classic-robert-blake.png",
+      "sha256": "1d15ff906f20f2251d8c13d2e39abfec4f7d29a2ecdbbabe2e0ed54fb4227523"
+    },
+    {
+      "heroId": "marathon_classic_sphtkr_defender",
+      "referenceAsset": "/sprites/generated/heroes/marathon/marathon-classic-sphtkr-defender.png",
+      "sha256": "ceb3b64393983af8a5b86cefb28cfe34482f25b83be7cebddea4864dbf494d64"
+    },
+    {
+      "heroId": "hexen_baratus",
+      "referenceAsset": "/sprites/generated/heroes/hexen/hexen-baratus.png",
+      "sha256": "d0763872e8da7d3b31f5fc87ea8a3a012cb2edee59fd781b4ff51a8ba43a235a"
+    },
+    {
+      "heroId": "hexen_parias",
+      "referenceAsset": "/sprites/generated/heroes/hexen/hexen-parias.png",
+      "sha256": "c0f9a63d6cb4b58e5028d89186c017788b255e4c76ee9d7b31cc0ecb1eb287b3"
+    },
+    {
+      "heroId": "hexen_daedolon",
+      "referenceAsset": "/sprites/generated/heroes/hexen/hexen-daedolon.png",
+      "sha256": "f92277b2434adf3995d3f956cd0b73e9c4641aa7d0332eea23aca4a918e9e60b"
+    },
+    {
+      "heroId": "mdk_kurt_hectic",
+      "referenceAsset": "/sprites/generated/heroes/mdk/mdk-kurt-hectic.png",
+      "sha256": "8a652f1754137b7ad052a98445aa28691383945da01eee55dab3e7b253e5980c"
+    },
+    {
+      "heroId": "max_mdk",
+      "referenceAsset": "/sprites/generated/heroes/mdk/max-mdk.png",
+      "sha256": "47cc5b125cad05c40acc6f982871d0f2a0259cb5fa9254178aa3fe15a54303a8"
+    },
+    {
+      "heroId": "mdk_dr_hawkins",
+      "referenceAsset": "/sprites/generated/heroes/mdk/mdk-dr-hawkins.png",
+      "sha256": "639b178a8e3f3841ebe07ed326998b615fef5a5f1cc2bc335c1cd98f9e4446c0"
+    },
+    {
+      "heroId": "soldier_of_fortune_john_mullins",
+      "referenceAsset": "/sprites/generated/heroes/soldier-of-fortune/soldier-of-fortune-john-mullins.png",
+      "sha256": "46cc143b1ba5d3c4d72cb711a562e9e4d9e323b342df13e01286af0b4460a7bc"
+    },
+    {
+      "heroId": "soldier_of_fortune_hawk_parsons",
+      "referenceAsset": "/sprites/generated/heroes/soldier-of-fortune/soldier-of-fortune-hawk-parsons.png",
+      "sha256": "69c98366453f3539ebb1e9285f612d7fd72147fa38e6fb72f6e36b53cf85a950"
+    },
+    {
+      "heroId": "soldier_of_fortune_sam_gladstone",
+      "referenceAsset": "/sprites/generated/heroes/soldier-of-fortune/soldier-of-fortune-sam-gladstone.png",
+      "sha256": "745ab4835cb75f25c406f0387a6b0ad55bd875102397664e59bd5e802d9b423f"
+    },
+    {
+      "heroId": "crysis_nomad",
+      "referenceAsset": "/sprites/generated/heroes/crysis/crysis-nomad.png",
+      "sha256": "24a4002d559b6a1acd94506f499f5d5ae16cdaef13079477fc8a5619d63da1c1"
+    },
+    {
+      "heroId": "crysis_prophet",
+      "referenceAsset": "/sprites/generated/heroes/crysis/crysis-prophet.png",
+      "sha256": "0cda7c5345e83b8e2ef6c349aac11db9e5c53ff0e099dd8f357cd4c9dfaaccc3"
+    },
+    {
+      "heroId": "crysis_psycho",
+      "referenceAsset": "/sprites/generated/heroes/crysis/crysis-psycho.png",
+      "sha256": "9d8d06b829f8cdf3f4338c3c076c9e20ae9ecc37a8a005218ee14382558f2434"
+    },
+    {
+      "heroId": "fear_point_man",
+      "referenceAsset": "/sprites/generated/heroes/f-e-a-r/fear-point-man.png",
+      "sha256": "7c456014b7f4421d59f264785f506df75cabe71cc49f0238791dc3950fa3c577"
+    },
+    {
+      "heroId": "fear_jin_sun_kwon",
+      "referenceAsset": "/sprites/generated/heroes/f-e-a-r/fear-jin-sun-kwon.png",
+      "sha256": "9e1e556b057003b6a05d1217ad835565317c19c99a2eac9734634ac8dc2065aa"
+    },
+    {
+      "heroId": "fear_douglas_holiday",
+      "referenceAsset": "/sprites/generated/heroes/f-e-a-r/fear-douglas-holiday.png",
+      "sha256": "420294bb58c6307e03663a384b04a3d3e3cb1f4b68167a55e205565b8aea1c97"
+    },
+    {
+      "heroId": "splinter_cell_sam_fisher",
+      "referenceAsset": "/sprites/generated/heroes/tom-clancy-s-splinter-cell/splinter-cell-sam-fisher.png",
+      "sha256": "682db5cd3816b0cbe2ec7de4f78d09031b10e052687c1691c9cf186eb22eb486"
+    },
+    {
+      "heroId": "splinter_cell_anna_grim",
+      "referenceAsset": "/sprites/generated/heroes/tom-clancy-s-splinter-cell/splinter-cell-anna-grim.png",
+      "sha256": "7c7a06b38a3d8fabe7e900cec92de0ae99dcc026b236a0d69de4f3160c098074"
+    },
+    {
+      "heroId": "splinter_cell_isaac_briggs",
+      "referenceAsset": "/sprites/generated/heroes/tom-clancy-s-splinter-cell/splinter-cell-isaac-briggs.png",
+      "sha256": "c3a36a69b318a8f2f975c86be157e981705e73a29e483598ed80b1f1228d233c"
+    },
+    {
+      "heroId": "hitman_woa_agent_47",
+      "referenceAsset": "/sprites/generated/heroes/hitman-world-of-assassination/hitman-woa-agent-47.png",
+      "sha256": "dddf3c3a293a2b90db9ff3ddefe8fb9679007147017efd2b61532440b808d997"
+    },
+    {
+      "heroId": "hitman_woa_diana_burnwood",
+      "referenceAsset": "/sprites/generated/heroes/hitman-world-of-assassination/hitman-woa-diana-burnwood.png",
+      "sha256": "eab90102ab46a1380741c280c67043222cf4d1b7e07460916036d1b5dae26163"
+    },
+    {
+      "heroId": "hitman_woa_lucas_grey",
+      "referenceAsset": "/sprites/generated/heroes/hitman-world-of-assassination/hitman-woa-lucas-grey.png",
+      "sha256": "4117e495d3c363d53aee246884638456ee8e074f9556d8bce0b81fd4a15b0058"
+    },
+    {
+      "heroId": "gtfo_woods",
+      "referenceAsset": "/sprites/generated/heroes/gtfo/gtfo-woods.png",
+      "sha256": "81f2a0ee6f8d66a86b7c58e17ce45128ca1beb9b0035f14408354a86969847b5"
+    },
+    {
+      "heroId": "gtfo_dauda",
+      "referenceAsset": "/sprites/generated/heroes/gtfo/gtfo-dauda.png",
+      "sha256": "2e9caf9aefd2378a3a8a5572021d677b1c838a91b1a54c66573f0cbddb6eeb96"
+    },
+    {
+      "heroId": "gtfo_hackett",
+      "referenceAsset": "/sprites/generated/heroes/gtfo/gtfo-hackett.png",
+      "sha256": "2d6d53ceb61759c5e64683996429f8459890df55294d04a5ad5ac932c0f3f482"
+    },
+    {
+      "heroId": "shephard",
+      "referenceAsset": "/sprites/generated/heroes/half-life/shephard.png",
+      "sha256": "86a2c4954ba8c03fbb1823c166942d3eda9392408c0ead11e96bd437e36d1b43"
+    }
+  ],
+  "sheets": [
+    {
+      "heroId": "unreal_1998_gina",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/unreal_1998_gina.png",
+      "sha256": "20ce10a3ce008bf9361552f2c7134d20883765053cea58b06e5b6fe7163d24d6",
+      "frames": 32
+    },
+    {
+      "heroId": "unreal_1998_gina",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/unreal_1998_gina.png",
+      "sha256": "97b9242b32da7af12511f4f0108e9dd3b4f1074d59c87a188e493394ee2cc5a6",
+      "frames": 16
+    },
+    {
+      "heroId": "unreal_1998_dante",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/unreal_1998_dante.png",
+      "sha256": "d67c5ea36958cbed608822c0f0dee672ec41b89b92daacc6ae13f00e1f4099ee",
+      "frames": 32
+    },
+    {
+      "heroId": "unreal_1998_dante",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/unreal_1998_dante.png",
+      "sha256": "23576144fdd5cfdd2875fc0781fbb05a860f16d428de6858f03fc2942bc410e7",
+      "frames": 16
+    },
+    {
+      "heroId": "unreal_1998_kurgan",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/unreal_1998_kurgan.png",
+      "sha256": "9d0ea77e8bb11cbd508bf4abba15a2a73806ac3843fd3003c24928cc217525c8",
+      "frames": 32
+    },
+    {
+      "heroId": "unreal_1998_kurgan",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/unreal_1998_kurgan.png",
+      "sha256": "ff65b57009f81e6ccb2a641fbe90a8bd38d1df533fe695d05e1268af94d43eab",
+      "frames": 16
+    },
+    {
+      "heroId": "unreal_tournament_malcom",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/unreal_tournament_malcom.png",
+      "sha256": "c8c52c85182c7514d749a19d009857f67422e1802766df7f45f99d1c0215ba15",
+      "frames": 32
+    },
+    {
+      "heroId": "unreal_tournament_malcom",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/unreal_tournament_malcom.png",
+      "sha256": "a06957045777c63baee58c6208926de500fcc832a9ea3edf80c431690db379b2",
+      "frames": 16
+    },
+    {
+      "heroId": "unreal_tournament_brock",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/unreal_tournament_brock.png",
+      "sha256": "ed5f31ddd82718efe2ba78cc6677d26fae5b95b6da080be5c6c9836412bc14ad",
+      "frames": 32
+    },
+    {
+      "heroId": "unreal_tournament_brock",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/unreal_tournament_brock.png",
+      "sha256": "a8474e1241f1e0d733da3ea358c78659a5edbb988903b3c4dfe04a13d9bca16d",
+      "frames": 16
+    },
+    {
+      "heroId": "unreal_tournament_lauren",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/unreal_tournament_lauren.png",
+      "sha256": "64c5126c9d8ec5ed314f2a6a0c36c5c741075ab7012e0ab6026282324b31b943",
+      "frames": 32
+    },
+    {
+      "heroId": "unreal_tournament_lauren",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/unreal_tournament_lauren.png",
+      "sha256": "48a83c61566b3d2f72ccda3fbfb68fd3ea6aac1abaac093d822a3b5fffe17d5e",
+      "frames": 16
+    },
+    {
+      "heroId": "quake_franchise_ranger",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/quake_franchise_ranger.png",
+      "sha256": "90dfda63acd74958c7107d9ddb5836a1ab69c5aad68147734fee15cdae855ac6",
+      "frames": 32
+    },
+    {
+      "heroId": "quake_franchise_ranger",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/quake_franchise_ranger.png",
+      "sha256": "b24b010a2a4af03227f5eb84db34daabb6ca9438d1c132489369fd2a2751b516",
+      "frames": 16
+    },
+    {
+      "heroId": "quake_franchise_bitterman",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/quake_franchise_bitterman.png",
+      "sha256": "04e5aff15ebccb757652669cadbc31d9f47d2ef54f1f157fac10e3339a05ff2e",
+      "frames": 32
+    },
+    {
+      "heroId": "quake_franchise_bitterman",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/quake_franchise_bitterman.png",
+      "sha256": "3aa645a6eac3f943b1c80e0fb0406524a22a3da624762d97ddffdbf91a99e4ac",
+      "frames": 16
+    },
+    {
+      "heroId": "quake_franchise_matthew_kane",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/quake_franchise_matthew_kane.png",
+      "sha256": "83ed7bb9c74fd0f22707e6899d644de4d261f25bfdff8f7278ee7691a77f373d",
+      "frames": 32
+    },
+    {
+      "heroId": "quake_franchise_matthew_kane",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/quake_franchise_matthew_kane.png",
+      "sha256": "de9c9e9a65cd660645e54d1f3f97d56caab288045a7ed5112983407a0c71e85e",
+      "frames": 16
+    },
+    {
+      "heroId": "duke_nukem",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/duke_nukem.png",
+      "sha256": "08cfc71ab0fec47243ab620c7137c8c8cb87194c291d73c7bd3a2df8a9775770",
+      "frames": 32
+    },
+    {
+      "heroId": "duke_nukem",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/duke_nukem.png",
+      "sha256": "d3fc5b51063afec89aa36184861fab996763ec56c27e1a2f0702f6f55f36698b",
+      "frames": 16
+    },
+    {
+      "heroId": "duke_nukem_captain_dylan",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/duke_nukem_captain_dylan.png",
+      "sha256": "b88d7cba706efc5457cfbc78e02df1872d4bc2d52fc5b55c143e201eda642dc0",
+      "frames": 32
+    },
+    {
+      "heroId": "duke_nukem_captain_dylan",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/duke_nukem_captain_dylan.png",
+      "sha256": "3b24dfd216d82187fae7b292beb67eb5e5e3196a144443d49e13408551809409",
+      "frames": 16
+    },
+    {
+      "heroId": "duke_nukem_edf_trooper",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/duke_nukem_edf_trooper.png",
+      "sha256": "280a43ea8e221bfd2384aa25fdc462371c73fd131d0baffee2b2c3df875135b4",
+      "frames": 32
+    },
+    {
+      "heroId": "duke_nukem_edf_trooper",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/duke_nukem_edf_trooper.png",
+      "sha256": "02a7f460a930e49bb9423f4ef7f9036c6e344d8eee187e499ca4da0beb7f3908",
+      "frames": 16
+    },
+    {
+      "heroId": "marathon_classic_security_officer",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/marathon_classic_security_officer.png",
+      "sha256": "ee9870f9947a3f83fe50c64407f8687459a6b6627aa6e1b3c04d9e20a208a40f",
+      "frames": 32
+    },
+    {
+      "heroId": "marathon_classic_security_officer",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/marathon_classic_security_officer.png",
+      "sha256": "610de1843fc7ea6a78200f6189b20005699c4dc8ed9089764edeeec73d366c9b",
+      "frames": 16
+    },
+    {
+      "heroId": "marathon_classic_robert_blake",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/marathon_classic_robert_blake.png",
+      "sha256": "b6538888a4bf86056bca17e91c79cfaddfba1ccd3d6ccc151d2f95e19d812868",
+      "frames": 32
+    },
+    {
+      "heroId": "marathon_classic_robert_blake",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/marathon_classic_robert_blake.png",
+      "sha256": "8dd142017f2bc80dec40bcd500143a0ba25fbfa392b89e076f5432e110c8dfe8",
+      "frames": 16
+    },
+    {
+      "heroId": "marathon_classic_sphtkr_defender",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/marathon_classic_sphtkr_defender.png",
+      "sha256": "6a854994f03beadf8e4b2bc1ecb319173122afc332e544b9a5b6920e45e7a043",
+      "frames": 32
+    },
+    {
+      "heroId": "marathon_classic_sphtkr_defender",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/marathon_classic_sphtkr_defender.png",
+      "sha256": "7418696d28ce380546eba7813bc1c55537d2501f9f8b2258287d6771cbbab6cb",
+      "frames": 16
+    },
+    {
+      "heroId": "hexen_baratus",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/hexen_baratus.png",
+      "sha256": "725591333aa5969a0fa4de884024bc507301f0ba486bf28787dc3d8e6e44a2ed",
+      "frames": 32
+    },
+    {
+      "heroId": "hexen_baratus",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/hexen_baratus.png",
+      "sha256": "e3d556723c4604f97582f2930e02a75a940e28f5df4fc512c6300ed4542cfde3",
+      "frames": 16
+    },
+    {
+      "heroId": "hexen_parias",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/hexen_parias.png",
+      "sha256": "81476aba6908268272d59ed334cdec2e0f2cd74e4751f493f0515ae56d8a405e",
+      "frames": 32
+    },
+    {
+      "heroId": "hexen_parias",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/hexen_parias.png",
+      "sha256": "129be918c1cdfcef749e793b8c27f9c49a9569ff97f7942852da48f225078e96",
+      "frames": 16
+    },
+    {
+      "heroId": "hexen_daedolon",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/hexen_daedolon.png",
+      "sha256": "ff44fe40045fb4f711f2d04f81d8dc0fe8a47cbc5e3a116298dc9e66bbf56bac",
+      "frames": 32
+    },
+    {
+      "heroId": "hexen_daedolon",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/hexen_daedolon.png",
+      "sha256": "e66abc77cba309b20afac6de00c795f22891f0a0b367c3719816f7cd8843c51b",
+      "frames": 16
+    },
+    {
+      "heroId": "mdk_kurt_hectic",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/mdk_kurt_hectic.png",
+      "sha256": "b7dab4e26d2145a7cabe2b2ec1c2c184e42ebf5efc54bcf1f0e8693dfd3269ef",
+      "frames": 32
+    },
+    {
+      "heroId": "mdk_kurt_hectic",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/mdk_kurt_hectic.png",
+      "sha256": "74b7424d5d462c7426fa70fce215cfe81e1ae856ad59870a73edd41b0928c70d",
+      "frames": 16
+    },
+    {
+      "heroId": "max_mdk",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/max_mdk.png",
+      "sha256": "14065bebabc8604c5115f7be23f98086ef3f9555a0a10646312e8f055a810ac7",
+      "frames": 32
+    },
+    {
+      "heroId": "max_mdk",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/max_mdk.png",
+      "sha256": "7585a99630e1e600464cb76351d062ad9eece67c079b249e4f99e5ec8674efbc",
+      "frames": 16
+    },
+    {
+      "heroId": "mdk_dr_hawkins",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/mdk_dr_hawkins.png",
+      "sha256": "22a00a7da747f4dea3e9bbaf6e58472afbb2be6d5ff1e0a8b9178700d10e984a",
+      "frames": 32
+    },
+    {
+      "heroId": "mdk_dr_hawkins",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/mdk_dr_hawkins.png",
+      "sha256": "8975716d71e08be9f18980ad0768724b33b437afa93cd1a4bbf28e86f00d976d",
+      "frames": 16
+    },
+    {
+      "heroId": "soldier_of_fortune_john_mullins",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/soldier_of_fortune_john_mullins.png",
+      "sha256": "f13892149d262486daf84c1dd830647315f2d1caaf2836119932086418bbf93f",
+      "frames": 32
+    },
+    {
+      "heroId": "soldier_of_fortune_john_mullins",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/soldier_of_fortune_john_mullins.png",
+      "sha256": "292c2d9e06cf1c33aa919fc3f6b5d35877a795b6c44d438fe5aee8df2b99c107",
+      "frames": 16
+    },
+    {
+      "heroId": "soldier_of_fortune_hawk_parsons",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/soldier_of_fortune_hawk_parsons.png",
+      "sha256": "faf88c54ea8e637e2a6154eb4d0c7e504ebde3243d8705537f8f112fcaed8eba",
+      "frames": 32
+    },
+    {
+      "heroId": "soldier_of_fortune_hawk_parsons",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/soldier_of_fortune_hawk_parsons.png",
+      "sha256": "9a00a2b449afc1b762e9a43f8865dc1913048b88c3b59b04dd609c78a950372a",
+      "frames": 16
+    },
+    {
+      "heroId": "soldier_of_fortune_sam_gladstone",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/soldier_of_fortune_sam_gladstone.png",
+      "sha256": "5c35b49a4b7f2164ee683a1c5f62895c28eae6a42682b923b2e0a7e9e2fddf28",
+      "frames": 32
+    },
+    {
+      "heroId": "soldier_of_fortune_sam_gladstone",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/soldier_of_fortune_sam_gladstone.png",
+      "sha256": "5604c47aa536dc7069ada6b54ee2471201fb7fa49b99601bcb2e9cf885156130",
+      "frames": 16
+    },
+    {
+      "heroId": "crysis_nomad",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/crysis_nomad.png",
+      "sha256": "7a31ea04757c95baa5bedf7e0fb5ea940c22666e07e229641acff9ea170fb116",
+      "frames": 32
+    },
+    {
+      "heroId": "crysis_nomad",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/crysis_nomad.png",
+      "sha256": "da0a1f85cb98318849ee000f67fac2b381aafb37363f8c0b121fb9b39b68c6ca",
+      "frames": 16
+    },
+    {
+      "heroId": "crysis_prophet",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/crysis_prophet.png",
+      "sha256": "8782cdbea3d98b0e56ade9d8b4ca990afda865cac5d44b21aba6fca88b43acdd",
+      "frames": 32
+    },
+    {
+      "heroId": "crysis_prophet",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/crysis_prophet.png",
+      "sha256": "0fa2258fbcde793fa0234adeba73c3d1f3fe902a905d66b20daa3d7977291799",
+      "frames": 16
+    },
+    {
+      "heroId": "crysis_psycho",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/crysis_psycho.png",
+      "sha256": "933f2e6af71c75e1d6a3c16315926470dfc6b62fbca9951e074a97f6d66f6d4c",
+      "frames": 32
+    },
+    {
+      "heroId": "crysis_psycho",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/crysis_psycho.png",
+      "sha256": "30dc0ccaa9ea5ae1bcd2ed45724c9eda6fa47cff2cce7fbb0fb38447eca56737",
+      "frames": 16
+    },
+    {
+      "heroId": "fear_point_man",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/fear_point_man.png",
+      "sha256": "dc362736c2cad70a09d9bec0f9cbad3915f10c736520fa7878ae1f9609e8ae0a",
+      "frames": 32
+    },
+    {
+      "heroId": "fear_point_man",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/fear_point_man.png",
+      "sha256": "9ad1ee7cf27bab88529b61fec32d329a075351517f81ef7a83e1973c0a68f461",
+      "frames": 16
+    },
+    {
+      "heroId": "fear_jin_sun_kwon",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/fear_jin_sun_kwon.png",
+      "sha256": "34dd25bba1a8919dadc06e57380d332ebdc559e54d32f73342ad9696459787a6",
+      "frames": 32
+    },
+    {
+      "heroId": "fear_jin_sun_kwon",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/fear_jin_sun_kwon.png",
+      "sha256": "33b1412663d0bd22b9b941ac7d3cd12327e1b68ce4c23668ccc15354b91492b5",
+      "frames": 16
+    },
+    {
+      "heroId": "fear_douglas_holiday",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/fear_douglas_holiday.png",
+      "sha256": "af3a93034eed2eab6edc4997ba6fc0f392aeabdf78242ac2c36cd2983d5febca",
+      "frames": 32
+    },
+    {
+      "heroId": "fear_douglas_holiday",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/fear_douglas_holiday.png",
+      "sha256": "869c88c12c6e0ec7679828a8a2cd7b366c7efdd5f183c935018b6d2ebedd83ba",
+      "frames": 16
+    },
+    {
+      "heroId": "splinter_cell_sam_fisher",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/splinter_cell_sam_fisher.png",
+      "sha256": "bc2dca47353562b8e7e15485156419cb9c991867abe7297aedc74b71681e1809",
+      "frames": 32
+    },
+    {
+      "heroId": "splinter_cell_sam_fisher",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/splinter_cell_sam_fisher.png",
+      "sha256": "730e4b18a2887c66707a2267f49bf67d1e40f4d2e2b9598ce06b28342477349b",
+      "frames": 16
+    },
+    {
+      "heroId": "splinter_cell_anna_grim",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/splinter_cell_anna_grim.png",
+      "sha256": "a08908694fd1b7bf6d9fc50f36dfee765a62ae88b6b5ce9a2ac9ec153ea4a9e3",
+      "frames": 32
+    },
+    {
+      "heroId": "splinter_cell_anna_grim",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/splinter_cell_anna_grim.png",
+      "sha256": "f5619b3d28f0ee7495d161dbee6d923c43e0c53d15b34418fc487adc31806c48",
+      "frames": 16
+    },
+    {
+      "heroId": "splinter_cell_isaac_briggs",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/splinter_cell_isaac_briggs.png",
+      "sha256": "2e79ddee9d99170c1375a4ea62fd7671ba3803d8b7822ebb3f7d7ca63791b4b2",
+      "frames": 32
+    },
+    {
+      "heroId": "splinter_cell_isaac_briggs",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/splinter_cell_isaac_briggs.png",
+      "sha256": "bbb1b009beda86d54d332fe20f17808c57cce58db6b2fbb1e25a905fc264c54c",
+      "frames": 16
+    },
+    {
+      "heroId": "hitman_woa_agent_47",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/hitman_woa_agent_47.png",
+      "sha256": "9ec201451dd91a69cc190e809586e05de11683f1ae93d24282be3ae01fbf97e7",
+      "frames": 32
+    },
+    {
+      "heroId": "hitman_woa_agent_47",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/hitman_woa_agent_47.png",
+      "sha256": "c667f87b484f099ac7e1989ae478773efc223e0e0b138571b3f74e93c32d91af",
+      "frames": 16
+    },
+    {
+      "heroId": "hitman_woa_diana_burnwood",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/hitman_woa_diana_burnwood.png",
+      "sha256": "105960b853740b6730bde618dc086f2d2b61135b5ba51b8a6667c0dcacbf77e8",
+      "frames": 32
+    },
+    {
+      "heroId": "hitman_woa_diana_burnwood",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/hitman_woa_diana_burnwood.png",
+      "sha256": "f9183f7771628302932b33f22022c998ae8d498f682891b3d6f96f6ecf72ec6f",
+      "frames": 16
+    },
+    {
+      "heroId": "hitman_woa_lucas_grey",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/hitman_woa_lucas_grey.png",
+      "sha256": "ba99febdfd1a7a843dcc6cd7aa46d1ccd18f5b30ed9375c0ac0a476af6552c25",
+      "frames": 32
+    },
+    {
+      "heroId": "hitman_woa_lucas_grey",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/hitman_woa_lucas_grey.png",
+      "sha256": "9581597c0f39caa6341c81813776568326ba5c56096ddb9dd07b72c03b656a5f",
+      "frames": 16
+    },
+    {
+      "heroId": "gtfo_woods",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/gtfo_woods.png",
+      "sha256": "9acb29c38ff93d9bff0d17bc9c21d1711ce18b66e9ce4422284976b3be5e2172",
+      "frames": 32
+    },
+    {
+      "heroId": "gtfo_woods",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/gtfo_woods.png",
+      "sha256": "8065dea57125bc75fae38574d7175ead4f37c888cb8e9612cf4d77b841d8ec27",
+      "frames": 16
+    },
+    {
+      "heroId": "gtfo_dauda",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/gtfo_dauda.png",
+      "sha256": "0ebb42525760f58f2f2eae6c0d8a7941bf00cfae4da287c75d46380de5fcee5b",
+      "frames": 32
+    },
+    {
+      "heroId": "gtfo_dauda",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/gtfo_dauda.png",
+      "sha256": "415db42fe03b6229760ded30430e271157388d1faf4abfcea291b8aa2d0575ae",
+      "frames": 16
+    },
+    {
+      "heroId": "gtfo_hackett",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/gtfo_hackett.png",
+      "sha256": "d36c50d722f68061e688f51f83826b6e2ab192dee78f89124b7221b9d940e6a9",
+      "frames": 32
+    },
+    {
+      "heroId": "gtfo_hackett",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/gtfo_hackett.png",
+      "sha256": "7dcc5cd493031315dd2b4bdee585f8ad436dea083c33eb19cc3a86b112776461",
+      "frames": 16
+    },
+    {
+      "heroId": "shephard",
+      "kind": "native",
+      "sheet": "/sprites/generated/combat-character-animations-wave15-part-a/shephard.png",
+      "sha256": "9c4b00ccf25024aff90fdc4df98a07949ec272a1fd12d39aafea6c78fa543694",
+      "frames": 32
+    },
+    {
+      "heroId": "shephard",
+      "kind": "base",
+      "sheet": "/sprites/generated/combat-character-corrections-wave15-part-a/shephard.png",
+      "sha256": "c58ce3b64d8f0c2127cf64b0a9fd7471e3b7ff7b8be7b3d218831c5893adfba8",
+      "frames": 16
+    }
+  ],
+  "sources": [
+    {
+      "heroId": "unreal_1998_gina",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_gina-native-original.png",
+      "sha256": "7c61e6a4775ce5f0d91377a74f9e0f7f799deed3eb9de02f2cee35e5e25f3c3e",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_gina-tool-result.json",
+      "observedDrawings": 47,
+      "retainedDrawings": 36,
+      "excludedDrawings": 11
+    },
+    {
+      "heroId": "unreal_1998_gina",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_gina-energy-correction.png",
+      "sha256": "0914f560c490210d7abd25178480decd00fb6142d67918b152c3c8d733f4f5ba",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_gina-energy-correction-tool-result.json",
+      "observedDrawings": 47,
+      "retainedDrawings": 0,
+      "excludedDrawings": 47
+    },
+    {
+      "heroId": "unreal_1998_gina",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_gina-actions-correction.png",
+      "sha256": "6af4f88597a614bcd128d49a4d24472ab2af333fe35f1ef7744eff145bdef501",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_gina-actions-correction-tool-result.json",
+      "observedDrawings": 12,
+      "retainedDrawings": 12,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "unreal_1998_dante",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_dante-native-original.png",
+      "sha256": "ad5d1f4d0eb33739115b8bc6f8714f921ede1be9e72edc1a0bae24024554f0c1",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_dante-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 0,
+      "excludedDrawings": 48
+    },
+    {
+      "heroId": "unreal_1998_dante",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_dante-energy-correction.png",
+      "sha256": "3b238bab97e6994eb0122a87eac7ad427d476843067641f7db876897ee6597ba",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_dante-energy-correction-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 36,
+      "excludedDrawings": 12
+    },
+    {
+      "heroId": "unreal_1998_dante",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_dante-actions-correction.png",
+      "sha256": "0cba82a7e3c4b008317eddd84c65aa907091065e72035d816063663e07bfde7c",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_dante-actions-correction-tool-result.json",
+      "observedDrawings": 12,
+      "retainedDrawings": 12,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "unreal_1998_kurgan",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_kurgan-native-original.png",
+      "sha256": "e6be10031c695b9d8ece2d65d9a4d2576ac0f985a1238e288f3decbdea985646",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_kurgan-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 0,
+      "excludedDrawings": 48
+    },
+    {
+      "heroId": "unreal_1998_kurgan",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_kurgan-energy-correction.png",
+      "sha256": "d54b0d37a7c1f0695c52129180cb18f0cc732881dd7f9a121c64b4a2a88ecc6a",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_kurgan-energy-correction-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 36,
+      "excludedDrawings": 12
+    },
+    {
+      "heroId": "unreal_1998_kurgan",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_kurgan-actions-correction.png",
+      "sha256": "d2c4e99bc401ff22201dcc5f95c166a0c62380003c5c690f910f70c1c3a09cb2",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_kurgan-actions-correction-tool-result.json",
+      "observedDrawings": 12,
+      "retainedDrawings": 12,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "unreal_tournament_malcom",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_tournament_malcom-native-original.png",
+      "sha256": "a4742b8bf6a8fff8cc1568a4bbf3bf01426d759550a639de9086304cf53e316a",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_tournament_malcom-tool-result.json",
+      "observedDrawings": 47,
+      "retainedDrawings": 44,
+      "excludedDrawings": 3
+    },
+    {
+      "heroId": "unreal_tournament_malcom",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_tournament_malcom-super-correction.png",
+      "sha256": "40017adf0bc71cee51471ff73813ccf6790400a65c5c8ded93c9cce3c6aa503f",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_tournament_malcom-super-correction-tool-result.json",
+      "observedDrawings": 4,
+      "retainedDrawings": 4,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "unreal_tournament_brock",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_tournament_brock-native-original.png",
+      "sha256": "d4b11c14b17079ee83f242d93d2bca73fa5cdc8dbb2070de7666658147d79b57",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_tournament_brock-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "unreal_tournament_lauren",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_tournament_lauren-native-original.png",
+      "sha256": "264a5b2a15deb944744b0bc259e222389819973cb093e15348b52e248e65743b",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_tournament_lauren-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "quake_franchise_ranger",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_ranger-native-original.png",
+      "sha256": "284ef20b09b1517ac84638d6f12044d13ea91ee3a5def372225fb70815e64c93",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_ranger-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "quake_franchise_bitterman",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_bitterman-native-original.png",
+      "sha256": "792044be7155a362d0a162b203dd19f1556497bf32fe462db4c9828c35905d14",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_bitterman-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 0,
+      "excludedDrawings": 48
+    },
+    {
+      "heroId": "quake_franchise_bitterman",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_bitterman-alpha-correction.png",
+      "sha256": "ae14d894dfb31d3cda0c23eebdda1866eaadfdc8acb363a030c1a1f0faef00f1",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_bitterman-alpha-correction-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "quake_franchise_matthew_kane",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_matthew_kane-native-original.png",
+      "sha256": "dc94f671c8e6f7e3498024c4412cc7b254cf45b058d2e955821dc9c2e432d4d2",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_matthew_kane-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "duke_nukem",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/duke_nukem-native-original.png",
+      "sha256": "a9661783a15778d0cd899124232763321f5832d1a82ccf9d480b074c5d3ab2cb",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/duke_nukem-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "duke_nukem_captain_dylan",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/duke_nukem_captain_dylan-native-original.png",
+      "sha256": "1e46e4525a944b7666733a2686e02541f7a4cae2c1d71c67c536a3330c38c821",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/duke_nukem_captain_dylan-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "duke_nukem_edf_trooper",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/duke_nukem_edf_trooper-native-original.png",
+      "sha256": "9ebe825ce3acb001498b4c429f1d56686ef271352ca01a82f2841cc56a9de27f",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/duke_nukem_edf_trooper-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "marathon_classic_security_officer",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/marathon_classic_security_officer-native-original.png",
+      "sha256": "dd7fb3b4f59e6d1be6ad0d686a9a9caccee3d55846aeb4ec6d979468f706889b",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/marathon_classic_security_officer-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "marathon_classic_robert_blake",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/marathon_classic_robert_blake-native-original.png",
+      "sha256": "9964e08f3ab6d0df8ef9a6cbb3d716e59c2dba2c7fc80fcc38efb3dd0505d9b8",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/marathon_classic_robert_blake-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "marathon_classic_sphtkr_defender",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/marathon_classic_sphtkr_defender-native-original.png",
+      "sha256": "70714ec3a75d4c08d019d6d7dac1c75f567fe543c423f0b7770b9a7844459a8e",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/marathon_classic_sphtkr_defender-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "hexen_baratus",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_baratus-native-original.png",
+      "sha256": "2b52c10968fba368f6db7df5acfbd18781258632bb8464b50b491ef834c080f3",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_baratus-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "hexen_parias",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_parias-native-original.png",
+      "sha256": "f919368e5b35426b3444f604ed534686d7427548d87a4012615147fbfc95b996",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_parias-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "hexen_daedolon",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_daedolon-native-original.png",
+      "sha256": "0b1943ff80972c2e14236ef9b1917c1829d2743d6064bfe162057972871cd1cd",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_daedolon-tool-result.json",
+      "observedDrawings": 47,
+      "retainedDrawings": 44,
+      "excludedDrawings": 3
+    },
+    {
+      "heroId": "hexen_daedolon",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_daedolon-super-correction.png",
+      "sha256": "dc5a25edd82b26e0e74836efadd0d4c88338ac9804cbe6d8bd72b5e598f62889",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_daedolon-super-correction-tool-result.json",
+      "observedDrawings": 4,
+      "retainedDrawings": 4,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "mdk_kurt_hectic",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/mdk_kurt_hectic-native-original.png",
+      "sha256": "bc7c6d77224ec851e1b305f5f6ef124e1df6393fb534ddb6c2caa776bc4107d5",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/mdk_kurt_hectic-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "max_mdk",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/max_mdk-native-original.png",
+      "sha256": "e765aac3ab845d46b7e4fb71a2c6a577e1a73cbbb87b784f948b02f49513a789",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/max_mdk-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 40,
+      "excludedDrawings": 8
+    },
+    {
+      "heroId": "max_mdk",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/max_mdk-gun-actions-correction.png",
+      "sha256": "095bdec9081732444880ce1644c770a815c58586992c13d5718d486814b8f5be",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/max_mdk-gun-actions-correction-tool-result.json",
+      "observedDrawings": 8,
+      "retainedDrawings": 8,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "mdk_dr_hawkins",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/mdk_dr_hawkins-native-original.png",
+      "sha256": "b4dbde40b04b730817d7741f043c43ee63bb036a991333ac5a5349aae1602833",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/mdk_dr_hawkins-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "soldier_of_fortune_john_mullins",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/soldier_of_fortune_john_mullins-native-original.png",
+      "sha256": "653f017f568b3da9daf2600d142e9f3e52ee426231cf77da75f07ee9519fb174",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/soldier_of_fortune_john_mullins-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "soldier_of_fortune_hawk_parsons",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/soldier_of_fortune_hawk_parsons-native-original.png",
+      "sha256": "f0ed68f28d267af092dc73bcd2f08d5f58585810c466ddb9b19caa8f6e247660",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/soldier_of_fortune_hawk_parsons-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "soldier_of_fortune_sam_gladstone",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/soldier_of_fortune_sam_gladstone-native-original.png",
+      "sha256": "ce1a6d64a65585e4925ccaf98c0677e55e6d95c990b111302d0cbe25864811c9",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/soldier_of_fortune_sam_gladstone-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "crysis_nomad",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/crysis_nomad-native-original.png",
+      "sha256": "1d2313cd0ab49c81c0517766e621d7c0818b9c861810f2e28fe66986cdb5546a",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/crysis_nomad-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "crysis_prophet",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/crysis_prophet-native-original.png",
+      "sha256": "bdf6d27abf024dfde900f81e96cb986eb7f384fa5c437be09ccab9ba75eeadc5",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/crysis_prophet-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "crysis_psycho",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/crysis_psycho-native-original.png",
+      "sha256": "5663ca1e306642fa079a7a97ae64e244d66e28cdcc4d05805fd8ec92ee5b8092",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/crysis_psycho-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "fear_point_man",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/fear_point_man-native-original.png",
+      "sha256": "6dc745df93742eefdca858fcd32270297e985e1acb62055c8cc5de440149014c",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/fear_point_man-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "fear_jin_sun_kwon",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/fear_jin_sun_kwon-native-original.png",
+      "sha256": "65b656e87c35ffeadfc4389b84eed5adafbdd31df9040398493fc0dbc9b904c6",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/fear_jin_sun_kwon-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "fear_douglas_holiday",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/fear_douglas_holiday-native-original.png",
+      "sha256": "00bb16ea54fb4b5eb40ef35f8478bc0eadea8345f4c79e36e55d6c23bdd80fba",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/fear_douglas_holiday-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "splinter_cell_sam_fisher",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/splinter_cell_sam_fisher-native-original.png",
+      "sha256": "68c0d24f255e8c925fcd73b1062e3408d398b9c84e71ea2608f6fb6b35777407",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/splinter_cell_sam_fisher-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "splinter_cell_anna_grim",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/splinter_cell_anna_grim-native-original.png",
+      "sha256": "271279b96cc08d0bc1620235aa87d34edef523591ff71b4d3d35be8bd8ef945b",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/splinter_cell_anna_grim-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 40,
+      "excludedDrawings": 8
+    },
+    {
+      "heroId": "splinter_cell_anna_grim",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/splinter_cell_anna_grim-phase10-correction.png",
+      "sha256": "b049c9aa44fe7f6c3e487da347f6f0e7cc64ea33e34d626ce2253cbd37a5bf3a",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/splinter_cell_anna_grim-phase10-correction-tool-result.json",
+      "observedDrawings": 4,
+      "retainedDrawings": 4,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "splinter_cell_anna_grim",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/splinter_cell_anna_grim-phase11-correction.png",
+      "sha256": "3de74daa58f2ec43f0c11cee0fdf0c8e70e9cc046f44f9d128687ec98d5e3152",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/splinter_cell_anna_grim-phase11-correction-tool-result.json",
+      "observedDrawings": 4,
+      "retainedDrawings": 4,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "splinter_cell_isaac_briggs",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/splinter_cell_isaac_briggs-native-original.png",
+      "sha256": "ba846fffebd188021552c82a129ffa990497582731470d37c9ffaf003a297718",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/splinter_cell_isaac_briggs-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "hitman_woa_agent_47",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hitman_woa_agent_47-native-original.png",
+      "sha256": "ab086bea045d40b964d96ecbd8156edfede63143793168f88d8624c65179b057",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hitman_woa_agent_47-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "hitman_woa_diana_burnwood",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hitman_woa_diana_burnwood-native-original.png",
+      "sha256": "d5a7fbaa62b4c78533c350017cbbd3b3d69e8bc9be507e4645e44f3f2436653f",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hitman_woa_diana_burnwood-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "hitman_woa_lucas_grey",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hitman_woa_lucas_grey-native-original.png",
+      "sha256": "a534b6af0b5906acf1d8dcdeb3d3ee89e6670b9cfad9a12087fa8842c44a6690",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hitman_woa_lucas_grey-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "gtfo_woods",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/gtfo_woods-native-original.png",
+      "sha256": "5a9c73856b5d07399f7b9f167120222fdaf445c534a5697e56865a71e47edef0",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/gtfo_woods-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "gtfo_dauda",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/gtfo_dauda-native-original.png",
+      "sha256": "aa7ab34bed231aa6042f39267e41cfea160c58adc1d1a8b3d2b3684ce6dd574e",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/gtfo_dauda-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "gtfo_hackett",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/gtfo_hackett-native-original.png",
+      "sha256": "38404ba46e5e2ca140491cd19bc2239a4211de9184f33c7cae7f8be3cd60b20c",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/gtfo_hackett-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    },
+    {
+      "heroId": "shephard",
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/shephard-native-original.png",
+      "sha256": "3f48190ae1f98ca093016f7875a3c2fa5b12a43acc6013d82d9066d6944d9ef1",
+      "receipt": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/shephard-tool-result.json",
+      "observedDrawings": 48,
+      "retainedDrawings": 48,
+      "excludedDrawings": 0
+    }
+  ]
+}

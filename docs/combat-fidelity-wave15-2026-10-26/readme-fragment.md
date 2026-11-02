@@ -1,0 +1,1 @@
+Lot 15 : 120 personnages en trois groupes de 40, 120 native32, 120 bases16, Sir Daniel180 et six renforts16. 6 036 poses dans 252 PNG ; inventaire 982/127. Clôture validée : build complet avec code de sortie 0, 1885 tests réussis dans 18 groupes. Les 982 PNG suivis ont été vérifiés dans public, dist et les réponses HTTP, puis décodés en libvips et Chromium.

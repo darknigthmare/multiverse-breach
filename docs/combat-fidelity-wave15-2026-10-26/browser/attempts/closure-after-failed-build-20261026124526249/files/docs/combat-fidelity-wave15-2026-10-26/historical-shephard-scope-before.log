@@ -1,0 +1,52 @@
+✖ the outside-batch Shephard legacy Dog call keeps its explicit raw action after Alyx personal-kit corrections (12548.365907ms)
+✖ the outside-batch Shephard legacy Dog call keeps its explicit raw action after Alyx personal-kit corrections (13081.737413ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26816.819093
+
+✖ failing tests:
+
+test at scripts/summonAnimationWave10.test.mjs:323:1
+✖ the outside-batch Shephard legacy Dog call keeps its explicit raw action after Alyx personal-kit corrections (12548.365907ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Barney Calhoun'
+  - 'Dog Breach Assist'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/summonAnimationWave10.test.mjs:326:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Barney Calhoun',
+    expected: 'Dog Breach Assist',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/summonAnimationWave11.test.mjs:325:1
+✖ the outside-batch Shephard legacy Dog call keeps its explicit raw action after Alyx personal-kit corrections (13081.737413ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Barney Calhoun'
+  - 'Dog Breach Assist'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/summonAnimationWave11.test.mjs:328:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Barney Calhoun',
+    expected: 'Dog Breach Assist',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

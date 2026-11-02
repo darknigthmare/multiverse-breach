@@ -1,3 +1,14 @@
+import { absorbBattleItemDamage, previewBattleItemDamage } from './battleItemShield.js';
+import { projectSourceBladeContactWave16, intersectsSourceBladeHurtboxWave16 } from './combat/combatBladeContactWave16.js';
+import { canBeginSourceProtectionWave16, hasSourceProtectionProfileWave16, armSourceProtectionWave16,
+  interceptSourceProtectionHitWave16, advanceSourceCombatStatusesWave16, clearSourceCombatStatusesWave16, noteSourceDamageWave16,
+  isSourceImmobilizedWave16, getPossessedBodyWave16, releaseSourcePossessionWave16,
+  sourceEffectiveSideWave16, beginSourceControlWave16, getPossessedSligActionWave16,
+  projectSourceSligMuzzleWave16, drawSourceCombatStatusWave16 } from './combat/sourceCombatRuntimeWave16.js';
+import { isSourceControlProfileWave16, isSourceControlTargetEligibleWave16 } from './combat/combatControlWave16.js';
+import { getSourceHitSequenceWave16, takeDueSourceHitsWave16, allocateSourceSequenceDamageWave16 } from './combat/combatHitSequenceWave16.js';
+import { isValHealingBurstProfile, healingBurstWithinRange } from './combat/combatHealingBurstWave15.js';
+import { isPhaselockProfile, canPhaselockTarget, applyPhaselockControl, isCombatControlled, tickCombatControl, holdCombatControl, drawCombatControl } from './combat/combatControlWave15.js';
 import { COMBAT_SOURCE_DEFINITIONS_WAVE14 } from './combat/combatSourceDefinitionsWave14.js';
 import { drawCosmeticAtlasFrame, drawPixelSprite } from './renderer';
 import { combatBuffSource } from './combat/characterFormState';
@@ -112,6 +123,7 @@ const createFighter = (hero, side, index, width, groundY) => {
     superBuffMultiplier: 1,
     superGuardSeconds: 0,
     superGuardReduce: 0,
+    combatControl: null,
     abilityCooldowns: { simple: 0, secondary: 0, defense: 0 },
     guardReduction: 0.8,
     ranged: isRangedHero(hero),
@@ -254,6 +266,7 @@ export class EngineFighter {
   triggerSideAction(side, action, index = null) {
     const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
     if (resolvedSide === 'cpu' && this.opponentControl !== 'p2') return false;
+    if (this.getActive(resolvedSide)?.sourceControlWave16?.inputProxy) return false;
     if (action === 'tag') return this.requestTag(resolvedSide, index);
     if (action === 'jump') return this.tryJump(this.getActive(resolvedSide));
     return this.tryAction(resolvedSide, action);
@@ -287,6 +300,7 @@ export class EngineFighter {
   triggerFieldSuper(side = 'player') {
     const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
     if (resolvedSide === 'cpu' && this.opponentControl !== 'p2') return false;
+    if (this.getActive(resolvedSide)?.sourceControlWave16?.inputProxy) return false;
     const state = this.getFieldSuperState(resolvedSide);
     const attacker = this.getActive(resolvedSide);
     const target = this.getOpponent(resolvedSide);
@@ -349,6 +363,7 @@ export class EngineFighter {
   triggerAssist(side = 'player') {
     const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
     if (resolvedSide === 'cpu' && this.opponentControl !== 'p2') return false;
+    if (this.getActive(resolvedSide)?.sourceControlWave16?.inputProxy) return false;
     return this.activateAssist(resolvedSide);
   }
 
@@ -437,7 +452,7 @@ export class EngineFighter {
   }
 
   tryJump(fighter) {
-    if (!this.canAct(fighter) || fighter.y < this.groundY - 2) return false;
+    if (fighter?.sourceControlWave16?.inputProxy || !this.canAct(fighter) || fighter.y < this.groundY - 2) return false;
     fighter.vy = -470;
     fighter.state = 'run';
     this.playSfx('jump');
@@ -448,6 +463,11 @@ export class EngineFighter {
     return Boolean(
       fighter
       && fighter.currentHp > 0
+      && !this.paused
+      && !isCombatControlled(fighter)
+      && !isSourceImmobilizedWave16(fighter)
+      && !(fighter.sourceProtectionWave16?.active && fighter.sourceProtectionWave16.kind === 'yukikaze')
+      && !fighter.sourcePossessionBodyWave16
       && !fighter.action
       && fighter.hitstun <= 0
       && fighter.guardBreak <= 0
@@ -459,8 +479,23 @@ export class EngineFighter {
     );
   }
 
+  getSourceActorsWave16() { return Object.values(this.teams).flatMap(team => team.fighters); }
+  sourceSideWave16(actor) { return sourceEffectiveSideWave16(actor, this.getSourceActorsWave16(), unit => unit.side); }
+  sourceOpponentWave16(actor) {
+    return ['player', 'cpu'].map(side => this.getActive(side)).find(unit => unit?.currentHp > 0
+      && this.sourceSideWave16(unit) !== this.sourceSideWave16(actor)) || null;
+  }
+  sourceIntentActorWave16(side) {
+    const source = this.getActive(side);
+    if (source?.sourceControlWave16?.inputProxy && this.sourceSideWave16(source) !== side) return null;
+    return getPossessedBodyWave16(source, this.getSourceActorsWave16()) || source;
+  }
   tryAction(side, type) {
-    const fighter = this.getActive(side);
+    if (this.paused) return false;
+    const source = this.getActive(side), actors = this.getSourceActorsWave16();
+    const possessed = getPossessedBodyWave16(source, actors);
+    if (possessed && type === 'super') return releaseSourcePossessionWave16(source, actors);
+    const fighter = this.sourceIntentActorWave16(side);
     if (!this.canAct(fighter)) return false;
 
     const specs = {
@@ -469,11 +504,23 @@ export class EngineFighter {
       special: { duration: 0.64, hitAt: 0.28, base: 23, range: fighter.ranged ? 430 : 132, guardDamage: 24, knockback: 245, meterCost: 30 },
       super: this.getPersonalSuperSpec(fighter)
     };
-    const spec = this.getAuthoredActionSpec(fighter, type, specs[type]) || specs[type];
+    const rifle = possessed && type === 'light' ? getPossessedSligActionWave16(fighter) : null;
+    if (possessed && !rifle) return false;
+    const spec = rifle ? { duration: .55, hitAt: .24, base: 9.5, range: 480, guardDamage: 9,
+      knockback: 105, delivery: 'projectile', effect: 'damage', authoredAbility: true, meterCost: 0,
+      sourceSligRifle: true, identity: { ...rifle, sourceAbility: rifle, universe: 'Oddworld', effect: 'damage', delivery: 'projectile' } }
+      : this.getAuthoredActionSpec(fighter, type, specs[type]) || specs[type];
     if (!spec || fighter.meter < (spec.meterCost || 0) || (spec.cooldownSlot && fighter.abilityCooldowns[spec.cooldownSlot] > 0)) return false;
+    if (!canBeginSourceProtectionWave16(fighter, spec.identity)) return false;
+    const sourceControl = isSourceControlProfileWave16(spec.identity);
+    const controlTarget = sourceControl ? this.sourceOpponentWave16(fighter)
+      : isPhaselockProfile(spec.identity) ? this.getFighterPhaselockTarget(fighter, spec.identity) : null;
+    if (sourceControl && (!isSourceControlTargetEligibleWave16(spec.identity, controlTarget)
+      || Math.hypot(controlTarget.x - fighter.x, controlTarget.y - fighter.y) > spec.range)) return false;
+    if (isPhaselockProfile(spec.identity) && !controlTarget) return false;
     // Input may arrive between physics frames after the fighters crossed.
     // Aim once on commitment; an ongoing swing never turns to track a dodge.
-    faceOpponent(fighter, this.getOpponent(side));
+    faceOpponent(fighter, this.sourceOpponentWave16(fighter));
 
     if (type === 'light' && (!spec.effect || spec.effect === 'damage')) {
       fighter.comboStep = fighter.comboWindow > 0 ? (fighter.comboStep % 3) + 1 : 1;
@@ -489,7 +536,18 @@ export class EngineFighter {
     if (spec.cooldownSlot) fighter.abilityCooldowns[spec.cooldownSlot] = spec.cooldown;
     fighter.guarding = false;
     fighter.state = spec.effect && spec.effect !== 'damage' ? 'support' : 'attack';
-    fighter.action = { ...spec, type, facing: fighter.facing, elapsed: 0, resolved: false };
+    fighter.action = { ...spec, type, facing: fighter.facing, elapsed: 0, resolved: false,
+      ...(controlTarget ? { controlTargetId: controlTarget.runtimeId || controlTarget.id } : {}) };
+    if (getSourceHitSequenceWave16(spec.identity)) {
+      const target = this.getOpponent(side);
+      fighter.action.sequenceTargetId = target?.runtimeId || target?.id || null;
+      if (spec.identity.sourceHeroId === 'kirito_sao' && target) {
+        fighter.vx = 0;
+        fighter.action.sourceBladeApproachWave16 = { startX: fighter.x, startY: fighter.y,
+          targetId: fighter.action.sequenceTargetId, facing: fighter.facing, attempted: 0,
+          maxDistance: Math.min(80, Math.max(0, Math.abs(target.x - fighter.x) - 58)) };
+      }
+    }
     if (type === 'super' && ['lunafreya_ff15', 'rebecca_chambers'].includes(spec.identity?.sourceHeroId)) {
       const allies = this.getSupportSuperTargets(fighter, fighter.action);
       const target = [...allies].sort((a, b) => a.currentHp / a.maxHp - b.currentHp / b.maxHp)[0];
@@ -541,6 +599,7 @@ export class EngineFighter {
       targetSide: identity.targetSide,
       excludeSelf: identity.excludeSelf,
       shape: identity.shape,
+      ...(isPhaselockProfile(identity) ? { controlKind: identity.controlKind, controlDuration: identity.controlDuration, controlTurns: identity.controlTurns } : {}),
       maxTargets: identity.maxTargets,
       cooldownSlot: slot,
       cooldown
@@ -553,7 +612,7 @@ export class EngineFighter {
     const profile = resolveCombatAbility(fighter, 'defense');
     const authored = profile?.provenance.identityAuthored;
     fighter.guardReduction = authored ? clamp(profile.guardReduce, 0, 0.95) : 0.8;
-    const canGuard = requested && grounded && this.canAct(fighter);
+    const canGuard = requested && grounded && !fighter.sourceControlWave16?.inputProxy && this.canAct(fighter);
     if (authored && !(profile.effect === 'guard' && profile.targetSide === 'self')) {
       fighter.guarding = false;
       if (canGuard && profile.effect !== 'damage') this.tryAction(side, 'defense');
@@ -588,6 +647,7 @@ export class EngineFighter {
       targetSide: identity.targetSide,
       excludeSelf: identity.excludeSelf,
       shape: identity.shape,
+      ...(isPhaselockProfile(identity) ? { controlKind: identity.controlKind, controlDuration: identity.controlDuration, controlTurns: identity.controlTurns } : {}),
       maxTargets: identity.maxTargets
     };
   }
@@ -596,6 +656,7 @@ export class EngineFighter {
     const team = this.getTeam(side);
     const active = this.getActive(side);
     const opponent = this.getOpponent(side);
+    if (!forced && active?.sourceControlWave16?.inputProxy) return false;
     const nextIndex = Number(index);
     const next = team.fighters[nextIndex];
     if (
@@ -643,6 +704,7 @@ export class EngineFighter {
   }
 
   update(dt) {
+    if (this.paused) return;
     const step = clamp(dt || 0, 0, 0.034);
     if (this.completionReported || this.disposed) return;
     this.elapsed += step;
@@ -716,6 +778,7 @@ export class EngineFighter {
   }
 
   updatePassive(dt) {
+    advanceSourceCombatStatusesWave16(this.getSourceActorsWave16(), dt);
     if (this.announcementTimer > 0) this.announcementTimer -= dt;
     if (this.fieldSuperFlash > 0) this.fieldSuperFlash = Math.max(0, this.fieldSuperFlash - dt);
     if (this.countdown <= 0) {
@@ -745,6 +808,7 @@ export class EngineFighter {
         Object.keys(fighter.abilityCooldowns).forEach(slot => {
           fighter.abilityCooldowns[slot] = Math.max(0, fighter.abilityCooldowns[slot] - dt);
         });
+        if (tickCombatControl(fighter, dt)) return;
         if (fighter.currentHp > 0 && index !== team.activeIndex) {
           fighter.currentHp = Math.min(fighter.maxHp, fighter.currentHp + fighter.maxHp * 0.0045 * dt);
           fighter.guard = Math.min(100, fighter.guard + 18 * dt);
@@ -771,14 +835,16 @@ export class EngineFighter {
   }
 
   updateControlledSide(side, dt) {
-    const fighter = this.getActive(side);
-    const target = this.getOpponent(side);
+    const original = this.getActive(side);
+    const fighter = this.sourceIntentActorWave16(side);
+    const target = fighter && this.sourceOpponentWave16(fighter);
+    if (fighter && fighter !== original && original?.currentHp > 0) this.applyPhysics(original, dt);
     const input = this.inputs[side] || {};
     if (!fighter || fighter.currentHp <= 0) return;
     const grounded = fighter.y >= this.groundY - 2;
     const canInput = this.canAct(fighter);
     if (canInput) faceOpponent(fighter, target);
-    const guard = this.updateGuarding(side, Boolean(input.guard), grounded);
+    const guard = fighter === original && !fighter.sourceControlWave16?.inputProxy && this.updateGuarding(side, Boolean(input.guard), grounded);
     const crouch = Boolean(input.down) && canInput && grounded && !guard;
     fighter.crouching = crouch;
     if (guard) {
@@ -796,8 +862,9 @@ export class EngineFighter {
   }
 
   updateAi(dt) {
-    const fighter = this.getActive('cpu');
-    const target = this.getActive('player');
+    const original = this.getActive('cpu'), fighter = this.sourceIntentActorWave16('cpu');
+    const target = fighter && this.sourceOpponentWave16(fighter);
+    if (fighter && fighter !== original && original?.currentHp > 0) this.applyPhysics(original, dt);
     if (!fighter || fighter.currentHp <= 0 || !target) return;
     if (this.canAct(fighter)) faceOpponent(fighter, target);
     if (this.activateAssist('cpu')) return;
@@ -845,13 +912,15 @@ export class EngineFighter {
       this.applyPhysics(fighter, dt);
       return;
     }
-    faceOpponent(fighter, target);
+    if (fighter.sourceControlWave16?.inputProxy && direction && !target) fighter.facing = Math.sign(direction);
+    else faceOpponent(fighter, target);
     fighter.vx = lerp(fighter.vx, direction * fighter.moveSpeed, clamp(dt * 18, 0, 1));
     if (direction) fighter.state = 'run';
     this.applyPhysics(fighter, dt);
   }
 
   applyPhysics(fighter, dt) {
+    if (holdCombatControl(fighter)) return;
     fighter.vy += 1250 * dt;
     fighter.x = clamp(fighter.x + fighter.vx * dt, 66, this.width - 66);
     fighter.y += fighter.vy * dt;
@@ -865,37 +934,112 @@ export class EngineFighter {
   updateActions(dt) {
     ['player', 'cpu'].forEach(side => {
       const fighter = this.getActive(side);
-      const target = this.getOpponent(side);
+      const target = this.sourceOpponentWave16(fighter);
       if (!fighter?.action || fighter.currentHp <= 0) return;
       fighter.action.elapsed += dt;
       const action = fighter.action;
-      if (!action.resolved && action.elapsed >= action.hitAt) {
-        action.resolved = true;
-        if (action.effect && action.effect !== 'damage') {
-          this.resolveSupportSuper(fighter, action);
-        } else if ((action.authoredAbility || action.type === 'super') ? action.delivery === 'projectile' : action.type === 'special' && fighter.ranged) {
-          this.spawnProjectile(fighter, action);
-        } else if ((action.authoredAbility || action.type === 'super') && action.delivery === 'radial') {
-          const radius = Math.min(action.range, action.areaRadius || action.range);
-          if (target && Math.hypot(target.x - fighter.x, target.y - fighter.y) <= radius) this.applyHit(fighter, target, action);
-        } else if ((action.authoredAbility || action.type === 'super') && action.delivery === 'area') {
-          if (target && Math.abs(target.x - fighter.x) <= action.range && Math.abs(target.y - fighter.y) < 150) this.applyHit(fighter, target, action);
-        } else {
-          this.attemptHit(fighter, target, action);
+      const approach = action.sourceBladeApproachWave16;
+      if (approach && action.elapsed < action.hitAt && !approach.cancelled) {
+        if (!target || (target.runtimeId || target.id) !== approach.targetId || target.currentHp <= 0
+          || Math.hypot(target.x - approach.startX, target.y - approach.startY) > 190) approach.cancelled = true;
+        else {
+          const step = Math.min(200 * dt, Math.max(0, approach.maxDistance - approach.attempted));
+          // Flat Fighter terrain uses its existing boundary and body-spacing
+          // solver below. Never redirect toward a later target position.
+          fighter.x = clamp(fighter.x + approach.facing * step, 66, this.width - 66);
+          approach.attempted += step;
         }
+      }
+      if (action.sourceCounterWave16 && action.elapsed <= .24) {
+        const remaining = Math.max(0, action.counterDashRemaining);
+        const distance = Math.min(remaining, 140 / .24 * dt);
+        fighter.x = clamp(fighter.x + action.facing * distance, 66, this.width - 66);
+        action.counterDashRemaining -= distance;
+      }
+      const sequence = getSourceHitSequenceWave16(action.identity);
+      if (sequence) {
+        for (const hit of takeDueSourceHitsWave16(action, action.identity, action.elapsed)) {
+          if (fighter.action !== action || fighter.currentHp <= 0) break;
+          if (!target || target.currentHp <= 0 || (target.runtimeId || target.id) !== action.sequenceTargetId) {
+            action.sequenceCancelled = true; break;
+          }
+          const fragment = { ...action, elapsed: hit.time, sequenceParent: action, sequenceIndex: hit.index,
+            sequenceFraction: hit.fraction, sequenceFinal: hit.final,
+            guardDamage: action.guardDamage * hit.fraction, knockback: hit.final ? action.knockback : 0 };
+          this.resolveFighterActionImpactWave16(fighter, target, fragment);
+          if (fragment.visualConfirmedContact && !action.visualConfirmedContact)
+            action.visualConfirmedContact = fragment.visualConfirmedContact;
+        }
+        action.resolved = action.sequenceCursor >= sequence.hitCount;
+      } else if (!action.resolved && action.elapsed >= action.hitAt) {
+        action.resolved = true;
+        this.resolveFighterActionImpactWave16(fighter, target, action);
       }
       if (action.elapsed >= action.duration) {
         fighter.action = null;
+        if (sequence && action.identity.postSequenceStunDuration > 0) {
+          fighter.hitstun = Math.max(fighter.hitstun, action.identity.postSequenceStunDuration);
+          fighter.state = 'hit';
+        }
         if (fighter.currentHp > 0 && fighter.hitstun <= 0) fighter.state = fighter.guarding ? 'defense' : 'idle';
       }
     });
+  }
+
+  resolveFighterActionImpactWave16(fighter, target, action) {
+    if (action.identity?.sourceHeroId === 'kirito_sao' && action.sequenceParent) {
+      const approach = action.sequenceParent.sourceBladeApproachWave16;
+      const blade = projectSourceBladeContactWave16(fighter, action.identity, action.elapsed, 142);
+      const box = target && { left: target.x - 32, right: target.x + 32,
+        top: target.y - (target.crouching ? 60 : 122), bottom: target.y + (target.crouching ? -4 : 10) };
+      const overlap = !!target && !!approach && !approach.cancelled
+        && Math.hypot(target.x - approach.startX, target.y - approach.startY) <= 190
+        && intersectsSourceBladeHurtboxWave16(blade, box);
+      (action.sequenceParent.sourceBladeContactsWave16 ||= []).push({ index: action.sequenceIndex,
+        blade, hurtbox: box, physicalOverlap: overlap, acceptedDamage: false });
+      if (!overlap) return false;
+    }
+    if (action.sourceCounterWave16 && (!target || (target.runtimeId || target.id) !== action.counterTargetId)) return false;
+    if (isSourceControlProfileWave16(action.identity)) {
+      if (!target || (target.runtimeId || target.id) !== action.controlTargetId
+        || Math.hypot(target.x - fighter.x, target.y - fighter.y) > action.range
+        || !beginSourceControlWave16(fighter, target, action.identity, { hostile: true, channelCompleted: true })) return false;
+      action.visualConfirmedContact = { confirmed: true, control: action.identity.controlKind,
+        x: target.x, y: target.y, targetId: target.runtimeId || target.id };
+      return true;
+    }
+    if (isPhaselockProfile(action.identity)) return this.resolveFighterPhaselock(fighter, action);
+    if (action.effect && action.effect !== 'damage') return this.resolveSupportSuper(fighter, action);
+    if ((action.authoredAbility || action.type === 'super') ? action.delivery === 'projectile' : action.type === 'special' && fighter.ranged)
+      return this.spawnProjectile(fighter, action);
+    if ((action.authoredAbility || action.type === 'super') && action.delivery === 'radial') {
+      const radius = Math.min(action.range, action.areaRadius || action.range);
+      if (target && Math.hypot(target.x - fighter.x, target.y - fighter.y) <= radius) return this.applyHit(fighter, target, action);
+    } else if ((action.authoredAbility || action.type === 'super') && action.delivery === 'area') {
+      if (target && Math.abs(target.x - fighter.x) <= action.range && Math.abs(target.y - fighter.y) < 150) return this.applyHit(fighter, target, action);
+    } else return this.attemptHit(fighter, target, action);
+    return false;
+  }
+
+  getFighterPhaselockTarget(fighter, profile, lockedId = null) {
+    const target = this.getOpponent(fighter.side);
+    if (lockedId && (target?.runtimeId || target?.id) !== lockedId) return null;
+    return canPhaselockTarget(fighter, target, profile, { renderHeight: 142 }) ? target : null;
+  }
+
+  resolveFighterPhaselock(fighter, action) {
+    const target = this.getFighterPhaselockTarget(fighter, action.identity, action.controlTargetId || '__no-accepted-target__');
+    if (!target || !applyPhaselockControl(target, action.identity, fighter, { lift: 64 })) return false;
+    action.visualConfirmedContact = { confirmed: true, control: 'phaselock', x: target.x, y: target.y, targetId: target.runtimeId || target.id };
+    return true;
   }
 
   getSupportSuperTargets(fighter, action) {
     const effect = action.effect;
     const targetSide = action.targetSide === 'enemy' ? (fighter.side === 'player' ? 'cpu' : 'player') : fighter.side;
     const candidates = action.targetSide === 'self' ? [fighter] : this.getTeam(targetSide).fighters;
-    const eligible = candidates.filter(member => !(action.excludeSelf && member === fighter) && (effect === 'revive' ? member.currentHp <= 0 : member.currentHp > 0));
+    const eligible = candidates.filter(member => !(action.excludeSelf && member === fighter) && (effect === 'revive' ? member.currentHp <= 0 : member.currentHp > 0)
+      && (!isValHealingBurstProfile(action.identity) || healingBurstWithinRange(fighter, member, action.identity)));
     return ['group', 'multi', 'area'].includes(action.shape)
       ? eligible.slice(0, action.maxTargets || eligible.length)
       : eligible.sort((a, b) => a.currentHp / a.maxHp - b.currentHp / b.maxHp).slice(0, 1);
@@ -906,6 +1050,9 @@ export class EngineFighter {
     const targets = this.getSupportSuperTargets(fighter, action);
     targets.forEach(target => {
       if (effect === 'heal') target.currentHp = Math.min(target.maxHp, target.currentHp + target.maxHp * clamp(finiteOr(action.healRatio, 0.3), 0, 0.6));
+      if (effect === 'guard' && hasSourceProtectionProfileWave16(action.identity)) {
+        armSourceProtectionWave16(fighter, action.identity, target); return;
+      }
       if (effect === 'guard') {
         target.guard = 100;
         target.guardBreak = 0;
@@ -924,6 +1071,7 @@ export class EngineFighter {
         target.invulnerable = Math.max(target.invulnerable, 0.65);
       }
       if (effect === 'revive') {
+        target.combatControl = null;
         target.currentHp = target.maxHp * clamp(finiteOr(action.reviveRatio, 0.35), 0.1, 0.6);
         target.koDelay = 0;
         target.state = 'idle';
@@ -937,26 +1085,48 @@ export class EngineFighter {
     const direction = action.facing ?? fighter.facing;
     const nativeVisual = action.type === 'super' && supportsTrackedCharacterSuperVisual(action.identity);
     const radius = action.type === 'super' ? 22 : 13;
-    const target = nativeVisual ? this.getOpponent(fighter.side) : null;
+    const target = nativeVisual || action.sourceSligRifle ? this.sourceOpponentWave16(fighter) : null;
     const visual = nativeVisual ? getCharacterSuperVisualState({ actor: fighter, profile: action.identity, action, target, height: 142 }) : null;
     // Authored weapon families launch from their measured native barrel; earlier
     // projectile families retain their existing origin and lifetime.
-    const nativeMuzzle = ['native-wave9', 'native-wave10', 'native-wave11', 'native-wave12', 'native-wave13', 'native-wave14'].includes(visual?.family) && visual.nativeMuzzleActive ? visual.origin : null;
-    const origin = nativeMuzzle || { x: fighter.x + direction * 58, y: fighter.y - 64 };
+    const nativeMuzzle = ['native-wave9', 'native-wave10', 'native-wave11', 'native-wave12', 'native-wave13', 'native-wave14', 'native-wave15', 'native-wave16'].includes(visual?.family) && visual.nativeMuzzleActive ? visual.origin : null;
+    const sourceMuzzle = action.sourceSligRifle ? projectSourceSligMuzzleWave16(fighter, 142, 2) : null;
+    const origin = sourceMuzzle || nativeMuzzle || { x: fighter.x + direction * 58, y: fighter.y - 64 };
     const originDistance = (origin.x - fighter.x) * direction;
+    let vx = direction * 520, vy = 0;
+    let life = action.type === 'super' || action.authoredAbility ? Math.max(0, action.range - originDistance) / 520 : 1.25;
+    const aimedVortessence = visual?.family === 'native-wave15' && visual.heroId === 'vortigaunt_ally'
+      && visual.kind === 'vortessence-hands' && nativeMuzzle && target?.currentHp > 0
+      && (target.x - origin.x) * direction > 0;
+    const aimedSourceBt = visual?.family === 'native-wave16' && visual.heroId === 'bt_7274_tf2'
+      && nativeMuzzle && target?.currentHp > 0 && (target.x - origin.x) * direction > 0;
+    if (aimedVortessence || aimedSourceBt) {
+      // This native pose releases above the head. Commit a real, constant
+      // velocity toward the current torso instead of firing over that body.
+      // Its path ends at the declared circle around the original caster;
+      // neither later target movement nor caster movement can steer it.
+      const dx = target.x - origin.x, dy = target.y - (target.crouching ? 32 : 56) - origin.y;
+      const distance = Math.max(.001, Math.hypot(dx, dy));
+      vx = dx / distance * 520; vy = dy / distance * 520;
+      const ox = origin.x - fighter.x, oy = origin.y - fighter.y;
+      const along = (ox * vx + oy * vy) / 520;
+      life = Math.max(0, -along + Math.sqrt(Math.max(0, along * along + action.range * action.range - ox * ox - oy * oy))) / 520;
+    }
     this.projectiles.push({
-      side: fighter.side,
+      side: this.sourceSideWave16(fighter),
+      sourceSligRifle: !!action.sourceSligRifle,
       owner: fighter,
       originX: fighter.x,
       maxRange: action.type === 'super' || action.authoredAbility ? action.range : null,
       x: origin.x,
       y: origin.y,
-      vx: direction * 520,
+      vx,
+      ...(aimedVortessence || aimedSourceBt ? { vy, rangeOriginY: fighter.y } : {}),
       radius,
       ...(nativeVisual ? { visualElapsed: 0, visualOriginX: origin.x,
         visualFlightDistance: Math.max(1, Math.min(action.range, ((target?.x ?? fighter.x + direction * action.range) - fighter.x) * direction) - originDistance - radius - 32) } : {}),
-      life: action.type === 'super' || action.authoredAbility ? Math.max(0, action.range - originDistance) / 520 : 1.25,
-      action: { ...action, range: 34 },
+      life,
+      action: { ...action, range: 34, sourceCommittedSideWave16: this.sourceSideWave16(fighter) },
       color
     });
     this.particles.add(nativeMuzzle ? origin.x : fighter.x, nativeMuzzle ? origin.y : fighter.y - 62, direction * 5, 0, color, 6, 34, 'laser_line');
@@ -971,14 +1141,18 @@ export class EngineFighter {
       const projectile = this.projectiles[index];
       if (projectile.visualElapsed != null) projectile.visualElapsed += Math.max(0, Math.min(dt, projectile.life));
       projectile.x += projectile.vx * Math.min(dt, Math.max(0, projectile.life));
+      projectile.y += (projectile.vy || 0) * Math.min(dt, Math.max(0, projectile.life));
       projectile.life -= dt;
-      const target = this.getOpponent(projectile.side);
+      const target = ['player', 'cpu'].map(side => this.getActive(side)).find(unit => unit?.currentHp > 0
+        && unit !== projectile.owner && this.sourceSideWave16(unit) !== projectile.side);
       const targetCenterY = target?.y - (target?.crouching ? 32 : 56);
       const targetHalfHeight = target?.crouching ? 28 : 66;
       if (
         target
         && target.currentHp > 0
-        && (!projectile.maxRange || Math.abs(target.x - projectile.originX) <= projectile.maxRange)
+        && (!projectile.maxRange || (Number.isFinite(projectile.rangeOriginY)
+          ? Math.hypot(target.x - projectile.originX, target.y - projectile.rangeOriginY)
+          : Math.abs(target.x - projectile.originX)) <= projectile.maxRange)
         && Math.abs(projectile.x - target.x) < projectile.radius + 32
         && Math.abs(projectile.y - targetCenterY) < targetHalfHeight
       ) {
@@ -1007,7 +1181,14 @@ export class EngineFighter {
   }
 
   applyHit(attacker, target, action, projectile = false, impactDirection = null) {
-    if (this.finished || this.roundTransition || this.disposed || target.invulnerable > 0 || target.currentHp <= 0) return;
+    if (this.finished || this.roundTransition || this.disposed || target.invulnerable > 0 || target.currentHp <= 0 || !(action.base > 0)) return;
+    const sourceAttackSideWave16 = action.sourceCommittedSideWave16 || this.sourceSideWave16(attacker);
+    if (sourceAttackSideWave16 === this.sourceSideWave16(target)) return;
+    if (target.sourceProtectionWave16?.kind === 'mugman-super-art-ii' && interceptSourceProtectionHitWave16(target, attacker, action.base, {
+      delivery: projectile ? 'projectile' : action.delivery === 'beam' ? 'beam' : 'melee',
+      attackKind: action.type, isThrow: action.type === 'throw', isGrab: action.type === 'grab',
+      onCounter: counter => this.beginFighterSourceCounterWave16(target, attacker, counter)
+    })) return;
     // A travelling projectile keeps its own incoming direction even after its
     // owner turns, jumps across the target, or tags out before impact.
     const hitDirection = impactDirection || Math.sign(target.x - attacker.x) || action.facing || attacker.facing;
@@ -1025,9 +1206,24 @@ export class EngineFighter {
     const buffScale = attacker.superBuffSeconds > 0 ? attacker.superBuffMultiplier : 1;
     const guardScale = target.superGuardSeconds > 0 ? 1 - target.superGuardReduce : 1;
     let damage = Math.max(3, action.base * attackScale * defenseScale * cpuScale * buffScale * guardScale);
+    const sequencePotential = damage;
+    if (blocked) damage *= 1 - clamp(finiteOr(target.guardReduction, 0.8), 0, 0.95);
+    damage = action.sequenceParent
+      ? allocateSourceSequenceDamageWave16(action.sequenceParent, target.runtimeId || target.id,
+        sequencePotential, damage * action.sequenceFraction, 10)
+      : Math.round(damage * 10) / 10;
+    if (!(damage > 0)) return 0;
+    const sourceAfterItemPreviewWave16 = target.battleItemShield > 0 ? previewBattleItemDamage(target, damage) : damage;
+    if (target.sourceProtectionWave16?.kind !== 'mugman-super-art-ii'
+      && interceptSourceProtectionHitWave16(target, attacker, sourceAfterItemPreviewWave16, {
+        delivery: projectile ? 'projectile' : action.delivery === 'beam' ? 'beam' : 'melee',
+        attackKind: action.type, isThrow: action.type === 'throw', isGrab: action.type === 'grab',
+        onCounter: counter => this.beginFighterSourceCounterWave16(target, attacker, counter)
+      })) return 0;
+    if (target.battleItemShield > 0) damage = absorbBattleItemDamage(target, damage);
+    if (!(damage > 0)) return 0;
 
     if (blocked) {
-      damage *= 1 - clamp(finiteOr(target.guardReduction, 0.8), 0, 0.95);
       target.guard = Math.max(0, target.guard - action.guardDamage);
       target.vx = hitDirection * action.knockback * 0.26;
       this.playSfx('shield');
@@ -1044,7 +1240,7 @@ export class EngineFighter {
       target.guarding = false;
       target.crouching = false;
       target.action = null;
-      target.hitstun = action.type === 'super'
+      target.hitstun = action.sequenceParent && !action.sequenceFinal ? .18 : action.type === 'super'
         ? 0.78
         : action.type === 'heavy'
           ? 0.42
@@ -1053,14 +1249,18 @@ export class EngineFighter {
             : 0.24;
       target.state = 'hit';
       target.vx = hitDirection * action.knockback;
-      target.vy = action.type === 'super' ? -235 : action.type === 'heavy' ? -130 : -60;
+      target.vy = action.sequenceParent && !action.sequenceFinal ? 0 : action.type === 'super' ? -235 : action.type === 'heavy' ? -130 : -60;
       this.playSfx(projectile ? 'shoot' : 'hit');
       this.spawnBurst(target.x, target.y - 60, attacker.secondaryColor || '#ff5a36', action.type === 'super' ? 26 : 12);
       this.hitStop = action.type === 'super' ? 0.1 : action.type === 'heavy' ? 0.055 : 0.025;
     }
 
-    damage = Math.round(damage * 10) / 10;
     target.currentHp = Math.max(0, target.currentHp - damage);
+    if (damage > 0) noteSourceDamageWave16(target);
+    if (action.identity?.sourceHeroId === 'kirito_sao' && action.sequenceParent) {
+      const contact = action.sequenceParent.sourceBladeContactsWave16?.findLast(entry => entry.index === action.sequenceIndex);
+      if (contact) { contact.acceptedDamage = damage > 0; contact.damage = damage; }
+    }
     if (!projectile && damage > 0 && action.type === 'super' && supportsConfirmedCharacterSuperContact(action.identity)
       && !action.visualConfirmedContact) {
       // Cosmetic contact follows this accepted hit, including its original
@@ -1070,11 +1270,11 @@ export class EngineFighter {
     }
     attacker.meter = clamp(attacker.meter + damage * (blocked ? 0.42 : 0.82), 0, 100);
     target.meter = clamp(target.meter + damage * 0.55, 0, 100);
-    this.stats[attacker.side].damage += damage;
+    this.stats[sourceAttackSideWave16].damage += damage;
     this.stats[target.side].taken += damage;
-    const attackerFieldState = this.getFieldSuperState(attacker.side);
+    const attackerFieldState = this.getFieldSuperState(sourceAttackSideWave16);
     if (attackerFieldState.super && !attackerFieldState.used) {
-      this.setFieldSuperState(attacker.side, {
+      this.setFieldSuperState(sourceAttackSideWave16, {
         charge: clamp(attackerFieldState.charge + damage * 0.3, 0, 100)
       });
     }
@@ -1084,7 +1284,7 @@ export class EngineFighter {
         charge: clamp(targetFieldState.charge + damage * 0.65, 0, 100)
       });
     }
-    const attackerAssistState = this.getAssistState(attacker.side);
+    const attackerAssistState = this.getAssistState(sourceAttackSideWave16);
     if (attackerAssistState.assist && !attackerAssistState.used) {
       attackerAssistState.charge = clamp(
         attackerAssistState.charge + damage * 0.45,
@@ -1100,28 +1300,42 @@ export class EngineFighter {
         100
       );
     }
-    this.stats[attacker.side].currentCombo += 1;
-    this.stats[attacker.side].comboTimer = 0.82;
-    this.stats[attacker.side].maxCombo = Math.max(this.stats[attacker.side].maxCombo, this.stats[attacker.side].currentCombo);
+    this.stats[sourceAttackSideWave16].currentCombo += 1;
+    this.stats[sourceAttackSideWave16].comboTimer = 0.82;
+    this.stats[sourceAttackSideWave16].maxCombo = Math.max(this.stats[sourceAttackSideWave16].maxCombo, this.stats[sourceAttackSideWave16].currentCombo);
     this.particles.add(target.x - 14, target.y - 100, 0, -1.1, blocked ? '#7df9ff' : '#ffffff', 5, 38, 'text', blocked ? 'GUARD' : `${Math.round(damage)}`);
 
     if (target.currentHp <= 0) {
+      target.combatControl = null;
       target.state = 'dead';
       target.koDelay = 0.9;
       target.vx = hitDirection * Math.max(action.knockback, 250);
       target.vy = -210;
-      this.stats[attacker.side].kos += 1;
+      this.stats[sourceAttackSideWave16].kos += 1;
       this.announcement = 'K.O.';
       this.announcementTimer = 1;
       this.playSfx('defeat');
-      this.triggerKoCosmetic(attacker.side, target.x, target.y - 58);
+      this.triggerKoCosmetic(sourceAttackSideWave16, target.x, target.y - 58);
     }
+  }
+
+  beginFighterSourceCounterWave16(fighter, target, counter) {
+    if (fighter.currentHp <= 0 || target.currentHp <= 0) return false;
+    const identity = { ...resolveCombatAbility(fighter, 'special'), counterTriggered: true,
+      effect: 'damage', delivery: 'melee', targetSide: 'enemy' };
+    fighter.facing = Math.sign(target.x - fighter.x) || fighter.facing;
+    fighter.action = { type: 'super', identity, sourceCounterWave16: true,
+      counterTargetId: target.runtimeId || target.id, counterDashRemaining: Math.min(140, Math.max(0, Math.abs(target.x - fighter.x) - 64)),
+      elapsed: 0, resolved: false, duration: .8, hitAt: .35, range: 190, delivery: 'melee', effect: 'damage',
+      facing: fighter.facing, base: 9.5 * counter.multiplier, guardDamage: 24, knockback: 245 };
+    fighter.state = 'attack'; fighter.hitstun = 0;
+    return true;
   }
 
   resolveSpacing() {
     const player = this.getActive('player');
     const cpu = this.getActive('cpu');
-    if (!player || !cpu || player.currentHp <= 0 || cpu.currentHp <= 0) return;
+    if (!player || !cpu || player.currentHp <= 0 || cpu.currentHp <= 0 || isCombatControlled(player) || isCombatControlled(cpu)) return;
     const delta = cpu.x - player.x;
     const minDistance = 62;
     if (Math.abs(delta) < minDistance && Math.abs(player.y - cpu.y) < 82) {
@@ -1164,6 +1378,7 @@ export class EngineFighter {
   }
 
   freezeCombat() {
+    clearSourceCombatStatusesWave16(this.getSourceActorsWave16(), 'round-complete');
     this.projectiles = [];
     this.projectileVisualImpacts = [];
     this.hitStop = 0;
@@ -1174,6 +1389,7 @@ export class EngineFighter {
     this.playerInput = this.inputs.player;
     Object.values(this.teams).forEach(team => team.fighters.forEach(fighter => {
       fighter.action = null;
+      fighter.combatControl = null;
       fighter.vx = 0;
       fighter.vy = 0;
       fighter.guarding = false;
@@ -1496,6 +1712,8 @@ export class EngineFighter {
       const sprite = catastrophe ? { ...fighter, presentationPhase: 'super', presentationProgress: catastrophe.actionProgress } : fighter;
       drawPixelSprite(ctx, catastrophe?.x ?? fighter.x, catastrophe?.feetY ?? fighter.y, sprite, animTime, catastrophe ? (fighter.action.facing ?? fighter.facing) : fighter.facing, 142, 'melee');
       ctx.restore();
+      drawCombatControl(ctx, fighter, 142);
+      drawSourceCombatStatusWave16(ctx, fighter, 142);
     });
     if (this.fieldSuperFlash > 0) {
       ctx.save();

@@ -1,0 +1,995 @@
+{
+  "schemaVersion": 2,
+  "passed": true,
+  "preliminary": false,
+  "reviewedAt": "2026-11-01T00:44:06.043Z",
+  "reviewer": "/root/final_tactics_review",
+  "report": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/browser/tactics-engine-contracts.json",
+    "sha256": "6713f86da1ff930962faac240f70d78ee574b9c908b48039825046b1a203ca44",
+    "bytes": 7281345
+  },
+  "contactManifest": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/browser/tactics-engine-contact-pages-final.json",
+    "sha256": "95d077b9bb474b7c79edcbbdbb1b762d3055054fe87a0e7dcde3c5e546e78cde",
+    "bytes": 45667
+  },
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/production-freeze.json",
+    "sha256": "d270f1a8c8b66fc6f5f0224d98a5033b3deff5a1ed890816947242e7faf1768c",
+    "bytes": 2258994
+  },
+  "actualCapturesInspected": 23,
+  "actualContactSheetsViewed": 23,
+  "reviewedSourceCaptures": 57,
+  "reviewedRuntimeFixtures": 240,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-0.png",
+      "sha256": "6ed48ff76fcf054254a72a78c26943282dc2c7d28d5600c931108d65da14f820",
+      "bytes": 346408,
+      "inspected": true,
+      "observation": "Akane release and recovery are visible in both camps on the skybridge lower deck; blue target ellipses and the stair/overpass geometry remain readable."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-1.png",
+      "sha256": "b2abeba91ae7ea55ff3e6da4a7e4dea0a5c53cb32e85854d495b4667ba5d49e5",
+      "bytes": 469517,
+      "inspected": true,
+      "observation": "Aki remains on the lower surface while the white Fox Devil head appears only in the release captures; recovery does not retain a duplicate entity."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-2.png",
+      "sha256": "b4bfa1c72741f90b8f112f1bf0f4fc129bf0054fe514242f0e458f87e8fb45f2",
+      "bytes": 373538,
+      "inspected": true,
+      "observation": "Aya's blue-white mitochondrial release is distinct from the standing recovery sprite in both camps; supporting grid surfaces remain aligned."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-3.png",
+      "sha256": "bcd862ab1ff4f33a1798ed78ec5a604c96749502fda7730582ace424e61605fa",
+      "bytes": 329520,
+      "inspected": true,
+      "observation": "BT-7274 is larger than human fixtures, feet visible on the training grid; muzzle flash appears at rifle tip in both release captures."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-4.png",
+      "sha256": "28a42bcb46e576395d2851a68178017aafcf90798a19096bc2c8e1caeebf3f98",
+      "bytes": 363705,
+      "inspected": true,
+      "observation": "Chalice opponent lifecycle samples show the small autonomous winged shield beside the body without replacing the body sprite; release, guard, absorption and recovery differ."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-5.png",
+      "sha256": "1727c7bc9266929dd5ae1c9e2592e0d6c5f1746a3fb15b3222e53c2c974e0f8e",
+      "bytes": 368478,
+      "inspected": true,
+      "observation": "Chalice player samples preserve the same lower-deck position and separate winged shield lifecycle, with the target ellipse retained only in the relevant state."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-6.png",
+      "sha256": "fc8d234fbc34536e8e13a9dba6b1fe5a48fbe2b3e4a8752f94d9e43e22750168",
+      "bytes": 169706,
+      "inspected": true,
+      "observation": "Mugman's blue-white body is visibly transformed during release and returns to its normal cup silhouette at recovery; no second persistent body appears."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-7.png",
+      "sha256": "bf34622b5aa50a81dfe757ee3b9ab04cdfe6149e71ed9b0429906569b7999741",
+      "bytes": 365682,
+      "inspected": true,
+      "observation": "Hakumen's white armor and long blade are visible over the lower deck; the blade extends left beyond the actor while remaining inside the capture, with the local guard cue around the actor."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-8.png",
+      "sha256": "dde30a69e375d3b315ed151c29a0d61e7a7f0596ce51b55e326426f193eee600",
+      "bytes": 347372,
+      "inspected": true,
+      "observation": "Senua's dark-haired human silhouette and sword release differ from recovery in both camp samples; feet remain on the lower deck rather than the raised overpass."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-9.png",
+      "sha256": "eeb8c63f7f7fb09f707c048a71935da517dea4ba2aca2e04b33ff8dec60de866",
+      "bytes": 197277,
+      "inspected": true,
+      "observation": "Kirito's two-blade attack posture is distinct from recovery; both blades and the adjacent target remain visible inside the training-grid capture."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-10.png",
+      "sha256": "11c4d6840d759880eca8e6077763f39731c42989588212e30c8d3121fa633e86",
+      "bytes": 403514,
+      "inspected": true,
+      "observation": "Abe and the historical brown Slig are separate actors; possession, proxy rifle and release samples preserve both bodies and lower-deck grid placement."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-11.png",
+      "sha256": "c3c9633bed0efa903647d9e83cc95f8025856be41bcc34b78828e37baba7a389",
+      "bytes": 202152,
+      "inspected": true,
+      "observation": "The two Abe player samples preserve the separate blue caller and brown Slig after recovery, with the proxy marked separately in the active-state capture."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-12.png",
+      "sha256": "4fa1979c2cb6dec8e0f7fbd20fb923369858eff1d5385a4dae9951ea25d1dd8f",
+      "bytes": 785563,
+      "inspected": true,
+      "observation": "Overview contact page contains all labelled 120-character/two-camp miniatures; used to inspect broad layout continuity only, not individual pixel or timing correctness."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-13.png",
+      "sha256": "0bb9ba369735a8ef310a2697a1f045ba9e1ca67140c77ac39212ce53bdd56c64",
+      "bytes": 701069,
+      "inspected": true,
+      "observation": "Focus page 0 shows Crash spin, Coco laptop, Aku mask, Jim worm whip, Peter transformed body, Princess, Guybrush/Elaine/Stan support gestures and Cuphead/Mugman/Chalice distinct releases in paired camps."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-14.png",
+      "sha256": "56dc05c79e50e566907a91e67bf7458d1124a964cb560e8869b3dc70dab050e4",
+      "bytes": 698643,
+      "inspected": true,
+      "observation": "Focus page 1 shows Deponia and Sam & Max bodies, Jet Set Radio skates and poses, Abe/Slig separation, Munch device and Stranger firearm; paired releases keep bodies within crop."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-15.png",
+      "sha256": "ec3f44716704865959725ff90270a6d6e07b8b612c53d8a6342be526d26b6269",
+      "bytes": 686303,
+      "inspected": true,
+      "observation": "Focus page 2 shows Meat Boy/Bandage/Brownie body colors, BIT.TRIP rainbow accents, Sackboy/Toggle silhouettes, Wallace/Gromit/Wendolene support gestures and Gex duo; no missing body among displayed pairs."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-16.png",
+      "sha256": "1abfa8ca96e70bfec153d07df2e38f00321e80f91623d0c0d9225de71cbb737a",
+      "bytes": 739812,
+      "inspected": true,
+      "observation": "Focus page 3 distinguishes fish/dog support poses from Killzone/Titanfall firearm releases; BT is visibly larger than the humans and its rifle flash is retained."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-17.png",
+      "sha256": "dd8496d94c03b8237632fc19de7b02984cff1b7c1d09a1fde673ced1aa2e046c",
+      "bytes": 700391,
+      "inspected": true,
+      "observation": "Focus page 4 shows Panam and Wolfenstein firearms, B.J. beam, yellow/orange ReBoot effects, Senua sword and Daikatana blade/gun poses; release bodies remain visible in both camp pairs."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-18.png",
+      "sha256": "7bd9252bf6cb403d86f8c7a16868ec9548da5d46616c13e99d559e7a79f22277",
+      "bytes": 703318,
+      "inspected": true,
+      "observation": "Focus page 5 distinguishes Dead Rising improvised weapons, Surge exosuits, Rocky punch and Darkness shadow cue from support gestures; Aya's blue-white effect is visible in its pair."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-19.png",
+      "sha256": "58e37c422fdbd621ddc9a0351deee97ad005e3486bbb5a6acb3c750ad4fcb09d",
+      "bytes": 697845,
+      "inspected": true,
+      "observation": "Focus page 6 shows Daniel/Maeda pistol releases, Tachikoma's blue multi-leg body, Houston support, Apollo punch, Tsubaki blade and Hakumen long blade; paired frames remain legible."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-20.png",
+      "sha256": "24ae07f2a2e34ed487c6e223ea50a529ca4e0e536507a9fa340946a267a77182",
+      "bytes": 694306,
+      "inspected": true,
+      "observation": "Focus page 7 shows Cowboy Bebop firearms, Elric armor and transmutation/support gesture, Mustang flame cue, Psycho-Pass aiming, Frieren/Fern spells and Stark/Saitama physical poses."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-21.png",
+      "sha256": "f586bb236ad68b9bbc94148ba673ec47a4cc9703cba411b202249c9914004491",
+      "bytes": 738220,
+      "inspected": true,
+      "observation": "Focus page 8 shows Genos yellow beams, Tatsumaki green aura, Kirito/Asuna/Klein blades, Chainsaw Man/Power silhouettes, Fox Devil head, MEIKO/KAITO microphones and Oracle support."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-22.png",
+      "sha256": "4fa1e127047c6d8951242f0b1cb557d44be95f0b2560358861be19ce49c7dcf7",
+      "bytes": 696968,
+      "inspected": true,
+      "observation": "Focus page 9 shows Atom Eve pink aura, Robot firearm, Wakfu blue/green magic and staff, Murder Drones distinct silhouettes and Helluva Boss weapons; all paired releases show a body."
+    }
+  ],
+  "sourceCaptures": [
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/akane_tsunemori-opponent-recovery.png",
+      "sha256": "38e1d414c7c86d0a50a5391cc034c134dc81cb53607891d99ce60905c2b40d24",
+      "bytes": 178725,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-0.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/akane_tsunemori-opponent-release.png",
+      "sha256": "fc74743c1df2b070445df7c0789cef6f27dff1d0cc94f72d9215847c3d7786e3",
+      "bytes": 179340,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-0.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/akane_tsunemori-player-recovery.png",
+      "sha256": "2cb7ac573d0cf96991f203bba4b67bc08d93fc3dd649a6ba6424e4b2184877db",
+      "bytes": 183630,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-0.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/akane_tsunemori-player-release.png",
+      "sha256": "2cf00b109b265a6db75c3617da16e94295c265fccdeb4e7865c4cc6560c6a408",
+      "bytes": 184329,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-0.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/aki_hayakawa-opponent-recovery.png",
+      "sha256": "bb2aeaf2a055b211a965b1e4ecb6e928aaea2be497fc66a6c30078e837c698e3",
+      "bytes": 177080,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-1.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/aki_hayakawa-opponent-release.png",
+      "sha256": "32cdc786528064437f2b0051e7e2fa7c5fc11cdb5e2118d5c71dda117b2c2af9",
+      "bytes": 222468,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-1.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/aki_hayakawa-player-recovery.png",
+      "sha256": "5d97a4bbae844d5c93b6712db12af78e9544cd8f05299f93d2bcebfb06fbe2bc",
+      "bytes": 182658,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-1.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/aki_hayakawa-player-release.png",
+      "sha256": "eb05b9d770f6454c6645778a1ae4d617995163446c3eb38db309135056783839",
+      "bytes": 230990,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-1.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/aya_brea-opponent-recovery.png",
+      "sha256": "f040802c8a52b422a2cbe477949d3ffc56848aa3648eae96b05a4ae45ce12609",
+      "bytes": 178793,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-2.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/aya_brea-opponent-release.png",
+      "sha256": "472cbcf22a857f708684b519e87e3500490764298a2de1cece9cf5aa025b8e43",
+      "bytes": 181992,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-2.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/aya_brea-player-recovery.png",
+      "sha256": "4b6fe59e8bf7aa311b59378acc6b7859994a075560f33e2634b61316d414c76d",
+      "bytes": 182349,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-2.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/aya_brea-player-release.png",
+      "sha256": "2c1518bb61c49e75b0b7e5428707fd47e7903d01fded55cf7f93bacc96bce46b",
+      "bytes": 185224,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-2.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/bt_7274_tf2-opponent-recovery.png",
+      "sha256": "e973dddf8911a823fe5de297f4a3ab56e080f73baa40b516f897d5ccc2a58663",
+      "bytes": 116509,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-3.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/bt_7274_tf2-opponent-release.png",
+      "sha256": "f81a039c33e6275926feb0f9ab6fedd0bd0f7c4d69895111907f769cb175758d",
+      "bytes": 129881,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-3.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/bt_7274_tf2-player-recovery.png",
+      "sha256": "92508da22a451a926b2720ed0ac5aa03d5d8df2f901e5cbe2a977cf4b6a8994e",
+      "bytes": 118651,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-3.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/bt_7274_tf2-player-release.png",
+      "sha256": "9a29dd116116732cc0db9901f290529201cc3c9d0c7a151f2972507bab812fb0",
+      "bytes": 131765,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-3.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_ms_chalice-opponent-absorb.png",
+      "sha256": "f3c116bdfd86e587846d4097cde8a8d397748e96e896b74917d5e8c56bab173e",
+      "bytes": 179582,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-4.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_ms_chalice-opponent-guard.png",
+      "sha256": "705c12a012a8cf257c9466851935300ac3371e5509da198477beb77f25978c68",
+      "bytes": 179069,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-4.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_ms_chalice-opponent-recovery.png",
+      "sha256": "79b28085f3125150598a3f35ccf5f45d8e4ed0bae9eb88fa5b612c9f0d060119",
+      "bytes": 178132,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-4.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_ms_chalice-opponent-release.png",
+      "sha256": "0cdaed2ad40796b22569a8b30dec0988b86e0194d7ba2516f42f022c4affc891",
+      "bytes": 180902,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-4.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_ms_chalice-player-absorb.png",
+      "sha256": "5ddf9f2d5f6ed86ec56378cb831b08997135c70d48f33058d94f152a241d38fe",
+      "bytes": 181763,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-5.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_ms_chalice-player-guard.png",
+      "sha256": "62f563f7d82566b118eec320ef144ce10dea6ca9ec333c45278422e6d15be7c3",
+      "bytes": 182728,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-5.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_ms_chalice-player-recovery.png",
+      "sha256": "0821eba84b32bddede9368202423f4eb2ea9100c7d1035c6613ee6859e8ce206",
+      "bytes": 181298,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-5.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_ms_chalice-player-release.png",
+      "sha256": "6ca430d1e383c77b47e61d9cd76166f093935f8036dbf9e6cfe3a96773ebd726",
+      "bytes": 184586,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-5.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_mugman-opponent-recovery.png",
+      "sha256": "9a6ab3f298f9bb020af9209ef780f8387dd41238b9257e5de6cbe7598b824938",
+      "bytes": 91538,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-6.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_mugman-opponent-release.png",
+      "sha256": "223983553ed877847031e317b0ff40bbe29116ed44e84ed7b6fa9b1b19c29171",
+      "bytes": 92682,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-6.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_mugman-player-recovery.png",
+      "sha256": "080110c84bcdfb4b2191a9c086f6a942df7e294583624f5c9544a427345622e5",
+      "bytes": 93517,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-6.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/cuphead_mugman-player-release.png",
+      "sha256": "4e491fce30f5025df609da10e140a21c687dbf554cf22be84031628ddd59c727",
+      "bytes": 94774,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-6.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/hakumen_bb-opponent-recovery.png",
+      "sha256": "9e585734651453637f00232acd24e86c44a7054821b8cb68e2f9b261cbf6569e",
+      "bytes": 181927,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-7.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/hakumen_bb-opponent-release.png",
+      "sha256": "4bc80e7c31f8f2a9b049f0e19c2b1d15110da4937c73792ff9da1fdf212f95a7",
+      "bytes": 183489,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-7.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/hakumen_bb-player-recovery.png",
+      "sha256": "38a4d890e1b7cd4fb0be3390e6d07cf9686c30a305a92d1d5c34b2e1d568a0d4",
+      "bytes": 188121,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-7.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/hakumen_bb-player-release.png",
+      "sha256": "11fa23ff52d4eaff9945c85c54a6ff120eafd40004994c5f68668b8b1ee49f57",
+      "bytes": 189185,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-7.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/hellblade_senua-opponent-recovery.png",
+      "sha256": "d69c17c1dfe83e1d1d0c033978f646b481fc1d066476cc18af79f41fbe872241",
+      "bytes": 177716,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-8.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/hellblade_senua-opponent-release.png",
+      "sha256": "144a4d13310f33ef42f79b22d9843d9f8a29ff43d7b81d9046549f027c5c5b22",
+      "bytes": 178419,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-8.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/hellblade_senua-player-recovery.png",
+      "sha256": "e3990033728d6399124ebf2e52bc2fc040615d7deb26aa97c35463dfa568b87d",
+      "bytes": 183089,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-8.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/hellblade_senua-player-release.png",
+      "sha256": "5032f3c86fe1b46b4b392c74c0e06000dacfe10d6c78d99ce7751c4f205888a2",
+      "bytes": 183844,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-8.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/kirito_sao-opponent-recovery.png",
+      "sha256": "bb16a21c26396c3bc6560ff78d3718a7a4ef0557682fdbc919e65dda618baaff",
+      "bytes": 92605,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-9.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/kirito_sao-opponent-release.png",
+      "sha256": "8820a4fdbc427ccbc20df188f070b7b8ac2f15fb6db83a61e4a88aafb4782669",
+      "bytes": 93932,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-9.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/kirito_sao-player-recovery.png",
+      "sha256": "691d923e0a000fe66b91b4873fe731b11bdc764a7fdf69e95b461bc625e86d7d",
+      "bytes": 92904,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-9.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/kirito_sao-player-release.png",
+      "sha256": "e67d3b3f64288fc4180b7e28e85b7fb993b19c8b1d94f64511c92e81df891e86",
+      "bytes": 95984,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-9.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/oddworld_abe_possession-opponent-proxy-shot.png",
+      "sha256": "74eb54cfb242434a427ef5a6207edd9abc131d96b0021356f3a9470f2b141f88",
+      "bytes": 180760,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-10.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/oddworld_abe_possession-opponent-recovery.png",
+      "sha256": "3485958032d9ff5918b180c0d0edae2394cf89496165a48392a73e99cb3416e5",
+      "bytes": 177939,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-10.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/oddworld_abe_possession-opponent-release.png",
+      "sha256": "e2fb85ec8dd42fa3efb29a6106f4aa5085482e1b7f9c8346f87f0e016fb1e153",
+      "bytes": 181772,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-10.png",
+      "tile": {
+        "x": 0,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/oddworld_abe_possession-player-proxy-shot.png",
+      "sha256": "9fb4f8faedd9985af125d141d34fe730edc68ba4b9af3e54cd6c510095bcb0d0",
+      "bytes": 184519,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-10.png",
+      "tile": {
+        "x": 1200,
+        "y": 900,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/oddworld_abe_possession-player-recovery.png",
+      "sha256": "d8c9675512119a2fbc438e554e912cc9a857f4259ea8db2b065abb89280f8755",
+      "bytes": 180637,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-11.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/oddworld_abe_possession-player-release.png",
+      "sha256": "16c141bc1d18b552bf0ac59637f59da6d1d0a2a04c05215899e6bea674f887b4",
+      "bytes": 187637,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-11.png",
+      "tile": {
+        "x": 1200,
+        "y": 0,
+        "width": 1200,
+        "height": 900
+      },
+      "originalWidth": 1200,
+      "originalHeight": 900
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-contact.png",
+      "sha256": "f1c717d7f9eb1d42ad7d78c792f7a1836b0de3985e46bab78ff64e80d75947f8",
+      "bytes": 1133341,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-12.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1600,
+        "height": 4500
+      },
+      "originalWidth": 1600,
+      "originalHeight": 4500
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-focus-0.png",
+      "sha256": "3c7d0b318667e6b1780c9d3fb748b4c005be16e2c7f2afe1e2047910842f19f1",
+      "bytes": 772111,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-13.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 1350
+      },
+      "originalWidth": 1200,
+      "originalHeight": 1350
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-focus-1.png",
+      "sha256": "056a26670d8ccefab48f07d76dc8e4bedf26cf01622583a409652d0ddc2738d2",
+      "bytes": 770308,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-14.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 1350
+      },
+      "originalWidth": 1200,
+      "originalHeight": 1350
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-focus-2.png",
+      "sha256": "7b02ba8f6fcf1677a81514c90896aa532c6fb018dae8e890603211c652b3da46",
+      "bytes": 753693,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-15.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 1350
+      },
+      "originalWidth": 1200,
+      "originalHeight": 1350
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-focus-3.png",
+      "sha256": "8d99a27a8836ebff855f4285c9456cf175d98166a16596452c490eed7a9b1d86",
+      "bytes": 806489,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-16.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 1350
+      },
+      "originalWidth": 1200,
+      "originalHeight": 1350
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-focus-4.png",
+      "sha256": "c5843210c9b78d85bcc38b9a0568e99b7faca9cad3a0e73b8578c2ac8bd143ab",
+      "bytes": 776361,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-17.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 1350
+      },
+      "originalWidth": 1200,
+      "originalHeight": 1350
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-focus-5.png",
+      "sha256": "956fbcdb78025577d2e32e173a854628b79e582d68b35a3096c121100e9d5fa7",
+      "bytes": 776648,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-18.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 1350
+      },
+      "originalWidth": 1200,
+      "originalHeight": 1350
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-focus-6.png",
+      "sha256": "5e806fefa6329cf47b24fedb8dc966fa33b24485caf5d1ebfc6ca562cc11debd",
+      "bytes": 769021,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-19.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 1350
+      },
+      "originalWidth": 1200,
+      "originalHeight": 1350
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-focus-7.png",
+      "sha256": "105dd5f425677f41f78cbf8fc12cece3a4ad41e249aa2ae5369a533e6b2c2f60",
+      "bytes": 770017,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-20.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 1350
+      },
+      "originalWidth": 1200,
+      "originalHeight": 1350
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-focus-8.png",
+      "sha256": "b97caa7d7c8ff6f8aa7396235237eeedb0426e96cbca54e830ba759d0f1cb17b",
+      "bytes": 807162,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-21.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 1350
+      },
+      "originalWidth": 1200,
+      "originalHeight": 1350
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/tactics-engine-focus-9.png",
+      "sha256": "7b42050eebd50c7f5fde3fa1abe8b9c93e839ee55feafa74fc87520f057df460",
+      "bytes": 770871,
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/tactics-engine-final-20261101003939213/contact-pages/page-22.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 1350
+      },
+      "originalWidth": 1200,
+      "originalHeight": 1350
+    }
+  ],
+  "source1to1Verified": false,
+  "notes": [
+    "All23new final contact pages were actually reopened with view_image after the complete production freeze including the historical PNGs. Earlier pre-complete-freeze openings do not substitute for these current views.",
+    "Pages0-11 show whole critical captures without edited pixels; pages13-22 show readable focus captures for120characters in both camps. Page12 is used for overall layout only.",
+    "Image display resizes overlarge pages; fine-pixel correctness is not inferred from the overview. Tactics uses surfaces, range and line of sight; this visual review does not claim Fighter/Melee/RPG blade-tip versus hurtbox proof, official1:1 certification or new native poses from mirrored draws."
+  ]
+}

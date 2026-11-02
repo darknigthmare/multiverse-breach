@@ -1,20 +1,33 @@
 # Tactics : verticalité jouable, surfaces et matériaux
 
-La verticalité est intégrée au moteur Tactics depuis le 24 octobre 2026. L’extension W14 du **25 octobre 2026** porte le catalogue à **onze terrains verticaux jouables : huit secteurs d’univers et trois arènes Nexus**. Elle ajoute des montagnes enneigées, prairies, ravins, marais, sous-bois, ruines et reliefs volcaniques, avec leurs objectifs et chemins réels.
+La verticalité est intégrée au moteur Tactics depuis le 24 octobre 2026. L’extension W15 du **26 octobre 2026** porte le catalogue à **quinze terrains verticaux jouables : douze secteurs d’univers et trois arènes Nexus**. Aux huit secteurs W14 s’ajoutent Dollet, la cour du manoir Spencer, Red Rock Canyon et White Forest. Montagnes, prairies, villes, ravins, marais, sous-bois, ruines et reliefs volcaniques possèdent leurs objectifs et chemins réels.
 
-Le même moteur gère surfaces superposées, déplacements, attaques, objets et affichage. Les huit secteurs possèdent une géométrie propre à Tactics et des environnements dédiés ; leurs plans et fonds ne sont pas ceux des niveaux RPG, Combat ou Mêlée. Les grilles, distances et marqueurs de mission sont des adaptations originales des lieux et versions indiqués. **Leur reproduction officielle 1:1 n’est pas certifiée.**
+Le même moteur gère surfaces superposées, déplacements, attaques, objets et affichage. Les douze secteurs possèdent une géométrie propre à Tactics et des environnements dédiés ; leurs plans et fonds ne sont pas ceux des niveaux RPG, Combat ou Mêlée. Les grilles, distances et marqueurs de mission sont des adaptations originales des lieux et versions indiqués. **Leur reproduction officielle 1:1 n’est pas certifiée.**
 
 [Galerie W14 en jeu](tactics-universes-2026-10-25/index.html) · [Résultat navigateur final](tactics-universes-2026-10-25/result.json) · [Revue des 18 captures](tactics-universes-2026-10-25/visual-review-final.json).
 
 ## 1. Choisir et lancer un terrain
 
 1. Ouvrir **Combat custom**, sélectionner **TACTIQUE**, puis composer l’escouade et le camp adverse.
-2. Dans **TERRAIN TACTIQUE**, choisir explicitement l’un des onze terrains verticaux. Ils portent la mention **plusieurs hauteurs**. Les anciennes cartes plates restent également proposées.
-3. Pour une sélection automatique, choisir un stage archivé dans **STAGE**, puis **Automatique selon le stage**. Si son univers possède un secteur W14, le moteur recherche d’abord le lieu nommé, puis le secteur par défaut de cet univers. Pour *The Lord of the Rings*, le défaut est Ithilien ; un stage nommé Caradhras sélectionne Caradhras. Sans univers compatible, les règles historiques de sélection restent actives ; l’arène Nexus par défaut reste une carte plate.
+2. Dans **TERRAIN TACTIQUE**, choisir explicitement l’un des quinze terrains verticaux. Ils portent la mention **plusieurs hauteurs**. Les anciennes cartes plates restent également proposées.
+3. Pour une sélection automatique, choisir un stage archivé dans **STAGE**, puis **Automatique selon le stage**. Si son univers possède un secteur W14 ou W15, le moteur recherche d’abord le lieu nommé, puis le secteur par défaut de cet univers. Pour *The Lord of the Rings*, le défaut est Ithilien ; un stage nommé Caradhras sélectionne Caradhras. Sans univers compatible, les règles historiques de sélection restent actives ; l’arène Nexus par défaut reste une carte plate.
 4. Lancer la simulation. Le panneau **TERRAIN · HAUTEURS** apparaît au-dessus du plateau vertical. Il indique le lieu, l’univers, l’œuvre et l’objectif choisis, puis la case inspectée, son altitude, sa matière et son coût.
 5. Cliquer une surface pour l’inspecter, ou donner le focus au plateau et déplacer le curseur avec les flèches. Confirmer avec **ALLER / CIBLER CETTE CASE** ou **Entrée**. L’inspection seule ne déplace aucune unité et ne dépense aucun point d’action.
 
 Un choix explicite de secteur fixe son lieu et son univers de terrain, même si un autre stage était sélectionné auparavant. Tactics utilise son propre environnement ; l’image du stage archivé n’est pas réutilisée derrière le plateau. Les autres moteurs conservent leurs choix de stage. Le preset sauvegarde aussi le choix explicite ou automatique dans la Trace.
+
+### Quatre secteurs d’univers W15 — 26 octobre 2026
+
+| Secteur et identifiant | Œuvre et période retenues | Dimensions et surfaces | Situation et objectif livré |
+| --- | --- | --- | --- |
+| **FFVIII — Dollet, rue et coursives** (`ff8_dollet_tactics`) | *Final Fantasy VIII* (1999), examen SeeD à Dollet | 14 × 12, 172 surfaces | Rue basse et coursive à Z 2, terrasses et volumes de bâtiments opaques. Deux postes de contrôle partagent XY mais restent des surfaces différentes ; un rival à l’autre étage ne conteste pas ce poste. |
+| **Resident Evil — manoir Spencer, cour et balcon** (`re_spencer_courtyard_tactics`) | *Resident Evil* (1996), domaine Spencer avant sa destruction | 14 × 12, 174 surfaces | Bassin impraticable, balcon à Z 2 et passage inférieur en pierre. Récupérer deux repères A.R.C.A. à des altitudes différentes, en empruntant les accès réels. |
+| **Fallout — Red Rock Canyon, mesas et ravine** (`fallout_red_rock_tactics`) | *Fallout: New Vegas* (2010), Mojave en 2281 | 16 × 12, 193 surfaces | Grès rouge, mesa à Z 3 et chenal sec à Z −1 plus coûteux. Extraire deux unités par l’est ; leurs empreintes et passages sont vérifiés. |
+| **Half-Life — White Forest, gués et relais** (`halflife_white_forest_tactics`) | *Half-Life 2: Episode Two* (2007), région forestière de la Résistance | 15 × 12, 183 surfaces | Herbe et pins, ruisseau encaissé, deux gués et pont de service en béton. Rejoindre puis détruire deux relais de mission A.R.C.A. par une approche visible. |
+
+Les [définitions W15](../src/game/tacticsUniverseBattlefieldsWave15.js) fixent ces quatre versions, sans ajouter d’univers absent du roster. Les textures et silhouettes dédiées se trouvent dans [la présentation W15](../src/game/tacticsUniversePresentationWave15.js). Les exports historiques W14 restent limités à leurs huit secteurs ; le catalogue de sélection en jeu compose les douze secteurs dans `TACTICS_SOURCE_BATTLEFIELDS`.
+
+Les quatre secteurs conservent des géométries originales adaptées aux lieux : ni leur grille, ni leurs ponts ou distances, ni les objectifs A.R.C.A. ne constituent une reproduction officielle certifiée 1:1. Le [parcours navigateur préliminaire](tactics-universes-2026-10-26/preliminary/result.json) et sa [galerie](tactics-universes-2026-10-26/preliminary/index.html) documentent les lancements et déplacements réels. La [preuve après gel](tactics-universes-2026-10-26/result.json) et sa [revue finale](tactics-universes-2026-10-26/visual-review-final.json) sont produites séparément lors de la clôture.
 
 ### Huit secteurs d’univers W14 — 25 octobre 2026
 
@@ -29,9 +42,9 @@ Un choix explicite de secteur fixe son lieu et son univers de terrain, même si 
 | **Mass Effect — Therum, faille et chantier** (`masseffect_therum_tactics`) | *Mass Effect* (2007), approche de l’excavation en 2183 | 16 × 10 | Franchissement naturel par îlot basaltique ou passerelle de chantier ; lave impraticable et rebords dangereux. Neutraliser les deux relais de mission destructibles. |
 | **Halo 3 — Valhalla, rive et crête latérale** (`halo_valhalla_tactics`) | *Halo 3* (2007), direction visuelle de Valhalla | 16 × 12 | Rivière peu profonde plus coûteuse, pentes naturelles et crête forerunner. Accumuler 4 points entre le poste de rive à Z 0 et celui de crête à Z 2,5. Le secteur adapte ce lieu sans reproduire son plan multijoueur. |
 
-Les deux cartes d’extraction prévoient une cible nominale de deux héros ; le moteur l’adapte au nombre de héros engagés lorsqu’une escouade plus petite est choisie. Les itinéraires utilisent les coûts, pentes, volumes, obstacles et hauteurs libres du terrain. Une pente visible n’est pas un raccourci gratuit, et choisir une surface haute ne crée pas de téléportation.
+Les trois cartes d’extraction d’univers prévoient une cible nominale de deux héros ; le moteur l’adapte au nombre de héros engagés lorsqu’une escouade plus petite est choisie. Les itinéraires utilisent les coûts, pentes, volumes, obstacles et hauteurs libres du terrain. Une pente visible n’est pas un raccourci gratuit, et choisir une surface haute ne crée pas de téléportation.
 
-Dans les huit secteurs W14, le contrôle est évalué une fois à la fin d’un véritable tour d’unité : chaque poste occupé par un héros vivant et non contesté apporte un point. Rafraîchir l’affichage ou infliger des dégâts ne produit pas de points supplémentaires. Extraction, collecte et destruction vérifient leurs propres surfaces ou cibles, indépendamment de la seule image du décor.
+Dans les secteurs d’univers W14 et W15, le contrôle est évalué une fois à la fin d’un véritable tour d’unité : chaque poste occupé par un héros vivant et non contesté apporte un point. Rafraîchir l’affichage ou infliger des dégâts ne produit pas de points supplémentaires. Extraction, collecte et destruction vérifient leurs propres surfaces ou cibles, indépendamment de la seule image du décor.
 
 Les [définitions W14](../src/game/tacticsUniverseBattlefields.js) conservent l’œuvre, la période, le lieu et les références documentaires de chaque secteur. Elles déclarent aussi leurs limites : grille adaptée, plan canonique non vérifié, textures procédurales et absence de certification 1:1. Les objectifs de reconnaissance, d’ancrage et de relais sont des missions originales A.R.C.A., pas des quêtes officielles de ces œuvres.
 
@@ -77,7 +90,7 @@ L’accès au tablier suit le véritable escalier **A4 → B4 → C4 → D4 → 
 | Intégration aux tours, déplacements, attaques, objectifs et IA | [EngineTactics](../src/game/engineTactics.js) et [TacticsVerticalRuntime](../src/game/tacticsVerticalRuntime.js) |
 | Faces, matières, profondeur et sélection visuelle | [tacticsTerrainRenderer.js](../src/game/tacticsTerrainRenderer.js) |
 | Environnements Tactics, ambiances et silhouettes des décors physiques | [tacticsEnvironmentRenderer.js](../src/game/tacticsEnvironmentRenderer.js) |
-| Huit secteurs d’univers, versions et scénarios W14 | [tacticsUniverseBattlefields.js](../src/game/tacticsUniverseBattlefields.js) |
+| Douze secteurs d’univers, versions et scénarios | [W14](../src/game/tacticsUniverseBattlefields.js), [W15](../src/game/tacticsUniverseBattlefieldsWave15.js), [présentation W15](../src/game/tacticsUniversePresentationWave15.js) |
 | Contrôles et aperçu de case | [GameCanvas.jsx](../src/components/GameCanvas.jsx), [TacticsTerrainPanel.jsx](../src/components/TacticsTerrainPanel.jsx), [tacticsTerrainControls.js](../src/game/tacticsTerrainControls.js) |
 | Ressources liées à un étage | [tacticsPickupSurface.js](../src/game/tacticsPickupSurface.js) et positions du catalogue |
 | Conservation du terrain choisi dans la Trace | Normaliseurs du preset dans [customBattle.js](../src/game/customBattle.js) et [App.jsx](../src/App.jsx) |
@@ -130,7 +143,7 @@ Le rendu vertical ne découpe pas le dessin d’ambiance en rectangles pour en d
 | Raccord | Les voisinages et les bords se déduisent des contacts de géométrie et de matière, plutôt que d’un simple XY partagé entre étages. |
 | Surcouche de jeu | Cases atteignables, chemin, cible, danger et objectif sont ajoutés après le matériau ; la texture ne décide pas des dégâts ou de l’occupation. |
 
-Le catalogue comporte **27 matières : 11 références antérieures et 16 nouvelles références W14**. Ces seize matières ont leurs palettes et s’appuient sur des familles de rendu adaptées : roche fracturée, terre stratifiée, herbe, neige, vase, eau, lave, pierre ou panneaux architecturaux. Elles ne représentent pas seize algorithmes de texture entièrement différents.
+Le catalogue comporte **34 matières : 11 références antérieures, 16 références W14 et 7 références W15**. Ces seize matières ont leurs palettes et s’appuient sur des familles de rendu adaptées : roche fracturée, terre stratifiée, herbe, neige, vase, eau, lave, pierre ou panneaux architecturaux. Elles ne représentent pas seize algorithmes de texture entièrement différents.
 
 | Groupe W14 | Matières réellement disponibles | Adaptation aux faces |
 | --- | --- | --- |
@@ -142,11 +155,13 @@ Le catalogue comporte **27 matières : 11 références antérieures et 16 nouvel
 | Therum | `basalt`, `lava`, `prothean-concrete` | Roche sombre, veines de lave et surfaces du chantier. |
 | Valhalla | `halo-grass`, `forerunner-alloy` | Sol herbeux stratifié et panneaux d’architecture forerunner. |
 
+W15 ajoute `dollet-cobble`, `dollet-plaster`, `spencer-limestone`, `spencer-marble`, `red-rock-sandstone`, `white-forest-grass` et `white-forest-concrete`. Les flancs du grès et des sols herbeux utilisent leurs strates ; la pierre urbaine et le béton gardent leurs joints architecturaux. Réverbère de Dollet, statue de la cour et mâts radio sont des obstacles réels dont le dessin suit leur support et leur hauteur.
+
 Bois et pierre ancienne restent disponibles pour les pontons et passages adaptés. Les arbres, rochers, murs ruinés, conduites, générateurs et pylônes sont dessinés à l’emplacement et à la hauteur des véritables obstacles. Leurs volumes participent à l’occupation et à la ligne de vue ; les silhouettes lointaines du fond restent décoratives.
 
 ### Environnements indépendants des autres moteurs
 
-Chaque secteur W14 dessine son ciel, son horizon, ses reliefs lointains et son ambiance à partir d’un profil Tactics dédié : crêtes de Nibel, steppe, marais, pics enneigés, sous-bois d’Ithilien, forêt ancienne, paysage volcanique ou vallée forerunner. Les effets de fond respectent la pause et la préférence de mouvement réduit. Ils entourent la géométrie jouable, sans définir une collision supplémentaire.
+Chaque secteur W14 ou W15 dessine son ciel, son horizon, ses reliefs lointains et son ambiance à partir d’un profil Tactics dédié : crêtes de Nibel, steppe, marais, pics enneigés, sous-bois d’Ithilien, forêt ancienne, paysage volcanique ou vallée forerunner. Les effets de fond respectent la pause et la préférence de mouvement réduit. Ils entourent la géométrie jouable, sans définir une collision supplémentaire.
 
 Les trois Nexus et toutes les anciennes cartes plates utilisent aussi un environnement procédural Tactics. Ce repli reprend la famille de matière et la palette du contexte, sans inventer un lieu officiel. Les cartes plates gardent leur géométrie antérieure ; un complément de tuiles propre à Tactics peut texturer leurs cases lorsqu’il existe. Le moteur n’étire plus une scène peinte sur la grille et n’utilise pas le fond partagé des autres modes. Lorsqu’une arène de base est forcée ou qu’un contenu est désactivé, le fond revient au Nexus sans conserver les motifs de la source supprimée.
 
@@ -162,7 +177,7 @@ Lorsqu’un déplacement est confirmé, ses points d’action sont dépensés et
 
 La traversée tient compte de l’occupation, de la hauteur libre et de l’empreinte définie par `tacticsFootprint`. Une grande unité doit disposer d’un support compatible sur toutes les cases de son empreinte. Un passage libre pour une unité de taille normale peut être trop bas ou trop étroit pour un boss. Les conditions viennent de la géométrie et du profil de l’unité, jamais du motif peint.
 
-Les onze terrains livrés utilisent la marche, les pentes, les rampes et les escaliers déclarés par leur géométrie. Les rivières, gués et détours introduisent aussi des choix de coût et d’accès. Les contrats prévoient d’autres capacités de traversée, mais cette extension n’accorde pas automatiquement vol, saut, chute avec dégâts, ascenseur ou escalade à tous les personnages.
+Les quinze terrains livrés utilisent la marche, les pentes, les rampes et les escaliers déclarés par leur géométrie. Les rivières, gués et détours introduisent aussi des choix de coût et d’accès. Les contrats prévoient d’autres capacités de traversée, mais cette extension n’accorde pas automatiquement vol, saut, chute avec dégâts, ascenseur ou escalade à tous les personnages.
 
 ## 6. Combat, couverture et objectifs entre étages
 
@@ -171,6 +186,12 @@ Les cibles, cellules d’impact et menaces portent une identité de surface. Les
 La ligne de vue intersecte les volumes du terrain et des obstacles. Un tir peut passer sous un pont si le rayon passe dans l’espace libre ; traverser son plancher opaque demande une capacité qui le déclare explicitement. Désactiver la vue ordinaire d’un profil ne suffit pas à lui accorder implicitement `pierceTerrain`.
 
 Les zones d’effet vérifient également la hauteur et l’obstruction depuis leur centre. Une explosion sur le pont n’inflige donc pas automatiquement ses dégâts à l’unité située sous la dalle. Les bonus de hauteur se calculent depuis Z ; les garde-corps et types de couvert renseignent la protection du bord concerné, selon le profil d’action.
+
+Maya de *Borderlands 2* (2012) applique désormais un **Phaselock ennemi sans dégâts**, également sur les cartes plates. La cible doit être vivante, à portée, visible depuis sa vraie surface, éligible et opposée au lanceur. Les boss, unités immunisées, invulnérables ou déjà liées sont refusés avant la dépense. Le spécial consomme ses 100 points de charge ; le secondaire conserve son délai de huit secondes et son gain ordinaire de charge.
+
+Le lien interrompt une action ou un trajet en cours et immobilise la cible jusqu’à la consommation d’un de ses propres tours. La pause conserve cet état ; la mise à jour visuelle ne l’écourte pas. Un marqueur violet entoure le sprite existant sur son véritable support. Sa case, ses HP, ses protections et ses améliorations conservent leurs valeurs. Le contrôle est réévalué à l’application : une cible morte, retirée, déplacée hors portée ou cachée par une dalle ne consomme pas la commande. Cette durée d’un tour est une adaptation explicite au moteur Tactics.
+
+Val de *Evolve* (2015) utilise son **Healing Burst local**, avec une portée Tactics de deux cases et une distance euclidienne qui inclut l’altitude. Le soin de groupe inclut Val et ses alliés blessés, vérifie les vraies surfaces et la ligne de vue, puis respecte leurs plafonds de HP, y compris la restriction de radiation. Un ennemi, un groupe entièrement rétabli, une case vide ou une sélection devenue invalide ne consomme pas le Burst. Les deux camps et leurs IA emploient la même sélection et les mêmes coûts ; une IA garde sa charge lorsque tout le groupe est déjà rétabli. Le passage de la portée source de 220 pixels à deux cases est une adaptation déclarée au moteur tactique.
 
 Les noms et règles des actions des terrains verticaux passent par les définitions de combat résolues. Un soutien conserve ses cibles alliées et ses effets de protection, soin ou amélioration ; une nouvelle hauteur ne le transforme pas en projectile offensif.
 
@@ -204,7 +225,7 @@ Pour ajouter un terrain vertical :
 5. Vérifier la sélection, la route, la portée, la couverture, les objectifs et les deux camps avec la caméra déplacée et zoomée.
 6. Documenter la provenance et les limites, puis inclure le terrain dans les tests et la compilation complète.
 
-La livraison comprend les trois arènes Nexus et les huit secteurs d’univers décrits en ouverture, soit onze cartes verticales. Les autres univers conservent leurs terrains compatibles et un environnement Tactics dédié ; ils ne reçoivent pas chacun une nouvelle topologie verticale ou un plan canonique vérifié.
+La livraison comprend les trois arènes Nexus et les douze secteurs d’univers décrits en ouverture, soit quinze cartes verticales. Les autres univers conservent leurs terrains compatibles et un environnement Tactics dédié ; ils ne reçoivent pas chacun une nouvelle topologie verticale ou un plan canonique vérifié.
 
 ## 9. Vérifications reproductibles et preuves datées
 
@@ -215,7 +236,13 @@ npm run test:tactics-verticality
 npm run lint
 ```
 
-La commande de terrain comprend les suites géométriques et de rendu W13 ainsi que les données, la présentation, la sélection automatique et le véritable runtime W14. Lors de la validation W14, **121 tests** passent. Les tests de [données et chemins W14](../scripts/tacticsUniverseBattlefields.test.mjs), de [rendu dédié](../scripts/tacticsUniversePresentation.test.mjs), de [sélection des niveaux](../scripts/tacticsUniverseRouting.test.mjs) et de [runtime et objectifs](../scripts/tacticsUniverseRuntime.test.mjs) restent distincts du contrôle navigateur.
+La commande de terrain comprend les suites géométriques et de rendu W13 ainsi que les données, la présentation, la sélection automatique et les véritables runtimes W14 et W15. W14 conservait **121 tests** ; les quatre suites W15 ajoutent **32 tests** (données 10, rendu 6, routage 3, runtime 13), auxquels s’ajoutent **37 tests Phaselock** et **28 tests Healing Burst de Val** ; la suite comporte donc **218 cas**. Les résultats datés figurent dans la [validation W15](combat-fidelity-wave15-2026-10-26/validation.json). Les tests de [données et chemins W14](../scripts/tacticsUniverseBattlefields.test.mjs), de [rendu dédié](../scripts/tacticsUniversePresentation.test.mjs), de [sélection des niveaux](../scripts/tacticsUniverseRouting.test.mjs) et de [runtime et objectifs](../scripts/tacticsUniverseRuntime.test.mjs) restent distincts du contrôle navigateur.
+
+### W15 — vérification du 26 octobre 2026
+
+Le [harnais W15](../scripts/tacticsUniverseWave15Ui.browser.mjs) reprend le parcours réel **CustomBattleMode → GameCanvas → EngineTactics**, avec les quatre secteurs W15 et les deux contrôles Nexus/plat. Sa [preuve préliminaire](tactics-universes-2026-10-26/preliminary/result.json) constate six lancements, dix-huit contrôles et dix captures [inspectées](tactics-universes-2026-10-26/preliminary/visual-review.json), sans erreur JavaScript. Chaque nouveau secteur a reçu une inspection, une coupe, un zoom/recentrage, un mouvement confirmé avec son coût PA et un contrôle mobile à 375 pixels.
+
+Les [tests de données W15](../scripts/tacticsUniverseWave15.test.mjs) vérifient les chemins d’objectifs depuis chaque apparition, les empreintes de boss 2 × 2, la hauteur libre, les gués, bassins et passages superposés. Les [tests runtime W15](../scripts/tacticsUniverseWave15Runtime.test.mjs) exécutent les quatre types d’objectifs jusqu’à la victoire, quatre trajets de rampe avec des altitudes de pieds intermédiaires et le contrôle exact des deux étages de Dollet. [Rendu](../scripts/tacticsUniverseWave15Presentation.test.mjs) et [routage](../scripts/tacticsUniverseWave15Routing.test.mjs) ont des suites distinctes. Les [37 tests Phaselock](../scripts/tacticsPhaselockWave15.test.mjs) ajoutent les deux camps, les cartes plates et verticales, l’expiration, la pause, les refus sans coût, les immunités, les protections, les déplacements interrompus, la mort/réanimation et les coûts réels de l’IA. Les [28 tests Healing Burst](../scripts/tacticsValHealingWave15.test.mjs) couvrent la portée locale, les refus sans coût, les deux camps et leur IA sur terrain plat et vertical. Les anciennes preuves ne sont pas réécrites.
 
 ### W14 — preuve finale du 25 octobre 2026
 

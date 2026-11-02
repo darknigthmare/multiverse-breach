@@ -1,0 +1,16 @@
+✔ accepts every tracked public path plus unrelated upload files (1.650287ms)
+✔ an omitted backgrounds junction reports each missing tracked file (1.341091ms)
+✔ coverage is case-sensitive exactly as on the Linux build host (0.270938ms)
+✔ rejects absolute paths, traversal and ambiguous separators anywhere in the upload (0.746725ms)
+✔ rejects malformed manifest objects and invalid file sizes (0.344459ms)
+✔ rejects unsafe or empty Git path inputs instead of a vacuous pass (0.214624ms)
+✔ rejects duplicate upload or Git paths rather than hiding ambiguity (0.300663ms)
+✔ the pure validator preserves frozen inputs, metadata, Unicode and spaces (0.198279ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65.947743

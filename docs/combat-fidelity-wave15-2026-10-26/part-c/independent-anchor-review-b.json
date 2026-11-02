@@ -1,0 +1,2301 @@
+{
+  "schemaVersion": 1,
+  "part": "C",
+  "reviewer": "/root/wave15_batch_b40",
+  "independentOfMeasurementAuthor": true,
+  "passed": true,
+  "scope": "Twelve emitters measured by agent A, selected exactly by anchors-assisted-a.json; the other thirteen C emitters are outside this review.",
+  "reviewedCharacters": 12,
+  "actualPhysicalPointsChecked": 96,
+  "rawGridsActuallyViewed": 12,
+  "markedGridsActuallyViewed": 12,
+  "viewTool": "view_image",
+  "releaseSequencesActuallyViewed": 24,
+  "releaseColumn": 2,
+  "earlyEmissionFlashFindings": 0,
+  "productionWrites": 0,
+  "newGeneratorsOrSources": 0,
+  "source1to1Verified": false,
+  "canonicalVerified": false,
+  "method": "Read actual raw and marked grids visually, then independently validate all96 native PNG RGBA probes, SHA values, retained source images/rows/columns/frame geometry and exact marker overlays. Marked grids were reproduced in memory byte-for-byte from measured points and original grids. All96 points equal the final live anchor registry. No production file or point was edited.",
+  "measurementFile": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/assisted-a-review.json",
+  "measurementSha256": "4df6251fab69374df638efe92940e43322e9f17d7eae95afc9e51cb2fcbf4dbc",
+  "seedsFile": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/anchors-assisted-a.json",
+  "seedsSha256": "7a21872753f2b1d8cad606128c0a708acb7534cfbdb27a8af59ab7d30e932d99",
+  "nativeRegistry": "src/game/combat/characterAnimationsWave15PartC.generated.json",
+  "nativeRegistrySha256": "c1eefe3a53aa9fd68269155520f0be38e3eea6fd04956ae9273af67ef4a0f57f",
+  "liveAnchorRegistry": "src/game/combat/nativeSuperAnchorsWave15PartC.generated.json",
+  "liveAnchorRegistrySha256": "1750bebdd7006d66dc439ca5d8ac51a4634de1ab3ecf9a4e2d1238207afd1ca0",
+  "liveAnchorRegistryCharacters": 25,
+  "all96PointsEqualFinalLiveRegistry": true,
+  "entries": [
+    {
+      "heroId": "doom_marine",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/doom_marine.png",
+      "sourceSha256": "8c80637be46638da0368ce529a13b1b9ddc08f2c50ef84e9101bcd80d4424cd4",
+      "geometrySha256": "19d6eb58986d59a7b39141527d91ea1c9cabc032212b89b4907878155844c495",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/doom_marine.png",
+      "gridSha256": "b4841f30f4e35b833ee44a637cc2b9ce16988da9adc4901454b6b50d46da6bd9",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/doom_marine-measured.png",
+      "markedGridSha256": "5b7390179ed753d9b8ec553ca2cc8b07aa1b549a21a18a8296fd576e4051a072",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "All eight markers are on the actual physical muzzle/barrel contour, including lowered prepare/recovery weapons. Release flashes begin at the muzzle only in c2; no marker follows the detached flame tip.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 208,
+            "y": 123
+          },
+          "rgba": [
+            35,
+            36,
+            36,
+            236
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/doom_marine-correction.png",
+          "sourceImageSha256": "59127ae9f3ab5545e232d06dd00716caba1f2fbcd3b1a2021ee5a9be00337d22",
+          "sourceRow": 2,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 213,
+            "y": 141
+          },
+          "rgba": [
+            0,
+            0,
+            0,
+            229
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/doom_marine-correction.png",
+          "sourceImageSha256": "59127ae9f3ab5545e232d06dd00716caba1f2fbcd3b1a2021ee5a9be00337d22",
+          "sourceRow": 2,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 191,
+            "y": 124
+          },
+          "rgba": [
+            16,
+            25,
+            31,
+            248
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/doom_marine-correction.png",
+          "sourceImageSha256": "59127ae9f3ab5545e232d06dd00716caba1f2fbcd3b1a2021ee5a9be00337d22",
+          "sourceRow": 2,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 209,
+            "y": 134
+          },
+          "rgba": [
+            0,
+            0,
+            0,
+            234
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/doom_marine-correction.png",
+          "sourceImageSha256": "59127ae9f3ab5545e232d06dd00716caba1f2fbcd3b1a2021ee5a9be00337d22",
+          "sourceRow": 2,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 175,
+            "y": 175
+          },
+          "rgba": [
+            34,
+            34,
+            41,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/doom_marine-actions.png",
+          "sourceImageSha256": "643af105c6ebcdff7505c6bbf5c112b6b69ace262ebf81cdf814ce4ad246a757",
+          "sourceRow": 0,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 198,
+            "y": 130
+          },
+          "rgba": [
+            0,
+            0,
+            0,
+            246
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/doom_marine-actions.png",
+          "sourceImageSha256": "643af105c6ebcdff7505c6bbf5c112b6b69ace262ebf81cdf814ce4ad246a757",
+          "sourceRow": 0,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 190,
+            "y": 134
+          },
+          "rgba": [
+            25,
+            27,
+            34,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/doom_marine-actions.png",
+          "sourceImageSha256": "643af105c6ebcdff7505c6bbf5c112b6b69ace262ebf81cdf814ce4ad246a757",
+          "sourceRow": 0,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 182,
+            "y": 182
+          },
+          "rgba": [
+            18,
+            16,
+            17,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/doom_marine-actions.png",
+          "sourceImageSha256": "643af105c6ebcdff7505c6bbf5c112b6b69ace262ebf81cdf814ce4ad246a757",
+          "sourceRow": 0,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "zach_hammond",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/zach_hammond.png",
+      "sourceSha256": "6b62bb9e773ec32ac60a348e2991a2db5294d47afcab3dc798eb531b4826ab4b",
+      "geometrySha256": "8ea79a666d90f723b1fc534afbb8bcb1c1bf2a023364a56a2e114846b9db5d39",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/zach_hammond.png",
+      "gridSha256": "c2735550be787ad405bf8359bfea221e060be00b2503f3cbf9f2a083536e2b61",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/zach_hammond-measured.png",
+      "markedGridSha256": "9b4dd2be9e1d1fd4234fd19f57936b88fe41cde14c8b999bee77e233d9aa24b6",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "All eight markers are on the actual physical muzzle/barrel contour, including lowered prepare/recovery weapons. Release flashes begin at the muzzle only in c2; no marker follows the detached flame tip.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 188,
+            "y": 104
+          },
+          "rgba": [
+            116,
+            68,
+            30,
+            244
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/zach_hammond.png",
+          "sourceImageSha256": "351173f1d978a48177fc80317431003e1eb89c77ae441f3bc06cd486c72a59be",
+          "sourceRow": 2,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 192,
+            "y": 128
+          },
+          "rgba": [
+            76,
+            52,
+            32,
+            234
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/zach_hammond.png",
+          "sourceImageSha256": "351173f1d978a48177fc80317431003e1eb89c77ae441f3bc06cd486c72a59be",
+          "sourceRow": 2,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 177,
+            "y": 117
+          },
+          "rgba": [
+            102,
+            48,
+            17,
+            242
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/zach_hammond.png",
+          "sourceImageSha256": "351173f1d978a48177fc80317431003e1eb89c77ae441f3bc06cd486c72a59be",
+          "sourceRow": 2,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 189,
+            "y": 134
+          },
+          "rgba": [
+            118,
+            66,
+            28,
+            219
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/zach_hammond.png",
+          "sourceImageSha256": "351173f1d978a48177fc80317431003e1eb89c77ae441f3bc06cd486c72a59be",
+          "sourceRow": 2,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 187,
+            "y": 132
+          },
+          "rgba": [
+            104,
+            52,
+            11,
+            249
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/zach_hammond.png",
+          "sourceImageSha256": "351173f1d978a48177fc80317431003e1eb89c77ae441f3bc06cd486c72a59be",
+          "sourceRow": 3,
+          "sourceColumn": 4,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 187,
+            "y": 137
+          },
+          "rgba": [
+            107,
+            51,
+            18,
+            239
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/zach_hammond.png",
+          "sourceImageSha256": "351173f1d978a48177fc80317431003e1eb89c77ae441f3bc06cd486c72a59be",
+          "sourceRow": 3,
+          "sourceColumn": 6,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 186,
+            "y": 132
+          },
+          "rgba": [
+            109,
+            62,
+            31,
+            160
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/zach_hammond.png",
+          "sourceImageSha256": "351173f1d978a48177fc80317431003e1eb89c77ae441f3bc06cd486c72a59be",
+          "sourceRow": 3,
+          "sourceColumn": 5,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 192,
+            "y": 140
+          },
+          "rgba": [
+            103,
+            45,
+            11,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/zach_hammond.png",
+          "sourceImageSha256": "351173f1d978a48177fc80317431003e1eb89c77ae441f3bc06cd486c72a59be",
+          "sourceRow": 3,
+          "sourceColumn": 7,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "gail_dc",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/gail_dc.png",
+      "sourceSha256": "ca6e4fc99950d8a342c8396a98ff07fac3d609dda69886c05335677209882af4",
+      "geometrySha256": "f871446e27fc0efebb2d5487cdecf304efc42c9d30a8b79f48a4075649fa8d9a",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/gail_dc.png",
+      "gridSha256": "6f67be6105c46d8ddef30cd3b670f55ddd616060667a6e3ab5e6feea57de7dda",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/gail_dc-measured.png",
+      "markedGridSha256": "d1c01e46aa70140553a902e8fdbf229f1aa1ff1b440f603734a0dd97f728a170",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "All eight markers are on the actual physical muzzle/barrel contour, including lowered prepare/recovery weapons. Release flashes begin at the muzzle only in c2; no marker follows the detached flame tip.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 203,
+            "y": 122
+          },
+          "rgba": [
+            6,
+            5,
+            10,
+            188
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/gail_dc.png",
+          "sourceImageSha256": "578797ebf4fe97fabf42e6876865e6b10c5bf47e06c0a1c1c55f1d75bfcf12e0",
+          "sourceRow": 2,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 207,
+            "y": 99
+          },
+          "rgba": [
+            40,
+            41,
+            48,
+            232
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/gail_dc.png",
+          "sourceImageSha256": "578797ebf4fe97fabf42e6876865e6b10c5bf47e06c0a1c1c55f1d75bfcf12e0",
+          "sourceRow": 2,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 193,
+            "y": 88
+          },
+          "rgba": [
+            78,
+            65,
+            67,
+            239
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/gail_dc.png",
+          "sourceImageSha256": "578797ebf4fe97fabf42e6876865e6b10c5bf47e06c0a1c1c55f1d75bfcf12e0",
+          "sourceRow": 2,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 207,
+            "y": 116
+          },
+          "rgba": [
+            7,
+            5,
+            11,
+            214
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/gail_dc.png",
+          "sourceImageSha256": "578797ebf4fe97fabf42e6876865e6b10c5bf47e06c0a1c1c55f1d75bfcf12e0",
+          "sourceRow": 2,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 208,
+            "y": 132
+          },
+          "rgba": [
+            13,
+            10,
+            21,
+            192
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/gail_dc.png",
+          "sourceImageSha256": "578797ebf4fe97fabf42e6876865e6b10c5bf47e06c0a1c1c55f1d75bfcf12e0",
+          "sourceRow": 3,
+          "sourceColumn": 4,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 216,
+            "y": 125
+          },
+          "rgba": [
+            6,
+            6,
+            7,
+            192
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/gail_dc.png",
+          "sourceImageSha256": "578797ebf4fe97fabf42e6876865e6b10c5bf47e06c0a1c1c55f1d75bfcf12e0",
+          "sourceRow": 3,
+          "sourceColumn": 5,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 188,
+            "y": 120
+          },
+          "rgba": [
+            79,
+            41,
+            32,
+            214
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/gail_dc.png",
+          "sourceImageSha256": "578797ebf4fe97fabf42e6876865e6b10c5bf47e06c0a1c1c55f1d75bfcf12e0",
+          "sourceRow": 3,
+          "sourceColumn": 6,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 188,
+            "y": 128
+          },
+          "rgba": [
+            29,
+            33,
+            45,
+            242
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/gail_dc.png",
+          "sourceImageSha256": "578797ebf4fe97fabf42e6876865e6b10c5bf47e06c0a1c1c55f1d75bfcf12e0",
+          "sourceRow": 3,
+          "sourceColumn": 7,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "vortigaunt_ally",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/vortigaunt_ally.png",
+      "sourceSha256": "20b6d75addd6b54e07e56ebcb233129b170fec8999e9b0250f48410c50c194a3",
+      "geometrySha256": "fe9c1186e02de27f0d895c5c8f0f055e7df50334c8fe296449f2b5e568e85e6a",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/vortigaunt_ally.png",
+      "gridSha256": "a67637629a0e40511e4662848ea40f94673835045d6d197d8e98eb8f3c287e9a",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/vortigaunt_ally-measured.png",
+      "markedGridSha256": "f772f51f43b0f1aecc56ca46e860005b7343491d67a46a4b1ff8d8153d7d9507",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "Markers are on real fingertips/palm junctions. Green attached energy appears only at c2; the permanent red eye is anatomy, not an early cast.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 202,
+            "y": 132
+          },
+          "rgba": [
+            62,
+            48,
+            13,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/vortigaunt_ally-actions.png",
+          "sourceImageSha256": "3324cc4c217f84a191ce8e4cde8467bee3e43046a3b393d522543f6421e840ee",
+          "sourceRow": 0,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 181,
+            "y": 145
+          },
+          "rgba": [
+            113,
+            85,
+            24,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/vortigaunt_ally-actions.png",
+          "sourceImageSha256": "3324cc4c217f84a191ce8e4cde8467bee3e43046a3b393d522543f6421e840ee",
+          "sourceRow": 0,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 174,
+            "y": 156
+          },
+          "rgba": [
+            127,
+            197,
+            44,
+            246
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/vortigaunt_ally-actions.png",
+          "sourceImageSha256": "3324cc4c217f84a191ce8e4cde8467bee3e43046a3b393d522543f6421e840ee",
+          "sourceRow": 0,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 170,
+            "y": 169
+          },
+          "rgba": [
+            117,
+            96,
+            54,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/vortigaunt_ally-actions.png",
+          "sourceImageSha256": "3324cc4c217f84a191ce8e4cde8467bee3e43046a3b393d522543f6421e840ee",
+          "sourceRow": 0,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 184,
+            "y": 80
+          },
+          "rgba": [
+            176,
+            155,
+            123,
+            252
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/vortigaunt_ally-actions.png",
+          "sourceImageSha256": "3324cc4c217f84a191ce8e4cde8467bee3e43046a3b393d522543f6421e840ee",
+          "sourceRow": 1,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 175,
+            "y": 86
+          },
+          "rgba": [
+            74,
+            44,
+            17,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/vortigaunt_ally-actions.png",
+          "sourceImageSha256": "3324cc4c217f84a191ce8e4cde8467bee3e43046a3b393d522543f6421e840ee",
+          "sourceRow": 1,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 158,
+            "y": 74
+          },
+          "rgba": [
+            20,
+            200,
+            6,
+            242
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/vortigaunt_ally-actions.png",
+          "sourceImageSha256": "3324cc4c217f84a191ce8e4cde8467bee3e43046a3b393d522543f6421e840ee",
+          "sourceRow": 1,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 184,
+            "y": 84
+          },
+          "rgba": [
+            98,
+            70,
+            25,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/vortigaunt_ally-actions.png",
+          "sourceImageSha256": "3324cc4c217f84a191ce8e4cde8467bee3e43046a3b393d522543f6421e840ee",
+          "sourceRow": 1,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "valtweller",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/valtweller.png",
+      "sourceSha256": "eda78763fc1b8330058c6695d2c11e9b79a1fafcd559d3bed0e166acacd600b4",
+      "geometrySha256": "0d58af0301bee47944122065eb25d1b6b726f45a0571a1df874ae3951377d368",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/valtweller.png",
+      "gridSha256": "f569578cf26342f1234b7365d33a4247a88ad1c339ce64f06c3d6557f89d7a04",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/valtweller-measured.png",
+      "markedGridSha256": "b429595d57215a0a12335fe43827987c7b50baf64b1403aa46f8a179d89d1b02",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "All eight markers are on the actual physical muzzle/barrel contour, including lowered prepare/recovery weapons. Release flashes begin at the muzzle only in c2; no marker follows the detached flame tip.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 169,
+            "y": 155
+          },
+          "rgba": [
+            4,
+            3,
+            2,
+            212
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/valtweller.png",
+          "sourceImageSha256": "b80ca73a8bde06eeca09a1647b8bc7f93f7ee6b5482dc5306b4c5f86469e4381",
+          "sourceRow": 2,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 169,
+            "y": 142
+          },
+          "rgba": [
+            52,
+            52,
+            50,
+            243
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/valtweller.png",
+          "sourceImageSha256": "b80ca73a8bde06eeca09a1647b8bc7f93f7ee6b5482dc5306b4c5f86469e4381",
+          "sourceRow": 2,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 166,
+            "y": 138
+          },
+          "rgba": [
+            1,
+            5,
+            8,
+            236
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/valtweller.png",
+          "sourceImageSha256": "b80ca73a8bde06eeca09a1647b8bc7f93f7ee6b5482dc5306b4c5f86469e4381",
+          "sourceRow": 2,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 165,
+            "y": 154
+          },
+          "rgba": [
+            23,
+            23,
+            22,
+            235
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/valtweller.png",
+          "sourceImageSha256": "b80ca73a8bde06eeca09a1647b8bc7f93f7ee6b5482dc5306b4c5f86469e4381",
+          "sourceRow": 2,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 169,
+            "y": 159
+          },
+          "rgba": [
+            17,
+            17,
+            17,
+            241
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/valtweller.png",
+          "sourceImageSha256": "b80ca73a8bde06eeca09a1647b8bc7f93f7ee6b5482dc5306b4c5f86469e4381",
+          "sourceRow": 3,
+          "sourceColumn": 4,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 170,
+            "y": 161
+          },
+          "rgba": [
+            12,
+            11,
+            11,
+            224
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/valtweller.png",
+          "sourceImageSha256": "b80ca73a8bde06eeca09a1647b8bc7f93f7ee6b5482dc5306b4c5f86469e4381",
+          "sourceRow": 3,
+          "sourceColumn": 5,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 168,
+            "y": 157
+          },
+          "rgba": [
+            6,
+            2,
+            14,
+            247
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/valtweller.png",
+          "sourceImageSha256": "b80ca73a8bde06eeca09a1647b8bc7f93f7ee6b5482dc5306b4c5f86469e4381",
+          "sourceRow": 3,
+          "sourceColumn": 6,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 168,
+            "y": 162
+          },
+          "rgba": [
+            64,
+            64,
+            57,
+            242
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/valtweller.png",
+          "sourceImageSha256": "b80ca73a8bde06eeca09a1647b8bc7f93f7ee6b5482dc5306b4c5f86469e4381",
+          "sourceRow": 3,
+          "sourceColumn": 7,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "lone_wanderer",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/lone_wanderer.png",
+      "sourceSha256": "a0ac44a5b7fbb9aa39daebea190afa643541eef5f896765f9bf49b6191a6cfa6",
+      "geometrySha256": "f7095ad292ca8e9e393625ce39cac236426a06b0f48425e66c66ee23d294ea93",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/lone_wanderer.png",
+      "gridSha256": "3b207e3577f52e9ef2eeba0402ffa2ad1f9006022a47871bd9535acf399a1824",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/lone_wanderer-measured.png",
+      "markedGridSha256": "93d30e828fb82f3a6ad1ef56ac4b0014eb655ab68167a347dbdbdc94882ac9a4",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "All eight markers are on the actual physical muzzle/barrel contour, including lowered prepare/recovery weapons. Release flashes begin at the muzzle only in c2; no marker follows the detached flame tip.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 199,
+            "y": 137
+          },
+          "rgba": [
+            4,
+            4,
+            4,
+            225
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/lone_wanderer.png",
+          "sourceImageSha256": "7481da05d307811649cfb968e1ad7f87859f2940538c17553ab39b2213220c4e",
+          "sourceRow": 2,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 191,
+            "y": 121
+          },
+          "rgba": [
+            19,
+            19,
+            19,
+            246
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/lone_wanderer.png",
+          "sourceImageSha256": "7481da05d307811649cfb968e1ad7f87859f2940538c17553ab39b2213220c4e",
+          "sourceRow": 2,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 192,
+            "y": 100
+          },
+          "rgba": [
+            0,
+            0,
+            1,
+            235
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/lone_wanderer.png",
+          "sourceImageSha256": "7481da05d307811649cfb968e1ad7f87859f2940538c17553ab39b2213220c4e",
+          "sourceRow": 2,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 192,
+            "y": 136
+          },
+          "rgba": [
+            24,
+            29,
+            30,
+            249
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/lone_wanderer.png",
+          "sourceImageSha256": "7481da05d307811649cfb968e1ad7f87859f2940538c17553ab39b2213220c4e",
+          "sourceRow": 2,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 196,
+            "y": 136
+          },
+          "rgba": [
+            41,
+            41,
+            43,
+            239
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/lone_wanderer.png",
+          "sourceImageSha256": "7481da05d307811649cfb968e1ad7f87859f2940538c17553ab39b2213220c4e",
+          "sourceRow": 3,
+          "sourceColumn": 4,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 198,
+            "y": 140
+          },
+          "rgba": [
+            16,
+            14,
+            15,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/lone_wanderer.png",
+          "sourceImageSha256": "7481da05d307811649cfb968e1ad7f87859f2940538c17553ab39b2213220c4e",
+          "sourceRow": 3,
+          "sourceColumn": 6,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 191,
+            "y": 113
+          },
+          "rgba": [
+            56,
+            49,
+            39,
+            211
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/lone_wanderer.png",
+          "sourceImageSha256": "7481da05d307811649cfb968e1ad7f87859f2940538c17553ab39b2213220c4e",
+          "sourceRow": 3,
+          "sourceColumn": 5,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 192,
+            "y": 133
+          },
+          "rgba": [
+            21,
+            21,
+            24,
+            248
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/lone_wanderer.png",
+          "sourceImageSha256": "7481da05d307811649cfb968e1ad7f87859f2940538c17553ab39b2213220c4e",
+          "sourceRow": 3,
+          "sourceColumn": 7,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "natural_selection_2_marine",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/natural_selection_2_marine.png",
+      "sourceSha256": "898ca3364010047fe1e0d0ca732abe89d1d2ea43499234296104b8c748438690",
+      "geometrySha256": "1b251ff422ccceb48244c721dfac5aa5b8d4467685aac225f340f8b3c956284f",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/natural_selection_2_marine.png",
+      "gridSha256": "3c08bea4481774dd11b1380a56ccb81e263614dc5c1a30937a9517998003d8d2",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/natural_selection_2_marine-measured.png",
+      "markedGridSha256": "6934a6262d6e538a6e10907ee2cdf18183f326efc56f2716eec87e1a21a42a56",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "All eight markers are on the actual physical muzzle/barrel contour, including lowered prepare/recovery weapons. Release flashes begin at the muzzle only in c2; no marker follows the detached flame tip.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 191,
+            "y": 155
+          },
+          "rgba": [
+            41,
+            48,
+            56,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_marine-actions.png",
+          "sourceImageSha256": "bf7018805992690188166e531819cf15ae6d3081ae742c11260d0dba39d328a7",
+          "sourceRow": 0,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 218,
+            "y": 100
+          },
+          "rgba": [
+            1,
+            0,
+            1,
+            242
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_marine-actions.png",
+          "sourceImageSha256": "bf7018805992690188166e531819cf15ae6d3081ae742c11260d0dba39d328a7",
+          "sourceRow": 0,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 206,
+            "y": 116
+          },
+          "rgba": [
+            13,
+            9,
+            3,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_marine-actions.png",
+          "sourceImageSha256": "bf7018805992690188166e531819cf15ae6d3081ae742c11260d0dba39d328a7",
+          "sourceRow": 0,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 185,
+            "y": 169
+          },
+          "rgba": [
+            2,
+            3,
+            4,
+            242
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_marine-actions.png",
+          "sourceImageSha256": "bf7018805992690188166e531819cf15ae6d3081ae742c11260d0dba39d328a7",
+          "sourceRow": 0,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 180,
+            "y": 140
+          },
+          "rgba": [
+            25,
+            30,
+            36,
+            249
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_marine-actions.png",
+          "sourceImageSha256": "bf7018805992690188166e531819cf15ae6d3081ae742c11260d0dba39d328a7",
+          "sourceRow": 1,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 209,
+            "y": 98
+          },
+          "rgba": [
+            8,
+            9,
+            13,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_marine-actions.png",
+          "sourceImageSha256": "bf7018805992690188166e531819cf15ae6d3081ae742c11260d0dba39d328a7",
+          "sourceRow": 1,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 207,
+            "y": 87
+          },
+          "rgba": [
+            4,
+            3,
+            2,
+            248
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_marine-actions.png",
+          "sourceImageSha256": "bf7018805992690188166e531819cf15ae6d3081ae742c11260d0dba39d328a7",
+          "sourceRow": 1,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 183,
+            "y": 138
+          },
+          "rgba": [
+            1,
+            1,
+            0,
+            252
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_marine-actions.png",
+          "sourceImageSha256": "bf7018805992690188166e531819cf15ae6d3081ae742c11260d0dba39d328a7",
+          "sourceRow": 1,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "natural_selection_2_jetpack_marine",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/natural_selection_2_jetpack_marine.png",
+      "sourceSha256": "e5f7d3f3e410abda7dab45da489e8236e1ade7517bf5efcae5ef9ce9ea183a72",
+      "geometrySha256": "074fe62e31f9a544e1d7b746a0cd203ad9da548ee119a8e5af13022e6dee15f6",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/natural_selection_2_jetpack_marine.png",
+      "gridSha256": "2b02bdfaeb4d69deb52812104ac62eb424399600a1d4c20d29581ee3721d4557",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/natural_selection_2_jetpack_marine-measured.png",
+      "markedGridSha256": "a4eb48853aebcab712314cd0710e254c6fb39b22153f909958ccda0ec8157d31",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "All eight markers are on the actual physical muzzle/barrel contour, including lowered prepare/recovery weapons. Release flashes begin at the muzzle only in c2; no marker follows the detached flame tip.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 196,
+            "y": 156
+          },
+          "rgba": [
+            77,
+            75,
+            75,
+            245
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_jetpack_marine.png",
+          "sourceImageSha256": "854a3dae62b554d7669434430930d29a4c7ccf6fe235215ba9773716b89bf573",
+          "sourceRow": 2,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 198,
+            "y": 122
+          },
+          "rgba": [
+            134,
+            123,
+            117,
+            247
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_jetpack_marine.png",
+          "sourceImageSha256": "854a3dae62b554d7669434430930d29a4c7ccf6fe235215ba9773716b89bf573",
+          "sourceRow": 2,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 194,
+            "y": 138
+          },
+          "rgba": [
+            90,
+            84,
+            82,
+            245
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_jetpack_marine.png",
+          "sourceImageSha256": "854a3dae62b554d7669434430930d29a4c7ccf6fe235215ba9773716b89bf573",
+          "sourceRow": 2,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 204,
+            "y": 166
+          },
+          "rgba": [
+            1,
+            1,
+            3,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_jetpack_marine.png",
+          "sourceImageSha256": "854a3dae62b554d7669434430930d29a4c7ccf6fe235215ba9773716b89bf573",
+          "sourceRow": 2,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 201,
+            "y": 151
+          },
+          "rgba": [
+            79,
+            75,
+            69,
+            248
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_jetpack_marine.png",
+          "sourceImageSha256": "854a3dae62b554d7669434430930d29a4c7ccf6fe235215ba9773716b89bf573",
+          "sourceRow": 3,
+          "sourceColumn": 4,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 189,
+            "y": 130
+          },
+          "rgba": [
+            28,
+            26,
+            29,
+            248
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_jetpack_marine.png",
+          "sourceImageSha256": "854a3dae62b554d7669434430930d29a4c7ccf6fe235215ba9773716b89bf573",
+          "sourceRow": 3,
+          "sourceColumn": 6,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 195,
+            "y": 149
+          },
+          "rgba": [
+            218,
+            192,
+            130,
+            247
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_jetpack_marine.png",
+          "sourceImageSha256": "854a3dae62b554d7669434430930d29a4c7ccf6fe235215ba9773716b89bf573",
+          "sourceRow": 3,
+          "sourceColumn": 5,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 196,
+            "y": 158
+          },
+          "rgba": [
+            17,
+            16,
+            16,
+            243
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_jetpack_marine.png",
+          "sourceImageSha256": "854a3dae62b554d7669434430930d29a4c7ccf6fe235215ba9773716b89bf573",
+          "sourceRow": 3,
+          "sourceColumn": 7,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "natural_selection_2_exosuit",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/natural_selection_2_exosuit.png",
+      "sourceSha256": "643ed18fcdad89281dbcfb5921c3231556dccb6f9eb3722f3d020904c6926dc3",
+      "geometrySha256": "26837a6130ef311a552ee0038008fd811d61b260e7498b86afcb6bceaa6a8abd",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/natural_selection_2_exosuit.png",
+      "gridSha256": "e79008dccafe96a67d42dae9b9069e6d1cb48702fc7f583ca6e246a274eca2ef",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/natural_selection_2_exosuit-measured.png",
+      "markedGridSha256": "8aa8b880ab7fa2ddef2b5b54d308b8d7c5deab76a57e506b0f0e047be094a064",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "Markers select the foremost visible integrated minigun barrel. Both native c2 cosmetic flashes are visible, while the bounded engine emits its single authoritative projectile from the selected barrel; no additional gameplay hit is implied.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 202,
+            "y": 165
+          },
+          "rgba": [
+            25,
+            24,
+            25,
+            249
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_exosuit-actions.png",
+          "sourceImageSha256": "b04342396c6a6e437faf372bf83a492d02589c30087cda8f4e8dc3ae4f6af12a",
+          "sourceRow": 0,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 203,
+            "y": 159
+          },
+          "rgba": [
+            7,
+            6,
+            7,
+            245
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_exosuit-actions.png",
+          "sourceImageSha256": "b04342396c6a6e437faf372bf83a492d02589c30087cda8f4e8dc3ae4f6af12a",
+          "sourceRow": 0,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 200,
+            "y": 156
+          },
+          "rgba": [
+            43,
+            7,
+            6,
+            252
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_exosuit-actions.png",
+          "sourceImageSha256": "b04342396c6a6e437faf372bf83a492d02589c30087cda8f4e8dc3ae4f6af12a",
+          "sourceRow": 0,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 199,
+            "y": 177
+          },
+          "rgba": [
+            2,
+            1,
+            2,
+            243
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_exosuit-actions.png",
+          "sourceImageSha256": "b04342396c6a6e437faf372bf83a492d02589c30087cda8f4e8dc3ae4f6af12a",
+          "sourceRow": 0,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 205,
+            "y": 189
+          },
+          "rgba": [
+            34,
+            40,
+            46,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_exosuit-actions.png",
+          "sourceImageSha256": "b04342396c6a6e437faf372bf83a492d02589c30087cda8f4e8dc3ae4f6af12a",
+          "sourceRow": 1,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 217,
+            "y": 162
+          },
+          "rgba": [
+            0,
+            0,
+            2,
+            231
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_exosuit-actions.png",
+          "sourceImageSha256": "b04342396c6a6e437faf372bf83a492d02589c30087cda8f4e8dc3ae4f6af12a",
+          "sourceRow": 1,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 204,
+            "y": 161
+          },
+          "rgba": [
+            0,
+            0,
+            0,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_exosuit-actions.png",
+          "sourceImageSha256": "b04342396c6a6e437faf372bf83a492d02589c30087cda8f4e8dc3ae4f6af12a",
+          "sourceRow": 1,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 200,
+            "y": 183
+          },
+          "rgba": [
+            24,
+            22,
+            22,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/natural_selection_2_exosuit-actions.png",
+          "sourceImageSha256": "b04342396c6a6e437faf372bf83a492d02589c30087cda8f4e8dc3ae4f6af12a",
+          "sourceRow": 1,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "unreal_tournament_2004_gorge",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/unreal_tournament_2004_gorge.png",
+      "sourceSha256": "66b1f000ae28a3b42c4f147224641bdf857dcba3f5e5e74d9a13c40cee507cb0",
+      "geometrySha256": "f31a6c8a643ade46a14a893d7aff66c8c5fc94079b2acb827d3f1b49a4d7cce3",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/unreal_tournament_2004_gorge.png",
+      "gridSha256": "1742a7346066aa577369baf141487c3346b5515bb7320747e6ee0c50df2dd9f7",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/unreal_tournament_2004_gorge-measured.png",
+      "markedGridSha256": "9b245b577c38bb957d90e3b118c644df4b26c8b9a430b27b73a25a3ee1c0b24c",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "All eight markers are on the actual physical muzzle/barrel contour, including lowered prepare/recovery weapons. Release flashes begin at the muzzle only in c2; no marker follows the detached flame tip.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 188,
+            "y": 163
+          },
+          "rgba": [
+            8,
+            4,
+            2,
+            205
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_gorge-actions.png",
+          "sourceImageSha256": "ec4d19b392f1ea521cc7da8b9b09119b8b66479bd49c27b9e0fd43e1a40365a1",
+          "sourceRow": 0,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 191,
+            "y": 141
+          },
+          "rgba": [
+            16,
+            15,
+            16,
+            246
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_gorge-actions.png",
+          "sourceImageSha256": "ec4d19b392f1ea521cc7da8b9b09119b8b66479bd49c27b9e0fd43e1a40365a1",
+          "sourceRow": 0,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 188,
+            "y": 145
+          },
+          "rgba": [
+            8,
+            9,
+            9,
+            252
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_gorge-actions.png",
+          "sourceImageSha256": "ec4d19b392f1ea521cc7da8b9b09119b8b66479bd49c27b9e0fd43e1a40365a1",
+          "sourceRow": 0,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 175,
+            "y": 202
+          },
+          "rgba": [
+            9,
+            6,
+            8,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_gorge-actions.png",
+          "sourceImageSha256": "ec4d19b392f1ea521cc7da8b9b09119b8b66479bd49c27b9e0fd43e1a40365a1",
+          "sourceRow": 0,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 191,
+            "y": 165
+          },
+          "rgba": [
+            88,
+            85,
+            80,
+            253
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_gorge-actions.png",
+          "sourceImageSha256": "ec4d19b392f1ea521cc7da8b9b09119b8b66479bd49c27b9e0fd43e1a40365a1",
+          "sourceRow": 1,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 195,
+            "y": 139
+          },
+          "rgba": [
+            23,
+            22,
+            21,
+            235
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_gorge-actions.png",
+          "sourceImageSha256": "ec4d19b392f1ea521cc7da8b9b09119b8b66479bd49c27b9e0fd43e1a40365a1",
+          "sourceRow": 1,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 191,
+            "y": 139
+          },
+          "rgba": [
+            0,
+            0,
+            0,
+            253
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_gorge-actions.png",
+          "sourceImageSha256": "ec4d19b392f1ea521cc7da8b9b09119b8b66479bd49c27b9e0fd43e1a40365a1",
+          "sourceRow": 1,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 187,
+            "y": 178
+          },
+          "rgba": [
+            28,
+            25,
+            24,
+            242
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_gorge-actions.png",
+          "sourceImageSha256": "ec4d19b392f1ea521cc7da8b9b09119b8b66479bd49c27b9e0fd43e1a40365a1",
+          "sourceRow": 1,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "unreal_tournament_2004_sapphire",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/unreal_tournament_2004_sapphire.png",
+      "sourceSha256": "eec5ced9cca58eb6781d66bf56a338c8f3d3b0f9626bac33d6eff262d59bb093",
+      "geometrySha256": "a45aee769d5243982c2560750b324105334c19109bd7dd35a2ecaa8763e24d19",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/unreal_tournament_2004_sapphire.png",
+      "gridSha256": "b31a09d4d1627a0090c58658d4a20a78d358429b8118f48aff2b4f2ced27e81b",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/unreal_tournament_2004_sapphire-measured.png",
+      "markedGridSha256": "3037d4ff12f2c76ffb2b5b3c7fee22f9f607fd8cd7b15380de43677ac3f595b9",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "Markers follow the physical Shock Rifle emitter cap, including its blue native material. Bright attached discharge is present only at c2, without confusing normal blue weapon trim for early emission.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 185,
+            "y": 213
+          },
+          "rgba": [
+            1,
+            0,
+            16,
+            236
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_sapphire-actions.png",
+          "sourceImageSha256": "d0415f75be8cca64685670e0ede948ab8128bb1365b2944506969ae11248aaed",
+          "sourceRow": 0,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 200,
+            "y": 132
+          },
+          "rgba": [
+            1,
+            12,
+            72,
+            247
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_sapphire-actions.png",
+          "sourceImageSha256": "d0415f75be8cca64685670e0ede948ab8128bb1365b2944506969ae11248aaed",
+          "sourceRow": 0,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 203,
+            "y": 114
+          },
+          "rgba": [
+            0,
+            6,
+            243,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_sapphire-actions.png",
+          "sourceImageSha256": "d0415f75be8cca64685670e0ede948ab8128bb1365b2944506969ae11248aaed",
+          "sourceRow": 0,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 187,
+            "y": 207
+          },
+          "rgba": [
+            0,
+            0,
+            3,
+            240
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_sapphire-actions.png",
+          "sourceImageSha256": "d0415f75be8cca64685670e0ede948ab8128bb1365b2944506969ae11248aaed",
+          "sourceRow": 0,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 193,
+            "y": 212
+          },
+          "rgba": [
+            0,
+            0,
+            0,
+            201
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_sapphire-actions.png",
+          "sourceImageSha256": "d0415f75be8cca64685670e0ede948ab8128bb1365b2944506969ae11248aaed",
+          "sourceRow": 1,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 213,
+            "y": 164
+          },
+          "rgba": [
+            0,
+            0,
+            6,
+            239
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_sapphire-actions.png",
+          "sourceImageSha256": "d0415f75be8cca64685670e0ede948ab8128bb1365b2944506969ae11248aaed",
+          "sourceRow": 1,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 204,
+            "y": 159
+          },
+          "rgba": [
+            89,
+            122,
+            252,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_sapphire-actions.png",
+          "sourceImageSha256": "d0415f75be8cca64685670e0ede948ab8128bb1365b2944506969ae11248aaed",
+          "sourceRow": 1,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 190,
+            "y": 214
+          },
+          "rgba": [
+            5,
+            31,
+            160,
+            248
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_sapphire-actions.png",
+          "sourceImageSha256": "d0415f75be8cca64685670e0ede948ab8128bb1365b2944506969ae11248aaed",
+          "sourceRow": 1,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    },
+    {
+      "heroId": "unreal_tournament_2004_frostbite",
+      "sourceSheet": "/sprites/generated/combat-character-animations-wave15-part-c/unreal_tournament_2004_frostbite.png",
+      "sourceSha256": "910fb380ca08074b52e26d9e697688a8f33585e792d67989c15b41863c929c3b",
+      "geometrySha256": "aa9ed7b7e2f576d98539a87a61127720761b8cf53548b8ac1c7253a2949aeaad",
+      "grid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/grids/unreal_tournament_2004_frostbite.png",
+      "gridSha256": "85134d80fcc25572e3997f624fceea8ce3e81917036e0f8e703c99e4d7c6ebd5",
+      "markedGrid": "docs/combat-fidelity-wave15-2026-10-26/part-c/anchor-review/unreal_tournament_2004_frostbite-measured.png",
+      "markedGridSha256": "4bd26ac094436983dcd00f53758e7962a533f2389caf98bb8582bfe59223a1da",
+      "rawGridActuallyViewed": true,
+      "markedGridActuallyViewed": true,
+      "actualMarkerOverlayByteReproduction": true,
+      "physicalEmitterVisualReview": "PASS",
+      "releaseColumn": 2,
+      "flashOrBrightReleaseOnlyInColumn2": true,
+      "noEarlyEmissionFlashInColumns0And1": true,
+      "recoveryColumn3HasNoEmissionFlash": true,
+      "findings": "All eight markers are on the actual physical muzzle/barrel contour, including lowered prepare/recovery weapons. Release flashes begin at the muzzle only in c2; no marker follows the detached flame tip.",
+      "points": [
+        {
+          "phase": "fatality",
+          "column": 0,
+          "row": 4,
+          "anchor": {
+            "x": 191,
+            "y": 153
+          },
+          "rgba": [
+            16,
+            15,
+            22,
+            249
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_frostbite.png",
+          "sourceImageSha256": "31d200ff3f9d4db4a130f05f0b1257059415f671253996df133fe4dc81499d63",
+          "sourceRow": 2,
+          "sourceColumn": 0,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 1,
+          "row": 4,
+          "anchor": {
+            "x": 188,
+            "y": 145
+          },
+          "rgba": [
+            7,
+            8,
+            15,
+            249
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_frostbite.png",
+          "sourceImageSha256": "31d200ff3f9d4db4a130f05f0b1257059415f671253996df133fe4dc81499d63",
+          "sourceRow": 2,
+          "sourceColumn": 2,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 2,
+          "row": 4,
+          "anchor": {
+            "x": 182,
+            "y": 126
+          },
+          "rgba": [
+            81,
+            25,
+            25,
+            250
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_frostbite.png",
+          "sourceImageSha256": "31d200ff3f9d4db4a130f05f0b1257059415f671253996df133fe4dc81499d63",
+          "sourceRow": 2,
+          "sourceColumn": 1,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "fatality",
+          "column": 3,
+          "row": 4,
+          "anchor": {
+            "x": 190,
+            "y": 135
+          },
+          "rgba": [
+            23,
+            24,
+            31,
+            245
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_frostbite.png",
+          "sourceImageSha256": "31d200ff3f9d4db4a130f05f0b1257059415f671253996df133fe4dc81499d63",
+          "sourceRow": 2,
+          "sourceColumn": 3,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 0,
+          "row": 7,
+          "anchor": {
+            "x": 191,
+            "y": 150
+          },
+          "rgba": [
+            3,
+            6,
+            8,
+            251
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_frostbite.png",
+          "sourceImageSha256": "31d200ff3f9d4db4a130f05f0b1257059415f671253996df133fe4dc81499d63",
+          "sourceRow": 3,
+          "sourceColumn": 4,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 1,
+          "row": 7,
+          "anchor": {
+            "x": 188,
+            "y": 143
+          },
+          "rgba": [
+            45,
+            47,
+            59,
+            246
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_frostbite.png",
+          "sourceImageSha256": "31d200ff3f9d4db4a130f05f0b1257059415f671253996df133fe4dc81499d63",
+          "sourceRow": 3,
+          "sourceColumn": 6,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 2,
+          "row": 7,
+          "anchor": {
+            "x": 184,
+            "y": 131
+          },
+          "rgba": [
+            75,
+            31,
+            20,
+            252
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_frostbite.png",
+          "sourceImageSha256": "31d200ff3f9d4db4a130f05f0b1257059415f671253996df133fe4dc81499d63",
+          "sourceRow": 3,
+          "sourceColumn": 5,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        },
+        {
+          "phase": "super",
+          "column": 3,
+          "row": 7,
+          "anchor": {
+            "x": 187,
+            "y": 156
+          },
+          "rgba": [
+            39,
+            39,
+            46,
+            248
+          ],
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-c/sources/unreal_tournament_2004_frostbite.png",
+          "sourceImageSha256": "31d200ff3f9d4db4a130f05f0b1257059415f671253996df133fe4dc81499d63",
+          "sourceRow": 3,
+          "sourceColumn": 7,
+          "actualNativePixel": true,
+          "equalsLiveRegistry": true
+        }
+      ]
+    }
+  ]
+}

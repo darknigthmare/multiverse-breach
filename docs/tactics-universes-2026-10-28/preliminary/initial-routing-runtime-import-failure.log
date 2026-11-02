@@ -1,0 +1,135 @@
+✔ each W16 source location selects its own playable Tactics topology and materials without recent-stage substitution (5268.671014ms)
+✔ a named source location in another universe cannot silently select a foreign terrain (0.468698ms)
+✔ custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop (1.736422ms)
+✔ custom automatic choice uses a dedicated source layout and survives preset normalization (0.353874ms)
+✔ forced base arenas and authored mission objectives keep their explicit contracts (0.285481ms)
+✖ cuphead_inkwell_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (9249.991931ms)
+✖ cuphead_inkwell_tactics: actual surface objective resolves through engine effects without rewriting counters (0.647928ms)
+✖ titanfall_reclamation_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (0.108794ms)
+✖ titanfall_reclamation_tactics: actual surface objective resolves through engine effects without rewriting counters (0.103806ms)
+✖ fma_central_station_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (0.122225ms)
+✖ fma_central_station_tactics: actual surface objective resolves through engine effects without rewriting counters (0.079931ms)
+✖ wakfu_sadida_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (0.151148ms)
+✖ wakfu_sadida_tactics: actual surface objective resolves through engine effects without rewriting counters (0.165199ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 5
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15486.218216
+
+✖ failing tests:
+
+test at scripts/tacticsUniverseRuntimeWave16.test.mjs:20:2
+✖ cuphead_inkwell_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (9249.991931ms)
+  TypeError: Cannot convert undefined or null to object
+      at Object.entries (<anonymous>)
+      at eval (/workspace/multiverse-breach/src/game/combat/nativeSuperVisualsWave16.js:30:47)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+      at async SSRCompatModuleRunner.cachedRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1166:73)
+      at async eval (/workspace/multiverse-breach/src/game/combat/characterSuperVisuals.js:9:31)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+
+test at scripts/tacticsUniverseRuntimeWave16.test.mjs:28:2
+✖ cuphead_inkwell_tactics: actual surface objective resolves through engine effects without rewriting counters (0.647928ms)
+  TypeError: Cannot convert undefined or null to object
+      at Object.entries (<anonymous>)
+      at eval (/workspace/multiverse-breach/src/game/combat/nativeSuperVisualsWave16.js:30:47)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+      at async SSRCompatModuleRunner.cachedRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1166:73)
+      at async eval (/workspace/multiverse-breach/src/game/combat/characterSuperVisuals.js:9:31)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+
+test at scripts/tacticsUniverseRuntimeWave16.test.mjs:20:2
+✖ titanfall_reclamation_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (0.108794ms)
+  TypeError: Cannot convert undefined or null to object
+      at Object.entries (<anonymous>)
+      at eval (/workspace/multiverse-breach/src/game/combat/nativeSuperVisualsWave16.js:30:47)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+      at async SSRCompatModuleRunner.cachedRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1166:73)
+      at async eval (/workspace/multiverse-breach/src/game/combat/characterSuperVisuals.js:9:31)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+
+test at scripts/tacticsUniverseRuntimeWave16.test.mjs:28:2
+✖ titanfall_reclamation_tactics: actual surface objective resolves through engine effects without rewriting counters (0.103806ms)
+  TypeError: Cannot convert undefined or null to object
+      at Object.entries (<anonymous>)
+      at eval (/workspace/multiverse-breach/src/game/combat/nativeSuperVisualsWave16.js:30:47)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+      at async SSRCompatModuleRunner.cachedRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1166:73)
+      at async eval (/workspace/multiverse-breach/src/game/combat/characterSuperVisuals.js:9:31)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+
+test at scripts/tacticsUniverseRuntimeWave16.test.mjs:20:2
+✖ fma_central_station_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (0.122225ms)
+  TypeError: Cannot convert undefined or null to object
+      at Object.entries (<anonymous>)
+      at eval (/workspace/multiverse-breach/src/game/combat/nativeSuperVisualsWave16.js:30:47)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+      at async SSRCompatModuleRunner.cachedRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1166:73)
+      at async eval (/workspace/multiverse-breach/src/game/combat/characterSuperVisuals.js:9:31)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+
+test at scripts/tacticsUniverseRuntimeWave16.test.mjs:28:2
+✖ fma_central_station_tactics: actual surface objective resolves through engine effects without rewriting counters (0.079931ms)
+  TypeError: Cannot convert undefined or null to object
+      at Object.entries (<anonymous>)
+      at eval (/workspace/multiverse-breach/src/game/combat/nativeSuperVisualsWave16.js:30:47)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+      at async SSRCompatModuleRunner.cachedRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1166:73)
+      at async eval (/workspace/multiverse-breach/src/game/combat/characterSuperVisuals.js:9:31)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+
+test at scripts/tacticsUniverseRuntimeWave16.test.mjs:20:2
+✖ wakfu_sadida_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (0.151148ms)
+  TypeError: Cannot convert undefined or null to object
+      at Object.entries (<anonymous>)
+      at eval (/workspace/multiverse-breach/src/game/combat/nativeSuperVisualsWave16.js:30:47)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+      at async SSRCompatModuleRunner.cachedRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1166:73)
+      at async eval (/workspace/multiverse-breach/src/game/combat/characterSuperVisuals.js:9:31)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+
+test at scripts/tacticsUniverseRuntimeWave16.test.mjs:28:2
+✖ wakfu_sadida_tactics: actual surface objective resolves through engine effects without rewriting counters (0.165199ms)
+  TypeError: Cannot convert undefined or null to object
+      at Object.entries (<anonymous>)
+      at eval (/workspace/multiverse-breach/src/game/combat/nativeSuperVisualsWave16.js:30:47)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)
+      at async SSRCompatModuleRunner.cachedRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1166:73)
+      at async eval (/workspace/multiverse-breach/src/game/combat/characterSuperVisuals.js:9:31)
+      at async ESModulesEvaluator.runInlinedModule (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1006:3)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/module-runner.js:1259:59)
+      at async SSRCompatModuleRunner.directRequest (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:11241:20)

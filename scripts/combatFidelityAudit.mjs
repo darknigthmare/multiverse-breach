@@ -1,6 +1,8 @@
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { extendCombatFidelityWave15 } from './combatFidelityWave15Audit.mjs';
+import { extendCombatFidelityWave16 } from './combatFidelityWave16Audit.mjs';
 import { HEROES_DB } from '../src/game/heroes.js';
 import { resolveCombatAbility, resolveUniverseSummon } from '../src/game/combatIdentity.js';
 import { COMBAT_ABILITY_OVERRIDES } from '../src/game/combat/abilities/catalog.js';
@@ -37,6 +39,8 @@ import { WAVE_14_PRESENTATION_DEFINITIONS } from '../src/game/combat/presentatio
 import { supportsNativeSuperWave14 } from '../src/game/combat/nativeSuperVisualsWave14.js';
 import { ROSTER_REINFORCEMENTS_WAVE14 } from '../src/game/combat/rosterReinforcementsWave14.js';
 import { TACTICS_UNIVERSE_BATTLEFIELDS } from '../src/game/tacticsUniverseBattlefields.js';
+import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15 } from '../src/game/tacticsUniverseBattlefieldsWave15.js';
+import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16 } from '../src/game/tacticsUniverseBattlefieldsWave16.js';
 import { TACTICS_VERTICAL_BATTLEFIELDS } from '../src/game/tacticsVerticalBattlefields.js';
 import { normalizeTacticsTerrain, findTerrainPath, canOccupyTerrainSurface, getTerrainSurface, terrainLineOfSight } from '../src/game/tacticsTerrain.js';
 import { getCharacterAnimationAssets } from '../src/game/combat/characterAnimationCatalog.js';
@@ -150,7 +154,8 @@ export function measureCombatFidelity() {
   const partialNativeEntries = deliveredNative.filter(entry => !completePresentation(entry));
   const nativeIds = nativeEntries.map(entry => entry.heroId || entry.sourceHeroId || entry.id);
   const cloudRegistryPaths = ['src/game/combat/cloudMeleeMotion.generated.json', 'src/game/combat/cloudMeleeCombat.generated.json', 'src/game/combat/tifaMeleeMotion.generated.json', 'src/game/combat/tifaMeleeCombat.generated.json', 'src/game/combat/gokuMeleeMotion.generated.json', 'src/game/combat/gokuMeleeCombat.generated.json', 'src/game/combat/vegetaMeleeMotion.generated.json', 'src/game/combat/vegetaMeleeCombat.generated.json', 'src/game/combat/sonicMeleeMotion.generated.json', 'src/game/combat/sonicMeleeCombat.generated.json', 'src/game/combat/ragnaMeleeMotion.generated.json', 'src/game/combat/ragnaMeleeCombat.generated.json', 'src/game/combat/kiryuMeleeMotion.generated.json', 'src/game/combat/kiryuMeleeCombat.generated.json', 'src/game/combat/chrisMeleeMotion.generated.json', 'src/game/combat/chrisMeleeCombat.generated.json', 'src/game/combat/neoMeleeMotion.generated.json', 'src/game/combat/neoMeleeCombat.generated.json', 'src/game/combat/freemanMeleeMotion.generated.json', 'src/game/combat/freemanMeleeCombat.generated.json'];
-  cloudRegistryPaths.push(...['buffy', 'arthur', 'isaac', 'ripley', 'aragorn'].flatMap(id => [`src/game/combat/${id}MeleeMotion.generated.json`, `src/game/combat/${id}MeleeCombat.generated.json`]));
+  cloudRegistryPaths.push(...['buffy', 'arthur', 'isaac', 'ripley', 'aragorn', 'sirDaniel'].flatMap(id => [`src/game/combat/${id}MeleeMotion.generated.json`, `src/game/combat/${id}MeleeCombat.generated.json`]));
+  cloudRegistryPaths.push('src/game/combat/characterSenuaMotionWave16.generated.json', 'src/game/combat/characterSenuaActionWave16.generated.json');
   const cloudAssets = cloudRegistryPaths.flatMap(file => existsSync(new URL(file, root)) ? json(file).entries : []);
   const cloudAssetsBySheet = new Map(cloudAssets.map(entry => [entry.sheet, entry]));
   const detailedManifests = dedicatedManifestHeroes.map(id => {
@@ -184,6 +189,8 @@ export function measureCombatFidelity() {
   correctionPaths.push(...['A', 'B', 'C', 'D'].map(part => `src/game/combat/characterSpriteCorrectionsWave12Part${part}.generated.json`));
   correctionPaths.push(...['A', 'B'].map(part => `src/game/combat/characterSpriteCorrectionsWave13Part${part}.generated.json`));
   correctionPaths.push(...['A', 'B'].map(part => `src/game/combat/characterSpriteCorrectionsWave14Part${part}.generated.json`));
+  correctionPaths.push(...['A', 'B', 'C'].map(part => `src/game/combat/characterSpriteCorrectionsWave15Part${part}.generated.json`));
+  correctionPaths.push(...['A', 'B', 'C'].map(part => `src/game/combat/characterSpriteCorrectionsWave16Part${part}.generated.json`));
   const baseCorrectionDeclared = correctionPaths.flatMap(file => existsSync(new URL(file, root)) ? json(file).entries : []);
   const baseCorrections = baseCorrectionDeclared.filter(delivered);
   const formDeclared = getCharacterFormAssets();
@@ -192,6 +199,8 @@ export function measureCombatFidelity() {
   summonAnimationPaths.push('src/game/combat/summonAnimationsWave12.generated.json');
   summonAnimationPaths.push('src/game/combat/summonAnimationsWave13.generated.json');
   summonAnimationPaths.push('src/game/combat/summonAnimationsWave14.generated.json');
+  summonAnimationPaths.push('src/game/combat/summonAnimationsWave15.generated.json');
+  summonAnimationPaths.push('src/game/combat/summonAnimationsWave16.generated.json');
   const summonAnimationDeclared = summonAnimationPaths.flatMap(file => existsSync(new URL(file, root)) ? json(file).entries : []);
   const summonAnimations = summonAnimationDeclared.filter(delivered);
   const wave14SummonAnimations = existsSync(new URL('src/game/combat/summonAnimationsWave14.generated.json', root))
@@ -387,7 +396,7 @@ export function measureCombatFidelity() {
   const tacticsEvidenceFiles = evidenceFiles('docs/tactics-verticality-2026-10-24');
   const wave14EvidenceFiles = evidenceFiles(wave14Directory, true);
   const universeTacticsEvidenceDirectories = readdirSync(new URL('docs/', root), { withFileTypes: true })
-    .filter(entry => entry.isDirectory() && /tactics/i.test(entry.name) && /2026-10-25/.test(entry.name))
+    .filter(entry => entry.isDirectory() && /tactics/i.test(entry.name) && /2026-10-(?:25|26|28)/.test(entry.name))
     .map(entry => `docs/${entry.name}`);
   const universeTacticsEvidenceFiles = universeTacticsEvidenceDirectories.flatMap(directory => evidenceFiles(directory, true));
   const wave14RuntimeInputs = ['src/game/combat', 'src/game/melee', 'scripts'].flatMap(directory => (
@@ -400,7 +409,8 @@ export function measureCombatFidelity() {
       .filter(entry => entry.isFile() && /(?:Wave13|ripley)/i.test(entry.name) && /\.(?:js|mjs|json)$/.test(entry.name))
       .map(entry => `${entry.parentPath}/${entry.name}`.replace(fileURLToPath(root), ''))
   ));
-  const tacticsTerrains = [...Object.values(TACTICS_VERTICAL_BATTLEFIELDS), ...Object.values(TACTICS_UNIVERSE_BATTLEFIELDS)].map(field => {
+  const allUniverseBattlefields = { ...TACTICS_UNIVERSE_BATTLEFIELDS, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16 };
+  const tacticsTerrains = [...Object.values(TACTICS_VERTICAL_BATTLEFIELDS), ...Object.values(allUniverseBattlefields)].map(field => {
     const terrain = normalizeTacticsTerrain(field);
     const unit = { tacticsHeight: 1.6 };
     const routeOptions = { unit, isOccupied: surface => (field.obstacles || []).some(obstacle => obstacle.hp > 0 && obstacle.surfaceId === surface.id) };
@@ -626,12 +636,36 @@ export function measureCombatFidelity() {
     'scripts/tacticsUniverseBattlefields.test.mjs', 'scripts/tacticsUniversePresentation.test.mjs',
     'scripts/tacticsUniverseRuntime.test.mjs', 'scripts/tacticsUniverseRouting.test.mjs',
     'scripts/tacticsUniverseUi.test.mjs', 'scripts/tacticsUniverseUi.browser.mjs', 'scripts/progressionAudit.mjs');
+  const wave15RuntimeInputs = ['src/game/combat', 'src/game/melee', 'scripts'].flatMap(directory => (
+    readdirSync(new URL(directory, root), { recursive: true, withFileTypes: true })
+      .filter(entry => entry.isFile() && /Wave15/i.test(entry.name) && /\.(?:js|mjs|json)$/.test(entry.name))
+      .map(entry => `${entry.parentPath}/${entry.name}`.replace(fileURLToPath(root), ''))
+  ));
+  inputPaths.push(...wave15RuntimeInputs, ...evidenceFiles('docs/combat-fidelity-wave15-2026-10-26', true),
+    'scripts/combatFidelityAudit.mjs', 'scripts/combatCompletionAudit.mjs', 'scripts/auditCharacterReferenceQuality.py',
+    'src/game/rpgTargeting.js', 'src/game/tacticsControl.js', 'src/game/melee/sirDanielMeleeManifest.js', 'scripts/rpgAuthoredSpecial.test.mjs',
+    'scripts/buildRiftDossierCatalog.mjs', 'scripts/buildRiftDossierAssetRegistry.mjs',
+    'src/game/tacticsUniverseBattlefieldsWave15.js', 'src/game/tacticsUniversePresentationWave15.js',
+    'package.json', 'package-lock.json');
   // Archived source registries remain hashed evidence, but only production
   // registries can contribute delivered assets to the HTTP/build inventory.
   const assetRegistries = [...new Set(inputPaths)].filter(file => file.startsWith('src/game/') && file.endsWith('.generated.json') && existsSync(new URL(file, root)))
     .map(file => ({ file, entries: json(file).entries || [] })).filter(record => record.entries.some(entry => typeof entry.sheet === 'string'));
   const assetFiles = new Map(assetRegistries.flatMap(record => record.entries).filter(delivered).map(entry => [entry.sheet, entry]));
-  return {
+  const wave16RuntimeInputs = ['src', 'scripts'].flatMap(directory => readdirSync(new URL(directory, root), { recursive: true, withFileTypes: true })
+    .filter(entry => entry.isFile() && /(?:Wave16|senua|cohortWave16)/i.test(entry.name) && /\.(?:js|jsx|mjs|json|py)$/.test(entry.name))
+    .map(entry => `${entry.parentPath}/${entry.name}`.replace(fileURLToPath(root), '')));
+  inputPaths.push(...wave16RuntimeInputs, ...evidenceFiles('docs/combat-fidelity-wave16-2026-10-28', true),
+    'src/game/enemies.js', 'src/game/rpgTargetingPresentation.js', 'src/components/RpgTargetingPanel.jsx',
+    'public/sprites/generated/bosses/oddworld/slig.png',
+    'docs/combat-fidelity-wave16-2026-10-28/CLOSURE.md', 'docs/tactics-universes-2026-10-28/README.md');
+  for (const file of wave16RuntimeInputs.filter(file => file.startsWith('src/game/') && file.endsWith('.generated.json'))) {
+    const record = json(file), entries = (record.entries || []).filter(entry => typeof entry.sheet === 'string');
+    if (!entries.length || assetRegistries.some(item => item.file === file)) continue;
+    assetRegistries.push({ file, entries });
+    for (const entry of entries.filter(delivered)) assetFiles.set(entry.sheet, entry);
+  }
+  return extendCombatFidelityWave16(extendCombatFidelityWave15({
     assetInventory: { registryFiles: assetRegistries.length, deliveredUniquePngFiles: assetFiles.size,
       registries: assetRegistries.map(record => record.file), sheets: [...assetFiles.keys()].sort(),
       method: 'Declared asset registries with real PNG/hash/dimension/alpha checks; shared sheets counted once. This does not certify source-frame fidelity.', source1to1Verified: false },
@@ -813,8 +847,8 @@ export function measureCombatFidelity() {
       sharedEffectFamilies: new Set(stageDefaults.map(entry => entry.effect)).size,
       entries: stageDefaults, sourceScenesVerified: 0, source1to1UnverifiedRosterUniverses: universes.length },
     tacticsTerrain: { selectableVerticalBattlefields: tacticsTerrains.length,
-      universeBattlefields: Object.keys(TACTICS_UNIVERSE_BATTLEFIELDS).length,
-      universeSourceCoverage: [...new Set(Object.values(TACTICS_UNIVERSE_BATTLEFIELDS).map(field => field.source.universe))],
+      universeBattlefields: Object.keys(allUniverseBattlefields).length,
+      universeSourceCoverage: [...new Set(Object.values(allUniverseBattlefields).map(field => field.source.universe))],
       modeExclusiveUniverseBattlefields: tacticsTerrains.filter(field => field.modeExclusive === 'Tactics').length,
       uniqueTopologyCount: new Set(tacticsTerrains.map(field => field.geometrySha256)).size,
       universeBattlefieldsWithReachableObjectives: tacticsTerrains.filter(field => field.modeExclusive === 'Tactics' && field.allHeroObjectiveRoutesReachable).length,
@@ -828,42 +862,42 @@ export function measureCombatFidelity() {
     inputHashes: Object.fromEntries([...new Set(inputPaths)].filter(file => existsSync(new URL(file, root)))
       .map(file => [file, createHash('sha256').update(read(file)).digest('hex')])),
     source1to1Verified: false
-  };
+  }));
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const report = measureCombatFidelity();
-  const reportDirectory = 'docs/combat-fidelity-wave14-2026-10-25';
+  const reportDirectory = 'docs/combat-fidelity-wave16-2026-10-28';
   const output = `${reportDirectory}/current.json`;
   const encoded = `${JSON.stringify(report, null, 2)}\n`;
   if (process.argv.includes('--write')) {
     writeFileSync(new URL(output, root), encoded);
     const ability = report.abilities;
     const animation = report.meleeBindings;
-    const markdown = `# Mesures des combats — lot 14, 25 octobre 2026
+    const markdown = `# Mesures des combats — lot 16, 28 octobre 2026
 
-Quarante identités de The Lord of the Rings, Dark Souls, Warhammer 40,000, Legacy of Kain, Final Fantasy XV, Horizon Zero Dawn, Tomb Raider, Halo, Mass Effect, Gears of War, Assassin’s Creed, No Man’s Sky, Deus Ex et Fallout. Les versions sources, équipements et rôles sont explicites ; les rapports W1–W13 et leurs PNG sont conservés. Les 12 nouveaux kits et les 28 révisions sont comptés séparément.
+Trois lots disjoints de quarante personnages sont traités en parallèle. Le plan initial et ses annexes antérieures aux générations correspondantes conservent 124 révisions documentées, dont 120 personnages effectifs pour les dessins. John Wick reste sans nouveaux dessins après un refus correctif ; Robin natif32/base16 est suspendu et non demandé après son refus RPG. Raven et Starfire restent sans natif32/base16 après deux refus réels. Tank, MEIKO, KAITO et l’Oracle sont quatre identités distinctes ajoutées aux lots, sans prétendu déblocage des refus. Le Starfire RPG16, généré avant le refus natif48 séparé, reste une livraison RPG et ne compte pas comme natif32/base16. Les versions, équipements et gestes retenus sont explicites ; la rédaction d’une capacité ou d’une recette ne constitue pas une livraison d’animation.
 
 | Couverture cumulative mesurée | Résultat |
 | --- | --- |
-| Actions explicites | ${ability.authoredHeroes} héros, ${ability.authoredSlots} actions, ${ability.completeThreeSlotKits} kits complets |
+| Capacités rédigées | ${ability.authoredHeroes} personnages, ${ability.authoredSlots} actions, ${ability.completeThreeSlotKits} kits complets |
 | Libellés strictement génériques | ${ability.effectiveStrictGenericSlots} |
 | Présentations natives32 | ${animation.nativePresentationHeroes}, ${animation.nativePresentationPoses} poses |
-| Présentations partielles | ${animation.nativePartialPresentationHeroes}, ${animation.nativePartialPresentationPoses} poses, exclues des complets |
-| Mêlée complète45 | ${animation.fullDetailedMeleeManifestHeroes.length} héros |
-| Bases natives16 | ${report.baseSpriteCorrections.heroes} héros |
-| Recettes | ${report.presentations.scriptedHeroes} héros, ${report.presentations.scriptedPairs} paires héros/phase |
-| Renforts/invocations natifs16 | ${report.entities.nativeAnimationAtlases} atlas |
-| Mécanismes de décor | ${report.stages.sceneMechanismDefinitions} dans ${report.stages.rosterUniversesWithSceneMechanismDefinition}/525 univers |
+| Présentations partielles hors complets | ${animation.nativePartialPresentationHeroes}, ${animation.nativePartialPresentationPoses} poses |
+| Mêlée complète45 | ${animation.fullDetailedMeleeManifestHeroes.length} personnages |
+| Bases natives16 | ${report.baseSpriteCorrections.heroes} personnages |
+| Recettes | ${report.presentations.scriptedHeroes} personnages, ${report.presentations.scriptedPairs} paires personnage/phase |
+| Renforts et invocations natifs16 | ${report.entities.nativeAnimationAtlases} atlas |
+| Familier de protection autonome16 | ${report.entities.wave16PersistentProtection16Atlases} atlas, ${report.entities.wave16PersistentProtection16Poses} poses |
+| Actions natives supplémentaires16 | ${report.actions.nativeAction16Atlases} atlas, ${report.actions.nativeActionPoses} poses |
+| Mécanismes de décor | ${report.stages.sceneMechanismDefinitions} dans ${report.stages.rosterUniversesWithSceneMechanismDefinition}/${report.scope.universes} univers |
 | PNG suivis | ${report.assetInventory.deliveredUniquePngFiles} dans ${report.assetInventory.registryFiles} registres |
 
-Dans le lot : ${report.batch.deliveredNativeCharacterIds.length}/40 nouveaux atlas complets32 ; manquants : ${report.batch.remainingNativeCharacterIds.join(', ') || 'aucun'}. Les anciennes images réutilisées, les refus et les captures ne comptent pas comme nouveaux dessins.
+Dans le lot : ${report.batch.deliveredNativeCharacterIds.length}/120 nouveaux atlas complets32 et ${report.batch.deliveredBaseCharacterIds.length}/120 bases16. Présentations restantes : ${report.batch.remainingNativeCharacterIds.join(', ') || 'aucune'}. Les ressources historiques, miroirs, refus et captures ne comptent pas comme nouveaux dessins.
 
-Le moteur Tactics ajoute ${report.tacticsTerrain.universeBattlefields} secteurs propres à ce mode : mont Nibel, steppe d’Archylte, Vesperpool, Caradhras, Ithilien, jardin de Noiresouche, Therum et Valhalla. Les ${report.tacticsTerrain.selectableVerticalBattlefields} terrains verticaux incluent les trois plateaux Nexus préservés. Montagnes, neige, prairie, forêt, marais, lave, architectures et surfaces ont des géométries et des matériaux distincts ; les fonds dédiés évitent de reprendre une carte peinte d’un autre moteur. Les chemins et objectifs de chaque étage reposent sur les surfaces réelles. Le présent audit mesure les définitions et leurs routes ; les preuves du vrai moteur, du sélecteur et de GameCanvas sont liées séparément dans la validation finale. Les grilles et distances sont des adaptations originales des lieux nommés, sans certification de leur topographie officielle. La [documentation Tactics](../tactics-terrain-verticality.md) détaille ces contrats.
+Tactics comprend ${report.tacticsTerrain.universeBattlefields} secteurs adaptés aux univers, soit ${report.tacticsTerrain.selectableVerticalBattlefields} terrains verticaux avec les trois Nexus et ${report.tacticsTerrain.materials} matières. Les hauteurs, routes, couverts et objectifs reposent sur les surfaces jouables ; les environnements sont propres au mode. Les géométries adaptées ne sont pas des plans officiels certifiés. Les contrôles des définitions et chemins restent distincts des preuves réelles EngineTactics et GameCanvas.
 
-Les ${report.historicalAssetPreservation.pngFiles} PNG et ${report.historicalAssetPreservation.registryFiles} registres du lot précédent gardent leurs octets et empreintes. Une ancienne ressource ne compte jamais comme un nouveau dessin W14.
-
-Les mécaniques bornées et les images générées sont des adaptations : aucune fidélité source1:1 n'est certifiée. Le statut du vrai build et des tests reste séparé dans [validation.json](validation.json).
+Les ${report.historicalAssetPreservation.pngFiles} PNG et ${report.historicalAssetPreservation.registryFiles} registres W1–W15 restent identiques. Les actions et images générées sont des adaptations documentées, sans certification officielle 1:1. Le résultat du build et des parcours se trouve dans [validation.json](validation.json).
 `;
     writeFileSync(new URL(`${reportDirectory}/current.md`, root), markdown);
   }

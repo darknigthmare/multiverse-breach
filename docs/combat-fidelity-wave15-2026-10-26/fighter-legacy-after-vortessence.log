@@ -1,0 +1,38 @@
+✔ Fighter player civilian light/heavy actions preserve support effects without damage (11158.505081ms)
+✔ Fighter cpu civilian light/heavy actions preserve support effects without damage (7.932553ms)
+✔ authored simple firearms travel to their target and stop at the actual source range (5.630719ms)
+✔ continuous authored defense uses its actual reduction instead of the legacy universal block (0.966929ms)
+✔ native presentations take priority while legacy Naruto retains its explicit charge and release frames (1.770202ms)
+✔ Player Anchor consumes its existing dedicated phase sheets, and support fallbacks never swing (1.918957ms)
+✔ scripted finishers draw distinct action shapes and never change battle state (4.103534ms)
+✔ Barret Catastrophe holds an airborne firing position before landing, with mirrored downward ray geometry (1.135955ms)
+✔ Barret super lifts the rendered body and fires downward at its real impact time without moving gameplay coordinates (2.621887ms)
+✔ Barret finale keeps its beam cosmetic after the match is confirmed and completes once (2.228073ms)
+✔ Leo heals another living ally and never himself through either command and either player side (7.735675ms)
+✔ Mei Zhen secondary commands buff living allies without damage and share a six-second cooldown for both sides (29.107071ms)
+✔ Melee Barret renders an airborne body and a descending committed beam for P1 and P2 without physical mutation (6.783209ms)
+✔ character introductions freeze combat, controls and the round timer before the countdown (11712.566518ms)
+✔ the first round shows both outcomes without completing or rewarding the match (2.79599ms)
+✔ round restart restores both rosters and resources with the score preserved (1.542768ms)
+✔ a lost opening round does not finish the match and the player can win the next two (1.19914ms)
+✔ finale, victory and outro use the winner identity and cannot deal further damage (12.868102ms)
+✔ support supers heal their intended team without damaging the opponent (2.994625ms)
+✔ the presentation renderer displays the character, universe and real source ability through every phase (8.005072ms)
+✔ boruto_uzumaki player: native travel follows the real projectile and only its confirmed collision creates contact (11313.736738ms)
+✔ boruto_uzumaki cpu: native travel follows the real projectile and only its confirmed collision creates contact (5.405157ms)
+✔ leon player: native travel follows the real projectile and only its confirmed collision creates contact (5.457377ms)
+✔ leon cpu: native travel follows the real projectile and only its confirmed collision creates contact (5.141681ms)
+✔ boruto_uzumaki: interrupted startup, misses, invulnerable contact and lifecycle cleanup never manufacture an impact (3.579516ms)
+✔ leon: interrupted startup, misses, invulnerable contact and lifecycle cleanup never manufacture an impact (1.7445ms)
+✔ doomslayer player: BFG retains its single area impact and the condensed Melee/RPG helper path (4.284438ms)
+✔ doomslayer cpu: BFG retains its single area impact and the condensed Melee/RPG helper path (3.217009ms)
+✔ doom_marine_classic player: BFG retains its single area impact and the condensed Melee/RPG helper path (2.98489ms)
+✔ doom_marine_classic cpu: BFG retains its single area impact and the condensed Melee/RPG helper path (2.681973ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35668.994761

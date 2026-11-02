@@ -8,6 +8,10 @@ import { HEROES_DB } from '../src/game/heroes.js';
 import { COMBAT_CAPABILITY_COMPLETION } from '../src/game/combat/completion/catalog.js';
 import { resolveMeleeSuper, resolveUniverseSummon } from '../src/game/combatIdentity.js';
 import { attachCombatEntityAsset, getCombatEntityFrame, resolveCombatEntityAsset } from '../src/game/combat/entityAssets.js';
+import { WAVE15_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave15.mjs';
+import { WAVE16_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave16.mjs';
+import { effectiveBatchPlan } from '../docs/combat-fidelity-wave16-2026-10-28/closure-support.mjs';
+import { ABILITY_REVISIONS_WAVE16 } from '../src/game/combat/abilities/abilitiesWave16.js';
 
 // This snapshot predates completion. Coverage is measured against its exact
 // identities, rather than a count reconstructed from the new implementation.
@@ -1562,6 +1566,101 @@ test('W14 preserves exactly the26 historical completion objects pinned before so
   for (const row of wave14Plan.heroes.filter(row => row.priorCompletion)) assert.deepEqual(COMBAT_CAPABILITY_COMPLETION[row.hero.id], row.priorCompletion, row.hero.id);
 });
 
+// These source plans were frozen by each production agent before artwork and
+// module integration. They determine the selected work and action independently
+// of the live resolver; the historical completion objects remain byte-exact.
+const wave15Plan = JSON.parse(readProjectFile('docs/combat-fidelity-wave15-2026-10-26/batch-plan-before.json'));
+const wave15SourcePlanHashes = {
+  A: 'f6cc9213b714927b2f4c234cdbecffb502801893e20b68106c29b6185e0d615d',
+  B: '398ec9c7c1347bcd3ab47afaa118d6f1edbc6bd694cb326c234b660e2e54b276',
+  C: '4199c46e0dd7d8c66a02a61e350c8ffe58d665c1fa336169c7973e84873e2776'
+};
+const wave15Sources = Object.fromEntries(Object.keys(wave15SourcePlanHashes).flatMap(part => {
+  const bytes = readProjectFile(`docs/combat-fidelity-wave15-2026-10-26/part-${part.toLowerCase()}/source-plan.json`);
+  assert.equal(sha256(bytes), wave15SourcePlanHashes[part], `${part}: independent source plan changed`);
+  const selected = JSON.parse(bytes);
+  const rows = selected.records ? selected.records.map(row => [row.heroId, row.source])
+    : Array.isArray(selected.entries) ? selected.entries.map(row => [row.heroId, row]) : Object.entries(selected.entries);
+  assert.deepEqual(sorted(rows.map(([id]) => id)), sorted(wave15Plan.parts[part]), `${part}: source cohort changed`);
+  if (part === 'B' || part === 'C') {
+    // Corrections are an append-only, independently recorded source decision;
+    // the originally pinned plan remains intact and every before-value must
+    // match it. They cannot replace an unrelated identity or a historical kit.
+    const prefix = `docs/combat-fidelity-wave15-2026-10-26/part-${part.toLowerCase()}/`;
+    const errata = JSON.parse(readProjectFile(prefix + 'source-plan-errata.json'));
+    assert.equal(errata.originalFrozenPlanSha256, wave15SourcePlanHashes[part]);
+    const allowedIds = new Set(wave15Plan.parts[part]);
+    const allowedFields = new Set(['appearance', 'weapon', 'pose', 'sourceWork', 'actionName', 'name', 'nameAction', 'effect', 'delivery', 'simpleName', 'secondaryName', 'notes', 'kind', 'weaponType', 'sourceReference', 'bodyHeight', 'healingRange', 'healingShape', 'includesSelf']);
+    if (part === 'C') {
+      assert.equal(errata.beforeAnyGenerationForAffectedHero, false);
+      assert.equal(errata.beforeCorrectiveGenerationForAffectedHero, true);
+      assert.equal(errata.initialImageReturnedBeforeClarification.allInitialDrawingsExcluded, true);
+      for (const key of ['image', 'receipt']) assert.ok(readProjectFile(prefix + errata.initialImageReturnedBeforeClarification[key]).length > 0);
+    }
+    for (const correction of errata.corrections) {
+      assert.ok(allowedIds.has(correction.heroId)); assert.ok(allowedFields.has(correction.field));
+      const source = rows.find(([id]) => id === correction.heroId)?.[1]; assert.ok(source);
+      const priorValue = Object.hasOwn(source, correction.field) ? source[correction.field] : null;
+      assert.deepEqual(priorValue, correction.before, `${correction.heroId}: erratum is not based on the frozen source`);
+      if (part === 'B') {
+        assert.equal(typeof correction.beforeFirstGeneration, 'boolean');
+        if (!correction.beforeFirstGeneration) {
+          assert.equal(correction.beforeCorrectiveGeneration, true); assert.equal(correction.initialSourceExcluded, true);
+        }
+      }
+      source[correction.field] = correction.after;
+    }
+    if (part === 'B') {
+      const maya = rows.find(([id]) => id === 'borderlands_2_maya_phaselock')[1];
+      assert.equal(maya.effect, 'control'); assert.equal(maya.delivery, 'control'); assert.equal(maya.actionName, 'Phaselock de Maya');
+    } else {
+      const val = rows.find(([id]) => id === 'evolve_val')[1];
+      assert.equal(val.effect, 'heal'); assert.equal(val.delivery, 'support'); assert.equal(val.actionName, 'Soin du Healing Burst de Val');
+      assert.equal(val.healingRange, 220); assert.equal(val.healingShape, 'group'); assert.equal(val.includesSelf, true);
+    }
+  }
+  return rows;
+}));
+const wave15CompletedRevisions = Object.fromEntries(wave15Plan.heroes.filter(row => row.priorCompletion).map(row => {
+  const prior = row.priorCompletion, source = wave15Sources[row.hero.id];
+  const damage = source.effect === 'damage';
+  return [row.hero.id, { work: source.sourceWork, name: source.actionName, basis: source.identityBasis || 'canonical-role',
+    referencePrefix: source.sourceWork, historicalSpecial: prior.special.name, historicalWork: prior.sourceWork, historicalReference: prior.sourceReference,
+    historicalSemantics: { effect: prior.special.targeting.effect, shape: prior.special.targeting.shape, targetSide: prior.special.targeting.targetSide, damage: prior.special.dmg },
+    selectedSemantics: { effect: source.effect, delivery: source.delivery,
+      shape: source.delivery === 'beam' ? 'line' : damage || source.effect === 'control' ? 'single' : 'group',
+      targetSide: damage || source.effect === 'control' ? 'enemy' : 'ally', multiplier: damage ? row.part === 'C' ? 4.4 : 4.65 : 0 } }];
+}));
+test('W15 preserves exactly63 historical completion objects while checking their declared source overlays', () => {
+  assert.equal(Object.keys(wave15CompletedRevisions).length, 63);
+  assert.deepEqual(sorted(Object.keys(wave15CompletedRevisions)), sorted(completedIdentities.map(row => row.id).filter(id => WAVE15_PRESENTATION_IDS.has(id))));
+  for (const row of wave15Plan.heroes.filter(row => row.priorCompletion)) {
+    assert.deepEqual(COMBAT_CAPABILITY_COMPLETION[row.hero.id], row.priorCompletion, `${row.hero.id}: historical completion changed`);
+  }
+});
+
+const wave16PriorRows = effectiveBatchPlan().reviewedRows.filter(row => COMBAT_CAPABILITY_COMPLETION[row.hero.id]);
+const wave16CompletedRevisions = Object.fromEntries(wave16PriorRows.map(row => {
+  const id = row.hero.id, prior = row.priorResolved.special, current = ABILITY_REVISIONS_WAVE16[id];
+  assert.ok(current, id + ': separately planned source revision absent');
+  const action = current.special, targeting = action.targeting;
+  return [id, { work: current.sourceWork, name: action.name, basis: current.identityBasis,
+    referencePrefix: current.sourceWork, historicalSpecial: prior.sourceAbility.name,
+    historicalWork: prior.provenance.sourceWork, historicalReference: prior.provenance.sourceReference,
+    historicalSemantics: { effect: prior.effect, shape: prior.shape, targetSide: prior.targetSide, damage: prior.sourceAbility.dmg },
+    selectedSemantics: { effect: targeting.effect, delivery: targeting.delivery, shape: targeting.shape,
+      targetSide: targeting.targetSide, multiplier: action.dmg } }];
+}));
+test('W16 retains all123 prior completion actions byte-for-byte as data while selecting explicit source revisions', () => {
+  assert.equal(wave16PriorRows.length, 123);
+  for (const row of wave16PriorRows) {
+    const original = COMBAT_CAPABILITY_COMPLETION[row.hero.id], prior = row.priorResolved.special;
+    const { slot: _slot, sourceHeroId: _source, ...sourceAbilityBefore } = prior.sourceAbility;
+    assert.deepEqual(original.special, sourceAbilityBefore, row.hero.id + ': original completed action changed');
+    for (const key of ['sourceWork', 'sourceReference', 'identityBasis']) assert.equal(original[key], prior.provenance[key], row.hero.id);
+  }
+});
+
 test('every completed action carries an explicit identity basis and source scene', () => {
   assert.equal(Object.keys(wave13CompletedRevisions).length, 20);
   assert.deepEqual(sorted(Object.keys(wave13CompletedRevisions)), sorted(wave13SelectedIds.filter(id => Object.hasOwn(COMBAT_CAPABILITY_COMPLETION, id))), 'W13 revisions must match only selected historical completion identities');
@@ -1575,16 +1674,16 @@ test('every completed action carries an explicit identity basis and source scene
     assert.ok(typeof entry.sourceReference === 'string' && entry.sourceReference.trim(), id);
     assert.equal(profile.provenance.identityAuthored, true, id);
     const version8 = wave8CompletedRevisions[id];
-    const revision = wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id] || wave10CompletedRevisions[id] || wave9CompletedRevisions[id] || wave7CompletedRevisions[id] || (version8 ? { work: version8[0], name: version8[1], basis: version8[2], reference: /Selected |LQ-84i |Samuel Rodrigues |Use the early exploration-party/ } : null);
+    const revision = wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id] || wave10CompletedRevisions[id] || wave9CompletedRevisions[id] || wave7CompletedRevisions[id] || (version8 ? { work: version8[0], name: version8[1], basis: version8[2], reference: /Selected |LQ-84i |Samuel Rodrigues |Use the early exploration-party/ } : null);
     if (revision) {
       assert.equal(profile.provenance.sourceWork, revision.work, id);
       if (revision.referencePrefix) assert.ok(profile.provenance.sourceReference.includes(revision.referencePrefix),id);
       else assert.match(profile.provenance.sourceReference, revision.reference, id);
       assert.equal(profile.provenance.identityBasis, revision.basis, id);
-      if (wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id]) {
+      if (wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id]) {
         assert.equal(entry.special.name,revision.historicalSpecial,id+': original completion technique changed');
         assert.equal(entry.sourceWork,revision.historicalWork,id+': original completion source changed');
-        if (wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id]) {
+        if (wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id]) {
           assert.equal(entry.sourceReference, revision.historicalReference, id + ': historical completion reference changed');
         }
       } else if (['baird', 'tali', 'wrex', 'agent_smith', 'hammond_sgc', 'eli_vance', 'kleiner', 'dogmeat', 'piper_wright', 'preston_garvey', 'vasquez_aliens'].includes(id)) {
@@ -1615,7 +1714,7 @@ test('support completion never carries damage and offensive completion has posit
     const action = COMBAT_CAPABILITY_COMPLETION[id].special;
     const profile = resolveMeleeSuper(roster.get(id));
     effectsSeen.add(profile.effect);
-    const selectedRevision=wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id];
+    const selectedRevision=wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id];
     if(selectedRevision){
       assert.deepEqual({effect:action.targeting.effect,shape:action.targeting.shape,targetSide:action.targeting.targetSide,damage:action.dmg},selectedRevision.historicalSemantics,id+': immutable completion semantics');
       assert.deepEqual({effect:profile.effect,delivery:profile.delivery,shape:profile.shape,targetSide:profile.targetSide,multiplier:profile.multiplier},selectedRevision.selectedSemantics,id+': selected source version semantics');
@@ -1638,6 +1737,17 @@ test('support completion never carries damage and offensive completion has posit
       if (profile.effect === 'buff') assert.ok(profile.buffMultiplier > 1, id);
       if (profile.effect === 'guard') assert.ok(profile.guardReduce > 0 && profile.guardReduce < 1, id);
       if (profile.effect === 'cleanse') assert.ok(profile.cleanses, id);
+    } else if (id === 'oddworld_abe_possession' || id === 'akane_tsunemori') {
+      assert.equal(profile.effect, 'control'); assert.equal(profile.delivery, 'control');
+      assert.equal(profile.multiplier, 0); assert.equal(profile.targetSide, 'enemy'); assert.equal(profile.shape, 'single');
+      assert.equal(profile.controlKind, id === 'oddworld_abe_possession' ? 'possession' : 'paralyzer');
+      assert.equal(profile.controlDuration, id === 'oddworld_abe_possession' ? 2 : 1.5);
+      assert.equal(profile.controlTurns, 1);
+    } else if (id === 'borderlands_2_maya_phaselock') {
+      assert.equal(profile.effect, 'control'); assert.equal(profile.delivery, 'control');
+      assert.equal(profile.multiplier, 0); assert.equal(profile.targetSide, 'enemy'); assert.equal(profile.shape, 'single');
+      assert.equal(profile.controlKind, 'phaselock'); assert.equal(profile.controlDuration, 2.4); assert.equal(profile.controlTurns, 1);
+      assert.equal(profile.range, 480);
     } else {
       assert.equal(profile.effect, 'damage', id);
       assert.ok(id === 'agent_smith' ? profile.multiplier === 5 : selectedRevision ? selectedRevision.selectedSemantics.multiplier > 0 : action.dmg > 0 && Number.isFinite(action.dmg), id);
@@ -1646,7 +1756,7 @@ test('support completion never carries damage and offensive completion has posit
       assert.notEqual(profile.delivery, 'support', id);
     }
   }
-  assert.deepEqual(sorted(effectsSeen), ['buff', 'cleanse', 'damage', 'guard', 'heal', 'revive']);
+  assert.deepEqual(sorted(effectsSeen), ['buff', 'cleanse', 'control', 'damage', 'guard', 'heal', 'revive']);
 });
 
 test('independent character roles retain beneficial semantics after their generic super is replaced', () => {
@@ -1667,6 +1777,17 @@ test('independent character roles retain beneficial semantics after their generi
       assert.equal(COMBAT_CAPABILITY_COMPLETION[id].special.targeting.effect, effect, 'Historical headology cleanse remains immutable');
       assert.equal(wave13CompletedRevisions[id].selectedSemantics.effect, 'guard');
       assert.equal(profile.effect, 'guard', 'W13 selects nonoffensive practical instructions');
+    } else if (id === 'tyler_romulus') {
+      // W15 selects Tyler's physical F44AA rifle aboard Renaissance. The
+      // older coordination-only completion stays independently inspectable.
+      assert.equal(COMBAT_CAPABILITY_COMPLETION[id].special.targeting.effect, effect);
+      assert.equal(COMBAT_CAPABILITY_COMPLETION[id].special.targeting.targetSide, side);
+      assert.equal(COMBAT_CAPABILITY_COMPLETION[id].special.dmg, 0);
+      assert.deepEqual({ effect: profile.effect, delivery: profile.delivery, shape: profile.shape, targetSide: profile.targetSide, multiplier: profile.multiplier },
+        { effect: 'damage', delivery: 'projectile', shape: 'single', targetSide: 'enemy', multiplier: 4.4 });
+      assert.equal(profile.name, wave15Sources[id].actionName);
+      assert.equal(profile.provenance.sourceWork, wave15Sources[id].sourceWork);
+      continue;
     } else assert.equal(profile.effect, effect, id);
     assert.equal(profile.targetSide, side, id);
     assert.equal(profile.multiplier, 0, id);
@@ -1769,14 +1890,20 @@ test('the 28 entity sheets cover the exact 82 caller profiles from the independe
   }
 });
 
-test('the82 historical entity bindings retain their assets while ten W10 and six W13 callers select real partners', () => {
+test('the82 historical entity bindings retain their assets while W10/W13/W15 and the one W16 caller select real partners', () => {
   const before = JSON.stringify(HEROES_DB);
   const expectedCallers = new Set(), activeLegacyCallers = new Set();
   const selectedW10 = { freeman: 'alyx_vance', barney: 'alyx_vance', alyx_vance: 'barney', eli_vance: 'alyx_vance', kleiner: 'alyx_vance', dallas: 'chains_pd', wolf_pd: 'chains_pd', hoxton: 'chains_pd', chains_pd: 'dallas', clover_pd: 'chains_pd' };
   const selectedW13 = { chell: 'atlas', atlas: 'pbody', pbody: 'atlas', glados: 'atlas', wheatley: 'atlas', doug_rattmann: 'chell' };
   assert.equal(Object.keys(selectedW10).length, 10); assert.equal(Object.keys(selectedW13).length, 6);
   assert.ok(Object.keys(selectedW13).every(id => wave13SelectedIds.includes(id)));
-  const selectedPartners = { ...selectedW10, ...selectedW13 };
+  const selectedW15 = { shephard: 'barney', vortigaunt_ally: 'dog_hl2', dog_hl2: 'vortigaunt_ally' };
+  assert.equal(Object.keys(selectedW15).length, 3);
+  assert.ok(Object.keys(selectedW15).every(id => WAVE15_PRESENTATION_IDS.has(id)));
+  assert.deepEqual(sorted(Object.keys(selectedW15)), sorted(baseline.entities.flatMap(entry => entry.callers).filter(id => WAVE15_PRESENTATION_IDS.has(id))));
+  const selectedW16 = { houston_pd: 'dallas' };
+  assert.deepEqual(sorted(Object.keys(selectedW16)), sorted(baseline.entities.flatMap(entry => entry.callers).filter(id => WAVE16_PRESENTATION_IDS.has(id))));
+  const selectedPartners = { ...selectedW10, ...selectedW13, ...selectedW15, ...selectedW16 };
   const revisedCallers = new Set();
   for (const expected of baseline.entities) {
     const registered = entityRegistry.entries.find(entry => entry.key === expected.key);
@@ -1815,11 +1942,14 @@ test('the82 historical entity bindings retain their assets while ten W10 and six
       assert.equal(adversarial.entityRender.asset.id, registered.id, id);
     }
   }
-  assert.equal(expectedCallers.size, 82); assert.equal(activeLegacyCallers.size, 66);
+  assert.equal(expectedCallers.size, 82); assert.equal(activeLegacyCallers.size, 62);
   assert.deepEqual(sorted(revisedCallers), sorted(Object.keys(selectedPartners)));
   const resolved = HEROES_DB.map(hero => ({ hero, descriptor: resolveUniverseSummon(hero) }));
   assert.equal(resolved.filter(({ descriptor }) => descriptor.entityRender?.assetMissing === true).length, 0);
-  assert.deepEqual(sorted(resolved.filter(({ descriptor }) => descriptor.entityRender?.kind === 'sprite-sheet').map(({ hero }) => hero.id)), sorted(activeLegacyCallers));
+  const newFox = resolved.find(({ hero }) => hero.id === 'aki_hayakawa').descriptor;
+  assert.equal(newFox.entityRender.asset.id, 'fox_devil-wave16');
+  assert.equal(newFox.entityRender.asset.frames, 16); assert.equal(newFox.entityRender.asset.bodySource, 'source-entity');
+  assert.deepEqual(sorted(resolved.filter(({ descriptor }) => descriptor.entityRender?.kind === 'sprite-sheet').map(({ hero }) => hero.id)), sorted([...activeLegacyCallers, 'aki_hayakawa']));
   assert.equal(JSON.stringify(HEROES_DB), before);
 });
 

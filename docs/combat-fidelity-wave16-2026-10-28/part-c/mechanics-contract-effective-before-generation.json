@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-28T09:45:25.924Z",
+  "beforeAnyGeneration": true,
+  "sourcePlanSha256": "7a11258407a5ed97829f69af745faab39c2f3b5bbbf4ed2d7e778b82d9ef4412",
+  "supersede": "mechanics-contract-before-generation.json discussion timings only",
+  "hakumen": {
+    "counterKind": "yukikaze",
+    "counterWindowDuration": 1.1,
+    "counterMultiplier": 4.8,
+    "counterRange": 190,
+    "counterCatchesProjectiles": true,
+    "source": "https://mail.dustloop.com/w/BBCF/Hakumen/Strategy",
+    "projectileOwnerNotFrozen": true,
+    "unblockablesExcluded": true,
+    "throwsExcluded": true
+  },
+  "kirito": {
+    "duration": 3.5,
+    "hitCount": 16,
+    "firstAt": 0.8,
+    "lastAt": 3.05,
+    "releaseWindow": 0.09,
+    "timingIsEngineAdaptation": true,
+    "extraNative16Approved": true
+  },
+  "akane": {
+    "controlKind": "paralyzer",
+    "authorization": "sibyl-s1e21-exception",
+    "duration": 1.5,
+    "requiresExplicitTargetEligibility": true,
+    "noLevitation": true
+  },
+  "aki": {
+    "nativeBodyKonHandSign": true,
+    "separateFoxNative16": true,
+    "acceptedContactSource": "fox-mouth"
+  }
+}

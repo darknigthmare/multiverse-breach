@@ -10,9 +10,11 @@ const IDS = ['robin_tt','cyborg_tt','raven_tt','starfire_tt','beast_boy_tt','kir
 const SUPPORT = new Set(['raven_tt','saejima_yakuza','senshi_meshi','chilchuck_meshi','falin_meshi']);
 const CONTACT = ['robin_tt','beast_boy_tt','kiryu_yakuza','majima_yakuza','ichiban_yakuza','akiyama_yakuza','blade_wolf_mgr','jetstream_sam','mistral_mgr','laios_meshi'];
 const MODES = ['rpg','melee','fighter'], SIDES = ['player','opponent'];
+const VERSIONED_WAVE16_IDS = new Set(['robin_tt','raven_tt','starfire_tt']);
 const observations = [], engines = [], noop = () => {}, particles = { add: noop };
 let vite, EngineRpg, EngineSmash, EngineFighter, heroes, resolveMeleeSuper, resolveCombatAbility, tickMeleeCombatActor, beginMeleeShield;
 let supportsNative, supportsTracked, getVisual, drawVisual, sampleMotion, getCharacterVisual, drawCharacterVisual, sampleCharacterMotion, getFrame;
+let getVisualWave16, drawVisualWave16, sampleMotionWave16, historicalSupers;
 const hero = id => { const h=heroes.find(h=>h.id===id);assert.ok(h,id);return h; };
 const dummy = id => ({id,name:id,universe:'Wave8 runtime training',category:'test',weaponType:'melee',primaryColor:'#89aacc',secondaryColor:'#ddeeff',
   stats:{hp:5000,atk:20,def:8,spd:5},simple:{name:'Training strike',type:'melee',dmg:1},secondary:{name:'Training shot',type:'bullet',dmg:1,cd:3},
@@ -76,14 +78,32 @@ const actionOf = c => c.mode==='rpg'?c.actor.rpgSpecialVisual:c.actor.action;
 const hitAt = c => c.mode==='rpg'?c.engine.actionQueue[0].ticks/60:c.actor.action.hitAt;
 const atImpact = c => advance(c,hitAt(c)+0.001);
 const guardRemaining = (mode,actor) => mode==='rpg'?actor.rpgGuardTicks:mode==='fighter'?actor.superGuardSeconds:actor.meleeSuperSupport?.effect==='guard'?actor.meleeSuperSupport.remaining:0;
+const drawingCalls = calls => calls.filter(call=>!['save','restore','set'].includes(call[0]));
+function assertWithheldWave16State(options) {
+  const before=JSON.stringify(options),state=getCharacterVisual(options);
+  assert.deepEqual(state,getVisualWave16(options));assert.equal(state.family,'native-wave16');
+  assert.equal(state.nativeArtworkAvailable,false);assert.equal(state.nativeMuzzleActive,false);
+  assert.equal(getFrame({...options.actor,presentationPhase:'super'}),null);
+  const direct=recorder(),dispatched=recorder();
+  assert.equal(drawVisualWave16(direct.ctx,state),true);assert.equal(drawCharacterVisual(dispatched.ctx,state),true);
+  direct.balanced();dispatched.balanced();assert.deepEqual(direct.calls,[]);assert.deepEqual(dispatched.calls,[]);
+  assert.equal(JSON.stringify(options),before);return state;
+}
 
 before(async()=>{
+  // These three source profiles were explicitly revised by W16; their rejected
+  // native artwork does not change the separately retained W8 visual contract.
+  const planBytes=await readFile(new URL('../docs/combat-fidelity-wave16-2026-10-28/batch-plan-before.json',import.meta.url));
+  assert.equal(createHash('sha256').update(planBytes).digest('hex'),'ea8800d8e9ecde3b9cd47a8da9dab3493a41e0ff092e9d62b9c7e6682b162bf6');
+  historicalSupers=new Map(JSON.parse(planBytes).heroes.filter(row=>VERSIONED_WAVE16_IDS.has(row.hero.id)).map(row=>[row.hero.id,row.priorResolved.special]));
+  assert.equal(historicalSupers.size,3);
   vite=await createServer({root:fileURLToPath(new URL('..',import.meta.url)),appType:'custom',logLevel:'silent',server:{middlewareMode:true}});
   ({EngineRpg}=await vite.ssrLoadModule('/src/game/engineRpg.js?native-wave8'));({EngineSmash}=await vite.ssrLoadModule('/src/game/engineSmash.js?native-wave8'));({EngineFighter}=await vite.ssrLoadModule('/src/game/engineFighter.js?native-wave8'));
   ({HEROES_DB:heroes}=await vite.ssrLoadModule('/src/game/heroes.js'));({resolveMeleeSuper,resolveCombatAbility}=await vite.ssrLoadModule('/src/game/combatIdentity.js'));
   ({tickMeleeCombatActor,beginMeleeShield}=await vite.ssrLoadModule('/src/game/melee/meleeCombatRuntime.js'));
   ({supportsNativeSuperWave8:supportsNative,supportsTrackedProjectileVisualWave8:supportsTracked,getNativeSuperVisualStateWave8:getVisual,drawNativeSuperVisualsWave8:drawVisual,sampleNativeSuperMotionWave8:sampleMotion}=await vite.ssrLoadModule('/src/game/combat/nativeSuperVisualsWave8.js'));
   ({getCharacterSuperVisualState:getCharacterVisual,drawCharacterSuperVisuals:drawCharacterVisual,sampleCharacterSuperMotion:sampleCharacterMotion}=await vite.ssrLoadModule('/src/game/combat/characterSuperVisuals.js'));
+  ({getNativeSuperVisualStateWave16:getVisualWave16,drawNativeSuperVisualsWave16:drawVisualWave16,sampleNativeSuperMotionWave16:sampleMotionWave16}=await vite.ssrLoadModule('/src/game/combat/nativeSuperVisualsWave16.js'));
   ({getCharacterAnimationFrame:getFrame}=await vite.ssrLoadModule('/src/game/combat/characterAnimationCatalog.js'));
 });
 after(async()=>{
@@ -92,19 +112,29 @@ after(async()=>{
     await writeFile(process.env.NATIVE_WAVE8_REPORT_PATH,JSON.stringify({date:'2026-10-20',method:'Real Vite SSR engines, accepted gameplay changes and recorded canvas commands. Native decoding and real browser drawing are verified separately.',coverage:{identities:20,modes:MODES,sides:SIDES,supports:[...SUPPORT],contactSupers:CONTACT,trackedFighter:['starfire_tt']},sources,observations,source1to1Verified:false},null,2)+'\n');}
 });
 
-test('20 Wave8 identities dispatch purely with exact source identity and support accents stay at their own caster',()=>{
+test('20 Wave8 visual contracts stay pure while the three explicitly revised identities dispatch to W16 with explicitly withheld artwork',()=>{
   for(const id of IDS)for(const facing of [1,-1])for(const progress of [0.15,0.55,0.9]){
-    const actor={...hero(id),x:500,y:350,currentHp:1000},profile=resolveMeleeSuper(actor),supportive=SUPPORT.has(id);
+    const actor={...hero(id),x:500,y:350,currentHp:1000},selectedProfile=resolveMeleeSuper(actor),profile=historicalSupers.get(id)||selectedProfile,supportive=SUPPORT.has(id);
     assert.equal(supportsNative(profile),true,id);assert.equal(supportsTracked(profile),id==='starfire_tt',id);
     const options={actor,profile,action:{duration:profile.duration,elapsed:progress*profile.duration,hitAt:profile.hitAt,facing},target:{x:500+facing*80,y:350,currentHp:1000},contactVisual:{confirmed:false}};
     const before=JSON.stringify(options),state=getVisual(options);assert.equal(state.family,'native-wave8');assert.equal(state.gameplayEffect,'none');assert.equal(state.source1to1Verified,false);assert.equal(state.supportive,supportive);assert.equal(state.contactEligible,false);
-    assert.deepEqual(getCharacterVisual(options),state);const a=recorder(),b=recorder();assert.equal(drawVisual(a.ctx,state),true);assert.equal(drawCharacterVisual(b.ctx,getCharacterVisual(options)),true);a.balanced();b.balanced();assert.deepEqual(a.calls,b.calls);assert.equal(JSON.stringify(options),before);
+    const a=recorder();assert.equal(drawVisual(a.ctx,state),true);a.balanced();
+    if(VERSIONED_WAVE16_IDS.has(id)) {
+      const selected={...options,profile:selectedProfile,action:{...options.action,duration:selectedProfile.duration,elapsed:progress*selectedProfile.duration,hitAt:selectedProfile.hitAt}};
+      const current=assertWithheldWave16State(selected);assert.equal(current.supportive,supportive);assert.equal(current.contactEligible,false);
+      assert.deepEqual(getCharacterVisual({...selected,actor:{...actor,id:'local-p2',sourceHeroId:id}}),current);
+      for(const invalid of [{actor:{...actor,id:'wrong'}},{actor:{...actor,universe:'Wrong'}},{profile:{...selectedProfile,name:'Generic burst'}},{profile:{...selectedProfile,sourceHeroId:'wrong'}},{profile:{...selectedProfile,universe:'Wrong'}},{profile:{...selectedProfile,effect:supportive?'damage':'heal'}}])assert.equal(getCharacterVisual({...selected,...invalid}),null,id);
+    } else {
+      assert.deepEqual(getCharacterVisual(options),state);const b=recorder();assert.equal(drawCharacterVisual(b.ctx,getCharacterVisual(options)),true);b.balanced();assert.deepEqual(a.calls,b.calls);
+    }
+    assert.equal(JSON.stringify(options),before);
     const moved=getVisual({...options,target:{x:-9000,y:-5000,currentHp:0},contactVisual:{confirmed:true,x:620,y:350}});
     if(supportive){assert.deepEqual(moved.target,state.ground);const r=recorder();drawVisual(r.ctx,moved);r.balanced();assert.deepEqual(r.calls,a.calls,'Support accent cannot follow an enemy');}
     else{assert.equal(moved.contactEligible,true);assert.deepEqual(moved.target,{x:620,y:350});}
     for(const invalid of [{actor:{...actor,id:'wrong'}},{actor:{...actor,universe:'Wrong'}},{profile:{...profile,name:'Generic burst'}},{profile:{...profile,sourceHeroId:'wrong'}},{profile:{...profile,universe:'Wrong'}},{profile:{...profile,effect:supportive?'damage':'heal'}}])assert.equal(getVisual({...options,...invalid}),null,id);
     assert.deepEqual(getVisual({...options,actor:{...actor,id:'local-p2',sourceHeroId:id}}),state);
-    assert.deepEqual(sampleCharacterMotion({heroId:id,universe:actor.universe,phase:'super',progress}),sampleMotion({heroId:id,universe:actor.universe,phase:'super',progress}));
+    const motionOptions={heroId:id,universe:actor.universe,phase:'super',progress};
+    assert.deepEqual(sampleCharacterMotion(motionOptions),(VERSIONED_WAVE16_IDS.has(id)?sampleMotionWave16:sampleMotion)(motionOptions));
   }
 });
 
@@ -148,13 +178,19 @@ for(const side of SIDES)test(`RPG ${side}:15 damage supers cannot paint contact 
 });
 
 for(const side of SIDES)test(`Fighter ${side}:Starfire follows its physical projectile, retains facing, pauses and impacts once`,()=>{
-  const c=make('fighter',side,'starfire_tt'),target=c.targets[0];target.x=c.actor.x+c.facing*500;const before=target.currentHp;assert.equal(commit(c),true);advance(c,c.actor.action.hitAt-0.01);assert.equal(c.engine.projectiles.length,0);
+  const c=make('fighter',side,'starfire_tt'),target=c.targets[0];target.x=c.actor.x+c.facing*500;const before=target.currentHp;assert.equal(meter(c),100);assert.equal(commit(c),true);assert.equal(meter(c),0);advance(c,c.actor.action.hitAt-0.01);assert.equal(c.engine.projectiles.length,0);
   const startup=pureDraw(c);assert.equal(startup.some(call=>call[0]==='lineTo'),false);advance(c,0.02);assert.equal(c.engine.projectiles.length,1);assert.equal(target.currentHp,before);
   const shot=c.engine.projectiles[0];assert.equal(Math.sign(shot.vx),c.facing);c.actor.x+=c.facing*600;c.actor.facing=-c.facing;
   const flight=()=>{const r=recorder();c.engine.drawProjectile(r.ctx,shot);r.balanced();return r.calls;};const first=flight(),state=snapshot(c);for(let i=0;i<100;i++){c.engine.updateProjectiles(0);assert.deepEqual(flight(),first);}assert.equal(snapshot(c),state);
-  assert.ok(first.some(call=>call[0]==='moveTo'&&call[1]===shot.x-c.facing*8*(142/72)&&call[2]===shot.y));
+  const projectileOptions={actor:shot.owner,profile:shot.action.identity,action:shot.action,height:142,projectileVisual:{phase:'flight',x:shot.x,y:shot.y,elapsed:shot.visualElapsed,travelProgress:Math.abs(shot.x-shot.visualOriginX)/shot.visualFlightDistance}};
+  assertWithheldWave16State(projectileOptions);assert.deepEqual(first,[],'Missing W16 native art must not manufacture a projectile drawing');
+  // Keep the historical physical-flight drawing contract independently pinned
+  // to the actual pre-W16 profile, rather than forcing it into today's engine.
+  const historical=recorder(),oldState=getVisual({...projectileOptions,profile:historicalSupers.get('starfire_tt')});
+  assert.equal(oldState.family,'native-wave8');assert.equal(drawVisual(historical.ctx,oldState),true);historical.balanced();
+  assert.ok(historical.calls.some(call=>call[0]==='moveTo'&&call[1]===shot.x-c.facing*8*(142/72)&&call[2]===shot.y));
   let steps=240;while(!c.engine.projectileVisualImpacts.length&&steps-->0)advance(c,1/120);assert.ok(steps>0);assert.ok(target.currentHp<before);assert.equal(c.engine.projectiles.length,0);assert.equal(c.engine.projectileVisualImpacts.length,1);
-  const impact=c.engine.projectileVisualImpacts[0],r=recorder();c.engine.drawProjectileImpact(r.ctx,impact);r.balanced();const hpAfter=target.currentHp;target.x-=c.facing*500;const moved=recorder();c.engine.drawProjectileImpact(moved.ctx,impact);moved.balanced();assert.deepEqual(moved.calls,r.calls);advance(c,2);assert.equal(target.currentHp,hpAfter);assert.equal(c.engine.projectileVisualImpacts.length,0);
+  const impact=c.engine.projectileVisualImpacts[0],r=recorder();c.engine.drawProjectileImpact(r.ctx,impact);r.balanced();assert.deepEqual(r.calls,[]);const hpAfter=target.currentHp;target.x-=c.facing*500;const moved=recorder();c.engine.drawProjectileImpact(moved.ctx,impact);moved.balanced();assert.deepEqual(moved.calls,r.calls);advance(c,2);assert.equal(target.currentHp,hpAfter);assert.equal(c.engine.projectileVisualImpacts.length,0);
   observations.push({case:'Physical Starfire projectile',side,committedFacing:c.facing,damage:before-hpAfter,impact:{x:impact.x,y:impact.y}});
 });
 
@@ -167,16 +203,25 @@ test('Dungeon Meshi basic support metadata and native impact pose stay faithful 
   for(const id of ['laios_meshi','marcille_meshi','senshi_meshi','chilchuck_meshi','falin_meshi']){const actor=hero(id),p=resolveMeleeSuper(actor),frame=getFrame({...actor,presentationPhase:'super',presentationProgress:0.6,presentationImpactProgress:p.hitAt/p.duration});assert.ok(frame,id);assert.equal(frame.col,2,id);assert.equal(frame.asset.frames,32);assert.equal(frame.asset.visualValidation.canon1to1Verified,false);}
 });
 
-for(const mode of ['rpg','melee'])for(const side of SIDES)test(`${mode} ${side}:Starfire cosmetic bolt travels on the action clock before its accepted impact`,()=>{
-  const c=make(mode,side,'starfire_tt'),before=hp(c.targets);assert.equal(commit(c),true);const impact=hitAt(c);
+for(const mode of ['rpg','melee'])for(const side of SIDES)test(`${mode} ${side}:Starfire preserves the historical cosmetic clock separately from the current withheld-art cast`,()=>{
+  const c=make(mode,side,'starfire_tt'),before=hp(c.targets);assert.equal(meter(c),100);assert.equal(commit(c),true);assert.equal(meter(c),0);const impact=hitAt(c);
   advance(c,impact*0.2);const charge=pureDraw(c);assert.equal(charge.some(call=>call[0]==='lineTo'),false,'Column0 is only local charge');assert.deepEqual(hp(c.targets),before);
-  advance(c,impact*0.57);const state=snapshot(c),flight=pureDraw(c),start=flight.find(call=>call[0]==='moveTo'),end=flight.find(call=>call[0]==='lineTo');assert.ok(start&&end,'Actual engine must use the new pre-impact cosmetic bolt');
+  assert.deepEqual(drawingCalls(charge),[],'Missing W16 artwork must not create a casting accent');
+  advance(c,impact*0.57);const state=snapshot(c),flight=pureDraw(c);
+  assert.deepEqual(drawingCalls(flight),[],'The current cast cannot invent a pre-impact bolt without native artwork');
+  const selectedProfile=resolveMeleeSuper(c.actor),view=mode==='rpg'?c.engine.getRpgPresentationActor(c.actor):null;
+  const currentAction=mode==='rpg'?{duration:c.actor.rpgSpecialDurationTicks/60,elapsed:view.presentationProgress*c.actor.rpgSpecialDurationTicks/60,hitAt:c.actor.rpgSpecialImpactProgress*c.actor.rpgSpecialDurationTicks/60,facing:c.actor.rpgSpecialVisual.facing}:c.actor.action;
+  assert.ok(Number.isFinite(currentAction.elapsed)&&currentAction.elapsed>0&&currentAction.elapsed<currentAction.hitAt);
+  assertWithheldWave16State({actor:c.actor,profile:selectedProfile,action:currentAction,target:c.targets[0],contactVisual:{confirmed:false}});
+  const historicalProfile=historicalSupers.get('starfire_tt'),historicalOptions={actor:c.actor,profile:historicalProfile,action:{duration:historicalProfile.duration,elapsed:historicalProfile.hitAt*0.77,hitAt:historicalProfile.hitAt,facing:c.facing},target:c.targets[0],contactVisual:{confirmed:false}},historicalBefore=JSON.stringify(historicalOptions),legacy=recorder();
+  assert.equal(drawVisual(legacy.ctx,getVisual(historicalOptions)),true);legacy.balanced();assert.equal(JSON.stringify(historicalOptions),historicalBefore);
+  const start=legacy.calls.find(call=>call[0]==='moveTo'),end=legacy.calls.find(call=>call[0]==='lineTo');assert.ok(start&&end,'The retained W8 visual contract still has its clocked pre-impact bolt');
   const middle=(start[1]+end[1])/2,targetX=c.actor.rpgSpecialVisual?.target.x??c.targets[0].x,dx=(targetX-c.actor.x)*c.facing;
   assert.ok((middle-c.actor.x)*c.facing>0);assert.ok((middle-c.actor.x)*c.facing<dx,'Pre-impact bolt must be between caster and target, not already on target');
   assert.deepEqual(hp(c.targets),before);assert.equal(snapshot(c),state,'Drawing cannot add projectile, cost, HP change or new clock');
   if(mode==='rpg')c.targets.forEach(t=>{t.battleItemShield=100000;});else c.targets.forEach(t=>{t.x=c.actor.x-c.facing*400;});
   advance(c,impact*0.3);assert.deepEqual(hp(c.targets),before);assert.equal(actionOf(c)?.visualConfirmedContact,undefined);assert.equal(pureDraw(c).filter(call=>call[0]==='ellipse').length,0,'An unaccepted impact has no target marker');
-  observations.push({case:'Clocked Starfire cosmetic flight',mode,side,boltCenterX:middle,casterX:c.actor.x,targetX,hpUnchanged:true});
+  observations.push({case:'Historical W8 cosmetic flight and current W16 withheld-art cast',mode,side,boltCenterX:middle,casterX:c.actor.x,targetX,hpUnchanged:true,currentNativeArtworkAvailable:false,currentCosmeticDraws:0});
 });
 
 test('Monsoon debris arrives at impact, becomes local fragments afterwards, and never claims a missed contact',()=>{

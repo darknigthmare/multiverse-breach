@@ -1,0 +1,23 @@
+✔ RPG Phaselock selects one enemy and carries bounded zero-damage control semantics (11204.846434ms)
+✔ RPG player Phaselock spends a confirmed cast and restrains only its live enemy (3.93513ms)
+✔ RPG enemy Phaselock spends a confirmed cast and restrains only its live enemy (1.178709ms)
+✔ RPG Phaselock freezes ATB, expires on simulation ticks and leaves no delayed cast after release (3.713025ms)
+✔ RPG pause and manual target selection freeze the control clock (0.876362ms)
+✔ RPG an accepted control cancels its victim’s active target selector (0.455398ms)
+✔ RPG player secondary Phaselock keeps its shorter duration and real cooldown (1.207703ms)
+✔ RPG enemy secondary Phaselock keeps its shorter duration and real cooldown (0.618915ms)
+✔ RPG rejects dead, boss, immune, invulnerable, already controlled and out-of-range targets without spending (3.232009ms)
+✔ RPG control revalidates the accepted target at impact without acquiring a replacement (0.496189ms)
+✔ RPG control does not cancel or overwrite independent guard, buff and item shield resources (0.329127ms)
+✔ RPG death ends Phaselock and a later revival cannot restore the old bind (0.478843ms)
+✔ RPG Phaselock projects a paused-safe lifted ring without changing ground coordinates (0.88775ms)
+✔ canvas picks only an eligible runtime target, never empty space (0.847159ms)
+✔ GameCanvas manual RPG commands preview and confirm instead of firing immediately (1.062784ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11633.256318

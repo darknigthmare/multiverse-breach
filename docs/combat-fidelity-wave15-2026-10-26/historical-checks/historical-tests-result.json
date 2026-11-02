@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-26T08:20:10.770Z",
+  "status": "targeted-historical-checks-passed-after-bounded-contract-updates",
+  "originalRun": {
+    "command": [
+      "node",
+      "--test",
+      "--test-concurrency=1",
+      "scripts/combatFidelity.test.mjs",
+      "scripts/combatFidelityWave9.test.mjs",
+      "scripts/combatFidelityWave10.test.mjs",
+      "scripts/combatFidelityWave11.test.mjs",
+      "scripts/combatFidelityWave12.test.mjs",
+      "scripts/combatFidelityWave13.test.mjs",
+      "scripts/combatFidelityWave14.test.mjs",
+      "scripts/combatIdentity.test.mjs",
+      "scripts/combatCompletion.test.mjs"
+    ],
+    "observedExitCode": 1,
+    "tests": 146,
+    "pass": 143,
+    "fail": 3,
+    "log": "docs/combat-fidelity-wave15-2026-10-26/historical-checks/targeted-initial.log",
+    "logSha256": "e79bae74018ebbd7d25718ecd832285fb39a143241b99501ee7c5187dbb956ea",
+    "failingCases": [
+      "independent character roles retain beneficial semantics after their generic super is replaced",
+      "the82 historical entity bindings retain their assets while ten W10 and six W13 callers select real partners",
+      "the authored union separates1365 complete kits,72 original partial records and one lore correction"
+    ]
+  },
+  "changedSuiteRerun": {
+    "receipt": "docs/combat-fidelity-wave15-2026-10-26/historical-checks/targeted-20261026T081850707-receipt.json",
+    "receiptSha256": "f780c78f87374ee98b47b1b8bf7b1fc325be11b38bc9f1df74b194f885e0de56",
+    "exitCode": 0,
+    "tests": {
+      "tests": 39,
+      "pass": 39,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "unchangedTestsDuringRun": true
+  },
+  "distinctCasesWithPassingEvidence": 146,
+  "unmodifiedSuiteCasesPassedInOriginalRun": 107,
+  "cohortDelta": {
+    "authoredHeroes": 42,
+    "authoredSlots": 133,
+    "completeThreeSlotKits": 49,
+    "partialSlotKits": -7
+  },
+  "projections": {
+    "pre15": 1540,
+    "pre14": 1528
+  },
+  "limitations": "This targeted result combines the original seven unchanged passing suites and the real successful rerun of the two modified suites; it is not a later full build result. Artwork/runtime production remains in progress and will receive its own final checks.",
+  "source1to1Verified": false
+}

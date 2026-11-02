@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "preliminary": false,
+  "reviewedAt": "2026-11-01T00:46:29.444Z",
+  "reviewer": "/root/final_rpg_review",
+  "report": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-result.json",
+    "sha256": "60ce4b5d2acb7820a859f894b6b7bfe95b7dcfba3b486f569e85f2db3109ecc7",
+    "bytes": 7190587
+  },
+  "actualCapturesInspected": 16,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-crash-player-impact.png",
+      "sha256": "cda5ffb1045c3a643a35d9407919e5d91fca8e77884fe23d1492ea3616c9d49d",
+      "bytes": 46388,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Crash P1 : silhouette orange entière, gants rouges et chaussures lisibles; bras de rotation orientés vers la cible à droite; aucun bord du Canvas ne coupe le corps."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-crash-enemy-impact.png",
+      "sha256": "b61279a56ac2c3089a7b5d521ce5e0600baa988ca11682412ec5e0b1a67aca19",
+      "bytes": 45751,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Crash P2 : même corps complet tourné vers la gauche et placé sur la cible opposée; l’appelant reste séparé à droite; l’impact n’est pas un deuxième personnage livré."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-mugman-player-targeting.png",
+      "sha256": "af536b52802a4de81760d452780fb843f3648d9901f424e796a8990fcce63748",
+      "bytes": 34281,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Mugman P1 ciblage : panneau turquoise lisible, relais vers Cuphead uniquement, invulnérabilité 4,85 s et absence de dégâts/soin annoncées; confirmation et annulation visibles."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-mugman-player-impact.png",
+      "sha256": "49e00dd790af4abd7c00a2bd1212ce7549778a2b683ce2b3fd0780522a529a9a",
+      "bytes": 53625,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Mugman P1 impact : grand corps de Mugman doré scintillant près de l’appelant gauche; membres, anse et paille visibles; la cible adverse reste séparée à droite."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-mugman-enemy-targeting.png",
+      "sha256": "90ee5b1d850ad0129ea1678e077afd52feacb51bc01beaa062ec0660cc565610",
+      "bytes": 34840,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Mugman P2 ciblage : préfixe P2 visible, même relais personnel 4,85 s; carte Cuphead et commandes de validation lisibles sans débordement."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-mugman-enemy-impact.png",
+      "sha256": "118266c84f23e6419481c84087fa171c484b686d832abaa4aa910b505d27cd8f",
+      "bytes": 53327,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Mugman P2 impact : corps doré complet tourné à gauche auprès du camp droit; aucun trait de tir vers l’adversaire, cible gauche séparée."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-faye-player-impact.png",
+      "sha256": "73e481071370667f5d2bae4b55d5c442a5f03040ff1089a361678189e62675c8",
+      "bytes": 51037,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Faye P1 : cheveux violets, haut jaune et vêtement rouge lisibles; bras tendu et flash à la bouche du pistolet dirigés à droite; chaussures et canon entiers."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-faye-enemy-impact.png",
+      "sha256": "4571cdc091b630f63fc710908769ad8487533103fbd6563c726e6553b05d9882",
+      "bytes": 50783,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Faye P2 : silhouette inversée complète au camp droit; flash du pistolet dirigé à gauche vers la cible; pieds et extrémité de l’arme contenus dans le Canvas."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-alphonse-player-impact.png",
+      "sha256": "9172cbdba8ac1f79eba52b04740d91b98e57da864d19c5f2e333e64a37d06d60",
+      "bytes": 64606,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Alphonse P1 : armure grise massive, pointes et pagne blanc visibles; poing avancé à droite sur la cible; silhouette entière, sans recadrage des pieds."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-alphonse-enemy-impact.png",
+      "sha256": "b7069cd96019b1e740aa8efe56576ae02030cebeae55d99fa49571aa57ace68b",
+      "bytes": 63796,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Alphonse P2 : armure entière retournée vers la gauche, poing au contact visuel de la cible gauche; appelant rouge distinct au camp droit."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-starfire-player-impact.png",
+      "sha256": "18e49da10347b5ea85737a5a79346314d951a311d5e84e49d2fb2caebc0e5117",
+      "bytes": 63689,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Starfire P1 : cheveux rouges, costume violet et starbolt vert au bout de la main droite dirigé vers l’adversaire; silhouette entière; cette vue RPG ne certifie aucune nouvelle planche native32."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-starfire-enemy-impact.png",
+      "sha256": "04f0ba7775ff4e87e88e96b8eae4faa8561048b7912143d84a2b92a2ffb65a84",
+      "bytes": 63596,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Starfire P2 : main et starbolt orientés vers la gauche avec cheveux rouges rejetés à droite; bottes et rayonnement contenus dans le Canvas; appelante Raven séparée."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-bt7274-player-impact.png",
+      "sha256": "f777201896ae5199dc25ff9c7b035bf7fa76a0a0ebfe5297885df7ee4396e35b",
+      "bytes": 168597,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "BT-7274 P1 : Titan nettement plus grand que les humains, pieds et antennes contenus; XO-16 tenu à deux mains et flash aligné au bout du canon vers la droite."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-bt7274-enemy-impact.png",
+      "sha256": "43a5d031e77785f4447b4841a068a430c3352483696434d70ea3bdbdaccb987b",
+      "bytes": 168751,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "BT-7274 P2 : même Titan entier tourné vers la gauche; flash du XO-16 à gauche, pieds au sol et antennes non coupés malgré la grande taille."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-fox-devil-player-impact.png",
+      "sha256": "28288bafa867105d0e4e3d70358bd2bb007f3f74db43460d8b5a642e37a2feb6",
+      "bytes": 93647,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Fox Devil P1 : grande tête blanche au masque rouge et yeux multiples lisibles; mâchoire orientée vers la cible droite; une rémanence assombrie est visible derrière sans être comptée comme nouvelle entité."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/summon-wave16-fox-devil-enemy-impact.png",
+      "sha256": "db4b9569fd24b35fd371e817db30c94d86f9846e6aaeb08085e87226d5c19a0e",
+      "bytes": 93444,
+      "inspected": true,
+      "inspectionMethod": "tools.view_image detail original; each fresh capture reopened after complete production freeze execution",
+      "observation": "Fox Devil P2 : tête blanche complète tournée vers la cible gauche; museau, oreilles et fourrure contenus; appelant humain reste distinct à droite."
+    }
+  ],
+  "source1to1Verified": false,
+  "method": "All16 fresh final PNG captures after the complete production freeze (including the15 historical Star Wars input PNGs) were actually reopened directly with view_image original in pairs. Previous actual reports and genuine reviews remain archived separately.",
+  "scope": "Visual identity, targeting labels, orientation, framing and visible contact/protection cues. Timing, costs, pause, damage and 16-cell coverage are established separately by the exact bound runtime report.",
+  "limitations": [
+    "Generated pixel art is a source-coherent adaptation, not an official or certified 1:1 asset.",
+    "A fixed impact capture cannot establish all animation states or timing; no unseen state is counted as visually inspected."
+  ],
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/production-freeze.json",
+    "sha256": "d270f1a8c8b66fc6f5f0224d98a5033b3deff5a1ed890816947242e7faf1768c",
+    "bytes": 2258994
+  }
+}

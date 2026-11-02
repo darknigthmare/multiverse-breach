@@ -1,0 +1,100 @@
+✔ 120 Wave15 identities dispatch purely with exact source identity and support accents stay at their own caster (13636.399262ms)
+✔ rpg player: Wave15 projectile feedback waits for release and accepted contact (69.835777ms)
+✔ rpg opponent: Wave15 projectile feedback waits for release and accepted contact (57.288511ms)
+✔ melee player: Wave15 projectile feedback waits for release and accepted contact (85.067094ms)
+✔ melee opponent: Wave15 projectile feedback waits for release and accepted contact (85.254126ms)
+✔ rpg player: all120 supers pay once, preserve startup/pause and resolve only once (182.452763ms)
+✔ rpg opponent: all120 supers pay once, preserve startup/pause and resolve only once (162.649486ms)
+✔ melee player: all120 supers pay once, preserve startup/pause and resolve only once (182.126466ms)
+✔ melee opponent: all120 supers pay once, preserve startup/pause and resolve only once (181.066577ms)
+✖ fighter player: all120 supers pay once, preserve startup/pause and resolve only once (84.549346ms)
+✖ fighter opponent: all120 supers pay once, preserve startup/pause and resolve only once (66.508456ms)
+✔ melee player:all offensive supers suppress misses and preserve confirmed points (574.280261ms)
+✔ melee opponent:all offensive supers suppress misses and preserve confirmed points (482.399079ms)
+✔ fighter player:all offensive supers suppress misses and preserve confirmed points (102.573595ms)
+✔ fighter opponent:all offensive supers suppress misses and preserve confirmed points (121.287789ms)
+✔ RPG player:all damage supers cannot paint contact on protected/dead targets (163.076641ms)
+✔ RPG opponent:all damage supers cannot paint contact on protected/dead targets (124.839433ms)
+✔ rpg player:disposal cancels pending120 supers without further effects (21.350733ms)
+✔ rpg opponent:disposal cancels pending120 supers without further effects (24.309017ms)
+✔ fighter player:disposal cancels pending120 supers without further effects (13.833096ms)
+✔ fighter opponent:disposal cancels pending120 supers without further effects (10.885068ms)
+✖ Fighter player:every Wave15 physical projectile uses its real position, incoming facing and one accepted collision (72.335048ms)
+✖ Fighter opponent:every Wave15 physical projectile uses its real position, incoming facing and one accepted collision (58.626029ms)
+✔ Fighter player:every Wave15 physical projectile suppresses unaccepted contacts (26.207423ms)
+✔ Fighter opponent:every Wave15 physical projectile suppresses unaccepted contacts (31.654684ms)
+✔ W15 uses the frozen120 sources and separates99 damage,20 beneficial actions and one real enemy control (7.200927ms)
+✔ Each delivered W15 aperture addresses a genuine source pixel and respects phase, row scale and committed facing (5606.496723ms)
+✔ Fighter player:all physical shots spawn at their actual measured bow, gun or emitter point when artwork exists (51.293767ms)
+✔ Fighter opponent:all physical shots spawn at their actual measured bow, gun or emitter point when artwork exists (18.912675ms)
+✔ W15 source-selected feedback distinguishes actual energy, physical arrows and ballistic weapons without changing gameplay (1.8154ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 26
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22876.002825
+
+✖ failing tests:
+
+test at scripts/nativeSuperRuntimeWave15.test.mjs:137:49
+✖ fighter player: all120 supers pay once, preserve startup/pause and resolve only once (84.549346ms)
+  AssertionError [ERR_ASSERTION]: vortigaunt_ally: no accepted hit
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave15.test.mjs:149:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at scripts/nativeSuperRuntimeWave15.test.mjs:137:49
+✖ fighter opponent: all120 supers pay once, preserve startup/pause and resolve only once (66.508456ms)
+  AssertionError [ERR_ASSERTION]: vortigaunt_ally: no accepted hit
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave15.test.mjs:149:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at scripts/nativeSuperRuntimeWave15.test.mjs:182:25
+✖ Fighter player:every Wave15 physical projectile uses its real position, incoming facing and one accepted collision (72.335048ms)
+  AssertionError [ERR_ASSERTION]: vortigaunt_ally
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave15.test.mjs:193:101)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at scripts/nativeSuperRuntimeWave15.test.mjs:182:25
+✖ Fighter opponent:every Wave15 physical projectile uses its real position, incoming facing and one accepted collision (58.626029ms)
+  AssertionError [ERR_ASSERTION]: vortigaunt_ally
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave15.test.mjs:193:101)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

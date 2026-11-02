@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-26T08:46:21.878Z",
+  "note": "Aggregate record after per-part pre-generation source freezes and exact tool requests. It does not assert that this aggregate preceded the first source generation. A and C source plans fixed before generation; B uses documented pre-generation errata for Axel uppercut. Adon was never requested as an RPG atlas.",
+  "selected": [
+    {
+      "id": "hexen_baratus-wave15",
+      "slug": "baratus",
+      "performerHeroId": "hexen_baratus",
+      "callerId": "hexen_parias",
+      "sourceWork": "Hexen: Beyond Heretic (1995), Baratus Fighter with Timon’s Axe",
+      "effect": "damage",
+      "delivery": "melee",
+      "sourcePlan": "docs/combat-fidelity-wave15-2026-10-26/part-a/source-plan.json"
+    },
+    {
+      "id": "quake_franchise_ranger-wave15",
+      "slug": "ranger",
+      "performerHeroId": "quake_franchise_ranger",
+      "callerId": "quake_franchise_bitterman",
+      "sourceWork": "Quake (1996), original Ranger with starting axe; no Champions powers",
+      "effect": "damage",
+      "delivery": "melee",
+      "sourcePlan": "docs/combat-fidelity-wave15-2026-10-26/part-a/source-plan.json"
+    },
+    {
+      "id": "sir_daniel_fortesque-wave15",
+      "slug": "sir-daniel",
+      "performerHeroId": "sir_daniel_fortesque",
+      "callerId": "medievil_kiya",
+      "sourceWork": "MediEvil (1998 PlayStation), Sir Daniel Fortesque",
+      "effect": "damage",
+      "delivery": "melee",
+      "sourcePlan": "docs/combat-fidelity-wave15-2026-10-26/part-b/source-plan.json"
+    },
+    {
+      "id": "axel_sor-wave15",
+      "slug": "axel",
+      "performerHeroId": "axel_sor",
+      "callerId": "blaze_sor",
+      "sourceWork": "Streets of Rage 2 (1992), Axel Stone default",
+      "effect": "damage",
+      "delivery": "melee",
+      "sourcePlan": "docs/combat-fidelity-wave15-2026-10-26/part-b/source-plan.json"
+    },
+    {
+      "id": "dog_hl2-wave15",
+      "slug": "dog",
+      "performerHeroId": "dog_hl2",
+      "callerId": "vortigaunt_ally",
+      "sourceWork": "Half-Life 2 (2004), Alyx’s robot Dog",
+      "effect": "damage",
+      "delivery": "melee",
+      "sourcePlan": "docs/combat-fidelity-wave15-2026-10-26/part-c/source-plan.json"
+    },
+    {
+      "id": "kendra_daniels-wave15",
+      "slug": "kendra",
+      "performerHeroId": "kendra_daniels",
+      "callerId": "zach_hammond",
+      "sourceWork": "Dead Space (2008), Kendra Daniels",
+      "effect": "buff",
+      "delivery": "support",
+      "sourcePlan": "docs/combat-fidelity-wave15-2026-10-26/part-c/source-plan.json"
+    }
+  ],
+  "excluded": [
+    {
+      "key": "cortana",
+      "performerHeroId": "cortana",
+      "status": "excluded",
+      "reason": "The W15 same-universe non-self relay cohort has no caller selecting Cortana. This generated16-pose source was inspected but is not installed, counted as delivered or justified by adding an unrelated caller.",
+      "nativeGenerationCalls": 1,
+      "nativeGeneratedPoses": 16,
+      "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/summon-sources/cortana-unused-original.png",
+      "sha256": "d9d02f84fab50627b3ecc9e75feeac322ffb29ef16dc8d6f8513c55432dfde45",
+      "request": "docs/combat-fidelity-wave15-2026-10-26/summon-tool-receipts/cortana-request.json",
+      "source1to1Verified": false
+    }
+  ],
+  "source1to1Verified": false
+}

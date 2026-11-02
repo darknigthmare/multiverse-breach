@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "baselineCommit": "d73b18b8",
+  "checkedAt": "2026-10-26T08:18:40.273Z",
+  "historicalFieldsUnchanged": 8,
+  "historicalMaterialsUnchanged": 27,
+  "historicalEnvironmentCommandStreamsUnchanged": 11,
+  "historicalSceneryCommandStreamsUnchanged": 7,
+  "sourceRows": [
+    {
+      "path": "src/game/tacticsUniverseBattlefields.js",
+      "baselineSha256": "e52ab4a26ca2ac6a012b33a0f07baad607124ad93b54d39b783b6a1c44aad725",
+      "liveSha256": "e52ab4a26ca2ac6a012b33a0f07baad607124ad93b54d39b783b6a1c44aad725"
+    },
+    {
+      "path": "src/game/tacticsEnvironmentRenderer.js",
+      "baselineSha256": "1c6c8dd034d329af0f6e4e91e435a26d9ab2f19452804ed5647a11c47c2d20e4",
+      "liveSha256": "d9ae08e5a9acc85369f84616d66ed3c52203e0655f17b19767b914c172919b18"
+    },
+    {
+      "path": "src/game/tacticsTerrainRenderer.js",
+      "baselineSha256": "2631e37e7fdf2c29e02b1cbb3a422ead8f292121b1d3b3a24f0971079855bfca",
+      "liveSha256": "132a31bbb4ce82510fe2829f2308ad0d3c258128865e754d4033e1972e3b2e99"
+    }
+  ],
+  "environmentRows": [
+    {
+      "battlefield": "ff7_mt_nibel_tactics",
+      "calls": 219,
+      "sha256": "30db67fd8a5f7ccd513f75368a5f94aeabb66dd17954f5de6d68835842112fa8",
+      "unchanged": true
+    },
+    {
+      "battlefield": "ff13_archylte_steppe_tactics",
+      "calls": 192,
+      "sha256": "eb5e19eca5ad55e46f55bd2c7f82ee5d2ca4462f28e71086229ad30cdffe9c09",
+      "unchanged": true
+    },
+    {
+      "battlefield": "ff15_vesperpool_tactics",
+      "calls": 207,
+      "sha256": "f55f67b9137829b286550f02ceb5d8f20861ddedcc203cb5bd8f366da8e211d8",
+      "unchanged": true
+    },
+    {
+      "battlefield": "lotr_caradhras_tactics",
+      "calls": 282,
+      "sha256": "4d66cb81b4c00203c7da2a265aa52205daa300e5fd6d12d57e4e5a8ae51539e1",
+      "unchanged": true
+    },
+    {
+      "battlefield": "lotr_ithilien_tactics",
+      "calls": 948,
+      "sha256": "d74937037e886080365d1315b722522cae6dfce0350903329ada4b45acf557c5",
+      "unchanged": true
+    },
+    {
+      "battlefield": "darksouls_darkroot_tactics",
+      "calls": 1224,
+      "sha256": "9e97eef55da5eb634dd1e1fa2b24b1786033156a18623923dd926b61fb8f506d",
+      "unchanged": true
+    },
+    {
+      "battlefield": "masseffect_therum_tactics",
+      "calls": 236,
+      "sha256": "4280c93a8fc3896a2148af89dd665ad0dbcc18b925d1d8a22735fc23ac35cdec",
+      "unchanged": true
+    },
+    {
+      "battlefield": "halo_valhalla_tactics",
+      "calls": 1222,
+      "sha256": "75fdfab8fd80c598969018da871c593016810df39c62e9720e9cdc233aae6c2d",
+      "unchanged": true
+    },
+    {
+      "battlefield": "nexus_skybridge",
+      "calls": 154,
+      "sha256": "a092a9af9d3f31bd3b011cf557a57abca66c5c9917d3da9b675428c303b47445",
+      "unchanged": true
+    },
+    {
+      "battlefield": "training_grid",
+      "calls": 154,
+      "sha256": "b84eb47ed700f693fa5b5bad92ec35c0b11f846b12f0a16ac7a9f0f6e2814e74",
+      "unchanged": true
+    },
+    {
+      "battlefield": "legacy-industrial",
+      "calls": 154,
+      "sha256": "f3854544a01fcbefc5b9962a2cb77724dfb77a27ee9b4120f2b4086a65a2ffb8",
+      "unchanged": true
+    }
+  ],
+  "sceneryRows": [
+    {
+      "kind": "tree",
+      "calls": 37,
+      "sha256": "1f2d91bc8cdcc8121ca5444b94a6d01909c1681af7bd67f996fe0989760f7bcb",
+      "unchanged": true
+    },
+    {
+      "kind": "boulder",
+      "calls": 40,
+      "sha256": "c174e66ecb15600518204ce05384c6d737a3a43439b7793641b03d2428c9d0e9",
+      "unchanged": true
+    },
+    {
+      "kind": "ruin-wall",
+      "calls": 38,
+      "sha256": "1b9804ebc69eebb29eed58ed627bd2d8a3b7445cf16e25db99af38fe794c455f",
+      "unchanged": true
+    },
+    {
+      "kind": "mako-conduit",
+      "calls": 20,
+      "sha256": "7fb96d2812b8504d1ac0de203f204095424b978ff165185c380ed2064fbbb4cd",
+      "unchanged": true
+    },
+    {
+      "kind": "prothean-generator",
+      "calls": 38,
+      "sha256": "29a84608b18934348b6ed6bee0b9876466bab7a35115574a07899922909f16aa",
+      "unchanged": true
+    },
+    {
+      "kind": "forerunner-pylon",
+      "calls": 31,
+      "sha256": "091a4b93206a122f4901eadfff7fdd25d6744bb3a32107a054b13796adac70ce",
+      "unchanged": true
+    },
+    {
+      "kind": "wooden-crate",
+      "calls": 18,
+      "sha256": "3267c02e77d6c73e8566ee9ae9ee1f0c1f6127f2bb43f0b7c9377197fe91d037",
+      "unchanged": true
+    }
+  ],
+  "limits": "Command streams and authored source records are compared; this does not certify official artwork or source-map fidelity."
+}

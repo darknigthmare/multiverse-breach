@@ -1,0 +1,39 @@
+{
+  "passed": false,
+  "startedAt": "2026-10-28T13:09:55.701Z",
+  "commands": [
+    {
+      "id": "core",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-core-browser.mjs"
+      ],
+      "startedAt": "2026-10-28T13:09:56.801Z",
+      "finishedAt": "2026-10-28T13:10:37.679Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "processId": 46783,
+      "log": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-core.log",
+      "logSha256": "75e1e638a35240f7bbd53a865bf84a0207dba4824a03d3f4d949a1d2615e214a",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-10-28T13:10:37.057Z"
+    },
+    {
+      "id": "movement",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-movement-browser.mjs"
+      ],
+      "startedAt": "2026-10-28T13:10:37.681Z",
+      "finishedAt": "2026-10-28T13:11:03.964Z",
+      "exitCode": 1,
+      "signal": null,
+      "spawnError": null,
+      "processId": 47084,
+      "log": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-movement.log",
+      "logSha256": "1365c3d0263e44bba76f2ce191a1b4f4fb7b2225768ceea5b276ccb19046dcbb",
+      "receiptOrigin": "node-child-process-close-event"
+    }
+  ]
+}

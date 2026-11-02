@@ -1,0 +1,61 @@
+{
+  "script": "test:combat-presentation",
+  "reason": "Repeat the complete94-testgroup after the strict Maya-control historical contract correction; initial failing log and child-eventreceipt retained unchanged.",
+  "declaredScriptCommand": "node --test --test-concurrency=1 scripts/combatIdentity.test.mjs scripts/combatCompletion.test.mjs scripts/engineSmashSuper.test.mjs scripts/rpgSummon.test.mjs scripts/rpgAuthoredSpecial.test.mjs scripts/fighterPresentationRuntime.test.mjs scripts/stageAtmosphere.test.mjs scripts/combatModesIntegration.test.mjs && node scripts/combatCompletionAudit.mjs --check",
+  "actualCommand": "node --test --test-concurrency=1 scripts/combatIdentity.test.mjs scripts/combatCompletion.test.mjs scripts/engineSmashSuper.test.mjs scripts/rpgSummon.test.mjs scripts/rpgAuthoredSpecial.test.mjs scripts/fighterPresentationRuntime.test.mjs scripts/stageAtmosphere.test.mjs scripts/combatModesIntegration.test.mjs",
+  "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "args": [
+    "--test",
+    "--test-concurrency=1",
+    "scripts/combatIdentity.test.mjs",
+    "scripts/combatCompletion.test.mjs",
+    "scripts/engineSmashSuper.test.mjs",
+    "scripts/rpgSummon.test.mjs",
+    "scripts/rpgAuthoredSpecial.test.mjs",
+    "scripts/fighterPresentationRuntime.test.mjs",
+    "scripts/stageAtmosphere.test.mjs",
+    "scripts/combatModesIntegration.test.mjs"
+  ],
+  "startedAt": "2026-10-26T12:45:50.538Z",
+  "endedAt": "2026-10-26T12:47:02.075Z",
+  "elapsedSeconds": 71.537203194,
+  "observedExitCode": 0,
+  "observedSignal": null,
+  "spawnError": null,
+  "receiptOrigin": "node-child-process-close-event",
+  "summary": {
+    "tests": 94,
+    "suites": 0,
+    "pass": 94,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "logFile": "18-retest-test-combat-presentation.log",
+  "logSha256": "18e57e8bc49f187c52e91f05dd4e1e041ab95bff2a31acfabfa79b45ac9c9037",
+  "packageSha256": "5dfe89a51139983b59edecd7b980105c9391757859db2ef2bd17e3cdc435fe69",
+  "inputHashes": {
+    "scripts/combatIdentity.test.mjs": "81b1ffe9fdd4238c8c69d7745eb0e0400988df2edbff6ed644180c1c92c0bfaf",
+    "scripts/combatCompletion.test.mjs": "0dbd89d0650a68a5afde6b561c9747acda0302776c49b687319af45492eacb7c",
+    "scripts/engineSmashSuper.test.mjs": "1ed2fb96084c5f43a713aa3dd4a07c5376ffcd40970c92d19fe9ddc8e758224e",
+    "scripts/rpgSummon.test.mjs": "b37fa462e2852941388b553f0ddc6a09bfabb2c275bffa79c79df12a34d8d359",
+    "scripts/rpgAuthoredSpecial.test.mjs": "c701c4ebdfc61935ff4adbc617c2c576a04e1a563af2589f9fe6f0ce27100d44",
+    "scripts/fighterPresentationRuntime.test.mjs": "cc4f68ae0810b1d43ed70972a94e9e8b9bea4d30dd764df6112b8a378748dbcd",
+    "scripts/stageAtmosphere.test.mjs": "aba582911f62da727bb47dadd5605e25ffa23f946079bc1340c54a694b76e6d7",
+    "scripts/combatModesIntegration.test.mjs": "7a74e845364e89127db21ca9de1641d12ca03b442b80a3b285d8d972002c2ba4"
+  },
+  "inputHashesAfter": {
+    "scripts/combatIdentity.test.mjs": "81b1ffe9fdd4238c8c69d7745eb0e0400988df2edbff6ed644180c1c92c0bfaf",
+    "scripts/combatCompletion.test.mjs": "0dbd89d0650a68a5afde6b561c9747acda0302776c49b687319af45492eacb7c",
+    "scripts/engineSmashSuper.test.mjs": "1ed2fb96084c5f43a713aa3dd4a07c5376ffcd40970c92d19fe9ddc8e758224e",
+    "scripts/rpgSummon.test.mjs": "b37fa462e2852941388b553f0ddc6a09bfabb2c275bffa79c79df12a34d8d359",
+    "scripts/rpgAuthoredSpecial.test.mjs": "c701c4ebdfc61935ff4adbc617c2c576a04e1a563af2589f9fe6f0ce27100d44",
+    "scripts/fighterPresentationRuntime.test.mjs": "cc4f68ae0810b1d43ed70972a94e9e8b9bea4d30dd764df6112b8a378748dbcd",
+    "scripts/stageAtmosphere.test.mjs": "aba582911f62da727bb47dadd5605e25ffa23f946079bc1340c54a694b76e6d7",
+    "scripts/combatModesIntegration.test.mjs": "7a74e845364e89127db21ca9de1641d12ca03b442b80a3b285d8d972002c2ba4"
+  },
+  "testInputsUnchangedDuringExecution": true,
+  "historicalReportChanges": [],
+  "failedSubtests": []
+}

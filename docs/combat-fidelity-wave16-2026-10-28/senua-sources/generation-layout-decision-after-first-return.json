@@ -1,0 +1,44 @@
+{
+  "createdAt": "2026-10-28T10:21:54.918Z",
+  "actualFirstReturn": {
+    "source": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-a.native.png",
+    "sha256": "d1bea45e7f564d2245ed20a9dbe4ede61f2f2965234510aca0c22547e7ad5fd6",
+    "requestedBodies": 32,
+    "observedCompleteBodies": 28,
+    "actualPhysicalLayout": {
+      "columns": 4,
+      "rowCounts": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "actualReviewedStateOrder": [
+      "idle",
+      "walk",
+      "run",
+      "turn",
+      "jumpStart",
+      "jumpRise",
+      "fall"
+    ],
+    "missingState": "jumpApex",
+    "reason": "Actual seventh row consists of descending/open falling poses. There is no eighth row; it is not silently counted or synthesized."
+  },
+  "remainingMainSourcesLayout": {
+    "columns": 8,
+    "rowCounts": [
+      8,
+      8,
+      8,
+      8
+    ]
+  },
+  "correctivePlan": "Four new articulated tucked-apex drawings plus four upright calibration studies; calibration is excluded. All original plans and the incomplete return remain archived.",
+  "sourceVersionAnd180PoseTargetUnchanged": true,
+  "source1to1Verified": false
+}

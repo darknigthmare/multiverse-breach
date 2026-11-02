@@ -4,6 +4,7 @@ import { HEROES_DB } from '../src/game/heroes.js';
 import { CANONICAL_COMBAT_OVERRIDES } from '../src/game/canonicalCombatOverrides.js';
 import { CANONICAL_COMBAT_EXTENSIONS } from '../src/game/combatCanonExtensions.js';
 import { combatIdentityText, resolveCombatHeroSpriteActor, resolveCombatPresentation, resolveMeleeSuper, resolveUniverseSummon } from '../src/game/combatIdentity.js';
+import { effectiveBatchPlan } from '../docs/combat-fidelity-wave16-2026-10-28/closure-support.mjs';
 
 const hero = id => HEROES_DB.find(actor => actor.id === id);
 
@@ -41,8 +42,8 @@ test('monsters, same-name shells and wrong universes never borrow roster hero ar
 
 test('every roster hero has a finite super sourced from its own universe', () => {
   const before = JSON.stringify(HEROES_DB);
-  const effectNames = new Set(['damage', 'heal', 'guard', 'buff', 'cleanse', 'revive']);
-  const deliveries = new Set(['melee', 'projectile', 'beam', 'area', 'radial', 'support']);
+  const effectNames = new Set(['damage', 'heal', 'guard', 'buff', 'cleanse', 'revive', 'control']);
+  const deliveries = new Set(['melee', 'projectile', 'beam', 'area', 'radial', 'support', 'control']);
   for (const actor of HEROES_DB) {
     const profile = resolveMeleeSuper(actor);
     assert.ok(profile, actor.id);
@@ -55,6 +56,31 @@ test('every roster hero has a finite super sourced from its own universe', () =>
     assert.ok(profile.hitAt < profile.duration, actor.id);
     assert.equal(profile.meterCost, 100, actor.id);
     assert.equal(profile.provenance.canonicalVerified, false);
+    if (actor.id === 'borderlands_2_maya_phaselock' || profile.effect === 'control' || profile.delivery === 'control') {
+      const expected = {
+        borderlands_2_maya_phaselock: ['Borderlands 2', 'Phaselock de Maya', 'phaselock', 2.4],
+        oddworld_abe_possession: ['Oddworld', 'Chant de possession d’Abe', 'possession', 2],
+        akane_tsunemori: ['Psycho-Pass', 'Dominator — Non-Lethal Paralyzer', 'paralyzer', 1.5]
+      }[actor.id];
+      assert.ok(expected, actor.id + ': undeclared source control');
+      assert.equal(profile.universe, expected[0]);
+      assert.equal(profile.name, expected[1]);
+      assert.equal(profile.effect, 'control');
+      assert.equal(profile.delivery, 'control');
+      assert.equal(profile.targetSide, 'enemy');
+      assert.equal(profile.shape, 'single');
+      assert.equal(profile.maxTargets, 1);
+      assert.equal(profile.multiplier, 0);
+      assert.equal(profile.sourceAbility.dmg, 0);
+      assert.equal(profile.controlKind, expected[2]);
+      assert.equal(profile.controlDuration, expected[3]);
+      assert.equal(profile.controlTurns, 1);
+      if (actor.id === 'oddworld_abe_possession') assert.equal(profile.channelDuration, 1.1);
+      if (actor.id === 'akane_tsunemori') {
+        assert.equal(profile.authorization, 'sibyl-s1e21-exception');
+        assert.equal(profile.requiresExplicitTargetEligibility, true);
+      }
+    }
   }
   assert.equal(JSON.stringify(HEROES_DB), before);
 });
@@ -117,7 +143,12 @@ test('every universe uses its own real performer or an explicitly authored entit
       assert.equal(summon.entityRender.asset.universe, actor.universe);
       assert.equal(summon.entityRender.asset.entityName, summon.entityName);
       assert.equal(summon.entityRender.asset.actionName, summon.action.name);
-      assert.equal(summon.entityRender.asset.frames, 4);
+      if (actor.id === 'aki_hayakawa') {
+        assert.equal(summon.entityName, 'Fox Devil');
+        assert.equal(summon.entityRender.asset.id, 'fox_devil-wave16');
+        assert.equal(summon.entityRender.asset.bodySource, 'source-entity');
+        assert.equal(summon.entityRender.asset.frames, 16);
+      } else assert.equal(summon.entityRender.asset.frames, 4);
       assert.equal(summon.entityRender.assetMissing, false);
       assert.equal(summon.provenance.entityAssetMissing, false);
     }
@@ -187,8 +218,8 @@ test('explicit support metadata and localized names survive without classifying 
 
 test('separate calls return independent profile and performer metadata', () => {
   for (const expected of [
-    { callerId: 'dallas', performerId: 'chains_pd', abilityName: 'Couverture lourde de Chains', slot: 'special' },
-    { callerId: 'houston_pd', performerId: 'dallas', abilityName: 'Sentry Deploy', slot: 'secondary' }
+    { callerId: 'dallas', performerId: 'chains_pd', abilityName: 'Couverture lourde de Chains', slot: 'special', effect: 'damage' },
+    { callerId: 'houston_pd', performerId: 'dallas', abilityName: 'Repérer l’accès de Dallas', slot: 'secondary', effect: 'buff' }
   ]) {
     const actor = hero(expected.callerId), performer = hero(expected.performerId);
     const callerBefore = JSON.stringify(actor), performerBefore = JSON.stringify(performer);
@@ -206,7 +237,7 @@ test('separate calls return independent profile and performer metadata', () => {
     first.sourceAbility.name = 'changed';
     first.performer.stats.hp = 1;
     first.performer.secondary.name = 'changed';
-    assert.equal(second.action.targeting.effect, 'damage');
+    assert.equal(second.action.targeting.effect, expected.effect);
     assert.equal(second.sourceAbility.name, expected.abilityName);
     assert.deepEqual(second.performer.stats, performer.stats);
     assert.deepEqual(second.performer.secondary, performer.secondary);
@@ -214,6 +245,9 @@ test('separate calls return independent profile and performer metadata', () => {
     assert.equal(JSON.stringify(performer), performerBefore);
     assert.deepEqual(resolveUniverseSummon(actor), second);
   }
+  const oldHouston = effectiveBatchPlan().reviewedRows.find(row => row.hero.id === 'houston_pd').priorSummon;
+  assert.equal(oldHouston.entityName, 'Sentry Deploy');
+  assert.equal(oldHouston.sourceAbility.name, 'Sentry Deploy');
   const one = resolveMeleeSuper(hero('aerith_ff7'));
   const two = resolveMeleeSuper(hero('aerith_ff7'));
   one.sourceAbility.targeting.healRatio = 0;

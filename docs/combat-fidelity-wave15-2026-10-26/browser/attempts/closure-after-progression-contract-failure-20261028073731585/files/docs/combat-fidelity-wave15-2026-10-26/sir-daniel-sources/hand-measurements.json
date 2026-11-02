@@ -1,0 +1,463 @@
+{
+  "date": "2026-10-26",
+  "heroId": "sir_daniel_fortesque",
+  "sourceWork": "MediEvil (1998 PlayStation), Sir Daniel Fortesque",
+  "reviewed": true,
+  "source1to1Verified": false,
+  "method": "Manual native skeletal-palm/wrist localization; exact nearest-neighbor source-to-packed mapping. Skeletal hands may have open bony gaps; both source and packed9×9 samples need30 visible pixels. No synthetic hand, rotated body, moved pixel or search away from the measured anatomy.",
+  "requiredPalms": 12,
+  "requiredWrists": 12,
+  "requiredContacts": 11,
+  "states": {
+    "ledgeCatch": [
+      {
+        "x": 197,
+        "y": 56,
+        "normalizedX": 0.76953125,
+        "normalizedY": 0.21875,
+        "visibleNeighborhood9x9": 65,
+        "sourceVisibleNeighborhood9x9": 68,
+        "frame": 0,
+        "contact": false,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+        "sourcePalm": {
+          "x": 218,
+          "y": 67
+        },
+        "wrist": {
+          "x": 188,
+          "y": 67,
+          "normalizedX": 0.734375,
+          "normalizedY": 0.26171875,
+          "visibleNeighborhood9x9": 50,
+          "sourceVisibleNeighborhood9x9": 49,
+          "sourcePoint": {
+            "x": 208,
+            "y": 80
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      },
+      {
+        "x": 196,
+        "y": 45,
+        "normalizedX": 0.765625,
+        "normalizedY": 0.17578125,
+        "visibleNeighborhood9x9": 75,
+        "sourceVisibleNeighborhood9x9": 75,
+        "frame": 1,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+        "sourcePalm": {
+          "x": 405,
+          "y": 43
+        },
+        "wrist": {
+          "x": 187,
+          "y": 56,
+          "normalizedX": 0.73046875,
+          "normalizedY": 0.21875,
+          "visibleNeighborhood9x9": 67,
+          "sourceVisibleNeighborhood9x9": 74,
+          "sourcePoint": {
+            "x": 395,
+            "y": 56
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      },
+      {
+        "x": 195,
+        "y": 41,
+        "normalizedX": 0.76171875,
+        "normalizedY": 0.16015625,
+        "visibleNeighborhood9x9": 78,
+        "sourceVisibleNeighborhood9x9": 78,
+        "frame": 2,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+        "sourcePalm": {
+          "x": 600,
+          "y": 35
+        },
+        "wrist": {
+          "x": 186,
+          "y": 52,
+          "normalizedX": 0.7265625,
+          "normalizedY": 0.203125,
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "sourcePoint": {
+            "x": 589,
+            "y": 47
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      },
+      {
+        "x": 182,
+        "y": 57,
+        "normalizedX": 0.7109375,
+        "normalizedY": 0.22265625,
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "frame": 3,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+        "sourcePalm": {
+          "x": 765,
+          "y": 43
+        },
+        "wrist": {
+          "x": 173,
+          "y": 68,
+          "normalizedX": 0.67578125,
+          "normalizedY": 0.265625,
+          "visibleNeighborhood9x9": 73,
+          "sourceVisibleNeighborhood9x9": 73,
+          "sourcePoint": {
+            "x": 755,
+            "y": 55
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      }
+    ],
+    "ledgeHang": [
+      {
+        "x": 188,
+        "y": 32,
+        "normalizedX": 0.734375,
+        "normalizedY": 0.125,
+        "visibleNeighborhood9x9": 75,
+        "sourceVisibleNeighborhood9x9": 77,
+        "frame": 0,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+        "sourcePalm": {
+          "x": 973,
+          "y": 39
+        },
+        "wrist": {
+          "x": 183,
+          "y": 45,
+          "normalizedX": 0.71484375,
+          "normalizedY": 0.17578125,
+          "visibleNeighborhood9x9": 56,
+          "sourceVisibleNeighborhood9x9": 65,
+          "sourcePoint": {
+            "x": 967,
+            "y": 53
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      },
+      {
+        "x": 171,
+        "y": 21,
+        "normalizedX": 0.66796875,
+        "normalizedY": 0.08203125,
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "frame": 1,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+        "sourcePalm": {
+          "x": 1142,
+          "y": 35
+        },
+        "wrist": {
+          "x": 165,
+          "y": 36,
+          "normalizedX": 0.64453125,
+          "normalizedY": 0.140625,
+          "visibleNeighborhood9x9": 77,
+          "sourceVisibleNeighborhood9x9": 81,
+          "sourcePoint": {
+            "x": 1135,
+            "y": 51
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      },
+      {
+        "x": 164,
+        "y": 47,
+        "normalizedX": 0.640625,
+        "normalizedY": 0.18359375,
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "frame": 2,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+        "sourcePalm": {
+          "x": 1319,
+          "y": 34
+        },
+        "wrist": {
+          "x": 158,
+          "y": 62,
+          "normalizedX": 0.6171875,
+          "normalizedY": 0.2421875,
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "sourcePoint": {
+            "x": 1312,
+            "y": 50
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      },
+      {
+        "x": 176,
+        "y": 32,
+        "normalizedX": 0.6875,
+        "normalizedY": 0.125,
+        "visibleNeighborhood9x9": 78,
+        "sourceVisibleNeighborhood9x9": 80,
+        "frame": 3,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+        "sourcePalm": {
+          "x": 1496,
+          "y": 33
+        },
+        "wrist": {
+          "x": 173,
+          "y": 48,
+          "normalizedX": 0.67578125,
+          "normalizedY": 0.1875,
+          "visibleNeighborhood9x9": 40,
+          "sourceVisibleNeighborhood9x9": 40,
+          "sourcePoint": {
+            "x": 1493,
+            "y": 51
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      }
+    ],
+    "ledgeClimb": [
+      {
+        "x": 180,
+        "y": 22,
+        "normalizedX": 0.703125,
+        "normalizedY": 0.0859375,
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "frame": 0,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.native.png",
+        "sourcePalm": {
+          "x": 309,
+          "y": 55
+        },
+        "wrist": {
+          "x": 178,
+          "y": 31,
+          "normalizedX": 0.6953125,
+          "normalizedY": 0.12109375,
+          "visibleNeighborhood9x9": 80,
+          "sourceVisibleNeighborhood9x9": 81,
+          "sourcePoint": {
+            "x": 304,
+            "y": 76
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      },
+      {
+        "x": 190,
+        "y": 92,
+        "normalizedX": 0.7421875,
+        "normalizedY": 0.359375,
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "frame": 1,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.native.png",
+        "sourcePalm": {
+          "x": 714,
+          "y": 146
+        },
+        "wrist": {
+          "x": 190,
+          "y": 101,
+          "normalizedX": 0.7421875,
+          "normalizedY": 0.39453125,
+          "visibleNeighborhood9x9": 67,
+          "sourceVisibleNeighborhood9x9": 81,
+          "sourcePoint": {
+            "x": 714,
+            "y": 165
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      },
+      {
+        "x": 182,
+        "y": 157,
+        "normalizedX": 0.7109375,
+        "normalizedY": 0.61328125,
+        "visibleNeighborhood9x9": 79,
+        "sourceVisibleNeighborhood9x9": 81,
+        "frame": 2,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.native.png",
+        "sourcePalm": {
+          "x": 1071,
+          "y": 278
+        },
+        "wrist": {
+          "x": 177,
+          "y": 149,
+          "normalizedX": 0.69140625,
+          "normalizedY": 0.58203125,
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "sourcePoint": {
+            "x": 1059,
+            "y": 260
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      },
+      {
+        "x": 193,
+        "y": 236,
+        "normalizedX": 0.75390625,
+        "normalizedY": 0.921875,
+        "visibleNeighborhood9x9": 79,
+        "sourceVisibleNeighborhood9x9": 81,
+        "frame": 3,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.native.png",
+        "sourcePalm": {
+          "x": 1475,
+          "y": 280
+        },
+        "wrist": {
+          "x": 188,
+          "y": 227,
+          "normalizedX": 0.734375,
+          "normalizedY": 0.88671875,
+          "visibleNeighborhood9x9": 69,
+          "sourceVisibleNeighborhood9x9": 81,
+          "sourcePoint": {
+            "x": 1464,
+            "y": 261
+          },
+          "localRefinement": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "localRefinement": {
+          "x": 0,
+          "y": 0
+        },
+        "measurement": "Visible leading skeletal palm connected to a real wrist/forearm. The opposite camp is a renderer mirror; hidden anatomical handedness is not certified."
+      }
+    ]
+  }
+}

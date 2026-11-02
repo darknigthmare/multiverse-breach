@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-28T09:39:22.192Z",
+  "sourcePlan": "docs/combat-fidelity-wave16-2026-10-28/part-c/source-plan.json",
+  "note": "Mechanical contract appended after the immutable source plan and before native generation.",
+  "actions": [
+    {
+      "id": "hakumen_bb",
+      "targeting": {
+        "counterKind": "yukikaze",
+        "counterWindowDuration": 1.1,
+        "counterMultiplier": 4.8,
+        "counterRequiresIncomingContact": true
+      },
+      "launchDamage": 0
+    },
+    {
+      "id": "kirito_sao",
+      "targeting": {
+        "hitSequence": {
+          "kind": "starburst-stream",
+          "hitCount": 16,
+          "firstAt": 0.46,
+          "lastAt": 0.76,
+          "releaseWindow": {
+            "start": 0.46,
+            "end": 0.79
+          }
+        }
+      },
+      "animationDuration": 1.1,
+      "hitAt": 0.46
+    },
+    {
+      "id": "akane_tsunemori",
+      "targeting": {
+        "controlKind": "paralyzer",
+        "authorization": "sibyl-s1e21-exception",
+        "requiresExplicitTargetEligibility": true,
+        "duration": 1.5,
+        "range": 480
+      },
+      "launchDamage": 0,
+      "physicalPresentation": "nolevitation;cyanDominatorParalyzer;wholebodyremainsgrounded"
+    },
+    {
+      "id": "aki_hayakawa",
+      "targeting": {
+        "entityKind": "fox-devil",
+        "nativeEntityRequired": true,
+        "acceptedContactSource": "fox-mouth"
+      },
+      "entityOwner": "/root/wave16_rpg"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+✔ keyboard/touch special and legacy ability dispatch share one timed super and one meter spend (11681.581747ms)
+✔ beam respects facing, finite range and height while projectile hits the nearest target (2.57807ms)
+✔ authored heal restores nearby living allies without damaging enemies or reviving (0.514356ms)
+✔ guard, buff, cleanse and revive retain their support effects and expire during simulation (2.420373ms)
+✔ interruption, pause input reset and outcome cannot produce a delayed second impact (1.304338ms)
+✔ perfect guard works on supers; missing abilities spend no meter for P2 or CPU (1.218349ms)
+✔ CPU and local P2 can activate their own authored super with the same runtime (0.916393ms)
+✔ every fighter keeps its own intro duration and outcome while pending attacks are cleared (2.673194ms)
+✔ Fighter player civilian light/heavy actions preserve support effects without damage (11202.044715ms)
+✔ Fighter cpu civilian light/heavy actions preserve support effects without damage (10.201391ms)
+✔ authored simple firearms travel to their target and stop at the actual source range (6.776771ms)
+✔ continuous authored defense uses its actual reduction instead of the legacy universal block (1.05986ms)
+✔ native presentations take priority while legacy Naruto retains its explicit charge and release frames (2.025157ms)
+✔ Player Anchor consumes its existing dedicated phase sheets, and support fallbacks never swing (1.861089ms)
+✔ scripted finishers draw distinct action shapes and never change battle state (4.44404ms)
+✔ Barret Catastrophe holds an airborne firing position before landing, with mirrored downward ray geometry (1.307954ms)
+✔ Barret super lifts the rendered body and fires downward at its real impact time without moving gameplay coordinates (3.684022ms)
+✔ Barret finale keeps its beam cosmetic after the match is confirmed and completes once (2.741359ms)
+✔ Leo heals another living ally and never himself through either command and either player side (11.69852ms)
+✔ Mei Zhen secondary commands buff living allies without damage and share a six-second cooldown for both sides (30.177158ms)
+✔ Melee Barret renders an airborne body and a descending committed beam for P1 and P2 without physical mutation (7.760195ms)
+✔ character introductions freeze combat, controls and the round timer before the countdown (11084.315352ms)
+✔ the first round shows both outcomes without completing or rewarding the match (3.160402ms)
+✔ round restart restores both rosters and resources with the score preserved (1.5433ms)
+✔ a lost opening round does not finish the match and the player can win the next two (1.575193ms)
+✔ finale, victory and outro use the winner identity and cannot deal further damage (18.796428ms)
+✔ support supers heal their intended team without damaging the opponent (3.312792ms)
+✔ the presentation renderer displays the character, universe and real source ability through every phase (9.750601ms)
+✔ runtime initialization clamps mutable state and normalizes all metrics (1.635589ms)
+✔ light combo advances light1, light2 and light3 through cancel windows (0.996865ms)
+✔ charge enters hold loop, clamps, releases with scale and resolves one charged hit (0.719006ms)
+✔ crouched charge keeps a low hurtbox until release restores standing hurtbox (0.482338ms)
+✔ guard entry keeps its full simulation interval before the hold pose (0.416188ms)
+✔ perfect guard, regular reduction, finite break and delayed regeneration are deterministic (0.552945ms)
+✔ shield release and passive drain break obey finite transitions (0.510611ms)
+✔ crouch enter, idle and exit complete and block conflicting actions (0.25839ms)
+✔ descending actors catch ledges while upward, remote and regrab-locked actors do not (0.665725ms)
+✔ ledge climb, drop, jump and attack detach with finite locks and correct facing (0.804474ms)
+✔ taunt and runtime metrics remain finite across tracked actions (0.300243ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 36190.810869

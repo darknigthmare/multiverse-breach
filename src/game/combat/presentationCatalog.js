@@ -10,6 +10,8 @@ import { WAVE_11_PRESENTATION_DEFINITIONS } from './presentationCatalogWave11.js
 import { WAVE_12_PRESENTATION_DEFINITIONS } from './presentationCatalogWave12.js';
 import { WAVE_13_PRESENTATION_DEFINITIONS } from './presentationCatalogWave13.js';
 import { WAVE_14_PRESENTATION_DEFINITIONS } from './presentationCatalogWave14.js';
+import { WAVE_15_PRESENTATION_DEFINITIONS } from './presentationCatalogWave15.js';
+import { WAVE_16_PRESENTATION_DEFINITIONS } from './presentationCatalogWave16.js';
 import { getCharacterAnimationFrame } from './characterAnimationCatalog.js';
 
 export const PRESENTATION_PHASES = Object.freeze(['intro', 'outro', 'fatality', 'victory', 'defeat', 'roundVictory', 'roundDefeat']);
@@ -27,6 +29,8 @@ const beat = (at, state, frame, x = 0, y = 0, scale = 1, opacity = 1) => ({ at, 
 // These recipes interpolate existing character art. They never create hitboxes,
 // change HP, emit gameplay events, or claim to be source-game cinematics.
 const motions = {
+  nativeWave15Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
+  nativeWave16Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
   nativeWave14Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
   nativeWave13Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
   nativeWave11Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
@@ -145,6 +149,8 @@ export const CHARACTER_PRESENTATIONS = freeze({
   "arca_bastion": define("arca_bastion", "Nexus de Convergence", "src/game/heroes.js et spriteAssets.js : Bastion Korr utilise son armement et ses barricades ; son pack universel possède des lignes support et special dédiées.", "Verrou de Convergence", ["Bastion prépare son rempart", "Bastion sécurise son départ", "Verrou de Convergence", "Bastion garde le secteur", "Bastion reprend appui", "Bastion vérifie son rempart", "Bastion reprend position"], ["braceReady", "walkExit", "specialFinal", "gunWin", "collapse", "calmRound", "recover"], "convergence-lock", []),
   ...Object.fromEntries(WAVE_13_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
   ...Object.fromEntries(WAVE_14_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
+  ...Object.fromEntries(WAVE_15_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
+  ...Object.fromEntries(WAVE_16_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
 });
 
 export function resolvePresentationScript(actor, phase) {

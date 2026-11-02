@@ -1,0 +1,53 @@
+// Kirito16 only. Complete native RGBA components, reviewed rectangular imports,
+// one anatomical scale and nearest-neighbor packing; never repaint or mirror.
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+import sharp from 'sharp';
+import {segmentNativeAtlas,commonSourceScale} from './native-segmentation.mjs';
+const dir='docs/combat-fidelity-wave16-2026-10-28/part-c',recordPath=dir+'/action-generation-record.json',registryPath='src/game/combat/characterActionAnimationsWave16PartC.generated.json',output='public/sprites/generated/combat-character-actions-wave16-part-c/kirito_sao-starburst-stream.png';
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex'),read=async p=>JSON.parse(await fs.readFile(p,'utf8')),fp=async p=>{const b=await fs.readFile(p);return{path:p,sha256:sha(b),bytes:b.length};};
+export async function buildKiritoActionAtlas({check=false}={}){
+ const record=await read(recordPath),source=await fs.readFile(record.sourceImage),receipt=await read(record.actualGenerationReceipt);
+ assert.equal(sha(source),record.sourceImageSha256);assert.equal((await fp(record.actualGenerationReceipt)).sha256,record.actualGenerationReceiptSha256);assert.equal(receipt.sha256,record.sourceImageSha256);assert.equal(receipt.imageReturned,true);assert.equal(receipt.requestedDrawings,16);
+ for(const plan of [record.sourcePlan,record.effectiveRequestPlan]){assert.equal((await fp(plan.path)).sha256,plan.sha256);assert.ok(Date.parse((await read(plan.path)).createdAt)<Date.parse(receipt.startedAt));}
+ assert.equal(record.actualSourceOpened,true);assert.equal(record.contacts.length,16);assert.equal(record.calibration.firstPoseIsStanding,false);
+ const segmented=await segmentNativeAtlas(record.sourceImage,{rowCount:4});assert.deepEqual(segmented.rowCounts,[4,4,4,4]);const originals=segmented.rows.flat(),frames=[];
+ for(const[i,f]of originals.entries()){
+  const c=record.contacts[i],r=c.roi;assert.equal(c.index,i);assert.equal(c.visuallyReviewed,true);assert.ok(r.left>0&&r.top>0&&r.left+r.width<segmented.width&&r.top+r.height<segmented.height);let excludedSolid=0,excludedFringe=0;
+  for(let y=0;y<f.height;y++)for(let x=0;x<f.width;x++){const a=f.data[(y*f.width+x)*4+3],gx=f.sourceBounds.left+x,gy=f.sourceBounds.top+y;if(gx<r.left||gy<r.top||gx>=r.left+r.width||gy>=r.top+r.height){if(a>24)excludedSolid++;else if(a>0)excludedFringe++;}}
+  assert.equal(excludedSolid,0,'Reviewed rectangle clipped real native art '+i);assert.equal(excludedFringe,c.nearTransparentPixelsExcludedByRoi);
+  // The reviewed rectangle can include two pixels of genuinely empty padding
+  // beyond this component's own alpha bounds. Copy only its original assigned
+  // RGBA; no neighbouring component or drawn replacement enters that padding.
+  const data=Buffer.alloc(r.width*r.height*4);
+  for(let y=0;y<r.height;y++)for(let x=0;x<r.width;x++){
+   const sx=r.left+x-f.sourceBounds.left,sy=r.top+y-f.sourceBounds.top;
+   if(sx>=0&&sy>=0&&sx<f.width&&sy<f.height)f.data.copy(data,(y*r.width+x)*4,(sy*f.width+sx)*4,(sy*f.width+sx)*4+4);
+  }
+  frames.push({data,width:r.width,height:r.height,sourceBounds:r,bodyBounds:f.bodyBounds,centerX:f.bodyBounds.centerX-r.left,nativeRow:Math.floor(i/4),nativeColumn:i%4,sourceRawRgbaSha256:sha(data),excludedFringe});
+ }
+ assert.equal(new Set(frames.map(f=>f.sourceRawRgbaSha256)).size,16);const scale=commonSourceScale(frames,record.calibration.nativeStandingBodyHeight,190),renderScale=190/(record.calibration.nativeStandingBodyHeight*scale),layers=[],frameBounds=[],contactAnchors=[],markedLayers=[];
+ const neighborhood=(data,w,h,x,y)=>{let count=0;for(let yy=Math.max(0,y-4);yy<=Math.min(h-1,y+4);yy++)for(let xx=Math.max(0,x-4);xx<=Math.min(w-1,x+4);xx++)count+=data[(yy*w+xx)*4+3]>24;return count;};
+ for(const[i,f]of frames.entries()){
+  const width=Math.max(1,Math.round(f.width*scale)),height=Math.max(1,Math.round(f.height*scale)),{data}=await sharp(f.data,{raw:{width:f.width,height:f.height,channels:4}}).resize(width,height,{kernel:'nearest'}).raw().toBuffer({resolveWithObject:true});let sole=-1;for(let y=0;y<height;y++)for(let x=0;x<width;x++)if(data[(y*width+x)*4+3]>24)sole=Math.max(sole,y);
+  assert.ok(sole>=0);const left=Math.round(128-f.centerX*scale),top=244-(sole+1);assert.ok(left>=10&&top>=10&&left+width<=246&&top+height<=246,'Unsafe complete native action cell '+i);
+  const png=await sharp(data,{raw:{width,height,channels:4}}).png().toBuffer(),row=Math.floor(i/4),col=i%4;layers.push({input:png,left:col*256+left,top:row*256+top});
+  const measure=(point,name)=>{const x=Math.round((point[0]-f.sourceBounds.left+.5)*width/f.width-.5),y=Math.round((point[1]-f.sourceBounds.top+.5)*height/f.height-.5),sourceX=point[0]-f.sourceBounds.left,sourceY=point[1]-f.sourceBounds.top;const packedVisible=neighborhood(data,width,height,x,y),sourceVisible=neighborhood(f.data,f.width,f.height,sourceX,sourceY);assert.ok(sourceVisible>=25&&packedVisible>=12,'Actual native blade support missing '+i+'/'+name);assert.ok(data[(y*width+x)*4+3]>24,'Measured blade center became transparent '+i+'/'+name);return{point:{x:left+x,y:top+y},sourcePoint:{x:point[0],y:point[1]},sourceVisibleNeighborhood9x9:sourceVisible,packedVisibleNeighborhood9x9:packedVisible};};
+  const c=record.contacts[i],black=measure(c.elucidator,'elucidator'),teal=measure(c.darkRepulser,'dark-repulser'),primary=c.primaryBlade==='elucidator'?black:teal,other=c.primaryBlade==='elucidator'?teal:black;
+  contactAnchors.push({index:i,row,col,blade:c.primaryBlade,...primary,otherBlade:{name:c.primaryBlade==='elucidator'?'dark-repulser':'elucidator',...other},visuallyReviewed:true,measurement:'Fresh manually localized physical blade segment, not a glow/trail or gameplay target. Opposite camp is a renderer mirror.'});
+  const svg=Buffer.from(`<svg width="256" height="256"><circle cx="${black.point.x}" cy="${black.point.y}" r="5" fill="none" stroke="#ff8585" stroke-width="1.5"/><circle cx="${teal.point.x}" cy="${teal.point.y}" r="5" fill="none" stroke="#8dfce8" stroke-width="1.5"/></svg>`);markedLayers.push({input:svg,left:col*256,top:row*256});
+  frameBounds.push({index:i,row,col,sourceImage:record.sourceImage,sourceRoi:f.sourceBounds,sourceRawRgbaSha256:f.sourceRawRgbaSha256,output:{left,top,width,height},actualSolidSoleBaseline:top+sole+1,packedRgbaSha256:sha(data),completeNativeComponent:true,solidPixelsExcludedByRoi:0,nearTransparentPixelsExcludedByRoi:f.excludedFringe});
+ }
+ const bytes=await sharp({create:{width:1024,height:1024,channels:4,background:'#00000000'}}).composite(layers).png({compressionLevel:9}).toBuffer(),marked=await sharp(bytes).flatten({background:'#414a54'}).composite(markedLayers).png().toBuffer();
+ if(record.packedReview?.inspected){
+  assert.equal(sha(marked),record.packedReview.sha256,'Packed pixels changed after the actual visual review; inspect the new contact image before claiming it reviewed');
+  assert.ok(Date.parse(record.packedReview.reviewedAt)>=Date.parse(receipt.finishedAt));
+ }
+ const sourcePlan=await read(record.sourcePlan.path),states=Object.fromEntries(Array.from({length:16},(_,i)=>['contact'+String(i+1).padStart(2,'0'),{row:Math.floor(i/4),startColumn:i%4,frames:1,columns:4,index:i}]));
+ const entry={id:'kirito-starburst-stream-wave16',heroId:'kirito_sao',universe:'Sword Art Online',name:'Kirito — Starburst Stream,16 contacts',actionName:'Starburst Stream',sheet:'/'+output.replace(/^public\//,''),frames:16,columns:4,rows:4,frameWidth:256,frameHeight:256,width:1024,height:1024,states,sha256:sha(bytes),sourceImage:record.sourceImage,sourceImageSha256:record.sourceImageSha256,sourceDimensions:{width:segmented.width,height:segmented.height},sourceImages:[{path:record.sourceImage,sha256:record.sourceImageSha256,observedBodies:16,retainedBodies:16}],sourceWork:record.sourceWork,sourceReference:sourcePlan.sourceReference,characterVersion:'Aincrad television2012 after Dual Blades skill reveal; Elucidator right/Dark Repulser left',normalization:{method:'Connected complete native bodies; explicitly reviewed rectangular source imports, one shared anatomical scale, nearest-neighbor packing and actual solid-boot registration. No paint, mirror, pose cloning or art repair.',baseline:244,sharedScalePerSource:true,scale,renderScale,sourceStandingBodyHeight:record.calibration.nativeStandingBodyHeight,sourceProjectedBodyHeight:record.calibration.nativeProjectedBodyHeight,targetBodyHeight:190,calibration:record.calibration,rows:Array.from({length:4},(_,row)=>({row,renderScale,scale,frames:frameBounds.slice(row*4,row*4+4)})),frames:frameBounds,duplicatedFrames:0,mirroredFrames:0,syntheticPoses:false},contactAnchors,sequence:sourcePlan.action16.sequence,visualValidation:{actualSourceOpened:true,all16WeaponContactsReviewed:true,wholeNativeBodies:true,packedContactImageActuallyOpened:record.packedReview?.inspected===true,reviewEvidence:record.packedReview||null,source1to1Verified:false,canonicalVerified:false,networkVerified:false},provenance:{provider:'OpenAI',tool:'image_gen',model:null,jobId:null,generationId:null,actualGenerationReceipt:await fp(record.actualGenerationReceipt),actualArguments:await fp(dir+'/sources/kirito_sao-starburst-action-arguments.json'),prompt:await fp(dir+'/sources/kirito_sao-starburst-action-prompt.txt'),generationRecord:await fp(recordPath),sourcePlan:record.sourcePlan,effectiveRequestPlan:record.effectiveRequestPlan,normalizationScript:await fp(dir+'/action-builder.mjs'),nativeArtwork:true,canonicalVerified:false,source1to1Verified:false},source1to1Verified:false};
+ const registry={schemaVersion:1,source:'OpenAI',entries:[entry]},provenance={schemaVersion:1,date:'2026-10-28',heroId:'kirito_sao',actualNativeGenerationCalls:1,observedNativePoses:16,deliveredNativePoses:16,native32PosesRecounted:0,source1to1Verified:false,entries:[entry],limitations:record.limitations};
+ const outputs=[[output,bytes],[registryPath,Buffer.from(JSON.stringify(registry,null,2)+'\n')],[dir+'/action-provenance.json',Buffer.from(JSON.stringify(provenance,null,2)+'\n')],[dir+'/action-contact-localization-packed.png',marked]];
+ for(const[p,b]of outputs){if(check)assert.equal(sha(await fs.readFile(p)),sha(b),'Stale actual Kirito action output '+p);else{await fs.mkdir(p.slice(0,p.lastIndexOf('/')),{recursive:true});await fs.writeFile(p,b);}}
+ console.log(JSON.stringify({passed:true,check,nativePoses:16,contactAnchors:contactAnchors.length,visibleBladePoints:32,sha256:entry.sha256,scale,renderScale,anatomicalCalibration:record.calibration.method,firstPoseIsStanding:false,sourceSolidPixelsExcluded:0}));return entry;
+}

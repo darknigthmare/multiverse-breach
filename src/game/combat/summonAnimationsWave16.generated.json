@@ -1,0 +1,3693 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "crash_bandicoot-wave16",
+      "key": "Crash Bandicoot::Crash Bandicoot::Spin de Crash",
+      "universe": "Crash Bandicoot",
+      "entityName": "Crash Bandicoot",
+      "actionName": "Spin de Crash",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "crash_bandicoot",
+      "nativeRole": "melee",
+      "sheet": "/sprites/generated/summon-animations-wave16/crash.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "567c3b57b5c40b30fc5cd8c0f3519da753ba8beb7d8ccdebc9400ac06ea97c1c",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/crash-original.png",
+      "sourceImageSha256": "c053da0bdacc98c0b1d6d82b2fa9790d546490c7165dc7fdf2892a4de9f7ff26",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": null,
+      "referenceImageSha256": null,
+      "sourceWork": "Crash Bandicoot3: Warped(1998)",
+      "sourceReference": "Crash Bandicoot3: Warped(1998). Source performer or entity with sixteen newly generated poses; adaptation, not verified source frames. All16 original and alpha-composited QA poses actually viewed. Warped1998 orange/beige Crash, bluejeans/redshoes/browngloves, physical spin with complete hands/shoes, no magic/projectile.",
+      "effectAnchors": {
+        "attack": [
+          {
+            "x": 240,
+            "y": 157,
+            "space": "packed-native-pixels",
+            "role": "physical-spin-arm-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/crash-attack-anchor-zoom.png"
+          },
+          {
+            "x": 350,
+            "y": 161,
+            "space": "packed-native-pixels",
+            "role": "physical-spin-arm-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/crash-attack-anchor-zoom.png"
+          },
+          {
+            "x": 344,
+            "y": 144,
+            "space": "packed-native-pixels",
+            "role": "physical-spin-arm-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/crash-attack-anchor-zoom.png"
+          },
+          {
+            "x": 174,
+            "y": 154,
+            "space": "packed-native-pixels",
+            "role": "physical-spin-arm-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/crash-attack-anchor-zoom.png"
+          }
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.6790123456790124,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 165,
+          "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 243,
+          "outputBodyHeight": 165,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/crash-original.png",
+            "sourceImageSha256": "c053da0bdacc98c0b1d6d82b2fa9790d546490c7165dc7fdf2892a4de9f7ff26",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 259
+            },
+            "scale": 0.6790123456790124,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 98,
+                  "top": 8,
+                  "width": 237,
+                  "height": 241,
+                  "pixels": 29892
+                },
+                "output": {
+                  "left": 192,
+                  "top": 78,
+                  "width": 161,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 479,
+                  "top": 8,
+                  "width": 212,
+                  "height": 233,
+                  "pixels": 28242
+                },
+                "output": {
+                  "left": 190,
+                  "top": 78,
+                  "width": 144,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 826,
+                  "top": 9,
+                  "width": 229,
+                  "height": 238,
+                  "pixels": 29990
+                },
+                "output": {
+                  "left": 165,
+                  "top": 79,
+                  "width": 155,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 1222,
+                  "top": 9,
+                  "width": 210,
+                  "height": 243,
+                  "pixels": 29267
+                },
+                "output": {
+                  "left": 173,
+                  "top": 79,
+                  "width": 143,
+                  "height": 165
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/crash-original.png",
+            "sourceImageSha256": "c053da0bdacc98c0b1d6d82b2fa9790d546490c7165dc7fdf2892a4de9f7ff26",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 254,
+              "bottom": 515
+            },
+            "scale": 0.6790123456790124,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 97,
+                  "top": 9,
+                  "width": 252,
+                  "height": 247,
+                  "pixels": 32509
+                },
+                "output": {
+                  "left": 191,
+                  "top": 76,
+                  "width": 171,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 432,
+                  "top": 21,
+                  "width": 288,
+                  "height": 230,
+                  "pixels": 32320
+                },
+                "output": {
+                  "left": 158,
+                  "top": 84,
+                  "width": 196,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 825,
+                  "top": 36,
+                  "width": 288,
+                  "height": 215,
+                  "pixels": 33023
+                },
+                "output": {
+                  "left": 164,
+                  "top": 95,
+                  "width": 196,
+                  "height": 146
+                }
+              },
+              {
+                "source": {
+                  "left": 1179,
+                  "top": 52,
+                  "width": 327,
+                  "height": 198,
+                  "pixels": 31968
+                },
+                "output": {
+                  "left": 144,
+                  "top": 105,
+                  "width": 222,
+                  "height": 134
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/crash-original.png",
+            "sourceImageSha256": "c053da0bdacc98c0b1d6d82b2fa9790d546490c7165dc7fdf2892a4de9f7ff26",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 506,
+              "bottom": 765
+            },
+            "scale": 0.6790123456790124,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 83,
+                  "top": 5,
+                  "width": 228,
+                  "height": 243,
+                  "pixels": 27922
+                },
+                "output": {
+                  "left": 182,
+                  "top": 76,
+                  "width": 155,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 434,
+                  "top": 9,
+                  "width": 300,
+                  "height": 244,
+                  "pixels": 31433
+                },
+                "output": {
+                  "left": 160,
+                  "top": 78,
+                  "width": 204,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 802,
+                  "top": 8,
+                  "width": 295,
+                  "height": 241,
+                  "pixels": 29353
+                },
+                "output": {
+                  "left": 149,
+                  "top": 78,
+                  "width": 200,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 1181,
+                  "top": 8,
+                  "width": 283,
+                  "height": 239,
+                  "pixels": 27679
+                },
+                "output": {
+                  "left": 145,
+                  "top": 78,
+                  "width": 192,
+                  "height": 162
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/crash-original.png",
+            "sourceImageSha256": "c053da0bdacc98c0b1d6d82b2fa9790d546490c7165dc7fdf2892a4de9f7ff26",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 750,
+              "bottom": 1024
+            },
+            "scale": 0.6790123456790124,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 64,
+                  "top": 13,
+                  "width": 267,
+                  "height": 244,
+                  "pixels": 30612
+                },
+                "output": {
+                  "left": 169,
+                  "top": 78,
+                  "width": 181,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 464,
+                  "top": 14,
+                  "width": 212,
+                  "height": 243,
+                  "pixels": 29432
+                },
+                "output": {
+                  "left": 180,
+                  "top": 78,
+                  "width": 144,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 851,
+                  "top": 13,
+                  "width": 184,
+                  "height": 244,
+                  "pixels": 28498
+                },
+                "output": {
+                  "left": 182,
+                  "top": 78,
+                  "width": 125,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 1233,
+                  "top": 7,
+                  "width": 174,
+                  "height": 251,
+                  "pixels": 29931
+                },
+                "output": {
+                  "left": 181,
+                  "top": 74,
+                  "width": 118,
+                  "height": 170
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6c915a6e30b5ead54fe9f02942eaf95f686fc93cbd0f05f130913ce45ae7b890",
+              "6f3a5e26ed24d5375745ddd6035da77b27e33d6e02bbf31b61cb7c63f7a50ee7",
+              "8800fda08a28c4158560a214b041c171a5b8bb45d36eb57745407d1c2be8d52c",
+              "28f87efa5a580697628fe002d2f7916c80c970525184328141c4623f40d8d913"
+            ],
+            "visiblePixels": [
+              13866,
+              13045,
+              13904,
+              13607
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e2afed6be474eb2bedbc92ebe4d40cef0048d3fae25bff17e770f7ece698f1f2",
+              "0d39ed77fd17191fd57907bf9b6f6d5bc2257db404e4cc8d2d7c394871ae7c15",
+              "1a1610be553d15e8b0efb1814079a86c32eb25cb2cf88a7c55f87430e2d69d27",
+              "b40191754f272df8b2d39dd193bed40223e4520a4720df0f39917173b40ecbb0"
+            ],
+            "visiblePixels": [
+              15060,
+              14964,
+              15307,
+              14701
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "67b07945ec18a2c70ed2328baffe4048b38e6ec0e7789714d2b54fa2bc500dc0",
+              "1fd0beaab38125baba863ab8c2dd7f565688e6e163d2ab6b95e76edc31ef6cce",
+              "3dc696f3368ee0dd07ed1ecf3db11b67a574a529949e7bdec986d1523a75710c",
+              "9163322fd0c865043daf55f320d7312a78d90c56918f8b99be602f2a24a727e3"
+            ],
+            "visiblePixels": [
+              12888,
+              14556,
+              13550,
+              12780
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "423d26d6aa91542ca2b978d837c5d9d621751cbdcbd6519b4f5c33a20c9d789e",
+              "8aeb0831d8a3d856247ec917ab0abce8d80f8b37be835e336d806052b978062f",
+              "30c0392bdef918b5186857bb7231576ccbac7b6be995a33af32f3081ac398dfe",
+              "ef86e0a5d34daf3fedf76beeb3c01acc4d3e72e331953a851a7e234afe3c591b"
+            ],
+            "visiblePixels": [
+              14172,
+              13578,
+              13195,
+              13774
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "cuphead_mugman-wave16",
+      "key": "Cuphead::Mugman::Invincibilité du Super Art II de Mugman",
+      "universe": "Cuphead",
+      "entityName": "Mugman",
+      "actionName": "Invincibilité du Super Art II de Mugman",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "cuphead_mugman",
+      "nativeRole": "support",
+      "sheet": "/sprites/generated/summon-animations-wave16/mugman.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "9e376004314dd42b28a615fb660de19f5574ca41fd619e2af6165399d9c1d4d4",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/mugman-original.png",
+      "sourceImageSha256": "ec1b4e594e97c9e05c82a6b30807f8b97aeec192d49719dc2c326f9b5fce54a8",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": null,
+      "referenceImageSha256": null,
+      "sourceWork": "Cuphead(2017), Super Art II",
+      "sourceReference": "Cuphead(2017), Super Art II. Source performer or entity with sixteen newly generated poses; adaptation, not verified source frames. All16 actually viewed. Blue-nosed white Mugman, blue costume and brown shoes, native golden invincibility outline without beam, shielddisc, healing or attack. Source4.85s self effect vs callerrelay adaptation is separated in erratum.",
+      "effectAnchors": null,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.6712962962962963,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 145,
+          "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 216,
+          "outputBodyHeight": 145,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/mugman-original.png",
+            "sourceImageSha256": "ec1b4e594e97c9e05c82a6b30807f8b97aeec192d49719dc2c326f9b5fce54a8",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 255
+            },
+            "scale": 0.6712962962962963,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 114,
+                  "top": 25,
+                  "width": 194,
+                  "height": 219,
+                  "pixels": 25800
+                },
+                "output": {
+                  "left": 204,
+                  "top": 97,
+                  "width": 130,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 475,
+                  "top": 24,
+                  "width": 181,
+                  "height": 218,
+                  "pixels": 23916
+                },
+                "output": {
+                  "left": 188,
+                  "top": 96,
+                  "width": 122,
+                  "height": 146
+                }
+              },
+              {
+                "source": {
+                  "left": 873,
+                  "top": 19,
+                  "width": 165,
+                  "height": 225,
+                  "pixels": 24132
+                },
+                "output": {
+                  "left": 198,
+                  "top": 93,
+                  "width": 111,
+                  "height": 151
+                }
+              },
+              {
+                "source": {
+                  "left": 1256,
+                  "top": 25,
+                  "width": 168,
+                  "height": 216,
+                  "pixels": 23652
+                },
+                "output": {
+                  "left": 197,
+                  "top": 97,
+                  "width": 113,
+                  "height": 145
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/mugman-original.png",
+            "sourceImageSha256": "ec1b4e594e97c9e05c82a6b30807f8b97aeec192d49719dc2c326f9b5fce54a8",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 254,
+              "bottom": 511
+            },
+            "scale": 0.6712962962962963,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 105,
+                  "top": 17,
+                  "width": 189,
+                  "height": 230,
+                  "pixels": 25998
+                },
+                "output": {
+                  "left": 198,
+                  "top": 88,
+                  "width": 127,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 474,
+                  "top": 12,
+                  "width": 203,
+                  "height": 236,
+                  "pixels": 28193
+                },
+                "output": {
+                  "left": 188,
+                  "top": 84,
+                  "width": 136,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 845,
+                  "top": 15,
+                  "width": 225,
+                  "height": 233,
+                  "pixels": 30924
+                },
+                "output": {
+                  "left": 179,
+                  "top": 86,
+                  "width": 151,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 1230,
+                  "top": 12,
+                  "width": 223,
+                  "height": 238,
+                  "pixels": 29941
+                },
+                "output": {
+                  "left": 179,
+                  "top": 84,
+                  "width": 150,
+                  "height": 160
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/mugman-original.png",
+            "sourceImageSha256": "ec1b4e594e97c9e05c82a6b30807f8b97aeec192d49719dc2c326f9b5fce54a8",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 506,
+              "bottom": 761
+            },
+            "scale": 0.6712962962962963,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 63,
+                  "top": 15,
+                  "width": 278,
+                  "height": 229,
+                  "pixels": 34927
+                },
+                "output": {
+                  "left": 169,
+                  "top": 90,
+                  "width": 187,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 442,
+                  "top": 10,
+                  "width": 275,
+                  "height": 235,
+                  "pixels": 34331
+                },
+                "output": {
+                  "left": 166,
+                  "top": 86,
+                  "width": 185,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 828,
+                  "top": 13,
+                  "width": 273,
+                  "height": 232,
+                  "pixels": 34235
+                },
+                "output": {
+                  "left": 167,
+                  "top": 88,
+                  "width": 183,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 1218,
+                  "top": 6,
+                  "width": 257,
+                  "height": 239,
+                  "pixels": 32073
+                },
+                "output": {
+                  "left": 171,
+                  "top": 84,
+                  "width": 173,
+                  "height": 160
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/mugman-original.png",
+            "sourceImageSha256": "ec1b4e594e97c9e05c82a6b30807f8b97aeec192d49719dc2c326f9b5fce54a8",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 759,
+              "bottom": 1024
+            },
+            "scale": 0.6712962962962963,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 104,
+                  "top": 10,
+                  "width": 205,
+                  "height": 235,
+                  "pixels": 29493
+                },
+                "output": {
+                  "left": 197,
+                  "top": 85,
+                  "width": 138,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 482,
+                  "top": 13,
+                  "width": 196,
+                  "height": 229,
+                  "pixels": 29105
+                },
+                "output": {
+                  "left": 193,
+                  "top": 87,
+                  "width": 132,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 875,
+                  "top": 10,
+                  "width": 188,
+                  "height": 237,
+                  "pixels": 28975
+                },
+                "output": {
+                  "left": 199,
+                  "top": 85,
+                  "width": 126,
+                  "height": 159
+                }
+              },
+              {
+                "source": {
+                  "left": 1244,
+                  "top": 18,
+                  "width": 178,
+                  "height": 227,
+                  "pixels": 25931
+                },
+                "output": {
+                  "left": 189,
+                  "top": 90,
+                  "width": 119,
+                  "height": 152
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f7ad0110d02178530129c60d3489cac3f1c810bbfd1c8b444a02f2decc692e5b",
+              "1fb6019c60a1f8c1aee3a55f30813ffbc29e73668b2f8ec35560f89242d4dc3e",
+              "a40f9fddc2ee146f0f0a777c8c019ba2f09e8d568678be1b3d857fe3996a41a1",
+              "b4613971d86160570a55797563f82e5ef91e3aef02fbe955bd0900bc17f03446"
+            ],
+            "visiblePixels": [
+              11615,
+              10849,
+              10916,
+              10688
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d9f99bc39febb92a2cb1605f2541312e0e8620c9997748068b27e92d4e288b04",
+              "bd984f2b23615a02a325d995a6436e09e3feb4da7c6990e4789382bc2ffa21d3",
+              "be8b740ff29465edf8477b5e721007c766768d0828a49153fa8f8aaf33a2b828",
+              "f3641eb284c271d753c9a215734fd209da3666661f4d566ded189c2b844e1a83"
+            ],
+            "visiblePixels": [
+              11699,
+              12674,
+              13964,
+              13526
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "827e0535b52f779a989a287dcdb0febbf82caca478855bdbf55615bdb8fdf9ba",
+              "38b824adaa125d626b4b4dc778b4d2ee9c882302d67c1e9ae6f3523d24ad3947",
+              "4116e8b11a27b47032b7a796a1f296baec3496fe450f24f0d3fe79682c73c2a9",
+              "d49ce413584907ea3df585d992c669da51184f63abbedea7bf0d02e152a62a93"
+            ],
+            "visiblePixels": [
+              15810,
+              15568,
+              15471,
+              14537
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "41c0bf74a7285ad8482eac72ccfe3ff0d6907bbedf2c4f47b54b98c2708b29eb",
+              "d284ae4c9e3398c2a071338b4ff7f0e2c1a7e0f0fca02540bd36751aa8bbb8a7",
+              "8d6167b443b9592e619ce37c184092fa58b11c97cb2f54cff25670c232188e6b",
+              "29912ce3bc5501fa20506b04fbe5c1c450c9708338eae8bfc37f965f489f8212"
+            ],
+            "visiblePixels": [
+              13383,
+              13238,
+              13020,
+              11602
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "faye_valentine-wave16",
+      "key": "Cowboy Bebop::Faye Valentine::Tir de couverture du Glock30 de Faye",
+      "universe": "Cowboy Bebop",
+      "entityName": "Faye Valentine",
+      "actionName": "Tir de couverture du Glock30 de Faye",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "faye_valentine",
+      "nativeRole": "gun",
+      "sheet": "/sprites/generated/summon-animations-wave16/faye.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "2825b40c03b40577b95b5ce70643223b929604458ac8d31ffe3a9e8548cc5239",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/faye-original.png",
+      "sourceImageSha256": "b25b0becbf6cae43dbf6387013cdf00c6ba8295be7427679590a48e3c853336d",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": null,
+      "referenceImageSha256": null,
+      "sourceWork": "Cowboy Bebop anime(1998)",
+      "sourceReference": "Cowboy Bebop anime(1998). Source performer or entity with sixteen newly generated poses; adaptation, not verified source frames. All16 actually viewed. Bebop1998 purplehair/yellow outfit/redjacket/whiteboots and heldcompactblackGlock30; no shot in preparation or recovery, one nativebarrel flash only attackcol2.",
+      "effectAnchors": {
+        "attack": [
+          {
+            "x": 350,
+            "y": 89,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 239,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/faye-attack-anchor-zoom.png"
+          },
+          {
+            "x": 328,
+            "y": 95,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 241,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/faye-attack-anchor-zoom.png"
+          },
+          {
+            "x": 307,
+            "y": 91,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 247,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/faye-attack-anchor-zoom.png"
+          },
+          {
+            "x": 276,
+            "y": 88,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 245,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/faye-attack-anchor-zoom.png"
+          }
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.7949790794979079,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 190,
+          "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 239,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/faye-original.png",
+            "sourceImageSha256": "b25b0becbf6cae43dbf6387013cdf00c6ba8295be7427679590a48e3c853336d",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 253
+            },
+            "scale": 0.7949790794979079,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 139,
+                  "top": 11,
+                  "width": 169,
+                  "height": 230,
+                  "pixels": 14509
+                },
+                "output": {
+                  "left": 214,
+                  "top": 58,
+                  "width": 134,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 505,
+                  "top": 8,
+                  "width": 144,
+                  "height": 234,
+                  "pixels": 13956
+                },
+                "output": {
+                  "left": 200,
+                  "top": 56,
+                  "width": 114,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 869,
+                  "top": 6,
+                  "width": 121,
+                  "height": 237,
+                  "pixels": 13150
+                },
+                "output": {
+                  "left": 184,
+                  "top": 54,
+                  "width": 96,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 1231,
+                  "top": 6,
+                  "width": 113,
+                  "height": 239,
+                  "pixels": 13513
+                },
+                "output": {
+                  "left": 166,
+                  "top": 54,
+                  "width": 90,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/faye-original.png",
+            "sourceImageSha256": "b25b0becbf6cae43dbf6387013cdf00c6ba8295be7427679590a48e3c853336d",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 250,
+              "bottom": 506
+            },
+            "scale": 0.7949790794979079,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 136,
+                  "top": 8,
+                  "width": 160,
+                  "height": 239,
+                  "pixels": 15140
+                },
+                "output": {
+                  "left": 211,
+                  "top": 54,
+                  "width": 127,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 503,
+                  "top": 8,
+                  "width": 166,
+                  "height": 239,
+                  "pixels": 15349
+                },
+                "output": {
+                  "left": 198,
+                  "top": 54,
+                  "width": 132,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 862,
+                  "top": 9,
+                  "width": 166,
+                  "height": 238,
+                  "pixels": 15645
+                },
+                "output": {
+                  "left": 178,
+                  "top": 55,
+                  "width": 132,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 1188,
+                  "top": 14,
+                  "width": 208,
+                  "height": 233,
+                  "pixels": 16049
+                },
+                "output": {
+                  "left": 132,
+                  "top": 59,
+                  "width": 165,
+                  "height": 185
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/faye-original.png",
+            "sourceImageSha256": "b25b0becbf6cae43dbf6387013cdf00c6ba8295be7427679590a48e3c853336d",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 504,
+              "bottom": 756
+            },
+            "scale": 0.7949790794979079,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 124,
+                  "top": 10,
+                  "width": 193,
+                  "height": 235,
+                  "pixels": 16029
+                },
+                "output": {
+                  "left": 202,
+                  "top": 57,
+                  "width": 153,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 481,
+                  "top": 18,
+                  "width": 190,
+                  "height": 227,
+                  "pixels": 16106
+                },
+                "output": {
+                  "left": 180,
+                  "top": 64,
+                  "width": 151,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 845,
+                  "top": 13,
+                  "width": 249,
+                  "height": 232,
+                  "pixels": 17596
+                },
+                "output": {
+                  "left": 165,
+                  "top": 60,
+                  "width": 198,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 1218,
+                  "top": 11,
+                  "width": 179,
+                  "height": 234,
+                  "pixels": 15757
+                },
+                "output": {
+                  "left": 156,
+                  "top": 58,
+                  "width": 142,
+                  "height": 186
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/faye-original.png",
+            "sourceImageSha256": "b25b0becbf6cae43dbf6387013cdf00c6ba8295be7427679590a48e3c853336d",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 750,
+              "bottom": 1024
+            },
+            "scale": 0.7949790794979079,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 131,
+                  "top": 19,
+                  "width": 165,
+                  "height": 239,
+                  "pixels": 14853
+                },
+                "output": {
+                  "left": 208,
+                  "top": 53,
+                  "width": 131,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 518,
+                  "top": 10,
+                  "width": 135,
+                  "height": 249,
+                  "pixels": 14714
+                },
+                "output": {
+                  "left": 210,
+                  "top": 46,
+                  "width": 107,
+                  "height": 198
+                }
+              },
+              {
+                "source": {
+                  "left": 864,
+                  "top": 10,
+                  "width": 133,
+                  "height": 248,
+                  "pixels": 14843
+                },
+                "output": {
+                  "left": 180,
+                  "top": 46,
+                  "width": 106,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 1247,
+                  "top": 7,
+                  "width": 135,
+                  "height": 251,
+                  "pixels": 15550
+                },
+                "output": {
+                  "left": 179,
+                  "top": 44,
+                  "width": 107,
+                  "height": 200
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "3bc75dd2c61fc1a9e85d7a45eea919c9d861f9b2c91651283d9662ab7b01d10c",
+              "900d1f17f390c95b74c2d3cda6dce4589dff2e2432b7e0da92e2ef2fabe23a01",
+              "85d22ddd0a12c35dcd8c46493540ad795103d765dbada257b4b6a927a8f07033",
+              "439cdfa576bebcf27abb2c437c8f8b17e98be32542dc3f23daed8fc458d92fd8"
+            ],
+            "visiblePixels": [
+              9195,
+              8826,
+              8261,
+              8557
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "39ca7824a1ff031d59264df7c464514186adcb676203f870bde0de4170063bb9",
+              "d433fb7edb93ecacab6bf1a241edd3299d7d4a4f0ed4304a577d09de7d597565",
+              "4f58b5fec6ebd447aa16964850c85f2501a3098a949fcb99a46d9e1df6737e86",
+              "30462e31d1617ca4c5c491045ef9e0eca49119f83680bc3df210245b8fb5faf9"
+            ],
+            "visiblePixels": [
+              9584,
+              9739,
+              9876,
+              10117
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9b931122455191fbd4ff0b0890b76e8ae1c8dfe156220bbc569850462194c2c3",
+              "4d27ec2ed19c1aada934d3a7b060d44934ff86bd5fce2d9a71f46abd5ae7f7a0",
+              "d394047843e0c49a1d448f7f666beddc241015fd257ee5880a236be08352531c",
+              "ccbae8f2770244af2c8a2ac960c2d409df099d3a2700e0d6fa05ff0384443ba4"
+            ],
+            "visiblePixels": [
+              10157,
+              10157,
+              11092,
+              9952
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1620a635264ff628e64e28d157889031fda151da55d97eec2feea26b24054a6f",
+              "cf2f60277e5b4fef30a157456f9486ea5a2d0749d8a9f995bf9f7b4ba29b9570",
+              "42c61622d1970cf2c75295116f7fc3aa5386bd8855dfc54a3ae49f9731fe1080",
+              "e7c82091ef9a226b82e8e4cef9f3271d60f0fd20609f2b3ddda6a1de7b4ca2ce"
+            ],
+            "visiblePixels": [
+              9399,
+              9303,
+              9438,
+              9873
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "alphonse_elric-wave16",
+      "key": "Fullmetal Alchemist::Alphonse Elric::Coup de poing d’armure d’Alphonse",
+      "universe": "Fullmetal Alchemist",
+      "entityName": "Alphonse Elric",
+      "actionName": "Coup de poing d’armure d’Alphonse",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "alphonse_elric",
+      "nativeRole": "melee",
+      "sheet": "/sprites/generated/summon-animations-wave16/alphonse.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "ce69039e634d13922daa305fd98fce15a7c7fa0348c8d573247b43abc8ce3180",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/alphonse-original.png",
+      "sourceImageSha256": "3a4faa0a512f61a1a4b732312714837140b2ec5c9e4484bde014e6659101f0ee",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": null,
+      "referenceImageSha256": null,
+      "sourceWork": "Fullmetal Alchemist: Brotherhood(2009)",
+      "sourceReference": "Fullmetal Alchemist: Brotherhood(2009). Source performer or entity with sixteen newly generated poses; adaptation, not verified source frames. All16 actually viewed. Empty bluegreyarmour, red eyes, white apron, brown details, complete helmet-horn/ponytail and metalhands/feet; physical gauntlet punch without beam or human surrogate.",
+      "effectAnchors": {
+        "attack": [
+          {
+            "x": 330,
+            "y": 110,
+            "space": "packed-native-pixels",
+            "role": "physical-gauntlet-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/alphonse-attack-anchor-zoom.png"
+          },
+          {
+            "x": 341,
+            "y": 111,
+            "space": "packed-native-pixels",
+            "role": "physical-gauntlet-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/alphonse-attack-anchor-zoom.png"
+          },
+          {
+            "x": 403,
+            "y": 94,
+            "space": "packed-native-pixels",
+            "role": "physical-gauntlet-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/alphonse-attack-anchor-zoom.png"
+          },
+          {
+            "x": 383,
+            "y": 100,
+            "space": "packed-native-pixels",
+            "role": "physical-gauntlet-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/alphonse-attack-anchor-zoom.png"
+          }
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.8646616541353384,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 230,
+          "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 266,
+          "outputBodyHeight": 230,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/alphonse-original.png",
+            "sourceImageSha256": "3a4faa0a512f61a1a4b732312714837140b2ec5c9e4484bde014e6659101f0ee",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 274
+            },
+            "scale": 0.8646616541353384,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 106,
+                  "top": 5,
+                  "width": 192,
+                  "height": 258,
+                  "pixels": 25607
+                },
+                "output": {
+                  "left": 182,
+                  "top": 17,
+                  "width": 166,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 10,
+                  "width": 185,
+                  "height": 255,
+                  "pixels": 28846
+                },
+                "output": {
+                  "left": 164,
+                  "top": 22,
+                  "width": 160,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 825,
+                  "top": 0,
+                  "width": 208,
+                  "height": 264,
+                  "pixels": 32939
+                },
+                "output": {
+                  "left": 139,
+                  "top": 13,
+                  "width": 180,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 1220,
+                  "top": 1,
+                  "width": 189,
+                  "height": 266,
+                  "pixels": 31628
+                },
+                "output": {
+                  "left": 149,
+                  "top": 14,
+                  "width": 163,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/alphonse-original.png",
+            "sourceImageSha256": "3a4faa0a512f61a1a4b732312714837140b2ec5c9e4484bde014e6659101f0ee",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 263,
+              "bottom": 531
+            },
+            "scale": 0.8646616541353384,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 79,
+                  "top": 12,
+                  "width": 232,
+                  "height": 248,
+                  "pixels": 30483
+                },
+                "output": {
+                  "left": 158,
+                  "top": 27,
+                  "width": 201,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 450,
+                  "top": 12,
+                  "width": 255,
+                  "height": 245,
+                  "pixels": 33306
+                },
+                "output": {
+                  "left": 147,
+                  "top": 27,
+                  "width": 220,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 816,
+                  "top": 11,
+                  "width": 251,
+                  "height": 246,
+                  "pixels": 33764
+                },
+                "output": {
+                  "left": 131,
+                  "top": 26,
+                  "width": 217,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 1203,
+                  "top": 1,
+                  "width": 250,
+                  "height": 262,
+                  "pixels": 35062
+                },
+                "output": {
+                  "left": 134,
+                  "top": 17,
+                  "width": 216,
+                  "height": 227
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/alphonse-original.png",
+            "sourceImageSha256": "3a4faa0a512f61a1a4b732312714837140b2ec5c9e4484bde014e6659101f0ee",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 523,
+              "bottom": 773
+            },
+            "scale": 0.8646616541353384,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 69,
+                  "top": 8,
+                  "width": 242,
+                  "height": 236,
+                  "pixels": 31468
+                },
+                "output": {
+                  "left": 150,
+                  "top": 40,
+                  "width": 209,
+                  "height": 204
+                }
+              },
+              {
+                "source": {
+                  "left": 435,
+                  "top": 7,
+                  "width": 259,
+                  "height": 236,
+                  "pixels": 31619
+                },
+                "output": {
+                  "left": 134,
+                  "top": 39,
+                  "width": 224,
+                  "height": 204
+                }
+              },
+              {
+                "source": {
+                  "left": 801,
+                  "top": 4,
+                  "width": 334,
+                  "height": 240,
+                  "pixels": 33358
+                },
+                "output": {
+                  "left": 119,
+                  "top": 36,
+                  "width": 289,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 1194,
+                  "top": 7,
+                  "width": 307,
+                  "height": 237,
+                  "pixels": 31773
+                },
+                "output": {
+                  "left": 126,
+                  "top": 39,
+                  "width": 265,
+                  "height": 205
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/alphonse-original.png",
+            "sourceImageSha256": "3a4faa0a512f61a1a4b732312714837140b2ec5c9e4484bde014e6659101f0ee",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 763,
+              "bottom": 1024
+            },
+            "scale": 0.8646616541353384,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 85,
+                  "top": 8,
+                  "width": 218,
+                  "height": 245,
+                  "pixels": 29819
+                },
+                "output": {
+                  "left": 163,
+                  "top": 32,
+                  "width": 188,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 482,
+                  "top": 7,
+                  "width": 195,
+                  "height": 245,
+                  "pixels": 27281
+                },
+                "output": {
+                  "left": 175,
+                  "top": 31,
+                  "width": 169,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 850,
+                  "top": 7,
+                  "width": 184,
+                  "height": 245,
+                  "pixels": 26612
+                },
+                "output": {
+                  "left": 161,
+                  "top": 31,
+                  "width": 159,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 1255,
+                  "top": 3,
+                  "width": 162,
+                  "height": 250,
+                  "pixels": 26959
+                },
+                "output": {
+                  "left": 179,
+                  "top": 28,
+                  "width": 140,
+                  "height": 216
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "48bb048edba5f91a1bd006f23a3d97f28d89816c125477994d97f199c81dad6f",
+              "8ac37c849dee086a3abb16b7019af4ff5925e645a9f5ffcfb2e6b3c2cb675a66",
+              "5cac630055f801ab56a8cc35182c3fc388f64e3978f295b707d2dd0303f517e5",
+              "2ff331cf96b4d4b28d20f5fbea7a53322e2660a194c63f09e87fcc75eb4546fc"
+            ],
+            "visiblePixels": [
+              19158,
+              21551,
+              24636,
+              23650
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "303c1358c7125168df9d51bce3160c056488e4b93c557482ece6e648bbd9bc7d",
+              "7c2131f246513d442fe544105a220aacf5fc1cbc5712086fcba311797a68ba27",
+              "434598b2eca3051a7237877a97120dd5ff9ef61f21a8df4333ac65b80668f058",
+              "137b69b8d0f108ea5c9545570ccd6fed69cf37f1c8462b3261a4e0c5610a4799"
+            ],
+            "visiblePixels": [
+              22860,
+              24978,
+              25288,
+              26284
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f9b85d9464d33b79f913e7c79eb91d699ac6f30a6dcfe91687542f77bb3c8d4d",
+              "03684772c432c6c99c0e727532ba72328df1c4ecb2030284e45d9666e4f6672e",
+              "6f7bb7fc59a3b98f9e805dea1c9ecbd7ab6a52856711f5232d182dfdd1c71c02",
+              "5b374fc1f79109f8f350a897290d11b2700894ad89479468b18d9b6724fa646e"
+            ],
+            "visiblePixels": [
+              23504,
+              23621,
+              25017,
+              23755
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "73312cd4b6e25968a90af49422d3d7381267e8eeaddb9211e1ce553e198360a8",
+              "bba4d20b4343b8f8c66641550800062efa1a6f7a25fa39b6469b38d4ff35e322",
+              "defa9eb1267f9bfd53075e29dcf266067ab3df09e07c43535acf25cc91ed689d",
+              "a85cd8c4a62210ff616497273a9b8f7644b86efe76ddff2dee810b7c49af95ef"
+            ],
+            "visiblePixels": [
+              22331,
+              20486,
+              19903,
+              20122
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "bt_7274_tf2-wave16",
+      "key": "Titanfall 2::BT-7274::Tir du XO-16 de BT-7274",
+      "universe": "Titanfall 2",
+      "entityName": "BT-7274",
+      "actionName": "Tir du XO-16 de BT-7274",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "bt_7274_tf2",
+      "nativeRole": "gun",
+      "sheet": "/sprites/generated/summon-animations-wave16/bt7274.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "766f924bb9ccab62bde010b8440122d66232c2196fdebfdfef15ab1125495490",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/bt7274-original.png",
+      "sourceImageSha256": "5dbb940070d5d0db8f3658ba844ed1c5be7f2bb9d55aa6d8f83a68a85f9e82ae",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": null,
+      "referenceImageSha256": null,
+      "sourceWork": "Titanfall2 campaign(2016), Expedition loadout",
+      "sourceReference": "Titanfall2 campaign(2016), Expedition loadout. Source performer or entity with sixteen newly generated poses; adaptation, not verified source frames. All16 actually viewed. Expedition Vanguard olive/cream armour, orangeoptic, twohanded XO16 and wholemechanicalfeet/antennae. Only attackcol2 has barrelflash. Sourceedge visiblealpha count0; no integrated handcannon or BurstCore.",
+      "effectAnchors": {
+        "attack": [
+          {
+            "x": 418,
+            "y": 103,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/bt7274-attack-anchor-zoom.png"
+          },
+          {
+            "x": 423,
+            "y": 108,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 249,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/bt7274-attack-anchor-zoom.png"
+          },
+          {
+            "x": 395,
+            "y": 101,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/bt7274-attack-anchor-zoom.png"
+          },
+          {
+            "x": 405,
+            "y": 122,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/bt7274-attack-anchor-zoom.png"
+          }
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.8597785977859779,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 570,
+          "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 258,
+          "outputBodyHeight": 222,
+          "constrainedByEnvelope": true
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/bt7274-original.png",
+            "sourceImageSha256": "5dbb940070d5d0db8f3658ba844ed1c5be7f2bb9d55aa6d8f83a68a85f9e82ae",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 262
+            },
+            "scale": 0.8597785977859779,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 80,
+                  "top": 0,
+                  "width": 280,
+                  "height": 255,
+                  "pixels": 32386
+                },
+                "output": {
+                  "left": 160,
+                  "top": 20,
+                  "width": 241,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 463,
+                  "top": 0,
+                  "width": 271,
+                  "height": 253,
+                  "pixels": 30223
+                },
+                "output": {
+                  "left": 159,
+                  "top": 20,
+                  "width": 233,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 836,
+                  "top": 0,
+                  "width": 286,
+                  "height": 261,
+                  "pixels": 31875
+                },
+                "output": {
+                  "left": 149,
+                  "top": 20,
+                  "width": 246,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 1228,
+                  "top": 0,
+                  "width": 270,
+                  "height": 258,
+                  "pixels": 31627
+                },
+                "output": {
+                  "left": 156,
+                  "top": 20,
+                  "width": 232,
+                  "height": 222
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/bt7274-original.png",
+            "sourceImageSha256": "5dbb940070d5d0db8f3658ba844ed1c5be7f2bb9d55aa6d8f83a68a85f9e82ae",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 256,
+              "bottom": 517
+            },
+            "scale": 0.8597785977859779,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 67,
+                  "top": 3,
+                  "width": 325,
+                  "height": 252,
+                  "pixels": 34161
+                },
+                "output": {
+                  "left": 149,
+                  "top": 26,
+                  "width": 279,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 449,
+                  "top": 5,
+                  "width": 312,
+                  "height": 250,
+                  "pixels": 32962
+                },
+                "output": {
+                  "left": 147,
+                  "top": 28,
+                  "width": 268,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 816,
+                  "top": 5,
+                  "width": 346,
+                  "height": 251,
+                  "pixels": 35564
+                },
+                "output": {
+                  "left": 132,
+                  "top": 28,
+                  "width": 297,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 1220,
+                  "top": 6,
+                  "width": 306,
+                  "height": 250,
+                  "pixels": 31504
+                },
+                "output": {
+                  "left": 149,
+                  "top": 29,
+                  "width": 263,
+                  "height": 215
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/bt7274-original.png",
+            "sourceImageSha256": "5dbb940070d5d0db8f3658ba844ed1c5be7f2bb9d55aa6d8f83a68a85f9e82ae",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 511,
+              "bottom": 763
+            },
+            "scale": 0.8597785977859779,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 68,
+                  "top": 1,
+                  "width": 320,
+                  "height": 248,
+                  "pixels": 32554
+                },
+                "output": {
+                  "left": 149,
+                  "top": 31,
+                  "width": 275,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 450,
+                  "top": 4,
+                  "width": 326,
+                  "height": 244,
+                  "pixels": 33655
+                },
+                "output": {
+                  "left": 148,
+                  "top": 33,
+                  "width": 280,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 819,
+                  "top": 1,
+                  "width": 367,
+                  "height": 246,
+                  "pixels": 35444
+                },
+                "output": {
+                  "left": 135,
+                  "top": 31,
+                  "width": 316,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 1219,
+                  "top": 3,
+                  "width": 306,
+                  "height": 244,
+                  "pixels": 32282
+                },
+                "output": {
+                  "left": 149,
+                  "top": 32,
+                  "width": 263,
+                  "height": 210
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/bt7274-original.png",
+            "sourceImageSha256": "5dbb940070d5d0db8f3658ba844ed1c5be7f2bb9d55aa6d8f83a68a85f9e82ae",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 751,
+              "bottom": 1024
+            },
+            "scale": 0.8597785977859779,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 77,
+                  "top": 2,
+                  "width": 279,
+                  "height": 258,
+                  "pixels": 31983
+                },
+                "output": {
+                  "left": 157,
+                  "top": 11,
+                  "width": 240,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 481,
+                  "top": 3,
+                  "width": 287,
+                  "height": 256,
+                  "pixels": 31109
+                },
+                "output": {
+                  "left": 174,
+                  "top": 12,
+                  "width": 247,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 856,
+                  "top": 13,
+                  "width": 269,
+                  "height": 260,
+                  "pixels": 30417
+                },
+                "output": {
+                  "left": 167,
+                  "top": 20,
+                  "width": 231,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 1247,
+                  "top": 3,
+                  "width": 260,
+                  "height": 260,
+                  "pixels": 30502
+                },
+                "output": {
+                  "left": 173,
+                  "top": 12,
+                  "width": 224,
+                  "height": 224
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f51ed7dd2337a15d617ac4087bb0cf5d82218473b68e34957624141308e55664",
+              "56dbcc9ec24653de0596fe96ad984ce4602f652bd9a40f0b40c882f7dad5a7c8",
+              "bb71515ca6407e6962ce4480b49804b62afe04a72c62c69d14c7ba6645dfb9b4",
+              "9c3025c52df5bca95afe08431455f66caa67209692628b86e3762632a160fa78"
+            ],
+            "visiblePixels": [
+              23954,
+              22407,
+              23566,
+              23383
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "31f2457749a149eb1217eeb1c9a7411f58bf993a49f255b1568e90f62e1cd9ee",
+              "1dd9c8a6e11679c19415cf296d05495c8d7c243ab48b2fcf306723c6c566e1f5",
+              "8e92aef4b0c83a96a82a51a342a5c5d083a8ba72b6920b742c0dcae253378ffd",
+              "05fcb8b00b17d6ecdea2836f7e07f3308a6838a72160d5fd4fd1434adaf6be87"
+            ],
+            "visiblePixels": [
+              25323,
+              24354,
+              26337,
+              23268
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1a181d836a67c33622448a8f5cc9ae22a7fab68a0768c854889531ed18d5234b",
+              "442d62afff5044adba8361236338ef81317daa1fc1a8035838827f4f08a50628",
+              "174ff8372f5ae2dcaf05601d07f3a4bde1f11c21eadecbf522ca6aedc16714c8",
+              "8e1a597d2b126ed7850e71274d7faf96fdf04c153f463cb79c257579eab415ac"
+            ],
+            "visiblePixels": [
+              24073,
+              24923,
+              26338,
+              23892
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6fb6ca60bf767f7c53bb178492fc78d1dc1b60705d94b55c517d944f0c95d636",
+              "7620930136575679d9bf2f2e0087de6ba80ec6f7af9ca0028ab109a7f697207a",
+              "cfcd193131a75a36c9cf7187156b5457dd0dfd05cfa4d26d1275029e80a99d6d",
+              "3a6110898edb8372e0d71fd4929dd3279246d294be62895b7d386411ee17f912"
+            ],
+            "visiblePixels": [
+              23671,
+              23027,
+              22554,
+              22654
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "fox_devil-wave16",
+      "key": "Chainsaw Man::Fox Devil::Kon — morsure du Fox Devil",
+      "universe": "Chainsaw Man",
+      "entityName": "Fox Devil",
+      "actionName": "Kon — morsure du Fox Devil",
+      "kind": "summon",
+      "bodySource": "source-entity",
+      "performerHeroId": null,
+      "nativeRole": "bite",
+      "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "4bf856ec0e3a236e6f85ca2d3c1f9cb8dd0fe029f4f55be1ec4289897e7a3dc0",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/fox-devil-original.png",
+      "sourceImageSha256": "1628eea93059c61a6dacf8c7e881d04be4e49651a5564170867254d39c50e3a7",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": null,
+      "referenceImageSha256": null,
+      "sourceWork": "Chainsaw Man anime(2022), Public Safety Kon contract",
+      "sourceReference": "Chainsaw Man anime(2022), Public Safety Kon contract. Source performer or entity with sixteen newly generated poses; adaptation, not verified source frames. All16 actually viewed. Complete animewhite arcticfoxhead, multiple redorange concentric eyes, wholeears/ruff/snouts, non-graphic opening and closing jaws. No human/body surrogate, blood, beam or fixed-eye-count claim.",
+      "effectAnchors": {
+        "arrival": [
+          {
+            "x": 387,
+            "y": 187,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-arrival-anchor-zoom.png"
+          },
+          {
+            "x": 383,
+            "y": 144,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-arrival-anchor-zoom.png"
+          },
+          {
+            "x": 370,
+            "y": 134,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-arrival-anchor-zoom.png"
+          },
+          {
+            "x": 383,
+            "y": 216,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-arrival-anchor-zoom.png"
+          }
+        ],
+        "preparation": [
+          {
+            "x": 396,
+            "y": 197,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-preparation-anchor-zoom.png"
+          },
+          {
+            "x": 394,
+            "y": 173,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 234,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-preparation-anchor-zoom.png"
+          },
+          {
+            "x": 391,
+            "y": 108,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-preparation-anchor-zoom.png"
+          },
+          {
+            "x": 398,
+            "y": 151,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-preparation-anchor-zoom.png"
+          }
+        ],
+        "attack": [
+          {
+            "x": 418,
+            "y": 113,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          {
+            "x": 458,
+            "y": 150,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          {
+            "x": 399,
+            "y": 200,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 248,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          {
+            "x": 390,
+            "y": 213,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          }
+        ],
+        "recovery": [
+          {
+            "x": 386,
+            "y": 198,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-recovery-anchor-zoom.png"
+          },
+          {
+            "x": 384,
+            "y": 141,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-recovery-anchor-zoom.png"
+          },
+          {
+            "x": 385,
+            "y": 195,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-recovery-anchor-zoom.png"
+          },
+          {
+            "x": 376,
+            "y": 207,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 246,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-recovery-anchor-zoom.png"
+          }
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.9209486166007905,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 0,
+          "targetBodyHeight": 300,
+          "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 247,
+          "outputBodyHeight": 227,
+          "constrainedByEnvelope": true
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/fox-devil-original.png",
+            "sourceImageSha256": "1628eea93059c61a6dacf8c7e881d04be4e49651a5564170867254d39c50e3a7",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 264
+            },
+            "scale": 0.9209486166007905,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 32,
+                  "top": 6,
+                  "width": 331,
+                  "height": 247,
+                  "pixels": 47820
+                },
+                "output": {
+                  "left": 109,
+                  "top": 17,
+                  "width": 305,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 430,
+                  "top": 13,
+                  "width": 305,
+                  "height": 236,
+                  "pixels": 42370
+                },
+                "output": {
+                  "left": 122,
+                  "top": 23,
+                  "width": 281,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 801,
+                  "top": 20,
+                  "width": 304,
+                  "height": 227,
+                  "pixels": 43827
+                },
+                "output": {
+                  "left": 110,
+                  "top": 29,
+                  "width": 280,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 1183,
+                  "top": 20,
+                  "width": 321,
+                  "height": 225,
+                  "pixels": 44387
+                },
+                "output": {
+                  "left": 108,
+                  "top": 29,
+                  "width": 296,
+                  "height": 207
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/fox-devil-original.png",
+            "sourceImageSha256": "1628eea93059c61a6dacf8c7e881d04be4e49651a5564170867254d39c50e3a7",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 261,
+              "bottom": 505
+            },
+            "scale": 0.9209486166007905,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 12,
+                  "width": 354,
+                  "height": 231,
+                  "pixels": 47222
+                },
+                "output": {
+                  "left": 102,
+                  "top": 31,
+                  "width": 326,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 420,
+                  "top": 11,
+                  "width": 337,
+                  "height": 222,
+                  "pixels": 46873
+                },
+                "output": {
+                  "left": 112,
+                  "top": 30,
+                  "width": 310,
+                  "height": 204
+                }
+              },
+              {
+                "source": {
+                  "left": 787,
+                  "top": 10,
+                  "width": 341,
+                  "height": 222,
+                  "pixels": 49854
+                },
+                "output": {
+                  "left": 97,
+                  "top": 29,
+                  "width": 314,
+                  "height": 204
+                }
+              },
+              {
+                "source": {
+                  "left": 1178,
+                  "top": 14,
+                  "width": 339,
+                  "height": 220,
+                  "pixels": 47173
+                },
+                "output": {
+                  "left": 103,
+                  "top": 33,
+                  "width": 312,
+                  "height": 203
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/fox-devil-original.png",
+            "sourceImageSha256": "1628eea93059c61a6dacf8c7e881d04be4e49651a5564170867254d39c50e3a7",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 499,
+              "bottom": 747
+            },
+            "scale": 0.9209486166007905,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 5,
+                  "width": 369,
+                  "height": 232,
+                  "pixels": 52093
+                },
+                "output": {
+                  "left": 99,
+                  "top": 30,
+                  "width": 340,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 407,
+                  "top": 29,
+                  "width": 408,
+                  "height": 207,
+                  "pixels": 52344
+                },
+                "output": {
+                  "left": 100,
+                  "top": 52,
+                  "width": 376,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 798,
+                  "top": 17,
+                  "width": 340,
+                  "height": 220,
+                  "pixels": 41698
+                },
+                "output": {
+                  "left": 107,
+                  "top": 41,
+                  "width": 313,
+                  "height": 203
+                }
+              },
+              {
+                "source": {
+                  "left": 1176,
+                  "top": 16,
+                  "width": 340,
+                  "height": 221,
+                  "pixels": 48147
+                },
+                "output": {
+                  "left": 101,
+                  "top": 40,
+                  "width": 313,
+                  "height": 204
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/fox-devil-original.png",
+            "sourceImageSha256": "1628eea93059c61a6dacf8c7e881d04be4e49651a5564170867254d39c50e3a7",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 744,
+              "bottom": 1024
+            },
+            "scale": 0.9209486166007905,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 15,
+                  "width": 330,
+                  "height": 246,
+                  "pixels": 50312
+                },
+                "output": {
+                  "left": 111,
+                  "top": 17,
+                  "width": 304,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 422,
+                  "top": 9,
+                  "width": 320,
+                  "height": 248,
+                  "pixels": 45540
+                },
+                "output": {
+                  "left": 114,
+                  "top": 11,
+                  "width": 295,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 800,
+                  "top": 17,
+                  "width": 330,
+                  "height": 240,
+                  "pixels": 46847
+                },
+                "output": {
+                  "left": 109,
+                  "top": 18,
+                  "width": 304,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 1192,
+                  "top": 23,
+                  "width": 309,
+                  "height": 239,
+                  "pixels": 45907
+                },
+                "output": {
+                  "left": 116,
+                  "top": 24,
+                  "width": 285,
+                  "height": 220
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2e9661dd14f459e09083fe3ee699f9a358291008dfa56de5eb2403e8e3bc7b7a",
+              "74bef7742bdc52c00a32cb7b0541931f49f0eaa316a8a812f2e535fe6e96f822",
+              "3eb12dd09b397bb98db071e59132ba13b1d92abeebc88cb4f3bbd9b06b6d69c8",
+              "73e4a4192a01a54018a57e4fdaf647e46df1f23c0504e7c8fab3955eb026530b"
+            ],
+            "visiblePixels": [
+              40603,
+              35917,
+              37151,
+              37741
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "544581975b1f2d02d1eed339ca48ed90ff81c225837749fc7b25bc7032034df4",
+              "8f7424945ac3a1a653fbe77e1143abee70f18bc875ed8705226ed9a080a91e7c",
+              "c335b769b2d281181d2ec91ac6876fa8a6e02520000720e2afde724306092849",
+              "882fbadacbdcfaa6c84c19d441fd9355e5d0559803732f1dbadae99c3dfc280a"
+            ],
+            "visiblePixels": [
+              40161,
+              39676,
+              42249,
+              40168
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9168b9fe6f85ae474535dec0346d295e536c9737ea078c3a3254981543cee4fe",
+              "436a73e9248abc286a42182a4a7605936ce314588ba2765b15f3d37f52337fb1",
+              "8b90c45a26d3f661edf086f5cb1fa6fe39f05f26a1dd9718412d72ff1d8a273b",
+              "a6b89073ffa83f9cab8c8bfc9033afc4ce6b8cb183752177b0f6565cf9c95ab5"
+            ],
+            "visiblePixels": [
+              44265,
+              44479,
+              35489,
+              40983
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5af38fc145903d996ae105154503fbf6e2417a59a07bd86437a7841292a4c1fa",
+              "440520c596998d782618b74bda70f1ec6f5946ac76cff849c052a1e6b81ce74c",
+              "e8aaa2cb0e1b4f1d57e2109d281a4f0e2e871f2b219869dff595deffba5088eb",
+              "252a8a1d914a6d880c34feca5e062196a99e41d7736fd14f0451dbdcbaac2fdb"
+            ],
+            "visiblePixels": [
+              42818,
+              38693,
+              39761,
+              39035
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "starfire_tt-wave16",
+      "key": "Teen Titans::Starfire::Starbolts verts de Starfire",
+      "universe": "Teen Titans",
+      "entityName": "Starfire",
+      "actionName": "Starbolts verts de Starfire",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "starfire_tt",
+      "nativeRole": "hand",
+      "sheet": "/sprites/generated/summon-animations-wave16/starfire.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "372875c8973133979dc0cf22b6f289330b80ee0e9b8ff3bcfec2b96f47176780",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/starfire-original.png",
+      "sourceImageSha256": "ba737f06717539ba0a909112b33456649b03e62e9cfd1e5d4c13792f76569d73",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": null,
+      "referenceImageSha256": null,
+      "sourceWork": "Teen Titans animated series(2003)",
+      "sourceReference": "Teen Titans animated series(2003). Source performer or entity with sixteen newly generated poses; adaptation, not verified source frames. All16 actually viewed. Original2003 orange/redhair/greeneyes/purple-silver outfit and wholeboots/longhair. Local nativepalm green charge inpreparation, outward green starbolt only attackcol2, no gun/staff/pink plasma.",
+      "effectAnchors": {
+        "attack": [
+          {
+            "x": 324,
+            "y": 84,
+            "space": "packed-native-pixels",
+            "role": "native-palm-release",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/starfire-attack-anchor-zoom.png"
+          },
+          {
+            "x": 344,
+            "y": 82,
+            "space": "packed-native-pixels",
+            "role": "native-palm-release",
+            "visuallyReviewed": true,
+            "centerAlpha": 253,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/starfire-attack-anchor-zoom.png"
+          },
+          {
+            "x": 339,
+            "y": 81,
+            "space": "packed-native-pixels",
+            "role": "native-palm-release",
+            "visuallyReviewed": true,
+            "centerAlpha": 249,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/starfire-attack-anchor-zoom.png"
+          },
+          {
+            "x": 331,
+            "y": 101,
+            "space": "packed-native-pixels",
+            "role": "native-palm-release",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/starfire-attack-anchor-zoom.png"
+          }
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.8641975308641975,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 210,
+          "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 243,
+          "outputBodyHeight": 210,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/starfire-original.png",
+            "sourceImageSha256": "ba737f06717539ba0a909112b33456649b03e62e9cfd1e5d4c13792f76569d73",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 263
+            },
+            "scale": 0.8641975308641975,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 40,
+                  "top": 0,
+                  "width": 223,
+                  "height": 258,
+                  "pixels": 22358
+                },
+                "output": {
+                  "left": 125,
+                  "top": 21,
+                  "width": 193,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 417,
+                  "top": 11,
+                  "width": 228,
+                  "height": 238,
+                  "pixels": 23520
+                },
+                "output": {
+                  "left": 119,
+                  "top": 31,
+                  "width": 197,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 830,
+                  "top": 26,
+                  "width": 220,
+                  "height": 228,
+                  "pixels": 23971
+                },
+                "output": {
+                  "left": 144,
+                  "top": 44,
+                  "width": 190,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 1211,
+                  "top": 6,
+                  "width": 247,
+                  "height": 243,
+                  "pixels": 23896
+                },
+                "output": {
+                  "left": 141,
+                  "top": 26,
+                  "width": 213,
+                  "height": 210
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/starfire-original.png",
+            "sourceImageSha256": "ba737f06717539ba0a909112b33456649b03e62e9cfd1e5d4c13792f76569d73",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 254,
+              "bottom": 518
+            },
+            "scale": 0.8641975308641975,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 13,
+                  "width": 270,
+                  "height": 242,
+                  "pixels": 28616
+                },
+                "output": {
+                  "left": 130,
+                  "top": 34,
+                  "width": 233,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 436,
+                  "top": 14,
+                  "width": 284,
+                  "height": 242,
+                  "pixels": 27962
+                },
+                "output": {
+                  "left": 135,
+                  "top": 35,
+                  "width": 245,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 796,
+                  "top": 14,
+                  "width": 300,
+                  "height": 241,
+                  "pixels": 29377
+                },
+                "output": {
+                  "left": 114,
+                  "top": 35,
+                  "width": 259,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 1211,
+                  "top": 8,
+                  "width": 277,
+                  "height": 247,
+                  "pixels": 27250
+                },
+                "output": {
+                  "left": 141,
+                  "top": 30,
+                  "width": 239,
+                  "height": 213
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/starfire-original.png",
+            "sourceImageSha256": "ba737f06717539ba0a909112b33456649b03e62e9cfd1e5d4c13792f76569d73",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 510,
+              "bottom": 769
+            },
+            "scale": 0.8641975308641975,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 12,
+                  "width": 265,
+                  "height": 243,
+                  "pixels": 27351
+                },
+                "output": {
+                  "left": 132,
+                  "top": 34,
+                  "width": 229,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 420,
+                  "top": 12,
+                  "width": 303,
+                  "height": 242,
+                  "pixels": 29138
+                },
+                "output": {
+                  "left": 121,
+                  "top": 34,
+                  "width": 262,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 804,
+                  "top": 12,
+                  "width": 366,
+                  "height": 242,
+                  "pixels": 32617
+                },
+                "output": {
+                  "left": 121,
+                  "top": 34,
+                  "width": 316,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 1226,
+                  "top": 12,
+                  "width": 248,
+                  "height": 243,
+                  "pixels": 24264
+                },
+                "output": {
+                  "left": 154,
+                  "top": 34,
+                  "width": 214,
+                  "height": 210
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/starfire-original.png",
+            "sourceImageSha256": "ba737f06717539ba0a909112b33456649b03e62e9cfd1e5d4c13792f76569d73",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 759,
+              "bottom": 1024
+            },
+            "scale": 0.8641975308641975,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 58,
+                  "top": 7,
+                  "width": 232,
+                  "height": 253,
+                  "pixels": 23826
+                },
+                "output": {
+                  "left": 140,
+                  "top": 21,
+                  "width": 200,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 448,
+                  "top": 7,
+                  "width": 219,
+                  "height": 242,
+                  "pixels": 23173
+                },
+                "output": {
+                  "left": 145,
+                  "top": 21,
+                  "width": 189,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 814,
+                  "top": 4,
+                  "width": 197,
+                  "height": 261,
+                  "pixels": 22518
+                },
+                "output": {
+                  "left": 130,
+                  "top": 18,
+                  "width": 170,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 1250,
+                  "top": 4,
+                  "width": 162,
+                  "height": 261,
+                  "pixels": 21358
+                },
+                "output": {
+                  "left": 175,
+                  "top": 18,
+                  "width": 140,
+                  "height": 226
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fc41739111c2d1321812983e15040596cff9c10d14eb50244a95ac7fef965776",
+              "d1f3d5f7258b19b201a052dec69d6da2826dd45e22f694a5d91c451fca3afaae",
+              "238fe7b76a5aa9cdacd229c5bdfdcfdf6d03a1dd61008c1186748595542a04b8",
+              "86a411fdae08332013a081f8aecae652f63b5bce875a082f9f78c4a895ad4ab2"
+            ],
+            "visiblePixels": [
+              16747,
+              17604,
+              17860,
+              17858
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "893baf9e41b54ce2a9546cd0cd5bad27828b9c25c62a1bd4b7bd40ff54e85e47",
+              "c7ef1c46ca71666a9f8c5e026cb3fe4362bb4366083c51bf7e98561aad4241f1",
+              "f7d26232dd59c4950376714617404a0929bfc75733da75a977e3a4d2197c27f4",
+              "fa14290dffc781cec739d4ba06ee6562b7c196173400acdc69b3c618f2e73057"
+            ],
+            "visiblePixels": [
+              21323,
+              20812,
+              21940,
+              20295
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4cab2d7bd67730b39cb2699d16780e47686ab6c40f178dcb96a2943b931c8a6d",
+              "1edf1b9fae550c3b4b8dfd13ebc96430fcded0b22bff67d93c5532bd28b2747c",
+              "4c6ca64a69ba146b494810fd063ef17c65eb94f789943f3e6a1b5f22c11ee7a3",
+              "e876bde7697d886d00034c5e1f29b72097a54bb0254e36bd0954e3f4021b4aff"
+            ],
+            "visiblePixels": [
+              20441,
+              21779,
+              24302,
+              18087
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c07098cb684625e9a9f7fc7601f9aff46fbf6b881457beaeff9d3c3072ca9e45",
+              "41e132d5bc212265ff7366ccc7ff261f975915d6217e6d0c5b0a47962536e874",
+              "df48dbd0a34cd2085fb66f28aabf1c931ec7b7951eb849e704b966a524d12e54",
+              "73334258e7b1d948a4b45875f8dbee3f8ff4c40c283608b3328d95c908807bae"
+            ],
+            "visiblePixels": [
+              17849,
+              17267,
+              16880,
+              15999
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    }
+  ]
+}

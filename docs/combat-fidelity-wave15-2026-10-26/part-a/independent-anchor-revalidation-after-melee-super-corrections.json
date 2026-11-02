@@ -1,0 +1,2214 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "preliminary": false,
+  "reviewedAt": "2026-10-26T11:21:21.085Z",
+  "reviewer": "/root/cohort_scout",
+  "scope": "Read-only SHA and exact metadata revalidation after the two melee-only native SUPER corrections. This does not relabel earlier browser receipts as post-correction execution and does not claim a second visual inspection of unchanged pixels.",
+  "priorIndependentReview": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/independent-anchor-review.json",
+    "sha256": "b8d714f128e85c7a46bbf3a44e7d57b07733b93c9e47b1f50b79366b3be81a59",
+    "bytes": 252889
+  },
+  "originalFreeze": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/before-baratus-super-correction-20261026111104256/production-freeze.json",
+    "createdAt": "2026-10-26T10:54:31.243Z",
+    "sha256": "d56aa20306af4add3c8e9ab447aab131b40efbd4d6a7494a09d1f0bd372e5deb"
+  },
+  "registryBefore": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/before-baratus-super-correction-20261026111104256/part-a-registry-before.json",
+    "sha256": "0604dcb4ceb5f29585b88a30e5de5c38f1e5f8d962092a1d4ab7d564912c920a",
+    "bytes": 2342248
+  },
+  "registryAfter": {
+    "path": "src/game/combat/characterAnimationsWave15PartA.generated.json",
+    "sha256": "b88f7fc34c6c672f09b4d4b3cd5fe7809febd643c9b774408e0f38f67ca700b4",
+    "bytes": 2341331
+  },
+  "counts": {
+    "projectileEmitters": 32,
+    "anchorPoints": 256,
+    "annotatedGridsUnchanged": 32,
+    "actualCellFilesUnchanged": 256,
+    "filesCheckedAgainstIndependentReview": 324,
+    "nativeRegistryEntriesUnchanged": 38,
+    "permittedMeleeEntriesChanged": 2,
+    "basePngUnchanged": 120,
+    "baseRegistriesUnchanged": 3
+  },
+  "correctedMeleeEntries": [
+    {
+      "heroId": "quake_franchise_ranger",
+      "previousSheetSha256": "90dfda63acd74958c7107d9ddb5836a1ab69c5aad68147734fee15cdae855ac6",
+      "currentSheetSha256": "fcada6058044674e3f8750ee91714bc71a97c3ddac01c418bd32a3234923565c"
+    },
+    {
+      "heroId": "hexen_baratus",
+      "previousSheetSha256": "725591333aa5969a0fa4de884024bc507301f0ba486bf28787dc3d8e6e44a2ed",
+      "currentSheetSha256": "1ea9da93dff5b7e0f7c0a5a679ca2f4a8f4a059b2ab8610a7f98f5112d26c26a"
+    }
+  ],
+  "unchangedNativeRegistryHeroIds": [
+    "unreal_1998_gina",
+    "unreal_1998_dante",
+    "unreal_1998_kurgan",
+    "unreal_tournament_malcom",
+    "unreal_tournament_brock",
+    "unreal_tournament_lauren",
+    "quake_franchise_bitterman",
+    "quake_franchise_matthew_kane",
+    "duke_nukem",
+    "duke_nukem_captain_dylan",
+    "duke_nukem_edf_trooper",
+    "marathon_classic_security_officer",
+    "marathon_classic_robert_blake",
+    "marathon_classic_sphtkr_defender",
+    "hexen_parias",
+    "hexen_daedolon",
+    "mdk_kurt_hectic",
+    "max_mdk",
+    "mdk_dr_hawkins",
+    "soldier_of_fortune_john_mullins",
+    "soldier_of_fortune_hawk_parsons",
+    "soldier_of_fortune_sam_gladstone",
+    "crysis_nomad",
+    "crysis_prophet",
+    "crysis_psycho",
+    "fear_point_man",
+    "fear_jin_sun_kwon",
+    "fear_douglas_holiday",
+    "splinter_cell_sam_fisher",
+    "splinter_cell_anna_grim",
+    "splinter_cell_isaac_briggs",
+    "hitman_woa_agent_47",
+    "hitman_woa_diana_burnwood",
+    "hitman_woa_lucas_grey",
+    "gtfo_woods",
+    "gtfo_dauda",
+    "gtfo_hackett",
+    "shephard"
+  ],
+  "unchangedFiles": [
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/native-muzzle-review.json",
+      "sha256": "010e74b4fe0f34a4d363ac0d5a6964575be021e75e634ba75f0ca52b8e5547b0",
+      "bytes": 295043
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/manual-anchor-points.json",
+      "sha256": "1667764dfb0b51f9d299839bcb88d3e78c5d23477d070dc5639d7a038c9e9c1f",
+      "bytes": 13201
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave15PartA.generated.json",
+      "sha256": "ec8ca8f6d5385fb527b0cf6ec3ff3dcf3c1c2583cd850475209384089ff1296d",
+      "bytes": 15761
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/source-plan.json",
+      "sha256": "f6cc9213b714927b2f4c234cdbecffb502801893e20b68106c29b6185e0d615d",
+      "bytes": 42613
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/unreal_1998_gina.png",
+      "sha256": "20ce10a3ce008bf9361552f2c7134d20883765053cea58b06e5b6fe7163d24d6",
+      "bytes": 998035
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/unreal_1998_dante.png",
+      "sha256": "d67c5ea36958cbed608822c0f0dee672ec41b89b92daacc6ae13f00e1f4099ee",
+      "bytes": 904088
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/unreal_1998_kurgan.png",
+      "sha256": "9d0ea77e8bb11cbd508bf4abba15a2a73806ac3843fd3003c24928cc217525c8",
+      "bytes": 1148748
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/unreal_tournament_malcom.png",
+      "sha256": "c8c52c85182c7514d749a19d009857f67422e1802766df7f45f99d1c0215ba15",
+      "bytes": 1118797
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/unreal_tournament_brock.png",
+      "sha256": "ed5f31ddd82718efe2ba78cc6677d26fae5b95b6da080be5c6c9836412bc14ad",
+      "bytes": 1222297
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/unreal_tournament_lauren.png",
+      "sha256": "64c5126c9d8ec5ed314f2a6a0c36c5c741075ab7012e0ab6026282324b31b943",
+      "bytes": 913659
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/quake_franchise_bitterman.png",
+      "sha256": "04e5aff15ebccb757652669cadbc31d9f47d2ef54f1f157fac10e3339a05ff2e",
+      "bytes": 1217824
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/quake_franchise_matthew_kane.png",
+      "sha256": "83ed7bb9c74fd0f22707e6899d644de4d261f25bfdff8f7278ee7691a77f373d",
+      "bytes": 669582
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/duke_nukem.png",
+      "sha256": "08cfc71ab0fec47243ab620c7137c8c8cb87194c291d73c7bd3a2df8a9775770",
+      "bytes": 1042479
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/duke_nukem_captain_dylan.png",
+      "sha256": "b88d7cba706efc5457cfbc78e02df1872d4bc2d52fc5b55c143e201eda642dc0",
+      "bytes": 1167158
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/duke_nukem_edf_trooper.png",
+      "sha256": "280a43ea8e221bfd2384aa25fdc462371c73fd131d0baffee2b2c3df875135b4",
+      "bytes": 1033770
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/marathon_classic_security_officer.png",
+      "sha256": "ee9870f9947a3f83fe50c64407f8687459a6b6627aa6e1b3c04d9e20a208a40f",
+      "bytes": 1055804
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/marathon_classic_robert_blake.png",
+      "sha256": "b6538888a4bf86056bca17e91c79cfaddfba1ccd3d6ccc151d2f95e19d812868",
+      "bytes": 664866
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/marathon_classic_sphtkr_defender.png",
+      "sha256": "6a854994f03beadf8e4b2bc1ecb319173122afc332e544b9a5b6920e45e7a043",
+      "bytes": 1111310
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/hexen_parias.png",
+      "sha256": "81476aba6908268272d59ed334cdec2e0f2cd74e4751f493f0515ae56d8a405e",
+      "bytes": 930350
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/hexen_daedolon.png",
+      "sha256": "ff44fe40045fb4f711f2d04f81d8dc0fe8a47cbc5e3a116298dc9e66bbf56bac",
+      "bytes": 1142203
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/mdk_kurt_hectic.png",
+      "sha256": "b7dab4e26d2145a7cabe2b2ec1c2c184e42ebf5efc54bcf1f0e8693dfd3269ef",
+      "bytes": 761735
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/max_mdk.png",
+      "sha256": "14065bebabc8604c5115f7be23f98086ef3f9555a0a10646312e8f055a810ac7",
+      "bytes": 928278
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/soldier_of_fortune_john_mullins.png",
+      "sha256": "f13892149d262486daf84c1dd830647315f2d1caaf2836119932086418bbf93f",
+      "bytes": 871562
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/soldier_of_fortune_hawk_parsons.png",
+      "sha256": "faf88c54ea8e637e2a6154eb4d0c7e504ebde3243d8705537f8f112fcaed8eba",
+      "bytes": 730448
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/crysis_nomad.png",
+      "sha256": "7a31ea04757c95baa5bedf7e0fb5ea940c22666e07e229641acff9ea170fb116",
+      "bytes": 662062
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/crysis_prophet.png",
+      "sha256": "8782cdbea3d98b0e56ade9d8b4ca990afda865cac5d44b21aba6fca88b43acdd",
+      "bytes": 977075
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/crysis_psycho.png",
+      "sha256": "933f2e6af71c75e1d6a3c16315926470dfc6b62fbca9951e074a97f6d66f6d4c",
+      "bytes": 1033992
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/fear_point_man.png",
+      "sha256": "dc362736c2cad70a09d9bec0f9cbad3915f10c736520fa7878ae1f9609e8ae0a",
+      "bytes": 973093
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/fear_douglas_holiday.png",
+      "sha256": "af3a93034eed2eab6edc4997ba6fc0f392aeabdf78242ac2c36cd2983d5febca",
+      "bytes": 1027290
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/splinter_cell_sam_fisher.png",
+      "sha256": "bc2dca47353562b8e7e15485156419cb9c991867abe7297aedc74b71681e1809",
+      "bytes": 916466
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/splinter_cell_isaac_briggs.png",
+      "sha256": "2e79ddee9d99170c1375a4ea62fd7671ba3803d8b7822ebb3f7d7ca63791b4b2",
+      "bytes": 800769
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/hitman_woa_agent_47.png",
+      "sha256": "9ec201451dd91a69cc190e809586e05de11683f1ae93d24282be3ae01fbf97e7",
+      "bytes": 677996
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/hitman_woa_lucas_grey.png",
+      "sha256": "ba99febdfd1a7a843dcc6cd7aa46d1ccd18f5b30ed9375c0ac0a476af6552c25",
+      "bytes": 984965
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/gtfo_woods.png",
+      "sha256": "9acb29c38ff93d9bff0d17bc9c21d1711ce18b66e9ce4422284976b3be5e2172",
+      "bytes": 811808
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/gtfo_dauda.png",
+      "sha256": "0ebb42525760f58f2f2eae6c0d8a7941bf00cfae4da287c75d46380de5fcee5b",
+      "bytes": 1094222
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-a/shephard.png",
+      "sha256": "9c4b00ccf25024aff90fdc4df98a07949ec272a1fd12d39aafea6c78fa543694",
+      "bytes": 1054806
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/crysis_nomad.png",
+      "sha256": "397fb0c48e114544dfd122bff2aa5a74a6dcb2ee52df20dbb72e94fdefc226fa",
+      "bytes": 169311
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/crysis_prophet.png",
+      "sha256": "95b0d2157c9da132fe9a776ebe0122527e10165be1d3776fcdbdbfef77af0347",
+      "bytes": 245625
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/crysis_psycho.png",
+      "sha256": "374a7c4302fd627027d23a7aa9a907a55398ed3df10333cdf7b410f21397f3b0",
+      "bytes": 264204
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/duke_nukem.png",
+      "sha256": "3e37c33f439e8eb254a5231b42c41f86655acecb715f7d7cfc21c60ac482ac0b",
+      "bytes": 253663
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/duke_nukem_captain_dylan.png",
+      "sha256": "6b2d84228026bea7834fa38bd7862bc909ae5ef1993701c38967b6ada57e1620",
+      "bytes": 281128
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/duke_nukem_edf_trooper.png",
+      "sha256": "2d91babb44301189e6e9147c31da926349bcbb2950191b8bb75f55ae6705b66d",
+      "bytes": 259374
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/fear_douglas_holiday.png",
+      "sha256": "cb4bd74f3fabd44e3bed86fd05fc5f6522cb28c4c17ba673ef45ee332bba1551",
+      "bytes": 252491
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/fear_point_man.png",
+      "sha256": "33aed3b339ee4a7dd3648ea2145f414391c2d4b3fa6349db827bb6914edaaaf8",
+      "bytes": 235235
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/gtfo_dauda.png",
+      "sha256": "94b2cdfc486824e09232346860601da622f791cc8615993593c68bb8337619d9",
+      "bytes": 269833
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/gtfo_woods.png",
+      "sha256": "1df34a61ff4352273caa4fcbac65fd89202912493559630a5da6b050f2099c1a",
+      "bytes": 207321
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/hexen_daedolon.png",
+      "sha256": "b46739187bdaa1a0d0ac92c03546aadef3ada947e4f5ea0aa4265b8668d1f045",
+      "bytes": 275125
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/hexen_parias.png",
+      "sha256": "3b6a82d901a71da17e2a5a399e85923f27d34445864540e71eb1a507b4a80db8",
+      "bytes": 222945
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/hitman_woa_agent_47.png",
+      "sha256": "794292301c9057f665b55255569fb4da6db0fda6d0c82b6ddefc94a55e538e6b",
+      "bytes": 169800
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/hitman_woa_lucas_grey.png",
+      "sha256": "ba4d49c819c87a8a10870ceb720942aa7513b45dbca6081b170652de3bc56f9f",
+      "bytes": 244619
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/marathon_classic_robert_blake.png",
+      "sha256": "486d087e2869862ee2791d4d582ceef4235c483c5caa82d741201bc7c6258433",
+      "bytes": 176224
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/marathon_classic_security_officer.png",
+      "sha256": "7aa02ec47e894d50e7831ab11cb13f3d048155c5588e791a55f915f05e404035",
+      "bytes": 256564
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/marathon_classic_sphtkr_defender.png",
+      "sha256": "72f98a5242eb04906e219f7a83c4b41357fd77f0bb7b706bce04a027e7dd7dcb",
+      "bytes": 253931
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/max_mdk.png",
+      "sha256": "3e5512f075fd6c452a9b3c9701e016c889f037a8dccd3eec3283b3101814e9ed",
+      "bytes": 245862
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/mdk_kurt_hectic.png",
+      "sha256": "52941b0723e40545a4d55ecbe08e99a1a5437856b904d2d8143a734738e5c43f",
+      "bytes": 191921
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/quake_franchise_bitterman.png",
+      "sha256": "d45e3111bdc7719640db5f3a67734089c9d38139703d2c4c2ee7d05789a79da4",
+      "bytes": 258135
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/quake_franchise_matthew_kane.png",
+      "sha256": "0f13787a5d305f480060b4016960d9ad75f97c31a4ec52b8fe59b661be7a5837",
+      "bytes": 172255
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/shephard.png",
+      "sha256": "cc9385bfe366c480dac04a1b4cd9ece11f6ef962eb0b818bacd74ab785c0175b",
+      "bytes": 256803
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/soldier_of_fortune_hawk_parsons.png",
+      "sha256": "cab8c3cf73d579b9f582cd74740f8768df0dc0ddf2de208d7f2fde7dbb6bc507",
+      "bytes": 186617
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/soldier_of_fortune_john_mullins.png",
+      "sha256": "4aa8476d2dc76f48a39641e805dfb9cbb6d85648bc2def8e47af90cebbaaa7e4",
+      "bytes": 217115
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/splinter_cell_isaac_briggs.png",
+      "sha256": "6606821ba35863beb648bd858a6b726be2c4f07d9c4f6d1b788b7c48428c1655",
+      "bytes": 197543
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/splinter_cell_sam_fisher.png",
+      "sha256": "07b18845a77dab3da5ce2ffcabd23efa2ecc13af0c89b3793a75c945072cd6c9",
+      "bytes": 222242
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/unreal_1998_dante.png",
+      "sha256": "4664909ca674232fcec8f03aa981043d1a5ab6130984a49f3d86670f2679f6a9",
+      "bytes": 212283
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/unreal_1998_gina.png",
+      "sha256": "f37518889bbe4807d6bfc1c6c95e0e9a3c5faf79aadfb18e2f5e416b84d2238d",
+      "bytes": 324748
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/unreal_1998_kurgan.png",
+      "sha256": "ce4764607b9f5bcf10b589785d3d582a7e42eac72a1a0d0a8f591dcda27572ce",
+      "bytes": 280619
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/unreal_tournament_brock.png",
+      "sha256": "a1bc812ae2eba0f45cb79f4a57616a9c4aaf4d497854e5b07b1ac459ae41648b",
+      "bytes": 298763
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/unreal_tournament_lauren.png",
+      "sha256": "3cdeb6b2a169a3548e9d6947483e120c3532d4da87401f0e0de65773430275b5",
+      "bytes": 235126
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/final/unreal_tournament_malcom.png",
+      "sha256": "9fcf130be43c859bab2517b8227bae24c9aeddb1c6dc2d1d9be03027e9b2babb",
+      "bytes": 286300
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_gina-fatality-0.png",
+      "sha256": "d34bc81528308e45e97647fcf644bd80f8da20c563d0ae80c621c3efbe99051d",
+      "bytes": 37283
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_gina-fatality-1.png",
+      "sha256": "7f1d8879a79161641166b72b527496ca5b9e62d11de32e67a2128f2b90974d1c",
+      "bytes": 44666
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_gina-fatality-2.png",
+      "sha256": "71341a62f84841ba32e80a08a5161170a316ee896260cb4f13510f8d8f0954ba",
+      "bytes": 48004
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_gina-fatality-3.png",
+      "sha256": "00506261df6dc1e3e59baf143b469cd9541bd0c4810c7931149a99da9af037bc",
+      "bytes": 41481
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_gina-super-0.png",
+      "sha256": "d43e7f57441426e8afc5039eb3a713b8a2d3b2945a9781398bbba6c93381764c",
+      "bytes": 42227
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_gina-super-1.png",
+      "sha256": "d1efda290a9f04650e118b9ce4207d6f80bedf96ed049b3d58eda916b116f161",
+      "bytes": 44396
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_gina-super-2.png",
+      "sha256": "640c0d5128eeac29c58a5a7a69f61860ed81f280ab5dd243d6ae40a0fd0463af",
+      "bytes": 48059
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_gina-super-3.png",
+      "sha256": "8b1b7d84b1cf388fbcdcd19270f4740ee50f8f09ab896dec90dd56d6d5cb2f54",
+      "bytes": 40455
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_dante-fatality-0.png",
+      "sha256": "67f74af0527ac87044744c8e85091a3a50cefacd04cc43f3b006ab624d18eda5",
+      "bytes": 27280
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_dante-fatality-1.png",
+      "sha256": "2c7dbaec1bbd40a5ecd4ef3e277e88fe19d588495ac6e514402824b71d297c3f",
+      "bytes": 28633
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_dante-fatality-2.png",
+      "sha256": "ec3815ce8efc6d51b5327d5b250b1045628e2aaa7be62a035a4ac42149591d8c",
+      "bytes": 31007
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_dante-fatality-3.png",
+      "sha256": "3c5dd80804774b603844e84b547f14faf54e899e7732f7ddd12892fefba0ab36",
+      "bytes": 26594
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_dante-super-0.png",
+      "sha256": "39c12b2751cc161b118f6570b08a4e98cba813395843c3b8a0c701de65f1da6b",
+      "bytes": 25323
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_dante-super-1.png",
+      "sha256": "d3d2ffd8d355192d6b331dd8386ef3b9fa08ca77ad56081806864491b6611d3f",
+      "bytes": 27237
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_dante-super-2.png",
+      "sha256": "607aae5dcc19a8570aaab087d851ba5af00d015c558b0f0f6ca0698ce67c418d",
+      "bytes": 29891
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_dante-super-3.png",
+      "sha256": "5441a4462e568f936eceef09c24b41afcb22115b24fd87d949f034c2dacc3688",
+      "bytes": 25981
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_kurgan-fatality-0.png",
+      "sha256": "af88da081c2a01b24670ab8bdc03f5e9ea5c8e8bc96fd1972ec9c8c2485104f6",
+      "bytes": 36234
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_kurgan-fatality-1.png",
+      "sha256": "732e93fc46f045bb8fa7a79e296b51806388f179c9797d61b4ded68527e2ffff",
+      "bytes": 38108
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_kurgan-fatality-2.png",
+      "sha256": "438ff6d9834bcbd192b52c9b0da0c3af086f3121f79855c5bf2fe623ec982205",
+      "bytes": 41622
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_kurgan-fatality-3.png",
+      "sha256": "8931c9e07ddc9dcb979c48d1f1a51123e1f403042575f671ce9e866cc7ebc04f",
+      "bytes": 35855
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_kurgan-super-0.png",
+      "sha256": "d12b29329f128b3aa669eb4db6bccc03d7ed6d77f96ce4fc919bf9a32b40f8e8",
+      "bytes": 34873
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_kurgan-super-1.png",
+      "sha256": "a59d2ffea1c8abb0adb5af13a25de4f9a79855eda9ad1e6efc13414ad367fd6f",
+      "bytes": 37323
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_kurgan-super-2.png",
+      "sha256": "1e40d7c7856cb1394aec14b26c228c6f396c3823718e55ecd162303187f71d53",
+      "bytes": 40484
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_1998_kurgan-super-3.png",
+      "sha256": "0dbade3864a40de5219379a86202174e1209c510dbe508bcea61ada2addad2a1",
+      "bytes": 34285
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_malcom-fatality-0.png",
+      "sha256": "a9a8bc4e57cfcf51a21c6b524921e278673db35e7b03d359b2579dd25827b3fc",
+      "bytes": 35546
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_malcom-fatality-1.png",
+      "sha256": "2b26f99f7adabfd57595a9cdd043dc883bc92f8977e303fa26a9cfed5cae415e",
+      "bytes": 38048
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_malcom-fatality-2.png",
+      "sha256": "5bc67fa61aaee3cde4d8ae1ce3afc6b5c17602c99a46bfb4990a0ebd6fec2ccd",
+      "bytes": 42674
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_malcom-fatality-3.png",
+      "sha256": "5db598cf9cb7e2ca56f59e0caac961274fb89e7c9a10d9e2fd2f7bb2846955d3",
+      "bytes": 35750
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_malcom-super-0.png",
+      "sha256": "08d85f2023c9c807c6f827e15974be1d3d97beca8487e578dad5d5716b1cc947",
+      "bytes": 35730
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_malcom-super-1.png",
+      "sha256": "c893f757ccdbd01d631f088e20090522f38afd9b38cca7e9a6842d5861b87c8f",
+      "bytes": 38640
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_malcom-super-2.png",
+      "sha256": "abb26ad0c9c304de5e7a2790fc73460afc0cefb4afe61f8271d0906742b6e8ba",
+      "bytes": 43614
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_malcom-super-3.png",
+      "sha256": "cf9b9f35ffddf6288ecbbae1a2f4f895d4a38d1956ddc8a46b7a279c575763b1",
+      "bytes": 35528
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_brock-fatality-0.png",
+      "sha256": "b6d90668068646a80b9e26f9391fd461b63c06ed7f0798fd9b4654cc68fb8c8d",
+      "bytes": 39211
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_brock-fatality-1.png",
+      "sha256": "2f70430e9d3119049c46d93b06de576eca436352c4326a5875ccfede15198195",
+      "bytes": 39907
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_brock-fatality-2.png",
+      "sha256": "1cbb3c1de06378be08c2fdf9e0778430a72ba9ff971b6a4032080456faaf36d2",
+      "bytes": 43900
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_brock-fatality-3.png",
+      "sha256": "af168e4ad5a9eab4535a3a5356b85324397be8ed8fb764156cd73244332f652b",
+      "bytes": 37035
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_brock-super-0.png",
+      "sha256": "346a0042467d930e21cb3278703c7aaf6d9ebd93bf3d020f9c10d71c27e4dcb0",
+      "bytes": 41063
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_brock-super-1.png",
+      "sha256": "154c2c2f06b2a8f9316c224a1eec528d4223418158562ea2ac4c7e6faa934ab7",
+      "bytes": 41496
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_brock-super-2.png",
+      "sha256": "fe6138bee293fcad90176f5639833c6b4a51e59dc5780673acc9386e6ce3f112",
+      "bytes": 44793
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_brock-super-3.png",
+      "sha256": "0409916923f573a9f1465489c3a3bafb77d63cac56877bd857b21d694dd1a18d",
+      "bytes": 37117
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_lauren-fatality-0.png",
+      "sha256": "c40105cd9e8355cb48e0a6b8e4553b05df1e03b55620c59396b646317148c9a9",
+      "bytes": 30446
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_lauren-fatality-1.png",
+      "sha256": "7b90e7588ac4260834a915089f4d63378f5e7e0109fd4ed79f1598be6dbd8a93",
+      "bytes": 30407
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_lauren-fatality-2.png",
+      "sha256": "ad31a6131977eeddd85c1dce3954c6be711a75f5a7be3b746ef30e11864f9ef4",
+      "bytes": 34610
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_lauren-fatality-3.png",
+      "sha256": "880221ac1ed72fff2fd096395d3cd82149f92a5ffb26b8693fabb5053a8afe42",
+      "bytes": 30167
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_lauren-super-0.png",
+      "sha256": "97d6b6e51a11ea668403530d2dc63d7e0e3afe65ef419b0c461f095072313474",
+      "bytes": 31229
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_lauren-super-1.png",
+      "sha256": "ccfd74906e38fa60b45d937cd787c4a2cfa147f64fa87275a6090f5c1786cceb",
+      "bytes": 32259
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_lauren-super-2.png",
+      "sha256": "6ba755a628411b19bd7255e20d9023f428bdb4442a4a623a148ab8896378bae3",
+      "bytes": 35900
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/unreal_tournament_lauren-super-3.png",
+      "sha256": "b59470ee23f94a579e718f17d7a666835b15b54cfab88cf76c90f4b04c44d081",
+      "bytes": 29916
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_bitterman-fatality-0.png",
+      "sha256": "05f31af7eab4410d97504fd42f099ba3c1a7d7e59ceb9acf60d3538c15fb7f06",
+      "bytes": 38285
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_bitterman-fatality-1.png",
+      "sha256": "386df079a41a0ea0f6fa0f1b82143840da54ab5165dc643b2381f4372b380d1d",
+      "bytes": 37077
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_bitterman-fatality-2.png",
+      "sha256": "ea31f19616ada79307e2e764653c61ac391d926e7c250c2ccb9201462896a93d",
+      "bytes": 45356
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_bitterman-fatality-3.png",
+      "sha256": "a5e7b145aa39cc6ca0e3b6a3977feef9c9b313de4ac5d44804053770455cefde",
+      "bytes": 39466
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_bitterman-super-0.png",
+      "sha256": "98421422b4553766dd5f80b4ddc03dc4a08096662c2fc5079b3582e45809ce85",
+      "bytes": 38301
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_bitterman-super-1.png",
+      "sha256": "79bb4316f181b4621fbfd13a05e4e9b7d97b1158de6219acf31f526b606962f3",
+      "bytes": 37828
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_bitterman-super-2.png",
+      "sha256": "bc0c982f59dded3b58bc3be71d76d63781960b727462a9618eddaf25b5f379ae",
+      "bytes": 46614
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_bitterman-super-3.png",
+      "sha256": "7a1a6950438a8ceb48c7a54ddd74bd9d7ceb34f8e4ae2cdb16b72ec0ac54a29f",
+      "bytes": 38274
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_matthew_kane-fatality-0.png",
+      "sha256": "da16eb19c753b54bdcb8240b7670db98852dd62c129afcf14f06959142bbfdd3",
+      "bytes": 22484
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_matthew_kane-fatality-1.png",
+      "sha256": "f8590e7c3a6206fa47927b91321462d0037c1e31cdd99043bbf68c551cbfd116",
+      "bytes": 21973
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_matthew_kane-fatality-2.png",
+      "sha256": "196f4b23ad3b813c634c20d33af7747d70657ded344374e3703d9885083bf41a",
+      "bytes": 24301
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_matthew_kane-fatality-3.png",
+      "sha256": "4155b5fa66a9cef1ae24ceca64b7a248d694cdf88a4128c2514993e55ab48629",
+      "bytes": 21628
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_matthew_kane-super-0.png",
+      "sha256": "afc3dd36c96b01481312bd65aeba46a879e720b06b2cef84604c7e0568d47ec7",
+      "bytes": 21997
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_matthew_kane-super-1.png",
+      "sha256": "af4fc09fb41189af45b7787f33245c43cdf0a727fccb8f3982ac23648f51bbb1",
+      "bytes": 23345
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_matthew_kane-super-2.png",
+      "sha256": "c0fe0764d31fe01b00c7b24e8a8027342adbbfb361a77c0b138c2883caface06",
+      "bytes": 24643
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/quake_franchise_matthew_kane-super-3.png",
+      "sha256": "af433b001022cacf5d14c939c81b8bd4446cea12bbdcee780ad3a3358d1c2534",
+      "bytes": 21845
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem-fatality-0.png",
+      "sha256": "affd97660b19b9f3dee1bcbba13d9578597d079256e9455d13e3bb8dbbb26298",
+      "bytes": 33168
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem-fatality-1.png",
+      "sha256": "d1076da8cf787fccb8d1042098bc0800549bda5a050c55bc351138dcc9cd7cd0",
+      "bytes": 36396
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem-fatality-2.png",
+      "sha256": "969af8494372cb0c24e765f7b96ffa958f9b461981b91471b4cd50ea9e7c2fc0",
+      "bytes": 37445
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem-fatality-3.png",
+      "sha256": "7c8aade113c632afe10f5cbbcc436d9de0f863b8233f53eaf360155854deb805",
+      "bytes": 33841
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem-super-0.png",
+      "sha256": "a72998850e2b182a5efbb5ee3b1530ab64e59561b97ad96a193f671e82094a32",
+      "bytes": 32720
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem-super-1.png",
+      "sha256": "67573579dab35cf97f66cc034e885f742167b9c45625eeb0d8c9f93038bd5304",
+      "bytes": 34665
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem-super-2.png",
+      "sha256": "067bd9c1f46edfd8f8a001594968d6ca5c400c2d69948dbf891838f855f7e251",
+      "bytes": 37275
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem-super-3.png",
+      "sha256": "521d25ce4a6ca70f419753e9f2fdb5e0e250dd35670d14fb61047ed7982bbb1c",
+      "bytes": 31386
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_captain_dylan-fatality-0.png",
+      "sha256": "78ed2cbf7a50237b2715ec67e405b1b31fcb712f1dd152300fab48f93f3baa7e",
+      "bytes": 36695
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_captain_dylan-fatality-1.png",
+      "sha256": "3f0404c9f15ff2601fcb55e35ec61d3a7e294cc897ac9fc53fe9c8ec070b0664",
+      "bytes": 38109
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_captain_dylan-fatality-2.png",
+      "sha256": "92d93c1746aefb63e2b384b33e6aee30050d113a00355d3fe2b222a9eb227106",
+      "bytes": 42222
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_captain_dylan-fatality-3.png",
+      "sha256": "8509c33de25506fbd4d4efe84a7b0a85629438133278ca938c101c6a620a1e06",
+      "bytes": 35991
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_captain_dylan-super-0.png",
+      "sha256": "64a149eaae52a221455f5111bf8cb576296b5452081f5965c37a7d9d54534179",
+      "bytes": 39677
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_captain_dylan-super-1.png",
+      "sha256": "fa02ec5635e36ac420e43be7563cde39ac37e5c4a2b5bcae9f0736235b6bc5fc",
+      "bytes": 35959
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_captain_dylan-super-2.png",
+      "sha256": "1905570949b9a2e1a14ba2ae09f7374d478e604d53fd3edf948478582eb4d986",
+      "bytes": 43507
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_captain_dylan-super-3.png",
+      "sha256": "ae17568ad45f8c6ffef6a79332914e422283edad82b001a8a8e59220b15eacf9",
+      "bytes": 35520
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_edf_trooper-fatality-0.png",
+      "sha256": "385af4850b6893361f1784c3d084b58819429a5a0569cdd73cffdd45e47b0ede",
+      "bytes": 34311
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_edf_trooper-fatality-1.png",
+      "sha256": "fdfabf6383e14708eedb29ae5277860d73d862751127adfb0b267ec06cba4f35",
+      "bytes": 35490
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_edf_trooper-fatality-2.png",
+      "sha256": "14aee60e50376155288cc1ac1edb145edd046e78b295467be8bbd46ad59f2bab",
+      "bytes": 37168
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_edf_trooper-fatality-3.png",
+      "sha256": "312838d76a27b305ac57df13854ef32b169f6f42491191ccb57104725ea66a2d",
+      "bytes": 33513
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_edf_trooper-super-0.png",
+      "sha256": "57371d2a914c35c5f5cb822d4403cf01fbe5ecf54012cf298f36e8619b2cf58c",
+      "bytes": 35983
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_edf_trooper-super-1.png",
+      "sha256": "29821ab54d2e0f4ff66a833cb5cfba4b67f52c215c991b731e760975c200c505",
+      "bytes": 36188
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_edf_trooper-super-2.png",
+      "sha256": "550524d3e0e84e2bd534a9d8de54b567e4ccc013799b315afd32c47908cdbee5",
+      "bytes": 38431
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/duke_nukem_edf_trooper-super-3.png",
+      "sha256": "7e11f442058038047808b2b7221b8d59566dd1fbc270f4b0d720ef095bb08ef3",
+      "bytes": 32749
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_security_officer-fatality-0.png",
+      "sha256": "3d019594b4ac8eb8f8e9b0285c6915dde73de25bc3dba92caac4f64af02f2439",
+      "bytes": 31553
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_security_officer-fatality-1.png",
+      "sha256": "b923c689b5938f984bdde356dc9b920a54eb8706b8069b33fc20d2a31b6894c2",
+      "bytes": 35043
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_security_officer-fatality-2.png",
+      "sha256": "0a51c6978b8f6a076725f6a4152d93ed2dbbeb34defedddb51c3a1b88eb20830",
+      "bytes": 38143
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_security_officer-fatality-3.png",
+      "sha256": "442960245034bf573e5d883fe1a5a3249356ad8834b0a97f0ad1bc62735c00f9",
+      "bytes": 34763
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_security_officer-super-0.png",
+      "sha256": "f958af1866513569cde7047f01690d553dd0f14a52447ecc6bcc0dca2d32f338",
+      "bytes": 35050
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_security_officer-super-1.png",
+      "sha256": "659a835ce2bc8ac8ce81f073074e12ccb69dafe2413f31f40ca2cdba6cfd3f55",
+      "bytes": 36214
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_security_officer-super-2.png",
+      "sha256": "898fc23b753ee0522aabbce0056f490768cd4076f474a7541563228d03d270c7",
+      "bytes": 39555
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_security_officer-super-3.png",
+      "sha256": "ff60b5998757522081bc1e9c172c253cc2fb5a6cae1aa6bc350d2178ecf0600f",
+      "bytes": 33016
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_robert_blake-fatality-0.png",
+      "sha256": "e1e1e8cc04c22d4f7b9e5d7579b8faa247e2a66c7e69efee070a459e6453cdbf",
+      "bytes": 22112
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_robert_blake-fatality-1.png",
+      "sha256": "170d9de5fd94a7780230b3c85faad19bef2186bba842d22269aa4279afef80de",
+      "bytes": 22973
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_robert_blake-fatality-2.png",
+      "sha256": "235100c4e474826a2c702b7d53c5597757bb1517edccf8ee3be17206fac5d912",
+      "bytes": 27353
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_robert_blake-fatality-3.png",
+      "sha256": "e12d309f2144aa68c1dd447764097d9f93d17ff35d8e48d628eb1e0f09a554a1",
+      "bytes": 21908
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_robert_blake-super-0.png",
+      "sha256": "717ff54264f23fb37ff01482ebb3733ad38f34c711a9ee13a0b3b90d93aa316e",
+      "bytes": 22722
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_robert_blake-super-1.png",
+      "sha256": "d9605eb87e7d7bac370e7e7f919f351ce3c6723ed883e3a458c7107f71a95518",
+      "bytes": 23583
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_robert_blake-super-2.png",
+      "sha256": "c5d3955f465d42812b62fb050b9c24af77be3e535389da9f98567bb911b9005a",
+      "bytes": 27165
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_robert_blake-super-3.png",
+      "sha256": "9fd86fd3735f6b6b61f00fffdcf2f93604a22fa9b59424aa4402680618ce0a06",
+      "bytes": 22156
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_sphtkr_defender-fatality-0.png",
+      "sha256": "d81660c4c880b2d9a068d99c80fb497d4835e0883c714c6a524cd249cd0db025",
+      "bytes": 32905
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_sphtkr_defender-fatality-1.png",
+      "sha256": "53b64bf41fbab18b0bbb52fbb0d1e0b0c2cd4d23ab05f08624675549d4460aff",
+      "bytes": 31461
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_sphtkr_defender-fatality-2.png",
+      "sha256": "6aa9788d4cb0116a460404feaa8a744755b136d77c18511be55821cd7b87b85d",
+      "bytes": 35830
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_sphtkr_defender-fatality-3.png",
+      "sha256": "95ac189da24d7389aa3855cd5b2e73db26db5b002482605ecefc08ff9a22da4d",
+      "bytes": 32529
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_sphtkr_defender-super-0.png",
+      "sha256": "4ab1022b587feb5e5f3f5185db83b9420ab6810d216152e84e32757fe3c52c9c",
+      "bytes": 34619
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_sphtkr_defender-super-1.png",
+      "sha256": "b342652e03fe7770febcecb16c78ddf61df485e4a6977f172a9f9eafac27cb1c",
+      "bytes": 34856
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_sphtkr_defender-super-2.png",
+      "sha256": "4b959be3af71f4279df701de3147c82caad28fb65a1bffc9c8546903729f831a",
+      "bytes": 37003
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/marathon_classic_sphtkr_defender-super-3.png",
+      "sha256": "d295498a00ea54abbb041f418d18d913205906e056168f4254b6b05ea7e5faf7",
+      "bytes": 32762
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_parias-fatality-0.png",
+      "sha256": "1a2ecf2823b3876832b57a8f36489ffee0e56522262338263873a34def355ae2",
+      "bytes": 30766
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_parias-fatality-1.png",
+      "sha256": "ba1cc3c52c8e4400b2545e90189aef399e48a631f2b529e3b824e36399d03260",
+      "bytes": 28362
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_parias-fatality-2.png",
+      "sha256": "b0b6f3c603fad1036cee18a40816b326a40fcac112a8db01252c09e57de98c45",
+      "bytes": 30243
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_parias-fatality-3.png",
+      "sha256": "dae347a5843ecda2cf1f551b7bf8909f0f81377ae4b010e5182711a1930df9b5",
+      "bytes": 28426
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_parias-super-0.png",
+      "sha256": "d9b75cc9300794422b87574fa01f6cc66bc41d8e337547d5e7beb5b225ff4e80",
+      "bytes": 29734
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_parias-super-1.png",
+      "sha256": "2691749eb04b448edac38537d8302da3f8588e426fffa233d8759b0463116d49",
+      "bytes": 29304
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_parias-super-2.png",
+      "sha256": "30cde07caf1ee6110417ba316eb54b8a8b096117754c64dcc1e6fb8598ad14ad",
+      "bytes": 30437
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_parias-super-3.png",
+      "sha256": "cf1d475ec0b843909fc1691b941ba4450fecba36c52bb3e62ade95aa6b983b0b",
+      "bytes": 29294
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_daedolon-fatality-0.png",
+      "sha256": "04ae218f22d672ba21d49806d5017869a97ac18fa08161fb2ab98c569b0a90f4",
+      "bytes": 37597
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_daedolon-fatality-1.png",
+      "sha256": "83dd01cf35c3118944531d393106a365be827697c3b610050e010188a2407000",
+      "bytes": 39277
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_daedolon-fatality-2.png",
+      "sha256": "a0b4992444bebac8e926fd229022fee535d9c0f80e341979c7d519bd3eaff13c",
+      "bytes": 41345
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_daedolon-fatality-3.png",
+      "sha256": "6717c333e1db090db41ee0f8f0b888903ddb8c56a9600f62b22692c5c91a5f04",
+      "bytes": 35946
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_daedolon-super-0.png",
+      "sha256": "af0cea156e3b37095cb78d7fe80e779702168d7afdc9b10d119b87e4430883b0",
+      "bytes": 31923
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_daedolon-super-1.png",
+      "sha256": "cfc6a73d56ea081954c13e0ec04675866896ef19db0a78c2f360df244afca58c",
+      "bytes": 36799
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_daedolon-super-2.png",
+      "sha256": "c0394de1e16494a7821134812bee57d41cbda1e1b21bdd8a0d403ccae9213010",
+      "bytes": 38994
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hexen_daedolon-super-3.png",
+      "sha256": "8dd7b021de56ea006228c744be8650ed7ee304bb266aa1b34f80483370da97ab",
+      "bytes": 32396
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/mdk_kurt_hectic-fatality-0.png",
+      "sha256": "764b9ac5f219dcac75086b1b4d66a3f6ac7e28cd3de744da741b05cc93ffde9c",
+      "bytes": 24867
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/mdk_kurt_hectic-fatality-1.png",
+      "sha256": "0dad21f7469034744ccc794e326dd748d6a96258f70806559115c34c0e2cff49",
+      "bytes": 24759
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/mdk_kurt_hectic-fatality-2.png",
+      "sha256": "9967d0d0b7802e2384e14356cebe4c385aa20ccbae65668f3616bd219581b7e2",
+      "bytes": 28024
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/mdk_kurt_hectic-fatality-3.png",
+      "sha256": "b0a8ce681bd7f86d91f2df9127575b6ba60eb003e7da5e93fe13d20f80be1cc6",
+      "bytes": 25643
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/mdk_kurt_hectic-super-0.png",
+      "sha256": "c223940ad013dcfc9e0a2ea0fa5cd021899edf09a693789cef76a5cae5d7eebc",
+      "bytes": 26015
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/mdk_kurt_hectic-super-1.png",
+      "sha256": "ece33a1991b511a301cfa50d0f464dd4b0d8ce12e6875c1c6c28beead2427897",
+      "bytes": 26129
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/mdk_kurt_hectic-super-2.png",
+      "sha256": "c59f828a3607f1c24f002952219b2edb45a5dde49ad2fad7d5e11ac5e2664a4c",
+      "bytes": 28285
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/mdk_kurt_hectic-super-3.png",
+      "sha256": "6b1efaccf2b910d07778fc4e14b81d016329dbac00188a76efe820b67318e5db",
+      "bytes": 27042
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/max_mdk-fatality-0.png",
+      "sha256": "8231cec35363e852b90d3b2aa256d47e530f1c3ab3d7ae7773d34abd3d26554a",
+      "bytes": 31033
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/max_mdk-fatality-1.png",
+      "sha256": "2966db7ceaa2a913e7e136819f676030d7831cec47b7156d4e08321646f9da53",
+      "bytes": 33492
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/max_mdk-fatality-2.png",
+      "sha256": "63b2f2017946ccb0ea56d6b4f02b18c2ac409dd36d96190e1ece262182e922ed",
+      "bytes": 35724
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/max_mdk-fatality-3.png",
+      "sha256": "7ff19f665db19c498a4f46a852bec0bd40a9341a00c631e905b220680e67fe92",
+      "bytes": 30865
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/max_mdk-super-0.png",
+      "sha256": "d1562d8c5f075bc577cf49160f40603176462de9efb4ff506bdceb85a76f7901",
+      "bytes": 30496
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/max_mdk-super-1.png",
+      "sha256": "b48249eecfcf655eb502e6653c8693694e5f11d9c103a51c82ee65d3580a0200",
+      "bytes": 34361
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/max_mdk-super-2.png",
+      "sha256": "e290441e0dc193f0838b5f136bba9adc92d0b7e3a226e850f9df1f611e385177",
+      "bytes": 35852
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/max_mdk-super-3.png",
+      "sha256": "f1fb53f425ca70540f570992331267d4b7cac9ea7c8b333323130524ed2ec30b",
+      "bytes": 30797
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_john_mullins-fatality-0.png",
+      "sha256": "6bf26d4a83d66bcb003e6ca490571348fe819070507814f0be8fdfb1dab2005b",
+      "bytes": 28361
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_john_mullins-fatality-1.png",
+      "sha256": "006971c8be1c2156128f5110fcbcdb3dab0b15022f6e62883e8d3f14b8489649",
+      "bytes": 29809
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_john_mullins-fatality-2.png",
+      "sha256": "02d673fb4fedc414a3a9caf9672468f3626e390a127d86dc1ccd747bc0a1cd82",
+      "bytes": 31033
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_john_mullins-fatality-3.png",
+      "sha256": "f541e4cc690b5ba0223a189f9252149d1afc23b9730f3467c4dc895da098e88b",
+      "bytes": 28964
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_john_mullins-super-0.png",
+      "sha256": "cc98c57444b18c5e40b3af5b4364cc2e5a39dffa10a83e2a4d65b7d317211ccf",
+      "bytes": 29219
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_john_mullins-super-1.png",
+      "sha256": "ebae29072fa8719e4088015b26d8327458db523652923948a5bcda78d0012418",
+      "bytes": 29193
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_john_mullins-super-2.png",
+      "sha256": "0d94a51dbbacb6c662bc6de65cecb4332a0b9a112111e2ed72b7a4277db9dd0f",
+      "bytes": 30505
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_john_mullins-super-3.png",
+      "sha256": "786aced6d91cd34d8658d06f4c54cb1cbfbc5410b7dea39694c79b9ee1ca6231",
+      "bytes": 29035
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_hawk_parsons-fatality-0.png",
+      "sha256": "a83d5837e13b0453f222ea34469732d675bdf2ada7dac8c683a34925c100edb8",
+      "bytes": 23149
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_hawk_parsons-fatality-1.png",
+      "sha256": "c225680a19e800a984cc40a57ae9456874fee2cdb999e2008954ba28d5466255",
+      "bytes": 24798
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_hawk_parsons-fatality-2.png",
+      "sha256": "d309b5b3ede6304f77e88d8569bad83b15d3b1fc2e39e8c9e05d8e442e193dcd",
+      "bytes": 27424
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_hawk_parsons-fatality-3.png",
+      "sha256": "8f54e36ef5242aa29a22a4904caa3d39ee130fbfd8cf93907ab50c29638bf6fe",
+      "bytes": 23014
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_hawk_parsons-super-0.png",
+      "sha256": "fe64db96f87b4a81dc7333e89443280cbfdf15273fba392cc9b893a9e76694c7",
+      "bytes": 25218
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_hawk_parsons-super-1.png",
+      "sha256": "f45dcf97546014afb231c0e4d9224cd98c234308461233c0b1b4aed5b7f76e63",
+      "bytes": 24309
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_hawk_parsons-super-2.png",
+      "sha256": "69edf7723c89f90b3bfa8412437f1cc1dadc2f230f35fc084929a9669266e2e2",
+      "bytes": 27373
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/soldier_of_fortune_hawk_parsons-super-3.png",
+      "sha256": "f369d648e09a2647008c48b873f8907b34a6a119f019177ddd549a531a643c14",
+      "bytes": 23496
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_nomad-fatality-0.png",
+      "sha256": "af0ee9f4c1bb5730aa7a49d1f44dbec011b05609e6bb60d21f337db2684679b5",
+      "bytes": 21967
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_nomad-fatality-1.png",
+      "sha256": "4f01e42dc9015e9c7c4bb931b899988551d8ffe217bf29d25acfa9447ec7c2be",
+      "bytes": 22706
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_nomad-fatality-2.png",
+      "sha256": "630c8d9e9702181a38ba1cfc680718fb73706bc44b3cb24dfcefe534aecf51bc",
+      "bytes": 25859
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_nomad-fatality-3.png",
+      "sha256": "0cec3b5ec5a686fb404d5719927b5360fc845e99b1ed8fb683efeca5a79c308a",
+      "bytes": 22046
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_nomad-super-0.png",
+      "sha256": "80b443f7e572af86bafe7150bb49b6fd21fcd78b20024e8813be0fa1dcbb3e4f",
+      "bytes": 20173
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_nomad-super-1.png",
+      "sha256": "478ff26e5083553c2b790a64031b3ba98b51e7d369aa619b231c9db34da88142",
+      "bytes": 21838
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_nomad-super-2.png",
+      "sha256": "c6ce52579340492be709bcaee50622675e18bf43f582bf2a7957080ddaa5d87c",
+      "bytes": 24718
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_nomad-super-3.png",
+      "sha256": "d78709347a79ba54ba08d3ff395db0e82221ed632cd0e69aa8002da894cc56e7",
+      "bytes": 20223
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_prophet-fatality-0.png",
+      "sha256": "90b5c765e9949bf378aa2c8d2e2533e656312320bf128b7343e4f022ed3754d9",
+      "bytes": 33461
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_prophet-fatality-1.png",
+      "sha256": "ede008df6b988ad790258370ebe313b39415173a2e817c1505f69c78ee1e4aed",
+      "bytes": 32988
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_prophet-fatality-2.png",
+      "sha256": "634e86c933bd0b4d2a5d4bfaec99b727432f4214cd9e760ada6e504b71db5711",
+      "bytes": 38816
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_prophet-fatality-3.png",
+      "sha256": "dad76ed16847697472c56d9330c97be655edb81a6411de073f2761ff4db2be1d",
+      "bytes": 30355
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_prophet-super-0.png",
+      "sha256": "83be7f546c30f688f718bb1bae2affa63b3658a284833456c1b1a55d3fb9ed3b",
+      "bytes": 34432
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_prophet-super-1.png",
+      "sha256": "934070d8e780b931cebb3c6c8d796d4c7fb7c1515240b5b077d15b8c6f8e5637",
+      "bytes": 34305
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_prophet-super-2.png",
+      "sha256": "7f9f0eb28e7be45ff9f55beffddff17695a52d447bffa35894c89446c6a57f4c",
+      "bytes": 39660
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_prophet-super-3.png",
+      "sha256": "9a0ad1f668ce8ae7fb6fc6892f2dac7819728e8620846e6ec207bee78adf9e07",
+      "bytes": 30128
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_psycho-fatality-0.png",
+      "sha256": "fa4589bfb474078355a8ac05ac6e0848a4d216935327bc1fe7ed7a12c7d5a7f6",
+      "bytes": 35991
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_psycho-fatality-1.png",
+      "sha256": "216932c9f72633654bba28a5d45d26ae406429a20c7085ac8dddad9b47cd7943",
+      "bytes": 35770
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_psycho-fatality-2.png",
+      "sha256": "777e14488ac126a01c760f353c98e86864ede644b8b886cca77561c54811c4a8",
+      "bytes": 36746
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_psycho-fatality-3.png",
+      "sha256": "017a629d6a209f7d1a9df2d463344a9b841240c604dff383349ac9eebc70a381",
+      "bytes": 35508
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_psycho-super-0.png",
+      "sha256": "8472d9ab87db31964dcecd9dccf878d6e89a78f481bd1f301cda3c40bc9621e2",
+      "bytes": 36335
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_psycho-super-1.png",
+      "sha256": "44843cecc92fbd40afd4a58763b16aad3f499b865e36bdc786dba1898349fd76",
+      "bytes": 37112
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_psycho-super-2.png",
+      "sha256": "9c949aca9b586166f3d04093d915c02b39702147da5478c91e0e79b7360a1af6",
+      "bytes": 40335
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/crysis_psycho-super-3.png",
+      "sha256": "6f4f14fca3b449f84f3ea3f53197c9726c7287222d299b1cc9bd35d5263328fc",
+      "bytes": 36480
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_point_man-fatality-0.png",
+      "sha256": "7c79916f039481a02eea535d6b0522aaa02002277819af974be255d056ca37e1",
+      "bytes": 31587
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_point_man-fatality-1.png",
+      "sha256": "1fab6fd560fbff210c7b657a8c82e7820b92eb3156ca4f0d7578d73d732121ad",
+      "bytes": 32764
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_point_man-fatality-2.png",
+      "sha256": "f4aa56d1565b541a4c4d637804e7b592378939320781b32d0b4b73b2e3a2a491",
+      "bytes": 35082
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_point_man-fatality-3.png",
+      "sha256": "1a5d35ec9365f7bf13d848d6bb4df773d40000cf1f2706c1aa12c1f2e1eedb61",
+      "bytes": 29651
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_point_man-super-0.png",
+      "sha256": "2905028de4fb7bbab80fe4d275f34c9029dc0db2e24f14f35ec6015e9980b933",
+      "bytes": 33067
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_point_man-super-1.png",
+      "sha256": "8943539f818576df205ca988091af937a461dea3039a7619f369e1f4d02cb5a8",
+      "bytes": 33853
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_point_man-super-2.png",
+      "sha256": "1428d348d4f58d7387987d902eca6ddb0dae7f2e22acf09502b7ac0a92f3517a",
+      "bytes": 37599
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_point_man-super-3.png",
+      "sha256": "751455818df995a1881123e006212e5c2253f9cb2b00f9b64ba4931b6041d680",
+      "bytes": 30020
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_douglas_holiday-fatality-0.png",
+      "sha256": "d61ea3e7bde920767ca58491793c63a5c898e63db0209a5f2ce42ceef39e7e32",
+      "bytes": 33463
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_douglas_holiday-fatality-1.png",
+      "sha256": "d5d44e30ddf66b90d86ebdbed7b46f1fd846f9bc65620c13045753682d0a5e1b",
+      "bytes": 35272
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_douglas_holiday-fatality-2.png",
+      "sha256": "4fd944ab667b441303d3bbf01c6e977b2fc2af0679d7459cec71b2d684fa6dc9",
+      "bytes": 37738
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_douglas_holiday-fatality-3.png",
+      "sha256": "d5b09efc4e512f02476a4b4d795875c469c3bcbeb8798cd4a27dcc9c5bedf59e",
+      "bytes": 33512
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_douglas_holiday-super-0.png",
+      "sha256": "3b37218c0d2534ed29edc86bb978bf3300a9ce50da0f085d5c90952c04e44e5d",
+      "bytes": 34111
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_douglas_holiday-super-1.png",
+      "sha256": "910a468b03ea06397492c3ab6ebb3983fc573a4574bfd19ab59685f620f9c687",
+      "bytes": 35827
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_douglas_holiday-super-2.png",
+      "sha256": "d5e3e31f4945751cb296ff046efe60f4d65a8af9fa059202f5fb1bac0334afeb",
+      "bytes": 39538
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/fear_douglas_holiday-super-3.png",
+      "sha256": "4d910e784a2a085b4de7ddd783598136568878263374073b1a1b20410a3d5f16",
+      "bytes": 33277
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_sam_fisher-fatality-0.png",
+      "sha256": "79c816f635ca76019d7f6a37263e16681a0a9cd36f02d5cee48f1107b17cc731",
+      "bytes": 29454
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_sam_fisher-fatality-1.png",
+      "sha256": "c1af741af366fa89f76a108081dbe1e414a4d7e900d36922d3c5f4b9a89d5119",
+      "bytes": 30491
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_sam_fisher-fatality-2.png",
+      "sha256": "acd97f4c4d63b8bb02fdc323dd2d93b7a5c71837a7dc5c68c5fecf1156a3c6d8",
+      "bytes": 33316
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_sam_fisher-fatality-3.png",
+      "sha256": "2d69c6d02be6581b387838a0f00a1f61aa23ddd191560b3358e0a8899aa6fa67",
+      "bytes": 30998
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_sam_fisher-super-0.png",
+      "sha256": "27635929f31017d0e9801d882b881dfaad334e29c0938c545af891b81defea85",
+      "bytes": 30942
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_sam_fisher-super-1.png",
+      "sha256": "2ee38fd2afcf306fa7f7c1ca704c77dc787262ecbaaa976469b9710fa4730f60",
+      "bytes": 30620
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_sam_fisher-super-2.png",
+      "sha256": "cde5563414dbf697e9ccf429b9acbcf86a35bfcab4c75b2f7ee51309db9a2b3a",
+      "bytes": 34864
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_sam_fisher-super-3.png",
+      "sha256": "2308b35186d86d4f8bf304ff50ae7018d8f967db4c819f90144f15e281818563",
+      "bytes": 30503
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_isaac_briggs-fatality-0.png",
+      "sha256": "fdcc83fe37cdde57149b4e26bce5731169a379ede74dc0943231c267d5e2169b",
+      "bytes": 24815
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_isaac_briggs-fatality-1.png",
+      "sha256": "fb664a37a3e75c433961883959639457bc2580a5b2c41ebee0923459e065d5fa",
+      "bytes": 27011
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_isaac_briggs-fatality-2.png",
+      "sha256": "26545b069e1793fc7d6b9e106ed7f2221bf36c0efb6a8286cd3acce0a80bbcd4",
+      "bytes": 29320
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_isaac_briggs-fatality-3.png",
+      "sha256": "172561eb320cb575823c535c3e2731144322c97b7be3a2881fbbebd63cebc309",
+      "bytes": 25470
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_isaac_briggs-super-0.png",
+      "sha256": "2baf0c479d52362129e433eb1cb5ee2f1673fd94606d6594eea6691b63a2fcbb",
+      "bytes": 27567
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_isaac_briggs-super-1.png",
+      "sha256": "8fcbfdd1963d3d9b55561e9b0bb4f5b7f952100cac03b26748edf9fe7de06feb",
+      "bytes": 27179
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_isaac_briggs-super-2.png",
+      "sha256": "c4b346737a42540659f255856d23d6064a5752ae6215ee242df728daa030b8fe",
+      "bytes": 29788
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/splinter_cell_isaac_briggs-super-3.png",
+      "sha256": "3b06602bf91867c2e8da2756d6b614ca8ad535d87fdda5917f6d567fcb4bd7ca",
+      "bytes": 25095
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_agent_47-fatality-0.png",
+      "sha256": "5b427683e20ed87b9419bc14130d079e53247981ef87912deb48398c959c9c62",
+      "bytes": 22432
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_agent_47-fatality-1.png",
+      "sha256": "717e37ec135d7b074db66329889a05eea555854974ceb1445cc064ef11600dde",
+      "bytes": 23399
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_agent_47-fatality-2.png",
+      "sha256": "70b7a944d333a8fdae0d67351ae873808333a836aa37830c0ea2b0933660d62b",
+      "bytes": 25124
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_agent_47-fatality-3.png",
+      "sha256": "7cd1d9c82c8135216b9f7006d9aa8131deed5397378357d43fde2744c317559b",
+      "bytes": 22873
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_agent_47-super-0.png",
+      "sha256": "688a7e8febe6bfd9e72923d719db95e0265897a61d032bf2de7980cc23c7623d",
+      "bytes": 24121
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_agent_47-super-1.png",
+      "sha256": "4bb2d86c17ecaca7a61a50b582559d7790e60f6e163cffb04b8e7b76f4d8c0e4",
+      "bytes": 24449
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_agent_47-super-2.png",
+      "sha256": "51f20ef03cad0cbaaac143c5da7ca13633630abe7e6b32a6be737d2621a77cc9",
+      "bytes": 25029
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_agent_47-super-3.png",
+      "sha256": "7bda7c22e50da7cdfd717e706977c7bd7efb118d18824eee557c27d1b309ec8b",
+      "bytes": 22911
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_lucas_grey-fatality-0.png",
+      "sha256": "71b79152fe248c34d91746e645eb113366d699105ccdf36863ef4f032cd3b169",
+      "bytes": 32066
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_lucas_grey-fatality-1.png",
+      "sha256": "7e54e6103185bb82ee43f2cf5452eda8905191086d84182baf8b8ff15e2270b9",
+      "bytes": 34058
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_lucas_grey-fatality-2.png",
+      "sha256": "2c62e23dd0eadfda3f9fe10013c7f65aac82fd2a201339b4146bab2e5fe947a0",
+      "bytes": 39668
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_lucas_grey-fatality-3.png",
+      "sha256": "7a3373b90d69b589b88b13cf80aa4967d304bdc65e0fadd5843b42c3da2bd360",
+      "bytes": 33049
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_lucas_grey-super-0.png",
+      "sha256": "524cf7291308a823297a7f410748489e1c7636808c538c249a7b602aa13f11fb",
+      "bytes": 34609
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_lucas_grey-super-1.png",
+      "sha256": "36db146a721af32d6b213d43d9330d71754ec810138283d43521eaf3ceea1463",
+      "bytes": 36501
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_lucas_grey-super-2.png",
+      "sha256": "abe7692e757abc21230114d5c978c608e7fda14d9ac854352929cbcd4ce938d5",
+      "bytes": 39742
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/hitman_woa_lucas_grey-super-3.png",
+      "sha256": "a2110965b6d5109f09b6955f17d7a7ec2082ac875e686b89d2d695eb15c8f679",
+      "bytes": 31531
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_woods-fatality-0.png",
+      "sha256": "ccf23b72eab85afe22787f99672213403a23421f1655ca34bf5d4324ae531e34",
+      "bytes": 26432
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_woods-fatality-1.png",
+      "sha256": "9d164e98bd5f53a9c88c812bdd415c6a9d15c226a731b3b0dfba35f669a363dd",
+      "bytes": 26926
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_woods-fatality-2.png",
+      "sha256": "2cf902ea27da2f96fbadeacb7777754efffe62a6a90636ff73b010914cb29394",
+      "bytes": 29842
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_woods-fatality-3.png",
+      "sha256": "0f6e71b1b35358f7dd40d2de0bee6cd6a1e00fe553627bdbe8b31b29ab8c639b",
+      "bytes": 26754
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_woods-super-0.png",
+      "sha256": "ac8670b3eb8c80da9ce18128bef711841559d7c1a1ec40d5f120275b82ef7291",
+      "bytes": 27634
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_woods-super-1.png",
+      "sha256": "809382db74bc6089ac13efd608e900a48aa877e459b365565883ba3b6a89aada",
+      "bytes": 26910
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_woods-super-2.png",
+      "sha256": "15cb4edcb03d19ad2012991f84b4f71650c31b8fb7c15d7e65ff1ac24164126d",
+      "bytes": 31003
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_woods-super-3.png",
+      "sha256": "58114265b44ea93dc4d6cf15601673f9d114ac6dc0aaa71b08dea8dda952758a",
+      "bytes": 25663
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_dauda-fatality-0.png",
+      "sha256": "38bdde6e9da79eff6a395d468f15c0c32db6e1f79bb8576b15760f34f3cb99e0",
+      "bytes": 35015
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_dauda-fatality-1.png",
+      "sha256": "864676db6700a101980366da9c23cea3f67af9e652130518e4f3f1451e7f5573",
+      "bytes": 37459
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_dauda-fatality-2.png",
+      "sha256": "17626bd6ed2933d3729e8ca6a15f809910fdb7177f1f698f1b7ef781f564575c",
+      "bytes": 41322
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_dauda-fatality-3.png",
+      "sha256": "c161998781ac51009cb6abdd6f1ed0fe12d500ac560932b628b3774a82ee42da",
+      "bytes": 34054
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_dauda-super-0.png",
+      "sha256": "01f33c280ea8c842f8932885fc3f828b33229f8f44ce79742eca405f8a5a7d45",
+      "bytes": 35461
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_dauda-super-1.png",
+      "sha256": "57feca9cd6153c7fad1a6289d3672b1daa68a4bf03c366b715ffe38498d8917d",
+      "bytes": 38773
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_dauda-super-2.png",
+      "sha256": "23863b94c86510d89796aa314366a6d49b8ddbc0a4ffbb42291f1ecb65104617",
+      "bytes": 40726
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/gtfo_dauda-super-3.png",
+      "sha256": "206d21c249928ac57294d9522494d6cd368b3c9d784dd30bdab4c3980a920b44",
+      "bytes": 34944
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/shephard-fatality-0.png",
+      "sha256": "2e1b59fae896cf11212228a9bd1fa93b4eb045b6e48ed4ce22d8a3f16ac393b9",
+      "bytes": 33611
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/shephard-fatality-1.png",
+      "sha256": "9b37f2d5e0cf99becc2cc077e0bcf3d82ceb90244939a9905a99f5614e3a3346",
+      "bytes": 34826
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/shephard-fatality-2.png",
+      "sha256": "45631e518db28e0d0f4acaebdaf6ef6f28f653ee39b9b95dcd8a488d9c0a61a9",
+      "bytes": 40269
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/shephard-fatality-3.png",
+      "sha256": "9a00b75dd0b0543f69e135583970d00673a00aaf82904d9a15e2a8ccc7cd4e9d",
+      "bytes": 34510
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/shephard-super-0.png",
+      "sha256": "0740544ccecfb5daf245ddebb564e83bafcac03ae4da511f1f74dc3b67fabe25",
+      "bytes": 33869
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/shephard-super-1.png",
+      "sha256": "2e3f2d986d4a87b628746cb19f8c9c6df40d03f77e9c1c839409b6b48d8c8420",
+      "bytes": 35173
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/shephard-super-2.png",
+      "sha256": "a6b27964cf0febde92d32a469a58a058f2d7d72853039d7621931ceff687dca3",
+      "bytes": 38943
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/anchor-review/cells/shephard-super-3.png",
+      "sha256": "550f995c040dc745c41e6860b121b7e9224abaac6a75353cc61fcd4364faa968",
+      "bytes": 33567
+    }
+  ],
+  "basePngProofs": [
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/crysis_nomad.png",
+      "sha256": "da0a1f85cb98318849ee000f67fac2b381aafb37363f8c0b121fb9b39b68c6ca"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/crysis_prophet.png",
+      "sha256": "0fa2258fbcde793fa0234adeba73c3d1f3fe902a905d66b20daa3d7977291799"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/crysis_psycho.png",
+      "sha256": "30dc0ccaa9ea5ae1bcd2ed45724c9eda6fa47cff2cce7fbb0fb38447eca56737"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/duke_nukem.png",
+      "sha256": "d3fc5b51063afec89aa36184861fab996763ec56c27e1a2f0702f6f55f36698b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/duke_nukem_captain_dylan.png",
+      "sha256": "3b24dfd216d82187fae7b292beb67eb5e5e3196a144443d49e13408551809409"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/duke_nukem_edf_trooper.png",
+      "sha256": "02a7f460a930e49bb9423f4ef7f9036c6e344d8eee187e499ca4da0beb7f3908"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/fear_douglas_holiday.png",
+      "sha256": "869c88c12c6e0ec7679828a8a2cd7b366c7efdd5f183c935018b6d2ebedd83ba"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/fear_jin_sun_kwon.png",
+      "sha256": "33b1412663d0bd22b9b941ac7d3cd12327e1b68ce4c23668ccc15354b91492b5"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/fear_point_man.png",
+      "sha256": "9ad1ee7cf27bab88529b61fec32d329a075351517f81ef7a83e1973c0a68f461"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/gtfo_dauda.png",
+      "sha256": "415db42fe03b6229760ded30430e271157388d1faf4abfcea291b8aa2d0575ae"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/gtfo_hackett.png",
+      "sha256": "7dcc5cd493031315dd2b4bdee585f8ad436dea083c33eb19cc3a86b112776461"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/gtfo_woods.png",
+      "sha256": "8065dea57125bc75fae38574d7175ead4f37c888cb8e9612cf4d77b841d8ec27"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/hexen_baratus.png",
+      "sha256": "e3d556723c4604f97582f2930e02a75a940e28f5df4fc512c6300ed4542cfde3"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/hexen_daedolon.png",
+      "sha256": "e66abc77cba309b20afac6de00c795f22891f0a0b367c3719816f7cd8843c51b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/hexen_parias.png",
+      "sha256": "129be918c1cdfcef749e793b8c27f9c49a9569ff97f7942852da48f225078e96"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/hitman_woa_agent_47.png",
+      "sha256": "c667f87b484f099ac7e1989ae478773efc223e0e0b138571b3f74e93c32d91af"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/hitman_woa_diana_burnwood.png",
+      "sha256": "f9183f7771628302932b33f22022c998ae8d498f682891b3d6f96f6ecf72ec6f"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/hitman_woa_lucas_grey.png",
+      "sha256": "9581597c0f39caa6341c81813776568326ba5c56096ddb9dd07b72c03b656a5f"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/marathon_classic_robert_blake.png",
+      "sha256": "8dd142017f2bc80dec40bcd500143a0ba25fbfa392b89e076f5432e110c8dfe8"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/marathon_classic_security_officer.png",
+      "sha256": "610de1843fc7ea6a78200f6189b20005699c4dc8ed9089764edeeec73d366c9b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/marathon_classic_sphtkr_defender.png",
+      "sha256": "7418696d28ce380546eba7813bc1c55537d2501f9f8b2258287d6771cbbab6cb"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/max_mdk.png",
+      "sha256": "7585a99630e1e600464cb76351d062ad9eece67c079b249e4f99e5ec8674efbc"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/mdk_dr_hawkins.png",
+      "sha256": "8975716d71e08be9f18980ad0768724b33b437afa93cd1a4bbf28e86f00d976d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/mdk_kurt_hectic.png",
+      "sha256": "74b7424d5d462c7426fa70fce215cfe81e1ae856ad59870a73edd41b0928c70d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/quake_franchise_bitterman.png",
+      "sha256": "3aa645a6eac3f943b1c80e0fb0406524a22a3da624762d97ddffdbf91a99e4ac"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/quake_franchise_matthew_kane.png",
+      "sha256": "de9c9e9a65cd660645e54d1f3f97d56caab288045a7ed5112983407a0c71e85e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/quake_franchise_ranger.png",
+      "sha256": "b24b010a2a4af03227f5eb84db34daabb6ca9438d1c132489369fd2a2751b516"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/shephard.png",
+      "sha256": "c58ce3b64d8f0c2127cf64b0a9fd7471e3b7ff7b8be7b3d218831c5893adfba8"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/soldier_of_fortune_hawk_parsons.png",
+      "sha256": "9a00a2b449afc1b762e9a43f8865dc1913048b88c3b59b04dd609c78a950372a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/soldier_of_fortune_john_mullins.png",
+      "sha256": "292c2d9e06cf1c33aa919fc3f6b5d35877a795b6c44d438fe5aee8df2b99c107"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/soldier_of_fortune_sam_gladstone.png",
+      "sha256": "5604c47aa536dc7069ada6b54ee2471201fb7fa49b99601bcb2e9cf885156130"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/splinter_cell_anna_grim.png",
+      "sha256": "f5619b3d28f0ee7495d161dbee6d923c43e0c53d15b34418fc487adc31806c48"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/splinter_cell_isaac_briggs.png",
+      "sha256": "bbb1b009beda86d54d332fe20f17808c57cce58db6b2fbb1e25a905fc264c54c"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/splinter_cell_sam_fisher.png",
+      "sha256": "730e4b18a2887c66707a2267f49bf67d1e40f4d2e2b9598ce06b28342477349b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/unreal_1998_dante.png",
+      "sha256": "23576144fdd5cfdd2875fc0781fbb05a860f16d428de6858f03fc2942bc410e7"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/unreal_1998_gina.png",
+      "sha256": "97b9242b32da7af12511f4f0108e9dd3b4f1074d59c87a188e493394ee2cc5a6"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/unreal_1998_kurgan.png",
+      "sha256": "ff65b57009f81e6ccb2a641fbe90a8bd38d1df533fe695d05e1268af94d43eab"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/unreal_tournament_brock.png",
+      "sha256": "a8474e1241f1e0d733da3ea358c78659a5edbb988903b3c4dfe04a13d9bca16d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/unreal_tournament_lauren.png",
+      "sha256": "48a83c61566b3d2f72ccda3fbfb68fd3ea6aac1abaac093d822a3b5fffe17d5e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-a/unreal_tournament_malcom.png",
+      "sha256": "a06957045777c63baee58c6208926de500fcc832a9ea3edf80c431690db379b2"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/adam_sor.png",
+      "sha256": "3a27b38e248290424258b63fcfb682fb447d091191c67e2922345bf7482981aa"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/axel_sor.png",
+      "sha256": "4e9548b7177aa991932aeaec92cd71b1a21f7b7901653f1e10aecc2884e23ff7"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/baiken.png",
+      "sha256": "ccaeed96f3c7581829ae90bd1ddb6c65090e592e4354564156e05421c8e39fcc"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/blaze_sor.png",
+      "sha256": "6e6728b377b8901d71f16331ff3e7d5badeea54ad182da806399875db0f486e9"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/borderlands_2_maya_phaselock.png",
+      "sha256": "1ec77eb132df3e14ca14b08c467e12db3251b3545a62ce07812d652e74381a3a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/borderlands_2_salvador_gunzerking.png",
+      "sha256": "c0809bdab62cd65ba747b7b4a88bd41f6cc3fd57cbb372bbbbddde1987ac5893"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/borderlands_2_zer0_decepti0n.png",
+      "sha256": "b05141c77838af8a442527a58076bc330cfb73cd608b9f735b05f2a9a115ef5c"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/brutal_legend_eddie_riggs.png",
+      "sha256": "ed3fce438ab7f28b7ded47d6fe7804a4e68754893c340abffbb9c4a3bbbf4afd"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/brutal_legend_lars_halford.png",
+      "sha256": "bb905feec6c9722dcceb6a78c284f1e34eabd40fd79b588301c16ef981cdcf6f"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/brutal_legend_ophelia.png",
+      "sha256": "5ced752876551cb9d355acef46bef15dcf88f6d5946e3c203dcc5f7e9efc4294"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/goemons_great_adventure_ebisumaru.png",
+      "sha256": "3aa449e644148a8443878e57e8c8c46d1f2669c884e0120c046edb85b9336e52"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/goemons_great_adventure_goemon.png",
+      "sha256": "ef7530cfb9a5a75b98f29f6986cf0f66fb9e6b803f10f525118fe78c6ec77969"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/goemons_great_adventure_yae.png",
+      "sha256": "47efde5599872fedebdef35264e2633da93495ba85e17613961ba8d10b305cef"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/gon_tekken.png",
+      "sha256": "47beb1a6300d2da5c3e751d672cee3728538335c1ae94c0db931906112017346"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/ivy_sc.png",
+      "sha256": "8f802eb7860c18e4c1d54fd5e3c725e39e20ad532db2085ebf7973abe6990f1b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/killer_instinct_jago_epee.png",
+      "sha256": "2772f372cc3fd4395c3092845616a9d88dd0ebea429051684591928b95cc53c0"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/killer_instinct_orchid_tonfas.png",
+      "sha256": "41f29b116cf2337be4eed402471e878397f43449385b45bcf6618c2a652c8515"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/killer_instinct_t_j_combo_boxe.png",
+      "sha256": "067beb716f404b6edc1aea8da97e1c29a365f9081d6aa305f7c6029fdbf28508"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/like_a_dragon_goro_majima.png",
+      "sha256": "bc69c2f7726eeb87c6ca55e774aaaba590a23a86cf5c718ddbe28c474ce61bf7"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/like_a_dragon_ichiban_kasuga.png",
+      "sha256": "76c1e0906e0ac88fb99398b35414185d003a4fbc2f499e0f3e9bb820c7314a7c"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/like_a_dragon_kazuma_kiryu.png",
+      "sha256": "f27d18703d37c2a1dd1b3369a4f77b3e83d98ca5ac0e1a755c1424a5f1bd0e40"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/magicka_blue_wizard_foudre.png",
+      "sha256": "935ec1c2dc8e970b79e9bb1eb24080a1392ecaf615950374049d6f92b5dac07c"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/magicka_red_wizard_feu.png",
+      "sha256": "78f212bacb6124da893008826bc98b4631c49dbbe74035e9e4b6df29e0eeb35f"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/magicka_yellow_wizard_froid.png",
+      "sha256": "42ed836f4fff3b6db034dd1036458aa7a8703e4aec7bb4e5a4a5e3474325b1a4"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/medievil_kiya.png",
+      "sha256": "d59e14ff025e422c0c5bb03d3b0cfc6210067dc3dc0c781b1fe48f648f6d7801"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/metal_slug_eri_kasamoto.png",
+      "sha256": "dc5d6025f53827b4131d3abe769779019f2fc41d5ac8443b4336de608c7a760a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/metal_slug_marco_rossi.png",
+      "sha256": "7fcc83d93638f61d26bdb9663ab05fd2da330a858eb6f54cef188a50e117d7e3"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/metal_slug_tarma_roving.png",
+      "sha256": "276e99eb093eb7fe547f6735e4426469bf44242cfef9e6164de04b637a9ffe6b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/millia_rage.png",
+      "sha256": "16e4c732d7994c6fd04d035878ee31b3263821a9450807a813631d7feaeba09e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/nightmare_sc.png",
+      "sha256": "19f4d9571c5f975aaade73e790c13d31b077e88907aaa2f77b13d77b0607b712"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/siegfried_sc.png",
+      "sha256": "1f16c800cd440cf09a9924c3e2ce5fa5bcd99c53c34cb059654cb3a7f5f63ce8"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/sir_daniel_fortesque.png",
+      "sha256": "12849946cab51467a698d79d3c56ef56de1fffc087d47430bf9283e1fb481609"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/true_ogre_tekken.png",
+      "sha256": "bbb2b7e75640b2ae7c8160ab90122497590752caec0ee829fca55a070d11a589"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/turok_adon.png",
+      "sha256": "72353594813e724841d0feab6962a5ad6f70f8a9996ec627ce6a3095bffbfed7"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/turok_joshua_fireseed_turok.png",
+      "sha256": "30a0e71d3aca2477fbfad5da6fd1e4a30bd642a84d61ae1c1aa85bf43342b692"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/turok_tal_set_turok.png",
+      "sha256": "d21c9de230b269988637f0b85a1c167619253e2e80147fea07d99abd053b186e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/yorha_2b.png",
+      "sha256": "47872a7b0e09f009cbaf02bac27fe87be2d585980c9b37039a29f19c1a5b9ec9"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/yorha_9s.png",
+      "sha256": "cb8a570cc30c916cc00fb19d96e95c40c82965bb025cf2975f03b11faa310e02"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/yorha_a2.png",
+      "sha256": "1e3b0dd03114be632c8ffb2b959d27acc5575e053dff800e95adc223ec5f6a80"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/yoshimitsu_tekken.png",
+      "sha256": "d940f6bbbbec9ab7da25c26ef8e22962905d12b47a921055e7b6856f6f3c5e08"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/andy_romulus.png",
+      "sha256": "fdb05a2b076dfd47908259443e5e68947d7971857c3ebad2fddd3eeca3680864"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/betrayer_doom.png",
+      "sha256": "8a1d9c4425f9dcc204b0d8492a99992184b8107e729e125af481490db40a2bcd"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/cortana.png",
+      "sha256": "a21e11fb2ff83d1851e05bf3ed803aa7b5987c6c1741bb33a25199c10b17f4f3"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/dog_hl2.png",
+      "sha256": "80fb75b1a7366c94d38ffc9dc046427098785f93c0df6134c3a559b1d4f693bc"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/doom_marine.png",
+      "sha256": "9b35b43b14de0e72c7b8bf0a30b8ce27196b7906223b47d2ff4062e5fe509f73"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/dr_kirk.png",
+      "sha256": "82650295520f10760a5bce1c9a4bd354abf96996a8ab2b55764a80b1838753dc"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/evolve_maggie.png",
+      "sha256": "2a84461ae13465bc9f1f3c5284360a6c4ebe12b4bfa0d62f69238db97e4e0bfb"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/evolve_markov.png",
+      "sha256": "12a2437505d18cb4e7c72de8cd84d80600f3c4ebe9e8b919698f849eb896c34b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/evolve_val.png",
+      "sha256": "e4693b7ce44f3af13e2b39a353b855a549a5b56e82506a5205a3b537219a2e53"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/gail_dc.png",
+      "sha256": "af18f4ff37d028c60bbc0c4c725b1dd40a7c4e01fc5ccf74f53e2ae017dff121"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/kendra_daniels.png",
+      "sha256": "8a7760048a714dc3d9d164a6ce3ed177597484354960dadbbe751893127e8f7a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/killing_floor_2_ana_larive_punk_violette.png",
+      "sha256": "67815001fd1c950066b0b03b850778efcc5cf302de33865f88c26a67defcfd9c"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/killing_floor_2_dj_scully_dj_masque.png",
+      "sha256": "83380bd5d161b3e490f3cbecb48190121badfcb6e4168391fbdd0c01ec250c8c"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/killing_floor_2_mr_foster_masque_a_gaz.png",
+      "sha256": "a18830fabc266eda855744d14c7b1b31b5e72d29d1b8372a18721c2d16dfedfb"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/lone_wanderer.png",
+      "sha256": "6b816fd8b5b12ae39a8d4fadd1729ce68dffb1ed0c0326c505fc52ac615d1da3"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/max_payne_2_jim_bravura_enquete.png",
+      "sha256": "71e6552afda5615e71096c01b1ea6618013d9369c8335139b030cbc7741d7f9a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/max_payne_2_max_payne_bullet_time.png",
+      "sha256": "10f504e950b1d9b5a197320e2dc9484910e87d0f2949ad5e4656fb312b193aa1"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/max_payne_2_mona_sax_sniper.png",
+      "sha256": "94b77b860747f26f7a98b0f054cf5a5e8164d3deeea9fc2dcec1c9dda952db7a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/mordecai_bl.png",
+      "sha256": "f46654aa841be8106a8a03a189f1155c6a17c27b320345f64c24a3692fa9e475"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/natural_selection_2_exosuit.png",
+      "sha256": "2e1f680820f1c7b2b18ff6227cb4e47386df55b51a92c2fe7a52d0d1f4bddcae"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/natural_selection_2_jetpack_marine.png",
+      "sha256": "5b12cf6f4bec08cec28f292fde3f0df54327b32c830a0f34cf53af9495754b8e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/natural_selection_2_marine.png",
+      "sha256": "313c696f51a53fb1f3735b89d7bbe92e6cf85e08f9c28ea8c5cdea87166592db"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/night_sentinel.png",
+      "sha256": "a8c04fd830271eaae2d2ea32ecaef272e6f513f4cb5426243697c85fbd64ec79"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/rain_romulus.png",
+      "sha256": "9faecbdf9a779016dc84001ec088811b62970de8c0c0aa845ccf2411b91b180e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/red_faction_alec_mason_demolition.png",
+      "sha256": "8ebbe1d9a5cc46b4882bf225827bf7f5c1a64dce51830f73a47b44b0e4d47520"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/red_faction_eos_resistance.png",
+      "sha256": "6cb041d8c80f16b5e7f27e322a361eb0bb57ea936909fcd0c31a8872ea058096"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/red_faction_parker_mineur_rebelle.png",
+      "sha256": "aaf4a19ca0f8348f4ff277cf76aed8e2abe56fb737ac10011c753fbd6f627140"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/rick_dc.png",
+      "sha256": "b44694391b9dafe34d8fd6ba0072911373a8398ebe4d04a1b20a65d40528e16e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/serious_sam_hellfire.png",
+      "sha256": "5397e871549e9111a710845ebb19a897e4bf7b7fcba659ef034f9fd02e4d4aba"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/serious_sam_kenny.png",
+      "sha256": "f60f95f3242208d7d495913f869236d7a9401db329a0a6393fdf279715f48c65"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/serious_sam_sam_stone.png",
+      "sha256": "613bde55f256ee32b4b56764f56d5f9f2545ce448c0d6eb15f81db12c68fd935"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/tyler_romulus.png",
+      "sha256": "7b2afd4033bc56d6f7b8658683d51ff5cd2f7728bd3ead18c7a9a8b4e300dec6"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/unreal_tournament_2004_frostbite.png",
+      "sha256": "257c07613da4730d41cb9f8db4a8867f5f4852554cded5cb7dec90c5d3cd14cb"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/unreal_tournament_2004_gorge.png",
+      "sha256": "73f60b15218acead48a241627e1bfafa0580645a80b3a3512039e6a06da4c696"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/unreal_tournament_2004_sapphire.png",
+      "sha256": "54ca1e1d1fadd39eac8b349a357d92ddc6a22477790ee758239008c4a0fd3eca"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/valtweller.png",
+      "sha256": "c2c78d7054dcca476e009144571ca990a5045315a47f889c17bdc3327880d3af"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/vega_doom.png",
+      "sha256": "bb08693b06a11859655ad2db6c0cb8398c12748bed3ee62491464f4555e08e14"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/vortigaunt_ally.png",
+      "sha256": "021a879bb4aa5a381645ef402c657568db7f6081a7a11d077dbbca6df54c46c1"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/wesker.png",
+      "sha256": "203caa6970d6f2d169a2278f691c59fad50467148812c671a5c0395eeb06f008"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-c/zach_hammond.png",
+      "sha256": "b5e9716ebf5f7443577ed11c9a8580ee10b137cef54d1bd8fd7d5ab9a456d872"
+    }
+  ],
+  "baseRegistryProofs": [
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave15PartA.generated.json",
+      "sha256": "c82800e553b3aebcfa56375533506228bf6a321c4f1e9b50a7f5e89fd8e7e345",
+      "bytes": 1227794
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave15PartB.generated.json",
+      "sha256": "cfb8bbc3628f30773822839ef357b283312cfa3b268d7a709490346cb8836beb",
+      "bytes": 1031261
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave15PartC.generated.json",
+      "sha256": "874830023c1b9234678d171c0628f4f7b46f8a17178f5761341fad791d0bc9fe",
+      "bytes": 1030856
+    }
+  ],
+  "source1to1Verified": false,
+  "finalProductionFreezeClaimed": false
+}

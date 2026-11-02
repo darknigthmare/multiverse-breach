@@ -1,0 +1,1721 @@
+{
+  "startedAt": "2026-10-28T13:08:04.493Z",
+  "error": "TimeoutError: page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:5188/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+  "pageErrors": [],
+  "rows": [
+    {
+      "item": {
+        "kind": "possession",
+        "heroId": "oddworld_abe_possession",
+        "label": "POSSESSION",
+        "effect": "control",
+        "side": "player"
+      },
+      "mounted": {
+        "engineUrl": "/src/game/engineRpg.js",
+        "reactUrl": "/node_modules/.vite/deps/react.js?v=d8b616dd",
+        "domUrl": "/node_modules/.vite/deps/react-dom_client.js?v=d8b616dd",
+        "actor": "oddworld_abe_possession",
+        "historicalSligRecord": "{\"hp\":103,\"atk\":13,\"spd\":4,\"color\":\"#61d8ff\",\"weapon\":\"Slig canonical attack\",\"id\":\"oddworld_slig\",\"name\":\"Slig\",\"output\":\"/sprites/generated/bosses/oddworld/slig.png\",\"spritePrompt\":\"Original fan-made pixel-art sprite sheet, three-quarter RPG view. Slig. Preserve: Slig, preserving the canonical silhouette, material language, palette and encounter context from the locked continuity. No text, logo, UI, copied official artwork, actor likeness, gore or unrelated redesign.\",\"special\":\"Slig encounter escalation\",\"phases\":[\"Uses Slig canonical attack\",\"Escalates with Slig encounter escalation\"],\"referenceUrl\":\"https://www.oddworld.com/oddworldgames/\",\"visualAnchor\":\"Slig, preserving the canonical silhouette, material language, palette and encounter context from the locked continuity.\",\"canonStatus\":\"canon enemy\",\"lore\":{\"fr\":\"Slig conserve son rôle d'adversaire dans la continuité verrouillée.\",\"en\":\"Slig keeps the adversarial role from the locked continuity.\"},\"universe\":\"Oddworld\",\"sourceEnemyId\":\"oddworld_slig\",\"species\":\"slig\",\"possessionEligible\":true,\"possessionSource\":\"Oddworld: Abe's Oddysee (1997), Slig possession; existing enemy and artwork, no new roster identity.\"}"
+      },
+      "preview": {
+        "effect": "control",
+        "profile": {
+          "abilityType": "special",
+          "summon": null,
+          "sourceHeroId": "oddworld_abe_possession",
+          "universe": "Oddworld",
+          "name": "Chant de possession d’Abe",
+          "action": {
+            "name": "Chant de possession d’Abe",
+            "type": "control",
+            "dmg": 0,
+            "animationDuration": 1.35,
+            "hitAt": 1.1,
+            "meterCost": 100,
+            "targeting": {
+              "effect": "control",
+              "delivery": "control",
+              "shape": "single",
+              "targetSide": "enemy",
+              "range": 480,
+              "maxTargets": 1,
+              "controlKind": "possession",
+              "channelDuration": 1.1,
+              "controlDuration": 2,
+              "duration": 2,
+              "turns": 1
+            },
+            "slot": "special",
+            "sourceHeroId": "oddworld_abe_possession"
+          },
+          "effect": "control",
+          "targetSide": "enemy",
+          "excludeSelf": false,
+          "shape": "single",
+          "delivery": "control",
+          "maxTargets": 1,
+          "minTargets": 1,
+          "range": 480,
+          "areaRadius": 143.68421052631578,
+          "lineWidth": 52,
+          "coneAngle": 55,
+          "multiplier": 0,
+          "controlKind": "possession",
+          "controlDuration": 2,
+          "controlTurns": 1,
+          "channelDuration": 1.1,
+          "duration": 2,
+          "buffMultiplier": 1.2,
+          "healRatio": 0,
+          "reviveRatio": 0.3,
+          "guardReduce": 0.4,
+          "cleanses": false
+        },
+        "eligible": [
+          {
+            "id": "enemy:custom:0:oddworld_slig",
+            "name": "Slig",
+            "x": 580,
+            "y": 350,
+            "hp": 103,
+            "maxHp": 103,
+            "side": "enemy",
+            "dead": false
+          }
+        ],
+        "estimates": [
+          {
+            "id": "enemy:custom:0:oddworld_slig",
+            "effect": "control",
+            "amount": 0,
+            "min": 0,
+            "max": 0
+          }
+        ],
+        "atb": 100,
+        "charge": 100,
+        "valid": true
+      },
+      "panelText": "Attendre pendant le choix des cibles\nAbe - possession — Chant de possession d’Abe\nUne cible · Combat en attente\nPOSSESSION · 2 s\nSlig éligible uniquement. Chant de 1,1 s, interrompu si Abe est touché. Contrôle des commandes sans changer de camp.\n✓ SLIG\n103/103 HP\nPOSSESSION · 2 S\nCONFIRMER LES CIBLES\nANNULER SANS COÛT",
+      "steps": 66,
+      "armed": {
+        "cost": {
+          "atb": 0,
+          "charge": 0
+        },
+        "protection": null,
+        "control": {
+          "kind": "possession",
+          "active": true,
+          "sourceHeroId": "oddworld_abe_possession",
+          "universe": "Oddworld",
+          "sourceRuntimeId": "hero:0:oddworld_abe_possession",
+          "controllerRuntimeId": "hero:0:oddworld_abe_possession",
+          "targetRuntimeId": "enemy:custom:0:oddworld_slig",
+          "duration": 2,
+          "remaining": 1.9999999999999991,
+          "channelDuration": 1.1,
+          "channelRemaining": 0,
+          "originalSide": null,
+          "phase": "active",
+          "immobilize": false,
+          "lift": 0,
+          "inputProxy": {
+            "controllerRuntimeId": "hero:0:oddworld_abe_possession",
+            "bodyRuntimeId": "enemy:custom:0:oddworld_slig",
+            "originalSide": null,
+            "canMove": true,
+            "canAttack": true,
+            "changesFaction": false
+          },
+          "authorization": null
+        },
+        "units": [
+          {
+            "id": "hero:0:oddworld_abe_possession",
+            "hp": 120,
+            "x": 400,
+            "y": 350,
+            "heroTeam": true
+          },
+          {
+            "id": "enemy:custom:0:oddworld_slig",
+            "hp": 103,
+            "x": 580,
+            "y": 350,
+            "heroTeam": false
+          },
+          {
+            "id": "enemy:custom:1:shinya_kogami",
+            "hp": 130,
+            "x": 670,
+            "y": 350,
+            "heroTeam": false
+          }
+        ]
+      },
+      "baseline": [
+        {
+          "id": "hero:0:oddworld_abe_possession",
+          "hp": 120,
+          "x": 400,
+          "y": 350,
+          "heroTeam": true
+        },
+        {
+          "id": "enemy:custom:0:oddworld_slig",
+          "hp": 103,
+          "x": 580,
+          "y": 350,
+          "heroTeam": false
+        },
+        {
+          "id": "enemy:custom:1:shinya_kogami",
+          "hp": 130,
+          "x": 670,
+          "y": 350,
+          "heroTeam": false
+        }
+      ],
+      "bodyEvidence": {
+        "actorSheet": "/sprites/generated/combat-character-animations-wave16-part-a/oddworld_abe_possession.png",
+        "kind": "native32",
+        "realPngDraw": true,
+        "draws": [
+          {
+            "sheet": "/sprites/generated/combat-character-animations-wave16-part-a/oddworld_abe_possession.png",
+            "sourceCell": [
+              512,
+              1792,
+              256,
+              256
+            ],
+            "destination": [
+              -39.844689268269086,
+              -75.95393891763794,
+              79.68937853653817,
+              79.68937853653817
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/bosses/oddworld/slig.png",
+            "sourceCell": [
+              0,
+              0,
+              256,
+              256
+            ],
+            "destination": [
+              -32.654782608695655,
+              -62.248179347826095,
+              65.30956521739131,
+              65.30956521739131
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/shinya_kogami.png",
+            "sourceCell": [
+              0,
+              0,
+              256,
+              256
+            ],
+            "destination": [
+              -38.53775828881255,
+              -73.46260173804892,
+              77.0755165776251,
+              77.0755165776251
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-animations-wave16-part-a/oddworld_abe_possession.png",
+            "sourceCell": [
+              512,
+              1792,
+              256,
+              256
+            ],
+            "destination": [
+              -39.844689268269086,
+              -75.95393891763794,
+              79.68937853653817,
+              79.68937853653817
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/bosses/oddworld/slig.png",
+            "sourceCell": [
+              0,
+              0,
+              256,
+              256
+            ],
+            "destination": [
+              -32.654782608695655,
+              -62.248179347826095,
+              65.30956521739131,
+              65.30956521739131
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/shinya_kogami.png",
+            "sourceCell": [
+              0,
+              0,
+              256,
+              256
+            ],
+            "destination": [
+              -38.53775828881255,
+              -73.46260173804892,
+              77.0755165776251,
+              77.0755165776251
+            ]
+          }
+        ]
+      },
+      "events": [
+        {
+          "effect": "control",
+          "targetIds": [
+            "enemy:custom:0:oddworld_slig"
+          ],
+          "before": [
+            {
+              "id": "hero:0:oddworld_abe_possession",
+              "hp": 120,
+              "x": 400,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:oddworld_slig",
+              "hp": 103,
+              "x": 580,
+              "y": 350,
+              "heroTeam": false
+            },
+            {
+              "id": "enemy:custom:1:shinya_kogami",
+              "hp": 130,
+              "x": 670,
+              "y": 350,
+              "heroTeam": false
+            }
+          ],
+          "after": [
+            {
+              "id": "hero:0:oddworld_abe_possession",
+              "hp": 120,
+              "x": 400,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:oddworld_slig",
+              "hp": 103,
+              "x": 580,
+              "y": 350,
+              "heroTeam": false
+            },
+            {
+              "id": "enemy:custom:1:shinya_kogami",
+              "hp": 130,
+              "x": 670,
+              "y": 350,
+              "heroTeam": false
+            }
+          ]
+        }
+      ],
+      "incoming": [],
+      "mechanicalProof": {
+        "historicalBody": "oddworld_slig",
+        "storedCampUnchanged": true,
+        "commandState": {
+          "side": "player",
+          "controllerId": "hero:0:oddworld_abe_possession",
+          "controllerName": "Abe - possession",
+          "bodyId": "enemy:custom:0:oddworld_slig",
+          "bodyName": "Slig",
+          "actionName": "Tir du fusil du Slig possédé",
+          "atb": 100,
+          "remaining": 1.9999999999999991,
+          "ready": false,
+          "initialCostAlreadyPaid": true
+        },
+        "actualGameCanvasRifleSelection": {
+          "actorId": "enemy:custom:0:oddworld_slig",
+          "name": "Tir du fusil du Slig possédé",
+          "targets": [
+            "enemy:custom:1:shinya_kogami"
+          ],
+          "ownerCharge": 0,
+          "bodyAtb": 100
+        },
+        "actualGameCanvasRifleShot": {
+          "atb": 0,
+          "ownerCharge": 0,
+          "before": 130,
+          "after": 118,
+          "nativeRelease": {
+            "x": 601.4297010869565,
+            "y": 327.2947214673913,
+            "nativePoint": {
+              "row": 1,
+              "col": 2,
+              "x": 212,
+              "y": 155,
+              "rgba": [
+                81,
+                72,
+                48,
+                255
+              ],
+              "emits": true,
+              "measurement": "Original rifle front aperture, manually inspected on source-coordinate crops; no actor-center or invented muzzle."
+            },
+            "emits": true,
+            "historicalArtworkReused": true,
+            "targetId": "enemy:custom:1:shinya_kogami",
+            "visualOnly": true
+          },
+          "sourceCells": [
+            [
+              512,
+              256,
+              256,
+              256
+            ]
+          ]
+        },
+        "actualGameCanvasRelease": true
+      },
+      "pauseStable": true,
+      "renderReadOnly": true
+    },
+    {
+      "item": {
+        "kind": "possession",
+        "heroId": "oddworld_abe_possession",
+        "label": "POSSESSION",
+        "effect": "control",
+        "side": "enemy"
+      },
+      "mounted": {
+        "engineUrl": "/src/game/engineRpg.js",
+        "reactUrl": "/node_modules/.vite/deps/react.js?v=d8b616dd",
+        "domUrl": "/node_modules/.vite/deps/react-dom_client.js?v=d8b616dd",
+        "actor": "oddworld_abe_possession",
+        "historicalSligRecord": "{\"hp\":103,\"atk\":13,\"spd\":4,\"color\":\"#61d8ff\",\"weapon\":\"Slig canonical attack\",\"id\":\"oddworld_slig\",\"name\":\"Slig\",\"output\":\"/sprites/generated/bosses/oddworld/slig.png\",\"spritePrompt\":\"Original fan-made pixel-art sprite sheet, three-quarter RPG view. Slig. Preserve: Slig, preserving the canonical silhouette, material language, palette and encounter context from the locked continuity. No text, logo, UI, copied official artwork, actor likeness, gore or unrelated redesign.\",\"special\":\"Slig encounter escalation\",\"phases\":[\"Uses Slig canonical attack\",\"Escalates with Slig encounter escalation\"],\"referenceUrl\":\"https://www.oddworld.com/oddworldgames/\",\"visualAnchor\":\"Slig, preserving the canonical silhouette, material language, palette and encounter context from the locked continuity.\",\"canonStatus\":\"canon enemy\",\"lore\":{\"fr\":\"Slig conserve son rôle d'adversaire dans la continuité verrouillée.\",\"en\":\"Slig keeps the adversarial role from the locked continuity.\"},\"universe\":\"Oddworld\",\"sourceEnemyId\":\"oddworld_slig\",\"species\":\"slig\",\"possessionEligible\":true,\"possessionSource\":\"Oddworld: Abe's Oddysee (1997), Slig possession; existing enemy and artwork, no new roster identity.\"}"
+      },
+      "preview": {
+        "effect": "control",
+        "profile": {
+          "abilityType": "special",
+          "summon": null,
+          "sourceHeroId": "oddworld_abe_possession",
+          "universe": "Oddworld",
+          "name": "Chant de possession d’Abe",
+          "action": {
+            "name": "Chant de possession d’Abe",
+            "type": "control",
+            "dmg": 0,
+            "animationDuration": 1.35,
+            "hitAt": 1.1,
+            "meterCost": 100,
+            "targeting": {
+              "effect": "control",
+              "delivery": "control",
+              "shape": "single",
+              "targetSide": "enemy",
+              "range": 480,
+              "maxTargets": 1,
+              "controlKind": "possession",
+              "channelDuration": 1.1,
+              "controlDuration": 2,
+              "duration": 2,
+              "turns": 1
+            },
+            "slot": "special",
+            "sourceHeroId": "oddworld_abe_possession"
+          },
+          "effect": "control",
+          "targetSide": "enemy",
+          "excludeSelf": false,
+          "shape": "single",
+          "delivery": "control",
+          "maxTargets": 1,
+          "minTargets": 1,
+          "range": 480,
+          "areaRadius": 143.68421052631578,
+          "lineWidth": 52,
+          "coneAngle": 55,
+          "multiplier": 0,
+          "controlKind": "possession",
+          "controlDuration": 2,
+          "controlTurns": 1,
+          "channelDuration": 1.1,
+          "duration": 2,
+          "buffMultiplier": 1.2,
+          "healRatio": 0,
+          "reviveRatio": 0.3,
+          "guardReduce": 0.4,
+          "cleanses": false
+        },
+        "eligible": [
+          {
+            "id": "hero:0:oddworld_slig",
+            "name": "Slig",
+            "x": 460,
+            "y": 350,
+            "hp": 103,
+            "maxHp": 103,
+            "side": "player",
+            "dead": false
+          }
+        ],
+        "estimates": [
+          {
+            "id": "hero:0:oddworld_slig",
+            "effect": "control",
+            "amount": 0,
+            "min": 0,
+            "max": 0
+          }
+        ],
+        "atb": 100,
+        "charge": 100,
+        "valid": true
+      },
+      "panelText": "Attendre pendant le choix des cibles\nP2 · Abe - possession — Chant de possession d’Abe\nUne cible · Combat en attente\nPOSSESSION · 2 s\nSlig éligible uniquement. Chant de 1,1 s, interrompu si Abe est touché. Contrôle des commandes sans changer de camp.\n✓ SLIG\n103/103 HP\nPOSSESSION · 2 S\nCONFIRMER LES CIBLES\nANNULER SANS COÛT",
+      "steps": 66,
+      "armed": {
+        "cost": {
+          "atb": 0,
+          "charge": 0
+        },
+        "protection": null,
+        "control": {
+          "kind": "possession",
+          "active": true,
+          "sourceHeroId": "oddworld_abe_possession",
+          "universe": "Oddworld",
+          "sourceRuntimeId": "enemy:custom:0:oddworld_abe_possession",
+          "controllerRuntimeId": "enemy:custom:0:oddworld_abe_possession",
+          "targetRuntimeId": "hero:0:oddworld_slig",
+          "duration": 2,
+          "remaining": 1.9999999999999991,
+          "channelDuration": 1.1,
+          "channelRemaining": 0,
+          "originalSide": null,
+          "phase": "active",
+          "immobilize": false,
+          "lift": 0,
+          "inputProxy": {
+            "controllerRuntimeId": "enemy:custom:0:oddworld_abe_possession",
+            "bodyRuntimeId": "hero:0:oddworld_slig",
+            "originalSide": null,
+            "canMove": true,
+            "canAttack": true,
+            "changesFaction": false
+          },
+          "authorization": null
+        },
+        "units": [
+          {
+            "id": "hero:0:oddworld_slig",
+            "hp": 103,
+            "x": 460,
+            "y": 350,
+            "heroTeam": true
+          },
+          {
+            "id": "hero:1:shinya_kogami",
+            "hp": 163,
+            "x": 370,
+            "y": 350,
+            "heroTeam": true
+          },
+          {
+            "id": "enemy:custom:0:oddworld_abe_possession",
+            "hp": 120,
+            "x": 640,
+            "y": 350,
+            "heroTeam": false
+          }
+        ]
+      },
+      "baseline": [
+        {
+          "id": "hero:0:oddworld_slig",
+          "hp": 103,
+          "x": 460,
+          "y": 350,
+          "heroTeam": true
+        },
+        {
+          "id": "hero:1:shinya_kogami",
+          "hp": 163,
+          "x": 370,
+          "y": 350,
+          "heroTeam": true
+        },
+        {
+          "id": "enemy:custom:0:oddworld_abe_possession",
+          "hp": 120,
+          "x": 640,
+          "y": 350,
+          "heroTeam": false
+        }
+      ],
+      "bodyEvidence": {
+        "actorSheet": "/sprites/generated/combat-character-animations-wave16-part-a/oddworld_abe_possession.png",
+        "kind": "native32",
+        "realPngDraw": true,
+        "draws": [
+          {
+            "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/shinya_kogami.png",
+            "sourceCell": [
+              0,
+              0,
+              256,
+              256
+            ],
+            "destination": [
+              -38.53775828881255,
+              -73.46260173804892,
+              77.0755165776251,
+              77.0755165776251
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/bosses/oddworld/slig.png",
+            "sourceCell": [
+              0,
+              0,
+              256,
+              256
+            ],
+            "destination": [
+              -32.654782608695655,
+              -62.248179347826095,
+              65.30956521739131,
+              65.30956521739131
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-animations-wave16-part-a/oddworld_abe_possession.png",
+            "sourceCell": [
+              512,
+              1792,
+              256,
+              256
+            ],
+            "destination": [
+              -39.844689268269086,
+              -75.95393891763794,
+              79.68937853653817,
+              79.68937853653817
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/shinya_kogami.png",
+            "sourceCell": [
+              0,
+              0,
+              256,
+              256
+            ],
+            "destination": [
+              -38.53775828881255,
+              -73.46260173804892,
+              77.0755165776251,
+              77.0755165776251
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/bosses/oddworld/slig.png",
+            "sourceCell": [
+              0,
+              0,
+              256,
+              256
+            ],
+            "destination": [
+              -32.654782608695655,
+              -62.248179347826095,
+              65.30956521739131,
+              65.30956521739131
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-animations-wave16-part-a/oddworld_abe_possession.png",
+            "sourceCell": [
+              512,
+              1792,
+              256,
+              256
+            ],
+            "destination": [
+              -39.844689268269086,
+              -75.95393891763794,
+              79.68937853653817,
+              79.68937853653817
+            ]
+          }
+        ]
+      },
+      "events": [
+        {
+          "effect": "control",
+          "targetIds": [
+            "hero:0:oddworld_slig"
+          ],
+          "before": [
+            {
+              "id": "hero:0:oddworld_slig",
+              "hp": 103,
+              "x": 460,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "hero:1:shinya_kogami",
+              "hp": 163,
+              "x": 370,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:oddworld_abe_possession",
+              "hp": 120,
+              "x": 640,
+              "y": 350,
+              "heroTeam": false
+            }
+          ],
+          "after": [
+            {
+              "id": "hero:0:oddworld_slig",
+              "hp": 103,
+              "x": 460,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "hero:1:shinya_kogami",
+              "hp": 163,
+              "x": 370,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:oddworld_abe_possession",
+              "hp": 120,
+              "x": 640,
+              "y": 350,
+              "heroTeam": false
+            }
+          ]
+        }
+      ],
+      "incoming": [],
+      "mechanicalProof": {
+        "historicalBody": "oddworld_slig",
+        "storedCampUnchanged": true,
+        "commandState": {
+          "side": "enemy",
+          "controllerId": "enemy:custom:0:oddworld_abe_possession",
+          "controllerName": "Abe - possession",
+          "bodyId": "hero:0:oddworld_slig",
+          "bodyName": "Slig",
+          "actionName": "Tir du fusil du Slig possédé",
+          "atb": 100,
+          "remaining": 1.9999999999999991,
+          "ready": false,
+          "initialCostAlreadyPaid": true
+        },
+        "actualGameCanvasRifleSelection": {
+          "actorId": "hero:0:oddworld_slig",
+          "name": "Tir du fusil du Slig possédé",
+          "targets": [
+            "hero:1:shinya_kogami"
+          ],
+          "ownerCharge": 0,
+          "bodyAtb": 100
+        },
+        "actualGameCanvasRifleShot": {
+          "atb": 0,
+          "ownerCharge": 0,
+          "before": 163,
+          "after": 150,
+          "nativeRelease": {
+            "x": 438.5702989130435,
+            "y": 327.2947214673913,
+            "nativePoint": {
+              "row": 1,
+              "col": 2,
+              "x": 212,
+              "y": 155,
+              "rgba": [
+                81,
+                72,
+                48,
+                255
+              ],
+              "emits": true,
+              "measurement": "Original rifle front aperture, manually inspected on source-coordinate crops; no actor-center or invented muzzle."
+            },
+            "emits": true,
+            "historicalArtworkReused": true,
+            "targetId": "hero:1:shinya_kogami",
+            "visualOnly": true
+          },
+          "sourceCells": [
+            [
+              512,
+              256,
+              256,
+              256
+            ]
+          ]
+        },
+        "actualGameCanvasRelease": true
+      },
+      "pauseStable": true,
+      "renderReadOnly": true
+    },
+    {
+      "item": {
+        "kind": "paralyzer",
+        "heroId": "akane_tsunemori",
+        "label": "PARALYZER",
+        "effect": "control",
+        "side": "player"
+      },
+      "mounted": {
+        "engineUrl": "/src/game/engineRpg.js",
+        "reactUrl": "/node_modules/.vite/deps/react.js?v=d8b616dd",
+        "domUrl": "/node_modules/.vite/deps/react-dom_client.js?v=d8b616dd",
+        "actor": "akane_tsunemori",
+        "historicalSligRecord": null
+      },
+      "preview": {
+        "effect": "control",
+        "profile": {
+          "abilityType": "special",
+          "summon": null,
+          "sourceHeroId": "akane_tsunemori",
+          "universe": "Psycho-Pass",
+          "name": "Dominator — Non-Lethal Paralyzer",
+          "action": {
+            "name": "Dominator — Non-Lethal Paralyzer",
+            "type": "control",
+            "dmg": 0,
+            "targeting": {
+              "effect": "control",
+              "delivery": "control",
+              "targetSide": "enemy",
+              "shape": "single",
+              "range": 480,
+              "maxTargets": 1,
+              "duration": 1.5,
+              "controlKind": "paralyzer",
+              "authorization": "sibyl-s1e21-exception",
+              "requiresExplicitTargetEligibility": true
+            },
+            "animationDuration": 1.1,
+            "hitAt": 0.46,
+            "meterCost": 100,
+            "color": "#51dcf5",
+            "slot": "special",
+            "sourceHeroId": "akane_tsunemori"
+          },
+          "effect": "control",
+          "targetSide": "enemy",
+          "excludeSelf": false,
+          "shape": "single",
+          "delivery": "control",
+          "maxTargets": 1,
+          "minTargets": 1,
+          "range": 480,
+          "areaRadius": 143.68421052631578,
+          "lineWidth": 52,
+          "coneAngle": 55,
+          "multiplier": 0,
+          "controlKind": "paralyzer",
+          "controlDuration": 1.5,
+          "controlTurns": 1,
+          "authorization": "sibyl-s1e21-exception",
+          "requiresExplicitTargetEligibility": true,
+          "duration": 1.5,
+          "buffMultiplier": 1.2,
+          "healRatio": 0,
+          "reviveRatio": 0.3,
+          "guardReduce": 0.4,
+          "cleanses": false
+        },
+        "eligible": [
+          {
+            "id": "enemy:custom:0:shinya_kogami",
+            "name": "Shinya Kogami",
+            "x": 580,
+            "y": 350,
+            "hp": 130,
+            "maxHp": 130,
+            "side": "enemy",
+            "dead": false
+          }
+        ],
+        "estimates": [
+          {
+            "id": "enemy:custom:0:shinya_kogami",
+            "effect": "control",
+            "amount": 0,
+            "min": 0,
+            "max": 0
+          }
+        ],
+        "atb": 100,
+        "charge": 100,
+        "valid": true
+      },
+      "panelText": "Attendre pendant le choix des cibles\nAkane Tsunemori — Dominator — Non-Lethal Paralyzer\nUne cible · Combat en attente\nPARALYZER · 1,5 s\nAutorisation Sibyl spécifique à l’épisode 21. Cible explicitement éligible uniquement ; immobilisation sans dégâts.\n✓ SHINYA KOGAMI\n130/130 HP\nPARALYZER · 1,5 S\nCONFIRMER LES CIBLES\nANNULER SANS COÛT",
+      "steps": 28,
+      "armed": {
+        "cost": {
+          "atb": 0,
+          "charge": 0
+        },
+        "protection": null,
+        "control": {
+          "kind": "paralyzer",
+          "active": true,
+          "sourceHeroId": "akane_tsunemori",
+          "universe": "Psycho-Pass",
+          "sourceRuntimeId": "hero:0:akane_tsunemori",
+          "controllerRuntimeId": "hero:0:akane_tsunemori",
+          "targetRuntimeId": "enemy:custom:0:shinya_kogami",
+          "duration": 1.5,
+          "remaining": 1.5,
+          "channelDuration": 0,
+          "channelRemaining": 0,
+          "originalSide": null,
+          "phase": "active",
+          "immobilize": true,
+          "lift": 0,
+          "inputProxy": null,
+          "authorization": "sibyl-s1e21-exception"
+        },
+        "units": [
+          {
+            "id": "hero:0:akane_tsunemori",
+            "hp": 120,
+            "x": 400,
+            "y": 350,
+            "heroTeam": true
+          },
+          {
+            "id": "enemy:custom:0:shinya_kogami",
+            "hp": 130,
+            "x": 580,
+            "y": 350,
+            "heroTeam": false
+          }
+        ]
+      },
+      "baseline": [
+        {
+          "id": "hero:0:akane_tsunemori",
+          "hp": 120,
+          "x": 400,
+          "y": 350,
+          "heroTeam": true
+        },
+        {
+          "id": "enemy:custom:0:shinya_kogami",
+          "hp": 130,
+          "x": 580,
+          "y": 350,
+          "heroTeam": false
+        }
+      ],
+      "bodyEvidence": {
+        "actorSheet": "/sprites/generated/combat-character-animations-wave16-part-c/akane_tsunemori.png",
+        "kind": "native32",
+        "realPngDraw": true,
+        "draws": [
+          {
+            "sheet": "/sprites/generated/combat-character-animations-wave16-part-c/akane_tsunemori.png",
+            "sourceCell": [
+              512,
+              1792,
+              256,
+              256
+            ],
+            "destination": [
+              -35.859200510538415,
+              -68.35660097321386,
+              71.71840102107683,
+              71.71840102107683
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/shinya_kogami.png",
+            "sourceCell": [
+              0,
+              768,
+              256,
+              256
+            ],
+            "destination": [
+              -38.94542020288107,
+              -74.23970726174204,
+              77.89084040576213,
+              77.89084040576213
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-animations-wave16-part-c/akane_tsunemori.png",
+            "sourceCell": [
+              512,
+              1792,
+              256,
+              256
+            ],
+            "destination": [
+              -35.859200510538415,
+              -68.35660097321386,
+              71.71840102107683,
+              71.71840102107683
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/shinya_kogami.png",
+            "sourceCell": [
+              0,
+              768,
+              256,
+              256
+            ],
+            "destination": [
+              -38.94542020288107,
+              -74.23970726174204,
+              77.89084040576213,
+              77.89084040576213
+            ]
+          }
+        ]
+      },
+      "events": [
+        {
+          "effect": "control",
+          "targetIds": [
+            "enemy:custom:0:shinya_kogami"
+          ],
+          "before": [
+            {
+              "id": "hero:0:akane_tsunemori",
+              "hp": 120,
+              "x": 400,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:shinya_kogami",
+              "hp": 130,
+              "x": 580,
+              "y": 350,
+              "heroTeam": false
+            }
+          ],
+          "after": [
+            {
+              "id": "hero:0:akane_tsunemori",
+              "hp": 120,
+              "x": 400,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:shinya_kogami",
+              "hp": 130,
+              "x": 580,
+              "y": 350,
+              "heroTeam": false
+            }
+          ]
+        }
+      ],
+      "incoming": [],
+      "mechanicalProof": {
+        "expired": true,
+        "noHpChange": true,
+        "noLift": true
+      },
+      "pauseStable": true,
+      "renderReadOnly": true
+    },
+    {
+      "item": {
+        "kind": "paralyzer",
+        "heroId": "akane_tsunemori",
+        "label": "PARALYZER",
+        "effect": "control",
+        "side": "enemy"
+      },
+      "mounted": {
+        "engineUrl": "/src/game/engineRpg.js",
+        "reactUrl": "/node_modules/.vite/deps/react.js?v=d8b616dd",
+        "domUrl": "/node_modules/.vite/deps/react-dom_client.js?v=d8b616dd",
+        "actor": "akane_tsunemori",
+        "historicalSligRecord": null
+      },
+      "preview": {
+        "effect": "control",
+        "profile": {
+          "abilityType": "special",
+          "summon": null,
+          "sourceHeroId": "akane_tsunemori",
+          "universe": "Psycho-Pass",
+          "name": "Dominator — Non-Lethal Paralyzer",
+          "action": {
+            "name": "Dominator — Non-Lethal Paralyzer",
+            "type": "control",
+            "dmg": 0,
+            "targeting": {
+              "effect": "control",
+              "delivery": "control",
+              "targetSide": "enemy",
+              "shape": "single",
+              "range": 480,
+              "maxTargets": 1,
+              "duration": 1.5,
+              "controlKind": "paralyzer",
+              "authorization": "sibyl-s1e21-exception",
+              "requiresExplicitTargetEligibility": true
+            },
+            "animationDuration": 1.1,
+            "hitAt": 0.46,
+            "meterCost": 100,
+            "color": "#51dcf5",
+            "slot": "special",
+            "sourceHeroId": "akane_tsunemori"
+          },
+          "effect": "control",
+          "targetSide": "enemy",
+          "excludeSelf": false,
+          "shape": "single",
+          "delivery": "control",
+          "maxTargets": 1,
+          "minTargets": 1,
+          "range": 480,
+          "areaRadius": 143.68421052631578,
+          "lineWidth": 52,
+          "coneAngle": 55,
+          "multiplier": 0,
+          "controlKind": "paralyzer",
+          "controlDuration": 1.5,
+          "controlTurns": 1,
+          "authorization": "sibyl-s1e21-exception",
+          "requiresExplicitTargetEligibility": true,
+          "duration": 1.5,
+          "buffMultiplier": 1.2,
+          "healRatio": 0,
+          "reviveRatio": 0.3,
+          "guardReduce": 0.4,
+          "cleanses": false
+        },
+        "eligible": [
+          {
+            "id": "hero:0:shinya_kogami",
+            "name": "Shinya Kogami",
+            "x": 460,
+            "y": 350,
+            "hp": 130,
+            "maxHp": 130,
+            "side": "player",
+            "dead": false
+          }
+        ],
+        "estimates": [
+          {
+            "id": "hero:0:shinya_kogami",
+            "effect": "control",
+            "amount": 0,
+            "min": 0,
+            "max": 0
+          }
+        ],
+        "atb": 100,
+        "charge": 100,
+        "valid": true
+      },
+      "panelText": "Attendre pendant le choix des cibles\nP2 · Akane Tsunemori — Dominator — Non-Lethal Paralyzer\nUne cible · Combat en attente\nPARALYZER · 1,5 s\nAutorisation Sibyl spécifique à l’épisode 21. Cible explicitement éligible uniquement ; immobilisation sans dégâts.\n✓ SHINYA KOGAMI\n130/130 HP\nPARALYZER · 1,5 S\nCONFIRMER LES CIBLES\nANNULER SANS COÛT",
+      "steps": 28,
+      "armed": {
+        "cost": {
+          "atb": 0,
+          "charge": 0
+        },
+        "protection": null,
+        "control": {
+          "kind": "paralyzer",
+          "active": true,
+          "sourceHeroId": "akane_tsunemori",
+          "universe": "Psycho-Pass",
+          "sourceRuntimeId": "enemy:custom:0:akane_tsunemori",
+          "controllerRuntimeId": "enemy:custom:0:akane_tsunemori",
+          "targetRuntimeId": "hero:0:shinya_kogami",
+          "duration": 1.5,
+          "remaining": 1.5,
+          "channelDuration": 0,
+          "channelRemaining": 0,
+          "originalSide": null,
+          "phase": "active",
+          "immobilize": true,
+          "lift": 0,
+          "inputProxy": null,
+          "authorization": "sibyl-s1e21-exception"
+        },
+        "units": [
+          {
+            "id": "hero:0:shinya_kogami",
+            "hp": 130,
+            "x": 460,
+            "y": 350,
+            "heroTeam": true
+          },
+          {
+            "id": "enemy:custom:0:akane_tsunemori",
+            "hp": 120,
+            "x": 640,
+            "y": 350,
+            "heroTeam": false
+          }
+        ]
+      },
+      "baseline": [
+        {
+          "id": "hero:0:shinya_kogami",
+          "hp": 130,
+          "x": 460,
+          "y": 350,
+          "heroTeam": true
+        },
+        {
+          "id": "enemy:custom:0:akane_tsunemori",
+          "hp": 120,
+          "x": 640,
+          "y": 350,
+          "heroTeam": false
+        }
+      ],
+      "bodyEvidence": {
+        "actorSheet": "/sprites/generated/combat-character-animations-wave16-part-c/akane_tsunemori.png",
+        "kind": "native32",
+        "realPngDraw": true,
+        "draws": [
+          {
+            "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/shinya_kogami.png",
+            "sourceCell": [
+              0,
+              768,
+              256,
+              256
+            ],
+            "destination": [
+              -38.94542020288107,
+              -74.23970726174204,
+              77.89084040576213,
+              77.89084040576213
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-animations-wave16-part-c/akane_tsunemori.png",
+            "sourceCell": [
+              512,
+              1792,
+              256,
+              256
+            ],
+            "destination": [
+              -35.859200510538415,
+              -68.35660097321386,
+              71.71840102107683,
+              71.71840102107683
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/shinya_kogami.png",
+            "sourceCell": [
+              0,
+              768,
+              256,
+              256
+            ],
+            "destination": [
+              -38.94542020288107,
+              -74.23970726174204,
+              77.89084040576213,
+              77.89084040576213
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-animations-wave16-part-c/akane_tsunemori.png",
+            "sourceCell": [
+              512,
+              1792,
+              256,
+              256
+            ],
+            "destination": [
+              -35.859200510538415,
+              -68.35660097321386,
+              71.71840102107683,
+              71.71840102107683
+            ]
+          }
+        ]
+      },
+      "events": [
+        {
+          "effect": "control",
+          "targetIds": [
+            "hero:0:shinya_kogami"
+          ],
+          "before": [
+            {
+              "id": "hero:0:shinya_kogami",
+              "hp": 130,
+              "x": 460,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:akane_tsunemori",
+              "hp": 120,
+              "x": 640,
+              "y": 350,
+              "heroTeam": false
+            }
+          ],
+          "after": [
+            {
+              "id": "hero:0:shinya_kogami",
+              "hp": 130,
+              "x": 460,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:akane_tsunemori",
+              "hp": 120,
+              "x": 640,
+              "y": 350,
+              "heroTeam": false
+            }
+          ]
+        }
+      ],
+      "incoming": [],
+      "mechanicalProof": {
+        "expired": true,
+        "noHpChange": true,
+        "noLift": true
+      },
+      "pauseStable": true,
+      "renderReadOnly": true
+    },
+    {
+      "item": {
+        "kind": "invulnerability",
+        "heroId": "cuphead_mugman",
+        "label": "INVULNÉRABLE",
+        "effect": "guard",
+        "side": "player"
+      },
+      "mounted": {
+        "engineUrl": "/src/game/engineRpg.js",
+        "reactUrl": "/node_modules/.vite/deps/react.js?v=d8b616dd",
+        "domUrl": "/node_modules/.vite/deps/react-dom_client.js?v=d8b616dd",
+        "actor": "cuphead_mugman",
+        "historicalSligRecord": null
+      },
+      "preview": {
+        "effect": "guard",
+        "profile": {
+          "abilityType": "special",
+          "summon": null,
+          "sourceHeroId": "cuphead_mugman",
+          "universe": "Cuphead",
+          "name": "Super Art II — Invincibility de Mugman",
+          "action": {
+            "name": "Super Art II — Invincibility de Mugman",
+            "type": "guard",
+            "dmg": 0,
+            "color": "#84fbff",
+            "animationDuration": 1.1,
+            "hitAt": 0.451,
+            "targeting": {
+              "effect": "guard",
+              "delivery": "support",
+              "targetSide": "self",
+              "shape": "single",
+              "range": 1,
+              "maxTargets": 1,
+              "invulnerabilityKind": "mugman-super-art-ii",
+              "duration": 4.85
+            },
+            "meterCost": 100,
+            "protectionKind": "source-invincibility",
+            "slot": "special",
+            "sourceHeroId": "cuphead_mugman"
+          },
+          "effect": "guard",
+          "targetSide": "self",
+          "excludeSelf": false,
+          "shape": "single",
+          "delivery": "self",
+          "maxTargets": 1,
+          "minTargets": 1,
+          "range": 1,
+          "areaRadius": 143.68421052631578,
+          "lineWidth": 52,
+          "coneAngle": 55,
+          "multiplier": 0,
+          "controlKind": null,
+          "controlDuration": 0,
+          "controlTurns": 0,
+          "invulnerabilityKind": "mugman-super-art-ii",
+          "invulnerabilityDuration": 4.85,
+          "duration": 4.85,
+          "buffMultiplier": 1.2,
+          "healRatio": 0,
+          "reviveRatio": 0.3,
+          "guardReduce": 0.4,
+          "cleanses": false
+        },
+        "eligible": [
+          {
+            "id": "hero:0:cuphead_mugman",
+            "name": "Mugman",
+            "x": 400,
+            "y": 350,
+            "hp": 120,
+            "maxHp": 120,
+            "side": "player",
+            "dead": false
+          }
+        ],
+        "estimates": [
+          {
+            "id": "hero:0:cuphead_mugman",
+            "effect": "guard",
+            "amount": 0,
+            "min": 0,
+            "max": 0
+          }
+        ],
+        "atb": 100,
+        "charge": 100,
+        "valid": true
+      },
+      "panelText": "Attendre pendant le choix des cibles\nMugman — Super Art II — Invincibility de Mugman\nUne cible · Combat en attente\nINVULNÉRABLE · 4,85 s\nSuper Art II : protection personnelle après l’activation.\n✓ MUGMAN\n120/120 HP\nINVULNÉRABLE · 4,85 S\nCONFIRMER LES CIBLES\nANNULER SANS COÛT",
+      "steps": 28,
+      "armed": {
+        "cost": {
+          "atb": 0,
+          "charge": 0
+        },
+        "protection": {
+          "kind": "mugman-super-art-ii",
+          "active": true,
+          "sourceHeroId": "cuphead_mugman",
+          "universe": "Cuphead",
+          "sourceRuntimeId": "hero:0:cuphead_mugman",
+          "ownerRuntimeId": "hero:0:cuphead_mugman",
+          "duration": 4.85,
+          "remaining": 4.85,
+          "charges": null,
+          "counterMultiplier": null,
+          "relay": false
+        },
+        "control": null,
+        "units": [
+          {
+            "id": "hero:0:cuphead_mugman",
+            "hp": 120,
+            "x": 400,
+            "y": 350,
+            "heroTeam": true
+          },
+          {
+            "id": "enemy:custom:0:noble_six",
+            "hp": 130,
+            "x": 580,
+            "y": 350,
+            "heroTeam": false
+          }
+        ]
+      },
+      "baseline": [
+        {
+          "id": "hero:0:cuphead_mugman",
+          "hp": 120,
+          "x": 400,
+          "y": 350,
+          "heroTeam": true
+        },
+        {
+          "id": "enemy:custom:0:noble_six",
+          "hp": 130,
+          "x": 580,
+          "y": 350,
+          "heroTeam": false
+        }
+      ],
+      "bodyEvidence": {
+        "actorSheet": "/sprites/generated/combat-character-animations-wave16-part-a/cuphead_mugman.png",
+        "kind": "native32",
+        "realPngDraw": true,
+        "draws": [
+          {
+            "sheet": "/sprites/generated/combat-character-animations-wave16-part-a/cuphead_mugman.png",
+            "sourceCell": [
+              512,
+              1792,
+              256,
+              256
+            ],
+            "destination": [
+              -34.57565217391304,
+              -65.90983695652173,
+              69.15130434782608,
+              69.15130434782608
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-corrections-wave14-part-b/noble_six.png",
+            "sourceCell": [
+              0,
+              0,
+              256,
+              256
+            ],
+            "destination": [
+              -43.07428526129939,
+              -82.11035627935196,
+              86.14857052259877,
+              86.14857052259877
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-animations-wave16-part-a/cuphead_mugman.png",
+            "sourceCell": [
+              512,
+              1792,
+              256,
+              256
+            ],
+            "destination": [
+              -34.57565217391304,
+              -65.90983695652173,
+              69.15130434782608,
+              69.15130434782608
+            ]
+          },
+          {
+            "sheet": "/sprites/generated/combat-character-corrections-wave14-part-b/noble_six.png",
+            "sourceCell": [
+              0,
+              0,
+              256,
+              256
+            ],
+            "destination": [
+              -43.07428526129939,
+              -82.11035627935196,
+              86.14857052259877,
+              86.14857052259877
+            ]
+          }
+        ]
+      },
+      "events": [
+        {
+          "effect": "guard",
+          "targetIds": [
+            "hero:0:cuphead_mugman"
+          ],
+          "before": [
+            {
+              "id": "hero:0:cuphead_mugman",
+              "hp": 120,
+              "x": 400,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:noble_six",
+              "hp": 130,
+              "x": 580,
+              "y": 350,
+              "heroTeam": false
+            }
+          ],
+          "after": [
+            {
+              "id": "hero:0:cuphead_mugman",
+              "hp": 120,
+              "x": 400,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:noble_six",
+              "hp": 130,
+              "x": 580,
+              "y": 350,
+              "heroTeam": false
+            }
+          ]
+        }
+      ],
+      "incoming": [
+        {
+          "accepted": true,
+          "before": [
+            {
+              "id": "hero:0:cuphead_mugman",
+              "hp": 120,
+              "x": 400,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:noble_six",
+              "hp": 130,
+              "x": 580,
+              "y": 350,
+              "heroTeam": false
+            }
+          ],
+          "after": [
+            {
+              "id": "hero:0:cuphead_mugman",
+              "hp": 120,
+              "x": 400,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:noble_six",
+              "hp": 130,
+              "x": 580,
+              "y": 350,
+              "heroTeam": false
+            }
+          ]
+        },
+        {
+          "accepted": true,
+          "before": [
+            {
+              "id": "hero:0:cuphead_mugman",
+              "hp": 120,
+              "x": 400,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:noble_six",
+              "hp": 130,
+              "x": 580,
+              "y": 350,
+              "heroTeam": false
+            }
+          ],
+          "after": [
+            {
+              "id": "hero:0:cuphead_mugman",
+              "hp": 109,
+              "x": 400,
+              "y": 350,
+              "heroTeam": true
+            },
+            {
+              "id": "enemy:custom:0:noble_six",
+              "hp": 130,
+              "x": 580,
+              "y": 350,
+              "heroTeam": false
+            }
+          ]
+        }
+      ],
+      "mechanicalProof": {
+        "blockedFirst": true,
+        "expired": true,
+        "damageAfterExpiry": true
+      },
+      "pauseStable": true,
+      "renderReadOnly": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/source-mechanics-gamecanvas-final-oddworld_abe_possession-player-selection.png",
+      "sha256": "94b7cdd261d3c6d9bf511bf80d0251ce9f745b39393048930d0cbdd4646987d4",
+      "bytes": 554775
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/source-mechanics-gamecanvas-final-oddworld_abe_possession-player-effect.png",
+      "sha256": "e9c75db3f58eb800d37a1d63bfd38b7def629d17a505533cff518bfe792e9965",
+      "bytes": 578633
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/source-mechanics-gamecanvas-final-oddworld_abe_possession-enemy-selection.png",
+      "sha256": "9ea0964fb45cd926090498526335d71e3aa7d363326ed25a7de9876932903e0f",
+      "bytes": 553416
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/source-mechanics-gamecanvas-final-oddworld_abe_possession-enemy-effect.png",
+      "sha256": "91d061a47b5c70fc9fe809501cda9aa34e9d71cd020a8f5ed1baf3e1f9625091",
+      "bytes": 577700
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/source-mechanics-gamecanvas-final-akane_tsunemori-player-selection.png",
+      "sha256": "63e40fb0409ae0e8ee158aee0fed9fcaaa06413638ec6f14bace7636d34414c6",
+      "bytes": 901305
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/source-mechanics-gamecanvas-final-akane_tsunemori-player-effect.png",
+      "sha256": "4ebfce2adb285f7bc02379eeed83294f109de63257a712c286514fd6dc9d43ce",
+      "bytes": 611924
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/source-mechanics-gamecanvas-final-akane_tsunemori-enemy-selection.png",
+      "sha256": "948c1288046708fd94f87eb378d96820d0b5a6a0fe4fd69e9892ed55cf84c2ad",
+      "bytes": 900517
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/source-mechanics-gamecanvas-final-akane_tsunemori-enemy-effect.png",
+      "sha256": "26d1da76abe2817433bcfc451e58c2e7508c9dae511da2a371d5685277ee0d10",
+      "bytes": 610243
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/source-mechanics-gamecanvas-final-cuphead_mugman-player-selection.png",
+      "sha256": "cc071e2085db7e39c75a86f88f2aa1203734cb0ced6de59025592c97671af1a4",
+      "bytes": 545500
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/source-mechanics-gamecanvas-final-cuphead_mugman-player-effect.png",
+      "sha256": "f77563b47e63879c3c4de61f1c31b8d0f5c5bf5865b930322bfe85a1a08ce17d",
+      "bytes": 577071
+    }
+  ],
+  "browserClosed": false
+}

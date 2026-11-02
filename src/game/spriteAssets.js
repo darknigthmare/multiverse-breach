@@ -1,3 +1,11 @@
+import characterSpriteCorrectionsWave16A from './combat/characterSpriteCorrectionsWave16PartA.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave16B from './combat/characterSpriteCorrectionsWave16PartB.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave16C from './combat/characterSpriteCorrectionsWave16PartC.generated.json' with { type: 'json' };
+import { COMBAT_SOURCE_DEFINITIONS_WAVE16 } from './combat/combatSourceDefinitionsWave16.js';
+import characterSpriteCorrectionsWave15A from './combat/characterSpriteCorrectionsWave15PartA.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave15B from './combat/characterSpriteCorrectionsWave15PartB.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave15C from './combat/characterSpriteCorrectionsWave15PartC.generated.json' with { type: 'json' };
+import { COMBAT_SOURCE_DEFINITIONS_WAVE15 } from './combat/combatSourceDefinitionsWave15.js';
 import characterSpriteCorrectionsWave14A from './combat/characterSpriteCorrectionsWave14PartA.generated.json' with { type: 'json' };
 import characterSpriteCorrectionsWave14B from './combat/characterSpriteCorrectionsWave14PartB.generated.json' with { type: 'json' };
 import characterSpriteCorrectionsWave13B from './combat/characterSpriteCorrectionsWave13PartB.generated.json' with { type: 'json' };
@@ -56,14 +64,20 @@ import characterSpriteCorrectionsWave10C from './combat/characterSpriteCorrectio
 import characterSpriteCorrectionsWave10D from './combat/characterSpriteCorrectionsWave10PartD.generated.json' with { type: 'json' };
 
 const wave6BaseEntries = [...characterSpriteCorrectionsWave6A.entries, ...characterSpriteCorrectionsWave6B.entries, ...characterSpriteCorrectionsWave6C.entries];
-const calibratedBaseEntries = [...wave6BaseEntries, ...characterSpriteCorrectionsWave7A.entries, ...characterSpriteCorrectionsWave7B.entries, ...characterSpriteCorrectionsWave7C.entries, ...characterSpriteCorrectionsWave8A.entries, ...characterSpriteCorrectionsWave8B.entries, ...characterSpriteCorrectionsWave8C.entries, ...characterSpriteCorrectionsWave8D.entries, ...characterSpriteCorrectionsWave9A.entries, ...characterSpriteCorrectionsWave9B.entries, ...characterSpriteCorrectionsWave9C.entries, ...characterSpriteCorrectionsWave9D.entries, ...characterSpriteCorrectionsWave10D.entries, ...characterSpriteCorrectionsWave10C.entries, ...characterSpriteCorrectionsWave10B.entries, ...characterSpriteCorrectionsWave10A.entries, ...characterSpriteCorrectionsWave11A.entries, ...characterSpriteCorrectionsWave11B.entries, ...characterSpriteCorrectionsWave11C.entries, ...characterSpriteCorrectionsWave11D.entries, ...characterSpriteCorrectionsWave12A.entries, ...characterSpriteCorrectionsWave12B.entries, ...characterSpriteCorrectionsWave12C.entries, ...characterSpriteCorrectionsWave12D.entries, ...characterSpriteCorrectionsWave13A.entries, ...characterSpriteCorrectionsWave13B.entries, ...characterSpriteCorrectionsWave14B.entries, ...characterSpriteCorrectionsWave14A.entries];
+const calibratedBaseEntries = [...wave6BaseEntries, ...characterSpriteCorrectionsWave7A.entries, ...characterSpriteCorrectionsWave7B.entries, ...characterSpriteCorrectionsWave7C.entries, ...characterSpriteCorrectionsWave8A.entries, ...characterSpriteCorrectionsWave8B.entries, ...characterSpriteCorrectionsWave8C.entries, ...characterSpriteCorrectionsWave8D.entries, ...characterSpriteCorrectionsWave9A.entries, ...characterSpriteCorrectionsWave9B.entries, ...characterSpriteCorrectionsWave9C.entries, ...characterSpriteCorrectionsWave9D.entries, ...characterSpriteCorrectionsWave10D.entries, ...characterSpriteCorrectionsWave10C.entries, ...characterSpriteCorrectionsWave10B.entries, ...characterSpriteCorrectionsWave10A.entries, ...characterSpriteCorrectionsWave11A.entries, ...characterSpriteCorrectionsWave11B.entries, ...characterSpriteCorrectionsWave11C.entries, ...characterSpriteCorrectionsWave11D.entries, ...characterSpriteCorrectionsWave12A.entries, ...characterSpriteCorrectionsWave12B.entries, ...characterSpriteCorrectionsWave12C.entries, ...characterSpriteCorrectionsWave12D.entries, ...characterSpriteCorrectionsWave13A.entries, ...characterSpriteCorrectionsWave13B.entries, ...characterSpriteCorrectionsWave14B.entries, ...characterSpriteCorrectionsWave14A.entries, ...characterSpriteCorrectionsWave15A.entries, ...characterSpriteCorrectionsWave15B.entries, ...characterSpriteCorrectionsWave15C.entries, ...characterSpriteCorrectionsWave16A.entries, ...characterSpriteCorrectionsWave16B.entries, ...characterSpriteCorrectionsWave16C.entries];
 const correctedCharacterSprites = new Map([...characterSpriteCorrections.entries, ...characterSpriteCorrectionsWave2.entries, ...characterSpriteCorrectionsWave4.entries, ...characterSpriteCorrectionsWave5.entries, ...calibratedBaseEntries].map(entry => [entry.heroId, entry]));
-const calmSupportSheetsWave11 = new Set(Object.entries({ ...COMBAT_SOURCE_DEFINITIONS_WAVE11, ...COMBAT_SOURCE_DEFINITIONS_WAVE12, ...COMBAT_SOURCE_DEFINITIONS_WAVE13, ...COMBAT_SOURCE_DEFINITIONS_WAVE14 })
+const calmSupportSheetsWave11 = new Set(Object.entries({ ...COMBAT_SOURCE_DEFINITIONS_WAVE11, ...COMBAT_SOURCE_DEFINITIONS_WAVE12, ...COMBAT_SOURCE_DEFINITIONS_WAVE13, ...COMBAT_SOURCE_DEFINITIONS_WAVE14, ...COMBAT_SOURCE_DEFINITIONS_WAVE15, ...COMBAT_SOURCE_DEFINITIONS_WAVE16 })
   .filter(([, source]) => source.effect === 'damage')
   .map(([id]) => correctedCharacterSprites.get(id)?.sheet || (id === 'harry_potter' ? '/sprites/generated/heroes/harry-potter/harry-potter.png' : null)).filter(Boolean));
 
 const calibratedBaseLayouts = Object.fromEntries(calibratedBaseEntries.map(entry => [entry.sheet, {
   columns: entry.columns, rows: entry.rows,
+  ...(entry.heroId === 'bt_7274_tf2' && entry.sheet.includes('wave16-part-b') ? {
+    sourceBtRenderScaleLimitWave16: Math.max(3, Math.min(8, ...entry.normalization.rows.map(row => Number(row.renderScale) || 1)))
+  } : {}),
+  ...(entry.heroId === 'hakumen_bb' && entry.sheet.includes('wave16-part-c') ? {
+    sourceHakumenRenderScaleLimitWave16: 3.118
+  } : {}),
   rowByState: Object.fromEntries(Object.entries(entry.states).map(([state, spec]) => [state, spec.row])),
   baseline: entry.normalization.baseline,
   renderScaleByRow: Object.fromEntries(entry.normalization.rows.map((row, index) => [index, row.renderScale ?? 1]))
@@ -623,7 +637,7 @@ export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
   const haloSprite = getHaloSpriteForContext(hero, context);
   if (haloSprite) return haloSprite;
   const sourceId = hero.sourceHeroId || hero.sourceId || hero.id;
-  const source = COMBAT_SOURCE_DEFINITIONS_WAVE14[sourceId] || COMBAT_SOURCE_DEFINITIONS_WAVE13[sourceId];
+  const source = COMBAT_SOURCE_DEFINITIONS_WAVE16[sourceId] || COMBAT_SOURCE_DEFINITIONS_WAVE15[sourceId] || COMBAT_SOURCE_DEFINITIONS_WAVE14[sourceId] || COMBAT_SOURCE_DEFINITIONS_WAVE13[sourceId];
   const assetId = source?.universe === hero.universe ? sourceId : hero.id;
   return `/sprites/generated/heroes/${slugifyAsset(hero.universe)}/${slugifyAsset(assetId)}.png`;
 };

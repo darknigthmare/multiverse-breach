@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 2,
+  "passed": true,
+  "preliminary": false,
+  "reviewedAt": "2026-11-01T00:34:48.122Z",
+  "reviewer": "/root/final_tactics_review",
+  "report": {
+    "path": "docs/tactics-universes-2026-10-28/result.json",
+    "sha256": "21aee8cee9a3502c9f09afcae5b9ad1416cbfa81212981f333c2326f90c3e0b7",
+    "bytes": 153921
+  },
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/production-freeze.json",
+    "sha256": "bca5de9ebd26a6ea100409e19d63c16e0f5c823d466b0545b0d5e71cf2fcfade",
+    "bytes": 2256877
+  },
+  "actualCapturesInspected": 10,
+  "artifacts": [
+    {
+      "path": "docs/tactics-universes-2026-10-28/cuphead_inkwell_tactics-desktop.png",
+      "sha256": "a96c63dc2259551f0f06d5704ccc7f9a83c003a6ae028e70f7327805c287801d",
+      "bytes": 375491,
+      "inspected": true,
+      "observation": "Inkwell desktop shows green grass tiles, a narrow blue stream, wooden crossings and raised bank faces. The far bank and grass surfaces are distinct from the Nexus metal skybridge; both units and tile coordinates fit the viewport."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/cuphead_inkwell_tactics-mobile.png",
+      "sha256": "d5a23a069d19803fa4c17138519703eaf35ba665beb9921036a4946d51c30f8d",
+      "bytes": 185892,
+      "inspected": true,
+      "observation": "Inkwell mobile shows the entire terrain panel, selected A5/Z0, inkwell-grass material,1AP cost, height-cut controls and visible battle canvas; action buttons wrap into two columns without horizontal clipping. The tall layout scrolls."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/titanfall_reclamation_tactics-desktop.png",
+      "sha256": "40eb9717c9cdf3b69dc8e5310c276ada085d724d87d9658a2b5ef597a43a8500",
+      "bytes": 422085,
+      "inspected": true,
+      "observation": "Titanfall desktop shows grey industrial deck plates, dark grated lower channels, ramps and elevated platforms. Raised faces and rail-like edges make the industrial layers visibly distinct from Inkwell grass."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/titanfall_reclamation_tactics-mobile.png",
+      "sha256": "8987d960d3edbbfa900d56985af228b34a3e12767e76518485fd93777af29dd3",
+      "bytes": 186912,
+      "inspected": true,
+      "observation": "Titanfall mobile identifies World Foundry and imc-deck material at A5/Z0 with1AP cost; the cut/zoom controls, canvas and two-column action controls remain visible within the narrow page."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/fma_central_station_tactics-desktop.png",
+      "sha256": "9057bfd9933c0ac606a38223524beeeae0c271c6afcbd5431a9d950c550f029d",
+      "bytes": 275829,
+      "inspected": true,
+      "observation": "Central desktop shows light stone station platforms and darker recessed tracks, with a clock and lamp-like pillars. The high middle crossing, low tracks and tile labels are visible as separate surfaces."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/fma_central_station_tactics-mobile.png",
+      "sha256": "60bc9ecdbcf7420f8652904d69a8cc7817158a94e6288eed8f0fd6a9ab24e527",
+      "bytes": 181275,
+      "inspected": true,
+      "observation": "Central mobile identifies Brotherhood2009 and central-stone material with A5/Z0 and1AP cost. The height panel and canvas fit the page width; action labels remain contained within their buttons."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/wakfu_sadida_tactics-desktop.png",
+      "sha256": "5f77824d096c9e206bcc16249677872142cf33a90c6de6604236a169d1566948",
+      "bytes": 358101,
+      "inspected": true,
+      "observation": "Sadida desktop shows green grass surrounding broad brown root/canopy surfaces at several elevations, with open lower gaps and a small blue water square; geometry and palette differ from the station and industrial sectors."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/wakfu_sadida_tactics-mobile.png",
+      "sha256": "c1a8c3b628b9c4c0f753c94d989405756f1fe023d4e7fd55286c1ca112f4cd9d",
+      "bytes": 188115,
+      "inspected": true,
+      "observation": "Sadida mobile identifies season1 source and sadida-grass at A5/Z0 with1AP cost. Surface selection, cut controls and the complete narrow canvas are visible; the two-column battle controls remain inside the page."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/nexus_skybridge-desktop.png",
+      "sha256": "99d7697d242dba21181ef6c89501602ef71eb25ffbb3a13345890dcd91865357",
+      "bytes": 263690,
+      "inspected": true,
+      "observation": "Nexus legacy desktop control preserves the raised metal skybridge, staircase from the left and lower grid beneath the upper platform. The upper opponent and lower player appear on visibly different heights, with reachable AP labels on left tiles."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/training_grid-desktop.png",
+      "sha256": "f4fdca4ec813a439736beb58c3443bec70a15feb4bd08f58e69a866decad18ff",
+      "bytes": 166336,
+      "inspected": true,
+      "observation": "Training-grid legacy desktop control shows a flat grid, green reachable tiles marked1AP/2AP, central cyan obstacles and cover labels. Both units fit in frame; the view is distinct from every new source sector."
+    }
+  ],
+  "source1to1Verified": false,
+  "notes": [
+    "All10PNG captures from the new post-Hakumen-correction final execution were actually opened with view_image. Prior October captures were archived and are not substituted for this review.",
+    "Four dedicated source sectors are reviewed on desktop and mobile plus two legacy desktop controls. Runtime launch, costs, reachability and unchanged-source assertions remain in the18-check report; static pictures alone do not prove every possible path.",
+    "Terrains are playable procedural adaptations associated with stated source versions, not official certified1:1 art. No scene-background image is treated as a playable terrain mesh."
+  ]
+}

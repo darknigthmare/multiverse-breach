@@ -1,0 +1,9 @@
+import fs from'node:fs/promises';import path from'node:path';import sharp from'sharp';
+const root=path.resolve(import.meta.dirname,'../../..'),dir=import.meta.dirname,sources=JSON.parse(await fs.readFile(dir+'/source-plan.json')).entries,reg=JSON.parse(await fs.readFile(root+'/src/game/combat/characterAnimationsWave15PartA.generated.json'));
+await fs.mkdir(dir+'/anchor-review',{recursive:true});
+const svg=id=>`<svg width="1024" height="552" xmlns="http://www.w3.org/2000/svg"><text x="5" y="18" fill="white" font-size="14">${id}: fatality(top), super(bottom); native256px cells</text>${Array.from({length:2},(_,row)=>Array.from({length:4},(_,col)=>{const y=40+row*256,x=col*256;return `<rect x="${x}" y="${y}" width="256" height="256" fill="none" stroke="#7b8293"/>${Array.from({length:15},(_,i)=>{const n=(i+1)*16;return `<path d="M${x+n} ${y}v256M${x} ${y+n}h256" fill="none" stroke="white" opacity=".07"/>`}).join('')}${[32,64,96,128,160,192,224].map(n=>`<text x="${x+n}" y="${y+11}" font-size="9" fill="#b9c4d6">${n}</text><text x="${x+2}" y="${y+n}" font-size="9" fill="#b9c4d6">${n}</text>`).join('')}`;}).join('')).join('')}</svg>`;
+for(const entry of reg.entries){if(sources[entry.heroId].delivery!=='projectile')continue;const image=path.resolve(root,'public'+entry.sheet),composites=[];
+ for(const[ri,phase]of['fatality','super'].entries())for(let col=0;col<4;col++){const input=await sharp(image).extract({left:col*256,top:entry.phases[phase].row*256,width:256,height:256}).png().toBuffer();composites.push({input,left:col*256,top:40+ri*256});}
+ await sharp({create:{width:1024,height:552,channels:4,background:'#182235'}}).composite([...composites,{input:Buffer.from(svg(entry.heroId))}]).png().toFile(dir+'/anchor-review/'+entry.heroId+'-grid.png');
+}
+console.log('Created',reg.entries.filter(e=>sources[e.heroId].delivery==='projectile').length,'native muzzle measurement grids');

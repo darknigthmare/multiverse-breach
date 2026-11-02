@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "preliminary": false,
+  "reviewedAt": "2026-11-01T00:53:39.531Z",
+  "report": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-evidence.json",
+    "bytes": 235759,
+    "sha256": "bea0419723388cbb2e7f3b98ea8f07d823f8e2879db315ea6d94e720e8924cb1"
+  },
+  "actualCapturesInspected": 15,
+  "actualContactSheetsViewed": 9,
+  "actualDirectGameCanvasAndGripImagesViewed": 6,
+  "reviewedSourceCaptures": 8,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-0.png",
+      "bytes": 210554,
+      "sha256": "6c9b5e83fa2b9fe68d72ddbab659bd4f1da2c60f78c69204b9b4dc168a821a88",
+      "inspected": true,
+      "observation": "Viewed full lossless rows idle/walk/run/turn/crouch entry/idle/exit. Brown leather, dark hair and blue face paint remain consistent; all four columns in both facings are visible without body clipping. Run strides and crouch lowering differ visibly."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-1.png",
+      "bytes": 213678,
+      "sha256": "569dfbc0f1a67018f984cf3ef22e30788e2b57c686cd45486a70b6d5a66fb82e",
+      "inspected": true,
+      "observation": "Viewed crouch charge, jump start/rise/apex, fall, fast fall and landing. Four native poses per state are visible in both facings; lifted knees, hair motion and crouched landing follow coherent motion. No visible page-edge clipping."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-2.png",
+      "bytes": 247782,
+      "sha256": "b4eae14caef6b933cdbf3b16e389870b9931257e0715d47931799b6fe822827a",
+      "inspected": true,
+      "observation": "Viewed light1/2/3, crouch light, charge start/loop/release. Single thin sword remains attached to the hands across wind-up, extension and recovery; whole blade silhouettes fit in each displayed cell in both facings."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-3.png",
+      "bytes": 222721,
+      "sha256": "eea4ba23566cff229508b741329fc726df881ceafabf6bf2cc1ce81eb42b887c",
+      "inspected": true,
+      "observation": "Viewed charge recovery, attack recovery, mirror Focus special, three aerial attacks and guard entry. Focus uses a body/hand gesture; sword is used for aerial cuts and guard entry. Both facings and four columns are visible; no summoned creature is claimed."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-4.png",
+      "bytes": 228727,
+      "sha256": "3c7bf1fa3878a6dbb6be0fc29f1cacf53f0fe5440ea6bfcc82d4e717c38edb3c",
+      "inspected": true,
+      "observation": "Viewed sword guard hold/hit/perfect guard/break/exit and ledge catch/hang. Guard uses the sword; raised grip hand remains above the head during hang. Full limbs and blade fit the observed cells in both facings."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-5.png",
+      "bytes": 189855,
+      "sha256": "27d9ca01d3fa16aadba1b8d4308ceaa607ac7263da46e9cc79600b82d6ae2243",
+      "inspected": true,
+      "observation": "Viewed ledge climb/drop/attack/jump and intro/victory/defeat. Climb rises from a tucked pose, drop releases both hands, ledge attack draws the sword, and defeat drops into a crouched collapse. Four columns in both facings are visible."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-6.png",
+      "bytes": 80728,
+      "sha256": "c09673afe52c99e3bc06523db420a34080920907e9d57c96ee174764d97ab14c",
+      "inspected": true,
+      "observation": "Viewed final three rows taunt1/hitStun/dead. Small hand gesture, backward recoil and horizontal fallen body are distinct; full body fits in both facings. These generated motion adaptations are not claimed as official source animations."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/physical-ledge-0.png",
+      "bytes": 249461,
+      "sha256": "9a1370eff2ae163e14dd12cb3b5324a803ce04187719282241ff976f4ba7c600",
+      "inspected": true,
+      "observation": "Viewed ten real-engine physical ledge rows for player camp on left and right edges. Grip fingertips visibly meet the platform endpoints for hold; climb rises above the ledge. Drop/jump release the grip. Attack row is one observed engine-release pose, not a claimed four-pose contact sequence."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/physical-ledge-1.png",
+      "bytes": 251424,
+      "sha256": "c304c57bbe5b308578dc4587b3db6979d4716f6536ed14741b7cd44eb739aec4",
+      "inspected": true,
+      "observation": "Viewed ten real-engine physical ledge rows for opponent camp on both edges. Hold contact mirrors cleanly at the ledge endpoints, climb lifts the body, and drop/jump move away. Attack row is one observed release pose; no claim of four observed attack frames on this page."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-attack.png",
+      "bytes": 496367,
+      "sha256": "8a26b251c9fe6b1ce6580737dc6341d2033acc373fa8ab0e6c0b3b77d4313aa7",
+      "inspected": true,
+      "observation": "Viewed real GameCanvas after the keyboard light attack. Senua and Cloud stand fully on the platform; Cloud HP is99987/100000 and Senua remains105/105. This final snapshot shows post-action state; full animation cell coverage comes from the bound draw trace and core pages."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-grips.png",
+      "bytes": 50728,
+      "sha256": "ffcd8f075a1604603376ee34e7086ac7a4fcb9cebbbbcc0e2f981a756e31c1f3",
+      "inspected": true,
+      "observation": "Viewed eight controlled grip projections, four poses at each platform end. The raised hand meets the yellow endpoint in every displayed pose; the body hangs below rather than being centered on the platform."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-guard.png",
+      "bytes": 494697,
+      "sha256": "752b5b895bb68b32ef9589c7d0e535b58db86ed7c69a2a574a8c2bbe6db4aba2",
+      "inspected": true,
+      "observation": "Viewed real GameCanvas after releasing sword guard. Senua remains105/105, Cloud100000/100000, guard gauge92%, and both actors fit the platform. This is a recovery snapshot; guard pose coverage is documented by the bound trace and core pages."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-movement.png",
+      "bytes": 494931,
+      "sha256": "db66d515f20ce88fde6aa6e1beff7fee9549360a86e39ca418796bd02446dc3b",
+      "inspected": true,
+      "observation": "Viewed real GameCanvas after D+Space and reversal to Q. Senua is at the changed horizontal position with feet on the platform; both actors and command panel remain visible. Jump/fall/land/turn four-column coverage is measured in the bound runtime trace rather than inferred from this still."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-pause.png",
+      "bytes": 495060,
+      "sha256": "87cdfd2be25da4be69c32f3c5e924573fb1b34fa9d279052d3c34eb7ae746a31",
+      "inspected": true,
+      "observation": "Viewed paused GameCanvas. Actor positions and visible bodies match the movement snapshot, with the full command panel intact. The actual unchanged actor clock/state claim comes from the bound pause comparison, not from a visible pause overlay."
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-super.png",
+      "bytes": 517298,
+      "sha256": "d62d275599bfab5a401ec614e789d828602b82bc3d715b1cea58f50fe6cb7933",
+      "inspected": true,
+      "observation": "Viewed real GameCanvas Focus support activation. Special label Concentration du miroir de Senua is visible above the actor, charge is0%, state SPECIAL, and Cloud remains100000/100000. A small floor ring accompanies the body gesture; no damage beam or foreign summon appears."
+    }
+  ],
+  "sourceCaptures": [
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-core.png",
+      "bytes": 1578678,
+      "sha256": "8b7d51727d0c091841587ddecbcfb8cf69e5185aea06899e2c59b19a46227377",
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-0.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1120,
+        "height": 1260
+      },
+      "sourceCrop": {
+        "x": 0,
+        "y": 0,
+        "width": 1120,
+        "height": 1260
+      },
+      "firstSourceRow": 0,
+      "sourceRows": 7
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-core.png",
+      "bytes": 1578678,
+      "sha256": "8b7d51727d0c091841587ddecbcfb8cf69e5185aea06899e2c59b19a46227377",
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-1.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1120,
+        "height": 1260
+      },
+      "sourceCrop": {
+        "x": 0,
+        "y": 1260,
+        "width": 1120,
+        "height": 1260
+      },
+      "firstSourceRow": 7,
+      "sourceRows": 7
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-core.png",
+      "bytes": 1578678,
+      "sha256": "8b7d51727d0c091841587ddecbcfb8cf69e5185aea06899e2c59b19a46227377",
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-2.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1120,
+        "height": 1260
+      },
+      "sourceCrop": {
+        "x": 0,
+        "y": 2520,
+        "width": 1120,
+        "height": 1260
+      },
+      "firstSourceRow": 14,
+      "sourceRows": 7
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-core.png",
+      "bytes": 1578678,
+      "sha256": "8b7d51727d0c091841587ddecbcfb8cf69e5185aea06899e2c59b19a46227377",
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-3.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1120,
+        "height": 1260
+      },
+      "sourceCrop": {
+        "x": 0,
+        "y": 3780,
+        "width": 1120,
+        "height": 1260
+      },
+      "firstSourceRow": 21,
+      "sourceRows": 7
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-core.png",
+      "bytes": 1578678,
+      "sha256": "8b7d51727d0c091841587ddecbcfb8cf69e5185aea06899e2c59b19a46227377",
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-4.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1120,
+        "height": 1260
+      },
+      "sourceCrop": {
+        "x": 0,
+        "y": 5040,
+        "width": 1120,
+        "height": 1260
+      },
+      "firstSourceRow": 28,
+      "sourceRows": 7
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-core.png",
+      "bytes": 1578678,
+      "sha256": "8b7d51727d0c091841587ddecbcfb8cf69e5185aea06899e2c59b19a46227377",
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-5.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1120,
+        "height": 1260
+      },
+      "sourceCrop": {
+        "x": 0,
+        "y": 6300,
+        "width": 1120,
+        "height": 1260
+      },
+      "firstSourceRow": 35,
+      "sourceRows": 7
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-core.png",
+      "bytes": 1578678,
+      "sha256": "8b7d51727d0c091841587ddecbcfb8cf69e5185aea06899e2c59b19a46227377",
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/core-6.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1120,
+        "height": 540
+      },
+      "sourceCrop": {
+        "x": 0,
+        "y": 7560,
+        "width": 1120,
+        "height": 540
+      },
+      "firstSourceRow": 42,
+      "sourceRows": 3
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-physical-ledge.png",
+      "bytes": 554964,
+      "sha256": "fbe4832c0a1969f0fd17f65094ecd6fc20431beb2faf20b2c2619bb2a72d5716",
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/physical-ledge-0.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1040,
+        "height": 1600
+      },
+      "sourceCrop": {
+        "x": 0,
+        "y": 0,
+        "width": 1040,
+        "height": 1600
+      },
+      "firstSourceRow": 0,
+      "sourceRows": 10
+    },
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/senua-physical-ledge.png",
+      "bytes": 554964,
+      "sha256": "fbe4832c0a1969f0fd17f65094ecd6fc20431beb2faf20b2c2619bb2a72d5716",
+      "inspectedViaContactSheet": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/browser/review-final/physical-ledge-1.png",
+      "tile": {
+        "x": 0,
+        "y": 0,
+        "width": 1040,
+        "height": 1600
+      },
+      "sourceCrop": {
+        "x": 0,
+        "y": 1600,
+        "width": 1040,
+        "height": 1600
+      },
+      "firstSourceRow": 10,
+      "sourceRows": 10
+    }
+  ],
+  "source1to1Verified": false,
+  "scope": "Actual original-resolution visual inspection of seven non-overlapping lossless core pages, two non-overlapping physical-ledge pages, and six directly opened browser images. All180 native poses in both facings are visible in core pages; dynamic claims are supported by the exact bound real-process and draw-trace reports.",
+  "limitations": [
+    "Generated pixel-art adaptation, not official animation or 1:1 certification.",
+    "Opposing facings mirror anatomical and equipment asymmetries.",
+    "GameCanvas stills are final observation frames; movement and damage timing are verified by the bound traces.",
+    "Physical ledge study is controlled engine/runtime evidence, distinct from the four keyboard flows.",
+    "One unchanged final keyboard attempt skipped the first rendered light-attack column (observed1,2,3). All output bytes and the failure are preserved; the six unchanged harnesses were rerun sequentially and every original criterion passed. This demonstrates successful coverage in the final execution, not guaranteed per-render-frame coverage on every run."
+  ],
+  "priorFailedAttempt": {
+    "reason": "First source column0 was not rendered during the actual light-attack keyboard flow; source columns1,2,3 were observed. No page error.",
+    "failure": {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/senua-complete-freeze-missed-first-attack-frame/20261101003823136/senua-attack-failure.json",
+      "bytes": 145,
+      "sha256": "20cbfc5e9226763a2cdd62af30d518ca2713b1c339567f49ec0dff6a95b66a1f"
+    },
+    "runner": {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/senua-complete-freeze-missed-first-attack-frame/20261101003823136/runner-failure.json",
+      "bytes": 3628,
+      "sha256": "572a2ab163b73d5f6737c170a4b0d75f63e37fd6a0d5245a9877981c8893f016"
+    },
+    "preservedInventory": {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/browser/attempts/senua-complete-freeze-missed-first-attack-frame/20261101003823136/relocation-receipt.json",
+      "bytes": 13244,
+      "sha256": "c947f9f7f90bc91aad25a13fd3bd6233c3736bd107d4b6040f5f0db8365cc831"
+    },
+    "sourceOrCriteriaChanged": false
+  },
+  "executionContext": "All six unchanged frozen harnesses passed on their first execution after the12571-file production freeze created2026-11-01T00:51:32.464Z. All15 current review images were actually reopened at original resolution; earlier real failure evidence remains separately preserved."
+}

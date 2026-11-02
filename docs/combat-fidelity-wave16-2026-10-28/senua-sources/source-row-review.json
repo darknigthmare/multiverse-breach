@@ -1,0 +1,269 @@
+{
+  "heroId": "hellblade_senua",
+  "reviewedAt": "2026-10-28T10:52:44.881Z",
+  "complete": true,
+  "source1to1Verified": false,
+  "method": "Actual generatedImage returns inspected for every source; original grey-flattened QA views of movement, defense and ledge sources additionally opened. No pixel redraw or recycled B48 poses.",
+  "sources": [
+    {
+      "id": "senua-motion-a",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-a.native.png",
+      "sha256": "d1bea45e7f564d2245ed20a9dbe4ede61f2f2965234510aca0c22547e7ad5fd6",
+      "stateOrder": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "fall"
+      ],
+      "notes": "Complete native source; reserved studies excluded."
+    },
+    {
+      "id": "senua-motion-b",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-b.native.png",
+      "sha256": "b4b429062f7438ddb351ef97a1a8490530f131dbfc358f6e634bbe5d145eb9d7",
+      "stateOrder": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "notes": "Affected entire rows excluded and independently regenerated."
+    },
+    {
+      "id": "senua-defense",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-defense.native.png",
+      "sha256": "ded112b677549dc95c811aefb33b30170affc9e44b41c836798513484cdefb32",
+      "stateOrder": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "notes": "Affected entire rows excluded and independently regenerated."
+    },
+    {
+      "id": "senua-correction-a",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-a.native.png",
+      "sha256": "efe23d3960c0c1421155c6b637311d3f75f09ac7fc129bec6646ae5041a0d821",
+      "stateOrder": [
+        "jumpApex",
+        "taunt1",
+        "hitStun",
+        "defeat"
+      ],
+      "notes": "Complete native source; reserved studies excluded."
+    },
+    {
+      "id": "senua-correction-b",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-b.native.png",
+      "sha256": "552a33e33a4ff62201fa0552bdd53e8daf861265cfaa42f43aceb5815cd7ceca",
+      "stateOrder": [
+        "crouchCharge",
+        "reservedUprightCalibration",
+        "reservedGripStudy",
+        "reservedMirrorBeltStudy"
+      ],
+      "notes": "Complete native source; reserved studies excluded."
+    },
+    {
+      "id": "senua-combat-a1",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-a1.native.png",
+      "sha256": "4b61254918525670c4ce146834b03a5ed8d23590a46f5e255c02957f589e15c0",
+      "stateOrder": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight"
+      ],
+      "notes": "Sixteen complete drawings; thin alpha fringes connect two bodies at24. Reviewed150-alpha seed separates real bodies while every alpha>=24 source pixel remains assigned once."
+    },
+    {
+      "id": "senua-combat-a2",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-a2.native.png",
+      "sha256": "5a81816e3d75ee0e788b35a310afa4d6ad115ed8b2508029015969461bb8e998",
+      "stateOrder": [
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "notes": "Complete native source; reserved studies excluded."
+    },
+    {
+      "id": "senua-combat-b1",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-b1.native.png",
+      "sha256": "d413114de5f9d429566a958976dfef94cba5161dcaefaa6c0e335c3c3aef0ef9",
+      "stateOrder": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward"
+      ],
+      "notes": "Complete native source; reserved studies excluded."
+    },
+    {
+      "id": "senua-combat-b2",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-b2.native.png",
+      "sha256": "fd77eaefa5c0d44e2e8ac83189fac33c90ee27cbe9450540862d9ec6c0113189",
+      "stateOrder": [
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "notes": "Complete native source; reserved studies excluded."
+    },
+    {
+      "id": "senua-ledge-a",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-a.native.png",
+      "sha256": "84bd5bddfd5c5e7e46f7499e96bed7edbddce2119980332e20b152b9d9878589",
+      "stateOrder": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop"
+      ],
+      "notes": "Affected entire rows excluded and independently regenerated."
+    },
+    {
+      "id": "senua-ledge-b",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-b.native.png",
+      "sha256": "3dc955874deca9cbc8939dfed8017334c68890741b3672d82962fe2919bc3c87",
+      "stateOrder": [
+        "ledgeJump",
+        "reservedUprightCalibration",
+        "reservedGripStudy",
+        "reservedMirrorBeltStudy"
+      ],
+      "notes": "Complete native source; reserved studies excluded."
+    },
+    {
+      "id": "senua-ledge-corrective",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-corrective.native.png",
+      "sha256": "b5186d320466d80b1886604857fa714e755773ee8f12ab03c1e3dfad14691f68",
+      "stateOrder": [
+        "ledgeClimb",
+        "ledgeDrop",
+        "reservedUprightCalibration",
+        "reservedGripStudy"
+      ],
+      "notes": "Complete native source; reserved studies excluded."
+    }
+  ],
+  "discardedRows": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-b.native.png",
+      "nativeRow": 5,
+      "state": "crouchCharge",
+      "poses": 4,
+      "reason": "Third pose visibly lacks gripped sword; all four replaced."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-b.native.png",
+      "nativeRow": 6,
+      "state": "taunt1",
+      "poses": 4,
+      "reason": "At least one source body reaches canvas edge; entire four-pose row replaced with new complete bodies."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-b.native.png",
+      "nativeRow": 7,
+      "state": "hitStun",
+      "poses": 4,
+      "reason": "At least one source body reaches canvas edge; entire four-pose row replaced with new complete bodies."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-defense.native.png",
+      "nativeRow": 7,
+      "state": "defeat",
+      "poses": 4,
+      "reason": "At least one source body reaches canvas edge; entire four-pose row replaced with new complete bodies."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-b.native.png",
+      "nativeRow": 1,
+      "state": "reservedUprightCalibration",
+      "poses": 4,
+      "reason": "Reserved appearance/grip/calibration study; excluded from game."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-b.native.png",
+      "nativeRow": 2,
+      "state": "reservedGripStudy",
+      "poses": 4,
+      "reason": "Reserved appearance/grip/calibration study; excluded from game."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-b.native.png",
+      "nativeRow": 3,
+      "state": "reservedMirrorBeltStudy",
+      "poses": 4,
+      "reason": "Reserved appearance/grip/calibration study; excluded from game."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-a.native.png",
+      "nativeRow": 2,
+      "state": "ledgeClimb",
+      "poses": 4,
+      "reason": "First three leading hands remain too high before final push; all four replaced with progressive face/shoulder/waist contact."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-a.native.png",
+      "nativeRow": 3,
+      "state": "ledgeDrop",
+      "poses": 4,
+      "reason": "At least one source body reaches canvas edge; entire four-pose row replaced with new complete bodies."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-b.native.png",
+      "nativeRow": 1,
+      "state": "reservedUprightCalibration",
+      "poses": 4,
+      "reason": "Reserved appearance/grip/calibration study; excluded from game."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-b.native.png",
+      "nativeRow": 2,
+      "state": "reservedGripStudy",
+      "poses": 4,
+      "reason": "Reserved appearance/grip/calibration study; excluded from game."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-b.native.png",
+      "nativeRow": 3,
+      "state": "reservedMirrorBeltStudy",
+      "poses": 4,
+      "reason": "Reserved appearance/grip/calibration study; excluded from game."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-corrective.native.png",
+      "nativeRow": 2,
+      "state": "reservedUprightCalibration",
+      "poses": 4,
+      "reason": "Reserved appearance/grip/calibration study; excluded from game."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-corrective.native.png",
+      "nativeRow": 3,
+      "state": "reservedGripStudy",
+      "poses": 4,
+      "reason": "Reserved appearance/grip/calibration study; excluded from game."
+    }
+  ],
+  "limitations": [
+    "Original generated gameplay adaptations; no official animation or certified 1:1.",
+    "Opposite facing mirrors the sprite including equipment asymmetries; handedness in that camp is not certified.",
+    "Official cosplay PDF linked by 2017 Steam announcement was blocked403; no claim of having inspected it. Textual guide mirror and current official Steam imagery are secondary appearance evidence, not source-frame certification."
+  ]
+}

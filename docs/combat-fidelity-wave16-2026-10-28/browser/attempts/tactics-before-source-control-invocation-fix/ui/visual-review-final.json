@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 2,
+  "passed": true,
+  "preliminary": false,
+  "reviewedAt": "2026-11-01T01:00:49.713Z",
+  "reviewer": "/root/final_tactics_review",
+  "report": {
+    "path": "docs/tactics-universes-2026-10-28/result.json",
+    "sha256": "b1fe9e38a658c1f8046f5740609d67cc9f90ff51e94e2bc08902f4628699cd4b",
+    "bytes": 154041
+  },
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/production-freeze.json",
+    "sha256": "b75fee086dcc50c6c31413bee2098ef8335b38ed5b8347e706feeda9a1121d21",
+    "bytes": 2259295
+  },
+  "actualCapturesInspected": 10,
+  "artifacts": [
+    {
+      "path": "docs/tactics-universes-2026-10-28/cuphead_inkwell_tactics-desktop.png",
+      "sha256": "fdf91e9fc52da2a37fdb75dd5d51f1cf5623ab09d7f98a4796df9f2cd86d1ac6",
+      "bytes": 375578,
+      "inspected": true,
+      "observation": "Inkwell desktop shows green grass tiles, a narrow blue stream, wooden crossings and raised bank faces. The far bank and grass surfaces are distinct from the Nexus metal skybridge; both units and tile coordinates fit the viewport."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/cuphead_inkwell_tactics-mobile.png",
+      "sha256": "eeee3147d2f9bfdd3a7e25ee02327080c87daac019926d7df513f5fe8515b3d4",
+      "bytes": 185915,
+      "inspected": true,
+      "observation": "Inkwell mobile shows the entire terrain panel, selected A5/Z0, inkwell-grass material,1AP cost, height-cut controls and visible battle canvas; action buttons wrap into two columns without horizontal clipping. The tall layout scrolls."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/titanfall_reclamation_tactics-desktop.png",
+      "sha256": "3582ce1b12469f965079af88ec03807b659c8039f9ccea128f98978ba2901ae7",
+      "bytes": 422260,
+      "inspected": true,
+      "observation": "Titanfall desktop shows grey industrial deck plates, dark grated lower channels, ramps and elevated platforms. Raised faces and rail-like edges make the industrial layers visibly distinct from Inkwell grass."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/titanfall_reclamation_tactics-mobile.png",
+      "sha256": "09d3fe73043fdadf47138fad550ebb358ef572a61debd8d59937cba08d6eaa71",
+      "bytes": 186990,
+      "inspected": true,
+      "observation": "Titanfall mobile identifies World Foundry and imc-deck material at A5/Z0 with1AP cost; the cut/zoom controls, canvas and two-column action controls remain visible within the narrow page."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/fma_central_station_tactics-desktop.png",
+      "sha256": "0f5a6ac1a10b2eff03953eef6100fa2bcdb9635f3b93813690beb0039f5b04c4",
+      "bytes": 275808,
+      "inspected": true,
+      "observation": "Central desktop shows light stone station platforms and darker recessed tracks, with a clock and lamp-like pillars. The high middle crossing, low tracks and tile labels are visible as separate surfaces."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/fma_central_station_tactics-mobile.png",
+      "sha256": "9eacc07530801f48c32ae263ac26feef9a9da0d928abf2941d6c9fa907212462",
+      "bytes": 181266,
+      "inspected": true,
+      "observation": "Central mobile identifies Brotherhood2009 and central-stone material with A5/Z0 and1AP cost. The height panel and canvas fit the page width; action labels remain contained within their buttons."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/wakfu_sadida_tactics-desktop.png",
+      "sha256": "c939ada386de66f97e07affb830243fc6a0295044fe2148364d2e5d3d38be9f9",
+      "bytes": 358759,
+      "inspected": true,
+      "observation": "Sadida desktop shows green grass surrounding broad brown root/canopy surfaces at several elevations, with open lower gaps and a small blue water square; geometry and palette differ from the station and industrial sectors."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/wakfu_sadida_tactics-mobile.png",
+      "sha256": "c15c89b4f94d1bb4909a62e93830f3eac2685fa1289ee8d29fff7c9a0afa2a60",
+      "bytes": 188128,
+      "inspected": true,
+      "observation": "Sadida mobile identifies season1 source and sadida-grass at A5/Z0 with1AP cost. Surface selection, cut controls and the complete narrow canvas are visible; the two-column battle controls remain inside the page."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/nexus_skybridge-desktop.png",
+      "sha256": "99d7697d242dba21181ef6c89501602ef71eb25ffbb3a13345890dcd91865357",
+      "bytes": 263690,
+      "inspected": true,
+      "observation": "Nexus legacy desktop control preserves the raised metal skybridge, staircase from the left and lower grid beneath the upper platform. The upper opponent and lower player appear on visibly different heights, with reachable AP labels on left tiles."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/training_grid-desktop.png",
+      "sha256": "13fe6fe0a119ff3c4c852c3a87a67194c8033fc069eaf25ac08ba01dc43c6a65",
+      "bytes": 166197,
+      "inspected": true,
+      "observation": "Training-grid legacy desktop control shows a flat grid, green reachable tiles marked1AP/2AP, central cyan obstacles and cover labels. Both units fit in frame; the view is distinct from every new source sector."
+    }
+  ],
+  "source1to1Verified": false,
+  "notes": [
+    "All10currentPNGcaptures from the execution after the final complete production freeze including historicalPNGandjs/jsxinputs were actually reopened with view_image. Earlier captures and reviews were archived and do not substitute for the current review.",
+    "Four dedicated source sectors are reviewed on desktop and mobile plus two legacy desktop controls. The18-check runtime report supplies launch, cost, reachability and unchanged-source assertions; still pictures alone do not prove every possible path.",
+    "Terrains are playable procedural adaptations associated with stated source versions, not official certified1:1 art. No scene-background image is counted as playable terrain geometry."
+  ]
+}

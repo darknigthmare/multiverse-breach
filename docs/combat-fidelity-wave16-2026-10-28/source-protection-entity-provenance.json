@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "category": "persistentProtection",
+  "actualGenerationCalls": 2,
+  "observedNativePoses": 32,
+  "retainedNativePoses": 16,
+  "excludedNativePoses": 16,
+  "generatedAtlases": 1,
+  "affectsRpgSummonCounters": false,
+  "sourcePlan": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/source-plan-before-generation.json",
+  "sourcePlanSha256": "47b86d4ce184d837bd2306b8fbf056191528f28cfc3fd4f0a0a48bf6ed1bab84",
+  "sourceImages": [
+    {
+      "path": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/accepted-original.png",
+      "sha256": "3c405bf2976c59b81d3e31e56d70d301f4c6461386efde8a8aea24d2359c2298",
+      "role": "accepted-generated-native-entity-atlas"
+    }
+  ],
+  "references": [
+    {
+      "file": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/reference-shield-pal-loop-0051.png",
+      "sha256": "f79d59a40282e37aa19c0ee6a8ba5e4b3edb0bd5254b985029c4147bee6fd970",
+      "actuallyViewed": true,
+      "referenceOnly": true,
+      "countsAsNewGeneratedDrawing": false
+    },
+    {
+      "file": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/reference-mc_super_II_heart_death_0001.png",
+      "sha256": "3f2c7c217473a9cd7e772f18e5211cae4de051e5215525b6cde41c7b005fd354",
+      "actuallyViewed": true,
+      "referenceOnly": true,
+      "countsAsNewGeneratedDrawing": false
+    },
+    {
+      "file": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/reference-mc_super_II_heart_death_0013.png",
+      "sha256": "349263816fc5b4810329c90313021532a77c5ec5628ba026fa8a981ae80546ae",
+      "actuallyViewed": true,
+      "referenceOnly": true,
+      "countsAsNewGeneratedDrawing": false
+    },
+    {
+      "file": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/reference-mc_super_II_heart_death_0026.png",
+      "sha256": "693255775a2f70b2b4aa9e743515b587bac746248faf25c1532ac64606069c28",
+      "actuallyViewed": true,
+      "referenceOnly": true,
+      "countsAsNewGeneratedDrawing": false
+    }
+  ],
+  "excludedAttempts": [
+    {
+      "image": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/attempt1-original.png",
+      "sha256": "3ee561772838b9fe123b41fbb204e132be8af65ce832eaf4fe2e78ecfcde7088",
+      "receipt": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/attempt1-result.json",
+      "observedNativePoses": 16,
+      "retainedNativePoses": 0
+    }
+  ],
+  "acceptedReceipt": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/attempt2-result.json",
+  "entries": [
+    {
+      "id": "shield-pal-wave16",
+      "sourceHeroId": "cuphead_ms_chalice",
+      "universe": "Cuphead",
+      "kind": "protection-entity",
+      "sheet": "/sprites/generated/source-protection-entities-wave16/shield-pal.png",
+      "width": 1024,
+      "height": 1024,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": false
+        },
+        "guard": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "absorb": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": false
+        },
+        "departure": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": false
+        }
+      },
+      "sha256": "a57f943e9515aec9798e144af7cd2b46e61aea6fdc5937e63478f2210bb147a8",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/accepted-original.png",
+      "sourceImageSha256": "3c405bf2976c59b81d3e31e56d70d301f4c6461386efde8a8aea24d2359c2298",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/accepted-original.png",
+          "sha256": "3c405bf2976c59b81d3e31e56d70d301f4c6461386efde8a8aea24d2359c2298",
+          "role": "accepted-generated-native-entity-atlas"
+        }
+      ],
+      "referenceImage": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/reference-shield-pal-loop-0051.png",
+      "referenceImageSha256": "f79d59a40282e37aa19c0ee6a8ba5e4b3edb0bd5254b985029c4147bee6fd970",
+      "sourceWork": "Cuphead: The Delicious Last Course (2022), Ms. Chalice Super Art II — Shield Pal",
+      "sourceReference": "Small pointed golden shield, red-pink heart inset with two black oval/pie-cut eyes, two complete white feathered wings at the upper sides, black cartoon ink outline. No arms, legs, mouth, insect body, Chalice body, generic blue energy bubble or empty force-field ring. New pixel-art drawings, not official frames. The source hit/departure references distort and disperse the heart; the bounded engine withdraws a complete familiar before hiding it so every retained native cell has the whole source entity. Timings .4s arrival/.56s guard loop/.4s absorb/.4s departure are explicit engine sampling, not certified source timings.",
+      "sourceUrl": "https://www.spriters-resource.com/pc_computer/cupheaddontdealwiththedevil/asset/181710/",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "source1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-common-scale-nearest-neighbor",
+        "baseline": 244,
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.5502392344497608,
+        "bodyCalibration": {
+          "row": 1,
+          "column": 0,
+          "targetBodyHeight": 112,
+          "sourceBodyHeight": 176,
+          "outputBodyHeight": 97
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 47,
+                  "top": 17,
+                  "width": 310,
+                  "height": 225,
+                  "pixels": 28937
+                },
+                "output": {
+                  "left": 48,
+                  "top": 120,
+                  "width": 171,
+                  "height": 124
+                }
+              },
+              {
+                "source": {
+                  "left": 457,
+                  "top": 9,
+                  "width": 259,
+                  "height": 233,
+                  "pixels": 26810
+                },
+                "output": {
+                  "left": 63,
+                  "top": 116,
+                  "width": 143,
+                  "height": 128
+                }
+              },
+              {
+                "source": {
+                  "left": 840,
+                  "top": 45,
+                  "width": 260,
+                  "height": 197,
+                  "pixels": 28092
+                },
+                "output": {
+                  "left": 62,
+                  "top": 136,
+                  "width": 143,
+                  "height": 108
+                }
+              },
+              {
+                "source": {
+                  "left": 1170,
+                  "top": 83,
+                  "width": 348,
+                  "height": 159,
+                  "pixels": 26452
+                },
+                "output": {
+                  "left": 32,
+                  "top": 157,
+                  "width": 191,
+                  "height": 87
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 259
+            }
+          },
+          {
+            "phase": "guard",
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 58,
+                  "width": 353,
+                  "height": 176,
+                  "pixels": 28775
+                },
+                "output": {
+                  "left": 49,
+                  "top": 146,
+                  "width": 194,
+                  "height": 97
+                }
+              },
+              {
+                "source": {
+                  "left": 447,
+                  "top": 16,
+                  "width": 286,
+                  "height": 220,
+                  "pixels": 29066
+                },
+                "output": {
+                  "left": 57,
+                  "top": 123,
+                  "width": 157,
+                  "height": 121
+                }
+              },
+              {
+                "source": {
+                  "left": 815,
+                  "top": 69,
+                  "width": 287,
+                  "height": 161,
+                  "pixels": 26977
+                },
+                "output": {
+                  "left": 48,
+                  "top": 152,
+                  "width": 158,
+                  "height": 89
+                }
+              },
+              {
+                "source": {
+                  "left": 1204,
+                  "top": 28,
+                  "width": 282,
+                  "height": 208,
+                  "pixels": 27633
+                },
+                "output": {
+                  "left": 51,
+                  "top": 130,
+                  "width": 155,
+                  "height": 114
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "sourceBounds": {
+              "top": 258,
+              "bottom": 517
+            }
+          },
+          {
+            "phase": "absorb",
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 95,
+                  "top": 23,
+                  "width": 249,
+                  "height": 197,
+                  "pixels": 27767
+                },
+                "output": {
+                  "left": 75,
+                  "top": 136,
+                  "width": 137,
+                  "height": 108
+                }
+              },
+              {
+                "source": {
+                  "left": 502,
+                  "top": 47,
+                  "width": 213,
+                  "height": 165,
+                  "pixels": 25466
+                },
+                "output": {
+                  "left": 87,
+                  "top": 149,
+                  "width": 117,
+                  "height": 91
+                }
+              },
+              {
+                "source": {
+                  "left": 794,
+                  "top": 23,
+                  "width": 323,
+                  "height": 191,
+                  "pixels": 28771
+                },
+                "output": {
+                  "left": 37,
+                  "top": 136,
+                  "width": 178,
+                  "height": 105
+                }
+              },
+              {
+                "source": {
+                  "left": 1164,
+                  "top": 39,
+                  "width": 331,
+                  "height": 169,
+                  "pixels": 30152
+                },
+                "output": {
+                  "left": 29,
+                  "top": 144,
+                  "width": 182,
+                  "height": 93
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "sourceBounds": {
+              "top": 516,
+              "bottom": 763
+            }
+          },
+          {
+            "phase": "departure",
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 98,
+                  "top": 25,
+                  "width": 240,
+                  "height": 175,
+                  "pixels": 25732
+                },
+                "output": {
+                  "left": 76,
+                  "top": 139,
+                  "width": 132,
+                  "height": 96
+                }
+              },
+              {
+                "source": {
+                  "left": 489,
+                  "top": 33,
+                  "width": 197,
+                  "height": 165,
+                  "pixels": 23508
+                },
+                "output": {
+                  "left": 80,
+                  "top": 144,
+                  "width": 108,
+                  "height": 91
+                }
+              },
+              {
+                "source": {
+                  "left": 887,
+                  "top": 33,
+                  "width": 189,
+                  "height": 175,
+                  "pixels": 22988
+                },
+                "output": {
+                  "left": 88,
+                  "top": 144,
+                  "width": 104,
+                  "height": 96
+                }
+              },
+              {
+                "source": {
+                  "left": 1268,
+                  "top": 30,
+                  "width": 149,
+                  "height": 185,
+                  "pixels": 19575
+                },
+                "output": {
+                  "left": 86,
+                  "top": 142,
+                  "width": 82,
+                  "height": 102
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "sourceBounds": {
+              "top": 762,
+              "bottom": 1024
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "distinctCells": 16,
+        "frameHashes": [
+          "8f3eca09c97651c4fae9c0b1f15ce57b870485be9adc5b8c93334d6df4622fb8",
+          "679ef3d52d7c381964229c8a590c9149d6f469ed1b5a60f4c3427638c7f13193",
+          "0098dcaa4c6cfe09d22004099a60b126329fe6352dca5c230d16b33b8ec5b0a6",
+          "96f734d42bc39e00a1c6afb5ad737c90c5c97fa7198bf77207e44f7154de091c",
+          "b5a606d41d14c1c95a5f4c29180e07f0ef7a92fc2bf499070156e81aa8660a01",
+          "7bc35493b1eeb144d7738b62e9da31d5da22a2d5c4f7a72374aa5a389f9aae25",
+          "2f2eabf4cea04ed86c6754adf0a0783dde67a3eecf3f252321423ff9a1b07ff5",
+          "4e05124ebe5e3b952d0e3338d2742613852c08fe81e917eb3cdd912c8ab1234a",
+          "89ed54bb03578629b51813d24e922bc40696369c60fe343b6c452973220089a6",
+          "4950c4280985f169b0b2076a7fc7895c584e89ee1134f46e9ffbca2b8e3edd1f",
+          "91edd0a0657bf66dfd36bfee84a0131862b07739651dc4b9c211e7b825284186",
+          "5a265e2cd279f4f247acac611b9e9a7ca94402c566e03a803e3362a8e5b0270a",
+          "b11a0a6507f679ae30b21af5f64dd2c8be8fca7ce71fea37177dde8fdb3d5850",
+          "35539626ed5bdece341df3611d4b385c9359a96d7f227f3bbc3620e2585fc17b",
+          "2cfe66dfd6153a6e1b83b1457011729ee2a47460c556d0c9a434f8b813f9ba6a",
+          "f7f7d0f99f697197b339e7c265cbf4c7ee0c62c53645dfa64938bfd97c742a59"
+        ],
+        "visiblePixels": [
+          8588,
+          7978,
+          8284,
+          7797,
+          8487,
+          8549,
+          7974,
+          8124,
+          8249,
+          7584,
+          8543,
+          8885,
+          7610,
+          7039,
+          6851,
+          5841
+        ],
+        "transparentMarginPixels": 12,
+        "source1to1Verified": false,
+        "noNewGameplayEvents": true,
+        "review": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/artwork-review.json",
+        "reviewSha256": "823b55d2897ed1186b15c2c195246ce1c21069f9f4ce79f2d45bb77c3dc01a6d"
+      }
+    }
+  ],
+  "source1to1Verified": false
+}

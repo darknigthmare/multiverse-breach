@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 2,
+  "wave": 15,
+  "createdAt": "2026-10-26T09:46:38.838Z",
+  "preparationOnly": true,
+  "authorized": false,
+  "commandsExecuted": [],
+  "authorizationFileCreated": false,
+  "finalWriteGateCreated": false,
+  "historicalPythonSha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+  "sourceBaseline": "docs/combat-fidelity-wave15-2026-10-26/baseline-current-wave14.json",
+  "snapshots": [
+    {
+      "source": "docs/rift-dossiers/catalog.json",
+      "snapshot": "docs/combat-fidelity-wave15-2026-10-26/rift-refresh/catalog-before.json",
+      "sha256": "a7c2b1b331149f2040246394b18f365ffd02368b46ccba37169de72d6d125e96",
+      "bytes": 10851646
+    },
+    {
+      "source": "docs/rift-dossiers/character-reference-quality.json",
+      "snapshot": "docs/combat-fidelity-wave15-2026-10-26/rift-refresh/quality-before.json",
+      "sha256": "52479771427de0d3d7170b02fa30527755a035c52e7f26622f7a959797ca0c6d",
+      "bytes": 3575270
+    },
+    {
+      "source": "src/game/riftDossierAssets.json",
+      "snapshot": "docs/combat-fidelity-wave15-2026-10-26/rift-refresh/registry-before.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a",
+      "bytes": 552092
+    },
+    {
+      "source": "scripts/auditCharacterReferenceQuality.py",
+      "snapshot": "docs/combat-fidelity-wave15-2026-10-26/rift-refresh/auditCharacterReferenceQuality-before.py",
+      "sha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+      "bytes": 29217
+    }
+  ],
+  "helpers": {
+    "run-sequential-refresh.py": "dbf2b547b7317a50400e9ef44e3103b61cf2e8950b812bfbacf90b7e74def38e",
+    "summarize-refresh.py": "12c9d79b8621b6bcb2626583de5ecbc0fa7cc84694a4c06762273c68d959cd9e",
+    "verify-refresh-integrity.py": "580fa9b4664f5e3417f424927f402e8a87d75f90075ced48f940aad863ab0edf"
+  },
+  "remainingBeforeExecution": "Root freezes package and all120 current base16 references before separate authorization. References-only steps1–2 remain separate from final writes3–5 after every final browser has closed. No threshold/pin/source changes or pending-status restoration are authorized."
+}

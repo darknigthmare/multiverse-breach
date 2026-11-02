@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-28T09:38:30.469Z",
+  "sourcePlanSha256": "9a0a1c8fca6c90ae212cf15a858ee1523fb2964e42a262bc6fc59be7d20d401b",
+  "entries": [
+    {
+      "heroId": "oddworld_abe_possession",
+      "generationAlreadyStartedForThisHero": false,
+      "reason": "The former resolved guard is a documented source-role adaptation, not possession. The new intended contract targets an admissible enemy and never claims an ally shield.",
+      "previous": {
+        "effect": "guard",
+        "delivery": "support"
+      },
+      "intended": {
+        "effect": "control",
+        "delivery": "single",
+        "targetSide": "enemy",
+        "controlKind": "possession",
+        "duration": 2,
+        "tacticsTurns": 1
+      },
+      "runtimeImplementationRequired": true
+    },
+    {
+      "heroId": "wallace_gromit_wallace",
+      "generationAlreadyStartedForThisHero": false,
+      "reason": "TechnoTrousers are ex-NASA equipment, not an original Wallace invention. Correct ordinary-action wording.",
+      "previousSimple": "Wallace v\u00e9rifie son invention",
+      "revisedSimple": "Wallace v\u00e9rifie le Techno Trousers"
+    },
+    {
+      "heroId": "cuphead_mugman",
+      "recordedAt": "2026-10-28T09:41:39.563Z",
+      "generationAlreadyStartedForThisHero": false,
+      "reason": "Targeted source review distinguishes invulnerability from a single persistent hit-absorbing familiar and excludes an invented group buff.",
+      "intended": {
+        "invulnerabilityKind": "mugman-super-art-ii",
+        "duration": 4.85,
+        "targetSide": "self"
+      },
+      "sourceUrls": [
+        "https://cuphead.wiki.gg/wiki/List_of_Weapons",
+        "https://cuphead.wiki.gg/wiki/Ms._Chalice"
+      ]
+    },
+    {
+      "heroId": "cuphead_ms_chalice",
+      "recordedAt": "2026-10-28T09:41:39.563Z",
+      "generationAlreadyStartedForThisHero": false,
+      "reason": "Targeted source review distinguishes invulnerability from a single persistent hit-absorbing familiar and excludes an invented group buff.",
+      "intended": {
+        "shieldKind": "shield-pal-one-hit",
+        "shieldHits": 1,
+        "targetSide": "self",
+        "persistsUntilHit": true
+      },
+      "sourceUrls": [
+        "https://cuphead.wiki.gg/wiki/List_of_Weapons",
+        "https://cuphead.wiki.gg/wiki/Ms._Chalice"
+      ]
+    },
+    {
+      "heroId": "oddworld_abe_possession",
+      "recordedAt": "2026-10-28T09:43:10.526Z",
+      "generationAlreadyStartedForThisHero": false,
+      "reason": "Separate delivery type from target shape: control is the normalized delivery; single is only the target shape.",
+      "previousIntendedDelivery": "single",
+      "revisedDelivery": "control",
+      "targetShape": "single"
+    },
+    {
+      "recordedAt": "2026-10-28T10:23:09.055Z",
+      "heroIds": [
+        "oddworld_abe_possession",
+        "cuphead_mugman",
+        "cuphead_ms_chalice"
+      ],
+      "generationAlreadyStartedForTheseHeroes": true,
+      "beforeCorrectiveGenerations": true,
+      "reason": "Current mechanism descriptions must match the new source-specific control/protection contracts. Original guard-adaptation wording remains in the immutable initial plan and priorSpecialSourceReference, not the current sourceReference.",
+      "abeTiming": {
+        "channelSeconds": 1.1,
+        "animationSeconds": 1.35,
+        "releaseSeconds": 1.1,
+        "controlSeconds": 2,
+        "tacticsTargetTurns": 1,
+        "kind": "explicitly bounded engine adaptation, not source-frame timing"
+      },
+      "sourceArtworkRemainsUnderReview": true
+    },
+    {
+      "heroId": "sam_and_max_sybil_pandemik_expertise",
+      "recordedAt": "2026-10-28",
+      "generationAlreadyStartedForThisHero": true,
+      "beforeCorrectiveGeneration": true,
+      "reason": "Targeted appearance check contradicts initial bob/purple-officewear assumption. Reject all48 first-source figures; generate full new48 before any production publication.",
+      "previousAppearance": "dark bob, round glasses, purple office top",
+      "revisedAppearance": "Telltale season1 Sybil: long black hair tied in bun, red cateye glasses, maroon altered tang suit, silver hoop earrings, forearm black flame-like tattoo lines, mole above right mouth",
+      "sourceUrl": "https://samandmax.fandom.com/wiki/Sybil_Pandemik",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "deponia_bozo",
+      "recordedAt": "2026-10-28",
+      "generationAlreadyStartedForThisHero": true,
+      "beforeCorrectiveGeneration": true,
+      "reason": "Initial bald-overalls appearance unsupported. Targeted source text gives dark brown hair; in-game screenshot description identifies white captain cap. Reject original48; regenerate Bozo captain silhouette. Costume pixel texture is not source certified.",
+      "previousAppearance": "bald heavy sailor, overalls",
+      "revisedAppearance": "Captain Bozo, huge gentle bulky sailor, thick dark brown hair and beard, white naval cap; source-role practical trawler captain attire, no invented powers",
+      "sources": [
+        "https://deponia.fandom.com/wiki/Bozo",
+        "https://kg-portal.ru/games/deponia2/images/3/"
+      ],
+      "downloadAttempts": "Three source-image domains and three CDN alternatives refused proxy403; web indexed text/image descriptions were actually read. No local source screenshot claimed.",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "oddworld_abe_possession",
+      "recordedAt": "2026-10-28",
+      "generationAlreadyStartedForThisHero": true,
+      "beforeProductionFreeze": true,
+      "reason": "Exact native admission compares source action label with complete kit label. Initial ASCII apostrophe in source plan is retained historically; effective source label now matches the kit typographic apostrophe. Text-only correction, no generated image or pose is changed.",
+      "previousActionName": "Chant de possession d'Abe",
+      "revisedActionName": "Chant de possession d\u2019Abe",
+      "imageImpact": false
+    }
+  ]
+}

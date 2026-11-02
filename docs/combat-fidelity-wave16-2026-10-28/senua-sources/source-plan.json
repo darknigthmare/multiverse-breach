@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "wave": 16,
+  "createdAt": "2026-10-28T10:09:47.854Z",
+  "heroId": "hellblade_senua",
+  "source": {
+    "heroId": "hellblade_senua",
+    "name": "Concentration du miroir de Senua",
+    "displayName": "Senua",
+    "universe": "Hellblade: Senua’s Sacrifice",
+    "sourceWork": "Hellblade: Senua’s Sacrifice (2017), early journey before first Hela encounter, initial steel sword",
+    "appearance": "Young adult Pict warrior, dark brown braided high ponytail, leather headpiece with silver central blue-stone ornament, woad-blue paint around eyes and on LEFT arm, fur collar with Celtic brooch, patterned leather and plaid clothing, bare arms, sword belt, closed boots, closed cloth pouch at left hip and small iron mirror at right hip; no exposed severed head or later HellbladeII armour",
+    "weapon": "Initial right-handed steel sword with ring pommel; polished LaTene iron mirror for Focus, not late-game Gramr",
+    "kind": "wave16-b-sword-mirror",
+    "weaponType": "sword-mirror",
+    "actionName": "Concentration du miroir de Senua",
+    "effect": "buff",
+    "delivery": "support",
+    "pose": "Operate the selected real instrument or make the chosen support gesture; no offensive muzzle flash, damage ray, victim or invented personal magic.",
+    "bodyHeight": 190,
+    "sourceReference": "https://store.steampowered.com/news/posts/?appids=414340&enddate=1505995301&feed=steam_community_announcements",
+    "source1to1Verified": false,
+    "networkVerified": false,
+    "canonicalVerified": false,
+    "notes": "Explicit selected continuity and role. New native drawings are adapted illustrations, not official source frames. Counts, timings, ranges and strength are engine adaptations unless a separately cited source fact states otherwise."
+  },
+  "sourcePlanB": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/part-b/source-plan.json",
+    "sha256": "6d0fe59c593479d64b12bd1310c136a46d7c0d0d932003767b81161ebdb3cfdd"
+  },
+  "source1to1Verified": false,
+  "gameStates": [
+    "idle",
+    "walk",
+    "run",
+    "turn",
+    "jumpStart",
+    "jumpRise",
+    "jumpApex",
+    "fall",
+    "fastFall",
+    "land",
+    "crouchEnter",
+    "crouchIdle",
+    "crouchExit",
+    "crouchCharge",
+    "taunt1",
+    "hitStun",
+    "shieldEnter",
+    "shieldHold",
+    "shieldHit",
+    "perfectShield",
+    "shieldBreak",
+    "shieldExit",
+    "dead",
+    "defeat",
+    "attackLight1",
+    "attackLight2",
+    "attackLight3",
+    "crouchLight",
+    "chargeStart",
+    "chargeLoop",
+    "chargeRelease",
+    "chargeRecovery",
+    "attackRecovery",
+    "special",
+    "aerialNeutral",
+    "aerialForward",
+    "aerialDown",
+    "intro",
+    "victory",
+    "ledgeAttack",
+    "ledgeCatch",
+    "ledgeHang",
+    "ledgeClimb",
+    "ledgeDrop",
+    "ledgeJump"
+  ],
+  "atlases": [
+    {
+      "id": "senua-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "physicalLayout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "logicalLayout": {
+        "columns": 4,
+        "rows": 8
+      },
+      "gameRows": 8
+    },
+    {
+      "id": "senua-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "physicalLayout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "logicalLayout": {
+        "columns": 4,
+        "rows": 8
+      },
+      "gameRows": 8
+    },
+    {
+      "id": "senua-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "physicalLayout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "logicalLayout": {
+        "columns": 4,
+        "rows": 8
+      },
+      "gameRows": 8
+    },
+    {
+      "id": "senua-combat-a",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "physicalLayout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "logicalLayout": {
+        "columns": 4,
+        "rows": 8
+      },
+      "gameRows": 8
+    },
+    {
+      "id": "senua-combat-b",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "physicalLayout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "logicalLayout": {
+        "columns": 4,
+        "rows": 8
+      },
+      "gameRows": 8
+    },
+    {
+      "id": "senua-ledge",
+      "batch": "Combat",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump",
+        "reservedUprightCalibration",
+        "reservedGripStudy",
+        "reservedMirrorBeltStudy"
+      ],
+      "physicalLayout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "logicalLayout": {
+        "columns": 4,
+        "rows": 8
+      },
+      "gameRows": 5
+    }
+  ],
+  "requestedDistinctNativeGamePoses": 180,
+  "requestedCandidates": 192,
+  "reservedNotCounted": 12,
+  "allNewDrawingsSeparateFromB48": true,
+  "appearanceReferencePolicy": "B48 and first returned full45 source can guide consistent appearance only. No reference cell, old PNG, mirrored body or earlier source pose counts as a new drawing.",
+  "noShieldInSelectedLoadout": true,
+  "loadout": {
+    "sword": "Initial steel sword with ring pommel in anatomical right hand; not late-game Gramr.",
+    "guard": "Physical sword parry; no shield prop.",
+    "focus": "Inspect or raise the small polished LaTene iron mirror; no damage ray or invented offensive magic.",
+    "locomotion": "Sword sheathed for locomotion, jumps and all physical ledge grips so both hands remain available.",
+    "pouch": "Closed cloth pouch at left hip; no exposed contents, injury or gore."
+  },
+  "sourceLimitations": [
+    "Official2017Steam announcement links the cosplay guide, but the guide PDF download was blocked403; no claim of inspecting that PDF.",
+    "B curated textual guide facts and an official Steam store response; current store screenshots may use enhanced2021 rendering and do not certify original2017 materials.",
+    "Platform-fighter airborne, charge and45-state timing are bounded gameplay adaptations, not verified Hellblade source animation frames.",
+    "Opposite-facing rendering is a runtime horizontal mirror; anatomical handedness is not certified for that mirrored camp."
+  ],
+  "generationHasNotStarted": true
+}

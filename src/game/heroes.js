@@ -2,6 +2,8 @@
 import { COMBAT_SOURCE_DEFINITIONS_WAVE12 } from './combat/combatSourceDefinitionsWave12.js';
 import { COMBAT_SOURCE_DEFINITIONS_WAVE13 } from './combat/combatSourceDefinitionsWave13.js';
 import { COMBAT_SOURCE_DEFINITIONS_WAVE14 } from './combat/combatSourceDefinitionsWave14.js';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE15 } from './combat/combatSourceDefinitionsWave15.js';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE16 } from './combat/combatSourceDefinitionsWave16.js';
 
 import { EXPANDED_EVENT_ITEMS, EXPANDED_EXTRA_HERO_DATA, EXPANDED_GEAR } from './expandedUniverses.js';
 import { LORE_ACCURATE_HERO_EXPANSIONS, LORE_ACCURATE_HERO_OVERRIDES } from './loreAccuratePacks.js';
@@ -2552,7 +2554,7 @@ Object.assign(heroOverrides, {
 });
 
 // Explicit equipment for the selected source versions; raw action records stay intact.
-for (const [id, source] of Object.entries({ ...COMBAT_SOURCE_DEFINITIONS_WAVE12, ...COMBAT_SOURCE_DEFINITIONS_WAVE13, ...COMBAT_SOURCE_DEFINITIONS_WAVE14 })) {
+for (const [id, source] of Object.entries({ ...COMBAT_SOURCE_DEFINITIONS_WAVE12, ...COMBAT_SOURCE_DEFINITIONS_WAVE13, ...COMBAT_SOURCE_DEFINITIONS_WAVE14, ...COMBAT_SOURCE_DEFINITIONS_WAVE15, ...COMBAT_SOURCE_DEFINITIONS_WAVE16 })) {
   heroOverrides[id] = { ...heroOverrides[id], weaponType: source.weaponType };
 }
 

@@ -1,0 +1,981 @@
+{
+  "schemaVersion": 1,
+  "success": true,
+  "startedAt": "2026-10-28T12:24:39.172Z",
+  "finishedAt": "2026-10-28T12:32:34.756Z",
+  "timing": "All five real steps complete before the production freeze; no post-freeze write phase exists.",
+  "steps": [
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs",
+        "--refresh-character-reference-audit"
+      ],
+      "startedAt": "2026-10-28T12:24:39.187Z",
+      "finishedAt": "2026-10-28T12:24:48.922Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "processId": 41705,
+      "receiptOrigin": "node-child-process-close-event",
+      "log": "docs/combat-fidelity-wave16-2026-10-28/rift-refresh/step-01.log",
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/auditCharacterReferenceQuality.py"
+      ],
+      "startedAt": "2026-10-28T12:24:48.923Z",
+      "finishedAt": "2026-10-28T12:32:15.932Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "processId": 41724,
+      "receiptOrigin": "node-child-process-close-event",
+      "log": "docs/combat-fidelity-wave16-2026-10-28/rift-refresh/step-02.log",
+      "logSha256": "cc4213f4000b1d22e61d187bf3fafd97589f45d967562cafeaf3fc85d9055485"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs"
+      ],
+      "startedAt": "2026-10-28T12:32:15.933Z",
+      "finishedAt": "2026-10-28T12:32:24.696Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "processId": 42352,
+      "receiptOrigin": "node-child-process-close-event",
+      "log": "docs/combat-fidelity-wave16-2026-10-28/rift-refresh/step-03.log",
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierAssetRegistry.mjs"
+      ],
+      "startedAt": "2026-10-28T12:32:24.697Z",
+      "finishedAt": "2026-10-28T12:32:25.693Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "processId": 42371,
+      "receiptOrigin": "node-child-process-close-event",
+      "log": "docs/combat-fidelity-wave16-2026-10-28/rift-refresh/step-04.log",
+      "logSha256": "0ae6d3724a446f09f64e6b22d192d46ca63237ce1f541acce4e94aae3905c82c"
+    },
+    {
+      "argv": [
+        "npm",
+        "run",
+        "rift:audit"
+      ],
+      "startedAt": "2026-10-28T12:32:25.693Z",
+      "finishedAt": "2026-10-28T12:32:34.662Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "processId": 42378,
+      "receiptOrigin": "node-child-process-close-event",
+      "log": "docs/combat-fidelity-wave16-2026-10-28/rift-refresh/step-05.log",
+      "logSha256": "c2329e6e7f1c2a09d9c3031556456fc58c9efe6ca1b348a83f5bcefa25ced44d"
+    }
+  ],
+  "references": [
+    {
+      "id": "crash_bandicoot",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/crash_bandicoot.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/crash_bandicoot.png",
+      "sha256": "96f99a7fc9ab6b66e55d0333d4c43d096eb12698c447251e2624dc77b58343ef",
+      "classification": "approved"
+    },
+    {
+      "id": "coco_bandicoot",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/coco_bandicoot.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/coco_bandicoot.png",
+      "sha256": "3343375d9eaed79f91e1880abbf3307205d201120cb479e45745075d523de9fc",
+      "classification": "approved"
+    },
+    {
+      "id": "aku_aku",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/aku_aku.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/aku_aku.png",
+      "sha256": "60d2dda8a18c0ed800effb6e78a3c880e09ef7073d4983dcf7428e5f8b5ef89b",
+      "classification": "approved"
+    },
+    {
+      "id": "earthworm_jim",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/earthworm_jim.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/earthworm_jim.png",
+      "sha256": "748caf048d279d5d4d2c2be92b16fb1ddcd48922d2f79c70a1b87127c4f23c4e",
+      "classification": "approved"
+    },
+    {
+      "id": "peter_puppy",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/peter_puppy.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/peter_puppy.png",
+      "sha256": "fded2aa9e355ea4cfc5cfcdfb5d495b54d021273ff61558862250cd1f1b7a8a3",
+      "classification": "approved"
+    },
+    {
+      "id": "princess_whats_her_name",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/princess_whats_her_name.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/princess_whats_her_name.png",
+      "sha256": "1187cbd7ea44c5db3ce7d7a4f0ae89126cd11d965ae9ae362a7165f46bde6877",
+      "classification": "approved"
+    },
+    {
+      "id": "guybrush_threepwood",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/guybrush_threepwood.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/guybrush_threepwood.png",
+      "sha256": "34adc95401358b7f1bda9bd1c3ba0bba85b441d5f69a10ec5dae524eda240ed0",
+      "classification": "approved"
+    },
+    {
+      "id": "elaine_marley",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/elaine_marley.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/elaine_marley.png",
+      "sha256": "3a3af4b77704ef0a74ba1a036f57586b2fb0ccf2dec9d0a9e7e28084234d7340",
+      "classification": "approved"
+    },
+    {
+      "id": "stan_monkey",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/stan_monkey.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/stan_monkey.png",
+      "sha256": "63be5a55831767290f8f02adfeb626d5aeab05955799d5ba52e36a7f368a3af1",
+      "classification": "approved"
+    },
+    {
+      "id": "cuphead_cuphead",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/cuphead_cuphead.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/cuphead_cuphead.png",
+      "sha256": "58fa894cafa357fc4506454351c2b258b4e87e0bc9e11e15b4187205179e8ae7",
+      "classification": "approved"
+    },
+    {
+      "id": "cuphead_mugman",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/cuphead_mugman.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/cuphead_mugman.png",
+      "sha256": "f2581dc01a63d3a3390ba9736df4822139e1ca7d5362fd5d0e7408e0b019781d",
+      "classification": "approved"
+    },
+    {
+      "id": "cuphead_ms_chalice",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/cuphead_ms_chalice.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/cuphead_ms_chalice.png",
+      "sha256": "2324c076503007234207d376782a68dfdc9d527ad916fe7e7feda378484e4337",
+      "classification": "approved"
+    },
+    {
+      "id": "deponia_rufus",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/deponia_rufus.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/deponia_rufus.png",
+      "sha256": "19f17d84bab82f45f063cad76bc441bc7dc5d91699b7c464ae7e38973cf1d6b8",
+      "classification": "approved"
+    },
+    {
+      "id": "deponia_goal",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/deponia_goal.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/deponia_goal.png",
+      "sha256": "f3b5534404c4a28db6e39cd50dc70e9e2576b34a132078e1185c9d78e50edf22",
+      "classification": "approved"
+    },
+    {
+      "id": "deponia_bozo",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/deponia_bozo.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/deponia_bozo.png",
+      "sha256": "401efb36ba069a972ea7e130fa71d300a9ced8c4808a4d6c6d3f7298f0e9b204",
+      "classification": "approved"
+    },
+    {
+      "id": "sam_and_max_sam_deduction",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/sam_and_max_sam_deduction.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/sam_and_max_sam_deduction.png",
+      "sha256": "cf93cf781573389e9f8d32cdc2879656e276d24e7102464eab71e9c36b0d2144",
+      "classification": "approved"
+    },
+    {
+      "id": "sam_and_max_max_chaos",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/sam_and_max_max_chaos.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/sam_and_max_max_chaos.png",
+      "sha256": "46c8fa7fa32d4bd17b5c253c777bd1a8e0ecb186e956e88f58c1ab21ff363415",
+      "classification": "approved"
+    },
+    {
+      "id": "sam_and_max_sybil_pandemik_expertise",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/sam_and_max_sybil_pandemik_expertise.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/sam_and_max_sybil_pandemik_expertise.png",
+      "sha256": "74ff97175b1b7ff19a7b11f6293e8adb5cbc18dcb0ad73f7a61677419ae1ee99",
+      "classification": "approved"
+    },
+    {
+      "id": "jet_set_radio_beat_casque_vert",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/jet_set_radio_beat_casque_vert.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/jet_set_radio_beat_casque_vert.png",
+      "sha256": "7b5299906ae3556978fff7e461d0a8b416d4639a01007b1a2afc560806412919",
+      "classification": "approved"
+    },
+    {
+      "id": "jet_set_radio_gum_tenue_verte",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/jet_set_radio_gum_tenue_verte.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/jet_set_radio_gum_tenue_verte.png",
+      "sha256": "f1a9d27e32ed64c270153fc76b51d2fec58f563152a2f6c117d73b62b9050e38",
+      "classification": "approved"
+    },
+    {
+      "id": "jet_set_radio_corn_bonnet_et_veste",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/jet_set_radio_corn_bonnet_et_veste.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/jet_set_radio_corn_bonnet_et_veste.png",
+      "sha256": "0d3cf6766dd6502d077382a4a2843b016e49515fbb095500367cb6ba1bb2bd37",
+      "classification": "approved"
+    },
+    {
+      "id": "oddworld_abe_possession",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/oddworld_abe_possession.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/oddworld_abe_possession.png",
+      "sha256": "eabc591a4c943cb0ec853e01c0d67157fd67a17ee03b1f0191b1f5a7be478748",
+      "classification": "approved"
+    },
+    {
+      "id": "oddworld_munch_telecommande",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/oddworld_munch_telecommande.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/oddworld_munch_telecommande.png",
+      "sha256": "8a547f3f60144ef7f34923eaf5a834c0ef5bafb0483e750d2250ec1f533ac41d",
+      "classification": "approved"
+    },
+    {
+      "id": "oddworld_stranger_live_ammo",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/oddworld_stranger_live_ammo.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/oddworld_stranger_live_ammo.png",
+      "sha256": "1ab9206994487e8df62041454138cf207abf8c0cee86ba12289cd0a601018dd3",
+      "classification": "approved"
+    },
+    {
+      "id": "super_meat_boy_meat_boy",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/super_meat_boy_meat_boy.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/super_meat_boy_meat_boy.png",
+      "sha256": "ab19a5a8d1e19480985489ed599098448558b01c3f32d1df502e4aaf4eb1199f",
+      "classification": "approved"
+    },
+    {
+      "id": "super_meat_boy_bandage_girl",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/super_meat_boy_bandage_girl.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/super_meat_boy_bandage_girl.png",
+      "sha256": "4c93b10a7bc02af8ac3af03ab1578c0c0ffc1995bed777a14d7882721fb9b6af",
+      "classification": "approved"
+    },
+    {
+      "id": "super_meat_boy_brownie",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/super_meat_boy_brownie.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/super_meat_boy_brownie.png",
+      "sha256": "2a732dfa1c7a510afccbda3b936cb5a1d7f8ae1bc550d6ed530a0f52abfc7ac4",
+      "classification": "approved"
+    },
+    {
+      "id": "bit_trip_commander_video",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/bit_trip_commander_video.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/bit_trip_commander_video.png",
+      "sha256": "a4b57d2043e689eac9e670aa1afe64c7ccb5a985a716da455cd11cfe363bf3e8",
+      "classification": "approved"
+    },
+    {
+      "id": "bit_trip_commandgirl_video",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/bit_trip_commandgirl_video.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/bit_trip_commandgirl_video.png",
+      "sha256": "e804b3a4fd7268b91db8992ca3c0740f074791f765a6b36c0c9e0ec8721718b2",
+      "classification": "approved"
+    },
+    {
+      "id": "sackboy_lbp",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/sackboy_lbp.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/sackboy_lbp.png",
+      "sha256": "e97351603cbffdfc7ac3e55ed30dcceee48a306533f4ad296c267d01fed16dc7",
+      "classification": "approved"
+    },
+    {
+      "id": "toggle_lbp",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/toggle_lbp.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/toggle_lbp.png",
+      "sha256": "90bc0bce11132f8794e38d1f9c94b5f369f1bb9237309f0b5ca04eab000ff85c",
+      "classification": "approved"
+    },
+    {
+      "id": "wallace_gromit_wallace",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/wallace_gromit_wallace.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/wallace_gromit_wallace.png",
+      "sha256": "355970602408529e0b98fb5d87c9ba5f44a1fe0cdd2d06cae6c31b8417fcc344",
+      "classification": "approved"
+    },
+    {
+      "id": "wallace_gromit_gromit",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/wallace_gromit_gromit.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/wallace_gromit_gromit.png",
+      "sha256": "ced498853f6ce71c308ec99e69c542bdaa2cab7622478a73450c5814647f0012",
+      "classification": "approved"
+    },
+    {
+      "id": "wallace_gromit_wendolene_ramsbottom",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/wallace_gromit_wendolene_ramsbottom.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/wallace_gromit_wendolene_ramsbottom.png",
+      "sha256": "b551e2b72fd928b1bbaa1c13c81e2788fcb65daf135816b10225170ea230a840",
+      "classification": "approved"
+    },
+    {
+      "id": "gex_agent_xtra",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/gex_agent_xtra.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/gex_agent_xtra.png",
+      "sha256": "0cb0e980f5393b4423a58bf1c390e5e2bf076873664ac2a2f45d85a790bcaaad",
+      "classification": "approved"
+    },
+    {
+      "id": "gex_alfred",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/gex_alfred.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/gex_alfred.png",
+      "sha256": "214c3fd397b1105cff8f4bbe1fd222ec8a14aa1896134303d0d388c555809f5e",
+      "classification": "approved"
+    },
+    {
+      "id": "heart_of_darkness_whisky_rescue",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/heart_of_darkness_whisky_rescue.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/heart_of_darkness_whisky_rescue.png",
+      "sha256": "8f740cf4e050633541e1f82dac583e726d2f093b65bd7bdced9ac282e91c26a0",
+      "classification": "approved"
+    },
+    {
+      "id": "freddi_fish_freddi",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/freddi_fish_freddi.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/freddi_fish_freddi.png",
+      "sha256": "ee43ce520bcb03c4abc70315073129f69db9a5e70a0c16ac0691d04f17ca7dd7",
+      "classification": "approved"
+    },
+    {
+      "id": "freddi_fish_luther",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/freddi_fish_luther.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/freddi_fish_luther.png",
+      "sha256": "635d12013044dc8a113eb9e5b512f9e1da437ee298672b676dc6fc6b90486158",
+      "classification": "approved"
+    },
+    {
+      "id": "freddi_fish_cousin_calico",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-a/freddi_fish_cousin_calico.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-a/freddi_fish_cousin_calico.png",
+      "sha256": "89aa95aae625cc0ae3c2aa144a870dd174fae648b00239d5942cf61945a6af24",
+      "classification": "approved"
+    },
+    {
+      "id": "sev_killzone",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/sev_killzone.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/sev_killzone.png",
+      "sha256": "338b7d8af67a6a665f234624e7b53032c7f98af4cc02e102e28dfd07e511d7b4",
+      "classification": "approved"
+    },
+    {
+      "id": "rico_killzone",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/rico_killzone.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/rico_killzone.png",
+      "sha256": "807f76d0196a3fab794074dfdef952e2a40f3a0de7faf1cc685d3d9dd02ef83e",
+      "classification": "approved"
+    },
+    {
+      "id": "echo_killzone",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/echo_killzone.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/echo_killzone.png",
+      "sha256": "aebf82aa7405947e783cfb5270ffaf51bc1da254c1c2e3373f768598d473d2c6",
+      "classification": "approved"
+    },
+    {
+      "id": "jack_cooper_tf2",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/jack_cooper_tf2.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/jack_cooper_tf2.png",
+      "sha256": "97411d2eaeea509109db87099e283f15bfe7e885b28dca13bb274a276c27aaf7",
+      "classification": "approved"
+    },
+    {
+      "id": "bt_7274_tf2",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/bt_7274_tf2.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/bt_7274_tf2.png",
+      "sha256": "d13e4641c09aeedef945cd8db70c4370351d2c1ee6e76d198b007e5913ec952d",
+      "classification": "approved"
+    },
+    {
+      "id": "sarah_briggs_tf2",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/sarah_briggs_tf2.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/sarah_briggs_tf2.png",
+      "sha256": "be8b07fee027d36e0584bb968c029e462f4c07d63a9b72058f1408fbf62955fa",
+      "classification": "approved"
+    },
+    {
+      "id": "tank_matrix",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/tank_matrix.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/tank_matrix.png",
+      "sha256": "5cfe0db392cd534a06399bd7aeb96a722fdc5fac69e99bf0f88bf3ed07c56eab",
+      "classification": "approved"
+    },
+    {
+      "id": "johnny_silverhand_cp",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/johnny_silverhand_cp.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/johnny_silverhand_cp.png",
+      "sha256": "3e102a93a0da901b0a8c07b36e9d647ca869e4fce439bd702cda79453c6cdfcf",
+      "classification": "approved"
+    },
+    {
+      "id": "panam_palmer_cp",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/panam_palmer_cp.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/panam_palmer_cp.png",
+      "sha256": "6f4beb3d88c3cd06f412b572a2def0a61ae261d5cb1189f42ba27d1e7b0d905c",
+      "classification": "approved"
+    },
+    {
+      "id": "wolfenstein_machinegames_b_j_blazkowicz",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/wolfenstein_machinegames_b_j_blazkowicz.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/wolfenstein_machinegames_b_j_blazkowicz.png",
+      "sha256": "eeed3fbe49dfa372991d72d9ece8a1fc6af89f3e5f9b0555d92f4e9317801607",
+      "classification": "approved"
+    },
+    {
+      "id": "wolfenstein_machinegames_anya_oliwa",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/wolfenstein_machinegames_anya_oliwa.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/wolfenstein_machinegames_anya_oliwa.png",
+      "sha256": "0be879d2e3593268e4c063bfbdfaad0c4de76a450852ca5b131eafd7645b500c",
+      "classification": "approved"
+    },
+    {
+      "id": "wolfenstein_machinegames_set_roth",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/wolfenstein_machinegames_set_roth.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/wolfenstein_machinegames_set_roth.png",
+      "sha256": "da2a28a99a9ee4cbcb1dad1a2dc6b5c5273eed937829a05476fbcc036f0746ad",
+      "classification": "approved"
+    },
+    {
+      "id": "remember_me_nilin_chasseuse_de_memoires",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/remember_me_nilin_chasseuse_de_memoires.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/remember_me_nilin_chasseuse_de_memoires.png",
+      "sha256": "ff552dd65b4026f9ef53274507d60412346b923ae7d917549880183c2ede6346",
+      "classification": "approved"
+    },
+    {
+      "id": "caine_jw",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/caine_jw.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/caine_jw.png",
+      "sha256": "dedbce2cba004afe227faf26ec8308cf09adfb96e6048d430431982657866579",
+      "classification": "approved"
+    },
+    {
+      "id": "remember_me_bad_request_infiltration",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/remember_me_bad_request_infiltration.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/remember_me_bad_request_infiltration.png",
+      "sha256": "16d968e250fc9c374dc14422d764bd7e1fbb6ec9488263b2bc9d0a54ab521550",
+      "classification": "approved"
+    },
+    {
+      "id": "hellblade_senua",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/hellblade_senua.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/hellblade_senua.png",
+      "sha256": "8101deed18bf7af3f3f07eb8232b744e71679a4b34556bdf02fc00bc712be070",
+      "classification": "approved"
+    },
+    {
+      "id": "john_rambo",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/john_rambo.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/john_rambo.png",
+      "sha256": "5678dcdc02a16ee3fb2fc72730ffc4fd6ec2ee9587c8b5f6a667fe5ce7bf6aa1",
+      "classification": "approved"
+    },
+    {
+      "id": "sam_trautman",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/sam_trautman.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/sam_trautman.png",
+      "sha256": "15653ca1efb57ccfd72e0a9fe95bf649b52aec699b5b9f73afbf2f596ef8ddb4",
+      "classification": "approved"
+    },
+    {
+      "id": "daikatana_hiro_miyamoto",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/daikatana_hiro_miyamoto.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/daikatana_hiro_miyamoto.png",
+      "sha256": "85f8d01b8bf2ed6faaa3e6d5d97c6d54d7937c497c9d2bb826559909076b3c12",
+      "classification": "approved"
+    },
+    {
+      "id": "daikatana_mikiko_ebihara",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/daikatana_mikiko_ebihara.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/daikatana_mikiko_ebihara.png",
+      "sha256": "cf86eb1100c670926eae4604863b127006af0ddbda071b8e45bfbb5846121ffa",
+      "classification": "approved"
+    },
+    {
+      "id": "daikatana_superfly_johnson",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/daikatana_superfly_johnson.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/daikatana_superfly_johnson.png",
+      "sha256": "6b5832c9b9f141a3838e4c9b5c74518cf457f512ea0524be95cbbe01c8ce4e9d",
+      "classification": "approved"
+    },
+    {
+      "id": "dead_rising_frank_west",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/dead_rising_frank_west.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/dead_rising_frank_west.png",
+      "sha256": "0b74530c1de3b049bb68f9120fe2b06b1a2942f59f4e14b9c8782460aafe64ff",
+      "classification": "approved"
+    },
+    {
+      "id": "dead_rising_chuck_greene",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/dead_rising_chuck_greene.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/dead_rising_chuck_greene.png",
+      "sha256": "a7f02e2344ff7721feb49a846523759feb47f4da449f6afd6dc30e4750423f88",
+      "classification": "approved"
+    },
+    {
+      "id": "dead_rising_nick_ramos",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/dead_rising_nick_ramos.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/dead_rising_nick_ramos.png",
+      "sha256": "c6056dbde39befe34d0ee7ec09557de0094b64adfa08c41aa589622a91b3ada4",
+      "classification": "approved"
+    },
+    {
+      "id": "the_surge_warren",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/the_surge_warren.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/the_surge_warren.png",
+      "sha256": "54c7e931bddbfc2c5d961f64a559e7a3ece767e7ce2ff3222abc6f700531eae9",
+      "classification": "approved"
+    },
+    {
+      "id": "the_surge_irina_beckett",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/the_surge_irina_beckett.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/the_surge_irina_beckett.png",
+      "sha256": "c464be97c02d131ea4212ecba1ffd8b9e12f7bd965d15016a66c840416ed84a0",
+      "classification": "approved"
+    },
+    {
+      "id": "rocky_balboa",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/rocky_balboa.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/rocky_balboa.png",
+      "sha256": "9607f730d2443eaf18f5053223e32189bd3604c011fe6a05ff66063f9c31226e",
+      "classification": "approved"
+    },
+    {
+      "id": "the_darkness_jackie_estacado",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/the_darkness_jackie_estacado.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/the_darkness_jackie_estacado.png",
+      "sha256": "f66d654f24a6aae7991e1d333761ab4bbaee4e65a42f1e9b6620f14bbe61dd1b",
+      "classification": "approved"
+    },
+    {
+      "id": "the_darkness_jenny_romano_soutien",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/the_darkness_jenny_romano_soutien.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/the_darkness_jenny_romano_soutien.png",
+      "sha256": "57cd4a2238c48567735d1d08c4c4809fba57790a59fa396ddcec387d9821ee7c",
+      "classification": "approved"
+    },
+    {
+      "id": "the_darkness_johnny_powell_soutien",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/the_darkness_johnny_powell_soutien.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/the_darkness_johnny_powell_soutien.png",
+      "sha256": "bc47ee97e287aef723e716097c15fe9c6ef4a458bffd02b72be87b148312bb9b",
+      "classification": "approved"
+    },
+    {
+      "id": "chumbucket_mm",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/chumbucket_mm.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/chumbucket_mm.png",
+      "sha256": "eeea153189c112a027b1402b8a6d6627bd895869bd4886e7f4335eca91606776",
+      "classification": "approved"
+    },
+    {
+      "id": "aya_brea",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/aya_brea.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/aya_brea.png",
+      "sha256": "0f2ff729b6039735300fa55ff0b9d39c5788457124a23a55705062115844979f",
+      "classification": "approved"
+    },
+    {
+      "id": "daniel_dollis",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/daniel_dollis.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/daniel_dollis.png",
+      "sha256": "a7dc3432d0038f14f86860a6c4ddf947d0d0b0a39d67041717907b65d731a657",
+      "classification": "approved"
+    },
+    {
+      "id": "maeda_pe",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/maeda_pe.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/maeda_pe.png",
+      "sha256": "fa613806c5fdb5072fd8347fdb4f597fa6daae639500be6ea0325393568c083e",
+      "classification": "approved"
+    },
+    {
+      "id": "ishikawa_gits",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/ishikawa_gits.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/ishikawa_gits.png",
+      "sha256": "5177554c50596599322ba24b84719c19537705113c46271fa636ed88d7bace92",
+      "classification": "approved"
+    },
+    {
+      "id": "tachikoma",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/tachikoma.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/tachikoma.png",
+      "sha256": "ff0f04d99f525e4b9d523b0e07d2259a01434daa755c6ba110c08f3c44f9d0d6",
+      "classification": "approved"
+    },
+    {
+      "id": "bioshock_rapture_tenenbaum",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/bioshock_rapture_tenenbaum.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/bioshock_rapture_tenenbaum.png",
+      "sha256": "ace5a4ebc1c32cbf7829df6a88ebd79edb2513ee6f8b2c693395b118cf427e10",
+      "classification": "approved"
+    },
+    {
+      "id": "houston_pd",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/houston_pd.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/houston_pd.png",
+      "sha256": "40daf8fc63148acc2bdf01c6c3ad6a15e8ae43fd6eb8815f41350952a76d8d27",
+      "classification": "approved"
+    },
+    {
+      "id": "apollo_creed",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/apollo_creed.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/apollo_creed.png",
+      "sha256": "df64cb8ef345598117ce74908daa943f7caebe81037725f03fdb94a2e8410927",
+      "classification": "approved"
+    },
+    {
+      "id": "david_dc2",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-b/david_dc2.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-b/david_dc2.png",
+      "sha256": "ad29231ba85afc07a07cfedca65e2ac28a1bc99ec929c035dbbbbc0287dd1c3e",
+      "classification": "approved"
+    },
+    {
+      "id": "tsubaki_bb",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/tsubaki_bb.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/tsubaki_bb.png",
+      "sha256": "91e0933673461a637b88122c9ca8019322d05599c220485213300566aed62e2e",
+      "classification": "approved"
+    },
+    {
+      "id": "hakumen_bb",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/hakumen_bb.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/hakumen_bb.png",
+      "sha256": "aa7ed52a7988e03b1bf74478bd31df004ccd24e848e191d8b2ac0fb23542b5a4",
+      "classification": "approved"
+    },
+    {
+      "id": "angel_buffy",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/angel_buffy.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/angel_buffy.png",
+      "sha256": "071a5759e8ff689fe2d198d42a3b25390b2069c9ccd7e8d159b49b1ea040fb4f",
+      "classification": "approved"
+    },
+    {
+      "id": "spike_spiegel",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/spike_spiegel.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/spike_spiegel.png",
+      "sha256": "858b8d96016395a7ed45b73d630311b22060b2d06b1bfe508f841ee8a1e06ff1",
+      "classification": "approved"
+    },
+    {
+      "id": "faye_valentine",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/faye_valentine.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/faye_valentine.png",
+      "sha256": "667999f6a0ebc03c8b25c4303506aa413ca523599897950dc8c2c8dc40b14503",
+      "classification": "approved"
+    },
+    {
+      "id": "jet_black",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/jet_black.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/jet_black.png",
+      "sha256": "a13161d26135c7311fc0479487772500dc9e978b3d95cf8d52eab42e53a633ed",
+      "classification": "approved"
+    },
+    {
+      "id": "edward_elric",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/edward_elric.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/edward_elric.png",
+      "sha256": "77a2f1e7af5f70c48f780e7c1289ca85cb9b78ab9e31d3af52e4179655890a20",
+      "classification": "approved"
+    },
+    {
+      "id": "alphonse_elric",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/alphonse_elric.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/alphonse_elric.png",
+      "sha256": "11948021b859e1d7836b2d2f05cca393f5ea8f21303a83bcb41d25b0530406c8",
+      "classification": "approved"
+    },
+    {
+      "id": "roy_mustang",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/roy_mustang.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/roy_mustang.png",
+      "sha256": "5b099235c9d95d9d5f71218d76a88a6215cc7310a019dd5aa61c7a50315de140",
+      "classification": "approved"
+    },
+    {
+      "id": "akane_tsunemori",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/akane_tsunemori.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/akane_tsunemori.png",
+      "sha256": "ec3f50cf52868e55b38039c945f441713c9ef08b2104c600f84d097682a0f2ce",
+      "classification": "approved"
+    },
+    {
+      "id": "shinya_kogami",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/shinya_kogami.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/shinya_kogami.png",
+      "sha256": "307c31aeea56c3de023c155ed0301e36bff495621b8f4dfe17dc7baa8e37d5fc",
+      "classification": "approved"
+    },
+    {
+      "id": "nobuchika_ginoza",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/nobuchika_ginoza.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/nobuchika_ginoza.png",
+      "sha256": "5eb7d48e95dbae7795d82c54f4ab23043f8d2cd1f1720ceb1aa4b2e20f377031",
+      "classification": "approved"
+    },
+    {
+      "id": "frieren_elf",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/frieren_elf.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/frieren_elf.png",
+      "sha256": "0b90cf0bcfce4ec3e9cd64eb032dd4d13a3e33e31dcf783d8c8029e430546a0e",
+      "classification": "approved"
+    },
+    {
+      "id": "fern_mage",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/fern_mage.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/fern_mage.png",
+      "sha256": "53e2a3eb93a7a1d72bc8162ef0007fdd83324a238cb7da4d38a957bbc50d478a",
+      "classification": "approved"
+    },
+    {
+      "id": "stark_warrior",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/stark_warrior.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/stark_warrior.png",
+      "sha256": "b4655360cfb59c861ee38d22953a14f6c0487da108cd23baef17c31f21fd9fc1",
+      "classification": "approved"
+    },
+    {
+      "id": "saitama_opm",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/saitama_opm.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/saitama_opm.png",
+      "sha256": "2bc5245df360d5225a411437e9cd9aff6b441e1e90fdc265bdfa3d546e18243d",
+      "classification": "approved"
+    },
+    {
+      "id": "genos_opm",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/genos_opm.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/genos_opm.png",
+      "sha256": "832fe051f3b02198420d771f684d97f2e2b361f8ba7ee1b0ad40541e2501a668",
+      "classification": "approved"
+    },
+    {
+      "id": "tatsumaki_opm",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/tatsumaki_opm.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/tatsumaki_opm.png",
+      "sha256": "ad85ca8cb75451ddc204e31ff21b6858485a68247f040724abbc7bcc4b6606a9",
+      "classification": "approved"
+    },
+    {
+      "id": "kirito_sao",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/kirito_sao.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/kirito_sao.png",
+      "sha256": "5c3015795f96add6c12eef6e567393b795a1a91e71fc77fa0084cea555df1516",
+      "classification": "approved"
+    },
+    {
+      "id": "asuna_sao",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/asuna_sao.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/asuna_sao.png",
+      "sha256": "82d0ffdf8d01f3300ffbf283275371e925d0c5aaea9fd66d29ef56e6ad6efc35",
+      "classification": "approved"
+    },
+    {
+      "id": "klein_sao",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/klein_sao.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/klein_sao.png",
+      "sha256": "c5a9ac85beb21a4de9c175dd0e2a534d13c04339ba4331e92cd4fcaab4d6de69",
+      "classification": "approved"
+    },
+    {
+      "id": "denji_chainsaw",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/denji_chainsaw.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/denji_chainsaw.png",
+      "sha256": "ff0ca22d7d45e8a264c3e152758052c160e35b16ddda783c7ab0597ddaf561a8",
+      "classification": "approved"
+    },
+    {
+      "id": "power_blood_fiend",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/power_blood_fiend.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/power_blood_fiend.png",
+      "sha256": "42167d64bf775acbdc9ef8f7e434956e8cbfd114f89650a64c89610ba3d6942a",
+      "classification": "approved"
+    },
+    {
+      "id": "aki_hayakawa",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/aki_hayakawa.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/aki_hayakawa.png",
+      "sha256": "d4e6aba1cee33b4dca7293801def830779743e115435bd8584ff8829fe7a4c6f",
+      "classification": "approved"
+    },
+    {
+      "id": "meiko",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/meiko.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/meiko.png",
+      "sha256": "b4a29c2328367d9e1fc9eece081325e42101a65f21aee4ff1c646367ca6c06bd",
+      "classification": "approved"
+    },
+    {
+      "id": "kaito",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/kaito.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/kaito.png",
+      "sha256": "558c2467ecd9941ca1f52020a72c8597c86dbb3e1cabf6a48b7a406fa79ca3aa",
+      "classification": "approved"
+    },
+    {
+      "id": "oracle_matrix",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/oracle_matrix.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/oracle_matrix.png",
+      "sha256": "8e41711d29a46eaad450e843cb9c216b6f3f863a3b8ed19c473fcd49c2ed0a59",
+      "classification": "approved"
+    },
+    {
+      "id": "invincible_invincible",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/invincible_invincible.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/invincible_invincible.png",
+      "sha256": "e0e02489a1f27f6170da65fda74170f69c37cffadff504fc60eb894765bbd3e5",
+      "classification": "approved"
+    },
+    {
+      "id": "invincible_atom_eve",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/invincible_atom_eve.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/invincible_atom_eve.png",
+      "sha256": "ee00bb5de5566d34173e8d0e08f723ab12c06302d43b2a93c074b6f04eadae6b",
+      "classification": "approved"
+    },
+    {
+      "id": "invincible_robot",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/invincible_robot.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/invincible_robot.png",
+      "sha256": "e8757481c9d72a7561253f630cb84588f23ceb98700f6fcf0424a2300dc9d48b",
+      "classification": "approved"
+    },
+    {
+      "id": "wakfu_yugo",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/wakfu_yugo.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/wakfu_yugo.png",
+      "sha256": "b5e4f40a12ed91f55c6f22c3cdf736d76ba7de3593d5bc95363efd9d639e86ce",
+      "classification": "approved"
+    },
+    {
+      "id": "wakfu_amalia_sheran_sharm",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/wakfu_amalia_sheran_sharm.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/wakfu_amalia_sheran_sharm.png",
+      "sha256": "1259b9fd15caf82e10f425db6c8cff5fc3e6eb70adb4d8888d81e86a7491a538",
+      "classification": "approved"
+    },
+    {
+      "id": "wakfu_sir_percedal_of_sadlygrove",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/wakfu_sir_percedal_of_sadlygrove.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/wakfu_sir_percedal_of_sadlygrove.png",
+      "sha256": "35bf90b13021d3446a4f46982691a7b7a2ea5ac7b9d1570281f865871db3c971",
+      "classification": "approved"
+    },
+    {
+      "id": "murder_drones_uzi_doorman",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/murder_drones_uzi_doorman.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/murder_drones_uzi_doorman.png",
+      "sha256": "ac26f3f7e99ddc1102bea0a6731823814e95e02f1bc27fbce3bc15a24acbe1ab",
+      "classification": "approved"
+    },
+    {
+      "id": "murder_drones_serial_designation_n",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/murder_drones_serial_designation_n.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/murder_drones_serial_designation_n.png",
+      "sha256": "9823c09c585133189d4696c4e82c056f40fcd0991335d4c941f6303fd8f6f229",
+      "classification": "approved"
+    },
+    {
+      "id": "murder_drones_v",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/murder_drones_v.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/murder_drones_v.png",
+      "sha256": "fa57f686985ef28c32991b610b7e966d160ebc26a646d49d48fc2ec98bd02702",
+      "classification": "approved"
+    },
+    {
+      "id": "helluva_boss_blitzo",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/helluva_boss_blitzo.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/helluva_boss_blitzo.png",
+      "sha256": "f5424fe7e8012cf6655cfc0e4330fa2127d6f974f4c41687abebc71509835590",
+      "classification": "approved"
+    },
+    {
+      "id": "helluva_boss_moxxie",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/helluva_boss_moxxie.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/helluva_boss_moxxie.png",
+      "sha256": "399ccc12aebda14b239e4f78c61852977003cc8da61365d3d809024562979f0c",
+      "classification": "approved"
+    },
+    {
+      "id": "helluva_boss_millie",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/helluva_boss_millie.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/helluva_boss_millie.png",
+      "sha256": "05fa1be6de2801e25e15199d16564a64296e4632ad04f8f81d78e12a3d14cc35",
+      "classification": "approved"
+    },
+    {
+      "id": "izutsumi_meshi",
+      "path": "public/sprites/generated/combat-character-corrections-wave16-part-c/izutsumi_meshi.png",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/izutsumi_meshi.png",
+      "sha256": "594323967607b4510c9f9bd6b14e602e5d89f6acd1c7f571efd3e43fb0df2270",
+      "classification": "approved"
+    }
+  ],
+  "sourceFilesBefore": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "ab81e2ceac9daf19696bc1720fa7ddf212e7dc7760d342dbdc83a20df4158996",
+    "package-lock.json": "5b08e7f0e74a8c6d091802c18af8481b3f329b6f2df0a1f8327b8da42523a290"
+  },
+  "sourceFilesAfter": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "ab81e2ceac9daf19696bc1720fa7ddf212e7dc7760d342dbdc83a20df4158996",
+    "package-lock.json": "5b08e7f0e74a8c6d091802c18af8481b3f329b6f2df0a1f8327b8da42523a290"
+  },
+  "sourceFilesUnchanged": true,
+  "historicalPythonAndThresholdsUnchanged": true,
+  "availabilityUnchanged": true,
+  "outputsBefore": {
+    "docs/rift-dossiers/catalog.json": {
+      "path": "docs/rift-dossiers/catalog.json",
+      "sha256": "0298cc9c00cbf0d1af7e8c303eb0e207dc2defcfde57a0a797fb18c12a572cbe",
+      "bytes": 10856691
+    },
+    "docs/rift-dossiers/character-reference-quality.json": {
+      "path": "docs/rift-dossiers/character-reference-quality.json",
+      "sha256": "38f1c6c046537a208980e421150bf1a1f7c229553f02ed5d4aca3d98c40bcb08",
+      "bytes": 3581059
+    },
+    "src/game/riftDossierAssets.json": {
+      "path": "src/game/riftDossierAssets.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a",
+      "bytes": 552092
+    }
+  },
+  "outputsAfter": {
+    "docs/rift-dossiers/catalog.json": {
+      "path": "docs/rift-dossiers/catalog.json",
+      "sha256": "0705e42e0ac94165ea8ef0d2d4b6356e3b80bee19928a3a2940bafe0ca439a9d",
+      "bytes": 10862013
+    },
+    "docs/rift-dossiers/character-reference-quality.json": {
+      "path": "docs/rift-dossiers/character-reference-quality.json",
+      "sha256": "2cd09dc4d3de94b091c23790e9cf5cfc437507327ad18d4a3362bab770fe6681",
+      "bytes": 3592319
+    },
+    "src/game/riftDossierAssets.json": {
+      "path": "src/game/riftDossierAssets.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a",
+      "bytes": 552092
+    }
+  },
+  "qualityBindsCurrentReferenceHashes": true,
+  "source1to1Verified": false
+}

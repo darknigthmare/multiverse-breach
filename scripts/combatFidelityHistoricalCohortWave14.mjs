@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { COMBAT_ABILITY_OVERRIDES } from '../src/game/combat/abilities/catalog.js';
+import { HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE15 as COMBAT_ABILITY_OVERRIDES } from './combatFidelityHistoricalCohortWave15.mjs';
 
-// Reconstruct the exact pre-W14 cohort from its independently frozen records.
+// First remove the exact W15 cohort, then reconstruct the independently frozen pre-W14 cohort.
 // Live source-version behavior is tested separately by the W14 kit/runtime tests.
 const bytes = readFileSync(new URL('../docs/combat-fidelity-wave14-2026-10-25/batch-plan-before.json', import.meta.url));
 assert.equal(createHash('sha256').update(bytes).digest('hex'), '458be3e604ee16a49b06da0d355c9328db7b9799a9bda242679702db201918f0');

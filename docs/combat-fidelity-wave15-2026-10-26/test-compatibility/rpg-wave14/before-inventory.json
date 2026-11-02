@@ -1,0 +1,363 @@
+{
+  "phase": "before-current-wrapper-change",
+  "target": "docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs",
+  "targetSha256": "477c3eb393d9426ce5ba6755d83ae4b2c79eeeba98a0b9c8603bd3185e2ec346",
+  "historicalAssets": 49,
+  "registries": {
+    "src/game/combat/summonAnimationsWave5.generated.json": "208453f01ab3ebdfa46703130ebf411b403e0c160e1bd002d3dba7238cca9835",
+    "src/game/combat/summonAnimationsWave6.generated.json": "80e2a5aca9c3f89dae7cf94b4b95fc0245f66dedf8b04ea94bd31984ce22cd5b",
+    "src/game/combat/summonAnimationsWave7.generated.json": "31d34364a4bbfd260758058d9bc83c9e51a4fdf31e478157cb633ed59ccc1fd6",
+    "src/game/combat/summonAnimationsWave8.generated.json": "ef39486ae998c21c173cc643f6c55fee15f0cc54a30a4cd90a587d1e35b7839d",
+    "src/game/combat/summonAnimationsWave9.generated.json": "4cf12b795087beb1df35d5961ce158b3c7687a98ae083f3c31aac83703d21e7f",
+    "src/game/combat/summonAnimationsWave10.generated.json": "bf91bf446d7f0c2bb3b424d7ca7af179bf5db84ce32f71a1b3b103b589810895",
+    "src/game/combat/summonAnimationsWave11.generated.json": "501c54380df888e6a17e4edc7bbdde12cb9b9218c576e1bf46dbae0c3607b895",
+    "src/game/combat/summonAnimationsWave12.generated.json": "3209abd0f564f3ff79524f654a2031937aa7a4551166a6ae24f5ce5e932cae5b",
+    "src/game/combat/summonAnimationsWave13.generated.json": "a9a27a6b94184567bb01eeab68375e1c73c97a316e3ea2dfb2010776aa5f366f",
+    "src/game/combat/summonAnimationsWave14.generated.json": "25407b7735b42599a2c4c2c38f12785d17a46077af3ba333dd35547508976f5f"
+  },
+  "assets": {
+    "Final Fantasy VII::Ifrit::Hellfire": {
+      "recordSha256": "09b54eb0822a33f24cc7c90fe7cb42f2291354c5e034db8fb1d0bae7f07317fd",
+      "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+      "sheetSha256": "db0753da04e298b95d4d7ade559c24bc58cf10449f27530a17893be81f3f7583",
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/ifrit-source.png",
+      "sourceImageSha256": "303bbd357ec1ab409bd1780839da7e5a624835a8217999ed603a58e5641aed94"
+    },
+    "Final Fantasy VII::Shiva::Diamond Dust": {
+      "recordSha256": "30c72aadeab59f2d222af915918b81e910751c63fcca0db71e6a3520d8a01793",
+      "sheet": "/sprites/generated/summon-animations-wave6/shiva.png",
+      "sheetSha256": "d4fd23a0600e13bee61e0e24b66ea1675d4dae72321a59747eabc9e2d4343c03",
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/summon-sources/shiva-original.png",
+      "sourceImageSha256": "60eddb9782c3b71dda14b6050c468d626908e55117e56229b80cb4cf0ceceb4d"
+    },
+    "JoJo's Bizarre Adventure::Star Platinum::Ora Ora": {
+      "recordSha256": "af9cddf668efa8146baafdc4af5f5b7dcd3a1dbea3de48ef14a4d5ed787a6434",
+      "sheet": "/sprites/generated/summon-animations-wave6/star-platinum.png",
+      "sheetSha256": "9120946d8445d7827c98f676b1665a6f91bdd6c98e369580d97232497855644a",
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/summon-sources/star-platinum-original.png",
+      "sourceImageSha256": "375c0d55a97d31c2353dc10d5f704f7841dd726fe61ef87075b19a7eed2ff35c"
+    },
+    "Sonic::Tails et le Tornado::Tornado Machine Gun": {
+      "recordSha256": "a6bdd3b8727e4aff79c41c87fc88c47c2a00d944d242a499c94e58907f3009e1",
+      "sheet": "/sprites/generated/summon-animations-wave6/tornado.png",
+      "sheetSha256": "d304ceee90cf317ee60efff349c7f367517b82fdc3857f07d05f9ffc8501720c",
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/summon-sources/tornado-original.png",
+      "sourceImageSha256": "94c838cac19b9313a3535dd6ab5b6ea01b42704d10bacebffc05e705ce998321"
+    },
+    "Final Fantasy VII::Bahamut::Megaflare": {
+      "recordSha256": "5ab572039ba421ef09d1a786e3fa9c67fcf2c4453ef21a2492d617ee3ebb2bfb",
+      "sheet": "/sprites/generated/summon-animations-wave7/bahamut.png",
+      "sheetSha256": "adfdc0c89e9b41b392eb8e43934598a116f401c79081914185e0b0859b48682c",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/summon-sources/bahamut-original.png",
+      "sourceImageSha256": "72523dc610d8970b5680df233cbd9b25dc00d418a4af5f6fbe47f152ee005bfb"
+    },
+    "Guilty Gear::Yamada::Great Yamada Attack": {
+      "recordSha256": "98fcd172e70dfe07b4e9aed1c246af21c2da45e0ed4e8f8f93a3606a62500938",
+      "sheet": "/sprites/generated/summon-animations-wave7/yamada.png",
+      "sheetSha256": "7cdb90732038e8ce497db67acc365c76bf838ca4ce5fdd29246c58237ae51adf",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/summon-sources/yamada-original.png",
+      "sourceImageSha256": "0ed70e43cdccbdfa181fd12efa0334ac9667703aaacf6c1a1f02b13795755d41"
+    },
+    "Skullgirls::Black Egrets::Inferno Brigade": {
+      "recordSha256": "b365bb7a72ce39bc118e973cdb15bd1197cc015fc1065426869996dd958f4174",
+      "sheet": "/sprites/generated/summon-animations-wave7/black-egrets.png",
+      "sheetSha256": "c9d4010bc625951a17a68d1f433652e8c82cfce025d75aefbdddf3133465258c",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/summon-sources/black-egrets-corrected.png",
+      "sourceImageSha256": "f876cdb4a937de0dec03e1ea68787a5c0817c9f5afffafa11602cdaba331f080"
+    },
+    "Teen Titans::Cyborg::Sonic Cannon de Cyborg": {
+      "recordSha256": "6b205369da0b73a54849a9f4e0ff3c73574cb4f83d6ba336c80241664b12ed5f",
+      "sheet": "/sprites/generated/summon-animations-wave8/cyborg.png",
+      "sheetSha256": "59f79caefd7048bf1ba207cd6ea49f833af37de6303d146c7f7d8bb411161720",
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/cyborg-original.png",
+      "sourceImageSha256": "10d7789244eb8d427fec77c24e71e6c7e186d6a684311272b20ed2b380c8ef94"
+    },
+    "Metal Gear Rising::Raiden::Mode lame — Zandatsu": {
+      "recordSha256": "73bcb05489f4a1e07d121afe7125ff1ef84662a75728d1cdf4f0d6bc4a8b31ad",
+      "sheet": "/sprites/generated/summon-animations-wave8/raiden.png",
+      "sheetSha256": "1c2ef75d5d5e845659a949ae17ba4b09e04943e693f745c56bd7cc93253c4265",
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/raiden-original.png",
+      "sourceImageSha256": "9ae32995cc6ddad8f989654a54c9bb4bba82f3b5095b7347a4f6897b6f4d959f"
+    },
+    "Yakuza::Kazuma Kiryu::Coup du Dragon de Dojima": {
+      "recordSha256": "3b414bee6d7b824bc6dde337b34045057ba23b4d372a2b0e3a913b373c1f6258",
+      "sheet": "/sprites/generated/summon-animations-wave8/kiryu.png",
+      "sheetSha256": "912f778ac9820435da068b8e17c231f3b72fb583f7b6bee37e67edbf04c8c4b3",
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/kiryu-original.png",
+      "sourceImageSha256": "1388661524f0b161355a6a3c4e8b4147d48731a0d63790e90f29daeaa6f2cee8"
+    },
+    "Dungeon Meshi::Laios Touden::Coupe de Kensuke": {
+      "recordSha256": "7c47377612f05537d5fbdffd25919b39f14d07635a3961a031949678525fe487",
+      "sheet": "/sprites/generated/summon-animations-wave8/laios.png",
+      "sheetSha256": "a244c8e65d3b72344d4947327f64398c7ec2c082b39a7d957f73fe89bf44f66c",
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/laios-original.png",
+      "sourceImageSha256": "0e39281e641ebed7f5278f14d0d53e7e9b0887c661baa29a6ffba701f5dfd8b2"
+    },
+    "Gears of War::Dom Santiago::Salve de Gnasher de Dom": {
+      "recordSha256": "06208e8f05abede9ba4de0c5e365a0fba73e05ebe2074f9698c357b78aa308eb",
+      "sheet": "/sprites/generated/summon-animations-wave9/dom.png",
+      "sheetSha256": "f1b96c84b2b055482711470bd70c89d215993349b49776d484e7463222a21b3b",
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-original.png",
+      "sourceImageSha256": "3f9820ab7b0ae87b39726938cbcad72fd2d8f2f6c687d14820b7da2b18706eec"
+    },
+    "Resident Evil::Leon S. Kennedy::Special Rocket Launcher": {
+      "recordSha256": "a1a78e2054a57f23a0aec2cad66704999d125818415ae79158a3f7d71bebce46",
+      "sheet": "/sprites/generated/summon-animations-wave9/leon.png",
+      "sheetSha256": "4a019c63a78d6f9edf6280a7765da27455a516456f43f256d5b155183bc82242",
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-original.png",
+      "sourceImageSha256": "91dd5dbda540a86c6ad054af8f99cc17e32593ce29f20828f1be27908c3d5012"
+    },
+    "Mass Effect::Garrus Vakarian::Concussive Shot": {
+      "recordSha256": "8f95c629e7bb911de57db43b6e4e2a650ea91a5deff1d9ee031f563a752b9bb5",
+      "sheet": "/sprites/generated/summon-animations-wave9/garrus.png",
+      "sheetSha256": "bfe4f2ad3c5e9cf700ba521e4d6c1a7010c60a6c4456927b5c294a273d76c263",
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-original.png",
+      "sourceImageSha256": "e869aab812235c02fdaf781bfd731fe06b5db7a16efc89d0310e626bedaf239b"
+    },
+    "Ghost in the Shell::Batou::Rafale d’appui de Batou": {
+      "recordSha256": "dfdc939b9fe7dea2003959e24179e72dc29d85fbc83e665cfa34aa9bf6d9ec57",
+      "sheet": "/sprites/generated/summon-animations-wave9/batou.png",
+      "sheetSha256": "b8d528f99b8294ff214ab745d66a08844a5d4d23642f26eb163973544e4e17ca",
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-original.png",
+      "sourceImageSha256": "e83ff4e5f5c3ad08a2bcd2e55e68a87b63aaca3acc3e74733d04326c187e8ccb"
+    },
+    "The Matrix::Trinity::Salve aux deux Beretta": {
+      "recordSha256": "efec5cbec15cc61d03658d3d483ac126601d5247a1ea79e321fb4aace8cda957",
+      "sheet": "/sprites/generated/summon-animations-wave10/trinity.png",
+      "sheetSha256": "077821da87ab9a44b3c3440cdbbc38a382bcd5c02a7384ede5413ed5d7b64ad1",
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/summon-trinity-source.png",
+      "sourceImageSha256": "fb2407f4a097215b7d87097c45f8d26c0b2f62a188d2bf05c078711fef4ef962"
+    },
+    "Stargate::Teal'c::Tir de lance Jaffa": {
+      "recordSha256": "ad80824c9c7385fcfbc9e2b8f8ee95cecf7b64c4e7922c3203b2a093f45c71e2",
+      "sheet": "/sprites/generated/summon-animations-wave10/tealc.png",
+      "sheetSha256": "7b7f9db1ef700b8cf036a4408bf26e4eadc1856a4ba1a6c337579a1c1116cb3e",
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/summon-tealc-source.png",
+      "sourceImageSha256": "0c1b9b89eacd2a512104738273bd045ea103d61a1716b6848619bc8e75a461ff"
+    },
+    "Half-Life::Alyx Vance::Tir du pistolet d’Alyx": {
+      "recordSha256": "681504ab355cc694f2d75bba616649b8e3d688a96e19d218bd14f082eb06d5a3",
+      "sheet": "/sprites/generated/summon-animations-wave10/alyx.png",
+      "sheetSha256": "a6433a3e91b8e455f59046e53b3c48c73a3666e6e3e974892d6c05a32c6de976",
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/summon-alyx-source.png",
+      "sourceImageSha256": "d38df83430112cdd3ba9e683ed12f35d19c4a0f68a8b3817a30d2bd29c4524a5"
+    },
+    "Fallout::Nick Valentine::Tir du revolver artisanal de Nick": {
+      "recordSha256": "2a89c75a9a6cb0077d2277a92a2b345b12793d1ea4ca267c24631be0ba8d9513",
+      "sheet": "/sprites/generated/summon-animations-wave10/nick.png",
+      "sheetSha256": "8ec436358aba7aae62f8588c561fd06da9606d7f7260364a12c085abbf3908f6",
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/summon-nick-source.png",
+      "sourceImageSha256": "898e98ff81d175d86be3d9c61e2cc1d542a96e1fd0ff8229ad78f25e134fb8f4"
+    },
+    "Aliens::Corporal Hicks::Rafale M41A de Hicks": {
+      "recordSha256": "9ae2b45bb8038e874a6bad7031b87eaf4305d52a4fbf384d205a66541ee97439",
+      "sheet": "/sprites/generated/summon-animations-wave10/hicks.png",
+      "sheetSha256": "d13b2ca7094b5e6a1d6733271518bed0cac18ba92668f55d103511d8eb00e1cd",
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/summon-hicks-source.png",
+      "sourceImageSha256": "019aae4cf907900902050deed1c43223f4e02beb9a9de2c53f072398904afa25"
+    },
+    "Payday::Chains::Couverture lourde de Chains": {
+      "recordSha256": "1ad2c1bbfac5c5b996fae1b4ba32f0bdba375b29b516fe1acc3f6af2b638d6a3",
+      "sheet": "/sprites/generated/summon-animations-wave10/chains.png",
+      "sheetSha256": "3287a1447981be03a5d8aeb8891574a7214b9303a49fa5c3ecc216ef1d1d8570",
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/summon-chains-source.png",
+      "sourceImageSha256": "e353db4e9e3be2f235aee9e5185bf6b3f0c116e1d5d4d2f89cd1e4700e8c43c3"
+    },
+    "Ghostbusters::Egon Spengler::Lecture du PKE Meter": {
+      "recordSha256": "3c64e9e9da4aecebc362f81c9c3d25c9700769e658d633f1c00ae3ac5707d312",
+      "sheet": "/sprites/generated/summon-animations-wave10/egon.png",
+      "sheetSha256": "b19a6f4d0fff61fa8246fe38c517f17bc471572886c83b211a6fd8ba4db20fc6",
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/summon-egon-source.png",
+      "sourceImageSha256": "3821f63f51a8264c267239ec425771d9340b4c4b356d911a14739a93bc0bf685"
+    },
+    "Left 4 Dead::Coach::Consignes de Coach": {
+      "recordSha256": "60df37f0811b2c301358fae9ee866fbbcc7cb9734ef9d559817222689b8bc06a",
+      "sheet": "/sprites/generated/summon-animations-wave10/coach.png",
+      "sheetSha256": "eb6e1e62e8f9af42a4538f2013b05e05460874e4a4c01ef0f6cd3ccbc3245260",
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/summon-coach-source.png",
+      "sourceImageSha256": "740b26855b8a91a35872d4d905c86cba869c4747ad90690965b5323c70b4b26e"
+    },
+    "Buffy the Vampire Slayer::Spike::Enchaînement vampirique de Spike": {
+      "recordSha256": "61a56fad43a4cf90aabc16c6a1a4fc162834a6ed0df06feb8b1426f5ff4f7d1c",
+      "sheet": "/sprites/generated/summon-animations-wave11/spike.png",
+      "sheetSha256": "0a4e5bd5861ed78683c79d3b8c43e6c022d9ab1ce7458894898fff06f20217a2",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/spike-original.png",
+      "sourceImageSha256": "fe72308bfea5f4ea5e8f2601f64fc808f98924adb8406164b9761d91c2c4b236"
+    },
+    "Stargate Atlantis::Ronon Dex::Tir du pistolet satedan de Ronon": {
+      "recordSha256": "c77f7475c4d830b5c7ca23466e626a604786e9f8794cccc8ff1436be02418b08",
+      "sheet": "/sprites/generated/summon-animations-wave11/ronon.png",
+      "sheetSha256": "7c13baf1e130644c837c40d97256458aed32c34dcf65f2940719d0ce8f22247e",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/ronon-original.png",
+      "sourceImageSha256": "65e4164698908c01ee89cb6d1ff5504cb5601648d2b75264146cba10d4b20d7f"
+    },
+    "Stargate Universe::Ronald Greer::Rafale de couverture de Greer": {
+      "recordSha256": "71841feccf73dcaf1366b5e95f1b6b287b623da9e977406d804e50ef805572ad",
+      "sheet": "/sprites/generated/summon-animations-wave11/greer.png",
+      "sheetSha256": "fe5258b9799797a15fb41915c2f84837ad16a043366dd97b3089e1c22e7b345b",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/greer-original.png",
+      "sourceImageSha256": "409bb1e9152235986f79cad254471b11967cb93c9c1c7f3680fb57a69c58f562"
+    },
+    "Borderlands::Roland::Rafale du fusil de Roland": {
+      "recordSha256": "61bcde6037c562203661a26c2296e4329aa6060b58609449fc7532ced99ba469",
+      "sheet": "/sprites/generated/summon-animations-wave11/roland.png",
+      "sheetSha256": "674dd95f214bfce99f53dddc42b8d5ca6a829ea2fd7922f0995316749310aa81",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/roland-returned.png",
+      "sourceImageSha256": "79443bba838e0dcb1828c26c73dc907224bf5b1a190c7f4368b05440f959a8f6"
+    },
+    "Mad Max::Furiosa::Tir de précision de Furiosa": {
+      "recordSha256": "29eef3c891fcf8c13261f0348f9690fa127f8145129621b71f4865a28437f8f8",
+      "sheet": "/sprites/generated/summon-animations-wave11/furiosa.png",
+      "sheetSha256": "f79bdc0cd9ee21251c8409d095108564a23288bf508ac3bd605e3f1b61c08f94",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-scope-correction-returned.png",
+      "sourceImageSha256": "acf7086c57c2986698b35fc9b0f41512eeccc84ed14d8a4c52c85a641865ae6d"
+    },
+    "Le Cinquième Element::Korben Dallas::Rafale du pistolet de Korben": {
+      "recordSha256": "be21c83a473629c7266f35e8d278c074a27a36996eb7e86bc4c8ca57bf196316",
+      "sheet": "/sprites/generated/summon-animations-wave11/korben.png",
+      "sheetSha256": "0d2a0d255230760db8581c9d053ab538f50bc98cfb2383350e8795f48ccf3267",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/korben-original.png",
+      "sourceImageSha256": "d259fde7ee04b261692ca2497a4a7b130bf106c9430b8ca09e02fef2d46a7ee2"
+    },
+    "Kaamelott::Lancelot::Passe d’armes de Lancelot": {
+      "recordSha256": "b5973761b853bd778e9b1975a8537d2eaa853c5072107d86f41b0394628bd199",
+      "sheet": "/sprites/generated/summon-animations-wave11/lancelot.png",
+      "sheetSha256": "c41c10c1957186a0afce9cc4da05ea4f797d38d4ebbc2f392c529516c0773916",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/lancelot-original.png",
+      "sourceImageSha256": "b5389dad16a640755ca9508a7db4d86d6a48599a3792f106d523fe17dd218f99"
+    },
+    "Silent Hill::Cybil Bennett::Tir de couverture de Cybil": {
+      "recordSha256": "d12b43a95346cbb8132ac8afe26b0f753776056eb7631212717a8b44b1473b31",
+      "sheet": "/sprites/generated/summon-animations-wave12/cybil.png",
+      "sheetSha256": "e3129b9aab222feafbdc1b1134eaad3357ae6df613ccaa9f3ed85898e527eb4d",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/cybil-original.png",
+      "sourceImageSha256": "562b54468fe39457cb9c1f20e4fd108c0bca98901493fabae7dc9697e0e3a8ed"
+    },
+    "Dino Crisis::Regina::Tir précis de Regina": {
+      "recordSha256": "61f28b821d6f5ff8e345179618c2c38882279463871239019a3a46ef23480d71",
+      "sheet": "/sprites/generated/summon-animations-wave12/regina.png",
+      "sheetSha256": "d446a2ac453a57b8617304174985d5922f5c1b58184bf539091717e7a9df5226",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/regina-original.png",
+      "sourceImageSha256": "ca702fa770c5c33daa256534d5cce0f0d94a4db1bf11361287ed0283f1792e07"
+    },
+    "Predator::Dutch Schaefer::Rafale au M16 de Dutch": {
+      "recordSha256": "e610297250dc1b47c3f1ed67496cba9276091c3409d7d2a291504becf388e614",
+      "sheet": "/sprites/generated/summon-animations-wave12/dutch.png",
+      "sheetSha256": "8e48fbe6db97af5c72c7844b26c4d968766fe4a65ce0480363941d80d1627451",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/dutch-original.png",
+      "sourceImageSha256": "e0ba34e636299ab3be3946f82e683088dc3088371665c4bb3ce7dd35e5c1179b"
+    },
+    "Evil Dead::Ash Williams::Enchaînement à la tronçonneuse d’Ash": {
+      "recordSha256": "fc150bbb485c450ea95d37e138d02b96b05c4ca822436be0e8903f68d017b5ec",
+      "sheet": "/sprites/generated/summon-animations-wave12/ash.png",
+      "sheetSha256": "6d42e2da1049929202c8e956141dd1b3ad9f2a8d51cadd2af1f6840598adb779",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/ash-original.png",
+      "sourceImageSha256": "f9eb4d219d7283c89ae5608c89f16e3be603cc8654a898863a0437abed5d4c13"
+    },
+    "Dead Space::Isaac Clarke::Tir ajusté du Plasma Cutter": {
+      "recordSha256": "68b91c5d414c98d9837fd1433c05a54dfb49ccdac66246121baf4f61c5b8d21f",
+      "sheet": "/sprites/generated/summon-animations-wave12/isaac.png",
+      "sheetSha256": "755c19e2c4bbba79d398b3558c37107001151ca0587bbe5722d101f101bbfb23",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/isaac-original.png",
+      "sourceImageSha256": "1c2c0b4d587e2c3995637a1f00ec8343d17073f79bb715d1ea716b8497953b2f"
+    },
+    "Futurama::Leela::Enchaînement de Leela": {
+      "recordSha256": "8b9917b781d9282d9763baaeb32d579e77d7502e21db99d024f12b4406eca97a",
+      "sheet": "/sprites/generated/summon-animations-wave12/leela.png",
+      "sheetSha256": "fa3425c43110d79eba28de0966a3585f54b5703d26c6468a6fbefb77cc954d7b",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/leela-original.png",
+      "sourceImageSha256": "06890bcc1ba5eff2d4d22eb2c8986ed0773e49f1283ff68e24b64f503f072343"
+    },
+    "Rick & Morty::Birdperson::Garde ailée de Birdperson": {
+      "recordSha256": "8b60a3fe444fcd1d27b55779f471e5c99047a2646e81611aff028e999478a15b",
+      "sheet": "/sprites/generated/summon-animations-wave12/birdperson.png",
+      "sheetSha256": "abb575c8bf75b5b6899969730736619ca705847ec04ae55ade208b1f8e151362",
+      "sourceImage": "docs/combat-fidelity-wave12-2026-10-23/summon-sources/birdperson-original.png",
+      "sourceImageSha256": "06a5bc53d69e92f3de01006bae17554b279f2c9fd4845f86a802f6d85b15f9e0"
+    },
+    "Alien::Ellen Ripley::Rafale ajustée du M41A de Ripley": {
+      "recordSha256": "fef23ccd3b615ba90d5cf1feace4fa830aa17b0f0f70a759fe914a287a2d59ab",
+      "sheet": "/sprites/generated/summon-animations-wave13/ripley.png",
+      "sheetSha256": "0126150fddb150f6edc9d7ee1a46db2720c726157e38a366992d3ef0da522b51",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/summon-sources/ripley-original.png",
+      "sourceImageSha256": "8ea4c0e00ab937719957f4c70936ea299c210bd1ec47bf50cf80b180f5393ab8"
+    },
+    "Alien::Corporal Hicks::Tir de couverture du M41A de Hicks": {
+      "recordSha256": "e764b78613d8c02a2301d5647e1bb33e9593cdb3f621c6f0e1c2d7d0800fdbb4",
+      "sheet": "/sprites/generated/summon-animations-wave13/hicks.png",
+      "sheetSha256": "4fb5c9500e93a775a1dc84412ea7ca0ba2abaebaf4798ad5586a8739e67c85c3",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/summon-sources/hicks-original.png",
+      "sourceImageSha256": "554eb86fe897a66db4cc18ed22eb7c396850e494cd48ea92dd36d70ba539fa87"
+    },
+    "Portal::Atlas::Coordination de test d’ATLAS": {
+      "recordSha256": "44dcf33f4cff11087d7341d47b36368e99ae38d6b50c083b14c1ba4ede8aa33a",
+      "sheet": "/sprites/generated/summon-animations-wave13/atlas.png",
+      "sheetSha256": "486bc572a4e1e36f3df0ad395294128621fbf6d02a69a73fd9a5c27420ccf272",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/summon-sources/atlas-original.png",
+      "sourceImageSha256": "b61d4357a667a14d150e05caec572cd848bf9aed697e2ccc14b3b9b80ffc5a54"
+    },
+    "Discworld::Sam Vimes::Frappe de l’épée de Vimes": {
+      "recordSha256": "c1ac306acbb0fe327c108aa8bf4f851b81366539800c4c24554471fa3539ceac",
+      "sheet": "/sprites/generated/summon-animations-wave13/vimes.png",
+      "sheetSha256": "bdc9f327bf1429a6c6c02349e488cf6bbee5a6c793935f2b15d53fae6bc6bf04",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/summon-sources/vimes-original.png",
+      "sourceImageSha256": "20fe2eba08a2d8b9ae350d74a2e99b0d6c967cc63f3db62de961dd23823f1d95"
+    },
+    "Metal Gear::Meryl Silverburgh::Tir ajusté du Desert Eagle de Meryl": {
+      "recordSha256": "d9d07ba865218099c848fc1a3eb1eaaefdbdcbd0eb55fdbed6510c80a133fa36",
+      "sheet": "/sprites/generated/summon-animations-wave13/meryl.png",
+      "sheetSha256": "f96bcf9fc15c0dd0a5da3b353cc4172548b96353d35d0a4d2033828926b132e1",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/summon-sources/meryl-original.png",
+      "sourceImageSha256": "41d27234b577899f1d5689664bc161117abafff1fe458fc390e75e33621bdf74"
+    },
+    "The Last of Us::Joel::Tir ajusté du revolver de Joel": {
+      "recordSha256": "0f863408053d3bfe747e7c524f87cc109cf33417683cfe5243b661dbdde2ca15",
+      "sheet": "/sprites/generated/summon-animations-wave13/joel.png",
+      "sheetSha256": "875c2cf6f0068e10e8a5ff0f927bd302ce8f9d9e32212209accf3e94878f20db",
+      "sourceImage": "docs/combat-fidelity-wave13-2026-10-24/summon-sources/joel-original.png",
+      "sourceImageSha256": "2efa962245fc8b2122aaad79bf890cae3346a3c37253defbb7052674d34ed8ca"
+    },
+    "The Lord of the Rings::Aragorn::Coupe de l’épée de rôdeur d’Aragorn": {
+      "recordSha256": "61212931ad5bcdb03e36c9d49e938c3ca4609123dac36497d0659963c10182f4",
+      "sheet": "/sprites/generated/summon-animations-wave14/aragorn.png",
+      "sheetSha256": "94fd7825b2a8b80b4eca0b716f9981c6b930406d8080a61dd491ffc2a4a7bd27",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/aragorn-original.png",
+      "sourceImageSha256": "a90023d615e6dc72c0c701d15a527d93b27f5825ee36ada28f534a3c507f9767"
+    },
+    "The Lord of the Rings::Legolas::Flèche du long arc de Legolas": {
+      "recordSha256": "94175baaf8e163ce484ad44d31d552f0c3ecd64ecf2af34f236d74bbf790968c",
+      "sheet": "/sprites/generated/summon-animations-wave14/legolas.png",
+      "sheetSha256": "f7d9370eb8f92a5477bfad552ed65a424f7f87a4bafd885648217e7e4b0d398c",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/legolas-original.png",
+      "sourceImageSha256": "58adee32f2ec0d969f711d840baecea813976ab676d7d41f3d5050980da93ff9"
+    },
+    "Dark Souls::Solaire::Garde du bouclier solaire de Solaire": {
+      "recordSha256": "7dcfd92b88955e6e6f9fe32fb8230b77f70cebad1757ab2747e025d4490537e1",
+      "sheet": "/sprites/generated/summon-animations-wave14/solaire.png",
+      "sheetSha256": "e2649a33b2e7f5624117ce69be80f8ced1e50b8ce58ef81c55bb273cae292627",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/solaire-original.png",
+      "sourceImageSha256": "f6e6d7e97ae2d1d24c8fc8a4901cc088a3290394c75945fac5879b7cd3090428"
+    },
+    "Halo::Noble Six::Rafale du MA37 de Noble Six": {
+      "recordSha256": "842b633a6902e7ab40abbeb0ce3401830fced4aa7634714614c463586ee759e7",
+      "sheet": "/sprites/generated/summon-animations-wave14/noble-six.png",
+      "sheetSha256": "b35ed70a54960c3c6fd1cf8de3f6de549f45a3d3ccc1f750aae496a357508af0",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/noble-six-original.png",
+      "sourceImageSha256": "7a053736b1247edc635c0b45acac31e51a3d9990ef5422379a18497a8a8bff19"
+    },
+    "Mass Effect::Mordin Solus::Incinération du omni-outil de Mordin": {
+      "recordSha256": "17a6a5f4afb117db4debbe9206919f16d1ec1119d0fdd8a4de170005d58e9ef4",
+      "sheet": "/sprites/generated/summon-animations-wave14/mordin.png",
+      "sheetSha256": "dd552eac4ee3da91ca422bc260d6938d7f3be379c1e5945f5fe7e20b6f06ecb5",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/mordin-original.png",
+      "sourceImageSha256": "fc19d72e9ea7c8fe3235d93cf7f228aee4c125831045ac211f0fb3a6bcedac20"
+    },
+    "Tomb Raider::Lara Croft::Flèche de l’arc de Lara": {
+      "recordSha256": "64b452ccbe60191031b173fb6fe0ef9f8cebf6f7ef08a8f7af158b72ef02c370",
+      "sheet": "/sprites/generated/summon-animations-wave14/lara.png",
+      "sheetSha256": "80a6e567ab52c8248527b2d8b53811d9013dff4d9251ff47454ff4e41facbe00",
+      "sourceImage": "docs/combat-fidelity-wave14-2026-10-25/summon-sources/lara-original.png",
+      "sourceImageSha256": "1867a8e39a6aa6910304815734211c6b6f3018cf0ef031c9396accf8794e9b5f"
+    }
+  }
+}

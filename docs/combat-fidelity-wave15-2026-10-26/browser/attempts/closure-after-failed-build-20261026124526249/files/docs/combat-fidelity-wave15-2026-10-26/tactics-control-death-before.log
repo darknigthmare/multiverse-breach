@@ -1,0 +1,62 @@
+✖ vertical/hero: lethal damage ends Phaselock before real revival without removing independent statuses (11567.47029ms)
+✖ vertical/enemy: lethal damage ends Phaselock before real revival without removing independent statuses (3.227728ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12033.679191
+
+✖ failing tests:
+
+test at scripts/tacticsPhaselockWave15.test.mjs:144:39
+✖ vertical/hero: lethal damage ends Phaselock before real revival without removing independent statuses (11567.47029ms)
+  AssertionError [ERR_ASSERTION]: Death must discard the bind immediately, before startTurn
+  + actual - expected
+  
+  + {
+  +   kind: 'phaselock',
+  +   releasePending: false,
+  +   remainingTurns: 1,
+  +   sourceHeroId: 'borderlands_2_maya_phaselock'
+  + }
+  - undefined
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsPhaselockWave15.test.mjs:153:45)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { kind: 'phaselock', remainingTurns: 1, releasePending: false, sourceHeroId: 'borderlands_2_maya_phaselock' },
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/tacticsPhaselockWave15.test.mjs:144:39
+✖ vertical/enemy: lethal damage ends Phaselock before real revival without removing independent statuses (3.227728ms)
+  AssertionError [ERR_ASSERTION]: Death must discard the bind immediately, before startTurn
+  + actual - expected
+  
+  + {
+  +   kind: 'phaselock',
+  +   releasePending: false,
+  +   remainingTurns: 1,
+  +   sourceHeroId: 'borderlands_2_maya_phaselock'
+  + }
+  - undefined
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsPhaselockWave15.test.mjs:153:45)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { kind: 'phaselock', remainingTurns: 1, releasePending: false, sourceHeroId: 'borderlands_2_maya_phaselock' },
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

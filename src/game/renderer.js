@@ -1,3 +1,4 @@
+import { registerSourceNativeRendererWave16 } from './combat/sourceNativeRendererWave16.js';
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
 import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
@@ -7,6 +8,7 @@ import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { renderStageAtmosphere } from './melee/stageAtmosphere';
 import { getCharacterAnimationFrame, resolveCharacterAnimationAsset } from './combat/characterAnimationCatalog';
+import { getSourceRuntimeViewWave16 } from './combat/sourceCombatRuntimeWave16.js';
 import { sampleCharacterSuperMotion } from './combat/characterSuperVisuals';
 import { resolveCombatHeroSpriteActor } from './combatIdentity.js';
 import { getCharacterFormFrame } from './combat/characterFormState';
@@ -175,7 +177,7 @@ export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero
     return false;
   }
 
-  const layout = getSpriteSheetLayout(entry.image.currentSrc || entry.image.src);
+  const layout = entity.sourceSpriteLayoutWave16 || getSpriteSheetLayout(entry.image.currentSrc || entry.image.src);
   const frameWidth = entry.image.naturalWidth / layout.columns;
   const frameHeight = entry.image.naturalHeight / layout.rows;
   const frame = getSpriteFrameForLayout('idle', 0, layout);
@@ -350,7 +352,7 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
     return 'loading';
   }
 
-  const layout = getSpriteSheetLayout(entry.image.currentSrc || entry.image.src);
+  const layout = entity.sourceSpriteLayoutWave16 || getSpriteSheetLayout(entry.image.currentSrc || entry.image.src);
   const frameWidth = entry.image.naturalWidth / layout.columns;
   const frameHeight = entry.image.naturalHeight / layout.rows;
   const frame = getSpriteFrameForLayout(entity.state, context === 'melee' ? getMeleeElapsedMs(entity, animTime) * 60 / 1000 : animTime, layout);
@@ -366,7 +368,7 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
   const sourceY = frame.row * frameHeight + (trim.top || 0);
   const sourceW = Math.max(1, frameWidth - (trim.left || 0) - (trim.right || 0));
   const sourceH = Math.max(1, frameHeight - (trim.top || 0) - (trim.bottom || 0));
-  const statureScale = Math.max(0.5, Math.min(3, Number(layout.renderScaleByRow?.[frame.row]) || 1));
+  const statureScale = Math.max(0.5, Math.min(layout.sourceBtRenderScaleLimitWave16 || layout.sourceHakumenRenderScaleLimitWave16 || 3, Number(layout.renderScaleByRow?.[frame.row]) || 1));
   const scale = targetHeight / sourceH * statureScale;
   const drawW = sourceW * scale;
   const drawH = sourceH * scale;
@@ -463,18 +465,20 @@ export class ParticleSystem {
 }
 
 const drawDedicatedCharacterAnimation = (ctx, x, y, character, animTime, facing, targetHeight) => {
-  const asset = resolveCharacterAnimationAsset(character);
-  if (!asset) return false;
+  const primaryAsset = resolveCharacterAnimationAsset(character);
+  if (!primaryAsset) return false;
   const formAsset = resolveCharacterFormAsset(character);
   if (formAsset) getCachedSpriteSheet(formAsset.sheet);
   const frame = getCharacterAnimationFrame(character, { elapsedSeconds: getMeleeElapsedMs(character, animTime) / 1000 });
+  const asset = frame?.asset || primaryAsset;
   const entry = getCachedSpriteSheet(asset.sheet);
   if (!frame || entry?.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth <= 0) return false;
   const sourceWidth = entry.image.naturalWidth / asset.columns;
   const sourceHeight = entry.image.naturalHeight / asset.rows;
   // Large weapons and effects may require smaller source normalization.
   // Restore measured body stature around the feet while drawing the full cell.
-  const statureScale = Math.max(0.5, Math.min(3, Number(asset.normalization?.rows?.[frame.row]?.renderScale) || 1));
+  const sourceBt = asset.heroId === 'bt_7274_tf2' && asset.sheet.includes('wave16-part-b');
+  const statureScale = Math.max(0.5, Math.min(sourceBt ? 8 : 3, Number(asset.normalization?.rows?.[frame.row]?.renderScale) || 1));
   const scale = targetHeight / sourceHeight * statureScale;
   const baseline = Number(asset.normalization?.baseline) || sourceHeight * 0.953125;
   const motion = sampleCharacterSuperMotion({ heroId: asset.heroId, universe: asset.universe, phase: frame.phase, progress: frame.progress, impactProgress: frame.impactProgress, height: targetHeight });
@@ -509,6 +513,11 @@ const drawCharacterForm = (ctx, x, y, character, animTime, facing, targetHeight,
 };
 
 export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72, context = 'auto') => {
+  character = getSourceRuntimeViewWave16(character);
+  if (character?.sourceEnemyId === 'oddworld_slig' && character.universe === 'Oddworld') {
+    drawPixelEnemy(ctx, x, y, character, animTime, facing, targetHeight);
+    return;
+  }
   if (drawCharacterForm(ctx, x, y, character, animTime, facing, targetHeight,
     () => drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context)) !== 'missing') return;
   const explicitPresentation = character.presentationPhase || character.action?.superProfile || character.action?.type === 'super';
@@ -886,6 +895,7 @@ const drawOriginForgeThreat = (ctx, x, y, enemy, animTime, facing, targetHeight 
 };
 
 export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1, targetHeight = 68) => {
+  enemy = getSourceRuntimeViewWave16(enemy);
   if (drawOriginForgeThreat(ctx, x, y, enemy, animTime, facing, targetHeight)) return;
   // Custom opposing squads retain their real hero identity. The shared hero
   // renderer selects dedicated presentation cells before that hero's base PNG.
@@ -1790,3 +1800,6 @@ function drawHex(ctx, x, y, size) {
   }
   ctx.closePath();
 }
+
+// The W16 visual catalog stays pure when imported by Node audits/tests.
+registerSourceNativeRendererWave16({ drawCosmeticAtlasFrame, preloadSpriteSheetSrcs });

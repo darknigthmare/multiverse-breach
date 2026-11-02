@@ -320,8 +320,15 @@ test('forty callers use a real same-universe partner, with32 native bindings and
   assert.deepEqual([native, alternate], [32, 8]);
 });
 
-test('the outside-batch Shephard legacy Dog call keeps its explicit raw action after Alyx personal-kit corrections', () => {
-  const descriptor = resolveUniverseSummon(hero('shephard'));
+test('the pre-W15 Shephard snapshot retains its explicit raw Dog call after Alyx personal-kit corrections', () => {
+  const capturedBytes = read('docs/combat-fidelity-wave15-2026-10-26/batch-plan-before.json');
+  assert.equal(sha(capturedBytes), '08c143270255b5bc83fc051d37f5203351da868b232856d9f43a4dc943463dd1');
+  const captured = JSON.parse(capturedBytes).heroes.find(row => row.hero.id === 'shephard');
+  assert.equal(captured.alreadyAuthored, false); assert.equal(captured.priorAuthored, null);
+  for (const slot of ['simple', 'secondary', 'defense', 'special']) assert.deepEqual(hero('shephard')[slot], captured.hero[slot]);
+  // The versioned fixture exercises the captured raw fallback without invoking
+  // the current W15 partner binding. The live Shephard is checked by W15 tests.
+  const descriptor = resolveUniverseSummon({ ...captured.hero, id: 'shephard-before-wave15' });
   assert.equal(descriptor.universe, 'Half-Life');
   assert.equal(descriptor.entityName, 'Dog Breach Assist');
   assert.equal(descriptor.action.name, 'Dog Breach Assist');

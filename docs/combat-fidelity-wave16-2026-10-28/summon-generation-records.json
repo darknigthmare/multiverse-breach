@@ -1,0 +1,753 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "slug": "crash",
+      "id": "crash_bandicoot-wave16",
+      "callerId": "coco_bandicoot",
+      "performerHeroId": "crash_bandicoot",
+      "universe": "Crash Bandicoot",
+      "entityName": "Crash Bandicoot",
+      "sourceWork": "Crash Bandicoot3: Warped(1998)",
+      "sourceReference": "https://www.gamesdatabase.org/game/sony-playstation/crash-bandicoot-3-warped",
+      "appearance": "Orange bandicoot, beige muzzle and belly, spiky orange hair, blue jeans, red sneakers and brown fingerless gloves; Warped1998 appearance without Titans tattoos.",
+      "actionName": "Spin de Crash",
+      "role": "melee",
+      "bodyHeight": 165,
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "notes": "Physical spin with hands and red shoes visible. No projectile, magic, flame or weapon.",
+      "key": "Crash Bandicoot::Crash Bandicoot::Spin de Crash",
+      "sourceDefinition": {
+        "universe": "Crash Bandicoot",
+        "sourceWork": "Crash Bandicoot3: Warped(1998)",
+        "appearance": "Orange bandicoot, beige muzzle and belly, spiky orange hair, blue jeans, red sneakers and brown fingerless gloves; Warped1998 appearance without Titans tattoos.",
+        "bodyHeight": 165,
+        "sourceReference": "https://www.gamesdatabase.org/game/sony-playstation/crash-bandicoot-3-warped",
+        "source1to1Verified": false
+      },
+      "sourceDefinitionPlan": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/source-plan.json",
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/rpg-prompts/crash.txt",
+      "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas. Independent adaptation, not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct complete full-body poses of ONE same Crash Bandicoot, facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous entirely empty alpha gutters between all16 cells and outside all limbs. No labels, text, grid lines, scenery, opponents, blood or injury. Identity locked: Crash Bandicoot3: Warped1998, orange bandicoot, beige muzzle and belly, spiky orange hair, blue jeans, red sneakers and brown fingerless gloves, original playful facial proportions; no Tattoos/Titans design, no weapon, no magic. Row1 ARRIVAL: four different consecutive entering jogging steps. Row2 PREPARATION: four clearly different bracing, bending knees and opening arms poses before a physical Spin attack. Row3 ATTACK: four different sequential physical body-spin poses, ready start, winding rotation, fully extended contact spin, follow-through. Head, torso, both hands and both red shoes remain recognizable and completely within every cell; rotation is actual newly drawn anatomy, not a neon circular halo, effect-only smear, duplicate body or detached limb. Row4 RECOVERY: four different slowing-spin, lowering arms, settling stance and stepping-back poses. All16 cells newly drawn with different poses, never copy/paste, mirror or recolour. Consistent anatomy, equipment and body scale. Crisp readable pixel clusters, full shoes and hair tips, no clipped subject. The bright cartoon source palette remains stable. Do not draw an opponent or any projectile.",
+      "toolArguments": {
+        "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas. Independent adaptation, not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct complete full-body poses of ONE same Crash Bandicoot, facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous entirely empty alpha gutters between all16 cells and outside all limbs. No labels, text, grid lines, scenery, opponents, blood or injury. Identity locked: Crash Bandicoot3: Warped1998, orange bandicoot, beige muzzle and belly, spiky orange hair, blue jeans, red sneakers and brown fingerless gloves, original playful facial proportions; no Tattoos/Titans design, no weapon, no magic. Row1 ARRIVAL: four different consecutive entering jogging steps. Row2 PREPARATION: four clearly different bracing, bending knees and opening arms poses before a physical Spin attack. Row3 ATTACK: four different sequential physical body-spin poses, ready start, winding rotation, fully extended contact spin, follow-through. Head, torso, both hands and both red shoes remain recognizable and completely within every cell; rotation is actual newly drawn anatomy, not a neon circular halo, effect-only smear, duplicate body or detached limb. Row4 RECOVERY: four different slowing-spin, lowering arms, settling stance and stepping-back poses. All16 cells newly drawn with different poses, never copy/paste, mirror or recolour. Consistent anatomy, equipment and body scale. Crisp readable pixel clusters, full shoes and hair tips, no clipped subject. The bright cartoon source palette remains stable. Do not draw an opponent or any projectile.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": null,
+      "calibration": {
+        "row": 0,
+        "column": 3,
+        "targetBodyHeight": 165,
+        "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "observedNativePoses": 16,
+      "reviewed": true,
+      "reviewNotes": "All16 original and alpha-composited QA poses actually viewed. Warped1998 orange/beige Crash, bluejeans/redshoes/browngloves, physical spin with complete hands/shoes, no magic/projectile.",
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/crash-original.png",
+      "file": "/workspace/generated_images/exec-3342de8a-99fc-4896-9d12-f135f58663d3.png",
+      "effectAnchors": {
+        "attack": [
+          {
+            "x": 240,
+            "y": 157,
+            "space": "packed-native-pixels",
+            "role": "physical-spin-arm-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/crash-attack-anchor-zoom.png"
+          },
+          {
+            "x": 350,
+            "y": 161,
+            "space": "packed-native-pixels",
+            "role": "physical-spin-arm-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/crash-attack-anchor-zoom.png"
+          },
+          {
+            "x": 344,
+            "y": 144,
+            "space": "packed-native-pixels",
+            "role": "physical-spin-arm-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/crash-attack-anchor-zoom.png"
+          },
+          {
+            "x": 174,
+            "y": 154,
+            "space": "packed-native-pixels",
+            "role": "physical-spin-arm-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/crash-attack-anchor-zoom.png"
+          }
+        ]
+      },
+      "anchorRole": "physical-spin-arm-contact"
+    },
+    {
+      "slug": "mugman",
+      "id": "cuphead_mugman-wave16",
+      "callerId": "cuphead_cuphead",
+      "performerHeroId": "cuphead_mugman",
+      "universe": "Cuphead",
+      "entityName": "Mugman",
+      "sourceWork": "Cuphead(2017), Super Art II",
+      "sourceReference": "https://cupheadgame.com/",
+      "appearance": "White ceramic mug head, large round blue nose, blue-and-white straw, black shirt, blue shorts, white gloves and brown shoes.",
+      "actionName": "Invincibilité du Super Art II de Mugman",
+      "role": "support",
+      "bodyHeight": 145,
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "notes": "Source Super Art II protects Mugman himself for 4.85 seconds after activation animation. Relaying that bounded protection to caller Cuphead is an explicit adaptation, not a canonical ability to protect another person. Zero damage, healing or offensive buff.",
+      "key": "Cuphead::Mugman::Invincibilité du Super Art II de Mugman",
+      "sourceDefinition": {
+        "universe": "Cuphead",
+        "sourceWork": "Cuphead(2017), Super Art II",
+        "appearance": "White ceramic mug head, large round blue nose, blue-and-white straw, black shirt, blue shorts, white gloves and brown shoes.",
+        "bodyHeight": 145,
+        "sourceReference": "https://cupheadgame.com/",
+        "source1to1Verified": false
+      },
+      "sourceDefinitionPlan": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/source-plan.json",
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/rpg-prompts/mugman.txt",
+      "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas. Independent adaptation, not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct complete full-body poses of ONE same Mugman from Cuphead2017, facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas with actual transparent alpha and generous EMPTY gutters between every sprite and outside all complete limbs, straw and shoes. No labels, text, grid lines, scenery, opponents, blood or injury. Locked identity: white ceramic mug head, large round BLUE nose, blue-and-white striped straw, black shirt, BLUE shorts, white gloves, brown shoes,1930s rubber-hose cartoon proportions translated into crisp pixel art. He is NOT red Cuphead and NOT MsChalice. Selected action: Super Art II Invincibility, a non-offensive golden invulnerable state. Row1 ARRIVAL: four visibly different jogging-to-bracing steps with normal source colours. Row2 PREPARATION: four clearly different successive bracing/raising-hands/leaning poses as a faint gold glimmer starts; no attack, gun or ray. Row3 ACTIVATION: four different consecutive poses opening the hands and steadying the complete body as the source-style GOLDEN INVINCIBILITY shimmer wraps his own outline; actual face, blue nose, cup, straw, gloves, shorts and both shoes remain identifiable. Only a restrained native golden outline/shimmer and tiny gold stars, no circular attack beam, no hexagon barrier, no shield disc, no extra heart or ShieldPal. Row4 RECOVERY: four genuinely different settling hands, stepping back and lowering arms poses as the golden state glimmer softens. All16 cells newly drawn with different anatomy poses, never duplicate, mirror or recolour. Keep complete subject contained in each cell with ample transparent border. No projectile, pouring head laser, healing symbol, weapon, opponent or injury. Mugman's Super Art II is SELF invincibility in the source; these drawings do not depict a new power to protect another person.",
+      "toolArguments": {
+        "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas. Independent adaptation, not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct complete full-body poses of ONE same Mugman from Cuphead2017, facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas with actual transparent alpha and generous EMPTY gutters between every sprite and outside all complete limbs, straw and shoes. No labels, text, grid lines, scenery, opponents, blood or injury. Locked identity: white ceramic mug head, large round BLUE nose, blue-and-white striped straw, black shirt, BLUE shorts, white gloves, brown shoes,1930s rubber-hose cartoon proportions translated into crisp pixel art. He is NOT red Cuphead and NOT MsChalice. Selected action: Super Art II Invincibility, a non-offensive golden invulnerable state. Row1 ARRIVAL: four visibly different jogging-to-bracing steps with normal source colours. Row2 PREPARATION: four clearly different successive bracing/raising-hands/leaning poses as a faint gold glimmer starts; no attack, gun or ray. Row3 ACTIVATION: four different consecutive poses opening the hands and steadying the complete body as the source-style GOLDEN INVINCIBILITY shimmer wraps his own outline; actual face, blue nose, cup, straw, gloves, shorts and both shoes remain identifiable. Only a restrained native golden outline/shimmer and tiny gold stars, no circular attack beam, no hexagon barrier, no shield disc, no extra heart or ShieldPal. Row4 RECOVERY: four genuinely different settling hands, stepping back and lowering arms poses as the golden state glimmer softens. All16 cells newly drawn with different anatomy poses, never duplicate, mirror or recolour. Keep complete subject contained in each cell with ample transparent border. No projectile, pouring head laser, healing symbol, weapon, opponent or injury. Mugman's Super Art II is SELF invincibility in the source; these drawings do not depict a new power to protect another person.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": null,
+      "calibration": {
+        "row": 0,
+        "column": 3,
+        "targetBodyHeight": 145,
+        "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "observedNativePoses": 16,
+      "reviewed": true,
+      "reviewNotes": "All16 actually viewed. Blue-nosed white Mugman, blue costume and brown shoes, native golden invincibility outline without beam, shielddisc, healing or attack. Source4.85s self effect vs callerrelay adaptation is separated in erratum.",
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/mugman-original.png",
+      "file": "/workspace/generated_images/exec-0bb56119-aa8b-4b9c-9ad2-adbe9c6b8178.png",
+      "effectAnchors": null,
+      "anchorRole": "physical-spin-arm-contact",
+      "priorPlanNotes": "Super Art II protects Mugman himself in the source. Applying a bounded3-second protection to caller Cuphead is explicitly a crossover relay adaptation, not a canonical ability to protect other people. No healing, damage or offensive buff.",
+      "sourcePlanErratum": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/source-plan-errata.json",
+      "sourcePlanErratumSha256": "4eb6c124eec969dd33d00fa66e24410d3ef0a3fd10ff0a3ba5636597e4fdc58d"
+    },
+    {
+      "slug": "faye",
+      "id": "faye_valentine-wave16",
+      "callerId": "spike_spiegel",
+      "performerHeroId": "faye_valentine",
+      "universe": "Cowboy Bebop",
+      "entityName": "Faye Valentine",
+      "sourceWork": "Cowboy Bebop anime(1998)",
+      "sourceReference": "https://www.cowboy-bebop.net/",
+      "appearance": "Adult Faye Valentine with short violet hair, yellow cropped top and shorts, red jacket hanging at the arms, skin-toned stockings, white boots and a physical Glock30 pistol.",
+      "actionName": "Tir de couverture du Glock30 de Faye",
+      "role": "gun",
+      "bodyHeight": 190,
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "notes": "A single accepted ballistic shot from the actual hand-held barrel, no energy beam or ammunition before release.",
+      "key": "Cowboy Bebop::Faye Valentine::Tir de couverture du Glock30 de Faye",
+      "sourceDefinition": {
+        "universe": "Cowboy Bebop",
+        "sourceWork": "Cowboy Bebop anime(1998)",
+        "appearance": "Adult Faye Valentine with short violet hair, yellow cropped top and shorts, red jacket hanging at the arms, skin-toned stockings, white boots and a physical Glock30 pistol.",
+        "bodyHeight": 190,
+        "sourceReference": "https://www.cowboy-bebop.net/",
+        "source1to1Verified": false
+      },
+      "sourceDefinitionPlan": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/source-plan.json",
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/rpg-prompts/faye.txt",
+      "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation and not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct complete full-body poses of ONE same character, facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous EMPTY gutters between every cell and at least20px clear outer margins around the complete subject. No text, labels, numbers, grid lines, scenery, opponent, blood or injury. Consistent anatomy, costume, equipment and body scale in every cell. All16 drawings must have genuinely different body poses, never duplicate, mirror or recolour. Crisp readable pixel clusters. Identity: adult Faye Valentine from Cowboy Bebop ANIME1998, short violet hair, yellow cropped top and yellow shorts, short red jacket hanging at her arms/shoulders, skin-toned stockings, white boots. Her only weapon is a physically held compact black Glock30 pistol. Both boots, hair, hands and complete pistol remain inside each cell. Row1 ARRIVAL: four different approaching jogging and settling steps, pistol safely lowered. Row2 PREPARATION: four distinct poses raising and bracing the pistol toward the RIGHT; no flash or projectile. Row3 ATTACK: column1 steady pistol, column2 tighter aiming without firing, column3 one small conventional orange muzzle flash attached exactly to the actual barrel, column4 recoil/return with NO flash. Only that third attack cell fires; all other fifteen cells have no shot, flash, beam or floating bullet. The muzzle is on the held gun tip, not the wrist, shoulder, face or cell edge. Row4 RECOVERY: four different lowering the pistol and stepping back poses. Do not sexualize framing or change the source outfit; show full body and original character role. No large rifle, energy attack, generic aura, laser or invented power.",
+      "toolArguments": {
+        "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation and not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct complete full-body poses of ONE same character, facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous EMPTY gutters between every cell and at least20px clear outer margins around the complete subject. No text, labels, numbers, grid lines, scenery, opponent, blood or injury. Consistent anatomy, costume, equipment and body scale in every cell. All16 drawings must have genuinely different body poses, never duplicate, mirror or recolour. Crisp readable pixel clusters. Identity: adult Faye Valentine from Cowboy Bebop ANIME1998, short violet hair, yellow cropped top and yellow shorts, short red jacket hanging at her arms/shoulders, skin-toned stockings, white boots. Her only weapon is a physically held compact black Glock30 pistol. Both boots, hair, hands and complete pistol remain inside each cell. Row1 ARRIVAL: four different approaching jogging and settling steps, pistol safely lowered. Row2 PREPARATION: four distinct poses raising and bracing the pistol toward the RIGHT; no flash or projectile. Row3 ATTACK: column1 steady pistol, column2 tighter aiming without firing, column3 one small conventional orange muzzle flash attached exactly to the actual barrel, column4 recoil/return with NO flash. Only that third attack cell fires; all other fifteen cells have no shot, flash, beam or floating bullet. The muzzle is on the held gun tip, not the wrist, shoulder, face or cell edge. Row4 RECOVERY: four different lowering the pistol and stepping back poses. Do not sexualize framing or change the source outfit; show full body and original character role. No large rifle, energy attack, generic aura, laser or invented power.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": null,
+      "calibration": {
+        "row": 0,
+        "column": 3,
+        "targetBodyHeight": 190,
+        "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "observedNativePoses": 16,
+      "reviewed": true,
+      "reviewNotes": "All16 actually viewed. Bebop1998 purplehair/yellow outfit/redjacket/whiteboots and heldcompactblackGlock30; no shot in preparation or recovery, one nativebarrel flash only attackcol2.",
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/faye-original.png",
+      "file": "/workspace/generated_images/exec-4120a9cf-c9b6-4f6b-b68f-997721510d00.png",
+      "effectAnchors": {
+        "attack": [
+          {
+            "x": 350,
+            "y": 89,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 239,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/faye-attack-anchor-zoom.png"
+          },
+          {
+            "x": 328,
+            "y": 95,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 241,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/faye-attack-anchor-zoom.png"
+          },
+          {
+            "x": 307,
+            "y": 91,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 247,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/faye-attack-anchor-zoom.png"
+          },
+          {
+            "x": 276,
+            "y": 88,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 245,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/faye-attack-anchor-zoom.png"
+          }
+        ]
+      },
+      "anchorRole": "physical-barrel-muzzle"
+    },
+    {
+      "slug": "alphonse",
+      "id": "alphonse_elric-wave16",
+      "callerId": "edward_elric",
+      "performerHeroId": "alphonse_elric",
+      "universe": "Fullmetal Alchemist",
+      "entityName": "Alphonse Elric",
+      "sourceWork": "Fullmetal Alchemist: Brotherhood(2009)",
+      "sourceReference": "https://www.hagaren.jp/fa/",
+      "appearance": "Complete large blue-grey steel armour, helmet horn, glowing red eyes within dark visor, white cloth apron and brown leather details; no human body inside or exposed limbs.",
+      "actionName": "Coup de poing d’armure d’Alphonse",
+      "role": "melee",
+      "bodyHeight": 230,
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "notes": "Physical gauntlet contact. No fabricated human performer, alchemical beam, fire or extra weapon.",
+      "key": "Fullmetal Alchemist::Alphonse Elric::Coup de poing d’armure d’Alphonse",
+      "sourceDefinition": {
+        "universe": "Fullmetal Alchemist",
+        "sourceWork": "Fullmetal Alchemist: Brotherhood(2009)",
+        "appearance": "Complete large blue-grey steel armour, helmet horn, glowing red eyes within dark visor, white cloth apron and brown leather details; no human body inside or exposed limbs.",
+        "bodyHeight": 230,
+        "sourceReference": "https://www.hagaren.jp/fa/",
+        "source1to1Verified": false
+      },
+      "sourceDefinitionPlan": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/source-plan.json",
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/rpg-prompts/alphonse.txt",
+      "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation and not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct complete full-body poses of ONE same character, facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous EMPTY gutters between every cell and at least20px clear outer margins around the complete subject. No text, labels, numbers, grid lines, scenery, opponent, blood or injury. Consistent anatomy, costume, equipment and body scale in every cell. All16 drawings must have genuinely different body poses, never duplicate, mirror or recolour. Crisp readable pixel clusters. Identity: Alphonse Elric in Fullmetal Alchemist: Brotherhood2009, his complete tall broad blue-grey STEEL ARMOUR body. Steel helmet with characteristic horn, small glowing red eyes inside dark visor, white waist apron/cloth and brown leather details, large shoulder plates and physical steel gauntlets/boots. He is empty armour: no human face, skin, exposed human arm or human performer inside; no unrelated horned knight. All helmet-horn tips, both gauntlets and both metal feet must remain fully inside each cell. Row1 ARRIVAL: four distinctly different walking and settling-armour steps. Row2 PREPARATION: four different physical boxing/bracing poses drawing one gauntlet back. Row3 ATTACK: four consecutive real armoured punch poses: ready, draw-back, rightward extending gauntlet at contact, follow-through; no beam, projectile, fire, alchemy circle or magical shockwave. Row4 RECOVERY: four different withdrawing fist, lowering arms and stepping-back poses. No weapon, blade, glowing energy fist or opponent. The actual gauntlet supplies physical contact; source-period armour proportions and white cloth remain consistent.",
+      "toolArguments": {
+        "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation and not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct complete full-body poses of ONE same character, facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous EMPTY gutters between every cell and at least20px clear outer margins around the complete subject. No text, labels, numbers, grid lines, scenery, opponent, blood or injury. Consistent anatomy, costume, equipment and body scale in every cell. All16 drawings must have genuinely different body poses, never duplicate, mirror or recolour. Crisp readable pixel clusters. Identity: Alphonse Elric in Fullmetal Alchemist: Brotherhood2009, his complete tall broad blue-grey STEEL ARMOUR body. Steel helmet with characteristic horn, small glowing red eyes inside dark visor, white waist apron/cloth and brown leather details, large shoulder plates and physical steel gauntlets/boots. He is empty armour: no human face, skin, exposed human arm or human performer inside; no unrelated horned knight. All helmet-horn tips, both gauntlets and both metal feet must remain fully inside each cell. Row1 ARRIVAL: four distinctly different walking and settling-armour steps. Row2 PREPARATION: four different physical boxing/bracing poses drawing one gauntlet back. Row3 ATTACK: four consecutive real armoured punch poses: ready, draw-back, rightward extending gauntlet at contact, follow-through; no beam, projectile, fire, alchemy circle or magical shockwave. Row4 RECOVERY: four different withdrawing fist, lowering arms and stepping-back poses. No weapon, blade, glowing energy fist or opponent. The actual gauntlet supplies physical contact; source-period armour proportions and white cloth remain consistent.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": null,
+      "calibration": {
+        "row": 0,
+        "column": 3,
+        "targetBodyHeight": 230,
+        "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "observedNativePoses": 16,
+      "reviewed": true,
+      "reviewNotes": "All16 actually viewed. Empty bluegreyarmour, red eyes, white apron, brown details, complete helmet-horn/ponytail and metalhands/feet; physical gauntlet punch without beam or human surrogate.",
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/alphonse-original.png",
+      "file": "/workspace/generated_images/exec-2d5a672e-5e2f-4bc5-bef3-74ed35d178bb.png",
+      "effectAnchors": {
+        "attack": [
+          {
+            "x": 330,
+            "y": 110,
+            "space": "packed-native-pixels",
+            "role": "physical-gauntlet-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/alphonse-attack-anchor-zoom.png"
+          },
+          {
+            "x": 341,
+            "y": 111,
+            "space": "packed-native-pixels",
+            "role": "physical-gauntlet-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/alphonse-attack-anchor-zoom.png"
+          },
+          {
+            "x": 403,
+            "y": 94,
+            "space": "packed-native-pixels",
+            "role": "physical-gauntlet-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/alphonse-attack-anchor-zoom.png"
+          },
+          {
+            "x": 383,
+            "y": 100,
+            "space": "packed-native-pixels",
+            "role": "physical-gauntlet-contact",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/alphonse-attack-anchor-zoom.png"
+          }
+        ]
+      },
+      "anchorRole": "physical-gauntlet-contact"
+    },
+    {
+      "slug": "bt7274",
+      "id": "bt_7274_tf2-wave16",
+      "callerId": "sarah_briggs_tf2",
+      "performerHeroId": "bt_7274_tf2",
+      "universe": "Titanfall 2",
+      "entityName": "BT-7274",
+      "sourceWork": "Titanfall2 campaign(2016), Expedition loadout",
+      "sourceReference": "https://www.ea.com/games/titanfall/titanfall-2",
+      "appearance": "Very large Vanguard Titan BT-7274, olive-green chassis with worn cream-grey plates, small orange central optic, black articulated joints and large Titan feet; massive XO-16 rifle held in both arms.",
+      "actionName": "Tir du XO-16 de BT-7274",
+      "role": "gun",
+      "bodyHeight": 570,
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "notes": "Native scale is570 versus190 for humans, preserving an approximately3:1 standing body ratio after uniform packing compensation. No integrated gun replacing hands, Ronin/Ion/Tone parts or miniaturized turret.",
+      "key": "Titanfall 2::BT-7274::Tir du XO-16 de BT-7274",
+      "sourceDefinition": {
+        "universe": "Titanfall 2",
+        "sourceWork": "Titanfall2 campaign(2016), Expedition loadout",
+        "appearance": "Very large Vanguard Titan BT-7274, olive-green chassis with worn cream-grey plates, small orange central optic, black articulated joints and large Titan feet; massive XO-16 rifle held in both arms.",
+        "bodyHeight": 570,
+        "sourceReference": "https://www.ea.com/games/titanfall/titanfall-2",
+        "source1to1Verified": false
+      },
+      "sourceDefinitionPlan": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/source-plan.json",
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/rpg-prompts/bt7274.txt",
+      "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas. Independent adaptation, not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct complete full-body poses of ONE same VERY LARGE Vanguard Titan BT-7274 in Titanfall2 campaign2016, EXPEDITION loadout. Facing RIGHT three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous entirely EMPTY gutters between every cell and outer margin. Every whole Titan, both enormous feet, articulated hands, small upper antenna details and entire held weapon must be fully inside its own cell. No text, labels, grid, scenery, human pilot, opponent, blood or injury. Identity: towering olive-green Vanguard chassis with worn cream-grey armour plates, small orange central optic, black articulated mechanical joints, broad large Titan feet and a massive physical XO-16 rifle HELD IN BOTH MECHANICAL HANDS. No integrated gun replacing an arm, no Ion/Ronin/Tone body, no miniature turret. Source-period industrial proportions, not a humanoid person wearing armour. Row1 ARRIVAL: four different heavy walking and settling steps, XO-16 held low in two hands. Row2 PREPARATION: four distinct raising and bracing-the-rifle poses aiming RIGHT, NO firing. Row3 ATTACK: column1 rifle shouldered ready without flash, column2 tightly braced aim without flash, column3 ONE small conventional orange muzzle flash precisely attached to the ACTUAL RIFLE BARREL, column4 recoil/reset with NO flash. Only the third attack cell fires; all other fifteen cells have NO flash, projectile or beam. The optic can remain a small orange lens but is NOT a weapon emitter. Row4 RECOVERY: four different lowering rifle and stepping-back/resetting mechanical footwork poses. All16 poses newly drawn and visibly different, never copy/paste, mirror or recolour. No BurstCore, laser, rocket swarm, energy core explosion or extra weapon. Crisp pixel clusters and mechanically coherent connected armour and fingers; full head and complete feet contained, ample transparent margins.",
+      "toolArguments": {
+        "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas. Independent adaptation, not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct complete full-body poses of ONE same VERY LARGE Vanguard Titan BT-7274 in Titanfall2 campaign2016, EXPEDITION loadout. Facing RIGHT three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous entirely EMPTY gutters between every cell and outer margin. Every whole Titan, both enormous feet, articulated hands, small upper antenna details and entire held weapon must be fully inside its own cell. No text, labels, grid, scenery, human pilot, opponent, blood or injury. Identity: towering olive-green Vanguard chassis with worn cream-grey armour plates, small orange central optic, black articulated mechanical joints, broad large Titan feet and a massive physical XO-16 rifle HELD IN BOTH MECHANICAL HANDS. No integrated gun replacing an arm, no Ion/Ronin/Tone body, no miniature turret. Source-period industrial proportions, not a humanoid person wearing armour. Row1 ARRIVAL: four different heavy walking and settling steps, XO-16 held low in two hands. Row2 PREPARATION: four distinct raising and bracing-the-rifle poses aiming RIGHT, NO firing. Row3 ATTACK: column1 rifle shouldered ready without flash, column2 tightly braced aim without flash, column3 ONE small conventional orange muzzle flash precisely attached to the ACTUAL RIFLE BARREL, column4 recoil/reset with NO flash. Only the third attack cell fires; all other fifteen cells have NO flash, projectile or beam. The optic can remain a small orange lens but is NOT a weapon emitter. Row4 RECOVERY: four different lowering rifle and stepping-back/resetting mechanical footwork poses. All16 poses newly drawn and visibly different, never copy/paste, mirror or recolour. No BurstCore, laser, rocket swarm, energy core explosion or extra weapon. Crisp pixel clusters and mechanically coherent connected armour and fingers; full head and complete feet contained, ample transparent margins.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": null,
+      "calibration": {
+        "row": 0,
+        "column": 3,
+        "targetBodyHeight": 570,
+        "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "observedNativePoses": 16,
+      "reviewed": true,
+      "reviewNotes": "All16 actually viewed. Expedition Vanguard olive/cream armour, orangeoptic, twohanded XO16 and wholemechanicalfeet/antennae. Only attackcol2 has barrelflash. Sourceedge visiblealpha count0; no integrated handcannon or BurstCore.",
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/bt7274-original.png",
+      "file": "/workspace/generated_images/exec-da382944-62ba-4964-a92d-6b107027623d.png",
+      "effectAnchors": {
+        "attack": [
+          {
+            "x": 418,
+            "y": 103,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/bt7274-attack-anchor-zoom.png"
+          },
+          {
+            "x": 423,
+            "y": 108,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 249,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/bt7274-attack-anchor-zoom.png"
+          },
+          {
+            "x": 395,
+            "y": 101,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/bt7274-attack-anchor-zoom.png"
+          },
+          {
+            "x": 405,
+            "y": 122,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/bt7274-attack-anchor-zoom.png"
+          }
+        ]
+      },
+      "anchorRole": "physical-barrel-muzzle"
+    },
+    {
+      "slug": "fox-devil",
+      "id": "fox_devil-wave16",
+      "callerId": "aki_hayakawa",
+      "performerHeroId": null,
+      "universe": "Chainsaw Man",
+      "entityName": "Fox Devil",
+      "sourceWork": "Chainsaw Man anime(2022), Public Safety Kon contract",
+      "sourceReference": "https://chainsawman.dog/",
+      "appearance": "Only the enormous complete white fox head of the Fox Devil with long pointed ears, multiple red eyes, black nose and non-graphic teeth; no invented humanoid body, beam or Aki body substituting the entity.",
+      "actionName": "Kon — morsure du Fox Devil",
+      "role": "bite",
+      "bodyHeight": 300,
+      "kind": "summon",
+      "bodySource": "source-entity",
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "notes": "Aki remains a separate caller. The entity head arrives, opens its jaws, bites at the measured mouth contact and withdraws; no blood, gore, victim or anatomy drawn procedurally. Official contract identity, bounded crossover damage/timing not certified source frames.",
+      "key": "Chainsaw Man::Fox Devil::Kon — morsure du Fox Devil",
+      "sourceDefinition": {
+        "universe": "Chainsaw Man",
+        "sourceWork": "Chainsaw Man anime(2022), Public Safety Kon contract",
+        "appearance": "Only the enormous complete white fox head of the Fox Devil with long pointed ears, multiple red eyes, black nose and non-graphic teeth; no invented humanoid body, beam or Aki body substituting the entity.",
+        "bodyHeight": 300,
+        "sourceReference": "https://chainsawman.dog/",
+        "source1to1Verified": false
+      },
+      "sourceDefinitionPlan": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/source-plan.json",
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/rpg-prompts/fox-devil.txt",
+      "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation and not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct COMPLETE native subject poses of ONE same character/entity facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous completely EMPTY gutters between every cell and20px clear outer margins. No text, labels, numbers, grid lines, scenery, opponent, blood or injury. Consistent anatomy, costume, body scale and equipment. All16 drawings genuinely different, not duplicate, mirror, recolour or simple translated copies. Crisp readable pixel clusters. Identity locked: FoxDevil from ChainsawMan ANIME2022 episode4 Kon contract. ONLY the enormous COMPLETE white arcticFOX HEAD with natural full furry neckruff, long pointed foxears, blacknose, multiple LARGE glowing RED-ORANGE eyes with concentricrings, and actual upper/lower jaw and non-graphic teeth. No exact number ofeyes is required but their coherent pattern must stay recognizable. ANIMEWHITE fur, not mangaorange/brown; no NarutoKyuubi, nine tails, humanoid body, detachedAki head, hand sign, hunter or human body in the frame. Every complete eartip, furruff edge, snout and jaw fits inside the cell with ample empty gutter. Row1 ARRIVAL: four genuinely different successive head-emerging/ears/ruff poses facingright, mouth closed/slightlyparted. Row2 PREPARATION: four different leaningforward and opening-jaws poses, with lips and teeth fully connected to the real head. Row3 ATTACK: four clear physicalBITE poses: ready-open mouth, openjaw forward, jaws closing at RIGHTWARD mouth contact in column3, closedjaw recoil. The real mouth supplies contact; no beam, projectile, glowingbitewave or generic explosion. Row4 RECOVERY: four different jaws relaxing/ears shifting/head withdrawing poses. No victim, blood, gore, severed body, bloodyneck or violentdetail. Bottom silhouette is a COMPLETE natural furruff, never a bloodycut. No procedural-looking outlineportal; the fully drawn sourcehead owns every eye, ear, lip and tooth.",
+      "toolArguments": {
+        "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas, an independent adaptation and not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct COMPLETE native subject poses of ONE same character/entity facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous completely EMPTY gutters between every cell and20px clear outer margins. No text, labels, numbers, grid lines, scenery, opponent, blood or injury. Consistent anatomy, costume, body scale and equipment. All16 drawings genuinely different, not duplicate, mirror, recolour or simple translated copies. Crisp readable pixel clusters. Identity locked: FoxDevil from ChainsawMan ANIME2022 episode4 Kon contract. ONLY the enormous COMPLETE white arcticFOX HEAD with natural full furry neckruff, long pointed foxears, blacknose, multiple LARGE glowing RED-ORANGE eyes with concentricrings, and actual upper/lower jaw and non-graphic teeth. No exact number ofeyes is required but their coherent pattern must stay recognizable. ANIMEWHITE fur, not mangaorange/brown; no NarutoKyuubi, nine tails, humanoid body, detachedAki head, hand sign, hunter or human body in the frame. Every complete eartip, furruff edge, snout and jaw fits inside the cell with ample empty gutter. Row1 ARRIVAL: four genuinely different successive head-emerging/ears/ruff poses facingright, mouth closed/slightlyparted. Row2 PREPARATION: four different leaningforward and opening-jaws poses, with lips and teeth fully connected to the real head. Row3 ATTACK: four clear physicalBITE poses: ready-open mouth, openjaw forward, jaws closing at RIGHTWARD mouth contact in column3, closedjaw recoil. The real mouth supplies contact; no beam, projectile, glowingbitewave or generic explosion. Row4 RECOVERY: four different jaws relaxing/ears shifting/head withdrawing poses. No victim, blood, gore, severed body, bloodyneck or violentdetail. Bottom silhouette is a COMPLETE natural furruff, never a bloodycut. No procedural-looking outlineportal; the fully drawn sourcehead owns every eye, ear, lip and tooth.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": null,
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 300,
+        "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "observedNativePoses": 16,
+      "reviewed": true,
+      "reviewNotes": "All16 actually viewed. Complete animewhite arcticfoxhead, multiple redorange concentric eyes, wholeears/ruff/snouts, non-graphic opening and closing jaws. No human/body surrogate, blood, beam or fixed-eye-count claim.",
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/fox-devil-original.png",
+      "file": "/workspace/generated_images/exec-474b01a3-b1f7-4b2d-b25f-1ba75f819b69.png",
+      "effectAnchors": {
+        "arrival": [
+          {
+            "x": 387,
+            "y": 187,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-arrival-anchor-zoom.png"
+          },
+          {
+            "x": 383,
+            "y": 144,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-arrival-anchor-zoom.png"
+          },
+          {
+            "x": 370,
+            "y": 134,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-arrival-anchor-zoom.png"
+          },
+          {
+            "x": 383,
+            "y": 216,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-arrival-anchor-zoom.png"
+          }
+        ],
+        "preparation": [
+          {
+            "x": 396,
+            "y": 197,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-preparation-anchor-zoom.png"
+          },
+          {
+            "x": 394,
+            "y": 173,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 234,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-preparation-anchor-zoom.png"
+          },
+          {
+            "x": 391,
+            "y": 108,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-preparation-anchor-zoom.png"
+          },
+          {
+            "x": 398,
+            "y": 151,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-preparation-anchor-zoom.png"
+          }
+        ],
+        "attack": [
+          {
+            "x": 418,
+            "y": 113,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          {
+            "x": 458,
+            "y": 150,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          {
+            "x": 399,
+            "y": 200,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 248,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          {
+            "x": 390,
+            "y": 213,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 252,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          }
+        ],
+        "recovery": [
+          {
+            "x": 386,
+            "y": 198,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-recovery-anchor-zoom.png"
+          },
+          {
+            "x": 384,
+            "y": 141,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-recovery-anchor-zoom.png"
+          },
+          {
+            "x": 385,
+            "y": 195,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 250,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-recovery-anchor-zoom.png"
+          },
+          {
+            "x": 376,
+            "y": 207,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 246,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-recovery-anchor-zoom.png"
+          }
+        ]
+      },
+      "anchorRole": "physical-bite-mouth"
+    },
+    {
+      "slug": "starfire",
+      "id": "starfire_tt-wave16",
+      "callerId": "raven_tt",
+      "performerHeroId": "starfire_tt",
+      "universe": "Teen Titans",
+      "entityName": "Starfire",
+      "sourceWork": "Teen Titans animated series(2003)",
+      "sourceReference": "https://teentitans.fandom.com/wiki/Starfire",
+      "appearance": "Orange skin, very long red-orange hair, GREEN eyes, purple cropped armour top with silver collar/trim, purple skirt, silver/purple bracelets, high purple boots with silver details; original2003 animated proportions, not comics orGo.",
+      "actionName": "Starbolts verts de Starfire",
+      "role": "hand",
+      "bodyHeight": 210,
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "notes": "Green starbolts leave the physically measured native palm. No gun, staff, pink plasma, eye beam or force-sharing claim. Raven calling Starfire is a same-universe gameplay relay, not certification of a canonical invocation.",
+      "key": "Teen Titans::Starfire::Starbolts verts de Starfire",
+      "sourceDefinition": {
+        "universe": "Teen Titans",
+        "sourceWork": "Teen Titans animated series(2003)",
+        "appearance": "Orange skin, very long red-orange hair, GREEN eyes, purple cropped armour top with silver collar/trim, purple skirt, silver/purple bracelets, high purple boots with silver details; original2003 animated proportions, not comics orGo.",
+        "bodyHeight": 210,
+        "sourceReference": "https://teentitans.fandom.com/wiki/Starfire",
+        "source1to1Verified": false
+      },
+      "sourceDefinitionPlan": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/source-plan-complement-starfire.json",
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/rpg-prompts/starfire.txt",
+      "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas of STARFIRE from the TeenTitans ANIMATED SERIES2003. This is an independent adaptation, not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct COMPLETE FULL-BODY action poses of ONE same Starfire facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous completely EMPTY gutters between every cell and20px outer margins. Full long hair, both hands, entire costume, both complete boots and all fingers stay within each cell. No text, labels, grid, scenery, opponent, blood or injury. Locked2003 identity: orange skin, very long RED-ORANGE hair, GREEN eyes, original purple cropped armour top with silver collar/trim, purple skirt, silver/purple bracelets, HIGH PURPLE boots with silver details. Original2003 animated character proportions, notTeenTitansGo, not adultcomics armour, no costume redesign. Neutral full-body combat sprite framing faithful to the original show, without sexualized posing. Selected action is a small GREEN STARBOLT from the actual open PALM, not a firearm or eye beam. Row1 ARRIVAL: four different approaching/landing-to-bracing steps, hands lowered. Row2 PREPARATION: four different raising and aiming the open hand poses; only a faint local green glow close to the palm, NO travelling projectile, streak or beam. Row3 ATTACK: column1 open palm ready with only small local glow, column2 braced aim with NO outward shot, column3 ONE small GREEN starbolt just releasing from the actual forward palm, column4 withdrawing hand with NO projectile. Only the third attack cell releases an outward starbolt; all other fifteen cells have no travelling bolt or ray. Row4 RECOVERY: four different lowering hands, relaxing and stepping-back poses, green light fading completely. All16 bodies newly drawn and visibly different, never duplicate, mirror, recolour or translatedcopies. Crisp readable pixel clusters, stable source costume and anatomy. No pistoI, staff, pink/purple plasma, eye lasers, giant explosion or bubble shield.",
+      "toolArguments": {
+        "prompt": "Create a fresh originally drawn production-ready transparent pixel-art RPG reinforcement atlas of STARFIRE from the TeenTitans ANIMATED SERIES2003. This is an independent adaptation, not official animation frames. Exactly FOUR columns by FOUR rows = sixteen visibly distinct COMPLETE FULL-BODY action poses of ONE same Starfire facing RIGHT in three-quarter side battle view. Native1536x1024 landscape canvas, actual transparent alpha, generous completely EMPTY gutters between every cell and20px outer margins. Full long hair, both hands, entire costume, both complete boots and all fingers stay within each cell. No text, labels, grid, scenery, opponent, blood or injury. Locked2003 identity: orange skin, very long RED-ORANGE hair, GREEN eyes, original purple cropped armour top with silver collar/trim, purple skirt, silver/purple bracelets, HIGH PURPLE boots with silver details. Original2003 animated character proportions, notTeenTitansGo, not adultcomics armour, no costume redesign. Neutral full-body combat sprite framing faithful to the original show, without sexualized posing. Selected action is a small GREEN STARBOLT from the actual open PALM, not a firearm or eye beam. Row1 ARRIVAL: four different approaching/landing-to-bracing steps, hands lowered. Row2 PREPARATION: four different raising and aiming the open hand poses; only a faint local green glow close to the palm, NO travelling projectile, streak or beam. Row3 ATTACK: column1 open palm ready with only small local glow, column2 braced aim with NO outward shot, column3 ONE small GREEN starbolt just releasing from the actual forward palm, column4 withdrawing hand with NO projectile. Only the third attack cell releases an outward starbolt; all other fifteen cells have no travelling bolt or ray. Row4 RECOVERY: four different lowering hands, relaxing and stepping-back poses, green light fading completely. All16 bodies newly drawn and visibly different, never duplicate, mirror, recolour or translatedcopies. Crisp readable pixel clusters, stable source costume and anatomy. No pistoI, staff, pink/purple plasma, eye lasers, giant explosion or bubble shield.",
+        "transparent_background": true
+      },
+      "referenceImage": null,
+      "identityReferenceImage": null,
+      "calibration": {
+        "row": 0,
+        "column": 3,
+        "targetBodyHeight": 210,
+        "method": "complete-upright-arrival-source-silhouette; Titanstructuralantennae/headstraw retained",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "nativeGenerationCalls": 1,
+      "observedNativePoses": 16,
+      "reviewed": true,
+      "reviewNotes": "All16 actually viewed. Original2003 orange/redhair/greeneyes/purple-silver outfit and wholeboots/longhair. Local nativepalm green charge inpreparation, outward green starbolt only attackcol2, no gun/staff/pink plasma.",
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/starfire-original.png",
+      "file": "/workspace/generated_images/exec-3ae63643-9337-4239-b94f-c57f8f440136.png",
+      "effectAnchors": {
+        "attack": [
+          {
+            "x": 324,
+            "y": 84,
+            "space": "packed-native-pixels",
+            "role": "native-palm-release",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/starfire-attack-anchor-zoom.png"
+          },
+          {
+            "x": 344,
+            "y": 82,
+            "space": "packed-native-pixels",
+            "role": "native-palm-release",
+            "visuallyReviewed": true,
+            "centerAlpha": 253,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/starfire-attack-anchor-zoom.png"
+          },
+          {
+            "x": 339,
+            "y": 81,
+            "space": "packed-native-pixels",
+            "role": "native-palm-release",
+            "visuallyReviewed": true,
+            "centerAlpha": 249,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/starfire-attack-anchor-zoom.png"
+          },
+          {
+            "x": 331,
+            "y": 101,
+            "space": "packed-native-pixels",
+            "role": "native-palm-release",
+            "visuallyReviewed": true,
+            "centerAlpha": 251,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/starfire-attack-anchor-zoom.png"
+          }
+        ]
+      },
+      "anchorRole": "native-palm-release"
+    }
+  ],
+  "attempts": [
+    {
+      "key": "robin",
+      "id": "robin_tt-wave16",
+      "performerHeroId": "robin_tt",
+      "status": "refused",
+      "nativeGenerationCalls": 1,
+      "nativeGeneratedPoses": 0,
+      "observedNativePoses": 0,
+      "imageReturned": false,
+      "requestId": "a1ef729f-017b-49e5-b788-6139a7b1c00a",
+      "code": "moderation_blocked",
+      "receipt": "docs/combat-fidelity-wave16-2026-10-28/rpg-tool-receipts/robin-error-verbatim.json",
+      "summary": "docs/combat-fidelity-wave16-2026-10-28/rpg-tool-receipts/robin-result.json",
+      "replacedByDistinctIdentity": "starfire_tt",
+      "replacementPlan": "docs/combat-fidelity-wave16-2026-10-28/rpg-sources/source-plan-complement-starfire.json",
+      "notRetried": true
+    }
+  ]
+}

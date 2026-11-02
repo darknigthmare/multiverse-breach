@@ -1,3 +1,6 @@
+import { ROSTER_SUMMON_CHOREOGRAPHIES_WAVE16, drawRosterSummonCueWave16,
+  projectSourceSummonChoreographyWave16 } from './rosterSummonChoreographyWave16.js';
+import { ROSTER_SUMMON_CHOREOGRAPHIES_WAVE15, drawRosterSummonCueWave15 } from './rosterSummonChoreographyWave15.js';
 import { ROSTER_SUMMON_CHOREOGRAPHIES_WAVE14, drawRosterSummonCueWave14 } from './rosterSummonChoreographyWave14.js';
 import { ROSTER_SUMMON_CHOREOGRAPHIES_WAVE12, drawRosterSummonCueWave12 } from './rosterSummonChoreographyWave12.js';
 import { ROSTER_SUMMON_CHOREOGRAPHIES_WAVE13, drawRosterSummonCueWave13 } from './rosterSummonChoreographyWave13.js';
@@ -102,7 +105,7 @@ const entries = [
     { path: 'egret-convoy', arrival: 0.43, travelTicks: 20, holdTicks: 31, scale: 1.1, offsetX: 83, preparation: 'egret-form-up', attack: 'egret-ballistics', recovery: 'egret-depart', muzzle: [0.3, -0.36] })
 ];
 
-const allEntries = [...entries, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE8, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE9, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE10, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE11, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE12, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE13, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE14];
+const allEntries = [...entries, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE8, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE9, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE10, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE11, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE12, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE13, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE14, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE15, ...ROSTER_SUMMON_CHOREOGRAPHIES_WAVE16];
 export const SUMMON_CHOREOGRAPHIES = Object.freeze(Object.fromEntries(allEntries.map(entry => [keyFor(entry.universe, entry.entityName, entry.actionName), entry])));
 if (Object.keys(SUMMON_CHOREOGRAPHIES).length !== allEntries.length) throw new Error('Duplicate exact summon choreography identity');
 export function resolveSummonChoreography(descriptor) {
@@ -276,7 +279,7 @@ export function getSummonChoreographyState(scene, arena = {}) {
   if (tick >= arrivalEndTick && tick <= impactTick) visuals.push({ kind: spec.preparation, layer: 'behind', progress: preparationProgress, strength: 1, stage: 'preparation' });
   if (tick >= attackStartTick && tick <= returnStartTick) visuals.push({ kind: spec.attack, layer: 'front', progress: travelProgress, strength: tick <= impactTick ? 1 : 1 - attackProgress * 0.6, stage: tick < impactTick ? 'travel' : 'contact' });
   if (tick > returnStartTick) visuals.push({ kind: spec.recovery, layer: 'behind', progress: returnProgress, strength: 1 - returnProgress, stage: 'return' });
-  return {
+  return projectSourceSummonChoreographyWave16(scene, {
     id: spec.id, fidelity: spec.fidelity, path: spec.path, phase, poseIndex,
     tick, durationTicks, impactTick, arrivalEndTick, attackStartTick, returnStartTick,
     arrivalProgress, preparationProgress, travelProgress, attackProgress, returnProgress,
@@ -284,7 +287,7 @@ export function getSummonChoreographyState(scene, arena = {}) {
     color: scene.color || scene.descriptor?.color || '#ffffff', side, width, height,
     performer: { x, y, scale, size, alpha: clamp(alpha, 0, 1), facing: side, rotation },
     origin, caller, target, targets, visuals
-  };
+  });
 }
 
 const line = (ctx, from, to, color, width = 2) => {
@@ -368,6 +371,8 @@ const drawVines = (ctx, state, cueState) => {
 };
 
 function drawCue(ctx, state, cueState) {
+  if (drawRosterSummonCueWave16(ctx, state, cueState)) return;
+  if (drawRosterSummonCueWave15(ctx, state, cueState)) return;
   if (drawRosterSummonCueWave14(ctx, state, cueState)) return;
   if (drawRosterSummonCueWave13(ctx, state, cueState)) return;
   if (drawRosterSummonCueWave12(ctx, state, cueState)) return;

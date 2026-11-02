@@ -1,0 +1,16 @@
+{
+  "tool": "image_gen",
+  "provider": "OpenAI",
+  "arguments": {
+    "prompt": "Regenerate the attached sprite atlas as EXACTLY48 independent complete figures in8columns×6rows on a truly transparent background, preserving the same adult Gina orange-brown prisoner costume, dark auburn ponytail, proportions and pose sequence order. Correct the incomplete SUPER sequence in physical row4columns5-8: there must be FOUR complete distinct bodies there, not3. Every action in physical row3columns1-4, row4columns5-8 and row6columns1-4 uses the same Unreal1998 Dispersion Pistol: a compact rounded sci-fi energy pistol, a small BLUE energy muzzle glow only in the third release frame, NEVER an orange ballistic flame. Other phases no firing/glow. All48figures complete with transparent gutters, all gun tips/feet inside cells, no duplicates, no text or scenery. Separate action preparation/release/recovery actual hand/foot postures. Preserve roworder:1intro/outro,2roundwin/rounddefeat,3finishingpresentation/matchwin,4matchdefeat/super,5idle/run,6ordinaryaction/hitreaction. Solo non-graphic acting, no opponent or injury.",
+    "referenced_image_paths": [
+      "/workspace/multiverse-breach/docs/combat-fidelity-wave15-2026-10-26/part-a/sources/unreal_1998_gina-native-original.png"
+    ],
+    "transparent_background": true
+  },
+  "startedAt": "2026-10-26T08:25:47.044Z",
+  "finishedAt": "2026-10-26T08:27:26.445Z",
+  "imageReturned": true,
+  "generatedPath": "/workspace/generated_images/exec-9b2f122d-aec2-46dd-917d-cefaaadb7d0f.png",
+  "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-9b2f122d-aec2-46dd-917d-cefaaadb7d0f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+}

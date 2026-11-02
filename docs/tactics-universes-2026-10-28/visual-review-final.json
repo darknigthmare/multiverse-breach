@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 2,
+  "passed": true,
+  "preliminary": false,
+  "reviewedAt": "2026-11-01T02:11:20.158Z",
+  "reviewer": "/root/final_tactics_review",
+  "report": {
+    "path": "docs/tactics-universes-2026-10-28/result.json",
+    "sha256": "ceb4a16c985e9ce0029c39d31f5b2ef33725916600631ce01768002756526768",
+    "bytes": 154209
+  },
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/production-freeze.json",
+    "sha256": "9cc3ea0b7c1b02c460fb85e884c7a2671a3382d6ab62f0422c387112aa2735e3",
+    "bytes": 2260032
+  },
+  "actualCapturesInspected": 10,
+  "artifacts": [
+    {
+      "path": "docs/tactics-universes-2026-10-28/cuphead_inkwell_tactics-desktop.png",
+      "sha256": "315e0aae9ec93f8d1ac5899f8c3d65eedd30f5c42b941f9890807d0fac5951f8",
+      "bytes": 375570,
+      "inspected": true,
+      "observation": "Inkwell desktop shows green grass tiles, a narrow blue stream, wooden crossings and raised bank faces. The far bank and grass surfaces are distinct from the Nexus metal skybridge; both units and tile coordinates fit the viewport."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/cuphead_inkwell_tactics-mobile.png",
+      "sha256": "c78f393336cc88b856a5ee0c479e963e75f43e8be917a38c608cf86847bf05e7",
+      "bytes": 185915,
+      "inspected": true,
+      "observation": "Inkwell mobile shows the entire terrain panel, selected A5/Z0, inkwell-grass material,1AP cost, height-cut controls and visible battle canvas; action buttons wrap into two columns without horizontal clipping. The tall layout scrolls."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/titanfall_reclamation_tactics-desktop.png",
+      "sha256": "3582ce1b12469f965079af88ec03807b659c8039f9ccea128f98978ba2901ae7",
+      "bytes": 422260,
+      "inspected": true,
+      "observation": "Titanfall desktop shows grey industrial deck plates, dark grated lower channels, ramps and elevated platforms. Raised faces and rail-like edges make the industrial layers visibly distinct from Inkwell grass."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/titanfall_reclamation_tactics-mobile.png",
+      "sha256": "09d3fe73043fdadf47138fad550ebb358ef572a61debd8d59937cba08d6eaa71",
+      "bytes": 186990,
+      "inspected": true,
+      "observation": "Titanfall mobile identifies World Foundry and imc-deck material at A5/Z0 with1AP cost; the cut/zoom controls, canvas and two-column action controls remain visible within the narrow page."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/fma_central_station_tactics-desktop.png",
+      "sha256": "a05d01a6e17e6d4644d611772c1b1620193feb3bd8fb5e809e8b4372a9d409ff",
+      "bytes": 275805,
+      "inspected": true,
+      "observation": "Central desktop shows light stone station platforms and darker recessed tracks, with a clock and lamp-like pillars. The high middle crossing, low tracks and tile labels are visible as separate surfaces."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/fma_central_station_tactics-mobile.png",
+      "sha256": "0b7300de7b7b4f0d12c76e18c7e3cbf2173c1cd1c8708708941856ad9a199b21",
+      "bytes": 181268,
+      "inspected": true,
+      "observation": "Central mobile identifies Brotherhood2009 and central-stone material with A5/Z0 and1AP cost. The height panel and canvas fit the page width; action labels remain contained within their buttons."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/wakfu_sadida_tactics-desktop.png",
+      "sha256": "dea0f8244c207f57025c9a55622ce92038aace64d912e14f01ed6cec696809cb",
+      "bytes": 358101,
+      "inspected": true,
+      "observation": "Sadida desktop shows green grass surrounding broad brown root/canopy surfaces at several elevations, with open lower gaps and a small blue water square; geometry and palette differ from the station and industrial sectors."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/wakfu_sadida_tactics-mobile.png",
+      "sha256": "75431f87d911c0ad0fcd030c1b550bdfcedd446ef427f00d9e69e60922fd8879",
+      "bytes": 188115,
+      "inspected": true,
+      "observation": "Sadida mobile identifies season1 source and sadida-grass at A5/Z0 with1AP cost. Surface selection, cut controls and the complete narrow canvas are visible; the two-column battle controls remain inside the page."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/nexus_skybridge-desktop.png",
+      "sha256": "99d7697d242dba21181ef6c89501602ef71eb25ffbb3a13345890dcd91865357",
+      "bytes": 263690,
+      "inspected": true,
+      "observation": "Nexus legacy desktop control preserves the raised metal skybridge, staircase from the left and lower grid beneath the upper platform. The upper opponent and lower player appear on visibly different heights, with reachable AP labels on left tiles."
+    },
+    {
+      "path": "docs/tactics-universes-2026-10-28/training_grid-desktop.png",
+      "sha256": "450aaf33e055134cfd33070d7d8aec23558c74da2ba35aeafc5a62221240d4ce",
+      "bytes": 166355,
+      "inspected": true,
+      "observation": "Training-grid legacy desktop control shows a flat grid, green reachable tiles marked1AP/2AP, central cyan obstacles and cover labels. Both units fit in frame; the view is distinct from every new source sector."
+    }
+  ],
+  "source1to1Verified": false,
+  "notes": [
+    "All 10 current PNG captures from the execution after the freeze following the source-control invocation correction were actually reopened with view_image. Earlier captures and reviews were archived and do not substitute for the current review.",
+    "Four dedicated source sectors are reviewed on desktop and mobile plus two legacy desktop controls. The 18-check runtime report supplies launch, cost, reachability and unchanged-source assertions; still pictures alone do not prove every possible path.",
+    "Terrains are playable procedural adaptations associated with stated source versions, not official certified 1:1 art. No scene-background image is counted as playable terrain geometry.",
+    "A prior attempt using an isolated /tmp Vite cache closed before any launch because the frozen UI harness expects standard dependency URLs. Its failure report and screenshot are preserved under browser/attempts/tactics-ui-source-control-fix-isolated-cache-failure. The passing execution used the unchanged frozen server helper and standard cache."
+  ]
+}

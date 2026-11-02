@@ -1,0 +1,658 @@
+{
+  "heroId": "sir_daniel_fortesque",
+  "registryStem": "sirDaniel",
+  "universe": "MediEvil",
+  "sourceWork": "MediEvil (1998 PlayStation), Sir Daniel Fortesque",
+  "sourceReference": "https://www.playstation.com/games/medievil/",
+  "date": "2026-10-26",
+  "archiveDir": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources",
+  "outputDir": "public/sprites/generated/sir-daniel-melee-wave15",
+  "reference": {
+    "asset": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png",
+    "savedImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png"
+  },
+  "correctionId": null,
+  "sources": [
+    {
+      "id": "sir-daniel-motion-a",
+      "image": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "idle",
+        "row": 0,
+        "column": 0,
+        "bodyBounds": {
+          "x": 56,
+          "y": 34,
+          "width": 140,
+          "height": 210
+        },
+        "nativeStandingBodyHeight": 210,
+        "raisedArmsExcluded": true,
+        "reason": "Inspected upright skull-crown to boot-sole interval with lowered hands; blades, raised skeletal hands, cape spread and effects do not determine anatomical stature. One source-wide scale keeps real crouched/airborne/prone projections."
+      }
+    },
+    {
+      "id": "sir-daniel-motion-b",
+      "image": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-b.native.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-b.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "taunt1",
+        "row": 6,
+        "column": 0,
+        "bodyBounds": {
+          "x": 23,
+          "y": 768,
+          "width": 145,
+          "height": 228
+        },
+        "nativeStandingBodyHeight": 228,
+        "raisedArmsExcluded": true,
+        "reason": "Inspected upright skull-crown to boot-sole interval with lowered hands; blades, raised skeletal hands, cape spread and effects do not determine anatomical stature. One source-wide scale keeps real crouched/airborne/prone projections."
+      }
+    },
+    {
+      "id": "sir-daniel-defense",
+      "image": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-defense.native.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-defense.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "shieldExit",
+        "row": 5,
+        "column": 3,
+        "bodyBounds": {
+          "x": 1358,
+          "y": 579,
+          "width": 147,
+          "height": 222
+        },
+        "nativeStandingBodyHeight": 222,
+        "raisedArmsExcluded": true,
+        "reason": "Inspected upright skull-crown to boot-sole interval with lowered hands; blades, raised skeletal hands, cape spread and effects do not determine anatomical stature. One source-wide scale keeps real crouched/airborne/prone projections."
+      }
+    },
+    {
+      "id": "sir-daniel-combat-a",
+      "image": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-a.native.png",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "discarded-chargeRelease",
+        "chargeRecovery"
+      ],
+      "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-a.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "chargeRecovery",
+        "row": 7,
+        "column": 3,
+        "bodyBounds": {
+          "x": 1351,
+          "y": 790,
+          "width": 143,
+          "height": 211
+        },
+        "nativeStandingBodyHeight": 211,
+        "raisedArmsExcluded": true,
+        "reason": "Inspected upright skull-crown to boot-sole interval with lowered hands; blades, raised skeletal hands, cape spread and effects do not determine anatomical stature. One source-wide scale keeps real crouched/airborne/prone projections."
+      }
+    },
+    {
+      "id": "sir-daniel-combat-b",
+      "image": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-b.native.png",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-b.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "attackRecovery",
+        "row": 0,
+        "column": 0,
+        "bodyBounds": {
+          "x": 28,
+          "y": 34,
+          "width": 161,
+          "height": 212
+        },
+        "nativeStandingBodyHeight": 212,
+        "raisedArmsExcluded": true,
+        "reason": "Inspected upright skull-crown to boot-sole interval with lowered hands; blades, raised skeletal hands, cape spread and effects do not determine anatomical stature. One source-wide scale keeps real crouched/airborne/prone projections."
+      }
+    },
+    {
+      "id": "sir-daniel-ledge",
+      "image": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "discarded-ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump",
+        "reservedUprightCalibration",
+        "reservedGripStudy",
+        "reservedCapeStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "reservedUprightCalibration",
+        "row": 5,
+        "column": 0,
+        "bodyBounds": {
+          "x": 822,
+          "y": 561,
+          "width": 123,
+          "height": 216
+        },
+        "nativeStandingBodyHeight": 216,
+        "raisedArmsExcluded": true,
+        "reason": "Inspected upright skull-crown to boot-sole interval with lowered hands; blades, raised skeletal hands, cape spread and effects do not determine anatomical stature. One source-wide scale keeps real crouched/airborne/prone projections."
+      }
+    },
+    {
+      "id": "sir-daniel-corrective-ledge",
+      "image": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.native.png",
+      "states": [
+        "ledgeClimb",
+        "uprightCalibration"
+      ],
+      "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "uprightCalibration",
+        "row": 1,
+        "column": 0,
+        "bodyBounds": {
+          "x": 49,
+          "y": 584,
+          "width": 274,
+          "height": 394
+        },
+        "nativeStandingBodyHeight": 394,
+        "raisedArmsExcluded": true,
+        "reason": "Inspected upright skull-crown to boot-sole interval with lowered hands; blades, raised skeletal hands, cape spread and effects do not determine anatomical stature. One source-wide scale keeps real crouched/airborne/prone projections."
+      }
+    },
+    {
+      "id": "sir-daniel-corrective-charge",
+      "image": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-charge.native.png",
+      "states": [
+        "chargeRelease",
+        "uprightCalibration"
+      ],
+      "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-charge.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4
+        ]
+      },
+      "calibration": {
+        "reviewed": true,
+        "state": "uprightCalibration",
+        "row": 1,
+        "column": 0,
+        "bodyBounds": {
+          "x": 35,
+          "y": 525,
+          "width": 282,
+          "height": 423
+        },
+        "nativeStandingBodyHeight": 423,
+        "raisedArmsExcluded": true,
+        "reason": "Inspected upright skull-crown to boot-sole interval with lowered hands; blades, raised skeletal hands, cape spread and effects do not determine anatomical stature. One source-wide scale keeps real crouched/airborne/prone projections."
+      }
+    }
+  ],
+  "atlases": [
+    {
+      "id": "sir-daniel-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "selection": {
+        "idle": {
+          "sourceId": "sir-daniel-motion-a",
+          "row": 0
+        },
+        "walk": {
+          "sourceId": "sir-daniel-motion-a",
+          "row": 1
+        },
+        "run": {
+          "sourceId": "sir-daniel-motion-a",
+          "row": 2
+        },
+        "turn": {
+          "sourceId": "sir-daniel-motion-a",
+          "row": 3
+        },
+        "jumpStart": {
+          "sourceId": "sir-daniel-motion-a",
+          "row": 4
+        },
+        "jumpRise": {
+          "sourceId": "sir-daniel-motion-a",
+          "row": 5
+        },
+        "jumpApex": {
+          "sourceId": "sir-daniel-motion-a",
+          "row": 6
+        },
+        "fall": {
+          "sourceId": "sir-daniel-motion-a",
+          "row": 7
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "sir-daniel-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "selection": {
+        "fastFall": {
+          "sourceId": "sir-daniel-motion-b",
+          "row": 0
+        },
+        "land": {
+          "sourceId": "sir-daniel-motion-b",
+          "row": 1
+        },
+        "crouchEnter": {
+          "sourceId": "sir-daniel-motion-b",
+          "row": 2
+        },
+        "crouchIdle": {
+          "sourceId": "sir-daniel-motion-b",
+          "row": 3
+        },
+        "crouchExit": {
+          "sourceId": "sir-daniel-motion-b",
+          "row": 4
+        },
+        "crouchCharge": {
+          "sourceId": "sir-daniel-motion-b",
+          "row": 5
+        },
+        "taunt1": {
+          "sourceId": "sir-daniel-motion-b",
+          "row": 6
+        },
+        "hitStun": {
+          "sourceId": "sir-daniel-motion-b",
+          "row": 7
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "sir-daniel-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "selection": {
+        "shieldEnter": {
+          "sourceId": "sir-daniel-defense",
+          "row": 0
+        },
+        "shieldHold": {
+          "sourceId": "sir-daniel-defense",
+          "row": 1
+        },
+        "shieldHit": {
+          "sourceId": "sir-daniel-defense",
+          "row": 2
+        },
+        "perfectShield": {
+          "sourceId": "sir-daniel-defense",
+          "row": 3
+        },
+        "shieldBreak": {
+          "sourceId": "sir-daniel-defense",
+          "row": 4
+        },
+        "shieldExit": {
+          "sourceId": "sir-daniel-defense",
+          "row": 5
+        },
+        "dead": {
+          "sourceId": "sir-daniel-defense",
+          "row": 6
+        },
+        "defeat": {
+          "sourceId": "sir-daniel-defense",
+          "row": 7
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "sir-daniel-combat-a",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "selection": {
+        "attackLight1": {
+          "sourceId": "sir-daniel-combat-a",
+          "row": 0
+        },
+        "attackLight2": {
+          "sourceId": "sir-daniel-combat-a",
+          "row": 1
+        },
+        "attackLight3": {
+          "sourceId": "sir-daniel-combat-a",
+          "row": 2
+        },
+        "crouchLight": {
+          "sourceId": "sir-daniel-combat-a",
+          "row": 3
+        },
+        "chargeStart": {
+          "sourceId": "sir-daniel-combat-a",
+          "row": 4
+        },
+        "chargeLoop": {
+          "sourceId": "sir-daniel-combat-a",
+          "row": 5
+        },
+        "chargeRelease": {
+          "sourceId": "sir-daniel-corrective-charge",
+          "row": 0
+        },
+        "chargeRecovery": {
+          "sourceId": "sir-daniel-combat-a",
+          "row": 7
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-a.native.png",
+          "nativeRow": 6,
+          "state": "chargeRelease",
+          "poses": 4,
+          "reason": "Third charge-release drawing loses its short sword; entire original sequence replaced by four independently generated clearly gripped right-hand sword bodies."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-charge.native.png",
+          "nativeRow": 1,
+          "state": "uprightCalibration",
+          "poses": 4,
+          "reason": "Corrective charge standing calibration study; never a delivered game pose."
+        }
+      ]
+    },
+    {
+      "id": "sir-daniel-combat-b",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "selection": {
+        "attackRecovery": {
+          "sourceId": "sir-daniel-combat-b",
+          "row": 0
+        },
+        "special": {
+          "sourceId": "sir-daniel-combat-b",
+          "row": 1
+        },
+        "aerialNeutral": {
+          "sourceId": "sir-daniel-combat-b",
+          "row": 2
+        },
+        "aerialForward": {
+          "sourceId": "sir-daniel-combat-b",
+          "row": 3
+        },
+        "aerialDown": {
+          "sourceId": "sir-daniel-combat-b",
+          "row": 4
+        },
+        "intro": {
+          "sourceId": "sir-daniel-combat-b",
+          "row": 5
+        },
+        "victory": {
+          "sourceId": "sir-daniel-combat-b",
+          "row": 6
+        },
+        "ledgeAttack": {
+          "sourceId": "sir-daniel-combat-b",
+          "row": 7
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "sir-daniel-ledge",
+      "batch": "Combat",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "selection": {
+        "ledgeCatch": {
+          "sourceId": "sir-daniel-ledge",
+          "row": 0
+        },
+        "ledgeHang": {
+          "sourceId": "sir-daniel-ledge",
+          "row": 1
+        },
+        "ledgeClimb": {
+          "sourceId": "sir-daniel-corrective-ledge",
+          "row": 0
+        },
+        "ledgeDrop": {
+          "sourceId": "sir-daniel-ledge",
+          "row": 3
+        },
+        "ledgeJump": {
+          "sourceId": "sir-daniel-ledge",
+          "row": 4
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+          "nativeRow": 5,
+          "state": "reservedUprightCalibration",
+          "poses": 4,
+          "reason": "Native calibration/grip/cape study, excluded from delivered game poses."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+          "nativeRow": 6,
+          "state": "reservedGripStudy",
+          "poses": 4,
+          "reason": "Native calibration/grip/cape study, excluded from delivered game poses."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+          "nativeRow": 7,
+          "state": "reservedCapeStudy",
+          "poses": 4,
+          "reason": "Native calibration/grip/cape study, excluded from delivered game poses."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+          "nativeRow": 2,
+          "state": "ledgeClimb",
+          "poses": 4,
+          "reason": "Initial climb third frame keeps leading palm above skull, inconsistent with actual upward torso progression; whole original sequence replaced by four new corrective native bodies."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.native.png",
+          "nativeRow": 1,
+          "state": "uprightCalibration",
+          "poses": 4,
+          "reason": "Corrective native standing calibration study, never delivered as game poses."
+        }
+      ]
+    }
+  ],
+  "visualReview": {
+    "complete": true,
+    "outfit": "Tall skeletal knight: single left eye (screen-right in front view), no lower jaw, worn silver armour, dark navy cape; no helmet, red plume, horned shoulder or flesh.",
+    "weapons": "Physical short sword in right hand, sheathed during locomotion/jumps/ledge contacts. No shield in the selected loadout: shield-labelled states depict actual short-sword parry.",
+    "limitations": [
+      "Generated source-version gameplay adaptation, not official original game frames or certified 1:1.",
+      "Opposite facing is a runtime horizontal mirror; anatomical handedness is not certified in the mirrored camp.",
+      "Shared airborne, guard/parry, charge and physical ledge mechanics are original bounded platform-fighter adaptations."
+    ],
+    "evidence": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/source-row-review.json"
+  },
+  "incompleteInitialSources": [],
+  "rejectedSources": []
+}

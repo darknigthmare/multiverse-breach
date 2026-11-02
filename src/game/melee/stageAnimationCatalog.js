@@ -1,3 +1,5 @@
+import { STAGE_ANIMATION_WAVE_15, drawStageAnimationWave15 } from './stageAnimationCatalogWave15.js';
+import { STAGE_ANIMATION_WAVE_16, drawStageAnimationWave16 } from './stageAnimationCatalogWave16.js';
 import { STAGE_ANIMATION_WAVE_12, drawStageAnimationWave12 } from './stageAnimationCatalogWave12.js';
 import { STAGE_ANIMATION_WAVE_11, WAVE_11_MODE_REFERENCE_SCENES, drawStageAnimationWave11 } from './stageAnimationCatalogWave11.js';
 import { STAGE_ANIMATION_WAVE_10, WAVE_10_MODE_REFERENCE_SCENES, drawStageAnimationWave10 } from './stageAnimationCatalogWave10.js';
@@ -32,6 +34,8 @@ const portalAtlas = (slug, x, y, size, frameOrder = [2, 2, 2, 3, 0, 0, 1, 1]) =>
 });
 
 export const STAGE_ANIMATION_PROFILES = Object.freeze([
+  ...STAGE_ANIMATION_WAVE_16.map(profile),
+  ...STAGE_ANIMATION_WAVE_15.map(profile),
   ...STAGE_ANIMATION_WAVE_12.map(profile),
   profile({
     id: 'ff7-reactor-mako-circulation', universes: ['Final Fantasy VII'], scenePattern: /mako|reactor|r[eé]acteur/i,
@@ -301,6 +305,8 @@ function drawMechanism(ctx, animation, frame, width, height) {
   ctx.strokeStyle = animation.color;
   ctx.fillStyle = animation.color;
   ctx.lineWidth = Math.max(1, width / 1000);
+  if (animation.animationWave === 16 && drawStageAnimationWave16(ctx, animation, frame, width, height)) return;
+  if (animation.animationWave === 15 && drawStageAnimationWave15(ctx, animation, frame, width, height)) return;
   if (animation.animationWave === 12 && drawStageAnimationWave12(ctx, animation, frame, width, height)) return;
   if (animation.animationWave === 11 && drawStageAnimationWave11(ctx, animation, frame, width, height)) return;
   if (animation.animationWave === 10 && drawStageAnimationWave10(ctx, animation, frame, width, height)) return;

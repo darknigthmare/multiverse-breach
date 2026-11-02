@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "wave": 14,
+  "recordedAt": "2026-10-26T12:34:27.456609+00:00",
+  "purpose": "Durable exact-byte archive of the observed failing frozen-W14 wrapper and the current script-only compatibility correction. No historical document or production asset was changed.",
+  "before": {
+    "command": "node --test --test-reporter=tap scripts/rpgSummonWave14.test.mjs",
+    "observedExitCode": 1,
+    "tests": 12,
+    "fail": 12,
+    "beforeHookFailures": 12,
+    "actualFlowsReached": 0,
+    "failure": "Frozen historical count49 sees current real catalog55; common before hook fails at immutable validator line82",
+    "tap": "docs/combat-fidelity-wave15-2026-10-26/test-compatibility/rpg-wave14/before-fix.tap",
+    "inventory": "docs/combat-fidelity-wave15-2026-10-26/test-compatibility/rpg-wave14/before-inventory.json"
+  },
+  "after": {
+    "command": "node --test --test-reporter=tap scripts/rpgSummonWave14.test.mjs",
+    "observedExitCode": 0,
+    "tests": 12,
+    "pass": 12,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "tap": "docs/combat-fidelity-wave15-2026-10-26/test-compatibility/rpg-wave14/after-fix.tap",
+    "receipt": "docs/combat-fidelity-wave15-2026-10-26/test-compatibility/rpg-wave14/after-fix-receipt.json",
+    "actualLiveCatalog": 55,
+    "historicalCountLiteralUnchanged": 49,
+    "excludedExactWave15KeysOnlyForHistoricalCount": 6
+  },
+  "immutableHistoricalValidator": {
+    "path": "docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs",
+    "sha256": "477c3eb393d9426ce5ba6755d83ae4b2c79eeeba98a0b9c8603bd3185e2ec346",
+    "unchangedBeforeAndAfter": true
+  },
+  "unchangedHistoricalAssetRecords": 49,
+  "unchangedHistoricalAtlasPngs": 49,
+  "unchangedHistoricalSourcePngs": 49,
+  "unchangedHistoricalRegistries": 10,
+  "originalReceiptPreservedByteForByte": true,
+  "originalTemporaryReceiptPathsResolvedByArtifactCopyMap": true,
+  "productionWrites": 0,
+  "historicalReportWrites": 0,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/test-compatibility/rpg-wave14/before-fix.tap",
+      "sha256": "8b8d1c539f2e2880f63c98ed1c29511a32dc7796f41828790169bcaf44e796cc",
+      "bytes": 9334,
+      "copiedExactlyFrom": "/tmp/w15-rpg-wave14-diagnostic.tap",
+      "copyBytesIdentical": true
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/test-compatibility/rpg-wave14/after-fix.tap",
+      "sha256": "acee79e0c8b58f1d1ae6cec36909cab5fe9679d7f9e2ee5933b60e858810ab0b",
+      "bytes": 3102,
+      "copiedExactlyFrom": "/tmp/w15-rpg-wave14-current-wrapper.tap",
+      "copyBytesIdentical": true
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/test-compatibility/rpg-wave14/after-fix-receipt.json",
+      "sha256": "61b574b955cc5d63d7eb8b99b151c9ab241b25d4a58dc5300627a8baaafc3c9e",
+      "bytes": 1163,
+      "copiedExactlyFrom": "/tmp/w15-rpg-wave14-current-wrapper-receipt.json",
+      "copyBytesIdentical": true
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/test-compatibility/rpg-wave14/before-inventory.json",
+      "sha256": "5a21ea88719a77d9e92dfeda707ff6493c4baafaa3f00356e2076632fd3a44a7",
+      "bytes": 26491,
+      "copiedExactlyFrom": "/tmp/w15-rpg-wave14-wrapper-before.json",
+      "copyBytesIdentical": true
+    }
+  ]
+}

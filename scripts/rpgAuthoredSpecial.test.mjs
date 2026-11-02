@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { after, before, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
+import { effectiveBatchPlan } from '../docs/combat-fidelity-wave16-2026-10-28/closure-support.mjs';
 
 let vite;
 let EngineRpg;
@@ -115,7 +116,11 @@ for (const side of ['player', 'enemy']) test('RPG authored melee special approac
   const actor = side === 'player' ? engine.heroes[0] : engine.enemies[0];
   const opponents = side === 'player' ? engine.enemies : engine.heroes;
   const hp = opponents.map(target => target.currentHp);
-  const sourceRange = completion.stark_warrior.special.targeting.range;
+  assert.equal(completion.stark_warrior.special.targeting.range, 195, 'historical source metadata must remain intact');
+  const before = effectiveBatchPlan().reviewedRows.find(row => row.hero.id === 'stark_warrior');
+  assert.equal(before.priorResolved.special.sourceAbility.targeting.range, 195);
+  const sourceRange = resolveMeleeSuper(hero('stark_warrior')).range;
+  assert.equal(sourceRange, 180, 'the selected2023 Stark melee reach must remain bounded');
   const originalSpecial = JSON.stringify(actor.special);
   assert.ok(Math.hypot(opponents[2].x - actor.x, opponents[2].y - actor.y) > sourceRange);
   assert.equal(engine.beginTargeting(actor, 'special', side), true);
@@ -142,7 +147,13 @@ for (const side of ['player', 'enemy']) test('RPG authored melee special approac
 });
 
 for (const side of ['player', 'enemy']) test('RPG authored medical special heals its own eligible squad without damaging opponents for ' + side, () => {
-  const team = [hero('fear_jin_sun_kwon'), unit('patient'), unit('healthy')];
+  // W15 selects Jin's forensic scanner rather than her old medical role.
+  // Keep that historical record, and exercise the unchanged authored doctor.
+  assert.equal(completion.fear_jin_sun_kwon.special.name, 'Triage de l’équipe F.E.A.R.');
+  assert.equal(completion.fear_jin_sun_kwon.special.targeting.effect, 'heal');
+  const jin = resolveMeleeSuper(hero('fear_jin_sun_kwon'));
+  assert.equal(jin.name, 'Lecture du scanner de Jin'); assert.equal(jin.effect, 'buff'); assert.equal(jin.multiplier, 0);
+  const team = [hero('sarah_bowman_dotd'), unit('patient'), unit('healthy')];
   const engine = side === 'player' ? makeEngine(team) : makeEngine([unit('opponent')], team);
   const allies = side === 'player' ? engine.heroes : engine.enemies;
   const opponents = side === 'player' ? engine.enemies : engine.heroes;
@@ -154,7 +165,7 @@ for (const side of ['player', 'enemy']) test('RPG authored medical special heals
   const before = costs(actor);
   assert.equal(engine.beginTargeting(actor, 'special', side), true);
   const preview = engine.getTargetingState();
-  assert.equal(preview.abilityName, 'Triage de l’équipe F.E.A.R.');
+  assert.equal(preview.abilityName, 'Soins de Sarah Bowman');
   assert.equal(preview.effect, 'heal');
   assert.deepEqual(preview.previewTargetIds, [id(patient)]);
   assert.equal(preview.eligibleTargets.every(target => target.side === side), true);
@@ -317,6 +328,11 @@ test('GameCanvas RPG command labels use the same authored ability helper as targ
   const handler = source.slice(start, source.indexOf('const toggleAuto', start));
   assert.match(handler, /stage\.mode === 'RPG'/);
   assert.match(handler, /getRpgCombatantAbility\(combatant, type\)/);
-  assert.ok(handler.indexOf('getRpgCombatantAbility') < handler.indexOf('return combatant[type]'));
+  assert.ok(handler.indexOf('getRpgCombatantAbility') < handler.indexOf('return named(combatant[type])'));
+  const command = new Function('stage', 'engineRef', 'getRpgCombatantAbility', handler + '\nreturn getCombatantMove;')(
+    { mode: 'RPG' }, { current: null }, getRpgCombatantAbility);
+  assert.equal(command(hero('stark_warrior'), 'special').name, 'Lightning Strike');
+  const legacySlig = { id: 'oddworld_slig', universe: 'Oddworld', atk: 8, special: 'Ancien tir du Slig' };
+  assert.equal(command(legacySlig, 'special').name, 'Ancien tir du Slig');
   assert.match(source, /getCombatantMove\(activeHeroObj, 'special'\)\.name\.toUpperCase\(\)/);
 });

@@ -1,0 +1,4 @@
+{"event": "start", "step": "03-catalog-build", "argv": ["node", "scripts/buildRiftDossierCatalog.mjs"]}
+{"event": "start", "step": "04-asset-registry-build", "argv": ["node", "scripts/buildRiftDossierAssetRegistry.mjs"]}
+{"event": "start", "step": "05-rift-audit", "argv": ["npm", "run", "rift:audit"]}
+{"phase": "complete", "commandsCompleted": 5, "success": true}

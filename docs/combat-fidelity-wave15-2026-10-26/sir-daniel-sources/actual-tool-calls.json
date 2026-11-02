@@ -1,0 +1,626 @@
+[
+  {
+    "id": "sir-daniel-motion-a",
+    "startedAt": "2026-10-26T08:26:30.932Z",
+    "completedAt": "2026-10-26T08:27:50.285Z",
+    "originalImage": "/workspace/generated_images/exec-5f72b607-837b-4d57-8414-0670dd08b1e2.png",
+    "outputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-5f72b607-837b-4d57-8414-0670dd08b1e2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returnedFields": [
+      "image_url",
+      "output_hint"
+    ],
+    "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.prompt.txt",
+    "promptSha256": "9c7717c0eff5b819f2808c55ae8f67a4abf11cd89296a23060313767f4e8bd63",
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "status": "returned-artwork-reviewed",
+    "source1to1Verified": false,
+    "savedSource": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png",
+    "sourceSha256": "ae5c9991fadd2a1ca677a791cc06574e354ab9768ee1a84cd5597a301896c426",
+    "promptFileSha256": "9c7717c0eff5b819f2808c55ae8f67a4abf11cd89296a23060313767f4e8bd63",
+    "arguments": {
+      "prompt": "Create BRAND NEW native detailed pixel-art full-body animation drawings of SIR DANIEL FORTESQUE from MEDIEVIL (1998 PLAYSTATION). Exact chosen loadout: very tall thin SKELETAL KNIGHT, large pale bone skull, a SINGLE VISIBLE LEFT EYE (screen-right in front view), empty dark right socket, NO LOWER JAW, worn dull SILVER plate armour on chest/shoulders/forearms/shins, DARK NAVY BLUE CAPE, thin bony joints, a modest ordinary SHORT SWORD with simple silver blade and dull brass small crossguard, held in the RIGHT hand only in weapon actions. The sword is SHEATHED at his hip in ALL locomotion, jumping and ledge actions so both articulated bony hands can move naturally. Match this exact character and costume consistently on every body. Bare skull with NO helmet, NO crest, NO plume, NO red hair, NO horns, NO fangs or lower mandible, NO flesh. No oversized sword, no shield, no magic, aura, beam, fire, glow, energy, opponent, injury, severed bones, blood or gore. Bones stay assembled. Original crossover physical guard/parry, airborne and ledge motions are engine adaptations, NOT claims of original official game frames. Every hand must connect through real wrist/elbow/shoulder; hands are skeletal with visible fingers. Cape follows real movement but never covers required anatomy. Do not copy any reference pose.\n\nLAYOUT CRITICAL: TRUE transparent RGBA background. LANDSCAPE1536x1024. EXACTLY EIGHT COLUMNS and FOUR ROWS =32 COMPLETE SEPARATE FULL-BODY DRAWINGS. Each physical row contains TWO groups of FOUR chronological poses, left group columns1-4, right group columns5-8. Allocate ALL32 cells first, then draw all four physical rows including bottom row. Large transparent gutters and outer border, all full heads, hands, cape, scabbards, blades and both boots completely visible. No text, labels, boxes, grid, numbers, shadows, floor, ledges, platforms, scene or checkerboard. Small consistent body size about155px upright crown-to-sole; crouching/hanging/prone bodies retain natural anatomical scale and do not stretch. Every pose is a genuinely new articulated full-body drawing with different limb/body configurations, never a mirror, rotated/translated duplicate, recolour or effects-only change. Side three-quarter facing SCREEN RIGHT except the actual turn sequence. Crisp game pixel art, restrained bone ivory, dull silver and deep navy palette.\n\nPHYSICAL ROW1 LEFT COLUMNS1-4: idle: four alert skeletal breathing/weight shifts, hips/shoulders/head subtly change, short sword sheathed. RIGHT COLUMNS5-8: walk: four different rightward walking strides, opposite legs and arms articulate, whole boots present, sword sheathed.\nPHYSICAL ROW2 LEFT COLUMNS1-4: run: four different true running strides, contact-flight-contact-flight, opposing knees and elbows, cape trails; sword sheathed. RIGHT COLUMNS5-8: turn: four newly drawn turnaround bodies,1 facing LEFT,2 left-rear three-quarter,3 right-rear three-quarter,4 RIGHT; no simple mirror.\nPHYSICAL ROW3 LEFT COLUMNS1-4: jumpStart:1 upright preparation,2 knees bend,3 heels lift with arms rising,4 actual takeoff, both complete boots and sword sheathed. RIGHT COLUMNS5-8: jumpRise: four distinct ascending airborne knee/hip/arm configurations, full body and naturally trailing cape, sword sheathed.\nPHYSICAL ROW4 LEFT COLUMNS1-4: jumpApex: four different airborne balancing/tucked configurations, ordinary skeletal knight jump, sword sheathed. RIGHT COLUMNS5-8: fall: four descending full-body configurations, legs increasingly extend and arms prepare balance for landing; sword sheathed.\n\nFINAL CHECK:32 COMPLETE FULL BODIES,8COLUMNS×4ROWS,all32insidewidecleartransparentmargins. One left eye,missinglowerjaw,navycape,silverarmour,shortswordonly. Four DIFFERENT chronological drawings per state.\n",
+      "transparent_background": true
+    },
+    "observedNativePoses": 32,
+    "observedSegmentedBodies": 32,
+    "observedRows": 4,
+    "observedRowCounts": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "review": {
+      "complete": true,
+      "actualStateOrder": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "retainedStateRows": [
+        {
+          "state": "idle",
+          "row": 0
+        },
+        {
+          "state": "walk",
+          "row": 1
+        },
+        {
+          "state": "run",
+          "row": 2
+        },
+        {
+          "state": "turn",
+          "row": 3
+        },
+        {
+          "state": "jumpStart",
+          "row": 4
+        },
+        {
+          "state": "jumpRise",
+          "row": 5
+        },
+        {
+          "state": "jumpApex",
+          "row": 6
+        },
+        {
+          "state": "fall",
+          "row": 7
+        }
+      ],
+      "canvasClippedFrames": [],
+      "noOriginalReferencePoseReused": true,
+      "reservedRowsNeverCounted": true
+    },
+    "receiptOrigin": "Actual image_gen return, original PNG and output_hint archived. Provider exposes no model/job/generation identifiers."
+  },
+  {
+    "id": "sir-daniel-motion-b",
+    "startedAt": "2026-10-26T08:28:59.051Z",
+    "completedAt": "2026-10-26T08:33:35.807Z",
+    "originalImage": "/workspace/generated_images/exec-88bb0f5e-5c83-4a1f-bb8a-f3648fd2e7ad.png",
+    "outputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-88bb0f5e-5c83-4a1f-bb8a-f3648fd2e7ad.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returnedFields": [
+      "image_url",
+      "output_hint"
+    ],
+    "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-b.prompt.txt",
+    "promptSha256": "176c97e07eea09261a002ba2deb88dc7394ce0b62b5b23c8b2f38c76d8a0615e",
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "status": "returned-artwork-reviewed",
+    "source1to1Verified": false,
+    "savedSource": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-b.native.png",
+    "sourceSha256": "a57dca0886be8fe361b8ebc2205c7e47a93d1bfab235ee62eeeb1cfe12eb9d80",
+    "promptFileSha256": "176c97e07eea09261a002ba2deb88dc7394ce0b62b5b23c8b2f38c76d8a0615e",
+    "arguments": {
+      "prompt": "Create BRAND NEW native detailed pixel-art full-body animation drawings of SIR DANIEL FORTESQUE from MEDIEVIL (1998 PLAYSTATION). Exact chosen loadout: very tall thin SKELETAL KNIGHT, large pale bone skull, a SINGLE VISIBLE LEFT EYE (screen-right in front view), empty dark right socket, NO LOWER JAW, worn dull SILVER plate armour on chest/shoulders/forearms/shins, DARK NAVY BLUE CAPE, thin bony joints, a modest ordinary SHORT SWORD with simple silver blade and dull brass small crossguard, held in the RIGHT hand only in weapon actions. The sword is SHEATHED at his hip in ALL locomotion, jumping and ledge actions so both articulated bony hands can move naturally. Match this exact character and costume consistently on every body. Bare skull with NO helmet, NO crest, NO plume, NO red hair, NO horns, NO fangs or lower mandible, NO flesh. No oversized sword, no shield, no magic, aura, beam, fire, glow, energy, opponent, injury, severed bones, blood or gore. Bones stay assembled. Original crossover physical guard/parry, airborne and ledge motions are engine adaptations, NOT claims of original official game frames. Every hand must connect through real wrist/elbow/shoulder; hands are skeletal with visible fingers. Cape follows real movement but never covers required anatomy. Do not copy any reference pose.\n\nLAYOUT CRITICAL: TRUE transparent RGBA background. LANDSCAPE1536x1024. EXACTLY EIGHT COLUMNS and FOUR ROWS =32 COMPLETE SEPARATE FULL-BODY DRAWINGS. Each physical row contains TWO groups of FOUR chronological poses, left group columns1-4, right group columns5-8. Allocate ALL32 cells first, then draw all four physical rows including bottom row. Large transparent gutters and outer border, all full heads, hands, cape, scabbards, blades and both boots completely visible. No text, labels, boxes, grid, numbers, shadows, floor, ledges, platforms, scene or checkerboard. Small consistent body size about155px upright crown-to-sole; crouching/hanging/prone bodies retain natural anatomical scale and do not stretch. Every pose is a genuinely new articulated full-body drawing with different limb/body configurations, never a mirror, rotated/translated duplicate, recolour or effects-only change. Side three-quarter facing SCREEN RIGHT except the actual turn sequence. Crisp game pixel art, restrained bone ivory, dull silver and deep navy palette.\n\nPHYSICAL ROW1 LEFT COLUMNS1-4: fastFall: four descending compact body configurations, arms gather and knees/boots change, sword sheathed. RIGHT COLUMNS5-8: land:1 boot contact with invisible ground,2 deep knee compression,3 push upright,4 settle; four actual body configurations and no drawn ground.\nPHYSICAL ROW2 LEFT COLUMNS1-4: crouchEnter: four genuine progressive low motions upright→half-bend→knees-down→deep crouch, sword sheathed. RIGHT COLUMNS5-8: crouchIdle: four distinct low watchful crouched poses, arms/head/shoulders shift, body stays low and narrow.\nPHYSICAL ROW3 LEFT COLUMNS1-4: crouchExit: four articulated rising bodies deep crouch→half crouch→half stand→upright, sword sheathed. RIGHT COLUMNS5-8: crouchCharge: four low physical preparations with short sword drawn in right hand, left hand free, progressively brace hips/shoulders, no magic.\nPHYSICAL ROW4 LEFT COLUMNS1-4: taunt1: four charming awkward knight gestures: look aside, lift left bony hand, modest head nod, settle; sword sheathed, no lower jaw. RIGHT COLUMNS5-8: hitStun: four noninjured startled recoil/recovery bodies, shoulders and knees change, bones remain assembled, sword sheathed.\n\nFINAL CHECK:32 COMPLETE FULL BODIES,8COLUMNS×4ROWS,all32insidewidecleartransparentmargins. One left eye,missinglowerjaw,navycape,silverarmour,shortswordonly. Four DIFFERENT chronological drawings per state.\n",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png"
+      ]
+    },
+    "observedNativePoses": 32,
+    "observedSegmentedBodies": 32,
+    "observedRows": 4,
+    "observedRowCounts": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "review": {
+      "complete": true,
+      "actualStateOrder": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "retainedStateRows": [
+        {
+          "state": "fastFall",
+          "row": 0
+        },
+        {
+          "state": "land",
+          "row": 1
+        },
+        {
+          "state": "crouchEnter",
+          "row": 2
+        },
+        {
+          "state": "crouchIdle",
+          "row": 3
+        },
+        {
+          "state": "crouchExit",
+          "row": 4
+        },
+        {
+          "state": "crouchCharge",
+          "row": 5
+        },
+        {
+          "state": "taunt1",
+          "row": 6
+        },
+        {
+          "state": "hitStun",
+          "row": 7
+        }
+      ],
+      "canvasClippedFrames": [],
+      "noOriginalReferencePoseReused": true,
+      "reservedRowsNeverCounted": true
+    },
+    "receiptOrigin": "Actual image_gen return, original PNG and output_hint archived. Provider exposes no model/job/generation identifiers."
+  },
+  {
+    "id": "sir-daniel-defense",
+    "startedAt": "2026-10-26T08:28:59.051Z",
+    "completedAt": "2026-10-26T08:33:35.817Z",
+    "originalImage": "/workspace/generated_images/exec-0f147087-4e48-4b67-942f-b940191abdf8.png",
+    "outputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-0f147087-4e48-4b67-942f-b940191abdf8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returnedFields": [
+      "image_url",
+      "output_hint"
+    ],
+    "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-defense.prompt.txt",
+    "promptSha256": "02a64b08f41883e67836eb23114aca7b44f53605ec697e75d84d3ee64e5d07d0",
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "status": "returned-artwork-reviewed",
+    "source1to1Verified": false,
+    "savedSource": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-defense.native.png",
+    "sourceSha256": "8e7335a306363f8a72608364e5213325b0732af91a482cd2a97c3f171da414f6",
+    "promptFileSha256": "02a64b08f41883e67836eb23114aca7b44f53605ec697e75d84d3ee64e5d07d0",
+    "arguments": {
+      "prompt": "Create BRAND NEW native detailed pixel-art full-body animation drawings of SIR DANIEL FORTESQUE from MEDIEVIL (1998 PLAYSTATION). Exact chosen loadout: very tall thin SKELETAL KNIGHT, large pale bone skull, a SINGLE VISIBLE LEFT EYE (screen-right in front view), empty dark right socket, NO LOWER JAW, worn dull SILVER plate armour on chest/shoulders/forearms/shins, DARK NAVY BLUE CAPE, thin bony joints, a modest ordinary SHORT SWORD with simple silver blade and dull brass small crossguard, held in the RIGHT hand only in weapon actions. The sword is SHEATHED at his hip in ALL locomotion, jumping and ledge actions so both articulated bony hands can move naturally. Match this exact character and costume consistently on every body. Bare skull with NO helmet, NO crest, NO plume, NO red hair, NO horns, NO fangs or lower mandible, NO flesh. No oversized sword, no shield, no magic, aura, beam, fire, glow, energy, opponent, injury, severed bones, blood or gore. Bones stay assembled. Original crossover physical guard/parry, airborne and ledge motions are engine adaptations, NOT claims of original official game frames. Every hand must connect through real wrist/elbow/shoulder; hands are skeletal with visible fingers. Cape follows real movement but never covers required anatomy. Do not copy any reference pose.\n\nLAYOUT CRITICAL: TRUE transparent RGBA background. LANDSCAPE1536x1024. EXACTLY EIGHT COLUMNS and FOUR ROWS =32 COMPLETE SEPARATE FULL-BODY DRAWINGS. Each physical row contains TWO groups of FOUR chronological poses, left group columns1-4, right group columns5-8. Allocate ALL32 cells first, then draw all four physical rows including bottom row. Large transparent gutters and outer border, all full heads, hands, cape, scabbards, blades and both boots completely visible. No text, labels, boxes, grid, numbers, shadows, floor, ledges, platforms, scene or checkerboard. Small consistent body size about155px upright crown-to-sole; crouching/hanging/prone bodies retain natural anatomical scale and do not stretch. Every pose is a genuinely new articulated full-body drawing with different limb/body configurations, never a mirror, rotated/translated duplicate, recolour or effects-only change. Side three-quarter facing SCREEN RIGHT except the actual turn sequence. Crisp game pixel art, restrained bone ivory, dull silver and deep navy palette.\n\nPHYSICAL ROW1 LEFT COLUMNS1-4: shieldEnter: four physical sword-parry preparations, right hand brings short sword across chest, knees progressively brace; absolutely NO SHIELD object or energy. RIGHT COLUMNS5-8: shieldHold: four distinct defensive short-sword parry postures with right-hand blade close and left hand balancing, no shield.\nPHYSICAL ROW2 LEFT COLUMNS1-4: shieldHit: four guarded recoil configurations, right-hand short sword stays gripped, left shoulder and knees absorb unseen contact, no effects/attacker. RIGHT COLUMNS5-8: perfectShield: four quick SHORT-SWORD PARRY and recovery bodies, blade redirects briefly, physical wrist/elbow/hip changes, no glow or shield.\nPHYSICAL ROW3 LEFT COLUMNS1-4: shieldBreak: four distinct stagger/recovery bodies after parry opens; short sword lowers, shoulders stumble, balance returns, no broken bones or magic. RIGHT COLUMNS5-8: shieldExit: four relaxed transitions from right-hand sword-parry to low neutral sword posture, no shield.\nPHYSICAL ROW4 LEFT COLUMNS1-4: dead: four full-body non-graphic resting/settling poses lying on side, complete skull/cape/hands/boots remain assembled, sword sheathed, no gore. RIGHT COLUMNS5-8: defeat: four exhausted bodies stagger→one knee→low seated crouch→tired recovering knight, skeleton stays assembled, sword sheathed.\n\nFINAL CHECK:32 COMPLETE FULL BODIES,8COLUMNS×4ROWS,all32insidewidecleartransparentmargins. One left eye,missinglowerjaw,navycape,silverarmour,shortswordonly. Four DIFFERENT chronological drawings per state.\n",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png"
+      ]
+    },
+    "observedNativePoses": 32,
+    "observedSegmentedBodies": 32,
+    "observedRows": 4,
+    "observedRowCounts": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "review": {
+      "complete": true,
+      "actualStateOrder": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "retainedStateRows": [
+        {
+          "state": "shieldEnter",
+          "row": 0
+        },
+        {
+          "state": "shieldHold",
+          "row": 1
+        },
+        {
+          "state": "shieldHit",
+          "row": 2
+        },
+        {
+          "state": "perfectShield",
+          "row": 3
+        },
+        {
+          "state": "shieldBreak",
+          "row": 4
+        },
+        {
+          "state": "shieldExit",
+          "row": 5
+        },
+        {
+          "state": "dead",
+          "row": 6
+        },
+        {
+          "state": "defeat",
+          "row": 7
+        }
+      ],
+      "canvasClippedFrames": [],
+      "noOriginalReferencePoseReused": true,
+      "reservedRowsNeverCounted": true
+    },
+    "receiptOrigin": "Actual image_gen return, original PNG and output_hint archived. Provider exposes no model/job/generation identifiers."
+  },
+  {
+    "id": "sir-daniel-combat-a",
+    "startedAt": "2026-10-26T08:28:59.051Z",
+    "completedAt": "2026-10-26T08:33:35.823Z",
+    "originalImage": "/workspace/generated_images/exec-0f26f7c1-64d5-413e-81d7-6f11a473fc17.png",
+    "outputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-0f26f7c1-64d5-413e-81d7-6f11a473fc17.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returnedFields": [
+      "image_url",
+      "output_hint"
+    ],
+    "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-a.prompt.txt",
+    "promptSha256": "4258f9c7f886ae1ce4a549f7e962a70b360aace26052cce94e244d9b864eb7bb",
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "status": "returned-artwork-reviewed",
+    "source1to1Verified": false,
+    "savedSource": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-a.native.png",
+    "sourceSha256": "000acd5d0cec0f0c7f960f79f789a548ae84c2a2567c7391c6a1d32d5539c295",
+    "promptFileSha256": "4258f9c7f886ae1ce4a549f7e962a70b360aace26052cce94e244d9b864eb7bb",
+    "arguments": {
+      "prompt": "Create BRAND NEW native detailed pixel-art full-body animation drawings of SIR DANIEL FORTESQUE from MEDIEVIL (1998 PLAYSTATION). Exact chosen loadout: very tall thin SKELETAL KNIGHT, large pale bone skull, a SINGLE VISIBLE LEFT EYE (screen-right in front view), empty dark right socket, NO LOWER JAW, worn dull SILVER plate armour on chest/shoulders/forearms/shins, DARK NAVY BLUE CAPE, thin bony joints, a modest ordinary SHORT SWORD with simple silver blade and dull brass small crossguard, held in the RIGHT hand only in weapon actions. The sword is SHEATHED at his hip in ALL locomotion, jumping and ledge actions so both articulated bony hands can move naturally. Match this exact character and costume consistently on every body. Bare skull with NO helmet, NO crest, NO plume, NO red hair, NO horns, NO fangs or lower mandible, NO flesh. No oversized sword, no shield, no magic, aura, beam, fire, glow, energy, opponent, injury, severed bones, blood or gore. Bones stay assembled. Original crossover physical guard/parry, airborne and ledge motions are engine adaptations, NOT claims of original official game frames. Every hand must connect through real wrist/elbow/shoulder; hands are skeletal with visible fingers. Cape follows real movement but never covers required anatomy. Do not copy any reference pose.\n\nLAYOUT CRITICAL: TRUE transparent RGBA background. LANDSCAPE1536x1024. EXACTLY EIGHT COLUMNS and FOUR ROWS =32 COMPLETE SEPARATE FULL-BODY DRAWINGS. Each physical row contains TWO groups of FOUR chronological poses, left group columns1-4, right group columns5-8. Allocate ALL32 cells first, then draw all four physical rows including bottom row. Large transparent gutters and outer border, all full heads, hands, cape, scabbards, blades and both boots completely visible. No text, labels, boxes, grid, numbers, shadows, floor, ledges, platforms, scene or checkerboard. Small consistent body size about155px upright crown-to-sole; crouching/hanging/prone bodies retain natural anatomical scale and do not stretch. Every pose is a genuinely new articulated full-body drawing with different limb/body configurations, never a mirror, rotated/translated duplicate, recolour or effects-only change. Side three-quarter facing SCREEN RIGHT except the actual turn sequence. Crisp game pixel art, restrained bone ivory, dull silver and deep navy palette.\n\nPHYSICAL ROW1 LEFT COLUMNS1-4: attackLight1: four chronological horizontal SHORT-SWORD cuts RIGHT: guard, hips wind up, right-hand physical blade extends, relaxed recovery. RIGHT COLUMNS5-8: attackLight2: four distinct diagonal short-sword cut poses RIGHT: low guard, lift right-hand sword, torso twists into cut, relaxed low recovery.\nPHYSICAL ROW2 LEFT COLUMNS1-4: attackLight3: four different forward short-sword THRUST bodies: close guard, right elbow bends, right arm extends physical blade RIGHT, elbow retracts and recover. No stretching sword. RIGHT COLUMNS5-8: crouchLight: four low short-sword cut bodies: low guard, coil hips, low right-hand physical blade extends RIGHT, recover into crouch.\nPHYSICAL ROW3 LEFT COLUMNS1-4: chargeStart: four braced short-sword preparations, right hand grips hilt, left hand balances, hips and shoulders progressively gather, no energy. RIGHT COLUMNS5-8: chargeLoop: four steady but distinct short-sword-ready body configurations, right wrist/shoulders/legs shift and maintain real grip, no glow.\nPHYSICAL ROW4 LEFT COLUMNS1-4: chargeRelease: four forceful controlled right-hand physical cuts: backswing, hips begin, short sword extends RIGHT, truly different relaxed recovery. RIGHT COLUMNS5-8: chargeRecovery: four new articulated recovery bodies, right arm and short sword lower, shoulder releases, knees settle and neutral returns; no impact hold.\n\nFINAL CHECK:32 COMPLETE FULL BODIES,8COLUMNS×4ROWS,all32insidewidecleartransparentmargins. One left eye,missinglowerjaw,navycape,silverarmour,shortswordonly. Four DIFFERENT chronological drawings per state.\n",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png"
+      ]
+    },
+    "observedNativePoses": 32,
+    "observedSegmentedBodies": 32,
+    "observedRows": 4,
+    "observedRowCounts": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "review": {
+      "complete": true,
+      "actualStateOrder": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "discarded-chargeRelease",
+        "chargeRecovery"
+      ],
+      "retainedStateRows": [
+        {
+          "state": "attackLight1",
+          "row": 0
+        },
+        {
+          "state": "attackLight2",
+          "row": 1
+        },
+        {
+          "state": "attackLight3",
+          "row": 2
+        },
+        {
+          "state": "crouchLight",
+          "row": 3
+        },
+        {
+          "state": "chargeStart",
+          "row": 4
+        },
+        {
+          "state": "chargeLoop",
+          "row": 5
+        },
+        {
+          "state": "chargeRecovery",
+          "row": 7
+        }
+      ],
+      "canvasClippedFrames": [],
+      "noOriginalReferencePoseReused": true,
+      "reservedRowsNeverCounted": true
+    },
+    "receiptOrigin": "Actual image_gen return, original PNG and output_hint archived. Provider exposes no model/job/generation identifiers."
+  },
+  {
+    "id": "sir-daniel-combat-b",
+    "startedAt": "2026-10-26T08:28:59.051Z",
+    "completedAt": "2026-10-26T08:33:35.829Z",
+    "originalImage": "/workspace/generated_images/exec-1f9ac752-2721-4040-ab3d-ead6d0b5ba62.png",
+    "outputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-1f9ac752-2721-4040-ab3d-ead6d0b5ba62.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returnedFields": [
+      "image_url",
+      "output_hint"
+    ],
+    "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-b.prompt.txt",
+    "promptSha256": "3e90b59f70c69f7e808596852fd25a6d023ced2e4c4d10b93d34a82fc6095842",
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "status": "returned-artwork-reviewed",
+    "source1to1Verified": false,
+    "savedSource": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-b.native.png",
+    "sourceSha256": "ecda217728428fd2918da045684452d7a38a03c17b081db9d5089e7cc74bffca",
+    "promptFileSha256": "3e90b59f70c69f7e808596852fd25a6d023ced2e4c4d10b93d34a82fc6095842",
+    "arguments": {
+      "prompt": "Create BRAND NEW native detailed pixel-art full-body animation drawings of SIR DANIEL FORTESQUE from MEDIEVIL (1998 PLAYSTATION). Exact chosen loadout: very tall thin SKELETAL KNIGHT, large pale bone skull, a SINGLE VISIBLE LEFT EYE (screen-right in front view), empty dark right socket, NO LOWER JAW, worn dull SILVER plate armour on chest/shoulders/forearms/shins, DARK NAVY BLUE CAPE, thin bony joints, a modest ordinary SHORT SWORD with simple silver blade and dull brass small crossguard, held in the RIGHT hand only in weapon actions. The sword is SHEATHED at his hip in ALL locomotion, jumping and ledge actions so both articulated bony hands can move naturally. Match this exact character and costume consistently on every body. Bare skull with NO helmet, NO crest, NO plume, NO red hair, NO horns, NO fangs or lower mandible, NO flesh. No oversized sword, no shield, no magic, aura, beam, fire, glow, energy, opponent, injury, severed bones, blood or gore. Bones stay assembled. Original crossover physical guard/parry, airborne and ledge motions are engine adaptations, NOT claims of original official game frames. Every hand must connect through real wrist/elbow/shoulder; hands are skeletal with visible fingers. Cape follows real movement but never covers required anatomy. Do not copy any reference pose.\n\nLAYOUT CRITICAL: TRUE transparent RGBA background. LANDSCAPE1536x1024. EXACTLY EIGHT COLUMNS and FOUR ROWS =32 COMPLETE SEPARATE FULL-BODY DRAWINGS. Each physical row contains TWO groups of FOUR chronological poses, left group columns1-4, right group columns5-8. Allocate ALL32 cells first, then draw all four physical rows including bottom row. Large transparent gutters and outer border, all full heads, hands, cape, scabbards, blades and both boots completely visible. No text, labels, boxes, grid, numbers, shadows, floor, ledges, platforms, scene or checkerboard. Small consistent body size about155px upright crown-to-sole; crouching/hanging/prone bodies retain natural anatomical scale and do not stretch. Every pose is a genuinely new articulated full-body drawing with different limb/body configurations, never a mirror, rotated/translated duplicate, recolour or effects-only change. Side three-quarter facing SCREEN RIGHT except the actual turn sequence. Crisp game pixel art, restrained bone ivory, dull silver and deep navy palette.\n\nPHYSICAL ROW1 LEFT COLUMNS1-4: attackRecovery: four different relaxed returns after physical right-hand cut, sword hand/shoulders lower and body recovers, no extended impact pose. RIGHT COLUMNS5-8: special: four chronological strong ordinary short-sword cuts: close right-hand guard, hips coil, short physical blade extends RIGHT, separate relaxed recovery. No magic or effects.\nPHYSICAL ROW2 LEFT COLUMNS1-4: aerialNeutral: four short-jump defensive body twists with right-hand short sword held close, different tucked legs and shoulders, full body. RIGHT COLUMNS5-8: aerialForward: four airborne short-sword cuts RIGHT: knees tuck, right shoulder winds, physical short blade cuts forward, right elbow relaxes and knees recover.\nPHYSICAL ROW3 LEFT COLUMNS1-4: aerialDown: four airborne downward short-sword cuts, right elbow/hip/knee articulate with genuine recovery; no superpowered dive, no effects. RIGHT COLUMNS5-8: intro: four cautious arriving knight bodies, sword sheathed, skull looks forward, left hand adjusts navy cape, settle with awkward heroic bearing.\nPHYSICAL ROW4 LEFT COLUMNS1-4: victory: four modest relieved knight bodies, right-hand short sword lowers, confident head nod, sword sheathed, relaxed posture; no grin with teeth/lower jaw. RIGHT COLUMNS5-8: ledgeAttack: four local physical attacks AFTER climbing: low crouch sword sheathed, rises drawing short sword with RIGHT hand, short cut RIGHT, relaxed guard recovery. No ledge or foe.\n\nFINAL CHECK:32 COMPLETE FULL BODIES,8COLUMNS×4ROWS,all32insidewidecleartransparentmargins. One left eye,missinglowerjaw,navycape,silverarmour,shortswordonly. Four DIFFERENT chronological drawings per state.\n",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png"
+      ]
+    },
+    "observedNativePoses": 32,
+    "observedSegmentedBodies": 32,
+    "observedRows": 4,
+    "observedRowCounts": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "review": {
+      "complete": true,
+      "actualStateOrder": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "retainedStateRows": [
+        {
+          "state": "attackRecovery",
+          "row": 0
+        },
+        {
+          "state": "special",
+          "row": 1
+        },
+        {
+          "state": "aerialNeutral",
+          "row": 2
+        },
+        {
+          "state": "aerialForward",
+          "row": 3
+        },
+        {
+          "state": "aerialDown",
+          "row": 4
+        },
+        {
+          "state": "intro",
+          "row": 5
+        },
+        {
+          "state": "victory",
+          "row": 6
+        },
+        {
+          "state": "ledgeAttack",
+          "row": 7
+        }
+      ],
+      "canvasClippedFrames": [],
+      "noOriginalReferencePoseReused": true,
+      "reservedRowsNeverCounted": true
+    },
+    "receiptOrigin": "Actual image_gen return, original PNG and output_hint archived. Provider exposes no model/job/generation identifiers."
+  },
+  {
+    "id": "sir-daniel-ledge",
+    "startedAt": "2026-10-26T08:28:59.051Z",
+    "completedAt": "2026-10-26T08:33:35.836Z",
+    "originalImage": "/workspace/generated_images/exec-2d7b8af6-8473-44e8-9d6f-d2b7fb86ee36.png",
+    "outputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-2d7b8af6-8473-44e8-9d6f-d2b7fb86ee36.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returnedFields": [
+      "image_url",
+      "output_hint"
+    ],
+    "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.prompt.txt",
+    "promptSha256": "9f59df69a05609e3d3f985e6070289debd8cf982d836082b688f52b512f4237a",
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "status": "returned-artwork-reviewed",
+    "source1to1Verified": false,
+    "savedSource": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+    "sourceSha256": "d376e6d0a78921e03cad2be2bd7334266b6d12ad12671f569c2b44566de5fbb3",
+    "promptFileSha256": "9f59df69a05609e3d3f985e6070289debd8cf982d836082b688f52b512f4237a",
+    "arguments": {
+      "prompt": "Create BRAND NEW native detailed pixel-art full-body animation drawings of SIR DANIEL FORTESQUE from MEDIEVIL (1998 PLAYSTATION). Exact chosen loadout: very tall thin SKELETAL KNIGHT, large pale bone skull, a SINGLE VISIBLE LEFT EYE (screen-right in front view), empty dark right socket, NO LOWER JAW, worn dull SILVER plate armour on chest/shoulders/forearms/shins, DARK NAVY BLUE CAPE, thin bony joints, a modest ordinary SHORT SWORD with simple silver blade and dull brass small crossguard, held in the RIGHT hand only in weapon actions. The sword is SHEATHED at his hip in ALL locomotion, jumping and ledge actions so both articulated bony hands can move naturally. Match this exact character and costume consistently on every body. Bare skull with NO helmet, NO crest, NO plume, NO red hair, NO horns, NO fangs or lower mandible, NO flesh. No oversized sword, no shield, no magic, aura, beam, fire, glow, energy, opponent, injury, severed bones, blood or gore. Bones stay assembled. Original crossover physical guard/parry, airborne and ledge motions are engine adaptations, NOT claims of original official game frames. Every hand must connect through real wrist/elbow/shoulder; hands are skeletal with visible fingers. Cape follows real movement but never covers required anatomy. Do not copy any reference pose.\n\nLAYOUT CRITICAL: TRUE transparent RGBA background. LANDSCAPE1536x1024. EXACTLY EIGHT COLUMNS and FOUR ROWS =32 COMPLETE SEPARATE FULL-BODY DRAWINGS. Each physical row contains TWO groups of FOUR chronological poses, left group columns1-4, right group columns5-8. Allocate ALL32 cells first, then draw all four physical rows including bottom row. Large transparent gutters and outer border, all full heads, hands, cape, scabbards, blades and both boots completely visible. No text, labels, boxes, grid, numbers, shadows, floor, ledges, platforms, scene or checkerboard. Small consistent body size about155px upright crown-to-sole; crouching/hanging/prone bodies retain natural anatomical scale and do not stretch. Every pose is a genuinely new articulated full-body drawing with different limb/body configurations, never a mirror, rotated/translated duplicate, recolour or effects-only change. Side three-quarter facing SCREEN RIGHT except the actual turn sequence. Crisp game pixel art, restrained bone ivory, dull silver and deep navy palette.\n\nPHYSICAL ROW1 LEFT COLUMNS1-4: ledgeCatch: four actual reaching-to-grip bodies. Free LEFT BONY HAND reaches upper SCREEN RIGHT implied edge:1 palm approaches without contact,2/3/4 fingers visibly curl and grip; hand/wrist/arm connected, whole body below, short sword SHEATHED at hip. No ledge drawn. RIGHT COLUMNS5-8: ledgeHang: four different genuine hanging bodies, LEFT BONY FINGERS visibly grip upper SCREEN RIGHT implied edge with connected wrist/forearm and shoulders below; knees/boots hang, right hand free/supports, sword SHEATHED.\nPHYSICAL ROW2 LEFT COLUMNS1-4: ledgeClimb: actual ASCENDING four-body climb relative to LEFT-PALM contact:1 head BELOW gripping palm,2 chest pulls UP toward palm,3 torso ABOVE palm while knee lifts and palm presses DOWN near WAIST,4 entire low-crouched body ABOVE edge while left palm presses DOWN BELOW KNEE. Hand-to-crown height must change dramatically; all boots complete; short sword SHEATHED. No ledge. RIGHT COLUMNS5-8: ledgeDrop: four actual release/drop bodies,1 left fingers open releasing,2 arms lower,3 hips descend with feet below,4 boots extend and arms balance, sword SHEATHED, no ledge.\nPHYSICAL ROW3 LEFT COLUMNS1-4: ledgeJump: four actual release/jump bodies,1 knees flex near edge,2 both hands RELEASE,3 hips rise with knee tucked,4 outward airborne extension, sword SHEATHED, no ledge. RIGHT COLUMNS5-8: RESERVED UPRIGHT CALIBRATION: four different upright relaxed full bodies with hands low and sword sheathed, consistent crown-to-sole size; these are NOT delivered states.\nPHYSICAL ROW4 LEFT COLUMNS1-4: RESERVED GRIP STUDY: four full upright bodies exposing articulated LEFT skeletal palms/fingers in different connected positions, sword sheathed; NOT delivered states. RIGHT COLUMNS5-8: RESERVED CAPE STUDY: four full upright bodies adjusting dark navy cape with left hand, bare skull and single left eye visible, sword sheathed; NOT delivered states.\n\nFINAL CHECK:32 COMPLETE FULL BODIES,8COLUMNS×4ROWS,all32insidewidecleartransparentmargins. One left eye,missinglowerjaw,navycape,silverarmour,shortswordonly. Four DIFFERENT chronological drawings per state.\n",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png"
+      ]
+    },
+    "observedNativePoses": 32,
+    "observedSegmentedBodies": 32,
+    "observedRows": 4,
+    "observedRowCounts": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "review": {
+      "complete": true,
+      "actualStateOrder": [
+        "ledgeCatch",
+        "ledgeHang",
+        "discarded-ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump",
+        "reservedUprightCalibration",
+        "reservedGripStudy",
+        "reservedCapeStudy"
+      ],
+      "retainedStateRows": [
+        {
+          "state": "ledgeCatch",
+          "row": 0
+        },
+        {
+          "state": "ledgeHang",
+          "row": 1
+        },
+        {
+          "state": "ledgeDrop",
+          "row": 3
+        },
+        {
+          "state": "ledgeJump",
+          "row": 4
+        }
+      ],
+      "canvasClippedFrames": [],
+      "noOriginalReferencePoseReused": true,
+      "reservedRowsNeverCounted": true
+    },
+    "receiptOrigin": "Actual image_gen return, original PNG and output_hint archived. Provider exposes no model/job/generation identifiers."
+  },
+  {
+    "id": "sir-daniel-corrective-ledge",
+    "startedAt": "2026-10-26T08:38:43.833Z",
+    "completedAt": "2026-10-26T08:40:31.132Z",
+    "originalImage": "/workspace/generated_images/exec-27fc895a-a3fa-4ad2-b5db-129cede58785.png",
+    "outputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-27fc895a-a3fa-4ad2-b5db-129cede58785.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returnedFields": [
+      "image_url",
+      "output_hint"
+    ],
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "status": "returned-artwork-reviewed",
+    "source1to1Verified": false,
+    "savedSource": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.native.png",
+    "sourceSha256": "7613f3ead8fa4504f3b6e5866e951b9643d50f636c71e84a77427723c584a56e",
+    "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.prompt.txt",
+    "promptFileSha256": "edbb8c7a4b3e11fab60c72a189d1fad6ce10e569b6765e4d4a2df830c1fca7f1",
+    "arguments": {
+      "prompt": "Create BRAND NEW native detailed pixel-art full-body animation drawings of SIR DANIEL FORTESQUE from MEDIEVIL (1998 PLAYSTATION). Exact chosen loadout: very tall thin SKELETAL KNIGHT, large pale bone skull, a SINGLE VISIBLE LEFT EYE (screen-right in front view), empty dark right socket, NO LOWER JAW, worn dull SILVER plate armour on chest/shoulders/forearms/shins, DARK NAVY BLUE CAPE, thin bony joints, a modest ordinary SHORT SWORD with simple silver blade and dull brass small crossguard, held in the RIGHT hand only in weapon actions. The sword is SHEATHED at his hip in ALL locomotion, jumping and ledge actions so both articulated bony hands can move naturally. Match this exact character and costume consistently on every body. Bare skull with NO helmet, NO crest, NO plume, NO red hair, NO horns, NO fangs or lower mandible, NO flesh. No oversized sword, no shield, no magic, aura, beam, fire, glow, energy, opponent, injury, severed bones, blood or gore. Bones stay assembled. Original crossover physical guard/parry, airborne and ledge motions are engine adaptations, NOT claims of original official game frames. Every hand must connect through real wrist/elbow/shoulder; hands are skeletal with visible fingers. Cape follows real movement but never covers required anatomy. Do not copy any reference pose.\n\nCorrective brand-new full-body LEDGE CLIMB drawings. Use the reference only for exact skeletal knight likeness and costume. THE HAND-TO-BODY GEOMETRY IS THE ENTIRE PURPOSE: the knight truly pulls his WHOLE TORSO ABOVE a fixed implied upper edge. No platform/ledge is drawn. Sword SHEATHED throughout. Four FIRST-ROW chronological full bodies: COLUMN1 genuine hang, leading LEFT skeletal palm ABOVE HIS SKULL and both feet below; COLUMN2 pull-up so skull is ABOVE left palm, palm at shoulder level; COLUMN3 push-up with WHOLE CHEST AND WAIST ABOVE left palm, left palm next to HIP BELOW BELT, left elbow points backward, front knee lifts, skull far ABOVE palm; COLUMN4 crouched fully above implied edge, left palm presses DOWN BELOW HIS KNEE, all skull/cape/both complete boots and fingers visible. The left hand must visibly descend RELATIVE TO HIS TORSO on each new frame; do NOT produce three hanging poses followed by one crouch. Draw real new anatomy, do not move/rotate/reuse the hanging reference body. Four SECOND-ROW different UPRIGHT CALIBRATION bodies, arms low, sword sheathed, anatomical skull-crown-to-sole height consistent with first-row bodies; reserved, not game poses.\n\nTRUE transparent RGBA, EXACTLY FOUR COLUMNS and TWO ROWS=EIGHT COMPLETE SEPARATE FULL-BODY DRAWINGS in landscape1536x1024, generous transparent margins and gaps. Same modest scale in each cell, no labels/grid/floor/shadow/checkerboard/platform. Side three-quarter facing RIGHT. Empty right-eye socket, one left eye, no lower jaw, silver armour/navy cape, no plume/horns/helmet/shield/glow. All8fullbodies complete. First4aretrueascendingclimb with palm at ABOVESKULL→SHOULDER→HIP→BELOWKNEE.",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png"
+      ],
+      "transparent_background": true
+    },
+    "observedNativePoses": 8,
+    "observedSegmentedBodies": 8,
+    "observedRows": 2,
+    "observedRowCounts": [
+      4,
+      4
+    ],
+    "review": {
+      "complete": true,
+      "actualStateOrder": [
+        "ledgeClimb",
+        "uprightCalibration"
+      ],
+      "retainedStateRows": [
+        {
+          "state": "ledgeClimb",
+          "row": 0
+        }
+      ],
+      "canvasClippedFrames": [],
+      "noOriginalReferencePoseReused": true,
+      "reservedRowsNeverCounted": true
+    },
+    "receiptOrigin": "Actual image_gen return, original PNG and output_hint archived. Provider exposes no model/job/generation identifiers."
+  },
+  {
+    "id": "sir-daniel-corrective-charge",
+    "startedAt": "2026-10-26T09:22:00.189Z",
+    "completedAt": "2026-10-26T09:23:56.377Z",
+    "originalImage": "/workspace/generated_images/exec-be50f454-ec77-4a2a-a5af-ec2286663b2c.png",
+    "outputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-be50f454-ec77-4a2a-a5af-ec2286663b2c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returnedFields": [
+      "image_url",
+      "output_hint"
+    ],
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "status": "returned-artwork-reviewed",
+    "source1to1Verified": false,
+    "savedSource": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-charge.native.png",
+    "sourceSha256": "e2be4fc86ca6ce465375f3734343b83d95130205d0fd54b31fb57b3d6fee0929",
+    "promptFile": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-charge.prompt.txt",
+    "promptFileSha256": "26a36827a5fc7ff0bbe058ebac0d867d8134f9e35ce7f84eb8dd9494b024d889",
+    "arguments": {
+      "prompt": "Create BRAND NEW native detailed pixel-art full-body animation drawings of SIR DANIEL FORTESQUE from MEDIEVIL (1998 PLAYSTATION). Exact chosen loadout: very tall thin SKELETAL KNIGHT, large pale bone skull, a SINGLE VISIBLE LEFT EYE (screen-right in front view), empty dark right socket, NO LOWER JAW, worn dull SILVER plate armour on chest/shoulders/forearms/shins, DARK NAVY BLUE CAPE, thin bony joints, a modest ordinary SHORT SWORD with simple silver blade and dull brass small crossguard, held in the RIGHT hand only in weapon actions. The sword is SHEATHED at his hip in ALL locomotion, jumping and ledge actions so both articulated bony hands can move naturally. Match this exact character and costume consistently on every body. Bare skull with NO helmet, NO crest, NO plume, NO red hair, NO horns, NO fangs or lower mandible, NO flesh. No oversized sword, no shield, no magic, aura, beam, fire, glow, energy, opponent, injury, severed bones, blood or gore. Bones stay assembled. Original crossover physical guard/parry, airborne and ledge motions are engine adaptations, NOT claims of original official game frames. Every hand must connect through real wrist/elbow/shoulder; hands are skeletal with visible fingers. Cape follows real movement but never covers required anatomy. Do not copy any reference pose.\n\nCreate EIGHT brand-new complete native full-body drawings in EXACTLY FOUR COLUMNS × TWO ROWS, landscape1536x1024, TRUE TRANSPARENT RGBA with very wide gutters and outer border, no scene/text/grid/shadow. References provide identity and the modest short-sword design ONLY; do NOT reuse any reference pose.\nFIRST ROW: FOUR CHRONOLOGICAL CHARGED PHYSICAL SHORT-SWORD CUT POSES. The SHORT SWORD MUST BE CLEARLY VISIBLE IN HIS RIGHT HAND IN ALL FOUR POSES, including impact. Real right fingers visibly WRAP AROUND THE BRASS HILT, crossguard joins physical silver blade. NOT sheathed on this row. Left hand is EMPTY and never holds a second sword. COLUMN1: right hand grips sword beside shoulder, compact physical backswing, blade clearly visible over shoulder. COLUMN2: hips and right elbow begin forward cut, sword stays held and visible. COLUMN3 IMPACT: right hand firmly grips the hilt and extends the ACTUAL SHORT SILVER BLADE FORWARD SCREEN RIGHT at chest height, clearly away from his body; the sword cannot vanish, float, detach or remain in scabbard. COLUMN4: genuine relaxed recovery, right elbow lowers and bends, short sword stays held angled downward beside thigh. Four different hips/knees/right-arm configurations, NO opponent/contact effect. No energy, trail, beam, glow or extra blade.\nSECOND ROW: four different upright relaxed full bodies, hands low, sword SHEATHED, reserved anatomical calibration only. Same skull-crown-to-sole size as first-row bodies. These four are NOT delivered animation states.\nAll8drawings are the same tall thin jawless single-left-eye silver-armoured knight with NAVY cape and short ordinary right-hand sword. No lower jaw, helmet, plume, horned shoulder, shield, flesh, firearm or magic. Every skull, hand, sword, scabbard, cape hem and both complete boots stays inside transparent safe margins. Check physical gripping hand and visible short sword in ALL4FIRSTROWCELLS before finishing.",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png",
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-b.native.png"
+      ],
+      "transparent_background": true
+    },
+    "observedNativePoses": 8,
+    "observedSegmentedBodies": 8,
+    "observedRows": 2,
+    "observedRowCounts": [
+      4,
+      4
+    ],
+    "review": {
+      "complete": true,
+      "actualStateOrder": [
+        "chargeRelease",
+        "uprightCalibration"
+      ],
+      "retainedStateRows": [
+        {
+          "state": "chargeRelease",
+          "row": 0
+        }
+      ],
+      "canvasClippedFrames": [],
+      "noOriginalReferencePoseReused": true,
+      "reservedRowsNeverCounted": true
+    },
+    "receiptOrigin": "Actual image_gen return, original PNG and output_hint archived. Provider exposes no model/job/generation identifiers."
+  }
+]

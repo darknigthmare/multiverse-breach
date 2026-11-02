@@ -1,0 +1,48 @@
+✖ Fighter player: Vortessence leaves its actual raised palm on a fixed bounded trajectory that a moving enemy can evade (11544.419371ms)
+✖ Fighter opponent: Vortessence leaves its actual raised palm on a fixed bounded trajectory that a moving enemy can evade (1.822441ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11995.64356
+
+✖ failing tests:
+
+test at scripts/nativeSuperRuntimeWave15.test.mjs:212:25
+✖ Fighter player: Vortessence leaves its actual raised palm on a fixed bounded trajectory that a moving enemy can evade (11544.419371ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(Number.isFinite(shot.vy))
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave15.test.mjs:218:64)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at scripts/nativeSuperRuntimeWave15.test.mjs:212:25
+✖ Fighter opponent: Vortessence leaves its actual raised palm on a fixed bounded trajectory that a moving enemy can evade (1.822441ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(Number.isFinite(shot.vy))
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave15.test.mjs:218:64)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

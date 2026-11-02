@@ -1,10 +1,11 @@
 import registry from './entityAssets.generated.json' with { type: 'json' };
+import wave16 from './summonAnimationsWave16.generated.json' with { type: 'json' };
 
 // An exact universe/entity/action triple prevents a similarly named creature
 // or deployment in another continuity from borrowing this artwork.
 const keyFor = (universe, entityName, actionName) => [universe, entityName, actionName].join('::');
 const assets = new Map();
-for (const entry of registry.entries) {
+for (const entry of [...registry.entries, ...wave16.entries.filter(entry => entry.id === 'fox_devil-wave16' && entry.kind === 'summon')]) {
   const key = keyFor(entry.universe, entry.entityName, entry.actionName);
   if (assets.has(key)) throw new Error(`Duplicate combat entity artwork: ${key}`);
   assets.set(key, Object.freeze({ ...entry }));
@@ -13,7 +14,9 @@ for (const entry of registry.entries) {
 export function resolveCombatEntityAsset(descriptor) {
   if (!descriptor?.universe || !descriptor.entityName || !descriptor.action?.name) return null;
   const asset = assets.get(keyFor(descriptor.universe, descriptor.entityName, descriptor.action.name));
-  return asset?.sheet && asset.frames === 4 && asset.columns === 4 && asset.rows === 1 ? asset : null;
+  const nativeFox = asset?.id === 'fox_devil-wave16' && asset.kind === 'summon'
+    && descriptor.kind === 'summon' && asset.frames === 16 && asset.columns === 4 && asset.rows === 4;
+  return asset?.sheet && (asset.frames === 4 && asset.columns === 4 && asset.rows === 1 || nativeFox) ? asset : null;
 }
 
 export function attachCombatEntityAsset(descriptor) {

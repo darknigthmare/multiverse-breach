@@ -1,0 +1,621 @@
+{
+  "passed": true,
+  "schemaVersion": 1,
+  "startedAt": "2026-10-28T07:39:25.319Z",
+  "browserClosedAt": "2026-10-28T07:39:32.890Z",
+  "finishedAt": "2026-10-28T07:39:32.918Z",
+  "harness": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-movement-browser.mjs",
+  "harnessSha256": "f59b726dbe89a53ec8afd9a50f0c6eaa28ad8dc5bc0d10557e84574fdefa6400",
+  "preliminary": false,
+  "phase": "final",
+  "allBrowserWindowsClosed": true,
+  "contextsBeforeClose": 1,
+  "pagesBeforeClose": 1,
+  "browserConnectedAfterClose": false,
+  "resourcesBefore": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 140197,
+      "sha256": "02677051a5f04afffc210ad42f01d73254222cf02cf54b6a4c680cf20578e4ce"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 119544,
+      "sha256": "722505843dce55c8ff7aa30c15ae4f704b6dc412935764efa761586c41308fc4"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 66467,
+      "sha256": "142dbe443dac0786e1b6ac98bffbb092d9b2a8069d133ff21bf8053f4e67cf24"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 41258,
+      "sha256": "d32f95d0dd75f6bcab71d1246a890881d70cba616b825eb8219b15ff0850ee33"
+    },
+    {
+      "path": "src/game/melee/meleeCombatRuntime.js",
+      "bytes": 18285,
+      "sha256": "c847254bf6a7be4a4561d60bb7fe3145b6c37283329bfed124ba5f7614cac323"
+    },
+    {
+      "path": "src/game/melee/meleeStateMachine.js",
+      "bytes": 7161,
+      "sha256": "e6e26340a9b7b8bd5c045683629598ce0897bd020084b54e90f2fd258cffb647"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/sirDanielMeleeManifest.js",
+      "bytes": 557,
+      "sha256": "e941b6042d0c1a1808d586d3944c29a0b655d4a5d93681b65aa0d5f68f611f54"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 15872,
+      "sha256": "19cb992aa49f924e03ccb1a5c9626ee99268f7d99629bec70ea83485664e0920"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "bytes": 8167,
+      "sha256": "88ea2e577ee89e21c8b5c5d5761a584aaa9921cfe924857d6f34d9b7e797c510"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "bytes": 7053,
+      "sha256": "418edcfc609684cb3f18c6997ff37f90b79e3d9a16f607402f1d72ae2af981aa"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave15.js",
+      "bytes": 11136,
+      "sha256": "4d3a14f1b3694d7652fd93ba3bfc675c97acee0c389c1d863e63c40501493b06"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave15PartB.generated.json",
+      "bytes": 4980,
+      "sha256": "b7c3212abc1175727f705d328a939e33a0ec5d526df0d21fc5e6b8311e6c5c03"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave15PartB.generated.json",
+      "bytes": 1877060,
+      "sha256": "c960a5da55a3d18c625f4cdcdc2109922c407490b0455aff8cffd5149ed2deda"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave15PartB.generated.json",
+      "bytes": 1031261,
+      "sha256": "cfb8bbc3628f30773822839ef357b283312cfa3b268d7a709490346cb8836beb"
+    },
+    {
+      "path": "src/game/combat/combatSourceDefinitionsWave15PartB.js",
+      "bytes": 47191,
+      "sha256": "4d8ddfdebe110bee42126ff4f81b17b90f5da0bfef0d8b15158b4282b7af586e"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesWave15PartB.js",
+      "bytes": 93293,
+      "sha256": "caff2bdbcf9afbde1bad882321d0928913a1096fd5d67a749c0700122690cebb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/source-row-review.json",
+      "bytes": 14112,
+      "sha256": "e633e53a87b70d54032cadfff5d56d79cafade97165492c4407f0155a01e83ec"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/native-sir-daniel-segmentation.mjs",
+      "bytes": 6270,
+      "sha256": "3dcc5f5781da037133cb7e183f86190b6cf1c61e47477528ea5a966e0f83089a"
+    },
+    {
+      "path": "src/game/combat/sirDanielMeleeMotion.generated.json",
+      "bytes": 217109,
+      "sha256": "2209787a54997455eff1b712395715dde4ff9404bb9803f7fb1b313462aea5ce"
+    },
+    {
+      "path": "src/game/combat/sirDanielMeleeCombat.generated.json",
+      "bytes": 230825,
+      "sha256": "0a97375e0f94c12188d31586361a80ced2f3971561ae886f20320653f1c03e2b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/packing-plan.json",
+      "bytes": 19636,
+      "sha256": "e775208a8dc506e8955b07d42b973184186cfcf925850c148499ec9283f94b70"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/native-hand-points.json",
+      "bytes": 2260,
+      "sha256": "dcb795bb2637428482c886ffdc597930a38bfeb09b943b602aecb270317956f7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/hand-measurements.json",
+      "bytes": 14003,
+      "sha256": "04f2697e5e76a5c0bacbab5c7ad1a24fa7c422e9a1b44baca1af8ee878925582"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/actual-tool-calls.json",
+      "bytes": 52251,
+      "sha256": "571f596fbb36f37b7eacafadec368bc2b0f467bd938b48f15656ceb9a14a8ad2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/build-native-sir-daniel-atlases.mjs",
+      "bytes": 13519,
+      "sha256": "f86cac78782b1a9d50fe863c18835537297927eddd162fba870af72f26193d54"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/normalize-sir-daniel-atlases.mjs",
+      "bytes": 370,
+      "sha256": "bbd593f15ebb93b1de6f38d52b5c5fe0bc15df1ba958b4d3d936eb641f4d5873"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/measure-sir-daniel-native-hands.mjs",
+      "bytes": 4007,
+      "sha256": "5527b7609f26f32a69f3e48d3ffcf30144def81396a4e2228daf401d16f2f3ab"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/verify-sir-daniel-atlases.mjs",
+      "bytes": 10553,
+      "sha256": "c709ea77cec7b8b3693a579d876ead59aff7855c698ba2fac7e446d3365d05cf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png",
+      "bytes": 2362412,
+      "sha256": "ae5c9991fadd2a1ca677a791cc06574e354ab9768ee1a84cd5597a301896c426"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.prompt.txt",
+      "bytes": 3764,
+      "sha256": "9c7717c0eff5b819f2808c55ae8f67a4abf11cd89296a23060313767f4e8bd63"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-b.native.png",
+      "bytes": 2492855,
+      "sha256": "a57dca0886be8fe361b8ebc2205c7e47a93d1bfab235ee62eeeb1cfe12eb9d80"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-b.prompt.txt",
+      "bytes": 3760,
+      "sha256": "176c97e07eea09261a002ba2deb88dc7394ce0b62b5b23c8b2f38c76d8a0615e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-defense.native.png",
+      "bytes": 2587382,
+      "sha256": "8e7335a306363f8a72608364e5213325b0732af91a482cd2a97c3f171da414f6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-defense.prompt.txt",
+      "bytes": 3899,
+      "sha256": "02a64b08f41883e67836eb23114aca7b44f53605ec697e75d84d3ee64e5d07d0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-a.native.png",
+      "bytes": 2480107,
+      "sha256": "000acd5d0cec0f0c7f960f79f789a548ae84c2a2567c7391c6a1d32d5539c295"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-a.prompt.txt",
+      "bytes": 3971,
+      "sha256": "4258f9c7f886ae1ce4a549f7e962a70b360aace26052cce94e244d9b864eb7bb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-b.native.png",
+      "bytes": 2570763,
+      "sha256": "ecda217728428fd2918da045684452d7a38a03c17b081db9d5089e7cc74bffca"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-b.prompt.txt",
+      "bytes": 4036,
+      "sha256": "3e90b59f70c69f7e808596852fd25a6d023ced2e4c4d10b93d34a82fc6095842"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+      "bytes": 2534318,
+      "sha256": "d376e6d0a78921e03cad2be2bd7334266b6d12ad12671f569c2b44566de5fbb3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.prompt.txt",
+      "bytes": 4492,
+      "sha256": "9f59df69a05609e3d3f985e6070289debd8cf982d836082b688f52b512f4237a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.native.png",
+      "bytes": 2133624,
+      "sha256": "7613f3ead8fa4504f3b6e5866e951b9643d50f636c71e84a77427723c584a56e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.prompt.txt",
+      "bytes": 3005,
+      "sha256": "edbb8c7a4b3e11fab60c72a189d1fad6ce10e569b6765e4d4a2df830c1fca7f1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-charge.native.png",
+      "bytes": 2248082,
+      "sha256": "e2be4fc86ca6ce465375f3734343b83d95130205d0fd54b31fb57b3d6fee0929"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-charge.prompt.txt",
+      "bytes": 3251,
+      "sha256": "26a36827a5fc7ff0bbe058ebac0d867d8134f9e35ce7f84eb8dd9494b024d889"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-motion-a.png",
+      "bytes": 1432636,
+      "sha256": "6f3fedef54898d50ef676acad157f049e93400d97de05157bbf2944e70cdd6ef"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-motion-b.png",
+      "bytes": 1369850,
+      "sha256": "124f196c0fdee159018a5f3118e3228a975839d2be3d8d3e17cc68ab0642d5fd"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-defense.png",
+      "bytes": 1551529,
+      "sha256": "1cfa44f426f1d277489ca589da895fc4448639b0425abb9e4387097bcae20c4a"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-combat-a.png",
+      "bytes": 1453733,
+      "sha256": "74dd26cacdf2498a70f3570f00e1b2ab052d504181bbf4ae434a0301f2a94f45"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-combat-b.png",
+      "bytes": 1585927,
+      "sha256": "f7682ae9536343ec53608d71e670ab6fb534d6b93d84f7e42da16abb36a33fce"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-ledge.png",
+      "bytes": 824199,
+      "sha256": "9c2518ee184a17a7337752089c6ad837c0364cd4b0fed23bbb2d972f6066a0e7"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-b/sir_daniel_fortesque.png",
+      "bytes": 1042853,
+      "sha256": "9e90f25eb6a1335f17ce9c96700b8bf24bd71e50850c6ee51a078ff9be1fa639"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/sir_daniel_fortesque.png",
+      "bytes": 542486,
+      "sha256": "12849946cab51467a698d79d3c56ef56de1fffc087d47430bf9283e1fb481609"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-core-browser.mjs",
+      "bytes": 8131,
+      "sha256": "0c2b28f1866475a3a4c6fdd1f1cffd970ce377e59f329ea4abf8a2e51d35d7b6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-movement-browser.mjs",
+      "bytes": 9402,
+      "sha256": "f59b726dbe89a53ec8afd9a50f0c6eaa28ad8dc5bc0d10557e84574fdefa6400"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-super-browser.mjs",
+      "bytes": 10604,
+      "sha256": "7d6a294946806a9b3a70925728220bd27d4c41ea5c9687bb6ccd8044d2667597"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-physical-ledge-browser.mjs",
+      "bytes": 10043,
+      "sha256": "5aaf2d8175ff4fa6234779ad37eaeff3604a9820d7ba5b3bd125b4dd121cb219"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-browser-receipt.mjs",
+      "bytes": 2520,
+      "sha256": "ccfefb4ee547ded42ef84d74d13e24c87b465cd533e5cd247413802b81ae434b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/run-sir-daniel-browser-checks.mjs",
+      "bytes": 3855,
+      "sha256": "51713477c7771c956e0a577f35979b1e3cb4271658bb7aa6756e2b64548fc05a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/collect-sir-daniel-evidence.mjs",
+      "bytes": 12780,
+      "sha256": "29d4c9d7929ff9d91df3a9adecde0df0a74dcd78e281be119d44b5412cbc9889"
+    }
+  ],
+  "resourcesAfter": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 140197,
+      "sha256": "02677051a5f04afffc210ad42f01d73254222cf02cf54b6a4c680cf20578e4ce"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 119544,
+      "sha256": "722505843dce55c8ff7aa30c15ae4f704b6dc412935764efa761586c41308fc4"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 66467,
+      "sha256": "142dbe443dac0786e1b6ac98bffbb092d9b2a8069d133ff21bf8053f4e67cf24"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 41258,
+      "sha256": "d32f95d0dd75f6bcab71d1246a890881d70cba616b825eb8219b15ff0850ee33"
+    },
+    {
+      "path": "src/game/melee/meleeCombatRuntime.js",
+      "bytes": 18285,
+      "sha256": "c847254bf6a7be4a4561d60bb7fe3145b6c37283329bfed124ba5f7614cac323"
+    },
+    {
+      "path": "src/game/melee/meleeStateMachine.js",
+      "bytes": 7161,
+      "sha256": "e6e26340a9b7b8bd5c045683629598ce0897bd020084b54e90f2fd258cffb647"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/sirDanielMeleeManifest.js",
+      "bytes": 557,
+      "sha256": "e941b6042d0c1a1808d586d3944c29a0b655d4a5d93681b65aa0d5f68f611f54"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 15872,
+      "sha256": "19cb992aa49f924e03ccb1a5c9626ee99268f7d99629bec70ea83485664e0920"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "bytes": 8167,
+      "sha256": "88ea2e577ee89e21c8b5c5d5761a584aaa9921cfe924857d6f34d9b7e797c510"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "bytes": 7053,
+      "sha256": "418edcfc609684cb3f18c6997ff37f90b79e3d9a16f607402f1d72ae2af981aa"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave15.js",
+      "bytes": 11136,
+      "sha256": "4d3a14f1b3694d7652fd93ba3bfc675c97acee0c389c1d863e63c40501493b06"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave15PartB.generated.json",
+      "bytes": 4980,
+      "sha256": "b7c3212abc1175727f705d328a939e33a0ec5d526df0d21fc5e6b8311e6c5c03"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave15PartB.generated.json",
+      "bytes": 1877060,
+      "sha256": "c960a5da55a3d18c625f4cdcdc2109922c407490b0455aff8cffd5149ed2deda"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave15PartB.generated.json",
+      "bytes": 1031261,
+      "sha256": "cfb8bbc3628f30773822839ef357b283312cfa3b268d7a709490346cb8836beb"
+    },
+    {
+      "path": "src/game/combat/combatSourceDefinitionsWave15PartB.js",
+      "bytes": 47191,
+      "sha256": "4d8ddfdebe110bee42126ff4f81b17b90f5da0bfef0d8b15158b4282b7af586e"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesWave15PartB.js",
+      "bytes": 93293,
+      "sha256": "caff2bdbcf9afbde1bad882321d0928913a1096fd5d67a749c0700122690cebb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/source-row-review.json",
+      "bytes": 14112,
+      "sha256": "e633e53a87b70d54032cadfff5d56d79cafade97165492c4407f0155a01e83ec"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/native-sir-daniel-segmentation.mjs",
+      "bytes": 6270,
+      "sha256": "3dcc5f5781da037133cb7e183f86190b6cf1c61e47477528ea5a966e0f83089a"
+    },
+    {
+      "path": "src/game/combat/sirDanielMeleeMotion.generated.json",
+      "bytes": 217109,
+      "sha256": "2209787a54997455eff1b712395715dde4ff9404bb9803f7fb1b313462aea5ce"
+    },
+    {
+      "path": "src/game/combat/sirDanielMeleeCombat.generated.json",
+      "bytes": 230825,
+      "sha256": "0a97375e0f94c12188d31586361a80ced2f3971561ae886f20320653f1c03e2b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/packing-plan.json",
+      "bytes": 19636,
+      "sha256": "e775208a8dc506e8955b07d42b973184186cfcf925850c148499ec9283f94b70"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/native-hand-points.json",
+      "bytes": 2260,
+      "sha256": "dcb795bb2637428482c886ffdc597930a38bfeb09b943b602aecb270317956f7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/hand-measurements.json",
+      "bytes": 14003,
+      "sha256": "04f2697e5e76a5c0bacbab5c7ad1a24fa7c422e9a1b44baca1af8ee878925582"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/actual-tool-calls.json",
+      "bytes": 52251,
+      "sha256": "571f596fbb36f37b7eacafadec368bc2b0f467bd938b48f15656ceb9a14a8ad2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/build-native-sir-daniel-atlases.mjs",
+      "bytes": 13519,
+      "sha256": "f86cac78782b1a9d50fe863c18835537297927eddd162fba870af72f26193d54"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/normalize-sir-daniel-atlases.mjs",
+      "bytes": 370,
+      "sha256": "bbd593f15ebb93b1de6f38d52b5c5fe0bc15df1ba958b4d3d936eb641f4d5873"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/measure-sir-daniel-native-hands.mjs",
+      "bytes": 4007,
+      "sha256": "5527b7609f26f32a69f3e48d3ffcf30144def81396a4e2228daf401d16f2f3ab"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/verify-sir-daniel-atlases.mjs",
+      "bytes": 10553,
+      "sha256": "c709ea77cec7b8b3693a579d876ead59aff7855c698ba2fac7e446d3365d05cf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.native.png",
+      "bytes": 2362412,
+      "sha256": "ae5c9991fadd2a1ca677a791cc06574e354ab9768ee1a84cd5597a301896c426"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-a.prompt.txt",
+      "bytes": 3764,
+      "sha256": "9c7717c0eff5b819f2808c55ae8f67a4abf11cd89296a23060313767f4e8bd63"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-b.native.png",
+      "bytes": 2492855,
+      "sha256": "a57dca0886be8fe361b8ebc2205c7e47a93d1bfab235ee62eeeb1cfe12eb9d80"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-motion-b.prompt.txt",
+      "bytes": 3760,
+      "sha256": "176c97e07eea09261a002ba2deb88dc7394ce0b62b5b23c8b2f38c76d8a0615e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-defense.native.png",
+      "bytes": 2587382,
+      "sha256": "8e7335a306363f8a72608364e5213325b0732af91a482cd2a97c3f171da414f6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-defense.prompt.txt",
+      "bytes": 3899,
+      "sha256": "02a64b08f41883e67836eb23114aca7b44f53605ec697e75d84d3ee64e5d07d0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-a.native.png",
+      "bytes": 2480107,
+      "sha256": "000acd5d0cec0f0c7f960f79f789a548ae84c2a2567c7391c6a1d32d5539c295"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-a.prompt.txt",
+      "bytes": 3971,
+      "sha256": "4258f9c7f886ae1ce4a549f7e962a70b360aace26052cce94e244d9b864eb7bb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-b.native.png",
+      "bytes": 2570763,
+      "sha256": "ecda217728428fd2918da045684452d7a38a03c17b081db9d5089e7cc74bffca"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-combat-b.prompt.txt",
+      "bytes": 4036,
+      "sha256": "3e90b59f70c69f7e808596852fd25a6d023ced2e4c4d10b93d34a82fc6095842"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+      "bytes": 2534318,
+      "sha256": "d376e6d0a78921e03cad2be2bd7334266b6d12ad12671f569c2b44566de5fbb3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.prompt.txt",
+      "bytes": 4492,
+      "sha256": "9f59df69a05609e3d3f985e6070289debd8cf982d836082b688f52b512f4237a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.native.png",
+      "bytes": 2133624,
+      "sha256": "7613f3ead8fa4504f3b6e5866e951b9643d50f636c71e84a77427723c584a56e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.prompt.txt",
+      "bytes": 3005,
+      "sha256": "edbb8c7a4b3e11fab60c72a189d1fad6ce10e569b6765e4d4a2df830c1fca7f1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-charge.native.png",
+      "bytes": 2248082,
+      "sha256": "e2be4fc86ca6ce465375f3734343b83d95130205d0fd54b31fb57b3d6fee0929"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-charge.prompt.txt",
+      "bytes": 3251,
+      "sha256": "26a36827a5fc7ff0bbe058ebac0d867d8134f9e35ce7f84eb8dd9494b024d889"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-motion-a.png",
+      "bytes": 1432636,
+      "sha256": "6f3fedef54898d50ef676acad157f049e93400d97de05157bbf2944e70cdd6ef"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-motion-b.png",
+      "bytes": 1369850,
+      "sha256": "124f196c0fdee159018a5f3118e3228a975839d2be3d8d3e17cc68ab0642d5fd"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-defense.png",
+      "bytes": 1551529,
+      "sha256": "1cfa44f426f1d277489ca589da895fc4448639b0425abb9e4387097bcae20c4a"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-combat-a.png",
+      "bytes": 1453733,
+      "sha256": "74dd26cacdf2498a70f3570f00e1b2ab052d504181bbf4ae434a0301f2a94f45"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-combat-b.png",
+      "bytes": 1585927,
+      "sha256": "f7682ae9536343ec53608d71e670ab6fb534d6b93d84f7e42da16abb36a33fce"
+    },
+    {
+      "path": "public/sprites/generated/sir-daniel-melee-wave15/sir-daniel-ledge.png",
+      "bytes": 824199,
+      "sha256": "9c2518ee184a17a7337752089c6ad837c0364cd4b0fed23bbb2d972f6066a0e7"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave15-part-b/sir_daniel_fortesque.png",
+      "bytes": 1042853,
+      "sha256": "9e90f25eb6a1335f17ce9c96700b8bf24bd71e50850c6ee51a078ff9be1fa639"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave15-part-b/sir_daniel_fortesque.png",
+      "bytes": 542486,
+      "sha256": "12849946cab51467a698d79d3c56ef56de1fffc087d47430bf9283e1fb481609"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-core-browser.mjs",
+      "bytes": 8131,
+      "sha256": "0c2b28f1866475a3a4c6fdd1f1cffd970ce377e59f329ea4abf8a2e51d35d7b6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-movement-browser.mjs",
+      "bytes": 9402,
+      "sha256": "f59b726dbe89a53ec8afd9a50f0c6eaa28ad8dc5bc0d10557e84574fdefa6400"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-super-browser.mjs",
+      "bytes": 10604,
+      "sha256": "7d6a294946806a9b3a70925728220bd27d4c41ea5c9687bb6ccd8044d2667597"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-physical-ledge-browser.mjs",
+      "bytes": 10043,
+      "sha256": "5aaf2d8175ff4fa6234779ad37eaeff3604a9820d7ba5b3bd125b4dd121cb219"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/sir-daniel-browser-receipt.mjs",
+      "bytes": 2520,
+      "sha256": "ccfefb4ee547ded42ef84d74d13e24c87b465cd533e5cd247413802b81ae434b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/run-sir-daniel-browser-checks.mjs",
+      "bytes": 3855,
+      "sha256": "51713477c7771c956e0a577f35979b1e3cb4271658bb7aa6756e2b64548fc05a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/collect-sir-daniel-evidence.mjs",
+      "bytes": 12780,
+      "sha256": "29d4c9d7929ff9d91df3a9adecde0df0a74dcd78e281be119d44b5412cbc9889"
+    }
+  ],
+  "productionInputsStableDuringRun": true,
+  "receiptOrigin": "await-browser-close-and-post-close-input-hash"
+}

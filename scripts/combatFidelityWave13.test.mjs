@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { WAVE14_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave14.mjs';
+import { WAVE16_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave16.mjs';
+import { WAVE15_PRESENTATION_IDS, HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE15, HISTORICAL_REGISTRY_PATHS_BEFORE_WAVE15 } from './combatFidelityHistoricalCohortWave15.mjs';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import test from 'node:test';
@@ -27,7 +29,7 @@ const before = json(directory + 'ability-baseline-before.json');
 const baseline = json(directory + 'baseline.json');
 const ids = Object.values(plan.parts).flat();
 // Keep the immutable W13 cardinalities verifiable after the exact12 W14 additions.
-const historicalW13AbilityIds = Object.keys(COMBAT_ABILITY_OVERRIDES).filter(id => !Object.hasOwn(ABILITIES_WAVE14, id));
+const historicalW13AbilityIds = Object.keys(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE15).filter(id => !Object.hasOwn(ABILITIES_WAVE14, id));
 const roster = new Map(HEROES_DB.map(hero => [hero.id, hero]));
 const hero = id => { assert.ok(roster.has(id), id); return roster.get(id); };
 
@@ -118,7 +120,7 @@ test('W13 exposes seven source-version recipes per character and replaces only t
   const oldRecipes = new Set(baseline.presentations.entries.map(entry => entry.heroId || entry.id));
   // The independent W12 audit explicitly records these previously scripted IDs.
   assert.deepEqual(ids.filter(id => oldRecipes.has(id)).sort(), ['luke','obi_wan','vader']);
-  assert.equal(Object.keys(CHARACTER_PRESENTATIONS).filter(id => roster.has(id) && !WAVE14_PRESENTATION_IDS.has(id)).length, 280);
+  assert.equal(Object.keys(CHARACTER_PRESENTATIONS).filter(id => roster.has(id) && !WAVE14_PRESENTATION_IDS.has(id) && !WAVE15_PRESENTATION_IDS.has(id) && !WAVE16_PRESENTATION_IDS.has(id)).length, 280);
   for (const id of ids) {
     const recipe = CHARACTER_PRESENTATIONS[id];
     assert.equal(recipe.sourceAction, sources[id].name, id);
@@ -199,7 +201,7 @@ test('W13 production inventory preserves archived corrections as evidence withou
     'characterSpriteCorrectionsWave14PartA', 'characterSpriteCorrectionsWave14PartB',
     'aragornMeleeCombat', 'aragornMeleeMotion', 'summonAnimationsWave14'
   ].map(name => 'src/game/combat/' + name + '.generated.json'));
-  const wave13Registries = report.assetInventory.registries.filter(path => !wave14Registries.has(path));
+  const wave13Registries = report.assetInventory.registries.filter(path => HISTORICAL_REGISTRY_PATHS_BEFORE_WAVE15.has(path) && !wave14Registries.has(path));
   assert.deepEqual(sorted(wave13Registries), sorted([...baseline.assetInventory.registries, ...runtimeRegistries]));
   assert.equal(wave13Registries.length, 111);
   const wave13Sheets = new Set(wave13Registries.flatMap(path => (json(path).entries || []).map(entry => entry.sheet).filter(Boolean)));

@@ -1,0 +1,1332 @@
+
+> lively-darwin@0.0.0 prebuild
+> npm run test:combat-fidelity && npm run test:combat-presentation && npm run test:deployment-inputs && npm run test:tactics-verticality && npm run test:conversation && npm run test:custom && npm run test:boosters && npm run boosters:audit && npm run test:extension && npm run test:polish && npm run test:cg && npm run cg:manifest:check && npm run test:melee && npm run test:stages && npm run test:noncombat-trials && npm run melee:sprites:audit && npm run sprites:provenance:audit && npm run portals:audit && npm run portals:prompts -- --check && npm run cosmetics:audit && npm run test:cosmetics && npm run rift:audit && npm run test:rift && npm run music:audit && npm run test:campaign && npm run test:oc-dlc && npm run test:original-universes && npm run audit:oc-dlc && npm run audit:original-universes && npm run check:progression
+
+
+> lively-darwin@0.0.0 test:combat-fidelity
+> node --test --test-concurrency=1 scripts/combatFidelity.test.mjs scripts/combatAbilityRuntime.test.mjs scripts/fighterAuthoredActions.test.mjs scripts/combatFidelityWave2.test.mjs scripts/ff8SuperRuntimeWave2.test.mjs scripts/combatFidelityWave3.test.mjs scripts/partySuperRuntimeWave3.test.mjs scripts/combatFidelityWave4.test.mjs scripts/characterFormsWave4.test.mjs scripts/combatFidelityWave5.test.mjs scripts/nativeSuperRuntimeWave5.test.mjs scripts/fighterProjectileVisualWave5.test.mjs scripts/presentationStatureWave5.test.mjs scripts/combatFidelityWave6.test.mjs scripts/nativeSuperRuntimeWave6.test.mjs scripts/summonAnimationWave6.test.mjs scripts/combatContactVisualWave6.test.mjs scripts/meleeSupportCpuWave6.test.mjs scripts/combatFidelityWave7.test.mjs scripts/nativeSuperRuntimeWave7.test.mjs scripts/summonAnimationWave7.test.mjs scripts/combatFidelityWave8.test.mjs scripts/nativeSuperRuntimeWave8.test.mjs scripts/summonAnimationWave8.test.mjs scripts/combatFidelityWave9.test.mjs scripts/nativeSuperRuntimeWave9.test.mjs scripts/summonAnimationWave9.test.mjs scripts/combatFidelityWave10.test.mjs scripts/nativeSuperRuntimeWave10.test.mjs scripts/summonAnimationWave10.test.mjs scripts/combatFidelityWave11.test.mjs scripts/nativeSuperRuntimeWave11.test.mjs scripts/summonAnimationWave11.test.mjs scripts/combatFidelityWave12.test.mjs scripts/combatFidelityWave13.test.mjs scripts/rpgSummonWave13.test.mjs scripts/combatFidelityWave13Runtime.test.mjs scripts/combatFidelityWave14.test.mjs scripts/combatFidelityWave14Runtime.test.mjs scripts/rpgSummonWave14.test.mjs scripts/nativeSuperRuntimeWave14.test.mjs scripts/combatFidelityWave15.test.mjs scripts/nativeSuperRuntimeWave15.test.mjs scripts/rpgSummonWave15.test.mjs scripts/rpgControlWave15.test.mjs scripts/phaselockControlWave15.test.mjs scripts/supportRangeWave15.test.mjs && node scripts/combatFidelityAudit.mjs --check && node scripts/buildCombatCharacterAnimations.mjs --check && node scripts/buildCombatCharacterSpriteCorrections.mjs --check && node scripts/buildCombatCharacterAnimationsWave2PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave3PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave3PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave4PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave4PartC.mjs --check && node scripts/buildCombatCharacterFormsWave4.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave4.mjs --check && node scripts/buildCombatCharacterAnimationsWave5PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave5PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave5PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave5.mjs --check && node docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/normalize-vegeta-motion-atlases.mjs --check && node docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/verify-vegeta-combat.mjs && node scripts/buildSummonAnimationsWave5.mjs --check && node scripts/buildCombatCharacterAnimationsWave6PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave6PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave6PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave6PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave6PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave6PartC.mjs --check && node scripts/buildSummonAnimationsWave6.mjs --check && node docs/combat-fidelity-wave6-2026-10-20/sonic-sources/normalize-sonic-motion-atlases.mjs --check && node docs/combat-fidelity-wave6-2026-10-20/sonic-sources/verify-sonic-combat.mjs --check && node scripts/buildCombatCharacterAnimationsWave7PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave7PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave7PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave7PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave7PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave7PartC.mjs --check && node scripts/buildSummonAnimationsWave7.mjs --check && node docs/combat-fidelity-wave7-2026-10-20/ragna-sources/normalize-ragna-motion-atlases.mjs --check && node docs/combat-fidelity-wave7-2026-10-20/ragna-sources/verify-ragna-combat.mjs --check && node scripts/buildCombatCharacterAnimationsWave8PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave8PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave8PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave8PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave8PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave8PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave8PartD.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave8PartD.mjs --check && node scripts/buildSummonAnimationsWave8.mjs --check && node docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/normalize-kiryu-atlases.mjs --check && node docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/verify-kiryu-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave9PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave9PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave9PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave9PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave9PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave9PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave9PartD.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave9PartD.mjs --check && node scripts/buildSummonAnimationsWave9.mjs --check && node docs/combat-fidelity-wave9-2026-10-22/chris-sources/normalize-chris-atlases.mjs --check && node docs/combat-fidelity-wave9-2026-10-22/chris-sources/verify-chris-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave10PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave10PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave10PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave10PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave10PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave10PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave10PartD.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave10PartD.mjs --check && node scripts/buildSummonAnimationsWave10.mjs --check && node docs/combat-fidelity-wave10-2026-10-23/neo-sources/normalize-neo-atlases.mjs --check && node docs/combat-fidelity-wave10-2026-10-23/freeman-sources/normalize-freeman-atlases.mjs --check && node docs/combat-fidelity-wave10-2026-10-23/neo-sources/verify-neo-atlases.mjs --check && node docs/combat-fidelity-wave10-2026-10-23/freeman-sources/verify-freeman-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave11PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave11PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave11PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave11PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave11PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave11PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave11PartD.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave11PartD.mjs --check && node scripts/buildSummonAnimationsWave11.mjs --check && node docs/combat-fidelity-wave11-2026-10-23/buffy-sources/normalize-buffy-atlases.mjs --check && node docs/combat-fidelity-wave11-2026-10-23/buffy-sources/verify-buffy-atlases.mjs --check && node docs/combat-fidelity-wave11-2026-10-23/arthur-sources/normalize-arthur-atlases.mjs --check && node docs/combat-fidelity-wave11-2026-10-23/arthur-sources/verify-arthur-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave12PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave12PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave12PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave12PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave12PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave12PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave12PartD.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave12PartD.mjs --check && node scripts/buildSummonAnimationsWave12.mjs --check && node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/normalize-isaac-atlases.mjs --check && node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/measure-isaac-native-hands.mjs --check && node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/verify-isaac-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave13PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave13PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave13PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave13PartB.mjs --check && node scripts/buildSummonAnimationsWave13.mjs --check && node docs/combat-fidelity-wave13-2026-10-24/ripley-sources/normalize-ripley-atlases.mjs --check && node docs/combat-fidelity-wave13-2026-10-24/ripley-sources/measure-ripley-native-hands.mjs --check && node docs/combat-fidelity-wave13-2026-10-24/ripley-sources/verify-ripley-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave14PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave14PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave14PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave14PartB.mjs --check && node scripts/buildSummonAnimationsWave14.mjs --check && node docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/normalize-aragorn-atlases.mjs --check && node docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/measure-aragorn-native-hands.mjs --check && node docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/verify-aragorn-atlases.mjs --check && node scripts/buildCombatCharacterAnimationsWave15PartA.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave15PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave15PartB.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave15PartB.mjs --check && node scripts/buildCombatCharacterAnimationsWave15PartC.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave15PartC.mjs --check && node scripts/buildSummonAnimationsWave15.mjs --check && node docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/normalize-sir-daniel-atlases.mjs --check && node docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/measure-sir-daniel-native-hands.mjs --check && node docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/verify-sir-daniel-atlases.mjs --check
+
+✔ Part I techniques retain their authored identity and Sakura supports only herself (12776.432153ms)
+✔ rpg player Rasengan and Chidori spend100 once and strike one selected close opponent once (9.351153ms)
+✔ rpg player Bunshin creates only the source self buff with no ally healing or hostile impact (1.99419ms)
+✔ rpg player Chaos starts at its single source impact, pauses and expires on the existing buff clock (4.152848ms)
+✔ rpg player Chaos cannot survive a knockout or an interrupted startup (1.564902ms)
+✔ rpg opponent Rasengan and Chidori spend100 once and strike one selected close opponent once (2.662378ms)
+✔ rpg opponent Bunshin creates only the source self buff with no ally healing or hostile impact (1.14659ms)
+✔ rpg opponent Chaos starts at its single source impact, pauses and expires on the existing buff clock (3.615857ms)
+✔ rpg opponent Chaos cannot survive a knockout or an interrupted startup (0.945747ms)
+✔ melee player Rasengan and Chidori spend100 once and strike one selected close opponent once (8.136731ms)
+✔ melee player Bunshin creates only the source self buff with no ally healing or hostile impact (1.297768ms)
+✔ melee player Chaos starts at its single source impact, pauses and expires on the existing buff clock (2.472161ms)
+✔ melee player Chaos cannot survive a knockout or an interrupted startup (0.929713ms)
+✔ melee opponent Rasengan and Chidori spend100 once and strike one selected close opponent once (2.82214ms)
+✔ melee opponent Bunshin creates only the source self buff with no ally healing or hostile impact (0.970204ms)
+✔ melee opponent Chaos starts at its single source impact, pauses and expires on the existing buff clock (2.091236ms)
+✔ melee opponent Chaos cannot survive a knockout or an interrupted startup (0.634568ms)
+✔ fighter player Rasengan and Chidori spend100 once and strike one selected close opponent once (3.682007ms)
+✔ fighter player Bunshin creates only the source self buff with no ally healing or hostile impact (0.845566ms)
+✔ fighter player Chaos starts at its single source impact, pauses and expires on the existing buff clock (3.701516ms)
+✔ fighter player Chaos cannot survive a knockout or an interrupted startup (0.88087ms)
+✔ fighter opponent Rasengan and Chidori spend100 once and strike one selected close opponent once (1.313182ms)
+✔ fighter opponent Bunshin creates only the source self buff with no ally healing or hostile impact (0.511412ms)
+✔ fighter opponent Chaos starts at its single source impact, pauses and expires on the existing buff clock (2.174312ms)
+✔ fighter opponent Chaos cannot survive a knockout or an interrupted startup (0.519364ms)
+✔ melee player Part I contact supers preserve their committed facing, finite range and vertical reach (3.503288ms)
+✔ melee opponent Part I contact supers preserve their committed facing, finite range and vertical reach (2.352331ms)
+✔ fighter player Part I contact supers preserve their committed facing, finite range and vertical reach (0.979649ms)
+✔ fighter opponent Part I contact supers preserve their committed facing, finite range and vertical reach (0.928081ms)
+✔ Chaos form accepts only its exact actor, source, special slot and living buff clock (0.619505ms)
+✔ Chaos finale projects four attack poses only inside its finite interval without applying a buff or changing any clock (0.612935ms)
+✔ all8 native Wave4 identities require their exact source and preserve canvas, clocks, HP and deterministic paused geometry (7.715425ms)
+✔ Rasengan and Chidori stay attached to the hand while Bunshin smoke and Chaos aura stay beside their own actor (1.054181ms)
+✔ Kamui distortion stays on the target with no eye-to-target ray; Piccolo keeps a finite beam and spiral (0.637412ms)
+✔ Chaos native body player uses its actual four state rows in all3 modes, with pure finite finale projection (8.741104ms)
+✔ Chaos native body opponent uses its actual four state rows in all3 modes, with pure finite finale projection (5.023061ms)
+✔ Melee player Wave4 target visuals use the actual foe and retain their confirmed impact after movement or death (8.885611ms)
+✔ Melee opponent Wave4 target visuals use the actual foe and retain their confirmed impact after movement or death (6.322523ms)
+✔ RPG player Chaos uses its stable real actor clock through idle and fresh support projections without mutating combat state (2.752215ms)
+✔ RPG opponent Chaos uses its stable real actor clock through idle and fresh support projections without mutating combat state (2.162023ms)
+✔ redxiii_ff7 Wave4 base correction has16 native transparent poses and draws all4 states/columns in both facings (108.934832ms)
+✔ vincent_ff7 Wave4 base correction has16 native transparent poses and draws all4 states/columns in both facings (62.179139ms)
+✔ Melee player civilian basic attack performs its authored support and cannot punch an opponent (12778.563704ms)
+✔ Melee player basic firearm reaches a distant target within its actual range once (2.373592ms)
+✔ Melee player medical secondary heals an ally and shares the legacy command path (1.625864ms)
+✔ Melee enemy civilian basic attack performs its authored support and cannot punch an opponent (1.067692ms)
+✔ Melee enemy basic firearm reaches a distant target within its actual range once (0.9807ms)
+✔ Melee enemy medical secondary heals an ally and shares the legacy command path (0.826097ms)
+✔ Melee authored support snapshots its action and interruption prevents a late heal (0.822481ms)
+✔ RPG authored basic melee approaches the real target and follows its declared impact tick (7.24884ms)
+✔ RPG custom healing defense keeps healing semantics and does not damage opponents (0.751755ms)
+✔ Melee player Mei Zhen's ancestor guides allies without attacking as a soldier (1.32537ms)
+✔ Melee player Leo's secondary and super heal others while excluding the wounded caster (1.836692ms)
+✔ RPG player Leo cannot select or heal himself with his secondary or super (2.349405ms)
+✔ Melee enemy Mei Zhen's ancestor guides allies without attacking as a soldier (0.975212ms)
+✔ Melee enemy Leo's secondary and super heal others while excluding the wounded caster (1.141983ms)
+✔ RPG enemy Leo cannot select or heal himself with his secondary or super (0.965357ms)
+✔ RPG player left edge records Snake/Raiden visual facing after physical approach (12241.938673ms)
+✔ RPG player right edge records Snake/Raiden visual facing after physical approach (2.230417ms)
+✔ RPG enemy left edge records Snake/Raiden visual facing after physical approach (1.895331ms)
+✔ RPG enemy right edge records Snake/Raiden visual facing after physical approach (1.254374ms)
+✔ Fighter player Snake/Raiden contact marks require the actual92px collision, alive target and committed facing (20.881126ms)
+✔ Fighter cpu Snake/Raiden contact marks require the actual92px collision, alive target and committed facing (9.505778ms)
+✔ Fighter player confirmed Snake/Raiden hits lock their contact point across knockback, death and repeated paused draws (8.280919ms)
+✔ Fighter cpu confirmed Snake/Raiden hits lock their contact point across knockback, death and repeated paused draws (4.864362ms)
+✔ Fighter player Lady/Parasoul keep actual projectile travel, frozen clocks and exactly one accepted impact (8.417685ms)
+✔ Fighter cpu Lady/Parasoul keep actual projectile travel, frozen clocks and exactly one accepted impact (6.007076ms)
+✖ Wave6 controlled contact keeps miss trails while previous native visual families ignore the new optional contract (22.827426ms)
+✔ Smash Snake/Raiden perfect shields keep their own feedback and reject offensive contact marks in both camps (8.165243ms)
+✔ Smash misses cannot acquire a contact when a target crosses back into range after the resolved hit (7.005935ms)
+✔ Smash accepted Snake/Raiden contacts keep the original hit point through movement and death in both camps (11.858349ms)
+✔ Smash Sonic retains only speed trails after a miss and repeated zero-delta draws keep gameplay frozen (11.781012ms)
+✔ the independent baseline preserves 4252 exact original slots and the original shared animations (12797.917918ms)
+✖ the authored union separates1365 complete kits,72 original partial records and one lore correction (68.447455ms)
+✔ Mei Zhen’s ancestor message remains nonviolent in both the secondary and entity descriptors (7.35398ms)
+✔ Mei Zhen’s ordinary and cinematic ancestor support changes buffs without harming either team (13.475544ms)
+✔ ability runtime copies preserve sourceHeroId and isolate unrelated universes and caller mutation (23.863628ms)
+✔ medical abilities preserve who and what their source technique can actually help (0.519765ms)
+✔ 45 engine states select bounded coarse poses and declare reuse instead of dedicated animation (0.806527ms)
+✔ every character script has seven real frame-selection sequences and bounded interpolation (886.642336ms)
+✔ named finales select distinct preparation/contact poses and support retains its own visual (0.861581ms)
+✔ all28 exact entities have four sampled phases and changing choreography beyond pose labels (11.106374ms)
+✔ P2 choreography mirrors P1 geometry and keeps ally support visually distinct from explosions (2.079879ms)
+✔ scene-specific mechanisms use the concrete source scene, preserve universe and advance the draw (196.053213ms)
+✔ real player summon exposes the choreography clock, freezes on pause and hits exactly once (2.858214ms)
+✔ real enemy summon exposes the choreography clock, freezes on pause and hits exactly once (1.425181ms)
+✔ RPG native-super progress uses the simulation timer and does not replace the invocation actor (0.269517ms)
+✔ real player RPG super selects its contact bitmap on the authoritative impact tick (1.155273ms)
+✔ real enemy RPG super selects its contact bitmap on the authoritative impact tick (0.819667ms)
+✔ renderer presentationFrame overrides the actual source rectangle rather than only the label (2.739455ms)
+✔ eight exact character atlases contain256 nonempty native poses with real alpha and retained provenance hashes (1076.033536ms)
+✔ dedicated atlas phase and impact frames are selected by exact identity and the real renderer (6.73421ms)
+✔ Aria has a separately sourced dagger correction with16 actual base poses and exact-universe routing (67.522801ms)
+✔ the audit distinguishes raw names, effective names, missing dedicated art and unverified fidelity (17072.405033ms)
+✔ the wave9 snapshot,117 existing native records and all eight prior45-state manifests remain immutable (12817.277746ms)
+✔ the runtime union preserves117 old records and adds39 complete32 atlases plus Janine24, without inventing missing cells (3327.815075ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (118.475772ms)
+✔ all39 new base layouts contain624 real cells and render every native cell with baseline244 and its authored row scale (2182.313099ms)
+✔ all124 prior presentation snapshots stay immutable and only three explicit W13 versions replace recipes (6.057869ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (48.002313ms)
+✔ the321 stage mechanisms preserve all241 prior definitions and their exact recorded render operations (155.47709ms)
+✔ Beast Boy exposes only the eight accepted T-Rex poses and refused heroes retain declared fallbacks (1.778453ms)
+✔ all fifteen prior summon bodies stay immutable and the eight new partners resolve only their exact triplets (34.413974ms)
+✔ the forty native visual helpers are deterministic projections and never mutate combat state (22.912064ms)
+✔ neo has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (484.387527ms)
+✔ neo: all45 states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (13.710553ms)
+✔ neo keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (119.559908ms)
+✔ neo ordinary actions follow runtime impact clocks while the full super uses its separate atlas (0.915601ms)
+✔ freeman has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (397.94726ms)
+✔ freeman: all45 states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (11.598487ms)
+✔ freeman keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (124.00936ms)
+✔ freeman ordinary actions follow runtime impact clocks while the full super uses its separate atlas (0.688999ms)
+✔ all forty source versions, real equipment and support mechanics agree with their explicit source definitions (7.792825ms)
+✔ Janine exposes only six accepted phases and uses declared existing-pose fallbacks for the two refused phases (4.491275ms)
+✔ neo:12 real palms and wrists remain attached to both actual ledges without mutating physics (18.118132ms)
+✔ freeman:12 real palms and wrists remain attached to both actual ledges without mutating physics (11.767672ms)
+✔ measured physical origins match actual scaled native draw rectangles on both sides, while supports and recovery stay inactive (1471.315474ms)
+✔ all99 newly retained PNGs contain2384 distinct real RGBA cells across presentations, bases,45-state sheets and partners (5121.692193ms)
+✔ real Neo and Freeman land from the last3px of a moving fall, preserve all four landing cells and keep P1/P2 velocity responsive (9.588827ms)
+✔ the frozen W10 assets,372 PNGs,80 registries and ten detailed manifests remain exactly immutable (13675.195853ms)
+✔ the runtime union preserves157 old records and adds exactly37 complete32 atlases, excluding three explicit refusals (3045.418205ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (150.109332ms)
+✔ all37 new base layouts contain592 real cells and render every native cell with baseline244 and its authored row scale (2025.072469ms)
+✔ all164 prior presentation snapshots stay immutable and only three explicit W13 versions replace recipes (7.441856ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (55.153338ms)
+✔ the401 stage mechanisms preserve all321 prior definitions and their exact recorded render operations (199.976999ms)
+✔ Beast Boy exposes only the eight accepted T-Rex poses and refused heroes retain declared fallbacks (2.146786ms)
+✔ all23 prior summon bodies stay immutable and the eight new partners resolve only their exact triplets (42.576975ms)
+✔ the forty native visual helpers are deterministic projections and never mutate combat state (29.414256ms)
+✔ buffy_summers has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (546.121949ms)
+✔ buffy_summers: all45 states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (16.301422ms)
+✔ buffy_summers keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (137.567425ms)
+✔ buffy_summers ordinary actions follow runtime impact clocks while the full super uses its separate atlas (0.900463ms)
+✔ arthur_kaamelott has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (501.456671ms)
+✔ arthur_kaamelott: all45 states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (10.95133ms)
+✔ arthur_kaamelott keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (114.260368ms)
+✔ arthur_kaamelott ordinary actions follow runtime impact clocks while the full super uses its separate atlas (0.83868ms)
+✔ all40 selected source versions and four-slot kits match independent W11 identities and support roles (7.037477ms)
+✔ Janine exposes only six accepted phases and uses declared existing-pose fallbacks for the two refused phases (4.778142ms)
+✔ buffy_summers:12 real palms and wrists remain attached to both actual ledges without mutating physics (9.901693ms)
+✔ arthur_kaamelott:12 real palms and wrists remain attached to both actual ledges without mutating physics (13.294171ms)
+✔ measured physical origins match actual scaled native draw rectangles on both sides, while supports and recovery stay inactive (1171.93344ms)
+✔ all93 newly retained PNGs contain2248 distinct real RGBA cells across presentations, bases,45-state sheets and partners (4875.673712ms)
+✔ real Buffy and Arthur land from the last3px of a moving fall, preserve all four landing cells and keep P1/P2 velocity responsive (9.867766ms)
+✔ three explicit refusals stay uncounted and defensive legacy reuse never becomes a new offensive native phase (12.224277ms)
+✔ Part C body scales reproduce human standing190 and small monowheel120 while retaining the measured native posture ratios (2713.786572ms)
+✔ real RPG Dumbledore uses calm reused poses for beneficial basics and guard on both sides, while his native firestorm stays available (12.112048ms)
+✔ W12 source identities retain the frozen forty characters, nineteen additions and twenty-one version revisions (11965.645548ms)
+✔ W12 preserves all 465 historical PNG files and 93 registry metadata files byte for byte (659.848657ms)
+✔ W12 validates source-specific supers strictly and projections cannot manufacture accepted contacts (5.277017ms)
+✔ W12 native finales never fall through to invented generic body auras or unconfirmed attack effects (4.737873ms)
+✔ W12 native presentation and base atlases have complete unique pixels, transparent margins and valid source hashes (8001.371987ms)
+✔ W12 projectile anchors follow real native pixels and mirror with both player camps (214.131673ms)
+✔ Morty refusal remains absent from native delivery and support reuses one calm historical cell (3.973541ms)
+✔ seven real same-universe native RPG partners preserve all thirty earlier atlases (16.95328ms)
+✔ all W12 beneficial basic actions use support state and never fire a generic projectile at allies (24.526006ms)
+✔ Isaac has forty-five distinct native Melee state rows, preserving the earlier twelve complete manifests (4.400695ms)
+✔ W13 retains the exact40 identities and separately measures18 additions and22 prior-version revisions (1.958708ms)
+✔ W13 personal kits resolve all160 source-authored slots with bounded target and cost semantics (4.140823ms)
+✔ W13 keeps all20 historical completion records and22 prior authored records independently inspectable (0.386483ms)
+✔ W13 distinguishes source-specific support roles from offensive tools and ordinary lightsabers (1.082815ms)
+✔ W13 exposes seven source-version recipes per character and replaces only three older recipes (4.372373ms)
+✔ W13 reinforcement partners are exact nonself same-universe roster identities (25.354237ms)
+✔ W13 visual admission requires exact identity and never manufactures confirmed contacts in either camp (8.17861ms)
+✔ W13 preserves all556 historical managed PNGs and104 registry files byte for byte (682.051185ms)
+✔ W13 production inventory preserves archived corrections as evidence without shipping their old registry versions (15782.766241ms)
+✔ W13 explicit native refusals retain old bytes and cannot acquire native poses, muzzle or painted effects (5.769694ms)
+✔ all40 W13 specials commit real vertical combat for both human camps with meter, actual effects and pause semantics (12339.122283ms)
+✔ vertical Tactics native super projection follows real simulation stateTimer across all four columns without mutation (117.534966ms)
+✔ W13 support respects bridge floor separation and does not spend charge on an unreachable ally (6.785818ms)
+✔ opposing heroes draw their dedicated native super source cell before any monster or base sheet (2.484928ms)
+✔ refused opposing hero artwork retains each unchanged historical hero body (2.428363ms)
+✔ monster sprites and procedural Origin Forge threats keep their existing renderer dispatch (12.354619ms)
+✔ paused refused Tactics bodies keep historical source cells bound to stateTimer for both camps (48.269841ms)
+✔ W14 uses the exact frozen40 source versions and separates12 new abilities from28 revisions (2.271447ms)
+✔ W14 resolves160 named slots with zero-damage support and exact special effects/delivery (5.883566ms)
+✔ W14 keeps every prior authored/completion record inspectable and selects40 non-self same-universe partners (3.545269ms)
+✔ W14 radial feedback remains actor-centred at the accepted contact snapshot (0.693967ms)
+✔ W14 RPG player Typhoon hits both sides of its actor-centred real radius and keeps ordinary targeted area logic (13598.978312ms)
+✔ W14 RPG player Typhoon rechecks moved/dead/protected targets without acquiring a new victim (1.216256ms)
+✔ W14 RPG player invalid empty-radius Typhoon retains all costs and a moved caster recentres contact (0.924276ms)
+✔ W14 RPG enemy Typhoon hits both sides of its actor-centred real radius and keeps ordinary targeted area logic (1.069956ms)
+✔ W14 RPG enemy Typhoon rechecks moved/dead/protected targets without acquiring a new victim (0.652606ms)
+✔ W14 RPG enemy invalid empty-radius Typhoon retains all costs and a moved caster recentres contact (0.560817ms)
+✔ W14 melee player Typhoon is radial behind the locked facing and snapshots its real origin (5.594921ms)
+✔ W14 melee player Typhoon rejects dead, protected and moved targets outside its Euclidean radius (3.798487ms)
+✔ W14 melee enemy Typhoon is radial behind the locked facing and snapshots its real origin (1.173703ms)
+✔ W14 melee enemy Typhoon rejects dead, protected and moved targets outside its Euclidean radius (2.711846ms)
+✔ W14 fighter player Typhoon is radial behind the locked facing and snapshots its real origin (2.248116ms)
+✔ W14 fighter player Typhoon rejects dead, protected and moved targets outside its Euclidean radius (1.382538ms)
+✔ W14 fighter enemy Typhoon is radial behind the locked facing and snapshots its real origin (0.268936ms)
+✔ W14 fighter enemy Typhoon rejects dead, protected and moved targets outside its Euclidean radius (0.964147ms)
+✔ W15 composes three disjoint groups of40 and exactly42 new /78 source-version revisions (2.896925ms)
+✔ W15 current provenance replaces obsolete mechanics while preserving its historical reference and unrelated records (2.189647ms)
+✔ W15 resolves480 explicitly named slots with source equipment, zero-damage supports and exact super delivery (8.747573ms)
+✔ W15 same-universe non-self relays use the selected partner action without transferring powers across universes (6.399035ms)
+✔ W15 source-specific safety and role constraints remain real mechanics (0.659716ms)
+✔ W15 native helpers reject changed identities, source universes, effects and delivery without inventing native availability (4.70052ms)
+✔ W15 final native coverage has120 presentation32 and120 exact-universe base16 bindings (2.805618ms)
+✔ the pre-integration snapshot and the first eight generated atlases remain immutable (13097.157492ms)
+✔ eight new FF8 identities join the runtime union with256 actual distinct poses and exact sources (983.583431ms)
+✔ all FF8 phases draw the new native source rectangles on both sides and synchronize super contact (13.054221ms)
+✔ five missing FF8 presentations preserve the41 existing profiles and use their own source techniques (3.12723ms)
+✔ new FF8 presentation rendering never changes HP, meter, outcome or projectiles (16.586744ms)
+✔ Seifer’s corrected base costume has16 real poses and is routed separately from his32 presentation poses (54.259677ms)
+✔ Cloud’s complete manifest binds45 distinct native rows and180 genuinely different visible cells (591.903743ms)
+✔ all45 Cloud states reach the real renderer; explicit presentations and full Omnislash remain separate (3.339211ms)
+✔ Cloud clocks loop, complete transitions and hold attack preparation until the actual impact (0.519074ms)
+✔ Cloud’s measured hanging hands contain real pixels and attach to either physical platform edge (31.973406ms)
+✔ real P1 and P2 climbing keeps measured hands on a horizontally or vertically moving ledge without moving physics during drawing (7.623459ms)
+✔ real P1 and P2 horizontal movement preserves airborne state clocks and advances the native poses (5.3724ms)
+✔ real P1 and P2 landing keeps all four native landing poses while horizontal motion remains responsive (2.221994ms)
+✔ real P1 and P2 turns emit a complete native transition without delaying velocity or facing (1.526063ms)
+✔ the next scene mechanisms preserve the first17 and animate real draw geometry/styles on simulation time (265.153044ms)
+✔ the wave2 audit counts actual runtime assets and a real full manifest while retaining unverified status (17780.824544ms)
+✔ wave3 baselines,16 preceding native atlases and the complete Cloud runtime manifest remain immutable (12689.217071ms)
+✔ eleven new FF13/15 atlases contain352 independently hashed native poses and exact identity/provenance bindings (1109.904971ms)
+✔ all88 new presentation phases reach the real drawImage rectangles on both sides and hold clocks during pause (33.419482ms)
+✔ four new wave3 identities add28 phases while all47 earlier character profiles are preserved exactly (6.027308ms)
+✔ new FF13/15 result scenes freeze on zero simulation time and never replay combat effects (20.947294ms)
+✔ Cloud,Tifa and Snow presentation samples identify exactly the native rectangles actually drawn by EngineFighter (7.807347ms)
+✔ Tifa has45 exclusive native states,180 distinct poses, source hashes and no unused-row fiction (564.811581ms)
+✔ Tifa ordinary Beat Rush rows stay separate from full-meter Final Heaven and simulation impacts (4.254299ms)
+✔ all45 Tifa states draw their actual atlas rectangles on both sides and obey native state clocks (5.278697ms)
+✔ Tifa measured ledge anchors contain real red glove pixels and attach on both physical edges (27.844552ms)
+✔ Tifa P1/P2 climbing follows moving platforms and drawing never changes its physical coordinates (6.552832ms)
+✔ Tifa P1/P2 held movement preserves airborne, landing and turning animation clocks (5.030401ms)
+✔ the65 stage mechanisms preserve all41 prior definitions and their independently recorded draw geometry (154.429088ms)
+✔ the audit preserves wave3 native presentations and both complete45-state heroes without certifying source animation fidelity (17578.464776ms)
+✔ the wave3 snapshot,27 existing native assets and both prior45-state manifests remain immutable (12305.709633ms)
+✔ the runtime union preserves35 exact wave4 heroes and its eight atlases have256 real distinct native poses (842.197954ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (26.934047ms)
+✔ prior character recipes stay immutable except the two explicitly documented provenance corrections (5.174947ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (18.780204ms)
+✔ Goku has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (480.490089ms)
+✔ all45 Goku states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (9.889572ms)
+✔ Goku ordinary Kikoha and physical charge contact follow runtime impacts while full Kamehameha uses its separate atlas (2.336285ms)
+✔ Goku ledge anchors sit on actual hand pixels and the real renderer attaches them to both edges (24.089255ms)
+✔ Goku P1/P2 climbing follows moving platforms and live movement preserves air,land and turn clocks (10.480844ms)
+✔ Chaos is16 genuinely different pixels poses and its strict buff sources select the body before ordinary sprite routing (54.999175ms)
+✔ Vincent finale renders every human preparation cell then Chaos only in its exact cosmetic window (1.57345ms)
+✔ the89 stage mechanisms preserve all65 previous definitions and their exact recorded render operations (159.657971ms)
+✔ the wave4 snapshot,35 existing native assets and all three prior45-state manifests remain immutable (12209.45274ms)
+✔ the runtime union preserves50 exact heroes and the15 new atlases contain480 real distinct native poses (1438.097661ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (96.644599ms)
+✔ all51 prior character presentation recipes remain exactly immutable (2.375144ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (30.419584ms)
+✔ Vegeta has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (454.61716ms)
+✔ all45 Vegeta states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (18.936815ms)
+✔ Vegeta ordinary GalickGun and physical charge contact follow runtime impacts while full FinalFlash uses its separate atlas (2.246319ms)
+✔ Vegeta ledge anchors sit on actual hand pixels and the real renderer attaches them to both edges (29.875009ms)
+✔ Vegeta P1/P2 climbing follows moving platforms and live movement preserves air,land and turn clocks (14.667016ms)
+✔ the113 stage mechanisms preserve all89 prior definitions and their exact recorded render operations (214.653566ms)
+✔ the wave5 snapshot,50 existing native assets and all four prior45-state manifests remain immutable (12010.618893ms)
+✔ the runtime union preserves65 exact heroes and the15 new atlases contain480 real distinct native poses (1388.545775ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (106.444824ms)
+✔ all six new base layouts contain96 real cells and render every native cell with baseline244 and its authored row scale (340.296073ms)
+✔ all51 prior character presentation recipes remain exactly immutable (3.126257ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (26.307127ms)
+✔ Sonic has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (489.818125ms)
+✔ all45 Sonic states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (14.843633ms)
+✔ Sonic native pixels retain a190px standing body and genuinely smaller curled aerial poses (25.131891ms)
+✔ Sonic ordinary HomingAttack contact follows runtime impacts while full LightSpeedAttack uses its separate atlas (1.995819ms)
+✔ Sonic ledge anchors sit on actual hand pixels and the real renderer attaches them to both edges (20.428794ms)
+✔ Sonic P1/P2 climbing follows moving platforms and live movement preserves air,land and turn clocks (11.356093ms)
+✔ the137 stage mechanisms preserve all113 prior definitions and their exact recorded render operations (149.354708ms)
+✔ the wave6 snapshot,65 existing native assets and all five prior45-state manifests remain immutable (12292.554595ms)
+✔ the runtime union preserves80 exact heroes and the15 new atlases contain480 real distinct native poses (1722.418003ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (101.066432ms)
+✔ all14 new base layouts contain224 real cells and render every native cell with baseline244 and its authored row scale (842.612748ms)
+✔ all66 prior character presentation recipes remain exactly immutable (4.949846ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (24.902547ms)
+✔ Ragna has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (494.309773ms)
+✔ all45 Ragna states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (17.862205ms)
+✔ Ragna keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (167.883681ms)
+✔ Ragna ordinary DeadSpike contact follows runtime impacts while full CarnageScissors uses its separate atlas (2.256449ms)
+✔ Ragna ledge anchors sit on actual hand pixels and the real renderer attaches them to both edges (21.395597ms)
+✔ the161 stage mechanisms preserve all137 prior definitions and their exact recorded render operations (152.852157ms)
+✔ the wave7 snapshot,80 existing native assets and all six prior45-state manifests remain immutable (13118.468229ms)
+✔ the runtime union preserves80 old heroes and distinguishes16 complete new atlases from eight partial Beast Boy poses (1417.38748ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (103.373192ms)
+✔ all17 new base layouts contain272 real cells and render every native cell with baseline244 and its authored row scale (1000.790631ms)
+✔ all84 prior presentation snapshots stay immutable and only three explicit W13 versions replace recipes (5.714872ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (53.027647ms)
+✔ Kiryu has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (486.463544ms)
+✔ all45 Kiryu states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (14.914047ms)
+✔ Kiryu keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (102.417434ms)
+✔ Kiryu ordinary actions follow runtime impact clocks while the full super uses its separate atlas (2.36047ms)
+✔ Kiryu ledge anchors sit on actual hand pixels and the real renderer attaches them to both edges (19.476932ms)
+✔ the201 stage mechanisms preserve all161 prior definitions and their exact recorded render operations (180.121128ms)
+✔ Beast Boy exposes only the eight accepted T-Rex poses and refused heroes retain declared fallbacks (2.236592ms)
+✔ all seven prior summon bodies stay immutable and the four new partners resolve only their exact triplets (21.71371ms)
+✔ the wave8 snapshot,97 existing native records and all seven prior45-state manifests remain immutable (12363.190815ms)
+✔ the runtime union preserves97 old records and adds20 complete32-pose atlases while retaining the old partial record (1835.76685ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (99.095659ms)
+✔ all20 new base layouts contain320 real cells and render every native cell with baseline244 and its authored row scale (1155.245565ms)
+✔ all104 prior presentation snapshots stay immutable and only three explicit W13 versions replace recipes (5.639095ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (35.528546ms)
+✔ Chris has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (488.286648ms)
+✔ all45 Chris states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (15.489191ms)
+✔ Chris keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (171.576551ms)
+✔ Chris ordinary actions follow runtime impact clocks while the full super uses its separate atlas (2.018625ms)
+✔ Chris ledge anchors sit on actual hand pixels and the real renderer attaches them to both edges (18.520921ms)
+✔ the241 stage mechanisms preserve all201 prior definitions and their exact recorded render operations (174.222065ms)
+✔ Beast Boy exposes only the eight accepted T-Rex poses and refused heroes retain declared fallbacks (2.234171ms)
+✔ all eleven prior summon bodies stay immutable and the four new partners resolve only their exact triplets (27.712572ms)
+✔ all twenty effective kits keep real equipment, support targets and exact source identities (8.915553ms)
+✔ all measured native origins agree with the actual body draw rectangle on both sides and null recovery poses stay inactive (893.930848ms)
+✔ the twenty native visual helpers are deterministic projections and never mutate combat state (16.482026ms)
+✔ Hyper Shot uses Pulse Ammo and one enemy while retaining its existing power, timing and cost (11156.944553ms)
+✔ RPG Hyper Shot player commits once, pauses and hits only the selected close opponent (5.729618ms)
+✔ RPG Hyper Shot enemy commits once, pauses and hits only the selected close opponent (1.19823ms)
+✔ Melee Hyper Shot player hits one forward opponent once and freezes on zero simulation delta (5.913724ms)
+✔ Melee Hyper Shot cpu hits one forward opponent once and freezes on zero simulation delta (1.827024ms)
+✔ Melee Hyper Shot player rejects targets behind, beyond range and outside its projectile height (2.566746ms)
+✔ Melee Hyper Shot cpu rejects targets behind, beyond range and outside its projectile height (1.822308ms)
+✔ Fighter Hyper Shot player launches one timed projectile, hits the active opponent and preserves the close bench (3.310654ms)
+✔ Fighter Hyper Shot cpu launches one timed projectile, hits the active opponent and preserves the close bench (0.712281ms)
+✔ Fighter Hyper Shot player keeps its committed facing and finite projectile range (1.034935ms)
+✔ Fighter Hyper Shot cpu keeps its committed facing and finite projectile range (0.674364ms)
+✔ Laguna native super motion rises, hangs and returns without moving gameplay coordinates (1.65097ms)
+✔ The End renders flower petals and short stems without a ray or a beneficial gameplay effect (1.347574ms)
+✔ Hyper Shot Pulse tracer is finite, mirrored and cosmetic, with no sustained ray after arrival (0.697148ms)
+✔ Fighter player civilian light/heavy actions preserve support effects without damage (11885.918058ms)
+✔ Fighter cpu civilian light/heavy actions preserve support effects without damage (7.203978ms)
+✔ authored simple firearms travel to their target and stop at the actual source range (5.307829ms)
+✔ continuous authored defense uses its actual reduction instead of the legacy universal block (0.991185ms)
+✔ native presentations take priority while legacy Naruto retains its explicit charge and release frames (1.643169ms)
+✔ Player Anchor consumes its existing dedicated phase sheets, and support fallbacks never swing (1.560635ms)
+✔ scripted finishers draw distinct action shapes and never change battle state (3.552089ms)
+✔ Barret Catastrophe holds an airborne firing position before landing, with mirrored downward ray geometry (1.210937ms)
+✔ Barret super lifts the rendered body and fires downward at its real impact time without moving gameplay coordinates (3.14149ms)
+✔ Barret finale keeps its beam cosmetic after the match is confirmed and completes once (3.732171ms)
+✔ Leo heals another living ally and never himself through either command and either player side (8.513676ms)
+✔ Mei Zhen secondary commands buff living allies without damage and share a six-second cooldown for both sides (30.044411ms)
+✔ Melee Barret renders an airborne body and a descending committed beam for P1 and P2 without physical mutation (6.566938ms)
+✔ boruto_uzumaki player: native travel follows the real projectile and only its confirmed collision creates contact (12215.096386ms)
+✔ boruto_uzumaki cpu: native travel follows the real projectile and only its confirmed collision creates contact (5.857214ms)
+✔ leon player: native travel follows the real projectile and only its confirmed collision creates contact (8.043238ms)
+✔ leon cpu: native travel follows the real projectile and only its confirmed collision creates contact (9.501092ms)
+✔ boruto_uzumaki: interrupted startup, misses, invulnerable contact and lifecycle cleanup never manufacture an impact (3.86324ms)
+✔ leon: interrupted startup, misses, invulnerable contact and lifecycle cleanup never manufacture an impact (1.998651ms)
+✔ doomslayer player: BFG retains its single area impact and the condensed Melee/RPG helper path (4.109121ms)
+✔ doomslayer cpu: BFG retains its single area impact and the condensed Melee/RPG helper path (2.915186ms)
+✔ doom_marine_classic player: BFG retains its single area impact and the condensed Melee/RPG helper path (3.304906ms)
+✔ doom_marine_classic cpu: BFG retains its single area impact and the condensed Melee/RPG helper path (3.032443ms)
+✔ custom CPU Otacon commits Codec support, keeps enemy HP and grants one friendly effect (11995.088825ms)
+✔ player and P2 Otacon share the authored identity and target only their own allies (3.492622ms)
+✔ Snake guard metadata survives P2 copying and a neighboring CPU damage action remains immediate (3.00065ms)
+✔ Knuckles, Giorno and Joseph CPU contact attacks use melee audio without spawning a projectile (2.342086ms)
+✔ the production pause clock freezes a pending CPU support impact and its cooldown (1.835251ms)
+✔ 40 Wave10 identities dispatch purely with exact source identity and support accents stay at their own caster (12870.021699ms)
+✔ rpg player: all40 supers pay once, preserve startup/pause and resolve only once (71.801957ms)
+✔ rpg opponent: all40 supers pay once, preserve startup/pause and resolve only once (51.423106ms)
+✔ melee player: all40 supers pay once, preserve startup/pause and resolve only once (70.797171ms)
+✔ melee opponent: all40 supers pay once, preserve startup/pause and resolve only once (51.827666ms)
+✔ fighter player: all40 supers pay once, preserve startup/pause and resolve only once (33.60361ms)
+✔ fighter opponent: all40 supers pay once, preserve startup/pause and resolve only once (30.236496ms)
+✔ melee player:25 offensive supers suppress misses and preserve confirmed points (144.460047ms)
+✔ melee opponent:25 offensive supers suppress misses and preserve confirmed points (140.398235ms)
+✔ fighter player:25 offensive supers suppress misses and preserve confirmed points (30.535367ms)
+✔ fighter opponent:25 offensive supers suppress misses and preserve confirmed points (34.780137ms)
+✔ RPG player:25 damage supers cannot paint contact on protected/dead targets (52.715163ms)
+✔ RPG opponent:25 damage supers cannot paint contact on protected/dead targets (49.649629ms)
+✔ rpg player:disposal cancels pending40 supers without further effects (9.390428ms)
+✔ rpg opponent:disposal cancels pending40 supers without further effects (7.875942ms)
+✔ fighter player:disposal cancels pending40 supers without further effects (5.23882ms)
+✔ fighter opponent:disposal cancels pending40 supers without further effects (3.427485ms)
+✔ Fighter player:every Wave10 physical projectile uses its real position, incoming facing and one accepted collision (32.327563ms)
+✔ Fighter opponent:every Wave10 physical projectile uses its real position, incoming facing and one accepted collision (28.845395ms)
+✔ Fighter player:every Wave10 physical projectile suppresses unaccepted contacts (9.675119ms)
+✔ Fighter opponent:every Wave10 physical projectile suppresses unaccepted contacts (9.076274ms)
+✔ Every Wave10 active native aperture is an actual source pixel and projects with its own row scale, phase and facing (1922.956183ms)
+✔ Fighter player:every tracked Wave10 shot physically spawns at its measured native weapon opening (6.372742ms)
+✔ Fighter opponent:every tracked Wave10 shot physically spawns at its measured native weapon opening (4.751585ms)
+✔ Wave10 cosmetic weapon travel stays on the action clock and cannot invent a target impact (3.125229ms)
+✔ Proton streams start at their physical wand and require an accepted cross-universe contact (0.667778ms)
+✔ Janine retains only24 accepted presentation drawings and uses an explicitly non-dedicated existing-pose fallback (1.288005ms)
+✔ 40 Wave11 identities dispatch purely with exact source identity and support accents stay at their own caster (13423.611306ms)
+✔ rpg player: all40 supers pay once, preserve startup/pause and resolve only once (69.817199ms)
+✔ rpg opponent: all40 supers pay once, preserve startup/pause and resolve only once (58.736318ms)
+✔ melee player: all40 supers pay once, preserve startup/pause and resolve only once (89.219452ms)
+✔ melee opponent: all40 supers pay once, preserve startup/pause and resolve only once (55.623493ms)
+✔ fighter player: all40 supers pay once, preserve startup/pause and resolve only once (35.69736ms)
+✔ fighter opponent: all40 supers pay once, preserve startup/pause and resolve only once (26.521966ms)
+✔ melee player:23 offensive supers suppress misses and preserve confirmed points (137.989267ms)
+✔ melee opponent:23 offensive supers suppress misses and preserve confirmed points (136.166814ms)
+✔ fighter player:23 offensive supers suppress misses and preserve confirmed points (34.584085ms)
+✔ fighter opponent:23 offensive supers suppress misses and preserve confirmed points (40.649158ms)
+✔ RPG player:23 damage supers cannot paint contact on protected/dead targets (61.628706ms)
+✔ RPG opponent:23 damage supers cannot paint contact on protected/dead targets (37.585241ms)
+✔ rpg player:disposal cancels pending40 supers without further effects (10.014302ms)
+✔ rpg opponent:disposal cancels pending40 supers without further effects (8.367404ms)
+✔ fighter player:disposal cancels pending40 supers without further effects (4.345581ms)
+✔ fighter opponent:disposal cancels pending40 supers without further effects (3.274715ms)
+✔ Fighter player:every Wave11 physical projectile uses its real position, incoming facing and one accepted collision (29.805934ms)
+✔ Fighter opponent:every Wave11 physical projectile uses its real position, incoming facing and one accepted collision (17.10653ms)
+✔ Fighter player:every Wave11 physical projectile suppresses unaccepted contacts (7.415988ms)
+✔ Fighter opponent:every Wave11 physical projectile suppresses unaccepted contacts (4.84781ms)
+✔ Every Wave11 active native aperture is an actual source pixel and projects with its own row scale, phase and facing (1833.565516ms)
+✔ Fighter player:all13 Wave11 shots use their12 measured openings or the explicit Harry historical origin (6.005495ms)
+✔ Fighter opponent:all13 Wave11 shots use their12 measured openings or the explicit Harry historical origin (5.795237ms)
+✔ The12 native Wave11 cosmetic projectile paths stay on the action clock and cannot invent a target impact (4.57842ms)
+✔ The two Wave11 area actions never invent ballistic travel, and no Wave11 identity is a beam (1.647086ms)
+✔ The three refused Wave11 characters expose no new native phase; the two guards reuse explicitly calm existing pixels (1.924334ms)
+✔ Wave11 coverage distinguishes all40 effects,37 native bodies,3 fallbacks and13 physical projectile kits (1.362757ms)
+✔ 40 Wave14 identities dispatch purely with exact source identity and support accents stay at their own caster (14111.081038ms)
+✔ rpg player: all40 supers pay once, preserve startup/pause and resolve only once (81.75537ms)
+✔ rpg opponent: all40 supers pay once, preserve startup/pause and resolve only once (50.207377ms)
+✔ melee player: all40 supers pay once, preserve startup/pause and resolve only once (73.299473ms)
+✔ melee opponent: all40 supers pay once, preserve startup/pause and resolve only once (56.531676ms)
+✔ fighter player: all40 supers pay once, preserve startup/pause and resolve only once (57.728162ms)
+✔ fighter opponent: all40 supers pay once, preserve startup/pause and resolve only once (38.762817ms)
+✔ melee player:33 offensive supers suppress misses and preserve confirmed points (219.304524ms)
+✔ melee opponent:33 offensive supers suppress misses and preserve confirmed points (203.339778ms)
+✔ fighter player:33 offensive supers suppress misses and preserve confirmed points (54.002147ms)
+✔ fighter opponent:33 offensive supers suppress misses and preserve confirmed points (51.350113ms)
+✔ RPG player:33 damage supers cannot paint contact on protected/dead targets (55.861214ms)
+✔ RPG opponent:33 damage supers cannot paint contact on protected/dead targets (52.925471ms)
+✔ rpg player:disposal cancels pending40 supers without further effects (8.418661ms)
+✔ rpg opponent:disposal cancels pending40 supers without further effects (7.029764ms)
+✔ fighter player:disposal cancels pending40 supers without further effects (4.101493ms)
+✔ fighter opponent:disposal cancels pending40 supers without further effects (3.839898ms)
+✔ Fighter player:every Wave14 physical projectile uses its real position, incoming facing and one accepted collision (31.106287ms)
+✔ Fighter opponent:every Wave14 physical projectile uses its real position, incoming facing and one accepted collision (22.679414ms)
+✔ Fighter player:every Wave14 physical projectile suppresses unaccepted contacts (8.557164ms)
+✔ Fighter opponent:every Wave14 physical projectile suppresses unaccepted contacts (9.311681ms)
+✔ W14 uses the frozen40 sources and distinguishes7 supports,15 melee,17 projectile and1 actor-centred augmentation (1.850598ms)
+✔ Each delivered W14 aperture addresses a genuine source pixel and respects phase, row scale and committed facing (1471.204994ms)
+✔ Fighter player:17 physical shots spawn at their actual measured bow, gun or emitter point when artwork exists (6.91513ms)
+✔ Fighter opponent:17 physical shots spawn at their actual measured bow, gun or emitter point when artwork exists (4.41305ms)
+✔ Jensen radial visual keeps its accepted actor origin and never constructs ballistic travel or an enemy body (0.693595ms)
+✔ 120 Wave15 identities dispatch purely with exact source identity and support accents stay at their own caster (13090.560694ms)
+✔ rpg player: Wave15 projectile feedback waits for release and accepted contact (101.62018ms)
+✔ rpg opponent: Wave15 projectile feedback waits for release and accepted contact (67.772291ms)
+✔ melee player: Wave15 projectile feedback waits for release and accepted contact (96.597294ms)
+✔ melee opponent: Wave15 projectile feedback waits for release and accepted contact (92.104879ms)
+✔ rpg player: all120 supers pay once, preserve startup/pause and resolve only once (178.807629ms)
+✔ rpg opponent: all120 supers pay once, preserve startup/pause and resolve only once (172.119722ms)
+✔ melee player: all120 supers pay once, preserve startup/pause and resolve only once (168.554211ms)
+✔ melee opponent: all120 supers pay once, preserve startup/pause and resolve only once (149.302914ms)
+✔ fighter player: all120 supers pay once, preserve startup/pause and resolve only once (98.651506ms)
+✔ fighter opponent: all120 supers pay once, preserve startup/pause and resolve only once (70.118602ms)
+✔ melee player:all offensive supers suppress misses and preserve confirmed points (502.724404ms)
+✔ melee opponent:all offensive supers suppress misses and preserve confirmed points (510.587982ms)
+✔ fighter player:all offensive supers suppress misses and preserve confirmed points (118.979204ms)
+✔ fighter opponent:all offensive supers suppress misses and preserve confirmed points (110.388833ms)
+✔ RPG player:all damage supers cannot paint contact on protected/dead targets (138.364658ms)
+✔ RPG opponent:all damage supers cannot paint contact on protected/dead targets (137.68289ms)
+✔ rpg player:disposal cancels pending120 supers without further effects (22.877753ms)
+✔ rpg opponent:disposal cancels pending120 supers without further effects (21.567888ms)
+✔ fighter player:disposal cancels pending120 supers without further effects (9.29984ms)
+✔ fighter opponent:disposal cancels pending120 supers without further effects (8.484509ms)
+✔ Fighter player:every Wave15 physical projectile uses its real position, incoming facing and one accepted collision (100.739577ms)
+✔ Fighter opponent:every Wave15 physical projectile uses its real position, incoming facing and one accepted collision (87.760976ms)
+✔ Fighter player:every Wave15 physical projectile suppresses unaccepted contacts (50.357531ms)
+✔ Fighter opponent:every Wave15 physical projectile suppresses unaccepted contacts (29.564161ms)
+✔ Fighter player: Vortessence leaves its actual raised palm on a fixed bounded trajectory that a moving enemy can evade (2.206238ms)
+✔ Fighter opponent: Vortessence leaves its actual raised palm on a fixed bounded trajectory that a moving enemy can evade (1.469377ms)
+✔ W15 uses the frozen120 sources and separates99 damage,20 beneficial actions and one real enemy control (9.325599ms)
+✔ Each delivered W15 aperture addresses a genuine source pixel and respects phase, row scale and committed facing (4589.567234ms)
+✔ Fighter player:all physical shots spawn at their actual measured bow, gun or emitter point when artwork exists (16.658451ms)
+✔ Fighter opponent:all physical shots spawn at their actual measured bow, gun or emitter point when artwork exists (14.3245ms)
+✔ W15 source-selected feedback distinguishes actual energy, physical arrows and ballistic weapons without changing gameplay (1.649799ms)
+✔ rpg player Wave5 supers spend100 once and apply one authoritative impact per chosen opponent through pause (13493.016423ms)
+✔ rpg player First Aid heals its allied patient once and never damages or heals an opponent (2.965493ms)
+✔ rpg opponent Wave5 supers spend100 once and apply one authoritative impact per chosen opponent through pause (12.729092ms)
+✔ rpg opponent First Aid heals its allied patient once and never damages or heals an opponent (1.375926ms)
+✔ melee player Wave5 supers spend100 once and apply one authoritative impact per chosen opponent through pause (22.880364ms)
+✔ melee player First Aid heals its allied patient once and never damages or heals an opponent (1.39925ms)
+✔ melee opponent Wave5 supers spend100 once and apply one authoritative impact per chosen opponent through pause (13.502128ms)
+✔ melee opponent First Aid heals its allied patient once and never damages or heals an opponent (1.423587ms)
+✔ fighter player Wave5 supers spend100 once and apply one authoritative impact per chosen opponent through pause (15.316083ms)
+✔ fighter player First Aid heals its allied patient once and never damages or heals an opponent (0.933908ms)
+✔ fighter opponent Wave5 supers spend100 once and apply one authoritative impact per chosen opponent through pause (8.541154ms)
+✔ fighter opponent First Aid heals its allied patient once and never damages or heals an opponent (0.400434ms)
+✔ melee player Energy Sword, Sarada Chidori, Tyrant Rave and Ride the Lightning retain contact range and committed facing (7.247373ms)
+✔ melee opponent Energy Sword, Sarada Chidori, Tyrant Rave and Ride the Lightning retain contact range and committed facing (6.587798ms)
+✔ fighter player Energy Sword, Sarada Chidori, Tyrant Rave and Ride the Lightning retain contact range and committed facing (3.715635ms)
+✔ fighter opponent Energy Sword, Sarada Chidori, Tyrant Rave and Ride the Lightning retain contact range and committed facing (15.966115ms)
+✔ all15 Wave5 visual identities require exact source, universe, name and effect and never mutate gameplay or canvas (11.442601ms)
+✔ Wave5 body approaches remain finite cosmetic offsets with no physical coordinates, clock or HP mutation (1.470127ms)
+✔ Vanishing Rasengan hides in flight, Mitsuki has2 winding strands, and contact motifs cannot become enemy-following rays (1.1009ms)
+✔ RPG player Leon's human weapons never infect, while an explicit infectious witness still does (4.943577ms)
+✔ RPG opponent Leon's human weapons never infect, while an explicit infectious witness still does (2.38622ms)
+✔ Ifrit16 sampler prepares attack0/1 before impact,2 exactly at impact and3 after, with4 real phase rows and no mutation (0.891525ms)
+✔ Fighter player Rebecca and Luna keep their committed wounded ally anchor after healing and fall back to self without a patient (5.000513ms)
+✔ Fighter opponent Rebecca and Luna keep their committed wounded ally anchor after healing and fall back to self without a patient (2.590077ms)
+✔ native Wave5 contact bodies move only in renderer projection and return to their physical position (5.247376ms)
+✔ RPG player Ifrit16 renders all16 native cells on the authoritative clock with one charge, one impact and paused queues (14.83928ms)
+✔ RPG opponent Ifrit16 renders all16 native cells on the authoritative clock with one charge, one impact and paused queues (5.955294ms)
+✔ RPG player Ifrit keeps confirmed target identities after death and cannot fire after interruption or disposal (2.489976ms)
+✔ RPG opponent Ifrit keeps confirmed target identities after death and cannot fire after interruption or disposal (1.595427ms)
+✔ Ifrit native16 asset is strict and pixel-verified while Pelican retains the legacy4 fallback (111.410909ms)
+✔ leon Wave5 corrected base loads and draws all16 verified native poses in both facings (81.318749ms)
+✔ solbadguy Wave5 corrected base loads and draws all16 verified native poses in both facings (69.978678ms)
+✔ ky Wave5 corrected base loads and draws all16 verified native poses in both facings (62.956339ms)
+✔ rpg player Wave6 supers spend100 once and apply one authoritative impact per chosen opponent through pause (13999.063084ms)
+✔ rpg opponent Wave6 supers spend100 once and apply one authoritative impact per chosen opponent through pause (21.881407ms)
+✔ melee player Wave6 supers spend100 once and apply one authoritative impact per chosen opponent through pause (28.174412ms)
+✔ melee opponent Wave6 supers spend100 once and apply one authoritative impact per chosen opponent through pause (16.110368ms)
+✔ fighter player Wave6 supers spend100 once and apply one authoritative impact per chosen opponent through pause (13.831426ms)
+✔ fighter opponent Wave6 supers spend100 once and apply one authoritative impact per chosen opponent through pause (4.407857ms)
+✔ melee player Wave6 contact supers retain contact range and committed facing (10.678658ms)
+✔ melee opponent Wave6 contact supers retain contact range and committed facing (12.420973ms)
+✔ fighter player Wave6 contact supers retain contact range and committed facing (5.967355ms)
+✔ fighter opponent Wave6 contact supers retain contact range and committed facing (4.319343ms)
+✔ all15 Wave6 visual identities require exact source, universe, name and effect and never mutate gameplay or canvas (22.018934ms)
+✔ rpg player Otacon has three allied technical buffs without healing, damage, infection or offensive reticles (4.546465ms)
+✔ rpg player Snake Cardboard Box grants only its authored personal guard (1.076491ms)
+✔ rpg opponent Otacon has three allied technical buffs without healing, damage, infection or offensive reticles (2.990674ms)
+✔ rpg opponent Snake Cardboard Box grants only its authored personal guard (0.483959ms)
+✔ melee player Otacon has three allied technical buffs without healing, damage, infection or offensive reticles (3.429964ms)
+✔ melee player Snake Cardboard Box grants only its authored personal guard (1.244183ms)
+✔ melee opponent Otacon has three allied technical buffs without healing, damage, infection or offensive reticles (2.983032ms)
+✔ melee opponent Snake Cardboard Box grants only its authored personal guard (1.207738ms)
+✔ fighter player Otacon has three allied technical buffs without healing, damage, infection or offensive reticles (1.586389ms)
+✔ fighter player Snake Cardboard Box grants only its authored personal guard (0.463819ms)
+✔ fighter opponent Otacon has three allied technical buffs without healing, damage, infection or offensive reticles (0.795698ms)
+✔ fighter opponent Snake Cardboard Box grants only its authored personal guard (0.345821ms)
+✔ Metal Gear source actions preserve finite physical contact, not executions, medical effects or a weapon for Otacon (0.37851ms)
+✔ RPG player Snake and Raiden select one opponent among close neighbours without execution or self-healing (2.751923ms)
+✔ RPG opponent Snake and Raiden select one opponent among close neighbours without execution or self-healing (1.773851ms)
+✔ melee player Raiden secondary Ninja Run Slash keeps145 contact reach with one opponent (3.283344ms)
+✔ melee opponent Raiden secondary Ninja Run Slash keeps145 contact reach with one opponent (1.938499ms)
+✔ fighter player Raiden secondary Ninja Run Slash keeps145 contact reach with one opponent (1.065034ms)
+✔ fighter opponent Raiden secondary Ninja Run Slash keeps145 contact reach with one opponent (0.855759ms)
+✔ Wave6 native body motion is a finite projection preserving positions, HP, action clocks and intentional airborne Moonsault (4.001495ms)
+✔ Fighter player devil_may_cry_lady: launch and flight follow the real projectile; only confirmed impact creates a target flash (6.495921ms)
+✔ Fighter opponent devil_may_cry_lady: launch and flight follow the real projectile; only confirmed impact creates a target flash (3.887573ms)
+✔ Fighter player skullgirls_parasoul: launch and flight follow the real projectile; only confirmed impact creates a target flash (3.133328ms)
+✔ Fighter opponent skullgirls_parasoul: launch and flight follow the real projectile; only confirmed impact creates a target flash (3.49961ms)
+✔ Fighter player Lady and Parasoul misses, interruption and cleanup cannot manufacture remote damage or contact (6.94028ms)
+✔ Fighter opponent Lady and Parasoul misses, interruption and cleanup cannot manufacture remote damage or contact (4.234486ms)
+✔ Melee player Judgement retains its declared radial area and finite range without extra VFX hits (1.277454ms)
+✔ Melee opponent Judgement retains its declared radial area and finite range without extra VFX hits (0.972364ms)
+✔ 18 historical Wave7 profiles still dispatch purely, reject mixed identity and honor only supplied confirmed contacts (14560.987087ms)
+✔ rpg player all17 offensive supers spend once, pause before impact and damage only authoritative chosen targets (38.888137ms)
+✔ rpg opponent all17 offensive supers spend once, pause before impact and damage only authoritative chosen targets (16.400604ms)
+✔ melee player all17 offensive supers spend once, pause before impact and damage only authoritative chosen targets (31.71274ms)
+✔ melee opponent all17 offensive supers spend once, pause before impact and damage only authoritative chosen targets (24.001772ms)
+✔ fighter player all17 offensive supers spend once, pause before impact and damage only authoritative chosen targets (14.745002ms)
+✔ fighter opponent all17 offensive supers spend once, pause before impact and damage only authoritative chosen targets (8.520507ms)
+✔ melee player all9 contact techniques reject misses, dead victims and return into range after resolution (48.729324ms)
+✔ melee player accepted contacts lock the actual impact point through displacement and death (19.765029ms)
+✔ melee opponent all9 contact techniques reject misses, dead victims and return into range after resolution (39.164945ms)
+✔ melee opponent accepted contacts lock the actual impact point through displacement and death (18.165201ms)
+✔ fighter player all9 contact techniques reject misses, dead victims and return into range after resolution (18.428219ms)
+✔ fighter player accepted contacts lock the actual impact point through displacement and death (12.203542ms)
+✔ fighter opponent all9 contact techniques reject misses, dead victims and return into range after resolution (17.505113ms)
+✔ fighter opponent accepted contacts lock the actual impact point through displacement and death (7.753136ms)
+✔ RPG player all17 native supers suppress unaccepted contacts and preserve accepted coordinates (31.754528ms)
+✔ RPG opponent all17 native supers suppress unaccepted contacts and preserve accepted coordinates (27.03811ms)
+✔ RPG player a protected/dead first area target cannot hide or invent another accepted contact (1.360276ms)
+✔ RPG opponent a protected/dead first area target cannot hide or invent another accepted contact (1.129206ms)
+✔ Fighter player four native projectiles track physical flight and only accepted impacts, including the real Yamada PNG (4.302132ms)
+✔ Fighter opponent four native projectiles track physical flight and only accepted impacts, including the real Yamada PNG (2.725269ms)
+✔ Fighter player projectile misses and invulnerable/dead targets never create accepted impact art (5.083733ms)
+✔ Fighter opponent projectile misses and invulnerable/dead targets never create accepted impact art (1.70076ms)
+✔ historical Luke Force push, Vader choke and Obi-Wan Soresu remain pinned direct profiles distinct from selected W13 (0.82743ms)
+✔ Melee player historical direct-profile Soresu still guards only its caller without damage or healing (1.591144ms)
+✔ Melee opponent historical direct-profile Soresu still guards only its caller without damage or healing (1.254296ms)
+✔ rpg player selected W13 Star Wars saber loadouts preserve offensive supers and personal guard (2.813131ms)
+✔ rpg opponent selected W13 Star Wars saber loadouts preserve offensive supers and personal guard (2.112021ms)
+✔ melee player selected W13 Star Wars saber loadouts preserve offensive supers and personal guard (2.260827ms)
+✔ melee opponent selected W13 Star Wars saber loadouts preserve offensive supers and personal guard (2.28939ms)
+✔ fighter player selected W13 Star Wars saber loadouts preserve offensive supers and personal guard (1.580119ms)
+✔ fighter opponent selected W13 Star Wars saber loadouts preserve offensive supers and personal guard (1.505215ms)
+✔ rpg player selected Luke/Vader/Obi-Wan/Han ordinary kits execute their real damage and personal guard slots (9.466195ms)
+✔ rpg opponent selected Luke/Vader/Obi-Wan/Han ordinary kits execute their real damage and personal guard slots (6.327151ms)
+✔ melee player selected Luke/Vader/Obi-Wan/Han ordinary kits execute their real damage and personal guard slots (6.827498ms)
+✔ melee opponent selected Luke/Vader/Obi-Wan/Han ordinary kits execute their real damage and personal guard slots (4.092995ms)
+✔ fighter player selected Luke/Vader/Obi-Wan/Han ordinary kits execute their real damage and personal guard slots (2.893983ms)
+✔ fighter opponent selected Luke/Vader/Obi-Wan/Han ordinary kits execute their real damage and personal guard slots (2.470163ms)
+✔ chosen BB/GG sourceWork and Rurouni weapon metadata remain explicit without a new balance claim (0.490572ms)
+✔ 20 Wave8 identities dispatch purely with exact source identity and support accents stay at their own caster (13560.681482ms)
+✔ rpg player: all20 supers pay once, preserve startup/pause and resolve only once (45.778553ms)
+✔ rpg opponent: all20 supers pay once, preserve startup/pause and resolve only once (41.703148ms)
+✔ melee player: all20 supers pay once, preserve startup/pause and resolve only once (44.825129ms)
+✔ melee opponent: all20 supers pay once, preserve startup/pause and resolve only once (30.747191ms)
+✔ fighter player: all20 supers pay once, preserve startup/pause and resolve only once (26.043248ms)
+✔ fighter opponent: all20 supers pay once, preserve startup/pause and resolve only once (13.730819ms)
+✔ melee player:10 contact supers suppress misses and preserve confirmed points (89.495025ms)
+✔ melee opponent:10 contact supers suppress misses and preserve confirmed points (65.773995ms)
+✔ fighter player:10 contact supers suppress misses and preserve confirmed points (34.663909ms)
+✔ fighter opponent:10 contact supers suppress misses and preserve confirmed points (27.549723ms)
+✔ RPG player:15 damage supers cannot paint contact on protected/dead targets (22.728216ms)
+✔ RPG opponent:15 damage supers cannot paint contact on protected/dead targets (21.038385ms)
+✔ Fighter player:Starfire follows its physical projectile, retains facing, pauses and impacts once (3.360572ms)
+✔ Fighter opponent:Starfire follows its physical projectile, retains facing, pauses and impacts once (1.955995ms)
+✔ rpg player:disposal cancels pending20 supers without further effects (6.09579ms)
+✔ rpg opponent:disposal cancels pending20 supers without further effects (5.546787ms)
+✔ fighter player:disposal cancels pending20 supers without further effects (5.582842ms)
+✔ fighter opponent:disposal cancels pending20 supers without further effects (3.086054ms)
+✔ Dungeon Meshi basic support metadata and native impact pose stay faithful to resolved gameplay roles (0.687831ms)
+✔ rpg player:Starfire cosmetic bolt travels on the action clock before its accepted impact (2.341085ms)
+✔ rpg opponent:Starfire cosmetic bolt travels on the action clock before its accepted impact (2.36386ms)
+✔ melee player:Starfire cosmetic bolt travels on the action clock before its accepted impact (7.486065ms)
+✔ melee opponent:Starfire cosmetic bolt travels on the action clock before its accepted impact (3.097233ms)
+✔ Monsoon debris arrives at impact, becomes local fragments afterwards, and never claims a missed contact (1.77893ms)
+✔ rpg player:Raven, Saejima and Chilchuck guards reduce real incoming damage on the correct allies (3.276872ms)
+✔ rpg opponent:Raven, Saejima and Chilchuck guards reduce real incoming damage on the correct allies (2.760128ms)
+✔ melee player:Raven, Saejima and Chilchuck guards reduce real incoming damage on the correct allies (3.443091ms)
+✔ melee opponent:Raven, Saejima and Chilchuck guards reduce real incoming damage on the correct allies (1.940281ms)
+✔ fighter player:Raven, Saejima and Chilchuck guards reduce real incoming damage on the correct allies (1.383003ms)
+✔ fighter opponent:Raven, Saejima and Chilchuck guards reduce real incoming damage on the correct allies (1.206759ms)
+✔ Cyborg cannon accents follow opaque native muzzle cells and stop with the lowered recovery arm (275.027014ms)
+✔ Raven and Saejima P2 guard arcs reflect their opening while keeping caster-local geometry (1.249055ms)
+✔ 20 Wave9 identities dispatch purely with exact source identity and support accents stay at their own caster (14053.746401ms)
+✔ rpg player: all20 supers pay once, preserve startup/pause and resolve only once (48.110334ms)
+✔ rpg opponent: all20 supers pay once, preserve startup/pause and resolve only once (23.256186ms)
+✔ melee player: all20 supers pay once, preserve startup/pause and resolve only once (39.0588ms)
+✔ melee opponent: all20 supers pay once, preserve startup/pause and resolve only once (27.428343ms)
+✔ fighter player: all20 supers pay once, preserve startup/pause and resolve only once (18.6375ms)
+✔ fighter opponent: all20 supers pay once, preserve startup/pause and resolve only once (12.31743ms)
+✔ melee player:16 offensive supers suppress misses and preserve confirmed points (91.897912ms)
+✔ melee opponent:16 offensive supers suppress misses and preserve confirmed points (85.657744ms)
+✔ fighter player:16 offensive supers suppress misses and preserve confirmed points (15.884798ms)
+✔ fighter opponent:16 offensive supers suppress misses and preserve confirmed points (11.265753ms)
+✔ RPG player:16 damage supers cannot paint contact on protected/dead targets (24.205908ms)
+✔ RPG opponent:16 damage supers cannot paint contact on protected/dead targets (23.67981ms)
+✔ rpg player:disposal cancels pending20 supers without further effects (7.526333ms)
+✔ rpg opponent:disposal cancels pending20 supers without further effects (3.355457ms)
+✔ fighter player:disposal cancels pending20 supers without further effects (2.881317ms)
+✔ fighter opponent:disposal cancels pending20 supers without further effects (1.921348ms)
+✔ Fighter player:every Wave9 physical projectile uses its real position, incoming facing and one accepted collision (19.936394ms)
+✔ Fighter opponent:every Wave9 physical projectile uses its real position, incoming facing and one accepted collision (15.160629ms)
+✔ Fighter player:every Wave9 physical projectile suppresses unaccepted contacts (6.678424ms)
+✔ Fighter opponent:every Wave9 physical projectile suppresses unaccepted contacts (3.981769ms)
+✔ Every Wave9 active native aperture is an actual source pixel and projects with its own row scale, phase and facing (907.981191ms)
+✔ Fighter player:every tracked Wave9 shot physically spawns at its measured native weapon opening (5.009019ms)
+✔ Fighter opponent:every tracked Wave9 shot physically spawns at its measured native weapon opening (3.247533ms)
+✔ Wave9 cosmetic weapon travel stays on the action clock and cannot invent a target impact (2.493177ms)
+✔ Satellite Laser and Hammer of Dawn strike from above the accepted target, never from the character body (0.530085ms)
+✔ source targeting separates Army of One and Death from Highwind and Sovereign Fist (15269.399329ms)
+✔ RPG Army of One preview retains its real single or area target rule (5.645412ms)
+✔ RPG Death preview retains its real single or area target rule (1.258092ms)
+✔ RPG Highwind preview retains its real single or area target rule (0.918818ms)
+✔ rpg Cold Blood player spends one full gauge and hits one close opponent once through pause (4.803526ms)
+✔ rpg Cold Blood player cannot finish an interrupted startup (1.46937ms)
+✔ rpg Sovereign Fist player covers both nearby foes where that mode fields multiple active opponents (1.876292ms)
+✔ rpg Lunafreya player restores a living ally with one charge and no hostile damage (2.521552ms)
+✔ rpg Cold Blood opponent spends one full gauge and hits one close opponent once through pause (2.313344ms)
+✔ rpg Cold Blood opponent cannot finish an interrupted startup (0.765275ms)
+✔ rpg Sovereign Fist opponent covers both nearby foes where that mode fields multiple active opponents (2.513576ms)
+✔ rpg Lunafreya opponent restores a living ally with one charge and no hostile damage (2.11512ms)
+✔ melee Cold Blood player spends one full gauge and hits one close opponent once through pause (8.608307ms)
+✔ melee Cold Blood player cannot finish an interrupted startup (1.24968ms)
+✔ melee Sovereign Fist player covers both nearby foes where that mode fields multiple active opponents (1.658105ms)
+✔ melee Lunafreya player restores a living ally with one charge and no hostile damage (1.830556ms)
+✔ melee Cold Blood opponent spends one full gauge and hits one close opponent once through pause (1.855052ms)
+✔ melee Cold Blood opponent cannot finish an interrupted startup (1.016371ms)
+✔ melee Sovereign Fist opponent covers both nearby foes where that mode fields multiple active opponents (0.939768ms)
+✔ melee Lunafreya opponent restores a living ally with one charge and no hostile damage (0.988129ms)
+✔ fighter Cold Blood player spends one full gauge and hits one close opponent once through pause (3.894692ms)
+✔ fighter Cold Blood player cannot finish an interrupted startup (0.756902ms)
+✔ fighter Sovereign Fist player covers both nearby foes where that mode fields multiple active opponents (0.750393ms)
+✔ fighter Lunafreya player restores a living ally with one charge and no hostile damage (1.080563ms)
+✔ fighter Cold Blood opponent spends one full gauge and hits one close opponent once through pause (0.884628ms)
+✔ fighter Cold Blood opponent cannot finish an interrupted startup (0.39151ms)
+✔ fighter Sovereign Fist opponent covers both nearby foes where that mode fields multiple active opponents (0.551513ms)
+✔ fighter Lunafreya opponent restores a living ally with one charge and no hostile damage (0.643667ms)
+✔ melee Cold Blood player preserves committed facing, finite range and projectile height (3.156897ms)
+✔ melee Cold Blood opponent preserves committed facing, finite range and projectile height (1.472605ms)
+✔ fighter Cold Blood player preserves committed facing, finite range and projectile height (1.250741ms)
+✔ fighter Cold Blood opponent preserves committed facing, finite range and projectile height (0.716814ms)
+✔ all eleven party visual identities require matching source ID, universe and technique and leave canvas/gameplay unchanged (5.957607ms)
+✔ Snow and Fang body motion peaks in flight and lands exactly on hitAt without modifying a combatant (4.018012ms)
+✔ Cold Blood and Army of One show all17 and11 finite visual events, including the final one, without extra gameplay hits (4.282998ms)
+✔ Last Resort has eight distinct rising/falling orbs and finite impact rings, never an Eidolon or gameplay mutation (0.783421ms)
+✔ Armiger orbits weapon silhouettes while Oracle blessing remains a cosmetic allied support motif (2.19726ms)
+✔ RPG decisive Snow and Fang impacts player project a grounded native recovery while the ended simulation stays frozen (4.719693ms)
+✔ RPG decisive Snow and Fang impacts opponent project a grounded native recovery while the ended simulation stays frozen (3.278925ms)
+✔ Melee Cold Blood player keeps its confirmed visual impact point after a kill while another opponent survives (2.064257ms)
+✔ Melee Cold Blood opponent keeps its confirmed visual impact point after a kill while another opponent survives (1.038243ms)
+✔ Fighter Sazh, Prompto and Irvine player keep finite forward visual aim after the opponent crosses or leaves range (5.226672ms)
+✔ Fighter Sazh, Prompto and Irvine opponent keep finite forward visual aim after the opponent crosses or leaves range (4.170064ms)
+✔ W15 Phaselock admits only Maya control/control enemy single0dmg and keeps range/opaque-floor geometry (13346.859676ms)
+✔ W15 melee player: rejected dead/immune/boss/invulnerable/out-of-range target keeps full meter (3.800127ms)
+✔ W15 melee player: one accepted bind cancels windup, suspends movement and actions, expires on simulation time with no damage or protective buff (10.216081ms)
+✔ W15 melee player: a moved/dead/newly immune committed target is revalidated without acquiring a late target (3.004808ms)
+✔ W15 melee opponent: rejected dead/immune/boss/invulnerable/out-of-range target keeps full meter (1.855396ms)
+✔ W15 melee opponent: one accepted bind cancels windup, suspends movement and actions, expires on simulation time with no damage or protective buff (4.585074ms)
+✔ W15 melee opponent: a moved/dead/newly immune committed target is revalidated without acquiring a late target (3.932947ms)
+✔ W15 fighter player: rejected dead/immune/boss/invulnerable/out-of-range target keeps full meter (3.58337ms)
+✔ W15 fighter player: one accepted bind cancels windup, suspends movement and actions, expires on simulation time with no damage or protective buff (4.502414ms)
+✔ W15 fighter player: a moved/dead/newly immune committed target is revalidated without acquiring a late target (1.740002ms)
+✔ W15 fighter opponent: rejected dead/immune/boss/invulnerable/out-of-range target keeps full meter (1.116212ms)
+✔ W15 fighter opponent: one accepted bind cancels windup, suspends movement and actions, expires on simulation time with no damage or protective buff (2.721651ms)
+✔ W15 fighter opponent: a moved/dead/newly immune committed target is revalidated without acquiring a late target (0.90897ms)
+✔ W15 Melee Phaselock rechecks a newly occluding floor before impact and keeps the accepted action target (0.832945ms)
+✔ W15 controlled death clears only the bind and never revives or consumes a shield (0.49108ms)
+✔ W15 melee player: secondary bind validates before cooldown and releases after1.2 simulation seconds (2.181087ms)
+✔ W15 melee opponent: secondary bind validates before cooldown and releases after1.2 simulation seconds (1.853644ms)
+✔ W15 fighter player: secondary bind validates before cooldown and releases after1.2 simulation seconds (1.513882ms)
+✔ W15 fighter opponent: secondary bind validates before cooldown and releases after1.2 simulation seconds (0.941298ms)
+✔ W15 melee: actual lethal damage clears Phaselock before any later revival (0.997493ms)
+✔ W15 fighter: actual lethal damage clears Phaselock before any later revival (0.993607ms)
+✔ measured standing bodies keep their stature when a large weapon or VFX expands the source row (13707.34361ms)
+✔ the35 historical native presentation sheets keep their exact drawing scale (10.053352ms)
+✔ RPG Phaselock selects one enemy and carries bounded zero-damage control semantics (13028.453365ms)
+✔ RPG player Phaselock spends a confirmed cast and restrains only its live enemy (7.002325ms)
+✔ RPG enemy Phaselock spends a confirmed cast and restrains only its live enemy (2.348433ms)
+✔ RPG Phaselock freezes ATB, expires on simulation ticks and leaves no delayed cast after release (5.720841ms)
+✔ RPG pause and manual target selection freeze the control clock (1.350187ms)
+✔ RPG an accepted control cancels its victim’s active target selector (1.0141ms)
+✔ RPG player secondary Phaselock keeps its shorter duration and real cooldown (2.761487ms)
+✔ RPG enemy secondary Phaselock keeps its shorter duration and real cooldown (1.19338ms)
+✔ RPG rejects dead, boss, immune, invulnerable, already controlled and out-of-range targets without spending (3.96401ms)
+✔ RPG control revalidates the accepted target at impact without acquiring a replacement (0.826106ms)
+✔ RPG control does not cancel or overwrite independent guard, buff and item shield resources (0.505924ms)
+✔ RPG death ends Phaselock and a later revival cannot restore the old bind (0.731394ms)
+✔ RPG Phaselock projects a paused-safe lifted ring without changing ground coordinates (0.726776ms)
+✖ player: alien-ripley-wave13, real targets/cost/contact and native origin (12213.404585ms)
+✖ enemy: alien-ripley-wave13, real targets/cost/contact and native origin (1.199951ms)
+✖ player: alien-hicks-wave13, real targets/cost/contact and native origin (0.191099ms)
+✖ enemy: alien-hicks-wave13, real targets/cost/contact and native origin (0.035704ms)
+✖ player: portal-atlas-wave13, real targets/cost/contact and native origin (0.036705ms)
+✖ enemy: portal-atlas-wave13, real targets/cost/contact and native origin (0.044387ms)
+✖ player: discworld-vimes-wave13, real targets/cost/contact and native origin (0.038248ms)
+✖ enemy: discworld-vimes-wave13, real targets/cost/contact and native origin (0.113862ms)
+✖ player: metalgear-meryl-wave13, real targets/cost/contact and native origin (0.087222ms)
+✖ enemy: metalgear-meryl-wave13, real targets/cost/contact and native origin (0.107613ms)
+✖ player: lastofus-joel-wave13, real targets/cost/contact and native origin (0.032409ms)
+✖ enemy: lastofus-joel-wave13, real targets/cost/contact and native origin (0.024207ms)
+✖ player: lotr-aragorn-wave14, real targets/cost/contact and native origin (11981.356776ms)
+✖ enemy: lotr-aragorn-wave14, real targets/cost/contact and native origin (0.756983ms)
+✖ player: lotr-legolas-wave14, real targets/cost/contact and native origin (0.13923ms)
+✖ enemy: lotr-legolas-wave14, real targets/cost/contact and native origin (0.036175ms)
+✖ player: darksouls-solaire-wave14, real targets/cost/contact and native origin (0.036685ms)
+✖ enemy: darksouls-solaire-wave14, real targets/cost/contact and native origin (0.048934ms)
+✖ player: halo-noble-six-wave14, real targets/cost/contact and native origin (0.033921ms)
+✖ enemy: halo-noble-six-wave14, real targets/cost/contact and native origin (0.0334ms)
+✖ player: masseffect-mordin-wave14, real targets/cost/contact and native origin (0.064757ms)
+✖ enemy: masseffect-mordin-wave14, real targets/cost/contact and native origin (0.167793ms)
+✖ player: tombraider-lara-wave14, real targets/cost/contact and native origin (0.098047ms)
+✖ enemy: tombraider-lara-wave14, real targets/cost/contact and native origin (0.032329ms)
+✔ player: hexen_baratus-wave15, real targets/cost/contact and native origin (13483.745929ms)
+✔ enemy: hexen_baratus-wave15, real targets/cost/contact and native origin (8.173544ms)
+✔ player: quake_franchise_ranger-wave15, real targets/cost/contact and native origin (7.023661ms)
+✔ enemy: quake_franchise_ranger-wave15, real targets/cost/contact and native origin (6.587462ms)
+✔ player: sir_daniel_fortesque-wave15, real targets/cost/contact and native origin (5.569056ms)
+✔ enemy: sir_daniel_fortesque-wave15, real targets/cost/contact and native origin (5.477169ms)
+✔ player: axel_sor-wave15, real targets/cost/contact and native origin (5.528055ms)
+✔ enemy: axel_sor-wave15, real targets/cost/contact and native origin (6.182723ms)
+✔ player: dog_hl2-wave15, real targets/cost/contact and native origin (6.348342ms)
+✔ enemy: dog_hl2-wave15, real targets/cost/contact and native origin (5.662569ms)
+✔ player: kendra_daniels-wave15, real targets/cost/contact and native origin (6.038094ms)
+✔ enemy: kendra_daniels-wave15, real targets/cost/contact and native origin (5.01339ms)
+✔ eight roster partners require exact performer/source identities, universe, action and reinforcement role (11528.841021ms)
+✔ 128 actual wide RGBA cells have distinct pixels, clear margins, baseline244 and common entity scale (354.691347ms)
+✔ the fifteen previous native entities and all28 legacy four-frame sheets retain their captured bytes and complete metadata (91.537039ms)
+✔ player eight native roster partners render all16 cells, spend once, pause and impact only on attack col2 (70.776474ms)
+✔ enemy eight native roster partners render all16 cells, spend once, pause and impact only on attack col2 (27.331533ms)
+✔ player the six offensive roster partners retain target identities through death and cannot cause late interrupted impacts (15.230043ms)
+✔ enemy the six offensive roster partners retain target identities through death and cannot cause late interrupted impacts (12.285969ms)
+✔ all eight new native sources and six weapon apertures track each phase/column and facing with no travel from lowered or empty weapons (13.705302ms)
+✔ a pending native sheet falls back to the exact roster partner instead of an entity surrogate (6.238624ms)
+✔ all 28 historical entity path labels, source references and 280 sampled geometries remain identical (2.627304ms)
+✔ forty callers use a real same-universe partner, with32 native bindings and8 genuine alternate partners (1.985336ms)
+✖ the outside-batch Shephard legacy Dog call keeps its explicit raw action after Alyx personal-kit corrections (1.567475ms)
+✔ player Egon and Coach buff actual allies once without healing, harming enemies or inventing a muzzle (2.383266ms)
+✔ enemy Egon and Coach buff actual allies once without healing, harming enemies or inventing a muzzle (1.536488ms)
+✔ player all six native gun partners need HP-lowering contact and retain accepted coordinates after target KO (11.47074ms)
+✔ enemy all six native gun partners need HP-lowering contact and retain accepted coordinates after target KO (5.091413ms)
+✔ seven native roster partners require exact performer/source identities, universe, action and reinforcement role (12421.139212ms)
+✔ 112 actual wide RGBA cells have distinct pixels, clear margins, baseline244 and common entity scale (335.552068ms)
+✔ the twenty-three previous native entities and all28 legacy four-frame sheets retain their captured bytes and complete metadata (143.286972ms)
+✔ player seven native roster partners render all16 cells, spend once, pause and impact only on attack col2 (35.95895ms)
+✔ enemy seven native roster partners render all16 cells, spend once, pause and impact only on attack col2 (24.131843ms)
+✔ player the seven offensive roster partners retain target identities through death and cannot cause late interrupted impacts (15.138894ms)
+✔ enemy the seven offensive roster partners retain target identities through death and cannot cause late interrupted impacts (17.726067ms)
+✔ all seven new native sources and five weapon apertures track each phase/column and facing with no travel from lowered or empty weapons (13.36636ms)
+✔ a pending native sheet falls back to the exact roster partner instead of an entity surrogate (4.816408ms)
+✔ all 28 historical entity path labels, source references and 280 sampled geometries remain identical (2.194312ms)
+✔ forty callers use a real same-universe partner, with28 native bindings and12 declared fallback partners (1.72966ms)
+✖ the outside-batch Shephard legacy Dog call keeps its explicit raw action after Alyx personal-kit corrections (1.717692ms)
+✔ player Hermione legacy Protego guards real allies once without healing, harming enemies or a fictitious native asset (2.562717ms)
+✔ enemy Hermione legacy Protego guards real allies once without healing, harming enemies or a fictitious native asset (1.349817ms)
+✔ player all seven native offensive partners need HP-lowering contact and retain accepted coordinates after target KO (6.651346ms)
+✔ enemy all seven native offensive partners need HP-lowering contact and retain accepted coordinates after target KO (5.651478ms)
+✔ the three Wave6 identities resolve exactly, including physical reinforcement kind (11070.031189ms)
+✔ 48 actual RGBA cells have distinct pixels, clear margins, baseline244 and common entity scale (138.031588ms)
+✔ the old Ifrit16 registry and all28 legacy four-frame sheets retain their captured bytes (8.506235ms)
+✔ player three native entities render all16 cells, spend once, pause and impact only on attack col2 (24.087338ms)
+✔ enemy three native entities render all16 cells, spend once, pause and impact only on attack col2 (11.639585ms)
+✔ player the three entities retain target identities through death and cannot cause late interrupted impacts (7.036473ms)
+✔ enemy the three entities retain target identities through death and cannot cause late interrupted impacts (7.467178ms)
+✔ the three Wave7 identities resolve exactly, including physical reinforcement kind (11720.441108ms)
+✔ 48 actual RGBA cells have distinct pixels, clear margins, baseline244 and common entity scale (185.00566ms)
+✔ the four previous native entities and all28 legacy four-frame sheets retain their captured bytes and complete metadata (28.767041ms)
+✔ player three native entities render all16 cells, spend once, pause and impact only on attack col2 (30.402009ms)
+✔ enemy three native entities render all16 cells, spend once, pause and impact only on attack col2 (29.324673ms)
+✔ player the three entities retain target identities through death and cannot cause late interrupted impacts (10.215546ms)
+✔ enemy the three entities retain target identities through death and cannot cause late interrupted impacts (8.466046ms)
+✔ native Bahamut uses its mouth charge and beam once while retaining target light and the procedural fallback (2.757842ms)
+✔ four roster partners require exact performer/source identities, universe, action and reinforcement role (12118.693781ms)
+✔ 64 actual wide RGBA cells have distinct pixels, clear margins, baseline244 and common entity scale (208.366618ms)
+✔ the seven previous native entities and all28 legacy four-frame sheets retain their captured bytes and complete metadata (29.931625ms)
+✔ player four native roster partners render all16 cells, spend once, pause and impact only on attack col2 (23.417939ms)
+✔ enemy four native roster partners render all16 cells, spend once, pause and impact only on attack col2 (19.106365ms)
+✔ player the four roster partners retain target identities through death and cannot cause late interrupted impacts (13.925507ms)
+✔ enemy the four roster partners retain target identities through death and cannot cause late interrupted impacts (11.319504ms)
+✔ Cyborg native muzzle anchors track every phase/column and facing without mutating sampled choreography (2.405971ms)
+✔ a pending native sheet falls back to the exact roster partner instead of an entity surrogate (5.275457ms)
+✔ all 28 historical entity path labels, source references and 280 sampled geometries remain identical (2.109534ms)
+✔ four roster partners require exact performer/source identities, universe, action and reinforcement role (12947.774415ms)
+✔ 64 actual wide RGBA cells have distinct pixels, clear margins, baseline244 and common entity scale (252.647415ms)
+✔ the eleven previous native entities and all28 legacy four-frame sheets retain their captured bytes and complete metadata (78.084387ms)
+✔ player four native roster partners render all16 cells, spend once, pause and impact only on attack col2 (53.44674ms)
+✔ enemy four native roster partners render all16 cells, spend once, pause and impact only on attack col2 (19.21158ms)
+✔ player the four roster partners retain target identities through death and cannot cause late interrupted impacts (14.226688ms)
+✔ enemy the four roster partners retain target identities through death and cannot cause late interrupted impacts (11.616119ms)
+✔ all four new native weapon apertures track each phase/column and facing with no travel from lowered or empty weapons (11.357628ms)
+✔ a pending native sheet falls back to the exact roster partner instead of an entity surrogate (4.30708ms)
+✔ all 28 historical entity path labels, source references and 280 sampled geometries remain identical (2.535406ms)
+✔ all four other Mass Effect callers summon Soldier Shepard Concussive Shot without shared class buffs, P1 and P2 (5.10269ms)
+✔ W15 HealingBurst is exactly Val nearby group/self healing, separated from Medgun and enemy control (16791.969222ms)
+✔ W15 rpg player: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (7.409466ms)
+✔ W15 rpg player: an ally moving out of220px during startup is not healed remotely (0.888247ms)
+✔ W15 rpg opponent: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (2.420655ms)
+✔ W15 rpg opponent: an ally moving out of220px during startup is not healed remotely (0.761326ms)
+✔ W15 melee player: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (6.591104ms)
+✔ W15 melee player: an ally moving out of220px during startup is not healed remotely (0.712934ms)
+✔ W15 melee opponent: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (2.345942ms)
+✔ W15 melee opponent: an ally moving out of220px during startup is not healed remotely (0.699613ms)
+✔ W15 fighter player: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (2.81642ms)
+✔ W15 fighter player: an ally moving out of220px during startup is not healed remotely (0.438259ms)
+✔ W15 fighter opponent: real220px HealingBurst heals self and near allies once, excludes horizontal/diagonal outsiders and preserves enemy HP (0.751311ms)
+✔ W15 fighter opponent: an ally moving out of220px during startup is not healed remotely (0.542687ms)
+ℹ tests 830
+ℹ suites 0
+ℹ pass 802
+ℹ fail 28
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 755631.073321
+
+✖ failing tests:
+
+test at scripts/combatContactVisualWave6.test.mjs:179:1
+✖ Wave6 controlled contact keeps miss trails while previous native visual families ignore the new optional contract (22.827426ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      color: '#4fc7b2',
+  +   contactEligible: false,
+  +   contactVisual: {
+  +     confirmed: false
+  +   },
+  -   contactEligible: true,
+      controlling: false,
+      delivery: 'projectile',
+      effect: 'damage',
+      facing: 1,
+      family: 'native-wave15',
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatContactVisualWave6.test.mjs:194:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { family: 'native-wave15', heroId: 'unreal_1998_gina', name: 'Décoche du Dispersion Pistol de Gina', kind: 'dispersion-pistol', effect: 'damage', weaponType: 'gun', supportive: false, controlling: false, projectilePresentation: { shape: 'orb', color: '#8cbbff' }, delivery: 'projectile', progress: 0.5, impactProgress: 0.41, release: true, releaseProgress: 0.15254237288135597, facing: 1, height: 72, range: 640, color: '#4fc7b2', ground: { x: 300, y: 350 }, motion: { x: 0, y: 0 }, origin: { x: 316.60218826364377, y: 302.71985516223185 }, target: { x: 400, y: 350 }, nativeArtworkAvailable: true, nativeMuzzleActive: true, nativeAnchor: { x: 316.60218826364377, y: 302.71985516223185, phase: 'super', col: 2, nativePoint: [Object], renderScale: 1.2832609285908227 }, contactEligible: false, contactVisual: { confirmed: false }, gameplayEffect: 'none', source1to1Verified: false },
+    expected: { family: 'native-wave15', heroId: 'unreal_1998_gina', name: 'Décoche du Dispersion Pistol de Gina', kind: 'dispersion-pistol', effect: 'damage', weaponType: 'gun', supportive: false, controlling: false, projectilePresentation: { shape: 'orb', color: '#8cbbff' }, delivery: 'projectile', progress: 0.5, impactProgress: 0.41, release: true, releaseProgress: 0.15254237288135597, facing: 1, height: 72, range: 640, color: '#4fc7b2', ground: { x: 300, y: 350 }, motion: { x: 0, y: 0 }, origin: { x: 316.60218826364377, y: 302.71985516223185 }, target: { x: 400, y: 350 }, nativeArtworkAvailable: true, nativeMuzzleActive: true, nativeAnchor: { x: 316.60218826364377, y: 302.71985516223185, phase: 'super', col: 2, nativePoint: [Object], renderScale: 1.2832609285908227 }, contactEligible: true, gameplayEffect: 'none', source1to1Verified: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/combatFidelity.test.mjs:103:1
+✖ the authored union separates1365 complete kits,72 original partial records and one lore correction (68.447455ms)
+  AssertionError [ERR_ASSERTION]: borderlands_2_maya_phaselock:secondary
+  + actual - expected
+  
+  + 'control'
+  - 'damage'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatFidelity.test.mjs:153:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'control',
+    expected: 'damage',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ player: alien-ripley-wave13, real targets/cost/contact and native origin (12213.404585ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ enemy: alien-ripley-wave13, real targets/cost/contact and native origin (1.199951ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ player: alien-hicks-wave13, real targets/cost/contact and native origin (0.191099ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ enemy: alien-hicks-wave13, real targets/cost/contact and native origin (0.035704ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ player: portal-atlas-wave13, real targets/cost/contact and native origin (0.036705ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ enemy: portal-atlas-wave13, real targets/cost/contact and native origin (0.044387ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ player: discworld-vimes-wave13, real targets/cost/contact and native origin (0.038248ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ enemy: discworld-vimes-wave13, real targets/cost/contact and native origin (0.113862ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ player: metalgear-meryl-wave13, real targets/cost/contact and native origin (0.087222ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ enemy: metalgear-meryl-wave13, real targets/cost/contact and native origin (0.107613ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ player: lastofus-joel-wave13, real targets/cost/contact and native origin (0.032409ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:129:67
+✖ enemy: lastofus-joel-wave13, real targets/cost/contact and native origin (0.024207ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 43
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs:85:10)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 43,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ player: lotr-aragorn-wave14, real targets/cost/contact and native origin (11981.356776ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ enemy: lotr-aragorn-wave14, real targets/cost/contact and native origin (0.756983ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ player: lotr-legolas-wave14, real targets/cost/contact and native origin (0.13923ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ enemy: lotr-legolas-wave14, real targets/cost/contact and native origin (0.036175ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ player: darksouls-solaire-wave14, real targets/cost/contact and native origin (0.036685ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ enemy: darksouls-solaire-wave14, real targets/cost/contact and native origin (0.048934ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ player: halo-noble-six-wave14, real targets/cost/contact and native origin (0.033921ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ enemy: halo-noble-six-wave14, real targets/cost/contact and native origin (0.0334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ player: masseffect-mordin-wave14, real targets/cost/contact and native origin (0.064757ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ enemy: masseffect-mordin-wave14, real targets/cost/contact and native origin (0.167793ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ player: tombraider-lara-wave14, real targets/cost/contact and native origin (0.098047ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:123:67
+✖ enemy: tombraider-lara-wave14, real targets/cost/contact and native origin (0.032329ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  55 !== 49
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs:82:52)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 55,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/summonAnimationWave10.test.mjs:323:1
+✖ the outside-batch Shephard legacy Dog call keeps its explicit raw action after Alyx personal-kit corrections (1.567475ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Barney Calhoun'
+  - 'Dog Breach Assist'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/summonAnimationWave10.test.mjs:326:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Barney Calhoun',
+    expected: 'Dog Breach Assist',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/summonAnimationWave11.test.mjs:325:1
+✖ the outside-batch Shephard legacy Dog call keeps its explicit raw action after Alyx personal-kit corrections (1.717692ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Barney Calhoun'
+  - 'Dog Breach Assist'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/summonAnimationWave11.test.mjs:328:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Barney Calhoun',
+    expected: 'Dog Breach Assist',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

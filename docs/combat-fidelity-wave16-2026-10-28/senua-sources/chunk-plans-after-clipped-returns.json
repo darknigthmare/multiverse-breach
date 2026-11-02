@@ -1,0 +1,168 @@
+{
+  "writtenAt": "2026-10-28T10:33:17.503Z",
+  "source1to1Verified": false,
+  "decision": "Reduce each remaining source to sixteen actual whole bodies; preserve all earlier originals; replace entire affected states rather than padding clipped anatomy.",
+  "observations": [
+    {
+      "id": "senua-motion-b",
+      "observedBodies": 32,
+      "clippedSlots": [
+        25,
+        26,
+        27,
+        28,
+        31
+      ],
+      "otherRejectedSlots": [
+        22
+      ],
+      "reason": "CrouchCharge third pose visibly has no gripped sword; replace all four. Taunt1/hitStun bottom clipping; replace all eight."
+    },
+    {
+      "id": "senua-defense",
+      "observedBodies": 32,
+      "clippedSlots": [
+        31
+      ],
+      "reason": "Defeat last boot reaches bottom canvas edge; replace all four."
+    }
+  ],
+  "chunkPlans": [
+    {
+      "id": "senua-correction-a",
+      "states": [
+        "jumpApex",
+        "taunt1",
+        "hitStun",
+        "defeat"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-a.effective.prompt.txt",
+      "arguments": {
+        "prompt": "Create brand-new native detailed pixel-art full-body animation drawings of SENUA from HELLBLADE: SENUA’S SACRIFICE (2017), EARLY JOURNEY BEFORE FIRST HELA ENCOUNTER. Exact fixed appearance: young adult Pict warrior, dark brown braided HIGH PONYTAIL, dark leather headpiece with central small SILVER ornament and BLUE stones, WOAD BLUE paint around the EYES and on the ANATOMICAL LEFT ARM ONLY; bare arms, fur collar with CELTIC BROOCH, patterned brown leather and muted PLAID clothing, closed boots. Closed cloth travel pouch at LEFT hip and small polished IRON LaTene MIRROR at RIGHT hip. Initial plain STEEL SWORD with RING POMMEL, held in ANATOMICAL RIGHT HAND for sword actions; NOT late-game Gramr. Sheath the sword during locomotion, jumps, Focus and ledge grips so both hands are free. No shield, cape, helmet, armour plates, firearm, beam, fire, glow, aura, opponent, detached prop or visible injury. Keep the selected costume, physical proportions, ponytail, pouch, mirror and right-hand sword consistent. The source character and equipment are the chosen reference; these platform-fighter motions are original bounded gameplay adaptations, not claimed official source frames.\n\nSQUARE transparent RGBA sprite study sheet, EXACTLY FOUR COLUMNS by FOUR ROWS, EXACTLY SIXTEEN FULLY SEPARATE COMPLETE BODIES. ONE ROW per state and FOUR genuinely different successive articulated poses left to right. Use equal cells. Leave at least FIFTY PIXELS of COMPLETELY TRANSPARENT OUTER MARGIN at ALL FOUR EDGES, and large transparent gutters. Every boot sole, hand, ponytail and sword tip must be completely inside the canvas. NO clipping anywhere, especially BOTTOM ROW BOOTS. No letters, grid, labels, floor, shadow, scenery, effects or injury. Same three-quarter side-view native pixel-art scale, face RIGHT. All bodies drawn NEW, not duplicated, mirrored, rotated or recycled from any reference. Crouches/prone bodies stay naturally short. The reference is APPEARANCE ONLY. Crisp detailed pixel-art clusters. Both HILT and COMPLETE BLADE must be visibly attached to the RIGHT HAND in EVERY physical sword-action pose; no missing sword in crouchCharge. Sheathed blade for jumps, Focus and ledge grips.\n\nROW 1, jumpApex: Four distinct apex/tucked-leg transitions, free arms and complete boots; sword sheathed.\nROW 2, taunt1: Restrained wary acknowledgement and breath, changing head and free hand; keep Senua serious, no theatrical comedy or spell.\nROW 3, hitStun: Four uninjured physical recoil/recovery poses, shoulders and knees react; no wound or impact symbol.\nROW 4, defeat: Four restrained kneeling or seated recovery poses, changing head/arms, sword safe at her side; complete body.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave16-2026-10-28/senua-sources/references/senua-b48-appearance.png"
+        ]
+      }
+    },
+    {
+      "id": "senua-correction-b",
+      "states": [
+        "crouchCharge",
+        "reservedUprightCalibration",
+        "reservedGripStudy",
+        "reservedMirrorBeltStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-b.effective.prompt.txt",
+      "arguments": {
+        "prompt": "Create brand-new native detailed pixel-art full-body animation drawings of SENUA from HELLBLADE: SENUA’S SACRIFICE (2017), EARLY JOURNEY BEFORE FIRST HELA ENCOUNTER. Exact fixed appearance: young adult Pict warrior, dark brown braided HIGH PONYTAIL, dark leather headpiece with central small SILVER ornament and BLUE stones, WOAD BLUE paint around the EYES and on the ANATOMICAL LEFT ARM ONLY; bare arms, fur collar with CELTIC BROOCH, patterned brown leather and muted PLAID clothing, closed boots. Closed cloth travel pouch at LEFT hip and small polished IRON LaTene MIRROR at RIGHT hip. Initial plain STEEL SWORD with RING POMMEL, held in ANATOMICAL RIGHT HAND for sword actions; NOT late-game Gramr. Sheath the sword during locomotion, jumps, Focus and ledge grips so both hands are free. No shield, cape, helmet, armour plates, firearm, beam, fire, glow, aura, opponent, detached prop or visible injury. Keep the selected costume, physical proportions, ponytail, pouch, mirror and right-hand sword consistent. The source character and equipment are the chosen reference; these platform-fighter motions are original bounded gameplay adaptations, not claimed official source frames.\n\nSQUARE transparent RGBA sprite study sheet, EXACTLY FOUR COLUMNS by FOUR ROWS, EXACTLY SIXTEEN FULLY SEPARATE COMPLETE BODIES. ONE ROW per state and FOUR genuinely different successive articulated poses left to right. Use equal cells. Leave at least FIFTY PIXELS of COMPLETELY TRANSPARENT OUTER MARGIN at ALL FOUR EDGES, and large transparent gutters. Every boot sole, hand, ponytail and sword tip must be completely inside the canvas. NO clipping anywhere, especially BOTTOM ROW BOOTS. No letters, grid, labels, floor, shadow, scenery, effects or injury. Same three-quarter side-view native pixel-art scale, face RIGHT. All bodies drawn NEW, not duplicated, mirrored, rotated or recycled from any reference. Crouches/prone bodies stay naturally short. The reference is APPEARANCE ONLY. Crisp detailed pixel-art clusters. Both HILT and COMPLETE BLADE must be visibly attached to the RIGHT HAND in EVERY physical sword-action pose; no missing sword in crouchCharge. Sheathed blade for jumps, Focus and ledge grips.\n\nROW 1, crouchCharge: Four low compact physical bracing poses, sword gripped right hand close to body; no energy effect.\nROW 2, reservedUprightCalibration: Four full upright calibration studies with relaxed lowered arms, straight legs and visible closed boots; sword sheathed. Reserved studies will not be game poses.\nROW 3, reservedGripStudy: Four whole-body studies with an open leading palm and clearly connected wrist above shoulder height; sword sheathed, no floating hand or drawn ledge. Reserved, excluded from game delivery.\nROW 4, reservedMirrorBeltStudy: Four new full upright appearance studies showing the closed left pouch and right-hip iron mirror, right-hand sword sheathed. Reserved, excluded from game delivery.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave16-2026-10-28/senua-sources/references/senua-b48-appearance.png"
+        ]
+      }
+    },
+    {
+      "id": "senua-combat-a1",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-a1.effective.prompt.txt",
+      "arguments": {
+        "prompt": "Create brand-new native detailed pixel-art full-body animation drawings of SENUA from HELLBLADE: SENUA’S SACRIFICE (2017), EARLY JOURNEY BEFORE FIRST HELA ENCOUNTER. Exact fixed appearance: young adult Pict warrior, dark brown braided HIGH PONYTAIL, dark leather headpiece with central small SILVER ornament and BLUE stones, WOAD BLUE paint around the EYES and on the ANATOMICAL LEFT ARM ONLY; bare arms, fur collar with CELTIC BROOCH, patterned brown leather and muted PLAID clothing, closed boots. Closed cloth travel pouch at LEFT hip and small polished IRON LaTene MIRROR at RIGHT hip. Initial plain STEEL SWORD with RING POMMEL, held in ANATOMICAL RIGHT HAND for sword actions; NOT late-game Gramr. Sheath the sword during locomotion, jumps, Focus and ledge grips so both hands are free. No shield, cape, helmet, armour plates, firearm, beam, fire, glow, aura, opponent, detached prop or visible injury. Keep the selected costume, physical proportions, ponytail, pouch, mirror and right-hand sword consistent. The source character and equipment are the chosen reference; these platform-fighter motions are original bounded gameplay adaptations, not claimed official source frames.\n\nSQUARE transparent RGBA sprite study sheet, EXACTLY FOUR COLUMNS by FOUR ROWS, EXACTLY SIXTEEN FULLY SEPARATE COMPLETE BODIES. ONE ROW per state and FOUR genuinely different successive articulated poses left to right. Use equal cells. Leave at least FIFTY PIXELS of COMPLETELY TRANSPARENT OUTER MARGIN at ALL FOUR EDGES, and large transparent gutters. Every boot sole, hand, ponytail and sword tip must be completely inside the canvas. NO clipping anywhere, especially BOTTOM ROW BOOTS. No letters, grid, labels, floor, shadow, scenery, effects or injury. Same three-quarter side-view native pixel-art scale, face RIGHT. All bodies drawn NEW, not duplicated, mirrored, rotated or recycled from any reference. Crouches/prone bodies stay naturally short. The reference is APPEARANCE ONLY. Crisp detailed pixel-art clusters. Both HILT and COMPLETE BLADE must be visibly attached to the RIGHT HAND in EVERY physical sword-action pose; no missing sword in crouchCharge. Sheathed blade for jumps, Focus and ledge grips.\n\nROW 1, attackLight1: Four phases of one compact right-hand diagonal steel-sword cut: preparation, approach, clear complete blade at release in third pose, recovery.\nROW 2, attackLight2: Four phases of a compact returning right-hand sword cut, all blades visibly attached to right hand; release third pose.\nROW 3, attackLight3: Four phases of a firm compact right-hand finishing sword cut; third pose shows the complete ring-pommel sword in grip.\nROW 4, crouchLight: Four phases of a genuinely low crouching sword sweep, right-handed, compact whole blade visible; no beam.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave16-2026-10-28/senua-sources/references/senua-b48-appearance.png"
+        ]
+      }
+    },
+    {
+      "id": "senua-combat-a2",
+      "states": [
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-a2.effective.prompt.txt",
+      "arguments": {
+        "prompt": "Create brand-new native detailed pixel-art full-body animation drawings of SENUA from HELLBLADE: SENUA’S SACRIFICE (2017), EARLY JOURNEY BEFORE FIRST HELA ENCOUNTER. Exact fixed appearance: young adult Pict warrior, dark brown braided HIGH PONYTAIL, dark leather headpiece with central small SILVER ornament and BLUE stones, WOAD BLUE paint around the EYES and on the ANATOMICAL LEFT ARM ONLY; bare arms, fur collar with CELTIC BROOCH, patterned brown leather and muted PLAID clothing, closed boots. Closed cloth travel pouch at LEFT hip and small polished IRON LaTene MIRROR at RIGHT hip. Initial plain STEEL SWORD with RING POMMEL, held in ANATOMICAL RIGHT HAND for sword actions; NOT late-game Gramr. Sheath the sword during locomotion, jumps, Focus and ledge grips so both hands are free. No shield, cape, helmet, armour plates, firearm, beam, fire, glow, aura, opponent, detached prop or visible injury. Keep the selected costume, physical proportions, ponytail, pouch, mirror and right-hand sword consistent. The source character and equipment are the chosen reference; these platform-fighter motions are original bounded gameplay adaptations, not claimed official source frames.\n\nSQUARE transparent RGBA sprite study sheet, EXACTLY FOUR COLUMNS by FOUR ROWS, EXACTLY SIXTEEN FULLY SEPARATE COMPLETE BODIES. ONE ROW per state and FOUR genuinely different successive articulated poses left to right. Use equal cells. Leave at least FIFTY PIXELS of COMPLETELY TRANSPARENT OUTER MARGIN at ALL FOUR EDGES, and large transparent gutters. Every boot sole, hand, ponytail and sword tip must be completely inside the canvas. NO clipping anywhere, especially BOTTOM ROW BOOTS. No letters, grid, labels, floor, shadow, scenery, effects or injury. Same three-quarter side-view native pixel-art scale, face RIGHT. All bodies drawn NEW, not duplicated, mirrored, rotated or recycled from any reference. Crouches/prone bodies stay naturally short. The reference is APPEARANCE ONLY. Crisp detailed pixel-art clusters. Both HILT and COMPLETE BLADE must be visibly attached to the RIGHT HAND in EVERY physical sword-action pose; no missing sword in crouchCharge. Sheathed blade for jumps, Focus and ledge grips.\n\nROW 1, chargeStart: Four distinct right-handed physical sword wind-up preparations; grounded bent knees, no glow or magic.\nROW 2, chargeLoop: Four distinct held heavy-swing bracing poses; full physical sword remains visibly gripped in right hand.\nROW 3, chargeRelease: Four heavy-swing phases with BOTH HILT AND BLADE CLEAR IN ALL FOUR POSES, especially the third release. No empty hand or hidden blade.\nROW 4, chargeRecovery: Four successive sword-swing recoveries from low follow-through back toward readiness, weapon remains intact.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave16-2026-10-28/senua-sources/references/senua-b48-appearance.png"
+        ]
+      }
+    },
+    {
+      "id": "senua-combat-b1",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-b1.effective.prompt.txt",
+      "arguments": {
+        "prompt": "Create brand-new native detailed pixel-art full-body animation drawings of SENUA from HELLBLADE: SENUA’S SACRIFICE (2017), EARLY JOURNEY BEFORE FIRST HELA ENCOUNTER. Exact fixed appearance: young adult Pict warrior, dark brown braided HIGH PONYTAIL, dark leather headpiece with central small SILVER ornament and BLUE stones, WOAD BLUE paint around the EYES and on the ANATOMICAL LEFT ARM ONLY; bare arms, fur collar with CELTIC BROOCH, patterned brown leather and muted PLAID clothing, closed boots. Closed cloth travel pouch at LEFT hip and small polished IRON LaTene MIRROR at RIGHT hip. Initial plain STEEL SWORD with RING POMMEL, held in ANATOMICAL RIGHT HAND for sword actions; NOT late-game Gramr. Sheath the sword during locomotion, jumps, Focus and ledge grips so both hands are free. No shield, cape, helmet, armour plates, firearm, beam, fire, glow, aura, opponent, detached prop or visible injury. Keep the selected costume, physical proportions, ponytail, pouch, mirror and right-hand sword consistent. The source character and equipment are the chosen reference; these platform-fighter motions are original bounded gameplay adaptations, not claimed official source frames.\n\nSQUARE transparent RGBA sprite study sheet, EXACTLY FOUR COLUMNS by FOUR ROWS, EXACTLY SIXTEEN FULLY SEPARATE COMPLETE BODIES. ONE ROW per state and FOUR genuinely different successive articulated poses left to right. Use equal cells. Leave at least FIFTY PIXELS of COMPLETELY TRANSPARENT OUTER MARGIN at ALL FOUR EDGES, and large transparent gutters. Every boot sole, hand, ponytail and sword tip must be completely inside the canvas. NO clipping anywhere, especially BOTTOM ROW BOOTS. No letters, grid, labels, floor, shadow, scenery, effects or injury. Same three-quarter side-view native pixel-art scale, face RIGHT. All bodies drawn NEW, not duplicated, mirrored, rotated or recycled from any reference. Crouches/prone bodies stay naturally short. The reference is APPEARANCE ONLY. Crisp detailed pixel-art clusters. Both HILT and COMPLETE BLADE must be visibly attached to the RIGHT HAND in EVERY physical sword-action pose; no missing sword in crouchCharge. Sheathed blade for jumps, Focus and ledge grips.\n\nROW 1, attackRecovery: Four distinct general sword recovery poses, slowing arms and returning stance.\nROW 2, special: Four stages of quiet Focus using the small polished iron mirror held near eye/chest: hand reaches mirror, lifts, presents it clearly, lowers. Sword sheathed. No ray, aura, flame, projectile, attacker or magical damage.\nROW 3, aerialNeutral: Four whole-body midair sword-cut poses with changing knees and arms, right-handed physical blade complete.\nROW 4, aerialForward: Four forward-leaning midair sword attack poses, right hand hilt and full blade visible; no propulsion effect.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave16-2026-10-28/senua-sources/references/senua-b48-appearance.png"
+        ]
+      }
+    },
+    {
+      "id": "senua-combat-b2",
+      "states": [
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-b2.effective.prompt.txt",
+      "arguments": {
+        "prompt": "Create brand-new native detailed pixel-art full-body animation drawings of SENUA from HELLBLADE: SENUA’S SACRIFICE (2017), EARLY JOURNEY BEFORE FIRST HELA ENCOUNTER. Exact fixed appearance: young adult Pict warrior, dark brown braided HIGH PONYTAIL, dark leather headpiece with central small SILVER ornament and BLUE stones, WOAD BLUE paint around the EYES and on the ANATOMICAL LEFT ARM ONLY; bare arms, fur collar with CELTIC BROOCH, patterned brown leather and muted PLAID clothing, closed boots. Closed cloth travel pouch at LEFT hip and small polished IRON LaTene MIRROR at RIGHT hip. Initial plain STEEL SWORD with RING POMMEL, held in ANATOMICAL RIGHT HAND for sword actions; NOT late-game Gramr. Sheath the sword during locomotion, jumps, Focus and ledge grips so both hands are free. No shield, cape, helmet, armour plates, firearm, beam, fire, glow, aura, opponent, detached prop or visible injury. Keep the selected costume, physical proportions, ponytail, pouch, mirror and right-hand sword consistent. The source character and equipment are the chosen reference; these platform-fighter motions are original bounded gameplay adaptations, not claimed official source frames.\n\nSQUARE transparent RGBA sprite study sheet, EXACTLY FOUR COLUMNS by FOUR ROWS, EXACTLY SIXTEEN FULLY SEPARATE COMPLETE BODIES. ONE ROW per state and FOUR genuinely different successive articulated poses left to right. Use equal cells. Leave at least FIFTY PIXELS of COMPLETELY TRANSPARENT OUTER MARGIN at ALL FOUR EDGES, and large transparent gutters. Every boot sole, hand, ponytail and sword tip must be completely inside the canvas. NO clipping anywhere, especially BOTTOM ROW BOOTS. No letters, grid, labels, floor, shadow, scenery, effects or injury. Same three-quarter side-view native pixel-art scale, face RIGHT. All bodies drawn NEW, not duplicated, mirrored, rotated or recycled from any reference. Crouches/prone bodies stay naturally short. The reference is APPEARANCE ONLY. Crisp detailed pixel-art clusters. Both HILT and COMPLETE BLADE must be visibly attached to the RIGHT HAND in EVERY physical sword-action pose; no missing sword in crouchCharge. Sheathed blade for jumps, Focus and ledge grips.\n\nROW 1, aerialDown: Four compact downward midair sword-cut poses, boots and ring-pommel sword complete; no energy.\nROW 2, intro: Four restrained entry/readiness poses, quiet scan of surroundings and hand settling near sword belt, no pomp.\nROW 3, victory: Four subtle relieved-but-wary recovery poses, exhale, lowered blade and quiet acknowledgment; no celebratory magic.\nROW 4, ledgeAttack: Four compact right-hand sword-cut poses while emerging from a ledge, complete body and blade; no actual ledge drawn.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave16-2026-10-28/senua-sources/references/senua-b48-appearance.png"
+        ]
+      }
+    },
+    {
+      "id": "senua-ledge-a",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-a.effective.prompt.txt",
+      "arguments": {
+        "prompt": "Create brand-new native detailed pixel-art full-body animation drawings of SENUA from HELLBLADE: SENUA’S SACRIFICE (2017), EARLY JOURNEY BEFORE FIRST HELA ENCOUNTER. Exact fixed appearance: young adult Pict warrior, dark brown braided HIGH PONYTAIL, dark leather headpiece with central small SILVER ornament and BLUE stones, WOAD BLUE paint around the EYES and on the ANATOMICAL LEFT ARM ONLY; bare arms, fur collar with CELTIC BROOCH, patterned brown leather and muted PLAID clothing, closed boots. Closed cloth travel pouch at LEFT hip and small polished IRON LaTene MIRROR at RIGHT hip. Initial plain STEEL SWORD with RING POMMEL, held in ANATOMICAL RIGHT HAND for sword actions; NOT late-game Gramr. Sheath the sword during locomotion, jumps, Focus and ledge grips so both hands are free. No shield, cape, helmet, armour plates, firearm, beam, fire, glow, aura, opponent, detached prop or visible injury. Keep the selected costume, physical proportions, ponytail, pouch, mirror and right-hand sword consistent. The source character and equipment are the chosen reference; these platform-fighter motions are original bounded gameplay adaptations, not claimed official source frames.\n\nSQUARE transparent RGBA sprite study sheet, EXACTLY FOUR COLUMNS by FOUR ROWS, EXACTLY SIXTEEN FULLY SEPARATE COMPLETE BODIES. ONE ROW per state and FOUR genuinely different successive articulated poses left to right. Use equal cells. Leave at least FIFTY PIXELS of COMPLETELY TRANSPARENT OUTER MARGIN at ALL FOUR EDGES, and large transparent gutters. Every boot sole, hand, ponytail and sword tip must be completely inside the canvas. NO clipping anywhere, especially BOTTOM ROW BOOTS. No letters, grid, labels, floor, shadow, scenery, effects or injury. Same three-quarter side-view native pixel-art scale, face RIGHT. All bodies drawn NEW, not duplicated, mirrored, rotated or recycled from any reference. Crouches/prone bodies stay naturally short. The reference is APPEARANCE ONLY. Crisp detailed pixel-art clusters. Both HILT and COMPLETE BLADE must be visibly attached to the RIGHT HAND in EVERY physical sword-action pose; no missing sword in crouchCharge. Sheathed blade for jumps, Focus and ledge grips.\n\nROW 1, ledgeCatch: Four articulated whole-body ledge-reaching poses without drawing any ledge: first leading open palm approaches, next three establish a real horizontal contact palm with connected wrist above the head. Sword sheathed, both hands empty.\nROW 2, ledgeHang: Four distinct real hanging whole-body poses, leading palm and connected wrist above head at a coherent contact height, complete body and boots. Sword sheathed, no ledge drawing.\nROW 3, ledgeClimb: Four progressive upward whole-body climbs: leading palm and wrist move from above crown toward shoulder/chest as torso rises; feet progress from hanging to a bent supported knee. Do not keep the leading palm above the skull throughout. Sword sheathed, no ledge drawn.\nROW 4, ledgeDrop: Four distinct releasing and dropping poses, hands open then lower, knees bend; sword sheathed.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave16-2026-10-28/senua-sources/references/senua-b48-appearance.png"
+        ]
+      }
+    },
+    {
+      "id": "senua-ledge-b",
+      "states": [
+        "ledgeJump",
+        "reservedUprightCalibration",
+        "reservedGripStudy",
+        "reservedMirrorBeltStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-b.effective.prompt.txt",
+      "arguments": {
+        "prompt": "Create brand-new native detailed pixel-art full-body animation drawings of SENUA from HELLBLADE: SENUA’S SACRIFICE (2017), EARLY JOURNEY BEFORE FIRST HELA ENCOUNTER. Exact fixed appearance: young adult Pict warrior, dark brown braided HIGH PONYTAIL, dark leather headpiece with central small SILVER ornament and BLUE stones, WOAD BLUE paint around the EYES and on the ANATOMICAL LEFT ARM ONLY; bare arms, fur collar with CELTIC BROOCH, patterned brown leather and muted PLAID clothing, closed boots. Closed cloth travel pouch at LEFT hip and small polished IRON LaTene MIRROR at RIGHT hip. Initial plain STEEL SWORD with RING POMMEL, held in ANATOMICAL RIGHT HAND for sword actions; NOT late-game Gramr. Sheath the sword during locomotion, jumps, Focus and ledge grips so both hands are free. No shield, cape, helmet, armour plates, firearm, beam, fire, glow, aura, opponent, detached prop or visible injury. Keep the selected costume, physical proportions, ponytail, pouch, mirror and right-hand sword consistent. The source character and equipment are the chosen reference; these platform-fighter motions are original bounded gameplay adaptations, not claimed official source frames.\n\nSQUARE transparent RGBA sprite study sheet, EXACTLY FOUR COLUMNS by FOUR ROWS, EXACTLY SIXTEEN FULLY SEPARATE COMPLETE BODIES. ONE ROW per state and FOUR genuinely different successive articulated poses left to right. Use equal cells. Leave at least FIFTY PIXELS of COMPLETELY TRANSPARENT OUTER MARGIN at ALL FOUR EDGES, and large transparent gutters. Every boot sole, hand, ponytail and sword tip must be completely inside the canvas. NO clipping anywhere, especially BOTTOM ROW BOOTS. No letters, grid, labels, floor, shadow, scenery, effects or injury. Same three-quarter side-view native pixel-art scale, face RIGHT. All bodies drawn NEW, not duplicated, mirrored, rotated or recycled from any reference. Crouches/prone bodies stay naturally short. The reference is APPEARANCE ONLY. Crisp detailed pixel-art clusters. Both HILT and COMPLETE BLADE must be visibly attached to the RIGHT HAND in EVERY physical sword-action pose; no missing sword in crouchCharge. Sheathed blade for jumps, Focus and ledge grips.\n\nROW 1, ledgeJump: Four distinct pushing-away and rising poses after a ledge jump, empty articulated hands and complete boots; sword sheathed.\nROW 2, reservedUprightCalibration: Four full upright calibration studies with relaxed lowered arms, straight legs and visible closed boots; sword sheathed. Reserved studies will not be game poses.\nROW 3, reservedGripStudy: Four whole-body studies with an open leading palm and clearly connected wrist above shoulder height; sword sheathed, no floating hand or drawn ledge. Reserved, excluded from game delivery.\nROW 4, reservedMirrorBeltStudy: Four new full upright appearance studies showing the closed left pouch and right-hip iron mirror, right-hand sword sheathed. Reserved, excluded from game delivery.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave16-2026-10-28/senua-sources/references/senua-b48-appearance.png"
+        ]
+      }
+    }
+  ]
+}

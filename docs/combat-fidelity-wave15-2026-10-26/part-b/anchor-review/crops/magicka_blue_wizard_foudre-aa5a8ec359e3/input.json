@@ -1,0 +1,1304 @@
+{
+  "schemaVersion": 1,
+  "id": "magicka_blue_wizard_foudre",
+  "createdAt": "2026-10-26T10:27:15.271Z",
+  "registryPath": "src/game/combat/characterAnimationsWave15PartB.generated.json",
+  "sheet": "/sprites/generated/combat-character-animations-wave15-part-b/magicka_blue_wizard_foudre.png",
+  "sheetSha256": "aa5a8ec359e31a7c8a0c62dc2ddbdcf7d2c460a91e5d3acf1aa1d24ee0e3e14a",
+  "geometrySha256": "a158ebcd8dbde5beb063bfc379a7e48f40f63bf5154d8292b35f5840b90a8239",
+  "geometry": {
+    "sheet": "/sprites/generated/combat-character-animations-wave15-part-b/magicka_blue_wizard_foudre.png",
+    "sha256": "aa5a8ec359e31a7c8a0c62dc2ddbdcf7d2c460a91e5d3acf1aa1d24ee0e3e14a",
+    "frameWidth": 256,
+    "frameHeight": 256,
+    "columns": 4,
+    "rows": 8,
+    "phases": {
+      "intro": {
+        "row": 0,
+        "frames": 4,
+        "columns": 4,
+        "fps": 8,
+        "loop": false
+      },
+      "outro": {
+        "row": 1,
+        "frames": 4,
+        "columns": 4,
+        "fps": 8,
+        "loop": false
+      },
+      "roundVictory": {
+        "row": 2,
+        "frames": 4,
+        "columns": 4,
+        "fps": 8,
+        "loop": false
+      },
+      "roundDefeat": {
+        "row": 3,
+        "frames": 4,
+        "columns": 4,
+        "fps": 8,
+        "loop": false
+      },
+      "fatality": {
+        "row": 4,
+        "frames": 4,
+        "columns": 4,
+        "fps": 12,
+        "loop": false
+      },
+      "victory": {
+        "row": 5,
+        "frames": 4,
+        "columns": 4,
+        "fps": 8,
+        "loop": false
+      },
+      "defeat": {
+        "row": 6,
+        "frames": 4,
+        "columns": 4,
+        "fps": 8,
+        "loop": false
+      },
+      "super": {
+        "row": 7,
+        "frames": 4,
+        "columns": 4,
+        "fps": 12,
+        "loop": false
+      }
+    },
+    "normalization": {
+      "method": "native-alpha-component-segmentation-one-source-calibration-v1",
+      "sharedScalePerSource": true,
+      "baseline": 244,
+      "rows": [
+        {
+          "phase": "intro",
+          "row": 0,
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-b/sources/magicka_blue_wizard_foudre.png",
+          "sourceImageSha256": "c16fe2dd457805f8bffee94333d8292b87aba41d9e4e1b22d183fe652ea5e796",
+          "sourceRow": 0,
+          "sourceColumns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "frameBounds": [
+            {
+              "source": {
+                "left": 0,
+                "top": 0,
+                "width": 184,
+                "height": 186
+              },
+              "output": {
+                "left": 61,
+                "top": 99,
+                "width": 143,
+                "height": 145
+              },
+              "sourceBodyBounds": {
+                "id": 3,
+                "pixels": 9683,
+                "left": 25,
+                "right": 170,
+                "top": 36,
+                "bottom": 173,
+                "width": 146,
+                "height": 138,
+                "centerX": 85.90498812351544,
+                "centerY": 107.83001136011566
+              },
+              "sourceAlphaPixels": 15282,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 185,
+                "top": 0,
+                "width": 185,
+                "height": 184
+              },
+              "output": {
+                "left": 66,
+                "top": 101,
+                "width": 144,
+                "height": 143
+              },
+              "sourceBodyBounds": {
+                "id": 1,
+                "pixels": 10296,
+                "left": 199,
+                "right": 354,
+                "top": 10,
+                "bottom": 173,
+                "width": 156,
+                "height": 164,
+                "centerX": 263.96824009324007,
+                "centerY": 99.25446775446775
+              },
+              "sourceAlphaPixels": 16045,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 369,
+                "top": 27,
+                "width": 193,
+                "height": 151
+              },
+              "output": {
+                "left": 68,
+                "top": 126,
+                "width": 150,
+                "height": 118
+              },
+              "sourceBodyBounds": {
+                "id": 5,
+                "pixels": 10168,
+                "left": 384,
+                "right": 549,
+                "top": 37,
+                "bottom": 173,
+                "width": 166,
+                "height": 137,
+                "centerX": 446.1485051140834,
+                "centerY": 107.25019669551534
+              },
+              "sourceAlphaPixels": 15601,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 571,
+                "top": 17,
+                "width": 187,
+                "height": 164
+              },
+              "output": {
+                "left": 70,
+                "top": 116,
+                "width": 146,
+                "height": 128
+              },
+              "sourceBodyBounds": {
+                "id": 2,
+                "pixels": 10022,
+                "left": 579,
+                "right": 735,
+                "top": 30,
+                "bottom": 173,
+                "width": 157,
+                "height": 144,
+                "centerX": 645.8304729594892,
+                "centerY": 102.84534025144681
+              },
+              "sourceAlphaPixels": 15603,
+              "completeNativeComponent": true
+            }
+          ],
+          "scale": 0.7795577648658235,
+          "baseline": 244,
+          "renderScale": 1.5337569937730497,
+          "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+          "statureReview": {
+            "targetBodyHeight": 165,
+            "sourceBodyHeight": 138,
+            "normalizedBodyHeight": 107.57897155148365,
+            "sharedAcrossSource": true,
+            "preservesNativeCrouchAndKneelRatios": true
+          },
+          "seamReview": {
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+          }
+        },
+        {
+          "phase": "outro",
+          "row": 1,
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-b/sources/magicka_blue_wizard_foudre.png",
+          "sourceImageSha256": "c16fe2dd457805f8bffee94333d8292b87aba41d9e4e1b22d183fe652ea5e796",
+          "sourceRow": 0,
+          "sourceColumns": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "frameBounds": [
+            {
+              "source": {
+                "left": 759,
+                "top": 33,
+                "width": 195,
+                "height": 180
+              },
+              "output": {
+                "left": 55,
+                "top": 104,
+                "width": 152,
+                "height": 140
+              },
+              "sourceBodyBounds": {
+                "id": 6,
+                "pixels": 8843,
+                "left": 781,
+                "right": 931,
+                "top": 44,
+                "bottom": 173,
+                "width": 151,
+                "height": 130,
+                "centerX": 852.597647857062,
+                "centerY": 118.83026122356667
+              },
+              "sourceAlphaPixels": 13581,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 955,
+                "top": 31,
+                "width": 189,
+                "height": 163
+              },
+              "output": {
+                "left": 68,
+                "top": 117,
+                "width": 147,
+                "height": 127
+              },
+              "sourceBodyBounds": {
+                "id": 7,
+                "pixels": 8985,
+                "left": 976,
+                "right": 1122,
+                "top": 49,
+                "bottom": 173,
+                "width": 147,
+                "height": 125,
+                "centerX": 1032.3066221480244,
+                "centerY": 122.31318864774624
+              },
+              "sourceAlphaPixels": 13542,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 1151,
+                "top": 49,
+                "width": 161,
+                "height": 129
+              },
+              "output": {
+                "left": 65,
+                "top": 143,
+                "width": 126,
+                "height": 101
+              },
+              "sourceBodyBounds": {
+                "id": 8,
+                "pixels": 8520,
+                "left": 1165,
+                "right": 1306,
+                "top": 52,
+                "bottom": 174,
+                "width": 142,
+                "height": 123,
+                "centerX": 1231.4647887323943,
+                "centerY": 122.28192488262911
+              },
+              "sourceAlphaPixels": 11353,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 1343,
+                "top": 25,
+                "width": 167,
+                "height": 193
+              },
+              "output": {
+                "left": 65,
+                "top": 94,
+                "width": 130,
+                "height": 150
+              },
+              "sourceBodyBounds": {
+                "id": 9,
+                "pixels": 8002,
+                "left": 1350,
+                "right": 1507,
+                "top": 63,
+                "bottom": 180,
+                "width": 158,
+                "height": 118,
+                "centerX": 1424.453886528368,
+                "centerY": 131.17970507373155
+              },
+              "sourceAlphaPixels": 10516,
+              "completeNativeComponent": true
+            }
+          ],
+          "scale": 0.7795577648658235,
+          "baseline": 244,
+          "renderScale": 1.5337569937730497,
+          "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+          "statureReview": {
+            "targetBodyHeight": 165,
+            "sourceBodyHeight": 138,
+            "normalizedBodyHeight": 107.57897155148365,
+            "sharedAcrossSource": true,
+            "preservesNativeCrouchAndKneelRatios": true
+          },
+          "seamReview": {
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+          }
+        },
+        {
+          "phase": "roundVictory",
+          "row": 2,
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-b/sources/magicka_blue_wizard_foudre.png",
+          "sourceImageSha256": "c16fe2dd457805f8bffee94333d8292b87aba41d9e4e1b22d183fe652ea5e796",
+          "sourceRow": 1,
+          "sourceColumns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "frameBounds": [
+            {
+              "source": {
+                "left": 15,
+                "top": 182,
+                "width": 168,
+                "height": 188
+              },
+              "output": {
+                "left": 76,
+                "top": 97,
+                "width": 131,
+                "height": 147
+              },
+              "sourceBodyBounds": {
+                "id": 12,
+                "pixels": 10703,
+                "left": 22,
+                "right": 162,
+                "top": 191,
+                "bottom": 343,
+                "width": 141,
+                "height": 153,
+                "centerX": 81.71540689526302,
+                "centerY": 275.1702326450528
+              },
+              "sourceAlphaPixels": 17078,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 183,
+                "top": 207,
+                "width": 141,
+                "height": 163
+              },
+              "output": {
+                "left": 72,
+                "top": 117,
+                "width": 110,
+                "height": 127
+              },
+              "sourceBodyBounds": {
+                "id": 15,
+                "pixels": 9235,
+                "left": 204,
+                "right": 314,
+                "top": 212,
+                "bottom": 342,
+                "width": 111,
+                "height": 131,
+                "centerX": 254.46854358419057,
+                "centerY": 283.7715213860314
+              },
+              "sourceAlphaPixels": 13453,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 359,
+                "top": 178,
+                "width": 185,
+                "height": 195
+              },
+              "output": {
+                "left": 64,
+                "top": 92,
+                "width": 144,
+                "height": 152
+              },
+              "sourceBodyBounds": {
+                "id": 10,
+                "pixels": 10568,
+                "left": 383,
+                "right": 505,
+                "top": 181,
+                "bottom": 344,
+                "width": 123,
+                "height": 164,
+                "centerX": 440.5478803936412,
+                "centerY": 274.25444738834216
+              },
+              "sourceAlphaPixels": 16414,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 553,
+                "top": 199,
+                "width": 203,
+                "height": 155
+              },
+              "output": {
+                "left": 56,
+                "top": 123,
+                "width": 158,
+                "height": 121
+              },
+              "sourceBodyBounds": {
+                "id": 14,
+                "pixels": 10178,
+                "left": 582,
+                "right": 730,
+                "top": 211,
+                "bottom": 344,
+                "width": 149,
+                "height": 134,
+                "centerX": 644.8311063077225,
+                "centerY": 279.5775201414816
+              },
+              "sourceAlphaPixels": 15278,
+              "completeNativeComponent": true
+            }
+          ],
+          "scale": 0.7795577648658235,
+          "baseline": 244,
+          "renderScale": 1.5337569937730497,
+          "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+          "statureReview": {
+            "targetBodyHeight": 165,
+            "sourceBodyHeight": 138,
+            "normalizedBodyHeight": 107.57897155148365,
+            "sharedAcrossSource": true,
+            "preservesNativeCrouchAndKneelRatios": true
+          },
+          "seamReview": {
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+          }
+        },
+        {
+          "phase": "roundDefeat",
+          "row": 3,
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-b/sources/magicka_blue_wizard_foudre.png",
+          "sourceImageSha256": "c16fe2dd457805f8bffee94333d8292b87aba41d9e4e1b22d183fe652ea5e796",
+          "sourceRow": 1,
+          "sourceColumns": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "frameBounds": [
+            {
+              "source": {
+                "left": 761,
+                "top": 212,
+                "width": 173,
+                "height": 141
+              },
+              "output": {
+                "left": 64,
+                "top": 134,
+                "width": 135,
+                "height": 110
+              },
+              "sourceBodyBounds": {
+                "id": 16,
+                "pixels": 7251,
+                "left": 789,
+                "right": 892,
+                "top": 236,
+                "bottom": 343,
+                "width": 104,
+                "height": 108,
+                "centerX": 843.0027582402428,
+                "centerY": 297.92097641704595
+              },
+              "sourceAlphaPixels": 10569,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 927,
+                "top": 231,
+                "width": 212,
+                "height": 133
+              },
+              "output": {
+                "left": 46,
+                "top": 140,
+                "width": 165,
+                "height": 104
+              },
+              "sourceBodyBounds": {
+                "id": 17,
+                "pixels": 7776,
+                "left": 943,
+                "right": 1132,
+                "top": 255,
+                "bottom": 349,
+                "width": 190,
+                "height": 95,
+                "centerX": 1032.27829218107,
+                "centerY": 311.58616255144034
+              },
+              "sourceAlphaPixels": 12694,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 1147,
+                "top": 217,
+                "width": 190,
+                "height": 149
+              },
+              "output": {
+                "left": 63,
+                "top": 128,
+                "width": 148,
+                "height": 116
+              },
+              "sourceBodyBounds": {
+                "id": 18,
+                "pixels": 6988,
+                "left": 1160,
+                "right": 1324,
+                "top": 255,
+                "bottom": 345,
+                "width": 165,
+                "height": 91,
+                "centerX": 1230.588866628506,
+                "centerY": 310.4274470520893
+              },
+              "sourceAlphaPixels": 11721,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 1337,
+                "top": 219,
+                "width": 183,
+                "height": 136
+              },
+              "output": {
+                "left": 60,
+                "top": 138,
+                "width": 143,
+                "height": 106
+              },
+              "sourceBodyBounds": {
+                "id": 19,
+                "pixels": 6463,
+                "left": 1350,
+                "right": 1473,
+                "top": 255,
+                "bottom": 346,
+                "width": 124,
+                "height": 92,
+                "centerX": 1424.4702150704009,
+                "centerY": 308.5633606684202
+              },
+              "sourceAlphaPixels": 9398,
+              "completeNativeComponent": true
+            }
+          ],
+          "scale": 0.7795577648658235,
+          "baseline": 244,
+          "renderScale": 1.5337569937730497,
+          "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+          "statureReview": {
+            "targetBodyHeight": 165,
+            "sourceBodyHeight": 138,
+            "normalizedBodyHeight": 107.57897155148365,
+            "sharedAcrossSource": true,
+            "preservesNativeCrouchAndKneelRatios": true
+          },
+          "seamReview": {
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+          }
+        },
+        {
+          "phase": "fatality",
+          "row": 4,
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-b/sources/magicka_blue_wizard_foudre.png",
+          "sourceImageSha256": "c16fe2dd457805f8bffee94333d8292b87aba41d9e4e1b22d183fe652ea5e796",
+          "sourceRow": 2,
+          "sourceColumns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "frameBounds": [
+            {
+              "source": {
+                "left": 15,
+                "top": 371,
+                "width": 176,
+                "height": 163
+              },
+              "output": {
+                "left": 67,
+                "top": 117,
+                "width": 137,
+                "height": 127
+              },
+              "sourceBodyBounds": {
+                "id": 28,
+                "pixels": 9718,
+                "left": 23,
+                "right": 187,
+                "top": 397,
+                "bottom": 529,
+                "width": 165,
+                "height": 133,
+                "centerX": 92.80304589421692,
+                "centerY": 464.5117308088084
+              },
+              "sourceAlphaPixels": 14492,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 191,
+                "top": 369,
+                "width": 205,
+                "height": 171
+              },
+              "output": {
+                "left": 62,
+                "top": 111,
+                "width": 160,
+                "height": 133
+              },
+              "sourceBodyBounds": {
+                "id": 29,
+                "pixels": 11258,
+                "left": 194,
+                "right": 382,
+                "top": 397,
+                "bottom": 529,
+                "width": 189,
+                "height": 133,
+                "centerX": 275.02922366317284,
+                "centerY": 463.6656599751288
+              },
+              "sourceAlphaPixels": 19201,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 387,
+                "top": 366,
+                "width": 220,
+                "height": 204
+              },
+              "output": {
+                "left": 62,
+                "top": 85,
+                "width": 172,
+                "height": 159
+              },
+              "sourceBodyBounds": {
+                "id": 31,
+                "pixels": 10872,
+                "left": 391,
+                "right": 606,
+                "top": 400,
+                "bottom": 529,
+                "width": 216,
+                "height": 130,
+                "centerX": 472.0827814569536,
+                "centerY": 464.85596026490066
+              },
+              "sourceAlphaPixels": 18536,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 595,
+                "top": 371,
+                "width": 175,
+                "height": 186
+              },
+              "output": {
+                "left": 73,
+                "top": 99,
+                "width": 136,
+                "height": 145
+              },
+              "sourceBodyBounds": {
+                "id": 30,
+                "pixels": 9349,
+                "left": 598,
+                "right": 756,
+                "top": 397,
+                "bottom": 529,
+                "width": 159,
+                "height": 133,
+                "centerX": 665.4894641138089,
+                "centerY": 470.1787356936571
+              },
+              "sourceAlphaPixels": 16157,
+              "completeNativeComponent": true
+            }
+          ],
+          "scale": 0.7795577648658235,
+          "baseline": 244,
+          "renderScale": 1.5337569937730497,
+          "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+          "statureReview": {
+            "targetBodyHeight": 165,
+            "sourceBodyHeight": 138,
+            "normalizedBodyHeight": 107.57897155148365,
+            "sharedAcrossSource": true,
+            "preservesNativeCrouchAndKneelRatios": true
+          },
+          "seamReview": {
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+          }
+        },
+        {
+          "phase": "victory",
+          "row": 5,
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-b/sources/magicka_blue_wizard_foudre-completion12.png",
+          "sourceImageSha256": "00d892949dfb6475e4babc87826245be8ae37323f2bad44d35daa6e2af17ab9b",
+          "sourceRow": 0,
+          "sourceColumns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "frameBounds": [
+            {
+              "source": {
+                "left": 0,
+                "top": 11,
+                "width": 384,
+                "height": 440
+              },
+              "output": {
+                "left": 37,
+                "top": 49,
+                "width": 171,
+                "height": 195
+              },
+              "sourceBodyBounds": {
+                "id": 1,
+                "pixels": 30483,
+                "left": 107,
+                "right": 302,
+                "top": 14,
+                "bottom": 385,
+                "width": 196,
+                "height": 372,
+                "centerX": 204.0164353902175,
+                "centerY": 239.015910507496
+              },
+              "sourceAlphaPixels": 40009,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 385,
+                "top": 9,
+                "width": 359,
+                "height": 383
+              },
+              "output": {
+                "left": 55,
+                "top": 74,
+                "width": 159,
+                "height": 170
+              },
+              "sourceBodyBounds": {
+                "id": 3,
+                "pixels": 29507,
+                "left": 458,
+                "right": 650,
+                "top": 114,
+                "bottom": 382,
+                "width": 193,
+                "height": 269,
+                "centerX": 549.5965703053513,
+                "centerY": 257.98824007862544
+              },
+              "sourceAlphaPixels": 39365,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 731,
+                "top": 7,
+                "width": 323,
+                "height": 443
+              },
+              "output": {
+                "left": 59,
+                "top": 47,
+                "width": 143,
+                "height": 197
+              },
+              "sourceBodyBounds": {
+                "id": 4,
+                "pixels": 27539,
+                "left": 807,
+                "right": 981,
+                "top": 132,
+                "bottom": 385,
+                "width": 175,
+                "height": 254,
+                "centerX": 886.6244598569301,
+                "centerY": 263.95747848505755
+              },
+              "sourceAlphaPixels": 36257,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 1055,
+                "top": 23,
+                "width": 392,
+                "height": 425
+              },
+              "output": {
+                "left": 48,
+                "top": 55,
+                "width": 174,
+                "height": 189
+              },
+              "sourceBodyBounds": {
+                "id": 2,
+                "pixels": 28196,
+                "left": 1144,
+                "right": 1325,
+                "top": 111,
+                "bottom": 384,
+                "width": 182,
+                "height": 274,
+                "centerX": 1235.5769612711024,
+                "centerY": 261.70676691729324
+              },
+              "sourceAlphaPixels": 38428,
+              "completeNativeComponent": true
+            }
+          ],
+          "scale": 0.4441187085549667,
+          "baseline": 244,
+          "renderScale": 1.4626861843452366,
+          "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+          "statureReview": {
+            "targetBodyHeight": 165,
+            "sourceBodyHeight": 254,
+            "normalizedBodyHeight": 112.80615197296154,
+            "sharedAcrossSource": true,
+            "preservesNativeCrouchAndKneelRatios": true
+          },
+          "seamReview": {
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+          }
+        },
+        {
+          "phase": "defeat",
+          "row": 6,
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-b/sources/magicka_blue_wizard_foudre.png",
+          "sourceImageSha256": "c16fe2dd457805f8bffee94333d8292b87aba41d9e4e1b22d183fe652ea5e796",
+          "sourceRow": 3,
+          "sourceColumns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "frameBounds": [
+            {
+              "source": {
+                "left": 33,
+                "top": 575,
+                "width": 125,
+                "height": 175
+              },
+              "output": {
+                "left": 88,
+                "top": 108,
+                "width": 97,
+                "height": 136
+              },
+              "sourceBodyBounds": {
+                "id": 42,
+                "pixels": 8382,
+                "left": 38,
+                "right": 130,
+                "top": 579,
+                "bottom": 718,
+                "width": 93,
+                "height": 140,
+                "centerX": 84.73144834168457,
+                "centerY": 655.7537580529706
+              },
+              "sourceAlphaPixels": 11246,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 181,
+                "top": 591,
+                "width": 171,
+                "height": 147
+              },
+              "output": {
+                "left": 62,
+                "top": 129,
+                "width": 133,
+                "height": 115
+              },
+              "sourceBodyBounds": {
+                "id": 45,
+                "pixels": 7936,
+                "left": 213,
+                "right": 311,
+                "top": 593,
+                "bottom": 719,
+                "width": 99,
+                "height": 127,
+                "centerX": 265.38999495967744,
+                "centerY": 664.0709425403226
+              },
+              "sourceAlphaPixels": 10196,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 375,
+                "top": 569,
+                "width": 171,
+                "height": 181
+              },
+              "output": {
+                "left": 55,
+                "top": 103,
+                "width": 133,
+                "height": 141
+              },
+              "sourceBodyBounds": {
+                "id": 44,
+                "pixels": 8289,
+                "left": 419,
+                "right": 508,
+                "top": 582,
+                "bottom": 719,
+                "width": 90,
+                "height": 138,
+                "centerX": 468.02823018458196,
+                "centerY": 656.95258776692
+              },
+              "sourceAlphaPixels": 10839,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 559,
+                "top": 555,
+                "width": 191,
+                "height": 189
+              },
+              "output": {
+                "left": 51,
+                "top": 97,
+                "width": 149,
+                "height": 147
+              },
+              "sourceBodyBounds": {
+                "id": 43,
+                "pixels": 8414,
+                "left": 608,
+                "right": 702,
+                "top": 579,
+                "bottom": 719,
+                "width": 95,
+                "height": 141,
+                "centerX": 658.1473734252436,
+                "centerY": 656.1247920133111
+              },
+              "sourceAlphaPixels": 11351,
+              "completeNativeComponent": true
+            }
+          ],
+          "scale": 0.7795577648658235,
+          "baseline": 244,
+          "renderScale": 1.5337569937730497,
+          "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+          "statureReview": {
+            "targetBodyHeight": 165,
+            "sourceBodyHeight": 138,
+            "normalizedBodyHeight": 107.57897155148365,
+            "sharedAcrossSource": true,
+            "preservesNativeCrouchAndKneelRatios": true
+          },
+          "seamReview": {
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+          }
+        },
+        {
+          "phase": "super",
+          "row": 7,
+          "sourceImage": "docs/combat-fidelity-wave15-2026-10-26/part-b/sources/magicka_blue_wizard_foudre-completion12.png",
+          "sourceImageSha256": "00d892949dfb6475e4babc87826245be8ae37323f2bad44d35daa6e2af17ab9b",
+          "sourceRow": 1,
+          "sourceColumns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "frameBounds": [
+            {
+              "source": {
+                "left": 0,
+                "top": 442,
+                "width": 398,
+                "height": 328
+              },
+              "output": {
+                "left": 40,
+                "top": 98,
+                "width": 177,
+                "height": 146
+              },
+              "sourceBodyBounds": {
+                "id": 7,
+                "pixels": 33491,
+                "left": 57,
+                "right": 359,
+                "top": 517,
+                "bottom": 739,
+                "width": 303,
+                "height": 223,
+                "centerX": 198.4402675345615,
+                "centerY": 635.3916276014452
+              },
+              "sourceAlphaPixels": 45923,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 359,
+                "top": 364,
+                "width": 381,
+                "height": 385
+              },
+              "output": {
+                "left": 44,
+                "top": 73,
+                "width": 169,
+                "height": 171
+              },
+              "sourceBodyBounds": {
+                "id": 5,
+                "pixels": 47422,
+                "left": 436,
+                "right": 674,
+                "top": 400,
+                "bottom": 739,
+                "width": 239,
+                "height": 340,
+                "centerX": 547.591581966176,
+                "centerY": 594.0422799544515
+              },
+              "sourceAlphaPixels": 69485,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 715,
+                "top": 461,
+                "width": 403,
+                "height": 307
+              },
+              "output": {
+                "left": 61,
+                "top": 108,
+                "width": 179,
+                "height": 136
+              },
+              "sourceBodyBounds": {
+                "id": 8,
+                "pixels": 33258,
+                "left": 728,
+                "right": 1086,
+                "top": 518,
+                "bottom": 737,
+                "width": 359,
+                "height": 220,
+                "centerX": 865.815172289374,
+                "centerY": 633.8912442119189
+              },
+              "sourceAlphaPixels": 45067,
+              "completeNativeComponent": true
+            },
+            {
+              "source": {
+                "left": 1119,
+                "top": 454,
+                "width": 317,
+                "height": 298
+              },
+              "output": {
+                "left": 73,
+                "top": 112,
+                "width": 141,
+                "height": 132
+              },
+              "sourceBodyBounds": {
+                "id": 6,
+                "pixels": 29008,
+                "left": 1150,
+                "right": 1416,
+                "top": 515,
+                "bottom": 739,
+                "width": 267,
+                "height": 225,
+                "centerX": 1243.6989795918366,
+                "centerY": 631.8350455046883
+              },
+              "sourceAlphaPixels": 41158,
+              "completeNativeComponent": true
+            }
+          ],
+          "scale": 0.4441187085549667,
+          "baseline": 244,
+          "renderScale": 1.4626861843452366,
+          "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+          "statureReview": {
+            "targetBodyHeight": 165,
+            "sourceBodyHeight": 254,
+            "normalizedBodyHeight": 112.80615197296154,
+            "sharedAcrossSource": true,
+            "preservesNativeCrouchAndKneelRatios": true
+          },
+          "seamReview": {
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+          }
+        }
+      ],
+      "sourceWideBodyCalibration": {
+        "method": "one-complete-standing-native-body-per-source",
+        "targetBodyHeight": 165,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    }
+  },
+  "crops": [
+    {
+      "phase": "super",
+      "col": 0,
+      "row": 7,
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-b/anchor-review/crops/magicka_blue_wizard_foudre-aa5a8ec359e3/super-0.png",
+      "sha256": "ce934435bb9a5be617b83ea7161330183c3a91bea5fbc669012e720de0037ad9",
+      "bytes": 28183
+    },
+    {
+      "phase": "super",
+      "col": 1,
+      "row": 7,
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-b/anchor-review/crops/magicka_blue_wizard_foudre-aa5a8ec359e3/super-1.png",
+      "sha256": "7f77296e44a0fe6df4cd5b2f167f06459f68b75ac75f0cc0ace8aa5c0beae225",
+      "bytes": 42278
+    },
+    {
+      "phase": "super",
+      "col": 2,
+      "row": 7,
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-b/anchor-review/crops/magicka_blue_wizard_foudre-aa5a8ec359e3/super-2.png",
+      "sha256": "04eb5c3f39816e089bf2c50cc6160e837c30adca0a04d0afc971dbec063b8a3d",
+      "bytes": 26257
+    },
+    {
+      "phase": "super",
+      "col": 3,
+      "row": 7,
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-b/anchor-review/crops/magicka_blue_wizard_foudre-aa5a8ec359e3/super-3.png",
+      "sha256": "3b10f7dfc09e44d4e3e93d0e58c77297b7da777166ab0e9b998e59255827631c",
+      "bytes": 24209
+    },
+    {
+      "phase": "fatality",
+      "col": 0,
+      "row": 4,
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-b/anchor-review/crops/magicka_blue_wizard_foudre-aa5a8ec359e3/fatality-0.png",
+      "sha256": "8d8a7f567d3f1c0e8653eb7d309b07fbf486025184764664314f98de9261599f",
+      "bytes": 24979
+    },
+    {
+      "phase": "fatality",
+      "col": 1,
+      "row": 4,
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-b/anchor-review/crops/magicka_blue_wizard_foudre-aa5a8ec359e3/fatality-1.png",
+      "sha256": "8bac1a764e9861f2184ad536720c66c34f3583b1ce103307d47df21db679d87b",
+      "bytes": 29984
+    },
+    {
+      "phase": "fatality",
+      "col": 2,
+      "row": 4,
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-b/anchor-review/crops/magicka_blue_wizard_foudre-aa5a8ec359e3/fatality-2.png",
+      "sha256": "e8391c821099a17d424e1272a6a591d3ecbf9ec6f772b4cf0a97079f45311a03",
+      "bytes": 30048
+    },
+    {
+      "phase": "fatality",
+      "col": 3,
+      "row": 4,
+      "path": "docs/combat-fidelity-wave15-2026-10-26/part-b/anchor-review/crops/magicka_blue_wizard_foudre-aa5a8ec359e3/fatality-3.png",
+      "sha256": "5b8855e7510f5f847d01fdae3f4ff224745c65263231e78b2c2ff1feb4e444b7",
+      "bytes": 25130
+    }
+  ],
+  "contact": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/part-b/anchor-review/crops/magicka_blue_wizard_foudre-aa5a8ec359e3/super-then-fatality-contact.png",
+    "sha256": "1e396a81ca9d194756a39bff91bfc0f9a22bdbbd1826bdd1dfb241369de5fa42",
+    "bytes": 204144
+  },
+  "scope": "Original 256px source cells, top row super0–3, bottom row fatality0–3. Production PNG is unchanged. No point is measured by this crop builder."
+}

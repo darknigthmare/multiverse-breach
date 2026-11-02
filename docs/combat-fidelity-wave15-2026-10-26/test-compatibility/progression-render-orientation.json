@@ -1,0 +1,17 @@
+{
+  "observedAt": "2026-10-28T07:38:32.832Z",
+  "command": [
+    "npm",
+    "run",
+    "check:progression"
+  ],
+  "exitCode": 0,
+  "observation": "Actual exec_command session16266 completed with exitCode0; no npm step was skipped.",
+  "log": "docs/combat-fidelity-wave15-2026-10-26/test-compatibility/progression-render-orientation.log",
+  "logSha256": "509a811de3fbe49f9c1044038a1a175940785090b4f94bd458ef8df9c2cfa3fd",
+  "changedProductionRuntimeFiles": [],
+  "changedTestContracts": [
+    "scripts/progressionAudit.mjs"
+  ],
+  "repair": "All four expected drawing calls use their actual y - lift coordinate and retain exact live actor/facing requirements."
+}

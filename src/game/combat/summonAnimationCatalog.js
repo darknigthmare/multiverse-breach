@@ -1,3 +1,5 @@
+import wave16 from './summonAnimationsWave16.generated.json' with { type: 'json' };
+import wave15 from './summonAnimationsWave15.generated.json' with { type: 'json' };
 import wave14 from './summonAnimationsWave14.generated.json' with { type: 'json' };
 import wave12 from './summonAnimationsWave12.generated.json' with { type: 'json' };
 import wave13 from './summonAnimationsWave13.generated.json' with { type: 'json' };
@@ -12,7 +14,7 @@ import { sampleSummonAnimationFrame } from './summonAnimationState.js';
 
 const phaseNames = ['arrival', 'preparation', 'attack', 'recovery'];
 const assets = new Map();
-for (const entry of [...registry.entries, ...wave6.entries, ...wave7.entries, ...wave8.entries, ...wave9.entries, ...wave10.entries, ...wave11.entries, ...wave12.entries, ...wave13.entries, ...wave14.entries]) {
+for (const entry of [...registry.entries, ...wave6.entries, ...wave7.entries, ...wave8.entries, ...wave9.entries, ...wave10.entries, ...wave11.entries, ...wave12.entries, ...wave13.entries, ...wave14.entries, ...wave15.entries, ...wave16.entries]) {
   const key = [entry.universe, entry.entityName, entry.actionName].join('::');
   if (entry.key !== key || assets.has(key) || entry.columns !== 4 || entry.rows !== 4 || entry.frames !== 16)
     throw new Error(`Invalid or duplicate native summon animation: ${entry.id}`);

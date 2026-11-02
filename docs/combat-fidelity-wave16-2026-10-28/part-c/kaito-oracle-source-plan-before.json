@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-28T11:17:31.189571+00:00",
+  "beforeFirstGenerationOfBothIdentities": true,
+  "selectionAmendment": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/batch-amendments-2-before-generation.json",
+    "sha256": "5be50e47fad97860d1056ad9a26276d6b19817f622f39a34b74099b3dd18b780"
+  },
+  "blockedIdentitiesRemainExcluded": [
+    "robin_tt",
+    "raven_tt",
+    "starfire_tt"
+  ],
+  "sources": {
+    "kaito": {
+      "universe": "Vocaloid",
+      "sourceWork": "KAITO original Japanese VOCALOID voicebank (2006), original package avatar; Cantarella vocal role (2008)",
+      "appearance": "Male illustrated virtual singer with dark-blue slightly flared short hair, long blue scarf, white long coat with blue edging and yellow sleeve accent, dark inner shirt and trousers, simple dark shoes, original small black headset microphone; no official numerical age asserted and no V3 costume substitution",
+      "weapon": "Original headset microphone and a held stage microphone for a performance gesture, never a weapon",
+      "pose": "Sing a short Cantarella vocal phrase and coordinate the musical cue with a free hand; no poison, materialized lyrics, projectile, magic, healing or invented damaging voice",
+      "bodyHeight": 192,
+      "sourceReference": "https://piapro.net/intl/en_character.html",
+      "simpleName": "Vocalise de KAITO",
+      "secondaryName": "Rep\u00e8re du duo Cantarella",
+      "defenseName": "Respiration de sc\u00e8ne de KAITO",
+      "actionName": "Cantarella \u2014 voix de KAITO",
+      "effect": "buff",
+      "delivery": "support",
+      "kind": "kaito-original-voicebank-performance",
+      "weaponType": "microphone",
+      "color": "#508bc9",
+      "name": "Cantarella \u2014 voix de KAITO",
+      "source1to1Verified": false,
+      "networkVerified": false,
+      "versionPinned": true,
+      "gameplayAdaptation": true
+    },
+    "oracle_matrix": {
+      "universe": "The Matrix",
+      "sourceWork": "The Matrix feature film (1999), Gloria Foster as the Oracle in the first kitchen consultation",
+      "appearance": "Older Black woman with short dark curled hair, forest-green blouse/dress and burnt-orange kitchen apron, quiet gold earrings; conservative low dark shoes and the unseen lower hem are explicit full-body drawing adaptations rather than verified film costume details; not Mary Alice or later appearances",
+      "weapon": "No weapon; a small cookie may be held as the kitchen consultation prop, never thrown as an attack",
+      "pose": "Listen, offer a quiet spoken observation, and extend a small cookie as a reassuring consultation gesture; bounded ally advice only, no physical prophecy, telekinesis, healing or magic projectile",
+      "bodyHeight": 180,
+      "sourceReference": "https://www.looper.com/1260957/hidden-meanings-in-sci-fi-costumes-explained/",
+      "simpleName": "\u00c9couter la question de l\u2019Oracle",
+      "secondaryName": "Offrir le conseil de la cuisine",
+      "defenseName": "Retrait prudent de l\u2019Oracle",
+      "actionName": "Le conseil de l\u2019Oracle",
+      "effect": "buff",
+      "delivery": "support",
+      "kind": "oracle-1999-kitchen-advice",
+      "weaponType": "none",
+      "color": "#c37c45",
+      "name": "Le conseil de l\u2019Oracle",
+      "source1to1Verified": false,
+      "networkVerified": false,
+      "versionPinned": true,
+      "gameplayAdaptation": true
+    }
+  },
+  "sourceNotes": {
+    "kaito": "Original2006 official thumbnail downloaded and actually opened with view_image; headset/scarf/blue-white-yellow outfit confirmed. Official numerical age is not published. Cantarella2008 is a distinct later vocal association, not claimed2006 release song.",
+    "oracle_matrix": "Two independently read articles confirm green dress and orange apron. Image URLs failed direct download403. No claim to have viewed those film pixels. Lower hem/shoes explicitly adapted conservatively; no global fidelity certification."
+  },
+  "layout": {
+    "native": 32,
+    "base": 16,
+    "sourceColumns": 8,
+    "sourceRows": 6,
+    "nativeRows": [
+      "intro",
+      "outro",
+      "roundVictory",
+      "roundDefeat",
+      "fatality",
+      "victory",
+      "defeat",
+      "super"
+    ],
+    "baseRows": [
+      "idle",
+      "run",
+      "attack",
+      "hit"
+    ],
+    "fourDistinctNewDrawingsPerPhase": true,
+    "noOffensiveAttackAnimationForTheseSupportKits": true
+  }
+}

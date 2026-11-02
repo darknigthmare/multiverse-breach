@@ -1,0 +1,891 @@
+{
+  "heroId": "hellblade_senua",
+  "universe": "Hellblade: Senua’s Sacrifice",
+  "sourceWork": "Hellblade: Senua’s Sacrifice (2017), early journey before first Hela; initial ring-pommel steel sword, support Focus mirror",
+  "sourceReference": "https://store.steampowered.com/news/posts/?appids=414340&enddate=1505995301&feed=steam_community_announcements",
+  "date": "2026-10-28",
+  "archiveDir": "docs/combat-fidelity-wave16-2026-10-28/senua-sources",
+  "outputDir": "public/sprites/generated/senua-melee-wave16",
+  "reference": {
+    "asset": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/references/senua-b48-appearance.png",
+    "savedImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/references/senua-b48-appearance.png"
+  },
+  "correctionId": [
+    "senua-correction-a",
+    "senua-correction-b",
+    "senua-ledge-corrective"
+  ],
+  "registryPaths": {
+    "Motion": "src/game/combat/characterSenuaMotionWave16.generated.json",
+    "Combat": "src/game/combat/characterSenuaActionWave16.generated.json"
+  },
+  "sources": [
+    {
+      "id": "senua-motion-a",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-a.native.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "fall"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-a.actual.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "bodyBounds": {
+          "x": 156,
+          "y": 23,
+          "width": 93,
+          "height": 180
+        },
+        "reviewed": true,
+        "state": "idle",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-motion-b",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-b.native.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-b.actual.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 1,
+        "column": 3,
+        "bodyBounds": {
+          "x": 1553,
+          "y": 36,
+          "width": 166,
+          "height": 234
+        },
+        "reviewed": true,
+        "state": "land",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-defense",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-defense.native.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-defense.actual.prompt.txt",
+      "layout": {
+        "columns": 8,
+        "rowCounts": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 5,
+        "column": 3,
+        "bodyBounds": {
+          "x": 1642,
+          "y": 546,
+          "width": 82,
+          "height": 205
+        },
+        "reviewed": true,
+        "state": "shieldExit",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-correction-a",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-a.native.png",
+      "states": [
+        "jumpApex",
+        "taunt1",
+        "hitStun",
+        "defeat"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-a.actual.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 1,
+        "column": 0,
+        "bodyBounds": {
+          "x": 104,
+          "y": 345,
+          "width": 184,
+          "height": 302
+        },
+        "reviewed": true,
+        "state": "taunt1",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-correction-b",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-b.native.png",
+      "states": [
+        "crouchCharge",
+        "reservedUprightCalibration",
+        "reservedGripStudy",
+        "reservedMirrorBeltStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-b.actual.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 1,
+        "column": 0,
+        "bodyBounds": {
+          "x": 118,
+          "y": 342,
+          "width": 142,
+          "height": 273
+        },
+        "reviewed": true,
+        "state": "reservedUprightCalibration",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-combat-a1",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-a1.native.png",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-a1.actual.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "segmentationSeedAlpha": 150,
+      "calibration": {
+        "row": 1,
+        "column": 0,
+        "bodyBounds": {
+          "x": 79,
+          "y": 410,
+          "width": 211,
+          "height": 235
+        },
+        "reviewed": true,
+        "state": "attackLight2",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-combat-a2",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-a2.native.png",
+      "states": [
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-a2.actual.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 3,
+        "column": 3,
+        "bodyBounds": {
+          "x": 1010,
+          "y": 984,
+          "width": 163,
+          "height": 239
+        },
+        "reviewed": true,
+        "state": "chargeRecovery",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-combat-b1",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-b1.native.png",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-b1.actual.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 0,
+        "column": 3,
+        "bodyBounds": {
+          "x": 1030,
+          "y": 63,
+          "width": 175,
+          "height": 265
+        },
+        "reviewed": true,
+        "state": "attackRecovery",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-combat-b2",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-b2.native.png",
+      "states": [
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-combat-b2.actual.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 1,
+        "column": 0,
+        "bodyBounds": {
+          "x": 94,
+          "y": 386,
+          "width": 154,
+          "height": 284
+        },
+        "reviewed": true,
+        "state": "intro",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-ledge-a",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-a.native.png",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-a.actual.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 1,
+        "column": 0,
+        "bodyBounds": {
+          "x": 145,
+          "y": 405,
+          "width": 124,
+          "height": 269
+        },
+        "nativeStandingBodyHeight": 280,
+        "standingEquivalentMethod": "visually-localized-crown-neck-hip-knee-sole-path",
+        "anatomicalPath": [
+          [
+            194,
+            405
+          ],
+          [
+            200,
+            456
+          ],
+          [
+            193,
+            544
+          ],
+          [
+            160,
+            609
+          ],
+          [
+            154,
+            672
+          ]
+        ],
+        "reviewed": true,
+        "state": "ledgeHang",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-ledge-b",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-b.native.png",
+      "states": [
+        "ledgeJump",
+        "reservedUprightCalibration",
+        "reservedGripStudy",
+        "reservedMirrorBeltStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-b.actual.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 1,
+        "column": 0,
+        "bodyBounds": {
+          "x": 119,
+          "y": 368,
+          "width": 116,
+          "height": 276
+        },
+        "reviewed": true,
+        "state": "reservedUprightCalibration",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    },
+    {
+      "id": "senua-ledge-corrective",
+      "image": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-corrective.native.png",
+      "states": [
+        "ledgeClimb",
+        "ledgeDrop",
+        "reservedUprightCalibration",
+        "reservedGripStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-corrective.actual.prompt.txt",
+      "layout": {
+        "columns": 4,
+        "rowCounts": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "segmentationSeedAlpha": 24,
+      "calibration": {
+        "row": 2,
+        "column": 0,
+        "bodyBounds": {
+          "x": 147,
+          "y": 621,
+          "width": 127,
+          "height": 283
+        },
+        "reviewed": true,
+        "state": "reservedUprightCalibration",
+        "raisedArmsExcluded": true,
+        "reason": "Fresh manual crown-to-sole ROI on the actual returned Senua source; high ponytail, hands, sword and mirror are excluded. A single source-wide scale preserves lower crouch/prone/airborne projections. Hanging source uses the documented articulated body path."
+      }
+    }
+  ],
+  "atlases": [
+    {
+      "id": "senua-motion-a",
+      "primarySourceId": "senua-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "selection": {
+        "idle": {
+          "sourceId": "senua-motion-a",
+          "row": 0
+        },
+        "walk": {
+          "sourceId": "senua-motion-a",
+          "row": 1
+        },
+        "run": {
+          "sourceId": "senua-motion-a",
+          "row": 2
+        },
+        "turn": {
+          "sourceId": "senua-motion-a",
+          "row": 3
+        },
+        "jumpStart": {
+          "sourceId": "senua-motion-a",
+          "row": 4
+        },
+        "jumpRise": {
+          "sourceId": "senua-motion-a",
+          "row": 5
+        },
+        "jumpApex": {
+          "sourceId": "senua-correction-a",
+          "row": 0
+        },
+        "fall": {
+          "sourceId": "senua-motion-a",
+          "row": 6
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "senua-motion-b",
+      "primarySourceId": "senua-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "selection": {
+        "fastFall": {
+          "sourceId": "senua-motion-b",
+          "row": 0
+        },
+        "land": {
+          "sourceId": "senua-motion-b",
+          "row": 1
+        },
+        "crouchEnter": {
+          "sourceId": "senua-motion-b",
+          "row": 2
+        },
+        "crouchIdle": {
+          "sourceId": "senua-motion-b",
+          "row": 3
+        },
+        "crouchExit": {
+          "sourceId": "senua-motion-b",
+          "row": 4
+        },
+        "crouchCharge": {
+          "sourceId": "senua-correction-b",
+          "row": 0
+        },
+        "taunt1": {
+          "sourceId": "senua-correction-a",
+          "row": 1
+        },
+        "hitStun": {
+          "sourceId": "senua-correction-a",
+          "row": 2
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-b.native.png",
+          "nativeRow": 5,
+          "state": "crouchCharge",
+          "poses": 4,
+          "reason": "Third pose visibly lacks gripped sword; all four replaced."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-b.native.png",
+          "nativeRow": 6,
+          "state": "taunt1",
+          "poses": 4,
+          "reason": "At least one source body reaches canvas edge; entire four-pose row replaced with new complete bodies."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-motion-b.native.png",
+          "nativeRow": 7,
+          "state": "hitStun",
+          "poses": 4,
+          "reason": "At least one source body reaches canvas edge; entire four-pose row replaced with new complete bodies."
+        }
+      ]
+    },
+    {
+      "id": "senua-defense",
+      "primarySourceId": "senua-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "selection": {
+        "shieldEnter": {
+          "sourceId": "senua-defense",
+          "row": 0
+        },
+        "shieldHold": {
+          "sourceId": "senua-defense",
+          "row": 1
+        },
+        "shieldHit": {
+          "sourceId": "senua-defense",
+          "row": 2
+        },
+        "perfectShield": {
+          "sourceId": "senua-defense",
+          "row": 3
+        },
+        "shieldBreak": {
+          "sourceId": "senua-defense",
+          "row": 4
+        },
+        "shieldExit": {
+          "sourceId": "senua-defense",
+          "row": 5
+        },
+        "dead": {
+          "sourceId": "senua-defense",
+          "row": 6
+        },
+        "defeat": {
+          "sourceId": "senua-correction-a",
+          "row": 3
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-defense.native.png",
+          "nativeRow": 7,
+          "state": "defeat",
+          "poses": 4,
+          "reason": "At least one source body reaches canvas edge; entire four-pose row replaced with new complete bodies."
+        }
+      ]
+    },
+    {
+      "id": "senua-combat-a",
+      "primarySourceId": "senua-combat-a1",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "selection": {
+        "attackLight1": {
+          "sourceId": "senua-combat-a1",
+          "row": 0
+        },
+        "attackLight2": {
+          "sourceId": "senua-combat-a1",
+          "row": 1
+        },
+        "attackLight3": {
+          "sourceId": "senua-combat-a1",
+          "row": 2
+        },
+        "crouchLight": {
+          "sourceId": "senua-combat-a1",
+          "row": 3
+        },
+        "chargeStart": {
+          "sourceId": "senua-combat-a2",
+          "row": 0
+        },
+        "chargeLoop": {
+          "sourceId": "senua-combat-a2",
+          "row": 1
+        },
+        "chargeRelease": {
+          "sourceId": "senua-combat-a2",
+          "row": 2
+        },
+        "chargeRecovery": {
+          "sourceId": "senua-combat-a2",
+          "row": 3
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "senua-combat-b",
+      "primarySourceId": "senua-combat-b1",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "selection": {
+        "attackRecovery": {
+          "sourceId": "senua-combat-b1",
+          "row": 0
+        },
+        "special": {
+          "sourceId": "senua-combat-b1",
+          "row": 1
+        },
+        "aerialNeutral": {
+          "sourceId": "senua-combat-b1",
+          "row": 2
+        },
+        "aerialForward": {
+          "sourceId": "senua-combat-b1",
+          "row": 3
+        },
+        "aerialDown": {
+          "sourceId": "senua-combat-b2",
+          "row": 0
+        },
+        "intro": {
+          "sourceId": "senua-combat-b2",
+          "row": 1
+        },
+        "victory": {
+          "sourceId": "senua-combat-b2",
+          "row": 2
+        },
+        "ledgeAttack": {
+          "sourceId": "senua-combat-b2",
+          "row": 3
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "senua-ledge",
+      "primarySourceId": "senua-ledge-a",
+      "batch": "Combat",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "selection": {
+        "ledgeCatch": {
+          "sourceId": "senua-ledge-a",
+          "row": 0
+        },
+        "ledgeHang": {
+          "sourceId": "senua-ledge-a",
+          "row": 1
+        },
+        "ledgeClimb": {
+          "sourceId": "senua-ledge-corrective",
+          "row": 0
+        },
+        "ledgeDrop": {
+          "sourceId": "senua-ledge-corrective",
+          "row": 1
+        },
+        "ledgeJump": {
+          "sourceId": "senua-ledge-b",
+          "row": 0
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-b.native.png",
+          "nativeRow": 1,
+          "state": "reservedUprightCalibration",
+          "poses": 4,
+          "reason": "Reserved appearance/grip/calibration study; excluded from game."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-b.native.png",
+          "nativeRow": 2,
+          "state": "reservedGripStudy",
+          "poses": 4,
+          "reason": "Reserved appearance/grip/calibration study; excluded from game."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-correction-b.native.png",
+          "nativeRow": 3,
+          "state": "reservedMirrorBeltStudy",
+          "poses": 4,
+          "reason": "Reserved appearance/grip/calibration study; excluded from game."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-a.native.png",
+          "nativeRow": 2,
+          "state": "ledgeClimb",
+          "poses": 4,
+          "reason": "First three leading hands remain too high before final push; all four replaced with progressive face/shoulder/waist contact."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-a.native.png",
+          "nativeRow": 3,
+          "state": "ledgeDrop",
+          "poses": 4,
+          "reason": "At least one source body reaches canvas edge; entire four-pose row replaced with new complete bodies."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-b.native.png",
+          "nativeRow": 1,
+          "state": "reservedUprightCalibration",
+          "poses": 4,
+          "reason": "Reserved appearance/grip/calibration study; excluded from game."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-b.native.png",
+          "nativeRow": 2,
+          "state": "reservedGripStudy",
+          "poses": 4,
+          "reason": "Reserved appearance/grip/calibration study; excluded from game."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-b.native.png",
+          "nativeRow": 3,
+          "state": "reservedMirrorBeltStudy",
+          "poses": 4,
+          "reason": "Reserved appearance/grip/calibration study; excluded from game."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-corrective.native.png",
+          "nativeRow": 2,
+          "state": "reservedUprightCalibration",
+          "poses": 4,
+          "reason": "Reserved appearance/grip/calibration study; excluded from game."
+        },
+        {
+          "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/senua-ledge-corrective.native.png",
+          "nativeRow": 3,
+          "state": "reservedGripStudy",
+          "poses": 4,
+          "reason": "Reserved appearance/grip/calibration study; excluded from game."
+        }
+      ]
+    }
+  ],
+  "visualReview": {
+    "complete": true,
+    "evidence": "docs/combat-fidelity-wave16-2026-10-28/senua-sources/source-row-review.json",
+    "outfit": "Early 2017 Senua: dark braided high ponytail, leather headpiece and silver/blue ornament, blue eye woad and anatomical left-arm woad, fur collar/brooch, brown leather and muted blue plaid, closed boots and left pouch, right-hip iron mirror.",
+    "weapons": "Initial physical steel sword with ring pommel, right hand; sword sheathed for movement/jumps/Focus/ledge grips. Guard-labelled states depict sword parry. Focus is support mirror handling with no offensive magic or damage.",
+    "limitations": [
+      "Original generated gameplay adaptations; no official animation or certified 1:1.",
+      "Opposite facing mirrors the sprite including equipment asymmetries; handedness in that camp is not certified.",
+      "Official cosplay PDF linked by 2017 Steam announcement was blocked403; no claim of having inspected it. Textual guide mirror and current official Steam imagery are secondary appearance evidence, not source-frame certification."
+    ]
+  },
+  "incompleteInitialSources": [
+    {
+      "id": "senua-motion-a",
+      "requested": 32,
+      "observed": 28,
+      "missingState": "jumpApex",
+      "reason": "Actual first return has only seven rows; missing four poses generated separately."
+    }
+  ],
+  "rejectedSources": []
+}

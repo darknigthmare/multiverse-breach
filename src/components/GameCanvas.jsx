@@ -1908,7 +1908,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     (enemy.runtimeId || enemy.id || enemy.name) === activeOpponentId
   )) || opponentState.find(enemy => enemy.currentHp > 0);
   const opponentHasCommand = battleConfig?.opponentControl === 'p2' && (
-    (stage.mode === 'RPG' && activeOpponentObj?.atb >= 100)
+    (stage.mode === 'RPG' && (rpgTargeting ? rpgTargeting.side === 'enemy' : activeOpponentObj?.atb >= 100))
     || (stage.mode === 'Tactics' && engineRef.current?.activeUnitType === 'enemy')
   );
   const activeHeroObj = rpgTargeting
@@ -1918,16 +1918,20 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     ? engineRef.current?.getSummonState?.(activeHeroObj, rpgTargeting?.side || (opponentHasCommand ? 'enemy' : 'player'))
     : null;
   const rpgSceneActive = stage.mode === 'RPG' && Boolean(engineRef.current?.getSummonSceneState?.()?.active);
+  const rpgSourceInputLocked = stage.mode === 'RPG' && Boolean(activeHeroObj?.sourceControlWave16?.active
+    || activeHeroObj?.sourcePossessionBodyWave16
+    || activeHeroObj?.sourceProtectionWave16?.active && activeHeroObj.sourceProtectionWave16.kind === 'yukikaze');
   const getCombatantMove = (combatant, type) => {
+    const named = action => typeof action === 'string' ? { name: action } : action;
     if (stage.mode === 'Tactics' && engineRef.current?.verticalTerrain) {
       const action = engineRef.current.getActionDefinition(combatant, type);
-      if (action) return action;
+      if (action) return named(action);
     }
     if (stage.mode === 'RPG') {
       const action = getRpgCombatantAbility(combatant, type);
-      if (action) return action;
+      if (action) return named(action);
     }
-    if (combatant?.[type]) return combatant[type];
+    if (combatant?.[type]) return named(combatant[type]);
     const baseDamage = Math.max(1, Number(combatant?.atk) || 8);
     if (type === 'secondary') return { name: combatant?.special || 'Frappe lourde', dmg: 1.45, cd: 4 };
     if (type === 'defense') return { name: 'Garde', dur: 1.6, reduce: 0.55 };
@@ -2852,6 +2856,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         {/* Action Panel */}
         <div>
           {stage.mode === 'RPG' && <RpgTargetingPanel targeting={rpgTargeting} lang={lang} paused={sessionPaused}
+            sourceStatusActors={[...teamState,...opponentState]}
+            possessionCommands={['player',...(battleConfig?.opponentControl==='p2'?['enemy']:[])].map(side=>engineRef.current?.getRpgPossessionCommandState?.(side)).filter(Boolean)}
+            onPossessedTargeting={(controllerId,side)=>{if(sessionPausedRef.current)return;engineRef.current?.beginPossessedTargeting?.(controllerId,side);setRpgTargeting(engineRef.current?.getTargetingState()||null);}}
+            onReleasePossession={(controllerId,side)=>{if(sessionPausedRef.current)return;engineRef.current?.releaseRpgPossession?.(controllerId,side);setRpgTargeting(engineRef.current?.getTargetingState()||null);}}
             wait={rpgTargetingWait}
             onWaitChange={value => { rpgTargetingWaitRef.current = value; setRpgTargetingWait(value); engineRef.current?.setTargetingWait?.(value); }}
             onSelect={id => { engineRef.current?.selectTarget(id); setRpgTargeting(engineRef.current?.getTargetingState() || null); }}
@@ -2876,7 +2884,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               <div style={{ display: stage.mode === 'Smash' ? 'none' : 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                 <button
                   onClick={() => handleActiveHeroAbility('simple')}
-                  disabled={!!rpgTargeting || rpgSceneActive || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'simple' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.'}
                 >
@@ -2886,7 +2894,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('secondary')}
-                  disabled={!!rpgTargeting || rpgSceneActive || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
                 >
@@ -2898,7 +2906,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('defense')}
-                  disabled={!!rpgTargeting || rpgSceneActive || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'defense' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise une action defensive: reduction de degats, protection ou posture tactique.' : 'Use a defensive action: damage reduction, protection, or tactical stance.'}
                 >
@@ -2908,7 +2916,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('special')}
-                  disabled={!!rpgTargeting || rpgSceneActive || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className="btn-special"
                   title={lang === 'fr' ? 'Utilise l attaque speciale quand la jauge speciale est a 100%.' : 'Use the special attack when the special gauge reaches 100%.'}
                   style={{

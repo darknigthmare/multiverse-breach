@@ -1,0 +1,35 @@
+{
+  "method": "Real EngineTactics applyProfiledAttack control -> lethal applyDamage -> real vertical revive before another startTurn; no synthetic status or HP mutation after initial fixture placement",
+  "atBind": {
+    "targets": 1,
+    "hp": 5000,
+    "status": {
+      "kind": "phaselock",
+      "remainingTurns": 1,
+      "releasePending": false,
+      "sourceHeroId": "borderlands_2_maya_phaselock"
+    },
+    "controlled": true
+  },
+  "atDeath": {
+    "hp": 0,
+    "status": {
+      "kind": "phaselock",
+      "remainingTurns": 1,
+      "releasePending": false,
+      "sourceHeroId": "borderlands_2_maya_phaselock"
+    },
+    "controlled": false
+  },
+  "atRevive": {
+    "targets": 1,
+    "hp": 1500,
+    "status": {
+      "kind": "phaselock",
+      "remainingTurns": 1,
+      "releasePending": false,
+      "sourceHeroId": "borderlands_2_maya_phaselock"
+    },
+    "controlled": true
+  }
+}

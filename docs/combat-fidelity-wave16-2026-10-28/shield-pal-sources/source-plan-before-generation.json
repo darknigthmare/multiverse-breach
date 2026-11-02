@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-28T12:02:56.921Z",
+  "beforeFirstGeneration": true,
+  "parentPlan": "docs/combat-fidelity-wave16-2026-10-28/persistent-shield-pal-plan-before-generation.json",
+  "parentPlanSha256": "2e9de1e899f18abb0ffd3b9b9a0b60175c3e4e2ad501b9c09149dd7ffea234ab",
+  "category": "persistentProtection",
+  "plannedGeneratedAtlases": 1,
+  "plannedGeneratedPoses": 16,
+  "affectsRpgSummonCounters": false,
+  "entity": {
+    "id": "shield-pal-wave16",
+    "sourceHeroId": "cuphead_ms_chalice",
+    "universe": "Cuphead",
+    "kind": "protection-entity",
+    "sourceWork": "Cuphead: The Delicious Last Course (2022), Ms. Chalice Super Art II — Shield Pal",
+    "appearance": "Small pointed golden shield, red-pink heart inset with two black oval/pie-cut eyes, two complete white feathered wings at the upper sides, black cartoon ink outline. No arms, legs, mouth, insect body, Chalice body, generic blue energy bubble or empty force-field ring."
+  },
+  "references": [
+    {
+      "file": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/reference-shield-pal-loop-0051.png",
+      "sha256": "f79d59a40282e37aa19c0ee6a8ba5e4b3edb0bd5254b985029c4147bee6fd970",
+      "actuallyViewed": true,
+      "referenceOnly": true,
+      "countsAsNewGeneratedDrawing": false
+    },
+    {
+      "file": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/reference-mc_super_II_heart_death_0001.png",
+      "sha256": "3f2c7c217473a9cd7e772f18e5211cae4de051e5215525b6cde41c7b005fd354",
+      "actuallyViewed": true,
+      "referenceOnly": true,
+      "countsAsNewGeneratedDrawing": false
+    },
+    {
+      "file": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/reference-mc_super_II_heart_death_0013.png",
+      "sha256": "349263816fc5b4810329c90313021532a77c5ec5628ba026fa8a981ae80546ae",
+      "actuallyViewed": true,
+      "referenceOnly": true,
+      "countsAsNewGeneratedDrawing": false
+    },
+    {
+      "file": "docs/combat-fidelity-wave16-2026-10-28/shield-pal-sources/reference-mc_super_II_heart_death_0026.png",
+      "sha256": "693255775a2f70b2b4aa9e743515b587bac746248faf25c1532ac64606069c28",
+      "actuallyViewed": true,
+      "referenceOnly": true,
+      "countsAsNewGeneratedDrawing": false
+    }
+  ],
+  "sourceLinks": [
+    {
+      "url": "https://www.spriters-resource.com/pc_computer/cupheaddontdealwiththedevil/asset/181710/",
+      "observation": "Ms.Chalice archive submitted August17,2022. Actual mc_super_II_shield_loop_0051 and heart_death0001/0013/0026 PNG references downloaded by byte ranges, decompressed with CRC verification and viewed."
+    },
+    {
+      "url": "https://cuphead.wiki.gg/wiki/List_of_Weapons",
+      "observation": "Shield Pal is a flying golden shield with heart emblem, staying until the next damaging hit; no HP loss on that hit."
+    },
+    {
+      "url": "https://cuphead.wiki.gg/wiki/Super_Arts",
+      "observation": "Ms.Chalice SuperArtII summons a familiar that takes one extra hit."
+    }
+  ],
+  "phases": {
+    "arrival": {
+      "row": 0,
+      "frames": 4,
+      "description": "Four complete distinct wing-flap arrival poses."
+    },
+    "guard": {
+      "row": 1,
+      "frames": 4,
+      "description": "Four distinct full familiar hover/flap poses; loop persists without a timer until one accepted damaging hit."
+    },
+    "absorb": {
+      "row": 2,
+      "frames": 4,
+      "description": "Four distinct complete familiar squash/recoil/tilt poses acknowledging one accepted damaging hit; no HP, healing, attack or invented limb."
+    },
+    "departure": {
+      "row": 3,
+      "frames": 4,
+      "description": "Four distinct complete familiar withdrawal/tilt/folding wing poses before disappearing. Whole shield/heart/wings remain contained in every frame."
+    }
+  },
+  "authoredAdaptation": "New pixel-art drawings, not official frames. The source hit/departure references distort and disperse the heart; the bounded engine withdraws a complete familiar before hiding it so every retained native cell has the whole source entity. Timings .4s arrival/.56s guard loop/.4s absorb/.4s departure are explicit engine sampling, not certified source timings.",
+  "outputContract": {
+    "registry": "src/game/combat/sourceProtectionEntitiesWave16.generated.json",
+    "sheet": "/sprites/generated/source-protection-entities-wave16/shield-pal.png",
+    "frameWidth": 256,
+    "frameHeight": 256,
+    "columns": 4,
+    "rows": 4,
+    "frames": 16,
+    "baseline": 244
+  },
+  "source1to1Verified": false,
+  "canonicalFrames": false
+}

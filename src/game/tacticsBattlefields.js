@@ -2,6 +2,13 @@ import { EXPANDED_UNIVERSE_SIGNATURES } from './expandedUniverses';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { TACTICS_VERTICAL_BATTLEFIELDS } from './tacticsVerticalBattlefields.js';
 import { TACTICS_UNIVERSE_BATTLEFIELDS } from './tacticsUniverseBattlefields.js';
+import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE15 } from './tacticsUniverseBattlefieldsWave15.js';
+import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE16 } from './tacticsUniverseBattlefieldsWave16.js';
+
+// Historical wave exports remain bounded; all live selectors use this union.
+export const TACTICS_SOURCE_BATTLEFIELDS = Object.freeze({
+  ...TACTICS_UNIVERSE_BATTLEFIELDS, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16
+});
 
 const tile = (x, y, type, label = null) => ({ x, y, type, label });
 const obstacle = (id, name, gridX, gridY, type = 'barrier', hp = 80, color = '#4a4e52') => ({
@@ -280,7 +287,7 @@ export const TACTICS_BATTLEFIELDS = {
     ]
   },
   ...TACTICS_VERTICAL_BATTLEFIELDS,
-  ...TACTICS_UNIVERSE_BATTLEFIELDS
+  ...TACTICS_SOURCE_BATTLEFIELDS
 };
 
 const getSignature = (universe) => EXPANDED_UNIVERSE_SIGNATURES[universe] || null;
@@ -343,6 +350,8 @@ export function getTacticsMissionProfile(stage = {}, battlefield = null) {
 }
 
 const sourceLocationMatchers = {
+  ...TACTICS_SOURCE_LOCATION_MATCHERS_WAVE16,
+  ...TACTICS_SOURCE_LOCATION_MATCHERS_WAVE15,
   ff7_mt_nibel_tactics: /\b(?:nibel|nibelheim)\b/i,
   ff13_archylte_steppe_tactics: /archylte|\bgran pulse\b|steppe d.archylte/i,
   ff15_vesperpool_tactics: /vesperpool|cleigne.*(?:marsh|marais)/i,
@@ -354,7 +363,7 @@ const sourceLocationMatchers = {
 };
 
 export function getUniverseTacticsBattlefield(stage = {}, { allowDefault = false } = {}) {
-  const candidates = Object.values(TACTICS_UNIVERSE_BATTLEFIELDS)
+  const candidates = Object.values(TACTICS_SOURCE_BATTLEFIELDS)
     .filter(field => field.source.universe === stage.universe);
   const location = [stage.name, stage.location, stage.tacticsLocation].filter(Boolean).join(' ');
   const exact = candidates.find(field => sourceLocationMatchers[field.id]?.test(location));

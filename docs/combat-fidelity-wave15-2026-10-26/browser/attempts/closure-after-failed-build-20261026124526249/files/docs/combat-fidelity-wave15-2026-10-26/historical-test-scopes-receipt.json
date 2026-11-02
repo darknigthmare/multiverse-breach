@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T12:30:25.938Z",
+  "passed": true,
+  "observedExitCode": 0,
+  "command": "CONTACT_WAVE6_REPORT_PATH=docs/combat-fidelity-wave15-2026-10-26/historical-contact-scope-after.json node --test --test-concurrency=1 scripts/combatContactVisualWave6.test.mjs scripts/summonAnimationWave10.test.mjs scripts/summonAnimationWave11.test.mjs scripts/combatFidelityWave15.test.mjs",
+  "tests": 54,
+  "passedTests": 54,
+  "failedTests": 0,
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/production-freeze.json",
+    "sha256": "fa13f189e6217c1eaca6960f1a610e2c9fe570e381bded00066a229fec148c2f",
+    "bytes": 294772
+  },
+  "freezeCreatedAt": "2026-10-26T11:26:06.961Z",
+  "log": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/historical-scopes-complete-after.log",
+    "sha256": "80e85410e37fdce34a469a57b87d601e504dc8ef417c1f200aef3b903b793c38",
+    "bytes": 6787
+  },
+  "contactReport": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/historical-contact-scope-after.json",
+    "sha256": "68d25589c49594c3df6fe402b59b8f5b3a0972a07edea93e29e29ebc3e7b25be",
+    "bytes": 19196
+  },
+  "previousFamiliesStillChecked": 37,
+  "sonicMissTrailsPreserved": true,
+  "frozenRuntimeFilesChecked": 482,
+  "runtimeFilesUnchanged": true,
+  "documentedRiftOutputExcluded": "src/game/riftDossierAssets.json",
+  "testFiles": [
+    {
+      "path": "scripts/combatContactVisualWave6.test.mjs",
+      "sha256": "297933d591aecbba933fddd9a649de69457323694033a29a1ffa2a365330b09e",
+      "bytes": 21987,
+      "sha256Before": "928f38c129df04d5e863179db1b02d8353f4f9ac29c724b2e7d02eb435c08b00"
+    },
+    {
+      "path": "scripts/summonAnimationWave10.test.mjs",
+      "sha256": "15934d685c3a454b91626ce5a41b25e425815a67a62c5c0a9b7b1f43fbcb33f1",
+      "bytes": 31471,
+      "sha256Before": "9386b3a18d3d25996b2d7c5920ca5c32c09e773bfb5b490cd3436539f0c4d948"
+    },
+    {
+      "path": "scripts/summonAnimationWave11.test.mjs",
+      "sha256": "80925aa8941642480f746bdb988b833e437a17cb4fb04d62ada3d3393131b81e",
+      "bytes": 31951,
+      "sha256Before": "7ca875dd690d72180dca4909cf2963557ef400a49a0a34e2348e3c234e6b5a4a"
+    },
+    {
+      "path": "scripts/combatFidelityWave15.test.mjs",
+      "sha256": "f66a2760f2c357f1275ab24a56fece031d276fc3bd0ef5e5d1cf6ad32a24294d",
+      "bytes": 14404,
+      "sha256Before": "be124b032a3b8490a4142ee70963065bb000591e0807b8d81d6ffb6e26fc1ad8"
+    }
+  ],
+  "beforeFailureLogs": [
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/historical-contact-scope-before.log",
+      "sha256": "0d8f9c5e1e7b77a389317ed8aa761805334f78d5f32f4d3a5292da6f16d0f1fc",
+      "bytes": 3031
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/historical-shephard-scope-before.log",
+      "sha256": "e0431bbb0dc62e0c687cb8bdebfe37cfdf0fc34ae66e697ecaf7895c262c1ea8",
+      "bytes": 2035
+    }
+  ],
+  "snapshot": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/batch-plan-before.json",
+    "sha256": "08c143270255b5bc83fc051d37f5203351da868b232856d9f43a4dc943463dd1",
+    "bytes": 484087,
+    "meaning": "Captured raw Shephard had no authored identity before W15; current raw actions remain byte-equivalent as asserted by both complete legacy suites."
+  },
+  "scope": "Tests only: W15 excluded from a pre-W6 compatibility loop; raw historical Shephard fixture and current Barney relay checked separately. No historical assertions removed, no production code or W1–W14 evidence modified."
+}

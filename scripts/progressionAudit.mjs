@@ -793,10 +793,10 @@ assert(characterPlaquesSource.includes('arca_marrow') && characterPlaquesSource.
 assert(characterPlaquesSource.includes('arca_sable') && characterPlaquesSource.includes('Cartographe des routes assumees'), 'Sable must keep her detailed OC origin and Breach dossier.');
 assert(characterPlaquesSource.includes('arca_loom') && characterPlaquesSource.includes('Tisseuse de lignes de vie'), 'Loom must keep her detailed OC origin and Breach dossier.');
 assert([
-  'drawPixelSprite(ctx, h.x, h.y, this.getRpgPresentationActor(h), animTime, h.facing',
-  'drawPixelSprite(ctx, e.x, e.y, this.getRpgPresentationActor(heroSpriteActor), animTime, e.facing',
-  'drawBoss(ctx, e.x, e.y, this.getRpgPresentationActor(e), animTime, e.facing',
-  'drawPixelEnemy(ctx, e.x, e.y, this.getRpgPresentationActor(e), animTime, e.facing'
+  'drawPixelSprite(ctx, h.x, h.y - lift, this.getRpgPresentationActor(h), animTime, h.facing',
+  'drawPixelSprite(ctx, e.x, e.y - lift, this.getRpgPresentationActor(heroSpriteActor), animTime, e.facing',
+  'drawBoss(ctx, e.x, e.y - lift, this.getRpgPresentationActor(e), animTime, e.facing',
+  'drawPixelEnemy(ctx, e.x, e.y - lift, this.getRpgPresentationActor(e), animTime, e.facing'
 ].every(call => rpgEngineSource.includes(call)), 'RPG presentation actors must retain live hero, enemy and boss orientation.');
 assert(tacticsEngineSource.includes("drawPixelSprite(ctx, unit.x, unit.y, actorForDraw, animTime, unit.facing") && tacticsEngineSource.includes("drawPixelEnemy(ctx, unit.x, unit.y, actorForDraw, animTime, unit.facing"), 'Tactics presentation actors must retain live unit orientation.');
 assert(rendererSource.includes('drawBoss = (ctx, x, y, boss, animTime, facing = -1)') && rendererSource.includes('ctx.scale(facing, 1)'), 'Boss rendering must accept live orientation instead of forcing left.');

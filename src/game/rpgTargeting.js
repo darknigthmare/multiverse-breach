@@ -3,6 +3,9 @@
 import { previewBattleItemDamage } from './battleItemShield.js';
 import { getEffectiveCombatDefense } from './combatStatPreparation.js';
 import { resolveCombatAbility, resolveUniverseSummon } from './combatIdentity.js';
+import { isPhaselockProfile, isPhaselockTargetEligible } from './combat/combatControlWave15.js';
+import { isSourceControlProfileWave16 } from './combat/combatControlWave16.js';
+import { canSourceControlTargetWave16, getPossessedSligActionWave16 } from './combat/sourceCombatRuntimeWave16.js';
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const positive = (value, fallback) => Number.isFinite(Number(value)) && Number(value) > 0 ? Number(value) : fallback;
 export const rpgUnitId = unit => unit?.battleId || unit?.runtimeId || unit?.id;
@@ -27,7 +30,8 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
   // An invocation is a separate command. It never aliases an actor's existing
   // secondary or special, including their medical and defensive semantics.
   const summon = abilityType === 'summon' ? resolveUniverseSummon(actor) : null;
-  const action = abilityType === 'summon' ? summon?.action
+  const possessedAction = getPossessedSligActionWave16(actor, abilityType);
+  const action = possessedAction ? { ...possessedAction, sourceSligRifle: true } : abilityType === 'summon' ? summon?.action
     : getRpgCombatantAbility(actor, abilityType) || (side === 'enemy' ? enemyFallbacks[abilityType] : null);
   if (!action) return null;
   const explicit = Object.assign({},
@@ -69,7 +73,7 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
     else shape = 'single';
   }
   if (!['single', 'group', 'multi', 'area', 'line', 'cone'].includes(shape)) shape = 'single';
-  const declaredDelivery = ['melee', 'ranged', 'projectile', 'beam', 'area', 'radial', 'support', 'self'].includes(explicit.delivery);
+  const declaredDelivery = ['melee', 'ranged', 'projectile', 'beam', 'area', 'radial', 'control', 'support', 'self'].includes(explicit.delivery);
   const melee = explicit.delivery === 'melee' || (!declaredDelivery
     && (/melee|slash|punch|bite|claw|dodge_strike|drill_smash/.test(type)
       || (!type && abilityType === 'simple' && !/gun|laser|cards|staff|bow/.test(actor.weaponType || actor.weapon || ''))));
@@ -78,13 +82,16 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
   return {
     abilityType,
     summon,
+    sourceHeroId: summon?.sourceHeroId || actor.sourceHeroId || actor.sourceId || actor.id,
+    universe: actor.universe,
     name: action.name || abilityType,
     action,
     effect,
     targetSide,
     excludeSelf: explicit.excludeSelf === true,
     shape,
-    delivery: targetSide === 'self' ? 'self' : beneficialEffects.has(effect) ? 'support' : explicit.delivery === 'radial' ? 'radial' : melee ? 'melee' : 'ranged',
+    delivery: targetSide === 'self' ? 'self' : beneficialEffects.has(effect) ? 'support'
+      : effect === 'control' && explicit.delivery === 'control' ? 'control' : explicit.delivery === 'radial' ? 'radial' : melee ? 'melee' : 'ranged',
     maxTargets: shape === 'single' ? 1 : finiteTargets || (shape === 'multi' ? 2 : Infinity),
     minTargets: explicit.delivery === 'radial' ? 0 : Math.max(1, Math.round(positive(explicit.minTargets, 1))),
     // Authored melee range describes contact after the existing RPG approach.
@@ -95,6 +102,20 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
     lineWidth: positive(explicit.lineWidth ?? action.lineWidth, 38 * scale),
     coneAngle: clamp(positive(explicit.coneAngle ?? action.coneAngle, 55), 1, 180),
     multiplier: Math.max(0, Number(action.dmg ?? 1) || 0),
+    controlKind: effect === 'control' ? explicit.controlKind || null : null,
+    controlDuration: effect === 'control' ? clamp(positive(explicit.controlDuration ?? explicit.duration, 2.4), 1 / 60, 5) : 0,
+    controlTurns: effect === 'control' ? 1 : 0,
+    ...(explicit.authorization ? { authorization: explicit.authorization } : {}),
+    ...(explicit.channelDuration ? { channelDuration: explicit.channelDuration } : {}),
+    ...(explicit.requiresExplicitTargetEligibility !== undefined ? { requiresExplicitTargetEligibility: explicit.requiresExplicitTargetEligibility } : {}),
+    ...(explicit.hitSequence ? { hitSequence: structuredClone(explicit.hitSequence) } : {}),
+    ...(explicit.postSequenceStunDuration ? { postSequenceStunDuration: explicit.postSequenceStunDuration } : {}),
+    ...(explicit.invulnerabilityKind ? { invulnerabilityKind: explicit.invulnerabilityKind,
+      invulnerabilityDuration: explicit.invulnerabilityDuration ?? explicit.duration } : {}),
+    ...(explicit.shieldKind ? { shieldKind: explicit.shieldKind, shieldHits: explicit.shieldHits } : {}),
+    ...(explicit.counterKind ? { counterKind: explicit.counterKind,
+      counterWindowDuration: explicit.counterWindowDuration, counterMultiplier: explicit.counterMultiplier,
+      counterRange: explicit.counterRange, counterRequiresIncomingContact: explicit.counterRequiresIncomingContact } : {}),
     duration: positive(explicit.duration ?? action.duration ?? action.dur, 3),
     buffMultiplier: positive(explicit.buffMultiplier ?? action.buffMultiplier, 1.2),
     healRatio: positive(explicit.healRatio ?? action.healRatio, 0),
@@ -114,6 +135,11 @@ export function getRpgEligibleTargets({ actor, profile, allies, opponents }) {
     }
     if (profile.effect === 'revive') return unit.currentHp <= 0;
     if (unit.currentHp <= 0 || unit.state === 'dead') return false;
+    if (profile.effect === 'control') {
+      if (isSourceControlProfileWave16(profile)) {
+        if (!canSourceControlTargetWave16(actor, unit, profile)) return false;
+      } else if (!isPhaselockProfile(profile) || !isPhaselockTargetEligible(unit) || unit.rpgControlTicks > 0) return false;
+    }
     if (profile.effect === 'heal') {
       const cap = unit.statusEffects?.radiated > 0 ? unit.maxHp * 0.5 : unit.maxHp;
       if (unit.currentHp >= cap) return false;

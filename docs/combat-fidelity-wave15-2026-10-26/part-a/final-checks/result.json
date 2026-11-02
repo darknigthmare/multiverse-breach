@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "receipts": [
+    {
+      "id": "native-check",
+      "command": "node",
+      "args": [
+        "scripts/buildCombatCharacterAnimationsWave15PartA.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-26T11:21:08.489Z",
+      "finishedAt": "2026-10-26T11:21:52.245Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave15-2026-10-26/part-a/final-checks/native-check.log",
+      "logSha256": "eb447da884527580057e71326202506785c331caf8be6965f92a7a212bc94b4b",
+      "receiptOrigin": "node-spawnSync-observed-status"
+    },
+    {
+      "id": "base-check",
+      "command": "node",
+      "args": [
+        "scripts/buildCombatCharacterSpriteCorrectionsWave15PartA.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-26T11:21:52.248Z",
+      "finishedAt": "2026-10-26T11:22:29.893Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave15-2026-10-26/part-a/final-checks/base-check.log",
+      "logSha256": "6e57f5b2168d3299acc65d14d83b3672bf410a228148a1016a6514ae34c4590e",
+      "receiptOrigin": "node-spawnSync-observed-status"
+    },
+    {
+      "id": "verification-check",
+      "command": "node",
+      "args": [
+        "docs/combat-fidelity-wave15-2026-10-26/part-a/verify-artwork.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-26T11:22:29.894Z",
+      "finishedAt": "2026-10-26T11:22:36.597Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave15-2026-10-26/part-a/final-checks/verification-check.log",
+      "logSha256": "f7d8bbeb8a1b1660517c0b6e66d76e5a8ef20c491c0e1aaeec13dabc48a1adf3",
+      "receiptOrigin": "node-spawnSync-observed-status"
+    },
+    {
+      "id": "held-axe-preservation-check",
+      "command": "node",
+      "args": [
+        "docs/combat-fidelity-wave15-2026-10-26/part-a/verify-held-axe-preservation.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-26T11:22:36.598Z",
+      "finishedAt": "2026-10-26T11:22:37.314Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave15-2026-10-26/part-a/final-checks/held-axe-preservation-check.log",
+      "logSha256": "cc1a5b42dabc47f91de51083f65d6e8822a516f2eceeb234fef221b83932fdf5",
+      "receiptOrigin": "node-spawnSync-observed-status"
+    },
+    {
+      "id": "lint",
+      "command": "./node_modules/.bin/oxlint",
+      "args": [
+        "docs/combat-fidelity-wave15-2026-10-26/part-a",
+        "scripts/buildCombatCharacterAnimationsWave15PartA.mjs",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave15PartA.mjs",
+        "src/game/combat/combatSourceDefinitionsWave15PartA.js",
+        "src/game/combat/abilities/abilitiesWave15PartA.js",
+        "src/game/combat/presentationCatalogWave15PartA.js",
+        "src/game/combat/rosterReinforcementsWave15PartA.js"
+      ],
+      "startedAt": "2026-10-26T11:22:37.315Z",
+      "finishedAt": "2026-10-26T11:22:37.372Z",
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave15-2026-10-26/part-a/final-checks/lint.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "receiptOrigin": "node-spawnSync-observed-status"
+    }
+  ]
+}

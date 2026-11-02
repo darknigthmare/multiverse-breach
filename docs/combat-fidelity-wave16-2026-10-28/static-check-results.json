@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-28",
+  "passed": true,
+  "lint": {
+    "command": [
+      "npm",
+      "run",
+      "lint"
+    ],
+    "startedAt": "2026-11-01T01:59:49.024Z",
+    "finishedAt": "2026-11-01T01:59:50.550Z",
+    "exitCode": 0,
+    "signal": null,
+    "spawnError": null,
+    "log": "final-closure-lint.log",
+    "logSha256": "bac6ed79ba2f7696a4472104f6631951e953c92780ed49a516b6e6d87e5de1d5"
+  },
+  "diffCheck": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "startedAt": "2026-11-01T01:59:49.033Z",
+    "finishedAt": "2026-11-01T01:59:49.387Z",
+    "exitCode": 0,
+    "signal": null,
+    "spawnError": null,
+    "log": "final-closure-diff-check.log",
+    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "nativeAnchorsC": {
+    "command": [
+      "node",
+      "scripts/buildCombatNativeSuperAnchorsWave16PartC.mjs",
+      "--check"
+    ],
+    "startedAt": "2026-11-01T01:59:50.571Z",
+    "finishedAt": "2026-11-01T01:59:55.106Z",
+    "exitCode": 0,
+    "signal": null,
+    "spawnError": null,
+    "log": "final-native-anchors-c.log",
+    "logSha256": "a304eb685d6880a0e80950af9f268d0afec5b60a31ed3595efa46765eb024835"
+  }
+}

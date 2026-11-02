@@ -1,0 +1,602 @@
+{
+  "preliminary": true,
+  "passed": true,
+  "cases": [
+    {
+      "id": "aki_hayakawa",
+      "mode": "fighter",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Kon \u2014 D\u00e9mon-Renard",
+      "effect": "damage",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "cpu-0-first-target",
+          "damage": 87.5
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.46,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "fallback",
+      "bodySheet": "/sprites/generated/heroes/chainsaw-man/aki-hayakawa.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 0.44999998807907104,
+        "d": 0.44999998807907104,
+        "e": 240,
+        "f": 430
+      },
+      "sequence": null,
+      "fox": {
+        "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+        "mouth": {
+          "x": 520,
+          "y": 514.36,
+          "anchor": {
+            "x": 399,
+            "y": 200,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 248,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          "phase": "attack",
+          "column": 2,
+          "nativeEntityId": "fox_devil-wave16",
+          "measuredNativeMouth": true
+        },
+        "accepted": true,
+        "actualPngDraw": {
+          "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+          "args": [
+            1024,
+            512,
+            512,
+            256,
+            -340.8,
+            -170.4,
+            681.6,
+            340.8
+          ],
+          "transform": {
+            "a": 0.44999998807907104,
+            "d": 0.44999998807907104,
+            "e": 199.3340663238614,
+            "f": 360.0295062481164
+          }
+        }
+      },
+      "nativeAssetId": null,
+      "allyHpDelta": [
+        0,
+        223.5
+      ]
+    },
+    {
+      "id": "aki_hayakawa",
+      "mode": "fighter",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Kon \u2014 D\u00e9mon-Renard",
+      "effect": "damage",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "player-0-first-target",
+          "damage": 87.5
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.46,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "fallback",
+      "bodySheet": "/sprites/generated/heroes/chainsaw-man/aki-hayakawa.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -0.44999998807907104,
+        "d": 0.44999998807907104,
+        "e": 240,
+        "f": 430
+      },
+      "sequence": null,
+      "fox": {
+        "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+        "mouth": {
+          "x": 320,
+          "y": 514.36,
+          "anchor": {
+            "x": 399,
+            "y": 200,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 248,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          "phase": "attack",
+          "column": 2,
+          "nativeEntityId": "fox_devil-wave16",
+          "measuredNativeMouth": true
+        },
+        "accepted": true,
+        "actualPngDraw": {
+          "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+          "args": [
+            1024,
+            512,
+            512,
+            256,
+            -340.8,
+            -170.4,
+            681.6,
+            340.8
+          ],
+          "transform": {
+            "a": -0.44999998807907104,
+            "d": 0.44999998807907104,
+            "e": 280.6659336761386,
+            "f": 360.0295062481164
+          }
+        }
+      },
+      "nativeAssetId": null,
+      "allyHpDelta": [
+        0,
+        223.5
+      ]
+    },
+    {
+      "id": "aki_hayakawa",
+      "mode": "rpg",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Kon \u2014 D\u00e9mon-Renard",
+      "effect": "damage",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "enemy:custom:0:first-target",
+          "damage": 50
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "enemy:custom:1:second-target",
+          "damage": 42
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.46,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 2,
+      "bodyKind": "fallback",
+      "bodySheet": "/sprites/generated/heroes/chainsaw-man/aki-hayakawa.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 0.44999998807907104,
+        "d": 0.44999998807907104,
+        "e": 240,
+        "f": 430
+      },
+      "sequence": null,
+      "fox": {
+        "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+        "mouth": {
+          "x": 520,
+          "y": 471.6608,
+          "anchor": {
+            "x": 399,
+            "y": 200,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 248,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          "phase": "attack",
+          "column": 2,
+          "nativeEntityId": "fox_devil-wave16",
+          "measuredNativeMouth": true
+        },
+        "accepted": true,
+        "actualPngDraw": {
+          "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+          "args": [
+            1024,
+            512,
+            512,
+            256,
+            -161.9382857142857,
+            -80.96914285714286,
+            323.8765714285714,
+            161.9382857142857
+          ],
+          "transform": {
+            "a": 0.44999998807907104,
+            "d": 0.44999998807907104,
+            "e": 244.2940336997235,
+            "f": 396.75204861026214
+          }
+        }
+      },
+      "nativeAssetId": null,
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "aki_hayakawa",
+      "mode": "rpg",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Kon \u2014 D\u00e9mon-Renard",
+      "effect": "damage",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "hero:0:first-target",
+          "damage": 45
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "hero:1:second-target",
+          "damage": 44
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.46,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 2,
+      "bodyKind": "fallback",
+      "bodySheet": "/sprites/generated/heroes/chainsaw-man/aki-hayakawa.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -0.44999998807907104,
+        "d": 0.44999998807907104,
+        "e": 240,
+        "f": 430
+      },
+      "sequence": null,
+      "fox": {
+        "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+        "mouth": {
+          "x": 320,
+          "y": 471.6608,
+          "anchor": {
+            "x": 399,
+            "y": 200,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 248,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          "phase": "attack",
+          "column": 2,
+          "nativeEntityId": "fox_devil-wave16",
+          "measuredNativeMouth": true
+        },
+        "accepted": true,
+        "actualPngDraw": {
+          "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+          "args": [
+            1024,
+            512,
+            512,
+            256,
+            -161.9382857142857,
+            -80.96914285714286,
+            323.8765714285714,
+            161.9382857142857
+          ],
+          "transform": {
+            "a": -0.44999998807907104,
+            "d": 0.44999998807907104,
+            "e": 235.7059663002765,
+            "f": 396.75204861026214
+          }
+        }
+      },
+      "nativeAssetId": null,
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "aki_hayakawa",
+      "mode": "melee",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Kon \u2014 D\u00e9mon-Renard",
+      "effect": "damage",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "p2:first-target:0",
+          "damage": 52
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "p2:second-target:1",
+          "damage": 49
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.46,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 2,
+      "bodyKind": "fallback",
+      "bodySheet": "/sprites/generated/heroes/chainsaw-man/aki-hayakawa.png",
+      "bodyCell": [
+        512,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 0.44999998807907104,
+        "d": 0.44999998807907104,
+        "e": 240,
+        "f": 430
+      },
+      "sequence": null,
+      "fox": {
+        "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+        "mouth": {
+          "x": 520,
+          "y": 501.76,
+          "anchor": {
+            "x": 399,
+            "y": 200,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 248,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          "phase": "attack",
+          "column": 2,
+          "nativeEntityId": "fox_devil-wave16",
+          "measuredNativeMouth": true
+        },
+        "accepted": true,
+        "actualPngDraw": {
+          "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+          "args": [
+            1024,
+            512,
+            512,
+            256,
+            -172.79999999999998,
+            -86.39999999999999,
+            345.59999999999997,
+            172.79999999999998
+          ],
+          "transform": {
+            "a": 0.44999998807907104,
+            "d": 0.44999998807907104,
+            "e": 241.56375270515673,
+            "f": 394.5219888548854
+          }
+        }
+      },
+      "nativeAssetId": null,
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "aki_hayakawa",
+      "mode": "melee",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Kon \u2014 D\u00e9mon-Renard",
+      "effect": "damage",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "first-target",
+          "damage": 42
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "second-target",
+          "damage": 47
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.46,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 2,
+      "bodyKind": "fallback",
+      "bodySheet": "/sprites/generated/heroes/chainsaw-man/aki-hayakawa.png",
+      "bodyCell": [
+        512,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -0.44999998807907104,
+        "d": 0.44999998807907104,
+        "e": 240,
+        "f": 430
+      },
+      "sequence": null,
+      "fox": {
+        "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+        "mouth": {
+          "x": 320,
+          "y": 501.76,
+          "anchor": {
+            "x": 399,
+            "y": 200,
+            "space": "packed-native-pixels",
+            "role": "physical-bite-mouth",
+            "visuallyReviewed": true,
+            "centerAlpha": 248,
+            "measurementSource": "docs/combat-fidelity-wave16-2026-10-28/rpg-previews/fox-devil-attack-anchor-zoom.png"
+          },
+          "phase": "attack",
+          "column": 2,
+          "nativeEntityId": "fox_devil-wave16",
+          "measuredNativeMouth": true
+        },
+        "accepted": true,
+        "actualPngDraw": {
+          "sheet": "/sprites/generated/summon-animations-wave16/fox-devil.png",
+          "args": [
+            1024,
+            512,
+            512,
+            256,
+            -172.79999999999998,
+            -86.39999999999999,
+            345.59999999999997,
+            172.79999999999998
+          ],
+          "transform": {
+            "a": -0.44999998807907104,
+            "d": 0.44999998807907104,
+            "e": 238.43624729484327,
+            "f": 394.5219888548854
+          }
+        }
+      },
+      "nativeAssetId": null,
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    }
+  ],
+  "failures": [],
+  "actualFoxPngDraws": 6,
+  "actualCanvasTolerancePx": 0.0001,
+  "toleranceReason": "Chromium canvas transform matrices expose float32 accumulation; source-world mouth projector remains exact.",
+  "actualCaptureInspected": true,
+  "capture": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/browser/fox-physical-mouth-preliminary.png",
+    "sha256": "0642faaf490999d4f5ad7d1c9f2325f6c8fcc56d7ee61b9a546db82868c093d7"
+  },
+  "source1to1Verified": false
+}

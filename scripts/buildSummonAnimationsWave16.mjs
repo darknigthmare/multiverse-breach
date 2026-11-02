@@ -1,0 +1,169 @@
+import assert from 'node:assert/strict';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
+import { segmentAtlas } from './buildCombatEntityAssets.mjs';
+
+const root = new URL('../', import.meta.url);
+const docs = 'docs/combat-fidelity-wave16-2026-10-28';
+const registryPath = 'src/game/combat/summonAnimationsWave16.generated.json';
+const phases = ['arrival', 'preparation', 'attack', 'recovery'];
+const frameWidth = 512, frameHeight = 256, baseline = 244, margin = 10;
+const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+const read = path => readFile(new URL(path, root));
+const json = async path => JSON.parse(await read(path));
+const encoded = value => `${JSON.stringify(value, null, 2)}\n`;
+
+async function packRow(row, scale) {
+  const bottom = Math.max(...row.frames.map(frame => frame.bounds.top + frame.bounds.height));
+  const composites = [], frameBounds = [];
+  for (const [col, frame] of row.frames.entries()) {
+    const b = frame.bounds, width = Math.max(1, Math.round(b.width * scale)), height = Math.max(1, Math.round(b.height * scale));
+    const left = Math.round(frameWidth / 2 + (b.left - frame.centerX) * scale), top = Math.round(baseline - (bottom - b.top) * scale);
+    assert.ok(left >= margin && top >= margin && left + width <= frameWidth - margin && top + height <= frameHeight - margin, 'native subject would be cropped');
+    const input = await sharp(frame.data, { raw: { width: frame.width, height: frame.height, channels: 4 } })
+      .extract({ left: b.left, top: b.top, width: b.width, height: b.height }).resize(width, height, { kernel: sharp.kernel.nearest }).png().toBuffer();
+    composites.push({ input, left: col * frameWidth + left, top });
+    frameBounds.push({ source: b, output: { left, top, width, height } });
+  }
+  const bytes = await sharp({ create: { width: frameWidth * 4, height: frameHeight, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } }).composite(composites).png({ compressionLevel: 9 }).toBuffer();
+  return { bytes, frameBounds };
+}
+
+async function review(bytes) {
+  const { data, info } = await sharp(bytes).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  assert.equal(info.width, frameWidth * 4); assert.equal(info.height, frameHeight * 4);
+  const all = [], phaseReviews = [];
+  for (let row = 0; row < 4; row++) {
+    const frameHashes = [], visiblePixels = [];
+    for (let col = 0; col < 4; col++) {
+      const cell = Buffer.alloc(frameWidth * frameHeight * 4); let visible = 0;
+      for (let y = 0; y < frameHeight; y++) for (let x = 0; x < frameWidth; x++) {
+        const offset = ((row * frameHeight + y) * info.width + col * frameWidth + x) * 4, alpha = data[offset + 3];
+        if (alpha > 0) data.copy(cell, (y * frameWidth + x) * 4, offset, offset + 4);
+        if (alpha > 4) visible++;
+        if (x < margin || y < margin || x >= frameWidth - margin || y >= frameHeight - margin) assert.equal(alpha, 0, `opaque edge ${row}:${col}`);
+      }
+      assert.ok(visible > 300); frameHashes.push(hash(cell)); visiblePixels.push(visible);
+    }
+    assert.equal(new Set(frameHashes).size, 4); all.push(...frameHashes);
+    phaseReviews.push({ phase: phases[row], row, distinctFrames: 4, frameHashes, visiblePixels, transparentMarginPixels: margin });
+  }
+  assert.equal(new Set(all).size, 16);
+  return { distinctCells: 16, phaseReviews };
+}
+
+export async function buildSummonAnimationsWave16(check = false, prepare = false) {
+  assert.ok(!(check && prepare), '--check and --prepare are separate operations');
+  const { records, attempts } = await json(`${docs}/summon-generation-records.json`);
+  const originalPlan = await json(`${docs}/rpg-sources/source-plan.json`);
+  const complement = await json(`${docs}/rpg-sources/source-plan-complement-starfire.json`);
+  const plannedEntries = [...originalPlan.entries, complement.entry];
+  const planned = plannedEntries.map(entry => entry.slug);
+  assert.equal(new Set(planned).size, 8);
+  assert.equal(new Set(records.map(record => record.slug)).size, records.length);
+  assert.ok(records.every(record => planned.includes(record.slug)), 'Unplanned native partner');
+  assert.deepEqual(records.map(record => record.slug), planned.filter(slug => records.some(record => record.slug === slug)));
+  for (const slug of planned.filter(slug => !records.some(record => record.slug === slug))) {
+    assert.ok(attempts.some(attempt => attempt.key === slug && ['refused', 'excluded'].includes(attempt.status)), `${slug}: missing performer needs explicit excluded/refused evidence`);
+  }
+  const entries = [], sources = [];
+  for (const record of records) {
+    assert.equal(record.reviewed, true, `${record.slug}: visual review missing`);
+    const sourceImage = record.sourceImage, source = await read(sourceImage), prompt = await read(record.promptFile);
+    const reference = record.referenceImage ? await read(record.referenceImage) : null;
+    assert.equal(prompt.toString().trimEnd(), record.prompt);
+    const atlas = await segmentAtlas(fileURLToPath(new URL(sourceImage, root)), 4);
+    assert.ok(atlas.rows.every(row => row.seamReview.crossedOpaquePixels === 0 && row.seamReview.crossedVisiblePixels === 0));
+    const body = atlas.rows[record.calibration.row].frames[record.calibration.column].bounds;
+    const sourceBodyHeight = body.height;
+    const halfWidth = Math.max(...atlas.rows.flatMap(row => row.frames.map(frame => Math.max(frame.centerX - frame.bounds.left, frame.bounds.left + frame.bounds.width - frame.centerX))));
+    const envelopeHeight = Math.max(...atlas.rows.map(row => Math.max(...row.frames.map(frame => frame.bounds.top + frame.bounds.height)) - Math.min(...row.frames.map(frame => frame.bounds.top))));
+    // Wider transparent cells preserve physical sword reach while retaining a
+    // single body scale. Packing never draws, stretches or repairs anatomy.
+    const scale = Math.min(record.calibration.targetBodyHeight / sourceBodyHeight, (frameWidth / 2 - margin - 1) / halfWidth, (baseline - margin - 1) / envelopeHeight);
+    const rows = await Promise.all(atlas.rows.map(row => packRow(row, scale)));
+    const bytes = await sharp({ create: { width: frameWidth * 4, height: frameHeight * 4, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } })
+      .composite(rows.map((row, index) => ({ input: row.bytes, left: 0, top: index * frameHeight }))).png({ compressionLevel: 9 }).toBuffer();
+    const pixels = await review(bytes), sheet = `/sprites/generated/summon-animations-wave16/${record.slug}.png`;
+    if (prepare) {
+      // Draft packing exists only to inspect cell geometry and measure native
+      // weapon anchors. It never writes public assets, registry or provenance.
+      await mkdir(new URL(`${docs}/summon-previews/`, root), { recursive: true });
+      await writeFile(new URL(`${docs}/summon-previews/${record.slug}-packed.png`, root), bytes);
+      await writeFile(new URL(`${docs}/summon-previews/${record.slug}-packing.json`, root), encoded({
+        id: record.id, draftOnly: true, sourceImage, sourceImageSha256: hash(source), sha256: hash(bytes),
+        scale, baseline, sourceBodyHeight, outputBodyHeight: Math.round(sourceBodyHeight * scale),
+        rows: rows.map((row, index) => ({ phase: phases[index], sourceBounds: atlas.rows[index].sourceBounds,
+          frameBounds: row.frameBounds, ...atlas.rows[index].seamReview })), ...pixels }));
+      continue;
+    }
+    if (record.role !== 'support') {
+      assert.equal(record.effectAnchors?.attack?.filter(Boolean).length, 4, `${record.slug}: four visually measured attack anchors required`);
+      if (record.role === 'bite') assert.ok(phases.every(phase => record.effectAnchors[phase]?.filter(Boolean).length === 4), 'Fox needs all16 native mouth anchors');
+      const { data, info } = await sharp(bytes).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+      for (const [phase, anchors] of Object.entries(record.effectAnchors)) {
+        assert.ok(phases.includes(phase)); assert.equal(anchors.length, 4);
+        for (const [column, anchor] of anchors.entries()) {
+          if (!anchor) continue;
+          assert.equal(anchor.space, 'packed-native-pixels'); assert.equal(anchor.role, record.anchorRole);
+          assert.equal(anchor.visuallyReviewed, true); assert.ok(Number.isInteger(anchor.x) && Number.isInteger(anchor.y));
+          assert.ok(anchor.x >= margin && anchor.x < frameWidth - margin && anchor.y >= margin && anchor.y < frameHeight - margin);
+          const x = column * frameWidth + anchor.x, y = phases.indexOf(phase) * frameHeight + anchor.y;
+          const alpha = data[(y * info.width + x) * 4 + 3];
+          assert.ok(alpha > 24, `${record.slug}/${phase}/${column}: contact/release anchor is transparent`);
+          assert.equal(anchor.centerAlpha, alpha);
+        }
+      }
+    } else assert.equal(record.effectAnchors, null, `${record.slug}: support cannot invent a projectile origin`);
+    const entry = { id: record.id, key: record.key, universe: record.universe, entityName: record.entityName, actionName: record.actionName,
+      kind: record.kind, bodySource: record.bodySource, performerHeroId: record.performerHeroId, nativeRole: record.role,
+      sheet, columns: 4, rows: 4, frames: 16, width: frameWidth * 4, height: frameHeight * 4, frameWidth, frameHeight,
+      phases: Object.fromEntries(phases.map((phase, row) => [phase, { row, frames: 4, columns: 4, fps: 8, loop: false }])),
+      sha256: hash(bytes), alpha: true, assetMissing: false, sourceImage, sourceImageSha256: hash(source), sourceDimensions: [atlas.width, atlas.height],
+      referenceImage: record.referenceImage, referenceImageSha256: reference ? hash(reference) : null, sourceWork: record.sourceWork,
+      sourceReference: `${record.sourceWork}. Source performer or entity with sixteen newly generated poses; adaptation, not verified source frames. ${record.reviewNotes}`,
+      effectAnchors: record.effectAnchors || null,
+      provider: 'OpenAI', model: null, generationId: null, jobId: null, canonicalVerified: false, canon1to1Verified: false, networkVerified: false,
+      normalization: { method: 'alpha-seams-wide-cell-common-body-scale-v1', sharedScaleAcrossAllPhases: true, scale, baseline,
+        bodyCalibration: { ...record.calibration, sourceBodyHeight, outputBodyHeight: Math.round(sourceBodyHeight * scale), constrainedByEnvelope: scale < record.calibration.targetBodyHeight / sourceBodyHeight },
+        rows: rows.map((row, index) => ({ phase: phases[index], sourceImage, sourceImageSha256: hash(source), sourceRow: index,
+          sourceBounds: atlas.rows[index].sourceBounds, scale, baseline, frameBounds: row.frameBounds, ...atlas.rows[index].seamReview })) },
+      visualValidation: { identityReviewed: true, allFramesReviewed: true, fullSubjectContained: true, defaultFacing: 'right', ...pixels,
+        canon1to1Verified: false, networkVerified: false, adaptedChoreography: true, noNewGameplayEvents: true } };
+    entries.push(entry);
+    sources.push({ id: record.id, archivedPath: sourceImage, sha256: hash(source), originalGeneratedPath: record.file,
+      promptFile: record.promptFile, promptSha256: hash(prompt), prompt: record.prompt, referenceImage: record.referenceImage, referencedSourceSha256: reference ? hash(reference) : null,
+      identityReferenceImage: record.identityReferenceImage, originalSourceFile: record.originalSourceFile || null,
+      originalPrompt: record.originalPrompt || null, originalToolArguments: record.originalToolArguments || null,
+      toolArguments: record.toolArguments, provider: 'OpenAI', tool: 'image_gen', model: null, generationId: null, jobId: null,
+      nativeGenerationCalls: record.nativeGenerationCalls, accepted: true, sourceWork: record.sourceWork, reviewed: true, reviewNotes: record.reviewNotes, networkVerified: false, canon1to1Verified: false });
+    if (check) assert.deepEqual(await read(`public${sheet}`), bytes, `${record.id}: native reconstruction differs`);
+    else {
+      await mkdir(new URL('public/sprites/generated/summon-animations-wave16/', root), { recursive: true });
+      await writeFile(new URL(`public${sheet}`, root), bytes);
+      await sharp(bytes).resize(1536, 768, { kernel: sharp.kernel.nearest }).flatten({ background: '#151b29' }).png().toFile(fileURLToPath(new URL(`${docs}/summon-${record.slug}-contact.png`, root)));
+    }
+  }
+  if (prepare) return { prepare: true, draftOnly: true, records: records.length, publicFilesWritten: 0 };
+  const registry = { schemaVersion: 1, source: 'OpenAI', entries };
+  const provenance = { schemaVersion: 1, date: '2026-10-28', provider: 'OpenAI', tool: 'image_gen', model: null, generationId: null, jobId: null,
+    sourcePlans: await Promise.all(['source-plan.json', 'source-plan-errata.json', 'source-plan-complement-starfire.json'].map(async name => {
+      const path = `${docs}/rpg-sources/${name}`;
+      return { path, sha256: hash(await read(path)) };
+    })),
+    anatomicalMeasurementReview: { path: `${docs}/rpg-sources/native-contact-anchor-selections.json`,
+      sha256: hash(await read(`${docs}/rpg-sources/native-contact-anchor-selections.json`)), reviewedPoints: 36 },
+    actualNativeGenerationCalls: records.reduce((sum, record) => sum + record.nativeGenerationCalls, 0) + attempts.reduce((sum, attempt) => sum + (attempt.nativeGenerationCalls || 0), 0),
+    nativePoses: records.length * 16, observedNativePoses: records.length * 16 + attempts.reduce((sum, attempt) => sum + (attempt.nativeGeneratedPoses || 0), 0), excludedNativePoses: attempts.reduce((sum, attempt) => sum + (attempt.nativeGeneratedPoses || 0), 0), excludedAttempts: attempts, rosterPerformers: records.filter(record => record.performerHeroId).length, supernaturalEntityBodies: records.filter(record => !record.performerHeroId).length,
+    preservedHistoricalEntityAtlases: 28, preservedHistoricalSummonAtlases: (await json(`${docs}/rpg-historical-assets-before.json`)).count,
+    blockedNativePartnerRequests: attempts.filter(attempt => attempt.status === 'refused').length, plannedRosterPerformers: plannedEntries.filter(entry => entry.performerHeroId).length, plannedSubjects: planned.length, observedPosesDefinition: 'Returned visible figures only; refused outputs contribute no inferred body count.',
+    rectangularCellsPreserveBodyScaleAndWeaponReach: true, sources, entries, source1to1Verified: false };
+  for (const [path, object] of [[registryPath, registry], [`${docs}/summon-provenance.json`, provenance]]) {
+    if (check) assert.equal((await read(path)).toString(), encoded(object), `${path}: stale registry/provenance`);
+    else await writeFile(new URL(path, root), encoded(object));
+  }
+  return { check, rosterPerformers: records.filter(record => record.performerHeroId).length, sourceEntities: records.filter(record => !record.performerHeroId).length, poses: records.length * 16, sharedBodyScale: true, reconstructedExactly: true };
+}
+if (process.argv[1] === fileURLToPath(import.meta.url)) console.log(JSON.stringify(await buildSummonAnimationsWave16(process.argv.includes('--check'), process.argv.includes('--prepare'))));

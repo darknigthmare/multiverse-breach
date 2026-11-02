@@ -1,0 +1,4403 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "angel_buffy",
+      "heroId": "angel_buffy",
+      "universe": "Buffy the Vampire Slayer",
+      "name": "Angel",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/angel_buffy.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "17b0e340ffa58080c5278df614595d5993923dee3be8227462879b009e106135",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/angel_buffy.png",
+      "sourceImageSha256": "047b9b6de22f15f4b1895165de748a716b56846a8e39f2ebcc555ac525ed07ce",
+      "sourceDimensions": [
+        1448,
+        1086
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/angel_buffy.png",
+          "sha256": "047b9b6de22f15f4b1895165de748a716b56846a8e39f2ebcc555ac525ed07ce",
+          "drawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/buffy-the-vampire-slayer/angel-buffy.png",
+      "referenceAssetSha256": "dadfc48e5eec6da25ed63fa543ea427aff09f49a31eb751b563353811b36cce3",
+      "referenceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/angel_buffy.png",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/angel_buffy.png",
+      "referenceUse": "Historical resource inspected and archived. New initial drawings use the exact selected source version; corrections reference only the native source image, never a blocked persona variant.",
+      "sourceWork": "Buffy the Vampire Slayer, season1 (1997), adult Angel in his recurring black coat",
+      "characterVersion": "Buffy the Vampire Slayer, season1 (1997), adult Angel in his recurring black coat",
+      "sourceAppearance": "Adult pale man, short upward dark hair, long black coat over dark shirt and trousers, black boots; normal human face, restrained vampire brow only during the final close combat gesture",
+      "sourceWeapon": "Unarmed vampire strength, closed fists",
+      "sourcePose": "Compact physical intercept and punch; no sunlight immunity, magic spell, gun or detached vampire energy",
+      "sourceActionName": "Contre-attaque d’Angel",
+      "sourceEffect": "damage",
+      "sourceDelivery": "melee",
+      "targetBodyHeight": 196,
+      "sourceReference": "https://buffy.fandom.com/wiki/Angel",
+      "sourceUrl": "https://buffy.fandom.com/wiki/Angel",
+      "abilityName": "Direct d’Angel",
+      "abilityEffect": "damage",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "native-alpha-component-segmentation-one-source-calibration-v1",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/angel_buffy.png",
+            "sourceImageSha256": "047b9b6de22f15f4b1895165de748a716b56846a8e39f2ebcc555ac525ed07ce",
+            "sourceRow": 4,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 41,
+                  "top": 726,
+                  "width": 89,
+                  "height": 180
+                },
+                "output": {
+                  "left": 83,
+                  "top": 57,
+                  "width": 93,
+                  "height": 187
+                },
+                "sourceBodyBounds": {
+                  "id": 34,
+                  "pixels": 9383,
+                  "left": 46,
+                  "right": 125,
+                  "top": 731,
+                  "bottom": 900,
+                  "width": 80,
+                  "height": 170,
+                  "centerX": 83.82329745284024,
+                  "centerY": 819.4985612277524
+                },
+                "sourceAlphaPixels": 11384,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 202,
+                  "top": 727,
+                  "width": 144,
+                  "height": 183
+                },
+                "output": {
+                  "left": 64,
+                  "top": 54,
+                  "width": 150,
+                  "height": 190
+                },
+                "sourceBodyBounds": {
+                  "id": 36,
+                  "pixels": 9515,
+                  "left": 224,
+                  "right": 308,
+                  "top": 734,
+                  "bottom": 901,
+                  "width": 85,
+                  "height": 168,
+                  "centerX": 263.328218602207,
+                  "centerY": 821.3218076720967
+                },
+                "sourceAlphaPixels": 11821,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 399,
+                  "top": 728,
+                  "width": 140,
+                  "height": 183
+                },
+                "output": {
+                  "left": 82,
+                  "top": 54,
+                  "width": 146,
+                  "height": 190
+                },
+                "sourceBodyBounds": {
+                  "id": 37,
+                  "pixels": 9706,
+                  "left": 402,
+                  "right": 488,
+                  "top": 736,
+                  "bottom": 901,
+                  "width": 87,
+                  "height": 166,
+                  "centerX": 443.69400370904594,
+                  "centerY": 823.3002266639193
+                },
+                "sourceAlphaPixels": 11910,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 580,
+                  "top": 727,
+                  "width": 120,
+                  "height": 182
+                },
+                "output": {
+                  "left": 76,
+                  "top": 55,
+                  "width": 125,
+                  "height": 189
+                },
+                "sourceBodyBounds": {
+                  "id": 35,
+                  "pixels": 9261,
+                  "left": 589,
+                  "right": 668,
+                  "top": 733,
+                  "bottom": 901,
+                  "width": 80,
+                  "height": 169,
+                  "centerX": 629.9263578447252,
+                  "centerY": 823.1973868912644
+                },
+                "sourceAlphaPixels": 11416,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.040001671297553,
+            "baseline": 244,
+            "renderScale": 1.0957048581462328,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 196,
+              "sourceBodyHeight": 172,
+              "normalizedBodyHeight": 178.88028746317912,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/angel_buffy.png",
+            "sourceImageSha256": "047b9b6de22f15f4b1895165de748a716b56846a8e39f2ebcc555ac525ed07ce",
+            "sourceRow": 4,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 705,
+                  "top": 733,
+                  "width": 196,
+                  "height": 172
+                },
+                "output": {
+                  "left": 16,
+                  "top": 65,
+                  "width": 204,
+                  "height": 179
+                },
+                "sourceBodyBounds": {
+                  "id": 38,
+                  "pixels": 11112,
+                  "left": 733,
+                  "right": 890,
+                  "top": 743,
+                  "bottom": 894,
+                  "width": 158,
+                  "height": 152,
+                  "centerX": 812.6921346292297,
+                  "centerY": 816.6890748740101
+                },
+                "sourceAlphaPixels": 14773,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 904,
+                  "top": 734,
+                  "width": 166,
+                  "height": 190
+                },
+                "output": {
+                  "left": 41,
+                  "top": 46,
+                  "width": 173,
+                  "height": 198
+                },
+                "sourceBodyBounds": {
+                  "id": 40,
+                  "pixels": 10135,
+                  "left": 911,
+                  "right": 1064,
+                  "top": 746,
+                  "bottom": 899,
+                  "width": 154,
+                  "height": 154,
+                  "centerX": 987.874494326591,
+                  "centerY": 814.5951652688702
+                },
+                "sourceAlphaPixels": 12635,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1079,
+                  "top": 749,
+                  "width": 176,
+                  "height": 161
+                },
+                "output": {
+                  "left": 42,
+                  "top": 77,
+                  "width": 183,
+                  "height": 167
+                },
+                "sourceBodyBounds": {
+                  "id": 41,
+                  "pixels": 10171,
+                  "left": 1085,
+                  "right": 1246,
+                  "top": 752,
+                  "bottom": 900,
+                  "width": 162,
+                  "height": 149,
+                  "centerX": 1161.6134106774161,
+                  "centerY": 818.7053387080916
+                },
+                "sourceAlphaPixels": 12882,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1274,
+                  "top": 736,
+                  "width": 143,
+                  "height": 176
+                },
+                "output": {
+                  "left": 48,
+                  "top": 61,
+                  "width": 149,
+                  "height": 183
+                },
+                "sourceBodyBounds": {
+                  "id": 39,
+                  "pixels": 9449,
+                  "left": 1282,
+                  "right": 1413,
+                  "top": 745,
+                  "bottom": 900,
+                  "width": 132,
+                  "height": 156,
+                  "centerX": 1350.8914170811727,
+                  "centerY": 820.5437612445761
+                },
+                "sourceAlphaPixels": 11837,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.040001671297553,
+            "baseline": 244,
+            "renderScale": 1.0957048581462328,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 196,
+              "sourceBodyHeight": 172,
+              "normalizedBodyHeight": 178.88028746317912,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/angel_buffy.png",
+            "sourceImageSha256": "047b9b6de22f15f4b1895165de748a716b56846a8e39f2ebcc555ac525ed07ce",
+            "sourceRow": 5,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 906,
+                  "width": 128,
+                  "height": 180
+                },
+                "output": {
+                  "left": 67,
+                  "top": 57,
+                  "width": 133,
+                  "height": 187
+                },
+                "sourceBodyBounds": {
+                  "id": 42,
+                  "pixels": 10310,
+                  "left": 28,
+                  "right": 135,
+                  "top": 911,
+                  "bottom": 1077,
+                  "width": 108,
+                  "height": 167,
+                  "centerX": 83.38380213385064,
+                  "centerY": 1000.4697381183317
+                },
+                "sourceAlphaPixels": 12923,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 170,
+                  "top": 909,
+                  "width": 169,
+                  "height": 177
+                },
+                "output": {
+                  "left": 20,
+                  "top": 60,
+                  "width": 176,
+                  "height": 184
+                },
+                "sourceBodyBounds": {
+                  "id": 45,
+                  "pixels": 11244,
+                  "left": 200,
+                  "right": 336,
+                  "top": 918,
+                  "bottom": 1077,
+                  "width": 137,
+                  "height": 160,
+                  "centerX": 274.1579509071505,
+                  "centerY": 1004.4503735325507
+                },
+                "sourceAlphaPixels": 14299,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 375,
+                  "top": 901,
+                  "width": 186,
+                  "height": 185
+                },
+                "output": {
+                  "left": 40,
+                  "top": 52,
+                  "width": 193,
+                  "height": 192
+                },
+                "sourceBodyBounds": {
+                  "id": 46,
+                  "pixels": 11282,
+                  "left": 379,
+                  "right": 554,
+                  "top": 919,
+                  "bottom": 1077,
+                  "width": 176,
+                  "height": 159,
+                  "centerX": 459.3550788867222,
+                  "centerY": 1001.8307924126927
+                },
+                "sourceAlphaPixels": 14210,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 561,
+                  "top": 909,
+                  "width": 173,
+                  "height": 177
+                },
+                "output": {
+                  "left": 53,
+                  "top": 60,
+                  "width": 180,
+                  "height": 184
+                },
+                "sourceBodyBounds": {
+                  "id": 44,
+                  "pixels": 10411,
+                  "left": 567,
+                  "right": 699,
+                  "top": 916,
+                  "bottom": 1077,
+                  "width": 133,
+                  "height": 162,
+                  "centerX": 633.3899721448468,
+                  "centerY": 1003.962059360292
+                },
+                "sourceAlphaPixels": 13475,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.040001671297553,
+            "baseline": 244,
+            "renderScale": 1.0957048581462328,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 196,
+              "sourceBodyHeight": 172,
+              "normalizedBodyHeight": 178.88028746317912,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/angel_buffy.png",
+            "sourceImageSha256": "047b9b6de22f15f4b1895165de748a716b56846a8e39f2ebcc555ac525ed07ce",
+            "sourceRow": 5,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 767,
+                  "top": 905,
+                  "width": 142,
+                  "height": 181
+                },
+                "output": {
+                  "left": 73,
+                  "top": 56,
+                  "width": 148,
+                  "height": 188
+                },
+                "sourceBodyBounds": {
+                  "id": 43,
+                  "pixels": 9797,
+                  "left": 770,
+                  "right": 878,
+                  "top": 914,
+                  "bottom": 1077,
+                  "width": 109,
+                  "height": 164,
+                  "centerX": 819.7901398387262,
+                  "centerY": 1002.8887414514647
+                },
+                "sourceAlphaPixels": 12401,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 922,
+                  "top": 910,
+                  "width": 164,
+                  "height": 176
+                },
+                "output": {
+                  "left": 33,
+                  "top": 61,
+                  "width": 171,
+                  "height": 183
+                },
+                "sourceBodyBounds": {
+                  "id": 47,
+                  "pixels": 9893,
+                  "left": 963,
+                  "right": 1072,
+                  "top": 920,
+                  "bottom": 1077,
+                  "width": 110,
+                  "height": 158,
+                  "centerX": 1013.2807035277469,
+                  "centerY": 1002.0607500252704
+                },
+                "sourceAlphaPixels": 12146,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1137,
+                  "top": 925,
+                  "width": 124,
+                  "height": 161
+                },
+                "output": {
+                  "left": 66,
+                  "top": 77,
+                  "width": 129,
+                  "height": 167
+                },
+                "sourceBodyBounds": {
+                  "id": 48,
+                  "pixels": 9330,
+                  "left": 1142,
+                  "right": 1257,
+                  "top": 927,
+                  "bottom": 1077,
+                  "width": 116,
+                  "height": 151,
+                  "centerX": 1196.7897106109324,
+                  "centerY": 1005.802679528403
+                },
+                "sourceAlphaPixels": 11188,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1296,
+                  "top": 923,
+                  "width": 120,
+                  "height": 163
+                },
+                "output": {
+                  "left": 66,
+                  "top": 74,
+                  "width": 125,
+                  "height": 170
+                },
+                "sourceBodyBounds": {
+                  "id": 49,
+                  "pixels": 10030,
+                  "left": 1301,
+                  "right": 1413,
+                  "top": 929,
+                  "bottom": 1077,
+                  "width": 113,
+                  "height": 149,
+                  "centerX": 1356.0203389830508,
+                  "centerY": 1004.4586241276171
+                },
+                "sourceAlphaPixels": 12339,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.040001671297553,
+            "baseline": 244,
+            "renderScale": 1.0957048581462328,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 196,
+              "sourceBodyHeight": 172,
+              "normalizedBodyHeight": 178.88028746317912,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          }
+        ],
+        "sourceWideBodyCalibration": {
+          "method": "one-complete-standing-native-body-per-source",
+          "targetBodyHeight": 196,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "90e262f8d3cc2839fbc65e776bf9daafaa388530b538e64b88b0cdeac0fa0396",
+              "99cf6f15f93a3409fb287490fcde11afe7ebf97782bd81da8a6e30d702731459",
+              "bfb536b753189f6018eeceef91da6ad489690dc4561d92c793d89ba3555fda9e",
+              "adcf2ecbcf763419e48f94156b1dc5d735819dad320188b8e901fe6379bf9e21"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "108d9f34a3d70a925d5717731dfb943c14a766317f73336ca30482c88653211f",
+              "97252be712cdc8b03731d47c9f7fec7a79c64d2abfedee20619f41deb57421e9",
+              "f9f8f1c2f600d1ed980916a94f20e7644ea653a6a45db278b52f18cc58cba856",
+              "0b2ebdae6737c6cf15367d0e805439f7a6782cd3d3b903aba2bf69da5627391e"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9663b2e412048f2ae97ab4b1a55357ee0ff0db791cfcbeaa7b55d2f2c63d609c",
+              "bf3302189c27aed9f7679a881a16e3e0b12dd522964a912bdcce7183b8b5e791",
+              "8ddc4021c9b780c0dc6200ff1e612ca5be62821f5e285047e2781fef01becbde",
+              "522dbaec71a7a6fb3de3a462d51bd722eab6efaa3da3b80ea984bedeaee745ea"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fbe0c05c4c3473a2c553719837a8b8739c4118c0770905b2ec00c6a4a3f7bc7f",
+              "ce8156417cdafe8f8e7c1370bc546d04232a0ed571b88ec79271a487b6ced57c",
+              "6659fa50014cc32f9adbfbb20afd0b8ca8f632f0b54ef472b95fafc247f853f4",
+              "df9cfdb68beaeb65b4209722ff1105fd147a17359e5f2563fe7dd87a3f27c298"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "correctionNotes": [],
+        "notes": [
+          "Actual returned source image opened/seen with48full-body drawings; no accepted delivery claimed until decoded builder checks pass."
+        ]
+      }
+    },
+    {
+      "id": "spike_spiegel",
+      "heroId": "spike_spiegel",
+      "universe": "Cowboy Bebop",
+      "name": "Spike Spiegel",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/spike_spiegel.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "9d9e359367bf55c5117e893e78a7040233cc0269a3750cc51ea731db79482483",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/spike_spiegel.png",
+      "sourceImageSha256": "144ce9a932b8ada96356c843e91d424108b1e9717e6ce89d3b7674feb351a054",
+      "sourceDimensions": [
+        1448,
+        1086
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/spike_spiegel.png",
+          "sha256": "144ce9a932b8ada96356c843e91d424108b1e9717e6ce89d3b7674feb351a054",
+          "drawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/cowboy-bebop/spike-spiegel.png",
+      "referenceAssetSha256": "18c0685dc89b27460fe534a8aee853772fa2b923347388ed73e9562a63f31e77",
+      "referenceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/spike_spiegel.png",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/spike_spiegel.png",
+      "referenceUse": "Historical resource inspected and archived. New initial drawings use the exact selected source version; corrections reference only the native source image, never a blocked persona variant.",
+      "sourceWork": "Cowboy Bebop television anime (1998), default blue-suit Spike",
+      "characterVersion": "Cowboy Bebop television anime (1998), default blue-suit Spike",
+      "sourceAppearance": "Tall slim adult man, tousled dark green hair, blue blazer and trousers, pale yellow shirt with loosened dark tie, brown shoes",
+      "sourceWeapon": "Jeet Kune Do fists and feet; Jericho941 remains holstered",
+      "sourcePose": "Close Jeet Kune Do chain with a physical final straight punch; no firearm flash for this melee special",
+      "sourceActionName": "Enchaînement de Jeet Kune Do",
+      "sourceEffect": "damage",
+      "sourceDelivery": "melee",
+      "targetBodyHeight": 196,
+      "sourceReference": "https://www.cowboy-bebop.net/",
+      "sourceUrl": "https://www.cowboy-bebop.net/",
+      "abilityName": "Direct de Jeet Kune Do de Spike",
+      "abilityEffect": "damage",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "native-alpha-component-segmentation-one-source-calibration-v1",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/spike_spiegel.png",
+            "sourceImageSha256": "144ce9a932b8ada96356c843e91d424108b1e9717e6ce89d3b7674feb351a054",
+            "sourceRow": 4,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 729,
+                  "width": 132,
+                  "height": 186
+                },
+                "output": {
+                  "left": 85,
+                  "top": 64,
+                  "width": 128,
+                  "height": 180
+                },
+                "sourceBodyBounds": {
+                  "id": 36,
+                  "pixels": 7300,
+                  "left": 55,
+                  "right": 129,
+                  "top": 737,
+                  "bottom": 907,
+                  "width": 75,
+                  "height": 171,
+                  "centerX": 89.55109589041096,
+                  "centerY": 820.7669863013699
+                },
+                "sourceAlphaPixels": 11261,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 202,
+                  "top": 729,
+                  "width": 126,
+                  "height": 186
+                },
+                "output": {
+                  "left": 63,
+                  "top": 64,
+                  "width": 122,
+                  "height": 180
+                },
+                "sourceBodyBounds": {
+                  "id": 34,
+                  "pixels": 7349,
+                  "left": 235,
+                  "right": 305,
+                  "top": 736,
+                  "bottom": 907,
+                  "width": 71,
+                  "height": 172,
+                  "centerX": 269.302217988842,
+                  "centerY": 819.4487685399374
+                },
+                "sourceAlphaPixels": 11007,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 363,
+                  "top": 729,
+                  "width": 168,
+                  "height": 183
+                },
+                "output": {
+                  "left": 54,
+                  "top": 67,
+                  "width": 163,
+                  "height": 177
+                },
+                "sourceBodyBounds": {
+                  "id": 35,
+                  "pixels": 7795,
+                  "left": 401,
+                  "right": 488,
+                  "top": 736,
+                  "bottom": 907,
+                  "width": 88,
+                  "height": 172,
+                  "centerX": 439.7063502245029,
+                  "centerY": 818.8284797947402
+                },
+                "sourceAlphaPixels": 11402,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 554,
+                  "top": 727,
+                  "width": 150,
+                  "height": 187
+                },
+                "output": {
+                  "left": 54,
+                  "top": 63,
+                  "width": 145,
+                  "height": 181
+                },
+                "sourceBodyBounds": {
+                  "id": 37,
+                  "pixels": 7777,
+                  "left": 589,
+                  "right": 680,
+                  "top": 738,
+                  "bottom": 907,
+                  "width": 92,
+                  "height": 170,
+                  "centerX": 630.6443358621576,
+                  "centerY": 818.9353221036389
+                },
+                "sourceAlphaPixels": 11490,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 0.9681317137346565,
+            "baseline": 244,
+            "renderScale": 1.212286177552542,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 196,
+              "sourceBodyHeight": 167,
+              "normalizedBodyHeight": 161.67799619368762,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/spike_spiegel.png",
+            "sourceImageSha256": "144ce9a932b8ada96356c843e91d424108b1e9717e6ce89d3b7674feb351a054",
+            "sourceRow": 4,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 709,
+                  "top": 736,
+                  "width": 182,
+                  "height": 177
+                },
+                "output": {
+                  "left": 18,
+                  "top": 73,
+                  "width": 176,
+                  "height": 171
+                },
+                "sourceBodyBounds": {
+                  "id": 39,
+                  "pixels": 7543,
+                  "left": 733,
+                  "right": 882,
+                  "top": 749,
+                  "bottom": 903,
+                  "width": 150,
+                  "height": 155,
+                  "centerX": 822.2807901365504,
+                  "centerY": 819.4902558663662
+                },
+                "sourceAlphaPixels": 12159,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 904,
+                  "top": 745,
+                  "width": 184,
+                  "height": 165
+                },
+                "output": {
+                  "left": 30,
+                  "top": 84,
+                  "width": 178,
+                  "height": 160
+                },
+                "sourceBodyBounds": {
+                  "id": 40,
+                  "pixels": 7465,
+                  "left": 922,
+                  "right": 1075,
+                  "top": 756,
+                  "bottom": 897,
+                  "width": 154,
+                  "height": 142,
+                  "centerX": 1005.0419290020094,
+                  "centerY": 822.8597454789016
+                },
+                "sourceAlphaPixels": 12786,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1087,
+                  "top": 744,
+                  "width": 158,
+                  "height": 172
+                },
+                "output": {
+                  "left": 46,
+                  "top": 77,
+                  "width": 153,
+                  "height": 167
+                },
+                "sourceBodyBounds": {
+                  "id": 38,
+                  "pixels": 6753,
+                  "left": 1100,
+                  "right": 1229,
+                  "top": 747,
+                  "bottom": 902,
+                  "width": 130,
+                  "height": 156,
+                  "centerX": 1171.6013623574709,
+                  "centerY": 823.091218717607
+                },
+                "sourceAlphaPixels": 11081,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1246,
+                  "top": 748,
+                  "width": 182,
+                  "height": 188
+                },
+                "output": {
+                  "left": 23,
+                  "top": 62,
+                  "width": 176,
+                  "height": 182
+                },
+                "sourceBodyBounds": {
+                  "id": 41,
+                  "pixels": 7827,
+                  "left": 1260,
+                  "right": 1419,
+                  "top": 757,
+                  "bottom": 900,
+                  "width": 160,
+                  "height": 144,
+                  "centerX": 1354.7209658873132,
+                  "centerY": 823.947489459563
+                },
+                "sourceAlphaPixels": 11912,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 0.9681317137346565,
+            "baseline": 244,
+            "renderScale": 1.212286177552542,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 196,
+              "sourceBodyHeight": 167,
+              "normalizedBodyHeight": 161.67799619368762,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/spike_spiegel.png",
+            "sourceImageSha256": "144ce9a932b8ada96356c843e91d424108b1e9717e6ce89d3b7674feb351a054",
+            "sourceRow": 5,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 915,
+                  "width": 149,
+                  "height": 171
+                },
+                "output": {
+                  "left": 70,
+                  "top": 78,
+                  "width": 144,
+                  "height": 166
+                },
+                "sourceBodyBounds": {
+                  "id": 42,
+                  "pixels": 6959,
+                  "left": 25,
+                  "right": 140,
+                  "top": 922,
+                  "bottom": 1075,
+                  "width": 116,
+                  "height": 154,
+                  "centerX": 80.40393734732002,
+                  "centerY": 996.92283374048
+                },
+                "sourceAlphaPixels": 10303,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 186,
+                  "top": 915,
+                  "width": 190,
+                  "height": 171
+                },
+                "output": {
+                  "left": 52,
+                  "top": 78,
+                  "width": 184,
+                  "height": 166
+                },
+                "sourceBodyBounds": {
+                  "id": 43,
+                  "pixels": 7797,
+                  "left": 198,
+                  "right": 371,
+                  "top": 922,
+                  "bottom": 1075,
+                  "width": 174,
+                  "height": 154,
+                  "centerX": 264.50519430550213,
+                  "centerY": 977.6748749519046
+                },
+                "sourceAlphaPixels": 11469,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 362,
+                  "top": 921,
+                  "width": 202,
+                  "height": 165
+                },
+                "output": {
+                  "left": 44,
+                  "top": 84,
+                  "width": 196,
+                  "height": 160
+                },
+                "sourceBodyBounds": {
+                  "id": 45,
+                  "pixels": 8121,
+                  "left": 364,
+                  "right": 549,
+                  "top": 924,
+                  "bottom": 1074,
+                  "width": 186,
+                  "height": 151,
+                  "centerX": 448.3132619135574,
+                  "centerY": 991.9392931904938
+                },
+                "sourceAlphaPixels": 13058,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 564,
+                  "top": 921,
+                  "width": 160,
+                  "height": 165
+                },
+                "output": {
+                  "left": 64,
+                  "top": 84,
+                  "width": 155,
+                  "height": 160
+                },
+                "sourceBodyBounds": {
+                  "id": 46,
+                  "pixels": 7327,
+                  "left": 579,
+                  "right": 698,
+                  "top": 925,
+                  "bottom": 1075,
+                  "width": 120,
+                  "height": 151,
+                  "centerX": 629.6462399344889,
+                  "centerY": 996.902142759656
+                },
+                "sourceAlphaPixels": 11345,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 0.9681317137346565,
+            "baseline": 244,
+            "renderScale": 1.212286177552542,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 196,
+              "sourceBodyHeight": 167,
+              "normalizedBodyHeight": 161.67799619368762,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/spike_spiegel.png",
+            "sourceImageSha256": "144ce9a932b8ada96356c843e91d424108b1e9717e6ce89d3b7674feb351a054",
+            "sourceRow": 5,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 739,
+                  "top": 913,
+                  "width": 188,
+                  "height": 173
+                },
+                "output": {
+                  "left": 55,
+                  "top": 77,
+                  "width": 182,
+                  "height": 167
+                },
+                "sourceBodyBounds": {
+                  "id": 44,
+                  "pixels": 8420,
+                  "left": 749,
+                  "right": 898,
+                  "top": 922,
+                  "bottom": 1078,
+                  "width": 150,
+                  "height": 157,
+                  "centerX": 814.6374109263658,
+                  "centerY": 995.1800475059382
+                },
+                "sourceAlphaPixels": 13253,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 928,
+                  "top": 921,
+                  "width": 178,
+                  "height": 165
+                },
+                "output": {
+                  "left": 50,
+                  "top": 84,
+                  "width": 172,
+                  "height": 160
+                },
+                "sourceBodyBounds": {
+                  "id": 48,
+                  "pixels": 7935,
+                  "left": 956,
+                  "right": 1075,
+                  "top": 934,
+                  "bottom": 1075,
+                  "width": 120,
+                  "height": 142,
+                  "centerX": 1008.625456836799,
+                  "centerY": 1004.7303087586641
+                },
+                "sourceAlphaPixels": 13566,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1107,
+                  "top": 921,
+                  "width": 178,
+                  "height": 165
+                },
+                "output": {
+                  "left": 46,
+                  "top": 84,
+                  "width": 172,
+                  "height": 160
+                },
+                "sourceBodyBounds": {
+                  "id": 47,
+                  "pixels": 7880,
+                  "left": 1136,
+                  "right": 1261,
+                  "top": 926,
+                  "bottom": 1075,
+                  "width": 126,
+                  "height": 150,
+                  "centerX": 1191.6628172588833,
+                  "centerY": 993.9157360406091
+                },
+                "sourceAlphaPixels": 12692,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1286,
+                  "top": 939,
+                  "width": 142,
+                  "height": 147
+                },
+                "output": {
+                  "left": 54,
+                  "top": 102,
+                  "width": 137,
+                  "height": 142
+                },
+                "sourceBodyBounds": {
+                  "id": 49,
+                  "pixels": 6761,
+                  "left": 1311,
+                  "right": 1410,
+                  "top": 971,
+                  "bottom": 1072,
+                  "width": 100,
+                  "height": 102,
+                  "centerX": 1361.9902381304541,
+                  "centerY": 1019.7519597692649
+                },
+                "sourceAlphaPixels": 9019,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 0.9681317137346565,
+            "baseline": 244,
+            "renderScale": 1.212286177552542,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 196,
+              "sourceBodyHeight": 167,
+              "normalizedBodyHeight": 161.67799619368762,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          }
+        ],
+        "sourceWideBodyCalibration": {
+          "method": "one-complete-standing-native-body-per-source",
+          "targetBodyHeight": 196,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c6c2b0b1073c4d9936563369da7a2810694aba0dbeb105a1df5c1b74a88cceb9",
+              "37a823b54501b23b8402c11e24210b4914c0293494faf417ccd42b82d5a4c02d",
+              "be4463ee9ac4b519fa524946418afb64be5ca952641a52a39711f3af07847856",
+              "f8cdfb960e9a48b34752097c88c5305039451204c7024c5a3becbda62fc9f043"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c78e2230d65630227a1f2ca5e10fbc6f8ed074a465cfa900c6f9082d23fe2698",
+              "9e93818945a839b6fbb12656baed7fe16539a08736e2f86f26f865ad2187d848",
+              "641c36f9cba4af49e9fce61e9d3070cfab563c4baf4e1f031e42517ab8856aea",
+              "aad6b94fa8b42f99a378b216f1278824d4304c908b4ba2005c7198f85f8bad92"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "35b07f8049c53f49694761255f96fbb498cc27bfaf5590a3caf9a1df6a45119a",
+              "534839a43fd34b878388a07644d95ae9a0bd29a32fbd07eb9773a585bb353cc0",
+              "e597ee4b14b078622e0a90c10598628a6d5dcb9525e205eeecd687661d7ea34c",
+              "19e2370e799d744ceac6d6be9625e90fb6b1700d14a45b9214d1edc852256961"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "19867b0407bef9079d5b7849911a2611b39e68ee152ee54503b246b4bf0acc1f",
+              "acfc52afd50bc7d0c1832222c376e22c70280234e7daea802675d5f15ff313a2",
+              "a2e10419bcffcf43610cdc14490330a5289b84c8fb6790eef56c2f4fce3788fd",
+              "3e0e25ca0df99f1e6c3474ef7fe252b574ea15cdafed8a858bcff938cef606df"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "correctionNotes": [],
+        "notes": [
+          "Actual returned source image opened/seen with48full-body drawings; no accepted delivery claimed until decoded builder checks pass."
+        ]
+      }
+    },
+    {
+      "id": "faye_valentine",
+      "heroId": "faye_valentine",
+      "universe": "Cowboy Bebop",
+      "name": "Faye Valentine",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/faye_valentine.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "9469e7d7d0cef8fc505371ca10f91901d63b60b47c9094f59bb78375496e88cb",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/faye_valentine.png",
+      "sourceImageSha256": "2c53c437d7ebff2b09fe8679ba1d0769f075ea4ba247e6d556a962b2c7dc0c00",
+      "sourceDimensions": [
+        1448,
+        1086
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/faye_valentine.png",
+          "sha256": "2c53c437d7ebff2b09fe8679ba1d0769f075ea4ba247e6d556a962b2c7dc0c00",
+          "drawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/cowboy-bebop/faye-valentine.png",
+      "referenceAssetSha256": "52c4f1a2812832236d6dcb7f0a8929fe60953a02f53034196a3eb889ed6216c7",
+      "referenceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/faye_valentine.png",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/faye_valentine.png",
+      "referenceUse": "Historical resource inspected and archived. New initial drawings use the exact selected source version; corrections reference only the native source image, never a blocked persona variant.",
+      "sourceWork": "Cowboy Bebop television anime (1998), recurring yellow outfit",
+      "characterVersion": "Cowboy Bebop television anime (1998), recurring yellow outfit",
+      "sourceAppearance": "Adult woman, short angular violet bob, yellow sleeveless cropped top and shorts, short red jacket draped over arms, pale stockings and white boots; no Netflix costume",
+      "sourceWeapon": "Glock30 compact pistol held in both hands",
+      "sourcePose": "Aim held compact pistol, one tiny warm muzzle flash on release col2 only, recover with barrel lowered; no flash before release",
+      "sourceActionName": "Tirs de couverture de Faye",
+      "sourceEffect": "damage",
+      "sourceDelivery": "projectile",
+      "targetBodyHeight": 178,
+      "sourceReference": "https://www.cowboy-bebop.net/",
+      "sourceUrl": "https://www.cowboy-bebop.net/",
+      "abilityName": "Tir du Glock30 de Faye",
+      "abilityEffect": "damage",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "native-alpha-component-segmentation-one-source-calibration-v1",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/faye_valentine.png",
+            "sourceImageSha256": "2c53c437d7ebff2b09fe8679ba1d0769f075ea4ba247e6d556a962b2c7dc0c00",
+            "sourceRow": 4,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 21,
+                  "top": 712,
+                  "width": 184,
+                  "height": 185
+                },
+                "output": {
+                  "left": 39,
+                  "top": 55,
+                  "width": 188,
+                  "height": 189
+                },
+                "sourceBodyBounds": {
+                  "id": 41,
+                  "pixels": 7421,
+                  "left": 67,
+                  "right": 161,
+                  "top": 716,
+                  "bottom": 892,
+                  "width": 95,
+                  "height": 177,
+                  "centerX": 107.57997574450883,
+                  "centerY": 799.3424066837354
+                },
+                "sourceAlphaPixels": 12653,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 206,
+                  "top": 712,
+                  "width": 162,
+                  "height": 185
+                },
+                "output": {
+                  "left": 44,
+                  "top": 55,
+                  "width": 166,
+                  "height": 189
+                },
+                "sourceBodyBounds": {
+                  "id": 42,
+                  "pixels": 7586,
+                  "left": 249,
+                  "right": 324,
+                  "top": 716,
+                  "bottom": 891,
+                  "width": 76,
+                  "height": 176,
+                  "centerX": 287.8627735301872,
+                  "centerY": 800.0522014236752
+                },
+                "sourceAlphaPixels": 12790,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 385,
+                  "top": 712,
+                  "width": 164,
+                  "height": 185
+                },
+                "output": {
+                  "left": 51,
+                  "top": 55,
+                  "width": 168,
+                  "height": 189
+                },
+                "sourceBodyBounds": {
+                  "id": 43,
+                  "pixels": 7617,
+                  "left": 425,
+                  "right": 512,
+                  "top": 716,
+                  "bottom": 891,
+                  "width": 88,
+                  "height": 176,
+                  "centerX": 459.97466194039646,
+                  "centerY": 801.1894446632532
+                },
+                "sourceAlphaPixels": 12462,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 568,
+                  "top": 712,
+                  "width": 134,
+                  "height": 188
+                },
+                "output": {
+                  "left": 61,
+                  "top": 52,
+                  "width": 137,
+                  "height": 192
+                },
+                "sourceBodyBounds": {
+                  "id": 44,
+                  "pixels": 7748,
+                  "left": 600,
+                  "right": 674,
+                  "top": 716,
+                  "bottom": 892,
+                  "width": 75,
+                  "height": 177,
+                  "centerX": 633.3384099122354,
+                  "centerY": 799.5465926690758
+                },
+                "sourceAlphaPixels": 12721,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.0229885057471264,
+            "baseline": 244,
+            "renderScale": 1,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 178,
+              "sourceBodyHeight": 174,
+              "normalizedBodyHeight": 178,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/faye_valentine.png",
+            "sourceImageSha256": "2c53c437d7ebff2b09fe8679ba1d0769f075ea4ba247e6d556a962b2c7dc0c00",
+            "sourceRow": 4,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 717,
+                  "top": 708,
+                  "width": 168,
+                  "height": 191
+                },
+                "output": {
+                  "left": 24,
+                  "top": 49,
+                  "width": 172,
+                  "height": 195
+                },
+                "sourceBodyBounds": {
+                  "id": 48,
+                  "pixels": 7724,
+                  "left": 749,
+                  "right": 881,
+                  "top": 724,
+                  "bottom": 891,
+                  "width": 133,
+                  "height": 168,
+                  "centerX": 818.312661833247,
+                  "centerY": 799.1782755049197
+                },
+                "sourceAlphaPixels": 13863,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 894,
+                  "top": 712,
+                  "width": 175,
+                  "height": 199
+                },
+                "output": {
+                  "left": 28,
+                  "top": 40,
+                  "width": 179,
+                  "height": 204
+                },
+                "sourceBodyBounds": {
+                  "id": 46,
+                  "pixels": 8403,
+                  "left": 903,
+                  "right": 1052,
+                  "top": 722,
+                  "bottom": 889,
+                  "width": 150,
+                  "height": 168,
+                  "centerX": 991.643579673926,
+                  "centerY": 799.099488277996
+                },
+                "sourceAlphaPixels": 14781,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1069,
+                  "top": 711,
+                  "width": 186,
+                  "height": 189
+                },
+                "output": {
+                  "left": 32,
+                  "top": 51,
+                  "width": 190,
+                  "height": 193
+                },
+                "sourceBodyBounds": {
+                  "id": 45,
+                  "pixels": 8312,
+                  "left": 1084,
+                  "right": 1230,
+                  "top": 721,
+                  "bottom": 892,
+                  "width": 147,
+                  "height": 172,
+                  "centerX": 1162.4895332050048,
+                  "centerY": 797.8508180943214
+                },
+                "sourceAlphaPixels": 14446,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1256,
+                  "top": 712,
+                  "width": 160,
+                  "height": 186
+                },
+                "output": {
+                  "left": 46,
+                  "top": 54,
+                  "width": 164,
+                  "height": 190
+                },
+                "sourceBodyBounds": {
+                  "id": 47,
+                  "pixels": 7639,
+                  "left": 1279,
+                  "right": 1401,
+                  "top": 722,
+                  "bottom": 892,
+                  "width": 123,
+                  "height": 171,
+                  "centerX": 1336.6393507003534,
+                  "centerY": 795.6876554522843
+                },
+                "sourceAlphaPixels": 13464,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.0229885057471264,
+            "baseline": 244,
+            "renderScale": 1,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 178,
+              "sourceBodyHeight": 174,
+              "normalizedBodyHeight": 178,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/faye_valentine.png",
+            "sourceImageSha256": "2c53c437d7ebff2b09fe8679ba1d0769f075ea4ba247e6d556a962b2c7dc0c00",
+            "sourceRow": 5,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 0,
+                  "top": 897,
+                  "width": 187,
+                  "height": 189
+                },
+                "output": {
+                  "left": 23,
+                  "top": 51,
+                  "width": 191,
+                  "height": 193
+                },
+                "sourceBodyBounds": {
+                  "id": 51,
+                  "pixels": 7177,
+                  "left": 67,
+                  "right": 155,
+                  "top": 902,
+                  "bottom": 1072,
+                  "width": 89,
+                  "height": 171,
+                  "centerX": 102.86219869026056,
+                  "centerY": 982.6324369513725
+                },
+                "sourceAlphaPixels": 11876,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 210,
+                  "top": 897,
+                  "width": 162,
+                  "height": 189
+                },
+                "output": {
+                  "left": 47,
+                  "top": 51,
+                  "width": 166,
+                  "height": 193
+                },
+                "sourceBodyBounds": {
+                  "id": 52,
+                  "pixels": 7545,
+                  "left": 246,
+                  "right": 345,
+                  "top": 902,
+                  "bottom": 1072,
+                  "width": 100,
+                  "height": 171,
+                  "centerX": 289.2535453943009,
+                  "centerY": 979.7378396288933
+                },
+                "sourceAlphaPixels": 13197,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 395,
+                  "top": 889,
+                  "width": 168,
+                  "height": 197
+                },
+                "output": {
+                  "left": 60,
+                  "top": 42,
+                  "width": 172,
+                  "height": 202
+                },
+                "sourceBodyBounds": {
+                  "id": 53,
+                  "pixels": 7806,
+                  "left": 414,
+                  "right": 538,
+                  "top": 903,
+                  "bottom": 1072,
+                  "width": 125,
+                  "height": 170,
+                  "centerX": 461.9186523187292,
+                  "centerY": 979.0260056366898
+                },
+                "sourceAlphaPixels": 13885,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 564,
+                  "top": 900,
+                  "width": 165,
+                  "height": 186
+                },
+                "output": {
+                  "left": 57,
+                  "top": 54,
+                  "width": 169,
+                  "height": 190
+                },
+                "sourceBodyBounds": {
+                  "id": 55,
+                  "pixels": 7352,
+                  "left": 590,
+                  "right": 688,
+                  "top": 908,
+                  "bottom": 1072,
+                  "width": 99,
+                  "height": 165,
+                  "centerX": 633.3195048966268,
+                  "centerY": 984.1188792165398
+                },
+                "sourceAlphaPixels": 13190,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.0229885057471264,
+            "baseline": 244,
+            "renderScale": 1,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 178,
+              "sourceBodyHeight": 174,
+              "normalizedBodyHeight": 178,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/faye_valentine.png",
+            "sourceImageSha256": "2c53c437d7ebff2b09fe8679ba1d0769f075ea4ba247e6d556a962b2c7dc0c00",
+            "sourceRow": 5,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 729,
+                  "top": 899,
+                  "width": 182,
+                  "height": 187
+                },
+                "output": {
+                  "left": 25,
+                  "top": 53,
+                  "width": 186,
+                  "height": 191
+                },
+                "sourceBodyBounds": {
+                  "id": 54,
+                  "pixels": 8030,
+                  "left": 768,
+                  "right": 882,
+                  "top": 906,
+                  "bottom": 1070,
+                  "width": 115,
+                  "height": 165,
+                  "centerX": 829.6637608966377,
+                  "centerY": 973.4671232876713
+                },
+                "sourceAlphaPixels": 13339,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 922,
+                  "top": 905,
+                  "width": 160,
+                  "height": 167
+                },
+                "output": {
+                  "left": 41,
+                  "top": 73,
+                  "width": 164,
+                  "height": 171
+                },
+                "sourceBodyBounds": {
+                  "id": 56,
+                  "pixels": 7598,
+                  "left": 956,
+                  "right": 1057,
+                  "top": 910,
+                  "bottom": 1069,
+                  "width": 102,
+                  "height": 160,
+                  "centerX": 1006.7028165306659,
+                  "centerY": 979.1091076599105
+                },
+                "sourceAlphaPixels": 12067,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1095,
+                  "top": 905,
+                  "width": 146,
+                  "height": 168
+                },
+                "output": {
+                  "left": 47,
+                  "top": 72,
+                  "width": 149,
+                  "height": 172
+                },
+                "sourceBodyBounds": {
+                  "id": 57,
+                  "pixels": 7415,
+                  "left": 1126,
+                  "right": 1232,
+                  "top": 911,
+                  "bottom": 1070,
+                  "width": 107,
+                  "height": 160,
+                  "centerX": 1173.7004720161833,
+                  "centerY": 977.7091031692515
+                },
+                "sourceAlphaPixels": 12598,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1264,
+                  "top": 904,
+                  "width": 168,
+                  "height": 169
+                },
+                "output": {
+                  "left": 43,
+                  "top": 71,
+                  "width": 172,
+                  "height": 173
+                },
+                "sourceBodyBounds": {
+                  "id": 58,
+                  "pixels": 7661,
+                  "left": 1292,
+                  "right": 1425,
+                  "top": 911,
+                  "bottom": 1069,
+                  "width": 134,
+                  "height": 159,
+                  "centerX": 1346.7526432580603,
+                  "centerY": 976.5174259235087
+                },
+                "sourceAlphaPixels": 12094,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.0229885057471264,
+            "baseline": 244,
+            "renderScale": 1,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 178,
+              "sourceBodyHeight": 174,
+              "normalizedBodyHeight": 178,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          }
+        ],
+        "sourceWideBodyCalibration": {
+          "method": "one-complete-standing-native-body-per-source",
+          "targetBodyHeight": 178,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "69788ebf0d9081e4716f26592ba601591f3c7ec4058e985941091ed0f74c62a9",
+              "be935266d487fe4efe5105e9e3fb2a74cb04c29fb32a4bc88e9833440caf28a4",
+              "8bb3b81754636ae15ce3ab3607042de354446ae2e1f3c87a9e908ead26b002e7",
+              "27bb322046e87d2f220885e2ccc1e9832fcad717c3219f9efd54818ba48ae8da"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "12393bf8dc2f4b478fe754954551b1c16946c71081a86ee2bdd6f5d0c4d70333",
+              "4cafde28d2347c2c6265958a3a206d9b65226012530e6f571dafcc18b04f7a96",
+              "164959648cffa602696d59ddc04939c343c63921db0151e1839739e7660259d4",
+              "04730672356a80e860a7e86f5257848f5867874bec3529dba7b6f083d13ba0a0"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7d23e3f2aa0dc35abcf765d23153138febec8dfe772ed1ac111e6f29186ee0d7",
+              "0edb14c38a389f127c43fad8f68039927670b18ffbac40d4a74954b55c410213",
+              "01778ad7a59f17282fb86544837e88cc67dd5779640ba4d8c8c9796980b84146",
+              "9ed5c6431e7b04ac4134cbe2c6e74f550c1d671a096eec92b102519f7405183d"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "edc6e808e08b66c51b4e234699d115e72e55032023bb8c8602bcd314495ce316",
+              "671ea9f7ad27b3537b6f19bf9f019df6a93bfe9339573a47d0827e26d3423783",
+              "9973fc8fa187bd758b00f9f6b4dd639cb435e4b69f7d529b5c1bf5b68708a9a5",
+              "a170548790b207c08e6c7773a08506690494dc4737a4778a21465fe227da7fa9"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "correctionNotes": [
+          "The four intact SUPER source drawings were read visually: flash was sourcecol5, so second and third pictures of that phase are swapped to release at nativecol2. No RGBA paint or extra pose is created."
+        ],
+        "notes": [
+          "Faye retains violetbob, yellowoutfit/redjacket, pale stockings, whiteboots and heldcompactGlock30. Finale and baseattack release atsourcecol2; SUPER intact-cell permutation is explicit."
+        ]
+      }
+    },
+    {
+      "id": "alphonse_elric",
+      "heroId": "alphonse_elric",
+      "universe": "Fullmetal Alchemist",
+      "name": "Alphonse Elric",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/alphonse_elric.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "47d44040a562c03ed979262c1a68dfa7166cc0a9f58af777096ad462096a4442",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/alphonse_elric.png",
+      "sourceImageSha256": "ba52179f42fc1f32eb0390a979e840a297b2986906542902f27bf84a9f156ae7",
+      "sourceDimensions": [
+        1448,
+        1086
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/alphonse_elric.png",
+          "sha256": "ba52179f42fc1f32eb0390a979e840a297b2986906542902f27bf84a9f156ae7",
+          "drawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/fullmetal-alchemist/alphonse-elric.png",
+      "referenceAssetSha256": "b57b266af88237e797d487c87f58e199e0b5f51a20e65c21c7bd981deed2c2f2",
+      "referenceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/alphonse_elric.png",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/alphonse_elric.png",
+      "referenceUse": "Historical resource inspected and archived. New initial drawings use the exact selected source version; corrections reference only the native source image, never a blocked persona variant.",
+      "sourceWork": "Fullmetal Alchemist: Brotherhood television anime (2009), full empty armour Alphonse",
+      "characterVersion": "Fullmetal Alchemist: Brotherhood television anime (2009), full empty armour Alphonse",
+      "sourceAppearance": "Large complete blue-grey steel suit of armour with horned helmet, glowing red visor eyes, rounded shoulder plates, brown leather details and pale waistcloth; no human body inside",
+      "sourceWeapon": "Empty steel armoured fists and alchemical clap",
+      "sourcePose": "Plant his feet, clap his gauntlets and take a shielding stance for a transmuted barrier; no fabricated gun or healing spell",
+      "sourceActionName": "Rempart transmuté d’Alphonse",
+      "sourceEffect": "guard",
+      "sourceDelivery": "support",
+      "targetBodyHeight": 220,
+      "sourceReference": "https://fullmetalalchemistusa.com/",
+      "sourceUrl": "https://fullmetalalchemistusa.com/",
+      "abilityName": "Poing d’armure d’Alphonse",
+      "abilityEffect": "damage",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "native-alpha-component-segmentation-one-source-calibration-v1",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/alphonse_elric.png",
+            "sourceImageSha256": "ba52179f42fc1f32eb0390a979e840a297b2986906542902f27bf84a9f156ae7",
+            "sourceRow": 4,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 29,
+                  "top": 719,
+                  "width": 136,
+                  "height": 177
+                },
+                "output": {
+                  "left": 54,
+                  "top": 61,
+                  "width": 140,
+                  "height": 183
+                },
+                "sourceBodyBounds": {
+                  "id": 38,
+                  "pixels": 14000,
+                  "left": 38,
+                  "right": 161,
+                  "top": 727,
+                  "bottom": 892,
+                  "width": 124,
+                  "height": 166,
+                  "centerX": 100.50642857142857,
+                  "centerY": 811.5442857142857
+                },
+                "sourceAlphaPixels": 16738,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 218,
+                  "top": 723,
+                  "width": 146,
+                  "height": 177
+                },
+                "output": {
+                  "left": 67,
+                  "top": 61,
+                  "width": 151,
+                  "height": 183
+                },
+                "sourceBodyBounds": {
+                  "id": 39,
+                  "pixels": 12366,
+                  "left": 223,
+                  "right": 333,
+                  "top": 728,
+                  "bottom": 893,
+                  "width": 111,
+                  "height": 166,
+                  "centerX": 276.783114992722,
+                  "centerY": 812.3368106097364
+                },
+                "sourceAlphaPixels": 14898,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 371,
+                  "top": 725,
+                  "width": 174,
+                  "height": 183
+                },
+                "output": {
+                  "left": 40,
+                  "top": 55,
+                  "width": 180,
+                  "height": 189
+                },
+                "sourceBodyBounds": {
+                  "id": 41,
+                  "pixels": 12249,
+                  "left": 404,
+                  "right": 515,
+                  "top": 729,
+                  "bottom": 895,
+                  "width": 112,
+                  "height": 167,
+                  "centerX": 456.15029798350884,
+                  "centerY": 814.3619887337742
+                },
+                "sourceAlphaPixels": 15060,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 570,
+                  "top": 725,
+                  "width": 122,
+                  "height": 177
+                },
+                "output": {
+                  "left": 67,
+                  "top": 61,
+                  "width": 126,
+                  "height": 183
+                },
+                "sourceBodyBounds": {
+                  "id": 40,
+                  "pixels": 12088,
+                  "left": 578,
+                  "right": 681,
+                  "top": 728,
+                  "bottom": 894,
+                  "width": 104,
+                  "height": 167,
+                  "centerX": 628.7528127068167,
+                  "centerY": 812.7838352084713
+                },
+                "sourceAlphaPixels": 15372,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.0321296756950629,
+            "baseline": 244,
+            "renderScale": 1.2840452474412043,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 220,
+              "sourceBodyHeight": 166,
+              "normalizedBodyHeight": 171.33352616538045,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/alphonse_elric.png",
+            "sourceImageSha256": "ba52179f42fc1f32eb0390a979e840a297b2986906542902f27bf84a9f156ae7",
+            "sourceRow": 4,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 715,
+                  "top": 731,
+                  "width": 191,
+                  "height": 169
+                },
+                "output": {
+                  "left": 17,
+                  "top": 70,
+                  "width": 197,
+                  "height": 174
+                },
+                "sourceBodyBounds": {
+                  "id": 42,
+                  "pixels": 12631,
+                  "left": 738,
+                  "right": 898,
+                  "top": 740,
+                  "bottom": 893,
+                  "width": 161,
+                  "height": 154,
+                  "centerX": 822.5876019317552,
+                  "centerY": 815.4472329981791
+                },
+                "sourceAlphaPixels": 17099,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 906,
+                  "top": 731,
+                  "width": 188,
+                  "height": 168
+                },
+                "output": {
+                  "left": 28,
+                  "top": 71,
+                  "width": 194,
+                  "height": 173
+                },
+                "sourceBodyBounds": {
+                  "id": 43,
+                  "pixels": 12705,
+                  "left": 912,
+                  "right": 1080,
+                  "top": 740,
+                  "bottom": 893,
+                  "width": 169,
+                  "height": 154,
+                  "centerX": 1003.1191656828021,
+                  "centerY": 814.0411648957104
+                },
+                "sourceAlphaPixels": 17302,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1106,
+                  "top": 731,
+                  "width": 157,
+                  "height": 185
+                },
+                "output": {
+                  "left": 57,
+                  "top": 53,
+                  "width": 162,
+                  "height": 191
+                },
+                "sourceBodyBounds": {
+                  "id": 44,
+                  "pixels": 11586,
+                  "left": 1109,
+                  "right": 1250,
+                  "top": 740,
+                  "bottom": 896,
+                  "width": 142,
+                  "height": 157,
+                  "centerX": 1174.820904539962,
+                  "centerY": 811.9097186259279
+                },
+                "sourceAlphaPixels": 15672,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1270,
+                  "top": 760,
+                  "width": 148,
+                  "height": 146
+                },
+                "output": {
+                  "left": 42,
+                  "top": 93,
+                  "width": 153,
+                  "height": 151
+                },
+                "sourceBodyBounds": {
+                  "id": 45,
+                  "pixels": 11334,
+                  "left": 1279,
+                  "right": 1415,
+                  "top": 765,
+                  "bottom": 893,
+                  "width": 137,
+                  "height": 129,
+                  "centerX": 1353.0511734603847,
+                  "centerY": 828.1306687841892
+                },
+                "sourceAlphaPixels": 14076,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.0321296756950629,
+            "baseline": 244,
+            "renderScale": 1.2840452474412043,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 220,
+              "sourceBodyHeight": 166,
+              "normalizedBodyHeight": 171.33352616538045,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/alphonse_elric.png",
+            "sourceImageSha256": "ba52179f42fc1f32eb0390a979e840a297b2986906542902f27bf84a9f156ae7",
+            "sourceRow": 5,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 907,
+                  "width": 176,
+                  "height": 167
+                },
+                "output": {
+                  "left": 39,
+                  "top": 72,
+                  "width": 182,
+                  "height": 172
+                },
+                "sourceBodyBounds": {
+                  "id": 49,
+                  "pixels": 13503,
+                  "left": 24,
+                  "right": 183,
+                  "top": 910,
+                  "bottom": 1069,
+                  "width": 160,
+                  "height": 160,
+                  "centerX": 105.54980374731541,
+                  "centerY": 991.8929867436866
+                },
+                "sourceAlphaPixels": 17214,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 195,
+                  "top": 900,
+                  "width": 193,
+                  "height": 174
+                },
+                "output": {
+                  "left": 41,
+                  "top": 64,
+                  "width": 199,
+                  "height": 180
+                },
+                "sourceBodyBounds": {
+                  "id": 46,
+                  "pixels": 14337,
+                  "left": 206,
+                  "right": 379,
+                  "top": 906,
+                  "bottom": 1069,
+                  "width": 174,
+                  "height": 164,
+                  "centerX": 279.4865034526051,
+                  "centerY": 985.6905210295041
+                },
+                "sourceAlphaPixels": 19077,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 375,
+                  "top": 925,
+                  "width": 158,
+                  "height": 148
+                },
+                "output": {
+                  "left": 37,
+                  "top": 91,
+                  "width": 163,
+                  "height": 153
+                },
+                "sourceBodyBounds": {
+                  "id": 53,
+                  "pixels": 11253,
+                  "left": 377,
+                  "right": 529,
+                  "top": 955,
+                  "bottom": 1069,
+                  "width": 153,
+                  "height": 115,
+                  "centerX": 463.4671643117391,
+                  "centerY": 1016.2340709144228
+                },
+                "sourceAlphaPixels": 13246,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 546,
+                  "top": 900,
+                  "width": 166,
+                  "height": 173
+                },
+                "output": {
+                  "left": 25,
+                  "top": 65,
+                  "width": 171,
+                  "height": 179
+                },
+                "sourceBodyBounds": {
+                  "id": 48,
+                  "pixels": 13166,
+                  "left": 573,
+                  "right": 709,
+                  "top": 909,
+                  "bottom": 1069,
+                  "width": 137,
+                  "height": 161,
+                  "centerX": 645.9961263861461,
+                  "centerY": 993.4948351815282
+                },
+                "sourceAlphaPixels": 15949,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.0321296756950629,
+            "baseline": 244,
+            "renderScale": 1.2840452474412043,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 220,
+              "sourceBodyHeight": 166,
+              "normalizedBodyHeight": 171.33352616538045,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/alphonse_elric.png",
+            "sourceImageSha256": "ba52179f42fc1f32eb0390a979e840a297b2986906542902f27bf84a9f156ae7",
+            "sourceRow": 5,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 755,
+                  "top": 903,
+                  "width": 148,
+                  "height": 170
+                },
+                "output": {
+                  "left": 47,
+                  "top": 69,
+                  "width": 153,
+                  "height": 175
+                },
+                "sourceBodyBounds": {
+                  "id": 50,
+                  "pixels": 12309,
+                  "left": 767,
+                  "right": 899,
+                  "top": 910,
+                  "bottom": 1069,
+                  "width": 133,
+                  "height": 160,
+                  "centerX": 833.1786497684622,
+                  "centerY": 990.8301242992932
+                },
+                "sourceAlphaPixels": 15477,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 914,
+                  "top": 906,
+                  "width": 166,
+                  "height": 180
+                },
+                "output": {
+                  "left": 34,
+                  "top": 58,
+                  "width": 171,
+                  "height": 186
+                },
+                "sourceBodyBounds": {
+                  "id": 47,
+                  "pixels": 12928,
+                  "left": 928,
+                  "right": 1076,
+                  "top": 908,
+                  "bottom": 1070,
+                  "width": 149,
+                  "height": 163,
+                  "centerX": 1005.4094214108911,
+                  "centerY": 985.1185024752475
+                },
+                "sourceAlphaPixels": 17208,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1119,
+                  "top": 923,
+                  "width": 146,
+                  "height": 150
+                },
+                "output": {
+                  "left": 61,
+                  "top": 89,
+                  "width": 151,
+                  "height": 155
+                },
+                "sourceBodyBounds": {
+                  "id": 51,
+                  "pixels": 10819,
+                  "left": 1125,
+                  "right": 1249,
+                  "top": 938,
+                  "bottom": 1069,
+                  "width": 125,
+                  "height": 132,
+                  "centerX": 1184.366947037619,
+                  "centerY": 1003.3026157685554
+                },
+                "sourceAlphaPixels": 13764,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1266,
+                  "top": 939,
+                  "width": 164,
+                  "height": 133
+                },
+                "output": {
+                  "left": 41,
+                  "top": 107,
+                  "width": 169,
+                  "height": 137
+                },
+                "sourceBodyBounds": {
+                  "id": 52,
+                  "pixels": 10248,
+                  "left": 1281,
+                  "right": 1406,
+                  "top": 947,
+                  "bottom": 1069,
+                  "width": 126,
+                  "height": 123,
+                  "centerX": 1350.0620608899299,
+                  "centerY": 1009.1532006245121
+                },
+                "sourceAlphaPixels": 12990,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.0321296756950629,
+            "baseline": 244,
+            "renderScale": 1.2840452474412043,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 220,
+              "sourceBodyHeight": 166,
+              "normalizedBodyHeight": 171.33352616538045,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          }
+        ],
+        "sourceWideBodyCalibration": {
+          "method": "one-complete-standing-native-body-per-source",
+          "targetBodyHeight": 220,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4ae4758adce7fbf203a043c49b83288fd51de21b55db9f0489f0e934edba6cc4",
+              "2fc5f6dc8202db841a1a8e9add9e10fa31f7ab30c76021925ac53d3643c70787",
+              "0240fe38b2fd744c192a4365fcb8b241d2ce3cf44e3693a5506762b030c1a259",
+              "5eb7aeb71a0453d1021eb97c1ba99258c0beb0499df1b4ecf3d4813879ace761"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "30591424dcf233a6c749832040d197e4a671727af6eec3eaa0b93df5732ad897",
+              "ad916c25a3685dfdfcf649827468d212da71c7fcc5a078a5bfe184ad038d150d",
+              "5502d02753d06b6f5be505065ea86d42366df79065b8421d65531a5cc3a104ce",
+              "9064aa47fb1df69ed89ea3a36157117e8a4119870157169101ea7f8209ac643e"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c8718dd2e1c4db8f079f7ded944d6d1cb447d32f41837e9bb5c0b1e5f3d32a8c",
+              "86cc910e5beb5ab7141f0438f6051b813e977960428f5866c7bff6fcfdab82f5",
+              "9bde168ad3e85b168939dc27bb43920e219a55b40afc7ad8dacb4c55a8499d3a",
+              "1db8176898f34e6860e2a8263e0bc91840338d5f58dd47930aebad3bff729a80"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "70a5576f3aa291b1acb9bc51e9684294e80bbdff5609e20f6aaf0550f71fd739",
+              "4f1dbdfb0e3e63a94cb1e57c2da2f700fc54b8f361ec42e74bf739f3bd742569",
+              "7b03d9eef08564df2b184e87e1e6743a52813806b676cba8eee05d64d0a699e9",
+              "e0476ae365388e6de50af2a071f65fc9089f5695874cdf978885fab0d18f61e8"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "correctionNotes": [],
+        "notes": [
+          "Actual returned source image opened/seen with48full-body drawings; no accepted delivery claimed until decoded builder checks pass."
+        ]
+      }
+    },
+    {
+      "id": "akane_tsunemori",
+      "heroId": "akane_tsunemori",
+      "universe": "Psycho-Pass",
+      "name": "Akane Tsunemori",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/akane_tsunemori.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "5b05025268124d61cb770e65483eeff99fdda2c853d0b8e46c9a31874e9f995b",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/akane_tsunemori.png",
+      "sourceImageSha256": "328c3c9851cc11b8369524a7ce6e07597f3bd4af6ff914ebe68390fc2e271158",
+      "sourceDimensions": [
+        1448,
+        1086
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/akane_tsunemori.png",
+          "sha256": "328c3c9851cc11b8369524a7ce6e07597f3bd4af6ff914ebe68390fc2e271158",
+          "drawingsObserved": 48,
+          "retainedDrawings": 48,
+          "excludedDrawings": 0
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/psycho-pass/akane-tsunemori.png",
+      "referenceAssetSha256": "af2a3cfe6fb4b2b82734fe44f9dc978b9f3d823445b8b0e3cd525ca30532f888",
+      "referenceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/akane_tsunemori.png",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/akane_tsunemori.png",
+      "referenceUse": "Historical resource inspected and archived. New initial drawings use the exact selected source version; corrections reference only the native source image, never a blocked persona variant.",
+      "sourceWork": "Psycho-Pass season1 episode21 Blood-Stained Reward (2013), exceptional authorized Non-Lethal Paralyzer",
+      "characterVersion": "Psycho-Pass season1 episode21 Blood-Stained Reward (2013), exceptional authorized Non-Lethal Paralyzer",
+      "sourceAppearance": "Adult woman, short brown bob and brown eyes, black PublicSafety Bureau jacket over white shirt and green tie, black skirt/tights and dark shoes; original season1 design",
+      "sourceWeapon": "Black/cyan Dominator, locked to Non-Lethal Paralyzer under the explicit S1E21 Sibyl exception",
+      "sourcePose": "Aim her held Dominator and release a short cyan Paralyzer accent on col2; the accepted target is controlled without damage, only with explicit authorization/eligibility; never infer a CrimeCoefficient",
+      "sourceActionName": "Dominator — Non-Lethal Paralyzer",
+      "sourceEffect": "control",
+      "sourceDelivery": "control",
+      "targetBodyHeight": 174,
+      "sourceReference": "https://psychopass.fandom.com/wiki/0121_Blood-Stained_Reward",
+      "sourceUrl": "https://psychopass.fandom.com/wiki/0121_Blood-Stained_Reward",
+      "abilityName": "Observation de la ligne de tir d’Akane",
+      "abilityEffect": "guard",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "native-alpha-component-segmentation-one-source-calibration-v1",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/akane_tsunemori.png",
+            "sourceImageSha256": "328c3c9851cc11b8369524a7ce6e07597f3bd4af6ff914ebe68390fc2e271158",
+            "sourceRow": 4,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 716,
+                  "width": 126,
+                  "height": 185
+                },
+                "output": {
+                  "left": 81,
+                  "top": 56,
+                  "width": 128,
+                  "height": 188
+                },
+                "sourceBodyBounds": {
+                  "id": 37,
+                  "pixels": 7815,
+                  "left": 60,
+                  "right": 139,
+                  "top": 720,
+                  "bottom": 893,
+                  "width": 80,
+                  "height": 174,
+                  "centerX": 95.18989123480486,
+                  "centerY": 804.4629558541267
+                },
+                "sourceAlphaPixels": 11540,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 188,
+                  "top": 716,
+                  "width": 144,
+                  "height": 186
+                },
+                "output": {
+                  "left": 44,
+                  "top": 55,
+                  "width": 146,
+                  "height": 189
+                },
+                "sourceBodyBounds": {
+                  "id": 38,
+                  "pixels": 7510,
+                  "left": 230,
+                  "right": 308,
+                  "top": 722,
+                  "bottom": 894,
+                  "width": 79,
+                  "height": 173,
+                  "centerX": 270.4752330226365,
+                  "centerY": 801.0420772303595
+                },
+                "sourceAlphaPixels": 11016,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 361,
+                  "top": 717,
+                  "width": 178,
+                  "height": 185
+                },
+                "output": {
+                  "left": 38,
+                  "top": 56,
+                  "width": 181,
+                  "height": 188
+                },
+                "sourceBodyBounds": {
+                  "id": 39,
+                  "pixels": 7270,
+                  "left": 412,
+                  "right": 485,
+                  "top": 722,
+                  "bottom": 894,
+                  "width": 74,
+                  "height": 173,
+                  "centerX": 449.19133425034386,
+                  "centerY": 801.7206327372764
+                },
+                "sourceAlphaPixels": 11183,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 540,
+                  "top": 715,
+                  "width": 139,
+                  "height": 185
+                },
+                "output": {
+                  "left": 33,
+                  "top": 56,
+                  "width": 141,
+                  "height": 188
+                },
+                "sourceBodyBounds": {
+                  "id": 40,
+                  "pixels": 7877,
+                  "left": 591,
+                  "right": 668,
+                  "top": 722,
+                  "bottom": 894,
+                  "width": 78,
+                  "height": 173,
+                  "centerX": 633.2466675130125,
+                  "centerY": 804.1570394820363
+                },
+                "sourceAlphaPixels": 12079,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.015248837018782,
+            "baseline": 244,
+            "renderScale": 1.0262667926064273,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 174,
+              "sourceBodyHeight": 167,
+              "normalizedBodyHeight": 169.54655578213658,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/akane_tsunemori.png",
+            "sourceImageSha256": "328c3c9851cc11b8369524a7ce6e07597f3bd4af6ff914ebe68390fc2e271158",
+            "sourceRow": 4,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 719,
+                  "top": 726,
+                  "width": 182,
+                  "height": 184
+                },
+                "output": {
+                  "left": 24,
+                  "top": 57,
+                  "width": 185,
+                  "height": 187
+                },
+                "sourceBodyBounds": {
+                  "id": 41,
+                  "pixels": 7076,
+                  "left": 753,
+                  "right": 871,
+                  "top": 736,
+                  "bottom": 895,
+                  "width": 119,
+                  "height": 160,
+                  "centerX": 821.5665630299604,
+                  "centerY": 805.6582815149802
+                },
+                "sourceAlphaPixels": 11295,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 902,
+                  "top": 731,
+                  "width": 170,
+                  "height": 176
+                },
+                "output": {
+                  "left": 39,
+                  "top": 65,
+                  "width": 173,
+                  "height": 179
+                },
+                "sourceBodyBounds": {
+                  "id": 44,
+                  "pixels": 7288,
+                  "left": 932,
+                  "right": 1052,
+                  "top": 749,
+                  "bottom": 897,
+                  "width": 121,
+                  "height": 149,
+                  "centerX": 989.3846048298573,
+                  "centerY": 814.6206092206367
+                },
+                "sourceAlphaPixels": 10974,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1073,
+                  "top": 736,
+                  "width": 184,
+                  "height": 164
+                },
+                "output": {
+                  "left": 16,
+                  "top": 77,
+                  "width": 187,
+                  "height": 167
+                },
+                "sourceBodyBounds": {
+                  "id": 42,
+                  "pixels": 8188,
+                  "left": 1093,
+                  "right": 1251,
+                  "top": 744,
+                  "bottom": 893,
+                  "width": 159,
+                  "height": 150,
+                  "centerX": 1183.317782120176,
+                  "centerY": 811.7387640449438
+                },
+                "sourceAlphaPixels": 11780,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1272,
+                  "top": 732,
+                  "width": 160,
+                  "height": 188
+                },
+                "output": {
+                  "left": 41,
+                  "top": 53,
+                  "width": 162,
+                  "height": 191
+                },
+                "sourceBodyBounds": {
+                  "id": 43,
+                  "pixels": 8152,
+                  "left": 1279,
+                  "right": 1421,
+                  "top": 745,
+                  "bottom": 897,
+                  "width": 143,
+                  "height": 153,
+                  "centerX": 1357.7952649656527,
+                  "centerY": 814.7578508341511
+                },
+                "sourceAlphaPixels": 11666,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.015248837018782,
+            "baseline": 244,
+            "renderScale": 1.0262667926064273,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 174,
+              "sourceBodyHeight": 167,
+              "normalizedBodyHeight": 169.54655578213658,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/akane_tsunemori.png",
+            "sourceImageSha256": "328c3c9851cc11b8369524a7ce6e07597f3bd4af6ff914ebe68390fc2e271158",
+            "sourceRow": 5,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 901,
+                  "width": 134,
+                  "height": 170
+                },
+                "output": {
+                  "left": 82,
+                  "top": 71,
+                  "width": 136,
+                  "height": 173
+                },
+                "sourceBodyBounds": {
+                  "id": 46,
+                  "pixels": 6600,
+                  "left": 56,
+                  "right": 136,
+                  "top": 908,
+                  "bottom": 1065,
+                  "width": 81,
+                  "height": 158,
+                  "centerX": 94.52,
+                  "centerY": 979.0321212121212
+                },
+                "sourceAlphaPixels": 9870,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 184,
+                  "top": 902,
+                  "width": 158,
+                  "height": 168
+                },
+                "output": {
+                  "left": 33,
+                  "top": 73,
+                  "width": 160,
+                  "height": 171
+                },
+                "sourceBodyBounds": {
+                  "id": 47,
+                  "pixels": 7560,
+                  "left": 229,
+                  "right": 339,
+                  "top": 909,
+                  "bottom": 1065,
+                  "width": 111,
+                  "height": 157,
+                  "centerX": 277.9276455026455,
+                  "centerY": 978.3775132275132
+                },
+                "sourceAlphaPixels": 11090,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 389,
+                  "top": 902,
+                  "width": 122,
+                  "height": 170
+                },
+                "output": {
+                  "left": 55,
+                  "top": 71,
+                  "width": 124,
+                  "height": 173
+                },
+                "sourceBodyBounds": {
+                  "id": 50,
+                  "pixels": 7525,
+                  "left": 410,
+                  "right": 504,
+                  "top": 911,
+                  "bottom": 1064,
+                  "width": 95,
+                  "height": 154,
+                  "centerX": 461.07760797342195,
+                  "centerY": 978.9663787375415
+                },
+                "sourceAlphaPixels": 10525,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 546,
+                  "top": 902,
+                  "width": 172,
+                  "height": 170
+                },
+                "output": {
+                  "left": 35,
+                  "top": 71,
+                  "width": 175,
+                  "height": 173
+                },
+                "sourceBodyBounds": {
+                  "id": 48,
+                  "pixels": 7149,
+                  "left": 586,
+                  "right": 679,
+                  "top": 910,
+                  "bottom": 1065,
+                  "width": 94,
+                  "height": 156,
+                  "centerX": 637.4298503287173,
+                  "centerY": 983.3301161001539
+                },
+                "sourceAlphaPixels": 10703,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.015248837018782,
+            "baseline": 244,
+            "renderScale": 1.0262667926064273,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 174,
+              "sourceBodyHeight": 167,
+              "normalizedBodyHeight": 169.54655578213658,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/akane_tsunemori.png",
+            "sourceImageSha256": "328c3c9851cc11b8369524a7ce6e07597f3bd4af6ff914ebe68390fc2e271158",
+            "sourceRow": 5,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 725,
+                  "top": 907,
+                  "width": 146,
+                  "height": 163
+                },
+                "output": {
+                  "left": 35,
+                  "top": 79,
+                  "width": 148,
+                  "height": 165
+                },
+                "sourceBodyBounds": {
+                  "id": 49,
+                  "pixels": 7512,
+                  "left": 766,
+                  "right": 862,
+                  "top": 910,
+                  "bottom": 1065,
+                  "width": 97,
+                  "height": 156,
+                  "centerX": 816.2227103301384,
+                  "centerY": 980.3985623003194
+                },
+                "sourceAlphaPixels": 11033,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 922,
+                  "top": 906,
+                  "width": 133,
+                  "height": 165
+                },
+                "output": {
+                  "left": 47,
+                  "top": 76,
+                  "width": 135,
+                  "height": 168
+                },
+                "sourceBodyBounds": {
+                  "id": 51,
+                  "pixels": 7829,
+                  "left": 950,
+                  "right": 1049,
+                  "top": 915,
+                  "bottom": 1065,
+                  "width": 100,
+                  "height": 151,
+                  "centerX": 1001.4792438370163,
+                  "centerY": 983.9440541576191
+                },
+                "sourceAlphaPixels": 11187,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1093,
+                  "top": 915,
+                  "width": 168,
+                  "height": 155
+                },
+                "output": {
+                  "left": 39,
+                  "top": 87,
+                  "width": 171,
+                  "height": 157
+                },
+                "sourceBodyBounds": {
+                  "id": 52,
+                  "pixels": 7028,
+                  "left": 1129,
+                  "right": 1227,
+                  "top": 934,
+                  "bottom": 1064,
+                  "width": 99,
+                  "height": 131,
+                  "centerX": 1181.1540978941377,
+                  "centerY": 991.6962151394422
+                },
+                "sourceAlphaPixels": 9990,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1276,
+                  "top": 923,
+                  "width": 134,
+                  "height": 149
+                },
+                "output": {
+                  "left": 52,
+                  "top": 93,
+                  "width": 136,
+                  "height": 151
+                },
+                "sourceBodyBounds": {
+                  "id": 53,
+                  "pixels": 6976,
+                  "left": 1299,
+                  "right": 1395,
+                  "top": 944,
+                  "bottom": 1060,
+                  "width": 97,
+                  "height": 117,
+                  "centerX": 1350.6551032110092,
+                  "centerY": 1008.9459575688073
+                },
+                "sourceAlphaPixels": 9947,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 1.015248837018782,
+            "baseline": 244,
+            "renderScale": 1.0262667926064273,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 174,
+              "sourceBodyHeight": 167,
+              "normalizedBodyHeight": 169.54655578213658,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          }
+        ],
+        "sourceWideBodyCalibration": {
+          "method": "one-complete-standing-native-body-per-source",
+          "targetBodyHeight": 174,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "80acfc3052a26a3db73f32add785168429af235a9b986b7db7c3bcd26293181f",
+              "ff51851ec5f370ed3fbff36860faa3d7e2421dd18698088c9f338fb170bec890",
+              "1138b7dd6cdea6758372174497f96310dff7fff8838560794651cd86563de7a8",
+              "7f88cdd22f2370b9daef5be1e422a92b75f5d23e735eeb63c1efe275930d3787"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d057d7262bb3793c95ce0e2288bea49e215c82af1ed48bb6997a41510d95c040",
+              "e87b4adb7513da084048bb1e57ac6597a6e2ddf8b31190cd96948c7104a3c20c",
+              "9cb616cf98bd0a9c2cb86a56f6aad3163f05d71294e60fd531a33a831377cecb",
+              "60956322977dd4c0e9e92c52baa48f9f62571b230b4ea9a2b8dba575a9780d93"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e3633982d658287eb039e45499e28f80676aea33e785a76db77d09f807098522",
+              "bbdf8901929e1a7ac85996e376cb7e9a3b8af7e6af68e8ca069d2790dd6efbd8",
+              "4ff5ed659830186ded13c09af5b85575225b4f21567604b80994a52b5d8b8438",
+              "e924df3d9822d55ddd474f386210ff410b25ea84775e17342da1a8c437c0c62c"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "547571a9dd097ab82550e84de1e36852df3704e07f9222b4ff64d9a795069395",
+              "1016721dc9d45703e0be6fc229c35f1de4da386ca01abc27d6e3bcfced8da4fb",
+              "ae264080de213f872ddb1273b979c2881de450bbf6782645ce0663117da0a15e",
+              "26c7e4aaf01921d5a86d90878a52b70253b1dce173cc491e23dd119d881641f8"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "correctionNotes": [],
+        "notes": [
+          "Actual returned source image opened/seen with48full-body drawings; no accepted delivery claimed until decoded builder checks pass."
+        ]
+      }
+    },
+    {
+      "id": "tsubaki_bb",
+      "heroId": "tsubaki_bb",
+      "universe": "BlazBlue",
+      "name": "Tsubaki Yayoi",
+      "sheet": "/sprites/generated/combat-character-corrections-wave16-part-c/tsubaki_bb.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "3496bedd8e94d7f6e4d8e317fab2eec8446c7bb750bd05ca9cf61d6573056cfd",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/tsubaki_bb.png",
+      "sourceImageSha256": "06d6ad5b469d3216c212b2a187a4213dc095c13cc00757d833daee5a40f52501",
+      "sourceDimensions": [
+        1448,
+        1086
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/tsubaki_bb.png",
+          "sha256": "06d6ad5b469d3216c212b2a187a4213dc095c13cc00757d833daee5a40f52501",
+          "drawingsObserved": 48,
+          "retainedDrawings": 40,
+          "excludedDrawings": 8
+        },
+        {
+          "path": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/tsubaki_bb-correction.png",
+          "sha256": "dbd752bb163bf93908b1bb1577b3e8c2bfe7a79ff62ad867f17a15b6d18f27dc",
+          "drawingsObserved": 8,
+          "retainedDrawings": 8,
+          "excludedDrawings": 0
+        }
+      ],
+      "referenceAsset": "/sprites/generated/heroes/blazblue/tsubaki-bb.png",
+      "referenceAssetSha256": "de88f528f2d53cb966a08369ea0d4f23d6b50ea0dc28d0b68b264a47b6c94384",
+      "referenceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/tsubaki_bb.png",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave16-2026-10-28/part-c/references/tsubaki_bb.png",
+      "referenceUse": "Historical resource inspected and archived. New initial drawings use the exact selected source version; corrections reference only the native source image, never a blocked persona variant.",
+      "sourceWork": "BlazBlue: Centralfiction (2015/2016), normal Tsubaki default brighter white costume",
+      "characterVersion": "BlazBlue: Centralfiction (2015/2016), normal Tsubaki default brighter white costume",
+      "sourceAppearance": "Long red hair, blue eyes, white/cream winged eye-emblem hat and military cloak/apron, pale trousers, gold details, dark gloves and boots; NOT black/red Chronophantasma or transformed Izayoi",
+      "sourceWeapon": "Sealed Armament Izayoi sword-and-shield/book equipment",
+      "sourcePose": "Stored Install light is channelled through her held sword for one local cut; physical sword and shield stay visible, no detached energy wave",
+      "sourceActionName": "Izayoi — taille de lumière",
+      "sourceEffect": "damage",
+      "sourceDelivery": "melee",
+      "targetBodyHeight": 185,
+      "sourceReference": "https://www.blazblue.jp/cf/ac/character/tsubaki.html",
+      "sourceUrl": "https://www.blazblue.jp/cf/ac/character/tsubaki.html",
+      "abilityName": "Taille de l’épée scellée Izayoi",
+      "abilityEffect": "damage",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": true,
+      "originalSourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/tsubaki_bb.png",
+      "originalSourceImageSha256": "06d6ad5b469d3216c212b2a187a4213dc095c13cc00757d833daee5a40f52501",
+      "normalization": {
+        "method": "native-alpha-component-segmentation-one-source-calibration-v1",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/tsubaki_bb.png",
+            "sourceImageSha256": "06d6ad5b469d3216c212b2a187a4213dc095c13cc00757d833daee5a40f52501",
+            "sourceRow": 4,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 29,
+                  "top": 726,
+                  "width": 146,
+                  "height": 184
+                },
+                "output": {
+                  "left": 75,
+                  "top": 76,
+                  "width": 133,
+                  "height": 168
+                },
+                "sourceBodyBounds": {
+                  "id": 42,
+                  "pixels": 10975,
+                  "left": 34,
+                  "right": 138,
+                  "top": 736,
+                  "bottom": 901,
+                  "width": 105,
+                  "height": 166,
+                  "centerX": 87.16291571753986,
+                  "centerY": 820.7261958997722
+                },
+                "sourceAlphaPixels": 16116,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 204,
+                  "top": 725,
+                  "width": 123,
+                  "height": 183
+                },
+                "output": {
+                  "left": 73,
+                  "top": 77,
+                  "width": 112,
+                  "height": 167
+                },
+                "sourceBodyBounds": {
+                  "id": 40,
+                  "pixels": 10327,
+                  "left": 215,
+                  "right": 315,
+                  "top": 735,
+                  "bottom": 899,
+                  "width": 101,
+                  "height": 165,
+                  "centerX": 264.14486298053646,
+                  "centerY": 818.8809915754817
+                },
+                "sourceAlphaPixels": 16264,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 382,
+                  "top": 727,
+                  "width": 149,
+                  "height": 184
+                },
+                "output": {
+                  "left": 67,
+                  "top": 76,
+                  "width": 136,
+                  "height": 168
+                },
+                "sourceBodyBounds": {
+                  "id": 41,
+                  "pixels": 10551,
+                  "left": 388,
+                  "right": 498,
+                  "top": 735,
+                  "bottom": 899,
+                  "width": 111,
+                  "height": 165,
+                  "centerX": 448.80997061889866,
+                  "centerY": 816.0412283195906
+                },
+                "sourceAlphaPixels": 16035,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 540,
+                  "top": 723,
+                  "width": 168,
+                  "height": 186
+                },
+                "output": {
+                  "left": 47,
+                  "top": 74,
+                  "width": 153,
+                  "height": 170
+                },
+                "sourceBodyBounds": {
+                  "id": 43,
+                  "pixels": 11813,
+                  "left": 569,
+                  "right": 684,
+                  "top": 736,
+                  "bottom": 901,
+                  "width": 116,
+                  "height": 166,
+                  "centerX": 629.2746127148057,
+                  "centerY": 820.6223651908914
+                },
+                "sourceAlphaPixels": 18736,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 0.9117414550340956,
+            "baseline": 244,
+            "renderScale": 1.2223397599965713,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 185,
+              "sourceBodyHeight": 166,
+              "normalizedBodyHeight": 151.34908153565988,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/tsubaki_bb.png",
+            "sourceImageSha256": "06d6ad5b469d3216c212b2a187a4213dc095c13cc00757d833daee5a40f52501",
+            "sourceRow": 4,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 724,
+                  "top": 744,
+                  "width": 181,
+                  "height": 162
+                },
+                "output": {
+                  "left": 35,
+                  "top": 96,
+                  "width": 165,
+                  "height": 148
+                },
+                "sourceBodyBounds": {
+                  "id": 44,
+                  "pixels": 13134,
+                  "left": 732,
+                  "right": 902,
+                  "top": 751,
+                  "bottom": 898,
+                  "width": 171,
+                  "height": 148,
+                  "centerX": 826.3735343383585,
+                  "centerY": 814.6983401857774
+                },
+                "sourceAlphaPixels": 18936,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 904,
+                  "top": 736,
+                  "width": 173,
+                  "height": 178
+                },
+                "output": {
+                  "left": 41,
+                  "top": 82,
+                  "width": 158,
+                  "height": 162
+                },
+                "sourceBodyBounds": {
+                  "id": 45,
+                  "pixels": 12954,
+                  "left": 905,
+                  "right": 1069,
+                  "top": 752,
+                  "bottom": 901,
+                  "width": 165,
+                  "height": 150,
+                  "centerX": 999.3911533117184,
+                  "centerY": 815.752817662498
+                },
+                "sourceAlphaPixels": 19188,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1077,
+                  "top": 739,
+                  "width": 209,
+                  "height": 173
+                },
+                "output": {
+                  "left": 31,
+                  "top": 86,
+                  "width": 191,
+                  "height": 158
+                },
+                "sourceBodyBounds": {
+                  "id": 46,
+                  "pixels": 11474,
+                  "left": 1084,
+                  "right": 1285,
+                  "top": 758,
+                  "bottom": 901,
+                  "width": 202,
+                  "height": 144,
+                  "centerX": 1183.194613909709,
+                  "centerY": 824.105194352449
+                },
+                "sourceAlphaPixels": 19416,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1265,
+                  "top": 747,
+                  "width": 182,
+                  "height": 161
+                },
+                "output": {
+                  "left": 43,
+                  "top": 97,
+                  "width": 166,
+                  "height": 147
+                },
+                "sourceBodyBounds": {
+                  "id": 47,
+                  "pixels": 12217,
+                  "left": 1265,
+                  "right": 1431,
+                  "top": 761,
+                  "bottom": 901,
+                  "width": 167,
+                  "height": 141,
+                  "centerX": 1358.1552754358681,
+                  "centerY": 819.4577228452157
+                },
+                "sourceAlphaPixels": 17527,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 0.9117414550340956,
+            "baseline": 244,
+            "renderScale": 1.2223397599965713,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 185,
+              "sourceBodyHeight": 166,
+              "normalizedBodyHeight": 151.34908153565988,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/tsubaki_bb.png",
+            "sourceImageSha256": "06d6ad5b469d3216c212b2a187a4213dc095c13cc00757d833daee5a40f52501",
+            "sourceRow": 5,
+            "sourceColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 910,
+                  "width": 178,
+                  "height": 176
+                },
+                "output": {
+                  "left": 59,
+                  "top": 84,
+                  "width": 162,
+                  "height": 160
+                },
+                "sourceBodyBounds": {
+                  "id": 49,
+                  "pixels": 12237,
+                  "left": 16,
+                  "right": 176,
+                  "top": 918,
+                  "bottom": 1070,
+                  "width": 161,
+                  "height": 153,
+                  "centerX": 87.48680232083026,
+                  "centerY": 996.585110729754
+                },
+                "sourceAlphaPixels": 17733,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 190,
+                  "top": 908,
+                  "width": 150,
+                  "height": 178
+                },
+                "output": {
+                  "left": 56,
+                  "top": 82,
+                  "width": 137,
+                  "height": 162
+                },
+                "sourceBodyBounds": {
+                  "id": 48,
+                  "pixels": 10605,
+                  "left": 204,
+                  "right": 337,
+                  "top": 917,
+                  "bottom": 1070,
+                  "width": 134,
+                  "height": 154,
+                  "centerX": 268.67656765676566,
+                  "centerY": 994.0460160301744
+                },
+                "sourceAlphaPixels": 15128,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 365,
+                  "top": 911,
+                  "width": 196,
+                  "height": 175
+                },
+                "output": {
+                  "left": 46,
+                  "top": 84,
+                  "width": 179,
+                  "height": 160
+                },
+                "sourceBodyBounds": {
+                  "id": 51,
+                  "pixels": 13535,
+                  "left": 374,
+                  "right": 557,
+                  "top": 923,
+                  "bottom": 1070,
+                  "width": 184,
+                  "height": 148,
+                  "centerX": 455.1425193941633,
+                  "centerY": 995.7069080162541
+                },
+                "sourceAlphaPixels": 20286,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 561,
+                  "top": 921,
+                  "width": 177,
+                  "height": 165
+                },
+                "output": {
+                  "left": 63,
+                  "top": 94,
+                  "width": 161,
+                  "height": 150
+                },
+                "sourceBodyBounds": {
+                  "id": 52,
+                  "pixels": 11544,
+                  "left": 565,
+                  "right": 700,
+                  "top": 925,
+                  "bottom": 1070,
+                  "width": 136,
+                  "height": 146,
+                  "centerX": 632.2542446292447,
+                  "centerY": 998.002772002772
+                },
+                "sourceAlphaPixels": 16705,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 0.9117414550340956,
+            "baseline": 244,
+            "renderScale": 1.2223397599965713,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 185,
+              "sourceBodyHeight": 166,
+              "normalizedBodyHeight": 151.34908153565988,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave16-2026-10-28/part-c/sources/tsubaki_bb.png",
+            "sourceImageSha256": "06d6ad5b469d3216c212b2a187a4213dc095c13cc00757d833daee5a40f52501",
+            "sourceRow": 5,
+            "sourceColumns": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 739,
+                  "top": 919,
+                  "width": 184,
+                  "height": 167
+                },
+                "output": {
+                  "left": 35,
+                  "top": 92,
+                  "width": 168,
+                  "height": 152
+                },
+                "sourceBodyBounds": {
+                  "id": 53,
+                  "pixels": 11659,
+                  "left": 778,
+                  "right": 914,
+                  "top": 926,
+                  "bottom": 1071,
+                  "width": 137,
+                  "height": 146,
+                  "centerX": 841.5498756325585,
+                  "centerY": 994.8306887383137
+                },
+                "sourceAlphaPixels": 16649,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 923,
+                  "top": 915,
+                  "width": 165,
+                  "height": 158
+                },
+                "output": {
+                  "left": 60,
+                  "top": 100,
+                  "width": 150,
+                  "height": 144
+                },
+                "sourceBodyBounds": {
+                  "id": 54,
+                  "pixels": 9246,
+                  "left": 931,
+                  "right": 1082,
+                  "top": 928,
+                  "bottom": 1070,
+                  "width": 152,
+                  "height": 143,
+                  "centerX": 997.8874107722258,
+                  "centerY": 993.3917369673372
+                },
+                "sourceAlphaPixels": 13382,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1101,
+                  "top": 910,
+                  "width": 165,
+                  "height": 161
+                },
+                "output": {
+                  "left": 60,
+                  "top": 97,
+                  "width": 150,
+                  "height": 147
+                },
+                "sourceBodyBounds": {
+                  "id": 50,
+                  "pixels": 10435,
+                  "left": 1110,
+                  "right": 1244,
+                  "top": 919,
+                  "bottom": 1068,
+                  "width": 135,
+                  "height": 150,
+                  "centerX": 1175.7939626257787,
+                  "centerY": 988.395591758505
+                },
+                "sourceAlphaPixels": 14552,
+                "completeNativeComponent": true
+              },
+              {
+                "source": {
+                  "left": 1266,
+                  "top": 921,
+                  "width": 170,
+                  "height": 150
+                },
+                "output": {
+                  "left": 43,
+                  "top": 107,
+                  "width": 155,
+                  "height": 137
+                },
+                "sourceBodyBounds": {
+                  "id": 55,
+                  "pixels": 9862,
+                  "left": 1287,
+                  "right": 1430,
+                  "top": 936,
+                  "bottom": 1065,
+                  "width": 144,
+                  "height": 130,
+                  "centerX": 1358.8875481646726,
+                  "centerY": 989.354593388765
+                },
+                "sourceAlphaPixels": 13466,
+                "completeNativeComponent": true
+              }
+            ],
+            "scale": 0.9117414550340956,
+            "baseline": 244,
+            "renderScale": 1.2223397599965713,
+            "sharedPixelScaleAcrossAllRetainedSourceFrames": true,
+            "statureReview": {
+              "targetBodyHeight": 185,
+              "sourceBodyHeight": 166,
+              "normalizedBodyHeight": 151.34908153565988,
+              "sharedAcrossSource": true,
+              "preservesNativeCrouchAndKneelRatios": true
+            },
+            "seamReview": {
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0,
+              "method": "whole native component and assigned native fragments; no synthetic paint or alpha threshold erasure"
+            }
+          }
+        ],
+        "sourceWideBodyCalibration": {
+          "method": "one-complete-standing-native-body-per-source",
+          "targetBodyHeight": 185,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourNativePosesPerRowReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c8c24f9884c93ec44454071c917a1e89f8fe2f68dde7947b31289fc768b32485",
+              "a3afb6cb9dc546f4e44fa9000ca72d4fdf9ef20cf2e568a4404a2cdb283bec88",
+              "b691ed750db507fae01cf458987b52dfc9aee59eeac39ce5fb8029f4007db40d",
+              "2e3fe4219facfd5b2996d2fedf7fd4b9b18c53993307850cc325127b01a3964e"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1300c8487878f5534338b0c078f26ef230f074798d8c8b2231bb60de32d509b6",
+              "83d5821bfcae334439fd3ca440af3d7e597f5ef07ab20b7048e100f3fe26e5a5",
+              "055a12c80ddd54da04d5e9eedd72c0363cb132afa833a5d6036ec47ff7a17ac7",
+              "bbed52dee26e95a8ec3315814614f9bf00de1898b510854ba390cee34ea0c26c"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fc9aa7575191370d1335963c09eaaec4f922424983deb80ac2529f0496b1b2f9",
+              "febe15978401eaa1b1930d936eaca7e9b9310db8ccab581e9a167e3700d187ca",
+              "baa4af46284cf4a64608a56f1ae5c80858dc6d924e24dbd8601d826eb26e3817",
+              "5a8422011afa65da1a05e7f36c06f339d4c445c916c2c83a4ed365ea82fe8a50"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a9296e0e61f3a630c749dfb7a431e3bbba585e2b870eb36483558acf9e42def8",
+              "a2bcd080820c3c7dedb911de1a9bb27c4fe69eb447e5ffc252365382761ea2fd",
+              "524ad1dd01ac91f22eece119ddba13e0701f410206639800268f139f97bf4fe8",
+              "07502b2478092cecf3766037ce5815f40a03825b0d5527968f530652b4ca43fd"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "correctionNotes": [
+          "Initial finale/super contain opaque connectedfigurepairs; those8figures are excluded. Genuine image_gencorrection supplies8newseparated physicalswordposes."
+        ],
+        "notes": [
+          "Normal Centralfiction white/gold Tsubaki, fullwingedhat, redhair, physicalsword/shield and source proportions retained. No black/red Chronophantasma costume."
+        ]
+      }
+    }
+  ]
+}

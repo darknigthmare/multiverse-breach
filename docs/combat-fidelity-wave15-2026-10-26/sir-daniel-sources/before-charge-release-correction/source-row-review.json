@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "reviewed": true,
+  "reviewedAt": "2026-10-26T08:47:22.455Z",
+  "heroId": "sir_daniel_fortesque",
+  "sourceWork": "MediEvil (1998 PlayStation), Sir Daniel Fortesque",
+  "source1to1Verified": false,
+  "rowsReviewed": 45,
+  "nativePosesReviewed": 180,
+  "sourceCallsInspected": 7,
+  "observedCandidates": 200,
+  "retainedGamePoses": 180,
+  "excludedCandidates": 20,
+  "method": "All7original source images, two annotated palm/wrist reviews, and all6final public atlas PNGs inspected with view_image. Technical packing only; no artistic repaint, procedural skeleton or reference-pose reuse.",
+  "atlasSha256": {
+    "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-motion-a.png": "6f3fedef54898d50ef676acad157f049e93400d97de05157bbf2944e70cdd6ef",
+    "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-motion-b.png": "124f196c0fdee159018a5f3118e3228a975839d2be3d8d3e17cc68ab0642d5fd",
+    "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-defense.png": "1cfa44f426f1d277489ca589da895fc4448639b0425abb9e4387097bcae20c4a",
+    "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-combat-a.png": "98418c4d510dc96b2e14484e3989513be6527de9be8bed5b49c0db8108d0c93a",
+    "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-combat-b.png": "f7682ae9536343ec53608d71e670ab6fb534d6b93d84f7e42da16abb36a33fce",
+    "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-ledge.png": "9c2518ee184a17a7337752089c6ad837c0364cd4b0fed23bbb2d972f6066a0e7"
+  },
+  "entries": [
+    {
+      "atlas": "sir-daniel-motion-a",
+      "sheet": "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-motion-a.png",
+      "states": [
+        {
+          "state": "idle",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "walk",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "run",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "turn",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "jumpStart",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "jumpRise",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "jumpApex",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "fall",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        }
+      ],
+      "emptyRows": []
+    },
+    {
+      "atlas": "sir-daniel-motion-b",
+      "sheet": "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-motion-b.png",
+      "states": [
+        {
+          "state": "fastFall",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "land",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "crouchEnter",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "crouchIdle",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "crouchExit",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "crouchCharge",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "taunt1",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "hitStun",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        }
+      ],
+      "emptyRows": []
+    },
+    {
+      "atlas": "sir-daniel-defense",
+      "sheet": "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-defense.png",
+      "states": [
+        {
+          "state": "shieldEnter",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "shieldHold",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "shieldHit",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "perfectShield",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "shieldBreak",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "shieldExit",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "dead",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "defeat",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        }
+      ],
+      "emptyRows": []
+    },
+    {
+      "atlas": "sir-daniel-combat-a",
+      "sheet": "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-combat-a.png",
+      "states": [
+        {
+          "state": "attackLight1",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "attackLight2",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "attackLight3",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "crouchLight",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "chargeStart",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "chargeLoop",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "chargeRelease",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "chargeRecovery",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        }
+      ],
+      "emptyRows": []
+    },
+    {
+      "atlas": "sir-daniel-combat-b",
+      "sheet": "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-combat-b.png",
+      "states": [
+        {
+          "state": "attackRecovery",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "special",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "aerialNeutral",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "aerialForward",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "aerialDown",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "intro",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "victory",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "ledgeAttack",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        }
+      ],
+      "emptyRows": []
+    },
+    {
+      "atlas": "sir-daniel-ledge",
+      "sheet": "/sprites/generated/sir-daniel-melee-wave15/sir-daniel-ledge.png",
+      "states": [
+        {
+          "state": "ledgeCatch",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "ledgeHang",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "ledgeClimb",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "ledgeDrop",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        },
+        {
+          "state": "ledgeJump",
+          "nativePoses": 4,
+          "completeBodyVisible": true,
+          "distinctArticulatedBodies": true,
+          "consistentSourceCostume": true
+        }
+      ],
+      "emptyRows": [
+        5,
+        6,
+        7
+      ]
+    }
+  ],
+  "correctiveReview": {
+    "initialSource": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-ledge.native.png",
+    "rejectedState": "ledgeClimb",
+    "rejectedPoses": 4,
+    "reason": "Initial third climbing pose keeps palm above skull. Four independently generated replacement bodies bring leading palm from above skull to shoulder, below waist and below knee while the torso ascends.",
+    "replacement": "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/sir-daniel-corrective-ledge.native.png",
+    "retainedPoses": 4
+  },
+  "anatomy": "Single left eye and empty opposite socket; lower jaw absent; complete connected skeleton in worn silver armour/navy cape. Short sword in right hand only on drawn-weapon states, sheathed in locomotion/ledge. No shield, plume, horned shoulder, flesh, magic or attacker.",
+  "limitations": [
+    "Generated adaptation of selected source version, no official frame or certified1:1 reproduction.",
+    "Runtime horizontal mirroring changes apparent handedness and eye side; source asymmetry is not certified for opposite facing.",
+    "Physical guard/parry, platform-fighter charge/airborne/ledge motions remain bounded engine adaptations."
+  ]
+}

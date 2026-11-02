@@ -1,0 +1,92 @@
+✔ RPG all authored catalog specials resolve the same identity and effect as their source capability (9861.935072ms)
+✔ RPG custom actors retain exact action objects and authored IDs cannot cross universes (1.023605ms)
+✔ RPG side-prefixed P2 actors resolve authored abilities through exact source identity (0.262035ms)
+✔ RPG authored melee special approaches the selected opponent and applies real damage for player (6.108721ms)
+✔ RPG authored melee special approaches the selected opponent and applies real damage for enemy (0.88078ms)
+✖ RPG authored medical special heals its own eligible squad without damaging opponents for player (1.44453ms)
+✖ RPG authored medical special heals its own eligible squad without damaging opponents for enemy (0.521818ms)
+✔ RPG authored performer support buffs allies and never becomes an offensive generic burst (1.146952ms)
+✔ RPG Mei Zhen ancestor invocation uses the authored support correction and retains its exact entity and choreography (1.712455ms)
+✔ RPG Mei Zhen invocation applies one allied buff through a paused complete cinematic for player (4.428435ms)
+✔ RPG Mei Zhen invocation applies one allied buff through a paused complete cinematic for enemy (2.078106ms)
+✔ RPG authored cleansing and revival retain their eligible target rules and apply their real effect (1.832856ms)
+✔ GameCanvas RPG command labels use the same authored ability helper as targeting (0.913258ms)
+✔ RPG Phaselock selects one enemy and carries bounded zero-damage control semantics (9976.844947ms)
+✔ RPG player Phaselock spends a confirmed cast and restrains only its live enemy (4.849729ms)
+✔ RPG enemy Phaselock spends a confirmed cast and restrains only its live enemy (1.151508ms)
+✔ RPG Phaselock freezes ATB, expires on simulation ticks and leaves no delayed cast after release (4.209082ms)
+✔ RPG pause and manual target selection freeze the control clock (0.79534ms)
+✔ RPG rejects dead, boss, immune, invulnerable, already controlled and out-of-range targets without spending (3.907146ms)
+✔ RPG control revalidates the accepted target at impact without acquiring a replacement (0.759195ms)
+✔ RPG control does not cancel or overwrite independent guard, buff and item shield resources (0.434175ms)
+✔ RPG Phaselock projects a paused-safe lifted ring without changing ground coordinates (0.733246ms)
+✔ RPG explicit single target previews and hits only the selected identity for player (9851.289739ms)
+✔ RPG explicit single target previews and hits only the selected identity for enemy (1.475507ms)
+✔ RPG invalid cooldown, charge, dead target and cancellation spend nothing (0.785165ms)
+✔ RPG Patch de Trame heals a wounded ally and cannot target a hostile unit (2.271547ms)
+✔ RPG Ligne de Vie Nexus heals the eligible squad, not enemies or dead allies (1.172279ms)
+✔ RPG medical summons, buffs and revive keep their support semantics (1.227482ms)
+✔ RPG single resolves identical preview and impact sets (0.535388ms)
+✔ RPG multi resolves identical preview and impact sets (0.446143ms)
+✔ RPG group resolves identical preview and impact sets (0.38425ms)
+✔ RPG area resolves identical preview and impact sets (0.570431ms)
+✔ RPG line resolves identical preview and impact sets (0.592775ms)
+✔ RPG cone resolves identical preview and impact sets (0.363148ms)
+✔ RPG finite multi-target selection enforces its authored maximum (0.322667ms)
+✔ RPG never retargets a queued action after target death and stops dead casters (0.5173ms)
+✔ RPG wait/active mode freezes or advances all simulation action clocks explicitly (0.505633ms)
+✔ RPG pause holds impacts at the exact simulation tick and dispose clears them (0.606165ms)
+✔ RPG ranged FX aims toward the selected target from either camp and never lunges (0.43079ms)
+✔ RPG clamps sprite and HP/ATB envelopes, including huge authored bosses (0.366633ms)
+✔ RPG DEF and guard reduce damage exactly once and identically for both camps (0.257539ms)
+✔ RPG auto support eligibility falls back to an attack without spending an unusable heal (0.726126ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 40
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 30915.52314
+
+✖ failing tests:
+
+test at scripts/rpgAuthoredSpecial.test.mjs:144:41
+✖ RPG authored medical special heals its own eligible squad without damaging opponents for player (1.44453ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Lecture du scanner de Jin'
+  - 'Triage de l’équipe F.E.A.R.'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/rpgAuthoredSpecial.test.mjs:157:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Lecture du scanner de Jin',
+    expected: 'Triage de l’équipe F.E.A.R.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/rpgAuthoredSpecial.test.mjs:144:41
+✖ RPG authored medical special heals its own eligible squad without damaging opponents for enemy (0.521818ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Lecture du scanner de Jin'
+  - 'Triage de l’équipe F.E.A.R.'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/rpgAuthoredSpecial.test.mjs:157:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Lecture du scanner de Jin',
+    expected: 'Triage de l’équipe F.E.A.R.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

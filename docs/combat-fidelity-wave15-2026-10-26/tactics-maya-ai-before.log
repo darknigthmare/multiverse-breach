@@ -1,0 +1,72 @@
+✖ vertical/hero: real Maya AI secondary pays the authored cost and restrains its opposing body (13802.417248ms)
+✔ vertical/hero: real Maya AI special pays the authored cost and restrains its opposing body (13.365703ms)
+✖ vertical/enemy: real Maya AI secondary pays the authored cost and restrains its opposing body (11.90511ms)
+✖ vertical/enemy: real Maya AI special pays the authored cost and restrains its opposing body (7.939724ms)
+✔ vertical/hero: conventional AI retains its prior damage action and resource rules (6.833475ms)
+✔ vertical/enemy: conventional AI retains its prior damage action and resource rules (27.229799ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 3
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14359.526126
+
+✖ failing tests:
+
+test at scripts/tacticsPhaselockWave15.test.mjs:161:84
+✖ vertical/hero: real Maya AI secondary pays the authored cost and restrains its opposing body (13802.417248ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  420 !== 480
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsPhaselockWave15.test.mjs:172:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 420,
+    expected: 480,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/tacticsPhaselockWave15.test.mjs:161:84
+✖ vertical/enemy: real Maya AI secondary pays the authored cost and restrains its opposing body (11.90511ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'enemy'
+  - 'secondary'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsPhaselockWave15.test.mjs:171:98)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'enemy',
+    expected: 'secondary',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/tacticsPhaselockWave15.test.mjs:161:84
+✖ vertical/enemy: real Maya AI special pays the authored cost and restrains its opposing body (7.939724ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'enemy' !== 'special'
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsPhaselockWave15.test.mjs:171:98)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'enemy',
+    expected: 'special',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

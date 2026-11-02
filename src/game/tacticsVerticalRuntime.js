@@ -11,6 +11,8 @@ import { resolveCombatAbility, resolveCombatHeroSpriteActor } from './combatIden
 import { getCharacterAnimationFrame } from './combat/characterAnimationCatalog.js';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout, getSpriteFrameForLayout } from './spriteAssets.js';
 import { drawTacticsScenery, getTacticsSceneryBounds } from './tacticsEnvironmentRenderer.js';
+import { isTacticsPhaselockProfile, getTacticsSourceProfileWave16 } from './tacticsControl.js';
+import { isValHealingBurstProfile } from './combat/combatHealingBurstWave15.js';
 
 const rays = [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]];
 const living = unit => (unit?.currentHp ?? unit?.hp ?? 0) > 0;
@@ -33,9 +35,16 @@ export class TacticsVerticalRuntime {
     return resolveCombatAbility(unit, action === 'enemy' ? 'simple' : action);
   }
   definition(unit, action) {
+    const source = getTacticsSourceProfileWave16(unit, action);
+    if (source) return source.sourceAbility;
     return this.ability(unit, action)?.sourceAbility || unit?.[action === 'enemy' ? 'simple' : action] || null;
   }
   attackProfile(unit, action) {
+    const source = getTacticsSourceProfileWave16(unit, action);
+    if (source) {
+      const raw = source.sourceAbility || {};
+      return { ...source, ...Object.assign({}, unit?.tacticsAttacks?.[action], raw.tactics, raw.attackProfile, raw.tacticsProfile) };
+    }
     const profile = this.ability(unit, action);
     const raw = this.definition(unit, action) || {};
     const explicit = Object.assign({}, unit?.tacticsAttacks?.[action], raw.tactics, raw.attackProfile, raw.tacticsProfile);
@@ -79,6 +88,7 @@ export class TacticsVerticalRuntime {
     return (unit.stats?.atk ?? unit.atk ?? 0) * profile.multiplier * buff;
   }
   drawActor(unit) {
+    if (unit.sourceTacticsActionWave16) return this.engine.sourceTacticsWave16.drawActor(unit);
     if (unit.state !== 'special' || !(unit.stateTimer > 0)) return unit;
     const duration = unit.tacticsPresentationTicks || 35;
     const profile = this.ability(unit, 'special');
@@ -258,6 +268,7 @@ export class TacticsVerticalRuntime {
     return reachableTerrainSurfaces(this.terrain, unit, range, this.pathOptions(unit));
   }
   move(unit, destination, onComplete = null) {
+    if (this.engine.isTacticsControlled(unit)) return false;
     const start = this.surface(unit), target = this.surface(destination);
     if (!start || !target) return false;
     const route = findTerrainPath(this.terrain, start.id, target.id, this.pathOptions(unit));
@@ -311,7 +322,7 @@ export class TacticsVerticalRuntime {
     const dz = Math.abs(a.z - b.z);
     if (dz > (profile.maxVerticalRange ?? (profile.delivery === 'melee' ? 0.75 : Infinity))) return Infinity;
     const dx = Math.abs(a.x - b.x), dy = Math.abs(a.y - b.y);
-    if (profile.delivery === 'radial') return Math.hypot(dx, dy, dz);
+    if (profile.delivery === 'radial' || isValHealingBurstProfile(profile)) return Math.hypot(dx, dy, dz);
     const planar = ['line', 'directional', 'cone', 'multiAxis'].includes(profile.shape) ? Math.max(dx, dy) : dx + dy;
     return Math.hypot(planar, dz);
   }
@@ -339,6 +350,10 @@ export class TacticsVerticalRuntime {
     e.attackRange = this.terrain.surfaces.filter(surface => {
       if (!e.canAttackCell(unit, cell(surface), profile)) return false;
       if (profile.effect === 'damage') return true;
+      if (isTacticsPhaselockProfile(profile)) {
+        const entry = this.unitAt(surface.x, surface.y, surface.id);
+        return entry?.type === (e.activeUnitType === 'enemy' ? 'hero' : 'enemy') && e.isTacticsControlTargetEligible(entry.unit);
+      }
       return this.supportEntries(unit, profile, e.activeUnitType).some(entry => entry.unit.surfaceId === surface.id);
     })
       .map(surface => ({ ...cell(surface), profile }));
@@ -398,6 +413,13 @@ export class TacticsVerticalRuntime {
   }
   resolution(attacker, target, actionType, attackerType) {
     const e = this.engine, profile = e.getAttackProfile(attacker, actionType);
+    if (isTacticsPhaselockProfile(profile)) {
+      const validTypes = attackerType === 'enemy' ? ['hero'] : ['enemy'];
+      const found = this.unitAt(target.gridX ?? target.x, target.gridY ?? target.y, target.surfaceId);
+      const candidates = found && validTypes.includes(found.type) && e.isTacticsControlTargetEligible(found.unit)
+        && e.canAttackCell(attacker, found.unit, profile) ? [{ ...found, cell: cell(this.surface(found.unit)), order: 0 }] : [];
+      return { profile, validTypes, impactCells: candidates.map(entry => entry.cell), clickedUnit: candidates[0]?.unit || null, candidates };
+    }
     if (profile.effect !== 'damage') {
       const eligible = this.supportEntries(attacker, profile, attackerType)
         .filter(entry => e.canAttackCell(attacker, entry.unit, profile));
@@ -445,7 +467,7 @@ export class TacticsVerticalRuntime {
       }
       const ticks = Math.max(1, Math.round((profile.effectDuration || profile.duration || 2) * 60));
       if (profile.effect === 'heal') unit.currentHp = Math.min(unit.maxHp, unit.currentHp + Math.round(unit.maxHp * (profile.healRatio || 0.15)));
-      if (profile.effect === 'revive') { unit.currentHp = Math.max(1, Math.round(unit.maxHp * (profile.reviveRatio || 0.3))); unit.state = 'idle'; }
+      if (profile.effect === 'revive') { delete unit.tacticsControl; unit.currentHp = Math.max(1, Math.round(unit.maxHp * (profile.reviveRatio || 0.3))); unit.state = 'idle'; }
       if (profile.effect === 'guard') { unit.tacticsGuardTicks = ticks; unit.tacticsGuardReduce = profile.guardReduce ?? 0.3; }
       if (profile.effect === 'buff') { unit.tacticsBuffTicks = ticks; unit.tacticsBuffMultiplier = profile.buffMultiplier || 1.12; }
       if (profile.effect === 'cleanse' || profile.cleanses) {
@@ -544,7 +566,7 @@ export class TacticsVerticalRuntime {
         const target = this.surface(unit);
         if (!target || Math.hypot(target.x - surface.x, target.y - surface.y, target.z - surface.z) > (e.missionProfile.hazardRadius || 0)) continue;
         if (!terrainLineOfSight(this.terrain, surface.id, target.id, { eyeHeight: 0.1, targetHeight: 0.1 })) continue;
-        unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - (8 + e.missionProfile.pressure * 2));
+        e.applySourceAmbientDamageWave16(unit, 8 + e.missionProfile.pressure * 2, { floor: unit.isBoss ? 1 : 0, kind: 'vertical-hazard-pulse' });
       }
     }
     if (hazards.length) e.hazardPulses++;
@@ -623,7 +645,7 @@ export class TacticsVerticalRuntime {
     if (action === 'special' && (unit.specialCharge || 0) < 100) return { handled: false, reason: 'charge' };
     if (action === 'special') unit.specialCharge = 0;
     else unit.specialCharge = Math.min(100, (unit.specialCharge || 0) + (action === 'defense' ? 10 : action === 'secondary' ? 25 : 15));
-    if (action === 'secondary') unit.cooldown = (unit.secondary?.cd || 3) * 60;
+    if (action === 'secondary') unit.cooldown = ((isTacticsPhaselockProfile(profile) ? this.definition(unit, action)?.cd : unit.secondary?.cd) || 3) * 60;
     faceGridUnitToward(unit, surface);
     unit.state = action === 'special' ? 'special' : profile.effect === 'damage' ? 'attack' : 'idle';
     unit.stateTimer = action === 'special' ? 35 : 25;
@@ -645,11 +667,13 @@ export class TacticsVerticalRuntime {
   }
   runAI(side) {
     const e = this.engine, unit = e.activeUnit;
-    if (e.disposed || e.gameOver || !unit || !living(unit)) return;
+    if (e.disposed || e.gameOver || !unit || !living(unit) || e.isTacticsControlled(unit)) return;
     const opponents = side === 'hero' ? e.enemies : [...e.heroes, ...(e.objective === 'protect' && e.protectedArtifact ? [e.protectedArtifact] : []), ...(e.escortUnit ? [e.escortUnit] : [])];
-    const action = side === 'enemy' ? 'enemy' : unit.specialCharge >= 100 ? 'special' : unit.cooldown <= 0 ? 'secondary' : 'simple';
+    const healingBurst = isValHealingBurstProfile(this.ability(unit, 'special'));
+    const phaselock = isTacticsPhaselockProfile(this.ability(unit, 'special'));
+    const action = side === 'enemy' && !healingBurst && !phaselock ? 'enemy' : unit.specialCharge >= 100 ? 'special' : unit.cooldown <= 0 ? 'secondary' : 'simple';
     const profile = e.getAttackProfile(unit, action);
-    const targets = profile.effect === 'damage' ? opponents.filter(living)
+    const targets = profile.effect === 'damage' || isTacticsPhaselockProfile(profile) ? opponents.filter(living)
       : this.supportEntries(unit, profile, side).map(entry => entry.unit);
     const remaining = Math.max(0, e.movementBudget - e.movementSpent);
     const reachable = this.reachable(unit, remaining);
@@ -674,21 +698,26 @@ export class TacticsVerticalRuntime {
       if (score > bestScore) { best = candidate; bestScore = score; }
     }
     const attack = () => {
-      if (e.disposed || e.gameOver || !living(unit)) return;
+      if (e.disposed || e.gameOver || !living(unit) || e.isTacticsControlled(unit) || e.activeUnit !== unit) return;
       e.applyStartTileEffect(unit);
       if (e.gameOver) return;
       if (!living(unit)) { e.endActiveTurn(); return; }
       const shot = targets.filter(target => profile.effect === 'revive' ? !living(target) : living(target))
         .map(target => ({ target, anchor: this.anchorFor(unit, target, action, side) })).find(entry => entry.anchor);
       if (shot) {
-        if (side === 'hero' && action === 'special') unit.specialCharge = 0;
-        if (side === 'hero' && action === 'secondary') unit.cooldown = (unit.secondary?.cd || 3) * 60;
+        if (healingBurst) {
+          e.selectedAction = action; e.actionPhase = 'action';
+          if (e.performValHealingAction(shot.anchor.x, shot.anchor.y, shot.anchor.surfaceId).handled) return;
+          e.endActiveTurn(); return;
+        }
+        if ((side === 'hero' || phaselock) && action === 'special') unit.specialCharge = 0;
+        if ((side === 'hero' || phaselock) && action === 'secondary') unit.cooldown = ((phaselock ? this.definition(unit, action)?.cd : unit.secondary?.cd) || 3) * 60;
         faceGridUnitToward(unit, shot.anchor);
         unit.state = action === 'special' ? 'special' : profile.effect === 'damage' ? 'attack' : 'idle';
         unit.stateTimer = action === 'special' ? 35 : 25;
         if (action === 'special') unit.tacticsPresentationTicks = 35;
         e.applyProfiledAttack(unit, shot.anchor, action, e.getActionBaseDamage(unit, action), null, side);
-        if (action !== 'special') unit.specialCharge = Math.min(100, (unit.specialCharge || 0) + 15);
+        if (action !== 'special') unit.specialCharge = Math.min(100, (unit.specialCharge || 0) + (phaselock && action === 'secondary' ? 25 : 15));
       }
       e.endActiveTurn();
     };

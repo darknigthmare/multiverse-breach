@@ -1,3 +1,11 @@
+import actionWave16 from './characterActionAnimationsWave16PartC.generated.json' with { type: 'json' };
+import wave16A from './characterAnimationsWave16PartA.generated.json' with { type: 'json' };
+import wave16B from './characterAnimationsWave16PartB.generated.json' with { type: 'json' };
+import wave16C from './characterAnimationsWave16PartC.generated.json' with { type: 'json' };
+import { sourceSequenceColumnWave16, getSourceHitSequenceWave16 } from './combatHitSequenceWave16.js';
+import wave15A from './characterAnimationsWave15PartA.generated.json' with { type: 'json' };
+import wave15B from './characterAnimationsWave15PartB.generated.json' with { type: 'json' };
+import wave15C from './characterAnimationsWave15PartC.generated.json' with { type: 'json' };
 import wave14A from './characterAnimationsWave14PartA.generated.json' with { type: 'json' };
 import wave14B from './characterAnimationsWave14PartB.generated.json' with { type: 'json' };
 import wave13B from './characterAnimationsWave13PartB.generated.json' with { type: 'json' };
@@ -51,7 +59,7 @@ import wave10D from './characterAnimationsWave10PartD.generated.json' with { typ
 
 const phaseNames = new Set(['intro', 'outro', 'roundVictory', 'roundDefeat', 'fatality', 'victory', 'defeat', 'super']);
 const assets = new Map();
-for (const entry of [...registry.entries, ...wave2A.entries, ...wave2B.entries, ...wave3A.entries, ...wave3B.entries, ...wave3C.entries, ...wave4A.entries, ...wave4B.entries, ...wave4C.entries, ...wave5A.entries, ...wave5B.entries, ...wave5C.entries, ...wave6A.entries, ...wave6B.entries, ...wave6C.entries, ...wave7A.entries, ...wave7B.entries, ...wave7C.entries, ...wave8A.entries, ...wave8B.entries, ...wave8C.entries, ...wave8D.entries, ...wave9A.entries, ...wave9B.entries, ...wave9C.entries, ...wave9D.entries, ...wave10D.entries, ...wave10C.entries, ...wave10B.entries, ...wave10A.entries, ...wave11A.entries, ...wave11B.entries, ...wave11C.entries, ...wave11D.entries, ...wave12A.entries, ...wave12B.entries, ...wave12C.entries, ...wave12D.entries, ...wave13A.entries, ...wave13B.entries, ...wave14B.entries, ...wave14A.entries]) {
+for (const entry of [...registry.entries, ...wave2A.entries, ...wave2B.entries, ...wave3A.entries, ...wave3B.entries, ...wave3C.entries, ...wave4A.entries, ...wave4B.entries, ...wave4C.entries, ...wave5A.entries, ...wave5B.entries, ...wave5C.entries, ...wave6A.entries, ...wave6B.entries, ...wave6C.entries, ...wave7A.entries, ...wave7B.entries, ...wave7C.entries, ...wave8A.entries, ...wave8B.entries, ...wave8C.entries, ...wave8D.entries, ...wave9A.entries, ...wave9B.entries, ...wave9C.entries, ...wave9D.entries, ...wave10D.entries, ...wave10C.entries, ...wave10B.entries, ...wave10A.entries, ...wave11A.entries, ...wave11B.entries, ...wave11C.entries, ...wave11D.entries, ...wave12A.entries, ...wave12B.entries, ...wave12C.entries, ...wave12D.entries, ...wave13A.entries, ...wave13B.entries, ...wave14B.entries, ...wave14A.entries, ...wave15A.entries, ...wave15B.entries, ...wave15C.entries, ...wave16A.entries, ...wave16B.entries, ...wave16C.entries]) {
   const id = entry.heroId || entry.id;
   if (!id || assets.has(id)) throw new Error(`Invalid or duplicate character animation identity: ${id}`);
   const phases = Object.freeze(Object.fromEntries(Object.entries(entry.phases).map(([phase, spec]) => [phase, Object.freeze({ ...spec })])));
@@ -59,6 +67,21 @@ for (const entry of [...registry.entries, ...wave2A.entries, ...wave2B.entries, 
 }
 const allAssets = Object.freeze([...assets.values()]);
 export const getCharacterAnimationAssets = () => allAssets;
+export const getCharacterActionAnimationAssetsWave16 = () => actionWave16.entries;
+export function getSourceActionAnimationFrameWave16(actor, profile, elapsed, phase) {
+  if ((actor?.sourceHeroId || actor?.sourceId || actor?.id) !== 'kirito_sao' || actor?.universe !== 'Sword Art Online'
+    || phase !== 'super' || profile?.sourceHeroId !== 'kirito_sao' || profile.universe !== 'Sword Art Online'
+    || profile.name !== 'Starburst Stream' || !getSourceHitSequenceWave16(profile)) return null;
+  const asset = actionWave16.entries.find(entry => entry.id === 'kirito-starburst-stream-wave16'
+    && entry.heroId === 'kirito_sao' && entry.universe === 'Sword Art Online'
+    && entry.frames === 16 && entry.columns === 4 && entry.rows === 4);
+  if (!asset || elapsed < .8 || elapsed >= 3.14) return null;
+  const index = Math.max(0, Math.min(15, Math.floor((elapsed - .8 + 1e-7) / .15)));
+  return { asset, phase, progress: elapsed / 3.5, impactProgress: .8 / 3.5,
+    row: Math.floor(index / 4), col: index % 4, index, frames: 16, columns: 4, rows: 4,
+    sourceHitIndex: index, nativeContact: asset.contactAnchors?.[index] || null, fidelity: 'native-generated-character-action', canonicalAnimationVerified: false };
+}
+
 const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
 export function resolveCharacterAnimationAsset(actor) {
@@ -71,13 +94,15 @@ export function getCharacterAnimationFrame(actor, options = {}) {
   const asset = resolveCharacterAnimationAsset(actor);
   if (!asset) return null;
   const action = actor?.action;
+  const sequenceProfile = action?.superProfile || action?.abilityProfile || action?.identity || actor?.rpgSpecialVisual?.profile;
+  const sourceSequence = getSourceHitSequenceWave16(sequenceProfile);
   const automaticPhase = action?.superProfile || action?.type === 'super' ? 'super'
     : ['intro', 'outro', 'victory', 'defeat'].includes(actor?.state) ? actor.state
       : actor?.state === 'special' && !action?.abilityProfile ? 'super' : null;
   const phase = options.phase || actor?.presentationPhase || automaticPhase;
   const spec = phaseNames.has(phase) ? asset.phases[phase] : null;
   if (!spec || !Number.isFinite(spec.row) || spec.row < 0 || spec.row >= asset.rows) return null;
-  const duration = Number(action?.duration || actor?.meleePresentation?.duration || spec.duration) || (phase === 'super' ? 1.1 : 1.9);
+  const duration = Number(action?.duration || sourceSequence?.duration || actor?.meleePresentation?.duration || spec.duration) || (phase === 'super' ? 1.1 : 1.9);
   const progressValue = options.progress ?? actor?.presentationProgress
     ?? (Number.isFinite(action?.elapsed) ? action.elapsed / duration
       : Number(options.elapsedSeconds ?? actor?.stateElapsed ?? 0) / duration);
@@ -90,9 +115,15 @@ export function getCharacterAnimationFrame(actor, options = {}) {
     : progress;
   const frames = Math.min(asset.columns, Math.max(1, Number(spec.frames) || 4));
   const impactProgress = clamp(Number(options.impactProgress ?? actor?.presentationImpactProgress ?? (action?.hitAt / duration)) || 0.5, 0.05, 0.9);
-  const column = phase === 'super' && frames === 4
+  const extraAction = getSourceActionAnimationFrameWave16(actor, sequenceProfile, progress * duration, phase);
+  if (extraAction) return extraAction;
+  const sequenceColumn = phase === 'super' && sequenceProfile
+    ? sourceSequenceColumnWave16(sequenceProfile, progress * duration) : null;
+  const kiritoPreparation = phase === 'super' && asset.heroId === 'kirito_sao' && getSourceHitSequenceWave16(sequenceProfile)
+    ? progress * duration < .44 ? 0 : progress * duration < .64 ? 1 : progress * duration < .8 ? 2 : progress * duration >= 3.14 ? 3 : null : null;
+  const column = kiritoPreparation ?? sequenceColumn ?? (phase === 'super' && frames === 4
     ? progress < impactProgress * 0.55 ? 0 : progress < impactProgress ? 1 : progress < Math.min(0.95, impactProgress + (1 - impactProgress) * 0.65) ? 2 : 3
-    : Math.min(frames - 1, Math.floor(poseProgress * frames));
+    : Math.min(frames - 1, Math.floor(poseProgress * frames)));
   return {
     asset, phase, progress, impactProgress, row: Math.floor(spec.row),
     col: column,

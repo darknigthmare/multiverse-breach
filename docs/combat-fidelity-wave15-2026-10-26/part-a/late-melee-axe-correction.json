@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "preliminary": false,
+  "completedAt": "2026-10-26T11:24:09.921Z",
+  "owner": "/root/wave15_batch_a40",
+  "reason": "Root found two true held-weapon visibility defects after the prior freeze. Native-only SUPER rows replaced before the new freeze.",
+  "correctedHeroes": [
+    {
+      "heroId": "hexen_baratus",
+      "phase": "super",
+      "row": 7,
+      "newSource": {
+        "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_baratus-super-held4-original.png",
+        "sha256": "9a03fe10027f7cab6d06c904bdba53022b5869ecb9b056b492d2c5e6f8e765fc",
+        "bytes": 932111
+      },
+      "actualPrompt": {
+        "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_baratus-super-held4-prompt.txt",
+        "sha256": "c8dd179ab50d65f1e96f13223d72336534bcd429427f9b49c1f396030546affc",
+        "bytes": 1699
+      },
+      "actualToolReceipt": {
+        "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_baratus-super-held4-tool-result.json",
+        "sha256": "1b1cba03a0669299971f4c3d80c187d26856fc894d580be5d06148a40364697e",
+        "bytes": 2737
+      },
+      "importRegions": {
+        "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/hexen_baratus-super-held4-region-review.json",
+        "sha256": "3f0ff866c674ef58ac9451d4794984094476a318f9e002aad046afb1edcaf48d",
+        "bytes": 80438
+      },
+      "sourceFiguresObserved": 4,
+      "sourceFiguresRetained": 4,
+      "oldSuperFiguresExcluded": 4,
+      "preservedEffectiveBodyHeight": 88.57142857142857
+    },
+    {
+      "heroId": "quake_franchise_ranger",
+      "phase": "super",
+      "row": 7,
+      "newSource": {
+        "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_ranger-super-held4-original.png",
+        "sha256": "c7f5ae615711acce290616b83807d967f815c07a051bdb7de2b17d52cb0a72a2",
+        "bytes": 731899
+      },
+      "actualPrompt": {
+        "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_ranger-super-held4-prompt.txt",
+        "sha256": "080db5f5eb7ca974c801f9c2b0fb1e6ed5bd8e67a64afced8282f6707f419623",
+        "bytes": 1847
+      },
+      "actualToolReceipt": {
+        "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_ranger-super-held4-tool-result.json",
+        "sha256": "90d9a38095f87a0ade806769474d24503813cf3b32979d973a535da7f3aeddfc",
+        "bytes": 2903
+      },
+      "importRegions": {
+        "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/sources/quake_franchise_ranger-super-held4-region-review.json",
+        "sha256": "a5dab6c5dc70eb69f74308fc22013fb0b3c4143df8d0f534cb82301f1b951f29",
+        "bytes": 80454
+      },
+      "sourceFiguresObserved": 4,
+      "sourceFiguresRetained": 4,
+      "oldSuperFiguresExcluded": 4,
+      "preservedEffectiveBodyHeight": 92.04347826086956
+    }
+  ],
+  "newImageGenCalls": 2,
+  "newFiguresObserved": 8,
+  "newFiguresRetained": 8,
+  "oldFiguresExcluded": 8,
+  "finalBatch": {
+    "calls": 54,
+    "observed": 2176,
+    "retained": 1920,
+    "excluded": 256,
+    "pngs": 80
+  },
+  "rootVisualAcceptance": "Root actually inspected both new four-pose source images and both final SUPER contacts and accepted the8held-axe poses in team message. This is not an assertion of a fresh browser run.",
+  "previousIssueEvidence": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/browser/attempts/root-late-axe-review-before-second-freeze/review.json",
+    "sha256": "4ed76017405bca2c015ac18144e9f703b1015e5b04db6494f5f0fcf8a164d030",
+    "bytes": 4890
+  },
+  "ownFinalVisualReview": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/held-axe-review/contacts.json",
+    "sha256": "bb68c5c16a6bc3c5c88768f08cb10f77e46df9aa8edde7bce41ea6be12be1456",
+    "bytes": 2075
+  },
+  "exactPreservation": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/held-axe-preservation.json",
+    "sha256": "89dbb4798333bcb8eef6746c2013486dcd1aed2e77d1751de29b4583622d340e",
+    "bytes": 75363
+  },
+  "independentAnchorRevalidation": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/independent-anchor-revalidation-after-melee-super-corrections.json",
+    "sha256": "83264caa7f426980d2e5259a4b111c076992d8837f9a718a73c314aef669e20d",
+    "bytes": 104342
+  },
+  "actualFinalChecks": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/part-a/final-checks/result.json",
+    "sha256": "93899f426608bd48e7296fc5d93a2e079d9f984f220b8434237a4c1309407f02",
+    "bytes": 3374
+  },
+  "sourcePlanUnchanged": true,
+  "base120Unchanged": true,
+  "newBrowserExecutionClaimed": false,
+  "source1to1Verified": false
+}

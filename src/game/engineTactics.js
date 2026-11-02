@@ -1,6 +1,6 @@
 // FF Tactics / Metal Slug Tactics Grid Battle Engine with Obstacles & Synergies
 import { drawPixelSprite, drawPixelEnemy, drawBoss, drawCombatantBust } from './renderer';
-import { absorbBattleItemDamage, grantBattleItemShield } from './battleItemShield';
+import { absorbBattleItemDamage, grantBattleItemShield, previewBattleItemDamage } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
@@ -11,6 +11,12 @@ import { normalizeTacticsTerrain } from './tacticsTerrain.js';
 import { TacticsVerticalRuntime } from './tacticsVerticalRuntime.js';
 import { drawTacticsEnvironment, getTacticsEnvironmentProfile } from './tacticsEnvironmentRenderer.js';
 import { resolveCombatAbility } from './combatIdentity.js';
+import { isTacticsPhaselockProfile, isTacticsUnitControlled, isTacticsPhaselockTargetEligible, drawTacticsPhaselock, TacticsSourceRuntimeWave16, isTacticsSourceControlledWave16 } from './tacticsControl.js';
+import { noteSourceDamageWave16 } from './combat/sourceCombatRuntimeWave16.js';
+import { isSourceControlProfileWave16, isSourceControlTargetEligibleWave16 } from './combat/combatControlWave16.js';
+import { allocateSourceSequenceDamageWave16 } from './combat/combatHitSequenceWave16.js';
+import { getCharacterSuperVisualState, drawCharacterSuperVisuals } from './combat/characterSuperVisuals.js';
+import { isValHealingBurstProfile } from './combat/combatHealingBurstWave15.js';
 
 const COMPASS_DIRECTIONS = [
   { x: 1, y: 0 },
@@ -186,6 +192,9 @@ export class EngineTactics {
       this.enemies.forEach(enemy => this.normalizeEnemyActions(enemy));
     }
 
+    this.heroes.forEach((unit, index) => { unit.battleId ||= `tactics:hero:${index}:${unit.id}`; });
+    this.enemies.forEach((unit, index) => { unit.battleId ||= `tactics:enemy:${index}:${unit.id}`; });
+
     // Spawning Destructible Obstacles
     this.obstacles = (this.battlefield.obstacles || []).map(item => ({ ...item }));
     this.verticalTerrain?.bindActors();
@@ -242,6 +251,7 @@ export class EngineTactics {
   }
 
   dispose() {
+    this._sourceTacticsWave16?.releaseAll('dispose');
     this.disposed = true;
     this.timers.forEach(timer => clearTimeout(timer));
     this.timers.clear();
@@ -418,8 +428,17 @@ export class EngineTactics {
     this.turnQueue = units;
   }
 
+  get sourceTacticsWave16() { return this._sourceTacticsWave16 ||= new TacticsSourceRuntimeWave16(this); }
+
   startTurn() {
-    if (this.disposed) return;
+    if (this.disposed || this.paused || this.sourceTacticsWave16.action) return;
+    this.sourceTacticsWave16.beforeTurn();
+    for (const unit of [...this.heroes, ...this.enemies]) {
+      if (!unit.tacticsControl?.releasePending && unit.currentHp > 0) continue;
+      if (!unit.tacticsControl) continue;
+      delete unit.tacticsControl;
+      if (unit.currentHp > 0 && unit.state === 'hit' && !(unit.stateTimer > 0)) unit.state = 'idle';
+    }
     if (this.turnQueue.length === 0) {
       this.rebuildTurnQueue();
       if (this.isFinalBoss) {
@@ -436,6 +455,14 @@ export class EngineTactics {
     const next = this.turnQueue.shift();
     this.activeUnit = next.unit;
     this.activeUnitType = next.type;
+    if (this.sourceTacticsWave16.skipControlledTurn(this.activeUnit)) return;
+    if (this.isTacticsControlled(this.activeUnit)) {
+      this.activeUnit.tacticsControl.remainingTurns = 0;
+      this.activeUnit.tacticsControl.releasePending = true;
+      this.movementBudget = 0; this.movementSpent = 0;
+      this.endActiveTurn();
+      return;
+    }
     this.movementBudget = this.activeUnit.statusEffects?.glitched > 0 ? 1 : 2;
     this.movementSpent = 0;
     this.applyStartTileEffect(this.activeUnit);
@@ -453,7 +480,8 @@ export class EngineTactics {
       this.selectedActionExplicit = false;
       this.calculateMovementRange();
       if (this.autoBattle) {
-        this.schedule(() => this.runHeroAI(), 600);
+        const scheduledUnit = this.activeUnit;
+        this.schedule(() => { if (this.activeUnit === scheduledUnit && !this.isTacticsControlled(scheduledUnit)) this.runHeroAI(); }, 600);
       }
     } else {
       this.faceNearestOpponent(this.activeUnit, this.heroes);
@@ -465,7 +493,8 @@ export class EngineTactics {
         this.calculateMovementRange();
       } else {
         this.actionPhase = 'enemy_ai';
-        this.schedule(() => this.runEnemyAI(), 600);
+        const scheduledUnit = this.activeUnit;
+        this.schedule(() => { if (this.activeUnit === scheduledUnit && !this.isTacticsControlled(scheduledUnit)) this.runEnemyAI(); }, 600);
       }
     }
   }
@@ -478,6 +507,7 @@ export class EngineTactics {
   }
 
   getReachableCells(unit, range) {
+    if (this.isTacticsControlled(unit)) return [];
     if (this.verticalTerrain) return this.verticalTerrain.reachable(unit, range);
     const visited = new Set([`${unit.gridX},${unit.gridY}`]);
     const queue = [{ x: unit.gridX, y: unit.gridY, dist: 0 }];
@@ -526,6 +556,17 @@ export class EngineTactics {
   }
 
   calculateAttackRange() {
+    if (this.sourceTacticsWave16.owns(this.activeUnit) && this.selectedAction) {
+      this.attackRange = this.sourceTacticsWave16.actors.filter(unit => this.sourceTacticsWave16.resolution(this.activeUnit, unit, this.selectedAction).candidates.length)
+        .map(unit => ({ x: unit.gridX, y: unit.gridY, surfaceId: unit.surfaceId, profile: this.getAttackProfile(this.activeUnit, this.selectedAction) }));
+      return;
+    }
+    if (this.activeUnit && this.selectedAction && isValHealingBurstProfile(this.getAttackProfile(this.activeUnit, this.selectedAction))) {
+      const unit = this.activeUnit, context = this.getValHealingResolution(unit, unit, this.selectedAction, this.activeUnitType);
+      const units = context.candidates.length ? [unit, ...context.candidates.map(entry => entry.unit)] : [];
+      this.attackRange = [...new Set(units)].map(target => ({ x: target.gridX, y: target.gridY, surfaceId: target.surfaceId, profile: context.profile }));
+      return;
+    }
     if (this.verticalTerrain) return this.verticalTerrain.attackRange();
     const unit = this.activeUnit;
     this.attackRange = [];
@@ -555,10 +596,12 @@ export class EngineTactics {
   }
 
   getActionDefinition(unit, actionType) {
+    const source = this.sourceTacticsWave16.profile(unit, actionType);
+    if (source) return source.sourceAbility;
     if (this.verticalTerrain) return this.verticalTerrain.definition(unit, actionType);
     if (!unit || actionType === 'defense') return null;
     const authored = resolveCombatAbility(unit, actionType === 'enemy' ? 'simple' : actionType);
-    if (authored?.delivery === 'radial') return authored.sourceAbility;
+    if (authored?.delivery === 'radial' || isTacticsPhaselockProfile(authored) || isValHealingBurstProfile(authored)) return authored.sourceAbility;
     return actionType === 'enemy' ? unit.simple || null : unit[actionType] || null;
   }
 
@@ -567,6 +610,8 @@ export class EngineTactics {
    * one contract used by range, preview, player input and AI.
    */
   getAttackProfile(unit = this.activeUnit, actionType = this.selectedAction || 'simple') {
+    const source = this.sourceTacticsWave16.profile(unit, actionType);
+    if (source && !this.verticalTerrain) return { ...source, ...unit?.tacticsAttacks?.[actionType], ...source.sourceAbility?.tactics };
     if (this.verticalTerrain) return this.verticalTerrain.attackProfile(unit, actionType);
     if (!unit || actionType === 'defense') {
       return {
@@ -586,6 +631,19 @@ export class EngineTactics {
       };
     }
 
+    const authoredControl = resolveCombatAbility(unit, actionType === 'enemy' ? 'simple' : actionType);
+    if (isValHealingBurstProfile(authoredControl)) {
+      return { ...authoredControl, actionType, range: Math.min(8, Math.max(1, Math.ceil(authoredControl.range / 140))),
+        minRange: 0, areaRadius: 0, axes: 1, directions: 8, maxTargets: 8,
+        pierceUnits: true, pierceObstacles: false, pierceTerrain: false, blocksOnUnits: false, requiresLineOfSight: true };
+    }
+    if (isTacticsPhaselockProfile(authoredControl)) {
+      return { ...authoredControl, actionType, delivery: 'control', shape: 'single', targetSide: 'enemy',
+        range: Math.min(8, Math.max(1, Math.ceil((authoredControl.range || 480) / 140))), minRange: 1,
+        areaRadius: 0, axes: 1, directions: 8, maxTargets: 1, multiplier: 0,
+        pierceUnits: false, pierceObstacles: false, pierceTerrain: false, blocksOnUnits: false,
+        requiresLineOfSight: true, controlTurns: 1 };
+    }
     const action = this.getActionDefinition(unit, actionType) || {};
     const profileSources = [
       unit.tacticsAttacks?.[actionType],
@@ -728,7 +786,7 @@ export class EngineTactics {
     if (this.verticalTerrain) return this.verticalTerrain.attackDistance(from, to, profile);
     const dx = Math.abs((to.gridX ?? to.x) - (from.gridX ?? from.x));
     const dy = Math.abs((to.gridY ?? to.y) - (from.gridY ?? from.y));
-    if (profile.delivery === 'radial') return Math.hypot(dx, dy);
+    if (profile.delivery === 'radial' || isValHealingBurstProfile(profile)) return Math.hypot(dx, dy);
     return ['line', 'directional', 'cone', 'multiAxis'].includes(profile.shape)
       ? Math.max(dx, dy)
       : dx + dy;
@@ -754,10 +812,13 @@ export class EngineTactics {
    * minimum-range or unit-blocking rules used by player attacks.
    */
   canAttackCell(from, to, actionTypeOrProfile = 'simple') {
-    if (!from || !to) return false;
+    if (!from || !to || this.isTacticsControlled(from)) return false;
     const profile = typeof actionTypeOrProfile === 'object'
       ? actionTypeOrProfile
       : this.getAttackProfile(from, actionTypeOrProfile);
+    if (isTacticsPhaselockProfile(profile) && (!(from.currentHp > 0)
+      || to.currentHp !== undefined && !this.isTacticsControlTargetEligible(to))) return false;
+    if (isSourceControlProfileWave16(profile) && to.currentHp !== undefined && !isSourceControlTargetEligibleWave16(profile, to)) return false;
     const distance = this.getAttackDistance(from, to, profile);
     return distance >= profile.minRange
       && distance <= profile.range
@@ -798,8 +859,11 @@ export class EngineTactics {
   }
 
   getActionBaseDamage(attacker, actionType) {
+    if (this.sourceTacticsWave16.owns(attacker)) { const p = this.getAttackProfile(attacker, actionType); return p.effect === 'damage' ? (attacker.stats?.atk ?? attacker.atk ?? 0) * p.multiplier * (attacker.tacticsBuffTicks > 0 ? attacker.tacticsBuffMultiplier || 1 : 1) : 0; }
     if (this.verticalTerrain) return this.verticalTerrain.baseDamage(attacker, actionType);
     const authored = resolveCombatAbility(attacker, actionType === 'enemy' ? 'simple' : actionType);
+    if (isValHealingBurstProfile(authored)) return 0;
+    if (isTacticsPhaselockProfile(authored)) return 0;
     if (authored?.delivery === 'radial') return authored.effect === 'damage' ? (attacker.atk || 10) * authored.multiplier : 0;
     if (!attacker) return 0;
     const attack = attacker.stats?.atk ?? attacker.atk ?? 0;
@@ -809,6 +873,10 @@ export class EngineTactics {
   }
 
   selectAction(actionType) {
+    if (actionType === 'release-possession' && !this.paused && this.sourceTacticsWave16.proxy) { this.endActiveTurn(); return true; }
+    if (this.sourceTacticsWave16.proxy?.body === this.activeUnit && !['attack', 'basic', 'simple'].includes(actionType)) return false;
+    if (this.sourceTacticsWave16.action || this.paused && this.sourceTacticsWave16.owns(this.activeUnit)) return false;
+    if (this.isTacticsControlled(this.activeUnit)) return false;
     if (this.verticalTerrain && (this.paused || this.actionPhase === 'moving')) return false;
     if (this.verticalTerrain && (!this.activeUnit || this.activeUnit.currentHp <= 0)) return false;
     const isHumanTurn = this.activeUnitType === 'hero'
@@ -978,13 +1046,24 @@ export class EngineTactics {
     return Math.max(adjacentBarriers.length > 0 ? 0.35 : 0, tileCover, heightCover);
   }
 
+  applySourceAmbientDamageWave16(unit, amount, { floor = 0, kind = 'status' } = {}) {
+    if (this.paused || this.disposed || !(unit?.currentHp > 0)) return 0;
+    const damage = Math.min(Math.max(0, unit.currentHp - floor), Math.max(0, Math.round(amount)));
+    if (!(damage > 0)) return 0;
+    const ambient = { id: `tactics-ambient:${kind}`, battleId: `tactics-ambient:${kind}`, currentHp: 1, gridX: unit.gridX, gridY: unit.gridY };
+    if (this.sourceTacticsWave16.intercept(unit, ambient, damage, { sourceDeliveryWave16: 'status' })) return 0;
+    const hp = unit.currentHp; unit.currentHp = Math.max(floor, unit.currentHp - damage);
+    if (unit.currentHp < hp) noteSourceDamageWave16(unit);
+    return hp - unit.currentHp;
+  }
+
   applyStartTileEffect(unit) {
     if (!unit || unit.currentHp <= 0) return;
     const tile = this.getTileAt(unit.gridX, unit.gridY, unit.surfaceId);
     if (!tile) return;
     const { x: px, y: py } = this.gridToScreen(unit.gridX, unit.gridY, true, unit.surfaceId);
     if (tile.type === 'hazard' && !this.hazardsDisabled) {
-      unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - 6);
+      this.applySourceAmbientDamageWave16(unit, 6, { floor: unit.isBoss ? 1 : 0, kind: 'tile-hazard' });
       this.particles.add(px, py - 18, 0, -1, '#ff5b5b', 10, 40, 'text', 'DANGER');
     }
     if (tile.type === 'heal' && this.heroes.includes(unit)) {
@@ -1017,7 +1096,7 @@ export class EngineTactics {
     if (defender?.state === 'defense' && defender.defense) {
       damage *= (1 - defender.defense.reduce);
     }
-    if (this.verticalTerrain && defender?.tacticsGuardTicks > 0) damage *= (1 - defender.tacticsGuardReduce);
+    if (defender?.tacticsGuardTicks > 0) damage *= (1 - defender.tacticsGuardReduce);
     const cover = this.getCoverReduction(attacker, defender, actionType);
     damage *= (1 - cover);
     const facing = this.getFacingBonus(attacker, defender);
@@ -1465,9 +1544,12 @@ export class EngineTactics {
   }
 
   getAttackResolutionContext(attacker, target, actionType, attackerType = this.activeUnitType) {
+    if (this.sourceTacticsWave16.owns(attacker)) return this.sourceTacticsWave16.resolution(attacker, target, actionType);
+    if (isValHealingBurstProfile(this.getAttackProfile(attacker, actionType))) return this.getValHealingResolution(attacker, target, actionType, attackerType);
     if (this.verticalTerrain) return this.verticalTerrain.resolution(attacker, target, actionType, attackerType);
     const profile = this.getAttackProfile(attacker, actionType);
-    const validTypes = this.getValidAttackTargetTypes(attackerType);
+    const validTypes = isTacticsPhaselockProfile(profile)
+      ? (attackerType === 'enemy' ? ['hero'] : ['enemy']) : this.getValidAttackTargetTypes(attackerType);
     const seen = new Set();
     const targetX = target.gridX ?? target.x;
     const targetY = target.gridY ?? target.y;
@@ -1509,6 +1591,7 @@ export class EngineTactics {
   getAttackTargets(attacker, target, actionType, attackerType = this.activeUnitType) {
     const context = this.getAttackResolutionContext(attacker, target, actionType, attackerType);
     return context.candidates
+      .filter(entry => !isTacticsPhaselockProfile(context.profile) || this.isTacticsControlTargetEligible(entry.unit))
       .slice(0, context.profile.maxTargets)
       .map(entry => ({ unit: entry.unit, type: entry.type, cell: entry.cell }));
   }
@@ -1551,6 +1634,11 @@ export class EngineTactics {
   }
 
   applyProfiledAttack(attacker, target, actionType, baseDamage, statusEffect = null, attackerType = this.activeUnitType) {
+    if (this.isTacticsControlled(attacker)) return [];
+    if (this.sourceTacticsWave16.owns(attacker)) return this.sourceTacticsWave16.begin(attacker, target, actionType).targets || [];
+    const controlProfile = this.getAttackProfile(attacker, actionType);
+    if (isValHealingBurstProfile(controlProfile)) return this.applyValHealingBurst(attacker, target, actionType, attackerType);
+    if (isTacticsPhaselockProfile(controlProfile)) return this.applyTacticsControlAttack(attacker, target, actionType, attackerType);
     if (this.verticalTerrain) return this.verticalTerrain.applyAttack(attacker, target, actionType, baseDamage, statusEffect, attackerType);
     const profile = this.getAttackProfile(attacker, actionType);
     if (profile.delivery === 'radial' && !this.canAttackCell(attacker, target, profile)) return [];
@@ -1561,7 +1649,127 @@ export class EngineTactics {
     return targets;
   }
 
+  isTacticsControlled(unit) { return isTacticsUnitControlled(unit) || isTacticsSourceControlledWave16(unit); }
+  isTacticsControlTargetEligible(unit) { return isTacticsPhaselockTargetEligible(unit); }
+
+  getValHealingResolution(attacker, target, actionType, side = this.activeUnitType) {
+    const profile = this.getAttackProfile(attacker, actionType), types = side === 'enemy' ? ['enemy'] : ['hero', 'escort'];
+    const result = { profile, validTypes: types, impactCells: [], clickedUnit: null, candidates: [] };
+    const members = side === 'enemy' ? this.enemies : [...this.heroes, ...(this.escortUnit ? [this.escortUnit] : [])];
+    if (!isValHealingBurstProfile(profile) || !members.includes(attacker._tacticsSourceUnit || attacker) || !(attacker.currentHp > 0)) return result;
+    if (target.currentHp !== undefined && !members.includes(target)) return result;
+    const anchor = this.getUnitAtCell(target.gridX ?? target.x, target.gridY ?? target.y, target.surfaceId);
+    if (!anchor || !types.includes(anchor.type) || !(anchor.unit.currentHp > 0)
+      || !this.canAttackCell(attacker, anchor.unit, profile)) return result;
+    const cap = unit => unit.maxHp * (unit.statusEffects?.radiated > 0 ? .5 : 1);
+    if (anchor.unit !== attacker && anchor.unit.currentHp >= cap(anchor.unit)) return result;
+    result.candidates = members.filter(unit => unit.currentHp > 0 && unit.currentHp < cap(unit)
+      && this.canAttackCell(attacker, unit, profile)).slice(0, profile.maxTargets).map((unit, order) => ({
+      unit, type: this.enemies.includes(unit) ? 'enemy' : unit === this.escortUnit ? 'escort' : 'hero',
+      cell: { x: unit.gridX, y: unit.gridY, surfaceId: unit.surfaceId }, order
+    }));
+    result.impactCells = result.candidates.map(entry => entry.cell); result.clickedUnit = anchor.unit;
+    return result;
+  }
+
+  applyValHealingBurst(attacker, target, actionType, side = this.activeUnitType) {
+    if (this.paused || this.disposed || this.gameOver || this.isTacticsControlled(attacker)) return [];
+    const context = this.getValHealingResolution(attacker, target, actionType, side), applied = [];
+    for (const entry of context.candidates) {
+      const unit = entry.unit, cap = unit.maxHp * (unit.statusEffects?.radiated > 0 ? .5 : 1);
+      const amount = Math.max(0, Math.min(cap - unit.currentHp, Math.round(unit.maxHp * Math.max(0, Math.min(1, context.profile.healRatio)))));
+      if (!(amount > 0)) continue;
+      unit.currentHp += amount; applied.push(entry);
+      this.particles.add(unit.x, unit.y - 25, 0, -1, '#83e6cc', 10, 36, 'text', '+' + amount);
+    }
+    return applied;
+  }
+
+  performValHealingAction(c, r, surfaceId = null) {
+    const actor = this.activeUnit, action = this.selectedAction;
+    if (this.paused || this.disposed || this.gameOver || this.actionPhase !== 'action' || actor?.terrainMotion || this.isTacticsControlled(actor)) return { handled: false, reason: 'inactive' };
+    const profile = this.getAttackProfile(actor, action);
+    if (!isValHealingBurstProfile(profile)) return { handled: false, reason: 'unavailable' };
+    if (action === 'special' && actor.specialCharge < 100) return { handled: false, reason: 'charge' };
+    if (action === 'secondary' && actor.cooldown > 0) return { handled: false, reason: 'cooldown' };
+    const targets = this.applyValHealingBurst(actor, { gridX: c, gridY: r, surfaceId }, action, this.activeUnitType);
+    if (!targets.length) return { handled: false, reason: 'no-eligible-target' };
+    if (action === 'special') actor.specialCharge = 0;
+    else actor.specialCharge = Math.min(100, (actor.specialCharge || 0) + (action === 'secondary' ? 25 : 15));
+    if (action === 'secondary') actor.cooldown = (this.getActionDefinition(actor, action)?.cd || 3) * 60;
+    actor.state = action === 'special' ? 'special' : 'support'; actor.stateTimer = action === 'special' ? 35 : 25;
+    if (action === 'special') actor.tacticsPresentationTicks = 35;
+    this.playSfx('shield'); this.endActiveTurn();
+    return { handled: true, type: 'action', action, target: targets[0], targets };
+  }
+
+  runValHealingAI(side) {
+    const actor = this.activeUnit;
+    if (this.verticalTerrain || !isValHealingBurstProfile(this.getAttackProfile(actor, 'special'))) return false;
+    if (this.paused || this.disposed || this.gameOver || actor.currentHp <= 0 || this.isTacticsControlled(actor)) return true;
+    const action = actor.specialCharge >= 100 ? 'special' : actor.cooldown <= 0 ? 'secondary' : 'simple';
+    const allies = side === 'enemy' ? this.enemies : this.heroes;
+    const wounded = allies.filter(unit => unit.currentHp > 0 && unit.currentHp < unit.maxHp * (unit.statusEffects?.radiated > 0 ? .5 : 1));
+    const cast = () => {
+      if (this.activeUnit !== actor || this.paused || this.disposed || this.gameOver || actor.currentHp <= 0 || this.isTacticsControlled(actor)) return;
+      this.actionPhase = 'action'; this.selectedAction = action;
+      if (this.performValHealingAction(actor.gridX, actor.gridY).handled) return;
+      // Empty healing never consumes its charge. A medic can take her real
+      // defensive turn while waiting for a wounded ally within reach.
+      this.selectedAction = 'defense'; actor.state = 'defense'; actor.stateTimer = (actor.defense?.dur || 1.2) * 60;
+      actor.specialCharge = Math.min(100, (actor.specialCharge || 0) + 10); this.endActiveTurn();
+    };
+    const current = this.getValHealingResolution(actor, actor, action, side);
+    if (current.candidates.length || !wounded.length) { cast(); return true; }
+    const reachable = this.getReachableCells(actor, Math.max(0, this.movementBudget - this.movementSpent));
+    const best = [...reachable].sort((a, b) => {
+      const distance = entry => Math.min(...wounded.filter(unit => unit !== actor).map(unit => Math.hypot(entry.x - unit.gridX, entry.y - unit.gridY)));
+      return distance(a) - distance(b) || (a.cost || 0) - (b.cost || 0);
+    })[0];
+    if (best) { actor.gridX = best.x; actor.gridY = best.y; this.movementSpent += best.cost || 0; this.syncActorsToCamera(); }
+    this.actionPhase = 'moving'; this.schedule(cast, 200);
+    return true;
+  }
+
+  applyTacticsControlAttack(attacker, target, actionType, attackerType = this.activeUnitType) {
+    const profile = this.getAttackProfile(attacker, actionType);
+    if (!isTacticsPhaselockProfile(profile) || this.paused || this.disposed || this.gameOver
+      || !(attacker?.currentHp > 0) || this.isTacticsControlled(attacker)) return [];
+    // Unit objects preserve target identity; cell references select the real
+    // current occupant. A removed/dead unit cannot transfer control to a body
+    // that happens to have taken its old coordinates.
+    if (target?.currentHp !== undefined && (!this.heroes.includes(target) && !this.enemies.includes(target) || target.currentHp <= 0)) return [];
+    if (!this.canAttackCell(attacker, target, profile)) return [];
+    const opponents = attackerType === 'enemy' ? this.heroes : this.enemies;
+    const targets = this.getAttackTargets(attacker, target, actionType, attackerType)
+      .filter(entry => opponents.includes(entry.unit) && this.isTacticsControlTargetEligible(entry.unit)).slice(0, 1);
+    for (const { unit } of targets) {
+      if (this.verticalTerrain && unit.terrainMotion) {
+        const support = this.verticalTerrain.surface(unit.terrainRenderPosition?.surfaceId || unit.surfaceId);
+        if (support) Object.assign(unit, { gridX: support.x, gridY: support.y, gridZ: support.z, surfaceId: support.id });
+        delete unit.terrainMotion; delete unit.terrainRenderPosition;
+        this.syncActorsToCamera();
+      }
+      unit.tacticsControl = { kind: 'phaselock', remainingTurns: 1, releasePending: false,
+        sourceHeroId: attacker.sourceHeroId || attacker.sourceId || attacker.id };
+      unit.state = 'hit'; unit.stateTimer = 0;
+      this.particles.add(unit.x, unit.y - 28, 0, -1, '#af8ade', 10, 36, 'text', 'PHASELOCK');
+      if (unit === this.activeUnit) {
+        unit.tacticsControl.remainingTurns = 0; unit.tacticsControl.releasePending = true;
+        this.endActiveTurn();
+      }
+    }
+    return targets;
+  }
+
   handleCellClick(c, r, surfaceId = null) {
+    const source = this.sourceTacticsWave16.command(c, r, surfaceId);
+    if (source) return source;
+    if (this.isTacticsControlled(this.activeUnit) || this.paused && isTacticsPhaselockProfile(this.getAttackProfile(this.activeUnit, this.selectedAction))) return { handled: false, reason: 'controlled-or-paused' };
+    if (this.actionPhase === 'action' && isValHealingBurstProfile(this.getAttackProfile(this.activeUnit, this.selectedAction))) {
+      if (this.activeUnitType !== 'hero' && !(this.opponentControl === 'p2' && this.activeUnitType === 'enemy')) return { handled: false, reason: 'inactive' };
+      return this.performValHealingAction(c, r, surfaceId);
+    }
     if (this.verticalTerrain) return this.verticalTerrain.handleClick(c, r, surfaceId);
     const isP2EnemyTurn = this.opponentControl === 'p2' && this.activeUnitType === 'enemy';
     if (
@@ -1609,6 +1817,7 @@ export class EngineTactics {
         this.activeUnitType
       );
       const validTargetTypes = this.getValidAttackTargetTypes(this.activeUnitType);
+      if (isTacticsPhaselockProfile(this.getAttackProfile(attacker, this.selectedAction)) && !impactedTargets.length) return { handled: false, reason: 'no-valid-target' };
       if (this.getAttackProfile(attacker, this.selectedAction).delivery === 'radial' && !impactedTargets.length) {
         return { handled: false, reason: 'no-valid-target' };
       }
@@ -1660,7 +1869,8 @@ export class EngineTactics {
             if (attacker.cooldown > 0) return { handled: false, reason: 'cooldown' };
             attacker.state = 'attack';
             attacker.stateTimer = 25;
-            attacker.cooldown = (attacker.secondary?.cd || 3) * 60;
+            attacker.cooldown = ((isTacticsPhaselockProfile(this.getAttackProfile(attacker, 'secondary'))
+              ? this.getActionDefinition(attacker, 'secondary')?.cd : attacker.secondary?.cd) || 3) * 60;
             this.playSfx('shoot');
             
             this.applyProfiledAttack(
@@ -1708,6 +1918,7 @@ export class EngineTactics {
   }
 
   endActiveTurn() {
+    if (!this.sourceTacticsWave16.endTurn()) return false;
     if (this.verticalTerrain && this.activeUnit?.terrainMotion) return false;
     this.turnsElapsed++;
     this.updateTacticsObjective();
@@ -1835,6 +2046,7 @@ export class EngineTactics {
 
   completeBattle(result) {
     if (this.gameOver) return;
+    this.sourceTacticsWave16.releaseAll();
     this.gameOver = true;
     this.battleResult = result;
     this.victoryTimer = 0;
@@ -1952,7 +2164,7 @@ export class EngineTactics {
       units.forEach(unit => {
         const dist = Math.abs(unit.gridX - tile.x) + Math.abs(unit.gridY - tile.y);
         if (dist <= radius) {
-          unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - (8 + this.missionProfile.pressure * 2));
+          this.applySourceAmbientDamageWave16(unit, 8 + this.missionProfile.pressure * 2, { floor: unit.isBoss ? 1 : 0, kind: 'hazard-pulse' });
           const { x: ux, y: uy } = this.getUnitScreenPosition(unit.gridX, unit.gridY, unit.surfaceId);
           this.particles.add(ux, uy - 28, 0, -1, '#ff5b5b', 10, 38, 'text', 'PULSE');
         }
@@ -2168,6 +2380,9 @@ export class EngineTactics {
   }
 
   runEnemyAI() {
+    if (this.sourceTacticsWave16.ai()) return;
+    if (this.isTacticsControlled(this.activeUnit)) return;
+    if (this.runValHealingAI('enemy')) return;
     if (this.verticalTerrain) return this.verticalTerrain.runAI('enemy');
     if (this.gameOver || this.activeUnit.currentHp <= 0) {
       this.startTurn();
@@ -2249,6 +2464,7 @@ export class EngineTactics {
     const attackAnchor = this.getAttackAnchorForTarget(enemy, attackTarget, 'enemy', 'enemy');
 
     this.schedule(() => {
+      if (this.isTacticsControlled(enemy) || this.activeUnit !== enemy || enemy.currentHp <= 0) return;
       const targetHp = attackTarget.hp ?? attackTarget.currentHp;
       if (attackAnchor && targetHp > 0) {
         faceUnitToward(enemy, attackAnchor);
@@ -2284,6 +2500,9 @@ export class EngineTactics {
   }
 
   runHeroAI() {
+    if (this.sourceTacticsWave16.ai()) return;
+    if (this.isTacticsControlled(this.activeUnit)) return;
+    if (this.runValHealingAI('hero')) return;
     if (this.verticalTerrain) return this.verticalTerrain.runAI('hero');
     if (this.gameOver || this.activeUnit.currentHp <= 0 || this.activeUnitType !== 'hero') return;
 
@@ -2427,6 +2646,7 @@ export class EngineTactics {
 
     // 5. Execute action after a delay
     this.schedule(() => {
+      if (this.isTacticsControlled(hero) || this.activeUnit !== hero || hero.currentHp <= 0) return;
       if (target && attackAnchor) {
         faceUnitToward(hero, attackAnchor);
         hero.state = chosenAction === 'special' ? 'special' : 'attack';
@@ -2455,7 +2675,10 @@ export class EngineTactics {
   }
 
   applyDamage(attacker, defender, baseDmg, statusEffect = null, options = {}) {
-    if (this.verticalTerrain && defender?.tacticsGuardTicks > 0) baseDmg *= (1 - defender.tacticsGuardReduce);
+    if (this.paused || this.disposed) return 0;
+    const sourceHitWave16 = !!defender?.sourceProtectionWave16?.active || this.sourceTacticsWave16.owns(attacker);
+    if (sourceHitWave16 && !(baseDmg > 0)) return 0;
+    if (defender?.tacticsGuardTicks > 0) baseDmg *= (1 - defender.tacticsGuardReduce);
     if (defender === this.protectedArtifact) {
       const wasAlive = defender.hp > 0;
       defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
@@ -2516,7 +2739,8 @@ export class EngineTactics {
       baseDmg *= (1 - defenseReduction);
     }
 
-    // Apply attacker talent modifications
+    // Old talents keep their ordering; typed source contacts defer mutation until protection and item preview accept positive HP damage.
+    let sourceDeferredSuppressionWave16 = false;
     if (attacker && attacker.talent) {
       if (attacker.talent === 'reality_warp' && Math.random() < 0.20) {
         statusEffect = 'glitched';
@@ -2524,7 +2748,8 @@ export class EngineTactics {
       if (attacker.talent === 'incendiary' && Math.random() < 0.25) {
         statusEffect = 'radiated';
       }
-      if (attacker.talent === 'suppressing_fire' && defender.stats) {
+      if (attacker.talent === 'suppressing_fire' && defender.stats && sourceHitWave16) sourceDeferredSuppressionWave16 = true;
+      if (attacker.talent === 'suppressing_fire' && defender.stats && !sourceHitWave16) {
         defender.stats.def = Math.round(defender.stats.def * 0.8);
         const { x: defPxX, y: defPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY, defender.surfaceId);
         this.particles.add(defPxX, defPxY - 45, 0, -1.2, '#3498db', 11, 50, 'text', 'DEF DOWN');
@@ -2532,10 +2757,24 @@ export class EngineTactics {
     }
 
     const variance = (Math.random() * 0.2) + 0.9;
-    const finalDmg = absorbBattleItemDamage(defender, Math.round(baseDmg * variance));
+    const sequence = options.sourceSequenceWave16;
+    const potential = baseDmg * variance;
+    const budget = sequence ? allocateSourceSequenceDamageWave16(sequence.action, defender.battleId || defender.runtimeId || defender.id,
+      potential, potential * sequence.fraction, 1) : Math.round(potential);
+    if (sourceHitWave16 && !(budget > 0)) return 0;
+    const protectionPotential = defender?.sourceProtectionWave16?.kind === 'mugman-super-art-ii' ? budget : previewBattleItemDamage(defender, budget);
+    if (defender?.currentHp > 0 && protectionPotential > 0 && this.sourceTacticsWave16.intercept(defender, attacker, protectionPotential, options)) return 0;
+    const finalDmg = absorbBattleItemDamage(defender, budget);
+    if (sourceHitWave16 && !(finalDmg > 0)) return 0;
+    if (sourceDeferredSuppressionWave16) {
+      defender.stats.def = Math.round(defender.stats.def * .8);
+      const position = this.getUnitScreenPosition(defender.gridX, defender.gridY, defender.surfaceId);
+      this.particles.add(position.x, position.y - 45, 0, -1.2, '#3498db', 11, 50, 'text', 'DEF DOWN');
+    }
 
     const defenderWasAlive = defender.currentHp > 0;
     defender.currentHp = Math.max(0, defender.currentHp - finalDmg);
+    if (finalDmg > 0) noteSourceDamageWave16(defender);
     if (this.heroes.includes(attacker) && this.enemies.includes(defender)) this.damageDealt += finalDmg;
     if (this.enemies.includes(attacker) && this.heroes.includes(defender)) this.damageTaken += finalDmg;
 
@@ -2570,6 +2809,7 @@ export class EngineTactics {
     }
 
     if (defender.currentHp <= 0) {
+      delete defender.tacticsControl;
       defender.state = 'dead';
       defender.stateTimer = 999;
       if (defenderWasAlive) {
@@ -2767,7 +3007,7 @@ export class EngineTactics {
   }
   update() {
     if (this.disposed) return;
-    if (this.verticalTerrain && this.paused) return;
+    if (this.paused) return;
     if (this.gameOver) {
       this.victoryTimer++;
       if (this.victoryTimer > 120 && !this.completionReported) {
@@ -2777,6 +3017,7 @@ export class EngineTactics {
       return;
     }
 
+    this.sourceTacticsWave16.checkStatuses(0);
     const heroesAlive = this.heroes.some(h => h.currentHp > 0);
     const enemiesAlive = this.enemies.some(e => e.currentHp > 0);
 
@@ -2808,7 +3049,7 @@ export class EngineTactics {
       if (h.statusEffects?.infected > 0) {
         h.statusEffects.infected--;
         if (h.statusEffects.infected % 60 === 0) {
-          h.currentHp = Math.max(1, h.currentHp - 3); // DoT deals 3 damage per second, caps at 1 HP
+          this.applySourceAmbientDamageWave16(h, 3, { floor: 1, kind: 'infection' }); // DoT deals 3 damage per second, caps at 1 HP
           this.particles.add(h.x, h.y - 12, (Math.random()-0.5)*2, -1, '#2ecc71', 4, 20, 'spark');
         }
       }
@@ -2845,7 +3086,7 @@ export class EngineTactics {
       if (e.statusEffects?.infected > 0) {
         e.statusEffects.infected--;
         if (e.statusEffects.infected % 60 === 0) {
-          e.currentHp = Math.max(1, e.currentHp - 3);
+          this.applySourceAmbientDamageWave16(e, 3, { floor: 1, kind: 'infection' });
           this.particles.add(e.x, e.y - 12, (Math.random()-0.5)*2, -1, '#2ecc71', 4, 20, 'spark');
         }
       }
@@ -2878,6 +3119,7 @@ export class EngineTactics {
       }
     }
     this.verticalTerrain?.updateMotions();
+    this.sourceTacticsWave16.tick();
   }
 
   draw(ctx, animTime) {
@@ -3078,7 +3320,7 @@ export class EngineTactics {
 
   drawTacticsUnit(ctx, entry, animTime) {
     const unit = entry.unit;
-    const actorForDraw = this.verticalTerrain ? this.verticalTerrain.drawActor(unit) : unit;
+    const actorForDraw = this.verticalTerrain ? this.verticalTerrain.drawActor(unit) : this.sourceTacticsWave16.drawActor(unit);
     const renderScale = this.getUnitRenderScale(unit.terrainRenderPosition?.y ?? unit.gridY);
     if (entry.type === 'enemy') {
       if (unit.isBoss) {
@@ -3089,6 +3331,14 @@ export class EngineTactics {
       }
     } else {
       drawPixelSprite(ctx, unit.x, unit.y, actorForDraw, animTime, unit.facing, 72 * renderScale, 'tactics');
+    }
+    drawTacticsPhaselock(ctx, unit, (entry.type === 'enemy' ? 68 : 72) * renderScale);
+    const sourceAction = unit.sourceTacticsActionWave16;
+    if (sourceAction?.slot === 'special') {
+      const visualAction = { ...sourceAction, identity: sourceAction.sourceProfile, facing: unit.facing };
+      drawCharacterSuperVisuals(ctx, getCharacterSuperVisualState({ actor: actorForDraw, profile: sourceAction.sourceProfile, action: visualAction,
+        target: sourceAction.targets[0]?.unit, contactVisual: sourceAction.visualConfirmedContact || { confirmed: false },
+        height: (entry.type === 'enemy' ? 68 : 72) * renderScale }));
     }
 
     if (unit === this.activeUnit && unit.currentHp > 0) {

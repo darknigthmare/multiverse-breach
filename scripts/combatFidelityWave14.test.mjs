@@ -5,6 +5,7 @@ import { HEROES_DB } from '../src/game/heroes.js';
 import { resolveCombatAbility, resolveUniverseSummon } from '../src/game/combatIdentity.js';
 import { ABILITIES_WAVE14, ABILITY_REVISIONS_WAVE14 } from '../src/game/combat/abilities/abilitiesWave14.js';
 import { COMBAT_ABILITY_OVERRIDES } from '../src/game/combat/abilities/catalog.js';
+import { HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE15 } from './combatFidelityHistoricalCohortWave15.mjs';
 import { COMBAT_CAPABILITY_COMPLETION } from '../src/game/combat/completion/catalog.js';
 import { COMBAT_SOURCE_DEFINITIONS_WAVE14 as sources } from '../src/game/combat/combatSourceDefinitionsWave14.js';
 import { CHARACTER_PRESENTATIONS, PRESENTATION_PHASES } from '../src/game/combat/presentationCatalog.js';
@@ -17,8 +18,8 @@ test('W14 uses the exact frozen40 source versions and separates12 new abilities 
  assert.deepEqual(sorted(Object.keys(ABILITIES_WAVE14)),sorted(plan.heroes.filter(e=>!e.alreadyAuthored).map(e=>e.hero.id)));
  assert.deepEqual(sorted(Object.keys(ABILITY_REVISIONS_WAVE14)),sorted(plan.heroes.filter(e=>e.alreadyAuthored).map(e=>e.hero.id)));
  assert.equal(Object.keys(ABILITIES_WAVE14).length,12);assert.equal(Object.keys(ABILITY_REVISIONS_WAVE14).length,28);
- assert.equal(Object.keys(COMBAT_ABILITY_OVERRIDES).length,1540);
- assert.equal(Object.keys(COMBAT_ABILITY_OVERRIDES).filter(id=>!Object.hasOwn(ABILITIES_WAVE14,id)).length,1528);
+ assert.equal(Object.keys(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE15).length,1540);
+ assert.equal(Object.keys(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE15).filter(id=>!Object.hasOwn(ABILITIES_WAVE14,id)).length,1528);
  for(const e of plan.heroes){const h=roster.get(e.hero.id),s=sources[h.id];for(const [key,value] of Object.entries(e.source))assert.deepEqual(s[key],value,h.id+': '+key);assert.equal(h.weaponType,s.weaponType);for(const slot of ['simple','secondary','defense','special'])assert.deepEqual(h[slot],e.hero[slot],h.id+': raw action retained');}
  assert.equal(sources.gimli_lotr.bodyHeight,150);assert.equal(sources.no_mans_sky_polo.bodyHeight,120);for(const id of ['space_marine_titus','space_marine_sidonus','space_marine_leandros'])assert.equal(sources[id].bodyHeight,220);
 });

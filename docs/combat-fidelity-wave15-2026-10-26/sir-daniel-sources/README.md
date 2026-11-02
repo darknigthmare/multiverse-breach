@@ -1,0 +1,21 @@
+# Sir Daniel Fortesque — 45 états Mêlée
+
+Version choisie : *MediEvil* sur PlayStation (1998), identique à la fiche figée du groupe B. Sir Daniel conserve son œil gauche, l’absence de mâchoire inférieure, son armure argentée usée, sa cape bleu sombre et une épée courte tenue de la main droite. Ce chargement ne comporte pas de bouclier : les états `shield*` montrent des parades physiques à l’épée. L’épée reste au fourreau pendant les déplacements, sauts et prises de rebord. Les mouvements du moteur sont des adaptations jouables ; les images générées ne certifient pas des animations officielles 1:1.
+
+La livraison comprend **45 rangées distinctes de quatre dessins, soit 180 poses dans six PNG**. Trois planches couvrent le déplacement, les réactions et la parade ; trois couvrent le combat et les rebords. Les trois rangées inutilisées de la dernière planche restent transparentes. Les dessins du groupe B, les invocations et les anciens sprites ne sont jamais réutilisés comme nouvelles poses Mêlée.
+
+Huit appels réels à `image_gen` ont produit 208 dessins observés. Les 180 poses retenues possèdent des empreintes RGBA distinctes, avant et après assemblage. Vingt-huit dessins sont exclus : vingt études de calibration ou de posture, quatre premières poses de montée insuffisantes et quatre premières poses de charge dont le dessin d’impact perdait son épée. La correction de charge conserve une épée courte physiquement saisie de la main droite dans ses quatre poses. La correction indépendante de montée fait passer la main de prise au-dessus du crâne, à l’épaule, à la hanche puis sous le genou ; le torse monte réellement au-dessus de cette prise. Chaque original, prompt, reçu et correspondance source→case reste archivé. Le fournisseur n’a retourné aucun identifiant de modèle, tâche ou génération ; ces champs restent nuls.
+
+L’assemblage utilise seulement la segmentation alpha, un recadrage du corps complet et une mise à l’échelle technique au plus proche voisin. Une calibration anatomique de 200 pixels par source conserve les proportions des poses abaissées. Douze paumes et douze poignets réels sont mesurés pour onze contacts de rebord ; les premières mains d’approche restent sans contact. Le miroir horizontal du camp opposé ne certifie pas la conservation des asymétries de l’œil ou de l’équipement.
+
+Les contrôles indépendants valident les 180 cellules, leurs marges, les sources et les 15 anciens manifestes avec leurs 90 PNG. Quatre tests SSR contrôlent aussi les deux camps, les limites d’univers et une attaque réelle : absence de dégâts avant l’impact, un seul impact accepté, aucun dégât à distance, et aucun effet de combat provoqué par le simple choix d’une image.
+
+Les quatre harnais du dossier `browser/` ont été rejoués avec succès après le troisième gel commun du 26 octobre à 13:03:33 UTC. Le rejeu final s’est terminé à 13:05:37 UTC : 360 dessins des 180 poses dans les deux orientations, huit prises contrôlées, clavier GameCanvas avec pause, super déclenché au clavier et vingt situations physiques de rebord avec 32 prises affichées. Les quatre processus ont réellement terminé avec le code 0 et tous les navigateurs sont fermés. Les 60 ressources sont identiques avant et après le rejeu. `browser/sir-daniel-evidence.json` lie les commandes, journaux, traces, captures et empreintes au gel. Les six nouvelles captures finales ont ensuite été inspectées à nouveau ; les deux images hautes ont été parcourues intégralement avec neuf recadrages sans perte. La revue `browser/sir-daniel-visual-review.json` est un JSON neuf, lié uniquement au rapport, aux captures et au gel actuels ; la relecture du collecteur avec `--check` réussit. Les preuves précédentes restent archivées telles quelles dans `browser/before-baratus-super-correction-20261026111104256/` et dans l’archive commune de clôture après le premier build échoué.
+
+```sh
+node docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/normalize-sir-daniel-atlases.mjs --check
+node docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/measure-sir-daniel-native-hands.mjs --check
+node docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/verify-sir-daniel-atlases.mjs --check
+node --test scripts/sirDanielMeleeWave15.test.mjs
+node docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/browser/run-sir-daniel-browser-checks.mjs
+```

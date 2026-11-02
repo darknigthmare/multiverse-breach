@@ -1,0 +1,41 @@
+✖ Wave6 controlled contact keeps miss trails while previous native visual families ignore the new optional contract (15753.889799ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16345.801479
+
+✖ failing tests:
+
+test at scripts/combatContactVisualWave6.test.mjs:179:1
+✖ Wave6 controlled contact keeps miss trails while previous native visual families ignore the new optional contract (15753.889799ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      color: '#4fc7b2',
+  +   contactEligible: false,
+  +   contactVisual: {
+  +     confirmed: false
+  +   },
+  -   contactEligible: true,
+      controlling: false,
+      delivery: 'projectile',
+      effect: 'damage',
+      facing: 1,
+      family: 'native-wave15',
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatContactVisualWave6.test.mjs:194:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { family: 'native-wave15', heroId: 'unreal_1998_gina', name: 'Décoche du Dispersion Pistol de Gina', kind: 'dispersion-pistol', effect: 'damage', weaponType: 'gun', supportive: false, controlling: false, projectilePresentation: { shape: 'orb', color: '#8cbbff' }, delivery: 'projectile', progress: 0.5, impactProgress: 0.41, release: true, releaseProgress: 0.15254237288135597, facing: 1, height: 72, range: 640, color: '#4fc7b2', ground: { x: 300, y: 350 }, motion: { x: 0, y: 0 }, origin: { x: 316.60218826364377, y: 302.71985516223185 }, target: { x: 400, y: 350 }, nativeArtworkAvailable: true, nativeMuzzleActive: true, nativeAnchor: { x: 316.60218826364377, y: 302.71985516223185, phase: 'super', col: 2, nativePoint: [Object], renderScale: 1.2832609285908227 }, contactEligible: false, contactVisual: { confirmed: false }, gameplayEffect: 'none', source1to1Verified: false },
+    expected: { family: 'native-wave15', heroId: 'unreal_1998_gina', name: 'Décoche du Dispersion Pistol de Gina', kind: 'dispersion-pistol', effect: 'damage', weaponType: 'gun', supportive: false, controlling: false, projectilePresentation: { shape: 'orb', color: '#8cbbff' }, delivery: 'projectile', progress: 0.5, impactProgress: 0.41, release: true, releaseProgress: 0.15254237288135597, facing: 1, height: 72, range: 640, color: '#4fc7b2', ground: { x: 300, y: 350 }, motion: { x: 0, y: 0 }, origin: { x: 316.60218826364377, y: 302.71985516223185 }, target: { x: 400, y: 350 }, nativeArtworkAvailable: true, nativeMuzzleActive: true, nativeAnchor: { x: 316.60218826364377, y: 302.71985516223185, phase: 'super', col: 2, nativePoint: [Object], renderScale: 1.2832609285908227 }, contactEligible: true, gameplayEffect: 'none', source1to1Verified: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "originalSourcePlan": {
+    "path": "docs/combat-fidelity-wave16-2026-10-28/part-c/source-plan.json",
+    "sha256": "7a11258407a5ed97829f69af745faab39c2f3b5bbbf4ed2d7e778b82d9ef4412"
+  },
+  "entries": [
+    {
+      "createdAt": "2026-10-28T10:33:08.636Z",
+      "heroId": "meiko",
+      "beforeFirstGeneration": true,
+      "beforeCorrectiveGeneration": false,
+      "change": "New separate adult voicebank avatar source plan under explicit root selection amendment; originalRobin identity stays reviewed but no native generation is requested.",
+      "sourcePlan": "docs/combat-fidelity-wave16-2026-10-28/part-c/meiko-source-plan-before.json"
+    },
+    {
+      "createdAt": "2026-10-28T10:33:08.636Z",
+      "heroId": "shinya_kogami",
+      "beforeFirstGeneration": false,
+      "beforeCorrectiveGeneration": true,
+      "change": "Refine already-selected physicalrevolver to the source-confirmed stainlessRugerSP101. First generated source appears as flat semiautomatic pistol and is excluded in full; genuine new correction will redraw the actual source weapon.",
+      "sourceReference": "https://www.imfdb.org/wiki/Psycho-Pass_1",
+      "newSourceFields": {
+        "name": "Tir du revolver de K\u014dgami",
+        "universe": "Psycho-Pass",
+        "sourceWork": "Psycho-Pass season1 episode22 Perfect World (2013), physical revolver incarnation",
+        "appearance": "Adult athletic man, spiky black hair, pale shirt under dark coat, dark trousers and shoes; no later-season tactical rig",
+        "weapon": "RugerSP101 stainless .38Special revolver inherited from Masaoka, with round cylinder and exposed hammer",
+        "pose": "Aim the real short-barrel stainless RugerSP101 revolver with distinct round cylinder and exposed hammer; release one tiny warm barrel flash col2 only, then lower/recover; no Dominator, flat semiautomatic slide or judgment beam",
+        "bodyHeight": 198,
+        "sourceReference": "https://www.imfdb.org/wiki/Psycho-Pass_1",
+        "simpleName": "Tir au revolver de K\u014dgami",
+        "secondaryName": "Vis\u00e9e au revolver de K\u014dgami",
+        "defenseName": "Esquive de K\u014dgami",
+        "actionName": "Tir du revolver de K\u014dgami",
+        "effect": "damage",
+        "delivery": "projectile",
+        "kind": "kogami-revolver",
+        "weaponType": "gun",
+        "color": "#ffd174",
+        "source1to1Verified": false,
+        "networkVerified": false,
+        "versionPinned": true,
+        "gameplayAdaptation": true
+      }
+    },
+    {
+      "createdAt": "2026-10-28T11:17:31.189571+00:00",
+      "heroIds": [
+        "kaito",
+        "oracle_matrix"
+      ],
+      "beforeFirstGeneration": true,
+      "change": "Distinct roster identities under append-only amendment2. Original Raven/Starfire refusal evidence remains; neither identity is retried.",
+      "sourcePlan": "docs/combat-fidelity-wave16-2026-10-28/part-c/kaito-oracle-source-plan-before.json"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "command": "node",
+  "args": [
+    "--test",
+    "--test-reporter=tap",
+    "scripts/rpgSummonWave13.test.mjs"
+  ],
+  "startedAt": "2026-10-26T12:31:25.964Z",
+  "finishedAt": "2026-10-26T12:31:47.535Z",
+  "nodeVersion": "v24.19.0",
+  "actualExitCode": 0,
+  "signal": null,
+  "spawnError": null,
+  "log": {
+    "path": "docs/combat-fidelity-wave15-2026-10-26/test-compatibility/rpg-wave13/run-1.tap",
+    "sha256": "d83135a11debc6dd45896c47e4950efd04ea265a15a0875a85a5f606fea680ec",
+    "bytes": 3076
+  },
+  "passed": true,
+  "observedTestCount": 12,
+  "observedPassCount": 12,
+  "observedFailCount": 0,
+  "observedSkipCount": 0,
+  "frozenInputsBefore": {
+    "docs/combat-fidelity-wave13-2026-10-24/rpg-historical-assets-before.json": "f6a19a5146f174ab13078f9047513c1bafdc286ef71caf641ceeae0ecb16ed2c",
+    "docs/combat-fidelity-wave13-2026-10-24/summon-runtime-preliminary-result.json": "f6e4c6f4fe397c6a30e856e11e44336b7f88560479e1dc69c7b568a2325842fc",
+    "docs/combat-fidelity-wave13-2026-10-24/summon-runtime-result.json": "22a11103d36348ac2f2ff0c48d43400635bdef07562fe9569ef19a4d5c4e22df",
+    "docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs": "2cd767856e0d3c0455218576cbf4c80fba2868265920ad797f2a7f344faf1b43",
+    "docs/combat-fidelity-wave14-2026-10-25/rpg-historical-assets-before.json": "f28bbe04686dc0eee5778e99796b2d395edea23233e39fa0cceb0d065e90f83f",
+    "docs/combat-fidelity-wave14-2026-10-25/summon-runtime-preliminary-result.json": "54406ecc14a2ade5ca3bdab5652da01df8ae133680da38914250b4293c35f4f1",
+    "docs/combat-fidelity-wave14-2026-10-25/summon-runtime-result.json": "56279ab5fad7b8087a413fa3fbe94365334c78cddb8caa8149084a989c560f07",
+    "docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs": "477c3eb393d9426ce5ba6755d83ae4b2c79eeeba98a0b9c8603bd3185e2ec346"
+  },
+  "frozenInputsAfter": {
+    "docs/combat-fidelity-wave13-2026-10-24/rpg-historical-assets-before.json": "f6a19a5146f174ab13078f9047513c1bafdc286ef71caf641ceeae0ecb16ed2c",
+    "docs/combat-fidelity-wave13-2026-10-24/summon-runtime-preliminary-result.json": "f6e4c6f4fe397c6a30e856e11e44336b7f88560479e1dc69c7b568a2325842fc",
+    "docs/combat-fidelity-wave13-2026-10-24/summon-runtime-result.json": "22a11103d36348ac2f2ff0c48d43400635bdef07562fe9569ef19a4d5c4e22df",
+    "docs/combat-fidelity-wave13-2026-10-24/summon-runtime-validation.mjs": "2cd767856e0d3c0455218576cbf4c80fba2868265920ad797f2a7f344faf1b43",
+    "docs/combat-fidelity-wave14-2026-10-25/rpg-historical-assets-before.json": "f28bbe04686dc0eee5778e99796b2d395edea23233e39fa0cceb0d065e90f83f",
+    "docs/combat-fidelity-wave14-2026-10-25/summon-runtime-preliminary-result.json": "54406ecc14a2ade5ca3bdab5652da01df8ae133680da38914250b4293c35f4f1",
+    "docs/combat-fidelity-wave14-2026-10-25/summon-runtime-result.json": "56279ab5fad7b8087a413fa3fbe94365334c78cddb8caa8149084a989c560f07",
+    "docs/combat-fidelity-wave14-2026-10-25/summon-runtime-validation.mjs": "477c3eb393d9426ce5ba6755d83ae4b2c79eeeba98a0b9c8603bd3185e2ec346"
+  },
+  "frozenInputsUnchanged": true,
+  "currentHelperInputs": {
+    "scripts/rpgSummonWave13.test.mjs": "196f190b5f09434862b3f1a552debd1383b0781f32b55b14485ffed43330cabc",
+    "scripts/helpers/historicalRpgSummonCohort.mjs": "1b860a3b8b1155eac46a0460d7699ff9e3f89d04ff22aec7a2a0c58825375876",
+    "scripts/helpers/historicalRpgSummonCohortLoader.mjs": "9b73883671ad9aee790814de7d9319db03a52d4862d84c7b69fc520c16d2f8c2"
+  },
+  "historicalReportWrites": 0,
+  "receiptOrigin": "actual node:child_process.spawnSync status and captured TAP"
+}
