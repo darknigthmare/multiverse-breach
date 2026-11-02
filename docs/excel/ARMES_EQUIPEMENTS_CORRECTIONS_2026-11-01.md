@@ -117,3 +117,45 @@ Pour l'édition Ahsoka Rebels, le **guide officiel de Dave Filoni** fournit les 
 ## Réparation de la régression Wave 2 / motorisation de combat
 
 Les jobs `Signature combat` et `Reliability and source build` du commit `7c20e433` échouaient dans les tests de combat Ahsoka adulte : sa spéciale jouable avait été renommée `Fulcrum Twin-Saber Sweep` mais le catalogue `SIGNATURE_WAVE2_ROWS` attendait encore `Ahsoka the White` comme `legacyName`. Résultat : l'habilité source n'était plus préparée, générant plusieurs erreurs de signature et de combo sur les deux équipes dans Smash/RPG/Fighter. La définition de Wave 2 est alignée sur le nom de la capacité actuelle **sans réintroduire l'étiquette d'une autre époque** ; la technique effective `White Sabers Combination` conserve sa nature d'adaptation et ses deux contacts. Un nouveau test de non-régression vérifie l'alignement de chaque champ critique. Vérifier les nouveaux workflows sur le commit corrigé avant fusion.
+
+
+## Correctif du 2 novembre — protection des sprites visuellement non conformes
+
+Trois fichiers PNG 4×4 du lot Star Wars ont fait l'objet d'une inspection
+visuelle négative, liée à leurs empreintes SHA-256 dans
+`scripts/auditCanonicalStarWarsSprites.mjs` et dans
+`docs/excel/star-wars-edition-sprite-review-2026-11-01.csv` :
+
+- **Ahsoka, début Padawan** : accessoires de mage au lieu de la tenue et du
+  sabre vert de cette incarnation.
+- **Ahsoka, Siège de Mandalore** : tenue et accessoires incompatibles avec la
+  version possédant deux sabres bleus.
+- **Revan, KOTOR I** : deux lames rouge/violette, alors que l'incarnation
+  jouable retenue dans cette PR dispose d'un seul sabre rouge.
+
+Le jeu conserve les fichiers originaux, leurs sources, inventaires et
+données de progression. `src/game/canonicalSpriteQuarantine.js` lie
+explicitement les trois rejets à une **identité et incarnation précises** :
+`drawPixelSprite` et les bustes Canvas n'affichent plus ces feuilles comme
+s'il s'agissait de représentations canoniques ; une silhouette technique
+avec l'arme paramétrée est utilisée. Les portraits de mission, l'archive
+des signatures et la liste Fighter ne montrent plus les images rejetées
+comme visuels jouables. Les chemins des PNG restent disponibles pour
+l'inspection administrative et le remplacement, sans écrasement.
+
+Les quatre autres PNG inspectés ne sont **pas approuvés 1:1** : leur statut
+reste `PENDING_HUMAN_SOURCE_COMPARISON`. La substitution technique des
+trois fichiers refusés ne constitue **pas une nouvelle illustration**
+fidèle, mais empêche une représentation déjà reconnue erronée.
+
+Les tests
+`scripts/canonicalStarWarsSpriteEvidence.test.mjs` relient les motifs
+de blocage aux empreintes réellement auditées, aux incarnations précises,
+au rendu Canvas et aux portraits principaux. Un nouveau fichier ne sera
+pas automatiquement approuvé : les références, l'apparence et les
+animations devront être revues avant suppression de la quarantaine.
+
+**Reste à faire :** produire des feuilles PNG séparées vérifiées et
+animées pour ces trois incarnations, contrôler les silhouettes et les
+poignées des quatre autres, puis tester les rendus aux tailles finales
+dans RPG, Tactics, Smash, Fighter, l'archive et les menus.
