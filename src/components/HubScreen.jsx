@@ -47,6 +47,7 @@ import {
 } from '../game/ocCampaign';
 import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
+import { getQuarantinedCanonSprite } from '../game/canonicalSpriteQuarantine.js';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { OPENAI_COSMETIC_VISUALS, resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
@@ -5065,7 +5066,8 @@ function MultiverseRiftMap({
 }
 
 function MissionRequirementPortrait({ hero, label }) {
-  const src = hero ? getHeroSpriteSheetSrc(hero, 'melee') : '';
+  const artBlocked = Boolean(getQuarantinedCanonSprite(hero));
+  const src = hero && !artBlocked ? getHeroSpriteSheetSrc(hero, 'melee') : '';
   const layout = getSpriteSheetLayout(src);
   const [loaded, setLoaded] = useState(false);
 
@@ -5100,7 +5102,7 @@ function MissionRequirementPortrait({ hero, label }) {
       }}
       aria-hidden="true"
     >
-      {loaded ? null : <b>{initials}</b>}
+      {loaded ? null : <b>{artBlocked ? '!' : initials}</b>}
     </span>
   );
 }
@@ -13006,28 +13008,31 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                         const unlocked = unlockedHeroes.includes(hero.id);
                         const stats = getHeroStats(hero);
                         const plaque = getCharacterPlaque(hero);
-                        const portraitSrc = hero.portrait || null;
-                        const spriteSrc = portraitSrc || getHeroSpriteSheetSrc(hero, 'collection');
-                        const spriteLayout = getSpriteSheetLayout(spriteSrc);
+                        const rejectedSourceArt = getQuarantinedCanonSprite(hero);
+                        const portraitSrc = rejectedSourceArt ? null : hero.portrait || null;
+                        const spriteSrc = rejectedSourceArt ? null : portraitSrc || getHeroSpriteSheetSrc(hero, 'collection');
+                        const spriteLayout = getSpriteSheetLayout(spriteSrc || '');
                         return (
                           <div key={hero.id} style={{ display: 'grid', gridTemplateColumns: '84px minmax(0, 1fr)', gap: '9px', padding: '8px', border: `1px solid ${hero.primaryColor}55`, background: `${hero.primaryColor}12`, borderRadius: '4px' }}>
                             <div
                               role="img"
-                              aria-label={`${hero.name} sprite`}
-                              title={lang === 'fr' ? `Plaquette de ${hero.name}` : `${hero.name} sprite sheet`}
+                              aria-label={rejectedSourceArt ? `${hero.name} - art pending review` : `${hero.name} sprite`}
+                              title={rejectedSourceArt ? (lang === 'fr' ? 'Illustration non conforme, remplacement requis' : 'Source art rejected, replacement required') : (lang === 'fr' ? `Plaquette de ${hero.name}` : `${hero.name} sprite sheet`)}
                               style={{
                                 width: '84px',
                                 height: '96px',
                                 alignSelf: 'start',
                                 border: `1px solid ${hero.primaryColor}66`,
                                 backgroundColor: '#050509',
-                                backgroundImage: `url("${spriteSrc}")`,
+                                backgroundImage: spriteSrc ? `url("${spriteSrc}")` : 'none',
                                 backgroundRepeat: 'no-repeat',
                                 backgroundSize: portraitSrc ? 'cover' : `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
                                 backgroundPosition: portraitSrc ? 'center 22%' : '0 0',
                                 imageRendering: 'pixelated'
                               }}
-                            />
+                            >
+                              {rejectedSourceArt && <span style={{ display: 'block', padding: '12px 4px', color: '#f6d18c', fontSize: '10px', textAlign: 'center' }}>{lang === 'fr' ? 'ART À REFAIRE' : 'ART PENDING'}</span>}
+                            </div>
                             <div style={{ minWidth: 0 }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
                                 <b style={{ color: hero.primaryColor, fontSize: '11px' }}>{hero.name}</b>
