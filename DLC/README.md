@@ -64,10 +64,17 @@ exclusif. Les ressources identifiées dans plusieurs univers restent dans
 `shared-assets.json` et figurent dans les dépendances des dossiers concernés.
 Les alias historiques ambigus restent sans attribution forcée.
 
-L'inventaire lit les chemins suivis par Git et les références statiques du code.
-Il fonctionne dans une copie partielle sans télécharger les images. Il ne valide
-ni les octets, ni l'hydratation LFS, ni la qualité ou la provenance d'une image :
-les audits de ressources existants continuent de remplir ces rôles.
+Dans un dépôt, l'inventaire lit les chemins de l'index Git et les références
+statiques du code. Il fonctionne donc dans une copie partielle sans télécharger
+les images. Dans un export sans métadonnées Git utilisables, il parcourt les
+fichiers réellement présents dans `public/` et vérifie qu'ils correspondent aux
+inventaires enregistrés. Un fichier omis ou ajouté rend le contrôle obsolète et
+provoque un échec. Un dépôt parent ne fournit jamais l'index d'un projet exporté.
+Le diagnostic `inputSource` distingue `git-index` et `public-tree`.
+
+Ces contrôles ne valident ni les octets, ni l'hydratation LFS, ni la qualité ou
+la provenance d'une image : les audits de ressources existants continuent de
+remplir ces rôles.
 
 ## Modifier ou ajouter un univers
 

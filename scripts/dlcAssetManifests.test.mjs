@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import test from 'node:test';
@@ -70,7 +70,7 @@ test('rejects duplicate, unsafe and ambiguous classification inputs', () => {
   }), /Ambiguous universe directory slug/);
 });
 
-test('write/check uses the Git index in a sparse checkout and detects staged inventory changes', t => {
+const createFixture = t => {
   const root = mkdtempSync(join(tmpdir(), 'multiverse-dlc-assets-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
   const write = (path, content) => {
@@ -90,12 +90,18 @@ test('write/check uses the Git index in a sparse checkout and detects staged inv
   write('src/game/recentUniverseTextureAssets.js', 'src: `/textures/recent-universes/${entry.key}-openai-atlas.webp`,\ntacticsSrc: `/textures/recent-universes/${entry.key}-openai-tactics-3q.webp`\n');
   const publicPaths = ['public/boosters/halo.webp', 'public/backgrounds/halo-stage.png', 'public/backgrounds/shared.png', 'public/textures/recent-universes/halo_texture-openai-atlas.webp'];
   for (const path of publicPaths) write(path, 'fixture');
+  return { root, write, publicPaths };
+};
+
+test('write/check uses the Git index in a sparse checkout and detects staged inventory changes', t => {
+  const { root } = createFixture(t);
   execFileSync('git', ['init', '--quiet'], { cwd: root });
   execFileSync('git', ['add', '--', 'public'], { cwd: root });
   rmSync(join(root, 'public'), { recursive: true });
 
   assert.throws(() => runDlcAssetManifestBuild({ root }), /missing or stale/);
   const distribution = runDlcAssetManifestBuild({ root, write: true });
+  assert.equal(distribution.inputSource, 'git-index');
   assert.equal(distribution.trackedPublicPaths, 4);
   assert.equal(distribution.assignedToDlc, 3);
   assert.deepEqual(runDlcAssetManifestBuild({ root }), distribution);
@@ -107,4 +113,48 @@ test('write/check uses the Git index in a sparse checkout and detects staged inv
   assert.throws(() => runDlcAssetManifestBuild({ root }), /missing or stale/);
   assert.equal(runDlcAssetManifestBuild({ root, write: true }).trackedPublicPaths, 3);
   runDlcAssetManifestBuild({ root });
+});
+
+for (const metadata of ['absent', 'empty']) {
+  test(`a source export with ${metadata} Git metadata validates the same inventories and rejects missing or added assets`, t => {
+    const { root, write, publicPaths } = createFixture(t);
+    execFileSync('git', ['init', '--quiet'], { cwd: root });
+    execFileSync('git', ['add', '--', 'public'], { cwd: root });
+    runDlcAssetManifestBuild({ root, write: true });
+    const before = ['DLC/Halo/assets.json', 'DLC/shared-assets.json'].map(path => readFileSync(join(root, path), 'utf8'));
+    rmSync(join(root, '.git'), { recursive: true });
+    if (metadata === 'empty') mkdirSync(join(root, '.git'));
+
+    const result = runDlcAssetManifestBuild({ root });
+    assert.equal(result.inputSource, 'public-tree');
+    assert.equal(result.trackedPublicPaths, publicPaths.length);
+    assert.deepEqual(['DLC/Halo/assets.json', 'DLC/shared-assets.json'].map(path => readFileSync(join(root, path), 'utf8')), before);
+
+    rmSync(join(root, publicPaths[0]));
+    assert.throws(() => runDlcAssetManifestBuild({ root }), /missing or stale/);
+    write(publicPaths[0], 'fixture');
+    runDlcAssetManifestBuild({ root });
+    write('public/unlisted.png', 'fixture');
+    assert.throws(() => runDlcAssetManifestBuild({ root }), /missing or stale/);
+  });
+}
+
+test('an export never uses a containing repository index, including with an empty .git directory', t => {
+  const { root } = createFixture(t);
+  runDlcAssetManifestBuild({ root, write: true });
+  const parent = mkdtempSync(join(tmpdir(), 'multiverse-dlc-parent-'));
+  t.after(() => rmSync(parent, { recursive: true, force: true }));
+  const exportedRoot = join(parent, 'export');
+  renameSync(root, exportedRoot);
+  mkdirSync(join(parent, 'public'));
+  writeFileSync(join(parent, 'public/parent-only.png'), 'parent fixture');
+  execFileSync('git', ['init', '--quiet'], { cwd: parent });
+  execFileSync('git', ['add', '--', 'public'], { cwd: parent });
+
+  for (const emptyMetadata of [false, true]) {
+    if (emptyMetadata) mkdirSync(join(exportedRoot, '.git'));
+    const result = runDlcAssetManifestBuild({ root: exportedRoot });
+    assert.equal(result.inputSource, 'public-tree');
+    assert.equal(result.trackedPublicPaths, 4);
+  }
 });

@@ -10,6 +10,7 @@ on:
       - '.nvmrc'
       - 'vite.config.js'
       - 'AGENTS.md'
+      - '.ai-tools/**'
       - 'docs/development/**'
       - 'vendor/gamedev-skills/**'
       - '.github/workflows/gamedev-display.yml'
@@ -24,6 +25,7 @@ on:
       - '.nvmrc'
       - 'vite.config.js'
       - 'AGENTS.md'
+      - '.ai-tools/**'
       - 'docs/development/**'
       - 'vendor/gamedev-skills/**'
       - '.github/workflows/gamedev-display.yml'
@@ -48,6 +50,7 @@ jobs:
             /src/
             /DLC/
             /scripts/
+            /.ai-tools/
             /docs/development/
             /vendor/gamedev-skills/
             /.github/workflows/

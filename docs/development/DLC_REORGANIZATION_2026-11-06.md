@@ -46,13 +46,28 @@ Les workflows concernés incluent `DLC/**` dans leurs déclencheurs et leurs
 copies partielles. Les audits de progression, de niveaux et de prompts lisent
 les nouveaux modules au lieu de dépendre exclusivement d'anciens blocs inline.
 
+La revue a également corrigé le contrôle d'inventaire pour les exports sans
+Git : sans `.git` utilisable, il compare les fichiers réellement exportés aux
+inventaires enregistrés. Les tests couvrent les métadonnées absentes ou vides,
+le dépôt parent à ignorer et les fichiers omis ou ajoutés. Un vrai index du
+projet garde la priorité dans les copies partielles.
+
+La première exécution CI a révélé un défaut déjà présent dans la branche de
+base : le workflow d'affichage omettait `.ai-tools/` de sa copie partielle,
+alors que `AGENTS.md` contient des liens vers ce dossier. Le workflow récupère
+désormais ces fichiers et réagit aussi à leurs modifications ; le contrôle des
+liens est conservé.
+
 ## Vérification à la reprise
 
 | Commande ou contrôle | Observation |
 | --- | --- |
-| `npm run test:dlc` | 22 tests réussis ; registre et inventaires à jour. |
+| `npm run test:dlc` | 25 tests réussis ; registre et inventaires à jour, y compris les trois régressions d'export sans index Git. |
 | `npm run dlc:verify:migration` | 77 catalogues comparés au reçu initial, aucune différence ; les contrôles dérivés incluent les niveaux, l'ordre des DLC, les univers masqués, les niveaux historiques et les modificateurs. |
+| `npm run test:audit-combat` | 48 tests réussis ; cycles de combat RPG, cibles, interruptions, ressources et consommation des événements. |
+| `npm run test:audit-tactics` | 116 tests réussis ; cycles tactiques, compétences, soins, réanimations et prévisions de dégâts. |
 | `npm run lint` | Réussite ; les cinq avertissements déjà présents dans les fixtures et le test Discipline subsistent. |
+| `npm run check:gamedev-guides` | Réussite : 23 fichiers amont, quatre entrées de skills et routeur. |
 | `git diff --cached --check` | Réussite. |
 | `npx --no-install vite build` | Compilation réussie ; avertissement sur la taille de certains bundles. |
 | `npm run build` | Arrêt dans `prebuild`, à `test:discipline` : 46/49 tests réussissent, trois nécessitent des PNG/manifestes non matérialisés dans cette copie partielle. Aucun contrôle n'a été désactivé. |

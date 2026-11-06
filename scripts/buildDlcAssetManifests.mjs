@@ -1,12 +1,13 @@
-import { execFileSync } from 'node:child_process';
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { existsSync, readFileSync, readdirSync, realpathSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { listPublicTreePaths } from './auditLocalPublicAssets.mjs';
 
-// This inventory reads Git index paths and source metadata only. Public files may
-// be absent in a sparse checkout or still be LFS pointers: neither is read here.
-// Stage new public files before regenerating; a content/provenance audit remains
-// responsible for validating their actual bytes.
+// In a checkout, inventory paths come from its Git index even when files are
+// absent in a sparse checkout. Source exports without usable Git metadata use
+// the materialized public tree and must still match the committed inventories.
+// Neither mode reads asset bytes or validates LFS hydration/provenance.
 const REPO_ROOT = fileURLToPath(new URL('../', import.meta.url));
 const CLASSIFICATION_SCOPE = 'Organizational affiliation from directory names and explicit source references; not proof of exclusive usage or artwork validity.';
 const sorted = values => [...values].sort();
@@ -25,6 +26,18 @@ export const listTrackedPublicPaths = root => {
     cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024
   });
   return output.split('\0').filter(Boolean);
+};
+
+const readPublicInventoryPaths = root => {
+  // Do not borrow a containing repository's index for an exported project.
+  // Direct uploads can omit .git entirely or leave an empty .git directory.
+  const probe = existsSync(resolve(root, '.git')) ? spawnSync('git', ['rev-parse', '--show-toplevel'], {
+    cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], timeout: 5000
+  }) : null;
+  const hasOwnIndex = probe?.status === 0 && resolve(probe.stdout.trim()) === realpathSync(root);
+  return hasOwnIndex
+    ? { publicPaths: listTrackedPublicPaths(root), inputSource: 'git-index' }
+    : { publicPaths: listPublicTreePaths(root), inputSource: 'public-tree' };
 };
 
 export const readDlcPackManifests = root => readdirSync(resolve(root, 'DLC'), { withFileTypes: true })
@@ -210,9 +223,10 @@ export const buildDlcAssetInventory = ({ packs, publicPaths, references = new Ma
 export const runDlcAssetManifestBuild = ({ root = REPO_ROOT, write = false } = {}) => {
   const packs = readDlcPackManifests(root);
   const campaignManifest = JSON.parse(readSource(root, 'src/game/originalUniversesManifest.json'));
+  const { publicPaths, inputSource } = readPublicInventoryPaths(root);
   const inventory = buildDlcAssetInventory({
     packs,
-    publicPaths: listTrackedPublicPaths(root),
+    publicPaths,
     references: collectAssetReferences(root, packs),
     campaignUniverses: campaignManifest.universes.map(entry => entry.universe)
   });
@@ -228,7 +242,7 @@ export const runDlcAssetManifestBuild = ({ root = REPO_ROOT, write = false } = {
     else stale.push(path);
   }
   if (stale.length) throw new Error(`${stale.length} DLC asset inventories are missing or stale. Stage public asset changes, then run node scripts/buildDlcAssetManifests.mjs --write.\n${stale.slice(0, 10).join('\n')}`);
-  return inventory.sharedManifest.distribution;
+  return { ...inventory.sharedManifest.distribution, inputSource };
 };
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
