@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "meet-the-feebles",
+  "universe": "Meet the Feebles",
+  "directory": "DLC/MeetTheFeebles",
+  "registration": "runtime",
+  "catalogOrder": 159,
+  "modules": [
+    {
+      "path": "data/characterPlaques.js",
+      "runtimeAdapter": "src/game/characterPlaques.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

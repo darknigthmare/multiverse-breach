@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "pee-wee",
+  "universe": "Pee-wee",
+  "directory": "DLC/PeeWee",
+  "registration": "runtime",
+  "catalogOrder": 117,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreEnemyOverrides.js",
+      "runtimeAdapter": "src/game/loreEnemyOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -1,0 +1,884 @@
+{
+  "schemaVersion": 1,
+  "referenceCommit": "3036cd021edfe544534a09df5c401eb024808b39",
+  "capturedAt": "2026-11-06",
+  "scope": "Sorted public export names and SHA-256 of JSON.stringify(non-function exports); object and array order preserved. Nested functions are not serialized. Runtime behavior is covered separately by existing tests. This receipt is opt-in and intentionally becomes stale after content changes.",
+  "modules": {
+    "lore": {
+      "exports": [
+        "CORE_CODEX_ENTRIES",
+        "LORE_DB",
+        "NARRATIVE_ACTS",
+        "NEXUS_CANON"
+      ],
+      "sha256": "512d4d592d1a2adf2e29f2a34a0cc255a9d22874127fa445b165dbf8e9278017",
+      "bytes": 1289977
+    },
+    "heroes": {
+      "exports": [
+        "EQUIP_ITEMS_DB",
+        "EVENT_ITEMS_DB",
+        "HEROES_DB",
+        "SYNERGIES_DB",
+        "getEventItemForUniverse",
+        "getHeroById",
+        "getItemsForUniverse",
+        "getRandomHero"
+      ],
+      "sha256": "09440737478a094b4ebddd13dbd763f9a725fae979b7fa5bb4c40aeb188f8999",
+      "bytes": 4083614
+    },
+    "enemies": {
+      "exports": [
+        "ENEMIES_DB",
+        "FINAL_GAME_BOSS",
+        "OBSTACLES_DB",
+        "getBossesForUniverse",
+        "getEnemiesForUniverse",
+        "getFinalGameBoss",
+        "getFinalePolicyForUniverse",
+        "getMonstersForUniverse",
+        "getWorldBossForUniverse"
+      ],
+      "sha256": "f9df6b3e2de1113bc667a4c4e37bb6b614b411edc2c45d2027810262ed8cba3f",
+      "bytes": 3319123
+    },
+    "expandedUniverses": {
+      "exports": [
+        "EXPANDED_DECOR_THEMES",
+        "EXPANDED_ENEMIES_DB",
+        "EXPANDED_EVENT_ITEMS",
+        "EXPANDED_EVENT_SHOP_ITEMS",
+        "EXPANDED_EXTRA_HERO_DATA",
+        "EXPANDED_FACTION_UNIVERSES",
+        "EXPANDED_GEAR",
+        "EXPANDED_LORE_DB",
+        "EXPANDED_MEDIA_FILTERS",
+        "EXPANDED_STAGE_ACCENT_BY_UNIVERSE",
+        "EXPANDED_STAGE_ID_BY_UNIVERSE",
+        "EXPANDED_UNIVERSES",
+        "EXPANDED_UNIVERSE_SIGNATURES",
+        "getExpandedStages",
+        "getResolvedLoreWorldBossPolicy",
+        "shouldClearCombatRosterForPolicy",
+        "stableTrialStageId"
+      ],
+      "sha256": "c90384dfeb72b29c382582a5e06a372ba3b427dccf315231ca5ca5af9c3eb610",
+      "bytes": 18756913
+    },
+    "requestedUniverseWave": {
+      "exports": [
+        "REQUESTED_UNIVERSE_WAVE"
+      ],
+      "sha256": "575aa3ee53fe7500938e81f730f1702e16fb1c88775561760eaf7faa62500589",
+      "bytes": 57309
+    },
+    "featuredUniversePacks": {
+      "exports": [
+        "FEATURED_BACKDROPS",
+        "FEATURED_BATTLE_ITEM_OVERRIDES",
+        "FEATURED_CHARACTER_PLAQUES",
+        "FEATURED_ENEMY_LORE",
+        "FEATURED_GEAR_LORE",
+        "FEATURED_STAGE_LORE",
+        "FEATURED_UNIVERSE_ICONS",
+        "FEATURED_UNIVERSE_KEYS",
+        "FEATURED_UNIVERSE_NARRATIVE_ARCS",
+        "FEATURED_UNIVERSE_PACKS"
+      ],
+      "sha256": "97e805bf7134193121358372ae87d9751d3a9e5f13a95cc8b6538ed834e8775e",
+      "bytes": 129600
+    },
+    "canonRosterWave": {
+      "exports": [
+        "CANON_ROSTER_WAVE"
+      ],
+      "sha256": "7646575adb440b51fe7672806a63e7a50a5c65620cb17b3d13134454fed51113",
+      "bytes": 2841289
+    },
+    "ocDlcPacks": {
+      "exports": [
+        "OC_DLC_PACKS",
+        "OC_DLC_PACK_IDS",
+        "OC_DLC_STAGE_IDS",
+        "OC_DLC_UNIVERSES",
+        "OC_DLC_UNIVERSE_KEYS",
+        "UNIVERSE_KEYS",
+        "getOcDlcMission",
+        "getOcDlcPack",
+        "getOcDlcPackByUniverse",
+        "isOcDlcMissionUnlocked",
+        "isOcDlcStage"
+      ],
+      "sha256": "def6e1e9c7ea925f21c133f2e6d2ca3ba17c6d4d7e1fdf6176b29df17958a3b9",
+      "bytes": 287380
+    },
+    "originalUniverseWave": {
+      "exports": [
+        "ORIGINAL_CAMPAIGN_UNIVERSES",
+        "ORIGINAL_UNIVERSE_DEFINITIONS",
+        "ORIGINAL_UNIVERSE_MANIFEST",
+        "ORIGINAL_UNIVERSE_WAVE",
+        "ORIGINAL_WORLD_BOOSTERS",
+        "ORIGINAL_WORLD_CUSTOM_UNLOCKABLES",
+        "ORIGINAL_WORLD_ITEM_CATALOG",
+        "ORIGINAL_WORLD_KEYS",
+        "ORIGINAL_WORLD_WAVES",
+        "getOriginalUniverseDefinition",
+        "getOriginalWorldBooster"
+      ],
+      "sha256": "76d9f862464a98150664480332e995107ac5d961538cc7e9aa35409329b4666c",
+      "bytes": 6850721
+    },
+    "loreAccuratePacks": {
+      "exports": [
+        "LORE_ACCURATE_ENEMY_EXPANSIONS",
+        "LORE_ACCURATE_HERO_EXPANSIONS",
+        "LORE_ACCURATE_HERO_OVERRIDES"
+      ],
+      "sha256": "1d23678324631a31da9873c5e451db14227b3b499d6cd7aa6e0aa691d5f21e5c",
+      "bytes": 126963
+    },
+    "loreBossOverrides": {
+      "exports": [
+        "LORE_BOSS_OVERRIDES",
+        "LORE_BOSS_SLOT_POLICY"
+      ],
+      "sha256": "501bd0a7e2c40bb9c8dad8edce47f7d1fc1be323b92bbbbeda11520697ca12a3",
+      "bytes": 407402
+    },
+    "loreEnemyOverrides": {
+      "exports": [
+        "LORE_ENEMY_FALLBACK_SLOTS",
+        "LORE_ENEMY_OVERRIDES",
+        "getLoreEnemyOverride",
+        "getLoreEnemyOverrides",
+        "slugifyLoreEnemyAsset"
+      ],
+      "sha256": "acc82f2bcbac002d77786c31250a93c2487807016dbdf8d8dc595de3fba5e49e",
+      "bytes": 101106
+    },
+    "loreItemOverrides": {
+      "exports": [
+        "LORE_ITEM_OVERRIDES",
+        "LORE_ITEM_POLICIES",
+        "getLoreEquipmentOverrides",
+        "getLoreEventItemOverride",
+        "getLoreItemOverride",
+        "getLoreItemOverrides",
+        "getLoreItemPolicy",
+        "isLoreItemUniverseEnabled",
+        "slugifyLoreItemAsset"
+      ],
+      "sha256": "0d90921fcc1ad8efde82087ffa93ba4f79d6c2e144557b65e3fbce73caacc009",
+      "bytes": 2668466
+    },
+    "loreWorldBossOverrides": {
+      "exports": [
+        "LORE_WORLD_BOSS_LAYOUTS",
+        "LORE_WORLD_BOSS_OVERRIDES",
+        "LORE_WORLD_BOSS_POLICIES",
+        "LORE_WORLD_BOSS_POLICY_TYPES",
+        "LORE_WORLD_BOSS_VALIDATION",
+        "getLoreWorldBossOverride",
+        "getLoreWorldBossPolicy",
+        "getLoreWorldBossReferenceUrls",
+        "getLoreWorldBossResolution",
+        "hasLoreWorldBossOverride",
+        "hasLoreWorldBossPolicy",
+        "slugifyLoreWorldBossAsset",
+        "validateLoreWorldBossOverride",
+        "validateLoreWorldBossPolicy",
+        "validateLoreWorldBossRegistries"
+      ],
+      "sha256": "2a5170c815ed79ddc50ce494aeac9077e4fcbfb40cb076e743c89ab394ee9213",
+      "bytes": 310594
+    },
+    "narrativeSystems": {
+      "exports": [
+        "ARC_CAMPAIGN_DETAILS",
+        "CHARACTER_NARRATIVE_ARCS",
+        "FUSION_MISSIONS",
+        "META_NEXUS_RECOMMENDATIONS",
+        "REPUTATION_TRACKS",
+        "SKIN_CATALOG",
+        "SPECIAL_EVENTS",
+        "TRIO_NARRATIVE_ARCS",
+        "UNIVERSE_NARRATIVE_ARCS"
+      ],
+      "sha256": "b8b8f25ff7cdfd07e519a35b6a3ec5f3e63ef910947b44a4c9c18e591f523f8a",
+      "bytes": 4407736
+    },
+    "characterPlaques": {
+      "exports": [
+        "CHARACTER_PLAQUES",
+        "getCharacterPlaque"
+      ],
+      "sha256": "241264c1b16b5bd9560fdd63b1ee2ce316b3579e1853b8c49e3754a405f4ee50",
+      "bytes": 205968
+    },
+    "battleItems": {
+      "exports": [
+        "BATTLE_ITEMS_BY_UNIVERSE",
+        "BATTLE_ITEM_CATALOG",
+        "getBattleItemPoolForStage",
+        "getBattleItemsForUniverse"
+      ],
+      "sha256": "546faadb1713e1d81939387fa77317e9b5487ea3f49c8c7321f567812e52824c",
+      "bytes": 8339658
+    },
+    "stageLoreProfiles": {
+      "exports": [
+        "STAGE_ARC_LORE_PROFILES",
+        "STAGE_LORE_PROFILES",
+        "getStageLoreAssetPlan",
+        "getStageLoreProfile"
+      ],
+      "sha256": "4ac9010a9a90b55e290ea35a2234271e0d82a0fdfa58c445c76765a51bef6020",
+      "bytes": 1011184
+    },
+    "stageMusicProfiles": {
+      "exports": [
+        "MUSIC_PROFILE_FAMILIES",
+        "MUSIC_PROFILE_OVERRIDES",
+        "NEXUS_MUSIC_PROFILE",
+        "buildProceduralUniverseProfile",
+        "hashMusicSeed",
+        "normalizeMusicUniverse",
+        "resolveStageMusicProfile"
+      ],
+      "sha256": "d4bb978e0fc280b8981fc3afba43fcea251d81b0543363087855dac4bd92443d",
+      "bytes": 125486
+    },
+    "sourceSceneStages": {
+      "exports": [
+        "SOURCE_SCENE_STAGES",
+        "getSourceSceneBattlefield",
+        "resolveSourceScene"
+      ],
+      "sha256": "8a854a01c3a04c77acb8eb8c528b004449dee13a5a8ac46eaf2b7f97c1a54afd",
+      "bytes": 13739
+    },
+    "canonPriorityStages": {
+      "exports": [
+        "CANON_PRIORITY_STAGES"
+      ],
+      "sha256": "f8fac2ee17dfccaa657fddf05afe98a9499345be15f38156ab16deb05d8fecd2",
+      "bytes": 8386
+    },
+    "recentUniverseLevels": {
+      "exports": [
+        "RECENT_UNIVERSE_LEVELS",
+        "RECENT_UNIVERSE_NAMES",
+        "getRecentModeLevel",
+        "getRecentUniverseLevelProfile"
+      ],
+      "sha256": "9dc52a0969bea76d6d9a51315317baf8400aadfe4795104b56c75c994239b3b4",
+      "bytes": 35663
+    },
+    "smashArenas": {
+      "exports": [
+        "SMASH_ARENA_LAYOUTS",
+        "createSmashArena",
+        "getSmashArenaTheme",
+        "getSmashObjectiveLabel",
+        "getSmashObjectiveText",
+        "getSmashPickupPositions"
+      ],
+      "sha256": "a78f3c06d010332d09832923c0c25c4dd14a631902034d72348bbaf91ea8d3f8",
+      "bytes": 4294
+    },
+    "tacticsBattlefields": {
+      "exports": [
+        "TACTICS_BATTLEFIELDS",
+        "getTacticsBattlefield",
+        "getTacticsMissionProfile",
+        "getTacticsPickupPositions"
+      ],
+      "sha256": "190470d7e1ffb90045343d6e132b8c91a05d110f10e8f1e5af50a07e426322f0",
+      "bytes": 13538
+    },
+    "dlcConfig": {
+      "exports": [
+        "BASE_GAME_UNIVERSES",
+        "DEFAULT_HIDDEN_UNIVERSES",
+        "ORIGINAL_CAMPAIGN_UNIVERSES",
+        "buildOcDlcCampaignProgress",
+        "getDlcUniverseKeys",
+        "getEnabledOcDlcPackIds",
+        "isBaseGameUniverse",
+        "isOriginalCampaignUniverse",
+        "migrateHiddenUniversesForOcDlc"
+      ],
+      "sha256": "1e89413035c8f271fc17e0ef62291964fb9a5f6af1c8af3d4cf125ac19d39627",
+      "bytes": 8654
+    },
+    "wardrobe": {
+      "exports": [
+        "ALL_OFFICIAL_WARDROBE",
+        "WARDROBE_EFFECTS",
+        "WARDROBE_VERSION",
+        "applyActorAppearance",
+        "getOfficialCostumes",
+        "getOriginalCostumes",
+        "getWardrobeCoverage",
+        "getWardrobeEffects",
+        "getWardrobeResearchTargets",
+        "getWardrobeSourceScopeCoverage",
+        "isSafeWardrobeReference",
+        "resolveWardrobeEffect",
+        "wardrobeActorKey",
+        "wardrobeEntryId",
+        "wardrobeSelectionStatus"
+      ],
+      "sha256": "afadee590b4b2f74e96b0e2b862e697eaa5acd54fe7efd5feb179b17c28c4fee",
+      "bytes": 260120
+    },
+    "solarOppositesSirenStarWarsPack": {
+      "exports": [
+        "SOLAR_OPPOSITES_SIREN_STAR_WARS_CHARACTER_PLAQUES",
+        "SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS",
+        "SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES",
+        "SOLAR_OPPOSITES_SIREN_STAR_WARS_LORE_DB",
+        "SOLAR_OPPOSITES_SIREN_STAR_WARS_REFERENCE_ENTRIES",
+        "SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES",
+        "SOLAR_OPPOSITES_SIREN_STAR_WARS_UNIVERSE_WAVE"
+      ],
+      "sha256": "a22eaee005d2815c78c4f941382ebfdfc8cbece21d4224e4f1de616a46bbfc59",
+      "bytes": 61032
+    },
+    "canonP0SourceKits": {
+      "exports": [
+        "CANON_P0_SOURCE_KITS",
+        "CANON_P0_SOURCE_KIT_IDS",
+        "applyCanonP0SourceKit",
+        "getCanonP0SourcePlaque"
+      ],
+      "sha256": "ab44e23173a846f3f55889d3c6c65a07096093e139720973b2f2cfeeeb63c119",
+      "bytes": 63925
+    },
+    "canonBlackPearlSourceKits": {
+      "exports": [
+        "BLACK_PEARL_FILM_INCARNATION",
+        "BLACK_PEARL_JACK_INCARNATION",
+        "BLACK_PEARL_SOURCE_REFERENCES",
+        "BLACK_PEARL_SOURCE_UNIVERSE",
+        "CANON_BLACK_PEARL_SOURCE_KITS",
+        "CANON_BLACK_PEARL_SOURCE_KIT_IDS",
+        "applyCanonBlackPearlSourceKit",
+        "getBlackPearlSourceAmmunition",
+        "getCanonBlackPearlSourcePlaque"
+      ],
+      "sha256": "3e0a5a03c447947fc550b4ef474407185cb6e08ddb6c63c1aed2e5d249ec44ef",
+      "bytes": 14995
+    },
+    "canonFollowupSourceKits": {
+      "exports": [
+        "CANON_FOLLOWUP_SOURCE_KITS",
+        "CANON_FOLLOWUP_SOURCE_KIT_IDS",
+        "applyCanonFollowupSourceKit"
+      ],
+      "sha256": "e83eddd3e47c4c17a16447424ca10ad5351558aeb829ab5c36366905aa90cae3",
+      "bytes": 11835
+    },
+    "portalBoosterCatalog": {
+      "exports": [
+        "BOOSTER_ART_BY_PACK_ID",
+        "BOOSTER_ART_BY_UNIVERSE",
+        "BOOSTER_ART_UNIVERSES",
+        "BOOSTER_ROTATION_SIZE",
+        "BOOSTER_ROTATION_WINDOW_MS",
+        "DEFAULT_OC_BOOSTER_ID",
+        "MULTIVERSE_CONVERGENCE_BOOSTER_ART",
+        "ORIGINAL_WORLD_BOOSTERS",
+        "PERMANENT_OC_BOOSTERS",
+        "getPortalBoosterArt",
+        "getPortalBoosterPackArt",
+        "getPortalBoosterRotation"
+      ],
+      "sha256": "5b686129dea2cadf04e6284e63024d3ae20bf6381ce98929cc7fc4ac63a589c2",
+      "bytes": 762189
+    },
+    "universeUnlockables": {
+      "exports": [
+        "BATTLE_MUSIC_CATALOG",
+        "FIELD_SUPER_CATALOG",
+        "INTRO_POSE_CATALOG",
+        "KART_CATALOG",
+        "KO_EFFECT_CATALOG",
+        "NPC_ASSIST_CATALOG",
+        "PORTAL_EFFECT_CATALOG",
+        "PROFILE_BANNER_CATALOG",
+        "PROFILE_TITLE_CATALOG",
+        "STAGE_MUSIC_CATALOG",
+        "UNIVERSE_UNLOCKABLES",
+        "VICTORY_POSE_CATALOG",
+        "getUniverseUnlockables",
+        "getUnlockableById"
+      ],
+      "sha256": "ddfa38cdd0eabb9c425e57ac16a7c7d6210bdc5275d35db4ff046bdb13e1037c",
+      "bytes": 6885802
+    },
+    "extinctionContent": {
+      "exports": [
+        "drawExtinctionSchematic",
+        "getExtinctionHandFrame",
+        "getExtinctionHandPlacement",
+        "getExtinctionHandSourceRect",
+        "getExtinctionProjectilePlacement",
+        "getExtinctionRoster",
+        "getExtinctionViewmodel",
+        "isExtinctionCombatant"
+      ],
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "bytes": 2
+    },
+    "canonRosterWavePartA": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_A"
+      ],
+      "sha256": "d6729182237a275619299108d366ff5c8b252ba4fbc22dc4b0d653a36e99159d",
+      "bytes": 123258
+    },
+    "canonRosterWavePartB": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_B"
+      ],
+      "sha256": "ccf51555006c895356d15243969a7755469bc042d8be5228d50b99358a85db93",
+      "bytes": 155665
+    },
+    "canonRosterWavePartC": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_C"
+      ],
+      "sha256": "c374bb2bbd8e1bbf9c672c93882c0ae9b6b2fbeed79bd8b36926b63f3501faf4",
+      "bytes": 196621
+    },
+    "canonRosterWavePartD": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_D"
+      ],
+      "sha256": "35b0b9fb9d145681e066310b91c98e8dde03da9200e5eade7d9ab707fc5da3d1",
+      "bytes": 237992
+    },
+    "canonRosterWavePartE": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_E"
+      ],
+      "sha256": "b4fd1b24b06306d0862d79775c9697d8a88bd53f893ab50f648d4cf5b178a59b",
+      "bytes": 225811
+    },
+    "canonRosterWavePartF": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_F"
+      ],
+      "sha256": "9312cde7bf83925add552ee74af7a383d9d7d63503087964f635f4a2e5910c41",
+      "bytes": 210576
+    },
+    "canonRosterWavePartG": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_G"
+      ],
+      "sha256": "cf281807927197bdfd6a998d36b09f20cf1b3aaa9c6dfc5f6a60fa116447c5d0",
+      "bytes": 282590
+    },
+    "canonRosterWavePartH": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_H"
+      ],
+      "sha256": "5e36760f968468f6fecad2bac59a8668162d85e8b98e43485efed74af71f9dd9",
+      "bytes": 272056
+    },
+    "canonRosterWavePartI": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_I"
+      ],
+      "sha256": "94c3dd6359b33c2953bfd1c4d11f12cc11e3e37afdbee3f8c95e4c7899ce104b",
+      "bytes": 201354
+    },
+    "canonRosterWavePartJ": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_J"
+      ],
+      "sha256": "d79c105aa88837e055143321230944e4745dde5595cff38ab653fde9ce52216f",
+      "bytes": 283845
+    },
+    "canonRosterWavePartK": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_K"
+      ],
+      "sha256": "9a0aeb89da41a4c9e8ea650e25c568837d5df1acb7a44b6c673d414893a8c5c6",
+      "bytes": 276991
+    },
+    "canonRosterWavePartL": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_L"
+      ],
+      "sha256": "9631066f27a813b70430d52e446ffe8aea4aa5755f563275cde4fb95fea274a3",
+      "bytes": 287796
+    },
+    "canonRosterWavePartM": {
+      "exports": [
+        "CANON_ROSTER_WAVE_PART_M"
+      ],
+      "sha256": "7c70f9fcdbb8e233e599e384c4dbc439af94360e51549d7a79c2c21e3b7c8ce2",
+      "bytes": 87101
+    },
+    "canonicalArchiveLore": {
+      "exports": [
+        "CANONICAL_ARCHIVE_ENEMY_LORE",
+        "CANONICAL_STAGE_ARCHIVE_LORE",
+        "getCanonicalArchiveEnemyLore",
+        "getCanonicalArchiveStageLore",
+        "resolveStageArchiveBoss"
+      ],
+      "sha256": "3c4fe6d2eb59f4e27dc565ccafdf79996c3036f94af7fc3ce46be6dae319be9a",
+      "bytes": 29373
+    },
+    "loreDescriptions": {
+      "exports": [
+        "getBattleItemLoreDescription",
+        "getEnemyLoreDescription",
+        "getEventLoreDescription",
+        "getGearLoreDescription",
+        "getStageLoreDescription",
+        "getUniverseLoreDescription",
+        "getUniverseSignature"
+      ],
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "bytes": 2
+    },
+    "mosaicUniversePlaces": {
+      "exports": [
+        "UNIVERSE_HUB_PLACES",
+        "getUniverseHubPlace"
+      ],
+      "sha256": "7c8830654f7875b905a48d856022265d5f0c48041fd4bd9a2d80dd177f80566e",
+      "bytes": 1709
+    },
+    "signatureSourceWave2": {
+      "exports": [
+        "SIGNATURE_WAVE2_REFERENCES",
+        "SIGNATURE_WAVE2_ROWS"
+      ],
+      "sha256": "8d4240f0e7879b79d208cdb5922e5bc48134883ad141707e83acc7ddfee287f6",
+      "bytes": 19200
+    },
+    "signatureSourceWave3": {
+      "exports": [
+        "SIGNATURE_WAVE3_REFERENCES",
+        "SIGNATURE_WAVE3_ROWS"
+      ],
+      "sha256": "e15b47d33e3d4e216a69bf0670be7989efa4667e821620302feaf960d28d4a8a",
+      "bytes": 4299
+    },
+    "signatureSourceWave4": {
+      "exports": [
+        "SIGNATURE_WAVE4_REFERENCES",
+        "SIGNATURE_WAVE4_ROWS"
+      ],
+      "sha256": "a01aed3fd5db84be5d67a78a6c8c92adad2485630176d54f3b2be26f5f99cb76",
+      "bytes": 8537
+    },
+    "smashAbilityProfiles": {
+      "exports": [
+        "CANON_SMASH_ABILITY_PROFILES",
+        "getSmashAbilityProfile",
+        "getSmashAbilityTargets"
+      ],
+      "sha256": "f3d355d89979291253604862af3186acb5de65f155ef9b416d7c4a575bcb0823",
+      "bytes": 1596
+    },
+    "wardrobeExpansion": {
+      "exports": [
+        "OFFICIAL_COSTUME_EXTENSION",
+        "ORIGINAL_COLLECTION_EXTENSION",
+        "SIGNATURE_DESIGN_EXTENSION",
+        "WARDROBE_RESEARCH_TARGETS"
+      ],
+      "sha256": "4f365b5e0cb9637e505a3aa642b97dc0928be7762894cf367d832bbababb6056",
+      "bytes": 26045
+    },
+    "wardrobeOfficial": {
+      "exports": [
+        "OFFICIAL_WARDROBE"
+      ],
+      "sha256": "bd4f5145134631af0105728edb102ea116d203d72cdce00d408641d42f1afd0d",
+      "bytes": 21811
+    },
+    "wardrobeOfficialR10": {
+      "exports": [
+        "OFFICIAL_COSTUMES_R10",
+        "UNBOUND_COSTUME_RESEARCH_R10",
+        "WARDROBE_SOURCES_R10"
+      ],
+      "sha256": "03042ce700496d077d07e26a02d1b97c8142bdbbac99b0fdfcbcf67081f73654",
+      "bytes": 28842
+    },
+    "wardrobeOfficialR11": {
+      "exports": [
+        "OFFICIAL_COSTUMES_R11",
+        "UNBOUND_COSTUME_RESEARCH_R11",
+        "WARDROBE_RESEARCH_R11",
+        "WARDROBE_SOURCES_R11"
+      ],
+      "sha256": "a39fbdc3aac80f56970e016aa5ea954c1b4ba931d986f1cc602d2528b0c6d0a6",
+      "bytes": 20334
+    },
+    "wardrobeOfficialR12": {
+      "exports": [
+        "DRDR_NAMED_PACKS_R12",
+        "OFFICIAL_COSTUMES_R12",
+        "UNBOUND_COSTUME_RESEARCH_R12",
+        "WARDROBE_RESEARCH_R12",
+        "WARDROBE_SOURCES_R12",
+        "WARDROBE_SOURCE_SCOPES_R12"
+      ],
+      "sha256": "001e13fb1762b004c3771423f0614d3af8a009e11dca141916bf7e3fe04903bd",
+      "bytes": 56512
+    },
+    "wardrobeOfficialR13": {
+      "exports": [
+        "MAGICKA_WEARERS_R13",
+        "OFFICIAL_COSTUMES_R13",
+        "PAYDAY_NAMED_PACKS_R13",
+        "PAYDAY_WEARERS_R13",
+        "UNBOUND_COSTUME_RESEARCH_R13",
+        "WARDROBE_RESEARCH_R13",
+        "WARDROBE_SOURCES_R13",
+        "WARDROBE_SOURCE_SCOPES_R13"
+      ],
+      "sha256": "c9d0b7a3efcc46ff7848d5666048a21e3282c5e5ffb8d218066917348d090c35",
+      "bytes": 129676
+    },
+    "wardrobeOfficialR14": {
+      "exports": [
+        "OFFICIAL_COSTUMES_R14",
+        "WARDROBE_NAMED_PACKS_R14",
+        "WARDROBE_RESEARCH_R14",
+        "WARDROBE_SOURCES_R14",
+        "WARDROBE_SOURCE_SCOPES_R14"
+      ],
+      "sha256": "45cd41e94116a855405a5974fd4722df370036212d2045c17f52cab6d8f7268b",
+      "bytes": 42349
+    },
+    "wardrobeOfficialR7": {
+      "exports": [
+        "OFFICIAL_COSTUMES_R7",
+        "UNBOUND_COSTUME_RESEARCH_R7"
+      ],
+      "sha256": "34cd9398c9de3cb96a537ab0621fa38bdd004764ec38fed26c2ece61771d8786",
+      "bytes": 17268
+    },
+    "wardrobeOfficialR9": {
+      "exports": [
+        "OFFICIAL_COSTUMES_R9",
+        "WARDROBE_RESEARCH_R9",
+        "WARDROBE_SOURCES_R9"
+      ],
+      "sha256": "37bd53a02b9f02ca13952643648f43b7fe7f09d693c8a696b1491246a703739d",
+      "bytes": 42136
+    },
+    "wardrobeOriginals": {
+      "exports": [
+        "ORIGINAL_COLLECTIONS",
+        "SIGNATURE_DESIGNS"
+      ],
+      "sha256": "3646f5f52b53599e9173d4f31f0b73556fd97e62c5e80b44d24dd1e5e491e010",
+      "bytes": 10953
+    },
+    "canonAliensRescueEncounter": {
+      "exports": [
+        "ALIENS_RESCUE_BALANCE",
+        "ALIENS_RESCUE_INCARNATION",
+        "ALIENS_RESCUE_SOURCE_URLS",
+        "aliensRescueHeroId",
+        "attachAliensRescueQueen",
+        "createAliensRescueEncounter",
+        "getAliensHiveHeroLoadout",
+        "getAliensRescueEncounterSummary",
+        "getAliensRescueObjectiveText",
+        "isAtAliensRescuePoint"
+      ],
+      "sha256": "f4aee01e482c9c7dd3c1d2bcc9e6f4d0c756fa7ccd6decd232e1726bc6df5e85",
+      "bytes": 306
+    },
+    "canonAliensRescueEncounterPresentation": {
+      "exports": [
+        "ALIENS_RESCUE_NEWT_SPRITE_HERO_ID",
+        "drawAliensRescueEncounter",
+        "emitAliensHiveAttackEffect",
+        "getAliensRescueNewtSpriteView"
+      ],
+      "sha256": "16e4460abaf8357d01afb712567f21d45865a664af4f1e1ce9c8321a5806e801",
+      "bytes": 51
+    },
+    "canonNihilanthEncounter": {
+      "exports": [
+        "NIHILANTH_ENCOUNTER_BALANCE",
+        "NIHILANTH_SOURCE_URL",
+        "attachNihilanthBoss",
+        "createNihilanthEncounter",
+        "getNihilanthEncounterSummary",
+        "getNihilanthObjectiveText",
+        "getNihilanthTargets",
+        "resolveNihilanthDamage",
+        "tickNihilanthEncounter"
+      ],
+      "sha256": "3e48bdaae6e06f7dcb785ff9581317c016fa04bf0531daff43cc08fe16cc0f24",
+      "bytes": 341
+    },
+    "canonNihilanthEncounterPresentation": {
+      "exports": [
+        "drawNihilanthEncounter"
+      ],
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "bytes": 2
+    },
+    "canonRaamEncounter": {
+      "exports": [
+        "RAAM_ENCOUNTER_RULES",
+        "createRaamEncounter",
+        "getRaamBoss",
+        "getRaamEncounterSnapshot",
+        "getRaamEnemyAction",
+        "getRaamLightPosition",
+        "isCanonRaamStage",
+        "isHeroInRaamLight",
+        "isRaamShieldActive",
+        "startRaamKryll",
+        "tickRaamEncounter"
+      ],
+      "sha256": "35305b7cba188dde54452250f7a9475b39ac8642dca10da55f85b98e535742c2",
+      "bytes": 187
+    },
+    "canonRexEncounter": {
+      "exports": [
+        "REX_SOURCE_INCARNATION",
+        "REX_SOURCE_URLS",
+        "REX_STINGER_ACTION",
+        "applyRexStingerDamage",
+        "createRexEncounter",
+        "getRexEncounterSummary",
+        "isCanonRexStage"
+      ],
+      "sha256": "daffcd7b5fc289a1aaf8a61037786b93d4f99f3e017b249d5a65f7427210cc64",
+      "bytes": 768
+    },
+    "canonRexAttackPatterns": {
+      "exports": [
+        "REX_ATTACK_ADAPTATION",
+        "REX_ATTACK_NAMES",
+        "REX_CHAFF_ATTACKS",
+        "REX_CHAFF_SUPPLY",
+        "activateRexChaff",
+        "finishRexAttack",
+        "getRexAttackIntent",
+        "prepareRexAttack"
+      ],
+      "sha256": "6dfbf1a03e36c9849f648fb84dc2cab91b204141c90f5deed1a020f54cc26a07",
+      "bytes": 748
+    },
+    "canonPiratesCurseEncounter": {
+      "exports": [
+        "PIRATES_CURSE_RULES",
+        "bindPiratesJackCurse",
+        "createPiratesCurseEncounter",
+        "getPiratesBarbossa",
+        "getPiratesCurseEncounterSnapshot",
+        "getPiratesCurseNextCommand",
+        "isCanonPiratesCurseStage",
+        "isPiratesCurseProtected",
+        "isPiratesCursedCombatant",
+        "isPiratesCursedHero",
+        "repairPiratesCursedHeroes"
+      ],
+      "sha256": "5ab5a61d73b150ad1e942dabe9379070d0efe46396f211ca645cf5d7cd74e366",
+      "bytes": 110
+    },
+    "canonScarabEncounter": {
+      "exports": [
+        "SCARAB_BOARDING_CELL",
+        "SCARAB_BOARDING_SOURCE_URLS",
+        "advanceScarabBoardingEncounter",
+        "createScarabBoardingEncounter",
+        "getScarabEncounterSummary"
+      ],
+      "sha256": "df015923365978d12f7038f9f4070247f02183886d5711a871a420374b4ba4d9",
+      "bytes": 159
+    },
+    "renderer": {
+      "sha256": "b5626bd540526f7c71971537aa0c1ca6dbbd4ecf12e7682f926bc38186bdb1cf",
+      "exports": [
+        "OPENAI_BACKDROPS",
+        "ParticleSystem",
+        "drawBoss",
+        "drawCombatantBust",
+        "drawCosmeticAtlasFrame",
+        "drawItemIcon",
+        "drawPixelEnemy",
+        "drawPixelSprite",
+        "drawSynergyOverlay",
+        "drawUniverseBackground",
+        "getOpenAiBackdropSrc",
+        "preloadMeleeSpriteSheetSrcs",
+        "preloadSpriteSheetSrcs"
+      ]
+    },
+    "cloudMeadowAdditionalCharacters": {
+      "exports": [
+        "ADDITIONAL_CLOUD_MEADOW_ARTWORK",
+        "ADDITIONAL_CLOUD_MEADOW_REFERENCES"
+      ],
+      "sha256": "84bb5390e0852903e939d1c924e4ba1a8b190db23889bf914ba975bde64d6964"
+    },
+    "cloudMeadowCharacters": {
+      "exports": [
+        "CLOUD_MEADOW_CHARACTERS",
+        "CLOUD_MEADOW_INITIAL_REFERENCE_ID",
+        "CLOUD_MEADOW_REFERENCES",
+        "CLOUD_MEADOW_REFERENCE_SRC",
+        "CLOUD_MEADOW_REVIEW_PATH",
+        "CLOUD_MEADOW_SCALE_GROUPS",
+        "CLOUD_MEADOW_STATIC_LAYOUT",
+        "CLOUD_MEADOW_UNIVERSE",
+        "filterCloudMeadowCharacters",
+        "getCloudMeadowCharacter",
+        "getCloudMeadowReference",
+        "getCloudMeadowSpriteLayout",
+        "getCloudMeadowSpriteSrc"
+      ],
+      "sha256": "f452c60d544cab6edc4b7f66f3f03fd7722a6f8d16eafa473b622780f579263a"
+    },
+    "disciplineSpriteCatalog": {
+      "exports": [
+        "DISCIPLINE_SPRITE_CATALOG"
+      ],
+      "sha256": "90fc55331d76413bf009fa84af0cd6d26be9a8d8e27241beab1ffbaba2909ea5"
+    },
+    "disciplineSprites": {
+      "exports": [
+        "DISCIPLINE_CATEGORY_LABELS",
+        "DISCIPLINE_COSTUME_BASE",
+        "DISCIPLINE_HERO_BINDINGS",
+        "DISCIPLINE_PROVENANCE_LABELS",
+        "DISCIPLINE_SPRITE_LAYOUTS",
+        "DISCIPLINE_SPRITE_REGISTRY",
+        "DISCIPLINE_STATIC_LAYOUT",
+        "DISCIPLINE_UNIVERSE",
+        "createDisciplineSpriteRegistry",
+        "disciplineCostumeId",
+        "getDisciplineCharacterId",
+        "getDisciplineCostumes",
+        "getDisciplineSpriteLayout",
+        "getDisciplineSpriteSources",
+        "resolveDisciplineCostume"
+      ],
+      "sha256": "adcd2cbfa5114efa3da13ac3f0c098256f97c4f0ab961b8f8e2b799ec1a4b3e2"
+    }
+  },
+  "derivedCatalogsSha256": "56fd2dc5ac66c0f5f1546c948a6324a6a7b51a7c94a3214f2375fe465bb52415",
+  "legacyStageCatalogSha256": "26fef7e54bea26886ac1f2bd2ac65a0c6197c0a34092b65a981d89ae9e716cbd",
+  "universeModifiersSha256": "361d37a65b172639ec58d5906770ced8edfa5bb1f4f364f529e2ba3eac5b5384",
+  "staticDossierStagesSha256": "80cbcab1611753d7eb7fa6368fc76327a5d807a49c0c8444fe38aa5b3a671ae6"
+}

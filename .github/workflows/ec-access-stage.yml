@@ -2,7 +2,7 @@ name: Reviewed roster access
 on:
   push:
     branches: [codex/immersive-ui-audit-2026-10-25]
-    paths: ['docs/ec-access-review/**', '.github/workflows/ec-access-stage.yml']
+    paths: ['DLC/**', 'docs/ec-access-review/**', '.github/workflows/ec-access-stage.yml']
 permissions:
   contents: read
 jobs:
@@ -21,6 +21,7 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
             /scripts/
             /api/
             /.github/workflows/

@@ -2,6 +2,7 @@ name: City and Extinction immersive UI
 on:
   pull_request:
     paths:
+      - 'DLC/**'
       - 'src/components/HubScreen.jsx'
       - 'src/components/HubImmersion.css'
       - 'src/components/SceneHoldButton.jsx'
@@ -34,6 +35,7 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
             /scripts/
             **/*.json
             **/*.jsonl

@@ -2,6 +2,7 @@ name: City residents and FPS framing
 on:
   pull_request:
     paths:
+      - 'DLC/**'
       - 'src/components/HubScreen.jsx'
       - 'src/components/HubImmersion.css'
       - 'src/game/extinctionContent.js'
@@ -29,6 +30,7 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
             /scripts/
             **/*.json
             **/*.jsonl

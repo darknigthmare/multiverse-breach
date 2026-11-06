@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "left4-dead",
+  "universe": "Left 4 Dead",
+  "directory": "DLC/Left4Dead",
+  "registration": "runtime",
+  "catalogOrder": 199,
+  "modules": [
+    {
+      "path": "data/enemies.js",
+      "runtimeAdapter": "src/game/enemies.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

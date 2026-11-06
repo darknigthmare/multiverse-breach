@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "altered-beast",
+  "universe": "Altered Beast",
+  "directory": "DLC/AlteredBeast",
+  "registration": "runtime",
+  "catalogOrder": 205,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreEnemyOverrides.js",
+      "runtimeAdapter": "src/game/loreEnemyOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

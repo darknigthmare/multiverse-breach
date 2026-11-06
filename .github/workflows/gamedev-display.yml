@@ -2,6 +2,7 @@ name: Gamedev display browser
 on:
   pull_request:
     paths:
+      - 'DLC/**'
       - 'src/**'
       - 'scripts/**'
       - 'package.json'
@@ -15,6 +16,7 @@ on:
   push:
     branches: [master]
     paths:
+      - 'DLC/**'
       - 'src/**'
       - 'scripts/**'
       - 'package.json'
@@ -44,6 +46,7 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
             /scripts/
             /docs/development/
             /vendor/gamedev-skills/

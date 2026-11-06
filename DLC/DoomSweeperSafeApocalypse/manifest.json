@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "doom-sweeper-safe-apocalypse",
+  "universe": "Doom Sweeper — Safe Apocalypse",
+  "directory": "DLC/DoomSweeperSafeApocalypse",
+  "registration": "runtime",
+  "catalogOrder": 420,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartG.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartG.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

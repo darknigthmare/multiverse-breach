@@ -2,6 +2,7 @@ name: Extinction identities and City catalog
 on:
   pull_request:
     paths:
+      - 'DLC/**'
       - 'src/components/HubScreen.jsx'
       - 'src/game/**'
       - 'scripts/**'
@@ -29,6 +30,7 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
             /scripts/
             /docs/extinction-city/workbook-followup-2026-10-28.json
             /docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx
@@ -78,6 +80,7 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /src/
+            /DLC/
             /scripts/
             /package.json
       - name: Identity, source inventory and immutable workbook contracts

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "seaman",
+  "universe": "Seaman",
+  "directory": "DLC/Seaman",
+  "registration": "runtime",
+  "catalogOrder": 202,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

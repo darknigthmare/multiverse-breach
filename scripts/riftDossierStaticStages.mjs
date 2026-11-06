@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import { CANON_PRIORITY_STAGES } from '../src/game/canonPriorityStages.js';
+import { createLegacyStageCatalog } from '../src/game/legacyStageCatalog.js';
 
 const decode = value => value.replace(/\\(['\\])/g, '$1');
 
 // Read only the static registry. Shared references resolve to the same objects
 // used by the Hub; source text is never evaluated as JavaScript.
-export const readStaticStages = (hubSource, sharedStages = CANON_PRIORITY_STAGES) => {
+export const readStaticStages = (hubSource, sharedStages = CANON_PRIORITY_STAGES, legacyStages = createLegacyStageCatalog()) => {
   const registryStart = hubSource.indexOf('const STAGES = [');
   const registryEnd = hubSource.indexOf('];', registryStart);
   assert.ok(registryStart >= 0 && registryEnd > registryStart, 'Unable to locate the static STAGES registry');
@@ -21,6 +22,14 @@ export const readStaticStages = (hubSource, sharedStages = CANON_PRIORITY_STAGES
     const stage = Object.hasOwn(sharedStages, match[1]) ? sharedStages[match[1]] : null;
     assert.ok(stage, `Unknown shared static stage ${match[1]}`);
     stages.push({ ...stage });
+  }
+  for (const match of registrySource.matchAll(/\bLEGACY_STAGES\[(\d+)\]/g)) {
+    const stage = Object.hasOwn(legacyStages, match[1]) ? legacyStages[match[1]] : null;
+    assert.ok(stage && stage.id === Number(match[1]), `Unknown legacy static stage ${match[1]}`);
+    // Preserve the historical dossier projection: its prompt hashes depend on
+    // these five fields, not on reward and difficulty metadata used by the Hub.
+    const { id, name, universe, mode, bossName } = stage;
+    stages.push({ id, name, universe, mode, bossName });
   }
   const tutorial = registrySource.match(/\{\s*id:\s*90000,\s*name:\s*'((?:\\.|[^'\\])*)',[\s\S]*?universe:\s*'((?:\\.|[^'\\])*)',\s*mode:\s*'((?:\\.|[^'\\])*)',[\s\S]*?bossName:\s*'((?:\\.|[^'\\])*)'/);
   assert.ok(tutorial, 'Static tutorial stage 90000 is missing');

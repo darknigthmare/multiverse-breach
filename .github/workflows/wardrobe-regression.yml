@@ -3,7 +3,7 @@ on:
   push:
     branches: [codex/costumes-fidelite-r14-2026-10-25]
   pull_request:
-    paths: ['src/game/wardrobe*.js', 'src/components/CharacterWardrobe*', 'scripts/*Wardrobe*.mjs', 'scripts/wardrobe*.mjs', '.github/workflows/wardrobe-regression.yml']
+    paths: ['DLC/**', 'src/game/wardrobe*.js', 'src/components/CharacterWardrobe*', 'scripts/*Wardrobe*.mjs', 'scripts/wardrobe*.mjs', '.github/workflows/wardrobe-regression.yml']
 permissions:
   contents: read
 concurrency:
@@ -23,6 +23,7 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
             /scripts/
             /api/
             /public/**/*.json

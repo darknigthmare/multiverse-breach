@@ -1,3 +1,19 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcResidentEvil from '../../DLC/ResidentEvil/data/battleItems.js';
+import * as dlcHalo from '../../DLC/Halo/data/battleItems.js';
+import * as dlcSilentHill from '../../DLC/SilentHill/data/battleItems.js';
+import * as dlcDinoCrisis from '../../DLC/DinoCrisis/data/battleItems.js';
+import * as dlcStargate from '../../DLC/Stargate/data/battleItems.js';
+import * as dlcHalfLife from '../../DLC/HalfLife/data/battleItems.js';
+import * as dlcPortal from '../../DLC/Portal/data/battleItems.js';
+import * as dlcTheMatrix from '../../DLC/TheMatrix/data/battleItems.js';
+import * as dlcBuckethead from '../../DLC/Buckethead/data/battleItems.js';
+import * as dlcSystemOfADown from '../../DLC/SystemOfADown/data/battleItems.js';
+import * as dlcKaamelott from '../../DLC/Kaamelott/data/battleItems.js';
+import * as dlcBreakingBad from '../../DLC/BreakingBad/data/battleItems.js';
+import * as dlcBuffyTheVampireSlayer from '../../DLC/BuffyTheVampireSlayer/data/battleItems.js';
+import * as dlcCharmed from '../../DLC/Charmed/data/battleItems.js';
+
 import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB, HEROES_DB } from './heroes';
 import { LORE_DB } from './lore';
 import { FEATURED_BATTLE_ITEM_OVERRIDES } from './featuredUniversePacks';
@@ -48,132 +64,20 @@ const mediaItemFlavor = {
 };
 
 const BATTLE_ITEM_OVERRIDES = {
-  'Resident Evil': {
-    pickups: [
-      ['Herbe verte compacte', 'Compact Green Herb', 'Ressource de survie Raccoon City: en melee elle soigne au ramassage, en tactique elle devient une case de secours a proteger.'],
-      ['Grenade flash R.P.D.', 'R.P.D. Flash Grenade', 'Contre-mesure anti-B.O.W.: aveugle les infectes proches, coupe une charge de Licker ou de chien zombie et ouvre une seconde de repositionnement.'],
-      ['Munitions incendiaires Umbrella', 'Umbrella Incendiary Rounds', 'Cartouches recuperees dans un stockage de crise: brulent les mutations, percent les masses infectees et donnent a Leon une reponse courte contre les formes instables.']
-    ],
-    summon: ['Renfort S.T.A.R.S.', 'S.T.A.R.S. Backup', 'Invocation temporaire: un operateur S.T.A.R.S. traverse la breche, couvre les survivants et marque les B.O.W. prioritaires.'],
-    ultimate: ['Confinement Raccoon City', 'Raccoon City Lockdown', 'Attaque ultime: sirenes, barricades et frappe anti-B.O.W. enferment la zone; une horde T-Virus deviee submerge les ennemis avant extraction A.R.C.A.']
-  },
-  Halo: {
-    pickups: [
-      ['Bulle de bouclier deployable', 'Deployable Bubble Shield', 'Generateur UNSC de campagne: en melee il cree une fenetre de survie courte, en tactique il securise une case contre le tir Covenant.'],
-      ['Grenade plasma Covenant', 'Covenant Plasma Grenade', 'Explosif adhesif de technologie Covenant: colle une cible prioritaire, punit les groupes serres et rappelle le danger des lignes Elites/Grunts.'],
-      ['Batterie de bouclier MJOLNIR', 'MJOLNIR Shield Cell', 'Cellule energetique compatible Spartan: recharge une partie du bouclier, accelere la reprise d assaut et stabilise le porteur sous feu nourri.']
-    ],
-    summon: ['Pelican Echo 419', 'Echo 419 Pelican', 'Invocation temporaire UNSC: Foehammer ouvre une passe de soutien, depose des munitions et mitraille les signatures Covenant les plus proches.'],
-    ultimate: ['Tir MAC orbital', 'Orbital MAC Strike', 'Attaque ultime UNSC: une solution de tir Magnetic Accelerator Cannon traverse la breche et frappe la ligne ennemie comme une frappe anti-capital ship miniaturisee.']
-  },
-  'Silent Hill': {
-    pickups: [
-      ['Radio parasite', 'Static Radio', 'Alerte de survie Silent Hill: en melee elle gronde quand une menace approche, en tactique elle revele une case ennemie cachee par le brouillard.'],
-      ['Ampoule de soin', 'Health Drink', 'Ressource fragile de survie: soigne peu mais vite, utile quand l Otherworld force a avancer sans station sure.'],
-      ['Carte griffonnee de South Vale', 'Marked South Vale Map', 'Carte qui se corrige pendant la mission: indique une sortie, marque les portes condamnees et reduit le risque de tourner en boucle dans la ville.']
-    ],
-    summon: ['Echo de Harry Mason', 'Harry Mason Echo', 'Invocation temporaire: une trace de Harry traverse le brouillard, guide Heather/James vers une sortie et repousse les monstres symboliques sans briser le ton survival.'],
-    ultimate: ['Sirene Otherworld', 'Otherworld Siren', 'Attaque ultime: la sirene retentit, les murs deviennent rouille et la ville juge les ennemis; les cibles sont ralenties, marquees et frappees par leurs propres symboles.']
-  },
-  'Dino Crisis': {
-    pickups: [
-      ['Patch hemostatique SORT', 'SORT Hemostatic Patch', 'Soin de terrain pour morsures et griffures: en melee il stabilise vite le heros, en tactique il devient une case de repli sous poursuite de raptor.'],
-      ['Key plug Third Energy', 'Third Energy Key Plug', 'Cle de laboratoire: ouvre une route, verrouille une porte derriere l escouade ou coupe une ligne de charge ennemie.'],
-      ['Dart tranquillisant', 'Tranquilizer Dart', 'Munition non letale SORT: ralentit un specimen rapide, casse une charge de raptor et donne le temps de repositionner l equipe.']
-    ],
-    summon: ['Equipe TRAT de couverture', 'TRAT Cover Team', 'Invocation temporaire: Dylan et une unite TRAT traversent la breche, posent un tir de couverture et escortent les signatures civiles hors de la zone Third Energy.'],
-    ultimate: ['Rugissement T-Rex canalise', 'Channeled T-Rex Roar', 'Attaque ultime: A.R.C.A. redirige la poursuite du T-Rex vers la ligne ennemie, provoque une charge massive, puis referme la frequence Third Energy avant retour de chasse.']
-  },
-  Stargate: {
-    pickups: [
-      ['Cellule au naquadah', 'Naquadah Cell', 'Source energetique instable: en melee elle charge une frappe, en tactique elle alimente une Porte ou surcharge un bouclier Goa uld.'],
-      ['Balise GDO SGC', 'SGC GDO Beacon', 'Identification de retour Terre: securise une zone, valide les allies et bloque les signatures hostiles avant ouverture iris.'],
-      ['Drone Ancien', 'Ancient Drone', 'Technologie des Anciens: projectile guidant qui traverse les defenses ordinaires et cherche le noyau de menace le plus dangereux.']
-    ],
-    summon: ['Equipe SG temporaire', 'Temporary SG Team', 'Invocation temporaire: une equipe SG franchit la Porte, pose un tir de couverture et marque les coordonnees de repli.'],
-    ultimate: ['Surcharge de Porte', 'Gate Overload', 'Attaque ultime: les chevrons se verrouillent de force, un vortex instable arrache les signatures hostiles et l iris se referme avant contre-invasion.']
-  },
-  'Half-Life': {
-    pickups: [
-      ['Batterie auxiliaire HEV', 'HEV Auxiliary Battery', 'Module de combinaison Black Mesa: en melee il restaure l armure du porteur, en tactique il devient une case de recharge HEV sous feu Combine.'],
-      ['Caisse Lambda', 'Lambda Crate', 'Cache de resistance Half-Life: munitions, medkit ou charge experimentale; elle transforme la rarete des ressources en decision de terrain.'],
-      ['Nid de snarks Xen', 'Xen Snark Nest', 'Containment Xen instable: libere de petites creatures agressives qui harcelent les ennemis et cassent les lignes de tir.']
-    ],
-    summon: ['Cellule Resistance Lambda', 'Lambda Resistance Cell', 'Invocation temporaire: Barney et une cellule de resistance ouvrent une couverture courte, posent des munitions et guident les survivants vers la sortie.'],
-    ultimate: ['Cascade de resonance controlee', 'Controlled Resonance Cascade', 'Attaque ultime: A.R.C.A. force une mini-cascade Black Mesa, aspire les cibles dans une rupture Xen puis referme la frequence avant invasion totale.']
-  },
-  Portal: {
-    pickups: [
-      ['Cube de voyage', 'Companion Cube', 'Bloque et absorbe une partie des degats.'],
-      ['Gel repulsif', 'Repulsion Gel', 'Accelere le tempo du heros actif.'],
-      ['Noyau PotatOS', 'PotatOS Core', 'Charge speciale et glitch defensif.']
-    ],
-    summon: ['Tourelle Aperture', 'Aperture Turret', 'Une tourelle temporaire arrose la zone.'],
-    ultimate: ['Double portail terminal', 'Terminal Portal Loop', 'Les ennemis sont tires dans une boucle de chute infinie.']
-  },
-  'The Matrix': {
-    pickups: [
-      ['Programme esquive', 'Dodge Program', 'Routine chargee par operateur: en melee elle donne une fenetre bullet time, en tactique elle permet de quitter une case menacee par un Agent.'],
-      ['Code vert compile', 'Compiled Green Code', 'Fragment lisible de simulation: augmente les degats contre programmes et revele les regles cachees d une faille controlee.'],
-      ['Telephone de sortie', 'Exit Phone', 'Point d extraction Zion: soigne legerement, repositionne le heros actif et empeche une boucle de respawn Agent pendant un court instant.']
-    ],
-    summon: ['Operateur Zion', 'Zion Operator', 'Invocation temporaire: Tank/Link charge armes, sorties et contre-mesures pendant que la ligne ennemie perd ses privileges systeme.'],
-    ultimate: ['Bullet Time global', 'Global Bullet Time', 'Attaque ultime: Neo lit le code, Trinity verrouille la sortie et Morpheus force le choix; les ennemis ralentissent pendant que l escouade frappe toute la ligne.']
-  },
-  Buckethead: {
-    pickups: [
-      ['Mediator Pike', 'Pike Guitar Pick', 'Fragment de la Pike Series: en melee il declenche une rafale de notes directionnelle, en tactique il marque une case comme trajectoire de riff.'],
-      ['Masque blanc resonant', 'Resonant White Mask', 'Ancre de persona muette: reduit la pression ennemie, cache le porteur dans une mesure de silence et stabilise les failles musicales trop bavardes.'],
-      ['Bucket antenna', 'Bucket Antenna', 'Couronne de scene devenue recepteur A.R.C.A.: capte le tempo exact du labyrinthe et recharge une action speciale sans casser le mystere du personnage.']
-    ],
-    summon: ['Echo Death Cube K', 'Death Cube K Echo', 'Invocation temporaire: une nappe ambient sombre ralentit les ennemis, revele les couloirs caches et transforme la peur sonore en fenetre de repli.'],
-    ultimate: ['Portail Bucketheadland', 'Bucketheadland Gate', 'Attaque ultime: le parc instrumental ouvre un labyrinthe de riffs, les automates hostiles sont dechires par le shred et l escouade suit une sortie tracee par la guitare.']
-  },
-  'System of a Down': {
-    pickups: [
-      ['Mediator rupture tempo', 'Tempo Break Pick', 'Fragment de riff syncopé: en melee il coupe une charge ennemie, en tactique il augmente le cout de deplacement des cibles prises dans la cassure.'],
-      ['Banniere anti-guerre', 'Anti-War Protest Banner', 'Ancre de protestation: protege une zone, resiste aux diffusions de controle et transforme la colere en garde collective.'],
-      ['Ampli Toxicity', 'Toxicity Feedback Amp', 'Ampli de feedback instable: renvoie les ordres ennemis en bruit, charge les attaques vocales et marque les propagandes hostiles.']
-    ],
-    summon: ['Choeur de protestation', 'Protest Chorus', 'Invocation temporaire: un choeur de resonance couvre l escouade, brise les slogans du Sans-Auteur et ralentit les ennemis synchronises.'],
-    ultimate: ['Cassure Toxicity', 'Toxicity Breakdown', 'Attaque ultime: la scene coupe la mesure, les broadcasts ennemis se figent, puis voix, guitare et basse frappent en collision rythmique.']
-  },
-  Kaamelott: {
-    pickups: [
-      ['Etincelle d Excalibur', 'Excalibur Spark', 'Fragment de legitimite royale: en melee elle renforce une frappe de commandement, en tactique elle stabilise une case autour du chef d escouade.'],
-      ['Dossier de Table Ronde', 'Round Table Dossier', 'Ordres contradictoires mais exploitables: brouille une cible, revele un objectif secondaire et transforme une reunion ratee en avantage de terrain.'],
-      ['Ration de Karadoc', 'Karadoc Ration', 'Ressource de survie de Vannes: soigne, reduit la fatigue et rappelle qu une quete sacree ne tient pas si personne ne prevoit le casse-croute.']
-    ],
-    summon: ['Conseil de Kaamelott', 'Kaamelott Council', 'Invocation temporaire: Arthur, Leodagan, Perceval et Karadoc saturent la zone d ordres, de disputes et d intuitions absurdes qui ralentissent les ennemis.'],
-    ultimate: ['Quete du Graal en vrac', 'Disordered Grail Quest', 'Attaque ultime: la Table Ronde lance une operation impossible, les ennemis recoivent trois plans incompatibles et la Trame se referme sur leur confusion.']
-  },
-  'Breaking Bad': {
-    pickups: [
-      ['Fiole bleue instable', 'Unstable Blue Flask', 'Degats chimiques controles par A.R.C.A.'],
-      ['Masque de labo', 'Lab Mask', 'Protection contre les statuts hostiles.'],
-      ['Batterie improvisee', 'Improvised Battery', 'Recharge speciale et impulsion electrique.']
-    ],
-    summon: ['Equipe de laboratoire', 'Lab Crew', 'Des assistants temporaires saturent une case ennemie.'],
-    ultimate: ['Reaction en chaine', 'Chain Reaction', 'Une reaction calculee nettoie l ecran sans briser la coherence Nexus.']
-  },
-  'Buffy the Vampire Slayer': {
-    pickups: [
-      ['Pieu beni', 'Blessed Stake', 'Degats lourds contre les elites.'],
-      ['Grimoire Watcher', 'Watcher Grimoire', 'Charge speciale et lecture tactique.'],
-      ['Eau benite', 'Holy Water', 'Zone de protection courte.']
-    ],
-    summon: ['Scooby Gang', 'Scooby Gang', 'Un groupe allie coupe la pression autour du heros actif.'],
-    ultimate: ['Ouverture de Hellmouth', 'Hellmouth Breach', 'La faille s ouvre sous les ennemis et les disperse.']
-  },
-  Charmed: {
-    pickups: [
-      ['Potion Halliwell', 'Halliwell Potion', 'Soin et bouclier magique.'],
-      ['Page du Livre des Ombres', 'Book of Shadows Page', 'Bonus special et contre-sort.'],
-      ['Cristal de protection', 'Warding Crystal', 'Pose une zone defensive.']
-    ],
-    summon: ['Pouvoir des Trois', 'Power of Three', 'Une assistance magique temporaire amplifie l escouade.'],
-    ultimate: ['Rituel de bannissement', 'Vanquishing Ritual', 'Un cercle de bannissement frappe toutes les menaces.']
-  }
+  'Resident Evil': dlcResidentEvil.createBattleItemOverrides(),
+  Halo: dlcHalo.createBattleItemOverrides(),
+  'Silent Hill': dlcSilentHill.createBattleItemOverrides(),
+  'Dino Crisis': dlcDinoCrisis.createBattleItemOverrides(),
+  Stargate: dlcStargate.createBattleItemOverrides(),
+  'Half-Life': dlcHalfLife.createBattleItemOverrides(),
+  Portal: dlcPortal.createBattleItemOverrides(),
+  'The Matrix': dlcTheMatrix.createBattleItemOverrides(),
+  Buckethead: dlcBuckethead.createBattleItemOverrides(),
+  'System of a Down': dlcSystemOfADown.createBattleItemOverrides(),
+  Kaamelott: dlcKaamelott.createBattleItemOverrides(),
+  'Breaking Bad': dlcBreakingBad.createBattleItemOverrides(),
+  'Buffy the Vampire Slayer': dlcBuffyTheVampireSlayer.createBattleItemOverrides(),
+  Charmed: dlcCharmed.createBattleItemOverrides()
 };
 
 Object.assign(BATTLE_ITEM_OVERRIDES, FEATURED_BATTLE_ITEM_OVERRIDES);

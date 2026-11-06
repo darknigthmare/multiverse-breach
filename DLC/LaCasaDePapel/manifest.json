@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "la-casa-de-papel",
+  "universe": "La Casa de Papel",
+  "directory": "DLC/LaCasaDePapel",
+  "registration": "runtime",
+  "catalogOrder": 216,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

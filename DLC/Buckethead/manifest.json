@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "buckethead",
+  "universe": "Buckethead",
+  "directory": "DLC/Buckethead",
+  "registration": "runtime",
+  "catalogOrder": 261,
+  "modules": [
+    {
+      "path": "data/battleItems.js",
+      "runtimeAdapter": "src/game/battleItems.js"
+    },
+    {
+      "path": "data/characterPlaques.js",
+      "runtimeAdapter": "src/game/characterPlaques.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreDescriptions.js",
+      "runtimeAdapter": "src/game/loreDescriptions.js"
+    },
+    {
+      "path": "data/narrativeSystems.js",
+      "runtimeAdapter": "src/game/narrativeSystems.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

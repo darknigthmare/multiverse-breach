@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "starship-troopers",
+  "universe": "Starship Troopers",
+  "directory": "DLC/StarshipTroopers",
+  "registration": "runtime",
+  "catalogOrder": 161,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartK.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartK.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreEnemyOverrides.js",
+      "runtimeAdapter": "src/game/loreEnemyOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}
