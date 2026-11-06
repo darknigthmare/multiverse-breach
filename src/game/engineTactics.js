@@ -1,4 +1,4 @@
-import { selectSourceSceneParticipants, createSourceSceneEncounter, executeSourceSceneCommand, advanceSourceScene, getSourceSceneState, getSourceSceneSummary, runSourceSceneAI } from './sourceSceneEncounter.js';
+import { selectSourceSceneParticipants, createSourceSceneEncounter, executeSourceSceneCommand, aimSourceSceneMask, advanceSourceScene, getSourceSceneState, getSourceSceneSummary, runSourceSceneAI } from './sourceSceneEncounter.js';
 import { drawSourceSceneBoard } from './sourceScenePresentation.js';
 import { canUseTacticsAttack, captureTacticsAttackCommitment } from './tacticsAttackCommitment.js';
 import { prepareTacticsHealing } from './tacticsSourceHealing.js';
@@ -2798,6 +2798,8 @@ export class EngineTactics {
   getSourceSceneState() { return getSourceSceneState(this); }
 
   triggerSourceSceneAction(id, turnToken) { return executeSourceSceneCommand(this, id, turnToken); }
+
+  aimSourceSceneMask(x, y, turnToken) { return aimSourceSceneMask(this, x, y, turnToken); }
 
   getRexEncounterState() {
     const encounter = this.rexEncounter;
