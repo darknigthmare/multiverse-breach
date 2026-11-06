@@ -21,12 +21,15 @@ const fighter = ({
   special,
   equipment,
   incarnation,
-  canonStatus = 'canon'
+  canonStatus = 'canon',
+  ...fidelityMetadata
 }) => ({
   id,
   name,
   cat,
   color,
+  // Fallback renderer uses primaryColor; source fighter templates previously only exposed color.
+  primaryColor: color,
   secondaryColor: accent,
   weaponType,
   weaponColor: accent,
@@ -37,7 +40,8 @@ const fighter = ({
   special,
   equipment,
   incarnation,
-  canonStatus
+  canonStatus,
+  ...fidelityMetadata
 });
 
 const plaque = ({
@@ -195,8 +199,11 @@ const ahsokaPadawan = fighter({
   secondary: action('Padawan Force Leap', 'force', 1.7, { cd: 5 }),
   defense: action('Shien Deflection', 'shield', 0, { dur: 1.9, reduce: 0.82 }),
   special: action('Skyguy Battlefield Lesson', 'force_aoe', 4.35, { color: '#7ed957' }),
-  equipment: ['Green Lightsaber', 'Padawan Comlink', 'Clone Wars Field Bracers'],
-  incarnation: 'The Clone Wars - early Padawan, age fourteen'
+  equipment: ['Green Lightsaber'],
+  incarnation: 'The Clone Wars - early Padawan, age fourteen',
+  referenceUrl: 'https://www.starwars.com/databank/ahsokas-lightsabers',
+  equipmentSource: 'Star Wars Databank — Ahsoka lightsabers, early Padawan',
+  equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
 const ahsokaSiege = fighter({
@@ -211,8 +218,11 @@ const ahsokaSiege = fighter({
   secondary: action('Mandalore Throne-Room Counter', 'force', 1.95, { cd: 5 }),
   defense: action('Order 66 Deflection', 'shield', 0, { dur: 2.1, reduce: 0.86 }),
   special: action('Siege of Mandalore Break', 'force_aoe', 4.8, { color: '#4ea8ff' }),
-  equipment: ['Twin Blue Lightsabers', 'Mandalorian Siege Tunic', 'Fulcrum Frequency'],
-  incarnation: 'The Clone Wars - Siege of Mandalore'
+  equipment: ['Twin Blue Lightsabers'],
+  incarnation: 'The Clone Wars - Season 7, Siege of Mandalore',
+  referenceUrl: 'https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-old-friends-not-forgotten',
+  equipmentSource: 'Star Wars / The Clone Wars S7E9 — Anakin returns her blue-bladed sabers',
+  equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
 const ahsokaAdult = fighter({
@@ -225,10 +235,18 @@ const ahsokaAdult = fighter({
   stats: { hp: 130, atk: 15, def: 9, spd: 8 },
   simple: action('White Saber Crosscut', 'melee', 1.12),
   secondary: action('Fulcrum Route Read', 'force', 1.75, { cd: 5 }),
-  defense: action('World Between Worlds Step', 'dodge', 0, { dur: 2.3, reduce: 0.9 }),
-  special: action('Ahsoka the White', 'light_aoe', 4.75, { color: '#f4f8ff' }),
-  equipment: ['Twin White Lightsabers', 'T-6 Shuttle Beacon', 'Fulcrum Archive'],
-  incarnation: 'Rebels and Ahsoka - mature former Jedi'
+  defense: action('Fulcrum Evasive Guard', 'dodge', 0, { dur: 2.3, reduce: 0.9 }),
+  // Original 2D gameplay adaptation: neither a canon Force-time-step nor
+  // the later white-cloak appearance of Ahsoka in the Rebels epilogue.
+  special: action('Fulcrum Twin-Saber Sweep', 'light_aoe', 4.75, { color: '#f4f8ff' }),
+  equipment: ['Twin White Lightsabers'],
+  incarnation: 'Star Wars Rebels - Fulcrum era (adult former Jedi)',
+  referenceUrl: 'https://www.starwars.com/databank/ahsokas-lightsabers',
+  referenceUrls: ['https://www.starwars.com/databank/ahsoka-tano', 'https://www.starwars.com/databank/malachor-sith-temple'],
+  visualAnchor: 'Star Wars Rebels Fulcrum era: two white-bladed sabers, Rebels-era outfit; NOT the later white-cloaked epilogue or New Republic outfit',
+  combatMoveStatus: 'ADAPTATION_DE_JEU_NON_TELEPORTATION_TEMPORELLE',
+  equipmentSource: 'Star Wars Databank — Fulcrum uses the white-bladed pair; Ezra rescues her through the World Between Worlds, which is not her personal dodge power',
+  equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
 const aaylaSecura = fighter({
@@ -243,8 +261,11 @@ const aaylaSecura = fighter({
   secondary: action('Felucia Flank', 'force', 1.8, { cd: 6 }),
   defense: action('Jedi General Guard', 'shield', 0, { dur: 2.0, reduce: 0.82 }),
   special: action('Commander Bly Formation', 'force_aoe', 4.55, { color: '#6cc7ff' }),
-  equipment: ['Blue Lightsaber', 'Jedi Field Bracers', 'Clone Command Comlink'],
-  incarnation: 'Clone Wars Jedi General'
+  equipment: ['Blue Lightsaber'],
+  incarnation: 'The Clone Wars - Aayla Secura as Jedi General',
+  referenceUrl: 'https://www.starwars.com/databank/aayla-secura',
+  equipmentSource: 'Star Wars Databank — sabre attesté ; les attributs secondaires et leur appartenance à Aayla ne sont pas établis.',
+  equipmentEvidenceStatus: 'ARME_ATTESTEE_MODELE_ET_VISUEL_A_VALIDER'
 });
 
 const darthMaul = fighter({
@@ -255,12 +276,23 @@ const darthMaul = fighter({
   accent: '#ff2d24',
   weaponType: 'double_lightsaber',
   stats: { hp: 134, atk: 17, def: 6, spd: 9 },
-  simple: action('Double-Bladed Saber Rush', 'melee', 1.2),
+  simple: action('Mandalore Twin-Blade Assault', 'melee', 1.2),
   secondary: action('Dathomirian Force Choke', 'force', 2.05, { cd: 6 }),
   defense: action('Cybernetic Spin Parry', 'shield', 0, { dur: 1.8, reduce: 0.84 }),
   special: action('Shadow Collective Dominion', 'dark_aoe', 5.0, { color: '#ff2d24' }),
-  equipment: ['Double-Bladed Red Lightsaber', 'Cybernetic Legs', 'Mandalore Command Seal'],
-  incarnation: 'The Clone Wars - ruler of Mandalore'
+  equipment: ['Double-Bladed Red Lightsaber (The Clone Wars S7)'],
+  bodyProsthetics: ['Mandalorian-Issue Humanoid Cybernetic Legs'],
+  incarnation: 'The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)',
+  referenceUrl: 'https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide',
+  referenceUrls: [
+    'https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice',
+    'https://www.starwars.com/databank/darth-mauls-lightsaber',
+    'https://www.starwars.com/news/what-is-the-darksaber',
+    'https://www.starwars.com/news/star-wars-maul-shadow-lord-leg-list'
+  ],
+  equipmentSource: 'The Phantom Apprentice (S7E10) — double red saber is equipped; Mandalorian-issued humanoid mechanical legs are intrinsic prostheses, not removable loot. Earlier half-saber, Darksaber and legs belong to other scenes.',
+  visualAnchor: 'The Clone Wars S7: red double blade, Mandalorian-issued humanoid prosthetic legs (not Lotho Minor spider legs or Talzin claw legs)',
+  equipmentEvidenceStatus: 'SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE'
 });
 
 const darthRevan = fighter({
@@ -269,15 +301,36 @@ const darthRevan = fighter({
   cat: 'tactical',
   color: '#282329',
   accent: '#8f4dff',
-  weaponType: 'dual_lightsaber',
+  // This is the KOTOR I masked Sith costume/combat edition. KOTOR II, late SWTOR,
+  // and LEGO have independently documented alternate saber presentations.
+  weaponType: 'lightsaber',
+  weaponColor: '#ff4242',
   stats: { hp: 138, atk: 16, def: 9, spd: 7 },
   simple: action('Red Saber Judgment', 'melee', 1.14),
-  secondary: action('Purple Saber Reversal', 'force', 1.95, { cd: 6 }),
+  secondary: action('Force Reversal', 'force', 1.95, { cd: 6 }),
   defense: action('Revanite Mask Focus', 'shield', 0, { dur: 2.2, reduce: 0.86 }),
   special: action('Star Forge Command', 'force_aoe', 4.95, { color: '#8f4dff' }),
-  equipment: ['Revan Mask', 'Red Lightsaber', 'Purple Lightsaber'],
-  incarnation: 'Knights of the Old Republic iconic masked identity',
-  canonStatus: 'legends'
+  equipment: ['Red Lightsaber'],
+  costumeParts: [
+    'KOTOR I Revan Mask (weathered rust red and graphite, two-pronged chin)',
+    'Dark Hood and Capelet', 'Armored Cuirass and Vambraces'
+  ],
+  alternateIncarnations: [
+    'KOTOR II costume reference: two lightsabers, one red and one purple',
+    'SWTOR: Fallen Revan red blade and Redeemed Revan purple blade are separately listed',
+    'LEGO Rebuild the Galaxy (2025): red-and-purple dual-wield cameo'
+  ],
+  incarnation: 'Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)',
+  canonStatus: 'legends',
+  referenceUrl: 'https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii',
+  referenceUrls: [
+    'https://www.starwars.com/games-apps/knights-of-the-old-republic',
+    'https://www.swtor.com/info/news/article/20201209-0',
+    'https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts'
+  ],
+  visualAnchor: 'KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces; one red blade, NOT the SWTOR flat-chin mask',
+  equipmentSource: '501st CRL: KOTOR I permits a single red blade, KOTOR II depicts two red/purple blades; SWTOR hilts are a separate edition. Approved cosplay reference only, not an in-game art certificate.',
+  equipmentEvidenceStatus: 'KOTOR1_VARIANTE_SITH_REFERENCE_COSTUME_VISUEL_NON_CERTIFIE'
 });
 
 const darthTalon = fighter({
@@ -292,9 +345,21 @@ const darthTalon = fighter({
   secondary: action('Twi lek Hunter Lunge', 'force', 1.95, { cd: 5 }),
   defense: action('Sith Tattoo Focus', 'dodge', 0, { dur: 1.8, reduce: 0.84 }),
   special: action('Hand of Darth Krayt', 'dark_aoe', 4.85, { color: '#ef2828' }),
-  equipment: ['Red Lightsaber', 'One Sith Armor', 'Ritual Sith Tattoos'],
-  incarnation: 'Star Wars Legacy - Hand of Darth Krayt',
-  canonStatus: 'legends'
+  // 501st's approved costume-reference model lists distinct protective pieces.
+  // Tattoos are skin markings, not detachable loot or a magic inventory item.
+  equipment: ['Red Lightsaber', 'Forearm and Bicep Armor', 'Leg Armor'],
+  costumeParts: [
+    'Armored Bandeau', 'Armored Hand Strap', 'Black Gloves',
+    'Belt with Front Buckle Plate and Straps', 'Black Boots and Leggings'
+  ],
+  bodyMarkings: ['Black Sith Ritual Tattoos (face, chest, abdomen, arms, legs and lekku)'],
+  incarnation: 'Star Wars: Legacy (Legends) - One Sith Hand of Darth Krayt',
+  canonStatus: 'legends',
+  referenceUrl: 'https://crls.501st.com/tfe/darth-talon',
+  referenceUrls: ['https://starwars.fandom.com/wiki/Darth_Talon'],
+  visualAnchor: 'Legacy Darth Talon: red Lethan Twi-lek, black ritual tattoos, sleeveless armored bandeau, separate arm and leg plates; actual comic and sprite match unverified',
+  equipmentSource: '501st Costume Reference Library, Legends visual costume reconstruction; reference for garment/armor shape, NOT a Lucasfilm certificate for in-game art.',
+  equipmentEvidenceStatus: 'LEGENDS_COSTUME_501ST_APPROUVEE_SPRITE_NON_VERIFIE'
 });
 
 export const SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS = {
@@ -601,17 +666,17 @@ export const SOLAR_OPPOSITES_SIREN_STAR_WARS_CHARACTER_PLAQUES = {
     clearance: 'SW-AHAD',
     rankFr: 'Fulcrum et ancienne Jedi',
     rankEn: 'Fulcrum and former Jedi',
-    roleFr: 'Mentorat, lecture de Force et verrou temporel',
-    roleEn: 'Mentorship, Force reading, and temporal lock',
+    roleFr: 'Renseignement Fulcrum, duels et mentorat des rebelles',
+    roleEn: 'Fulcrum intelligence, dueling, and mentoring rebel cells',
     callSign: 'Fulcrum',
-    originFr: 'Rebellion / Nouvelle Republique - apres l Ordre 66',
-    originEn: 'Rebellion / New Republic - after Order 66',
-    dossierFr: 'Dans sa Trame d origine, Ahsoka adulte a survecu a la chute de la Republique, construit deux sabres blancs avec des cristaux purifies et servi la Rebellion sous le nom de Fulcrum. Elle affronte la verite d Anakin devenu Darth Vader, traverse le Monde entre les Mondes grace a Ezra, puis poursuit Thrawn et Ezra au-dela des routes galactiques connues. Cette incarnation n est plus definie par un rang Jedi: elle choisit ce qu elle transmet et ce qu elle refuse de reproduire.',
-    dossierEn: 'In her origin Thread, adult Ahsoka survived the fall of the Republic, built two white lightsabers from purified crystals, and served the Rebellion under the Fulcrum identity. She confronts the truth of Anakin as Darth Vader, crosses the World Between Worlds through Ezra, then pursues Thrawn and Ezra beyond known galactic routes. This incarnation is no longer defined by Jedi rank: she chooses what to pass on and what she refuses to repeat.',
+    originFr: 'Star Wars Rebels - Rebellion contre l Empire',
+    originEn: 'Star Wars Rebels - rebellion against the Empire',
+    dossierFr: 'Cette incarnation Star Wars Rebels suit Ahsoka en agente de renseignement Fulcrum pendant la rebellion contre l Empire. Elle porte deux sabres blancs, soutient l equipage du Ghost et affronte les Inquisiteurs puis Darth Vader au temple de Malachor. Plus tard, Ezra la sauve du duel par le Monde entre les Mondes: cette intervention est un evenement du recit, pas un pouvoir de teleportation dont Ahsoka disposerait au combat. Sa periode de Nouvelle Republique et son manteau blanc d epilogue doivent disposer de fiches et sprites differents.',
+    dossierEn: 'This Star Wars Rebels incarnation follows Ahsoka as the Fulcrum intelligence operative opposing the Empire. She carries two white lightsabers, works with the Ghost crew, and faces Inquisitors and Darth Vader at the Malachor Sith temple. Ezra later rescues her through the World Between Worlds: this is a story event, not a combat teleportation power she can freely cast. Her New Republic era and white-cloaked epilogue portrayal require distinct actor editions and visual references.',
     breachFr: 'Les portails du Nexus ressemblent dangereusement au Monde entre les Mondes, mais Ahsoka reconnait qu ils n en suivent pas les lois. Elle devient la gardienne des routes qui montrent le passe sans autoriser sa consommation. Le Sans-Auteur lui offre un passage ou Anakin ne tombe jamais; elle le ferme parce qu il efface Luke, Leia, Ezra et toutes les decisions nees de cette perte. Sa victoire n est pas d obtenir une histoire parfaite, mais d empecher le Nexus de prendre la memoire pour une permission de reecrire.',
     breachEn: 'Nexus portals resemble the World Between Worlds dangerously closely, but Ahsoka recognizes that they do not follow its laws. She becomes guardian of routes that show the past without allowing it to be consumed. The Authorless offers her a passage where Anakin never falls; she closes it because it erases Luke, Leia, Ezra, and every choice born from that loss. Her victory is not obtaining a perfect history, but preventing the Nexus from mistaking memory for permission to rewrite.',
-    doctrineFr: 'Deux sabres blancs, lecture Fulcrum, pas intertemporel limite et mentorat de cellule.',
-    doctrineEn: 'Twin white sabers, Fulcrum analysis, limited intertime step, and cell mentorship.',
+    doctrineFr: 'Deux sabres blancs, renseignement Fulcrum, garde evasive et balayage de combat adapte au jeu (pas de saut temporel).',
+    doctrineEn: 'Twin white sabers, Fulcrum intelligence, evasive guard and adapted combat sweep; no personal time travel skill.',
     threatFr: 'Risque A.R.C.A.: tout portail imitant le Monde entre les Mondes doit etre considere hostile jusqu a preuve causale contraire.',
     threatEn: 'A.R.C.A. risk: any portal imitating the World Between Worlds must be treated as hostile until causally proven otherwise.',
     tags: ['Star Wars', 'Ahsoka', 'Fulcrum', 'White Sabers', 'Tactical']
@@ -656,19 +721,19 @@ export const SOLAR_OPPOSITES_SIREN_STAR_WARS_CHARACTER_PLAQUES = {
   }),
   darth_revan: plaque({
     clearance: 'SW-REVN',
-    rankFr: 'Seigneur Sith amnesique',
-    rankEn: 'Amnesiac Sith Lord',
-    roleFr: 'Duel hybride, commandement et choix de Force',
-    roleEn: 'Hybrid dueling, command, and Force choice',
+    rankFr: 'Seigneur Sith masque (KOTOR I)',
+    rankEn: 'Masked Sith Lord (KOTOR I)',
+    roleFr: 'Duel au sabre rouge, commandement Sith et pouvoirs de Force',
+    roleEn: 'Red-lightsaber dueling, Sith command, and Force abilities',
     callSign: 'Revan',
     originFr: 'Legends - Ancienne Republique / Guerre Civile Jedi',
     originEn: 'Legends - Old Republic / Jedi Civil War',
-    dossierFr: 'Dans la continuite Legends de Knights of the Old Republic, Revan est un Jedi parti combattre les Mandaloriens, devenu Seigneur Sith avec Malak, puis capture et prive de sa memoire par le Conseil Jedi. Le joueur reconstruit cette identite et choisit ce qu elle devient. Sa silhouette iconique associe capuche noire, armure sombre, masque mandalorien rouge et sabres rouge et violet; elle represente une histoire ou identite, responsabilite et alignement ne peuvent pas etre separes du choix.',
-    dossierEn: 'In the Legends continuity of Knights of the Old Republic, Revan is a Jedi who went to fight the Mandalorians, became a Sith Lord with Malak, then was captured and stripped of memory by the Jedi Council. The player rebuilds that identity and chooses what it becomes. The iconic silhouette combines a black hood, dark armor, a red Mandalorian mask, and red and purple sabers; it represents a story where identity, responsibility, and alignment cannot be separated from choice.',
+    dossierFr: 'Dans la continuite Legends de Knights of the Old Republic, Revan est un Jedi parti combattre les Mandaloriens, devenu Seigneur Sith avec Malak avant sa capture et l effacement de ses souvenirs par le Conseil Jedi. La version jouable ici fixe son apparence masquee de KOTOR I: capuche noire, armure et masque patine rouge et gris, un seul sabre rouge. Le duo rouge et violet des references KOTOR II, tout comme les armes et casques SWTOR, correspondent a des editions distinctes et ne doivent pas modifier ce kit. La redemption et les choix du joueur restent des evenements essentiels du recit, sans imposer un equipement permanent unique a toutes les epoques.',
+    dossierEn: 'In Legends Knights of the Old Republic, Revan fought in the Mandalorian Wars, became a Sith Lord alongside Malak, and was later captured and had his memories erased by the Jedi Council. This playable edition selects the masked Sith depiction from KOTOR I: black hood, dark armor, weathered red-and-grey mask, and one red lightsaber. The red-and-purple pair shown in KOTOR II references, as well as SWTOR helmets and weapons, are different editions and must not be silently equipped here. Revan later finds new choices and possible redemption; none of those eras should inherit one universal loadout.',
     breachFr: 'Le Sans-Auteur voit dans l amnesie de Revan une porte ideale: remplacer une personne par son dossier sans que personne ne puisse prouver la difference. Revan repond en cartographiant chaque decision conservee plutot qu en cherchant une version unique de lui-meme. La Forge Stellaire reconstituee par la Breche produit des soldats a partir de souvenirs supprimes; son arc personnel exige de detruire cette production, puis de laisser l Ancre choisir si le masque reste symbole de peur, de dette ou de seconde chance.',
     breachEn: 'The Authorless sees Revan amnesia as an ideal doorway: replace a person with a file while nobody can prove the difference. Revan answers by mapping every preserved choice instead of searching for one definitive self. A Breach-rebuilt Star Forge manufactures soldiers from deleted memories; the personal arc requires destroying that production, then letting the Anchor decide whether the mask remains a symbol of fear, debt, or second chance.',
-    doctrineFr: 'Masque de focalisation, sabres rouge et violet, contre de Force et commandement de Forge Stellaire.',
-    doctrineEn: 'Focus mask, red and purple sabers, Force counter, and Star Forge command.',
+    doctrineFr: 'KOTOR I : masque Sith, un sabre rouge, contre de Force et commandement de Forge Stellaire. Les variantes KOTOR II et SWTOR restent separees.',
+    doctrineEn: 'KOTOR I: Sith mask, one red lightsaber, Force counter and Star Forge command. KOTOR II and SWTOR gear stay separate.',
     threatFr: 'Risque A.R.C.A.: une restauration forcee de memoire peut recreer Darth Revan sans les choix qui l avaient transforme.',
     threatEn: 'A.R.C.A. risk: forced memory restoration can recreate Darth Revan without the choices that changed that identity.',
     tags: ['Star Wars', 'Legends', 'Revan', 'KOTOR', 'Tactical']
@@ -719,13 +784,13 @@ export const SOLAR_OPPOSITES_SIREN_STAR_WARS_REFERENCE_ENTRIES = [
   ['Siren Head', 'Trevor Henderson solitary twin-siren mimetic predator', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.siren_head, ['https://www.trevorhenderson.com/', 'https://trevorhenderson.fandom.com/wiki/Siren_Head']],
   ['Long Horse', 'Trevor Henderson benevolent endless-neck omen entity', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.long_horse, ['https://www.trevorhenderson.com/', 'https://trevorhenderson.fandom.com/wiki/Long_Horse']],
   ['Cartoon Cat', 'Trevor Henderson old-media faux cartoon body', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.cartoon_cat, ['https://www.trevorhenderson.com/', 'https://trevorhenderson.fandom.com/wiki/Cartoon_Cat']],
-  ['Ahsoka Tano (Padawan)', 'The Clone Wars early Padawan with one green lightsaber', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_padawan, ['https://www.starwars.com/databank/ahsoka-tano']],
-  ['Ahsoka Tano (Siege of Mandalore)', 'The Clone Wars final-season Mandalore outfit with twin blue lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka, ['https://www.starwars.com/databank/ahsoka-tano', 'https://www.starwars.com/series/clone-wars/old-friends-not-forgotten-episode-guide']],
-  ['Ahsoka Tano (Adult)', 'Rebels and Ahsoka mature former Jedi with twin white lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_adult, ['https://www.starwars.com/databank/ahsoka-tano', 'https://www.starwars.com/series/star-wars-rebels/fire-across-the-galaxy-concept-art-gallery']],
+  ['Ahsoka Tano (Padawan)', 'The Clone Wars early Padawan with one green lightsaber', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_padawan, ['https://www.starwars.com/databank/ahsokas-lightsabers', 'https://www.starwars.com/databank/ahsoka-tano']],
+  ['Ahsoka Tano (Siege of Mandalore)', 'The Clone Wars final-season Mandalore outfit with twin blue lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka, ['https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-old-friends-not-forgotten', 'https://www.starwars.com/series/clone-wars/old-friends-not-forgotten-episode-guide']],
+  ['Ahsoka Tano (Adult)', 'Star Wars Rebels Fulcrum-era former Jedi with twin white lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_adult, ['https://www.starwars.com/databank/ahsokas-lightsabers', 'https://www.starwars.com/databank/ahsoka-tano']],
   ['Aayla Secura', 'Clone Wars Twi lek Jedi General', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.aayla_secura, ['https://www.starwars.com/databank/aayla-secura']],
-  ['Darth Maul', 'The Clone Wars Mandalore incarnation with cybernetic legs', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_maul, ['https://www.starwars.com/databank/maul']],
-  ['Darth Revan', 'Knights of the Old Republic iconic masked Legends identity', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_revan, ['https://www.starwars.com/news/from-a-certain-point-of-view-whos-the-best-star-wars-games-character', 'https://www.starwars.com/news/darth-revan-force-fx-elite-lightsaber']],
-  ['Darth Talon', 'Star Wars Legacy red Twi lek One Sith Hand', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_talon, ['https://starwars.fandom.com/wiki/Darth_Talon']]
+  ['Darth Maul', 'The Clone Wars S7 Siege of Mandalore: red double-bladed duel weapon and cybernetic legs', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_maul, ['https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide', 'https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice', 'https://www.starwars.com/databank/maul']],
+  ['Darth Revan', 'KOTOR I masked Sith: one red lightsaber; KOTOR II red/purple duel and SWTOR masks/hilts are distinct depictions', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_revan, ['https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii', 'https://www.starwars.com/games-apps/knights-of-the-old-republic', 'https://www.swtor.com/info/news/article/20201209-0']],
+  ['Darth Talon', 'Star Wars Legacy One Sith Hand: ritual body markings and distinct 501st-reference protective plates', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_talon, ['https://crls.501st.com/tfe/darth-talon', 'https://starwars.fandom.com/wiki/Darth_Talon']]
 ].map(([character, incarnation, output, referencePages]) => ({
   character,
   incarnation,

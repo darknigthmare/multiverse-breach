@@ -1,0 +1,95 @@
+name: Canonical equipment chronology
+on:
+  pull_request:
+    paths:
+      - 'src/game/solarOppositesSirenStarWarsPack.js'
+      - 'src/game/starWarsEquipmentChronology.js'
+      - 'src/game/signatureSourceWave2.js'
+      - 'src/game/renderer.js'
+      - 'src/game/energyBladeFallback.js'
+      - 'src/game/canonicalSpriteQuarantine.js'
+      - 'src/game/spriteAssets.js'
+      - 'src/components/HubScreen.jsx'
+      - 'src/components/FighterMode.jsx'
+      - 'scripts/energyBladeFallback.test.mjs'
+      - 'scripts/auditCanonicalStarWarsSprites.mjs'
+      - 'scripts/canonicalStarWarsSpriteEvidence.test.mjs'
+      - 'docs/excel/star-wars-edition-sprite-review-2026-11-01.csv'
+      - 'public/sprites/generated/heroes/star-wars/**'
+      - 'scripts/canonicalEquipmentIncarnations.test.mjs'
+      - 'scripts/exportCanonicalEquipmentChronology.mjs'
+      - 'docs/excel/equipment-incarnation-matrix-2026-11-01.csv'
+      - '.github/workflows/equipment-chronology.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'src/game/solarOppositesSirenStarWarsPack.js'
+      - 'src/game/starWarsEquipmentChronology.js'
+      - 'src/game/signatureSourceWave2.js'
+      - 'src/game/renderer.js'
+      - 'src/game/energyBladeFallback.js'
+      - 'src/game/canonicalSpriteQuarantine.js'
+      - 'src/game/spriteAssets.js'
+      - 'src/components/HubScreen.jsx'
+      - 'src/components/FighterMode.jsx'
+      - 'scripts/energyBladeFallback.test.mjs'
+      - 'scripts/auditCanonicalStarWarsSprites.mjs'
+      - 'scripts/canonicalStarWarsSpriteEvidence.test.mjs'
+      - 'docs/excel/star-wars-edition-sprite-review-2026-11-01.csv'
+      - 'public/sprites/generated/heroes/star-wars/**'
+      - 'scripts/canonicalEquipmentIncarnations.test.mjs'
+      - 'scripts/exportCanonicalEquipmentChronology.mjs'
+      - 'docs/excel/equipment-incarnation-matrix-2026-11-01.csv'
+      - '.github/workflows/equipment-chronology.yml'
+permissions:
+  contents: read
+concurrency:
+  group: equipment-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  canon-source-lock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /src/game/solarOppositesSirenStarWarsPack.js
+            /src/game/starWarsEquipmentChronology.js
+            /src/game/signatureSourceWave2.js
+            /src/game/renderer.js
+            /src/game/energyBladeFallback.js
+            /src/game/canonicalSpriteQuarantine.js
+            /src/game/spriteAssets.js
+            /src/components/HubScreen.jsx
+            /src/components/FighterMode.jsx
+            /scripts/energyBladeFallback.test.mjs
+            /scripts/auditCanonicalStarWarsSprites.mjs
+            /scripts/canonicalStarWarsSpriteEvidence.test.mjs
+            /docs/excel/star-wars-edition-sprite-review-2026-11-01.csv
+            /public/sprites/generated/heroes/star-wars/
+            /scripts/canonicalEquipmentIncarnations.test.mjs
+            /scripts/exportCanonicalEquipmentChronology.mjs
+            /docs/excel/equipment-incarnation-matrix-2026-11-01.csv
+            /package.json
+            /.github/workflows/equipment-chronology.yml
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Verify canonical editions and equipment contracts
+        run: |
+          set -euo pipefail
+          node --check src/game/solarOppositesSirenStarWarsPack.js
+          node --check src/game/starWarsEquipmentChronology.js
+          node --check src/game/signatureSourceWave2.js
+          node --check src/game/renderer.js
+          node --check src/game/energyBladeFallback.js
+          node --check src/game/canonicalSpriteQuarantine.js
+          node --check scripts/auditCanonicalStarWarsSprites.mjs
+          node --test scripts/canonicalEquipmentIncarnations.test.mjs scripts/energyBladeFallback.test.mjs scripts/canonicalStarWarsSpriteEvidence.test.mjs
+      - name: Verify reproducible Excel chronology
+        run: npm run equipment:chronology:check
+      - name: Verify source-sprite file identities and review ledger
+        run: node scripts/auditCanonicalStarWarsSprites.mjs --check
