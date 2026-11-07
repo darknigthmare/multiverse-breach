@@ -199,16 +199,7 @@ async function assertHubNavigationViewports(page, viewport, lang, result, screen
   }
 }
 
-async function scenario(viewport) {
-  const name = viewport.width + 'px';
-  const result = { viewport, status: 'failed', pageErrors: [], missingResources: [], blockedExternalOrigins: [], layouts: [], navigation: [], actions: [] };
-  results.push(result);
-  const missing = new Set();
-  const external = new Set();
-  const context = await browser.newContext({ viewport, reducedMotion: 'reduce' });
-  const page = await context.newPage();
-  page.setDefaultTimeout(30000);
-  page.on('pageerror', error => result.pageErrors.push(error.message));
+async function routeDistribution(context, missing, external) {
   await context.route('**/*', async route => {
     const url = new URL(route.request().url());
     if (url.origin !== origin) {
@@ -229,6 +220,19 @@ async function scenario(viewport) {
       await route.fulfill({ status: 404, body: 'Resource missing from distribution' });
     }
   });
+}
+
+async function scenario(viewport) {
+  const name = viewport.width + 'px';
+  const result = { scenario: 'preserved-trace', viewport, status: 'failed', pageErrors: [], missingResources: [], blockedExternalOrigins: [], layouts: [], navigation: [], actions: [] };
+  results.push(result);
+  const missing = new Set();
+  const external = new Set();
+  const context = await browser.newContext({ viewport, reducedMotion: 'reduce' });
+  const page = await context.newPage();
+  page.setDefaultTimeout(30000);
+  page.on('pageerror', error => result.pageErrors.push(error.message));
+  await routeDistribution(context, missing, external);
   await context.addInitScript(({ key, trace }) => {
     if (localStorage.getItem('distribution-smoke-seeded') !== 'true') {
       localStorage.setItem(key, JSON.stringify(trace));
@@ -384,12 +388,105 @@ async function scenario(viewport) {
   }
 }
 
+async function decodedBackgrounds(locator, label, result) {
+  const images = await locator.evaluate(async element => {
+    const urls = [...getComputedStyle(element).backgroundImage.matchAll(/url\(["']?([^"')]+)["']?\)/g)].map(match => match[1]);
+    return Promise.all(urls.map(async url => {
+      const image = new Image();
+      image.src = url;
+      await image.decode();
+      return { url: new URL(url, location.href).pathname, width: image.naturalWidth, height: image.naturalHeight };
+    }));
+  });
+  assert.ok(images.length > 0, label + ' has an actual backdrop');
+  for (const image of images) assert.ok(image.width > 0 && image.height > 0, label + ' backdrop decodes');
+  result.backgrounds.push({ label, images });
+  return images;
+}
+
+async function freshProfileScenario(viewport) {
+  const name = viewport.width + 'px-new-profile';
+  const result = { scenario: 'fresh-profile', viewport, status: 'failed', pageErrors: [], missingResources: [], blockedExternalOrigins: [], layouts: [], navigation: [], backgrounds: [], actions: [] };
+  results.push(result);
+  const missing = new Set();
+  const external = new Set();
+  const context = await browser.newContext({ viewport, reducedMotion: 'reduce' });
+  const page = await context.newPage();
+  page.setDefaultTimeout(30000);
+  page.on('pageerror', error => result.pageErrors.push(error.message));
+  await routeDistribution(context, missing, external);
+  const screenshot = label => page.screenshot({ path: join(output, name + '-' + label + '.png'), fullPage: true });
+  try {
+    assert.deepEqual((await context.storageState()).origins, [], 'New profile starts without a seeded save');
+    await page.goto(origin + '/', { waitUntil: 'domcontentloaded' });
+    await page.getByRole('button', { name: 'NOUVELLE TRACE', exact: true }).waitFor();
+    assert.equal(await page.getByRole('button', { name: 'CONTINUER', exact: true }).isDisabled(), true);
+    await page.getByTitle('Passe toute l interface en anglais.', { exact: true }).click();
+    await page.getByRole('button', { name: 'NEW TRACE', exact: true }).click();
+    const nameInput = page.getByLabel('Anchor name', { exact: true });
+    await nameInput.waitFor();
+    const playerName = 'Fresh ' + profile.mode + ' ' + viewport.width;
+    await nameInput.fill(playerName);
+    const profileImages = await decodedBackgrounds(page.locator('.intro-profile-screen'), 'profile', result);
+    assert.ok(profileImages.some(image => image.url === '/backgrounds/stargate-rpg-openai.png'), 'Shared profile artwork retains its original URL');
+    await assertResponsive(page, 'new profile', result);
+    await screenshot('identification');
+    await page.getByRole('button', { name: 'CONTINUE LOCALLY', exact: true }).click();
+    result.actions.push('Empty browser context creates an Anchor through the local profile form');
+    const scenes = ['The sky breaks', 'The Threads fall', 'A.R.C.A. answers', 'One signal remains whole', 'The first cell'];
+    for (const [index, title] of scenes.entries()) {
+      await page.getByRole('heading', { name: title, exact: true }).waitFor();
+      await decodedBackgrounds(page.locator('.prologue-screen'), 'prologue ' + index, result);
+      await assertResponsive(page, 'new profile prologue ' + index, result);
+      await screenshot('prologue-' + index);
+      await page.getByRole('button', { name: index === scenes.length - 1 ? 'ENTER THE NEXUS' : 'NEXT', exact: true }).click();
+    }
+    await page.getByRole('button', { name: 'OPERATIONS', exact: true }).waitFor();
+    await page.waitForFunction(({ key, name }) => {
+      const save = JSON.parse(localStorage.getItem(key));
+      return save?.playerProfile?.name === name && save?.onboarding?.prologueCompleted === true;
+    }, { key: saveKey, name: playerName });
+    const created = await savedTrace(page);
+    assert.equal(created.onboarding.profileCreated, true);
+    assert.equal(created.onboarding.prologueStep, 4);
+    for (const id of ['player_anchor', 'arca_mirelle', 'arca_bastion']) assert.ok(created.unlockedHeroes.includes(id), 'Starter hero retained: ' + id);
+    assert.deepEqual(created.completedStages, [], 'Creating a profile must not award a mission victory');
+    await assertResponsive(page, 'new profile Hub', result);
+    await screenshot('hub');
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    const continueButton = page.getByRole('button', { name: 'CONTINUE', exact: true });
+    await continueButton.waitFor();
+    assert.equal(await continueButton.isEnabled(), true);
+    const reloaded = await savedTrace(page);
+    assert.equal(reloaded.playerProfile.name, playerName);
+    assert.deepEqual(reloaded.onboarding, created.onboarding);
+    assert.deepEqual(reloaded.activeTeam, created.activeTeam);
+    assert.deepEqual(reloaded.completedStages, created.completedStages);
+    await activateWithKeyboard(page, continueButton);
+    await page.getByRole('button', { name: 'OPERATIONS', exact: true }).waitFor();
+    result.actions.push('All five prologue pages decode; new save reloads and continues to the Hub');
+    assert.deepEqual(result.pageErrors, []);
+    assert.deepEqual([...missing].filter(path => path !== '/favicon.ico'), [], 'New profile requested missing resources');
+    result.status = 'passed';
+  } catch (error) {
+    result.failure = error.stack || error.message;
+    await writeFile(join(output, name + '-failure.html'), await page.content()).catch(() => {});
+    await writeFile(join(output, name + '-failure.txt'), await page.locator('body').innerText()).catch(() => {});
+    await screenshot('failure').catch(() => {});
+  } finally {
+    result.missingResources = [...missing];
+    result.blockedExternalOrigins = [...external];
+    await context.close();
+  }
+}
+
 try {
   for (const viewport of [{ width: 1365, height: 900 }, { width: 390, height: 844 }]) await scenario(viewport);
+  for (const viewport of [{ width: 1365, height: 900 }, { width: 390, height: 844 }]) await freshProfileScenario(viewport);
   const report = {
     root, profile, browser: browser.version(), evidence: output,
     native: 'Built exported App, DOM, keyboard, canvas and browser localStorage; real reload and autosave',
-    controlled: 'Seeded v8 trace with dormant possessions and English locale; French selected through the title language control; same-origin static file routing; external requests blocked',
+    controlled: 'Existing-save scenarios seed a v8 trace with dormant possessions and English locale; new-profile scenarios start with empty storage and use the actual language/profile/prologue controls. Same-origin static file routing; external requests blocked',
     limits: 'English gameplay covers mission launch and pause only; French checks navigation only. No simulated victory, no cloud account and no real purchases.',
     results
   };

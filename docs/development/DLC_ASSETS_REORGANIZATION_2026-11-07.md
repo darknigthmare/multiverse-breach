@@ -1,5 +1,12 @@
 # Déplacement des ressources dans les dossiers DLC
 
+> Ce document et son reçu décrivent la deuxième phase de migration. La limite
+> d’installation facultative mentionnée en fin de document a ensuite été traitée
+> par les [profils de distribution](DLC_INSTALLATION_PROFILES_2026-11-07.md).
+> Le [suivi DLC, UI et Ville/FPS](DLC_UI_CITY_FPS_COMPLETION_2026-11-07.md) décrit
+> la correction suivante des dépendances communes. Les nombres et preuves
+> ci-dessous conservent leur périmètre historique.
+
 ## Point de reprise et résultat
 
 Cette deuxième phase poursuit la réorganisation de la PR #22 depuis le commit

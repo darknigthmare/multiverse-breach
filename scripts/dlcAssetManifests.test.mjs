@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import test from 'node:test';
 import { buildDlcAssetInventory, renderDlcPublicationIgnore, runDlcAssetManifestBuild } from './buildDlcAssetManifests.mjs';
+import { collectCommonUiAssetReferences } from './dlcCommonUiAssets.mjs';
 
 const pack = (universe, folder, modules = []) => ({
   schemaVersion: 1, id: folder.toLowerCase(), universe, directory: `DLC/${folder}`,
@@ -92,6 +93,87 @@ const createFixture = t => {
   for (const path of publicPaths) write(path, 'fixture');
   return { root, write, publicPaths };
 };
+
+test('common UI collection reads JSX, CSS URLs and static templates without inferring dynamic or external paths', t => {
+  const { root, write } = createFixture(t);
+  write('src/components/Intro.jsx', [
+    "// const ignored = '/backgrounds/comment.png';",
+    'export const screen = <main style={{ backgroundImage: "linear-gradient(red, blue), url(/backgrounds/halo-stage.png?rev=1#frame)" }}><img src="/images/shared.png" /></main>;',
+    "export const staticTemplate = `/fonts/menu.woff2`;",
+    "export const dynamicTemplate = `/images/${universe}/hero.png`;",
+    "export const remote = 'https://example.test/images/external.png';",
+    "export const protocolRelative = '//example.test/images/external.png';",
+  ].join('\n'));
+  write('src/App.jsx', "export const art = '/images/shared.png';\n");
+  write('src/index.css', '/* url(/images/comment.png) */\n.hero { background: url("/images/menu%20art.webp"); }\n');
+  write('src/game/optionalRegistry.js', "export const art = '/images/optional.png';\n");
+  assert.deepEqual(collectCommonUiAssetReferences({ root }), [
+    { publicPath: '/backgrounds/halo-stage.png', sourcePath: 'src/components/Intro.jsx' },
+    { publicPath: '/fonts/menu.woff2', sourcePath: 'src/components/Intro.jsx' },
+    { publicPath: '/images/menu art.webp', sourcePath: 'src/index.css' },
+    { publicPath: '/images/shared.png', sourcePath: 'src/App.jsx' },
+    { publicPath: '/images/shared.png', sourcePath: 'src/components/Intro.jsx' },
+  ]);
+});
+
+test('common UI references reject invalid syntax, unsafe URLs and symlink sources', t => {
+  const { root, write } = createFixture(t);
+  write('src/components/Intro.jsx', 'export const bad = <main>');
+  assert.throws(() => collectCommonUiAssetReferences({ root }), /Invalid common UI source/);
+  write('src/components/Intro.jsx', "export const art = '/images/%2e%2e/private.png';\n");
+  assert.throws(() => collectCommonUiAssetReferences({ root }), /Unsafe common UI asset URL/);
+  rmSync(join(root, 'src/components/Intro.jsx'));
+  symlinkSync(join(root, 'src/game/renderer.js'), join(root, 'src/components/Intro.jsx'));
+  assert.throws(() => collectCommonUiAssetReferences({ root }), /symlink/);
+});
+
+test('common UI collection canonicalizes encoded filenames and keeps quoted spaces intact', t => {
+  const { root, write } = createFixture(t);
+  write('src/components/Intro.jsx', [
+    "export const encodedDot = '/images/menu%2ewebp';",
+    "export const encodedExtension = '/images/menu.%77ebp?revision=1';",
+    "export const spaced = '/images/menu.v2 art.webp';",
+    "export const remote = 'https://example.test/images/remote%2ewebp';",
+    "export const protocolRelative = '//example.test/images/remote%2ewebp';",
+    "export const route = '/profile/settings';",
+    'export const candidates = <img srcSet="/images/srcset-one.png 1x, /images/srcset-two.png 2x" />;',
+  ].join('\n'));
+  write('src/index.css', '.art { background: url("/images/menu.v2 art.webp"), url(/images/menu%2ewebp); }\n');
+  assert.deepEqual(collectCommonUiAssetReferences({ root }), [
+    { publicPath: '/images/menu.v2 art.webp', sourcePath: 'src/components/Intro.jsx' },
+    { publicPath: '/images/menu.v2 art.webp', sourcePath: 'src/index.css' },
+    { publicPath: '/images/menu.webp', sourcePath: 'src/components/Intro.jsx' },
+    { publicPath: '/images/menu.webp', sourcePath: 'src/index.css' },
+    { publicPath: '/images/srcset-one.png', sourcePath: 'src/components/Intro.jsx' },
+    { publicPath: '/images/srcset-two.png', sourcePath: 'src/components/Intro.jsx' },
+  ]);
+  write('src/components/Intro.jsx', "export const traversal = '/images/%2e%2e/private%2epng';\n");
+  assert.throws(() => collectCommonUiAssetReferences({ root }), /Unsafe common UI asset URL/);
+});
+
+test('common UI use prevents exclusive DLC ownership and survives a byte-identical promotion to shared public sources', t => {
+  const { root, write } = createFixture(t);
+  const publicPath = '/backgrounds/halo-stage.png';
+  const ownedPath = 'DLC/Halo/assets' + publicPath;
+  const bytes = readFileSync(join(root, 'public' + publicPath));
+  write(ownedPath, bytes);
+  rmSync(join(root, 'public' + publicPath));
+  write('src/components/Intro.jsx', 'export const profile = <main style={{ backgroundImage: "url(' + publicPath + ')" }} />;\n');
+  assert.throws(() => runDlcAssetManifestBuild({ root, write: true }), /shared or ambiguous ownership/);
+  renameSync(join(root, ownedPath), join(root, 'public' + publicPath));
+  const result = runDlcAssetManifestBuild({ root, write: true });
+  assert.equal(result.assignedToDlc, 2);
+  const shared = JSON.parse(readFileSync(join(root, 'DLC/shared-assets.json'), 'utf8'));
+  const promoted = shared.assets.find(asset => asset.publicPath === publicPath);
+  assert.equal(promoted.sourcePath, 'public' + publicPath);
+  assert.deepEqual(promoted.referencedBy, ['Halo', 'Nexus de Convergence']);
+  assert.ok(promoted.basis.includes('src/components/Intro.jsx#common-ui'));
+  const halo = JSON.parse(readFileSync(join(root, 'DLC/Halo/assets.json'), 'utf8'));
+  assert.ok(halo.sharedDependencies.includes(publicPath));
+  assert.equal(halo.assets.some(asset => asset.publicPath === publicPath), false);
+  assert.deepEqual(readFileSync(join(root, promoted.sourcePath)), bytes);
+  assert.deepEqual(runDlcAssetManifestBuild({ root }), result);
+});
 
 test('write/check uses the Git index in a sparse checkout and detects staged inventory changes', t => {
   const { root } = createFixture(t);

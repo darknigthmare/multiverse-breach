@@ -3,6 +3,7 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { createSceneInputs, emptySceneAim } from '../src/game/sceneInputs.js';
 import { advanceMosaicPlayer } from '../src/game/mosaicCityRuntime.js';
+import { tickExtinctionRelayOperation } from '../src/game/extinctionRelayOperation.js';
 
 const source = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
 const cityStart = source.indexOf('function MosaicCityHub(');
@@ -58,7 +59,7 @@ function fixture(mode) {
     + `return { down: onKeyDown, up: onKeyUp, clear: ${city ? 'clearInput' : 'clearMovement'}, visibility: onVisibilityChange, touch: ${city ? 'setVirtualKey' : 'setVirtualMove'} };`);
   const step = city
     ? () => advanceMosaicPlayer(state, { worldW: 1920, worldH: 1180 }, 1000 / 60)
-    : () => new Function('state', 'selectedHero', fpsMovement)(state, { stats: { spd: 6 }, category: 'marine' });
+    : () => new Function('state', 'selectedHero', 'tickExtinctionRelayOperation', fpsMovement)(state, { stats: { spd: 6 }, category: 'marine' }, tickExtinctionRelayOperation);
   return {
     ...routes, state, env, calls, step,
     keys: () => city ? state.keys : state.moveKeys,

@@ -4,15 +4,6 @@
   "classificationScope": "Organizational affiliation from directory names and explicit source references; not proof of exclusive usage or artwork validity.",
   "assets": [
     {
-      "publicPath": "/backgrounds/stargate-rpg-openai.png",
-      "sourcePath": "DLC/Stargate/assets/backgrounds/stargate-rpg-openai.png",
-      "classificationConfidence": "high",
-      "basis": [
-        "DLC/Stargate/data/renderer.js",
-        "canonical-dlc-directory:DLC/Stargate"
-      ]
-    },
-    {
       "publicPath": "/boosters/stargate.webp",
       "sourcePath": "DLC/Stargate/assets/boosters/stargate.webp",
       "classificationConfidence": "high",
@@ -746,5 +737,7 @@
       ]
     }
   ],
-  "sharedDependencies": []
+  "sharedDependencies": [
+    "/backgrounds/stargate-rpg-openai.png"
+  ]
 }
