@@ -337,7 +337,11 @@ def main():
                     later = page.get_by_role('button', name='Plus tard', exact=True)
                     if later.is_visible():
                         later.click()
-                    open_city_terminal(page)
+                    # The Atrium has no district reconnaissance objective. Open
+                    # its real terminal directly for the initial access lock;
+                    # cross_check retains the historical objective assertions
+                    # after preparing the Nexus district below.
+                    page.get_by_role('button', name='TERMINAL · JOURNAL', exact=True).click()
                     expect(page.locator('[data-field-access="report_required"]')).to_be_visible()
                     expect(page.locator('[data-field-deploy]')).to_be_disabled()
                     page.keyboard.press('Escape')

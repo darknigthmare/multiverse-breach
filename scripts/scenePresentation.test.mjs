@@ -3,6 +3,7 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { extinctionEnemyLabel, formatRaceObjective, sceneJournalPreview } from '../src/game/scenePresentation.js';
 import { EngineRace } from '../src/game/engineRace.js';
+import { snapshotMosaicLocation } from '../src/game/immersiveHubState.js';
 
 for (const [type, fr, en] of [
   ['podium', 'Finir dans le podium', 'Finish on the podium'],
@@ -49,12 +50,50 @@ test('all city service exits snapshot position and release commands before navig
   const source=readFileSync(new URL('../src/components/HubScreen.jsx',import.meta.url),'utf8');
   const start=source.indexOf('  const openCityService = useCallback(');
   const end=source.indexOf('\n  const interactWithNearby',start);
+  assert.ok(start >= 0 && end > start, 'the real City service callback is available');
   const code=source.slice(start,end);
-  assert.ok(code.indexOf('snapshotMosaicLocation')<code.indexOf('callback(destination)'));
-  assert.ok(code.includes('sceneInputsRef.current.clear()') && code.includes('state.keys = {}'));
+  for (const [destination, options] of [
+    ['missions', undefined], ['codex', undefined],
+    ['battleRoyale', { fieldOperation: 'nexus-witness-return-v1' }]
+  ]) {
+    const state = { player: { x: 820.123, y: 760.456, facing: -1 },
+      destination: { x: 900, y: 810 }, pendingInteraction: { type: 'zone', id: 'terminal' },
+      keys: { w: true } };
+    const original = structuredClone(state), events = [], held = new Set(['keyboard:w']);
+    let saved;
+    const env = {
+      useCallback: callback => callback, stateRef: { current: state },
+      sceneInputsRef: { current: { clear() { held.clear(); events.push('release'); } } },
+      currentDistrictRef: { current: 'universe-nexus-de-convergence' },
+      currentZoneRef: { current: 'terminal' }, snapshotMosaicLocation,
+      locationCallbackRef: { current(checkpoint) {
+        assert.equal(held.size, 0);
+        assert.deepEqual(state.keys, {});
+        assert.equal(state.destination, null);
+        assert.equal(state.pendingInteraction, null);
+        saved = checkpoint; events.push('checkpoint');
+      } },
+      setCityMenuOpen(open) { assert.equal(open, false); events.push('close'); }
+    };
+    const open = new Function(...Object.keys(env), `${code}; return openCityService;`)(...Object.values(env));
+    open(null, destination, options);
+    assert.deepEqual(state, original, 'an unavailable service must leave the scene alone');
+    assert.deepEqual(events, []);
+    open((actualDestination, actualOptions) => {
+      assert.deepEqual(events, ['release', 'checkpoint', 'close']);
+      assert.equal(actualDestination, destination);
+      assert.equal(actualOptions, options, 'optional operation data reaches its destination unchanged');
+      events.push('navigate');
+      state.player.x = 0;
+    }, destination, options);
+    assert.deepEqual(events, ['release', 'checkpoint', 'close', 'navigate']);
+    assert.deepEqual(saved, { districtId: 'universe-nexus-de-convergence', zoneId: 'terminal',
+      player: { x: 820.12, y: 760.46, facing: -1 } }, 'the departure checkpoint is independent of later navigation');
+  }
   assert.match(source,/openCityService\(onOpenMissions, zone.universe\)/);
   assert.match(source,/openCityService\(onOpenCodex, zone.universe\)/);
   assert.match(source,/openCityService\(onOpenService, zone.action\)/);
+  assert.match(source,/openCityService\(onOpenService, 'battleRoyale', \{ fieldOperation: NEXUS_FIELD_OPERATION_ID \}\)/);
 });
 test('journal full text and explicit 60-second Infestation brief remain present', () => {
   const source=readFileSync(new URL('../src/components/HubScreen.jsx',import.meta.url),'utf8');

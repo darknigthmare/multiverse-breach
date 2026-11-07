@@ -118,6 +118,14 @@ Album et la compilation source de l’application passent avec Vite. Les
 44 commandes du `prebuild` restent
 identiques et dans le même ordre.
 
+Le contrat des sorties de Cité exécute également le callback réel pour les
+missions, le Codex et l’intervention. Il contrôle la libération des commandes,
+la sauvegarde du point de départ et la fermeture du terminal avant navigation,
+ainsi que le transfert intact des options. Les 23 tests de présentation et
+d’état du Hub passent avec ce contrôle ; la comparaison littérale de l’ancienne
+signature, signalée par le premier passage CI, est ainsi remplacée par une
+vérification du comportement.
+
 Le workflow `dlc-field-continuation.yml` conserve toutes ses recettes
 précédentes et ajoute l’Album ainsi que le parcours complet Cité/FPS. Ce
 dernier obtient le rapport par la marche et les interactions, recharge un
