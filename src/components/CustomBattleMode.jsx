@@ -655,7 +655,7 @@ export default function CustomBattleMode({
           <div hidden={lobbyStep !== 2}><LoadoutSelect label={lang === 'fr' ? 'MUSIQUE DU COMBAT' : 'BATTLE MUSIC'} value={preset.battleMusicId} onChange={id => updatePreset({ battleMusicId: id })} options={ownedBattleMusic} defaultLabel={lang === 'fr' ? 'Automatique selon le combat' : 'Automatic for battle'} lang={lang} /></div>
           <div hidden={lobbyStep !== 3}><LoadoutSelect label={lang === 'fr' ? 'SUPER DE TERRAIN' : 'FIELD SUPER'} value={preset.fieldSuperId} onChange={id => updatePreset({ fieldSuperId: id })} options={ownedFieldSupers} defaultLabel={lang === 'fr' ? 'Aucun super de terrain' : 'No field super'} lang={lang} /></div>
           {preset.mode !== 'Fighter' && lobbyStep === 3 && (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'end', gap: 8 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(8em, 100%), 1fr))', alignItems: 'end', gap: 8 }}>
               {[
                 { key: 'items', fr: 'Objets', en: 'Items' },
                 { key: 'hazards', fr: 'Dangers', en: 'Hazards' }
