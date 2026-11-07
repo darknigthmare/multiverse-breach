@@ -94,6 +94,7 @@ jobs:
           npm run test:custom | tee /tmp/dlc-field-evidence/custom.log
           node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/GameSystemSections.jsx src/components/GameSystemMenu.jsx src/game/fieldOperationPreferences.js src/game/mosaicReconnaissance.js src/game/extinctionRelayOperation.js scripts/dlcDistributionDelta.mjs scripts/fieldOperationVariants.test.mjs scripts/dlcDistributionDelta.test.mjs scripts/browserSystemSections.mjs scripts/buildSystemSectionsFixture.mjs scripts/fixtures/dlcDeltaFixture.mjs scripts/fixtures/systemSectionsHarness.jsx | tee /tmp/dlc-field-evidence/lint.log
           node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/CustomBattleMode.jsx src/components/cg/CgGallery.jsx src/components/MosaicResidentDialogue.jsx src/game/customLobbySelection.js src/game/mosaicResidentDialogue.js src/game/extinctionSignatures.js scripts/customLobbySelection.test.mjs scripts/extinctionCampaignKits.test.mjs scripts/mosaicResidentDialogue.test.mjs scripts/browserCustomLobby.mjs scripts/browserCgViewer.mjs scripts/buildCustomLobbyFixture.mjs scripts/buildCgViewerFixture.mjs scripts/fixtures/customBattleLobbyHarness.jsx scripts/fixtures/cgViewerHarness.jsx | tee /tmp/dlc-field-evidence/finalization-lint.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/collection/CollectionHome.jsx src/components/collection/UniverseBinder.jsx src/components/NexusFieldBriefing.jsx src/game/nexusFieldOperation.js src/game/immersiveHubState.js scripts/nexusFieldOperation.test.mjs scripts/browserCollectionAlbum.mjs scripts/buildCollectionAlbumFixture.mjs scripts/fixtures/collectionAlbumHarness.jsx scripts/fixtures/nexusFieldReturnHarness.jsx scripts/exportDlcDistribution.mjs scripts/dlcDistribution.mjs scripts/dlcDistributionExport.test.mjs | tee /tmp/dlc-field-evidence/album-field-lint.log
           node node_modules/vite/bin/vite.js build --config scripts/viteCodeOnly.config.js | tee /tmp/dlc-field-evidence/source-build.log
       - name: Install pinned browser tools
         id: browser_tools
@@ -133,6 +134,12 @@ jobs:
             DLC_BACKDROP_PROFILE=$profile node scripts/buildDlcSharedBackdropsFixture.mjs | tee /tmp/dlc-field-evidence/shared-backdrops-$profile-build.log
             DLC_BACKDROP_PROFILE=$profile PLAYWRIGHT_EVIDENCE_DIR=/tmp/dlc-field-evidence/shared-backdrops-$profile node scripts/browserDlcSharedBackdrops.mjs | tee /tmp/dlc-field-evidence/shared-backdrops-$profile.log
           done
+      - name: Collection library, binder, card details and history
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browser_tools.outcome == 'success' }}
+        run: |
+          set -euo pipefail
+          node scripts/buildCollectionAlbumFixture.mjs | tee /tmp/dlc-field-evidence/collection-album-build.log
+          PLAYWRIGHT_FIXTURE_DIR=.tmp/collection-album PLAYWRIGHT_EVIDENCE_DIR=/tmp/dlc-field-evidence/collection-album node scripts/browserCollectionAlbum.mjs | tee /tmp/dlc-field-evidence/collection-album.log
       - name: Real City and FPS variant playthroughs
         if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browser_tools.outcome == 'success' }}
         run: |
@@ -151,6 +158,15 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
           /tmp/field-browser/bin/python scripts/browserNexusCampaign.py --require-art --evidence /tmp/dlc-field-evidence/nexus | tee /tmp/dlc-field-evidence/nexus.log
+      - name: City witness report to FPS operation and return
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browser_tools.outcome == 'success' }}
+        run: |
+          set -euo pipefail
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/dlc-field-evidence/nexus-field-return-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          /tmp/field-browser/bin/python scripts/browserNexusFieldReturn.py --require-art --evidence /tmp/dlc-field-evidence/nexus-field-return | tee /tmp/dlc-field-evidence/nexus-field-return.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

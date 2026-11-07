@@ -1,5 +1,10 @@
 # Extinction & Cité — catalogue de production, 26 octobre 2026
 
+Continuation du 8 novembre : [Retour des témoins, du rapport de la Cité au sas FPS](../development/DLC_ALBUM_NEXUS_RETURN_2026-11-08.md).
+Cette intervention relie un dossier Nexus terminé, trois relais synchronisés,
+le Champion et un retour physique au sas. La carrière conserve la première
+complétion, avec les récompenses habituelles d’Extraction.
+
 Reprise complémentaire : [conversations de la Cellule ZERO et cinq kits FPS Nexus](nexus-campaign-gameplay-2026-11-07.md).
 Le catalogue courant atteint 12 kits et 48 actions ; cette note complète les
 instantanés historiques sans changer leur révision de preuve.

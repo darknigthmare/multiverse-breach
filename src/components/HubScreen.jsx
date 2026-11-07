@@ -94,6 +94,8 @@ import './HubImmersion.css';
 import ImmersiveDrawer from './ImmersiveDrawer.jsx';
 import MosaicGuidePanel from './MosaicGuidePanel.jsx';
 import MosaicResidentDialogue, { MosaicEvidenceLedger } from './MosaicResidentDialogue.jsx';
+import NexusFieldBriefing from './NexusFieldBriefing.jsx';
+import { NEXUS_FIELD_OPERATION_ID, getNexusFieldAccess, getNexusFieldCompletion, createNexusFieldOperation, getNexusFieldReturnMarker, getExtinctionLootTarget, openNexusFieldReturn, getNexusFieldObjective, drawNexusFieldRadarMarker, interactNexusFieldReturn, getNexusFieldRunProof, clearNexusFieldOperation } from '../game/nexusFieldOperation.js';
 import GameDisplaySettings from './GameDisplaySettings.jsx';
 import AudioControl from './AudioControl.jsx';
 import NetworkStatusBadge from './NetworkStatusBadge.jsx';
@@ -2263,6 +2265,7 @@ function MosaicCityHub({
   onTutorialProgress,
   reconnaissanceProgress = null,
   onReconnaissanceProgress,
+  extinctionCareer = {},
   onOpenMissions,
   onOpenCodex,
   onOpenService,
@@ -2692,6 +2695,7 @@ function MosaicCityHub({
   const reconnaissanceLedger = useMemo(() => getMosaicReconnaissanceLedger(reconnaissance, {
     heroes: safeHeroes, exhibits: EQUIP_ITEMS_DB, districts, lang
   }), [reconnaissance, safeHeroes, districts, lang]);
+  const fieldAccess = getNexusFieldAccess(reconnaissance, getExtinctionRoster(safeHeroes, unlockedHeroes));
   const conversationHero = ownedHeroes.find(hero => hero.id === conversationHeroId);
   const residentConversation = conversationHero
     ? getMosaicResidentDialogue(conversationHero, getCharacterPlaque(conversationHero), lang) : null;
@@ -2847,7 +2851,7 @@ function MosaicCityHub({
     if (!districts[currentDistrict]) switchDistrict({ target: 'atrium' });
   }, [currentDistrict, districts, switchDistrict]);
 
-  const openCityService = useCallback((callback, destination) => {
+  const openCityService = useCallback((callback, destination, options) => {
     if (typeof callback !== 'function') return;
     const state = stateRef.current;
     state.destination = null;
@@ -2857,7 +2861,7 @@ function MosaicCityHub({
     // Snapshot before navigation: a parent need not unmount immediately.
     locationCallbackRef.current?.(snapshotMosaicLocation(state, currentDistrictRef.current, currentZoneRef.current));
     setCityMenuOpen(false);
-    callback(destination);
+    callback(destination, options);
   }, []);
 
   const interactWithNearby = useCallback((requestedTarget = null) => {
@@ -3582,6 +3586,13 @@ function MosaicCityHub({
           <small>{Object.values(reconnaissance.dossiers).filter(entry => entry.completed).length} {lang === 'fr' ? 'rapport(s) transmis · progression enregistrée' : 'report(s) transmitted · progress saved'}</small>
         </section>
         <MosaicEvidenceLedger entries={reconnaissanceLedger} lang={lang} />
+        <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(extinctionCareer)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang}>
+          <button type="button" className="btn-retro" data-field-deploy disabled={!fieldAccess.available || typeof onOpenService !== 'function'}
+            onClick={() => { if (fieldAccess.available) openCityService(onOpenService, 'battleRoyale', { fieldOperation: NEXUS_FIELD_OPERATION_ID }); }}>
+            {fieldAccess.available ? (lang === 'fr' ? 'OUVRIR LE BRIEFING FPS' : 'OPEN FPS BRIEFING')
+              : (lang === 'fr' ? 'BRIEFING VERROUILLÉ' : 'BRIEFING LOCKED')}
+          </button>
+        </NexusFieldBriefing>
         <details className="mosaic-resident-directory">
           <summary>{lang === 'fr' ? 'Habitants disponibles' : 'Available residents'} · {residentView.total}</summary>
           <label><span>{lang === 'fr' ? 'Rechercher un habitant' : 'Find a resident'}</span>
@@ -3716,6 +3727,8 @@ function ExtinctionRoyale({
   onSessionStart,
   onSessionEnd,
   career = {},
+  reconnaissanceProgress = null,
+  initialFieldOperation = null,
   hudTheme = null,
   sessionPaused = false,
   sessionExitRequest = 0
@@ -3742,6 +3755,18 @@ function ExtinctionRoyale({
   const [selectedHeroId, setSelectedHeroId] = useState(() => playableHeroes[0]?.id || '');
   const [runMode, setRunMode] = useState('extraction');
   const [relayEnabled, setRelayEnabled] = useState(false);
+  const fieldAccess = getNexusFieldAccess(reconnaissanceProgress, playableHeroes);
+  const [fieldEnabled, setFieldEnabled] = useState(() => initialFieldOperation === NEXUS_FIELD_OPERATION_ID && fieldAccess.available);
+  const fieldSelected = runMode === 'extraction' && fieldEnabled && fieldAccess.available;
+  const fieldToggleRef = useRef(null);
+  useEffect(() => {
+    if (initialFieldOperation !== NEXUS_FIELD_OPERATION_ID || !fieldAccess.available) return undefined;
+    const frame = requestAnimationFrame(() => {
+      fieldToggleRef.current?.scrollIntoView({ block: 'center' });
+      fieldToggleRef.current?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [initialFieldOperation, fieldAccess.available]);
   const [runSnapshot, setRunSnapshot] = useState({
     phase: 'ready',
     hp: 100,
@@ -3831,6 +3856,7 @@ function ExtinctionRoyale({
 
   const getRunObjectiveText = useCallback((state) => {
     if (!state) return objectives[runMode];
+    if (state.fieldOperation?.status === 'return') return getNexusFieldObjective(state.fieldOperation, state, lang).text;
     if (runMode === 'extraction') {
       const secured = Math.min(EXTINCTION_BEACON_TARGET, state.beaconsStabilized || 0);
       return secured < EXTINCTION_BEACON_TARGET
@@ -3857,9 +3883,7 @@ function ExtinctionRoyale({
 
   const buildRunSnapshot = useCallback((state) => {
     const maxHp = Math.max(1, state.maxHp || 100);
-    const nearbyLoot = state.phase === 'running'
-      ? state.loot?.find(candidate => !candidate.used && Math.hypot(candidate.wx - state.px, candidate.wy - state.py) < 1.25) || null
-      : null;
+    const nearbyLoot = getExtinctionLootTarget(state);
     return {
       phase: state.phase,
       hp: Math.max(0, Math.min(maxHp, state.hp || 0)),
@@ -3869,7 +3893,7 @@ function ExtinctionRoyale({
       reserveAmmo: state.reserveAmmo || 0,
       kills: state.kills || 0,
       wave: state.wave || 1,
-      loot: state.loot?.filter(item => item.used && item.type !== 'beacon').length || 0,
+      loot: state.loot?.filter(item => item.used && !['beacon', 'field-return'].includes(item.type)).length || 0,
       beacons: state.beaconsStabilized || 0,
       skillCooldown: state.skillCooldown || 0,
       signatureCharge: state.protocols?.charge || 0,
@@ -3879,6 +3903,8 @@ function ExtinctionRoyale({
       signatureReflectionTicks: state.protocols?.reflection?.life || 0,
       relay: getExtinctionRelayStatus(state.relayOperation, `beacon-${Math.min(state.wave || 1, EXTINCTION_BEACON_TARGET)}`, lang),
       relaySummary: state.relaySummary || null,
+      fieldObjective: getNexusFieldObjective(state.fieldOperation, state, lang),
+      fieldSummary: state.fieldSummary || null,
       nearbyLoot: nearbyLoot?.label || null,
       objectiveText: getRunObjectiveText(state),
       statusText: state.statusText || null,
@@ -3957,6 +3983,8 @@ function ExtinctionRoyale({
       protocols: createExtinctionProtocolState(null, null),
       relayOperation: null,
       relaySummary: null,
+      fieldOperation: null,
+      fieldSummary: null,
       hp: 100,
       maxHp: 100,
       ammo: 24,
@@ -4093,15 +4121,21 @@ function ExtinctionRoyale({
     next.heroId = selectedHero.id;
     next.heroCategory = selectedHero.category;
     next.protocols = createExtinctionProtocolState(signatureProfile, next.runId);
-    next.relayOperation = createExtinctionRelayOperation({ enabled: relayEnabled, runId: next.runId, mode: runMode });
+    next.relayOperation = createExtinctionRelayOperation({ enabled: relayEnabled || fieldSelected, runId: next.runId, mode: runMode });
+    next.fieldOperation = createNexusFieldOperation(next, { enabled: fieldSelected, mode: runMode, briefing: fieldAccess.briefing });
+    if (next.fieldOperation) {
+      next.loot.push(getNexusFieldReturnMarker(next.fieldOperation, lang));
+      next.statusText = getNexusFieldObjective(next.fieldOperation, next, lang).detail;
+    }
     stateRef.current = next;
     setRunSnapshot(buildRunSnapshot(next));
     sound.playSfx('levelup');
-  }, [buildEnemies, buildLoot, buildRunSnapshot, lang, objectives, onSessionStart, relayEnabled, roleProfile, runMode, selectedHero, signatureProfile, universeFragments, weaponProfile]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, lang, objectives, onSessionStart, relayEnabled, roleProfile, runMode, selectedHero, signatureProfile, universeFragments, weaponProfile, fieldSelected, fieldAccess.briefing]);
 
   const finishRun = useCallback((result) => {
     const state = stateRef.current;
     if (state.phase !== 'running' || !['victory','defeat'].includes(result)) return;
+    if (result === 'victory' && state.fieldOperation && state.fieldOperation.status !== 'returned') return;
     sceneInputsRef.current.clear();
     state.moveKeys = {};
     aimPointerRef.current = emptySceneAim();
@@ -4120,6 +4154,9 @@ function ExtinctionRoyale({
         ? victoryTitle
         : (lang === 'fr' ? 'Repli d Ancre: donnees conservees' : 'Anchor retreat: contact data preserved')
     };
+    const fieldProof = victory ? getNexusFieldRunProof(state.fieldOperation) : null;
+    state.fieldSummary = state.fieldOperation ? { id: state.fieldOperation.id, returned: Boolean(fieldProof) } : null;
+    clearNexusFieldOperation(state);
     state.phase = 'ended';
     state.relaySummary = state.relayOperation ? {
       secured: Object.values(state.relayOperation.beacons).filter(entry => entry.status === 'secured').length
@@ -4131,7 +4168,8 @@ function ExtinctionRoyale({
     state.statusText = rewards.title;
     setRunSnapshot(buildRunSnapshot(state));
     sound.playSfx(victory ? 'victory' : 'defeat');
-    onSessionEnd?.({ reason: 'completed', runId: state.runId, at: new Date().toISOString(), mode: runMode, kills: state.kills, waves: state.wave, result, rewards });
+    onSessionEnd?.({ reason: 'completed', runId: state.runId, at: new Date().toISOString(), mode: runMode, kills: state.kills, waves: state.wave, result, rewards,
+      ...(fieldProof ? { fieldOperation: fieldProof } : {}) });
   }, [buildRunSnapshot, lang, onSessionEnd, runMode]);
 
   const triggerEnemyDrop = useCallback((enemy, state) => {
@@ -4314,7 +4352,15 @@ function ExtinctionRoyale({
             if (state.protocols) state.protocols.projectiles = [];
             const nextWave = state.wave + 1;
             if (state.enemies.some(enemy => enemy.kind === 'Champion de Trame')) {
-              finishRun('victory');
+              if (state.fieldOperation) {
+                const opened = openNexusFieldReturn(state.fieldOperation, state);
+                if (opened !== state.fieldOperation) {
+                  state.fieldOperation = opened;
+                  state.loot = state.loot.map(item => item.id === opened.markerId ? getNexusFieldReturnMarker(opened, lang) : item);
+                  state.statusText = getNexusFieldObjective(opened, state, lang).detail;
+                  setRunSnapshot(buildRunSnapshot(state));
+                }
+              } else finishRun('victory');
             } else if ((runMode === 'extraction' && nextWave >= 4) || (runMode === 'hunt' && state.wave >= 2) || (runMode === 'last_signal' && nextWave >= 5)) {
               state.enemies = buildEnemies(nextWave, true);
               state.wave = nextWave;
@@ -4540,6 +4586,9 @@ function ExtinctionRoyale({
       ctx.beginPath();
       ctx.arc(radX, radY, 3.5, 0, TAU);
       ctx.fill();
+      if (state.fieldOperation?.status === 'return') {
+        drawNexusFieldRadarMarker(ctx, state.fieldOperation, state, { x: radX, y: radY, radius: radR });
+      }
       ctx.restore();
 
       drawExtinctionProtocols(ctx, state, canvas.width, canvas.height, projectWorld, { ownerId: viewmodel.id, image: fpsProjectileRef.current });
@@ -4735,9 +4784,19 @@ function ExtinctionRoyale({
     if (sessionPausedRef.current || intelRef.current) return;
     const state = stateRef.current;
     if (state.phase !== 'running') return;
-    const item = state.loot.find(candidate => !candidate.used && Math.hypot(candidate.wx - state.px, candidate.wy - state.py) < 1.25);
+    const item = getExtinctionLootTarget(state);
     if (!item) {
       state.statusText = lang === 'fr' ? 'Aucun objet à portée.' : 'No nearby item.';
+      return;
+    }
+    const fieldReturn = interactNexusFieldReturn(state.fieldOperation, state, item, { lang });
+    if (fieldReturn.handled) {
+      state.fieldOperation = fieldReturn.operation;
+      state.statusText = fieldReturn.feedback;
+      if (fieldReturn.completed) {
+        item.used = true;
+        finishRun('victory');
+      } else setRunSnapshot(buildRunSnapshot(state));
       return;
     }
     const relay = interactExtinctionRelayOperation(state.relayOperation, state, item, { lang });
@@ -4903,6 +4962,7 @@ function ExtinctionRoyale({
     if (stateRef.current.phase === 'ended') { setRuntimeError(null); setRenderAttempt(value => value + 1); return; }
     stateRef.current.phase = 'ready'; stateRef.current.rewards = null; stateRef.current.result = null;
     stateRef.current.relayOperation = null; stateRef.current.relaySummary = null;
+    clearNexusFieldOperation(stateRef.current); stateRef.current.fieldSummary = null;
     clearExtinctionProtocolEffects(stateRef.current);
     setRuntimeError(null); setRunSnapshot(buildRunSnapshot(stateRef.current));
     setRenderAttempt(value => value + 1); onSessionEnd?.({ reason: 'error' });
@@ -4921,6 +4981,7 @@ function ExtinctionRoyale({
       </ImmersiveDrawer>
       <ImmersiveDrawer open={intelOpen} onClose={() => setIntelOpen(false)} lang={lang} title={lang === 'fr' ? 'Directive et commandes' : 'Directive and controls'}>
         <p>{objectives[runMode]}</p>
+        {runSnapshot.fieldObjective && <p>{runSnapshot.fieldObjective.title} · {runSnapshot.fieldObjective.detail}</p>}
         {runSnapshot.relay?.status !== 'disabled' && runSnapshot.relay && <p>{lang === 'fr' ? 'Relais sous pression : active chaque balise avec E / LOOT, reste dans son périmètre pendant trois secondes actives, puis utilise E / LOOT pour la stabiliser. Sortir du périmètre suspend la synchronisation.' : 'Relays under pressure: activate each beacon with E / LOOT, stay inside its perimeter for three active seconds, then use E / LOOT to secure it. Leaving the perimeter suspends synchronization.'}</p>}
         <p>{lang === 'fr' ? 'Visuel FPS : les planches personnelles disponibles sont liées à leur propriétaire. Les armes ramassées et les vues manquantes utilisent un schéma de secours, pas une illustration certifiée du personnage.' : 'FPS visuals: available personal sheets are bound to their owner. Pickup weapons and missing views use a fallback schematic, not certified character artwork.'}</p>
         <p>{runSnapshot.statusText}</p>
@@ -4942,12 +5003,21 @@ function ExtinctionRoyale({
             {[
               ['extraction', 'Solo Extraction', 'Solo Extraction'], ['last_signal', 'Dernier Signal', 'Last Signal'],
               ['infestation', 'Infestation', 'Infestation'], ['hunt', 'Chasse au Champion', 'Champion Hunt']
-            ].map(([id, fr, en]) => <button key={id} type="button" aria-pressed={runMode === id} onClick={() => setRunMode(id)}><strong>{lang === 'fr' ? fr : en}</strong><small>{objectives[id]}</small></button>)}
+            ].map(([id, fr, en]) => <button key={id} type="button" aria-pressed={runMode === id} onClick={() => { setRunMode(id); if (id !== 'extraction') setFieldEnabled(false); }}><strong>{lang === 'fr' ? fr : en}</strong><small>{objectives[id]}</small></button>)}
           </div>
           {runMode === 'extraction' && <label className="extinction-relay-option">
-            <input type="checkbox" data-relay-operation checked={relayEnabled} disabled={runActive || runEnded} onChange={event => setRelayEnabled(event.target.checked)} />
+            <input type="checkbox" data-relay-operation checked={relayEnabled || fieldSelected} disabled={runActive || runEnded || fieldSelected} onChange={event => setRelayEnabled(event.target.checked)} />
             <span><strong>{lang === 'fr' ? 'RELAIS SOUS PRESSION' : 'RELAYS UNDER PRESSURE'}</strong><small>{lang === 'fr' ? 'Option de terrain : active chaque balise, défends son périmètre trois secondes, puis stabilise-la. Les récompenses restent celles de l’Extraction.' : 'Field operation: activate each beacon, defend its perimeter for three seconds, then secure it. Extraction rewards apply.'}</small></span>
           </label>}
+          {runMode === 'extraction' && <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(career)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang}>
+            <label className="nexus-field-toggle">
+              <input ref={fieldToggleRef} type="checkbox" data-field-operation checked={fieldSelected} disabled={!fieldAccess.available || runActive || runEnded}
+                onChange={event => setFieldEnabled(event.target.checked)} />
+              <span>{fieldAccess.available
+                ? (lang === 'fr' ? 'JOUER RETOUR DES TÉMOINS · trois relais et retour au sas requis' : 'PLAY WITNESS RETURN · three relays and airlock return required')
+                : (lang === 'fr' ? 'INTERVENTION VERROUILLÉE' : 'OPERATION LOCKED')}</span>
+            </label>
+          </NexusFieldBriefing>}
           <div className="extinction-pilot-selection">
             <canvas width="150" height="150" aria-hidden="true" ref={canvas => { if (!canvas || !selectedHero) return; const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, 150, 150); drawPixelSprite(ctx, 75, 110, selectedHero, 0, 1, 104, 'nexus'); }} />
             <div><strong>{selectedHero?.name}</strong><span>{selectedHero?.universe}</span><small>{career.runs || 0} {lang === 'fr' ? 'runs archivées' : 'archived runs'} · {career.wins || 0} {lang === 'fr' ? 'victoires' : 'wins'} · {career.xp || 0} XP Extinction</small></div>
@@ -4994,6 +5064,9 @@ function ExtinctionRoyale({
             <span>+{runSnapshot.rewards.gold} {lang === 'fr' ? 'Or' : 'Gold'} / +{runSnapshot.rewards.shards} {lang === 'fr' ? 'Fragments' : 'Shards'} / +{runSnapshot.rewards.modeXp} XP {lang === 'fr' ? 'Extinction' : 'Extinction'}</span>
             <small>{lang === 'fr' ? 'Récompenses transférées. Ce bilan reste ouvert jusqu’à ta validation.' : 'Rewards transferred. Results stay open until you continue.'}</small>
             {runSnapshot.relaySummary && <small>{lang === 'fr' ? 'Relais sous pression' : 'Relays under pressure'} · {runSnapshot.relaySummary.secured}/{EXTINCTION_BEACON_TARGET} {lang === 'fr' ? 'balises synchronisées' : 'beacons synchronized'}</small>}
+            {runSnapshot.fieldSummary && <small data-field-result={runSnapshot.fieldSummary.returned ? 'returned' : 'not-returned'}>{runSnapshot.fieldSummary.returned
+              ? (lang === 'fr' ? 'Retour des témoins : relevé transmis au sas.' : 'Witness return: record transmitted at the airlock.')
+              : (lang === 'fr' ? 'Retour des témoins : relevé non transmis. Le dossier de la Cité reste disponible.' : 'Witness return: record not transmitted. The City report remains available.')}</small>}
             <button ref={continueRef} type="button" className="btn-retro" onClick={acknowledgeRun}>{lang === 'fr' ? 'CONTINUER' : 'CONTINUE'}</button>
           </div>
         )}
@@ -5726,6 +5799,10 @@ export default function HubScreen({
   // Une session active verrouille le hub sans demonter le composant de jeu.
   const gameWorkspaceRef = useRef(null);
   const [activeGameMode, setActiveGameMode] = useState(initialTab === 'mosaicHub' ? 'nexus' : null);
+  const [extinctionFieldRequest, setExtinctionFieldRequest] = useState(null);
+  useEffect(() => {
+    if (activeTab !== 'battleRoyale') setExtinctionFieldRequest(null);
+  }, [activeTab]);
   const [pauseMenuOpen, setPauseMenuOpen] = useState(false);
   const [sessionExitRequests, setSessionExitRequests] = useState({
     custom: 0,
@@ -5752,7 +5829,7 @@ export default function HubScreen({
   }, [finishDedicatedGame]);
   const startRaceSession = useCallback(() => startDedicatedGame('race'), [startDedicatedGame]);
   const finishRaceSession = useCallback((report = {}) => { if (report.reason !== 'completed') finishDedicatedGame('race'); }, [finishDedicatedGame]);
-  const startExtinctionSession = useCallback(() => startDedicatedGame('extinction'), [startDedicatedGame]);
+  const startExtinctionSession = useCallback(() => { setExtinctionFieldRequest(null); startDedicatedGame('extinction'); }, [startDedicatedGame]);
   const extinctionReceiptsRef = useRef(new Set(Array.isArray(activityProgress.extinctionCareer?.receipts) ? activityProgress.extinctionCareer.receipts : []));
   const finishExtinctionSession = useCallback((report = {}) => {
     if (report.reason === 'completed') {
@@ -10373,7 +10450,11 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             onLocationChange={next => setActivityProgress(previous => JSON.stringify(previous.mosaicLocation) === JSON.stringify(next) ? previous : { ...previous, mosaicLocation: next })}
             reconnaissanceProgress={activityProgress.mosaicReconnaissance}
             onReconnaissanceProgress={next => setActivityProgress(previous => ({ ...previous, mosaicReconnaissance: next }))}
-            onOpenService={service => {
+            extinctionCareer={activityProgress.extinctionCareer}
+            onOpenService={(service, options = {}) => {
+              const fieldRequested = service === 'battleRoyale' && options.fieldOperation === NEXUS_FIELD_OPERATION_ID;
+              if (fieldRequested && !getNexusFieldAccess(activityProgress.mosaicReconnaissance, getExtinctionRoster(HEROES_DB, unlockedHeroes)).available) return;
+              setExtinctionFieldRequest(fieldRequested ? NEXUS_FIELD_OPERATION_ID : null);
               finishNexusSession({ reason: 'transition' });
               if (service === 'arcs' || service === 'journal') {
                 setActiveTab('missions');
@@ -10424,6 +10505,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             onSessionStart={startExtinctionSession}
             onSessionEnd={finishExtinctionSession}
             career={activityProgress.extinctionCareer || {}}
+            reconnaissanceProgress={activityProgress.mosaicReconnaissance}
+            initialFieldOperation={extinctionFieldRequest}
             hudTheme={activeHudTheme}
             sessionPaused={activeGameMode === 'extinction' && pauseMenuOpen}
             sessionExitRequest={sessionExitRequests.extinction}

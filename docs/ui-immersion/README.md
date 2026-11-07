@@ -1,5 +1,10 @@
 # Refonte immersive — PR #9
 
+Continuation du 8 novembre : [Album des Trames et retour d’intervention Nexus](../development/DLC_ALBUM_NEXUS_RETURN_2026-11-08.md).
+Le classeur conserve sa page entre les vues, les fiches rendent le focus au
+bon endroit et l’Album respecte le texte agrandi et la marge de sécurité.
+La recette couvre les six configurations FR/EN de la nouvelle navigation.
+
 Reprise complémentaire du 7 novembre : [préparation du combat, galerie et contenus Nexus](../development/DLC_CITY_FPS_FINALIZATION_2026-11-07.md).
 Elle complète les parcours de combat personnalisé et de zoom/comparaison/plein
 écran, et protège les favoris de DLC absents. Ses recettes FR/EN et ses limites

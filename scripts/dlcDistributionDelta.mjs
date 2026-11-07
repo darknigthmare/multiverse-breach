@@ -4,6 +4,7 @@ import { closeSync, constants, lstatSync, mkdirSync, mkdtempSync, openSync, read
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { auditDlcDistribution, DLC_DISTRIBUTION_RECEIPT } from './auditDlcDistribution.mjs';
+import { validateDlcDistributionReceipt } from './dlcDistribution.mjs';
 import { assertDistributionDirectory, inspectDistributionPath, listDistributionFiles,
   readDistributionFile, safeDistributionPath } from './dlcDistributionFilesystem.mjs';
 
@@ -15,6 +16,8 @@ const equal = (a, b) => a?.sha256 === b?.sha256 && a?.bytes === b?.bytes;
 const within = (parent, child) => child === parent || child.startsWith(parent + path.sep);
 const keysEqual = (object, keys) => object && typeof object === 'object' && !Array.isArray(object)
   && Object.keys(object).sort().join('|') === [...keys].sort().join('|');
+const canonical = value => JSON.stringify(value, (_key, item) => item && typeof item === 'object' && !Array.isArray(item)
+  ? Object.fromEntries(Object.keys(item).sort().map(key => [key, item[key]])) : item);
 
 function allowedPath(value) {
   safeDistributionPath(value);
@@ -41,11 +44,31 @@ function snapshot(root) {
   const raw = readDistributionFile(root, DLC_DISTRIBUTION_RECEIPT);
   const receipt = JSON.parse(raw);
   if (JSON.stringify(receipt) !== JSON.stringify(audit.receipt)) throw new Error('Receipt changed during audit');
-  if (!REVISION.test(receipt.sourceRevision || '')) throw new Error('Delta requires a pinned sourceRevision');
+  if (!REVISION.test(receipt.sourceRevision || '')) {
+    throw new Error('Delta requires a pinned sourceRevision; export again with --source-revision FULL_GIT_SHA. Standalone builds do not require it.');
+  }
   return { root, receipt, raw, receiptSha256: digest(raw), files: deliveredFiles(receipt, raw) };
 }
 function assertUnchanged(before) {
   if (snapshot(before.root).receiptSha256 !== before.receiptSha256) throw new Error('Distribution receipt changed during operation');
+}
+/** Inspect bytes without buffering a media file or creating any output. */
+function verifyPayloadFile(root, relative, expected) {
+  const source = inspectDistributionPath(root, allowedPath(relative));
+  const input = openSync(source, constants.O_RDONLY | constants.O_NOFOLLOW);
+  const hash = createHash('sha256');
+  const buffer = Buffer.allocUnsafe(1024 * 1024);
+  let bytes = 0;
+  try {
+    let count;
+    while ((count = readSync(input, buffer, 0, buffer.length, null)) > 0) {
+      if (bytes === 0 && /^\uFEFF?version https:\/\/git-lfs\.github\.com\/spec\/v1(?:\r?\n|$)/.test(buffer.subarray(0, count).toString('utf8'))) {
+        throw new Error('Git LFS pointer is not a materialized delta file: ' + relative);
+      }
+      hash.update(buffer.subarray(0, count)); bytes += count;
+    }
+  } finally { closeSync(input); }
+  if (bytes !== expected.bytes || hash.digest('hex') !== expected.sha256) throw new Error('Delta file integrity mismatch: ' + relative);
 }
 /** Streaming copy, exclusive output creation, no links, verified bytes. */
 function copyVerified(root, relative, destinationRoot, destinationRelative, expected) {
@@ -143,8 +166,22 @@ function validateManifest(value, from) {
   const receipt = value.files.find(file => file.path === DLC_DISTRIBUTION_RECEIPT);
   if (!receipt || receipt.sha256 !== value.targetReceiptSha256) throw new Error('Delta target receipt is missing');
 }
-/** Reconstruct an independent source distribution; never patch the live tree or saves. */
-export function applyDlcDistributionDelta({ base, delta, out, expectedManifestSha256 }) {
+function assertPackageClosure(delta, expected) {
+  const present = listDistributionFiles({ root: delta });
+  if (present.length !== expected.size || present.some(file => !expected.has(file))) {
+    throw new Error('DLC delta payload closure failed');
+  }
+}
+function readTargetFile({ delta, from, entries }, name) {
+  const entry = entries.get(name);
+  if (!entry) throw new Error('Delta target file is missing: ' + name);
+  const raw = readDistributionFile(entry.basePath === undefined ? delta : from.root,
+    entry.basePath === undefined ? 'blobs/' + entry.blob : entry.basePath);
+  if (raw.length !== entry.bytes || digest(raw) !== entry.sha256) throw new Error('Delta file integrity mismatch: ' + name);
+  return raw;
+}
+/** Shared by inspection and reconstruction; no staging directory or other write. */
+function prepareDlcDistributionDelta({ base, delta, expectedManifestSha256 }) {
   if (!HASH.test(expectedManifestSha256 || '')) throw new Error('A trusted manifest SHA-256 is required');
   delta = assertDistributionDirectory(delta);
   const raw = readDistributionFile(delta, 'delta.json');
@@ -152,9 +189,77 @@ export function applyDlcDistributionDelta({ base, delta, out, expectedManifestSh
   const manifest = JSON.parse(raw);
   const from = snapshot(base);
   validateManifest(manifest, from);
-  const expectedPackage = new Set(['delta.json', ...manifest.files.filter(file => file.blob).map(file => 'blobs/' + file.blob)]);
-  const presentPackage = listDistributionFiles({ root: delta });
-  if (presentPackage.length !== expectedPackage.size || presentPackage.some(file => !expectedPackage.has(file))) throw new Error('DLC delta payload closure failed');
+  const blobs = new Map();
+  for (const file of manifest.files) if (file.blob) {
+    if (blobs.has(file.blob) && !equal(blobs.get(file.blob), file)) throw new Error('Conflicting delta blob declaration');
+    blobs.set(file.blob, file);
+  }
+  const expectedPackage = new Set(['delta.json', ...[...blobs.keys()].map(blob => 'blobs/' + blob)]);
+  assertPackageClosure(delta, expectedPackage);
+  for (const [blob, file] of blobs) verifyPayloadFile(delta, 'blobs/' + blob, file);
+  const entries = new Map(manifest.files.map(file => [file.path, file]));
+  const input = { delta, from, entries };
+  const receiptBytes = readTargetFile(input, DLC_DISTRIBUTION_RECEIPT);
+  const targetReceipt = JSON.parse(receiptBytes);
+  validateDlcDistributionReceipt(targetReceipt);
+  if (targetReceipt.sourceRevision !== manifest.sourceRevision) throw new Error('Delta target receipt revision mismatch');
+  const targetFiles = deliveredFiles(targetReceipt, receiptBytes);
+  if (targetFiles.size !== entries.size || [...entries].some(([name, file]) => !equal(targetFiles.get(name), file))) {
+    throw new Error('Delta target file list does not match its receipt');
+  }
+  const targetProfile = JSON.parse(readTargetFile(input, 'DLC/distribution.json'));
+  if (canonical(targetProfile) !== canonical(targetReceipt.profile)) throw new Error('Delta target profile does not match its receipt');
+  assertUnchanged(from);
+  if (digest(readDistributionFile(delta, 'delta.json')) !== expectedManifestSha256) throw new Error('Delta changed during input verification');
+  assertPackageClosure(delta, expectedPackage);
+  return { ...input, raw, manifest, blobs, targetReceipt };
+}
+const totalBytes = files => files.reduce((total, file) => {
+  const value = total + file.bytes;
+  if (!Number.isSafeInteger(value)) throw new Error('Delta byte total exceeds the supported integer range');
+  return value;
+}, 0);
+
+/** Report verified inputs only; the reconstructed tree still needs its strict audit and build. */
+export function inspectDlcDistributionDelta(options) {
+  const { raw, manifest, from, entries, blobs, targetReceipt } = prepareDlcDistributionDelta(options);
+  const sourceIds = from.receipt.packs.map(pack => pack.id), targetIds = targetReceipt.packs.map(pack => pack.id);
+  const sourceSet = new Set(sourceIds), targetSet = new Set(targetIds);
+  const payloadBytes = totalBytes([...blobs.values()]);
+  const reused = manifest.files.filter(file => file.basePath !== undefined);
+  return {
+    schemaVersion: 1, kind: 'dlc-delta-inspection', status: 'inputs-verified',
+    sourceRevision: manifest.sourceRevision, manifestSha256: digest(raw),
+    baseReceiptSha256: manifest.baseReceiptSha256, targetReceiptSha256: manifest.targetReceiptSha256,
+    checks: {
+      baseDistributionAudit: 'verified', manifestHash: 'verified', payloadClosure: 'verified',
+      payloadDigests: 'verified', targetReceiptSchema: 'verified', targetReceiptFileList: 'verified', targetProfile: 'verified',
+    },
+    pendingChecks: ['reconstructed-target-distribution-audit', 'standalone-build', 'browser-playthrough-and-saves'],
+    from: { profile: from.receipt.profile, packIds: sourceIds },
+    to: { profile: targetReceipt.profile, packIds: targetIds },
+    selection: {
+      addedPackIds: targetIds.filter(id => !sourceSet.has(id)),
+      removedPackIds: sourceIds.filter(id => !targetSet.has(id)),
+      retainedPackIds: targetIds.filter(id => sourceSet.has(id)),
+    },
+    transfer: { compression: 'none', changedBlobCount: blobs.size, payloadBytes,
+      manifestBytes: raw.length, packageBytes: payloadBytes + raw.length },
+    reconstruction: {
+      fileCount: entries.size, fileContentBytes: totalBytes(manifest.files), includesFilesystemOverhead: false,
+      baseIsRetained: true, reusedFileCount: reused.length, reusedBytes: totalBytes(reused),
+      addedPathCount: manifest.files.filter(file => !from.files.has(file.path)).length,
+      removedPathCount: [...from.files.keys()].filter(name => !entries.has(name)).length,
+      changedPathCount: manifest.files.filter(file => from.files.has(file.path) && !equal(from.files.get(file.path), file)).length,
+    },
+  };
+}
+
+/** Reconstruct an independent source distribution; never patch the live tree or saves. */
+export function applyDlcDistributionDelta({ base, delta, out, expectedManifestSha256 }) {
+  const prepared = prepareDlcDistributionDelta({ base, delta, expectedManifestSha256 });
+  const { from, manifest } = prepared;
+  delta = prepared.delta;
   const { staging, destination } = freshOutput(out, [from.root, delta]);
   let published = false;
   try {
@@ -173,18 +278,39 @@ export function applyDlcDistributionDelta({ base, delta, out, expectedManifestSh
       targetReceiptSha256: manifest.targetReceiptSha256, fileCount: audited.files.size, packs: audited.receipt.packs.map(pack => pack.id) };
   } finally { if (!published) rmSync(staging, { recursive: true, force: true }); }
 }
+const DELTA_USAGE = [
+  'Usage: node scripts/dlcDistributionDelta.mjs create --base DIR --target DIR --out NEW_DIR',
+  '       node scripts/dlcDistributionDelta.mjs inspect --base DIR --delta DIR --sha256 TRUSTED_HASH',
+  '       node scripts/dlcDistributionDelta.mjs apply --base DIR --delta DIR --out NEW_DIR --sha256 TRUSTED_HASH',
+  '',
+  'Base and target must be audited source exports of the same full sourceRevision.',
+  'Use exportDlcDistribution.mjs --source-revision FULL_GIT_SHA when producing them.',
+  'inspect verifies the base, manifest, payload bytes and target receipt/profile without writing.',
+  'It does not audit the reconstructed target, build the game or run browser/save checks.',
+  'apply reconstructs a fresh source directory and then strictly audits that target.',
+  'Payload/package bytes are uncompressed. Reconstructed file bytes exclude filesystem overhead;',
+  'the original base remains on disk. Removal uses a delta toward the desired smaller edition.',
+].join('\n');
+
 if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === import.meta.url) {
   try {
     const [action, ...args] = process.argv.slice(2), options = {};
-    const allowed = action === 'create' ? ['base','target','out'] : action === 'apply' ? ['base','delta','out','sha256'] : [];
-    for (let i = 0; i < args.length; i += 2) {
-      const key = args[i].slice(2), value = args[i+1];
-      if (!args[i].startsWith('--') || !allowed.includes(key) || Object.hasOwn(options,key) || !value || value.startsWith('--')) throw new Error('Invalid delta CLI arguments');
-      options[key] = value;
+    if (['--help', '-h'].includes(action) && !args.length) {
+      console.log(DELTA_USAGE);
+    } else {
+      const allowed = action === 'create' ? ['base','target','out']
+        : action === 'apply' ? ['base','delta','out','sha256']
+          : action === 'inspect' ? ['base','delta','sha256'] : [];
+      for (let i = 0; i < args.length; i += 2) {
+        const key = args[i].slice(2), value = args[i+1];
+        if (!args[i].startsWith('--') || !allowed.includes(key) || Object.hasOwn(options,key) || !value || value.startsWith('--')) throw new Error('Invalid delta CLI arguments');
+        options[key] = value;
+      }
+      if (!allowed.length || allowed.some(key => !options[key])) throw new Error(DELTA_USAGE);
+      const result = action === 'create' ? createDlcDistributionDelta(options)
+        : action === 'inspect' ? inspectDlcDistributionDelta({ ...options, expectedManifestSha256: options.sha256 })
+          : applyDlcDistributionDelta({ ...options, expectedManifestSha256: options.sha256 });
+      console.log(JSON.stringify(result, null, 2));
     }
-    if (!allowed.length || allowed.some(key => !options[key])) throw new Error('Usage: create --base DIR --target DIR --out NEW_DIR | apply --base DIR --delta DIR --out NEW_DIR --sha256 TRUSTED_HASH');
-    const result = action === 'create' ? createDlcDistributionDelta(options)
-      : applyDlcDistributionDelta({ ...options, expectedManifestSha256: options.sha256 });
-    console.log(JSON.stringify(result, null, 2));
   } catch (error) { console.error(error.message); process.exitCode = 1; }
 }

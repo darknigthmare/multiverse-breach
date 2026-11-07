@@ -340,7 +340,8 @@ export function createDlcDistributionReceipt({ root = process.cwd(), plan, addit
         retainedPublicSources, assets, files,
     });
 }
-function validateReceipt(receipt) {
+/** Validate receipt metadata without reading or auditing the delivered files. */
+export function validateDlcDistributionReceipt(receipt) {
     if (!isObject(receipt) || receipt.schemaVersion !== 1 || receipt.kind !== 'dlc-asset-distribution'
         || !Array.isArray(receipt.packs) || !Array.isArray(receipt.assets) || !Array.isArray(receipt.files)
         || !Array.isArray(receipt.retainedPublicSources)) throw new Error('Invalid DLC distribution receipt.');
@@ -445,7 +446,7 @@ function verifyInventoryClosure(root, receipt, selection) {
 export function auditDlcDistributionFiles({ root = process.cwd(), receipt, layout = 'sources', exact = true } = {}) {
     if (!['sources', 'public', 'both'].includes(layout) || typeof exact !== 'boolean') throw new Error('Invalid DLC distribution audit options.');
     const absolute = checkedRoot(root);
-    const selection = validateReceipt(receipt);
+    const selection = validateDlcDistributionReceipt(receipt);
     const expectedAssets = new Map();
     const includesSources = layout !== 'public';
     const includesPublic = layout !== 'sources';

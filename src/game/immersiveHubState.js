@@ -1,5 +1,6 @@
 import { clampMosaicPosition } from './mosaicCityRuntime.js';
 import { CATALOG_PAGE_SIZES, createCatalogView } from './catalogPagination.js';
+import { recordNexusFieldCompletion } from './nexusFieldOperation.js';
 
 const nonNegativeInteger = value => Number.isFinite(Number(value)) ? Math.max(0, Math.floor(Number(value))) : 0;
 
@@ -120,10 +121,11 @@ export const applyExtinctionReport = (progress = {}, rawReport) => {
   const career = progress.extinctionCareer || {};
   const receipts = Array.isArray(career.receipts) ? career.receipts : [];
   if (!report || receipts.includes(report.runId)) return progress;
+  const fieldCareer = recordNexusFieldCompletion(career, report, progress.mosaicReconnaissance);
   return {
     ...progress,
     extinctionCareer: {
-      ...career,
+      ...fieldCareer,
       xp: nonNegativeInteger(career.xp) + report.rewards.modeXp,
       runs: nonNegativeInteger(career.runs) + 1,
       wins: nonNegativeInteger(career.wins) + (report.result === 'victory' ? 1 : 0),

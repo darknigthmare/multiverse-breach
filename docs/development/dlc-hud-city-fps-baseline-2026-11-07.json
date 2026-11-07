@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "scope": "Verified baseline before the Album / CLI delta / Nexus witness-return continuation",
+  "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+  "testedMerge": "ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+  "tree": "6145b575b0a7b6442620e66b65902812c9280066",
+  "pullRequest": "https://github.com/darknigthmare/multiverse-breach/pull/27",
+  "verificationDate": "2026-11-07",
+  "allWorkflowsSucceeded": true,
+  "counts": {
+    "workflows": 12,
+    "distributionProfiles": 4,
+    "distributionBrowserCases": 16,
+    "fieldBrowserCases": {
+      "systemMenus": 21,
+      "customLobby": 6,
+      "cgViewer": 6,
+      "sharedBackdropProfiles": 3,
+      "fieldVariants": 5,
+      "nexusCampaign": 11
+    },
+    "reliabilityTests": 1978,
+    "productionPrebuildCommands": 44
+  },
+  "reviewed": {
+    "fieldArtifactSha256": "1933078f4b8e11d4b95905d46195ace8ab9d69f515c9578e6771d36f8af1116f",
+    "testedTreeMatchesHead": true,
+    "customMobileLabelsIntactAt150Percent": true
+  },
+  "limitations": [
+    "Counts from overlapping suites are not a count of independent tests.",
+    "Menu artwork and selected test data are explicitly synthetic; scene backdrop tests decode repository media.",
+    "Browser tests ran in CI. Local Chromium launch was blocked by socket policy.",
+    "No physical-device, live-cloud-account or comprehensive artistic certification.",
+    "This receipt validates only the baseline head above, not later commits. Artifact URLs may expire."
+  ],
+  "workflows": [
+    {
+      "name": "Wardrobe regression",
+      "runId": 42421623683,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623683",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13593358960,
+          "name": "wardrobe-exact-source",
+          "sha256": "4bb3b1d58a1dd0c646da8f82f2d8f1cff299e58e0c8be61cf620195392180b9e",
+          "sizeBytes": 8848135,
+          "expiresAt": "2026-11-21T22:39:36Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623683/artifacts/13593358960"
+        },
+        {
+          "id": 13593319444,
+          "name": "wardrobe-source-review",
+          "sha256": "64d458d136966f2b9eac575f230885f85e7264cd056220a3c90a6014891a2a3c",
+          "sizeBytes": 2317064,
+          "expiresAt": "2026-11-21T22:39:57Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623683/artifacts/13593319444"
+        }
+      ]
+    },
+    {
+      "name": "Gamedev display browser",
+      "runId": 42421623661,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623661",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13594026817,
+          "name": "gamedev-display-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "20def8b29bdfcc74716810fbb0c25ea6b8d57d37a4edb2d01f7af4edaf4edca5",
+          "sizeBytes": 2465792,
+          "expiresAt": "2026-11-14T22:40:35Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623661/artifacts/13594026817"
+        }
+      ]
+    },
+    {
+      "name": "Race immersive UI",
+      "runId": 42421623662,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623662",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13593178747,
+          "name": "race-ui-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "5ec0f056ac590ab55f2bd8691d19a84cb1a406ae34a35f5d232f8bf4a4eee1a5",
+          "sizeBytes": 3265383,
+          "expiresAt": "2026-11-21T22:41:11Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623662/artifacts/13593178747"
+        }
+      ]
+    },
+    {
+      "name": "Extinction identities and City catalog",
+      "runId": 42421623755,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623755",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13594056812,
+          "name": "extinction-content-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "b00b07a432ed04274663bbffb50d5657d884eb4615a812433d855a5b166b9de9",
+          "sizeBytes": 4016993,
+          "expiresAt": "2026-11-21T22:41:32Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623755/artifacts/13594056812"
+        }
+      ]
+    },
+    {
+      "name": "City residents and FPS framing",
+      "runId": 42421623696,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623696",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13593628014,
+          "name": "residents-viewmodels-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "139795a09586c8192bb5adee5b1fc5671962118d0843315ebdcd0991a2199775",
+          "sizeBytes": 9119719,
+          "expiresAt": "2026-11-21T22:43:11Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623696/artifacts/13593628014"
+        }
+      ]
+    },
+    {
+      "name": "City and Extinction immersive UI",
+      "runId": 42421623684,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623684",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13593104230,
+          "name": "city-extinction-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "b0b63508cdf56bc9dbf2c7c8f87dc4236f3cf5c906e73d766b10ea5687d17f7d",
+          "sizeBytes": 10935179,
+          "expiresAt": "2026-11-21T22:44:46Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623684/artifacts/13593104230"
+        }
+      ]
+    },
+    {
+      "name": "Differential DLC and field variants",
+      "runId": 42421623686,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623686",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13593618403,
+          "name": "dlc-field-continuation-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "1933078f4b8e11d4b95905d46195ace8ab9d69f515c9578e6771d36f8af1116f",
+          "sizeBytes": 16991178,
+          "expiresAt": "2026-11-21T22:45:21Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623686/artifacts/13593618403"
+        }
+      ]
+    },
+    {
+      "name": "Nexus FPS protocols and City exhibits",
+      "runId": 42421623710,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623710",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13594330571,
+          "name": "ec-protocols-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "9fffa0338e172d871f0064e8edd1894e55a5eb89a7d10531ba18afe74042f85e",
+          "sizeBytes": 8034174,
+          "expiresAt": "2026-11-21T22:46:05Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623710/artifacts/13594330571"
+        }
+      ]
+    },
+    {
+      "name": "Reliability and source build",
+      "runId": 42421623741,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623741",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13593822299,
+          "name": "reliability-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "0ad749624bd439aa7509041d526a34a87ecca3489862eaf4740dbf7f0ac0f32c",
+          "sizeBytes": 14127369,
+          "expiresAt": "2026-11-14T22:49:33Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623741/artifacts/13593822299"
+        }
+      ]
+    },
+    {
+      "name": "Signature combat",
+      "runId": 42421623678,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623678",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13593638978,
+          "name": "signature-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "2dd9256c98dfc4bf101d9ed514a4774fd6637d409cb99803e1f9c14f49c538eb",
+          "sizeBytes": 22791319,
+          "expiresAt": "2026-11-14T22:49:53Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623678/artifacts/13593638978"
+        }
+      ]
+    },
+    {
+      "name": "DLC distribution profiles",
+      "runId": 42421623668,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623668",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13594306837,
+          "name": "dlc-halo-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "90aaeacdd2374055590e3637f5432fd94fa461e8e07bf0eb9de9d21ea9d8b720",
+          "sizeBytes": 25283909,
+          "expiresAt": "2026-11-14T22:51:57Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623668/artifacts/13594306837"
+        },
+        {
+          "id": 13593943641,
+          "name": "dlc-base-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "8f0c1fc1f9e61f74005332d8e5aceab9a1d3358606ca11c605abb41dd2d7a451",
+          "sizeBytes": 24932968,
+          "expiresAt": "2026-11-14T22:52:16Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623668/artifacts/13593943641"
+        },
+        {
+          "id": 13593734181,
+          "name": "dlc-halo-reviewed-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "204e9a871a96fe4fdce04293ec3b10b1745f04e62caed8c7233a1933c5f977a4",
+          "sizeBytes": 25285230,
+          "expiresAt": "2026-11-14T22:52:59Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623668/artifacts/13593734181"
+        },
+        {
+          "id": 13593664148,
+          "name": "dlc-base-reviewed-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "3e93d797a6cfd733056b36386cc67ccac51681e2919c4245ebe166dc0fa8616f",
+          "sizeBytes": 24931406,
+          "expiresAt": "2026-11-14T22:51:44Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623668/artifacts/13593664148"
+        }
+      ]
+    },
+    {
+      "name": "Full production build",
+      "runId": 42421623754,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623754",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13593644561,
+          "name": "production-build-ac889ad5e07ee561d005cf9807b62d74d5ebbe2a",
+          "sha256": "c73be025fcf1090d06da114f4779c273697d8454d7210704449a4b7c6089bfce",
+          "sizeBytes": 151855,
+          "expiresAt": "2026-11-14T22:54:15Z",
+          "head": "b016361ae12d96afbf157e7f43bf784832813c0b",
+          "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/42421623754/artifacts/13593644561"
+        }
+      ]
+    }
+  ]
+}

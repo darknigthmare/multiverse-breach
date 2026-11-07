@@ -15,7 +15,7 @@ from browserCityFpsOperations import (DISTRICT, reconnaissance, open_city_termin
 from mosaicMotionProof import validate_mosaic_motion
 
 
-def cross_check(page, lang, out, name):
+def cross_check(page, lang, out, name, remount=None):
     later = page.get_by_role('button', name='Plus tard' if lang == 'fr' else 'Later', exact=True)
     if later.is_visible():
         later.click()
@@ -60,7 +60,7 @@ def cross_check(page, lang, out, name):
             saved = reconnaissance(page)
             check(saved['dossiers'][DISTRICT]['exhibitId'] is None, 'one relic unlocked reporting')
             page.keyboard.press('Escape')
-            restoration = remount_city_checkpoint(page, saved, out, name)
+            restoration = (remount or remount_city_checkpoint)(page, saved, out, name)
     saved = reconnaissance(page)
     dossier = saved['dossiers'][DISTRICT]
     check(dossier['completed'] and len(set(dossier['evidenceIds'])) == 2, 'distinct evidence missing')

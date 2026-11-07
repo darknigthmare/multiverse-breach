@@ -23,6 +23,8 @@ export function createDeltaFixture(t) {
   json('DLC/content-identities.json',{schemaVersion:1,indexes:{universes:{Halo:0,Drop:1}}});
   json('DLC/shared-assets.json',{schemaVersion:1,assets:[{sourcePath:'public/common.bin',publicPath:'/common.bin'}]});
   json('DLC/distribution.json',{schemaVersion:1,mode:'all',packIds:[],sharedPolicy:'preserve-all'});
+  json('config/dlc-profiles/base.json',{schemaVersion:1,mode:'base',packIds:[],sharedPolicy:'preserve-all'});
+  json('config/dlc-profiles/halo.json',{schemaVersion:1,mode:'selected',packIds:['halo'],sharedPolicy:'preserve-all'});
   write('public/common.bin',Buffer.alloc(128*1024,17));
   write('src/game/catalog.js',"import { HALO_HEROES } from '../../DLC/Halo/data/heroes.js';\nimport { DROP_HEROES } from '../../DLC/Drop/data/heroes.js';\nexport const HEROES = [{id:'base'},...HALO_HEROES,...DROP_HEROES];\n");
   write('src/App.jsx',"import { HEROES } from './game/catalog.js';\nexport default function App(){return <main>{HEROES.length}</main>;}\n");
