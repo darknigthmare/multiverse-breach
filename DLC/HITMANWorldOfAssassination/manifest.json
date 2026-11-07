@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "hitmanworld-of-assassination",
+  "universe": "HITMAN — World of Assassination",
+  "directory": "DLC/HITMANWorldOfAssassination",
+  "registration": "runtime",
+  "catalogOrder": 451,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartI.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartI.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR14.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR14.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR7.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR7.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

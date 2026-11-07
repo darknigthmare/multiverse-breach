@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { normalizeReferencedCharacterPng, inspectReferencedCharacterPng } from './installReferencedCharacterImages.mjs';
+import { createAssetSourceResolver } from './assetSourceResolver.mjs';
 
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -21,8 +22,9 @@ const webUrl = value => {
 };
 const regularFile = async file => {
   const resolved = path.resolve(file);
-  const segments = resolved.split(path.sep).filter(Boolean);
-  let current = path.parse(resolved).root;
+  const volumeRoot = path.parse(resolved).root;
+  const segments = resolved.slice(volumeRoot.length).split(path.sep).filter(Boolean);
+  let current = volumeRoot;
   for (const segment of segments) {
     current = path.join(current, segment);
     if ((await fs.lstat(current)).isSymbolicLink()) throw new Error('Input paths cannot contain symlinks.');
@@ -63,8 +65,9 @@ const newDestination = async (root, relative) => {
   return current;
 };
 const regularDirectory = async root => {
-  let current = path.parse(root).root;
-  for (const segment of root.split(path.sep).filter(Boolean)) {
+  const volumeRoot = path.parse(root).root;
+  let current = volumeRoot;
+  for (const segment of root.slice(volumeRoot.length).split(path.sep).filter(Boolean)) {
     current = path.join(current, segment);
     const stat = await fs.lstat(current);
     if (!stat.isDirectory() || stat.isSymbolicLink()) throw new Error('Repository root cannot contain symlinks.');
@@ -90,6 +93,7 @@ export const installWebReferencedCharacterImages = async ({ root = defaultRoot, 
   const plan = parseJson(planBytes, 'installation plan');
   if (plan.schemaVersion !== 1 || !Array.isArray(plan.jobs) || !plan.jobs.length) throw new Error('Expected a nonempty schemaVersion 1 plan.');
   const destinationManifest = await newDestination(root, publicManifestPath);
+  const resolveAssetSource = createAssetSourceResolver(root);
   const identities = new Set();
   const paths = new Set();
   const prepared = [];
@@ -103,7 +107,8 @@ export const installWebReferencedCharacterImages = async ({ root = defaultRoot, 
     const identity = `${job.kind}:${job.id}`;
     if (identities.has(identity) || paths.has(job.output)) throw new Error('Duplicate identity or output.');
     identities.add(identity); paths.add(job.output);
-    const destination = await newDestination(root, `public${job.output}`);
+    const sourcePath = resolveAssetSource(job.output, job.universe);
+    const destination = await newDestination(root, sourcePath);
     const source = await readInput(job.source, path.dirname(planFile), 'source image');
     const proof = await readInput(job.generationEvidence, path.dirname(planFile), 'generation evidence');
     const peer = await readInput(job.peerEvidence, path.dirname(planFile), 'peer review');
@@ -140,7 +145,7 @@ export const installWebReferencedCharacterImages = async ({ root = defaultRoot, 
       privateEvidence: { generationSha256: proof.sha256, peerReviewSha256: peer.sha256, publiclyAvailable: false },
       processing: normalized.processing, fileAvailable: true,
       visualReview: { status: 'close-to-reference', notes, canonicalFidelityApproved: false }, canonicalFidelityApproved: false };
-    prepared.push({ destination, buffer: normalized.buffer, record });
+    prepared.push({ destination, sourcePath, buffer: normalized.buffer, record });
   }
   const publicDocument = { schemaVersion: 1, scope: 'Generated PNG sheets compared with downloaded web body references.',
     policy: { canonicalFidelityApproved: false, referenceImagesRedistributed: false, privatePromptsAndIdentifiersPublished: false,
@@ -156,7 +161,7 @@ export const installWebReferencedCharacterImages = async ({ root = defaultRoot, 
   };
   try {
     for (const [index, asset] of prepared.entries()) {
-      await newDestination(root, `public${asset.record.output}`);
+      await newDestination(root, asset.sourcePath);
       await writeNew(asset.destination, asset.buffer);
       await hooks.afterAssetWrite?.(index, asset);
     }
@@ -187,6 +192,7 @@ export const auditWebReferencedCharacterImages = async ({ root = defaultRoot, ma
   checkPublicPrivacy(document);
   if (document.policy?.canonicalFidelityApproved !== false || document.policy?.referenceImagesRedistributed !== false
     || document.policy?.privatePromptsAndIdentifiersPublished !== false) throw new Error('Invalid public provenance policy.');
+  const resolveAssetSource = createAssetSourceResolver(root);
   const seen = new Set();
   for (const entry of document.entries) {
     const expectedDirectory = entry.kind === 'hero' ? 'heroes' : ['enemy', 'boss', 'worldBoss', 'escort'].includes(entry.kind) ? 'bosses' : null;
@@ -210,7 +216,7 @@ export const auditWebReferencedCharacterImages = async ({ root = defaultRoot, ma
         || !(reference.bytes > 0) || !(reference.width > 0) || !(reference.height > 0)
         || !['png', 'jpeg', 'webp', 'gif'].includes(reference.format)) throw new Error('Invalid recorded web reference.');
     }
-    const bytes = await fs.readFile(await regularFile(path.join(root, 'public', entry.output.slice(1))));
+    const bytes = await fs.readFile(await regularFile(path.join(root, resolveAssetSource(entry.output, entry.universe))));
     if (hash(bytes) !== entry.image.sha256 || bytes.length !== entry.image.bytes) throw new Error('Installed image digest or length differs.');
     const geometry = await inspectReferencedCharacterPng(bytes);
     if (geometry.minimumGuard !== entry.processing?.minimumGuard

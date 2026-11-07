@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "counter-strike",
+  "universe": "Counter-Strike",
+  "directory": "DLC/CounterStrike",
+  "registration": "runtime",
+  "catalogOrder": 198,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartG.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartG.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -2,6 +2,7 @@ name: Race immersive UI
 on:
   pull_request:
     paths:
+      - 'DLC/**'
       - 'src/components/RaceMode.jsx'
       - 'src/components/HubImmersion.css'
       - 'src/game/engineRace.js'
@@ -19,7 +20,7 @@ concurrency:
 jobs:
   race-ui:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -29,6 +30,9 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
             **/*.json
             **/*.jsonl
@@ -43,6 +47,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - run: npm ci --no-audit --no-fund
       - name: Unit contracts and lint
         run: |

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "cloud-meadow",
+  "universe": "Cloud Meadow",
+  "directory": "DLC/CloudMeadow",
+  "registration": "artwork-only",
+  "catalogOrder": 504,
+  "modules": [
+    {
+      "path": "data/cloudMeadowAdditionalCharacters.js",
+      "runtimeAdapter": "src/game/cloudMeadowAdditionalCharacters.js"
+    },
+    {
+      "path": "data/cloudMeadowCharacters.js",
+      "runtimeAdapter": "src/game/cloudMeadowCharacters.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

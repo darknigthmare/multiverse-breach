@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "korn",
+  "universe": "Korn",
+  "directory": "DLC/Korn",
+  "registration": "runtime",
+  "catalogOrder": 262,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

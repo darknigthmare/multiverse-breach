@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "man-with-amission",
+  "universe": "Man with a Mission",
+  "directory": "DLC/ManWithAMission",
+  "registration": "runtime",
+  "catalogOrder": 228,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

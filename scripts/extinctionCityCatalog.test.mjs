@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
+import { listTrackedRuntimePaths } from './dlcAssetPaths.mjs';
 import { buildCatalog } from './extinction-city/catalog.mjs';
-const catalog = buildCatalog('80a54ea5bf203b7991c213775bd3c7ec4d8b3fba',(existsSync('TRACKED_FILES.txt')?readFileSync('TRACKED_FILES.txt','utf8'):execFileSync('git',['ls-files'],{encoding:'utf8',maxBuffer:32*1024*1024})).split('\n'));
+const trackedFiles = existsSync('TRACKED_FILES.txt') ? readFileSync('TRACKED_FILES.txt','utf8').split('\n') : listTrackedRuntimePaths(process.cwd());
+const catalog = buildCatalog('80a54ea5bf203b7991c213775bd3c7ec4d8b3fba',trackedFiles);
 test('all resolved characters are preserved in both modes',()=>{
  assert.equal(catalog.counts.heroes,1912);
  assert.equal(catalog.tables.Heros_Extinction.rows.length,1912);

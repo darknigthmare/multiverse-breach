@@ -1,0 +1,19 @@
+// BioShock — definitions consumed by src/game/canonRosterWavePartG.js.
+// Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
+
+export function createCanonRosterWavePartG({ event, gear, hero, stage, threat }) {
+  return ({
+    key: 'bioshock_rapture', universe: 'BioShock', aliases: ['Bioshock', 'BioShock 1'],
+    continuity: 'BioShock 2007 in Rapture, from Jack’s arrival through the confrontation with Frank Fontaine.',
+    adaptationRule: 'Preserve Art Deco Rapture, plasmids and protectors. Little Sisters are rescue-only noncombatants and never targets, enemies, bosses or damageable props; no actor likeness or graphic body horror.',
+    visualAnchor: 'Flooded Art Deco halls, brass bathyspheres, teal seawater, neon signs without copied text, plasmid energy and diving-suit protectors.',
+    referenceUrl: 'https://store.steampowered.com/app/7670/BioShock/', referenceUrls: ['https://store.steampowered.com/app/7670/BioShock/', 'https://cdn.akamai.steamstatic.com/steam/apps/8850/manuals/BIOSHOCK%202%20G4W%20MANUAL%20ENG.pdf?t=1568765660'],
+    heroes: [hero('jack', 'Jack', 'Adult man in practical sweater and trousers, holding wrench and plasmid-lit hand; face kept generic.', 'Wrench', 'Electro Bolt', { role: 'slayer', prohibitedConcepts: ['actor likeness'] }), hero('tenenbaum', 'Brigid Tenenbaum', 'Adult scientist in conservative dark 1960s suit and lab coat, carrying a rescue plasmid case.', null, 'Little Sister Rescue', { role: 'trial', nonCombat: true, objective: 'Safely escort rescued Little Sisters to a protected vent.', prohibitedConcepts: ['actor likeness', 'child target'] }), hero('bouncer', 'Bouncer Big Daddy', 'Huge rusted brass diving suit with round glowing portholes and conical drill arm.', 'Drill', 'Protector Charge', { role: 'marine' })],
+    enemies: [threat('thuggish_splicer', 'Thuggish Splicer', 'Adult masked Rapture aggressor in damaged 1950s clothing, no gore or actor likeness.', 'Lead Pipe', 'Plasmid Rush'), threat('leadhead_splicer', 'Leadhead Splicer', 'Adult masked Rapture gunman in worn suit and full clothing.', 'Pistol', 'Cover Fire'), threat('houdini_splicer', 'Houdini Splicer', 'Adult fully clothed masked splicer surrounded by orange plasmid distortion.', 'Fireball', 'Teleport Ambush')],
+    bosses: [threat('steinman', 'Dr. Steinman', 'Adult surgeon in stained but non-graphic medical coat, surgical mask and lamp.', 'Pistol', 'Medical Pavilion Ambush'), threat('peach', 'Peach Wilkins', 'Adult smuggler in winter coat, gas mask and grenade bandolier.', 'Grenades', 'Freezer Trap'), threat('cohen', 'Sander Cohen', 'Adult artist in formal black tailcoat and white rabbit mask, no actor likeness.', 'Crossbow', 'Fort Frolic Tableau')],
+    worldBoss: threat('fontaine', 'ADAM-Enhanced Frank Fontaine', 'Massive adult final antagonist with stone-like plasmid musculature, fully covered waist and non-graphic glowing veins.', 'Elemental Strike', 'ADAM Overload', { prohibitedConcepts: ['nudity', 'gore', 'actor likeness'] }),
+    gear: [gear('wrench', 'Jack’s Wrench', 'Heavy steel pipe wrench with red handle.', { atk: 4, def: 1, spd: 1 }), gear('eve_hypo', 'EVE Hypo', 'Sealed blue glass syringe canister with brass cap, isolated as a prop.', { atk: 3, def: 2, spd: 2 }), gear('research_camera', 'Research Camera', 'Boxy brass-and-black 1950s camera with round flash.', { atk: 0, def: 2, spd: 4 })],
+    stages: [stage('Welcome to Rapture', 'Bathysphere dock opening into flooded brass-and-marble Art Deco corridors.'), stage('Fort Frolic', 'Theatrical Art Deco mall with masks, curtains and frozen tableau silhouettes.'), stage('Point Prometheus', 'Industrial genetic laboratory with Big Daddy conversion machinery and glass tunnels.')],
+    event: event('rapture_blackout', 'Rapture Blackout', 'Floodwater rises while emergency lights and bathysphere routes fail across the city.')
+  });
+}

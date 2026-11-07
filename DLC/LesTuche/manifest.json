@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "les-tuche",
+  "universe": "Les Tuche",
+  "directory": "DLC/LesTuche",
+  "registration": "runtime",
+  "catalogOrder": 152,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

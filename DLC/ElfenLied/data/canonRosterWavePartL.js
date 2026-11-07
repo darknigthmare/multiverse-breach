@@ -1,0 +1,6 @@
+// Elfen Lied — definitions consumed by src/game/canonRosterWavePartL.js.
+// Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
+
+export function createRows() {
+  return (['elfen_lied','Elfen Lied','https://www.vap.co.jp/elfenlied/',[{id:'lucy',name:'Lucy / Nyu',visualAnchor:'Fully clothed adult Diclonius in a modest dark coat with an abstract vector shield.'},{id:'kouta',name:'Kouta',nonCombat:true,objective:'Evacuate all residents to shelter.'},{id:'nana',name:'Nana',nonCombat:true,objective:'Disable containment locks and reach shelter.',visualAnchor:'Fully clothed young Diclonius in a long modest dress and coat.'}],['Containment Drone','Vector-Suppression Field','Research Security Robot'],['Bando Pursuit Route','Mariko Barrier Trial','Kakuzawa Control Chamber'],'Diclonius Research Project Core',['Vector Dampener','Shelter Key','Music Box'],['Kamakura Shelter Route','Research Facility Escape','Maple Coast Reconciliation'],{continuity:'Core manga and anime premise adapted without explicit material',faction:'horror',anchor:'Muted Kamakura coast, white research corridors, red maple tones and translucent vector arcs.',rule:'Everyone is fully clothed and nonsexualized. No nudity, gore, torture or abuse; young characters are protected non-combat subjects.'}]);
+}

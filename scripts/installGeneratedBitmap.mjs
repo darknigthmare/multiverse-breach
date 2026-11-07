@@ -7,6 +7,7 @@ import {
 } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
+import { createAssetSourceResolver } from './assetSourceResolver.mjs';
 
 const root = process.cwd();
 const promptPath = path.join(root, 'public', 'sprites', 'generated', 'openai-sprite-prompts.jsonl');
@@ -27,7 +28,6 @@ const parseArguments = values => {
 
 const sha256Buffer = value => createHash('sha256').update(value).digest('hex');
 const sha256File = file => sha256Buffer(readFileSync(file));
-const publicFile = publicPath => path.join(root, 'public', publicPath.replace(/^\/+/, ''));
 const loadPrompts = () => readFileSync(promptPath, 'utf8')
   .split(/\r?\n/u)
   .filter(Boolean)
@@ -259,7 +259,8 @@ const main = async () => {
   const generationPrompt = generationPromptFile ? readFileSync(generationPromptFile, 'utf8').trim() : null;
   const promptEntry = loadPrompts().find(entry => entry.kind === args.kind && String(entry.id) === args.id);
   if (!promptEntry) throw new Error(`Unknown prompt entry: ${args.kind}/${args.id}`);
-  const destination = publicFile(promptEntry.output);
+  const resolveAssetSource = createAssetSourceResolver(root);
+  const destination = path.join(root, resolveAssetSource(promptEntry.output, promptEntry.universe));
   if (existsSync(destination) && args.replace !== 'true') {
     throw new Error(`Destination already exists; pass --replace true to replace deliberately: ${destination}`);
   }

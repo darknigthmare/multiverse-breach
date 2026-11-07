@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "roger-rabbit",
+  "universe": "Roger Rabbit",
+  "directory": "DLC/RogerRabbit",
+  "registration": "runtime",
+  "catalogOrder": 160,
+  "modules": [
+    {
+      "path": "data/canonP0SourceKits.js",
+      "runtimeAdapter": "src/game/canonP0SourceKits.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreEnemyOverrides.js",
+      "runtimeAdapter": "src/game/loreEnemyOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

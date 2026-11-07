@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "deadmau5",
+  "universe": "Deadmau5",
+  "directory": "DLC/Deadmau5",
+  "registration": "runtime",
+  "catalogOrder": 255,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

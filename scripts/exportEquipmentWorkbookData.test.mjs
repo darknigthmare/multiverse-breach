@@ -245,7 +245,16 @@ test('original identities use internal design requirements and icon counts disti
   assert.equal(missing.length, 1816);
   assert.equal(new Set(missing.map(row => row.iconPath)).size, 1184);
   assert.equal(new Set(items.map(row => row.iconPath)).size, 2755);
-  assert.equal(inventory.metadata.sourceFiles.length, 213);
+  const sourcePaths = new Set(inventory.metadata.sourceFiles.map(source => source.path));
+  assert.equal(sourcePaths.size, inventory.metadata.sourceFiles.length);
+  assert.equal(inventory.metadata.sourceFiles.length, summary.sourceFilesVerified);
+  for (const filename of ['src/game/heroes.js', 'src/game/enemies.js', 'src/App.jsx', 'src/components/HubScreen.jsx']) {
+    assert.ok(sourcePaths.has(filename), `Pinned source omitted: ${filename}`);
+  }
+  // A source count frozen before the DLC split would omit all moved definitions.
+  for (const filename of ['DLC/Halo/data/heroes.js', 'DLC/Alien/data/heroes.js', 'DLC/Alien/runtime/canonAliensRescueEncounter.js']) {
+    if (fs.existsSync(path.join(ROOT, filename))) assert.ok(sourcePaths.has(filename), `Pinned DLC source omitted: ${filename}`);
+  }
   for (const source of inventory.metadata.sourceFiles) {
     const bytes = fs.readFileSync(path.join(ROOT, source.path));
     const hash = createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "lil-nas-x",
+  "universe": "Lil Nas X",
+  "directory": "DLC/LilNasX",
+  "registration": "runtime",
+  "catalogOrder": 233,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

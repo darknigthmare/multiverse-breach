@@ -51,7 +51,8 @@ param(
     [int]$WebPQuality = 86,
     [string]$Background = '#000000',
     [switch]$Replace,
-    [switch]$VerifyOnly
+    [switch]$VerifyOnly,
+    [string]$Universe
 )
 
 Set-StrictMode -Version Latest
@@ -59,6 +60,7 @@ $ErrorActionPreference = 'Stop'
 
 $script:RepositoryRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $script:SharpBridge = Join-Path $PSScriptRoot 'riftDossierSharpProcessor.mjs'
+$script:AssetResolverBridge = Join-Path $PSScriptRoot 'assetSourceResolver.mjs'
 $script:PillowBridge = Join-Path $PSScriptRoot 'rift_dossier_pillow_processor.py'
 $script:PillowPython = $null
 $script:Utf8NoBom = New-Object Text.UTF8Encoding($false)
@@ -73,6 +75,53 @@ function Resolve-PipelinePath {
         return [IO.Path]::GetFullPath($Value)
     }
     return [IO.Path]::GetFullPath((Join-Path $script:RepositoryRoot $Value))
+}
+
+function Resolve-CanonicalAssetPath {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Path,
+        [string]$OwningUniverse
+    )
+
+    $comparison = if ([IO.Path]::DirectorySeparatorChar -eq '\') {
+        [StringComparison]::OrdinalIgnoreCase
+    }
+    else {
+        [StringComparison]::Ordinal
+    }
+    $rootPrefix = $script:RepositoryRoot.TrimEnd('\', '/') + [IO.Path]::DirectorySeparatorChar
+    if (-not $Path.StartsWith($rootPrefix, $comparison)) {
+        return $Path
+    }
+    $relative = $Path.Substring($rootPrefix.Length).Replace('\', '/')
+    if (-not $relative.StartsWith('public/', $comparison)) {
+        return $Path
+    }
+    $publicPath = '/' + $relative.Substring('public/'.Length)
+    $resolverArguments = @(
+        $script:AssetResolverBridge,
+        '--root', $script:RepositoryRoot,
+        '--public-path', $publicPath,
+        '--json'
+    )
+    if (-not [string]::IsNullOrWhiteSpace($OwningUniverse)) {
+        $resolverArguments += @('--universe', $OwningUniverse)
+    }
+    $lines = @(& node @resolverArguments 2>&1)
+    if ($LASTEXITCODE -ne 0) {
+        throw "Canonical asset resolution failed: $($lines -join [Environment]::NewLine)"
+    }
+    $resolved = ($lines -join [Environment]::NewLine) | ConvertFrom-Json
+    $sourcePath = [string]$resolved.sourcePath
+    if ($resolved.publicPath -cne $publicPath -or [string]::IsNullOrWhiteSpace($sourcePath) -or [IO.Path]::IsPathRooted($sourcePath)) {
+        throw 'Canonical asset resolver returned an invalid source mapping.'
+    }
+    $canonicalPath = Resolve-PipelinePath -Value $sourcePath
+    if (-not $canonicalPath.StartsWith($rootPrefix, $comparison)) {
+        throw 'Canonical asset source escaped the repository.'
+    }
+    return $canonicalPath
 }
 
 function Get-Sha256 {
@@ -508,11 +557,20 @@ function Get-DefaultOutputPath {
         [string]$DestinationPath
     )
 
+    $comparison = if ([IO.Path]::DirectorySeparatorChar -eq '\') {
+        [StringComparison]::OrdinalIgnoreCase
+    }
+    else {
+        [StringComparison]::Ordinal
+    }
     $rootPrefix = $script:RepositoryRoot.TrimEnd('\', '/') + [IO.Path]::DirectorySeparatorChar
-    if ($DestinationPath.StartsWith($rootPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+    if ($DestinationPath.StartsWith($rootPrefix, $comparison)) {
         $relative = $DestinationPath.Substring($rootPrefix.Length).Replace('\', '/')
-        if ($relative.StartsWith('public/', [StringComparison]::OrdinalIgnoreCase)) {
+        if ($relative.StartsWith('public/', $comparison)) {
             return '/' + $relative.Substring('public/'.Length)
+        }
+        if ($relative -cmatch '^DLC/[^/]+/assets/(.+)$') {
+            return '/' + $Matches[1]
         }
         return $relative
     }
@@ -627,7 +685,15 @@ function Invoke-Pipeline {
         throw 'Landscape output requires -Width to be greater than -Height.'
     }
 
-    $destinationPath = Resolve-PipelinePath -Value $Destination
+    $requestedDestinationPath = Resolve-PipelinePath -Value $Destination
+    # Keep the browser URL independent from the canonical storage location.
+    $expectedOutput = if ($OutputPath) {
+        $OutputPath.Replace('\', '/')
+    }
+    else {
+        Get-DefaultOutputPath -DestinationPath $requestedDestinationPath
+    }
+    $destinationPath = Resolve-CanonicalAssetPath -Path $requestedDestinationPath -OwningUniverse $Universe
     $ledgerPath = Resolve-PipelinePath -Value $Ledger
     $extension = [IO.Path]::GetExtension($destinationPath).ToLowerInvariant()
     if ($extension -notin @('.png', '.webp')) {
@@ -637,12 +703,6 @@ function Invoke-Pipeline {
         throw 'Image destination and ledger must be different files.'
     }
 
-    $expectedOutput = if ($OutputPath) {
-        $OutputPath.Replace('\', '/')
-    }
-    else {
-        Get-DefaultOutputPath -DestinationPath $destinationPath
-    }
     $sharpAvailable = Test-SharpAvailable
     $pillowAvailable = Test-PillowAvailable
 
@@ -658,7 +718,7 @@ function Invoke-Pipeline {
     if ([string]::IsNullOrWhiteSpace($Source)) {
         throw '-Source is required unless -VerifyOnly is used.'
     }
-    $sourcePath = Resolve-PipelinePath -Value $Source
+    $sourcePath = Resolve-CanonicalAssetPath -Path (Resolve-PipelinePath -Value $Source)
     if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) {
         throw "Source PNG does not exist: $sourcePath"
     }

@@ -2,6 +2,7 @@ name: Gamedev display browser
 on:
   pull_request:
     paths:
+      - 'DLC/**'
       - 'src/**'
       - 'scripts/**'
       - 'package.json'
@@ -9,12 +10,14 @@ on:
       - '.nvmrc'
       - 'vite.config.js'
       - 'AGENTS.md'
+      - '.ai-tools/**'
       - 'docs/development/**'
       - 'vendor/gamedev-skills/**'
       - '.github/workflows/gamedev-display.yml'
   push:
     branches: [master]
     paths:
+      - 'DLC/**'
       - 'src/**'
       - 'scripts/**'
       - 'package.json'
@@ -22,6 +25,7 @@ on:
       - '.nvmrc'
       - 'vite.config.js'
       - 'AGENTS.md'
+      - '.ai-tools/**'
       - 'docs/development/**'
       - 'vendor/gamedev-skills/**'
       - '.github/workflows/gamedev-display.yml'
@@ -44,7 +48,11 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
+            /.ai-tools/
             /docs/development/
             /vendor/gamedev-skills/
             /.github/workflows/
@@ -52,6 +60,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - run: npm ci --no-audit --no-fund
       - name: Guidance integrity and focused behavior tests
         run: |

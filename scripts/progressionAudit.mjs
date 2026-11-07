@@ -1,7 +1,10 @@
 import { verifyExtinctionViewmodelContract, verifyExtinctionRendererBinding } from './extinctionViewmodelContract.mjs';
 import { spawnSync } from 'node:child_process';
+import { register } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { existsSync, readFileSync, statSync } from 'node:fs';
+import { createDlcSourceReader } from './dlcAuditSources.mjs';
+import { LORE_ACCURATE_HERO_OVERRIDES } from '../src/game/loreAccuratePacks.js';
 import { REQUESTED_UNIVERSE_WAVE } from '../src/game/requestedUniverseWave.js';
 import { RECENT_UNIVERSE_LEVELS } from '../src/game/recentUniverseLevels.js';
 import { LORE_WORLD_BOSS_OVERRIDES, LORE_WORLD_BOSS_POLICIES } from '../src/game/loreWorldBossOverrides.js';
@@ -23,6 +26,9 @@ import { getGridFacingBonus } from '../src/game/tacticalFacing.js';
 import { findBattlePickupSource, normalizeBattlePickupDefinition } from '../src/game/battlePickupSemantics.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
+const readGameSource = createDlcSourceReader();
+register('./sourceSceneTestLoader.mjs', import.meta.url);
+const { OPENAI_BACKDROPS } = await import('../src/game/renderer.js');
 const fail = (message) => {
   throw new Error(message);
 };
@@ -30,37 +36,47 @@ const assert = (condition, message) => {
   if (!condition) fail(message);
 };
 
-const heroesSource = read('../src/game/heroes.js');
-const enemiesSource = read('../src/game/enemies.js');
-const battleItemsSource = read('../src/game/battleItems.js');
-const dlcSource = read('../src/game/dlcConfig.js');
+const hasLoreLoadout = id => {
+  const loadout = LORE_ACCURATE_HERO_OVERRIDES[id];
+  return Boolean(loadout?.weaponType && ['simple', 'secondary', 'defense', 'special']
+    .every(slot => typeof loadout[slot]?.name === 'string' && loadout[slot].name.trim()));
+};
+
+const heroesSource = readGameSource('src/game/heroes.js');
+const enemiesSource = readGameSource('src/game/enemies.js');
+const battleItemsSource = readGameSource('src/game/battleItems.js');
+const dlcSource = readGameSource('src/game/dlcConfig.js');
 const appSource = read('../src/App.jsx');
-const hubSource = read('../src/components/HubScreen.jsx');
+const hubSource = [
+  read('../src/components/HubScreen.jsx'),
+  readGameSource('src/game/legacyStageCatalog.js'),
+  readGameSource('src/game/universeModifiers.js')
+].join('\n');
 const regulationImagePreviewSource = read('../src/components/RegulationImagePreview.jsx');
-const ocCampaignSource = read('../src/game/ocCampaign.js');
-const characterPlaquesSource = read('../src/game/characterPlaques.js');
-const featuredUniverseSource = read('../src/game/featuredUniversePacks.js');
-const expandedUniversesSource = read('../src/game/expandedUniverses.js');
-const loreAccuratePacksSource = read('../src/game/loreAccuratePacks.js');
-const loreDescriptionsSource = read('../src/game/loreDescriptions.js');
-const narrativeSystemsSource = read('../src/game/narrativeSystems.js');
-const missionStageProjectionSource = read('../src/game/missions/missionStageProjection.js');
+const ocCampaignSource = readGameSource('src/game/ocCampaign.js');
+const characterPlaquesSource = readGameSource('src/game/characterPlaques.js');
+const featuredUniverseSource = readGameSource('src/game/featuredUniversePacks.js');
+const expandedUniversesSource = readGameSource('src/game/expandedUniverses.js');
+const loreAccuratePacksSource = readGameSource('src/game/loreAccuratePacks.js');
+const loreDescriptionsSource = readGameSource('src/game/loreDescriptions.js');
+const narrativeSystemsSource = readGameSource('src/game/narrativeSystems.js');
+const missionStageProjectionSource = readGameSource('src/game/missions/missionStageProjection.js');
 const storySource = `${hubSource}\n${ocCampaignSource}`;
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
-const rpgEngineSource = read('../src/game/engineRpg.js');
+const rpgEngineSource = readGameSource('src/game/engineRpg.js');
 const raceModeSource = read('../src/components/RaceMode.jsx');
-const kartCareerSource = read('../src/game/kartCareer.js');
+const kartCareerSource = readGameSource('src/game/kartCareer.js');
 const fighterModeSource = read('../src/components/FighterMode.jsx');
-const fighterEngineSource = read('../src/game/engineFighter.js');
-const smashEngineSource = read('../src/game/engineSmash.js');
-const raceEngineSource = read('../src/game/engineRace.js');
-const spriteAssetsSource = read('../src/game/spriteAssets.js');
-const rendererSource = read('../src/game/renderer.js');
-const smashArenasSource = read('../src/game/smashArenas.js');
-const tacticsEngineSource = read('../src/game/engineTactics.js');
-const tacticsBattlefieldsSource = read('../src/game/tacticsBattlefields.js');
-const recentUniverseLevelsSource = read('../src/game/recentUniverseLevels.js');
-const recentUniverseTextureAssetsSource = read('../src/game/recentUniverseTextureAssets.js');
+const fighterEngineSource = readGameSource('src/game/engineFighter.js');
+const smashEngineSource = readGameSource('src/game/engineSmash.js');
+const raceEngineSource = readGameSource('src/game/engineRace.js');
+const spriteAssetsSource = readGameSource('src/game/spriteAssets.js');
+const rendererSource = readGameSource('src/game/renderer.js');
+const smashArenasSource = readGameSource('src/game/smashArenas.js');
+const tacticsEngineSource = readGameSource('src/game/engineTactics.js');
+const tacticsBattlefieldsSource = readGameSource('src/game/tacticsBattlefields.js');
+const recentUniverseLevelsSource = readGameSource('src/game/recentUniverseLevels.js');
+const recentUniverseTextureAssetsSource = readGameSource('src/game/recentUniverseTextureAssets.js');
 const recentTextureSources = JSON.parse(read('../public/textures/recent-universes/openai-level-texture-sources.json'));
 const recentTacticsTextureSources = JSON.parse(read('../public/textures/recent-universes/openai-tactics-perspective-sources.json'));
 const spriteChecklistSource = read('../SPRITE_CONVERSION_CHECKLIST.txt');
@@ -608,7 +624,7 @@ expectedChuckyExpansionRoster.forEach(name => {
   assert(loreAccuratePacksSource.includes(name), `Missing Chucky incarnation ${name}.`);
 });
 assert(enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/chucky.png'") && enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/tiffany.png'"), 'Chucky and Tiffany doll bosses must use their dedicated OpenAI sheets.');
-assert(rendererSource.includes("Chucky: '/backgrounds/chucky-play-pals-breach-openai-v2.png'"), 'Chucky stages must use the dedicated Play Pals Breach background.');
+assert(OPENAI_BACKDROPS.Smash.Chucky === '/backgrounds/chucky-play-pals-breach-openai-v2.png', 'Chucky stages must use the dedicated Play Pals Breach background.');
 assert(spriteChecklistSource.includes('[x] Vingt-six nouvelles plaquettes Chucky') && spriteChecklistSource.includes('[x] Les trois equivalents en corps de poupee Tiffany') && spriteChecklistSource.includes('Tiffany humaine et Tiffany poupee en maillot deux pieces Adult AU') && spriteChecklistSource.includes('Buddi Chucky du remake 2019'), 'The completed Chucky expansion must remain visible in the conversion checklist.');
 expectedStargateSpriteOutputs.forEach(output => {
   assert(manifestOutputs.has(output), `Missing Stargate OpenAI sprite ${output}.`);
@@ -639,7 +655,7 @@ expectedDandadanSpriteOutputs.forEach(output => {
   assert(spriteReferenceSource.includes(output), `Missing Dandadan reference trace for ${output}.`);
 });
 assert(loreAccuratePacksSource.includes("hero('jiji_dandadan', 'Jiji'") && loreAccuratePacksSource.includes("hero('seiko_dandadan', 'Seiko Ayase'") && loreAccuratePacksSource.includes("hero('turbo_granny_cat', 'Turbo Granny - Maneki-neko'"), 'Jiji, Seiko, and Turbo Granny cat must remain playable Dandadan signatures.');
-assert(loreAccuratePacksSource.includes('momo_ayase: loadout') && loreAccuratePacksSource.includes('oken_dandadan: loadout') && loreAccuratePacksSource.includes('aira_dandadan: loadout'), 'The three original Dandadan signatures must keep their lore-specific loadouts.');
+assert(['momo_ayase', 'oken_dandadan', 'aira_dandadan'].every(hasLoreLoadout), 'The three original Dandadan signatures must keep their lore-specific loadouts.');
 assert(spriteChecklistSource.includes('Validation technique: 6 plaquettes transparentes, 16/16 cellules non vides'), 'The completed Dandadan character batch must remain documented in the conversion checklist.');
 expectedFrenchComedySpriteOutputs.forEach(output => {
   assert(manifestOutputs.has(output), `Missing French comedy OpenAI sprite ${output}.`);
@@ -647,7 +663,7 @@ expectedFrenchComedySpriteOutputs.forEach(output => {
 });
 assert(expandedUniversesSource.includes("hero: ['inconnus_trio', 'Pascal Legitimus'") && expandedUniversesSource.includes("['bernard_inconnus', 'Bernard Campan'") && expandedUniversesSource.includes("['didier_inconnus', 'Didier Bourdon'"), 'Les Inconnus must expose the three named comedians without replacing their save-compatible IDs.');
 assert(expandedUniversesSource.includes("hero: ['pierre_rrr', 'Pierre - Chef des Cheveux Propres'") && expandedUniversesSource.includes("['chef_cheveux_sales', 'Tonton - Chef des Cheveux Sales'"), 'RRRrrrr!!! must keep its exact clean-hair and dirty-hair identities.');
-assert(loreAccuratePacksSource.includes('inconnus_trio: loadout') && loreAccuratePacksSource.includes('pierre_rrr: loadout') && loreAccuratePacksSource.includes('odile_deray: loadout'), 'The French comedy signatures must keep their lore-specific loadouts.');
+assert(['inconnus_trio', 'pierre_rrr', 'odile_deray'].every(hasLoreLoadout), 'The French comedy signatures must keep their lore-specific loadouts.');
 assert(spriteChecklistSource.includes('[x] Les Inconnus - trio principal OpenAI') && spriteChecklistSource.includes('[x] RRRrrrr!!! - trio principal OpenAI') && spriteChecklistSource.includes('[x] La Cite de la Peur - trio principal OpenAI'), 'The three completed French comedy batches must remain documented in the conversion checklist.');
 expectedFeaturedUniverses.forEach(universe => {
   const universeEntries = (manifest.entries || []).filter(entry => entry.universe === universe);

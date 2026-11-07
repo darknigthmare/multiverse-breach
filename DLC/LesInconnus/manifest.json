@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "les-inconnus",
+  "universe": "Les Inconnus",
+  "directory": "DLC/LesInconnus",
+  "registration": "runtime",
+  "catalogOrder": 142,
+  "modules": [
+    {
+      "path": "data/loreAccuratePacks.js",
+      "runtimeAdapter": "src/game/loreAccuratePacks.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

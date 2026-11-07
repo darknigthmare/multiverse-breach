@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "discipline-the-record-of-acrusade",
+  "universe": "Discipline: The Record of a Crusade",
+  "directory": "DLC/DisciplineTheRecordOfACrusade",
+  "registration": "runtime",
+  "catalogOrder": 392,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartE.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartE.js"
+    },
+    {
+      "path": "data/disciplineSpriteCatalog.js",
+      "runtimeAdapter": "src/game/disciplineSpriteCatalog.js"
+    },
+    {
+      "path": "data/disciplineSprites.js",
+      "runtimeAdapter": "src/game/disciplineSprites.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}
