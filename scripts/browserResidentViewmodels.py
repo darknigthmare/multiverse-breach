@@ -1,24 +1,83 @@
 #!/usr/bin/env python3
 """Real owned resident groups and drawImage cropping. Prepared ownership, not art approval."""
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from importlib.metadata import version
 import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
 
+CLOCK_EPOCH = datetime(2020, 1, 1, tzinfo=timezone.utc)
+CLOCK_START = CLOCK_EPOCH + timedelta(hours=1)
+CITY_REAL_PAUSE_MS = 5200
+
 def check(value, message):
     if not value: raise AssertionError(message)
 
+def clock_reading(page):
+    return page.evaluate('''() => {
+      const ticks = performance.now();
+      return {date: new Date().toISOString(), performanceNow: ticks, rafPhase: ticks % 16};
+    }''')
+
+def prepare_fps_clock(page):
+    check(page.evaluate('window.__sceneQA.state().phase === "ready" && window.__sceneQA.state().t === 0'),
+          'FPS simulation started before clock preparation')
+    # The ready scene must draw its artwork before installation. As in
+    # browserSceneServices.py, let its pending native RAF finish while ready;
+    # the following frame will then belong to the installed virtual clock.
+    page.bring_to_front()
+    page.evaluate('''() => {window.__sceneQA.beforeClock = {
+      frame: requestAnimationFrame.bind(window), cancel: cancelAnimationFrame.bind(window),
+      timeout: setTimeout.bind(window), clear: clearTimeout.bind(window)};}''')
+    page.clock.install(time=CLOCK_EPOCH)
+    page.evaluate('''() => new Promise((resolve, reject) => {
+      const native = window.__sceneQA.beforeClock;
+      let frame;
+      const timeout = native.timeout(() => {
+        native.cancel(frame); delete window.__sceneQA.beforeClock;
+        reject(new Error('Native ready frame did not drain before clock pause'));
+      }, 5000);
+      frame = native.frame(() => {
+        native.clear(timeout); delete window.__sceneQA.beforeClock; resolve();
+      });
+    })''')
+    # A fixed future target cannot become stale between two Playwright calls.
+    # Align the virtual RAF grid only while ready, then normalize wall time.
+    page.clock.pause_at(CLOCK_START)
+    phase=page.evaluate('performance.now()%16')
+    if phase:page.clock.run_for(16-phase)
+    page.clock.set_system_time(CLOCK_START)
+    reading=clock_reading(page)
+    check(reading['rafPhase']==0,'virtual FPS RAF phase is not aligned')
+    check(page.evaluate('window.__sceneQA.state().phase === "ready" && window.__sceneQA.state().t === 0'),
+          'FPS clock preparation advanced the simulation')
+    return reading
+
 def residents(page, args, width, height, lang, out, name):
     fr=lang=='fr'
+    # City runs immediately, including a five-second checkpoint interval.
+    # Install and pause before navigation so none of its timers remain native
+    # and the one-hour preparation jump happens before the scene exists.
+    page.clock.install(time=CLOCK_EPOCH)
+    page.clock.pause_at(CLOCK_START)
     page.goto(f'{args.url}/scripts/fixtures/city-extinction.html?mode=city&catalog=full&lang={lang}',wait_until='networkidle')
     page.wait_for_function('window.__sceneQA?.state()?.npcs?.length')
     page.wait_for_function('window.__sceneQA.media.some(m=>m.src.includes("chapter-01-atrium")&&m.loaded)')
     later=page.get_by_role('button',name='Plus tard' if fr else 'Later',exact=True)
     if later.is_visible():later.click()
-    page.clock.install();page.clock.pause_at(datetime.now(timezone.utc))
     page.evaluate("document.documentElement.style.setProperty('--game-hud-scale','1.4');document.documentElement.style.setProperty('--game-text-scale','1.4');window.dispatchEvent(new Event('multiverse:display-preferences'))")
-    visits=[]
+    prepared_clock=clock_reading(page)
+    frozen=page.evaluate('({snapshot: window.__sceneQA.snapshot(), checkpoints: window.__sceneQA.saves.length})')
+    check(frozen['snapshot'] is not None,'City snapshot missing before clock-pause guard')
+    # This is deliberately real time, longer than City's checkpoint period.
+    # A native RAF or interval escaping the virtual pause must fail the test.
+    page.wait_for_timeout(CITY_REAL_PAUSE_MS)
+    after_pause=page.evaluate('({snapshot: window.__sceneQA.snapshot(), checkpoints: window.__sceneQA.saves.length})')
+    check(frozen['snapshot']==after_pause['snapshot'],'City advanced during a real-time clock pause')
+    check(frozen['checkpoints']==after_pause['checkpoints'],'City checkpoint escaped the virtual clock')
+    check(prepared_clock==clock_reading(page),'virtual City clock advanced during a real-time pause')
+    visits=[];checkpoints_during_movement=0
     for identity in ['torbahead_community_remix_curator','bioshock_rapture_tenenbaum','arca_bastion']:
         page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
         directory=page.locator('.mosaic-resident-directory')
@@ -39,7 +98,11 @@ def residents(page, args, width, height, lang, out, name):
         check(identity in ids and len(ids)<=18 and len(ids)==len(set(ids)),'resident omitted, duplicated or population unbounded')
         check(ids.count('arca_mirelle')==1,'Mirelle guide not retained exactly once')
         check(abs(snapshot['player']['x']-before['x'])<20 and abs(snapshot['player']['y']-before['y'])<20,'directory teleported player')
+        checkpoints=page.evaluate('window.__sceneQA.saves.length')
         page.clock.run_for(14000)
+        published=page.evaluate('window.__sceneQA.saves.length')-checkpoints
+        check(published>0,'City checkpoint did not follow virtual movement time')
+        checkpoints_during_movement+=published
         page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
         log=page.locator('.mosaic-rpg-log span').inner_text()
         expected=resident_name+(' synchronise sa Trame' if fr else ' synchronizes their Thread')
@@ -58,7 +121,8 @@ def residents(page, args, width, height, lang, out, name):
         page.keyboard.press('Escape')
         visits.append(identity)
     page.screenshot(path=str(out/f'{name}-city.png'))
-    return {'residentsReached':visits,'populationLimit':18,'nonCombatResidents':2,'preparedOwnership':True,'virtualClock':True}
+    return {'residentsReached':visits,'populationLimit':18,'nonCombatResidents':2,'preparedOwnership':True,'virtualClock':True,
+            'clockPrepared':prepared_clock,'realPauseVerifiedMs':CITY_REAL_PAUSE_MS,'checkpointsDuringMovement':checkpoints_during_movement}
 
 def viewmodel(page,args,identity,width,height,lang,out,name):
     page.add_init_script('''(()=>{window.__fpsDraws=[];const draw=CanvasRenderingContext2D.prototype.drawImage;
@@ -71,8 +135,10 @@ def viewmodel(page,args,identity,width,height,lang,out,name):
     page.get_by_role('combobox').select_option(identity)
     expect(page.locator('.extinction-panel')).to_have_attribute('data-viewmodel',identity)
     page.wait_for_function('window.__fpsDraws.length>0')
-    page.clock.install();page.clock.pause_at(datetime.now(timezone.utc))
+    prepared_clock=prepare_fps_clock(page)
     page.get_by_role('button',name='DEMARRER RUN' if lang=='fr' else 'START RUN',exact=True).click()
+    check(page.evaluate('window.__sceneQA.state().phase === "running" && window.__sceneQA.state().t === 0'),
+          'FPS did not start at zero simulated time')
     # Respect the existing initial fire cooldown; never force ammunition or timers.
     page.clock.run_for(450)
     before_ammo=page.evaluate('window.__sceneQA.state().weapon.ammo')
@@ -95,7 +161,8 @@ def viewmodel(page,args,identity,width,height,lang,out,name):
         check(any('fps-hands' in d['src'] and abs(d['args'][1]-(6*d['height']/10+40))<.001 and abs(d['args'][3]-(d['height']/10-46))<.001 for d in reload),'Mirelle reload trim not used in real draw')
         check(any('fps-projectile' in d['src'] for d in firing),'Mirelle projectile overlay missing')
     page.screenshot(path=str(out/f'{name}-reload.png'))
-    return {'heroId':identity,'drawCallsChecked':len(firing)+len(reload),'aspectPreserved':True,'preparedOwnership':True,'virtualClock':True}
+    return {'heroId':identity,'drawCallsChecked':len(firing)+len(reload),'aspectPreserved':True,'preparedOwnership':True,'virtualClock':True,
+            'clockPrepared':prepared_clock}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--url',default='http://127.0.0.1:4173');p.add_argument('--evidence',default='/tmp/resident-viewmodels');p.add_argument('--executable');p.add_argument('--case',default='');a=p.parse_args()
@@ -104,6 +171,7 @@ def main():
     cases += [('fps',id,w,h,lang) for id,w,h,lang in [('arca_mirelle',1280,900,'fr'),('arca_mirelle',390,844,'en'),('arca_mirelle',844,390,'fr'),('arca_mirelle',2560,1080,'en'),('arthur_kaamelott',1280,900,'en'),('serj_tankian',1280,900,'fr')]]
     with sync_playwright() as pw:
         b=pw.chromium.launch(headless=True,args=['--no-sandbox'],**({'executable_path':a.executable} if a.executable else {}))
+        browser_version=b.version
         for kind,id,w,h,lang in cases:
             name=f'{kind}-{id}-{w}x{h}-{lang}'
             if a.case and a.case not in name:continue
@@ -114,10 +182,15 @@ def main():
                 check(not errors,str(errors));r['passed']=True
             except Exception as e:
                 r['error']=str(e)
+                try:r['clockAtFailure']=clock_reading(page)
+                except Exception:pass
                 try:page.screenshot(path=str(out/f'{name}-FAILED.png'),timeout=3000)
                 except Exception:pass
             results.append(r);print(json.dumps(r,ensure_ascii=False),flush=True);page.close()
         b.close()
-    report={'scope':'Actual React scenes and FPS drawImage calls. Prepared full ownership, virtual time; no real account or hardware. Only selected media validated.','passed':sum(r['passed'] for r in results),'total':len(results),'cases':results}
+    report={'scope':'Actual React scenes and FPS drawImage calls. Prepared full ownership, virtual time; no real account or hardware. Only selected media validated.',
+            'playwrightVersion':version('playwright'),'browserVersion':browser_version,
+            'clockEpoch':CLOCK_EPOCH.isoformat(),'clockStart':CLOCK_START.isoformat(),
+            'passed':sum(r['passed'] for r in results),'total':len(results),'cases':results}
     (out/'results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));raise SystemExit(0 if results and report['passed']==len(results) else 1)
 if __name__=='__main__':main()
