@@ -1,7 +1,7 @@
 import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from '../src/game/combatStatPreparation.js';
 
 let vite;

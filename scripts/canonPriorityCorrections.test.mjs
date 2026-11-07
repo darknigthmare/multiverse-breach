@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 
 import { getHeroById } from '../src/game/heroes.js';
 import { ENEMIES_DB } from '../src/game/enemies.js';

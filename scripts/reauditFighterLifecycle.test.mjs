@@ -8,7 +8,7 @@ before(async () => {
     ({ EngineFighter } = await import('../src/game/engineFighter.js'));
     ({ HEROES_DB } = await import('../src/game/heroes.js'));
   } else {
-    const { createServer } = await import('vite');
+    const { createServer } = await import('./fixtures/ssrTestServer.mjs');
     vite = await createServer({ appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
     ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js'));
     ({ HEROES_DB } = await vite.ssrLoadModule('/src/game/heroes.js'));

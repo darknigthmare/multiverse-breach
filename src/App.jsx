@@ -3,6 +3,9 @@ import React, { useState, useEffect, useRef, useCallback, useMemo, Suspense } fr
 import sound from './game/soundEngine';
 import { getProgressKeys, rollProgressCalendar, getNextProgressRolloverDelay } from './game/progressCalendar.js';
 import { sanitizeSaveCore } from './game/saveValidation.js';
+import { KNOWN_DLC_HERO_IDS, KNOWN_ARC_REPLAY_DEFINITIONS, getStableUniverseArcStageId } from './game/dlcContentIdentity.js';
+import { isUniverseInstalled } from './game/dlcInstallation.js';
+import { getRuntimeHiddenUniverses, isStageContentAvailable, projectPlayableTeam } from './game/dlcPlayerState.js';
 import { getBrowserStorage, readStorageValue, removeStorageValue } from './game/safeStorage.js';
 import { backupLocalSave, readLocalSaveSnapshot, getSaveBackupKey } from './game/saveRecovery.js';
 import { createCloudOperationEpoch } from './game/cloudOperationEpoch.js';
@@ -39,6 +42,7 @@ import { createPlayerHero, PLAYER_HERO_ID } from './game/playerHero';
 import {
   DEFAULT_HIDDEN_UNIVERSES,
   buildOcDlcCampaignProgress,
+  getDlcUniverseKeys,
   getEnabledOcDlcPackIds,
   isBaseGameUniverse,
   migrateHiddenUniversesForOcDlc
@@ -112,10 +116,9 @@ const SAVE_KEY = 'multiverse_breach_save_v2';
 const TUTORIAL_COMPANION_IDS = ['arca_mirelle', 'arca_bastion'];
 const TITLE_PRESENTATION_MODES = Object.freeze(['RPG', 'Tactics', 'Smash']);
 const OC_CAMPAIGN_SKIN_ID = 'char_player_anchor_palimpsest';
-// These IDs mirror the existing Hub projection. They are frozen here so the
-// v9 migration can recover completed legacy universe arcs without rewriting
-// any stage or reward data in the dirty campaign worktree.
+// Historical identities remain available to migrations in every distribution.
 const ARC_REPLAY_DEFINITIONS = Object.freeze([
+  ...KNOWN_ARC_REPLAY_DEFINITIONS,
   ...CHARACTER_NARRATIVE_ARCS,
   ...TRIO_NARRATIVE_ARCS,
   ...FUSION_MISSIONS.map(mission => ({
@@ -124,7 +127,7 @@ const ARC_REPLAY_DEFINITIONS = Object.freeze([
   })),
   ...UNIVERSE_NARRATIVE_ARCS.map((arc, index) => ({
     arcId: arc.id,
-    finalStageId: 40000 + index
+    finalStageId: getStableUniverseArcStageId(arc.id, index)
   }))
 ]);
 const HubScreen = React.lazy(() => import('./components/HubScreen'));
@@ -383,7 +386,9 @@ const normalizeStoredCustomBattlePreset = (preset = {}) => {
 
 const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   save = sanitizeSaveCore(save, {
-    defaults: DEFAULT_SAVE, knownHeroIds: HEROES_DB.map(hero => hero.id), playerHeroId: PLAYER_HERO_ID
+    defaults: DEFAULT_SAVE,
+    knownHeroIds: [...KNOWN_DLC_HERO_IDS, ...HEROES_DB.map(hero => hero.id)],
+    playerHeroId: PLAYER_HERO_ID
   });
   const fromVersion = Number(save.saveVersion) || 0;
   const merged = { ...DEFAULT_SAVE, ...save };
@@ -436,8 +441,14 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
     ? merged.hiddenUniverses
     : DEFAULT_HIDDEN_UNIVERSES;
   const inventory = Array.isArray(merged.inventory) ? merged.inventory : [];
+  // Historical rewards remain resolvable even when their pack is not included.
+  KNOWN_ARC_REPLAY_DEFINITIONS.forEach(arc => {
+    if (arc.rewardItemId && inventory.includes(arc.rewardItemId)) {
+      arc.finalStageIds.forEach(stageId => completedStages.add(stageId));
+    }
+  });
   UNIVERSE_NARRATIVE_ARCS.forEach((arc, index) => {
-    if (inventory.includes(`universe_arc_${arc.id}`)) completedStages.add(40000 + index);
+    if (inventory.includes(`universe_arc_${arc.id}`)) completedStages.add(getStableUniverseArcStageId(arc.id, index));
   });
   TRIO_NARRATIVE_ARCS.forEach(arc => {
     if (inventory.includes(arc.rewardItemId)) completedStages.add(arc.stageId);
@@ -1336,6 +1347,26 @@ function App() {
   const [heroSkins, setHeroSkins] = useState(initialSave.heroSkins);
   const [hiddenUniverses, setHiddenUniverses] = useState(initialSave.hiddenUniverses);
   const [disabledAssets, setDisabledAssets] = useState(initialSave.disabledAssets);
+  // Keep the saved squad and visibility choices intact across distributions.
+  const runtimeHiddenUniverses = useMemo(() => getRuntimeHiddenUniverses(
+    hiddenUniverses, getDlcUniverseKeys(), isUniverseInstalled
+  ), [hiddenUniverses]);
+  const projectTeam = useCallback(team => projectPlayableTeam(team, {
+    heroes: HEROES_DB,
+    unlockedHeroIds: unlockedHeroes,
+    playerHeroId: PLAYER_HERO_ID,
+    hiddenUniverses,
+    disabledHeroIds: disabledAssets.heroes,
+    isUniverseInstalled
+  }), [unlockedHeroes, hiddenUniverses, disabledAssets.heroes]);
+  const playableTeam = useMemo(() => projectTeam(activeTeam), [activeTeam, projectTeam]);
+  const unavailableTeamCount = activeTeam.filter(id => !playableTeam.includes(id)).length;
+  const setPlayableTeam = useCallback(next => {
+    // Only an explicit squad edit replaces the stored selection. Functional
+    // updaters receive the same available squad that the player can see.
+    setActiveTeam(previous => projectTeam(typeof next === 'function'
+      ? next(projectTeam(previous)) : next));
+  }, [projectTeam]);
   const [portalStats, setPortalStats] = useState(initialSave.portalStats);
   const [portalCollection, setPortalCollection] = useState(initialSave.portalCollection);
   const [publicProfile, setPublicProfile] = useState(initialSave.publicProfile);
@@ -1367,11 +1398,11 @@ function App() {
   const titleRotationRoster = useMemo(() => buildTitleRotationRoster({
     unlockedHeroIds: unlockedHeroes,
     heroes: [createPlayerHero(playerProfile), ...HEROES_DB],
-    hiddenUniverses,
+    hiddenUniverses: runtimeHiddenUniverses,
     disabledHeroIds: disabledAssets.heroes || [],
     dayKey: titleDayKey,
     maxItems: 6
-  }), [unlockedHeroes, playerProfile, hiddenUniverses, disabledAssets.heroes, titleDayKey]);
+  }), [unlockedHeroes, playerProfile, runtimeHiddenUniverses, disabledAssets.heroes, titleDayKey]);
   const titleRotation = useMemo(() => titleRotationRoster.map((entry, index) => {
     const preferredMode = TITLE_PRESENTATION_MODES[index % TITLE_PRESENTATION_MODES.length];
     const candidates = [preferredMode, ...TITLE_PRESENTATION_MODES.filter(mode => mode !== preferredMode)];
@@ -1385,9 +1416,9 @@ function App() {
   const titleAttractCards = useMemo(() => buildUnlockedAttractCards({
     history: portalStats.history || [],
     cards: portalCollection.cards || {},
-    hiddenUniverses,
+    hiddenUniverses: runtimeHiddenUniverses,
     maxItems: 6
-  }), [portalStats.history, portalCollection.cards, hiddenUniverses]);
+  }), [portalStats.history, portalCollection.cards, runtimeHiddenUniverses]);
   const titleAttractStageRoster = useMemo(() => buildUnlockedAttractStages({
     completedStageIds: completedStages,
     journal: activityProgress.riftJournal || [],
@@ -1399,10 +1430,10 @@ function App() {
           mode: 'RPG'
         }]
       : [],
-    hiddenUniverses,
+    hiddenUniverses: runtimeHiddenUniverses,
     disabledStageIds: disabledAssets.stages || [],
     maxItems: 6
-  }), [completedStages, activityProgress.riftJournal, onboarding.profileCreated, lang, hiddenUniverses, disabledAssets.stages]);
+  }), [completedStages, activityProgress.riftJournal, onboarding.profileCreated, lang, runtimeHiddenUniverses, disabledAssets.stages]);
   const titleAttractStages = useMemo(() => titleAttractStageRoster.map(stage => ({
     ...stage,
     image: getOpenAiBackdropSrc(stage.universe, stage.mode) || '/images/missions/fusion-rifts.webp'
@@ -1413,7 +1444,11 @@ function App() {
       ? new Date(Date.UTC(year, month - 1, day, 12))
       : new Date(Date.UTC(1970, 0, 1, 12));
   }, [titleDayKey]);
-  const activeTitleEvents = useMemo(() => getActiveSpecialEvents(titleEventDate), [titleEventDate]);
+  const activeTitleEvents = useMemo(() => getActiveSpecialEvents(titleEventDate).filter(event => (
+    isStageContentAvailable(buildSpecialEventStage(event, titleEventDate), {
+      isUniverseInstalled, hiddenUniverses: runtimeHiddenUniverses
+    })
+  )), [titleEventDate, runtimeHiddenUniverses]);
   const titleEventVariant = useMemo(() => {
     const activeEvent = activeTitleEvents.find(event => event.id === activityProgress.activeSpecialEventId);
     if (!activeEvent) return null;
@@ -1427,22 +1462,29 @@ function App() {
       playable: stage?.missionDeployment?.allowed === true
     };
   }, [activeTitleEvents, activityProgress.activeSpecialEventId, eventTokens, lang, titleEventDate]);
-  const titleEventOptions = useMemo(() => SPECIAL_EVENTS.map(event => ({
+  const titleEventOptions = useMemo(() => SPECIAL_EVENTS.filter(event => (
+    isStageContentAvailable(buildSpecialEventStage(event, titleEventDate), {
+      isUniverseInstalled, hiddenUniverses: runtimeHiddenUniverses
+    })
+  )).map(event => ({
     id: event.id,
     title: event.title?.[lang] || event.title?.fr || event.id,
     active: isSpecialEventActive(event, titleEventDate),
     windowLabel: formatSpecialEventWindow(event, lang, titleEventDate.getUTCFullYear())
-  })), [lang, titleEventDate]);
+  })), [lang, titleEventDate, runtimeHiddenUniverses]);
   const selectTitleEventVariant = useCallback(eventId => {
     const normalizedEventId = SPECIAL_EVENTS.some(event => (
       event.id === eventId && isSpecialEventActive(event, titleEventDate)
+      && isStageContentAvailable(buildSpecialEventStage(event, titleEventDate), {
+        isUniverseInstalled, hiddenUniverses: runtimeHiddenUniverses
+      })
     )) ? eventId : null;
     setActivityProgress(previous => ({
       ...previous,
       activeSpecialEventId: normalizedEventId
     }));
     sound.playSfx(normalizedEventId ? 'confirm' : 'click');
-  }, [titleEventDate]);
+  }, [titleEventDate, runtimeHiddenUniverses]);
 
   const getCurrentSave = useCallback(() => {
     const normalizedCompletedArcIds = [...new Set(completedArcIds)];
@@ -1765,7 +1807,9 @@ function App() {
   const handleLaunchStage = (stage) => {
     // Defense en profondeur : un appel programmatique ne contourne pas le
     // verrou de composition deja evalue par le Hub.
-    if (!canLaunchPreparedMission(stage)) return;
+    if (!canLaunchPreparedMission(stage) || !isStageContentAvailable(stage, {
+      isUniverseInstalled, hiddenUniverses
+    })) return;
     setHubInitialTab('missions');
     setBattleSessionId(battleGateRef.current.begin());
     battleOutcomeRef.current = null;
@@ -1969,7 +2013,7 @@ function App() {
         ),
         heroInstability: Object.fromEntries(
           Object.entries(prev.heroInstability || {})
-            .map(([heroId, value]) => [heroId, activeTeam.includes(heroId) ? Math.max(0, (Number(value) || 0) - 1) : Number(value) || 0])
+            .map(([heroId, value]) => [heroId, playableTeam.includes(heroId) ? Math.max(0, (Number(value) || 0) - 1) : Number(value) || 0])
             .filter(([, value]) => value > 0)
         ),
         modeWins: {
@@ -2046,11 +2090,11 @@ function App() {
         heroInstability: {
           ...Object.fromEntries(
             Object.entries(prev.heroInstability || {})
-              .filter(([heroId]) => !activeTeam.includes(heroId))
+              .filter(([heroId]) => !playableTeam.includes(heroId))
               .map(([heroId, value]) => [heroId, Math.max(0, Number(value) || 0)])
               .filter(([, value]) => value > 0)
           ),
-          ...Object.fromEntries(activeTeam.map(heroId => [heroId, 1]))
+          ...Object.fromEntries(playableTeam.map(heroId => [heroId, 1]))
         },
         itemActivations: (prev.dayKey === dayKey ? (prev.itemActivations || 0) : 0) + battleItemsUsed,
         weeklyItemActivations: (prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0) + battleItemsUsed,
@@ -2652,8 +2696,9 @@ function App() {
             unlockedHeroes={unlockedHeroes}
             heroLevels={heroLevels}
             setHeroLevels={setHeroLevels}
-            activeTeam={activeTeam}
-            setActiveTeam={setActiveTeam}
+            activeTeam={playableTeam}
+            setActiveTeam={setPlayableTeam}
+            unavailableTeamCount={unavailableTeamCount}
             completedStages={completedStages}
             completedArcIds={completedArcIds}
             arcReplayUnlockedIds={arcReplayUnlockedIds}
@@ -2713,7 +2758,7 @@ function App() {
             <GameCanvas
               lang={lang}
               playerProfile={playerProfile}
-              activeTeam={activeTeam}
+              activeTeam={playableTeam}
               stage={activeStage}
               heroLevels={heroLevels}
               equippedGear={equippedGear}
@@ -2723,7 +2768,7 @@ function App() {
               completedStages={completedStages}
               reputationProgress={activityProgress.reputationProgress}
               collectionBonusCount={collectionBonusCount}
-              hiddenUniverses={hiddenUniverses}
+              hiddenUniverses={runtimeHiddenUniverses}
               disabledAssets={disabledAssets}
               hudTheme={resolveActiveHudTheme(portalCollection)}
               onBattleEnd={handleBattleEnd}
@@ -2784,7 +2829,7 @@ function App() {
             setUnlockedHeroes={setUnlockedHeroes}
             inventory={inventory}
             setInventory={setInventory}
-            hiddenUniverses={hiddenUniverses}
+            hiddenUniverses={runtimeHiddenUniverses}
             disabledAssets={disabledAssets}
             completedStages={completedStages}
             collectionOnly={portalMode === 'collection'}

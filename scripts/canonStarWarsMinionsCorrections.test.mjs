@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 
 import { HEROES_DB, getHeroById } from '../src/game/heroes.js';
 import { getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';

@@ -1,6 +1,6 @@
 import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { CANON_PRIORITY_STAGES } from '../src/game/canonPriorityStages.js';
 import {
   CANONICAL_ARCHIVE_ENEMY_LORE,

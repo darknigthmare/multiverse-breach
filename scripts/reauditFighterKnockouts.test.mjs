@@ -1,6 +1,6 @@
 import { before, after, afterEach, test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 let vite, Fighter;
 const engines = [];
 const actor = id => ({ id, name: id, universe: 'Nexus de Convergence', stats: { hp: 200, atk: 18, def: 5, spd: 10 } });

@@ -419,3 +419,117 @@ test('CLI partial output is bounded and explicit; strict mode fails with unavail
   assert.equal(strict.status, 1);
   assert.match(strict.stderr, /Missing DLC sources/);
 });
+
+
+// Profile fixtures carry real identity and shared inventories. Legacy fixtures
+// above intentionally retain the pre-profile shape to protect compatibility.
+const createProfileFixture = t => {
+  const f = createFixture(t);
+  const packs = [
+    { id: 'halo', universe: 'Halo', catalogOrder: 1 },
+    { id: 'half-life', universe: 'HalfLife', catalogOrder: 2 }
+  ];
+  const inventory = (folder, entries) => f.write('DLC/' + folder + '/assets.json',
+    JSON.stringify({ schemaVersion: 1, universe: folder, assets: entries, sharedDependencies: ['/common.bin'] }, null, 2) + '\n');
+  for (const pack of packs) {
+    f.write('DLC/' + pack.universe + '/manifest.json', JSON.stringify({
+      schemaVersion: 1, ...pack, directory: 'DLC/' + pack.universe,
+      registration: 'runtime', modules: [], assetManifest: 'assets.json'
+    }, null, 2) + '\n');
+    const entry = asset('/images/' + pack.id + '.png', pack.universe);
+    inventory(pack.universe, [entry]);
+    f.write(entry.sourcePath, Buffer.from([0, 255, pack.catalogOrder, 10]));
+  }
+  f.write('DLC/shared-assets.json', JSON.stringify({
+    schemaVersion: 1, assets: [{ sourcePath: 'public/common.bin', publicPath: '/common.bin' }]
+  }, null, 2) + '\n');
+  f.write('public/common.bin', Buffer.from([42, 0, 255]));
+  return { ...f, inventory };
+};
+
+test('profile transitions remove and reinstall only untouched generated copies', t => {
+  const f = createProfileFixture(t);
+  const halo = f.read('DLC/Halo/assets/images/halo.png');
+  const halfLife = f.read('DLC/HalfLife/assets/images/half-life.png');
+  const common = f.read('public/common.bin');
+  assert.equal(prepareDlcAssets({ root: f.root }).copied, 2);
+  assert.equal(prepareDlcAssets({ root: f.root, selection: ['halo'] }).removed, 1);
+  assert.equal(existsSync(join(f.root, 'public/images/half-life.png')), false);
+  assert.deepEqual(f.read('public/images/halo.png'), halo);
+  assert.equal(prepareDlcAssets({ root: f.root, selection: [] }).removed, 1);
+  assert.equal(existsSync(join(f.root, 'public/images/halo.png')), false);
+  assert.deepEqual(f.read('DLC/Halo/assets/images/halo.png'), halo);
+  assert.deepEqual(f.read('DLC/HalfLife/assets/images/half-life.png'), halfLife);
+  assert.deepEqual(f.read('public/common.bin'), common);
+  const reinstalled = prepareDlcAssets({ root: f.root, selection: ['half-life', 'halo'] });
+  assert.equal(reinstalled.complete, true);
+  assert.equal(reinstalled.copied, 2);
+  assert.deepEqual(f.read('public/images/halo.png'), halo);
+  assert.deepEqual(f.read('public/images/half-life.png'), halfLife);
+  assert.equal(prepareDlcAssets({ root: f.root, selection: ['halo', 'half-life'] }).unchanged, 2);
+});
+
+test('selection-aware entry reads distinguish undefined from the empty base selection', t => {
+  const f = createProfileFixture(t);
+  assert.equal(readDlcPublicationEntries({ root: f.root }).length, 2);
+  assert.deepEqual(readDlcPublicationEntries({ root: f.root, selection: [] }), []);
+  assert.deepEqual(readDlcPublicationEntries({ root: f.root, selection: ['halo'] }).map(entry => entry.sourcePath),
+    ['DLC/Halo/assets/images/halo.png']);
+});
+
+test('modified managed copies block pack removal before any state or file mutation', t => {
+  const f = createProfileFixture(t);
+  prepareDlcAssets({ root: f.root });
+  f.write('public/images/half-life.png', 'locally modified');
+  const state = f.read(STATE_PATH);
+  const halo = f.read('public/images/halo.png');
+  assert.throws(() => prepareDlcAssets({ root: f.root, selection: [] }), /modified/);
+  assert.deepEqual(f.read(STATE_PATH), state);
+  assert.deepEqual(f.read('public/images/halo.png'), halo);
+  assert.equal(f.read('public/images/half-life.png').toString(), 'locally modified');
+});
+
+test('strict selection ignores missing excluded media and rejects missing selected media before removing copies', t => {
+  const f = createProfileFixture(t);
+  prepareDlcAssets({ root: f.root });
+  rmSync(join(f.root, 'DLC/HalfLife/assets/images/half-life.png'));
+  assert.equal(prepareDlcAssets({ root: f.root, selection: ['halo'] }).complete, true);
+  const state = f.read(STATE_PATH);
+  const halo = f.read('public/images/halo.png');
+  assert.throws(() => prepareDlcAssets({ root: f.root, selection: ['half-life'] }), /missing|Missing|unavailable|incomplete/);
+  assert.deepEqual(f.read(STATE_PATH), state);
+  assert.deepEqual(f.read('public/images/halo.png'), halo);
+  assert.equal(existsSync(join(f.root, 'public/images/half-life.png')), false);
+});
+
+test('public ownership transfer declared by an excluded pack preserves the canonical source', t => {
+  const f = createProfileFixture(t);
+  prepareDlcAssets({ root: f.root });
+  f.inventory('HalfLife', [{ sourcePath: 'public/images/half-life.png', publicPath: '/images/half-life.png' }]);
+  f.write('public/images/half-life.png', 'new canonical shared source');
+  const result = prepareDlcAssets({ root: f.root, selection: [] });
+  assert.equal(result.removed, 1);
+  assert.equal(f.read('public/images/half-life.png').toString(), 'new canonical shared source');
+  assert.deepEqual(JSON.parse(f.read(STATE_PATH)).files, []);
+});
+
+test('invalid profiles and partial publication cannot create distribution state', t => {
+  const f = createProfileFixture(t);
+  for (const selection of [['unknown'], ['halo', 'halo']]) {
+    assert.throws(() => prepareDlcAssets({ root: f.root, selection }), /Unknown|Duplicate/);
+  }
+  assert.throws(() => prepareDlcAssets({ root: f.root, selection: ['halo'], availableOnly: true }), /require complete assets/);
+  assert.equal(existsSync(join(f.root, STATE_PATH)), false);
+  assert.equal(existsSync(join(f.root, 'public/images/halo.png')), false);
+});
+
+test('profile publication rejects symlinked excluded metadata before modifying published files', t => {
+  const f = createProfileFixture(t);
+  prepareDlcAssets({ root: f.root });
+  const state = f.read(STATE_PATH);
+  rmSync(join(f.root, 'DLC/HalfLife/assets.json'));
+  symlinkSync('../Halo/assets.json', join(f.root, 'DLC/HalfLife/assets.json'));
+  assert.throws(() => prepareDlcAssets({ root: f.root, selection: [] }), /Symlink/);
+  assert.deepEqual(f.read(STATE_PATH), state);
+  assert.equal(existsSync(join(f.root, 'public/images/halo.png')), true);
+});

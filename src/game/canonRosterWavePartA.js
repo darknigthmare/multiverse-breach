@@ -1,3 +1,5 @@
+import { DLC_PACK_MANIFESTS } from '../../DLC/index.js';
+import { isDlcPackInstalled } from './dlcInstallation.js';
 // Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
 import * as dlcPoppyPlaytime from '../../DLC/PoppyPlaytime/data/canonRosterWavePartA.js';
 import * as dlcPlantsVsZombies from '../../DLC/PlantsVsZombies/data/canonRosterWavePartA.js';
@@ -178,8 +180,14 @@ export const CANON_ROSTER_WAVE_PART_A = Object.freeze([
   dlcTrololo.createCanonRosterWavePartA({ ADAPTED, CANON, TROLOLO, definePack, event, gear, hero, localizedLore, metadata, stageVariant, threat })
 ]);
 
-if (CANON_ROSTER_WAVE_PART_A.length !== 10) {
-  throw new TypeError("CANON_ROSTER_WAVE_PART_A must contain exactly 10 universes.");
+const declaredCanonRosterPacks = DLC_PACK_MANIFESTS.filter(pack => pack.modules.some(module => module.path === 'data/canonRosterWavePartA.js'));
+if (declaredCanonRosterPacks.length !== 10) {
+  throw new TypeError('CANON_ROSTER_WAVE_PART_A must declare exactly 10 universes.');
+}
+const expectedCanonRosterUniverses = new Set(declaredCanonRosterPacks.filter(pack => isDlcPackInstalled(pack.id)).map(pack => pack.universe));
+if (CANON_ROSTER_WAVE_PART_A.length !== expectedCanonRosterUniverses.size
+  || CANON_ROSTER_WAVE_PART_A.some(pack => !expectedCanonRosterUniverses.has(pack.universe))) {
+  throw new TypeError('CANON_ROSTER_WAVE_PART_A must contain exactly the installed declared universes.');
 }
 
 const runtimeNames = CANON_ROSTER_WAVE_PART_A.map((pack) => pack.universe);
