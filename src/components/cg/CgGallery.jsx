@@ -623,7 +623,10 @@ export default function CgGallery({
                 )}
               </div>
 
-              <details className="cg-lightbox__details"><summary>{locale === 'fr' ? 'Dossier, crédits et sources' : 'Record, credits and sources'}</summary>
+              <details className="cg-lightbox__details"><summary title={locale === 'fr' ? 'Dossier, crédits et sources' : 'Record, credits and sources'}>
+                <span className="cg-lightbox__details-label">{locale === 'fr' ? 'Dossier, crédits et sources' : 'Record, credits and sources'}</span>
+                <span className="cg-lightbox__details-icon" aria-hidden="true">i</span>
+              </summary>
                 <div className="cg-lightbox__details-content">
                 <div className="cg-lightbox__badges">
                   <span>{selectedCg.family}</span>

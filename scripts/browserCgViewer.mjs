@@ -34,6 +34,7 @@ try {
       try {
         await page.goto(`http://multiverse.test/scripts/fixtures/cg-viewer.html?lang=${lang}`);
         await page.waitForFunction(() => document.querySelector('.cg-gallery__stage-open'));
+        await page.waitForFunction(() => getComputedStyle(document.documentElement).fontSize === '24px');
         assert.deepEqual(await page.evaluate(() => JSON.parse(localStorage.getItem('multiverse-breach-cg-gallery-favorites-v1'))), ['qa-base', 'qa-absent-dlc']);
         const trigger = page.locator('.cg-gallery__stage-open');
         assert.equal(await page.locator('[data-cg-unlocked="false"] img').count(), 0, 'locked art stays undisclosed');
@@ -44,6 +45,12 @@ try {
         await page.waitForFunction(() => [...document.querySelectorAll('.cg-lightbox img')].every(img => img.complete && img.naturalWidth > 0));
         const expected = await page.evaluate(() => window.__cgViewerQA);
         assert.equal(await page.locator('.cg-lightbox__viewport > img').getAttribute('src'), expected.revised);
+        await page.waitForFunction(() => {
+          const frame = document.querySelector('.cg-lightbox__viewport').getBoundingClientRect();
+          const art = document.querySelector('.cg-lightbox__viewport > img').getBoundingClientRect();
+          return art.top >= frame.top - 1 && art.left >= frame.left - 1 && art.right <= frame.right + 1 && art.bottom <= frame.bottom + 1;
+        });
+        await page.screenshot({ path: resolve(evidence, `${name}-single-fit.png`) });
         await reset.focus(); await page.keyboard.press('Equal');
         assert.equal(await reset.innerText(), '125%');
         await page.keyboard.press('Control+Equal');
@@ -75,20 +82,42 @@ try {
         for (let i = 0; i < 8; i++) await zoomIn.click();
         assert.equal(await reset.innerText(), '300%'); assert.equal(await zoomIn.isDisabled(), true);
         const figure = page.locator('.cg-lightbox__comparison figure').first();
-        await figure.focus(); await page.keyboard.press('ArrowRight');
-        await page.waitForFunction(() => document.querySelector('.cg-lightbox__comparison figure').scrollLeft > 0);
-        record.imageScroll = await figure.evaluate(node => ({ left: node.scrollLeft, width: node.clientWidth, scrollWidth: node.scrollWidth }));
+        await figure.focus(); await page.keyboard.press('ArrowDown');
+        await page.waitForFunction(() => document.querySelector('.cg-lightbox__comparison figure').scrollTop > 0);
+        if (viewport.width !== 844) {
+          await page.keyboard.press('ArrowRight');
+          await page.waitForFunction(() => document.querySelector('.cg-lightbox__comparison figure').scrollLeft > 0);
+        }
+        record.imageScroll = await figure.evaluate(node => ({ left: node.scrollLeft, top: node.scrollTop, width: node.clientWidth, scrollWidth: node.scrollWidth, height: node.clientHeight, scrollHeight: node.scrollHeight }));
         await reset.click();
+        await page.waitForFunction(() => [...document.querySelectorAll('.cg-lightbox__comparison figure')].every(figure => {
+          const frame = figure.getBoundingClientRect(), art = figure.querySelector('img').getBoundingClientRect();
+          const caption = figure.querySelector('figcaption').getBoundingClientRect();
+          return art.top >= frame.top - 1 && art.left >= frame.left - 1 && art.right <= frame.right + 1 && art.bottom <= caption.top + 1;
+        }));
         record.bounds = await page.locator('.cg-lightbox__panel').evaluate(node => { const r = node.getBoundingClientRect(); return { left: r.left, top: r.top, right: r.right, bottom: r.bottom, width: node.clientWidth, scrollWidth: node.scrollWidth }; });
         assert.ok(record.bounds.left >= 31 && record.bounds.top >= 31 && record.bounds.right <= viewport.width - 31 && record.bounds.bottom <= viewport.height - 31);
         assert.ok(record.bounds.scrollWidth <= record.bounds.width + 1);
         record.viewportHeight = await page.locator('.cg-lightbox__viewport').evaluate(node => node.getBoundingClientRect().height);
         assert.ok(record.viewportHeight >= 44, 'viewer keeps a usable artwork area below the controls');
-        const size = await reset.evaluate(node => parseFloat(getComputedStyle(node).fontSize));
+        const details = page.locator('.cg-lightbox__details');
+        await details.locator('summary').click();
+        assert.notEqual(await details.getAttribute('open'), null);
+        assert.ok((await details.innerText()).includes('Synthetic browser fixture'));
+        await details.locator('summary').click();
+        assert.equal(await details.getAttribute('open'), null);
+        const fontState = () => reset.evaluate(node => ({ font: parseFloat(getComputedStyle(node).fontSize), root: getComputedStyle(document.documentElement).fontSize, scale: document.documentElement.style.getPropertyValue('--game-text-scale') }));
+        record.fontScale = { initial: await fontState() };
         await page.evaluate(() => document.documentElement.style.setProperty('--game-text-scale', '1'));
-        const normalSize = await reset.evaluate(node => parseFloat(getComputedStyle(node).fontSize));
+        await page.waitForFunction(() => getComputedStyle(document.documentElement).fontSize === '16px');
+        await page.evaluate(() => new Promise(resolve => requestAnimationFrame(resolve)));
+        record.fontScale.normal = await fontState();
         await page.evaluate(() => document.documentElement.style.setProperty('--game-text-scale', '1.5'));
-        assert.ok(Math.abs(size / normalSize - 1.5) < 0.01); record.fontScale = size / normalSize;
+        await page.waitForFunction(() => getComputedStyle(document.documentElement).fontSize === '24px');
+        await page.evaluate(() => new Promise(resolve => requestAnimationFrame(resolve)));
+        record.fontScale.large = await fontState();
+        record.fontScale.ratio = record.fontScale.large.font / record.fontScale.normal.font;
+        assert.ok(Math.abs(record.fontScale.ratio - 1.5) < 0.01, JSON.stringify(record.fontScale));
         record.controls = await page.locator('.cg-lightbox__controls button').evaluateAll(nodes => nodes.map(node => ({ height: node.getBoundingClientRect().height, width: node.getBoundingClientRect().width })));
         assert.ok(record.controls.every(box => box.height >= 44 && box.width >= 44));
         await page.screenshot({ path: resolve(evidence, `${name}-comparison.png`) });
@@ -114,7 +143,7 @@ try {
         assert.equal(await fullscreen.getAttribute('aria-pressed'), 'false');
         assert.equal(await dialog.isVisible(), true); record.deniedFullscreen = 'viewer-retained';
         record.deniedViewportHeight = await imageViewport.evaluate(node => node.getBoundingClientRect().height);
-        assert.ok(record.deniedViewportHeight >= 44, 'fullscreen refusal keeps a usable artwork area');
+        assert.ok(record.deniedViewportHeight >= 96, 'fullscreen refusal keeps a usable artwork area');
         await page.screenshot({ path: resolve(evidence, `${name}-fullscreen-refused.png`) });
         await page.keyboard.press('Escape');
         assert.equal(await dialog.count(), 0);
