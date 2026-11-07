@@ -4954,17 +4954,17 @@ function ExtinctionRoyale({
 
         <div className="extinction-hud-dock" inert={runEnded}>
           <div className="nexus-play-stats" role="group" aria-label={lang === 'fr' ? 'État du combattant' : 'Fighter status'}>
-            <span>{runActive ? (lang === 'fr' ? 'RUN ACTIVE' : 'RUN ACTIVE') : (lang === 'fr' ? 'PRET' : 'READY')}</span>
+            <span className="extinction-stat-run">{runActive ? (lang === 'fr' ? 'RUN ACTIVE' : 'RUN ACTIVE') : (lang === 'fr' ? 'PRET' : 'READY')}</span>
             <span className="extinction-health" data-critical={runSnapshot.hp <= runSnapshot.maxHp * 0.25}>
               {lang === 'fr' ? 'PV' : 'HP'} {Math.round(runSnapshot.hp)} / {Math.round(runSnapshot.maxHp)}
               <progress value={runSnapshot.hp} max={runSnapshot.maxHp} aria-label={lang === 'fr' ? 'Points de vie' : 'Health'} />
             </span>
-            <span>ARM {Math.round(runSnapshot.armor || 0)}</span>
-            <span>{lang === 'fr' ? 'MUN' : 'AMMO'} {runSnapshot.ammo}+{runSnapshot.reserveAmmo}</span>
-            <span>{lang === 'fr' ? 'VAGUE' : 'WAVE'} {runSnapshot.wave}</span>
-            <span>K.O. {runSnapshot.kills}</span>
-            {activeSignature && <span>{lang === 'fr' ? 'ULTIME' : 'ULTIMATE'} {Math.floor(runSnapshot.signatureCharge || 0)}/100{runSnapshot.signatureGuard ? (lang === 'fr' ? ' · GARDE' : ' · GUARD') : ''}</span>}
-            {runMode === 'extraction' && <span>{lang === 'fr' ? 'BALISES' : 'BEACONS'} {runSnapshot.beacons}/{EXTINCTION_BEACON_TARGET}</span>}
+            <span className="extinction-stat-armor">ARM {Math.round(runSnapshot.armor || 0)}</span>
+            <span className="extinction-stat-ammo">{lang === 'fr' ? 'MUN' : 'AMMO'} {runSnapshot.ammo}+{runSnapshot.reserveAmmo}</span>
+            <span className="extinction-stat-wave">{lang === 'fr' ? 'VAGUE' : 'WAVE'} {runSnapshot.wave}</span>
+            <span className="extinction-stat-kills">K.O. {runSnapshot.kills}</span>
+            {activeSignature && <span className="extinction-stat-signature">{lang === 'fr' ? 'ULTIME' : 'ULTIMATE'} {Math.floor(runSnapshot.signatureCharge || 0)}/100{runSnapshot.signatureGuard ? (lang === 'fr' ? ' · GARDE' : ' · GUARD') : ''}</span>}
+            {runMode === 'extraction' && <span className="extinction-stat-beacons">{lang === 'fr' ? 'BALISES' : 'BEACONS'} {runSnapshot.beacons}/{EXTINCTION_BEACON_TARGET}</span>}
           </div>
           <div className="nexus-play-actions">
             {!runActive && !runEnded && (
@@ -4974,10 +4974,10 @@ function ExtinctionRoyale({
             )}
             {runActive && (
               <>
-                <button className="btn-retro" onClick={fire} title={lang === 'fr' ? 'Tire avec l arme FPS du heros selectionne.' : 'Fire the selected hero FPS weapon.'}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
-                <button className="btn-retro" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
-                <button className="btn-retro" onClick={activateRoleSkill} disabled={runSnapshot.skillCooldown > 0} title={lang === 'fr' ? 'Active la capacité spéciale liée au rôle du héros.' : 'Activate the selected hero role ability.'}>{runSnapshot.skillCooldown > 0 ? `ROLE ${Math.ceil(runSnapshot.skillCooldown / 60)}s` : 'ROLE'}</button>
-                <button className="btn-retro" onClick={collectLoot} disabled={!runSnapshot.nearbyLoot} title={runSnapshot.nearbyLoot || (lang === 'fr' ? 'Approche-toi d un objet ou d une balise.' : 'Move near an item or beacon.')}>{runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}</button>
+                <button className="btn-retro extinction-primary-action" onClick={fire} title={lang === 'fr' ? 'Tire avec l arme FPS du heros selectionne.' : 'Fire the selected hero FPS weapon.'}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
+                <button className="btn-retro extinction-primary-action" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
+                <button className="btn-retro extinction-primary-action" onClick={activateRoleSkill} disabled={runSnapshot.skillCooldown > 0} title={lang === 'fr' ? 'Active la capacité spéciale liée au rôle du héros.' : 'Activate the selected hero role ability.'}>{runSnapshot.skillCooldown > 0 ? `ROLE ${Math.ceil(runSnapshot.skillCooldown / 60)}s` : 'ROLE'}</button>
+                <button className="btn-retro extinction-primary-action" onClick={collectLoot} disabled={!runSnapshot.nearbyLoot} title={runSnapshot.nearbyLoot || (lang === 'fr' ? 'Approche-toi d un objet ou d une balise.' : 'Move near an item or beacon.')}>{runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}</button>
                 {activeSignature && <div className="extinction-protocol-actions" role="group" aria-label={lang === 'fr' ? 'Protocoles personnels' : 'Personal protocols'}>
                   {[['secondary', 'F', 'SECONDAIRE', 'SECONDARY'], ['defense', 'C', 'DÉFENSE', 'DEFENSE'], ['special', 'X', 'ULTIME', 'ULTIMATE']].map(([slot, key, fr, en]) => {
                     const action = activeSignature.actions[slot];
@@ -4990,12 +4990,12 @@ function ExtinctionRoyale({
                       onClick={() => activateSignature(slot)}><strong>{key} {lang === 'fr' ? fr : en}</strong><small>{cooldown ? `${cooldown}s` : slot === 'special' ? `${Math.floor(runSnapshot.signatureCharge || 0)}/100` : label}</small></button>;
                   })}
                 </div>}
-                <SceneHoldButton className="btn-retro" action="forward" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</SceneHoldButton>
-                <SceneHoldButton className="btn-retro" action="back" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'}>{lang === 'fr' ? 'RECUL' : 'BACK'}</SceneHoldButton>
-                <SceneHoldButton className="btn-retro" action="strafeLeft" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à gauche.' : 'Hold to strafe left.'}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</SceneHoldButton>
-                <SceneHoldButton className="btn-retro" action="strafeRight" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à droite.' : 'Hold to strafe right.'}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</SceneHoldButton>
-                <SceneHoldButton className="btn-retro" action="turnLeft" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la gauche.' : 'Hold to turn the camera left.'}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</SceneHoldButton>
-                <SceneHoldButton className="btn-retro" action="turnRight" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la droite.' : 'Hold to turn the camera right.'}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro extinction-move-action" action="forward" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro extinction-move-action" action="back" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'}>{lang === 'fr' ? 'RECUL' : 'BACK'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro extinction-move-action" action="strafeLeft" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à gauche.' : 'Hold to strafe left.'}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro extinction-move-action" action="strafeRight" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à droite.' : 'Hold to strafe right.'}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro extinction-move-action" action="turnLeft" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la gauche.' : 'Hold to turn the camera left.'}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</SceneHoldButton>
+                <SceneHoldButton className="btn-retro extinction-move-action" action="turnRight" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la droite.' : 'Hold to turn the camera right.'}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</SceneHoldButton>
               </>
             )}
           </div>

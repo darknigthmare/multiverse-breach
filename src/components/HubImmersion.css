@@ -305,15 +305,12 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
 .extinction-intel-button { color: #ffe59c; background: transparent; border: 0; padding: 0; text-align: left; font: inherit; font-weight: 700; cursor: pointer; min-height: 28px; }
 .extinction-panel-active .extinction-objective-strip { pointer-events: auto; }
 .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(n+5) { border-color: #81a3b66b; }
+.extinction-panel-active .extinction-hud-dock .extinction-move-action { border-color: #81a3b66b; }
 .immersive-drawer pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
 .mosaic-world-log { font-size: calc(12px * var(--game-hud-scale, 1)); }
 .mosaic-rpg-panel .mosaic-world-controls button:focus-visible { outline: 3px solid #ffdc79; outline-offset: -3px; }
 @media (max-width: 760px) {
   .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(n+5) { grid-column: span 1; }
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(9),
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(10) { grid-column: span 2; }
 }
 @media (max-height: 500px) and (min-width: 600px) {
   .mosaic-world-hud { top: calc(52px + var(--hub-hud-top)); }
@@ -373,8 +370,40 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
 .extinction-panel-active .extinction-hud-dock .nexus-play-actions > .extinction-protocol-actions { grid-column:1 / -1; }
 .extinction-protocol-actions strong { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 @media (max-height:500px) and (min-width:600px) {
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns:repeat(6,minmax(0,1fr)); }
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > button { grid-column:span 1; }
+  /* Fill each row: four primary actions, three protocols, six movement keys.
+     Empty primary cells used to wrap LOOT and lift RELOAD across the reticle. */
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns:repeat(12,minmax(0,1fr)); }
+  .extinction-panel-active .extinction-hud-dock .extinction-move-action { grid-column:span 2; }
+  .extinction-panel-active .extinction-hud-dock .extinction-primary-action { grid-column:span 3; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions .btn-retro { min-width:44px; min-height:44px; padding:4px 6px; }
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions { gap:4px; }
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions strong,
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions small { white-space:normal; overflow:visible; text-overflow:clip; }
+}
+@media (max-width:760px) and (min-height:501px) {
+  /* Three compact stat rows and four action rows leave the portrait aim clear.
+     Stable classes keep movement packing independent of the protocol group. */
+  .extinction-panel-active .extinction-hud-dock { gap:8px; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-stats { gap:3px 4px; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-stats > span { padding:3px 6px; overflow-wrap:anywhere; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-run { order:1; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-armor { order:2; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-ammo { order:3; }
+  .extinction-panel-active .extinction-hud-dock .extinction-health { order:4; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-signature { order:5; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-wave { order:6; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-kills { order:7; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-beacons { order:8; }
+  .extinction-panel-active .extinction-hud-dock .extinction-health,
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-signature { flex:0 1 calc(50% - 2px); min-width:0; box-sizing:border-box; }
+  .extinction-panel-active .extinction-hud-dock .extinction-health progress { min-width:0; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns:repeat(12,minmax(0,1fr)); gap:4px; }
+  .extinction-panel-active .extinction-hud-dock .extinction-primary-action { grid-column:span 3; }
+  .extinction-panel-active .extinction-hud-dock .extinction-move-action { grid-column:span 4; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions .btn-retro { min-width:44px; min-height:max(44px, 42px * var(--game-hud-scale, 1)); padding:4px 6px; }
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions { gap:4px; }
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions strong,
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions small { white-space:normal; overflow:visible; text-overflow:clip; }
 }
 
 /* Location, guide and terminal share one normal-flow grid. The guide body gets

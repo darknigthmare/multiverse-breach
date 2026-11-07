@@ -212,6 +212,76 @@ def check_relay_hud_geometry(page, label):
         && Math.min(a.bottom,b.bottom)-Math.max(a.y,b.y)>1;
       const within=(a,b)=>a.x>=b.x-1&&a.y>=b.y-1&&a.right<=b.right+1&&a.bottom<=b.bottom+1;
       const viewport={x:0,y:0,right:innerWidth,bottom:innerHeight};
+      const visible=node=>{
+        const box=rect(node);
+        if(!box.width||!box.height)return false;
+        for(let ancestor=node;ancestor;ancestor=ancestor.parentElement){
+          const css=getComputedStyle(ancestor);
+          if(css.display==='none'||css.visibility==='hidden'||css.visibility==='collapse'
+            ||Number(css.opacity)===0)return false;
+        }
+        return true;
+      };
+      const buttonTextProof=button=>{
+        const buttonBox=rect(button),fragments=[];
+        const walker=document.createTreeWalker(button,NodeFilter.SHOW_TEXT);
+        let node;
+        while((node=walker.nextNode())){
+          if(!node.textContent.trim()||node.parentElement.closest('svg'))continue;
+          const clip={x:Math.max(buttonBox.x,viewport.x),y:Math.max(buttonBox.y,viewport.y),
+            right:Math.min(buttonBox.right,viewport.right),bottom:Math.min(buttonBox.bottom,viewport.bottom)};
+          const clipSources=[];
+          let ellipsized=false;
+          // A range can fit inside the button while a nested strong/small
+          // clips it. Intersect every effective ancestor overflow clip too.
+          for(let ancestor=node.parentElement;ancestor;ancestor=ancestor.parentElement){
+            const css=getComputedStyle(ancestor);
+            const clipX=css.overflowX!=='visible',clipY=css.overflowY!=='visible';
+            if(!clipX&&!clipY)continue;
+            const box=rect(ancestor),left=box.x+ancestor.clientLeft,top=box.y+ancestor.clientTop;
+            const paddingBox={x:left,y:top,right:left+ancestor.clientWidth,bottom:top+ancestor.clientHeight};
+            if(clipX){clip.x=Math.max(clip.x,paddingBox.x);clip.right=Math.min(clip.right,paddingBox.right);}
+            if(clipY){clip.y=Math.max(clip.y,paddingBox.y);clip.bottom=Math.min(clip.bottom,paddingBox.bottom);}
+            const overflowed=ancestor.scrollWidth>ancestor.clientWidth+1;
+            if(clipX&&css.textOverflow==='ellipsis'&&overflowed)ellipsized=true;
+            clipSources.push({tag:ancestor.tagName,className:ancestor.className,overflowX:css.overflowX,
+              overflowY:css.overflowY,textOverflow:css.textOverflow,overflowed,paddingBox});
+          }
+          const range=document.createRange();range.selectNodeContents(node);
+          const boxes=Array.from(range.getClientRects()).filter(box=>box.width&&box.height)
+            .map(box=>({x:box.x,y:box.y,right:box.right,bottom:box.bottom}));
+          fragments.push({text:node.textContent.trim(),boxes,clip,clipSources,ellipsized,
+            fullyVisible:visible(node.parentElement)&&boxes.length>0&&!ellipsized&&boxes.every(box=>within(box,clip))});
+        }
+        return {fragments,fullyVisible:fragments.length>0&&fragments.every(fragment=>fragment.fullyVisible)};
+      };
+      // The dock and its layout groups are transparent. Test the painted
+      // buttons and stat cards individually, so empty grid space remains free.
+      // Hit-testing does not click a control or consume a simulation tick.
+      const dockControls=Array.from(dock.querySelectorAll('button')).map((button,index)=>{
+        const box=rect(button),shown=visible(button);
+        const enabled=!button.disabled&&!button.closest('[inert]')&&button.getAttribute('aria-disabled')!=='true';
+        const hit=document.elementFromPoint(box.x+box.width/2,box.y+box.height/2);
+        const centerHit=!!hit&&button.contains(hit);
+        return {index,label:(button.getAttribute('aria-label')||button.textContent).trim(),...box,
+          visible:shown,enabled,centerHit,clickable:shown&&enabled&&centerHit,
+          insideViewport:within(box,viewport),minimumTouchTarget:box.width>=44&&box.height>=44,
+          reticleClear:!intersects(box,reticle),radarClear:!intersects(box,radarBounds),
+          text:buttonTextProof(button)};
+      });
+      const dockStatCards=Array.from(dock.querySelectorAll('.nexus-play-stats > span')).map((card,index)=>{
+        const box=rect(card);
+        return {index,label:card.textContent.trim(),...box,visible:visible(card),
+          insideViewport:within(box,viewport),reticleClear:!intersects(box,reticle),radarClear:!intersects(box,radarBounds)};
+      });
+      const dockReticleOverlaps=[
+        ...dockControls.filter(control=>control.visible&&!control.reticleClear).map(control=>({kind:'button',...control})),
+        ...dockStatCards.filter(card=>card.visible&&!card.reticleClear).map(card=>({kind:'stat',...card}))
+      ];
+      const dockRadarOverlaps=[
+        ...dockControls.filter(control=>control.visible&&!control.radarClear).map(control=>({kind:'button',...control})),
+        ...dockStatCards.filter(card=>card.visible&&!card.radarClear).map(card=>({kind:'stat',...card}))
+      ];
       const textRects=[];const walker=document.createTreeWalker(strip,NodeFilter.SHOW_TEXT);
       let node;
       while((node=walker.nextNode())){
@@ -223,6 +293,17 @@ def check_relay_hud_geometry(page, label):
       }
       const style=getComputedStyle(document.documentElement);
       return {label,phase:state.phase,relayStatus:relay.dataset.relayStatus,canvas:c,strip:s,dock:d,reticle,
+        dockControls,dockStatCards,dockReticleOverlaps,dockRadarOverlaps,
+        // Anchor has four primary, three protocol and six movement controls.
+        dockControlsComplete:dockControls.length===13,
+        dockControlsVisible:dockControls.every(control=>control.visible),
+        dockControlsInsideViewport:dockControls.every(control=>control.insideViewport),
+        dockControlsMinimumTouchTarget:dockControls.every(control=>control.minimumTouchTarget),
+        dockControlsHitTest:dockControls.every(control=>!control.enabled||control.clickable),
+        dockControlsTextVisible:dockControls.every(control=>control.text.fullyVisible),
+        dockStatsVisible:dockStatCards.length===8&&dockStatCards.every(card=>card.visible&&card.insideViewport),
+        dockReticleClear:dockReticleOverlaps.length===0,
+        dockRadarClear:dockRadarOverlaps.length===0,
         radar:radarBounds,radarLayout:radar,
         viewport:{width:innerWidth,height:innerHeight},hudScale:style.getPropertyValue('--game-hud-scale').trim(),
         textScale:style.getPropertyValue('--game-text-scale').trim(),safeArea:style.getPropertyValue('--game-safe-area').trim(),
@@ -237,6 +318,10 @@ def check_relay_hud_geometry(page, label):
     for field in ['visible', 'stripInsideViewport', 'relayInsideStrip', 'reticleClear', 'dockClear', 'radarClear']:
         check(result[field], f'relay HUD geometry failed ({field}): {result}')
     check(not result['clippedText'], f'relay HUD text extends outside its strip or viewport: {result}')
+    for field in ['dockControlsComplete', 'dockControlsVisible', 'dockControlsInsideViewport',
+                  'dockControlsMinimumTouchTarget', 'dockControlsHitTest', 'dockControlsTextVisible',
+                  'dockStatsVisible', 'dockReticleClear', 'dockRadarClear']:
+        check(result[field], f'FPS dock geometry failed ({field}): {result}')
     return result
 
 
@@ -428,8 +513,11 @@ def main():
     args = parser.parse_args()
     out = Path(args.evidence); out.mkdir(parents=True, exist_ok=True)
     results = []
+    # French portrait has a longer secondary-action label than English. Keep
+    # the existing runs and exercise that wrapping with its own fresh replay pair.
     cases = [('city', 1280, 900, 'fr'), ('city', 390, 844, 'en'),
-             ('fps', 1280, 900, 'fr'), ('fps', 390, 844, 'en'), ('fps', 844, 390, 'fr')]
+             ('fps', 1280, 900, 'fr'), ('fps', 390, 844, 'en'), ('fps', 844, 390, 'fr'),
+             ('fps', 390, 844, 'fr')]
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=['--no-sandbox'],
             **({'executable_path': args.executable} if args.executable else {}))

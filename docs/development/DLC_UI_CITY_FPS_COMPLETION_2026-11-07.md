@@ -123,6 +123,16 @@ une rangée, puis le relais sur la suivante. Sa largeur réserve le radar et sa
 hauteur laisse le réticule et les commandes libres. Les préférences de taille
 restent appliquées ; le contrôle navigateur mesure les zones réellement rendues.
 
+Le dock paysage répartit ses quatre actions principales sur toute leur rangée,
+suivies des trois protocoles puis des six commandes de déplacement. Les cibles
+restent au moins de 44 × 44 px, avec la taille de texte choisie et les libellés
+complets. Le contrôle de collision mesure chaque bouton et carte de statistiques
+peints face au réticule et au radar ; les espaces transparents du dock ne sont
+pas assimilés à un obstacle. En portrait, les six déplacements occupent deux
+rangées de trois boutons et les statistiques sont réparties sur trois rangées
+compactes. Des classes explicites remplacent les positions par numéro d’enfant,
+et les noms de protocoles disponibles peuvent revenir à la ligne.
+
 L’option inactive suit les quatre modes historiques. Leurs identifiants, graines,
 victoires et récompenses ne changent pas. Le nouveau module ne consomme aucun
 tirage aléatoire ni horloge native. Les rapports et crédits passent toujours par
