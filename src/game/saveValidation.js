@@ -12,7 +12,7 @@ const safeRecord = (value, convert = value => value) => Object.fromEntries(
   Object.entries(record(value)).filter(([key]) => !unsafeKeys.has(key)).map(([key, entry]) => [key, convert(entry)])
 );
 
-/** Preserve unknown owned IDs for future content. Only deployed IDs must resolve. */
+/** Preserve unknown ownership; team choices use all historical IDs, not just installed heroes. */
 export function sanitizeSaveCore(save, { defaults = {}, knownHeroIds = [], playerHeroId = 'player_anchor', now = new Date() } = {}) {
   if (!save || typeof save !== 'object' || Array.isArray(save)) throw new TypeError('Trace Nexus invalide : objet attendu.');
   const result = { ...save };

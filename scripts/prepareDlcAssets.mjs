@@ -5,6 +5,7 @@ import {
 } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { buildDlcDistributionPlan } from './dlcDistribution.mjs';
 
 const STATE_PATH = '.tmp/dlc-publication-state.json';
 const LFS_HEADER = /^version https:\/\/git-lfs\.github\.com\/spec\/v1\r?(?:\n|$)/;
@@ -128,8 +129,18 @@ const readDlcPublicationPlan = root => {
 };
 
 /** Read migrated assets only; legacy public/ entries remain owned by the shared tree. */
-export function readDlcPublicationEntries({ root = process.cwd() } = {}) {
-  return readDlcPublicationPlan(root).entries;
+const readSelectedPublicationPlan = (root, selection) => {
+  if (selection === undefined) return readDlcPublicationPlan(root);
+  const plan = buildDlcDistributionPlan({ root, selection });
+  return {
+    entries: plan.dlcAssets.map(({ sourcePath, publicPath, destinationPath }) =>
+      ({ sourcePath, publicPath, destinationPath })),
+    publicSources: new Set(plan.publicSourcePaths)
+  };
+};
+
+export function readDlcPublicationEntries({ root = process.cwd(), selection } = {}) {
+  return readSelectedPublicationPlan(root, selection).entries;
 }
 
 const hashFile = path => {
@@ -199,9 +210,12 @@ const publishCopy = (root, entry, expectedHash) => {
 };
 
 /** Materialize public URLs without overwriting or deleting locally changed copies. */
-export function prepareDlcAssets({ root = process.cwd(), availableOnly = false } = {}) {
+export function prepareDlcAssets({ root = process.cwd(), availableOnly = false, selection } = {}) {
+  if (selection !== undefined && availableOnly) {
+    throw new Error('DLC installation profiles require complete assets; availableOnly cannot be used with a selection.');
+  }
   root = checkedRoot(root);
-  const { entries, publicSources } = readDlcPublicationPlan(root);
+  const { entries, publicSources } = readSelectedPublicationPlan(root, selection);
   const previousState = readState(root);
   // A former generated copy can become the canonical public source when its
   // asset is shared. Release it from our state without hashing or removing it;

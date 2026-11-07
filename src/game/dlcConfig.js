@@ -1,5 +1,6 @@
 import { DLC_UNIVERSE_KEYS } from '../../DLC/index.js';
-import { OC_DLC_PACKS, UNIVERSE_KEYS } from './ocDlcPacks';
+import { OC_DLC_SAVE_METADATA } from './dlcContentIdentity.js';
+import { mergeDlcCampaignProgress } from './dlcPlayerState.js';
 import { ORIGINAL_CAMPAIGN_UNIVERSES } from './originalUniverseWave.js';
 
 export const BASE_GAME_UNIVERSES = ['Nexus de Convergence'];
@@ -23,35 +24,22 @@ export const migrateHiddenUniversesForOcDlc = (hiddenUniverses, fromVersion) => 
       : []
   );
   if ((Number(fromVersion) || 0) < 7) {
-    UNIVERSE_KEYS.forEach(universe => migrated.add(universe));
+    OC_DLC_SAVE_METADATA.forEach(pack => migrated.add(pack.universe));
   }
   return [...migrated];
 };
 
 export const getEnabledOcDlcPackIds = (hiddenUniverses) => {
   const hidden = new Set(Array.isArray(hiddenUniverses) ? hiddenUniverses : []);
-  return OC_DLC_PACKS
+  return OC_DLC_SAVE_METADATA
     .filter(pack => !hidden.has(pack.universe))
     .map(pack => pack.id);
 };
 
 export const buildOcDlcCampaignProgress = (completedStages, existingProgress = {}) => {
-  const completed = new Set(Array.isArray(completedStages) ? completedStages : []);
-  return Object.fromEntries(OC_DLC_PACKS.map(pack => {
-    const stored = existingProgress?.[pack.id];
-    const missionIds = (pack.missions || [])
-      .map(mission => mission.id)
-      .filter(stageId => completed.has(stageId));
-    return [
-      pack.id,
-      {
-        ...(stored && typeof stored === 'object' && !Array.isArray(stored) ? stored : {}),
-        missionIds
-      }
-    ];
-  }));
+  return mergeDlcCampaignProgress(completedStages, existingProgress, OC_DLC_SAVE_METADATA);
 };
 
 export const DEFAULT_HIDDEN_UNIVERSES = [
-  ...new Set([...getDlcUniverseKeys(), ...UNIVERSE_KEYS])
+  ...new Set([...getDlcUniverseKeys(), ...OC_DLC_SAVE_METADATA.map(pack => pack.universe)])
 ];

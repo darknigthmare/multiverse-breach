@@ -1,3 +1,5 @@
+import { isUniverseInstalled } from './dlcInstallation.js';
+import { getStableContentIndex } from './dlcContentIdentity.js';
 // Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
 import * as dlcHalo from '../../DLC/Halo/data/narrativeSystems.js';
 import * as dlcResidentEvil from '../../DLC/ResidentEvil/data/narrativeSystems.js';
@@ -484,23 +486,24 @@ const getCharacterArcProfile = (hero) => CATEGORY_ARC_PROFILE[hero.category] || 
 const CURATED_CHARACTER_HERO_IDS = new Set(CURATED_CHARACTER_NARRATIVE_ARCS.map(arc => arc.heroId));
 
 const GENERATED_CHARACTER_NARRATIVE_ARCS = HEROES_DB
-  .filter(hero => !CURATED_CHARACTER_HERO_IDS.has(hero.id))
+  .filter(hero => isUniverseInstalled(hero.universe) && !CURATED_CHARACTER_HERO_IDS.has(hero.id))
   .map((hero, index) => {
+    const stableIndex = getStableContentIndex('generatedCharacterArcs', hero.id, index);
     const profile = getCharacterArcProfile(hero);
     const slug = slugifyArcId(hero.id);
     const specialName = hero.special?.name || hero.secondary?.name || hero.simple?.name || hero.weaponType || hero.category;
-    const levelUnlock = index % 2 === 0;
+    const levelUnlock = stableIndex % 2 === 0;
     return {
       id: `${slug}_personal_thread`,
-      stageId: 9300 + index,
+      stageId: 9300 + stableIndex,
       heroId: hero.id,
       title: { fr: `Arc Personnage - ${hero.name}`, en: `Character Arc - ${hero.name}` },
       mode: profile.mode,
       difficulty: 'Personal',
       bossName: `${profile.boss.fr} - ${hero.universe}`,
       unlock: levelUnlock
-        ? { type: 'level', value: 2 + (index % 4) }
-        : { type: 'clears', value: 2 + (index % 10) },
+        ? { type: 'level', value: 2 + (stableIndex % 4) }
+        : { type: 'clears', value: 2 + (stableIndex % 10) },
       intro: {
         fr: `${hero.name} arrive depuis ${hero.universe} avec une signature que le Nexus ne peut pas copier sans la comprendre. Son arc personnel sert a ${profile.role.fr}.`,
         en: `${hero.name} arrives from ${hero.universe} with a signature the Nexus can only stabilize by respecting its Thread laws. This personal arc is about how they ${profile.role.en}.`

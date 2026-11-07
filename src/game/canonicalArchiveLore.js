@@ -90,9 +90,10 @@ export const CANONICAL_STAGE_ARCHIVE_LORE = Object.freeze([
     'La mission Smash choisit le duel contre Lanius ; les résidus de brèche des vagues ordinaires appartiennent à Multiverse Breach.',
     'The Smash mission selects the Lanius duel; the regular waves’ breach residue belongs to Multiverse Breach.'
   )
-]);
+].filter(entry => entry.source));
 
 export const getCanonicalArchiveStageLore = stage => {
+  if (!stage) return null;
   if (
     stage?.incarnation && stage.referenceUrl?.startsWith('https://')
     && stage.sourceSceneLore?.fr && stage.sourceSceneLore?.en

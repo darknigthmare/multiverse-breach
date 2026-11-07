@@ -1,0 +1,5 @@
+// Oddworld — definitions consumed by src/game/expandedUniverses.js.
+
+export function createExpandedUniverseRecord() {
+  return ({ key: 'oddworld', universe: 'Oddworld', mediaType: 'game', faction: 'sciFi', mode: 'Tactics', difficulty: 'Hard', titleFr: 'Oddworld', stage: 'RuptureFarms Mudokon Escape', boss: 'Molluck Industrial Grinder', hero: ['abe_oddworld', 'Abe', 'hacker'], allies: [['munch_oddworld', 'Munch', 'tactical'], ['alf_mudokon', 'Alf', 'marine']], monsters: ['Slig Guard', 'Scrab', 'Paramite'], bosses: ['Molluck', 'Vykker Surgeon'], gear: [['soulstorm_brew', 'SoulStorm Brew', 'Breuvage SoulStorm', { atk: 8, spd: 1 }], ['mudokon_pop', 'Mudokon Pop', 'Soda Mudokon', { hp: 65, def: 3 }], ['elum_saddle', 'Elum Saddle', 'Selle d Elum', { spd: 2, hp: 45 }]], event: ['evt_possession_chant', 'Possession Chant', 'Chant de possession', 'Abe chants and possesses an enemy, turning them against their allies.', 'Abe psalmodie et possede un ennemi, le retournant contre ses allies.'], theme: 'industrial slavery, Mudokon chanting, possession puzzles, and dark alien satire', motif: 'facility', colors: ['#162b22', '#030605', '#7edc8a'] });
+}

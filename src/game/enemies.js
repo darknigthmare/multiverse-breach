@@ -525,18 +525,21 @@ export const FINAL_GAME_BOSS = {
   special: 'Cosmic Shatter Glitch Wave'
 };
 
-export const getMonstersForUniverse = (univ) => ENEMIES_DB[univ]?.monsters || ENEMIES_DB['Halo'].monsters;
-export const getBossesForUniverse = (univ) => ENEMIES_DB[univ]?.bosses || ENEMIES_DB['Halo'].bosses;
+// Keep the historical Halo fallback when installed; base distributions use the Nexus roster.
+const getFallbackEnemies = () => ENEMIES_DB.Halo || ENEMIES_DB['Nexus de Convergence'];
+
+export const getMonstersForUniverse = (univ) => ENEMIES_DB[univ]?.monsters || getFallbackEnemies().monsters;
+export const getBossesForUniverse = (univ) => ENEMIES_DB[univ]?.bosses || getFallbackEnemies().bosses;
 export const getWorldBossForUniverse = (univ) => (
   Object.prototype.hasOwnProperty.call(ENEMIES_DB, univ)
     ? ENEMIES_DB[univ].worldBoss ?? null
-    : ENEMIES_DB['Halo'].worldBoss
+    : getFallbackEnemies().worldBoss
 );
 export const getFinalePolicyForUniverse = (univ) => ENEMIES_DB[univ]?.finalePolicy || null;
 export const getFinalGameBoss = () => FINAL_GAME_BOSS;
 export const getEnemiesForUniverse = (univ) => ({
-  enemy: ENEMIES_DB[univ]?.monsters[0] || ENEMIES_DB['Halo'].monsters[0],
-  boss: ENEMIES_DB[univ]?.bosses[0] || ENEMIES_DB['Halo'].bosses[0]
+  enemy: ENEMIES_DB[univ]?.monsters[0] || getFallbackEnemies().monsters[0],
+  boss: ENEMIES_DB[univ]?.bosses[0] || getFallbackEnemies().bosses[0]
 });
 
 export const OBSTACLES_DB = [

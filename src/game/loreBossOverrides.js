@@ -1,5 +1,5 @@
+import { LORE_SPRITE_PROMPT_PREFIX as SPRITE_PROMPT_PREFIX } from './loreSpritePromptPrefix.js';
 // Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
-import * as dlcDoomSweeperSafeApocalypse from '../../DLC/DoomSweeperSafeApocalypse/data/loreBossOverrides.js';
 import * as dlcHeavyMetal2000 from '../../DLC/HeavyMetal2000/data/loreBossOverrides.js';
 import * as dlcKillerTomatoesFromOuterSpace from '../../DLC/KillerTomatoesFromOuterSpace/data/loreBossOverrides.js';
 import * as dlcPlaneteHurlante from '../../DLC/PlaneteHurlante/data/loreBossOverrides.js';
@@ -162,7 +162,7 @@ const slugify = (value) => String(value || 'unknown')
   .replace(/[^a-z0-9]+/g, '-')
   .replace(/^-+|-+$/g, '') || 'unknown';
 
-const SPRITE_PROMPT_PREFIX = dlcDoomSweeperSafeApocalypse.createSpritePromptPrefix();
+
 
 const buildSpritePrompt = ({ name, universe, weapon, special, phases, visualAnchor, combatMechanicsStatus }) => [
   SPRITE_PROMPT_PREFIX,

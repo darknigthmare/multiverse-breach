@@ -150,14 +150,20 @@
     "dlc:registry:check": "node scripts/buildDlcRegistry.mjs --check",
     "dlc:assets:write": "node scripts/buildDlcAssetManifests.mjs --write",
     "dlc:assets:check": "node scripts/buildDlcAssetManifests.mjs --check",
-    "test:dlc": "npm run dlc:registry:check && npm run dlc:assets:check && node --test --test-concurrency=1 scripts/dlcRegistry.test.mjs scripts/dlcAssetManifests.test.mjs scripts/spritePromptCatalogLoader.test.mjs scripts/legacyDlcStages.test.mjs scripts/dlcAuditSources.test.mjs scripts/dlcAssetPaths.test.mjs scripts/prepareDlcAssets.test.mjs scripts/assetSourceResolver.test.mjs scripts/exportDlcAssetPaths.test.mjs",
+    "test:dlc": "npm run dlc:registry:check && npm run dlc:assets:check && node --test --test-concurrency=1 scripts/dlcRegistry.test.mjs scripts/dlcAssetManifests.test.mjs scripts/spritePromptCatalogLoader.test.mjs scripts/legacyDlcStages.test.mjs scripts/dlcAuditSources.test.mjs scripts/dlcAssetPaths.test.mjs scripts/prepareDlcAssets.test.mjs scripts/assetSourceResolver.test.mjs scripts/exportDlcAssetPaths.test.mjs && npm run dlc:identities:check && npm run test:dlc:profiles",
     "dlc:verify:migration": "node scripts/verifyDlcMigration.mjs",
     "assets:prepare": "node scripts/prepareDlcAssets.mjs",
     "assets:prepare:available": "node scripts/prepareDlcAssets.mjs --available",
     "predev": "npm run assets:prepare",
     "dlc:verify:assets": "node scripts/verifyDlcAssetMigration.mjs",
     "test:technical-sprite-packing": "node --test scripts/technicalSpritePackingRevalidation.test.mjs",
-    "sprites:packing:revalidate": "node scripts/revalidateTechnicalSpritePacking.mjs docs/audits/elyra-frame-packing-runtime-2026-10-20.json --output docs/audits/elyra-frame-packing-implementation-revalidation-2026-11-07.json --date 2026-11-07"
+    "sprites:packing:revalidate": "node scripts/revalidateTechnicalSpritePacking.mjs docs/audits/elyra-frame-packing-runtime-2026-10-20.json --output docs/audits/elyra-frame-packing-implementation-revalidation-2026-11-07.json --date 2026-11-07",
+    "dlc:identities:write": "node scripts/buildDlcContentIdentities.mjs --write",
+    "dlc:identities:check": "node scripts/buildDlcContentIdentities.mjs --check",
+    "test:dlc:profiles": "node --test --test-concurrency=1 scripts/dlcDistribution*.test.mjs scripts/dlcProfile*.test.mjs scripts/dlcInstallation.test.mjs scripts/dlcPlayerState.test.mjs",
+    "dlc:export": "node scripts/exportDlcDistribution.mjs",
+    "dlc:distribution:check": "node scripts/auditDlcDistribution.mjs",
+    "build:distribution": "node scripts/buildDlcDistribution.mjs"
   },
   "dependencies": {
     "react": "^19.2.7",
