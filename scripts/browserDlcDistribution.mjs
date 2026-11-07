@@ -122,9 +122,86 @@ async function assertResponsive(page, label, result) {
   assert.ok(measurement.document <= measurement.viewport + 2, label + ' overflows the viewport: ' + JSON.stringify(measurement));
 }
 
+async function assertHubNavigation(page, label, result) {
+  const primary = page.locator('.hub-navigation-primary');
+  await primary.waitFor({ state: 'visible' });
+  const settle = () => page.evaluate(async () => {
+    await document.fonts.ready;
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  });
+  await settle();
+  const measurement = await primary.evaluate(element => ({
+    viewport: innerWidth,
+    container: element.getBoundingClientRect().toJSON(),
+    sidebar: element.closest('.hub-navigation').getBoundingClientRect().toJSON(),
+    buttons: [...element.querySelectorAll(':scope > button')].map(button => {
+      const range = document.createRange();
+      range.selectNodeContents(button);
+      return {
+        label: button.textContent.trim(),
+        bounds: button.getBoundingClientRect().toJSON(),
+        text: [...range.getClientRects()].map(rect => rect.toJSON())
+      };
+    })
+  }));
+  result.navigation.push({ screen: label, ...measurement });
+  const context = label + ': ' + JSON.stringify(measurement);
+  assert.ok(measurement.buttons.length > 1, 'Hub navigation must contain buttons: ' + context);
+  const contains = (outer, inner) => inner.left >= outer.left - 1 && inner.right <= outer.right + 1
+    && inner.top >= outer.top - 1 && inner.bottom <= outer.bottom + 1;
+  for (const [index, button] of measurement.buttons.entries()) {
+    assert.ok(button.bounds.width > 0 && button.bounds.height > 0 && button.text.length > 0, 'Empty navigation button: ' + context);
+    assert.ok(button.text.every(rect => contains(button.bounds, rect)), 'Navigation text escapes its button: ' + context);
+    if (measurement.viewport > 760) {
+      assert.ok(contains(measurement.container, button.bounds) && contains(measurement.sidebar, button.bounds), 'Navigation button escapes its sidebar: ' + context);
+    }
+    for (const other of measurement.buttons.slice(index + 1)) {
+      const width = Math.min(button.bounds.right, other.bounds.right) - Math.max(button.bounds.left, other.bounds.left);
+      const height = Math.min(button.bounds.bottom, other.bounds.bottom) - Math.max(button.bounds.top, other.bounds.top);
+      assert.ok(width <= 1 || height <= 1, 'Navigation buttons overlap: ' + context);
+    }
+  }
+  if (measurement.viewport <= 760) {
+    await primary.getByRole('button').first().focus();
+    for (let index = 1; index < measurement.buttons.length; index += 1) await page.keyboard.press('Tab');
+    await settle();
+    const keyboard = await primary.evaluate(element => {
+      const button = element.querySelector(':scope > button:last-child');
+      const bounds = button.getBoundingClientRect();
+      const container = element.getBoundingClientRect();
+      const x = (bounds.left + bounds.right) / 2;
+      const y = (bounds.top + bounds.bottom) / 2;
+      return {
+        label: button.textContent.trim(),
+        focused: document.activeElement === button,
+        centerVisible: x >= Math.max(0, container.left) && x <= Math.min(innerWidth, container.right)
+          && y >= Math.max(0, container.top) && y <= Math.min(innerHeight, container.bottom),
+        centerHit: button.contains(document.elementFromPoint(x, y)),
+        scrollLeft: element.scrollLeft, scrollWidth: element.scrollWidth, clientWidth: element.clientWidth
+      };
+    });
+    result.navigation.at(-1).keyboard = keyboard;
+    assert.ok(keyboard.focused && keyboard.centerVisible && keyboard.centerHit, 'Last navigation button is not reachable with Tab: ' + JSON.stringify(keyboard));
+  }
+}
+
+async function assertHubNavigationViewports(page, viewport, lang, result, screenshot) {
+  await assertHubNavigation(page, lang + ' initial Hub', result);
+  await screenshot('navigation-' + lang, viewport.width);
+  if (viewport.width === 1365) {
+    for (const width of [1000, 761, 760]) {
+      await page.setViewportSize({ width, height: viewport.height });
+      await assertHubNavigation(page, lang + ' Hub resized to ' + width + 'px', result);
+      await screenshot('navigation-' + lang, width);
+    }
+    await page.setViewportSize(viewport);
+    await assertHubNavigation(page, lang + ' Hub restored to desktop', result);
+  }
+}
+
 async function scenario(viewport) {
   const name = viewport.width + 'px';
-  const result = { viewport, status: 'failed', pageErrors: [], missingResources: [], blockedExternalOrigins: [], layouts: [], actions: [] };
+  const result = { viewport, status: 'failed', pageErrors: [], missingResources: [], blockedExternalOrigins: [], layouts: [], navigation: [], actions: [] };
   results.push(result);
   const missing = new Set();
   const external = new Set();
@@ -158,7 +235,7 @@ async function scenario(viewport) {
       localStorage.setItem('distribution-smoke-seeded', 'true');
     }
   }, { key: saveKey, trace: seed });
-  const screenshot = label => page.screenshot({ path: join(output, name + '-' + label + '.png'), fullPage: true });
+  const screenshot = (label, width = viewport.width) => page.screenshot({ path: join(output, width + 'px-' + label + '.png'), fullPage: true });
   try {
     await page.goto(origin + '/', { waitUntil: 'domcontentloaded' });
     const continueButton = page.getByRole('button', { name: 'CONTINUE', exact: true });
@@ -169,6 +246,7 @@ async function scenario(viewport) {
     await activateWithKeyboard(page, continueButton);
     await page.getByRole('button', { name: 'OPERATIONS', exact: true }).waitFor();
     result.actions.push('Title to Hub using Enter');
+    await assertHubNavigationViewports(page, viewport, 'en', result, screenshot);
 
     await openTab(page, 'ARSENAL', 'ANCHOR CELL', true);
     await page.getByRole('status').filter({ hasText: 'member(s) of your selection' }).waitFor();
@@ -273,6 +351,26 @@ async function scenario(viewport) {
     result.missingResources = [...missing];
     const missingGameResources = result.missingResources.filter(path => path !== '/favicon.ico');
     assert.deepEqual(missingGameResources, [], 'Built distribution requested missing resources');
+
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.getByRole('button', { name: 'CONTINUE', exact: true }).waitFor();
+    await page.getByTitle('Switch the whole interface to French.', { exact: true }).click();
+    const continueFrench = page.getByRole('button', { name: 'CONTINUER', exact: true });
+    await continueFrench.waitFor({ state: 'visible' });
+    await screenshot('title-fr');
+    await page.getByTitle('Menu système', { exact: true }).click();
+    const systemMenu = page.getByRole('dialog', { name: 'SYSTÈME', exact: true });
+    await systemMenu.waitFor({ state: 'visible' });
+    await page.keyboard.press('Escape');
+    await systemMenu.waitFor({ state: 'hidden' });
+    await activateWithKeyboard(page, continueFrench);
+    await page.getByRole('navigation', { name: 'Navigation du Nexus', exact: true }).waitFor();
+    await assertHubNavigationViewports(page, viewport, 'fr', result, screenshot);
+    await page.waitForFunction(key => JSON.parse(localStorage.getItem(key))?.lang === 'fr', saveKey);
+    assertPreserved(await savedTrace(page));
+    result.actions.push('French title language and system controls and Hub navigation validated');
+    assert.deepEqual(result.pageErrors, []);
+    assert.deepEqual([...missing].filter(path => path !== '/favicon.ico'), [], 'French navigation requested missing resources');
     result.status = 'passed';
   } catch (error) {
     result.failure = error.stack || error.message;
@@ -291,8 +389,8 @@ try {
   const report = {
     root, profile, browser: browser.version(), evidence: output,
     native: 'Built exported App, DOM, keyboard, canvas and browser localStorage; real reload and autosave',
-    controlled: 'Seeded v8 trace with dormant possessions; same-origin static file routing; external requests blocked',
-    limits: 'Mission launch and pause only. No simulated victory, no cloud account and no real purchases.',
+    controlled: 'Seeded v8 trace with dormant possessions and English locale; French selected through the title language control; same-origin static file routing; external requests blocked',
+    limits: 'English gameplay covers mission launch and pause only; French checks navigation only. No simulated victory, no cloud account and no real purchases.',
     results
   };
   await writeFile(join(output, 'report.json'), JSON.stringify(report, null, 2) + '\n');
