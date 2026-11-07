@@ -20,7 +20,7 @@ concurrency:
 jobs:
   catalog:
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -31,6 +31,8 @@ jobs:
             !/*/
             /src/
             /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
             /docs/extinction-city/workbook-followup-2026-10-28.json
             /docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx
@@ -39,13 +41,15 @@ jobs:
             **/*.jsonl
             /public/images/campaign-oc/chapter-01-atrium-v1.png
             /public/sprites/generated/heroes/nexus-de-convergence/
-            /public/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/
-            /public/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/
+            /DLC/Kaamelott/assets/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/
+            /DLC/SystemOfADown/assets/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/
             /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
           cache: npm
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - run: npm ci --no-audit --no-fund
       - name: Check both workbook hashes and resolve their recorded source revision
         run: |
@@ -86,7 +90,7 @@ jobs:
       - name: Identity, source inventory and immutable workbook contracts
         run: |
           set -euo pipefail
-          git ls-files > TRACKED_FILES.txt
+          node scripts/listTrackedRuntimeFiles.mjs > TRACKED_FILES.txt
           node --test scripts/extinctionContent.test.mjs scripts/mosaicUniversePlaces.test.mjs scripts/scenePresentation.test.mjs scripts/sceneInputs.test.mjs scripts/extinctionTiming.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/immersiveHubState.test.mjs scripts/mosaicResidentNavigation.test.mjs scripts/mosaicResidents.test.mjs scripts/extinctionViewmodelContract.test.mjs | tee /tmp/ec-evidence/unit.log
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionCityCatalog.test.mjs | tee /tmp/ec-evidence/catalog-tests.log
           # Retain the tested HEAD inventory separately from the immutable XLSX snapshot.

@@ -22,6 +22,8 @@ jobs:
             !/*/
             /src/
             /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
             /api/
             /.github/workflows/
@@ -32,17 +34,19 @@ jobs:
             **/*.jsonl
             /public/images/campaign-oc/chapter-01-atrium-v1.png
             /public/sprites/generated/heroes/nexus-de-convergence/
-            /public/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/
-            /public/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/
+            /DLC/Kaamelott/assets/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/
+            /DLC/SystemOfADown/assets/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/
             /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
-      - name: Apply exact reviewed changes
-        run: |
-          git ls-files > TRACKED_FILES.txt
-          python3 docs/ec-access-review/apply.py apply
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
           cache: npm
+      - name: Apply exact reviewed changes
+        run: |
+          node scripts/listTrackedRuntimeFiles.mjs > TRACKED_FILES.txt
+          python3 docs/ec-access-review/apply.py apply
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - run: npm ci --no-audit --no-fund
       - name: Contracts, workbook, lint and source build
         run: |

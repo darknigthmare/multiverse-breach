@@ -22,6 +22,8 @@ jobs:
             !/*/
             /src/
             /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
             /api/
             /supabase/
@@ -33,6 +35,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - run: npm ci --no-audit --no-fund
       - name: Derived index contract and reliability tests
         run: |

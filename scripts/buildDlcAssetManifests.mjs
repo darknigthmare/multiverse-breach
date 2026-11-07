@@ -1,8 +1,7 @@
-import { execFileSync, spawnSync } from 'node:child_process';
-import { existsSync, readFileSync, readdirSync, realpathSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { listPublicTreePaths } from './auditLocalPublicAssets.mjs';
+import { listAssetSourceEntries, listGitAssetSources, projectAssetPath } from './dlcAssetPaths.mjs';
 
 // In a checkout, inventory paths come from its Git index even when files are
 // absent in a sparse checkout. Source exports without usable Git metadata use
@@ -21,24 +20,8 @@ const assertRelativePath = path => {
   }
 };
 
-export const listTrackedPublicPaths = root => {
-  const output = execFileSync('git', ['ls-files', '--cached', '-z', '--', 'public'], {
-    cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024
-  });
-  return output.split('\0').filter(Boolean);
-};
-
-const readPublicInventoryPaths = root => {
-  // Do not borrow a containing repository's index for an exported project.
-  // Direct uploads can omit .git entirely or leave an empty .git directory.
-  const probe = existsSync(resolve(root, '.git')) ? spawnSync('git', ['rev-parse', '--show-toplevel'], {
-    cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], timeout: 5000
-  }) : null;
-  const hasOwnIndex = probe?.status === 0 && resolve(probe.stdout.trim()) === realpathSync(root);
-  return hasOwnIndex
-    ? { publicPaths: listTrackedPublicPaths(root), inputSource: 'git-index' }
-    : { publicPaths: listPublicTreePaths(root), inputSource: 'public-tree' };
-};
+export const listTrackedPublicPaths = root => listGitAssetSources(root)
+  .map(sourcePath => `public${projectAssetPath(sourcePath).publicPath}`);
 
 export const readDlcPackManifests = root => readdirSync(resolve(root, 'DLC'), { withFileTypes: true })
   .filter(entry => entry.isDirectory())
@@ -140,13 +123,14 @@ const historicalDirectoryReason = new Map([
   ['matrix', 'global-final-boss-directory-not-the-matrix-dlc']
 ]);
 
-export const buildDlcAssetInventory = ({ packs, publicPaths, references = new Map(), campaignUniverses = [] }) => {
+export const buildDlcAssetInventory = ({ packs, publicPaths, sourcePaths = new Map(), references = new Map(), campaignUniverses = [] }) => {
   if (!packs.length || !publicPaths.length) throw new Error('DLC manifests and tracked public paths must be non-empty');
   if (new Set(publicPaths).size !== publicPaths.length) throw new Error('Duplicate public paths in Git index');
   if (new Set(packs.map(pack => pack.universe)).size !== packs.length || new Set(packs.map(pack => pack.id)).size !== packs.length) {
     throw new Error('Duplicate DLC universe or id');
   }
   const packByUniverse = new Map(packs.map(pack => [pack.universe, pack]));
+  const packByDirectory = new Map(packs.map(pack => [pack.directory, pack]));
   const universeBySlug = new Map();
   for (const universe of ['Nexus de Convergence', ...campaignUniverses, ...packByUniverse.keys()]) {
     const slug = slugify(universe);
@@ -164,26 +148,38 @@ export const buildDlcAssetInventory = ({ packs, publicPaths, references = new Ma
   const shared = [];
   const reasonCounts = {};
 
-  for (const sourcePath of sorted(publicPaths)) {
+  for (const logicalPath of sorted(publicPaths)) {
+    assertRelativePath(logicalPath);
+    if (!logicalPath.startsWith('public/')) throw new Error(`Expected public/ path: ${logicalPath}`);
+    const publicPath = logicalPath.slice('public'.length);
+    const sourcePath = sourcePaths.get(logicalPath) || logicalPath;
     assertRelativePath(sourcePath);
-    if (!sourcePath.startsWith('public/')) throw new Error(`Expected public/ path: ${sourcePath}`);
-    const publicPath = sourcePath.slice('public'.length);
+    if (projectAssetPath(sourcePath)?.publicPath !== publicPath) throw new Error(`Invalid asset publication mapping: ${sourcePath} -> ${publicPath}`);
+    const ownerDirectory = sourcePath.match(/^(DLC\/[A-Za-z0-9]+)\/assets\//)?.[1];
+    const physicalOwner = ownerDirectory ? packByDirectory.get(ownerDirectory) : null;
+    if (ownerDirectory && !physicalOwner) throw new Error(`Unknown DLC asset owner: ${sourcePath}`);
     const evidence = references.get(publicPath) || [];
-    const slug = directoryUniverseSlug(sourcePath);
+    const slug = directoryUniverseSlug(logicalPath);
     const directoryUniverse = universeBySlug.get(slug);
     const affiliatedUniverses = new Set(evidence.map(entry => entry.universe));
     if (directoryUniverse) affiliatedUniverses.add(directoryUniverse);
+    if (physicalOwner) affiliatedUniverses.add(physicalOwner.universe);
     const universe = affiliatedUniverses.size === 1 ? [...affiliatedUniverses][0] : null;
     const pack = packByUniverse.get(universe);
     const historicalReason = historicalDirectoryReason.get(slug);
     const basis = sorted(new Set(evidence.map(entry => entry.basis)));
     if (directoryUniverse) basis.push(`exact-universe-directory:${slug}`);
+    if (physicalOwner) basis.push(`canonical-dlc-directory:${physicalOwner.directory}`);
+
+    if (physicalOwner && (pack !== physicalOwner || historicalReason)) {
+      throw new Error(`DLC source has shared or ambiguous ownership; keep it in public/: ${sourcePath}`);
+    }
 
     if (pack && !historicalReason) {
       manifests.get(pack.directory).assets.push({
         publicPath,
         sourcePath,
-        classificationConfidence: evidence.length ? 'high' : 'medium',
+        classificationConfidence: evidence.length || physicalOwner ? 'high' : 'medium',
         basis
       });
       continue;
@@ -220,28 +216,60 @@ export const buildDlcAssetInventory = ({ packs, publicPaths, references = new Ma
   };
 };
 
+const IGNORE_BEGIN = '# BEGIN GENERATED DLC PUBLICATION';
+const IGNORE_END = '# END GENERATED DLC PUBLICATION';
+
+export const renderDlcPublicationIgnore = (current, publicPaths) => {
+  const paths = sorted(new Set(publicPaths));
+  for (const path of paths) {
+    if (!path.startsWith('/')) throw new Error(`Expected absolute public URL: ${path}`);
+    assertRelativePath(`public${path}`);
+  }
+  const start = current.indexOf(IGNORE_BEGIN);
+  const end = current.indexOf(IGNORE_END);
+  if ((start < 0) !== (end < 0) || (start >= 0 && (end < start || current.indexOf(IGNORE_BEGIN, start + IGNORE_BEGIN.length) >= 0 || current.indexOf(IGNORE_END, end + IGNORE_END.length) >= 0))) {
+    throw new Error('Malformed generated DLC publication ignore block');
+  }
+  if (start < 0 && paths.length === 0) return current;
+  const block = [IGNORE_BEGIN,
+    '# Generated public copies; canonical resources are tracked in DLC/<Universe>/assets/.',
+    ...paths.map(path => `/public${path}`.replace(/[[\]*?!#]/g, '\\$&')),
+    IGNORE_END].join('\n');
+  if (start < 0) return `${current.replace(/\n*$/, '')}${current ? '\n\n' : ''}${block}\n`;
+  return current.slice(0, start) + block + current.slice(end + IGNORE_END.length);
+};
+
 export const runDlcAssetManifestBuild = ({ root = REPO_ROOT, write = false } = {}) => {
   const packs = readDlcPackManifests(root);
   const campaignManifest = JSON.parse(readSource(root, 'src/game/originalUniversesManifest.json'));
-  const { publicPaths, inputSource } = readPublicInventoryPaths(root);
+  const { entries, inputSource } = listAssetSourceEntries(root);
+  const publicPaths = entries.map(entry => `public${entry.publicPath}`);
+  const sourcePaths = new Map(entries.map(entry => [`public${entry.publicPath}`, entry.sourcePath]));
   const inventory = buildDlcAssetInventory({
     packs,
     publicPaths,
+    sourcePaths,
     references: collectAssetReferences(root, packs),
     campaignUniverses: campaignManifest.universes.map(entry => entry.universe)
   });
-  const outputs = [...inventory.manifests].map(([directory, manifest]) => [`${directory}/assets.json`, manifest]);
-  outputs.push(['DLC/shared-assets.json', inventory.sharedManifest]);
+  const outputs = [...inventory.manifests].map(([directory, manifest]) => [`${directory}/assets.json`, `${JSON.stringify(manifest, null, 2)}\n`]);
+  outputs.push(['DLC/shared-assets.json', `${JSON.stringify(inventory.sharedManifest, null, 2)}\n`]);
+  const publishedPaths = entries.filter(entry => entry.sourcePath.startsWith('DLC/')).map(entry => entry.publicPath);
+  for (const path of ['.gitignore', '.vercelignore']) {
+    let current = '';
+    try { current = readSource(root, path); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+    const expected = renderDlcPublicationIgnore(current, publishedPaths);
+    if (current || expected) outputs.push([path, expected]);
+  }
   const stale = [];
-  for (const [path, manifest] of outputs) {
-    const expected = `${JSON.stringify(manifest, null, 2)}\n`;
+  for (const [path, expected] of outputs) {
     let current;
     try { current = readSource(root, path); } catch (error) { if (error.code !== 'ENOENT') throw error; }
     if (current === expected) continue;
     if (write) writeFileSync(resolve(root, path), expected);
     else stale.push(path);
   }
-  if (stale.length) throw new Error(`${stale.length} DLC asset inventories are missing or stale. Stage public asset changes, then run node scripts/buildDlcAssetManifests.mjs --write.\n${stale.slice(0, 10).join('\n')}`);
+  if (stale.length) throw new Error(`${stale.length} DLC asset inventories or publication ignores are missing or stale. Stage canonical asset changes, then run node scripts/buildDlcAssetManifests.mjs --write.\n${stale.slice(0, 10).join('\n')}`);
   return { ...inventory.sharedManifest.distribution, inputSource };
 };
 

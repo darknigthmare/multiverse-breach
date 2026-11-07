@@ -15,10 +15,12 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
 import { BOOSTER_ART_BY_UNIVERSE } from '../src/game/portalBoosterCatalog.js';
+import { createAssetSourceResolver } from './assetSourceResolver.mjs';
 
 const execFileAsync = promisify(execFile);
 const SCRIPT_DIRECTORY = path.dirname(fileURLToPath(import.meta.url));
 const REPOSITORY_ROOT = path.resolve(SCRIPT_DIRECTORY, '..');
+const resolveAssetSource = createAssetSourceResolver(REPOSITORY_ROOT);
 const SOURCE_ROOT = path.join(
   REPOSITORY_ROOT,
   'tmp',
@@ -198,7 +200,7 @@ function assertCanonicalIsoDate(value, label) {
   );
 }
 
-function repositoryPathFromPublicPath(publicPath) {
+function repositoryPathFromPublicPath(publicPath, universe = null) {
   assert(
     typeof publicPath === 'string'
       && publicPath.startsWith('/boosters/')
@@ -208,8 +210,7 @@ function repositoryPathFromPublicPath(publicPath) {
   );
   const absolutePath = path.resolve(
     REPOSITORY_ROOT,
-    'public',
-    ...publicPath.split('/').filter(Boolean)
+    resolveAssetSource(publicPath, universe)
   );
   const relative = path.relative(REPOSITORY_ROOT, absolutePath);
   assert(relative && !relative.startsWith('..') && !path.isAbsolute(relative), 'Booster path escaped repository');
@@ -398,7 +399,7 @@ async function installTopLevel(entry) {
     })
     .toBuffer();
   assert(output.length >= 50_000 && output.length <= 800_000, `${entry.universe} WebP size is suspicious`);
-  await replaceFileAtomically(repositoryPathFromPublicPath(entry.publicPath), output);
+  await replaceFileAtomically(repositoryPathFromPublicPath(entry.publicPath, entry.universe), output);
 }
 
 async function installOriginal(entry) {
@@ -445,7 +446,7 @@ async function installOriginal(entry) {
 }
 
 async function inspectRuntime(entry) {
-  const runtimePath = repositoryPathFromPublicPath(entry.publicPath);
+  const runtimePath = repositoryPathFromPublicPath(entry.publicPath, entry.universe);
   const [buffer, fileStats, metadata] = await Promise.all([
     readFile(runtimePath),
     stat(runtimePath),

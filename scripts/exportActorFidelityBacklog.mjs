@@ -12,6 +12,7 @@ import { OC_DLC_UNIVERSE_KEYS } from '../src/game/ocDlcPacks.js';
 import { getHeroSpriteSheetSrc, getHeroMeleeSpriteSheetSrcs, getEnemySpriteSheetSrc, getSpriteSheetLayout } from '../src/game/spriteAssets.js';
 import { getWardrobeBoosterRoutes } from '../src/game/wardrobeBoosterRewards.js';
 import { buildActorFidelityBacklog, inspectActorRaster, indexActorContinuities } from '../src/game/actorFidelityBacklog.js';
+import { projectExportAssetTree } from './exportAssetTree.mjs';
 const [outArg,sourceBaseCommit,treeFile,treeSourceCommit=sourceBaseCommit]=process.argv.slice(2);
 if(!outArg || !/^[a-f0-9]{40}$/.test(sourceBaseCommit||'') || !/^[a-f0-9]{40}$/.test(treeSourceCommit||''))
   throw new Error('Usage: exportActorFidelityBacklog.mjs OUT BASE_COMMIT [TREE_JSON TREE_COMMIT]');
@@ -19,14 +20,16 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 let tree;
 if(treeFile)tree=JSON.parse(fs.readFileSync(treeFile,'utf8'));
 else {
- const raw=execFileSync('git',['-C',root,'ls-tree','-r','-l','-z','--full-tree',sourceBaseCommit],{encoding:'utf8',maxBuffer:64*1024*1024});
+ // Blob sizes would force omitted media to download in a partial clone.
+ const raw=execFileSync('git',['-C',root,'ls-tree','-r','-z','--full-tree',treeSourceCommit],{encoding:'utf8',maxBuffer:64*1024*1024,env:{...process.env,GIT_NO_LAZY_FETCH:'1'}});
  tree={truncated:false,tree:raw.split('\0').filter(Boolean).map(line=>{
-  const [head,...tail]=line.split('\t'),[mode,type,sha,size]=head.trim().split(/\s+/);
-  return {path:tail.join('\t'),mode,type,sha,size:Number(size)};
+  const [head,...tail]=line.split('\t'),[mode,type,sha]=head.trim().split(/\s+/);
+  return {path:tail.join('\t'),mode,type,sha,size:null};
  })};
 }
 if(tree.truncated!==false || !Array.isArray(tree.tree))throw new Error('Complete Git tree required, no silent partial audit.');
-const index=new Map(tree.tree.filter(e=>e.type==='blob').map(e=>[e.path,e]));
+if(tree.sourceCommit && tree.sourceCommit!==treeSourceCommit)throw new Error('Asset tree snapshot does not match its declared commit.');
+const index=projectExportAssetTree(new Map(tree.tree.filter(e=>e.type==='blob').map(e=>[e.path,e])));
 const originals=new Set(['Nexus de Convergence',...ORIGINAL_UNIVERSE_DEFINITIONS.filter(d=>d.isOriginal===true||d.sourceType==='original').map(d=>d.universe),...OC_DLC_UNIVERSE_KEYS]);
 const actors=[createPlayerHero(),...HEROES_DB].map(actor=>({actor,kind:'hero'}));
 for(const [universe,roster] of Object.entries(ENEMIES_DB))for(const [field,kind] of [['monsters','enemy'],['bosses','boss'],['worldBoss','worldBoss']]) {

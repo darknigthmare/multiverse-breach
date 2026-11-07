@@ -24,12 +24,16 @@ jobs:
             !/*/
             /src/
             /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
             /api/
             /public/**/*.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - name: Archive exact source without downloading bitmap blobs
         run: |
           mkdir -p /tmp/wardrobe-review
@@ -47,7 +51,10 @@ jobs:
               manifest=[]
               for e in rows:
                   p=pathlib.Path(e['path'])
-                  include=(p.parts[0] in ('src','scripts','api') and p.suffix in ('.js','.jsx','.json','.mjs','.css','.py','.html')) or (p.parts[0]=='public' and p.suffix=='.json') or (len(p.parts)==1 and p.suffix in ('.json','.js','.mjs','.html'))
+                  # Match the sparse checkout: asset metadata is included, review
+                  # pages and bitmaps are omitted just as they were under public/.
+                  if p.parts[0]=='DLC' and len(p.parts)>2 and p.parts[2]=='assets' and p.suffix!='.json': continue
+                  include=(p.parts[0] in ('src','scripts','api','DLC') and p.suffix in ('.js','.jsx','.json','.mjs','.css','.py','.html')) or (p.parts[0]=='public' and p.suffix=='.json') or (len(p.parts)==1 and p.suffix in ('.json','.js','.mjs','.html'))
                   if not include: continue
                   b=(root/p).read_bytes()
                   assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==e['sha'],e['path']

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { copyFile, mkdtemp, readFile, rm, stat } from 'node:fs/promises';
+import { copyFile, mkdir, mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -49,6 +49,74 @@ function inspectPng(buffer) {
 function sha256(buffer) {
   return createHash('sha256').update(buffer).digest('hex');
 }
+
+test('PowerShell resolves DLC sources without changing public provenance or external paths', async context => {
+  const probe = spawnSync(POWERSHELL, ['-NoLogo', '-NoProfile', '-Command', '$PSVersionTable.PSVersion.ToString()'], { encoding: 'utf8' });
+  if (probe.error?.code === 'ENOENT') {
+    context.skip('PowerShell is not installed; the Node resolver is covered separately.');
+    return;
+  }
+  assert.equal(probe.status, 0, probe.stderr || probe.stdout);
+  const root = await mkdtemp(path.join(os.tmpdir(), 'rift-dlc-paths-'));
+  context.after(() => rm(root, { recursive: true, force: true }));
+  const writeJson = async (relative, value) => {
+    const file = path.join(root, relative);
+    await mkdir(path.dirname(file), { recursive: true });
+    await writeFile(file, JSON.stringify(value));
+  };
+  const output = '/images/rift-dossiers/openai/fixture.png';
+  const canonical = 'DLC/Halo/assets' + output;
+  await writeJson('DLC/Halo/manifest.json', { schemaVersion: 1, id: 'halo', universe: 'Halo', directory: 'DLC/Halo', assetManifest: 'assets.json' });
+  await writeJson('DLC/Halo/assets.json', { schemaVersion: 1, universe: 'Halo', assets: [{ publicPath: output, sourcePath: canonical }] });
+  await writeJson('DLC/shared-assets.json', { schemaVersion: 1, assets: [{ publicPath: '/shared.png', sourcePath: 'public/shared.png' }] });
+  const external = path.join(os.tmpdir(), 'rift-external-fixture.png');
+  const caseVariant = path.join(path.dirname(root), path.basename(root).replace(/^r/, 'R'), 'public' + output);
+  const publicCaseVariant = path.join(root, 'Public' + output);
+  const command = [
+    "$ErrorActionPreference = 'Stop'",
+    '$tokens = $null; $errors = $null',
+    '$ast = [System.Management.Automation.Language.Parser]::ParseFile($env:MULTIVERSE_TEST_PIPELINE, [ref]$tokens, [ref]$errors)',
+    'if ($errors.Count) { throw ($errors -join [Environment]::NewLine) }',
+    "$wanted = @('Resolve-PipelinePath', 'Resolve-CanonicalAssetPath', 'Get-DefaultOutputPath')",
+    '$definitions = $ast.FindAll({ param($node) $node -is [System.Management.Automation.Language.FunctionDefinitionAst] }, $true)',
+    'foreach ($definition in $definitions) { if ($wanted -contains $definition.Name) { Invoke-Expression $definition.Extent.Text } }',
+    '$script:RepositoryRoot = $env:MULTIVERSE_TEST_ROOT',
+    '$script:AssetResolverBridge = $env:MULTIVERSE_TEST_RESOLVER',
+    "$requested = Resolve-PipelinePath -Value 'public/images/rift-dossiers/openai/fixture.png'",
+    '$canonical = Resolve-CanonicalAssetPath -Path $requested',
+    '[ordered]@{',
+    '  canonical = $canonical',
+    '  output = Get-DefaultOutputPath -DestinationPath $requested',
+    '  canonicalOutput = Get-DefaultOutputPath -DestinationPath $canonical',
+    "  newAsset = Resolve-CanonicalAssetPath -Path (Resolve-PipelinePath -Value 'public/new.png') -OwningUniverse 'Halo'",
+    "  shared = Resolve-CanonicalAssetPath -Path (Resolve-PipelinePath -Value 'public/shared.png') -OwningUniverse 'Halo'",
+    '  external = Resolve-CanonicalAssetPath -Path $env:MULTIVERSE_TEST_EXTERNAL -OwningUniverse Halo',
+    '  caseVariant = Resolve-CanonicalAssetPath -Path $env:MULTIVERSE_TEST_CASE_VARIANT',
+    '  caseVariantOutput = Get-DefaultOutputPath -DestinationPath $env:MULTIVERSE_TEST_CASE_VARIANT',
+    '  publicCaseVariant = Resolve-CanonicalAssetPath -Path $env:MULTIVERSE_TEST_PUBLIC_CASE_VARIANT',
+    '} | ConvertTo-Json -Compress'
+  ].join('\n');
+  const result = spawnSync(POWERSHELL, ['-NoLogo', '-NoProfile', '-Command', command], {
+    encoding: 'utf8',
+    env: { ...process.env,
+      MULTIVERSE_TEST_ROOT: root,
+      MULTIVERSE_TEST_PIPELINE: PIPELINE,
+      MULTIVERSE_TEST_RESOLVER: path.join(SCRIPT_DIRECTORY, 'assetSourceResolver.mjs'),
+      MULTIVERSE_TEST_EXTERNAL: external,
+      MULTIVERSE_TEST_CASE_VARIANT: caseVariant,
+      MULTIVERSE_TEST_PUBLIC_CASE_VARIANT: publicCaseVariant
+    }
+  });
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.deepEqual(JSON.parse(result.stdout), {
+    canonical: path.join(root, canonical), output, canonicalOutput: output,
+    newAsset: path.join(root, 'DLC/Halo/assets/new.png'),
+    shared: path.join(root, 'public/shared.png'), external,
+    caseVariant: process.platform === 'win32' ? path.join(root, canonical) : caseVariant,
+    caseVariantOutput: process.platform === 'win32' ? output : caseVariant.replaceAll(path.sep, '/'),
+    publicCaseVariant: process.platform === 'win32' ? path.join(root, canonical) : publicCaseVariant
+  });
+});
 
 test('rift dossier thumbnail pipeline is atomic, verifiable and refuses implicit overwrite', async (context) => {
   if (process.platform !== 'win32') {

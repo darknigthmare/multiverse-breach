@@ -5,6 +5,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 
 import { slugifyBoosterUniverse } from './buildPortalBoosterGenerationPlan.mjs';
+import { createAssetSourceResolver } from './assetSourceResolver.mjs';
 
 const REPOSITORY_ROOT = path.resolve(import.meta.dirname, '..');
 const TARGET_WIDTH = 640;
@@ -45,7 +46,9 @@ const main = async () => {
   const slug = slugifyBoosterUniverse(options.universe);
   if (!slug) throw new Error('The runtime universe name cannot produce an empty booster slug.');
 
-  const outputPath = path.join(REPOSITORY_ROOT, 'public', 'boosters', `${slug}.webp`);
+  const publicPath = `/boosters/${slug}.webp`;
+  const resolveAssetSource = createAssetSourceResolver(REPOSITORY_ROOT);
+  const outputPath = path.resolve(REPOSITORY_ROOT, resolveAssetSource(publicPath, options.universe));
   if (await fileExists(outputPath)) {
     throw new Error(`${options.universe}: refusing to overwrite ${path.relative(REPOSITORY_ROOT, outputPath)}.`);
   }
@@ -87,7 +90,7 @@ const main = async () => {
   await writeFile(outputPath, runtime, { flag: 'wx' });
   console.log(JSON.stringify({
     universe: options.universe,
-    output: `/boosters/${path.basename(outputPath)}`,
+    output: publicPath,
     width: TARGET_WIDTH,
     height: TARGET_HEIGHT,
     bytes: runtime.length,

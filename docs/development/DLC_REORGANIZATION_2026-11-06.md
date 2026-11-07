@@ -1,5 +1,10 @@
 # Réorganisation des univers en dossiers DLC
 
+> Ce document décrit la première phase du 6 novembre 2026. La reprise a ensuite
+> déplacé physiquement les ressources et adapté leur publication : voir
+> [la deuxième phase](DLC_ASSETS_REORGANIZATION_2026-11-07.md) et le mode d'emploi
+> actuel dans [`DLC/README.md`](../../DLC/README.md).
+
 ## Point de reprise
 
 La migration part du commit `3036cd021edfe544534a09df5c401eb024808b39`

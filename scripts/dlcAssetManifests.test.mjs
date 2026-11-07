@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import test from 'node:test';
-import { buildDlcAssetInventory, runDlcAssetManifestBuild } from './buildDlcAssetManifests.mjs';
+import { buildDlcAssetInventory, renderDlcPublicationIgnore, runDlcAssetManifestBuild } from './buildDlcAssetManifests.mjs';
 
 const pack = (universe, folder, modules = []) => ({
   schemaVersion: 1, id: folder.toLowerCase(), universe, directory: `DLC/${folder}`,
@@ -157,4 +157,54 @@ test('an export never uses a containing repository index, including with an empt
     assert.equal(result.inputSource, 'public-tree');
     assert.equal(result.trackedPublicPaths, 4);
   }
+});
+
+test('canonical DLC sources retain public URLs and exclude generated copies from source exports', t => {
+  const { root, write, publicPaths } = createFixture(t);
+  const moved = [publicPaths[0], publicPaths[1], publicPaths[3]];
+  write('.gitignore', 'node_modules\n');
+  write('.vercelignore', '.env*\n');
+  for (const path of moved) {
+    const target = `DLC/Halo/assets/${path.slice('public/'.length)}`;
+    mkdirSync(dirname(join(root, target)), { recursive: true });
+    renameSync(join(root, path), join(root, target));
+  }
+  execFileSync('git', ['init', '--quiet'], { cwd: root });
+  execFileSync('git', ['add', '--', 'public', 'DLC'], { cwd: root });
+  const result = runDlcAssetManifestBuild({ root, write: true });
+  assert.equal(result.trackedPublicPaths, 4);
+  assert.equal(result.assignedToDlc, 3);
+  const manifest = JSON.parse(readFileSync(join(root, 'DLC/Halo/assets.json'), 'utf8'));
+  for (const asset of manifest.assets) {
+    assert.equal(asset.sourcePath, `DLC/Halo/assets${asset.publicPath}`);
+    assert.ok(moved.includes(`public${asset.publicPath}`));
+  }
+  for (const ignorePath of ['.gitignore', '.vercelignore']) {
+    const rules = readFileSync(join(root, ignorePath), 'utf8');
+    for (const path of moved) assert.ok(rules.includes(`/${path}\n`));
+    assert.ok(!rules.includes('/public/backgrounds/shared.png\n'));
+  }
+  assert.ok(readFileSync(join(root, '.gitignore'), 'utf8').startsWith('node_modules\n'));
+  assert.ok(readFileSync(join(root, '.vercelignore'), 'utf8').startsWith('.env*\n'));
+  runDlcAssetManifestBuild({ root });
+
+  for (const path of moved) write(path, 'fixture');
+  rmSync(join(root, '.git'), { recursive: true });
+  const exported = runDlcAssetManifestBuild({ root });
+  assert.equal(exported.inputSource, 'public-tree');
+  assert.equal(exported.trackedPublicPaths, 4);
+  assert.deepEqual(JSON.parse(readFileSync(join(root, 'DLC/Halo/assets.json'), 'utf8')), manifest);
+
+  rmSync(join(root, `DLC/Halo/assets/${moved[0].slice('public/'.length)}`));
+  assert.throws(() => runDlcAssetManifestBuild({ root }), /missing or stale/);
+});
+
+test('publication ignore generation preserves unrelated rules and treats filenames literally', () => {
+  const original = 'node_modules\n.env*\n';
+  const output = renderDlcPublicationIgnore(original, ['/images/[mask]*?.png']);
+  assert.ok(output.startsWith(original));
+  assert.ok(output.includes('/public/images/\\[mask\\]\\*\\?.png'));
+  assert.equal(renderDlcPublicationIgnore(output, ['/images/[mask]*?.png']), output);
+  assert.throws(() => renderDlcPublicationIgnore(original, ['/../private']), /canonical repository path/);
+  assert.throws(() => renderDlcPublicationIgnore('# BEGIN GENERATED DLC PUBLICATION\n', []), /Malformed/);
 });

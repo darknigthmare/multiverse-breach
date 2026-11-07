@@ -268,3 +268,75 @@ test('duplicate outputs are refused before any installation', async t => {
   await assert.rejects(installReferencedCharacterImages({ root: f.root, manifestPath: f.manifestPath, publicManifestPath }), /Duplicate/);
   assert.equal(await hasFile(path.join(f.root, 'public', output.slice(1))), false);
 });
+
+const registerFixtureDlc = async (f, { registeredReference = true } = {}) => {
+  const directory = 'DLC/InstallerTest';
+  const referenceOutput = '/images/oc-worlds/v2/installer-test/reference.png';
+  const referenceSourcePath = `${directory}/assets${referenceOutput}`;
+  await fs.mkdir(path.join(f.root, directory), { recursive: true });
+  await fs.writeFile(path.join(f.root, directory, 'manifest.json'), JSON.stringify({
+    schemaVersion: 1, id: 'installer-test', universe: 'Installer Test', directory, assetManifest: 'assets.json'
+  }));
+  await fs.writeFile(path.join(f.root, directory, 'assets.json'), JSON.stringify({
+    schemaVersion: 1, universe: 'Installer Test',
+    assets: registeredReference ? [{ publicPath: referenceOutput, sourcePath: referenceSourcePath }] : []
+  }));
+  await fs.mkdir(path.dirname(path.join(f.root, referenceSourcePath)), { recursive: true });
+  await fs.rename(f.referencePath, path.join(f.root, referenceSourcePath));
+  return { referenceOutput, referenceSourcePath, destination: path.join(f.root, `${directory}/assets${output}`) };
+};
+
+for (const referenceForm of ['public URL', 'canonical source']) {
+  test(`DLC installation reads a registered ${referenceForm} without a public copy and preserves provenance URLs`, async t => {
+    const f = await fixture(t);
+    const dlc = await registerFixtureDlc(f);
+    await f.writePlan([{ ...f.job, reference: referenceForm === 'public URL' ? dlc.referenceOutput : dlc.referenceSourcePath }]);
+    const result = await installReferencedCharacterImages({ root: f.root, manifestPath: f.manifestPath, publicManifestPath });
+    assert.deepEqual(result.outputs, [output]);
+    assert.equal(await hasFile(dlc.destination), true);
+    assert.equal(await hasFile(path.join(f.root, 'public', output.slice(1))), false);
+    const manifest = JSON.parse(await fs.readFile(path.join(f.root, publicManifestPath), 'utf8'));
+    assert.equal(manifest.entries[0].output, output);
+    assert.equal(manifest.entries[0].reference.output, dlc.referenceOutput);
+    assert.equal(manifest.entries[0].reference.sha256, digest(f.source));
+    assert.ok(!JSON.stringify(manifest).includes(dlc.referenceSourcePath));
+    assert.equal((await auditReferencedCharacterImages({ root: f.root, manifestPath: publicManifestPath })).verified, 1);
+    await assert.rejects(installReferencedCharacterImages({ root: f.root, manifestPath: f.manifestPath,
+      publicManifestPath: 'docs/audits/second-attempt.json' }), /overwrite/);
+  });
+}
+
+test('a DLC reference needs a registered mapping and cannot be replaced by a private path or symlink', async t => {
+  const f = await fixture(t);
+  const dlc = await registerFixtureDlc(f, { registeredReference: false });
+  const options = { root: f.root, manifestPath: f.manifestPath, publicManifestPath };
+  await f.writePlan([{ ...f.job, reference: dlc.referenceSourcePath }]);
+  await assert.rejects(installReferencedCharacterImages(options), /registered mapping/);
+  await f.writePlan([{ ...f.job, reference: f.sourcePath }]);
+  await assert.rejects(installReferencedCharacterImages(options), /public image tree/);
+  await fs.writeFile(path.join(f.root, 'DLC/InstallerTest/assets.json'), JSON.stringify({
+    schemaVersion: 1, universe: 'Installer Test', assets: [{ publicPath: dlc.referenceOutput, sourcePath: dlc.referenceSourcePath }]
+  }));
+  await fs.rm(path.join(f.root, dlc.referenceSourcePath));
+  await fs.symlink(f.sourcePath, path.join(f.root, dlc.referenceSourcePath));
+  await f.writePlan([{ ...f.job, reference: dlc.referenceOutput }]);
+  await assert.rejects(installReferencedCharacterImages(options), /symlinks/);
+  assert.equal(await hasFile(dlc.destination), false);
+});
+
+test('DLC audit failure cannot make rollback follow a swapped output parent into private files', async t => {
+  const f = await fixture(t);
+  const dlc = await registerFixtureDlc(f);
+  await f.writePlan([{ ...f.job, reference: dlc.referenceOutput }]);
+  const outside = path.join(f.privateDir, 'outside');
+  await fs.mkdir(outside);
+  const victim = path.join(outside, 'first.png');
+  await fs.writeFile(victim, 'outside image must survive');
+  await assert.rejects(installReferencedCharacterImages({ root: f.root, manifestPath: f.manifestPath, publicManifestPath,
+    hooks: { beforeFinalAudit: async () => {
+      await fs.rename(path.dirname(dlc.destination), path.join(f.privateDir, 'moved-owned-output'));
+      await fs.symlink(outside, path.dirname(dlc.destination), 'dir');
+    } } }), /symlinks/);
+  assert.equal(await fs.readFile(victim, 'utf8'), 'outside image must survive');
+  assert.equal(await hasFile(path.join(f.root, publicManifestPath)), false);
+});
