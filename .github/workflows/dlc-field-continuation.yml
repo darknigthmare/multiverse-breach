@@ -13,6 +13,8 @@ jobs:
   verify:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    env:
+      PLAYWRIGHT_MODULE_PATH: file:///tmp/system-browser/node_modules/playwright/index.mjs
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -78,6 +80,7 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       - name: Contracts, regression and executable source build
+        id: contracts
         run: |
           set -euo pipefail
           mkdir -p /tmp/dlc-field-evidence
@@ -92,36 +95,61 @@ jobs:
           node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/GameSystemSections.jsx src/components/GameSystemMenu.jsx src/game/fieldOperationPreferences.js src/game/mosaicReconnaissance.js src/game/extinctionRelayOperation.js scripts/dlcDistributionDelta.mjs scripts/fieldOperationVariants.test.mjs scripts/dlcDistributionDelta.test.mjs scripts/browserSystemSections.mjs scripts/buildSystemSectionsFixture.mjs scripts/fixtures/dlcDeltaFixture.mjs scripts/fixtures/systemSectionsHarness.jsx | tee /tmp/dlc-field-evidence/lint.log
           node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/CustomBattleMode.jsx src/components/cg/CgGallery.jsx src/components/MosaicResidentDialogue.jsx src/game/customLobbySelection.js src/game/mosaicResidentDialogue.js src/game/extinctionSignatures.js scripts/customLobbySelection.test.mjs scripts/extinctionCampaignKits.test.mjs scripts/mosaicResidentDialogue.test.mjs scripts/browserCustomLobby.mjs scripts/browserCgViewer.mjs scripts/buildCustomLobbyFixture.mjs scripts/buildCgViewerFixture.mjs scripts/fixtures/customBattleLobbyHarness.jsx scripts/fixtures/cgViewerHarness.jsx | tee /tmp/dlc-field-evidence/finalization-lint.log
           node node_modules/vite/bin/vite.js build --config scripts/viteCodeOnly.config.js | tee /tmp/dlc-field-evidence/source-build.log
-      - name: Real system menu across installation profiles
+      - name: Install pinned browser tools
+        id: browser_tools
         run: |
           set -euo pipefail
           npm install --prefix /tmp/system-browser playwright@1.57.0 --no-audit --no-fund
           node /tmp/system-browser/node_modules/playwright/cli.js install --with-deps chromium
-          export PLAYWRIGHT_MODULE_PATH=file:///tmp/system-browser/node_modules/playwright/index.mjs
+          python3 -m venv /tmp/field-browser
+          /tmp/field-browser/bin/pip install playwright==1.57.0
+      - name: Real system menu across installation profiles
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browser_tools.outcome == 'success' }}
+        run: |
+          set -euo pipefail
           for profile in all base halo; do
             export SYSTEM_PROFILE=$profile
             export PLAYWRIGHT_EVIDENCE_DIR=/tmp/dlc-field-evidence/menu-$profile
             node scripts/buildSystemSectionsFixture.mjs | tee /tmp/dlc-field-evidence/menu-$profile-build.log
             node scripts/browserSystemSections.mjs | tee /tmp/dlc-field-evidence/menu-$profile.log
           done
+      - name: Custom battle preparation and return
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browser_tools.outcome == 'success' }}
+        run: |
+          set -euo pipefail
           node scripts/buildCustomLobbyFixture.mjs | tee /tmp/dlc-field-evidence/custom-lobby-build.log
           PLAYWRIGHT_EVIDENCE_DIR=/tmp/dlc-field-evidence/custom-lobby node scripts/browserCustomLobby.mjs | tee /tmp/dlc-field-evidence/custom-lobby.log
+      - name: Gallery zoom, versions, fullscreen and DLC favourites
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browser_tools.outcome == 'success' }}
+        run: |
+          set -euo pipefail
           node scripts/buildCgViewerFixture.mjs | tee /tmp/dlc-field-evidence/cg-viewer-build.log
           PLAYWRIGHT_EVIDENCE_DIR=/tmp/dlc-field-evidence/cg-viewer node scripts/browserCgViewer.mjs | tee /tmp/dlc-field-evidence/cg-viewer.log
+      - name: Real backdrops in reviewed installation profiles
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browser_tools.outcome == 'success' }}
+        run: |
+          set -euo pipefail
           for profile in base halo consumers; do
             DLC_BACKDROP_PROFILE=$profile node scripts/buildDlcSharedBackdropsFixture.mjs | tee /tmp/dlc-field-evidence/shared-backdrops-$profile-build.log
             DLC_BACKDROP_PROFILE=$profile PLAYWRIGHT_EVIDENCE_DIR=/tmp/dlc-field-evidence/shared-backdrops-$profile node scripts/browserDlcSharedBackdrops.mjs | tee /tmp/dlc-field-evidence/shared-backdrops-$profile.log
           done
       - name: Real City and FPS variant playthroughs
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browser_tools.outcome == 'success' }}
         run: |
           set -euo pipefail
-          python3 -m venv /tmp/field-browser
-          /tmp/field-browser/bin/pip install playwright==1.57.0
           node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/dlc-field-evidence/server.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
           /tmp/field-browser/bin/python scripts/browserFieldVariants.py --require-art --evidence /tmp/dlc-field-evidence/field | tee /tmp/dlc-field-evidence/field.log
+      - name: Nexus conversations and five campaign kits
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browser_tools.outcome == 'success' }}
+        run: |
+          set -euo pipefail
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/dlc-field-evidence/nexus-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
           /tmp/field-browser/bin/python scripts/browserNexusCampaign.py --require-art --evidence /tmp/dlc-field-evidence/nexus | tee /tmp/dlc-field-evidence/nexus.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()

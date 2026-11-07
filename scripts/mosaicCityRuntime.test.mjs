@@ -262,6 +262,9 @@ test('the Archives Codex terminal opens the actual global archive only after app
     locationCallbackRef: { current: () => {} }, currentDistrictRef: { current: 'archives' }, currentZoneRef: { current: 'codex' },
     snapshotMosaicLocation: (state, districtId, zoneId) => ({ player: {...state.player}, districtId, zoneId }),
     resolveMosaicInteraction, district: { portals: [] }, zones, exhibits: [], lang: 'fr',
+    // The live callback also depends on the owned residents used by its NPC
+    // branch. This global-archive fixture intentionally owns no resident.
+    unlockedHeroes: [],
     advanceMosaicReconnaissance, reconnaissanceRef: { current: normalizeMosaicReconnaissance() }, reconnaissanceDossier: null,
     commitReconnaissance: () => assert.fail('The global archive cannot validate a district reconnaissance'),
     setHubLog: () => {}, recordGuide: () => {}, switchDistrict: () => {},

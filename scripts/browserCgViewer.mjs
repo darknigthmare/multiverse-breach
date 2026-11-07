@@ -132,7 +132,6 @@ try {
       } catch (error) {
         record.status = 'failed'; record.error = error.message;
         await page.screenshot({ path: resolve(evidence, `${name}-failed.png`) });
-        throw error;
       } finally { await context.close(); }
     }
   }
@@ -140,4 +139,6 @@ try {
   await writeFile(resolve(evidence, 'report.json'), JSON.stringify({ browser: browser.version(), scope: 'Real gallery, synthetic labelled artwork; zoom, version comparison, fullscreen and keyboard access', results }, null, 2));
   await browser.close();
 }
+assert.equal(results.filter(result => result.status === 'passed').length, 6,
+  results.filter(result => result.status !== 'passed').map(result => `${result.name}: ${result.error}`).join('\n'));
 console.log(JSON.stringify({ passed: results.filter(r => r.status === 'passed').length, total: results.length }));

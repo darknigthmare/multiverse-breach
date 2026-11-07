@@ -78,9 +78,11 @@ try {
       await page.keyboard.press('End');
       await page.waitForFunction(() => getComputedStyle(document.documentElement).fontSize === '24px');
       await page.keyboard.press('Escape');
+      await page.getByRole('dialog').waitFor({ state: 'detached' });
+      await page.waitForFunction(() => !document.getElementById('root').inert);
       const largeFonts = await fontsOf(root);
-      baseFonts.forEach((font, index) => assert.ok(Math.abs(largeFonts[index] / font - 1.5) < .01, `text scale ignored: ${font} -> ${largeFonts[index]}`));
       record.textScale = { before: baseFonts, after: largeFonts };
+      baseFonts.forEach((font, index) => assert.ok(Math.abs(largeFonts[index] / font - 1.5) < .01, `text scale ignored: ${font} -> ${largeFonts[index]}`));
       record.modeLayout = await inspectLayout(root, viewport);
 
       const tabs = root.getByRole('tab');
@@ -229,11 +231,12 @@ try {
     } catch (error) {
       record.status = 'failed'; record.error = error.stack || error.message; record.errors = errors; record.missing = missing;
       await page.screenshot({ path: resolve(evidence, `${name}-failure.png`), fullPage: true }).catch(() => {});
-      throw error;
     } finally {
       await writeFile(resolve(evidence, 'results.json'), JSON.stringify({ browser: browser.version(), results }, null, 2));
       await context.close();
     }
   }
-  console.log(`${results.length}/${results.length} custom battle lobby browser cases passed`);
+  const passed = results.filter(record => record.status === 'passed').length;
+  console.log(`${passed}/${results.length} custom battle lobby browser cases passed`);
+  assert.equal(passed, results.length, 'Custom battle lobby browser failures; see results.json for every viewport and locale');
 } finally { await browser.close(); }
