@@ -1,12 +1,16 @@
+import { getFieldOperationPreferences } from './fieldOperationPreferences.js';
+
 export const EXTINCTION_RELAY_REQUIRED_TICKS = 180;
 export const EXTINCTION_RELAY_RANGE = 1.25;
+export const EXTINCTION_RELAY_CONTEST_RANGE = 2;
 const identifier = value => typeof value === 'string' && value.trim() ? value : null;
 const localize = (fr, en, lang) => lang === 'fr' ? fr : en;
 
 /** Optional run-local state. null leaves every legacy mode on its existing path. */
-export function createExtinctionRelayOperation({ enabled = false, runId, mode = 'extraction' } = {}) {
+export function createExtinctionRelayOperation({ enabled = false, runId, mode = 'extraction', contested } = {}) {
   return enabled === true && mode === 'extraction' && identifier(runId)
-    ? { runId, activeBeaconId: null, beacons: {} } : null;
+    ? { runId, activeBeaconId: null, beacons: {},
+      ...((contested ?? (getFieldOperationPreferences().relays === 'contested')) === true ? { contested: true } : {}) } : null;
 }
 
 const validRun = (operation, run) => operation && run?.runId === operation.runId && run.phase === 'running';
@@ -22,10 +26,16 @@ const withBeacon = (operation, id, entry, activeBeaconId = operation.activeBeaco
   ...operation, activeBeaconId, beacons: { ...operation.beacons, [id]: entry }
 });
 
+const countJammers = (operation, run, item) => !operation?.contested || !Array.isArray(run.enemies) ? 0
+  : run.enemies.filter(enemy => Number.isFinite(enemy?.hp) && enemy.hp > 0
+    && Number.isFinite(enemy.wx) && Number.isFinite(enemy.wy)
+    && Math.hypot(enemy.wx - item.wx, enemy.wy - item.wy) <= EXTINCTION_RELAY_CONTEST_RANGE).length;
+
 const feedback = {
   disabled: ['', ''],
   wrong_run: ['Ce relais n’appartient pas à la partie active.', 'This relay does not belong to the active run.'],
   paused: ['Synchronisation en pause.', 'Synchronization paused.'],
+  contested: ['Périmètre contesté : élimine ou éloigne les ennemis de la balise.', 'Perimeter contested: clear enemies away from the beacon.'],
   invalid_beacon: ['Cette balise n’est pas disponible.', 'This beacon is unavailable.'],
   out_of_range: ['Approche la balise pour la synchroniser.', 'Move near the beacon to synchronize it.'],
   invalid_tick: ['Synchronisation indisponible pendant cette image.', 'Synchronization is unavailable during this frame.'],
@@ -54,21 +64,25 @@ export function interactExtinctionRelayOperation(operation, run, item, { paused 
   if (!inRange(run, item)) return gate(operation, true, false, 'out_of_range', lang);
   if (!validTick(run.t)) return gate(operation, true, false, 'invalid_tick', lang);
   if (operation.activeBeaconId && operation.activeBeaconId !== item.id) return gate(operation, true, false, 'another_beacon', lang);
-  if (entry?.status === 'ready') return gate(withBeacon(operation, item.id, { ...entry, status: 'secured' }, null), true, true, 'secured', lang);
+  const jammerCount = countJammers(operation, run, item);
+  if (entry && jammerCount > 0) return gate(withBeacon(operation, item.id, { ...entry, jammerCount }), true, false, 'contested', lang);
+  if (entry?.status === 'ready') return gate(withBeacon(operation, item.id, { ...entry, status: 'secured', ...(operation.contested ? { jammerCount: 0 } : {}) }, null), true, true, 'secured', lang);
   if (entry) return gate(operation, true, false, 'synchronizing', lang);
-  return gate(withBeacon(operation, item.id, { status: 'synchronizing', ticks: 0, lastTick: run.t, inRange: true }, item.id), true, false, 'started', lang);
+  return gate(withBeacon(operation, item.id, { status: 'synchronizing', ticks: 0, lastTick: run.t, inRange: true,
+    ...(operation.contested ? { jammerCount } : {}) }, item.id), true, false, 'started', lang);
 }
 
 /** One call per fixed simulation tick; skipped ticks never produce catch-up credit. */
 export function tickExtinctionRelayOperation(operation, run, { paused = false } = {}) {
   if (!operation || !validRun(operation, run) || paused || run.paused || !validTick(run.t)) return operation;
   const id = operation.activeBeaconId, entry = entryFor(operation, id);
-  if (!entry || entry.status !== 'synchronizing' || run.t <= entry.lastTick) return operation;
+  if (!entry || (entry.status !== 'synchronizing' && !(operation.contested && entry.status === 'ready')) || run.t <= entry.lastTick) return operation;
   const item = Array.isArray(run.loot) ? run.loot.find(candidate => candidate.id === id) : null;
   if (!liveBeacon(run, item)) return withBeacon(operation, id, { ...entry, lastTick: run.t, inRange: false });
   const withinRange = inRange(run, item);
-  const ticks = Math.min(EXTINCTION_RELAY_REQUIRED_TICKS, entry.ticks + (withinRange ? 1 : 0));
-  return withBeacon(operation, id, { ...entry, lastTick: run.t, ticks, inRange: withinRange,
+  const jammerCount = countJammers(operation, run, item);
+  const ticks = Math.min(EXTINCTION_RELAY_REQUIRED_TICKS, entry.ticks + (withinRange && jammerCount === 0 ? 1 : 0));
+  return withBeacon(operation, id, { ...entry, lastTick: run.t, ticks, inRange: withinRange, ...(operation.contested ? { jammerCount } : {}),
     status: ticks === EXTINCTION_RELAY_REQUIRED_TICKS ? 'ready' : 'synchronizing' });
 }
 
@@ -77,7 +91,8 @@ export function getExtinctionRelayStatus(operation, beaconId, lang = 'fr') {
   const status = !operation ? 'disabled' : entry?.status || 'idle';
   const ticks = entry?.ticks || 0;
   const outside = status === 'synchronizing' && entry.inRange === false;
-  const text = outside
+  const contested = operation?.contested && entry?.jammerCount > 0 && status !== 'secured';
+  const text = contested ? localize(...feedback.contested, lang) : outside
     ? localize('Synchronisation suspendue : reviens dans le périmètre de la balise.', 'Synchronization suspended: return to the beacon perimeter.', lang)
     : status === 'idle'
     ? localize('Approche la balise et utilise E / LOOT pour commencer.', 'Approach the beacon and use E / LOOT to begin.', lang)
@@ -91,5 +106,5 @@ export function getExtinctionRelayStatus(operation, beaconId, lang = 'fr') {
   return { status, ticks, inRange: entry?.inRange ?? null, requiredTicks: EXTINCTION_RELAY_REQUIRED_TICKS,
     progress: ticks / EXTINCTION_RELAY_REQUIRED_TICKS,
     remainingSeconds: Math.ceil((EXTINCTION_RELAY_REQUIRED_TICKS - ticks) / 60), text,
-    shortText: localize(...short[status], lang) };
+    shortText: contested ? localize(`Périmètre contesté (${entry.jammerCount})`, `Contested perimeter (${entry.jammerCount})`, lang) : localize(...short[status], lang) };
 }

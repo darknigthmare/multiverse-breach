@@ -1,0 +1,79 @@
+name: Differential DLC and field variants
+on:
+  pull_request:
+    paths: ['DLC/**', 'src/**', 'scripts/**', '.github/workflows/dlc-field-continuation.yml']
+  push:
+    branches: [master]
+permissions:
+  contents: read
+concurrency:
+  group: dlc-field-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /config/
+            /DLC/
+            !/DLC/*/assets/
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Contracts, regression and executable source build
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/dlc-field-evidence
+          git rev-parse HEAD > /tmp/dlc-field-evidence/commit.txt
+          git rev-parse 'HEAD^{tree}' > /tmp/dlc-field-evidence/tree.txt
+          node --version > /tmp/dlc-field-evidence/node-version.txt
+          node scripts/prepareDlcAssets.mjs --available
+          node --test scripts/dlcDistributionDelta.test.mjs scripts/fieldOperationVariants.test.mjs scripts/mosaicReconnaissance.test.mjs scripts/extinctionRelayOperation.test.mjs | tee /tmp/dlc-field-evidence/unit.log
+          npm run test:ui-immersion | tee /tmp/dlc-field-evidence/ui.log
+          npm run test:dlc:profiles | tee /tmp/dlc-field-evidence/profiles.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/GameSystemSections.jsx src/components/GameSystemMenu.jsx src/game/fieldOperationPreferences.js src/game/mosaicReconnaissance.js src/game/extinctionRelayOperation.js scripts/dlcDistributionDelta.mjs scripts/fieldOperationVariants.test.mjs scripts/dlcDistributionDelta.test.mjs scripts/browserSystemSections.mjs scripts/buildSystemSectionsFixture.mjs scripts/fixtures/dlcDeltaFixture.mjs scripts/fixtures/systemSectionsHarness.jsx | tee /tmp/dlc-field-evidence/lint.log
+          node node_modules/vite/bin/vite.js build --config scripts/viteCodeOnly.config.js | tee /tmp/dlc-field-evidence/source-build.log
+      - name: Real system menu across installation profiles
+        run: |
+          set -euo pipefail
+          npm install --prefix /tmp/system-browser playwright@1.57.0 --no-audit --no-fund
+          node /tmp/system-browser/node_modules/playwright/cli.js install --with-deps chromium
+          export PLAYWRIGHT_MODULE_PATH=file:///tmp/system-browser/node_modules/playwright/index.mjs
+          for profile in all base halo; do
+            export SYSTEM_PROFILE=$profile
+            export PLAYWRIGHT_EVIDENCE_DIR=/tmp/dlc-field-evidence/menu-$profile
+            node scripts/buildSystemSectionsFixture.mjs | tee /tmp/dlc-field-evidence/menu-$profile-build.log
+            node scripts/browserSystemSections.mjs | tee /tmp/dlc-field-evidence/menu-$profile.log
+          done
+      - name: Real City and FPS variant playthroughs
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/field-browser
+          /tmp/field-browser/bin/pip install playwright==1.57.0
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/dlc-field-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          /tmp/field-browser/bin/python scripts/browserFieldVariants.py --require-art --evidence /tmp/dlc-field-evidence/field | tee /tmp/dlc-field-evidence/field.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: dlc-field-continuation-${{ github.sha }}
+          path: /tmp/dlc-field-evidence/
+          retention-days: 14

@@ -1,0 +1,26 @@
+.system-sections { min-width: 0; font: .9rem/1.5 system-ui, sans-serif; color: var(--game-text, #eaf6f8); }
+.system-sections [hidden] { display: none !important; }
+.system-section-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 20px; }
+.system-section-tabs button { min-height: 44px; min-width: 0; padding: 10px; border: 1px solid var(--game-panel-border, #497980); background: #071923; color: inherit; border-radius: 6px; font: inherit; overflow-wrap: anywhere; cursor: pointer; }
+.system-section-tabs button[aria-selected="true"] { border-color: #8af6e9; color: #051418; background: #8af6e9; font-weight: 700; }
+.system-sections :is(button, input, select, [role="tabpanel"]):focus-visible { outline: 3px solid #ffdb8c; outline-offset: 3px; }
+.system-sections h3 { margin: 0 0 12px; font-size: 1.15rem; }
+.system-sections p { overflow-wrap: anywhere; }
+.system-pack-filters { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 12px; }
+.system-sections label { display: grid; gap: 8px; min-width: 0; }
+.system-sections :is(input, select) { width: 100%; min-width: 0; box-sizing: border-box; min-height: 44px; padding: 10px; color: inherit; background: #06131d; border: 1px solid #59838e; border-radius: 5px; font: inherit; }
+.system-pack-list { list-style: none; margin: 14px 0; padding: 0; display: grid; gap: 8px; }
+.system-pack-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 12px; border: 1px solid var(--game-panel-border, #497980); background: #071923; border-radius: 6px; }
+.system-pack-list li > span:first-child { flex: 1 1 130px; min-width: 0; overflow-wrap: anywhere; }
+.system-pack-list small { display: block; color: var(--game-muted, #b7d7df); }
+.system-pack-state { font-size: .75rem; font-weight: 700; color: #ffd2a1; }
+.system-pack-state[data-included="true"] { color: #8af6e9; }
+.system-pack-pagination { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.system-sections .btn-retro { min-height: 44px; font-size: .85rem; white-space: normal; overflow-wrap: anywhere; }
+.system-field-settings fieldset { min-width: 0; margin: 20px 0; padding: 14px; border: 1px solid var(--game-panel-border, #497980); border-radius: 8px; }
+.system-field-settings legend { max-width: 100%; white-space: normal; overflow-wrap: anywhere; padding: 0 8px; font-weight: 700; }
+.system-edition-count { font-size: 1.1rem; font-weight: 700; color: #8af6e9; }
+.game-system-menu .archive-drawer-header { padding: max(12px, var(--game-safe-area), env(safe-area-inset-top)) max(18px, var(--game-safe-area), env(safe-area-inset-right)) 12px max(18px, var(--game-safe-area), env(safe-area-inset-left)); }
+.game-system-menu .archive-drawer-content { padding: 18px max(18px, var(--game-safe-area), env(safe-area-inset-right)) max(18px, var(--game-safe-area), env(safe-area-inset-bottom)) max(18px, var(--game-safe-area), env(safe-area-inset-left)); }
+.game-system-menu .archive-drawer-header h2 { min-width: 0; overflow-wrap: anywhere; font-size: 1.2rem; }
+@media (max-width: 520px) { .system-pack-filters { grid-template-columns: minmax(0, 1fr); } .system-section-tabs { gap: 4px; } .system-section-tabs button { padding: 8px 4px; } }
