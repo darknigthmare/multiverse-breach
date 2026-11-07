@@ -8,18 +8,27 @@ relays, Champion, return movement and reward delivery come from ordinary inputs.
 import argparse
 import json
 import math
+import traceback
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright, expect
 from browserCityExtinction import check
 from browserCityFpsOperations import (DISTRICT, SEED_NAME, reconnaissance,
-    open_city_terminal, operation_state, relay_full_run, relay_seed)
+    operation_state, relay_full_run, relay_seed)
 from browserFieldVariants import cross_check
 from browserResidentViewmodels import CLOCK_EPOCH, CLOCK_START, clock_reading
 from browserSceneServices import aim
 
 OPERATION = 'nexus-witness-return-v1'
 OWNED = ['player_anchor', 'arca_mirelle', 'arca_bastion', 'arca_nova']
+
+
+def open_field_terminal(page):
+    # The operation briefing is global, including after ownership loss sends
+    # the City back to the Atrium. Only cross_check requires a district objective.
+    if not page.get_by_role('dialog').count():
+        page.get_by_role('button', name='TERMINAL · JOURNAL', exact=True).click()
+    expect(page.locator('[data-field-access]')).to_be_visible()
 
 
 def persistent_state(page):
@@ -93,7 +102,7 @@ def rerender_hub(page):
 
 
 def deploy_from_city(page, source, out, name):
-    open_city_terminal(page)
+    open_field_terminal(page)
     expect(page.locator('[data-field-access="available"]')).to_be_visible()
     button = page.locator('[data-field-deploy]')
     expect(button).to_be_enabled()
@@ -127,7 +136,7 @@ def deploy_from_city(page, source, out, name):
 
 def eligibility_and_abandon(page, lang, source, out, name):
     # Test the roster lock by changing only prepared ownership, outside combat.
-    open_city_terminal(page)
+    open_field_terminal(page)
     page.evaluate('window.__sceneQA.setOwned([])')
     expect(page.locator('[data-field-access="roster_required"]')).to_be_visible()
     expect(page.locator('[data-field-deploy]')).to_be_disabled()
@@ -337,11 +346,7 @@ def main():
                     later = page.get_by_role('button', name='Plus tard', exact=True)
                     if later.is_visible():
                         later.click()
-                    # The Atrium has no district reconnaissance objective. Open
-                    # its real terminal directly for the initial access lock;
-                    # cross_check retains the historical objective assertions
-                    # after preparing the Nexus district below.
-                    page.get_by_role('button', name='TERMINAL · JOURNAL', exact=True).click()
+                    open_field_terminal(page)
                     expect(page.locator('[data-field-access="report_required"]')).to_be_visible()
                     expect(page.locator('[data-field-deploy]')).to_be_disabled()
                     page.keyboard.press('Escape')
@@ -353,7 +358,7 @@ def main():
                     relay_full_run(page, 'fr', out, name, record, hooks=hooks)
                     page.locator('.hub-return-city').click()
                     page.wait_for_function('window.__sceneQA.state()?.npcs?.length', polling=50)
-                    open_city_terminal(page)
+                    open_field_terminal(page)
                     expect(page.locator('[data-field-completed]')).to_be_visible()
                     expect(page.locator('[data-field-deploy]')).to_be_enabled()
                     check(reconnaissance(page) == source, 'return to City lost the report')
@@ -369,7 +374,9 @@ def main():
                     record['passed'] = True
                 except Exception as error:
                     record['error'] = str(error)
+                    record['traceback'] = traceback.format_exc()
                     try:
+                        record['failureSnapshot'] = page.evaluate('window.__sceneQA?.snapshot()')
                         record['media'] = page.evaluate('window.__sceneQA?.media')
                         page.screenshot(path=str(out / f'{name}-FAILED.png'), timeout=4000)
                     except Exception:
