@@ -1,9 +1,10 @@
-/** Explicit FPS adaptations of the seven Nexus source kits. No art/canon approval.
+/** Explicit FPS adaptations of the twelve Nexus source kits. No art/canon approval.
  * State belongs to one run and one owner; pure simulation, no timers or save writes.
  */
 export const EXTINCTION_SIGNATURE_IDS = Object.freeze([
   'player_anchor', 'arca_mirelle', 'arca_bastion', 'arca_nova',
-  'arca_marrow', 'arca_sable', 'arca_loom'
+  'arca_marrow', 'arca_sable', 'arca_loom', 'arca_tessera', 'arca_quillon',
+  'arca_nadir', 'arca_elyra', 'arca_oryn'
 ]);
 export const EXTINCTION_SIGNATURE_SLOTS = Object.freeze(['simple', 'secondary', 'defense', 'special']);
 const finite = (n, fallback = 0) => Number.isFinite(Number(n)) ? Number(n) : fallback;
@@ -13,7 +14,7 @@ const text = (v, lang) => typeof v === 'string' ? v : v?.[lang] || v?.fr || v?.e
 const delivery = {
   bullet: 'hitscan', projectile: 'projectile', rocket: 'projectile',
   melee: 'melee', beam: 'beam', beam_aoe: 'beam', nexus_aoe: 'pulse',
-  heal: 'heal', shield: 'guard', dash: 'dash', buff: 'buff', summon: 'support'
+  heal: 'heal', shield: 'guard', dash: 'dash', dodge: 'dash', buff: 'buff', summon: 'support'
 };
 export function getExtinctionSignature(hero) {
   if (!EXTINCTION_SIGNATURE_IDS.includes(hero?.id) || hero.nonCombat || hero.category === 'trial') return null;
@@ -27,6 +28,8 @@ export function getExtinctionSignature(hero) {
     if (hero.id === 'arca_sable' && slot === 'secondary') kind = 'mine';
     if (hero.id === 'arca_bastion' && slot === 'secondary') kind = 'barricade';
     if (hero.id === 'arca_loom' && slot === 'secondary') kind = 'drone';
+    if (hero.id === 'arca_tessera' && slot === 'secondary') kind = 'reflection';
+    if (hero.id === 'arca_nadir' && slot === 'secondary') kind = 'return_probe';
     const cooldown = slot === 'simple' ? (kind === 'melee' ? 26 : 20)
       : slot === 'defense' ? Math.max(360, Math.round(finite(source.dur, 2) * 60) + 60)
         : Math.round(clamp(finite(source.cd ?? source.cooldown, slot === 'special' ? 12 : 7), 1, 60) * 60);
@@ -43,14 +46,21 @@ export function createExtinctionProtocolState(profile, runId) {
   return { ownerId: profile?.heroId || '', runId, profile, charge: 0, cooldowns: {},
     guard: 0, reduction: 0, buff: 0, barricade: 0, drone: 0,
     projectiles: [], effects: [], sequence: 0, activeSlot: null, activeFrames: 0,
-    casts: { simple: 0, secondary: 0, defense: 0, special: 0 } };
+    casts: { simple: 0, secondary: 0, defense: 0, special: 0 },
+    ...(profile?.heroId === 'arca_tessera' ? { reflection: null } : {}),
+    ...(profile?.heroId === 'arca_nadir' ? { returnProbe: null, returns: 0 } : {}) };
 }
 const valid = state => state?.phase === 'running' && state.protocols?.profile
   && state.protocols.ownerId === state.heroId && state.protocols.runId === state.runId;
+const currentSupport = (support, state) => support && support.life > 0
+  && support.ownerId === state.heroId && support.runId === state.runId
+  && Number.isFinite(support.wx) && Number.isFinite(support.wy);
 export function getExtinctionProtocolStatus(state, slot) {
   const p = state?.protocols, action = p?.profile?.actions?.[slot];
   if (!valid(state) || !action) return 'unavailable';
   if (state.paused) return 'paused';
+  // Recall is the second half of one cast, not a new probe or a cooldown reset.
+  if (action.kind === 'return_probe' && currentSupport(p.returnProbe, state)) return 'ready';
   if (p.cooldowns[slot] > 0) return 'cooldown';
   if (slot === 'special' && p.charge < 100) return 'charge';
   if (slot === 'simple' && state.weapon?.type && state.weapon.type !== 'pistol') return 'pickup';
@@ -59,6 +69,28 @@ export function getExtinctionProtocolStatus(state, slot) {
     if ((state.weapon?.ammo ?? state.ammo ?? 0) < 1) return 'ammo';
   }
   return 'ready';
+}
+export function getExtinctionProtocolBrief(action, lang = 'fr') {
+  const copy = {
+    reflection: {
+      fr: 'F pose un reflet pour 5 secondes actives. Il vise les menaces proches de sa position ; un seul reflet peut agir.',
+      en: 'F places a reflection for 5 active seconds. It targets threats near its position; only one reflection can act.'
+    },
+    return_probe: {
+      fr: 'F pose une sonde à ta position. Pendant 6 secondes actives, F permet un retour unique à ce point, sans restaurer santé ni munitions.',
+      en: 'F places a probe at your position. For 6 active seconds, F allows one return to that point, without restoring health or ammunition.'
+    }
+  };
+  return copy[action?.kind]?.[lang === 'fr' ? 'fr' : 'en'] || '';
+}
+
+/** End-of-run cleanup also covers support anchors, never casts or rewards. */
+export function clearExtinctionProtocolEffects(state) {
+  const p = state?.protocols;
+  if (!p) return;
+  p.projectiles = []; p.effects = [];
+  if (Object.hasOwn(p, 'reflection')) p.reflection = null;
+  if (Object.hasOwn(p, 'returnProbe')) p.returnProbe = null;
 }
 /** Every damage path calls this; a champion stays protected until drones die. */
 export function damageExtinctionEnemy(state, enemy, damage, onKill, chargeGain = 0) {
@@ -97,6 +129,16 @@ export function activateExtinctionProtocol(state, slot, { onKill, lang = 'fr' } 
   const status = getExtinctionProtocolStatus(state, slot);
   if (status !== 'ready') return { activated: false, reason: status };
   const p = state.protocols, a = p.profile.actions[slot];
+  if (a.kind === 'return_probe' && currentSupport(p.returnProbe, state)) {
+    state.px = clamp(p.returnProbe.wx, -7.5, 7.5);
+    state.py = clamp(p.returnProbe.wy, -1.4, 28);
+    state.vx = 0; state.vy = 0;
+    p.returnProbe = null; p.returns += 1;
+    p.activeSlot = slot; p.activeFrames = 20;
+    effect(state, 'return', a);
+    state.statusText = lang === 'fr' ? 'Sonde de Retour : position retrouvée.' : 'Return Probe: position recovered.';
+    return { activated: true, reason: 'returned', action: a, damage: 0 };
+  }
   if (slot === 'special') p.charge -= 100;
   if (slot === 'simple' && a.kind !== 'melee') {
     state.ammo = Math.max(0, (state.weapon?.ammo ?? state.ammo) - 1);
@@ -142,6 +184,14 @@ export function activateExtinctionProtocol(state, slot, { onKill, lang = 'fr' } 
     p.barricade = 300; effect(state, 'guard', a);
   } else if (a.kind === 'drone') {
     p.drone = 360; effect(state, 'drone', a);
+  } else if (a.kind === 'reflection') {
+    p.reflection = { ownerId: p.ownerId, runId: p.runId, wx: state.px, wy: state.py,
+      life: 300, age: 0, range: 8, damage, color: a.color };
+    effect(state, 'reflection', a);
+  } else if (a.kind === 'return_probe') {
+    p.returnProbe = { ownerId: p.ownerId, runId: p.runId, wx: state.px, wy: state.py,
+      life: 360, color: a.color };
+    effect(state, 'return', a);
   }
   state.statusText = text(a.name, lang);
   return { activated: true, action: a, damage };
@@ -164,6 +214,23 @@ export function tickExtinctionProtocols(state, onKill) {
   for (const slot of EXTINCTION_SIGNATURE_SLOTS) p.cooldowns[slot] = Math.max(0, (p.cooldowns[slot] || 0) - 1);
   for (const key of ['guard', 'buff', 'barricade', 'drone', 'activeFrames']) p[key] = Math.max(0, p[key] - 1);
   if (p.drone > 0 && p.drone % 60 === 0) state.hp = Math.min(state.maxHp, state.hp + 5);
+  if (p.returnProbe && (!currentSupport(p.returnProbe, state) || --p.returnProbe.life <= 0)) p.returnProbe = null;
+  if (p.reflection) {
+    const support = p.reflection;
+    if (!currentSupport(support, state) || --support.life <= 0) p.reflection = null;
+    else if (++support.age % 60 === 0) {
+      const target = state.enemies.filter(enemy => enemy.hp > 0
+        && Number.isFinite(enemy.wx) && Number.isFinite(enemy.wy)
+        && distance(enemy, support) <= support.range)
+        .sort((a, b) => distance(a, support) - distance(b, support))[0];
+      if (target) {
+        // Same central damage path as every other action: shields and kills
+        // retain their existing rules. Damage is delayed until this active tick.
+        const dealt = damageExtinctionEnemy(state, target, support.damage, onKill, 8);
+        if (dealt) effect(state, 'impact', support, target.wx, target.wy);
+      }
+    }
+  }
   p.effects = p.effects.filter(e => --e.life > 0);
   p.projectiles = p.projectiles.filter(shot => {
     if (shot.ownerId !== state.heroId || shot.runId !== state.runId || --shot.life <= 0) return false;
@@ -197,6 +264,23 @@ export function drawExtinctionProtocols(ctx, state, width, height, projectWorld,
   const p = state?.protocols;
   if (!p || !valid(state)) return;
   ctx.save();
+  for (const [kind, support] of [['reflection', p.reflection], ['probe', p.returnProbe]]) {
+    if (!currentSupport(support, state)) continue;
+    const projection = projectWorld(support, state);
+    if (projection.camZ <= 0.2 || Math.abs(projection.aim) > 1.6) continue;
+    const x = width / 2 + projection.aim * width * 0.62;
+    const y = height * 0.55 + 115 / projection.camZ;
+    const radius = clamp(28 / projection.camZ, 4, 30);
+    ctx.globalAlpha = 0.65; ctx.strokeStyle = support.color; ctx.lineWidth = 2;
+    ctx.beginPath();
+    if (kind === 'reflection') {
+      ctx.moveTo(x, y - radius * 2); ctx.lineTo(x + radius, y - radius);
+      ctx.lineTo(x, y); ctx.lineTo(x - radius, y - radius); ctx.closePath();
+    } else {
+      ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.moveTo(x, y - radius * 1.6); ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
   for (const shot of [...p.projectiles, ...p.effects]) {
     if (shot.screenSpace) {
       const progress = 1 - shot.life / shot.maxLife;

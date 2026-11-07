@@ -42,10 +42,10 @@ test('source revision is pinned and invalid revisions are rejected',()=>{
 });
 
 test('source-bound Nexus progress never certifies all roster actions or individual world art',()=>{
- assert.equal(catalog.counts.runtimeSignatureHeroes,7);
- assert.equal(catalog.counts.runtimeSignatureActions,28);
+ assert.equal(catalog.counts.runtimeSignatureHeroes,12);
+ assert.equal(catalog.counts.runtimeSignatureActions,48);
  const actions=catalog.tables.Actions_FPS.rows;
- assert.equal(actions.filter(r=>r[7].startsWith('Partiel — 4 actions')).length,7);
+ assert.equal(actions.filter(r=>r[7].startsWith('Partiel — 4 actions')).length,12);
  assert.ok(actions.filter(r=>r[7].startsWith('À adapter')).length>1700);
  const relics=catalog.tables.Cite_props.rows.filter(r=>r[0].startsWith('gear::'));
  assert.equal(relics.length,catalog.counts.cityExhibitRecords);

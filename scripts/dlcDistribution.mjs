@@ -3,6 +3,8 @@ import { closeSync, constants, lstatSync, openSync, readFileSync, readdirSync, r
 import { resolve } from 'node:path';
 import { projectAssetPath } from './dlcAssetPaths.mjs';
 import { collectCommonUiAssetReferences } from './dlcCommonUiAssets.mjs';
+import { assertDlcSharedDependencyClosure, DLC_SHARED_DEPENDENCIES, readDlcSharedDependencies,
+    REVIEWED_SHARED_POLICY, selectDlcSharedAssets } from './dlcSharedAssetDependencies.mjs';
 
 const PROFILE_KEYS = new Set(['schemaVersion', 'mode', 'packIds', 'sharedPolicy']);
 const HASH_PATTERN = /^[a-f0-9]{64}$/;
@@ -62,9 +64,9 @@ function readJson(root, relative) {
 function validateProfile(profile) {
     if (!isObject(profile) || profile.schemaVersion !== 1
         || !['all', 'base', 'selected'].includes(profile.mode)
-        || profile.sharedPolicy !== 'preserve-all' || !Array.isArray(profile.packIds)
+        || !['preserve-all', REVIEWED_SHARED_POLICY].includes(profile.sharedPolicy) || !Array.isArray(profile.packIds)
         || Object.keys(profile).some((key) => !PROFILE_KEYS.has(key))) {
-        throw new Error('Invalid DLC distribution profile; expected schemaVersion 1, mode, packIds and sharedPolicy preserve-all.');
+        throw new Error('Invalid DLC distribution profile; expected schemaVersion 1, mode, packIds and an explicit supported sharedPolicy.');
     }
     if (profile.packIds.some((id) => typeof id !== 'string' || !/^[a-z0-9][a-z0-9-]*$/.test(id))) {
         throw new Error('Invalid DLC pack ID in distribution profile.');
@@ -214,7 +216,7 @@ function readSharedInventory(root) {
     return { path, inventory, assets };
 }
 
-/** Keep every declared public source, including declarations from excluded packs. */
+/** Preserve public sources by default; an explicit policy may omit reviewed dependencies only. */
 export function buildDlcDistributionPlan({ root = process.cwd(), selection } = {}) {
     const absolute = checkedRoot(root);
     const resolved = normalizeSelection(absolute, selection);
@@ -238,11 +240,24 @@ export function buildDlcDistributionPlan({ root = process.cwd(), selection } = {
     const shared = readSharedInventory(absolute);
     assets.push(...shared.assets);
     assertUniqueAssets(assets);
-    const publicAssets = assets.filter((asset) => asset.ownerPackId === null).sort((a, b) => compare(a.destinationPath, b.destinationPath));
-    const publicUrls = new Set(publicAssets.map((asset) => asset.publicPath));
+    const allPublicAssets = assets.filter((asset) => asset.ownerPackId === null).sort((a, b) => compare(a.destinationPath, b.destinationPath));
+    const publicUrls = new Set(allPublicAssets.map((asset) => asset.publicPath));
     for (const { dependency, path } of dependencies) {
         if (typeof dependency !== 'string' || !publicUrls.has(dependency)) {
             throw new Error('Undeclared shared dependency in ' + path + ': ' + JSON.stringify(dependency));
+        }
+    }
+    const reviewedPolicy = resolved.sharedPolicy === REVIEWED_SHARED_POLICY;
+    const sharedDependencies = readDlcSharedDependencies({ root: absolute, required: reviewedPolicy });
+    if (sharedDependencies) inventoryInputs.push(DLC_SHARED_DEPENDENCIES);
+    const sharedDependencyProof = reviewedPolicy ? assertDlcSharedDependencyClosure({ root: absolute,
+        manifests: present, sharedAssets: shared.assets, dependencies: sharedDependencies }) : null;
+    const { retained: publicAssets, excluded: excludedSharedAssets } = selectDlcSharedAssets({
+        assets: allPublicAssets, selection: resolved, dependencies: sharedDependencies });
+    const selectedPublicUrls = new Set(publicAssets.map(asset => asset.publicPath));
+    for (const { dependency, path } of dependencies) {
+        if (resolved.selectedManifests.some(pack => path === pack.directory + '/assets.json') && !selectedPublicUrls.has(dependency)) {
+            throw new Error('Selected shared dependency would be excluded: ' + path + ' -> ' + dependency);
         }
     }
     const dlcAssets = assets.filter((asset) => selected.has(asset.ownerPackId)).sort((a, b) => compare(a.destinationPath, b.destinationPath));
@@ -257,10 +272,11 @@ export function buildDlcDistributionPlan({ root = process.cwd(), selection } = {
             + ' (pack ' + excluded.ownerPackId + '); promote the canonical source to shared public assets.');
         if (!publishedUrls.has(publicPath)) throw new Error('Undeclared common UI asset: ' + sourcePath + ' -> ' + publicPath);
     }
-    const metadataFiles = ['DLC/shared-assets.json', ...resolved.selectedManifests.flatMap((manifest) =>
+    const metadataFiles = ['DLC/shared-assets.json', ...(sharedDependencies ? [DLC_SHARED_DEPENDENCIES] : []), ...resolved.selectedManifests.flatMap((manifest) =>
         [manifest.directory + '/manifest.json', manifest.directory + '/assets.json'])].sort(compare);
     return freeze({
         schemaVersion: 1, selection: resolved, assets: published, dlcAssets, publicAssets, excludedDlcAssets,
+        excludedSharedAssets, sharedDependencyProof,
         publicSourcePaths: publicAssets.map((asset) => asset.destinationPath),
         metadataFiles, inventoryInputs: inventoryInputs.sort(compare),
         counts: { selectedPacks: resolved.packIds.length, sharedAssets: publicAssets.length,
@@ -287,7 +303,7 @@ function hashRegularFile(root, relative) {
 }
 function profileFromSelection(selection) {
     return { schemaVersion: 1, mode: selection.mode,
-        packIds: selection.mode === 'selected' ? [...selection.packIds] : [], sharedPolicy: 'preserve-all' };
+        packIds: selection.mode === 'selected' ? [...selection.packIds] : [], sharedPolicy: selection.sharedPolicy };
 }
 
 /** Hash canonical sources before export; published copies never substitute for missing sources. */
@@ -370,7 +386,7 @@ function validateReceipt(receipt) {
         paths.add(file.path);
         metadata.add(file.path);
     }
-    for (const path of ['DLC/shared-assets.json', ...manifests.flatMap((manifest) =>
+    for (const path of ['DLC/shared-assets.json', ...(receipt.profile.sharedPolicy === REVIEWED_SHARED_POLICY ? [DLC_SHARED_DEPENDENCIES] : []), ...manifests.flatMap((manifest) =>
         [manifest.directory + '/manifest.json', manifest.directory + '/assets.json'])]) {
         if (!metadata.has(path)) throw new Error('Missing inventory attestation in distribution receipt: ' + path);
     }
@@ -390,7 +406,16 @@ function walkFiles(root, relative) {
     return files;
 }
 function verifyInventoryClosure(root, receipt, selection) {
-    const expected = [...readSharedInventory(root).assets, ...receipt.retainedPublicSources];
+    const shared = readSharedInventory(root);
+    const reviewedPolicy = selection.sharedPolicy === REVIEWED_SHARED_POLICY;
+    const dependencies = readDlcSharedDependencies({ root, required: reviewedPolicy });
+    if (dependencies && !receipt.files.some(file => file.path === DLC_SHARED_DEPENDENCIES)) {
+        throw new Error('Missing shared dependency manifest attestation');
+    }
+    if (reviewedPolicy) assertDlcSharedDependencyClosure({ root,
+        manifests: readDlcDistributionManifests({ root }), sharedAssets: shared.assets, dependencies });
+    const { retained } = selectDlcSharedAssets({ assets: shared.assets, selection, dependencies });
+    const expected = [...retained, ...receipt.retainedPublicSources];
     const publicUrls = new Set(receipt.assets.filter((asset) => asset.ownerPackId === null).map((asset) => asset.publicPath));
     for (const manifest of selection.selectedManifests) {
         const identity = readJson(root, manifest.directory + '/manifest.json');

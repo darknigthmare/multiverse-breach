@@ -79,7 +79,8 @@ def residents(page, args, width, height, lang, out, name):
     check(prepared_clock==clock_reading(page),'virtual City clock advanced during a real-time pause')
     visits=[];checkpoints_during_movement=0
     for identity in ['torbahead_community_remix_curator','bioshock_rapture_tenenbaum','arca_bastion']:
-        page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
+        if not page.get_by_role('dialog').count():
+            page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
         directory=page.locator('.mosaic-resident-directory')
         if not directory.evaluate('e=>e.open'):directory.locator('summary').click()
         search=page.get_by_label('Rechercher un habitant' if fr else 'Find a resident',exact=True)
@@ -103,7 +104,10 @@ def residents(page, args, width, height, lang, out, name):
         published=page.evaluate('window.__sceneQA.saves.length')-checkpoints
         check(published>0,'City checkpoint did not follow virtual movement time')
         checkpoints_during_movement+=published
-        page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
+        if identity == 'arca_bastion':
+            expect(page.locator('[data-city-conversation="arca_bastion"]')).to_be_visible()
+        if not page.get_by_role('dialog').count():
+            page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
         log=page.locator('.mosaic-rpg-log span').inner_text()
         expected=resident_name+(' synchronise sa Trame' if fr else ' synchronizes their Thread')
         check(log.startswith(expected),f'resident not reached through normal movement: {identity}: {log}')

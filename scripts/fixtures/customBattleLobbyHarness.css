@@ -1,0 +1,4 @@
+/* A viewport workspace around the real lobby; no rules target its controls. */
+.custom-lobby-fixture { padding: 76px max(12px, var(--game-safe-area)) max(12px, var(--game-safe-area)); box-sizing: border-box; min-height: 100dvh; }
+.custom-lobby-qa-controls { margin-top: 24px; color: #d4e3ef; }
+.custom-lobby-qa-controls button, .custom-lobby-battle-fixture button { min-height: 44px; margin: 8px; }

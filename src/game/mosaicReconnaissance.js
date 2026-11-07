@@ -73,11 +73,15 @@ export function getMosaicReconnaissanceObjective(progress, dossier, lang = 'fr')
     `Cross-check: inspect two distinct ${dossier.universe} relics (${evidenceIds.length}/2).`
   ];
   const [fr, en] = texts[step];
+  const crossCheck = saved?.exhibitGoal === 2;
+  const index = crossCheck
+    ? ({ accept: 0, resident: 0, exhibit: 1 + evidenceIds.length, report: 3, done: 4, unavailable: 0 })[step]
+    : ({ accept: 0, resident: 0, exhibit: 1, report: 2, done: 3, unavailable: 0 })[step];
   return {
     districtId: dossier.districtId, universe: dossier.universe,
     status: incompatible ? 'unavailable' : !saved ? 'available' : saved.completed ? 'completed'
       : progress.activeDistrictId === dossier.districtId ? 'active' : 'paused',
-    step, index: ({ accept: 0, resident: 0, exhibit: 1, report: 2, done: 3, unavailable: 0 })[step], total: 3,
+    step, index, total: crossCheck ? 4 : 3,
     title: localize(`Reconnaissance — ${dossier.universe}`, `Reconnaissance — ${dossier.universe}`, lang),
     text: localize(fr, en, lang),
     targetType: step === 'resident' ? 'npc' : ['exhibit', 'report'].includes(step) ? 'zone' : null,

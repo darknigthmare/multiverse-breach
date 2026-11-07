@@ -5,8 +5,9 @@ import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { getMosaicExhibits, getMosaicExhibitView, getMosaicExhibitZones, drawMosaicService } from '../game/mosaicExhibits.js';
 import { buildMosaicReconnaissanceDossier, normalizeMosaicReconnaissance, startMosaicReconnaissance, advanceMosaicReconnaissance, getMosaicReconnaissanceObjective } from '../game/mosaicReconnaissance.js';
 import { createExtinctionRelayOperation, tickExtinctionRelayOperation, interactExtinctionRelayOperation, getExtinctionRelayStatus } from '../game/extinctionRelayOperation.js';
-import { getExtinctionSignature, createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols } from '../game/extinctionSignatures.js';
+import { getExtinctionSignature, createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols, getExtinctionProtocolBrief, clearExtinctionProtocolEffects } from '../game/extinctionSignatures.js';
 import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicResidents.js';
+import { beginMosaicResidentDialogue, getMosaicResidentDialogue, getMosaicReconnaissanceLedger } from '../game/mosaicResidentDialogue.js';
 import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
 import { getExtinctionRoster, getExtinctionViewmodel, getExtinctionHandFrame, getExtinctionHandSourceRect, getExtinctionHandPlacement, getExtinctionProjectilePlacement, drawExtinctionSchematic } from '../game/extinctionContent.js';
 import CharacterWardrobe from './CharacterWardrobe.jsx';
@@ -92,6 +93,7 @@ import './MosaicCityHub.css';
 import './HubImmersion.css';
 import ImmersiveDrawer from './ImmersiveDrawer.jsx';
 import MosaicGuidePanel from './MosaicGuidePanel.jsx';
+import MosaicResidentDialogue, { MosaicEvidenceLedger } from './MosaicResidentDialogue.jsx';
 import GameDisplaySettings from './GameDisplaySettings.jsx';
 import AudioControl from './AudioControl.jsx';
 import NetworkStatusBadge from './NetworkStatusBadge.jsx';
@@ -2276,6 +2278,9 @@ function MosaicCityHub({
   const cityBackdropRef = useRef(null);
   useEffect(() => { const image = new Image(); image.src = MOSAIC_CITY_ART; cityBackdropRef.current = image; return () => { cityBackdropRef.current = null; }; }, []);
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
+  const [conversationHeroId, setConversationHeroId] = useState(null);
+  const conversationFocusRef = useRef(null);
+  const conversationFocusPending = useRef(false);
   const cityTerminalButtonRef = useRef(null);
   const journalRef = useRef(null);
   const journalFocusRequestedRef = useRef(false);
@@ -2300,6 +2305,16 @@ function MosaicCityHub({
     return () => cancelAnimationFrame(frame);
   }, [cityMenuOpen]);
   const closeCityMenu = useCallback(() => setCityMenuOpen(false), []);
+  useEffect(() => {
+    if (!cityMenuOpen) { setConversationHeroId(null); return undefined; }
+    if (!conversationFocusPending.current || !conversationHeroId) return undefined;
+    const frame = requestAnimationFrame(() => {
+      conversationFocusRef.current?.scrollIntoView({ block: 'start' });
+      conversationFocusRef.current?.focus({ preventScroll: true });
+      conversationFocusPending.current = false;
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [cityMenuOpen, conversationHeroId]);
   const cityMenuRef = useRef(false);
   const [runtimeError, setRuntimeError] = useState(null);
   const [renderAttempt, setRenderAttempt] = useState(0);
@@ -2674,6 +2689,12 @@ function MosaicCityHub({
     district, residents: residentCatalog, exhibits, anchor: zones.find(zone => zone.action === 'anchor')
   }), [district, residentCatalog, exhibits, zones]);
   const reconnaissanceObjective = getMosaicReconnaissanceObjective(reconnaissance, reconnaissanceDossier, lang);
+  const reconnaissanceLedger = useMemo(() => getMosaicReconnaissanceLedger(reconnaissance, {
+    heroes: safeHeroes, exhibits: EQUIP_ITEMS_DB, districts, lang
+  }), [reconnaissance, safeHeroes, districts, lang]);
+  const conversationHero = ownedHeroes.find(hero => hero.id === conversationHeroId);
+  const residentConversation = conversationHero
+    ? getMosaicResidentDialogue(conversationHero, getCharacterPlaque(conversationHero), lang) : null;
   const residentGuide = currentDistrict === 'atrium' ? (safeHeroes.find(hero => hero.id === 'arca_mirelle') || BASE_HEROES_DB.find(hero => hero.id === 'arca_mirelle')) : null;
   const residentView = useMemo(() => getMosaicResidentView(residentCatalog, {
     group: residentGroups[currentDistrict] || 0, guideId: residentGuide?.id, query: residentQuery, page: residentPage
@@ -2913,6 +2934,17 @@ function MosaicCityHub({
       sound.playSfx('confirm');
       return;
     }
+    const dialogue = beginMosaicResidentDialogue(interaction, {
+      ownedHeroIds: unlockedHeroes, plaque: getCharacterPlaque(target), lang
+    });
+    if (dialogue) {
+      cityTerminalButtonRef.current?.focus({ preventScroll: true });
+      setConversationHeroId(dialogue.heroId);
+      conversationFocusPending.current = true;
+      // The interaction already stopped walking. The existing terminal owns
+      // pause, focus and Escape; a conversation never creates a second overlay.
+      setCityMenuOpen(true);
+    }
     const compatible = state.npcs
       .map(npc => npc.hero)
       .filter(hero => hero.id !== target.id && (hero.universe === target.universe || hero.category === target.category))
@@ -2923,7 +2955,7 @@ function MosaicCityHub({
       ? `${target.name} synchronise sa Trame avec ${playerName}. ${compatible.length ? `Discussion compatible avec ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} faille(s) stabilisee(s).`
       : `${target.name} synchronizes their Thread with ${playerName}. ${compatible.length ? `Compatible discussion with ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} stabilized rift(s).`);
     sound.playSfx('confirm');
-  }, [commitReconnaissance, district, exhibits, lang, onOpenCodex, onOpenMissions, onOpenService, openCityService, playerName, reconnaissanceDossier, recordGuide, switchDistrict, universeStageStats, zones]);
+  }, [commitReconnaissance, district, exhibits, lang, onOpenCodex, onOpenMissions, onOpenService, openCityService, playerName, reconnaissanceDossier, recordGuide, switchDistrict, universeStageStats, unlockedHeroes, zones]);
 
   useEffect(() => {
     const onKeyDown = event => {
@@ -3508,6 +3540,9 @@ function MosaicCityHub({
       </div>
       <ImmersiveDrawer open={cityMenuOpen} onClose={closeCityMenu} lang={lang} title={lang === 'fr' ? 'Terminal de poche A.R.C.A.' : 'A.R.C.A. pocket terminal'}>
       <div className="nexus-play-copy">
+        {residentConversation && <div ref={conversationFocusRef} tabIndex={-1}>
+          <MosaicResidentDialogue key={residentConversation.heroId} conversation={residentConversation} lang={lang} onClose={closeCityMenu} />
+        </div>}
         <div className="portal-focus-kicker">{lang === 'fr' ? 'CITE-MOSAIQUE / RPG VIVANT' : 'MOSAIC CITY / LIVING RPG'}</div>
         <h3>{lang === 'fr' ? 'Cite-Mosaique' : 'Mosaic City'}</h3>
         <p>
@@ -3526,10 +3561,14 @@ function MosaicCityHub({
           <h3>{lang === 'fr' ? 'RAPPORT DE RECONNAISSANCE' : 'RECONNAISSANCE REPORT'}</h3>
           {reconnaissanceDossier ? <>
             <strong>{district.label}</strong>
-            <p>{lang === 'fr' ? 'Écoute un habitant du quartier, examine une relique dans une vitrine, puis transmets tes observations à l’ancre locale.' : 'Listen to a district resident, examine a relic at a display, then transmit your observations at the local anchor.'}</p>
+            <p>{reconnaissance.dossiers[currentDistrict]?.exhibitGoal === 2
+              ? (lang === 'fr' ? 'Écoute un habitant du quartier, compare deux reliques distinctes dans les vitrines, puis transmets tes observations à l’ancre locale.' : 'Listen to a district resident, compare two distinct relics in the displays, then transmit your observations at the local anchor.')
+              : (lang === 'fr' ? 'Écoute un habitant du quartier, examine une relique dans une vitrine, puis transmets tes observations à l’ancre locale.' : 'Listen to a district resident, examine a relic at a display, then transmit your observations at the local anchor.')}</p>
             <ol>
               <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.residentId)}>{lang === 'fr' ? 'Rencontrer un habitant' : 'Meet a resident'}{reconnaissance.dossiers[currentDistrict]?.residentId && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
-              <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.exhibitId)}>{lang === 'fr' ? 'Examiner une relique sur place' : 'Inspect a relic in person'}{reconnaissance.dossiers[currentDistrict]?.exhibitId && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
+              <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.exhibitId)}>{reconnaissance.dossiers[currentDistrict]?.exhibitGoal === 2
+                ? (lang === 'fr' ? `Examiner deux reliques distinctes sur place (${reconnaissance.dossiers[currentDistrict].evidenceIds.length}/2)` : `Inspect two distinct relics in person (${reconnaissance.dossiers[currentDistrict].evidenceIds.length}/2)`)
+                : (lang === 'fr' ? 'Examiner une relique sur place' : 'Inspect a relic in person')}{reconnaissance.dossiers[currentDistrict]?.exhibitId && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
               <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.completed)}>{lang === 'fr' ? 'Transmettre à l’ancre' : 'Report at the anchor'}{reconnaissance.dossiers[currentDistrict]?.completed && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
             </ol>
             <p role="status" data-reconnaissance-objective>{reconnaissanceObjective?.text}</p>
@@ -3542,6 +3581,7 @@ function MosaicCityHub({
             : (lang === 'fr' ? 'Le quartier du dossier en cours est indisponible. Tes étapes sont conservées pour son retour.' : 'The current report’s district is unavailable. Your steps are preserved for its return.')}</p>}
           <small>{Object.values(reconnaissance.dossiers).filter(entry => entry.completed).length} {lang === 'fr' ? 'rapport(s) transmis · progression enregistrée' : 'report(s) transmitted · progress saved'}</small>
         </section>
+        <MosaicEvidenceLedger entries={reconnaissanceLedger} lang={lang} />
         <details className="mosaic-resident-directory">
           <summary>{lang === 'fr' ? 'Habitants disponibles' : 'Available residents'} · {residentView.total}</summary>
           <label><span>{lang === 'fr' ? 'Rechercher un habitant' : 'Find a resident'}</span>
@@ -3835,6 +3875,8 @@ function ExtinctionRoyale({
       signatureCharge: state.protocols?.charge || 0,
       signatureCooldowns: { ...state.protocols?.cooldowns },
       signatureGuard: (state.protocols?.guard || 0) > 0 || (state.protocols?.barricade || 0) > 0,
+      signatureReturnTicks: state.protocols?.returnProbe?.life || 0,
+      signatureReflectionTicks: state.protocols?.reflection?.life || 0,
       relay: getExtinctionRelayStatus(state.relayOperation, `beacon-${Math.min(state.wave || 1, EXTINCTION_BEACON_TARGET)}`, lang),
       relaySummary: state.relaySummary || null,
       nearbyLoot: nearbyLoot?.label || null,
@@ -4083,7 +4125,7 @@ function ExtinctionRoyale({
       secured: Object.values(state.relayOperation.beacons).filter(entry => entry.status === 'secured').length
     } : null;
     state.relayOperation = null;
-    if (state.protocols) { state.protocols.projectiles = []; state.protocols.effects = []; }
+    clearExtinctionProtocolEffects(state);
     state.result = result;
     state.rewards = rewards;
     state.statusText = rewards.title;
@@ -4547,6 +4589,7 @@ function ExtinctionRoyale({
         aimPointerRef.current = emptySceneAim();
         // A renderer failure is not a defeat or a reward-bearing completion.
         if (state.phase !== 'ended') state.phase = 'error';
+        clearExtinctionProtocolEffects(state);
         setRuntimeError(error instanceof Error ? error.message : String(error));
         setRunSnapshot(buildRunSnapshot(state));
       }
@@ -4860,6 +4903,7 @@ function ExtinctionRoyale({
     if (stateRef.current.phase === 'ended') { setRuntimeError(null); setRenderAttempt(value => value + 1); return; }
     stateRef.current.phase = 'ready'; stateRef.current.rewards = null; stateRef.current.result = null;
     stateRef.current.relayOperation = null; stateRef.current.relaySummary = null;
+    clearExtinctionProtocolEffects(stateRef.current);
     setRuntimeError(null); setRunSnapshot(buildRunSnapshot(stateRef.current));
     setRenderAttempt(value => value + 1); onSessionEnd?.({ reason: 'error' });
   };
@@ -4881,6 +4925,7 @@ function ExtinctionRoyale({
         <p>{lang === 'fr' ? 'Visuel FPS : les planches personnelles disponibles sont liées à leur propriétaire. Les armes ramassées et les vues manquantes utilisent un schéma de secours, pas une illustration certifiée du personnage.' : 'FPS visuals: available personal sheets are bound to their owner. Pickup weapons and missing views use a fallback schematic, not certified character artwork.'}</p>
         <p>{runSnapshot.statusText}</p>
         <p>{lang === 'fr' ? 'ZQSD/WASD : déplacement. Flèches gauche/droite : tourner. Glisser sur la vue : viser. Toucher la vue ou Espace : tirer. R : recharger. E : récupérer un objet. Maj : capacité de rôle.' : 'WASD: movement. Left/right arrows: turn. Drag the view: aim. Tap the view or Space: fire. R: reload. E: collect an item. Shift: role ability.'}</p>
+        {getExtinctionProtocolBrief(signatureProfile?.actions.secondary, lang) && <p>{getExtinctionProtocolBrief(signatureProfile.actions.secondary, lang)}</p>}
         <p>{lang === 'fr' ? 'Format paysage conseillé. Les boutons de déplacement fonctionnent aussi avec Espace ou Entrée maintenus.' : 'Landscape recommended. Movement buttons also work by holding Space or Enter.'}</p>
         <p>{lang === 'fr' ? 'La simulation est suspendue pendant la consultation. Fermer ce terminal ne relance aucune commande maintenue.' : 'Simulation is paused while you read. Closing this terminal does not resume held commands.'}</p>
       </ImmersiveDrawer>
@@ -4921,6 +4966,7 @@ function ExtinctionRoyale({
           {signatureProfile && <section className="extinction-signature-brief" aria-label={lang === 'fr' ? 'Actions personnelles disponibles' : 'Available personal actions'}>
             <strong>{lang === 'fr' ? 'PROTOCOLES DE SIGNATURE' : 'SIGNATURE PROTOCOLS'}</strong>
             {Object.entries(signatureProfile.actions).map(([slot, action]) => <span key={slot}>{slot === 'simple' ? (lang === 'fr' ? 'TIR / FRAPPE' : 'FIRE / STRIKE') : {secondary: 'F', defense: 'C', special: 'X'}[slot]} · {getLocalizedText(action.name, lang)}</span>)}
+            {getExtinctionProtocolBrief(signatureProfile.actions.secondary, lang) && <p>{getExtinctionProtocolBrief(signatureProfile.actions.secondary, lang)}</p>}
             <small>{lang === 'fr' ? 'Adaptation jouable des actions source. Visuels personnels incomplets ; armes ramassées et capacité de rôle conservées.' : 'Playable adaptation of source actions. Personal artwork remains incomplete; pickup weapons and role ability are preserved.'}</small>
           </section>}
           <div className="nexus-play-intel">
@@ -4983,11 +5029,13 @@ function ExtinctionRoyale({
                     const action = activeSignature.actions[slot];
                     if (!action) return null;
                     const cooldown = Math.ceil((runSnapshot.signatureCooldowns?.[slot] || 0) / 60);
+                    const returnReady = action.kind === 'return_probe' && runSnapshot.signatureReturnTicks > 0;
+                    const supportSeconds = Math.ceil((action.kind === 'reflection' ? runSnapshot.signatureReflectionTicks : 0) / 60);
                     const label = getLocalizedText(action.name, lang);
                     return <button key={slot} type="button" className="btn-retro" data-protocol={slot}
-                      aria-label={`${lang === 'fr' ? fr : en}: ${label}`} title={label}
-                      disabled={sessionPaused || intelOpen || cooldown > 0 || (slot === 'special' && (runSnapshot.signatureCharge || 0) < 100)}
-                      onClick={() => activateSignature(slot)}><strong>{key} {lang === 'fr' ? fr : en}</strong><small>{cooldown ? `${cooldown}s` : slot === 'special' ? `${Math.floor(runSnapshot.signatureCharge || 0)}/100` : label}</small></button>;
+                      aria-label={`${returnReady ? (lang === 'fr' ? 'Rappel' : 'Recall') : (lang === 'fr' ? fr : en)}: ${label}`} title={label}
+                      disabled={sessionPaused || intelOpen || (!returnReady && cooldown > 0) || (slot === 'special' && (runSnapshot.signatureCharge || 0) < 100)}
+                      onClick={() => activateSignature(slot)}><strong>{key} {returnReady ? (lang === 'fr' ? 'RETOUR' : 'RETURN') : (lang === 'fr' ? fr : en)}</strong><small>{returnReady ? `${lang === 'fr' ? 'Sonde' : 'Probe'} ${Math.ceil(runSnapshot.signatureReturnTicks / 60)}s` : supportSeconds > 0 ? `${lang === 'fr' ? 'Reflet' : 'Reflection'} ${supportSeconds}s` : cooldown ? `${cooldown}s` : slot === 'special' ? `${Math.floor(runSnapshot.signatureCharge || 0)}/100` : label}</small></button>;
                   })}
                 </div>}
                 <SceneHoldButton className="btn-retro extinction-move-action" action="forward" onInput={setVirtualMove} disabled={sessionPaused || intelOpen} title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</SceneHoldButton>

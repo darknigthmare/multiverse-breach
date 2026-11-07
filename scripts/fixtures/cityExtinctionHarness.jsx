@@ -9,7 +9,9 @@ import './combatHarness.css';
 const params = new URLSearchParams(globalThis.__sceneQaParams || location.search);
 const lang = params.get('lang') === 'en' ? 'en' : 'fr';
 const mode = params.get('mode') === 'fps' ? 'fps' : 'city';
-const catalog = [createPlayerHero({name:'QA'}), ...(params.get('catalog') === 'full' ? HEROES_DB : HEROES_DB.filter(h => ['arca_mirelle','arca_bastion','arca_nova'].includes(h.id)))];
+const catalog = [createPlayerHero({name:'QA'}), ...(params.get('catalog') === 'full' ? HEROES_DB
+  : params.get('catalog') === 'nexus' ? HEROES_DB.filter(h => h.universe === 'Nexus de Convergence')
+    : HEROES_DB.filter(h => ['arca_mirelle','arca_bastion','arca_nova'].includes(h.id)))];
 const audit = { reports: [], services: [], saves: [], reconnaissanceSaves: [], mounted: true, mode };
 window.__sceneQA = audit;
 // Test environment only: the bot fixes randomness before START, while gameplay

@@ -9,6 +9,7 @@ import {
   buildDlcDistributionPlan, createDlcDistributionReceipt, readDlcDistributionManifests, resolveDlcSelection,
 } from './dlcDistribution.mjs';
 import { createDlcProfileTransformer } from './dlcProfileTransform.mjs';
+import { DLC_SHARED_DEPENDENCIES } from './dlcSharedAssetDependencies.mjs';
 import { auditDlcDistribution, DLC_DISTRIBUTION_RECEIPT } from './auditDlcDistribution.mjs';
 import {
   assertDistributionDirectory, inspectDistributionPath, listDistributionFiles, readDistributionFile, slash,
@@ -57,6 +58,7 @@ function loadProfile(root, profile) {
 function collectSourceFiles(root, selection) {
   const files = new Set(COMMON_DLC_FILES);
   for (const file of COMMON_DLC_FILES) inspectDistributionPath(root, file);
+  if (inspectDistributionPath(root, DLC_SHARED_DEPENDENCIES, { optional: true })) files.add(DLC_SHARED_DEPENDENCIES);
   inspectDistributionPath(root, 'src', { directory: true });
   for (const relative of SOURCE_TREES) {
     for (const file of listDistributionFiles({ root, relative, ignore: ignoredSource })) files.add(file);

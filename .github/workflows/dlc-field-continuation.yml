@@ -31,6 +31,47 @@ jobs:
             /public/images/campaign-oc/chapter-01-atrium-v1.png
             /public/sprites/generated/heroes/nexus-de-convergence/
             /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+            /DLC/Alien3/assets/backgrounds/lore-stages/alien-3/rpg.webp
+            /DLC/AlienCovenant/assets/backgrounds/lore-stages/alien-covenant/rpg.webp
+            /DLC/AlienResurrection/assets/backgrounds/lore-stages/alien-resurrection/tactics.webp
+            /DLC/AlienRomulus/assets/backgrounds/lore-stages/alien-romulus/melee.webp
+            /DLC/AlienVsPredator/assets/backgrounds/lore-stages/alien-vs-predator/tactics.webp
+            /DLC/Aliens/assets/backgrounds/lore-stages/aliens/melee.webp
+            /DLC/AliensVsPredatorRequiem/assets/backgrounds/lore-stages/aliens-vs-predator-requiem/melee.webp
+            /DLC/DaftPunk/assets/backgrounds/lore-stages/daft-punk/tactics.webp
+            /DLC/Discworld/assets/backgrounds/lore-stages/discworld/rpg.webp
+            /DLC/DungeonMeshi/assets/backgrounds/lore-stages/dungeon-meshi/rpg.webp
+            /DLC/HazbinHotel/assets/backgrounds/lore-stages/hazbin-hotel/rpg.webp
+            /DLC/JokerNew52/assets/backgrounds/lore-stages/joker-new-52/melee.webp
+            /DLC/Kaamelott/assets/backgrounds/lore-stages/kaamelott/rpg.webp
+            /DLC/Noob/assets/backgrounds/lore-stages/noob/tactics.webp
+            /DLC/OliverTree/assets/backgrounds/lore-stages/oliver-tree/melee.webp
+            /DLC/Predator2/assets/backgrounds/lore-stages/predator-2/melee.webp
+            /DLC/PredatorBadlands/assets/backgrounds/lore-stages/predator-badlands/rpg.webp
+            /DLC/PredatorKillerOfKillers/assets/backgrounds/lore-stages/predator-killer-of-killers/tactics.webp
+            /DLC/Prey/assets/backgrounds/lore-stages/prey/melee.webp
+            /DLC/Prometheus/assets/backgrounds/lore-stages/prometheus/tactics.webp
+            /DLC/Rammstein/assets/backgrounds/lore-stages/rammstein/melee.webp
+            /DLC/RobZombie/assets/backgrounds/lore-stages/rob-zombie/melee.webp
+            /DLC/SystemOfADown/assets/backgrounds/lore-stages/system-of-a-down/tactics.webp
+            /DLC/TheBatmanWhoLaughs/assets/backgrounds/lore-stages/the-batman-who-laughs/tactics.webp
+            /DLC/ThePredator/assets/backgrounds/lore-stages/the-predator/rpg.webp
+            /public/backgrounds/alien-smash-openai.png
+            /public/backgrounds/chucky-smash-openai.png
+            /public/backgrounds/dead-space-tactics-openai.png
+            /public/backgrounds/digimon-tactics-openai.png
+            /public/backgrounds/digital-circus-rpg-openai.png
+            /public/backgrounds/doom-rpg-openai.png
+            /public/backgrounds/halo-tactics-openai.png
+            /public/backgrounds/harry-potter-rpg-openai.png
+            /public/backgrounds/matrix-tactics-openai.png
+            /public/backgrounds/metal-gear-tactics-openai.png
+            /public/backgrounds/predator-rpg-openai.png
+            /public/backgrounds/resident-evil-tactics-openai.png
+            /public/backgrounds/rick-morty-smash-openai.png
+            /public/backgrounds/rosario-vampire-rpg-openai.png
+            /public/backgrounds/stargate-rpg-openai.png
+            /public/backgrounds/yu-gi-oh-tactics-openai.png
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
@@ -47,7 +88,9 @@ jobs:
           node --test scripts/dlcDistributionDelta.test.mjs scripts/fieldOperationVariants.test.mjs scripts/mosaicReconnaissance.test.mjs scripts/extinctionRelayOperation.test.mjs | tee /tmp/dlc-field-evidence/unit.log
           npm run test:ui-immersion | tee /tmp/dlc-field-evidence/ui.log
           npm run test:dlc:profiles | tee /tmp/dlc-field-evidence/profiles.log
+          npm run test:custom | tee /tmp/dlc-field-evidence/custom.log
           node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/GameSystemSections.jsx src/components/GameSystemMenu.jsx src/game/fieldOperationPreferences.js src/game/mosaicReconnaissance.js src/game/extinctionRelayOperation.js scripts/dlcDistributionDelta.mjs scripts/fieldOperationVariants.test.mjs scripts/dlcDistributionDelta.test.mjs scripts/browserSystemSections.mjs scripts/buildSystemSectionsFixture.mjs scripts/fixtures/dlcDeltaFixture.mjs scripts/fixtures/systemSectionsHarness.jsx | tee /tmp/dlc-field-evidence/lint.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/CustomBattleMode.jsx src/components/cg/CgGallery.jsx src/components/MosaicResidentDialogue.jsx src/game/customLobbySelection.js src/game/mosaicResidentDialogue.js src/game/extinctionSignatures.js scripts/customLobbySelection.test.mjs scripts/extinctionCampaignKits.test.mjs scripts/mosaicResidentDialogue.test.mjs scripts/browserCustomLobby.mjs scripts/browserCgViewer.mjs scripts/buildCustomLobbyFixture.mjs scripts/buildCgViewerFixture.mjs scripts/fixtures/customBattleLobbyHarness.jsx scripts/fixtures/cgViewerHarness.jsx | tee /tmp/dlc-field-evidence/finalization-lint.log
           node node_modules/vite/bin/vite.js build --config scripts/viteCodeOnly.config.js | tee /tmp/dlc-field-evidence/source-build.log
       - name: Real system menu across installation profiles
         run: |
@@ -61,6 +104,14 @@ jobs:
             node scripts/buildSystemSectionsFixture.mjs | tee /tmp/dlc-field-evidence/menu-$profile-build.log
             node scripts/browserSystemSections.mjs | tee /tmp/dlc-field-evidence/menu-$profile.log
           done
+          node scripts/buildCustomLobbyFixture.mjs | tee /tmp/dlc-field-evidence/custom-lobby-build.log
+          PLAYWRIGHT_EVIDENCE_DIR=/tmp/dlc-field-evidence/custom-lobby node scripts/browserCustomLobby.mjs | tee /tmp/dlc-field-evidence/custom-lobby.log
+          node scripts/buildCgViewerFixture.mjs | tee /tmp/dlc-field-evidence/cg-viewer-build.log
+          PLAYWRIGHT_EVIDENCE_DIR=/tmp/dlc-field-evidence/cg-viewer node scripts/browserCgViewer.mjs | tee /tmp/dlc-field-evidence/cg-viewer.log
+          for profile in base halo consumers; do
+            DLC_BACKDROP_PROFILE=$profile node scripts/buildDlcSharedBackdropsFixture.mjs | tee /tmp/dlc-field-evidence/shared-backdrops-$profile-build.log
+            DLC_BACKDROP_PROFILE=$profile PLAYWRIGHT_EVIDENCE_DIR=/tmp/dlc-field-evidence/shared-backdrops-$profile node scripts/browserDlcSharedBackdrops.mjs | tee /tmp/dlc-field-evidence/shared-backdrops-$profile.log
+          done
       - name: Real City and FPS variant playthroughs
         run: |
           set -euo pipefail
@@ -71,6 +122,7 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
           /tmp/field-browser/bin/python scripts/browserFieldVariants.py --require-art --evidence /tmp/dlc-field-evidence/field | tee /tmp/dlc-field-evidence/field.log
+          /tmp/field-browser/bin/python scripts/browserNexusCampaign.py --require-art --evidence /tmp/dlc-field-evidence/nexus | tee /tmp/dlc-field-evidence/nexus.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

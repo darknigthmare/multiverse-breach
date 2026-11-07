@@ -35,7 +35,8 @@ const createFixture = t => {
 
 test('the sparse-checkout CLI publishes available assets before npm ci without loading a parser dependency', t => {
   const { root, write, manifest, read } = createFixture(t);
-  for (const file of ['prepareDlcAssets.mjs', 'dlcDistribution.mjs', 'dlcAssetPaths.mjs', 'dlcCommonUiAssets.mjs', 'dlcDistributionFilesystem.mjs']) {
+  for (const file of ['prepareDlcAssets.mjs', 'dlcDistribution.mjs', 'dlcAssetPaths.mjs', 'dlcCommonUiAssets.mjs',
+    'dlcDistributionFilesystem.mjs', 'dlcSharedAssetDependencies.mjs']) {
     write('scripts/' + file, readFileSync(new URL('./' + file, import.meta.url)));
   }
   const present = asset('/images/halo.png');

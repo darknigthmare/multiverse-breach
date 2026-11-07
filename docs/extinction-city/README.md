@@ -1,5 +1,9 @@
 # Extinction & Cité — catalogue de production, 26 octobre 2026
 
+Reprise complémentaire : [conversations de la Cellule ZERO et cinq kits FPS Nexus](nexus-campaign-gameplay-2026-11-07.md).
+Le catalogue courant atteint 12 kits et 48 actions ; cette note complète les
+instantanés historiques sans changer leur révision de preuve.
+
 Suite du 7 novembre : [rapport de reconnaissance et Relais sous pression](../development/DLC_UI_CITY_FPS_COMPLETION_2026-11-07.md).
 La Ville gagne une mission persistante reliant habitants, vitrines et ancre ;
 Extraction propose une synchronisation de balises sur place. Les catalogues

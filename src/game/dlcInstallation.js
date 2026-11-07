@@ -5,7 +5,7 @@ import profile from '../../DLC/distribution.json' with { type: 'json' };
 export function createDlcInstallation({ manifests, profile: suppliedProfile }) {
   if (suppliedProfile?.schemaVersion !== 1
     || !['all', 'base', 'selected'].includes(suppliedProfile.mode)
-    || suppliedProfile.sharedPolicy !== 'preserve-all'
+    || !['preserve-all', 'reviewed-dependencies'].includes(suppliedProfile.sharedPolicy)
     || Object.keys(suppliedProfile).some(key => !['schemaVersion', 'mode', 'packIds', 'sharedPolicy'].includes(key))
     || !Array.isArray(suppliedProfile.packIds)
     || suppliedProfile.packIds.some(id => typeof id !== 'string' || !/^[a-z0-9][a-z0-9-]*$/.test(id))

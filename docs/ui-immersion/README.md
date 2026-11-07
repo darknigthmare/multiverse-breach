@@ -1,5 +1,10 @@
 # Refonte immersive — PR #9
 
+Reprise complémentaire du 7 novembre : [préparation du combat, galerie et contenus Nexus](../development/DLC_CITY_FPS_FINALIZATION_2026-11-07.md).
+Elle complète les parcours de combat personnalisé et de zoom/comparaison/plein
+écran, et protège les favoris de DLC absents. Ses recettes FR/EN et ses limites
+sont consignées séparément des observations historiques ci-dessous.
+
 Suite du 7 novembre : [menus, guide Cité et cadrage FPS](../development/DLC_UI_CITY_FPS_COMPLETION_2026-11-07.md).
 Cette suite raccorde Régulation et Portal Lab à l’isolation modale commune,
 ajoute un guide repliable et corrige les découpes de mains Arthur/Serj. Elle
