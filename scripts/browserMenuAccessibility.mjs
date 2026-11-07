@@ -33,6 +33,20 @@ const checkDialogBounds = async (dialog, viewport, scrollSelectors) => {
   }
   return geometry;
 };
+const checkReadableText = async (textLocator, scrollArea) => {
+  const area = await scrollArea.evaluate(bounds);
+  const proof = await textLocator.evaluate(element => {
+    const range = document.createRange(); range.selectNodeContents(element);
+    const lines = [...range.getClientRects()].filter(rect => rect.width && rect.height).map(rect => ({
+      x: rect.x, y: rect.y, right: rect.right, bottom: rect.bottom,
+      unobscured: element.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2))
+    }));
+    return { text: element.textContent, lines, viewport: { x: 0, y: 0, right: innerWidth, bottom: innerHeight } };
+  });
+  assert.ok(proof.text.trim() && proof.lines.length, 'guide instructions have no rendered text');
+  assert.ok(proof.lines.every(line => within(line, area) && within(line, proof.viewport) && line.unobscured), 'some guide instruction lines are clipped or covered');
+  return { text: proof.text, lines: proof.lines, area };
+};
 
 try {
   for (const viewport of [{ width: 390, height: 844 }, { width: 844, height: 390 }, { width: 1365, height: 900 }]) for (const lang of ['fr', 'en']) for (const surface of ['menus', 'guide']) {
@@ -182,9 +196,13 @@ try {
       } else {
         const guide = page.locator('.mosaic-city-guide--collapsible');
         const toggle = guide.locator('.mosaic-city-guide-toggle');
+        const terminalTrigger = page.getByTestId('guide-terminal-trigger');
+        const compact = viewport.height <= 560;
         await guide.waitFor();
         const initialExpanded = viewport.height > 560 && viewport.width > 600;
-        assert.equal(await toggle.getAttribute('aria-expanded'), String(initialExpanded));
+        assert.equal(await toggle.getAttribute('aria-expanded'), compact ? null : String(initialExpanded));
+        assert.equal(await toggle.getAttribute('aria-haspopup'), compact ? 'dialog' : null);
+        const expectedBody = await guide.locator('.mosaic-city-guide-content p').textContent();
         if (initialExpanded) await toggle.click();
         const controls = await page.locator('.mosaic-world-controls').evaluate(bounds);
         const location = await page.locator('.mosaic-location').evaluate(bounds);
@@ -194,13 +212,24 @@ try {
         assert.ok(within(collapsed, screen) && !overlaps(collapsed, controls));
         assert.equal(overlaps(collapsed, location), false, 'collapsed guide covers the three-line location');
         if (viewport.height <= 560) assert.equal(overlaps(collapsed, center), false, 'collapsed guide covers the scene centre');
-        await toggle.focus(); await page.keyboard.press('Enter');
-        assert.equal(await toggle.getAttribute('aria-expanded'), 'true');
-        const expanded = await guide.evaluate(bounds);
-        assert.ok(within(expanded, screen) && !overlaps(expanded, controls), 'expanded guide overlaps movement controls');
-        assert.equal(overlaps(expanded, location), false, 'expanded guide covers the three-line location');
-        if (viewport.height <= 560) assert.equal(overlaps(expanded, center), false, 'expanded guide covers the scene centre');
-        await guide.getByRole('region', { name: fr ? 'Instructions du guide' : 'Guide instructions' }).focus();
+        let expanded = null;
+        const textProofs = [];
+        if (compact) {
+          assert.equal(await guide.getByRole('region').count(), 0, 'short view offers an unusable inline reader');
+          assert.ok((await toggle.textContent()).includes(fr ? 'Lire dans le terminal' : 'Read in terminal'));
+          textProofs.push({ surface: 'compact-title', ...await checkReadableText(toggle.locator('strong'), toggle) });
+          textProofs.push({ surface: 'compact-action', ...await checkReadableText(toggle.locator('.mosaic-city-guide-toggle-label'), toggle) });
+          await toggle.focus();
+        } else {
+          await toggle.focus(); await page.keyboard.press('Enter');
+          assert.equal(await toggle.getAttribute('aria-expanded'), 'true');
+          expanded = await guide.evaluate(bounds);
+          assert.ok(within(expanded, screen) && !overlaps(expanded, controls), 'expanded guide overlaps movement controls');
+          assert.equal(overlaps(expanded, location), false, 'expanded guide covers the three-line location');
+          const inlineReader = guide.getByRole('region', { name: fr ? 'Instructions du guide' : 'Guide instructions' });
+          textProofs.push({ surface: 'inline', ...await checkReadableText(inlineReader.locator('p'), inlineReader) });
+          await inlineReader.focus();
+        }
         await page.evaluate(() => { window.__menuQA.inputEvents = []; });
         const cityCommands = ['w', 'a', 's', 'd', 'z', 'q', 'e', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
         for (const key of cityCommands) await page.keyboard.press(key);
@@ -208,24 +237,58 @@ try {
         const inputEvents = await page.evaluate(() => window.__menuQA.inputEvents);
         assert.deepEqual(inputEvents.filter(event => event.type === 'keydown').map(event => event.key), ['escape'], 'reading the guide leaked a City command or swallowed global pause');
         for (const key of cityCommands) assert.ok(inputEvents.some(event => event.type === 'keyup' && event.key === key.toLowerCase()), `held ${key} could not be released globally`);
-        await page.screenshot({ path: resolve(evidence, `${name}-expanded.png`) });
-        await guide.getByRole('button', { name: fr ? 'Lire dans le terminal' : 'Read in terminal', exact: true }).click();
+        await page.screenshot({ path: resolve(evidence, `${name}-${compact ? 'compact' : 'expanded'}.png`) });
+        const readGuide = compact ? toggle : guide.getByRole('button', { name: fr ? 'Lire dans le terminal' : 'Read in terminal', exact: true });
+        await readGuide.focus(); await page.keyboard.press('Enter');
         const terminal = page.getByRole('dialog', { name: fr ? 'Guide complet de la Cité' : 'Complete City guide' });
         await terminal.waitFor();
-        assert.equal(await terminal.locator('p').isVisible(), true);
+        assert.equal(await terminal.locator('p').textContent(), expectedBody, 'terminal lost part of the guide instructions');
+        textProofs.push({ surface: 'terminal', ...await checkReadableText(terminal.locator('p'), terminal.locator('.immersive-drawer-content')) });
+        assert.equal(await page.evaluate(() => window.__menuQA.pauses), 0, 'folding or reading the guide must not pause its progression');
         await page.screenshot({ path: resolve(evidence, `${name}-terminal.png`) });
         await page.keyboard.press('Escape');
         await terminal.waitFor({ state: 'detached' });
-        await expectFocused(guide.getByRole('button', { name: fr ? 'Lire dans le terminal' : 'Read in terminal', exact: true }));
-        await page.setViewportSize({ width: 1280, height: 900 });
+        await expectFocused(terminalTrigger);
+
+        // The stable terminal owns return focus even when pausing removes the guide.
+        await readGuide.focus(); await page.keyboard.press('Enter');
+        await terminal.waitFor();
+        const guideStateButton = page.getByTestId('terminal-guide-state');
+        await guideStateButton.focus();
+        assert.ok(within(await guideStateButton.evaluate(bounds), screen), 'Pause guide is outside the viewport');
+        await page.keyboard.press('Enter');
+        await guide.waitFor({ state: 'detached' });
+        assert.equal(await guideStateButton.textContent(), fr ? 'REPRENDRE LE GUIDE' : 'RESUME GUIDE');
+        await expectFocused(guideStateButton);
+        assert.equal(await terminal.isVisible(), true, 'pausing the guide closed its instructions');
+        await page.keyboard.press('Escape');
+        await terminal.waitFor({ state: 'detached' });
+        await expectFocused(terminalTrigger);
+        await page.keyboard.press('Enter');
+        await terminal.waitFor();
+        await guideStateButton.focus(); await page.keyboard.press('Enter');
+        await terminal.waitFor({ state: 'detached' });
+        await guide.waitFor();
+        await expectFocused(terminalTrigger);
+        assert.deepEqual(await page.evaluate(() => ({ pauses: window.__menuQA.pauses, resumes: window.__menuQA.resumes })), { pauses: 1, resumes: 1 });
+
+        // Portrait and landscape both match SHORT_VIEWPORT: the independent
+        // height transition must still replace the reader and rescue its focus.
+        await page.setViewportSize({ width: 390, height: 844 });
+        await page.waitForFunction(() => document.querySelector('.mosaic-city-guide-toggle')?.getAttribute('aria-expanded') === 'false');
+        await toggle.click();
         await guide.getByRole('button', { name: 'Pause guide', exact: true }).focus();
         await page.setViewportSize({ width: 844, height: 390 });
-        await page.waitForFunction(() => document.querySelector('.mosaic-city-guide-toggle')?.getAttribute('aria-expanded') === 'false');
+        await page.waitForFunction(() => document.querySelector('.mosaic-city-guide-toggle')?.getAttribute('aria-haspopup') === 'dialog');
         await expectFocused(toggle);
-        assert.equal(await page.evaluate(() => window.__menuQA.pauses), 0, 'folding or reading the guide must not pause its progression');
-        await page.screenshot({ path: resolve(evidence, `${name}-collapsed.png`) });
+        assert.equal(await toggle.getAttribute('aria-expanded'), null);
+        assert.equal(await guide.getByRole('region').count(), 0);
+        assert.deepEqual(await page.evaluate(() => ({ pauses: window.__menuQA.pauses, resumes: window.__menuQA.resumes })), { pauses: 1, resumes: 1 }, 'rotation changed guide progression');
+        await page.screenshot({ path: resolve(evidence, `${name}-rotated.png`) });
         record.bounds = { collapsed, expanded, controls, center, location };
-        record.checks = ['enlarged HUD and text', 'keyboard expand/collapse', 'controls and scene clearance', 'City command isolation with keyup and Escape preserved', 'full terminal copy', 'rotation focus return', 'no guide-state action'];
+        record.mode = compact ? 'terminal-shortcut' : 'collapsible-reader';
+        record.textProofs = textProofs;
+        record.checks = ['enlarged HUD and text', 'keyboard expand/collapse or direct terminal access on short screens', 'controls and scene clearance', 'City command isolation with keyup and Escape preserved', 'every instruction line rendered inside its reader and unobscured', 'pause and resume guide from terminal', 'stable return focus after guide removal', 'portrait-to-landscape focus return', 'reading and rotation preserve guide progression'];
       }
       assert.deepEqual(errors, []);
       assert.deepEqual(missing, []);

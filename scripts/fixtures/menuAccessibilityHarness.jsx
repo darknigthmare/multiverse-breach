@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
 import RegulationImagePreview from '../../src/components/RegulationImagePreview.jsx';
@@ -15,7 +15,7 @@ const lang = parameters.get('lang') === 'en' ? 'en' : 'fr';
 const fr = lang === 'fr';
 const guideTitle = fr ? 'Rejoins une signature' : 'Reach a signature';
 const guideBody = fr ? 'Approche une personne ou une borne, puis utilise INTERAGIR. Le terminal conserve toutes les instructions pendant que tu explores la Cité.' : 'Approach a person or terminal, then use INTERACT. The terminal keeps the complete instructions while you explore the City.';
-const qa = { pauses: 0, previewsClosed: 0, labsClosed: 0, terminalsClosed: 0, inputEvents: [] };
+const qa = { pauses: 0, resumes: 0, previewsClosed: 0, labsClosed: 0, terminalsClosed: 0, inputEvents: [] };
 const preview = { title: fr ? 'Aperçu de contrôle' : 'Control preview', src: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240"><rect width="320" height="240" fill="#13354b"/><circle cx="160" cy="120" r="70" fill="#72ded4"/></svg>') };
 const galleryPreview = {
   title: fr ? 'Archives de reconnaissance — Les expéditions de la Cité-Mosaïque' : 'Reconnaissance archives — The Mosaic City expeditions',
@@ -47,6 +47,11 @@ export function Menus() {
 
 export function Guide() {
   const [terminal, setTerminal] = useState(false);
+  const [guideActive, setGuideActive] = useState(true);
+  const terminalButtonRef = useRef(null);
+  const openGuideDetails = () => { terminalButtonRef.current?.focus({ preventScroll: true }); setTerminal(true); };
+  const pauseGuide = () => { qa.pauses += 1; setGuideActive(false); };
+  const resumeGuide = () => { qa.resumes += 1; setGuideActive(true); setTerminal(false); };
   useEffect(() => {
     const observe = event => qa.inputEvents.push({ type: event.type, key: event.key.toLowerCase() });
     window.addEventListener('keydown', observe);
@@ -56,14 +61,17 @@ export function Guide() {
   return <div className="hub-screen is-dedicated-game">
     <div className="hub-tab-workspace"><div className="mosaic-rpg-panel">
       <div className="mosaic-world-hud"><div className="mosaic-world-column"><div className="mosaic-location"><span>CITÉ-MOSAÏQUE</span><strong>{fr ? 'Atrium de convergence' : 'Convergence Atrium'}</strong><small>{fr ? 'Ancre locale' : 'Local anchor'}</small></div>
-        <MosaicGuidePanel lang={lang} title={guideTitle} body={guideBody} step="interact" onPause={() => { qa.pauses += 1; }} onOpenDetails={() => setTerminal(true)} />
-      </div><button type="button" className="btn-retro" onClick={() => setTerminal(true)}>TERMINAL · JOURNAL</button></div>
+        {guideActive && <MosaicGuidePanel lang={lang} title={guideTitle} body={guideBody} step="interact" onPause={() => { terminalButtonRef.current?.focus({ preventScroll: true }); pauseGuide(); }} onOpenDetails={openGuideDetails} />}
+      </div><button ref={terminalButtonRef} type="button" data-testid="guide-terminal-trigger" className="btn-retro" onClick={() => setTerminal(true)}>TERMINAL · JOURNAL</button></div>
       <div className="mosaic-rpg-stage">
         <div data-testid="world-center" style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: 42, height: 42, background: '#ffd96e' }} />
         <div className="mosaic-mobile-pad mosaic-world-controls">{['←', '↑', '↓', '→', fr ? 'INTERAGIR' : 'INTERACT'].map(label => <button type="button" key={label}>{label}</button>)}</div>
       </div>
     </div></div>
-    <ImmersiveDrawer open={terminal} title={fr ? 'Guide complet de la Cité' : 'Complete City guide'} lang={lang} onClose={() => setTerminal(false)}><h3>{guideTitle}</h3><p>{guideBody}</p></ImmersiveDrawer>
+    <ImmersiveDrawer open={terminal} title={fr ? 'Guide complet de la Cité' : 'Complete City guide'} lang={lang} onClose={() => setTerminal(false)}>
+      <h3>{guideTitle}</h3><p>{guideBody}</p>
+      <button type="button" className="btn-retro" data-testid="terminal-guide-state" onClick={guideActive ? pauseGuide : resumeGuide}>{guideActive ? 'PAUSE GUIDE' : fr ? 'REPRENDRE LE GUIDE' : 'RESUME GUIDE'}</button>
+    </ImmersiveDrawer>
   </div>;
 }
 

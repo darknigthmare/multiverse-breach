@@ -68,6 +68,11 @@ complètes restent accessibles dans le terminal avec un transfert de focus
 explicite. La carte est bornée au-dessus des commandes et sur le côté en paysage.
 Lire le guide au clavier n’envoie pas de commandes de déplacement à la Ville.
 
+Sous 560 pixels de hauteur, la carte ouvre directement le guide du terminal :
+elle ne propose plus une zone dépliée trop basse pour lire ses instructions.
+Le terminal conserve Pause/Reprendre et rend le focus à son bouton permanent,
+y compris lorsque la pause retire la carte du guide de la scène.
+
 Les planches de mains d’Arthur et Serj présentent des séparateurs irréguliers.
 Les trois rangées utilisées disposent maintenant de bornes source explicites,
 liées à leur propriétaire. Les pixels des PNG, leurs autres usages, le fallback
@@ -113,6 +118,11 @@ temps ; le premier frame de reprise réinitialise l’horloge. L’état apparti
 la partie active et est nettoyé à la fin, à l’abandon ou après une erreur de rendu.
 Le bilan conserve le nombre de balises synchronisées.
 
+En paysage bas, le bandeau de l’opération place la directive et l’objectif sur
+une rangée, puis le relais sur la suivante. Sa largeur réserve le radar et sa
+hauteur laisse le réticule et les commandes libres. Les préférences de taille
+restent appliquées ; le contrôle navigateur mesure les zones réellement rendues.
+
 L’option inactive suit les quatre modes historiques. Leurs identifiants, graines,
 victoires et récompenses ne changent pas. Le nouveau module ne consomme aucun
 tirage aléatoire ni horloge native. Les rapports et crédits passent toujours par
@@ -125,6 +135,15 @@ réordonner les 44 commandes du prébuild. Les tests exécutent les vraies étap
 de simulation et les effets de pause, ainsi que les transitions de sauvegarde.
 La compilation `viteCodeOnly.config.js` vérifie le bundle sans copie du corpus ;
 `production-build.yml` reste la preuve du build complet.
+
+La première recette navigateur a détecté le chevauchement du bandeau en paysage
+et une observation trop précoce du checkpoint de Ville. Le test prend maintenant
+la position avant démontage, attend le callback de sauvegarde et son rendu parent,
+puis compare la restauration au checkpoint confirmé. La tolérance reste 0,02 et
+les coordonnées ainsi que les compteurs sont enregistrés dans les preuves.
+Le contrat historique de santé FPS extrait aussi le callback réel par l’AST,
+au lieu de dépendre du texte de sa liste de dépendances React. Ses assertions
+de PV, de maximum et de dimensions sont conservées.
 
 Les workflows permanents couvrent :
 

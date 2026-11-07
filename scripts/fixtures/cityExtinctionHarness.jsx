@@ -42,7 +42,7 @@ window.Image = class extends NativeImage {
   get src() { return super.src; }
 };
 // React test-only introspection avoids introducing mutable debug APIs into the game.
-audit.state = () => {
+const readSceneRef = predicate => {
   const node = document.querySelector(mode === 'city' ? '.mosaic-rpg-panel' : '.extinction-panel');
   const key = node && Object.keys(node).find(k => k.startsWith('__reactFiber$'));
   let fiber = node?.[key];
@@ -50,11 +50,14 @@ audit.state = () => {
   let hook = fiber?.memoizedState;
   while (hook) {
     const value = hook.memoizedState?.current;
-    if (value && (mode === 'city' ? value.player && value.camera && value.npcs : value.phase && value.enemies && 'px' in value)) return value;
+    if (value && predicate(value)) return value;
     hook = hook.next;
   }
   return null;
 };
+audit.state = () => readSceneRef(value => mode === 'city'
+  ? value.player && value.camera && value.npcs : value.phase && value.enemies && 'px' in value);
+audit.hudLayout = () => readSceneRef(value => value.fpsRadar && value.cityMinimap && Number.isFinite(value.unitsPerCssPixel));
 audit.snapshot = () => {
   const s = audit.state(); if (!s) return null;
   return mode === 'city' ? {t:s.t, player:{...s.player}, camera:{...s.camera}, keys:{...s.keys}, destination:s.destination, npcs:s.npcs.map(n=>({id:n.hero.id,x:n.x,y:n.y}))}

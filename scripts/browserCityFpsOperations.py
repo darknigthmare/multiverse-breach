@@ -13,7 +13,7 @@ import math
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright, expect
-from browserCityExtinction import check, load_scene, snapshot
+from browserCityExtinction import check, load_scene
 from browserResidentViewmodels import CLOCK_EPOCH, CLOCK_START, prepare_fps_clock
 from browserSceneServices import aim, state
 from mosaicMotionProof import validate_mosaic_motion
@@ -60,6 +60,58 @@ def begin_walk_proof(button):
     }""")
 
 
+def remount_city_checkpoint(page, saved_progress, out, name):
+    """Observe both passive checkpoint publication and the restored scene.
+
+    Removing the scene DOM does not mean that React has finished its passive
+    cleanup or committed the parent's savedLocation state. Compare against the
+    player before unmount, then await each real callback/render boundary instead
+    of reading an older checkpoint or the new component's initial ref.
+    """
+    proof = {'beforeUnmount': page.evaluate("""() => ({
+      snapshot:window.__sceneQA.snapshot(), saved:window.__sceneQA.saved,
+      saveCount:window.__sceneQA.saves.length, clock:performance.now()
+    })""")}
+    try:
+        page.locator('#qa-unmount').click()
+        expect(page.locator('.mosaic-rpg-panel')).to_have_count(0)
+        page.wait_for_function('count => window.__sceneQA.saves.length > count',
+                               arg=proof['beforeUnmount']['saveCount'], polling=50)
+        checkpoint = page.evaluate('window.__sceneQA.saves.at(-1)')
+        proof['publishedCheckpoint'] = checkpoint
+        page.wait_for_function('checkpoint => JSON.stringify(window.__sceneQA.saved) === JSON.stringify(checkpoint)',
+                               arg=checkpoint, polling=50)
+        proof['afterUnmount'] = page.evaluate("""() => ({
+          saved:window.__sceneQA.saved, saveCount:window.__sceneQA.saves.length,
+          clock:performance.now()
+        })""")
+        before = proof['beforeUnmount']['snapshot']['player']
+        check(checkpoint['districtId'] == DISTRICT, 'unmount checkpoint changed district')
+        check(abs(checkpoint['player']['x'] - before['x']) < .02 and
+              abs(checkpoint['player']['y'] - before['y']) < .02 and
+              checkpoint['player']['facing'] == before['facing'],
+              'unmount checkpoint does not match the player before leaving')
+        page.evaluate('window.__sceneQA.remount()')
+        # NPC initialization is a passive effect after location restoration.
+        # The player ref already exists during render, before either effect.
+        page.wait_for_function('window.__sceneQA.state()?.npcs?.length', polling=50)
+        proof['afterRemount'] = page.evaluate("""() => ({
+          snapshot:window.__sceneQA.snapshot(), saved:window.__sceneQA.saved,
+          saveCount:window.__sceneQA.saves.length, clock:performance.now()
+        })""")
+        check(reconnaissance(page) == saved_progress, 'remount lost the completed resident objective')
+        restored = proof['afterRemount']['snapshot']['player']
+        check(abs(restored['x'] - checkpoint['player']['x']) < .02 and
+              abs(restored['y'] - checkpoint['player']['y']) < .02 and
+              restored['facing'] == checkpoint['player']['facing'], 'remount lost the checkpoint position')
+        check(proof['beforeUnmount']['clock'] == proof['afterUnmount']['clock'] == proof['afterRemount']['clock'],
+              'virtual clock advanced while observing the checkpoint restoration')
+        proof['passed'] = True
+        return proof
+    finally:
+        (out / f'{name}-remount-checkpoint.json').write_text(json.dumps(proof, indent=2, ensure_ascii=False))
+
+
 def city_reconnaissance(page, lang, out, name):
     later = page.get_by_role('button', name='Plus tard' if lang == 'fr' else 'Later', exact=True)
     if later.is_visible():
@@ -81,6 +133,7 @@ def city_reconnaissance(page, lang, out, name):
     expect(page.locator('[data-reconnaissance="approach"]')).to_be_visible()
     page.screenshot(path=str(out / f'{name}-accepted.png'))
     walks = []
+    restoration = None
     for field in ['residentId', 'exhibitId', 'completed']:
         open_city_terminal(page)
         before = reconnaissance(page)
@@ -104,15 +157,7 @@ def city_reconnaissance(page, lang, out, name):
             # Recreate the real component after the first completed objective.
             saved_progress = reconnaissance(page)
             page.keyboard.press('Escape')
-            page.locator('#qa-unmount').click()
-            expect(page.locator('.mosaic-rpg-panel')).to_have_count(0)
-            location = page.evaluate('window.__sceneQA.saved')
-            page.evaluate('window.__sceneQA.remount()')
-            page.wait_for_function('window.__sceneQA.state()?.player')
-            check(reconnaissance(page) == saved_progress, 'remount lost the completed resident objective')
-            restored = snapshot(page)['player']
-            check(abs(restored['x'] - location['player']['x']) < .02 and
-                  abs(restored['y'] - location['player']['y']) < .02, 'remount lost the checkpoint position')
+            restoration = remount_city_checkpoint(page, saved_progress, out, name)
     complete = reconnaissance(page)
     check(complete['activeDistrictId'] is None, 'completed dossier remained active')
     check(complete['dossiers'][DISTRICT]['completed'] is True, 'report not archived')
@@ -127,6 +172,7 @@ def city_reconnaissance(page, lang, out, name):
     check(not page.evaluate('window.__sceneQA.services.length'), 'reconnaissance unexpectedly opened a service')
     return {'districtId': DISTRICT, 'dossier': complete['dossiers'][DISTRICT], 'walks': walks,
             'progressCommits': len(saves), 'restoredAfterResident': True, 'repeatedReportIgnored': True,
+            'restorationProof': restoration,
             'preparedOwnership': True, 'preparedInitialDistrict': True, 'combatRewardReports': 0}
 
 
@@ -148,12 +194,20 @@ def check_relay_hud_geometry(page, label):
       const strip=document.querySelector('.extinction-objective-strip');
       const dock=document.querySelector('.extinction-hud-dock');
       const relay=document.querySelector('[data-relay-status]');
-      if(!canvas||!strip||!dock||!relay)return {label,missing:true};
+      const layout=window.__sceneQA.hudLayout();
+      if(!canvas||!strip||!dock||!relay||!layout?.fpsRadar)return {label,missing:true};
       const rect=node=>{const r=node.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
       const c=rect(canvas),s=rect(strip),d=rect(dock),r=rect(relay);
       const halfX=12*c.width/canvas.width+2,halfY=12*c.height/canvas.height+2;
       const reticle={x:c.x+c.width/2-halfX,y:c.y+c.height/2-halfY,
         right:c.x+c.width/2+halfX,bottom:c.y+c.height/2+halfY,width:halfX*2,height:halfY*2};
+      // Read the actual useSceneViewport layout used by the Canvas renderer,
+      // including its 1.8px radar stroke, rather than restating its layout math.
+      const radar=layout.fpsRadar,radarRadius=radar.radius+.9;
+      const radarBounds={x:c.x+(radar.x-radarRadius)*c.width/canvas.width,
+        y:c.y+(radar.y-radarRadius)*c.height/canvas.height,
+        right:c.x+(radar.x+radarRadius)*c.width/canvas.width,
+        bottom:c.y+(radar.y+radarRadius)*c.height/canvas.height};
       const intersects=(a,b)=>Math.min(a.right,b.right)-Math.max(a.x,b.x)>1
         && Math.min(a.bottom,b.bottom)-Math.max(a.y,b.y)>1;
       const within=(a,b)=>a.x>=b.x-1&&a.y>=b.y-1&&a.right<=b.right+1&&a.bottom<=b.bottom+1;
@@ -169,17 +223,18 @@ def check_relay_hud_geometry(page, label):
       }
       const style=getComputedStyle(document.documentElement);
       return {label,phase:state.phase,relayStatus:relay.dataset.relayStatus,canvas:c,strip:s,dock:d,reticle,
+        radar:radarBounds,radarLayout:radar,
         viewport:{width:innerWidth,height:innerHeight},hudScale:style.getPropertyValue('--game-hud-scale').trim(),
         textScale:style.getPropertyValue('--game-text-scale').trim(),safeArea:style.getPropertyValue('--game-safe-area').trim(),
         visible:s.width>0&&s.height>0&&r.width>0&&r.height>0,
         stripInsideViewport:within(s,viewport),relayInsideStrip:within(r,s),
-        reticleClear:!intersects(s,reticle),dockClear:!intersects(s,d),
+        reticleClear:!intersects(s,reticle),dockClear:!intersects(s,d),radarClear:!intersects(s,radarBounds),
         clippedText:textRects.filter(box=>!within(box,s)||!within(box,viewport)),textRects};
     }""", label)
     check(not result.get('skipped') and not result.get('missing'), f'active relay HUD unavailable: {result}')
     check(result['hudScale'] == '1.4' and result['textScale'] == '1.4' and result['safeArea'] == '32px',
           f'relay HUD accessibility scale was not applied: {result}')
-    for field in ['visible', 'stripInsideViewport', 'relayInsideStrip', 'reticleClear', 'dockClear']:
+    for field in ['visible', 'stripInsideViewport', 'relayInsideStrip', 'reticleClear', 'dockClear', 'radarClear']:
         check(result[field], f'relay HUD geometry failed ({field}): {result}')
     check(not result['clippedText'], f'relay HUD text extends outside its strip or viewport: {result}')
     return result

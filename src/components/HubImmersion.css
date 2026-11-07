@@ -399,6 +399,10 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
 .mosaic-city-guide-toggle small { grid-column: 1; grid-row: 1; font-size: calc(10px * var(--game-hud-scale, 1)); letter-spacing: .08em; color: #9ce5db; }
 .mosaic-city-guide-toggle strong { grid-column: 1 / -1; grid-row: 2; font-size: calc(12px * var(--game-hud-scale, 1)); overflow-wrap: anywhere; }
 .mosaic-city-guide-toggle-label { grid-column: 2; grid-row: 1; font-size: calc(11px * var(--game-hud-scale, 1)); text-decoration: underline; text-underline-offset: 3px; }
+.mosaic-city-guide--compact .mosaic-city-guide-toggle { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.mosaic-city-guide--compact .mosaic-city-guide-toggle small { display: none; }
+.mosaic-city-guide--compact .mosaic-city-guide-toggle strong { grid-column: 1; grid-row: 1; }
+.mosaic-city-guide--compact .mosaic-city-guide-toggle-label { grid-column: 1; grid-row: 2; justify-self: start; white-space: normal; }
 .mosaic-city-guide-content { min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 0 12px 12px; }
 .mosaic-city-guide-content[hidden] { display: none; }
 .mosaic-world-column .mosaic-city-guide-content p { margin: 10px 0; font-size: calc(13px * var(--game-text-scale, 1)); line-height: 1.5; }
@@ -432,5 +436,18 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
 .extinction-relay-status > span { grid-column: 2; grid-row: 1; min-width: 0; text-align: right; overflow-wrap: anywhere; }
 .extinction-relay-status progress { grid-column: 1 / -1; grid-row: 2; width: 100%; min-width: 0; height: 8px; accent-color: #7ef7b1; }
 @media (max-height: 500px) and (min-width: 600px) {
-  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status) { width: min(320px, 38vw); max-width: calc(50% - var(--hub-hud-left) - 28px); }
+  /* Use the upper band without entering the radar, reticle or action dock.
+     The radar diameter matches getSceneHudLayout; text keeps the chosen scale. */
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status) {
+    width: calc(100% - var(--hub-hud-left) - var(--hub-hud-right) - min(84px * var(--game-hud-scale, 1), 26vw) - 12px);
+    max-width: 760px;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px 12px;
+    align-items: center;
+  }
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status) > .extinction-intel-button { min-height: 44px; }
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status) > span { min-width: 0; overflow-wrap: anywhere; }
+  .extinction-panel-active .extinction-objective-strip > .extinction-relay-status { grid-column: 1 / -1; }
+  .extinction-panel-active .extinction-relay-status > strong { font-size: inherit; }
+  .extinction-panel-active .extinction-relay-status > span { text-align: left; }
 }

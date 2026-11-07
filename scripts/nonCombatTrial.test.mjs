@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
+import { parseAst } from 'rolldown/parseAst';
 
 import {
   EngineNonCombatTrial,
@@ -12,6 +13,7 @@ import { LORE_WORLD_BOSS_POLICIES } from '../src/game/loreWorldBossOverrides.js'
 import { ENEMIES_DB } from '../src/game/enemies.js';
 import { getExpandedStages } from '../src/game/expandedUniverses.js';
 import { getSceneCanvasSize, getSceneHudLayout } from '../src/game/immersiveHubState.js';
+import { getExtinctionRelayStatus } from '../src/game/extinctionRelayOperation.js';
 
 const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
 const hubCssSource = readFileSync(new URL('../src/components/HubImmersion.css', import.meta.url), 'utf8');
@@ -431,9 +433,17 @@ test('Extinction Zone contracts keep real objectives, bounded resources, aiming,
 
   // Execute the snapshot used by the visible DOM HUD: health must keep its real
   // maximum and remain bounded after damage/healing, not merely match old draw code.
-  const snapshotStart = hubSource.indexOf('const buildRunSnapshot = useCallback(') + 'const buildRunSnapshot = useCallback('.length;
-  const snapshotEnd = hubSource.indexOf('\n  }, [getRunObjectiveText]);', snapshotStart) + '\n  }'.length;
-  const buildSnapshot = new Function('getRunObjectiveText', `return (${hubSource.slice(snapshotStart, snapshotEnd)});`)(() => 'Objectif');
+  const component = parseAst(hubSource, { lang: 'jsx' }, 'HubScreen.jsx').body
+    .find(node => node.type === 'FunctionDeclaration' && node.id?.name === 'ExtinctionRoyale');
+  const declaration = component?.body.body.flatMap(node => node.type === 'VariableDeclaration' ? node.declarations : [])
+    .find(node => node.id?.name === 'buildRunSnapshot');
+  assert.equal(declaration?.init?.callee?.name, 'useCallback', 'the HUD snapshot must come from the actual component');
+  const callback = declaration.init.arguments[0];
+  assert.equal(callback.type, 'ArrowFunctionExpression');
+  // The callback boundary is structural: adding a real dependency such as lang
+  // must not turn this health regression into a truncated-source SyntaxError.
+  const buildSnapshot = new Function('getRunObjectiveText', 'getExtinctionRelayStatus', 'EXTINCTION_BEACON_TARGET', 'lang',
+    `return (${hubSource.slice(callback.start, callback.end)});`)(() => 'Objectif', getExtinctionRelayStatus, 3, 'fr');
   for (const [hp, expected] of [[80, 80], [-5, 0], [240, 200]]) {
     const snapshot = buildSnapshot({ phase: 'running', hp, maxHp: 200, loot: [], px: 0, py: 0 });
     assert.equal(snapshot.hp, expected);

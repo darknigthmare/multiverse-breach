@@ -5,6 +5,15 @@ Cette suite raccorde Régulation et Portal Lab à l’isolation modale commune,
 ajoute un guide repliable et corrige les découpes de mains Arthur/Serj. Elle
 complète les recettes historiques ci-dessous sans réécrire leurs observations.
 
+La première inspection des captures de cette suite a montré deux limites
+concrètes à corriger : le corps du guide trop court à 844 × 390 et le bandeau
+relais chevauchant le quai FPS à HUD 140 %. En hauteur inférieure ou égale à
+560 pixels, la carte guide ouvre désormais directement le texte complet dans
+le terminal. Pause/Reprendre y reste accessible ; la fermeture rend le focus
+au bouton Terminal, même si la pause a retiré la carte. Le bandeau relais en
+paysage utilise deux rangées et réserve la largeur réelle du radar, en gardant
+toutes ses instructions et l’échelle choisie.
+
 Les deux fenêtres héritées respectent désormais la taille du texte et la marge
 de sécurité des réglages. Le dossier de portail et les planches de Régulation
 sont accessibles au clavier dans une zone de défilement propre ; les noms longs
@@ -16,6 +25,10 @@ FR/EN, menus/guide, en 390 × 844, 844 × 390 et 1 365 × 900. Les images de con
 et le nom long sont synthétiques ; le portail utilise le vrai fallback Nexus.
 Le résultat navigateur de la branche doit être lu dans le workflow
 `gamedev-display.yml`, séparément de la compilation et des tests unitaires.
+Les critères du guide contrôlent les rectangles de chaque ligne d’instruction
+et l’absence d’occultation, la pause/reprise explicite et le transfert de focus
+lors d’une rotation portrait vers paysage. Les preuves FPS vérifient en plus
+le dégagement du radar, du réticule et du quai sur toutes les phases du relais.
 
 ### Portée du suivi des 40 écrans
 

@@ -2282,7 +2282,12 @@ function MosaicCityHub({
   const guideDetailsRef = useRef(null);
   const guideFocusRequestedRef = useRef(false);
   const openJournal = () => { guideFocusRequestedRef.current = false; journalFocusRequestedRef.current = true; setCityMenuOpen(true); };
-  const openGuideDetails = () => { journalFocusRequestedRef.current = false; guideFocusRequestedRef.current = true; setCityMenuOpen(true); };
+  const openGuideDetails = () => {
+    // The guide card can disappear when paused in the terminal. Its persistent
+    // terminal button remains a valid return target for the modal lifecycle.
+    cityTerminalButtonRef.current?.focus({ preventScroll: true });
+    journalFocusRequestedRef.current = false; guideFocusRequestedRef.current = true; setCityMenuOpen(true);
+  };
   useEffect(() => {
     if (!cityMenuOpen || (!journalFocusRequestedRef.current && !guideFocusRequestedRef.current)) return undefined;
     const frame = requestAnimationFrame(() => {
@@ -3631,7 +3636,10 @@ function MosaicCityHub({
           </button>
         </div>
         <section ref={guideDetailsRef} tabIndex={-1} className="mosaic-terminal-guide" aria-label={lang === 'fr' ? 'Guide complet de la Cité' : 'Complete City guide'}><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p>
-          {(guideState.status === 'paused' || guideState.status === 'skipped') && <button type="button" className="btn-retro" onClick={() => { controlGuide('resume'); setCityMenuOpen(false); }}>{lang === 'fr' ? 'REPRENDRE LE GUIDE' : 'RESUME GUIDE'}</button>}
+          {['active', 'paused', 'skipped'].includes(guideState.status) && <button type="button" className="btn-retro" onClick={() => {
+            if (guideState.status === 'active') controlGuide('pause');
+            else { controlGuide('resume'); setCityMenuOpen(false); }
+          }}>{guideState.status === 'active' ? 'PAUSE GUIDE' : (lang === 'fr' ? 'REPRENDRE LE GUIDE' : 'RESUME GUIDE')}</button>}
         </section>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           <button className="mosaic-city-guide-restore" type="button" onClick={() => { setWelcomeIndex(0); setWelcomeOpen(true); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Revoir l accueil' : 'Replay welcome'}</button>
