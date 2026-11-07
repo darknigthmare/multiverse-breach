@@ -1,0 +1,998 @@
+{
+  "schemaVersion": 1,
+  "scope": "Non-exhaustive static observations from src JS/JSX/TS/TSX/CSS/JSON and declared DLC modules; no execution, call graph, runtime-key closure, public JSON traversal, or proof of exclusive ownership.",
+  "policy": "preserve-all",
+  "decision": "No shared resource is removed. DLC-only literal occurrences are investigation candidates, not proof that base or another pack cannot request the resource.",
+  "inputs": {
+    "sharedManifestSha256": "fc8e5443798c527ee61888e6afa7e8784430c9dba9a35a372cd59df28f5318c7",
+    "catalogueSha256": "a9c90de2f1825d93179bd1dde28d544220bed40585619a76cd918bef1745777c",
+    "sourceInventorySha256": "ead4a302fe179f7d4aea1240c1644a2768d189de564fbf0c69a447e793abc2c4",
+    "sourceFiles": 2351,
+    "mediaMeasurement": "Regular canonical files measured once by stat; the first 256 bytes reject LFS pointers. No generated public copy is counted twice and media payloads are not rehashed."
+  },
+  "totals": {
+    "sharedFiles": 5977,
+    "sharedBytes": 7167320919,
+    "assetsWithLiteral": 4251,
+    "bytesWithLiteral": 5753810779,
+    "commonUiReferences": 16,
+    "commonUiAssets": 13,
+    "dlcOnlyLiteralCandidates": 14,
+    "dlcOnlyLiteralCandidateBytes": 38474464,
+    "approvedForRemoval": 0
+  },
+  "byReason": [
+    {
+      "name": "original-campaign",
+      "files": 2724,
+      "bytes": 4600105110
+    },
+    {
+      "name": "shared-or-unclassified",
+      "files": 2528,
+      "bytes": 1501678429
+    },
+    {
+      "name": "base-game",
+      "files": 656,
+      "bytes": 973687752
+    },
+    {
+      "name": "multiple-universe-references",
+      "files": 16,
+      "bytes": 44124627
+    },
+    {
+      "name": "historical-directory-without-current-universe-alias",
+      "files": 42,
+      "bytes": 31007193
+    },
+    {
+      "name": "historical-bucket-guitar-echo-identity-not-buckethead",
+      "files": 9,
+      "bytes": 12745357
+    },
+    {
+      "name": "unregistered-runtime-key",
+      "files": 1,
+      "bytes": 3016101
+    },
+    {
+      "name": "global-final-boss-directory-not-the-matrix-dlc",
+      "files": 1,
+      "bytes": 956350
+    }
+  ],
+  "byFamily": [
+    {
+      "name": "images/oc-worlds",
+      "files": 960,
+      "bytes": 1158885216
+    },
+    {
+      "name": "cg/nexus-de-convergence",
+      "files": 567,
+      "bytes": 880052958
+    },
+    {
+      "name": "sprites/generated",
+      "files": 472,
+      "bytes": 540748043
+    },
+    {
+      "name": "cg/mythos-primordia",
+      "files": 135,
+      "bytes": 252491499
+    },
+    {
+      "name": "cg/aetherion-seven-laws-of-magic",
+      "files": 135,
+      "bytes": 249794717
+    },
+    {
+      "name": "cg/nine-realms-last-twilight",
+      "files": 135,
+      "bytes": 249557769
+    },
+    {
+      "name": "cg/mandate-of-nine-heavens",
+      "files": 135,
+      "bytes": 247516577
+    },
+    {
+      "name": "cg/tawantinsuyu-the-split-sun",
+      "files": 135,
+      "bytes": 246174822
+    },
+    {
+      "name": "cg/the-aether-crown",
+      "files": 135,
+      "bytes": 246034219
+    },
+    {
+      "name": "cg/aegea-war-of-the-moirai",
+      "files": 135,
+      "bytes": 245993573
+    },
+    {
+      "name": "cg/meridian-clockwork",
+      "files": 135,
+      "bytes": 245216041
+    },
+    {
+      "name": "cg/imperium-aeternum",
+      "files": 135,
+      "bytes": 242451168
+    },
+    {
+      "name": "cg/yomi-no-kage",
+      "files": 135,
+      "bytes": 237384610
+    },
+    {
+      "name": "cg/the-crownless-sea",
+      "files": 135,
+      "bytes": 237162615
+    },
+    {
+      "name": "cg/kemet-the-devoured-sun",
+      "files": 135,
+      "bytes": 229326850
+    },
+    {
+      "name": "cg/neon-requiem",
+      "files": 135,
+      "bytes": 227739175
+    },
+    {
+      "name": "cg/helios-56",
+      "files": 135,
+      "bytes": 226538098
+    },
+    {
+      "name": "cg/iron-tempest",
+      "files": 135,
+      "bytes": 225238100
+    },
+    {
+      "name": "cg/the-drowned-testament",
+      "files": 126,
+      "bytes": 206880730
+    },
+    {
+      "name": "cg/valedor-the-shattered-crown",
+      "files": 90,
+      "bytes": 166987751
+    },
+    {
+      "name": "cg/ilyr-concordat",
+      "files": 66,
+      "bytes": 116480732
+    },
+    {
+      "name": "cg/infernum-nine-pits",
+      "files": 66,
+      "bytes": 102916764
+    },
+    {
+      "name": "images/rift-dossiers",
+      "files": 1014,
+      "bytes": 91714535
+    },
+    {
+      "name": "cg/aevum-fracture",
+      "files": 45,
+      "bytes": 77070301
+    },
+    {
+      "name": "boosters/original-worlds",
+      "files": 41,
+      "bytes": 64217490
+    },
+    {
+      "name": "images/references",
+      "files": 9,
+      "bytes": 32113280
+    },
+    {
+      "name": "visuals/cosmetics",
+      "files": 411,
+      "bytes": 25807189
+    },
+    {
+      "name": "images/campaign-oc",
+      "files": 9,
+      "bytes": 23811201
+    },
+    {
+      "name": "backgrounds/lore-stages",
+      "files": 7,
+      "bytes": 12326166
+    },
+    {
+      "name": "backgrounds/halo-tactics-openai.png",
+      "files": 1,
+      "bytes": 3070124
+    },
+    {
+      "name": "backgrounds/yu-gi-oh-tactics-openai.png",
+      "files": 1,
+      "bytes": 3039162
+    },
+    {
+      "name": "backgrounds/matrix-rpg-openai.png",
+      "files": 1,
+      "bytes": 3016101
+    },
+    {
+      "name": "backgrounds/digimon-tactics-openai.png",
+      "files": 1,
+      "bytes": 2994665
+    },
+    {
+      "name": "backgrounds/resident-evil-tactics-openai.png",
+      "files": 1,
+      "bytes": 2913112
+    },
+    {
+      "name": "backgrounds/metal-gear-tactics-openai.png",
+      "files": 1,
+      "bytes": 2876988
+    },
+    {
+      "name": "backgrounds/dead-space-tactics-openai.png",
+      "files": 1,
+      "bytes": 2863457
+    },
+    {
+      "name": "backgrounds/rick-morty-smash-openai.png",
+      "files": 1,
+      "bytes": 2820367
+    },
+    {
+      "name": "backgrounds/doom-rpg-openai.png",
+      "files": 1,
+      "bytes": 2817074
+    },
+    {
+      "name": "backgrounds/predator-rpg-openai.png",
+      "files": 1,
+      "bytes": 2779849
+    },
+    {
+      "name": "backgrounds/matrix-tactics-openai.png",
+      "files": 1,
+      "bytes": 2768386
+    },
+    {
+      "name": "backgrounds/rosario-vampire-rpg-openai.png",
+      "files": 1,
+      "bytes": 2718565
+    },
+    {
+      "name": "backgrounds/alien-smash-openai.png",
+      "files": 1,
+      "bytes": 2602739
+    },
+    {
+      "name": "backgrounds/stargate-rpg-openai.png",
+      "files": 1,
+      "bytes": 2580039
+    },
+    {
+      "name": "backgrounds/chucky-smash-openai.png",
+      "files": 1,
+      "bytes": 2502293
+    },
+    {
+      "name": "backgrounds/harry-potter-rpg-openai.png",
+      "files": 1,
+      "bytes": 2464121
+    },
+    {
+      "name": "backgrounds/multiverse-breach-title-arca-v1.png",
+      "files": 1,
+      "bytes": 2368235
+    },
+    {
+      "name": "backgrounds/digital-circus-rpg-openai.png",
+      "files": 1,
+      "bytes": 2313686
+    },
+    {
+      "name": "images/missions",
+      "files": 6,
+      "bytes": 967382
+    },
+    {
+      "name": "reviews/discipline",
+      "files": 2,
+      "bytes": 538115
+    },
+    {
+      "name": "universe-icons/woodruff-openai.png",
+      "files": 1,
+      "bytes": 409975
+    },
+    {
+      "name": "universe-icons/a-nightmare-on-elm-street-openai.png",
+      "files": 1,
+      "bytes": 391905
+    },
+    {
+      "name": "universe-icons/hellraiser-openai.png",
+      "files": 1,
+      "bytes": 366312
+    },
+    {
+      "name": "universe-icons/tomba-openai.png",
+      "files": 1,
+      "bytes": 350553
+    },
+    {
+      "name": "universe-icons/the-ring-openai.png",
+      "files": 1,
+      "bytes": 325650
+    },
+    {
+      "name": "universe-icons/the-grudge-openai.png",
+      "files": 1,
+      "bytes": 289411
+    },
+    {
+      "name": "boosters/mandate-of-nine-heavens.webp",
+      "files": 1,
+      "bytes": 224554
+    },
+    {
+      "name": "boosters/valedor-the-shattered-crown.webp",
+      "files": 1,
+      "bytes": 215438
+    },
+    {
+      "name": "boosters/iron-tempest.webp",
+      "files": 1,
+      "bytes": 215072
+    },
+    {
+      "name": "boosters/nine-realms-last-twilight.webp",
+      "files": 1,
+      "bytes": 214114
+    },
+    {
+      "name": "boosters/tawantinsuyu-the-split-sun.webp",
+      "files": 1,
+      "bytes": 213152
+    },
+    {
+      "name": "boosters/the-aether-crown.webp",
+      "files": 1,
+      "bytes": 210448
+    },
+    {
+      "name": "boosters/helios-56.webp",
+      "files": 1,
+      "bytes": 209216
+    },
+    {
+      "name": "boosters/aetherion-seven-laws-of-magic.webp",
+      "files": 1,
+      "bytes": 207434
+    },
+    {
+      "name": "boosters/meridian-clockwork.webp",
+      "files": 1,
+      "bytes": 205306
+    },
+    {
+      "name": "textures/recent-universes",
+      "files": 4,
+      "bytes": 203797
+    },
+    {
+      "name": "boosters/imperium-aeternum.webp",
+      "files": 1,
+      "bytes": 203744
+    },
+    {
+      "name": "boosters/kemet-the-devoured-sun.webp",
+      "files": 1,
+      "bytes": 202736
+    },
+    {
+      "name": "boosters/the-drowned-testament.webp",
+      "files": 1,
+      "bytes": 198670
+    },
+    {
+      "name": "boosters/infernum-nine-pits.webp",
+      "files": 1,
+      "bytes": 197522
+    },
+    {
+      "name": "boosters/aevum-fracture.webp",
+      "files": 1,
+      "bytes": 195056
+    },
+    {
+      "name": "boosters/neon-requiem.webp",
+      "files": 1,
+      "bytes": 195038
+    },
+    {
+      "name": "boosters/mythos-primordia.webp",
+      "files": 1,
+      "bytes": 194210
+    },
+    {
+      "name": "boosters/the-crownless-sea.webp",
+      "files": 1,
+      "bytes": 185580
+    },
+    {
+      "name": "boosters/oc-last-margin.webp",
+      "files": 1,
+      "bytes": 185496
+    },
+    {
+      "name": "boosters/oc-impossible-exodus.webp",
+      "files": 1,
+      "bytes": 182650
+    },
+    {
+      "name": "boosters/aegea-war-of-the-moirai.webp",
+      "files": 1,
+      "bytes": 182342
+    },
+    {
+      "name": "boosters/multiverse-convergence.webp",
+      "files": 1,
+      "bytes": 175576
+    },
+    {
+      "name": "boosters/oc-black-ledger.webp",
+      "files": 1,
+      "bytes": 171288
+    },
+    {
+      "name": "boosters/yomi-no-kage.webp",
+      "files": 1,
+      "bytes": 169496
+    },
+    {
+      "name": "boosters/oc-divergent-shards.webp",
+      "files": 1,
+      "bytes": 168254
+    },
+    {
+      "name": "boosters/ilyr-concordat.webp",
+      "files": 1,
+      "bytes": 167244
+    },
+    {
+      "name": "cg/cg-manifest.json",
+      "files": 1,
+      "bytes": 160270
+    },
+    {
+      "name": "boosters/oc-keepers-of-name.webp",
+      "files": 1,
+      "bytes": 145622
+    },
+    {
+      "name": "favicon.png",
+      "files": 1,
+      "bytes": 116871
+    },
+    {
+      "name": "images/generated",
+      "files": 3,
+      "bytes": 9715
+    },
+    {
+      "name": "favicon.svg",
+      "files": 1,
+      "bytes": 9522
+    },
+    {
+      "name": "icons.svg",
+      "files": 1,
+      "bytes": 5031
+    }
+  ],
+  "byExtension": [
+    {
+      "name": ".png",
+      "files": 2011,
+      "bytes": 5878289021
+    },
+    {
+      "name": ".webp",
+      "files": 3390,
+      "bytes": 1249714350
+    },
+    {
+      "name": ".jsonl",
+      "files": 7,
+      "bytes": 26747098
+    },
+    {
+      "name": ".json",
+      "files": 65,
+      "bytes": 9180831
+    },
+    {
+      "name": ".svg",
+      "files": 502,
+      "bytes": 3365315
+    },
+    {
+      "name": ".html",
+      "files": 1,
+      "bytes": 23721
+    },
+    {
+      "name": ".md",
+      "files": 1,
+      "bytes": 583
+    }
+  ],
+  "commonUiReferences": [
+    {
+      "publicPath": "/backgrounds/halo-tactics-openai.png",
+      "sourcePath": "src/components/IntroSequence.jsx"
+    },
+    {
+      "publicPath": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+      "sourcePath": "src/components/IntroSequence.jsx"
+    },
+    {
+      "publicPath": "/backgrounds/lore-stages/nexus-de-convergence/tactics.webp",
+      "sourcePath": "src/components/IntroSequence.jsx"
+    },
+    {
+      "publicPath": "/backgrounds/multiverse-breach-title-arca-v1.png",
+      "sourcePath": "src/components/IntroSequence.jsx"
+    },
+    {
+      "publicPath": "/backgrounds/multiverse-breach-title-arca-v1.png",
+      "sourcePath": "src/components/PortalScreen.jsx"
+    },
+    {
+      "publicPath": "/backgrounds/stargate-rpg-openai.png",
+      "sourcePath": "src/components/IntroSequence.jsx"
+    },
+    {
+      "publicPath": "/images/campaign-oc/chapter-01-atrium-v1.png",
+      "sourcePath": "src/components/IntroSequence.jsx"
+    },
+    {
+      "publicPath": "/images/missions/campaign-oc.webp",
+      "sourcePath": "src/components/HubScreen.jsx"
+    },
+    {
+      "publicPath": "/images/missions/faction-arcs.webp",
+      "sourcePath": "src/components/HubScreen.jsx"
+    },
+    {
+      "publicPath": "/images/missions/fusion-rifts.webp",
+      "sourcePath": "src/App.jsx"
+    },
+    {
+      "publicPath": "/images/missions/fusion-rifts.webp",
+      "sourcePath": "src/components/HubScreen.jsx"
+    },
+    {
+      "publicPath": "/images/missions/fusion-rifts.webp",
+      "sourcePath": "src/components/PortalScreen.jsx"
+    },
+    {
+      "publicPath": "/images/missions/personal-arcs.webp",
+      "sourcePath": "src/components/HubScreen.jsx"
+    },
+    {
+      "publicPath": "/images/missions/trio-arcs.webp",
+      "sourcePath": "src/components/HubScreen.jsx"
+    },
+    {
+      "publicPath": "/images/missions/universe-arcs.webp",
+      "sourcePath": "src/components/HubScreen.jsx"
+    },
+    {
+      "publicPath": "/images/oc-worlds/v2/neon_requiem/backdrop.png",
+      "sourcePath": "src/components/HubScreen.jsx"
+    }
+  ],
+  "multiUniverseAssets": [
+    {
+      "publicPath": "/backgrounds/alien-smash-openai.png",
+      "sourcePath": "public/backgrounds/alien-smash-openai.png",
+      "bytes": 2602739,
+      "declaredUniverses": [
+        "Alien",
+        "Alien 3",
+        "Alien: Covenant",
+        "Alien: Romulus",
+        "Aliens",
+        "Aliens vs Predator: Requiem"
+      ],
+      "declaredBasis": [
+        "DLC/Alien/data/renderer.js",
+        "DLC/Alien3/data/renderer.js",
+        "DLC/AlienCovenant/data/renderer.js",
+        "DLC/AlienRomulus/data/renderer.js",
+        "DLC/Aliens/data/renderer.js",
+        "DLC/AliensVsPredatorRequiem/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/Alien/data/renderer.js",
+        "DLC/Alien3/data/renderer.js",
+        "DLC/AlienCovenant/data/renderer.js",
+        "DLC/AlienRomulus/data/renderer.js",
+        "DLC/Aliens/data/renderer.js",
+        "DLC/AliensVsPredatorRequiem/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/chucky-smash-openai.png",
+      "sourcePath": "public/backgrounds/chucky-smash-openai.png",
+      "bytes": 2502293,
+      "declaredUniverses": [
+        "Joker New 52",
+        "Rob Zombie"
+      ],
+      "declaredBasis": [
+        "DLC/JokerNew52/data/renderer.js",
+        "DLC/RobZombie/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/JokerNew52/data/renderer.js",
+        "DLC/RobZombie/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/dead-space-tactics-openai.png",
+      "sourcePath": "public/backgrounds/dead-space-tactics-openai.png",
+      "bytes": 2863457,
+      "declaredUniverses": [
+        "Alien Resurrection",
+        "Dead Space",
+        "Prometheus"
+      ],
+      "declaredBasis": [
+        "DLC/AlienResurrection/data/renderer.js",
+        "DLC/DeadSpace/data/renderer.js",
+        "DLC/Prometheus/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/AlienResurrection/data/renderer.js",
+        "DLC/DeadSpace/data/renderer.js",
+        "DLC/Prometheus/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/digimon-tactics-openai.png",
+      "sourcePath": "public/backgrounds/digimon-tactics-openai.png",
+      "bytes": 2994665,
+      "declaredUniverses": [
+        "Digimon",
+        "Noob"
+      ],
+      "declaredBasis": [
+        "DLC/Digimon/data/renderer.js",
+        "DLC/Noob/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/Digimon/data/renderer.js",
+        "DLC/Noob/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/digital-circus-rpg-openai.png",
+      "sourcePath": "public/backgrounds/digital-circus-rpg-openai.png",
+      "bytes": 2313686,
+      "declaredUniverses": [
+        "Digital Circus",
+        "Hazbin Hotel"
+      ],
+      "declaredBasis": [
+        "DLC/DigitalCircus/data/renderer.js",
+        "DLC/HazbinHotel/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/DigitalCircus/data/renderer.js",
+        "DLC/HazbinHotel/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/doom-rpg-openai.png",
+      "sourcePath": "public/backgrounds/doom-rpg-openai.png",
+      "bytes": 2817074,
+      "declaredUniverses": [
+        "Doom",
+        "Rammstein"
+      ],
+      "declaredBasis": [
+        "DLC/Doom/data/renderer.js",
+        "DLC/Rammstein/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/Doom/data/renderer.js",
+        "DLC/Rammstein/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/halo-tactics-openai.png",
+      "sourcePath": "public/backgrounds/halo-tactics-openai.png",
+      "bytes": 3070124,
+      "declaredUniverses": [
+        "Halo",
+        "Nexus de Convergence",
+        "Predators"
+      ],
+      "declaredBasis": [
+        "DLC/Halo/data/renderer.js",
+        "DLC/Predators/data/renderer.js",
+        "src/components/IntroSequence.jsx#common-ui"
+      ],
+      "literalSourceFiles": [
+        "DLC/Halo/data/renderer.js",
+        "DLC/Predators/data/renderer.js",
+        "src/components/IntroSequence.jsx"
+      ],
+      "commonUiReference": true,
+      "retention": "common-ui-reference",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/harry-potter-rpg-openai.png",
+      "sourcePath": "public/backgrounds/harry-potter-rpg-openai.png",
+      "bytes": 2464121,
+      "declaredUniverses": [
+        "Discworld",
+        "Harry Potter",
+        "Kaamelott"
+      ],
+      "declaredBasis": [
+        "DLC/Discworld/data/renderer.js",
+        "DLC/HarryPotter/data/renderer.js",
+        "DLC/Kaamelott/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/Discworld/data/renderer.js",
+        "DLC/HarryPotter/data/renderer.js",
+        "DLC/Kaamelott/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/matrix-tactics-openai.png",
+      "sourcePath": "public/backgrounds/matrix-tactics-openai.png",
+      "bytes": 2768386,
+      "declaredUniverses": [
+        "Daft Punk",
+        "The Matrix"
+      ],
+      "declaredBasis": [
+        "DLC/DaftPunk/data/renderer.js",
+        "DLC/TheMatrix/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/DaftPunk/data/renderer.js",
+        "DLC/TheMatrix/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/metal-gear-tactics-openai.png",
+      "sourcePath": "public/backgrounds/metal-gear-tactics-openai.png",
+      "bytes": 2876988,
+      "declaredUniverses": [
+        "Metal Gear",
+        "System of a Down",
+        "The Batman Who Laughs"
+      ],
+      "declaredBasis": [
+        "DLC/MetalGear/data/renderer.js",
+        "DLC/SystemOfADown/data/renderer.js",
+        "DLC/TheBatmanWhoLaughs/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/MetalGear/data/renderer.js",
+        "DLC/SystemOfADown/data/renderer.js",
+        "DLC/TheBatmanWhoLaughs/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/predator-rpg-openai.png",
+      "sourcePath": "public/backgrounds/predator-rpg-openai.png",
+      "bytes": 2779849,
+      "declaredUniverses": [
+        "Predator",
+        "Predator 2",
+        "Predator: Badlands",
+        "Prey",
+        "The Predator"
+      ],
+      "declaredBasis": [
+        "DLC/Predator/data/renderer.js",
+        "DLC/Predator2/data/renderer.js",
+        "DLC/PredatorBadlands/data/renderer.js",
+        "DLC/Prey/data/renderer.js",
+        "DLC/ThePredator/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/Predator/data/renderer.js",
+        "DLC/Predator2/data/renderer.js",
+        "DLC/PredatorBadlands/data/renderer.js",
+        "DLC/Prey/data/renderer.js",
+        "DLC/ThePredator/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/resident-evil-tactics-openai.png",
+      "sourcePath": "public/backgrounds/resident-evil-tactics-openai.png",
+      "bytes": 2913112,
+      "declaredUniverses": [
+        "Alien vs Predator",
+        "Resident Evil"
+      ],
+      "declaredBasis": [
+        "DLC/AlienVsPredator/data/renderer.js",
+        "DLC/ResidentEvil/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/AlienVsPredator/data/renderer.js",
+        "DLC/ResidentEvil/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/rick-morty-smash-openai.png",
+      "sourcePath": "public/backgrounds/rick-morty-smash-openai.png",
+      "bytes": 2820367,
+      "declaredUniverses": [
+        "Oliver Tree",
+        "Rick & Morty"
+      ],
+      "declaredBasis": [
+        "DLC/OliverTree/data/renderer.js",
+        "DLC/RickMorty/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/OliverTree/data/renderer.js",
+        "DLC/RickMorty/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/rosario-vampire-rpg-openai.png",
+      "sourcePath": "public/backgrounds/rosario-vampire-rpg-openai.png",
+      "bytes": 2718565,
+      "declaredUniverses": [
+        "Dungeon Meshi",
+        "Rosario + Vampire"
+      ],
+      "declaredBasis": [
+        "DLC/DungeonMeshi/data/renderer.js",
+        "DLC/RosarioVampire/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/DungeonMeshi/data/renderer.js",
+        "DLC/RosarioVampire/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/stargate-rpg-openai.png",
+      "sourcePath": "public/backgrounds/stargate-rpg-openai.png",
+      "bytes": 2580039,
+      "declaredUniverses": [
+        "Nexus de Convergence",
+        "Stargate"
+      ],
+      "declaredBasis": [
+        "DLC/Stargate/data/renderer.js",
+        "src/components/IntroSequence.jsx#common-ui"
+      ],
+      "literalSourceFiles": [
+        "DLC/Stargate/data/renderer.js",
+        "src/components/IntroSequence.jsx"
+      ],
+      "commonUiReference": true,
+      "retention": "common-ui-reference",
+      "mayPrune": false
+    },
+    {
+      "publicPath": "/backgrounds/yu-gi-oh-tactics-openai.png",
+      "sourcePath": "public/backgrounds/yu-gi-oh-tactics-openai.png",
+      "bytes": 3039162,
+      "declaredUniverses": [
+        "Predator: Killer of Killers",
+        "Yu-Gi-Oh"
+      ],
+      "declaredBasis": [
+        "DLC/PredatorKillerOfKillers/data/renderer.js",
+        "DLC/YuGiOh/data/renderer.js"
+      ],
+      "literalSourceFiles": [
+        "DLC/PredatorKillerOfKillers/data/renderer.js",
+        "DLC/YuGiOh/data/renderer.js"
+      ],
+      "commonUiReference": false,
+      "retention": "dynamic-closure-unproven",
+      "mayPrune": false
+    }
+  ],
+  "indirectConsumers": [
+    {
+      "sourcePath": "src/game/stageLoreProfiles.js",
+      "marker": "const basePath = `/backgrounds/lore-stages/${slug}`;",
+      "limitation": "Universe slugs and mode filenames construct URLs; literal observations do not enumerate their combinations.",
+      "line": 331,
+      "sha256": "ca4d08fd5e520e0d8ea91c0fc01af6c43a4f2fe624423b39a74646f1130f5fd8"
+    },
+    {
+      "sourcePath": "src/game/spriteAssets.js",
+      "marker": "export const slugifyAsset =",
+      "limitation": "Hero, universe, variant and animation inputs select or construct sprite paths.",
+      "line": 17,
+      "sha256": "c2ab4e4c5b12504335499a6fea433647e0ecebaa44547ee39966d6de9ba06f0a"
+    },
+    {
+      "sourcePath": "src/game/generatedStageAssets.js",
+      "marker": "registry.byProfile?.[universe]?.[normalizedMode]",
+      "limitation": "Runtime universe and mode select registry entries; this report does not prove which keys are reachable.",
+      "line": 17,
+      "sha256": "bef4698beb0d0aca6f681328dc3c46fd3361a2ebda9df8c7ff30657ba2bef05e"
+    },
+    {
+      "sourcePath": "src/game/renderer.js",
+      "marker": "OPENAI_BACKDROPS[mode]?.[universe]",
+      "limitation": "Dynamic registry lookup and mode fallback require a separate reachability proof before removing a shared backdrop.",
+      "line": 1304,
+      "sha256": "13f858fb3dd1961874df35a264cc837bc6047a68243a0fa78f46e9c02c9d408f"
+    },
+    {
+      "sourcePath": "src/components/cards/cardArtPresentation.js",
+      "marker": "const src = art.thumbnail || art.image || art.sheet || null;",
+      "limitation": "UI artwork receives computed values from callers; a literal scan does not establish all callers or variants.",
+      "line": 5,
+      "sha256": "59a0721e756e62e60be69140af0c27a3d0435eceed3276b5e0c6ed054d9f2061"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { after, before, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import createDlcSaveFixturePlugin from './fixtures/dlcSaveFixturePlugin.mjs';
 import { createDlcInstallation } from '../src/game/dlcInstallation.js';
 import { DLC_PACK_MANIFESTS, DLC_UNIVERSE_KEYS } from '../DLC/index.js';
@@ -59,7 +59,16 @@ const sampleTrace = version => ({
     battleMusic: ['future_track'],
     customLoadout: { battleMusic: 'future_track' }
   },
-  activityProgress: { ...getProgressKeys(), lastSeenDay: getProgressKeys().dayKey, lifetimeWins: 4, heroInstability: { masterchief: 2 } },
+  activityProgress: {
+    ...getProgressKeys(), lastSeenDay: getProgressKeys().dayKey, lifetimeWins: 4, heroInstability: { masterchief: 2 },
+    mosaicReconnaissance: {
+      version: 1, activeDistrictId: 'universe-halo',
+      dossiers: {
+        'universe-halo': { universe: 'Halo', residentId: 'masterchief', exhibitId: 'assault_rifle', completed: false },
+        'universe-nexus-de-convergence': { universe: 'Nexus de Convergence', residentId: 'arca_mirelle', exhibitId: 'archived-relic', completed: true }
+      }
+    }
+  },
   onboarding: { profileCreated: true, prologueCompleted: true, introSeen: true }
 });
 
@@ -81,6 +90,8 @@ test('actual App normalization and serialization retain dormant data through a b
   assert.deepEqual(reserialized.campaignProgress.future_pack, raw.campaignProgress.future_pack);
   assert.equal(reserialized.portalCollection.activeKart, 'future_kart');
   assert.equal(reserialized.portalCollection.customLoadout.battleMusic, 'future_track');
+  assert.deepEqual(reserialized.activityProgress.mosaicReconnaissance, raw.activityProgress.mosaicReconnaissance,
+    'City dossiers survive the actual App normalization/serialization when their DLC is absent');
   assert.equal('installedPackIds' in persisted, false);
 });
 
@@ -102,6 +113,7 @@ for (const version of [6, 8]) {
     }
     const restored = fullSave.normalize(clone(baseSave.serialize(partial)), { existing: true });
     assert.deepEqual(fullSave.serialize(restored), fullSave.serialize(full));
+    assert.deepEqual(restored.activityProgress.mosaicReconnaissance, raw.activityProgress.mosaicReconnaissance);
   });
 }
 

@@ -160,9 +160,24 @@ def viewmodel(page,args,identity,width,height,lang,out,name):
     if identity=='arca_mirelle':
         check(any('fps-hands' in d['src'] and abs(d['args'][1]-(6*d['height']/10+40))<.001 and abs(d['args'][3]-(d['height']/10-46))<.001 for d in reload),'Mirelle reload trim not used in real draw')
         check(any('fps-projectile' in d['src'] for d in firing),'Mirelle projectile overlay missing')
+    authored={
+        'arthur_kaamelott':(792,1980,[(2,197),(200,394),(397,592),(595,790)],[(2,201),(204,403),(406,606)]),
+        'serj_tankian':(796,1990,[(2,198),(201,394),(397,591),(594,790)],[(2,202),(205,406),(409,610)])
+    }.get(identity)
+    authored_checked=0
+    if authored:
+        source_width,source_height,columns,rows=authored
+        for record in firing+reload:
+            check(record['width']==source_width and record['height']==source_height,'authored FPS sheet dimensions changed')
+            sx,sy,sw,sh=record['args'][:4]
+            check(any(abs(sx-left)<.001 and abs(sw-(right-left))<.001 for left,right in columns),'FPS crop includes a column separator or cuts into another hand')
+            check(any(abs(sy-top)<.001 and abs(sh-(bottom-top))<.001 for top,bottom in rows),'FPS crop does not follow the authored row boundaries')
+            authored_checked+=1
+        check(any(abs(d['args'][1]-rows[2][0])<.001 for d in firing),'authored attack row was not drawn')
+        check(any(abs(d['args'][1]-rows[0][0])<.001 for d in reload),'authored idle fallback was not used during reload')
     page.screenshot(path=str(out/f'{name}-reload.png'))
     return {'heroId':identity,'drawCallsChecked':len(firing)+len(reload),'aspectPreserved':True,'preparedOwnership':True,'virtualClock':True,
-            'clockPrepared':prepared_clock}
+            'clockPrepared':prepared_clock,'authoredCellsChecked':authored_checked}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--url',default='http://127.0.0.1:4173');p.add_argument('--evidence',default='/tmp/resident-viewmodels');p.add_argument('--executable');p.add_argument('--case',default='');a=p.parse_args()

@@ -10,7 +10,7 @@ const params = new URLSearchParams(globalThis.__sceneQaParams || location.search
 const lang = params.get('lang') === 'en' ? 'en' : 'fr';
 const mode = params.get('mode') === 'fps' ? 'fps' : 'city';
 const catalog = [createPlayerHero({name:'QA'}), ...(params.get('catalog') === 'full' ? HEROES_DB : HEROES_DB.filter(h => ['arca_mirelle','arca_bastion','arca_nova'].includes(h.id)))];
-const audit = { reports: [], services: [], saves: [], mounted: true, mode };
+const audit = { reports: [], services: [], saves: [], reconnaissanceSaves: [], mounted: true, mode };
 window.__sceneQA = audit;
 // Test environment only: the bot fixes randomness before START, while gameplay
 // remains driven by the real scene and input events. Each replay gets a fresh
@@ -69,8 +69,10 @@ export function Harness(){
   const [paused,setPaused]=useState(false), [dedicated,setDedicated]=useState(mode==='city');
   const [mounted,setMounted]=useState(true), [revision,setRevision]=useState(0);
   const [saved,setSaved]=useState(null), [guide,setGuide]=useState(null);
+  const [reconnaissance,setReconnaissance]=useState(null);
   const [exit,setExit]=useState(0);
   audit.remount=()=>setMounted(true);audit.revision=revision;audit.saved=saved;
+  audit.reconnaissance=reconnaissance;
   // Test-only prepared entry points; production has no writable QA hook.
   audit.setLocation=location=>setSaved(location);
   const service=(name,universe)=>{audit.services.push({service:name,universe,savedAtNavigation:audit.saves.at(-1)});setMounted(false);};
@@ -82,6 +84,7 @@ export function Harness(){
     <button id="qa-exit" onClick={()=>setExit(v=>v+1)}>Exit</button></header>
     <main className={`hub-screen ${dedicated?'is-dedicated-game':''}`} style={{paddingTop:60}}>
     {mounted && (mode==='city'?<MosaicCityHub {...props} completedStages={[]} stages={[]} playerProfile={{name:'QA'}} tutorialProgress={guide}
+      reconnaissanceProgress={reconnaissance} onReconnaissanceProgress={v=>{audit.reconnaissanceSaves.push(structuredClone(v));setReconnaissance(v);}}
       onTutorialProgress={v=>setGuide(v)} savedLocation={saved} onLocationChange={v=>{audit.saves.push(v);setSaved(v);}}
       onOpenMissions={u=>service('missions',u)} onOpenCodex={u=>service('codex',u)}
       onOpenService={(name,u)=>service(name,u)}/>

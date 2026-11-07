@@ -62,6 +62,56 @@ const exportSources = (t, f, plan) => {
     return root;
 };
 
+test('a static common UI reference refuses an export that would omit its declared DLC media', (t) => {
+    const f = fixture(t);
+    write(f.root, 'src/components/Intro.jsx', 'export const intro = <main style={{ backgroundImage: "url(/images/halo.bin)" }} />;\n');
+    assert.throws(() => selectedPlan(f, []), /Common UI asset would be excluded: src\/components\/Intro.jsx -> \/images\/halo.bin \(pack halo\)/);
+    assert.throws(() => selectedPlan(f, ['half-life']), /Common UI asset would be excluded/);
+    assert.equal(selectedPlan(f).assets.some(asset => asset.publicPath === '/images/halo.bin'), true);
+    assert.equal(buildDlcDistributionPlan({ root: f.root }).assets.length, 6);
+});
+
+test('an unlisted static common UI asset cannot silently escape the inventory guard', (t) => {
+    const f = fixture(t);
+    write(f.root, 'src/components/NewScreen.jsx', 'export const screen = <img src="/images/unlisted.png" />;\n');
+    assert.throws(() => selectedPlan(f, []), /Undeclared common UI asset: src\/components\/NewScreen.jsx -> \/images\/unlisted.png/);
+    assert.throws(() => buildDlcDistributionPlan({ root: f.root }), /Undeclared common UI asset/);
+});
+
+test('encoding a static UI asset filename does not allow it to be omitted from an export', (t) => {
+    const f = fixture(t);
+    write(f.root, 'src/components/Intro.jsx', 'export const intro = <img src="/images/%68alo%2ebin?revision=1" />;\n');
+    assert.throws(() => selectedPlan(f, []), /Common UI asset would be excluded: src\/components\/Intro.jsx -> \/images\/halo.bin \(pack halo\)/);
+    assert.equal(selectedPlan(f).assets.some(asset => asset.publicPath === '/images/halo.bin'), true);
+    write(f.root, 'src/components/Intro.jsx', 'export const intro = <img src="/images/missing%2epng" />;\n');
+    assert.throws(() => buildDlcDistributionPlan({ root: f.root }), /Undeclared common UI asset/);
+});
+
+test('promoting common UI media preserves its URL and SHA in base and selected distributions', (t) => {
+    const f = fixture(t);
+    const publicPath = '/images/halo.bin';
+    const source = 'DLC/Halo/assets' + publicPath;
+    const bytes = readFileSync(join(f.root, source));
+    write(f.root, 'src/components/Intro.jsx', 'export const intro = <img src="' + publicPath + '" />;\n');
+    changeJson(f.root, 'DLC/Halo/assets.json', inventory => {
+        inventory.assets = inventory.assets.filter(asset => asset.publicPath !== publicPath);
+        inventory.sharedDependencies.push(publicPath);
+    });
+    changeJson(f.root, 'DLC/shared-assets.json', inventory => inventory.assets.push(publicAsset(publicPath)));
+    write(f.root, 'public' + publicPath, bytes);
+    rmSync(join(f.root, source));
+    for (const packIds of [[], ['halo']]) {
+        const plan = selectedPlan(f, packIds);
+        const receipt = createDlcDistributionReceipt({ root: f.root, plan });
+        const promoted = receipt.assets.find(asset => asset.publicPath === publicPath);
+        assert.equal(promoted.sourcePath, 'public' + publicPath);
+        assert.equal(promoted.sha256, digest(bytes));
+        const exported = exportSources(t, f, plan);
+        auditDlcDistributionFiles({ root: exported, receipt, layout: 'sources', exact: true });
+        assert.deepEqual(readFileSync(join(exported, promoted.sourcePath)), bytes);
+    }
+});
+
 test('profiles resolve in catalogue order and preserve immutable complete identities', () => {
     const manifests = identities();
     const before = structuredClone(manifests);

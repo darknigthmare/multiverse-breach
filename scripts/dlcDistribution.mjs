@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { closeSync, constants, lstatSync, openSync, readFileSync, readdirSync, readSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { projectAssetPath } from './dlcAssetPaths.mjs';
+import { collectCommonUiAssetReferences } from './dlcCommonUiAssets.mjs';
 
 const PROFILE_KEYS = new Set(['schemaVersion', 'mode', 'packIds', 'sharedPolicy']);
 const HASH_PATTERN = /^[a-f0-9]{64}$/;
@@ -248,6 +249,14 @@ export function buildDlcDistributionPlan({ root = process.cwd(), selection } = {
     const excludedDlcAssets = assets.filter((asset) => asset.ownerPackId !== null && !selected.has(asset.ownerPackId))
         .sort((a, b) => compare(a.destinationPath, b.destinationPath));
     const published = [...publicAssets, ...dlcAssets].sort((a, b) => compare(a.destinationPath, b.destinationPath));
+    const excludedByUrl = new Map(excludedDlcAssets.map((asset) => [asset.publicPath, asset]));
+    const publishedUrls = new Set(published.map((asset) => asset.publicPath));
+    for (const { publicPath, sourcePath } of collectCommonUiAssetReferences({ root: absolute })) {
+        const excluded = excludedByUrl.get(publicPath);
+        if (excluded) throw new Error('Common UI asset would be excluded: ' + sourcePath + ' -> ' + publicPath
+            + ' (pack ' + excluded.ownerPackId + '); promote the canonical source to shared public assets.');
+        if (!publishedUrls.has(publicPath)) throw new Error('Undeclared common UI asset: ' + sourcePath + ' -> ' + publicPath);
+    }
     const metadataFiles = ['DLC/shared-assets.json', ...resolved.selectedManifests.flatMap((manifest) =>
         [manifest.directory + '/manifest.json', manifest.directory + '/assets.json'])].sort(compare);
     return freeze({

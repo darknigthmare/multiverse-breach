@@ -33,6 +33,32 @@ const createFixture = t => {
   return { root, write, manifest, read };
 };
 
+test('the sparse-checkout CLI publishes available assets before npm ci without loading a parser dependency', t => {
+  const { root, write, manifest, read } = createFixture(t);
+  for (const file of ['prepareDlcAssets.mjs', 'dlcDistribution.mjs', 'dlcAssetPaths.mjs', 'dlcCommonUiAssets.mjs', 'dlcDistributionFilesystem.mjs']) {
+    write('scripts/' + file, readFileSync(new URL('./' + file, import.meta.url)));
+  }
+  const present = asset('/images/halo.png');
+  const absent = asset('/images/missing.png');
+  const bytes = Buffer.from([0, 255, 42, 128]);
+  manifest([present, absent]);
+  write(present.sourcePath, bytes);
+  write('src/components/Intro.jsx', 'export const intro = <img src="/images/halo.png" />;\n');
+  assert.equal(existsSync(join(root, 'node_modules')), false);
+  const options = { cwd: root, encoding: 'utf8', env: { ...process.env, NODE_PATH: '' } };
+  const missingDependency = spawnSync(process.execPath, ['--input-type=module', '-e',
+    'import {createRequire} from "node:module"; const require=createRequire(import.meta.url); try { require.resolve("rolldown/utils"); process.exitCode=1; } catch(error) { if(error.code!=="MODULE_NOT_FOUND") throw error; }'], options);
+  assert.equal(missingDependency.status, 0, missingDependency.stderr);
+  const partial = spawnSync(process.execPath, ['scripts/prepareDlcAssets.mjs', '--available'], options);
+  assert.equal(partial.status, 0, partial.stderr);
+  assert.match(partial.stdout, /Partial DLC asset publication.*1\/2 ready/);
+  assert.deepEqual(read('public' + present.publicPath), bytes);
+  const strict = spawnSync(process.execPath, ['scripts/prepareDlcAssets.mjs'], options);
+  assert.equal(strict.status, 1);
+  assert.match(strict.stderr, /Missing DLC sources/);
+  assert.doesNotMatch(strict.stderr, /Cannot find|MODULE_NOT_FOUND/);
+});
+
 test('reads migrated mappings deterministically and ignores legacy public sources without writing', t => {
   const { root, manifest } = createFixture(t);
   manifest([{ sourcePath: 'public/shared.png', publicPath: '/shared.png' }]);

@@ -32,6 +32,41 @@ test('projectile overlay keeps its own aspect without changing timing or simulat
  assert.equal(getExtinctionProjectilePlacement(0,122,840,430),null);
 });
 
+for (const [id, width, height, separatorsX, separatorsY] of [
+  ['arthur_kaamelott', 792, 1980, [0, 198, 395, 593, 791], [0, 202, 404, 607]],
+  ['serj_tankian', 796, 1990, [0, 199, 395, 592, 792], [0, 203, 407, 610]]
+]) test(`${id}: authored first-person cells exclude the PNG separators in all four phases`, () => {
+  const profile = getExtinctionViewmodel({ id });
+  const before = structuredClone(profile);
+  for (const [state, row] of [[{}, 0], [{ vx: 1 }, 1], [{ muzzle: 3 }, 2], [{ reloadPulse: 3 }, 0]]) {
+    for (let col = 0; col < 4; col += 1) {
+      const frame = getExtinctionHandFrame(profile, { ...state, t: col * 12 });
+      assert.equal(frame.row, row, 'state mapping remains unchanged, including idle as reload fallback');
+      const rect = getExtinctionHandSourceRect(frame, width, height);
+      assert.ok(rect.x > separatorsX[col] && rect.x + rect.w <= separatorsX[col + 1]);
+      assert.ok(rect.y > separatorsY[row] && rect.y + rect.h <= separatorsY[row + 1]);
+      assert.ok(rect.w >= 190 && rect.h >= 198, 'exclude grid lines without reducing the hands to a small fragment');
+      for (const [screenW, screenH] of [[390, 844], [844, 390], [1280, 900], [2560, 1080]]) {
+        const placed = getExtinctionHandPlacement(rect, screenW, screenH);
+        assert.ok(Math.abs(placed.w / placed.h - rect.w / rect.h) < 1e-9);
+        assert.ok(placed.x >= 0 && placed.y >= 0 && placed.x + placed.w <= screenW && placed.y + placed.h <= screenH);
+      }
+      assert.deepEqual(getExtinctionHandSourceRect(frame, width * 2, height * 2), Object.fromEntries(Object.entries(rect).map(([key, value]) => [key, value * 2])));
+      assert.equal(getExtinctionHandSourceRect(frame, width + 1, height), null, 'a changed atlas aspect must not reuse stale authored bounds');
+    }
+  }
+  assert.deepEqual(profile, before);
+  assert.equal(getExtinctionHandFrame(profile, { weapon: { type: 'shotgun' } }), null);
+  assert.equal(getExtinctionViewmodel({ id, activeSkin: { id: 'unbound' } }).src, '');
+});
+
+test('invalid authored source cells fall back instead of sampling a different asset region', () => {
+  const frame = getExtinctionHandFrame(getExtinctionViewmodel({ id: 'serj_tankian' }));
+  for (const patch of [{ x: -1 }, { y: NaN }, { w: 0 }, { h: 2000 }, { width: 0 }, { height: Infinity }]) {
+    assert.equal(getExtinctionHandSourceRect({ ...frame, sourceCell: { ...frame.sourceCell, ...patch } }, 796, 1990), null);
+  }
+});
+
 const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
 test('progression hookup accepts the selected owner instead of a hardcoded Mirelle constant', () => {
   assert.equal(verifyExtinctionRendererBinding(hubSource), true);

@@ -8,6 +8,7 @@ import {
   MOSAIC_CITY_ART, MOSAIC_PERSON_FOOT_OFFSET, MOSAIC_WELCOME, planMosaicPath, resolveMosaicInteraction, transitionMosaicGuide
 } from '../src/game/mosaicCityRuntime.js';
 import { createPlayerHero } from '../src/game/playerHero.js';
+import { advanceMosaicReconnaissance, normalizeMosaicReconnaissance } from '../src/game/mosaicReconnaissance.js';
 
 const district = { worldW: 2000, worldH: 1000 };
 const makeState = (keys = {}) => ({ player: { x: 100, y: 100, facing: 1, speed: 2.35 }, keys, npcs: [], destination: null });
@@ -261,6 +262,8 @@ test('the Archives Codex terminal opens the actual global archive only after app
     locationCallbackRef: { current: () => {} }, currentDistrictRef: { current: 'archives' }, currentZoneRef: { current: 'codex' },
     snapshotMosaicLocation: (state, districtId, zoneId) => ({ player: {...state.player}, districtId, zoneId }),
     resolveMosaicInteraction, district: { portals: [] }, zones, exhibits: [], lang: 'fr',
+    advanceMosaicReconnaissance, reconnaissanceRef: { current: normalizeMosaicReconnaissance() }, reconnaissanceDossier: null,
+    commitReconnaissance: () => assert.fail('The global archive cannot validate a district reconnaissance'),
     setHubLog: () => {}, recordGuide: () => {}, switchDistrict: () => {},
     onOpenService: () => assert.fail('Codex cannot open another service'),
     onOpenCodex: universe => opened.push(universe), onOpenMissions: () => assert.fail('Codex cannot open missions'),

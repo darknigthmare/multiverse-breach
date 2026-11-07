@@ -3,6 +3,8 @@ import { createUniverseModifiers } from '../game/universeModifiers.js';
 import { DISCIPLINE_SPRITE_REGISTRY } from '../game/disciplineSprites.js';
 import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { getMosaicExhibits, getMosaicExhibitView, getMosaicExhibitZones, drawMosaicService } from '../game/mosaicExhibits.js';
+import { buildMosaicReconnaissanceDossier, normalizeMosaicReconnaissance, startMosaicReconnaissance, advanceMosaicReconnaissance, getMosaicReconnaissanceObjective } from '../game/mosaicReconnaissance.js';
+import { createExtinctionRelayOperation, tickExtinctionRelayOperation, interactExtinctionRelayOperation, getExtinctionRelayStatus } from '../game/extinctionRelayOperation.js';
 import { getExtinctionSignature, createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols } from '../game/extinctionSignatures.js';
 import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicResidents.js';
 import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
@@ -89,6 +91,7 @@ import {
 import './MosaicCityHub.css';
 import './HubImmersion.css';
 import ImmersiveDrawer from './ImmersiveDrawer.jsx';
+import MosaicGuidePanel from './MosaicGuidePanel.jsx';
 import GameDisplaySettings from './GameDisplaySettings.jsx';
 import AudioControl from './AudioControl.jsx';
 import NetworkStatusBadge from './NetworkStatusBadge.jsx';
@@ -2256,6 +2259,8 @@ function MosaicCityHub({
   disabledGearIds = [],
   tutorialProgress = null,
   onTutorialProgress,
+  reconnaissanceProgress = null,
+  onReconnaissanceProgress,
   onOpenMissions,
   onOpenCodex,
   onOpenService,
@@ -2271,15 +2276,21 @@ function MosaicCityHub({
   const cityBackdropRef = useRef(null);
   useEffect(() => { const image = new Image(); image.src = MOSAIC_CITY_ART; cityBackdropRef.current = image; return () => { cityBackdropRef.current = null; }; }, []);
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
+  const cityTerminalButtonRef = useRef(null);
   const journalRef = useRef(null);
   const journalFocusRequestedRef = useRef(false);
-  const openJournal = () => { journalFocusRequestedRef.current = true; setCityMenuOpen(true); };
+  const guideDetailsRef = useRef(null);
+  const guideFocusRequestedRef = useRef(false);
+  const openJournal = () => { guideFocusRequestedRef.current = false; journalFocusRequestedRef.current = true; setCityMenuOpen(true); };
+  const openGuideDetails = () => { journalFocusRequestedRef.current = false; guideFocusRequestedRef.current = true; setCityMenuOpen(true); };
   useEffect(() => {
-    if (!cityMenuOpen || !journalFocusRequestedRef.current) return undefined;
+    if (!cityMenuOpen || (!journalFocusRequestedRef.current && !guideFocusRequestedRef.current)) return undefined;
     const frame = requestAnimationFrame(() => {
-      journalRef.current?.scrollIntoView({ block: 'nearest' });
-      journalRef.current?.focus({ preventScroll: true });
+      const target = guideFocusRequestedRef.current ? guideDetailsRef.current : journalRef.current;
+      target?.scrollIntoView({ block: 'nearest' });
+      target?.focus({ preventScroll: true });
       journalFocusRequestedRef.current = false;
+      guideFocusRequestedRef.current = false;
     });
     return () => cancelAnimationFrame(frame);
   }, [cityMenuOpen]);
@@ -2314,6 +2325,28 @@ function MosaicCityHub({
   const guideProgressCallbackRef = useRef(onTutorialProgress);
   guideProgressCallbackRef.current = onTutorialProgress;
   const publishedGuideRef = useRef(JSON.stringify(guideRef.current));
+  const reconnaissanceRef = useRef(normalizeMosaicReconnaissance(reconnaissanceProgress));
+  const [reconnaissance, setReconnaissance] = useState(() => reconnaissanceRef.current);
+  const reconnaissanceCallbackRef = useRef(onReconnaissanceProgress);
+  reconnaissanceCallbackRef.current = onReconnaissanceProgress;
+  const publishedReconnaissanceRef = useRef(JSON.stringify(reconnaissanceRef.current));
+  const commitReconnaissance = useCallback(next => {
+    const normalized = normalizeMosaicReconnaissance(next);
+    const serialized = JSON.stringify(normalized);
+    if (serialized === publishedReconnaissanceRef.current) return;
+    reconnaissanceRef.current = normalized;
+    publishedReconnaissanceRef.current = serialized;
+    setReconnaissance(normalized);
+    reconnaissanceCallbackRef.current?.(normalized);
+  }, []);
+  useEffect(() => {
+    const imported = normalizeMosaicReconnaissance(reconnaissanceProgress);
+    const serialized = JSON.stringify(imported);
+    if (serialized === publishedReconnaissanceRef.current) return;
+    reconnaissanceRef.current = imported;
+    publishedReconnaissanceRef.current = serialized;
+    setReconnaissance(imported);
+  }, [reconnaissanceProgress]);
   const [welcomeOpen, setWelcomeOpen] = useState(() => !guideRef.current.welcomeSeen);
   const [welcomeIndex, setWelcomeIndex] = useState(0);
   const commitGuide = useCallback(next => {
@@ -2349,6 +2382,7 @@ function MosaicCityHub({
   const [exhibitQuery, setExhibitQuery] = useState('');
   const [exhibitPage, setExhibitPage] = useState(0);
   const [selectedExhibitId, setSelectedExhibitId] = useState(null);
+  const [reconnaissanceTarget, setReconnaissanceTarget] = useState(null);
   const exhibitFocusRef = useRef(null);
   const exhibitFocusPending = useRef(false);
   const [residentPage, setResidentPage] = useState(0);
@@ -2631,6 +2665,10 @@ function MosaicCityHub({
   stateRef.current.obstacles = sceneObstacles;
 
   const residentCatalog = useMemo(() => getMosaicResidentCatalog(safeHeroes, unlockedHeroes, district.universe), [safeHeroes, unlockedHeroes, district.universe]);
+  const reconnaissanceDossier = useMemo(() => buildMosaicReconnaissanceDossier({
+    district, residents: residentCatalog, exhibits, anchor: zones.find(zone => zone.action === 'anchor')
+  }), [district, residentCatalog, exhibits, zones]);
+  const reconnaissanceObjective = getMosaicReconnaissanceObjective(reconnaissance, reconnaissanceDossier, lang);
   const residentGuide = currentDistrict === 'atrium' ? (safeHeroes.find(hero => hero.id === 'arca_mirelle') || BASE_HEROES_DB.find(hero => hero.id === 'arca_mirelle')) : null;
   const residentView = useMemo(() => getMosaicResidentView(residentCatalog, {
     group: residentGroups[currentDistrict] || 0, guideId: residentGuide?.id, query: residentQuery, page: residentPage
@@ -2729,11 +2767,26 @@ function MosaicCityHub({
     setResidentTarget(null);
   }, [residentTarget, currentDistrict, sessionPaused, runtimeError, cityMenuOpen, district, residentView.groupItems]);
 
+  useEffect(() => {
+    if (!reconnaissanceTarget) return;
+    if (reconnaissanceTarget.districtId !== currentDistrict || sessionPaused || runtimeError) {
+      setReconnaissanceTarget(null);
+      return;
+    }
+    if (cityMenuOpen) return;
+    const zone = zones.find(entry => entry.id === reconnaissanceTarget.id || entry.exhibitId === reconnaissanceTarget.id);
+    if (!zone) { setReconnaissanceTarget(null); return; }
+    stateRef.current.destination = getMosaicZoneAnchor(zone);
+    stateRef.current.pendingInteraction = { type: 'zone', id: zone.id };
+    setReconnaissanceTarget(null);
+  }, [reconnaissanceTarget, currentDistrict, sessionPaused, runtimeError, cityMenuOpen, zones]);
+
   const switchDistrict = useCallback((portal) => {
     if (sessionPausedRef.current) return;
     const target = districts[portal.target] || districts.atrium;
     const spawn = clampMosaicPosition(portal.spawn || target.spawn, target);
     setResidentTarget(null);
+    setReconnaissanceTarget(null);
     setResidentQuery(''); setResidentPage(0);
     setExhibitQuery(''); setExhibitPage(0); setSelectedExhibitId(null);
     currentDistrictRef.current = target.id;
@@ -2797,6 +2850,8 @@ function MosaicCityHub({
       switchDistrict(interaction.target);
       return;
     }
+    const reconnaissanceResult = advanceMosaicReconnaissance(reconnaissanceRef.current, reconnaissanceDossier, interaction, lang);
+    if (reconnaissanceResult.changed) commitReconnaissance(reconnaissanceResult.progress);
     const zone = interaction.type === 'zone' ? interaction.target : null;
     if (zone?.action === 'exhibit') {
       const entry = exhibits.find(item => item.id === zone.exhibitId);
@@ -2804,7 +2859,7 @@ function MosaicCityHub({
       setSelectedExhibitId(entry.id);
       exhibitFocusPending.current = true;
       setCityMenuOpen(true);
-      setHubLog(lang === 'fr' ? `Vitrine consultée : ${entry.name}. Aucun objet attribué.` : `Display inspected: ${entry.name}. No item granted.`);
+      setHubLog(reconnaissanceResult.changed ? reconnaissanceResult.feedback : (lang === 'fr' ? `Vitrine consultée : ${entry.name}. Aucun objet attribué.` : `Display inspected: ${entry.name}. No item granted.`));
       return;
     }
     if (zone?.action === 'mission') {
@@ -2830,7 +2885,7 @@ function MosaicCityHub({
     }
     if (zone?.action === 'anchor') {
       const stats = universeStageStats[zone.universe] || { total: 0, cleared: 0 };
-      setHubLog(lang === 'fr'
+      setHubLog(reconnaissanceResult.changed ? reconnaissanceResult.feedback : lang === 'fr'
         ? `Ancre locale: ${zone.universe}. Stabilite ${stats.cleared}/${stats.total || '?'}; la salle gagne en lumiere quand ses failles sont scellees.`
         : `Local anchor: ${zone.universe}. Stability ${stats.cleared}/${stats.total || '?'}; the room brightens as its rifts are sealed.`);
       sound.playSfx('click');
@@ -2859,11 +2914,11 @@ function MosaicCityHub({
       .slice(0, 2)
       .map(hero => hero.name);
     const stats = universeStageStats[target.universe] || { total: 0, cleared: 0 };
-    setHubLog(lang === 'fr'
+    setHubLog(reconnaissanceResult.changed ? reconnaissanceResult.feedback : lang === 'fr'
       ? `${target.name} synchronise sa Trame avec ${playerName}. ${compatible.length ? `Discussion compatible avec ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} faille(s) stabilisee(s).`
       : `${target.name} synchronizes their Thread with ${playerName}. ${compatible.length ? `Compatible discussion with ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} stabilized rift(s).`);
     sound.playSfx('confirm');
-  }, [district, exhibits, lang, onOpenCodex, onOpenMissions, onOpenService, openCityService, playerName, recordGuide, switchDistrict, universeStageStats, zones]);
+  }, [commitReconnaissance, district, exhibits, lang, onOpenCodex, onOpenMissions, onOpenService, openCityService, playerName, reconnaissanceDossier, recordGuide, switchDistrict, universeStageStats, zones]);
 
   useEffect(() => {
     const onKeyDown = event => {
@@ -3349,6 +3404,7 @@ function MosaicCityHub({
   }, []);
 
   const clearCityDestination = () => {
+    setReconnaissanceTarget(null);
     sceneInputsRef.current.clear();
     stateRef.current.keys = {};
     stateRef.current.destination = null;
@@ -3373,6 +3429,29 @@ function MosaicCityHub({
     setResidentTarget({ id: entry.hero.id, district: currentDistrict });
     setCityMenuOpen(false);
     setHubLog(lang === 'fr' ? `Approche de ${entry.hero.name}. La synchronisation se fait à proximité.` : `Approaching ${entry.hero.name}. Synchronization requires reaching them.`);
+  };
+  const acceptReconnaissance = () => {
+    if (sessionPausedRef.current || !reconnaissanceDossier) return;
+    const result = startMosaicReconnaissance(reconnaissanceRef.current, reconnaissanceDossier, lang);
+    if (result.changed) commitReconnaissance(result.progress);
+    if (result.feedback) setHubLog(result.feedback);
+  };
+  const approachReconnaissanceObjective = () => {
+    if (sessionPausedRef.current || !reconnaissanceDossier) return;
+    const objective = getMosaicReconnaissanceObjective(reconnaissanceRef.current, reconnaissanceDossier, lang);
+    const targetId = objective?.targetIds?.[0];
+    if (!targetId) return;
+    if (objective.targetType === 'npc') {
+      const entry = getMosaicResidentView(residentCatalog, { query: targetId, guideId: residentGuide?.id }).items.find(item => item.hero.id === targetId);
+      if (entry) approachResident(entry);
+      return;
+    }
+    clearCityDestination();
+    const exhibitIndex = exhibits.findIndex(entry => `${currentDistrict}::exhibit::${entry.id}` === targetId);
+    if (exhibitIndex >= 0) { setExhibitQuery(''); setExhibitPage(Math.floor(exhibitIndex / 3)); }
+    setReconnaissanceTarget({ districtId: currentDistrict, id: targetId });
+    setCityMenuOpen(false);
+    setHubLog(objective.text);
   };
   const recoverCity = () => {
     // Reset any canvas transforms/save stack left by an interrupted draw.
@@ -3405,8 +3484,22 @@ function MosaicCityHub({
       </ImmersiveDrawer>
       <span className="gameplay-live-status" id="mosaic-city-controls-help">{lang === 'fr' ? 'ZQSD / WASD ou flèches : marcher. E : interagir. Terminal : destinations, journal et aide.' : 'WASD or arrows: walk. E: interact. Terminal: destinations, journal and help.'}</span>
       <div className="mosaic-world-hud">
-        <div className="mosaic-location"><span>{lang === 'fr' ? 'CITÉ-MOSAÏQUE' : 'MOSAIC CITY'}</span><strong>{district.label}</strong><small>{currentZoneData?.label || 'Nexus'}</small></div>
-        <button type="button" className="btn-retro" onClick={() => setCityMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'TERMINAL · JOURNAL' : 'TERMINAL · JOURNAL'}</button>
+        <div className="mosaic-world-column">
+          <div className="mosaic-location"><span>{lang === 'fr' ? 'CITÉ-MOSAÏQUE' : 'MOSAIC CITY'}</span><strong>{district.label}</strong><small>{currentZoneData?.label || 'Nexus'}</small></div>
+          {welcomeOpen && (
+            <section className="mosaic-city-guide" style={{ gridTemplateColumns: 'minmax(0, 1fr) auto' }} aria-label={MOSAIC_WELCOME.title[welcomeLanguage]}>
+              <div aria-live="polite"><strong>{MOSAIC_WELCOME.title[welcomeLanguage]}</strong><p>{MOSAIC_WELCOME.lines[welcomeLanguage][welcomeIndex]}</p></div>
+              <div style={{ display: 'grid', gap: 6 }}>
+                <button type="button" className="mosaic-city-guide-restore" onClick={advanceWelcome}>{welcomeIndex + 1 === MOSAIC_WELCOME.lines[welcomeLanguage].length ? (lang === 'fr' ? 'Explorer' : 'Explore') : (lang === 'fr' ? 'Suite' : 'Next')}</button>
+                <button type="button" className="mosaic-city-guide-restore" onClick={() => setWelcomeOpen(false)}>{lang === 'fr' ? 'Plus tard' : 'Later'}</button>
+              </div>
+            </section>
+          )}
+          {!welcomeOpen && guideState.status === 'active' ? (
+            <MosaicGuidePanel lang={lang} title={guideCopy.title} body={guideCopy.body} step={guideStep} onPause={() => { cityTerminalButtonRef.current?.focus({ preventScroll: true }); controlGuide('pause'); }} onOpenDetails={openGuideDetails} />
+          ) : null}
+        </div>
+        <button ref={cityTerminalButtonRef} type="button" className="btn-retro" onClick={() => setCityMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'TERMINAL · JOURNAL' : 'TERMINAL · JOURNAL'}</button>
       </div>
       <ImmersiveDrawer open={cityMenuOpen} onClose={closeCityMenu} lang={lang} title={lang === 'fr' ? 'Terminal de poche A.R.C.A.' : 'A.R.C.A. pocket terminal'}>
       <div className="nexus-play-copy">
@@ -3424,6 +3517,26 @@ function MosaicCityHub({
           <span>{district.label}</span>
           <span>{currentZoneData?.label || 'Nexus'}</span>
         </div>
+        <section className="mosaic-reconnaissance" aria-label={lang === 'fr' ? 'Reconnaissance du quartier' : 'District reconnaissance'}>
+          <h3>{lang === 'fr' ? 'RAPPORT DE RECONNAISSANCE' : 'RECONNAISSANCE REPORT'}</h3>
+          {reconnaissanceDossier ? <>
+            <strong>{district.label}</strong>
+            <p>{lang === 'fr' ? 'Écoute un habitant du quartier, examine une relique dans une vitrine, puis transmets tes observations à l’ancre locale.' : 'Listen to a district resident, examine a relic at a display, then transmit your observations at the local anchor.'}</p>
+            <ol>
+              <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.residentId)}>{lang === 'fr' ? 'Rencontrer un habitant' : 'Meet a resident'}{reconnaissance.dossiers[currentDistrict]?.residentId && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
+              <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.exhibitId)}>{lang === 'fr' ? 'Examiner une relique sur place' : 'Inspect a relic in person'}{reconnaissance.dossiers[currentDistrict]?.exhibitId && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
+              <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.completed)}>{lang === 'fr' ? 'Transmettre à l’ancre' : 'Report at the anchor'}{reconnaissance.dossiers[currentDistrict]?.completed && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
+            </ol>
+            <p role="status" data-reconnaissance-objective>{reconnaissanceObjective?.text}</p>
+            {!reconnaissance.dossiers[currentDistrict]?.completed && (reconnaissance.activeDistrictId === currentDistrict ?
+              <button type="button" className="btn-retro" data-reconnaissance="approach" onClick={approachReconnaissanceObjective}>{lang === 'fr' ? 'REJOINDRE L’OBJECTIF' : 'APPROACH OBJECTIVE'}</button> :
+              <button type="button" className="btn-retro" data-reconnaissance="start" onClick={acceptReconnaissance}>{reconnaissance.dossiers[currentDistrict] ? (lang === 'fr' ? 'REPRENDRE CE DOSSIER' : 'RESUME THIS REPORT') : (lang === 'fr' ? 'PRENDRE LE DOSSIER' : 'ACCEPT REPORT')}</button>)}
+          </> : <p>{lang === 'fr' ? 'Entre dans un quartier disposant d’habitants et de vitrines pour prendre un dossier. La Galerie des Trames présente tes destinations disponibles.' : 'Enter a district with residents and displays to accept a report. The Thread Gallery lists your available destinations.'}</p>}
+          {reconnaissance.activeDistrictId && reconnaissance.activeDistrictId !== currentDistrict && <p>{districts[reconnaissance.activeDistrictId]
+            ? (lang === 'fr' ? `Dossier en cours : ${districts[reconnaissance.activeDistrictId].label}. Tes étapes restent enregistrées.` : `Current report: ${districts[reconnaissance.activeDistrictId].label}. Your steps are saved.`)
+            : (lang === 'fr' ? 'Le quartier du dossier en cours est indisponible. Tes étapes sont conservées pour son retour.' : 'The current report’s district is unavailable. Your steps are preserved for its return.')}</p>}
+          <small>{Object.values(reconnaissance.dossiers).filter(entry => entry.completed).length} {lang === 'fr' ? 'rapport(s) transmis · progression enregistrée' : 'report(s) transmitted · progress saved'}</small>
+        </section>
         <details className="mosaic-resident-directory">
           <summary>{lang === 'fr' ? 'Habitants disponibles' : 'Available residents'} · {residentView.total}</summary>
           <label><span>{lang === 'fr' ? 'Rechercher un habitant' : 'Find a resident'}</span>
@@ -3517,7 +3630,7 @@ function MosaicCityHub({
             {nearbyLabel ? `${lang === 'fr' ? 'INTERAGIR' : 'INTERACT'} - ${nearbyLabel}` : (lang === 'fr' ? 'APPROCHE UNE SIGNATURE' : 'APPROACH A SIGNATURE')}
           </button>
         </div>
-        <section className="mosaic-terminal-guide"><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p>
+        <section ref={guideDetailsRef} tabIndex={-1} className="mosaic-terminal-guide" aria-label={lang === 'fr' ? 'Guide complet de la Cité' : 'Complete City guide'}><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p>
           {(guideState.status === 'paused' || guideState.status === 'skipped') && <button type="button" className="btn-retro" onClick={() => { controlGuide('resume'); setCityMenuOpen(false); }}>{lang === 'fr' ? 'REPRENDRE LE GUIDE' : 'RESUME GUIDE'}</button>}
         </section>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -3528,22 +3641,6 @@ function MosaicCityHub({
       </div>
       </ImmersiveDrawer>
       <div className="mosaic-rpg-stage">
-        {welcomeOpen && (
-          <section className="mosaic-city-guide" style={{ gridTemplateColumns: 'minmax(0, 1fr) auto' }} aria-label={MOSAIC_WELCOME.title[welcomeLanguage]}>
-            <div aria-live="polite"><strong>{MOSAIC_WELCOME.title[welcomeLanguage]}</strong><p>{MOSAIC_WELCOME.lines[welcomeLanguage][welcomeIndex]}</p></div>
-            <div style={{ display: 'grid', gap: 6 }}>
-              <button type="button" className="mosaic-city-guide-restore" onClick={advanceWelcome}>{welcomeIndex + 1 === MOSAIC_WELCOME.lines[welcomeLanguage].length ? (lang === 'fr' ? 'Explorer' : 'Explore') : (lang === 'fr' ? 'Suite' : 'Next')}</button>
-              <button type="button" className="mosaic-city-guide-restore" onClick={() => setWelcomeOpen(false)}>{lang === 'fr' ? 'Plus tard' : 'Later'}</button>
-            </div>
-          </section>
-        )}
-        {!welcomeOpen && guideState.status === 'active' ? (
-          <section className="mosaic-city-guide" aria-label={lang === 'fr' ? 'Premiers pas dans la Cite' : 'First steps in the City'}>
-            <div className="mosaic-city-guide-progress" aria-label={lang === 'fr' ? 'Progression du guide' : 'Guide progress'}>{['move', 'interact', 'objective'].map((step, index) => <span key={step} className={guideStep === 'done' || index < ['move', 'interact', 'objective'].indexOf(guideStep) ? 'is-done' : guideStep === step ? 'is-current' : ''}>{index + 1}</span>)}</div>
-            <div aria-live="polite"><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p></div>
-            {guideState.status === 'active' && <button type="button" onClick={() => controlGuide('pause')}>{lang === 'fr' ? 'Pause guide' : 'Pause guide'}</button>}
-          </section>
-        ) : null}
         <button type="button" className="mosaic-world-log" onClick={openJournal} aria-haspopup="dialog" aria-label={lang === 'fr' ? 'Lire la transmission complète' : 'Read full transmission'}>
           <strong>{lang === 'fr' ? 'TRANSMISSION · LIRE' : 'TRANSMISSION · READ'}</strong>
           <span aria-hidden="true">{sceneJournalPreview(hubLog)}</span>
@@ -3596,6 +3693,7 @@ function ExtinctionRoyale({
   const playableHeroes = useMemo(() => getExtinctionRoster(safeHeroes, unlockedHeroes), [safeHeroes, unlockedHeroes]);
   const [selectedHeroId, setSelectedHeroId] = useState(() => playableHeroes[0]?.id || '');
   const [runMode, setRunMode] = useState('extraction');
+  const [relayEnabled, setRelayEnabled] = useState(false);
   const [runSnapshot, setRunSnapshot] = useState({
     phase: 'ready',
     hp: 100,
@@ -3729,13 +3827,15 @@ function ExtinctionRoyale({
       signatureCharge: state.protocols?.charge || 0,
       signatureCooldowns: { ...state.protocols?.cooldowns },
       signatureGuard: (state.protocols?.guard || 0) > 0 || (state.protocols?.barricade || 0) > 0,
+      relay: getExtinctionRelayStatus(state.relayOperation, `beacon-${Math.min(state.wave || 1, EXTINCTION_BEACON_TARGET)}`, lang),
+      relaySummary: state.relaySummary || null,
       nearbyLoot: nearbyLoot?.label || null,
       objectiveText: getRunObjectiveText(state),
       statusText: state.statusText || null,
       result: state.result || null,
       rewards: state.rewards || null
     };
-  }, [getRunObjectiveText]);
+  }, [getRunObjectiveText, lang]);
 
   useEffect(() => {
     fpsHandsRef.current = null;
@@ -3805,6 +3905,8 @@ function ExtinctionRoyale({
       ...stateRef.current,
       phase: 'ready',
       protocols: createExtinctionProtocolState(null, null),
+      relayOperation: null,
+      relaySummary: null,
       hp: 100,
       maxHp: 100,
       ammo: 24,
@@ -3941,10 +4043,11 @@ function ExtinctionRoyale({
     next.heroId = selectedHero.id;
     next.heroCategory = selectedHero.category;
     next.protocols = createExtinctionProtocolState(signatureProfile, next.runId);
+    next.relayOperation = createExtinctionRelayOperation({ enabled: relayEnabled, runId: next.runId, mode: runMode });
     stateRef.current = next;
     setRunSnapshot(buildRunSnapshot(next));
     sound.playSfx('levelup');
-  }, [buildEnemies, buildLoot, buildRunSnapshot, lang, objectives, onSessionStart, roleProfile, runMode, selectedHero, signatureProfile, universeFragments, weaponProfile]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, lang, objectives, onSessionStart, relayEnabled, roleProfile, runMode, selectedHero, signatureProfile, universeFragments, weaponProfile]);
 
   const finishRun = useCallback((result) => {
     const state = stateRef.current;
@@ -3968,6 +4071,10 @@ function ExtinctionRoyale({
         : (lang === 'fr' ? 'Repli d Ancre: donnees conservees' : 'Anchor retreat: contact data preserved')
     };
     state.phase = 'ended';
+    state.relaySummary = state.relayOperation ? {
+      secured: Object.values(state.relayOperation.beacons).filter(entry => entry.status === 'secured').length
+    } : null;
+    state.relayOperation = null;
     if (state.protocols) { state.protocols.projectiles = []; state.protocols.effects = []; }
     state.result = result;
     state.rewards = rewards;
@@ -4107,6 +4214,7 @@ function ExtinctionRoyale({
         state.vy = state.vy * 0.78 + ay;
         state.px = Math.max(-7.5, Math.min(7.5, state.px + state.vx));
         state.py = Math.max(-1.4, Math.min(28, state.py + state.vy));
+        state.relayOperation = tickExtinctionRelayOperation(state.relayOperation, state);
 
         state.enemies = state.enemies.map((enemy, index) => {
           if (enemy.hp <= 0) return enemy;
@@ -4581,6 +4689,13 @@ function ExtinctionRoyale({
       state.statusText = lang === 'fr' ? 'Aucun objet à portée.' : 'No nearby item.';
       return;
     }
+    const relay = interactExtinctionRelayOperation(state.relayOperation, state, item, { lang });
+    state.relayOperation = relay.operation;
+    if (relay.handled && !relay.allowCollect) {
+      state.statusText = relay.feedback;
+      setRunSnapshot(buildRunSnapshot(state));
+      return;
+    }
     item.used = true;
     if (item.type === 'normal') {
       if (item.effect === 'heal') {
@@ -4736,6 +4851,7 @@ function ExtinctionRoyale({
     if (canvasRef.current) canvasRef.current.setAttribute('width', String(canvasRef.current.width));
     if (stateRef.current.phase === 'ended') { setRuntimeError(null); setRenderAttempt(value => value + 1); return; }
     stateRef.current.phase = 'ready'; stateRef.current.rewards = null; stateRef.current.result = null;
+    stateRef.current.relayOperation = null; stateRef.current.relaySummary = null;
     setRuntimeError(null); setRunSnapshot(buildRunSnapshot(stateRef.current));
     setRenderAttempt(value => value + 1); onSessionEnd?.({ reason: 'error' });
   };
@@ -4753,6 +4869,7 @@ function ExtinctionRoyale({
       </ImmersiveDrawer>
       <ImmersiveDrawer open={intelOpen} onClose={() => setIntelOpen(false)} lang={lang} title={lang === 'fr' ? 'Directive et commandes' : 'Directive and controls'}>
         <p>{objectives[runMode]}</p>
+        {runSnapshot.relay?.status !== 'disabled' && runSnapshot.relay && <p>{lang === 'fr' ? 'Relais sous pression : active chaque balise avec E / LOOT, reste dans son périmètre pendant trois secondes actives, puis utilise E / LOOT pour la stabiliser. Sortir du périmètre suspend la synchronisation.' : 'Relays under pressure: activate each beacon with E / LOOT, stay inside its perimeter for three active seconds, then use E / LOOT to secure it. Leaving the perimeter suspends synchronization.'}</p>}
         <p>{lang === 'fr' ? 'Visuel FPS : les planches personnelles disponibles sont liées à leur propriétaire. Les armes ramassées et les vues manquantes utilisent un schéma de secours, pas une illustration certifiée du personnage.' : 'FPS visuals: available personal sheets are bound to their owner. Pickup weapons and missing views use a fallback schematic, not certified character artwork.'}</p>
         <p>{runSnapshot.statusText}</p>
         <p>{lang === 'fr' ? 'ZQSD/WASD : déplacement. Flèches gauche/droite : tourner. Glisser sur la vue : viser. Toucher la vue ou Espace : tirer. R : recharger. E : récupérer un objet. Maj : capacité de rôle.' : 'WASD: movement. Left/right arrows: turn. Drag the view: aim. Tap the view or Space: fire. R: reload. E: collect an item. Shift: role ability.'}</p>
@@ -4774,6 +4891,10 @@ function ExtinctionRoyale({
               ['infestation', 'Infestation', 'Infestation'], ['hunt', 'Chasse au Champion', 'Champion Hunt']
             ].map(([id, fr, en]) => <button key={id} type="button" aria-pressed={runMode === id} onClick={() => setRunMode(id)}><strong>{lang === 'fr' ? fr : en}</strong><small>{objectives[id]}</small></button>)}
           </div>
+          {runMode === 'extraction' && <label className="extinction-relay-option">
+            <input type="checkbox" data-relay-operation checked={relayEnabled} disabled={runActive || runEnded} onChange={event => setRelayEnabled(event.target.checked)} />
+            <span><strong>{lang === 'fr' ? 'RELAIS SOUS PRESSION' : 'RELAYS UNDER PRESSURE'}</strong><small>{lang === 'fr' ? 'Option de terrain : active chaque balise, défends son périmètre trois secondes, puis stabilise-la. Les récompenses restent celles de l’Extraction.' : 'Field operation: activate each beacon, defend its perimeter for three seconds, then secure it. Extraction rewards apply.'}</small></span>
+          </label>}
           <div className="extinction-pilot-selection">
             <canvas width="150" height="150" aria-hidden="true" ref={canvas => { if (!canvas || !selectedHero) return; const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, 150, 150); drawPixelSprite(ctx, 75, 110, selectedHero, 0, 1, 104, 'nexus'); }} />
             <div><strong>{selectedHero?.name}</strong><span>{selectedHero?.universe}</span><small>{career.runs || 0} {lang === 'fr' ? 'runs archivées' : 'archived runs'} · {career.wins || 0} {lang === 'fr' ? 'victoires' : 'wins'} · {career.xp || 0} XP Extinction</small></div>
@@ -4806,6 +4927,11 @@ function ExtinctionRoyale({
             <button type="button" className="extinction-intel-button" onClick={() => setIntelOpen(true)} aria-haspopup="dialog" disabled={sessionPaused || runEnded}>{lang === 'fr' ? 'DIRECTIVE · COMMANDES' : 'DIRECTIVE · CONTROLS'}</button>
             <span>{runSnapshot.objectiveText}</span>
             {runSnapshot.statusText && <small>{runSnapshot.statusText}</small>}
+            {runActive && runSnapshot.relay?.status !== 'disabled' && runSnapshot.relay && <div className="extinction-relay-status" data-relay-status={runSnapshot.relay.status}>
+              <strong>{lang === 'fr' ? 'RELAIS' : 'RELAY'} · {Math.round(runSnapshot.relay.progress * 100)}%</strong>
+              <progress value={runSnapshot.relay.ticks} max={runSnapshot.relay.requiredTicks} aria-label={lang === 'fr' ? 'Synchronisation de la balise' : 'Beacon synchronization'} />
+              <span>{runSnapshot.relay.shortText}</span>
+            </div>}
           </div>
         )}
         {runSnapshot.rewards && (
@@ -4813,6 +4939,7 @@ function ExtinctionRoyale({
             <strong>{runSnapshot.rewards.title}</strong>
             <span>+{runSnapshot.rewards.gold} {lang === 'fr' ? 'Or' : 'Gold'} / +{runSnapshot.rewards.shards} {lang === 'fr' ? 'Fragments' : 'Shards'} / +{runSnapshot.rewards.modeXp} XP {lang === 'fr' ? 'Extinction' : 'Extinction'}</span>
             <small>{lang === 'fr' ? 'Récompenses transférées. Ce bilan reste ouvert jusqu’à ta validation.' : 'Rewards transferred. Results stay open until you continue.'}</small>
+            {runSnapshot.relaySummary && <small>{lang === 'fr' ? 'Relais sous pression' : 'Relays under pressure'} · {runSnapshot.relaySummary.secured}/{EXTINCTION_BEACON_TARGET} {lang === 'fr' ? 'balises synchronisées' : 'beacons synchronized'}</small>}
             <button ref={continueRef} type="button" className="btn-retro" onClick={acknowledgeRun}>{lang === 'fr' ? 'CONTINUER' : 'CONTINUE'}</button>
           </div>
         )}
@@ -10188,6 +10315,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             disabledGearIds={disabledAssets.gear || []}
             savedLocation={activityProgress.mosaicLocation}
             onLocationChange={next => setActivityProgress(previous => JSON.stringify(previous.mosaicLocation) === JSON.stringify(next) ? previous : { ...previous, mosaicLocation: next })}
+            reconnaissanceProgress={activityProgress.mosaicReconnaissance}
+            onReconnaissanceProgress={next => setActivityProgress(previous => ({ ...previous, mosaicReconnaissance: next }))}
             onOpenService={service => {
               finishNexusSession({ reason: 'transition' });
               if (service === 'arcs' || service === 'journal') {

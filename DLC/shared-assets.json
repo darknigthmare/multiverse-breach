@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
   "classificationScope": "Organizational affiliation from directory names and explicit source references; not proof of exclusive usage or artwork validity.",
-  "sharedDependencyCoverage": "Explicit static references and directory affiliations only; common engine/UI dependencies are not exhaustively inferred.",
+  "sharedDependencyCoverage": "Explicit static references, common UI literals and directory affiliations only; dynamic UI and common engine dependencies are not exhaustively inferred.",
   "distribution": {
     "dlcManifests": 505,
     "trackedPublicPaths": 14163,
-    "assignedToDlc": 8187,
-    "unclaimedByDlc": 5976,
+    "assignedToDlc": 8186,
+    "unclaimedByDlc": 5977,
     "unclaimedReasons": {
-      "base-game": 647,
+      "base-game": 656,
       "global-final-boss-directory-not-the-matrix-dlc": 1,
       "historical-bucket-guitar-echo-identity-not-buckethead": 9,
       "historical-directory-without-current-universe-alias": 42,
-      "multiple-universe-references": 15,
+      "multiple-universe-references": 16,
       "original-campaign": 2724,
-      "shared-or-unclassified": 2537,
+      "shared-or-unclassified": 2528,
       "unregistered-runtime-key": 1
     }
   },
@@ -113,10 +113,12 @@
       "reason": "multiple-universe-references",
       "basis": [
         "DLC/Halo/data/renderer.js",
-        "DLC/Predators/data/renderer.js"
+        "DLC/Predators/data/renderer.js",
+        "src/components/IntroSequence.jsx#common-ui"
       ],
       "referencedBy": [
         "Halo",
+        "Nexus de Convergence",
         "Predators"
       ]
     },
@@ -184,6 +186,7 @@
       "sourcePath": "public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
       "reason": "base-game",
       "basis": [
+        "src/components/IntroSequence.jsx#common-ui",
         "exact-universe-directory:nexus-de-convergence"
       ],
       "referencedBy": [
@@ -206,6 +209,7 @@
       "sourcePath": "public/backgrounds/lore-stages/nexus-de-convergence/tactics.webp",
       "reason": "base-game",
       "basis": [
+        "src/components/IntroSequence.jsx#common-ui",
         "exact-universe-directory:nexus-de-convergence"
       ],
       "referencedBy": [
@@ -254,7 +258,14 @@
     {
       "publicPath": "/backgrounds/multiverse-breach-title-arca-v1.png",
       "sourcePath": "public/backgrounds/multiverse-breach-title-arca-v1.png",
-      "reason": "shared-or-unclassified"
+      "reason": "base-game",
+      "basis": [
+        "src/components/IntroSequence.jsx#common-ui",
+        "src/components/PortalScreen.jsx#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence"
+      ]
     },
     {
       "publicPath": "/backgrounds/predator-rpg-openai.png",
@@ -312,6 +323,19 @@
       "referencedBy": [
         "Dungeon Meshi",
         "Rosario + Vampire"
+      ]
+    },
+    {
+      "publicPath": "/backgrounds/stargate-rpg-openai.png",
+      "sourcePath": "public/backgrounds/stargate-rpg-openai.png",
+      "reason": "multiple-universe-references",
+      "basis": [
+        "DLC/Stargate/data/renderer.js",
+        "src/components/IntroSequence.jsx#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence",
+        "Stargate"
       ]
     },
     {
@@ -33640,7 +33664,13 @@
     {
       "publicPath": "/images/campaign-oc/chapter-01-atrium-v1.png",
       "sourcePath": "public/images/campaign-oc/chapter-01-atrium-v1.png",
-      "reason": "shared-or-unclassified"
+      "reason": "base-game",
+      "basis": [
+        "src/components/IntroSequence.jsx#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence"
+      ]
     },
     {
       "publicPath": "/images/campaign-oc/chapter-02-origin-forge-v1.png",
@@ -33700,32 +33730,70 @@
     {
       "publicPath": "/images/missions/campaign-oc.webp",
       "sourcePath": "public/images/missions/campaign-oc.webp",
-      "reason": "shared-or-unclassified"
+      "reason": "base-game",
+      "basis": [
+        "src/components/HubScreen.jsx#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence"
+      ]
     },
     {
       "publicPath": "/images/missions/faction-arcs.webp",
       "sourcePath": "public/images/missions/faction-arcs.webp",
-      "reason": "shared-or-unclassified"
+      "reason": "base-game",
+      "basis": [
+        "src/components/HubScreen.jsx#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence"
+      ]
     },
     {
       "publicPath": "/images/missions/fusion-rifts.webp",
       "sourcePath": "public/images/missions/fusion-rifts.webp",
-      "reason": "shared-or-unclassified"
+      "reason": "base-game",
+      "basis": [
+        "src/App.jsx#common-ui",
+        "src/components/HubScreen.jsx#common-ui",
+        "src/components/PortalScreen.jsx#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence"
+      ]
     },
     {
       "publicPath": "/images/missions/personal-arcs.webp",
       "sourcePath": "public/images/missions/personal-arcs.webp",
-      "reason": "shared-or-unclassified"
+      "reason": "base-game",
+      "basis": [
+        "src/components/HubScreen.jsx#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence"
+      ]
     },
     {
       "publicPath": "/images/missions/trio-arcs.webp",
       "sourcePath": "public/images/missions/trio-arcs.webp",
-      "reason": "shared-or-unclassified"
+      "reason": "base-game",
+      "basis": [
+        "src/components/HubScreen.jsx#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence"
+      ]
     },
     {
       "publicPath": "/images/missions/universe-arcs.webp",
       "sourcePath": "public/images/missions/universe-arcs.webp",
-      "reason": "shared-or-unclassified"
+      "reason": "base-game",
+      "basis": [
+        "src/components/HubScreen.jsx#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence"
+      ]
     },
     {
       "publicPath": "/images/oc-worlds/aegea_moirai/backdrop.svg",
@@ -37690,7 +37758,13 @@
     {
       "publicPath": "/images/oc-worlds/v2/neon_requiem/backdrop.png",
       "sourcePath": "public/images/oc-worlds/v2/neon_requiem/backdrop.png",
-      "reason": "shared-or-unclassified"
+      "reason": "base-game",
+      "basis": [
+        "src/components/HubScreen.jsx#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence"
+      ]
     },
     {
       "publicPath": "/images/oc-worlds/v2/neon_requiem/heroes/imani_quell.png",
