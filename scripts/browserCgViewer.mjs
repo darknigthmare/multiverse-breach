@@ -123,19 +123,29 @@ try {
         await page.screenshot({ path: resolve(evidence, `${name}-comparison.png`) });
         const fullscreen = page.locator('[data-cg-fullscreen]');
         if (viewport.width === 1365 && lang === 'fr') {
+          record.nativeFullscreenPhase = 'entering';
           await fullscreen.click();
-          await page.waitForFunction(() => document.fullscreenElement === document.querySelector('.cg-lightbox'));
+          await page.waitForFunction(() => document.fullscreenElement === document.querySelector('.cg-lightbox')
+            && document.querySelector('[data-cg-fullscreen]').getAttribute('aria-pressed') === 'true');
           assert.equal(await fullscreen.getAttribute('aria-pressed'), 'true');
-          await fullscreen.click(); await page.waitForFunction(() => !document.fullscreenElement);
-          assert.equal(await fullscreen.getAttribute('aria-pressed'), 'false');
+          record.nativeFullscreenPhase = 'exiting';
           await fullscreen.click();
-          await page.waitForFunction(() => Boolean(document.fullscreenElement));
+          await page.waitForFunction(() => !document.fullscreenElement
+            && document.querySelector('[data-cg-fullscreen]').getAttribute('aria-pressed') === 'false');
+          assert.equal(await fullscreen.getAttribute('aria-pressed'), 'false');
+          record.nativeFullscreenPhase = 'closing-while-active';
+          await fullscreen.click();
+          await page.waitForFunction(() => document.fullscreenElement === document.querySelector('.cg-lightbox')
+            && document.querySelector('[data-cg-fullscreen]').getAttribute('aria-pressed') === 'true');
           await page.getByRole('button', { name: 'FERMER', exact: true }).click();
-          await page.waitForFunction(() => !document.fullscreenElement && !document.querySelector('.cg-lightbox'));
+          await page.waitForFunction(() => !document.fullscreenElement && !document.querySelector('.cg-lightbox')
+            && !document.querySelector('#root').inert
+            && document.activeElement === document.querySelector('.cg-gallery__stage-open'));
           assert.equal(await trigger.evaluate(node => node === document.activeElement), true);
           assert.equal(await page.locator('#root').evaluate(node => node.inert), false);
           await trigger.click(); await dialog.waitFor();
           record.nativeFullscreen = 'entered-exited-and-closed-while-active';
+          record.nativeFullscreenPhase = 'passed';
         }
         await dialog.evaluate(node => { node.requestFullscreen = () => Promise.reject(new Error('QA denied fullscreen')); });
         await fullscreen.click();
@@ -159,7 +169,7 @@ try {
         assert.deepEqual(errors, []); assert.deepEqual(missing, []);
         record.status = 'passed';
       } catch (error) {
-        record.status = 'failed'; record.error = error.message;
+        record.status = 'failed'; record.error = error.stack || error.message;
         await page.screenshot({ path: resolve(evidence, `${name}-failed.png`) });
       } finally { await context.close(); }
     }

@@ -31,6 +31,48 @@ def read(page):
       ammo:s.ammo,reserveAmmo:s.reserveAmmo,enemies:s.enemies,protocols:s.protocols};}''')
 
 
+def reading_scale(page, selector, out, name):
+    """Measure actual terminal copy and labels after root layout has settled.
+
+    The City clock is paused while a terminal is open. Finish only the CSS
+    transitions on the measured text, so a font-size transition cannot be
+    mistaken for the final preference or require an unfrozen simulation clock.
+    """
+    measurements = {}
+    text_selector = 'p, h3, h4, summary, strong, li, button, .mosaic-dialogue-heading > span, nav > span'
+    for label, scale in [('normal', 1), ('large', 1.5)]:
+        page.evaluate('scale=>document.documentElement.style.setProperty("--game-text-scale",String(scale))', scale)
+        page.wait_for_function('size=>parseFloat(getComputedStyle(document.documentElement).fontSize)===size', arg=16*scale)
+        measurements[label] = page.locator(selector).evaluate('''(panel, textSelector)=>{
+          const nodes=Array.from(panel.querySelectorAll(textSelector));
+          // Force layout before finishing the transitions started by this change.
+          panel.getBoundingClientRect();
+          for(const node of nodes) {
+            node.getBoundingClientRect();
+            for(const animation of node.getAnimations()) {
+              if(animation instanceof CSSTransition) animation.finish();
+            }
+          }
+          return {
+            root:parseFloat(getComputedStyle(document.documentElement).fontSize),
+            scale:document.documentElement.style.getPropertyValue('--game-text-scale'),
+            text:nodes.map(node=>({tag:node.tagName.toLowerCase(),
+              label:node.textContent.trim().slice(0,80),
+              font:parseFloat(getComputedStyle(node).fontSize)}))
+          };
+        }''', text_selector)
+    normal, large = measurements['normal']['text'], measurements['large']['text']
+    measurements['ratios'] = [b['font']/a['font'] if a['font']>0 else 0 for a,b in zip(normal,large)]
+    (out/f'{name}-reading-scale.json').write_text(json.dumps(measurements,ensure_ascii=False,indent=2))
+    check(normal and len(normal)==len(large),'reading scale lost terminal text or labels')
+    check(any(item['tag']=='p' for item in normal),'reading scale did not measure a paragraph')
+    check(any(item['tag'] in ('button','summary') for item in normal),'reading scale did not measure a control label')
+    for a,b,ratio in zip(normal,large,measurements['ratios']):
+        check(a['tag']==b['tag'] and a['label']==b['label'],'reading preference changed terminal content')
+        check(abs(ratio-1.5)<.01,f'{a["tag"]} {a["label"]!r} does not scale 100% to 150%: {a["font"]} -> {b["font"]}')
+    return measurements
+
+
 def conversation(page, args, lang, out, name):
     page.clock.install(time=CLOCK_EPOCH);page.clock.pause_at(CLOCK_START)
     load(page,args,'city',lang)
@@ -72,13 +114,18 @@ def conversation(page, args, lang, out, name):
         page.keyboard.press('d');page.keyboard.press('e');page.clock.run_for(240)
         check(page.evaluate('window.__sceneQA.snapshot()')==before,'conversation advanced the City or forwarded gameplay input')
     check(not page.evaluate('window.__sceneQA.reconnaissanceSaves.length'),'reading an unaccepted conversation granted proof')
-    page.screenshot(path=str(out/f'{name}-conversation.png'))
+    typography=reading_scale(page,'[data-city-conversation="arca_tessera"]',out,name)
+    check(page.evaluate('window.__sceneQA.snapshot()')==before,'reading preference advanced the City')
+    page.mouse.move(0,0)
+    page.screenshot(path=str(out/f'{name}-conversation.png'),animations='disabled')
+    panel.locator('[data-dialogue-record="risk"]').scroll_into_view_if_needed()
+    page.screenshot(path=str(out/f'{name}-reading.png'),animations='disabled')
     panel.locator('[data-dialogue-return]').click();expect(page.get_by_role('dialog')).to_have_count(0)
     expect(terminal).to_be_focused()
     page.clock.run_for(32)
     check(not page.evaluate('Object.values(window.__sceneQA.snapshot().keys).some(Boolean)'),'conversation left movement held')
     check(not page.evaluate('window.__sceneQA.reports.length'),'conversation produced rewards')
-    return {'resident':'arca_tessera','sourceTopics':4,'nativeWalk':motion,'sourceParagraphsVerified':True,'preparedOwnership':True}
+    return {'resident':'arca_tessera','sourceTopics':4,'nativeWalk':motion,'sourceParagraphsVerified':True,'preparedOwnership':True,'readingScale':typography}
 
 
 def ledger(page,args,lang,out,name):
@@ -92,8 +139,9 @@ def ledger(page,args,lang,out,name):
     expect(entry.locator('li')).to_have_count(2)
     check('2/2' in entry.inner_text(),'ledger lost distinct evidence count')
     check(len(set(entry.locator('li').all_inner_texts()))==2,'ledger duplicated the same relic')
-    page.screenshot(path=str(out/f'{name}-ledger.png'))
-    return record | {'ledgerProofs':2,'sourceSaveUnchanged':True}
+    typography=reading_scale(page,'.mosaic-evidence-ledger',out,name)
+    page.screenshot(path=str(out/f'{name}-ledger.png'),animations='disabled')
+    return record | {'ledgerProofs':2,'sourceSaveUnchanged':True,'readingScale':typography}
 
 
 def fps(page,args,identity,lang,out,name):

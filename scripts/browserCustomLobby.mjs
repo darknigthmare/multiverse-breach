@@ -169,26 +169,44 @@ try {
       await field('STAGE').selectOption('qa-archive');
       await expectPreset(page, { stageArchiveId: 'qa-archive' });
       record.handoffs = [];
+      const expectedSettings = { stageArchiveId: 'qa-archive' };
       for (const [mode, index] of [['Tactics', 1], ['Smash', 2], ['Fighter', 3], ['RPG', 0]]) {
         await tabs.nth(0).click(); await root.locator('.custom-mode-options button').nth(index).click();
+        Object.assign(expectedSettings, { mode }, mode === 'Smash' ? { hazards: true } : {});
+        await expectPreset(page, expectedSettings);
         await tabs.nth(3).click();
         if (mode === 'Smash') {
           const variant = field(fr ? 'VARIANTE' : 'VARIANT');
           const intensity = field(fr ? 'INTENSITE' : 'INTENSITY');
           await variant.selectOption('competitive');
+          Object.assign(expectedSettings, { stageVariant: 'competitive', stageEventIntensity: 'off' });
+          await expectPreset(page, expectedSettings);
           assert.equal(await intensity.isDisabled(), true); assert.equal(await intensity.inputValue(), 'off');
-          await variant.selectOption('lore'); await intensity.selectOption('light');
+          await variant.selectOption('lore');
+          Object.assign(expectedSettings, { stageVariant: 'lore' });
+          await expectPreset(page, expectedSettings);
+          await intensity.selectOption('light');
+          Object.assign(expectedSettings, { stageEventIntensity: 'light' });
+          await expectPreset(page, expectedSettings);
           await field(fr ? 'DIFFICULTE CPU' : 'CPU DIFFICULTY').selectOption('training');
+          Object.assign(expectedSettings, { difficulty: 'training' });
+          await expectPreset(page, expectedSettings);
           await root.getByLabel(fr ? 'Ignorer automatiquement en entrainement' : 'Skip automatically in training', { exact: true }).check();
+          Object.assign(expectedSettings, { skipPreMatchInTraining: true });
+          await expectPreset(page, expectedSettings);
         }
         if (mode === 'Fighter') {
           await tabs.nth(0).click(); await root.locator('.custom-opponent-options button').nth(1).click();
+          Object.assign(expectedSettings, { opponentControl: 'p2', difficulty: 'standard', skipPreMatchInTraining: false });
+          await expectPreset(page, expectedSettings);
           await tabs.nth(1).click();
           assert.equal(await root.locator('.custom-team-picker').count(), 2, 'fighter keeps two independently selectable squads');
           await tabs.nth(3).click();
           assert.equal(await field(fr ? 'DIFFICULTE CPU' : 'CPU DIFFICULTY').isDisabled(), true);
         }
-        const prepared = await expectPreset(page, { mode });
+        // The collection is published by effects after the local controls
+        // update. Wait for every requested value before taking the full snapshot.
+        const prepared = await expectPreset(page, expectedSettings);
         const launch = root.locator('.custom-lobby-actions button').last();
         await launch.focus(); await page.keyboard.press('Enter');
         await page.getByTestId('battle-handoff').waitFor();
