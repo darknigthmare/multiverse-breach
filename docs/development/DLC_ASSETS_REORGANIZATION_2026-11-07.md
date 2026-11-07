@@ -118,6 +118,7 @@ provenance et leurs tests spécifiques.
 | `npm run test:dlc` | 100 tests réussis ; registre et inventaires à jour, dont sept régressions de transfert vers les sources communes et onze régressions d'export. |
 | `npm run test:deployment-inputs` | 23 tests réussis. |
 | Export équipement courant et sa suite historique | 17 tests réussis ; les définitions DLC sont incluses dans les sources vérifiées. |
+| `npm run test:technical-sprite-packing` | 20 tests réussis ; reproduction réelle des 16 poses et refus des preuves, scripts, liens historiques ou images modifiés. |
 | Resolver et trois installateurs de PNG | 61 tests réussis, dont dix également présents dans `test:dlc`. |
 | `npm run dlc:verify:migration` | 77 catalogues, aucune différence. |
 | `npm run dlc:verify:assets` et comparaison indépendante à la référence | 8 187 blobs et modes, 438 chemins LFS conservés. |
@@ -142,10 +143,44 @@ copie publique volontairement périmée. PowerShell n'est pas installé localeme
 son nouveau test portable est présent mais ignoré ici. La suite Cloud Meadow
 complète dépend encore de son véritable PNG de référence absent de cette copie.
 
-Le contrôle `Full production build` doit confirmer l'ensemble des gates avec
-les vrais fichiers et LFS récupérés. Une compilation Vite isolée ou une
-préparation `--available` ne vaut pas cette validation. Aucun nouveau contrôle
-visuel exhaustif des milliers d'illustrations n'est revendiqué ici.
+La validation complète relève du contrôle `Full production build` sur la tête
+courante de la PR, avec les vrais fichiers et LFS récupérés. Une compilation Vite
+isolée ou une préparation `--available` ne vaut pas cette validation. Aucun
+nouveau contrôle visuel exhaustif des milliers d'illustrations n'est revendiqué ici.
+
+## Revalidation de la preuve technique des sprites
+
+Sur le commit `01de0ada9c89e63c660788e158f03b2187118a29`, les neuf workflows
+ciblés ont réussi. Le workflow de production et la prévisualisation Vercel ont
+également préparé les 8 187 sources DLC réelles sans source manquante. Le build
+complet a ensuite détecté un pin d'implémentation historique : la preuve du
+reconditionnement de l'atlas d'Elyra épingle l'installateur d'octobre, dont le
+routage des fichiers a changé pour les DLC.
+
+Le correctif conserve strictement les octets du reçu, de la promotion runtime et
+de la revue indépendante d'octobre. Une
+[preuve de revalidation distincte](../audits/elyra-frame-packing-implementation-revalidation-2026-11-07.json)
+lie ces trois documents, les images et l'ancienne implémentation aux empreintes
+de l'installateur actuel et de l'outil de revalidation. La commande
+`npm run sprites:packing:revalidate` produit cette preuve uniquement après
+reproduction de l'atlas bit pour bit, des données de préparation, de la
+géométrie et des empreintes de chacune des 16 poses. Elle refuse d'écraser un
+document historique ou une preuve différente déjà présente.
+
+L'audit reçoit cette preuve par un argument explicite. Il refuse les liens
+périmés, puis rejoue toutes ses assertions existantes sur les pixels, les
+gardes, la transparence, les poses distinctes et l'accès aux variantes courantes
+et historiques. En l'absence d'argument, l'ancien contrôle d'empreinte reste
+actif. La revalidation n'est ni une nouvelle génération d'image ni une nouvelle
+approbation artistique ; la revue visuelle d'octobre reste la référence.
+
+Dans la copie partielle locale, le rejeu passe la preuve et les assertions
+d'Elyra, puis atteint le contrôle inchangé des variantes des autres héros : il
+s'arrête sur un PNG de Ripley absent de cette copie. Le workflow complet est
+nécessaire pour valider ces fichiers. Les autres pins historiques identifiés
+dans les reçus CG et les exports Excel restent inchangés ; aucun autre
+consommateur CI actif comparant un ancien hash d'implémentation modifiée n'a été
+identifié dans les scripts et les 425 preuves ou manifestes ciblés inspectés.
 
 ## Limite restante : installation facultative des packs
 
