@@ -6159,7 +6159,8 @@ summary:focus-visible {
 .intro-language-button {
   position: absolute;
   top: 14px;
-  right: 14px;
+  /* Reserve the fixed system button (44px) and a 12px gap. */
+  right: calc(max(16px, env(safe-area-inset-right)) + 56px);
   z-index: 3;
   width: 52px;
   min-height: 38px;
@@ -8740,7 +8741,6 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
 
   .intro-language-button {
     top: 10px;
-    right: 10px;
     min-height: 36px;
   }
 
