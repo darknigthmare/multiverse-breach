@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { after, afterEach, before, test } from 'node:test';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { HEROES_DB, getHeroById } from '../src/game/heroes.js';
 import { CANON_P0_SOURCE_KIT_IDS } from '../src/game/canonP0SourceKits.js';
 import {

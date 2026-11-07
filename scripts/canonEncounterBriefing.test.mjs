@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { after, before, test } from 'node:test';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { CANON_PRIORITY_STAGES } from '../src/game/canonPriorityStages.js';
 import { getCanonicalEncounterBriefing } from '../src/game/canonEncounterBriefing.js';
 import { getExpandedStages } from '../src/game/expandedUniverses.js';

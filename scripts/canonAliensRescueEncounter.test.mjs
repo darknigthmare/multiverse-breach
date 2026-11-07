@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { after, before, test } from 'node:test';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { getHeroById } from '../src/game/heroes.js';
 import { ENEMIES_DB } from '../src/game/enemies.js';
 import { CANON_PRIORITY_STAGES } from '../src/game/canonPriorityStages.js';

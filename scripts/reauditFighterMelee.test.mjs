@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { before, after, afterEach, test } from 'node:test';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 let vite, Fighter, heroes, enemies, kits, melee, codex;
 const engines=[];
 before(async()=>{

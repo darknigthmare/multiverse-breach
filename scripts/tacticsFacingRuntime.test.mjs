@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { before, after, test } from 'node:test';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 let vite, EngineTactics;
 before(async () => {
   vite = await createServer({ appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { findBattlePickupSource, normalizeBattlePickupDefinition, resolveBattlePickupSemantics, withBattlePickupEffectNotice } from '../src/game/battlePickupSemantics.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
