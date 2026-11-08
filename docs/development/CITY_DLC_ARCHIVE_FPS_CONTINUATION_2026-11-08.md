@@ -100,6 +100,18 @@ affiche ensemble **KIT PERSONNEL** et **MARQUER** en paysage ; il vérifie la pl
 vue, le viseur libre, les cibles tactiles et la conservation des stocks au retour au kit.
 Il s’arrête avec rapport et capture dès un échec, avant les parcours de modes plus longs.
 
+Le premier passage sur `072e647819e548102bbe664d6791130b3398cfe7`
+([run 42470776814](https://github.com/darknigthmare/multiverse-breach/actions/runs/42470776814))
+a obtenu le ramassage par les actions natives, puis a révélé deux points précis. Le HUD
+publie son instantané périodiquement : la recette avance maintenant son horloge contrôlée
+jusqu’à l’apparition du bouton de retour au kit, au lieu d’attendre en temps réel avec
+la simulation arrêtée. La capture a également montré que MARQUER créait une quatrième
+rangée de commandes, devant le viseur. En paysage court, la grille réserve désormais
+six emplacements sur une seule rangée primaire lorsque KIT ou MARQUER est présent.
+Les libellés visibles KIT et LOOT sont raccourcis dans ce seul format, avec leur texte
+complet conservé dans le nom accessible et l’infobulle. Les contrôles gardent leur taille
+tactile minimale de 44 px et la police choisie ; les assertions de géométrie restent intactes.
+
 Les résultats de cette correction et ses captures doivent être rattachés au nouveau
 commit testé dans le compte rendu de PR. La réussite de `0108b7ce` constitue le diagnostic
 de départ, pas la validation visuelle de ce nouveau placement.

@@ -369,16 +369,20 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
 @media (max-height:500px) and (min-width:600px) { .extinction-protocol-actions button { padding:5px 3px; } }
 .extinction-panel-active .extinction-hud-dock .nexus-play-actions > .extinction-protocol-actions { grid-column:1 / -1; }
 .extinction-protocol-actions strong { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.extinction-primary-action > .extinction-action-label-compact { display:none; }
 @media (max-height:500px) and (min-width:600px) {
-  /* Fill each row: four primary actions, three protocols, six movement keys.
-     Empty primary cells used to wrap LOOT and lift RELOAD across the reticle. */
+  /* Keep three action rows even when KIT or MARK adds a fifth/sixth primary.
+     Compact labels retain their complete accessible names on the buttons. */
   .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns:repeat(12,minmax(0,1fr)); }
   .extinction-panel-active .extinction-hud-dock .extinction-move-action { grid-column:span 2; }
   .extinction-panel-active .extinction-hud-dock .extinction-primary-action { grid-column:span 3; }
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions .btn-retro { min-width:44px; min-height:44px; padding:4px 6px; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions:has([data-personal-kit], [data-hunt-mark]) > .extinction-primary-action { grid-column:span 2; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions .btn-retro { min-width:44px; min-height:44px; padding:4px 6px; line-height:1.2; }
+  .extinction-primary-action > .extinction-action-label-full { display:none; }
+  .extinction-primary-action > .extinction-action-label-compact { display:inline; }
   .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions { gap:4px; }
   .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions strong,
-  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions small { white-space:normal; overflow:visible; text-overflow:clip; }
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions small { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 }
 @media (max-width:760px) and (min-height:501px) {
   /* Three compact stat rows and four action rows leave the portrait aim clear.

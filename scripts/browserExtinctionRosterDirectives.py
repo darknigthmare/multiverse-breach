@@ -99,7 +99,8 @@ def view_geometry(page, source, out, name):
       const radarBox=local({left:radar.x-radar.radius,top:radar.y-radar.radius,right:radar.x+radar.radius,bottom:radar.y+radar.radius});
       const overlap=(a,b)=>a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;
       const view=actual?local(actual):null;
-      const buttons=[...document.querySelectorAll('.extinction-hud-dock button')].filter(el=>el.getClientRects().length).map(el=>({label:el.textContent,...rect(el)}));
+      const buttons=[...document.querySelectorAll('.extinction-hud-dock button')].filter(el=>el.getClientRects().length)
+        .map(el=>({label:el.getAttribute('aria-label')||el.innerText,visibleLabel:el.innerText,...rect(el)}));
       const placement=layout?.placement;
       return {view,samples,canvas:rect(canvas),canvasWidth:canvas.width,canvasHeight:canvas.height,
         placement:placement?{region:placement.region,...local({left:placement.x,top:placement.y,right:placement.x+placement.w,bottom:placement.y+placement.h})}:null,
@@ -258,6 +259,13 @@ def pickup_layout_case(page, out, name):
         current = read(page); trace.append({'action': action, 'state': current})
     (out / f'{name}-trace.json').write_text(json.dumps({'seed': seed, 'trace': trace}, indent=2, ensure_ascii=False))
     check(current['personalKit'] and current['weaponType'] != 'pistol', 'no real weapon pickup within short case')
+    # Collection updates simulation immediately; the HUD publishes periodically.
+    # Playwright's assertion wait cannot advance the deliberately paused clock.
+    for _ in range(6):
+        if page.locator('[data-personal-kit]').count(): break
+        page.clock.run_for(100); current = read(page)
+        trace.append({'action': {'kind': 'wait-for-kit-hud', 'milliseconds': 100}, 'state': current})
+    (out / f'{name}-trace.json').write_text(json.dumps({'seed': seed, 'trace': trace}, indent=2, ensure_ascii=False))
     expect(page.locator('[data-personal-kit]')).to_be_visible(); expect(page.locator('[data-hunt-mark]')).to_be_visible()
     retained = current['personalKit']; weapon = current['weaponType']; layouts = []
     for large in [False, True]:

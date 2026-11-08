@@ -5268,10 +5268,19 @@ function ExtinctionRoyale({
               <>
                 <button className="btn-retro extinction-primary-action" data-primary-action onClick={fire} title={getLocalizedText(activeSignature?.actions.simple?.name, lang)}>{runSnapshot.weaponType === 'pistol' && ['melee', 'sweep', 'counter'].includes(activeSignature?.actions.simple?.kind) ? (lang === 'fr' ? 'FRAPPER' : 'STRIKE') : runSnapshot.weaponType === 'pistol' && ['control', 'support', 'heal', 'focus'].includes(activeSignature?.actions.simple?.kind) ? 'ACTION' : (lang === 'fr' ? 'TIRER' : 'FIRE')}</button>
                 <button className="btn-retro extinction-primary-action" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0 || runSnapshot.weaponResource === 'cooldown'} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
-                {runSnapshot.canRestoreKit && <button className="btn-retro extinction-primary-action" data-personal-kit onClick={restorePersonalKit}>{lang === 'fr' ? 'V · KIT PERSONNEL' : 'V · PERSONAL KIT'}</button>}
+                {runSnapshot.canRestoreKit && <button className="btn-retro extinction-primary-action" data-personal-kit onClick={restorePersonalKit}
+                  aria-label={lang === 'fr' ? 'V · KIT PERSONNEL' : 'V · PERSONAL KIT'} title={lang === 'fr' ? 'V · KIT PERSONNEL' : 'V · PERSONAL KIT'}>
+                  <span className="extinction-action-label-full" aria-hidden="true">{lang === 'fr' ? 'V · KIT PERSONNEL' : 'V · PERSONAL KIT'}</span>
+                  <span className="extinction-action-label-compact" aria-hidden="true">V · KIT</span>
+                </button>}
                 {runSnapshot.directive?.mode === 'hunt' && <button className="btn-retro extinction-primary-action" data-hunt-mark onClick={markHuntTarget} disabled={!runSnapshot.directive.canMark || sessionPaused || intelOpen}>{lang === 'fr' ? 'T · MARQUER' : 'T · MARK'}</button>}
                 <button className="btn-retro extinction-primary-action" onClick={activateRoleSkill} disabled={runSnapshot.skillCooldown > 0} title={lang === 'fr' ? 'Active la capacité spéciale liée au rôle du héros.' : 'Activate the selected hero role ability.'}>{runSnapshot.skillCooldown > 0 ? `ROLE ${Math.ceil(runSnapshot.skillCooldown / 60)}s` : 'ROLE'}</button>
-                <button className="btn-retro extinction-primary-action" onClick={collectLoot} disabled={!runSnapshot.nearbyLoot} title={runSnapshot.nearbyLoot || (lang === 'fr' ? 'Approche-toi d un objet ou d une balise.' : 'Move near an item or beacon.')}>{runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}</button>
+                <button className="btn-retro extinction-primary-action" onClick={collectLoot} disabled={!runSnapshot.nearbyLoot}
+                  aria-label={runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}
+                  title={runSnapshot.nearbyLoot || (lang === 'fr' ? 'Approche-toi d un objet ou d une balise.' : 'Move near an item or beacon.')}>
+                  <span className="extinction-action-label-full" aria-hidden="true">{runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}</span>
+                  <span className="extinction-action-label-compact" aria-hidden="true">LOOT</span>
+                </button>
                 {activeSignature && <div className="extinction-protocol-actions" role="group" aria-label={lang === 'fr' ? 'Protocoles personnels' : 'Personal protocols'}>
                   {[['secondary', 'F', 'SECONDAIRE', 'SECONDARY'], ['defense', 'C', 'DÉFENSE', 'DEFENSE'], ['special', 'X', 'ULTIME', 'ULTIMATE']].map(([slot, key, fr, en]) => {
                     const action = activeSignature.actions[slot];
