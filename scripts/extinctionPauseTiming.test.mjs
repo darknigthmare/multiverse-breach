@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy } from '../src/game/extinctionSignatures.js';
+import { tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, getExtinctionProtocolSpeedFactor } from '../src/game/extinctionSignatures.js';
+import * as directives from '../src/game/extinctionFieldDirectives.js';
 import { createFixedStepClock } from '../src/game/fixedStepClock.js';
 import { createSceneInputs, emptySceneAim } from '../src/game/sceneInputs.js';
 import { createExtinctionRelayOperation, interactExtinctionRelayOperation, tickExtinctionRelayOperation } from '../src/game/extinctionRelayOperation.js';
@@ -42,6 +43,8 @@ const makeState = () => ({
 const makeHarness = () => {
   const state = makeState();
   const environment = {
+    ...directives,
+    getExtinctionProtocolSpeedFactor,
     createFixedStepClock,
     tickExtinctionProtocols,
     tickExtinctionRelayOperation,

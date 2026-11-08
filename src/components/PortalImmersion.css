@@ -65,3 +65,93 @@
   .portal-game-screen .breach-booster-pack { width: 27dvh; }
   .portal-game-screen .booster-art-preview-trigger { bottom: 28px; font-size: .7rem; }
 }
+
+/* Dense catalogues share one reading surface. Header controls stay reachable
+   while all descriptions, rates and pagination remain in normal document flow. */
+.portal-catalog-drawer .archive-drawer { width: 100%; max-width: none; }
+.portal-catalog-drawer .archive-drawer-header {
+  padding: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-top)) max(18px, var(--game-safe-area, 12px), env(safe-area-inset-right)) 12px max(18px, var(--game-safe-area, 12px), env(safe-area-inset-left));
+}
+.portal-catalog-drawer .archive-drawer-header h2 { min-width: 0; font-size: 1.05rem; line-height: 1.3; overflow-wrap: anywhere; }
+.portal-catalog-drawer .archive-drawer-content {
+  padding: 14px max(18px, var(--game-safe-area, 12px), env(safe-area-inset-right)) max(18px, var(--game-safe-area, 12px), env(safe-area-inset-bottom)) max(18px, var(--game-safe-area, 12px), env(safe-area-inset-left));
+  scrollbar-gutter: stable;
+}
+.portal-catalog-drawer .booster-catalog-panel { padding: 0; border: 0; background: none; box-shadow: none; }
+.portal-catalog-drawer .booster-catalog-toolbar { align-items: start; flex-wrap: wrap; gap: 12px; }
+.portal-catalog-drawer .booster-section-kicker { font-size: .85rem; letter-spacing: .08em; }
+.portal-catalog-drawer .booster-catalog-count { font-size: .8rem; color: #b8cdd1; }
+.portal-catalog-drawer .booster-pack-search { flex: 1 1 20rem; min-width: 0; }
+.portal-catalog-drawer .booster-pack-search input { font-size: .9rem; }
+.portal-catalog-scope { display: grid; gap: 10px; margin-bottom: 16px; }
+.portal-catalog-scope label { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .9rem; }
+.portal-catalog-scope select { flex: 1 1 18rem; }
+.portal-catalog-scope p { margin: 0; color: #c4d9dc; font-size: .85rem; line-height: 1.55; }
+.portal-catalog-scope .portal-catalog-results { color: #a2f2e7; }
+.portal-catalog-drawer .booster-rotation-strip { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+.portal-catalog-drawer .booster-rotation-strip > div { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; }
+.portal-catalog-drawer .booster-rotation-strip span, .portal-catalog-drawer .booster-rotation-strip em { font-size: .8rem; white-space: normal; }
+.portal-catalog-drawer .booster-rotation-strip strong { font-size: .95rem; }
+.portal-catalog-drawer .booster-rotation-strip p { font-size: .85rem; color: #bed5d9; }
+.portal-catalog-drawer [data-personal-rotation-controls] { font-size: .85rem; line-height: 1.6; }
+.portal-catalog-group { margin-top: 14px; border: 1px solid #45646c; border-radius: 6px; padding: 12px; min-width: 0; }
+.portal-catalog-group > summary { padding: 10px 0; font-size: .95rem; font-weight: 700; cursor: pointer; scroll-margin-block: 12px; overflow-wrap: anywhere; }
+.portal-catalog-drawer .booster-catalog-grid { grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr)); gap: 16px; }
+.portal-catalog-drawer .booster-catalog-grid .portal-booster { display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 17rem; padding: 14px; transform: none; overflow: visible; overflow-wrap: anywhere; }
+.portal-catalog-drawer .portal-booster-kicker { font-size: .75rem; line-height: 1.5; letter-spacing: .04em; }
+.portal-catalog-drawer .booster-catalog-grid .portal-booster-title { margin-top: 5rem; font-size: 1rem; line-height: 1.4; }
+.portal-catalog-drawer .portal-booster-desc { margin: 0; font-size: .85rem; line-height: 1.55; color: #eef5f7; }
+.portal-catalog-drawer .portal-booster-meta { margin: 0; max-width: 100%; box-sizing: border-box; font-size: .8rem; line-height: 1.5; }
+.portal-catalog-drawer .portal-booster-art-badge { position: relative; inset: auto; align-self: start; max-width: 100%; box-sizing: border-box; font-size: .75rem; line-height: 1.5; letter-spacing: .02em; }
+.portal-catalog-drawer .portal-booster-preview-label { position: relative; margin-top: auto; padding-top: 8px; font-size: .8rem; line-height: 1.4; text-decoration: underline; text-underline-offset: 4px; }
+.portal-catalog-drawer .booster-catalog-grid .portal-booster.unavailable { opacity: 1; filter: none; cursor: pointer; border-style: dashed; }
+.portal-catalog-drawer .booster-catalog-grid .portal-booster:focus-visible { outline: 3px solid #a4fbea; outline-offset: 3px; }
+.portal-catalog-drawer .booster-empty-state { font-size: .9rem; line-height: 1.6; }
+
+.portal-catalog-pager { display: flex; align-items: center; gap: 10px 18px; flex-wrap: wrap; padding-block: 12px; min-width: 0; }
+.portal-catalog-range { flex: 1 1 12rem; font-size: .85rem; line-height: 1.5; margin: 0; }
+.portal-page-size { display: flex; align-items: center; gap: 8px; font-size: .85rem; }
+.portal-catalog-page-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+.portal-catalog-page-buttons .btn-retro { min-width: 44px; min-height: 44px; padding: 6px 12px; font-size: 1.1rem; line-height: 1.2; }
+
+.booster-dossier-dialog.booster-art-preview-dialog {
+  padding: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-top)) max(18px, var(--game-safe-area, 12px), env(safe-area-inset-right)) max(12px, var(--game-safe-area, 12px), env(safe-area-inset-bottom)) max(18px, var(--game-safe-area, 12px), env(safe-area-inset-left));
+  gap: 8px;
+}
+.booster-dossier-dialog.booster-art-preview-dialog > header strong { font-size: 1.05rem; line-height: 1.3; white-space: normal; overflow: visible; overflow-wrap: anywhere; }
+.booster-dossier-dialog .booster-art-preview-close { width: 44px; height: 44px; font-size: 1.5rem; }
+.booster-dossier-dialog .booster-dossier-content { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding: 4px 6px 12px; }
+.booster-dossier-sections, .booster-dossier-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-block: 10px 16px; }
+.booster-dossier-actions { border-top: 1px solid #46666e; padding-top: 14px; }
+.booster-dossier-dialog h2 { font-size: 1.2rem; line-height: 1.4; overflow-wrap: anywhere; }
+.booster-dossier-dialog h3 { font-size: 1rem; line-height: 1.45; overflow-wrap: anywhere; }
+.booster-dossier-dialog [tabindex='-1'] { scroll-margin-block: 10px; }
+.booster-dossier-dialog .booster-dossier-preview-note { font-size: .8rem; color: #a9ece0; }
+.booster-dossier-intro { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr)); gap: 20px; align-items: start; }
+.booster-dossier-intro > div { min-width: 0; }
+.booster-dossier-art { width: 100%; height: min(300px, 40dvh); object-fit: contain; }
+.booster-dossier-dialog p { font-size: .9rem; line-height: 1.6; overflow-wrap: anywhere; }
+.booster-dossier-dialog small { font-size: .8rem; line-height: 1.6; overflow-wrap: anywhere; }
+.booster-dossier-dialog .portal-focus-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+.booster-dossier-dialog .portal-focus-stats span { font-size: .8rem; line-height: 1.5; overflow-wrap: anywhere; }
+.booster-dossier-dialog .portal-rate-grid { grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr)); }
+.booster-dossier-rewards { margin-top: 22px; }
+.booster-dossier-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.booster-dossier-filters input { flex: 1 1 16rem; }
+.booster-dossier-filters select { flex: 1 1 12rem; }
+.booster-dossier-dialog .booster-reward-manifest-grid { max-height: none; overflow: visible; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); padding: 0; gap: 14px; }
+.booster-dossier-dialog .booster-reward-manifest-group { min-width: 0; padding: 12px; }
+.booster-dossier-dialog .booster-reward-manifest-group h4 { margin: 8px 0; font-size: .95rem; line-height: 1.5; overflow-wrap: anywhere; }
+.booster-dossier-dialog [data-signature-codex] { font-size: .85rem !important; }
+.booster-dossier-dialog [data-signature-codex] p { font-size: .85rem !important; }
+.booster-dossier-back-to-overview { margin-block: 14px; }
+.portal-catalog-drawer button, .portal-catalog-drawer summary, .booster-dossier-dialog button, .booster-dossier-dialog summary { min-height: 44px; box-sizing: border-box; }
+.portal-catalog-drawer button, .booster-dossier-dialog button { min-width: 44px; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.portal-catalog-drawer .btn-retro, .booster-dossier-dialog .btn-retro { font-size: .85rem; line-height: 1.4; padding: 10px 12px; }
+.portal-catalog-drawer input, .portal-catalog-drawer select, .booster-dossier-dialog input, .booster-dossier-dialog select {
+  min-width: 0; min-height: 44px; max-width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #658c94; border-radius: 4px; background: #07141c; color: #f1fffc; font: inherit; font-size: .85rem;
+}
+.booster-dossier-dialog :focus-visible { outline: 2px solid #a4fbea; outline-offset: 2px; }
+:root[data-game-contrast='high'] .portal-catalog-drawer .archive-drawer { background: #03090e; color: #fff; }
+:root[data-game-contrast='high'] .portal-catalog-drawer .portal-booster { background-color: #03090e; }
+:root[data-game-contrast='high'] .portal-catalog-drawer .portal-booster-art-badge { background: #142b32; color: #fff; border: 1px solid #8db8bd; }

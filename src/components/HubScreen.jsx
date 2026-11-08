@@ -4,12 +4,17 @@ import { DISCIPLINE_SPRITE_REGISTRY } from '../game/disciplineSprites.js';
 import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { getMosaicExhibits, getMosaicExhibitView, getMosaicExhibitZones, drawMosaicService } from '../game/mosaicExhibits.js';
 import { buildMosaicReconnaissanceDossier, normalizeMosaicReconnaissance, startMosaicReconnaissance, advanceMosaicReconnaissance, getMosaicReconnaissanceObjective } from '../game/mosaicReconnaissance.js';
+import { normalizeMosaicCharacterMissions, getMosaicCharacterMissionCatalog, getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, startMosaicCharacterMission, advanceMosaicCharacterMission, resolveMosaicCharacterMission } from '../game/mosaicCharacterMissions.js';
+import MosaicCharacterMissions from './MosaicCharacterMissions.jsx';
 import { createExtinctionRelayOperation, tickExtinctionRelayOperation, interactExtinctionRelayOperation, getExtinctionRelayStatus } from '../game/extinctionRelayOperation.js';
-import { getExtinctionSignature, createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols, getExtinctionProtocolBrief, clearExtinctionProtocolEffects } from '../game/extinctionSignatures.js';
+import { createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols, getExtinctionProtocolBrief, clearExtinctionProtocolEffects, getExtinctionProtocolSpeedFactor } from '../game/extinctionSignatures.js';
+import { getExtinctionFighterProfile, rememberExtinctionPersonalKit, restoreExtinctionPersonalKit } from '../game/extinctionFighterProfiles.js';
+import { EXTINCTION_FIELD_DIRECTIVES, createExtinctionFieldDirective, getExtinctionDirectiveTarget, interactExtinctionFieldDirective, tickExtinctionFieldDirective, markExtinctionHuntTarget, canAdvanceExtinctionDirectiveWave, canCompleteExtinctionFieldDirective, getExtinctionDirectiveSpeedFactor, getExtinctionFieldDirectiveStatus, getExtinctionRadarPoint, drawExtinctionDirectiveMarkers } from '../game/extinctionFieldDirectives.js';
+import ExtinctionFighterBriefing from './ExtinctionFighterBriefing.jsx';
 import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicResidents.js';
 import { beginMosaicResidentDialogue, getMosaicResidentDialogue, getMosaicReconnaissanceLedger } from '../game/mosaicResidentDialogue.js';
 import { getUniverseHubPlace } from '../game/mosaicUniversePlaces.js';
-import { getExtinctionRoster, getExtinctionViewmodel, getExtinctionHandFrame, getExtinctionHandSourceRect, getExtinctionHandPlacement, getExtinctionProjectilePlacement, drawExtinctionSchematic } from '../game/extinctionContent.js';
+import { getExtinctionRoster, getExtinctionHandFrame, getExtinctionHandSourceRect, getExtinctionHandPlacement, getExtinctionProjectilePlacement, drawExtinctionSchematic } from '../game/extinctionContent.js';
 import CharacterWardrobe from './CharacterWardrobe.jsx';
 import { applyActorAppearance } from '../game/wardrobe.js';
 import React, { lazy, Suspense, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
@@ -2265,6 +2270,8 @@ function MosaicCityHub({
   onTutorialProgress,
   reconnaissanceProgress = null,
   onReconnaissanceProgress,
+  characterMissionProgress = null,
+  onCharacterMissionProgress,
   extinctionCareer = {},
   onOpenMissions,
   onOpenCodex,
@@ -2370,6 +2377,26 @@ function MosaicCityHub({
     publishedReconnaissanceRef.current = serialized;
     setReconnaissance(imported);
   }, [reconnaissanceProgress]);
+  const characterMissionsRef = useRef(normalizeMosaicCharacterMissions(characterMissionProgress));
+  const [characterMissions, setCharacterMissions] = useState(() => characterMissionsRef.current);
+  const characterMissionCallbackRef = useRef(onCharacterMissionProgress);
+  characterMissionCallbackRef.current = onCharacterMissionProgress;
+  const publishedCharacterMissionsRef = useRef(JSON.stringify(characterMissionsRef.current));
+  const commitCharacterMissions = useCallback(next => {
+    const normalized = normalizeMosaicCharacterMissions(next), serialized = JSON.stringify(normalized);
+    if (serialized === publishedCharacterMissionsRef.current) return;
+    characterMissionsRef.current = normalized;
+    publishedCharacterMissionsRef.current = serialized;
+    setCharacterMissions(normalized);
+    characterMissionCallbackRef.current?.(normalized);
+  }, []);
+  useEffect(() => {
+    const imported = normalizeMosaicCharacterMissions(characterMissionProgress), serialized = JSON.stringify(imported);
+    if (serialized === publishedCharacterMissionsRef.current) return;
+    characterMissionsRef.current = imported;
+    publishedCharacterMissionsRef.current = serialized;
+    setCharacterMissions(imported);
+  }, [characterMissionProgress]);
   const [welcomeOpen, setWelcomeOpen] = useState(() => !guideRef.current.welcomeSeen);
   const [welcomeIndex, setWelcomeIndex] = useState(0);
   const commitGuide = useCallback(next => {
@@ -2540,6 +2567,7 @@ function MosaicCityHub({
   const district = districts[currentDistrict] || districts.atrium;
   const exhibits = useMemo(() => getMosaicExhibits(EQUIP_ITEMS_DB, district.universe, { inventory, disabled: disabledGearIds, lang }), [district.universe, inventory, disabledGearIds, lang]);
   const exhibitView = useMemo(() => getMosaicExhibitView(exhibits, { query: exhibitQuery, page: exhibitPage }), [exhibits, exhibitQuery, exhibitPage]);
+  const residentCatalog = useMemo(() => getMosaicResidentCatalog(safeHeroes, unlockedHeroes, district.universe), [safeHeroes, unlockedHeroes, district.universe]);
   const selectedExhibit = exhibits.find(entry => entry.id === selectedExhibitId) || null;
   const baseZones = useMemo(() => {
     const source = visibleThreadUniverses;
@@ -2653,7 +2681,12 @@ function MosaicCityHub({
       ...threadRooms
     ];
   }, [currentDistrict, district, lang, universeStageStats, visibleThreadUniverses]);
-  const zones = useMemo(() => [...baseZones, ...getMosaicExhibitZones(district, exhibitView.items, lang)], [baseZones, district, exhibitView.items, lang]);
+  const characterMissionCatalog = useMemo(() => getMosaicCharacterMissionCatalog({ district, residents: residentCatalog, exhibits,
+    anchor: baseZones.find(zone => zone.action === 'anchor'), unlockedHeroIds: unlockedHeroes
+  }), [district, residentCatalog, exhibits, baseZones, unlockedHeroes]);
+  const zones = useMemo(() => [...baseZones, ...getMosaicExhibitZones(district, exhibitView.items, lang),
+    ...getMosaicCharacterMissionZones(characterMissions, characterMissionCatalog, lang)
+  ], [baseZones, district, exhibitView.items, lang, characterMissions, characterMissionCatalog]);
   useEffect(() => {
     if (!cityMenuOpen || !exhibitFocusPending.current) return undefined;
     const frame = requestAnimationFrame(() => { exhibitFocusRef.current?.focus({ preventScroll: true }); exhibitFocusRef.current?.scrollIntoView({ block: 'nearest' }); exhibitFocusPending.current = false; });
@@ -2687,7 +2720,6 @@ function MosaicCityHub({
   const sceneObstacles = useMemo(() => getMosaicSceneObstacles(district, zones), [district, zones]);
   stateRef.current.obstacles = sceneObstacles;
 
-  const residentCatalog = useMemo(() => getMosaicResidentCatalog(safeHeroes, unlockedHeroes, district.universe), [safeHeroes, unlockedHeroes, district.universe]);
   const reconnaissanceDossier = useMemo(() => buildMosaicReconnaissanceDossier({
     district, residents: residentCatalog, exhibits, anchor: zones.find(zone => zone.action === 'anchor')
   }), [district, residentCatalog, exhibits, zones]);
@@ -2882,14 +2914,23 @@ function MosaicCityHub({
     }
     const reconnaissanceResult = advanceMosaicReconnaissance(reconnaissanceRef.current, reconnaissanceDossier, interaction, lang);
     if (reconnaissanceResult.changed) commitReconnaissance(reconnaissanceResult.progress);
+    const contract = characterMissionCatalog.find(item => item.id === characterMissionsRef.current.activeId);
+    const contractResult = advanceMosaicCharacterMission(characterMissionsRef.current, contract, interaction, lang);
+    if (contractResult.changed) commitCharacterMissions(contractResult.progress);
+    const objectiveFeedback = contractResult.changed ? contractResult.feedback : reconnaissanceResult.changed ? reconnaissanceResult.feedback : null;
     const zone = interaction.type === 'zone' ? interaction.target : null;
+    if (zone?.action === 'character-mission') {
+      setHubLog(contractResult.feedback);
+      sound.playSfx('confirm');
+      return;
+    }
     if (zone?.action === 'exhibit') {
       const entry = exhibits.find(item => item.id === zone.exhibitId);
       if (!entry) return;
       setSelectedExhibitId(entry.id);
       exhibitFocusPending.current = true;
       setCityMenuOpen(true);
-      setHubLog(reconnaissanceResult.changed ? reconnaissanceResult.feedback : (lang === 'fr' ? `Vitrine consultée : ${entry.name}. Aucun objet attribué.` : `Display inspected: ${entry.name}. No item granted.`));
+      setHubLog(objectiveFeedback || (lang === 'fr' ? `Vitrine consultée : ${entry.name}. Aucun objet attribué.` : `Display inspected: ${entry.name}. No item granted.`));
       return;
     }
     if (zone?.action === 'mission') {
@@ -2915,9 +2956,9 @@ function MosaicCityHub({
     }
     if (zone?.action === 'anchor') {
       const stats = universeStageStats[zone.universe] || { total: 0, cleared: 0 };
-      setHubLog(reconnaissanceResult.changed ? reconnaissanceResult.feedback : lang === 'fr'
+      setHubLog(objectiveFeedback || (lang === 'fr'
         ? `Ancre locale: ${zone.universe}. Stabilite ${stats.cleared}/${stats.total || '?'}; la salle gagne en lumiere quand ses failles sont scellees.`
-        : `Local anchor: ${zone.universe}. Stability ${stats.cleared}/${stats.total || '?'}; the room brightens as its rifts are sealed.`);
+        : `Local anchor: ${zone.universe}. Stability ${stats.cleared}/${stats.total || '?'}; the room brightens as its rifts are sealed.`));
       sound.playSfx('click');
       return;
     }
@@ -2955,11 +2996,11 @@ function MosaicCityHub({
       .slice(0, 2)
       .map(hero => hero.name);
     const stats = universeStageStats[target.universe] || { total: 0, cleared: 0 };
-    setHubLog(reconnaissanceResult.changed ? reconnaissanceResult.feedback : lang === 'fr'
+    setHubLog(objectiveFeedback || (lang === 'fr'
       ? `${target.name} synchronise sa Trame avec ${playerName}. ${compatible.length ? `Discussion compatible avec ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} faille(s) stabilisee(s).`
-      : `${target.name} synchronizes their Thread with ${playerName}. ${compatible.length ? `Compatible discussion with ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} stabilized rift(s).`);
+      : `${target.name} synchronizes their Thread with ${playerName}. ${compatible.length ? `Compatible discussion with ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} stabilized rift(s).`));
     sound.playSfx('confirm');
-  }, [commitReconnaissance, district, exhibits, lang, onOpenCodex, onOpenMissions, onOpenService, openCityService, playerName, reconnaissanceDossier, recordGuide, switchDistrict, universeStageStats, unlockedHeroes, zones]);
+  }, [commitReconnaissance, commitCharacterMissions, characterMissionCatalog, district, exhibits, lang, onOpenCodex, onOpenMissions, onOpenService, openCityService, playerName, reconnaissanceDossier, recordGuide, switchDistrict, universeStageStats, unlockedHeroes, zones]);
 
   useEffect(() => {
     const onKeyDown = event => {
@@ -3494,6 +3535,38 @@ function MosaicCityHub({
     setCityMenuOpen(false);
     setHubLog(objective.text);
   };
+  const acceptCharacterMission = missionId => {
+    if (sessionPausedRef.current) return;
+    const mission = characterMissionCatalog.find(item => item.id === missionId);
+    const result = startMosaicCharacterMission(characterMissionsRef.current, mission, lang);
+    if (result.changed) commitCharacterMissions(result.progress);
+    setHubLog(result.feedback);
+  };
+  const resolveCharacterMission = (missionId, choiceId) => {
+    if (sessionPausedRef.current) return;
+    const mission = characterMissionCatalog.find(item => item.id === missionId);
+    const result = resolveMosaicCharacterMission(characterMissionsRef.current, mission, choiceId, lang);
+    if (result.changed) commitCharacterMissions(result.progress);
+    setHubLog(result.feedback);
+    return result;
+  };
+  const approachCharacterMission = missionId => {
+    if (sessionPausedRef.current) return;
+    const mission = characterMissionCatalog.find(item => item.id === missionId);
+    const objective = getMosaicCharacterMissionObjective(characterMissionsRef.current, mission, lang);
+    if (objective?.status !== 'active' || !objective.targetId) return;
+    if (objective.targetType === 'npc') {
+      const entry = getMosaicResidentView(residentCatalog, { query: objective.targetId, guideId: residentGuide?.id }).items.find(item => item.hero.id === objective.targetId);
+      if (entry) approachResident(entry);
+      return;
+    }
+    clearCityDestination();
+    const exhibitIndex = exhibits.findIndex(entry => `${currentDistrict}::exhibit::${entry.id}` === objective.targetId);
+    if (exhibitIndex >= 0) { setExhibitQuery(''); setExhibitPage(Math.floor(exhibitIndex / 3)); }
+    setReconnaissanceTarget({ districtId: currentDistrict, id: objective.targetId });
+    setCityMenuOpen(false);
+    setHubLog(objective.text);
+  };
   const recoverCity = () => {
     // Reset any canvas transforms/save stack left by an interrupted draw.
     if (canvasRef.current) canvasRef.current.setAttribute('width', String(canvasRef.current.width));
@@ -3542,7 +3615,9 @@ function MosaicCityHub({
         </div>
         <button ref={cityTerminalButtonRef} type="button" className="btn-retro" onClick={() => setCityMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'TERMINAL · JOURNAL' : 'TERMINAL · JOURNAL'}</button>
       </div>
-      <ImmersiveDrawer open={cityMenuOpen} onClose={closeCityMenu} lang={lang} title={lang === 'fr' ? 'Terminal de poche A.R.C.A.' : 'A.R.C.A. pocket terminal'}>
+      <ImmersiveDrawer open={cityMenuOpen} onClose={closeCityMenu} lang={lang} className="mosaic-terminal-drawer"
+        scrollLabel={lang === 'fr' ? 'Journal et services de la Cité' : 'City journal and services'}
+        title={lang === 'fr' ? 'Terminal de poche A.R.C.A.' : 'A.R.C.A. pocket terminal'}>
       <div className="nexus-play-copy">
         {residentConversation && <div ref={conversationFocusRef} tabIndex={-1}>
           <MosaicResidentDialogue key={residentConversation.heroId} conversation={residentConversation} lang={lang} onClose={closeCityMenu} />
@@ -3585,6 +3660,8 @@ function MosaicCityHub({
             : (lang === 'fr' ? 'Le quartier du dossier en cours est indisponible. Tes étapes sont conservées pour son retour.' : 'The current report’s district is unavailable. Your steps are preserved for its return.')}</p>}
           <small>{Object.values(reconnaissance.dossiers).filter(entry => entry.completed).length} {lang === 'fr' ? 'rapport(s) transmis · progression enregistrée' : 'report(s) transmitted · progress saved'}</small>
         </section>
+        <MosaicCharacterMissions missions={characterMissionCatalog} progress={characterMissions} heroes={safeHeroes} lang={lang}
+          onAccept={acceptCharacterMission} onApproach={approachCharacterMission} onResolve={resolveCharacterMission} />
         <MosaicEvidenceLedger entries={reconnaissanceLedger} lang={lang} />
         <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(extinctionCareer)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang}>
           <button type="button" className="btn-retro" data-field-deploy disabled={!fieldAccess.available || typeof onOpenService !== 'function'}
@@ -3755,6 +3832,7 @@ function ExtinctionRoyale({
   const [selectedHeroId, setSelectedHeroId] = useState(() => playableHeroes[0]?.id || '');
   const [runMode, setRunMode] = useState('extraction');
   const [relayEnabled, setRelayEnabled] = useState(false);
+  const [directiveEnabled, setDirectiveEnabled] = useState(false);
   const fieldAccess = getNexusFieldAccess(reconnaissanceProgress, playableHeroes);
   const [fieldEnabled, setFieldEnabled] = useState(() => initialFieldOperation === NEXUS_FIELD_OPERATION_ID && fieldAccess.available);
   const fieldSelected = runMode === 'extraction' && fieldEnabled && fieldAccess.available;
@@ -3786,8 +3864,9 @@ function ExtinctionRoyale({
     rewards: null
   });
   const selectedHero = playableHeroes.find(hero => hero.id === selectedHeroId) || playableHeroes[0] || null;
-  const viewmodel = useMemo(() => getExtinctionViewmodel(selectedHero), [selectedHero]);
-  const signatureProfile = useMemo(() => getExtinctionSignature(selectedHero), [selectedHero]);
+  const fighterProfile = useMemo(() => getExtinctionFighterProfile(selectedHero), [selectedHero]);
+  const viewmodel = fighterProfile.view;
+  const signatureProfile = fighterProfile.signature;
   const stateRef = useRef({
     phase: 'ready',
     hp: 100,
@@ -3833,13 +3912,11 @@ function ExtinctionRoyale({
   }), [lang]);
 
   const weaponProfile = useMemo(() => {
-    const category = selectedHero?.category || 'marine';
-    if (selectedHero?.weaponType === 'melee' || category === 'slayer') return { name: lang === 'fr' ? 'Arme: lame/shotgun de rupture' : 'Weapon: rupture blade/shotgun', color: '#ff5a36', fireRate: 1, spread: 0.18 };
-    if (category === 'hacker') return { name: lang === 'fr' ? 'Arme: outil de scan anormal' : 'Weapon: anomaly scan tool', color: '#39c5bb', fireRate: 0.85, spread: 0.08 };
-    if (category === 'tactical') return { name: lang === 'fr' ? 'Arme: carabine A.R.C.A.' : 'Weapon: A.R.C.A. carbine', color: '#9b59b6', fireRate: 1, spread: 0.1 };
-    if (category === 'horror') return { name: lang === 'fr' ? 'Arme: relique sombre' : 'Weapon: dark relic', color: '#8e44ad', fireRate: 0.9, spread: 0.16 };
-    return { name: lang === 'fr' ? 'Arme: fusil d Ancre' : 'Weapon: Anchor rifle', color: '#ffea00', fireRate: 1, spread: 0.12 };
-  }, [lang, selectedHero]);
+    const primary = fighterProfile.signature?.actions.simple;
+    return { name: getLocalizedText(primary?.name, lang) || (lang === 'fr' ? 'Kit de signature' : 'Signature kit'),
+      color: primary?.color || selectedHero?.weaponColor || selectedHero?.primaryColor || '#39c5bb',
+      fireRate: 1, spread: 0.12, resource: fighterProfile.resource.kind };
+  }, [fighterProfile, lang, selectedHero]);
 
   const universeFragments = useMemo(() => {
     const pool = Array.from(new Set(safeHeroes.map(hero => hero.universe).filter(Boolean)));
@@ -3867,6 +3944,9 @@ function ExtinctionRoyale({
     }
     if (runMode === 'infestation') {
       const remaining = Math.max(0, Math.ceil((EXTINCTION_INFESTATION_TARGET_FRAMES - (state.t || 0)) / 60));
+      if (state.fieldDirective) return lang === 'fr'
+        ? `TENIR ${remaining} S · CONFINEMENT ${state.fieldDirective.markers.filter(marker => marker.status === 'secured').length}/3 requis`
+        : `HOLD ${remaining}S · CONTAINMENT ${state.fieldDirective.markers.filter(marker => marker.status === 'secured').length}/3 required`;
       return lang === 'fr'
         ? `TENIR ENCORE ${remaining} S · extraction automatique ensuite`
         : `HOLD ${remaining}S · automatic extraction follows`;
@@ -3883,7 +3963,7 @@ function ExtinctionRoyale({
 
   const buildRunSnapshot = useCallback((state) => {
     const maxHp = Math.max(1, state.maxHp || 100);
-    const nearbyLoot = getExtinctionLootTarget(state);
+    const nearbyLoot = getExtinctionLootTarget(state) || getExtinctionDirectiveTarget(state, lang);
     return {
       phase: state.phase,
       hp: Math.max(0, Math.min(maxHp, state.hp || 0)),
@@ -3901,6 +3981,12 @@ function ExtinctionRoyale({
       signatureGuard: (state.protocols?.guard || 0) > 0 || (state.protocols?.barricade || 0) > 0,
       signatureReturnTicks: state.protocols?.returnProbe?.life || 0,
       signatureReflectionTicks: state.protocols?.reflection?.life || 0,
+      weaponName: state.weapon?.name || '',
+      weaponType: state.weapon?.type || 'pistol',
+      weaponResource: state.weapon?.resource || 'ammo',
+      canRestoreKit: Boolean(state.personalKit && state.weapon?.type !== 'pistol'),
+      directive: getExtinctionFieldDirectiveStatus(state, lang),
+      directiveSummary: state.directiveSummary || null,
       relay: getExtinctionRelayStatus(state.relayOperation, `beacon-${Math.min(state.wave || 1, EXTINCTION_BEACON_TARGET)}`, lang),
       relaySummary: state.relaySummary || null,
       fieldObjective: getNexusFieldObjective(state.fieldOperation, state, lang),
@@ -3985,6 +4071,9 @@ function ExtinctionRoyale({
       relaySummary: null,
       fieldOperation: null,
       fieldSummary: null,
+      fieldDirective: null,
+      directiveSummary: null,
+      personalKit: null,
       hp: 100,
       maxHp: 100,
       ammo: 24,
@@ -4074,12 +4163,15 @@ function ExtinctionRoyale({
       color: weaponProfile.color,
       fireRate: weaponProfile.fireRate,
       spread: weaponProfile.spread,
+      resource: weaponProfile.resource,
       dmgMult: 1.0,
       ammo: maxAmmo,
       maxAmmo: maxAmmo
     };
     const next = {
       phase: 'running',
+      runMode,
+      lang,
       runId: `extinction-${globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`}`,
       hp: Math.min(260, Math.max(85, Math.round(stats.hp * 0.75 * role.hp))),
       maxHp: Math.min(260, Math.max(85, Math.round(stats.hp * 0.75 * role.hp))),
@@ -4121,6 +4213,7 @@ function ExtinctionRoyale({
     next.heroId = selectedHero.id;
     next.heroCategory = selectedHero.category;
     next.protocols = createExtinctionProtocolState(signatureProfile, next.runId);
+    next.fieldDirective = createExtinctionFieldDirective(next, { enabled: directiveEnabled, mode: runMode });
     next.relayOperation = createExtinctionRelayOperation({ enabled: relayEnabled || fieldSelected, runId: next.runId, mode: runMode });
     next.fieldOperation = createNexusFieldOperation(next, { enabled: fieldSelected, mode: runMode, briefing: fieldAccess.briefing });
     if (next.fieldOperation) {
@@ -4130,12 +4223,13 @@ function ExtinctionRoyale({
     stateRef.current = next;
     setRunSnapshot(buildRunSnapshot(next));
     sound.playSfx('levelup');
-  }, [buildEnemies, buildLoot, buildRunSnapshot, lang, objectives, onSessionStart, relayEnabled, roleProfile, runMode, selectedHero, signatureProfile, universeFragments, weaponProfile, fieldSelected, fieldAccess.briefing]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, lang, objectives, onSessionStart, relayEnabled, directiveEnabled, roleProfile, runMode, selectedHero, signatureProfile, universeFragments, weaponProfile, fieldSelected, fieldAccess.briefing]);
 
   const finishRun = useCallback((result) => {
     const state = stateRef.current;
     if (state.phase !== 'running' || !['victory','defeat'].includes(result)) return;
     if (result === 'victory' && state.fieldOperation && state.fieldOperation.status !== 'returned') return;
+    if (result === 'victory' && !canCompleteExtinctionFieldDirective(state)) return;
     sceneInputsRef.current.clear();
     state.moveKeys = {};
     aimPointerRef.current = emptySceneAim();
@@ -4157,6 +4251,9 @@ function ExtinctionRoyale({
     const fieldProof = victory ? getNexusFieldRunProof(state.fieldOperation) : null;
     state.fieldSummary = state.fieldOperation ? { id: state.fieldOperation.id, returned: Boolean(fieldProof) } : null;
     clearNexusFieldOperation(state);
+    state.directiveSummary = getExtinctionFieldDirectiveStatus(state, lang);
+    state.fieldDirective = null;
+    state.personalKit = null;
     state.phase = 'ended';
     state.relaySummary = state.relayOperation ? {
       secured: Object.values(state.relayOperation.beacons).filter(entry => entry.status === 'secured').length
@@ -4303,14 +4400,16 @@ function ExtinctionRoyale({
         state.px = Math.max(-7.5, Math.min(7.5, state.px + state.vx));
         state.py = Math.max(-1.4, Math.min(28, state.py + state.vy));
         state.relayOperation = tickExtinctionRelayOperation(state.relayOperation, state);
+        tickExtinctionFieldDirective(state);
 
         state.enemies = state.enemies.map((enemy, index) => {
           if (enemy.hp <= 0) return enemy;
-          const slow = state.scan > 0 ? 0.55 : 1;
+          const sourceSlow = getExtinctionProtocolSpeedFactor(state, enemy) * getExtinctionDirectiveSpeedFactor(state, enemy);
+          const slow = (state.scan > 0 ? 0.55 : 1) * sourceSlow;
           const dx = state.px - enemy.wx;
           const dy = state.py - enemy.wy;
           const distance = Math.max(0.2, Math.hypot(dx, dy));
-          const pressure = enemy.kind === 'Sniper' ? 0.003 : enemy.speed * 10.5 * slow * (1.05 - state.zone * 0.24);
+          const pressure = enemy.kind === 'Sniper' ? 0.003 * sourceSlow : enemy.speed * 10.5 * slow * (1.05 - state.zone * 0.24);
           const orbit = enemy.kind === 'Sniper' ? Math.sin(state.t * 0.02 + index) * 0.025 : Math.sin(state.t * 0.014 + index) * 0.01;
           return {
             ...enemy,
@@ -4344,7 +4443,9 @@ function ExtinctionRoyale({
           const pendingBeacon = runMode === 'extraction'
             && state.wave <= EXTINCTION_BEACON_TARGET
             && state.loot.some(item => item.type === 'beacon' && item.wave === state.wave && !item.used);
-          if (pendingBeacon) {
+          if (!canAdvanceExtinctionDirectiveWave(state)) {
+            state.statusText = getExtinctionFieldDirectiveStatus(state, lang)?.text;
+          } else if (pendingBeacon) {
             state.statusText = lang === 'fr'
               ? `Vague ${state.wave} nettoyée: rejoins la balise et utilise LOOT / E.`
               : `Wave ${state.wave} cleared: reach the beacon and use LOOT / E.`;
@@ -4374,7 +4475,7 @@ function ExtinctionRoyale({
           }
         }
         if (state.hp <= 0) finishRun('defeat');
-        else if (runMode === 'infestation' && state.t >= EXTINCTION_INFESTATION_TARGET_FRAMES) finishRun('victory');
+        else if (runMode === 'infestation' && state.t >= EXTINCTION_INFESTATION_TARGET_FRAMES && canCompleteExtinctionFieldDirective(state)) finishRun('victory');
         if (state.t % 18 === 0) {
           setRunSnapshot(buildRunSnapshot(state));
         }
@@ -4566,16 +4667,10 @@ function ExtinctionRoyale({
 
       state.enemies.forEach(enemy => {
         if (enemy.hp <= 0) return;
-        const dx = enemy.wx - state.px;
-        const dy = enemy.wy - state.py;
-        const cos = Math.cos(-state.angle - Math.PI / 2);
-        const sin = Math.sin(-state.angle - Math.PI / 2);
-        const rx = dx * cos - dy * sin;
-        const ry = dx * sin + dy * cos;
-        const dist = Math.hypot(rx, ry);
-        if (dist > 18) return;
-        const plotX = radX + (rx / 18) * radR;
-        const plotY = radY + (ry / 18) * radR;
+        const marker = getExtinctionRadarPoint(state, enemy, radR);
+        if (!marker || marker.clamped) return;
+        const plotX = radX + marker.x;
+        const plotY = radY + marker.y;
         ctx.fillStyle = '#ff3b3b';
         ctx.beginPath();
         ctx.arc(plotX, plotY, 3, 0, TAU);
@@ -4591,6 +4686,7 @@ function ExtinctionRoyale({
       }
       ctx.restore();
 
+      drawExtinctionDirectiveMarkers(ctx, state, canvas.width, canvas.height, projectWorld, { x: radX, y: radY, radius: radR });
       drawExtinctionProtocols(ctx, state, canvas.width, canvas.height, projectWorld, { ownerId: viewmodel.id, image: fpsProjectileRef.current });
       const handFrame = getExtinctionHandFrame(viewmodel, state);
       const sheet = fpsHandsRef.current;
@@ -4705,7 +4801,14 @@ function ExtinctionRoyale({
       }
 
       const closeBonus = selectedHero?.category === 'slayer' && projectWorld(target, state).dist < 2.2 ? 1.45 : 1;
-      damageExtinctionEnemy(state, target, Math.round(34 * role.dmg * closeBonus * wep.dmgMult), triggerEnemyDrop, 8);
+      const dealt = damageExtinctionEnemy(state, target, Math.round(34 * role.dmg * closeBonus * wep.dmgMult), triggerEnemyDrop, 8);
+      if (dealt <= 0) {
+        // The centralized damage path owns refusal feedback (including an
+        // unmarked Hunt core). A fired round is not a confirmed impact.
+        state.hitMarkerTimer = 0;
+        sound.playSfx('shield');
+        return;
+      }
       state.hitMarkerTimer = 6;
       state.screenShake = 5.5 + wep.dmgMult * 1.5;
 
@@ -4722,6 +4825,7 @@ function ExtinctionRoyale({
     if (sessionPausedRef.current || intelRef.current) return;
     const state = stateRef.current;
     if (state.phase !== 'running' || state.reloadPulse > 0) return;
+    if (state.weapon?.type === 'pistol' && state.weapon.resource === 'cooldown') return;
     const weapon = state.weapon || { ammo: state.ammo || 0, maxAmmo: state.maxAmmo || 24 };
     const needed = Math.max(0, weapon.maxAmmo - weapon.ammo);
     const loaded = Math.min(needed, state.reserveAmmo || 0);
@@ -4738,6 +4842,20 @@ function ExtinctionRoyale({
     state.reloadPulse = 36;
     state.statusText = lang === 'fr' ? `Recharge: +${loaded}.` : `Reloaded: +${loaded}.`;
     sound.playSfx('coin');
+  };
+
+  const restorePersonalKit = () => {
+    if (sessionPausedRef.current || intelRef.current || !restoreExtinctionPersonalKit(stateRef.current)) return;
+    stateRef.current.statusText = lang === 'fr' ? 'Kit personnel repris. Son stock et ses délais sont conservés.' : 'Personal kit restored. Its stock and cooldowns are preserved.';
+    setRunSnapshot(buildRunSnapshot(stateRef.current));
+  };
+
+  const markHuntTarget = () => {
+    if (sessionPausedRef.current || intelRef.current) return;
+    const state = stateRef.current, outcome = markExtinctionHuntTarget(state, { lang });
+    if (outcome.feedback) state.statusText = outcome.feedback;
+    if (outcome.activated) sound.playSfx('confirm');
+    setRunSnapshot(buildRunSnapshot(state));
   };
 
   const setMoveKey = useCallback((key, active, source = `virtual:${key}`) => {
@@ -4786,7 +4904,10 @@ function ExtinctionRoyale({
     if (state.phase !== 'running') return;
     const item = getExtinctionLootTarget(state);
     if (!item) {
-      state.statusText = lang === 'fr' ? 'Aucun objet à portée.' : 'No nearby item.';
+      const directive = interactExtinctionFieldDirective(state, { lang });
+      state.statusText = directive.feedback || (lang === 'fr' ? 'Aucun objet à portée.' : 'No nearby item.');
+      if (directive.activated) sound.playSfx('confirm');
+      setRunSnapshot(buildRunSnapshot(state));
       return;
     }
     const fieldReturn = interactNexusFieldReturn(state.fieldOperation, state, item, { lang });
@@ -4814,7 +4935,7 @@ function ExtinctionRoyale({
         const ammoGain = (state.weapon?.maxAmmo || state.maxAmmo || 24) * 2;
         state.reserveAmmo = Math.min((state.weapon?.maxAmmo || 24) * 5, (state.reserveAmmo || 0) + ammoGain);
       }
-      state.reloadPulse = 10;
+      state.reloadPulse = Math.max(state.reloadPulse || 0, 10);
     } else if (item.type === 'summon') {
       state.turret = Math.max(state.turret, 500);
     } else if (item.type === 'ultimate') {
@@ -4822,6 +4943,7 @@ function ExtinctionRoyale({
         damageExtinctionEnemy(state, enemy, 95, triggerEnemyDrop);
       });
     } else if (item.type === 'weapon') {
+      rememberExtinctionPersonalKit(state);
       state.weapon = { ...item.weaponData, ammo: item.weaponData.maxAmmo };
       state.ammo = state.weapon.ammo;
       state.reserveAmmo = state.weapon.maxAmmo * 2;
@@ -4918,6 +5040,12 @@ function ExtinctionRoyale({
       } else if (['f', 'c', 'x'].includes(key)) {
         if (!event.repeat) activateSignature({ f: 'secondary', c: 'defense', x: 'special' }[key]);
         event.preventDefault();
+      } else if (key === 'v') {
+        if (!event.repeat) restorePersonalKit();
+        event.preventDefault();
+      } else if (key === 't') {
+        if (!event.repeat) markHuntTarget();
+        event.preventDefault();
       } else if (key === 'shift') {
         activateRoleSkill();
         event.preventDefault();
@@ -4962,6 +5090,7 @@ function ExtinctionRoyale({
     if (stateRef.current.phase === 'ended') { setRuntimeError(null); setRenderAttempt(value => value + 1); return; }
     stateRef.current.phase = 'ready'; stateRef.current.rewards = null; stateRef.current.result = null;
     stateRef.current.relayOperation = null; stateRef.current.relaySummary = null;
+    stateRef.current.fieldDirective = null; stateRef.current.directiveSummary = null; stateRef.current.personalKit = null;
     clearNexusFieldOperation(stateRef.current); stateRef.current.fieldSummary = null;
     clearExtinctionProtocolEffects(stateRef.current);
     setRuntimeError(null); setRunSnapshot(buildRunSnapshot(stateRef.current));
@@ -4972,7 +5101,7 @@ function ExtinctionRoyale({
   const runEnded = runSnapshot.phase === 'ended';
 
   return (
-    <div data-viewmodel={viewmodel.id} className={`glass-panel nexus-play-panel extinction-panel ${runActive || runEnded ? 'extinction-panel-active' : ''} ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
+    <div data-viewmodel={viewmodel.id} data-fps-mode={runMode} className={`glass-panel nexus-play-panel extinction-panel ${runActive || runEnded ? 'extinction-panel-active' : ''} ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={hudTheme} mode="fps" />
       <ImmersiveDrawer open={Boolean(runtimeError)} onClose={recoverRun} lang={lang} title={lang === 'fr' ? 'Affichage Extinction interrompu' : 'Extinction display interrupted'}>
         <p>{lang === 'fr' ? 'La simulation est arrêtée. Cet incident n’attribue aucune récompense supplémentaire. Retourne à la préparation pour relancer une run.' : 'The simulation has stopped. This incident grants no additional rewards. Return to preparation to start a new run.'}</p>
@@ -4982,10 +5111,12 @@ function ExtinctionRoyale({
       <ImmersiveDrawer open={intelOpen} onClose={() => setIntelOpen(false)} lang={lang} title={lang === 'fr' ? 'Directive et commandes' : 'Directive and controls'}>
         <p>{objectives[runMode]}</p>
         {runSnapshot.fieldObjective && <p>{runSnapshot.fieldObjective.title} · {runSnapshot.fieldObjective.detail}</p>}
+        {runSnapshot.directive && <p>{runSnapshot.directive.title} · {runSnapshot.directive.rule}</p>}
         {runSnapshot.relay?.status !== 'disabled' && runSnapshot.relay && <p>{lang === 'fr' ? 'Relais sous pression : active chaque balise avec E / LOOT, reste dans son périmètre pendant trois secondes actives, puis utilise E / LOOT pour la stabiliser. Sortir du périmètre suspend la synchronisation.' : 'Relays under pressure: activate each beacon with E / LOOT, stay inside its perimeter for three active seconds, then use E / LOOT to secure it. Leaving the perimeter suspends synchronization.'}</p>}
-        <p>{lang === 'fr' ? 'Visuel FPS : les planches personnelles disponibles sont liées à leur propriétaire. Les armes ramassées et les vues manquantes utilisent un schéma de secours, pas une illustration certifiée du personnage.' : 'FPS visuals: available personal sheets are bound to their owner. Pickup weapons and missing views use a fallback schematic, not certified character artwork.'}</p>
+        <p>{lang === 'fr' ? 'La vue suit ton kit et les armes ramassées. Certaines signatures utilisent une vue schématique.' : 'The view follows your kit and pickup weapons. Some signatures use a schematic view.'}</p>
         <p>{runSnapshot.statusText}</p>
         <p>{lang === 'fr' ? 'ZQSD/WASD : déplacement. Flèches gauche/droite : tourner. Glisser sur la vue : viser. Toucher la vue ou Espace : tirer. R : recharger. E : récupérer un objet. Maj : capacité de rôle.' : 'WASD: movement. Left/right arrows: turn. Drag the view: aim. Tap the view or Space: fire. R: reload. E: collect an item. Shift: role ability.'}</p>
+        <p>{lang === 'fr' ? 'F : secondaire. C : défense. X : ultime chargé. V : reprendre le kit personnel après un ramassage. T : marquer le Champion dans la variante de chasse. Les repères jaunes au radar indiquent les objectifs ; le haut du radar suit la direction du regard.' : 'F: secondary. C: defense. X: charged ultimate. V: restore the personal kit after a pickup. T: mark the Champion in the hunt variant. Yellow radar markers identify objectives; radar up follows the viewing direction.'}</p>
         {getExtinctionProtocolBrief(signatureProfile?.actions.secondary, lang) && <p>{getExtinctionProtocolBrief(signatureProfile.actions.secondary, lang)}</p>}
         <p>{lang === 'fr' ? 'Format paysage conseillé. Les boutons de déplacement fonctionnent aussi avec Espace ou Entrée maintenus.' : 'Landscape recommended. Movement buttons also work by holding Space or Enter.'}</p>
         <p>{lang === 'fr' ? 'La simulation est suspendue pendant la consultation. Fermer ce terminal ne relance aucune commande maintenue.' : 'Simulation is paused while you read. Closing this terminal does not resume held commands.'}</p>
@@ -5003,11 +5134,17 @@ function ExtinctionRoyale({
             {[
               ['extraction', 'Solo Extraction', 'Solo Extraction'], ['last_signal', 'Dernier Signal', 'Last Signal'],
               ['infestation', 'Infestation', 'Infestation'], ['hunt', 'Chasse au Champion', 'Champion Hunt']
-            ].map(([id, fr, en]) => <button key={id} type="button" aria-pressed={runMode === id} onClick={() => { setRunMode(id); if (id !== 'extraction') setFieldEnabled(false); }}><strong>{lang === 'fr' ? fr : en}</strong><small>{objectives[id]}</small></button>)}
+            ].map(([id, fr, en]) => <button key={id} type="button" aria-pressed={runMode === id} disabled={runActive || runEnded} onClick={() => { setRunMode(id); setDirectiveEnabled(false); if (id !== 'extraction') setFieldEnabled(false); }}><strong>{lang === 'fr' ? fr : en}</strong><small>{objectives[id]}</small></button>)}
           </div>
           {runMode === 'extraction' && <label className="extinction-relay-option">
             <input type="checkbox" data-relay-operation checked={relayEnabled || fieldSelected} disabled={runActive || runEnded || fieldSelected} onChange={event => setRelayEnabled(event.target.checked)} />
             <span><strong>{lang === 'fr' ? 'RELAIS SOUS PRESSION' : 'RELAYS UNDER PRESSURE'}</strong><small>{lang === 'fr' ? 'Option de terrain : active chaque balise, défends son périmètre trois secondes, puis stabilise-la. Les récompenses restent celles de l’Extraction.' : 'Field operation: activate each beacon, defend its perimeter for three seconds, then secure it. Extraction rewards apply.'}</small></span>
+          </label>}
+          {runMode !== 'extraction' && <label className="extinction-relay-option">
+            <input type="checkbox" data-field-directive checked={directiveEnabled} disabled={runActive || runEnded} onChange={event => setDirectiveEnabled(event.target.checked)} />
+            <span><strong>{getLocalizedText(EXTINCTION_FIELD_DIRECTIVES[runMode].label, lang)}</strong>
+              <small>{getLocalizedText(EXTINCTION_FIELD_DIRECTIVES[runMode].rule, lang)}</small>
+              <small>{lang === 'fr' ? 'Variante facultative. Récompenses ordinaires du mode ; aucun bonus de monnaie ajouté.' : 'Optional variant. Ordinary mode rewards; no additional currency bonus.'}</small></span>
           </label>}
           {runMode === 'extraction' && <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(career)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang}>
             <label className="nexus-field-toggle">
@@ -5024,6 +5161,7 @@ function ExtinctionRoyale({
           </div>
           <select
             value={selectedHero?.id || ''}
+            disabled={runActive || runEnded}
             onChange={event => setSelectedHeroId(event.target.value)}
             className="nexus-select"
             aria-label={lang === 'fr' ? 'Signature jouable pour la Zone d Extinction' : 'Playable Extinction Zone signature'}
@@ -5033,11 +5171,12 @@ function ExtinctionRoyale({
             ))}
           </select>
           {!playableHeroes.length && <p role="status">{lang === 'fr' ? 'Aucune signature combattante débloquée. Les personnages non combattants restent disponibles dans la Cité et leurs épreuves.' : 'No unlocked combat signature. Non-combat characters remain available in the City and their trials.'}</p>}
+          <ExtinctionFighterBriefing profile={fighterProfile} lang={lang} />
           {signatureProfile && <section className="extinction-signature-brief" aria-label={lang === 'fr' ? 'Actions personnelles disponibles' : 'Available personal actions'}>
             <strong>{lang === 'fr' ? 'PROTOCOLES DE SIGNATURE' : 'SIGNATURE PROTOCOLS'}</strong>
             {Object.entries(signatureProfile.actions).map(([slot, action]) => <span key={slot}>{slot === 'simple' ? (lang === 'fr' ? 'TIR / FRAPPE' : 'FIRE / STRIKE') : {secondary: 'F', defense: 'C', special: 'X'}[slot]} · {getLocalizedText(action.name, lang)}</span>)}
             {getExtinctionProtocolBrief(signatureProfile.actions.secondary, lang) && <p>{getExtinctionProtocolBrief(signatureProfile.actions.secondary, lang)}</p>}
-            <small>{lang === 'fr' ? 'Adaptation jouable des actions source. Visuels personnels incomplets ; armes ramassées et capacité de rôle conservées.' : 'Playable adaptation of source actions. Personal artwork remains incomplete; pickup weapons and role ability are preserved.'}</small>
+            <small>{lang === 'fr' ? 'Les secondaires, défenses et ultimes restent disponibles avec une arme ramassée. Maj active le soutien de rôle A.R.C.A.' : 'Secondary, defense and ultimate actions remain available with a pickup weapon. Shift activates A.R.C.A. role support.'}</small>
           </section>}
           <div className="nexus-play-intel">
             <strong>{weaponProfile.name}</strong>
@@ -5056,6 +5195,11 @@ function ExtinctionRoyale({
               <progress value={runSnapshot.relay.ticks} max={runSnapshot.relay.requiredTicks} aria-label={lang === 'fr' ? 'Synchronisation de la balise' : 'Beacon synchronization'} />
               <span>{runSnapshot.relay.shortText}</span>
             </div>}
+            {runActive && runSnapshot.directive && <div className="extinction-directive-status" data-directive={runSnapshot.directive.id}>
+              <strong>{runSnapshot.directive.title} · {runSnapshot.directive.completed}/{runSnapshot.directive.required}</strong>
+              <progress value={runSnapshot.directive.progress} max="1" aria-label={lang === 'fr' ? 'Progression de la directive' : 'Directive progress'} />
+              <span>{runSnapshot.directive.text}</span>
+            </div>}
           </div>
         )}
         {runSnapshot.rewards && (
@@ -5064,6 +5208,7 @@ function ExtinctionRoyale({
             <span>+{runSnapshot.rewards.gold} {lang === 'fr' ? 'Or' : 'Gold'} / +{runSnapshot.rewards.shards} {lang === 'fr' ? 'Fragments' : 'Shards'} / +{runSnapshot.rewards.modeXp} XP {lang === 'fr' ? 'Extinction' : 'Extinction'}</span>
             <small>{lang === 'fr' ? 'Récompenses transférées. Ce bilan reste ouvert jusqu’à ta validation.' : 'Rewards transferred. Results stay open until you continue.'}</small>
             {runSnapshot.relaySummary && <small>{lang === 'fr' ? 'Relais sous pression' : 'Relays under pressure'} · {runSnapshot.relaySummary.secured}/{EXTINCTION_BEACON_TARGET} {lang === 'fr' ? 'balises synchronisées' : 'beacons synchronized'}</small>}
+            {runSnapshot.directiveSummary && <small data-directive-result={runSnapshot.directiveSummary.id}>{runSnapshot.directiveSummary.title} · {runSnapshot.directiveSummary.completed}/{runSnapshot.directiveSummary.required}</small>}
             {runSnapshot.fieldSummary && <small data-field-result={runSnapshot.fieldSummary.returned ? 'returned' : 'not-returned'}>{runSnapshot.fieldSummary.returned
               ? (lang === 'fr' ? 'Retour des témoins : relevé transmis au sas.' : 'Witness return: record transmitted at the airlock.')
               : (lang === 'fr' ? 'Retour des témoins : relevé non transmis. Le dossier de la Cité reste disponible.' : 'Witness return: record not transmitted. The City report remains available.')}</small>}
@@ -5079,7 +5224,9 @@ function ExtinctionRoyale({
               <progress value={runSnapshot.hp} max={runSnapshot.maxHp} aria-label={lang === 'fr' ? 'Points de vie' : 'Health'} />
             </span>
             <span className="extinction-stat-armor">ARM {Math.round(runSnapshot.armor || 0)}</span>
-            <span className="extinction-stat-ammo">{lang === 'fr' ? 'MUN' : 'AMMO'} {runSnapshot.ammo}+{runSnapshot.reserveAmmo}</span>
+            <span className="extinction-stat-ammo" title={runSnapshot.weaponName}>{runActive && runSnapshot.weaponResource === 'cooldown'
+              ? (lang === 'fr' ? 'KIT · RÉCUPÉRATION' : 'KIT · COOLDOWNS')
+              : `${lang === 'fr' ? 'MUN' : 'AMMO'} ${runSnapshot.ammo}+${runSnapshot.reserveAmmo}`}</span>
             <span className="extinction-stat-wave">{lang === 'fr' ? 'VAGUE' : 'WAVE'} {runSnapshot.wave}</span>
             <span className="extinction-stat-kills">K.O. {runSnapshot.kills}</span>
             {activeSignature && <span className="extinction-stat-signature">{lang === 'fr' ? 'ULTIME' : 'ULTIMATE'} {Math.floor(runSnapshot.signatureCharge || 0)}/100{runSnapshot.signatureGuard ? (lang === 'fr' ? ' · GARDE' : ' · GUARD') : ''}</span>}
@@ -5093,8 +5240,10 @@ function ExtinctionRoyale({
             )}
             {runActive && (
               <>
-                <button className="btn-retro extinction-primary-action" onClick={fire} title={lang === 'fr' ? 'Tire avec l arme FPS du heros selectionne.' : 'Fire the selected hero FPS weapon.'}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
-                <button className="btn-retro extinction-primary-action" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
+                <button className="btn-retro extinction-primary-action" data-primary-action onClick={fire} title={getLocalizedText(activeSignature?.actions.simple?.name, lang)}>{runSnapshot.weaponType === 'pistol' && ['melee', 'sweep', 'counter'].includes(activeSignature?.actions.simple?.kind) ? (lang === 'fr' ? 'FRAPPER' : 'STRIKE') : runSnapshot.weaponType === 'pistol' && ['control', 'support', 'heal', 'focus'].includes(activeSignature?.actions.simple?.kind) ? 'ACTION' : (lang === 'fr' ? 'TIRER' : 'FIRE')}</button>
+                <button className="btn-retro extinction-primary-action" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0 || runSnapshot.weaponResource === 'cooldown'} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
+                {runSnapshot.canRestoreKit && <button className="btn-retro extinction-primary-action" data-personal-kit onClick={restorePersonalKit}>{lang === 'fr' ? 'V · KIT PERSONNEL' : 'V · PERSONAL KIT'}</button>}
+                {runSnapshot.directive?.mode === 'hunt' && <button className="btn-retro extinction-primary-action" data-hunt-mark onClick={markHuntTarget} disabled={!runSnapshot.directive.canMark || sessionPaused || intelOpen}>{lang === 'fr' ? 'T · MARQUER' : 'T · MARK'}</button>}
                 <button className="btn-retro extinction-primary-action" onClick={activateRoleSkill} disabled={runSnapshot.skillCooldown > 0} title={lang === 'fr' ? 'Active la capacité spéciale liée au rôle du héros.' : 'Activate the selected hero role ability.'}>{runSnapshot.skillCooldown > 0 ? `ROLE ${Math.ceil(runSnapshot.skillCooldown / 60)}s` : 'ROLE'}</button>
                 <button className="btn-retro extinction-primary-action" onClick={collectLoot} disabled={!runSnapshot.nearbyLoot} title={runSnapshot.nearbyLoot || (lang === 'fr' ? 'Approche-toi d un objet ou d une balise.' : 'Move near an item or beacon.')}>{runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}</button>
                 {activeSignature && <div className="extinction-protocol-actions" role="group" aria-label={lang === 'fr' ? 'Protocoles personnels' : 'Personal protocols'}>
@@ -10450,6 +10599,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             onLocationChange={next => setActivityProgress(previous => JSON.stringify(previous.mosaicLocation) === JSON.stringify(next) ? previous : { ...previous, mosaicLocation: next })}
             reconnaissanceProgress={activityProgress.mosaicReconnaissance}
             onReconnaissanceProgress={next => setActivityProgress(previous => ({ ...previous, mosaicReconnaissance: next }))}
+            characterMissionProgress={activityProgress.mosaicCharacterMissions}
+            onCharacterMissionProgress={next => setActivityProgress(previous => ({ ...previous, mosaicCharacterMissions: next }))}
             extinctionCareer={activityProgress.extinctionCareer}
             onOpenService={(service, options = {}) => {
               const fieldRequested = service === 'battleRoyale' && options.fieldOperation === NEXUS_FIELD_OPERATION_ID;

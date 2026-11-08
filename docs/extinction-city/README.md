@@ -1,5 +1,12 @@
 # Extinction & Cité — catalogue de production, 26 octobre 2026
 
+Nouvelle reprise du 8 novembre : [sept contrats de Cité, profils de tous les combattants et quatre directives FPS](../development/CITY_CHARACTER_MISSIONS_FPS_2026-11-08.md).
+Le [nouveau classeur par personnage](../excel/Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx)
+liste 3 824 propositions, dont 44 individualisées, et distingue les sept contrats
+jouables des travaux à réaliser. Les profils FPS couvrent 1 811 combattants ;
+les 101 non-combattants conservent leurs activités civiles. Les adaptations
+génériques et les limites artistiques restent explicites.
+
 Continuation du 8 novembre : [Retour des témoins, du rapport de la Cité au sas FPS](../development/DLC_ALBUM_NEXUS_RETURN_2026-11-08.md).
 Cette intervention relie un dossier Nexus terminé, trois relais synchronisés,
 le Champion et un retour physique au sas. La carrière conserve la première
@@ -19,6 +26,10 @@ Ce **second classeur** complète, sans le remplacer, `docs/excel/Multiverse_Brea
 Fichier : `docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx`.
 
 ## Périmètre exact
+
+Les sections suivantes conservent l’état historique du catalogue du 26 octobre.
+Pour les actions FPS maintenant exécutables et la nouvelle planification par
+personnage, utiliser le compte rendu du 8 novembre lié en tête de page.
 
 Les données sont résolues depuis les modules du dépôt à partir de `80a54ea5bf203b7991c213775bd3c7ec4d8b3fba`, puis enrichies de **propositions explicitement étiquetées** pour la production FPS et Cité. Les sources projet et les références externes héritées restent distinctes. Ces références externes n’ont pas été revalidées lors de cet export.
 

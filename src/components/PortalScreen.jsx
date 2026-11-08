@@ -19,6 +19,8 @@ import {
 } from '../game/portalBoosterEngine';
 import { capDuplicateRefunds, getBoosterPrice } from '../game/portalBoosterEconomy';
 import { buildBoosterCatalogGroups } from '../game/portalCatalogView';
+import { paginateCatalog } from '../game/catalogPagination.js';
+import PortalCatalogPager from './PortalCatalogPager.jsx';
 import { getPersonalPortalRotation, ROTATION_REROLL_GOLD_COST } from '../game/portalRotationReroll';
 import PortalBoosterDossier from './PortalBoosterDossier';
 import { getOcBoosterContentUpdate } from '../game/ocBoosterContentUpdates';
@@ -768,11 +770,17 @@ export default function PortalScreen({
   const [packQuery, setPackQuery] = useState('');
   const [showAllPacks, setShowAllPacks] = useState(false);
   const [openPackGroups, setOpenPackGroups] = useState({ original: true, franchise: false });
+  const [packPages, setPackPages] = useState({});
+  const [packPageSize, setPackPageSize] = useState(12);
+  const packSearchRef = useRef(null);
+  const packGroupRefs = useRef({});
   const [dossierBannerId, setDossierBannerId] = useState(null);
   const [rotationConfirmation, setRotationConfirmation] = useState(null);
   const [rotationPending, setRotationPending] = useState(false);
   const [rotationMessage, setRotationMessage] = useState(null);
   const rotationPendingRef = useRef(false);
+  const rotationRequestRef = useRef(null);
+  const rotationConfirmRef = useRef(null);
   const [artPreviewOpen, setArtPreviewOpen] = useState(false);
   const [openingPhase, setOpeningPhase] = useState('sealed');
   const [boosterRewards, setBoosterRewards] = useState([]);
@@ -1144,6 +1152,14 @@ export default function PortalScreen({
     query: packQuery
   }), [browsedPortalBanners, packQuery, visibleHeroes]);
   const filteredPortalBanners = catalogGroups.flatMap(group => group.banners);
+  const changePackPage = (groupId, page) => {
+    setPackPages(previous => ({ ...previous, [groupId]: page }));
+    window.requestAnimationFrame(() => {
+      const heading = packGroupRefs.current[groupId];
+      heading?.focus({ preventScroll: true });
+      heading?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    });
+  };
   const dossierBanner = useMemo(() => catalogPortalBanners.find(banner => banner.id === dossierBannerId) || null, [catalogPortalBanners, dossierBannerId]);
   const dossierCandidates = useMemo(() => dossierBanner ? makeBoosterCandidates({
     banner: dossierBanner,
@@ -1503,6 +1519,13 @@ export default function PortalScreen({
       universes: [...rotationUniverseNames],
       expectedCycle: rotationSchedule.cycle
     });
+    window.requestAnimationFrame(() => rotationConfirmRef.current?.focus());
+  };
+
+  const cancelRotationReroll = () => {
+    setRotationConfirmation(null);
+    setRotationMessage(null);
+    window.requestAnimationFrame(() => rotationRequestRef.current?.focus());
   };
 
   const confirmRotationReroll = async () => {
@@ -1520,6 +1543,7 @@ export default function PortalScreen({
     } finally {
       rotationPendingRef.current = false;
       setRotationPending(false);
+      window.requestAnimationFrame(() => (rotationConfirmRef.current || rotationRequestRef.current)?.focus());
     }
   };
 
@@ -1725,7 +1749,7 @@ export default function PortalScreen({
         >
           {getTranslation(lang, 'backToHub')}
         </button>
-        <button type="button" className="btn-retro" disabled={openingLocked} aria-haspopup="dialog" onClick={() => setCatalogOpen(true)}>
+        <button type="button" className="btn-retro" disabled={openingLocked} aria-haspopup="dialog" data-open-booster-catalog="true" onClick={() => setCatalogOpen(true)}>
           {lang === 'fr' ? 'CHOISIR UN BOOSTER' : 'CHOOSE A BOOSTER'}
         </button>
         <button
@@ -1782,23 +1806,43 @@ export default function PortalScreen({
           </div>
           <div className="booster-pack-search">
             <input
+              ref={packSearchRef}
               type="search"
               value={packQuery}
-              onChange={event => setPackQuery(event.target.value)}
+              onChange={event => { setPackQuery(event.target.value); setPackPages({}); }}
               placeholder={lang === 'fr' ? 'Rechercher univers ou heros...' : 'Search universe or hero...'}
-              aria-label={lang === 'fr' ? 'Rechercher un booster actif' : 'Search an active booster'}
+              aria-label={lang === 'fr' ? 'Rechercher parmi tous les boosters' : 'Search every booster'}
+              aria-describedby="booster-catalog-search-scope"
             />
             {packQuery && (
               <button
                 type="button"
                 className="btn-retro"
-                onClick={() => setPackQuery('')}
+                onClick={() => { setPackQuery(''); setPackPages({}); packSearchRef.current?.focus(); }}
                 aria-label={lang === 'fr' ? 'Effacer la recherche' : 'Clear search'}
               >
                 X
               </button>
             )}
           </div>
+        </div>
+
+        <div className="portal-catalog-scope">
+          <label>
+            <span>{lang === 'fr' ? 'Afficher' : 'Show'}</span>
+            <select
+              value={showAllPacks || normalizedPackQuery ? 'all' : 'available'}
+              disabled={Boolean(normalizedPackQuery)}
+              onChange={event => { setShowAllPacks(event.target.value === 'all'); setPackPages({}); }}
+            >
+              <option value="available">{lang === 'fr' ? 'Rotation actuelle et permanents' : 'Current rotation and permanent boosters'}</option>
+              <option value="all">{lang === 'fr' ? 'Tous les boosters intégrés' : 'Every integrated booster'}</option>
+            </select>
+          </label>
+          <p id="booster-catalog-search-scope">{lang === 'fr'
+            ? 'La recherche parcourt tous les boosters. Les offres hors rotation restent consultables, sans achat.'
+            : 'Search covers every booster. Off-rotation offers remain available to preview, without buying.'}</p>
+          <p role="status" className="portal-catalog-results">{filteredPortalBanners.length} {lang === 'fr' ? 'booster(s) correspondant(s)' : 'matching booster(s)'}</p>
         </div>
 
         <div className="booster-rotation-strip" data-rotation-cycle={rotationSchedule.cycle}>
@@ -1821,15 +1865,15 @@ export default function PortalScreen({
               : `Refresh temporary offers only: ${ROTATION_REROLL_GOLD_COST} Gold. Available: ${gold} Gold. Permanent boosters, guarantees and obtained pulls do not change.`}</p>
             {rotationConfirmation ? (
               <div role="group" aria-label={lang === 'fr' ? 'Confirmer le renouvellement payant' : 'Confirm paid rotation refresh'} style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                <button type="button" className="btn-retro" disabled={!canRerollRotation} onClick={confirmRotationReroll}>
+                <button ref={rotationConfirmRef} type="button" className="btn-retro" disabled={!canRerollRotation} onClick={confirmRotationReroll}>
                   {rotationPending ? (lang === 'fr' ? 'SAUVEGARDE EN COURS…' : 'SAVING…') : (lang === 'fr' ? `CONFIRMER · ${ROTATION_REROLL_GOLD_COST} OR` : `CONFIRM · ${ROTATION_REROLL_GOLD_COST} GOLD`)}
                 </button>
-                <button type="button" className="btn-retro" disabled={rotationPending} onClick={() => { setRotationConfirmation(null); setRotationMessage(null); }}>
+                <button type="button" className="btn-retro" disabled={rotationPending} onClick={cancelRotationReroll}>
                   {lang === 'fr' ? 'ANNULER SANS FRAIS' : 'CANCEL AT NO COST'}
                 </button>
               </div>
             ) : (
-              <button type="button" className="btn-retro" disabled={!canRerollRotation} onClick={requestRotationReroll}>
+              <button ref={rotationRequestRef} type="button" className="btn-retro" disabled={!canRerollRotation} onClick={requestRotationReroll}>
                 {lang === 'fr' ? 'RENOUVELER LA ROTATION…' : 'REFRESH ROTATION…'}
               </button>
             )}
@@ -1838,7 +1882,16 @@ export default function PortalScreen({
           </div>
         )}
 
-        {catalogGroups.map(group => (
+        {catalogGroups.map(group => {
+          const groupPage = paginateCatalog(group.banners, { page: (packPages[group.id] || 0) + 1, pageSize: packPageSize });
+          const groupLabel = group.id === 'original' ? (lang === 'fr' ? 'OC / NEXUS' : 'ORIGINAL / NEXUS') : (lang === 'fr' ? 'UNIVERS DE FRANCHISE' : 'FRANCHISE UNIVERSES');
+          const pager = position => <PortalCatalogPager
+            lang={lang} label={groupLabel} controlsId={`booster-catalog-grid-${group.id}`} position={position}
+            page={groupPage.page - 1} pageCount={groupPage.pageCount} start={groupPage.first} end={groupPage.last} total={groupPage.total} pageSize={packPageSize}
+            onPageChange={page => changePackPage(group.id, page)}
+            onPageSizeChange={size => { setPackPageSize(size); setPackPages({}); }}
+          />;
+          return (
           <details
             key={group.id}
             data-booster-group={group.id}
@@ -1848,13 +1901,14 @@ export default function PortalScreen({
               const open = event.currentTarget.open;
               setOpenPackGroups(previous => previous[group.id] === open ? previous : { ...previous, [group.id]: open });
             }}
-            style={{ marginTop: 14, border: '1px solid #284047', borderRadius: 6, padding: 12 }}
+            className="portal-catalog-group"
           >
-            <summary onClick={event => { if (normalizedPackQuery) event.preventDefault(); }} style={{ cursor: 'pointer', fontWeight: 700, padding: '6px 0' }}>
-              {group.id === 'original' ? (lang === 'fr' ? 'OC / NEXUS' : 'ORIGINAL / NEXUS') : (lang === 'fr' ? 'UNIVERS DE FRANCHISE' : 'FRANCHISE UNIVERSES')} · {group.banners.length}
+            <summary ref={node => { packGroupRefs.current[group.id] = node; }} onClick={event => { if (normalizedPackQuery) event.preventDefault(); }}>
+              {groupLabel} · {group.banners.length}
             </summary>
-            <div className="booster-catalog-grid">
-          {group.banners.map(banner => {
+            {groupPage.total > 0 && pager('top')}
+            <div className="booster-catalog-grid" id={`booster-catalog-grid-${group.id}`}>
+          {groupPage.items.map(banner => {
             const bannerHeroes = visibleHeroes.filter(hero => banner.match(hero));
             const owned = bannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
             const isActive = activeBannerData.id === banner.id;
@@ -1876,6 +1930,7 @@ export default function PortalScreen({
               <button
                 key={banner.id}
                 type="button"
+                data-preview-booster={banner.id}
                 onClick={() => setDossierBannerId(banner.id)}
                 disabled={openingLocked}
                 className={`portal-booster ${packArt ? 'has-pack-art' : 'generated-pack-art'} ${isActive ? 'selected' : ''} ${!isAvailable ? 'unavailable' : ''}`}
@@ -1907,34 +1962,21 @@ export default function PortalScreen({
                       ? (lang === 'fr' ? 'ROTATION ACTIVE' : 'ACTIVE ROTATION')
                       : (lang === 'fr' ? 'HORS ROTATION' : 'OFF ROTATION')}
                 </span>
+                <span className="portal-booster-preview-label">{lang === 'fr' ? 'CONSULTER LE DOSSIER' : 'VIEW DOSSIER'}</span>
               </button>
             );
           })}
             </div>
+            {groupPage.pageCount > 1 && pager('bottom')}
             {group.banners.length === 0 && <p>{lang === 'fr' ? 'Aucun booster dans cette sélection.' : 'No boosters in this selection.'}</p>}
           </details>
-        ))}
+        ); })}
 
         {filteredPortalBanners.length === 0 && (
           <div className="booster-empty-state">
             {lang === 'fr'
-              ? 'Aucun booster actif ne correspond. Reactive la Trame dans Regulation A.R.C.A. ou efface la recherche.'
-              : 'No active booster matches. Reactivate the Thread in A.R.C.A. Regulation or clear the search.'}
-          </div>
-        )}
-        {!normalizedPackQuery && illustratedPortalBanners.length > rotationPortalBanners.length && (
-          <div className="booster-catalog-more">
-            <button
-              type="button"
-              className="btn-retro"
-              onClick={() => setShowAllPacks(current => !current)}
-            >
-              {showAllPacks
-                ? (lang === 'fr' ? 'REVENIR A LA ROTATION ACTUELLE' : 'BACK TO CURRENT ROTATION')
-                : (lang === 'fr'
-                    ? `APERÇU DES ${illustratedPortalBanners.length} BOOSTERS INTEGRES`
-                    : `PREVIEW ALL ${illustratedPortalBanners.length} INTEGRATED BOOSTERS`)}
-            </button>
+                ? 'Aucun booster ne correspond. Réactive la Trame dans Régulation A.R.C.A. ou efface la recherche.'
+                : 'No booster matches. Reactivate the Thread in A.R.C.A. Regulation or clear the search.'}
           </div>
         )}
       </section>

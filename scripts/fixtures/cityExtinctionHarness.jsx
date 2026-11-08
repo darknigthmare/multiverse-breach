@@ -12,7 +12,7 @@ const mode = params.get('mode') === 'fps' ? 'fps' : 'city';
 const catalog = [createPlayerHero({name:'QA'}), ...(params.get('catalog') === 'full' ? HEROES_DB
   : params.get('catalog') === 'nexus' ? HEROES_DB.filter(h => h.universe === 'Nexus de Convergence')
     : HEROES_DB.filter(h => ['arca_mirelle','arca_bastion','arca_nova'].includes(h.id)))];
-const audit = { reports: [], services: [], saves: [], reconnaissanceSaves: [], mounted: true, mode };
+const audit = { reports: [], services: [], saves: [], reconnaissanceSaves: [], characterMissionSaves: [], mounted: true, mode };
 window.__sceneQA = audit;
 // Test environment only: the bot fixes randomness before START, while gameplay
 // remains driven by the real scene and input events. Each replay gets a fresh
@@ -75,9 +75,11 @@ export function Harness(){
   const [mounted,setMounted]=useState(true), [revision,setRevision]=useState(0);
   const [saved,setSaved]=useState(null), [guide,setGuide]=useState(null);
   const [reconnaissance,setReconnaissance]=useState(null);
+  const [characterMissions,setCharacterMissions]=useState(null);
   const [exit,setExit]=useState(0);
   audit.remount=()=>setMounted(true);audit.revision=revision;audit.saved=saved;
   audit.reconnaissance=reconnaissance;
+  audit.characterMissions=characterMissions;
   // Test-only prepared entry points; production has no writable QA hook.
   audit.setLocation=location=>setSaved(location);
   const service=(name,universe)=>{audit.services.push({service:name,universe,savedAtNavigation:audit.saves.at(-1)});setMounted(false);};
@@ -90,6 +92,7 @@ export function Harness(){
     <main className={`hub-screen ${dedicated?'is-dedicated-game':''}`} style={{paddingTop:60}}>
     {mounted && (mode==='city'?<MosaicCityHub {...props} completedStages={[]} stages={[]} playerProfile={{name:'QA'}} tutorialProgress={guide}
       reconnaissanceProgress={reconnaissance} onReconnaissanceProgress={v=>{audit.reconnaissanceSaves.push(structuredClone(v));setReconnaissance(v);}}
+      characterMissionProgress={characterMissions} onCharacterMissionProgress={v=>{audit.characterMissionSaves.push(structuredClone(v));setCharacterMissions(v);}}
       onTutorialProgress={v=>setGuide(v)} savedLocation={saved} onLocationChange={v=>{audit.saves.push(v);setSaved(v);}}
       onOpenMissions={u=>service('missions',u)} onOpenCodex={u=>service('codex',u)}
       onOpenService={(name,u)=>service(name,u)}/>

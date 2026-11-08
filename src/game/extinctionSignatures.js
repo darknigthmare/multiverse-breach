@@ -1,6 +1,7 @@
 /** Explicit FPS adaptations of the twelve Nexus source kits. No art/canon approval.
  * State belongs to one run and one owner; pure simulation, no timers or save writes.
  */
+import { canDamageExtinctionDirectiveEnemy } from './extinctionFieldDirectives.js';
 export const EXTINCTION_SIGNATURE_IDS = Object.freeze([
   'player_anchor', 'arca_mirelle', 'arca_bastion', 'arca_nova',
   'arca_marrow', 'arca_sable', 'arca_loom', 'arca_tessera', 'arca_quillon',
@@ -11,6 +12,22 @@ const finite = (n, fallback = 0) => Number.isFinite(Number(n)) ? Number(n) : fal
 const clamp = (n, low, high) => Math.max(low, Math.min(high, n));
 const copy = value => value && typeof value === 'object' ? { ...value } : value;
 const text = (v, lang) => typeof v === 'string' ? v : v?.[lang] || v?.fr || v?.en || '';
+const MOVEMENT_DISTANCE = Object.freeze({ dash: 2.4, teleport: 3 });
+const SUPPORT_RADIUS = 8;
+const MINE_REACH = Object.freeze({ kind: 'placement', value: 2, effectRadius: 2.5 });
+/** Effective reach for UI/catalogs without rewriting the historical authored
+ * action objects. Self effects have no target; movement is not attack range.
+ */
+export function getExtinctionActionReach(action) {
+  const kind = action?.kind;
+  if (Object.hasOwn(MOVEMENT_DISTANCE, kind)) return { kind: 'movement', value: MOVEMENT_DISTANCE[kind] };
+  if (['heal', 'guard', 'buff', 'support', 'barricade', 'drone'].includes(kind)) return { kind: 'self', value: 0 };
+  if (kind === 'return_probe') return { kind: 'anchor', value: 0 };
+  if (kind === 'mine') return { ...MINE_REACH };
+  if (['summon', 'reflection'].includes(kind)) return { kind: 'support-radius', value: SUPPORT_RADIUS };
+  return { kind: ['pulse', 'control_pulse'].includes(kind) ? 'radius'
+    : ['melee', 'sweep', 'counter'].includes(kind) ? 'contact' : 'aim', value: Math.max(0, finite(action?.range)) };
+}
 const delivery = {
   bullet: 'hitscan', projectile: 'projectile', rocket: 'projectile',
   melee: 'melee', beam: 'beam', beam_aoe: 'beam', nexus_aoe: 'pulse',
@@ -48,7 +65,9 @@ export function createExtinctionProtocolState(profile, runId) {
     projectiles: [], effects: [], sequence: 0, activeSlot: null, activeFrames: 0,
     casts: { simple: 0, secondary: 0, defense: 0, special: 0 },
     ...(profile?.heroId === 'arca_tessera' ? { reflection: null } : {}),
-    ...(profile?.heroId === 'arca_nadir' ? { returnProbe: null, returns: 0 } : {}) };
+    ...(profile?.heroId === 'arca_nadir' ? { returnProbe: null, returns: 0 } : {}),
+    ...(profile?.ultimateCharge?.kind === 'evasion' ? { successfulEvasions: 0, lastEvasionChargeTick: -1 } : {}),
+    ...(Object.values(profile?.actions || {}).some(action => action.kind === 'summon') ? { summon: null } : {}) };
 }
 const valid = state => state?.phase === 'running' && state.protocols?.profile
   && state.protocols.ownerId === state.heroId && state.protocols.runId === state.runId;
@@ -64,7 +83,7 @@ export function getExtinctionProtocolStatus(state, slot) {
   if (p.cooldowns[slot] > 0) return 'cooldown';
   if (slot === 'special' && p.charge < 100) return 'charge';
   if (slot === 'simple' && state.weapon?.type && state.weapon.type !== 'pistol') return 'pickup';
-  if (slot === 'simple' && action.kind !== 'melee') {
+  if (slot === 'simple' && action.kind !== 'melee' && action.resource !== 'cooldown') {
     if (state.reloadPulse > 0) return 'reload';
     if ((state.weapon?.ammo ?? state.ammo ?? 0) < 1) return 'ammo';
   }
@@ -72,6 +91,11 @@ export function getExtinctionProtocolStatus(state, slot) {
 }
 export function getExtinctionProtocolBrief(action, lang = 'fr') {
   const copy = {
+    control: { fr: 'Effet de contrôle : ralentit la cible visée sans lui infliger de dégâts. Les applications réussies chargent l’ultime.', en: 'Control effect: slows the aimed target without damage. Successful applications charge the ultimate.' },
+    control_pulse: { fr: 'Contrôle de zone : ralentit les menaces proches pendant la durée de la technique.', en: 'Area control: slows nearby threats for the technique duration.' },
+    summon: { fr: 'Pose une balise de soutien : elle reste au point de lancement et attaque les menaces à moins de huit unités.', en: 'Place a support beacon: it stays at the cast point and attacks threats within eight units.' },
+    support: { fr: 'Entraide : récupère des PV et réduit brièvement les dégâts reçus. La simulation solo applique le soutien au personnage contrôlé.', en: 'Support: restores health and briefly reduces incoming damage. Solo simulation applies the support to the controlled character.' },
+    focus: { fr: 'Technique ciblée : vise une menace devant toi à moins de huit unités.', en: 'Targeted technique: aim at a threat in front of you within eight units.' },
     reflection: {
       fr: 'F pose un reflet pour 5 secondes actives. Il vise les menaces proches de sa position ; un seul reflet peut agir.',
       en: 'F places a reflection for 5 active seconds. It targets threats near its position; only one reflection can act.'
@@ -91,10 +115,17 @@ export function clearExtinctionProtocolEffects(state) {
   p.projectiles = []; p.effects = [];
   if (Object.hasOwn(p, 'reflection')) p.reflection = null;
   if (Object.hasOwn(p, 'returnProbe')) p.returnProbe = null;
+  if (Object.hasOwn(p, 'summon')) p.summon = null;
+  for (const enemy of state.enemies || []) if (enemy.protocolControl?.runId === state.runId
+    && enemy.protocolControl?.ownerId === state.heroId) delete enemy.protocolControl;
 }
 /** Every damage path calls this; a champion stays protected until drones die. */
 export function damageExtinctionEnemy(state, enemy, damage, onKill, chargeGain = 0) {
   if (state?.phase !== 'running' || state.paused || !enemy || enemy.hp <= 0 || !state.enemies.includes(enemy)) return 0;
+  if (!canDamageExtinctionDirectiveEnemy(state, enemy)) {
+    state.statusText = state.lang === 'en' ? 'Core masked: aim and mark with T before attacking.' : 'Noyau masqué : vise et marque avec T avant d’attaquer.';
+    return 0;
+  }
   if (enemy.shieldActive) {
     if (state.enemies.some(e => e.kind === 'Drone Protecteur' && e.hp > 0)) return 0;
     enemy.shieldActive = false;
@@ -125,6 +156,21 @@ function effect(state, kind, action, wx = state.px, wy = state.py) {
   p.effects.push({ kind, color: action.color, wx, wy, screenSpace: kind !== 'impact', life: 20, maxLife: 20 });
   if (p.effects.length > 24) p.effects.shift();
 }
+function creditUsefulExtinctionEvasion(state, start) {
+  const p = state.protocols, rule = p.profile.ultimateCharge;
+  if (rule?.kind !== 'evasion' || !valid(state) || state.paused || state.hp <= 0
+    || !Number.isSafeInteger(state.t) || state.t < 0 || p.lastEvasionChargeTick === state.t
+    || ![start.wx, start.wy, state.px, state.py].every(Number.isFinite)
+    || Math.hypot(state.px - start.wx, state.py - start.wy) < rule.minimumTravel) return;
+  const threats = state.enemies.filter(enemy => enemy.hp > 0 && enemy.dmg > 0
+    && Number.isFinite(enemy.wx) && Number.isFinite(enemy.wy));
+  if (!threats.length) return;
+  const before = Math.min(...threats.map(enemy => distance(enemy, start)));
+  const after = Math.min(...threats.map(enemy => distance(enemy, { wx: state.px, wy: state.py })));
+  if (before > rule.threatRange || after - before < rule.minimumSeparationGain || p.charge >= 100) return;
+  p.charge = clamp(p.charge + rule.gain, 0, 100);
+  p.successfulEvasions += 1; p.lastEvasionChargeTick = state.t;
+}
 export function activateExtinctionProtocol(state, slot, { onKill, lang = 'fr' } = {}) {
   const status = getExtinctionProtocolStatus(state, slot);
   if (status !== 'ready') return { activated: false, reason: status };
@@ -140,43 +186,60 @@ export function activateExtinctionProtocol(state, slot, { onKill, lang = 'fr' } 
     return { activated: true, reason: 'returned', action: a, damage: 0 };
   }
   if (slot === 'special') p.charge -= 100;
-  if (slot === 'simple' && a.kind !== 'melee') {
+  if (slot === 'simple' && a.kind !== 'melee' && a.resource !== 'cooldown') {
     state.ammo = Math.max(0, (state.weapon?.ammo ?? state.ammo) - 1);
     if (state.weapon) state.weapon.ammo = state.ammo;
   }
   p.cooldowns[slot] = a.cooldown; p.casts[slot] += 1; p.activeSlot = slot; p.activeFrames = 20;
   const damage = Math.round(a.damage * (p.buff > 0 ? 1.15 : 1));
   const hit = target => damageExtinctionEnemy(state, target, damage, onKill, slot === 'special' ? 0 : 8);
-  if (['hitscan', 'melee', 'beam'].includes(a.kind)) {
-    const targets = candidates(state, a.range, a.kind === 'melee' ? 0.85 : 0.24);
-    for (const { enemy } of (a.kind === 'beam' ? targets : targets.slice(0, 1))) {
+  if (['hitscan', 'melee', 'beam', 'sweep', 'scatter', 'volley', 'cone', 'focus', 'counter'].includes(a.kind)) {
+    const wide = ['sweep', 'scatter', 'volley', 'cone'].includes(a.kind);
+    const contact = ['melee', 'sweep', 'counter'].includes(a.kind);
+    const targets = candidates(state, a.range, contact ? 0.85 : wide ? 0.55 : 0.24);
+    for (const { enemy } of (a.kind === 'beam' || wide ? targets : targets.slice(0, 1))) {
       if (hit(enemy)) effect(state, 'impact', a, enemy.wx, enemy.wy);
     }
-    if (a.kind !== 'melee') state.muzzle = 12;
-    effect(state, a.kind, a);
+    if (a.kind === 'counter') { p.guard = Math.min(90, a.duration); p.reduction = a.reduction; }
+    if (!contact) state.muzzle = 12;
+    effect(state, contact ? 'melee' : a.kind, a);
   } else if (a.kind === 'projectile' || a.kind === 'mine') {
     const mine = a.kind === 'mine';
-    const offset = mine ? 2 : 0.18;
+    const reach = mine ? getExtinctionActionReach(a) : null;
+    const offset = mine ? reach.value : 0.18;
     p.projectiles.push({ id: ++p.sequence, ownerId: p.ownerId, runId: p.runId, slot,
-      kind: mine ? 'mine' : a.sourceType === 'rocket' ? 'rocket' : 'bolt',
+      kind: mine ? 'mine' : a.sourceType === 'rocket' || a.sourceType === 'cannon_aoe' ? 'rocket' : 'bolt',
       wx: clamp(state.px + Math.sin(state.angle) * offset, -7.5, 7.5),
       wy: clamp(state.py + Math.cos(state.angle) * offset, -1.4, 28),
       vx: Math.sin(state.angle) * 0.3, vy: Math.cos(state.angle) * 0.3,
       life: mine ? 480 : Math.ceil(a.range / 0.3) + 1, age: 0, radius: mine ? 1.25 : 0.22,
-      splash: mine ? 2.5 : a.sourceType === 'rocket' ? 2.2 : 0, damage, color: a.color });
+      splash: mine ? reach.effectRadius : a.splash ?? (a.sourceType === 'rocket' ? 2.2 : 0), damage, color: a.color });
     if (p.projectiles.length > 24) p.projectiles.shift();
     if (!mine) state.muzzle = 12;
   } else if (a.kind === 'pulse') {
     for (const enemy of state.enemies) if (distance(enemy, { wx: state.px, wy: state.py }) <= a.range) hit(enemy);
     effect(state, 'pulse', a);
+  } else if (a.kind === 'control' || a.kind === 'control_pulse') {
+    const targets = a.kind === 'control_pulse'
+      ? state.enemies.filter(enemy => enemy.hp > 0 && distance(enemy, { wx: state.px, wy: state.py }) <= a.range)
+      : candidates(state, a.range).slice(0, 1).map(entry => entry.enemy);
+    for (const enemy of targets) {
+      enemy.protocolControl = { ownerId: state.heroId, runId: state.runId, life: a.duration, slow: 0.45 };
+      effect(state, 'impact', a, enemy.wx, enemy.wy);
+    }
+    if (targets.length && slot !== 'special') p.charge = clamp(p.charge + 8, 0, 100);
+    effect(state, 'control', a);
   } else if (a.kind === 'heal') {
     state.hp = Math.min(state.maxHp, state.hp + (slot === 'special' ? 65 : 28));
     effect(state, 'heal', a);
   } else if (a.kind === 'guard') {
     p.guard = a.duration; p.reduction = a.reduction; effect(state, 'guard', a);
-  } else if (a.kind === 'dash') {
-    state.px = clamp(state.px + Math.sin(state.angle) * 2.4, -7.5, 7.5);
-    state.py = clamp(state.py + Math.cos(state.angle) * 2.4, -1.4, 28);
+  } else if (a.kind === 'dash' || a.kind === 'teleport') {
+    const start = { wx: state.px, wy: state.py };
+    const distance = getExtinctionActionReach(a).value;
+    state.px = clamp(state.px + Math.sin(state.angle) * distance, -7.5, 7.5);
+    state.py = clamp(state.py + Math.cos(state.angle) * distance, -1.4, 28);
+    if (slot === 'simple') creditUsefulExtinctionEvasion(state, start);
     p.guard = a.duration; p.reduction = a.reduction; effect(state, 'dash', a);
   } else if (a.kind === 'buff') {
     p.buff = 240; effect(state, 'buff', a);
@@ -184,9 +247,17 @@ export function activateExtinctionProtocol(state, slot, { onKill, lang = 'fr' } 
     p.barricade = 300; effect(state, 'guard', a);
   } else if (a.kind === 'drone') {
     p.drone = 360; effect(state, 'drone', a);
+  } else if (a.kind === 'support') {
+    state.hp = Math.min(state.maxHp, state.hp + (slot === 'special' ? 45 : 18));
+    p.reduction = Math.max(p.guard > 0 ? p.reduction : 0, 0.3); p.guard = a.duration; effect(state, 'heal', a);
+  } else if (a.kind === 'summon') {
+    p.summon = { ownerId: p.ownerId, runId: p.runId, wx: state.px, wy: state.py,
+      life: Math.max(180, a.duration), age: 0, range: getExtinctionActionReach(a).value, damage: Math.round(damage * 0.45),
+      color: a.color, slot };
+    effect(state, 'summon', a);
   } else if (a.kind === 'reflection') {
     p.reflection = { ownerId: p.ownerId, runId: p.runId, wx: state.px, wy: state.py,
-      life: 300, age: 0, range: 8, damage, color: a.color };
+      life: 300, age: 0, range: getExtinctionActionReach(a).value, damage, color: a.color };
     effect(state, 'reflection', a);
   } else if (a.kind === 'return_probe') {
     p.returnProbe = { ownerId: p.ownerId, runId: p.runId, wx: state.px, wy: state.py,
@@ -213,6 +284,10 @@ export function tickExtinctionProtocols(state, onKill) {
   const p = state.protocols;
   for (const slot of EXTINCTION_SIGNATURE_SLOTS) p.cooldowns[slot] = Math.max(0, (p.cooldowns[slot] || 0) - 1);
   for (const key of ['guard', 'buff', 'barricade', 'drone', 'activeFrames']) p[key] = Math.max(0, p[key] - 1);
+  for (const enemy of state.enemies) {
+    const control = enemy.protocolControl;
+    if (control && (control.ownerId !== state.heroId || control.runId !== state.runId || --control.life <= 0)) delete enemy.protocolControl;
+  }
   if (p.drone > 0 && p.drone % 60 === 0) state.hp = Math.min(state.maxHp, state.hp + 5);
   if (p.returnProbe && (!currentSupport(p.returnProbe, state) || --p.returnProbe.life <= 0)) p.returnProbe = null;
   if (p.reflection) {
@@ -228,6 +303,17 @@ export function tickExtinctionProtocols(state, onKill) {
         // retain their existing rules. Damage is delayed until this active tick.
         const dealt = damageExtinctionEnemy(state, target, support.damage, onKill, 8);
         if (dealt) effect(state, 'impact', support, target.wx, target.wy);
+      }
+    }
+  }
+  if (p.summon) {
+    const support = p.summon;
+    if (!currentSupport(support, state) || --support.life <= 0) p.summon = null;
+    else if (++support.age % 60 === 0) {
+      const target = state.enemies.filter(enemy => enemy.hp > 0 && distance(enemy, support) <= support.range)
+        .sort((a, b) => distance(a, support) - distance(b, support))[0];
+      if (target && damageExtinctionEnemy(state, target, support.damage, onKill, support.slot === 'special' ? 0 : 4)) {
+        effect(state, 'impact', support, target.wx, target.wy);
       }
     }
   }
@@ -259,12 +345,17 @@ export function mitigateExtinctionProtocolDamage(state, amount) {
   const reduction = Math.max(p.guard > 0 ? p.reduction : 0, p.barricade > 0 ? 0.4 : 0);
   return damage * (1 - reduction);
 }
+export function getExtinctionProtocolSpeedFactor(state, enemy) {
+  const control = enemy?.protocolControl;
+  return valid(state) && control?.life > 0 && control.ownerId === state.heroId && control.runId === state.runId
+    ? control.slow : 1;
+}
 /** Procedural combat feedback only: no claim of authored character animation. */
 export function drawExtinctionProtocols(ctx, state, width, height, projectWorld, projectileArt = null) {
   const p = state?.protocols;
   if (!p || !valid(state)) return;
   ctx.save();
-  for (const [kind, support] of [['reflection', p.reflection], ['probe', p.returnProbe]]) {
+  for (const [kind, support] of [['reflection', p.reflection], ['probe', p.returnProbe], ['summon', p.summon]]) {
     if (!currentSupport(support, state)) continue;
     const projection = projectWorld(support, state);
     if (projection.camZ <= 0.2 || Math.abs(projection.aim) > 1.6) continue;

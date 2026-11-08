@@ -52,7 +52,9 @@ export function getExtinctionViewmodel(hero) {
 export function getExtinctionHandFrame(profile, state = {}) {
   if (!profile?.src || !profile.layout || (state.weapon?.type && state.weapon.type !== 'pistol')) return null;
   const layout = profile.layout;
-  const phase = state.muzzle > 0 ? 'attack' : state.reloadPulse > 0 ? 'reload'
+  const personalAttack = state.protocols?.activeSlot === 'simple' && state.protocols.activeFrames > 0
+    && state.protocols.ownerId === profile.heroId && state.protocols.runId === state.runId;
+  const phase = state.muzzle > 0 || personalAttack ? 'attack' : state.reloadPulse > 0 ? 'reload'
     : Math.hypot(state.vx || 0, state.vy || 0) > 0.01 ? 'run' : 'idle';
   const row = layout.rowByState?.[phase] ?? layout.rowByState?.idle ?? 0;
   const col = Math.floor(Math.max(0, Number(state.t) || 0) / 12) % layout.columns;
@@ -69,6 +71,28 @@ export function getExtinctionHandFrame(profile, state = {}) {
  */
 export function drawExtinctionSchematic(ctx, state, width, height, color = '#39c5bb') {
   const type = state.weapon?.type || 'pistol';
+  const action = type === 'pistol' && state.protocols?.profile?.actions.simple;
+  // Abstract delivery glyphs avoid giving every creature, musician or mage a
+  // human gun-shaped view. They are intentionally not anatomy or owned artwork.
+  if (action && !['hitscan', 'scatter', 'volley'].includes(action.kind)) {
+    const x = width / 2, y = height - Math.min(64, height * 0.18);
+    const radius = Math.min(33, width * 0.08, height * 0.1);
+    ctx.save(); ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 2;
+    ctx.globalAlpha = state.muzzle > 0 || state.protocols.activeFrames > 0 ? 0.9 : 0.55;
+    ctx.beginPath();
+    if (['melee', 'sweep', 'counter'].includes(action.kind)) {
+      ctx.moveTo(x - radius, y + radius * 0.5); ctx.lineTo(x + radius * 0.7, y - radius);
+      ctx.moveTo(x - radius * 0.65, y + radius * 0.8); ctx.lineTo(x + radius, y - radius * 0.7);
+    } else if (['heal', 'support', 'guard'].includes(action.kind)) {
+      ctx.moveTo(x - radius, y); ctx.lineTo(x + radius, y);
+      ctx.moveTo(x, y - radius); ctx.lineTo(x, y + radius);
+    } else {
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.moveTo(x - radius * 1.4, y); ctx.lineTo(x - radius * 0.6, y);
+      ctx.moveTo(x + radius * 0.6, y); ctx.lineTo(x + radius * 1.4, y);
+    }
+    ctx.stroke(); ctx.restore(); return;
+  }
   const w = type === 'rocket' ? 100 : type === 'shotgun' ? 68 : 52;
   const x = width / 2 - w / 2, y = height - 106 + (state.muzzle > 0 ? 7 : 0);
   ctx.save();

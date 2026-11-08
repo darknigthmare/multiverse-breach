@@ -1,5 +1,11 @@
 # Refonte immersive — PR #9
 
+Nouvelle reprise du 8 novembre : [catalogue des boosters et dossiers de cartes](../development/PORTAL_DENSE_CATALOGS_2026-11-08.md).
+La pagination, les offres hors rotation, le texte agrandi et le retour de focus
+complètent ce parcours. Le [terminal de la Cité](../development/CITY_CHARACTER_MISSIONS_FPS_2026-11-08.md)
+accueille sept contrats persistants et reçoit des marges adaptées, un titre
+redimensionnable et une région de lecture accessible au clavier.
+
 Continuation du 8 novembre : [Album des Trames et retour d’intervention Nexus](../development/DLC_ALBUM_NEXUS_RETURN_2026-11-08.md).
 Le classeur conserve sa page entre les vues, les fiches rendent le focus au
 bon endroit et l’Album respecte le texte agrandi et la marge de sécurité.

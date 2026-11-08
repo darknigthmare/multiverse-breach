@@ -13,6 +13,10 @@ Le Nexus de Convergence et les vingt univers de la campagne originale restent
 dans le jeu de base. Les règles de croisement entre plusieurs univers, le moteur,
 les sauvegardes et les services communs restent dans `src/`.
 
+La [vérification des points ouverts du 8 novembre](../docs/development/DLC_REVIEW_STATUS_2026-11-08.md)
+et la [preuve des dépendances du lot Cité/personnages](../docs/development/dlc-shared-dependency-proof-2026-11-08-characters.json)
+complètent les reçus historiques de migration et de distribution.
+
 ## Structure d'un univers
 
 | Chemin | Rôle |
