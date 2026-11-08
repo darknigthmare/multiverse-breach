@@ -1,12 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { getSceneCanvasSize, getSceneHudLayout, getSceneHudRect } from '../game/immersiveHubState.js';
 import { DISPLAY_PREFERENCES_EVENT, readSceneHudPreferences } from '../game/displayPreferences.js';
 
 // Match the backing canvas to the viewport aspect. World coordinates stay logical;
 // one uniform CSS scale is used on both axes, including pointer hit testing.
-export default function useSceneViewport(canvasRef, logicalHeight, enabled = true, overlayRef = null) {
+export default function useSceneViewport(canvasRef, logicalHeight, enabled = true, overlayRef = null, overlayContentKey = null) {
   const hudLayoutRef = useRef(null);
-  useEffect(() => {
+  // A committed title can wrap before ResizeObserver runs. Measure its new
+  // bounds in the layout phase, before a scene effect starts drawing again.
+  useLayoutEffect(() => {
     const canvas = canvasRef.current;
     const overlay = overlayRef?.current;
     hudLayoutRef.current = null;
@@ -39,6 +41,6 @@ export default function useSceneViewport(canvasRef, logicalHeight, enabled = tru
       window.removeEventListener(DISPLAY_PREFERENCES_EVENT, resize);
       window.removeEventListener('storage', resize);
     };
-  }, [canvasRef, enabled, logicalHeight, overlayRef]);
+  }, [canvasRef, enabled, logicalHeight, overlayRef, overlayContentKey]);
   return hudLayoutRef;
 }

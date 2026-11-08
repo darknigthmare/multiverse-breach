@@ -188,6 +188,14 @@ empreinte de `useSceneViewport.js`. Le JSON de planification complet et l'Excel
 restent encore identiques ; leurs empreintes et la conservation des données
 ont été vérifiées avant cette actualisation du reçu.
 
+Après `5451123`, la mesure en phase de layout après un changement du texte du
+bandeau actualise les empreintes de `HubScreen.jsx` et `useSceneViewport.js`.
+Le reçu suit aussi `MosaicCharacterMissions.css`, dont le compteur de filtre
+garde désormais ses chiffres sur une seule ligne.
+La relecture vérifie ces sources et conserve le JSON complet de planification,
+les octets du classeur et toutes les cellules suivies. Le reçu relie ce correctif
+de présentation à la provenance précédente, sans réexporter le classeur.
+
 ## Reproduction
 
 Depuis la racine du dépôt, avec **Node 22** et les dépendances verrouillées :
