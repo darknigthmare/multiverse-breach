@@ -51,13 +51,15 @@ jobs:
           node --version > /tmp/character-city-fps-evidence/node-version.txt
           node scripts/prepareDlcAssets.mjs --available
           python3 scripts/testMosaicMotionProof.py
-          node --test scripts/mosaicCharacterMissions.test.mjs scripts/dlcProfileCharacterMissions.test.mjs scripts/extinctionFighterProfiles.test.mjs scripts/extinctionFieldDirectives.test.mjs scripts/portalDenseCatalogs.test.mjs | tee /tmp/character-city-fps-evidence/contracts.log
+          node --test scripts/mosaicCharacterMissions.test.mjs scripts/mosaicContractJournal.test.mjs scripts/dlcProfileCharacterMissions.test.mjs scripts/extinctionFighterProfiles.test.mjs scripts/extinctionFieldDirectives.test.mjs scripts/portalDenseCatalogs.test.mjs | tee /tmp/character-city-fps-evidence/contracts.log
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionCityMissionPlanning.test.mjs scripts/extinctionCityCatalog.test.mjs | tee /tmp/character-city-fps-evidence/planning.log
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/missionPlanning.mjs 4ca3b2b87f4b7234612f11fc5c17ba205d36d340 /tmp/character-city-fps-evidence/mission-planning.json /tmp/character-city-fps-evidence/mission-coverage.json
           python3 scripts/extinction-city/verifyCharacterMissionWorkbook.py docs/excel/Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx --planning /tmp/character-city-fps-evidence/mission-planning.json --receipt /tmp/character-city-fps-evidence/workbook-readback.json
           rm /tmp/character-city-fps-evidence/mission-planning.json
           node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/MosaicCharacterMissions.jsx src/components/ImmersiveDrawer.jsx src/components/PortalCatalogPager.jsx src/components/PortalScreen.jsx src/components/PortalBoosterDossier.jsx src/game/mosaicCharacterMissions.js src/game/extinctionFighterProfiles.js src/game/extinctionFieldDirectives.js scripts/extinctionFighterCatalog.mjs scripts/portalDenseCatalogs.test.mjs scripts/browserPortalDenseCatalogs.mjs scripts/buildPortalDenseCatalogsFixture.mjs | tee /tmp/character-city-fps-evidence/lint.log
           node scripts/buildPortalDenseCatalogsFixture.mjs | tee /tmp/character-city-fps-evidence/portal-build.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/game/mosaicContractJournal.js src/game/mosaicCharacterFollowups.js scripts/extinction-city/missionPlanning.mjs scripts/mosaicContractJournal.test.mjs scripts/fixtures/mosaicContractJournalData.mjs scripts/fixtures/mosaicContractJournalHarness.jsx scripts/browserMosaicContractJournal.mjs scripts/buildMosaicContractJournalFixture.mjs | tee /tmp/character-city-fps-evidence/journal-lint.log
+          node scripts/buildMosaicContractJournalFixture.mjs | tee /tmp/character-city-fps-evidence/journal-build.log
       - name: Install pinned browser tools
         id: browsers
         run: |
@@ -66,6 +68,11 @@ jobs:
           node /tmp/character-browser/node_modules/playwright/cli.js install --with-deps chromium
           python3 -m venv /tmp/character-browser-py
           /tmp/character-browser-py/bin/pip install playwright==1.57.0
+      - name: City journal search, prerequisites, evidence and focus
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browsers.outcome == 'success' }}
+        run: |
+          set -euo pipefail
+          PLAYWRIGHT_FIXTURE_DIR=.tmp/mosaic-contract-journal PLAYWRIGHT_EVIDENCE_DIR=/tmp/character-city-fps-evidence/journal node scripts/browserMosaicContractJournal.mjs | tee /tmp/character-city-fps-evidence/journal.log
       - name: Portal catalogue and card dossier
         if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browsers.outcome == 'success' }}
         run: |
@@ -79,6 +86,8 @@ jobs:
           path: |
             /tmp/character-city-fps-evidence/portal/
             /tmp/character-city-fps-evidence/portal.log
+            /tmp/character-city-fps-evidence/journal/
+            /tmp/character-city-fps-evidence/journal.log
             /tmp/character-city-fps-evidence/commit.txt
             /tmp/character-city-fps-evidence/tree.txt
           retention-days: 14

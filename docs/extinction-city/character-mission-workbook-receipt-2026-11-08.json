@@ -1,17 +1,46 @@
 {
-  "schema": 2,
+  "schema": 3,
   "sourceRevision": "4ca3b2b87f4b7234612f11fc5c17ba205d36d340",
   "workbook": "Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx",
-  "sha256": "d4e42baee80c3cb011a0319e272b2190dc2c665af6ceecc51eebb6c316707c0d",
-  "bytes": 1167076,
+  "sha256": "5cc8c5a9e7e805e5113c3869417bd0aef2a497858031d147b39313a8ff19ef02",
+  "bytes": 1173738,
   "operation": "Imported existing workbook; changed runtime contracts and their summary only",
+  "baselineSha256": "d4e42baee80c3cb011a0319e272b2190dc2c665af6ceecc51eebb6c316707c0d",
+  "runtimeSources": [
+    {
+      "source": "src/game/mosaicCharacterMissions.js",
+      "sha256": "c240a2f1c12ed403105f0c1a79ffc2049d7feaf8f5ef52cc6b1337b712879a25"
+    },
+    {
+      "source": "DLC/Halo/data/mosaicCharacterMissions.js",
+      "sha256": "8197db74916beeace8862878845a8e95374ef584c6f97d8359302712349e2549"
+    },
+    {
+      "source": "DLC/Alien/data/mosaicCharacterMissions.js",
+      "sha256": "aac637be9f508b5a1e746ea36ea0427370be5af8b2813ea21a6d389da095f37a"
+    },
+    {
+      "source": "src/game/mosaicCharacterFollowups.js",
+      "sha256": "b130962ff2e257483e5a966a18acf6d96c88944b001592460c2b3d2366bf33b9"
+    }
+  ],
   "characters": 1912,
   "nonCombatCharacters": 101,
   "proposedMissions": 3824,
   "individuallyDesignedMissions": 44,
-  "integratedCityContracts": 16,
+  "integratedCityContracts": 28,
   "fpsProfiles": 1912,
   "fpsModes": 4,
+  "chapterTwoContracts": 12,
+  "inheritedRoutes": 24,
+  "decisionRoutes": 24,
+  "dependencyProof": {
+    "input": "Contrats jouables!A34",
+    "output": "Synthèse!B12",
+    "withLastContract": 28,
+    "withLastContractBlank": 27,
+    "restored": true
+  },
   "sheets": [
     "Synthèse",
     "Missions à créer",
@@ -21,7 +50,16 @@
     "Modes FPS"
   ],
   "previews": [
-    "contrats-dlc-acces.png"
+    "synthese.png",
+    "contrats-jouables.png",
+    "contrats-dlc-acces.png",
+    "contrats-suites-17-18.png",
+    "contrats-suites-19-20.png",
+    "contrats-suites-21-22.png",
+    "contrats-suites-23-24.png",
+    "contrats-suites-25-26.png",
+    "contrats-suites-27-28.png",
+    "contrats-suites-acces.png"
   ],
   "preservedSheets": [
     "Missions à créer",

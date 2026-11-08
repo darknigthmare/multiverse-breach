@@ -26,7 +26,7 @@ JSON de plusieurs dizaines de mégaoctets versionné.
 | Occurrences d’ennemis | 1 518 | Inventaire séparé, jamais transformé en personnages possédables. |
 | Occurrences de boss/mondiaux/final | 1 507 | Une occurrence n’est pas nécessairement une identité unique. |
 | Politiques de finale | 129 | Dont 124 `nonCombatFinal`, conservées comme contraintes. |
-| Contrats Cité présents dans le runtime | 7 | Onglet distinct ; aucune proposition n’est marquée implémentée par rapprochement de personnage. |
+| Contrats Cité présents dans le runtime | 28 | 24 Nexus, 2 Halo, 2 Alien. Onglet distinct ; aucune proposition n’est marquée implémentée par rapprochement de personnage. |
 
 `designKind` distingue `individual_proposal`, `source_objective_adaptation`,
 `source_family_adaptation` et `research_scaffold`. Les deux derniers ne valent
@@ -73,7 +73,10 @@ Le JSON organise les données ainsi :
   reste faux ; les finales pacifiques ne reçoivent aucun objectif d’élimination.
 - `finalePolicies` conserve les politiques source, leur continuité et leurs
   raisons ; `reviewQueue` conserve les recherches manquantes.
-- `runtimeMissions` décrit les sept contrats Cité ajoutés séparément. Leur
+- `runtimeMissions` décrit les 28 contrats Cité ajoutés séparément. Les douze
+  suites Nexus portent leur `requiresMissionId`, leur chapitre, les deux routes
+  héritées du premier choix et les deux vérifications physiques du nouveau choix.
+  Les objectifs, constats et coordonnées de chaque branche sont exportés. Leur
   présence dans le code ne certifie pas une recette navigateur ; ce catalogue
   ne remplace ni les tests des contrats ni la CI.
 - `commonPolicies` regroupe sauvegarde, pause, prérequis DLC, récompenses et
@@ -115,7 +118,7 @@ node node_modules/oxlint/bin/oxlint --max-warnings 0 \
 
 Les douze tests spécifiques couvrent les identités et deux volets, les objectifs
 pacifiques, les 129 politiques, les occurrences ennemies, les variantes, l’Ancre
-qui ne se rencontre pas elle-même, la séparation des sept contrats runtime,
+qui ne se rencontre pas elle-même, la séparation des contrats runtime,
 plusieurs divergences d’incarnation, les lacunes et la reproduction des
 empreintes. Ce sont des tests de données et de provenance, pas une validation
 artistique, une expertise de chaque canon externe ou 3 824 parcours jouables.

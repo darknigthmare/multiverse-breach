@@ -294,15 +294,45 @@ await fs.writeFile(path.join(outputDir, 'workbook-receipt.json'), JSON.stringify
 console.log(JSON.stringify({ outputPath, ...receipt }));
 
 function runtimeContractRows(missions, names) {
-  return missions.map(mission => [mission.id, names.get(mission.heroId)?.name || mission.heroId,
-    mission.title.fr, [mission.premise.fr, mission.continuity?.fr].filter(Boolean).join('\n'),
-    mission.steps.map((step, index) => `${index + 1}. ${step.text.fr}`).join('\n'),
-    mission.steps.find(step => step.type === 'decision').choices.filter(item => item.valid)
-      .map(item => `${item.label.fr}\n${item.result.fr}`).join('\n\n'),
-    `Habitant possédé et présent dans le quartier ${mission.universe}. Vitrines requises disponibles.${mission.universe === 'Nexus de Convergence' ? '' : ` DLC ${mission.universe} installé.`}`,
-    'Contrat intégré. Choix, déplacements et sauvegardes couverts par la recette de la PR.',
-    'Dossier et choix sauvegardés ; pas de monnaie ni d’équipement attribué.',
-    [mission.contentFile, mission.source, ...(mission.references || [])].filter(Boolean).join('\n')]);
+  const byId = new Map(missions.map(mission => [mission.id, mission]));
+  const point = route => `(x=${route.x}, y=${route.y})`;
+  return missions.map(mission => {
+    const previous = mission.requiresMissionId ? byId.get(mission.requiresMissionId) : null;
+    assert.ok(!mission.requiresMissionId || previous, `Missing prerequisite: ${mission.id}`);
+    const inheritedChoices = new Map((previous?.steps.find(step => step.type === 'decision')?.choices || [])
+      .filter(item => item.valid).map(item => [item.id, item]));
+    const steps = mission.steps.map((step, index) => {
+      if (step.byOriginChoice) return [
+        `${index + 1}. Trajet selon le choix du chapitre ${previous.chapter || 1} :`,
+        ...Object.entries(step.byOriginChoice).map(([id, route]) => {
+          assert.ok(inheritedChoices.has(id), `Unknown inherited choice: ${mission.id}/${id}`);
+          return `${inheritedChoices.get(id).label.fr} [${id}]\n${route.text.fr} ${point(route)}\nConstat : ${route.finding.fr}`;
+        })
+      ].join('\n');
+      if (step.byChoice) return `${index + 1}. Vérifier sur place le résultat du choix. Les deux trajets et constats sont indiqués en « Conclusions possibles ».`;
+      return `${index + 1}. ${step.text.fr}${mission.requiresMissionId && step.finding ? `\nConstat : ${step.finding.fr}` : ''}`;
+    }).join('\n');
+    const conclusions = mission.steps.find(step => step.type === 'decision').choices.filter(item => item.valid)
+      .map(item => [
+        `${item.label.fr} [${item.id}]`, item.result.fr,
+        ...mission.steps.flatMap((step, index) => {
+          if (!step.byChoice) return [];
+          const route = step.byChoice[item.id];
+          assert.ok(route, `Missing decision route: ${mission.id}/${item.id}`);
+          return [`${index + 1}. ${route.text.fr} ${point(route)}\nConstat : ${route.finding.fr}`];
+        })
+      ].join('\n')).join('\n\n');
+    return [mission.id, names.get(mission.heroId)?.name || mission.heroId,
+      mission.title.fr, [mission.premise.fr, mission.continuity?.fr].filter(Boolean).join('\n'), steps, conclusions,
+      [`Chapitre ${mission.chapter || 1}.`,
+        `Habitant possédé et présent dans le quartier ${mission.universe}. Vitrines requises disponibles.`,
+        mission.universe === 'Nexus de Convergence' ? '' : `DLC ${mission.universe} installé.`,
+        previous ? `Prérequis : « ${previous.title.fr} » [${previous.id}], terminé avec une conclusion valide. Le choix hérité fixe le premier trajet.` : 'Aucun contrat préalable.'
+      ].filter(Boolean).join('\n'),
+      'Contrat intégré. Les tests runtime couvrent progression, choix et sauvegardes. La recette navigateur est suivie séparément dans la PR.',
+      `Dossier et choix sauvegardés${previous ? ', y compris le choix hérité du chapitre précédent' : ''}. Pas de monnaie ni d’équipement attribué.`,
+      [mission.contentFile || 'src/game/mosaicCharacterMissions.js', mission.source, ...(mission.references || [])].filter(Boolean).join('\n')];
+  });
 }
 
 /** Narrow follow-up: keep the imported workbook and its editable tracking
@@ -340,6 +370,12 @@ async function refreshRuntimeContracts(inputPath) {
   });
   summary.getRange('B12').formulas = [[`=COUNTA('Contrats jouables'!A7:A${rows.length + 6})`]];
   summary.getRange('B18').values = [[`${rows.length} contrats intégrés ont leurs propres IDs et parcours. Ils ne terminent pas les 3 824 propositions.`]];
+  // Prove that the newly extended count still depends on the imported table.
+  // Restore the disposable input before any preservation check or export.
+  const lastContract = live.getRange(`A${rows.length + 6}`), lastId = lastContract.values;
+  lastContract.values = [[null]];
+  assert.equal(summary.getRange('B12').values[0][0], rows.length - 1);
+  lastContract.values = lastId;
   workbook.recalculate();
   assert.equal(summary.getRange('B12').values[0][0], rows.length);
   for (const before of unchanged) {
@@ -351,10 +387,17 @@ async function refreshRuntimeContracts(inputPath) {
     options: { useRegex: true, maxResults: 100 }, summary: 'Formula error scan', maxChars: 5000 });
   const inspection = await workbook.inspect({ kind: 'table', range: 'Synthèse!A6:E13', include: 'values,formulas', tableMaxRows: 8, tableMaxCols: 5, maxChars: 8000 });
   await fs.mkdir(outputDir, { recursive: true });
-  await fs.writeFile(path.join(outputDir, 'workbook-inspection.json'), JSON.stringify({ formulaScan: errors.ndjson, summary: inspection.ndjson }, null, 2));
+  const dependencyProof = { input: `Contrats jouables!A${rows.length + 6}`, output: 'Synthèse!B12',
+    withLastContract: rows.length, withLastContractBlank: rows.length - 1, restored: true };
+  await fs.writeFile(path.join(outputDir, 'workbook-inspection.json'), JSON.stringify({ formulaScan: errors.ndjson, summary: inspection.ndjson, dependencyProof }, null, 2));
   const fullPreviews = [['Synthèse', 'A1:E24', 'synthese'], ['Contrats jouables', 'A1:F9', 'contrats-jouables'],
-    ['Contrats jouables', 'B14:F16', 'contrats-nexus'], ['Contrats jouables', 'B19:F20', 'contrats-halo'],
-    ['Contrats jouables', 'B21:F22', 'contrats-alien'], ['Contrats jouables', 'G19:J22', 'contrats-dlc-acces']];
+    ['Contrats jouables', 'G19:J22', 'contrats-dlc-acces']];
+  // Each continuation must be legible, including every inherited/current route.
+  for (let index = oldCount; index < rows.length; index += 2) {
+    const end = Math.min(index + 8, rows.length + 6);
+    fullPreviews.push(['Contrats jouables', `B${index + 7}:F${end}`, `contrats-suites-${index + 1}-${end - 6}`]);
+  }
+  if (rows.length > oldCount) fullPreviews.push(['Contrats jouables', `G${oldCount + 7}:J${oldCount + 8}`, 'contrats-suites-acces']);
   const previews = args.includes('--sources-only') ? fullPreviews.slice(-1) : fullPreviews;
   for (const [sheetName, range, name] of previews) {
     const image = await workbook.render({ sheetName, range, scale: 1, format: 'png' });
@@ -363,12 +406,20 @@ async function refreshRuntimeContracts(inputPath) {
   const outputPath = path.join(outputDir, outputName);
   await (await SpreadsheetFile.exportXlsx(workbook)).save(outputPath);
   const bytes = await fs.readFile(outputPath);
-  const receipt = { schema: 2, sourceRevision: summary.getRange('B24').values[0][0], workbook: outputName,
+  const sourceFiles = [...new Set(MOSAIC_CHARACTER_MISSIONS.map(mission => mission.contentFile || 'src/game/mosaicCharacterMissions.js'))];
+  const runtimeSources = await Promise.all(sourceFiles.map(async source => ({ source,
+    sha256: createHash('sha256').update(await fs.readFile(path.join(repo, source))).digest('hex') })));
+  const receipt = { schema: 3, sourceRevision: summary.getRange('B24').values[0][0], workbook: outputName,
     sha256: createHash('sha256').update(bytes).digest('hex'), bytes: bytes.length,
     operation: 'Imported existing workbook; changed runtime contracts and their summary only',
+    baselineSha256: createHash('sha256').update(await fs.readFile(inputPath)).digest('hex'), runtimeSources,
     characters: count, nonCombatCharacters: Number(summary.getRange('B8').values[0][0]), proposedMissions: 3824,
     individuallyDesignedMissions: Number(summary.getRange('E15').values[0][0]),
     integratedCityContracts: rows.length, fpsProfiles: count, fpsModes: Number(summary.getRange('B13').values[0][0]),
+    chapterTwoContracts: MOSAIC_CHARACTER_MISSIONS.filter(mission => mission.chapter === 2).length,
+    inheritedRoutes: MOSAIC_CHARACTER_MISSIONS.flatMap(mission => mission.steps).reduce((total, step) => total + Object.keys(step.byOriginChoice || {}).length, 0),
+    decisionRoutes: MOSAIC_CHARACTER_MISSIONS.flatMap(mission => mission.steps).reduce((total, step) => total + Object.keys(step.byChoice || {}).length, 0),
+    dependencyProof,
     sheets: ['Synthèse', 'Missions à créer', 'Contrats jouables', 'Personnages', 'Profils FPS', 'Modes FPS'],
     previews: previews.map(([, , name]) => `${name}.png`), preservedSheets: unchanged.map(item => item.name),
     formulaScan: errors.ndjson, nativeApplicationCheck: 'Not executed; Artifact Tool recalculation, XLSX readback and rendered review are separate checks.' };

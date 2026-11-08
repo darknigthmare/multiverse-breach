@@ -144,6 +144,7 @@ jobs:
         if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browser_tools.outcome == 'success' }}
         run: |
           set -euo pipefail
+          /tmp/field-browser/bin/python scripts/browserHudTextVisibility.py --evidence /tmp/dlc-field-evidence/hud-text-probe | tee /tmp/dlc-field-evidence/hud-text-probe.log
           node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/dlc-field-evidence/server.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT

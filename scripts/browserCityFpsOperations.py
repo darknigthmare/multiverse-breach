@@ -16,6 +16,7 @@ from playwright.sync_api import sync_playwright, expect
 from browserCityExtinction import check, load_scene
 from browserResidentViewmodels import CLOCK_EPOCH, CLOCK_START, prepare_fps_clock
 from browserSceneServices import aim, state
+from hudTextProof import BUTTON_TEXT_PROOF_JS
 from mosaicMotionProof import validate_mosaic_motion
 
 
@@ -222,39 +223,7 @@ def check_relay_hud_geometry(page, label, expected_text_scale='1.4'):
         }
         return true;
       };
-      const buttonTextProof=button=>{
-        const buttonBox=rect(button),fragments=[];
-        const walker=document.createTreeWalker(button,NodeFilter.SHOW_TEXT);
-        let node;
-        while((node=walker.nextNode())){
-          if(!node.textContent.trim()||node.parentElement.closest('svg'))continue;
-          const clip={x:Math.max(buttonBox.x,viewport.x),y:Math.max(buttonBox.y,viewport.y),
-            right:Math.min(buttonBox.right,viewport.right),bottom:Math.min(buttonBox.bottom,viewport.bottom)};
-          const clipSources=[];
-          let ellipsized=false;
-          // A range can fit inside the button while a nested strong/small
-          // clips it. Intersect every effective ancestor overflow clip too.
-          for(let ancestor=node.parentElement;ancestor;ancestor=ancestor.parentElement){
-            const css=getComputedStyle(ancestor);
-            const clipX=css.overflowX!=='visible',clipY=css.overflowY!=='visible';
-            if(!clipX&&!clipY)continue;
-            const box=rect(ancestor),left=box.x+ancestor.clientLeft,top=box.y+ancestor.clientTop;
-            const paddingBox={x:left,y:top,right:left+ancestor.clientWidth,bottom:top+ancestor.clientHeight};
-            if(clipX){clip.x=Math.max(clip.x,paddingBox.x);clip.right=Math.min(clip.right,paddingBox.right);}
-            if(clipY){clip.y=Math.max(clip.y,paddingBox.y);clip.bottom=Math.min(clip.bottom,paddingBox.bottom);}
-            const overflowed=ancestor.scrollWidth>ancestor.clientWidth+1;
-            if(clipX&&css.textOverflow==='ellipsis'&&overflowed)ellipsized=true;
-            clipSources.push({tag:ancestor.tagName,className:ancestor.className,overflowX:css.overflowX,
-              overflowY:css.overflowY,textOverflow:css.textOverflow,overflowed,paddingBox});
-          }
-          const range=document.createRange();range.selectNodeContents(node);
-          const boxes=Array.from(range.getClientRects()).filter(box=>box.width&&box.height)
-            .map(box=>({x:box.x,y:box.y,right:box.right,bottom:box.bottom}));
-          fragments.push({text:node.textContent.trim(),boxes,clip,clipSources,ellipsized,
-            fullyVisible:visible(node.parentElement)&&boxes.length>0&&!ellipsized&&boxes.every(box=>within(box,clip))});
-        }
-        return {fragments,fullyVisible:fragments.length>0&&fragments.every(fragment=>fragment.fullyVisible)};
-      };
+      const buttonTextProof=__BUTTON_TEXT_PROOF__;
       // The dock and its layout groups are transparent. Test the painted
       // buttons and stat cards individually, so empty grid space remains free.
       // Hit-testing does not click a control or consume a simulation tick.
@@ -311,7 +280,7 @@ def check_relay_hud_geometry(page, label, expected_text_scale='1.4'):
         stripInsideViewport:within(s,viewport),relayInsideStrip:within(r,s),
         reticleClear:!intersects(s,reticle),dockClear:!intersects(s,d),radarClear:!intersects(s,radarBounds),
         clippedText:textRects.filter(box=>!within(box,s)||!within(box,viewport)),textRects};
-    }""", label)
+    }""".replace('__BUTTON_TEXT_PROOF__', BUTTON_TEXT_PROOF_JS), label)
     check(not result.get('skipped') and not result.get('missing'), f'active relay HUD unavailable: {result}')
     check(result['hudScale'] == '1.4' and result['textScale'] == expected_text_scale and result['safeArea'] == '32px',
           f'relay HUD accessibility scale was not applied: {result}')

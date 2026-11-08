@@ -144,13 +144,27 @@ test('real runtime contracts remain distinct from all planned proposals', () => 
   for (const row of catalog.runtimeMissions) {
     assert.ok(characterById.get(row.characterId).runtimeMissions.includes(row.id));
     assert.equal(row.browserValidation, 'not_certified_by_catalog');
+    if (row.requiresMissionId) {
+      assert.equal(row.chapter, 2);
+      assert.equal(row.sourceFile, 'src/game/mosaicCharacterFollowups.js');
+      const previous = catalog.runtimeMissions.find(item => item.id === row.requiresMissionId);
+      assert.equal(previous.characterId, row.characterId);
+      const origin = row.steps.find(step => step.byOriginChoice);
+      const intervention = row.steps.find(step => step.byChoice);
+      assert.deepEqual(Object.keys(origin.byOriginChoice), previous.steps.find(step => step.choices).choices.filter(item => item.valid).map(item => item.id));
+      assert.deepEqual(Object.keys(intervention.byChoice), row.steps.find(step => step.choices).choices.filter(item => item.valid).map(item => item.id));
+      for (const branch of [...Object.values(origin.byOriginChoice), ...Object.values(intervention.byChoice)]) {
+        assert.ok(branch.text.length > 15 && branch.finding.length > 25);
+        assert.ok(Number.isFinite(branch.x) && Number.isFinite(branch.y));
+      }
+    }
   }
 });
 
 test('source provenance includes static dependencies with actual hashes, not just aggregator names', () => {
   const sources = new Map(catalog.sourceManifest.map(row => [row.file, row]));
   for (const file of ['DLC/Halo/data/heroes.js', 'DLC/Portal/data/loreDescriptions.js', 'src/game/canonRosterWavePartM.js',
-    'src/game/canonP0SourceKits.js', 'src/game/mosaicCharacterMissions.js', 'scripts/extinction-city/missionPlanning.mjs']) {
+    'src/game/canonP0SourceKits.js', 'src/game/mosaicCharacterMissions.js', 'src/game/mosaicCharacterFollowups.js', 'scripts/extinction-city/missionPlanning.mjs']) {
     const row = sources.get(file);
     assert.ok(row?.exists, file);
     assert.equal(row.sha256, createHash('sha256').update(readFileSync(file)).digest('hex'), file);

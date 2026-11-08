@@ -26,6 +26,7 @@ async function loadProfile(context, packIds) {
   const result = transformer.transform(source, path.join(root, adapterPath));
   await writeFile(path.join(directory, adapterPath), result?.code || source);
   await copyFile(path.join(root, 'src/game/mosaicCityRuntime.js'), path.join(directory, 'src/game/mosaicCityRuntime.js'));
+  await copyFile(path.join(root, 'src/game/mosaicCharacterFollowups.js'), path.join(directory, 'src/game/mosaicCharacterFollowups.js'));
   for (const pack of missionPacks) {
     if (!packIds.includes(pack.id)) continue;
     assert.ok(pack.modules.some(module => module.path === modulePath && module.runtimeAdapter === adapterPath),

@@ -221,6 +221,11 @@ def directive_details_case(page, out, name):
     expect(details.locator('[data-directive-title]')).to_have_text(expected['title'])
     expect(details.locator('[data-directive-count]')).to_have_text(expected['count'])
     expect(details.locator('[data-directive-text]')).to_have_text(expected['text'])
+    held = read(page)['weaponType']
+    if held in ['shotgun', 'plasma', 'rocket']:
+        pickup_brief = dialog.locator('[data-fps-pickup-brief]')
+        expect(pickup_brief).to_have_attribute('data-fps-pickup-brief', held)
+        expect(pickup_brief).to_contain_text({'shotgun': 'seven pellets', 'plasma': 'damage arrives on contact', 'rocket': 'explodes on contact'}[held])
     details.locator('[data-directive-text]').scroll_into_view_if_needed()
     content = dialog.locator('.immersive-drawer-content')
     check(content.evaluate('el=>el.scrollWidth<=el.clientWidth+1'), 'full directive overflows its scrollable panel')
@@ -351,6 +356,66 @@ def combat(page, current, targets):
     return {'kind': 'fire', 'target': target['id'], 'milliseconds': duration, 'protocols': commands}
 
 
+def held_pickup_fire_case(page, out, name):
+    """Fire a naturally dropped weapon through the shared native input route."""
+    steps = []
+    for _ in range(50):
+        current = read(page)
+        check(current['phase'] == 'running' and current['weaponType'] in ['shotgun', 'plasma', 'rocket'], 'held pickup lost before native firing')
+        targets = [enemy for enemy in current['enemies'] if enemy['hp'] > 0]
+        check(targets, 'no live threat for the held pickup')
+        # Stay on the ordinary threat/drone route; no protected-core shortcut.
+        drones = [enemy for enemy in targets if enemy['kind'] == 'Drone Protecteur']
+        target = min(drones or targets, key=lambda item: math.hypot(item['wx'] - current['px'], item['wy'] - current['py']))
+        if math.hypot(target['wx'] - current['px'], target['wy'] - current['py']) > 3:
+            steps.append(walk(page, current, target)); continue
+        if current['reloadPulse'] > 0:
+            page.clock.run_for(100); steps.append({'kind': 'wait-existing-reload', 'milliseconds': 100}); continue
+        break
+    else: raise AssertionError('could not approach a live threat with the real held pickup')
+    aim(page, current, target['wx'], target['wy'])
+    page.locator('.fps-royale-canvas').focus()
+    if target['kind'] == 'Champion de Trame': page.keyboard.press('t')
+    before = read(page)
+    page.keyboard.press('Space')
+    fired = read(page)
+    check(fired['ammo'] == before['ammo'] - 1, 'native pickup fire must spend exactly one round')
+    check(fired['protocols']['casts'] == before['protocols']['casts'], 'pickup fire borrowed a personal action')
+    detail = page.evaluate('''() => {const s=window.__sceneQA.state();return {
+      projectiles:structuredClone(s.protocols.projectiles),status:s.statusText,
+      confirmed:s.hitMarkerTimer>0,charge:s.protocols.charge};}''')
+    if current['weaponType'] == 'shotgun':
+        hit = next(enemy for enemy in fired['enemies'] if enemy['id'] == target['id'])
+        check(hit['hp'] < target['hp'] and detail['confirmed'], 'native close shotgun did not confirm real damage')
+        check(detail['charge'] <= min(100, before['protocols']['charge'] + 8), 'one shotgun discharge multiplied ultimate credit')
+    else:
+        shots = [shot for shot in detail['projectiles'] if shot.get('source') == 'pickup' and shot.get('weaponType') == current['weaponType']]
+        check(shots and all(shot['age'] == 0 for shot in shots), 'native pickup did not launch its travelling projectile')
+        hit = next(enemy for enemy in fired['enemies'] if enemy['id'] == target['id'])
+        check(hit['hp'] == target['hp'], 'projectile damage happened before simulation flight')
+    page.locator('#qa-pause').click()
+    page.locator('.fps-royale-canvas').focus()
+    frozen = read(page)
+    frozen_projectiles = page.evaluate('structuredClone(window.__sceneQA.state().protocols.projectiles)')
+    page.keyboard.press('Space'); page.clock.run_for(400)
+    check(read(page) == frozen and page.evaluate('structuredClone(window.__sceneQA.state().protocols.projectiles)') == frozen_projectiles,
+          'pause advanced a pickup projectile or accepted a shot')
+    page.locator('#qa-pause').click(); page.locator('.fps-royale-canvas').focus()
+    page.clock.run_for(16)
+    page.clock.run_for(300)
+    after = read(page)
+    if current['weaponType'] != 'shotgun':
+        hit = next(enemy for enemy in after['enemies'] if enemy['id'] == target['id'])
+        check(hit['hp'] < target['hp'], 'travelling pickup did not hit the aimed nearby target')
+    page.screenshot(path=str(out / f'{name}-pickup-fire.png'))
+    receipt = {'type': current['weaponType'], 'nativeInputs': True, 'injectedState': False,
+               'approach': steps, 'targetId': target['id'], 'before': before, 'fired': fired,
+               'delivery': detail, 'pausedProjectiles': frozen_projectiles, 'after': after,
+               'pausePreserved': True}
+    (out / f'{name}-pickup-fire.json').write_text(json.dumps(receipt, indent=2, ensure_ascii=False))
+    return receipt
+
+
 def pickup_layout_case(page, out, name):
     """Short native hunt: earn and collect one drop, then measure KIT + MARK."""
     page.locator('.extinction-mode-options button').filter(has=page.locator('strong', has_text='Champion Hunt')).click()
@@ -377,6 +442,8 @@ def pickup_layout_case(page, out, name):
         current = read(page); trace.append({'action': action, 'state': current})
     (out / f'{name}-trace.json').write_text(json.dumps({'seed': seed, 'trace': trace}, indent=2, ensure_ascii=False))
     check(current['personalKit'] and current['weaponType'] != 'pistol', 'no real weapon pickup within short case')
+    firing = held_pickup_fire_case(page, out, name)
+    current = read(page)
     # Collection updates simulation immediately; the HUD publishes periodically.
     # Playwright's assertion wait cannot advance the deliberately paused clock.
     for _ in range(6):
@@ -401,6 +468,7 @@ def pickup_layout_case(page, out, name):
     check(page.evaluate('window.__sceneQA.reports.filter(r=>r.reason==="completed").length') == 0, 'short layout case granted completion')
     return {'nativeInputs': True, 'injectedProgress': False, 'seed': seed, 'pickedWeapon': weapon,
             'nativeActions': len(trace), 'layouts': layouts, 'directiveDetails': details,
+            'pickupFiring': {'type': firing['type'], 'nativeInputs': True, 'pausePreserved': firing['pausePreserved']},
             'restoredKit': True, 'abandonNoReward': True}
 
 

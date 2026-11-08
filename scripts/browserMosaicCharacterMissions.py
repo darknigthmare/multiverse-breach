@@ -29,9 +29,22 @@ NEXUS_CONTRACTS = [
     ('city-oryn-separate-voices-v1', 'one-spokesperson', 'separate-voices'),
 ]
 NEW_NEXUS_IDS = {entry[0] for entry in NEXUS_CONTRACTS[7:]}
+FOLLOWUP_IDS = [
+    'city-anchor-trace-return-v1', 'city-mirelle-relay-followup-v1', 'city-bastion-tenth-witness-v1',
+    'city-nova-return-measurement-v1', 'city-sable-map-detour-v1', 'city-loom-receiving-end-v1',
+    'city-marrow-independent-answers-v1', 'city-tessera-caption-review-v1', 'city-quillon-delivery-check-v1',
+    'city-nadir-second-threshold-v1', 'city-elyra-renewed-passage-v1', 'city-oryn-manifest-delivery-v1',
+]
+FOLLOWUPS = [(mission_id, 'shortcut', 'apply' if index % 2 == 0 else 'hold')
+             for index, mission_id in enumerate(FOLLOWUP_IDS)]
+PREREQUISITES = dict(zip(FOLLOWUP_IDS, [entry[0] for entry in NEXUS_CONTRACTS]))
+NEXUS_ALL = NEXUS_CONTRACTS + FOLLOWUPS
 DISTRICTS = {
     'nexus': {'id': DISTRICT, 'universe': 'Nexus de Convergence', 'catalog': 'nexus',
-              'contracts': NEXUS_CONTRACTS, 'mobile': [NEXUS_CONTRACTS[9], NEXUS_CONTRACTS[10]],
+              'contracts': NEXUS_ALL, 'mobile': [
+                  (NEXUS_CONTRACTS[9][0], NEXUS_CONTRACTS[9][1], 'repeat-probe'),
+                  (NEXUS_CONTRACTS[10][0], NEXUS_CONTRACTS[10][1], 'close-terminal'),
+                  (FOLLOWUP_IDS[9], 'shortcut', 'apply'), (FOLLOWUP_IDS[10], 'shortcut', 'hold')],
               'requiredArt': []},
     'halo': {'id': 'universe-halo', 'universe': 'Halo', 'catalog': 'city-contracts',
              'contracts': [
@@ -136,6 +149,12 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
     page.wait_for_function('id=>window.__sceneQA.characterMissions?.activeId===id', arg=mission_id, polling=50)
     case = {'missionId': mission_id, 'districtId': district, 'universe': universe,
             'walks': [], 'choice': None, 'remount': None}
+    if mission_id in PREREQUISITES:
+        saved = progress(page)['records']
+        source = saved[PREREQUISITES[mission_id]]
+        check(source['completed'], 'follow-up started before its preceding report')
+        check(saved[mission_id]['originChoiceId'] == source['choiceId'], 'follow-up lost its preceding choice')
+        case['origin'] = {'missionId': PREREQUISITES[mission_id], 'choiceId': source['choiceId']}
     check(progress(page)['records'][mission_id]['districtId'] == district and
           progress(page)['records'][mission_id]['universe'] == universe,
           'contract acceptance used a different district or source universe')
@@ -263,11 +282,20 @@ def run_case(page, args, profile, lang, label, out, name, result):
     options = page.locator('[data-city-contract-select] option')
     check(options.evaluate_all('nodes=>nodes.map(node=>node.value)') == [entry[0] for entry in profile['contracts']],
           'district contracts are missing, reordered or mixed with another source universe')
+    if profile['catalog'] == 'nexus':
+        panel = page.locator('.mosaic-character-missions')
+        saved = progress(page)
+        panel.locator('[data-city-contract-select]').select_option(FOLLOWUP_IDS[0])
+        expect(panel.locator('[data-city-contract-accept]')).to_have_count(0)
+        expect(panel.locator('[data-city-contract-approach]')).to_have_count(0)
+        page.clock.run_for(400)
+        check(progress(page) == saved, 'reading a locked follow-up changed the save')
+        result['lockedFollowup'] = {'missionId': FOLLOWUP_IDS[0], 'preserved': True}
     chosen = profile['contracts'] if label == 'desktop' else profile.get('mobile', profile['contracts'])
     for index, entry in enumerate(chosen):
         result['contracts'].append(play_contract(
             page, entry, out, name, profile['id'], profile['universe'],
-            remount=index == 0 or entry[0] in NEW_NEXUS_IDS or profile['catalog'] == 'city-contracts',
+            remount=index == 0 or entry[0] in NEW_NEXUS_IDS or entry[0] in FOLLOWUP_IDS or profile['catalog'] == 'city-contracts',
             interrupt=index == 0))
     page.locator('[data-city-contract-objective]').scroll_into_view_if_needed()
     if args.require_art:

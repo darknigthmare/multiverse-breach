@@ -331,7 +331,7 @@ test('the actual pickup fire callback preserves unmarked-Hunt refusal and shows 
   assert.match(state.statusText, /Noyau masqué/); assert.doesNotMatch(state.statusText, /Impact confirmé/);
   assert.equal(state.protocols.charge, 0);
   directives.markExtinctionHuntTarget(state); state.t += 20; fire();
-  assert.equal(state.enemies[0].hp, 449); assert.equal(state.ammo, 6);
+  assert.equal(state.enemies[0].hp, 478, 'three of seven pellets reach this five-unit target'); assert.equal(state.ammo, 6);
   assert.equal(state.hitMarkerTimer, 6); assert.ok(state.screenShake > 0); assert.match(state.statusText, /Impact confirmé/);
 });
 
@@ -425,4 +425,266 @@ test('mobility charge rejects empty, harmless, distant, approaching, wall-clippe
   for (let tick = 0; tick < 120; tick++) { state.t++; directives.tickExtinctionFieldDirective(state); }
   directives.interactExtinctionFieldDirective(state); directives.interactExtinctionFieldDirective(state);
   assert.equal(state.protocols.charge, 0, 'objective interactions, including repeats, are not evasions');
+});
+
+const PICKUP_FIXTURES = {
+  shotgun: { type: 'shotgun', ammo: 8, maxAmmo: 8, fireRate: 1.5, spread: .28, dmgMult: 2.1, color: '#e67e22' },
+  plasma: { type: 'plasma', ammo: 60, maxAmmo: 60, fireRate: .45, spread: .05, dmgMult: .65, color: '#3498db' },
+  rocket: { type: 'rocket', ammo: 4, maxAmmo: 4, fireRate: 2.4, spread: .15, dmgMult: 4.5, color: '#e74c3c' }
+};
+function pickupRun(type, id = 'masterchief') {
+  const state = liveState(id);
+  state.t = 100; state.weapon = { ...PICKUP_FIXTURES[type] }; state.ammo = state.weapon.ammo;
+  state.enemies = [{ ...enemy(4), speed: 0, dmg: 0 }];
+  return state;
+}
+
+test('the real fire callback gives all three pickups their own delivery in each mode and preserves personal actions', () => {
+  for (const id of ['masterchief', 'arca_mirelle', 'predator', 'lilo_pelekai']) {
+    for (const mode of ['extraction', 'last_signal', 'infestation', 'hunt']) {
+      for (const type of Object.keys(PICKUP_FIXTURES)) {
+        const state = pickupRun(type, id); state.runMode = mode;
+        const profile = JSON.stringify(state.protocols.profile), casts = { ...state.protocols.casts }, ammo = state.ammo;
+        callback('fire', state)();
+        assert.equal(state.ammo, ammo - 1, `${id}/${mode}/${type}`);
+        assert.equal(state.weapon.ammo, state.ammo);
+        if (type === 'shotgun') {
+          assert.ok(state.enemies[0].hp < 500); assert.equal(state.protocols.projectiles.length, 0);
+        } else {
+          assert.equal(state.enemies[0].hp, 500, 'a launched projectile has not impacted yet');
+          const shot = state.protocols.projectiles[0];
+          assert.equal(shot.source, 'pickup'); assert.equal(shot.weaponType, type);
+          assert.equal(shot.ownerId, id); assert.equal(shot.runId, state.runId);
+          fixedStep(state, hero(id), 18);
+          assert.ok(state.enemies[0].hp < 500, 'the actual component loop advances projectile collision');
+        }
+        assert.deepEqual(state.protocols.casts, casts);
+        assert.equal(JSON.stringify(state.protocols.profile), profile, 'pickup never rewrites or borrows a personal action');
+        assert.equal(state.rewards, undefined);
+      }
+    }
+  }
+});
+
+test('shotgun pellets stop at their first body, stay within nine units and concentrate only at close range', () => {
+  const state = pickupRun('shotgun');
+  const front = { ...enemy(1), size: 2 }, behind = { ...enemy(4), id: 'behind' };
+  const side = { ...enemy(2), id: 'side', wx: 4 }, back = { ...enemy(-2), id: 'back' }, far = { ...enemy(10), id: 'far' };
+  state.enemies = [behind, far, side, back, front];
+  const result = protocols.fireExtinctionPickupWeapon(state);
+  assert.equal(result.pellets, 7); assert.equal(result.damage, 71); assert.equal(result.hitCount, 1);
+  assert.equal(front.hp, 429);
+  for (const target of [behind, far, side, back]) assert.equal(target.hp, 500);
+  assert.equal(state.protocols.charge, 8, 'one shot does not give seven ultimate credits');
+  const distant = pickupRun('shotgun'); distant.enemies[0].wy = 10;
+  assert.equal(protocols.fireExtinctionPickupWeapon(distant).reason, 'miss');
+  assert.equal(distant.enemies[0].hp, 500); assert.equal(distant.protocols.charge, 0);
+  const medium = pickupRun('shotgun'); protocols.fireExtinctionPickupWeapon(medium);
+  assert.ok(medium.enemies[0].hp > front.hp && medium.enemies[0].hp < 500, 'spread lowers damage beyond point-blank range');
+});
+
+test('a shotgun spreads across separate targets without penetrating a centre target or multiplying charge', () => {
+  const state = pickupRun('shotgun');
+  const front = enemy(4), left = { ...enemy(Math.cos(.28) * 4), id: 'left', wx: -Math.sin(.28) * 4 },
+    right = { ...enemy(Math.cos(.28) * 4), id: 'right', wx: Math.sin(.28) * 4 }, behind = { ...enemy(7), id: 'behind' };
+  state.enemies = [behind, right, front, left];
+  const result = protocols.fireExtinctionPickupWeapon(state);
+  assert.equal(result.hitCount, 3);
+  for (const target of [front, left, right]) assert.ok(target.hp < 500);
+  assert.equal(behind.hp, 500); assert.equal(state.protocols.charge, 8); assert.equal(state.ammo, 7);
+});
+
+test('plasma travels, can miss a moving target and collides with the closest body before a farther one', () => {
+  const state = pickupRun('plasma'); const near = enemy(3), far = { ...enemy(6), id: 'far' }; state.enemies = [far, near];
+  protocols.fireExtinctionPickupWeapon(state); tick(state, 1);
+  assert.equal(near.hp, 500); assert.equal(state.protocols.projectiles[0].wy, .6);
+  tick(state, 9); assert.equal(near.hp, 478); assert.equal(far.hp, 500);
+  assert.equal(state.protocols.projectiles.length, 0); assert.equal(state.protocols.charge, 8);
+  const moving = pickupRun('plasma'); protocols.fireExtinctionPickupWeapon(moving);
+  moving.enemies[0].wx = 4; tick(moving, 41);
+  assert.equal(moving.enemies[0].hp, 500); assert.equal(moving.protocols.charge, 0);
+  assert.equal(moving.protocols.projectiles.length, 0, 'a missed projectile expires at its bounded range');
+});
+
+test('Slayer pickup projectiles keep close damage at impact, including movement and individual blast victims', () => {
+  assert.equal(hero('doomslayer').category, 'slayer');
+  for (const type of ['plasma', 'rocket']) {
+    for (const id of ['masterchief', 'doomslayer']) for (const range of [1, 2.2, 3]) for (const multiplier of [1, 1.25]) {
+      const state = pickupRun(type, id); state.heroCategory = hero(id).category; state.enemies = [enemy(range)];
+      protocols.fireExtinctionPickupWeapon(state, { damageMultiplier: multiplier });
+      assert.equal(state.enemies[0].hp, 500, 'the close bonus must not apply damage before flight');
+      const raw = 34 * multiplier * PICKUP_FIXTURES[type].dmgMult;
+      const expected = Math.round(raw * (id === 'doomslayer' && range < 2.2 ? 1.45 : 1));
+      tick(state, 20);
+      assert.equal(state.enemies[0].hp, 500 - expected, `${id}/${type}: ${range} units, multiplier ${multiplier}`);
+      assert.equal(state.protocols.charge, 8, 'bonus damage does not multiply charge');
+    }
+    for (const [range, playerY, close] of [[4, 3, true], [1, -3, false]]) {
+      const state = pickupRun(type, 'doomslayer'); state.heroCategory = 'slayer'; state.enemies = [enemy(range)];
+      protocols.fireExtinctionPickupWeapon(state); state.py = playerY;
+      assert.equal(state.enemies[0].hp, 500);
+      tick(state, 20);
+      const expected = Math.round(34 * PICKUP_FIXTURES[type].dmgMult * (close ? 1.45 : 1));
+      assert.equal(state.enemies[0].hp, 500 - expected, `${type}: proximity follows the player at impact`);
+    }
+  }
+  const blast = id => {
+    const state = pickupRun('rocket', id); state.heroCategory = hero(id).category;
+    state.enemies = [enemy(1), { ...enemy(1), id: 'close-splash', wx: 1.2 }, { ...enemy(1), id: 'far-splash', wx: 2.1 }];
+    protocols.fireExtinctionPickupWeapon(state); tick(state, 20); return state;
+  };
+  const marine = blast('masterchief'), slayer = blast('doomslayer');
+  assert.ok(slayer.enemies[0].hp < marine.enemies[0].hp);
+  assert.ok(slayer.enemies[1].hp < marine.enemies[1].hp, 'a nearby blast victim receives close damage');
+  assert.equal(slayer.enemies[2].hp, marine.enemies[2].hp, 'a distant blast victim does not inherit the direct target’s bonus');
+  assert.ok(slayer.enemies[2].hp < 500, 'the distant victim is actually inside the blast');
+  assert.equal(slayer.protocols.charge, 8);
+});
+
+test('projectile segment collision catches fast shots and range exhaustion does not create a remote explosion', () => {
+  for (const type of ['plasma', 'rocket']) {
+    const state = pickupRun(type), near = enemy(3), far = { ...enemy(8), id: 'far' }; state.enemies = [far, near];
+    protocols.fireExtinctionPickupWeapon(state); state.protocols.projectiles[0].vy = 10; tick(state, 1);
+    assert.ok(near.hp < 500); assert.equal(far.hp, 500, type);
+    const miss = pickupRun(type); miss.enemies[0].wy = 25;
+    protocols.fireExtinctionPickupWeapon(miss); tick(miss, 90);
+    assert.equal(miss.enemies[0].hp, 500); assert.equal(miss.protocols.projectiles.length, 0);
+    assert.equal(miss.protocols.effects.filter(item => item.kind === 'explosion').length, 0, 'expiry without collision is not an explosion');
+  }
+});
+
+test('rocket impact damages nearby threats with falloff, counts each kill once and gives one charge credit', () => {
+  const state = pickupRun('rocket'); const direct = enemy(4), nearby = { ...enemy(4), id: 'nearby', wx: 1.2 }, far = { ...enemy(4), id: 'far', wx: 3 };
+  state.enemies = [nearby, far, direct];
+  protocols.fireExtinctionPickupWeapon(state); assert.deepEqual(state.enemies.map(item => item.hp), [500, 500, 500]);
+  tick(state, 14);
+  assert.equal(direct.hp, 347); assert.ok(nearby.hp > direct.hp && nearby.hp < 500); assert.equal(far.hp, 500);
+  assert.equal(state.protocols.charge, 8); assert.equal(state.ammo, 3);
+  assert.equal(state.protocols.effects.filter(item => item.kind === 'explosion').length, 1);
+  const lethal = pickupRun('rocket'); lethal.enemies = [{ ...enemy(4, 10), id: 'first' }, { ...enemy(4, 10), id: 'second', wx: 1 }];
+  const drops = []; protocols.fireExtinctionPickupWeapon(lethal, { onKill: target => drops.push(target.id) });
+  for (let i = 0; i < 90; i++) { lethal.t++; tickExtinctionProtocols(lethal, target => drops.push(target.id)); }
+  assert.equal(lethal.kills, 2); assert.equal(new Set(drops).size, 2); assert.equal(drops.length, 2);
+  assert.equal(lethal.protocols.charge, 8, 'blast victims do not multiply charge');
+});
+
+test('travelling pickups handle point-blank overlap, stale metadata and consecutive contacts without duplicate drops', () => {
+  for (const type of ['plasma', 'rocket']) {
+    const contact = pickupRun(type); contact.enemies = [enemy(0)];
+    protocols.fireExtinctionPickupWeapon(contact); tick(contact, 1);
+    assert.ok(contact.enemies[0].hp < 500, `${type}: the muzzle does not skip an overlapping threat`);
+    assert.equal(contact.protocols.projectiles.length, 0);
+    for (const key of ['ownerId', 'runId']) {
+      const stale = pickupRun(type); stale.enemies = [enemy(0)];
+      protocols.fireExtinctionPickupWeapon(stale); stale.protocols.projectiles[0][key] = 'foreign';
+      tick(stale, 1);
+      assert.equal(stale.enemies[0].hp, 500); assert.equal(stale.protocols.projectiles.length, 0);
+      assert.equal(stale.protocols.charge, 0);
+    }
+  }
+  const state = pickupRun('rocket'); state.enemies = [{ ...enemy(14, 10), id: 'near' }, { ...enemy(18, 10), id: 'far' }];
+  const drops = [], advance = count => { for (let i = 0; i < count; i++) { state.t++; tickExtinctionProtocols(state, target => drops.push(target.id)); } };
+  protocols.fireExtinctionPickupWeapon(state); advance(44);
+  assert.equal(state.enemies[0].hp, 10, 'first rocket is still travelling when the next legal shot becomes available');
+  assert.equal(protocols.fireExtinctionPickupWeapon(state).fired, true);
+  assert.equal(state.protocols.projectiles.length, 2);
+  advance(80);
+  assert.deepEqual(drops, ['near', 'far']); assert.equal(state.kills, 2);
+  assert.equal(state.protocols.projectiles.length, 0); assert.equal(state.protocols.charge, 16);
+});
+
+test('one explosion cannot strip drones then damage the shielded Champion through target array order', () => {
+  for (const reverse of [false, true]) {
+    const state = pickupRun('rocket'), boss = { ...enemy(4), id: 'boss', kind: 'Champion de Trame', shieldActive: true },
+      drone = { ...enemy(4, 24), id: 'drone', kind: 'Drone Protecteur', wx: 1.2 };
+    state.enemies = reverse ? [drone, boss] : [boss, drone];
+    protocols.fireExtinctionPickupWeapon(state); tick(state, 44);
+    assert.equal(drone.hp, 0); assert.equal(boss.hp, 500); assert.equal(state.protocols.charge, 8);
+    protocols.fireExtinctionPickupWeapon(state); tick(state, 14);
+    assert.equal(boss.hp, 347); assert.equal(boss.shieldActive, false);
+  }
+});
+
+test('Hunt marking is evaluated on projectile impact, not remembered from the trigger press', () => {
+  const state = pickupRun('rocket'); state.runMode = 'hunt';
+  const boss = { ...enemy(10), id: 'champion', kind: 'Champion de Trame' }; state.enemies = [boss];
+  state.fieldDirective = directives.createExtinctionFieldDirective(state, { enabled: true, mode: 'hunt' });
+  assert.equal(directives.markExtinctionHuntTarget(state).activated, true);
+  // Spend most of the legal marking interval before firing a slow projectile.
+  for (let i = 0; i < 230; i++) { state.t++; directives.tickExtinctionFieldDirective(state); }
+  protocols.fireExtinctionPickupWeapon(state);
+  for (let i = 0; i < 40; i++) { state.t++; tickExtinctionProtocols(state); directives.tickExtinctionFieldDirective(state); }
+  assert.equal(boss.hp, 500); assert.equal(state.hitMarkerTimer, 0); assert.equal(state.protocols.charge, 0);
+  assert.match(state.statusText, /Noyau masqué/);
+  assert.equal(directives.markExtinctionHuntTarget(state).activated, true);
+  tick(state, 4); protocols.fireExtinctionPickupWeapon(state);
+  for (let i = 0; i < 40; i++) { state.t++; tickExtinctionProtocols(state); directives.tickExtinctionFieldDirective(state); }
+  assert.equal(boss.hp, 347); assert.equal(state.protocols.charge, 8);
+});
+
+test('a pickup projectile survives a legal kit switch, freezes in pause and never borrows its owner’s personal art', () => {
+  for (const type of ['plasma', 'rocket']) {
+    const state = liveState('arca_mirelle'); state.enemies = [enemy(6)]; state.t = 100;
+    state.weapon.ammo = 11; state.ammo = 11; state.reserveAmmo = 31;
+    rememberExtinctionPersonalKit(state); state.weapon = { ...PICKUP_FIXTURES[type] }; state.ammo = state.weapon.ammo;
+    protocols.fireExtinctionPickupWeapon(state);
+    const projectile = state.protocols.projectiles[0], source = structuredClone(projectile);
+    state.paused = true; const frozen = JSON.stringify(state);
+    for (let i = 0; i < 90; i++) tickExtinctionProtocols(state);
+    assert.equal(protocols.fireExtinctionPickupWeapon(state).reason, 'paused'); assert.equal(JSON.stringify(state), frozen);
+    state.paused = false; assert.equal(restoreExtinctionPersonalKit(state), true);
+    assert.equal(state.weapon.type, 'pistol'); assert.equal(state.ammo, 11); assert.equal(state.reserveAmmo, 31);
+    assert.deepEqual(projectile, source, 'switching equipment does not reset a projectile in flight');
+    let imageDraws = 0;
+    const context = new Proxy({ drawImage() { imageDraws++; } }, { get: (target, key) => target[key] || (() => {}), set: () => true });
+    const before = JSON.stringify(state);
+    protocols.drawExtinctionProtocols(context, state, 840, 430, () => ({ camZ: 3, aim: .2 }),
+      { ownerId: 'arca_mirelle', image: { complete: true, naturalWidth: 300, naturalHeight: 100 } });
+    assert.equal(imageDraws, 0); assert.equal(JSON.stringify(state), before);
+    tick(state, 24); assert.ok(state.enemies[0].hp < 500); assert.equal(state.ammo, 11); assert.equal(state.reserveAmmo, 31);
+  }
+});
+
+test('pickup fire obeys reload, empty stock, cadence, source ownership and run cleanup without rewards', () => {
+  for (const type of Object.keys(PICKUP_FIXTURES)) {
+    for (const [reason, mutate] of [
+      ['reload', state => { state.reloadPulse = 12; }],
+      ['paused', state => { state.paused = true; }],
+      ['unavailable', state => { state.phase = 'ended'; }],
+      ['unavailable', state => { state.hp = 0; }],
+      ['unavailable', state => { state.heroId = 'foreign'; }],
+      ['unavailable', state => { state.runId = 'old-run'; }],
+      ['unavailable', state => { state.protocols.profile = { ...state.protocols.profile, heroId: 'foreign' }; }],
+      ['unavailable', state => { state.angle = NaN; }]
+    ]) {
+      const state = pickupRun(type); mutate(state); const before = JSON.stringify(state);
+      assert.equal(protocols.fireExtinctionPickupWeapon(state).reason, reason);
+      assert.equal(JSON.stringify(state), before);
+    }
+    const state = pickupRun(type); protocols.fireExtinctionPickupWeapon(state);
+    const before = JSON.stringify(state);
+    assert.equal(protocols.fireExtinctionPickupWeapon(state).reason, 'cooldown'); assert.equal(JSON.stringify(state), before);
+    tick(state, 45); state.weapon.ammo = 0; state.ammo = 0;
+    assert.equal(protocols.fireExtinctionPickupWeapon(state).reason, 'ammo'); assert.equal(state.ammo, 0);
+    state.phase = 'ended'; clearExtinctionProtocolEffects(state); clearExtinctionProtocolEffects(state);
+    const hp = state.enemies[0].hp; tick(state, 90);
+    assert.equal(state.protocols.projectiles.length, 0); assert.equal(state.protocols.effects.length, 0);
+    assert.equal(state.enemies[0].hp, hp); assert.equal(state.rewards, undefined);
+  }
+});
+
+test('projectile feedback aligns with the scene projection and the held pickup has bilingual instructions', () => {
+  for (const type of ['plasma', 'rocket']) {
+    const state = pickupRun(type), observed = [];
+    protocols.fireExtinctionPickupWeapon(state);
+    const ctx = new Proxy({ arc(x) { observed.push(x); }, moveTo(x) { observed.push(x); } },
+      { get: (target, key) => target[key] || (() => {}), set: () => true });
+    protocols.drawExtinctionProtocols(ctx, state, 1000, 500, () => ({ camZ: 3, aim: .2 }));
+    assert.equal(observed[0], 656, 'world effects share the x projection used for actual threats and loot');
+  }
+  for (const type of Object.keys(PICKUP_FIXTURES)) {
+    assert.ok(protocols.getExtinctionPickupBrief(type, 'fr').length > 70);
+    assert.ok(protocols.getExtinctionPickupBrief(type, 'en').length > 70);
+  }
+  assert.equal(protocols.getExtinctionPickupBrief('pistol'), '', 'a personal action does not become a pickup');
 });

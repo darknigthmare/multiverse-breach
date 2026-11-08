@@ -36,7 +36,8 @@ function resolved(progress, mission) {
 
 test('every Nexus identity and both DLC senders have distinct authored bilingual contracts', () => {
   assert.deepEqual(new Set(catalog.map(mission => mission.heroId)), new Set(owned));
-  assert.equal(catalog.length, owned.length);
+  assert.equal(catalog.filter(mission => !mission.requiresMissionId).length, owned.length);
+  assert.equal(catalog.filter(mission => mission.requiresMissionId).length, owned.length);
   assert.equal(new Set(allCatalog.map(mission => mission.id)).size, allCatalog.length);
   assert.deepEqual(new Set(allCatalog.map(mission => mission.id)), new Set(MOSAIC_CHARACTER_MISSIONS.map(mission => mission.id)));
   for (const mission of allCatalog) {
@@ -73,15 +74,30 @@ test('availability requires current district, owned sender, residents and every 
   assert.equal(getMosaicCharacterMissionCatalog({ ...context, unlockedHeroIds: [] }).length, 0);
   assert.equal(getMosaicCharacterMissionCatalog({ ...context, district: { ...context.district, universe: 'Halo' } }).length, 0);
   assert.equal(getMosaicCharacterMissionCatalog({ ...context, anchor: { ...anchor, action: 'talk' } }).length, 0);
-  assert.deepEqual(getMosaicCharacterMissionCatalog({ ...context, unlockedHeroIds: ['player_anchor'] }).map(mission => mission.heroId), ['player_anchor']);
+  assert.deepEqual(new Set(getMosaicCharacterMissionCatalog({ ...context, unlockedHeroIds: ['player_anchor'] }).map(mission => mission.heroId)), new Set(['player_anchor']));
   const removed = getMosaicCharacterMissionCatalog({ ...context, exhibits: exhibits.filter(item => item.id !== 'nexus_anchor_coil') });
-  assert.ok(!removed.some(mission => ['player_anchor', 'arca_mirelle'].includes(mission.heroId)));
+  assert.ok(!removed.some(mission => !mission.requiresMissionId && ['player_anchor', 'arca_mirelle'].includes(mission.heroId)));
   assert.ok(removed.some(mission => mission.heroId === 'arca_sable'));
 });
+function finishedPrerequisite(mission, route) {
+  let progress = normalizeMosaicCharacterMissions();
+  if (!mission.requiresMissionId) return progress;
+  const previous = allCatalog.find(item => item.id === mission.requiresMissionId);
+  assert.ok(previous, 'The prerequisite must be a real, available source contract');
+  progress = startMosaicCharacterMission(progress, previous).progress;
+  for (const step of previous.steps) {
+    progress = step.type === 'decision'
+      ? resolveMosaicCharacterMission(progress, previous, step.choices.filter(item => item.valid)[route].id).progress
+      : advanceMosaicCharacterMission(progress, previous, resolved(progress, previous)).progress;
+  }
+  assert.equal(progress.records[previous.id].completed, true);
+  return progress;
+}
 for (const mission of allCatalog) {
-  for (const route of [0, 1]) test(`${mission.id}: physical steps, conclusion ${route + 1}, saved receipt and repeat refusal`, () => {
+  for (const originRoute of mission.requiresMissionId ? [0, 1] : [null]) {
+  for (const route of [0, 1]) test(`${mission.id}: origin ${originRoute}, physical steps, conclusion ${route + 1}, saved receipt and repeat refusal`, () => {
     const { district, anchor } = contextFor(mission.universe);
-    let progress = startMosaicCharacterMission(normalizeMosaicCharacterMissions(), mission).progress;
+    let progress = startMosaicCharacterMission(finishedPrerequisite(mission, originRoute), mission).progress;
     const state = { player: { x: 820, y: 760, speed: 2.35 }, keys: {}, npcs: [], obstacles: [] };
     let moved = 0;
     for (let index = 0; index < mission.steps.length; index++) {
@@ -122,7 +138,53 @@ for (const mission of allCatalog) {
     assert.equal(advanceMosaicCharacterMission(progress, mission, { type: 'zone', id: anchor.id, target: anchor, distance: 0 }).changed, false);
     assert.equal(getMosaicCharacterMissionZones(progress, allCatalog).length, 0);
   });
+  }
 }
+
+test('follow-ups require the full preceding report, preserve its choice, and change both physical destinations', () => {
+  for (const mission of catalog.filter(item => item.requiresMissionId)) {
+    const empty = normalizeMosaicCharacterMissions();
+    assert.equal(getMosaicCharacterMissionObjective(empty, mission).status, 'locked');
+    const refused = startMosaicCharacterMission(empty, mission);
+    assert.equal(refused.reason, 'locked'); assert.equal(refused.progress, empty);
+    assert.equal(getMosaicCharacterMissionZones({ ...empty, activeId: mission.id }, catalog).length, 0);
+    const origins = [];
+    for (const route of [0, 1]) {
+      const completed = finishedPrerequisite(mission, route);
+      const previous = completed.records[mission.requiresMissionId];
+      const beforeReport = structuredClone(completed);
+      beforeReport.records[mission.requiresMissionId].completedStepIds.pop();
+      beforeReport.records[mission.requiresMissionId].completed = false;
+      assert.equal(startMosaicCharacterMission(beforeReport, mission).reason, 'locked');
+      let progress = startMosaicCharacterMission(completed, mission).progress;
+      assert.deepEqual(progress.records[mission.requiresMissionId], previous);
+      assert.equal(progress.records[mission.id].originChoiceId, previous.choiceId);
+      progress = advanceMosaicCharacterMission(progress, mission, resolved(progress, mission)).progress;
+      const zone = getMosaicCharacterMissionZones(progress, catalog)[0];
+      assert.ok(zone); origins.push([zone.x, zone.y]);
+      // Even a valid alternate receipt cannot silently rewrite an accepted route.
+      const divergent = structuredClone(progress);
+      divergent.records[mission.requiresMissionId] = finishedPrerequisite(mission, 1 - route).records[mission.requiresMissionId];
+      assert.equal(getMosaicCharacterMissionObjective(divergent, mission).status, 'unavailable');
+      assert.equal(startMosaicCharacterMission(divergent, mission).progress, divergent);
+      const forged = structuredClone(completed);
+      forged.records[mission.requiresMissionId].completedStepIds = ['report'];
+      assert.equal(startMosaicCharacterMission(forged, mission).reason, 'locked');
+      while (getMosaicCharacterMissionObjective(progress, mission).step.type !== 'decision') {
+        progress = advanceMosaicCharacterMission(progress, mission, resolved(progress, mission)).progress;
+      }
+      const destinations = ['apply', 'hold'].map(choiceId => {
+        const chosen = resolveMosaicCharacterMission(progress, mission, choiceId).progress;
+        assert.equal(chosen.records[mission.id].completed, false, 'A choice alone is not a completed intervention');
+        const target = getMosaicCharacterMissionZones(chosen, catalog)[0];
+        assert.ok(target);
+        return [target.x, target.y];
+      });
+      assert.notDeepEqual(destinations[0], destinations[1], 'Both decisions require different in-world checks');
+    }
+    assert.notDeepEqual(origins[0], origins[1], 'The previous ending must change the next physical route');
+  }
+});
 test('remote, forged, mismatched and unordered interactions cannot record evidence', () => {
   const mission = catalog.find(item => item.heroId === 'arca_bastion');
   const progress = startMosaicCharacterMission(normalizeMosaicCharacterMissions(), mission).progress;

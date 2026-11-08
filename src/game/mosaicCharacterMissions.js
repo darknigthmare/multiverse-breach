@@ -1,4 +1,5 @@
 import { MOSAIC_INTERACTION_RANGE } from './mosaicCityRuntime.js';
+import { createMosaicCharacterFollowups } from './mosaicCharacterFollowups.js';
 import * as dlcHalo from '../../DLC/Halo/data/mosaicCharacterMissions.js';
 import * as dlcAlien from '../../DLC/Alien/data/mosaicCharacterMissions.js';
 
@@ -187,7 +188,8 @@ export const MOSAIC_CHARACTER_MISSIONS = Object.freeze([
       ]), report]
   },
   ...dlcHalo.createMosaicCharacterMissions({ text, person, exhibit, marker, decision, choice, report }),
-  ...dlcAlien.createMosaicCharacterMissions({ text, person, exhibit, marker, decision, choice, report })
+  ...dlcAlien.createMosaicCharacterMissions({ text, person, exhibit, marker, decision, choice, report }),
+  ...createMosaicCharacterFollowups({ text, person, exhibit, marker, decision, choice, report })
 ].map(mission => Object.freeze({ ...mission, universe: mission.universe || 'Nexus de Convergence', version: 1,
   steps: Object.freeze(mission.steps.map(step => Object.freeze(step))) })));
 
@@ -222,23 +224,60 @@ function validSaved(mission, saved) {
     || !Array.isArray(saved.completedStepIds) || saved.completedStepIds.length > mission.steps.length) return false;
   if (!saved.completedStepIds.every((id, index) => id === mission.steps[index].id)) return false;
   const resolutionIndex = mission.steps.findIndex(step => step.type === 'decision');
+  if (resolutionIndex < 0 || (saved.completedStepIds.length <= resolutionIndex && saved.choiceId != null)) return false;
   if (saved.completedStepIds.length > resolutionIndex && !mission.steps[resolutionIndex].choices.some(item => item.valid && item.id === saved.choiceId)) return false;
+  if (mission.requiresMissionId) {
+    const previous = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === mission.requiresMissionId);
+    if (!previous || !previous.steps.find(step => step.type === 'decision')?.choices.some(item => item.valid && item.id === saved.originChoiceId)) return false;
+  }
   return saved.completed === (saved.completedStepIds.length === mission.steps.length);
+}
+
+/** A follow-up requires the complete, compatible report, not a bare completed flag.
+ * The check never changes retained records when a prerequisite is unavailable. */
+export function getMosaicCharacterMissionPrerequisite(progress, mission, lang = 'fr') {
+  if (!mission?.requiresMissionId) return null;
+  const source = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === mission.requiresMissionId);
+  const previous = source && { ...source, districtId: mission.districtId, anchorId: mission.anchorId };
+  const saved = own(progress?.records, mission.requiresMissionId);
+  const completed = Boolean(previous && previous.heroId === mission.heroId && previous.universe === mission.universe
+    && validSaved(previous, saved) && saved.completed);
+  const selected = completed && previous.steps.find(step => step.type === 'decision')?.choices.find(item => item.id === saved.choiceId && item.valid);
+  return { missionId: mission.requiresMissionId, title: localizeCityMission(source?.title, lang), completed,
+    choiceId: completed ? saved.choiceId : null, resolution: localizeCityMission(selected?.result, lang) };
+}
+
+/** Branch overrides can only change a marker's position and readable evidence.
+ * Identity, type, target and step ordering always come from the source contract. */
+export function getMosaicCharacterMissionStep(progress, mission, index) {
+  const step = mission?.steps[index];
+  if (!step) return null;
+  const saved = own(progress?.records, mission.id);
+  const prerequisite = getMosaicCharacterMissionPrerequisite(progress, mission);
+  const origin = saved?.originChoiceId || prerequisite?.choiceId;
+  const branch = own(step.byOriginChoice, origin) || own(step.byChoice, saved?.choiceId);
+  return branch ? { ...step, x: branch.x, y: branch.y, text: branch.text, finding: branch.finding } : step;
 }
 
 export function getMosaicCharacterMissionObjective(progress, mission, lang = 'fr') {
   if (!mission) return null;
-  const saved = own(progress?.records, mission.id), compatible = !saved || validSaved(mission, saved);
+  const saved = own(progress?.records, mission.id), prerequisite = getMosaicCharacterMissionPrerequisite(progress, mission, lang);
+  const compatible = !saved || (validSaved(mission, saved)
+    && (!prerequisite?.completed || saved.originChoiceId === prerequisite.choiceId));
+  const locked = Boolean(prerequisite && !prerequisite.completed);
   const index = compatible ? saved?.completedStepIds.length || 0 : 0;
-  const step = compatible ? mission.steps[index] : null;
+  const step = compatible && !locked ? getMosaicCharacterMissionStep(progress, mission, index) : null;
   const targetType = step?.type === 'npc' ? 'npc' : ['exhibit', 'anchor', 'marker'].includes(step?.type) ? 'zone' : null;
   const targetId = step?.type === 'npc' ? step.targetId : step?.type === 'exhibit' ? `${mission.districtId}::exhibit::${step.targetId}`
     : step?.type === 'anchor' ? mission.anchorId : step?.type === 'marker' ? `${mission.id}::${step.id}` : null;
   const resolution = mission.steps.find(item => item.type === 'decision')?.choices.find(item => item.id === saved?.choiceId && item.valid);
   return { missionId: mission.id, index, total: mission.steps.length, step, targetType, targetId,
-    status: !compatible ? 'unavailable' : !saved ? 'available' : saved.completed ? 'completed' : progress.activeId === mission.id ? 'active' : 'paused',
+    prerequisite, originResolution: prerequisite?.resolution || '',
+    status: !compatible ? 'unavailable' : locked ? 'locked' : !saved ? 'available' : saved.completed ? 'completed' : progress.activeId === mission.id ? 'active' : 'paused',
     text: !compatible ? localizeCityMission(text('Le dossier conservé ne correspond pas à cette version de la mission.', 'The retained case does not match this mission version.'), lang)
-      : step ? localizeCityMission(step.text, lang) : localizeCityMission(resolution?.result, lang),
+      : locked ? (lang === 'fr' ? `Transmettre d’abord le dossier « ${prerequisite.title || prerequisite.missionId} ».`
+        : `First submit the case “${prerequisite.title || prerequisite.missionId}”.`)
+        : step ? localizeCityMission(step.text, lang) : localizeCityMission(resolution?.result, lang),
     resolution: localizeCityMission(resolution?.result, lang) };
 }
 
@@ -267,15 +306,19 @@ function outcome(progress, next, reason, lang, extra) {
 }
 export function startMosaicCharacterMission(progress, mission, lang = 'fr') {
   if (!mission) return outcome(progress, progress, 'unavailable', lang);
+  const objective = getMosaicCharacterMissionObjective(progress, mission, lang);
+  if (objective.status === 'locked') return outcome(progress, progress, 'locked', lang,
+    text(getMosaicCharacterMissionObjective(progress, mission, 'fr').text, getMosaicCharacterMissionObjective(progress, mission, 'en').text));
+  if (objective.status === 'unavailable') return outcome(progress, progress, 'unavailable', lang);
   const saved = own(progress?.records, mission.id);
-  if (saved && !validSaved(mission, saved)) return outcome(progress, progress, 'unavailable', lang);
   if (saved?.completed) return outcome(progress, progress, 'completed', lang);
   if (saved && progress.activeId === mission.id) return outcome(progress, progress, 'active', lang);
   const next = normalizeMosaicCharacterMissions(progress);
   next.activeId = mission.id;
   next.lastMissionId = mission.id;
   next.records[mission.id] = saved || { heroId: mission.heroId, universe: mission.universe, districtId: mission.districtId,
-    completedStepIds: [], choiceId: null, completed: false };
+    completedStepIds: [], choiceId: null, completed: false,
+    ...(objective.prerequisite ? { originChoiceId: objective.prerequisite.choiceId } : {}) };
   return outcome(progress, next, 'started', lang);
 }
 

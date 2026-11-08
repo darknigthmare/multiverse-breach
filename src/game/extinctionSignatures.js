@@ -15,6 +15,14 @@ const text = (v, lang) => typeof v === 'string' ? v : v?.[lang] || v?.fr || v?.e
 const MOVEMENT_DISTANCE = Object.freeze({ dash: 2.4, teleport: 3 });
 const SUPPORT_RADIUS = 8;
 const MINE_REACH = Object.freeze({ kind: 'placement', value: 2, effectRadius: 2.5 });
+/** A.R.C.A. pickup tuning. The personal kit keeps its source action and resource.
+ * Pellets are deterministic rays; energy and rockets collide after travelling.
+ */
+export const EXTINCTION_PICKUP_BALLISTICS = Object.freeze({
+  shotgun: Object.freeze({ range: 9, pellets: 7, radius: 0.08 }),
+  plasma: Object.freeze({ range: 24, speed: 0.6, radius: 0.16, splash: 0 }),
+  rocket: Object.freeze({ range: 24, speed: 0.3, radius: 0.22, splash: 2.2 })
+});
 /** Effective reach for UI/catalogs without rewriting the historical authored
  * action objects. Self effects have no target; movement is not attack range.
  */
@@ -153,8 +161,116 @@ function candidates(state, range, cone = 0.3) {
 }
 function effect(state, kind, action, wx = state.px, wy = state.py) {
   const p = state.protocols;
-  p.effects.push({ kind, color: action.color, wx, wy, screenSpace: kind !== 'impact', life: 20, maxLife: 20 });
+  p.effects.push({ kind, color: action.color, wx, wy, screenSpace: !['impact', 'explosion'].includes(kind),
+    ...(kind === 'explosion' ? { effectRadius: action.splash || 0 } : {}), life: 20, maxLife: 20 });
   if (p.effects.length > 24) p.effects.shift();
+}
+
+export function getExtinctionPickupBrief(type, lang = 'fr') {
+  const brief = {
+    shotgun: {
+      fr: 'Fusil à pompe : gerbe de sept plombs, jusqu’à neuf unités. Chaque trajectoire s’arrête sur sa première menace ; rapproche-toi pour concentrer la gerbe.',
+      en: 'Shotgun: seven pellets, up to nine units. Each path stops on its first threat; move closer to concentrate the spread.'
+    },
+    plasma: {
+      fr: 'Plasma : projectile rapide, jusqu’à vingt-quatre unités. Anticipe le mouvement de la cible ; les dégâts arrivent au contact.',
+      en: 'Plasma: a fast projectile, up to twenty-four units. Lead moving targets; damage arrives on contact.'
+    },
+    rocket: {
+      fr: 'Lance-roquettes : projectile puis explosion au contact, jusqu’à vingt-quatre unités. L’explosion atteint les menaces à moins de 2,2 unités ; le bouclier et le marquage du Champion restent requis.',
+      en: 'Rocket launcher: a travelling projectile that explodes on contact, up to twenty-four units. The blast reaches threats within 2.2 units; Champion shielding and marking still apply.'
+    }
+  };
+  return brief[type]?.[lang === 'fr' ? 'fr' : 'en'] || '';
+}
+
+/** One discharge is one damage event. Resolve protected cores before their
+ * drones so a single blast cannot bypass a shield by array iteration order.
+ * Credit at most eight charge, regardless of pellet count or splash victims.
+ */
+function applyExtinctionPickupHits(state, shot, hits, onKill) {
+  const dronesAlive = state.enemies.some(enemy => enemy.kind === 'Drone Protecteur' && enemy.hp > 0);
+  const protectedFirst = entry => entry.enemy.shieldActive && dronesAlive ? 0 : 1;
+  const ordered = [...hits].sort((a, b) => protectedFirst(a) - protectedFirst(b));
+  let damage = 0, hitCount = 0, blocked = false, masked = false;
+  for (const { enemy, damage: amount } of ordered) {
+    if (!canDamageExtinctionDirectiveEnemy(state, enemy)) masked = true;
+    const dealt = damageExtinctionEnemy(state, enemy, amount, onKill);
+    if (dealt > 0) {
+      damage += dealt; hitCount += 1;
+      effect(state, 'impact', shot, enemy.wx, enemy.wy);
+    } else if (enemy.hp > 0) blocked = true;
+  }
+  if (damage > 0) {
+    state.protocols.charge = clamp(state.protocols.charge + 8, 0, 100);
+    state.screenShake = Math.max(finite(state.screenShake), Math.min(12, 5.5 + shot.damage / 34 * 1.5));
+    state.statusText = state.lang === 'en'
+      ? `Confirmed hit: ${hitCount} ${hitCount === 1 ? 'threat' : 'threats'}.`
+      : `Impact confirmé : ${hitCount} ${hitCount === 1 ? 'menace' : 'menaces'}.`;
+  } else if (blocked) {
+    state.hitMarkerTimer = 0;
+    state.statusText = masked
+      ? (state.lang === 'en' ? 'Core masked: aim and mark with T before attacking.' : 'Noyau masqué : vise et marque avec T avant d’attaquer.')
+      : (state.lang === 'en' ? 'Core protected: destroy its drones first.' : 'Noyau protégé : détruis d’abord ses drones.');
+  }
+  return { damage, hitCount, blocked };
+}
+
+/** Shared by mouse, keyboard and touch through ExtinctionRoyale.fire. */
+export function fireExtinctionPickupWeapon(state, { onKill, damageMultiplier = 1, lang = 'fr' } = {}) {
+  const weapon = state?.weapon, tuning = EXTINCTION_PICKUP_BALLISTICS[weapon?.type];
+  const refusal = reason => ({ fired: false, reason, damage: 0 });
+  if (!tuning || !valid(state) || state.protocols.profile.heroId !== state.heroId || state.hp <= 0 || !Number.isSafeInteger(state.t) || state.t < 0
+    || ![state.px, state.py, state.angle].every(Number.isFinite)) return refusal('unavailable');
+  if (state.paused) return refusal('paused');
+  if (state.reloadPulse > 0) return refusal('reload');
+  const cooldown = Math.max(1, finite(weapon.fireRate, 1) * 18);
+  if (Number.isFinite(state.lastFireTime) && state.t - state.lastFireTime < cooldown) return refusal('cooldown');
+  if (!Number.isFinite(weapon.ammo) || weapon.ammo < 1) {
+    state.statusText = lang === 'fr' ? 'Chargeur vide: recharge avec R.' : 'Magazine empty: reload with R.';
+    return refusal('ammo');
+  }
+  state.lang = lang;
+  weapon.ammo -= 1; state.ammo = weapon.ammo;
+  state.lastFireTime = state.t; state.muzzle = 36;
+  const rawDamage = 34 * Math.max(0, finite(damageMultiplier, 1)) * Math.max(0, finite(weapon.dmgMult, 1));
+  const damage = Math.round(rawDamage);
+  const shot = { source: 'pickup', weaponType: weapon.type, ownerId: state.heroId, runId: state.runId,
+    slot: 'pickup', color: weapon.color || '#39c5bb', damage, radius: tuning.radius };
+  if (weapon.type === 'shotgun') {
+    const hits = new Map(), spread = clamp(finite(weapon.spread, 0.28), 0, 0.6);
+    for (let pellet = 0; pellet < tuning.pellets; pellet++) {
+      const angle = state.angle + (pellet / (tuning.pellets - 1) * 2 - 1) * spread;
+      const bx = state.px + Math.sin(angle) * tuning.range, by = state.py + Math.cos(angle) * tuning.range;
+      let nearest = null, first = Infinity;
+      for (const enemy of state.enemies) {
+        if (enemy.hp <= 0 || ![enemy.wx, enemy.wy].every(Number.isFinite)) continue;
+        const hit = extinctionSegmentHit(state.px, state.py, bx, by, enemy.wx, enemy.wy,
+          tuning.radius + 0.28 * (enemy.size || 1));
+        if (hit !== null && hit < first) { nearest = enemy; first = hit; }
+      }
+      if (nearest) hits.set(nearest, (hits.get(nearest) || 0) + 1);
+    }
+    const contacts = [...hits].map(([enemy, pellets]) => ({ enemy,
+      damage: Math.round(damage * pellets / tuning.pellets
+        * (state.heroCategory === 'slayer' && distance(enemy, { wx: state.px, wy: state.py }) < 2.2 ? 1.45 : 1)) }));
+    const result = applyExtinctionPickupHits(state, shot, contacts, onKill);
+    effect(state, 'scatter', shot);
+    if (!contacts.length) state.statusText = lang === 'fr' ? 'Aucune menace dans la gerbe.' : 'No threat in the spread.';
+    return { fired: true, reason: result.blocked && !result.damage ? 'blocked' : result.damage ? 'impact' : 'miss',
+      weaponType: weapon.type, pellets: tuning.pellets, ...result };
+  }
+  const p = state.protocols;
+  p.projectiles.push({ ...shot, id: ++p.sequence, kind: weapon.type,
+    closeDamage: state.heroCategory === 'slayer' ? Math.round(rawDamage * 1.45) : damage,
+    wx: state.px, wy: state.py, vx: Math.sin(state.angle) * tuning.speed, vy: Math.cos(state.angle) * tuning.speed,
+    remainingRange: tuning.range, life: Math.ceil(tuning.range / tuning.speed) + 1,
+    age: 0, splash: tuning.splash });
+  if (p.projectiles.length > 24) p.projectiles.shift();
+  state.statusText = weapon.type === 'rocket'
+    ? (lang === 'fr' ? 'Roquette en vol.' : 'Rocket in flight.')
+    : (lang === 'fr' ? 'Plasma en vol.' : 'Plasma in flight.');
+  return { fired: true, reason: 'launched', weaponType: weapon.type, damage: 0 };
 }
 function creditUsefulExtinctionEvasion(state, start) {
   const p = state.protocols, rule = p.profile.ultimateCharge;
@@ -322,7 +438,14 @@ export function tickExtinctionProtocols(state, onKill) {
     if (shot.ownerId !== state.heroId || shot.runId !== state.runId || --shot.life <= 0) return false;
     shot.age += 1;
     const ox = shot.wx, oy = shot.wy;
-    if (shot.kind !== 'mine') { shot.wx += shot.vx; shot.wy += shot.vy; }
+    if (shot.kind !== 'mine') {
+      const speed = Math.hypot(shot.vx, shot.vy);
+      const step = shot.source === 'pickup' ? Math.min(speed, Math.max(0, finite(shot.remainingRange))) : speed;
+      if (shot.source === 'pickup' && (!Number.isFinite(speed) || speed <= 0 || step <= 0)) return false;
+      shot.wx += shot.vx * (speed ? step / speed : 0);
+      shot.wy += shot.vy * (speed ? step / speed : 0);
+      if (shot.source === 'pickup') shot.remainingRange = Math.max(0, shot.remainingRange - step);
+    }
     let nearest = null, first = Infinity;
     for (const enemy of state.enemies) {
       if (enemy.hp <= 0 || (shot.kind === 'mine' && shot.age < 30)) continue;
@@ -330,8 +453,26 @@ export function tickExtinctionProtocols(state, onKill) {
         shot.radius + 0.28 * (enemy.size || 1));
       if (t !== null && t < first) { nearest = enemy; first = t; }
     }
-    if (!nearest) return Math.abs(shot.wx) < 30 && shot.wy > -30 && shot.wy < 60;
+    if (!nearest) return (shot.source !== 'pickup' || shot.remainingRange > 0.000001)
+      && Math.abs(shot.wx) < 30 && shot.wy > -30 && shot.wy < 60;
     shot.wx = ox + (shot.wx - ox) * first; shot.wy = oy + (shot.wy - oy) * first;
+    if (shot.source === 'pickup') {
+      const hits = state.enemies.filter(enemy => enemy.hp > 0
+        && (enemy === nearest || (shot.splash > 0 && distance(enemy, shot) <= shot.splash)))
+        .map(enemy => {
+          // A Slayer's close-range damage applies when contact actually occurs,
+          // including blast victims. Movement during flight can change proximity.
+          const damage = distance(enemy, { wx: state.px, wy: state.py }) < 2.2
+            ? finite(shot.closeDamage, shot.damage) : shot.damage;
+          return { enemy, damage: enemy === nearest ? damage
+            : Math.round(damage * (1 - 0.65 * distance(enemy, shot) / shot.splash)) };
+        });
+      applyExtinctionPickupHits(state, shot, hits, onKill);
+      // The blast is a physical impact, including against a protected core.
+      // Its visual ring does not claim successful damage or ultimate charge.
+      if (shot.splash > 0) effect(state, 'explosion', shot, shot.wx, shot.wy);
+      return false;
+    }
     for (const enemy of state.enemies) if (enemy === nearest || (shot.splash && distance(enemy, shot) <= shot.splash)) {
       damageExtinctionEnemy(state, enemy, shot.damage, onKill, shot.slot === 'special' ? 0 : 8);
     }
@@ -359,7 +500,7 @@ export function drawExtinctionProtocols(ctx, state, width, height, projectWorld,
     if (!currentSupport(support, state)) continue;
     const projection = projectWorld(support, state);
     if (projection.camZ <= 0.2 || Math.abs(projection.aim) > 1.6) continue;
-    const x = width / 2 + projection.aim * width * 0.62;
+    const x = width / 2 + projection.aim * width * 0.78;
     const y = height * 0.55 + 115 / projection.camZ;
     const radius = clamp(28 / projection.camZ, 4, 30);
     ctx.globalAlpha = 0.65; ctx.strokeStyle = support.color; ctx.lineWidth = 2;
@@ -387,20 +528,33 @@ export function drawExtinctionProtocols(ctx, state, width, height, projectWorld,
     }
     const projection = projectWorld(shot, state);
     if (projection.camZ <= 0.2 || Math.abs(projection.aim) > 1.6) continue;
-    const x = width / 2 + projection.aim * width * 0.62;
+    const x = width / 2 + projection.aim * width * 0.78;
     const y = height * 0.55 + (shot.kind === 'mine' ? 115 : 15) / projection.camZ;
-    const radius = clamp((shot.kind === 'impact' ? 36 : 15) / projection.camZ, 2, 32);
+    const progress = shot.maxLife ? 1 - shot.life / shot.maxLife : 0;
+    const radius = shot.kind === 'explosion'
+      ? clamp(shot.effectRadius * 44 * (0.2 + progress * 0.8) / projection.camZ, 2, 90)
+      : clamp((shot.kind === 'impact' ? 36 : 15) / projection.camZ, 2, 32);
     ctx.globalAlpha = shot.life && shot.maxLife ? shot.life / shot.maxLife : 0.9;
     ctx.strokeStyle = shot.color; ctx.fillStyle = shot.color; ctx.lineWidth = 2;
     const image = projectileArt?.image;
-    if (shot.kind === 'bolt' && shot.ownerId === projectileArt?.ownerId && image?.complete
+    if (shot.source !== 'pickup' && shot.kind === 'bolt' && shot.ownerId === projectileArt?.ownerId && image?.complete
       && image.naturalWidth > 0 && image.naturalHeight > 0) {
       const h = radius * 2, w = h * image.naturalWidth / image.naturalHeight;
       ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight, x - w / 2, y - h / 2, w, h);
       continue;
     }
-    ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2);
-    if (shot.kind === 'mine' || shot.kind === 'impact') ctx.stroke(); else ctx.fill();
+    if (shot.source === 'pickup' && shot.kind === 'rocket') {
+      ctx.beginPath(); ctx.moveTo(x, y - radius * 1.7); ctx.lineTo(x + radius * 0.65, y);
+      ctx.lineTo(x, y + radius * 0.6); ctx.lineTo(x - radius * 0.65, y); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = '#ffe49d'; ctx.beginPath(); ctx.moveTo(x, y + radius * 0.6);
+      ctx.lineTo(x, y + radius * 2); ctx.stroke();
+    } else {
+      ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2);
+      if (['mine', 'impact', 'explosion'].includes(shot.kind)) ctx.stroke(); else ctx.fill();
+      if (shot.source === 'pickup' && shot.kind === 'plasma') {
+        ctx.strokeStyle = '#d4f8ff'; ctx.beginPath(); ctx.arc(x, y, radius * 1.5, 0, Math.PI * 2); ctx.stroke();
+      }
+    }
   }
   if (p.guard > 0 || p.barricade > 0) {
     ctx.globalAlpha = 0.35; ctx.strokeStyle = '#39c5bb'; ctx.lineWidth = 5;

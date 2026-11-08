@@ -7,7 +7,7 @@ import { buildMosaicReconnaissanceDossier, normalizeMosaicReconnaissance, startM
 import { normalizeMosaicCharacterMissions, getMosaicCharacterMissionCatalog, getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, startMosaicCharacterMission, advanceMosaicCharacterMission, resolveMosaicCharacterMission } from '../game/mosaicCharacterMissions.js';
 import MosaicCharacterMissions from './MosaicCharacterMissions.jsx';
 import { createExtinctionRelayOperation, tickExtinctionRelayOperation, interactExtinctionRelayOperation, getExtinctionRelayStatus } from '../game/extinctionRelayOperation.js';
-import { createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols, getExtinctionProtocolBrief, clearExtinctionProtocolEffects, getExtinctionProtocolSpeedFactor } from '../game/extinctionSignatures.js';
+import { createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols, getExtinctionProtocolBrief, clearExtinctionProtocolEffects, getExtinctionProtocolSpeedFactor, fireExtinctionPickupWeapon, getExtinctionPickupBrief } from '../game/extinctionSignatures.js';
 import { getExtinctionFighterProfile, rememberExtinctionPersonalKit, restoreExtinctionPersonalKit } from '../game/extinctionFighterProfiles.js';
 import { EXTINCTION_FIELD_DIRECTIVES, createExtinctionFieldDirective, getExtinctionDirectiveTarget, interactExtinctionFieldDirective, tickExtinctionFieldDirective, markExtinctionHuntTarget, canAdvanceExtinctionDirectiveWave, canCompleteExtinctionFieldDirective, getExtinctionDirectiveSpeedFactor, getExtinctionFieldDirectiveStatus, getExtinctionRadarPoint, drawExtinctionDirectiveMarkers } from '../game/extinctionFieldDirectives.js';
 import ExtinctionFighterBriefing from './ExtinctionFighterBriefing.jsx';
@@ -3542,6 +3542,7 @@ function MosaicCityHub({
     const result = startMosaicCharacterMission(characterMissionsRef.current, mission, lang);
     if (result.changed) commitCharacterMissions(result.progress);
     setHubLog(result.feedback);
+    return result;
   };
   const resolveCharacterMission = (missionId, choiceId) => {
     if (sessionPausedRef.current) return;
@@ -4779,56 +4780,10 @@ function ExtinctionRoyale({
       activateSignature('simple');
       return;
     }
-    const wep = state.weapon || { type: 'pistol', ammo: state.ammo || 24, maxAmmo: 24, spread: 0.12, fireRate: 1.0, dmgMult: 1.0 };
-    if (state.reloadPulse > 0) return;
-    if (state.t - (state.lastFireTime || 0) < wep.fireRate * 18) return;
-    if (!wep.ammo) {
-      state.statusText = lang === 'fr' ? 'Chargeur vide: recharge avec R.' : 'Magazine empty: reload with R.';
-      return;
-    }
-
-    wep.ammo -= 1;
-    state.ammo = wep.ammo;
-    state.lastFireTime = state.t;
-    state.muzzle = 36;
     const role = roleProfile[selectedHero?.category] || roleProfile.marine;
-    const target = state.enemies
-      .filter(enemy => enemy.hp > 0)
-      .map(enemy => ({ enemy, projection: projectWorld(enemy, state) }))
-      .filter(({ projection }) => projection.camZ > 0.24 && Math.abs(projection.aim) < 0.2 + wep.spread)
-      .sort((a, b) => (Math.abs(a.projection.aim) + a.projection.camZ * 0.035) - (Math.abs(b.projection.aim) + b.projection.camZ * 0.035))[0]?.enemy;
-
-    if (target) {
-      if (target.kind === 'Champion de Trame' && target.shieldActive) {
-        const dronesAlive = state.enemies.some(enemy => enemy.kind === 'Drone Protecteur' && enemy.hp > 0);
-        if (dronesAlive) {
-          sound.playSfx('shield');
-          state.screenShake = 4.5;
-          return;
-        } else {
-          target.shieldActive = false;
-        }
-      }
-
-      const closeBonus = selectedHero?.category === 'slayer' && projectWorld(target, state).dist < 2.2 ? 1.45 : 1;
-      const dealt = damageExtinctionEnemy(state, target, Math.round(34 * role.dmg * closeBonus * wep.dmgMult), triggerEnemyDrop, 8);
-      if (dealt <= 0) {
-        // The centralized damage path owns refusal feedback (including an
-        // unmarked Hunt core). A fired round is not a confirmed impact.
-        state.hitMarkerTimer = 0;
-        sound.playSfx('shield');
-        return;
-      }
-      state.hitMarkerTimer = 6;
-      state.screenShake = 5.5 + wep.dmgMult * 1.5;
-
-      state.statusText = target.hp <= 0
-        ? (lang === 'fr' ? `${extinctionEnemyLabel(target.kind, lang)} neutralisé.` : `${extinctionEnemyLabel(target.kind, lang)} neutralized.`)
-        : (lang === 'fr' ? `Impact confirmé sur ${extinctionEnemyLabel(target.kind, lang)}.` : `Confirmed hit on ${extinctionEnemyLabel(target.kind, lang)}.`);
-    } else {
-      state.statusText = lang === 'fr' ? 'Aucune signature dans le réticule.' : 'No signature in the reticle.';
-    }
-    sound.playSfx('confirm');
+    const outcome = fireExtinctionPickupWeapon(state, { onKill: triggerEnemyDrop, damageMultiplier: role.dmg, lang });
+    if (outcome.fired) sound.playSfx(outcome.reason === 'blocked' ? 'shield' : 'confirm');
+    if (outcome.fired || outcome.reason === 'ammo') setRunSnapshot(buildRunSnapshot(state));
   };
 
   const reload = () => {
@@ -5142,6 +5097,7 @@ function ExtinctionRoyale({
         </div>}
         {runSnapshot.relay?.status !== 'disabled' && runSnapshot.relay && <p>{lang === 'fr' ? 'Relais sous pression : active chaque balise avec E / LOOT, reste dans son périmètre pendant trois secondes actives, puis utilise E / LOOT pour la stabiliser. Sortir du périmètre suspend la synchronisation.' : 'Relays under pressure: activate each beacon with E / LOOT, stay inside its perimeter for three active seconds, then use E / LOOT to secure it. Leaving the perimeter suspends synchronization.'}</p>}
         <p>{lang === 'fr' ? 'La vue suit ton kit et les armes ramassées. Certaines signatures utilisent une vue schématique.' : 'The view follows your kit and pickup weapons. Some signatures use a schematic view.'}</p>
+        {getExtinctionPickupBrief(runSnapshot.weaponType, lang) && <p data-fps-pickup-brief={runSnapshot.weaponType}>{getExtinctionPickupBrief(runSnapshot.weaponType, lang)}</p>}
         <p>{runSnapshot.statusText}</p>
         <p>{lang === 'fr' ? 'ZQSD/WASD : déplacement. Flèches gauche/droite : tourner. Glisser sur la vue : viser. Toucher la vue ou Espace : tirer. R : recharger. E : récupérer un objet. Maj : capacité de rôle.' : 'WASD: movement. Left/right arrows: turn. Drag the view: aim. Tap the view or Space: fire. R: reload. E: collect an item. Shift: role ability.'}</p>
         <p>{lang === 'fr' ? 'F : secondaire. C : défense. X : ultime chargé. V : reprendre le kit personnel après un ramassage. T : marquer le Champion dans la variante de chasse. Les repères jaunes au radar indiquent les objectifs ; le haut du radar suit la direction du regard.' : 'F: secondary. C: defense. X: charged ultimate. V: restore the personal kit after a pickup. T: mark the Champion in the hunt variant. Yellow radar markers identify objectives; radar up follows the viewing direction.'}</p>
