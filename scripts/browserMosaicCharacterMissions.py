@@ -183,10 +183,13 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
         else:
             button = panel.locator('[data-city-contract-approach]')
             reach_and_measure(button, page)
-            report_target = ({'type': 'zone', 'id': f'{district}-core', 'action': 'anchor',
-                              'universe': universe, 'range': 72}
-                             if objective.get_attribute('data-step') == 'report' else None)
-            proximity_before = page.evaluate('window.__sceneQA.nearbyCityZone()') if report_target else None
+            step_id = objective.get_attribute('data-step')
+            expected_target = ({'type': 'zone', 'id': f'{district}-core', 'action': 'anchor',
+                                'universe': universe, 'range': 72} if step_id == 'report'
+                               else {'type': 'zone', 'id': f'{mission_id}::{step_id}', 'action': 'character-mission',
+                                     'universe': universe, 'range': 72}
+                               if step_id and not step_id.startswith(('meet-', 'inspect-')) else None)
+            proximity_before = page.evaluate('(id)=>window.__sceneQA.cityZone(id)', arg=expected_target['id']) if expected_target else None
             begin_walk_proof(button)
             button.click()
             try:
@@ -198,6 +201,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                       f'{mission_id} could not reach step {index} by normal movement')
             finally:
                 proof = page.evaluate('window.__stopReconnaissanceMotion()')
+                proof['expectedTarget'] = expected_target
                 proof['proximityBefore'] = proximity_before
                 proof['sceneAfter'] = page.evaluate('''()=>{const s=window.__sceneQA.state();return {
                   snapshot:window.__sceneQA.snapshot(),pendingInteraction:s.pendingInteraction,
@@ -206,7 +210,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
             if proof.get('clickBefore') and proof.get('clickAfter'):
                 check(proof['clickBefore']['x'] == proof['clickAfter']['x'] and
                       proof['clickBefore']['y'] == proof['clickAfter']['y'], 'approach teleported on click')
-            motion = validate_mosaic_motion(proof, nearby_target=report_target)
+            motion = validate_mosaic_motion(proof, nearby_target=expected_target)
             case['walks'].append({'index': index, 'motion': motion})
         saved = progress(page)
         terminal(page)

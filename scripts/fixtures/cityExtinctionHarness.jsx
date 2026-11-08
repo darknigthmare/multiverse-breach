@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { MosaicCityHub, ExtinctionRoyale } from '../../src/components/HubScreen.jsx';
 import { HEROES_DB } from '../../src/game/heroes.js';
 import { createPlayerHero } from '../../src/game/playerHero.js';
-import { getMosaicZoneAnchor, MOSAIC_INTERACTION_RANGE } from '../../src/game/mosaicCityRuntime.js';
+import { getMosaicZoneAnchor, getMosaicSceneObstacles, MOSAIC_INTERACTION_RANGE } from '../../src/game/mosaicCityRuntime.js';
 import '../../src/index.css';
 import './combatHarness.css';
 const params = new URLSearchParams(globalThis.__sceneQaParams || location.search);
@@ -47,12 +47,15 @@ window.Image = class extends NativeImage {
   get src() { return super.src; }
 };
 // React test-only introspection avoids introducing mutable debug APIs into the game.
-const readSceneRef = predicate => {
+const getSceneFiber = () => {
   const node = document.querySelector(mode === 'city' ? '.mosaic-rpg-panel' : '.extinction-panel');
   const key = node && Object.keys(node).find(k => k.startsWith('__reactFiber$'));
   let fiber = node?.[key];
   while (fiber && fiber.type?.name !== (mode === 'city' ? 'MosaicCityHub' : 'ExtinctionRoyale')) fiber = fiber.return;
-  let hook = fiber?.memoizedState;
+  return fiber;
+};
+const readSceneRef = predicate => {
+  let hook = getSceneFiber()?.memoizedState;
   while (hook) {
     const value = hook.memoizedState?.current;
     if (value && predicate(value)) return value;
@@ -74,6 +77,38 @@ audit.nearbyCityZone = () => {
   const anchor = getMosaicZoneAnchor(zone);
   return { type: 'zone', id: zone.id, action: zone.action, universe: zone.universe, ...anchor,
     range: MOSAIC_INTERACTION_RANGE.zone, distance: Math.hypot(player.x - anchor.x, player.y - anchor.y) };
+};
+// Observe the requested live zone, even before a remounted scene's first tick.
+// React may retain the host node's previous fiber: the observer must identify
+// the live obstacle memo by reference, then also match the terminal footprint.
+audit.cityZone = id => {
+  if (mode !== 'city' || typeof id !== 'string') return null;
+  const state = audit.state(), fiber = getSceneFiber();
+  if (!state?.player || !Array.isArray(state.obstacles)) return null;
+  for (const candidate of [fiber, fiber?.alternate]) {
+    const values = [];
+    let hook = candidate?.memoizedState;
+    while (hook) {
+      if (Array.isArray(hook.memoizedState)) values.push(hook.memoizedState[0]);
+      hook = hook.next;
+    }
+    if (!values.includes(state.obstacles)) continue;
+    for (const value of values) {
+      const zone = Array.isArray(value) && value.find(item => item?.id === id && typeof item.action === 'string'
+        && typeof item.universe === 'string' && ['x', 'y', 'w', 'h'].every(key => Number.isFinite(item[key])));
+      if (zone) {
+        const expected = getMosaicSceneObstacles(null, [zone])[0];
+        const footprint = expected && state.obstacles.find(item => ['id', 'x', 'y', 'w', 'h'].every(key => item[key] === expected[key]));
+        if (footprint) {
+          const anchor = getMosaicZoneAnchor(zone);
+          return { type: 'zone', id: zone.id, action: zone.action, universe: zone.universe, ...anchor,
+            range: MOSAIC_INTERACTION_RANGE.zone, distance: Math.hypot(state.player.x - anchor.x, state.player.y - anchor.y),
+            source: 'live-zone-with-footprint', footprint: { ...footprint } };
+        }
+      }
+    }
+  }
+  return null;
 };
 audit.snapshot = () => {
   const s = audit.state(); if (!s) return null;

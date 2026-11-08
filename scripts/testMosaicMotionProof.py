@@ -22,6 +22,27 @@ class MotionProofTests(unittest.TestCase):
         self.assertEqual(result['travelledWorldUnits'], 0)
         self.assertTrue(result['everySampleWithinSpeedBudget'])
 
+    def test_actual_contract_marker_in_range_requires_its_full_identity(self):
+        target = {'type': 'zone', 'id': 'city-nova-return-measurement-v1::inherited-route',
+                  'action': 'character-mission', 'universe': 'Nexus de Convergence', 'range': 72}
+        start = {'t': 0, 'x': 1305.14, 'y': 813.92, 'speed': 2.35}
+        distance = ((start['x'] - 1280) ** 2 + (start['y'] - 780) ** 2) ** .5
+        proof = {'clickBefore': start, 'clickAfter': copy.copy(start),
+                 'samples': [dict(start, t=1), dict(start, t=2)],
+                 'proximityBefore': dict(target, x=1280, y=780, distance=distance)}
+        result = validate_mosaic_motion(proof, nearby_target=target)
+        self.assertTrue(result['startedWithinTargetRange'])
+        self.assertEqual(result['movingSamples'], 0)
+        for mutation in [{'id': 'city-nova-return-measurement-v1::crosscheck'},
+                         {'id': 'other-contract::inherited-route'}, {'action': 'anchor'},
+                         {'universe': 'Other'}, {'range': 999}, {'distance': 0},
+                         {'x': 1100, 'distance': ((start['x'] - 1100) ** 2 + (start['y'] - 780) ** 2) ** .5}]:
+            with self.subTest(mutation=mutation):
+                wrong = copy.deepcopy(proof)
+                wrong['proximityBefore'].update(mutation)
+                with self.assertRaisesRegex(AssertionError, 'sampled walk'):
+                    validate_mosaic_motion(wrong, nearby_target=target)
+
     def test_far_wrong_or_invalid_proximity_cannot_replace_walking(self):
         for mutation in [{'id': 'other'}, {'universe': 'Other'}, {'action': 'codex'},
                          {'range': 999}, {'x': 200, 'distance': 100}, {'distance': 0}, {'x': float('nan')}]:

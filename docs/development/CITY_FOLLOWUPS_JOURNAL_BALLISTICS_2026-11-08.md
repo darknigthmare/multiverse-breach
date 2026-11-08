@@ -125,6 +125,40 @@ Leur réussite doit être rattachée au commit testé dans la description de PR.
 Les contrôles de données, le moteur, les fixtures et le navigateur sont des
 preuves différentes ; aucun test ne certifie l’ensemble des 3 824 propositions.
 
+Le premier run de ce lot (`42482032203`, head `8314d94`) a terminé 70 des 88
+exécutions de contrats. Les deux parcours Nexus de bureau se sont arrêtés au
+même contrôle de marche, au relevé hérité de Nova. La trace française place déjà
+le joueur à `(1305.14, 813.92)`, à environ 42,2 unités de la borne `(1280, 780)`
+dont la portée est 72. L’action avait réussi sans déplacer le joueur. La preuve
+de proximité, jusque-là réservée aux rapports à l’ancre, est donc étendue aux
+bornes de contrat sans changer une règle du jeu ou un seuil de mouvement.
+
+Le lecteur de fixture observe la zone réelle par son identifiant. Il choisit le
+fiber React associé au tableau d’obstacles vivant par identité, puis vérifie
+l’empreinte physique exacte de la borne. Cela évite de confondre une ancienne
+zone, une autre étape, un autre univers ou une position périmée avec la cible
+courante. Le validateur conserve tous les contrôles de clic, temps, vitesse et
+déplacement par frame. Les cinq tests d’observation couvrent aussi le cas où une
+ancienne zone a la même géométrie mais une action ou un univers différent.
+Les six tests Python de preuve de mouvement passent ; le lot ciblé observation,
+focus, journal et modales passe 40/40. Les règles Cité et le classeur restent
+inchangés par ce correctif de recette. Le journal reçoit séparément la correction
+produit du parcours Tab depuis ses titres, décrite dans son compte rendu.
+
+Ce premier arbre a validé les 17 cas FPS, les 180 mesures de vues schématiques,
+les six variantes d’archive et les quatre distributions DLC. Il ne constitue pas
+la validation des corrections suivantes : leur résultat navigateur doit rester
+rattaché à leur propre commit dans la PR.
+
+Le build complet du même arbre a révélé un garde de progression encore attaché
+à l’ancien emplacement de `state.muzzle = 36` dans Hub. Cette affectation est
+désormais dans le helper de tir. Le garde suit maintenant la liaison réelle vers
+ce helper et vérifie séparément consommation, cadence, flash, recharge et les
+deux chemins d’affichage des projectiles. Ses régressions exécutent les assertions
+réelles avec douze défauts injectés ; la suite passe 39/39. Les commandes prebuild
+restent inchangées. Le lancement local de l’audit complet reste arrêté plus tôt
+par un atlas absent, sans supprimer ce contrôle de ressource.
+
 La compilation complète locale s’arrête sur le checkout partiel des médias
 (8 178 sources DLC non matérialisées). Chromium local refuse son socket avant
 l’ouverture d’une page. Les workflows GitHub exécutent le build de production
