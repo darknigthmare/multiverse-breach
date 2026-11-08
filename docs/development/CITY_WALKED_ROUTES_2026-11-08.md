@@ -192,6 +192,25 @@ tests de présentation de scène incluent le rejeu du vrai moteur à 0 ms et du
 vrai callback d'acceptation dans les deux langues. Ces tests locaux ne remplacent
 pas les prochains parcours Chromium.
 
+Le nouveau garde a ensuite exposé, dans les archives de `6342f3c`, un déplacement
+du panneau sans redimensionnement : le réglage de marge passe de 12 à 32 pixels,
+alors que le panneau garde 320 × 99 pixels. Le `ResizeObserver` ne reçoit aucune
+notification et la géométrie conservée reste à l'ancienne position. Les rectangles
+DOM bruts et les commandes peintes confirment un recouvrement réel, notamment
+sur la bobine préalable à l'aventure d'Ancre ; ce n'est pas un défaut de tolérance
+du nouveau contrôle.
+
+Le hook observe donc aussi les mutations `style` et `class` de la racine du
+document, uniquement lorsqu'un panneau est suivi. Il mesure sa position dans
+le callback de mutation, avant le prochain dessin, et déconnecte cet observateur
+à la fermeture. Les tests reproduisent la notification de préférences suivie
+de leur application CSS, ainsi que les changements CSS directs à dimensions
+constantes. Le runner, les mesures DOM indépendantes et les seuils restent
+inchangés ; la nouvelle CI doit confirmer toutes les images terminées.
+La régression de position échoue sur le hook de `6342f3c` puis réussit avec
+l'observation des styles ; les 33 tests de projection/placement/cycle de vie
+et les 25 tests ciblés de préférences et de FPS réussissent sous Node 22.
+
 ## Limites restant à développer
 
 Ces scènes préparent des chemins et des installations dans le quartier Nexus

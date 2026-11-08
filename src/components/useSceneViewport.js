@@ -25,11 +25,16 @@ export default function useSceneViewport(canvasRef, logicalHeight, enabled = tru
     const observer = new ResizeObserver(resize);
     observer.observe(canvas);
     if (overlay) observer.observe(overlay);
+    // Root preferences can move the overlay without resizing it. Measure in
+    // the mutation callback, before another paint can use its previous position.
+    const styleObserver = overlay && typeof MutationObserver !== 'undefined' ? new MutationObserver(resize) : null;
+    styleObserver?.observe(document.documentElement, { attributes: true, attributeFilter: ['style', 'class'] });
     window.addEventListener(DISPLAY_PREFERENCES_EVENT, resize);
     window.addEventListener('storage', resize);
     resize();
     return () => {
       observer.disconnect();
+      styleObserver?.disconnect();
       hudLayoutRef.current = null;
       window.removeEventListener(DISPLAY_PREFERENCES_EVENT, resize);
       window.removeEventListener('storage', resize);
