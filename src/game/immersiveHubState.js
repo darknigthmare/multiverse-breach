@@ -49,6 +49,23 @@ export const getSceneCanvasSize = (width, height, logicalHeight) => ({
   height: logicalHeight
 });
 
+// Project the visible part of a measured DOM overlay into the backing canvas.
+// Its real bounds include wrapping, language, font loading and HUD preferences.
+export const getSceneHudRect = (canvasRect, overlayRect, canvasSize) => {
+  const validRect = rect => Number.isFinite(rect?.left) && Number.isFinite(rect?.top)
+    && Number.isFinite(rect.width) && rect.width > 0 && Number.isFinite(rect.height) && rect.height > 0;
+  if (!validRect(canvasRect) || !validRect(overlayRect)
+    || !Number.isFinite(canvasSize?.width) || canvasSize.width <= 0
+    || !Number.isFinite(canvasSize?.height) || canvasSize.height <= 0) return null;
+  const left = Math.max(canvasRect.left, overlayRect.left), top = Math.max(canvasRect.top, overlayRect.top);
+  const right = Math.min(canvasRect.left + canvasRect.width, overlayRect.left + overlayRect.width);
+  const bottom = Math.min(canvasRect.top + canvasRect.height, overlayRect.top + overlayRect.height);
+  if (right <= left || bottom <= top) return null;
+  const scaleX = canvasSize.width / canvasRect.width, scaleY = canvasSize.height / canvasRect.height;
+  return { x: (left - canvasRect.left) * scaleX, y: (top - canvasRect.top) * scaleY,
+    width: (right - left) * scaleX, height: (bottom - top) * scaleY };
+};
+
 export const getSceneHudLayout = ({ width, height, logicalHeight, hudScale = 1, safeArea = 12 }) => {
   const units = logicalHeight / Math.max(1, height);
   const scale = Math.max(0.9, Math.min(1.4, hudScale));

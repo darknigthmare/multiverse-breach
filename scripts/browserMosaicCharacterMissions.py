@@ -567,7 +567,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
             walk['operationLabelFile'] = f'{case_name}-{mission_id}-step-{index}-operation-labels.json'
             walk['operationLabels'] = verify_mission_label_frames(
                 save_mission_label_frames(page, out, walk['operationLabelFile']),
-                require_labels=bool(operation_before), require_cargo=bool(cargo_before))
+                require_labels=bool(operation_before), require_cargo=bool(cargo_before), require_location_hud=True)
             if cargo_before:
                 cargo_draws = save_cargo_draws(page, out, f'{case_name}-{mission_id}-step-{index}-carried-draws.json')
                 walk['carriedObject'] = verify_cargo_draws(cargo_draws, cargo_before,
@@ -615,7 +615,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                 transfer['labelLayoutFile'] = f'{case_name}-{mission_id}-step-{index}-pickup-labels.json'
                 transfer['labelLayout'] = verify_mission_label_frames(
                     save_mission_label_frames(page, out, transfer['labelLayoutFile']),
-                    require_labels=True, require_cargo=True)
+                    require_labels=True, require_cargo=True, require_location_hud=True)
                 transfer['capture'] = f'{case_name}-{mission_id}-{cargo_after["id"]}-taken.png'
                 page.screenshot(path=str(out / transfer['capture']))
             case['cargoTransfers'].append(transfer)
@@ -667,7 +667,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                 label_layout_file = f'{case_name}-{mission_id}-step-{index}-remount-labels.json'
                 label_layout = verify_mission_label_frames(
                     save_mission_label_frames(page, out, label_layout_file),
-                    require_labels=True, require_cargo=True, require_player_in_view=True)
+                    require_labels=True, require_cargo=True, require_player_in_view=True, require_location_hud=True)
                 help_resume = explicit_help_while_carrying(page, saved, before_unmount['cargo'])
             terminal(page)
             panel.locator('select').select_option(mission_id)
@@ -706,6 +706,30 @@ def resident_offer_journey(page, args, lang, out, name):
     """Enter the district and meet Mirelle using only normal player controls."""
     record = {'status': 'running', 'missionId': 'city-mirelle-suture-v1', 'resident': 'arca_mirelle',
               'scope': 'Fresh Atrium spawn, native portal travel and resident approach; no position or progress injection.'}
+
+    def capture_offer_boundary(boundary):
+        snapshot = page.evaluate('''()=>{const state=window.__sceneQA.state();return {
+          ...window.__sceneQA.snapshot(),pendingInteraction:structuredClone(state.pendingInteraction??null),
+          destinationRoute:structuredClone(state.destinationRoute??null)};}''')
+        # Keep both sides before checking: a failed assertion must retain the
+        # actual state, rather than only the last successful walking frame.
+        record.setdefault('offerBoundaries', {})[boundary] = snapshot
+        return snapshot
+
+    def verify_offer_boundary(reference, current, boundary, resuming=False):
+        expected_player = dict(reference['player'])
+        check(all(key in expected_player and key in current['player'] for key in ['x', 'y', 'speed', 'facing']),
+              f'{boundary} has incomplete player evidence')
+        # Reopening the world can end the frozen running pose on a zero-time
+        # frame. No other player field may change, even by a subpixel amount.
+        if resuming and expected_player.get('state') == 'run' and current['player'].get('state') == 'idle':
+            expected_player['state'] = 'idle'
+        check(current['player'] == expected_player,
+              f'{boundary} changed the player: before={reference["player"]}, after={current["player"]}')
+        if not resuming:
+            for key in ['t', 'keys', 'destination', 'pendingInteraction', 'destinationRoute']:
+                check(current[key] == reference[key], f'{boundary} changed {key}: before={reference[key]}, after={current[key]}')
+
     try:
         page.clock.install(time=CLOCK_EPOCH); page.clock.pause_at(CLOCK_START)
         load(page, args, 'city', lang, 'nexus')
@@ -820,9 +844,10 @@ def resident_offer_journey(page, args, lang, out, name):
         speech = conversation.locator('[data-dialogue-quest] blockquote p')
         expect(speech).to_have_text(words['request'])
         check(not conversation.locator('[data-dialogue-topic]').count(), 'Mirelle received invented archive topics')
-        frozen = page.evaluate('window.__sceneQA.snapshot()')
+        frozen = capture_offer_boundary('offerReceived')
         page.clock.run_for(500)
-        check(page.evaluate('window.__sceneQA.snapshot()') == frozen and progress(page) == before,
+        after_read = capture_offer_boundary('offerRead')
+        check(after_read == frozen and progress(page) == before,
               'reading the real offer advanced the scene or quest')
         page.screenshot(path=str(out / f'{name}-offer-received.png'))
         # Reading the offered adventure must not land on the unrelated last
@@ -833,28 +858,41 @@ def resident_offer_journey(page, args, lang, out, name):
         expect(page.locator('[data-city-contract-reader]')).to_have_attribute('data-city-contract-reader', record['missionId'])
         page.clock.run_for(32)
         expect(page.locator('.mosaic-contract-reader > h4')).to_be_focused()
-        check(progress(page) == before and page.evaluate('window.__sceneQA.snapshot()') == frozen,
+        journal_read = capture_offer_boundary('offeredJournalRead')
+        check(progress(page) == before and journal_read == frozen,
               'opening the offered page accepted its request or resumed the City')
         page.screenshot(path=str(out / f'{name}-offer-journal.png'))
         page.keyboard.press('Escape'); expect(canvas).to_be_focused()
+        journal_closed = capture_offer_boundary('journalClosed')
+        verify_offer_boundary(frozen, journal_closed, 'closing the offered journal', resuming=True)
         page.keyboard.press('e')
         expect(conversation).to_be_visible()
         expect(offer).to_be_visible()
         expect(conversation.locator('h3')).to_be_focused()
         check(progress(page) == before, 'returning to the resident accepted the unread request')
+        reopened = capture_offer_boundary('offerReopened')
+        verify_offer_boundary(frozen, reopened, 'reopening the resident offer', resuming=True)
         record['offeredJournalPageAndFocus'] = True
-        offer.focus(); page.keyboard.press('Enter')
+        offer.focus()
+        accepting = capture_offer_boundary('beforeAcceptance')
+        verify_offer_boundary(frozen, accepting, 'before resident acceptance', resuming=True)
+        page.keyboard.press('Enter')
         expect(offer).to_have_count(0)
         expect(conversation.locator('[data-dialogue-return]')).to_be_focused()
         expect(speech).to_have_text(words['reply'])
+        accepted = capture_offer_boundary('afterAcceptance')
+        verify_offer_boundary(frozen, accepted, 'accepted resident offer position', resuming=True)
+        verify_offer_boundary(accepting, accepted, 'accepting a resident request')
         saved = progress(page)
         check(saved['activeId'] == record['missionId'], 'keyboard acceptance did not track the offered mission')
         check(saved['records'][record['missionId']]['completedStepIds'] == ['meet-arca_mirelle'],
               'real resident acceptance did not preserve exactly the actual first meeting')
         check(saved['records'][record['missionId']].get('operationReceipts') == {}, 'accepting a request fabricated a physical intervention')
-        check(page.evaluate('window.__sceneQA.snapshot().player') == frozen['player'], 'accepting a resident request moved the player')
         page.clock.run_for(500)
-        check(progress(page) == saved, 'accepted conversation advanced another step while being read')
+        accepted_read = capture_offer_boundary('acceptedOfferRead')
+        verify_offer_boundary(accepted, accepted_read, 'reading the accepted resident offer')
+        check(accepted_read == accepted and progress(page) == saved,
+              'accepted conversation advanced the scene or another step while being read')
         check(not page.evaluate('window.__sceneQA.reports.length'), 'a request created a combat reward')
         page.screenshot(path=str(out / f'{name}-offer-accepted.png'))
         record.update({'status': 'passed', 'request': words['request'], 'reply': words['reply'],
@@ -863,15 +901,20 @@ def resident_offer_journey(page, args, lang, out, name):
         expect(page.get_by_role('dialog')).to_have_count(0)
         expect(canvas).to_be_focused()
         page.clock.run_for(250)
-        resumed = page.evaluate('window.__sceneQA.snapshot()')
-        check(resumed['t'] > frozen['t'] and not any(resumed['keys'].values()),
+        resumed = capture_offer_boundary('conversationClosed')
+        check(resumed['t'] > accepted['t'] and not any(resumed['keys'].values()),
               'ending the conversation did not resume the City with cleared controls')
-        check(all(resumed['player'][key] == frozen['player'][key] for key in ['x', 'y', 'speed', 'facing'])
-              and progress(page) == saved, 'closing the conversation resumed an old route or interaction')
+        verify_offer_boundary(frozen, resumed, 'closing the resident conversation', resuming=True)
+        check(resumed['destination'] is None and resumed['pendingInteraction'] is None and progress(page) == saved,
+              'closing the conversation resumed an old route or interaction')
         record['canvasFocusAndClearedInput'] = True
         return record
     except Exception as error:
         record.update({'status': 'failed', 'error': str(error)})
+        try:
+            capture_offer_boundary('failure')
+        except Exception as capture_error:
+            record['failureSnapshotError'] = str(capture_error)
         page.screenshot(path=str(out / f'{name}-offer-failure.png'))
         raise
     finally:

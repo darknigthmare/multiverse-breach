@@ -154,7 +154,17 @@ def operation_label(x=16, y=16):
     return label
 
 
-def observe_nova_homonyms(cargo_offset=0, operation_overlap=False):
+def location_hud_record(canvas=None, location=None):
+    return {'space': 'dom-client-rects-v1', 'locationCount': 1,
+            'canvas': canvas if canvas is not None else rectangle(70, 120, 300, 100),
+            'location': location if location is not None else rectangle(320, 210, 30, 5),
+            'style': {'display': 'grid', 'visibility': 'visible', 'opacity': 1},
+            'canvasInsets': {key: 0 for key in (
+                'borderLeftWidth', 'borderRightWidth', 'borderTopWidth', 'borderBottomWidth',
+                'paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom')}}
+
+
+def observe_nova_homonyms(cargo_offset=0, operation_overlap=False, location_hud=None):
     """Replay the real renderers through a Canvas command double, not Chromium."""
     game = Path(__file__).resolve().parents[1] / 'src/game'
     script = '\n'.join([
@@ -188,6 +198,13 @@ def observe_nova_homonyms(cargo_offset=0, operation_overlap=False):
     globalThis.window={__sceneQA:{state:()=>state}};
     ''' + CARGO_OBSERVER_SCRIPT + MISSION_LABEL_OBSERVER_SCRIPT + f'''
     const ctx=new Context(true),originalText=ctx.fillText.bind(ctx);
+    const domEvidence={json.dumps(location_hud)};
+    if(domEvidence){{
+      const banner={{getBoundingClientRect:()=>({{...domEvidence.location}})}};
+      ctx.canvas.getBoundingClientRect=()=>({{...domEvidence.canvas}});
+      ctx.canvas.closest=()=>({{querySelectorAll:()=>Array(domEvidence.locationCount).fill(banner)}});
+      globalThis.getComputedStyle=node=>node===banner?domEvidence.style:domEvidence.canvasInsets;
+    }}
     ctx.fillText=(text,x,y,...rest)=>originalText(text,
       x+(ctx.font.startsWith('10px ')&&text===cargo.label?{cargo_offset}:0),y,...rest);
     ctx.fillRect(0,0,600,400);
@@ -474,6 +491,114 @@ class MissionLabelObservationTests(unittest.TestCase):
         '''
         result = subprocess.run(['node', '--input-type=module', '--eval', script], text=True, capture_output=True, check=True)
         self.assertEqual(json.loads(result.stdout), {'avatar': 1, 'cargo': 1, 'stateReads': 2})
+
+
+    def test_location_hud_projection_uses_dom_offsets_and_non_unit_scales_without_mutating_frames(self):
+        for canvas, safe, covering in (
+            (rectangle(70, 120, 300, 100), rectangle(320, 210, 30, 5), rectangle(78, 124, 80, 10)),
+            (rectangle(-80, 45, 1200, 800), rectangle(920, 745, 120, 40), rectangle(-48, 77, 320, 80)),
+        ):
+            with self.subTest(canvas=canvas):
+                frame = copy.deepcopy(self.frame)
+                frame['locationHud'] = location_hud_record(canvas, safe)
+                before = copy.deepcopy(frame)
+                proof = verify_mission_label_frames([frame], require_labels=True, require_location_hud=True)
+                self.assertEqual(frame, before)
+                self.assertTrue(proof['noLocationBannerIntersection'])
+                self.assertEqual(proof['locationHudFrames'], 1)
+                self.assertEqual(proof['locationHudIntersectingFrames'], 1)
+                self.assertEqual(proof['locationHudLabelComparisons'], 1)
+                frame['locationHud']['location'] = covering
+                with self.assertRaisesRegex(AssertionError, 'overlaps the actual location HUD'):
+                    verify_mission_label_frames([frame], require_location_hud=True)
+
+    def test_location_hud_rejects_the_two_reported_landscape_cartouche_geometries(self):
+        # bff8879 native cartouche geometry with a synthetic DOM rectangle based
+        # on the measured PNG footprint. This is not a new native browser run.
+        for x, y in ((413.097900390625, 162.06362915039062), (422.9815673828125, 171.6516737582648)):
+            with self.subTest(x=x, y=y):
+                frame = copy.deepcopy(self.frame)
+                frame['viewport'] = {'width': 1169, 'height': 540}
+                label = operation_label(x, y)
+                label['args'].update({'width': 188, 'height': 42})
+                label['rect'].update({'width': 188, 'height': 42})
+                frame['labels'] = [label]
+                frame['locationHud'] = location_hud_record(rectangle(0, 0, 844, 390), rectangle(32, 84, 320, 99))
+                self.assertTrue(verify_mission_label_frames([frame], require_labels=True)['noPlayerOrCargoIntersection'])
+                with self.assertRaisesRegex(AssertionError, 'overlaps the actual location HUD'):
+                    verify_mission_label_frames([frame], require_labels=True, require_location_hud=True)
+
+    def test_location_hud_keeps_one_pixel_and_two_millionths_intersections_rejected(self):
+        for axis in ('x', 'y'):
+            for overlap in (1, 2e-6):
+                with self.subTest(axis=axis, overlap=overlap):
+                    frame = copy.deepcopy(self.frame)
+                    location = rectangle(16, 16, 160, 40)
+                    location[axis] += location['width' if axis == 'x' else 'height'] - overlap
+                    frame['locationHud'] = location_hud_record(rectangle(0, 0, 600, 400), location)
+                    with self.assertRaisesRegex(AssertionError, 'overlaps the actual location HUD'):
+                        verify_mission_label_frames([frame], require_location_hud=True)
+                    location[axis] += overlap
+                    proof = verify_mission_label_frames([frame], require_location_hud=True)
+                    self.assertEqual(proof['positionTolerance'], 1e-6)
+
+    def test_location_hud_clips_to_canvas_and_valid_outside_banners_cannot_mask_labels(self):
+        for location in (rectangle(-50, 0, 50, 400), rectangle(600, 0, 50, 400),
+                         rectangle(0, -50, 600, 50), rectangle(0, 400, 600, 50)):
+            with self.subTest(location=location):
+                frame = copy.deepcopy(self.frame)
+                frame['locationHud'] = location_hud_record(rectangle(0, 0, 600, 400), location)
+                proof = verify_mission_label_frames([frame], require_location_hud=True)
+                self.assertTrue(proof['noLocationBannerIntersection'])
+                self.assertEqual(proof['locationHudIntersectingFrames'], 0)
+                self.assertEqual(proof['locationHudLabelComparisons'], 1)
+        frame = copy.deepcopy(self.frame)
+        frame['locationHud'] = location_hud_record(rectangle(0, 0, 600, 400), rectangle(-50, -50, 80, 80))
+        with self.assertRaisesRegex(AssertionError, 'overlaps the actual location HUD'):
+            verify_mission_label_frames([frame], require_location_hud=True)
+        frame['locationHud']['location'] = rectangle(-50, -50, 60, 60)
+        proof = verify_mission_label_frames([frame], require_location_hud=True)
+        self.assertEqual(proof['locationHudIntersectingFrames'], 1)
+
+    def test_location_hud_requires_unambiguous_visible_native_dom_measurements(self):
+        candidates = [None, {}, location_hud_record()]
+        candidates[-1]['locationCount'] = 0
+        for count in (2, True):
+            value = location_hud_record(); value['locationCount'] = count; candidates.append(value)
+        for key, value in (('display', 'none'), ('visibility', 'hidden'), ('opacity', 0), ('opacity', float('nan'))):
+            hud = location_hud_record(); hud['style'][key] = value; candidates.append(hud)
+        for field in ('canvas', 'location'):
+            for key in ('x', 'y', 'width', 'height'):
+                hud = location_hud_record(); hud[field][key] = float('nan'); candidates.append(hud)
+            hud = location_hud_record(); hud[field]['width'] = 0; candidates.append(hud)
+        for key in ('borderLeftWidth', 'paddingTop'):
+            hud = location_hud_record(); hud['canvasInsets'][key] = 1; candidates.append(hud)
+        for hud in candidates:
+            with self.subTest(hud=hud):
+                frame = copy.deepcopy(self.frame); frame['locationHud'] = hud
+                with self.assertRaisesRegex(AssertionError, 'location HUD'):
+                    verify_mission_label_frames([frame], require_location_hud=True)
+
+    def test_location_hud_checks_every_closed_frame_and_retains_the_open_tail_as_diagnostic(self):
+        safe = copy.deepcopy(self.frame); safe['locationHud'] = location_hud_record()
+        overlaid = copy.deepcopy(safe); overlaid['id'] = 2
+        overlaid['locationHud']['location'] = rectangle(78, 124, 80, 10)
+        with self.assertRaisesRegex(AssertionError, 'overlaps the actual location HUD'):
+            verify_mission_label_frames([overlaid, safe], require_location_hud=True)
+        overlaid['complete'] = False
+        proof = verify_mission_label_frames([safe, overlaid], require_location_hud=True)
+        self.assertEqual(proof['locationHudFrames'], 1)
+        self.assertEqual(proof['unclosedFramesRetained'], 1)
+
+    def test_native_observer_records_raw_dom_bounds_without_using_runtime_placement(self):
+        hud = location_hud_record()
+        observed = observe_nova_homonyms(location_hud=hud)
+        self.assertEqual(observed['frames'][0]['locationHud'], hud)
+        self.assertEqual(observed['frames'][1]['locationHud'], hud)
+        proof = verify_mission_label_frames(observed['frames'], require_labels=True, require_cargo=True,
+                                           require_location_hud=True)
+        self.assertTrue(proof['noLocationBannerIntersection'])
+        self.assertEqual(proof['locationHudLabelComparisons'], 1)
 
 
 if __name__ == '__main__':

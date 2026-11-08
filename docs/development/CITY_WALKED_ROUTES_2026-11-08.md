@@ -145,6 +145,53 @@ avec le vrai dimensionnement de scène. Toutes les assertions existantes restent
 en place ; les **74/74** contrôles de `test:noncombat-trials` passent après cette
 correction. Le runtime FPS ne change pas.
 
+## Relecture du bandeau et de l'acceptation d'une demande
+
+La seconde publication `bff8879` a réussi le build complet, les quatre
+distributions autonomes et le job de vérification du carnet, des portails et du
+FPS. Les 22 archives Cité ont été relues : 80 des 82 cas sont verts. Les deux
+cas restants terminent leurs 32 contrats de bureau, puis échouent au contrôle
+d'acceptation d'une nouvelle demande depuis l'Atrium. Ces cas ne sont pas
+comptés comme réussis malgré leurs contrats déjà achevés.
+
+La relecture des captures paysage d'Ancre FR et Nova EN a aussi montré que le
+début du nom du repère passait sous le panneau du quartier. Le placement
+protégeait l'avatar, son nom et le cargo, mais ignorait ce panneau DOM. Le hook
+de dimensionnement observe maintenant les dimensions réelles du panneau et du
+Canvas. Il projette leur intersection dans le Canvas ; le rendu ajoute ensuite
+la position de la caméra pour fournir ce rectangle au placement existant du
+cartouche. Les changements de langue, de police et de format utilisent leurs
+dimensions mesurées. Aucune hauteur de titre n'est figée et aucune lecture DOM
+n'est ajoutée à la boucle de dessin de production.
+
+L'observateur navigateur relève séparément les rectangles DOM bruts, ainsi que
+les fonds et textes réellement peints. Son contrôle du bandeau est indépendant
+du helper de production. Les protections de l'avatar, du cargo et la tolérance
+de `1e-6` restent appliquées. Les observations sont écrites avant les assertions
+pour permettre de diagnostiquer un éventuel échec de placement.
+
+Pour l'acceptation, l'ancien comparateur utilisait le joueur figé avant la
+fermeture du carnet et sa réouverture depuis l'habitant. Le rejeu du vrai moteur
+avec le snapshot natif montre que la première mise à jour de reprise à 0 ms
+change son animation de `run` à `idle`, sans modifier ses coordonnées, sa vitesse
+ou son orientation. Le callback d'acceptation ne modifie pas le joueur. L'archive
+d'échec ne contient pas de snapshot après l'acceptation : ce rejeu n'est donc pas
+présenté comme l'observation native manquante.
+
+La recette enregistre désormais chaque frontière du parcours. Elle exige les
+mêmes coordonnées, vitesse et orientation que dans l'offre figée, puis compare
+le joueur entier, l'horloge et les commandes immédiatement avant et après
+l'acceptation. Le changement d'animation lors de la reprise ne masque ainsi
+aucun déplacement ni aucune mutation introduite par l'acceptation. La nouvelle
+révision doit confirmer ces observations dans ses propres archives CI.
+
+La validation locale couvre **33/33** tests de projection, de placement et de
+cycle de vie du viewport, **38/38** contrôles de l'observateur de cartouches et
+**15/15** contrôles de mouvement et de frontières d'acceptation. Les **21/21**
+tests de présentation de scène incluent le rejeu du vrai moteur à 0 ms et du
+vrai callback d'acceptation dans les deux langues. Ces tests locaux ne remplacent
+pas les prochains parcours Chromium.
+
 ## Limites restant à développer
 
 Ces scènes préparent des chemins et des installations dans le quartier Nexus

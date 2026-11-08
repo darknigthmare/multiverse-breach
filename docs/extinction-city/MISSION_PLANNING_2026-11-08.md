@@ -175,6 +175,14 @@ actualisent aussi `HubScreen.jsx` et incluent `ImmersiveDrawer.jsx`. Le reçu
 `provenanceRefresh` relie cette actualisation à la capture de sources utilisée
 pour l’édition, sans réexporter ni altérer les octets du nouveau classeur.
 
+Après la relecture de `bff8879`, l'évitement du panneau de quartier actualise les
+empreintes de `HubScreen.jsx`, `useSceneViewport.js` et `immersiveHubState.js`
+dans les groupes de présentation. Le JSON complet de planification, son manifeste
+et son empreinte restent identiques. La relecture OpenXML confirme aussi que le
+classeur reste identique à l'octet près, avec ses 36 contrats, ses 3 824
+propositions, ses formules et son suivi manuel. Le reçu conserve le lien avec
+l'actualisation précédente ; aucune validation native d'Excel n'est ajoutée.
+
 ## Reproduction
 
 Depuis la racine du dépôt, avec **Node 22** et les dépendances verrouillées :

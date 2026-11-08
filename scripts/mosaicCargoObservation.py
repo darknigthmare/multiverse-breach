@@ -80,6 +80,21 @@ MISSION_LABEL_OBSERVER_SCRIPT = '''(()=>{
       rect:{x:rect.x-ex,y:rect.y-ey,width:rect.width+ex*2,height:rect.height+ey*2}};
   };
   const city=ctx=>ctx.canvas.classList.contains('mosaic-rpg-canvas');
+  const domRect=node=>{const rect=node.getBoundingClientRect();
+    return{x:rect.x,y:rect.y,width:rect.width,height:rect.height};};
+  const locationHud=canvas=>{
+    // Raw DOM measurements are independent of the game's placement helper.
+    // Keep absent/hidden nodes as evidence; the validator decides validity.
+    if(typeof canvas.getBoundingClientRect!=='function')return null;
+    const locations=[...(canvas.closest('.mosaic-rpg-panel')?.querySelectorAll('.mosaic-location')||[])];
+    const location=locations[0],style=location?getComputedStyle(location):null;
+    const canvasStyle=getComputedStyle(canvas);
+    return{space:'dom-client-rects-v1',canvas:domRect(canvas),locationCount:locations.length,
+      location:location?domRect(location):null,
+      style:style?{display:style.display,visibility:style.visibility,opacity:Number(style.opacity)}:null,
+      canvasInsets:Object.fromEntries(['borderLeftWidth','borderRightWidth','borderTopWidth','borderBottomWidth',
+        'paddingLeft','paddingRight','paddingTop','paddingBottom'].map(key=>[key,parseFloat(canvasStyle[key])]))};
+  };
   const recordDraw=(ctx,draw)=>{const entry=records.get(ctx);if(!entry?.stage)return;
     entry.frame[entry.stage==='avatar'?'avatarDraws':'cargoDraws'].push(draw);};
   const originalFillRect=native.fillRect;
@@ -96,7 +111,8 @@ MISSION_LABEL_OBSERVER_SCRIPT = '''(()=>{
             const frame={id:++sequence,t:state.t,complete:false,viewport:{width,height},
               player:{x:state.player.x,y:state.player.y},camera:{x:state.camera.x,y:state.camera.y},
               cargo:structuredClone(state.missionCargo??null),labels:[],avatarDraws:[],cargoDraws:[],
-              playerName:null,playerShadow:null,cargoLabel:null,cargoLabelText:null};
+              playerName:null,playerShadow:null,cargoLabel:null,cargoLabelText:null,
+              locationHud:locationHud(this.canvas)};
             records.set(this,{frame,stage:null,activeLabel:null,cargoLabelPending:false});window.__cityLabelFrames.push(frame);
             if(window.__cityLabelFrames.length>6000)window.__cityLabelFrames.shift();
           }
@@ -321,11 +337,45 @@ def _intersects(a, b):
         and min(a['y'] + a['height'], b['y'] + b['height']) - max(a['y'], b['y']) > POSITION_TOLERANCE
 
 
-def verify_mission_label_frames(frames, require_labels=False, require_cargo=False, require_player_in_view=False):
+def _location_hud_rect(frame, viewport):
+    """Project measured DOM bounds without trusting the runtime's HUD rectangle."""
+    hud = frame.get('locationHud')
+    _check(isinstance(hud, dict) and hud.get('space') == 'dom-client-rects-v1',
+           'missing native location HUD DOM measurements')
+    _check(type(hud.get('locationCount')) is int and hud['locationCount'] == 1,
+           'location HUD DOM node is missing or ambiguous')
+    canvas = _rect(hud.get('canvas'), 'location HUD canvas DOM rectangle')
+    location = _rect(hud.get('location'), 'location HUD DOM rectangle')
+    _check(all(rect['width'] > 0 and rect['height'] > 0 for rect in (canvas, location)),
+           'empty location HUD DOM rectangle')
+    style = hud.get('style') or {}
+    _check(isinstance(style.get('display'), str) and style['display'] not in ('', 'none')
+           and style.get('visibility') == 'visible' and _finite(style.get('opacity')) and style['opacity'] > 0,
+           'location HUD is not visible')
+    insets = hud.get('canvasInsets') or {}
+    _check(all(_finite(insets.get(key)) and insets[key] == 0 for key in (
+        'borderLeftWidth', 'borderRightWidth', 'borderTopWidth', 'borderBottomWidth',
+        'paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom')),
+        'location HUD projection requires the actual borderless, unpadded City canvas')
+    left = max(canvas['x'], location['x'])
+    top = max(canvas['y'], location['y'])
+    right = min(canvas['x'] + canvas['width'], location['x'] + location['width'])
+    bottom = min(canvas['y'] + canvas['height'], location['y'] + location['height'])
+    if right <= left or bottom <= top:
+        return None
+    scale_x, scale_y = viewport['width'] / canvas['width'], viewport['height'] / canvas['height']
+    return _rect({'x': (left - canvas['x']) * scale_x, 'y': (top - canvas['y']) * scale_y,
+                  'width': (right - left) * scale_x, 'height': (bottom - top) * scale_y},
+                 'projected location HUD rectangle')
+
+
+def verify_mission_label_frames(frames, require_labels=False, require_cargo=False, require_player_in_view=False,
+                                require_location_hud=False):
     """Reject overlaid cartouches using the commands that actually painted them."""
     _check(frames, 'no painted City frames were observed')
     labelled = carrying = text_bounds = native_rectangles = 0
     ready_avatar = ready_labelled = ready_carrying = without_avatar = 0
+    location_hud_frames = location_hud_intersections = location_hud_comparisons = 0
     seen_ids = set()
     for frame in frames:
         _check(isinstance(frame, dict) and type(frame.get('id')) is int and frame['id'] > 0 and frame['id'] not in seen_ids,
@@ -338,6 +388,11 @@ def verify_mission_label_frames(frames, require_labels=False, require_cargo=Fals
         _check(_finite(frame.get('t')), 'non-finite painted frame time')
         viewport = _rect({'x': 0, 'y': 0, **frame.get('viewport', {})}, 'painted viewport')
         _check(viewport['width'] > 0 and viewport['height'] > 0, 'empty painted viewport')
+        hud_rect = None
+        if require_location_hud:
+            hud_rect = _location_hud_rect(frame, viewport)
+            location_hud_frames += 1
+            location_hud_intersections += hud_rect is not None
         labels = frame.get('labels')
         _check(isinstance(labels, list) and len(labels) <= 1, 'multiple operation cartouches painted in one frame')
         labelled += bool(labels)
@@ -376,6 +431,11 @@ def verify_mission_label_frames(frames, require_labels=False, require_cargo=Fals
             _check(rect['width'] > 0 and rect['height'] > 0 and _contains(viewport, rect), 'operation cartouche escapes the viewport')
             _check(not any(_intersects(rect, part) for part in protected),
                    f'operation cartouche overlaps the actual avatar or cargo: {rect}')
+            if require_location_hud:
+                location_hud_comparisons += 1
+                _check(hud_rect is None or not _intersects(rect, hud_rect),
+                       f'operation cartouche overlaps the actual location HUD in frame {frame["id"]}: '
+                       f'cartouche={rect}, hud={hud_rect}')
             _check(label.get('lines'), 'operation cartouche was drawn without its text')
             for line in label['lines']:
                 _check(isinstance(line.get('text'), str) and line['text'], 'missing operation text draw')
@@ -399,4 +459,9 @@ def verify_mission_label_frames(frames, require_labels=False, require_cargo=Fals
                      'no runtime placement rectangles or QA label count are trusted.'}
     if require_player_in_view:
         result.update({'playerAndCargoWithinViewport': True, 'visibilityCheckedFrames': len(completed)})
+    if require_location_hud:
+        result.update({'noLocationBannerIntersection': True, 'locationHudFrames': location_hud_frames,
+                       'locationHudIntersectingFrames': location_hud_intersections,
+                       'locationHudLabelComparisons': location_hud_comparisons})
+        result['scope'] += ' Location HUD bounds are independently projected from raw native DOM client rectangles.'
     return result

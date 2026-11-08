@@ -98,6 +98,100 @@ class MotionProofTests(unittest.TestCase):
                     validate_mosaic_motion(proof, nearby_target=self.target)
 
 
+class ResidentOfferBoundaryTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        source = (Path(__file__).parent / 'browserMosaicCharacterMissions.py').read_text()
+        journey = next(node for node in ast.parse(source).body
+                       if isinstance(node, ast.FunctionDef) and node.name == 'resident_offer_journey')
+        functions = [node for node in journey.body if isinstance(node, ast.FunctionDef)
+                     and node.name in ('capture_offer_boundary', 'verify_offer_boundary')]
+        assert len(functions) == 2
+
+        def check(condition, message):
+            if not condition:
+                raise AssertionError(message)
+
+        cls.namespace = {'check': check}
+        exec(compile(ast.Module(body=functions, type_ignores=[]), '<resident-offer-boundaries>', 'exec'), cls.namespace)
+
+    def setUp(self):
+        self.verify = self.namespace['verify_offer_boundary']
+        self.frozen = {'t': 795.3000000000059,
+            'player': {'x': 628.3438529991091, 'y': 344.23440738627676,
+                       'speed': 2.35, 'facing': -1, 'state': 'run'},
+            'keys': {}, 'destination': None, 'pendingInteraction': None, 'destinationRoute': None}
+
+    def test_only_the_normal_running_to_idle_pose_can_change_during_reopening(self):
+        current = copy.deepcopy(self.frozen)
+        current['player']['state'] = 'idle'
+        before = copy.deepcopy((self.frozen, current))
+        self.verify(self.frozen, current, 'reopen', resuming=True)
+        self.assertEqual((self.frozen, current), before)
+        with self.assertRaisesRegex(AssertionError, 'changed the player'):
+            self.verify(self.frozen, current, 'accept')
+        for state in ('jump', 'attack', None):
+            with self.subTest(state=state):
+                current['player']['state'] = state
+                with self.assertRaisesRegex(AssertionError, 'changed the player'):
+                    self.verify(self.frozen, current, 'reopen', resuming=True)
+        idle = copy.deepcopy(self.frozen)
+        idle['player']['state'] = 'idle'
+        with self.assertRaisesRegex(AssertionError, 'changed the player'):
+            self.verify(idle, self.frozen, 'reopen', resuming=True)
+
+    def test_subpixel_motion_speed_and_orientation_changes_are_always_rejected(self):
+        for key in ('x', 'y', 'speed', 'facing'):
+            for resuming in (False, True):
+                with self.subTest(key=key, resuming=resuming):
+                    current = copy.deepcopy(self.frozen)
+                    current['player'][key] += 1e-9
+                    if resuming:
+                        current['player']['state'] = 'idle'
+                    with self.assertRaisesRegex(AssertionError, 'changed the player'):
+                        self.verify(self.frozen, current, 'boundary', resuming=resuming)
+
+    def test_acceptance_requires_the_entire_player_clock_and_commands_to_stay_unchanged(self):
+        self.verify(self.frozen, copy.deepcopy(self.frozen), 'accept')
+        mutations = [('t', self.frozen['t'] + 1e-9), ('keys', {'arrowup': True}),
+                     ('destination', {'x': 800, 'y': 700}),
+                     ('pendingInteraction', {'type': 'npc', 'id': 'arca_mirelle'}),
+                     ('destinationRoute', {'points': [{'x': 800, 'y': 700}]})]
+        for key, value in mutations:
+            with self.subTest(key=key):
+                current = copy.deepcopy(self.frozen)
+                current[key] = value
+                with self.assertRaisesRegex(AssertionError, 'changed ' + key):
+                    self.verify(self.frozen, current, 'accept')
+        current = copy.deepcopy(self.frozen)
+        current['player']['unexpected'] = True
+        with self.assertRaisesRegex(AssertionError, 'changed the player'):
+            self.verify(self.frozen, current, 'accept')
+
+    def test_missing_position_evidence_cannot_match_an_equally_incomplete_baseline(self):
+        for key in ('x', 'y', 'speed', 'facing'):
+            with self.subTest(key=key):
+                reference = copy.deepcopy(self.frozen)
+                del reference['player'][key]
+                with self.assertRaisesRegex(AssertionError, 'incomplete player evidence'):
+                    self.verify(reference, copy.deepcopy(reference), 'boundary', resuming=True)
+
+    def test_the_native_boundary_is_recorded_before_a_failed_comparison(self):
+        actual = copy.deepcopy(self.frozen)
+        actual['player']['x'] += 1
+
+        class ReadOnlyPage:
+            def evaluate(self, _expression):
+                return copy.deepcopy(actual)
+
+        self.namespace['page'] = ReadOnlyPage()
+        self.namespace['record'] = {}
+        captured = self.namespace['capture_offer_boundary']('afterAcceptance')
+        with self.assertRaisesRegex(AssertionError, 'changed the player'):
+            self.verify(self.frozen, captured, 'accept')
+        self.assertEqual(self.namespace['record']['offerBoundaries']['afterAcceptance'], actual)
+
+
 class WalkReceiptProofTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

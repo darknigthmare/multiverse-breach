@@ -11,6 +11,7 @@ import { MOSAIC_CHARACTER_MISSION_LEGACY, MOSAIC_CHARACTER_MISSIONS, normalizeMo
   advanceMosaicCharacterMission, resolveMosaicCharacterMission } from '../src/game/mosaicCharacterMissions.js';
 import { getMosaicMissionOperation, drawMosaicMissionObject, drawMosaicMissionObjectProp,
   drawMosaicMissionObjectLabel, selectMosaicMissionObjectLabel, placeMosaicMissionObjectLabel } from '../src/game/mosaicMissionOperations.js';
+import { getSceneHudRect } from '../src/game/immersiveHubState.js';
 
 function context(universe = 'Nexus de Convergence') {
   const district = { id: `test-${universe}`, universe, worldW: 1920, worldH: 1180 };
@@ -285,7 +286,7 @@ test('equidistant label selection is stable and malformed positions cannot win',
   assert.equal(selectMosaicMissionObjectLabel([a], player, { viewport: { x: 0, y: 0, width: 0, height: 300 } }), null);
 });
 
-test('label placement protects a wide avatar, carried silhouette and its full text at camera edges', () => {
+test('label placement protects a wide avatar, cargo and a wrapped district title in every viewport', () => {
   for (const viewport of [{ x: 330.3, y: 300.7, width: 720, height: 540 }, { x: 0, y: 0, width: 390, height: 844 },
     { x: 800, y: 600, width: 844, height: 390 }]) {
     for (const position of ['center', 'top-left', 'bottom-right']) {
@@ -295,7 +296,8 @@ test('label placement protects a wide avatar, carried silhouette and its full te
       const protectedRects = [
         { x: player.x - 78, y: player.y - 55.4, width: 156, height: 96 },
         { x: player.x + 12, y: player.y - 36.5, width: 29, height: 34 },
-        { x: player.x - 95, y: player.y - 78, width: 190, height: 17 }
+        { x: player.x - 95, y: player.y - 78, width: 190, height: 17 },
+        { x: viewport.x + 12, y: viewport.y + 66, width: Math.min(320, viewport.width * 0.6), height: 150 }
       ];
       const input = { anchor: { x: player.x - 60, y: player.y - 14 }, width: 188, height: 87, viewport, protectedRects };
       const before = structuredClone(input), rect = placeMosaicMissionObjectLabel(input);
@@ -305,6 +307,46 @@ test('label placement protects a wide avatar, carried silhouette and its full te
       assert.deepEqual(input, before);
       assert.deepEqual(placeMosaicMissionObjectLabel(input), rect);
     }
+  }
+});
+
+test('the two obscured CI landscape cartouches clear the measured district banner and the same avatar', () => {
+  // bff8879 native step-5 observations for Ancre FR and Nova EN, at 844x390.
+  // The 99px panel is their screenshot footprint, not a runtime title-height rule.
+  const size = { width: 1169, height: 540 };
+  const hud = getSceneHudRect({ left: 0, top: 0, width: 844, height: 390 },
+    { left: 32, top: 84, width: 320, height: 99 }, size);
+  const captures = [
+    { name: 'repère du retour est', camera: { x: 592.9021274434372, y: 301.93638183746367 },
+      anchor: { x: 1100, y: 550 },
+      label: { x: 413.097900390625, y: 162.063629150390625, width: 188, height: 42 },
+      title: { x: 460.621337890625, y: 165.063629150390625, width: 93.619140625, height: 12 },
+      status: { x: 492.100830078125, y: 180.063629150390625, width: 29.66796875, height: 9 },
+      avatar: { x: 528.4591064453125, y: 221.83944702148438, width: 78, height: 78 },
+      playerName: { x: 560.2374355225602, y: 219.52695228486982, width: 15.2216796875, height: 9 },
+      shadow: { x: 549.4591152100602, y: 288.1517757475209, width: 36, height: 7 } },
+    { name: 'present-return marker', camera: { x: 593.0184511673813, y: 513.1322016651618 },
+      anchor: { x: 1110, y: 790 },
+      label: { x: 422.9815673828125, y: 171.6516737582648, width: 188, height: 42 },
+      title: { x: 464.8419189453125, y: 174.6516737582648, width: 104.283203125, height: 12 },
+      status: { x: 498.3223876953125, y: 189.6516737582648, width: 37.318359375, height: 9 },
+      avatar: { x: 541.0018310546875, y: 226.96417236328125, width: 78, height: 78 },
+      playerName: { x: 572.7801559232626, y: 224.6516737582648, width: 15.2216796875, height: 9 },
+      shadow: { x: 562.0018356107626, y: 293.32047733144316, width: 36, height: 7 } }
+  ];
+  for (const capture of captures) {
+    assert.ok(rectsOverlap(capture.label, hud), `${capture.name}: original background was obscured`);
+    assert.ok(rectsOverlap(capture.title, hud), `${capture.name}: useful title text was obscured`);
+    assert.ok(!rectsOverlap(capture.status, hud), `${capture.name}: completion status stayed visible`);
+    const world = rect => ({ ...rect, x: rect.x + capture.camera.x, y: rect.y + capture.camera.y });
+    const protectedRects = [capture.avatar, capture.playerName, capture.shadow, hud].map(world);
+    const input = { anchor: capture.anchor, width: 188, height: 42,
+      viewport: { ...capture.camera, ...size }, protectedRects };
+    const before = structuredClone(input), placed = placeMosaicMissionObjectLabel(input);
+    assert.ok(placed && within(placed, input.viewport), capture.name);
+    assert.ok(protectedRects.every(rect => !rectsOverlap(placed, rect, 8)),
+      `${capture.name}: banner avoidance must retain the avatar/name/shadow clearance`);
+    assert.deepEqual(input, before);
   }
 });
 

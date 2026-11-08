@@ -7,7 +7,8 @@ import { snapshotMosaicLocation } from '../src/game/immersiveHubState.js';
 import { advanceMosaicPlayer, clampMosaicPosition, getMosaicInteractionTargets, getMosaicNavigationObstacles, getMosaicZoneAnchor,
   getMosaicSceneObstacles, isMosaicPositionBlocked, resolveMosaicInteraction } from '../src/game/mosaicCityRuntime.js';
 import { MOSAIC_CHARACTER_MISSIONS, normalizeMosaicCharacterMissions, getMosaicCharacterMissionObjective,
-  getMosaicCharacterMissionZones, advanceMosaicCharacterMissionWalk } from '../src/game/mosaicCharacterMissions.js';
+  getMosaicCharacterMissionZones, advanceMosaicCharacterMissionWalk, acceptMosaicCharacterMissionRequest,
+  localizeCityMission } from '../src/game/mosaicCharacterMissions.js';
 import { getMosaicMissionWalkApproach, MOSAIC_WALK_RANGE, recordMosaicMissionWalk } from '../src/game/mosaicMissionWalks.js';
 
 for (const [type, fr, en] of [
@@ -105,6 +106,38 @@ test('journal full text and explicit 60-second Infestation brief remain present'
   assert.match(source, /ref=\{journalRef\}[\s\S]*?<span>\{hubLog\}<\/span>/);
   assert.match(source, /className="mosaic-world-log" onClick=\{openTransmission\}/);
   assert.match(source, /Infestation: survive the swarms for 60 seconds/);
+});
+
+test('a zero-time offer reopening ends only the running pose and the actual acceptance callback preserves the whole player', () => {
+  const source = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
+  const start = source.indexOf('  const acceptResidentRequest =');
+  const end = source.indexOf('\n  const replayCharacterMission', start);
+  assert.ok(start >= 0 && end > start);
+  const mission = { ...MOSAIC_CHARACTER_MISSIONS.find(item => item.id === 'city-mirelle-suture-v1'),
+    districtId: 'universe-nexus-de-convergence', anchorId: 'universe-nexus-de-convergence-core' };
+  for (const lang of ['fr', 'en']) {
+    const state = { player: { x: 628.3438529991091, y: 344.23440738627676, speed: 2.35, facing: -1, state: 'run' },
+      keys: {}, destination: null, pendingInteraction: null, destinationRoute: null, obstacles: [],
+      npcs: [{ hero: { id: 'arca_mirelle', universe: mission.universe }, x: 668.3438529991091, y: 344.23440738627676 }] };
+    const frozen = structuredClone(state.player);
+    assert.equal(advanceMosaicPlayer(state, { worldW: 1920, worldH: 1180 }, 0), 0);
+    assert.deepEqual(state.player, { ...frozen, state: 'idle' });
+    const beforeAcceptance = structuredClone(state.player);
+    const progressRef = { current: normalizeMosaicCharacterMissions() };
+    let exchange = { phase: 'offer', missionId: mission.id, heroId: 'arca_mirelle' };
+    const env = { sessionPausedRef: { current: false }, missionConversation: exchange,
+      characterMissionCatalog: [mission], resolveMosaicInteraction, stateRef: { current: state }, zones: [],
+      conversationHeroId: 'arca_mirelle', acceptMosaicCharacterMissionRequest, characterMissionsRef: progressRef, lang,
+      commitCharacterMissions(next) { progressRef.current = next; },
+      setMissionConversation(update) { exchange = update(exchange); }, localizeCityMission, setHubLog() {} };
+    const accept = new Function(...Object.keys(env), `${source.slice(start, end)}; return acceptResidentRequest;`)(...Object.values(env));
+    const result = accept(mission.id);
+    assert.equal(result.changed, true);
+    assert.deepEqual(state.player, beforeAcceptance);
+    assert.deepEqual(progressRef.current.records[mission.id].completedStepIds, ['meet-arca_mirelle']);
+    assert.deepEqual(progressRef.current.records[mission.id].operationReceipts, {});
+    assert.equal(exchange.phase, 'active');
+  }
 });
 
 test('actual City entry callbacks distinguish an offered adventure, its transmission and the guide', () => {

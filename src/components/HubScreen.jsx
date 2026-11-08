@@ -2293,7 +2293,8 @@ function MosaicCityHub({
   sessionExitRequest = 0
 }) {
   const canvasRef = useRef(null);
-  const sceneHudRef = useSceneViewport(canvasRef, 540);
+  const cityLocationRef = useRef(null);
+  const sceneHudRef = useSceneViewport(canvasRef, 540, true, cityLocationRef);
   const cityBackdropRef = useRef(null);
   useEffect(() => { const image = new Image(); image.src = MOSAIC_CITY_ART; cityBackdropRef.current = image; return () => { cityBackdropRef.current = null; }; }, []);
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
@@ -3556,6 +3557,9 @@ function MosaicCityHub({
       }
       const labelViewport = { x: state.camera.x, y: state.camera.y, width: canvas.width, height: canvas.height };
       const labelledObject = selectMosaicMissionObjectLabel(missionWorldObjectsRef.current, state.player, { viewport: labelViewport });
+      const hudOcclusion = sceneHudRef.current?.occlusionRect;
+      if (hudOcclusion) playerProtectedRects.push({ ...hudOcclusion,
+        x: state.camera.x + hudOcclusion.x, y: state.camera.y + hudOcclusion.y });
       drawMosaicMissionObjectLabel(ctx, labelledObject, { viewport: labelViewport, protectedRects: playerProtectedRects });
 
       ctx.restore();
@@ -3796,7 +3800,7 @@ function MosaicCityHub({
       <span className="gameplay-live-status" id="mosaic-city-controls-help">{lang === 'fr' ? 'ZQSD / WASD ou flèches : marcher. E : interagir. Terminal : destinations, journal et aide.' : 'WASD or arrows: walk. E: interact. Terminal: destinations, journal and help.'}</span>
       <div className="mosaic-world-hud">
         <div className="mosaic-world-column">
-          <div className="mosaic-location"><span>{lang === 'fr' ? 'CITÉ-MOSAÏQUE' : 'MOSAIC CITY'}</span><strong>{district.label}</strong><small>{currentZoneData?.label || 'Nexus'}</small></div>
+          <div ref={cityLocationRef} className="mosaic-location"><span>{lang === 'fr' ? 'CITÉ-MOSAÏQUE' : 'MOSAIC CITY'}</span><strong>{district.label}</strong><small>{currentZoneData?.label || 'Nexus'}</small></div>
           {welcomeOpen && (
             <section className="mosaic-city-guide" style={{ gridTemplateColumns: 'minmax(0, 1fr) auto' }} aria-label={MOSAIC_WELCOME.title[welcomeLanguage]}>
               <div aria-live="polite"><strong>{MOSAIC_WELCOME.title[welcomeLanguage]}</strong><p>{MOSAIC_WELCOME.lines[welcomeLanguage][welcomeIndex]}</p></div>
