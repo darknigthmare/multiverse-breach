@@ -139,6 +139,10 @@ def play_contract(page, entry, out, case_name, remount=False):
         else:
             button = panel.locator('[data-city-contract-approach]')
             reach_and_measure(button, page)
+            report_target = ({'type': 'zone', 'id': f'{DISTRICT}-core', 'action': 'anchor',
+                              'universe': 'Nexus de Convergence', 'range': 72}
+                             if objective.get_attribute('data-step') == 'report' else None)
+            proximity_before = page.evaluate('window.__sceneQA.nearbyCityZone()') if report_target else None
             begin_walk_proof(button)
             button.click()
             try:
@@ -150,11 +154,15 @@ def play_contract(page, entry, out, case_name, remount=False):
                       f'{mission_id} could not reach step {index} by normal movement')
             finally:
                 proof = page.evaluate('window.__stopReconnaissanceMotion()')
+                proof['proximityBefore'] = proximity_before
+                proof['sceneAfter'] = page.evaluate('''()=>{const s=window.__sceneQA.state();return {
+                  snapshot:window.__sceneQA.snapshot(),pendingInteraction:s.pendingInteraction,
+                  destinationRoute:s.destinationRoute,obstacles:s.obstacles};}''')
                 (out / f'{case_name}-{mission_id}-step-{index}.json').write_text(json.dumps(proof, indent=2))
             if proof.get('clickBefore') and proof.get('clickAfter'):
                 check(proof['clickBefore']['x'] == proof['clickAfter']['x'] and
                       proof['clickBefore']['y'] == proof['clickAfter']['y'], 'approach teleported on click')
-            motion = validate_mosaic_motion(proof)
+            motion = validate_mosaic_motion(proof, nearby_target=report_target)
             case['walks'].append({'index': index, 'motion': motion})
         saved = progress(page)
         terminal(page)

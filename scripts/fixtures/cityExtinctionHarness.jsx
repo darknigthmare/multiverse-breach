@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { MosaicCityHub, ExtinctionRoyale } from '../../src/components/HubScreen.jsx';
 import { HEROES_DB } from '../../src/game/heroes.js';
 import { createPlayerHero } from '../../src/game/playerHero.js';
+import { getMosaicZoneAnchor, MOSAIC_INTERACTION_RANGE } from '../../src/game/mosaicCityRuntime.js';
 import '../../src/index.css';
 import './combatHarness.css';
 const params = new URLSearchParams(globalThis.__sceneQaParams || location.search);
@@ -60,6 +61,17 @@ const readSceneRef = predicate => {
 audit.state = () => readSceneRef(value => mode === 'city'
   ? value.player && value.camera && value.npcs : value.phase && value.enemies && 'px' in value);
 audit.hudLayout = () => readSceneRef(value => value.fpsRadar && value.cityMinimap && Number.isFinite(value.unitsPerCssPixel));
+// Read the actual nearby zone ref; this never chooses or moves a target.
+audit.nearbyCityZone = () => {
+  if (mode !== 'city') return null;
+  const zone = readSceneRef(value => typeof value.id === 'string' && typeof value.action === 'string'
+    && ['x', 'y', 'w', 'h'].every(key => Number.isFinite(value[key])));
+  const player = audit.state()?.player;
+  if (!zone || !player) return null;
+  const anchor = getMosaicZoneAnchor(zone);
+  return { type: 'zone', id: zone.id, action: zone.action, universe: zone.universe, ...anchor,
+    range: MOSAIC_INTERACTION_RANGE.zone, distance: Math.hypot(player.x - anchor.x, player.y - anchor.y) };
+};
 audit.snapshot = () => {
   const s = audit.state(); if (!s) return null;
   return mode === 'city' ? {t:s.t, player:{...s.player}, camera:{...s.camera}, keys:{...s.keys}, destination:s.destination, npcs:s.npcs.map(n=>({id:n.hero.id,x:n.x,y:n.y}))}

@@ -28,7 +28,20 @@ const fontsOf = (root, surface) => root.locator(surface === 'portal'
   ? '.archive-drawer-header h2, .archive-drawer-header button, .booster-section-kicker, .booster-catalog-count, .booster-pack-search input, .portal-catalog-scope label, .portal-catalog-scope select, .portal-catalog-scope p, .booster-rotation-strip span, .booster-rotation-strip strong, .booster-rotation-strip p, .booster-rotation-strip em, .portal-catalog-group > summary, .portal-catalog-range, .portal-page-size, .portal-page-size select, .portal-catalog-page-buttons button, .portal-booster-kicker, .portal-booster-title, .portal-booster-desc, .portal-booster-meta, .portal-booster-art-badge, .portal-booster-preview-label'
   : '#booster-dossier-title, .booster-art-preview-close, .booster-dossier-content h2, .booster-dossier-content h3, .booster-dossier-content h4, .booster-dossier-content p, .booster-dossier-content small, .booster-dossier-content input, .booster-dossier-content select, .booster-dossier-content button, .portal-focus-stats span, .portal-rate-grid span')
   .evaluateAll(nodes => nodes.filter(node => node.getClientRects().length).map(node => ({ text: node.textContent.slice(0, 80), size: Number.parseFloat(getComputedStyle(node).fontSize) })));
+const settleSurfaceAnimations = async root => {
+  const element = await root.elementHandle();
+  try {
+    await root.page().waitForFunction(node => {
+      const overlay = node.closest('.archive-drawer-overlay, .booster-art-lightbox') || node;
+      // Observe the natural end, including pending reduced-motion animations.
+      // A frame count can still sample the dossier's initial scale(0.94).
+      return overlay.getAnimations({ subtree: true }).every(animation =>
+        !Number.isFinite(animation.effect?.getComputedTiming().endTime) || animation.playState === 'finished');
+    }, element);
+  } finally { await element.dispose(); }
+};
 const inspectLayout = async (root, viewport, surface, record, key = 'layout') => {
+  await settleSurfaceAnimations(root);
   const geometry = await root.evaluate(node => {
     const areas = [node, ...node.querySelectorAll('header, .archive-drawer-content, .booster-catalog-toolbar, .booster-pack-search, .portal-catalog-scope, .portal-catalog-scope label, .portal-catalog-group, .booster-catalog-grid, .portal-catalog-pager, .booster-dossier-content, .booster-dossier-intro, .booster-dossier-filters, .booster-reward-manifest-grid')]
       .filter(area => area.getClientRects().length)
@@ -220,6 +233,7 @@ try {
         assert.equal(pages, 5); assert.equal(ids.length, 53); assert.equal(new Set(ids).size, 53);
         assert.deepEqual([...ids].sort(), await page.evaluate(() => window.__portalCatalogQA.candidates.map(card => card.id).sort()));
         const title = cards.locator('h4').filter({ hasText: fr ? 'Éclaireuse des bibliothèques' : 'Pathfinder of the Mosaic City' });
+        await title.scrollIntoViewIfNeeded();
         record.longTitle = await assertWrappedText(title);
         await page.screenshot({ path: resolve(evidence, `${name}-last-page.png`), fullPage: false });
         const query = rewards.getByRole('searchbox');

@@ -74,6 +74,46 @@ test('collision substeps prevent tunneling through NPC bodies and allow escaping
   assert.ok(state.player.x < 130);
 });
 
+for (const targetType of ['zone', 'point']) test(`${targetType} approach replans when a passer-by enters the existing route`, () => {
+  const state = makeState();
+  const requested = { x: 450, y: 100 };
+  const zone = { id: 'relay', action: 'anchor', x: 430, y: 80, w: 40, h: 40 };
+  state.destination = { ...requested };
+  state.pendingInteraction = targetType === 'zone' ? { type: 'zone', id: zone.id } : null;
+  state.npcs = [{ hero: { id: 'passing-resident' }, x: 250, y: 300 }];
+  advanceMosaicPlayer(state, district);
+  // The resident arrives at the collision boundary after the route was built.
+  Object.assign(state.npcs[0], { x: state.player.x + 28, y: state.player.y });
+  assert.equal(advanceMosaicPlayer(state, district), 0, 'physical bodies still stop this step');
+  assert.deepEqual(state.destination, requested, 'a moving bystander must not discard the requested place');
+  for (let tick = 0; tick < 500 && state.destination; tick++) {
+    const previous = { ...state.player };
+    advanceMosaicPlayer(state, district);
+    assert.ok(Math.hypot(state.player.x - previous.x, state.player.y - previous.y) <= 2.35 + 1e-7, 'ordinary speed budget retained');
+    assert.ok(Math.hypot(state.player.x - state.npcs[0].x, state.player.y - state.npcs[0].y) >= 28 - 1e-7, 'no passing through the resident');
+    if (targetType === 'zone' && resolveMosaicInteraction(state.player, { zones: [zone] }, state.pendingInteraction)) break;
+  }
+  if (targetType === 'zone') assert.equal(resolveMosaicInteraction(state.player, { zones: [zone] }, state.pendingInteraction)?.id, zone.id);
+  else { near(state.player.x, requested.x); near(state.player.y, requested.y); }
+});
+
+test('manual input still cancels a zone route waiting to be replanned', () => {
+  const state = makeState();
+  state.destination = { x: 450, y: 100 };
+  state.pendingInteraction = { type: 'zone', id: 'relay' };
+  state.npcs = [];
+  advanceMosaicPlayer(state, district);
+  state.npcs = [{ hero: { id: 'passing-resident' }, x: state.player.x + 28, y: state.player.y }];
+  advanceMosaicPlayer(state, district);
+  state.keys = { arrowdown: true };
+  advanceMosaicPlayer(state, district);
+  assert.equal(state.destination, null); assert.equal(state.pendingInteraction, null);
+  state.keys = {};
+  const stopped = { ...state.player };
+  for (let tick = 0; tick < 60; tick++) advanceMosaicPlayer(state, district);
+  assert.equal(state.player.x, stopped.x); assert.equal(state.player.y, stopped.y);
+});
+
 test('collision slides along an NPC instead of canceling the whole movement', () => {
   const state = makeState({ arrowright: true, arrowdown: true });
   state.npcs = [{ x: 127, y: 100 }];

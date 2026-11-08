@@ -1,0 +1,57 @@
+import copy
+import unittest
+
+from mosaicMotionProof import validate_mosaic_motion
+
+
+class MotionProofTests(unittest.TestCase):
+    def setUp(self):
+        self.target = {'type': 'zone', 'id': 'nexus-core', 'action': 'anchor', 'universe': 'Nexus', 'range': 72}
+        start = {'t': 0, 'x': 100, 'y': 100, 'speed': 2.35}
+        self.proof = {'clickBefore': start, 'clickAfter': copy.copy(start),
+                      'samples': [dict(start, t=1), dict(start, t=2)],
+                      'proximityBefore': dict(self.target, x=150, y=100, distance=50)}
+
+    def test_stationary_interaction_still_requires_a_walk_by_default(self):
+        with self.assertRaisesRegex(AssertionError, 'sampled walk'):
+            validate_mosaic_motion(self.proof)
+
+    def test_actual_anchor_already_in_range_allows_a_stationary_report(self):
+        result = validate_mosaic_motion(self.proof, nearby_target=self.target)
+        self.assertTrue(result['startedWithinTargetRange'])
+        self.assertEqual(result['travelledWorldUnits'], 0)
+        self.assertTrue(result['everySampleWithinSpeedBudget'])
+
+    def test_far_wrong_or_invalid_proximity_cannot_replace_walking(self):
+        for mutation in [{'id': 'other'}, {'universe': 'Other'}, {'action': 'codex'},
+                         {'range': 999}, {'x': 200, 'distance': 100}, {'distance': 0}, {'x': float('nan')}]:
+            with self.subTest(mutation=mutation):
+                proof = copy.deepcopy(self.proof)
+                proof['proximityBefore'].update(mutation)
+                with self.assertRaisesRegex(AssertionError, 'sampled walk'):
+                    validate_mosaic_motion(proof, nearby_target=self.target)
+
+    def test_partial_identity_cannot_match_missing_fields_on_both_sides(self):
+        for key in ['type', 'id', 'action', 'universe']:
+            with self.subTest(key=key):
+                proof = copy.deepcopy(self.proof)
+                target = copy.copy(self.target)
+                del target[key]
+                del proof['proximityBefore'][key]
+                with self.assertRaisesRegex(AssertionError, 'sampled walk'):
+                    validate_mosaic_motion(proof, nearby_target=target)
+
+    def test_nearby_anchor_does_not_bypass_teleport_or_speed_checks(self):
+        for key in ['clickAfter', 'samples']:
+            with self.subTest(key=key):
+                proof = copy.deepcopy(self.proof)
+                if key == 'clickAfter':
+                    proof[key]['x'] += 10
+                else:
+                    proof[key][0]['x'] += 10
+                with self.assertRaises(AssertionError):
+                    validate_mosaic_motion(proof, nearby_target=self.target)
+
+
+if __name__ == '__main__':
+    unittest.main()

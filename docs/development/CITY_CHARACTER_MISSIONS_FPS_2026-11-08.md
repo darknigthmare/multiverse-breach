@@ -33,6 +33,12 @@ bonne identité, le bon univers et une distance valide. La consultation du
 menu, la sélection du contrat et le guidage ne valident aucune étape. Les
 repères utilisent les collisions et le déplacement ordinaires de la Cité.
 
+Si un passant coupe un itinéraire déjà calculé, le guidage recalcule son détour
+sans abandonner la destination ni traverser le personnage. Les commandes
+manuelles, les menus et les chemins réellement impossibles gardent leur effet
+d’annulation. Un dossier peut être transmis en étant déjà à portée de l’ancre ;
+la recette prouve alors l’identité et la distance réelle avant l’interaction.
+
 La progression vit dans `activityProgress.mosaicCharacterMissions`. Les IDs
 absents et champs futurs restent conservés ; un dossier incompatible n’est
 pas réinterprété comme terminé. Un contrat achevé ne se réattribue pas et ne
@@ -67,6 +73,9 @@ une limite. Cette règle est expliquée dans le briefing et le classeur.
 Les distances affichées distinguent aussi déplacement, contact, tir, rayon,
 déploiement de piège et effet personnel, depuis les mêmes valeurs que la
 simulation.
+Le HUD des kits à récupération indique maintenant « KIT · PRÊT » ou le délai
+réel restant, avec le nom et l’explication accessibles. Ce libellé compact
+évite une rangée de statistiques supplémentaire devant le réticule en portrait.
 
 | Mode | Directive facultative | Condition ajoutée |
 | --- | --- | --- |
@@ -126,7 +135,7 @@ colonnes d’identité restent figés pendant le défilement.
 
 ## Vérifications et reproduction
 
-Les **325 tests `test:ui-immersion`** passent localement, dont les nouveaux
+Les **328 tests `test:ui-immersion`** passent localement, dont les nouveaux
 contrats de Cité, profils/directives FPS et dossiers de portail. Les 19 tests
 de Cité incluent les deux conclusions de chacun des sept contrats, un trajet
 réel soumis aux collisions, les sauvegardes et le refus des interactions
@@ -147,6 +156,10 @@ exigent toujours une simulation figée en pause, des coordonnées identiques à
 la reprise et aucune commande automatique conservée. Les captures et états
 intermédiaires sont enregistrés avant les assertions ; chaque format est
 exécuté indépendamment, et tout cas en échec fait échouer le workflow.
+Cinq contrôles Python vérifient aussi qu’une transmission déjà à portée
+exige la bonne ancre et conserve les gardes de vitesse et de non-téléportation.
+Le Portail rend le focus après l’engagement de la mise à jour React ; ses
+mesures attendent la fin naturelle des animations d’entrée.
 
 Le fichier Excel est construit avec `@oai/artifact-tool`, puis recalculé,
 inspecté et relu par un vérificateur OpenXML indépendant. Les changements de

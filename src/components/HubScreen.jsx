@@ -5099,6 +5099,19 @@ function ExtinctionRoyale({
   const activeSignature = stateRef.current.phase === 'running' ? stateRef.current.protocols?.profile : signatureProfile;
   const runActive = runSnapshot.phase === 'running';
   const runEnded = runSnapshot.phase === 'ended';
+  const personalKitReadout = (() => {
+    const ticks = Math.max(0, Number(runSnapshot.signatureCooldowns?.simple) || 0);
+    const seconds = (Math.ceil(ticks / 6) / 10).toFixed(1);
+    const remaining = lang === 'fr' ? seconds.replace('.', ',') : seconds;
+    const paused = sessionPaused || intelOpen;
+    return {
+      label: paused ? 'KIT · PAUSE' : ticks > 0 ? `KIT · ${remaining}s` : lang === 'fr' ? 'KIT · PRÊT' : 'KIT · READY',
+      description: `${runSnapshot.weaponName || weaponProfile.name}. ${paused
+        ? (lang === 'fr' ? 'Action principale en pause.' : 'Primary action paused.')
+        : ticks > 0 ? (lang === 'fr' ? `Action principale disponible dans ${remaining} s.` : `Primary action ready in ${remaining} s.`)
+          : (lang === 'fr' ? 'Action principale prête.' : 'Primary action ready.')}`
+    };
+  })();
 
   return (
     <div data-viewmodel={viewmodel.id} data-fps-mode={runMode} className={`glass-panel nexus-play-panel extinction-panel ${runActive || runEnded ? 'extinction-panel-active' : ''} ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
@@ -5224,8 +5237,11 @@ function ExtinctionRoyale({
               <progress value={runSnapshot.hp} max={runSnapshot.maxHp} aria-label={lang === 'fr' ? 'Points de vie' : 'Health'} />
             </span>
             <span className="extinction-stat-armor">ARM {Math.round(runSnapshot.armor || 0)}</span>
-            <span className="extinction-stat-ammo" title={runSnapshot.weaponName}>{runActive && runSnapshot.weaponResource === 'cooldown'
-              ? (lang === 'fr' ? 'KIT · RÉCUPÉRATION' : 'KIT · COOLDOWNS')
+            <span className="extinction-stat-ammo" role="status" aria-live="off"
+              title={runActive && runSnapshot.weaponResource === 'cooldown' ? personalKitReadout.description : runSnapshot.weaponName}
+              aria-label={runActive && runSnapshot.weaponResource === 'cooldown' ? personalKitReadout.description : undefined}>
+              {runActive && runSnapshot.weaponResource === 'cooldown'
+              ? personalKitReadout.label
               : `${lang === 'fr' ? 'MUN' : 'AMMO'} ${runSnapshot.ammo}+${runSnapshot.reserveAmmo}`}</span>
             <span className="extinction-stat-wave">{lang === 'fr' ? 'VAGUE' : 'WAVE'} {runSnapshot.wave}</span>
             <span className="extinction-stat-kills">K.O. {runSnapshot.kills}</span>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import ArchiveDrawer from './collection/ArchiveDrawer.jsx';
 import useModalDialog from './collection/useModalDialog.js';
@@ -781,6 +781,7 @@ export default function PortalScreen({
   const rotationPendingRef = useRef(false);
   const rotationRequestRef = useRef(null);
   const rotationConfirmRef = useRef(null);
+  const rotationFocusRequestedRef = useRef(false);
   const [artPreviewOpen, setArtPreviewOpen] = useState(false);
   const [openingPhase, setOpeningPhase] = useState('sealed');
   const [boosterRewards, setBoosterRewards] = useState([]);
@@ -1511,21 +1512,30 @@ export default function PortalScreen({
     && openingPhase === 'sealed'
     && !rotationPending;
 
+  useLayoutEffect(() => {
+    if (!rotationFocusRequestedRef.current || rotationPending) return;
+    rotationFocusRequestedRef.current = false;
+    // Focus after React has mounted/re-enabled the destination, not in a frame
+    // that may still see the disabled button from the pending save.
+    const target = rotationConfirmation ? rotationConfirmRef.current : rotationRequestRef.current;
+    if (catalogOpen && target && !target.disabled && !target.closest('[inert]')) target.focus();
+  }, [catalogOpen, rotationConfirmation, rotationPending, rotationMessage]);
+
   const requestRotationReroll = () => {
     if (!canRerollRotation || rotationPendingRef.current) return;
+    rotationFocusRequestedRef.current = true;
     setRotationMessage(null);
     setRotationConfirmation({
       requestId: crypto.randomUUID(),
       universes: [...rotationUniverseNames],
       expectedCycle: rotationSchedule.cycle
     });
-    window.requestAnimationFrame(() => rotationConfirmRef.current?.focus());
   };
 
   const cancelRotationReroll = () => {
+    rotationFocusRequestedRef.current = true;
     setRotationConfirmation(null);
     setRotationMessage(null);
-    window.requestAnimationFrame(() => rotationRequestRef.current?.focus());
   };
 
   const confirmRotationReroll = async () => {
@@ -1542,8 +1552,8 @@ export default function PortalScreen({
       setRotationMessage('persistence-failed');
     } finally {
       rotationPendingRef.current = false;
+      rotationFocusRequestedRef.current = true;
       setRotationPending(false);
-      window.requestAnimationFrame(() => (rotationConfirmRef.current || rotationRequestRef.current)?.focus());
     }
   };
 

@@ -129,6 +129,20 @@ def residents(page, args, width, height, lang, out, name):
             'clockPrepared':prepared_clock,'realPauseVerifiedMs':CITY_REAL_PAUSE_MS,'checkpointsDuringMovement':checkpoints_during_movement}
 
 def viewmodel(page,args,identity,width,height,lang,out,name):
+    action_states = {'heroId': identity, 'states': {}}
+    action_states_file = f'{name}-action-states.json'
+    def observe_action(label):
+        value = page.evaluate('''() => { const s=window.__sceneQA.state(), p=s.protocols;
+          return {heroId:s.heroId,runId:s.runId,phase:s.phase,t:s.t,weaponType:s.weapon?.type,
+            resource:s.weapon?.resource,ammo:s.weapon?.ammo,reserveAmmo:s.reserveAmmo,reloadPulse:s.reloadPulse,
+            ownerId:p?.ownerId,protocolRunId:p?.runId,profileHeroId:p?.profile?.heroId,
+            kind:p?.profile?.actions.simple?.kind,configuredCooldown:p?.profile?.actions.simple?.cooldown,
+            casts:p?.casts.simple,cooldown:p?.cooldowns?.simple === undefined ? 0 : p.cooldowns.simple,
+            activeSlot:p?.activeSlot,activeFrames:p?.activeFrames}; }''')
+        action_states['states'][label] = value
+        # Keep the observed states even when a following assertion fails in CI.
+        (out / action_states_file).write_text(json.dumps(action_states, ensure_ascii=False, indent=2))
+        return value
     page.add_init_script('''(()=>{window.__fpsDraws=[];const draw=CanvasRenderingContext2D.prototype.drawImage;
       CanvasRenderingContext2D.prototype.drawImage=function(image,...args){
         if(this.canvas.classList.contains('fps-royale-canvas') && /fps/.test(image?.src||'') && args.length===8){
@@ -145,16 +159,51 @@ def viewmodel(page,args,identity,width,height,lang,out,name):
           'FPS did not start at zero simulated time')
     # Respect the existing initial fire cooldown; never force ammunition or timers.
     page.clock.run_for(450)
-    before_ammo=page.evaluate('window.__sceneQA.state().weapon.ammo')
+    before = observe_action('before-primary')
+    check(before['heroId'] == before['ownerId'] == before['profileHeroId'] == identity, 'selected personal kit has a foreign owner')
+    check(before['runId'] and before['runId'] == before['protocolRunId'], 'personal kit has a foreign run')
+    check(before['phase'] == 'running' and before['weaponType'] == 'pistol', 'expected an active personal kit')
+    expected_resource = {'arca_mirelle': 'ammo', 'arthur_kaamelott': 'cooldown', 'serj_tankian': 'cooldown'}
+    resource = before['resource']
+    check(resource in ['ammo', 'cooldown'] and resource == expected_resource.get(identity), 'selected kit resource contract changed')
+    for key in ['t', 'ammo', 'reserveAmmo', 'reloadPulse', 'casts', 'cooldown', 'configuredCooldown']:
+        check(type(before[key]) is int and before[key] >= 0, f'invalid observed personal action value: {key}')
+    check(before['configuredCooldown'] > 0 and before['cooldown'] == 0, 'primary was not ready before native input')
+    before_ammo = before['ammo']
     page.locator('.fps-royale-canvas').focus();page.keyboard.press('Space');page.clock.run_for(100)
-    check(page.evaluate('window.__sceneQA.state().weapon.ammo')==before_ammo-1,'native fire did not consume one round')
+    fired = observe_action('after-primary')
+    check(fired['casts'] == before['casts'] + 1 and fired['cooldown'] > 0, 'native primary did not activate its personal cooldown')
+    if resource == 'ammo':
+        check(fired['ammo'] == before_ammo - 1, 'native fire did not consume one round')
+    else:
+        check(fired['ammo'] == before_ammo and fired['reserveAmmo'] == before['reserveAmmo'], 'cooldown primary consumed ammunition')
     page.screenshot(path=str(out/f'{name}-fire.png'))
     firing=page.evaluate('window.__fpsDraws');page.evaluate('window.__fpsDraws=[]')
-    page.clock.run_for(650)
-    check(page.evaluate('window.__sceneQA.state().muzzle')==0,'fire phase still active before reload')
-    page.locator('.fps-royale-canvas').focus();page.keyboard.press('r');page.clock.run_for(80)
-    check(page.evaluate('window.__sceneQA.state().reloadPulse')>0,'native reload phase was not entered')
-    check(page.evaluate('window.__sceneQA.state().weapon.ammo')==before_ammo,'reload did not restore the spent round')
+    if resource == 'ammo':
+        page.clock.run_for(650)
+        check(page.evaluate('window.__sceneQA.state().muzzle')==0,'fire phase still active before reload')
+        observe_action('before-reload')
+        page.locator('.fps-royale-canvas').focus();page.keyboard.press('r');page.clock.run_for(80)
+        reloaded = observe_action('after-reload')
+        check(reloaded['reloadPulse'] > 0, 'native reload phase was not entered')
+        check(reloaded['ammo'] == before_ammo, 'reload did not restore the spent round')
+        recovery_phase = 'reload'
+    else:
+        before_reload = observe_action('before-reload-attempt')
+        check(before_reload['cooldown'] > 0, 'reload refusal must be tested during the active cooldown')
+        page.locator('.fps-royale-canvas').focus();page.keyboard.press('r');page.clock.run_for(80)
+        after_reload = observe_action('after-reload-attempt')
+        check(after_reload['reloadPulse'] == 0, 'cooldown kit entered an ammunition reload')
+        check(after_reload['ammo'] == before_ammo and after_reload['reserveAmmo'] == before['reserveAmmo'], 'reload changed the cooldown kit stock')
+        check(after_reload['casts'] == fired['casts'], 'reload activated another personal action')
+        elapsed_ticks = after_reload['t'] - before_reload['t']
+        check(elapsed_ticks > 0 and after_reload['cooldown'] == max(0, before_reload['cooldown'] - elapsed_ticks),
+              'reload reset or cancelled the personal cooldown')
+        page.clock.run_for(650)
+        recovered = observe_action('after-cooldown')
+        check(recovered['cooldown'] == 0 and recovered['activeFrames'] == 0, 'personal action did not return to idle after recovery')
+        check(recovered['ammo'] == before_ammo and recovered['reserveAmmo'] == before['reserveAmmo'], 'recovery changed the personal stock')
+        recovery_phase = 'idle'
     reload=page.evaluate('window.__fpsDraws')
     check(bool(reload),'no actual reload/idle draw observed')
     for record in firing+reload:
@@ -178,10 +227,10 @@ def viewmodel(page,args,identity,width,height,lang,out,name):
             check(any(abs(sy-top)<.001 and abs(sh-(bottom-top))<.001 for top,bottom in rows),'FPS crop does not follow the authored row boundaries')
             authored_checked+=1
         check(any(abs(d['args'][1]-rows[2][0])<.001 for d in firing),'authored attack row was not drawn')
-        check(any(abs(d['args'][1]-rows[0][0])<.001 for d in reload),'authored idle fallback was not used during reload')
-    page.screenshot(path=str(out/f'{name}-reload.png'))
+        check(any(abs(d['args'][1]-rows[0][0])<.001 for d in reload),'authored idle row was not drawn after the action')
+    page.screenshot(path=str(out/f'{name}-{recovery_phase}.png'))
     return {'heroId':identity,'drawCallsChecked':len(firing)+len(reload),'aspectPreserved':True,'preparedOwnership':True,'virtualClock':True,
-            'clockPrepared':prepared_clock,'authoredCellsChecked':authored_checked}
+            'clockPrepared':prepared_clock,'authoredCellsChecked':authored_checked,'resource':resource,'actionStatesFile':action_states_file}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--url',default='http://127.0.0.1:4173');p.add_argument('--evidence',default='/tmp/resident-viewmodels');p.add_argument('--executable');p.add_argument('--case',default='');a=p.parse_args()

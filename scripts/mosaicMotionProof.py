@@ -20,7 +20,7 @@ def _sample(value):
     return value
 
 
-def validate_mosaic_motion(proof):
+def validate_mosaic_motion(proof, *, nearby_target=None):
     before = _sample(proof.get('clickBefore'))
     after = _sample(proof.get('clickAfter'))
     for key in ('t', 'x', 'y', 'speed'):
@@ -50,7 +50,26 @@ def validate_mosaic_motion(proof):
         maximum_step = max(maximum_step, distance)
         moving_samples += int(distance > EPSILON)
         previous = current
-    if moving_samples < 2 or travelled <= EPSILON:
+    # A report can be submitted while already beside its actual anchor. That
+    # exception needs an independently observed matching target and geometry;
+    # it never skips the clock, speed, click or per-frame displacement checks.
+    proximity = proof.get('proximityBefore')
+    already_in_range = False
+    if isinstance(nearby_target, dict) and isinstance(proximity, dict):
+        identity_fields = ('type', 'id', 'action', 'universe')
+        complete_identity = all(isinstance(value.get(key), str) and value[key].strip()
+                                for value in (nearby_target, proximity) for key in identity_fields)
+        expected_range_valid = (type(nearby_target.get('range')) in (int, float)
+                                and math.isfinite(nearby_target['range']) and nearby_target['range'] > 0)
+        identity_matches = complete_identity and expected_range_valid and all(
+            proximity.get(key) == nearby_target.get(key) for key in (*identity_fields, 'range'))
+        geometry_valid = all(type(proximity.get(key)) in (int, float) and math.isfinite(proximity[key])
+                             for key in ('x', 'y', 'distance', 'range'))
+        if identity_matches and geometry_valid and proximity['range'] > 0:
+            actual_distance = math.hypot(before['x'] - proximity['x'], before['y'] - proximity['y'])
+            already_in_range = (abs(actual_distance - proximity['distance']) <= EPSILON
+                                and actual_distance <= proximity['range'])
+    if (moving_samples < 2 or travelled <= EPSILON) and not already_in_range:
         raise AssertionError('Approach did not produce a sampled walk')
     return {
         'clickPositionUnchanged': True,
@@ -61,4 +80,5 @@ def validate_mosaic_motion(proof):
         'maximumSampleDisplacement': round(maximum_step, 6),
         'speedWorldUnitsPerTick': speed,
         'everySampleWithinSpeedBudget': True,
+        'startedWithinTargetRange': already_in_range,
     }
