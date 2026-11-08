@@ -100,6 +100,14 @@ Le catalogue de boosters et le dossier de cartes sont décrits dans
 recherche, état hors rotation lisible, taille de texte, conservation du focus
 et des filtres, confirmation et reprise de transaction.
 
+La recette de l’Album a aussi révélé une course de focus : après fermeture
+d’une fiche de carte, une restauration différée pouvait reprendre le focus
+déjà déplacé vers « Retour à la bibliothèque » ou consommer une demande de
+navigation plus récente. La restauration respecte maintenant la demande
+qui l’a déclenchée et le déplacement volontaire du focus ; la navigation
+rapide ne rouvre plus la fiche à la place de la bibliothèque. Les cas de
+carte retirée des favoris et de retour au classeur restent couverts.
+
 L’[audit des points DLC](DLC_REVIEW_STATUS_2026-11-08.md) n’a pas trouvé de
 nouveau défaut démontré dans les contrats consultés. Les tests et profils
 existants continuent à vérifier les distributions. L’inspection d’un delta
@@ -135,7 +143,7 @@ colonnes d’identité restent figés pendant le défilement.
 
 ## Vérifications et reproduction
 
-Les **328 tests `test:ui-immersion`** passent localement, dont les nouveaux
+Les **335 tests `test:ui-immersion`** passent localement, dont les nouveaux
 contrats de Cité, profils/directives FPS et dossiers de portail. Les 19 tests
 de Cité incluent les deux conclusions de chacun des sept contrats, un trajet
 réel soumis aux collisions, les sauvegardes et le refus des interactions
@@ -160,6 +168,10 @@ Cinq contrôles Python vérifient aussi qu’une transmission déjà à portée
 exige la bonne ancre et conserve les gardes de vitesse et de non-téléportation.
 Le Portail rend le focus après l’engagement de la mise à jour React ; ses
 mesures attendent la fin naturelle des animations d’entrée.
+Sept régressions de focus Album exécutent les callbacks réels avec un
+ordonnanceur contrôlé et le cycle de fermeture modal : navigation rapide,
+demandes successives, annulation, cible disparue et respect du focus déplacé.
+Cinq de ces contrôles échouaient sur le code précédent et passent corrigés.
 
 Le fichier Excel est construit avec `@oai/artifact-tool`, puis recalculé,
 inspecté et relu par un vérificateur OpenXML indépendant. Les changements de

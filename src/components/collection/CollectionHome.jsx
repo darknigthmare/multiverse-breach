@@ -55,27 +55,39 @@ export default function CollectionHome({
   useModalDialog({ overlayRef, dialogRef, initialFocusRef: closeRef, onClose });
 
   useEffect(() => {
-    if (!pendingFocus.current) return undefined;
-    const frame = requestAnimationFrame(() => {
-      const destination = pendingFocus.current;
+    const request = pendingFocus.current;
+    if (!request) return undefined;
+    let target = panelRef.current;
+    if (request.destination === 'library') {
+      target = libraryTileRefs.current.get(libraryOrigin.current) || tabRefs.current.library;
+    } else if (request.destination === 'milestone') {
+      target = panelRef.current?.querySelector('#tcg-milestones-title') || panelRef.current;
+    } else if (request.destination === 'card') {
+      target = [...(panelRef.current?.querySelectorAll('[data-card-id]') || [])]
+        .find(card => card.dataset.cardId === cardOrigin.current && !card.disabled)
+        || panelRef.current?.querySelector('#tcg-binder-title')
+        || panelRef.current;
+    }
+    if (!target) { pendingFocus.current = null; return undefined; }
+    const focusOrigin = target.ownerDocument.activeElement;
+    // Modal cleanup may already have restored this card. A second delayed focus
+    // must not pull the player back after they move to another control.
+    if (focusOrigin === target) {
       pendingFocus.current = null;
-      let target = panelRef.current;
-      if (destination === 'library') {
-        target = libraryTileRefs.current.get(libraryOrigin.current) || tabRefs.current.library;
-      } else if (destination === 'milestone') {
-        target = panelRef.current?.querySelector('#tcg-milestones-title') || panelRef.current;
-      } else if (destination === 'card') {
-        target = [...(panelRef.current?.querySelectorAll('[data-card-id]') || [])]
-          .find(card => card.dataset.cardId === cardOrigin.current && !card.disabled)
-          || panelRef.current?.querySelector('#tcg-binder-title')
-          || panelRef.current;
-      }
-      if (target && !target.closest('[inert]')) {
+      target.scrollIntoView({ block: 'nearest' });
+      return undefined;
+    }
+    let cancelled = false;
+    const frame = requestAnimationFrame(() => {
+      if (cancelled || pendingFocus.current !== request) return;
+      pendingFocus.current = null;
+      if (target.isConnected && target.ownerDocument.activeElement === focusOrigin
+        && !target.closest('[inert]') && !target.closest('[hidden]')) {
         target.focus({ preventScroll: true });
         target.scrollIntoView({ block: 'nearest' });
       }
     });
-    return () => cancelAnimationFrame(frame);
+    return () => { cancelled = true; cancelAnimationFrame(frame); };
   }, [view, selectedUniverse, selectedCardId, setProgress]);
 
   const searchableDefinitions = useMemo(() => definitions.map(definition => ({
@@ -128,12 +140,12 @@ export default function CollectionHome({
 
   const openBinder = universe => {
     libraryOrigin.current = universe;
-    pendingFocus.current = 'panel';
+    pendingFocus.current = { destination: 'panel' };
     setSelectedUniverse(universe);
     setView('binder');
   };
   const returnToLibrary = () => {
-    pendingFocus.current = 'library';
+    pendingFocus.current = { destination: 'library' };
     setView('library');
   };
   const changeView = nextView => {
@@ -162,7 +174,7 @@ export default function CollectionHome({
   const closeCard = () => {
     // Removing a favorite can remove its tile while its record is open. Restore
     // to the current binder when the original trigger no longer exists.
-    pendingFocus.current = 'card';
+    pendingFocus.current = { destination: 'card' };
     setSelectedCardId(null);
   };
 
@@ -309,7 +321,7 @@ export default function CollectionHome({
                           disabled={!available || claimed}
                           onClick={() => {
                             if (!onClaimMilestone) return;
-                            pendingFocus.current = 'milestone';
+                            pendingFocus.current = { destination: 'milestone' };
                             onClaimMilestone(activeSet, reward);
                           }}
                         >
