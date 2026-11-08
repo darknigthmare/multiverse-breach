@@ -48,6 +48,23 @@ def load(page, args, lang):
 
 def media_capture(context):
     context.add_init_script('''window.__fpsCatalogDraws=[];window.__fpsSchematicStrokes=[];
+      const nativeTimeout=setTimeout.bind(window),nativeClear=clearTimeout.bind(window);
+      window.__fpsAfterNativeLayout=()=>new Promise((resolve,reject)=>{
+        const roots=[...document.querySelectorAll('.fps-royale-canvas,.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-objective-strip')];
+        const animations=[...new Set(roots.flatMap(el=>el.getAnimations({subtree:true})))]
+          .filter(a=>a.playState==='running'&&Number.isFinite(a.effect?.getComputedTiming().endTime));
+        const start=document.timeline.currentTime;let observer,done=false;
+        const finish=(error,entries=[])=>{if(done)return;done=true;observer?.disconnect();nativeClear(timeout);
+          if(error)reject(error);else resolve({awaitedAnimations:animations.length,
+            properties:[...new Set(animations.map(a=>a.transitionProperty||a.animationName||'animation'))],
+            nativeElapsedMs:document.timeline.currentTime-start,observedElements:entries.length});};
+        const timeout=nativeTimeout(()=>finish(new Error('Native HUD layout did not settle')),5000);
+        Promise.allSettled(animations.map(a=>a.finished)).then(()=>{
+          if(done)return;if(!roots.length){finish(new Error('No HUD layout roots'));return;}
+          observer=new ResizeObserver(entries=>finish(null,entries));
+          for(const root of roots)observer.observe(root);
+        }).catch(finish);
+      });
       const proto=CanvasRenderingContext2D.prototype, paths=new WeakMap();
       const point=(ctx,x,y)=>{const m=ctx.getTransform();
         const points=paths.get(ctx)||[];points.push({x:m.a*x+m.c*y+m.e,y:m.b*x+m.d*y+m.f});paths.set(ctx,points);};
@@ -85,12 +102,12 @@ def view_geometry(page, source, out, name):
         right:r.left+b.right*r.width/canvas.width,bottom:r.top+b.bottom*r.height/canvas.height});
       const union=boxes=>boxes.length?({left:Math.min(...boxes.map(b=>b.left)),top:Math.min(...boxes.map(b=>b.top)),
         right:Math.max(...boxes.map(b=>b.right)),bottom:Math.max(...boxes.map(b=>b.bottom))}):null;
-      let actual=null,samples=0;
+      let actual=null,samples=0,drawnAt=null;
       if(source){const d=window.__fpsCatalogDraws.filter(d=>d.src.endsWith(source)&&d.args.length===8&&d.cw===canvas.width&&d.ch===canvas.height).at(-1);
         if(d){const [a,b,c,e,tx,ty]=d.matrix,[,,,,x,y,w,h]=d.args;
-          actual=union([[x,y],[x+w,y],[x,y+h],[x+w,y+h]].map(([px,py])=>({left:a*px+c*py+tx,right:a*px+c*py+tx,top:b*px+e*py+ty,bottom:b*px+e*py+ty})));samples=1;}}
+          actual=union([[x,y],[x+w,y],[x,y+h],[x+w,y+h]].map(([px,py])=>({left:a*px+c*py+tx,right:a*px+c*py+tx,top:b*px+e*py+ty,bottom:b*px+e*py+ty})));samples=1;drawnAt=d.at;}}
       else {const strokes=window.__fpsSchematicStrokes.filter(d=>d.cw===canvas.width&&d.ch===canvas.height),at=strokes.at(-1)?.at;
-        const latest=strokes.filter(d=>d.at===at);actual=union(latest);samples=latest.length;}
+        const latest=strokes.filter(d=>d.at===at);actual=union(latest);samples=latest.length;drawnAt=at??null;}
       const rect=el=>{const b=el.getBoundingClientRect();return {left:b.left,top:b.top,right:b.right,bottom:b.bottom,width:b.width,height:b.height};};
       const hud=[...document.querySelectorAll('.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-objective-strip')]
         .filter(el=>el.getClientRects().length).map(el=>({kind:el.className,...rect(el)}));
@@ -101,17 +118,25 @@ def view_geometry(page, source, out, name):
       const view=actual?local(actual):null;
       const buttons=[...document.querySelectorAll('.extinction-hud-dock button')].filter(el=>el.getClientRects().length)
         .map(el=>({label:el.getAttribute('aria-label')||el.innerText,visibleLabel:el.innerText,...rect(el)}));
+      const heading=document.querySelector('.extinction-directive-heading');
+      const fontSize=el=>parseFloat(getComputedStyle(el).fontSize),rootFontSize=fontSize(document.documentElement);
+      const directiveTypography=heading?{rootFontSize,minimumFontSize:rootFontSize*.8,
+        textScale:parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--game-text-scale'))||1,
+        headingFontSize:fontSize(heading),titleFontSize:fontSize(heading.querySelector('.extinction-directive-title')),
+        countFontSize:fontSize(heading.querySelector('.extinction-directive-count'))}:null;
       const placement=layout?.placement;
-      return {view,samples,canvas:rect(canvas),canvasWidth:canvas.width,canvasHeight:canvas.height,
+      return {view,samples,drawnAt,observedAt:performance.now(),cacheDrawn:!!layout&&Object.hasOwn(layout,'placement'),
+        canvas:rect(canvas),canvasWidth:canvas.width,canvasHeight:canvas.height,
         placement:placement?{region:placement.region,...local({left:placement.x,top:placement.y,right:placement.x+placement.w,bottom:placement.y+placement.h})}:null,
         reserved:layout?{width:layout.width,height:layout.height,safeArea:layout.safeArea}:null,hud,reticle,radar:radarBox,
         viewOverlaps:view?[...hud,reticle,radarBox].filter(b=>overlap(view,b)):[],hudReticleOverlaps:hud.filter(b=>overlap(reticle,b)),
         minButtonWidth:Math.min(...buttons.map(b=>b.width)),minButtonHeight:Math.min(...buttons.map(b=>b.height)),buttons,
-        intelButton:rect(document.querySelector('.extinction-intel-button')),
+        intelButton:rect(document.querySelector('.extinction-intel-button')),directiveTypography,
         hasKit:!!document.querySelector('[data-personal-kit]'),hasMark:!!document.querySelector('[data-hunt-mark]')};
     }''', source)
     (out / f'{name}-geometry.json').write_text(json.dumps(geometry, indent=2, ensure_ascii=False))
     view = geometry['view']; check(view and geometry['samples'] > 0, 'no actual held view drawing')
+    check(geometry['cacheDrawn'], 'measured HUD cache has not been redrawn')
     placement = geometry['placement']; check(placement and placement['region'] in ['lower', 'lateral'], 'held view has no measured region')
     # Size the reserved view consistently. A thin beam/contact stroke should
     # not be forced upward just to match a square sheet's painted width.
@@ -129,7 +154,40 @@ def view_geometry(page, source, out, name):
     if c['width'] >= 600 and c['height'] <= 500:
         check(geometry['intelButton']['width'] >= 43.5 and geometry['intelButton']['height'] >= 43.5, 'compact directive opener shrunk below its usable size')
     check(not geometry['hudReticleOverlaps'], 'HUD controls cover the central reticle')
+    typography = geometry['directiveTypography']
+    if typography:
+        check(min(typography[key] for key in ['headingFontSize', 'titleFontSize', 'countFontSize']) >= typography['minimumFontSize'] - .05,
+              'directive title or count ignores the chosen readable text size')
     return geometry
+
+
+def settle_presentation(page, source, out, name):
+    """Native CSS/ResizeObserver and the controlled game RAF have separate clocks."""
+    records = []; previous = None
+    for _ in range(6):
+        native = page.evaluate('window.__fpsAfterNativeLayout()')
+        before = page.evaluate('performance.now()')
+        page.clock.run_for(32)
+        current = page.evaluate('''source=>{const canvas=document.querySelector('.fps-royale-canvas'),layout=window.__sceneQA.fpsViewLayout();
+          const rects=[...document.querySelectorAll('.fps-royale-canvas,.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-objective-strip')]
+            .map(el=>{const r=el.getBoundingClientRect();return [r.left,r.top,r.width,r.height];});
+          const draws=source?window.__fpsCatalogDraws.filter(d=>d.src.endsWith(source)&&d.args.length===8):window.__fpsSchematicStrokes;
+          const last=draws.filter(d=>d.cw===canvas.width&&d.ch===canvas.height).at(-1);
+          return {rects,cacheDrawn:!!layout&&Object.hasOwn(layout,'placement'),hasRegion:!!layout?.placement,
+            canvasMatches:layout?.width===canvas.width&&layout?.height===canvas.height,
+            lastDrawAt:last?.at??null,observedAt:performance.now(),tick:window.__sceneQA.state().t};}''', source)
+        records.append({'native': native, 'advanceFrom': before, **current})
+        # A genuinely empty region must still reach view_geometry and fail there.
+        # Never wait until an intersection happens to disappear.
+        settled = current['cacheDrawn'] and current['canvasMatches'] and previous == current['rects']
+        receipt = {'settled': settled, 'attempts': len(records), 'records': records}
+        (out / f'{name}-presentation.json').write_text(json.dumps(receipt, indent=2, ensure_ascii=False))
+        if settled:
+            if current['hasRegion']:
+                check(current['lastDrawAt'] is not None and current['lastDrawAt'] >= before, 'held view was not painted after its current layout')
+            return receipt
+        previous = current['rects']
+    check(False, 'HUD cache and native layout did not stabilize within six render cycles')
 
 
 def layout_variant(page, width, height, large, source, out, name):
@@ -137,9 +195,9 @@ def layout_variant(page, width, height, large, source, out, name):
     page.evaluate('''large=>{const s=document.documentElement.style;
       s.setProperty('--game-hud-scale',large?'1.4':'1');s.setProperty('--game-text-scale',large?'1.5':'1');
       s.setProperty('--game-safe-area',large?'32px':'12px');window.dispatchEvent(new Event('multiverse:display-preferences'));}''', large)
-    # Retro controls transition font and geometry for 200 ms. Let real RAFs
-    # settle both that transition and ResizeObserver before measuring the HUD.
+    # Keep gameplay advancing naturally; this JS clock does not settle CSS.
     page.clock.run_for(256)
+    settle_presentation(page, source, out, name)
     page.screenshot(path=str(out / f'{name}.png'))
     return view_geometry(page, source, out, name)
 
@@ -197,9 +255,10 @@ def profile_case(page, identity, lang, args, out, name):
     expected_src = brief.get_attribute('data-fps-view-src')
     if expected_src and args.require_art:
         page.wait_for_function('src => window.__sceneQA.media.some(item => item.src===src&&item.loaded)', arg=expected_src)
-    ready = page.evaluate('''() => ({width:innerWidth,scroll:document.documentElement.scrollWidth,
+    ready = page.evaluate('''() => {const loadout=document.querySelector('[data-fps-loadout]');return {width:innerWidth,scroll:document.documentElement.scrollWidth,
       profile:document.querySelector('[data-fighter-profile]').dataset,
-      media:window.__sceneQA.media.filter(item=>item.loaded)})''')
+      loadout:{kind:loadout.dataset.fpsLoadout,text:loadout.innerText,value:loadout.querySelector('[data-fps-loadout-value]').textContent},
+      media:window.__sceneQA.media.filter(item=>item.loaded)};}''')
     check(ready['scroll'] <= ready['width'] + 1, 'profile briefing overflows the viewport')
     brief.scroll_into_view_if_needed()
     brief.screenshot(path=str(out / f'{name}-briefing.png'))
@@ -210,6 +269,14 @@ def profile_case(page, identity, lang, args, out, name):
     page.clock.run_for(32)
     initial = read(page)
     check(list(initial['protocols']['actions']) == ['simple', 'secondary', 'defense', 'special'], 'personal actions missing')
+    if identity in ['arthur_kaamelott', 'serj_tankian']:
+        primary_name = initial['protocols']['actions']['simple']['name']
+        if isinstance(primary_name, dict): primary_name = primary_name.get(lang) or primary_name.get('fr') or primary_name.get('en')
+        prefix = 'Action principale du kit :' if lang == 'fr' else 'Kit primary action:'
+        check(ready['loadout']['kind'] == 'primary-action' and ready['loadout']['value'] == primary_name
+              and ready['loadout']['text'].startswith(prefix), 'briefing presents a technical weapon type instead of the actual primary action')
+    elif identity == 'predator':
+        check(ready['loadout']['kind'] == 'equipment' and 'Wristblades' in ready['loadout']['value'], 'briefing lost explicit source equipment')
     expect(page.locator('.extinction-panel select')).to_be_disabled()
     target = min(initial['enemies'], key=lambda item: math.hypot(item['wx'], item['wy']))
     aim(page, initial, target['wx'], target['wy'])

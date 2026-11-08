@@ -1,7 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { parseAst } from 'rolldown/parseAst';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { HEROES_DB } from '../src/game/heroes.js';
 import { createPlayerHero } from '../src/game/playerHero.js';
 import { getExtinctionFighterProfile, getExtinctionPrimaryInstruction, rememberExtinctionPersonalKit, restoreExtinctionPersonalKit } from '../src/game/extinctionFighterProfiles.js';
@@ -77,6 +81,40 @@ test('equipment, incarnation and generic source limits are copied from the exact
   assert.ok(serj.view.src); assert.equal(serj.view.ownerId, 'serj_tankian');
   const peaceful = heroes.find(actor => actor.nonCombat || actor.category === 'trial');
   assert.equal(getExtinctionFighterProfile(peaceful).reviewStatus, 'NON_COMBAT_PRESERVED');
+});
+
+test('the real briefing distinguishes documented equipment from legacy categories and generated action names in both languages', async () => {
+  const vite = await createServer({ root: fileURLToPath(new URL('../', import.meta.url)), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
+  try {
+    const { default: Briefing } = await vite.ssrLoadModule('/src/components/ExtinctionFighterBriefing.jsx');
+    const cases = [
+      ['arthur_kaamelott', 'primary-action', 'Excalibur Order Cut'],
+      ['serj_tankian', 'primary-action', 'Serj Tankian Signature Strike'],
+      ['hazbin_hotel_charlie_morningstar', 'primary-action', 'Charlie Morningstar signature action'],
+      ['predator', 'equipment', 'Wristblades · Shoulder plasma caster · Biomask · Cloaking device'],
+      ['counter_strike_sas', 'equipment', 'M4A1-S'],
+      ['bioshock_rapture_jack', 'equipment', 'Wrench'],
+      ['bioshock_rapture_bouncer', 'equipment', 'Drill']
+    ];
+    for (const lang of ['fr', 'en']) {
+      for (const [id, kind, value] of cases) {
+        const actor = hero(id), profile = getExtinctionFighterProfile(actor);
+        const before = JSON.stringify({ actor, profile });
+        const html = renderToStaticMarkup(React.createElement(Briefing, { profile, lang }));
+        const line = html.match(/<p data-fps-loadout="(equipment|primary-action)">([\s\S]*?)<\/p>/);
+        assert.ok(line, `${id} ${lang}: loadout remains visible`);
+        assert.equal(line[1], kind, `${id} ${lang}: a category is not an equipment claim`);
+        const prefix = kind === 'equipment'
+          ? lang === 'fr' ? 'Équipement : ' : 'Equipment: '
+          : lang === 'fr' ? 'Action principale du kit : ' : 'Kit primary action: ';
+        assert.ok(line[2].includes(renderToStaticMarkup(React.createElement('span', null, prefix))), `${id} ${lang}: clear localized label`);
+        assert.ok(line[2].includes(renderToStaticMarkup(React.createElement('span', { 'data-fps-loadout-value': true }, value))), `${id} ${lang}: source equipment or actual primary action`);
+        assert.equal(JSON.stringify({ actor, profile }), before, `${id} ${lang}: consultation preserves the source and kit`);
+      }
+    }
+  } finally {
+    await vite.close();
+  }
 });
 
 test('personal sheets stay exact-owner and costume-bound; new profiles never manufacture art', () => {

@@ -65,6 +65,10 @@ et les couleurs des catégories avant et après deux images de rendu. Une captur
 visibles. Le contrôle exige désormais une seule catégorie active, correspondant aux trois
 cartes en consultation, puis capture le rendu sans survol. Il distingue ainsi l’état DOM
 et sa peinture avant de conclure à une correction visuelle.
+Sur `aa95b967`, les six reçus et les six captures ont confirmé que la sélection était
+correcte : les couleurs intermédiaires appartenaient à la peinture précédente. Après
+deux RAF, les effets sélectionnés et les catégories inactives retrouvent leurs couleurs
+respectives, sans changement d’état ni de composant.
 
 ## Vues FPS
 
@@ -75,6 +79,16 @@ rocket et plasma gardent leurs propres représentations. Le rendu vérifie le pe
 le propriétaire du protocole et la partie courante ; un protocole incompatible donne
 un schéma neutre. Tir, récupération, recharge et stock vide utilisent l’état de simulation.
 Les trois planches personnelles existantes conservent leur priorité.
+
+La fiche de préparation distingue aussi les équipements renseignés des catégories héritées.
+Les codes `gun`, `laser`, `slash`, `improvised` et les libellés générés terminant par
+`signature action` ne sont plus présentés comme objets lorsqu’ils proviennent de `hero.weapon`.
+À défaut d’équipement nommé, la fiche présente l’action principale du kit existant, avec
+un libellé FR/EN explicite. Arthur et Serj conservent ainsi leur action source ; les équipements
+du Predator, M4A1-S, Wrench et Drill restent affichés. Le rendu SSR réel est contrôlé dans
+les deux langues sur sept identités, sans mutation du profil ni du catalogue. Les 21 tests
+de profils passent ; les empreintes des 1 765 sources de planification et de l’Excel restent
+identiques. La recette navigateur vérifie également ces libellés sur les profils concernés.
 
 Ce sont des schémas de technique, sans nouvelle validation artistique des mains ou des armes.
 Les quatre modes, leurs directives, les profils de combat et les règles de récompense restent
@@ -136,9 +150,24 @@ ont passé ces contrôles, ainsi que le détail complet, la pause et le retour d
 Le contrôle de reprise attendait seulement 32 ms : après le premier RAF de référence,
 les 16 ms restantes sont inférieures au pas de simulation de 16,667 ms. La recette vérifie
 maintenant que le premier RAF ne rattrape pas la pause, puis exige un à trois ticks après
-48 ms actives. Elle laisse également passer 256 ms naturelles après chaque changement
-de disposition pour mesurer les boutons après leur transition de 200 ms. Les règles de
-simulation et les seuils de géométrie restent les mêmes.
+48 ms actives. La recette avançait également 256 ms de simulation après chaque changement
+de disposition. Les règles de simulation et les seuils de géométrie restent les mêmes.
+
+Sur `aa95b967`, le parcours court, six profils et les quatre modes rejoués deux fois ont
+réussi (15 cas sur 17). Les deux échecs, Lilo et Serj en portrait agrandi, ont révélé que
+l’horloge JavaScript contrôlée ne terminait pas la transition CSS native : les boutons
+mesuraient encore 54,44/55,88 px au lieu de leur hauteur finale de 58,8 px. Le calcul pur
+avec les rectangles relevés dispose pourtant d’une région latérale suffisante. La recette
+attend maintenant les animations finies, une notification native de `ResizeObserver`, puis
+un cache effectivement redessiné et des rectangles stables sur deux cycles. L’attente est
+bornée et laisse le jeu avancer par ses RAF ; elle ne dépend ni d’une absence de chevauchement
+ni de l’existence d’une région utile. Ces deux propriétés restent contrôlées ensuite.
+
+La relecture de la capture agrandie a aussi révélé que le titre et le compteur héritaient
+encore d’une règle historique à 9 px. Un sélecteur ciblé rend prioritaire la taille `.8rem`
+du composant. La recette relève désormais la taille calculée du titre, du compteur et de
+leur conteneur : au moins 12,8 px avec le texte par défaut et 19,2 px à 150 %, tout en
+conservant les mêmes contraintes de place autour du viseur et de la vue.
 
 Les résultats de cette correction et ses captures doivent être rattachés au nouveau
 commit testé dans le compte rendu de PR. La réussite de `0108b7ce` constitue le diagnostic
