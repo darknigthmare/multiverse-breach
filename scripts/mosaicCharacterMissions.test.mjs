@@ -239,9 +239,9 @@ test('remote, forged, mismatched and unordered interactions cannot record eviden
   assert.equal(advanceMosaicCharacterMission(normalizeMosaicCharacterMissions(), mission, event).changed, false);
 });
 
-function atNewRoute(choiceIndex = 0) {
-  const mission = catalog.find(item => item.id === 'city-anchor-shared-beacon-v1');
-  let progress = startMosaicCharacterMission(finishedPrerequisite(mission, 0), mission).progress;
+function atNewRoute(choiceIndex = 0, missionId = 'city-anchor-shared-beacon-v1', originRoute = 0) {
+  const mission = catalog.find(item => item.id === missionId);
+  let progress = startMosaicCharacterMission(finishedPrerequisite(mission, originRoute), mission).progress;
   while (!getMosaicCharacterMissionObjective(progress, mission).walk) {
     const current = getMosaicCharacterMissionObjective(progress, mission).step;
     progress = current.type === 'decision'
@@ -250,6 +250,58 @@ function atNewRoute(choiceIndex = 0) {
   }
   return { mission, progress, step: getMosaicCharacterMissionObjective(progress, mission).step };
 }
+
+test('all route objects keep their mission and step identity at every checkpoint, across save and after the final operation', () => {
+  for (const authored of catalog.filter(mission => mission.contentFile === 'src/game/mosaicCityRoutes.js')) {
+    for (const origin of [0, 1]) for (const branch of [0, 1]) {
+      let { mission, step, progress } = atNewRoute(branch, authored.id, origin);
+      const expectedId = `${mission.id}::${step.id}`;
+      const assertObject = (current, completed = false) => {
+        const walk = getMosaicMissionWalkProgress(mission, step, current.records[mission.id]);
+        for (const lang of ['fr', 'en']) {
+          const object = getMosaicCharacterMissionWorldObjects(current, catalog, [], lang)
+            .find(item => item.missionId === mission.id && item.stepId === step.id);
+          assert.ok(object, `${expectedId} checkpoint ${walk.visited} must retain its world object`);
+          assert.equal(object.id, expectedId);
+          assert.equal(object.targetId, expectedId);
+          assert.equal(object.sourceType, 'marker');
+          assert.equal(object.universe, mission.universe);
+          assert.equal(object.kind, step.operation.kind);
+          assert.equal(object.label, step.operation.label[lang]);
+          assert.equal(object.completedText, step.operation.completedText[lang]);
+          assert.equal(object.appearance, step.operation.appearance);
+          assert.equal(object.completed, completed);
+          assert.equal(object.active, !completed);
+          assert.equal(object.sequence, completed ? current.records[mission.id].operationReceipts[step.id].sequence : 0);
+          assert.deepEqual({ x: object.x, y: object.y }, completed
+            ? { x: step.x, y: step.y } : { x: walk.next.x, y: walk.next.y });
+          assert.equal(object.propName, !completed && !walk.completed ? walk.next.label[lang] : step.operation.propName[lang]);
+          assert.equal(object.statusLabel, completed ? lang === 'fr' ? 'Balisé' : 'Marked'
+            : walk.completed ? step.operation.label[lang]
+              : lang === 'fr' ? `Parcours ${walk.visited}/${walk.total} · rejoindre ce repère`
+                : `Route ${walk.visited}/${walk.total} · reach this marker`);
+        }
+      };
+      assertObject(progress);
+      for (const point of step.walk.points) {
+        const moved = advanceMosaicCharacterMissionWalk(progress, mission, {
+          districtId: mission.districtId, from: { x: point.x - 2, y: point.y }, to: point,
+          elapsedMs: 1000 / 60, distance: 2, speed: 2.35
+        });
+        assert.equal(moved.changed, true);
+        progress = moved.progress;
+        assertObject(progress);
+        progress = normalizeMosaicCharacterMissions(sanitizeSaveCore({ activityProgress: {
+          mosaicCharacterMissions: progress
+        } }).activityProgress.mosaicCharacterMissions);
+        assertObject(progress);
+      }
+      const completed = advanceMosaicCharacterMission(progress, mission, resolved(progress, mission));
+      assert.equal(completed.changed, true);
+      assertObject(completed.progress, true);
+    }
+  }
+});
 
 test('ordered reconnaissance rejects idle, remote, discontinuous, overlong and foreign movement samples without mutation', () => {
   const { mission, step, progress } = atNewRoute();

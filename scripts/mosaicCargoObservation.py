@@ -14,12 +14,26 @@ CARGO_OBSERVER_SCRIPT = '''(()=>{
   window.__cityCargoDraws=[];
   // Detached, reusable and never drawn: this context cannot change the game.
   const reference=document.createElement('canvas').getContext('2d');
-  const original=CanvasRenderingContext2D.prototype.fillText;
+  const native=CanvasRenderingContext2D.prototype;
+  reference.fillStyle='rgba(5,12,18,0.93)';const cargoColor=reference.fillStyle;
+  const cargoBackgrounds=new WeakSet();
+  const originalFillRect=native.fillRect;
+  native.fillRect=function(x,y,width,height){
+    if(this.canvas.classList.contains('mosaic-rpg-canvas')){
+      cargoBackgrounds.delete(this);
+      if(this.fillStyle===cargoColor)cargoBackgrounds.add(this);
+    }
+    return originalFillRect.call(this,x,y,width,height);
+  };
+  const original=native.fillText;
   const matrixRecord=m=>({a:m.a,b:m.b,c:m.c,d:m.d,e:m.e,f:m.f});
   const project=(m,x,y)=>({x:m.a*x+m.c*y+m.e,y:m.b*x+m.d*y+m.f});
-  CanvasRenderingContext2D.prototype.fillText=function(text,x,y,...rest){
-    const state=window.__sceneQA?.state?.(),cargo=state?.missionCargo;
-    if(this.canvas.classList.contains('mosaic-rpg-canvas')&&cargo&&text===cargo.label){
+  native.fillText=function(text,x,y,...rest){
+    // Pair text with its painted cargo background, not its coordinates or a
+    // globally unique name. A nearby world prop can have the same wording.
+    const cargoLabel=cargoBackgrounds.has(this);cargoBackgrounds.delete(this);
+    const state=cargoLabel?window.__sceneQA?.state?.():null,cargo=state?.missionCargo;
+    if(cargo&&text===cargo.label){
       const player={x:state.player.x,y:state.player.y};
       const camera={x:state.camera.x,y:state.camera.y};
       const actualMatrix=matrixRecord(this.getTransform());
@@ -83,13 +97,14 @@ MISSION_LABEL_OBSERVER_SCRIPT = '''(()=>{
               player:{x:state.player.x,y:state.player.y},camera:{x:state.camera.x,y:state.camera.y},
               cargo:structuredClone(state.missionCargo??null),labels:[],avatarDraws:[],cargoDraws:[],
               playerName:null,playerShadow:null,cargoLabel:null,cargoLabelText:null};
-            records.set(this,{frame,stage:null,activeLabel:null});window.__cityLabelFrames.push(frame);
+            records.set(this,{frame,stage:null,activeLabel:null,cargoLabelPending:false});window.__cityLabelFrames.push(frame);
             if(window.__cityLabelFrames.length>6000)window.__cityLabelFrames.shift();
           }
         }
       }
       const entry=records.get(this);
       if(entry){
+        entry.cargoLabelPending=false;
         const style=this.fillStyle,player=entry.frame.player;
         if(style===shadowColor&&width===36&&height===7
           &&Math.abs(x-player.x+18)<=1e-6&&Math.abs(y-player.y-21)<=1e-6){
@@ -100,6 +115,7 @@ MISSION_LABEL_OBSERVER_SCRIPT = '''(()=>{
           entry.frame.labels.push(label);entry.activeLabel=label;
         }else if(style===cargoColor&&entry.frame.cargo){
           entry.frame.cargoLabel=rectangle(this,x,y,width,height);
+          entry.cargoLabelPending=true;
         }else if(entry.stage)recordDraw(this,{kind:'fillRect',...rectangle(this,x,y,width,height)});
       }
     }
@@ -153,7 +169,8 @@ MISSION_LABEL_OBSERVER_SCRIPT = '''(()=>{
   native.fillText=function(text,x,y,...rest){
     const entry=city(this)&&records.get(this);
     const playerName=entry?.stage==='avatar'&&text==='QA';
-    const cargoLabel=entry?.frame.cargo&&text===entry.frame.cargo.label;
+    const cargoLabel=entry?.cargoLabelPending;
+    if(entry)entry.cargoLabelPending=false;
     const operationLine=entry?.activeLabel&&this.font.startsWith('12px ');
     if(playerName||cargoLabel||operationLine){
       const metrics=this.measureText(text),m=this.getTransform();

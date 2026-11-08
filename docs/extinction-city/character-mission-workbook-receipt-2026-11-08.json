@@ -3,8 +3,8 @@
   "sourceRevision": "4ca3b2b87f4b7234612f11fc5c17ba205d36d340",
   "runtimeBaseRevision": "48197dc4f35577b6b82a8929b9fe8960dc0e7405",
   "sourceRevisionMeaning": "Historical roster and workbook baselines are retained; runtimeSources, fieldEquipmentSources, cityPresentationSources, fpsPresentationSources and planning provenance describe the actual edited files.",
-  "planningDataSha256": "579c12bad4b24c3d13d3241a644294f9b612b1e264d067eb5d0e8bc61116dc9d",
-  "planningSourceManifestSha256": "69fce7f6b7c96dec14509b01eede0fac7ad631f817c64d7b36f637840a7f2b99",
+  "planningDataSha256": "ed2700786a719d2a94f4fd87839ad90f20f82e9ac0eb878767e1aa0eb822ac43",
+  "planningSourceManifestSha256": "7217f6104e6f5381ee4663f3bc9e1fb69586577786e7f66e6006198d69416a1e",
   "workbook": "Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx",
   "sha256": "245144e422a3fa89bed4ed4b0e1e994c4563b2cfc33798efe5fa9e4f02832e66",
   "bytes": 1197519,
@@ -61,7 +61,7 @@
     },
     {
       "source": "src/game/mosaicCharacterMissions.js",
-      "sha256": "7e04b75f520fbeb80ea5d0f194562af94dbfe3221b409ef3913fbc87e33f712d"
+      "sha256": "abce775eb5c41303659654db706b348fb41d285d3c18c45673f6d797f312a075"
     },
     {
       "source": "src/game/mosaicCharacterStories.js",
@@ -769,11 +769,11 @@
   "nativeApplicationCheck": "Not executed; Artifact Tool recalculation, XLSX readback and rendered review are separate checks.",
   "exportMethod": "Artifact Tool import, scoped edits and recalculation; official toProto/Workbook.load transfer to a fresh process before SpreadsheetFile.exportXlsx to bound memory. Independent saved-XLSX comparison passed against the original workbook.",
   "provenanceRefresh": {
-    "kind": "source-provenance-only-after-authoring",
-    "basisRevision": "48197dc4f35577b6b82a8929b9fe8960dc0e7405",
-    "basisMeaning": "Published predecessor of the new workbook. The previous receipt identifies the immutable authoring snapshot; this refresh records the final integrated helpers and presentation files.",
-    "previousReceiptSha256": "f549c794fa7e0cda662db6b0c4969be0c12d4feeba171bc76a20ede3a4f20c67",
-    "previousPlanningDataSha256": "35b6f1630f5d49a0a25255bdd9dcf12990b19fbcb40af2737b047bb98e81d4f5",
+    "kind": "source-provenance-only-after-native-review",
+    "basisRevision": "235e7b2392f0636b8cd18ee0126c7aead6712701",
+    "reason": "Keep walked-route prop IDs stable and distinguish the carried label from a homonymous world prop in native observations.",
+    "previousReceiptSha256": "c70f8c84deea9797a907579847645d11af8b0de90981e0cf0720781bcdf2fc7d",
+    "previousPlanningDataSha256": "579c12bad4b24c3d13d3241a644294f9b612b1e264d067eb5d0e8bc61116dc9d",
     "unchangedPlanningSections": [
       "characters",
       "commonPolicies",
@@ -794,41 +794,80 @@
       "status"
     ],
     "changedPlanningSourceFiles": [
-      "src/game/mosaicMissionWalks.js"
+      "src/game/mosaicCharacterMissions.js"
     ],
+    "changedSourceGroups": {
+      "runtimeSources": [
+        "src/game/mosaicCharacterMissions.js"
+      ],
+      "fieldEquipmentSources": [],
+      "cityPresentationSources": [],
+      "fpsPresentationSources": []
+    },
     "workbookBytesPreserved": true,
     "preservedWorkbookSha256": "245144e422a3fa89bed4ed4b0e1e994c4563b2cfc33798efe5fa9e4f02832e66",
-    "changedRuntimeSources": [
-      "src/game/mosaicMissionWalks.js"
-    ],
-    "changedFieldEquipmentSources": [
-      "src/components/HubScreen.jsx"
-    ],
-    "changedCityPresentationSources": [
-      "src/components/HubScreen.jsx",
-      "src/game/mosaicMissionWalks.js",
-      "src/components/ImmersiveDrawer.jsx"
-    ],
-    "changedFpsPresentationSources": [
-      "src/components/HubScreen.jsx"
-    ],
-    "finalReview": {
-      "previousReceiptSha256": "4565bde2c709323dfb22a091793ce85b74ec55fe66166f681d49ec915e6aa0c4",
-      "planningBytesPreserved": true,
+    "previousProvenanceRefresh": {
+      "kind": "source-provenance-only-after-authoring",
+      "basisRevision": "48197dc4f35577b6b82a8929b9fe8960dc0e7405",
+      "basisMeaning": "Published predecessor of the new workbook. The previous receipt identifies the immutable authoring snapshot; this refresh records the final integrated helpers and presentation files.",
+      "previousReceiptSha256": "f549c794fa7e0cda662db6b0c4969be0c12d4feeba171bc76a20ede3a4f20c67",
+      "previousPlanningDataSha256": "35b6f1630f5d49a0a25255bdd9dcf12990b19fbcb40af2737b047bb98e81d4f5",
+      "unchangedPlanningSections": [
+        "characters",
+        "commonPolicies",
+        "counts",
+        "date",
+        "editableTrackingFields",
+        "editorialPolicy",
+        "encounters",
+        "finalePolicies",
+        "generationPolicy",
+        "missions",
+        "reviewQueue",
+        "runtimeMissions",
+        "schema",
+        "scope",
+        "sourceRevision",
+        "sourceRevisionMeaning",
+        "status"
+      ],
+      "changedPlanningSourceFiles": [
+        "src/game/mosaicMissionWalks.js"
+      ],
       "workbookBytesPreserved": true,
-      "changes": {
-        "runtimeSources": [],
-        "fieldEquipmentSources": [
-          "src/components/HubScreen.jsx"
-        ],
-        "cityPresentationSources": [
-          "src/components/HubScreen.jsx"
-        ],
-        "fpsPresentationSources": [
-          "src/components/HubScreen.jsx"
-        ]
-      },
-      "reason": "Resolve unfinished route approach from the journal with the ordinary path planner and cancel stale terminal focus synchronously."
+      "preservedWorkbookSha256": "245144e422a3fa89bed4ed4b0e1e994c4563b2cfc33798efe5fa9e4f02832e66",
+      "changedRuntimeSources": [
+        "src/game/mosaicMissionWalks.js"
+      ],
+      "changedFieldEquipmentSources": [
+        "src/components/HubScreen.jsx"
+      ],
+      "changedCityPresentationSources": [
+        "src/components/HubScreen.jsx",
+        "src/game/mosaicMissionWalks.js",
+        "src/components/ImmersiveDrawer.jsx"
+      ],
+      "changedFpsPresentationSources": [
+        "src/components/HubScreen.jsx"
+      ],
+      "finalReview": {
+        "previousReceiptSha256": "4565bde2c709323dfb22a091793ce85b74ec55fe66166f681d49ec915e6aa0c4",
+        "planningBytesPreserved": true,
+        "workbookBytesPreserved": true,
+        "changes": {
+          "runtimeSources": [],
+          "fieldEquipmentSources": [
+            "src/components/HubScreen.jsx"
+          ],
+          "cityPresentationSources": [
+            "src/components/HubScreen.jsx"
+          ],
+          "fpsPresentationSources": [
+            "src/components/HubScreen.jsx"
+          ]
+        },
+        "reason": "Resolve unfinished route approach from the journal with the ordinary path planner and cancel stale terminal focus synchronously."
+      }
     }
   }
 }

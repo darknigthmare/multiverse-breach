@@ -404,7 +404,7 @@ export function getMosaicCharacterMissionWorldObjects(progress, missions, zones 
     const position = step.type === 'marker' ? active && objective.walk ? objective.walk.next : { x: step.x, y: step.y } : zone ? getMosaicZoneAnchor(zone) : null;
     if (!position || !Number.isFinite(position.x) || !Number.isFinite(position.y)) continue;
     const object = { id: `${mission.id}::${step.id}`, missionId: mission.id,
-      stepId: step.id, targetId, sourceType: step.type, universe: mission.universe, ...position,
+      stepId: step.id, targetId, sourceType: step.type, universe: mission.universe, x: position.x, y: position.y,
       ...getMosaicMissionObjectView(operation, { lang, completed }), active, sequence: receipt?.sequence || 0 };
     if (active && objective.walk && !objective.walk.completed) {
       object.propName = localizeCityMission(objective.walk.next.label, lang);

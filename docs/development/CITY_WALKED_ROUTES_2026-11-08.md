@@ -112,6 +112,39 @@ autonomes et le build complet doivent être attribués à la révision publiée 
 à ses propres artefacts GitHub Actions dans la description de PR. Les preuves
 de `48197dc4` concernent uniquement la version précédente.
 
+## Correction issue des premiers parcours natifs
+
+La première publication `235e7b2` a exposé deux erreurs dans les nouvelles
+aventures. Les archives du run `42521807564` conservent leurs traces d'échec.
+
+Le repère actif était construit en étalant tout le point suivant sur l'objet de
+mission. Son `id` local remplaçait ainsi l'identité `mission::étape`, alors que
+seule sa position devait changer. Le rendu reprend maintenant uniquement `x/y`.
+Une régression parcourt les huit itinéraires, leurs quatre repères et leurs
+reprises pour vérifier l'identité, la cible et les métadonnées de l'intervention.
+
+Dans l'aventure de Nova, la sonde portée et son accessoire de départ portent le
+même nom. Les deux observateurs du Canvas associaient aussi le texte du décor
+au cargo. Ils appairent maintenant le texte à son fond de portage réellement
+peint. Les cartouches homonymes restent dans les observations brutes et sont
+toujours contrôlés. Aucune coordonnée attendue ne sert de filtre ; un texte
+porté décalé est encore enregistré, puis refusé. Le seuil `1e-6`, les collisions,
+la vitesse et la portée ne changent pas.
+
+Les régressions ont échoué avant ces corrections puis réussi : **198/198**
+contrôles ciblés Cité/présentation, **31/31** contrôles de l'observateur de portage
+et **10/10** preuves de mouvement. Les cas homonymes emploient les vrais
+dessinateurs de cargo et de cartouche avec un double de commandes Canvas ;
+ils ne sont pas présentés comme une exécution Chromium. Les nouveaux résultats
+natifs doivent être lus sur la révision corrective dans la PR.
+
+Le build complet de la même première révision a également arrêté un ancien test
+du snapshot FPS : son extraction n'injectait ni `getExtinctionAimReadout` ni
+`canvasRef`. Le harnais importe maintenant le vrai relevé et construit son ref
+avec le vrai dimensionnement de scène. Toutes les assertions existantes restent
+en place ; les **74/74** contrôles de `test:noncombat-trials` passent après cette
+correction. Le runtime FPS ne change pas.
+
 ## Limites restant à développer
 
 Ces scènes préparent des chemins et des installations dans le quartier Nexus

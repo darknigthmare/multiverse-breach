@@ -3,9 +3,10 @@ import copy
 import json
 import subprocess
 import unittest
+from pathlib import Path
 
 from mosaicCargoObservation import (
-    LABEL_OFFSET, POSITION_TOLERANCE, MISSION_LABEL_OBSERVER_SCRIPT,
+    LABEL_OFFSET, POSITION_TOLERANCE, CARGO_OBSERVER_SCRIPT, MISSION_LABEL_OBSERVER_SCRIPT,
     verify_cargo_draws, verify_mission_label_frames,
 )
 
@@ -153,6 +154,57 @@ def operation_label(x=16, y=16):
     return label
 
 
+def observe_nova_homonyms(cargo_offset=0, operation_overlap=False):
+    """Replay the real renderers through a Canvas command double, not Chromium."""
+    game = Path(__file__).resolve().parents[1] / 'src/game'
+    script = '\n'.join([
+        f'import {{ MOSAIC_CITY_ROUTES }} from {json.dumps((game / "mosaicCityRoutes.js").as_uri())};',
+        f'import {{ drawMosaicMissionCargo }} from {json.dumps((game / "mosaicMissionCargo.js").as_uri())};',
+        f'import {{ drawMosaicMissionObjectLabel, getMosaicMissionObjectView }} from {json.dumps((game / "mosaicMissionOperations.js").as_uri())};',
+    ]) + '''
+    const step=MOSAIC_CITY_ROUTES.find(m=>m.id==='city-nova-present-pulse-v1').steps.find(s=>s.id==='take-low-probe');
+    const cargo={id:step.cargo.id,label:step.cargo.label.en,appearance:step.cargo.appearance};
+    if(cargo.label!==step.operation.propName.en||cargo.label!=='Nova’s low probe')throw Error('real homonyms changed');
+    const state={t:16,player:{x:300,y:250},camera:{x:0,y:0},missionCargo:cargo};
+    class Context {
+      constructor(city=false){this.canvas={width:600,height:400,classList:{contains:()=>city}};
+        this.fillStyle='black';this.font='10px test';this.textAlign='center';this.lineWidth=1;
+        this.matrix={a:1,b:0,c:0,d:1,e:0,f:0};this.stack=[];}
+      getTransform(){return {...this.matrix};}
+      setTransform(a,b,c,d,e,f){this.matrix={a,b,c,d,e,f};}
+      translate(x,y){const m=this.matrix;m.e+=m.a*x+m.c*y;m.f+=m.b*x+m.d*y;}
+      save(){this.stack.push({matrix:{...this.matrix},fillStyle:this.fillStyle,font:this.font,
+        textAlign:this.textAlign,lineWidth:this.lineWidth});}
+      restore(){Object.assign(this,this.stack.pop());}
+      measureText(text){const size=parseFloat(this.font),width=text.length*size*.4;
+        const left=this.textAlign==='center'?width/2:0;
+        return {width,actualBoundingBoxLeft:left,actualBoundingBoxRight:width-left,
+          actualBoundingBoxAscent:size*.8,actualBoundingBoxDescent:size*.2};}
+    }
+    for(const name of ['fillRect','strokeRect','drawImage','beginPath','closePath','moveTo','lineTo',
+      'quadraticCurveTo','bezierCurveTo','arc','fill','stroke','fillText'])Context.prototype[name]=function(){};
+    globalThis.CanvasRenderingContext2D=Context;
+    globalThis.document={createElement:()=>({getContext:()=>new Context()})};
+    globalThis.window={__sceneQA:{state:()=>state}};
+    ''' + CARGO_OBSERVER_SCRIPT + MISSION_LABEL_OBSERVER_SCRIPT + f'''
+    const ctx=new Context(true),originalText=ctx.fillText.bind(ctx);
+    ctx.fillText=(text,x,y,...rest)=>originalText(text,
+      x+(ctx.font.startsWith('10px ')&&text===cargo.label?{cargo_offset}:0),y,...rest);
+    ctx.fillRect(0,0,600,400);
+    ctx.fillStyle='rgba(0,0,0,0.42)';ctx.fillRect(282,271,36,7);
+    ctx.drawImage({{src:'player.png'}},261,196,78,78);
+    ctx.fillText('QA',300,208);
+    drawMosaicMissionCargo(ctx,cargo,state.player,0,true);
+    const object={{x:{300 if operation_overlap else 110},y:{290 if operation_overlap else 140},
+      ...getMosaicMissionObjectView(step.operation,{{lang:'en',completed:true}})}};
+    drawMosaicMissionObjectLabel(ctx,object);
+    ctx.fillStyle='black';ctx.fillRect(0,0,600,400);
+    process.stdout.write(JSON.stringify({{cargo,draws:window.__cityCargoDraws,frames:window.__cityLabelFrames}}));
+    '''
+    result = subprocess.run(['node', '--input-type=module', '--eval', script], text=True, capture_output=True, check=True)
+    return json.loads(result.stdout)
+
+
 class MissionLabelObservationTests(unittest.TestCase):
     def setUp(self):
         self.frame = {'id': 1, 't': 16, 'complete': True, 'viewport': {'width': 600, 'height': 400},
@@ -175,6 +227,40 @@ class MissionLabelObservationTests(unittest.TestCase):
         self.assertEqual(proof['nativeRectanglesVerified'], 5)
         self.assertEqual(proof['textBoundsVerified'], 2)
         self.assertEqual(proof['positionTolerance'], 1e-6)
+
+    def test_real_nova_homonyms_keep_both_painted_groups_without_overwriting_the_carried_label(self):
+        observed = observe_nova_homonyms()
+        first = observed['frames'][0]
+        self.assertEqual(first['cargoLabelText']['text'], 'Nova’s low probe')
+        self.assertEqual([line['text'] for line in first['labels'][0]['lines']], ['Nova’s low probe', 'Recovered'])
+        self.assertNotEqual(first['cargoLabelText']['rect'], first['labels'][0]['lines'][0]['rect'])
+        self.assertEqual(len(observed['draws']), 1)
+        self.assertEqual(observed['draws'][0]['local'], {'x': 0, 'y': -66})
+        self.assertEqual(verify_cargo_draws(observed['draws'], observed['cargo'])['maxScreenError'], 0)
+        proof = verify_mission_label_frames(observed['frames'], require_labels=True, require_cargo=True)
+        self.assertEqual(proof['textBoundsVerified'], 2)
+        self.assertEqual(proof['positionTolerance'], 1e-6)
+
+    def test_the_real_cargo_group_is_still_observed_and_rejected_when_its_text_moves(self):
+        for offset in (-1, 1, 8):
+            with self.subTest(offset=offset):
+                observed = observe_nova_homonyms(cargo_offset=offset)
+                self.assertEqual(len(observed['draws']), 1, 'a displaced cargo draw must not be filtered out')
+                self.assertEqual(observed['draws'][0]['local']['x'], offset)
+                self.assertEqual(len(observed['frames'][0]['labels'][0]['lines']), 2)
+                with self.assertRaisesRegex(AssertionError, 'detached'):
+                    verify_cargo_draws(observed['draws'], observed['cargo'])
+                if offset == 8:
+                    with self.assertRaisesRegex(AssertionError, 'carried label text escapes'):
+                        verify_mission_label_frames(observed['frames'], require_labels=True, require_cargo=True)
+
+    def test_a_homonymous_world_cartouche_is_retained_and_rejected_if_it_overlaps_the_avatar(self):
+        observed = observe_nova_homonyms(operation_overlap=True)
+        self.assertEqual([line['text'] for line in observed['frames'][0]['labels'][0]['lines']],
+                         ['Nova’s low probe', 'Recovered'])
+        self.assertEqual(verify_cargo_draws(observed['draws'], observed['cargo'])['maxScreenError'], 0)
+        with self.assertRaisesRegex(AssertionError, 'overlaps the actual avatar or cargo'):
+            verify_mission_label_frames(observed['frames'], require_labels=True, require_cargo=True)
 
     def test_two_cartouches_in_the_same_frame_are_rejected(self):
         self.frame['labels'].append(operation_label(400, 300))
