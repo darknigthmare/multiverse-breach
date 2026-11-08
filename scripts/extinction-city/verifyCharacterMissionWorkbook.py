@@ -6,6 +6,7 @@ from functools import lru_cache
 import hashlib
 import json
 from pathlib import Path
+import re
 import xml.etree.ElementTree as ET
 from zipfile import ZipFile
 
@@ -14,11 +15,49 @@ DESIGN_LABELS = {'individual_proposal': 'Proposition individualisée',
                  'research_scaffold': 'Canevas à documenter — réécriture diégétique requise',
                  'source_objective_adaptation': 'Adaptation d’objectif source — réécriture diégétique requise',
                  'source_family_adaptation': 'Adaptation de famille — réécriture diégétique requise'}
+CITY_PRESENTATION_SOURCES = {'src/components/HubScreen.jsx', 'src/game/mosaicMissionOperations.js',
+                             'src/game/mosaicMissionCargo.js', 'src/game/renderer.js', 'src/game/spriteAssets.js'}
 
 
 def require(condition, message):
     if not condition:
         raise AssertionError(message)
+
+
+def verify_provenance(workbook, data, receipt_path, repo):
+    """Verify the external source receipt; never rewrite the XLSX or source files."""
+    raw = receipt_path.read_bytes()
+    receipt = json.loads(raw)
+    require(receipt.get('schema', 0) >= 6, 'Presentation provenance requires workbook receipt schema 6 or later')
+    require(receipt.get('workbook') == workbook.name, 'Provenance receipt names another workbook')
+    require(receipt.get('sha256') == hashlib.sha256(workbook.read_bytes()).hexdigest()
+            and receipt.get('bytes') == workbook.stat().st_size, 'Workbook bytes differ from their provenance receipt')
+    require(receipt.get('planningDataSha256') == data.get('dataSha256'), 'Planning data differ from the workbook provenance')
+    manifest_bytes = json.dumps(data['sourceManifest'], ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+    require(receipt.get('planningSourceManifestSha256') == hashlib.sha256(manifest_bytes).hexdigest(),
+            'Planning source manifest differs from the workbook provenance')
+    groups = {}
+    for group in ['runtimeSources', 'fieldEquipmentSources', 'cityPresentationSources']:
+        records = receipt.get(group)
+        require(isinstance(records, list) and records, f'Missing source provenance group: {group}')
+        names = []
+        for record in records:
+            require(isinstance(record, dict) and isinstance(record.get('source'), str), f'Invalid source record in {group}')
+            source = record['source']
+            relative = Path(source)
+            require(not relative.is_absolute() and '..' not in relative.parts, f'Unsafe provenance path: {source}')
+            actual = (repo / relative).resolve()
+            require(actual.is_relative_to(repo) and actual.is_file(), f'Missing provenance source: {source}')
+            expected = record.get('sha256')
+            require(isinstance(expected, str) and re.fullmatch(r'[0-9a-f]{64}', expected), f'Invalid source hash: {source}')
+            require(hashlib.sha256(actual.read_bytes()).hexdigest() == expected, f'{group} source hash differs: {source}')
+            names.append(source)
+        require(len(names) == len(set(names)), f'Duplicate sources in {group}')
+        if group == 'cityPresentationSources':
+            require(CITY_PRESENTATION_SOURCES <= set(names), 'Incomplete City presentation geometry provenance')
+        groups[group] = len(names)
+    return {'receiptSha256': hashlib.sha256(raw).hexdigest(), 'groups': groups,
+            'workbookHashVerified': True, 'planningProvenanceVerified': True, 'sourceHashesVerified': True}
 
 
 def read_sheet(archive, name, strings):
@@ -71,9 +110,13 @@ def main():
     parser.add_argument('--planning', required=True)
     parser.add_argument('--receipt')
     parser.add_argument('--baseline', help='Read-only comparison of unchanged sheets in the previous workbook')
+    parser.add_argument('--provenance-receipt', help='Verify workbook, planning and runtime/FPS/presentation source hashes')
+    parser.add_argument('--repo', default='.', help='Repository root for the external source provenance check')
     args = parser.parse_args()
     path = Path(args.workbook)
     data = json.loads(Path(args.planning).read_text())
+    provenance = verify_provenance(path, data, Path(args.provenance_receipt), Path(args.repo).resolve()) \
+        if args.provenance_receipt else None
     with ZipFile(path) as archive:
         strings_root = ET.fromstring(archive.read('xl/sharedStrings.xml'))
         strings = [''.join(part.text or '' for part in item.findall('.//m:t', NS)) for item in strings_root]
@@ -317,6 +360,10 @@ def main():
                'formulasInspected': formula_count, 'coverage': 'exact one universe and one Multiverse proposal per source identity',
                'changedModeCells': [f'{column}{row}' for row in range(7, 11) for column in 'FI'],
                'status': 'passed', 'scope': 'Read-only OpenXML identities, personal requests, locations, runtime prerequisites, branch interventions and effects, explicit Nexus adaptation links, future design intentions, field-equipment commands, generic rewrite flags, cached totals, formulas, filters, panes, validation, manual tracking and unchanged-sheet styles; not a native Excel execution.'}
+    if provenance:
+        receipt['schema'] = 6
+        receipt['sourceProvenance'] = provenance
+        receipt['scope'] += ' External workbook, planning and runtime/FPS/City-presentation source hashes verified against the checked-out files.'
     if args.receipt:
         Path(args.receipt).write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(receipt, ensure_ascii=False))

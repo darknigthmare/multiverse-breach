@@ -9,7 +9,8 @@ import { MOSAIC_CHARACTER_MISSION_LEGACY, MOSAIC_CHARACTER_MISSIONS, normalizeMo
   getMosaicCharacterMissionZones, getMosaicCharacterMissionWorldObjects, getMosaicCharacterMissionPropZones,
   startMosaicCharacterMission, restartMosaicCharacterMission, acceptMosaicCharacterMissionRequest,
   advanceMosaicCharacterMission, resolveMosaicCharacterMission } from '../src/game/mosaicCharacterMissions.js';
-import { getMosaicMissionOperation, drawMosaicMissionObject } from '../src/game/mosaicMissionOperations.js';
+import { getMosaicMissionOperation, drawMosaicMissionObject, drawMosaicMissionObjectProp,
+  drawMosaicMissionObjectLabel, selectMosaicMissionObjectLabel, placeMosaicMissionObjectLabel } from '../src/game/mosaicMissionOperations.js';
 
 function context(universe = 'Nexus de Convergence') {
   const district = { id: `test-${universe}`, universe, worldW: 1920, worldH: 1180 };
@@ -231,6 +232,141 @@ test('drawing six types of equipment is read-only and keeps restored/unfinished 
     assert.notEqual(snapshots.get(`${kind}/false`), snapshots.get(`${kind}/true`));
   }
   assert.equal(new Set(snapshots.values()).size, 12);
+});
+
+const rectsOverlap = (a, b, gap = 0) => a.x < b.x + b.width + gap && a.x + a.width > b.x - gap
+  && a.y < b.y + b.height + gap && a.y + a.height > b.y - gap;
+const within = (rect, viewport, padding = 8) => rect.x >= viewport.x + padding && rect.y >= viewport.y + padding
+  && rect.x + rect.width <= viewport.x + viewport.width - padding
+  && rect.y + rect.height <= viewport.y + viewport.height - padding;
+
+function observedCanvas() {
+  const calls = [], stack = [];
+  const state = { fillStyle: '#000000', font: '10px sans-serif', textAlign: 'left', textBaseline: 'alphabetic' };
+  const ctx = new Proxy({
+    measureText: value => ({ width: String(value).length * 6 }),
+    save() { stack.push({ ...state }); calls.push(['save']); },
+    restore() {
+      const previous = stack.pop();
+      for (const key of Object.keys(state)) delete state[key];
+      Object.assign(state, previous); calls.push(['restore']);
+    },
+    fillRect(...args) { calls.push(['fillRect', state.fillStyle, ...args]); },
+    fillText(...args) { calls.push(['fillText', state.fillStyle, ...args]); }
+  }, {
+    get(target, name) { return target[name] || state[name] || ((...args) => calls.push([name, ...args])); },
+    set(_target, name, value) { state[name] = value; return true; }
+  });
+  return { ctx, calls, state, stack };
+}
+
+test('one visible nearby active operation takes precedence without hiding completed equipment from later inspection', () => {
+  const player = { x: 500, y: 400 }, viewport = { x: 140, y: 130, width: 720, height: 540 };
+  const finished = { missionId: 'past', stepId: 'repair', targetId: 'past-repair', x: 510, y: 400, completed: true };
+  const active = { missionId: 'current', stepId: 'deliver', targetId: 'current-deliver', x: 580, y: 400, active: true };
+  const outside = { missionId: 'later', x: 800, y: 400, active: true };
+  const objects = [finished, outside, active], before = structuredClone(objects);
+  assert.equal(selectMosaicMissionObjectLabel(objects, player, { viewport }), active);
+  assert.equal(selectMosaicMissionObjectLabel([outside, finished], player, { viewport }), finished);
+  assert.equal(selectMosaicMissionObjectLabel([finished], { x: 399.99, y: 400 }, { viewport }), null);
+  assert.equal(selectMosaicMissionObjectLabel([{ ...active, x: 100 }], { x: 145, y: 400 }, { viewport }), null);
+  assert.deepEqual(objects, before);
+});
+
+test('equidistant label selection is stable and malformed positions cannot win', () => {
+  const player = { x: 200, y: 200 };
+  const a = { missionId: 'a', stepId: 'scan', x: 210, y: 200 };
+  const b = { missionId: 'b', stepId: 'scan', x: 190, y: 200 };
+  const malformed = { missionId: 'bad', active: true, x: NaN, y: 200 };
+  assert.equal(selectMosaicMissionObjectLabel([b, malformed, a], player), a);
+  assert.equal(selectMosaicMissionObjectLabel([a, malformed, b], player), a);
+  assert.equal(selectMosaicMissionObjectLabel([a], { x: Infinity, y: 200 }), null);
+  assert.equal(selectMosaicMissionObjectLabel([a], player, { range: -1 }), null);
+  assert.equal(selectMosaicMissionObjectLabel([a], player, { viewport: { x: 0, y: 0, width: 0, height: 300 } }), null);
+});
+
+test('label placement protects a wide avatar, carried silhouette and its full text at camera edges', () => {
+  for (const viewport of [{ x: 330.3, y: 300.7, width: 720, height: 540 }, { x: 0, y: 0, width: 390, height: 844 },
+    { x: 800, y: 600, width: 844, height: 390 }]) {
+    for (const position of ['center', 'top-left', 'bottom-right']) {
+      const player = position === 'center' ? { x: viewport.x + viewport.width / 2, y: viewport.y + viewport.height / 2 }
+        : position === 'top-left' ? { x: viewport.x + 85, y: viewport.y + 85 }
+          : { x: viewport.x + viewport.width - 85, y: viewport.y + viewport.height - 85 };
+      const protectedRects = [
+        { x: player.x - 78, y: player.y - 55.4, width: 156, height: 96 },
+        { x: player.x + 12, y: player.y - 36.5, width: 29, height: 34 },
+        { x: player.x - 95, y: player.y - 78, width: 190, height: 17 }
+      ];
+      const input = { anchor: { x: player.x - 60, y: player.y - 14 }, width: 188, height: 87, viewport, protectedRects };
+      const before = structuredClone(input), rect = placeMosaicMissionObjectLabel(input);
+      assert.ok(rect, `${position}: an ordinary viewport must retain room for its operation label`);
+      assert.ok(within(rect, viewport));
+      assert.ok(protectedRects.every(protectedRect => !rectsOverlap(rect, protectedRect, 8)));
+      assert.deepEqual(input, before);
+      assert.deepEqual(placeMosaicMissionObjectLabel(input), rect);
+    }
+  }
+});
+
+test('an impossible or malformed label layout yields no unsafe overlay', () => {
+  const base = { anchor: { x: 200, y: 150 }, width: 188, height: 72,
+    viewport: { x: 0, y: 0, width: 400, height: 300 }, protectedRects: [] };
+  for (const change of [{ width: 500 }, { height: 301 }, { width: NaN }, { gap: -1 },
+    { anchor: { x: Infinity, y: 150 } }, { protectedRects: [{ x: 0, y: 0, width: 400, height: 300 }] },
+    { protectedRects: [{ x: 100, y: NaN, width: 20, height: 40 }] }]) {
+    assert.equal(placeMosaicMissionObjectLabel({ ...base, ...change }), null);
+  }
+});
+
+test('separate prop painting emits no cartouches and one label pass draws only its selected state', () => {
+  const objects = [
+    { kind: 'recover', sourceType: 'marker', completed: true, x: 500, y: 400, propName: 'Lampe récupérée', statusLabel: 'Récupéré' },
+    { kind: 'beacon', sourceType: 'marker', active: true, x: 550, y: 410, propName: 'Poste de veille', statusLabel: 'Déposer la lampe' }
+  ];
+  const before = structuredClone(objects), { ctx, calls, state, stack } = observedCanvas();
+  const initialCanvas = { ...state }, viewport = { x: 200, y: 150, width: 720, height: 540 };
+  for (const object of objects) drawMosaicMissionObjectProp(ctx, object, 30, true, true);
+  assert.equal(calls.filter(call => call[0] === 'fillRect' && call[1] === 'rgba(5,12,18,0.94)').length, 0);
+  assert.equal(calls.filter(call => call[0] === 'fillText').length, 0);
+  const candidate = selectMosaicMissionObjectLabel(objects, { x: 510, y: 420 }, { viewport });
+  const rect = drawMosaicMissionObjectLabel(ctx, candidate, { viewport,
+    protectedRects: [{ x: 465, y: 342, width: 100, height: 110 }] });
+  const labels = calls.filter(call => call[0] === 'fillRect' && call[1] === 'rgba(5,12,18,0.94)');
+  assert.equal(labels.length, 1);
+  assert.deepEqual(labels[0].slice(2), [rect.x, rect.y, rect.width, rect.height]);
+  assert.ok(calls.some(call => call[0] === 'fillText' && call[2] === 'Poste de veille'));
+  assert.ok(calls.some(call => call[0] === 'fillText' && call[2] === 'Déposer la lampe'));
+  assert.ok(!calls.some(call => call[0] === 'fillText' && call[2] === 'Lampe récupérée'));
+  assert.deepEqual(objects, before);
+  assert.equal(stack.length, 0);
+  assert.deepEqual(state, initialCanvas);
+});
+
+test('narrow labels retain their complete source text without overflowing their measured rectangle', () => {
+  const { ctx, calls } = observedCanvas();
+  const object = { x: 70, y: 200, propName: 'Sonde N4 conservée', statusLabel: 'Rétablissementsansraccourcinioubli', completed: true };
+  const viewport = { x: 0, y: 0, width: 160, height: 400 };
+  const rect = drawMosaicMissionObjectLabel(ctx, object, { viewport });
+  assert.ok(rect && within(rect, viewport));
+  const text = calls.filter(call => call[0] === 'fillText');
+  assert.equal(text.map(call => call[2]).join('').replaceAll(' ', ''), `${object.propName}${object.statusLabel}`.replaceAll(' ', ''));
+  assert.ok(text.every(call => ctx.measureText(call[2]).width <= rect.width - 14));
+  assert.ok(text.every(call => call[3] >= rect.x && call[3] <= rect.x + rect.width
+    && call[4] > rect.y && call[4] < rect.y + rect.height));
+});
+
+test('choosing and drawing a completed operation leaves saved receipts and collision footprints unchanged', () => {
+  const progress = finish(c, startMosaicCharacterMission(normalizeMosaicCharacterMissions(), first).progress, first);
+  const live = scene(c, progress), objects = getMosaicCharacterMissionWorldObjects(progress, c.missions, live.zones);
+  const before = structuredClone({ progress, objects, props: getMosaicCharacterMissionPropZones(objects, live.zones) });
+  const object = objects[0], player = { x: object.x + 60, y: object.y + 30 };
+  const viewport = { x: object.x - 300, y: object.y - 250, width: 720, height: 540 };
+  const { ctx } = observedCanvas();
+  for (const prop of objects) drawMosaicMissionObjectProp(ctx, prop, 30, true, true);
+  const selected = selectMosaicMissionObjectLabel(objects, player, { viewport });
+  assert.ok(selected?.completed);
+  drawMosaicMissionObjectLabel(ctx, selected, { viewport, protectedRects: [{ x: player.x - 48, y: player.y - 60, width: 96, height: 124 }] });
+  assert.deepEqual({ progress, objects, props: getMosaicCharacterMissionPropZones(objects, live.zones) }, before);
 });
 
 test('new narrative definitions retain all legacy mission and step identities', () => {

@@ -1,8 +1,13 @@
 """Validator regressions use synthetic matrices, not a claimed browser run."""
 import copy
+import json
+import subprocess
 import unittest
 
-from mosaicCargoObservation import LABEL_OFFSET, POSITION_TOLERANCE, verify_cargo_draws
+from mosaicCargoObservation import (
+    LABEL_OFFSET, POSITION_TOLERANCE, MISSION_LABEL_OBSERVER_SCRIPT,
+    verify_cargo_draws, verify_mission_label_frames,
+)
 
 
 def project(matrix, point):
@@ -129,6 +134,210 @@ class CargoObservationTests(unittest.TestCase):
         update_derived(moved)
         with self.assertRaisesRegex(AssertionError, 'detached'):
             verify_cargo_draws([self.sample, moved], self.cargo, require_movement=True)
+
+
+def rectangle(x, y, width, height):
+    return {'x': x, 'y': y, 'width': width, 'height': height}
+
+
+def painted_rectangle(x, y, width, height, kind='fillRect'):
+    return {'kind': kind, 'matrix': {'a': 1, 'b': 0, 'c': 0, 'd': 1, 'e': 0, 'f': 0},
+            'args': rectangle(x, y, width, height), 'lineWidth': 0,
+            'rect': rectangle(x, y, width, height)}
+
+
+def operation_label(x=16, y=16):
+    label = painted_rectangle(x, y, 160, 40)
+    label['lines'] = [{'text': 'The restored relay', 'rect': rectangle(x + 7, y + 7, 140, 12)},
+                      {'text': 'Ready', 'rect': rectangle(x + 7, y + 23, 35, 11)}]
+    return label
+
+
+class MissionLabelObservationTests(unittest.TestCase):
+    def setUp(self):
+        self.frame = {'id': 1, 't': 16, 'complete': True, 'viewport': {'width': 600, 'height': 400},
+            'player': {'x': 200, 'y': 160}, 'camera': {'x': 0, 'y': 0},
+            'cargo': {'id': 'watch-lamp', 'label': "Mirelle's lamp"},
+            'labels': [operation_label()],
+            'avatarDraws': [painted_rectangle(161, 106, 78, 78, 'drawImage')],
+            'playerShadow': painted_rectangle(182, 181, 36, 7),
+            'playerName': {'text': 'QA', 'rect': rectangle(190, 110, 20, 10)},
+            'cargoDraws': [painted_rectangle(212, 123.5, 29, 34)],
+            'cargoLabel': painted_rectangle(140, 82, 120, 17),
+            'cargoLabelText': {'text': "Mirelle's lamp", 'rect': rectangle(147, 85, 106, 10)}}
+
+    def test_a_real_command_group_proves_one_readable_label_without_mutating_evidence(self):
+        before = copy.deepcopy(self.frame)
+        proof = verify_mission_label_frames([self.frame], require_labels=True, require_cargo=True)
+        self.assertEqual(self.frame, before)
+        self.assertEqual(proof['paintedFrames'], 1)
+        self.assertEqual(proof['maxOperationLabelsPerFrame'], 1)
+        self.assertEqual(proof['nativeRectanglesVerified'], 5)
+        self.assertEqual(proof['textBoundsVerified'], 2)
+        self.assertEqual(proof['positionTolerance'], 1e-6)
+
+    def test_two_cartouches_in_the_same_frame_are_rejected(self):
+        self.frame['labels'].append(operation_label(400, 300))
+        with self.assertRaisesRegex(AssertionError, 'multiple operation cartouches'):
+            verify_mission_label_frames([self.frame])
+
+    def test_one_pixel_overlap_with_each_actual_protected_part_is_rejected(self):
+        parts = [self.frame['avatarDraws'][0]['rect'], self.frame['playerName']['rect'],
+                 self.frame['playerShadow']['rect'], self.frame['cargoDraws'][0]['rect'],
+                 self.frame['cargoLabel']['rect']]
+        for part in parts:
+            with self.subTest(part=part):
+                frame = copy.deepcopy(self.frame)
+                frame['labels'] = [operation_label(part['x'] + part['width'] - 1, part['y'])]
+                with self.assertRaisesRegex(AssertionError, 'overlaps the actual avatar or cargo'):
+                    verify_mission_label_frames([frame])
+
+    def test_the_existing_tolerance_does_not_admit_a_two_millionths_overlap(self):
+        avatar = self.frame['avatarDraws'][0]['rect']
+        self.frame['labels'] = [operation_label(avatar['x'] + avatar['width'] - 2e-6, avatar['y'] + 40)]
+        with self.assertRaisesRegex(AssertionError, 'overlaps the actual avatar or cargo'):
+            verify_mission_label_frames([self.frame])
+
+    def test_hidden_or_overflowing_operation_text_is_rejected(self):
+        for failure in ('missing', 'left', 'bottom'):
+            with self.subTest(failure=failure):
+                frame = copy.deepcopy(self.frame)
+                if failure == 'missing':
+                    frame['labels'][0]['lines'] = []
+                else:
+                    frame['labels'][0]['lines'][0]['rect'][{'left': 'x', 'bottom': 'y'}[failure]] = 0 if failure == 'left' else 55
+                with self.assertRaisesRegex(AssertionError, 'without its text|text escapes'):
+                    verify_mission_label_frames([frame])
+
+    def test_cartouches_outside_the_native_viewport_are_rejected(self):
+        for x, y in ((-1, 16), (441, 16), (16, -1), (16, 361)):
+            with self.subTest(x=x, y=y):
+                frame = copy.deepcopy(self.frame)
+                frame['labels'] = [operation_label(x, y)]
+                with self.assertRaisesRegex(AssertionError, 'escapes the viewport'):
+                    verify_mission_label_frames([frame])
+
+    def test_native_matrix_or_rectangle_inconsistency_is_rejected(self):
+        for section, field in (('matrix', 'e'), ('args', 'x'), ('rect', 'width')):
+            with self.subTest(section=section, field=field):
+                frame = copy.deepcopy(self.frame)
+                frame['avatarDraws'][0][section][field] += 1
+                with self.assertRaisesRegex(AssertionError, 'inconsistent native draw rectangle'):
+                    verify_mission_label_frames([frame])
+
+    def test_nonfinite_rectangles_and_matrices_are_rejected(self):
+        for section, fields in (('matrix', ('a', 'b', 'c', 'd', 'e', 'f')),
+                                ('args', ('x', 'y', 'width', 'height')), ('rect', ('x', 'y', 'width', 'height'))):
+            for field in fields:
+                for invalid in (float('nan'), float('inf'), None, True):
+                    with self.subTest(section=section, field=field, invalid=invalid):
+                        frame = copy.deepcopy(self.frame)
+                        frame['cargoDraws'][0][section][field] = invalid
+                        with self.assertRaisesRegex(AssertionError, 'non-finite'):
+                            verify_mission_label_frames([frame])
+
+    def test_actual_path_bounds_and_stroke_expansion_are_verified(self):
+        self.frame['cargoDraws'] = [{'kind': 'stroke', 'points': [
+            {'x': 213, 'y': 125}, {'x': 239, 'y': 125}, {'x': 239, 'y': 156}],
+            'inflation': {'x': 1, 'y': 1}, 'rect': rectangle(212, 124, 28, 33)}]
+        self.assertTrue(verify_mission_label_frames([self.frame])['noPlayerOrCargoIntersection'])
+        self.frame['cargoDraws'][0]['inflation']['x'] = 2
+        with self.assertRaisesRegex(AssertionError, 'inconsistent native draw rectangle'):
+            verify_mission_label_frames([self.frame])
+
+    def test_actual_label_and_cargo_are_required_when_the_journey_expects_them(self):
+        frame = copy.deepcopy(self.frame)
+        frame['labels'] = []
+        with self.assertRaisesRegex(AssertionError, 'no operation cartouche'):
+            verify_mission_label_frames([frame], require_labels=True)
+        frame = copy.deepcopy(self.frame)
+        frame['cargo'] = None
+        with self.assertRaisesRegex(AssertionError, 'no carried silhouette'):
+            verify_mission_label_frames([frame], require_cargo=True)
+        for key in ('cargoDraws', 'cargoLabel', 'cargoLabelText'):
+            with self.subTest(key=key):
+                frame = copy.deepcopy(self.frame)
+                frame[key] = [] if key == 'cargoDraws' else None
+                with self.assertRaises(AssertionError):
+                    verify_mission_label_frames([frame], require_cargo=True)
+
+    def test_only_completed_frames_count_and_an_open_tail_remains_diagnostic(self):
+        tail = copy.deepcopy(self.frame)
+        tail.update({'id': 2, 'complete': False, 'labels': [operation_label(), operation_label()]})
+        proof = verify_mission_label_frames([self.frame, tail], require_labels=True, require_cargo=True)
+        self.assertEqual(proof['paintedFrames'], 1)
+        self.assertEqual(proof['unclosedFramesRetained'], 1)
+        with self.assertRaisesRegex(AssertionError, 'no completely painted'):
+            verify_mission_label_frames([tail])
+        tail['complete'] = True
+        with self.assertRaisesRegex(AssertionError, 'multiple operation cartouches'):
+            verify_mission_label_frames([self.frame, tail])
+
+    def test_frame_identities_and_explicit_completion_boundaries_are_required(self):
+        with self.assertRaisesRegex(AssertionError, 'duplicate painted frame'):
+            verify_mission_label_frames([self.frame, copy.deepcopy(self.frame)])
+        self.frame.pop('complete')
+        with self.assertRaisesRegex(AssertionError, 'completion boundary'):
+            verify_mission_label_frames([self.frame])
+
+    def test_a_pending_image_never_hides_overlaps_and_cannot_prove_an_avatar(self):
+        pending = copy.deepcopy(self.frame)
+        pending['avatarDraws'] = []
+        ready = copy.deepcopy(self.frame)
+        ready['id'] = 2
+        proof = verify_mission_label_frames([pending, ready], require_labels=True, require_cargo=True)
+        self.assertEqual(proof['framesWithoutAvatarDrawing'], 1)
+        self.assertEqual(proof['framesWithAvatarDrawing'], 1)
+        with self.assertRaisesRegex(AssertionError, 'no real avatar drawing'):
+            verify_mission_label_frames([pending], require_labels=True, require_cargo=True)
+        pending['labels'] = [operation_label(259, 82)]
+        with self.assertRaisesRegex(AssertionError, 'overlaps the actual avatar or cargo'):
+            verify_mission_label_frames([pending, ready], require_labels=True, require_cargo=True)
+
+    def test_observer_ends_the_player_group_before_later_npcs_and_reads_state_once_per_frame(self):
+        # A command-routing double verifies interception and boundaries only.
+        # It does not stand in for Chromium geometry or the native CI captures.
+        script = '''
+        let stateReads=0,matrixReads=0;
+        class Context {
+          constructor(city=false){this.canvas={width:600,height:400,classList:{contains:()=>city}};
+            this.fillStyle='black';this.font='10px test';this.lineWidth=1;}
+          getTransform(){matrixReads++;return {a:1,b:0,c:0,d:1,e:0,f:0};}
+          measureText(text){return {actualBoundingBoxLeft:0,actualBoundingBoxRight:text.length*5,
+            actualBoundingBoxAscent:8,actualBoundingBoxDescent:2};}
+        }
+        for(const name of ['fillRect','strokeRect','drawImage','beginPath','moveTo','lineTo',
+          'quadraticCurveTo','bezierCurveTo','arc','fill','stroke','fillText'])Context.prototype[name]=function(){};
+        globalThis.CanvasRenderingContext2D=Context;
+        globalThis.document={createElement:()=>({getContext:()=>new Context()})};
+        globalThis.window={__sceneQA:{state:()=>{stateReads++;return {t:16,player:{x:200,y:160},
+          camera:{x:0,y:0},missionCargo:{label:"Mirelle's lamp"}};}}};
+        ''' + MISSION_LABEL_OBSERVER_SCRIPT + '''
+        const ctx=new Context(true);
+        ctx.fillRect(0,0,600,400);
+        const beforeScenery=matrixReads;
+        for(let i=0;i<500;i++)ctx.fillRect(i,50,10,10);
+        if(stateReads!==1||matrixReads!==beforeScenery)throw Error('scenery redundantly read scene or matrix');
+        ctx.fillStyle='rgba(0,0,0,0.42)';ctx.fillRect(182,181,36,7);
+        ctx.drawImage({src:'player.png'},161,106,78,78);
+        ctx.fillText('QA',200,118);
+        ctx.fillStyle='#ff0';ctx.fillRect(212,124,29,34);
+        ctx.fillStyle='rgba(5,12,18,0.93)';ctx.fillRect(140,82,120,17);
+        ctx.fillText("Mirelle's lamp",147,93);
+        ctx.fillStyle='rgba(0,0,0,0.42)';ctx.fillRect(382,221,36,7);
+        ctx.drawImage({src:'later-npc.png'},0,0,500,300);ctx.fillText('Resident',400,210);
+        ctx.fillStyle='rgba(5,12,18,0.94)';ctx.fillRect(16,16,160,40);
+        ctx.font='12px test';ctx.fillText('The relay',23,31);
+        ctx.fillRect(0,0,600,400);
+        const first=window.__cityLabelFrames[0],last=window.__cityLabelFrames[1];
+        if(stateReads!==2||!first.complete||last.complete)throw Error('frame completion/state boundary failed');
+        if(first.avatarDraws.length!==1||first.avatarDraws[0].source!=='player.png')throw Error('later NPC joined avatar');
+        if(first.cargoDraws.length!==1)throw Error('later NPC joined cargo');
+        if(first.labels.length!==1||first.labels[0].lines.length!==1)throw Error('label was not observed');
+        process.stdout.write(JSON.stringify({avatar:first.avatarDraws.length,cargo:first.cargoDraws.length,stateReads}));
+        '''
+        result = subprocess.run(['node', '--input-type=module', '--eval', script], text=True, capture_output=True, check=True)
+        self.assertEqual(json.loads(result.stdout), {'avatar': 1, 'cargo': 1, 'stateReads': 2})
 
 
 if __name__ == '__main__':

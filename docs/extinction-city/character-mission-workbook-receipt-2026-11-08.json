@@ -1,10 +1,10 @@
 {
-  "schema": 5,
+  "schema": 6,
   "sourceRevision": "4ca3b2b87f4b7234612f11fc5c17ba205d36d340",
   "runtimeBaseRevision": "d87f038ea5537d06f9448db1e699fe6a122181b9",
-  "sourceRevisionMeaning": "Historical roster baseline is retained in the workbook; runtimeSources and planning provenance describe the actual edited files.",
-  "planningDataSha256": "ac5dcf76c3d273674c0abb2093951d5092d0856174ea8b2cb76cf73a728dca4b",
-  "planningSourceManifestSha256": "dd49b6581b75c67562b426cf4ed53d7fbd5ea99b3d86120583a4149d5a4bff69",
+  "sourceRevisionMeaning": "Historical roster and workbook baselines are retained; runtimeSources, fieldEquipmentSources, cityPresentationSources and planning provenance describe the actual edited files.",
+  "planningDataSha256": "0e865f761fca40d44ace69321527834aaa4470a9813715f6138ec056ac2c2e93",
+  "planningSourceManifestSha256": "40ea2d725048c5c499a59c085e1c1d1205796aba54e99c02bc1abddaedfb70b0",
   "workbook": "Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx",
   "sha256": "afe9387559864aaab3f3c76d371e7cbfb84a41e3f0772352210cd53775b4aadc",
   "bytes": 1192478,
@@ -81,7 +81,7 @@
     },
     {
       "source": "src/game/mosaicMissionOperations.js",
-      "sha256": "2b38ca2b491d15044acf9202f9c04c335fbce8eb60ef984abbea3d85bad62216"
+      "sha256": "f6003a8583a2711c59a331799ad8d409bfdae70a8b425201939b4493ce1244f5"
     },
     {
       "source": "src/game/ocCampaign.js",
@@ -239,7 +239,7 @@
     },
     {
       "source": "src/components/HubScreen.jsx",
-      "sha256": "c63b9b91ab2fe32976a6f3eee59a84c15b2b17e22319736754c822f0ec6a0000"
+      "sha256": "3b779d9d24d9fbe506e0cba4f46e7bf59e4b527089a1e4c1912c41bef0d0b651"
     }
   ],
   "changedModeCells": [
@@ -324,5 +324,71 @@
     "Profils FPS"
   ],
   "formulaScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
-  "nativeApplicationCheck": "Not executed; Artifact Tool recalculation, XLSX readback and rendered review are separate checks."
+  "nativeApplicationCheck": "Not executed; Artifact Tool recalculation, XLSX readback and rendered review are separate checks.",
+  "cityPresentationSources": [
+    {
+      "source": "src/components/HubScreen.jsx",
+      "sha256": "3b779d9d24d9fbe506e0cba4f46e7bf59e4b527089a1e4c1912c41bef0d0b651"
+    },
+    {
+      "source": "src/game/mosaicMissionOperations.js",
+      "sha256": "f6003a8583a2711c59a331799ad8d409bfdae70a8b425201939b4493ce1244f5"
+    },
+    {
+      "source": "src/game/mosaicMissionCargo.js",
+      "sha256": "951e663d1b2c9fa5980eb32113e78acd0364d55472719575444b3531596324c9"
+    },
+    {
+      "source": "src/game/renderer.js",
+      "sha256": "1cd35d66175c837b90e28a7cd38a93ca224f051c4736ae9b69939a51fe380069"
+    },
+    {
+      "source": "src/game/spriteAssets.js",
+      "sha256": "c2ab4e4c5b12504335499a6fea433647e0ecebaa44547ee39966d6de9ba06f0a"
+    }
+  ],
+  "provenanceRefresh": {
+    "kind": "source-provenance-only",
+    "basisRevision": "22eb3ec8dfc12cb7e471cd306921381c215d9e82",
+    "basisMeaning": "Published predecessor; the source hashes identify the subsequent presentation edit.",
+    "previousReceiptSha256": "79f842cabd7f91c88973c7d7c858cb34363a9f8ae159c5d73f357d372d271987",
+    "previousPlanningDataSha256": "ac5dcf76c3d273674c0abb2093951d5092d0856174ea8b2cb76cf73a728dca4b",
+    "unchangedPlanningSections": [
+      "characters",
+      "commonPolicies",
+      "counts",
+      "date",
+      "editableTrackingFields",
+      "editorialPolicy",
+      "encounters",
+      "finalePolicies",
+      "generationPolicy",
+      "missions",
+      "reviewQueue",
+      "runtimeMissions",
+      "schema",
+      "scope",
+      "sourceRevision",
+      "sourceRevisionMeaning",
+      "status"
+    ],
+    "changedPlanningSourceFiles": [
+      "src/game/mosaicMissionOperations.js"
+    ],
+    "changedRuntimeSourceFiles": [
+      "src/game/mosaicMissionOperations.js"
+    ],
+    "changedFieldEquipmentSourceFiles": [
+      "src/components/HubScreen.jsx"
+    ],
+    "addedPresentationSourceFiles": [
+      "src/components/HubScreen.jsx",
+      "src/game/mosaicMissionOperations.js",
+      "src/game/mosaicMissionCargo.js",
+      "src/game/renderer.js",
+      "src/game/spriteAssets.js"
+    ],
+    "workbookBytesPreserved": true,
+    "preservedWorkbookSha256": "afe9387559864aaab3f3c76d371e7cbfb84a41e3f0772352210cd53775b4aadc"
+  }
 }

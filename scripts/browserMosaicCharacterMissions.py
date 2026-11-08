@@ -13,7 +13,10 @@ from browserResidentViewmodels import CLOCK_EPOCH, CLOCK_START
 from browserCityFpsOperations import begin_walk_proof, DISTRICT
 from browserNexusCampaign import load, reading_scale
 from mosaicMotionProof import validate_mosaic_motion
-from mosaicCargoObservation import CARGO_OBSERVER_SCRIPT, verify_cargo_draws
+from mosaicCargoObservation import (
+    CARGO_OBSERVER_SCRIPT, MISSION_LABEL_OBSERVER_SCRIPT,
+    verify_cargo_draws, verify_mission_label_frames,
+)
 
 NEXUS_CONTRACTS = [
     ('city-anchor-signature-v1', 'replace-origin', 'retain-origin'),
@@ -119,6 +122,7 @@ def verify_cargo_transition(definition, before, after, saved):
 def install_cargo_observer(page):
     """Observe real Canvas2D label draws; never modify the scene or simulation."""
     page.add_init_script(CARGO_OBSERVER_SCRIPT)
+    page.add_init_script(MISSION_LABEL_OBSERVER_SCRIPT)
 
 
 def save_cargo_draws(page, out, filename):
@@ -126,6 +130,13 @@ def save_cargo_draws(page, out, filename):
     draws = page.evaluate('window.__cityCargoDraws || []')
     (out / filename).write_text(json.dumps(draws, indent=2))
     return draws
+
+
+def save_mission_label_frames(page, out, filename):
+    """Write actual painted rectangles, including the last open frame, first."""
+    frames = page.evaluate('window.__cityLabelFrames || []')
+    (out / filename).write_text(json.dumps(frames, ensure_ascii=False, indent=2))
+    return frames
 
 
 def verify_operation(definition, before, after, objects_before, objects_after, observed_target):
@@ -361,7 +372,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                 case['operationCapture'] = {'before': f'{image_name}-before.png', 'after': f'{image_name}-after.png'}
                 terminal(page)
             begin_walk_proof(button)
-            page.evaluate('window.__cityCargoDraws=[]')
+            page.evaluate('window.__cityCargoDraws=[];window.__cityLabelFrames=[]')
             button.click()
             try:
                 for _ in range(160):
@@ -387,6 +398,10 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                       proof['clickBefore']['y'] == proof['clickAfter']['y'], 'approach teleported on click')
             motion = validate_mosaic_motion(proof, nearby_target=expected_target)
             walk = {'index': index, 'motion': motion}
+            walk['operationLabelFile'] = f'{case_name}-{mission_id}-step-{index}-operation-labels.json'
+            walk['operationLabels'] = verify_mission_label_frames(
+                save_mission_label_frames(page, out, walk['operationLabelFile']),
+                require_labels=bool(operation_before), require_cargo=bool(cargo_before))
             if cargo_before:
                 cargo_draws = save_cargo_draws(page, out, f'{case_name}-{mission_id}-step-{index}-carried-draws.json')
                 walk['carriedObject'] = verify_cargo_draws(cargo_draws, cargo_before,
@@ -423,10 +438,15 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
         transfer = verify_cargo_transition(cargo_definition, cargo_before, cargo_after, progress(page))
         if transfer:
             if cargo_after:
+                page.evaluate('window.__cityLabelFrames=[]')
                 page.clock.run_for(32)
                 check(mission_cargo(page) == cargo_after, 'drawing the carried object changed its identity')
                 transfer['drawFile'] = f'{case_name}-{mission_id}-step-{index}-pickup-draws.json'
                 transfer['draw'] = verify_cargo_draws(save_cargo_draws(page, out, transfer['drawFile']), cargo_after)
+                transfer['labelLayoutFile'] = f'{case_name}-{mission_id}-step-{index}-pickup-labels.json'
+                transfer['labelLayout'] = verify_mission_label_frames(
+                    save_mission_label_frames(page, out, transfer['labelLayoutFile']),
+                    require_labels=True, require_cargo=True)
                 transfer['capture'] = f'{case_name}-{mission_id}-{cargo_after["id"]}-taken.png'
                 page.screenshot(path=str(out / transfer['capture']))
             case['cargoTransfers'].append(transfer)
@@ -462,8 +482,10 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
             check(mission_cargo(page) == before_unmount['cargo'], 'remount lost or duplicated the carried object')
             cargo_capture = None
             cargo_draw_file = None
+            label_layout_file = None
+            label_layout = None
             if before_unmount['cargo']:
-                page.evaluate('window.__cityCargoDraws=[]')
+                page.evaluate('window.__cityCargoDraws=[];window.__cityLabelFrames=[]')
                 page.clock.run_for(32)
                 check(progress(page) == saved and mission_cargo(page) == before_unmount['cargo'],
                       'rendering the restored cargo changed its saved transfer')
@@ -471,13 +493,18 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                 page.screenshot(path=str(out / cargo_capture))
                 cargo_draw_file = f'{case_name}-{mission_id}-step-{index}-remount-draws.json'
                 verify_cargo_draws(save_cargo_draws(page, out, cargo_draw_file), before_unmount['cargo'])
+                label_layout_file = f'{case_name}-{mission_id}-step-{index}-remount-labels.json'
+                label_layout = verify_mission_label_frames(
+                    save_mission_label_frames(page, out, label_layout_file),
+                    require_labels=True, require_cargo=True)
             terminal(page)
             panel.locator('select').select_option(mission_id)
             case['remount'] = {'completedStepIds': saved['records'][mission_id]['completedStepIds'], 'preserved': True,
                                'operationReceipt': completed_operation['receipt'], 'objects': before_unmount['objects'],
                                'operationObjectsPreserved': True, 'cargo': before_unmount['cargo'],
                                'carriedObjectPreserved': bool(before_unmount['cargo']), 'cargoCapture': cargo_capture,
-                               'cargoDrawFile': cargo_draw_file}
+                               'cargoDrawFile': cargo_draw_file, 'labelLayoutFile': label_layout_file,
+                               'labelLayout': label_layout}
     terminal(page)
     expect(panel.locator('[data-city-contract-objective]')).to_have_attribute('data-contract-id', mission_id)
     expect(panel.locator('[data-city-contract-accept]')).to_have_count(0)
@@ -761,6 +788,8 @@ def run_delivery_branches(browser, args, lang, out, results):
                     result['status'] = 'failed'; result['error'] = str(error)
                     result['cargoFailureDraws'] = f'{name}-cargo-failure-draws.json'
                     save_cargo_draws(page, out, result['cargoFailureDraws'])
+                    result['operationLabelFailureFrames'] = f'{name}-operation-label-failure-frames.json'
+                    save_mission_label_frames(page, out, result['operationLabelFailureFrames'])
                     result['media'] = page.evaluate('window.__sceneQA?.media || []')
                     page.screenshot(path=str(out / f'{name}-failure.png'))
                 finally:
@@ -828,6 +857,8 @@ def main():
                             result['status'] = 'failed'; result['error'] = str(error)
                             result['cargoFailureDraws'] = f'{name}-cargo-failure-draws.json'
                             save_cargo_draws(page, out, result['cargoFailureDraws'])
+                            result['operationLabelFailureFrames'] = f'{name}-operation-label-failure-frames.json'
+                            save_mission_label_frames(page, out, result['operationLabelFailureFrames'])
                             result['media'] = page.evaluate('window.__sceneQA?.media || []')
                             page.screenshot(path=str(out / f'{name}-failure.png'))
                         finally:

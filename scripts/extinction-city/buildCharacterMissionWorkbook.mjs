@@ -26,6 +26,9 @@ const fieldEquipmentCommands = [
   'Shotgun, plasma ou lance-roquettes partagés du Nexus ; emplacement limité à la partie, vidé à sa fin ou à l’abandon.'
 ].join('\n');
 const fieldEquipmentSourceFiles = ['src/game/extinctionFieldEquipment.js', 'src/game/extinctionFighterProfiles.js', 'src/components/HubScreen.jsx'];
+// Presentation provenance stays in the receipt, without changing planning cells.
+const cityPresentationSourceFiles = ['src/components/HubScreen.jsx', 'src/game/mosaicMissionOperations.js',
+  'src/game/mosaicMissionCargo.js', 'src/game/renderer.js', 'src/game/spriteAssets.js'];
 if (existingPath) {
   await refreshRuntimeContracts(path.resolve(existingPath));
   process.exit(0);
@@ -422,6 +425,8 @@ async function refreshRuntimeContracts(inputPath) {
   const originalModeFormulas = structuredClone(modeRange.formulas);
   const fieldEquipmentSources = await Promise.all(fieldEquipmentSourceFiles.map(async source => ({ source,
     sha256: createHash('sha256').update(await fs.readFile(path.join(repo, source))).digest('hex') })));
+  const cityPresentationSources = await Promise.all(cityPresentationSourceFiles.map(async source => ({ source,
+    sha256: createHash('sha256').update(await fs.readFile(path.join(repo, source))).digest('hex') })));
   assert.deepEqual(proposals.getRange(`A7:A${data.missions.length + 6}`).values.flat(), data.missions.map(mission => mission.id));
   const setProposal = (row, column, value) => {
     expectedProposals[row - 1][column - 1] = value;
@@ -575,14 +580,14 @@ async function refreshRuntimeContracts(inputPath) {
       .filter(ref => /^(?:src|DLC)\/.*\.js(?:#|$)/.test(ref)).map(ref => ref.split('#')[0])]))].sort();
   const runtimeSources = await Promise.all(sourceFiles.map(async source => ({ source,
     sha256: createHash('sha256').update(await fs.readFile(path.join(repo, source))).digest('hex') })));
-  for (const source of fieldEquipmentSources) assert.equal(source.sha256,
+  for (const source of [...fieldEquipmentSources, ...cityPresentationSources]) assert.equal(source.sha256,
     createHash('sha256').update(await fs.readFile(path.join(repo, source.source))).digest('hex'),
-    `FPS command source changed before export: ${source.source}`);
+    `FPS or presentation source changed before export: ${source.source}`);
   const manifest = new Map(data.sourceManifest.map(source => [source.file, source]));
   for (const source of runtimeSources) assert.equal(source.sha256, manifest.get(source.source)?.sha256, `Planning source changed before export: ${source.source}`);
-  const receipt = { schema: 5, sourceRevision: summary.getRange('B24').values[0][0],
+  const receipt = { schema: 6, sourceRevision: summary.getRange('B24').values[0][0],
     runtimeBaseRevision: option('--runtime-base', data.sourceRevision),
-    sourceRevisionMeaning: 'Historical roster baseline is retained in the workbook; runtimeSources and planning provenance describe the actual edited files.',
+    sourceRevisionMeaning: 'Historical roster and workbook baselines are retained; runtimeSources, fieldEquipmentSources, cityPresentationSources and planning provenance describe the actual edited files.',
     planningDataSha256: data.dataSha256, planningSourceManifestSha256: createHash('sha256').update(JSON.stringify(data.sourceManifest)).digest('hex'),
     workbook: outputName,
     sha256: createHash('sha256').update(bytes).digest('hex'), bytes: bytes.length,
@@ -604,7 +609,7 @@ async function refreshRuntimeContracts(inputPath) {
     authoredNexusProposals: authoredProposalRows.length,
     runtimeLinkedProposals: linkedProposals.map(mission => ({ id: mission.id, runtimeMissionId: mission.runtimeMissionId,
       implementationStatus: mission.implementationStatus, scope: mission.runtimeScope })),
-    fieldEquipmentSources, changedModeCells,
+    fieldEquipmentSources, cityPresentationSources, changedModeCells,
     proposalsRequiringDiegeticRewrite: data.missions.filter(mission => mission.diegeticReviewStatus === 'diegetic_rewrite_required').length,
     preservedTrackingColumns: ['M', 'N', 'O', 'P', 'Q', 'S', 'T', 'U'],
     dependencyProof, gateProof,

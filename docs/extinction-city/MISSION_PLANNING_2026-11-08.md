@@ -106,6 +106,25 @@ du refuge ne sont pas annoncées comme réalisées. « Modes FPS » ajoute les
 commandes V/B et leurs limites de stock, recharge, pause et session, avec
 provenance dans le helper d’équipement, les profils et le raccord de l’écran.
 
+### Provenance de la présentation
+
+Le reçu du classeur et sa relecture utilisent le schéma 6. En complément des
+19 entrées de `runtimeSources` et des 3 entrées de `fieldEquipmentSources`,
+`cityPresentationSources` contrôle cinq fichiers : `HubScreen.jsx`,
+`mosaicMissionOperations.js`, `mosaicMissionCargo.js`, `renderer.js` et
+`spriteAssets.js`. Ces groupes peuvent partager des fichiers. Le rendu des
+sprites et sa géométrie ne figuraient pas dans le manifeste de planification ;
+ce groupe externe conserve désormais leurs empreintes sans ajouter de cellules.
+
+La correction d’affichage des cartouches après la révision `22eb3ec8` conserve
+toutes les données logiques de planification, les contenus, le suivi et les
+formules. Seule l’empreinte de `mosaicMissionOperations.js` change dans le
+manifeste de planification. Le classeur est donc conservé à l’octet près.
+`provenanceRefresh` relie le nouveau reçu au reçu précédent et à l’empreinte du
+classeur conservé. La relecture vérifie réellement les empreintes du classeur,
+de la planification et des trois groupes de sources dans le dépôt courant ;
+elle rejette aussi l’absence d’une des cinq dépendances de présentation.
+
 ## Reproduction
 
 Depuis la racine du dépôt, avec **Node 22** et les dépendances verrouillées :
@@ -122,7 +141,24 @@ Le premier chemin reçoit le JSON développé ; le second reçoit le reçu compa
 Le reçu conserve les comptes, l’empreinte du JSON logique, l’empreinte du
 manifeste de sources et l’empreinte des données de planification. Les sorties
 sont déterministes à sources identiques. Une modification du contenu importé
-ou du générateur demande une nouvelle génération du reçu et du classeur.
+ou du générateur demande une nouvelle génération des données et du reçu.
+L’égalité des données logiques doit être établie avant de conserver le classeur
+sans le réexporter ; une modification des cellules demande sa régénération.
+
+La relecture du classeur avec contrôle des sources s’exécute ainsi :
+
+```sh
+python3 scripts/extinction-city/verifyCharacterMissionWorkbook.py \
+  docs/excel/Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx \
+  --planning /tmp/mission-planning-2026-11-08.json \
+  --provenance-receipt docs/extinction-city/character-mission-workbook-receipt-2026-11-08.json \
+  --repo . \
+  --receipt /tmp/character-mission-workbook-readback.json
+```
+
+Le JSON de planification, le reçu de provenance et les fichiers sources doivent
+provenir du même état du dépôt. Cette vérification ne remplace pas les parcours
+de jeu natifs.
 
 ```sh
 node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs \

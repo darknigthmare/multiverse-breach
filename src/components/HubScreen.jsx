@@ -5,7 +5,7 @@ import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { getMosaicExhibits, getMosaicExhibitView, getMosaicExhibitZones, drawMosaicService } from '../game/mosaicExhibits.js';
 import { buildMosaicReconnaissanceDossier, normalizeMosaicReconnaissance, startMosaicReconnaissance, advanceMosaicReconnaissance, getMosaicReconnaissanceObjective } from '../game/mosaicReconnaissance.js';
 import { normalizeMosaicCharacterMissions, getMosaicCharacterMissionCatalog, getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, getMosaicCharacterMissionWorldObjects, getMosaicCharacterMissionPropZones, getMosaicCharacterMissionCargo, startMosaicCharacterMission, restartMosaicCharacterMission, acceptMosaicCharacterMissionRequest, advanceMosaicCharacterMission, resolveMosaicCharacterMission, localizeCityMission } from '../game/mosaicCharacterMissions.js';
-import { drawMosaicMissionObject, getMosaicMissionOperation } from '../game/mosaicMissionOperations.js';
+import { drawMosaicMissionObjectProp, drawMosaicMissionObjectLabel, selectMosaicMissionObjectLabel, getMosaicMissionOperation } from '../game/mosaicMissionOperations.js';
 import { drawMosaicMissionCargo } from '../game/mosaicMissionCargo.js';
 import MosaicCharacterMissions from './MosaicCharacterMissions.jsx';
 import { createExtinctionRelayOperation, tickExtinctionRelayOperation, interactExtinctionRelayOperation, getExtinctionRelayStatus } from '../game/extinctionRelayOperation.js';
@@ -23,7 +23,7 @@ import { applyActorAppearance } from '../game/wardrobe.js';
 import React, { lazy, Suspense, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
 import { getTranslation } from '../game/translation';
-import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
+import { drawPixelSprite, getGeneratedSpriteBounds, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { getProgressKeys, rollProgressCalendar } from '../game/progressCalendar.js';
 import { CORE_CODEX_ENTRIES, LORE_DB } from '../game/lore';
@@ -3091,15 +3091,30 @@ function MosaicCityHub({
       if (hero?.id) {
         const bob = Math.sin(stateRef.current.t * 0.12 + x * 0.01) * 1.4;
         const spriteState = hero.state || 'idle';
+        const renderedHero = { ...hero, state: spriteState };
         ctx.fillStyle = 'rgba(0,0,0,0.42)';
         ctx.fillRect(x - 18, y + 21, 36, 7);
-        drawPixelSprite(ctx, x, y + 24 + bob, { ...hero, state: spriteState }, stateRef.current.t, facing, isPlayer ? 78 : 68, 'nexus');
+        drawPixelSprite(ctx, x, y + 24 + bob, renderedHero, stateRef.current.t, facing, isPlayer ? 78 : 68, 'nexus');
         ctx.fillStyle = isPlayer ? '#ffea00' : '#e8ffff';
         ctx.font = '10px "Share Tech Mono"';
         ctx.textAlign = 'center';
         ctx.fillText(label, x, y - 42 + bob);
+        let protectedRects = null;
+        if (isPlayer) {
+          const metrics = ctx.measureText(label);
+          const left = Math.max(metrics.width / 2, metrics.actualBoundingBoxLeft || 0);
+          const right = Math.max(metrics.width / 2, metrics.actualBoundingBoxRight || 0);
+          const ascent = Math.max(10, metrics.actualBoundingBoxAscent || 0);
+          const descent = Math.max(3, metrics.actualBoundingBoxDescent || 0);
+          protectedRects = [
+            getGeneratedSpriteBounds(x, y + 24 + bob, renderedHero, stateRef.current.t, 78, 'nexus')
+              || { x: x - 48, y: y - 60, width: 96, height: 124 },
+            { x: x - left, y: y - 42 + bob - ascent, width: Math.max(1, left + right), height: ascent + descent },
+            { x: x - 18, y: y + 21, width: 36, height: 7 }
+          ];
+        }
         ctx.textAlign = 'left';
-        return;
+        return protectedRects;
       }
       const bob = Math.sin(stateRef.current.t * 0.12 + x * 0.01) * 1.6;
       ctx.fillStyle = 'rgba(0,0,0,0.42)';
@@ -3117,6 +3132,7 @@ function MosaicCityHub({
       ctx.textAlign = 'center';
       ctx.fillText(label, x, y - 28 + bob);
       ctx.textAlign = 'left';
+      return isPlayer ? [{ x: x - 48, y: y - 60, width: 96, height: 124 }] : null;
     };
     const drawUniverseScenery = (activeDistrict, progress) => {
       if (!activeDistrict.universe) return;
@@ -3398,6 +3414,7 @@ function MosaicCityHub({
       }
       ctx.stroke();
 
+      let playerProtectedRects = [];
       [...scenery, ...zones.filter(zone => zone.action && zone.action !== 'talk'
         && !(zone.action === 'character-mission' && missionWorldObjectsRef.current.some(object => object.targetId === zone.id))).map(zone => ({ type: 'terminal', zone })),
         ...missionWorldObjectsRef.current.map(object => ({ ...object, type: 'mission-object' })), ...state.npcs, { ...state.player, hero: playerAvatar, isPlayer: true }]
@@ -3418,11 +3435,11 @@ function MosaicCityHub({
             return;
           }
           if (npc.type === 'mission-object') {
-            drawMosaicMissionObject(ctx, npc, state.t, Math.hypot(npc.x - state.player.x, npc.y - state.player.y) <= 110, Boolean(reducedMotion?.matches));
+            drawMosaicMissionObjectProp(ctx, npc, state.t, Math.hypot(npc.x - state.player.x, npc.y - state.player.y) <= 110, Boolean(reducedMotion?.matches));
             return;
           }
           if (npc.isPlayer) {
-            drawPixelPerson(npc.x, npc.y, '#39c5bb', '#ffea00', npc.facing, playerName.slice(0, 10), true, { ...playerAvatar, state: npc.state });
+            playerProtectedRects = drawPixelPerson(npc.x, npc.y, '#39c5bb', '#ffea00', npc.facing, playerName.slice(0, 10), true, { ...playerAvatar, state: npc.state }) || [];
             drawMosaicMissionCargo(ctx, missionCargoRef.current, npc, state.t, Boolean(reducedMotion?.matches));
             return;
           }
@@ -3442,6 +3459,20 @@ function MosaicCityHub({
             ctx.fillText(lang === 'fr' ? 'E: parler' : 'E: talk', npc.x - 26, npc.y - 39);
           }
         });
+
+      if (missionCargoRef.current) {
+        ctx.save();
+        ctx.font = '10px "Share Tech Mono"';
+        const cargoLabelWidth = ctx.measureText(missionCargoRef.current.label).width + 14;
+        ctx.restore();
+        playerProtectedRects.push(
+          { x: state.player.x + 11, y: state.player.y - 38, width: 31, height: 38 },
+          { x: state.player.x - cargoLabelWidth / 2, y: state.player.y - 78, width: cargoLabelWidth, height: 17 }
+        );
+      }
+      const labelViewport = { x: state.camera.x, y: state.camera.y, width: canvas.width, height: canvas.height };
+      const labelledObject = selectMosaicMissionObjectLabel(missionWorldObjectsRef.current, state.player, { viewport: labelViewport });
+      drawMosaicMissionObjectLabel(ctx, labelledObject, { viewport: labelViewport, protectedRects: playerProtectedRects });
 
       ctx.restore();
 

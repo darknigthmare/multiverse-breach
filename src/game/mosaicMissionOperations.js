@@ -75,6 +75,14 @@ function linesWithin(ctx, text, width) {
   const words = String(text).split(/\s+/), lines = [];
   let line = '';
   for (const word of words) {
+    if (ctx.measureText(word).width > width) {
+      if (line) { lines.push(line); line = ''; }
+      for (const letter of word) {
+        if (line && ctx.measureText(line + letter).width > width) { lines.push(line); line = ''; }
+        line += letter;
+      }
+      continue;
+    }
     const next = line ? `${line} ${word}` : word;
     if (line && ctx.measureText(next).width > width) { lines.push(line); line = word; }
     else line = next;
@@ -83,10 +91,90 @@ function linesWithin(ctx, text, width) {
   return lines;
 }
 
+const finitePoint = point => Number.isFinite(point?.x) && Number.isFinite(point?.y);
+const finiteRect = rect => finitePoint(rect) && Number.isFinite(rect.width) && rect.width > 0
+  && Number.isFinite(rect.height) && rect.height > 0;
+const overlaps = (a, b, gap = 0) => a.x < b.x + b.width + gap && a.x + a.width > b.x - gap
+  && a.y < b.y + b.height + gap && a.y + a.height > b.y - gap;
+const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
+
+/** Select one nearby physical operation without changing its saved state.
+ * Completed equipment remains inspectable when it is the closest candidate. */
+export function selectMosaicMissionObjectLabel(objects, player, { viewport, range = 110 } = {}) {
+  if (!Array.isArray(objects) || !finitePoint(player) || !Number.isFinite(range) || range < 0
+    || viewport && !finiteRect(viewport)) return null;
+  const key = object => `${object.missionId || ''}:${object.stepId || ''}:${object.targetId || ''}:${object.x}:${object.y}`;
+  return objects.filter(object => finitePoint(object)
+    && (!viewport || object.x >= viewport.x && object.x <= viewport.x + viewport.width
+      && object.y >= viewport.y && object.y <= viewport.y + viewport.height))
+    .map(object => ({ object, distance: Math.hypot(object.x - player.x, object.y - player.y) }))
+    .filter(candidate => candidate.distance <= range)
+    .sort((a, b) => Number(Boolean(b.object.active)) - Number(Boolean(a.object.active))
+      || a.distance - b.distance || key(a.object).localeCompare(key(b.object)))
+    [0]?.object || null;
+}
+
+/** Place a single world-space label inside the camera and outside the player's
+ * actual image, name, carried silhouette and carried label rectangles. */
+export function placeMosaicMissionObjectLabel({ anchor, width, height, viewport, protectedRects = [], padding = 8, gap = 8 } = {}) {
+  if (!finitePoint(anchor) || !finiteRect(viewport) || !Number.isFinite(width) || width <= 0
+    || !Number.isFinite(height) || height <= 0 || !Number.isFinite(padding) || padding < 0
+    || !Number.isFinite(gap) || gap < 0 || !Array.isArray(protectedRects) || protectedRects.some(rect => !finiteRect(rect))) return null;
+  const left = viewport.x + padding, top = viewport.y + padding;
+  const right = viewport.x + viewport.width - padding - width;
+  const bottom = viewport.y + viewport.height - padding - height;
+  if (right < left || bottom < top) return null;
+  const preferred = { x: anchor.x - width / 2, y: anchor.y - 44 - height };
+  const xs = [preferred.x, left, right];
+  const ys = [preferred.y, anchor.y + 28 + gap, top, bottom];
+  for (const rect of protectedRects) {
+    xs.push(rect.x - gap - width, rect.x + rect.width + gap);
+    ys.push(rect.y - gap - height, rect.y + rect.height + gap);
+  }
+  const positions = [];
+  for (const x of new Set(xs.map(value => clamp(value, left, right)))) {
+    for (const y of new Set(ys.map(value => clamp(value, top, bottom)))) {
+      const rect = { x, y, width, height };
+      if (!protectedRects.some(protectedRect => overlaps(rect, protectedRect, gap))) positions.push(rect);
+    }
+  }
+  positions.sort((a, b) => Math.hypot(a.x - preferred.x, a.y - preferred.y) - Math.hypot(b.x - preferred.x, b.y - preferred.y)
+    || a.y - b.y || a.x - b.x);
+  return positions[0] || null;
+}
+
+/** The scene calls this once, after its depth-sorted props and people. Existing
+ * callers without a viewport retain the former inline label placement. */
+export function drawMosaicMissionObjectLabel(ctx, object, { viewport, protectedRects = [], nearby = true, padding = 8, gap = 8 } = {}) {
+  if (!finitePoint(object) || viewport && !finiteRect(viewport)) return null;
+  const width = Math.min(188, viewport ? viewport.width - padding * 2 : 188);
+  if (width <= 14) return null;
+  ctx.save();
+  ctx.font = '12px "Share Tech Mono"';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'alphabetic';
+  const titleLines = linesWithin(ctx, object.propName, width - 14);
+  const detailLines = nearby ? linesWithin(ctx, object.statusLabel, width - 14) : [];
+  const all = [...titleLines, ...detailLines], height = all.length * 15 + 12;
+  const rect = viewport ? placeMosaicMissionObjectLabel({ anchor: object, width, height, viewport, protectedRects, padding, gap })
+    : { x: object.x - width / 2, y: object.y - 44 - height, width, height };
+  if (rect) {
+    const light = object.completed ? '#86efac' : nearby ? '#ffe194' : '#d7ad63';
+    ctx.fillStyle = 'rgba(5,12,18,0.94)';
+    ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
+    all.forEach((line, i) => {
+      ctx.fillStyle = i < titleLines.length ? '#f4f8e9' : light;
+      ctx.fillText(line, rect.x + rect.width / 2, rect.y + 12 + i * 15);
+    });
+  }
+  ctx.restore();
+  return rect;
+}
+
 /** Existing Canvas art direction: six distinguishable pieces of field equipment.
  * The working/finished states come from saved operation receipts. No animation
  * or draw call can complete a quest or change a collision footprint. */
-export function drawMosaicMissionObject(ctx, object, tick, nearby = false, reducedMotion = false) {
+export function drawMosaicMissionObjectProp(ctx, object, tick, nearby = false, reducedMotion = false) {
   const done = object.completed;
   const light = done ? '#86efac' : nearby ? '#ffe194' : '#d7ad63';
   const pulse = reducedMotion ? 0.5 : (Math.sin(tick * 0.055) + 1) * 0.5;
@@ -190,15 +278,11 @@ export function drawMosaicMissionObject(ctx, object, tick, nearby = false, reduc
     if (done) { ctx.fillRect(27, 5, 7, 3); ctx.fillRect(40, 5, 7, 3); }
   }
 
-  if (nearby || object.highlight) {
-    ctx.font = '12px "Share Tech Mono"';
-    ctx.textAlign = 'center';
-    const titleLines = linesWithin(ctx, object.propName, 174);
-    const detailLines = nearby ? linesWithin(ctx, object.statusLabel, 174) : [];
-    const all = [...titleLines, ...detailLines];
-    const y = -44 - all.length * 15;
-    ctx.fillStyle = 'rgba(5,12,18,0.94)'; ctx.fillRect(-94, y - 12, 188, all.length * 15 + 12);
-    all.forEach((line, i) => { ctx.fillStyle = i < titleLines.length ? '#f4f8e9' : light; ctx.fillText(line, 0, y + i * 15); });
-  }
   ctx.restore();
+}
+
+/** Backward-compatible prop and inline-label renderer for isolated callers. */
+export function drawMosaicMissionObject(ctx, object, tick, nearby = false, reducedMotion = false) {
+  drawMosaicMissionObjectProp(ctx, object, tick, nearby, reducedMotion);
+  if (nearby || object.highlight) drawMosaicMissionObjectLabel(ctx, object, { nearby });
 }

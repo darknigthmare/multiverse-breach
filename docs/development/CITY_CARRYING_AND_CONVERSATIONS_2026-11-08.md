@@ -43,6 +43,14 @@ Les nouveaux accessoires utilisent le rendu Canvas existant : lampe, pompe, roto
 
 Les 28 anciennes missions conservent leur ordre, leurs identifiants et leurs visites historiques. Les quatre nouvelles sont ajoutées après elles. Les données inconnues des sauvegardes restent conservées.
 
+### Lecture des objets sans masquer le personnage
+
+La relecture des captures après plusieurs aventures a révélé une accumulation de cartouches au-dessus des accessoires terminés. La scène conserve désormais tous ces objets mais affiche **un seul cartouche d’intervention à la fois**. L’objectif actif a priorité lorsqu’il est visible et à portée ; sinon, le plus proche des objets présents reste consultable.
+
+Le cartouche reste dans la caméra et évite les bornes de l’image du joueur effectivement dessinée, son nom, son ombre, l’objet porté et son étiquette. Le renderer expose cette géométrie en lecture seule, sans charger de nouvelle image. Le placement ne change ni les collisions, ni les états des accessoires, ni la progression. Les objets gardent leur tri de profondeur et le cartouche est peint après le monde.
+
+La recette navigateur observe directement les rectangles, images et textes réellement peints par Canvas. Elle contrôle le nombre de cartouches par image et leur séparation avec le personnage et son cargo ; elle n’utilise pas un compteur de réussite fourni par la scène. Les captures de fin et de reprise permettent aussi de vérifier que les résultats des anciennes interventions restent visibles.
+
 ### Cas d’import corrigé
 
 Un reçu inconnu pouvait auparavant imposer une séquence entière maximale à une nouvelle intervention. Une prise était alors validée avec une séquence non représentable, ce qui empêchait de retrouver le cargo. L’ordre des nouvelles opérations utilise désormais seulement les reçus valides d’étapes connues. Si aucun entier sûr suivant n’existe pour ces reçus, l’action est refusée avant d’avancer. Deux régressions couvrent la conservation des données inconnues et le refus sans mutation.
@@ -69,16 +77,17 @@ Les contrats disponibles sont désormais : base 28 Nexus ; Halo 28 Nexus + 2 Hal
 
 ## Preuves et limites au moment de la préparation du commit
 
-- Gate UI/gameplay complet : **503/503** tests réussis sur l’intégration.
+- Gate UI/gameplay complet : **510/510** tests réussis après le correctif des cartouches, dont sept régressions sur leur sélection et leur placement.
 - Moteur des contrats, opérations et cargo : recettes de déplacement, branches, sauvegardes, refus et coexistence des objets ; journal local `/tmp/multiverse-next-city-validated.log`.
 - Cargo : **27/27** tests, incluant les deux régressions d’import et la lampe déjà allumée pendant son essai.
 - FPS : **101/101** tests ; 48 combinaisons moteur de modes/profils/armes et huit fins victoire/défaite sans modification des récompenses.
 - Planification/catalogue : **21/21** ; profils physiques de contrats : **7/7**, dont quatre configurations d’installation.
 - Lint ciblé, syntaxe des recettes, construction de la fixture carnet et compilation Vite directe réussis. La compilation directe ne remplace pas le lifecycle complet de production.
+- Géométrie de sprite : **4/4** tests, avec comparaison aux vrais appels du renderer dans 36 combinaisons d’images contrôlées ; les observations navigateur restent une preuve séparée.
 - Les **44 commandes prebuild**, leur contenu et leur ordre sont inchangés ; SHA-256 de la chaîne : `706f07554e39f05f19f00ddd21ba6a821a6989825e7d1b3048e31ee6fb86b97d`.
 
 Chromium local a été essayé et s’arrête avant l’ouverture de la page avec `socket(): Operation not permitted`. Les nouvelles recettes navigateur ne sont donc pas déclarées réussies localement. La PR publie séparément leurs résultats GitHub Actions sur le commit effectivement testé.
 
-La matrice Cité attend 50 contextes et 176 complétions avec les prérequis, dont 32 combinaisons de livraison FR/EN. Elle observe les véritables déplacements, les `fillText` du cargo et leurs transformations, les reçus, les sauvegardes pendant le trajet, les changements de mission et les réponses finales. La recette FPS conserve les 19 cas, les graines et les seuils existants ; les trois ramassages naturels ajoutent le cycle V/B, la recharge, la pause et le nettoyage. Ces nombres sont des **attendus de recette** jusqu’à lecture des artefacts de la nouvelle révision.
+La matrice Cité attend 50 cas et 176 complétions avec les prérequis, dont 32 combinaisons de livraison FR/EN. Deux rencontres de résident imbriquées portent le nombre de contextes navigateur à 52. Elle observe les véritables déplacements, les `fillText` du cargo et leurs transformations, les reçus, les sauvegardes pendant le trajet, les changements de mission et les réponses finales. La recette FPS conserve les 19 cas, les graines et les seuils existants ; les trois ramassages naturels ajoutent le cycle V/B, la recharge, la pause et le nettoyage. Ces nombres sont des **attendus de recette** jusqu’à lecture des artefacts de la nouvelle révision.
 
 Les propositions encore à créer, l’art individuel et l’équilibrage exhaustif restent ouverts. Cette passe ne revendique ni une partie navigateur pour chacun des 1 811 combattants, ni une validation canonique globale. Les bundles volumineux restent un chantier distinct ; aucune amélioration de cadence d’affichage n’est déduite des tests fonctionnels.
