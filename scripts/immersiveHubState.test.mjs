@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 import { createRaceKeyboardState, createRaceRunGuard } from '../src/game/raceSessionControls.js';
 import { advanceMosaicPlayer } from '../src/game/mosaicCityRuntime.js';
 import { applyExtinctionReport, compareGearBoosts, getSceneCanvasSize, getSceneHudLayout, getSceneHudRect, normalizeExtinctionReport, normalizeHubNavigation, restoreMosaicLocation, snapshotMosaicLocation } from '../src/game/immersiveHubState.js';
+import { applyDisplayPreferences, DISPLAY_PREFERENCES_EVENT, readSceneHudPreferences } from '../src/game/displayPreferences.js';
 
 const districts = {
   atrium: { id: 'atrium', worldW: 1640, worldH: 1080, spawn: { x: 780, y: 520 } },
@@ -113,48 +114,81 @@ test('measured HUD bounds project through the actual canvas offset and backing s
   assert.equal(getSceneHudRect(canvasRect, canvasRect, { width: 800, height: 0 }), null);
 });
 
-test('the production viewport hook refreshes measured titles and disconnects without leaking an overlay to other scenes', () => {
+test('the production viewport hook tracks title sizes and position-only preference changes before painting, then disconnects', () => {
   // Run the actual hook with controlled lifecycle/DOM services. Native CI checks
   // the painted cartouches against independently measured browser rectangles.
   const source = readFileSync(new URL('../src/components/useSceneViewport.js', import.meta.url), 'utf8');
   const declaration = source.slice(source.indexOf('export default function')).replace('export default ', '');
   const fixture = (withOverlay = true, enabled = true) => {
-    let effect, observer, canvasBounds = { left: 0, top: 0, width: 844, height: 390 };
-    let overlayBounds = { left: 32, top: 84, width: 320, height: 99 };
+    let effect, observer, styleObserver, canvasBounds = { left: 0, top: 0, width: 844, height: 390 };
+    let overlayBounds = { left: 12, top: 64, width: 320, height: 99 };
     const listeners = new Map(), observed = [], canvas = { getBoundingClientRect: () => canvasBounds };
     const overlay = { getBoundingClientRect: () => overlayBounds };
-    const createHook = new Function('env', `const { useRef, useEffect, ResizeObserver, window, document,
+    const properties = new Map([['--game-safe-area', '12px'], ['--game-hud-scale', '1']]), mutations = [];
+    const root = { dataset: {}, style: { getPropertyValue: name => properties.get(name) || '',
+      setProperty(name, value) {
+        properties.set(name, value);
+        if (name === '--game-safe-area') overlayBounds = { ...overlayBounds,
+          left: Number.parseFloat(value), top: 52 + Number.parseFloat(value) };
+        mutations.push({ type: 'attributes', target: root, attributeName: 'style' });
+      } } };
+    const createHook = new Function('env', `const { useRef, useEffect, ResizeObserver, MutationObserver, window, document,
       getComputedStyle, readSceneHudPreferences, DISPLAY_PREFERENCES_EVENT, getSceneCanvasSize,
       getSceneHudLayout, getSceneHudRect } = env; ${declaration}; return useSceneViewport;`);
     const hook = createHook({ useRef: value => ({ current: value }), useEffect: callback => { effect = callback; },
       ResizeObserver: class { constructor(callback) { this.callback = callback; observer = this; }
         observe(element) { observed.push(element); } disconnect() { this.disconnected = true; } },
+      MutationObserver: class { constructor(callback) { this.callback = callback; styleObserver = this; }
+        observe(element, options) { this.element = element; this.options = options; }
+        disconnect() { this.disconnected = true; } },
       window: { addEventListener: (name, callback) => listeners.set(name, callback),
         removeEventListener: (name, callback) => { assert.equal(listeners.get(name), callback); listeners.delete(name); } },
-      document: { documentElement: {} }, getComputedStyle: () => ({}),
-      readSceneHudPreferences: () => ({ hudScale: 1, safeArea: 12 }), DISPLAY_PREFERENCES_EVENT: 'display-preferences',
+      document: { documentElement: root }, getComputedStyle: () => root.style,
+      readSceneHudPreferences, DISPLAY_PREFERENCES_EVENT,
       getSceneCanvasSize, getSceneHudLayout, getSceneHudRect });
     const layout = hook({ current: canvas }, 540, enabled, withOverlay ? { current: overlay } : null);
     const cleanup = effect();
-    return { layout, cleanup, observer, observed, listeners, canvas, overlay,
+    return { layout, cleanup, observer, styleObserver, observed, listeners, canvas, overlay, root,
+      flushMutations: () => { const records = mutations.splice(0);
+        if (records.length && styleObserver?.element && !styleObserver.disconnected) styleObserver.callback(records); },
       wrapTitle: () => { overlayBounds = { ...overlayBounds, height: 173 }; observer.callback(); },
-      changeSafeArea: () => { overlayBounds = { ...overlayBounds, left: 44 }; listeners.get('display-preferences')(); },
       hideCanvas: () => { canvasBounds = { ...canvasBounds, width: 0 }; observer.callback(); } };
   };
   const city = fixture();
   assert.deepEqual(city.observed, [city.canvas, city.overlay]);
   assert.ok(Math.abs(city.layout.current.occlusionRect.height - 99 * 540 / 390) < 1e-9);
+  // Native fixture order: mount at the default margin, then write root CSS.
+  // The title moves (+20,+20) without resizing or dispatching a preference event.
+  city.root.style.setProperty('--game-hud-scale', '1.4');
+  city.root.style.setProperty('--game-safe-area', '32px');
+  city.flushMutations();
+  assert.ok(Math.abs(city.layout.current.occlusionRect.x - 32 * city.canvas.width / 844) < 1e-9,
+    'the first draw after a root style mutation must use the new horizontal position');
+  assert.ok(Math.abs(city.layout.current.occlusionRect.y - 84 * 540 / 390) < 1e-9);
+  assert.equal(city.styleObserver.element, city.root);
+  assert.deepEqual(city.styleObserver.options, { attributes: true, attributeFilter: ['style', 'class'] });
+  // A storage listener can run before GameDisplayPreferencesSync applies CSS.
+  city.listeners.get('storage')();
+  applyDisplayPreferences({ safeArea: 12 }, city.root);
+  city.flushMutations();
+  assert.ok(Math.abs(city.layout.current.occlusionRect.x - 12 * city.canvas.width / 844) < 1e-9);
+  assert.ok(Math.abs(city.layout.current.occlusionRect.y - 64 * 540 / 390) < 1e-9);
   city.wrapTitle();
   assert.ok(Math.abs(city.layout.current.occlusionRect.height - 173 * 540 / 390) < 1e-9);
-  city.changeSafeArea();
-  assert.ok(Math.abs(city.layout.current.occlusionRect.x - 44 * city.canvas.width / 844) < 1e-9);
+  applyDisplayPreferences({ safeArea: 32 }, city.root);
+  city.listeners.get(DISPLAY_PREFERENCES_EVENT)();
+  assert.ok(Math.abs(city.layout.current.occlusionRect.x - 32 * city.canvas.width / 844) < 1e-9);
   city.hideCanvas();
   assert.equal(city.layout.current, null, 'a hidden canvas cannot retain stale occlusion geometry');
   city.cleanup();
   assert.equal(city.observer.disconnected, true);
+  assert.equal(city.styleObserver.disconnected, true);
   assert.equal(city.listeners.size, 0);
+  city.root.style.setProperty('--game-safe-area', '12px'); city.flushMutations();
+  assert.equal(city.layout.current, null);
   const otherScene = fixture(false);
   assert.deepEqual(otherScene.observed, [otherScene.canvas]);
+  assert.equal(otherScene.styleObserver, undefined, 'scenes without the DOM overlay do not observe root mutations');
   assert.equal(otherScene.layout.current.occlusionRect, null);
   assert.ok(otherScene.layout.current.fpsRadar);
   otherScene.cleanup();
@@ -162,6 +196,7 @@ test('the production viewport hook refreshes measured titles and disconnects wit
   const disabled = fixture(true, false);
   assert.equal(disabled.layout.current, null);
   assert.equal(disabled.observed.length, 0);
+  assert.equal(disabled.styleObserver, undefined);
   assert.equal(disabled.cleanup, undefined);
 });
 

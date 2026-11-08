@@ -183,6 +183,11 @@ classeur reste identique à l'octet près, avec ses 36 contrats, ses 3 824
 propositions, ses formules et son suivi manuel. Le reçu conserve le lien avec
 l'actualisation précédente ; aucune validation native d'Excel n'est ajoutée.
 
+Le suivi des changements de position après `6342f3c` actualise ensuite la seule
+empreinte de `useSceneViewport.js`. Le JSON de planification complet et l'Excel
+restent encore identiques ; leurs empreintes et la conservation des données
+ont été vérifiées avant cette actualisation du reçu.
+
 ## Reproduction
 
 Depuis la racine du dépôt, avec **Node 22** et les dépendances verrouillées :
