@@ -6,7 +6,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
-import { Workbook, SpreadsheetFile } from '@oai/artifact-tool';
+import { FileBlob, Workbook, SpreadsheetFile } from '@oai/artifact-tool';
 
 const args = process.argv.slice(2);
 const option = (name, fallback) => args.includes(name) ? args[args.indexOf(name) + 1] : fallback;
@@ -15,6 +15,11 @@ const planningPath = path.resolve(option('--planning', '/tmp/mission-planning-20
 const fpsPath = path.resolve(option('--fps', '/tmp/multiverse-fps-roster-2026-11-08.json'));
 const outputDir = path.resolve(option('--out', path.join(repo, 'outputs/character-missions-20261108')));
 const outputName = 'Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx';
+const existingPath = option('--existing', '');
+if (existingPath) {
+  await refreshRuntimeContracts(path.resolve(existingPath));
+  process.exit(0);
+}
 const data = JSON.parse(await fs.readFile(planningPath, 'utf8'));
 const fpsData = JSON.parse(await fs.readFile(fpsPath, 'utf8'));
 const { MOSAIC_CHARACTER_MISSIONS } = await import(pathToFileURL(path.join(repo, 'src/game/mosaicCharacterMissions.js')));
@@ -116,13 +121,8 @@ ms.getRange('R7').formulas = [['=IF(N7<>"Validé","Valider le lore",IF(O7<>"Term
 ms.getRange(`R7:R${missions.lastRow}`).fillDown();
 ms.getRange(`R7:R${missions.lastRow}`).conditionalFormats.add('containsText', { text: 'Terminée', format: { fill: colors.green } });
 
-const liveRows = MOSAIC_CHARACTER_MISSIONS.map(mission => [mission.id, byCharacter.get(mission.heroId)?.name || mission.heroId,
-  mission.title.fr, mission.premise.fr, mission.steps.map((step, index) => `${index + 1}. ${step.text.fr}`).join('\n'),
-  mission.steps.find(step => step.type === 'decision').choices.filter(item => item.valid).map(item => `${item.label.fr}\n${item.result.fr}`).join('\n\n'),
-  'Personnage possédé, quartier du Nexus et vitrines requises disponibles.',
-  'Intégré ; 19 tests de source et déplacements exécutés. Recette navigateur suivie dans la PR.',
-  'Dossier et choix sauvegardés ; pas de monnaie ni d’équipement attribué.', mission.source]);
-table(sheets['Contrats jouables'], 'ContratsJouables', 'Sept contrats originaux jouables',
+const liveRows = runtimeContractRows(MOSAIC_CHARACTER_MISSIONS, byCharacter);
+table(sheets['Contrats jouables'], 'ContratsJouables', `${liveRows.length} contrats originaux jouables`,
   'Missions distinctes des propositions à créer. Progression sur place, choix puis transmission à l’ancre locale.',
   ['ID contrat', 'Personnage', 'Titre', 'Incident', 'Étapes dans la Cité', 'Conclusions possibles', 'Accès', 'État vérifié', 'Résultat', 'Sources du projet'],
   liveRows, [39, 25, 38, 60, 74, 74, 42, 54, 46, 60]);
@@ -221,7 +221,7 @@ summary.getRange('E15:E18').fillDown();
 summary.getRange('A16:B19').values = [
   ['Utiliser le suivi', 'Filtrer « Missions à créer » par personnage, univers ou priorité. Les colonnes jaunes sont modifiables.'],
   ['Fin d’une mission', 'Lore validé, écriture terminée, intégration effectuée et recette validée sont tous requis.'],
-  ['Contrats jouables', 'Les sept contrats intégrés ont leurs propres IDs et parcours. Ils ne terminent pas les 3 824 propositions.'],
+  ['Contrats jouables', `${liveRows.length} contrats intégrés ont leurs propres IDs et parcours. Ils ne terminent pas les 3 824 propositions.`],
   ['Profils FPS', 'Les techniques exécutables, schémas de vue et planches spécifiques sont distingués. Les PNJ restent exclus du combat.']
 ];
 summary.getRange('A22:B24').values = [
@@ -263,7 +263,7 @@ for (const [values, expected] of [
 }
 ms.getRange('N7:Q7').values = original;
 workbook.recalculate();
-assert.deepEqual(summary.getRange('B7:B13').values.flat(), [1912, 101, 1912, 1912, 0, 7, 4]);
+assert.deepEqual(summary.getRange('B7:B13').values.flat(), [1912, 101, 1912, 1912, 0, liveRows.length, 4]);
 for (const row of [7, 1918, missions.lastRow]) assert.ok(ms.getRange(`R${row}`).formulas[0][0].includes(`N${row}`));
 const errors = await workbook.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!', options: { useRegex: true, maxResults: 100 }, summary: 'Formula error scan', maxChars: 5000 });
 const summaryInspection = await workbook.inspect({ kind: 'table', range: 'Synthèse!A6:E13', include: 'values,formulas', tableMaxRows: 8, tableMaxCols: 5, maxChars: 8000 });
@@ -292,3 +292,86 @@ const receipt = { schema: 1, sourceRevision: data.sourceRevision, workbook: outp
   formulaScan: errors.ndjson, nativeApplicationCheck: 'Not executed; Artifact Tool recalculation, XLSX readback and rendered review are separate checks.' };
 await fs.writeFile(path.join(outputDir, 'workbook-receipt.json'), JSON.stringify(receipt, null, 2));
 console.log(JSON.stringify({ outputPath, ...receipt }));
+
+function runtimeContractRows(missions, names) {
+  return missions.map(mission => [mission.id, names.get(mission.heroId)?.name || mission.heroId,
+    mission.title.fr, [mission.premise.fr, mission.continuity?.fr].filter(Boolean).join('\n'),
+    mission.steps.map((step, index) => `${index + 1}. ${step.text.fr}`).join('\n'),
+    mission.steps.find(step => step.type === 'decision').choices.filter(item => item.valid)
+      .map(item => `${item.label.fr}\n${item.result.fr}`).join('\n\n'),
+    `Habitant possédé et présent dans le quartier ${mission.universe}. Vitrines requises disponibles.${mission.universe === 'Nexus de Convergence' ? '' : ` DLC ${mission.universe} installé.`}`,
+    'Contrat intégré. Choix, déplacements et sauvegardes couverts par la recette de la PR.',
+    'Dossier et choix sauvegardés ; pas de monnaie ni d’équipement attribué.',
+    [mission.contentFile, mission.source, ...(mission.references || [])].filter(Boolean).join('\n')]);
+}
+
+/** Narrow follow-up: keep the imported workbook and its editable tracking
+ * intact. Only runtime-contract rows and their summary dependencies change. */
+async function refreshRuntimeContracts(inputPath) {
+  const workbook = await SpreadsheetFile.importXlsx(await FileBlob.load(inputPath));
+  const { MOSAIC_CHARACTER_MISSIONS } = await import(pathToFileURL(path.join(repo, 'src/game/mosaicCharacterMissions.js')));
+  const summary = workbook.worksheets.getItem('Synthèse');
+  const live = workbook.worksheets.getItem('Contrats jouables');
+  const people = workbook.worksheets.getItem('Personnages');
+  const count = Number(summary.getRange('B7').values[0][0]);
+  const names = new Map(people.getRange(`A7:B${count + 6}`).values.map(([id, name]) => [id, { name }]));
+  const rows = runtimeContractRows(MOSAIC_CHARACTER_MISSIONS, names);
+  const oldCount = Number(summary.getRange('B12').values[0][0]);
+  assert.ok(Number.isInteger(oldCount) && oldCount > 0 && oldCount <= rows.length);
+  assert.deepEqual(live.getRange(`A7:A${oldCount + 6}`).values.flat(), rows.slice(0, oldCount).map(row => row[0]),
+    'Existing contracts must remain in order; a removal or reordering needs an explicit migration.');
+  const unchanged = ['Missions à créer', 'Personnages', 'Profils FPS', 'Modes FPS'].map(name => {
+    const sheet = workbook.worksheets.getItem(name), range = sheet.getUsedRange();
+    return { name, values: range.values, formulas: range.formulas };
+  });
+  const nativeTable = live.tables.items.find(table => table.name === 'ContratsJouables');
+  assert.ok(nativeTable, 'The existing native contract table is required.');
+  if (rows.length > oldCount) nativeTable.rows.add(null, rows.slice(oldCount));
+  for (let index = oldCount; index < rows.length; index++) {
+    live.getRange(`A${index + 7}:J${index + 7}`).copyFrom(live.getRange(`A${oldCount + 6}:J${oldCount + 6}`), 'all');
+  }
+  live.getRange(`A7:J${rows.length + 6}`).values = rows;
+  live.getRange('A2').values = [[`${rows.length} contrats originaux jouables`]];
+  const widths = [39, 25, 38, 60, 74, 74, 42, 54, 46, 60];
+  rows.forEach((row, index) => {
+    const lines = Math.max(...row.map((value, column) => String(value ?? '').split('\n')
+      .reduce((sum, part) => sum + Math.max(1, Math.ceil(part.length / Math.max(8, widths[column] - 3))), 0)));
+    live.getRange(`A${index + 7}:J${index + 7}`).format.rowHeight = Math.min(409, Math.max(30, lines * 13 + 8));
+  });
+  summary.getRange('B12').formulas = [[`=COUNTA('Contrats jouables'!A7:A${rows.length + 6})`]];
+  summary.getRange('B18').values = [[`${rows.length} contrats intégrés ont leurs propres IDs et parcours. Ils ne terminent pas les 3 824 propositions.`]];
+  workbook.recalculate();
+  assert.equal(summary.getRange('B12').values[0][0], rows.length);
+  for (const before of unchanged) {
+    const range = workbook.worksheets.getItem(before.name).getUsedRange();
+    assert.deepEqual(range.values, before.values, `Unrelated values changed in ${before.name}`);
+    assert.deepEqual(range.formulas, before.formulas, `Unrelated formulas changed in ${before.name}`);
+  }
+  const errors = await workbook.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!',
+    options: { useRegex: true, maxResults: 100 }, summary: 'Formula error scan', maxChars: 5000 });
+  const inspection = await workbook.inspect({ kind: 'table', range: 'Synthèse!A6:E13', include: 'values,formulas', tableMaxRows: 8, tableMaxCols: 5, maxChars: 8000 });
+  await fs.mkdir(outputDir, { recursive: true });
+  await fs.writeFile(path.join(outputDir, 'workbook-inspection.json'), JSON.stringify({ formulaScan: errors.ndjson, summary: inspection.ndjson }, null, 2));
+  const fullPreviews = [['Synthèse', 'A1:E24', 'synthese'], ['Contrats jouables', 'A1:F9', 'contrats-jouables'],
+    ['Contrats jouables', 'B14:F16', 'contrats-nexus'], ['Contrats jouables', 'B19:F20', 'contrats-halo'],
+    ['Contrats jouables', 'B21:F22', 'contrats-alien'], ['Contrats jouables', 'G19:J22', 'contrats-dlc-acces']];
+  const previews = args.includes('--sources-only') ? fullPreviews.slice(-1) : fullPreviews;
+  for (const [sheetName, range, name] of previews) {
+    const image = await workbook.render({ sheetName, range, scale: 1, format: 'png' });
+    await fs.writeFile(path.join(outputDir, `${name}.png`), new Uint8Array(await image.arrayBuffer()));
+  }
+  const outputPath = path.join(outputDir, outputName);
+  await (await SpreadsheetFile.exportXlsx(workbook)).save(outputPath);
+  const bytes = await fs.readFile(outputPath);
+  const receipt = { schema: 2, sourceRevision: summary.getRange('B24').values[0][0], workbook: outputName,
+    sha256: createHash('sha256').update(bytes).digest('hex'), bytes: bytes.length,
+    operation: 'Imported existing workbook; changed runtime contracts and their summary only',
+    characters: count, nonCombatCharacters: Number(summary.getRange('B8').values[0][0]), proposedMissions: 3824,
+    individuallyDesignedMissions: Number(summary.getRange('E15').values[0][0]),
+    integratedCityContracts: rows.length, fpsProfiles: count, fpsModes: Number(summary.getRange('B13').values[0][0]),
+    sheets: ['Synthèse', 'Missions à créer', 'Contrats jouables', 'Personnages', 'Profils FPS', 'Modes FPS'],
+    previews: previews.map(([, , name]) => `${name}.png`), preservedSheets: unchanged.map(item => item.name),
+    formulaScan: errors.ndjson, nativeApplicationCheck: 'Not executed; Artifact Tool recalculation, XLSX readback and rendered review are separate checks.' };
+  await fs.writeFile(path.join(outputDir, 'workbook-receipt.json'), JSON.stringify(receipt, null, 2));
+  console.log(JSON.stringify({ outputPath, ...receipt }));
+}

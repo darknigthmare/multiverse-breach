@@ -1,4 +1,6 @@
 import { MOSAIC_INTERACTION_RANGE } from './mosaicCityRuntime.js';
+import * as dlcHalo from '../../DLC/Halo/data/mosaicCharacterMissions.js';
+import * as dlcAlien from '../../DLC/Alien/data/mosaicCharacterMissions.js';
 
 const text = (fr, en) => ({ fr, en });
 export const localizeCityMission = (value, lang = 'fr') => value?.[lang === 'fr' ? 'fr' : 'en'] || '';
@@ -10,7 +12,7 @@ const decision = (fr, en, choices) => ({ id: 'resolution', type: 'decision', tex
 const choice = (id, fr, en, resultFr, resultEn, valid = true) => ({ id, label: text(fr, en), result: text(resultFr, resultEn), valid });
 const report = { id: 'report', type: 'anchor', text: text('Transmettre le dossier à l’ancre locale.', 'Submit the case at the local anchor.') };
 
-/** New, original City stories grounded in the existing Nexus dossiers. These
+/** Original City stories grounded in the existing character dossiers. These
  * contracts do not retroactively complete campaign acts or award inventory. */
 export const MOSAIC_CHARACTER_MISSIONS = Object.freeze([
   {
@@ -112,8 +114,81 @@ export const MOSAIC_CHARACTER_MISSIONS = Object.freeze([
         choice('request-dialogue', 'Demander un dialogue sans jugement d’identité.', 'Request a dialogue without an identity judgment.', 'Le dossier demande un échange et suspend toute accusation de remplacement.', 'The case requests a dialogue and suspends any accusation of replacement.'),
         choice('erase-double', 'Supprimer la seconde empreinte parce qu’elle ressemble.', 'Delete the second imprint because it resembles the first.', 'Marrow refuse une exécution fondée sur une ressemblance.', 'Marrow refuses an execution based on resemblance.', false)
       ]), { ...person('arca_marrow', 'Rapporter les deux témoignages à Marrow.', 'Bring both testimonies back to Marrow.'), id: 'return-marrow' }, report]
-  }
-].map(mission => Object.freeze({ ...mission, universe: 'Nexus de Convergence', version: 1,
+  },
+  {
+    id: 'city-tessera-two-accounts-v1', heroId: 'arca_tessera',
+    title: text('La vitrine à deux récits', 'The display with two accounts'),
+    premise: text('La Galerie veut raconter Tessera avec une seule origine. Elle demande de conserver ses deux souvenirs sans la présenter comme le remplacement d’une autre personne.', 'The Gallery wants to describe Tessera through a single origin. She asks to keep both memories without presenting her as another person’s replacement.'),
+    source: 'src/game/characterPlaques.js#arca_tessera',
+    steps: [person('arca_tessera', 'Demander à Tessera comment elle souhaite être présentée.', 'Ask Tessera how she wishes to be presented.'),
+      marker('childhood-caption', 610, 570, 'Lire la notice du souvenir d’enfance.', 'Read the childhood memory caption.', 'La notice porte le nom choisi par Tessera et la provenance de son témoignage. Elle ne prouve pas une identité antérieure.', 'The caption bears Tessera’s chosen name and the provenance of her testimony. It does not prove a previous identity.'),
+      marker('foundry-caption', 1320, 680, 'Comparer la notice de l’Éclat de Forge.', 'Compare the Foundry Shard caption.', 'La seconde notice décrit une création récente. L’éditeur a coché « remplacer la première » sans l’accord de Tessera.', 'The second caption describes a recent creation. The editor selected “replace the first” without Tessera’s agreement.'),
+      decision('Quelle présentation remettre à la Galerie ?', 'Which presentation should be submitted to the Gallery?', [
+        choice('parallel-accounts', 'Garder les deux récits attribués à Tessera.', 'Keep both accounts attributed to Tessera.', 'Deux notices séparées conservent leur contradiction et le nom qu’elle a choisi. Aucune vie n’est déclarée remplaçable.', 'Two separate captions retain their contradiction and her chosen name. No life is declared replaceable.'),
+        choice('hold-display', 'Suspendre l’exposition et garder les notices séparées.', 'Hold the display and retain the separate captions.', 'Le dossier attend une nouvelle présentation consentie ; les deux souvenirs restent distincts.', 'The case awaits a newly agreed presentation; the two memories remain distinct.'),
+        choice('replace-memory', 'Garder la version la plus simple et effacer l’autre.', 'Keep the simplest version and erase the other.', 'La simplicité d’une notice n’autorise pas à remplacer une mémoire ou une personne.', 'A simpler caption does not authorize replacing a memory or a person.', false)
+      ]), report]
+  },
+  {
+    id: 'city-quillon-single-receipt-v1', heroId: 'arca_quillon',
+    title: text('Le reçu et le témoin', 'The receipt and the witness'),
+    premise: text('Deux reçus annoncent la restitution du même outil. Quillon veut retrouver les remises réelles avant qu’un total juste sur le papier crée une dette pour un absent.', 'Two receipts report the return of the same tool. Quillon wants to trace the actual handovers before a total that looks correct assigns a debt to someone absent.'),
+    source: 'src/game/characterPlaques.js#arca_quillon',
+    steps: [person('arca_quillon', 'Consulter le contre-registre avec Quillon.', 'Consult the counter-ledger with Quillon.'),
+      marker('intake-receipt', 540, 770, 'Lire le reçu de l’accueil.', 'Read the intake receipt.', 'L’accueil a remis un seul outil marqué Q-17 à la Galerie. Le témoin de cette remise a signé une seule fois.', 'Intake handed one tool marked Q-17 to the Gallery. The witness signed that handover once.'),
+      marker('gallery-receipt', 1340, 580, 'Vérifier l’exemplaire de la Galerie.', 'Check the Gallery copy.', 'Même outil, même heure et même signature : la seconde feuille est une copie de transmission, pas une seconde restitution.', 'Same tool, time and signature: the second sheet is a transmission copy, not a second return.'),
+      decision('Comment arrêter le compte ?', 'How should the account be closed?', [
+        choice('link-copy', 'Relier la copie à l’unique remise attestée.', 'Link the copy to the single witnessed handover.', 'Une remise est comptée. Les deux reçus restent consultables avec leur rôle et leur provenance.', 'One handover is counted. Both receipts remain readable with their role and provenance.'),
+        choice('hold-account', 'Geler le total et demander une vérification contradictoire.', 'Hold the total and request an independent check.', 'Le total reste provisoire. Aucune dette n’est attribuée avant la vérification des témoins.', 'The total remains provisional. No debt is assigned before the witnesses are checked.'),
+        choice('charge-absent', 'Compter deux remises et imputer l’écart à un absent.', 'Count two handovers and charge the difference to someone absent.', 'Deux feuilles ne prouvent pas deux objets. Quillon refuse une dette sans remise vérifiable.', 'Two sheets do not prove two objects. Quillon rejects a debt without a verifiable handover.', false)
+      ]), report]
+  },
+  {
+    id: 'city-nadir-return-probe-v1', heroId: 'arca_nadir',
+    title: text('L’autre côté du seuil', 'The other side of the threshold'),
+    premise: text('Un seuil d’exercice annonce un passage réussi après le seul trajet aller. Nadir exige une mesure de retour avant d’y engager un groupe.', 'A practice threshold announces a successful passage after the outbound trip alone. Nadir requires a return reading before committing a group.'),
+    source: 'src/game/characterPlaques.js#arca_nadir',
+    steps: [person('arca_nadir', 'Recueillir le protocole de sonde de Nadir.', 'Collect Nadir’s probe protocol.'),
+      marker('probe-origin', 520, 760, 'Relever la signature de départ de la sonde.', 'Record the probe’s departure signature.', 'Signature N-4, usure et horodatage consignés. Le voyant vert n’atteste encore que le départ.', 'Signature N-4, wear and timestamp recorded. The green light only confirms departure so far.'),
+      marker('probe-far-side', 1370, 580, 'Vérifier le relais de l’autre côté.', 'Check the relay on the far side.', 'Le relais reconnaît N-4. Son compteur affiche une arrivée, mais aucune mesure ne confirme le retour au poste initial.', 'The relay recognizes N-4. Its counter records an arrival, but no reading confirms a return to the starting post.'),
+      marker('probe-return', 520, 760, 'Revenir à la sonde et comparer la signature.', 'Return to the probe and compare the signature.', 'Le retour conserve N-4 et la trace d’usure. L’horodatage ferme ce seul aller-retour d’exercice.', 'The return preserves N-4 and its wear trace. The timestamp closes this practice round trip only.'),
+      decision('Quelle route Nadir peut-il annoncer ?', 'Which route can Nadir announce?', [
+        choice('bounded-return', 'Attester ce retour mesuré et maintenir la sonde.', 'Attest this measured return and keep the probe active.', 'Le dossier décrit un aller-retour vérifié. La sonde reste en place jusqu’au dernier passage.', 'The case describes a verified round trip. The probe remains in place until the last passage.'),
+        choice('repeat-probe', 'Maintenir le seuil fermé en attendant une seconde mesure.', 'Keep the threshold closed pending a second reading.', 'La preuve est conservée, mais le groupe attend une vérification supplémentaire.', 'The evidence is retained, but the group waits for an additional check.'),
+        choice('guarantee-all-routes', 'Déclarer tous les seuils sûrs après cet essai.', 'Declare every threshold safe after this trial.', 'Une sonde mesure un trajet précis ; elle ne garantit ni les autres seuils ni leur avenir.', 'A probe measures a specific route; it guarantees neither other thresholds nor their future.', false)
+      ]), report]
+  },
+  {
+    id: 'city-elyra-consented-door-v1', heroId: 'arca_elyra',
+    title: text('La porte consentie', 'The consented door'),
+    premise: text('Une borne transforme le silence en autorisation et tente de réutiliser un accord retiré. Elyra prépare deux essais inertes pour rendre le refus aussi lisible que l’acceptation.', 'A terminal treats silence as authorization and tries to reuse a withdrawn agreement. Elyra prepares two inert trials to make refusal as readable as acceptance.'),
+    source: 'src/game/characterPlaques.js#arca_elyra',
+    steps: [person('arca_elyra', 'Faire préciser à Elyra les limites de l’exercice.', 'Ask Elyra to define the limits of the exercise.'),
+      marker('explicit-acceptance', 610, 570, 'Lire le résultat de l’essai d’acceptation explicite.', 'Read the explicit acceptance trial result.', 'Le premier volontaire a accepté ce passage précis. Le jeton est limité à l’essai et ne couvre aucune ouverture ultérieure.', 'The first volunteer accepted this specific passage. The token is limited to the trial and covers no later opening.'),
+      marker('withdrawn-token', 1210, 680, 'Contrôler le résultat du refus et du retrait.', 'Check the refusal and withdrawal result.', 'Le second volontaire a refusé. Le premier a retiré son accord après l’essai : le registre Null rend son jeton inutilisable.', 'The second volunteer refused. The first withdrew their agreement after the trial: the Null record makes that token unusable.'),
+      decision('Quelle règle remettre au service des passages ?', 'Which rule should be submitted to the passage service?', [
+        choice('honour-both', 'Conserver les deux décisions et interdire la réutilisation.', 'Retain both decisions and prohibit reuse.', 'L’acceptation passée et le refus restent lisibles. Tout nouveau passage exige un choix explicite.', 'Past acceptance and refusal remain readable. Every new passage requires an explicit choice.'),
+        choice('close-terminal', 'Fermer la borne jusqu’à la correction de ses autorisations.', 'Close the terminal until its authorization handling is fixed.', 'La borne reste fermée ; les décisions sont conservées sans ouvrir un passage contre leur sens.', 'The terminal remains closed; decisions are retained without opening a passage against their meaning.'),
+        choice('reuse-consent', 'Réutiliser l’ancien accord pour éviter un blocage.', 'Reuse the old agreement to avoid a blockage.', 'Un accord retiré n’est plus une autorisation. Le refus ne doit pas devenir un obstacle à contourner.', 'Withdrawn agreement is no longer authorization. Refusal must not become an obstacle to bypass.', false)
+      ]), report]
+  },
+  {
+    id: 'city-oryn-separate-voices-v1', heroId: 'arca_oryn',
+    title: text('Le manifeste des voix', 'The manifest of voices'),
+    premise: text('Une borne d’atelier a fusionné trois contributions en une seule voix signée Oryn. Il demande de rendre à chaque témoin sa place et son droit de retrait.', 'A workshop terminal has merged three contributions into a single voice signed by Oryn. He asks to restore each witness’s place and right to withdraw.'),
+    source: 'src/game/characterPlaques.js#arca_oryn',
+    steps: [person('arca_oryn', 'Demander à Oryn ce qu’il accepte de porter.', 'Ask Oryn what he agrees to carry.'),
+      marker('workshop-signatures', 1340, 580, 'Comparer les signatures de l’atelier.', 'Compare the workshop signatures.', 'Deux contributions portent des signatures distinctes. Une troisième attribution est incomplète ; aucun nom ne peut être déduit de sa seule ressemblance.', 'Two contributions bear distinct signatures. A third attribution is incomplete; no name can be inferred from resemblance alone.'),
+      marker('withdrawal-notice', 540, 770, 'Lire les autorisations de dépôt encore valides.', 'Read the deposit authorizations still valid.', 'Un témoin a retiré sa contribution. La notice de retrait reste au registre, tandis que son texte sort du dépôt public.', 'One witness withdrew their contribution. The withdrawal notice stays in the ledger while their text is removed from the public deposit.'),
+      decision('Quel manifeste déposer ?', 'Which manifest should be deposited?', [
+        choice('separate-voices', 'Déposer les voix autorisées avec leurs signatures distinctes.', 'Deposit the authorized voices with their distinct signatures.', 'Oryn porte un manifeste attribué, pas une voix collective inventée. Le retrait est respecté et le nom incomplet reste inconnu.', 'Oryn carries an attributed manifest, not an invented collective voice. Withdrawal is respected and the incomplete name stays unknown.'),
+        choice('hold-attribution', 'Suspendre le dépôt et inviter les témoins à relire.', 'Hold the deposit and invite the witnesses to review it.', 'Les contributions restent séparées en attente d’une relecture volontaire. Personne ne parle à la place des absents.', 'Contributions stay separate pending a voluntary review. No one speaks for those absent.'),
+        choice('one-spokesperson', 'Signer toutes les voix du nom d’Oryn pour combler les blancs.', 'Sign every voice with Oryn’s name to fill the gaps.', 'Porter des noms ne donne pas le droit de les remplacer. Oryn n’est pas le porte-parole de tous les disparus.', 'Carrying names does not grant permission to replace them. Oryn is not the spokesperson for everyone lost.', false)
+      ]), report]
+  },
+  ...dlcHalo.createMosaicCharacterMissions({ text, person, exhibit, marker, decision, choice, report }),
+  ...dlcAlien.createMosaicCharacterMissions({ text, person, exhibit, marker, decision, choice, report })
+].map(mission => Object.freeze({ ...mission, universe: mission.universe || 'Nexus de Convergence', version: 1,
   steps: Object.freeze(mission.steps.map(step => Object.freeze(step))) })));
 
 const record = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};

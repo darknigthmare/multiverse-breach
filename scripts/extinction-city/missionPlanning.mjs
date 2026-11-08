@@ -659,7 +659,8 @@ export function buildMissionPlanning(sourceRevision, { includeSourceHashes = tru
     sourceManifest, characters, missions, encounters, finalePolicies, reviewQueue,
     runtimeMissions: MOSAIC_CHARACTER_MISSIONS.map(item => ({
       id: item.id, characterId: item.heroId, universe: item.universe, title: text(item.title),
-      premise: text(item.premise), source: item.source, sourceFile: 'src/game/mosaicCharacterMissions.js',
+      premise: text(item.premise), source: item.source, sourceFile: item.contentFile || 'src/game/mosaicCharacterMissions.js',
+      continuity: text(item.continuity), referenceUrls: item.references || [],
       implementationStatus: 'runtime_contract', browserValidation: 'not_certified_by_catalog',
       steps: item.steps.map(step => ({ id: step.id, type: step.type, text: text(step.text),
         ...(step.choices ? { choices: step.choices.map(choice => ({ id: choice.id, label: text(choice.label), result: text(choice.result), valid: choice.valid })) } : {}) }))

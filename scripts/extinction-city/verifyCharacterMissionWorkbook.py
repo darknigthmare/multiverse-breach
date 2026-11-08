@@ -46,6 +46,7 @@ def main():
     parser.add_argument('workbook')
     parser.add_argument('--planning', required=True)
     parser.add_argument('--receipt')
+    parser.add_argument('--baseline', help='Read-only comparison of unchanged sheets in the previous workbook')
     args = parser.parse_args()
     path = Path(args.workbook)
     data = json.loads(Path(args.planning).read_text())
@@ -57,7 +58,8 @@ def main():
         require(names == ['Synthèse', 'Missions à créer', 'Contrats jouables', 'Personnages', 'Profils FPS', 'Modes FPS'], 'Unexpected workbook tabs')
         sheets = [read_sheet(archive, f'xl/worksheets/sheet{index}.xml', strings) for index in range(1, 7)]
         summary = sheets[0][1]
-        require([int(float(summary[f'B{row}'])) for row in range(7, 14)] == [1912, 101, 1912, 1912, 0, 7, 4], 'Summary counts do not reconcile')
+        contract_count = len(data['runtimeMissions'])
+        require([int(float(summary[f'B{row}'])) for row in range(7, 14)] == [1912, 101, 1912, 1912, 0, contract_count, 4], 'Summary counts do not reconcile')
         design_counts = Counter(mission['designKind'] for mission in data['missions'])
         for row, (kind, label) in enumerate(DESIGN_LABELS.items(), 15):
             require(summary[f'D{row}'] == label and int(float(summary[f'E{row}'])) == design_counts[kind],
@@ -78,7 +80,13 @@ def main():
             require(sheets[3][1][f'A{index}'] == character['id'], 'Character sheet misses a source identity')
             require(sheets[4][1][f'A{index}'] == character['id'], 'FPS sheet misses a source identity')
             require(sheets[4][1][f'D{index}'] == ('Exclu du combat' if character['nonCombat'] else 'Jouable'), 'FPS eligibility mismatch')
-        require(len([ref for ref in sheets[2][1] if ref.startswith('A') and ref[1:].isdigit() and int(ref[1:]) >= 7]) == 7, 'Integrated contract count differs')
+        contract_ids = [sheets[2][1][f'A{row}'] for row in range(7, contract_count + 7)]
+        require(contract_ids == [mission['id'] for mission in data['runtimeMissions']], 'Integrated contract identity/order differs')
+        require(len([ref for ref in sheets[2][1] if ref.startswith('A') and ref[1:].isdigit() and int(ref[1:]) >= 7]) == contract_count, 'Integrated contract count differs')
+        for row, mission in enumerate(data['runtimeMissions'], 7):
+            require(mission['universe'] in sheets[2][1][f'G{row}'], 'Contract access lost its district')
+            if mission['universe'] != 'Nexus de Convergence':
+                require(f'DLC {mission["universe"]} installé' in sheets[2][1][f'G{row}'], 'Contract access lost its DLC requirement')
         for index, (root, _, _) in enumerate(sheets[1:], 2):
             pane = root.find('m:sheetViews/m:sheetView/m:pane', NS)
             require(pane is not None and pane.get('state') == 'frozen' and pane.get('xSplit') == '3' and pane.get('ySplit') == '6', f'Headers/identity columns not frozen in sheet {index}')
@@ -89,11 +97,26 @@ def main():
         for name in table_files:
             require(ET.fromstring(archive.read(name)).find('m:autoFilter', NS) is not None, f'Filter missing: {name}')
         formula_count = sum(len(formulas) for _, _, formulas in sheets)
+        preserved_sheets = []
+        if args.baseline:
+            with ZipFile(args.baseline) as baseline:
+                original_strings = [''.join(part.text or '' for part in item.findall('.//m:t', NS))
+                                    for item in ET.fromstring(baseline.read('xl/sharedStrings.xml'))]
+                for index in [2, 4, 5, 6]:
+                    original = read_sheet(baseline, f'xl/worksheets/sheet{index}.xml', original_strings)
+                    require(sheets[index - 1][1] == original[1], f'Unrelated values changed in {names[index - 1]}')
+                    require(sheets[index - 1][2] == original[2], f'Unrelated formulas changed in {names[index - 1]}')
+                    for tag in ['dataValidations', 'conditionalFormatting', 'sheetViews']:
+                        before = [ET.tostring(item) for item in original[0].findall(f'm:{tag}', NS)]
+                        after = [ET.tostring(item) for item in sheets[index - 1][0].findall(f'm:{tag}', NS)]
+                        require(before == after, f'Unrelated {tag} changed in {names[index - 1]}')
+                    preserved_sheets.append(names[index - 1])
     receipt = {'schema': 1, 'workbook': path.name, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'bytes': path.stat().st_size,
                'sheets': names, 'sourceCharacters': 1912, 'nonCombatCharacters': 101, 'plannedMissions': 3824,
                'individuallyDesignedMissions': design_counts['individual_proposal'],
                'designCounts': dict(design_counts),
-               'integratedCityContracts': 7, 'fpsModes': 4, 'nativeTables': 5, 'dropdownRanges': 5,
+               'integratedCityContracts': contract_count, 'fpsModes': 4, 'nativeTables': 5, 'dropdownRanges': 5,
+               'preservedSheets': preserved_sheets,
                'formulasInspected': formula_count, 'coverage': 'exact one universe and one Multiverse proposal per source identity',
                'status': 'passed', 'scope': 'Read-only OpenXML identities, cached totals, formulas, filters, panes and validation; not a native Excel execution.'}
     if args.receipt:

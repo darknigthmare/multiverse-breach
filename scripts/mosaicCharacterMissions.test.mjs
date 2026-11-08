@@ -9,17 +9,23 @@ import { MOSAIC_CHARACTER_MISSIONS, getMosaicCharacterMissionCatalog, normalizeM
   getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, startMosaicCharacterMission,
   advanceMosaicCharacterMission, resolveMosaicCharacterMission } from '../src/game/mosaicCharacterMissions.js';
 
-const universe = 'Nexus de Convergence';
-const residents = HEROES_DB.filter(hero => hero.universe === universe);
-const owned = [createPlayerHero().id, ...residents.map(hero => hero.id)];
-const district = { id: 'universe-nexus-de-convergence', universe, worldW: 1920, worldH: 1180, place: { type: 'city' } };
-const exhibits = getMosaicExhibits(EQUIP_ITEMS_DB, universe);
-const anchor = { id: `${district.id}-core`, universe, action: 'anchor', x: 760, y: 875, w: 400, h: 150 };
-const context = { district, residents, exhibits, anchor, unlockedHeroIds: owned };
+function contextFor(universe) {
+  const residents = HEROES_DB.filter(hero => hero.universe === universe);
+  const unlockedHeroIds = [createPlayerHero().id, ...residents.map(hero => hero.id)];
+  const slug = universe === 'Nexus de Convergence' ? 'nexus-de-convergence' : universe.toLowerCase();
+  const district = { id: `universe-${slug}`, universe, worldW: 1920, worldH: 1180, place: { type: 'city' } };
+  const exhibits = getMosaicExhibits(EQUIP_ITEMS_DB, universe);
+  const anchor = { id: `${district.id}-core`, universe, action: 'anchor', x: 760, y: 875, w: 400, h: 150 };
+  return { district, residents, exhibits, anchor, unlockedHeroIds };
+}
+const context = contextFor('Nexus de Convergence');
+const { exhibits, anchor, unlockedHeroIds: owned } = context;
 const catalog = getMosaicCharacterMissionCatalog(context);
+const allCatalog = ['Nexus de Convergence', 'Halo', 'Alien'].flatMap(universe => getMosaicCharacterMissionCatalog(contextFor(universe)));
 function sceneFor(progress, mission) {
+  const { district, anchor, residents, exhibits } = contextFor(mission.universe);
   const objective = getMosaicCharacterMissionObjective(progress, mission);
-  return { zones: [anchor, ...getMosaicExhibitZones(district, exhibits), ...getMosaicCharacterMissionZones(progress, catalog)],
+  return { zones: [anchor, ...getMosaicExhibitZones(district, exhibits), ...getMosaicCharacterMissionZones(progress, allCatalog)],
     npcs: residents.map((hero, index) => ({ hero, x: 720 + index * 38, y: 520 })), objective };
 }
 function resolved(progress, mission) {
@@ -28,15 +34,17 @@ function resolved(progress, mission) {
   return resolveMosaicInteraction(target, scene, { type, id });
 }
 
-test('seven authored contracts reference existing identities, tools and bilingual decisions', () => {
-  assert.equal(catalog.length, 7);
-  assert.equal(new Set(catalog.map(mission => mission.id)).size, 7);
-  assert.equal(new Set(catalog.map(mission => mission.heroId)).size, 7);
-  for (const mission of catalog) {
-    assert.ok(owned.includes(mission.heroId));
+test('every Nexus identity and both DLC senders have distinct authored bilingual contracts', () => {
+  assert.deepEqual(new Set(catalog.map(mission => mission.heroId)), new Set(owned));
+  assert.equal(catalog.length, owned.length);
+  assert.equal(new Set(allCatalog.map(mission => mission.id)).size, allCatalog.length);
+  assert.deepEqual(new Set(allCatalog.map(mission => mission.id)), new Set(MOSAIC_CHARACTER_MISSIONS.map(mission => mission.id)));
+  for (const mission of allCatalog) {
+    const { residents, exhibits, unlockedHeroIds } = contextFor(mission.universe);
+    assert.ok(unlockedHeroIds.includes(mission.heroId));
     assert.equal(new Set(mission.steps.map(step => step.id)).size, mission.steps.length);
     assert.equal(mission.steps.at(-1).type, 'anchor');
-    assert.ok(mission.source.startsWith('src/game/'));
+    assert.ok(mission.source.startsWith(mission.universe === 'Nexus de Convergence' ? 'src/game/' : `DLC/${mission.universe}/data/`));
     for (const step of mission.steps) {
       assert.ok(step.text.fr.length > 10 && step.text.en.length > 10);
       if (step.type === 'npc') assert.ok(residents.some(hero => hero.id === step.targetId));
@@ -49,17 +57,30 @@ test('seven authored contracts reference existing identities, tools and bilingua
     }
   }
 });
+test('DLC cases remain in their own districts and respect the exact owned incarnation', () => {
+  for (const [universe, heroId] of [['Halo', 'masterchief'], ['Alien', 'ripley']]) {
+    const ownContext = contextFor(universe);
+    const cases = getMosaicCharacterMissionCatalog({ ...ownContext, unlockedHeroIds: [heroId] });
+    assert.equal(cases.length, 2);
+    assert.ok(cases.every(mission => mission.universe === universe && mission.heroId === heroId));
+    assert.equal(getMosaicCharacterMissionCatalog({ ...ownContext, unlockedHeroIds: ['ripley_aliens'] }).length, 0);
+    assert.equal(getMosaicCharacterMissionCatalog({ ...ownContext, residents: ownContext.residents.filter(hero => hero.id !== heroId) }).length, 0);
+    assert.equal(getMosaicCharacterMissionCatalog({ ...ownContext, anchor: { ...ownContext.anchor, universe: 'Nexus de Convergence' } }).length, 0);
+    assert.ok(cases.every(mission => mission.continuity.fr && mission.continuity.en));
+  }
+});
 test('availability requires current district, owned sender, residents and every required exhibit', () => {
   assert.equal(getMosaicCharacterMissionCatalog({ ...context, unlockedHeroIds: [] }).length, 0);
-  assert.equal(getMosaicCharacterMissionCatalog({ ...context, district: { ...district, universe: 'Halo' } }).length, 0);
+  assert.equal(getMosaicCharacterMissionCatalog({ ...context, district: { ...context.district, universe: 'Halo' } }).length, 0);
   assert.equal(getMosaicCharacterMissionCatalog({ ...context, anchor: { ...anchor, action: 'talk' } }).length, 0);
   assert.deepEqual(getMosaicCharacterMissionCatalog({ ...context, unlockedHeroIds: ['player_anchor'] }).map(mission => mission.heroId), ['player_anchor']);
   const removed = getMosaicCharacterMissionCatalog({ ...context, exhibits: exhibits.filter(item => item.id !== 'nexus_anchor_coil') });
   assert.ok(!removed.some(mission => ['player_anchor', 'arca_mirelle'].includes(mission.heroId)));
   assert.ok(removed.some(mission => mission.heroId === 'arca_sable'));
 });
-for (const mission of catalog) {
-  for (const route of [0, 1]) test(`${mission.heroId}: physical steps, conclusion ${route + 1}, saved receipt and repeat refusal`, () => {
+for (const mission of allCatalog) {
+  for (const route of [0, 1]) test(`${mission.id}: physical steps, conclusion ${route + 1}, saved receipt and repeat refusal`, () => {
+    const { district, anchor } = contextFor(mission.universe);
     let progress = startMosaicCharacterMission(normalizeMosaicCharacterMissions(), mission).progress;
     const state = { player: { x: 820, y: 760, speed: 2.35 }, keys: {}, npcs: [], obstacles: [] };
     let moved = 0;
@@ -99,7 +120,7 @@ for (const mission of catalog) {
     assert.equal(getMosaicCharacterMissionObjective(progress, mission).status, 'completed');
     assert.equal(startMosaicCharacterMission(progress, mission).changed, false);
     assert.equal(advanceMosaicCharacterMission(progress, mission, { type: 'zone', id: anchor.id, target: anchor, distance: 0 }).changed, false);
-    assert.equal(getMosaicCharacterMissionZones(progress, catalog).length, 0);
+    assert.equal(getMosaicCharacterMissionZones(progress, allCatalog).length, 0);
   });
 }
 test('remote, forged, mismatched and unordered interactions cannot record evidence', () => {
@@ -141,5 +162,5 @@ test('unknown DLC records survive normalization; reordered steps and invalid con
     assert.equal(getMosaicCharacterMissionObjective(corrupt, mission).status, 'unavailable');
     assert.equal(startMosaicCharacterMission(corrupt, mission).changed, false);
   }
-  assert.equal(MOSAIC_CHARACTER_MISSIONS.length, 7);
+  assert.equal(MOSAIC_CHARACTER_MISSIONS.length, allCatalog.length);
 });

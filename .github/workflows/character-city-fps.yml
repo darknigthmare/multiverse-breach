@@ -51,7 +51,7 @@ jobs:
           node --version > /tmp/character-city-fps-evidence/node-version.txt
           node scripts/prepareDlcAssets.mjs --available
           python3 scripts/testMosaicMotionProof.py
-          node --test scripts/mosaicCharacterMissions.test.mjs scripts/extinctionFighterProfiles.test.mjs scripts/extinctionFieldDirectives.test.mjs scripts/portalDenseCatalogs.test.mjs | tee /tmp/character-city-fps-evidence/contracts.log
+          node --test scripts/mosaicCharacterMissions.test.mjs scripts/dlcProfileCharacterMissions.test.mjs scripts/extinctionFighterProfiles.test.mjs scripts/extinctionFieldDirectives.test.mjs scripts/portalDenseCatalogs.test.mjs | tee /tmp/character-city-fps-evidence/contracts.log
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionCityMissionPlanning.test.mjs scripts/extinctionCityCatalog.test.mjs | tee /tmp/character-city-fps-evidence/planning.log
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/missionPlanning.mjs 4ca3b2b87f4b7234612f11fc5c17ba205d36d340 /tmp/character-city-fps-evidence/mission-planning.json /tmp/character-city-fps-evidence/mission-coverage.json
           python3 scripts/extinction-city/verifyCharacterMissionWorkbook.py docs/excel/Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx --planning /tmp/character-city-fps-evidence/mission-planning.json --receipt /tmp/character-city-fps-evidence/workbook-readback.json
@@ -82,26 +82,6 @@ jobs:
             /tmp/character-city-fps-evidence/commit.txt
             /tmp/character-city-fps-evidence/tree.txt
           retention-days: 14
-      - name: Character contracts through ordinary City movement
-        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browsers.outcome == 'success' }}
-        run: |
-          set -euo pipefail
-          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/character-city-fps-evidence/city-server.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
-          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
-          /tmp/character-browser-py/bin/python scripts/browserMosaicCharacterMissions.py --require-art --evidence /tmp/character-city-fps-evidence/city | tee /tmp/character-city-fps-evidence/city.log
-      - name: Publish City diagnostics before the FPS runs
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browsers.outcome == 'success' }}
-        with:
-          name: character-city-${{ github.sha }}
-          path: |
-            /tmp/character-city-fps-evidence/city/
-            /tmp/character-city-fps-evidence/city.log
-            /tmp/character-city-fps-evidence/commit.txt
-            /tmp/character-city-fps-evidence/tree.txt
-          retention-days: 14
       - name: Fighter profiles and optional mode directives
         if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browsers.outcome == 'success' }}
         run: |
@@ -116,4 +96,63 @@ jobs:
         with:
           name: character-city-fps-${{ github.sha }}
           path: /tmp/character-city-fps-evidence/
+          retention-days: 14
+  city-contracts:
+    name: City contracts (${{ matrix.district }}, ${{ matrix.lang }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        district: [nexus, halo, alien]
+        lang: [fr, en]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /config/
+            /DLC/
+            !/DLC/*/assets/
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /DLC/Halo/assets/sprites/generated/heroes/halo/master-chief-complete/master-chief-universal.png
+            /DLC/Alien/assets/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare selected artwork and pinned browser
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/city-contract-evidence
+          git rev-parse HEAD > /tmp/city-contract-evidence/commit.txt
+          git rev-parse 'HEAD^{tree}' > /tmp/city-contract-evidence/tree.txt
+          node --version > /tmp/city-contract-evidence/node-version.txt
+          node scripts/prepareDlcAssets.mjs --available
+          python3 -m venv /tmp/city-contract-browser-py
+          /tmp/city-contract-browser-py/bin/pip install playwright==1.57.0
+          /tmp/city-contract-browser-py/bin/python -m playwright install --with-deps chromium
+      - name: Walk, reject contradictory choices and restore real checkpoints
+        run: |
+          set -euo pipefail
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/city-contract-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          curl -fsS http://127.0.0.1:4173/ >/dev/null
+          /tmp/city-contract-browser-py/bin/python scripts/browserMosaicCharacterMissions.py --require-art --district '${{ matrix.district }}' --lang '${{ matrix.lang }}' --evidence /tmp/city-contract-evidence/browser | tee /tmp/city-contract-evidence/browser.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: character-city-${{ matrix.district }}-${{ matrix.lang }}-${{ github.sha }}
+          path: /tmp/city-contract-evidence/
           retention-days: 14

@@ -11,9 +11,11 @@ const params = new URLSearchParams(globalThis.__sceneQaParams || location.search
 const lang = params.get('lang') === 'en' ? 'en' : 'fr';
 const mode = params.get('mode') === 'fps' ? 'fps' : 'city';
 const catalog = [createPlayerHero({name:'QA'}), ...(params.get('catalog') === 'full' ? HEROES_DB
+  : params.get('catalog') === 'city-contracts' ? HEROES_DB.filter(h => h.universe === 'Nexus de Convergence' || ['masterchief', 'ripley'].includes(h.id))
   : params.get('catalog') === 'nexus' ? HEROES_DB.filter(h => h.universe === 'Nexus de Convergence')
     : HEROES_DB.filter(h => ['arca_mirelle','arca_bastion','arca_nova'].includes(h.id)))];
 const audit = { reports: [], services: [], saves: [], reconnaissanceSaves: [], characterMissionSaves: [], mounted: true, mode };
+audit.preparedHeroIds = Object.freeze(catalog.map(hero => hero.id));
 window.__sceneQA = audit;
 // Test environment only: the bot fixes randomness before START, while gameplay
 // remains driven by the real scene and input events. Each replay gets a fresh

@@ -1,5 +1,6 @@
 /** Extinction presentation only. Never grants ownership or changes combat stats. */
 import { getHeroCompleteSpritePack, getSpriteSheetLayout } from './spriteAssets.js';
+import { drawExtinctionSchematicView } from './extinctionSchematicView.js';
 
 // The separators in these two authored PNGs are not an equal 4×10 grid.
 // Bounds exclude their visible grid lines, retain the actual row height, and
@@ -70,40 +71,7 @@ export function getExtinctionHandFrame(profile, state = {}) {
  * Not a canonical hand model. Geometry contains no anatomy/character identity.
  */
 export function drawExtinctionSchematic(ctx, state, width, height, color = '#39c5bb') {
-  const type = state.weapon?.type || 'pistol';
-  const action = type === 'pistol' && state.protocols?.profile?.actions.simple;
-  // Abstract delivery glyphs avoid giving every creature, musician or mage a
-  // human gun-shaped view. They are intentionally not anatomy or owned artwork.
-  if (action && !['hitscan', 'scatter', 'volley'].includes(action.kind)) {
-    const x = width / 2, y = height - Math.min(64, height * 0.18);
-    const radius = Math.min(33, width * 0.08, height * 0.1);
-    ctx.save(); ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 2;
-    ctx.globalAlpha = state.muzzle > 0 || state.protocols.activeFrames > 0 ? 0.9 : 0.55;
-    ctx.beginPath();
-    if (['melee', 'sweep', 'counter'].includes(action.kind)) {
-      ctx.moveTo(x - radius, y + radius * 0.5); ctx.lineTo(x + radius * 0.7, y - radius);
-      ctx.moveTo(x - radius * 0.65, y + radius * 0.8); ctx.lineTo(x + radius, y - radius * 0.7);
-    } else if (['heal', 'support', 'guard'].includes(action.kind)) {
-      ctx.moveTo(x - radius, y); ctx.lineTo(x + radius, y);
-      ctx.moveTo(x, y - radius); ctx.lineTo(x, y + radius);
-    } else {
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
-      ctx.moveTo(x - radius * 1.4, y); ctx.lineTo(x - radius * 0.6, y);
-      ctx.moveTo(x + radius * 0.6, y); ctx.lineTo(x + radius * 1.4, y);
-    }
-    ctx.stroke(); ctx.restore(); return;
-  }
-  const w = type === 'rocket' ? 100 : type === 'shotgun' ? 68 : 52;
-  const x = width / 2 - w / 2, y = height - 106 + (state.muzzle > 0 ? 7 : 0);
-  ctx.save();
-  ctx.fillStyle = '#17232c'; ctx.strokeStyle = color; ctx.lineWidth = 2;
-  ctx.fillRect(x, y, w, 100); ctx.strokeRect(x, y, w, 100);
-  ctx.fillStyle = color; ctx.fillRect(x + w * 0.22, y + 8, w * 0.56, 5);
-  if (state.muzzle > 0) {
-    ctx.globalAlpha = 0.65;
-    ctx.beginPath(); ctx.arc(width / 2, y - 7, type === 'plasma' ? 18 : 11, 0, Math.PI * 2); ctx.fill();
-  }
-  ctx.restore();
+  return drawExtinctionSchematicView(ctx, state, width, height, color);
 }
 
 /** Source pixels stay in one declared cell, including every trim edge.

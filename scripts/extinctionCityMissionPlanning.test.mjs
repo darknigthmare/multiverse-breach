@@ -135,7 +135,7 @@ test('generic source abilities stay explicitly unreviewed instead of becoming ca
   }
 });
 
-test('the seven real runtime contracts remain distinct from all planned proposals', () => {
+test('real runtime contracts remain distinct from all planned proposals', () => {
   assert.equal(catalog.counts.implementedMissions, 0);
   assert.ok(catalog.missions.every(row => row.implementationStatus === 'planned' && row.runtimeMissionId === null));
   assert.deepEqual(catalog.runtimeMissions.map(row => row.id), MOSAIC_CHARACTER_MISSIONS.map(row => row.id));

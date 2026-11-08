@@ -14,7 +14,7 @@ from browserCityFpsOperations import begin_walk_proof, DISTRICT
 from browserNexusCampaign import load, reading_scale
 from mosaicMotionProof import validate_mosaic_motion
 
-CONTRACTS = [
+NEXUS_CONTRACTS = [
     ('city-anchor-signature-v1', 'replace-origin', 'retain-origin'),
     ('city-mirelle-suture-v1', 'erase-copy', 'separate-traces'),
     ('city-bastion-tenth-route-v1', 'perfect-report', 'name-debt'),
@@ -22,7 +22,28 @@ CONTRACTS = [
     ('city-sable-signed-map-v1', 'anonymous-perfect', 'signed-correction'),
     ('city-loom-return-thread-v1', 'send-unverified', 'verify-thread'),
     ('city-marrow-distinct-choices-v1', 'erase-double', 'separate-testimony'),
+    ('city-tessera-two-accounts-v1', 'replace-memory', 'parallel-accounts'),
+    ('city-quillon-single-receipt-v1', 'charge-absent', 'link-copy'),
+    ('city-nadir-return-probe-v1', 'guarantee-all-routes', 'bounded-return'),
+    ('city-elyra-consented-door-v1', 'reuse-consent', 'honour-both'),
+    ('city-oryn-separate-voices-v1', 'one-spokesperson', 'separate-voices'),
 ]
+NEW_NEXUS_IDS = {entry[0] for entry in NEXUS_CONTRACTS[7:]}
+DISTRICTS = {
+    'nexus': {'id': DISTRICT, 'universe': 'Nexus de Convergence', 'catalog': 'nexus',
+              'contracts': NEXUS_CONTRACTS, 'mobile': [NEXUS_CONTRACTS[9], NEXUS_CONTRACTS[10]],
+              'requiredArt': []},
+    'halo': {'id': 'universe-halo', 'universe': 'Halo', 'catalog': 'city-contracts',
+             'contracts': [
+                 ('city-chief-unsc-route-v1', 'shield-guarantee', 'mark-unverified'),
+                 ('city-chief-return-corridor-v1', 'discard-fallback', 'keep-fallback')],
+             'requiredArt': ['/sprites/generated/heroes/halo/master-chief-complete/master-chief-universal.png']},
+    'alien': {'id': 'universe-alien', 'universe': 'Alien', 'catalog': 'city-contracts',
+              'contracts': [
+                  ('city-ripley-narcissus-route-v1', 'follow-alarm', 'preserve-escape'),
+                  ('city-ripley-alarm-exit-v1', 'silence-warning', 'separate-signals')],
+              'requiredArt': ['/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png']}
+}
 
 
 def progress(page):
@@ -102,7 +123,7 @@ def interrupt_route(page, panel, out, name):
     return evidence
 
 
-def play_contract(page, entry, out, case_name, remount=False):
+def play_contract(page, entry, out, case_name, district, universe, remount=False, interrupt=False):
     mission_id, invalid_choice, valid_choice = entry
     terminal(page)
     panel = page.locator('.mosaic-character-missions')
@@ -113,8 +134,12 @@ def play_contract(page, entry, out, case_name, remount=False):
     accept.focus()
     page.keyboard.press('Enter')
     page.wait_for_function('id=>window.__sceneQA.characterMissions?.activeId===id', arg=mission_id, polling=50)
-    case = {'missionId': mission_id, 'walks': [], 'choice': None, 'remount': None}
-    if remount:
+    case = {'missionId': mission_id, 'districtId': district, 'universe': universe,
+            'walks': [], 'choice': None, 'remount': None}
+    check(progress(page)['records'][mission_id]['districtId'] == district and
+          progress(page)['records'][mission_id]['universe'] == universe,
+          'contract acceptance used a different district or source universe')
+    if interrupt:
         case['interruptions'] = interrupt_route(page, panel, out, f'{case_name}-{mission_id}')
     while not progress(page)['records'][mission_id]['completed']:
         terminal(page)
@@ -139,8 +164,8 @@ def play_contract(page, entry, out, case_name, remount=False):
         else:
             button = panel.locator('[data-city-contract-approach]')
             reach_and_measure(button, page)
-            report_target = ({'type': 'zone', 'id': f'{DISTRICT}-core', 'action': 'anchor',
-                              'universe': 'Nexus de Convergence', 'range': 72}
+            report_target = ({'type': 'zone', 'id': f'{district}-core', 'action': 'anchor',
+                              'universe': universe, 'range': 72}
                              if objective.get_attribute('data-step') == 'report' else None)
             proximity_before = page.evaluate('window.__sceneQA.nearbyCityZone()') if report_target else None
             begin_walk_proof(button)
@@ -178,6 +203,7 @@ def play_contract(page, entry, out, case_name, remount=False):
             expect(page.locator('.mosaic-rpg-panel')).to_have_count(0)
             page.wait_for_function('count=>window.__sceneQA.saves.length>count', arg=before_unmount['saveCount'], polling=50)
             checkpoint = page.evaluate('window.__sceneQA.saves.at(-1)')
+            check(checkpoint['districtId'] == district, 'remount checkpoint changed the contract district')
             page.wait_for_function('value=>JSON.stringify(window.__sceneQA.saved)===JSON.stringify(value)', arg=checkpoint, polling=50)
             page.evaluate('window.__sceneQA.remount()')
             page.wait_for_function('window.__sceneQA.state()?.npcs?.length', polling=50)
@@ -196,7 +222,61 @@ def play_contract(page, entry, out, case_name, remount=False):
     check(progress(page)['activeId'] is None, 'completed contract remains active')
     check(not page.evaluate('window.__sceneQA.reports.length'), 'City contract emitted a combat reward receipt')
     case['receipt'] = progress(page)['records'][mission_id]
+    check(case['receipt']['districtId'] == district and case['receipt']['universe'] == universe,
+          'completed contract lost its source district or universe')
     return case
+
+
+def run_case(page, args, profile, lang, label, out, name, result):
+    page.clock.install(time=CLOCK_EPOCH); page.clock.pause_at(CLOCK_START)
+    load(page, args, 'city', lang, profile['catalog'])
+    result['preparedHeroIds'] = page.evaluate('window.__sceneQA.preparedHeroIds')
+    check(not (progress(page) or {}).get('records'), 'fixture started with recorded contract evidence')
+    later = page.get_by_role('button', name='Plus tard' if lang == 'fr' else 'Later', exact=True)
+    if later.is_visible(): later.click()
+    # Initial district preparation is completed before accepting any contract.
+    # Every subsequent position and checkpoint comes from ordinary movement.
+    page.locator('#qa-unmount').click()
+    expect(page.locator('.mosaic-rpg-panel')).to_have_count(0)
+    page.evaluate('location=>window.__sceneQA.setLocation(location)', {
+        'districtId': profile['id'], 'zoneId': profile['id'],
+        'player': {'x': 820, 'y': 760, 'facing': 1}})
+    page.wait_for_function('id=>window.__sceneQA.saved?.districtId===id', arg=profile['id'], polling=50)
+    page.evaluate('window.__sceneQA.remount()')
+    page.wait_for_function('window.__sceneQA.state()?.npcs?.length', polling=50)
+    page.evaluate('''()=>{
+      document.documentElement.style.setProperty('--game-hud-scale','1.4');
+      document.documentElement.style.setProperty('--game-safe-area','32px');
+    }''')
+    terminal(page)
+    result['textScale'] = reading_scale(page, '.mosaic-character-missions', out, name)
+    result['terminalLayout'] = page.locator('.mosaic-terminal-drawer').evaluate('''root=>{
+      const heading=root.querySelector('h2'), header=root.querySelector('header'), body=root.querySelector('[role="region"]');
+      return {titleSize:parseFloat(getComputedStyle(heading).fontSize),
+        headerLeft:parseFloat(getComputedStyle(header).paddingLeft),
+        bodyLeft:parseFloat(getComputedStyle(body).paddingLeft), scrollFocusable:body.tabIndex===0};
+    }''')
+    check(result['terminalLayout']['titleSize'] >= 27, 'terminal heading ignored text scale')
+    check(result['terminalLayout']['headerLeft'] >= 32 and result['terminalLayout']['bodyLeft'] >= 32,
+          'terminal ignored left safe area')
+    check(result['terminalLayout']['scrollFocusable'], 'terminal scroll region is not keyboard focusable')
+    options = page.locator('[data-city-contract-select] option')
+    check(options.evaluate_all('nodes=>nodes.map(node=>node.value)') == [entry[0] for entry in profile['contracts']],
+          'district contracts are missing, reordered or mixed with another source universe')
+    chosen = profile['contracts'] if label == 'desktop' else profile.get('mobile', profile['contracts'])
+    for index, entry in enumerate(chosen):
+        result['contracts'].append(play_contract(
+            page, entry, out, name, profile['id'], profile['universe'],
+            remount=index == 0 or entry[0] in NEW_NEXUS_IDS or profile['catalog'] == 'city-contracts',
+            interrupt=index == 0))
+    page.locator('[data-city-contract-objective]').scroll_into_view_if_needed()
+    if args.require_art:
+        page.wait_for_function('''paths=>window.__sceneQA.media.length>0
+          && window.__sceneQA.media.every(item=>item.loaded)
+          && paths.every(src=>window.__sceneQA.media.some(item=>item.src===src&&item.loaded))''',
+            arg=profile['requiredArt'], polling=50, timeout=25000)
+    result['media'] = page.evaluate('window.__sceneQA.media')
+    page.screenshot(path=str(out / f'{name}-completed.png'))
 
 
 def main():
@@ -204,65 +284,38 @@ def main():
     parser.add_argument('--url', default='http://127.0.0.1:4173')
     parser.add_argument('--evidence', default='/tmp/mosaic-character-missions')
     parser.add_argument('--require-art', action='store_true')
+    parser.add_argument('--district', choices=['nexus', 'halo', 'alien', 'all'], default='nexus')
+    parser.add_argument('--lang', choices=['fr', 'en', 'all'], default='all')
     args = parser.parse_args()
     out = Path(args.evidence); out.mkdir(parents=True, exist_ok=True)
     results = []
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch()
         try:
-            for lang in ['fr', 'en']:
-                for label, viewport in [('desktop', {'width': 1440, 'height': 1000}),
-                                        ('portrait', {'width': 390, 'height': 844}),
-                                        ('landscape', {'width': 844, 'height': 390})]:
-                    name = f'{lang}-{label}'
-                    context = browser.new_context(viewport=viewport, has_touch=True)
-                    page = context.new_page()
-                    errors = []; page.on('pageerror', lambda error: errors.append(str(error)))
-                    result = {'name': name, 'viewport': viewport, 'status': 'running', 'contracts': []}
-                    results.append(result)
-                    try:
-                        page.clock.install(time=CLOCK_EPOCH); page.clock.pause_at(CLOCK_START)
-                        load(page, args, 'city', lang)
-                        later = page.get_by_role('button', name='Plus tard' if lang == 'fr' else 'Later', exact=True)
-                        if later.is_visible(): later.click()
-                        page.locator('#qa-unmount').click()
-                        expect(page.locator('.mosaic-rpg-panel')).to_have_count(0)
-                        page.evaluate('location=>window.__sceneQA.setLocation(location)', {
-                            'districtId': DISTRICT, 'zoneId': DISTRICT,
-                            'player': {'x': 820, 'y': 760, 'facing': 1}})
-                        page.wait_for_function('id=>window.__sceneQA.saved?.districtId===id', arg=DISTRICT, polling=50)
-                        page.evaluate('window.__sceneQA.remount()')
-                        page.wait_for_function('window.__sceneQA.state()?.npcs?.length', polling=50)
-                        page.evaluate('''()=>{
-                          document.documentElement.style.setProperty('--game-hud-scale','1.4');
-                          document.documentElement.style.setProperty('--game-safe-area','32px');
-                        }''')
-                        terminal(page)
-                        result['textScale'] = reading_scale(page, '.mosaic-character-missions', out, name)
-                        result['terminalLayout'] = page.locator('.mosaic-terminal-drawer').evaluate('''root=>{
-                          const heading=root.querySelector('h2'), header=root.querySelector('header'), body=root.querySelector('[role="region"]');
-                          return {titleSize:parseFloat(getComputedStyle(heading).fontSize),
-                            headerLeft:parseFloat(getComputedStyle(header).paddingLeft),
-                            bodyLeft:parseFloat(getComputedStyle(body).paddingLeft), scrollFocusable:body.tabIndex===0};
-                        }''')
-                        check(result['terminalLayout']['titleSize'] >= 27, 'terminal heading ignored text scale')
-                        check(result['terminalLayout']['headerLeft'] >= 32 and result['terminalLayout']['bodyLeft'] >= 32,
-                              'terminal ignored left safe area')
-                        check(result['terminalLayout']['scrollFocusable'], 'terminal scroll region is not keyboard focusable')
-                        check(page.locator('[data-city-contract-select] option').count() == 7, 'owned original contracts missing')
-                        chosen = CONTRACTS if label == 'desktop' else [CONTRACTS[0], CONTRACTS[5]]
-                        for index, entry in enumerate(chosen):
-                            result['contracts'].append(play_contract(page, entry, out, name, remount=index == 0))
-                        page.locator('[data-city-contract-objective]').scroll_into_view_if_needed()
-                        page.screenshot(path=str(out / f'{name}-completed.png'))
-                        check(not errors, f'uncaught browser errors: {errors}')
-                        result['status'] = 'passed'
-                    except Exception as error:
-                        result['status'] = 'failed'; result['error'] = str(error)
-                        page.screenshot(path=str(out / f'{name}-failure.png'))
-                    finally:
-                        (out / 'summary.json').write_text(json.dumps(results, ensure_ascii=False, indent=2))
-                        context.close()
+            for district in (DISTRICTS if args.district == 'all' else [args.district]):
+                profile = DISTRICTS[district]
+                for lang in (['fr', 'en'] if args.lang == 'all' else [args.lang]):
+                    for label, viewport in [('desktop', {'width': 1440, 'height': 1000}),
+                                            ('portrait', {'width': 390, 'height': 844}),
+                                            ('landscape', {'width': 844, 'height': 390})]:
+                        name = f'{district}-{lang}-{label}'
+                        context = browser.new_context(viewport=viewport, has_touch=True)
+                        page = context.new_page()
+                        errors = []; page.on('pageerror', lambda error: errors.append(str(error)))
+                        result = {'name': name, 'districtId': profile['id'], 'universe': profile['universe'],
+                                  'catalog': profile['catalog'], 'viewport': viewport, 'status': 'running', 'contracts': []}
+                        results.append(result)
+                        try:
+                            run_case(page, args, profile, lang, label, out, name, result)
+                            check(not errors, f'uncaught browser errors: {errors}')
+                            result['status'] = 'passed'
+                        except Exception as error:
+                            result['status'] = 'failed'; result['error'] = str(error)
+                            result['media'] = page.evaluate('window.__sceneQA?.media || []')
+                            page.screenshot(path=str(out / f'{name}-failure.png'))
+                        finally:
+                            (out / 'summary.json').write_text(json.dumps(results, ensure_ascii=False, indent=2))
+                            context.close()
         finally:
             browser.close()
     failures = [item for item in results if item['status'] != 'passed']

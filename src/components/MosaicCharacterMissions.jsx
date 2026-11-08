@@ -12,7 +12,7 @@ export default function MosaicCharacterMissions({ missions, progress, heroes, la
   const heroName = id => heroes.find(hero => hero.id === id)?.name || (id === 'player_anchor' ? (lang === 'fr' ? 'Ton Ancre' : 'Your Anchor') : id);
   return <section className="mosaic-character-missions" aria-label={lang === 'fr' ? 'Contrats des habitants' : 'Resident contracts'}>
     <h3>{lang === 'fr' ? 'CONTRATS DES HABITANTS' : 'RESIDENT CONTRACTS'}</h3>
-    {!mission ? <p>{lang === 'fr' ? 'Les premiers contrats sont proposés dans le quartier du Nexus de Convergence, par les habitants que tu possèdes. Les étapes déjà réalisées restent conservées.' : 'The first contracts are offered in the Nexus of Convergence district by residents you own. Completed steps remain saved.'}</p> : <>
+    {!mission ? <p>{lang === 'fr' ? 'Les contrats disponibles dépendent du quartier, de ses habitants possédés et des contenus installés. Retrouve leurs auteurs dans le Nexus ou dans les quartiers qui proposent des contrats. Les étapes déjà réalisées restent conservées.' : 'Available contracts depend on the district, its owned residents and installed content. Find their authors in the Nexus or districts offering contracts. Completed steps remain saved.'}</p> : <>
       <label><span>{lang === 'fr' ? 'Choisir un contrat' : 'Choose a contract'}</span>
         <select data-city-contract-select value={mission.id} onChange={event => { setSelectedId(event.target.value); setFeedback(''); }}>
           {missions.map(item => <option key={item.id} value={item.id}>{heroName(item.heroId)} · {localizeCityMission(item.title, lang)}</option>)}
