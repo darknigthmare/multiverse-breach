@@ -28,9 +28,9 @@ const fontsOf = (root, surface) => root.locator(surface === 'portal'
   ? '.archive-drawer-header h2, .archive-drawer-header button, .booster-section-kicker, .booster-catalog-count, .booster-pack-search input, .portal-catalog-scope label, .portal-catalog-scope select, .portal-catalog-scope p, .booster-rotation-strip span, .booster-rotation-strip strong, .booster-rotation-strip p, .booster-rotation-strip em, .portal-catalog-group > summary, .portal-catalog-range, .portal-page-size, .portal-page-size select, .portal-catalog-page-buttons button, .portal-booster-kicker, .portal-booster-title, .portal-booster-desc, .portal-booster-meta, .portal-booster-art-badge, .portal-booster-preview-label'
   : '#booster-dossier-title, .booster-art-preview-close, .booster-dossier-content h2, .booster-dossier-content h3, .booster-dossier-content h4, .booster-dossier-content p, .booster-dossier-content small, .booster-dossier-content input, .booster-dossier-content select, .booster-dossier-content button, .portal-focus-stats span, .portal-rate-grid span')
   .evaluateAll(nodes => nodes.filter(node => node.getClientRects().length).map(node => ({ text: node.textContent.slice(0, 80), size: Number.parseFloat(getComputedStyle(node).fontSize) })));
-const inspectLayout = async (root, viewport, surface) => {
+const inspectLayout = async (root, viewport, surface, record, key = 'layout') => {
   const geometry = await root.evaluate(node => {
-    const areas = [node, ...node.querySelectorAll('header, .archive-drawer-content, .portal-catalog-scope, .portal-catalog-group, .booster-catalog-grid, .portal-catalog-pager, .booster-dossier-content, .booster-dossier-intro, .booster-dossier-filters, .booster-reward-manifest-grid')]
+    const areas = [node, ...node.querySelectorAll('header, .archive-drawer-content, .booster-catalog-toolbar, .booster-pack-search, .portal-catalog-scope, .portal-catalog-scope label, .portal-catalog-group, .booster-catalog-grid, .portal-catalog-pager, .booster-dossier-content, .booster-dossier-intro, .booster-dossier-filters, .booster-reward-manifest-grid')]
       .filter(area => area.getClientRects().length)
       .map(area => ({ name: area.className || area.tagName, width: area.clientWidth, scrollWidth: area.scrollWidth, height: area.clientHeight }));
     const controls = [...node.querySelectorAll('button, input, select, summary')].filter(control => control.getClientRects().length)
@@ -38,6 +38,9 @@ const inspectLayout = async (root, viewport, surface) => {
     const close = node.querySelector('.archive-drawer-header button, .booster-art-preview-close').getBoundingClientRect();
     return { areas, controls, close: { top: close.top, bottom: close.bottom } };
   });
+  // Persist every measured surface even when the first assertion fails, so CI
+  // evidence identifies the overflowing child rather than only its ancestor.
+  record[key] = geometry;
   for (const area of geometry.areas) assert.ok(area.scrollWidth <= area.width + 1, `Horizontal clipping: ${JSON.stringify(area)}`);
   for (const control of geometry.controls) {
     assert.ok(control.width >= 43 && control.height >= 43, `Small target: ${JSON.stringify(control)}`);
@@ -113,7 +116,7 @@ try {
       assert.equal(before.length, after.length, 'Font samples changed without content changes');
       before.forEach((font, index) => assert.ok(Math.abs(after[index].size / font.size - 1.5) < .01, `Text scale ignored: ${font.text}: ${font.size} → ${after[index].size}`));
       record.fonts = { before, after };
-      record.layout = await inspectLayout(root, viewport, surface);
+      await inspectLayout(root, viewport, surface, record);
       await page.screenshot({ path: resolve(evidence, `${name}-overview.png`), fullPage: false });
 
       if (surface === 'portal') {
@@ -144,7 +147,7 @@ try {
         assert.ok((await dossier.textContent()).includes('70 %') || (await dossier.textContent()).includes('70%'));
         await page.keyboard.press('Shift+Tab'); await focused(dossier.locator('.booster-dossier-back-to-overview'));
         await page.keyboard.press('Tab'); await focused(dossier.locator('.booster-art-preview-close'));
-        record.nestedLayout = await inspectLayout(dossier, viewport, 'dossier');
+        await inspectLayout(dossier, viewport, 'dossier', record, 'nestedLayout');
         await page.screenshot({ path: resolve(evidence, `${name}-preview.png`), fullPage: false });
         await page.keyboard.press('Escape'); await dossier.waitFor({ state: 'detached' }); await focused(offRotation);
         assert.deepEqual(await pagingOf(group), savedPage, 'Closing a dossier must retain its source page');
@@ -237,7 +240,7 @@ try {
         assert.equal(await cards.count(), 5);
         await pageSize.selectOption('48'); assert.equal(await cards.count(), 48);
         assert.equal((await pagingOf(rewards)).page, 1);
-        record.filteredLayout = await inspectLayout(root, viewport, 'dossier');
+        await inspectLayout(root, viewport, 'dossier', record, 'filteredLayout');
         assert.deepEqual(await stateOf(page), initialState);
         assert.deepEqual(await page.evaluate(() => window.__portalCatalogQA.selected), [], 'Browsing never selects a booster');
         await root.locator('.booster-dossier-back-to-overview').click(); await focused(root.locator('#booster-dossier-overview-title'));
@@ -253,11 +256,13 @@ try {
     } catch (error) {
       record.status = 'failed'; record.error = error.stack || String(error); record.errors = errors; record.missingResources = missing;
       await page.screenshot({ path: resolve(evidence, `${name}-failure.png`), fullPage: false }).catch(() => {});
-      throw error;
+      console.error(`${name}: failed: ${record.error}`);
     } finally {
       await context.close();
       await writeFile(resolve(evidence, 'results.json'), JSON.stringify({ recipe: 'portal-dense-catalogs-v1', results }, null, 2) + '\n');
     }
   }
 } finally { await browser.close(); }
+assert.equal(results.length, 12, 'Every independent portal and dossier case must run');
+assert.ok(results.every(record => record.status === 'passed'), `Portal dense catalogue failures: ${results.filter(record => record.status !== 'passed').map(record => record.name).join(', ')}; evidence: ${evidence}`);
 console.log(`Portal dense catalogues: ${results.length}/${results.length} passed; evidence: ${evidence}`);

@@ -52,33 +52,52 @@ def interrupt_route(page, panel, out, name):
         before_progress = progress(page)
         begin_walk_proof(button)
         button.click()
-        page.clock.run_for(80)
-        check(progress(page) == before_progress, 'interruption scenario reached the target before interruption')
-        moving = page.evaluate('window.__sceneQA.snapshot()')
-        check(moving['destination'] is not None, 'no active route to interrupt')
-        if interruption == 'pause':
-            page.locator('#qa-pause').click()
-        else:
-            terminal(page)
-        page.wait_for_function('window.__sceneQA.snapshot().destination===null', polling=50)
-        stopped = page.evaluate('window.__sceneQA.snapshot()')
-        check(not any(stopped['keys'].values()), 'interruption retained a held movement command')
-        page.clock.run_for(500)
-        check(page.evaluate('window.__sceneQA.snapshot().player') == stopped['player'], 'interrupted route moved')
-        if interruption == 'pause':
-            page.locator('#qa-pause').click()
-        else:
-            page.keyboard.press('Escape')
-            expect(page.get_by_role('dialog')).to_have_count(0)
-        page.clock.run_for(250)
-        resumed = page.evaluate('window.__sceneQA.snapshot()')
-        check(resumed['player'] == stopped['player'] and resumed['destination'] is None,
-              'route resumed without an explicit new request')
-        check(progress(page) == before_progress, 'pause or menu recorded evidence')
-        proof = page.evaluate('window.__stopReconnaissanceMotion()')
-        motion = validate_mosaic_motion(proof)
-        evidence.append({'interruption': interruption, 'motion': motion, 'stopped': stopped['player'], 'afterResume': resumed['player']})
-    (out / f'{name}-interrupted-routes.json').write_text(json.dumps(evidence, indent=2))
+        entry = {'interruption': interruption}
+        evidence.append(entry)
+        try:
+            page.clock.run_for(80)
+            check(progress(page) == before_progress, 'interruption scenario reached the target before interruption')
+            entry['moving'] = page.evaluate('window.__sceneQA.snapshot()')
+            check(entry['moving']['destination'] is not None, 'no active route to interrupt')
+            if interruption == 'pause':
+                page.locator('#qa-pause').click()
+            else:
+                terminal(page)
+            page.wait_for_function('window.__sceneQA.snapshot().destination===null', polling=50)
+            stopped = page.evaluate('window.__sceneQA.snapshot()')
+            entry['stopped'] = stopped
+            check(not any(stopped['keys'].values()), 'interruption retained a held movement command')
+            check(page.evaluate('window.__sceneQA.state().pendingInteraction') is None,
+                  'interruption retained an automatic interaction')
+            page.clock.run_for(500)
+            entry['whileStopped'] = page.evaluate('window.__sceneQA.snapshot()')
+            check(entry['whileStopped'] == stopped, 'interrupted simulation advanced')
+            if interruption == 'pause':
+                page.locator('#qa-pause').click()
+            else:
+                page.keyboard.press('Escape')
+                expect(page.get_by_role('dialog')).to_have_count(0)
+            page.clock.run_for(250)
+            resumed = page.evaluate('window.__sceneQA.snapshot()')
+            entry['afterResume'] = resumed
+            check(resumed['t'] > stopped['t'], 'simulation did not resume after the explicit close/resume command')
+            # The frozen running pose becomes idle on the first resumed tick.
+            # Position, facing and speed must stay exact; no route or command
+            # may survive the interruption or restart without another request.
+            check(all(resumed['player'][key] == stopped['player'][key]
+                      for key in ['x', 'y', 'facing', 'speed']),
+                  'player moved or changed facing/speed without an explicit new request')
+            check(resumed['player']['state'] == 'idle' and resumed['destination'] is None
+                  and not any(resumed['keys'].values())
+                  and page.evaluate('window.__sceneQA.state().pendingInteraction') is None,
+                  'route or interaction resumed without an explicit new request')
+            check(progress(page) == before_progress, 'pause or menu recorded evidence')
+        finally:
+            proof = page.evaluate('window.__stopReconnaissanceMotion()')
+            entry['motionProof'] = proof
+            (out / f'{name}-interrupted-routes.json').write_text(json.dumps(evidence, indent=2))
+        entry['motion'] = validate_mosaic_motion(proof)
+        (out / f'{name}-interrupted-routes.json').write_text(json.dumps(evidence, indent=2))
     terminal(page)
     return evidence
 
@@ -233,12 +252,14 @@ def main():
                     except Exception as error:
                         result['status'] = 'failed'; result['error'] = str(error)
                         page.screenshot(path=str(out / f'{name}-failure.png'))
-                        raise
                     finally:
                         (out / 'summary.json').write_text(json.dumps(results, ensure_ascii=False, indent=2))
                         context.close()
         finally:
             browser.close()
+    failures = [item for item in results if item['status'] != 'passed']
+    check(not failures, f"{len(failures)} City cases failed: " +
+          '; '.join(f"{item['name']}: {item.get('error', item['status'])}" for item in failures))
     print(json.dumps({'cases': len(results), 'contracts': sum(len(item['contracts']) for item in results), 'status': 'passed'}))
 
 

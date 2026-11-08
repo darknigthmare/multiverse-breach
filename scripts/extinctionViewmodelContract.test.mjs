@@ -68,11 +68,15 @@ test('invalid authored source cells fall back instead of sampling a different as
 });
 
 const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
-test('progression hookup accepts the selected owner instead of a hardcoded Mirelle constant', () => {
-  assert.equal(verifyExtinctionRendererBinding(hubSource), true);
+const profileSource = readFileSync(new URL('../src/game/extinctionFighterProfiles.js', import.meta.url), 'utf8');
+test('progression hookup follows the selected owner through the fighter profile and exact-owner view resolver', () => {
+  assert.equal(verifyExtinctionRendererBinding(hubSource, profileSource), true);
+  assert.equal(verifyExtinctionRendererBinding(hubSource), true, 'the progression audit default reads the current adapter');
 });
 for (const [name, before, after] of [
-  ['wrong owner', 'getExtinctionViewmodel(selectedHero)', "getExtinctionViewmodel({id:'arca_mirelle'})"],
+  ['wrong owner', 'getExtinctionFighterProfile(selectedHero)', "getExtinctionFighterProfile({id:'arca_mirelle'})"],
+  ['stale owner memo', 'getExtinctionFighterProfile(selectedHero), [selectedHero]', 'getExtinctionFighterProfile(selectedHero), []'],
+  ['bypassed owner profile', 'const viewmodel = fighterProfile.view;', "const viewmodel = getExtinctionViewmodel({id:'arca_mirelle'});"],
   ['borrowed hands', 'hands.src = viewmodel.src;', "hands.src = '/borrowed-hands.png';"],
   ['unbound hand reference', 'fpsHandsRef.current = hands;', 'fpsHandsRef.current = null;'],
   ['borrowed effect', 'projectile.src = viewmodel.projectile;', "projectile.src = '/borrowed-effect.png';"],
@@ -80,4 +84,19 @@ for (const [name, before, after] of [
 ]) test(`progression hookup rejects ${name}`, () => {
   assert.ok(hubSource.includes(before));
   assert.throws(() => verifyExtinctionRendererBinding(hubSource.replace(before, after)), /hookup missing/);
+});
+for (const [name, before, after] of [
+  ['wrong adapter owner', 'getExtinctionViewmodel(hero)', "getExtinctionViewmodel({id:'arca_mirelle'})"],
+  ['borrowed adapter view', 'view: { ...view,', "view: { ...getExtinctionViewmodel({id:'arca_mirelle'}),"],
+  ['overridden adapter owner id', 'view: { ...view,', "view: { ...view, id: 'borrowed-owner',"],
+  ['overridden adapter hands', 'view: { ...view,', "view: { ...view, src: '/borrowed-hands.png',"],
+  ['overridden adapter effect', 'view: { ...view,', "view: { ...view, projectile: '/borrowed-effect.png',"],
+  ['overridden adapter crop', 'view: { ...view,', 'view: { ...view, layout: {},']
+]) test(`progression hookup rejects ${name}`, () => {
+  assert.ok(profileSource.includes(before));
+  assert.throws(() => verifyExtinctionRendererBinding(hubSource, profileSource.replace(before, after)), /hookup missing/);
+});
+test('a comment containing the old owner expression cannot satisfy the selected-owner hookup', () => {
+  const bad = hubSource.replace('getExtinctionFighterProfile(selectedHero)', "getExtinctionFighterProfile({id:'arca_mirelle'})");
+  assert.throws(() => verifyExtinctionRendererBinding(`${bad}\n// getExtinctionFighterProfile(selectedHero)`), /hookup missing/);
 });

@@ -1835,8 +1835,8 @@ export default function PortalScreen({
               disabled={Boolean(normalizedPackQuery)}
               onChange={event => { setShowAllPacks(event.target.value === 'all'); setPackPages({}); }}
             >
-              <option value="available">{lang === 'fr' ? 'Rotation actuelle et permanents' : 'Current rotation and permanent boosters'}</option>
-              <option value="all">{lang === 'fr' ? 'Tous les boosters intégrés' : 'Every integrated booster'}</option>
+              <option value="available">{lang === 'fr' ? 'Rotation et permanents' : 'Rotation & permanent'}</option>
+              <option value="all">{lang === 'fr' ? 'Tous les boosters' : 'All boosters'}</option>
             </select>
           </label>
           <p id="booster-catalog-search-scope">{lang === 'fr'

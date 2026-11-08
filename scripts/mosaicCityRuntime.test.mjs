@@ -9,6 +9,8 @@ import {
 } from '../src/game/mosaicCityRuntime.js';
 import { createPlayerHero } from '../src/game/playerHero.js';
 import { advanceMosaicReconnaissance, normalizeMosaicReconnaissance } from '../src/game/mosaicReconnaissance.js';
+import { MOSAIC_CHARACTER_MISSIONS, advanceMosaicCharacterMission, normalizeMosaicCharacterMissions,
+  startMosaicCharacterMission } from '../src/game/mosaicCharacterMissions.js';
 
 const district = { worldW: 2000, worldH: 1000 };
 const makeState = (keys = {}) => ({ player: { x: 100, y: 100, facing: 1, speed: 2.35 }, keys, npcs: [], destination: null });
@@ -255,6 +257,13 @@ test('the Archives Codex terminal opens the actual global archive only after app
   assert.equal(zone.universe, null, 'the global archive does not request an invented A.R.C.A. universe');
   const stateRef = { current: makeState() };
   const opened = [];
+  const mission = { ...MOSAIC_CHARACTER_MISSIONS.find(entry => entry.heroId === 'player_anchor'),
+    districtId: 'universe-nexus-de-convergence', anchorId: 'universe-nexus-de-convergence-core' };
+  const characterMissionsRef = { current: normalizeMosaicCharacterMissions(startMosaicCharacterMission(
+    normalizeMosaicCharacterMissions(), mission).progress) };
+  assert.equal(characterMissionsRef.current.activeId, mission.id);
+  assert.equal(characterMissionsRef.current.records[mission.id].districtId, mission.districtId);
+  const savedContract = JSON.stringify(characterMissionsRef.current);
   const source = city.slice(city.indexOf('const openCityService ='), city.indexOf('  useEffect(() => {\n    const onKeyDown'));
   const args = {
     useCallback: callback => callback, sessionPausedRef: { current: false }, stateRef,
@@ -267,6 +276,8 @@ test('the Archives Codex terminal opens the actual global archive only after app
     unlockedHeroes: [],
     advanceMosaicReconnaissance, reconnaissanceRef: { current: normalizeMosaicReconnaissance() }, reconnaissanceDossier: null,
     commitReconnaissance: () => assert.fail('The global archive cannot validate a district reconnaissance'),
+    advanceMosaicCharacterMission, characterMissionsRef, characterMissionCatalog: [],
+    commitCharacterMissions: () => assert.fail('The global archive cannot validate a character contract from another district'),
     setHubLog: () => {}, recordGuide: () => {}, switchDistrict: () => {},
     onOpenService: () => assert.fail('Codex cannot open another service'),
     onOpenCodex: universe => opened.push(universe), onOpenMissions: () => assert.fail('Codex cannot open missions'),
@@ -279,6 +290,7 @@ test('the Archives Codex terminal opens the actual global archive only after app
   Object.assign(stateRef.current.player, getMosaicZoneAnchor(zone));
   interact({ type: 'zone', id: zone.id });
   assert.deepEqual(opened, [null]);
+  assert.equal(JSON.stringify(characterMissionsRef.current), savedContract, 'opening the global archive preserves the tracked Nexus contract');
 });
 
 test('onboarding advances through walking, interaction and freely selected objective', () => {

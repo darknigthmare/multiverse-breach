@@ -83,11 +83,21 @@ def profile_case(page, identity, lang, args, out, name):
     active = read(page)
     check(all(active['protocols']['casts'][slot] == 1 for slot in ['simple', 'secondary', 'defense']), 'native personal action did not execute once')
     page.locator('#qa-pause').click()
+    # Space activates a focused native button. Aim these gameplay inputs at
+    # the canvas so they exercise the scene's pause guard, not QA's pause toggle.
+    canvas = page.locator('.fps-royale-canvas')
+    canvas.focus(); expect(canvas).to_be_focused()
+    expect(page.locator('.extinction-intel-button')).to_be_disabled()
     frozen = read(page)
+    check(frozen['phase'] == 'running', 'pause must preserve an active run')
     page.keyboard.press('Space'); page.keyboard.press('f'); page.keyboard.press('c'); page.keyboard.press('v'); page.keyboard.press('t')
     page.clock.run_for(900)
+    expect(canvas).to_be_focused()
+    expect(page.locator('.extinction-intel-button')).to_be_disabled()
     check(read(page) == frozen, 'pause accepted input or progressed the source kit')
-    page.locator('#qa-pause').click(); page.clock.run_for(32)
+    page.locator('#qa-pause').click()
+    expect(page.locator('.extinction-intel-button')).to_be_enabled()
+    canvas.focus(); page.clock.run_for(32)
     draws = page.evaluate('window.__fpsCatalogDraws')
     if expected_src and args.require_art:
         personal = [entry for entry in draws if entry['src'].endswith(expected_src) and len(entry['args']) == 8]

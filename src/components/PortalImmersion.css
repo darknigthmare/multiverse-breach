@@ -73,18 +73,20 @@
   padding: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-top)) max(18px, var(--game-safe-area, 12px), env(safe-area-inset-right)) 12px max(18px, var(--game-safe-area, 12px), env(safe-area-inset-left));
 }
 .portal-catalog-drawer .archive-drawer-header h2 { min-width: 0; font-size: 1.05rem; line-height: 1.3; overflow-wrap: anywhere; }
+.portal-catalog-drawer .archive-drawer-header button { flex-shrink: 0; }
 .portal-catalog-drawer .archive-drawer-content {
   padding: 14px max(18px, var(--game-safe-area, 12px), env(safe-area-inset-right)) max(18px, var(--game-safe-area, 12px), env(safe-area-inset-bottom)) max(18px, var(--game-safe-area, 12px), env(safe-area-inset-left));
   scrollbar-gutter: stable;
 }
 .portal-catalog-drawer .booster-catalog-panel { padding: 0; border: 0; background: none; box-shadow: none; }
-.portal-catalog-drawer .booster-catalog-toolbar { align-items: start; flex-wrap: wrap; gap: 12px; }
+.portal-catalog-drawer .booster-catalog-toolbar { flex-direction: row; align-items: start; flex-wrap: wrap; gap: 12px; }
+.portal-catalog-drawer .booster-catalog-toolbar > div { min-width: 0; max-width: 100%; }
 .portal-catalog-drawer .booster-section-kicker { font-size: .85rem; letter-spacing: .08em; }
 .portal-catalog-drawer .booster-catalog-count { font-size: .8rem; color: #b8cdd1; }
 .portal-catalog-drawer .booster-pack-search { flex: 1 1 20rem; min-width: 0; }
 .portal-catalog-drawer .booster-pack-search input { font-size: .9rem; }
-.portal-catalog-scope { display: grid; gap: 10px; margin-bottom: 16px; }
-.portal-catalog-scope label { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .9rem; }
+.portal-catalog-scope { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-bottom: 16px; }
+.portal-catalog-scope label { display: flex; min-width: 0; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .9rem; }
 .portal-catalog-scope select { flex: 1 1 18rem; }
 .portal-catalog-scope p { margin: 0; color: #c4d9dc; font-size: .85rem; line-height: 1.55; }
 .portal-catalog-scope .portal-catalog-results { color: #a2f2e7; }

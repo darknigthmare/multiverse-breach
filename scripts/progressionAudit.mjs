@@ -874,7 +874,7 @@ assert(
   'Mosaic City Nexus NPCs must preserve their real hero identity and movement state through the Nexus sprite renderer, returning before color fallback blocks.'
 );
 assert(hubSource.includes("drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud')") && hubSource.includes("drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud')"), 'Resonance hero icons must use cropped HUD avatars.');
-verifyExtinctionRendererBinding(hubSource);
+verifyExtinctionRendererBinding(read('../src/components/HubScreen.jsx'));
 assert(
   hubSource.includes("kind: completePack ? 'pack' : 'hero'") &&
   regulationImagePreviewSource.includes('preview.sheets'),

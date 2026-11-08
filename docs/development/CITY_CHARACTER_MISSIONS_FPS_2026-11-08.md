@@ -126,13 +126,27 @@ colonnes d’identité restent figés pendant le défilement.
 
 ## Vérifications et reproduction
 
-Les **265 tests `test:ui-immersion`** passent localement, dont les nouveaux
+Les **325 tests `test:ui-immersion`** passent localement, dont les nouveaux
 contrats de Cité, profils/directives FPS et dossiers de portail. Les 19 tests
 de Cité incluent les deux conclusions de chacun des sept contrats, un trajet
 réel soumis aux collisions, les sauvegardes et le refus des interactions
 invalides. Les tests FPS exécutent les 7 244 actions et examinent leurs effets.
 Le build Vite de source est passé ; il ne remplace pas le cycle complet de
 production avec ses **44 commandes prebuild**, conservées dans le même ordre.
+
+La première CI a permis de corriger le débordement du filtre Portail en
+portrait à texte 150 %, ainsi que la hauteur du champ de recherche. Deux
+contrôles d’intégration ont été raccordés au nouveau code : le contexte du
+test Codex inclut le suivi des contrats Cité, et le contrat de vue FPS vérifie
+la chaîne réelle propriétaire → profil → vue par analyse syntaxique. Ces
+contrôles font maintenant aussi partie de `test:ui-immersion`.
+
+Les recettes de pause distinguent les commandes du jeu de l’activation native
+d’un bouton focalisé, et la position du joueur de sa pose d’animation. Elles
+exigent toujours une simulation figée en pause, des coordonnées identiques à
+la reprise et aucune commande automatique conservée. Les captures et états
+intermédiaires sont enregistrés avant les assertions ; chaque format est
+exécuté indépendamment, et tout cas en échec fait échouer le workflow.
 
 Le fichier Excel est construit avec `@oai/artifact-tool`, puis recalculé,
 inspecté et relu par un vérificateur OpenXML indépendant. Les changements de
