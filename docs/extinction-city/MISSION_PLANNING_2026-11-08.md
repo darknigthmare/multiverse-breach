@@ -120,15 +120,15 @@ sources des contrats et des trois entrées de `fieldEquipmentSources`,
 `spriteAssets.js`, ainsi que `immersiveHubState.js` et `useSceneViewport.js`
 pour le cadrage lors du montage, de la restauration et du redimensionnement,
 ainsi que `mosaicMissionWalks.js`, `MosaicPocketTerminal.jsx`, son CSS et
-`MosaicCharacterMissions.jsx`. `ImmersiveDrawer.jsx` conserve aussi sa provenance
+`MosaicCharacterMissions.jsx` et son CSS. `ImmersiveDrawer.jsx` conserve aussi sa provenance
 pour l’ouverture, la fermeture et le retour du focus du terminal.
 Le groupe `fpsPresentationSources` contrôle
 `extinctionAimReadout.js`, `extinctionSignatures.js`, `extinctionFieldDirectives.js`,
 `HubScreen.jsx`, `ExtinctionPrimaryAction.jsx` et `ExtinctionAimReadout.css`. La lecture de visée modifie
 la présentation, sans réécrire les données des feuilles « Profils FPS » et
 « Modes FPS ».
-Le reçu comporte 21 sources de contrats, 3 sources d’équipement, 12 sources de
-présentation de Cité et 6 sources de visée FPS, soit 37 fichiers distincts.
+Le reçu comporte 21 sources de contrats, 3 sources d’équipement, 13 sources de
+présentation de Cité et 6 sources de visée FPS, soit 38 fichiers distincts.
 Ces groupes peuvent partager des fichiers. Le rendu des sprites, sa géométrie
 et ces dépendances de caméra ne figurent pas dans le manifeste de planification ;
 ce groupe externe conserve leurs empreintes sans ajouter de cellules.
