@@ -2,6 +2,8 @@
  * Read the current held action only. Never infer anatomy, grant equipment, or
  * advance animation from wall time: pause and replay use the simulation state.
  */
+import { fitExtinctionView } from './extinctionViewLayout.js';
+
 const PRIMARY_STYLES = Object.freeze({
   hitscan: 'ballistic', scatter: 'scatter', volley: 'scatter',
   melee: 'contact', sweep: 'contact', counter: 'contact',
@@ -56,11 +58,15 @@ export function getExtinctionSchematicView(state = {}, fallbackColor = '#39c5bb'
 /** The complete diagram, recoil and status strip fit below the central reticle.
  * Coordinates inside the envelope use a 160×140 reference space.
  */
-export function getExtinctionSchematicPlacement(width, height, state = {}) {
+export function getExtinctionSchematicPlacement(width, height, state = {}, layout = null) {
   if (![width, height].every(n => Number.isFinite(n) && n > 0)) return null;
   const scale = Math.min(182 / 160, width * 0.56 / 160, 148 / 140, height * 0.38 / 140);
   const w = 160 * scale, h = 140 * scale;
   const sway = clamp(-finite(state.turnVel) * 430 + finite(state.vx) * 85, -w * 0.14, w * 0.14);
+  if (layout) {
+    const fit = fitExtinctionView(width, w, h, sway, layout);
+    return fit ? { ...fit, scale: fit.w / 160 } : null;
+  }
   return { x: clamp((width - w) / 2 + sway, 0, width - w),
     y: height - h - Math.min(4, height * 0.02), w, h, scale };
 }
@@ -171,8 +177,8 @@ function diagram(ctx, view) {
   }
 }
 
-export function drawExtinctionSchematicView(ctx, state, width, height, color) {
-  const placement = getExtinctionSchematicPlacement(width, height, state);
+export function drawExtinctionSchematicView(ctx, state, width, height, color, layout = null) {
+  const placement = getExtinctionSchematicPlacement(width, height, state, layout);
   if (!placement) return null;
   const view = getExtinctionSchematicView(state, color);
   ctx.save();

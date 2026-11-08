@@ -63,6 +63,7 @@ const readSceneRef = predicate => {
 audit.state = () => readSceneRef(value => mode === 'city'
   ? value.player && value.camera && value.npcs : value.phase && value.enemies && 'px' in value);
 audit.hudLayout = () => readSceneRef(value => value.fpsRadar && value.cityMinimap && Number.isFinite(value.unitsPerCssPixel));
+audit.fpsViewLayout = () => readSceneRef(value => value.kind === 'extinction-view-layout');
 // Read the actual nearby zone ref; this never chooses or moves a target.
 audit.nearbyCityZone = () => {
   if (mode !== 'city') return null;

@@ -4,8 +4,9 @@ import { HEROES_DB } from '../src/game/heroes.js';
 import { createPlayerHero } from '../src/game/playerHero.js';
 import { getExtinctionFighterProfile } from '../src/game/extinctionFighterProfiles.js';
 import { createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols } from '../src/game/extinctionSignatures.js';
-import { drawExtinctionSchematic } from '../src/game/extinctionContent.js';
+import { drawExtinctionSchematic, getExtinctionHandPlacement } from '../src/game/extinctionContent.js';
 import { getExtinctionSchematicView, getExtinctionSchematicPlacement } from '../src/game/extinctionSchematicView.js';
+import { getExtinctionViewLayout } from '../src/game/extinctionViewLayout.js';
 
 const heroes = [createPlayerHero(), ...HEROES_DB];
 const representatives = {
@@ -184,4 +185,52 @@ test('all diagram states fit the lower envelope on portrait, landscape, ultrawid
     const drawing = context(); assert.equal(drawExtinctionSchematic(drawing.ctx, make(), width, height), null);
     assert.equal(drawing.operations.length, 0);
   }
+});
+
+test('measured HUD regions keep real paths and personal sheet bounds clear at every aspect and display scale', () => {
+  const cases = [
+    { size: [390, 844], hud: [[12, 565, 366, 71], [12, 644, 366, 188], [12, 68, 235, 104]] },
+    { size: [1280, 900], hud: [[48, 809, 459, 79], [531, 702, 700, 186], [48, 68, 480, 92]] },
+    { size: [844, 390], hud: [[12, 300, 307, 78], [327, 238, 505, 140], [12, 68, 440, 78]] },
+    // Larger display preferences and a second primary row (KIT / MARK).
+    { size: [390, 844], safeArea: 32, hud: [[32, 437, 326, 111], [32, 556, 326, 256], [32, 88, 196, 170]] },
+    { size: [844, 390], safeArea: 32, hud: [[32, 256, 287, 102], [327, 170, 485, 188], [32, 88, 432, 65]] }
+  ];
+  const intersects = (a, b) => a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+  for (const { size: [cssW, cssH], hud, safeArea = 12 } of cases) {
+    // A translated canvas catches accidental treatment of viewport CSS pixels
+    // as local canvas coordinates, not just width/height scaling mistakes.
+    const canvas = { left: 37, top: 23, width: cssW, height: cssH };
+    const width = Math.round(430 * cssW / cssH), height = 430;
+    const dom = hud.map(([left, top, w, h]) => ({ left: left + canvas.left, top: top + canvas.top, width: w, height: h }));
+    const layout = getExtinctionViewLayout(canvas, width, height, dom, null, safeArea);
+    const toCss = box => ({ x: box.x * cssW / width, y: box.y * cssH / height,
+      w: box.w * cssW / width, h: box.h * cssH / height });
+    const blockers = hud.map(([x, y, w, h]) => ({ x, y, w, h }));
+    blockers.push(toCss({ x: width / 2 - 18, y: height / 2 - 18, w: 36, h: 36 }));
+    const assertFree = box => {
+      const css = toCss(box);
+      assert.ok(css.h >= 64 && css.w >= 48, `useful view lost at ${cssW}×${cssH}: ${JSON.stringify(css)}`);
+      assert.ok(css.x >= safeArea - 1e-6 && css.x + css.w <= cssW - safeArea + 1e-6
+        && css.y >= safeArea - 1e-6 && css.y + css.h <= cssH - safeArea + 1e-6);
+      for (const obstacle of blockers) assert.equal(intersects(css, obstacle), false, `${JSON.stringify(css)} overlaps ${JSON.stringify(obstacle)}`);
+    };
+    for (const id of Object.keys(representatives)) for (const turnVel of [-1e6, 0, 1e6]) {
+      const state = make(id); state.turnVel = turnVel; state.protocols.activeSlot = 'simple'; state.protocols.activeFrames = 20;
+      const before = structuredClone(state), drawing = context();
+      const result = drawExtinctionSchematic(drawing.ctx, state, width, height, '#39c5bb', layout);
+      assert.ok(result); assertFree(result.placement);
+      for (const [x, y] of drawing.points) {
+        const pixel = toCss({ x, y, w: 0.01, h: 0.01 });
+        for (const obstacle of blockers) assert.equal(intersects(pixel, obstacle), false, 'actual transformed path enters HUD or reticle');
+      }
+      assert.deepEqual(state, before);
+    }
+    for (const source of [{ w: 256, h: 153.6 }, { w: 194, h: 199 }, { w: 193, h: 201 }]) {
+      const box = getExtinctionHandPlacement(source, width, height, { vx: 100, turnVel: -100 }, layout);
+      assert.ok(box); assertFree(box); assert.ok(Math.abs(box.w / box.h - source.w / source.h) < 1e-9);
+    }
+  }
+  const old = getExtinctionSchematicPlacement(Math.round(430 * 390 / 844), 430);
+  assert.ok(old.y * 844 / 430 > 644, 'the recorded mobile regression must be covered by this test');
 });

@@ -1,6 +1,7 @@
 /** Extinction presentation only. Never grants ownership or changes combat stats. */
 import { getHeroCompleteSpritePack, getSpriteSheetLayout } from './spriteAssets.js';
 import { drawExtinctionSchematicView } from './extinctionSchematicView.js';
+import { fitExtinctionView } from './extinctionViewLayout.js';
 
 // The separators in these two authored PNGs are not an equal 4×10 grid.
 // Bounds exclude their visible grid lines, retain the actual row height, and
@@ -70,8 +71,8 @@ export function getExtinctionHandFrame(profile, state = {}) {
 /** Explicit neutral schematic for a missing asset or a different pickup weapon.
  * Not a canonical hand model. Geometry contains no anatomy/character identity.
  */
-export function drawExtinctionSchematic(ctx, state, width, height, color = '#39c5bb') {
-  return drawExtinctionSchematicView(ctx, state, width, height, color);
+export function drawExtinctionSchematic(ctx, state, width, height, color = '#39c5bb', layout = null) {
+  return drawExtinctionSchematicView(ctx, state, width, height, color, layout);
 }
 
 /** Source pixels stay in one declared cell, including every trim edge.
@@ -102,13 +103,14 @@ export function getExtinctionHandSourceRect(frame, width, height) {
 }
 
 /** Contain the source aspect inside the existing lower-screen envelope. */
-export function getExtinctionHandPlacement(source, width, height, state = {}) {
+export function getExtinctionHandPlacement(source, width, height, state = {}, layout = null) {
   if (!source || ![source.w, source.h, width, height].every(n => Number.isFinite(n) && n > 0)) return null;
   const maxW = Math.min(300, width * 0.6), maxH = Math.min(188, height * 0.44);
   const scale = Math.min(maxW / source.w, maxH / source.h);
   const w = source.w * scale, h = source.h * scale;
   const finite = n => Number.isFinite(n) ? n : 0;
   const sway = Math.max(-maxW * 0.15, Math.min(maxW * 0.15, -finite(state.turnVel) * 430 + finite(state.vx) * 85));
+  if (layout) return fitExtinctionView(width, w, h, sway, layout);
   return { x: Math.max(0, Math.min(width - w, (width - w) / 2 + sway)), y: Math.max(0, height - h - Math.min(4, height * 0.02)), w, h };
 }
 

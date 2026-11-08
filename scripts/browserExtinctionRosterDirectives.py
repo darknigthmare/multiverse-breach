@@ -47,14 +47,95 @@ def load(page, args, lang):
 
 
 def media_capture(context):
-    context.add_init_script('''window.__fpsCatalogDraws=[];
-      const draw=CanvasRenderingContext2D.prototype.drawImage;
-      CanvasRenderingContext2D.prototype.drawImage=function(image,...args){
+    context.add_init_script('''window.__fpsCatalogDraws=[];window.__fpsSchematicStrokes=[];
+      const proto=CanvasRenderingContext2D.prototype, paths=new WeakMap();
+      const point=(ctx,x,y)=>{const m=ctx.getTransform();
+        const points=paths.get(ctx)||[];points.push({x:m.a*x+m.c*y+m.e,y:m.b*x+m.d*y+m.f});paths.set(ctx,points);};
+      const begin=proto.beginPath;proto.beginPath=function(){paths.set(this,[]);return begin.call(this);};
+      for(const name of ['moveTo','lineTo','bezierCurveTo']){const method=proto[name];proto[name]=function(...args){
+        if(this.canvas.classList.contains('fps-royale-canvas'))for(let i=0;i<args.length;i+=2)point(this,args[i],args[i+1]);
+        return method.apply(this,args);};}
+      const arc=proto.arc;proto.arc=function(x,y,r,start,end,ccw=false){
+        if(this.canvas.classList.contains('fps-royale-canvas')){
+          let length=end-start;if(ccw&&length>0)length-=Math.PI*2;if(!ccw&&length<0)length+=Math.PI*2;
+          for(let i=0;i<=32;i++){const a=start+length*i/32;point(this,x+Math.cos(a)*r,y+Math.sin(a)*r);}}
+        return arc.call(this,x,y,r,start,end,ccw);};
+      const stroke=proto.stroke;proto.stroke=function(...args){
+        if(this.canvas.classList.contains('fps-royale-canvas')&&String(this.strokeStyle).replace(/\\s/g,'')==='rgba(225,246,255,0.65)'){
+          const points=paths.get(this)||[],m=this.getTransform(),pad=this.lineWidth*Math.max(Math.abs(m.a),Math.abs(m.d))/2;
+          if(points.length)window.__fpsSchematicStrokes.push({at:performance.now(),cw:this.canvas.width,ch:this.canvas.height,
+            left:Math.min(...points.map(p=>p.x))-pad,top:Math.min(...points.map(p=>p.y))-pad,
+            right:Math.max(...points.map(p=>p.x))+pad,bottom:Math.max(...points.map(p=>p.y))+pad});
+          if(window.__fpsSchematicStrokes.length>400)window.__fpsSchematicStrokes.splice(0,200);}
+        return stroke.apply(this,args);};
+      const draw=proto.drawImage;proto.drawImage=function(image,...args){
         if(this.canvas.classList.contains('fps-royale-canvas')&&typeof image?.src==='string'){
-          window.__fpsCatalogDraws.push({src:image.src,args});
+          const m=this.getTransform();
+          window.__fpsCatalogDraws.push({src:image.src,args,at:performance.now(),matrix:[m.a,m.b,m.c,m.d,m.e,m.f],cw:this.canvas.width,ch:this.canvas.height});
           if(window.__fpsCatalogDraws.length>250)window.__fpsCatalogDraws.shift();
         } return draw.call(this,image,...args);
       };''')
+
+
+def view_geometry(page, source, out, name):
+    """Observe actual Canvas strokes/drawImage, independently of placement helpers."""
+    geometry = page.evaluate('''source=>{
+      const canvas=document.querySelector('.fps-royale-canvas'),r=canvas.getBoundingClientRect(),layout=window.__sceneQA.fpsViewLayout();
+      const local=b=>({left:r.left+b.left*r.width/canvas.width,top:r.top+b.top*r.height/canvas.height,
+        right:r.left+b.right*r.width/canvas.width,bottom:r.top+b.bottom*r.height/canvas.height});
+      const union=boxes=>boxes.length?({left:Math.min(...boxes.map(b=>b.left)),top:Math.min(...boxes.map(b=>b.top)),
+        right:Math.max(...boxes.map(b=>b.right)),bottom:Math.max(...boxes.map(b=>b.bottom))}):null;
+      let actual=null,samples=0;
+      if(source){const d=window.__fpsCatalogDraws.filter(d=>d.src.endsWith(source)&&d.args.length===8&&d.cw===canvas.width&&d.ch===canvas.height).at(-1);
+        if(d){const [a,b,c,e,tx,ty]=d.matrix,[,,,,x,y,w,h]=d.args;
+          actual=union([[x,y],[x+w,y],[x,y+h],[x+w,y+h]].map(([px,py])=>({left:a*px+c*py+tx,right:a*px+c*py+tx,top:b*px+e*py+ty,bottom:b*px+e*py+ty})));samples=1;}}
+      else {const strokes=window.__fpsSchematicStrokes.filter(d=>d.cw===canvas.width&&d.ch===canvas.height),at=strokes.at(-1)?.at;
+        const latest=strokes.filter(d=>d.at===at);actual=union(latest);samples=latest.length;}
+      const rect=el=>{const b=el.getBoundingClientRect();return {left:b.left,top:b.top,right:b.right,bottom:b.bottom,width:b.width,height:b.height};};
+      const hud=[...document.querySelectorAll('.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-objective-strip')]
+        .filter(el=>el.getClientRects().length).map(el=>({kind:el.className,...rect(el)}));
+      const reticle=local({left:canvas.width/2-18,top:canvas.height/2-18,right:canvas.width/2+18,bottom:canvas.height/2+18});
+      const radar=window.__sceneQA.hudLayout().fpsRadar;
+      const radarBox=local({left:radar.x-radar.radius,top:radar.y-radar.radius,right:radar.x+radar.radius,bottom:radar.y+radar.radius});
+      const overlap=(a,b)=>a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;
+      const view=actual?local(actual):null;
+      const buttons=[...document.querySelectorAll('.extinction-hud-dock button')].filter(el=>el.getClientRects().length).map(el=>({label:el.textContent,...rect(el)}));
+      const placement=layout?.placement;
+      return {view,samples,canvas:rect(canvas),canvasWidth:canvas.width,canvasHeight:canvas.height,
+        placement:placement?{region:placement.region,...local({left:placement.x,top:placement.y,right:placement.x+placement.w,bottom:placement.y+placement.h})}:null,
+        reserved:layout?{width:layout.width,height:layout.height,safeArea:layout.safeArea}:null,hud,reticle,radar:radarBox,
+        viewOverlaps:view?[...hud,reticle,radarBox].filter(b=>overlap(view,b)):[],hudReticleOverlaps:hud.filter(b=>overlap(reticle,b)),
+        minButtonWidth:Math.min(...buttons.map(b=>b.width)),minButtonHeight:Math.min(...buttons.map(b=>b.height)),buttons,
+        hasKit:!!document.querySelector('[data-personal-kit]'),hasMark:!!document.querySelector('[data-hunt-mark]')};
+    }''', source)
+    (out / f'{name}-geometry.json').write_text(json.dumps(geometry, indent=2, ensure_ascii=False))
+    view = geometry['view']; check(view and geometry['samples'] > 0, 'no actual held view drawing')
+    placement = geometry['placement']; check(placement and placement['region'] in ['lower', 'lateral'], 'held view has no measured region')
+    # Size the reserved view consistently. A thin beam/contact stroke should
+    # not be forced upward just to match a square sheet's painted width.
+    check(placement['right'] - placement['left'] >= (64 if source else 80)
+          and placement['bottom'] - placement['top'] >= (64 if source else 72), 'held view reduced below useful dimensions')
+    check(view['right'] - view['left'] >= 8 and view['bottom'] - view['top'] >= 24, 'actual held drawing collapsed inside its envelope')
+    check(view['left'] >= placement['left'] - 1 and view['right'] <= placement['right'] + 1
+          and view['top'] >= placement['top'] - 1 and view['bottom'] <= placement['bottom'] + 1, 'actual draw escaped its reserved region')
+    check(not geometry['viewOverlaps'], 'actual held view overlaps HUD, radar or reticle')
+    reserved = geometry['reserved']; check(reserved and reserved['width'] == geometry['canvasWidth'] and reserved['height'] == geometry['canvasHeight'], 'cached layout did not follow canvas resize')
+    c = geometry['canvas']; edge = reserved['safeArea']
+    check(view['left'] >= c['left'] + edge - 1 and view['right'] <= c['right'] - edge + 1
+          and view['bottom'] <= c['bottom'] - edge + 1, 'held view ignores chosen safe area')
+    check(geometry['minButtonWidth'] >= 43.5 and geometry['minButtonHeight'] >= (43.5 if c['width'] <= 900 else 39.5), 'touch target shrunk below its usable size')
+    check(not geometry['hudReticleOverlaps'], 'HUD controls cover the central reticle')
+    return geometry
+
+
+def layout_variant(page, width, height, large, source, out, name):
+    page.set_viewport_size({'width': width, 'height': height})
+    page.evaluate('''large=>{const s=document.documentElement.style;
+      s.setProperty('--game-hud-scale',large?'1.4':'1');s.setProperty('--game-text-scale',large?'1.5':'1');
+      s.setProperty('--game-safe-area',large?'32px':'12px');window.dispatchEvent(new Event('multiverse:display-preferences'));}''', large)
+    page.clock.run_for(96)
+    page.screenshot(path=str(out / f'{name}.png'))
+    return view_geometry(page, source, out, name)
 
 
 def profile_case(page, identity, lang, args, out, name):
@@ -68,7 +149,8 @@ def profile_case(page, identity, lang, args, out, name):
       profile:document.querySelector('[data-fighter-profile]').dataset,
       media:window.__sceneQA.media.filter(item=>item.loaded)})''')
     check(ready['scroll'] <= ready['width'] + 1, 'profile briefing overflows the viewport')
-    page.screenshot(path=str(out / f'{name}-briefing.png'))
+    brief.scroll_into_view_if_needed()
+    brief.screenshot(path=str(out / f'{name}-briefing.png'))
     prepare_fps_clock(page)
     page.evaluate('seed => window.__sceneQA.prepareReplay(seed)', seed_for(identity))
     page.get_by_role('button', name='DEMARRER RUN' if lang == 'fr' else 'START RUN', exact=True).click()
@@ -106,10 +188,17 @@ def profile_case(page, identity, lang, args, out, name):
             _, _, sw, sh, _, _, dw, dh = entry['args']
             check(abs(sw / sh - dw / dh) < 1e-6, 'personal FPS sheet distorted')
     page.screenshot(path=str(out / f'{name}-active.png'))
+    geometry = view_geometry(page, expected_src, out, f'{name}-active')
+    variants = []
+    if identity in ['lilo_pelekai', 'serj_tankian']:
+        for width, height, large in [(390, 844, True), (844, 390, False), (844, 390, True)]:
+            variants.append(layout_variant(page, width, height, large, expected_src, out,
+                f'{name}-layout-{width}x{height}-' + ('large' if large else 'default')))
     page.locator('#qa-exit').click()
     check(page.evaluate('window.__sceneQA.reports.filter(report=>report.reason==="completed").length') == 0, 'abandonment granted completion')
     return {'heroId': identity, 'briefing': ready, 'actions': active['protocols'], 'nativeInputs': True,
-            'viewSource': expected_src, 'draws': draws, 'pausePreserved': True, 'abandonNoReward': True}
+            'viewSource': expected_src, 'draws': draws, 'geometry': geometry, 'layoutVariants': variants,
+            'pausePreserved': True, 'abandonNoReward': True}
 
 
 def walk(page, current, point):
@@ -141,6 +230,47 @@ def combat(page, current, targets):
     page.keyboard.press('Space'); duration = max(350, math.ceil(primary['cooldown'] * 1000 / 60) + 17)
     page.clock.run_for(duration)
     return {'kind': 'fire', 'target': target['id'], 'milliseconds': duration, 'protocols': commands}
+
+
+def pickup_layout_case(page, out, name):
+    """Short native hunt: earn and collect one drop, then measure KIT + MARK."""
+    page.locator('.extinction-mode-options button').filter(has=page.locator('strong', has_text='Champion Hunt')).click()
+    page.locator('[data-field-directive]').check()
+    prepare_fps_clock(page)
+    seed = seed_for('hunt'); page.evaluate('seed=>window.__sceneQA.prepareReplay(seed)', seed)
+    page.get_by_role('button', name='START RUN', exact=True).click()
+    page.locator('.fps-royale-canvas').focus(); page.clock.run_for(350)
+    trace = []; current = read(page)
+    for _ in range(120):
+        if current['personalKit'] and current['weaponType'] != 'pistol': break
+        check(current['phase'] == 'running', 'short pickup case ended before collection')
+        pickup = next((item for item in current['loot'] if item['type'] == 'weapon' and not item.get('used')), None)
+        if pickup:
+            if math.hypot(pickup['wx'] - current['px'], pickup['wy'] - current['py']) >= 1.05:
+                action = walk(page, current, pickup)
+            else:
+                page.keyboard.press('e'); page.clock.run_for(80)
+                action = {'kind': 'collect-weapon', 'target': pickup['id']}
+        else:
+            enemies = [enemy for enemy in current['enemies'] if enemy['hp'] > 0]
+            check(enemies, 'no native pickup target before first drop')
+            action = combat(page, current, enemies)
+        current = read(page); trace.append({'action': action, 'state': current})
+    (out / f'{name}-trace.json').write_text(json.dumps({'seed': seed, 'trace': trace}, indent=2, ensure_ascii=False))
+    check(current['personalKit'] and current['weaponType'] != 'pistol', 'no real weapon pickup within short case')
+    expect(page.locator('[data-personal-kit]')).to_be_visible(); expect(page.locator('[data-hunt-mark]')).to_be_visible()
+    retained = current['personalKit']; weapon = current['weaponType']; layouts = []
+    for large in [False, True]:
+        layouts.append(layout_variant(page, 844, 390, large, '', out, f'{name}-' + ('large' if large else 'default')))
+        check(layouts[-1]['hasKit'] and layouts[-1]['hasMark'], 'layout did not contain both optional controls')
+    page.locator('.fps-royale-canvas').focus(); page.keyboard.press('v'); page.clock.run_for(32)
+    restored = read(page)
+    check(restored['weaponType'] == 'pistol' and restored['ammo'] == retained['ammo']
+          and restored['reserveAmmo'] == retained['reserveAmmo'], 'layout change altered retained personal stock')
+    page.locator('#qa-exit').click()
+    check(page.evaluate('window.__sceneQA.reports.filter(r=>r.reason==="completed").length') == 0, 'short layout case granted completion')
+    return {'nativeInputs': True, 'injectedProgress': False, 'seed': seed, 'pickedWeapon': weapon,
+            'nativeActions': len(trace), 'layouts': layouts, 'restoredKit': True, 'abandonNoReward': True}
 
 
 def full_directive(page, mode, lang, out, name):
@@ -232,7 +362,9 @@ def main():
     profiles = [('arca_mirelle', 1280, 900, 'fr'), ('masterchief', 1280, 900, 'en'), ('predator', 1280, 900, 'fr'),
                 ('doomslayer', 1280, 900, 'en'), ('lilo_pelekai', 390, 844, 'fr'), ('long_horse', 390, 844, 'en'),
                 ('serj_tankian', 390, 844, 'en'), ('arthur_kaamelott', 1280, 900, 'fr')]
-    cases = [('profile', hero, width, height, lang, 0) for hero, width, height, lang in profiles]
+    # Fail a cramped layout quickly, before spending time on full mode replays.
+    cases = [('layout', 'pickup-hunt', 844, 390, 'en', 0)]
+    cases += [('profile', hero, width, height, lang, 0) for hero, width, height, lang in profiles]
     cases += [('directive', mode, 1280, 900, 'fr' if mode in ['extraction', 'last_signal'] else 'en', replay)
               for mode in MODES for replay in range(1, args.replays + 1)]
     with sync_playwright() as playwright:
@@ -248,6 +380,7 @@ def main():
                 try:
                     load(page, args, lang)
                     record.update(profile_case(page, identity, lang, args, out, name) if kind == 'profile'
+                                  else pickup_layout_case(page, out, name) if kind == 'layout'
                                   else full_directive(page, identity, lang, out, name))
                     if kind == 'directive':
                         if identity in reference: check(record['traceDigest'] == reference[identity], 'fresh-context deterministic replay differs')
@@ -259,6 +392,7 @@ def main():
                     results.append(record); context.close()
                     (out / 'report.json').write_text(json.dumps({'results': results}, indent=2, ensure_ascii=False))
                     print(json.dumps({'name': name, 'passed': record['passed'], 'error': record.get('error')}), flush=True)
+                if kind == 'layout' and not record['passed']: break
         finally: browser.close()
     check(results and all(record['passed'] for record in results), 'FPS roster/directive browser failures')
 

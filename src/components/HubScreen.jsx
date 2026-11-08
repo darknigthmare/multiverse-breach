@@ -105,6 +105,7 @@ import GameDisplaySettings from './GameDisplaySettings.jsx';
 import AudioControl from './AudioControl.jsx';
 import NetworkStatusBadge from './NetworkStatusBadge.jsx';
 import useSceneViewport from './useSceneViewport.js';
+import useExtinctionViewLayout from './useExtinctionViewLayout.js';
 import SceneHoldButton from './SceneHoldButton.jsx';
 import useModalDialog from './collection/useModalDialog.js';
 import { createSceneInputs, emptySceneAim, advanceSceneAim } from '../game/sceneInputs.js';
@@ -3864,6 +3865,7 @@ function ExtinctionRoyale({
     rewards: null
   });
   const selectedHero = playableHeroes.find(hero => hero.id === selectedHeroId) || playableHeroes[0] || null;
+  const fpsViewLayoutRef = useExtinctionViewLayout(canvasRef, sceneHudRef, runSnapshot.phase === 'running' || runSnapshot.phase === 'ended');
   const fighterProfile = useMemo(() => getExtinctionFighterProfile(selectedHero), [selectedHero]);
   const viewmodel = fighterProfile.view;
   const signatureProfile = fighterProfile.signature;
@@ -4691,10 +4693,15 @@ function ExtinctionRoyale({
       const handFrame = getExtinctionHandFrame(viewmodel, state);
       const sheet = fpsHandsRef.current;
       const handSource = sheet?.complete ? getExtinctionHandSourceRect(handFrame, sheet.naturalWidth, sheet.naturalHeight) : null;
-      const handPlacement = getExtinctionHandPlacement(handSource, canvas.width, canvas.height, state);
+      const handPlacement = getExtinctionHandPlacement(handSource, canvas.width, canvas.height, state, fpsViewLayoutRef.current);
       if (handSource && handPlacement) {
+        if (fpsViewLayoutRef.current) fpsViewLayoutRef.current.placement = handPlacement;
+        // Held views occupy measured HUD-free space. Camera shake still applies
+        // to the world and aimed VFX, but cannot slide the view under a button.
+        ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.drawImage(sheet, handSource.x, handSource.y, handSource.w, handSource.h,
           handPlacement.x, handPlacement.y, handPlacement.w, handPlacement.h);
+        ctx.restore();
         if (state.muzzle && fpsProjectileRef.current?.complete && fpsProjectileRef.current.naturalWidth) {
           const projectileSheet = fpsProjectileRef.current;
           const effect = getExtinctionProjectilePlacement(projectileSheet.naturalWidth, projectileSheet.naturalHeight, canvas.width, canvas.height);
@@ -4705,7 +4712,10 @@ function ExtinctionRoyale({
           }
         }
       } else {
-        drawExtinctionSchematic(ctx, state, canvas.width, canvas.height, weaponProfile.color);
+        ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
+        const heldView = drawExtinctionSchematic(ctx, state, canvas.width, canvas.height, weaponProfile.color, fpsViewLayoutRef.current);
+        if (fpsViewLayoutRef.current) fpsViewLayoutRef.current.placement = heldView?.placement || null;
+        ctx.restore();
       }
       if (state.phase !== 'running') {
         ctx.fillStyle = 'rgba(0,0,0,0.72)';
@@ -4747,7 +4757,7 @@ function ExtinctionRoyale({
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
       if (simulationClockRef.current === clock) simulationClockRef.current = null;
     };
-  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, renderAttempt, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, selectedHero, triggerEnemyDrop, universeFragments, weaponProfile.color, viewmodel]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, renderAttempt, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, fpsViewLayoutRef, selectedHero, triggerEnemyDrop, universeFragments, weaponProfile.color, viewmodel]);
 
 
   const activateSignature = (slot) => {

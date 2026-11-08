@@ -74,6 +74,40 @@ Les quatre modes, leurs directives, les profils de combat et les règles de réc
 pilotés par leurs moteurs existants. La recette de terrain et les tests de signatures continuent
 à vérifier ces intégrations ; aucune mesure de gain de fréquence d’image n’est revendiquée.
 
+### Placement des vues par rapport au HUD réel
+
+Les quinze workflows de la révision `0108b7ce76b74002da127cfbf6d2eb632196dcc0`
+ont réussi. La relecture des captures intégrées du
+[run Cité/FPS 42468199074](https://github.com/darknigthmare/multiverse-breach/actions/runs/42468199074)
+a néanmoins révélé une composition incorrecte : les commandes HTML recouvraient les
+schémas de Lilo et Long Horse et la planche personnelle de Serj en portrait, ainsi que
+certaines vues sur ordinateur. Le banc schématique isolé ne contenait pas ce dock.
+
+`useExtinctionViewLayout` mesure désormais séparément les statistiques, les commandes
+et la directive. Un `ResizeObserver` et les événements d’affichage actualisent une ref
+de présentation ; aucune lecture DOM n’est ajoutée à la boucle de rendu. Le helper
+`extinctionViewLayout` convertit ces rectangles dans le repère du canvas, réserve le
+radar, le viseur et les marges choisies, puis contient la vue dans une bande basse utile
+ou dans un espace latéral. Les ratios et le mouvement latéral restent contenus dans
+ce rectangle. La translation de secousse ne s’applique plus à la vue tenue ; le monde,
+le viseur et les effets visés conservent leur projection.
+
+La recette intégrée observe les tracés Canvas et les appels `drawImage` réels, puis
+compare leurs bornes aux rectangles HTML. Elle capture la fiche de capacités elle-même,
+contrôle les rotations et les réglages agrandis, et commence par un parcours court de
+chasse qui obtient puis ramasse une arme avec les commandes natives. Ce parcours
+affiche ensemble **KIT PERSONNEL** et **MARQUER** en paysage ; il vérifie la place de la
+vue, le viseur libre, les cibles tactiles et la conservation des stocks au retour au kit.
+Il s’arrête avec rapport et capture dès un échec, avant les parcours de modes plus longs.
+
+Les résultats de cette correction et ses captures doivent être rattachés au nouveau
+commit testé dans le compte rendu de PR. La réussite de `0108b7ce` constitue le diagnostic
+de départ, pas la validation visuelle de ce nouveau placement.
+
+Sur cette correction, les 374 tests d’interface et les 45 tests FPS ciblés passent
+localement, ainsi que le lint, la validation de la recette et la compilation de sa
+fixture réelle. Les 44 étapes de production et le navigateur restent contrôlés en CI.
+
 ## Excel du PR
 
 [Le classeur](../excel/Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx)
@@ -89,7 +123,7 @@ la présence d’un contrat distinct au titre proche.
 
 ## Vérification et reproduction
 
-Contrôles locaux effectués : 38 tests de contrats et sauvegardes, avec les 32 conclusions
+Contrôles locaux du lot initial : 38 tests de contrats et sauvegardes, avec les 32 conclusions
 recevables parcourues par le moteur de déplacement ; 373 tests de la suite d’interface ;
 12 tests du catalogue de planification et 178 tests de la suite des profils DLC. Les tests
 ciblés d’archive, de profils et de vues complètent ces contrôles. La chaîne `prebuild` conserve ses 44
