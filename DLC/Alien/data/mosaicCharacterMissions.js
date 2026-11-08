@@ -1,6 +1,6 @@
 /** Ripley's Alien (1979) incarnation stays distinct from ripley_aliens.
  * These are original City investigations and inert evacuation exercises. */
-export function createMosaicCharacterMissions({ text, person, marker, decision, choice, report }) {
+export function createLegacyMosaicCharacterMissions({ text, person, marker, decision, choice, report }) {
   return [
     {
       id: 'city-ripley-narcissus-route-v1', heroId: 'ripley', universe: 'Alien', contentFile: 'DLC/Alien/data/mosaicCharacterMissions.js',
@@ -33,6 +33,76 @@ export function createMosaicCharacterMissions({ text, person, marker, decision, 
           choice('close-drill', 'Fermer l’exercice jusqu’à une nouvelle lecture des panneaux.', 'Close the drill until the signs are checked again.', 'L’exercice attend une correction ; la fermeture n’efface ni l’alerte ni le relevé.', 'The drill awaits correction; closure erases neither the warning nor the reading.'),
           choice('silence-warning', 'Éteindre l’alerte pour rendre la sortie visible.', 'Turn off the warning to make the exit visible.', 'Une issue lisible ne doit pas faire disparaître l’information de danger.', 'A readable exit must not remove the danger information.', false)
         ]), report]
+    }
+  ];
+}
+
+/** Original City incidents with Ripley's Alien (1979) incarnation.
+ * The Nostromo/Narcissus references do not add scenes to the released film.
+ * Only new physical actions create operation receipts; the legacy factory preserves old saves. */
+export function createMosaicCharacterMissions({ text, person, marker, decision, choice, report }) {
+  const operate = (step, kind, propFr, propEn) => ({ ...step, operation: {
+    kind, label: step.text, propName: text(propFr, propEn), completedText: step.finding
+  } });
+  const contact = (fr, en, dialogueFr, dialogueEn) => ({
+    ...person('ripley', fr, en), dialogue: text(dialogueFr, dialogueEn)
+  });
+  const finish = (fr, en, resultFr, resultEn) => operate({
+    ...report, text: text(fr, en), finding: text(resultFr, resultEn)
+  }, 'beacon', 'Liaison de secours du quartier Alien', 'Alien district emergency link');
+  return [
+    {
+      id: 'city-ripley-narcissus-route-v1', heroId: 'ripley', universe: 'Alien', contentFile: 'DLC/Alien/data/mosaicCharacterMissions.js',
+      title: text('L’accès au Narcissus', 'The way to the Narcissus'),
+      location: text('Quartier Alien — coursive du Nostromo et accès Narcissus', 'Alien District — Nostromo passage and Narcissus access'),
+      request: text('Coupez le départ qui chauffe. Ensuite, ouvrez l’accès à la navette. La cargaison peut attendre ; nous, non.', 'Cut the feed that’s overheating. Then open the shuttle access. The cargo can wait. We can’t.'),
+      premise: text('Une coursive du Nostromo arrachée par la Brèche aboutit dans le quartier Alien. Un départ électrique brûlé bloque l’accès balisé Narcissus. Ripley veut isoler la panne et libérer le passage sans entraîner quelqu’un dans les conduits.', 'A Nostromo passage torn loose by the Breach ends in the Alien district. A burned electrical feed has locked the access marked Narcissus. Ripley wants the fault isolated and the passage opened without sending anyone into the ducts.'),
+      source: 'DLC/Alien/data/heroes.js#ripley.incarnation; DLC/Alien/data/characterPlaques.js#ripley; DLC/Alien/data/sourceSceneStages.js#narcissus_escape_1979',
+      continuity: text('Incident original Multiverse Breach dans un fragment de Nostromo intégré à la Cité. Ripley reste celle d’Alien (1979) ; la panne ne rejoue pas l’évasion du film et ne lui donne ni M41A, ni power loader, ni souvenirs d’Aliens.', 'Original Multiverse Breach incident in a Nostromo fragment embedded in the City. Ripley remains her Alien (1979) incarnation; the fault does not replay the film’s escape or give her an M41A, power loader or memories of Aliens.'),
+      references: ['https://www.20thcenturystudios.com/movies/alien'],
+      steps: [contact('Rejoindre Ripley devant l’accès fermé.', 'Join Ripley by the locked access.',
+          'Le panneau à gauche alimente la section brûlée. Isolez-la avant de toucher au verrou. Et si vous entendez quelque chose dans les conduits, vous revenez. Vous n’allez pas voir.', 'The panel on the left feeds the burned section. Isolate it before touching the lock. And if you hear something in the ducts, come back. Don’t go looking.'),
+        operate(marker('nostromo-warning', 610, 570, 'Couper le départ en court-circuit au panneau du Nostromo.', 'Cut the shorted feed at the Nostromo panel.',
+          'Le coupe-circuit tombe. L’indicateur de chauffe s’éteint ; la section endommagée est isolée du verrou de secours.', 'The breaker drops. The heat indicator goes dark; the damaged section is isolated from the emergency lock.'),
+        'secure', 'Coupe-circuit du Nostromo', 'Nostromo circuit breaker'),
+        operate(marker('narcissus-route', 1340, 770, 'Déverrouiller manuellement l’accès balisé Narcissus.', 'Manually release the access marked Narcissus.',
+          'Le verrou cède sous la commande manuelle. Le repère Narcissus reste allumé et la poignée de secours est accessible depuis le passage.', 'The lock releases under manual control. The Narcissus marker stays lit and the emergency handle can be reached from the passage.'),
+        'route', 'Verrou d’accès Narcissus', 'Narcissus access lock'),
+        decision('Quelle consigne donner à la sortie ?', 'Which instruction should be given at the exit?', [
+          choice('preserve-escape', 'Garder le passage ouvert et la section brûlée isolée.', 'Keep the passage open and the burned section isolated.', 'Ripley garde l’accès à la navette dégagé. Personne n’a besoin de remettre le circuit défectueux sous tension pour sortir.', 'Ripley keeps the shuttle access clear. No one needs to power the faulty circuit to get out.'),
+          choice('hold-route', 'Tenir l’entrée à distance de la panne et laisser la commande manuelle prête.', 'Hold at the entrance away from the fault and leave the manual control ready.', 'Ripley tient l’entrée avec la commande de secours à portée. Le circuit reste isolé pendant l’attente.', 'Ripley holds at the entrance with the emergency control within reach. The circuit remains isolated while they wait.'),
+          choice('follow-alarm', 'Suivre le bruit dans les conduits avant de repartir.', 'Follow the noise into the ducts before leaving.', '« Non. Nous avons une sortie. Je ne vais pas perdre quelqu’un dans un conduit pour savoir ce qui s’y cache. »', '“No. We have a way out. I’m not losing someone in a duct to find out what’s in it.”', false)
+        ]),
+        finish('Brancher le canal d’évacuation sur l’ancre du quartier.', 'Connect the evacuation channel to the district anchor.',
+          'Le canal d’évacuation répond. Ripley reste sur la ligne : « Je vous entends. Gardez la sortie libre. »', 'The evacuation channel answers. Ripley stays on the line: “I hear you. Keep the exit clear.”')]
+    },
+    {
+      id: 'city-ripley-alarm-exit-v1', heroId: 'ripley', universe: 'Alien', contentFile: 'DLC/Alien/data/mosaicCharacterMissions.js',
+      title: text('Fermez ce conduit', 'Seal that duct'),
+      location: text('Quartier Alien — maintenance du Nostromo et sas A-3', 'Alien District — Nostromo maintenance and airlock A-3'),
+      request: text('Quelque chose racle derrière cette grille. Prenez le relais de réserve, condamnez le conduit et remettez la commande du sas ici. Je veux pouvoir le fermer de ce côté.', 'Something is scraping behind that grille. Take the spare relay, seal the duct and restore the airlock control here. I want to be able to close it from this side.'),
+      premise: text('Dans le fragment de maintenance du Nostromo, le clapet d’un conduit est resté ouvert après une panne. Le sas A-3 du quartier a perdu sa commande extérieure. Ripley prépare l’isolement du conduit et le rétablissement du sas ; elle ne demande à personne de traquer ce qui fait du bruit.', 'In the Nostromo maintenance fragment, a duct damper has stayed open after a power fault. The district’s A-3 airlock has lost its exterior control. Ripley is preparing to isolate the duct and restore the airlock; she is not asking anyone to hunt whatever is making the noise.'),
+      source: 'DLC/Alien/data/heroes.js#ripley.incarnation; DLC/Alien/data/characterPlaques.js#ripley; src/game/mosaicCityRuntime.js#MOSAIC_WELCOME',
+      continuity: text('Incident de Cité original avec Ripley (1979). A-3, la panne et le bruit indéterminé appartiennent au quartier, pas au plan canonique du Nostromo. Aucun détecteur M314, Marine colonial ni événement d’Aliens n’est transféré.', 'Original City incident with Ripley (1979). A-3, the fault and the unidentified noise belong to the district, not the canonical Nostromo layout. No M314 tracker, Colonial Marine or event from Aliens is transferred.'),
+      references: ['https://www.20thcenturystudios.com/movies/alien'],
+      steps: [contact('Prendre les instructions de Ripley au poste du sas.', 'Get Ripley’s instructions at the airlock post.',
+          'Le relais de réserve est dans l’armoire. Fermez d’abord le clapet à la main. Ensuite seulement, rétablissez la commande extérieure. L’alarme reste allumée jusqu’à notre retour.', 'The spare relay is in the cabinet. Close the damper by hand first. Only then restore the exterior control. The alarm stays on until we return.'),
+        operate(marker('alarm-origin', 520, 760, 'Récupérer le relais dans l’armoire de maintenance.', 'Recover the relay from the maintenance cabinet.',
+          'Le relais de réserve sort de son logement. Ses contacts sont intacts ; il pourra remplacer celui de la commande extérieure.', 'The spare relay comes out of its socket. Its contacts are intact; it can replace the exterior control relay.'),
+        'recover', 'Relais de commande de secours', 'Spare control relay'),
+        operate(marker('exit-reading', 1370, 580, 'Rabattre et verrouiller le clapet du conduit.', 'Lower and lock the duct damper.',
+          'Le clapet descend et son verrou mécanique s’enclenche. Le conduit est isolé ; l’alarme du secteur reste active.', 'The damper lowers and its mechanical latch engages. The duct is isolated; the sector alarm remains active.'),
+        'secure', 'Clapet du conduit de maintenance', 'Maintenance duct damper'),
+        operate(marker('return-reading', 520, 760, 'Revenir au poste et remplacer le relais du sas A-3.', 'Return to the post and replace the A-3 airlock relay.',
+          'La commande extérieure s’allume. Le sas A-3 peut être fermé depuis le poste, sans retourner dans le conduit isolé.', 'The exterior control lights up. Airlock A-3 can be closed from the post without returning to the isolated duct.'),
+        'repair', 'Commande extérieure du sas A-3', 'A-3 exterior airlock control'),
+        decision('Comment garder le secteur isolé ?', 'How should the sector stay isolated?', [
+          choice('separate-signals', 'Garder l’alarme active et le sas sous commande extérieure.', 'Keep the alarm active and the airlock under exterior control.', 'Ripley garde une main près de la commande. Le clapet reste verrouillé et l’alarme continue de signaler le secteur fermé.', 'Ripley keeps a hand near the control. The damper stays locked and the alarm continues to mark the closed sector.'),
+          choice('close-drill', 'Tenir le poste extérieur et attendre avant d’utiliser le sas.', 'Hold the exterior post and wait before using the airlock.', 'Ripley fait maintenir l’isolement depuis le poste. Le sas garde sa commande de secours et personne ne retourne dans le conduit.', 'Ripley has isolation maintained from the post. The airlock keeps its emergency control and no one returns to the duct.'),
+          choice('silence-warning', 'Éteindre l’alarme et rouvrir la grille pour regarder.', 'Silence the alarm and reopen the grille to look inside.', '« Nous venons de fermer ce passage. Il reste fermé. »', '“We just sealed that passage. It stays sealed.”', false)
+        ]),
+        finish('Relier l’alarme du sas à l’ancre du quartier.', 'Link the airlock alarm to the district anchor.',
+          'L’ancre reçoit l’alarme du secteur isolé. Ripley vérifie la commande : « Ça répond. Nous restons de ce côté. »', 'The anchor receives the isolated sector’s alarm. Ripley checks the control: “It’s responding. We stay on this side.”')]
     }
   ];
 }

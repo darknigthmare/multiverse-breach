@@ -1,11 +1,11 @@
 import React, { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
-import { getMosaicCharacterMissionStep, localizeCityMission } from '../game/mosaicCharacterMissions.js';
-import { CITY_CONTRACT_FILTERS, cityContractStatusLabel, getCityContractJournal } from '../game/mosaicContractJournal.js';
+import { localizeCityMission } from '../game/mosaicCharacterMissions.js';
+import { CITY_CONTRACT_FILTERS, cityContractStatusLabel, getCityContractJournal, getCityContractStory } from '../game/mosaicContractJournal.js';
 import './MosaicCharacterMissions.css';
 
 const WIDE_JOURNAL = '(min-width: 960px)';
 
-export default function MosaicCharacterMissions({ missions, progress, heroes, lang, onAccept, onApproach, onResolve }) {
+export default function MosaicCharacterMissions({ missions, progress, heroes, lang, onAccept, onApproach, onResolve, onReplay }) {
   const fr = lang === 'fr';
   const uid = useId();
   const [selectedId, setSelectedId] = useState(progress.activeId || progress.lastMissionId || '');
@@ -26,8 +26,11 @@ export default function MosaicCharacterMissions({ missions, progress, heroes, la
     || journal.entries.find(item => item.mission.id === progress.activeId) || journal.entries[0];
   const mission = entry?.mission;
   const objective = entry?.objective;
+  const story = getCityContractStory({ mission, objective, progress, heroes, lang });
   const tracked = journal.entries.find(item => item.mission.id === progress.activeId);
   const complete = Object.values(progress.records).filter(item => item.completed).length;
+  const distinctFeedback = feedback && ![objective?.resolution, story?.latest?.dialogue, story?.latest?.finding].includes(feedback);
+  const memoryFinding = story?.latest?.finding && ![story.latest.dialogue, objective?.resolution].includes(story.latest.finding) ? story.latest.finding : '';
 
   // Commit focus with the new content. No deferred frame may recapture focus
   // after the terminal closes or a newer dialog takes ownership.
@@ -71,24 +74,25 @@ export default function MosaicCharacterMissions({ missions, progress, heroes, la
 
   return <section className="mosaic-character-missions" aria-labelledby={`${uid}-title`}>
     <header className="mosaic-contract-heading">
-      <div><span className="mosaic-contract-kicker">A.R.C.A. · {fr ? 'JOURNAL DE TERRAIN' : 'FIELD JOURNAL'}</span><h3 id={`${uid}-title`}>{fr ? 'CONTRATS DES HABITANTS' : 'RESIDENT CONTRACTS'}</h3></div>
-      <p>{journal.counts.completed}/{missions.length} {fr ? 'transmis dans ce quartier' : 'submitted in this district'}</p>
+      <div><span className="mosaic-contract-kicker">{fr ? 'LES VOIX DE LA CITÉ' : 'VOICES OF THE CITY'}</span><h3 id={`${uid}-title`}>{fr ? 'CARNET D’EXPÉDITION' : 'EXPEDITION JOURNAL'}</h3></div>
+      <p>{journal.counts.completed}/{missions.length} {fr ? 'missions accomplies dans ce quartier' : 'missions completed in this district'}</p>
     </header>
-    {!mission ? <p>{fr ? 'Les contrats disponibles dépendent du quartier, de ses habitants possédés et des contenus installés. Retrouve leurs auteurs dans le Nexus ou dans les quartiers qui proposent des contrats. Les étapes déjà réalisées restent conservées.' : 'Available contracts depend on the district, its owned residents and installed content. Find their authors in the Nexus or districts offering contracts. Completed steps remain saved.'}</p> : <>
+    {!mission ? <p>{fr ? 'Les habitants de ce quartier n’ont rien à te demander pour le moment. Poursuis ton exploration ; tes autres aventures restent dans le carnet.' : 'The residents here have nothing to ask of you for now. Keep exploring; your other adventures remain in the journal.'}</p> : <>
       {tracked && <button type="button" className="mosaic-contract-tracked" data-city-contract-tracked onClick={() => selectMission(tracked.mission.id, true)}>
-        <span>{fr ? 'DOSSIER SUIVI' : 'TRACKED CASE'} · {tracked.objective.index}/{tracked.objective.total}</span>
-        <strong>{tracked.heroName} · {tracked.title}</strong><span>{fr ? 'Retrouver l’objectif' : 'View objective'} →</span>
+        <span>{fr ? 'EN CHEMIN AVEC' : 'ON THE TRAIL WITH'} {tracked.heroName}</span>
+        <strong>{tracked.title}</strong><span className="mosaic-contract-tracked-next">{tracked.objective.text}</span>
+        <span>{tracked.objective.index}/{tracked.objective.total} · {fr ? 'Reprendre le fil' : 'Pick up the thread'} →</span>
       </button>}
       <div className="mosaic-contract-workspace" data-directory-open={directoryOpen}>
         <details className="mosaic-contract-directory" open={directoryOpen} onToggle={event => setDirectoryOpen(event.currentTarget.open)}>
-          <summary ref={directoryToggleRef}>{fr ? 'Trouver un contrat' : 'Find a contract'} <span>{missions.length}</span></summary>
+          <summary ref={directoryToggleRef}>{fr ? 'Parcourir le carnet' : 'Browse the journal'} <span>{missions.length}</span></summary>
           <div ref={directoryRef} className="mosaic-contract-directory-content">
-            <h4 ref={pageRef} tabIndex={-1}>{fr ? 'Dossiers du quartier' : 'District cases'}</h4>
-            <label htmlFor={`${uid}-search`}><span>{fr ? 'Rechercher un contrat' : 'Search contracts'}</span>
+            <h4 ref={pageRef} tabIndex={-1}>{fr ? 'Les histoires du quartier' : 'Stories from this district'}</h4>
+            <label htmlFor={`${uid}-search`}><span>{fr ? 'Trouver une mission' : 'Find a mission'}</span>
               <input ref={searchRef} id={`${uid}-search`} type="search" value={query} onChange={event => { setQuery(event.target.value); setPage(1); }}
-                aria-controls={`${uid}-results`} placeholder={fr ? 'Personnage, titre, sujet…' : 'Character, title, subject…'} />
+                aria-controls={`${uid}-results`} placeholder={fr ? 'Un nom, un lieu, un objet…' : 'A name, a place, an object…'} />
             </label>
-            <div className="mosaic-contract-filters" role="group" aria-label={fr ? 'État des contrats' : 'Contract status'}>
+            <div className="mosaic-contract-filters" role="group" aria-label={fr ? 'Avancée des missions' : 'Mission progress'}>
               {CITY_CONTRACT_FILTERS.filter(key => key !== 'unavailable' || journal.counts.unavailable > 0).map(key => <button type="button" key={key}
                 aria-pressed={status === key} aria-controls={`${uid}-results`} data-city-contract-filter={key}
                 onClick={() => { setStatus(key); setPage(1); }}><span>{cityContractStatusLabel(key, lang)}</span><span>{journal.counts[key]}</span></button>)}
@@ -100,16 +104,16 @@ export default function MosaicCharacterMissions({ missions, progress, heroes, la
                 <strong>{item.heroName}</strong><span>{item.title}</span><small><span>{item.statusLabel}</span><span>{item.objective.index}/{item.objective.total}</span></small>
               </button></li>)}
             </ul>
-            {!journal.total && <p data-city-contract-empty>{fr ? 'Aucun contrat ne correspond. Change les filtres ou efface la recherche ; ton dossier consulté reste ouvert.' : 'No matching contracts. Change filters or clear the search; your current case remains open.'}</p>}
+            {!journal.total && <p data-city-contract-empty>{fr ? 'Aucune mission ne correspond. Change les filtres ou efface la recherche ; la page que tu lis reste ouverte.' : 'No matching missions. Change filters or clear the search; the page you are reading stays open.'}</p>}
             {(query || status !== 'all') && <button type="button" className="mosaic-contract-clear" onClick={clearFilters}>{fr ? 'Effacer les filtres' : 'Clear filters'}</button>}
-            {journal.pageCount > 1 && <nav className="mosaic-contract-pages" aria-label={fr ? 'Pages des contrats' : 'Contract pages'}>
+            {journal.pageCount > 1 && <nav className="mosaic-contract-pages" aria-label={fr ? 'Pages du carnet' : 'Journal pages'}>
               <button type="button" disabled={journal.page === 1} onClick={() => goToPage(journal.page - 1)} aria-controls={`${uid}-results`}>{fr ? 'Précédent' : 'Previous'}</button>
               <button type="button" disabled={journal.page === journal.pageCount} onClick={() => goToPage(journal.page + 1)} aria-controls={`${uid}-results`}>{fr ? 'Suivant' : 'Next'}</button>
             </nav>}
           </div>
         </details>
         <article className="mosaic-contract-reader" aria-labelledby={`${uid}-case-title`} data-city-contract-reader={mission.id}>
-          <label><span>{fr ? 'Dossier consulté · accès direct' : 'Current case · quick selection'}</span>
+          <label><span>{fr ? 'Mission ouverte' : 'Open mission'}</span>
             <select data-city-contract-select value={mission.id} onChange={event => selectMission(event.target.value)}>
               {journal.entries.map(item => <option key={item.mission.id} value={item.mission.id}>{item.heroName} · {item.title} · {item.statusLabel}</option>)}
             </select>
@@ -117,20 +121,31 @@ export default function MosaicCharacterMissions({ missions, progress, heroes, la
           <div className="mosaic-contract-identity"><strong>{entry.heroName}</strong><span data-city-contract-status={objective.status}>{entry.statusLabel}</span>
             {mission.chapter > 1 && <span>{fr ? 'Chapitre' : 'Chapter'} {mission.chapter}</span>}</div>
           <h4 id={`${uid}-case-title`} ref={readerRef} tabIndex={-1}>{entry.title}</h4>
-          <p>{localizeCityMission(mission.premise, lang)}</p>
-          {objective.originResolution && <aside className="mosaic-contract-origin"><strong>{fr ? 'Décision du dossier précédent' : 'Previous case decision'}</strong><p>{objective.originResolution}</p></aside>}
-          <div className="mosaic-contract-objective">
-            <span>{objective.status === 'locked' ? (fr ? 'CONDITION D’ACCÈS' : 'ACCESS REQUIREMENT') : objective.status === 'completed' ? (fr ? 'DOSSIER TRANSMIS' : 'CASE SUBMITTED') : (fr ? 'PROCHAINE ÉTAPE' : 'NEXT STEP')}</span>
+          <p className="mosaic-contract-location" data-city-contract-location><span>{mission.universe}</span>{!objective.legacy && story.location && <strong>{story.location}</strong>}</p>
+          {!objective.legacy && story.request && <figure className="mosaic-contract-request" data-city-contract-request>
+            <figcaption>{fr ? 'Un mot de' : 'A word from'} <strong>{entry.heroName}</strong></figcaption>
+            <blockquote><p>{story.request}</p></blockquote>
+          </figure>}
+          {!objective.legacy && <p className="mosaic-contract-premise">{localizeCityMission(mission.premise, lang)}</p>}
+          {objective.legacy && <p className="mosaic-contract-legacy" data-city-contract-legacy>{fr ? 'Ta première visite reste conservée.' : 'Your first visit is kept safe.'}</p>}
+          {objective.originResolution && <aside className="mosaic-contract-origin"><strong>{fr ? 'La dernière fois…' : 'Last time…'}</strong><p>{objective.originResolution}</p></aside>}
+          <div className="mosaic-contract-objective" data-finished={objective.status === 'completed'}>
+            <span>{objective.status === 'locked' ? (fr ? 'AVANT DE POURSUIVRE' : 'BEFORE YOU CONTINUE') : objective.status === 'completed' ? (fr ? 'CE QUE TON AIDE A CHANGÉ' : 'WHAT YOUR HELP CHANGED') : (fr ? 'TON PROCHAIN PAS' : 'YOUR NEXT STEP')} · {objective.index}/{objective.total}</span>
             <p role="status" ref={objectiveRef} tabIndex={-1} data-city-contract-objective data-contract-id={mission.id} data-step={objective.step?.id || (objective.status === 'completed' ? 'done' : objective.status)}>
-              {objective.index}/{objective.total} · {objective.text}
+              {objective.text}
             </p>
-            <progress value={objective.index} max={Math.max(1, objective.total)} aria-label={fr ? 'Étapes consignées' : 'Recorded steps'} />
+            {objective.step?.operation && <p className="mosaic-contract-on-location" data-city-contract-operation={objective.step.operation.kind}>
+              <span>{fr ? 'Une fois sur place' : 'Once you get there'}</span>
+              <strong>{localizeCityMission(objective.step.operation.label, lang)}</strong>
+              <span>{localizeCityMission(objective.step.operation.propName, lang)}</span>
+            </p>}
+            <progress value={objective.index} max={Math.max(1, objective.total)} aria-label={fr ? 'Avancée de la mission' : 'Mission progress'} />
           </div>
           {objective.status === 'locked' && objective.prerequisite && journal.entries.some(item => item.mission.id === objective.prerequisite.missionId) && <button type="button" data-city-contract-prerequisite onClick={() => selectMission(objective.prerequisite.missionId, true)}>
-            {fr ? 'CONSULTER LE DOSSIER PRÉALABLE' : 'READ THE PREREQUISITE CASE'}
+            {fr ? 'REVENIR À L’HISTOIRE PRÉCÉDENTE' : 'RETURN TO THE PREVIOUS STORY'}
           </button>}
           {objective.status === 'active' && objective.step?.type === 'decision' ? <fieldset>
-            <legend>{fr ? 'Conclusion à inscrire' : 'Conclusion to record'}</legend>
+            <legend>{fr ? 'Que décides-tu ?' : 'What will you do?'}</legend>
             {objective.step.choices.map(item => <button type="button" className="btn-retro" key={item.id}
               data-city-contract-choice={item.id} onClick={() => {
                 const result = onResolve(mission.id, item.id);
@@ -138,32 +153,55 @@ export default function MosaicCharacterMissions({ missions, progress, heroes, la
                 if (result?.changed) pendingFocus.current = 'objective';
               }}>{localizeCityMission(item.label, lang)}</button>)}
           </fieldset> : objective.status === 'active' ? <button type="button" className="btn-retro mosaic-contract-action" data-city-contract-approach onClick={() => onApproach(mission.id)}>
-            {fr ? 'REJOINDRE CETTE ÉTAPE' : 'APPROACH THIS STEP'}
+            {story.approach}
           </button> : ['available', 'paused'].includes(objective.status) ? <button type="button" className="btn-retro mosaic-contract-action" data-city-contract-accept onClick={() => {
             setFeedback('');
             const result = onAccept(mission.id);
             if (result?.changed) pendingFocus.current = 'objective';
           }}>
-            {objective.status === 'paused' ? (fr ? 'REPRENDRE LE CONTRAT' : 'RESUME CONTRACT') : (fr ? 'ACCEPTER LE CONTRAT' : 'ACCEPT CONTRACT')}
+            {objective.status === 'paused' ? (fr ? 'REPRENDRE CETTE AVENTURE' : 'CONTINUE THIS ADVENTURE') : (fr ? 'DONNER UN COUP DE MAIN' : 'LEND A HAND')}
           </button> : null}
-          {objective.resolution && objective.status !== 'completed' && <p>{objective.resolution}</p>}
-          {feedback && <p role="status" data-city-contract-feedback>{feedback}</p>}
-          {tracked && tracked.mission.id !== mission.id && <p className="mosaic-contract-consultation">{fr ? 'La consultation ne change pas le dossier suivi. Accepter ou reprendre ce contrat mettra l’autre en pause, en conservant ses étapes.' : 'Reading does not change the tracked case. Accepting or resuming this contract will pause the other and retain its steps.'}</p>}
+          {objective.canReplayStory && typeof onReplay === 'function' && <button type="button" className="mosaic-contract-replay" data-city-contract-replay onClick={() => {
+            setFeedback('');
+            const result = onReplay(mission.id);
+            if (result?.changed) pendingFocus.current = 'objective';
+          }}>{fr ? 'Rejouer cette aventure' : 'Replay this adventure'}</button>}
+          {objective.resolution && objective.status !== 'completed' && <aside className="mosaic-contract-resolution" data-city-contract-resolution><strong>{fr ? 'Ton choix' : 'Your choice'}</strong><p>{objective.resolution}</p></aside>}
+          {distinctFeedback && <p role="status" data-city-contract-feedback>{feedback}</p>}
+          {(story?.latest?.dialogue || memoryFinding) && <aside className="mosaic-contract-memory" data-city-contract-memory={story.latest.id}>
+            <strong>{fr ? 'Dernières nouvelles' : 'The latest'}</strong>
+            {story.latest.dialogue && <figure><figcaption>{story.latest.speaker}</figcaption><blockquote><p>{story.latest.dialogue}</p></blockquote></figure>}
+            {memoryFinding && <p>{memoryFinding}</p>}
+          </aside>}
+          {tracked && tracked.mission.id !== mission.id && <p className="mosaic-contract-consultation">{fr ? 'Tu peux lire sans changer de chemin. Si tu choisis cette aventure, tu reprendras l’autre là où tu l’as laissée.' : 'You can read without changing course. If you choose this adventure, you can return to the other where you left off.'}</p>}
           <details className="mosaic-contract-evidence" key={mission.id}>
-            <summary>{fr ? 'Étapes et preuves' : 'Steps and evidence'} <span>{objective.index}/{objective.total}</span></summary>
-            <ol>{mission.steps.map((_, index) => {
-              const step = getMosaicCharacterMissionStep(progress, mission, index);
-              const done = index < objective.index;
-              return <li key={step.id} data-complete={done} aria-current={index === objective.index ? 'step' : undefined}>
-                {localizeCityMission(step.text, lang)}{done && <strong>{fr ? ' — fait' : ' — done'}</strong>}
-                {done && step.finding && <p>{localizeCityMission(step.finding, lang)}</p>}
+            <summary>{fr ? 'Le chemin parcouru' : 'Your journey so far'} <span>{objective.index}/{objective.total}</span></summary>
+            {story.history.length ? <ol>{story.history.map(step => {
+              return <li key={step.id} data-complete={step.done} aria-current={step.index === objective.index ? 'step' : undefined}>
+                {localizeCityMission(step.text, lang)}{step.done && <strong>{fr ? ' — accompli' : ' — done'}</strong>}
+                {step.done && step.dialogue && <blockquote><p>{localizeCityMission(step.dialogue, lang)}</p><cite>{step.speaker}</cite></blockquote>}
+                {step.done && step.finding && <p>{localizeCityMission(step.finding, lang)}</p>}
               </li>;
-            })}</ol>
+            })}</ol> : <p className="mosaic-contract-history-empty">{fr ? 'Tes rencontres et tes découvertes s’ajouteront ici au fil du voyage.' : 'Your encounters and discoveries will appear here as you travel.'}</p>}
           </details>
+          {story.previousVisit && <details className="mosaic-contract-previous" key={`${mission.id}-previous`} data-city-contract-previous>
+            <summary>{fr ? 'Ta première visite' : 'Your first visit'} <span>{story.previousVisit.steps.length}/{objective.total}</span></summary>
+            <div className="mosaic-contract-previous-content">
+              <h5>{story.previousVisit.title}</h5>
+              <p>{story.previousVisit.completed ? (fr ? 'Une aventure déjà accomplie. Ces pages gardent ce que tu as vécu à l’époque.' : 'An adventure already completed. These pages keep what you experienced then.')
+                : (fr ? 'Ces pages gardent le chemin de ta première visite, avant de repartir.' : 'These pages keep the journey of your first visit, before you set out again.')}</p>
+              <ol>{story.previousVisit.steps.map(step => <li key={step.id}>
+                {localizeCityMission(step.text, lang)}
+                {step.dialogue && <blockquote><p>{localizeCityMission(step.dialogue, lang)}</p></blockquote>}
+                {step.finding && <p>{localizeCityMission(step.finding, lang)}</p>}
+              </li>)}</ol>
+              {story.previousVisit.choice && <div><strong>{fr ? 'Ton choix à l’époque' : 'Your choice then'}</strong><p>{story.previousVisit.choice}</p><p>{story.previousVisit.resolution}</p></div>}
+            </div>
+          </details>}
         </article>
       </div>
     </>}
-    {progress.activeId && !tracked && <p>{fr ? 'Un contrat est suivi dans un autre quartier ou attend le retour de son contenu. Sa progression est conservée.' : 'A tracked contract belongs to another district or awaits its content’s return. Its progress is retained.'}</p>}
-    <small>{complete} {fr ? 'dossier(s) transmis au total. Les preuves et choix restent dans le journal.' : 'case(s) submitted in total. Evidence and choices remain in the journal.'}</small>
+    {progress.activeId && !tracked && <p>{fr ? 'Une mission reste en cours ailleurs, ou attend le retour de son quartier. Tu la retrouveras là où tu l’as laissée.' : 'A mission is still underway elsewhere, or awaits its district’s return. You can pick it up where you left off.'}</p>}
+    <small>{complete} {fr ? 'mission(s) accomplie(s). Ton chemin et tes choix restent dans ce carnet.' : 'mission(s) completed. Your journey and choices remain in this journal.'}</small>
   </section>;
 }

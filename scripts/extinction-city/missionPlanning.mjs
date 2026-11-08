@@ -41,6 +41,7 @@ const SOURCE_FILES = [
   'src/game/canonBlackPearlSourceKits.js', 'src/game/canonFollowupSourceKits.js',
   'src/game/mosaicUniversePlaces.js', 'src/game/mosaicCityRuntime.js',
   'src/game/mosaicResidentDialogue.js', 'src/game/mosaicReconnaissance.js', 'src/game/mosaicCharacterMissions.js',
+  'src/game/mosaicCharacterStories.js', 'src/game/mosaicMissionOperations.js', 'src/game/ocCampaign.js',
   'src/game/nexusFieldOperation.js', 'DLC/index.js'
 ];
 
@@ -277,52 +278,196 @@ function selectFamily(character) {
 // happened in the campaign, and resolving one never rewrites the existing campaign ending.
 const NEXUS_PROPOSALS = {
   player_anchor: [
-    ['La trace qui tient', 'Examiner deux souvenirs incompatibles de l’Atrium puis choisir une formulation qui conserve leurs auteurs.', 'Un écho réclame de remplacer le souvenir minoritaire pour simplifier l’archive.', 'Comparaison de preuves, attribution des témoins, dépôt volontaire.'],
-    ['Les cellules reliées', 'Relier les demandes d’un habitant, d’une vitrine et d’un service sans fusionner leurs identités ; faire confirmer le dossier par chaque partie.', 'Une liaison est valide dans un seul sens ; vérifier le retour avant de fermer le dossier.', 'Consentement, trajet entre services, preuve d’ancrage.']
+    { related: 'city-anchor-signature-v1', title: 'Une place dans le faisceau',
+      premise: 'Prolongement proposé : un nouvel arrivant perd ses repères chaque fois que la balise se cale sur la signature de l’Ancre.', location: 'Nexus — balise de l’Atrium',
+      opening: 'Rejoindre le halo qui s’éteint et écouter la personne restée en dehors.',
+      action: 'Poser un repère distinct, orienter le faisceau vers le refuge puis parcourir son bord avec l’arrivant volontaire.',
+      obstacle: 'Renforcer seulement la signature de l’Ancre rend l’autre présence moins visible.',
+      ending: 'Attendre au refuge que l’arrivant retrouve seul son propre repère.',
+      consequence: 'Deux lumières distinctes guident le retour ; personne n’a besoin de prendre le nom de l’Ancre.', mechanics: 'Balise orientable, reconnaissance à pied, signatures séparées.' },
+    { related: 'city-anchor-trace-return-v1', title: 'Le retour des retardataires',
+      premise: 'Prolongement proposé : les lampes du retour s’éteignent avant le dernier groupe de marcheurs.', location: 'Nexus — chemin de retour vers l’Atrium',
+      opening: 'Aller à la dernière lampe allumée et demander qui manque encore.',
+      action: 'Rallumer les points du retour depuis l’aval, accompagner les retardataires puis reprendre chaque balise derrière eux.',
+      obstacle: 'Les échos de la Brèche font clignoter un capteur de présence sans qu’une personne soit passée.',
+      ending: 'Rester au dernier embranchement jusqu’au passage réel du groupe.',
+      consequence: 'Les marcheurs rejoignent l’Atrium ; le retour reste ouvert tant qu’une personne manque.', mechanics: 'Présence physique, escortes volontaires, fermeture après arrivée.' }
   ],
   arca_mirelle: [
-    ['La couture visible', 'Comparer les deux bords d’une déchirure d’archive, repérer la ligne manquante puis préparer un Patch de Trame qui conserve la cicatrice.', 'Un raccord paraît parfait mais efface la provenance de la version initiale.', 'Lecture de Trame, comparaison de versions, contrôle du patch.'],
-    ['Le registre réparé', 'Recueillir deux témoignages contradictoires et leur relier des notices distinctes ; Mirelle vérifie que le raccord reste réversible.', 'La sauvegarde proposée remplace les deux récits par un récit unique.', 'Dossier à deux voix, sauvegarde de l’état initial, validation du retour.']
+    { related: 'city-mirelle-suture-v1', title: 'L’appel qu’on n’entend plus',
+      premise: 'Prolongement proposé : Mirelle entend une personne derrière les parasites, mais le récepteur d’accueil ne produit plus que son propre écho.', location: 'Nexus — relais de suture et accueil',
+      opening: 'Écouter le récepteur avec Mirelle et repérer l’appel qui attend une réponse.',
+      action: 'Débrancher la boucle de retour, raccorder le canal intact puis porter un récepteur de secours à l’accueil.',
+      obstacle: 'Un pontage trop large étouffe la voix faible sous la plus forte.',
+      ending: 'Faire répondre l’accueil sur chaque canal, sans changer le nom de l’appelant.',
+      consequence: 'L’appel reçoit une réponse distincte ; les deux canaux restent disponibles.', mechanics: 'Écoute directionnelle, câblage séparé, réponse à distance.' },
+    { related: 'city-mirelle-relay-followup-v1', title: 'La garde de nuit',
+      premise: 'Prolongement proposé : les secousses d’une Trame blessée font sauter l’alimentation du poste où Mirelle tient la veille.', location: 'Nexus — poste de veille et relais',
+      opening: 'Apporter une lampe au poste où Mirelle poursuit sa veille dans le noir.',
+      action: 'Isoler le raccord qui chauffe, installer l’alimentation de secours puis alterner les appels avec Mirelle.',
+      obstacle: 'Réunir toutes les lignes sur le même raccord rétablit la lumière mais menace de couper chaque appel à la prochaine secousse.',
+      ending: 'Remettre la lampe de veille en service et laisser un canal de secours accessible.',
+      consequence: 'Le poste continue de répondre pendant une nouvelle coupure du circuit principal.', mechanics: 'Réparation locale, circuit de secours, continuité d’écoute.' }
   ],
   arca_bastion: [
-    ['Le passage compté', 'Reconstituer sur une table d’exercice l’ordre d’évacuation du Rempart Est et noter les routes fermées sans effacer les absents.', 'Le plan optimisé masque le coût du dernier choix de fermeture.', 'Table tactique, comptage des passages, trace des choix.'],
-    ['Une barrière, deux issues', 'Placer les barrières inertes d’un exercice d’Atrium puis vérifier à pied deux sorties accessibles avant d’accepter le plan.', 'Un rempart qui protège l’entrée condamne la sortie du dernier groupe.', 'Géométrie de protection, vérification piétonne, clôture responsable.']
+    { related: 'city-bastion-tenth-route-v1', title: 'La relève du Rempart',
+      premise: 'Prolongement proposé : Bastion retient une grille faussée pendant que le matériel du refuge passe dessous.', location: 'Nexus — grille du Rempart',
+      opening: 'Rejoindre Bastion sous la grille et caler le battant avant de lui demander de lâcher.',
+      action: 'Installer deux étais, dégager la voie restante puis prendre la relève le temps qu’il sorte.',
+      obstacle: 'Le premier étai masque un point de rupture ; Bastion refuse de s’écarter tant que le passage reste douteux.',
+      ending: 'Traverser le passage avec Bastion et abaisser la grille seulement une fois le couloir vide.',
+      consequence: 'La charge repose sur les étais et Bastion quitte son poste ; la dixième route demeure fermée.', mechanics: 'Étais physiques, relève, passage visible du dernier occupant.' },
+    { related: 'city-bastion-tenth-witness-v1', title: 'Le dernier dans le couloir',
+      premise: 'Prolongement proposé : une personne blessée se retrouve derrière un chariot renversé ; Bastion entend ses coups.', location: 'Nexus — couloir du Rempart',
+      opening: 'Suivre les coups avec Bastion et demander à la personne comment l’aider.',
+      action: 'Maintenir le battant ouvert, redresser le chariot puis accompagner la personne par la sortie qu’elle peut atteindre.',
+      obstacle: 'Fermer trop tôt le premier battant soulage la pression mais coupe le retour du blessé.',
+      ending: 'Attendre son arrivée auprès de Bastion avant de retirer les cales.',
+      consequence: 'La personne rejoint le refuge par un passage réellement tenu ouvert.', mechanics: 'Dégagement, escorte consentie, retour du dernier occupant.' }
   ],
   arca_nova: [
-    ['Les possibles mesurés', 'Lire trois traces de l’Observatoire, comparer leur cause et présenter les options à l’Ancre sans choisir pour elle.', 'La prédiction la plus favorable omet une conséquence non mesurée.', 'Relevés causaux, incertitude visible, choix de l’Ancre.'],
-    ['Le signal de retour', 'Comparer les lectures d’une borne et de son retour, isoler le signal retardé puis demander une nouvelle mesure avant la remise en service.', 'Un résultat statistiquement plausible est présenté comme une certitude.', 'Mesure bidirectionnelle, journal des incertitudes, contrôle humain.']
+    { related: 'city-nova-measured-exit-v1', title: 'La fenêtre entre deux battements',
+      premise: 'Prolongement proposé : un raccord du sol devient praticable entre deux pulsations, mais l’intervalle se raccourcit.', location: 'Nexus — raccord près de l’Observatoire',
+      opening: 'Rejoindre Nova au bord du raccord et observer deux pulsations sans s’y engager.',
+      action: 'Placer les capteurs de part et d’autre, mesurer la fenêtre actuelle puis choisir entre une traversée limitée et le détour.',
+      obstacle: 'Le relevé précédent ne décrit plus la pulsation présente.',
+      ending: 'Retirer l’autorisation de passage dès que la fenêtre mesurée se referme.',
+      consequence: 'Le passage suit une mesure présente ; le détour reste disponible sans promesse sur le prochain battement.', mechanics: 'Mesure causale, fenêtre temporelle, retour possible.' },
+    { related: 'city-nova-return-measurement-v1', title: 'Un détour qu’on peut refuser',
+      premise: 'Prolongement proposé : le trajet le plus court traverse une zone qui peut se déphaser ; Nova veut laisser le choix aux marcheurs.', location: 'Nexus — embranchement vers l’accueil',
+      opening: 'Rejoindre les marcheurs avec Nova et leur montrer les deux départs.',
+      action: 'Parcourir le détour, rallumer ses repères puis donner les mesures disponibles avant que chacun choisisse son trajet.',
+      obstacle: 'Le gain de temps du passage court cache une incertitude sur le retour.',
+      ending: 'Accompagner ceux qui choisissent le détour et maintenir son éclairage jusqu’à leur arrivée.',
+      consequence: 'Une route plus lente devient utilisable ; aucune personne n’est engagée sur la seule promesse d’un meilleur futur.', mechanics: 'Reconnaissance, choix informé, escorte par le détour.' }
   ],
   arca_marrow: [
-    ['Le sceau et le double', 'Comparer les gravures d’un sceau et de sa copie dans une reconstitution ; ne rompre que le lien artificiel identifié.', 'Le double possède un détail valide qui empêche de le rejeter sur sa seule apparence.', 'Lecture de sceau, identification conditionnelle, démontage inerte.'],
-    ['La preuve avant la lame', 'Préparer un exercice de reconnaissance de doublons : relever les différences, demander un témoignage puis annoter la décision.', 'Un automate propose une suppression avant la fin de l’enquête.', 'Priorité à la preuve, décision réversible, aucune cible habitante.']
+    { related: 'city-marrow-distinct-choices-v1', title: 'La lame sous les scellés',
+      premise: 'Prolongement proposé : un lien artificiel fait répondre deux portes en même temps et empêche leurs occupants de sortir séparément.', location: 'Nexus — deux portes près de l’accueil',
+      opening: 'Demander à chaque occupant quelle porte il souhaite ouvrir, en présence de Marrow.',
+      action: 'Suivre le lien jusqu’au mécanisme commun, l’isoler puis ne couper que sa pièce inerte.',
+      obstacle: 'Deux voix semblables ne disent pas quelle porte doit être condamnée.',
+      ending: 'Laisser chaque occupant actionner sa propre poignée après la coupure.',
+      consequence: 'Les deux portes fonctionnent indépendamment ; aucune conscience n’est traitée comme une pièce à supprimer.', mechanics: 'Recherche de liaison, découplage matériel, décisions indépendantes.' },
+    { related: 'city-marrow-independent-answers-v1', title: 'La sortie des deux voisins',
+      premise: 'Prolongement proposé : deux voisins qui se ressemblent demandent des sorties différentes pendant une panne de l’accueil.', location: 'Nexus — accueil et deux sorties',
+      opening: 'Écouter chaque voisin avec Marrow sans répondre à sa place.',
+      action: 'Dégager les deux issues, remettre leurs lampes en service puis accompagner chacun vers la sortie choisie.',
+      obstacle: 'Le mécanisme de tri ouvre une seule porte lorsqu’il entend deux fois une voix semblable.',
+      ending: 'Désactiver ce tri et attendre les deux passages distincts.',
+      consequence: 'Les voisins quittent l’accueil séparément ; leur ressemblance ne conditionne plus leur départ.', mechanics: 'Deux parcours, réparation de portes, choix de personne.' }
   ],
   arca_sable: [
-    ['La carte corrigée', 'Suivre une portion sûre d’un ancien relevé des Cartographes, placer des repères puis comparer la route réellement parcourue à la carte.', 'Une ligne élégante traverse une zone qui ne possède aucun passage.', 'Reconnaissance, relevé de terrain, correction sourcée.'],
-    ['Les balises se contredisent', 'Comparer les directions de trois panneaux de quartier, parcourir les deux trajets proposés puis corriger seulement le panneau réfuté.', 'La distance annoncée est plus courte que le chemin praticable.', 'Navigation, preuve de déplacement, restitution aux Archives.']
+    { related: 'city-sable-signed-map-v1', title: 'Une nuit sans panneaux',
+      premise: 'Prolongement proposé : une poussière de Trame recouvre les panneaux du retour et des marcheurs tournent autour du même carrefour.', location: 'Nexus — carrefour et route vers le refuge',
+      opening: 'Retrouver Sable au carrefour et suivre les pas qui reviennent sur eux-mêmes.',
+      action: 'Dégager les panneaux, marcher jusqu’au refuge puis poser les flèches dans le sens réellement parcouru.',
+      obstacle: 'L’ancienne carte dessine encore un passage interrompu par un décalage du sol.',
+      ending: 'Reprendre le trajet depuis le carrefour avec les marcheurs.',
+      consequence: 'Les flèches conduisent à une porte atteinte à pied, et le tronçon coupé reste barré.', mechanics: 'Orientation, marche de reconnaissance, balisage physique.' },
+    { related: 'city-sable-map-detour-v1', title: 'Le chariot trop large',
+      premise: 'Prolongement proposé : les vivres passent sur la carte mais leur chariot reste coincé dans le détour de Sable.', location: 'Nexus — passage du détour',
+      opening: 'Rejoindre le chariot arrêté et mesurer l’espace avec Sable.',
+      action: 'Déplacer une barrière démontable, dégager les roues puis guider le chariot jusqu’au refuge.',
+      obstacle: 'Le passage à pied était praticable ; sa largeur ne suffit pas au chargement.',
+      ending: 'Replacer la protection après le passage du chariot sans refermer le chemin des marcheurs.',
+      consequence: 'Les vivres arrivent par un détour adapté au chargement ; le passage piéton reste ouvert.', mechanics: 'Gabarit réel, obstacle mobile, livraison visible.' }
   ],
   arca_loom: [
-    ['Le dernier fil', 'Dans un exercice des services de récupération, vérifier chaque point de retour avant d’amener le dernier témoin vers la sortie.', 'Le témoin accepte l’aide mais refuse le premier itinéraire ; rechercher une autre issue.', 'Consentement, suivi du groupe, vérification d’issue.'],
-    ['Le relais de récupération', 'Rapprocher une demande d’assistance, une fiche de balise et un relevé de trajet ; demander au bénéficiaire de confirmer la transmission.', 'Une fiche marque le retour comme acquis avant l’arrivée effective.', 'Preuve d’arrivée, soutien non létal, transmission unique.']
+    { related: 'city-loom-return-thread-v1', title: 'Le brancard sur le fil',
+      premise: 'Prolongement proposé : une personne blessée attend derrière une travée instable ; Loom garde son fil de retour tendu.', location: 'Nexus — travée et poste de soins',
+      opening: 'Rejoindre Loom, parler au blessé et préparer un brancard à sa portée.',
+      action: 'Fixer les deux points de retour, stabiliser le brancard puis ramener la personne par le trajet qu’elle accepte.',
+      obstacle: 'Le premier trajet secoue trop le brancard ; une liaison lumineuse ne suffit pas à le rendre praticable.',
+      ending: 'Installer la personne au poste de soins avant de détacher le fil.',
+      consequence: 'Le blessé arrive auprès de soignants présents ; les voix gardées dans le drone de Loom n’ont pas été transférées.', mechanics: 'Secours consenti, stabilité du brancard, arrivée physique.' },
+    { related: 'city-loom-receiving-end-v1', title: 'Une place avant l’arrivée',
+      premise: 'Prolongement proposé : une équipe appelle un refuge dont les lits ont été déplacés après une panne.', location: 'Nexus — accueil du refuge',
+      opening: 'Rejoindre Loom à l’accueil et constater les places réellement disponibles.',
+      action: 'Dégager un lit, rétablir sa lampe et faire répondre la personne qui prendra la relève avant de guider l’équipe.',
+      obstacle: 'L’enseigne « refuge » est allumée mais personne ne répond au poste d’arrivée.',
+      ending: 'Attendre l’équipe et son accueil par le soignant présent.',
+      consequence: 'Une place et une personne accueillent les arrivants ; le signal lumineux seul ne vaut plus promesse d’abri.', mechanics: 'Préparation de refuge, relais humain, réception du groupe.' }
   ],
   arca_tessera: [
-    ['Deux mémoires debout', 'Présenter séparément deux souvenirs de la Forge et montrer leur contradiction sans déclarer l’un remplaçable.', 'Le classement ne prévoit qu’une seule version par personne.', 'Classement parallèle, témoignage, refus de remplacement.'],
-    ['La vitrine à deux récits', 'Installer deux notices incompatibles dans la même exposition avec leurs provenances et demander à chacun comment il souhaite être présenté.', 'Une légende automatique confond des identités distinctes.', 'Consentement de présentation, provenance visible, coexistence.']
+    { related: 'city-tessera-two-accounts-v1', title: 'La fenêtre que j’ai choisie',
+      premise: 'Prolongement proposé : deux souvenirs attirent la lumière de la chambre de Tessera dans des directions opposées ; elle veut choisir sa propre fenêtre.', location: 'Nexus — chambre de Tessera',
+      opening: 'Rejoindre Tessera dans sa chambre et lui demander où elle veut s’asseoir.',
+      action: 'Déplacer le réflecteur, séparer les deux commandes puis régler la lumière depuis la place qu’elle choisit.',
+      obstacle: 'Une commande remet automatiquement la pièce dans la disposition d’un souvenir qui n’est pas son choix présent.',
+      ending: 'Laisser Tessera actionner elle-même le réglage indépendant.',
+      consequence: 'La chambre répond à sa décision présente sans détruire l’un de ses deux souvenirs.', mechanics: 'Aménagement choisi, commandes séparées, mémoire coexistante.' },
+    { related: 'city-tessera-caption-review-v1', title: 'Le reflet attend dehors',
+      premise: 'Prolongement proposé : la serrure reconnaît un reflet ancien avant Tessera et referme sa porte sur elle.', location: 'Nexus — seuil de la chambre de Tessera',
+      opening: 'Retrouver Tessera devant sa porte et attendre qu’elle demande de l’aide.',
+      action: 'Éteindre le capteur de reflet, poser une poignée intérieure puis régler la serrure sur son geste présent.',
+      obstacle: 'Le reflet ressemble à l’une de ses mémoires sans être la personne qui demande à entrer.',
+      ending: 'Se retirer du seuil pendant que Tessera entre et ferme elle-même sa porte.',
+      consequence: 'Tessera contrôle sa chambre ; aucun souvenir n’a été élu propriétaire à sa place.', mechanics: 'Serrure locale, présence actuelle, retrait de l’aidant.' }
   ],
   arca_quillon: [
-    ['La ligne manquante', 'Comparer une demande de restitution au contre-registre et rendre visible le coût oublié sans attribuer une dette à une personne absente.', 'Le total est juste mais un nom manque dans la ventilation.', 'Rapprochement de registres, coût visible, attribution vérifiable.'],
-    ['Le reçu et le témoin', 'Suivre le trajet d’une pièce d’archive de l’accueil à sa vitrine puis faire signer chaque remise par le témoin présent.', 'Une copie du reçu propose de comptabiliser deux restitutions.', 'Chaîne de remise, détection de doublon, clôture unique.']
+    { related: 'city-quillon-single-receipt-v1', title: 'La caisse des oubliés',
+      premise: 'Prolongement proposé : une caisse de couvertures dort à la Galerie tandis que ceux qui l’attendent passent la nuit sans elle.', location: 'Nexus — Galerie et refuge',
+      opening: 'Suivre Quillon jusqu’à la caisse et lui montrer le refuge qui attend.',
+      action: 'Retrouver la poignée manquante, charger la caisse puis la porter aux personnes présentes.',
+      obstacle: 'Deux marques d’acheminement se contredisent ; aucune seconde caisse n’existe pour compenser l’erreur.',
+      ending: 'Aider à distribuer les couvertures et signaler à Quillon celles qui manquent encore.',
+      consequence: 'La seule caisse disponible arrive au refuge ; les besoins restants demeurent visibles sans dette inventée.', mechanics: 'Objet unique, transport, besoin matériel constaté.' },
+    { related: 'city-quillon-delivery-check-v1', title: 'La pompe après la lampe',
+      premise: 'Prolongement proposé : la lampe fonctionne, mais la pompe du refuge s’arrête ; Quillon cherche encore qui doit payer la pièce.', location: 'Nexus — pompe du refuge',
+      opening: 'Ouvrir le capot avec Quillon et constater que l’eau n’arrive plus.',
+      action: 'Couper le courant, réutiliser la seule pièce compatible disponible puis réamorcer la pompe.',
+      obstacle: 'La remise en marche consomme une pièce réelle ; la discussion sur son coût ne doit pas laisser le refuge à sec.',
+      ending: 'Remplir un récipient au refuge et rendre la pièce retirée à Quillon pour réparation.',
+      consequence: 'L’eau revient avant la clôture du compte ; la pièce consommée reste unique et son coût reste explicite.', mechanics: 'Consignation, réparation, débit visible, ressource unique.' }
   ],
   arca_nadir: [
-    ['L’autre côté du seuil', 'Tester un seuil d’exercice dans les deux sens et conserver la sonde de retour tant que le dernier agent n’a pas rejoint le départ.', 'La première traversée réussit mais la liaison inverse reste muette.', 'Sonde bidirectionnelle, garde du retour, extraction vérifiée.'],
-    ['Le dernier visiteur', 'Parcourir le trajet Galerie–Archives avec un groupe volontaire et vérifier le dernier point de passage avant de refermer le service.', 'Un compteur de départ et un compteur d’arrivée ne concordent pas.', 'Comptage de présence, réouverture, retour effectif.']
+    { related: 'city-nadir-return-probe-v1', title: 'La sonde sous les décombres',
+      premise: 'Prolongement proposé : la sonde de Nadir cesse de répondre après une chute de débris près d’un seuil fermé.', location: 'Nexus — seuil et débris de la travée',
+      opening: 'Rejoindre Nadir à la limite du seuil et sécuriser le câble tendu.',
+      action: 'Dégager le câble, sortir la sonde depuis le côté sûr puis comparer son état au départ.',
+      obstacle: 'Un signal de retour persiste dans les parasites alors que la sonde reste physiquement bloquée.',
+      ending: 'Ramener la sonde auprès de Nadir et laisser le passage fermé jusqu’à un nouvel essai complet.',
+      consequence: 'La sonde est récupérée ; son retour incomplet n’autorise aucune traversée humaine.', mechanics: 'Récupération matérielle, comparaison de sonde, seuil gardé.' },
+    { related: 'city-nadir-second-threshold-v1', title: 'Personne derrière moi',
+      premise: 'Prolongement proposé : la lumière du retour s’affaiblit pendant qu’un petit groupe regagne la Cité.', location: 'Nexus — retour du second seuil',
+      opening: 'Rejoindre Nadir au dernier repère et identifier les personnes encore sur le trajet.',
+      action: 'Maintenir le harnais de retour, rallumer les repères depuis l’arrivée puis accompagner le dernier marcheur.',
+      obstacle: 'Le signal de l’ancienne porte ne prouve rien sur ce second seuil.',
+      ending: 'Revenir avec Nadir en dernier et ne retirer le harnais qu’une fois le groupe présent.',
+      consequence: 'Tous les marcheurs réellement partis reviennent ; aucun succès antérieur ne remplace leur arrivée.', mechanics: 'Retour de groupe, seuil distinct, fermeture après présence.' }
   ],
   arca_elyra: [
-    ['La possibilité de refuser', 'Lire une demande de passage du Seuil blanc et conserver explicitement l’option de refus dans la procédure.', 'Un formulaire assimile le silence à une acceptation.', 'Choix explicite, mémorisation de l’intention, retrait possible.'],
-    ['La porte consentie', 'Faire tester une borne de la Cité par deux volontaires, vérifier acceptation et refus puis restituer chaque décision sans la corriger.', 'La borne présente le refus comme un échec à contourner.', 'Branches de dialogue, validation des deux issues, aucune récompense conditionnée au consentement.']
+    { related: 'city-elyra-consented-door-v1', title: 'Le levier à portée de main',
+      premise: 'Prolongement proposé : une personne accepte d’approcher la porte, mais ne peut pas atteindre son levier d’arrêt.', location: 'Nexus — porte du passage accompagné',
+      opening: 'Écouter la personne avec Elyra et lui faire montrer le levier inaccessible.',
+      action: 'Abaisser le levier, relier l’arrêt au mécanisme puis laisser la personne essayer sans déclencher de traversée.',
+      obstacle: 'Un arrêt indiqué sur le panneau reste inutile s’il ne peut pas être actionné.',
+      ending: 'Rester en retrait pendant qu’elle choisit de poursuivre ou de quitter le seuil.',
+      consequence: 'L’arrêt devient accessible et coupe réellement le passage ; le refus reste une issue complète.', mechanics: 'Accessibilité, essai d’arrêt, décision renouvelable.' },
+    { related: 'city-elyra-renewed-passage-v1', title: 'Le départ différé',
+      premise: 'Prolongement proposé : une voyageuse venue partir veut attendre ; la porte reprend pourtant son ancienne séquence.', location: 'Nexus — attente près du seuil',
+      opening: 'Rejoindre Elyra et la voyageuse, puis arrêter la séquence en cours.',
+      action: 'Décharger la commande mémorisée, préparer une place d’attente puis rendre le déclenchement manuel.',
+      obstacle: 'L’accord précédent portait sur un départ qui n’a plus lieu maintenant.',
+      ending: 'Laisser la voyageuse relancer le passage si elle le demande, ou partir du seuil sans être suivie.',
+      consequence: 'La porte ne redémarre plus sur un ancien accord ; attendre et renoncer n’enlèvent aucun droit au retour.', mechanics: 'Arrêt persistant, attente, nouvel accord explicite.' }
   ],
   arca_oryn: [
-    ['Les noms du seuil', 'Comparer les gravures des ateliers de Route X aux témoignages, puis restaurer une attribution lisible sans inventer les noms effacés.', 'Une gravure partielle ressemble à deux personnes différentes.', 'Comparaison nominative, question ouverte, protection des témoins.'],
-    ['Le manifeste des voix', 'Recueillir des contributions volontaires, conserver leurs signatures séparées puis laisser chaque témoin retirer sa contribution avant dépôt.', 'Un éditeur fusionne les voix en une déclaration que personne n’a choisie.', 'Attribution, consentement, archive polyphonique.']
+    { related: 'city-oryn-separate-voices-v1', title: 'La garde sans signature',
+      premise: 'Prolongement proposé : une garde d’outil venue d’un atelier de Route X perd ses dernières gravures ; Oryn refuse d’y mettre son nom à la place.', location: 'Nexus — établi de la Galerie',
+      opening: 'Retrouver Oryn à l’établi et regarder les marques encore visibles.',
+      action: 'Stabiliser la garde, poser un support qui laisse ses marques accessibles puis demander aux artisans présents ce qu’ils reconnaissent.',
+      obstacle: 'Une marque incomplète peut appartenir à plusieurs mains ; la ressemblance ne permet pas de la réattribuer.',
+      ending: 'Remonter le support avec les espaces inconnus visibles, sans les combler.',
+      consequence: 'L’outil cesse de se dégrader ; les noms retrouvés restent distincts et les absences restent reconnues.', mechanics: 'Restauration matérielle, témoignages volontaires, marques conservées.' },
+    { related: 'city-oryn-manifest-delivery-v1', title: 'Des voix autour de l’établi',
+      premise: 'Prolongement proposé : le haut-parleur de l’atelier répète la voix d’Oryn par-dessus celles des artisans venus travailler.', location: 'Nexus — établi et haut-parleur de la Galerie',
+      opening: 'Rejoindre Oryn à l’établi et écouter les artisans qui souhaitent parler.',
+      action: 'Couper la boucle d’écho, rendre chaque interrupteur accessible puis laisser chacun choisir de parler ou de travailler en silence.',
+      obstacle: 'Un canal collectif utilise le nom d’Oryn pour toutes les voix et relance les paroles retirées.',
+      ending: 'Essayer chaque arrêt avec son propriétaire et ranger les outils avec les artisans présents.',
+      consequence: 'Les voix restent attribuées à ceux qui les donnent ; le silence n’interrompt pas l’accès à l’atelier.', mechanics: 'Découplage audio, retrait effectif, atelier partagé.' }
   ]
 };
 
@@ -490,23 +635,30 @@ function mission(character, strand) {
   const familyId = selectFamily(character);
   const family = FAMILIES[familyId];
   const special = NEXUS_PROPOSALS[character.id]?.[city ? 1 : 0];
+  const relatedRuntime = special ? MOSAIC_CHARACTER_MISSIONS.find(item => item.id === special.related) : null;
+  if (special && !relatedRuntime) throw new Error(`Missing related Nexus story: ${special.related}`);
   const individual = INDIVIDUAL_PROPOSALS[character.id];
   const individualPlan = individual?.plans[city ? 1 : 0];
   const peaceful = character.nonCombat || character.finalePolicy === 'nonCombatFinal';
   const sourceGoal = character.sourceObjective || (peaceful ? character.finaleObjective : '');
   const namedActions = character.actions.filter(action => !action.generic);
   const selectedActions = peaceful ? [] : [namedActions.find(action => action.slot === 'simple'), namedActions.find(action => action.slot === 'defense')].filter(Boolean);
-  const fields = individual?.sourceFields || (special ? character.sourceRefs : [`HEROES_DB[${character.id}].category`, `LORE_DB[${character.universe}]`,
+  const fields = individual?.sourceFields || (special ? unique([...character.sourceRefs, ...(relatedRuntime.sourceRefs || []),
+    `${relatedRuntime.contentFile || 'src/game/mosaicCharacterStories.js'}#${relatedRuntime.id}`]) : [`HEROES_DB[${character.id}].category`, `LORE_DB[${character.universe}]`,
     ...(sourceGoal ? [character.sourceObjective ? `HEROES_DB[${character.id}].objective` : `ENEMIES_DB[${character.universe}].finalePolicy.objective`] : []),
     ...selectedActions.map(action => action.sourceField),
     ...(character.equipment.length && !peaceful ? [`HEROES_DB[${character.id}].equipment/weapon`] : [])]);
-  const coreAction = individualPlan?.[2] || special?.[1] || (city ? family.cityAction : family.originAction);
-  const obstacle = individualPlan?.[3] || special?.[2] || (city ? family.cityObstacle : family.originObstacle);
-  const title = individualPlan?.[0] || special?.[0] || `${city ? family.cityTitle : family.universeTitle} — ${character.name}`;
+  const coreAction = individualPlan?.[2] || special?.action || (city ? family.cityAction : family.originAction);
+  const obstacle = individualPlan?.[3] || special?.obstacle || (city ? family.cityObstacle : family.originObstacle);
+  const title = individualPlan?.[0] || special?.title || `${city ? family.cityTitle : family.universeTitle} — ${character.name}`;
   const originLocation = individual?.location || character.sourceStage;
-  const premise = individualPlan?.[1] || `${obstacle} ${character.isPlayer ? 'A.R.C.A. confie le relevé à l’Ancre.' : `${character.name} demande un relevé avant de poursuivre.`}`;
+  const premise = individualPlan?.[1] || special?.premise || `${obstacle} ${character.isPlayer ? 'A.R.C.A. confie le relevé à l’Ancre.' : `${character.name} demande un relevé avant de poursuivre.`}`;
   const sourceCheck = character.sourceGaps.length ? 'Vérifier les lacunes signalées avant écriture définitive.' : 'Relire la continuité et les sources avant écriture définitive.';
-  const objectives = [
+  const objectives = special ? [
+    objective('briefing', special.opening, special.obstacle, 'La demande est entendue auprès de la personne concernée et le problème est constaté sur place.', fields),
+    objective('activity', special.action, special.obstacle, special.consequence, fields),
+    objective('return', special.ending, 'Le résultat doit être constaté après le geste et auprès de son destinataire.', special.consequence, fields)
+  ] : [
     objective('briefing', character.isPlayer
       ? 'Prendre le mandat A.R.C.A. aux Archives, consulter les observations et choisir le point de départ du relevé.'
       : city
@@ -529,13 +681,15 @@ function mission(character, strand) {
     id: `city-plan-v1::${character.id}::${strand}`, characterId: character.id, characterName: character.name,
     universe: character.universe, strand, title,
     premise,
-    location: city ? `${character.cityDistrict} → Archives A.R.C.A.` : `${originLocation} → ${character.cityDistrict}`,
+    location: special?.location || (city ? `${character.cityDistrict} → Archives A.R.C.A.` : `${originLocation} → ${character.cityDistrict}`),
     family: familyId, familyLabel: family.label, objectives,
-    mechanics: individualPlan || special ? [{ id: `source_role_${character.id}`, description: individualPlan?.[4] || special[3] }]
+    mechanics: individualPlan || special ? [{ id: `source_role_${character.id}`, description: individualPlan?.[4] || special.mechanics }]
       : family.mechanics.map(id => ({ id, description: family.tools })),
     designKind: individualPlan || special ? 'individual_proposal' : familyId === 'research' ? 'research_scaffold' : sourceGoal ? 'source_objective_adaptation' : 'source_family_adaptation',
+    diegeticReviewStatus: individualPlan || special ? 'individual_story_review_required' : 'diegetic_rewrite_required',
+    relatedRuntimeMissionId: special?.related || null,
     sourceCharacterId: character.id, sourceBindings: fields,
-    nonCombat: character.nonCombat, combatPolicy: peaceful ? 'peaceful_objectives_only' : city ? 'safe_city_inert_exercise_only' : 'source_review_before_optional_encounter',
+    nonCombat: character.nonCombat, combatPolicy: peaceful ? 'peaceful_objectives_only' : special ? 'safe_city_nonhostile_interventions' : city ? 'safe_city_inert_exercise_only' : 'source_review_before_optional_encounter',
     killRequired: false, hostileResidentAllowed: false, finalePolicy: character.finalePolicy,
     identityConstraints: character.identityConstraints,
     prerequisites: { installedUniverse: character.universe, characterOwnedOrAuthorizedResident: !character.isPlayer, requiredRuntimeQuest: null, requiresCanonReview: true },
@@ -545,8 +699,8 @@ function mission(character, strand) {
     readiness: familyId === 'research' || character.sourceGaps.includes('generic_ability_names') ? 'source_research_required' : 'design_review_required',
     priority: character.isPlayer || character.universe === 'Nexus de Convergence' ? 'P1' : 'P2',
     planningStatus: 'to_design', owner: '', targetMilestone: '', reviewNotes: '',
-    nextAction: `${sourceCheck} Écrire le dialogue, la géométrie et les critères propres à cette proposition ; raccorder ensuite les états de quête.`,
-    acceptanceCriteria: [peaceful ? 'Aucun tir, arme ajoutée, barre de vie ou élimination ; la résolution conserve l’objectif pacifique.' : 'Aucun habitant hostile dans la Cité ; les démonstrations utilisent des objets inertes.',
+    nextAction: `${!individualPlan && !special ? 'Réécriture diégétique requise : remplacer le canevas par une situation personnelle et ses effets joués. ' : ''}${sourceCheck} Écrire le dialogue, la géométrie et les critères propres à cette proposition ; raccorder ensuite les états de quête.`,
+    acceptanceCriteria: [peaceful ? 'Aucun tir, arme ajoutée, barre de vie ou élimination ; la résolution conserve l’objectif pacifique.' : special ? 'Aucun habitant hostile dans la Cité ; l’intervention modifie un objet ou un trajet, sans remplacer une personne.' : 'Aucun habitant hostile dans la Cité ; les démonstrations utilisent des objets inertes.',
       ...(character.sameProtagonistAs || character.uniqueAbility === false ? ['La variante ne devient ni une seconde personne ni une capacité exclusive.'] : [])]
   };
 }
@@ -590,6 +744,24 @@ function encounterRecords(universes, revision) {
   return entries;
 }
 
+function runtimeOperation(operation) {
+  return operation ? { kind: operation.kind, label: text(operation.label), propName: text(operation.propName), completedText: text(operation.completedText) } : undefined;
+}
+
+function runtimeStep(step) {
+  return {
+    ...(step.id ? { id: step.id } : {}), ...(step.type ? { type: step.type } : {}), text: text(step.text),
+    ...(step.targetId ? { targetId: step.targetId } : {}),
+    ...(step.finding ? { finding: text(step.finding) } : {}),
+    ...(step.dialogue ? { dialogue: text(step.dialogue) } : {}),
+    ...(step.operation ? { operation: runtimeOperation(step.operation) } : {}),
+    ...(Number.isFinite(step.x) && Number.isFinite(step.y) ? { x: step.x, y: step.y } : {}),
+    ...Object.fromEntries(['byOriginChoice', 'byChoice'].filter(field => step[field]).map(field => [field,
+      Object.fromEntries(Object.entries(step[field]).map(([key, branch]) => [key, runtimeStep(branch)]))])),
+    ...(step.choices ? { choices: step.choices.map(choice => ({ id: choice.id, label: text(choice.label), result: text(choice.result), valid: choice.valid })) } : {})
+  };
+}
+
 export function buildMissionPlanning(sourceRevision, { includeSourceHashes = true } = {}) {
   if (!/^[a-f0-9]{40}$/.test(sourceRevision || '')) throw new Error('Full immutable source revision required');
   const heroes = [createPlayerHero(), ...HEROES_DB];
@@ -604,7 +776,10 @@ export function buildMissionPlanning(sourceRevision, { includeSourceHashes = tru
       externalReferences: texts(policy.referenceUrls), externalReferencesChecked: false,
       sourceFile: 'src/game/enemies.js', sourceRef: `ENEMIES_DB[${universe}].finalePolicy` };
   });
-  const allFiles = sourceClosure(unique([...SOURCE_FILES, ...characters.flatMap(character => character.sourceFiles),
+  const runtimeReferenceFiles = MOSAIC_CHARACTER_MISSIONS.flatMap(mission => [
+    mission.contentFile, ...(mission.sourceRefs || []), ...String(mission.source || '').split(';').map(ref => ref.trim())
+  ]).filter(ref => typeof ref === 'string' && /^(?:src|DLC)\/.*\.js(?:#|$)/.test(ref)).map(ref => ref.split('#')[0]);
+  const allFiles = sourceClosure(unique([...SOURCE_FILES, ...runtimeReferenceFiles, ...characters.flatMap(character => character.sourceFiles),
     ...encounters.flatMap(encounter => encounter.sourceFiles), 'package.json', 'package-lock.json']));
   const sourceManifest = allFiles.map(file => ({ file, exists: existsSync(path.join(ROOT, file)),
     sha256: includeSourceHashes && existsSync(path.join(ROOT, file)) ? sha256(readFileSync(path.join(ROOT, file))) : null }));
@@ -647,7 +822,7 @@ export function buildMissionPlanning(sourceRevision, { includeSourceHashes = tru
     ],
     editableTrackingFields: ['priority', 'planningStatus', 'owner', 'targetMilestone', 'reviewNotes'],
     commonPolicies: [{ id: 'city-planning-v1',
-      rewardPolicy: 'Récompense narrative proposée : dossier/notice. Aucune monnaie, propriété, dépense ou récompense de combat ajoutée par ce catalogue ; économie à décider avant implémentation.',
+      rewardPolicy: 'Conséquence narrative et matérielle à concevoir pour chaque proposition. Aucune monnaie, propriété, dépense ou récompense de combat ajoutée par ce catalogue ; économie à décider avant implémentation.',
       missingDlcBehavior: 'Suspendre la disponibilité en conservant les identifiants et la progression ; aucun achat ni téléchargement déclenché.',
       acceptanceCriteria: ['Les IDs, univers, variantes et sauvegardes restent intacts.',
         'Le journal distingue préparation, activité, retour et clôture ; un menu ou une pause ne fait pas progresser l’objectif.',
@@ -659,17 +834,15 @@ export function buildMissionPlanning(sourceRevision, { includeSourceHashes = tru
     sourceManifest, characters, missions, encounters, finalePolicies, reviewQueue,
     runtimeMissions: MOSAIC_CHARACTER_MISSIONS.map(item => ({
       id: item.id, characterId: item.heroId, universe: item.universe, title: text(item.title),
-      premise: text(item.premise), source: item.source, sourceFile: item.contentFile || 'src/game/mosaicCharacterMissions.js',
+      premise: text(item.premise), request: text(item.request), location: text(item.location), source: item.source,
+      sourceFile: item.contentFile || 'src/game/mosaicCharacterMissions.js', contentFile: item.contentFile || 'src/game/mosaicCharacterMissions.js',
+      sourceRefs: item.sourceRefs || [],
+      systemSourceFiles: ['src/game/mosaicCharacterMissions.js', 'src/game/mosaicMissionOperations.js',
+        ...(item.requiresMissionId ? ['src/game/mosaicCharacterFollowups.js'] : [])],
       chapter: item.chapter || 1, requiresMissionId: item.requiresMissionId || null,
       continuity: text(item.continuity), referenceUrls: item.references || [],
       implementationStatus: 'runtime_contract', browserValidation: 'not_certified_by_catalog',
-      steps: item.steps.map(step => ({ id: step.id, type: step.type, text: text(step.text),
-        ...(step.finding ? { finding: text(step.finding) } : {}),
-        ...(step.type === 'marker' ? { x: step.x, y: step.y } : {}),
-        ...Object.fromEntries(['byOriginChoice', 'byChoice'].filter(field => step[field]).map(field => [field,
-          Object.fromEntries(Object.entries(step[field]).map(([key, branch]) => [key,
-            { x: branch.x, y: branch.y, text: text(branch.text), finding: text(branch.finding) }]))])),
-        ...(step.choices ? { choices: step.choices.map(choice => ({ id: choice.id, label: text(choice.label), result: text(choice.result), valid: choice.valid })) } : {}) }))
+      steps: item.steps.map(runtimeStep)
     }))
   };
   catalog.dataSha256 = sha256(JSON.stringify(catalog));

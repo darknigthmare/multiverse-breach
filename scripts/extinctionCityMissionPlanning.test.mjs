@@ -94,11 +94,11 @@ test('variants remain separate catalog rows without extra protagonists or exclus
   assert.match(plansFor('unreal_1998_gina')[1].objectives[1].action, /même rôle de Prisoner 849/);
 });
 
-test('the player receives a mandate instead of being asked to meet themselves', () => {
+test('the player enters a concrete scene without being asked to meet themselves', () => {
   const player = characterById.get('player_anchor');
   assert.equal(player.isPlayer, true);
   for (const plan of plansFor(player.id)) {
-    assert.match(plan.objectives[0].action, /Prendre le mandat A.R.C.A./);
+    assert.match(plan.objectives[0].action, /Rejoindre le halo|Aller à la dernière lampe/);
     assert.ok(!plan.objectives[0].action.includes(`Rencontrer ${player.name}`));
     assert.equal(plan.prerequisites.characterOwnedOrAuthorizedResident, false);
   }
@@ -135,6 +135,29 @@ test('generic source abilities stay explicitly unreviewed instead of becoming ca
   }
 });
 
+test('Nexus backlog extends the 24 playable stories while only generic adaptations require a diegetic rewrite', () => {
+  const extensions = catalog.missions.filter(row => row.relatedRuntimeMissionId);
+  assert.equal(extensions.length, 24);
+  assert.equal(new Set(extensions.map(row => row.relatedRuntimeMissionId)).size, 24);
+  const runtime = new Map(catalog.runtimeMissions.map(row => [row.id, row]));
+  for (const plan of extensions) {
+    const related = runtime.get(plan.relatedRuntimeMissionId);
+    assert.equal(related.characterId, plan.characterId);
+    assert.notEqual(plan.title, related.title, plan.id);
+    assert.match(plan.premise, /^Prolongement proposé/);
+    assert.equal(plan.implementationStatus, 'planned');
+    assert.equal(plan.runtimeMissionId, null);
+    assert.equal(plan.designKind, 'individual_proposal');
+    assert.ok(plan.sourceBindings.includes(`src/game/mosaicCharacterStories.js#${related.id}`));
+    assert.ok(!plan.objectives.some(step => /clôture|dossier|mandat|relevé aux Archives/i.test(step.action)), plan.id);
+  }
+  for (const plan of catalog.missions) {
+    const generic = plan.designKind !== 'individual_proposal';
+    assert.equal(plan.diegeticReviewStatus === 'diegetic_rewrite_required', generic, plan.id);
+    assert.equal(plan.nextAction.includes('Réécriture diégétique requise'), generic, plan.id);
+  }
+});
+
 test('real runtime contracts remain distinct from all planned proposals', () => {
   assert.equal(catalog.counts.implementedMissions, 0);
   assert.ok(catalog.missions.every(row => row.implementationStatus === 'planned' && row.runtimeMissionId === null));
@@ -144,9 +167,28 @@ test('real runtime contracts remain distinct from all planned proposals', () => 
   for (const row of catalog.runtimeMissions) {
     assert.ok(characterById.get(row.characterId).runtimeMissions.includes(row.id));
     assert.equal(row.browserValidation, 'not_certified_by_catalog');
+    assert.ok(row.request && row.location && row.premise, row.id);
+    assert.equal(row.sourceFile, row.contentFile);
+    assert.ok(row.systemSourceFiles.includes('src/game/mosaicMissionOperations.js'));
+    const source = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === row.id);
+    assert.deepEqual(row.sourceRefs, source.sourceRefs || []);
+    const checkOperation = (exported, original) => {
+      if (!original.operation) return;
+      assert.deepEqual(exported.operation, Object.fromEntries(Object.entries(original.operation).map(([key, value]) =>
+        [key, typeof value === 'string' ? value : value.fr || value.en])));
+      assert.ok(['repair', 'scan', 'recover', 'secure', 'beacon', 'route'].includes(exported.operation.kind));
+    };
+    row.steps.forEach((step, index) => {
+      const original = source.steps[index];
+      checkOperation(step, original);
+      for (const field of ['byOriginChoice', 'byChoice']) {
+        for (const [id, route] of Object.entries(step[field] || {})) checkOperation(route, original[field][id]);
+      }
+    });
     if (row.requiresMissionId) {
       assert.equal(row.chapter, 2);
-      assert.equal(row.sourceFile, 'src/game/mosaicCharacterFollowups.js');
+      assert.equal(row.sourceFile, 'src/game/mosaicCharacterStories.js');
+      assert.ok(row.systemSourceFiles.includes('src/game/mosaicCharacterFollowups.js'));
       const previous = catalog.runtimeMissions.find(item => item.id === row.requiresMissionId);
       assert.equal(previous.characterId, row.characterId);
       const origin = row.steps.find(step => step.byOriginChoice);
@@ -164,7 +206,9 @@ test('real runtime contracts remain distinct from all planned proposals', () => 
 test('source provenance includes static dependencies with actual hashes, not just aggregator names', () => {
   const sources = new Map(catalog.sourceManifest.map(row => [row.file, row]));
   for (const file of ['DLC/Halo/data/heroes.js', 'DLC/Portal/data/loreDescriptions.js', 'src/game/canonRosterWavePartM.js',
-    'src/game/canonP0SourceKits.js', 'src/game/mosaicCharacterMissions.js', 'src/game/mosaicCharacterFollowups.js', 'scripts/extinction-city/missionPlanning.mjs']) {
+    'DLC/Alien/data/sourceSceneStages.js',
+    'src/game/canonP0SourceKits.js', 'src/game/mosaicCharacterMissions.js', 'src/game/mosaicCharacterFollowups.js',
+    'src/game/mosaicCharacterStories.js', 'src/game/mosaicMissionOperations.js', 'src/game/ocCampaign.js', 'scripts/extinction-city/missionPlanning.mjs']) {
     const row = sources.get(file);
     assert.ok(row?.exists, file);
     assert.equal(row.sha256, createHash('sha256').update(readFileSync(file)).digest('hex'), file);

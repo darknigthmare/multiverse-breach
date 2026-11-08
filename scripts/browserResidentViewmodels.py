@@ -109,8 +109,21 @@ def residents(page, args, width, height, lang, out, name):
         if not page.get_by_role('dialog').count():
             page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
         log=page.locator('.mosaic-rpg-log span').inner_text()
-        expected=resident_name+(' synchronise sa Trame' if fr else ' synchronizes their Thread')
-        check(log.startswith(expected),f'resident not reached through normal movement: {identity}: {log}')
+        if page.locator('[data-city-quest-offer]').count():
+            conversation=page.locator(f'[data-city-conversation="{identity}"]')
+            expect(conversation).to_be_visible()
+            offer=conversation.locator('[data-city-quest-offer]')
+            expect(offer).to_have_count(1)
+            speech=conversation.locator('[data-dialogue-quest]')
+            check(speech.get_attribute('data-dialogue-quest')==offer.get_attribute('data-city-quest-offer'),
+                  'resident offer and dialogue belong to different missions')
+            expect(speech.locator('cite')).to_have_text(resident_name)
+            line=speech.locator('blockquote p').inner_text()
+            check(bool(line) and log==f'{resident_name} : {line}',
+                  f'resident request differs from the actual conversation: {identity}: {log}')
+        else:
+            expected=resident_name+(' synchronise sa Trame' if fr else ' synchronizes their Thread')
+            check(log.startswith(expected),f'resident not reached through normal movement: {identity}: {log}')
         # The QA parent is intentionally outside the inert game dialog. Trigger
         # its rerender programmatically without mutating the simulation.
         before=page.evaluate('window.__sceneQA.snapshot()')

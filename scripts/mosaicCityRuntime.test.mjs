@@ -9,8 +9,9 @@ import {
 } from '../src/game/mosaicCityRuntime.js';
 import { createPlayerHero } from '../src/game/playerHero.js';
 import { advanceMosaicReconnaissance, normalizeMosaicReconnaissance } from '../src/game/mosaicReconnaissance.js';
-import { MOSAIC_CHARACTER_MISSIONS, advanceMosaicCharacterMission, normalizeMosaicCharacterMissions,
+import { MOSAIC_CHARACTER_MISSIONS, advanceMosaicCharacterMission, getMosaicCharacterMissionObjective, normalizeMosaicCharacterMissions,
   startMosaicCharacterMission } from '../src/game/mosaicCharacterMissions.js';
+import { getMosaicMissionOperation } from '../src/game/mosaicMissionOperations.js';
 
 const district = { worldW: 2000, worldH: 1000 };
 const makeState = (keys = {}) => ({ player: { x: 100, y: 100, facing: 1, speed: 2.35 }, keys, npcs: [], destination: null });
@@ -316,7 +317,7 @@ test('the Archives Codex terminal opens the actual global archive only after app
     unlockedHeroes: [],
     advanceMosaicReconnaissance, reconnaissanceRef: { current: normalizeMosaicReconnaissance() }, reconnaissanceDossier: null,
     commitReconnaissance: () => assert.fail('The global archive cannot validate a district reconnaissance'),
-    advanceMosaicCharacterMission, characterMissionsRef, characterMissionCatalog: [],
+    advanceMosaicCharacterMission, getMosaicCharacterMissionObjective, getMosaicMissionOperation, characterMissionsRef, characterMissionCatalog: [],
     commitCharacterMissions: () => assert.fail('The global archive cannot validate a character contract from another district'),
     setHubLog: () => {}, recordGuide: () => {}, switchDistrict: () => {},
     onOpenService: () => assert.fail('Codex cannot open another service'),

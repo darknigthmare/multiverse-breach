@@ -4,7 +4,8 @@ import { DISCIPLINE_SPRITE_REGISTRY } from '../game/disciplineSprites.js';
 import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { getMosaicExhibits, getMosaicExhibitView, getMosaicExhibitZones, drawMosaicService } from '../game/mosaicExhibits.js';
 import { buildMosaicReconnaissanceDossier, normalizeMosaicReconnaissance, startMosaicReconnaissance, advanceMosaicReconnaissance, getMosaicReconnaissanceObjective } from '../game/mosaicReconnaissance.js';
-import { normalizeMosaicCharacterMissions, getMosaicCharacterMissionCatalog, getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, startMosaicCharacterMission, advanceMosaicCharacterMission, resolveMosaicCharacterMission } from '../game/mosaicCharacterMissions.js';
+import { normalizeMosaicCharacterMissions, getMosaicCharacterMissionCatalog, getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, getMosaicCharacterMissionWorldObjects, getMosaicCharacterMissionPropZones, startMosaicCharacterMission, restartMosaicCharacterMission, acceptMosaicCharacterMissionRequest, advanceMosaicCharacterMission, resolveMosaicCharacterMission, localizeCityMission } from '../game/mosaicCharacterMissions.js';
+import { drawMosaicMissionObject, getMosaicMissionOperation } from '../game/mosaicMissionOperations.js';
 import MosaicCharacterMissions from './MosaicCharacterMissions.jsx';
 import { createExtinctionRelayOperation, tickExtinctionRelayOperation, interactExtinctionRelayOperation, getExtinctionRelayStatus } from '../game/extinctionRelayOperation.js';
 import { createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols, getExtinctionProtocolBrief, clearExtinctionProtocolEffects, getExtinctionProtocolSpeedFactor, fireExtinctionPickupWeapon, getExtinctionPickupBrief } from '../game/extinctionSignatures.js';
@@ -2290,6 +2291,7 @@ function MosaicCityHub({
   useEffect(() => { const image = new Image(); image.src = MOSAIC_CITY_ART; cityBackdropRef.current = image; return () => { cityBackdropRef.current = null; }; }, []);
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
   const [conversationHeroId, setConversationHeroId] = useState(null);
+  const [missionConversation, setMissionConversation] = useState(null);
   const conversationFocusRef = useRef(null);
   const conversationFocusPending = useRef(false);
   const cityTerminalButtonRef = useRef(null);
@@ -2317,7 +2319,7 @@ function MosaicCityHub({
   }, [cityMenuOpen]);
   const closeCityMenu = useCallback(() => setCityMenuOpen(false), []);
   useEffect(() => {
-    if (!cityMenuOpen) { setConversationHeroId(null); return undefined; }
+    if (!cityMenuOpen) { setConversationHeroId(null); setMissionConversation(null); return undefined; }
     if (!conversationFocusPending.current || !conversationHeroId) return undefined;
     const frame = requestAnimationFrame(() => {
       conversationFocusRef.current?.scrollIntoView({ block: 'start' });
@@ -2688,6 +2690,11 @@ function MosaicCityHub({
   const zones = useMemo(() => [...baseZones, ...getMosaicExhibitZones(district, exhibitView.items, lang),
     ...getMosaicCharacterMissionZones(characterMissions, characterMissionCatalog, lang)
   ], [baseZones, district, exhibitView.items, lang, characterMissions, characterMissionCatalog]);
+  const missionWorldObjects = useMemo(() => getMosaicCharacterMissionWorldObjects(characterMissions, characterMissionCatalog, zones, lang),
+    [characterMissions, characterMissionCatalog, zones, lang]);
+  const missionWorldObjectsRef = useRef(missionWorldObjects);
+  missionWorldObjectsRef.current = missionWorldObjects;
+  stateRef.current.missionObjects = missionWorldObjects;
   useEffect(() => {
     if (!cityMenuOpen || !exhibitFocusPending.current) return undefined;
     const frame = requestAnimationFrame(() => { exhibitFocusRef.current?.focus({ preventScroll: true }); exhibitFocusRef.current?.scrollIntoView({ block: 'nearest' }); exhibitFocusPending.current = false; });
@@ -2718,7 +2725,8 @@ function MosaicCityHub({
     stateRef.current.pendingInteraction = null;
   }, [cityMenuOpen, runtimeError]);
   const scenery = useMemo(() => getMosaicScenery(district), [district]);
-  const sceneObstacles = useMemo(() => getMosaicSceneObstacles(district, zones), [district, zones]);
+  const sceneObstacles = useMemo(() => getMosaicSceneObstacles(district, [...zones, ...getMosaicCharacterMissionPropZones(missionWorldObjects, zones)]),
+    [district, zones, missionWorldObjects]);
   stateRef.current.obstacles = sceneObstacles;
 
   const reconnaissanceDossier = useMemo(() => buildMosaicReconnaissanceDossier({
@@ -2730,8 +2738,12 @@ function MosaicCityHub({
   }), [reconnaissance, safeHeroes, districts, lang]);
   const fieldAccess = getNexusFieldAccess(reconnaissance, getExtinctionRoster(safeHeroes, unlockedHeroes));
   const conversationHero = ownedHeroes.find(hero => hero.id === conversationHeroId);
-  const residentConversation = conversationHero
+  const archivedConversation = conversationHero
     ? getMosaicResidentDialogue(conversationHero, getCharacterPlaque(conversationHero), lang) : null;
+  const residentConversation = conversationHero && missionConversation?.heroId === conversationHero.id
+    ? { ...(archivedConversation || { heroId: conversationHero.id, name: conversationHero.name,
+      role: conversationHero.universe, universe: conversationHero.universe, topics: [] }), questExchange: missionConversation }
+    : archivedConversation;
   const residentGuide = currentDistrict === 'atrium' ? (safeHeroes.find(hero => hero.id === 'arca_mirelle') || BASE_HEROES_DB.find(hero => hero.id === 'arca_mirelle')) : null;
   const residentView = useMemo(() => getMosaicResidentView(residentCatalog, {
     group: residentGroups[currentDistrict] || 0, guideId: residentGuide?.id, query: residentQuery, page: residentPage
@@ -2916,10 +2928,16 @@ function MosaicCityHub({
     const reconnaissanceResult = advanceMosaicReconnaissance(reconnaissanceRef.current, reconnaissanceDossier, interaction, lang);
     if (reconnaissanceResult.changed) commitReconnaissance(reconnaissanceResult.progress);
     const contract = characterMissionCatalog.find(item => item.id === characterMissionsRef.current.activeId);
+    const contractStep = getMosaicCharacterMissionObjective(characterMissionsRef.current, contract, lang)?.step;
     const contractResult = advanceMosaicCharacterMission(characterMissionsRef.current, contract, interaction, lang);
     if (contractResult.changed) commitCharacterMissions(contractResult.progress);
     const objectiveFeedback = contractResult.changed ? contractResult.feedback : reconnaissanceResult.changed ? reconnaissanceResult.feedback : null;
     const zone = interaction.type === 'zone' ? interaction.target : null;
+    if (contractResult.changed && getMosaicMissionOperation(contractStep)) {
+      setHubLog(contractResult.feedback);
+      sound.playSfx('confirm');
+      return;
+    }
     if (zone?.action === 'character-mission') {
       setHubLog(contractResult.feedback);
       sound.playSfx('confirm');
@@ -2973,6 +2991,22 @@ function MosaicCityHub({
     }
     setSelectedHeroId(target.id);
     if (Math.abs(state.player.x - interaction.target.x) > 0.01) interaction.target.facing = Math.sign(state.player.x - interaction.target.x);
+    const offeredMission = characterMissionCatalog.find(item => item.heroId === target.id && item.request
+      && ['available', 'paused'].includes(getMosaicCharacterMissionObjective(characterMissionsRef.current, item, lang).status));
+    const spokenMission = contractResult.changed ? contract : offeredMission;
+    if (spokenMission?.request) {
+      const line = localizeCityMission(contractResult.changed ? contractStep?.dialogue || spokenMission.request : spokenMission.request, lang);
+      setMissionConversation({ heroId: target.id, missionId: spokenMission.id,
+        title: localizeCityMission(spokenMission.title, lang), line, phase: contractResult.changed ? 'active' : 'offer' });
+      cityTerminalButtonRef.current?.focus({ preventScroll: true });
+      setConversationHeroId(target.id);
+      conversationFocusPending.current = true;
+      setCityMenuOpen(true);
+      setHubLog(`${target.name} : ${line}`);
+      sound.playSfx('confirm');
+      return;
+    }
+    setMissionConversation(null);
     if (interaction.target.isGuide) {
       setWelcomeIndex(0);
       setWelcomeOpen(true);
@@ -3049,6 +3083,7 @@ function MosaicCityHub({
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
     const ctx = canvas.getContext('2d');
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)');
     let rafId = 0;
     let lastFrame = null;
     const drawPixelPerson = (x, y, color, accent, facing = 1, label = '', isPlayer = false, hero = null) => {
@@ -3277,7 +3312,7 @@ function MosaicCityHub({
       }
 
       zones.forEach(zone => {
-        if (zone.action === 'exhibit') return;
+        if (zone.action === 'exhibit' || zone.action === 'character-mission' && missionWorldObjectsRef.current.some(object => object.targetId === zone.id)) return;
         const pulse = 0.08 + Math.sin(state.t * 0.035 + zone.x) * 0.025;
         const zoneDimmed = district.universe && districtProgress < 0.15 && zone.action !== 'mission';
         const zoneActive = zone.id === activeZone.id || zone.id === nearZoneRef.current?.id;
@@ -3362,7 +3397,9 @@ function MosaicCityHub({
       }
       ctx.stroke();
 
-      [...scenery, ...zones.filter(zone => zone.action && zone.action !== 'talk').map(zone => ({ type: 'terminal', zone })), ...state.npcs, { ...state.player, hero: playerAvatar, isPlayer: true }]
+      [...scenery, ...zones.filter(zone => zone.action && zone.action !== 'talk'
+        && !(zone.action === 'character-mission' && missionWorldObjectsRef.current.some(object => object.targetId === zone.id))).map(zone => ({ type: 'terminal', zone })),
+        ...missionWorldObjectsRef.current.map(object => ({ ...object, type: 'mission-object' })), ...state.npcs, { ...state.player, hero: playerAvatar, isPlayer: true }]
         .sort((a, b) => getMosaicDrawDepth(a) - getMosaicDrawDepth(b))
         .forEach(npc => {
           if (npc.type === 'building') {
@@ -3377,6 +3414,10 @@ function MosaicCityHub({
             const zone = npc.zone;
             const anchor = getMosaicZoneAnchor(zone);
             drawMosaicService(ctx, zone, anchor);
+            return;
+          }
+          if (npc.type === 'mission-object') {
+            drawMosaicMissionObject(ctx, npc, state.t, Math.hypot(npc.x - state.player.x, npc.y - state.player.y) <= 110, Boolean(reducedMotion?.matches));
             return;
           }
           if (npc.isPlayer) {
@@ -3396,7 +3437,7 @@ function MosaicCityHub({
             ctx.strokeRect(npc.x - 18, npc.y - 32, 36, 62);
             ctx.fillStyle = '#ffea00';
             ctx.font = '10px "Share Tech Mono"';
-            ctx.fillText(lang === 'fr' ? 'E: synchro' : 'E: sync', npc.x - 26, npc.y - 39);
+            ctx.fillText(lang === 'fr' ? 'E: parler' : 'E: talk', npc.x - 26, npc.y - 39);
           }
         });
 
@@ -3511,7 +3552,7 @@ function MosaicCityHub({
     setResidentGroups(previous => ({ ...previous, [currentDistrict]: entry.group }));
     setResidentTarget({ id: entry.hero.id, district: currentDistrict });
     setCityMenuOpen(false);
-    setHubLog(lang === 'fr' ? `Approche de ${entry.hero.name}. La synchronisation se fait à proximité.` : `Approaching ${entry.hero.name}. Synchronization requires reaching them.`);
+    setHubLog(lang === 'fr' ? `En route vers ${entry.hero.name}. Tu pourras lui parler une fois à portée.` : `On your way to ${entry.hero.name}. You can talk once you reach them.`);
   };
   const acceptReconnaissance = () => {
     if (sessionPausedRef.current || !reconnaissanceDossier) return;
@@ -3540,6 +3581,28 @@ function MosaicCityHub({
     if (sessionPausedRef.current) return;
     const mission = characterMissionCatalog.find(item => item.id === missionId);
     const result = startMosaicCharacterMission(characterMissionsRef.current, mission, lang);
+    if (result.changed) commitCharacterMissions(result.progress);
+    setHubLog(result.feedback);
+    return result;
+  };
+  const acceptResidentRequest = missionId => {
+    if (sessionPausedRef.current || missionConversation?.phase !== 'offer' || missionConversation.missionId !== missionId) return null;
+    const mission = characterMissionCatalog.find(item => item.id === missionId);
+    const interaction = resolveMosaicInteraction(stateRef.current.player, { npcs: stateRef.current.npcs, zones },
+      { type: 'npc', id: conversationHeroId });
+    const result = acceptMosaicCharacterMissionRequest(characterMissionsRef.current, mission, interaction, lang);
+    if (result.changed) {
+      commitCharacterMissions(result.progress);
+      const greeting = mission.steps.find(step => step.type === 'npc' && step.targetId === conversationHeroId);
+      setMissionConversation(current => ({ ...current, phase: 'active', line: localizeCityMission(greeting?.dialogue || mission.request, lang) }));
+    }
+    setHubLog(result.feedback);
+    return result;
+  };
+  const replayCharacterMission = missionId => {
+    if (sessionPausedRef.current) return null;
+    const mission = characterMissionCatalog.find(item => item.id === missionId);
+    const result = restartMosaicCharacterMission(characterMissionsRef.current, mission, lang);
     if (result.changed) commitCharacterMissions(result.progress);
     setHubLog(result.feedback);
     return result;
@@ -3622,7 +3685,7 @@ function MosaicCityHub({
         title={lang === 'fr' ? 'Terminal de poche A.R.C.A.' : 'A.R.C.A. pocket terminal'}>
       <div className="nexus-play-copy">
         {residentConversation && <div ref={conversationFocusRef} tabIndex={-1}>
-          <MosaicResidentDialogue key={residentConversation.heroId} conversation={residentConversation} lang={lang} onClose={closeCityMenu} />
+          <MosaicResidentDialogue key={residentConversation.heroId} conversation={residentConversation} lang={lang} onClose={closeCityMenu} onAcceptMission={acceptResidentRequest} />
         </div>}
         <div className="portal-focus-kicker">{lang === 'fr' ? 'CITE-MOSAIQUE / RPG VIVANT' : 'MOSAIC CITY / LIVING RPG'}</div>
         <h3>{lang === 'fr' ? 'Cite-Mosaique' : 'Mosaic City'}</h3>
@@ -3663,7 +3726,7 @@ function MosaicCityHub({
           <small>{Object.values(reconnaissance.dossiers).filter(entry => entry.completed).length} {lang === 'fr' ? 'rapport(s) transmis · progression enregistrée' : 'report(s) transmitted · progress saved'}</small>
         </section>
         <MosaicCharacterMissions missions={characterMissionCatalog} progress={characterMissions} heroes={safeHeroes} lang={lang}
-          onAccept={acceptCharacterMission} onApproach={approachCharacterMission} onResolve={resolveCharacterMission} />
+          onAccept={acceptCharacterMission} onApproach={approachCharacterMission} onResolve={resolveCharacterMission} onReplay={replayCharacterMission} />
         <MosaicEvidenceLedger entries={reconnaissanceLedger} lang={lang} />
         <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(extinctionCareer)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang}>
           <button type="button" className="btn-retro" data-field-deploy disabled={!fieldAccess.available || typeof onOpenService !== 'function'}

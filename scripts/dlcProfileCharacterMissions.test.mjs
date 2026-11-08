@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { copyFile, mkdir, mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import test from 'node:test';
 import { DLC_PACK_MANIFESTS } from '../DLC/index.js';
-import { MOSAIC_CHARACTER_MISSIONS } from '../src/game/mosaicCharacterMissions.js';
+import { MOSAIC_CHARACTER_MISSIONS, MOSAIC_CHARACTER_MISSION_LEGACY } from '../src/game/mosaicCharacterMissions.js';
 import { createDlcProfileTransformer } from './dlcProfileTransform.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -27,6 +28,9 @@ async function loadProfile(context, packIds) {
   await writeFile(path.join(directory, adapterPath), result?.code || source);
   await copyFile(path.join(root, 'src/game/mosaicCityRuntime.js'), path.join(directory, 'src/game/mosaicCityRuntime.js'));
   await copyFile(path.join(root, 'src/game/mosaicCharacterFollowups.js'), path.join(directory, 'src/game/mosaicCharacterFollowups.js'));
+  for (const dependency of ['mosaicCharacterStories.js', 'mosaicMissionOperations.js']) {
+    await copyFile(path.join(root, 'src/game', dependency), path.join(directory, 'src/game', dependency));
+  }
   for (const pack of missionPacks) {
     if (!packIds.includes(pack.id)) continue;
     assert.ok(pack.modules.some(module => module.path === modulePath && module.runtimeAdapter === adapterPath),
@@ -73,6 +77,8 @@ test('City contracts follow their installed packs and dormant dossiers resume af
       const includedUniverses = new Set([baseUniverse, ...missionPacks.filter(pack => packIds.includes(pack.id)).map(pack => pack.universe)]);
       assert.deepEqual(api.MOSAIC_CHARACTER_MISSIONS, MOSAIC_CHARACTER_MISSIONS.filter(mission => includedUniverses.has(mission.universe)),
         'retained contracts keep their IDs, source universe, steps and text');
+      assert.deepEqual(api.MOSAIC_CHARACTER_MISSION_LEGACY, MOSAIC_CHARACTER_MISSION_LEGACY.filter(mission => includedUniverses.has(mission.universe)),
+        'old guest stories must disappear from the base catalog with their pack and return unchanged on reinstall');
       retained = api.normalizeMosaicCharacterMissions(JSON.parse(JSON.stringify(retained)));
       assert.deepEqual(retained, rawProgress, 'removing a source pack must preserve its saved dossier and unknown fields');
       for (const pack of missionPacks) {
@@ -96,3 +102,46 @@ test('City contracts follow their installed packs and dormant dossiers resume af
     });
   }
 });
+
+// Hashes of the complete serialized factory output at published 6f26ea5fcdf07f65b7088f2a7b08c72e7ee204ce.
+// They preserve what existing saves actually experienced, independently of the new narrative.
+const legacyGuestDigests = {
+  Halo: '5fb135ff306a55078936791b0415be07e190982b251f27464492d879c4e89392',
+  Alien: '4aae45691a3e9f45035a0c3115efdaaea00ebdf2fe3f3936a3040e23ca5acd0d'
+};
+for (const [universe, digest] of Object.entries(legacyGuestDigests)) {
+  test(`${universe}: old visits retain their exact published story while new operations keep save identities`, () => {
+    const legacy = MOSAIC_CHARACTER_MISSION_LEGACY.filter(mission => mission.universe === universe)
+      .map(({ version, ...mission }) => { assert.equal(version, 1); return mission; });
+    assert.equal(legacy.length, 2);
+    assert.equal(createHash('sha256').update(JSON.stringify(legacy)).digest('hex'), digest,
+      'rewriting current dialogue must not turn an old reading into a historical rescue or repair');
+    const current = MOSAIC_CHARACTER_MISSIONS.filter(mission => mission.universe === universe);
+    assert.deepEqual(current.map(mission => mission.id), legacy.map(mission => mission.id));
+    const identity = step => ({ id: step.id, type: step.type, targetId: step.targetId, x: step.x, y: step.y,
+      choices: step.choices?.map(({ id, valid }) => ({ id, valid })) });
+    for (const mission of current) {
+      const previous = legacy.find(item => item.id === mission.id);
+      assert.equal(mission.heroId, previous.heroId);
+      assert.deepEqual(mission.steps.map(identity), previous.steps.map(identity),
+        'narrative changes keep the exact step order, physical targets and saved decision IDs');
+      assert.equal(mission.storyRevision, 2);
+      assert.ok(mission.request.fr && mission.request.en && mission.location.fr && mission.location.en);
+      assert.ok(mission.steps[0].dialogue.fr && mission.steps[0].dialogue.en);
+      for (const step of mission.steps.filter(item => ['marker', 'anchor'].includes(item.type))) {
+        assert.ok(['repair', 'scan', 'recover', 'secure', 'beacon', 'route'].includes(step.operation?.kind));
+        for (const language of ['fr', 'en']) {
+          assert.ok(step.operation.label[language] && step.operation.propName[language] && step.operation.completedText[language]);
+          assert.equal(step.operation.completedText[language], step.finding[language],
+            'the physical result and persistent object description must describe the same action');
+        }
+      }
+      const playableText = JSON.stringify([mission.title, mission.premise, mission.request, mission.location,
+        ...mission.steps.map(({ text, dialogue, finding, choices }) => ({ text, dialogue, finding, choices }))]);
+      assert.doesNotMatch(playableText, universe === 'Alien'
+        ? /M314|M41A|M240|power loader|Colonial Marine|Marine colonial|Newt|Sulaco/i
+        : /Spartan Laser|laser Spartan|Bubble Shield|bouclier bulle|MJOLNIR Mk VI|MJOLNIR Mark VI/i,
+      'City instructions must not lend later incarnations’ equipment or memories to these guests');
+    }
+  });
+}

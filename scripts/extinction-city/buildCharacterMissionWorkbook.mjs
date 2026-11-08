@@ -16,6 +16,10 @@ const fpsPath = path.resolve(option('--fps', '/tmp/multiverse-fps-roster-2026-11
 const outputDir = path.resolve(option('--out', path.join(repo, 'outputs/character-missions-20261108')));
 const outputName = 'Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx';
 const existingPath = option('--existing', '');
+const designLabels = { individual_proposal: 'Proposition individualisée',
+  research_scaffold: 'Canevas à documenter — réécriture diégétique requise',
+  source_objective_adaptation: 'Adaptation d’objectif source — réécriture diégétique requise',
+  source_family_adaptation: 'Adaptation de famille — réécriture diégétique requise' };
 if (existingPath) {
   await refreshRuntimeContracts(path.resolve(existingPath));
   process.exit(0);
@@ -49,8 +53,6 @@ const gapNames = {
   continuity_not_locked: 'Continuité à verrouiller',
   external_reference_missing: 'Référence externe à fournir'
 };
-const designLabels = { individual_proposal: 'Proposition individualisée', research_scaffold: 'Canevas à documenter',
-  source_objective_adaptation: 'Adaptation d’objectif source', source_family_adaptation: 'Adaptation de famille' };
 const gaps = values => (values || []).map(value => gapNames[value] || value).join('\n');
 const base = (sheet, endRow, endCol) => {
   sheet.showGridLines = false;
@@ -294,8 +296,18 @@ await fs.writeFile(path.join(outputDir, 'workbook-receipt.json'), JSON.stringify
 console.log(JSON.stringify({ outputPath, ...receipt }));
 
 function runtimeContractRows(missions, names) {
+  const txt = value => typeof value === 'string' ? value : value?.fr || value?.en || '';
   const byId = new Map(missions.map(mission => [mission.id, mission]));
-  const point = route => `(x=${route.x}, y=${route.y})`;
+  const point = route => Number.isFinite(route.x) && Number.isFinite(route.y) ? ` (x=${route.x}, y=${route.y})` : '';
+  const intervention = (step, prefix) => {
+    const operation = step.operation;
+    return [
+      `${prefix}${txt(step.text)}${point(step)}`,
+      operation ? `Geste [${operation.kind}] — ${txt(operation.propName)} : ${txt(operation.label)}` : '',
+      operation ? `Après le geste : ${txt(operation.completedText)}` : '',
+      step.finding && txt(step.finding) !== txt(operation?.completedText) ? `Constat : ${txt(step.finding)}` : ''
+    ].filter(Boolean).join('\n');
+  };
   return missions.map(mission => {
     const previous = mission.requiresMissionId ? byId.get(mission.requiresMissionId) : null;
     assert.ok(!mission.requiresMissionId || previous, `Missing prerequisite: ${mission.id}`);
@@ -306,54 +318,111 @@ function runtimeContractRows(missions, names) {
         `${index + 1}. Trajet selon le choix du chapitre ${previous.chapter || 1} :`,
         ...Object.entries(step.byOriginChoice).map(([id, route]) => {
           assert.ok(inheritedChoices.has(id), `Unknown inherited choice: ${mission.id}/${id}`);
-          return `${inheritedChoices.get(id).label.fr} [${id}]\n${route.text.fr} ${point(route)}\nConstat : ${route.finding.fr}`;
+          return `${txt(inheritedChoices.get(id).label)} [${id}]\n${intervention(route, '')}`;
         })
       ].join('\n');
-      if (step.byChoice) return `${index + 1}. Vérifier sur place le résultat du choix. Les deux trajets et constats sont indiqués en « Conclusions possibles ».`;
-      return `${index + 1}. ${step.text.fr}${mission.requiresMissionId && step.finding ? `\nConstat : ${step.finding.fr}` : ''}`;
+      if (step.byChoice) return `${index + 1}. Accomplir l’intervention choisie sur place ; les deux gestes et leurs effets sont détaillés en « Conclusions possibles ».`;
+      return intervention(step, `${index + 1}. `);
     }).join('\n');
     const conclusions = mission.steps.find(step => step.type === 'decision').choices.filter(item => item.valid)
       .map(item => [
-        `${item.label.fr} [${item.id}]`, item.result.fr,
+        `Choix : ${txt(item.label)} [${item.id}]`, `Décision : ${txt(item.result)}`,
         ...mission.steps.flatMap((step, index) => {
           if (!step.byChoice) return [];
           const route = step.byChoice[item.id];
           assert.ok(route, `Missing decision route: ${mission.id}/${item.id}`);
-          return [`${index + 1}. ${route.text.fr} ${point(route)}\nConstat : ${route.finding.fr}`];
+          return [intervention(route, `${index + 1}. À accomplir : `)];
         })
       ].join('\n')).join('\n\n');
-    return [mission.id, names.get(mission.heroId)?.name || mission.heroId,
-      mission.title.fr, [mission.premise.fr, mission.continuity?.fr].filter(Boolean).join('\n'), steps, conclusions,
+    const characterId = mission.heroId || mission.characterId;
+    const systemSources = mission.systemSourceFiles || ['src/game/mosaicCharacterMissions.js', 'src/game/mosaicMissionOperations.js',
+      ...(mission.requiresMissionId ? ['src/game/mosaicCharacterFollowups.js'] : [])];
+    return [mission.id, names.get(characterId)?.name || characterId,
+      txt(mission.title), [`« ${txt(mission.request)} »`, `Lieu : ${txt(mission.location)}`, txt(mission.premise), txt(mission.continuity)].filter(Boolean).join('\n'), steps, conclusions,
       [`Chapitre ${mission.chapter || 1}.`,
-        `Habitant possédé et présent dans le quartier ${mission.universe}. Vitrines requises disponibles.`,
+        `Personnage disponible et présent dans le quartier ${mission.universe}. Vitrines requises disponibles.`,
         mission.universe === 'Nexus de Convergence' ? '' : `DLC ${mission.universe} installé.`,
-        previous ? `Prérequis : « ${previous.title.fr} » [${previous.id}], terminé avec une conclusion valide. Le choix hérité fixe le premier trajet.` : 'Aucun contrat préalable.'
+        previous ? `Prérequis : « ${txt(previous.title)} » [${previous.id}], terminé avec une conclusion valide. Le choix hérité fixe le premier trajet.` : 'Aucun contrat préalable.'
       ].filter(Boolean).join('\n'),
-      'Contrat intégré. Les tests runtime couvrent progression, choix et sauvegardes. La recette navigateur est suivie séparément dans la PR.',
-      `Dossier et choix sauvegardés${previous ? ', y compris le choix hérité du chapitre précédent' : ''}. Pas de monnaie ni d’équipement attribué.`,
-      [mission.contentFile || 'src/game/mosaicCharacterMissions.js', mission.source, ...(mission.references || [])].filter(Boolean).join('\n')];
+      'Définition runtime intégrée. Les tests automatisés et la recette navigateur sont suivis séparément dans la PR ; ce classeur ne certifie pas leur résultat.',
+      `Progression, choix${previous ? ' et choix hérité' : ''} sauvegardés. L’accessoire change d’état après le geste physique ; le choix seul ne répare rien. L’historique déjà joué est conservé. Aucune monnaie ni arme attribuée.`,
+      [...new Set([mission.contentFile || mission.sourceFile || 'src/game/mosaicCharacterMissions.js',
+        ...systemSources, ...(mission.sourceRefs || []), mission.source,
+        ...(mission.references || mission.referenceUrls || [])].filter(Boolean))].join('\n')];
   });
 }
 
-/** Narrow follow-up: keep the imported workbook and its editable tracking
- * intact. Only runtime-contract rows and their summary dependencies change. */
+/** Edit the imported workbook. Preserve tracking and unrelated source/FPS tabs;
+ * update authored stories, their future Nexus extensions and generic review flags. */
 async function refreshRuntimeContracts(inputPath) {
   const workbook = await SpreadsheetFile.importXlsx(await FileBlob.load(inputPath));
-  const { MOSAIC_CHARACTER_MISSIONS } = await import(pathToFileURL(path.join(repo, 'src/game/mosaicCharacterMissions.js')));
+  if (args.includes('--inspect-only')) {
+    await fs.mkdir(outputDir, { recursive: true });
+    for (const [sheetName, range, name] of [
+      ['Synthèse', 'A1:E24', 'baseline-synthese'],
+      ['Missions à créer', option('--inspection-range', 'F6:K10'), 'baseline-propositions'],
+      ['Contrats jouables', 'B6:F8', 'baseline-contrats']
+    ]) {
+      const preview = await workbook.render({ sheetName, range, scale: 1, format: 'png' });
+      await fs.writeFile(path.join(outputDir, `${name}.png`), new Uint8Array(await preview.arrayBuffer()));
+    }
+    console.log(JSON.stringify({ operation: 'read-only import and rendering', inputPath, outputDir }));
+    return;
+  }
+  const data = JSON.parse(await fs.readFile(planningPath, 'utf8'));
+  const runtimeMissions = data.runtimeMissions;
+  assert.equal(runtimeMissions.length, 28);
   const summary = workbook.worksheets.getItem('Synthèse');
   const live = workbook.worksheets.getItem('Contrats jouables');
   const people = workbook.worksheets.getItem('Personnages');
   const count = Number(summary.getRange('B7').values[0][0]);
   const names = new Map(people.getRange(`A7:B${count + 6}`).values.map(([id, name]) => [id, { name }]));
-  const rows = runtimeContractRows(MOSAIC_CHARACTER_MISSIONS, names);
+  const rows = runtimeContractRows(runtimeMissions, names);
   const oldCount = Number(summary.getRange('B12').values[0][0]);
   assert.ok(Number.isInteger(oldCount) && oldCount > 0 && oldCount <= rows.length);
   assert.deepEqual(live.getRange(`A7:A${oldCount + 6}`).values.flat(), rows.slice(0, oldCount).map(row => row[0]),
     'Existing contracts must remain in order; a removal or reordering needs an explicit migration.');
-  const unchanged = ['Missions à créer', 'Personnages', 'Profils FPS', 'Modes FPS'].map(name => {
+  const unchanged = ['Personnages', 'Profils FPS', 'Modes FPS'].map(name => {
     const sheet = workbook.worksheets.getItem(name), range = sheet.getUsedRange();
     return { name, values: range.values, formulas: range.formulas };
   });
+  const proposals = workbook.worksheets.getItem('Missions à créer');
+  const proposalRange = proposals.getRange(`A1:W${data.missions.length + 6}`);
+  const expectedProposals = structuredClone(proposalRange.values);
+  const originalProposalFormulas = structuredClone(proposalRange.formulas);
+  assert.deepEqual(proposals.getRange(`A7:A${data.missions.length + 6}`).values.flat(), data.missions.map(mission => mission.id));
+  const setProposal = (row, column, value) => {
+    expectedProposals[row - 1][column - 1] = value;
+  };
+  const sourceCharacters = new Map(data.characters.map(character => [character.id, character]));
+  const updatedProposalRows = [];
+  for (let index = 0; index < data.missions.length; index++) {
+    const mission = data.missions[index], row = index + 7;
+    if (mission.relatedRuntimeMissionId) {
+      const details = [mission.title, mission.premise, mission.location,
+        ...['action', 'obstacle', 'success'].map(field => mission.objectives.map((step, number) => `${number + 1}. ${step[field]}`).join('\n'))];
+      details.forEach((value, column) => setProposal(row, column + 6, value));
+      setProposal(row, 22, [sourceCharacters.get(mission.characterId).sourceUrl, ...mission.sourceBindings,
+        `Prolongement proposé du récit ${mission.relatedRuntimeMissionId} ; cette nouvelle scène reste à développer.`].join('\n'));
+      updatedProposalRows.push(row);
+    }
+    setProposal(row, 23, designLabels[mission.designKind]);
+  }
+  assert.equal(updatedProposalRows.length, 24);
+  setProposal(4, 1, 'Deux propositions par personnage, encore à développer. Suivi jaune conservé. Les 28 récits jouables et leurs interventions sont suivis dans « Contrats jouables ».');
+  // Batch each contiguous authored area. Do not trigger a table update per cell.
+  const proposalGroups = [];
+  for (const row of updatedProposalRows) {
+    const group = proposalGroups.at(-1);
+    if (group && group[1] === row - 1) group[1] = row;
+    else proposalGroups.push([row, row]);
+  }
+  for (const [start, end] of proposalGroups) {
+    proposals.getRange(`F${start}:K${end}`).values = expectedProposals.slice(start - 1, end).map(row => row.slice(5, 11));
+    proposals.getRange(`V${start}:V${end}`).values = expectedProposals.slice(start - 1, end).map(row => [row[21]]);
+  }
+  proposals.getRange(`W7:W${data.missions.length + 6}`).values = expectedProposals.slice(6).map(row => [row[22]]);
+  proposals.getRange('A4').values = [[expectedProposals[3][0]]];
   const nativeTable = live.tables.items.find(table => table.name === 'ContratsJouables');
   assert.ok(nativeTable, 'The existing native contract table is required.');
   if (rows.length > oldCount) nativeTable.rows.add(null, rows.slice(oldCount));
@@ -362,22 +431,57 @@ async function refreshRuntimeContracts(inputPath) {
   }
   live.getRange(`A7:J${rows.length + 6}`).values = rows;
   live.getRange('A2').values = [[`${rows.length} contrats originaux jouables`]];
-  const widths = [39, 25, 38, 60, 74, 74, 42, 54, 46, 60];
+  live.getRange('A4').values = [['Demandes personnelles, lieux, gestes et effets locaux. Une décision choisit une suite ; son intervention reste à accomplir sur place.']];
+  const widths = [39, 25, 40, 82, 112, 112, 52, 54, 58, 90];
+  const wrappedLines = (value, width) => String(value ?? '').split('\n').reduce((sum, part) =>
+    sum + Math.max(1, Math.ceil(part.length / Math.max(8, width - 6))), 0);
+  for (const column of [4, 5]) {
+    while (Math.max(...rows.map(row => wrappedLines(row[column], widths[column]))) > 29 && widths[column] < 180) widths[column] += 8;
+  }
+  widths.forEach((width, column) => { live.getRange(`${String.fromCharCode(65 + column)}6:${String.fromCharCode(65 + column)}${rows.length + 6}`).format.columnWidth = width; });
+  const rowHeights = [];
   rows.forEach((row, index) => {
-    const lines = Math.max(...row.map((value, column) => String(value ?? '').split('\n')
-      .reduce((sum, part) => sum + Math.max(1, Math.ceil(part.length / Math.max(8, widths[column] - 3))), 0)));
-    live.getRange(`A${index + 7}:J${index + 7}`).format.rowHeight = Math.min(409, Math.max(30, lines * 13 + 8));
+    const lines = Math.max(...row.map((value, column) => wrappedLines(value, widths[column])));
+    const height = Math.max(30, lines * 13 + 12);
+    assert.ok(height <= 409, `Contract ${row[0]} needs ${height} pt: widen the changed column instead of truncating text.`);
+    live.getRange(`A${index + 7}:J${index + 7}`).format.rowHeight = height;
+    rowHeights.push(height);
   });
+  for (const row of updatedProposalRows) {
+    const values = expectedProposals[row - 1];
+    const changedColumns = [[5, 36], [6, 62], [7, 42], [8, 76], [9, 66], [10, 66], [21, 55]];
+    const originalHeight = Number(proposals.getRange(`A${row}`).format.rowHeight) || 0;
+    const height = Math.max(100, originalHeight, ...changedColumns.map(([column, width]) => wrappedLines(values[column], width) * 13 + 12));
+    assert.ok(height <= 409, `Nexus proposal row ${row} needs a readable layout.`);
+    proposals.getRange(`A${row}:W${row}`).format.rowHeight = height;
+  }
   summary.getRange('B12').formulas = [[`=COUNTA('Contrats jouables'!A7:A${rows.length + 6})`]];
-  summary.getRange('B18').values = [[`${rows.length} contrats intégrés ont leurs propres IDs et parcours. Ils ne terminent pas les 3 824 propositions.`]];
+  summary.getRange('B18').values = [[`${rows.length} récits jouables : demandes, lieux, interventions et choix. Les 3 824 propositions restent un travail distinct ; 24 prolongements Nexus sont réécrits.`]];
+  summary.getRange('D15:D18').values = Object.values(designLabels).map(value => [value]);
+  summary.getRange('A24').values = [['Révision initiale du catalogue']];
   // Prove that the newly extended count still depends on the imported table.
   // Restore the disposable input before any preservation check or export.
   const lastContract = live.getRange(`A${rows.length + 6}`), lastId = lastContract.values;
   lastContract.values = [[null]];
   assert.equal(summary.getRange('B12').values[0][0], rows.length - 1);
   lastContract.values = lastId;
+  const trackingInput = proposals.getRange('N7:Q7'), originalTracking = structuredClone(trackingInput.values);
+  const gateProof = [];
+  for (const [values, expected] of [
+    [['Validé', 'Terminée', 'Intégrée', 'À faire'], 'Exécuter la recette'],
+    [['Validé', 'Terminée', 'Intégrée', 'Validée'], 'Terminée'],
+    [['', 'Terminée', 'Intégrée', 'Validée'], 'Valider le lore']
+  ]) {
+    trackingInput.values = [values];
+    workbook.recalculate();
+    assert.equal(proposals.getRange('R7').values[0][0], expected);
+    gateProof.push({ inputs: values, result: expected });
+  }
+  trackingInput.values = originalTracking;
   workbook.recalculate();
   assert.equal(summary.getRange('B12').values[0][0], rows.length);
+  assert.deepEqual(proposalRange.values, expectedProposals, 'Unexpected proposal/tracking change');
+  assert.deepEqual(proposalRange.formulas, originalProposalFormulas, 'Existing proposal formulas changed');
   for (const before of unchanged) {
     const range = workbook.worksheets.getItem(before.name).getUsedRange();
     assert.deepEqual(range.values, before.values, `Unrelated values changed in ${before.name}`);
@@ -389,15 +493,23 @@ async function refreshRuntimeContracts(inputPath) {
   await fs.mkdir(outputDir, { recursive: true });
   const dependencyProof = { input: `Contrats jouables!A${rows.length + 6}`, output: 'Synthèse!B12',
     withLastContract: rows.length, withLastContractBlank: rows.length - 1, restored: true };
-  await fs.writeFile(path.join(outputDir, 'workbook-inspection.json'), JSON.stringify({ formulaScan: errors.ndjson, summary: inspection.ndjson, dependencyProof }, null, 2));
-  const fullPreviews = [['Synthèse', 'A1:E24', 'synthese'], ['Contrats jouables', 'A1:F9', 'contrats-jouables'],
-    ['Contrats jouables', 'G19:J22', 'contrats-dlc-acces']];
-  // Each continuation must be legible, including every inherited/current route.
-  for (let index = oldCount; index < rows.length; index += 2) {
+  await fs.writeFile(path.join(outputDir, 'workbook-inspection.json'), JSON.stringify({ formulaScan: errors.ndjson, summary: inspection.ndjson,
+    dependencyProof, gateProof, widths, rowHeights }, null, 2));
+  const fullPreviews = [['Synthèse', 'A1:E24', 'synthese'],
+    ['Contrats jouables', 'G19:J22', 'contrats-dlc-acces'], ['Contrats jouables', 'G23:J24', 'contrats-suites-sources']];
+  // Rewritten rows all need fresh previews even when the number of contracts is unchanged.
+  for (let index = 0; index < rows.length; index += 2) {
     const end = Math.min(index + 8, rows.length + 6);
-    fullPreviews.push(['Contrats jouables', `B${index + 7}:F${end}`, `contrats-suites-${index + 1}-${end - 6}`]);
+    fullPreviews.push(['Contrats jouables', `B${index + 7}:F${end}`, `contrats-recits-${index + 1}-${end - 6}`]);
   }
-  if (rows.length > oldCount) fullPreviews.push(['Contrats jouables', `G${oldCount + 7}:J${oldCount + 8}`, 'contrats-suites-acces']);
+  for (let index = 0; index < updatedProposalRows.length; index += 4) {
+    const start = updatedProposalRows[index], end = updatedProposalRows[Math.min(index + 3, updatedProposalRows.length - 1)];
+    fullPreviews.push(['Missions à créer', `F${start}:K${end}`, `prolongements-nexus-${index + 1}-${index + end - start + 1}`]);
+  }
+  for (const kind of Object.keys(designLabels)) {
+    const row = data.missions.findIndex(mission => mission.designKind === kind) + 7;
+    fullPreviews.push(['Missions à créer', `U${row}:W${row}`, `niveau-${kind}`]);
+  }
   const previews = args.includes('--sources-only') ? fullPreviews.slice(-1) : fullPreviews;
   for (const [sheetName, range, name] of previews) {
     const image = await workbook.render({ sheetName, range, scale: 1, format: 'png' });
@@ -406,20 +518,31 @@ async function refreshRuntimeContracts(inputPath) {
   const outputPath = path.join(outputDir, outputName);
   await (await SpreadsheetFile.exportXlsx(workbook)).save(outputPath);
   const bytes = await fs.readFile(outputPath);
-  const sourceFiles = [...new Set(MOSAIC_CHARACTER_MISSIONS.map(mission => mission.contentFile || 'src/game/mosaicCharacterMissions.js'))];
+  const sourceFiles = [...new Set(runtimeMissions.flatMap(mission => [mission.contentFile,
+    ...mission.systemSourceFiles, ...[...mission.sourceRefs, ...String(mission.source || '').split(';').map(ref => ref.trim())]
+      .filter(ref => /^(?:src|DLC)\/.*\.js(?:#|$)/.test(ref)).map(ref => ref.split('#')[0])]))].sort();
   const runtimeSources = await Promise.all(sourceFiles.map(async source => ({ source,
     sha256: createHash('sha256').update(await fs.readFile(path.join(repo, source))).digest('hex') })));
-  const receipt = { schema: 3, sourceRevision: summary.getRange('B24').values[0][0], workbook: outputName,
+  const manifest = new Map(data.sourceManifest.map(source => [source.file, source]));
+  for (const source of runtimeSources) assert.equal(source.sha256, manifest.get(source.source)?.sha256, `Planning source changed before export: ${source.source}`);
+  const receipt = { schema: 4, sourceRevision: summary.getRange('B24').values[0][0],
+    runtimeBaseRevision: option('--runtime-base', data.sourceRevision),
+    sourceRevisionMeaning: 'Historical roster baseline is retained in the workbook; runtimeSources and planning provenance describe the actual edited files.',
+    planningDataSha256: data.dataSha256, planningSourceManifestSha256: createHash('sha256').update(JSON.stringify(data.sourceManifest)).digest('hex'),
+    workbook: outputName,
     sha256: createHash('sha256').update(bytes).digest('hex'), bytes: bytes.length,
-    operation: 'Imported existing workbook; changed runtime contracts and their summary only',
+    operation: 'Imported existing workbook; rewrote 28 runtime stories and 24 future Nexus proposals, flagged generic adaptations, preserved all tracking and unrelated tabs',
     baselineSha256: createHash('sha256').update(await fs.readFile(inputPath)).digest('hex'), runtimeSources,
     characters: count, nonCombatCharacters: Number(summary.getRange('B8').values[0][0]), proposedMissions: 3824,
     individuallyDesignedMissions: Number(summary.getRange('E15').values[0][0]),
     integratedCityContracts: rows.length, fpsProfiles: count, fpsModes: Number(summary.getRange('B13').values[0][0]),
-    chapterTwoContracts: MOSAIC_CHARACTER_MISSIONS.filter(mission => mission.chapter === 2).length,
-    inheritedRoutes: MOSAIC_CHARACTER_MISSIONS.flatMap(mission => mission.steps).reduce((total, step) => total + Object.keys(step.byOriginChoice || {}).length, 0),
-    decisionRoutes: MOSAIC_CHARACTER_MISSIONS.flatMap(mission => mission.steps).reduce((total, step) => total + Object.keys(step.byChoice || {}).length, 0),
-    dependencyProof,
+    chapterTwoContracts: runtimeMissions.filter(mission => mission.chapter === 2).length,
+    inheritedRoutes: runtimeMissions.flatMap(mission => mission.steps).reduce((total, step) => total + Object.keys(step.byOriginChoice || {}).length, 0),
+    decisionRoutes: runtimeMissions.flatMap(mission => mission.steps).reduce((total, step) => total + Object.keys(step.byChoice || {}).length, 0),
+    rewrittenNexusProposals: updatedProposalRows.length,
+    proposalsRequiringDiegeticRewrite: data.missions.filter(mission => mission.diegeticReviewStatus === 'diegetic_rewrite_required').length,
+    preservedTrackingColumns: ['M', 'N', 'O', 'P', 'Q', 'S', 'T', 'U'],
+    dependencyProof, gateProof,
     sheets: ['Synthèse', 'Missions à créer', 'Contrats jouables', 'Personnages', 'Profils FPS', 'Modes FPS'],
     previews: previews.map(([, , name]) => `${name}.png`), preservedSheets: unchanged.map(item => item.name),
     formulaScan: errors.ndjson, nativeApplicationCheck: 'Not executed; Artifact Tool recalculation, XLSX readback and rendered review are separate checks.' };

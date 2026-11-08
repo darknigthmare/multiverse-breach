@@ -18,13 +18,13 @@ const focused = async locator => {
 };
 const ids = root => root.locator('[data-city-contract-result]').evaluateAll(nodes => nodes.map(node => node.dataset.cityContractResult));
 const snapshot = page => page.evaluate(() => ({ progress: window.__contractJournalQA.state.progress, calls: window.__contractJournalQA.calls, source: window.__contractJournalQA.source }));
-const fonts = root => root.locator('.mosaic-contract-kicker, .mosaic-contract-heading h3, .mosaic-contract-reader h4, .mosaic-contract-reader > label > span, .mosaic-contract-reader select, [data-city-contract-objective]')
+const fonts = root => root.locator('.mosaic-contract-kicker, .mosaic-contract-heading h3, .mosaic-contract-reader h4, .mosaic-contract-reader > label > span, .mosaic-contract-reader select, [data-city-contract-objective], .mosaic-contract-request blockquote p')
   .evaluateAll(nodes => nodes.map(node => ({ text: node.textContent.slice(0, 90), size: parseFloat(getComputedStyle(node).fontSize) })));
 
 async function inspectLayout(root, viewport) {
   const data = await root.evaluate(node => {
     const visible = element => element.checkVisibility({ visibilityProperty: true, opacityProperty: true });
-    const containers = [node, ...node.querySelectorAll('.mosaic-contract-heading, .mosaic-contract-workspace, .mosaic-contract-directory, .mosaic-contract-directory-content, .mosaic-contract-list, .mosaic-contract-reader, .mosaic-contract-objective, .mosaic-contract-evidence')]
+    const containers = [node, ...node.querySelectorAll('.mosaic-contract-heading, .mosaic-contract-workspace, .mosaic-contract-directory, .mosaic-contract-directory-content, .mosaic-contract-list, .mosaic-contract-reader, .mosaic-contract-objective, .mosaic-contract-evidence, .mosaic-contract-request, .mosaic-contract-memory, .mosaic-contract-on-location, .mosaic-contract-previous, .mosaic-dialogue-quest, .mosaic-dialogue-background, .mosaic-dialogue-record, .mosaic-dialogue-topics, blockquote')]
       .filter(visible).map(element => ({ name: element.className, width: element.clientWidth, scrollWidth: element.scrollWidth }));
     const controls = [...node.querySelectorAll('button, input, select, summary')].filter(visible).map(element => {
       const rect = element.getBoundingClientRect();
@@ -40,6 +40,107 @@ async function inspectLayout(root, viewport) {
     assert.ok(item.scrollWidth <= item.clientWidth + 1, `Control text clipped: ${JSON.stringify(item)}`);
   }
   return data;
+}
+
+async function authoredPresentation(page, { missionId, lang, viewport, name }) {
+  await page.goto(`https://multiverse.test/scripts/fixtures/mosaic-contract-journal.html?lang=${lang}&story=${missionId}`);
+  await page.waitForFunction(() => window.__contractJournalQA.state && window.__contractJournalQA.story);
+  const story = await page.evaluate(() => window.__contractJournalQA.story);
+  assert.ok(story.request && story.location && story.reply && story.heroName, `Missing authored narrative: ${missionId}`);
+  const before = await snapshot(page);
+  const trigger = page.getByTestId('open-contract-journal');
+  await trigger.focus(); await page.keyboard.press('Enter');
+  const root = page.locator('.mosaic-character-missions');
+  await root.waitFor();
+  assert.equal(await root.locator('[data-city-contract-reader]').getAttribute('data-city-contract-reader'), missionId);
+  assert.ok((await root.locator('[data-city-contract-request]').textContent()).includes(story.request));
+  assert.ok((await root.locator('[data-city-contract-request]').textContent()).includes(story.heroName));
+  assert.ok((await root.locator('[data-city-contract-location]').textContent()).includes(story.location));
+  assert.equal(await root.locator('[data-city-contract-memory]').count(), 0, 'An unread request invented a lived encounter');
+  assert.doesNotMatch(await root.innerText(), /sourceRefs|DLC\/(Halo|Alien)|\bQA\s+\d|DOSSIER TRANSMIS|CASE SUBMITTED|Conclusion à inscrire|Conclusion to record/u);
+  const result = { missionId, hero: story.heroName, request: story.request, location: story.location,
+    scope: 'Actual authored text and components; prepared conversation, no City movement or on-site operation claim.',
+    requestLayout: await inspectLayout(root, viewport) };
+  await root.locator('[data-city-contract-request]').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: resolve(evidence, `${name}-${missionId}-request.png`) });
+  await page.keyboard.press('Escape'); await root.waitFor({ state: 'detached' }); await focused(trigger);
+  assert.deepEqual(await snapshot(page), before, 'Reading an authored request changed progress');
+
+  const replyTrigger = page.getByTestId('open-authored-reply');
+  await replyTrigger.focus(); await page.keyboard.press('Enter');
+  const conversation = page.locator('.mosaic-resident-dialogue');
+  await conversation.waitFor();
+  const speech = conversation.locator('[data-dialogue-quest]');
+  assert.ok((await speech.textContent()).includes(story.request));
+  const background = conversation.locator('.mosaic-dialogue-background');
+  if (await background.count()) {
+    assert.equal(await background.evaluate(node => node.open), false);
+    await background.locator('summary').click();
+    const topic = conversation.locator('[data-dialogue-topic]').last();
+    const id = await topic.getAttribute('data-dialogue-topic');
+    await topic.click();
+    assert.equal(await conversation.locator('[data-dialogue-record]').getAttribute('data-dialogue-record'), id);
+    assert.deepEqual(await snapshot(page), before, 'Reading background changed mission progress');
+    await background.locator('summary').click();
+    result.secondaryArchiveReadOnly = true;
+  } else result.noArchiveTopicsRequired = true;
+  await conversation.locator('[data-city-quest-offer]').focus(); await page.keyboard.press('Enter');
+  await focused(conversation.locator('[data-dialogue-return]'));
+  assert.equal(await conversation.locator('[data-city-quest-offer]').count(), 0);
+  assert.ok((await speech.textContent()).includes(story.reply));
+  const accepted = await snapshot(page);
+  assert.equal(accepted.progress.activeId, missionId);
+  assert.deepEqual(accepted.progress.records[missionId].completedStepIds, [], 'Prepared presentation must not fabricate an in-world encounter');
+  assert.deepEqual(accepted.calls, [{ type: 'offer', id: missionId }]);
+  assert.deepEqual(accepted.source, before.source);
+  result.acceptanceFocus = true;
+  result.reply = story.reply;
+  result.replyLayout = await inspectLayout(conversation, viewport);
+  await speech.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: resolve(evidence, `${name}-${missionId}-reply.png`) });
+  await conversation.locator('[data-dialogue-return]').focus(); await page.keyboard.press('Enter');
+  await conversation.waitFor({ state: 'detached' }); await focused(replyTrigger);
+
+  if (missionId === 'city-chief-unsc-route-v1') {
+    await page.goto(`https://multiverse.test/scripts/fixtures/mosaic-contract-journal.html?lang=${lang}&story=${missionId}&visit=legacy`);
+    await page.waitForFunction(() => window.__contractJournalQA.state?.progress.records[window.__contractJournalQA.story.id]?.completed);
+    const previous = await snapshot(page);
+    await page.getByTestId('open-contract-journal').click(); await root.waitFor();
+    await root.locator('[data-city-contract-legacy]').waitFor({ state: 'visible' });
+    assert.equal(await root.locator('[data-city-contract-request]').count(), 0);
+    assert.equal(await root.locator('[data-city-contract-status]').getAttribute('data-city-contract-status'), 'completed');
+    const previousTitle = await root.locator('.mosaic-contract-reader > h4').innerText();
+    const previousConclusion = await root.locator('[data-city-contract-objective]').innerText();
+    await root.locator('[data-city-contract-replay]').scrollIntoViewIfNeeded();
+    await page.screenshot({ path: resolve(evidence, `${name}-legacy-visit.png`) });
+    await root.locator('[data-city-contract-replay]').focus(); await page.keyboard.press('Enter');
+    await focused(root.locator('[data-city-contract-objective]'));
+    const restarted = await snapshot(page);
+    assert.deepEqual(restarted.progress.records[missionId].previousStory, previous.progress.records[missionId]);
+    assert.deepEqual(restarted.progress.records[missionId].completedStepIds, []);
+    assert.deepEqual(restarted.progress.records[missionId].operationReceipts, {});
+    assert.equal(restarted.progress.records[missionId].storyRevision, 2);
+    assert.deepEqual(restarted.calls, [{ type: 'replay', id: missionId }]);
+    assert.equal(await root.locator('[data-city-contract-legacy]').count(), 0);
+    assert.ok((await root.locator('[data-city-contract-request]').textContent()).includes(story.request));
+    result.replayLayout = await inspectLayout(root, viewport);
+    await page.screenshot({ path: resolve(evidence, `${name}-replayed-visit.png`) });
+    const firstVisit = root.locator('[data-city-contract-previous]');
+    assert.equal(await firstVisit.evaluate(node => node.open), false);
+    await firstVisit.locator('summary').focus(); await page.keyboard.press('Enter');
+    await firstVisit.locator('h5').waitFor({ state: 'visible' });
+    assert.equal(await firstVisit.locator('h5').innerText(), previousTitle);
+    assert.ok((await firstVisit.innerText()).includes(previousConclusion));
+    assert.equal(await firstVisit.locator('li').count(), previous.progress.records[missionId].completedStepIds.length);
+    assert.deepEqual(await snapshot(page), restarted, 'Reading the first visit changed the current adventure');
+    result.firstVisitLayout = await inspectLayout(root, viewport);
+    result.explicitReplayPreservesFirstVisit = true;
+    result.firstVisitStillReadable = true;
+    await firstVisit.locator('h5').scrollIntoViewIfNeeded();
+    await page.screenshot({ path: resolve(evidence, `${name}-first-visit.png`) });
+    await page.keyboard.press('Escape'); await root.waitFor({ state: 'detached' });
+  }
+  return result;
 }
 
 try {
@@ -108,7 +209,7 @@ try {
       await root.locator('.mosaic-contract-clear').click(); await focused(search);
       const pageIds = [...await ids(root)];
       for (let index = 1; index < 6; index += 1) {
-        await root.getByRole('navigation', { name: fr ? 'Pages des contrats' : 'Contract pages' }).getByRole('button', { name: fr ? 'Suivant' : 'Next', exact: true }).click();
+        await root.getByRole('navigation', { name: fr ? 'Pages du carnet' : 'Journal pages' }).getByRole('button', { name: fr ? 'Suivant' : 'Next', exact: true }).click();
         await focused(directory.locator('h4'));
         await page.keyboard.press('Tab'); await focused(search);
         pageIds.push(...await ids(root));
@@ -195,6 +296,11 @@ try {
       const lastFocusInside = await page.evaluate(() => Boolean(document.querySelector('.immersive-drawer').contains(document.activeElement)));
       assert.equal(lastFocusInside, true);
       await page.keyboard.press('Escape'); await root.waitFor({ state: 'detached' }); await focused(trigger); await frames(page); await focused(trigger);
+      record.authoredStories = [];
+      for (const missionId of ['city-mirelle-suture-v1', 'city-chief-unsc-route-v1', 'city-ripley-narcissus-route-v1',
+        ...(viewport.width >= 960 ? ['city-bastion-tenth-route-v1'] : [])]) {
+        record.authoredStories.push(await authoredPresentation(page, { missionId, lang, viewport, name }));
+      }
       assert.deepEqual(errors, []); assert.deepEqual(missing, []);
       record.status = 'passed';
     } catch (error) {

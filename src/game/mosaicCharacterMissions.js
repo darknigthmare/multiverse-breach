@@ -1,5 +1,7 @@
-import { MOSAIC_INTERACTION_RANGE } from './mosaicCityRuntime.js';
+import { MOSAIC_INTERACTION_RANGE, getMosaicZoneAnchor } from './mosaicCityRuntime.js';
 import { createMosaicCharacterFollowups } from './mosaicCharacterFollowups.js';
+import { MOSAIC_CHARACTER_STORIES } from './mosaicCharacterStories.js';
+import { getMosaicMissionOperation, createMosaicMissionOperationReceipt, matchesMosaicMissionOperationReceipt, getMosaicMissionObjectView } from './mosaicMissionOperations.js';
 import * as dlcHalo from '../../DLC/Halo/data/mosaicCharacterMissions.js';
 import * as dlcAlien from '../../DLC/Alien/data/mosaicCharacterMissions.js';
 
@@ -15,7 +17,7 @@ const report = { id: 'report', type: 'anchor', text: text('Transmettre le dossie
 
 /** Original City stories grounded in the existing character dossiers. These
  * contracts do not retroactively complete campaign acts or award inventory. */
-export const MOSAIC_CHARACTER_MISSIONS = Object.freeze([
+const originalMissions = [
   {
     id: 'city-anchor-signature-v1', heroId: 'player_anchor',
     title: text('Une signature qui reste', 'A signature that remains'),
@@ -190,8 +192,43 @@ export const MOSAIC_CHARACTER_MISSIONS = Object.freeze([
   ...dlcHalo.createMosaicCharacterMissions({ text, person, exhibit, marker, decision, choice, report }),
   ...dlcAlien.createMosaicCharacterMissions({ text, person, exhibit, marker, decision, choice, report }),
   ...createMosaicCharacterFollowups({ text, person, exhibit, marker, decision, choice, report })
-].map(mission => Object.freeze({ ...mission, universe: mission.universe || 'Nexus de Convergence', version: 1,
-  steps: Object.freeze(mission.steps.map(step => Object.freeze(step))) })));
+];
+
+const factoryTools = { text, person, exhibit, marker, decision, choice, report };
+const legacyGuestMissions = new Map([
+  ...dlcHalo.createLegacyMosaicCharacterMissions(factoryTools),
+  ...dlcAlien.createLegacyMosaicCharacterMissions(factoryTools)
+].map(mission => [mission.id, mission]));
+const freezeMission = mission => Object.freeze({ ...mission, universe: mission.universe || 'Nexus de Convergence', version: 1,
+  steps: Object.freeze(mission.steps.map(step => Object.freeze(step))) });
+
+/** Previous visits remain readable in their own words. A saved observation is
+ * never silently upgraded into a repair or a rescue introduced by this revision. */
+export const MOSAIC_CHARACTER_MISSION_LEGACY = Object.freeze(originalMissions.map(mission =>
+  freezeMission(legacyGuestMissions.get(mission.id) || mission)));
+const legacyById = new Map(MOSAIC_CHARACTER_MISSION_LEGACY.map(mission => [mission.id, mission]));
+
+const storyFields = ['text', 'finding', 'dialogue', 'actionLabel', 'operation'];
+const narrativePatch = value => Object.fromEntries(storyFields.filter(key => value && Object.hasOwn(value, key)).map(key => [key, value[key]]));
+function applyStory(mission) {
+  const story = MOSAIC_CHARACTER_STORIES[mission.id];
+  if (!story) return freezeMission({ ...mission, ...(mission.request ? { storyRevision: 2 } : {}) });
+  return freezeMission({ ...mission, title: story.title, premise: story.premise, request: story.request,
+    location: story.location, sourceRefs: story.sourceRefs, contentFile: 'src/game/mosaicCharacterStories.js', storyRevision: 2,
+    steps: mission.steps.map(step => {
+      const patch = story.steps?.[step.id];
+      if (!patch) return step;
+      const next = { ...step, ...narrativePatch(patch) };
+      if (step.choices) next.choices = step.choices.map(option => ({ ...option,
+        ...(patch.choices?.[option.id] ? { label: patch.choices[option.id].label, result: patch.choices[option.id].result } : {}) }));
+      for (const branchKey of ['byOriginChoice', 'byChoice']) if (step[branchKey]) {
+        next[branchKey] = Object.fromEntries(Object.entries(step[branchKey]).map(([id, branch]) =>
+          [id, { ...branch, ...narrativePatch(patch[branchKey]?.[id]) }]));
+      }
+      return next;
+    }) });
+}
+export const MOSAIC_CHARACTER_MISSIONS = Object.freeze(originalMissions.map(applyStory));
 
 const record = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};
 const identifier = value => typeof value === 'string' && value.trim() && value.length < 180 ? value : null;
@@ -205,6 +242,7 @@ export function normalizeMosaicCharacterMissions(saved) {
     if (!identifier(id) || !identifier(value.heroId) || !identifier(value.universe) || !identifier(value.districtId)) return [];
     return [[id, { ...value, heroId: value.heroId, universe: value.universe, districtId: value.districtId,
       completedStepIds: Array.isArray(value.completedStepIds) ? value.completedStepIds.filter(identifier).slice(0, 32) : [],
+      ...(Object.hasOwn(value, 'storyStepIds') ? { storyStepIds: Array.isArray(value.storyStepIds) ? [...new Set(value.storyStepIds.filter(identifier))].slice(0, 32) : [] } : {}),
       choiceId: identifier(value.choiceId), completed: value.completed === true }]];
   }));
   return { ...source, version: 1, activeId: identifier(source.activeId), records };
@@ -235,28 +273,52 @@ function validSaved(mission, saved) {
 
 /** A follow-up requires the complete, compatible report, not a bare completed flag.
  * The check never changes retained records when a prerequisite is unavailable. */
-export function getMosaicCharacterMissionPrerequisite(progress, mission, lang = 'fr') {
+function prerequisiteForOrigin(progress, mission, lang, originChoiceId, originStoryRevision) {
   if (!mission?.requiresMissionId) return null;
   const source = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === mission.requiresMissionId);
   const previous = source && { ...source, districtId: mission.districtId, anchorId: mission.anchorId };
-  const saved = own(progress?.records, mission.requiresMissionId);
+  const current = own(progress?.records, mission.requiresMissionId);
+  // Replaying a parent never takes away the route an existing sequel followed.
+  // New stories prefer the latest completed parent; existing ones keep the
+  // completed parent with their own recorded origin choice.
+  const candidates = previous ? [current, current?.previousStory].filter(entry => validSaved(previous, entry) && entry.completed) : [];
+  const resolutionIndex = previous?.steps.findIndex(step => step.type === 'decision');
+  const revision = entry => isLegacyStep(previous, entry, previous.steps[resolutionIndex].id) ? 1 : previous.storyRevision || 1;
+  const matching = candidates.filter(entry => !originChoiceId || entry.choiceId === originChoiceId);
+  const saved = matching.find(entry => !originStoryRevision || revision(entry) === originStoryRevision) || matching[0] || candidates[0];
   const completed = Boolean(previous && previous.heroId === mission.heroId && previous.universe === mission.universe
-    && validSaved(previous, saved) && saved.completed);
-  const selected = completed && previous.steps.find(step => step.type === 'decision')?.choices.find(item => item.id === saved.choiceId && item.valid);
-  return { missionId: mission.requiresMissionId, title: localizeCityMission(source?.title, lang), completed,
-    choiceId: completed ? saved.choiceId : null, resolution: localizeCityMission(selected?.result, lang) };
+    && saved);
+  const sourceProgress = completed ? { ...progress, records: { ...progress.records, [previous.id]: saved } } : progress;
+  const selected = completed && getMosaicCharacterMissionStep(sourceProgress, previous, resolutionIndex)?.choices.find(item => item.id === saved.choiceId && item.valid);
+  const title = completed && isLegacyStep(previous, saved, previous.steps[resolutionIndex].id) ? legacyById.get(previous.id)?.title : source?.title;
+  return { missionId: mission.requiresMissionId, title: localizeCityMission(title, lang), completed,
+    choiceId: completed ? saved.choiceId : null, storyRevision: completed ? revision(saved) : null,
+    resolution: localizeCityMission(selected?.result, lang) };
+}
+export function getMosaicCharacterMissionPrerequisite(progress, mission, lang = 'fr') {
+  const saved = own(progress?.records, mission?.id);
+  const originStoryRevision = saved?.originStoryRevision || (saved && mission?.storyRevision === 2 && saved.storyRevision !== 2 ? 1 : null);
+  return prerequisiteForOrigin(progress, mission, lang, saved?.originChoiceId, originStoryRevision);
 }
 
-/** Branch overrides can only change a marker's position and readable evidence.
- * Identity, type, target and step ordering always come from the source contract. */
+function isLegacyStep(mission, saved, stepId) {
+  return Boolean(mission?.storyRevision === 2 && legacyById.has(mission.id) && saved
+    && saved.storyRevision !== 2 && saved.completedStepIds?.includes(stepId)
+    && !(Array.isArray(saved.storyStepIds) && saved.storyStepIds.includes(stepId)));
+}
+
+/** Branches change place, dialogue and the operation at that place. Identity,
+ * type, target and step ordering always come from the source contract. */
 export function getMosaicCharacterMissionStep(progress, mission, index) {
-  const step = mission?.steps[index];
-  if (!step) return null;
+  const currentStep = mission?.steps[index];
+  if (!currentStep) return null;
   const saved = own(progress?.records, mission.id);
+  const step = isLegacyStep(mission, saved, currentStep.id)
+    ? legacyById.get(mission.id).steps[index] : currentStep;
   const prerequisite = getMosaicCharacterMissionPrerequisite(progress, mission);
   const origin = saved?.originChoiceId || prerequisite?.choiceId;
   const branch = own(step.byOriginChoice, origin) || own(step.byChoice, saved?.choiceId);
-  return branch ? { ...step, x: branch.x, y: branch.y, text: branch.text, finding: branch.finding } : step;
+  return branch ? { ...step, x: branch.x, y: branch.y, ...narrativePatch(branch) } : step;
 }
 
 export function getMosaicCharacterMissionObjective(progress, mission, lang = 'fr') {
@@ -270,13 +332,17 @@ export function getMosaicCharacterMissionObjective(progress, mission, lang = 'fr
   const targetType = step?.type === 'npc' ? 'npc' : ['exhibit', 'anchor', 'marker'].includes(step?.type) ? 'zone' : null;
   const targetId = step?.type === 'npc' ? step.targetId : step?.type === 'exhibit' ? `${mission.districtId}::exhibit::${step.targetId}`
     : step?.type === 'anchor' ? mission.anchorId : step?.type === 'marker' ? `${mission.id}::${step.id}` : null;
-  const resolution = mission.steps.find(item => item.type === 'decision')?.choices.find(item => item.id === saved?.choiceId && item.valid);
+  const resolutionIndex = mission.steps.findIndex(item => item.type === 'decision');
+  const resolution = getMosaicCharacterMissionStep(progress, mission, resolutionIndex)?.choices.find(item => item.id === saved?.choiceId && item.valid);
+  const legacy = mission.steps.some(item => isLegacyStep(mission, saved, item.id));
+  const storyTitle = legacy && !saved?.storyStepIds?.length ? localizeCityMission(legacyById.get(mission.id)?.title, lang) : localizeCityMission(mission.title, lang);
   return { missionId: mission.id, index, total: mission.steps.length, step, targetType, targetId,
-    prerequisite, originResolution: prerequisite?.resolution || '',
+    prerequisite, originResolution: prerequisite?.resolution || '', legacy, storyTitle,
+    canReplayStory: Boolean(legacy && validSaved(mission, saved) && !locked),
     status: !compatible ? 'unavailable' : locked ? 'locked' : !saved ? 'available' : saved.completed ? 'completed' : progress.activeId === mission.id ? 'active' : 'paused',
-    text: !compatible ? localizeCityMission(text('Le dossier conservé ne correspond pas à cette version de la mission.', 'The retained case does not match this mission version.'), lang)
-      : locked ? (lang === 'fr' ? `Transmettre d’abord le dossier « ${prerequisite.title || prerequisite.missionId} ».`
-        : `First submit the case “${prerequisite.title || prerequisite.missionId}”.`)
+    text: !compatible ? localizeCityMission(text('Cette aventure ne peut pas reprendre ici. Ta première visite reste conservée.', 'This adventure cannot resume here. Your first visit remains saved.'), lang)
+      : locked ? (lang === 'fr' ? `Termine d’abord « ${prerequisite.title || prerequisite.missionId} ».`
+        : `First finish “${prerequisite.title || prerequisite.missionId}”.`)
         : step ? localizeCityMission(step.text, lang) : localizeCityMission(resolution?.result, lang),
     resolution: localizeCityMission(resolution?.result, lang) };
 }
@@ -288,18 +354,61 @@ export function getMosaicCharacterMissionZones(progress, missions, lang = 'fr') 
   const step = objective.step;
   return [{ id: objective.targetId, missionId: mission.id, stepId: step.id, universe: mission.universe,
     action: 'character-mission', x: step.x - 32, y: step.y - 32, w: 64, h: 64,
-    label: localizeCityMission(step.text, lang), role: localizeCityMission(mission.title, lang), color: '#dfb85b' }];
+    label: localizeCityMission(step.operation?.label || step.text, lang), role: localizeCityMission(mission.title, lang), color: '#dfb85b' }];
+}
+
+/** Residents' interventions leave their worked-on equipment in the district. Only
+ * matching, completed operation receipts can light it up or empty a crate.
+ * Old checkpoints and absent DLC cannot create a new repair by implication. */
+export function getMosaicCharacterMissionWorldObjects(progress, missions, zones = [], lang = 'fr') {
+  const positions = new Map();
+  let activeObject = null;
+  for (const mission of missions) {
+    const objective = getMosaicCharacterMissionObjective(progress, mission, lang);
+    if (['unavailable', 'locked', 'available'].includes(objective.status)) continue;
+    const saved = own(progress?.records, mission.id);
+    for (let index = 0; index < mission.steps.length; index++) {
+    const step = getMosaicCharacterMissionStep(progress, mission, index), operation = getMosaicMissionOperation(step);
+    if (!operation) continue;
+    const targetId = step.type === 'marker' ? `${mission.id}::${step.id}`
+      : step.type === 'exhibit' ? `${mission.districtId}::exhibit::${step.targetId}` : mission.anchorId;
+    const receipt = own(saved.operationReceipts, step.id);
+    const completed = saved.completedStepIds.includes(step.id)
+      && matchesMosaicMissionOperationReceipt(receipt, mission, step, targetId, saved);
+    const active = objective.status === 'active' && objective.index === index;
+    if (!completed && !active) continue;
+    const zone = zones.find(item => item.id === targetId && item.universe === mission.universe);
+    const position = step.type === 'marker' ? { x: step.x, y: step.y } : zone ? getMosaicZoneAnchor(zone) : null;
+    if (!position || !Number.isFinite(position.x) || !Number.isFinite(position.y)) continue;
+    const object = { id: `${mission.id}::${step.id}`, missionId: mission.id,
+      stepId: step.id, targetId, sourceType: step.type, universe: mission.universe, ...position,
+      ...getMosaicMissionObjectView(operation, { lang, completed }), active, sequence: receipt?.sequence || 0 };
+    const key = `${position.x}:${position.y}`;
+    if (active) activeObject = { key, object };
+    else if (!positions.has(key) || positions.get(key).sequence < object.sequence) positions.set(key, object);
+    }
+  }
+  if (activeObject) positions.set(activeObject.key, activeObject.object);
+  return [...positions.values()];
+}
+
+export function getMosaicCharacterMissionPropZones(objects, zones = []) {
+  const existing = new Set(zones.map(zone => zone.id));
+  return objects.filter(object => object.sourceType === 'marker' && !existing.has(object.targetId)).map(object => ({
+    id: object.targetId, universe: object.universe, action: 'mission-prop',
+    x: object.x - 32, y: object.y - 32, w: 64, h: 64
+  }));
 }
 
 const feedback = {
-  unavailable: text('Ce contrat est indisponible. Le dossier conservé reste enregistré.', 'This contract is unavailable. The retained case stays saved.'),
-  active: text('Ce contrat est déjà suivi.', 'This contract is already tracked.'),
-  completed: text('Dossier transmis et archivé.', 'Case submitted and archived.'),
-  inactive: text('Accepte ou reprends ce contrat avant de poursuivre.', 'Accept or resume this contract before continuing.'),
-  wrong_target: text('Cette interaction ne correspond pas à l’étape suivie.', 'This interaction does not match the tracked step.'),
-  out_of_range: text('Approche la cible pour recueillir cette preuve.', 'Approach the target to collect this evidence.'),
-  started: text('Contrat suivi. Chaque étape de terrain est enregistrée.', 'Contract tracked. Each field step is saved.'),
-  advanced: text('Étape consignée. La suite est disponible dans le journal.', 'Step recorded. The next step is available in the journal.')
+  unavailable: text('Cette aventure est indisponible. Ta visite reste conservée.', 'This adventure is unavailable. Your visit stays saved.'),
+  active: text('Tu aides déjà cet habitant.', 'You are already helping this resident.'),
+  completed: text('Tu as tenu ta promesse. Tu peux reprendre ton chemin.', 'You kept your promise. You can continue on your way.'),
+  inactive: text('Reprends cette aventure dans ton carnet avant de continuer.', 'Resume this adventure in your journal before continuing.'),
+  wrong_target: text('Ce n’est pas l’endroit que tu cherches.', 'This is not the place you are looking for.'),
+  out_of_range: text('Rapproche-toi pour intervenir.', 'Move closer to work on it.'),
+  started: text('La demande est dans ton carnet. En route.', 'The request is in your journal. Time to go.'),
+  advanced: text('Tu peux poursuivre. Ton carnet indique la suite.', 'You can continue. Your journal shows the next step.')
 };
 function outcome(progress, next, reason, lang, extra) {
   return { progress: next, changed: next !== progress, reason, feedback: localizeCityMission(extra || feedback[reason], lang) };
@@ -318,8 +427,41 @@ export function startMosaicCharacterMission(progress, mission, lang = 'fr') {
   next.lastMissionId = mission.id;
   next.records[mission.id] = saved || { heroId: mission.heroId, universe: mission.universe, districtId: mission.districtId,
     completedStepIds: [], choiceId: null, completed: false,
-    ...(objective.prerequisite ? { originChoiceId: objective.prerequisite.choiceId } : {}) };
+    ...(mission.storyRevision === 2 ? { storyRevision: 2, operationReceipts: {} } : {}),
+    ...(objective.prerequisite ? { originChoiceId: objective.prerequisite.choiceId, originStoryRevision: objective.prerequisite.storyRevision } : {}) };
   return outcome(progress, next, 'started', lang);
+}
+
+/** An explicit replay keeps the complete earlier record, including unknown
+ * fields. Opening a journal or loading a save never restarts a story. */
+export function restartMosaicCharacterMission(progress, mission, lang = 'fr') {
+  const objective = getMosaicCharacterMissionObjective(progress, mission, lang);
+  if (!objective?.canReplayStory) return outcome(progress, progress, 'unavailable', lang);
+  const saved = own(progress.records, mission.id), next = normalizeMosaicCharacterMissions(progress);
+  const prerequisite = prerequisiteForOrigin(progress, mission, lang);
+  next.activeId = mission.id;
+  next.lastMissionId = mission.id;
+  next.records[mission.id] = { ...saved, previousStory: saved, storyRevision: 2, storyStepIds: [], operationReceipts: {},
+    completedStepIds: [], choiceId: null, completed: false,
+    ...(prerequisite ? { originChoiceId: prerequisite.choiceId, originStoryRevision: prerequisite.storyRevision } : {}) };
+  return outcome(progress, next, 'started', lang);
+}
+
+/** Saying yes in a resident's conversation is a real meeting. Recheck the live
+ * actor before accepting, and only finish the current step if it is this actor. */
+export function acceptMosaicCharacterMissionRequest(progress, mission, interaction, lang = 'fr') {
+  if (!mission || interaction?.type !== 'npc' || interaction.id !== mission.heroId
+    || interaction.target?.hero?.id !== mission.heroId || interaction.target.hero.universe !== mission.universe) {
+    return outcome(progress, progress, 'wrong_target', lang);
+  }
+  if (!Number.isFinite(interaction.distance) || interaction.distance < 0 || interaction.distance > MOSAIC_INTERACTION_RANGE.npc) {
+    return outcome(progress, progress, 'out_of_range', lang);
+  }
+  const accepted = startMosaicCharacterMission(progress, mission, lang);
+  if (!accepted.changed) return accepted;
+  const nextStep = getMosaicCharacterMissionObjective(accepted.progress, mission, lang).step;
+  if (nextStep?.type !== 'npc' || nextStep.targetId !== interaction.id) return accepted;
+  return advanceMosaicCharacterMission(accepted.progress, mission, interaction, lang);
 }
 
 /** Only a resolved in-world interaction advances evidence; menu selection
@@ -340,13 +482,19 @@ export function advanceMosaicCharacterMission(progress, mission, interaction, la
         : step.type === 'anchor' ? target.action === 'anchor'
           : step.type === 'marker' && target.action === 'character-mission' && target.missionId === mission.id && target.stepId === step.id);
   if (!matching) return outcome(progress, progress, 'wrong_target', lang);
-  return completeStep(progress, mission, step, lang, null, step.finding);
+  const operation = getMosaicMissionOperation(step);
+  return completeStep(progress, mission, step, lang, null, step.dialogue || operation?.completedText || step.finding, interaction);
 }
 
-function completeStep(progress, mission, step, lang, choiceId, message) {
+function completeStep(progress, mission, step, lang, choiceId, message, interaction = null) {
   const next = normalizeMosaicCharacterMissions(progress), saved = next.records[mission.id];
+  const previousSequence = Object.values(next.records).reduce((latest, entry) => Object.values(record(entry.operationReceipts))
+    .reduce((value, receipt) => Number.isSafeInteger(receipt?.sequence) && receipt.sequence > 0 ? Math.max(value, receipt.sequence) : value, latest), 0);
+  const receipt = createMosaicMissionOperationReceipt(mission, step, interaction, previousSequence + 1, saved);
   next.records[mission.id] = { ...saved, completedStepIds: [...saved.completedStepIds, step.id],
-    choiceId: choiceId || saved.choiceId, completed: saved.completedStepIds.length + 1 === mission.steps.length };
+    choiceId: choiceId || saved.choiceId, completed: saved.completedStepIds.length + 1 === mission.steps.length,
+    ...(mission.storyRevision === 2 ? { storyStepIds: [...(saved.storyStepIds || []), step.id] } : {}),
+    ...(receipt ? { operationReceipts: { ...record(saved.operationReceipts), [step.id]: receipt } } : {}) };
   if (next.records[mission.id].completed) next.activeId = null;
   return outcome(progress, next, next.records[mission.id].completed ? 'completed' : 'advanced', lang, message);
 }

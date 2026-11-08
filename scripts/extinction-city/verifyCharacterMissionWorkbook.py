@@ -11,9 +11,9 @@ from zipfile import ZipFile
 
 NS = {'m': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
 DESIGN_LABELS = {'individual_proposal': 'Proposition individualisée',
-                 'research_scaffold': 'Canevas à documenter',
-                 'source_objective_adaptation': 'Adaptation d’objectif source',
-                 'source_family_adaptation': 'Adaptation de famille'}
+                 'research_scaffold': 'Canevas à documenter — réécriture diégétique requise',
+                 'source_objective_adaptation': 'Adaptation d’objectif source — réécriture diégétique requise',
+                 'source_family_adaptation': 'Adaptation de famille — réécriture diégétique requise'}
 
 
 def require(condition, message):
@@ -83,7 +83,8 @@ def main():
         sheets = [read_sheet(archive, f'xl/worksheets/sheet{index}.xml', strings) for index in range(1, 7)]
         summary = sheets[0][1]
         contract_count = len(data['runtimeMissions'])
-        require([int(float(summary[f'B{row}'])) for row in range(7, 14)] == [1912, 101, 1912, 1912, 0, contract_count, 4], 'Summary counts do not reconcile')
+        completed_count = sum(sheets[1][1].get(f'R{row}') == 'Terminée' for row in range(7, 3831))
+        require([int(float(summary[f'B{row}'])) for row in range(7, 14)] == [1912, 101, 1912, 1912, completed_count, contract_count, 4], 'Summary counts do not reconcile')
         design_counts = Counter(mission['designKind'] for mission in data['missions'])
         for row, (kind, label) in enumerate(DESIGN_LABELS.items(), 15):
             require(summary[f'D{row}'] == label and int(float(summary[f'E{row}'])) == design_counts[kind],
@@ -95,11 +96,26 @@ def main():
         for character in data['characters']:
             for strand in ['Univers', 'Multiverse']:
                 require(counts[(character['id'], strand)] == 1, f'Character/strand missing or duplicated: {character["id"]} {strand}')
+        nexus_rows = []
         for row in range(7, 3831):
-            require(missions[f'W{row}'] == DESIGN_LABELS[data['missions'][row - 7]['designKind']], 'Mission design maturity differs from source')
-            require(missions[f'N{row}'] == 'À valider' and missions[f'O{row}'] == 'À écrire', 'A proposed mission claims an unverified prerequisite')
-            require(missions[f'P{row}'] == 'À faire' and missions[f'Q{row}'] == 'À faire', 'A proposal is falsely marked implemented/tested')
+            plan = data['missions'][row - 7]
+            require(missions[f'W{row}'] == DESIGN_LABELS[plan['designKind']], 'Mission design maturity differs from source')
+            for column, allowed in {'M': {'', 'P1', 'P2', 'P3'}, 'N': {'', 'À valider', 'À documenter', 'Validé'},
+                                    'O': {'', 'À écrire', 'En cours', 'Terminée'}, 'P': {'', 'À faire', 'En cours', 'Intégrée'},
+                                    'Q': {'', 'À faire', 'En cours', 'Validée'}}.items():
+                require(missions.get(f'{column}{row}', '') in allowed, f'Unsupported tracking value: {column}{row}')
             require(f'N{row}' in sheets[1][2][f'R{row}'], 'Copied status formula points to another record')
+            if plan.get('relatedRuntimeMissionId'):
+                nexus_rows.append(row)
+                expected = [plan['title'], plan['premise'], plan['location']] + [
+                    '\n'.join(f'{index + 1}. {step[field]}' for index, step in enumerate(plan['objectives']))
+                    for field in ['action', 'obstacle', 'success']]
+                for column, value in zip('FGHIJK', expected, strict=True):
+                    require(missions[f'{column}{row}'] == value, f'Nexus extension differs: {plan["id"]}/{column}')
+                require(plan['relatedRuntimeMissionId'] in missions[f'V{row}'], f'Nexus extension lost its related story: {plan["id"]}')
+                for source in plan['sourceBindings']:
+                    require(source in missions[f'V{row}'], f'Nexus source missing: {plan["id"]}/{source}')
+        require(len(nexus_rows) == 24, 'Expected 24 future Nexus extensions')
         for index, character in enumerate(data['characters'], 7):
             require(sheets[3][1][f'A{index}'] == character['id'], 'Character sheet misses a source identity')
             require(sheets[4][1][f'A{index}'] == character['id'], 'FPS sheet misses a source identity')
@@ -108,13 +124,18 @@ def main():
         require(contract_ids == [mission['id'] for mission in data['runtimeMissions']], 'Integrated contract identity/order differs')
         require(len([ref for ref in sheets[2][1] if ref.startswith('A') and ref[1:].isdigit() and int(ref[1:]) >= 7]) == contract_count, 'Integrated contract count differs')
         runtime_by_id = {mission['id']: mission for mission in data['runtimeMissions']}
-        inherited_routes = decision_routes = chapter_two = 0
+        inherited_routes = decision_routes = chapter_two = operation_variants = 0
         for row, mission in enumerate(data['runtimeMissions'], 7):
             cells = sheets[2][1]
             context = mission['id']
             require(cells[f'C{row}'] == mission['title'], f'Contract title differs: {context}')
             require(mission['premise'] in cells[f'D{row}'], f'Contract premise missing: {context}')
+            for field in ['request', 'location']:
+                require(mission[field] and mission[field] in cells[f'D{row}'], f'Personal {field} missing: {context}')
             require(mission['sourceFile'] in cells[f'J{row}'], f'Contract implementation source missing: {context}')
+            require(mission['contentFile'] == mission['sourceFile'], f'Contract content provenance differs: {context}')
+            for source in mission['systemSourceFiles'] + mission['sourceRefs'] + [mission['source']]:
+                require(source in cells[f'J{row}'], f'Runtime or prior-lore source missing: {context}/{source}')
             require(mission['universe'] in cells[f'G{row}'], 'Contract access lost its district')
             require(f'Chapitre {mission["chapter"]}.' in cells[f'G{row}'], f'Chapter missing: {context}')
             if mission['chapter'] == 2:
@@ -131,9 +152,21 @@ def main():
             for choice in own_choices.values():
                 require(choice['label'] in cells[f'F{row}'] and choice['result'] in cells[f'F{row}'],
                         f'Conclusion missing: {context}/{choice["id"]}')
+            require('Décision :' in cells[f'F{row}'], f'Choice is not distinguished from physical action: {context}')
+            def check_intervention(step, column):
+                nonlocal operation_variants
+                operation = step.get('operation')
+                if not operation:
+                    return
+                operation_variants += 1
+                for field in ['kind', 'label', 'propName', 'completedText']:
+                    require(operation[field] in cells[f'{column}{row}'],
+                            f'Visible intervention {field} missing: {context}/{step.get("id", "branch")}')
+                require('Après le geste :' in cells[f'{column}{row}'], f'Intervention completion condition missing: {context}')
             for step in mission['steps']:
                 if not step.get('byOriginChoice') and not step.get('byChoice'):
                     require(step['text'] in cells[f'E{row}'], f'Concrete objective missing: {context}/{step["id"]}')
+                    check_intervention(step, 'E')
                 for field, column, choices in [('byOriginChoice', 'E', previous_choices), ('byChoice', 'F', own_choices)]:
                     routes = step.get(field, {})
                     if field == 'byOriginChoice':
@@ -146,6 +179,9 @@ def main():
                         for expected in [f'[{choice_id}]', choices[choice_id]['label'], route['text'], route['finding'],
                                          f'(x={route["x"]}, y={route["y"]})']:
                             require(expected in cell, f'Route detail missing: {context}/{field}/{choice_id}: {expected}')
+                        check_intervention(route, column)
+                        if field == 'byChoice':
+                            require('À accomplir :' in cell, f'Decision route claims completion before action: {context}/{choice_id}')
             if mission['universe'] != 'Nexus de Convergence':
                 require(f'DLC {mission["universe"]} installé' in cells[f'G{row}'], 'Contract access lost its DLC requirement')
         for index, (root, _, _) in enumerate(sheets[1:], 2):
@@ -171,15 +207,27 @@ def main():
                 original_strings = [''.join(part.text or '' for part in item.findall('.//m:t', NS))
                                     for item in ET.fromstring(baseline.read('xl/sharedStrings.xml'))]
                 original_summary = read_sheet(baseline, 'xl/worksheets/sheet1.xml', original_strings)
-                require({key: value for key, value in summary.items() if key not in {'B12', 'B18'}} ==
-                        {key: value for key, value in original_summary[1].items() if key not in {'B12', 'B18'}},
+                changed_summary = {'B12', 'B18', 'D16', 'D17', 'D18', 'A24'}
+                require({key: value for key, value in summary.items() if key not in changed_summary} ==
+                        {key: value for key, value in original_summary[1].items() if key not in changed_summary},
                         'Unrelated summary values changed')
                 require({key: value for key, value in sheets[0][2].items() if key != 'B12'} ==
                         {key: value for key, value in original_summary[2].items() if key != 'B12'},
                         'Unrelated summary formulas changed')
                 for index in [2, 4, 5, 6]:
                     original = read_sheet(baseline, f'xl/worksheets/sheet{index}.xml', original_strings)
-                    require(sheets[index - 1][1] == original[1], f'Unrelated values changed in {names[index - 1]}')
+                    allowed_cells = {'A4'} if index == 2 else set()
+                    if index == 2:
+                        allowed_cells.update(f'{column}{row}' for row in nexus_rows for column in 'FGHIJKV')
+                        allowed_cells.update(f'W{row}' for row, mission in enumerate(data['missions'], 7)
+                                             if mission['designKind'] != 'individual_proposal')
+                        for row in range(7, 3831):
+                            for column in 'MNOPQSTU':
+                                ref = f'{column}{row}'
+                                require(sheets[1][1].get(ref, '') == original[1].get(ref, ''), f'Existing manual tracking changed: {ref}')
+                    require({key: value for key, value in sheets[index - 1][1].items() if key not in allowed_cells} ==
+                            {key: value for key, value in original[1].items() if key not in allowed_cells},
+                            f'Unrelated values changed in {names[index - 1]}')
                     require(sheets[index - 1][2] == original[2], f'Unrelated formulas changed in {names[index - 1]}')
                     for tag in ['dataValidations', 'conditionalFormatting', 'sheetViews', 'cols', 'sheetFormatPr',
                                 'sheetPr', 'mergeCells', 'sheetProtection', 'drawing', 'legacyDrawing', 'hyperlinks']:
@@ -188,8 +236,14 @@ def main():
                         require(before == after, f'Unrelated {tag} changed in {names[index - 1]}')
                     require(table_targets(baseline, original[0], index) == table_targets(archive, sheets[index - 1][0], index),
                             f'Unrelated table links changed in {names[index - 1]}')
-                    original_rows = [dict(row.attrib) for row in original[0].findall('m:sheetData/m:row', NS)]
-                    current_rows = [dict(row.attrib) for row in sheets[index - 1][0].findall('m:sheetData/m:row', NS)]
+                    def row_layout(row):
+                        attributes = dict(row.attrib)
+                        if index == 2 and int(row.get('r')) in nexus_rows:
+                            attributes.pop('ht', None)
+                            attributes.pop('customHeight', None)
+                        return attributes
+                    original_rows = [row_layout(row) for row in original[0].findall('m:sheetData/m:row', NS)]
+                    current_rows = [row_layout(row) for row in sheets[index - 1][0].findall('m:sheetData/m:row', NS)]
                     require(original_rows == current_rows, f'Unrelated row layout changed in {names[index - 1]}')
                     original_cells = original[0].findall('m:sheetData/m:row/m:c', NS)
                     current_cells = sheets[index - 1][0].findall('m:sheetData/m:row/m:c', NS)
@@ -197,22 +251,26 @@ def main():
                         require(before.get('r') == after.get('r'), f'Unrelated cell layout changed in {names[index - 1]}')
                         require(style_signature(original_styles, before.get('s')) == style_signature(current_styles, after.get('s')),
                                 f'Unrelated cell style changed in {names[index - 1]}!{before.get("r")}')
-                    preserved_sheets.append(names[index - 1])
+                    if index != 2:
+                        preserved_sheets.append(names[index - 1])
                 original_tables = {ET.fromstring(baseline.read(name)).get('name'): ET.tostring(ET.fromstring(baseline.read(name)))
                                    for name in table_files}
                 for name in table_files:
                     table = ET.fromstring(archive.read(name))
                     if table.get('name') != 'ContratsJouables':
                         require(ET.tostring(table) == original_tables[table.get('name')], f'Unrelated native table changed: {table.get("name")}')
-    receipt = {'schema': 2, 'workbook': path.name, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'bytes': path.stat().st_size,
+    receipt = {'schema': 3, 'workbook': path.name, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'bytes': path.stat().st_size,
                'sheets': names, 'sourceCharacters': 1912, 'nonCombatCharacters': 101, 'plannedMissions': 3824,
                'individuallyDesignedMissions': design_counts['individual_proposal'],
                'designCounts': dict(design_counts),
                'integratedCityContracts': contract_count, 'fpsModes': 4, 'nativeTables': 5, 'dropdownRanges': 5,
                'chapterTwoContracts': chapter_two, 'inheritedRoutes': inherited_routes, 'decisionRoutes': decision_routes,
+               'operationVariantsChecked': operation_variants, 'rewrittenNexusProposals': len(nexus_rows),
+               'proposalsRequiringDiegeticRewrite': sum(mission['designKind'] != 'individual_proposal' for mission in data['missions']),
+               'preservedTrackingColumns': ['M', 'N', 'O', 'P', 'Q', 'S', 'T', 'U'] if args.baseline else [],
                'preservedSheets': preserved_sheets,
                'formulasInspected': formula_count, 'coverage': 'exact one universe and one Multiverse proposal per source identity',
-               'status': 'passed', 'scope': 'Read-only OpenXML identities, runtime prerequisites and route details, cached totals, formulas, filters, panes, validation and unchanged-sheet styles; not a native Excel execution.'}
+               'status': 'passed', 'scope': 'Read-only OpenXML identities, personal requests, locations, runtime prerequisites, branch interventions and effects, future Nexus extensions, generic rewrite flags, cached totals, formulas, filters, panes, validation, manual tracking and unchanged-sheet styles; not a native Excel execution.'}
     if args.receipt:
         Path(args.receipt).write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(receipt, ensure_ascii=False))

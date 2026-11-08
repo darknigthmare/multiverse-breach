@@ -356,7 +356,7 @@ def combat(page, current, targets):
     return {'kind': 'fire', 'target': target['id'], 'milliseconds': duration, 'protocols': commands}
 
 
-def held_pickup_fire_case(page, out, name):
+def held_pickup_fire_case(page, out, name, restore_in_flight=False):
     """Fire a naturally dropped weapon through the shared native input route."""
     steps = []
     for _ in range(50):
@@ -366,17 +366,35 @@ def held_pickup_fire_case(page, out, name):
         check(targets, 'no live threat for the held pickup')
         # Stay on the ordinary threat/drone route; no protected-core shortcut.
         drones = [enemy for enemy in targets if enemy['kind'] == 'Drone Protecteur']
-        target = min(drones or targets, key=lambda item: math.hypot(item['wx'] - current['px'], item['wy'] - current['py']))
-        if math.hypot(target['wx'] - current['px'], target['wy'] - current['py']) > 3:
+        travelling = current['weaponType'] in ['plasma', 'rocket']
+        target = min(drones or targets, key=lambda item: math.hypot(item['wx'] - current['px'], item['wy'] - current['py'])
+                     - (.28 * item.get('size', 1) if travelling else 0))
+        distance = math.hypot(target['wx'] - current['px'], target['wy'] - current['py'])
+        if distance > 3:
             steps.append(walk(page, current, target)); continue
+        if travelling and distance < 1.6:
+            aim(page, current, target['wx'], target['wy'])
+            page.keyboard.down('s'); page.clock.run_for(120); page.keyboard.up('s')
+            steps.append({'kind': 'step-back-for-flight', 'milliseconds': 120}); continue
         if current['reloadPulse'] > 0:
             page.clock.run_for(100); steps.append({'kind': 'wait-existing-reload', 'milliseconds': 100}); continue
+        # The ordinary acquisition route can have an active role turret. Observe
+        # between its real 34-tick pulses so later HP loss cannot be credited to it.
+        if travelling and page.evaluate('window.__sceneQA.state().turret>0') and current['t'] % 34 > 14:
+            duration = math.ceil((35 - current['t'] % 34) * 1000 / 60)
+            page.clock.run_for(duration)
+            steps.append({'kind': 'wait-for-support-pulse', 'milliseconds': duration}); continue
         break
     else: raise AssertionError('could not approach a live threat with the real held pickup')
     aim(page, current, target['wx'], target['wy'])
     page.locator('.fps-royale-canvas').focus()
     if target['kind'] == 'Champion de Trame': page.keyboard.press('t')
     before = read(page)
+    pending_damage = page.evaluate('''() => {const s=window.__sceneQA.state(),p=s.protocols;return {
+      turret:s.turret,reflection:!!p.reflection,summon:!!p.summon,projectiles:structuredClone(p.projectiles)};}''')
+    if travelling:
+        check(not pending_damage['projectiles'] and not pending_damage['reflection'] and not pending_damage['summon'],
+              'another travelling or autonomous attack would make native pickup damage ambiguous')
     page.keyboard.press('Space')
     fired = read(page)
     check(fired['ammo'] == before['ammo'] - 1, 'native pickup fire must spend exactly one round')
@@ -384,15 +402,34 @@ def held_pickup_fire_case(page, out, name):
     detail = page.evaluate('''() => {const s=window.__sceneQA.state();return {
       projectiles:structuredClone(s.protocols.projectiles),status:s.statusText,
       confirmed:s.hitMarkerTimer>0,charge:s.protocols.charge};}''')
-    if current['weaponType'] == 'shotgun':
+    flight = []; in_flight = None; shot_id = None
+    if not travelling:
         hit = next(enemy for enemy in fired['enemies'] if enemy['id'] == target['id'])
         check(hit['hp'] < target['hp'] and detail['confirmed'], 'native close shotgun did not confirm real damage')
         check(detail['charge'] <= min(100, before['protocols']['charge'] + 8), 'one shotgun discharge multiplied ultimate credit')
     else:
         shots = [shot for shot in detail['projectiles'] if shot.get('source') == 'pickup' and shot.get('weaponType') == current['weaponType']]
-        check(shots and all(shot['age'] == 0 for shot in shots), 'native pickup did not launch its travelling projectile')
+        check(len(shots) == 1 and shots[0]['age'] == 0, 'native pickup did not launch exactly one travelling projectile')
+        shot_id = shots[0]['id']
         hit = next(enemy for enemy in fired['enemies'] if enemy['id'] == target['id'])
         check(hit['hp'] == target['hp'], 'projectile damage happened before simulation flight')
+        check([(enemy['id'], enemy['hp']) for enemy in fired['enemies']] == [(enemy['id'], enemy['hp']) for enemy in before['enemies']]
+              and fired['protocols']['charge'] == before['protocols']['charge'], 'launch damaged another threat or granted premature charge')
+        for _ in range(3):
+            page.clock.run_for(16)
+            snapshot = read(page)
+            observed = page.evaluate('structuredClone(window.__sceneQA.state().protocols.projectiles)')
+            flight.append({'state': snapshot, 'projectiles': observed})
+            if snapshot['t'] > before['t']:
+                in_flight = next((shot for shot in observed if shot['id'] == shot_id), None)
+                check(in_flight and in_flight['age'] == 1, 'projectile did not remain in flight after its first native tick')
+                check(math.hypot(in_flight['wx'] - shots[0]['wx'], in_flight['wy'] - shots[0]['wy']) > 0,
+                      'travelling projectile did not leave the muzzle')
+                check([(enemy['id'], enemy['hp']) for enemy in snapshot['enemies']] == [(enemy['id'], enemy['hp']) for enemy in before['enemies']],
+                      'damage preceded the observed travelling contact')
+                page.screenshot(path=str(out / f'{name}-projectile-in-flight.png'))
+                break
+        check(in_flight, 'no native projectile flight was observed')
     page.locator('#qa-pause').click()
     page.locator('.fps-royale-canvas').focus()
     frozen = read(page)
@@ -402,16 +439,49 @@ def held_pickup_fire_case(page, out, name):
           'pause advanced a pickup projectile or accepted a shot')
     page.locator('#qa-pause').click(); page.locator('.fps-royale-canvas').focus()
     page.clock.run_for(16)
-    page.clock.run_for(300)
-    after = read(page)
-    if current['weaponType'] != 'shotgun':
+    if travelling:
+        check(read(page) == frozen and page.evaluate('structuredClone(window.__sceneQA.state().protocols.projectiles)') == frozen_projectiles,
+              'first resumed frame caught up time spent with the projectile paused')
+    restored_during_flight = None
+    if restore_in_flight:
+        check(travelling and before['personalKit'], 'in-flight kit return needs a real retained personal kit')
+        page.keyboard.press('v')
+        restored_during_flight = read(page)
+        check(restored_during_flight['weaponType'] == 'pistol' and restored_during_flight['ammo'] == before['personalKit']['ammo']
+              and restored_during_flight['reserveAmmo'] == before['personalKit']['reserveAmmo'], 'in-flight kit return altered personal stock')
+        check(page.evaluate('structuredClone(window.__sceneQA.state().protocols.projectiles)') == frozen_projectiles,
+              'returning to the kit removed or rewrote the launched pickup projectile')
+    if travelling:
+        for _ in range(18):
+            page.clock.run_for(16)
+            after = read(page)
+            observed = page.evaluate('''() => {const s=window.__sceneQA.state();return {
+              projectiles:structuredClone(s.protocols.projectiles),effects:structuredClone(s.protocols.effects),
+              hit:s.hitMarkerTimer>0,turret:s.turret};}''')
+            flight.append({'state': after, **observed})
+            check(after['t'] - before['t'] <= 18, 'pickup delivery exceeded the original 300 ms simulation window')
+            check(not pending_damage['turret'] or all(tick % 34 != 0 for tick in range(before['t'] + 1, after['t'] + 1)),
+                  'a support pulse would make the native projectile impact ambiguous')
+            if not any(shot['id'] == shot_id for shot in observed['projectiles']): break
+            check([(enemy['id'], enemy['hp']) for enemy in after['enemies']] == [(enemy['id'], enemy['hp']) for enemy in before['enemies']],
+                  'a threat took damage while the pickup projectile was still in flight')
+        else: raise AssertionError('travelling pickup missed its nearby target within the original 300 ms delivery window')
         hit = next(enemy for enemy in after['enemies'] if enemy['id'] == target['id'])
-        check(hit['hp'] < target['hp'], 'travelling pickup did not hit the aimed nearby target')
+        check(hit['hp'] < target['hp'] and observed['hit'], 'travelling pickup did not confirm a real hit on the aimed nearby target')
+        check(after['protocols']['casts'] == before['protocols']['casts'], 'flight or kit return cast a personal attack')
+        check(after['protocols']['charge'] == min(100, before['protocols']['charge'] + 8), 'projectile contact did not grant exactly one discharge of charge')
+        if current['weaponType'] == 'rocket':
+            check(any(effect['kind'] == 'explosion' and effect.get('effectRadius') == 2.2 for effect in observed['effects']),
+                  'native rocket contact did not create its physical explosion')
+    else:
+        page.clock.run_for(300)
+        after = read(page)
     page.screenshot(path=str(out / f'{name}-pickup-fire.png'))
     receipt = {'type': current['weaponType'], 'nativeInputs': True, 'injectedState': False,
                'approach': steps, 'targetId': target['id'], 'before': before, 'fired': fired,
                'delivery': detail, 'pausedProjectiles': frozen_projectiles, 'after': after,
-               'pausePreserved': True}
+               'pausePreserved': True, 'pendingDamage': pending_damage, 'flight': flight,
+               'inFlight': in_flight, 'restoredDuringFlight': restored_during_flight}
     (out / f'{name}-pickup-fire.json').write_text(json.dumps(receipt, indent=2, ensure_ascii=False))
     return receipt
 
@@ -472,7 +542,7 @@ def pickup_layout_case(page, out, name):
             'restoredKit': True, 'abandonNoReward': True}
 
 
-def full_directive(page, mode, lang, out, name):
+def full_directive(page, mode, lang, out, name, pickup_type=None):
     page.locator('.extinction-mode-options button').filter(has=page.locator('strong', has_text=MODES[mode][0 if lang == 'fr' else 1])).click()
     page.locator('[data-relay-operation]' if mode == 'extraction' else '[data-field-directive]').check()
     prepare_fps_clock(page); page.clock.run_for(32)
@@ -497,7 +567,21 @@ def full_directive(page, mode, lang, out, name):
                 page.locator('#qa-pause').click(); page.locator('.fps-royale-canvas').focus(); page.clock.run_for(32)
                 current = observe({'kind': 'pause-resume'}); paused = True
             if current['skillCooldown'] == 0: page.keyboard.press('Shift')
-            if current['personalKit'] and current['weaponType'] != 'pistol':
+            requested_held = pickup_type and current['personalKit'] and current['weaponType'] == pickup_type
+            if requested_held and any(enemy['hp'] > 0 for enemy in current['enemies']):
+                firing = held_pickup_fire_case(page, out, name, restore_in_flight=True)
+                current = observe({'kind': 'native-pickup-flight-pause-and-kit-return', 'weaponType': pickup_type})
+                check(current['phase'] == 'running' and current['weaponType'] == 'pistol', 'pickup flight case did not retain an active personal kit')
+                page.locator('#qa-exit').click()
+                check(page.evaluate('window.__sceneQA.reports.filter(report=>report.reason==="completed").length') == 0,
+                      'the short projectile case granted completion')
+                result.update(result='pickup-verified', pickedWeapon=pickup_type, pausePreserved=True,
+                              restoredKit=True, abandonNoReward=True, nativeActions=len(trace),
+                              pickupFiring={'type': firing['type'], 'nativeInputs': True, 'injectedState': False,
+                                            'launchTick': firing['before']['t'], 'impactTick': firing['after']['t'],
+                                            'projectileId': firing['inFlight']['id'], 'returnedDuringFlight': True})
+                return result
+            if current['personalKit'] and current['weaponType'] != 'pistol' and not requested_held:
                 retained = current['personalKit']; page.keyboard.press('v')
                 current = observe({'kind': 'restore-personal-kit'})
                 check(current['weaponType'] == 'pistol' and current['ammo'] == retained['ammo']
@@ -512,6 +596,12 @@ def full_directive(page, mode, lang, out, name):
             if marker and (mode == 'infestation' or not enemies): pickup = marker
             if current['hp'] < 50:
                 pickup = next((item for item in current['loot'] if item.get('effect') == 'heal' and not item.get('used')), pickup)
+            # Continue the existing extraction route until the requested weapon
+            # actually drops. A cleared wave still needs its real beacon before
+            # another live target exists; no enemy, loot or position is injected.
+            if pickup_type and not requested_held and enemies:
+                pickup = next((item for item in current['loot'] if item['type'] == 'weapon' and not item.get('used')
+                               and item.get('weaponData', {}).get('type') == pickup_type), pickup)
             if mode == 'hunt' and directive and directive['markTicks'] == 0:
                 champion = next((enemy for enemy in enemies if enemy['kind'] == 'Champion de Trame'), None)
                 if champion and math.hypot(champion['wx'] - current['px'], champion['wy'] - current['py']) <= 12:
@@ -532,6 +622,7 @@ def full_directive(page, mode, lang, out, name):
             current = observe(action)
             if index % 75 == 0: print(f'PROGRESS {name}: {index} actions, {current["t"]} ticks, {current["hp"]} HP', flush=True)
         reports = page.evaluate('window.__sceneQA.reports.filter(report=>report.reason==="completed")')
+        check(pickup_type is None, f'no native {pickup_type} pickup and impact before the extraction ended')
         check(current['phase'] == 'ended' and current['result'] == 'victory', f'no victory: {current["phase"]}, {current["t"]} ticks, {current["hp"]} HP')
         check(len(reports) == 1, 'completion missing or duplicated')
         if mode == 'extraction': check(current['beacons'] == 3 and current['relaySummary']['secured'] == 3, 'relay objective skipped')
@@ -563,6 +654,10 @@ def main():
                 ('serj_tankian', 390, 844, 'en'), ('arthur_kaamelott', 1280, 900, 'fr')]
     # Fail a cramped layout quickly, before spending time on full mode replays.
     cases = [('layout', 'pickup-hunt', 844, 390, 'en', 0)]
+    # Same fixed extraction seed and ordinary acquisition route as the full
+    # replay. These cases end after real flight/contact; the eight victory
+    # replays below keep all their original objectives and comparison gates.
+    cases += [('pickup', weapon, 1280, 900, 'fr', 0) for weapon in ['plasma', 'rocket']]
     cases += [('profile', hero, width, height, lang, 0) for hero, width, height, lang in profiles]
     cases += [('directive', mode, 1280, 900, 'fr' if mode in ['extraction', 'last_signal'] else 'en', replay)
               for mode in MODES for replay in range(1, args.replays + 1)]
@@ -580,6 +675,7 @@ def main():
                     load(page, args, lang)
                     record.update(profile_case(page, identity, lang, args, out, name) if kind == 'profile'
                                   else pickup_layout_case(page, out, name) if kind == 'layout'
+                                  else full_directive(page, 'extraction', lang, out, name, pickup_type=identity) if kind == 'pickup'
                                   else full_directive(page, identity, lang, out, name))
                     if kind == 'directive':
                         if identity in reference: check(record['traceDigest'] == reference[identity], 'fresh-context deterministic replay differs')

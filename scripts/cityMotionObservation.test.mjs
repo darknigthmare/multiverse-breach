@@ -2,26 +2,29 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { getMosaicZoneAnchor, getMosaicSceneObstacles, MOSAIC_INTERACTION_RANGE } from '../src/game/mosaicCityRuntime.js';
-import { MOSAIC_CHARACTER_MISSIONS } from '../src/game/mosaicCharacterMissions.js';
+import { MOSAIC_CHARACTER_MISSIONS, getMosaicCharacterMissionStep, localizeCityMission } from '../src/game/mosaicCharacterMissions.js';
+import { getMosaicMissionOperation } from '../src/game/mosaicMissionOperations.js';
 
 const source = readFileSync(new URL('./fixtures/cityExtinctionHarness.jsx', import.meta.url), 'utf8');
 const start = source.indexOf('audit.cityZone = id => {');
 const end = source.indexOf('\naudit.snapshot =', start);
 assert.ok(start >= 0 && end > start, 'the browser must expose its actual read-only observer');
 const makeObserver = new Function('audit', 'mode', 'getSceneFiber', 'getMosaicZoneAnchor', 'getMosaicSceneObstacles', 'MOSAIC_INTERACTION_RANGE', 'MOSAIC_CHARACTER_MISSIONS',
+  'getMosaicCharacterMissionStep', 'getMosaicMissionOperation', 'localizeCityMission', 'lang',
   `${source.slice(start, end)}\nreturn audit;`);
 const marker = (extra = {}) => ({ id: 'city-nova-return-measurement-v1::inherited-route', action: 'character-mission',
   universe: 'Nexus de Convergence', x: 1248, y: 748, w: 64, h: 64, ...extra });
 const fiber = (zones, obstacles) => ({ memoizedState: { memoizedState: [zones, []],
   next: { memoizedState: [obstacles, []], next: null } } });
-function fixture({ zones = [marker()], live = zones, alternate = null, mode = 'city' } = {}) {
+function fixture({ zones = [marker()], live = zones, alternate = null, mode = 'city', progress = null, lang = 'fr' } = {}) {
   const state = { t: 0, player: { x: 1305.14, y: 813.92, speed: 2.35 },
     obstacles: getMosaicSceneObstacles(null, live), pendingInteraction: null };
-  const audit = { state: () => state };
+  const audit = { state: () => state, characterMissions: progress };
   const root = { ...fiber(zones, alternate ? getMosaicSceneObstacles(null, zones) : state.obstacles),
     alternate: alternate && fiber(alternate, state.obstacles) };
-  const readers = makeObserver(audit, mode, () => root, getMosaicZoneAnchor, getMosaicSceneObstacles, MOSAIC_INTERACTION_RANGE, MOSAIC_CHARACTER_MISSIONS);
-  return { observe: readers.cityZone, npc: readers.cityNpc, target: readers.cityContractTarget, state, root };
+  const readers = makeObserver(audit, mode, () => root, getMosaicZoneAnchor, getMosaicSceneObstacles, MOSAIC_INTERACTION_RANGE, MOSAIC_CHARACTER_MISSIONS,
+    getMosaicCharacterMissionStep, getMosaicMissionOperation, localizeCityMission, lang);
+  return { observe: readers.cityZone, npc: readers.cityNpc, target: readers.cityContractTarget, operation: readers.cityContractOperation, audit, state, root };
 }
 
 test('a remounted scene exposes the actual nearby marker before its first tick without mutating it', () => {
@@ -126,4 +129,72 @@ test('declared targets cover the irregular return-marrow name and every physical
   assert.equal(f.target({ missionId: 'absent', stepId: 'report', districtId }), null);
   assert.equal(f.target({ missionId: 'city-marrow-independent-answers-v1', stepId: 'absent', districtId }), null);
   assert.equal(JSON.stringify(MOSAIC_CHARACTER_MISSIONS), before);
+});
+
+function storyProgress(mission, originChoiceId, index, choiceId = null) {
+  const parent = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === mission.requiresMissionId);
+  const districtId = 'universe-nexus-de-convergence';
+  return { activeId: mission.id, records: {
+    [parent.id]: { heroId: parent.heroId, universe: parent.universe, districtId,
+      completedStepIds: parent.steps.map(step => step.id), choiceId: originChoiceId, completed: true, storyRevision: 2 },
+    [mission.id]: { heroId: mission.heroId, universe: mission.universe, districtId,
+      completedStepIds: mission.steps.slice(0, index).map(step => step.id), choiceId, completed: false,
+      storyRevision: 2, originChoiceId, originStoryRevision: 2, operationReceipts: {} }
+  } };
+}
+
+test('the operation observer reads both effective origin branches without creating a receipt or changing the source', () => {
+  const mission = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === 'city-nova-return-measurement-v1');
+  const step = mission.steps.find(item => item.byOriginChoice), index = mission.steps.indexOf(step);
+  const original = JSON.stringify(mission);
+  const observations = [];
+  for (const [origin, branch] of Object.entries(step.byOriginChoice)) {
+    const progress = storyProgress(mission, origin, index);
+    const f = fixture({ progress, lang: 'en' }), saved = JSON.stringify({ progress, state: f.state });
+    const observed = f.operation({ missionId: mission.id, stepId: step.id, districtId: 'universe-nexus-de-convergence' });
+    assert.equal(observed.source, 'effective-mission-step');
+    assert.equal(observed.kind, branch.operation.kind);
+    assert.equal(observed.propName, branch.operation.propName.en);
+    assert.equal(observed.completedText, branch.operation.completedText.en);
+    assert.equal(observed.x, branch.x); assert.equal(observed.y, branch.y);
+    assert.equal(observed.originChoiceId, origin); assert.equal(observed.originStoryRevision, 2);
+    assert.equal(observed.targetId, `${mission.id}::${step.id}`);
+    assert.equal(observed.branchChoiceId, null);
+    observations.push(`${observed.x}:${observed.y}:${observed.completedText}`);
+    assert.equal(JSON.stringify({ progress, state: f.state }), saved);
+    assert.deepEqual(progress.records[mission.id].operationReceipts, {});
+  }
+  assert.ok(new Set(observations).size > 1, 'The observed branch must retain its different place or outcome');
+  assert.equal(JSON.stringify(mission), original);
+});
+
+test('the operation observer follows the selected intervention without retaining an earlier decision', () => {
+  const mission = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === 'city-nova-return-measurement-v1');
+  const step = mission.steps.find(item => item.byChoice), index = mission.steps.indexOf(step);
+  const origin = Object.keys(mission.steps.find(item => item.byOriginChoice).byOriginChoice)[0];
+  const f = fixture();
+  for (const selected of ['apply', 'hold']) {
+    f.audit.characterMissions = storyProgress(mission, origin, index, selected);
+    const before = JSON.stringify(f.audit.characterMissions);
+    const observed = f.operation({ missionId: mission.id, stepId: step.id, districtId: 'universe-nexus-de-convergence' });
+    assert.equal(observed.branchChoiceId, selected);
+    assert.equal(observed.label, step.byChoice[selected].operation.label.fr);
+    assert.equal(observed.completedText, step.byChoice[selected].operation.completedText.fr);
+    assert.equal(JSON.stringify(f.audit.characterMissions), before);
+  }
+});
+
+test('old completed steps, conversations, decisions and missing targets never become operation observations', () => {
+  const mission = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === 'city-anchor-signature-v1');
+  const input = { missionId: mission.id, stepId: mission.steps[0].id, districtId: 'universe-nexus-de-convergence' };
+  const progress = { activeId: mission.id, records: { [mission.id]: { heroId: mission.heroId, universe: mission.universe,
+    districtId: input.districtId, completedStepIds: [input.stepId], completed: false, choiceId: null } } };
+  const f = fixture({ progress }), before = JSON.stringify(progress);
+  assert.equal(f.operation(input), null, 'An old display visit is not a newly performed repair');
+  assert.equal(JSON.stringify(progress), before);
+  assert.equal(f.operation({ ...input, stepId: 'resolution' }), null);
+  assert.equal(f.operation({ ...input, missionId: 'absent' }), null);
+  assert.equal(f.operation({ ...input, stepId: 'absent' }), null);
+  assert.equal(f.operation({ ...input, missionId: 'city-mirelle-suture-v1', stepId: 'meet-arca_mirelle' }), null);
+  assert.equal(fixture({ mode: 'fps' }).operation(input), null);
 });

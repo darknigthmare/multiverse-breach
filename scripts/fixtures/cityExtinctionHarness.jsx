@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client';
 import { MosaicCityHub, ExtinctionRoyale } from '../../src/components/HubScreen.jsx';
 import { HEROES_DB } from '../../src/game/heroes.js';
 import { createPlayerHero } from '../../src/game/playerHero.js';
-import { MOSAIC_CHARACTER_MISSIONS } from '../../src/game/mosaicCharacterMissions.js';
+import { MOSAIC_CHARACTER_MISSIONS, getMosaicCharacterMissionStep, localizeCityMission } from '../../src/game/mosaicCharacterMissions.js';
+import { getMosaicMissionOperation } from '../../src/game/mosaicMissionOperations.js';
 import { getMosaicZoneAnchor, getMosaicSceneObstacles, MOSAIC_INTERACTION_RANGE } from '../../src/game/mosaicCityRuntime.js';
 import '../../src/index.css';
 import './combatHarness.css';
@@ -137,9 +138,32 @@ audit.cityContractTarget = ({ missionId, stepId, districtId } = {}) => {
     : step.type === 'anchor' ? `${districtId}-core` : `${mission.id}::${step.id}`;
   return { type, id, action, universe: mission.universe, range: MOSAIC_INTERACTION_RANGE[type] };
 };
+// Capture the effective authored operation before interaction. Branches are
+// resolved from the already committed record; this observer writes no state,
+// creates no receipt and does not infer success from the rendered object.
+audit.cityContractOperation = ({ missionId, stepId, districtId } = {}) => {
+  if (mode !== 'city' || typeof districtId !== 'string' || !districtId) return null;
+  const source = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === missionId);
+  const index = source?.steps.findIndex(step => step.id === stepId);
+  if (!source || index < 0) return null;
+  const mission = { ...source, districtId, anchorId: `${districtId}-core` };
+  const step = getMosaicCharacterMissionStep(audit.characterMissions, mission, index);
+  const operation = getMosaicMissionOperation(step);
+  const target = audit.cityContractTarget({ missionId, stepId, districtId });
+  if (!operation || !target) return null;
+  const saved = audit.characterMissions?.records?.[missionId];
+  return { missionId, stepId, index, districtId, universe: mission.universe, sourceType: step.type,
+    targetId: target.id, kind: operation.kind, x: step.type === 'marker' ? step.x : null,
+    y: step.type === 'marker' ? step.y : null, label: localizeCityMission(operation.label, lang),
+    propName: localizeCityMission(operation.propName, lang), completedText: localizeCityMission(operation.completedText, lang),
+    originChoiceId: saved?.originChoiceId || null, choiceId: saved?.choiceId || null,
+    originStoryRevision: mission.requiresMissionId ? saved?.originStoryRevision || 1 : null,
+    branchChoiceId: step.byChoice ? saved?.choiceId || null : null, source: 'effective-mission-step' };
+};
 audit.snapshot = () => {
   const s = audit.state(); if (!s) return null;
-  return mode === 'city' ? {t:s.t, player:{...s.player}, camera:{...s.camera}, keys:{...s.keys}, destination:s.destination, npcs:s.npcs.map(n=>({id:n.hero.id,x:n.x,y:n.y}))}
+  return mode === 'city' ? {t:s.t, player:{...s.player}, camera:{...s.camera}, keys:{...s.keys}, destination:s.destination,
+    npcs:s.npcs.map(n=>({id:n.hero.id,x:n.x,y:n.y})), missionObjects: structuredClone(s.missionObjects || [])}
     : {phase:s.phase, runId:s.runId,t:s.t,hp:s.hp,ammo:s.ammo,px:s.px,py:s.py,angle:s.angle,keys:{...s.moveKeys}, result:s.result};
 };
 audit.failRender = () => {

@@ -63,7 +63,59 @@ def progress(page):
     return page.evaluate('window.__sceneQA.characterMissions')
 
 
+def mission_objects(page):
+    return page.evaluate('window.__sceneQA.snapshot().missionObjects')
+
+
+def verify_operation(definition, before, after, objects_before, objects_after, observed_target):
+    """Compare independently captured declaration, save receipt and live scene."""
+    mission_id, step_id = definition['missionId'], definition['stepId']
+    previous_receipts = before['records'][mission_id].get('operationReceipts', {})
+    receipts = after['records'][mission_id].get('operationReceipts', {})
+    check(step_id not in previous_receipts, 'operation was already received before reaching its object')
+    check(all(receipts.get(key) == value for key, value in previous_receipts.items()),
+          'a new operation changed an earlier receipt')
+    check(set(receipts) == set(previous_receipts) | {step_id}, 'one operation created unrelated receipts')
+    receipt = receipts[step_id]
+    expected = {key: definition[key] for key in ['missionId', 'stepId', 'districtId', 'universe', 'targetId', 'kind']}
+    check(receipt.get('version') == 1 and all(receipt.get(key) == value for key, value in expected.items()),
+          'operation receipt does not match the pre-click definition')
+    prior_sequences = [item.get('sequence', 0) for record in before['records'].values()
+                       for item in record.get('operationReceipts', {}).values()]
+    check(type(receipt.get('sequence')) is int and receipt['sequence'] > max(prior_sequences, default=0),
+          'operation sequence did not advance after the actual intervention')
+    if ('x' in receipt or 'y' in receipt) and definition['sourceType'] != 'exhibit':
+        check(observed_target and all(abs(receipt[key] - observed_target[key]) <= 1e-6 for key in ['x', 'y']),
+              'receipt position does not match the physical target observed before approach')
+    if 'originChoiceId' in receipt:
+        check(receipt['originChoiceId'] == definition['originChoiceId'], 'receipt lost the preceding story choice')
+    if 'originStoryRevision' in receipt:
+        check(receipt['originStoryRevision'] == definition['originStoryRevision'], 'receipt mixed old and new preceding stories')
+    if 'branchChoiceId' in receipt:
+        check(receipt['branchChoiceId'] == definition['branchChoiceId'], 'receipt used the wrong current-choice branch')
+    current_id = f'{mission_id}::{step_id}'
+    pending = next((item for item in objects_before if item['id'] == current_id), None)
+    completed = next((item for item in objects_after if item['id'] == current_id), None)
+    check(pending and pending['active'] and not pending['completed'], 'the actual operation object was not pending before approach')
+    check(completed and completed['completed'] and not completed['active'], 'the actual operation object did not finish after interaction')
+    for key in ['missionId', 'stepId', 'universe', 'targetId', 'sourceType', 'kind', 'label', 'propName', 'completedText']:
+        check(pending[key] == completed[key] == definition[key], f'operation object differs from its declaration: {key}')
+    check(all(abs(pending[key] - completed[key]) <= 1e-6 for key in ['x', 'y']), 'operation completion moved its object')
+    if definition['sourceType'] == 'marker':
+        check(all(abs(completed[key] - definition[key]) <= 1e-6 for key in ['x', 'y']), 'branch operation is at the wrong marker position')
+    check(completed['sequence'] == receipt['sequence'], 'object was restored from another operation receipt')
+    if definition['sourceType'] == 'exhibit' and 'x' in receipt:
+        check(all(abs(receipt[key] - completed[key]) <= 1e-6 for key in ['x', 'y']),
+              'display operation receipt does not match its actual interaction slot')
+    check(completed['statusLabel'] and completed['statusLabel'] != pending['statusLabel'], 'completed object kept its pending action label')
+    return {'definition': definition, 'receipt': receipt, 'objectBefore': pending, 'objectAfter': completed}
+
+
 def terminal(page):
+    conversation = page.locator('.mosaic-resident-dialogue')
+    if conversation.count():
+        conversation.locator('[data-dialogue-return]').click()
+        expect(conversation).to_have_count(0)
     if not page.get_by_role('dialog').count():
         page.get_by_role('button', name='TERMINAL · JOURNAL', exact=True).click()
     expect(page.locator('.mosaic-character-missions')).to_be_visible()
@@ -148,7 +200,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
     page.keyboard.press('Enter')
     page.wait_for_function('id=>window.__sceneQA.characterMissions?.activeId===id', arg=mission_id, polling=50)
     case = {'missionId': mission_id, 'districtId': district, 'universe': universe,
-            'walks': [], 'choice': None, 'remount': None}
+            'walks': [], 'operations': [], 'choice': None, 'remount': None}
     if mission_id in PREREQUISITES:
         saved = progress(page)['records']
         source = saved[PREREQUISITES[mission_id]]
@@ -165,6 +217,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
         objective = panel.locator('[data-city-contract-objective]')
         before = progress(page)
         index = len(before['records'][mission_id]['completedStepIds'])
+        completed_operation = None
         if objective.get_attribute('data-step') == 'resolution':
             wrong = panel.locator(f'[data-city-contract-choice="{invalid_choice}"]')
             reach_and_measure(wrong, page)
@@ -190,6 +243,23 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                   'contract approach is missing its declared target or source universe')
             proximity_before = page.evaluate('''target=>target.type==='npc'
               ? window.__sceneQA.cityNpc(target.id) : window.__sceneQA.cityZone(target.id)''', arg=expected_target) if expected_target else None
+            operation_before = page.evaluate('input=>window.__sceneQA.cityContractOperation(input)', arg={
+                'missionId': mission_id, 'stepId': step_id, 'districtId': district})
+            objects_before = mission_objects(page)
+            check(progress(page) == before, 'observing the operation declaration changed quest progress')
+            capture_operation = bool(operation_before and interrupt and not case['operations'] and case_name.endswith('-fr-desktop'))
+            if capture_operation:
+                page.keyboard.press('Escape')
+                expect(page.get_by_role('dialog')).to_have_count(0)
+                position_before = page.evaluate('window.__sceneQA.snapshot().player')
+                page.clock.run_for(32)
+                after_frame = page.evaluate('window.__sceneQA.snapshot().player')
+                check(all(after_frame[key] == position_before[key] for key in ['x', 'y', 'speed', 'facing']) and progress(page) == before,
+                      'opening the operation view moved the player or performed the intervention')
+                image_name = f'{case_name}-{mission_id}-step-{index}-operation'
+                page.screenshot(path=str(out / f'{image_name}-before.png'))
+                case['operationCapture'] = {'before': f'{image_name}-before.png', 'after': f'{image_name}-after.png'}
+                terminal(page)
             begin_walk_proof(button)
             button.click()
             try:
@@ -203,6 +273,10 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                 proof = page.evaluate('window.__stopReconnaissanceMotion()')
                 proof['expectedTarget'] = expected_target
                 proof['proximityBefore'] = proximity_before
+                proof['operationBefore'] = operation_before
+                proof['objectsBefore'] = objects_before
+                proof['receiptsBefore'] = before['records'][mission_id].get('operationReceipts', {})
+                proof['receiptsAfter'] = progress(page)['records'][mission_id].get('operationReceipts', {})
                 proof['sceneAfter'] = page.evaluate('''()=>{const s=window.__sceneQA.state();return {
                   snapshot:window.__sceneQA.snapshot(),pendingInteraction:s.pendingInteraction,
                   destinationRoute:s.destinationRoute,obstacles:s.obstacles};}''')
@@ -212,16 +286,26 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                       proof['clickBefore']['y'] == proof['clickAfter']['y'], 'approach teleported on click')
             motion = validate_mosaic_motion(proof, nearby_target=expected_target)
             case['walks'].append({'index': index, 'motion': motion})
+            if operation_before:
+                completed_operation = verify_operation(operation_before, before, progress(page), objects_before,
+                                                       mission_objects(page), proximity_before)
+                case['operations'].append(completed_operation)
+                if capture_operation:
+                    page.screenshot(path=str(out / case['operationCapture']['after']))
+            else:
+                check(before['records'][mission_id].get('operationReceipts', {}) ==
+                      progress(page)['records'][mission_id].get('operationReceipts', {}),
+                      'a conversation or plain arrival fabricated an operation receipt')
         saved = progress(page)
         terminal(page)
         frozen = page.evaluate('window.__sceneQA.snapshot()')
         page.clock.run_for(500)
         check(progress(page) == saved, 'reading the contract advanced an objective')
         check(page.evaluate('window.__sceneQA.snapshot().player') == frozen['player'], 'City moved under the terminal')
-        if remount and index == 0:
+        if remount and completed_operation and case['remount'] is None:
             page.keyboard.press('Escape')
             expect(page.get_by_role('dialog')).to_have_count(0)
-            before_unmount = page.evaluate('({position:window.__sceneQA.snapshot().player,saveCount:window.__sceneQA.saves.length})')
+            before_unmount = page.evaluate('({position:window.__sceneQA.snapshot().player,objects:window.__sceneQA.snapshot().missionObjects,saveCount:window.__sceneQA.saves.length})')
             page.locator('#qa-unmount').click()
             expect(page.locator('.mosaic-rpg-panel')).to_have_count(0)
             page.wait_for_function('count=>window.__sceneQA.saves.length>count', arg=before_unmount['saveCount'], polling=50)
@@ -234,9 +318,14 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
             restored = page.evaluate('window.__sceneQA.snapshot().player')
             check(abs(restored['x'] - before_unmount['position']['x']) < .02 and
                   abs(restored['y'] - before_unmount['position']['y']) < .02, 'remount lost the player checkpoint')
+            check(mission_objects(page) == before_unmount['objects'], 'remount changed the real operation object states')
+            check(progress(page)['records'][mission_id].get('operationReceipts') == saved['records'][mission_id].get('operationReceipts'),
+                  'remount lost or changed an operation receipt')
             terminal(page)
             panel.locator('select').select_option(mission_id)
-            case['remount'] = {'completedStepIds': saved['records'][mission_id]['completedStepIds'], 'preserved': True}
+            case['remount'] = {'completedStepIds': saved['records'][mission_id]['completedStepIds'], 'preserved': True,
+                               'operationReceipt': completed_operation['receipt'], 'objects': before_unmount['objects'],
+                               'operationObjectsPreserved': True}
     terminal(page)
     expect(panel.locator('[data-city-contract-objective]')).to_have_attribute('data-contract-id', mission_id)
     expect(panel.locator('[data-city-contract-accept]')).to_have_count(0)
@@ -244,10 +333,129 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
     expect(panel.locator('[data-city-contract-choice]')).to_have_count(0)
     check(progress(page)['activeId'] is None, 'completed contract remains active')
     check(not page.evaluate('window.__sceneQA.reports.length'), 'City contract emitted a combat reward receipt')
+    check(case['operations'], 'authored City adventure completed without any real operation')
+    if remount:
+        check(case['remount'] and case['remount']['operationObjectsPreserved'], 'contract did not verify its operation checkpoint')
     case['receipt'] = progress(page)['records'][mission_id]
     check(case['receipt']['districtId'] == district and case['receipt']['universe'] == universe,
           'completed contract lost its source district or universe')
     return case
+
+
+def resident_offer_journey(page, args, lang, out, name):
+    """Enter the district and meet Mirelle using only normal player controls."""
+    record = {'status': 'running', 'missionId': 'city-mirelle-suture-v1', 'resident': 'arca_mirelle',
+              'scope': 'Fresh Atrium spawn, native portal travel and resident approach; no position or progress injection.'}
+    try:
+        page.clock.install(time=CLOCK_EPOCH); page.clock.pause_at(CLOCK_START)
+        load(page, args, 'city', lang, 'nexus')
+        check(not (progress(page) or {}).get('records'), 'offer journey began with quest progress')
+        later = page.get_by_role('button', name='Plus tard' if lang == 'fr' else 'Later', exact=True)
+        if later.is_visible(): later.click()
+        page.clock.run_for(32)
+        canvas = page.locator('.mosaic-rpg-canvas')
+        departure = page.evaluate('window.__sceneQA.snapshot()')
+        # Walk east until the portal enters the camera, as a player would from
+        # the Atrium spawn. This is native keyboard input, never a position edit.
+        canvas.focus()
+        page.keyboard.down('ArrowRight')
+        try:
+            page.clock.run_for(2000)
+        finally:
+            page.keyboard.up('ArrowRight')
+        page.clock.run_for(32)
+        approached = page.evaluate('window.__sceneQA.snapshot()')
+        check(approached['player']['x'] > departure['player']['x'] and not any(approached['keys'].values()),
+              'native eastward input did not move and release the player')
+        check(not (progress(page) or {}).get('records'), 'walking across the Atrium accepted a quest')
+        record['atriumWalk'] = {'before': departure, 'after': approached}
+        # The east Atrium portal is authored at (1420, 520). Convert that real
+        # world point with the canvas's current camera and scale; input remains
+        # a native click, followed by the engine's own walk and portal transfer.
+        point = canvas.evaluate('''node=>{const r=node.getBoundingClientRect(),s=window.__sceneQA.state();
+          return {x:(1420-s.camera.x)*r.width/node.width,y:(520-s.camera.y)*r.height/node.height,
+            width:r.width,height:r.height,before:window.__sceneQA.snapshot()};}''')
+        check(0 < point['x'] < point['width'] and 0 < point['y'] < point['height'], 'east Atrium portal is outside the native canvas view')
+        canvas.click(position={'x': point['x'], 'y': point['y']})
+        for _ in range(160):
+            page.clock.run_for(250)
+            if page.evaluate('window.__sceneQA.saved?.districtId') == 'threads': break
+        check(page.evaluate('window.__sceneQA.saved?.districtId') == 'threads', 'native Atrium portal walk did not reach the Gallery')
+        record['atriumPortal'] = {'screenPoint': {key: point[key] for key in ['x', 'y']}, 'before': point['before'],
+                                 'after': page.evaluate('window.__sceneQA.snapshot()')}
+        terminal(page)
+        destinations = page.get_by_role('region', name='Catalogue des quartiers disponibles' if lang == 'fr' else 'Available district catalog', exact=True)
+        destination = destinations.get_by_role('button', name='Nexus de Convergence', exact=True)
+        destination.click()
+        for _ in range(160):
+            page.clock.run_for(250)
+            if page.evaluate('window.__sceneQA.saved?.districtId') == DISTRICT: break
+        check(page.evaluate('window.__sceneQA.saved?.districtId') == DISTRICT, 'native Gallery portal walk did not enter the Nexus district')
+        check(not (progress(page) or {}).get('records'), 'portal travel accepted a quest')
+        terminal(page)
+        directory = page.locator('.mosaic-resident-directory')
+        directory.locator('summary').click()
+        directory.get_by_role('searchbox').fill('Mirelle')
+        target = directory.locator('[data-resident-id="arca_mirelle"]')
+        before = progress(page)
+        expected_target = page.evaluate('input=>window.__sceneQA.cityContractTarget(input)', arg={
+            'missionId': record['missionId'], 'stepId': 'meet-arca_mirelle', 'districtId': DISTRICT})
+        proximity_before = page.evaluate('window.__sceneQA.cityNpc("arca_mirelle")')
+        begin_walk_proof(target)
+        target.click()
+        try:
+            for _ in range(160):
+                page.clock.run_for(250)
+                if page.locator('[data-city-quest-offer="city-mirelle-suture-v1"]').count(): break
+            conversation = page.locator('[data-city-conversation="arca_mirelle"]')
+            offer = conversation.locator('[data-city-quest-offer="city-mirelle-suture-v1"]')
+            expect(offer).to_be_visible()
+        finally:
+            proof = page.evaluate('window.__stopReconnaissanceMotion()')
+            proof['expectedTarget'] = expected_target
+            proof['proximityBefore'] = proximity_before
+            proof['sceneAfter'] = page.evaluate('window.__sceneQA.snapshot()')
+            (out / f'{name}-offer-walk.json').write_text(json.dumps(proof, ensure_ascii=False, indent=2))
+        record['nativeWalk'] = validate_mosaic_motion(proof, nearby_target=expected_target)
+        record['expectedTarget'] = expected_target
+        record['proximityBefore'] = proximity_before
+        check(progress(page) == before, 'receiving or reading an offer accepted it automatically')
+        words = page.evaluate('''async lang=>{const {MOSAIC_CHARACTER_MISSIONS}=await import('/src/game/mosaicCharacterMissions.js');
+          const m=MOSAIC_CHARACTER_MISSIONS.find(item=>item.id==='city-mirelle-suture-v1');
+          return {request:m.request[lang],reply:m.steps.find(step=>step.id==='meet-arca_mirelle').dialogue[lang]};}''', lang)
+        speech = conversation.locator('[data-dialogue-quest] blockquote p')
+        expect(speech).to_have_text(words['request'])
+        check(not conversation.locator('[data-dialogue-topic]').count(), 'Mirelle received invented archive topics')
+        frozen = page.evaluate('window.__sceneQA.snapshot()')
+        page.clock.run_for(500)
+        check(page.evaluate('window.__sceneQA.snapshot()') == frozen and progress(page) == before,
+              'reading the real offer advanced the scene or quest')
+        page.screenshot(path=str(out / f'{name}-offer-received.png'))
+        offer.focus(); page.keyboard.press('Enter')
+        expect(offer).to_have_count(0)
+        expect(conversation.locator('[data-dialogue-return]')).to_be_focused()
+        expect(speech).to_have_text(words['reply'])
+        saved = progress(page)
+        check(saved['activeId'] == record['missionId'], 'keyboard acceptance did not track the offered mission')
+        check(saved['records'][record['missionId']]['completedStepIds'] == ['meet-arca_mirelle'],
+              'real resident acceptance did not preserve exactly the actual first meeting')
+        check(saved['records'][record['missionId']].get('operationReceipts') == {}, 'accepting a request fabricated a physical intervention')
+        check(page.evaluate('window.__sceneQA.snapshot().player') == frozen['player'], 'accepting a resident request moved the player')
+        page.clock.run_for(500)
+        check(progress(page) == saved, 'accepted conversation advanced another step while being read')
+        check(not page.evaluate('window.__sceneQA.reports.length'), 'a request created a combat reward')
+        page.screenshot(path=str(out / f'{name}-offer-accepted.png'))
+        record.update({'status': 'passed', 'request': words['request'], 'reply': words['reply'],
+                       'acceptanceFocus': True, 'receipt': saved['records'][record['missionId']]})
+        conversation.locator('[data-dialogue-return]').click()
+        expect(page.get_by_role('dialog')).to_have_count(0)
+        return record
+    except Exception as error:
+        record.update({'status': 'failed', 'error': str(error)})
+        page.screenshot(path=str(out / f'{name}-offer-failure.png'))
+        raise
+    finally:
+        (out / f'{name}-offer.json').write_text(json.dumps(record, ensure_ascii=False, indent=2))
 
 
 def run_case(page, args, profile, lang, label, out, name, result):
@@ -339,6 +547,16 @@ def main():
                         results.append(result)
                         try:
                             run_case(page, args, profile, lang, label, out, name, result)
+                            if district == 'nexus' and label == 'desktop':
+                                offer_context = browser.new_context(viewport=viewport, has_touch=True)
+                                try:
+                                    offer_page = offer_context.new_page()
+                                    offer_errors = []
+                                    offer_page.on('pageerror', lambda error: offer_errors.append(str(error)))
+                                    result['offer'] = resident_offer_journey(offer_page, args, lang, out, name)
+                                    check(not offer_errors, f'uncaught offer journey errors: {offer_errors}')
+                                finally:
+                                    offer_context.close()
                             check(not errors, f'uncaught browser errors: {errors}')
                             result['status'] = 'passed'
                         except Exception as error:

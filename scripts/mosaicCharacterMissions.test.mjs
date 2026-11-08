@@ -7,7 +7,8 @@ import { getMosaicExhibits, getMosaicExhibitZones } from '../src/game/mosaicExhi
 import { advanceMosaicPlayer, getMosaicZoneAnchor, getMosaicSceneObstacles, resolveMosaicInteraction } from '../src/game/mosaicCityRuntime.js';
 import { MOSAIC_CHARACTER_MISSIONS, getMosaicCharacterMissionCatalog, normalizeMosaicCharacterMissions,
   getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, startMosaicCharacterMission,
-  advanceMosaicCharacterMission, resolveMosaicCharacterMission } from '../src/game/mosaicCharacterMissions.js';
+  advanceMosaicCharacterMission, resolveMosaicCharacterMission, getMosaicCharacterMissionWorldObjects,
+  getMosaicCharacterMissionPropZones } from '../src/game/mosaicCharacterMissions.js';
 
 function contextFor(universe) {
   const residents = HEROES_DB.filter(hero => hero.universe === universe);
@@ -25,7 +26,9 @@ const allCatalog = ['Nexus de Convergence', 'Halo', 'Alien'].flatMap(universe =>
 function sceneFor(progress, mission) {
   const { district, anchor, residents, exhibits } = contextFor(mission.universe);
   const objective = getMosaicCharacterMissionObjective(progress, mission);
-  return { zones: [anchor, ...getMosaicExhibitZones(district, exhibits), ...getMosaicCharacterMissionZones(progress, allCatalog)],
+  const zones = [anchor, ...getMosaicExhibitZones(district, exhibits), ...getMosaicCharacterMissionZones(progress, allCatalog)];
+  const objects = getMosaicCharacterMissionWorldObjects(progress, allCatalog, zones);
+  return { zones, propZones: getMosaicCharacterMissionPropZones(objects, zones),
     npcs: residents.map((hero, index) => ({ hero, x: 720 + index * 38, y: 520 })), objective };
 }
 function resolved(progress, mission) {
@@ -101,7 +104,7 @@ for (const mission of allCatalog) {
     const state = { player: { x: 820, y: 760, speed: 2.35 }, keys: {}, npcs: [], obstacles: [] };
     let moved = 0;
     for (let index = 0; index < mission.steps.length; index++) {
-      const { objective, zones, npcs } = sceneFor(progress, mission);
+      const { objective, zones, propZones, npcs } = sceneFor(progress, mission);
       assert.equal(objective.index, index);
       assert.equal(progress.records[mission.id].completed, false);
       if (objective.step.type === 'decision') {
@@ -111,7 +114,7 @@ for (const mission of allCatalog) {
         progress = resolveMosaicCharacterMission(progress, mission, objective.step.choices.filter(item => item.valid)[route].id).progress;
       } else {
         const preferred = { type: objective.targetType, id: objective.targetId };
-        state.npcs = npcs; state.obstacles = getMosaicSceneObstacles(district, zones);
+        state.npcs = npcs; state.obstacles = getMosaicSceneObstacles(district, [...zones, ...propZones]);
         state.destination = preferred.type === 'npc' ? npcs.find(npc => npc.hero.id === preferred.id) : getMosaicZoneAnchor(zones.find(zone => zone.id === preferred.id));
         state.pendingInteraction = preferred;
         let interaction = resolveMosaicInteraction(state.player, { zones, npcs }, preferred);

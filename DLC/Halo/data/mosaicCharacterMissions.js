@@ -1,6 +1,6 @@
 /** Original Mosaic City contracts, not additional events in Halo's campaign.
  * Builders are injected so a profile can omit this entire DLC contribution. */
-export function createMosaicCharacterMissions({ text, person, marker, decision, choice, report }) {
+export function createLegacyMosaicCharacterMissions({ text, person, marker, decision, choice, report }) {
   return [
     {
       id: 'city-chief-unsc-route-v1', heroId: 'masterchief', universe: 'Halo', contentFile: 'DLC/Halo/data/mosaicCharacterMissions.js',
@@ -33,6 +33,76 @@ export function createMosaicCharacterMissions({ text, person, marker, decision, 
           choice('repeat-fallback', 'Conserver les relevés et refaire l’exercice avant ouverture.', 'Keep the readings and repeat the exercise before opening.', 'Le corridor reste en exercice ; le relevé acquis n’est pas effacé.', 'The corridor remains a practice route; the recorded reading is not erased.'),
           choice('discard-fallback', 'Supprimer le repli parce que l’aller a réussi.', 'Remove the fallback route because the outbound trip succeeded.', 'Le retour faisait partie de la mission. Un aller réussi ne justifie pas sa suppression.', 'The return was part of the mission. A successful outbound trip does not justify removing it.', false)
         ]), report]
+    }
+  ];
+}
+
+/** Original incidents at the City's UNSC Outpost, not additional Halo campaign events.
+ * Installation 04 establishes the Chief's methods and period, not this incident's history.
+ * Only new physical actions create operation receipts; the legacy factory preserves old saves. */
+export function createMosaicCharacterMissions({ text, person, marker, decision, choice, report }) {
+  const operate = (step, kind, propFr, propEn) => ({ ...step, operation: {
+    kind, label: step.text, propName: text(propFr, propEn), completedText: step.finding
+  } });
+  const contact = (fr, en, dialogueFr, dialogueEn) => ({
+    ...person('masterchief', fr, en), dialogue: text(dialogueFr, dialogueEn)
+  });
+  const finish = (fr, en, resultFr, resultEn) => operate({
+    ...report, text: text(fr, en), finding: text(resultFr, resultEn)
+  }, 'beacon', 'Liaison de l’avant-poste UNSC', 'UNSC outpost uplink');
+  return [
+    {
+      id: 'city-chief-unsc-route-v1', heroId: 'masterchief', universe: 'Halo', contentFile: 'DLC/Halo/data/mosaicCharacterMissions.js',
+      title: text('Le canal des survivants', 'The survivors’ channel'),
+      location: text('Avant-poste UNSC — relais et rampe d’extraction', 'UNSC Outpost — relay and extraction ramp'),
+      request: text('Rétablissez la liaison. Posez une balise à couvert. Je veux que chacun sache par où rentrer.', 'Restore the link. Set a beacon under cover. I want everyone to know the way back.'),
+      premise: text('Une secousse de la Brèche a coupé le relais de l’avant-poste. Les appels se perdent entre les hangars et une rampe exposée. Le Chief veut une liaison courte et un point de repli avant d’engager une équipe hors du couvert.', 'A tremor from the Breach has knocked out the outpost relay. Calls are being lost between the hangars and an exposed ramp. The Chief needs a short radio link and a fallback point before sending a team out of cover.'),
+      source: 'DLC/Halo/data/characterPlaques.js#masterchief; DLC/Halo/data/heroes.js#masterchief; DLC/Halo/data/mosaicUniversePlaces.js',
+      continuity: text('Incident original de Cité à l’avant-poste UNSC. John-117 reste rattaché à Installation 04 ; les relais et cette extraction locale n’ajoutent aucune scène à Halo: Combat Evolved.', 'Original City incident at the UNSC Outpost. John-117 remains tied to Installation 04; these relays and this local extraction add no scene to Halo: Combat Evolved.'),
+      references: ['https://www.halowaypoint.com/news/thats-so-raven'],
+      steps: [contact('Prendre les consignes du Chief au poste UNSC.', 'Get the Chief’s orders at the UNSC post.',
+          'Le relais est au pied du hangar. Remettez-le en service, puis balisez le passage couvert. Mon bouclier ne couvrira pas ceux qui resteront derrière.', 'The relay is beside the hangar. Bring it online, then mark the covered passage. My shield won’t cover the people behind me.'),
+        operate(marker('unsc-observed-route', 620, 570, 'Rebrancher le relais UNSC sous couvert.', 'Reconnect the UNSC relay under cover.',
+          'Le relais s’allume. Une porteuse stable remplace les parasites ; le poste peut de nouveau joindre l’aire de repli.', 'The relay lights up. A steady carrier replaces the static; the post can reach the fallback area again.'),
+        'repair', 'Relais radio UNSC', 'UNSC radio relay'),
+        operate(marker('unsc-uncertain-shortcut', 1340, 770, 'Déployer la balise au pied abrité de la rampe.', 'Deploy the beacon at the sheltered foot of the ramp.',
+          'La balise répond au relais. Depuis la rampe, son signal indique le passage abrité entre les hangars ; la traversée directe reste exposée.', 'The beacon answers the relay. From the ramp, its signal marks the sheltered passage between the hangars; the direct crossing remains exposed.'),
+        'beacon', 'Balise de repli UNSC', 'UNSC fallback beacon'),
+        decision('Quelle consigne envoyer à l’équipe ?', 'Which order should the team receive?', [
+          choice('mark-unverified', 'Faire suivre le passage couvert balisé, en laissant la rampe libre.', 'Use the marked covered passage and keep the ramp clear.', 'Le Chief fait préparer le repli par les hangars. La balise reste tournée vers le couvert.', 'The Chief has the fallback through the hangars prepared. The beacon stays aimed towards cover.'),
+          choice('request-recon', 'Garder l’équipe à l’abri et demander une reconnaissance de la rampe.', 'Keep the team sheltered and request a sweep of the ramp.', 'Le Chief garde la liaison ouverte. Personne ne s’engage sur la rampe avant le retour de la reconnaissance.', 'The Chief keeps the link open. No one commits to the ramp before the reconnaissance returns.'),
+          choice('shield-guarantee', 'Faire traverser la rampe à découvert derrière le bouclier du Chief.', 'Cross the exposed ramp behind the Chief’s shield.', '« Mon bouclier est sur mon armure. Trouvez du couvert pour les autres. »', '“My shield is on my armor. Find cover for everyone else.”', false)
+        ]),
+        finish('Ouvrir le canal de repli depuis l’ancre du poste.', 'Open the fallback channel from the outpost anchor.',
+          'Le canal de repli est ouvert. Le Chief vérifie la porteuse : « Reçu. On garde cette ligne. »', 'The fallback channel is open. The Chief checks the carrier: “Copy. Keep this line up.”')]
+    },
+    {
+      id: 'city-chief-return-corridor-v1', heroId: 'masterchief', universe: 'Halo', contentFile: 'DLC/Halo/data/mosaicCharacterMissions.js',
+      title: text('Le dernier relais', 'The last relay'),
+      location: text('Avant-poste UNSC — poste H-2 et hangar de repli', 'UNSC Outpost — post H-2 and fallback hangar'),
+      request: text('Le poste avancé ne peut plus émettre. Prenez le module de réserve et rétablissez le retour radio. Nous partirons quand la ligne tiendra.', 'The forward post can’t transmit. Take the spare module and restore the return link. We move when the line holds.'),
+      premise: text('Le relais du hangar reçoit les ordres du Chief, mais son canal de retour reste muet. Une équipe qui s’y replie pourrait recevoir des ordres sans pouvoir appeler à l’aide. Le module radio de réserve attend au poste H-2.', 'The hangar relay receives the Chief’s orders, but its return channel is silent. A team falling back there could receive orders without being able to call for help. A spare radio module is waiting at post H-2.'),
+      source: 'DLC/Halo/data/characterPlaques.js#masterchief; DLC/Halo/data/mosaicUniversePlaces.js; src/game/mosaicCityRuntime.js#MOSAIC_WELCOME',
+      continuity: text('Opération originale Multiverse Breach dans l’avant-poste de Cité. H-2 et la panne appartiennent à ce quartier ; aucun équipement de Halo 3 ni bataille supplémentaire n’est attribué à Installation 04.', 'Original Multiverse Breach operation at the City outpost. H-2 and the fault belong to this district; no Halo 3 equipment or additional battle is assigned to Installation 04.'),
+      references: ['https://www.halowaypoint.com/news/thats-so-raven'],
+      steps: [contact('Rejoindre le Chief avant de partir vers le hangar.', 'Join the Chief before heading to the hangar.',
+          'Prenez le module à H-2. Le relais est de l’autre côté du hangar. Revenez par le même poste pour ouvrir le canal de retour. Une radio qui ne fait qu’écouter ne suffit pas.', 'Take the module at H-2. The relay is across the hangar. Come back through the same post to open the return channel. A radio that only listens isn’t enough.'),
+        operate(marker('cover-origin', 520, 760, 'Prendre le module radio de réserve au poste H-2.', 'Collect the spare radio module at post H-2.',
+          'Le module est débranché de son banc de charge et prêt à être monté dans le relais du hangar.', 'The module is disconnected from its charging rack and ready to fit into the hangar relay.'),
+        'recover', 'Module radio de réserve', 'Spare radio module'),
+        operate(marker('cover-alternate', 1370, 580, 'Installer le module dans le relais de repli.', 'Fit the module into the fallback relay.',
+          'Le module se verrouille dans son logement. Le relais reçoit le poste H-2 ; son émission attend la remise en ligne du retour.', 'The module locks into its socket. The relay receives post H-2; transmission awaits the return link being brought online.'),
+        'repair', 'Relais du hangar de repli', 'Fallback hangar relay'),
+        operate(marker('cover-return', 520, 760, 'Revenir au poste H-2 et raccorder le retour radio.', 'Return to post H-2 and connect the return link.',
+          'Les deux indicateurs s’allument à H-2. La liaison fonctionne dans les deux sens ; un appel du hangar peut maintenant atteindre le poste.', 'Both indicators light up at H-2. The link works in both directions; a call from the hangar can now reach the post.'),
+        'repair', 'Raccord de retour H-2', 'H-2 return connection'),
+        decision('Comment tenir le repli ?', 'How should the fallback be held?', [
+          choice('keep-fallback', 'Laisser le relais actif jusqu’au dernier passage.', 'Keep the relay active until the last passage.', 'Le Chief réserve le canal au repli. Le module reste en place pour ceux qui suivent.', 'The Chief reserves the channel for the fallback. The module stays in place for those following.'),
+          choice('repeat-fallback', 'Maintenir le regroupement à H-2 et garder une veille radio.', 'Hold the rally at H-2 and maintain a radio watch.', 'Le Chief maintient le regroupement sous couvert. La radio reste ouverte pendant l’attente.', 'The Chief holds the rally under cover. The radio remains open while they wait.'),
+          choice('discard-fallback', 'Récupérer le module dès le premier appel reçu.', 'Retrieve the module as soon as the first call comes through.', '« Il reste des gens derrière. Le relais reste avec eux. »', '“There are still people behind us. The relay stays with them.”', false)
+        ]),
+        finish('Relier la veille H-2 à l’ancre de l’avant-poste.', 'Connect the H-2 watch to the outpost anchor.',
+          'La veille H-2 est raccordée. Le Chief prend le canal : « Liaison reçue. Maintenez l’écoute. »', 'The H-2 watch is connected. The Chief takes the channel: “Link received. Keep listening.”')]
     }
   ];
 }

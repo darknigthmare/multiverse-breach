@@ -1,27 +1,83 @@
 {
-  "schema": 3,
+  "schema": 4,
   "sourceRevision": "4ca3b2b87f4b7234612f11fc5c17ba205d36d340",
+  "runtimeBaseRevision": "6f26ea5fcdf07f65b7088f2a7b08c72e7ee204ce",
+  "sourceRevisionMeaning": "Historical roster baseline is retained in the workbook; runtimeSources and planning provenance describe the actual edited files.",
+  "planningDataSha256": "7d277f3dc8f43f6b4357b32c7442e69c5fa56368631b9c8b53cf61d15e1dde0d",
+  "planningSourceManifestSha256": "3e4aeef559c5ce8f609db1064cf505ca7fca2880ddb5d4d5b7311123990e7f39",
   "workbook": "Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx",
-  "sha256": "5cc8c5a9e7e805e5113c3869417bd0aef2a497858031d147b39313a8ff19ef02",
-  "bytes": 1173738,
-  "operation": "Imported existing workbook; changed runtime contracts and their summary only",
-  "baselineSha256": "d4e42baee80c3cb011a0319e272b2190dc2c665af6ceecc51eebb6c316707c0d",
+  "sha256": "3be59508c4d9f9d76751b89d66e3f3fe426611837b13e91d30233a4cf7d8d391",
+  "bytes": 1187121,
+  "operation": "Imported existing workbook; rewrote 28 runtime stories and 24 future Nexus proposals, flagged generic adaptations, preserved all tracking and unrelated tabs",
+  "baselineSha256": "5cc8c5a9e7e805e5113c3869417bd0aef2a497858031d147b39313a8ff19ef02",
   "runtimeSources": [
     {
-      "source": "src/game/mosaicCharacterMissions.js",
-      "sha256": "c240a2f1c12ed403105f0c1a79ffc2049d7feaf8f5ef52cc6b1337b712879a25"
+      "source": "DLC/Alien/data/characterPlaques.js",
+      "sha256": "5bfa1d796fc1f372c349a6d0fa843877ae4c3a06eb496680d3e1fc32cff0c8ba"
     },
     {
-      "source": "DLC/Halo/data/mosaicCharacterMissions.js",
-      "sha256": "8197db74916beeace8862878845a8e95374ef584c6f97d8359302712349e2549"
+      "source": "DLC/Alien/data/heroes.js",
+      "sha256": "66e385352f30bab5fbc0464b9d0f4cf1fd5bf8f6ad00596b6721db7c8f01afd0"
     },
     {
       "source": "DLC/Alien/data/mosaicCharacterMissions.js",
-      "sha256": "aac637be9f508b5a1e746ea36ea0427370be5af8b2813ea21a6d389da095f37a"
+      "sha256": "d9f0477dc82374beb1a273db403ff822193e353266757495578e29494c9a1398"
+    },
+    {
+      "source": "DLC/Alien/data/sourceSceneStages.js",
+      "sha256": "6844a46c830019787e031801cc63f47ec54d5393ed968f466062527477ed876d"
+    },
+    {
+      "source": "DLC/Halo/data/characterPlaques.js",
+      "sha256": "34078c98cfd984a286937c2b8de0ec51aeba09f4cee0a24cc6ea9ee0ee7a4323"
+    },
+    {
+      "source": "DLC/Halo/data/heroes.js",
+      "sha256": "dc6eca0d3e6ac02668143dd19aaa328766827a76140385098aac84d53ec28f6c"
+    },
+    {
+      "source": "DLC/Halo/data/mosaicCharacterMissions.js",
+      "sha256": "61a96adeea8d0009845ac7b6c878c17af81032faded156815dc7ff9ce0bb8342"
+    },
+    {
+      "source": "DLC/Halo/data/mosaicUniversePlaces.js",
+      "sha256": "25a451ee4ccd3f93c966ce88c1589f24ecf4dfd66c60e42d1711408456d3eda2"
+    },
+    {
+      "source": "src/game/characterPlaques.js",
+      "sha256": "bb0c7fcc8b9b645810556e1ad75c9947fb0c83013d1fd872bbb292152f16012b"
+    },
+    {
+      "source": "src/game/heroes.js",
+      "sha256": "860654b18e01309aec089dbc45a10b5060f194a33de8e5fe1bc5956b818cb371"
+    },
+    {
+      "source": "src/game/lore.js",
+      "sha256": "c9e1d18810c8b4d502349aae5d40e339225fae6f43e9fce887297197f0259abb"
     },
     {
       "source": "src/game/mosaicCharacterFollowups.js",
       "sha256": "b130962ff2e257483e5a966a18acf6d96c88944b001592460c2b3d2366bf33b9"
+    },
+    {
+      "source": "src/game/mosaicCharacterMissions.js",
+      "sha256": "9b1dcf2374236ecc4ddb033ea7fe63d5391d3a0872f73da8c91cfaa08346555c"
+    },
+    {
+      "source": "src/game/mosaicCharacterStories.js",
+      "sha256": "aa2e4d4e00e06b6c03d8eb3d208ea6a811ccd65bcc9e1c895aa8f1f50c34235c"
+    },
+    {
+      "source": "src/game/mosaicCityRuntime.js",
+      "sha256": "e8c23845c86d66bed9701f3fc39482a393b7ee93abcd1cd85f7fa80acd11393b"
+    },
+    {
+      "source": "src/game/mosaicMissionOperations.js",
+      "sha256": "9f88234c6b6ca07c686fa315b76af39bdf1a9e681b6cb926f63954f134e4584f"
+    },
+    {
+      "source": "src/game/ocCampaign.js",
+      "sha256": "03e8be2a60fbbcbef4e3f439046aa68d7f999e53b28107805dee6a114e11e2d8"
     }
   ],
   "characters": 1912,
@@ -34,6 +90,18 @@
   "chapterTwoContracts": 12,
   "inheritedRoutes": 24,
   "decisionRoutes": 24,
+  "rewrittenNexusProposals": 24,
+  "proposalsRequiringDiegeticRewrite": 3780,
+  "preservedTrackingColumns": [
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "S",
+    "T",
+    "U"
+  ],
   "dependencyProof": {
     "input": "Contrats jouables!A34",
     "output": "Synthèse!B12",
@@ -41,6 +109,35 @@
     "withLastContractBlank": 27,
     "restored": true
   },
+  "gateProof": [
+    {
+      "inputs": [
+        "Validé",
+        "Terminée",
+        "Intégrée",
+        "À faire"
+      ],
+      "result": "Exécuter la recette"
+    },
+    {
+      "inputs": [
+        "Validé",
+        "Terminée",
+        "Intégrée",
+        "Validée"
+      ],
+      "result": "Terminée"
+    },
+    {
+      "inputs": [
+        "",
+        "Terminée",
+        "Intégrée",
+        "Validée"
+      ],
+      "result": "Valider le lore"
+    }
+  ],
   "sheets": [
     "Synthèse",
     "Missions à créer",
@@ -51,18 +148,34 @@
   ],
   "previews": [
     "synthese.png",
-    "contrats-jouables.png",
     "contrats-dlc-acces.png",
-    "contrats-suites-17-18.png",
-    "contrats-suites-19-20.png",
-    "contrats-suites-21-22.png",
-    "contrats-suites-23-24.png",
-    "contrats-suites-25-26.png",
-    "contrats-suites-27-28.png",
-    "contrats-suites-acces.png"
+    "contrats-suites-sources.png",
+    "contrats-recits-1-2.png",
+    "contrats-recits-3-4.png",
+    "contrats-recits-5-6.png",
+    "contrats-recits-7-8.png",
+    "contrats-recits-9-10.png",
+    "contrats-recits-11-12.png",
+    "contrats-recits-13-14.png",
+    "contrats-recits-15-16.png",
+    "contrats-recits-17-18.png",
+    "contrats-recits-19-20.png",
+    "contrats-recits-21-22.png",
+    "contrats-recits-23-24.png",
+    "contrats-recits-25-26.png",
+    "contrats-recits-27-28.png",
+    "prolongements-nexus-1-4.png",
+    "prolongements-nexus-5-8.png",
+    "prolongements-nexus-9-12.png",
+    "prolongements-nexus-13-16.png",
+    "prolongements-nexus-17-20.png",
+    "prolongements-nexus-21-24.png",
+    "niveau-individual_proposal.png",
+    "niveau-research_scaffold.png",
+    "niveau-source_objective_adaptation.png",
+    "niveau-source_family_adaptation.png"
   ],
   "preservedSheets": [
-    "Missions à créer",
     "Personnages",
     "Profils FPS",
     "Modes FPS"

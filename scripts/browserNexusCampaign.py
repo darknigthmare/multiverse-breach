@@ -101,6 +101,9 @@ def conversation(page, args, lang, out, name):
     motion=validate_mosaic_motion(proof)
     panel=page.locator('[data-city-conversation="arca_tessera"]')
     expect(panel.locator('[data-dialogue-topic]')).to_have_count(4)
+    background=panel.locator('.mosaic-dialogue-background')
+    if background.count() and not background.evaluate('(node)=>node.open'):
+        background.locator('summary').click()
     before=page.evaluate('window.__sceneQA.snapshot()')
     sources=page.evaluate('''async()=>{
       const {CHARACTER_PLAQUES}=await import('/src/game/characterPlaques.js');return CHARACTER_PLAQUES.arca_tessera;
