@@ -296,9 +296,18 @@ try {
     await page.mouse.down();
     assert.equal(actor(await observe(page, 30)).charging, true);
     const pointerId = await page.evaluate(() => window.__gamepadControlEvents.find(event => event.type === 'pointerdown').pointerId);
+    // hasPointerCapture also reports a pending capture. Observe its native
+    // activation before releasing it so there is an active capture to lose.
+    await page.mouse.move(box.x + box.width / 2 + 1, box.y + box.height / 2);
+    await page.waitForFunction(id => window.__gamepadControlEvents.some(event =>
+      event.type === 'gotpointercapture' && event.pointerId === id && event.trusted
+    ), pointerId, { timeout: 10000 });
     assert.equal(await control.evaluate((element, id) => element.hasPointerCapture(id), pointerId), true);
     await control.evaluate((element, id) => element.releasePointerCapture(id), pointerId);
-    await page.mouse.move(box.x + box.width / 2 + 1, box.y + box.height / 2);
+    await page.mouse.move(box.x + box.width / 2 + 2, box.y + box.height / 2);
+    await page.waitForFunction(id => window.__gamepadControlEvents.some(event =>
+      event.type === 'lostpointercapture' && event.pointerId === id && event.trusted
+    ), pointerId, { timeout: 10000 });
     await assertNativeEvent(page, 'lostpointercapture');
     const cancelled = await observe(page);
     idleWithoutHit(cancelled);
