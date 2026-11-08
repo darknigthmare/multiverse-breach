@@ -14,6 +14,7 @@ import { ENEMIES_DB } from '../src/game/enemies.js';
 import { getExpandedStages } from '../src/game/expandedUniverses.js';
 import { getSceneCanvasSize, getSceneHudLayout } from '../src/game/immersiveHubState.js';
 import { getExtinctionRelayStatus } from '../src/game/extinctionRelayOperation.js';
+import { getExtinctionLootTarget, getNexusFieldObjective } from '../src/game/nexusFieldOperation.js';
 
 const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
 const hubCssSource = readFileSync(new URL('../src/components/HubImmersion.css', import.meta.url), 'utf8');
@@ -442,8 +443,10 @@ test('Extinction Zone contracts keep real objectives, bounded resources, aiming,
   assert.equal(callback.type, 'ArrowFunctionExpression');
   // The callback boundary is structural: adding a real dependency such as lang
   // must not turn this health regression into a truncated-source SyntaxError.
-  const buildSnapshot = new Function('getRunObjectiveText', 'getExtinctionRelayStatus', 'EXTINCTION_BEACON_TARGET', 'lang',
-    `return (${hubSource.slice(callback.start, callback.end)});`)(() => 'Objectif', getExtinctionRelayStatus, 3, 'fr');
+  const buildSnapshot = new Function('getRunObjectiveText', 'getExtinctionRelayStatus', 'getExtinctionLootTarget',
+    'getNexusFieldObjective', 'EXTINCTION_BEACON_TARGET', 'lang',
+    `return (${hubSource.slice(callback.start, callback.end)});`)(
+    () => 'Objectif', getExtinctionRelayStatus, getExtinctionLootTarget, getNexusFieldObjective, 3, 'fr');
   for (const [hp, expected] of [[80, 80], [-5, 0], [240, 200]]) {
     const snapshot = buildSnapshot({ phase: 'running', hp, maxHp: 200, loot: [], px: 0, py: 0 });
     assert.equal(snapshot.hp, expected);
@@ -452,6 +455,25 @@ test('Extinction Zone contracts keep real objectives, bounded resources, aiming,
   assert.equal(buildSnapshot({ hp: 20 }).maxHp, 100, 'preparation has a valid fallback maximum');
   assert.match(hubSource, /<progress value=\{runSnapshot\.hp\} max=\{runSnapshot\.maxHp\} aria-label=/);
   assert.match(hubSource, /Math\.round\(runSnapshot\.hp\)[\s\S]{0,30}Math\.round\(runSnapshot\.maxHp\)/);
+
+  // The visible prompt must agree with real loot targeting when a cache and
+  // the return airlock share the player's position. Objectives are not loot.
+  const airlock = { type: 'field-return', wx: -6, wy: 0.5, label: 'Sas · transmettre' };
+  const cache = { type: 'normal', effect: 'heal', wx: -6, wy: 0.5, label: 'Cache soin' };
+  const returnState = { phase: 'running', hp: 80, maxHp: 200, px: -6, py: 0.5,
+    fieldOperation: { status: 'return' }, loot: [airlock, cache, { type: 'beacon', used: true }] };
+  const cacheSnapshot = buildSnapshot(returnState);
+  assert.equal(cacheSnapshot.nearbyLoot, 'Cache soin', 'a return marker must not hide the nearby cache prompt');
+  assert.equal(cacheSnapshot.fieldObjective.status, 'return');
+  assert.equal(cacheSnapshot.fieldObjective.distance, 0, 'the return guidance uses the actual airlock position');
+  cache.used = true;
+  const airlockSnapshot = buildSnapshot(returnState);
+  assert.equal(airlockSnapshot.nearbyLoot, 'Sas · transmettre', 'the airlock becomes the target once the cache is collected');
+  assert.equal(airlockSnapshot.loot, 1, 'the secured beacon does not increase collected loot');
+  airlock.used = true;
+  const returnedSnapshot = buildSnapshot(returnState);
+  assert.equal(returnedSnapshot.nearbyLoot, null, 'a used airlock is no longer offered');
+  assert.equal(returnedSnapshot.loot, 1, 'transmitting the report does not count as collected loot');
 
   // The full viewport canvas now adapts its backing ratio instead of imposing
   // 84:43. Test the exact size helper used by ResizeObserver at all review sizes.
