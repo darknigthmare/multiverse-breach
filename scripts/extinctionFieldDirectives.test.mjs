@@ -5,6 +5,7 @@ import { parseAst } from 'rolldown/parseAst';
 import * as directives from '../src/game/extinctionFieldDirectives.js';
 import { createExtinctionRelayOperation, interactExtinctionRelayOperation, tickExtinctionRelayOperation } from '../src/game/extinctionRelayOperation.js';
 import { damageExtinctionEnemy, clearExtinctionProtocolEffects } from '../src/game/extinctionSignatures.js';
+import { clearExtinctionFieldEquipment } from '../src/game/extinctionFieldEquipment.js';
 import { clearNexusFieldOperation, getNexusFieldRunProof } from '../src/game/nexusFieldOperation.js';
 import { applyExtinctionReport } from '../src/game/immersiveHubState.js';
 import { emptySceneAim } from '../src/game/sceneInputs.js';
@@ -151,7 +152,7 @@ const finishNode = component.body.body.flatMap(node => node.type === 'VariableDe
 function finishHarness(state) {
   const reports = [];
   const env = { ...directives, stateRef: { current: state }, sceneInputsRef: { current: { clear() {} } }, aimPointerRef: { current: null },
-    emptySceneAim, lang: 'fr', runMode: state.runMode, getNexusFieldRunProof, clearNexusFieldOperation, clearExtinctionProtocolEffects,
+    emptySceneAim, lang: 'fr', runMode: state.runMode, getNexusFieldRunProof, clearNexusFieldOperation, clearExtinctionProtocolEffects, clearExtinctionFieldEquipment,
     buildRunSnapshot: value => ({ phase: value.phase }), setRunSnapshot() {}, sound: { playSfx() {} }, onSessionEnd: report => reports.push(report) };
   return { reports, finish: new Function(...Object.keys(env), `return (${hub.slice(finishNode.start, finishNode.end)});`)(...Object.values(env)) };
 }

@@ -4,12 +4,14 @@ import { DISCIPLINE_SPRITE_REGISTRY } from '../game/disciplineSprites.js';
 import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { getMosaicExhibits, getMosaicExhibitView, getMosaicExhibitZones, drawMosaicService } from '../game/mosaicExhibits.js';
 import { buildMosaicReconnaissanceDossier, normalizeMosaicReconnaissance, startMosaicReconnaissance, advanceMosaicReconnaissance, getMosaicReconnaissanceObjective } from '../game/mosaicReconnaissance.js';
-import { normalizeMosaicCharacterMissions, getMosaicCharacterMissionCatalog, getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, getMosaicCharacterMissionWorldObjects, getMosaicCharacterMissionPropZones, startMosaicCharacterMission, restartMosaicCharacterMission, acceptMosaicCharacterMissionRequest, advanceMosaicCharacterMission, resolveMosaicCharacterMission, localizeCityMission } from '../game/mosaicCharacterMissions.js';
+import { normalizeMosaicCharacterMissions, getMosaicCharacterMissionCatalog, getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, getMosaicCharacterMissionWorldObjects, getMosaicCharacterMissionPropZones, getMosaicCharacterMissionCargo, startMosaicCharacterMission, restartMosaicCharacterMission, acceptMosaicCharacterMissionRequest, advanceMosaicCharacterMission, resolveMosaicCharacterMission, localizeCityMission } from '../game/mosaicCharacterMissions.js';
 import { drawMosaicMissionObject, getMosaicMissionOperation } from '../game/mosaicMissionOperations.js';
+import { drawMosaicMissionCargo } from '../game/mosaicMissionCargo.js';
 import MosaicCharacterMissions from './MosaicCharacterMissions.jsx';
 import { createExtinctionRelayOperation, tickExtinctionRelayOperation, interactExtinctionRelayOperation, getExtinctionRelayStatus } from '../game/extinctionRelayOperation.js';
 import { createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols, getExtinctionProtocolBrief, clearExtinctionProtocolEffects, getExtinctionProtocolSpeedFactor, fireExtinctionPickupWeapon, getExtinctionPickupBrief } from '../game/extinctionSignatures.js';
-import { getExtinctionFighterProfile, rememberExtinctionPersonalKit, restoreExtinctionPersonalKit } from '../game/extinctionFighterProfiles.js';
+import { getExtinctionFighterProfile } from '../game/extinctionFighterProfiles.js';
+import { equipExtinctionFieldPickup, holsterExtinctionFieldWeapon, restoreExtinctionFieldWeapon, getExtinctionFieldWeaponReadout, clearExtinctionFieldEquipment } from '../game/extinctionFieldEquipment.js';
 import { EXTINCTION_FIELD_DIRECTIVES, createExtinctionFieldDirective, getExtinctionDirectiveTarget, interactExtinctionFieldDirective, tickExtinctionFieldDirective, markExtinctionHuntTarget, canAdvanceExtinctionDirectiveWave, canCompleteExtinctionFieldDirective, getExtinctionDirectiveSpeedFactor, getExtinctionFieldDirectiveStatus, getExtinctionRadarPoint, drawExtinctionDirectiveMarkers } from '../game/extinctionFieldDirectives.js';
 import ExtinctionFighterBriefing from './ExtinctionFighterBriefing.jsx';
 import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicResidents.js';
@@ -99,7 +101,8 @@ import './MosaicCityHub.css';
 import './HubImmersion.css';
 import ImmersiveDrawer from './ImmersiveDrawer.jsx';
 import MosaicGuidePanel from './MosaicGuidePanel.jsx';
-import MosaicResidentDialogue, { MosaicEvidenceLedger } from './MosaicResidentDialogue.jsx';
+import { MosaicEvidenceLedger } from './MosaicResidentDialogue.jsx';
+import MosaicResidentConversation from './MosaicResidentConversation.jsx';
 import NexusFieldBriefing from './NexusFieldBriefing.jsx';
 import { NEXUS_FIELD_OPERATION_ID, getNexusFieldAccess, getNexusFieldCompletion, createNexusFieldOperation, getNexusFieldReturnMarker, getExtinctionLootTarget, openNexusFieldReturn, getNexusFieldObjective, drawNexusFieldRadarMarker, interactNexusFieldReturn, getNexusFieldRunProof, clearNexusFieldOperation } from '../game/nexusFieldOperation.js';
 import GameDisplaySettings from './GameDisplaySettings.jsx';
@@ -2292,14 +2295,15 @@ function MosaicCityHub({
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
   const [conversationHeroId, setConversationHeroId] = useState(null);
   const [missionConversation, setMissionConversation] = useState(null);
-  const conversationFocusRef = useRef(null);
-  const conversationFocusPending = useRef(false);
   const cityTerminalButtonRef = useRef(null);
   const journalRef = useRef(null);
   const journalFocusRequestedRef = useRef(false);
   const guideDetailsRef = useRef(null);
   const guideFocusRequestedRef = useRef(false);
-  const openJournal = () => { guideFocusRequestedRef.current = false; journalFocusRequestedRef.current = true; setCityMenuOpen(true); };
+  const openJournal = () => {
+    guideFocusRequestedRef.current = false; journalFocusRequestedRef.current = true;
+    setConversationHeroId(null); setMissionConversation(null); setCityMenuOpen(true);
+  };
   const openGuideDetails = () => {
     // The guide card can disappear when paused in the terminal. Its persistent
     // terminal button remains a valid return target for the modal lifecycle.
@@ -2316,18 +2320,11 @@ function MosaicCityHub({
       guideFocusRequestedRef.current = false;
     });
     return () => cancelAnimationFrame(frame);
-  }, [cityMenuOpen]);
+  }, [cityMenuOpen, conversationHeroId]);
   const closeCityMenu = useCallback(() => setCityMenuOpen(false), []);
   useEffect(() => {
-    if (!cityMenuOpen) { setConversationHeroId(null); setMissionConversation(null); return undefined; }
-    if (!conversationFocusPending.current || !conversationHeroId) return undefined;
-    const frame = requestAnimationFrame(() => {
-      conversationFocusRef.current?.scrollIntoView({ block: 'start' });
-      conversationFocusRef.current?.focus({ preventScroll: true });
-      conversationFocusPending.current = false;
-    });
-    return () => cancelAnimationFrame(frame);
-  }, [cityMenuOpen, conversationHeroId]);
+    if (!cityMenuOpen) { setConversationHeroId(null); setMissionConversation(null); }
+  }, [cityMenuOpen]);
   const cityMenuRef = useRef(false);
   const [runtimeError, setRuntimeError] = useState(null);
   const [renderAttempt, setRenderAttempt] = useState(0);
@@ -2695,6 +2692,10 @@ function MosaicCityHub({
   const missionWorldObjectsRef = useRef(missionWorldObjects);
   missionWorldObjectsRef.current = missionWorldObjects;
   stateRef.current.missionObjects = missionWorldObjects;
+  const missionCargo = useMemo(() => getMosaicCharacterMissionCargo(characterMissions, lang), [characterMissions, lang]);
+  const missionCargoRef = useRef(missionCargo);
+  missionCargoRef.current = missionCargo;
+  stateRef.current.missionCargo = missionCargo;
   useEffect(() => {
     if (!cityMenuOpen || !exhibitFocusPending.current) return undefined;
     const frame = requestAnimationFrame(() => { exhibitFocusRef.current?.focus({ preventScroll: true }); exhibitFocusRef.current?.scrollIntoView({ block: 'nearest' }); exhibitFocusPending.current = false; });
@@ -2744,6 +2745,8 @@ function MosaicCityHub({
     ? { ...(archivedConversation || { heroId: conversationHero.id, name: conversationHero.name,
       role: conversationHero.universe, universe: conversationHero.universe, topics: [] }), questExchange: missionConversation }
     : archivedConversation;
+  const conversationMission = characterMissionCatalog.find(item => item.id === missionConversation?.missionId);
+  const conversationObjective = getMosaicCharacterMissionObjective(characterMissions, conversationMission, lang);
   const residentGuide = currentDistrict === 'atrium' ? (safeHeroes.find(hero => hero.id === 'arca_mirelle') || BASE_HEROES_DB.find(hero => hero.id === 'arca_mirelle')) : null;
   const residentView = useMemo(() => getMosaicResidentView(residentCatalog, {
     group: residentGroups[currentDistrict] || 0, guideId: residentGuide?.id, query: residentQuery, page: residentPage
@@ -2998,9 +3001,8 @@ function MosaicCityHub({
       const line = localizeCityMission(contractResult.changed ? contractStep?.dialogue || spokenMission.request : spokenMission.request, lang);
       setMissionConversation({ heroId: target.id, missionId: spokenMission.id,
         title: localizeCityMission(spokenMission.title, lang), line, phase: contractResult.changed ? 'active' : 'offer' });
-      cityTerminalButtonRef.current?.focus({ preventScroll: true });
+      canvasRef.current?.focus({ preventScroll: true });
       setConversationHeroId(target.id);
-      conversationFocusPending.current = true;
       setCityMenuOpen(true);
       setHubLog(`${target.name} : ${line}`);
       sound.playSfx('confirm');
@@ -3018,11 +3020,10 @@ function MosaicCityHub({
       ownedHeroIds: unlockedHeroes, plaque: getCharacterPlaque(target), lang
     });
     if (dialogue) {
-      cityTerminalButtonRef.current?.focus({ preventScroll: true });
+      canvasRef.current?.focus({ preventScroll: true });
       setConversationHeroId(dialogue.heroId);
-      conversationFocusPending.current = true;
-      // The interaction already stopped walking. The existing terminal owns
-      // pause, focus and Escape; a conversation never creates a second overlay.
+      // The shared menu flag pauses the world; only the conversation shell is
+      // mounted until the player explicitly asks for the pocket journal.
       setCityMenuOpen(true);
     }
     const compatible = state.npcs
@@ -3422,6 +3423,7 @@ function MosaicCityHub({
           }
           if (npc.isPlayer) {
             drawPixelPerson(npc.x, npc.y, '#39c5bb', '#ffea00', npc.facing, playerName.slice(0, 10), true, { ...playerAvatar, state: npc.state });
+            drawMosaicMissionCargo(ctx, missionCargoRef.current, npc, state.t, Boolean(reducedMotion?.matches));
             return;
           }
           const hero = npc.hero;
@@ -3680,13 +3682,14 @@ function MosaicCityHub({
         </div>
         <button ref={cityTerminalButtonRef} type="button" className="btn-retro" onClick={() => setCityMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'TERMINAL · JOURNAL' : 'TERMINAL · JOURNAL'}</button>
       </div>
-      <ImmersiveDrawer open={cityMenuOpen} onClose={closeCityMenu} lang={lang} className="mosaic-terminal-drawer"
+      <MosaicResidentConversation open={cityMenuOpen && Boolean(residentConversation)} conversation={residentConversation} lang={lang}
+        location={conversationMission?.location}
+        nextAction={['active', 'paused'].includes(conversationObjective?.status) ? conversationObjective.text : null}
+        onClose={closeCityMenu} onAcceptMission={acceptResidentRequest} onOpenJournal={openJournal} />
+      <ImmersiveDrawer open={cityMenuOpen && !residentConversation} onClose={closeCityMenu} lang={lang} className="mosaic-terminal-drawer"
         scrollLabel={lang === 'fr' ? 'Journal et services de la Cité' : 'City journal and services'}
         title={lang === 'fr' ? 'Terminal de poche A.R.C.A.' : 'A.R.C.A. pocket terminal'}>
       <div className="nexus-play-copy">
-        {residentConversation && <div ref={conversationFocusRef} tabIndex={-1}>
-          <MosaicResidentDialogue key={residentConversation.heroId} conversation={residentConversation} lang={lang} onClose={closeCityMenu} onAcceptMission={acceptResidentRequest} />
-        </div>}
         <div className="portal-focus-kicker">{lang === 'fr' ? 'CITE-MOSAIQUE / RPG VIVANT' : 'MOSAIC CITY / LIVING RPG'}</div>
         <h3>{lang === 'fr' ? 'Cite-Mosaique' : 'Mosaic City'}</h3>
         <p>
@@ -3841,6 +3844,10 @@ function MosaicCityHub({
         </div>
       </div>
       </ImmersiveDrawer>
+      {missionCargo && <p className="mosaic-carried-item" data-city-cargo={missionCargo.id} role="status">
+        <strong>{lang === 'fr' ? 'EN MAIN' : 'CARRYING'}</strong> · {missionCargo.label}
+        <span>{lang === 'fr' ? ' — à remettre avant de prendre un autre objet' : ' — deliver before picking up another item'}</span>
+      </p>}
       <div className="mosaic-rpg-stage">
         <button type="button" className="mosaic-world-log" onClick={openJournal} aria-haspopup="dialog" aria-label={lang === 'fr' ? 'Lire la transmission complète' : 'Read full transmission'}>
           <strong>{lang === 'fr' ? 'TRANSMISSION · LIRE' : 'TRANSMISSION · READ'}</strong>
@@ -3935,6 +3942,8 @@ function ExtinctionRoyale({
   const signatureProfile = fighterProfile.signature;
   const stateRef = useRef({
     phase: 'ready',
+    personalKit: null,
+    fieldWeapon: null,
     hp: 100,
     maxHp: 100,
     armor: 0,
@@ -4030,6 +4039,7 @@ function ExtinctionRoyale({
   const buildRunSnapshot = useCallback((state) => {
     const maxHp = Math.max(1, state.maxHp || 100);
     const nearbyLoot = getExtinctionLootTarget(state) || getExtinctionDirectiveTarget(state, lang);
+    const fieldWeapon = getExtinctionFieldWeaponReadout(state);
     return {
       phase: state.phase,
       hp: Math.max(0, Math.min(maxHp, state.hp || 0)),
@@ -4051,6 +4061,8 @@ function ExtinctionRoyale({
       weaponType: state.weapon?.type || 'pistol',
       weaponResource: state.weapon?.resource || 'ammo',
       canRestoreKit: Boolean(state.personalKit && state.weapon?.type !== 'pistol'),
+      fieldWeapon,
+      canRestoreFieldWeapon: Boolean(fieldWeapon?.canRestore),
       directive: getExtinctionFieldDirectiveStatus(state, lang),
       directiveSummary: state.directiveSummary || null,
       relay: getExtinctionRelayStatus(state.relayOperation, `beacon-${Math.min(state.wave || 1, EXTINCTION_BEACON_TARGET)}`, lang),
@@ -4140,6 +4152,7 @@ function ExtinctionRoyale({
       fieldDirective: null,
       directiveSummary: null,
       personalKit: null,
+      fieldWeapon: null,
       hp: 100,
       maxHp: 100,
       ammo: 24,
@@ -4243,6 +4256,8 @@ function ExtinctionRoyale({
       maxHp: Math.min(260, Math.max(85, Math.round(stats.hp * 0.75 * role.hp))),
       armor: role.armor,
       weapon: baseWep,
+      personalKit: null,
+      fieldWeapon: null,
       ammo: maxAmmo,
       maxAmmo,
       reserveAmmo: maxAmmo * 3,
@@ -4320,6 +4335,7 @@ function ExtinctionRoyale({
     state.directiveSummary = getExtinctionFieldDirectiveStatus(state, lang);
     state.fieldDirective = null;
     state.personalKit = null;
+    clearExtinctionFieldEquipment(state);
     state.phase = 'ended';
     state.relaySummary = state.relayOperation ? {
       secured: Object.values(state.relayOperation.beacons).filter(entry => entry.status === 'secured').length
@@ -4873,8 +4889,20 @@ function ExtinctionRoyale({
   };
 
   const restorePersonalKit = () => {
-    if (sessionPausedRef.current || intelRef.current || !restoreExtinctionPersonalKit(stateRef.current)) return;
-    stateRef.current.statusText = lang === 'fr' ? 'Kit personnel repris. Son stock et ses délais sont conservés.' : 'Personal kit restored. Its stock and cooldowns are preserved.';
+    if (sessionPausedRef.current || intelRef.current || !holsterExtinctionFieldWeapon(stateRef.current)) return;
+    const stored = getExtinctionFieldWeaponReadout(stateRef.current);
+    stateRef.current.statusText = lang === 'fr'
+      ? `Kit personnel repris. ${stored.name} rangé : ${stored.ammo} + ${stored.reserveAmmo} en réserve. B pour le reprendre.`
+      : `Personal kit restored. ${stored.name} stowed: ${stored.ammo} + ${stored.reserveAmmo} reserve. B to retrieve it.`;
+    setRunSnapshot(buildRunSnapshot(stateRef.current));
+  };
+
+  const restoreFieldWeapon = () => {
+    if (sessionPausedRef.current || intelRef.current || !restoreExtinctionFieldWeapon(stateRef.current)) return;
+    const state = stateRef.current;
+    state.statusText = lang === 'fr'
+      ? `${state.weapon.name} repris : ${state.ammo} + ${state.reserveAmmo} en réserve. V pour retrouver le kit personnel.`
+      : `${state.weapon.name} retrieved: ${state.ammo} + ${state.reserveAmmo} reserve. V to restore the personal kit.`;
     setRunSnapshot(buildRunSnapshot(stateRef.current));
   };
 
@@ -4955,6 +4983,12 @@ function ExtinctionRoyale({
       setRunSnapshot(buildRunSnapshot(state));
       return;
     }
+    const equipment = item.type === 'weapon' ? equipExtinctionFieldPickup(state, item.weaponData) : null;
+    if (equipment && !equipment.equipped) {
+      state.statusText = lang === 'fr' ? 'Impossible de prendre cette arme maintenant ; elle reste au sol.' : 'This weapon cannot be equipped now; it stays on the ground.';
+      setRunSnapshot(buildRunSnapshot(state));
+      return;
+    }
     item.used = true;
     if (item.type === 'normal') {
       if (item.effect === 'heal') {
@@ -4971,10 +5005,6 @@ function ExtinctionRoyale({
         damageExtinctionEnemy(state, enemy, 95, triggerEnemyDrop);
       });
     } else if (item.type === 'weapon') {
-      rememberExtinctionPersonalKit(state);
-      state.weapon = { ...item.weaponData, ammo: item.weaponData.maxAmmo };
-      state.ammo = state.weapon.ammo;
-      state.reserveAmmo = state.weapon.maxAmmo * 2;
       sound.playSfx('levelup');
     } else if (item.type === 'beacon') {
       state.beaconsStabilized = Math.min(EXTINCTION_BEACON_TARGET, (state.beaconsStabilized || 0) + 1);
@@ -4983,7 +5013,10 @@ function ExtinctionRoyale({
         : `Beacon ${item.wave} stabilized (${state.beaconsStabilized}/${EXTINCTION_BEACON_TARGET}).`;
     }
     if (item.type !== 'beacon') {
-      state.statusText = lang === 'fr' ? `${item.label} récupéré.` : `${item.label} collected.`;
+      state.statusText = equipment?.replacedWeaponName
+        ? (lang === 'fr' ? `${equipment.weaponName} récupéré ; remplace ${equipment.replacedWeaponName}. Un seul emplacement de terrain.`
+          : `${equipment.weaponName} collected; replaces ${equipment.replacedWeaponName}. One field-weapon slot.`)
+        : (lang === 'fr' ? `${item.label} récupéré.` : `${item.label} collected.`);
     }
     sound.playSfx(item.type === 'ultimate' ? 'special' : 'coin');
   };
@@ -5071,6 +5104,9 @@ function ExtinctionRoyale({
       } else if (key === 'v') {
         if (!event.repeat) restorePersonalKit();
         event.preventDefault();
+      } else if (key === 'b') {
+        if (!event.repeat) restoreFieldWeapon();
+        event.preventDefault();
       } else if (key === 't') {
         if (!event.repeat) markHuntTarget();
         event.preventDefault();
@@ -5119,6 +5155,7 @@ function ExtinctionRoyale({
     stateRef.current.phase = 'ready'; stateRef.current.rewards = null; stateRef.current.result = null;
     stateRef.current.relayOperation = null; stateRef.current.relaySummary = null;
     stateRef.current.fieldDirective = null; stateRef.current.directiveSummary = null; stateRef.current.personalKit = null;
+    clearExtinctionFieldEquipment(stateRef.current);
     clearNexusFieldOperation(stateRef.current); stateRef.current.fieldSummary = null;
     clearExtinctionProtocolEffects(stateRef.current);
     setRuntimeError(null); setRunSnapshot(buildRunSnapshot(stateRef.current));
@@ -5152,6 +5189,9 @@ function ExtinctionRoyale({
       <ImmersiveDrawer open={intelOpen} onClose={() => setIntelOpen(false)} lang={lang} title={lang === 'fr' ? 'Directive et commandes' : 'Directive and controls'}>
         <p>{objectives[runMode]}</p>
         {runSnapshot.objectiveText && <p data-extinction-current-objective>{runSnapshot.objectiveText}</p>}
+        {runSnapshot.fieldWeapon && <p data-field-weapon-details>{lang === 'fr' ? 'Arme rangée' : 'Stowed weapon'} : {runSnapshot.fieldWeapon.name}
+          {' · '}{runSnapshot.fieldWeapon.ammo}/{runSnapshot.fieldWeapon.maxAmmo}{' · '}{lang === 'fr' ? 'réserve' : 'reserve'} {runSnapshot.fieldWeapon.reserveAmmo}
+          {' · B · '}{lang === 'fr' ? 'reprendre' : 'retrieve'}</p>}
         {runSnapshot.fieldObjective && <p>{runSnapshot.fieldObjective.title} · {runSnapshot.fieldObjective.detail}</p>}
         {runSnapshot.directive && <div data-directive-details={runSnapshot.directive.id}>
           <p><strong data-directive-title>{runSnapshot.directive.title}</strong> · <span data-directive-count>{runSnapshot.directive.completed}/{runSnapshot.directive.required}</span></p>
@@ -5163,7 +5203,7 @@ function ExtinctionRoyale({
         {getExtinctionPickupBrief(runSnapshot.weaponType, lang) && <p data-fps-pickup-brief={runSnapshot.weaponType}>{getExtinctionPickupBrief(runSnapshot.weaponType, lang)}</p>}
         <p>{runSnapshot.statusText}</p>
         <p>{lang === 'fr' ? 'ZQSD/WASD : déplacement. Flèches gauche/droite : tourner. Glisser sur la vue : viser. Toucher la vue ou Espace : tirer. R : recharger. E : récupérer un objet. Maj : capacité de rôle.' : 'WASD: movement. Left/right arrows: turn. Drag the view: aim. Tap the view or Space: fire. R: reload. E: collect an item. Shift: role ability.'}</p>
-        <p>{lang === 'fr' ? 'F : secondaire. C : défense. X : ultime chargé. V : reprendre le kit personnel après un ramassage. T : marquer le Champion dans la variante de chasse. Les repères jaunes au radar indiquent les objectifs ; le haut du radar suit la direction du regard.' : 'F: secondary. C: defense. X: charged ultimate. V: restore the personal kit after a pickup. T: mark the Champion in the hunt variant. Yellow radar markers identify objectives; radar up follows the viewing direction.'}</p>
+        <p>{lang === 'fr' ? 'F : secondaire. C : défense. X : ultime chargé. V : ranger l’arme de terrain et reprendre le kit personnel. B : reprendre l’arme rangée avec son chargeur, sa réserve et la recharge restante. Un nouveau ramassage remplace cette arme ; elle reste dans cette partie. T : marquer le Champion dans la variante de chasse. Les repères jaunes au radar indiquent les objectifs ; le haut du radar suit la direction du regard.' : 'F: secondary. C: defense. X: charged ultimate. V: stow the field weapon and restore the personal kit. B: retrieve the stored weapon with its magazine, reserve and remaining reload. A new pickup replaces that weapon; it stays in this run. T: mark the Champion in the hunt variant. Yellow radar markers identify objectives; radar up follows the viewing direction.'}</p>
         {getExtinctionProtocolBrief(signatureProfile?.actions.secondary, lang) && <p>{getExtinctionProtocolBrief(signatureProfile.actions.secondary, lang)}</p>}
         <p>{lang === 'fr' ? 'Format paysage conseillé. Les boutons de déplacement fonctionnent aussi avec Espace ou Entrée maintenus.' : 'Landscape recommended. Movement buttons also work by holding Space or Enter.'}</p>
         <p>{lang === 'fr' ? 'La simulation est suspendue pendant la consultation. Fermer ce terminal ne relance aucune commande maintenue.' : 'Simulation is paused while you read. Closing this terminal does not resume held commands.'}</p>
@@ -5284,6 +5324,10 @@ function ExtinctionRoyale({
             <span className="extinction-stat-kills">K.O. {runSnapshot.kills}</span>
             {activeSignature && <span className="extinction-stat-signature">{lang === 'fr' ? 'ULTIME' : 'ULTIMATE'} {Math.floor(runSnapshot.signatureCharge || 0)}/100{runSnapshot.signatureGuard ? (lang === 'fr' ? ' · GARDE' : ' · GUARD') : ''}</span>}
             {runMode === 'extraction' && <span className="extinction-stat-beacons">{lang === 'fr' ? 'BALISES' : 'BEACONS'} {runSnapshot.beacons}/{EXTINCTION_BEACON_TARGET}</span>}
+          {runActive && runSnapshot.fieldWeapon && <span className="extinction-stowed-readout" data-field-weapon-stock>
+            <strong>B · {runSnapshot.fieldWeapon.name}</strong>
+            <span>{runSnapshot.fieldWeapon.ammo}/{runSnapshot.fieldWeapon.maxAmmo}{' · '}{lang === 'fr' ? 'réserve' : 'reserve'} {runSnapshot.fieldWeapon.reserveAmmo}</span>
+          </span>}
           </div>
           <div className="nexus-play-actions">
             {!runActive && !runEnded && (
@@ -5296,9 +5340,17 @@ function ExtinctionRoyale({
                 <button className="btn-retro extinction-primary-action" data-primary-action onClick={fire} title={getLocalizedText(activeSignature?.actions.simple?.name, lang)}>{runSnapshot.weaponType === 'pistol' && ['melee', 'sweep', 'counter'].includes(activeSignature?.actions.simple?.kind) ? (lang === 'fr' ? 'FRAPPER' : 'STRIKE') : runSnapshot.weaponType === 'pistol' && ['control', 'support', 'heal', 'focus'].includes(activeSignature?.actions.simple?.kind) ? 'ACTION' : (lang === 'fr' ? 'TIRER' : 'FIRE')}</button>
                 <button className="btn-retro extinction-primary-action" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0 || runSnapshot.weaponResource === 'cooldown'} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
                 {runSnapshot.canRestoreKit && <button className="btn-retro extinction-primary-action" data-personal-kit onClick={restorePersonalKit}
-                  aria-label={lang === 'fr' ? 'V · KIT PERSONNEL' : 'V · PERSONAL KIT'} title={lang === 'fr' ? 'V · KIT PERSONNEL' : 'V · PERSONAL KIT'}>
+                  disabled={sessionPaused || intelOpen} aria-label={lang === 'fr' ? 'V · KIT PERSONNEL' : 'V · PERSONAL KIT'}
+                  title={lang === 'fr' ? 'Ranger cette arme avec ses munitions et reprendre le kit personnel.' : 'Stow this weapon with its ammunition and restore the personal kit.'}>
                   <span className="extinction-action-label-full" aria-hidden="true">{lang === 'fr' ? 'V · KIT PERSONNEL' : 'V · PERSONAL KIT'}</span>
                   <span className="extinction-action-label-compact" aria-hidden="true">V · KIT</span>
+                </button>}
+                {runSnapshot.fieldWeapon && <button className="btn-retro extinction-primary-action" data-field-weapon onClick={restoreFieldWeapon}
+                  disabled={!runSnapshot.canRestoreFieldWeapon || sessionPaused || intelOpen}
+                  aria-label={`B · ${runSnapshot.fieldWeapon.name} · ${runSnapshot.fieldWeapon.ammo} + ${runSnapshot.fieldWeapon.reserveAmmo}`}
+                  title={`${runSnapshot.fieldWeapon.name} · ${runSnapshot.fieldWeapon.ammo}/${runSnapshot.fieldWeapon.maxAmmo} · ${lang === 'fr' ? 'réserve' : 'reserve'} ${runSnapshot.fieldWeapon.reserveAmmo}${runSnapshot.fieldWeapon.reloadTicks > 0 ? ` · ${lang === 'fr' ? 'recharge' : 'reload'} ${(Math.ceil(runSnapshot.fieldWeapon.reloadTicks / 6) / 10).toFixed(1)}s` : ''}`}>
+                  <span className="extinction-action-label-full" aria-hidden="true">B · {runSnapshot.fieldWeapon.name}</span>
+                  <span className="extinction-action-label-compact" aria-hidden="true">B · {lang === 'fr' ? 'ARME' : 'WEAPON'}</span>
                 </button>}
                 {runSnapshot.directive?.mode === 'hunt' && <button className="btn-retro extinction-primary-action" data-hunt-mark onClick={markHuntTarget} disabled={!runSnapshot.directive.canMark || sessionPaused || intelOpen}>{lang === 'fr' ? 'T · MARQUER' : 'T · MARK'}</button>}
                 <button className="btn-retro extinction-primary-action" onClick={activateRoleSkill} disabled={runSnapshot.skillCooldown > 0} title={lang === 'fr' ? 'Active la capacité spéciale liée au rôle du héros.' : 'Activate the selected hero role ability.'}>{runSnapshot.skillCooldown > 0 ? `ROLE ${Math.ceil(runSnapshot.skillCooldown / 60)}s` : 'ROLE'}</button>

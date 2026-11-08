@@ -28,7 +28,7 @@ async function loadProfile(context, packIds) {
   await writeFile(path.join(directory, adapterPath), result?.code || source);
   await copyFile(path.join(root, 'src/game/mosaicCityRuntime.js'), path.join(directory, 'src/game/mosaicCityRuntime.js'));
   await copyFile(path.join(root, 'src/game/mosaicCharacterFollowups.js'), path.join(directory, 'src/game/mosaicCharacterFollowups.js'));
-  for (const dependency of ['mosaicCharacterStories.js', 'mosaicMissionOperations.js']) {
+  for (const dependency of ['mosaicCharacterStories.js', 'mosaicMissionOperations.js', 'mosaicCityDeliveries.js', 'mosaicMissionCargo.js']) {
     await copyFile(path.join(root, 'src/game', dependency), path.join(directory, 'src/game', dependency));
   }
   for (const pack of missionPacks) {

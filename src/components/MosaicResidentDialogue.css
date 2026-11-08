@@ -20,10 +20,19 @@
 .mosaic-dialogue-quest { display: grid; gap: .65rem; min-width: 0; margin: 0; padding: 1rem; border-inline-start: .2rem solid #f3d58e; border-radius: .25rem; background: #312e23; }
 .mosaic-dialogue-quest figcaption { color: #f5dfab; font-size: .85rem; line-height: 1.6; }
 .mosaic-dialogue-quest blockquote { display: grid; gap: .75rem; margin: 0; min-width: 0; }
+.mosaic-dialogue-quest blockquote p,
 .nexus-play-copy .mosaic-dialogue-quest blockquote p { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.65; color: #f5f0e3; }
 .mosaic-dialogue-quest cite { font-size: .875rem; font-style: normal; color: #bce4df; }
 .mosaic-dialogue-offer { display: grid; gap: .5rem; min-width: 0; }
 .mosaic-dialogue-offer > button { width: 100%; color: #f7e9bc; border-color: #d6b96f; background: #403721; }
+.mosaic-resident-dialogue .mosaic-dialogue-location { color: #d8d1bb; font-size: .875rem; }
+.mosaic-dialogue-next { display: grid; gap: .35rem; padding: .85rem; border-inline-start: .2rem solid #8ae4dd; background: #102f39; }
+.mosaic-dialogue-next > span { color: #b4eee5; font-size: .875rem; font-weight: 600; }
+.mosaic-resident-dialogue .mosaic-dialogue-next > p { font-size: 1rem; }
+.mosaic-dialogue-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: .65rem; }
+.mosaic-dialogue-actions > button { width: 100%; min-width: 0; }
+.mosaic-dialogue-actions [data-dialogue-return] { border-color: #8ae4dd; background: #16464c; color: #f3fffb; }
+.mosaic-dialogue-actions .mosaic-dialogue-journal { border-color: #698893; background: #142530; color: #dcecef; }
 .mosaic-dialogue-background { min-width: 0; border-top: 1px solid #536b7c; padding-block-start: .5rem; }
 .mosaic-dialogue-background > summary { min-height: 44px; padding-block: .5rem; cursor: pointer; font-size: .875rem; line-height: 1.6; }
 .mosaic-dialogue-background .mosaic-dialogue-topics { margin-block: .5rem; }

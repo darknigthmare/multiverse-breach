@@ -40,14 +40,18 @@ function resolved(progress, mission) {
 test('every Nexus identity and both DLC senders have distinct authored bilingual contracts', () => {
   assert.deepEqual(new Set(catalog.map(mission => mission.heroId)), new Set(owned));
   assert.equal(catalog.filter(mission => !mission.requiresMissionId).length, owned.length);
-  assert.equal(catalog.filter(mission => mission.requiresMissionId).length, owned.length);
+  assert.equal(catalog.filter(mission => mission.requiresMissionId).length, owned.length + 4);
   assert.equal(new Set(allCatalog.map(mission => mission.id)).size, allCatalog.length);
   assert.deepEqual(new Set(allCatalog.map(mission => mission.id)), new Set(MOSAIC_CHARACTER_MISSIONS.map(mission => mission.id)));
   for (const mission of allCatalog) {
     const { residents, exhibits, unlockedHeroIds } = contextFor(mission.universe);
     assert.ok(unlockedHeroIds.includes(mission.heroId));
     assert.equal(new Set(mission.steps.map(step => step.id)).size, mission.steps.length);
-    assert.equal(mission.steps.at(-1).type, 'anchor');
+    const ending = mission.steps.at(-1);
+    if (mission.contentFile === 'src/game/mosaicCityDeliveries.js') {
+      assert.equal(ending.type, 'npc'); assert.equal(ending.targetId, mission.heroId);
+      assert.ok(ending.dialogue.fr && ending.dialogue.en);
+    } else assert.equal(ending.type, 'anchor');
     assert.ok(mission.source.startsWith(mission.universe === 'Nexus de Convergence' ? 'src/game/' : `DLC/${mission.universe}/data/`));
     for (const step of mission.steps) {
       assert.ok(step.text.fr.length > 10 && step.text.en.length > 10);
@@ -87,6 +91,7 @@ function finishedPrerequisite(mission, route) {
   if (!mission.requiresMissionId) return progress;
   const previous = allCatalog.find(item => item.id === mission.requiresMissionId);
   assert.ok(previous, 'The prerequisite must be a real, available source contract');
+  progress = finishedPrerequisite(previous, route);
   progress = startMosaicCharacterMission(progress, previous).progress;
   for (const step of previous.steps) {
     progress = step.type === 'decision'

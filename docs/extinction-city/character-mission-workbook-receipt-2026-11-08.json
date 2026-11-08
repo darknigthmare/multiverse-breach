@@ -1,15 +1,15 @@
 {
-  "schema": 4,
+  "schema": 5,
   "sourceRevision": "4ca3b2b87f4b7234612f11fc5c17ba205d36d340",
-  "runtimeBaseRevision": "6f26ea5fcdf07f65b7088f2a7b08c72e7ee204ce",
+  "runtimeBaseRevision": "d87f038ea5537d06f9448db1e699fe6a122181b9",
   "sourceRevisionMeaning": "Historical roster baseline is retained in the workbook; runtimeSources and planning provenance describe the actual edited files.",
-  "planningDataSha256": "7d277f3dc8f43f6b4357b32c7442e69c5fa56368631b9c8b53cf61d15e1dde0d",
-  "planningSourceManifestSha256": "3e4aeef559c5ce8f609db1064cf505ca7fca2880ddb5d4d5b7311123990e7f39",
+  "planningDataSha256": "ac5dcf76c3d273674c0abb2093951d5092d0856174ea8b2cb76cf73a728dca4b",
+  "planningSourceManifestSha256": "dd49b6581b75c67562b426cf4ed53d7fbd5ea99b3d86120583a4149d5a4bff69",
   "workbook": "Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx",
-  "sha256": "3be59508c4d9f9d76751b89d66e3f3fe426611837b13e91d30233a4cf7d8d391",
-  "bytes": 1187121,
-  "operation": "Imported existing workbook; rewrote 28 runtime stories and 24 future Nexus proposals, flagged generic adaptations, preserved all tracking and unrelated tabs",
-  "baselineSha256": "5cc8c5a9e7e805e5113c3869417bd0aef2a497858031d147b39313a8ff19ef02",
+  "sha256": "afe9387559864aaab3f3c76d371e7cbfb84a41e3f0772352210cd53775b4aadc",
+  "bytes": 1192478,
+  "operation": "Imported existing workbook; refreshed 32 runtime contracts and 4 changed Nexus planning rows, preserved all tracking and unrelated tabs",
+  "baselineSha256": "3be59508c4d9f9d76751b89d66e3f3fe426611837b13e91d30233a4cf7d8d391",
   "runtimeSources": [
     {
       "source": "DLC/Alien/data/characterPlaques.js",
@@ -61,19 +61,27 @@
     },
     {
       "source": "src/game/mosaicCharacterMissions.js",
-      "sha256": "9b1dcf2374236ecc4ddb033ea7fe63d5391d3a0872f73da8c91cfaa08346555c"
+      "sha256": "1c8bca74746d3b180529060b8894cb231f03e3d12fb6134ac5d42a15b5dc64b3"
     },
     {
       "source": "src/game/mosaicCharacterStories.js",
       "sha256": "aa2e4d4e00e06b6c03d8eb3d208ea6a811ccd65bcc9e1c895aa8f1f50c34235c"
     },
     {
+      "source": "src/game/mosaicCityDeliveries.js",
+      "sha256": "8458bebb10442258f403628895e4b325dd57cfae181b174adc661529bc293b11"
+    },
+    {
       "source": "src/game/mosaicCityRuntime.js",
       "sha256": "e8c23845c86d66bed9701f3fc39482a393b7ee93abcd1cd85f7fa80acd11393b"
     },
     {
+      "source": "src/game/mosaicMissionCargo.js",
+      "sha256": "951e663d1b2c9fa5980eb32113e78acd0364d55472719575444b3531596324c9"
+    },
+    {
       "source": "src/game/mosaicMissionOperations.js",
-      "sha256": "9f88234c6b6ca07c686fa315b76af39bdf1a9e681b6cb926f63954f134e4584f"
+      "sha256": "2b38ca2b491d15044acf9202f9c04c335fbce8eb60ef984abbea3d85bad62216"
     },
     {
       "source": "src/game/ocCampaign.js",
@@ -84,13 +92,166 @@
   "nonCombatCharacters": 101,
   "proposedMissions": 3824,
   "individuallyDesignedMissions": 44,
-  "integratedCityContracts": 28,
+  "integratedCityContracts": 32,
   "fpsProfiles": 1912,
   "fpsModes": 4,
-  "chapterTwoContracts": 12,
-  "inheritedRoutes": 24,
-  "decisionRoutes": 24,
-  "rewrittenNexusProposals": 24,
+  "addedRuntimeContracts": [
+    "city-mirelle-night-watch-v1",
+    "city-quillon-refuge-pump-v1",
+    "city-nadir-buried-probe-v1",
+    "city-tessera-chosen-window-v1"
+  ],
+  "changedRuntimeRows": [
+    35,
+    36,
+    37,
+    38
+  ],
+  "preservedRuntimeContracts": 28,
+  "chapterTwoContracts": 14,
+  "chapterThreeContracts": 2,
+  "cargoTransfers": [
+    {
+      "missionId": "city-mirelle-night-watch-v1",
+      "stepId": "take-watch-lamp",
+      "action": "take",
+      "id": "mirelle-watch-lamp",
+      "label": "Lampe de Mirelle",
+      "appearance": "lamp"
+    },
+    {
+      "missionId": "city-mirelle-night-watch-v1",
+      "stepId": "place-watch-lamp",
+      "action": "deliver",
+      "id": "mirelle-watch-lamp",
+      "label": "Lampe de Mirelle",
+      "appearance": "lamp"
+    },
+    {
+      "missionId": "city-quillon-refuge-pump-v1",
+      "stepId": "take-spare-rotor",
+      "action": "take",
+      "id": "quillon-spare-rotor",
+      "label": "Rotor de réserve",
+      "appearance": "rotor"
+    },
+    {
+      "missionId": "city-quillon-refuge-pump-v1",
+      "stepId": "fit-spare-rotor",
+      "action": "deliver",
+      "id": "quillon-spare-rotor",
+      "label": "Rotor de réserve",
+      "appearance": "rotor"
+    },
+    {
+      "missionId": "city-quillon-refuge-pump-v1",
+      "stepId": "take-worn-rotor",
+      "action": "take",
+      "id": "quillon-worn-rotor",
+      "label": "Rotor usé",
+      "appearance": "rotor"
+    },
+    {
+      "missionId": "city-quillon-refuge-pump-v1",
+      "stepId": "return-worn-rotor",
+      "action": "deliver",
+      "id": "quillon-worn-rotor",
+      "label": "Rotor usé",
+      "appearance": "rotor"
+    },
+    {
+      "missionId": "city-nadir-buried-probe-v1",
+      "stepId": "recover-n4",
+      "action": "take",
+      "id": "nadir-n4-probe",
+      "label": "Sonde N-4",
+      "appearance": "probe"
+    },
+    {
+      "missionId": "city-nadir-buried-probe-v1",
+      "stepId": "bring-n4-to-table",
+      "action": "deliver",
+      "id": "nadir-n4-probe",
+      "label": "Sonde N-4",
+      "appearance": "probe"
+    },
+    {
+      "missionId": "city-tessera-chosen-window-v1",
+      "stepId": "take-reflector",
+      "action": "take",
+      "id": "tessera-reflector",
+      "label": "Réflecteur de Tessera",
+      "appearance": "reflector"
+    },
+    {
+      "missionId": "city-tessera-chosen-window-v1",
+      "stepId": "place-reflector",
+      "action": "deliver",
+      "id": "tessera-reflector",
+      "label": "Réflecteur de Tessera",
+      "appearance": "reflector"
+    }
+  ],
+  "residentClosures": [
+    "city-mirelle-night-watch-v1",
+    "city-quillon-refuge-pump-v1",
+    "city-nadir-buried-probe-v1",
+    "city-tessera-chosen-window-v1"
+  ],
+  "inheritedRoutes": 32,
+  "decisionRoutes": 32,
+  "rewrittenNexusProposals": 4,
+  "authoredNexusProposals": 24,
+  "runtimeLinkedProposals": [
+    {
+      "id": "city-plan-v1::arca_mirelle::multiverse",
+      "runtimeMissionId": "city-mirelle-night-watch-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "Lampe portée au pupitre, alimentation séparée ou repli puis essai local et retour à Mirelle. La garde complète avec ses appels reste à développer."
+    },
+    {
+      "id": "city-plan-v1::arca_tessera::universe",
+      "runtimeMissionId": "city-tessera-chosen-window-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "Réflecteur porté, commande indépendante et lumière locale, puis retour à Tessera. Son animation de prise en main reste à développer."
+    },
+    {
+      "id": "city-plan-v1::arca_quillon::multiverse",
+      "runtimeMissionId": "city-quillon-refuge-pump-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "Rotor porté à la pompe, pièce usée rendue, amorçage et récipient représentés par les accessoires. La vie complète du refuge reste à développer."
+    },
+    {
+      "id": "city-plan-v1::arca_nadir::universe",
+      "runtimeMissionId": "city-nadir-buried-probe-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "N-4 portée à Nadir, seuil fermé et prochain essai préparé. La simulation physique du câble et des débris reste à développer."
+    }
+  ],
+  "fieldEquipmentSources": [
+    {
+      "source": "src/game/extinctionFieldEquipment.js",
+      "sha256": "b82faf19ae0be6d68f8aecf7cce7d0f8fa55ad59ed72b88bdccbc82837480c35"
+    },
+    {
+      "source": "src/game/extinctionFighterProfiles.js",
+      "sha256": "146efd459680adb43a81cf3a114a1aab570803082ed95dd02ba981b3092c97c5"
+    },
+    {
+      "source": "src/components/HubScreen.jsx",
+      "sha256": "c63b9b91ab2fe32976a6f3eee59a84c15b2b17e22319736754c822f0ec6a0000"
+    }
+  ],
+  "changedModeCells": [
+    "F7",
+    "I7",
+    "F8",
+    "I8",
+    "F9",
+    "I9",
+    "F10",
+    "I10"
+  ],
   "proposalsRequiringDiegeticRewrite": 3780,
   "preservedTrackingColumns": [
     "M",
@@ -103,10 +264,10 @@
     "U"
   ],
   "dependencyProof": {
-    "input": "Contrats jouables!A34",
+    "input": "Contrats jouables!A38",
     "output": "Synthèse!B12",
-    "withLastContract": 28,
-    "withLastContractBlank": 27,
+    "withLastContract": 32,
+    "withLastContractBlank": 31,
     "restored": true
   },
   "gateProof": [
@@ -148,37 +309,19 @@
   ],
   "previews": [
     "synthese.png",
-    "contrats-dlc-acces.png",
-    "contrats-suites-sources.png",
-    "contrats-recits-1-2.png",
-    "contrats-recits-3-4.png",
-    "contrats-recits-5-6.png",
-    "contrats-recits-7-8.png",
-    "contrats-recits-9-10.png",
-    "contrats-recits-11-12.png",
-    "contrats-recits-13-14.png",
-    "contrats-recits-15-16.png",
-    "contrats-recits-17-18.png",
-    "contrats-recits-19-20.png",
-    "contrats-recits-21-22.png",
-    "contrats-recits-23-24.png",
-    "contrats-recits-25-26.png",
-    "contrats-recits-27-28.png",
-    "prolongements-nexus-1-4.png",
-    "prolongements-nexus-5-8.png",
-    "prolongements-nexus-9-12.png",
-    "prolongements-nexus-13-16.png",
-    "prolongements-nexus-17-20.png",
-    "prolongements-nexus-21-24.png",
-    "niveau-individual_proposal.png",
-    "niveau-research_scaffold.png",
-    "niveau-source_objective_adaptation.png",
-    "niveau-source_family_adaptation.png"
+    "modes-fps.png",
+    "contrats-recits-29-30.png",
+    "contrats-acces-sources-29-30.png",
+    "contrats-recits-31-32.png",
+    "contrats-acces-sources-31-32.png",
+    "prolongement-lien-10.png",
+    "prolongement-lien-21.png",
+    "prolongement-lien-24.png",
+    "prolongement-lien-25.png"
   ],
   "preservedSheets": [
     "Personnages",
-    "Profils FPS",
-    "Modes FPS"
+    "Profils FPS"
   ],
   "formulaScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
   "nativeApplicationCheck": "Not executed; Artifact Tool recalculation, XLSX readback and rendered review are separate checks."

@@ -12,21 +12,35 @@ export function getMosaicMissionOperation(step) {
     ? operation : null;
 }
 
+/** Cargo declarations are deliberately local to physical marker operations.
+ * A dialogue or a journal selection can never create a carried object. */
+export function getMosaicMissionCargoSpec(step) {
+  const cargo = step?.cargo;
+  return step?.type === 'marker' && getMosaicMissionOperation(step)
+    && ['take', 'deliver'].includes(cargo?.action)
+    && typeof cargo.id === 'string' && /^[a-z0-9-]{1,100}$/.test(cargo.id)
+    && bilingual(cargo.label) && ['lamp', 'rotor', 'probe', 'reflector'].includes(cargo.appearance)
+    ? cargo : null;
+}
+
 export function createMosaicMissionOperationReceipt(mission, step, interaction, sequence, saved = {}) {
   const operation = getMosaicMissionOperation(step);
   if (!operation || !interaction?.id) return null;
   const target = interaction.target;
   const x = target?.x + target?.w / 2, y = target?.y + target?.h / 2;
   if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+  const cargo = getMosaicMissionCargoSpec(step);
   return { version: 1, missionId: mission.id, stepId: step.id, universe: mission.universe,
     districtId: mission.districtId, targetId: interaction.id, kind: operation.kind, sequence, x, y,
     originChoiceId: mission.requiresMissionId ? saved.originChoiceId : null,
     originStoryRevision: mission.requiresMissionId ? saved.originStoryRevision || 1 : null,
-    branchChoiceId: step.byChoice ? saved.choiceId : null };
+    branchChoiceId: step.byChoice ? saved.choiceId : null,
+    ...(cargo ? { cargoId: cargo.id, cargoAction: cargo.action } : {}) };
 }
 
 export function matchesMosaicMissionOperationReceipt(receipt, mission, step, targetId, saved = {}) {
   const operation = getMosaicMissionOperation(step);
+  const cargo = getMosaicMissionCargoSpec(step);
   return Boolean(operation && receipt?.version === 1 && receipt.missionId === mission.id
     && receipt.stepId === step.id && receipt.universe === mission.universe
     && receipt.districtId === mission.districtId && receipt.targetId === targetId
@@ -35,6 +49,7 @@ export function matchesMosaicMissionOperationReceipt(receipt, mission, step, tar
     && receipt.originChoiceId === (mission.requiresMissionId ? saved.originChoiceId : null)
     && receipt.originStoryRevision === (mission.requiresMissionId ? saved.originStoryRevision || 1 : null)
     && receipt.branchChoiceId === (step.byChoice ? saved.choiceId : null)
+    && (!step.cargo || cargo && receipt.cargoId === cargo.id && receipt.cargoAction === cargo.action)
     // A catalogue search can move a display to another slot. Its stable item
     // identity still owns the intervention; authored field markers cannot move.
     && (step.type !== 'marker' || (receipt.x === step.x && receipt.y === step.y)));
@@ -52,7 +67,8 @@ const STATE_LABELS = Object.freeze({
 export function getMosaicMissionObjectView(operation, { lang = 'fr', completed = false } = {}) {
   return { kind: operation.kind, label: localize(operation.label, lang), propName: localize(operation.propName, lang),
     statusLabel: completed ? localize(STATE_LABELS[operation.kind], lang) : localize(operation.label, lang),
-    completedText: localize(operation.completedText, lang), completed };
+    completedText: localize(operation.completedText, lang), completed,
+    ...(['lamp', 'pump', 'rotor', 'probe', 'reflector'].includes(operation.appearance) ? { appearance: operation.appearance } : {}) };
 }
 
 function linesWithin(ctx, text, width) {
@@ -90,6 +106,44 @@ export function drawMosaicMissionObject(ctx, object, tick, nearby = false, reduc
     ctx.fillStyle = '#0a1721'; ctx.fillRect(-24, 15, 48, 9);
     ctx.fillStyle = light;
     for (let i = 0; i < (done ? 4 : 1); i++) ctx.fillRect(-19 + i * 11, 18, 7, 3);
+  } else if (object.appearance === 'lamp') {
+    const lit = done || object.powered;
+    ctx.fillRect(-13, -22, 26, 33); ctx.strokeRect(-13, -22, 26, 33);
+    ctx.beginPath(); ctx.arc(0, -23, 9, Math.PI, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = lit ? '#ffe4a3' : '#5b5360'; ctx.fillRect(-8, -16, 16, 19);
+    ctx.fillStyle = '#243540'; ctx.fillRect(-18, 11, 36, 7);
+    if (lit) {
+      ctx.fillStyle = 'rgba(255,224,148,0.15)';
+      ctx.beginPath(); ctx.moveTo(-8, -13); ctx.lineTo(-43, 22); ctx.lineTo(43, 22); ctx.lineTo(8, -13); ctx.closePath(); ctx.fill();
+    }
+  } else if (object.appearance === 'pump') {
+    ctx.fillRect(-21, -22, 32, 36); ctx.strokeRect(-21, -22, 32, 36);
+    ctx.beginPath(); ctx.arc(-5, -5, 9, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(11, -13); ctx.lineTo(28, -13); ctx.lineTo(28, -3); ctx.stroke();
+    ctx.strokeRect(17, 8, 22, 13);
+    if (done && object.kind === 'beacon') {
+      ctx.strokeStyle = '#8ad9f7'; ctx.beginPath(); ctx.moveTo(28, -2); ctx.lineTo(28, 12); ctx.stroke();
+      ctx.fillStyle = '#4aa7c6'; ctx.fillRect(19, 12, 18, 7);
+    }
+  } else if (object.appearance === 'rotor') {
+    ctx.fillRect(-24, 7, 48, 12); ctx.strokeRect(-24, 7, 48, 12);
+    ctx.beginPath(); ctx.arc(0, -3, 13, 0, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = light; ctx.fillRect(-3, -17, 6, 28); ctx.fillRect(-14, -6, 28, 6);
+    ctx.fillStyle = '#36464f'; ctx.fillRect(-4, -7, 8, 8);
+  } else if (object.appearance === 'probe') {
+    ctx.fillRect(-25, 7, 50, 12); ctx.strokeRect(-25, 7, 50, 12);
+    ctx.fillStyle = '#263e4c'; ctx.fillRect(-15, -14, 30, 20); ctx.strokeRect(-15, -14, 30, 20);
+    ctx.beginPath(); ctx.moveTo(15, -4); ctx.lineTo(28, -4); ctx.lineTo(28, 7); ctx.stroke();
+    ctx.strokeStyle = '#a7b8bf'; ctx.beginPath(); ctx.moveTo(-10, -10); ctx.lineTo(-3, 1); ctx.stroke();
+    ctx.fillStyle = done ? '#8fd7ed' : '#536779'; ctx.fillRect(4, -10, 6, 5);
+  } else if (object.appearance === 'reflector') {
+    ctx.fillRect(-18, 12, 36, 7); ctx.strokeRect(-18, 12, 36, 7);
+    ctx.fillRect(-3, -10, 6, 22);
+    ctx.beginPath(); ctx.moveTo(-20, -25); ctx.lineTo(13, -30); ctx.lineTo(23, -13); ctx.lineTo(-10, -8); ctx.closePath(); ctx.fill(); ctx.stroke();
+    if (done && object.kind === 'beacon') {
+      ctx.fillStyle = 'rgba(218,226,255,0.2)';
+      ctx.beginPath(); ctx.moveTo(16, -24); ctx.lineTo(55, 14); ctx.lineTo(27, 20); ctx.lineTo(8, -16); ctx.closePath(); ctx.fill();
+    }
   } else if (object.kind === 'repair') {
     ctx.fillRect(-20, -25, 40, 40); ctx.strokeRect(-20, -25, 40, 40);
     ctx.fillStyle = light;

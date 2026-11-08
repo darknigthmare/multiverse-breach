@@ -18,6 +18,7 @@ import * as protocols from '../src/game/extinctionSignatures.js';
 import * as directives from '../src/game/extinctionFieldDirectives.js';
 import * as relays from '../src/game/extinctionRelayOperation.js';
 import * as field from '../src/game/nexusFieldOperation.js';
+import * as equipment from '../src/game/extinctionFieldEquipment.js';
 
 const heroes = [createPlayerHero(), ...HEROES_DB];
 const hero = id => heroes.find(candidate => candidate.id === id);
@@ -290,16 +291,17 @@ test('mine metadata distinguishes actual deployment distance from the explosion 
 const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
 const fpsNode = parseAst(hubSource, { lang: 'jsx' }).body.find(node => node.type === 'FunctionDeclaration' && node.id?.name === 'ExtinctionRoyale');
 const fpsDeclarations = fpsNode.body.body.flatMap(node => node.type === 'VariableDeclaration' ? node.declarations : []);
-function callback(name, state, actor = hero(state.heroId)) {
-  const node = fpsDeclarations.find(candidate => candidate.id?.name === name).init;
-  const environment = { ...protocols, ...directives, ...relays, ...field,
+function callback(name, state, actor = hero(state.heroId), overrides = {}) {
+  const initializer = fpsDeclarations.find(candidate => candidate.id?.name === name).init;
+  const node = initializer.type === 'CallExpression' && initializer.callee?.name === 'useCallback' ? initializer.arguments[0] : initializer;
+  const environment = { ...protocols, ...directives, ...relays, ...field, ...equipment,
     rememberExtinctionPersonalKit, restoreExtinctionPersonalKit,
     stateRef: { current: state }, sessionPausedRef: { current: false }, intelRef: { current: false },
     selectedHero: actor, lang: 'fr', roleProfile: { marine: { dmg: 1 } }, EXTINCTION_BEACON_TARGET: 3,
     projectWorld: (target, run) => ({ camZ: target.wy - run.py, aim: (target.wx - run.px) / (target.wy - run.py), dist: Math.hypot(target.wx - run.px, target.wy - run.py) }),
     sound: { playSfx() {} }, triggerEnemyDrop() {}, setRunSnapshot() {}, buildRunSnapshot() { return {}; },
     extinctionEnemyLabel: kind => kind, activateSignature() { throw new Error('Unexpected personal cast in pickup callback'); },
-    finishRun() { throw new Error('Unexpected run completion'); } };
+    finishRun() { throw new Error('Unexpected run completion'); }, ...overrides };
   return new Function(...Object.keys(environment), `return (${hubSource.slice(node.start, node.end)});`)(...Object.values(environment));
 }
 const loopStart = hubSource.indexOf('for (let step = 0; step < simulationSteps', fpsNode.start);
@@ -350,6 +352,92 @@ test('actual reload, pickup and kit return retain 36/26/11/0 active reload ticks
     assert.equal(state.protocols.cooldowns.simple, Math.max(0, 20 - elapsed));
     assert.equal(state.reserveAmmo, reserve); assert.equal(state.ammo, 24);
     assert.equal(protocols.getExtinctionProtocolStatus(state, 'simple'), elapsed < 20 ? 'cooldown' : elapsed < 36 ? 'reload' : 'ready');
+  }
+});
+
+test('actual collection, fire, reload and V/B callbacks keep separate stocks and reloads in all 48 mode/profile/pickup combinations', () => {
+  let combinations = 0;
+  for (const runMode of ['extraction', 'last_signal', 'infestation', 'hunt']) {
+    for (const id of ['masterchief', 'arca_mirelle', 'predator', 'lilo_pelekai']) {
+      for (const type of ['shotgun', 'plasma', 'rocket']) {
+        const state = liveState(id); state.runMode = runMode; state.t = 100;
+        activateExtinctionProtocol(state, 'simple');
+        const personal = { ammo: state.ammo, reserveAmmo: state.reserveAmmo };
+        state.loot = [{ id: 'carried-field-drop', type: 'weapon', wx: 0, wy: 0, label: type,
+          weaponData: { ...PICKUP_FIXTURES[type], name: type } }];
+        callback('collectLoot', state)(); assert.equal(state.loot[0].used, true);
+        callback('fire', state)(); assert.equal(state.ammo, PICKUP_FIXTURES[type].maxAmmo - 1);
+        callback('reload', state)(); assert.equal(state.reloadPulse, 36);
+        const reserve = state.reserveAmmo, afterReload = structuredClone(state.protocols), lastFireTime = state.lastFireTime;
+        callback('restorePersonalKit', state)();
+        assert.equal(state.weapon.type, 'pistol'); assert.equal(state.ammo, personal.ammo); assert.equal(state.reserveAmmo, personal.reserveAmmo);
+        assert.equal(state.fieldWeapon.weapon.type, type); assert.equal(state.fieldWeapon.reserveAmmo, reserve);
+        assert.deepEqual(state.protocols, afterReload); assert.equal(state.lastFireTime, lastFireTime);
+        fixedStep(state, hero(id), 10);
+        const afterTicks = structuredClone(state.protocols);
+        callback('restoreFieldWeapon', state)();
+        assert.equal(state.weapon.type, type); assert.equal(state.reloadPulse, 26); assert.equal(state.reserveAmmo, reserve);
+        assert.deepEqual(state.protocols, afterTicks); assert.equal(state.fieldWeapon, null);
+        const ammo = state.ammo;
+        callback('fire', state)(); assert.equal(state.ammo, ammo, 'B must not bypass the remaining field reload');
+        callback('restorePersonalKit', state)(); fixedStep(state, hero(id), 40);
+        callback('restoreFieldWeapon', state)();
+        assert.equal(state.reloadPulse, 0); assert.equal(state.ammo, ammo); assert.equal(state.reserveAmmo, reserve);
+        callback('fire', state)(); assert.equal(state.ammo, ammo - 1, 'restored equipment still reaches the actual fire route');
+        callback('restorePersonalKit', state)();
+        assert.equal(state.ammo, personal.ammo); assert.equal(state.reserveAmmo, personal.reserveAmmo);
+        assert.equal(state.fieldWeapon.weapon.ammo, ammo - 1); assert.equal(state.fieldWeapon.reserveAmmo, reserve);
+        combinations++;
+      }
+    }
+  }
+  assert.equal(combinations, 48);
+});
+
+test('actual collection announces replacement of the active or stored weapon and refuses invalid drops before consumption', () => {
+  for (const holstered of [false, true]) {
+    const state = liveState('masterchief');
+    state.loot = [{ id: 'first-field-drop', type: 'weapon', wx: 0, wy: 0, label: 'Plasma Rifle',
+      weaponData: { ...PICKUP_FIXTURES.plasma, name: 'Plasma Rifle' } }];
+    callback('collectLoot', state)();
+    if (holstered) callback('restorePersonalKit', state)();
+    state.loot.push({ id: 'second-field-drop', type: 'weapon', wx: 0, wy: 0, label: 'Rocket Launcher',
+      weaponData: { ...PICKUP_FIXTURES.rocket, name: 'Rocket Launcher' } });
+    callback('collectLoot', state)();
+    assert.equal(state.weapon.type, 'rocket'); assert.equal(state.fieldWeapon, null);
+    assert.match(state.statusText, /Plasma Rifle/); assert.match(state.statusText, /remplac/i);
+    callback('restorePersonalKit', state)();
+    assert.equal(state.fieldWeapon.weapon.type, 'rocket'); assert.equal(state.ammo, 24); assert.equal(state.reserveAmmo, 72);
+  }
+  const state = liveState('masterchief'); state.relayOperation = null;
+  state.loot = [{ id: 'invalid-field-drop', type: 'weapon', wx: 0, wy: 0, label: 'Invalid',
+    weaponData: { type: 'rocket', maxAmmo: -1 }, used: false }];
+  const before = structuredClone(state);
+  callback('collectLoot', state)();
+  const { statusText, ...after } = state;
+  assert.match(statusText, /reste au sol/); assert.deepEqual(after, before);
+});
+
+test('actual completion clears carried equipment and retains one unchanged reward receipt per mode', () => {
+  for (const runMode of ['extraction', 'last_signal', 'infestation', 'hunt']) {
+    for (const result of ['victory', 'defeat']) {
+      const state = liveState('masterchief'); state.runMode = runMode;
+      state.loot = [{ id: 'finish-field-drop', type: 'weapon', wx: 0, wy: 0, label: 'Rocket Launcher',
+        weaponData: { ...PICKUP_FIXTURES.rocket, name: 'Rocket Launcher' } }];
+      callback('collectLoot', state)(); callback('restorePersonalKit', state)();
+      assert.equal(state.fieldWeapon.weapon.type, 'rocket');
+      const receipts = [];
+      const finish = callback('finishRun', state, hero(state.heroId), { runMode,
+        sceneInputsRef: { current: { clear() {} } }, aimPointerRef: { current: {} }, emptySceneAim: () => ({}),
+        onSessionEnd: receipt => receipts.push(receipt) });
+      finish(result); finish(result);
+      assert.equal(state.phase, 'ended'); assert.equal(state.fieldWeapon, null); assert.equal(state.personalKit, null);
+      assert.equal(equipment.restoreExtinctionFieldWeapon(state), false);
+      assert.equal(receipts.length, 1); assert.equal(receipts[0].reason, 'completed'); assert.equal(receipts[0].mode, runMode);
+      assert.equal(receipts[0].rewards.gold, result === 'victory' ? 70 + state.wave * 22 + state.kills * 3 : 18 + state.kills);
+      assert.equal(receipts[0].rewards.shards, result === 'victory' ? 24 + state.wave * 7 : 7 + Math.floor(state.kills / 2));
+      assert.equal(receipts[0].rewards.modeXp, result === 'victory' ? 120 + state.wave * 30 : 35 + state.kills * 4);
+    }
   }
 });
 

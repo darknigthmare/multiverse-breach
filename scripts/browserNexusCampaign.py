@@ -124,7 +124,7 @@ def conversation(page, args, lang, out, name):
     panel.locator('[data-dialogue-record="risk"]').scroll_into_view_if_needed()
     page.screenshot(path=str(out/f'{name}-reading.png'),animations='disabled')
     panel.locator('[data-dialogue-return]').click();expect(page.get_by_role('dialog')).to_have_count(0)
-    expect(terminal).to_be_focused()
+    expect(page.locator('.mosaic-rpg-canvas')).to_be_focused()
     page.clock.run_for(32)
     check(not page.evaluate('Object.values(window.__sceneQA.snapshot().keys).some(Boolean)'),'conversation left movement held')
     check(not page.evaluate('window.__sceneQA.reports.length'),'conversation produced rewards')

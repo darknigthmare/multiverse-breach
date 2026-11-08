@@ -50,7 +50,7 @@ def media_capture(context):
     context.add_init_script('''window.__fpsCatalogDraws=[];window.__fpsSchematicStrokes=[];
       const nativeTimeout=setTimeout.bind(window),nativeClear=clearTimeout.bind(window);
       window.__fpsAfterNativeLayout=()=>new Promise((resolve,reject)=>{
-        const roots=[...document.querySelectorAll('.fps-royale-canvas,.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-objective-strip')];
+        const roots=[...document.querySelectorAll('.fps-royale-canvas,.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-stowed-readout,.extinction-objective-strip')];
         const animations=[...new Set(roots.flatMap(el=>el.getAnimations({subtree:true})))]
           .filter(a=>a.playState==='running'&&Number.isFinite(a.effect?.getComputedTiming().endTime));
         const start=document.timeline.currentTime;let observer,done=false;
@@ -109,7 +109,7 @@ def view_geometry(page, source, out, name):
       else {const strokes=window.__fpsSchematicStrokes.filter(d=>d.cw===canvas.width&&d.ch===canvas.height),at=strokes.at(-1)?.at;
         const latest=strokes.filter(d=>d.at===at);actual=union(latest);samples=latest.length;drawnAt=at??null;}
       const rect=el=>{const b=el.getBoundingClientRect();return {left:b.left,top:b.top,right:b.right,bottom:b.bottom,width:b.width,height:b.height};};
-      const hud=[...document.querySelectorAll('.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-objective-strip')]
+      const hud=[...document.querySelectorAll('.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-stowed-readout,.extinction-objective-strip')]
         .filter(el=>el.getClientRects().length).map(el=>({kind:el.className,...rect(el)}));
       const reticle=local({left:canvas.width/2-18,top:canvas.height/2-18,right:canvas.width/2+18,bottom:canvas.height/2+18});
       const radar=window.__sceneQA.hudLayout().fpsRadar;
@@ -132,7 +132,8 @@ def view_geometry(page, source, out, name):
         viewOverlaps:view?[...hud,reticle,radarBox].filter(b=>overlap(view,b)):[],hudReticleOverlaps:hud.filter(b=>overlap(reticle,b)),
         minButtonWidth:Math.min(...buttons.map(b=>b.width)),minButtonHeight:Math.min(...buttons.map(b=>b.height)),buttons,
         intelButton:rect(document.querySelector('.extinction-intel-button')),directiveTypography,
-        hasKit:!!document.querySelector('[data-personal-kit]'),hasMark:!!document.querySelector('[data-hunt-mark]')};
+        hasKit:!!document.querySelector('[data-personal-kit]'),hasField:!!document.querySelector('[data-field-weapon]'),
+        hasMark:!!document.querySelector('[data-hunt-mark]')};
     }''', source)
     (out / f'{name}-geometry.json').write_text(json.dumps(geometry, indent=2, ensure_ascii=False))
     view = geometry['view']; check(view and geometry['samples'] > 0, 'no actual held view drawing')
@@ -169,7 +170,7 @@ def settle_presentation(page, source, out, name):
         before = page.evaluate('performance.now()')
         page.clock.run_for(32)
         current = page.evaluate('''source=>{const canvas=document.querySelector('.fps-royale-canvas'),layout=window.__sceneQA.fpsViewLayout();
-          const rects=[...document.querySelectorAll('.fps-royale-canvas,.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-objective-strip')]
+          const rects=[...document.querySelectorAll('.fps-royale-canvas,.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-stowed-readout,.extinction-objective-strip')]
             .map(el=>{const r=el.getBoundingClientRect();return [r.left,r.top,r.width,r.height];});
           const draws=source?window.__fpsCatalogDraws.filter(d=>d.src.endsWith(source)&&d.args.length===8):window.__fpsSchematicStrokes;
           const last=draws.filter(d=>d.cw===canvas.width&&d.ch===canvas.height).at(-1);
@@ -525,8 +526,99 @@ def held_pickup_fire_case(page, out, name, restore_in_flight=False):
     return receipt
 
 
+def field_equipment_cycle(page, out, name, firing):
+    """Recover the naturally obtained weapon through both button and keyboard.
+
+    Keep this probe separate from read(): the eight victory replay observations
+    and their semantic seeds are unchanged by the new optional equipment path.
+    """
+    probe = '''() => {const s=window.__sceneQA.state();return {
+      t:s.t,phase:s.phase,heroId:s.heroId,runId:s.runId,weapon:structuredClone(s.weapon),
+      ammo:s.ammo,reserveAmmo:s.reserveAmmo,reloadPulse:s.reloadPulse,
+      fieldWeapon:structuredClone(s.fieldWeapon||null),personalKit:structuredClone(s.personalKit||null),
+      lastFireTime:s.lastFireTime,protocols:{cooldowns:structuredClone(s.protocols.cooldowns),
+        casts:structuredClone(s.protocols.casts),projectiles:structuredClone(s.protocols.projectiles),charge:s.protocols.charge}};}'''
+    before = page.evaluate(probe)
+    carried = before['fieldWeapon']
+    check(before['phase'] == 'running' and before['weapon']['type'] == 'pistol' and carried,
+          'V did not retain the naturally collected field weapon')
+    check(carried['weapon']['type'] == firing['type'] and carried['weapon']['ammo'] == firing['fired']['ammo']
+          and carried['reserveAmmo'] == firing['fired']['reserveAmmo'], 'V changed the fired field weapon stock')
+    check(carried['heroId'] == before['heroId'] and carried['runId'] == before['runId'], 'stored equipment lost its exact owner')
+    button = page.locator('[data-field-weapon]')
+    expect(button).to_be_visible()
+    label = button.evaluate("el=>[el.innerText,el.getAttribute('aria-label'),el.title].filter(Boolean).join(' ')")
+    check(carried['weapon']['name'] in label, 'stored field weapon is not identified in its control')
+    page.locator('.fps-royale-canvas').focus(); page.keyboard.press('v')
+    check(page.evaluate(probe) == before, 'repeated V modified an already active personal kit')
+    button.click()
+    restored = page.evaluate(probe)
+    check(restored['weapon'] == carried['weapon'] and restored['ammo'] == carried['weapon']['ammo']
+          and restored['reserveAmmo'] == carried['reserveAmmo'], 'B button refilled or replaced the stored field weapon')
+    check(restored['reloadPulse'] == max(0, carried['reloadReadyAtTick'] - restored['t']), 'B button discarded the field reload deadline')
+    check(restored['personalKit']['weapon'] == before['weapon'] and restored['personalKit']['reserveAmmo'] == before['reserveAmmo'],
+          'B button altered the personal kit it put away')
+    check(restored['fieldWeapon'] is None and restored['protocols'] == before['protocols']
+          and restored['lastFireTime'] == before['lastFireTime'], 'B reset abilities, shot cadence or projectiles')
+    expect(page.locator('[data-personal-kit]')).to_be_visible()
+    expect(page.locator('[data-field-weapon]')).to_have_count(0)
+    page.locator('.fps-royale-canvas').focus(); page.keyboard.press('b')
+    check(page.evaluate(probe) == restored, 'repeated B changed an already equipped field weapon')
+    loaded = min(restored['weapon']['maxAmmo'] - restored['ammo'], restored['reserveAmmo'])
+    check(loaded > 0, 'native equipment cycle needs the ammunition spent by its measured shot')
+    page.keyboard.press('r')
+    reloading = page.evaluate(probe)
+    check(reloading['ammo'] == restored['ammo'] + loaded and reloading['reserveAmmo'] == restored['reserveAmmo'] - loaded
+          and reloading['reloadPulse'] == 36, 'real field reload did not transfer exactly its available reserve')
+    page.keyboard.press('v')
+    holstered = page.evaluate(probe)
+    check(holstered['weapon'] == before['weapon'] and holstered['reserveAmmo'] == before['reserveAmmo'],
+          'field reload leaked ammunition into the personal kit')
+    check(holstered['fieldWeapon']['weapon'] == reloading['weapon']
+          and holstered['fieldWeapon']['reloadReadyAtTick'] == holstered['t'] + 36, 'V bypassed the new field reload')
+    page.locator('#qa-pause').click(); page.locator('.fps-royale-canvas').focus()
+    frozen = page.evaluate(probe)
+    page.keyboard.press('b'); page.keyboard.press('v'); page.clock.run_for(400)
+    check(page.evaluate(probe) == frozen, 'paused V/B changed equipment or advanced a holstered reload')
+    page.locator('#qa-pause').click(); page.locator('.fps-royale-canvas').focus()
+    # Only active scene ticks count. Observe them rather than assuming a RAF
+    # timestamp conversion or modifying the simulation clock/state directly.
+    for _ in range(16):
+        if page.evaluate('window.__sceneQA.state().t') - holstered['t'] >= 10: break
+        page.clock.run_for(16)
+    active = page.evaluate(probe)
+    check(active['phase'] == 'running' and 10 <= active['t'] - holstered['t'] <= 11, 'could not observe ten ordinary active reload ticks')
+    page.keyboard.press('b')
+    keyboard = page.evaluate(probe)
+    check(keyboard['weapon'] == reloading['weapon'] and keyboard['reserveAmmo'] == reloading['reserveAmmo'],
+          'keyboard B did not recover the reloaded field stock')
+    remaining = holstered['fieldWeapon']['reloadReadyAtTick'] - keyboard['t']
+    check(25 <= remaining <= 26 and keyboard['reloadPulse'] == remaining, 'keyboard B reset or skipped remaining recharge')
+    check(keyboard['protocols'] == active['protocols'] and keyboard['lastFireTime'] == active['lastFireTime'],
+          'keyboard B changed an independent ability, projectile or firing deadline')
+    page.keyboard.press('Space')
+    check(page.evaluate(probe) == keyboard, 'recovering a reloading weapon allowed an early shot')
+    page.keyboard.press('v')
+    final = page.evaluate(probe)
+    check(final['weapon'] == before['weapon'] and final['reserveAmmo'] == before['reserveAmmo']
+          and final['fieldWeapon']['weapon'] == reloading['weapon'], 'final V lost either exact equipment stock')
+    expect(page.locator('[data-field-weapon]')).to_be_visible()
+    stock_readout = page.locator('[data-field-weapon-stock]')
+    expect(stock_readout).to_be_visible()
+    expect(stock_readout).to_contain_text(final['fieldWeapon']['weapon']['name'])
+    expect(stock_readout).to_contain_text(f"{final['fieldWeapon']['weapon']['ammo']}/{final['fieldWeapon']['weapon']['maxAmmo']}")
+    page.screenshot(path=str(out / f'{name}-stored-field-weapon.png'))
+    receipt = {'nativeInputs': True, 'injectedState': False, 'before': before, 'restoredWithButton': restored,
+               'reloading': reloading, 'holstered': holstered, 'paused': frozen,
+               'activeTicks': active['t'] - holstered['t'], 'restoredWithKeyboard': keyboard, 'final': final}
+    (out / f'{name}-field-equipment.json').write_text(json.dumps(receipt, indent=2, ensure_ascii=False))
+    return {'type': firing['type'], 'nativeInputs': True, 'buttonAndKeyboard': True,
+            'pausePreserved': True, 'exactStocks': True, 'remainingReloadTicks': remaining}
+
+
 def pickup_layout_case(page, out, name):
     """Short native hunt: earn and collect one drop, then measure KIT + MARK."""
+    personal_view_source = page.locator('[data-fighter-profile]').get_attribute('data-fps-view-src') or ''
     page.locator('.extinction-mode-options button').filter(has=page.locator('strong', has_text='Champion Hunt')).click()
     page.locator('[data-field-directive]').check()
     prepare_fps_clock(page)
@@ -573,11 +665,17 @@ def pickup_layout_case(page, out, name):
     restored = read(page)
     check(restored['weaponType'] == 'pistol' and restored['ammo'] == retained['ammo']
           and restored['reserveAmmo'] == retained['reserveAmmo'], 'layout change altered retained personal stock')
+    equipment = field_equipment_cycle(page, out, name, firing)
+    field_layout = layout_variant(page, 844, 380, True, personal_view_source, out, f'{name}-stored-weapon-large-844x380')
+    check(field_layout['hasField'] and field_layout['hasMark'] and not field_layout['hasKit'],
+          'stored weapon layout lost B/mark controls or displayed conflicting equipment actions')
     page.locator('#qa-exit').click()
+    check(page.evaluate('window.__sceneQA.state().fieldWeapon == null'), 'abandon retained the carried field weapon')
     check(page.evaluate('window.__sceneQA.reports.filter(r=>r.reason==="completed").length') == 0, 'short layout case granted completion')
     return {'nativeInputs': True, 'injectedProgress': False, 'seed': seed, 'pickedWeapon': weapon,
             'nativeActions': len(trace), 'layouts': layouts, 'directiveDetails': details,
             'pickupFiring': {'type': firing['type'], 'nativeInputs': True, 'pausePreserved': firing['pausePreserved']},
+            'fieldEquipment': equipment, 'fieldEquipmentLayout': field_layout,
             'restoredKit': True, 'abandonNoReward': True}
 
 
@@ -611,11 +709,14 @@ def full_directive(page, mode, lang, out, name, pickup_type=None):
                 firing = held_pickup_fire_case(page, out, name, restore_in_flight=True)
                 current = observe({'kind': 'native-pickup-flight-pause-and-kit-return', 'weaponType': pickup_type})
                 check(current['phase'] == 'running' and current['weaponType'] == 'pistol', 'pickup flight case did not retain an active personal kit')
+                equipment = field_equipment_cycle(page, out, name, firing)
                 page.locator('#qa-exit').click()
+                check(page.evaluate('window.__sceneQA.state().fieldWeapon == null'), 'abandon retained the carried field weapon')
                 check(page.evaluate('window.__sceneQA.reports.filter(report=>report.reason==="completed").length') == 0,
                       'the short projectile case granted completion')
                 result.update(result='pickup-verified', pickedWeapon=pickup_type, pausePreserved=True,
                               restoredKit=True, abandonNoReward=True, nativeActions=len(trace),
+                              fieldEquipment=equipment,
                               pickupFiring={'type': firing['type'], 'nativeInputs': True, 'injectedState': False,
                                             'launchTick': firing['before']['t'], 'impactTick': firing['after']['t'],
                                             'projectileId': firing['inFlight']['id'], 'returnedDuringFlight': True})
@@ -664,6 +765,7 @@ def full_directive(page, mode, lang, out, name, pickup_type=None):
         check(pickup_type is None, f'no native {pickup_type} pickup and impact before the extraction ended')
         check(current['phase'] == 'ended' and current['result'] == 'victory', f'no victory: {current["phase"]}, {current["t"]} ticks, {current["hp"]} HP')
         check(len(reports) == 1, 'completion missing or duplicated')
+        check(page.evaluate('window.__sceneQA.state().fieldWeapon == null'), 'completion retained the carried field weapon')
         if mode == 'extraction': check(current['beacons'] == 3 and current['relaySummary']['secured'] == 3, 'relay objective skipped')
         else:
             check(current['directiveSummary']['completed'] == current['directiveSummary']['required'], 'directive objective skipped')

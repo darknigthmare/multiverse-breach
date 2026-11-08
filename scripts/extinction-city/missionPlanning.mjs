@@ -41,7 +41,8 @@ const SOURCE_FILES = [
   'src/game/canonBlackPearlSourceKits.js', 'src/game/canonFollowupSourceKits.js',
   'src/game/mosaicUniversePlaces.js', 'src/game/mosaicCityRuntime.js',
   'src/game/mosaicResidentDialogue.js', 'src/game/mosaicReconnaissance.js', 'src/game/mosaicCharacterMissions.js',
-  'src/game/mosaicCharacterStories.js', 'src/game/mosaicMissionOperations.js', 'src/game/ocCampaign.js',
+  'src/game/mosaicCharacterStories.js', 'src/game/mosaicMissionOperations.js', 'src/game/mosaicCityDeliveries.js',
+  'src/game/mosaicMissionCargo.js', 'src/game/ocCampaign.js',
   'src/game/nexusFieldOperation.js', 'DLC/index.js'
 ];
 
@@ -301,7 +302,8 @@ const NEXUS_PROPOSALS = {
       obstacle: 'Un pontage trop large étouffe la voix faible sous la plus forte.',
       ending: 'Faire répondre l’accueil sur chaque canal, sans changer le nom de l’appelant.',
       consequence: 'L’appel reçoit une réponse distincte ; les deux canaux restent disponibles.', mechanics: 'Écoute directionnelle, câblage séparé, réponse à distance.' },
-    { related: 'city-mirelle-relay-followup-v1', title: 'La garde de nuit',
+    { related: 'city-mirelle-relay-followup-v1', runtime: 'city-mirelle-night-watch-v1', title: 'La garde de nuit',
+      runtimeScope: 'Lampe portée au pupitre, alimentation séparée ou repli puis essai local et retour à Mirelle. La garde complète avec ses appels reste à développer.',
       premise: 'Prolongement proposé : les secousses d’une Trame blessée font sauter l’alimentation du poste où Mirelle tient la veille.', location: 'Nexus — poste de veille et relais',
       opening: 'Apporter une lampe au poste où Mirelle poursuit sa veille dans le noir.',
       action: 'Isoler le raccord qui chauffe, installer l’alimentation de secours puis alterner les appels avec Mirelle.',
@@ -390,7 +392,8 @@ const NEXUS_PROPOSALS = {
       consequence: 'Une place et une personne accueillent les arrivants ; le signal lumineux seul ne vaut plus promesse d’abri.', mechanics: 'Préparation de refuge, relais humain, réception du groupe.' }
   ],
   arca_tessera: [
-    { related: 'city-tessera-two-accounts-v1', title: 'La fenêtre que j’ai choisie',
+    { related: 'city-tessera-two-accounts-v1', runtime: 'city-tessera-chosen-window-v1', title: 'La fenêtre que j’ai choisie',
+      runtimeScope: 'Réflecteur porté, commande indépendante et lumière locale, puis retour à Tessera. Son animation de prise en main reste à développer.',
       premise: 'Prolongement proposé : deux souvenirs attirent la lumière de la chambre de Tessera dans des directions opposées ; elle veut choisir sa propre fenêtre.', location: 'Nexus — chambre de Tessera',
       opening: 'Rejoindre Tessera dans sa chambre et lui demander où elle veut s’asseoir.',
       action: 'Déplacer le réflecteur, séparer les deux commandes puis régler la lumière depuis la place qu’elle choisit.',
@@ -413,7 +416,8 @@ const NEXUS_PROPOSALS = {
       obstacle: 'Deux marques d’acheminement se contredisent ; aucune seconde caisse n’existe pour compenser l’erreur.',
       ending: 'Aider à distribuer les couvertures et signaler à Quillon celles qui manquent encore.',
       consequence: 'La seule caisse disponible arrive au refuge ; les besoins restants demeurent visibles sans dette inventée.', mechanics: 'Objet unique, transport, besoin matériel constaté.' },
-    { related: 'city-quillon-delivery-check-v1', title: 'La pompe après la lampe',
+    { related: 'city-quillon-delivery-check-v1', runtime: 'city-quillon-refuge-pump-v1', title: 'La pompe après la lampe',
+      runtimeScope: 'Rotor porté à la pompe, pièce usée rendue, amorçage et récipient représentés par les accessoires. La vie complète du refuge reste à développer.',
       premise: 'Prolongement proposé : la lampe fonctionne, mais la pompe du refuge s’arrête ; Quillon cherche encore qui doit payer la pièce.', location: 'Nexus — pompe du refuge',
       opening: 'Ouvrir le capot avec Quillon et constater que l’eau n’arrive plus.',
       action: 'Couper le courant, réutiliser la seule pièce compatible disponible puis réamorcer la pompe.',
@@ -422,7 +426,8 @@ const NEXUS_PROPOSALS = {
       consequence: 'L’eau revient avant la clôture du compte ; la pièce consommée reste unique et son coût reste explicite.', mechanics: 'Consignation, réparation, débit visible, ressource unique.' }
   ],
   arca_nadir: [
-    { related: 'city-nadir-return-probe-v1', title: 'La sonde sous les décombres',
+    { related: 'city-nadir-return-probe-v1', runtime: 'city-nadir-buried-probe-v1', title: 'La sonde sous les décombres',
+      runtimeScope: 'N-4 portée à Nadir, seuil fermé et prochain essai préparé. La simulation physique du câble et des débris reste à développer.',
       premise: 'Prolongement proposé : la sonde de Nadir cesse de répondre après une chute de débris près d’un seuil fermé.', location: 'Nexus — seuil et débris de la travée',
       opening: 'Rejoindre Nadir à la limite du seuil et sécuriser le câble tendu.',
       action: 'Dégager le câble, sortir la sonde depuis le côté sûr puis comparer son état au départ.',
@@ -637,6 +642,11 @@ function mission(character, strand) {
   const special = NEXUS_PROPOSALS[character.id]?.[city ? 1 : 0];
   const relatedRuntime = special ? MOSAIC_CHARACTER_MISSIONS.find(item => item.id === special.related) : null;
   if (special && !relatedRuntime) throw new Error(`Missing related Nexus story: ${special.related}`);
+  const integratedRuntime = special?.runtime ? MOSAIC_CHARACTER_MISSIONS.find(item => item.id === special.runtime) : null;
+  if (special?.runtime && !integratedRuntime) throw new Error(`Missing integrated Nexus adaptation: ${special.runtime}`);
+  if (integratedRuntime && (integratedRuntime.heroId !== character.id || integratedRuntime.requiresMissionId !== relatedRuntime.id)) {
+    throw new Error(`Integrated Nexus adaptation has a different character or prerequisite: ${special.runtime}`);
+  }
   const individual = INDIVIDUAL_PROPOSALS[character.id];
   const individualPlan = individual?.plans[city ? 1 : 0];
   const peaceful = character.nonCombat || character.finalePolicy === 'nonCombatFinal';
@@ -644,7 +654,8 @@ function mission(character, strand) {
   const namedActions = character.actions.filter(action => !action.generic);
   const selectedActions = peaceful ? [] : [namedActions.find(action => action.slot === 'simple'), namedActions.find(action => action.slot === 'defense')].filter(Boolean);
   const fields = individual?.sourceFields || (special ? unique([...character.sourceRefs, ...(relatedRuntime.sourceRefs || []),
-    `${relatedRuntime.contentFile || 'src/game/mosaicCharacterStories.js'}#${relatedRuntime.id}`]) : [`HEROES_DB[${character.id}].category`, `LORE_DB[${character.universe}]`,
+    `${relatedRuntime.contentFile || 'src/game/mosaicCharacterStories.js'}#${relatedRuntime.id}`,
+    ...(integratedRuntime ? [`${integratedRuntime.contentFile || 'src/game/mosaicCityDeliveries.js'}#${integratedRuntime.id}`] : [])]) : [`HEROES_DB[${character.id}].category`, `LORE_DB[${character.universe}]`,
     ...(sourceGoal ? [character.sourceObjective ? `HEROES_DB[${character.id}].objective` : `ENEMIES_DB[${character.universe}].finalePolicy.objective`] : []),
     ...selectedActions.map(action => action.sourceField),
     ...(character.equipment.length && !peaceful ? [`HEROES_DB[${character.id}].equipment/weapon`] : [])]);
@@ -695,11 +706,17 @@ function mission(character, strand) {
     prerequisites: { installedUniverse: character.universe, characterOwnedOrAuthorizedResident: !character.isPlayer, requiredRuntimeQuest: null, requiresCanonReview: true },
     commonPolicyId: 'city-planning-v1',
     canonStatus: character.canonStatus,
-    implementationStatus: 'planned', runtimeMissionId: null,
+    implementationStatus: integratedRuntime ? 'runtime_adaptation' : 'planned', runtimeMissionId: integratedRuntime?.id || null,
+    ...(integratedRuntime ? {
+      runtimeScope: special.runtimeScope,
+      runtimeValidation: 'not_certified_by_catalog'
+    } : {}),
     readiness: familyId === 'research' || character.sourceGaps.includes('generic_ability_names') ? 'source_research_required' : 'design_review_required',
     priority: character.isPlayer || character.universe === 'Nexus de Convergence' ? 'P1' : 'P2',
     planningStatus: 'to_design', owner: '', targetMilestone: '', reviewNotes: '',
-    nextAction: `${!individualPlan && !special ? 'Réécriture diégétique requise : remplacer le canevas par une situation personnelle et ses effets joués. ' : ''}${sourceCheck} Écrire le dialogue, la géométrie et les critères propres à cette proposition ; raccorder ensuite les états de quête.`,
+    nextAction: integratedRuntime
+      ? `${sourceCheck} Comparer la proposition à l’adaptation ${integratedRuntime.id}, terminer sa mise en scène puis renseigner la recette et le suivi manuel.`
+      : `${!individualPlan && !special ? 'Réécriture diégétique requise : remplacer le canevas par une situation personnelle et ses effets joués. ' : ''}${sourceCheck} Écrire le dialogue, la géométrie et les critères propres à cette proposition ; raccorder ensuite les états de quête.`,
     acceptanceCriteria: [peaceful ? 'Aucun tir, arme ajoutée, barre de vie ou élimination ; la résolution conserve l’objectif pacifique.' : special ? 'Aucun habitant hostile dans la Cité ; l’intervention modifie un objet ou un trajet, sans remplacer une personne.' : 'Aucun habitant hostile dans la Cité ; les démonstrations utilisent des objets inertes.',
       ...(character.sameProtagonistAs || character.uniqueAbility === false ? ['La variante ne devient ni une seconde personne ni une capacité exclusive.'] : [])]
   };
@@ -745,7 +762,8 @@ function encounterRecords(universes, revision) {
 }
 
 function runtimeOperation(operation) {
-  return operation ? { kind: operation.kind, label: text(operation.label), propName: text(operation.propName), completedText: text(operation.completedText) } : undefined;
+  return operation ? { kind: operation.kind, label: text(operation.label), propName: text(operation.propName), completedText: text(operation.completedText),
+    ...(operation.appearance ? { appearance: operation.appearance } : {}) } : undefined;
 }
 
 function runtimeStep(step) {
@@ -755,6 +773,8 @@ function runtimeStep(step) {
     ...(step.finding ? { finding: text(step.finding) } : {}),
     ...(step.dialogue ? { dialogue: text(step.dialogue) } : {}),
     ...(step.operation ? { operation: runtimeOperation(step.operation) } : {}),
+    ...(step.cargo ? { cargo: { action: step.cargo.action, id: step.cargo.id,
+      label: text(step.cargo.label), appearance: step.cargo.appearance } } : {}),
     ...(Number.isFinite(step.x) && Number.isFinite(step.y) ? { x: step.x, y: step.y } : {}),
     ...Object.fromEntries(['byOriginChoice', 'byChoice'].filter(field => step[field]).map(field => [field,
       Object.fromEntries(Object.entries(step[field]).map(([key, branch]) => [key, runtimeStep(branch)]))])),
@@ -794,6 +814,8 @@ export function buildMissionPlanning(sourceRevision, { includeSourceHashes = tru
     missions: missions.length, universeMissions: missions.filter(row => row.strand === 'universe').length,
     multiverseMissions: missions.filter(row => row.strand === 'multiverse').length,
     implementedMissions: missions.filter(row => row.implementationStatus !== 'planned').length,
+    runtimeLinkedProposals: missions.filter(row => row.runtimeMissionId).length,
+    remainingUnlinkedProposals: missions.filter(row => !row.runtimeMissionId).length,
     separatelyImplementedCityMissions: MOSAIC_CHARACTER_MISSIONS.length,
     individuallyDesignedCharacters: characters.filter(character => NEXUS_PROPOSALS[character.id] || INDIVIDUAL_PROPOSALS[character.id]).length,
     individuallyDesignedMissions: missions.filter(row => row.designKind === 'individual_proposal').length,
@@ -810,15 +832,15 @@ export function buildMissionPlanning(sourceRevision, { includeSourceHashes = tru
     schema: 1, date: DATE, sourceRevision,
     sourceRevisionMeaning: 'Révision de départ des catalogues ; les empreintes ci-dessous décrivent les fichiers effectivement lus. Les propositions et ce générateur sont ajoutés après cette révision.',
     scope: 'Deux propositions de missions Cité par identité du roster résolu, Ancre incluse ; occurrences ennemies/boss séparées et non possédables.',
-    status: 'planning_only', counts,
+    status: 'planning_with_explicit_runtime_adaptations', counts,
     editorialPolicy: [
-      'Les missions sont des propositions de design, pas des épisodes officiels ni des missions déjà implémentées.',
+      'Les lignes sont des propositions de design. Seules celles portant un runtimeMissionId ont une adaptation jouable explicitement reliée ; ce lien ne valide ni le lore, ni la mise en scène complète, ni la recette.',
       'Les références externes sont reprises du dépôt sans nouvelle consultation ; leur présence ne valide ni la source, ni la fidélité, ni la continuité.',
       'Les données génériques sont conservées comme lacunes : aucun pouvoir individuel ou équipement ne devient canon par génération.',
       'Les variantes du même protagoniste gardent des IDs distincts, sans inventer une nouvelle personne ni une capacité exclusive.',
       'Les univers et les PNJ pacifiques restent sans objectif d’élimination ; les habitants ne deviennent pas hostiles.',
       'Les seuils, obstacles et dialogues proposés relèvent du design Multiverse et devront être écrits puis testés.',
-      'Les contrats jouables ajoutés séparément à la Cité ne sont pas automatiquement les 3 824 lignes de ce catalogue.'
+      'Un contrat jouable ne clôture aucune ligne de suivi automatiquement. La proposition et son adaptation gardent des IDs distincts et leurs périmètres explicités.'
     ],
     editableTrackingFields: ['priority', 'planningStatus', 'owner', 'targetMilestone', 'reviewNotes'],
     commonPolicies: [{ id: 'city-planning-v1',
@@ -838,7 +860,8 @@ export function buildMissionPlanning(sourceRevision, { includeSourceHashes = tru
       sourceFile: item.contentFile || 'src/game/mosaicCharacterMissions.js', contentFile: item.contentFile || 'src/game/mosaicCharacterMissions.js',
       sourceRefs: item.sourceRefs || [],
       systemSourceFiles: ['src/game/mosaicCharacterMissions.js', 'src/game/mosaicMissionOperations.js',
-        ...(item.requiresMissionId ? ['src/game/mosaicCharacterFollowups.js'] : [])],
+        ...(item.requiresMissionId ? ['src/game/mosaicCharacterFollowups.js'] : []),
+        ...(item.steps.some(step => step.cargo) ? ['src/game/mosaicMissionCargo.js'] : [])],
       chapter: item.chapter || 1, requiresMissionId: item.requiresMissionId || null,
       continuity: text(item.continuity), referenceUrls: item.references || [],
       implementationStatus: 'runtime_contract', browserValidation: 'not_certified_by_catalog',
@@ -863,7 +886,10 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
         sourceManifestSha256: sha256(JSON.stringify(catalog.sourceManifest)),
         planningContentSha256: sha256(JSON.stringify({ characters: catalog.characters, missions: catalog.missions, encounters: catalog.encounters, finalePolicies: catalog.finalePolicies })),
         generator: 'scripts/extinction-city/missionPlanning.mjs', outputPolicy: 'Full JSON generated for workbook; compact receipt versioned. No mission completion or external canon approval inferred.',
-        constraints: { allRosterIdentitiesCovered: true, proposalsPerCharacter: 2, allProposalStatus: 'planned', encounterPossession: false, externalReferencesChecked: false } };
+        constraints: { allRosterIdentitiesCovered: true, proposalsPerCharacter: 2,
+          proposalStatuses: [...new Set(catalog.missions.map(mission => mission.implementationStatus))],
+          explicitRuntimeLinks: catalog.counts.runtimeLinkedProposals, manualTrackingAutoCompleted: false,
+          encounterPossession: false, externalReferencesChecked: false } };
       mkdirSync(path.dirname(path.resolve(receiptOutput)), { recursive: true });
       writeFileSync(receiptOutput, `${JSON.stringify(receipt, null, 2)}\n`);
     }

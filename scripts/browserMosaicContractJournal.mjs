@@ -24,7 +24,7 @@ const fonts = root => root.locator('.mosaic-contract-kicker, .mosaic-contract-he
 async function inspectLayout(root, viewport) {
   const data = await root.evaluate(node => {
     const visible = element => element.checkVisibility({ visibilityProperty: true, opacityProperty: true });
-    const containers = [node, ...node.querySelectorAll('.mosaic-contract-heading, .mosaic-contract-workspace, .mosaic-contract-directory, .mosaic-contract-directory-content, .mosaic-contract-list, .mosaic-contract-reader, .mosaic-contract-objective, .mosaic-contract-evidence, .mosaic-contract-request, .mosaic-contract-memory, .mosaic-contract-on-location, .mosaic-contract-previous, .mosaic-dialogue-quest, .mosaic-dialogue-background, .mosaic-dialogue-record, .mosaic-dialogue-topics, blockquote')]
+    const containers = [node, ...node.querySelectorAll('.mosaic-contract-heading, .mosaic-contract-workspace, .mosaic-contract-directory, .mosaic-contract-directory-content, .mosaic-contract-list, .mosaic-contract-reader, .mosaic-contract-objective, .mosaic-contract-evidence, .mosaic-contract-request, .mosaic-contract-memory, .mosaic-contract-on-location, .mosaic-contract-previous, .mosaic-resident-conversation-content, .mosaic-resident-conversation-toolbar, .mosaic-dialogue-quest, .mosaic-dialogue-background, .mosaic-dialogue-record, .mosaic-dialogue-topics, .mosaic-dialogue-next, .mosaic-dialogue-actions, blockquote')]
       .filter(visible).map(element => ({ name: element.className, width: element.clientWidth, scrollWidth: element.scrollWidth }));
     const controls = [...node.querySelectorAll('button, input, select, summary')].filter(visible).map(element => {
       const rect = element.getBoundingClientRect();
@@ -69,7 +69,44 @@ async function authoredPresentation(page, { missionId, lang, viewport, name }) {
   const replyTrigger = page.getByTestId('open-authored-reply');
   await replyTrigger.focus(); await page.keyboard.press('Enter');
   const conversation = page.locator('.mosaic-resident-dialogue');
+  const conversationModal = page.locator('[data-resident-conversation-modal]');
   await conversation.waitFor();
+  await focused(conversation.locator('h3'));
+  assert.equal(await page.getByRole('dialog').count(), 1, 'The encounter stacked two modal layers');
+  assert.equal(await page.locator('.mosaic-character-missions, .mosaic-evidence-ledger, .mosaic-resident-directory, .mosaic-terminal-drawer').count(), 0,
+    'An administrative panel remained under the conversation');
+  assert.equal(await page.locator('#root').evaluate(node => node.inert), true);
+  assert.equal(await conversation.locator('[data-dialogue-next]').count(), 0, 'An unaccepted request became a tracked next action');
+  assert.equal(await conversation.locator('[data-dialogue-location]').innerText(), story.location);
+  await conversation.locator('[data-dialogue-return]').focus(); await page.keyboard.press('Tab');
+  await focused(conversationModal.locator('[data-dialogue-close]'));
+  await page.keyboard.press('Shift+Tab'); await focused(conversation.locator('[data-dialogue-return]'));
+  result.conversationLayout = await inspectLayout(conversationModal, viewport);
+  result.conversationTypography = await conversation.locator('h3, [data-dialogue-quest] blockquote p, [data-dialogue-return]')
+    .evaluateAll(nodes => nodes.map(node => ({ text: node.textContent, size: parseFloat(getComputedStyle(node).fontSize) })));
+  assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).fontSize), '24px');
+  assert.ok(result.conversationTypography.every(item => item.size >= 24), 'Conversation text did not follow 150% reading size');
+  await conversation.locator('[data-dialogue-quest]').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: resolve(evidence, `${name}-${missionId}-conversation-offer.png`) });
+  await page.keyboard.press('Escape'); await conversation.waitFor({ state: 'detached' }); await focused(replyTrigger);
+  assert.deepEqual(await snapshot(page), before, 'Dismissing the encounter accepted its request');
+
+  await replyTrigger.focus(); await page.keyboard.press('Enter'); await conversation.waitFor();
+  await conversation.locator('[data-dialogue-journal]').focus(); await page.keyboard.press('Enter');
+  await conversation.waitFor({ state: 'detached' }); await root.waitFor();
+  assert.equal(await page.getByRole('dialog').count(), 1, 'Journal navigation left the encounter open');
+  assert.deepEqual(await snapshot(page), before, 'Opening the journal from an offer changed progress');
+  await page.keyboard.press('Escape'); await root.waitFor({ state: 'detached' }); await focused(replyTrigger);
+  result.keyboardTrapAndEscape = true;
+  result.explicitJournalReadOnly = true;
+
+  if (missionId === 'city-mirelle-suture-v1') {
+    await replyTrigger.focus(); await page.keyboard.press('Enter'); await conversation.waitFor();
+    await page.mouse.click(1, 1); await conversation.waitFor({ state: 'detached' }); await focused(replyTrigger);
+    assert.deepEqual(await snapshot(page), before, 'Closing from the backdrop accepted the request');
+    result.backdropReturnsFocus = true;
+  }
+  await replyTrigger.focus(); await page.keyboard.press('Enter'); await conversation.waitFor();
   const speech = conversation.locator('[data-dialogue-quest]');
   assert.ok((await speech.textContent()).includes(story.request));
   const background = conversation.locator('.mosaic-dialogue-background');
@@ -88,6 +125,7 @@ async function authoredPresentation(page, { missionId, lang, viewport, name }) {
   await focused(conversation.locator('[data-dialogue-return]'));
   assert.equal(await conversation.locator('[data-city-quest-offer]').count(), 0);
   assert.ok((await speech.textContent()).includes(story.reply));
+  assert.equal(await conversation.locator('[data-dialogue-next] p').innerText(), await page.evaluate(() => window.__contractJournalQA.state.nextAction));
   const accepted = await snapshot(page);
   assert.equal(accepted.progress.activeId, missionId);
   assert.deepEqual(accepted.progress.records[missionId].completedStepIds, [], 'Prepared presentation must not fabricate an in-world encounter');
@@ -95,7 +133,7 @@ async function authoredPresentation(page, { missionId, lang, viewport, name }) {
   assert.deepEqual(accepted.source, before.source);
   result.acceptanceFocus = true;
   result.reply = story.reply;
-  result.replyLayout = await inspectLayout(conversation, viewport);
+  result.replyLayout = await inspectLayout(conversationModal, viewport);
   await speech.scrollIntoViewIfNeeded();
   await page.screenshot({ path: resolve(evidence, `${name}-${missionId}-reply.png`) });
   await conversation.locator('[data-dialogue-return]').focus(); await page.keyboard.press('Enter');
@@ -159,7 +197,7 @@ try {
     });
     await context.route(/https:\/\/fonts\.(googleapis|gstatic)\.com\//u, route => route.abort());
     await page.addInitScript(({ displayKey, audioKey }) => {
-      localStorage.setItem(displayKey, JSON.stringify({ version: 1, textScale: 1, hudScale: 1.4, safeArea: 32, contrast: 'high', motion: 'reduced' }));
+      if (!localStorage.getItem(displayKey)) localStorage.setItem(displayKey, JSON.stringify({ version: 1, textScale: 1, hudScale: 1.4, safeArea: 32, contrast: 'high', motion: 'reduced' }));
       localStorage.setItem(audioKey, JSON.stringify({ musicVolume: 0, sfxVolume: 0, muted: true }));
     }, { displayKey: DISPLAY_PREFERENCES_KEY, audioKey: AUDIO_PREFERENCES_KEY });
     const record = { name, viewport, lang, status: 'running', scope: 'Actual journal, modal isolation, display settings and mission rules. 61 synthetic cases plus two actual Anchor contracts; prepared progress, no City movement, account, or artwork claim.' };

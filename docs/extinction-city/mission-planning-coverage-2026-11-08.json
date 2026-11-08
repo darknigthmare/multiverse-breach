@@ -10,8 +10,10 @@
     "missions": 3824,
     "universeMissions": 1912,
     "multiverseMissions": 1912,
-    "implementedMissions": 0,
-    "separatelyImplementedCityMissions": 28,
+    "implementedMissions": 4,
+    "runtimeLinkedProposals": 4,
+    "remainingUnlinkedProposals": 3820,
+    "separatelyImplementedCityMissions": 32,
     "individuallyDesignedCharacters": 22,
     "individuallyDesignedMissions": 44,
     "sourceResearchMissions": 2524,
@@ -37,17 +39,22 @@
       "research": 1598
     }
   },
-  "dataSha256": "7d277f3dc8f43f6b4357b32c7442e69c5fa56368631b9c8b53cf61d15e1dde0d",
-  "outputBytes": 24843931,
-  "sourceFileCount": 1770,
-  "sourceManifestSha256": "3e4aeef559c5ce8f609db1064cf505ca7fca2880ddb5d4d5b7311123990e7f39",
-  "planningContentSha256": "f00b4581bb8a671a1fe87d3a0b1cdc938fd04a40881dd04e83817bd31b2acee4",
+  "dataSha256": "ac5dcf76c3d273674c0abb2093951d5092d0856174ea8b2cb76cf73a728dca4b",
+  "outputBytes": 24876785,
+  "sourceFileCount": 1772,
+  "sourceManifestSha256": "dd49b6581b75c67562b426cf4ed53d7fbd5ea99b3d86120583a4149d5a4bff69",
+  "planningContentSha256": "8952accdcc59954e4b92a424670d70ddc356f658d8ba407375062ec5541d7490",
   "generator": "scripts/extinction-city/missionPlanning.mjs",
   "outputPolicy": "Full JSON generated for workbook; compact receipt versioned. No mission completion or external canon approval inferred.",
   "constraints": {
     "allRosterIdentitiesCovered": true,
     "proposalsPerCharacter": 2,
-    "allProposalStatus": "planned",
+    "proposalStatuses": [
+      "planned",
+      "runtime_adaptation"
+    ],
+    "explicitRuntimeLinks": 4,
+    "manualTrackingAutoCompleted": false,
     "encounterPossession": false,
     "externalReferencesChecked": false
   }

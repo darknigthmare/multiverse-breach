@@ -6,6 +6,7 @@ position, quest progress, evidence, reward or ending is injected during play.
 """
 import argparse
 import json
+import math
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
 from browserCityExtinction import check
@@ -38,7 +39,19 @@ FOLLOWUP_IDS = [
 FOLLOWUPS = [(mission_id, 'shortcut', 'apply' if index % 2 == 0 else 'hold')
              for index, mission_id in enumerate(FOLLOWUP_IDS)]
 PREREQUISITES = dict(zip(FOLLOWUP_IDS, [entry[0] for entry in NEXUS_CONTRACTS]))
-NEXUS_ALL = NEXUS_CONTRACTS + FOLLOWUPS
+DELIVERIES = [
+    {'id': 'city-mirelle-night-watch-v1', 'parent': FOLLOWUP_IDS[1], 'origins': ['apply', 'hold'],
+     'prelude': [NEXUS_CONTRACTS[1]], 'parentEntry': FOLLOWUPS[1]},
+    {'id': 'city-quillon-refuge-pump-v1', 'parent': FOLLOWUP_IDS[8], 'origins': ['apply', 'hold'],
+     'prelude': [NEXUS_CONTRACTS[8]], 'parentEntry': FOLLOWUPS[8]},
+    {'id': 'city-nadir-buried-probe-v1', 'parent': NEXUS_CONTRACTS[9][0], 'origins': ['bounded-return', 'repeat-probe'],
+     'prelude': [], 'parentEntry': NEXUS_CONTRACTS[9]},
+    {'id': 'city-tessera-chosen-window-v1', 'parent': NEXUS_CONTRACTS[7][0], 'origins': ['parallel-accounts', 'hold-display'],
+     'prelude': [], 'parentEntry': NEXUS_CONTRACTS[7]},
+]
+DELIVERY_IDS = {story['id'] for story in DELIVERIES}
+PREREQUISITES.update({story['id']: story['parent'] for story in DELIVERIES})
+NEXUS_ALL = NEXUS_CONTRACTS + FOLLOWUPS + [(story['id'], 'shortcut', 'apply') for story in DELIVERIES]
 DISTRICTS = {
     'nexus': {'id': DISTRICT, 'universe': 'Nexus de Convergence', 'catalog': 'nexus',
               'contracts': NEXUS_ALL, 'mobile': [
@@ -65,6 +78,78 @@ def progress(page):
 
 def mission_objects(page):
     return page.evaluate('window.__sceneQA.snapshot().missionObjects')
+
+
+def mission_cargo(page):
+    return page.evaluate('structuredClone(window.__sceneQA.state()?.missionCargo ?? null)')
+
+
+def declared_cargo(page, mission_id, index, district):
+    """Read the authored step independently from its receipt and live cargo."""
+    return page.evaluate('''async ({missionId,index,districtId})=>{
+      const {MOSAIC_CHARACTER_MISSIONS,getMosaicCharacterMissionStep,localizeCityMission}=await import('/src/game/mosaicCharacterMissions.js');
+      const source=MOSAIC_CHARACTER_MISSIONS.find(item=>item.id===missionId);
+      const mission={...source,districtId,anchorId:`${districtId}-core`};
+      const step=getMosaicCharacterMissionStep(window.__sceneQA.characterMissions,mission,index);
+      if(!step?.cargo)return null;
+      const lang=new URLSearchParams(globalThis.__sceneQaParams||location.search).get('lang')==='en'?'en':'fr';
+      return {...step.cargo,label:localizeCityMission(step.cargo.label,lang),missionId,
+        heroId:source.heroId,universe:source.universe,districtId,stepId:step.id};
+    }''', {'missionId': mission_id, 'index': index, 'districtId': district})
+
+
+def verify_cargo_transition(definition, before, after, saved):
+    if not definition:
+        check(after == before, 'a step without a transfer changed the carried object')
+        return None
+    if definition['action'] == 'take':
+        check(before is None, 'a pickup replaced another carried object')
+        receipt = saved['records'][definition['missionId']]['operationReceipts'][definition['stepId']]
+        expected = {key: definition[key] for key in ['missionId', 'heroId', 'universe', 'districtId', 'id', 'label', 'appearance', 'stepId']}
+        expected['sequence'] = receipt['sequence']
+        check(after == expected, 'the carried object differs from the physical pickup and its receipt')
+    else:
+        check(definition['action'] == 'deliver', 'unknown authored cargo action')
+        check(before and all(before[key] == definition[key] for key in ['missionId', 'heroId', 'universe', 'districtId', 'id', 'appearance']),
+              'delivery did not start with the requested carried object')
+        check(after is None, 'delivery left a duplicate object attached to the player')
+    return {'declaration': definition, 'before': before, 'after': after}
+
+
+def install_cargo_observer(page):
+    """Observe real Canvas2D label draws; never modify the scene or simulation."""
+    page.add_init_script('''(()=>{
+      window.__cityCargoDraws=[];
+      const original=CanvasRenderingContext2D.prototype.fillText;
+      CanvasRenderingContext2D.prototype.fillText=function(text,x,y,...rest){
+        const state=window.__sceneQA?.state?.(),cargo=state?.missionCargo;
+        if(this.canvas.classList.contains('mosaic-rpg-canvas')&&cargo&&text===cargo.label){
+          const m=this.getTransform();
+          window.__cityCargoDraws.push({t:state.t,player:{x:state.player.x,y:state.player.y},
+            cargo:structuredClone(cargo),worldX:m.a*x+m.c*y+m.e+state.camera.x,
+            worldY:m.b*x+m.d*y+m.f+state.camera.y});
+          if(window.__cityCargoDraws.length>6000)window.__cityCargoDraws.shift();
+        }
+        return original.call(this,text,x,y,...rest);
+      };
+    })();''')
+
+
+def verify_cargo_draws(samples, cargo, require_movement=False):
+    matching = [sample for sample in samples if sample['cargo'] == cargo]
+    check(matching, 'the carried object label was not drawn on the real City canvas')
+    for sample in matching:
+        check(all(math.isfinite(sample[key]) for key in ['worldX', 'worldY']), 'non-finite carried-object position')
+        check(abs(sample['worldX'] - sample['player']['x']) <= 1e-6
+              and abs(sample['worldY'] - sample['player']['y'] + 66) <= 1e-6,
+              'carried-object label detached from the avatar world transform')
+    distance = sum(math.hypot(current['player']['x'] - previous['player']['x'], current['player']['y'] - previous['player']['y'])
+                   for previous, current in zip(matching, matching[1:]))
+    if require_movement:
+        check(len(matching) >= 2 and distance > 1e-6, 'no native movement was sampled while the object was carried')
+    return {'sampledDraws': len(matching), 'travelledWorldUnits': distance,
+            'labelTracksAvatar': True, 'worldOffset': {'x': 0, 'y': -66},
+            'scope': 'Observed real label transforms; screenshots also retain the code-drawn carried silhouette.'}
 
 
 def verify_operation(definition, before, after, objects_before, objects_after, observed_target):
@@ -114,11 +199,47 @@ def verify_operation(definition, before, after, objects_before, objects_after, o
 def terminal(page):
     conversation = page.locator('.mosaic-resident-dialogue')
     if conversation.count():
-        conversation.locator('[data-dialogue-return]').click()
+        conversation.locator('[data-dialogue-journal]').click()
         expect(conversation).to_have_count(0)
     if not page.get_by_role('dialog').count():
         page.get_by_role('button', name='TERMINAL · JOURNAL', exact=True).click()
     expect(page.locator('.mosaic-character-missions')).to_be_visible()
+
+
+def switch_while_carrying(page, mission_id, district, cargo):
+    """Pause and resume via actual journal buttons; do not advance either task."""
+    other_id = page.evaluate('''async ({missionId,districtId})=>{
+      const {MOSAIC_CHARACTER_MISSIONS,getMosaicCharacterMissionObjective}=await import('/src/game/mosaicCharacterMissions.js');
+      const source=MOSAIC_CHARACTER_MISSIONS.find(item=>item.id===missionId);
+      return MOSAIC_CHARACTER_MISSIONS.filter(item=>item.universe===source.universe&&item.id!==missionId)
+        .map(item=>({mission:{...item,districtId,anchorId:`${districtId}-core`},id:item.id}))
+        .find(({mission})=>['available','paused'].includes(getMosaicCharacterMissionObjective(window.__sceneQA.characterMissions,mission).status))?.id||null;
+    }''', {'missionId': mission_id, 'districtId': district})
+    if not other_id:
+        return None
+    panel = page.locator('.mosaic-character-missions')
+    before = progress(page)
+    panel.locator('select').select_option(other_id)
+    panel.locator('[data-city-contract-accept]').click()
+    page.wait_for_function('id=>window.__sceneQA.characterMissions.activeId===id', arg=other_id, polling=50)
+    paused = progress(page)
+    check(paused['records'][mission_id] == before['records'][mission_id] and mission_cargo(page) == cargo,
+          'tracking another request changed the paused delivery or its carried object')
+    other_record = paused['records'][other_id]
+    if other_id in before['records']:
+        check(other_record == before['records'][other_id], 'tracking the other request advanced it')
+    else:
+        check(not other_record['completedStepIds'] and not other_record.get('operationReceipts'),
+              'tracking another request fabricated a meeting or a physical intervention')
+    panel.locator('select').select_option(mission_id)
+    panel.locator('[data-city-contract-accept]').click()
+    page.wait_for_function('id=>window.__sceneQA.characterMissions.activeId===id', arg=mission_id, polling=50)
+    resumed = progress(page)
+    check(resumed['records'][mission_id] == before['records'][mission_id]
+          and resumed['records'][other_id] == other_record and mission_cargo(page) == cargo,
+          'resuming the delivery changed an object or either request')
+    return {'otherMissionId': other_id, 'cargo': cargo, 'preservedWhilePaused': True,
+            'preservedOnResume': True, 'noObjectiveAdvanced': True}
 
 
 def reach_and_measure(button, page):
@@ -190,6 +311,7 @@ def interrupt_route(page, panel, out, name):
 
 def play_contract(page, entry, out, case_name, district, universe, remount=False, interrupt=False):
     mission_id, invalid_choice, valid_choice = entry
+    is_delivery = mission_id in DELIVERY_IDS
     terminal(page)
     panel = page.locator('.mosaic-character-missions')
     panel.locator('select').select_option(mission_id)
@@ -200,7 +322,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
     page.keyboard.press('Enter')
     page.wait_for_function('id=>window.__sceneQA.characterMissions?.activeId===id', arg=mission_id, polling=50)
     case = {'missionId': mission_id, 'districtId': district, 'universe': universe,
-            'walks': [], 'operations': [], 'choice': None, 'remount': None}
+            'walks': [], 'operations': [], 'cargoTransfers': [], 'choice': None, 'remount': None}
     if mission_id in PREREQUISITES:
         saved = progress(page)['records']
         source = saved[PREREQUISITES[mission_id]]
@@ -218,6 +340,8 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
         before = progress(page)
         index = len(before['records'][mission_id]['completedStepIds'])
         completed_operation = None
+        cargo_before = mission_cargo(page)
+        cargo_definition = declared_cargo(page, mission_id, index, district) if is_delivery else None
         if objective.get_attribute('data-step') == 'resolution':
             wrong = panel.locator(f'[data-city-contract-choice="{invalid_choice}"]')
             reach_and_measure(wrong, page)
@@ -261,6 +385,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                 case['operationCapture'] = {'before': f'{image_name}-before.png', 'after': f'{image_name}-after.png'}
                 terminal(page)
             begin_walk_proof(button)
+            page.evaluate('window.__cityCargoDraws=[]')
             button.click()
             try:
                 for _ in range(160):
@@ -285,7 +410,13 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                 check(proof['clickBefore']['x'] == proof['clickAfter']['x'] and
                       proof['clickBefore']['y'] == proof['clickAfter']['y'], 'approach teleported on click')
             motion = validate_mosaic_motion(proof, nearby_target=expected_target)
-            case['walks'].append({'index': index, 'motion': motion})
+            walk = {'index': index, 'motion': motion}
+            if cargo_before:
+                cargo_draws = page.evaluate('window.__cityCargoDraws')
+                walk['carriedObject'] = verify_cargo_draws(cargo_draws, cargo_before,
+                    require_movement=not motion['startedWithinTargetRange'])
+                (out / f'{case_name}-{mission_id}-step-{index}-carried-draws.json').write_text(json.dumps(cargo_draws, indent=2))
+            case['walks'].append(walk)
             if operation_before:
                 completed_operation = verify_operation(operation_before, before, progress(page), objects_before,
                                                        mission_objects(page), proximity_before)
@@ -296,16 +427,47 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                 check(before['records'][mission_id].get('operationReceipts', {}) ==
                       progress(page)['records'][mission_id].get('operationReceipts', {}),
                       'a conversation or plain arrival fabricated an operation receipt')
+            if is_delivery and step_id == 'report':
+                check(expected_target['type'] == 'npc' and expected_target['action'] == 'talk',
+                      'the local story ended at a terminal instead of its resident')
+                conversation = page.locator('[data-city-conversation]')
+                expect(conversation).to_have_count(1)
+                check(conversation.get_attribute('data-city-conversation') == expected_target['id'],
+                      'a different resident answered the final meeting')
+                expect(conversation.locator('[data-dialogue-quest]')).to_have_attribute('data-dialogue-quest', mission_id)
+                final_words = page.evaluate('''async missionId=>{
+                  const {MOSAIC_CHARACTER_MISSIONS,localizeCityMission}=await import('/src/game/mosaicCharacterMissions.js');
+                  const lang=new URLSearchParams(globalThis.__sceneQaParams||location.search).get('lang')==='en'?'en':'fr';
+                  return localizeCityMission(MOSAIC_CHARACTER_MISSIONS.find(item=>item.id===missionId).steps.find(step=>step.id==='report').dialogue,lang);
+                }''', mission_id)
+                expect(conversation.locator('[data-dialogue-quest] blockquote p')).to_have_text(final_words)
+                expect(conversation.locator('[data-dialogue-next]')).to_have_count(0)
+                page.screenshot(path=str(out / f'{case_name}-{mission_id}-resident-ending.png'))
+                case['residentEnding'] = {'residentId': expected_target['id'], 'words': final_words, 'nativeMeeting': True}
+        cargo_after = mission_cargo(page)
+        transfer = verify_cargo_transition(cargo_definition, cargo_before, cargo_after, progress(page))
+        if transfer:
+            if cargo_after:
+                page.clock.run_for(32)
+                check(mission_cargo(page) == cargo_after, 'drawing the carried object changed its identity')
+                transfer['draw'] = verify_cargo_draws(page.evaluate('window.__cityCargoDraws'), cargo_after)
+                transfer['capture'] = f'{case_name}-{mission_id}-{cargo_after["id"]}-taken.png'
+                page.screenshot(path=str(out / transfer['capture']))
+            case['cargoTransfers'].append(transfer)
         saved = progress(page)
         terminal(page)
+        if is_delivery and cargo_after and not case.get('missionSwitch'):
+            case['missionSwitch'] = switch_while_carrying(page, mission_id, district, cargo_after)
+            saved = progress(page)
         frozen = page.evaluate('window.__sceneQA.snapshot()')
         page.clock.run_for(500)
         check(progress(page) == saved, 'reading the contract advanced an objective')
         check(page.evaluate('window.__sceneQA.snapshot().player') == frozen['player'], 'City moved under the terminal')
-        if remount and completed_operation and case['remount'] is None:
+        check(mission_cargo(page) == cargo_after, 'reading the journal changed the carried object')
+        if remount and completed_operation and case['remount'] is None and (not is_delivery or cargo_after):
             page.keyboard.press('Escape')
             expect(page.get_by_role('dialog')).to_have_count(0)
-            before_unmount = page.evaluate('({position:window.__sceneQA.snapshot().player,objects:window.__sceneQA.snapshot().missionObjects,saveCount:window.__sceneQA.saves.length})')
+            before_unmount = page.evaluate('({position:window.__sceneQA.snapshot().player,objects:window.__sceneQA.snapshot().missionObjects,cargo:structuredClone(window.__sceneQA.state().missionCargo??null),saveCount:window.__sceneQA.saves.length})')
             page.locator('#qa-unmount').click()
             expect(page.locator('.mosaic-rpg-panel')).to_have_count(0)
             page.wait_for_function('count=>window.__sceneQA.saves.length>count', arg=before_unmount['saveCount'], polling=50)
@@ -321,11 +483,22 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
             check(mission_objects(page) == before_unmount['objects'], 'remount changed the real operation object states')
             check(progress(page)['records'][mission_id].get('operationReceipts') == saved['records'][mission_id].get('operationReceipts'),
                   'remount lost or changed an operation receipt')
+            check(mission_cargo(page) == before_unmount['cargo'], 'remount lost or duplicated the carried object')
+            cargo_capture = None
+            if before_unmount['cargo']:
+                page.evaluate('window.__cityCargoDraws=[]')
+                page.clock.run_for(32)
+                check(progress(page) == saved and mission_cargo(page) == before_unmount['cargo'],
+                      'rendering the restored cargo changed its saved transfer')
+                cargo_capture = f'{case_name}-{mission_id}-{before_unmount["cargo"]["id"]}-remounted.png'
+                page.screenshot(path=str(out / cargo_capture))
+                verify_cargo_draws(page.evaluate('window.__cityCargoDraws'), before_unmount['cargo'])
             terminal(page)
             panel.locator('select').select_option(mission_id)
             case['remount'] = {'completedStepIds': saved['records'][mission_id]['completedStepIds'], 'preserved': True,
                                'operationReceipt': completed_operation['receipt'], 'objects': before_unmount['objects'],
-                               'operationObjectsPreserved': True}
+                               'operationObjectsPreserved': True, 'cargo': before_unmount['cargo'],
+                               'carriedObjectPreserved': bool(before_unmount['cargo']), 'cargoCapture': cargo_capture}
     terminal(page)
     expect(panel.locator('[data-city-contract-objective]')).to_have_attribute('data-contract-id', mission_id)
     expect(panel.locator('[data-city-contract-accept]')).to_have_count(0)
@@ -336,6 +509,15 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
     check(case['operations'], 'authored City adventure completed without any real operation')
     if remount:
         check(case['remount'] and case['remount']['operationObjectsPreserved'], 'contract did not verify its operation checkpoint')
+    if is_delivery:
+        check(case.get('residentEnding'), 'delivery story did not return to its resident')
+        check(mission_cargo(page) is None, 'completed delivery retained an undelivered object')
+        expected_transfers = 4 if mission_id == 'city-quillon-refuge-pump-v1' else 2
+        check(len(case['cargoTransfers']) == expected_transfers, 'delivery skipped a physical pickup or handover')
+        check(any(walk.get('carriedObject', {}).get('travelledWorldUnits', 0) > 0 for walk in case['walks']),
+              'delivery completed without observing a carried object during movement')
+        if remount:
+            check(case['remount']['cargo'] and case['remount']['cargoCapture'], 'delivery was not restored while carrying its object')
     case['receipt'] = progress(page)['records'][mission_id]
     check(case['receipt']['districtId'] == district and case['receipt']['universe'] == universe,
           'completed contract lost its source district or universe')
@@ -449,6 +631,11 @@ def resident_offer_journey(page, args, lang, out, name):
         record['expectedTarget'] = expected_target
         record['proximityBefore'] = proximity_before
         check(progress(page) == before, 'receiving or reading an offer accepted it automatically')
+        expect(page.locator('[data-resident-conversation-modal]')).to_be_visible()
+        expect(page.get_by_role('dialog')).to_have_count(1)
+        expect(page.locator('.mosaic-character-missions, .mosaic-resident-directory, .mosaic-evidence-ledger')).to_have_count(0)
+        expect(conversation.locator('h3')).to_be_focused()
+        expect(conversation.locator('[data-dialogue-next]')).to_have_count(0)
         words = page.evaluate('''async lang=>{const {MOSAIC_CHARACTER_MISSIONS}=await import('/src/game/mosaicCharacterMissions.js');
           const m=MOSAIC_CHARACTER_MISSIONS.find(item=>item.id==='city-mirelle-suture-v1');
           return {request:m.request[lang],reply:m.steps.find(step=>step.id==='meet-arca_mirelle').dialogue[lang]};}''', lang)
@@ -475,9 +662,17 @@ def resident_offer_journey(page, args, lang, out, name):
         check(not page.evaluate('window.__sceneQA.reports.length'), 'a request created a combat reward')
         page.screenshot(path=str(out / f'{name}-offer-accepted.png'))
         record.update({'status': 'passed', 'request': words['request'], 'reply': words['reply'],
-                       'acceptanceFocus': True, 'receipt': saved['records'][record['missionId']]})
+                       'acceptanceFocus': True, 'dedicatedConversation': True, 'receipt': saved['records'][record['missionId']]})
         conversation.locator('[data-dialogue-return]').click()
         expect(page.get_by_role('dialog')).to_have_count(0)
+        expect(canvas).to_be_focused()
+        page.clock.run_for(250)
+        resumed = page.evaluate('window.__sceneQA.snapshot()')
+        check(resumed['t'] > frozen['t'] and not any(resumed['keys'].values()),
+              'ending the conversation did not resume the City with cleared controls')
+        check(all(resumed['player'][key] == frozen['player'][key] for key in ['x', 'y', 'speed', 'facing'])
+              and progress(page) == saved, 'closing the conversation resumed an old route or interaction')
+        record['canvasFocusAndClearedInput'] = True
         return record
     except Exception as error:
         record.update({'status': 'failed', 'error': str(error)})
@@ -487,7 +682,7 @@ def resident_offer_journey(page, args, lang, out, name):
         (out / f'{name}-offer.json').write_text(json.dumps(record, ensure_ascii=False, indent=2))
 
 
-def run_case(page, args, profile, lang, label, out, name, result):
+def run_case(page, args, profile, lang, label, out, name, result, entries=None):
     page.clock.install(time=CLOCK_EPOCH); page.clock.pause_at(CLOCK_START)
     load(page, args, 'city', lang, profile['catalog'])
     result['preparedHeroIds'] = page.evaluate('window.__sceneQA.preparedHeroIds')
@@ -532,12 +727,12 @@ def run_case(page, args, profile, lang, label, out, name, result):
         page.clock.run_for(400)
         check(progress(page) == saved, 'reading a locked follow-up changed the save')
         result['lockedFollowup'] = {'missionId': FOLLOWUP_IDS[0], 'preserved': True}
-    chosen = profile['contracts'] if label == 'desktop' else profile.get('mobile', profile['contracts'])
+    chosen = entries if entries is not None else profile['contracts'] if label == 'desktop' else profile.get('mobile', profile['contracts'])
     for index, entry in enumerate(chosen):
         result['contracts'].append(play_contract(
             page, entry, out, name, profile['id'], profile['universe'],
-            remount=index == 0 or entry[0] in NEW_NEXUS_IDS or entry[0] in FOLLOWUP_IDS or profile['catalog'] == 'city-contracts',
-            interrupt=index == 0))
+            remount=index == 0 or entry[0] in NEW_NEXUS_IDS or entry[0] in FOLLOWUP_IDS or entry[0] in DELIVERY_IDS or profile['catalog'] == 'city-contracts',
+            interrupt=entries is None and index == 0))
     page.locator('[data-city-contract-objective]').scroll_into_view_if_needed()
     if args.require_art:
         page.wait_for_function('''paths=>window.__sceneQA.media.length>0
@@ -546,6 +741,48 @@ def run_case(page, args, profile, lang, label, out, name, result):
             arg=profile['requiredArt'], polling=50, timeout=25000)
     result['media'] = page.evaluate('window.__sceneQA.media')
     page.screenshot(path=str(out / f'{name}-completed.png'))
+
+
+def run_delivery_branches(browser, args, lang, out, results):
+    """Play both inherited endings and both present choices from fresh saves."""
+    profile = DISTRICTS['nexus']
+    viewports = [
+        ('desktop', {'width': 1440, 'height': 1000}),
+        ('portrait', {'width': 390, 'height': 844}),
+        ('landscape', {'width': 844, 'height': 390}),
+        ('desktop', {'width': 1440, 'height': 1000}),
+    ]
+    for story in DELIVERIES:
+        for origin_index, origin in enumerate(story['origins']):
+            for choice_index, choice in enumerate(['apply', 'hold']):
+                label, viewport = viewports[origin_index * 2 + choice_index]
+                name = f'nexus-{lang}-{story["id"]}-{origin}-{choice}-{label}'
+                parent_entry = (story['parent'], story['parentEntry'][1], origin)
+                entries = [*story['prelude'], parent_entry, (story['id'], 'shortcut', choice)]
+                context = browser.new_context(viewport=viewport, has_touch=True)
+                page = context.new_page()
+                install_cargo_observer(page)
+                errors = []; page.on('pageerror', lambda error: errors.append(str(error)))
+                result = {'name': name, 'districtId': profile['id'], 'universe': profile['universe'],
+                          'catalog': profile['catalog'], 'viewport': viewport, 'status': 'running', 'contracts': [],
+                          'deliveryBranch': {'missionId': story['id'], 'parentId': story['parent'], 'origin': origin, 'choice': choice},
+                          'scope': 'Prepared ownership and initial district only. Every prerequisite, carried object and ending is played through native controls.'}
+                results.append(result)
+                try:
+                    run_case(page, args, profile, lang, label, out, name, result, entries=entries)
+                    delivery = result['contracts'][-1]
+                    check(delivery['missionId'] == story['id'] and delivery['origin']['choiceId'] == origin
+                          and delivery['choice']['recorded'] == choice, 'native delivery used another origin or present choice')
+                    check(delivery.get('missionSwitch'), 'delivery branch did not verify cargo across a real mission switch')
+                    check(not errors, f'uncaught delivery branch errors: {errors}')
+                    result['status'] = 'passed'
+                except Exception as error:
+                    result['status'] = 'failed'; result['error'] = str(error)
+                    result['media'] = page.evaluate('window.__sceneQA?.media || []')
+                    page.screenshot(path=str(out / f'{name}-failure.png'))
+                finally:
+                    (out / 'summary.json').write_text(json.dumps(results, ensure_ascii=False, indent=2))
+                    context.close()
 
 
 def main():
@@ -570,6 +807,7 @@ def main():
                         name = f'{district}-{lang}-{label}'
                         context = browser.new_context(viewport=viewport, has_touch=True)
                         page = context.new_page()
+                        install_cargo_observer(page)
                         errors = []; page.on('pageerror', lambda error: errors.append(str(error)))
                         result = {'name': name, 'districtId': profile['id'], 'universe': profile['universe'],
                                   'catalog': profile['catalog'], 'viewport': viewport, 'status': 'running', 'contracts': []}
@@ -595,12 +833,16 @@ def main():
                         finally:
                             (out / 'summary.json').write_text(json.dumps(results, ensure_ascii=False, indent=2))
                             context.close()
+                    if district == 'nexus':
+                        run_delivery_branches(browser, args, lang, out, results)
         finally:
             browser.close()
     failures = [item for item in results if item['status'] != 'passed']
     check(not failures, f"{len(failures)} City cases failed: " +
           '; '.join(f"{item['name']}: {item.get('error', item['status'])}" for item in failures))
-    print(json.dumps({'cases': len(results), 'contracts': sum(len(item['contracts']) for item in results), 'status': 'passed'}))
+    print(json.dumps({'cases': len(results), 'contracts': sum(len(item['contracts']) for item in results),
+                      'primaryContracts': sum(len(item['contracts']) for item in results if not item.get('deliveryBranch')),
+                      'deliveryCombinations': sum(bool(item.get('deliveryBranch')) for item in results), 'status': 'passed'}))
 
 
 if __name__ == '__main__':

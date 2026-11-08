@@ -161,6 +161,43 @@ for (const lang of ['fr', 'en']) {
     }
   });
 
+  test(`${lang}: the conversation names its place and reveals the next action only after acceptance`, () => {
+    const location = { fr: 'Au pied de la verrière', en: 'Beneath the glass roof' };
+    const nextAction = { fr: 'Rejoins le relais de suture.', en: 'Reach the suture relay.' };
+    const conversation = { heroId: 'arca_mirelle', name: 'Mirelle Suture', topics: [],
+      questExchange: { missionId: 'city-mirelle-suture-v1', title: 'A suture without erasure', line: 'Écoute ces deux voix.', phase: 'offer' } };
+    const renderConversation = current => renderToStaticMarkup(React.createElement(ResidentDialogue, {
+      conversation: current, lang, location, nextAction, headingId: 'the-resident', expandBackground: false,
+      onClose() {}, onAcceptMission() { throw new Error('Reading accepted a request'); },
+      onOpenJournal() { throw new Error('Reading opened the journal'); }
+    }));
+    const offer = renderConversation(conversation);
+    assert.match(offer, /aria-labelledby="the-resident"/);
+    assert.match(offer, /data-dialogue-location/);
+    assert.ok(offer.includes(location[lang]));
+    assert.match(offer, /data-dialogue-journal/);
+    assert.doesNotMatch(offer, /data-dialogue-next/);
+    assert.ok(!offer.includes(nextAction[lang]));
+    const accepted = renderConversation({ ...conversation, questExchange: { ...conversation.questExchange, phase: 'active' } });
+    assert.match(accepted, /data-dialogue-next/);
+    assert.ok(accepted.includes(nextAction[lang]));
+    assert.doesNotMatch(accepted, /data-city-quest-offer/);
+    assert.doesNotMatch(accepted, /mosaic-character-missions|mosaic-evidence-ledger|data-reconnaissance-record/);
+  });
+
+  test(`${lang}: archives require an explicit opening and do not become attributed speech`, () => {
+    const conversation = { heroId: 'arca_tessera', name: 'Tessera', topics: [
+      { id: 'origin', label: lang === 'fr' ? 'Son parcours' : 'Their journey', body: 'An existing authored archive paragraph.' }
+    ] };
+    const html = renderToStaticMarkup(React.createElement(ResidentDialogue, { conversation, lang, expandBackground: false,
+      onClose() {}, onOpenJournal() { throw new Error('Reading opened the journal'); } }));
+    assert.match(html, /<details class="mosaic-dialogue-background">/);
+    assert.ok(html.includes(lang === 'fr' ? 'Consulter les archives de' : 'Read the archives of'));
+    assert.match(html, /data-dialogue-topic="origin"/);
+    assert.ok(html.includes(conversation.topics[0].body));
+    assert.doesNotMatch(html, /<blockquote|<cite|data-city-quest-offer|data-dialogue-next/);
+  });
+
   test(`${lang}: an old visit retains its own words until an explicit replay starts the new adventure`, () => {
     const source = MOSAIC_CHARACTER_MISSIONS.find(mission => mission.id === 'city-chief-unsc-route-v1');
     const historical = MOSAIC_CHARACTER_MISSION_LEGACY.find(mission => mission.id === source.id);

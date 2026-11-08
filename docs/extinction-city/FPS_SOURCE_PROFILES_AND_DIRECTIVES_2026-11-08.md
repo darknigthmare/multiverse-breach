@@ -167,3 +167,12 @@ spécifique des 1 633 profils à sources génériques, équilibrage par personna
 mode, équipements complets par incarnation, contrôles sur appareils physiques et
 mesures de performance représentatives. Ce lot ne revendique aucun gain de FPS
 d’affichage ni des milliers de kits visuels personnalisés.
+
+## Suite : portage d’une arme de terrain
+
+Le complément [Kit personnel et arme de terrain portée](FIELD_EQUIPMENT_2026-11-08.md)
+précise l’aller-retour V/B, les stocks et recharges séparés, le remplacement annoncé
+du ramassage précédent et le nettoyage local. Il étend les cas de ramassage natifs
+existants sans modifier les graines ni les seuils des huit parcours de victoire.
+Il ne ferme pas les besoins de validation artistique, d’incarnation ou d’équilibrage
+individuel indiqués ci-dessus.

@@ -97,6 +97,7 @@ def main():
             for strand in ['Univers', 'Multiverse']:
                 require(counts[(character['id'], strand)] == 1, f'Character/strand missing or duplicated: {character["id"]} {strand}')
         nexus_rows = []
+        linked_nexus_rows = []
         for row in range(7, 3831):
             plan = data['missions'][row - 7]
             require(missions[f'W{row}'] == DESIGN_LABELS[plan['designKind']], 'Mission design maturity differs from source')
@@ -115,7 +116,14 @@ def main():
                 require(plan['relatedRuntimeMissionId'] in missions[f'V{row}'], f'Nexus extension lost its related story: {plan["id"]}')
                 for source in plan['sourceBindings']:
                     require(source in missions[f'V{row}'], f'Nexus source missing: {plan["id"]}/{source}')
-        require(len(nexus_rows) == 24, 'Expected 24 future Nexus extensions')
+                if plan.get('runtimeMissionId'):
+                    linked_nexus_rows.append(row)
+                    require(plan['implementationStatus'] == 'runtime_adaptation', f'Linked proposal has an ambiguous state: {plan["id"]}')
+                    require(plan['runtimeMissionId'] in missions[f'V{row}'], f'Playable adaptation link missing: {plan["id"]}')
+                    require(plan['runtimeScope'] in missions[f'V{row}'], f'Playable adaptation scope missing: {plan["id"]}')
+        require(len(nexus_rows) == sum(bool(plan.get('relatedRuntimeMissionId')) for plan in data['missions']),
+                'Nexus extension count differs from planning source')
+        require(len(linked_nexus_rows) == data['counts']['runtimeLinkedProposals'], 'Playable adaptation links differ from planning source')
         for index, character in enumerate(data['characters'], 7):
             require(sheets[3][1][f'A{index}'] == character['id'], 'Character sheet misses a source identity')
             require(sheets[4][1][f'A{index}'] == character['id'], 'FPS sheet misses a source identity')
@@ -124,7 +132,20 @@ def main():
         require(contract_ids == [mission['id'] for mission in data['runtimeMissions']], 'Integrated contract identity/order differs')
         require(len([ref for ref in sheets[2][1] if ref.startswith('A') and ref[1:].isdigit() and int(ref[1:]) >= 7]) == contract_count, 'Integrated contract count differs')
         runtime_by_id = {mission['id']: mission for mission in data['runtimeMissions']}
-        inherited_routes = decision_routes = chapter_two = operation_variants = 0
+        for row in linked_nexus_rows:
+            plan = data['missions'][row - 7]
+            integrated = runtime_by_id.get(plan['runtimeMissionId'])
+            require(integrated is not None and integrated['characterId'] == plan['characterId']
+                    and integrated['requiresMissionId'] == plan['relatedRuntimeMissionId'],
+                    f'Playable adaptation identity/prerequisite differs: {plan["id"]}')
+        for row in range(7, 11):
+            commands = sheets[5][1][f'F{row}']
+            for text in ['V : ranger l’arme de terrain', 'B : reprendre l’arme rangée', 'chargeur', 'réserve', 'recharge', 'gelé en pause', 'limité à la partie']:
+                require(text in commands, f'Field equipment command/limit missing in mode row {row}: {text}')
+            for source in ['src/game/extinctionFieldEquipment.js', 'src/game/extinctionFighterProfiles.js', 'src/components/HubScreen.jsx']:
+                require(source in sheets[5][1][f'I{row}'], f'Field equipment source missing in mode row {row}: {source}')
+        inherited_routes = decision_routes = chapter_two = chapter_three = operation_variants = cargo_transfers = npc_returns = 0
+        cargo_ids = set()
         for row, mission in enumerate(data['runtimeMissions'], 7):
             cells = sheets[2][1]
             context = mission['id']
@@ -140,6 +161,8 @@ def main():
             require(f'Chapitre {mission["chapter"]}.' in cells[f'G{row}'], f'Chapter missing: {context}')
             if mission['chapter'] == 2:
                 chapter_two += 1
+            if mission['chapter'] == 3:
+                chapter_three += 1
             previous_id = mission.get('requiresMissionId')
             previous_choices = {}
             if previous_id:
@@ -167,6 +190,12 @@ def main():
                 if not step.get('byOriginChoice') and not step.get('byChoice'):
                     require(step['text'] in cells[f'E{row}'], f'Concrete objective missing: {context}/{step["id"]}')
                     check_intervention(step, 'E')
+                if step.get('cargo'):
+                    cargo_transfers += 1
+                    cargo = step['cargo']
+                    cargo_ids.add(cargo['id'])
+                    for expected in [f'Transport [{cargo["action"]}]', cargo['id'], cargo['label'], cargo['appearance']]:
+                        require(expected in cells[f'E{row}'], f'Quest cargo detail missing: {context}/{step["id"]}/{expected}')
                 for field, column, choices in [('byOriginChoice', 'E', previous_choices), ('byChoice', 'F', own_choices)]:
                     routes = step.get(field, {})
                     if field == 'byOriginChoice':
@@ -184,6 +213,15 @@ def main():
                             require('À accomplir :' in cell, f'Decision route claims completion before action: {context}/{choice_id}')
             if mission['universe'] != 'Nexus de Convergence':
                 require(f'DLC {mission["universe"]} installé' in cells[f'G{row}'], 'Contract access lost its DLC requirement')
+            if any(step.get('cargo') for step in mission['steps']):
+                closing = mission['steps'][-1]
+                require(closing['type'] == 'npc' and closing['targetId'] == mission['characterId'], f'Cargo story does not return to its resident: {context}')
+                require(closing['dialogue'] in cells[f'E{row}'], f'Resident closing response missing: {context}')
+                require('Clôture auprès de' in cells[f'I{row}'] and closing['targetId'] in cells[f'I{row}'],
+                        f'Resident closure described incorrectly: {context}')
+                require('Un seul objet de quête porté' in cells[f'I{row}'] and 'sans entrer dans l’inventaire de combat' in cells[f'I{row}'],
+                        f'Quest cargo scope missing: {context}')
+                npc_returns += 1
         for index, (root, _, _) in enumerate(sheets[1:], 2):
             pane = root.find('m:sheetViews/m:sheetView/m:pane', NS)
             require(pane is not None and pane.get('state') == 'frozen' and pane.get('xSplit') == '3' and pane.get('ySplit') == '6', f'Headers/identity columns not frozen in sheet {index}')
@@ -207,7 +245,7 @@ def main():
                 original_strings = [''.join(part.text or '' for part in item.findall('.//m:t', NS))
                                     for item in ET.fromstring(baseline.read('xl/sharedStrings.xml'))]
                 original_summary = read_sheet(baseline, 'xl/worksheets/sheet1.xml', original_strings)
-                changed_summary = {'B12', 'B18', 'D16', 'D17', 'D18', 'A24'}
+                changed_summary = {'B12', 'B18'}
                 require({key: value for key, value in summary.items() if key not in changed_summary} ==
                         {key: value for key, value in original_summary[1].items() if key not in changed_summary},
                         'Unrelated summary values changed')
@@ -218,13 +256,13 @@ def main():
                     original = read_sheet(baseline, f'xl/worksheets/sheet{index}.xml', original_strings)
                     allowed_cells = {'A4'} if index == 2 else set()
                     if index == 2:
-                        allowed_cells.update(f'{column}{row}' for row in nexus_rows for column in 'FGHIJKV')
-                        allowed_cells.update(f'W{row}' for row, mission in enumerate(data['missions'], 7)
-                                             if mission['designKind'] != 'individual_proposal')
+                        allowed_cells.update(f'V{row}' for row in linked_nexus_rows)
                         for row in range(7, 3831):
                             for column in 'MNOPQSTU':
                                 ref = f'{column}{row}'
                                 require(sheets[1][1].get(ref, '') == original[1].get(ref, ''), f'Existing manual tracking changed: {ref}')
+                    if index == 6:
+                        allowed_cells.update(f'{column}{row}' for row in range(7, 11) for column in 'FI')
                     require({key: value for key, value in sheets[index - 1][1].items() if key not in allowed_cells} ==
                             {key: value for key, value in original[1].items() if key not in allowed_cells},
                             f'Unrelated values changed in {names[index - 1]}')
@@ -238,9 +276,13 @@ def main():
                             f'Unrelated table links changed in {names[index - 1]}')
                     def row_layout(row):
                         attributes = dict(row.attrib)
-                        if index == 2 and int(row.get('r')) in nexus_rows:
+                        if (index == 2 and int(row.get('r')) in linked_nexus_rows) or (index == 6 and 7 <= int(row.get('r')) <= 10):
                             attributes.pop('ht', None)
                             attributes.pop('customHeight', None)
+                            # Autofit writes the explicit default visibility on
+                            # edited rows. A hidden row must still fail comparison.
+                            if attributes.get('hidden') == '0':
+                                attributes.pop('hidden')
                         return attributes
                     original_rows = [row_layout(row) for row in original[0].findall('m:sheetData/m:row', NS)]
                     current_rows = [row_layout(row) for row in sheets[index - 1][0].findall('m:sheetData/m:row', NS)]
@@ -251,7 +293,7 @@ def main():
                         require(before.get('r') == after.get('r'), f'Unrelated cell layout changed in {names[index - 1]}')
                         require(style_signature(original_styles, before.get('s')) == style_signature(current_styles, after.get('s')),
                                 f'Unrelated cell style changed in {names[index - 1]}!{before.get("r")}')
-                    if index != 2:
+                    if index in [4, 5]:
                         preserved_sheets.append(names[index - 1])
                 original_tables = {ET.fromstring(baseline.read(name)).get('name'): ET.tostring(ET.fromstring(baseline.read(name)))
                                    for name in table_files}
@@ -259,18 +301,22 @@ def main():
                     table = ET.fromstring(archive.read(name))
                     if table.get('name') != 'ContratsJouables':
                         require(ET.tostring(table) == original_tables[table.get('name')], f'Unrelated native table changed: {table.get("name")}')
-    receipt = {'schema': 3, 'workbook': path.name, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'bytes': path.stat().st_size,
-               'sheets': names, 'sourceCharacters': 1912, 'nonCombatCharacters': 101, 'plannedMissions': 3824,
+    receipt = {'schema': 4, 'workbook': path.name, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'bytes': path.stat().st_size,
+               'sheets': names, 'sourceCharacters': 1912, 'nonCombatCharacters': 101, 'proposedMissions': len(data['missions']),
+               'unlinkedProposals': data['counts']['remainingUnlinkedProposals'],
                'individuallyDesignedMissions': design_counts['individual_proposal'],
                'designCounts': dict(design_counts),
                'integratedCityContracts': contract_count, 'fpsModes': 4, 'nativeTables': 5, 'dropdownRanges': 5,
                'chapterTwoContracts': chapter_two, 'inheritedRoutes': inherited_routes, 'decisionRoutes': decision_routes,
-               'operationVariantsChecked': operation_variants, 'rewrittenNexusProposals': len(nexus_rows),
+               'chapterThreeContracts': chapter_three, 'cargoTransfersChecked': cargo_transfers, 'cargoIds': sorted(cargo_ids), 'residentClosuresChecked': npc_returns,
+               'operationVariantsChecked': operation_variants, 'authoredNexusProposals': len(nexus_rows),
+               'runtimeLinkedProposals': len(linked_nexus_rows), 'preservedUnlinkedNexusProposals': len(nexus_rows) - len(linked_nexus_rows),
                'proposalsRequiringDiegeticRewrite': sum(mission['designKind'] != 'individual_proposal' for mission in data['missions']),
                'preservedTrackingColumns': ['M', 'N', 'O', 'P', 'Q', 'S', 'T', 'U'] if args.baseline else [],
                'preservedSheets': preserved_sheets,
                'formulasInspected': formula_count, 'coverage': 'exact one universe and one Multiverse proposal per source identity',
-               'status': 'passed', 'scope': 'Read-only OpenXML identities, personal requests, locations, runtime prerequisites, branch interventions and effects, future Nexus extensions, generic rewrite flags, cached totals, formulas, filters, panes, validation, manual tracking and unchanged-sheet styles; not a native Excel execution.'}
+               'changedModeCells': [f'{column}{row}' for row in range(7, 11) for column in 'FI'],
+               'status': 'passed', 'scope': 'Read-only OpenXML identities, personal requests, locations, runtime prerequisites, branch interventions and effects, explicit Nexus adaptation links, future design intentions, field-equipment commands, generic rewrite flags, cached totals, formulas, filters, panes, validation, manual tracking and unchanged-sheet styles; not a native Excel execution.'}
     if args.receipt:
         Path(args.receipt).write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(receipt, ensure_ascii=False))

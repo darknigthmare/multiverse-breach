@@ -2,8 +2,11 @@
 
 Ce lot fournit **deux propositions pour chacun des 1 912 personnages résolus**,
 Ancre comprise : une mission liée à l’univers d’origine et une mission originale
-de Cité/Multiverse. Les **3 824 propositions restent à concevoir et implémenter**.
-Elles ne sont ni des épisodes canoniques déclarés ni des missions déjà jouables.
+de Cité/Multiverse. Parmi ces **3 824 propositions**, quatre prolongements Nexus
+ont maintenant une **adaptation jouable explicitement liée** ; les 3 820 autres
+ne sont pas implémentés par cet export. Le suivi manuel, la validation du lore
+et les intentions plus larges de chaque proposition restent à renseigner.
+Ce catalogue ne déclare aucun épisode canonique externe.
 
 Le générateur est
 [`scripts/extinction-city/missionPlanning.mjs`](../../scripts/extinction-city/missionPlanning.mjs).
@@ -26,7 +29,9 @@ JSON de plusieurs dizaines de mégaoctets versionné.
 | Occurrences d’ennemis | 1 518 | Inventaire séparé, jamais transformé en personnages possédables. |
 | Occurrences de boss/mondiaux/final | 1 507 | Une occurrence n’est pas nécessairement une identité unique. |
 | Politiques de finale | 129 | Dont 124 `nonCombatFinal`, conservées comme contraintes. |
-| Contrats Cité présents dans le runtime | 28 | 24 Nexus, 2 Halo, 2 Alien. Onglet distinct ; aucune proposition n’est marquée implémentée par rapprochement de personnage. |
+| Contrats Cité présents dans le runtime | 32 | 28 Nexus, 2 Halo, 2 Alien. Les 28 contrats précédents sont conservés dans leur ordre. |
+| Propositions liées à une adaptation jouable | 4 | Liens explicites par ID vers les nouvelles aventures de Mirelle, Quillon, Nadir et Tessera ; aucun rapprochement automatique par personnage. |
+| Autres prolongements Nexus à développer | 20 | Intentions et suivi conservés ; aucune validation automatique. |
 
 `designKind` distingue `individual_proposal`, `source_objective_adaptation`,
 `source_family_adaptation` et `research_scaffold`. Les deux derniers ne valent
@@ -73,12 +78,14 @@ Le JSON organise les données ainsi :
   reste faux ; les finales pacifiques ne reçoivent aucun objectif d’élimination.
 - `finalePolicies` conserve les politiques source, leur continuité et leurs
   raisons ; `reviewQueue` conserve les recherches manquantes.
-- `runtimeMissions` décrit les 28 contrats Cité ajoutés séparément. Les douze
-  suites Nexus portent leur `requiresMissionId`, leur chapitre, les deux routes
-  héritées du premier choix et les deux vérifications physiques du nouveau choix.
-  Les objectifs, constats et coordonnées de chaque branche sont exportés. Leur
-  présence dans le code ne certifie pas une recette navigateur ; ce catalogue
-  ne remplace ni les tests des contrats ni la CI.
+- `runtimeMissions` décrit les 32 contrats Cité. Les suites portent leur
+  `requiresMissionId`, leur chapitre et les routes héritées ; chaque nouveau
+  choix possède une intervention physique distincte. Les objectifs, constats
+  et coordonnées de chaque branche sont exportés. Les quatre nouvelles aventures
+  décrivent aussi dix prises/dépôts de cinq objets de quête, puis une clôture
+  auprès du personnage concerné. Leur présence dans le code ne certifie pas
+  une recette navigateur ; ce catalogue ne remplace ni les tests des contrats
+  ni la CI.
 - `commonPolicies` regroupe sauvegarde, pause, prérequis DLC, récompenses et
   travaux communs. Aucun gain, achat, déblocage ni téléchargement n’est déclenché
   par ce catalogue.
@@ -87,6 +94,17 @@ Les champs de suivi éditables sont `priority`, `planningStatus`, `owner`,
 `targetMilestone` et `reviewNotes`. Pour garder des modifications faites dans
 Excel lors d’une régénération, réimporter explicitement ces colonnes par ID.
 Le générateur n’annonce aucune synchronisation bidirectionnelle automatique.
+Le mode d’édition du classeur existant préserve les colonnes de suivi, les
+formules et les feuilles sans changement. Pour les quatre prolongements liés,
+il ajoute dans la colonne de sources l’ID du contrat et ses limites concrètes,
+sans remplacer les intentions initiales ni marquer le suivi terminé.
+
+Les nouvelles lignes de « Contrats jouables » distinguent le transport d’un
+seul objet de quête de l’inventaire de combat. Elles documentent les gestes
+locaux et le retour au résident ; les animations d’escorte ou la vie complète
+du refuge ne sont pas annoncées comme réalisées. « Modes FPS » ajoute les
+commandes V/B et leurs limites de stock, recharge, pause et session, avec
+provenance dans le helper d’équipement, les profils et le raccord de l’écran.
 
 ## Reproduction
 
@@ -116,9 +134,10 @@ node node_modules/oxlint/bin/oxlint --max-warnings 0 \
   scripts/extinctionCityMissionPlanning.test.mjs
 ```
 
-Les douze tests spécifiques couvrent les identités et deux volets, les objectifs
+Les quatorze tests spécifiques couvrent les identités et deux volets, les objectifs
 pacifiques, les 129 politiques, les occurrences ennemies, les variantes, l’Ancre
 qui ne se rencontre pas elle-même, la séparation des contrats runtime,
-plusieurs divergences d’incarnation, les lacunes et la reproduction des
-empreintes. Ce sont des tests de données et de provenance, pas une validation
+plusieurs divergences d’incarnation, les lacunes, les quatre liens explicites,
+les transferts ordonnés d’objets et la reproduction des empreintes. Ce sont des
+tests de données et de provenance, pas une validation
 artistique, une expertise de chaque canon externe ou 3 824 parcours jouables.

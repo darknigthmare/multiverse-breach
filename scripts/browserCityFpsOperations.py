@@ -36,6 +36,10 @@ def reconnaissance(page):
 
 
 def open_city_terminal(page):
+    conversation = page.locator('.mosaic-resident-dialogue')
+    if conversation.count():
+        conversation.locator('[data-dialogue-journal]').click()
+        expect(conversation).to_have_count(0)
     if not page.get_by_role('dialog').count():
         page.get_by_role('button', name='TERMINAL · JOURNAL', exact=True).click()
     expect(page.locator('[data-reconnaissance-objective]')).to_be_visible()

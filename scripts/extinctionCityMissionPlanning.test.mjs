@@ -135,7 +135,7 @@ test('generic source abilities stay explicitly unreviewed instead of becoming ca
   }
 });
 
-test('Nexus backlog extends the 24 playable stories while only generic adaptations require a diegetic rewrite', () => {
+test('Nexus backlog retains its 24 design proposals and explicitly links implemented adaptations', () => {
   const extensions = catalog.missions.filter(row => row.relatedRuntimeMissionId);
   assert.equal(extensions.length, 24);
   assert.equal(new Set(extensions.map(row => row.relatedRuntimeMissionId)).size, 24);
@@ -145,8 +145,15 @@ test('Nexus backlog extends the 24 playable stories while only generic adaptatio
     assert.equal(related.characterId, plan.characterId);
     assert.notEqual(plan.title, related.title, plan.id);
     assert.match(plan.premise, /^Prolongement proposé/);
-    assert.equal(plan.implementationStatus, 'planned');
-    assert.equal(plan.runtimeMissionId, null);
+    if (plan.runtimeMissionId) {
+      const integrated = runtime.get(plan.runtimeMissionId);
+      assert.equal(plan.implementationStatus, 'runtime_adaptation');
+      assert.equal(integrated.characterId, plan.characterId);
+      assert.equal(integrated.requiresMissionId, related.id);
+      assert.equal(plan.runtimeValidation, 'not_certified_by_catalog');
+      assert.ok(plan.runtimeScope && plan.runtimeScope.includes('reste à développer'));
+      assert.ok(plan.sourceBindings.includes(`${integrated.contentFile}#${integrated.id}`));
+    } else assert.equal(plan.implementationStatus, 'planned');
     assert.equal(plan.designKind, 'individual_proposal');
     assert.ok(plan.sourceBindings.includes(`src/game/mosaicCharacterStories.js#${related.id}`));
     assert.ok(!plan.objectives.some(step => /clôture|dossier|mandat|relevé aux Archives/i.test(step.action)), plan.id);
@@ -158,9 +165,23 @@ test('Nexus backlog extends the 24 playable stories while only generic adaptatio
   }
 });
 
-test('real runtime contracts remain distinct from all planned proposals', () => {
-  assert.equal(catalog.counts.implementedMissions, 0);
-  assert.ok(catalog.missions.every(row => row.implementationStatus === 'planned' && row.runtimeMissionId === null));
+test('runtime adaptations remain distinct from proposal IDs and do not auto-complete manual tracking', () => {
+  const expectedLinks = new Map([
+    ['city-plan-v1::arca_mirelle::multiverse', 'city-mirelle-night-watch-v1'],
+    ['city-plan-v1::arca_quillon::multiverse', 'city-quillon-refuge-pump-v1'],
+    ['city-plan-v1::arca_nadir::universe', 'city-nadir-buried-probe-v1'],
+    ['city-plan-v1::arca_tessera::universe', 'city-tessera-chosen-window-v1'],
+  ]);
+  assert.equal(catalog.counts.implementedMissions, expectedLinks.size);
+  assert.equal(catalog.counts.runtimeLinkedProposals, expectedLinks.size);
+  assert.equal(catalog.counts.remainingUnlinkedProposals, catalog.missions.length - expectedLinks.size);
+  for (const plan of catalog.missions) {
+    assert.equal(plan.runtimeMissionId, expectedLinks.get(plan.id) || null, plan.id);
+    assert.equal(plan.implementationStatus, expectedLinks.has(plan.id) ? 'runtime_adaptation' : 'planned', plan.id);
+    assert.equal(plan.planningStatus, 'to_design', plan.id);
+    assert.equal(plan.owner, '', plan.id);
+    assert.equal(plan.targetMilestone, '', plan.id);
+  }
   assert.deepEqual(catalog.runtimeMissions.map(row => row.id), MOSAIC_CHARACTER_MISSIONS.map(row => row.id));
   const runtimeIds = new Set(catalog.runtimeMissions.map(row => row.id));
   assert.ok(catalog.missions.every(row => !runtimeIds.has(row.id)));
@@ -186,10 +207,10 @@ test('real runtime contracts remain distinct from all planned proposals', () => 
       }
     });
     if (row.requiresMissionId) {
-      assert.equal(row.chapter, 2);
-      assert.equal(row.sourceFile, 'src/game/mosaicCharacterStories.js');
-      assert.ok(row.systemSourceFiles.includes('src/game/mosaicCharacterFollowups.js'));
       const previous = catalog.runtimeMissions.find(item => item.id === row.requiresMissionId);
+      assert.equal(row.chapter, previous.chapter + 1);
+      assert.equal(row.sourceFile, source.contentFile);
+      assert.ok(row.systemSourceFiles.includes('src/game/mosaicCharacterFollowups.js'));
       assert.equal(previous.characterId, row.characterId);
       const origin = row.steps.find(step => step.byOriginChoice);
       const intervention = row.steps.find(step => step.byChoice);
@@ -208,12 +229,46 @@ test('source provenance includes static dependencies with actual hashes, not jus
   for (const file of ['DLC/Halo/data/heroes.js', 'DLC/Portal/data/loreDescriptions.js', 'src/game/canonRosterWavePartM.js',
     'DLC/Alien/data/sourceSceneStages.js',
     'src/game/canonP0SourceKits.js', 'src/game/mosaicCharacterMissions.js', 'src/game/mosaicCharacterFollowups.js',
-    'src/game/mosaicCharacterStories.js', 'src/game/mosaicMissionOperations.js', 'src/game/ocCampaign.js', 'scripts/extinction-city/missionPlanning.mjs']) {
+    'src/game/mosaicCharacterStories.js', 'src/game/mosaicMissionOperations.js', 'src/game/mosaicCityDeliveries.js',
+    'src/game/mosaicMissionCargo.js', 'src/game/ocCampaign.js', 'scripts/extinction-city/missionPlanning.mjs']) {
     const row = sources.get(file);
     assert.ok(row?.exists, file);
     assert.equal(row.sha256, createHash('sha256').update(readFileSync(file)).digest('hex'), file);
   }
   assert.ok(catalog.sourceManifest.every(row => row.exists && /^[a-f0-9]{64}$/.test(row.sha256)));
+});
+
+test('carried quest objects retain ordered transfers and a return to their actual resident', () => {
+  const linked = catalog.runtimeMissions.filter(mission => mission.steps.some(step => step.cargo));
+  assert.equal(linked.length, 4);
+  const carriedIds = new Set();
+  let transfers = 0;
+  for (const mission of linked) {
+    assert.ok(mission.systemSourceFiles.includes('src/game/mosaicMissionCargo.js'));
+    const original = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === mission.id);
+    let held = null;
+    for (const [index, step] of mission.steps.entries()) {
+      const cargo = original.steps[index].cargo;
+      if (!cargo) { assert.equal(step.cargo, undefined); continue; }
+      assert.deepEqual(step.cargo, { ...cargo, label: cargo.label.fr });
+      assert.equal(step.type, 'marker');
+      assert.ok(step.operation, `${mission.id}/${step.id} lost its physical intervention`);
+      assert.ok(Number.isFinite(step.x) && Number.isFinite(step.y));
+      transfers++;
+      if (cargo.action === 'take') {
+        assert.equal(held, null, 'Two quest objects cannot occupy the single slot');
+        held = cargo.id; carriedIds.add(cargo.id);
+      } else { assert.equal(cargo.action, 'deliver'); assert.equal(held, cargo.id); held = null; }
+    }
+    assert.equal(held, null, 'A story must return or install its carried object before completion');
+    const closing = mission.steps.at(-1);
+    assert.equal(closing.id, 'report');
+    assert.equal(closing.type, 'npc');
+    assert.equal(closing.targetId, mission.characterId);
+    assert.ok(closing.dialogue && closing.dialogue === original.steps.at(-1).dialogue.fr);
+  }
+  assert.equal(carriedIds.size, 5);
+  assert.equal(transfers, 10);
 });
 
 test('generation is deterministic and rejects mutable or malformed source revisions', () => {

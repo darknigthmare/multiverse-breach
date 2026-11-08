@@ -376,7 +376,7 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns:repeat(12,minmax(0,1fr)); }
   .extinction-panel-active .extinction-hud-dock .extinction-move-action { grid-column:span 2; }
   .extinction-panel-active .extinction-hud-dock .extinction-primary-action { grid-column:span 3; }
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions:has([data-personal-kit], [data-hunt-mark]) > .extinction-primary-action { grid-column:span 2; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions:has([data-personal-kit], [data-field-weapon], [data-hunt-mark]) > .extinction-primary-action { grid-column:span 2; }
   .extinction-panel-active .extinction-hud-dock .nexus-play-actions .btn-retro { min-width:44px; min-height:44px; padding:4px 6px; line-height:1.2; }
   .extinction-primary-action > .extinction-action-label-full { display:none; }
   .extinction-primary-action > .extinction-action-label-compact { display:inline; }
@@ -503,3 +503,21 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .extinction-directive-status > progress { min-width: 0; }
   .extinction-directive-status > .extinction-directive-detail { display: none; }
 }
+.extinction-stowed-readout {
+  display: flex;
+  flex: 1 0 100%;
+  order: 9;
+  box-sizing: border-box;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3px 12px;
+  padding: 4px 8px;
+  border-left: 2px solid #ffe2a8;
+  background: #0a1926;
+  color: #e9eef3;
+  font-size: calc(10px * var(--game-hud-scale, 1));
+  line-height: 1.3;
+}
+.extinction-stowed-readout strong { color: #ffe2a8; overflow-wrap: anywhere; }
+.extinction-stowed-readout span { white-space: nowrap; }

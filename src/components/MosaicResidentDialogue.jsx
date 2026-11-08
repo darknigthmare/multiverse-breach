@@ -1,12 +1,14 @@
 import React, { useId, useLayoutEffect, useRef, useState } from 'react';
 import './MosaicResidentDialogue.css';
 
-export default function MosaicResidentDialogue({ conversation, lang = 'fr', onClose, onAcceptMission }) {
+export default function MosaicResidentDialogue({ conversation, lang = 'fr', onClose, onAcceptMission,
+  onOpenJournal, nextAction, location, headingId, headingRef, expandBackground = true }) {
   const [selectedTopic, setSelectedTopic] = useState('origin');
   const [offerFeedback, setOfferFeedback] = useState('');
   const returnRef = useRef(null);
   const pendingFocus = useRef(false);
-  const titleId = useId();
+  const generatedTitleId = useId();
+  const titleId = headingId || generatedTitleId;
   const exchange = conversation?.questExchange;
   useLayoutEffect(() => {
     if (!pendingFocus.current || exchange?.phase === 'offer') return;
@@ -19,13 +21,16 @@ export default function MosaicResidentDialogue({ conversation, lang = 'fr', onCl
   const topic = topics.find(entry => entry.id === selectedTopic) || topics[0];
   const local = value => typeof value === 'string' ? value : value?.[lang === 'fr' ? 'fr' : 'en'] || '';
   const line = local(exchange?.line);
+  const next = exchange?.phase !== 'offer' ? local(nextAction) : '';
+  const place = local(location);
   return <section className="mosaic-resident-dialogue" data-city-conversation={conversation.heroId} aria-labelledby={titleId}>
     <div className="mosaic-dialogue-heading">
       <span>{lang === 'fr' ? 'UNE RENCONTRE EN CHEMIN' : 'A MEETING ALONG THE WAY'}</span>
-      <h3 id={titleId}>{conversation.name}</h3>{conversation.role && <p>{conversation.role}</p>}
+      <h3 id={titleId} ref={headingRef} tabIndex={headingRef ? -1 : undefined}>{conversation.name}</h3>{conversation.role && <p>{conversation.role}</p>}
     </div>
     {line && <figure className="mosaic-dialogue-quest" data-dialogue-quest={exchange.missionId} aria-live="polite" aria-atomic="true">
       {local(exchange.title) && <figcaption>{local(exchange.title)}</figcaption>}
+      {place && <p className="mosaic-dialogue-location" data-dialogue-location>{place}</p>}
       <blockquote><p>{line}</p><cite>{conversation.name}</cite></blockquote>
     </figure>}
     {line && exchange.phase === 'offer' && typeof onAcceptMission === 'function' && <div className="mosaic-dialogue-offer">
@@ -36,8 +41,11 @@ export default function MosaicResidentDialogue({ conversation, lang = 'fr', onCl
       }}>{lang === 'fr' ? 'Je m’en charge' : 'I’ll help'}</button>
       {offerFeedback && <p role="status">{offerFeedback}</p>}
     </div>}
-    {topic && <details className="mosaic-dialogue-background" key={`${conversation.heroId}:${exchange?.missionId || 'background'}`} open={!line}>
-      <summary>{lang === 'fr' ? 'En savoir plus sur' : 'More about'} {conversation.name}</summary>
+    {next && <div className="mosaic-dialogue-next" data-dialogue-next aria-live="polite" aria-atomic="true">
+      <span>{lang === 'fr' ? 'Pour continuer' : 'Next, when you leave'}</span><p>{next}</p>
+    </div>}
+    {topic && <details className="mosaic-dialogue-background" key={`${conversation.heroId}:${exchange?.missionId || 'background'}`} open={expandBackground && !line}>
+      <summary>{lang === 'fr' ? 'Consulter les archives de' : 'Read the archives of'} {conversation.name}</summary>
       <div className="mosaic-dialogue-topics" role="group" aria-label={lang === 'fr' ? 'Sujets de conversation' : 'Conversation topics'}>
         {topics.map(entry => <button key={entry.id} type="button" className="btn-retro" data-dialogue-topic={entry.id}
           aria-pressed={entry.id === topic.id} onClick={() => setSelectedTopic(entry.id)}>{entry.label}</button>)}
@@ -46,7 +54,11 @@ export default function MosaicResidentDialogue({ conversation, lang = 'fr', onCl
         <h4>{topic.label}</h4><p>{topic.body}</p>
       </div>
     </details>}
-    <button ref={returnRef} type="button" className="btn-retro" data-dialogue-return onClick={onClose}>{lang === 'fr' ? 'REPRENDRE L’EXPLORATION' : 'RESUME EXPLORING'}</button>
+    <div className="mosaic-dialogue-actions">
+      {typeof onOpenJournal === 'function' && <button type="button" className="btn-retro mosaic-dialogue-journal" data-dialogue-journal
+        onClick={() => onOpenJournal(exchange?.missionId)}>{lang === 'fr' ? 'Ouvrir mon carnet' : 'Open my journal'}</button>}
+      <button ref={returnRef} type="button" className="btn-retro" data-dialogue-return onClick={onClose}>{lang === 'fr' ? 'REPRENDRE L’EXPLORATION' : 'RESUME EXPLORING'}</button>
+    </div>
   </section>;
 }
 

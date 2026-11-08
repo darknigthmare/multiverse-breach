@@ -77,7 +77,7 @@ def residents(page, args, width, height, lang, out, name):
     check(frozen['snapshot']==after_pause['snapshot'],'City advanced during a real-time clock pause')
     check(frozen['checkpoints']==after_pause['checkpoints'],'City checkpoint escaped the virtual clock')
     check(prepared_clock==clock_reading(page),'virtual City clock advanced during a real-time pause')
-    visits=[];checkpoints_during_movement=0
+    visits=[];conversations=[];checkpoints_during_movement=0
     for identity in ['torbahead_community_remix_curator','bioshock_rapture_tenenbaum','arca_bastion']:
         if not page.get_by_role('dialog').count():
             page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
@@ -108,7 +108,8 @@ def residents(page, args, width, height, lang, out, name):
             expect(page.locator('[data-city-conversation="arca_bastion"]')).to_be_visible()
         if not page.get_by_role('dialog').count():
             page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
-        log=page.locator('.mosaic-rpg-log span').inner_text()
+        expected_log=resident_name+(' synchronise sa Trame' if fr else ' synchronizes their Thread')
+        exact_log=False
         if page.locator('[data-city-quest-offer]').count():
             conversation=page.locator(f'[data-city-conversation="{identity}"]')
             expect(conversation).to_be_visible()
@@ -119,11 +120,9 @@ def residents(page, args, width, height, lang, out, name):
                   'resident offer and dialogue belong to different missions')
             expect(speech.locator('cite')).to_have_text(resident_name)
             line=speech.locator('blockquote p').inner_text()
-            check(bool(line) and log==f'{resident_name} : {line}',
-                  f'resident request differs from the actual conversation: {identity}: {log}')
-        else:
-            expected=resident_name+(' synchronise sa Trame' if fr else ' synchronizes their Thread')
-            check(log.startswith(expected),f'resident not reached through normal movement: {identity}: {log}')
+            check(bool(line),'resident offer has no spoken request')
+            expected_log=f'{resident_name} : {line}'
+            exact_log=True
         # The QA parent is intentionally outside the inert game dialog. Trigger
         # its rerender programmatically without mutating the simulation.
         before=page.evaluate('window.__sceneQA.snapshot()')
@@ -131,6 +130,21 @@ def residents(page, args, width, height, lang, out, name):
         page.locator('#qa-render').evaluate('node => node.click()')
         page.wait_for_function('v => window.__sceneQA.revision === v + 1', arg=revision)
         check(before==page.evaluate('window.__sceneQA.snapshot()'),'parent render moved residents or player in terminal')
+        conversation=page.locator(f'[data-city-conversation="{identity}"]')
+        if conversation.count():
+            expect(page.locator('[data-resident-conversation-modal]')).to_be_visible()
+            expect(page.get_by_role('dialog')).to_have_count(1)
+            expect(page.locator('.mosaic-resident-directory, .mosaic-character-missions, .mosaic-evidence-ledger')).to_have_count(0)
+            check(before==page.evaluate('window.__sceneQA.snapshot()'),'resident conversation advanced the City')
+            page.screenshot(path=str(out/f'{name}-{identity}-conversation.png'))
+            conversation.locator('[data-dialogue-journal]').click()
+            expect(conversation).to_have_count(0)
+            expect(page.get_by_role('dialog')).to_have_count(1)
+            check(before==page.evaluate('window.__sceneQA.snapshot()'),'opening the journal resumed the City or changed its progress')
+            conversations.append(identity)
+        log=page.locator('.mosaic-rpg-log span').inner_text()
+        check(log==expected_log if exact_log else log.startswith(expected_log),
+              f'resident not reached through normal movement or request differs from the encounter: {identity}: {log}')
         directory=page.locator('.mosaic-resident-directory')
         if not directory.evaluate('e=>e.open'):directory.locator('summary').click()
         search=page.get_by_label('Rechercher un habitant' if fr else 'Find a resident',exact=True)
@@ -138,7 +152,7 @@ def residents(page, args, width, height, lang, out, name):
         page.keyboard.press('Escape')
         visits.append(identity)
     page.screenshot(path=str(out/f'{name}-city.png'))
-    return {'residentsReached':visits,'populationLimit':18,'nonCombatResidents':2,'preparedOwnership':True,'virtualClock':True,
+    return {'residentsReached':visits,'separateConversations':conversations,'populationLimit':18,'nonCombatResidents':2,'preparedOwnership':True,'virtualClock':True,
             'clockPrepared':prepared_clock,'realPauseVerifiedMs':CITY_REAL_PAUSE_MS,'checkpointsDuringMovement':checkpoints_during_movement}
 
 def viewmodel(page,args,identity,width,height,lang,out,name):

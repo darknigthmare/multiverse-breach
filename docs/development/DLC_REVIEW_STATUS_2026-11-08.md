@@ -109,3 +109,26 @@ Le lancement explicite de Chromium est bloqué dans cet environnement par
 `socket() failed: Operation not permitted` ; les 16 cas natifs et les replays
 corrigés doivent donc être confirmés par la CI du prochain commit. Les
 résultats de `07fa2e75` ne constituent pas la preuve de cette correction.
+
+## Nouvelles aventures Nexus après `d87f038`
+
+L’audit ciblé des outils d’export, des chemins physiques, des reçus et du
+delta n’a établi aucun nouveau défaut de distribution. Les quatre aventures
+Nexus et le transport d’objets de quête appartiennent au socle `src/game` :
+la collecte des sources d’une édition les inclut déjà. La sélection des packs
+et les deux politiques de dépendances communes restent donc celles décrites
+plus haut.
+
+L’ajout a en revanche révélé une dépendance manquante dans le harnais de
+`scripts/dlcProfileCharacterMissions.test.mjs`. Sa copie explicite des modules
+de base omettait `mosaicCityDeliveries.js` et `mosaicMissionCargo.js`. La liste
+comprend maintenant ces deux imports réels, ce qui permet d’exercer les
+nouveaux contrats avec les packs exclus physiquement absents.
+
+La commande `node --test scripts/dlcProfileCharacterMissions.test.mjs`, sous
+Node 22.23.4, réussit ses **7 tests**, dont les profils base, Halo, Alien et
+Halo + Alien. Elle vérifie les contrats effectivement chargés, la conservation
+des dossiers dormants et des champs futurs, leur reprise à la réinstallation,
+ainsi que les empreintes des anciens récits invités. Ce résultat porte sur
+la transformation et les imports des sources ; les exports de médias,
+constructions autonomes et parcours navigateur restent des contrôles distincts.

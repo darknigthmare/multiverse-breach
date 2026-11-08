@@ -234,8 +234,10 @@ test('drawing six types of equipment is read-only and keeps restored/unfinished 
 });
 
 test('new narrative definitions retain all legacy mission and step identities', () => {
-  for (const mission of MOSAIC_CHARACTER_MISSIONS) {
-    const legacy = MOSAIC_CHARACTER_MISSION_LEGACY.find(item => item.id === mission.id);
+  assert.deepEqual(MOSAIC_CHARACTER_MISSIONS.slice(0, MOSAIC_CHARACTER_MISSION_LEGACY.length).map(item => item.id),
+    MOSAIC_CHARACTER_MISSION_LEGACY.map(item => item.id));
+  for (const legacy of MOSAIC_CHARACTER_MISSION_LEGACY) {
+    const mission = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === legacy.id);
     assert.equal(mission.heroId, legacy.heroId); assert.equal(mission.universe, legacy.universe);
     assert.deepEqual(mission.steps.map(step => [step.id, step.type, step.targetId]), legacy.steps.map(step => [step.id, step.type, step.targetId]));
     const choices = mission.steps.find(step => step.type === 'decision').choices;
