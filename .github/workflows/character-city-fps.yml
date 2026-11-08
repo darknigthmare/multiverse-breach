@@ -129,6 +129,14 @@ jobs:
           - { district: nexus, lang: en, suite: deliveries, story: city-nadir-buried-probe-v1 }
           - { district: nexus, lang: fr, suite: deliveries, story: city-tessera-chosen-window-v1 }
           - { district: nexus, lang: en, suite: deliveries, story: city-tessera-chosen-window-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-anchor-shared-beacon-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-anchor-shared-beacon-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-bastion-bulwark-relief-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-bastion-bulwark-relief-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-nova-present-pulse-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-nova-present-pulse-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-sable-night-signs-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-sable-night-signs-v1 }
     env:
       CITY_CASE_SUITE: ${{ matrix.suite }}
       CITY_DELIVERY_STORY: ${{ matrix.story || '' }}

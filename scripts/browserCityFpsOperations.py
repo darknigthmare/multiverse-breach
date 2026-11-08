@@ -42,6 +42,7 @@ def open_city_terminal(page):
         expect(conversation).to_have_count(0)
     if not page.get_by_role('dialog').count():
         page.get_by_role('button', name='TERMINAL · JOURNAL', exact=True).click()
+    page.locator('[data-city-terminal-tab="transmissions"]').click()
     expect(page.locator('[data-reconnaissance-objective]')).to_be_visible()
 
 

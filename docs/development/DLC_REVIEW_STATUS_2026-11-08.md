@@ -132,3 +132,44 @@ des dossiers dormants et des champs futurs, leur reprise à la réinstallation,
 ainsi que les empreintes des anciens récits invités. Ce résultat porte sur
 la transformation et les imports des sources ; les exports de médias,
 constructions autonomes et parcours navigateur restent des contrôles distincts.
+
+## Parcours de Cité après `48197dc4`
+
+Les quatre aventures d’Ancre, Bastion, Nova et Sable et les parcours à pied
+appartiennent au socle. `mosaicCityRoutes.js` et `mosaicMissionWalks.js` sont
+collectés par l’export existant de `src/`. Aucun de ces fichiers ne réintroduit
+un import de pack invité dans une distribution de base. Les textes Halo et
+Alien et leurs versions historiques restent dans leurs packs.
+
+Le harnais des missions copie maintenant ces deux dépendances de production.
+Ses **7 tests réussissent**, dont les quatre catalogues avec les dossiers
+exclus physiquement absents :
+
+| Catalogue de sources | Contrats disponibles |
+| --- | ---: |
+| Base | 32 Nexus |
+| Halo | 32 Nexus et 2 Halo |
+| Alien | 32 Nexus et 2 Alien |
+| Halo et Alien | 36 |
+
+Le parcours de retrait/réinstallation conserve aussi un `walkReceipts` inconnu
+dans les dossiers invités dormants. Sa conservation ne transforme pas ce
+champ futur en objectif jouable et n’accomplit aucun point de marche. Les
+empreintes des anciens récits Halo/Alien restent exigées par les mêmes tests.
+
+Le registre vérifié conserve **505 packs**, **504 univers enregistrés** et
+**506 points d’entrée**. La lecture ciblée de l’export, de sa fermeture des
+imports et des politiques de ressources partagées n’a pas établi de nouveau
+défaut de séparation. Aucune purge supplémentaire ni installation à chaud
+n’est ajoutée. Les profils de distribution `base`, `halo`, `base-reviewed` et
+`halo-reviewed` restent distincts des quatre catalogues ci-dessus ; leurs
+constructions et parcours natifs doivent être attribués à la révision publiée
+correspondante dans la PR.
+
+La vérification locale étendue couvre **180 tests** sur deux exécutions
+complémentaires : 175 hors du fichier de runtime interrompu, puis les 5 tests
+de ce fichier dans une passe isolée à tas borné (`--max-old-space-size=1024`,
+`--test-concurrency=1`). Les deux premières tentatives de ce fichier ont reçu
+`SIGKILL`, sans échec d’assertion ; leur cause n’est pas certifiée. Il ne s’agit
+donc pas d’une passe complète ininterrompue de 180 tests. La passe isolée
+réussie charge les vrais catalogues et graphes App/Hub des quatre profils.

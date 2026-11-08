@@ -156,6 +156,7 @@ audit.cityContractOperation = ({ missionId, stepId, districtId } = {}) => {
     targetId: target.id, kind: operation.kind, x: step.type === 'marker' ? step.x : null,
     y: step.type === 'marker' ? step.y : null, label: localizeCityMission(operation.label, lang),
     propName: localizeCityMission(operation.propName, lang), completedText: localizeCityMission(operation.completedText, lang),
+    ...(step.walk ? { walk: structuredClone(step.walk), firstPointLabel: localizeCityMission(step.walk.points[0].label, lang) } : {}),
     originChoiceId: saved?.originChoiceId || null, choiceId: saved?.choiceId || null,
     originStoryRevision: mission.requiresMissionId ? saved?.originStoryRevision || 1 : null,
     branchChoiceId: step.byChoice ? saved?.choiceId || null : null, source: 'effective-mission-step' };

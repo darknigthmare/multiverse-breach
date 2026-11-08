@@ -2,8 +2,8 @@
 
 Ce lot fournit **deux propositions pour chacun des 1 912 personnages résolus**,
 Ancre comprise : une mission liée à l’univers d’origine et une mission originale
-de Cité/Multiverse. Parmi ces **3 824 propositions**, quatre prolongements Nexus
-ont maintenant une **adaptation jouable explicitement liée** ; les 3 820 autres
+de Cité/Multiverse. Parmi ces **3 824 propositions**, huit prolongements Nexus
+ont maintenant une **adaptation jouable explicitement liée** ; les 3 816 autres
 ne sont pas implémentés par cet export. Le suivi manuel, la validation du lore
 et les intentions plus larges de chaque proposition restent à renseigner.
 Ce catalogue ne déclare aucun épisode canonique externe.
@@ -29,9 +29,9 @@ JSON de plusieurs dizaines de mégaoctets versionné.
 | Occurrences d’ennemis | 1 518 | Inventaire séparé, jamais transformé en personnages possédables. |
 | Occurrences de boss/mondiaux/final | 1 507 | Une occurrence n’est pas nécessairement une identité unique. |
 | Politiques de finale | 129 | Dont 124 `nonCombatFinal`, conservées comme contraintes. |
-| Contrats Cité présents dans le runtime | 32 | 28 Nexus, 2 Halo, 2 Alien. Les 28 contrats précédents sont conservés dans leur ordre. |
-| Propositions liées à une adaptation jouable | 4 | Liens explicites par ID vers les nouvelles aventures de Mirelle, Quillon, Nadir et Tessera ; aucun rapprochement automatique par personnage. |
-| Autres prolongements Nexus à développer | 20 | Intentions et suivi conservés ; aucune validation automatique. |
+| Contrats Cité présents dans le runtime | 36 | 32 Nexus, 2 Halo, 2 Alien. Les 32 contrats de `48197dc4` sont conservés dans leur ordre. |
+| Propositions liées à une adaptation jouable | 8 | Liens explicites par ID vers les aventures de Mirelle, Quillon, Nadir, Tessera, Ancre, Bastion, Nova et Sable ; aucun rapprochement automatique par personnage. |
+| Autres prolongements Nexus à développer | 16 | Intentions et suivi conservés ; aucune validation automatique. |
 
 `designKind` distingue `individual_proposal`, `source_objective_adaptation`,
 `source_family_adaptation` et `research_scaffold`. Les deux derniers ne valent
@@ -78,12 +78,14 @@ Le JSON organise les données ainsi :
   reste faux ; les finales pacifiques ne reçoivent aucun objectif d’élimination.
 - `finalePolicies` conserve les politiques source, leur continuité et leurs
   raisons ; `reviewQueue` conserve les recherches manquantes.
-- `runtimeMissions` décrit les 32 contrats Cité. Les suites portent leur
+- `runtimeMissions` décrit les 36 contrats Cité. Les suites portent leur
   `requiresMissionId`, leur chapitre et les routes héritées ; chaque nouveau
   choix possède une intervention physique distincte. Les objectifs, constats
-  et coordonnées de chaque branche sont exportés. Les quatre nouvelles aventures
-  décrivent aussi dix prises/dépôts de cinq objets de quête, puis une clôture
-  auprès du personnage concerné. Leur présence dans le code ne certifie pas
+  et coordonnées de chaque branche sont exportés. Les aventures de transport
+  décrivent aussi les prises/dépôts d’objets de quête et leur restitution réelle.
+  Les étapes `walk` conservent les identifiants, libellés et coordonnées des points
+  à parcourir dans l’ordre, y compris lorsque le choix modifie le trajet.
+  Leur présence dans le code ne certifie pas
   une recette navigateur ; ce catalogue ne remplace ni les tests des contrats
   ni la CI.
 - `commonPolicies` regroupe sauvegarde, pause, prérequis DLC, récompenses et
@@ -95,44 +97,83 @@ Les champs de suivi éditables sont `priority`, `planningStatus`, `owner`,
 Excel lors d’une régénération, réimporter explicitement ces colonnes par ID.
 Le générateur n’annonce aucune synchronisation bidirectionnelle automatique.
 Le mode d’édition du classeur existant préserve les colonnes de suivi, les
-formules et les feuilles sans changement. Pour les quatre prolongements liés,
+formules et les feuilles sans changement. Pour les huit prolongements liés,
 il ajoute dans la colonne de sources l’ID du contrat et ses limites concrètes,
 sans remplacer les intentions initiales ni marquer le suivi terminé.
 
-Les nouvelles lignes de « Contrats jouables » distinguent le transport d’un
-seul objet de quête de l’inventaire de combat. Elles documentent les gestes
-locaux et le retour au résident ; les animations d’escorte ou la vie complète
-du refuge ne sont pas annoncées comme réalisées. « Modes FPS » ajoute les
+Les lignes de « Contrats jouables » distinguent le transport d’un seul objet de
+quête de l’inventaire de combat. Elles documentent les gestes locaux, le trajet
+réel et la restitution. Le parcours s’atteste par des déplacements successifs
+vers les points ordonnés. Un menu, un clic à distance ou une téléportation ne
+l’accomplit pas ; l’arrivée au dernier point exige encore une interaction.
+Les animations d’escorte, une foule autonome et la vie complète du refuge restent
+à développer. « Modes FPS » conserve les
 commandes V/B et leurs limites de stock, recharge, pause et session, avec
 provenance dans le helper d’équipement, les profils et le raccord de l’écran.
 
 ### Provenance de la présentation
 
-Le reçu du classeur et sa relecture utilisent le schéma 6. En complément des
-19 entrées de `runtimeSources` et des 3 entrées de `fieldEquipmentSources`,
-`cityPresentationSources` contrôle sept fichiers : `HubScreen.jsx`,
+Le reçu du classeur et sa relecture utilisent le schéma 7. En complément des
+sources des contrats et des trois entrées de `fieldEquipmentSources`,
+`cityPresentationSources` contrôle les fichiers du HUD, du carnet et du trajet : `HubScreen.jsx`,
 `mosaicMissionOperations.js`, `mosaicMissionCargo.js`, `renderer.js` et
 `spriteAssets.js`, ainsi que `immersiveHubState.js` et `useSceneViewport.js`
-pour le cadrage lors du montage, de la restauration et du redimensionnement.
+pour le cadrage lors du montage, de la restauration et du redimensionnement,
+ainsi que `mosaicMissionWalks.js`, `MosaicPocketTerminal.jsx`, son CSS et
+`MosaicCharacterMissions.jsx`. `ImmersiveDrawer.jsx` conserve aussi sa provenance
+pour l’ouverture, la fermeture et le retour du focus du terminal.
+Le groupe `fpsPresentationSources` contrôle
+`extinctionAimReadout.js`, `extinctionSignatures.js`, `extinctionFieldDirectives.js`,
+`HubScreen.jsx`, `ExtinctionPrimaryAction.jsx` et `ExtinctionAimReadout.css`. La lecture de visée modifie
+la présentation, sans réécrire les données des feuilles « Profils FPS » et
+« Modes FPS ».
+Le reçu comporte 21 sources de contrats, 3 sources d’équipement, 12 sources de
+présentation de Cité et 6 sources de visée FPS, soit 37 fichiers distincts.
 Ces groupes peuvent partager des fichiers. Le rendu des sprites, sa géométrie
 et ces dépendances de caméra ne figurent pas dans le manifeste de planification ;
 ce groupe externe conserve leurs empreintes sans ajouter de cellules.
+
+### Historique des actualisations de provenance
 
 La correction d’affichage des cartouches après la révision `22eb3ec8` conserve
 toutes les données logiques de planification, les contenus, le suivi et les
 formules. Seule l’empreinte de `mosaicMissionOperations.js` change dans le
 manifeste de planification. Le classeur est donc conservé à l’octet près.
 `provenanceRefresh` relie le nouveau reçu au reçu précédent et à l’empreinte du
-classeur conservé. La relecture vérifie réellement les empreintes du classeur,
-de la planification et des trois groupes de sources dans le dépôt courant ;
-elle rejette aussi l’absence d’une des sept dépendances de présentation.
+classeur conservé. À cette révision, la relecture vérifiait les empreintes du
+classeur, de la planification et de trois groupes de sources ; elle exigeait
+les sept dépendances de présentation alors concernées. Le schéma 7 actuel
+contrôle les quatre groupes et les dépendances supplémentaires décrites plus haut.
 
 Les correctifs de cadrage après `63aae093` et d’accueil au retour après
 `aa196c5a` conservent également le JSON de planification complet à l’octet
 près, manifeste et empreinte compris. Les deux dépendances de caméra sont
 suivies dans le groupe de présentation depuis le premier correctif. La
-dernière actualisation modifie uniquement l’empreinte de `HubScreen.jsx` ;
+dernière actualisation, publiée dans `48197dc4`, modifie uniquement l’empreinte de `HubScreen.jsx` ;
 les 19 sources des contrats restent identiques. Elle ne réexporte pas le classeur.
+
+La continuation suivante ajoute les quatre contrats de `mosaicCityRoutes.js` et
+leur moteur `mosaicMissionWalks.js`. Elle réexporte le classeur importé, ajoute
+les quatre lignes à la table filtrée et relie les quatre propositions concernées.
+Le contrôle avec `--baseline` compare aussi toutes les cellules des 32 contrats
+précédents. Les colonnes de suivi manuel et les trois feuilles Personnages,
+Profils FPS et Modes FPS gardent leurs valeurs, formules et styles.
+
+Les quatre nouvelles lignes ont été relues en rendu, avec leurs deux parcours
+et leurs sources. Leurs hauteurs restent comprises entre 188 et 260 points,
+sous la limite de 409 points d’Excel. L’export utilise toujours Artifact Tool :
+après l’import, les modifications et le recalcul, un transfert officiel
+`toProto()` / `Workbook.load()` dans un processus neuf borne la mémoire de
+sérialisation. La relecture OpenXML du fichier sauvegardé contrôle ensuite
+le contenu complet et les éléments conservés ; aucune exécution native d’Excel
+n’est revendiquée.
+
+Le dernier raccord de déplacement et d’ouverture du terminal conserve tous les
+champs logiques du planning exporté. Seule l’empreinte de
+`mosaicMissionWalks.js` évolue dans son manifeste. Les groupes de présentation
+actualisent aussi `HubScreen.jsx` et incluent `ImmersiveDrawer.jsx`. Le reçu
+`provenanceRefresh` relie cette actualisation à la capture de sources utilisée
+pour l’édition, sans réexporter ni altérer les octets du nouveau classeur.
 
 ## Reproduction
 
@@ -179,10 +220,10 @@ node node_modules/oxlint/bin/oxlint --max-warnings 0 \
   scripts/extinctionCityMissionPlanning.test.mjs
 ```
 
-Les quatorze tests spécifiques couvrent les identités et deux volets, les objectifs
+Les tests spécifiques couvrent les identités et deux volets, les objectifs
 pacifiques, les 129 politiques, les occurrences ennemies, les variantes, l’Ancre
 qui ne se rencontre pas elle-même, la séparation des contrats runtime,
-plusieurs divergences d’incarnation, les lacunes, les quatre liens explicites,
-les transferts ordonnés d’objets et la reproduction des empreintes. Ce sont des
+plusieurs divergences d’incarnation, les lacunes, les huit liens explicites,
+les transferts ordonnés d’objets, l’export des branches de marche et la reproduction des empreintes. Ce sont des
 tests de données et de provenance, pas une validation
 artistique, une expertise de chaque canon externe ou 3 824 parcours jouables.

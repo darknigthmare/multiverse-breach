@@ -19,6 +19,7 @@ import * as directives from '../src/game/extinctionFieldDirectives.js';
 import * as relays from '../src/game/extinctionRelayOperation.js';
 import * as field from '../src/game/nexusFieldOperation.js';
 import * as equipment from '../src/game/extinctionFieldEquipment.js';
+import * as aiming from '../src/game/extinctionAimReadout.js';
 
 const heroes = [createPlayerHero(), ...HEROES_DB];
 const hero = id => heroes.find(candidate => candidate.id === id);
@@ -84,10 +85,12 @@ test('equipment, incarnation and generic source limits are copied from the exact
   assert.equal(getExtinctionFighterProfile(peaceful).reviewStatus, 'NON_COMBAT_PRESERVED');
 });
 
-test('the real briefing distinguishes documented equipment from legacy categories and generated action names in both languages', async () => {
+test('real briefing and primary action preserve source equipment, bilingual commands and accessible aiming feedback', async () => {
   const vite = await createServer({ root: fileURLToPath(new URL('../', import.meta.url)), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
   try {
     const { default: Briefing } = await vite.ssrLoadModule('/src/components/ExtinctionFighterBriefing.jsx');
+    const { default: Button } = await vite.ssrLoadModule('/src/components/ExtinctionPrimaryAction.jsx');
+    assertPrimaryActionMarkup(Button);
     const cases = [
       ['arthur_kaamelott', 'primary-action', 'Excalibur Order Cut'],
       ['serj_tankian', 'primary-action', 'Serj Tankian Signature Strike'],
@@ -294,9 +297,10 @@ const fpsDeclarations = fpsNode.body.body.flatMap(node => node.type === 'Variabl
 function callback(name, state, actor = hero(state.heroId), overrides = {}) {
   const initializer = fpsDeclarations.find(candidate => candidate.id?.name === name).init;
   const node = initializer.type === 'CallExpression' && initializer.callee?.name === 'useCallback' ? initializer.arguments[0] : initializer;
-  const environment = { ...protocols, ...directives, ...relays, ...field, ...equipment,
+  const environment = { ...protocols, ...directives, ...relays, ...field, ...equipment, ...aiming,
     rememberExtinctionPersonalKit, restoreExtinctionPersonalKit,
     stateRef: { current: state }, sessionPausedRef: { current: false }, intelRef: { current: false },
+    canvasRef: { current: { width: 840, height: 430 } },
     selectedHero: actor, lang: 'fr', roleProfile: { marine: { dmg: 1 } }, EXTINCTION_BEACON_TARGET: 3,
     projectWorld: (target, run) => ({ camZ: target.wy - run.py, aim: (target.wx - run.px) / (target.wy - run.py), dist: Math.hypot(target.wx - run.px, target.wy - run.py) }),
     sound: { playSfx() {} }, triggerEnemyDrop() {}, setRunSnapshot() {}, buildRunSnapshot() { return {}; },
@@ -775,4 +779,215 @@ test('projectile feedback aligns with the scene projection and the held pickup h
     assert.ok(protocols.getExtinctionPickupBrief(type, 'en').length > 70);
   }
   assert.equal(protocols.getExtinctionPickupBrief('pistol'), '', 'a personal action does not become a pickup');
+});
+
+const aimViewport = { width: 840, height: 430 };
+const aimReadout = (state, lang = 'fr', viewport = aimViewport) => aiming.getExtinctionAimReadout(state, lang, viewport);
+
+test('aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run', () => {
+  const originalRandom = Math.random, kinds = new Set(); let combinations = 0;
+  try {
+    Math.random = () => { throw new Error('Read-only aiming must not draw randomness'); };
+    for (const actor of heroes) {
+      const profile = getExtinctionFighterProfile(actor);
+      if (!profile.eligible) continue;
+      for (const runMode of ['extraction', 'last_signal', 'infestation', 'hunt']) {
+        const state = make(actor); state.runMode = runMode;
+        const before = structuredClone(state), readout = aimReadout(state);
+        assert.equal(readout.source, 'personal', actor.id);
+        assert.equal(readout.kind, profile.signature.actions.simple.kind, actor.id);
+        assert.equal(readout.range, protocols.getExtinctionActionReach(profile.signature.actions.simple).value, actor.id);
+        assert.equal(readout.readiness, 'ready', actor.id);
+        assert.ok(readout.name && readout.label && readout.detail && readout.command, actor.id);
+        assert.deepEqual(state, before, actor.id); kinds.add(readout.kind); combinations++;
+      }
+    }
+  } finally { Math.random = originalRandom; }
+  assert.equal(combinations, 7244);
+  assert.deepEqual([...kinds].sort(), ['beam', 'cone', 'control', 'dash', 'focus', 'hitscan', 'melee', 'projectile', 'scatter']);
+});
+
+test('contact and control readouts agree with actual reach, facing and successful actions at the boundaries', () => {
+  for (const id of ['predator', 'lilo_pelekai', 'long_horse', 'masterchief']) {
+    const action = getExtinctionFighterProfile(hero(id)).signature.actions.simple;
+    for (const inside of [true, false]) {
+      const state = make(id); state.enemies = [enemy(action.range + (inside ? -1e-5 : 1e-5))];
+      const readout = aimReadout(state);
+      assert.equal(readout.condition, inside ? 'target' : 'out_of_range', `${id} ${inside}`);
+      assert.equal(readout.targetId, inside ? 'target' : null);
+      activateExtinctionProtocol(state, 'simple');
+      assert.equal(Boolean(state.enemies[0].hp < 500 || state.enemies[0].protocolControl), inside, `${id}: actual action must agree`);
+    }
+    const behind = make(id); behind.angle = Math.PI;
+    assert.equal(aimReadout(behind).targetId, null, `${id}: behind is not seen`);
+    assert.equal(aimReadout(behind).condition, 'none');
+    activateExtinctionProtocol(behind, 'simple');
+    assert.equal(behind.enemies[0].hp, 500); assert.equal(behind.enemies[0].protocolControl, undefined);
+  }
+});
+
+test('a broad contact cone or a hidden projection never reveals an off-screen target', () => {
+  const state = make('predator'); state.enemies = [{ ...enemy(1.5), wx: 1.2 }];
+  assert.equal(protocols.getExtinctionAimCandidates(state, 2.3, .85).length, 1, 'the real cone intentionally extends beyond the view');
+  assert.equal(aimReadout(state).targetId, null);
+  assert.equal(aimReadout(state).condition, 'none');
+  activateExtinctionProtocol(state, 'simple');
+  assert.ok(state.enemies[0].hp < 500, 'the readout must not narrow the actual combat cone');
+  for (const viewport of [null, { width: 0, height: 430 }, { width: 250, height: 540 }]) {
+    const near = make('masterchief'); near.enemies = [enemy(.1)];
+    assert.equal(aimReadout(near, 'fr', viewport).targetId, null, 'near-plane clipped target is not visible');
+    const outside = make('predator'); outside.enemies = [{ ...enemy(1.5), wx: 1.2 }];
+    assert.equal(aimReadout(outside, 'fr', viewport).targetId, null);
+  }
+});
+
+test('instant shotgun guidance uses the first collision of the actual seven rays, never a continuous spread cone', () => {
+  const between = pickupRun('shotgun'); between.weapon.spread = .6;
+  between.enemies = [{ ...enemy(8 * Math.cos(.1)), wx: 8 * Math.sin(.1), size: .01 }];
+  assert.equal(aimReadout(between).condition, 'none', 'between two pellets is not an acquired target');
+  const before = structuredClone(between);
+  assert.deepEqual(protocols.getExtinctionPickupSpreadHits(between), []); assert.deepEqual(between, before);
+  assert.equal(protocols.fireExtinctionPickupWeapon(between).reason, 'miss'); assert.equal(between.enemies[0].hp, 500);
+  const line = pickupRun('shotgun'); line.weapon.spread = 0;
+  line.enemies = [{ ...enemy(6), id: 'behind' }, { ...enemy(2), id: 'first' }];
+  const hits = protocols.getExtinctionPickupSpreadHits(line);
+  assert.deepEqual(hits.map(hit => [hit.enemy.id, hit.pellets]), [['first', 7]]);
+  assert.equal(aimReadout(line).targetId, 'first');
+  protocols.fireExtinctionPickupWeapon(line);
+  assert.equal(line.enemies[0].hp, 500); assert.ok(line.enemies[1].hp < 500);
+});
+
+test('projectile guidance describes a current path and never predicts or manufactures a later hit', () => {
+  for (const type of ['personal', 'plasma', 'rocket']) {
+    const state = type === 'personal' ? make('arca_mirelle') : pickupRun(type);
+    state.enemies = [enemy(6)];
+    const readout = aimReadout(state, 'en');
+    assert.equal(readout.condition, 'flight', type); assert.equal(readout.targetId, 'target');
+    assert.match(readout.detail, /Lead its movement; only actual contact/);
+    if (type === 'personal') activateExtinctionProtocol(state, 'simple'); else protocols.fireExtinctionPickupWeapon(state);
+    assert.equal(state.enemies[0].hp, 500, `${type}: no hit before flight`);
+    state.enemies[0].wx = 5; tick(state, 100);
+    assert.equal(state.enemies[0].hp, 500, `${type}: a moving target can leave that path`);
+    assert.equal(state.protocols.charge, 0); assert.equal(aimReadout(state).targetId, null);
+  }
+});
+
+test('marking and shield feedback follow real damage rules, while non-damaging control remains valid', () => {
+  for (const id of ['masterchief', 'lilo_pelekai']) {
+    const state = make(id); state.runMode = 'hunt'; state.wave = 3;
+    const boss = { ...enemy(2), id: 'boss', kind: 'Champion de Trame', shieldActive: true };
+    const drone = { ...enemy(8), id: 'drone', wx: 5, kind: 'Drone Protecteur' };
+    state.enemies = [boss, drone];
+    state.fieldDirective = directives.createExtinctionFieldDirective(state, { enabled: true, mode: 'hunt' });
+    if (id === 'lilo_pelekai') {
+      assert.equal(aimReadout(state).condition, 'target', 'control is not damage and must not be falsely blocked');
+      activateExtinctionProtocol(state, 'simple');
+      assert.equal(boss.hp, 500); assert.ok(boss.protocolControl); assert.equal(state.protocols.charge, 8);
+    } else {
+      assert.equal(aimReadout(state).condition, 'mark');
+      assert.equal(boss.shieldActive, true, 'consulting protection cannot consume it');
+      activateExtinctionProtocol(state, 'simple'); assert.equal(boss.hp, 500);
+      tick(state, 20); directives.markExtinctionHuntTarget(state);
+      assert.equal(aimReadout(state).condition, 'shield');
+      activateExtinctionProtocol(state, 'simple'); assert.equal(boss.hp, 500);
+      tick(state, 20); drone.hp = 0;
+      const before = structuredClone(state); assert.equal(aimReadout(state).condition, 'target'); assert.deepEqual(state, before);
+      activateExtinctionProtocol(state, 'simple'); assert.ok(boss.hp < 500); assert.equal(boss.shieldActive, false);
+      tick(state, 20); state.fieldDirective.markTicks = 0;
+      assert.equal(aimReadout(state).condition, 'mark', 'expired marking re-protects the core');
+    }
+  }
+});
+
+test('movement guidance uses the actual arena boundary and presents no gun command or target', () => {
+  const state = make('hw_wheelchair_guy'), view = aimReadout(state);
+  assert.equal(view.shape, 'movement'); assert.equal(view.command, 'BOUGER');
+  assert.equal(view.condition, 'movement'); assert.equal(view.targetId, null); assert.equal(view.range, 2.4);
+  activateExtinctionProtocol(state, 'simple'); assert.equal(state.py, 2.4);
+  state.py = 28; tick(state, 26);
+  assert.equal(aimReadout(state).condition, 'boundary');
+  activateExtinctionProtocol(state, 'simple'); assert.equal(state.py, 28);
+  tick(state, 26); state.angle = Math.PI;
+  assert.equal(aimReadout(state, 'en').command, 'MOVE'); assert.equal(aimReadout(state, 'en').condition, 'movement');
+});
+
+test('aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership', () => {
+  const personal = make('predator'); activateExtinctionProtocol(personal, 'simple');
+  assert.equal(aimReadout(personal).condition, 'cooldown');
+  personal.weapon.ammo = 0; personal.ammo = 0; personal.reloadPulse = 36;
+  tick(personal, 26); assert.equal(aimReadout(personal).condition, 'target', 'contact ignores a fictitious ballistic reserve');
+  for (const id of ['masterchief', 'plasma']) {
+    const state = id === 'plasma' ? pickupRun(id) : make(id);
+    state.weapon.ammo = 0; state.ammo = 0;
+    assert.equal(aimReadout(state).condition, 'ammo');
+    state.reloadPulse = 36; assert.equal(aimReadout(state).condition, 'reload');
+    state.paused = true; assert.equal(aimReadout(state).condition, 'paused');
+    const before = structuredClone(state); aimReadout(state); assert.deepEqual(state, before);
+    state.paused = false; state.reloadPulse = 0; state.weapon.ammo = 4;
+    state.protocols.ownerId = 'foreign'; assert.equal(aimReadout(state).source, 'unavailable');
+    state.protocols.ownerId = state.heroId; state.protocols.runId = 'previous'; assert.equal(aimReadout(state).source, 'unavailable');
+    state.protocols.runId = state.runId; state.phase = 'ended'; assert.equal(aimReadout(state).targetId, null);
+  }
+});
+
+test('the real snapshot follows collected, holstered and restored equipment without changing an input or resource', () => {
+  const state = liveState('predator'); state.enemies = [enemy(5)]; state.t = 100;
+  const snapshot = () => callback('buildRunSnapshot', state, hero(state.heroId), { getRunObjectiveText: () => 'Keep moving' })(state);
+  assert.equal(snapshot().primaryAim.condition, 'out_of_range');
+  assert.equal(snapshot().primaryAim.kind, 'melee');
+  state.loot = [{ id: 'aim-field-drop', type: 'weapon', wx: 0, wy: 0, label: 'Plasma', weaponData: { ...PICKUP_FIXTURES.plasma, name: 'Plasma' } }];
+  callback('collectLoot', state)();
+  const before = structuredClone(state);
+  assert.equal(snapshot().primaryAim.source, 'pickup'); assert.equal(snapshot().primaryAim.kind, 'plasma');
+  assert.equal(snapshot().primaryAim.name, 'Plasma'); assert.equal(snapshot().primaryAim.condition, 'flight');
+  assert.deepEqual(state, before);
+  callback('restorePersonalKit', state)(); assert.equal(snapshot().primaryAim.kind, 'melee');
+  callback('restoreFieldWeapon', state)(); assert.equal(snapshot().primaryAim.kind, 'plasma');
+  assert.equal(state.protocols.casts.simple, 0); assert.equal(state.weapon.ammo, 60);
+  assert.equal(state.protocols.projectiles.length, 0);
+});
+
+function assertPrimaryActionMarkup(Button) {
+  for (const lang of ['fr', 'en']) for (const id of ['predator', 'arca_mirelle', 'lilo_pelekai', 'hw_wheelchair_guy']) {
+    const state = make(id), readout = aimReadout(state, lang); const before = structuredClone(state);
+    for (const paused of [false, true]) {
+      const html = renderToStaticMarkup(React.createElement(Button, { readout, paused, lang, onFire() {} }));
+      assert.match(html, /type="button"/); assert.match(html, /data-primary-action/);
+      assert.ok(html.includes(`data-fps-aim-kind="${readout.kind}"`));
+      assert.ok(html.includes(`data-fps-aim-state="${paused ? 'paused' : readout.condition}"`));
+      assert.ok(html.includes(readout.command)); assert.doesNotMatch(html, /disabled=/);
+      assert.ok(html.includes('aria-live="off"'), 'continuous aiming changes do not chatter through a live region');
+      const described = paused ? lang === 'fr' ? 'Action suspendue.' : 'Action paused.' : readout.detail;
+      assert.ok(html.includes(described.replaceAll('&', '&amp;').replaceAll("'", '&#x27;')), 'full explanation remains in the accessible name');
+    }
+    assert.deepEqual(state, before);
+  }
+}
+
+test('the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker', () => {
+  const shapes = new Map();
+  for (const id of ['predator', 'arca_mirelle', 'lilo_pelekai', 'hw_wheelchair_guy', 'masterchief', 'doomslayer', 'long_horse']) {
+    for (const [width, height] of [[840, 430], [250, 540], [1191, 540]]) {
+      const state = make(id); state.screenShake = 8; state.hitMarkerTimer = 6;
+      const before = structuredClone(state), points = [], transforms = [];
+      let x = 19, y = -21, lineWidth = 1, stack = [];
+      const record = (px, py) => points.push([x + px, y + py]);
+      const ctx = {
+        save() { stack.push([x, y, lineWidth]); }, restore() { [x, y, lineWidth] = stack.pop(); },
+        setTransform(...values) { transforms.push(values); x = values[4]; y = values[5]; },
+        translate(dx, dy) { x += dx; y += dy; }, beginPath() {}, closePath() {}, stroke() {},
+        set lineWidth(value) { lineWidth = value; }, get lineWidth() { return lineWidth; },
+        moveTo: record, lineTo: record,
+        arc(cx, cy, radius) { for (const [dx, dy] of [[radius, 0], [-radius, 0], [0, radius], [0, -radius]]) record(cx + dx, cy + dy); }
+      };
+      const drawn = aiming.drawExtinctionAimReticle(ctx, state, width, height);
+      assert.equal(drawn.kind, getExtinctionFighterProfile(hero(id)).signature.actions.simple.kind);
+      assert.deepEqual(transforms, [[1, 0, 0, 1, 0, 0]]);
+      assert.ok(points.length >= 4);
+      for (const [px, py] of points) assert.ok(Math.abs(px - width / 2) + 1.4 < 18 && Math.abs(py - height / 2) + 1.4 < 18);
+      assert.equal(x, 19); assert.equal(y, -21); assert.deepEqual(state, before);
+      shapes.set(drawn.shape, JSON.stringify(points.map(([px, py]) => [px - width / 2, py - height / 2])));
+    }
+  }
+  assert.equal(shapes.size, 7); assert.equal(new Set(shapes.values()).size, 7, 'different actions do not share a generic gun crosshair');
 });

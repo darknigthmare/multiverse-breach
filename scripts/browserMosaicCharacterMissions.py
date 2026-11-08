@@ -51,6 +51,14 @@ DELIVERIES = [
      'prelude': [], 'parentEntry': NEXUS_CONTRACTS[9]},
     {'id': 'city-tessera-chosen-window-v1', 'parent': NEXUS_CONTRACTS[7][0], 'origins': ['parallel-accounts', 'hold-display'],
      'prelude': [], 'parentEntry': NEXUS_CONTRACTS[7]},
+    {'id': 'city-anchor-shared-beacon-v1', 'parent': NEXUS_CONTRACTS[0][0], 'origins': ['retain-origin', 'ask-review'],
+     'prelude': [], 'parentEntry': NEXUS_CONTRACTS[0]},
+    {'id': 'city-bastion-bulwark-relief-v1', 'parent': NEXUS_CONTRACTS[2][0], 'origins': ['name-debt', 'attach-unknowns'],
+     'prelude': [], 'parentEntry': NEXUS_CONTRACTS[2]},
+    {'id': 'city-nova-present-pulse-v1', 'parent': NEXUS_CONTRACTS[3][0], 'origins': ['mark-uncertainty', 'require-return'],
+     'prelude': [], 'parentEntry': NEXUS_CONTRACTS[3]},
+    {'id': 'city-sable-night-signs-v1', 'parent': NEXUS_CONTRACTS[4][0], 'origins': ['signed-correction', 'annotated-original'],
+     'prelude': [], 'parentEntry': NEXUS_CONTRACTS[4]},
 ]
 DELIVERY_IDS = {story['id'] for story in DELIVERIES}
 PREREQUISITES.update({story['id']: story['parent'] for story in DELIVERIES})
@@ -139,6 +147,42 @@ def save_mission_label_frames(page, out, filename):
     return frames
 
 
+def verify_walk_receipt(definition, after, proof):
+    """Match every saved waypoint to a real moving frame, in authored order."""
+    expected = definition['walk']['points']
+    saved = after['records'][definition['missionId']]
+    receipt = saved.get('walkReceipts', {}).get(definition['stepId'])
+    check(receipt and receipt.get('version') == 1, 'the walked route has no local receipt')
+    for field in ['missionId', 'stepId', 'districtId', 'universe', 'originChoiceId', 'originStoryRevision', 'branchChoiceId']:
+        check(receipt.get(field) == definition.get(field), f'walk receipt lost its authored identity: {field}')
+    points = receipt.get('points', [])
+    check(len(points) == len(expected), 'a route skipped one or more authored places')
+    samples = [proof['clickAfter'], *proof['samples']]
+    previous_match = -1
+    matches = []
+    for actual, target in zip(points, expected):
+        check(all(actual.get(key) == target[key] for key in ['id', 'x', 'y']), 'route points were reached in another order')
+        check(0 < actual['elapsedMs'] <= 50 and 0 < actual['distance'] <= actual['speed'] * 60 * actual['elapsedMs'] / 1000 + 1e-6,
+              'a checkpoint was earned without a bounded active movement')
+        check(((actual['to']['x'] - target['x']) ** 2 + (actual['to']['y'] - target['y']) ** 2) ** 0.5 <= 64,
+              'a checkpoint was received before approaching its place')
+        found = None
+        for index in range(max(1, previous_match + 1), len(samples)):
+            prior, sample = samples[index - 1], samples[index]
+            if (all(abs(sample[key] - actual['to'][key]) <= 1e-6 for key in ['x', 'y'])
+                    and all(abs(prior[key] - actual['from'][key]) <= 1e-6 for key in ['x', 'y'])
+                    and abs(sample['speed'] - actual['speed']) <= 1e-6
+                    and abs((sample['t'] - prior['t']) * 1000 / 60 - actual['elapsedMs']) <= 1e-6):
+                found = index
+                break
+        check(found is not None, f'checkpoint {target["id"]} has no matching native movement frame')
+        previous_match = found
+        matches.append({'pointId': target['id'], 'sampleIndex': found, 'receipt': actual})
+    operation = saved.get('operationReceipts', {}).get(definition['stepId'], {})
+    check(operation.get('walkPointIds') == [target['id'] for target in expected], 'final operation lost its actual walked places')
+    return {'orderedPlaces': len(matches), 'matchedNativeFrames': matches, 'receipt': receipt}
+
+
 def verify_operation(definition, before, after, objects_before, objects_after, observed_target):
     """Compare independently captured declaration, save receipt and live scene."""
     mission_id, step_id = definition['missionId'], definition['stepId']
@@ -156,7 +200,13 @@ def verify_operation(definition, before, after, objects_before, objects_after, o
                        for item in record.get('operationReceipts', {}).values()]
     check(type(receipt.get('sequence')) is int and receipt['sequence'] > max(prior_sequences, default=0),
           'operation sequence did not advance after the actual intervention')
-    if ('x' in receipt or 'y' in receipt) and definition['sourceType'] != 'exhibit':
+    walking = definition.get('walk')
+    if walking:
+        check(observed_target and all(abs(observed_target[key] - walking['points'][0][key]) <= 1e-6 for key in ['x', 'y']),
+              'the first live reconnaissance marker differs from the authored departure')
+        check(all(abs(receipt[key] - walking['points'][-1][key]) <= 1e-6 for key in ['x', 'y']),
+              'the final interaction did not occur at the last walked marker')
+    elif ('x' in receipt or 'y' in receipt) and definition['sourceType'] != 'exhibit':
         check(observed_target and all(abs(receipt[key] - observed_target[key]) <= 1e-6 for key in ['x', 'y']),
               'receipt position does not match the physical target observed before approach')
     if 'originChoiceId' in receipt:
@@ -171,8 +221,13 @@ def verify_operation(definition, before, after, objects_before, objects_after, o
     check(pending and pending['active'] and not pending['completed'], 'the actual operation object was not pending before approach')
     check(completed and completed['completed'] and not completed['active'], 'the actual operation object did not finish after interaction')
     for key in ['missionId', 'stepId', 'universe', 'targetId', 'sourceType', 'kind', 'label', 'propName', 'completedText']:
-        check(pending[key] == completed[key] == definition[key], f'operation object differs from its declaration: {key}')
-    check(all(abs(pending[key] - completed[key]) <= 1e-6 for key in ['x', 'y']), 'operation completion moved its object')
+        expected_pending = definition['firstPointLabel'] if walking and key == 'propName' else definition[key]
+        check(pending[key] == expected_pending and completed[key] == definition[key], f'operation object differs from its declaration: {key}')
+    if walking:
+        check(all(abs(pending[key] - walking['points'][0][key]) <= 1e-6 for key in ['x', 'y']),
+              'the first presented route point differs from its actual departure')
+    else:
+        check(all(abs(pending[key] - completed[key]) <= 1e-6 for key in ['x', 'y']), 'operation completion moved its object')
     if definition['sourceType'] == 'marker':
         check(all(abs(completed[key] - definition[key]) <= 1e-6 for key in ['x', 'y']), 'branch operation is at the wrong marker position')
     check(completed['sequence'] == receipt['sequence'], 'object was restored from another operation receipt')
@@ -183,14 +238,73 @@ def verify_operation(definition, before, after, objects_before, objects_after, o
     return {'definition': definition, 'receipt': receipt, 'objectBefore': pending, 'objectAfter': completed}
 
 
-def terminal(page):
+def terminal(page, section='journal'):
     conversation = page.locator('.mosaic-resident-dialogue')
     if conversation.count():
         conversation.locator('[data-dialogue-journal]').click()
         expect(conversation).to_have_count(0)
     if not page.get_by_role('dialog').count():
         page.get_by_role('button', name='TERMINAL · JOURNAL', exact=True).click()
-    expect(page.locator('.mosaic-character-missions')).to_be_visible()
+    tab = page.locator(f'[data-city-terminal-tab="{section}"]')
+    if tab.get_attribute('aria-selected') != 'true':
+        tab.click()
+    expect(page.locator(f'[data-city-terminal-panel="{section}"]')).to_be_visible()
+    expect(page.locator('[data-city-terminal-panel]:visible')).to_have_count(1)
+    if section == 'journal':
+        expect(page.locator('.mosaic-character-missions')).to_be_visible()
+
+
+def inspect_terminal_navigation(page, out, name):
+    """Read the actual four City sections without advancing the paused scene."""
+    frozen = {'scene': page.evaluate('window.__sceneQA.snapshot()'), 'progress': progress(page),
+              'cargo': mission_cargo(page), 'objects': mission_objects(page)}
+    selected = page.locator('[data-city-contract-select]').input_value()
+    visits = []
+    page.locator('[data-city-terminal-tab="journal"]').focus()
+    for section in ['district', 'transmissions', 'guide', 'journal']:
+        page.keyboard.press('ArrowRight')
+        tab = page.locator(f'[data-city-terminal-tab="{section}"]')
+        expect(tab).to_be_focused()
+        expect(tab).to_have_attribute('aria-selected', 'true')
+        expect(page.locator('[data-city-terminal-panel]:visible')).to_have_count(1)
+        panel = page.locator(f'[data-city-terminal-panel="{section}"]')
+        expect(panel).to_be_visible()
+        page.keyboard.press('Tab')
+        expect(panel).to_be_focused()
+        page.keyboard.press('Shift+Tab')
+        expect(tab).to_be_focused()
+        layout = page.locator('.mosaic-pocket-tabs').evaluate('''node => ({
+          width:node.clientWidth, scrollWidth:node.scrollWidth,
+          tabs:[...node.querySelectorAll('button')].map(button=>{
+            const box=button.getBoundingClientRect();return {id:button.dataset.cityTerminalTab,
+              left:box.left,right:box.right,width:box.width,height:box.height,
+              font:parseFloat(getComputedStyle(button).fontSize),clientWidth:button.clientWidth,scrollWidth:button.scrollWidth};})
+        })''')
+        check(layout['scrollWidth'] <= layout['width'] + 1, 'terminal navigation overflowed horizontally')
+        for control in layout['tabs']:
+            check(control['width'] >= 43.99 and control['height'] >= 43.99, 'terminal tab is smaller than 44 px')
+            check(control['left'] >= 31 and control['right'] <= page.viewport_size['width'] - 31,
+                  'terminal tab left the configured safe area')
+            check(control['font'] >= 21, 'terminal tab ignored 150% reading size')
+            check(control['scrollWidth'] <= control['clientWidth'] + 1, 'terminal tab label was clipped')
+        if section == 'district':
+            expect(panel.locator('.mosaic-resident-directory')).to_be_visible()
+        elif section == 'transmissions':
+            expect(panel.locator('.mosaic-rpg-log')).to_be_visible()
+        elif section == 'guide':
+            expect(panel.locator('.mosaic-terminal-guide')).to_be_visible()
+        page.screenshot(path=str(out / f'{name}-terminal-{section}.png'))
+        visits.append({'section': section, 'layout': layout, 'keyboardFocus': True})
+    check(page.locator('[data-city-contract-select]').input_value() == selected, 'changing sections replaced the read adventure')
+    page.keyboard.press('End')
+    expect(page.locator('[data-city-terminal-tab="guide"]')).to_be_focused()
+    page.keyboard.press('Home')
+    expect(page.locator('[data-city-terminal-tab="journal"]')).to_be_focused()
+    actual = {'scene': page.evaluate('window.__sceneQA.snapshot()'), 'progress': progress(page),
+              'cargo': mission_cargo(page), 'objects': mission_objects(page)}
+    check(actual == frozen, 'terminal section navigation changed the City or its adventure')
+    return {'sections': visits, 'selectedMissionPreserved': selected, 'homeEnd': True, 'statePreserved': True,
+            'scope': 'Actual City menus, native keyboard, existing safe area and 150% text. No navigation click accepts or progresses an adventure.'}
 
 
 def explicit_help_while_carrying(page, saved, cargo):
@@ -208,7 +322,7 @@ def explicit_help_while_carrying(page, saved, cargo):
               f'{action} moved the player')
 
     expect(hud_help).to_have_count(0)
-    terminal(page)
+    terminal(page, 'guide')
     page.get_by_role('button', name='Revoir l accueil' if fr else 'Replay welcome', exact=True).click()
     welcome = page.locator('.mosaic-world-hud .mosaic-city-guide:not(.mosaic-city-guide--collapsible)')
     expect(welcome).to_be_visible()
@@ -219,7 +333,7 @@ def explicit_help_while_carrying(page, saved, cargo):
     expect(hud_help).to_have_count(0)
     adventure_preserved('deferring unread help')
 
-    terminal(page)
+    terminal(page, 'guide')
     guide_control = page.locator('.mosaic-terminal-guide > button')
     guide_resumed = False
     if guide_control.count():
@@ -229,7 +343,7 @@ def explicit_help_while_carrying(page, saved, cargo):
         expect(welcome).to_have_count(0)
         expect(page.get_by_role('dialog')).to_have_count(0)
         adventure_preserved('explicit guide resume')
-        terminal(page)
+        terminal(page, 'guide')
         expect(guide_control).to_have_text('PAUSE GUIDE')
         guide_control.click()
         expect(hud_help).to_have_count(0)
@@ -462,6 +576,9 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
             if operation_before:
                 completed_operation = verify_operation(operation_before, before, progress(page), objects_before,
                                                        mission_objects(page), proximity_before)
+                if operation_before.get('walk'):
+                    completed_operation['reconnaissance'] = verify_walk_receipt(operation_before, progress(page), proof)
+                    page.screenshot(path=str(out / f'{case_name}-{mission_id}-walked-route.png'))
                 case['operations'].append(completed_operation)
                 if capture_operation:
                     page.screenshot(path=str(out / case['operationCapture']['after']))
@@ -573,7 +690,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
     if is_delivery:
         check(case.get('residentEnding'), 'delivery story did not return to its resident')
         check(mission_cargo(page) is None, 'completed delivery retained an undelivered object')
-        expected_transfers = 4 if mission_id == 'city-quillon-refuge-pump-v1' else 2
+        expected_transfers = 4 if mission_id in ('city-quillon-refuge-pump-v1', 'city-bastion-bulwark-relief-v1') else 2
         check(len(case['cargoTransfers']) == expected_transfers, 'delivery skipped a physical pickup or handover')
         check(any(walk.get('carriedObject', {}).get('travelledWorldUnits', 0) > 0 for walk in case['walks']),
               'delivery completed without observing a carried object during movement')
@@ -655,7 +772,7 @@ def resident_offer_journey(page, args, lang, out, name):
         check(page.evaluate('window.__sceneQA.saved?.districtId') == 'threads', 'native Atrium portal walk did not reach the Gallery')
         record['atriumPortal'] = {'screenPoint': {key: point[key] for key in ['x', 'y']}, 'before': point['before'],
                                  'after': page.evaluate('window.__sceneQA.snapshot()')}
-        terminal(page)
+        terminal(page, 'district')
         destinations = page.get_by_role('region', name='Catalogue des quartiers disponibles' if lang == 'fr' else 'Available district catalog', exact=True)
         destination = destinations.get_by_role('button', name='Nexus de Convergence', exact=True)
         destination.click()
@@ -664,7 +781,7 @@ def resident_offer_journey(page, args, lang, out, name):
             if page.evaluate('window.__sceneQA.saved?.districtId') == DISTRICT: break
         check(page.evaluate('window.__sceneQA.saved?.districtId') == DISTRICT, 'native Gallery portal walk did not enter the Nexus district')
         check(not (progress(page) or {}).get('records'), 'portal travel accepted a quest')
-        terminal(page)
+        terminal(page, 'district')
         directory = page.locator('.mosaic-resident-directory')
         directory.locator('summary').click()
         directory.get_by_role('searchbox').fill('Mirelle')
@@ -708,6 +825,24 @@ def resident_offer_journey(page, args, lang, out, name):
         check(page.evaluate('window.__sceneQA.snapshot()') == frozen and progress(page) == before,
               'reading the real offer advanced the scene or quest')
         page.screenshot(path=str(out / f'{name}-offer-received.png'))
+        # Reading the offered adventure must not land on the unrelated last
+        # transmission or select the first catalogue entry (the Anchor).
+        conversation.locator('[data-dialogue-journal]').focus(); page.keyboard.press('Enter')
+        expect(conversation).to_have_count(0)
+        expect(page.locator('[data-city-terminal-tab="journal"]')).to_have_attribute('aria-selected', 'true')
+        expect(page.locator('[data-city-contract-reader]')).to_have_attribute('data-city-contract-reader', record['missionId'])
+        page.clock.run_for(32)
+        expect(page.locator('.mosaic-contract-reader > h4')).to_be_focused()
+        check(progress(page) == before and page.evaluate('window.__sceneQA.snapshot()') == frozen,
+              'opening the offered page accepted its request or resumed the City')
+        page.screenshot(path=str(out / f'{name}-offer-journal.png'))
+        page.keyboard.press('Escape'); expect(canvas).to_be_focused()
+        page.keyboard.press('e')
+        expect(conversation).to_be_visible()
+        expect(offer).to_be_visible()
+        expect(conversation.locator('h3')).to_be_focused()
+        check(progress(page) == before, 'returning to the resident accepted the unread request')
+        record['offeredJournalPageAndFocus'] = True
         offer.focus(); page.keyboard.press('Enter')
         expect(offer).to_have_count(0)
         expect(conversation.locator('[data-dialogue-return]')).to_be_focused()
@@ -776,6 +911,8 @@ def run_case(page, args, profile, lang, label, out, name, result, entries=None):
     check(result['terminalLayout']['headerLeft'] >= 32 and result['terminalLayout']['bodyLeft'] >= 32,
           'terminal ignored left safe area')
     check(result['terminalLayout']['scrollFocusable'], 'terminal scroll region is not keyboard focusable')
+    if profile['catalog'] == 'nexus' and entries is None:
+        result['terminalNavigation'] = inspect_terminal_navigation(page, out, name)
     options = page.locator('[data-city-contract-select] option')
     check(options.evaluate_all('nodes=>nodes.map(node=>node.value)') == [entry[0] for entry in profile['contracts']],
           'district contracts are missing, reordered or mixed with another source universe')

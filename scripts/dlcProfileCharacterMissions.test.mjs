@@ -28,7 +28,8 @@ async function loadProfile(context, packIds) {
   await writeFile(path.join(directory, adapterPath), result?.code || source);
   await copyFile(path.join(root, 'src/game/mosaicCityRuntime.js'), path.join(directory, 'src/game/mosaicCityRuntime.js'));
   await copyFile(path.join(root, 'src/game/mosaicCharacterFollowups.js'), path.join(directory, 'src/game/mosaicCharacterFollowups.js'));
-  for (const dependency of ['mosaicCharacterStories.js', 'mosaicMissionOperations.js', 'mosaicCityDeliveries.js', 'mosaicMissionCargo.js']) {
+  for (const dependency of ['mosaicCharacterStories.js', 'mosaicMissionOperations.js', 'mosaicCityDeliveries.js',
+    'mosaicMissionCargo.js', 'mosaicCityRoutes.js', 'mosaicMissionWalks.js']) {
     await copyFile(path.join(root, 'src/game', dependency), path.join(directory, 'src/game', dependency));
   }
   for (const pack of missionPacks) {
@@ -67,7 +68,11 @@ test('City contracts follow their installed packs and dormant dossiers resume af
     records: Object.fromEntries(witnesses.map(mission => [mission.id, {
       heroId: mission.heroId, universe: mission.universe, districtId: catalogContext(mission.universe).district.id,
       completedStepIds: mission.steps.slice(0, Math.min(1, mission.steps.findIndex(step => step.type === 'decision'))).map(step => step.id),
-      choiceId: null, completed: false, futureField: { retained: true }
+      choiceId: null, completed: false, futureField: { retained: true },
+      // A later pack revision may own a walked route. Source-only removal must
+      // retain that opaque receipt, without treating it as a playable objective.
+      walkReceipts: { 'future-pack-route': { version: 2, missionId: mission.id,
+        points: [{ id: 'future-threshold', x: 120, y: 240, preserved: true }] } }
     }]))
   };
   let retained = structuredClone(rawProgress);

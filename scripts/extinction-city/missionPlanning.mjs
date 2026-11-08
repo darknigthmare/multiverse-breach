@@ -42,7 +42,7 @@ const SOURCE_FILES = [
   'src/game/mosaicUniversePlaces.js', 'src/game/mosaicCityRuntime.js',
   'src/game/mosaicResidentDialogue.js', 'src/game/mosaicReconnaissance.js', 'src/game/mosaicCharacterMissions.js',
   'src/game/mosaicCharacterStories.js', 'src/game/mosaicMissionOperations.js', 'src/game/mosaicCityDeliveries.js',
-  'src/game/mosaicMissionCargo.js', 'src/game/ocCampaign.js',
+  'src/game/mosaicMissionCargo.js', 'src/game/mosaicCityRoutes.js', 'src/game/mosaicMissionWalks.js', 'src/game/ocCampaign.js',
   'src/game/nexusFieldOperation.js', 'DLC/index.js'
 ];
 
@@ -279,7 +279,8 @@ function selectFamily(character) {
 // happened in the campaign, and resolving one never rewrites the existing campaign ending.
 const NEXUS_PROPOSALS = {
   player_anchor: [
-    { related: 'city-anchor-signature-v1', title: 'Une place dans le faisceau',
+    { related: 'city-anchor-signature-v1', runtime: 'city-anchor-shared-beacon-v1', title: 'Une place dans le faisceau',
+      runtimeScope: 'Lampe distincte portée et installée, puis chemin de retour éprouvé à pied et repère orienté. Le passage autonome du nouvel arrivant reste à développer.',
       premise: 'Prolongement proposé : un nouvel arrivant perd ses repères chaque fois que la balise se cale sur la signature de l’Ancre.', location: 'Nexus — balise de l’Atrium',
       opening: 'Rejoindre le halo qui s’éteint et écouter la personne restée en dehors.',
       action: 'Poser un repère distinct, orienter le faisceau vers le refuge puis parcourir son bord avec l’arrivant volontaire.',
@@ -312,7 +313,8 @@ const NEXUS_PROPOSALS = {
       consequence: 'Le poste continue de répondre pendant une nouvelle coupure du circuit principal.', mechanics: 'Réparation locale, circuit de secours, continuité d’écoute.' }
   ],
   arca_bastion: [
-    { related: 'city-bastion-tenth-route-v1', title: 'La relève du Rempart',
+    { related: 'city-bastion-tenth-route-v1', runtime: 'city-bastion-bulwark-relief-v1', title: 'La relève du Rempart',
+      runtimeScope: 'Deux étais portés et posés, puis voie de service éprouvée à pied. La relève animée de Bastion avec le passage des habitants reste à développer.',
       premise: 'Prolongement proposé : Bastion retient une grille faussée pendant que le matériel du refuge passe dessous.', location: 'Nexus — grille du Rempart',
       opening: 'Rejoindre Bastion sous la grille et caler le battant avant de lui demander de lâcher.',
       action: 'Installer deux étais, dégager la voie restante puis prendre la relève le temps qu’il sorte.',
@@ -328,7 +330,8 @@ const NEXUS_PROPOSALS = {
       consequence: 'La personne rejoint le refuge par un passage réellement tenu ouvert.', mechanics: 'Dégagement, escorte consentie, retour du dernier occupant.' }
   ],
   arca_nova: [
-    { related: 'city-nova-measured-exit-v1', title: 'La fenêtre entre deux battements',
+    { related: 'city-nova-measured-exit-v1', runtime: 'city-nova-present-pulse-v1', title: 'La fenêtre entre deux battements',
+      runtimeScope: 'Sonde posée du côté stable et retour réel par la rue dans « Le battement d’aujourd’hui ». Le raccord reste fermé. La simulation autonome d’une fenêtre de traversée reste à développer.',
       premise: 'Prolongement proposé : un raccord du sol devient praticable entre deux pulsations, mais l’intervalle se raccourcit.', location: 'Nexus — raccord près de l’Observatoire',
       opening: 'Rejoindre Nova au bord du raccord et observer deux pulsations sans s’y engager.',
       action: 'Placer les capteurs de part et d’autre, mesurer la fenêtre actuelle puis choisir entre une traversée limitée et le détour.',
@@ -360,7 +363,8 @@ const NEXUS_PROPOSALS = {
       consequence: 'Les voisins quittent l’accueil séparément ; leur ressemblance ne conditionne plus leur départ.', mechanics: 'Deux parcours, réparation de portes, choix de personne.' }
   ],
   arca_sable: [
-    { related: 'city-sable-signed-map-v1', title: 'Une nuit sans panneaux',
+    { related: 'city-sable-signed-map-v1', runtime: 'city-sable-night-signs-v1', title: 'Une nuit sans panneaux',
+      runtimeScope: 'Signalisation préparée sur place et chemin éprouvé à pied avant son balisage. Le déplacement autonome des marcheurs vers le refuge reste à développer.',
       premise: 'Prolongement proposé : une poussière de Trame recouvre les panneaux du retour et des marcheurs tournent autour du même carrefour.', location: 'Nexus — carrefour et route vers le refuge',
       opening: 'Retrouver Sable au carrefour et suivre les pas qui reviennent sur eux-mêmes.',
       action: 'Dégager les panneaux, marcher jusqu’au refuge puis poser les flèches dans le sens réellement parcouru.',
@@ -775,6 +779,9 @@ function runtimeStep(step) {
     ...(step.operation ? { operation: runtimeOperation(step.operation) } : {}),
     ...(step.cargo ? { cargo: { action: step.cargo.action, id: step.cargo.id,
       label: text(step.cargo.label), appearance: step.cargo.appearance } } : {}),
+    ...(step.walk ? { walk: { points: step.walk.points.map(point => ({
+      id: point.id, x: point.x, y: point.y, label: text(point.label)
+    })) } } : {}),
     ...(Number.isFinite(step.x) && Number.isFinite(step.y) ? { x: step.x, y: step.y } : {}),
     ...Object.fromEntries(['byOriginChoice', 'byChoice'].filter(field => step[field]).map(field => [field,
       Object.fromEntries(Object.entries(step[field]).map(([key, branch]) => [key, runtimeStep(branch)]))])),
@@ -861,7 +868,9 @@ export function buildMissionPlanning(sourceRevision, { includeSourceHashes = tru
       sourceRefs: item.sourceRefs || [],
       systemSourceFiles: ['src/game/mosaicCharacterMissions.js', 'src/game/mosaicMissionOperations.js',
         ...(item.requiresMissionId ? ['src/game/mosaicCharacterFollowups.js'] : []),
-        ...(item.steps.some(step => step.cargo) ? ['src/game/mosaicMissionCargo.js'] : [])],
+        ...(item.steps.some(step => step.cargo) ? ['src/game/mosaicMissionCargo.js'] : []),
+        ...(item.steps.some(step => step.walk || ['byOriginChoice', 'byChoice'].some(field =>
+          Object.values(step[field] || {}).some(branch => branch.walk))) ? ['src/game/mosaicMissionWalks.js', 'src/game/mosaicCityRuntime.js'] : [])],
       chapter: item.chapter || 1, requiresMissionId: item.requiresMissionId || null,
       continuity: text(item.continuity), referenceUrls: item.references || [],
       implementationStatus: 'runtime_contract', browserValidation: 'not_certified_by_catalog',

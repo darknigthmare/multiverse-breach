@@ -1,3 +1,5 @@
+import { getMosaicMissionWalkProgress } from './mosaicMissionWalks.js';
+
 /** Small, local City interventions. Their receipts are produced by the same
  * range-checked interaction as the quest step, never by opening the journal. */
 export const MOSAIC_MISSION_OPERATION_KINDS = Object.freeze(['repair', 'scan', 'recover', 'secure', 'beacon', 'route']);
@@ -19,7 +21,7 @@ export function getMosaicMissionCargoSpec(step) {
   return step?.type === 'marker' && getMosaicMissionOperation(step)
     && ['take', 'deliver'].includes(cargo?.action)
     && typeof cargo.id === 'string' && /^[a-z0-9-]{1,100}$/.test(cargo.id)
-    && bilingual(cargo.label) && ['lamp', 'rotor', 'probe', 'reflector'].includes(cargo.appearance)
+    && bilingual(cargo.label) && ['lamp', 'rotor', 'probe', 'reflector', 'brace'].includes(cargo.appearance)
     ? cargo : null;
 }
 
@@ -30,17 +32,21 @@ export function createMosaicMissionOperationReceipt(mission, step, interaction, 
   const x = target?.x + target?.w / 2, y = target?.y + target?.h / 2;
   if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
   const cargo = getMosaicMissionCargoSpec(step);
+  const walk = step.walk && getMosaicMissionWalkProgress(mission, step, saved);
+  if (step.walk && !walk?.completed) return null;
   return { version: 1, missionId: mission.id, stepId: step.id, universe: mission.universe,
     districtId: mission.districtId, targetId: interaction.id, kind: operation.kind, sequence, x, y,
     originChoiceId: mission.requiresMissionId ? saved.originChoiceId : null,
     originStoryRevision: mission.requiresMissionId ? saved.originStoryRevision || 1 : null,
     branchChoiceId: step.byChoice ? saved.choiceId : null,
-    ...(cargo ? { cargoId: cargo.id, cargoAction: cargo.action } : {}) };
+    ...(cargo ? { cargoId: cargo.id, cargoAction: cargo.action } : {}),
+    ...(walk ? { walkPointIds: walk.points.map(point => point.id) } : {}) };
 }
 
 export function matchesMosaicMissionOperationReceipt(receipt, mission, step, targetId, saved = {}) {
   const operation = getMosaicMissionOperation(step);
   const cargo = getMosaicMissionCargoSpec(step);
+  const walk = step.walk && getMosaicMissionWalkProgress(mission, step, saved);
   return Boolean(operation && receipt?.version === 1 && receipt.missionId === mission.id
     && receipt.stepId === step.id && receipt.universe === mission.universe
     && receipt.districtId === mission.districtId && receipt.targetId === targetId
@@ -50,6 +56,8 @@ export function matchesMosaicMissionOperationReceipt(receipt, mission, step, tar
     && receipt.originStoryRevision === (mission.requiresMissionId ? saved.originStoryRevision || 1 : null)
     && receipt.branchChoiceId === (step.byChoice ? saved.choiceId : null)
     && (!step.cargo || cargo && receipt.cargoId === cargo.id && receipt.cargoAction === cargo.action)
+    && (!step.walk || walk?.completed && Array.isArray(receipt.walkPointIds)
+      && receipt.walkPointIds.length === walk.points.length && receipt.walkPointIds.every((id, index) => id === walk.points[index].id))
     // A catalogue search can move a display to another slot. Its stable item
     // identity still owns the intervention; authored field markers cannot move.
     && (step.type !== 'marker' || (receipt.x === step.x && receipt.y === step.y)));
@@ -68,7 +76,7 @@ export function getMosaicMissionObjectView(operation, { lang = 'fr', completed =
   return { kind: operation.kind, label: localize(operation.label, lang), propName: localize(operation.propName, lang),
     statusLabel: completed ? localize(STATE_LABELS[operation.kind], lang) : localize(operation.label, lang),
     completedText: localize(operation.completedText, lang), completed,
-    ...(['lamp', 'pump', 'rotor', 'probe', 'reflector'].includes(operation.appearance) ? { appearance: operation.appearance } : {}) };
+    ...(['lamp', 'pump', 'rotor', 'probe', 'reflector', 'brace'].includes(operation.appearance) ? { appearance: operation.appearance } : {}) };
 }
 
 function linesWithin(ctx, text, width) {
@@ -194,6 +202,13 @@ export function drawMosaicMissionObjectProp(ctx, object, tick, nearby = false, r
     ctx.fillStyle = '#0a1721'; ctx.fillRect(-24, 15, 48, 9);
     ctx.fillStyle = light;
     for (let i = 0; i < (done ? 4 : 1); i++) ctx.fillRect(-19 + i * 11, 18, 7, 3);
+  } else if (object.appearance === 'brace') {
+    ctx.fillRect(-20, 10, 40, 8); ctx.strokeRect(-20, 10, 40, 8);
+    ctx.fillRect(-5, -31, 10, 41); ctx.strokeRect(-5, -31, 10, 41);
+    ctx.fillRect(-19, -37, 38, 7); ctx.strokeRect(-19, -37, 38, 7);
+    ctx.strokeStyle = light;
+    ctx.beginPath(); ctx.moveTo(-13, 8); ctx.lineTo(7, -19); ctx.stroke();
+    ctx.fillStyle = done ? '#86efac' : '#d7ad63'; ctx.fillRect(-9, -4, 18, 5);
   } else if (object.appearance === 'lamp') {
     const lit = done || object.powered;
     ctx.fillRect(-13, -22, 26, 33); ctx.strokeRect(-13, -22, 26, 33);

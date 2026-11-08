@@ -5,10 +5,10 @@ import './MosaicCharacterMissions.css';
 
 const WIDE_JOURNAL = '(min-width: 960px)';
 
-export default function MosaicCharacterMissions({ missions, progress, heroes, lang, onAccept, onApproach, onResolve, onReplay }) {
+export default function MosaicCharacterMissions({ missions, progress, heroes, lang, initialMissionId, onAccept, onApproach, onResolve, onReplay }) {
   const fr = lang === 'fr';
   const uid = useId();
-  const [selectedId, setSelectedId] = useState(progress.activeId || progress.lastMissionId || '');
+  const [selectedId, setSelectedId] = useState(initialMissionId || progress.activeId || progress.lastMissionId || '');
   const [feedback, setFeedback] = useState('');
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState('all');

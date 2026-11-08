@@ -81,6 +81,7 @@ def residents(page, args, width, height, lang, out, name):
     for identity in ['torbahead_community_remix_curator','bioshock_rapture_tenenbaum','arca_bastion']:
         if not page.get_by_role('dialog').count():
             page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
+        page.locator('[data-city-terminal-tab="district"]').click()
         directory=page.locator('.mosaic-resident-directory')
         if not directory.evaluate('e=>e.open'):directory.locator('summary').click()
         search=page.get_by_label('Rechercher un habitant' if fr else 'Find a resident',exact=True)
@@ -142,9 +143,11 @@ def residents(page, args, width, height, lang, out, name):
             expect(page.get_by_role('dialog')).to_have_count(1)
             check(before==page.evaluate('window.__sceneQA.snapshot()'),'opening the journal resumed the City or changed its progress')
             conversations.append(identity)
+        page.locator('[data-city-terminal-tab="transmissions"]').click()
         log=page.locator('.mosaic-rpg-log span').inner_text()
         check(log==expected_log if exact_log else log.startswith(expected_log),
               f'resident not reached through normal movement or request differs from the encounter: {identity}: {log}')
+        page.locator('[data-city-terminal-tab="district"]').click()
         directory=page.locator('.mosaic-resident-directory')
         if not directory.evaluate('e=>e.open'):directory.locator('summary').click()
         search=page.get_by_label('Rechercher un habitant' if fr else 'Find a resident',exact=True)

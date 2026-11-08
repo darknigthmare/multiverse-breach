@@ -11,7 +11,13 @@ export default function ImmersiveDrawer({ open, title, onClose, children, lang =
   useModalDialog({ open, overlayRef, dialogRef, initialFocusRef: closeRef, onClose });
   if (!open) return null;
   return createPortal(
-    <div ref={overlayRef} className={`immersive-drawer-backdrop ${className}`} onPointerDown={event => { if (event.target === event.currentTarget) onClose(); }}>
+    <div ref={overlayRef} className={`immersive-drawer-backdrop ${className}`} onPointerDown={event => {
+      if (event.target === event.currentTarget) {
+        // Preserve the restored trigger focus through the compatible mousedown.
+        event.preventDefault();
+        onClose();
+      }
+    }}>
       <section ref={dialogRef} className="immersive-drawer" role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}>
         <header><h2 id={titleId}>{title}</h2><button ref={closeRef} type="button" className="btn-retro" onClick={onClose}>{lang === 'fr' ? 'FERMER' : 'CLOSE'} ×</button></header>
         <div className="immersive-drawer-content" role={scrollLabel ? 'region' : undefined}

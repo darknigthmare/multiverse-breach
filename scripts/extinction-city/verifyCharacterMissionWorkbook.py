@@ -18,6 +18,12 @@ DESIGN_LABELS = {'individual_proposal': 'Proposition individualisée',
 CITY_PRESENTATION_SOURCES = {'src/components/HubScreen.jsx', 'src/game/mosaicMissionOperations.js',
                              'src/game/mosaicMissionCargo.js', 'src/game/renderer.js', 'src/game/spriteAssets.js',
                              'src/game/immersiveHubState.js', 'src/components/useSceneViewport.js'}
+FPS_PRESENTATION_SOURCES = {'src/components/HubScreen.jsx', 'src/game/extinctionAimReadout.js',
+                            'src/game/extinctionSignatures.js', 'src/game/extinctionFieldDirectives.js',
+                            'src/components/ExtinctionPrimaryAction.jsx', 'src/components/ExtinctionAimReadout.css'}
+CITY_ROUTE_PRESENTATION_SOURCES = {'src/game/mosaicMissionWalks.js', 'src/components/MosaicPocketTerminal.jsx',
+                                    'src/components/MosaicPocketTerminal.css', 'src/components/MosaicCharacterMissions.jsx',
+                                    'src/components/ImmersiveDrawer.jsx'}
 
 
 def require(condition, message):
@@ -38,7 +44,10 @@ def verify_provenance(workbook, data, receipt_path, repo):
     require(receipt.get('planningSourceManifestSha256') == hashlib.sha256(manifest_bytes).hexdigest(),
             'Planning source manifest differs from the workbook provenance')
     groups = {}
-    for group in ['runtimeSources', 'fieldEquipmentSources', 'cityPresentationSources']:
+    group_names = ['runtimeSources', 'fieldEquipmentSources', 'cityPresentationSources']
+    if receipt['schema'] >= 7:
+        group_names.append('fpsPresentationSources')
+    for group in group_names:
         records = receipt.get(group)
         require(isinstance(records, list) and records, f'Missing source provenance group: {group}')
         names = []
@@ -56,6 +65,10 @@ def verify_provenance(workbook, data, receipt_path, repo):
         require(len(names) == len(set(names)), f'Duplicate sources in {group}')
         if group == 'cityPresentationSources':
             require(CITY_PRESENTATION_SOURCES <= set(names), 'Incomplete City presentation geometry provenance')
+            if receipt['schema'] >= 7:
+                require(CITY_ROUTE_PRESENTATION_SOURCES <= set(names), 'Incomplete walked-route and pocket-terminal presentation provenance')
+        if group == 'fpsPresentationSources':
+            require(FPS_PRESENTATION_SOURCES <= set(names), 'Incomplete FPS aim presentation provenance')
         groups[group] = len(names)
     return {'receiptSha256': hashlib.sha256(raw).hexdigest(), 'groups': groups,
             'workbookHashVerified': True, 'planningProvenanceVerified': True, 'sourceHashesVerified': True}
@@ -189,6 +202,7 @@ def main():
             for source in ['src/game/extinctionFieldEquipment.js', 'src/game/extinctionFighterProfiles.js', 'src/components/HubScreen.jsx']:
                 require(source in sheets[5][1][f'I{row}'], f'Field equipment source missing in mode row {row}: {source}')
         inherited_routes = decision_routes = chapter_two = chapter_three = operation_variants = cargo_transfers = npc_returns = 0
+        walked_routes = walk_points = 0
         cargo_ids = set()
         for row, mission in enumerate(data['runtimeMissions'], 7):
             cells = sheets[2][1]
@@ -221,7 +235,7 @@ def main():
                         f'Conclusion missing: {context}/{choice["id"]}')
             require('Décision :' in cells[f'F{row}'], f'Choice is not distinguished from physical action: {context}')
             def check_intervention(step, column):
-                nonlocal operation_variants
+                nonlocal operation_variants, walked_routes, walk_points
                 operation = step.get('operation')
                 if not operation:
                     return
@@ -230,6 +244,28 @@ def main():
                     require(operation[field] in cells[f'{column}{row}'],
                             f'Visible intervention {field} missing: {context}/{step.get("id", "branch")}')
                 require('Après le geste :' in cells[f'{column}{row}'], f'Intervention completion condition missing: {context}')
+                if step.get('walk'):
+                    walked_routes += 1
+                    points = step['walk']['points']
+                    require(2 <= len(points) <= 6 and len({point['id'] for point in points}) == len(points),
+                            f'Invalid ordered walk points: {context}')
+                    require(points[-1]['x'] == step['x'] and points[-1]['y'] == step['y'],
+                            f'Walk does not end at its interaction: {context}')
+                    cursor = -1
+                    for index, point in enumerate(points, 1):
+                        expected = f'{index}. {point["label"]} [{point["id"]}] (x={point["x"]}, y={point["y"]})'
+                        position = cells[f'{column}{row}'].find(expected, cursor + 1)
+                        require(position > cursor, f'Walk point absent or out of order: {context}/{point["id"]}')
+                        cursor = position
+                        walk_points += 1
+                    require('Interaction requise au dernier point après le trajet.' in cells[f'{column}{row}'],
+                            f'Walk arrival mistaken for final interaction: {context}')
+                    for expected in ['déplacement réel', 'ordre des points', 'sauvegardée entre quartiers',
+                                     'un menu', 'un clic à distance', 'une téléportation', 'interaction sur place']:
+                        require(expected in cells[f'I{row}'], f'Walk scope missing: {context}/{expected}')
+                    for source in ['src/game/mosaicMissionWalks.js', 'src/game/mosaicCityRuntime.js']:
+                        require(source in mission['systemSourceFiles'] and source in cells[f'J{row}'],
+                                f'Walk runtime source missing: {context}/{source}')
             for step in mission['steps']:
                 if not step.get('byOriginChoice') and not step.get('byChoice'):
                     require(step['text'] in cells[f'E{row}'], f'Concrete objective missing: {context}/{step["id"]}')
@@ -259,7 +295,8 @@ def main():
                 require(f'DLC {mission["universe"]} installé' in cells[f'G{row}'], 'Contract access lost its DLC requirement')
             if any(step.get('cargo') for step in mission['steps']):
                 closing = mission['steps'][-1]
-                require(closing['type'] == 'npc' and closing['targetId'] == mission['characterId'], f'Cargo story does not return to its resident: {context}')
+                recipient = 'arca_mirelle' if mission['characterId'] == 'player_anchor' else mission['characterId']
+                require(closing['type'] == 'npc' and closing['targetId'] == recipient, f'Cargo story does not return to its resident: {context}')
                 require(closing['dialogue'] in cells[f'E{row}'], f'Resident closing response missing: {context}')
                 require('Clôture auprès de' in cells[f'I{row}'] and closing['targetId'] in cells[f'I{row}'],
                         f'Resident closure described incorrectly: {context}')
@@ -282,6 +319,8 @@ def main():
                         'Native contract table/filter excludes added contracts')
         formula_count = sum(len(formulas) for _, _, formulas in sheets)
         preserved_sheets = []
+        preserved_contracts = None
+        changed_mode_cells = None
         if args.baseline:
             with ZipFile(args.baseline) as baseline:
                 original_styles = ET.fromstring(baseline.read('xl/styles.xml'))
@@ -289,6 +328,17 @@ def main():
                 original_strings = [''.join(part.text or '' for part in item.findall('.//m:t', NS))
                                     for item in ET.fromstring(baseline.read('xl/sharedStrings.xml'))]
                 original_summary = read_sheet(baseline, 'xl/worksheets/sheet1.xml', original_strings)
+                original_contract_count = int(float(original_summary[1]['B12']))
+                original_contracts = read_sheet(baseline, 'xl/worksheets/sheet3.xml', original_strings)
+                for row in range(7, original_contract_count + 7):
+                    for column in 'ABCDEFGHIJ':
+                        ref = f'{column}{row}'
+                        require(sheets[2][1].get(ref, '') == original_contracts[1].get(ref, ''),
+                                f'Previously playable contract changed: {ref}')
+                        require(sheets[2][2].get(ref, '') == original_contracts[2].get(ref, ''),
+                                f'Previously playable contract formula changed: {ref}')
+                preserved_contracts = original_contract_count
+                changed_mode_cells = []
                 changed_summary = {'B12', 'B18'}
                 require({key: value for key, value in summary.items() if key not in changed_summary} ==
                         {key: value for key, value in original_summary[1].items() if key not in changed_summary},
@@ -307,6 +357,8 @@ def main():
                                 require(sheets[1][1].get(ref, '') == original[1].get(ref, ''), f'Existing manual tracking changed: {ref}')
                     if index == 6:
                         allowed_cells.update(f'{column}{row}' for row in range(7, 11) for column in 'FI')
+                        changed_mode_cells = sorted(ref for ref in allowed_cells
+                                                    if sheets[index - 1][1].get(ref, '') != original[1].get(ref, ''))
                     require({key: value for key, value in sheets[index - 1][1].items() if key not in allowed_cells} ==
                             {key: value for key, value in original[1].items() if key not in allowed_cells},
                             f'Unrelated values changed in {names[index - 1]}')
@@ -337,7 +389,7 @@ def main():
                         require(before.get('r') == after.get('r'), f'Unrelated cell layout changed in {names[index - 1]}')
                         require(style_signature(original_styles, before.get('s')) == style_signature(current_styles, after.get('s')),
                                 f'Unrelated cell style changed in {names[index - 1]}!{before.get("r")}')
-                    if index in [4, 5]:
+                    if index in [4, 5] or (index == 6 and not changed_mode_cells):
                         preserved_sheets.append(names[index - 1])
                 original_tables = {ET.fromstring(baseline.read(name)).get('name'): ET.tostring(ET.fromstring(baseline.read(name)))
                                    for name in table_files}
@@ -353,16 +405,19 @@ def main():
                'integratedCityContracts': contract_count, 'fpsModes': 4, 'nativeTables': 5, 'dropdownRanges': 5,
                'chapterTwoContracts': chapter_two, 'inheritedRoutes': inherited_routes, 'decisionRoutes': decision_routes,
                'chapterThreeContracts': chapter_three, 'cargoTransfersChecked': cargo_transfers, 'cargoIds': sorted(cargo_ids), 'residentClosuresChecked': npc_returns,
+               'walkedRoutesChecked': walked_routes, 'walkPointsChecked': walk_points,
+               'preservedRuntimeContracts': preserved_contracts,
                'operationVariantsChecked': operation_variants, 'authoredNexusProposals': len(nexus_rows),
                'runtimeLinkedProposals': len(linked_nexus_rows), 'preservedUnlinkedNexusProposals': len(nexus_rows) - len(linked_nexus_rows),
                'proposalsRequiringDiegeticRewrite': sum(mission['designKind'] != 'individual_proposal' for mission in data['missions']),
                'preservedTrackingColumns': ['M', 'N', 'O', 'P', 'Q', 'S', 'T', 'U'] if args.baseline else [],
                'preservedSheets': preserved_sheets,
                'formulasInspected': formula_count, 'coverage': 'exact one universe and one Multiverse proposal per source identity',
-               'changedModeCells': [f'{column}{row}' for row in range(7, 11) for column in 'FI'],
-               'status': 'passed', 'scope': 'Read-only OpenXML identities, personal requests, locations, runtime prerequisites, branch interventions and effects, explicit Nexus adaptation links, future design intentions, field-equipment commands, generic rewrite flags, cached totals, formulas, filters, panes, validation, manual tracking and unchanged-sheet styles; not a native Excel execution.'}
+               'changedModeCells': changed_mode_cells,
+               'modeCommandAndSourceCellsChecked': [f'{column}{row}' for row in range(7, 11) for column in 'FI'],
+               'status': 'passed', 'scope': 'Read-only OpenXML identities, personal requests, locations, runtime prerequisites, branch interventions and effects, ordered walked routes, explicit Nexus adaptation links, future design intentions, field-equipment commands, generic rewrite flags, cached totals, formulas, filters, panes, validation, manual tracking and unchanged-sheet styles; not a native Excel execution.'}
     if provenance:
-        receipt['schema'] = 6
+        receipt['schema'] = 7 if 'fpsPresentationSources' in provenance['groups'] else 6
         receipt['sourceProvenance'] = provenance
         receipt['scope'] += ' External workbook, planning and runtime/FPS/City-presentation source hashes verified against the checked-out files.'
     if args.receipt:

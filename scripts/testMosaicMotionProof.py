@@ -1,4 +1,6 @@
 import copy
+import ast
+from pathlib import Path
 import unittest
 
 from mosaicMotionProof import validate_mosaic_motion
@@ -94,6 +96,77 @@ class MotionProofTests(unittest.TestCase):
                     proof[key][0]['x'] += 10
                 with self.assertRaises(AssertionError):
                     validate_mosaic_motion(proof, nearby_target=self.target)
+
+
+class WalkReceiptProofTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # Execute the exact browser verifier without importing Playwright or
+        # starting a browser. These tests challenge evidence, not game state.
+        source = Path(__file__).with_name('browserMosaicCharacterMissions.py').read_text()
+        function = next(node for node in ast.parse(source).body
+                        if isinstance(node, ast.FunctionDef) and node.name == 'verify_walk_receipt')
+        def check(condition, message):
+            if not condition:
+                raise AssertionError(message)
+        namespace = {'check': check}
+        exec(compile(ast.Module(body=[function], type_ignores=[]), '<native-walk-verifier>', 'exec'), namespace)
+        cls.verify = staticmethod(namespace['verify_walk_receipt'])
+
+    def setUp(self):
+        points = [{'id': 'departure', 'x': 100, 'y': 100}, {'id': 'return', 'x': 300, 'y': 100}]
+        self.definition = {'missionId': 'walk-mission', 'stepId': 'walk', 'districtId': 'nexus', 'universe': 'Nexus',
+                           'originChoiceId': 'origin', 'originStoryRevision': 2, 'branchChoiceId': 'apply', 'walk': {'points': points}}
+        start = {'t': 0, 'x': 98, 'y': 100, 'speed': 2.35}
+        samples = [{'t': index, 'x': 98 + index * 2, 'y': 100, 'speed': 2.35} for index in range(1, 102)]
+        self.proof = {'clickBefore': start, 'clickAfter': dict(start), 'samples': samples}
+        earned = [{**point, 'from': {'x': point['x'] - 2, 'y': point['y']},
+                   'to': {'x': point['x'], 'y': point['y']}, 'elapsedMs': 1000 / 60, 'speed': 2.35, 'distance': 2}
+                  for point in points]
+        receipt = {key: value for key, value in self.definition.items() if key != 'walk'}
+        receipt.update(version=1, points=earned)
+        self.after = {'records': {'walk-mission': {'walkReceipts': {'walk': receipt},
+                      'operationReceipts': {'walk': {'walkPointIds': ['departure', 'return']}}}}}
+
+    def test_native_frames_confirm_each_ordered_checkpoint_and_its_final_operation(self):
+        self.assertTrue(validate_mosaic_motion(self.proof)['everySampleWithinSpeedBudget'])
+        result = self.verify(self.definition, self.after, self.proof)
+        self.assertEqual(result['orderedPlaces'], 2)
+        self.assertEqual([item['sampleIndex'] for item in result['matchedNativeFrames']], [1, 101])
+
+    def test_saved_coordinates_cannot_replace_missing_movement_frames(self):
+        for mutate in ['missing', 'same-time', 'wrong-from', 'wrong-speed']:
+            with self.subTest(mutate=mutate):
+                proof = copy.deepcopy(self.proof)
+                if mutate == 'missing':
+                    proof['samples'].pop(0)
+                elif mutate == 'same-time':
+                    proof['samples'][0]['t'] = 0
+                elif mutate == 'wrong-from':
+                    proof['clickAfter']['x'] = 95
+                else:
+                    proof['samples'][0]['speed'] = 8
+                with self.assertRaisesRegex(AssertionError, 'matching native movement'):
+                    self.verify(self.definition, self.after, proof)
+
+    def test_foreign_skipped_or_reordered_waypoints_cannot_certify_a_route(self):
+        for mutate in ['identity', 'skip', 'order', 'teleport', 'end']:
+            with self.subTest(mutate=mutate):
+                after = copy.deepcopy(self.after)
+                saved = after['records']['walk-mission']
+                receipt = saved['walkReceipts']['walk']
+                if mutate == 'identity':
+                    receipt['branchChoiceId'] = 'hold'
+                elif mutate == 'skip':
+                    receipt['points'].pop()
+                elif mutate == 'order':
+                    receipt['points'].reverse()
+                elif mutate == 'teleport':
+                    receipt['points'][0]['distance'] = 200
+                else:
+                    saved['operationReceipts']['walk']['walkPointIds'] = ['return', 'departure']
+                with self.assertRaises(AssertionError):
+                    self.verify(self.definition, after, self.proof)
 
 
 if __name__ == '__main__':

@@ -47,7 +47,7 @@ def load(page, args, lang):
 
 
 def media_capture(context):
-    context.add_init_script('''window.__fpsCatalogDraws=[];window.__fpsSchematicStrokes=[];
+    context.add_init_script('''window.__fpsCatalogDraws=[];window.__fpsSchematicStrokes=[];window.__fpsAimStrokes=[];
       const nativeTimeout=setTimeout.bind(window),nativeClear=clearTimeout.bind(window);
       window.__fpsAfterNativeLayout=()=>new Promise((resolve,reject)=>{
         const roots=[...document.querySelectorAll('.fps-royale-canvas,.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-stowed-readout,.extinction-objective-strip')];
@@ -78,6 +78,12 @@ def media_capture(context):
           for(let i=0;i<=32;i++){const a=start+length*i/32;point(this,x+Math.cos(a)*r,y+Math.sin(a)*r);}}
         return arc.call(this,x,y,r,start,end,ccw);};
       const stroke=proto.stroke;proto.stroke=function(...args){
+        if(this.canvas.classList.contains('fps-royale-canvas')&&String(this.strokeStyle).replace(/\\s/g,'')==='rgba(225,246,255,0.66)'){
+          const points=paths.get(this)||[],m=this.getTransform(),pad=this.lineWidth*Math.max(Math.abs(m.a),Math.abs(m.d))/2;
+          if(points.length)window.__fpsAimStrokes.push({at:performance.now(),cw:this.canvas.width,ch:this.canvas.height,
+            left:Math.min(...points.map(p=>p.x))-pad,top:Math.min(...points.map(p=>p.y))-pad,
+            right:Math.max(...points.map(p=>p.x))+pad,bottom:Math.max(...points.map(p=>p.y))+pad});
+          if(window.__fpsAimStrokes.length>400)window.__fpsAimStrokes.splice(0,200);}
         if(this.canvas.classList.contains('fps-royale-canvas')&&String(this.strokeStyle).replace(/\\s/g,'')==='rgba(225,246,255,0.65)'){
           const points=paths.get(this)||[],m=this.getTransform(),pad=this.lineWidth*Math.max(Math.abs(m.a),Math.abs(m.d))/2;
           if(points.length)window.__fpsSchematicStrokes.push({at:performance.now(),cw:this.canvas.width,ch:this.canvas.height,
@@ -112,6 +118,15 @@ def view_geometry(page, source, out, name):
       const hud=[...document.querySelectorAll('.extinction-hud-dock .nexus-play-stats,.extinction-hud-dock .nexus-play-actions,.extinction-stowed-readout,.extinction-objective-strip')]
         .filter(el=>el.getClientRects().length).map(el=>({kind:el.className,...rect(el)}));
       const reticle=local({left:canvas.width/2-18,top:canvas.height/2-18,right:canvas.width/2+18,bottom:canvas.height/2+18});
+      const aimStrokes=window.__fpsAimStrokes.filter(d=>d.cw===canvas.width&&d.ch===canvas.height),aimAt=aimStrokes.at(-1)?.at;
+      const latestAim=aimStrokes.filter(d=>d.at===aimAt),aimBounds=union(latestAim);
+      const primary=document.querySelector('[data-primary-action]'),hint=primary?.querySelector('[data-fps-aim-hint]');
+      const current=window.__sceneQA.state();
+      const aimReadout=primary?{kind:primary.dataset.fpsAimKind,source:primary.dataset.fpsAimSource,
+        state:primary.dataset.fpsAimState,target:primary.dataset.fpsAimTarget||null,command:primary.querySelector('span').innerText,
+        hint:hint?.innerText,accessibleName:primary.getAttribute('aria-label'),title:primary.title,
+        expectedKind:current.weapon.type==='pistol'?current.protocols.profile.actions.simple.kind:current.weapon.type,
+        expectedSource:current.weapon.type==='pistol'?'personal':'pickup',button:rect(primary)}:null;
       const radar=window.__sceneQA.hudLayout().fpsRadar;
       const radarBox=local({left:radar.x-radar.radius,top:radar.y-radar.radius,right:radar.x+radar.radius,bottom:radar.y+radar.radius});
       const overlap=(a,b)=>a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;
@@ -129,6 +144,7 @@ def view_geometry(page, source, out, name):
         canvas:rect(canvas),canvasWidth:canvas.width,canvasHeight:canvas.height,
         placement:placement?{region:placement.region,...local({left:placement.x,top:placement.y,right:placement.x+placement.w,bottom:placement.y+placement.h})}:null,
         reserved:layout?{width:layout.width,height:layout.height,safeArea:layout.safeArea}:null,hud,reticle,radar:radarBox,
+        aimReadout,aimDrawing:aimBounds?local(aimBounds):null,aimSamples:latestAim.length,aimDrawnAt:aimAt??null,
         viewOverlaps:view?[...hud,reticle,radarBox].filter(b=>overlap(view,b)):[],hudReticleOverlaps:hud.filter(b=>overlap(reticle,b)),
         minButtonWidth:Math.min(...buttons.map(b=>b.width)),minButtonHeight:Math.min(...buttons.map(b=>b.height)),buttons,
         intelButton:rect(document.querySelector('.extinction-intel-button')),directiveTypography,
@@ -155,6 +171,16 @@ def view_geometry(page, source, out, name):
     if c['width'] >= 600 and c['height'] <= 500:
         check(geometry['intelButton']['width'] >= 43.5 and geometry['intelButton']['height'] >= 43.5, 'compact directive opener shrunk below its usable size')
     check(not geometry['hudReticleOverlaps'], 'HUD controls cover the central reticle')
+    aim_drawing = geometry['aimDrawing']; reticle = geometry['reticle']; aim_readout = geometry['aimReadout']
+    check(aim_drawing and geometry['aimSamples'] > 0, 'no actual action-specific reticle painted')
+    check(aim_drawing['left'] >= reticle['left'] and aim_drawing['right'] <= reticle['right']
+          and aim_drawing['top'] >= reticle['top'] and aim_drawing['bottom'] <= reticle['bottom'], 'actual reticle escaped its reserved area')
+    check(aim_readout and aim_readout['kind'] == aim_readout['expectedKind'] and aim_readout['source'] == aim_readout['expectedSource'],
+          'primary feedback does not follow the held kit or pickup')
+    check(aim_readout['command'] and aim_readout['hint'] and aim_readout['accessibleName'] and aim_readout['title'],
+          'primary feedback lost its visible command, hint or complete accessible description')
+    if aim_readout['kind'] in ['dash', 'teleport']:
+        check(aim_readout['command'] in ['BOUGER', 'MOVE'], 'movement is still presented as gunfire')
     typography = geometry['directiveTypography']
     if typography:
         check(min(typography[key] for key in ['headingFontSize', 'titleFontSize', 'countFontSize']) >= typography['minimumFontSize'] - .05,
@@ -294,6 +320,7 @@ def profile_case(page, identity, lang, args, out, name):
     # the canvas so they exercise the scene's pause guard, not QA's pause toggle.
     canvas = page.locator('.fps-royale-canvas')
     canvas.focus(); expect(canvas).to_be_focused()
+    expect(page.locator('[data-primary-action]')).to_have_attribute('data-fps-aim-state', 'paused')
     expect(page.locator('.extinction-intel-button')).to_be_disabled()
     frozen = read(page)
     check(frozen['phase'] == 'running', 'pause must preserve an active run')
@@ -304,6 +331,7 @@ def profile_case(page, identity, lang, args, out, name):
     check(read(page) == frozen, 'pause accepted input or progressed the source kit')
     page.locator('#qa-pause').click()
     expect(page.locator('.extinction-intel-button')).to_be_enabled()
+    expect(page.locator('[data-primary-action]')).not_to_have_attribute('data-fps-aim-state', 'paused')
     canvas.focus(); page.clock.run_for(32)
     draws = page.evaluate('window.__fpsCatalogDraws')
     if expected_src and args.require_art:
@@ -792,7 +820,8 @@ def main():
     out = Path(args.evidence); out.mkdir(parents=True, exist_ok=True); results = []; reference = {}
     profiles = [('arca_mirelle', 1280, 900, 'fr'), ('masterchief', 1280, 900, 'en'), ('predator', 1280, 900, 'fr'),
                 ('doomslayer', 1280, 900, 'en'), ('lilo_pelekai', 390, 844, 'fr'), ('long_horse', 390, 844, 'en'),
-                ('serj_tankian', 390, 844, 'en'), ('arthur_kaamelott', 1280, 900, 'fr')]
+                ('serj_tankian', 390, 844, 'en'), ('arthur_kaamelott', 1280, 900, 'fr'),
+                ('hw_wheelchair_guy', 844, 390, 'fr')]
     # Fail a cramped layout quickly, before spending time on full mode replays.
     cases = [('layout', 'pickup-hunt', 844, 390, 'en', 0)]
     # Same fixed extraction seed and ordinary acquisition route as the full

@@ -29,7 +29,12 @@ const fieldEquipmentSourceFiles = ['src/game/extinctionFieldEquipment.js', 'src/
 // Presentation provenance stays in the receipt, without changing planning cells.
 const cityPresentationSourceFiles = ['src/components/HubScreen.jsx', 'src/game/mosaicMissionOperations.js',
   'src/game/mosaicMissionCargo.js', 'src/game/renderer.js', 'src/game/spriteAssets.js',
-  'src/game/immersiveHubState.js', 'src/components/useSceneViewport.js'];
+  'src/game/immersiveHubState.js', 'src/components/useSceneViewport.js', 'src/game/mosaicMissionWalks.js',
+  'src/components/MosaicPocketTerminal.jsx', 'src/components/MosaicPocketTerminal.css',
+  'src/components/MosaicCharacterMissions.jsx', 'src/components/ImmersiveDrawer.jsx'];
+const fpsPresentationSourceFiles = ['src/components/HubScreen.jsx', 'src/game/extinctionAimReadout.js',
+  'src/game/extinctionSignatures.js', 'src/game/extinctionFieldDirectives.js',
+  'src/components/ExtinctionPrimaryAction.jsx', 'src/components/ExtinctionAimReadout.css'];
 if (existingPath) {
   await refreshRuntimeContracts(path.resolve(existingPath));
   process.exit(0);
@@ -321,11 +326,16 @@ function runtimeContractRows(missions, names) {
       operation ? `Après le geste : ${txt(operation.completedText)}` : '',
       step.finding && txt(step.finding) !== txt(operation?.completedText) ? `Constat : ${txt(step.finding)}` : '',
       step.cargo ? `Transport [${step.cargo.action}] — ${txt(step.cargo.label)} [${step.cargo.id}] (${step.cargo.appearance}).` : '',
+      step.walk ? `Parcours à pied, dans cet ordre : ${step.walk.points.map((point, index) =>
+        `${index + 1}. ${txt(point.label)} [${point.id}] (x=${point.x}, y=${point.y})`).join(' ; ')}. Interaction requise au dernier point après le trajet.` : '',
       compact && step.dialogue ? `Réponse : « ${txt(step.dialogue)} »` : ''
     ].filter(Boolean).join(compact ? ' · ' : '\n');
   };
   return missions.map(mission => {
     const hasCargo = mission.steps.some(step => step.cargo);
+    const hasWalk = mission.steps.some(step => step.walk || ['byOriginChoice', 'byChoice'].some(field =>
+      Object.values(step[field] || {}).some(branch => branch.walk)));
+    const compact = hasCargo || hasWalk;
     const previous = mission.requiresMissionId ? byId.get(mission.requiresMissionId) : null;
     assert.ok(!mission.requiresMissionId || previous, `Missing prerequisite: ${mission.id}`);
     const inheritedChoices = new Map((previous?.steps.find(step => step.type === 'decision')?.choices || [])
@@ -335,11 +345,11 @@ function runtimeContractRows(missions, names) {
         `${index + 1}. Trajet selon le choix du chapitre ${previous.chapter || 1} :`,
         ...Object.entries(step.byOriginChoice).map(([id, route]) => {
           assert.ok(inheritedChoices.has(id), `Unknown inherited choice: ${mission.id}/${id}`);
-          return `${txt(inheritedChoices.get(id).label)} [${id}]\n${intervention(route, '', hasCargo)}`;
+          return `${txt(inheritedChoices.get(id).label)} [${id}]\n${intervention(route, '', compact)}`;
         })
       ].join('\n');
       if (step.byChoice) return `${index + 1}. Accomplir l’intervention choisie sur place ; les deux gestes et leurs effets sont détaillés en « Conclusions possibles ».`;
-      return intervention(step, `${index + 1}. `, hasCargo);
+      return intervention(step, `${index + 1}. `, compact);
     }).join('\n');
     const conclusions = mission.steps.find(step => step.type === 'decision').choices.filter(item => item.valid)
       .map(item => [
@@ -348,7 +358,7 @@ function runtimeContractRows(missions, names) {
           if (!step.byChoice) return [];
           const route = step.byChoice[item.id];
           assert.ok(route, `Missing decision route: ${mission.id}/${item.id}`);
-          return [intervention(route, `${index + 1}. À accomplir : `, hasCargo)];
+          return [intervention(route, `${index + 1}. À accomplir : `, compact)];
         })
       ].join('\n')).join('\n\n');
     const characterId = mission.heroId || mission.characterId;
@@ -366,6 +376,7 @@ function runtimeContractRows(missions, names) {
       'Définition runtime intégrée. Les tests automatisés et la recette navigateur sont suivis séparément dans la PR ; ce classeur ne certifie pas leur résultat.',
       [`Progression, choix${previous ? ' et choix hérité' : ''} sauvegardés. L’accessoire change d’état après le geste physique ; le choix seul ne répare rien. L’historique déjà joué est conservé. Aucune monnaie ni arme attribuée.`,
         hasCargo ? 'Un seul objet de quête porté ; prise et dépôt exigent le bon lieu et le bon objet. Le transport persiste dans la progression entre quartiers et reprises, sans entrer dans l’inventaire de combat.' : '',
+        hasWalk ? 'Parcours attesté par le déplacement réel dans l’ordre des points de la branche. Sa progression est sauvegardée entre quartiers et reprises ; un menu, un clic à distance ou une téléportation ne l’accomplit pas. Le dernier point exige encore une interaction sur place.' : '',
         closingStep.type === 'npc' ? `Clôture auprès de ${names.get(closingStep.targetId)?.name || closingStep.targetId} [${closingStep.targetId}], par interaction avec le personnage.` : ''
       ].filter(Boolean).join('\n'),
       [...new Set([mission.contentFile || mission.sourceFile || 'src/game/mosaicCharacterMissions.js',
@@ -422,11 +433,14 @@ async function refreshRuntimeContracts(inputPath) {
   const originalProposalFormulas = structuredClone(proposalRange.formulas);
   const modes = workbook.worksheets.getItem('Modes FPS');
   const modeRange = modes.getRange('A1:I10');
-  const expectedModeValues = structuredClone(modeRange.values);
+  const originalModeValues = structuredClone(modeRange.values);
+  const expectedModeValues = structuredClone(originalModeValues);
   const originalModeFormulas = structuredClone(modeRange.formulas);
   const fieldEquipmentSources = await Promise.all(fieldEquipmentSourceFiles.map(async source => ({ source,
     sha256: createHash('sha256').update(await fs.readFile(path.join(repo, source))).digest('hex') })));
   const cityPresentationSources = await Promise.all(cityPresentationSourceFiles.map(async source => ({ source,
+    sha256: createHash('sha256').update(await fs.readFile(path.join(repo, source))).digest('hex') })));
+  const fpsPresentationSources = await Promise.all(fpsPresentationSourceFiles.map(async source => ({ source,
     sha256: createHash('sha256').update(await fs.readFile(path.join(repo, source))).digest('hex') })));
   assert.deepEqual(proposals.getRange(`A7:A${data.missions.length + 6}`).values.flat(), data.missions.map(mission => mission.id));
   const setProposal = (row, column, value) => {
@@ -506,15 +520,20 @@ async function refreshRuntimeContracts(inputPath) {
     if (!commands.endsWith(fieldEquipmentCommands)) expectedModeValues[row - 1][5] = `${commands}\n${fieldEquipmentCommands}`;
     const sources = String(expectedModeValues[row - 1][8] || '').split('\n').filter(Boolean);
     expectedModeValues[row - 1][8] = [...new Set([...sources, ...fieldEquipmentSourceFiles])].join('\n');
-    modes.getRange(`F${row}`).values = [[expectedModeValues[row - 1][5]]];
-    modes.getRange(`I${row}`).values = [[expectedModeValues[row - 1][8]]];
+    const changed = [['F', 5], ['I', 8]].filter(([, column]) =>
+      expectedModeValues[row - 1][column] !== originalModeValues[row - 1][column]);
+    for (const [column, index] of changed) {
+      modes.getRange(`${column}${row}`).values = [[expectedModeValues[row - 1][index]]];
+      changedModeCells.push(`${column}${row}`);
+    }
+    if (!changed.length) continue;
     const modeRow = modes.getRange(`A${row}:I${row}`);
     modeRow.format.autofitRows();
     const height = Math.max(30, Number(modeRow.format.rowHeight) + 8);
     assert.ok(height <= 409, `FPS mode row ${row} needs a readable layout.`);
     modeRow.format.rowHeight = height;
-    changedModeCells.push(`F${row}`, `I${row}`);
   }
+  if (!changedModeCells.length) unchanged.push({ name: 'Modes FPS', values: originalModeValues, formulas: originalModeFormulas });
   summary.getRange('B12').formulas = [[`=COUNTA('Contrats jouables'!A7:A${rows.length + 6})`]];
   summary.getRange('B18').values = [[`${rows.length} récits jouables. Parmi les ${data.missions.length.toLocaleString('fr-FR')} propositions, ${linkedProposals.length} ont une adaptation jouable liée ; ${authoredProposalRows.length - linkedProposals.length} autres prolongements Nexus restent à développer. Le suivi manuel est conservé.`]];
   summary.getRange('D15:D18').values = Object.values(designLabels).map(value => [value]);
@@ -581,14 +600,14 @@ async function refreshRuntimeContracts(inputPath) {
       .filter(ref => /^(?:src|DLC)\/.*\.js(?:#|$)/.test(ref)).map(ref => ref.split('#')[0])]))].sort();
   const runtimeSources = await Promise.all(sourceFiles.map(async source => ({ source,
     sha256: createHash('sha256').update(await fs.readFile(path.join(repo, source))).digest('hex') })));
-  for (const source of [...fieldEquipmentSources, ...cityPresentationSources]) assert.equal(source.sha256,
+  for (const source of [...fieldEquipmentSources, ...cityPresentationSources, ...fpsPresentationSources]) assert.equal(source.sha256,
     createHash('sha256').update(await fs.readFile(path.join(repo, source.source))).digest('hex'),
     `FPS or presentation source changed before export: ${source.source}`);
   const manifest = new Map(data.sourceManifest.map(source => [source.file, source]));
   for (const source of runtimeSources) assert.equal(source.sha256, manifest.get(source.source)?.sha256, `Planning source changed before export: ${source.source}`);
-  const receipt = { schema: 6, sourceRevision: summary.getRange('B24').values[0][0],
+  const receipt = { schema: 7, sourceRevision: summary.getRange('B24').values[0][0],
     runtimeBaseRevision: option('--runtime-base', data.sourceRevision),
-    sourceRevisionMeaning: 'Historical roster and workbook baselines are retained; runtimeSources, fieldEquipmentSources, cityPresentationSources and planning provenance describe the actual edited files.',
+    sourceRevisionMeaning: 'Historical roster and workbook baselines are retained; runtimeSources, fieldEquipmentSources, cityPresentationSources, fpsPresentationSources and planning provenance describe the actual edited files.',
     planningDataSha256: data.dataSha256, planningSourceManifestSha256: createHash('sha256').update(JSON.stringify(data.sourceManifest)).digest('hex'),
     workbook: outputName,
     sha256: createHash('sha256').update(bytes).digest('hex'), bytes: bytes.length,
@@ -603,6 +622,11 @@ async function refreshRuntimeContracts(inputPath) {
     chapterThreeContracts: runtimeMissions.filter(mission => mission.chapter === 3).length,
     cargoTransfers: runtimeMissions.flatMap(mission => mission.steps.filter(step => step.cargo)
       .map(step => ({ missionId: mission.id, stepId: step.id, ...step.cargo }))),
+    walkedRoutes: runtimeMissions.flatMap(mission => mission.steps.flatMap(step => [
+      ...(step.walk && !step.byChoice && !step.byOriginChoice ? [{ missionId: mission.id, stepId: step.id, points: step.walk.points }] : []),
+      ...['byOriginChoice', 'byChoice'].flatMap(field => Object.entries(step[field] || {}).filter(([, branch]) => branch.walk)
+        .map(([choiceId, branch]) => ({ missionId: mission.id, stepId: step.id, branch: field, choiceId, points: branch.walk.points })))
+    ])),
     residentClosures: runtimeMissions.filter(mission => mission.steps.at(-1)?.type === 'npc').map(mission => mission.id),
     inheritedRoutes: runtimeMissions.flatMap(mission => mission.steps).reduce((total, step) => total + Object.keys(step.byOriginChoice || {}).length, 0),
     decisionRoutes: runtimeMissions.flatMap(mission => mission.steps).reduce((total, step) => total + Object.keys(step.byChoice || {}).length, 0),
@@ -610,7 +634,7 @@ async function refreshRuntimeContracts(inputPath) {
     authoredNexusProposals: authoredProposalRows.length,
     runtimeLinkedProposals: linkedProposals.map(mission => ({ id: mission.id, runtimeMissionId: mission.runtimeMissionId,
       implementationStatus: mission.implementationStatus, scope: mission.runtimeScope })),
-    fieldEquipmentSources, cityPresentationSources, changedModeCells,
+    fieldEquipmentSources, cityPresentationSources, fpsPresentationSources, changedModeCells,
     proposalsRequiringDiegeticRewrite: data.missions.filter(mission => mission.diegeticReviewStatus === 'diegetic_rewrite_required').length,
     preservedTrackingColumns: ['M', 'N', 'O', 'P', 'Q', 'S', 'T', 'U'],
     dependencyProof, gateProof,

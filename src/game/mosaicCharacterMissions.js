@@ -2,6 +2,8 @@ import { MOSAIC_INTERACTION_RANGE, getMosaicZoneAnchor } from './mosaicCityRunti
 import { createMosaicCharacterFollowups } from './mosaicCharacterFollowups.js';
 import { MOSAIC_CHARACTER_STORIES } from './mosaicCharacterStories.js';
 import { MOSAIC_CITY_DELIVERIES } from './mosaicCityDeliveries.js';
+import { MOSAIC_CITY_ROUTES } from './mosaicCityRoutes.js';
+import { getMosaicMissionWalkSpec, getMosaicMissionWalkProgress, recordMosaicMissionWalk } from './mosaicMissionWalks.js';
 import { getMosaicMissionCargoTransfers, resolveMosaicMissionCargo } from './mosaicMissionCargo.js';
 import { getMosaicMissionOperation, getMosaicMissionCargoSpec, createMosaicMissionOperationReceipt, matchesMosaicMissionOperationReceipt, getMosaicMissionObjectView } from './mosaicMissionOperations.js';
 import * as dlcHalo from '../../DLC/Halo/data/mosaicCharacterMissions.js';
@@ -210,7 +212,7 @@ export const MOSAIC_CHARACTER_MISSION_LEGACY = Object.freeze(originalMissions.ma
   freezeMission(legacyGuestMissions.get(mission.id) || mission)));
 const legacyById = new Map(MOSAIC_CHARACTER_MISSION_LEGACY.map(mission => [mission.id, mission]));
 
-const storyFields = ['text', 'finding', 'dialogue', 'actionLabel', 'operation', 'cargo'];
+const storyFields = ['text', 'finding', 'dialogue', 'actionLabel', 'operation', 'cargo', 'walk'];
 const narrativePatch = value => Object.fromEntries(storyFields.filter(key => value && Object.hasOwn(value, key)).map(key => [key, value[key]]));
 function applyStory(mission) {
   const story = MOSAIC_CHARACTER_STORIES[mission.id];
@@ -230,7 +232,7 @@ function applyStory(mission) {
       return next;
     }) });
 }
-export const MOSAIC_CHARACTER_MISSIONS = Object.freeze([...originalMissions.map(applyStory), ...MOSAIC_CITY_DELIVERIES.map(freezeMission)]);
+export const MOSAIC_CHARACTER_MISSIONS = Object.freeze([...originalMissions.map(applyStory), ...MOSAIC_CITY_DELIVERIES.map(freezeMission), ...MOSAIC_CITY_ROUTES.map(freezeMission)]);
 
 const record = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};
 const identifier = value => typeof value === 'string' && value.trim() && value.length < 180 ? value : null;
@@ -354,14 +356,16 @@ export function getMosaicCharacterMissionObjective(progress, mission, lang = 'fr
   const resolution = getMosaicCharacterMissionStep(progress, mission, resolutionIndex)?.choices.find(item => item.id === saved?.choiceId && item.valid);
   const legacy = mission.steps.some(item => isLegacyStep(mission, saved, item.id));
   const storyTitle = legacy && !saved?.storyStepIds?.length ? localizeCityMission(legacyById.get(mission.id)?.title, lang) : localizeCityMission(mission.title, lang);
+  const walk = getMosaicMissionWalkProgress(mission, step, saved);
   return { missionId: mission.id, index, total: mission.steps.length, step, targetType, targetId,
-    prerequisite, originResolution: prerequisite?.resolution || '', legacy, storyTitle,
+    prerequisite, originResolution: prerequisite?.resolution || '', legacy, storyTitle, walk,
     canReplayStory: Boolean(legacy && validSaved(mission, saved) && !locked),
     status: !compatible ? 'unavailable' : locked ? 'locked' : !saved ? 'available' : saved.completed ? 'completed' : progress.activeId === mission.id ? 'active' : 'paused',
     text: !compatible ? localizeCityMission(text('Cette aventure ne peut pas reprendre ici. Ta première visite reste conservée.', 'This adventure cannot resume here. Your first visit remains saved.'), lang)
       : locked ? (lang === 'fr' ? `Termine d’abord « ${prerequisite.title || prerequisite.missionId} ».`
         : `First finish “${prerequisite.title || prerequisite.missionId}”.`)
-        : step ? localizeCityMission(step.text, lang) : localizeCityMission(resolution?.result, lang),
+        : walk && !walk.completed ? `${localizeCityMission(step.text, lang)} — ${walk.visited}/${walk.total} · ${localizeCityMission(walk.next.label, lang)}`
+          : step ? localizeCityMission(step.text, lang) : localizeCityMission(resolution?.result, lang),
     resolution: localizeCityMission(resolution?.result, lang) };
 }
 
@@ -369,10 +373,11 @@ export function getMosaicCharacterMissionZones(progress, missions, lang = 'fr') 
   const mission = missions.find(item => item.id === progress?.activeId);
   const objective = getMosaicCharacterMissionObjective(progress, mission, lang);
   if (objective?.status !== 'active' || objective.step?.type !== 'marker') return [];
-  const step = objective.step;
+  const step = objective.step, position = objective.walk?.next || step;
   return [{ id: objective.targetId, missionId: mission.id, stepId: step.id, universe: mission.universe,
-    action: 'character-mission', x: step.x - 32, y: step.y - 32, w: 64, h: 64,
-    label: localizeCityMission(step.operation?.label || step.text, lang), role: localizeCityMission(mission.title, lang), color: '#dfb85b' }];
+    action: 'character-mission', x: position.x - 32, y: position.y - 32, w: 64, h: 64,
+    label: objective.walk && !objective.walk.completed ? localizeCityMission(position.label, lang)
+      : localizeCityMission(step.operation?.label || step.text, lang), role: localizeCityMission(mission.title, lang), color: '#dfb85b' }];
 }
 
 /** Residents' interventions leave their worked-on equipment in the district. Only
@@ -396,11 +401,16 @@ export function getMosaicCharacterMissionWorldObjects(progress, missions, zones 
     const active = objective.status === 'active' && objective.index === index;
     if (!completed && !active) continue;
     const zone = zones.find(item => item.id === targetId && item.universe === mission.universe);
-    const position = step.type === 'marker' ? { x: step.x, y: step.y } : zone ? getMosaicZoneAnchor(zone) : null;
+    const position = step.type === 'marker' ? active && objective.walk ? objective.walk.next : { x: step.x, y: step.y } : zone ? getMosaicZoneAnchor(zone) : null;
     if (!position || !Number.isFinite(position.x) || !Number.isFinite(position.y)) continue;
     const object = { id: `${mission.id}::${step.id}`, missionId: mission.id,
       stepId: step.id, targetId, sourceType: step.type, universe: mission.universe, ...position,
       ...getMosaicMissionObjectView(operation, { lang, completed }), active, sequence: receipt?.sequence || 0 };
+    if (active && objective.walk && !objective.walk.completed) {
+      object.propName = localizeCityMission(objective.walk.next.label, lang);
+      object.statusLabel = lang === 'fr' ? `Parcours ${objective.walk.visited}/${objective.walk.total} · rejoindre ce repère`
+        : `Route ${objective.walk.visited}/${objective.walk.total} · reach this marker`;
+    }
     const key = `${position.x}:${position.y}`;
     const prior = positions.get(key);
     if (active && object.appearance === 'lamp' && prior?.missionId === mission.id
@@ -432,6 +442,7 @@ const feedback = {
   inactive: text('Reprends cette aventure dans ton carnet avant de continuer.', 'Resume this adventure in your journal before continuing.'),
   wrong_target: text('Ce n’est pas l’endroit que tu cherches.', 'This is not the place you are looking for.'),
   cargo_missing: text('Tu dois porter l’objet demandé pour le déposer ici. Reprends sa récupération dans ton carnet.', 'You must be carrying the requested object to leave it here. Check its collection in your journal.'),
+  walk_pending: text('Le trajet reste à parcourir. Rejoins les repères dans l’ordre avant de fixer le dernier.', 'The route still needs to be walked. Reach its markers in order before fastening the last one.'),
   write_failed: text('Cette action ne peut pas être enregistrée pour le moment. Ta progression reste conservée.', 'This action cannot be recorded right now. Your progress stays saved.'),
   out_of_range: text('Rapproche-toi pour intervenir.', 'Move closer to work on it.'),
   started: text('La demande est dans ton carnet. En route.', 'The request is in your journal. Time to go.'),
@@ -468,7 +479,7 @@ export function restartMosaicCharacterMission(progress, mission, lang = 'fr') {
   const prerequisite = prerequisiteForOrigin(progress, mission, lang);
   next.activeId = mission.id;
   next.lastMissionId = mission.id;
-  next.records[mission.id] = { ...saved, previousStory: saved, storyRevision: 2, storyStepIds: [], operationReceipts: {},
+  next.records[mission.id] = { ...saved, previousStory: saved, storyRevision: 2, storyStepIds: [], operationReceipts: {}, walkReceipts: {},
     completedStepIds: [], choiceId: null, completed: false,
     ...(prerequisite ? { originChoiceId: prerequisite.choiceId, originStoryRevision: prerequisite.storyRevision } : {}) };
   return outcome(progress, next, 'started', lang);
@@ -503,6 +514,7 @@ export function advanceMosaicCharacterMission(progress, mission, interaction, la
     || interaction.distance > range) return outcome(progress, progress, 'out_of_range', lang);
   const step = objective.step, target = interaction.target;
   if (objective.targetType !== interaction.type || objective.targetId !== interaction.id) return outcome(progress, progress, 'wrong_target', lang);
+  if (step.walk && (!getMosaicMissionWalkSpec(step) || !objective.walk?.completed)) return outcome(progress, progress, 'walk_pending', lang);
   const matching = step.type === 'npc' ? target?.hero?.id === step.targetId && target.hero.universe === mission.universe
     : target?.id === interaction.id && target.universe === mission.universe && (
       step.type === 'exhibit' ? target.action === 'exhibit' && target.exhibitId === step.targetId
@@ -521,6 +533,19 @@ export function advanceMosaicCharacterMission(progress, mission, interaction, la
   }
   const operation = getMosaicMissionOperation(step);
   return completeStep(progress, mission, step, lang, null, step.dialogue || operation?.completedText || step.finding, interaction);
+}
+
+/** The movement loop publishes only an earned checkpoint. It does not complete
+ * an operation, transfer cargo, make a decision, or advance another contract. */
+export function advanceMosaicCharacterMissionWalk(progress, mission, movement, lang = 'fr') {
+  const objective = getMosaicCharacterMissionObjective(progress, mission, lang);
+  if (objective?.status !== 'active' || !objective.walk || objective.walk.completed) return { changed: false, progress };
+  const saved = own(progress.records, mission.id);
+  const receipt = recordMosaicMissionWalk(mission, objective.step, saved, movement);
+  if (!receipt) return { changed: false, progress };
+  const next = normalizeMosaicCharacterMissions(progress);
+  next.records[mission.id] = { ...saved, walkReceipts: { ...record(saved.walkReceipts), [objective.step.id]: receipt } };
+  return { changed: true, progress: next, walk: getMosaicMissionWalkProgress(mission, objective.step, next.records[mission.id]) };
 }
 
 function lastPhysicalOperationSequence(progress) {

@@ -171,6 +171,10 @@ test('runtime adaptations remain distinct from proposal IDs and do not auto-comp
     ['city-plan-v1::arca_quillon::multiverse', 'city-quillon-refuge-pump-v1'],
     ['city-plan-v1::arca_nadir::universe', 'city-nadir-buried-probe-v1'],
     ['city-plan-v1::arca_tessera::universe', 'city-tessera-chosen-window-v1'],
+    ['city-plan-v1::player_anchor::universe', 'city-anchor-shared-beacon-v1'],
+    ['city-plan-v1::arca_bastion::universe', 'city-bastion-bulwark-relief-v1'],
+    ['city-plan-v1::arca_nova::universe', 'city-nova-present-pulse-v1'],
+    ['city-plan-v1::arca_sable::universe', 'city-sable-night-signs-v1'],
   ]);
   assert.equal(catalog.counts.implementedMissions, expectedLinks.size);
   assert.equal(catalog.counts.runtimeLinkedProposals, expectedLinks.size);
@@ -230,7 +234,8 @@ test('source provenance includes static dependencies with actual hashes, not jus
     'DLC/Alien/data/sourceSceneStages.js',
     'src/game/canonP0SourceKits.js', 'src/game/mosaicCharacterMissions.js', 'src/game/mosaicCharacterFollowups.js',
     'src/game/mosaicCharacterStories.js', 'src/game/mosaicMissionOperations.js', 'src/game/mosaicCityDeliveries.js',
-    'src/game/mosaicMissionCargo.js', 'src/game/ocCampaign.js', 'scripts/extinction-city/missionPlanning.mjs']) {
+    'src/game/mosaicMissionCargo.js', 'src/game/mosaicCityRoutes.js', 'src/game/mosaicMissionWalks.js',
+    'src/game/ocCampaign.js', 'scripts/extinction-city/missionPlanning.mjs']) {
     const row = sources.get(file);
     assert.ok(row?.exists, file);
     assert.equal(row.sha256, createHash('sha256').update(readFileSync(file)).digest('hex'), file);
@@ -238,9 +243,42 @@ test('source provenance includes static dependencies with actual hashes, not jus
   assert.ok(catalog.sourceManifest.every(row => row.exists && /^[a-f0-9]{64}$/.test(row.sha256)));
 });
 
+test('walked City branches retain their ordered places, physical endpoint and runtime sources', () => {
+  const expected = new Set(['city-anchor-shared-beacon-v1', 'city-bastion-bulwark-relief-v1',
+    'city-nova-present-pulse-v1', 'city-sable-night-signs-v1']);
+  const found = new Set();
+  for (const mission of catalog.runtimeMissions) {
+    const original = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === mission.id);
+    const checkWalk = (step, sourceStep) => {
+      if (!sourceStep.walk) { assert.equal(step.walk, undefined); return; }
+      found.add(mission.id);
+      assert.ok(mission.systemSourceFiles.includes('src/game/mosaicMissionWalks.js'));
+      assert.ok(mission.systemSourceFiles.includes('src/game/mosaicCityRuntime.js'));
+      assert.deepEqual(step.walk, { points: sourceStep.walk.points.map(point => ({
+        ...point, label: point.label.fr
+      })) });
+      const points = step.walk.points;
+      assert.ok(points.length >= 2 && points.length <= 6);
+      assert.equal(new Set(points.map(point => point.id)).size, points.length);
+      assert.ok(points.every(point => point.id && point.label && Number.isFinite(point.x) && Number.isFinite(point.y)));
+      assert.equal(points.at(-1).x, step.x);
+      assert.equal(points.at(-1).y, step.y);
+      assert.equal(step.operation.kind, 'route');
+    };
+    mission.steps.forEach((step, index) => {
+      const sourceStep = original.steps[index];
+      checkWalk(step, sourceStep);
+      for (const field of ['byOriginChoice', 'byChoice']) {
+        for (const [choiceId, branch] of Object.entries(sourceStep[field] || {})) checkWalk(step[field][choiceId], branch);
+      }
+    });
+  }
+  assert.deepEqual(found, expected);
+});
+
 test('carried quest objects retain ordered transfers and a return to their actual resident', () => {
   const linked = catalog.runtimeMissions.filter(mission => mission.steps.some(step => step.cargo));
-  assert.equal(linked.length, 4);
+  assert.equal(linked.length, 8);
   const carriedIds = new Set();
   let transfers = 0;
   for (const mission of linked) {
@@ -264,11 +302,12 @@ test('carried quest objects retain ordered transfers and a return to their actua
     const closing = mission.steps.at(-1);
     assert.equal(closing.id, 'report');
     assert.equal(closing.type, 'npc');
-    assert.equal(closing.targetId, mission.characterId);
+    assert.equal(closing.targetId, mission.characterId === 'player_anchor' ? 'arca_mirelle' : mission.characterId,
+      'The Anchor returns the intake request to Mirelle instead of meeting themselves.');
     assert.ok(closing.dialogue && closing.dialogue === original.steps.at(-1).dialogue.fr);
   }
-  assert.equal(carriedIds.size, 5);
-  assert.equal(transfers, 10);
+  assert.equal(carriedIds.size, 10);
+  assert.equal(transfers, 20);
 });
 
 test('generation is deterministic and rejects mutable or malformed source revisions', () => {

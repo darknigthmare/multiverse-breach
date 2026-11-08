@@ -174,7 +174,7 @@ test('unknown DLC progress and archived receipts are preserved without creating 
 });
 
 test('carried silhouettes follow the avatar transform, display the item and do not mutate the save', () => {
-  for (const mission of deliveries) {
+  for (const mission of [...deliveries, catalog.find(item => item.id === 'city-bastion-bulwark-relief-v1')]) {
     const progress = step(beforeTake(mission), mission), cargo = getMosaicCharacterMissionCargo(progress);
     const original = JSON.stringify(progress), drawings = [];
     for (const player of [{ x: 500, y: 620 }, { x: 580, y: 710 }]) {
@@ -192,9 +192,9 @@ test('carried silhouettes follow the avatar transform, display the item and do n
   }
 });
 
-test('the repaired pump visibly gains water and the lamp and reflector retain their own silhouettes', () => {
+test('the repaired pump visibly gains water and the lamp, reflector and brace retain their own silhouettes', () => {
   const snapshots = new Map();
-  for (const appearance of ['lamp', 'pump', 'rotor', 'probe', 'reflector']) {
+  for (const appearance of ['lamp', 'pump', 'rotor', 'probe', 'reflector', 'brace']) {
     const calls = [], context = new Proxy({ measureText: value => ({ width: value.length * 6 }) }, {
       get(target, name) { return target[name] || ((...args) => calls.push([name, ...args])); },
       set(target, name, value) { target[name] = value; calls.push([name, value]); return true; }
@@ -204,7 +204,7 @@ test('the repaired pump visibly gains water and the lamp and reflector retain th
     snapshots.set(appearance, JSON.stringify(calls));
     if (appearance === 'pump') assert.ok(calls.some(call => call[0] === 'fillStyle' && call[1] === '#4aa7c6'));
   }
-  assert.equal(new Set(snapshots.values()).size, 5);
+  assert.equal(new Set(snapshots.values()).size, 6);
 });
 
 test('an absent DLC receipt at MAX_SAFE_INTEGER is preserved without breaking a real pickup and delivery', () => {

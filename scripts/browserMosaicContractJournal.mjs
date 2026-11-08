@@ -24,7 +24,7 @@ const fonts = root => root.locator('.mosaic-contract-kicker, .mosaic-contract-he
 async function inspectLayout(root, viewport) {
   const data = await root.evaluate(node => {
     const visible = element => element.checkVisibility({ visibilityProperty: true, opacityProperty: true });
-    const containers = [node, ...node.querySelectorAll('.mosaic-contract-heading, .mosaic-contract-workspace, .mosaic-contract-directory, .mosaic-contract-directory-content, .mosaic-contract-list, .mosaic-contract-reader, .mosaic-contract-objective, .mosaic-contract-evidence, .mosaic-contract-request, .mosaic-contract-memory, .mosaic-contract-on-location, .mosaic-contract-previous, .mosaic-resident-conversation-content, .mosaic-resident-conversation-toolbar, .mosaic-dialogue-quest, .mosaic-dialogue-background, .mosaic-dialogue-record, .mosaic-dialogue-topics, .mosaic-dialogue-next, .mosaic-dialogue-actions, blockquote')]
+    const containers = [node, ...node.querySelectorAll('.mosaic-pocket-tabs, .mosaic-pocket-panel, .mosaic-contract-heading, .mosaic-contract-workspace, .mosaic-contract-directory, .mosaic-contract-directory-content, .mosaic-contract-list, .mosaic-contract-reader, .mosaic-contract-objective, .mosaic-contract-evidence, .mosaic-contract-request, .mosaic-contract-memory, .mosaic-contract-on-location, .mosaic-contract-previous, .mosaic-resident-conversation-content, .mosaic-resident-conversation-toolbar, .mosaic-dialogue-quest, .mosaic-dialogue-background, .mosaic-dialogue-record, .mosaic-dialogue-topics, .mosaic-dialogue-next, .mosaic-dialogue-actions, blockquote')]
       .filter(visible).map(element => ({ name: element.className, width: element.clientWidth, scrollWidth: element.scrollWidth }));
     const controls = [...node.querySelectorAll('button, input, select, summary')].filter(visible).map(element => {
       const rect = element.getBoundingClientRect();
@@ -40,6 +40,58 @@ async function inspectLayout(root, viewport) {
     assert.ok(item.scrollWidth <= item.clientWidth + 1, `Control text clipped: ${JSON.stringify(item)}`);
   }
   return data;
+}
+
+async function terminalSections(page, { viewport, name }) {
+  const before = await snapshot(page);
+  const terminal = page.locator('.mosaic-pocket-terminal');
+  const journal = page.locator('.mosaic-character-missions');
+  const select = journal.locator('[data-city-contract-select]');
+  const originalSelection = await select.inputValue();
+  await select.selectOption('qa-case-61');
+  const directory = journal.locator('.mosaic-contract-directory');
+  const originalDisclosure = await directory.evaluate(node => node.open);
+  if (!originalDisclosure) await directory.locator('summary').click();
+  await journal.getByRole('searchbox').fill('zenith memoire');
+  const cases = await ids(journal);
+  const visits = [];
+  await terminal.locator('[data-city-terminal-tab="journal"]').focus();
+  for (const section of ['district', 'transmissions', 'guide', 'journal']) {
+    await page.keyboard.press('ArrowRight');
+    const tab = terminal.locator(`[data-city-terminal-tab="${section}"]`);
+    const panel = terminal.locator(`[data-city-terminal-panel="${section}"]`);
+    await focused(tab);
+    assert.equal(await tab.getAttribute('aria-selected'), 'true');
+    assert.equal(await terminal.locator('[data-city-terminal-panel]:visible').count(), 1);
+    assert.equal(await panel.isVisible(), true);
+    assert.equal(await terminal.locator('[role="tab"][tabindex="0"]').count(), 1);
+    assert.equal(await panel.getAttribute('aria-labelledby'), await tab.getAttribute('id'));
+    await page.keyboard.press('Tab'); await focused(panel);
+    await page.keyboard.press('Shift+Tab'); await focused(tab);
+    if (section === 'district') await panel.locator('[data-terminal-test-search]').fill('A retained search');
+    visits.push({ section, layout: await inspectLayout(terminal, viewport), keyboardFocus: true });
+    await page.screenshot({ path: resolve(evidence, `${name}-terminal-${section}.png`) });
+    await tab.focus();
+  }
+  assert.equal(await select.inputValue(), 'qa-case-61', 'Changing sections remounted the journal reader');
+  assert.equal(await journal.getByRole('searchbox').inputValue(), 'zenith memoire', 'Changing sections erased journal search');
+  assert.deepEqual(await ids(journal), cases);
+  await page.keyboard.press('End'); await focused(terminal.locator('[data-city-terminal-tab="guide"]'));
+  await page.keyboard.press('Tab'); await focused(terminal.locator('[data-city-terminal-panel="guide"]'));
+  await page.keyboard.press('Tab'); await focused(page.locator('.immersive-drawer > header button'));
+  await page.keyboard.press('Shift+Tab'); await focused(terminal.locator('[data-city-terminal-panel="guide"]'));
+  await terminal.locator('[data-city-terminal-tab="guide"]').focus();
+  await page.keyboard.press('Home'); await focused(terminal.locator('[data-city-terminal-tab="journal"]'));
+  await page.keyboard.press('ArrowRight'); await focused(terminal.locator('[data-city-terminal-tab="district"]'));
+  assert.equal(await terminal.locator('[data-terminal-test-search]').inputValue(), 'A retained search');
+  await page.keyboard.press('ArrowLeft'); await focused(terminal.locator('[data-city-terminal-tab="journal"]'));
+  await journal.getByRole('searchbox').fill('');
+  if (!originalDisclosure) await directory.locator('summary').click();
+  await select.selectOption(originalSelection);
+  assert.deepEqual(await snapshot(page), before, 'Section navigation invoked a game action or changed progress');
+  return { visits, retainedReaderAndSearch: true, oneVisiblePanel: true, hiddenControlsExcludedFromTabTrap: true,
+    arrowHomeEndNavigation: true, noProgressMutation: true,
+    scope: 'Actual terminal component and journal; prepared district search, transmission and guide contents. Actual City integration is checked in the City playthrough.' };
 }
 
 async function authoredPresentation(page, { missionId, lang, viewport, name }) {
@@ -222,6 +274,13 @@ try {
       assert.equal(await directory.evaluate(node => node.open), viewport.width >= 960);
       const beforeFonts = await fonts(root);
       await page.keyboard.press('Escape'); await root.waitFor({ state: 'detached' }); await focused(trigger);
+      if (viewport.width > 1120) {
+        await trigger.focus(); await page.keyboard.press('Enter'); await root.waitFor();
+        await page.mouse.click(1, 1);
+        await root.waitFor({ state: 'detached' }); await focused(trigger);
+        assert.deepEqual(await snapshot(page), original, 'Closing the terminal backdrop changed progress');
+        record.terminalBackdropReturnsFocus = true;
+      }
       await page.locator('.game-system-trigger').click();
       await page.getByLabel(fr ? 'Taille du texte' : 'Text size').focus(); await page.keyboard.press('End');
       await page.waitForFunction(() => getComputedStyle(document.documentElement).fontSize === '24px');
@@ -234,6 +293,7 @@ try {
       record.fonts = { before: beforeFonts, after: afterFonts };
       record.initialLayout = await inspectLayout(root, viewport);
       await page.screenshot({ path: resolve(evidence, `${name}-tracked.png`) });
+      record.terminalSections = await terminalSections(page, { viewport, name });
 
       await ensureDirectory();
       assert.equal((await ids(root)).length, 12);

@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import '../../src/index.css';
 import '../../src/components/HubImmersion.css';
 import MosaicCharacterMissions from '../../src/components/MosaicCharacterMissions.jsx';
+import MosaicPocketTerminal from '../../src/components/MosaicPocketTerminal.jsx';
 import MosaicResidentConversation from '../../src/components/MosaicResidentConversation.jsx';
 import ImmersiveDrawer from '../../src/components/ImmersiveDrawer.jsx';
 import GameSystemMenu from '../../src/components/GameSystemMenu.jsx';
@@ -33,6 +34,8 @@ window.__contractJournalQA = qa;
 export function Fixture() {
   const [open, setOpen] = useState(false);
   const [view, setView] = useState('journal');
+  const [terminalSection, setTerminalSection] = useState('journal');
+  const [initialMissionId, setInitialMissionId] = useState(null);
   const [replyPhase, setReplyPhase] = useState('offer');
   const [progress, setProgress] = useState(() => {
     if (!currentStory) return journalProgress({ prerequisiteComplete: params.get('prerequisite') === 'complete' });
@@ -48,21 +51,30 @@ export function Fixture() {
     <GameDisplayPreferencesSync /><GameSystemMenu lang={lang} />
     <main style={{ padding: 48 }}><h1>{lang === 'fr' ? 'Recette du journal de Cité' : 'City journal verification'}</h1>
       <p>{lang === 'fr' ? 'Présentation préparée du carnet et des conversations. Aucun compte ni déplacement en ville ; les demandes et répliques du mode récit viennent des missions réelles.' : 'Prepared journal and conversation presentation. No account or City movement; story-mode requests and replies come from the actual missions.'}</p>
-      <button type="button" data-testid="open-contract-journal" onClick={() => { setView('journal'); setOpen(true); }}>{lang === 'fr' ? 'Ouvrir le journal' : 'Open journal'}</button>
+      <button type="button" data-testid="open-contract-journal" onClick={() => { setInitialMissionId(null); setTerminalSection('journal'); setView('journal'); setOpen(true); }}>{lang === 'fr' ? 'Ouvrir le journal' : 'Open journal'}</button>
       {conversation && <button type="button" data-testid="open-authored-reply" onClick={() => { setView('reply'); setOpen(true); }}>{lang === 'fr' ? 'Voir la conversation préparée' : 'View the prepared conversation'}</button>}
     </main>
     <MosaicResidentConversation open={open && view === 'reply'} conversation={conversation} lang={lang}
       location={qa.story?.location} nextAction={nextAction} onClose={() => { qa.closed += 1; setOpen(false); }}
-      onOpenJournal={() => setView('journal')}
+      onOpenJournal={missionId => { setInitialMissionId(missionId); setTerminalSection('journal'); setView('journal'); }}
       onAcceptMission={id => { qa.calls.push({ type: 'offer', id }); const result = startMosaicCharacterMission(progress, currentStory, lang); if (result.changed) { setProgress(result.progress); setReplyPhase('active'); } return result; }} />
     <ImmersiveDrawer open={open && view === 'journal'} onClose={() => { qa.closed += 1; setOpen(false); }} lang={lang} className="mosaic-terminal-drawer"
       title={lang === 'fr' ? 'Terminal de poche A.R.C.A.' : 'A.R.C.A. pocket terminal'} scrollLabel={lang === 'fr' ? 'Journal et services de la Cité' : 'City journal and services'}>
-      <div className="nexus-play-copy"><MosaicCharacterMissions missions={missions} heroes={authored ? HEROES_DB : journalHeroes} lang={lang} progress={progress}
+      <div className="nexus-play-copy"><MosaicPocketTerminal lang={lang} section={terminalSection} onSectionChange={setTerminalSection} panels={{
+        journal: <MosaicCharacterMissions missions={missions} heroes={authored ? HEROES_DB : journalHeroes} lang={lang} progress={progress} initialMissionId={initialMissionId}
         onAccept={id => { qa.calls.push({ type: 'accept', id }); const result = startMosaicCharacterMission(progress, missions.find(item => item.id === id), lang); if (result.changed) setProgress(result.progress); return result; }}
         onApproach={id => qa.calls.push({ type: 'approach', id })}
         onResolve={(id, choice) => { qa.calls.push({ type: 'resolve', id, choice }); const result = resolveMosaicCharacterMission(progress, missions.find(item => item.id === id), choice, lang); if (result.changed) setProgress(result.progress); return result; }}
         onReplay={id => { qa.calls.push({ type: 'replay', id }); const result = restartMosaicCharacterMission(progress, missions.find(item => item.id === id), lang); if (result.changed) setProgress(result.progress); return result; }}
-      /></div>
+        />,
+        district: <div className="mosaic-terminal-intro"><h3>{lang === 'fr' ? 'Quartier préparé pour la recette' : 'Prepared test district'}</h3>
+          <p>{lang === 'fr' ? 'La navigation entre rubriques conserve la page lue dans le carnet.' : 'Changing terminal sections keeps the page you were reading.'}</p>
+          <label>{lang === 'fr' ? 'Recherche préparée' : 'Prepared search'}<input data-terminal-test-search type="search" defaultValue="" /></label></div>,
+        transmissions: <div className="mosaic-terminal-intro"><h3>{lang === 'fr' ? 'Transmissions de la recette' : 'Test transmissions'}</h3>
+          <p>{lang === 'fr' ? 'Cette fixture ne simule aucun déplacement dans la Cité.' : 'This fixture does not simulate City movement.'}</p></div>,
+        guide: <div className="mosaic-terminal-intro"><h3>{lang === 'fr' ? 'Guide de la recette' : 'Test guide'}</h3>
+          <p>{lang === 'fr' ? 'Flèches gauche et droite pour changer de rubrique ; Tab pour lire son contenu.' : 'Left and right arrows change sections; Tab enters their content.'}</p></div>
+      }} /></div>
     </ImmersiveDrawer>
   </>;
 }

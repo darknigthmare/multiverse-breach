@@ -45,7 +45,12 @@ export function drawMosaicMissionCargo(ctx, cargo, player, tick = 0, reducedMoti
   ctx.translate(player.x, player.y);
   ctx.save(); ctx.translate(24, -16 + bob);
   ctx.lineWidth = 2; ctx.strokeStyle = '#ffe2a8'; ctx.fillStyle = '#243d49';
-  if (cargo.appearance === 'lamp') {
+  if (cargo.appearance === 'brace') {
+    ctx.fillRect(-3, -17, 6, 30); ctx.strokeRect(-3, -17, 6, 30);
+    ctx.fillRect(-11, -18, 22, 5); ctx.strokeRect(-11, -18, 22, 5);
+    ctx.fillRect(-10, 11, 20, 5); ctx.strokeRect(-10, 11, 20, 5);
+    ctx.beginPath(); ctx.moveTo(-9, 7); ctx.lineTo(8, -8); ctx.stroke();
+  } else if (cargo.appearance === 'lamp') {
     ctx.fillRect(-7, -11, 14, 18); ctx.strokeRect(-7, -11, 14, 18);
     ctx.beginPath(); ctx.arc(0, -12, 5, Math.PI, Math.PI * 2); ctx.stroke();
     ctx.fillStyle = '#ffe2a8'; ctx.fillRect(-4, -7, 8, 9);

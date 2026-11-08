@@ -8,7 +8,8 @@ import { advanceMosaicPlayer, getMosaicZoneAnchor, getMosaicSceneObstacles, reso
 import { MOSAIC_CHARACTER_MISSIONS, getMosaicCharacterMissionCatalog, normalizeMosaicCharacterMissions,
   getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, startMosaicCharacterMission,
   advanceMosaicCharacterMission, resolveMosaicCharacterMission, getMosaicCharacterMissionWorldObjects,
-  getMosaicCharacterMissionPropZones } from '../src/game/mosaicCharacterMissions.js';
+  getMosaicCharacterMissionPropZones, advanceMosaicCharacterMissionWalk } from '../src/game/mosaicCharacterMissions.js';
+import { getMosaicMissionWalkSpec, getMosaicMissionWalkProgress, recordMosaicMissionWalk } from '../src/game/mosaicMissionWalks.js';
 
 function contextFor(universe) {
   const residents = HEROES_DB.filter(hero => hero.universe === universe);
@@ -40,7 +41,7 @@ function resolved(progress, mission) {
 test('every Nexus identity and both DLC senders have distinct authored bilingual contracts', () => {
   assert.deepEqual(new Set(catalog.map(mission => mission.heroId)), new Set(owned));
   assert.equal(catalog.filter(mission => !mission.requiresMissionId).length, owned.length);
-  assert.equal(catalog.filter(mission => mission.requiresMissionId).length, owned.length + 4);
+  assert.equal(catalog.filter(mission => mission.requiresMissionId).length, owned.length + 8);
   assert.equal(new Set(allCatalog.map(mission => mission.id)).size, allCatalog.length);
   assert.deepEqual(new Set(allCatalog.map(mission => mission.id)), new Set(MOSAIC_CHARACTER_MISSIONS.map(mission => mission.id)));
   for (const mission of allCatalog) {
@@ -48,8 +49,8 @@ test('every Nexus identity and both DLC senders have distinct authored bilingual
     assert.ok(unlockedHeroIds.includes(mission.heroId));
     assert.equal(new Set(mission.steps.map(step => step.id)).size, mission.steps.length);
     const ending = mission.steps.at(-1);
-    if (mission.contentFile === 'src/game/mosaicCityDeliveries.js') {
-      assert.equal(ending.type, 'npc'); assert.equal(ending.targetId, mission.heroId);
+    if (['src/game/mosaicCityDeliveries.js', 'src/game/mosaicCityRoutes.js'].includes(mission.contentFile)) {
+      assert.equal(ending.type, 'npc'); assert.equal(ending.targetId, mission.heroId === 'player_anchor' ? 'arca_mirelle' : mission.heroId);
       assert.ok(ending.dialogue.fr && ending.dialogue.en);
     } else assert.equal(ending.type, 'anchor');
     assert.ok(mission.source.startsWith(mission.universe === 'Nexus de Convergence' ? 'src/game/' : `DLC/${mission.universe}/data/`));
@@ -109,7 +110,7 @@ for (const mission of allCatalog) {
     const state = { player: { x: 820, y: 760, speed: 2.35 }, keys: {}, npcs: [], obstacles: [] };
     let moved = 0;
     for (let index = 0; index < mission.steps.length; index++) {
-      const { objective, zones, propZones, npcs } = sceneFor(progress, mission);
+      let { objective, zones, propZones, npcs } = sceneFor(progress, mission);
       assert.equal(objective.index, index);
       assert.equal(progress.records[mission.id].completed, false);
       if (objective.step.type === 'decision') {
@@ -118,6 +119,35 @@ for (const mission of allCatalog) {
         assert.equal(wrong.changed, false); assert.equal(JSON.stringify(wrong.progress), before);
         progress = resolveMosaicCharacterMission(progress, mission, objective.step.choices.filter(item => item.valid)[route].id).progress;
       } else {
+        if (objective.walk) {
+          const previousSteps = [...progress.records[mission.id].completedStepIds];
+          const beforeWalk = JSON.stringify(progress);
+          assert.equal(advanceMosaicCharacterMission(progress, mission, resolved(progress, mission)).reason, 'walk_pending');
+          assert.equal(JSON.stringify(progress), beforeWalk, 'an interaction alone cannot invent a route');
+          while (!getMosaicCharacterMissionObjective(progress, mission).walk.completed) {
+            const currentScene = sceneFor(progress, mission), target = currentScene.objective.walk.next;
+            state.npcs = currentScene.npcs;
+            state.obstacles = getMosaicSceneObstacles(district, [...currentScene.zones, ...currentScene.propZones]);
+            state.destination = { x: target.x, y: target.y }; state.destinationRoute = null;
+            state.pendingInteraction = { type: 'zone', id: currentScene.objective.targetId };
+            let earned = false;
+            for (let tick = 0; tick < 1600 && !earned; tick++) {
+              const from = { x: state.player.x, y: state.player.y };
+              const distance = advanceMosaicPlayer(state, district, 1000 / 60);
+              moved += distance;
+              const result = advanceMosaicCharacterMissionWalk(progress, mission,
+                { districtId: district.id, from, to: state.player, distance, elapsedMs: 1000 / 60, speed: state.player.speed });
+              if (result.changed) { progress = result.progress; earned = true; }
+            }
+            assert.ok(earned, `${mission.id} ordinary walking must reach checkpoint ${target.id}`);
+            assert.deepEqual(progress.records[mission.id].completedStepIds, previousSteps);
+            const savedWalk = getMosaicCharacterMissionObjective(progress, mission).walk;
+            const restored = normalizeMosaicCharacterMissions(sanitizeSaveCore({ activityProgress: { mosaicCharacterMissions: progress } }).activityProgress.mosaicCharacterMissions);
+            assert.deepEqual(getMosaicCharacterMissionObjective(restored, mission).walk, savedWalk);
+            progress = restored;
+          }
+          ({ objective, zones, propZones, npcs } = sceneFor(progress, mission));
+        }
         const preferred = { type: objective.targetType, id: objective.targetId };
         state.npcs = npcs; state.obstacles = getMosaicSceneObstacles(district, [...zones, ...propZones]);
         state.destination = preferred.type === 'npc' ? npcs.find(npc => npc.hero.id === preferred.id) : getMosaicZoneAnchor(zones.find(zone => zone.id === preferred.id));
@@ -186,7 +216,10 @@ test('follow-ups require the full preceding report, preserve its choice, and cha
         assert.equal(chosen.records[mission.id].completed, false, 'A choice alone is not a completed intervention');
         const target = getMosaicCharacterMissionZones(chosen, catalog)[0];
         assert.ok(target);
-        return [target.x, target.y];
+        const selected = getMosaicCharacterMissionObjective(chosen, mission).step;
+        // A route can share its departure with the alternative. Its complete
+        // ordered journey must still differ, not only the wording of a choice.
+        return selected.walk ? selected.walk.points.map(point => [point.x, point.y]) : [target.x, target.y];
       });
       assert.notDeepEqual(destinations[0], destinations[1], 'Both decisions require different in-world checks');
     }
@@ -204,6 +237,96 @@ test('remote, forged, mismatched and unordered interactions cannot record eviden
   }
   assert.equal(resolveMosaicCharacterMission(progress, mission, 'name-debt').changed, false);
   assert.equal(advanceMosaicCharacterMission(normalizeMosaicCharacterMissions(), mission, event).changed, false);
+});
+
+function atNewRoute(choiceIndex = 0) {
+  const mission = catalog.find(item => item.id === 'city-anchor-shared-beacon-v1');
+  let progress = startMosaicCharacterMission(finishedPrerequisite(mission, 0), mission).progress;
+  while (!getMosaicCharacterMissionObjective(progress, mission).walk) {
+    const current = getMosaicCharacterMissionObjective(progress, mission).step;
+    progress = current.type === 'decision'
+      ? resolveMosaicCharacterMission(progress, mission, current.choices.filter(choice => choice.valid)[choiceIndex].id).progress
+      : advanceMosaicCharacterMission(progress, mission, resolved(progress, mission)).progress;
+  }
+  return { mission, progress, step: getMosaicCharacterMissionObjective(progress, mission).step };
+}
+
+test('ordered reconnaissance rejects idle, remote, discontinuous, overlong and foreign movement samples without mutation', () => {
+  const { mission, step, progress } = atNewRoute();
+  const point = getMosaicMissionWalkSpec(step).points[0];
+  const valid = { districtId: mission.districtId, from: { x: point.x - 2, y: point.y },
+    to: { x: point.x, y: point.y }, elapsedMs: 1000 / 60, distance: 2, speed: 2.35 };
+  const before = JSON.stringify(progress);
+  const refused = [null, { ...valid, districtId: 'universe-halo' }, { ...valid, from: valid.to, distance: 0 },
+    { ...valid, elapsedMs: 0 }, { ...valid, elapsedMs: 51 }, { ...valid, elapsedMs: NaN },
+    { ...valid, from: { x: point.x - 900, y: point.y }, distance: 900 },
+    { ...valid, distance: 3 }, { ...valid, speed: Infinity },
+    { ...valid, from: { x: 0, y: 0 }, to: { x: 2, y: 0 } },
+    { ...valid, from: { x: step.walk.points[1].x - 2, y: step.walk.points[1].y }, to: step.walk.points[1] }];
+  for (const sample of refused) {
+    assert.equal(advanceMosaicCharacterMissionWalk(progress, mission, sample).changed, false);
+    assert.equal(JSON.stringify(progress), before);
+  }
+  for (const altered of [{ ...progress, activeId: null }, { ...progress, activeId: 'other-contract' }]) {
+    assert.equal(advanceMosaicCharacterMissionWalk(altered, mission, valid).changed, false);
+  }
+  const result = advanceMosaicCharacterMissionWalk(progress, mission, valid);
+  assert.equal(result.changed, true); assert.equal(result.walk.visited, 1);
+  assert.equal(JSON.stringify(progress), before);
+  assert.deepEqual(result.progress.records[mission.id].operationReceipts, progress.records[mission.id].operationReceipts);
+  assert.deepEqual(result.progress.records[mission.id].completedStepIds, progress.records[mission.id].completedStepIds);
+  assert.equal(advanceMosaicCharacterMissionWalk(result.progress, mission, valid).changed, false, 'the same place is not the next checkpoint');
+});
+
+test('route geometry, branch and inherited identity own checkpoints; incompatible receipts are retained but cannot illuminate a finished route', () => {
+  const { mission, step, progress } = atNewRoute();
+  const saved = progress.records[mission.id];
+  let receipt = null;
+  for (const point of step.walk.points) {
+    receipt = recordMosaicMissionWalk(mission, step,
+      { ...saved, walkReceipts: { [step.id]: receipt } },
+      { districtId: mission.districtId, from: { x: point.x - 2, y: point.y }, to: point,
+        elapsedMs: 1000 / 60, distance: 2, speed: 2.35 });
+    assert.ok(receipt);
+  }
+  const complete = structuredClone(progress);
+  complete.records[mission.id].walkReceipts = { [step.id]: receipt, futurePackWalk: { futureField: 'retained' } };
+  const ready = getMosaicCharacterMissionObjective(complete, mission);
+  assert.equal(ready.walk.completed, true);
+  const result = advanceMosaicCharacterMission(complete, mission, resolved(complete, mission));
+  assert.equal(result.changed, true);
+  assert.deepEqual(result.progress.records[mission.id].operationReceipts[step.id].walkPointIds, step.walk.points.map(point => point.id));
+  const completedObject = getMosaicCharacterMissionWorldObjects(result.progress, catalog).find(object => object.stepId === step.id);
+  assert.equal(completedObject.completed, true);
+  const invalidReceipts = [
+    { ...receipt, missionId: 'other' }, { ...receipt, districtId: 'universe-halo' },
+    { ...receipt, originChoiceId: 'ask-review' }, { ...receipt, originStoryRevision: 1 },
+    { ...receipt, branchChoiceId: 'hold' }, { ...receipt, points: [...receipt.points].reverse() },
+    { ...receipt, points: receipt.points.map((point, index) => index ? point : { ...point, x: point.x + 1 }) }
+  ];
+  for (const invalid of invalidReceipts) {
+    const tampered = structuredClone(result.progress);
+    tampered.records[mission.id].walkReceipts[step.id] = invalid;
+    assert.equal(getMosaicMissionWalkProgress(mission, step, tampered.records[mission.id]).visited, 0);
+    assert.ok(!getMosaicCharacterMissionWorldObjects(tampered, catalog).some(object => object.stepId === step.id && object.completed));
+    assert.deepEqual(normalizeMosaicCharacterMissions(tampered).records[mission.id].walkReceipts, tampered.records[mission.id].walkReceipts);
+  }
+  const restored = normalizeMosaicCharacterMissions(sanitizeSaveCore({ activityProgress: { mosaicCharacterMissions: complete } }).activityProgress.mosaicCharacterMissions);
+  assert.deepEqual(restored.records[mission.id].walkReceipts, complete.records[mission.id].walkReceipts);
+  assert.equal(getMosaicCharacterMissionObjective({ ...restored, activeId: null }, mission).walk.visited, 4);
+  assert.equal(recordMosaicMissionWalk(mission, step, complete.records[mission.id], { districtId: mission.districtId }), null);
+});
+
+test('malformed or overlapping walking places cannot turn a single presence into a route', () => {
+  const { step } = atNewRoute();
+  for (const walk of [null, { points: [] }, { points: [step.walk.points[0]] },
+    { points: [...step.walk.points, ...step.walk.points] },
+    { points: step.walk.points.map((point, index) => index === 1 ? { ...point, x: step.walk.points[0].x, y: step.walk.points[0].y } : point) },
+    { points: step.walk.points.map((point, index) => index ? point : { ...point, label: { fr: 'Seul' } }) },
+    { points: step.walk.points.map((point, index) => index ? point : { ...point, x: NaN }) }
+  ]) assert.equal(getMosaicMissionWalkSpec({ ...step, walk }), null);
+  assert.equal(getMosaicMissionWalkSpec({ ...step, type: 'npc' }), null);
+  assert.equal(getMosaicMissionWalkSpec({ ...step, x: step.x + 1 }), null);
 });
 test('switching missions pauses one dossier without losing its completed steps or choices', () => {
   let progress = startMosaicCharacterMission(normalizeMosaicCharacterMissions(), catalog[0]).progress;

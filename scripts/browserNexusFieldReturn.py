@@ -28,6 +28,7 @@ def open_field_terminal(page):
     # the City back to the Atrium. Only cross_check requires a district objective.
     if not page.get_by_role('dialog').count():
         page.get_by_role('button', name='TERMINAL · JOURNAL', exact=True).click()
+    page.locator('[data-city-terminal-tab="transmissions"]').click()
     expect(page.locator('[data-field-access]')).to_be_visible()
 
 

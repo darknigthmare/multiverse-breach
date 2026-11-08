@@ -67,6 +67,18 @@ test('empty or removed district content preserves external records without fabri
 });
 
 for (const lang of ['fr', 'en']) {
+  test(`${lang}: a resident can open their requested page while another adventure stays tracked`, () => {
+    const data = props(), before = JSON.stringify(data);
+    const html = render({ ...data, lang, initialMissionId: 'qa-case-61' });
+    assert.match(html, /data-city-contract-reader="qa-case-61"/);
+    assert.match(html, /data-city-contract-status="available"/);
+    assert.match(html, /data-city-contract-tracked/);
+    assert.match(html, /data-city-contract-accept/);
+    assert.equal(data.progress.activeId, 'qa-case-3');
+    assert.equal(JSON.stringify(data), before, 'opening a page must not accept it or change the followed adventure');
+    assert.match(render({ ...data, initialMissionId: 'absent-dlc-case' }), /data-city-contract-reader="qa-case-3"/,
+      'an unavailable requested page safely falls back to the retained active entry');
+  });
   test(`${lang}: actual journal renders a bounded directory, direct selector, independent tracked objective and folded evidence`, () => {
     const data = props(), before = JSON.stringify(data);
     const html = render({ ...data, lang });

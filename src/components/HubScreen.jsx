@@ -4,14 +4,18 @@ import { DISCIPLINE_SPRITE_REGISTRY } from '../game/disciplineSprites.js';
 import CloudMeadowGallery from './CloudMeadowGallery.jsx';
 import { getMosaicExhibits, getMosaicExhibitView, getMosaicExhibitZones, drawMosaicService } from '../game/mosaicExhibits.js';
 import { buildMosaicReconnaissanceDossier, normalizeMosaicReconnaissance, startMosaicReconnaissance, advanceMosaicReconnaissance, getMosaicReconnaissanceObjective } from '../game/mosaicReconnaissance.js';
-import { normalizeMosaicCharacterMissions, getMosaicCharacterMissionCatalog, getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, getMosaicCharacterMissionWorldObjects, getMosaicCharacterMissionPropZones, getMosaicCharacterMissionCargo, startMosaicCharacterMission, restartMosaicCharacterMission, acceptMosaicCharacterMissionRequest, advanceMosaicCharacterMission, resolveMosaicCharacterMission, localizeCityMission } from '../game/mosaicCharacterMissions.js';
+import { normalizeMosaicCharacterMissions, getMosaicCharacterMissionCatalog, getMosaicCharacterMissionObjective, getMosaicCharacterMissionZones, getMosaicCharacterMissionWorldObjects, getMosaicCharacterMissionPropZones, getMosaicCharacterMissionCargo, startMosaicCharacterMission, restartMosaicCharacterMission, acceptMosaicCharacterMissionRequest, advanceMosaicCharacterMission, advanceMosaicCharacterMissionWalk, resolveMosaicCharacterMission, localizeCityMission } from '../game/mosaicCharacterMissions.js';
 import { drawMosaicMissionObjectProp, drawMosaicMissionObjectLabel, selectMosaicMissionObjectLabel, getMosaicMissionOperation } from '../game/mosaicMissionOperations.js';
 import { drawMosaicMissionCargo } from '../game/mosaicMissionCargo.js';
+import { getMosaicMissionWalkApproach } from '../game/mosaicMissionWalks.js';
 import MosaicCharacterMissions from './MosaicCharacterMissions.jsx';
+import MosaicPocketTerminal from './MosaicPocketTerminal.jsx';
 import { createExtinctionRelayOperation, tickExtinctionRelayOperation, interactExtinctionRelayOperation, getExtinctionRelayStatus } from '../game/extinctionRelayOperation.js';
 import { createExtinctionProtocolState, activateExtinctionProtocol, tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, drawExtinctionProtocols, getExtinctionProtocolBrief, clearExtinctionProtocolEffects, getExtinctionProtocolSpeedFactor, fireExtinctionPickupWeapon, getExtinctionPickupBrief } from '../game/extinctionSignatures.js';
 import { getExtinctionFighterProfile } from '../game/extinctionFighterProfiles.js';
 import { equipExtinctionFieldPickup, holsterExtinctionFieldWeapon, restoreExtinctionFieldWeapon, getExtinctionFieldWeaponReadout, clearExtinctionFieldEquipment } from '../game/extinctionFieldEquipment.js';
+import { getExtinctionAimReadout, drawExtinctionAimReticle } from '../game/extinctionAimReadout.js';
+import ExtinctionPrimaryAction from './ExtinctionPrimaryAction.jsx';
 import { EXTINCTION_FIELD_DIRECTIVES, createExtinctionFieldDirective, getExtinctionDirectiveTarget, interactExtinctionFieldDirective, tickExtinctionFieldDirective, markExtinctionHuntTarget, canAdvanceExtinctionDirectiveWave, canCompleteExtinctionFieldDirective, getExtinctionDirectiveSpeedFactor, getExtinctionFieldDirectiveStatus, getExtinctionRadarPoint, drawExtinctionDirectiveMarkers } from '../game/extinctionFieldDirectives.js';
 import ExtinctionFighterBriefing from './ExtinctionFighterBriefing.jsx';
 import { getMosaicResidentCatalog, getMosaicResidentView } from '../game/mosaicResidents.js';
@@ -2295,35 +2299,64 @@ function MosaicCityHub({
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
   const [conversationHeroId, setConversationHeroId] = useState(null);
   const [missionConversation, setMissionConversation] = useState(null);
+  const [terminalSection, setTerminalSection] = useState('journal');
+  const [journalMissionId, setJournalMissionId] = useState(null);
   const cityTerminalButtonRef = useRef(null);
+  const expeditionJournalRef = useRef(null);
   const journalRef = useRef(null);
   const journalFocusRequestedRef = useRef(false);
+  const transmissionFocusRequestedRef = useRef(false);
   const guideDetailsRef = useRef(null);
   const guideFocusRequestedRef = useRef(false);
-  const openJournal = () => {
+  const openJournal = missionId => {
+    setTerminalSection('journal');
+    setJournalMissionId(typeof missionId === 'string' ? missionId : null);
+    transmissionFocusRequestedRef.current = false;
     guideFocusRequestedRef.current = false; journalFocusRequestedRef.current = true;
+    setConversationHeroId(null); setMissionConversation(null); setCityMenuOpen(true);
+  };
+  const openTransmission = () => {
+    setTerminalSection('transmissions');
+    journalFocusRequestedRef.current = false; guideFocusRequestedRef.current = false;
+    transmissionFocusRequestedRef.current = true;
     setConversationHeroId(null); setMissionConversation(null); setCityMenuOpen(true);
   };
   const openGuideDetails = () => {
     // The guide card can disappear when paused in the terminal. Its persistent
     // terminal button remains a valid return target for the modal lifecycle.
     cityTerminalButtonRef.current?.focus({ preventScroll: true });
+    setTerminalSection('guide');
+    transmissionFocusRequestedRef.current = false;
     journalFocusRequestedRef.current = false; guideFocusRequestedRef.current = true; setCityMenuOpen(true);
   };
   useEffect(() => {
-    if (!cityMenuOpen || (!journalFocusRequestedRef.current && !guideFocusRequestedRef.current)) return undefined;
+    if (!cityMenuOpen || (!journalFocusRequestedRef.current && !guideFocusRequestedRef.current && !transmissionFocusRequestedRef.current)) return undefined;
     const frame = requestAnimationFrame(() => {
-      const target = guideFocusRequestedRef.current ? guideDetailsRef.current : journalRef.current;
+      // A tab change or close can cancel the request before the effect cleanup.
+      if (!journalFocusRequestedRef.current && !guideFocusRequestedRef.current && !transmissionFocusRequestedRef.current) return;
+      const target = guideFocusRequestedRef.current ? guideDetailsRef.current : transmissionFocusRequestedRef.current ? journalRef.current
+        : expeditionJournalRef.current?.querySelector('.mosaic-contract-reader h4') || expeditionJournalRef.current;
       target?.scrollIntoView({ block: 'nearest' });
       target?.focus({ preventScroll: true });
       journalFocusRequestedRef.current = false;
       guideFocusRequestedRef.current = false;
+      transmissionFocusRequestedRef.current = false;
     });
     return () => cancelAnimationFrame(frame);
-  }, [cityMenuOpen, conversationHeroId]);
-  const closeCityMenu = useCallback(() => setCityMenuOpen(false), []);
+  }, [cityMenuOpen, conversationHeroId, terminalSection]);
+  const closeCityMenu = useCallback(() => {
+    journalFocusRequestedRef.current = false;
+    transmissionFocusRequestedRef.current = false;
+    guideFocusRequestedRef.current = false;
+    setCityMenuOpen(false);
+  }, []);
   useEffect(() => {
-    if (!cityMenuOpen) { setConversationHeroId(null); setMissionConversation(null); }
+    if (!cityMenuOpen) {
+      setConversationHeroId(null); setMissionConversation(null);
+      journalFocusRequestedRef.current = false;
+      transmissionFocusRequestedRef.current = false;
+      guideFocusRequestedRef.current = false;
+    }
   }, [cityMenuOpen]);
   const cityMenuRef = useRef(false);
   const [runtimeError, setRuntimeError] = useState(null);
@@ -2706,10 +2739,10 @@ function MosaicCityHub({
   missionCargoRef.current = missionCargo;
   stateRef.current.missionCargo = missionCargo;
   useEffect(() => {
-    if (!cityMenuOpen || !exhibitFocusPending.current) return undefined;
+    if (!cityMenuOpen || terminalSection !== 'district' || !exhibitFocusPending.current) return undefined;
     const frame = requestAnimationFrame(() => { exhibitFocusRef.current?.focus({ preventScroll: true }); exhibitFocusRef.current?.scrollIntoView({ block: 'nearest' }); exhibitFocusPending.current = false; });
     return () => cancelAnimationFrame(frame);
-  }, [cityMenuOpen, selectedExhibitId]);
+  }, [cityMenuOpen, selectedExhibitId, terminalSection]);
   useEffect(() => {
     if (restoredLocationRef.current) return;
     restoredLocationRef.current = true;
@@ -2863,10 +2896,22 @@ function MosaicCityHub({
     if (cityMenuOpen) return;
     const zone = zones.find(entry => entry.id === reconnaissanceTarget.id || entry.exhibitId === reconnaissanceTarget.id);
     if (!zone) { setReconnaissanceTarget(null); return; }
-    stateRef.current.destination = getMosaicZoneAnchor(zone);
-    stateRef.current.pendingInteraction = { type: 'zone', id: zone.id };
+    const mission = characterMissionCatalog.find(item => item.id === characterMissionsRef.current.activeId);
+    const objective = getMosaicCharacterMissionObjective(characterMissionsRef.current, mission, lang);
+    const walking = objective?.status === 'active' && objective.walk && !objective.walk.completed
+      && objective.targetId === zone.id;
+    // The journal and a direct marker click must both request a real step,
+    // including when a restored player already stands at the marker's foot.
+    const approach = walking ? getMosaicMissionWalkApproach(stateRef.current, objective.walk.next, district)
+      : getMosaicZoneAnchor(zone);
+    stateRef.current.destination = approach;
+    stateRef.current.destinationRoute = null;
+    stateRef.current.pendingInteraction = approach ? { type: 'zone', id: zone.id } : null;
+    if (walking && !approach) setHubLog(lang === 'fr'
+      ? 'Le passage vers ce repère est bloqué. Rejoins un côté dégagé.'
+      : 'The way to this marker is blocked. Approach an open side.');
     setReconnaissanceTarget(null);
-  }, [reconnaissanceTarget, currentDistrict, sessionPaused, runtimeError, cityMenuOpen, zones]);
+  }, [reconnaissanceTarget, currentDistrict, sessionPaused, runtimeError, cityMenuOpen, zones, characterMissionCatalog, district, lang]);
 
   const switchDistrict = useCallback((portal) => {
     if (sessionPausedRef.current) return;
@@ -2957,6 +3002,7 @@ function MosaicCityHub({
       if (!entry) return;
       setSelectedExhibitId(entry.id);
       exhibitFocusPending.current = true;
+      setTerminalSection('district');
       setCityMenuOpen(true);
       setHubLog(objectiveFeedback || (lang === 'fr' ? `Vitrine consultée : ${entry.name}. Aucun objet attribué.` : `Display inspected: ${entry.name}. No item granted.`));
       return;
@@ -3210,7 +3256,25 @@ function MosaicCityHub({
       const elapsedMs = lastFrame === null ? 0 : Math.max(0, Math.min(50, timestamp - lastFrame));
       lastFrame = timestamp;
       state.t += elapsedMs * 60 / 1000;
-      recordGuide('move', advanceMosaicPlayer(state, district, elapsedMs));
+      const beforeWalk = { x: state.player.x, y: state.player.y };
+      const moved = advanceMosaicPlayer(state, district, elapsedMs);
+      recordGuide('move', moved);
+      const walkingMission = characterMissionCatalog.find(mission => mission.id === characterMissionsRef.current.activeId);
+      const walkingResult = advanceMosaicCharacterMissionWalk(characterMissionsRef.current, walkingMission,
+        { districtId: currentDistrict, from: beforeWalk, to: state.player, distance: moved,
+          speed: state.player.speed || 2.35, elapsedMs }, lang);
+      if (walkingResult.changed) {
+        commitCharacterMissions(walkingResult.progress);
+        // Follow only an approach the player already requested. Manual walking
+        // never creates an automatic destination when a marker is reached.
+        if (state.pendingInteraction?.id === `${walkingMission.id}::${getMosaicCharacterMissionObjective(walkingResult.progress, walkingMission, lang).step.id}`) {
+          state.destination = { x: walkingResult.walk.next.x, y: walkingResult.walk.next.y };
+          state.destinationRoute = null;
+        }
+      }
+      const walkingObjective = getMosaicCharacterMissionObjective(characterMissionsRef.current, walkingMission, lang);
+      const waitingForWalk = walkingObjective?.walk && !walkingObjective.walk.completed
+        && state.pendingInteraction?.id === walkingObjective.targetId;
       const cameraTarget = getMosaicCameraPosition(state.player, district, canvas);
       const cameraViewport = cameraViewportRef.current;
       // A fresh or resized canvas must show the saved player on its first frame.
@@ -3280,7 +3344,8 @@ function MosaicCityHub({
         nearbyInteractionRef.current = interaction ? { ...interaction, key: interactionKey } : null;
         setNearbyLabel(interaction?.target?.label || interaction?.target?.hero?.name || '');
       }
-      if (state.pendingInteraction && resolveMosaicInteraction(state.player, interactionScene, state.pendingInteraction)) {
+      if (!walkingResult.changed && !waitingForWalk
+        && state.pendingInteraction && resolveMosaicInteraction(state.player, interactionScene, state.pendingInteraction)) {
         interactWithNearby(state.pendingInteraction);
       }
 
@@ -3536,7 +3601,7 @@ function MosaicCityHub({
       window.cancelAnimationFrame(rafId);
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
     };
-  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, renderAttempt, sceneHudRef, sceneObstacles, scenery, unlockedUniverses.length, zones]);
+  }, [characterMissionCatalog, commitCharacterMissions, completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, renderAttempt, sceneHudRef, sceneObstacles, scenery, unlockedUniverses.length, zones]);
 
   const moveToPointer = event => {
     if (sessionPausedRef.current || cityMenuRef.current || (event.pointerType === 'mouse' && event.button !== 0)) return;
@@ -3559,6 +3624,21 @@ function MosaicCityHub({
     stateRef.current.keys = {};
     if (clicked) {
       const preferred = { type: clicked.type, id: clicked.id };
+      const walkingMission = characterMissionCatalog.find(mission => mission.id === characterMissionsRef.current.activeId);
+      const walkingObjective = getMosaicCharacterMissionObjective(characterMissionsRef.current, walkingMission, lang);
+      if (clicked.type === 'zone' && walkingObjective?.status === 'active'
+        && walkingObjective.walk && !walkingObjective.walk.completed && clicked.id === walkingObjective.targetId) {
+        // Even inside interaction range, a route marker asks for a real step.
+        // Restoring beside it must not leave its click trapped in walk_pending.
+        const approach = getMosaicMissionWalkApproach(stateRef.current, walkingObjective.walk.next, district);
+        stateRef.current.destination = approach;
+        stateRef.current.destinationRoute = null;
+        stateRef.current.pendingInteraction = approach ? preferred : null;
+        if (!approach) setHubLog(lang === 'fr'
+          ? 'Le passage vers ce repère est bloqué. Rejoins un côté dégagé.'
+          : 'The way to this marker is blocked. Approach an open side.');
+        return;
+      }
       if (resolveMosaicInteraction(stateRef.current.player, scene, preferred)) interactWithNearby(preferred);
       else {
         stateRef.current.pendingInteraction = preferred;
@@ -3730,7 +3810,7 @@ function MosaicCityHub({
             <MosaicGuidePanel lang={lang} title={guideCopy.title} body={guideCopy.body} step={guideStep} onPause={() => { cityTerminalButtonRef.current?.focus({ preventScroll: true }); controlGuide('pause'); }} onOpenDetails={openGuideDetails} />
           ) : null}
         </div>
-        <button ref={cityTerminalButtonRef} type="button" className="btn-retro" onClick={() => setCityMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'TERMINAL · JOURNAL' : 'TERMINAL · JOURNAL'}</button>
+        <button ref={cityTerminalButtonRef} type="button" className="btn-retro" onClick={() => { setJournalMissionId(null); setCityMenuOpen(true); }} aria-haspopup="dialog">{lang === 'fr' ? 'TERMINAL · JOURNAL' : 'TERMINAL · JOURNAL'}</button>
       </div>
       <MosaicResidentConversation open={cityMenuOpen && Boolean(residentConversation)} conversation={residentConversation} lang={lang}
         location={conversationMission?.location}
@@ -3740,158 +3820,170 @@ function MosaicCityHub({
         scrollLabel={lang === 'fr' ? 'Journal et services de la Cité' : 'City journal and services'}
         title={lang === 'fr' ? 'Terminal de poche A.R.C.A.' : 'A.R.C.A. pocket terminal'}>
       <div className="nexus-play-copy">
-        <div className="portal-focus-kicker">{lang === 'fr' ? 'CITE-MOSAIQUE / RPG VIVANT' : 'MOSAIC CITY / LIVING RPG'}</div>
-        <h3>{lang === 'fr' ? 'Cite-Mosaique' : 'Mosaic City'}</h3>
-        <p>
-          {lang === 'fr'
-            ? 'Un carrefour vivant entre les Trames. Mirelle t accueille dans l Atrium; explore a ton rythme.'
-            : 'A living crossroads between Threads. Mirelle welcomes you in the Atrium; explore at your own pace.'}
-        </p>
-        <div className="nexus-play-stats">
-          <span>{ownedHeroes.length} {lang === 'fr' ? 'signatures' : 'signatures'}</span>
-          <span>{unlockedUniverses.length} {lang === 'fr' ? 'destinations disponibles' : 'available destinations'}</span>
-          <span>{completedStages.length} {lang === 'fr' ? 'breches scellees' : 'sealed breaches'}</span>
-          <span>{district.label}</span>
-          <span>{currentZoneData?.label || 'Nexus'}</span>
-        </div>
-        <section className="mosaic-reconnaissance" aria-label={lang === 'fr' ? 'Reconnaissance du quartier' : 'District reconnaissance'}>
-          <h3>{lang === 'fr' ? 'RAPPORT DE RECONNAISSANCE' : 'RECONNAISSANCE REPORT'}</h3>
-          {reconnaissanceDossier ? <>
-            <strong>{district.label}</strong>
-            <p>{reconnaissance.dossiers[currentDistrict]?.exhibitGoal === 2
-              ? (lang === 'fr' ? 'Écoute un habitant du quartier, compare deux reliques distinctes dans les vitrines, puis transmets tes observations à l’ancre locale.' : 'Listen to a district resident, compare two distinct relics in the displays, then transmit your observations at the local anchor.')
-              : (lang === 'fr' ? 'Écoute un habitant du quartier, examine une relique dans une vitrine, puis transmets tes observations à l’ancre locale.' : 'Listen to a district resident, examine a relic at a display, then transmit your observations at the local anchor.')}</p>
-            <ol>
-              <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.residentId)}>{lang === 'fr' ? 'Rencontrer un habitant' : 'Meet a resident'}{reconnaissance.dossiers[currentDistrict]?.residentId && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
-              <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.exhibitId)}>{reconnaissance.dossiers[currentDistrict]?.exhibitGoal === 2
-                ? (lang === 'fr' ? `Examiner deux reliques distinctes sur place (${reconnaissance.dossiers[currentDistrict].evidenceIds.length}/2)` : `Inspect two distinct relics in person (${reconnaissance.dossiers[currentDistrict].evidenceIds.length}/2)`)
-                : (lang === 'fr' ? 'Examiner une relique sur place' : 'Inspect a relic in person')}{reconnaissance.dossiers[currentDistrict]?.exhibitId && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
-              <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.completed)}>{lang === 'fr' ? 'Transmettre à l’ancre' : 'Report at the anchor'}{reconnaissance.dossiers[currentDistrict]?.completed && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
-            </ol>
-            <p role="status" data-reconnaissance-objective>{reconnaissanceObjective?.text}</p>
-            {!reconnaissance.dossiers[currentDistrict]?.completed && (reconnaissance.activeDistrictId === currentDistrict ?
-              <button type="button" className="btn-retro" data-reconnaissance="approach" onClick={approachReconnaissanceObjective}>{lang === 'fr' ? 'REJOINDRE L’OBJECTIF' : 'APPROACH OBJECTIVE'}</button> :
-              <button type="button" className="btn-retro" data-reconnaissance="start" onClick={acceptReconnaissance}>{reconnaissance.dossiers[currentDistrict] ? (lang === 'fr' ? 'REPRENDRE CE DOSSIER' : 'RESUME THIS REPORT') : (lang === 'fr' ? 'PRENDRE LE DOSSIER' : 'ACCEPT REPORT')}</button>)}
-          </> : <p>{lang === 'fr' ? 'Entre dans un quartier disposant d’habitants et de vitrines pour prendre un dossier. La Galerie des Trames présente tes destinations disponibles.' : 'Enter a district with residents and displays to accept a report. The Thread Gallery lists your available destinations.'}</p>}
-          {reconnaissance.activeDistrictId && reconnaissance.activeDistrictId !== currentDistrict && <p>{districts[reconnaissance.activeDistrictId]
-            ? (lang === 'fr' ? `Dossier en cours : ${districts[reconnaissance.activeDistrictId].label}. Tes étapes restent enregistrées.` : `Current report: ${districts[reconnaissance.activeDistrictId].label}. Your steps are saved.`)
-            : (lang === 'fr' ? 'Le quartier du dossier en cours est indisponible. Tes étapes sont conservées pour son retour.' : 'The current report’s district is unavailable. Your steps are preserved for its return.')}</p>}
-          <small>{Object.values(reconnaissance.dossiers).filter(entry => entry.completed).length} {lang === 'fr' ? 'rapport(s) transmis · progression enregistrée' : 'report(s) transmitted · progress saved'}</small>
-        </section>
-        <MosaicCharacterMissions missions={characterMissionCatalog} progress={characterMissions} heroes={safeHeroes} lang={lang}
-          onAccept={acceptCharacterMission} onApproach={approachCharacterMission} onResolve={resolveCharacterMission} onReplay={replayCharacterMission} />
-        <MosaicEvidenceLedger entries={reconnaissanceLedger} lang={lang} />
-        <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(extinctionCareer)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang}>
-          <button type="button" className="btn-retro" data-field-deploy disabled={!fieldAccess.available || typeof onOpenService !== 'function'}
-            onClick={() => { if (fieldAccess.available) openCityService(onOpenService, 'battleRoyale', { fieldOperation: NEXUS_FIELD_OPERATION_ID }); }}>
-            {fieldAccess.available ? (lang === 'fr' ? 'OUVRIR LE BRIEFING FPS' : 'OPEN FPS BRIEFING')
-              : (lang === 'fr' ? 'BRIEFING VERROUILLÉ' : 'BRIEFING LOCKED')}
-          </button>
-        </NexusFieldBriefing>
-        <details className="mosaic-resident-directory">
-          <summary>{lang === 'fr' ? 'Habitants disponibles' : 'Available residents'} · {residentView.total}</summary>
-          <label><span>{lang === 'fr' ? 'Rechercher un habitant' : 'Find a resident'}</span>
-            <input type="search" className="nexus-select" value={residentQuery} onChange={event => { clearCityDestination(); setResidentQuery(event.target.value); setResidentPage(0); }} />
-          </label>
-          <p role="status">{residentView.matching} / {residentView.total} · {lang === 'fr' ? 'Groupe présent' : 'Present group'} {residentView.group + 1} / {residentView.groupCount}</p>
-          <div className="mosaic-resident-results">
-            {residentView.items.map(entry => <button key={entry.hero.id} type="button" className="btn-retro" data-resident-id={entry.hero.id} onClick={() => approachResident(entry)}>
-              <strong>{entry.hero.name}</strong><span>{entry.hero.universe}</span><small>{lang === 'fr' ? 'Rejoindre' : 'Approach'} · {lang === 'fr' ? 'groupe' : 'group'} {entry.group + 1}</small>
-            </button>)}
-          </div>
-          {!residentView.matching && <p>{lang === 'fr' ? 'Aucun habitant possédé ne correspond.' : 'No owned resident matches.'}</p>}
-          <nav aria-label={lang === 'fr' ? 'Pages des habitants' : 'Resident pages'}>
-            <button type="button" className="btn-retro" disabled={!residentView.page} onClick={() => setResidentPage(residentView.page - 1)}>{lang === 'fr' ? 'Précédent' : 'Previous'}</button>
-            <span>{residentView.page + 1} / {residentView.pageCount}</span>
-            <button type="button" className="btn-retro" disabled={residentView.page + 1 >= residentView.pageCount} onClick={() => setResidentPage(residentView.page + 1)}>{lang === 'fr' ? 'Suivant' : 'Next'}</button>
-          </nav>
-          <small>{lang === 'fr' ? '17 habitants au plus par groupe, plus Mirelle dans l’Atrium. Rejoindre change le groupe présent et fait marcher l’Ancre ; aucun personnage n’est débloqué.' : 'Up to 17 residents per group, plus Mirelle in the Atrium. Approach changes the present group and walks the Anchor there; no character is unlocked.'}</small>
-        </details>
-        {currentDistrict === 'threads' ? (
-          <section className="nexus-play-intel" aria-label={lang === 'fr' ? 'Catalogue des quartiers disponibles' : 'Available district catalog'}>
-            <strong>{lang === 'fr' ? 'Toutes tes destinations disponibles' : 'All your available destinations'}</strong>
-            <label style={{ display: 'grid', gap: 6, width: '100%' }}>
-              <span>{lang === 'fr' ? 'Rechercher un quartier' : 'Find a district'}</span>
-              <input type="search" className="nexus-select" value={destinationQuery} onFocus={clearCityDestination} onChange={event => { clearCityDestination(); setDestinationQuery(event.target.value); setDestinationPage(0); }} placeholder={lang === 'fr' ? 'Nom de l univers…' : 'Universe name…'} />
-            </label>
-            <span role="status">{destinationView.matching} / {destinationView.total} {lang === 'fr' ? 'destinations · signatures possedees' : 'destinations · owned signatures'}</span>
-            <div style={{ display: 'grid', gap: 6, width: '100%' }}>
-              {destinationView.items.map(universe => <button key={universe} type="button" className="btn-retro" style={{ minHeight: 44, textAlign: 'left' }} onClick={() => approachDistrictPortal(universe)}>{universe}</button>)}
-              {!destinationView.matching && <span>{lang === 'fr' ? 'Aucun quartier disponible ne correspond a cette recherche.' : 'No available district matches this search.'}</span>}
+        <MosaicPocketTerminal lang={lang} section={terminalSection} onSectionChange={section => {
+          journalFocusRequestedRef.current = false; transmissionFocusRequestedRef.current = false;
+          guideFocusRequestedRef.current = false; exhibitFocusPending.current = false;
+          setTerminalSection(section);
+        }} panels={{
+          journal: <div ref={expeditionJournalRef} className="mosaic-expedition-entry" tabIndex={-1}
+            role="region" aria-label={lang === 'fr' ? 'Carnet d’expédition' : 'Expedition journal'}>
+            <MosaicCharacterMissions missions={characterMissionCatalog} progress={characterMissions} initialMissionId={journalMissionId} heroes={safeHeroes} lang={lang}
+              onAccept={acceptCharacterMission} onApproach={approachCharacterMission} onResolve={resolveCharacterMission} onReplay={replayCharacterMission} />
+          </div>,
+          district: <>
+            <header className="mosaic-terminal-intro">
+              <h3>{district.label}</h3>
+              <p>{lang === 'fr' ? 'Les habitants, les passages et les lieux que tu peux rejoindre à pied.' : 'People, passages and places you can reach on foot.'}</p>
+            </header>
+            <div className="nexus-play-stats">
+              <span>{ownedHeroes.length} {lang === 'fr' ? 'signatures' : 'signatures'}</span>
+              <span>{unlockedUniverses.length} {lang === 'fr' ? 'destinations disponibles' : 'available destinations'}</span>
+              <span>{completedStages.length} {lang === 'fr' ? 'breches scellees' : 'sealed breaches'}</span>
+              <span>{district.label}</span>
+              <span>{currentZoneData?.label || 'Nexus'}</span>
             </div>
-            <div className="mosaic-room-actions">
-              <button type="button" className="btn-retro" disabled={!destinationView.page} onClick={() => { clearCityDestination(); setDestinationPage(destinationView.page - 1); }}>{lang === 'fr' ? 'Precedent' : 'Previous'}</button>
-              <span>{destinationView.page + 1} / {destinationView.pageCount}</span>
-              <button type="button" className="btn-retro" disabled={destinationView.page + 1 >= destinationView.pageCount} onClick={() => { clearCityDestination(); setDestinationPage(destinationView.page + 1); }}>{lang === 'fr' ? 'Suivant' : 'Next'}</button>
+            <details className="mosaic-resident-directory">
+              <summary>{lang === 'fr' ? 'Habitants disponibles' : 'Available residents'} · {residentView.total}</summary>
+              <label><span>{lang === 'fr' ? 'Rechercher un habitant' : 'Find a resident'}</span>
+                <input type="search" className="nexus-select" value={residentQuery} onChange={event => { clearCityDestination(); setResidentQuery(event.target.value); setResidentPage(0); }} />
+              </label>
+              <p role="status">{residentView.matching} / {residentView.total} · {lang === 'fr' ? 'Groupe présent' : 'Present group'} {residentView.group + 1} / {residentView.groupCount}</p>
+              <div className="mosaic-resident-results">
+                {residentView.items.map(entry => <button key={entry.hero.id} type="button" className="btn-retro" data-resident-id={entry.hero.id} onClick={() => approachResident(entry)}>
+                  <strong>{entry.hero.name}</strong><span>{entry.hero.universe}</span><small>{lang === 'fr' ? 'Rejoindre' : 'Approach'} · {lang === 'fr' ? 'groupe' : 'group'} {entry.group + 1}</small>
+                </button>)}
+              </div>
+              {!residentView.matching && <p>{lang === 'fr' ? 'Aucun habitant possédé ne correspond.' : 'No owned resident matches.'}</p>}
+              <nav aria-label={lang === 'fr' ? 'Pages des habitants' : 'Resident pages'}>
+                <button type="button" className="btn-retro" disabled={!residentView.page} onClick={() => setResidentPage(residentView.page - 1)}>{lang === 'fr' ? 'Précédent' : 'Previous'}</button>
+                <span>{residentView.page + 1} / {residentView.pageCount}</span>
+                <button type="button" className="btn-retro" disabled={residentView.page + 1 >= residentView.pageCount} onClick={() => setResidentPage(residentView.page + 1)}>{lang === 'fr' ? 'Suivant' : 'Next'}</button>
+              </nav>
+              <small>{lang === 'fr' ? '17 habitants au plus par groupe, plus Mirelle dans l’Atrium. Rejoindre change le groupe présent et fait marcher l’Ancre ; aucun personnage n’est débloqué.' : 'Up to 17 residents per group, plus Mirelle in the Atrium. Approach changes the present group and walks the Anchor there; no character is unlocked.'}</small>
+            </details>
+            {currentDistrict === 'threads' ? (
+              <section className="nexus-play-intel" aria-label={lang === 'fr' ? 'Catalogue des quartiers disponibles' : 'Available district catalog'}>
+                <strong>{lang === 'fr' ? 'Toutes tes destinations disponibles' : 'All your available destinations'}</strong>
+                <label style={{ display: 'grid', gap: 6, width: '100%' }}>
+                  <span>{lang === 'fr' ? 'Rechercher un quartier' : 'Find a district'}</span>
+                  <input type="search" className="nexus-select" value={destinationQuery} onFocus={clearCityDestination} onChange={event => { clearCityDestination(); setDestinationQuery(event.target.value); setDestinationPage(0); }} placeholder={lang === 'fr' ? 'Nom de l univers…' : 'Universe name…'} />
+                </label>
+                <span role="status">{destinationView.matching} / {destinationView.total} {lang === 'fr' ? 'destinations · signatures possedees' : 'destinations · owned signatures'}</span>
+                <div style={{ display: 'grid', gap: 6, width: '100%' }}>
+                  {destinationView.items.map(universe => <button key={universe} type="button" className="btn-retro" style={{ minHeight: 44, textAlign: 'left' }} onClick={() => approachDistrictPortal(universe)}>{universe}</button>)}
+                  {!destinationView.matching && <span>{lang === 'fr' ? 'Aucun quartier disponible ne correspond a cette recherche.' : 'No available district matches this search.'}</span>}
+                </div>
+                <div className="mosaic-room-actions">
+                  <button type="button" className="btn-retro" disabled={!destinationView.page} onClick={() => { clearCityDestination(); setDestinationPage(destinationView.page - 1); }}>{lang === 'fr' ? 'Precedent' : 'Previous'}</button>
+                  <span>{destinationView.page + 1} / {destinationView.pageCount}</span>
+                  <button type="button" className="btn-retro" disabled={destinationView.page + 1 >= destinationView.pageCount} onClick={() => { clearCityDestination(); setDestinationPage(destinationView.page + 1); }}>{lang === 'fr' ? 'Suivant' : 'Next'}</button>
+                </div>
+                <small>{lang === 'fr' ? 'Choisir un nom fait marcher ton Ancre vers le portail affiche. Aucun quartier verrouille n est ouvert.' : 'Selecting a name walks your Anchor to its displayed portal. Locked districts stay locked.'}</small>
+              </section>
+            ) : <p>{lang === 'fr' ? 'La Galerie des Trames propose la recherche de tous tes quartiers disponibles. Son portail est a l est de l Atrium.' : 'The Thread Gallery lets you search all your available districts. Its portal is east of the Atrium.'}</p>}
+            {district.universe && (
+              <div className="mosaic-room-intel">
+                <strong>{district.label}</strong>
+                <span>{district.universe} / {districtStateLabel}</span>
+                <small>{district.place?.mood || getUniverseHubPlace(district.universe, lang).mood}</small>
+                <em>{districtStats?.cleared || 0}/{districtStats?.total || 0} {lang === 'fr' ? 'failles locales stabilisees' : 'local rifts stabilized'}</em>
+              </div>
+            )}
+            {district.universe && <section ref={exhibitFocusRef} tabIndex={-1} className="mosaic-exhibit-section" aria-label={lang === 'fr' ? 'Vitrines du quartier' : 'District displays'}>
+              <h3>{lang === 'fr' ? 'RELIQUES · ARCHIVES' : 'RELICS · ARCHIVES'}</h3>
+              <p>{lang === 'fr' ? 'Ces vitrines présentent les objets du catalogue de cet univers. Consulter ne débloque ni ne donne un objet.' : 'These displays present this universe’s catalog items. Inspecting never unlocks or grants an item.'}</p>
+              <label>{lang === 'fr' ? 'Rechercher une relique' : 'Find a relic'}<input type="search" className="nexus-select" value={exhibitQuery} onChange={event => { clearCityDestination(); setExhibitQuery(event.target.value); setExhibitPage(0); }} /></label>
+              <div className="mosaic-exhibit-results">{exhibitView.items.map(entry => <article key={entry.id} data-exhibit-id={entry.id}>
+                <strong>{entry.name}</strong><small>{entry.owned ? (lang === 'fr' ? 'Possédé' : 'Owned') : (lang === 'fr' ? 'Archive · non possédé' : 'Archive · not owned')}</small>
+                <button type="button" className="btn-retro" onClick={() => { clearCityDestination(); const zone = zones.find(z => z.exhibitId === entry.id); if (!zone) return; stateRef.current.destination = getMosaicZoneAnchor(zone); stateRef.current.pendingInteraction = { type: 'zone', id: zone.id }; setCityMenuOpen(false); }}>{lang === 'fr' ? 'REJOINDRE LA VITRINE' : 'APPROACH DISPLAY'}</button>
+                <button type="button" className="btn-retro" onClick={() => setSelectedExhibitId(entry.id)}>{lang === 'fr' ? 'LIRE LA FICHE' : 'READ RECORD'}</button>
+              </article>)}</div>
+              {!exhibitView.matching && <p>{lang === 'fr' ? 'Aucune relique visible dans cette recherche.' : 'No visible relic matches this search.'}</p>}
+              <nav aria-label={lang === 'fr' ? 'Pages des vitrines' : 'Display pages'}>
+                <button type="button" className="btn-retro" disabled={exhibitView.page === 0} onClick={() => setExhibitPage(exhibitView.page - 1)}>{lang === 'fr' ? 'Précédent' : 'Previous'}</button>
+                <span>{exhibitView.page + 1}/{exhibitView.pages} · {exhibitView.matching}</span>
+                <button type="button" className="btn-retro" disabled={exhibitView.page + 1 >= exhibitView.pages} onClick={() => setExhibitPage(exhibitView.page + 1)}>{lang === 'fr' ? 'Suivant' : 'Next'}</button>
+              </nav>
+              {selectedExhibit && <div className="mosaic-exhibit-record" role="region" aria-label={lang === 'fr' ? 'Fiche de relique' : 'Relic record'}><strong>{selectedExhibit.name}</strong><p>{selectedExhibit.description || (lang === 'fr' ? 'Description source non renseignée.' : 'No source description supplied.')}</p><small>{lang === 'fr' ? 'Présentation d archive A.R.C.A. ; modèle de monde personnel encore à produire.' : 'A.R.C.A. archive display; personal world model still to be produced.'}</small></div>}
+            </section>}
+            {leadHero && (
+              <div className="nexus-play-intel">
+                <strong>{leadHero.name || 'Ancre'}</strong>
+                <span>{leadHero.universe} / {leadHero.category}</span>
+                <small>{lang === 'fr' ? 'Synchronisation proche disponible dans la Cite.' : 'Nearby synchronization available in the City.'}</small>
+              </div>
+            )}
+            {nearZoneData?.action && (
+              <div className="mosaic-room-actions">
+                <button className="btn-retro" onClick={() => interactWithNearby({ type: 'zone', id: nearZoneData.id })} title={lang === 'fr' ? 'Execute l action de la zone proche.' : 'Run the nearby zone action.'}>
+                  {nearZoneData.action === 'mission'
+                    ? (lang === 'fr' ? 'OUVRIR MISSIONS' : 'OPEN MISSIONS')
+                    : nearZoneData.action === 'codex'
+                      ? (lang === 'fr' ? 'OUVRIR CODEX' : 'OPEN CODEX')
+                      : (lang === 'fr' ? 'INTERAGIR' : 'INTERACT')}
+                </button>
+                <span>{nearZoneData.label}</span>
+              </div>
+            )}
+          </>,
+          transmissions: <>
+            <div ref={journalRef} className="mosaic-rpg-log" role="region" tabIndex={-1} aria-label={lang === 'fr' ? 'Journal de Trame' : 'Thread Log'}>
+              <strong>{lang === 'fr' ? 'Journal de Trame' : 'Thread Log'}</strong>
+              <span>{hubLog}</span>
             </div>
-            <small>{lang === 'fr' ? 'Choisir un nom fait marcher ton Ancre vers le portail affiche. Aucun quartier verrouille n est ouvert.' : 'Selecting a name walks your Anchor to its displayed portal. Locked districts stay locked.'}</small>
-          </section>
-        ) : <p>{lang === 'fr' ? 'La Galerie des Trames propose la recherche de tous tes quartiers disponibles. Son portail est a l est de l Atrium.' : 'The Thread Gallery lets you search all your available districts. Its portal is east of the Atrium.'}</p>}
-        {district.universe && (
-          <div className="mosaic-room-intel">
-            <strong>{district.label}</strong>
-            <span>{district.universe} / {districtStateLabel}</span>
-            <small>{district.place?.mood || getUniverseHubPlace(district.universe, lang).mood}</small>
-            <em>{districtStats?.cleared || 0}/{districtStats?.total || 0} {lang === 'fr' ? 'failles locales stabilisees' : 'local rifts stabilized'}</em>
-          </div>
-        )}
-        {district.universe && <section ref={exhibitFocusRef} tabIndex={-1} className="mosaic-exhibit-section" aria-label={lang === 'fr' ? 'Vitrines du quartier' : 'District displays'}>
-          <h3>{lang === 'fr' ? 'RELIQUES · ARCHIVES' : 'RELICS · ARCHIVES'}</h3>
-          <p>{lang === 'fr' ? 'Ces vitrines présentent les objets du catalogue de cet univers. Consulter ne débloque ni ne donne un objet.' : 'These displays present this universe’s catalog items. Inspecting never unlocks or grants an item.'}</p>
-          <label>{lang === 'fr' ? 'Rechercher une relique' : 'Find a relic'}<input type="search" className="nexus-select" value={exhibitQuery} onChange={event => { clearCityDestination(); setExhibitQuery(event.target.value); setExhibitPage(0); }} /></label>
-          <div className="mosaic-exhibit-results">{exhibitView.items.map(entry => <article key={entry.id} data-exhibit-id={entry.id}>
-            <strong>{entry.name}</strong><small>{entry.owned ? (lang === 'fr' ? 'Possédé' : 'Owned') : (lang === 'fr' ? 'Archive · non possédé' : 'Archive · not owned')}</small>
-            <button type="button" className="btn-retro" onClick={() => { clearCityDestination(); const zone = zones.find(z => z.exhibitId === entry.id); if (!zone) return; stateRef.current.destination = getMosaicZoneAnchor(zone); stateRef.current.pendingInteraction = { type: 'zone', id: zone.id }; setCityMenuOpen(false); }}>{lang === 'fr' ? 'REJOINDRE LA VITRINE' : 'APPROACH DISPLAY'}</button>
-            <button type="button" className="btn-retro" onClick={() => setSelectedExhibitId(entry.id)}>{lang === 'fr' ? 'LIRE LA FICHE' : 'READ RECORD'}</button>
-          </article>)}</div>
-          {!exhibitView.matching && <p>{lang === 'fr' ? 'Aucune relique visible dans cette recherche.' : 'No visible relic matches this search.'}</p>}
-          <nav aria-label={lang === 'fr' ? 'Pages des vitrines' : 'Display pages'}>
-            <button type="button" className="btn-retro" disabled={exhibitView.page === 0} onClick={() => setExhibitPage(exhibitView.page - 1)}>{lang === 'fr' ? 'Précédent' : 'Previous'}</button>
-            <span>{exhibitView.page + 1}/{exhibitView.pages} · {exhibitView.matching}</span>
-            <button type="button" className="btn-retro" disabled={exhibitView.page + 1 >= exhibitView.pages} onClick={() => setExhibitPage(exhibitView.page + 1)}>{lang === 'fr' ? 'Suivant' : 'Next'}</button>
-          </nav>
-          {selectedExhibit && <div className="mosaic-exhibit-record" role="region" aria-label={lang === 'fr' ? 'Fiche de relique' : 'Relic record'}><strong>{selectedExhibit.name}</strong><p>{selectedExhibit.description || (lang === 'fr' ? 'Description source non renseignée.' : 'No source description supplied.')}</p><small>{lang === 'fr' ? 'Présentation d archive A.R.C.A. ; modèle de monde personnel encore à produire.' : 'A.R.C.A. archive display; personal world model still to be produced.'}</small></div>}
-        </section>}
-        {leadHero && (
-          <div className="nexus-play-intel">
-            <strong>{leadHero.name || 'Ancre'}</strong>
-            <span>{leadHero.universe} / {leadHero.category}</span>
-            <small>{lang === 'fr' ? 'Synchronisation proche disponible dans la Cite.' : 'Nearby synchronization available in the City.'}</small>
-          </div>
-        )}
-        {nearZoneData?.action && (
-          <div className="mosaic-room-actions">
-            <button className="btn-retro" onClick={() => interactWithNearby({ type: 'zone', id: nearZoneData.id })} title={lang === 'fr' ? 'Execute l action de la zone proche.' : 'Run the nearby zone action.'}>
-              {nearZoneData.action === 'mission'
-                ? (lang === 'fr' ? 'OUVRIR MISSIONS' : 'OPEN MISSIONS')
-                : nearZoneData.action === 'codex'
-                  ? (lang === 'fr' ? 'OUVRIR CODEX' : 'OPEN CODEX')
-                  : (lang === 'fr' ? 'INTERAGIR' : 'INTERACT')}
-            </button>
-            <span>{nearZoneData.label}</span>
-          </div>
-        )}
-        <div ref={journalRef} className="mosaic-rpg-log" role="region" tabIndex={-1} aria-label={lang === 'fr' ? 'Journal de Trame' : 'Thread Log'}>
-          <strong>{lang === 'fr' ? 'Journal de Trame' : 'Thread Log'}</strong>
-          <span>{hubLog}</span>
-        </div>
-        <div className="mosaic-rpg-controls">
-          <span>{lang === 'fr' ? 'ZQSD/WASD ou fleches : marcher. E : interagir. Touche le sol pour avancer; une personne ou une borne pour l approcher.' : 'WASD or arrows: walk. E: interact. Tap the ground to move; tap a person or terminal to approach.'}</span>
-          <button className="btn-retro" onClick={interactWithNearby} disabled={!nearbyLabel} title={lang === 'fr' ? 'Interagit avec le heros ou le portail le plus proche.' : 'Interact with the nearest hero or portal.'}>
-            {nearbyLabel ? `${lang === 'fr' ? 'INTERAGIR' : 'INTERACT'} - ${nearbyLabel}` : (lang === 'fr' ? 'APPROCHE UNE SIGNATURE' : 'APPROACH A SIGNATURE')}
-          </button>
-        </div>
-        <section ref={guideDetailsRef} tabIndex={-1} className="mosaic-terminal-guide" aria-label={lang === 'fr' ? 'Guide complet de la Cité' : 'Complete City guide'}><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p>
-          {['active', 'paused', 'skipped'].includes(guideState.status) && <button type="button" className="btn-retro" onClick={() => {
-            if (guideState.status === 'active' && !guideAutoDeferred) controlGuide('pause');
-            else { setGuideAutoDeferred(false); setWelcomeOpen(false); controlGuide('resume'); setCityMenuOpen(false); }
-          }}>{guideState.status === 'active' && !guideAutoDeferred ? 'PAUSE GUIDE' : (lang === 'fr' ? 'REPRENDRE LE GUIDE' : 'RESUME GUIDE')}</button>}
-        </section>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-          <button className="mosaic-city-guide-restore" type="button" onClick={() => { setGuideAutoDeferred(false); setWelcomeIndex(0); setWelcomeOpen(true); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Revoir l accueil' : 'Replay welcome'}</button>
-          <button className="mosaic-city-guide-restore" type="button" onClick={() => { setGuideAutoDeferred(false); setWelcomeOpen(false); controlGuide('restart'); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Rejouer les reperes' : 'Replay first steps'}</button>
-          {guideState.status !== 'completed' && guideState.status !== 'skipped' && <button className="mosaic-city-guide-restore" type="button" onClick={() => controlGuide('skip')}>{lang === 'fr' ? 'Ignorer le guide' : 'Skip guide'}</button>}
-        </div>
+            <section className="mosaic-reconnaissance" aria-label={lang === 'fr' ? 'Reconnaissance du quartier' : 'District reconnaissance'}>
+              <h3>{lang === 'fr' ? 'RAPPORT DE RECONNAISSANCE' : 'RECONNAISSANCE REPORT'}</h3>
+              {reconnaissanceDossier ? <>
+                <strong>{district.label}</strong>
+                <p>{reconnaissance.dossiers[currentDistrict]?.exhibitGoal === 2
+                  ? (lang === 'fr' ? 'Écoute un habitant du quartier, compare deux reliques distinctes dans les vitrines, puis transmets tes observations à l’ancre locale.' : 'Listen to a district resident, compare two distinct relics in the displays, then transmit your observations at the local anchor.')
+                  : (lang === 'fr' ? 'Écoute un habitant du quartier, examine une relique dans une vitrine, puis transmets tes observations à l’ancre locale.' : 'Listen to a district resident, examine a relic at a display, then transmit your observations at the local anchor.')}</p>
+                <ol>
+                  <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.residentId)}>{lang === 'fr' ? 'Rencontrer un habitant' : 'Meet a resident'}{reconnaissance.dossiers[currentDistrict]?.residentId && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
+                  <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.exhibitId)}>{reconnaissance.dossiers[currentDistrict]?.exhibitGoal === 2
+                    ? (lang === 'fr' ? `Examiner deux reliques distinctes sur place (${reconnaissance.dossiers[currentDistrict].evidenceIds.length}/2)` : `Inspect two distinct relics in person (${reconnaissance.dossiers[currentDistrict].evidenceIds.length}/2)`)
+                    : (lang === 'fr' ? 'Examiner une relique sur place' : 'Inspect a relic in person')}{reconnaissance.dossiers[currentDistrict]?.exhibitId && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
+                  <li data-complete={Boolean(reconnaissance.dossiers[currentDistrict]?.completed)}>{lang === 'fr' ? 'Transmettre à l’ancre' : 'Report at the anchor'}{reconnaissance.dossiers[currentDistrict]?.completed && <span>{lang === 'fr' ? ' (fait)' : ' (done)'}</span>}</li>
+                </ol>
+                <p role="status" data-reconnaissance-objective>{reconnaissanceObjective?.text}</p>
+                {!reconnaissance.dossiers[currentDistrict]?.completed && (reconnaissance.activeDistrictId === currentDistrict ?
+                  <button type="button" className="btn-retro" data-reconnaissance="approach" onClick={approachReconnaissanceObjective}>{lang === 'fr' ? 'REJOINDRE L’OBJECTIF' : 'APPROACH OBJECTIVE'}</button> :
+                  <button type="button" className="btn-retro" data-reconnaissance="start" onClick={acceptReconnaissance}>{reconnaissance.dossiers[currentDistrict] ? (lang === 'fr' ? 'REPRENDRE CE DOSSIER' : 'RESUME THIS REPORT') : (lang === 'fr' ? 'PRENDRE LE DOSSIER' : 'ACCEPT REPORT')}</button>)}
+              </> : <p>{lang === 'fr' ? 'Entre dans un quartier disposant d’habitants et de vitrines pour prendre un dossier. La Galerie des Trames présente tes destinations disponibles.' : 'Enter a district with residents and displays to accept a report. The Thread Gallery lists your available destinations.'}</p>}
+              {reconnaissance.activeDistrictId && reconnaissance.activeDistrictId !== currentDistrict && <p>{districts[reconnaissance.activeDistrictId]
+                ? (lang === 'fr' ? `Dossier en cours : ${districts[reconnaissance.activeDistrictId].label}. Tes étapes restent enregistrées.` : `Current report: ${districts[reconnaissance.activeDistrictId].label}. Your steps are saved.`)
+                : (lang === 'fr' ? 'Le quartier du dossier en cours est indisponible. Tes étapes sont conservées pour son retour.' : 'The current report’s district is unavailable. Your steps are preserved for its return.')}</p>}
+              <small>{Object.values(reconnaissance.dossiers).filter(entry => entry.completed).length} {lang === 'fr' ? 'rapport(s) transmis · progression enregistrée' : 'report(s) transmitted · progress saved'}</small>
+            </section>
+            <MosaicEvidenceLedger entries={reconnaissanceLedger} lang={lang} />
+            <NexusFieldBriefing access={fieldAccess} completion={getNexusFieldCompletion(extinctionCareer)} heroes={safeHeroes} exhibits={EQUIP_ITEMS_DB} lang={lang}>
+              <button type="button" className="btn-retro" data-field-deploy disabled={!fieldAccess.available || typeof onOpenService !== 'function'}
+                onClick={() => { if (fieldAccess.available) openCityService(onOpenService, 'battleRoyale', { fieldOperation: NEXUS_FIELD_OPERATION_ID }); }}>
+                {fieldAccess.available ? (lang === 'fr' ? 'OUVRIR LE BRIEFING FPS' : 'OPEN FPS BRIEFING')
+                  : (lang === 'fr' ? 'BRIEFING VERROUILLÉ' : 'BRIEFING LOCKED')}
+              </button>
+            </NexusFieldBriefing>
+          </>,
+          guide: <>
+            <section ref={guideDetailsRef} tabIndex={-1} className="mosaic-terminal-guide" aria-label={lang === 'fr' ? 'Guide complet de la Cité' : 'Complete City guide'}><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p>
+              {['active', 'paused', 'skipped'].includes(guideState.status) && <button type="button" className="btn-retro" onClick={() => {
+                if (guideState.status === 'active' && !guideAutoDeferred) controlGuide('pause');
+                else { setGuideAutoDeferred(false); setWelcomeOpen(false); controlGuide('resume'); setCityMenuOpen(false); }
+              }}>{guideState.status === 'active' && !guideAutoDeferred ? 'PAUSE GUIDE' : (lang === 'fr' ? 'REPRENDRE LE GUIDE' : 'RESUME GUIDE')}</button>}
+            </section>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              <button className="mosaic-city-guide-restore" type="button" onClick={() => { setGuideAutoDeferred(false); setWelcomeIndex(0); setWelcomeOpen(true); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Revoir l accueil' : 'Replay welcome'}</button>
+              <button className="mosaic-city-guide-restore" type="button" onClick={() => { setGuideAutoDeferred(false); setWelcomeOpen(false); controlGuide('restart'); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Rejouer les reperes' : 'Replay first steps'}</button>
+              {guideState.status !== 'completed' && guideState.status !== 'skipped' && <button className="mosaic-city-guide-restore" type="button" onClick={() => controlGuide('skip')}>{lang === 'fr' ? 'Ignorer le guide' : 'Skip guide'}</button>}
+            </div>
+            <div className="mosaic-rpg-controls">
+              <span>{lang === 'fr' ? 'ZQSD/WASD ou fleches : marcher. E : interagir. Touche le sol pour avancer; une personne ou une borne pour l approcher.' : 'WASD or arrows: walk. E: interact. Tap the ground to move; tap a person or terminal to approach.'}</span>
+              <button className="btn-retro" onClick={interactWithNearby} disabled={!nearbyLabel} title={lang === 'fr' ? 'Interagit avec le heros ou le portail le plus proche.' : 'Interact with the nearest hero or portal.'}>
+                {nearbyLabel ? `${lang === 'fr' ? 'INTERAGIR' : 'INTERACT'} - ${nearbyLabel}` : (lang === 'fr' ? 'APPROCHE UNE SIGNATURE' : 'APPROACH A SIGNATURE')}
+              </button>
+            </div>
+          </>
+        }} />
       </div>
       </ImmersiveDrawer>
       {missionCargo && <p className="mosaic-carried-item" data-city-cargo={missionCargo.id} role="status">
@@ -3899,7 +3991,7 @@ function MosaicCityHub({
         <span>{lang === 'fr' ? ' — à remettre avant de prendre un autre objet' : ' — deliver before picking up another item'}</span>
       </p>}
       <div className="mosaic-rpg-stage">
-        <button type="button" className="mosaic-world-log" onClick={openJournal} aria-haspopup="dialog" aria-label={lang === 'fr' ? 'Lire la transmission complète' : 'Read full transmission'}>
+        <button type="button" className="mosaic-world-log" onClick={openTransmission} aria-haspopup="dialog" aria-label={lang === 'fr' ? 'Lire la transmission complète' : 'Read full transmission'}>
           <strong>{lang === 'fr' ? 'TRANSMISSION · LIRE' : 'TRANSMISSION · READ'}</strong>
           <span aria-hidden="true">{sceneJournalPreview(hubLog)}</span>
         </button>
@@ -4112,6 +4204,7 @@ function ExtinctionRoyale({
       weaponResource: state.weapon?.resource || 'ammo',
       canRestoreKit: Boolean(state.personalKit && state.weapon?.type !== 'pistol'),
       fieldWeapon,
+      primaryAim: getExtinctionAimReadout(state, lang, canvasRef.current),
       canRestoreFieldWeapon: Boolean(fieldWeapon?.canRestore),
       directive: getExtinctionFieldDirectiveStatus(state, lang),
       directiveSummary: state.directiveSummary || null,
@@ -4747,13 +4840,7 @@ function ExtinctionRoyale({
           ctx.fillText(extinctionEnemyLabel(enemy.kind, lang).toUpperCase().slice(0, 18), x - w * 0.42, y - 13);
         });
 
-      ctx.strokeStyle = state.muzzle ? '#ffea00' : 'rgba(255,255,255,0.72)';
-      ctx.beginPath();
-      ctx.moveTo(canvas.width / 2 - 12, canvas.height / 2);
-      ctx.lineTo(canvas.width / 2 + 12, canvas.height / 2);
-      ctx.moveTo(canvas.width / 2, canvas.height / 2 - 12);
-      ctx.lineTo(canvas.width / 2, canvas.height / 2 + 12);
-      ctx.stroke();
+      drawExtinctionAimReticle(ctx, state, canvas.width, canvas.height, lang);
 
       if (state.hitMarkerTimer > 0) {
         ctx.strokeStyle = '#e74c3c';
@@ -5214,6 +5301,7 @@ function ExtinctionRoyale({
   const activeSignature = stateRef.current.phase === 'running' ? stateRef.current.protocols?.profile : signatureProfile;
   const runActive = runSnapshot.phase === 'running';
   const runEnded = runSnapshot.phase === 'ended';
+  const primaryAim = runSnapshot.primaryAim;
   const personalKitReadout = (() => {
     const ticks = Math.max(0, Number(runSnapshot.signatureCooldowns?.simple) || 0);
     const seconds = (Math.ceil(ticks / 6) / 10).toFixed(1);
@@ -5250,6 +5338,8 @@ function ExtinctionRoyale({
         </div>}
         {runSnapshot.relay?.status !== 'disabled' && runSnapshot.relay && <p>{lang === 'fr' ? 'Relais sous pression : active chaque balise avec E / LOOT, reste dans son périmètre pendant trois secondes actives, puis utilise E / LOOT pour la stabiliser. Sortir du périmètre suspend la synchronisation.' : 'Relays under pressure: activate each beacon with E / LOOT, stay inside its perimeter for three active seconds, then use E / LOOT to secure it. Leaving the perimeter suspends synchronization.'}</p>}
         <p>{lang === 'fr' ? 'La vue suit ton kit et les armes ramassées. Certaines signatures utilisent une vue schématique.' : 'The view follows your kit and pickup weapons. Some signatures use a schematic view.'}</p>
+        {primaryAim && <p data-fps-aim-details>{primaryAim.name} · {primaryAim.detail}</p>}
+        <p>{lang === 'fr' ? 'Le réticule suit l’action tenue : crochets au contact, anneau pour un projectile, coins pour le contrôle et flèches pour un déplacement. Le bouton principal précise la portée ou l’obstacle. Anticipe les mouvements : une ligne de tir ne garantit pas l’impact d’un projectile.' : 'The reticle follows the held action: brackets for contact, a ring for a projectile, corners for control and arrows for movement. The primary button describes reach or the obstacle. Lead movement: a shot line does not guarantee a projectile impact.'}</p>
         {getExtinctionPickupBrief(runSnapshot.weaponType, lang) && <p data-fps-pickup-brief={runSnapshot.weaponType}>{getExtinctionPickupBrief(runSnapshot.weaponType, lang)}</p>}
         <p>{runSnapshot.statusText}</p>
         <p>{lang === 'fr' ? 'ZQSD/WASD : déplacement. Flèches gauche/droite : tourner. Glisser sur la vue : viser. Toucher la vue ou Espace : tirer. R : recharger. E : récupérer un objet. Maj : capacité de rôle.' : 'WASD: movement. Left/right arrows: turn. Drag the view: aim. Tap the view or Space: fire. R: reload. E: collect an item. Shift: role ability.'}</p>
@@ -5387,7 +5477,7 @@ function ExtinctionRoyale({
             )}
             {runActive && (
               <>
-                <button className="btn-retro extinction-primary-action" data-primary-action onClick={fire} title={getLocalizedText(activeSignature?.actions.simple?.name, lang)}>{runSnapshot.weaponType === 'pistol' && ['melee', 'sweep', 'counter'].includes(activeSignature?.actions.simple?.kind) ? (lang === 'fr' ? 'FRAPPER' : 'STRIKE') : runSnapshot.weaponType === 'pistol' && ['control', 'support', 'heal', 'focus'].includes(activeSignature?.actions.simple?.kind) ? 'ACTION' : (lang === 'fr' ? 'TIRER' : 'FIRE')}</button>
+                <ExtinctionPrimaryAction readout={primaryAim} paused={sessionPaused || intelOpen} onFire={fire} lang={lang} />
                 <button className="btn-retro extinction-primary-action" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0 || runSnapshot.weaponResource === 'cooldown'} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
                 {runSnapshot.canRestoreKit && <button className="btn-retro extinction-primary-action" data-personal-kit onClick={restorePersonalKit}
                   disabled={sessionPaused || intelOpen} aria-label={lang === 'fr' ? 'V · KIT PERSONNEL' : 'V · PERSONAL KIT'}

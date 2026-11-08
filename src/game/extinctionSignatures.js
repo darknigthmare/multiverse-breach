@@ -151,13 +151,39 @@ export function damageExtinctionEnemy(state, enemy, damage, onKill, chargeGain =
   return dealt;
 }
 const distance = (a, b) => Math.hypot(a.wx - b.wx, a.wy - b.wy);
-function candidates(state, range, cone = 0.3) {
+/** Read-only selection shared by the attack and its aiming feedback. */
+export function getExtinctionAimCandidates(state, range, cone = 0.3) {
   const sin = Math.sin(state.angle || 0), cos = Math.cos(state.angle || 0);
   return state.enemies.filter(e => e.hp > 0).map(enemy => {
     const dx = enemy.wx - state.px, dy = enemy.wy - state.py;
     const z = dx * sin + dy * cos, x = dx * cos - dy * sin;
     return { enemy, dist: Math.hypot(dx, dy), aim: Math.abs(x) / Math.max(z, 0.01), z };
   }).filter(e => e.dist <= range && e.z > 0 && e.aim <= cone).sort((a, b) => a.dist - b.dist);
+}
+export function getExtinctionActionAimCone(action) {
+  if (['melee', 'sweep', 'counter'].includes(action?.kind)) return 0.85;
+  if (['scatter', 'volley', 'cone'].includes(action?.kind)) return 0.55;
+  return action?.kind === 'control' ? 0.3 : 0.24;
+}
+
+/** The actual seven pellet paths, before damage; reading them never fires. */
+export function getExtinctionPickupSpreadHits(state) {
+  const weapon = state?.weapon, tuning = EXTINCTION_PICKUP_BALLISTICS[weapon?.type];
+  if (weapon?.type !== 'shotgun' || !tuning) return [];
+  const hits = new Map(), spread = clamp(finite(weapon.spread, 0.28), 0, 0.6);
+  for (let pellet = 0; pellet < tuning.pellets; pellet++) {
+    const angle = state.angle + (pellet / (tuning.pellets - 1) * 2 - 1) * spread;
+    const bx = state.px + Math.sin(angle) * tuning.range, by = state.py + Math.cos(angle) * tuning.range;
+    let nearest = null, first = Infinity;
+    for (const enemy of state.enemies) {
+      if (enemy.hp <= 0 || ![enemy.wx, enemy.wy].every(Number.isFinite)) continue;
+      const hit = extinctionSegmentHit(state.px, state.py, bx, by, enemy.wx, enemy.wy,
+        tuning.radius + 0.28 * (enemy.size || 1));
+      if (hit !== null && hit < first) { nearest = enemy; first = hit; }
+    }
+    if (nearest) hits.set(nearest, (hits.get(nearest) || 0) + 1);
+  }
+  return [...hits].map(([enemy, pellets]) => ({ enemy, pellets }));
 }
 function effect(state, kind, action, wx = state.px, wy = state.py) {
   const p = state.protocols;
@@ -238,20 +264,7 @@ export function fireExtinctionPickupWeapon(state, { onKill, damageMultiplier = 1
   const shot = { source: 'pickup', weaponType: weapon.type, ownerId: state.heroId, runId: state.runId,
     slot: 'pickup', color: weapon.color || '#39c5bb', damage, radius: tuning.radius };
   if (weapon.type === 'shotgun') {
-    const hits = new Map(), spread = clamp(finite(weapon.spread, 0.28), 0, 0.6);
-    for (let pellet = 0; pellet < tuning.pellets; pellet++) {
-      const angle = state.angle + (pellet / (tuning.pellets - 1) * 2 - 1) * spread;
-      const bx = state.px + Math.sin(angle) * tuning.range, by = state.py + Math.cos(angle) * tuning.range;
-      let nearest = null, first = Infinity;
-      for (const enemy of state.enemies) {
-        if (enemy.hp <= 0 || ![enemy.wx, enemy.wy].every(Number.isFinite)) continue;
-        const hit = extinctionSegmentHit(state.px, state.py, bx, by, enemy.wx, enemy.wy,
-          tuning.radius + 0.28 * (enemy.size || 1));
-        if (hit !== null && hit < first) { nearest = enemy; first = hit; }
-      }
-      if (nearest) hits.set(nearest, (hits.get(nearest) || 0) + 1);
-    }
-    const contacts = [...hits].map(([enemy, pellets]) => ({ enemy,
+    const contacts = getExtinctionPickupSpreadHits(state).map(({ enemy, pellets }) => ({ enemy,
       damage: Math.round(damage * pellets / tuning.pellets
         * (state.heroCategory === 'slayer' && distance(enemy, { wx: state.px, wy: state.py }) < 2.2 ? 1.45 : 1)) }));
     const result = applyExtinctionPickupHits(state, shot, contacts, onKill);
@@ -312,7 +325,7 @@ export function activateExtinctionProtocol(state, slot, { onKill, lang = 'fr' } 
   if (['hitscan', 'melee', 'beam', 'sweep', 'scatter', 'volley', 'cone', 'focus', 'counter'].includes(a.kind)) {
     const wide = ['sweep', 'scatter', 'volley', 'cone'].includes(a.kind);
     const contact = ['melee', 'sweep', 'counter'].includes(a.kind);
-    const targets = candidates(state, a.range, contact ? 0.85 : wide ? 0.55 : 0.24);
+    const targets = getExtinctionAimCandidates(state, a.range, getExtinctionActionAimCone(a));
     for (const { enemy } of (a.kind === 'beam' || wide ? targets : targets.slice(0, 1))) {
       if (hit(enemy)) effect(state, 'impact', a, enemy.wx, enemy.wy);
     }
@@ -338,7 +351,7 @@ export function activateExtinctionProtocol(state, slot, { onKill, lang = 'fr' } 
   } else if (a.kind === 'control' || a.kind === 'control_pulse') {
     const targets = a.kind === 'control_pulse'
       ? state.enemies.filter(enemy => enemy.hp > 0 && distance(enemy, { wx: state.px, wy: state.py }) <= a.range)
-      : candidates(state, a.range).slice(0, 1).map(entry => entry.enemy);
+      : getExtinctionAimCandidates(state, a.range, getExtinctionActionAimCone(a)).slice(0, 1).map(entry => entry.enemy);
     for (const enemy of targets) {
       enemy.protocolControl = { ownerId: state.heroId, runId: state.runId, life: a.duration, slow: 0.45 };
       effect(state, 'impact', a, enemy.wx, enemy.wy);

@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { getMosaicCameraPosition, restoreMosaicLocation, snapshotMosaicLocation } from '../src/game/immersiveHubState.js';
 import { advanceMosaicPlayer } from '../src/game/mosaicCityRuntime.js';
+import { MOSAIC_CHARACTER_MISSIONS, getMosaicCharacterMissionObjective, advanceMosaicCharacterMissionWalk,
+  normalizeMosaicCharacterMissions } from '../src/game/mosaicCharacterMissions.js';
 
 const district = Object.freeze({ id: 'universe-nexus', worldW: 1920, worldH: 1180, spawn: Object.freeze({ x: 820, y: 760 }) });
 const districts = Object.freeze({ atrium: Object.freeze({ id: 'atrium', worldW: 1640, worldH: 1080, spawn: Object.freeze({ x: 780, y: 520 }) }), [district.id]: district });
@@ -87,7 +89,9 @@ assert.ok(start >= 0 && end > start, 'the City renderFrame prefix must exist');
 const makeFrame = new Function('environment', `
   const { stateRef, sessionPausedRef, cityMenuRef, cameraViewportRef, canvas,
     district, currentDistrict, recordGuide, advanceMosaicPlayer,
-    getMosaicCameraPosition, document, window } = environment;
+    getMosaicCameraPosition, characterMissionCatalog, characterMissionsRef,
+    advanceMosaicCharacterMissionWalk, getMosaicCharacterMissionObjective,
+    commitCharacterMissions, lang, document, window } = environment;
   let lastFrame = null;
   let rafId;
   const loop = () => {};
@@ -108,6 +112,9 @@ const makeEnvironment = (canvas = { width: 250, height: 540 }) => {
     canvas, district, currentDistrict: district.id, movements,
     recordGuide: (event, distance) => movements.push({ event, distance }),
     advanceMosaicPlayer, getMosaicCameraPosition, document: { hidden: false },
+    characterMissionCatalog: [], characterMissionsRef: { current: normalizeMosaicCharacterMissions() },
+    advanceMosaicCharacterMissionWalk, getMosaicCharacterMissionObjective, lang: 'fr',
+    commitCharacterMissions: () => { throw new Error('an unrelated camera frame cannot change a mission'); },
     window: { requestAnimationFrame: () => { throw new Error('an active prefix must not schedule a paused frame'); } }
   };
 };
@@ -166,4 +173,73 @@ test('restarting the real effect callback keeps follow lag, while a replacement 
   frame(3000);
   cameraEquals(state.camera, { x: 547.86, y: 455.43 }, 'new canvas with the same dimensions');
   assert.equal(environment.cameraViewportRef.current.canvas, environment.canvas);
+});
+
+test('the production frame earns one walked marker, follows the requested next place and freezes under every scene pause', () => {
+  const environment = makeEnvironment();
+  const source = MOSAIC_CHARACTER_MISSIONS.find(mission => mission.id === 'city-anchor-shared-beacon-v1');
+  const mission = { ...source, districtId: district.id, anchorId: 'local-anchor' };
+  const parent = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === mission.requiresMissionId);
+  const index = mission.steps.findIndex(step => step.walk);
+  const saved = { heroId: mission.heroId, universe: mission.universe, districtId: district.id,
+    completedStepIds: mission.steps.slice(0, index).map(step => step.id), choiceId: 'apply',
+    completed: false, storyRevision: 2, originStoryRevision: 2, originChoiceId: 'retain-origin' };
+  environment.characterMissionCatalog = [mission];
+  environment.characterMissionsRef.current = normalizeMosaicCharacterMissions({ activeId: mission.id, records: {
+    [parent.id]: { heroId: parent.heroId, universe: parent.universe, districtId: district.id,
+      completedStepIds: parent.steps.map(step => step.id), choiceId: 'retain-origin', completed: true, storyRevision: 2 },
+    [mission.id]: saved
+  } });
+  const saves = [];
+  environment.commitCharacterMissions = next => { saves.push(next); environment.characterMissionsRef.current = next; };
+  environment.window.requestAnimationFrame = () => 1;
+  const state = environment.stateRef.current;
+  const current = getMosaicCharacterMissionObjective(environment.characterMissionsRef.current, mission);
+  state.player.x = current.walk.next.x - 65; state.player.y = current.walk.next.y;
+  state.destination = { x: current.walk.next.x, y: current.walk.next.y };
+  state.pendingInteraction = { type: 'zone', id: current.targetId };
+  const frame = makeFrame(environment);
+  frame(1000);
+  assert.equal(saves.length, 0, 'a first-frame restore is not movement');
+  frame(1000 + 1000 / 60);
+  assert.equal(saves.length, 1);
+  const after = getMosaicCharacterMissionObjective(environment.characterMissionsRef.current, mission);
+  assert.equal(after.walk.visited, 1); assert.equal(after.index, index);
+  assert.deepEqual(state.destination, { x: after.walk.next.x, y: after.walk.next.y });
+  close(state.player.x, current.walk.next.x - 65 + 2.35, 'the player was never placed at the next marker');
+  assert.deepEqual(environment.characterMissionsRef.current.records[mission.id].completedStepIds, saved.completedStepIds);
+  const frozen = JSON.stringify(environment.characterMissionsRef.current);
+  const position = { x: state.player.x, y: state.player.y, facing: state.player.facing, speed: state.player.speed };
+  const geometry = () => ({ x: state.player.x, y: state.player.y, facing: state.player.facing, speed: state.player.speed });
+  for (const [owner, field] of [[environment.cityMenuRef, 'current'], [environment.sessionPausedRef, 'current'], [environment.document, 'hidden']]) {
+    owner[field] = true; frame(7000);
+    assert.equal(JSON.stringify(environment.characterMissionsRef.current), frozen);
+    assert.deepEqual(geometry(), position);
+    owner[field] = false; frame(9000);
+    assert.equal(saves.length, 1, 'resuming never catches up the time spent in a menu');
+    assert.deepEqual(geometry(), position);
+    assert.equal(state.player.state, 'idle');
+  }
+});
+
+test('manual walking earns the same checkpoint without creating a destination or an automatic interaction', () => {
+  const environment = makeEnvironment();
+  // Capture the real production branch with an earned observation, without
+  // replacing the movement function or manufacturing player coordinates.
+  const mission = { id: 'manual-walk', steps: [{ id: 'walk' }] };
+  environment.characterMissionCatalog = [mission];
+  environment.characterMissionsRef.current = { activeId: mission.id };
+  environment.advanceMosaicCharacterMissionWalk = (progress, actualMission, movement) => {
+    assert.equal(actualMission, mission);
+    if (!movement.distance) return { changed: false, progress };
+    assert.ok(movement.to.x > movement.from.x);
+    return { changed: true, progress, walk: { next: { x: 1400, y: 790 } } };
+  };
+  environment.getMosaicCharacterMissionObjective = () => ({ step: { id: 'walk' }, walk: { completed: false } });
+  environment.commitCharacterMissions = () => {};
+  const state = environment.stateRef.current;
+  state.keys.d = true;
+  const frame = makeFrame(environment);
+  frame(1000); frame(1000 + 1000 / 60);
+  assert.equal(state.destination, null); assert.equal(state.pendingInteraction, null);
 });
