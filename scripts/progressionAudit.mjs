@@ -886,7 +886,8 @@ assert(
   mosaicCitySource.includes('const hero = npc.hero;')
     && /drawPixelPerson\([^;\n]*false,\s*\{\s*\.\.\.hero,\s*state:\s*npc\.sceneState\s*\}\s*\)/.test(mosaicCitySource)
     && mosaicCitySource.includes("const spriteState = hero.state || 'idle';")
-    && /if\s*\(hero\?\.id\)\s*\{[\s\S]*?drawPixelSprite\(ctx, x, y \+ 24 \+ bob, \{ \.\.\.hero, state: spriteState \}, stateRef\.current\.t, facing, isPlayer \? 78 : 68, 'nexus'\);[\s\S]*?return;\s*\}/.test(mosaicCitySource),
+    && mosaicCitySource.includes('const renderedHero = { ...hero, state: spriteState };')
+    && /if\s*\(hero\?\.id\)\s*\{[\s\S]*?drawPixelSprite\(ctx, x, y \+ 24 \+ bob, renderedHero, stateRef\.current\.t, facing, isPlayer \? 78 : 68, 'nexus'\);[\s\S]*?return protectedRects;\s*\}/.test(mosaicCitySource),
   'Mosaic City Nexus NPCs must preserve their real hero identity and movement state through the Nexus sprite renderer, returning before color fallback blocks.'
 );
 assert(hubSource.includes("drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud')") && hubSource.includes("drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud')"), 'Resonance hero icons must use cropped HUD avatars.');

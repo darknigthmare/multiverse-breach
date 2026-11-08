@@ -193,6 +193,58 @@ def terminal(page):
     expect(page.locator('.mosaic-character-missions')).to_be_visible()
 
 
+def explicit_help_while_carrying(page, saved, cargo):
+    """Reopen existing help controls without moving or advancing the adventure."""
+    fr = page.evaluate("new URLSearchParams(globalThis.__sceneQaParams||location.search).get('lang')!=='en'")
+    player_before = page.evaluate('window.__sceneQA.snapshot().player')
+    objects_before = mission_objects(page)
+    hud_help = page.locator('.mosaic-world-hud .mosaic-city-guide')
+
+    def adventure_preserved(action):
+        check(progress(page) == saved and mission_cargo(page) == cargo,
+              f'{action} changed the mission or its carried object')
+        check(mission_objects(page) == objects_before, f'{action} changed operation objects')
+        check(page.evaluate('window.__sceneQA.snapshot().player') == player_before,
+              f'{action} moved the player')
+
+    expect(hud_help).to_have_count(0)
+    terminal(page)
+    page.get_by_role('button', name='Revoir l accueil' if fr else 'Replay welcome', exact=True).click()
+    welcome = page.locator('.mosaic-world-hud .mosaic-city-guide:not(.mosaic-city-guide--collapsible)')
+    expect(welcome).to_be_visible()
+    expect(welcome.locator('strong')).to_have_text('Une ville qui se souvient' if fr else 'A city that remembers')
+    expect(page.get_by_role('dialog')).to_have_count(0)
+    adventure_preserved('explicit welcome replay')
+    welcome.get_by_role('button', name='Plus tard' if fr else 'Later', exact=True).click()
+    expect(hud_help).to_have_count(0)
+    adventure_preserved('deferring unread help')
+
+    terminal(page)
+    guide_control = page.locator('.mosaic-terminal-guide > button')
+    guide_resumed = False
+    if guide_control.count():
+        expect(guide_control).to_have_text('REPRENDRE LE GUIDE' if fr else 'RESUME GUIDE')
+        guide_control.click()
+        expect(page.locator('.mosaic-world-hud .mosaic-city-guide--collapsible')).to_be_visible()
+        expect(welcome).to_have_count(0)
+        expect(page.get_by_role('dialog')).to_have_count(0)
+        adventure_preserved('explicit guide resume')
+        terminal(page)
+        expect(guide_control).to_have_text('PAUSE GUIDE')
+        guide_control.click()
+        expect(hud_help).to_have_count(0)
+        adventure_preserved('explicit guide pause')
+        guide_resumed = True
+    else:
+        expect(page.locator('.mosaic-terminal-guide > strong')).to_have_text(
+            'Premiers reperes acquis' if fr else 'First bearings acquired')
+    return {'automaticHelpAbsent': True, 'welcomeReplayAvailable': True, 'laterDefersBothPanels': True,
+            'guideResumedWhenAvailable': guide_resumed, 'guideExplicitlyPaused': guide_resumed,
+            'missionCargoObjectsAndPositionPreserved': True, 'player': player_before, 'cargo': cargo,
+            'scope': 'Existing welcome/guide buttons only; no simulation time added. '
+                     'An explicit guide pause may change its tutorial status; mission progress and cargo remain unchanged.'}
+
+
 def switch_while_carrying(page, mission_id, district, cargo):
     """Pause and resume via actual journal buttons; do not advance either task."""
     other_id = page.evaluate('''async ({missionId,districtId})=>{
@@ -484,6 +536,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
             cargo_draw_file = None
             label_layout_file = None
             label_layout = None
+            help_resume = None
             if before_unmount['cargo']:
                 page.evaluate('window.__cityCargoDraws=[];window.__cityLabelFrames=[]')
                 page.clock.run_for(32)
@@ -491,12 +544,14 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                       'rendering the restored cargo changed its saved transfer')
                 cargo_capture = f'{case_name}-{mission_id}-{before_unmount["cargo"]["id"]}-remounted.png'
                 page.screenshot(path=str(out / cargo_capture))
+                expect(page.locator('.mosaic-world-hud .mosaic-city-guide')).to_have_count(0)
                 cargo_draw_file = f'{case_name}-{mission_id}-step-{index}-remount-draws.json'
                 verify_cargo_draws(save_cargo_draws(page, out, cargo_draw_file), before_unmount['cargo'])
                 label_layout_file = f'{case_name}-{mission_id}-step-{index}-remount-labels.json'
                 label_layout = verify_mission_label_frames(
                     save_mission_label_frames(page, out, label_layout_file),
                     require_labels=True, require_cargo=True, require_player_in_view=True)
+                help_resume = explicit_help_while_carrying(page, saved, before_unmount['cargo'])
             terminal(page)
             panel.locator('select').select_option(mission_id)
             case['remount'] = {'completedStepIds': saved['records'][mission_id]['completedStepIds'], 'preserved': True,
@@ -504,7 +559,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                                'operationObjectsPreserved': True, 'cargo': before_unmount['cargo'],
                                'carriedObjectPreserved': bool(before_unmount['cargo']), 'cargoCapture': cargo_capture,
                                'cargoDrawFile': cargo_draw_file, 'labelLayoutFile': label_layout_file,
-                               'labelLayout': label_layout}
+                               'labelLayout': label_layout, 'help': help_resume}
     terminal(page)
     expect(panel.locator('[data-city-contract-objective]')).to_have_attribute('data-contract-id', mission_id)
     expect(panel.locator('[data-city-contract-accept]')).to_have_count(0)

@@ -2397,8 +2397,15 @@ function MosaicCityHub({
     characterMissionsRef.current = imported;
     publishedCharacterMissionsRef.current = serialized;
     setCharacterMissions(imported);
+    if (imported.activeId) {
+      setGuideAutoDeferred(true);
+      setWelcomeOpen(false);
+    }
   }, [characterMissionProgress]);
-  const [welcomeOpen, setWelcomeOpen] = useState(() => !guideRef.current.welcomeSeen);
+  // Resuming an adventure leaves the scene clear. This is local presentation,
+  // not a tutorial checkpoint: unread help remains available in the terminal.
+  const [guideAutoDeferred, setGuideAutoDeferred] = useState(() => Boolean(characterMissionsRef.current.activeId));
+  const [welcomeOpen, setWelcomeOpen] = useState(() => !guideRef.current.welcomeSeen && !characterMissionsRef.current.activeId);
   const [welcomeIndex, setWelcomeIndex] = useState(0);
   const commitGuide = useCallback(next => {
     const snapshot = createMosaicGuide(next);
@@ -2415,9 +2422,10 @@ function MosaicCityHub({
     publishedGuideRef.current = JSON.stringify(imported);
     guideRef.current = imported;
     setGuideState(imported);
-    setWelcomeOpen(!imported.welcomeSeen);
+    if (characterMissionsRef.current.activeId) setGuideAutoDeferred(true);
+    setWelcomeOpen(!imported.welcomeSeen && !characterMissionsRef.current.activeId && !guideAutoDeferred);
     setWelcomeIndex(0);
-  }, [tutorialProgress]);
+  }, [tutorialProgress, guideAutoDeferred]);
   const [nearbyLabel, setNearbyLabel] = useState('');
   const recordGuide = useCallback((event, amount = 0) => {
     const before = guideRef.current;
@@ -3008,6 +3016,7 @@ function MosaicCityHub({
     }
     setMissionConversation(null);
     if (interaction.target.isGuide) {
+      setGuideAutoDeferred(false);
       setWelcomeIndex(0);
       setWelcomeOpen(true);
       setHubLog(MOSAIC_WELCOME.lines[lang === 'fr' ? 'fr' : 'en'][0]);
@@ -3713,11 +3722,11 @@ function MosaicCityHub({
               <div aria-live="polite"><strong>{MOSAIC_WELCOME.title[welcomeLanguage]}</strong><p>{MOSAIC_WELCOME.lines[welcomeLanguage][welcomeIndex]}</p></div>
               <div style={{ display: 'grid', gap: 6 }}>
                 <button type="button" className="mosaic-city-guide-restore" onClick={advanceWelcome}>{welcomeIndex + 1 === MOSAIC_WELCOME.lines[welcomeLanguage].length ? (lang === 'fr' ? 'Explorer' : 'Explore') : (lang === 'fr' ? 'Suite' : 'Next')}</button>
-                <button type="button" className="mosaic-city-guide-restore" onClick={() => setWelcomeOpen(false)}>{lang === 'fr' ? 'Plus tard' : 'Later'}</button>
+                <button type="button" className="mosaic-city-guide-restore" onClick={() => { setWelcomeOpen(false); setGuideAutoDeferred(true); }}>{lang === 'fr' ? 'Plus tard' : 'Later'}</button>
               </div>
             </section>
           )}
-          {!welcomeOpen && guideState.status === 'active' ? (
+          {!welcomeOpen && !guideAutoDeferred && guideState.status === 'active' ? (
             <MosaicGuidePanel lang={lang} title={guideCopy.title} body={guideCopy.body} step={guideStep} onPause={() => { cityTerminalButtonRef.current?.focus({ preventScroll: true }); controlGuide('pause'); }} onOpenDetails={openGuideDetails} />
           ) : null}
         </div>
@@ -3874,13 +3883,13 @@ function MosaicCityHub({
         </div>
         <section ref={guideDetailsRef} tabIndex={-1} className="mosaic-terminal-guide" aria-label={lang === 'fr' ? 'Guide complet de la Cité' : 'Complete City guide'}><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p>
           {['active', 'paused', 'skipped'].includes(guideState.status) && <button type="button" className="btn-retro" onClick={() => {
-            if (guideState.status === 'active') controlGuide('pause');
-            else { controlGuide('resume'); setCityMenuOpen(false); }
-          }}>{guideState.status === 'active' ? 'PAUSE GUIDE' : (lang === 'fr' ? 'REPRENDRE LE GUIDE' : 'RESUME GUIDE')}</button>}
+            if (guideState.status === 'active' && !guideAutoDeferred) controlGuide('pause');
+            else { setGuideAutoDeferred(false); setWelcomeOpen(false); controlGuide('resume'); setCityMenuOpen(false); }
+          }}>{guideState.status === 'active' && !guideAutoDeferred ? 'PAUSE GUIDE' : (lang === 'fr' ? 'REPRENDRE LE GUIDE' : 'RESUME GUIDE')}</button>}
         </section>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-          <button className="mosaic-city-guide-restore" type="button" onClick={() => { setWelcomeIndex(0); setWelcomeOpen(true); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Revoir l accueil' : 'Replay welcome'}</button>
-          <button className="mosaic-city-guide-restore" type="button" onClick={() => { controlGuide('restart'); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Rejouer les reperes' : 'Replay first steps'}</button>
+          <button className="mosaic-city-guide-restore" type="button" onClick={() => { setGuideAutoDeferred(false); setWelcomeIndex(0); setWelcomeOpen(true); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Revoir l accueil' : 'Replay welcome'}</button>
+          <button className="mosaic-city-guide-restore" type="button" onClick={() => { setGuideAutoDeferred(false); setWelcomeOpen(false); controlGuide('restart'); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Rejouer les reperes' : 'Replay first steps'}</button>
           {guideState.status !== 'completed' && guideState.status !== 'skipped' && <button className="mosaic-city-guide-restore" type="button" onClick={() => controlGuide('skip')}>{lang === 'fr' ? 'Ignorer le guide' : 'Skip guide'}</button>}
         </div>
       </div>

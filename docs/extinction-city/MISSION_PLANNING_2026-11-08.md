@@ -127,11 +127,12 @@ classeur conservé. La relecture vérifie réellement les empreintes du classeur
 de la planification et des trois groupes de sources dans le dépôt courant ;
 elle rejette aussi l’absence d’une des sept dépendances de présentation.
 
-Le correctif de cadrage après `63aae093` conserve également le JSON de
-planification complet à l’octet près, manifeste et empreinte compris. Le reçu
-actualise l’empreinte de `HubScreen.jsx` et ajoute les deux dépendances de
-caméra au groupe de présentation ; les 19 sources des contrats restent
-identiques. Cette actualisation de provenance ne réexporte pas le classeur.
+Les correctifs de cadrage après `63aae093` et d’accueil au retour après
+`aa196c5a` conservent également le JSON de planification complet à l’octet
+près, manifeste et empreinte compris. Les deux dépendances de caméra sont
+suivies dans le groupe de présentation depuis le premier correctif. La
+dernière actualisation modifie uniquement l’empreinte de `HubScreen.jsx` ;
+les 19 sources des contrats restent identiques. Elle ne réexporte pas le classeur.
 
 ## Reproduction
 
