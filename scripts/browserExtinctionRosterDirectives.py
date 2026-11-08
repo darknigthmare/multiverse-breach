@@ -137,7 +137,9 @@ def layout_variant(page, width, height, large, source, out, name):
     page.evaluate('''large=>{const s=document.documentElement.style;
       s.setProperty('--game-hud-scale',large?'1.4':'1');s.setProperty('--game-text-scale',large?'1.5':'1');
       s.setProperty('--game-safe-area',large?'32px':'12px');window.dispatchEvent(new Event('multiverse:display-preferences'));}''', large)
-    page.clock.run_for(96)
+    # Retro controls transition font and geometry for 200 ms. Let real RAFs
+    # settle both that transition and ResizeObserver before measuring the HUD.
+    page.clock.run_for(256)
     page.screenshot(path=str(out / f'{name}.png'))
     return view_geometry(page, source, out, name)
 
@@ -174,12 +176,17 @@ def directive_details_case(page, out, name):
     page.keyboard.press('Escape')
     expect(dialog).to_have_count(0); expect(page.locator('.extinction-intel-button')).to_be_focused()
     check(read(page) == frozen, 'closing directive details changed the paused state')
-    page.locator('.fps-royale-canvas').focus(); page.clock.run_for(32)
+    # Closing resets the fixed-step clock: the first 16 ms RAF is a baseline,
+    # and a second RAF alone adds only 16 ms, less than one 60 Hz simulation step.
+    page.locator('.fps-royale-canvas').focus(); page.clock.run_for(16)
+    baseline = read(page)
+    check(baseline == frozen, 'first resumed frame caught up paused simulation time')
+    page.clock.run_for(48)
     resumed = read(page)
-    check(resumed['t'] > frozen['t'] and resumed['phase'] == 'running', 'simulation did not resume after directive details')
     receipt = {**expected, 'pausePreserved': True, 'focusReturned': True,
-               'pausedTick': frozen['t'], 'resumedTick': resumed['t']}
+               'pausedTick': frozen['t'], 'baselineTick': baseline['t'], 'resumedTick': resumed['t']}
     (out / f'{name}-directive-details.json').write_text(json.dumps(receipt, indent=2, ensure_ascii=False))
+    check(0 < resumed['t'] - frozen['t'] <= 3 and resumed['phase'] == 'running', 'simulation did not resume normally after directive details')
     return receipt
 
 

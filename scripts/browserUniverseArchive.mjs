@@ -18,6 +18,12 @@ const focused = async locator => {
   finally { await handle.dispose(); }
 };
 const entryIds = group => group.locator('[data-archive-entry]').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-archive-entry')));
+const wardrobeCategoryState = wardrobe => wardrobe.locator('.character-wardrobe__sections button').evaluateAll(nodes => nodes.map(node => {
+  const style = getComputedStyle(node);
+  return { name: node.textContent.trim().replace(/\s+/gu, ' '), pressed: node.getAttribute('aria-pressed'),
+    hovered: node.matches(':hover'), focused: document.activeElement === node, focusVisible: node.matches(':focus-visible'),
+    background: style.backgroundColor, border: style.borderColor, outline: style.outline };
+}));
 const fonts = root => root.locator('.universe-archive-header strong, [data-archive-close], #universe-archive-title, .universe-archive-intro p, .universe-archive-lore > summary, .universe-archive-counts dt, .universe-archive-counts dd, [role="tab"], .universe-archive-catalog h3, .universe-archive-filters label > span, .universe-archive-filters input, .universe-archive-filters select, .universe-archive-clear, .universe-archive-pages p, .universe-archive-pages button, .universe-archive-entries article b, .universe-archive-illustration-status')
   .evaluateAll(nodes => nodes.filter(node => node.getClientRects().length).map(node => ({ text: node.textContent.slice(0, 60), size: parseFloat(getComputedStyle(node).fontSize) })));
 const inspectLayout = async (root, viewport, record, key) => {
@@ -156,9 +162,24 @@ try {
 
       const wardrobe = root.locator('[data-archive-catalog="enemies"] .character-wardrobe');
       await wardrobe.locator(':scope > summary').click();
-      await wardrobe.getByRole('button', { name: fr ? 'Effets disponibles' : 'Available effects' }).click();
+      const effectsCategory = wardrobe.getByRole('button', { name: fr ? 'Effets disponibles' : 'Available effects' });
+      const officialCategory = wardrobe.getByRole('button', { name: fr ? 'Officiels' : 'Official' });
+      await effectsCategory.click();
+      record.wardrobeSelection = { afterClick: await wardrobeCategoryState(wardrobe) };
       assert.equal(await wardrobe.getByText(fr ? 'Consultation uniquement — pas de sélection de skin ennemi' : 'Read only — no enemy skin selection', { exact: true }).count(), 3);
       assert.equal(await wardrobe.getByRole('button', { name: fr ? 'Équiper l’effet' : 'Equip effect', exact: true }).count(), 0);
+      assert.equal(await effectsCategory.getAttribute('aria-pressed'), 'true', 'Visible effects must own the selected category');
+      assert.equal(await officialCategory.getAttribute('aria-pressed'), 'false', 'Official category must be unselected while effects are visible');
+      assert.equal((await effectsCategory.locator('span').textContent()).trim(), '3', 'Effects category count must match its three read-only cards');
+      // Capture the committed selection independently of the pointer hover and
+      // retain both DOM/style receipts if painting disagrees with the contents.
+      await page.mouse.move(viewport.width - 1, viewport.height - 1); await frames(page);
+      record.wardrobeSelection.afterPaint = await wardrobeCategoryState(wardrobe);
+      assert.deepEqual(record.wardrobeSelection.afterPaint.map(category => category.pressed), record.wardrobeSelection.afterClick.map(category => category.pressed));
+      const selectedCategories = record.wardrobeSelection.afterPaint.filter(category => category.pressed === 'true');
+      assert.equal(selectedCategories.length, 1, 'Wardrobe must have exactly one selected category');
+      assert.ok(record.wardrobeSelection.afterPaint.every(category => !category.hovered), 'Wardrobe capture still contains a hover state');
+      assert.ok(record.wardrobeSelection.afterPaint.filter(category => category.pressed !== 'true').every(category => category.background !== selectedCategories[0].background), 'Selected wardrobe category has no distinct background');
       record.wardrobeFonts = await wardrobe.locator('h5, .character-wardrobe__badge, .character-wardrobe__muted').evaluateAll(nodes => nodes.filter(node => node.getClientRects().length).map(node => parseFloat(getComputedStyle(node).fontSize)));
       assert.ok(record.wardrobeFonts.every(size => size >= 19.1), 'Expanded wardrobe text must follow the 150% reading size');
       await inspectLayout(root, viewport, record, 'wardrobeLayout');

@@ -59,6 +59,13 @@ les tests du lecteur et sa recette navigateur.
 
 Voir [la portée du lecteur d’archive](UNIVERSE_ARCHIVE_READER_2026-11-08.md).
 
+La recette du vestiaire consigne aussi les attributs de sélection, le survol, le focus
+et les couleurs des catégories avant et après deux images de rendu. Une capture de
+`02c72cbe` montrait une catégorie apparemment sélectionnée différente des cartes d’effets
+visibles. Le contrôle exige désormais une seule catégorie active, correspondant aux trois
+cartes en consultation, puis capture le rendu sans survol. Il distingue ainsi l’état DOM
+et sa peinture avant de conclure à une correction visuelle.
+
 ## Vues FPS
 
 Le nouveau renderer schématique lit la technique principale du profil et l’arme tenue.
@@ -122,6 +129,16 @@ et barre de progression, en libérant l’espace latéral droit pour la vue. La 
 dans « Directive et commandes ». La recette contrôle cette lecture, la pause de simulation
 pendant l’ouverture et le retour au jeu, en plus des rectangles réels à 380, 390 et 500 px
 de hauteur. Tous les boutons d’ouverture de ce panneau gardent au moins 44 px en paysage court.
+
+Les quatre géométries de `02c72cbe887dc3b0249b5c49832a6e56c4c800ed`
+([run 42472327757](https://github.com/darknigthmare/multiverse-breach/actions/runs/42472327757))
+ont passé ces contrôles, ainsi que le détail complet, la pause et le retour du focus.
+Le contrôle de reprise attendait seulement 32 ms : après le premier RAF de référence,
+les 16 ms restantes sont inférieures au pas de simulation de 16,667 ms. La recette vérifie
+maintenant que le premier RAF ne rattrape pas la pause, puis exige un à trois ticks après
+48 ms actives. Elle laisse également passer 256 ms naturelles après chaque changement
+de disposition pour mesurer les boutons après leur transition de 200 ms. Les règles de
+simulation et les seuils de géométrie restent les mêmes.
 
 Les résultats de cette correction et ses captures doivent être rattachés au nouveau
 commit testé dans le compte rendu de PR. La réussite de `0108b7ce` constitue le diagnostic
