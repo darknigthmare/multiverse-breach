@@ -16,7 +16,8 @@ DESIGN_LABELS = {'individual_proposal': 'Proposition individualisée',
                  'source_objective_adaptation': 'Adaptation d’objectif source — réécriture diégétique requise',
                  'source_family_adaptation': 'Adaptation de famille — réécriture diégétique requise'}
 CITY_PRESENTATION_SOURCES = {'src/components/HubScreen.jsx', 'src/game/mosaicMissionOperations.js',
-                             'src/game/mosaicMissionCargo.js', 'src/game/renderer.js', 'src/game/spriteAssets.js'}
+                             'src/game/mosaicMissionCargo.js', 'src/game/renderer.js', 'src/game/spriteAssets.js',
+                             'src/game/immersiveHubState.js', 'src/components/useSceneViewport.js'}
 
 
 def require(condition, message):

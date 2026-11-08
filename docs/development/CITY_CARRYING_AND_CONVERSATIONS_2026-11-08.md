@@ -51,6 +51,10 @@ Le cartouche reste dans la caméra et évite les bornes de l’image du joueur e
 
 La recette navigateur observe directement les rectangles, images et textes réellement peints par Canvas. Elle contrôle le nombre de cartouches par image et leur séparation avec le personnage et son cargo ; elle n’utilise pas un compteur de réussite fourni par la scène. Les captures de fin et de reprise permettent aussi de vérifier que les résultats des anciennes interventions restent visibles.
 
+Cette vérification a également révélé un ancien défaut de caméra après reprise en portrait : le cadrage était initialisé pour 960 unités de largeur alors que le Canvas réel pouvait n’en mesurer que 250. Le joueur et son objet se retrouvaient alors temporairement hors champ pendant l’interpolation. La restauration et les portails utilisent désormais les dimensions réelles ; la première image d’un Canvas, un changement de quartier ou de dimensions recadre immédiatement le joueur. Le suivi courant garde son interpolation, y compris lorsque l’effet de rendu redémarre après une étape de mission.
+
+La preuve native de reprise exige explicitement que les rectangles réellement dessinés du joueur, de son nom, de son ombre et du cargo soient tous à l’intérieur du viewport, sur les mêmes 32 millisecondes déjà observées. Le contrôle des cartouches et les seuils de déplacement restent conservés.
+
 ### Cas d’import corrigé
 
 Un reçu inconnu pouvait auparavant imposer une séquence entière maximale à une nouvelle intervention. Une prise était alors validée avec une séquence non représentable, ce qui empêchait de retrouver le cargo. L’ordre des nouvelles opérations utilise désormais seulement les reçus valides d’étapes connues. Si aucun entier sûr suivant n’existe pour ces reçus, l’action est refusée avant d’avancer. Deux régressions couvrent la conservation des données inconnues et le refus sans mutation.
@@ -84,6 +88,7 @@ Les contrats disponibles sont désormais : base 28 Nexus ; Halo 28 Nexus + 2 Hal
 - Planification/catalogue : **21/21** ; profils physiques de contrats : **7/7**, dont quatre configurations d’installation.
 - Lint ciblé, syntaxe des recettes, construction de la fixture carnet et compilation Vite directe réussis. La compilation directe ne remplace pas le lifecycle complet de production.
 - Géométrie de sprite : **4/4** tests, avec comparaison aux vrais appels du renderer dans 36 combinaisons d’images contrôlées ; les observations navigateur restent une preuve séparée.
+- Cadrage de reprise : **8/8** régressions, dont l’exécution du vrai début de boucle de rendu avec le moteur de déplacement. Les quatre positions portrait observées, le changement de format et la conservation du suivi fluide sont couverts.
 - Les **44 commandes prebuild**, leur contenu et leur ordre sont inchangés ; SHA-256 de la chaîne : `706f07554e39f05f19f00ddd21ba6a821a6989825e7d1b3048e31ee6fb86b97d`.
 
 Chromium local a été essayé et s’arrête avant l’ouverture de la page avec `socket(): Operation not permitted`. Les nouvelles recettes navigateur ne sont donc pas déclarées réussies localement. La PR publie séparément leurs résultats GitHub Actions sur le commit effectivement testé.

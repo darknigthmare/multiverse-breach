@@ -28,7 +28,8 @@ const fieldEquipmentCommands = [
 const fieldEquipmentSourceFiles = ['src/game/extinctionFieldEquipment.js', 'src/game/extinctionFighterProfiles.js', 'src/components/HubScreen.jsx'];
 // Presentation provenance stays in the receipt, without changing planning cells.
 const cityPresentationSourceFiles = ['src/components/HubScreen.jsx', 'src/game/mosaicMissionOperations.js',
-  'src/game/mosaicMissionCargo.js', 'src/game/renderer.js', 'src/game/spriteAssets.js'];
+  'src/game/mosaicMissionCargo.js', 'src/game/renderer.js', 'src/game/spriteAssets.js',
+  'src/game/immersiveHubState.js', 'src/components/useSceneViewport.js'];
 if (existingPath) {
   await refreshRuntimeContracts(path.resolve(existingPath));
   process.exit(0);

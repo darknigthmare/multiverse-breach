@@ -113,7 +113,7 @@ import useExtinctionViewLayout from './useExtinctionViewLayout.js';
 import SceneHoldButton from './SceneHoldButton.jsx';
 import useModalDialog from './collection/useModalDialog.js';
 import { createSceneInputs, emptySceneAim, advanceSceneAim } from '../game/sceneInputs.js';
-import { applyExtinctionReport, compareGearBoosts, normalizeExtinctionReport, normalizeHubNavigation, restoreMosaicLocation, snapshotMosaicLocation } from '../game/immersiveHubState.js';
+import { applyExtinctionReport, compareGearBoosts, getMosaicCameraPosition, normalizeExtinctionReport, normalizeHubNavigation, restoreMosaicLocation, snapshotMosaicLocation } from '../game/immersiveHubState.js';
 
 const TAU = Math.PI * 2;
 const getFeaturedUniverseIconSrc = (universe) => FEATURED_UNIVERSE_ICONS[universe] || null;
@@ -2335,6 +2335,7 @@ function MosaicCityHub({
   const locationCallbackRef = useRef(onLocationChange);
   locationCallbackRef.current = onLocationChange;
   const restoredLocationRef = useRef(false);
+  const cameraViewportRef = useRef(null);
   const sessionPausedRef = useRef(sessionPaused);
   const sessionExitRequestRef = useRef(sessionExitRequest);
   const stateRef = useRef({
@@ -2704,7 +2705,7 @@ function MosaicCityHub({
   useEffect(() => {
     if (restoredLocationRef.current) return;
     restoredLocationRef.current = true;
-    const restored = restoreMosaicLocation(savedLocation, districts);
+    const restored = restoreMosaicLocation(savedLocation, districts, canvasRef.current);
     Object.assign(stateRef.current.player, restored.player);
     stateRef.current.camera = restored.camera;
     currentDistrictRef.current = restored.districtId;
@@ -2881,10 +2882,7 @@ function MosaicCityHub({
     stateRef.current.keys = {};
     nearbyInteractionRef.current = null;
     setNearbyLabel('');
-    stateRef.current.camera = {
-      x: Math.max(0, Math.min(target.worldW - 960, spawn.x - 480)),
-      y: Math.max(0, Math.min(target.worldH - 540, spawn.y - 270))
-    };
+    stateRef.current.camera = getMosaicCameraPosition(spawn, target, canvasRef.current);
     setNearHeroId(null);
     setNearZoneId(null);
     setCurrentDistrict(target.id);
@@ -3204,9 +3202,21 @@ function MosaicCityHub({
       lastFrame = timestamp;
       state.t += elapsedMs * 60 / 1000;
       recordGuide('move', advanceMosaicPlayer(state, district, elapsedMs));
-      const cameraBlend = 1 - Math.pow(0.88, elapsedMs * 60 / 1000);
-      state.camera.x += (Math.max(0, Math.min(district.worldW - canvas.width, state.player.x - canvas.width / 2)) - state.camera.x) * cameraBlend;
-      state.camera.y += (Math.max(0, Math.min(district.worldH - canvas.height, state.player.y - canvas.height / 2)) - state.camera.y) * cameraBlend;
+      const cameraTarget = getMosaicCameraPosition(state.player, district, canvas);
+      const cameraViewport = cameraViewportRef.current;
+      // A fresh or resized canvas must show the saved player on its first frame.
+      // Keep this ref across effect restarts so ordinary quest updates retain the smooth follow.
+      if (!cameraViewport || cameraViewport.canvas !== canvas || cameraViewport.width !== canvas.width
+        || cameraViewport.height !== canvas.height || cameraViewport.districtId !== currentDistrict
+        || cameraViewport.worldW !== district.worldW || cameraViewport.worldH !== district.worldH) {
+        Object.assign(state.camera, cameraTarget);
+        cameraViewportRef.current = { canvas, width: canvas.width, height: canvas.height,
+          districtId: currentDistrict, worldW: district.worldW, worldH: district.worldH };
+      } else {
+        const cameraBlend = 1 - Math.pow(0.88, elapsedMs * 60 / 1000);
+        state.camera.x += (cameraTarget.x - state.camera.x) * cameraBlend;
+        state.camera.y += (cameraTarget.y - state.camera.y) * cameraBlend;
+      }
 
       let activeZone = district;
       zones.forEach(zone => {

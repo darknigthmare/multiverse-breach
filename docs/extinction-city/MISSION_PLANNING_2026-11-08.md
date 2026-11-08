@@ -110,11 +110,13 @@ provenance dans le helper d’équipement, les profils et le raccord de l’écr
 
 Le reçu du classeur et sa relecture utilisent le schéma 6. En complément des
 19 entrées de `runtimeSources` et des 3 entrées de `fieldEquipmentSources`,
-`cityPresentationSources` contrôle cinq fichiers : `HubScreen.jsx`,
+`cityPresentationSources` contrôle sept fichiers : `HubScreen.jsx`,
 `mosaicMissionOperations.js`, `mosaicMissionCargo.js`, `renderer.js` et
-`spriteAssets.js`. Ces groupes peuvent partager des fichiers. Le rendu des
-sprites et sa géométrie ne figuraient pas dans le manifeste de planification ;
-ce groupe externe conserve désormais leurs empreintes sans ajouter de cellules.
+`spriteAssets.js`, ainsi que `immersiveHubState.js` et `useSceneViewport.js`
+pour le cadrage lors du montage, de la restauration et du redimensionnement.
+Ces groupes peuvent partager des fichiers. Le rendu des sprites, sa géométrie
+et ces dépendances de caméra ne figurent pas dans le manifeste de planification ;
+ce groupe externe conserve leurs empreintes sans ajouter de cellules.
 
 La correction d’affichage des cartouches après la révision `22eb3ec8` conserve
 toutes les données logiques de planification, les contenus, le suivi et les
@@ -123,7 +125,13 @@ manifeste de planification. Le classeur est donc conservé à l’octet près.
 `provenanceRefresh` relie le nouveau reçu au reçu précédent et à l’empreinte du
 classeur conservé. La relecture vérifie réellement les empreintes du classeur,
 de la planification et des trois groupes de sources dans le dépôt courant ;
-elle rejette aussi l’absence d’une des cinq dépendances de présentation.
+elle rejette aussi l’absence d’une des sept dépendances de présentation.
+
+Le correctif de cadrage après `63aae093` conserve également le JSON de
+planification complet à l’octet près, manifeste et empreinte compris. Le reçu
+actualise l’empreinte de `HubScreen.jsx` et ajoute les deux dépendances de
+caméra au groupe de présentation ; les 19 sources des contrats restent
+identiques. Cette actualisation de provenance ne réexporte pas le classeur.
 
 ## Reproduction
 

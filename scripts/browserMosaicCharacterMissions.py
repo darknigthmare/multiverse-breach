@@ -496,7 +496,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                 label_layout_file = f'{case_name}-{mission_id}-step-{index}-remount-labels.json'
                 label_layout = verify_mission_label_frames(
                     save_mission_label_frames(page, out, label_layout_file),
-                    require_labels=True, require_cargo=True)
+                    require_labels=True, require_cargo=True, require_player_in_view=True)
             terminal(page)
             panel.locator('select').select_option(mission_id)
             case['remount'] = {'completedStepIds': saved['records'][mission_id]['completedStepIds'], 'preserved': True,

@@ -73,8 +73,19 @@ export const getSceneHudLayout = ({ width, height, logicalHeight, hudScale = 1, 
   };
 };
 
+// Center the actual logical canvas; callers without a measured canvas retain
+// the historical 960 × 540 framing. Each missing or invalid axis falls back alone.
+export const getMosaicCameraPosition = (player, district, viewport = null) => {
+  const width = Number.isFinite(viewport?.width) && viewport.width > 0 ? viewport.width : 960;
+  const height = Number.isFinite(viewport?.height) && viewport.height > 0 ? viewport.height : 540;
+  return {
+    x: Math.max(0, Math.min(district.worldW - width, player.x - width / 2)),
+    y: Math.max(0, Math.min(district.worldH - height, player.y - height / 2))
+  };
+};
+
 // Save only navigation state, never transient input, NPCs or a running simulation.
-export const restoreMosaicLocation = (saved, districts) => {
+export const restoreMosaicLocation = (saved, districts, viewport = null) => {
   const district = districts[saved?.districtId] || districts.atrium;
   const validPosition = districts[saved?.districtId]
     && Number.isFinite(saved?.player?.x) && Number.isFinite(saved?.player?.y);
@@ -83,10 +94,7 @@ export const restoreMosaicLocation = (saved, districts) => {
     districtId: district.id,
     zoneId: validPosition && typeof saved.zoneId === 'string' ? saved.zoneId : district.id,
     player: { ...player, facing: saved?.player?.facing === -1 ? -1 : 1 },
-    camera: {
-      x: Math.max(0, Math.min(district.worldW - 960, player.x - 480)),
-      y: Math.max(0, Math.min(district.worldH - 540, player.y - 270))
-    }
+    camera: getMosaicCameraPosition(player, district, viewport)
   };
 };
 

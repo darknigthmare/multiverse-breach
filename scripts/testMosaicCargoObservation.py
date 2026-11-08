@@ -294,6 +294,56 @@ class MissionLabelObservationTests(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'overlaps the actual avatar or cargo'):
             verify_mission_label_frames([pending, ready], require_labels=True, require_cargo=True)
 
+    def test_remount_visibility_is_explicit_and_checks_every_completed_frame(self):
+        second = copy.deepcopy(self.frame)
+        second['id'] = 2
+        old_scope = verify_mission_label_frames([self.frame])
+        self.assertNotIn('playerAndCargoWithinViewport', old_scope)
+        proof = verify_mission_label_frames([self.frame, second], require_labels=True,
+                                           require_cargo=True, require_player_in_view=True)
+        self.assertTrue(proof['playerAndCargoWithinViewport'])
+        self.assertEqual(proof['visibilityCheckedFrames'], 2)
+        self.assertEqual(proof['positionTolerance'], 1e-6)
+
+    def test_remount_rejects_each_actual_player_or_cargo_part_one_pixel_outside_each_edge(self):
+        for group in ('avatarDraws', 'playerShadow', 'playerName', 'cargoDraws', 'cargoLabel'):
+            for edge in ('left', 'right', 'top', 'bottom'):
+                with self.subTest(group=group, edge=edge):
+                    frame = copy.deepcopy(self.frame)
+                    draw = frame[group][0] if isinstance(frame[group], list) else frame[group]
+                    rect = draw['rect']
+                    axis = 'x' if edge in ('left', 'right') else 'y'
+                    size = 'width' if axis == 'x' else 'height'
+                    target = -1 if edge in ('left', 'top') else frame['viewport'][size] - rect[size] + 1
+                    delta = target - rect[axis]
+                    rect[axis] = target
+                    if 'args' in draw:
+                        draw['args'][axis] += delta
+                    if group == 'cargoLabel':
+                        frame['cargoLabelText']['rect'][axis] += delta
+                    with self.assertRaisesRegex(AssertionError, 'escapes the viewport after remount'):
+                        verify_mission_label_frames([frame], require_labels=True,
+                                                    require_cargo=True, require_player_in_view=True)
+
+    def test_remount_visibility_keeps_the_one_millionth_tolerance(self):
+        self.frame['avatarDraws'] = [painted_rectangle(-2e-6, 106, 78, 78, 'drawImage')]
+        with self.assertRaisesRegex(AssertionError, 'escapes the viewport after remount'):
+            verify_mission_label_frames([self.frame], require_player_in_view=True)
+
+    def test_a_later_visible_frame_does_not_hide_an_earlier_closed_offscreen_frame(self):
+        first = copy.deepcopy(self.frame)
+        first['avatarDraws'] = [painted_rectangle(601, 106, 78, 78, 'drawImage')]
+        second = copy.deepcopy(self.frame)
+        second['id'] = 2
+        with self.assertRaisesRegex(AssertionError, 'escapes the viewport after remount'):
+            verify_mission_label_frames([first, second], require_player_in_view=True)
+        # An explicitly open tail remains diagnostic under the same boundary
+        # rule as every other assertion; it cannot prove restored visibility.
+        first.update({'id': 3, 'complete': False})
+        proof = verify_mission_label_frames([second, first], require_player_in_view=True)
+        self.assertEqual(proof['visibilityCheckedFrames'], 1)
+        self.assertEqual(proof['unclosedFramesRetained'], 1)
+
     def test_observer_ends_the_player_group_before_later_npcs_and_reads_state_once_per_frame(self):
         # A command-routing double verifies interception and boundaries only.
         # It does not stand in for Chromium geometry or the native CI captures.

@@ -304,7 +304,7 @@ def _intersects(a, b):
         and min(a['y'] + a['height'], b['y'] + b['height']) - max(a['y'], b['y']) > POSITION_TOLERANCE
 
 
-def verify_mission_label_frames(frames, require_labels=False, require_cargo=False):
+def verify_mission_label_frames(frames, require_labels=False, require_cargo=False, require_player_in_view=False):
     """Reject overlaid cartouches using the commands that actually painted them."""
     _check(frames, 'no painted City frames were observed')
     labelled = carrying = text_bounds = native_rectangles = 0
@@ -325,7 +325,7 @@ def verify_mission_label_frames(frames, require_labels=False, require_cargo=Fals
         _check(isinstance(labels, list) and len(labels) <= 1, 'multiple operation cartouches painted in one frame')
         labelled += bool(labels)
         protected = []
-        if labels or frame.get('cargo'):
+        if labels or frame.get('cargo') or require_player_in_view:
             avatar_draws = frame.get('avatarDraws')
             _check(isinstance(avatar_draws, list), 'missing native avatar drawing group')
             # Loading can briefly leave only the real shadow/name. Still check
@@ -351,6 +351,9 @@ def verify_mission_label_frames(frames, require_labels=False, require_cargo=Fals
             _check(cargo_text.get('text') == frame['cargo'].get('label'), 'carried label text was not actually drawn')
             _check(_contains(cargo_label, _rect(cargo_text.get('rect'), 'carried label text bounds')),
                    'carried label text escapes its background')
+        if require_player_in_view:
+            _check(protected and all(_contains(viewport, part) for part in protected),
+                   'the actual avatar or carried object escapes the viewport after remount')
         for label in labels:
             rect = _painted_rect(label); native_rectangles += 1
             _check(rect['width'] > 0 and rect['height'] > 0 and _contains(viewport, rect), 'operation cartouche escapes the viewport')
@@ -367,9 +370,9 @@ def verify_mission_label_frames(frames, require_labels=False, require_cargo=Fals
     if require_cargo:
         _check(carrying > 0, 'no carried silhouette was actually painted during the observation')
         _check(ready_carrying > 0, 'no real avatar drawing was observed beside the carried object')
-    if labelled or carrying:
+    if labelled or carrying or require_player_in_view:
         _check(ready_avatar > 0, 'no real avatar drawing was observed during the observation')
-    return {'paintedFrames': len(completed), 'unclosedFramesRetained': len(frames) - len(completed),
+    result = {'paintedFrames': len(completed), 'unclosedFramesRetained': len(frames) - len(completed),
             'framesWithOperationLabel': labelled, 'framesCarrying': carrying,
             'framesWithAvatarDrawing': ready_avatar, 'framesWithoutAvatarDrawing': without_avatar,
             'maxOperationLabelsPerFrame': max(len(frame['labels']) for frame in completed),
@@ -377,3 +380,6 @@ def verify_mission_label_frames(frames, require_labels=False, require_cargo=Fals
             'noPlayerOrCargoIntersection': True, 'positionTolerance': POSITION_TOLERANCE,
             'scope': 'Native Canvas fillRect frame boundaries, operation backgrounds, text bounds and avatar/cargo draws; '
                      'no runtime placement rectangles or QA label count are trusted.'}
+    if require_player_in_view:
+        result.update({'playerAndCargoWithinViewport': True, 'visibilityCheckedFrames': len(completed)})
+    return result
