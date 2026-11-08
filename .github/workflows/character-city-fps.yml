@@ -51,6 +51,7 @@ jobs:
           node --version > /tmp/character-city-fps-evidence/node-version.txt
           node scripts/prepareDlcAssets.mjs --available
           python3 scripts/testMosaicMotionProof.py
+          python3 scripts/testMosaicCargoObservation.py
           python3 scripts/testExtinctionPickupAim.py 2>&1 | tee /tmp/character-city-fps-evidence/pickup-aim.log
           node --test scripts/mosaicCharacterMissions.test.mjs scripts/mosaicMissionOperations.test.mjs scripts/mosaicMissionCargo.test.mjs scripts/mosaicContractJournal.test.mjs scripts/cityMotionObservation.test.mjs scripts/dlcProfileCharacterMissions.test.mjs scripts/extinctionFighterProfiles.test.mjs scripts/extinctionFieldEquipment.test.mjs scripts/extinctionFieldDirectives.test.mjs scripts/portalDenseCatalogs.test.mjs | tee /tmp/character-city-fps-evidence/contracts.log
           node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionCityMissionPlanning.test.mjs scripts/extinctionCityCatalog.test.mjs | tee /tmp/character-city-fps-evidence/planning.log
@@ -109,7 +110,7 @@ jobs:
           path: /tmp/character-city-fps-evidence/
           retention-days: 14
   city-contracts:
-    name: City contracts (${{ matrix.district }}, ${{ matrix.lang }})
+    name: City contracts (${{ matrix.district }}, ${{ matrix.lang }}, ${{ matrix.story || 'main' }})
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     strategy:
@@ -117,6 +118,19 @@ jobs:
       matrix:
         district: [nexus, halo, alien]
         lang: [fr, en]
+        suite: [main]
+        include:
+          - { district: nexus, lang: fr, suite: deliveries, story: city-mirelle-night-watch-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-mirelle-night-watch-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-quillon-refuge-pump-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-quillon-refuge-pump-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-nadir-buried-probe-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-nadir-buried-probe-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-tessera-chosen-window-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-tessera-chosen-window-v1 }
+    env:
+      CITY_CASE_SUITE: ${{ matrix.suite }}
+      CITY_DELIVERY_STORY: ${{ matrix.story || '' }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -160,10 +174,12 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
           curl -fsS http://127.0.0.1:4173/ >/dev/null
-          /tmp/city-contract-browser-py/bin/python scripts/browserMosaicCharacterMissions.py --require-art --district '${{ matrix.district }}' --lang '${{ matrix.lang }}' --evidence /tmp/city-contract-evidence/browser | tee /tmp/city-contract-evidence/browser.log
+          case_args=(--suite "$CITY_CASE_SUITE")
+          if [[ -n "$CITY_DELIVERY_STORY" ]]; then case_args+=(--delivery-story "$CITY_DELIVERY_STORY"); fi
+          /tmp/city-contract-browser-py/bin/python scripts/browserMosaicCharacterMissions.py --require-art --district '${{ matrix.district }}' --lang '${{ matrix.lang }}' "${case_args[@]}" --evidence /tmp/city-contract-evidence/browser | tee /tmp/city-contract-evidence/browser.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: character-city-${{ matrix.district }}-${{ matrix.lang }}-${{ github.sha }}
+          name: character-city-${{ matrix.district }}-${{ matrix.lang }}-${{ matrix.story || 'main' }}-${{ github.sha }}
           path: /tmp/city-contract-evidence/
           retention-days: 14

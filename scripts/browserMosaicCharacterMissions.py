@@ -6,7 +6,6 @@ position, quest progress, evidence, reward or ending is injected during play.
 """
 import argparse
 import json
-import math
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
 from browserCityExtinction import check
@@ -14,6 +13,7 @@ from browserResidentViewmodels import CLOCK_EPOCH, CLOCK_START
 from browserCityFpsOperations import begin_walk_proof, DISTRICT
 from browserNexusCampaign import load, reading_scale
 from mosaicMotionProof import validate_mosaic_motion
+from mosaicCargoObservation import CARGO_OBSERVER_SCRIPT, verify_cargo_draws
 
 NEXUS_CONTRACTS = [
     ('city-anchor-signature-v1', 'replace-origin', 'retain-origin'),
@@ -118,38 +118,14 @@ def verify_cargo_transition(definition, before, after, saved):
 
 def install_cargo_observer(page):
     """Observe real Canvas2D label draws; never modify the scene or simulation."""
-    page.add_init_script('''(()=>{
-      window.__cityCargoDraws=[];
-      const original=CanvasRenderingContext2D.prototype.fillText;
-      CanvasRenderingContext2D.prototype.fillText=function(text,x,y,...rest){
-        const state=window.__sceneQA?.state?.(),cargo=state?.missionCargo;
-        if(this.canvas.classList.contains('mosaic-rpg-canvas')&&cargo&&text===cargo.label){
-          const m=this.getTransform();
-          window.__cityCargoDraws.push({t:state.t,player:{x:state.player.x,y:state.player.y},
-            cargo:structuredClone(cargo),worldX:m.a*x+m.c*y+m.e+state.camera.x,
-            worldY:m.b*x+m.d*y+m.f+state.camera.y});
-          if(window.__cityCargoDraws.length>6000)window.__cityCargoDraws.shift();
-        }
-        return original.call(this,text,x,y,...rest);
-      };
-    })();''')
+    page.add_init_script(CARGO_OBSERVER_SCRIPT)
 
 
-def verify_cargo_draws(samples, cargo, require_movement=False):
-    matching = [sample for sample in samples if sample['cargo'] == cargo]
-    check(matching, 'the carried object label was not drawn on the real City canvas')
-    for sample in matching:
-        check(all(math.isfinite(sample[key]) for key in ['worldX', 'worldY']), 'non-finite carried-object position')
-        check(abs(sample['worldX'] - sample['player']['x']) <= 1e-6
-              and abs(sample['worldY'] - sample['player']['y'] + 66) <= 1e-6,
-              'carried-object label detached from the avatar world transform')
-    distance = sum(math.hypot(current['player']['x'] - previous['player']['x'], current['player']['y'] - previous['player']['y'])
-                   for previous, current in zip(matching, matching[1:]))
-    if require_movement:
-        check(len(matching) >= 2 and distance > 1e-6, 'no native movement was sampled while the object was carried')
-    return {'sampledDraws': len(matching), 'travelledWorldUnits': distance,
-            'labelTracksAvatar': True, 'worldOffset': {'x': 0, 'y': -66},
-            'scope': 'Observed real label transforms; screenshots also retain the code-drawn carried silhouette.'}
+def save_cargo_draws(page, out, filename):
+    """Retain raw matrices and deltas before any assertion can stop the case."""
+    draws = page.evaluate('window.__cityCargoDraws || []')
+    (out / filename).write_text(json.dumps(draws, indent=2))
+    return draws
 
 
 def verify_operation(definition, before, after, objects_before, objects_after, observed_target):
@@ -412,10 +388,9 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
             motion = validate_mosaic_motion(proof, nearby_target=expected_target)
             walk = {'index': index, 'motion': motion}
             if cargo_before:
-                cargo_draws = page.evaluate('window.__cityCargoDraws')
+                cargo_draws = save_cargo_draws(page, out, f'{case_name}-{mission_id}-step-{index}-carried-draws.json')
                 walk['carriedObject'] = verify_cargo_draws(cargo_draws, cargo_before,
                     require_movement=not motion['startedWithinTargetRange'])
-                (out / f'{case_name}-{mission_id}-step-{index}-carried-draws.json').write_text(json.dumps(cargo_draws, indent=2))
             case['walks'].append(walk)
             if operation_before:
                 completed_operation = verify_operation(operation_before, before, progress(page), objects_before,
@@ -450,7 +425,8 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
             if cargo_after:
                 page.clock.run_for(32)
                 check(mission_cargo(page) == cargo_after, 'drawing the carried object changed its identity')
-                transfer['draw'] = verify_cargo_draws(page.evaluate('window.__cityCargoDraws'), cargo_after)
+                transfer['drawFile'] = f'{case_name}-{mission_id}-step-{index}-pickup-draws.json'
+                transfer['draw'] = verify_cargo_draws(save_cargo_draws(page, out, transfer['drawFile']), cargo_after)
                 transfer['capture'] = f'{case_name}-{mission_id}-{cargo_after["id"]}-taken.png'
                 page.screenshot(path=str(out / transfer['capture']))
             case['cargoTransfers'].append(transfer)
@@ -485,6 +461,7 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                   'remount lost or changed an operation receipt')
             check(mission_cargo(page) == before_unmount['cargo'], 'remount lost or duplicated the carried object')
             cargo_capture = None
+            cargo_draw_file = None
             if before_unmount['cargo']:
                 page.evaluate('window.__cityCargoDraws=[]')
                 page.clock.run_for(32)
@@ -492,13 +469,15 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
                       'rendering the restored cargo changed its saved transfer')
                 cargo_capture = f'{case_name}-{mission_id}-{before_unmount["cargo"]["id"]}-remounted.png'
                 page.screenshot(path=str(out / cargo_capture))
-                verify_cargo_draws(page.evaluate('window.__cityCargoDraws'), before_unmount['cargo'])
+                cargo_draw_file = f'{case_name}-{mission_id}-step-{index}-remount-draws.json'
+                verify_cargo_draws(save_cargo_draws(page, out, cargo_draw_file), before_unmount['cargo'])
             terminal(page)
             panel.locator('select').select_option(mission_id)
             case['remount'] = {'completedStepIds': saved['records'][mission_id]['completedStepIds'], 'preserved': True,
                                'operationReceipt': completed_operation['receipt'], 'objects': before_unmount['objects'],
                                'operationObjectsPreserved': True, 'cargo': before_unmount['cargo'],
-                               'carriedObjectPreserved': bool(before_unmount['cargo']), 'cargoCapture': cargo_capture}
+                               'carriedObjectPreserved': bool(before_unmount['cargo']), 'cargoCapture': cargo_capture,
+                               'cargoDrawFile': cargo_draw_file}
     terminal(page)
     expect(panel.locator('[data-city-contract-objective]')).to_have_attribute('data-contract-id', mission_id)
     expect(panel.locator('[data-city-contract-accept]')).to_have_count(0)
@@ -753,6 +732,8 @@ def run_delivery_branches(browser, args, lang, out, results):
         ('desktop', {'width': 1440, 'height': 1000}),
     ]
     for story in DELIVERIES:
+        if args.delivery_story and story['id'] != args.delivery_story:
+            continue
         for origin_index, origin in enumerate(story['origins']):
             for choice_index, choice in enumerate(['apply', 'hold']):
                 label, viewport = viewports[origin_index * 2 + choice_index]
@@ -778,6 +759,8 @@ def run_delivery_branches(browser, args, lang, out, results):
                     result['status'] = 'passed'
                 except Exception as error:
                     result['status'] = 'failed'; result['error'] = str(error)
+                    result['cargoFailureDraws'] = f'{name}-cargo-failure-draws.json'
+                    save_cargo_draws(page, out, result['cargoFailureDraws'])
                     result['media'] = page.evaluate('window.__sceneQA?.media || []')
                     page.screenshot(path=str(out / f'{name}-failure.png'))
                 finally:
@@ -785,14 +768,27 @@ def run_delivery_branches(browser, args, lang, out, results):
                     context.close()
 
 
-def main():
+def parse_args(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('--url', default='http://127.0.0.1:4173')
     parser.add_argument('--evidence', default='/tmp/mosaic-character-missions')
     parser.add_argument('--require-art', action='store_true')
     parser.add_argument('--district', choices=['nexus', 'halo', 'alien', 'all'], default='nexus')
     parser.add_argument('--lang', choices=['fr', 'en', 'all'], default='all')
-    args = parser.parse_args()
+    parser.add_argument('--suite', choices=['all', 'main', 'deliveries'], default='all',
+                        help='Run all existing cases, the main viewport journeys, or the delivery branch matrix.')
+    parser.add_argument('--delivery-story', choices=sorted(DELIVERY_IDS),
+                        help='Limit delivery branches to one story; main journeys remain unchanged.')
+    args = parser.parse_args(argv)
+    if args.delivery_story and args.suite == 'main':
+        parser.error('--delivery-story requires --suite all or deliveries')
+    if (args.suite == 'deliveries' or args.delivery_story) and args.district not in ('nexus', 'all'):
+        parser.error('delivery branches require --district nexus or all')
+    return args
+
+
+def main():
+    args = parse_args()
     out = Path(args.evidence); out.mkdir(parents=True, exist_ok=True)
     results = []
     with sync_playwright() as playwright:
@@ -801,9 +797,11 @@ def main():
             for district in (DISTRICTS if args.district == 'all' else [args.district]):
                 profile = DISTRICTS[district]
                 for lang in (['fr', 'en'] if args.lang == 'all' else [args.lang]):
-                    for label, viewport in [('desktop', {'width': 1440, 'height': 1000}),
-                                            ('portrait', {'width': 390, 'height': 844}),
-                                            ('landscape', {'width': 844, 'height': 390})]:
+                    main_viewports = [] if args.suite == 'deliveries' else [
+                        ('desktop', {'width': 1440, 'height': 1000}),
+                        ('portrait', {'width': 390, 'height': 844}),
+                        ('landscape', {'width': 844, 'height': 390})]
+                    for label, viewport in main_viewports:
                         name = f'{district}-{lang}-{label}'
                         context = browser.new_context(viewport=viewport, has_touch=True)
                         page = context.new_page()
@@ -828,12 +826,14 @@ def main():
                             result['status'] = 'passed'
                         except Exception as error:
                             result['status'] = 'failed'; result['error'] = str(error)
+                            result['cargoFailureDraws'] = f'{name}-cargo-failure-draws.json'
+                            save_cargo_draws(page, out, result['cargoFailureDraws'])
                             result['media'] = page.evaluate('window.__sceneQA?.media || []')
                             page.screenshot(path=str(out / f'{name}-failure.png'))
                         finally:
                             (out / 'summary.json').write_text(json.dumps(results, ensure_ascii=False, indent=2))
                             context.close()
-                    if district == 'nexus':
+                    if district == 'nexus' and args.suite != 'main':
                         run_delivery_branches(browser, args, lang, out, results)
         finally:
             browser.close()

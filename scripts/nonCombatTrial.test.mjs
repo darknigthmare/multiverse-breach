@@ -16,6 +16,7 @@ import { getSceneCanvasSize, getSceneHudLayout } from '../src/game/immersiveHubS
 import { getExtinctionRelayStatus } from '../src/game/extinctionRelayOperation.js';
 import { getExtinctionLootTarget, getNexusFieldObjective } from '../src/game/nexusFieldOperation.js';
 import { getExtinctionDirectiveTarget, getExtinctionFieldDirectiveStatus } from '../src/game/extinctionFieldDirectives.js';
+import { getExtinctionFieldWeaponReadout } from '../src/game/extinctionFieldEquipment.js';
 
 const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
 const hubCssSource = readFileSync(new URL('../src/components/HubImmersion.css', import.meta.url), 'utf8');
@@ -445,9 +446,9 @@ test('Extinction Zone contracts keep real objectives, bounded resources, aiming,
   // The callback boundary is structural: adding a real dependency such as lang
   // must not turn this health regression into a truncated-source SyntaxError.
   const buildSnapshot = new Function('getRunObjectiveText', 'getExtinctionRelayStatus', 'getExtinctionLootTarget',
-    'getNexusFieldObjective', 'getExtinctionDirectiveTarget', 'getExtinctionFieldDirectiveStatus', 'EXTINCTION_BEACON_TARGET', 'lang',
+    'getNexusFieldObjective', 'getExtinctionDirectiveTarget', 'getExtinctionFieldDirectiveStatus', 'getExtinctionFieldWeaponReadout', 'EXTINCTION_BEACON_TARGET', 'lang',
     `return (${hubSource.slice(callback.start, callback.end)});`)(
-    () => 'Objectif', getExtinctionRelayStatus, getExtinctionLootTarget, getNexusFieldObjective, getExtinctionDirectiveTarget, getExtinctionFieldDirectiveStatus, 3, 'fr');
+    () => 'Objectif', getExtinctionRelayStatus, getExtinctionLootTarget, getNexusFieldObjective, getExtinctionDirectiveTarget, getExtinctionFieldDirectiveStatus, getExtinctionFieldWeaponReadout, 3, 'fr');
   for (const [hp, expected] of [[80, 80], [-5, 0], [240, 200]]) {
     const snapshot = buildSnapshot({ phase: 'running', hp, maxHp: 200, loot: [], px: 0, py: 0 });
     assert.equal(snapshot.hp, expected);

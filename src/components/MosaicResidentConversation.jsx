@@ -16,7 +16,11 @@ export default function MosaicResidentConversation({ open, conversation, lang = 
   if (!visible) return null;
   return createPortal(
     <div ref={overlayRef} className="mosaic-resident-conversation-backdrop" onPointerDown={event => {
-      if (event.target === event.currentTarget) onClose?.();
+      if (event.target === event.currentTarget) {
+        // Closing restores focus; the compatible mousedown must not take it away.
+        event.preventDefault();
+        onClose?.();
+      }
     }}>
       <section ref={dialogRef} className="mosaic-resident-conversation" role="dialog" aria-modal="true"
         aria-labelledby={titleId} tabIndex={-1} data-resident-conversation-modal>
