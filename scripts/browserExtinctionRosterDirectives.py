@@ -325,9 +325,9 @@ def profile_case(page, identity, lang, args, out, name):
             'pausePreserved': True, 'abandonNoReward': True}
 
 
-def walk(page, current, point):
+def walk(page, current, point, aim_input=aim):
     distance = math.hypot(point['wx'] - current['px'], point['wy'] - current['py'])
-    aim(page, current, point['wx'], point['wy'])
+    aim_input(page, current, point['wx'], point['wy'])
     duration = min(180, max(17, int((distance - .8) / .25) * 17))
     page.keyboard.down('w'); page.clock.run_for(duration); page.keyboard.up('w'); page.clock.run_for(70)
     return {'kind': 'walk', 'target': point['id'], 'milliseconds': duration + 70}
@@ -356,9 +356,39 @@ def combat(page, current, targets):
     return {'kind': 'fire', 'target': target['id'], 'milliseconds': duration, 'protocols': commands}
 
 
+def aim_pickup_without_fire(page, current, x, y):
+    """Use a real drag even for fine corrections, which otherwise count as taps."""
+    probe = '''() => {const s=window.__sceneQA.state();return {t:s.t,ammo:s.ammo,
+      weaponAmmo:s.weapon.ammo,casts:structuredClone(s.protocols.casts),
+      projectiles:structuredClone(s.protocols.projectiles)};}'''
+    before = page.evaluate(probe)
+    angle = math.atan2(x - current['px'], y - current['py'])
+    delta = (angle - current['angle'] + math.pi) % (2 * math.pi) - math.pi
+    if abs(delta) >= .006:
+        box = page.locator('.fps-royale-canvas').bounding_box()
+        start_x = box['x'] + box['width'] / 2; start_y = box['y'] + box['height'] * .48
+        pixels = delta / .008
+        page.mouse.move(start_x, start_y); page.mouse.down()
+        # The production pointer handler suppresses click-fire after >4 px of
+        # cumulative travel. Overshoot then return without advancing game time.
+        if abs(pixels) < 8: page.mouse.move(start_x + math.copysign(8, pixels), start_y)
+        page.mouse.move(start_x + pixels, start_y, steps=2); page.mouse.up()
+    return {'kind': 'aim-without-fire', 'angleDelta': delta, 'before': before, 'after': page.evaluate(probe)}
+
+
 def held_pickup_fire_case(page, out, name, restore_in_flight=False):
     """Fire a naturally dropped weapon through the shared native input route."""
     steps = []
+    attack_probe = '''() => {const s=window.__sceneQA.state(),p=s.protocols;return {
+      tick:s.t,turret:s.turret,reflection:structuredClone(p.reflection||null),
+      summon:structuredClone(p.summon||null),projectiles:structuredClone(p.projectiles)};}'''
+    def record_preparation(action):
+        steps.append(action)
+        (out / f'{name}-pickup-preparation.json').write_text(json.dumps({'steps': steps}, indent=2, ensure_ascii=False))
+    def aim_pickup(page, current, x, y):
+        proof = aim_pickup_without_fire(page, current, x, y)
+        record_preparation(proof)
+        check(proof['before'] == proof['after'], 'native pickup aiming advanced simulation, spent ammo or created an attack')
     for _ in range(50):
         current = read(page)
         check(current['phase'] == 'running' and current['weaponType'] in ['shotgun', 'plasma', 'rocket'], 'held pickup lost before native firing')
@@ -371,13 +401,22 @@ def held_pickup_fire_case(page, out, name, restore_in_flight=False):
                      - (.28 * item.get('size', 1) if travelling else 0))
         distance = math.hypot(target['wx'] - current['px'], target['wy'] - current['py'])
         if distance > 3:
-            steps.append(walk(page, current, target)); continue
+            steps.append(walk(page, current, target, aim_input=aim_pickup if travelling else aim)); continue
         if travelling and distance < 1.6:
-            aim(page, current, target['wx'], target['wy'])
+            aim_pickup(page, current, target['wx'], target['wy'])
             page.keyboard.down('s'); page.clock.run_for(120); page.keyboard.up('s')
             steps.append({'kind': 'step-back-for-flight', 'milliseconds': 120}); continue
         if current['reloadPulse'] > 0:
             page.clock.run_for(100); steps.append({'kind': 'wait-existing-reload', 'milliseconds': 100}); continue
+        if travelling:
+            pending = page.evaluate(attack_probe)
+            if pending['projectiles'] or pending['reflection'] or pending['summon']:
+                # Let actual attacks finish in the running simulation. Never
+                # clear effects or inject a quiet scene for the measured shot.
+                page.clock.run_for(100)
+                record_preparation({'kind': 'wait-for-native-attacks', 'milliseconds': 100,
+                                    'before': pending, 'after': page.evaluate(attack_probe)})
+                continue
         # The ordinary acquisition route can have an active role turret. Observe
         # between its real 34-tick pulses so later HP loss cannot be credited to it.
         if travelling and page.evaluate('window.__sceneQA.state().turret>0') and current['t'] % 34 > 14:
@@ -386,13 +425,13 @@ def held_pickup_fire_case(page, out, name, restore_in_flight=False):
             steps.append({'kind': 'wait-for-support-pulse', 'milliseconds': duration}); continue
         break
     else: raise AssertionError('could not approach a live threat with the real held pickup')
-    aim(page, current, target['wx'], target['wy'])
+    (aim_pickup if travelling else aim)(page, current, target['wx'], target['wy'])
     page.locator('.fps-royale-canvas').focus()
     if target['kind'] == 'Champion de Trame': page.keyboard.press('t')
     before = read(page)
-    pending_damage = page.evaluate('''() => {const s=window.__sceneQA.state(),p=s.protocols;return {
-      turret:s.turret,reflection:!!p.reflection,summon:!!p.summon,projectiles:structuredClone(p.projectiles)};}''')
+    pending_damage = page.evaluate(attack_probe)
     if travelling:
+        record_preparation({'kind': 'ready-for-native-shot', 'state': before, 'pendingDamage': pending_damage})
         check(not pending_damage['projectiles'] and not pending_damage['reflection'] and not pending_damage['summon'],
               'another travelling or autonomous attack would make native pickup damage ambiguous')
     page.keyboard.press('Space')

@@ -355,20 +355,47 @@ def resident_offer_journey(page, args, lang, out, name):
         page.clock.run_for(32)
         canvas = page.locator('.mosaic-rpg-canvas')
         departure = page.evaluate('window.__sceneQA.snapshot()')
-        # Walk east until the portal enters the camera, as a player would from
-        # the Atrium spawn. This is native keyboard input, never a position edit.
-        canvas.focus()
-        page.keyboard.down('ArrowRight')
-        try:
-            page.clock.run_for(2000)
-        finally:
-            page.keyboard.up('ArrowRight')
-        page.clock.run_for(32)
-        approached = page.evaluate('window.__sceneQA.snapshot()')
-        check(approached['player']['x'] > departure['player']['x'] and not any(approached['keys'].values()),
-              'native eastward input did not move and release the player')
-        check(not (progress(page) or {}).get('records'), 'walking across the Atrium accepted a quest')
-        record['atriumWalk'] = {'before': departure, 'after': approached}
+        record['atriumWalk'] = {'before': departure, 'waypoints': []}
+        # The guide stands on the straight eastward line. Click visible ground
+        # so the ordinary pathfinder walks around her body. The camera and live
+        # obstacles are read only; all movement comes from native pointer input.
+        for leg in range(6):
+            view = canvas.evaluate('''node=>{const r=node.getBoundingClientRect(),s=window.__sceneQA.state();
+              const project=p=>({x:(p.x-s.camera.x)*r.width/node.width,y:(p.y-s.camera.y)*r.height/node.height});
+              const inside=p=>p.x>0&&p.x<r.width&&p.y>0&&p.y<r.height;
+              const portal=project({x:1420,y:520});
+              const x=Math.min(1320,s.camera.x+node.width-80);
+              const ground=[520,600,440,680,360].map(y=>({x,y})).find(p=>inside(project(p))
+                &&p.x>s.player.x&&(s.npcs||[]).every(n=>Math.hypot(n.x-p.x,n.y-p.y)>46)
+                &&(s.obstacles||[]).every(o=>p.x<o.x-16||p.x>o.x+o.w+16||p.y<o.y-16||p.y>o.y+o.h+16));
+              return {portalVisible:inside(portal),ground,screenPoint:ground&&project(ground),
+                before:window.__sceneQA.snapshot()};}''')
+            if view['portalVisible']:
+                break
+            check(view.get('ground'), 'no visible ground waypoint toward the east Atrium portal')
+            waypoint = {'target': view['ground'], 'screenPoint': view['screenPoint'], 'before': view['before']}
+            record['atriumWalk']['waypoints'].append(waypoint)
+            begin_walk_proof(canvas)
+            canvas.click(position=view['screenPoint'])
+            try:
+                check(page.evaluate('window.__sceneQA.state().pendingInteraction') is None,
+                      'ground waypoint selected an interaction instead of ordinary movement')
+                for _ in range(160):
+                    page.clock.run_for(250)
+                    if page.evaluate('window.__sceneQA.snapshot().destination') is None:
+                        break
+                waypoint['after'] = page.evaluate('window.__sceneQA.snapshot()')
+                check(waypoint['after']['destination'] is None
+                      and waypoint['after']['player']['x'] > waypoint['before']['player']['x']
+                      and not any(waypoint['after']['keys'].values()),
+                      'native ground waypoint did not finish its eastward walk')
+                check(not (progress(page) or {}).get('records'), 'walking across the Atrium accepted a quest')
+            finally:
+                ground_proof = page.evaluate('window.__stopReconnaissanceMotion()')
+                ground_proof['groundTarget'] = view['ground']
+                (out / f'{name}-offer-atrium-ground-{leg}.json').write_text(json.dumps(ground_proof, indent=2))
+            waypoint['motion'] = validate_mosaic_motion(ground_proof)
+        record['atriumWalk']['after'] = page.evaluate('window.__sceneQA.snapshot()')
         # The east Atrium portal is authored at (1420, 520). Convert that real
         # world point with the canvas's current camera and scale; input remains
         # a native click, followed by the engine's own walk and portal transfer.
@@ -377,6 +404,8 @@ def resident_offer_journey(page, args, lang, out, name):
             width:r.width,height:r.height,before:window.__sceneQA.snapshot()};}''')
         check(0 < point['x'] < point['width'] and 0 < point['y'] < point['height'], 'east Atrium portal is outside the native canvas view')
         canvas.click(position={'x': point['x'], 'y': point['y']})
+        check(page.evaluate('window.__sceneQA.state().pendingInteraction') == {'type': 'portal', 'id': 'to-threads'},
+              'native portal click selected a different Atrium destination')
         for _ in range(160):
             page.clock.run_for(250)
             if page.evaluate('window.__sceneQA.saved?.districtId') == 'threads': break
