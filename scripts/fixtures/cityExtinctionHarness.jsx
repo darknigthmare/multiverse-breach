@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { MosaicCityHub, ExtinctionRoyale } from '../../src/components/HubScreen.jsx';
 import { HEROES_DB } from '../../src/game/heroes.js';
 import { createPlayerHero } from '../../src/game/playerHero.js';
+import { MOSAIC_CHARACTER_MISSIONS } from '../../src/game/mosaicCharacterMissions.js';
 import { getMosaicZoneAnchor, getMosaicSceneObstacles, MOSAIC_INTERACTION_RANGE } from '../../src/game/mosaicCityRuntime.js';
 import '../../src/index.css';
 import './combatHarness.css';
@@ -109,6 +110,32 @@ audit.cityZone = id => {
     }
   }
   return null;
+};
+// Residents move independently. Read the requested resident before the click,
+// rather than inferring its earlier location from a later dialogue snapshot.
+audit.cityNpc = id => {
+  if (mode !== 'city' || typeof id !== 'string') return null;
+  const state = audit.state();
+  const npc = Array.isArray(state?.npcs) && state.npcs.find(item => item?.hero?.id === id);
+  if (!state?.player || !npc || typeof npc.hero.universe !== 'string'
+    || !['x', 'y'].every(key => Number.isFinite(npc[key]) && Number.isFinite(state.player[key]))) return null;
+  return { type: 'npc', id: npc.hero.id, action: 'talk', universe: npc.hero.universe,
+    x: npc.x, y: npc.y, range: MOSAIC_INTERACTION_RANGE.npc,
+    distance: Math.hypot(state.player.x - npc.x, state.player.y - npc.y), source: 'live-npc' };
+};
+// Expected identity comes from the authored contract, independently of the
+// physical observation above. Step names are not a type system (return-marrow
+// is a resident interaction even though it does not start with "meet-").
+audit.cityContractTarget = ({ missionId, stepId, districtId } = {}) => {
+  const mission = MOSAIC_CHARACTER_MISSIONS.find(item => item.id === missionId);
+  const step = mission?.steps.find(item => item.id === stepId);
+  if (!step || typeof districtId !== 'string' || !districtId) return null;
+  const action = { npc: 'talk', exhibit: 'exhibit', marker: 'character-mission', anchor: 'anchor' }[step.type];
+  if (!action || (['npc', 'exhibit'].includes(step.type) && (typeof step.targetId !== 'string' || !step.targetId))) return null;
+  const type = step.type === 'npc' ? 'npc' : 'zone';
+  const id = type === 'npc' ? step.targetId : step.type === 'exhibit' ? `${districtId}::exhibit::${step.targetId}`
+    : step.type === 'anchor' ? `${districtId}-core` : `${mission.id}::${step.id}`;
+  return { type, id, action, universe: mission.universe, range: MOSAIC_INTERACTION_RANGE[type] };
 };
 audit.snapshot = () => {
   const s = audit.state(); if (!s) return null;

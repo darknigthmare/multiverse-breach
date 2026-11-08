@@ -50,7 +50,7 @@ def validate_mosaic_motion(proof, *, nearby_target=None):
         maximum_step = max(maximum_step, distance)
         moving_samples += int(distance > EPSILON)
         previous = current
-    # A report or marker can be read while already beside its actual zone. That
+    # A resident, display or report can already be within interaction range. That
     # exception needs an independently observed matching target and geometry;
     # it never skips the clock, speed, click or per-frame displacement checks.
     proximity = proof.get('proximityBefore')

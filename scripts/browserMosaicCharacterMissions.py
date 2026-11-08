@@ -184,12 +184,12 @@ def play_contract(page, entry, out, case_name, district, universe, remount=False
             button = panel.locator('[data-city-contract-approach]')
             reach_and_measure(button, page)
             step_id = objective.get_attribute('data-step')
-            expected_target = ({'type': 'zone', 'id': f'{district}-core', 'action': 'anchor',
-                                'universe': universe, 'range': 72} if step_id == 'report'
-                               else {'type': 'zone', 'id': f'{mission_id}::{step_id}', 'action': 'character-mission',
-                                     'universe': universe, 'range': 72}
-                               if step_id and not step_id.startswith(('meet-', 'inspect-')) else None)
-            proximity_before = page.evaluate('(id)=>window.__sceneQA.cityZone(id)', arg=expected_target['id']) if expected_target else None
+            expected_target = page.evaluate('input=>window.__sceneQA.cityContractTarget(input)', arg={
+                'missionId': mission_id, 'stepId': step_id, 'districtId': district})
+            check(expected_target and expected_target['universe'] == universe,
+                  'contract approach is missing its declared target or source universe')
+            proximity_before = page.evaluate('''target=>target.type==='npc'
+              ? window.__sceneQA.cityNpc(target.id) : window.__sceneQA.cityZone(target.id)''', arg=expected_target) if expected_target else None
             begin_walk_proof(button)
             button.click()
             try:

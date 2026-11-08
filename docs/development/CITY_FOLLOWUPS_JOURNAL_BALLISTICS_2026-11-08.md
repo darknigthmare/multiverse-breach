@@ -150,7 +150,22 @@ les six variantes d’archive et les quatre distributions DLC. Il ne constitue p
 la validation des corrections suivantes : leur résultat navigateur doit rester
 rattaché à leur propre commit dans la PR.
 
-Le build complet du même arbre a révélé un garde de progression encore attaché
+Le deuxième arbre (`e78aac99`) valide le journal 6/6, les portails 12/12 et les
+17 cas FPS, et porte les contrats Cité terminés à 76/88. Les deux parcours Nexus
+de bureau rencontrent ensuite le même cas normal auprès d’un habitant : Marrow
+est déjà à 44,23 unités, dans sa portée de dialogue de 58. Le rapport précédent
+et le clic suivant observent le même instant de simulation et la même position.
+La recette capture donc désormais aussi le PNJ vivant par son identité et son
+univers avant le clic, sans reconstruire sa position depuis le dialogue ouvert.
+Les quatre types de cible ont une identité attendue explicite : habitant,
+vitrine, borne de contrat et ancre. Le type et la cible viennent du descripteur
+réel de chaque étape, y compris le retour auprès de Marrow (`return-marrow`).
+Les observations restent des copies en lecture seule ; aucune règle ni aucun
+seuil de mouvement ne change. Les neuf tests d’observation, sept tests Python
+et le lot ciblé total de 44 tests passent. La
+matrice complète de ce dernier ajustement reste à confirmer sur son propre head.
+
+Le build complet du premier arbre (`8314d94`) a révélé un garde encore attaché
 à l’ancien emplacement de `state.muzzle = 36` dans Hub. Cette affectation est
 désormais dans le helper de tir. Le garde suit maintenant la liaison réelle vers
 ce helper et vérifie séparément consommation, cadence, flash, recharge et les

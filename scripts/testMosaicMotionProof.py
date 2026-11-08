@@ -43,6 +43,28 @@ class MotionProofTests(unittest.TestCase):
                 with self.assertRaisesRegex(AssertionError, 'sampled walk'):
                     validate_mosaic_motion(wrong, nearby_target=target)
 
+    def test_actual_resident_in_range_requires_its_identity_and_npc_range(self):
+        target = {'type': 'npc', 'id': 'arca_marrow', 'action': 'talk',
+                  'universe': 'Nexus de Convergence', 'range': 58}
+        start = {'t': 714.78, 'x': 891.0711610626, 'y': 932.9589320104402, 'speed': 2.35}
+        proof = {'clickBefore': start, 'clickAfter': copy.copy(start),
+                 'samples': [dict(start, t=715), dict(start, t=716)],
+                 'proximityBefore': dict(target, x=900.3892541725363, y=976.1949496042841,
+                                         distance=44.22872456425377)}
+        result = validate_mosaic_motion(proof, nearby_target=target)
+        self.assertTrue(result['startedWithinTargetRange'])
+        self.assertEqual(result['movingSamples'], 0)
+        for mutation in [{'type': 'zone'}, {'id': 'arca_nova'}, {'action': 'anchor'},
+                         {'universe': 'Other'}, {'range': 72}, {'distance': 0}]:
+            with self.subTest(mutation=mutation):
+                wrong = copy.deepcopy(proof)
+                wrong['proximityBefore'].update(mutation)
+                with self.assertRaisesRegex(AssertionError, 'sampled walk'):
+                    validate_mosaic_motion(wrong, nearby_target=target)
+        proof['clickAfter']['x'] += 1
+        with self.assertRaisesRegex(AssertionError, 'immediately'):
+            validate_mosaic_motion(proof, nearby_target=target)
+
     def test_far_wrong_or_invalid_proximity_cannot_replace_walking(self):
         for mutation in [{'id': 'other'}, {'universe': 'Other'}, {'action': 'codex'},
                          {'range': 999}, {'x': 200, 'distance': 100}, {'distance': 0}, {'x': float('nan')}]:
