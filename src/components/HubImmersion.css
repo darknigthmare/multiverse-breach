@@ -468,19 +468,37 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
 .extinction-relay-status > strong { grid-column: 1; grid-row: 1; }
 .extinction-relay-status > span { grid-column: 2; grid-row: 1; min-width: 0; text-align: right; overflow-wrap: anywhere; }
 .extinction-relay-status progress { grid-column: 1 / -1; grid-row: 2; width: 100%; min-width: 0; height: 8px; accent-color: #7ef7b1; }
+.extinction-directive-status .extinction-directive-heading > span { font-size: inherit; }
 @media (max-height: 500px) and (min-width: 600px) {
   /* Use the upper band without entering the radar, reticle or action dock.
      The radar diameter matches getSceneHudLayout; text keeps the chosen scale. */
-  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status) {
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status),
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-directive-status) {
     width: calc(100% - var(--hub-hud-left) - var(--hub-hud-right) - min(84px * var(--game-hud-scale, 1), 26vw) - 12px);
     max-width: 760px;
     grid-template-columns: auto minmax(0, 1fr);
     gap: 4px 12px;
     align-items: center;
   }
-  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status) > .extinction-intel-button { min-height: 44px; }
-  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status) > span { min-width: 0; overflow-wrap: anywhere; }
+  .extinction-panel-active .extinction-objective-strip > .extinction-intel-button { min-height: 44px; }
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status) > span,
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-directive-status) > span { min-width: 0; overflow-wrap: anywhere; }
   .extinction-panel-active .extinction-objective-strip > .extinction-relay-status { grid-column: 1 / -1; }
   .extinction-panel-active .extinction-relay-status > strong { font-size: inherit; }
   .extinction-panel-active .extinction-relay-status > span { text-align: left; }
+  /* A compact left card leaves the right-hand view region free. The terminal
+     retains the full title, rule and current detail while play is paused. */
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-directive-status) {
+    width: calc(50% - var(--hub-hud-left) - 32px); max-width: none;
+    grid-template-columns: minmax(0, .45fr) minmax(0, 1fr); row-gap: 2px; padding: 3px 9px; line-height: 1.2;
+  }
+  .extinction-panel-active .extinction-objective-strip > .extinction-directive-status {
+    grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(64px, 20%);
+    align-items: center; gap: 6px; min-width: 0; padding: 2px 6px;
+  }
+  .extinction-directive-status .extinction-directive-heading { display: flex; align-items: baseline; gap: 6px; min-width: 0; line-height: 1.2; }
+  .extinction-directive-status .extinction-directive-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .extinction-directive-status .extinction-directive-count { flex-shrink: 0; white-space: nowrap; }
+  .extinction-directive-status > progress { min-width: 0; }
+  .extinction-directive-status > .extinction-directive-detail { display: none; }
 }

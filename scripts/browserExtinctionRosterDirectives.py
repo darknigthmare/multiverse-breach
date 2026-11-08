@@ -107,6 +107,7 @@ def view_geometry(page, source, out, name):
         reserved:layout?{width:layout.width,height:layout.height,safeArea:layout.safeArea}:null,hud,reticle,radar:radarBox,
         viewOverlaps:view?[...hud,reticle,radarBox].filter(b=>overlap(view,b)):[],hudReticleOverlaps:hud.filter(b=>overlap(reticle,b)),
         minButtonWidth:Math.min(...buttons.map(b=>b.width)),minButtonHeight:Math.min(...buttons.map(b=>b.height)),buttons,
+        intelButton:rect(document.querySelector('.extinction-intel-button')),
         hasKit:!!document.querySelector('[data-personal-kit]'),hasMark:!!document.querySelector('[data-hunt-mark]')};
     }''', source)
     (out / f'{name}-geometry.json').write_text(json.dumps(geometry, indent=2, ensure_ascii=False))
@@ -125,6 +126,8 @@ def view_geometry(page, source, out, name):
     check(view['left'] >= c['left'] + edge - 1 and view['right'] <= c['right'] - edge + 1
           and view['bottom'] <= c['bottom'] - edge + 1, 'held view ignores chosen safe area')
     check(geometry['minButtonWidth'] >= 43.5 and geometry['minButtonHeight'] >= (43.5 if c['width'] <= 900 else 39.5), 'touch target shrunk below its usable size')
+    if c['width'] >= 600 and c['height'] <= 500:
+        check(geometry['intelButton']['width'] >= 43.5 and geometry['intelButton']['height'] >= 43.5, 'compact directive opener shrunk below its usable size')
     check(not geometry['hudReticleOverlaps'], 'HUD controls cover the central reticle')
     return geometry
 
@@ -137,6 +140,47 @@ def layout_variant(page, width, height, large, source, out, name):
     page.clock.run_for(96)
     page.screenshot(path=str(out / f'{name}.png'))
     return view_geometry(page, source, out, name)
+
+
+def directive_details_case(page, out, name):
+    """The compact strip retains its complete current instruction in the modal."""
+    expected = page.evaluate('''() => {const strip=document.querySelector('.extinction-objective-strip');
+      const directive=strip.querySelector('[data-directive]'),detail=directive.querySelector('.extinction-directive-detail');
+      return {id:directive.dataset.directive,objective:strip.querySelector(':scope > span').textContent,
+        title:directive.querySelector('.extinction-directive-title').textContent,
+        count:directive.querySelector('.extinction-directive-count').textContent,text:detail.textContent,
+        detailCollapsed:getComputedStyle(detail).display==='none'};}''')
+    check(expected['detailCollapsed'] and expected['title'] and expected['text'], 'compact directive lost its full instruction')
+    check(expected['count'] == f"{min(1, read(page)['directive']['marks'])}/1", 'compact hunt counter differs from native progress')
+    page.locator('.extinction-intel-button').click()
+    dialog = page.get_by_role('dialog', name='Directive and controls', exact=True)
+    expect(dialog).to_be_visible()
+    details = dialog.locator('[data-directive-details]')
+    expect(details).to_have_attribute('data-directive-details', expected['id'])
+    expect(dialog.locator('[data-extinction-current-objective]')).to_have_text(expected['objective'])
+    expect(details.locator('[data-directive-title]')).to_have_text(expected['title'])
+    expect(details.locator('[data-directive-count]')).to_have_text(expected['count'])
+    expect(details.locator('[data-directive-text]')).to_have_text(expected['text'])
+    details.locator('[data-directive-text]').scroll_into_view_if_needed()
+    content = dialog.locator('.immersive-drawer-content')
+    check(content.evaluate('el=>el.scrollWidth<=el.clientWidth+1'), 'full directive overflows its scrollable panel')
+    page.screenshot(path=str(out / f'{name}-directive-details.png'))
+    dialog.focus(); expect(dialog).to_be_focused()
+    frozen = read(page)
+    page.keyboard.down('w')
+    for key in ['Space', 'f', 'c', 'v', 't']: page.keyboard.press(key)
+    page.clock.run_for(800); page.keyboard.up('w')
+    check(read(page) == frozen, 'directive details accepted gameplay input or advanced the simulation')
+    page.keyboard.press('Escape')
+    expect(dialog).to_have_count(0); expect(page.locator('.extinction-intel-button')).to_be_focused()
+    check(read(page) == frozen, 'closing directive details changed the paused state')
+    page.locator('.fps-royale-canvas').focus(); page.clock.run_for(32)
+    resumed = read(page)
+    check(resumed['t'] > frozen['t'] and resumed['phase'] == 'running', 'simulation did not resume after directive details')
+    receipt = {**expected, 'pausePreserved': True, 'focusReturned': True,
+               'pausedTick': frozen['t'], 'resumedTick': resumed['t']}
+    (out / f'{name}-directive-details.json').write_text(json.dumps(receipt, indent=2, ensure_ascii=False))
+    return receipt
 
 
 def profile_case(page, identity, lang, args, out, name):
@@ -268,9 +312,13 @@ def pickup_layout_case(page, out, name):
     (out / f'{name}-trace.json').write_text(json.dumps({'seed': seed, 'trace': trace}, indent=2, ensure_ascii=False))
     expect(page.locator('[data-personal-kit]')).to_be_visible(); expect(page.locator('[data-hunt-mark]')).to_be_visible()
     retained = current['personalKit']; weapon = current['weaponType']; layouts = []
-    for large in [False, True]:
-        layouts.append(layout_variant(page, 844, 390, large, '', out, f'{name}-' + ('large' if large else 'default')))
+    for height, large, suffix in [(390, False, 'default'), (390, True, 'large'),
+                                  (380, True, 'large-844x380'), (500, True, 'large-844x500')]:
+        layouts.append(layout_variant(page, 844, height, large, '', out, f'{name}-{suffix}'))
         check(layouts[-1]['hasKit'] and layouts[-1]['hasMark'], 'layout did not contain both optional controls')
+    details = directive_details_case(page, out, name)
+    trace.append({'action': {'kind': 'directive-details-pause-resume'}, 'state': read(page)})
+    (out / f'{name}-trace.json').write_text(json.dumps({'seed': seed, 'trace': trace}, indent=2, ensure_ascii=False))
     page.locator('.fps-royale-canvas').focus(); page.keyboard.press('v'); page.clock.run_for(32)
     restored = read(page)
     check(restored['weaponType'] == 'pistol' and restored['ammo'] == retained['ammo']
@@ -278,7 +326,8 @@ def pickup_layout_case(page, out, name):
     page.locator('#qa-exit').click()
     check(page.evaluate('window.__sceneQA.reports.filter(r=>r.reason==="completed").length') == 0, 'short layout case granted completion')
     return {'nativeInputs': True, 'injectedProgress': False, 'seed': seed, 'pickedWeapon': weapon,
-            'nativeActions': len(trace), 'layouts': layouts, 'restoredKit': True, 'abandonNoReward': True}
+            'nativeActions': len(trace), 'layouts': layouts, 'directiveDetails': details,
+            'restoredKit': True, 'abandonNoReward': True}
 
 
 def full_directive(page, mode, lang, out, name):

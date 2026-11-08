@@ -5133,8 +5133,13 @@ function ExtinctionRoyale({
       </ImmersiveDrawer>
       <ImmersiveDrawer open={intelOpen} onClose={() => setIntelOpen(false)} lang={lang} title={lang === 'fr' ? 'Directive et commandes' : 'Directive and controls'}>
         <p>{objectives[runMode]}</p>
+        {runSnapshot.objectiveText && <p data-extinction-current-objective>{runSnapshot.objectiveText}</p>}
         {runSnapshot.fieldObjective && <p>{runSnapshot.fieldObjective.title} · {runSnapshot.fieldObjective.detail}</p>}
-        {runSnapshot.directive && <p>{runSnapshot.directive.title} · {runSnapshot.directive.rule}</p>}
+        {runSnapshot.directive && <div data-directive-details={runSnapshot.directive.id}>
+          <p><strong data-directive-title>{runSnapshot.directive.title}</strong> · <span data-directive-count>{runSnapshot.directive.completed}/{runSnapshot.directive.required}</span></p>
+          <p data-directive-text>{runSnapshot.directive.text}</p>
+          <p>{runSnapshot.directive.rule}</p>
+        </div>}
         {runSnapshot.relay?.status !== 'disabled' && runSnapshot.relay && <p>{lang === 'fr' ? 'Relais sous pression : active chaque balise avec E / LOOT, reste dans son périmètre pendant trois secondes actives, puis utilise E / LOOT pour la stabiliser. Sortir du périmètre suspend la synchronisation.' : 'Relays under pressure: activate each beacon with E / LOOT, stay inside its perimeter for three active seconds, then use E / LOOT to secure it. Leaving the perimeter suspends synchronization.'}</p>}
         <p>{lang === 'fr' ? 'La vue suit ton kit et les armes ramassées. Certaines signatures utilisent une vue schématique.' : 'The view follows your kit and pickup weapons. Some signatures use a schematic view.'}</p>
         <p>{runSnapshot.statusText}</p>
@@ -5219,9 +5224,12 @@ function ExtinctionRoyale({
               <span>{runSnapshot.relay.shortText}</span>
             </div>}
             {runActive && runSnapshot.directive && <div className="extinction-directive-status" data-directive={runSnapshot.directive.id}>
-              <strong>{runSnapshot.directive.title} · {runSnapshot.directive.completed}/{runSnapshot.directive.required}</strong>
+              <strong className="extinction-directive-heading">
+                <span className="extinction-directive-title" title={runSnapshot.directive.title}>{runSnapshot.directive.title}</span>{' · '}
+                <span className="extinction-directive-count">{runSnapshot.directive.completed}/{runSnapshot.directive.required}</span>
+              </strong>
               <progress value={runSnapshot.directive.progress} max="1" aria-label={lang === 'fr' ? 'Progression de la directive' : 'Directive progress'} />
-              <span>{runSnapshot.directive.text}</span>
+              <span className="extinction-directive-detail">{runSnapshot.directive.text}</span>
             </div>}
           </div>
         )}

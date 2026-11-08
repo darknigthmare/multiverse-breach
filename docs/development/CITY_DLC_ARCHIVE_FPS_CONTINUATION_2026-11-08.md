@@ -112,6 +112,17 @@ Les libellés visibles KIT et LOOT sont raccourcis dans ce seul format, avec leu
 complet conservé dans le nom accessible et l’infobulle. Les contrôles gardent leur taille
 tactile minimale de 44 px et la police choisie ; les assertions de géométrie restent intactes.
 
+Le contrôle court de `846b242b1e7a88fc58e2f50213a1eb90f2e9ef74`
+([run 42471486426](https://github.com/darknigthmare/multiverse-breach/actions/runs/42471486426))
+a confirmé KIT et MARQUER simultanés, les commandes de 44 px et la vue latérale dégagée.
+Il a isolé un autre chevauchement : le panneau de directive descendait de 68 à 199,36 px
+sur un écran de 844 × 390, traversant le carré réservé au viseur. La présentation courte
+de la directive reste maintenant dans la partie supérieure gauche, avec objectif, compteur
+et barre de progression, en libérant l’espace latéral droit pour la vue. La consigne complète et le détail de progression restent consultables
+dans « Directive et commandes ». La recette contrôle cette lecture, la pause de simulation
+pendant l’ouverture et le retour au jeu, en plus des rectangles réels à 380, 390 et 500 px
+de hauteur. Tous les boutons d’ouverture de ce panneau gardent au moins 44 px en paysage court.
+
 Les résultats de cette correction et ses captures doivent être rattachés au nouveau
 commit testé dans le compte rendu de PR. La réussite de `0108b7ce` constitue le diagnostic
 de départ, pas la validation visuelle de ce nouveau placement.
