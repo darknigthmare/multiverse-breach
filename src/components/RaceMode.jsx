@@ -74,6 +74,8 @@ export default function RaceMode({
 }) {
   const canvasRef = useRef(null);
   const worldCanvasRef = useRef(null);
+  const worldHudRef = useRef(null);
+  const touchControlsRef = useRef(null);
   const engineRef = useRef(null);
   const rendererRef = useRef(null);
   const keysRef = useRef({});
@@ -335,6 +337,17 @@ export default function RaceMode({
         });
         for (let step = 0; step < steps; step += 1) engine.update(COMBAT_STEP_MS / 1000);
         const ctx = canvas.getContext('2d');
+        if (engine.renderer3D && snapshotTimer === 0) {
+          const viewport = canvas.getBoundingClientRect();
+          const hud = worldHudRef.current?.getBoundingClientRect();
+          const controls = touchControlsRef.current?.getBoundingClientRect();
+          engine.overlayViewport = {
+            width: viewport.width,
+            height: viewport.height,
+            top: Math.max(12, (hud?.bottom || viewport.top) - viewport.top + 12),
+            bottom: Math.max(12, viewport.bottom - (controls?.top || viewport.bottom) + 12)
+          };
+        }
         engine.draw(ctx, dt);
         snapshotTimer += dt;
         if (snapshotTimer > 0.12) {
@@ -767,7 +780,7 @@ export default function RaceMode({
     <div className={`race-mode-shell ${renderMode === '3d' ? 'race-world-3d' : ''} ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={activeHudTheme} mode="kart" />
       {raceSystemPanel}
-      <div className="race-world-hud" inert={Boolean(summary || runtimeError)}>
+      <div ref={worldHudRef} className="race-world-hud" inert={Boolean(summary || runtimeError)}>
         <div><strong>{track.name[lang] || track.name.fr}</strong><small>{pilotSpec?.name} · {selectedKartName} · {pilotName}</small></div>
         <button type="button" className="btn-retro" onClick={() => setRaceMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'GARAGE / COMMANDES' : 'GARAGE / CONTROLS'}</button>
         {!dedicatedSession && onPauseRequest && <button type="button" className="btn-retro" onClick={onPauseRequest}>PAUSE</button>}
@@ -853,7 +866,7 @@ export default function RaceMode({
                 {snapshot.item ? (lang === 'fr' ? 'UTILISER' : 'USE') : (lang === 'fr' ? 'CACHE VIDE' : 'EMPTY CACHE')}
               </button>
             </div>
-            <div className="race-touch-controls">
+            <div ref={touchControlsRef} className="race-touch-controls">
               <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('up'); }} {...touchControlProps('up')}>ACC</button>
               <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('left'); }} {...touchControlProps('left')}>{lang === 'fr' ? 'GAUCHE' : 'LEFT'}</button>
               <button type="button" className="btn-retro" onClick={event => { if (event.detail === 0) pulseVirtualKey('right'); }} {...touchControlProps('right')}>{lang === 'fr' ? 'DROITE' : 'RIGHT'}</button>

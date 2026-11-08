@@ -183,18 +183,23 @@ test('no racer receives a free lap when moving from the rear grid across the sta
   }
 });
 
-test('the live race simulation completes every installed course with normal AI and items', () => {
+test('the player completes every installed course with normal AI and items and one result', () => {
   const failures = [];
   for (const track of tracks) {
-    const engine = new EngineRace(960, 540, () => {}, track.id);
+    let results = 0;
+    const engine = new EngineRace(960, 540, () => { results += 1; }, track.id);
     engine.setInput({ autoAccel: true });
-    for (let frame = 0; frame < 9000 && !engine.finished && !engine.opponents.some(racer => racer.finished); frame += 1) {
+    for (let frame = 0; frame < 9000 && !engine.player.finished; frame += 1) {
       engine.update(1 / 60);
     }
-    if (!engine.finished && !engine.opponents.some(racer => racer.finished)) failures.push({
+    if (!engine.player.finished) failures.push({
       universe: track.universe, layout: track.layoutKey,
       laps: [engine.player, ...engine.opponents].map(racer => racer.lap)
     });
+    else {
+      assert.equal(engine.player.lap, track.laps, track.universe);
+      assert.equal(results, 1, `${track.universe}: exactly one player result`);
+    }
     assert.ok([engine.player, ...engine.opponents].every(racer => [racer.x, racer.y, racer.speed, racer.angle].every(Number.isFinite)), track.universe);
   }
   assert.deepEqual(failures, []);

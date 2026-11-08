@@ -18,6 +18,16 @@ reste une couche séparée. Les peintures de collection s’appliquent au châss
 personnel dans les deux vues ; elles ne changent ni son conducteur ni ses
 performances. La vue 2D peut être choisie depuis la grille si WebGL échoue.
 
+### Décors en vue 2D
+
+Les circuits d’univers reprennent le même profil de décor que la vue 3D :
+palette du ciel et du sol, couleurs de chaussée et repères. Le renderer Canvas
+dessine des silhouettes simplifiées des volumes, dont l’anneau et l’entrée
+Forerunner de Halo, les cloisons du Nostromo et les reliefs à damier de Green
+Hill. Le décor Nexus n’est plus appliqué à ces circuits. Les six pistes Nexus
+historiques conservent leur présentation. Cette adaptation 2D ne constitue
+pas une validation de fidélité 1:1 et ne modifie pas la simulation.
+
 Les commandes clavier et tactiles, l’accélération assistée, le frein, le drift,
 les objets, le réancrage, les objectifs et le classement utilisent `EngineRace`.
 Les deux présentations observent la même simulation. Quitter, recommencer ou

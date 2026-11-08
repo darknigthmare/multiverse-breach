@@ -1,6 +1,6 @@
 import { buildKartMesh, KART_MODEL_SCALE } from './kartModel.js';
 import {
-  addBox, addDisc, addSphere, addTriangle, buildKartEnvironmentMesh, meshBuilder, toMeshData
+  addBox, addDisc, addSphere, addTriangle, buildKartEnvironmentMesh, buildRoadRibbon, meshBuilder, toMeshData
 } from './kartEnvironment3D.js';
 import {
   clamp, colorRgba, identity4, kartWorldMatrix, lookAt4, multiply4, perspective4,
@@ -155,6 +155,39 @@ export function getKartRenderSize(cssWidth, cssHeight, pixelRatio = 1, maxPixelR
   return { width: Math.max(1, Math.round(width * scale)), height: Math.max(1, Math.round(height * scale)), pixelRatio: scale };
 }
 
+function fitOverviewCamera(track, aspect, fov) {
+  // Fit the drivable course, including mitered road edges and the starting
+  // grid. Distant scenery (e.g. Halo's ring) must not shrink the course itself.
+  const roadWidth = Number(track.roadWidth) || 100;
+  const outline = buildRoadRibbon(track.waypoints, roadWidth + 15).flatMap(row => [row.left, row.right]);
+  if (!outline.length) outline.push(...track.waypoints.map(point => [point.x, point.y]));
+  const start = track.start || track.waypoints[0];
+  const gridRadius = Math.max(80, (roadWidth + 46) / 2);
+  outline.push([start.x - gridRadius, start.y - gridRadius], [start.x + gridRadius, start.y + gridRadius]);
+  const minX = Math.min(...outline.map(point => point[0])), maxX = Math.max(...outline.map(point => point[0]));
+  const minZ = Math.min(...outline.map(point => point[1])), maxZ = Math.max(...outline.map(point => point[1]));
+  const target = [(minX + maxX) / 2, 39, (minZ + maxZ) / 2];
+  const backY = Math.sqrt(3) / 2, backZ = 0.5; // Fixed 60-degree elevation; north stays up.
+  const margin = 0.84, tanY = Math.tan(fov / 2) * margin, tanX = tanY * Math.max(0.01, aspect);
+  let distance = 100;
+  for (const x of [minX, maxX]) {
+    for (const y of [0, 78]) {
+      for (const z of [minZ, maxZ]) {
+        const dx = x - target[0], dy = y - target[1], dz = z - target[2];
+        const towardEye = dy * backY + dz * backZ;
+        const up = dy * backZ - dz * backY;
+        // Perspective depth matters: corners nearer the eye need more room.
+        distance = Math.max(distance, towardEye + Math.abs(dx) / tanX, towardEye + Math.abs(up) / tanY);
+      }
+    }
+  }
+  return {
+    eye: [target[0], target[1] + backY * distance, target[2] + backZ * distance],
+    target, yaw: -Math.PI / 2,
+    far: Math.max(6500, distance + Math.hypot(maxX - minX, 78, maxZ - minZ) + 100)
+  };
+}
+
 export class KartRenderer3D {
   constructor(canvas, options = {}) {
     if (!canvas?.getContext) throw new Error('A separate canvas is required for the 3D kart renderer.');
@@ -172,6 +205,7 @@ export class KartRenderer3D {
     this.scene = null;
     this.buffers = new Set();
     this.programs = new Set();
+    this.enabledAttributes = new Set();
     this.kartMeshes = new Map();
     this.driverTextures = new Map();
     this.wheelAngles = new Map();
@@ -296,24 +330,27 @@ export class KartRenderer3D {
       yaw = previous.yaw + delta * (1 - Math.exp(-dt * 9));
     }
     const speed = Math.abs(player.speed || 0);
+    const aspect = this.canvas.width / this.canvas.height;
     const fov = (this.cameraMode === 'overview' ? 52 : 58 + Math.min(4, speed / 110) + (player.boost > 0 ? 3 : 0)) * Math.PI / 180;
     const desired = this.cameraMode === 'overview'
-      ? { eye: [player.x - 40, 650, player.y + 350], target: [player.x, 0, player.y], yaw }
+      ? fitOverviewCamera(engine.track, aspect, fov)
       : { eye: [player.x - Math.cos(yaw) * 106, 58, player.y - Math.sin(yaw) * 106],
         target: [player.x + Math.cos(yaw) * 70, 9, player.y + Math.sin(yaw) * 70], yaw };
-    const teleport = !previous || Math.hypot(player.x - previous.playerX, player.y - previous.playerZ) > 180;
-    const blend = teleport ? 1 : 1 - Math.exp(-dt * 14);
-    const eye = desired.eye.map((value, index) => previous && !teleport ? previous.eye[index] + (value - previous.eye[index]) * blend : value);
+    const snap = this.cameraMode === 'overview' || !previous || Math.hypot(player.x - previous.playerX, player.y - previous.playerZ) > 180;
+    const blend = snap ? 1 : 1 - Math.exp(-dt * 14);
+    const eye = desired.eye.map((value, index) => previous && !snap ? previous.eye[index] + (value - previous.eye[index]) * blend : value);
     // Camera movement is presentation-only. Snap after a portal/recovery instead
-    // of carrying a long, disorienting interpolation through scenery.
-    this.camera = { eye, target: desired.target, yaw, playerX: player.x, playerZ: player.y, fov };
-    this.viewProjection = multiply4(perspective4(fov, this.canvas.width / this.canvas.height, 1, 6500), lookAt4(eye, desired.target));
+    // of carrying a long, disorienting interpolation through scenery. Overview
+    // also reframes immediately on resize; smoothing could leave corners cut.
+    this.camera = { eye, target: desired.target, yaw: desired.yaw, playerX: player.x, playerZ: player.y, fov };
+    this.viewProjection = multiply4(perspective4(fov, aspect, 1, desired.far || 6500), lookAt4(eye, desired.target));
   }
 
   _attribute(location, size, stride, offset) {
     if (location < 0) return;
     const gl = this.gl;
     gl.enableVertexAttribArray(location); gl.vertexAttribPointer(location, size, gl.FLOAT, false, stride, offset);
+    this.enabledAttributes.add(location);
   }
 
   _sharedUniforms(program) {
@@ -618,11 +655,15 @@ export class KartRenderer3D {
 
   _dropInvalidResources() {
     this.buffers.clear(); this.programs.clear(); this.kartMeshes.clear(); this.primitives.clear();
+    this.enabledAttributes.clear();
     this.sceneMesh = null;
   }
 
   _releaseGpu() {
     if (!this.gl) return;
+    // deleteBuffer detaches its attribute pointers without disabling them.
+    // A later renderer on this canvas must be able to draw its sky first.
+    for (const location of this.enabledAttributes) this.gl.disableVertexAttribArray(location);
     for (const buffer of this.buffers) this.gl.deleteBuffer(buffer);
     for (const program of this.programs) this.gl.deleteProgram(program);
     for (const record of this.driverTextures.values()) if (record.texture) this.gl.deleteTexture(record.texture);

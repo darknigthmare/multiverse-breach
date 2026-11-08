@@ -28,6 +28,7 @@ const raceFixture = (driver = false) => ({
 function fakeSurface({ failProgramAt = -1 } = {}) {
   let id = 0, programCount = 0;
   const liveBuffers = new Set(), livePrograms = new Set(), liveTextures = new Set(), liveShaders = new Set();
+  const enabledAttributes = new Set(), attributeBuffers = new Map();
   const calls = [], listeners = new Map(), images = [];
   const allocated = (kind, live) => { const object = { kind, id: ++id }; live.add(object); return object; };
   const deleted = (object, live) => { if (object) { assert.ok(live.has(object), `double-delete ${object.kind} ${object.id}`); live.delete(object); } };
@@ -38,6 +39,7 @@ function fakeSurface({ failProgramAt = -1 } = {}) {
     TEXTURE_2D: 40, TEXTURE_WRAP_S: 41, TEXTURE_WRAP_T: 42, TEXTURE_MIN_FILTER: 43, TEXTURE_MAG_FILTER: 44,
     CLAMP_TO_EDGE: 45, LINEAR: 46, RGBA: 47, UNSIGNED_BYTE: 48, TEXTURE0: 49,
     UNPACK_FLIP_Y_WEBGL: 50, UNPACK_PREMULTIPLY_ALPHA_WEBGL: 51,
+    INVALID_OPERATION: 0x0502, error: 0,
     lost: false, viewport() {}, enable() {}, disable() {}, depthFunc() {}, depthMask() {}, blendFunc() {}, clear() {},
     shaderSource() {}, compileShader() {}, attachShader() {}, linkProgram() {},
     createShader() { return allocated('shader', liveShaders); },
@@ -49,14 +51,30 @@ function fakeSurface({ failProgramAt = -1 } = {}) {
     getAttribLocation(program, name) { return ({ aPosition: 0, aNormal: 1, aColor: 2, aUv: 1 })[name]; },
     getUniformLocation(program, name) { return { program, name }; },
     createBuffer() { return allocated('buffer', liveBuffers); },
-    deleteBuffer(buffer) { deleted(buffer, liveBuffers); },
+    deleteBuffer(buffer) {
+      deleted(buffer, liveBuffers);
+      if (this.boundBuffer === buffer) this.boundBuffer = null;
+      // WebGL detaches a deleted buffer, but leaves the attribute enabled.
+      for (const [index, bound] of attributeBuffers) if (bound === buffer) attributeBuffers.set(index, null);
+    },
     bindBuffer(target, buffer) { this.boundBuffer = buffer; },
     bufferData(target, data) { assert.ok(data.every(Number.isFinite)); this.boundBuffer.length = data.length; },
-    enableVertexAttribArray() {}, vertexAttribPointer() {},
+    enableVertexAttribArray(index) { enabledAttributes.add(index); },
+    disableVertexAttribArray(index) { enabledAttributes.delete(index); },
+    vertexAttribPointer(index) { attributeBuffers.set(index, this.boundBuffer); },
     uniformMatrix4fv(location, transpose, values) { assert.equal(transpose, false); assert.ok([...values].every(Number.isFinite)); },
     uniform1f() {}, uniform1i() {}, uniform2f() {}, uniform3fv() {}, uniform4fv() {},
     useProgram(program) { assert.ok(livePrograms.has(program)); this.currentProgram = program; },
-    drawArrays(mode, start, count) { assert.ok(liveBuffers.has(this.boundBuffer)); calls.push({ mode, start, count, program: this.currentProgram }); },
+    drawArrays(mode, start, count) {
+      // The no-client-arrays rule applies even to enabled attributes unused
+      // by the current shader, e.g. normals left behind when drawing the sky.
+      if ([...enabledAttributes].some(index => !liveBuffers.has(attributeBuffers.get(index)))) {
+        this.error ||= this.INVALID_OPERATION;
+        return;
+      }
+      calls.push({ mode, start, count, program: this.currentProgram });
+    },
+    getError() { const error = this.error; this.error = 0; return error; },
     isContextLost() { return this.lost; },
     createTexture() { return allocated('texture', liveTextures); },
     deleteTexture(texture) { deleted(texture, liveTextures); },
@@ -70,10 +88,14 @@ function fakeSurface({ failProgramAt = -1 } = {}) {
     removeEventListener(name, fn) { assert.equal(listeners.get(name), fn); listeners.delete(name); }
   };
   const imageFactory = () => { const image = {}; images.push(image); return image; };
-  return { canvas, gl, liveBuffers, livePrograms, liveTextures, liveShaders, calls, listeners, images, imageFactory,
+  return { canvas, gl, liveBuffers, livePrograms, liveTextures, liveShaders, enabledAttributes, calls, listeners, images, imageFactory,
     lose() { gl.lost = true; let prevented = false; listeners.get('webglcontextlost')({ preventDefault() { prevented = true; } });
       assert.equal(prevented, true); liveBuffers.clear(); livePrograms.clear(); liveTextures.clear(); },
-    restore() { gl.lost = false; listeners.get('webglcontextrestored')(); } };
+    restore() {
+      gl.lost = false; gl.error = 0; gl.boundBuffer = null; gl.currentProgram = null;
+      enabledAttributes.clear(); attributeBuffers.clear();
+      listeners.get('webglcontextrestored')();
+    } };
 }
 
 test('kart model forward matches simulation movement at every cardinal heading', () => {
@@ -151,6 +173,58 @@ test('mobile and very large canvases respect the actual pixel budget', () => {
   assert.ok(portrait.height <= 1440); assert.ok(portrait.width <= 1920);
 });
 
+function assertOverviewContains(renderer, point, label) {
+  const matrix = renderer.viewProjection;
+  const w = matrix[3] * point[0] + matrix[7] * point[1] + matrix[11] * point[2] + matrix[15];
+  assert.ok(w > 0, `${label}: behind the overview camera`);
+  const ndc = transformPoint4(matrix, point).map(component => component / w);
+  assert.ok(Math.abs(ndc[0]) <= 0.84001, `${label}: horizontal crop or missing margin (${ndc[0]})`);
+  assert.ok(Math.abs(ndc[1]) <= 0.84001, `${label}: vertical crop or missing margin (${ndc[1]})`);
+  assert.ok(ndc[2] >= -1 && ndc[2] <= 1, `${label}: clipped by the depth range`);
+}
+
+test('overview contains the entire course and starting grid with margin in landscape, portrait and square viewports', () => {
+  const surface = fakeSurface(), renderer = new KartRenderer3D(surface.canvas, { cameraMode: 'overview' });
+  const engine = raceFixture();
+  for (const track of Object.values(getKartUniverseTracks())) {
+    engine.track = track;
+    Object.assign(engine.player, { x: track.waypoints[3].x, y: track.waypoints[3].y, angle: 1.7 });
+    const road = buildRoadRibbon(track.waypoints, track.roadWidth + 15);
+    for (const [width, height] of [[1368, 844], [844, 390], [390, 784], [540, 540]]) {
+      surface.canvas.width = width; surface.canvas.height = height;
+      renderer._updateCamera(engine, 1 / 60);
+      for (const row of road) {
+        for (const [x, z] of [row.left, row.right]) assertOverviewContains(renderer, [x, 0, z], track.id);
+      }
+      for (const [dx, dz] of [[0, 0], [-40, 28], [42, 30], [0, 58]]) {
+        for (const side of [-20, 20]) {
+          assertOverviewContains(renderer, [track.start.x + dx + side, 30, track.start.y + dz + side], `${track.id} grid`);
+        }
+      }
+    }
+  }
+  renderer.dispose();
+});
+
+test('overview stays centered on the track as racers move and fits a portrait resize immediately', () => {
+  const surface = fakeSurface();
+  let width = 1368, height = 844;
+  surface.canvas.getBoundingClientRect = () => ({ width, height });
+  const renderer = new KartRenderer3D(surface.canvas, { cameraMode: 'overview' }), engine = raceFixture();
+  renderer.draw(engine);
+  const before = renderer.getTelemetry().camera;
+  Object.assign(engine.player, { x: 760, y: 100, angle: -1.2, speed: 310, boost: 2 });
+  renderer.draw(engine);
+  assert.deepEqual(renderer.getTelemetry().camera, before, 'overview is a complete track view, independent of player position and boost');
+  width = 390; height = 784;
+  renderer.draw(engine, 0);
+  assert.notDeepEqual(renderer.getTelemetry().camera.eye, before.eye);
+  for (const row of buildRoadRibbon(engine.track.waypoints, engine.track.roadWidth + 15)) {
+    for (const [x, z] of [row.left, row.right]) assertOverviewContains(renderer, [x, 0, z], 'portrait resize');
+  }
+  renderer.dispose();
+});
+
 test('rendering submits perspective meshes without changing race state, rewards or checkpoints', () => {
   const surface = fakeSurface(), renderer = new KartRenderer3D(surface.canvas), engine = raceFixture();
   const before = JSON.stringify(engine);
@@ -179,12 +253,16 @@ test('driver failure retries only the same character and reports an empty seat',
 test('disposal cancels late image callbacks and leaves the canvas usable for StrictMode remount', () => {
   const surface = fakeSurface(), renderer = new KartRenderer3D(surface.canvas, { imageFactory: surface.imageFactory });
   renderer.draw(raceFixture(true));
+  assert.ok(surface.enabledAttributes.size > 0, 'exercise cleanup after drawing, not only construction');
   const oldCallback = surface.images[0].onload;
   renderer.dispose(); renderer.dispose(); oldCallback();
   assert.equal(surface.listeners.size, 0); assert.equal(surface.images[0].onload, null);
+  assert.equal(surface.enabledAttributes.size, 0);
   assert.equal(surface.liveBuffers.size + surface.livePrograms.size + surface.liveTextures.size + surface.liveShaders.size, 0);
   const remounted = new KartRenderer3D(surface.canvas); remounted.draw(raceFixture()); remounted.dispose();
   assert.equal(surface.liveBuffers.size + surface.livePrograms.size, 0);
+  assert.equal(surface.enabledAttributes.size, 0);
+  assert.equal(surface.gl.getError(), 0);
 });
 
 test('context loss stops drawing and restoration recreates resources on the same simulation', () => {

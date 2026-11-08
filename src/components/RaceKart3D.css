@@ -24,7 +24,7 @@
 .kart-camera-setting { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
 .race-webgl-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .kart-visual-status { position: absolute; left: 12px; bottom: 128px; z-index: 6; max-width: 260px; padding: 8px 12px; color: #ffe8bd; background: #211b13ed; font-size: 12px; }
-.race-mode-shell.race-world-3d .race-mode-canvas { position: absolute; inset: 0; background: transparent; box-shadow: none; }
+.race-mode-shell.race-world-3d .race-mode-canvas { position: absolute; inset: 0; background: transparent; box-shadow: none; object-fit: fill; }
 .race-world-3d .race-world-hud { flex-wrap: wrap; top: max(68px, env(safe-area-inset-top)); gap: 8px; }
 .race-world-3d .race-world-hud > div:first-child { max-width: 48%; }
 .race-mode-shell.race-world-3d .race-stat-grid { position: static; width: auto; height: auto; overflow: visible; clip-path: none; display: flex; gap: 18px; }

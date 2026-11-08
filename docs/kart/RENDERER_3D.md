@@ -17,9 +17,9 @@
 | Pilotes | Chaque racer fournit `kartSpec`. `buildKartMesh` produit les triangles utilisés aussi par les exports de karts. |
 | Axes | Les coordonnées moteur `x/y` deviennent `X/Z`. Haut : `+Y`. Avant du modèle : `-Z`. La rotation est `-angle - π/2`. |
 | Échelle | Une unité de modèle correspond à 12 unités du circuit. L’échelle des personnages respecte le rapport largeur/hauteur du découpage. |
-| Caméra | `setCameraMode('chase' | 'overview')` ; réinitialisation de l’interpolation après portail ou réancrage éloigné. |
+| Caméra | `setCameraMode('chase' | 'overview')` ; poursuite du pilote ou cadre fixe de toute la chaussée, adapté au ratio. Réinitialisation de l’interpolation après portail ou réancrage éloigné. |
 | Dimensions | `resize()` lit le rectangle CSS. DPR plafonné à 1,5 par défaut ; buffer limité à 1 920 × 1 440. Ces limites ne changent pas les coordonnées de course. |
-| HUD | Un second canvas 2D transparent reçoit le HUD/minimap du moteur. Aucun appel 2D n’est fait sur le canvas WebGL. |
+| HUD | Un second canvas 2D transparent reçoit la minimap et le turbo, à taille constante en pixels CSS. Leurs positions respectent les panneaux et commandes réellement affichés. Aucun appel 2D n’est fait sur le canvas WebGL. |
 | Nettoyage | `dispose()` retire les écouteurs, annule les callbacks d’images et libère textures, programmes et buffers. Il peut être appelé deux fois. |
 | React StrictMode | Le nettoyage ne provoque pas de perte forcée du contexte. Le même canvas peut recevoir une nouvelle instance. |
 
@@ -28,6 +28,12 @@ Le programme emploie WebGL 1 et GLSL ES 1.00, sans dépendance de rendu ajoutée
 ## Circuit, décor et objets
 
 La chaussée suit **les segments réels de `track.waypoints`**. Le ruban se rejoint aux sommets, sans spline qui déplacerait les virages par rapport à la conduite. Accotements, bordures, flèches de boost et ligne de départ sont des triangles en coordonnées monde.
+
+La vue aérienne cadre les bords réels de ce ruban et la grille de départ avec
+une marge minimale de 8 % sur chaque bord. Son centre reste fixe pendant la
+course ; le recul est recalculé selon le ratio et le champ de vision, y compris
+au redimensionnement. Les grands décors lointains, comme l’anneau Halo, ne
+réduisent pas le circuit à un point pour entrer entièrement dans ce cadre.
 
 `getKartTrackEnvironment(track)` constitue la source commune des palettes et des repères ; il fournit aussi les décors des six circuits Nexus historiques. Le rendu comprend notamment anneau, accès Forerunner, cloison nervurée, pylônes abydoniens, hangar, roche, palmier, falaise à damier, arbre cubique, tour à cadran et réacteur. Il ne remplace pas un type inconnu par un bâtiment arbitraire : les types non reconnus sont exposés dans la télémétrie.
 
@@ -61,7 +67,7 @@ Les erreurs de compilation ou de lien des shaders libèrent les ressources déj�
 
 Commande : `node --test scripts/kart/kartRenderer3D.test.mjs`.
 
-Les 13 tests couvrent les axes des karts, le cadrage mathématique, le ruban suivant la trajectoire exacte, les bornes et normales des 34 types de repères, la couverture des types utilisés par les circuits, cinq environnements représentatifs, le découpage des atlas, le budget de pixels, l’absence de mutation de la course, les candidats du même personnage, les callbacks tardifs, StrictMode, la perte/restauration du contexte et l’échec d’initialisation.
+Les 15 tests couvrent les axes des karts, le cadrage mathématique des 525 circuits dans quatre ratios, la stabilité de la caméra aérienne, le ruban suivant la trajectoire exacte, les bornes et normales des 34 types de repères, la couverture des types utilisés par les circuits, cinq environnements représentatifs, le découpage des atlas, le budget de pixels, l’absence de mutation de la course, les candidats du même personnage, les callbacks tardifs, StrictMode, la perte/restauration du contexte et l’échec d’initialisation.
 
 Les tests de cycle de vie exécutent la vraie classe avec un enregistreur d’appels GL. **Ils ne compilent pas les shaders sur un GPU** et ne prouvent pas l’apparence finale. Le parcours navigateur et ses captures doivent être attribués à la révision effectivement exécutée. Le lint ciblé des quatre fichiers a été exécuté sans alerte.
 

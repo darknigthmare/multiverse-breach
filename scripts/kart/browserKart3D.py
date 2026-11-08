@@ -80,6 +80,20 @@ def main():
                     }''')
                     assert report['pixels']['colors'] > 10, report['pixels']
                     assert report['pixels']['error'] == 0, report['pixels']
+                    report['overlay'] = page.evaluate('''() => {
+                        const e=window.__raceLifecycle.engine, canvas=document.querySelector('canvas.race-mode-canvas');
+                        const viewport=canvas.getBoundingClientRect();
+                        const absolute=r=>({left:viewport.left+r.x,top:viewport.top+r.y,right:viewport.left+r.x+r.width,bottom:viewport.top+r.y+r.height});
+                        const map=absolute(e.overlayLayout.minimap), boost=absolute(e.overlayLayout.boost);
+                        const overlaps=(a,b)=>a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;
+                        const obstacles=['.race-world-hud','.race-touch-controls','.race-cache-card'].map(s=>document.querySelector(s).getBoundingClientRect());
+                        return {layout:e.overlayLayout,objectFit:getComputedStyle(canvas).objectFit,
+                            mapClear:obstacles.every(r=>!overlaps(map,r)),boostClear:obstacles.every(r=>!overlaps(boost,r)),
+                            inViewport:[map,boost].every(r=>r.left>=viewport.left&&r.right<=viewport.right&&r.top>=viewport.top&&r.bottom<=viewport.bottom)};
+                    }''')
+                    assert report['overlay']['objectFit'] == 'fill', report['overlay']
+                    assert report['overlay']['mapClear'] and report['overlay']['boostClear'], report['overlay']
+                    assert report['overlay']['inViewport'], report['overlay']
                     garage = page.get_by_role('button', name='GARAGE / COMMANDES', exact=True)
                     garage.click()
                     paused = page.evaluate('window.__raceLifecycle.snapshot()')
@@ -103,6 +117,28 @@ def main():
                         assert page.evaluate('window.__raceLifecycle.exits.filter(x=>x.reason==="completed").length') == 1
                         report['completion'] = page.evaluate('window.__raceLifecycle.engine.getRaceSummary()')
                         page.screenshot(path=str(out / f'{name}-finish.png'))
+                        # A fresh renderer must work on the SAME native context
+                        # after a draw/dispose cycle (React remount lifecycle).
+                        report['sameCanvasReuse'] = page.evaluate('''async () => {
+                            const {KartRenderer3D}=await import('/src/game/kart/kartRenderer3D.js');
+                            const canvas=document.createElement('canvas');
+                            canvas.style.cssText='position:fixed;left:-10000px;width:320px;height:180px';
+                            document.body.appendChild(canvas);
+                            let first,second;
+                            try {
+                                const engine=window.__raceLifecycle.engine;
+                                first=new KartRenderer3D(canvas,{cameraMode:'overview'});
+                                first.draw(engine,0);
+                                const gl=first.gl, firstError=gl.getError();
+                                first.dispose();
+                                second=new KartRenderer3D(canvas,{cameraMode:'overview'});
+                                second.draw(engine,0);
+                                return {sameContext:gl===second.gl,firstError,secondError:second.gl.getError(),frames:second.getTelemetry().frames};
+                            } finally {
+                                second?.dispose(); first?.dispose(); canvas.remove();
+                            }
+                        }''')
+                        assert report['sameCanvasReuse'] == dict(sameContext=True, firstError=0, secondError=0, frames=1), report['sameCanvasReuse']
                         old = page.evaluate('window.__raceLifecycle.engines.length')
                         page.locator('.race-result-banner').get_by_role('button', name='RELANCER', exact=True).click()
                         page.wait_for_function('(n)=>window.__raceLifecycle.engines.length>n', arg=old)
@@ -126,6 +162,10 @@ def main():
                         assert page.evaluate('window.__raceLifecycle.engine.renderer3D') is None
                         assert page.evaluate('window.__raceLifecycle.engine.player.kartSpec.heroId') == hero
                         page.wait_for_function('window.__raceLifecycle.engine.kartImages.size>0 && [...window.__raceLifecycle.engine.kartImages.values()].every(i=>i.complete&&i.naturalWidth>0)')
+                        page.wait_for_function('(hero)=>[...window.__raceLifecycle.engine.driverBusts.values()].some(b=>b?.heroId===hero)', arg=hero)
+                        report['drivers2D'] = page.evaluate('''() => [...window.__raceLifecycle.engine.driverBusts.values()]
+                            .filter(Boolean).map(b=>({heroId:b.heroId,source:b.source,width:b.width,height:b.height}))''')
+                        page.wait_for_timeout(80)
                         page.screenshot(path=str(out / f'{name}-2d.png'))
                     assert not errors, errors
                     report['passed'] = True
