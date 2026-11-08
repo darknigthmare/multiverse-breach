@@ -1,4 +1,7 @@
 import { formatRaceObjective, raceObjectiveLabel } from './scenePresentation.js';
+import { getKartForHero, getKartDriverFrame } from './kart/kartRoster.js';
+import { applyKartLivery, getKartRelativeDirection, recolorKartAtlas } from './kart/kartLivery.js';
+import { getKartUniverseTracks } from './kart/kartTracks.js';
 
 const MIRELLE_KART_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete';
 
@@ -481,7 +484,7 @@ export const KART_TRACK_LAYOUTS = {
   }
 };
 
-export const RACE_TRACKS = KART_TRACK_LAYOUTS;
+export const RACE_TRACKS = { ...KART_TRACK_LAYOUTS, ...getKartUniverseTracks() };
 
 export class EngineRace {
   constructor(
@@ -490,7 +493,8 @@ export class EngineRace {
     onFinish = () => {},
     trackId = 'nexus_archive_loop',
     garageUpgrades = {},
-    kartLoadout = null
+    kartLoadout = null,
+    pilotSpec = null
   ) {
     this.lang = 'fr';
     this.width = width;
@@ -499,6 +503,11 @@ export class EngineRace {
     this.trackId = trackId;
     this.garageUpgrades = garageUpgrades || {};
     this.kartLoadout = kartLoadout;
+    this.pilotSpec = pilotSpec || getKartForHero('arca_mirelle');
+    this.renderer3D = null;
+    this.kartImages = new Map();
+    this.kartLiveryImages = new Map();
+    this.driverImages = new Map();
     this.garageStats = this.computeGarageStats(this.garageUpgrades);
     this.track = this.createTrackState(trackId);
     this.images = {};
@@ -616,8 +625,9 @@ export class EngineRace {
     this.objective = this.createObjectiveState();
     this.player = this.createKart({
       id: 'mirelle',
-      name: this.kartLoadout?.name?.fr || 'Mirelle Suture',
-      color: this.kartLoadout?.color || '#39c5bb',
+      name: this.pilotSpec?.name || 'Mirelle Suture',
+      color: this.kartLoadout?.color || this.pilotSpec?.color || '#39c5bb',
+      kartSpec: applyKartLivery(this.pilotSpec, this.kartLoadout),
       visualStyle: this.kartLoadout?.style || 'suture',
       x: start.x,
       y: start.y,
@@ -629,9 +639,9 @@ export class EngineRace {
       turnRate: 3.2 + this.garageStats.turnBonus
     });
     this.opponents = [
-      this.createKart({ id: 'bastion', name: 'Bastion Korr', color: '#ffb15c', x: start.x - 40, y: start.y + 28, angle: startAngle, ai: true, laneOffset: -26, maxSpeed: 244 }),
-      this.createKart({ id: 'loom', name: 'Loom-07', color: '#d9b6ff', x: start.x + 42, y: start.y + 30, angle: startAngle, ai: true, laneOffset: 22, maxSpeed: 252 }),
-      this.createKart({ id: 'sable', name: 'Sable Vey', color: '#e74c3c', x: start.x, y: start.y + 58, angle: startAngle, ai: true, laneOffset: 8, maxSpeed: 238 })
+      this.createKart({ id: 'bastion', name: 'Bastion Korr', color: '#ffb15c', kartSpec: getKartForHero('arca_bastion'), x: start.x - 40, y: start.y + 28, angle: startAngle, ai: true, laneOffset: -26, maxSpeed: 244 }),
+      this.createKart({ id: 'loom', name: 'Loom Ivara', color: '#d9b6ff', kartSpec: getKartForHero('arca_loom'), x: start.x + 42, y: start.y + 30, angle: startAngle, ai: true, laneOffset: 22, maxSpeed: 252 }),
+      this.createKart({ id: 'sable', name: 'Sable Orison', color: '#e74c3c', kartSpec: getKartForHero('arca_sable'), x: start.x, y: start.y + 58, angle: startAngle, ai: true, laneOffset: 8, maxSpeed: 238 })
     ];
   }
 
@@ -640,6 +650,7 @@ export class EngineRace {
     name,
     color,
     visualStyle = 'standard',
+    kartSpec = null,
     x,
     y,
     angle,
@@ -654,6 +665,7 @@ export class EngineRace {
       name,
       color,
       visualStyle,
+      kartSpec,
       x,
       y,
       angle,
@@ -685,6 +697,8 @@ export class EngineRace {
       routeSegment: 0,
       routeProgress: 0,
       previousRouteProgress: 0,
+      routeInitialized: false,
+      nextLapGate: 1,
       lapArmed: false,
       stuckTimer: 0,
       recoveryCooldown: 0
@@ -701,6 +715,7 @@ export class EngineRace {
 
   useKartItem(kart) {
     if (!kart?.item || this.finished || this.countdown > 0 || kart.itemCooldown > 0) return false;
+    if (this.track.raceRules?.contactItems === false && !['boost', 'shield', 'anchor'].includes(kart.item)) return false;
     const item = kart.item;
     kart.item = null;
     kart.itemCooldown = 1.1;
@@ -737,6 +752,8 @@ export class EngineRace {
     if (item === 'mirror') {
       const target = this.findMirrorSwapTarget(kart);
       if (target) {
+        const sourceRoad = this.getKartRoadAnchor(kart);
+        const targetRoad = this.getKartRoadAnchor(target);
         const swap = { x: kart.x, y: kart.y, angle: kart.angle, speed: kart.speed };
         kart.x = target.x;
         kart.y = target.y;
@@ -746,6 +763,10 @@ export class EngineRace {
         target.y = swap.y;
         target.angle = swap.angle;
         target.speed = Math.max(swap.speed * 0.72, 90);
+        // A position swap is not a driven crossing of the finish line. Keep
+        // each racer's own gate receipts, and start sampling at the new seat.
+        this.reanchorKartRoute(kart, targetRoad);
+        this.reanchorKartRoute(target, sourceRoad);
         kart.portalCooldown = 1.2;
         target.portalCooldown = 1.2;
         this.spawnParticles(kart.x, kart.y, '#39c5bb', 20);
@@ -901,7 +922,8 @@ export class EngineRace {
     const speedRatio = clamp(Math.abs(kart.speed) / 220, 0, 1);
     const turnPower = (0.24 + speedRatio * 1.02) * (kart.drift ? 1.35 : 1) * grip;
     kart.angle += kart.steerInput * kart.turnRate * turnPower * dt * (kart.speed >= 0 ? 1 : -1);
-    if (!kart.ai && Math.abs(input.turn || 0) < 0.42 && Math.abs(kart.speed) > 48) {
+    const autoOffroadAssist = this.keys.autoAccel && kart.speed > 8 && road.factor < 0.42;
+    if (!kart.ai && Math.abs(input.turn || 0) < 0.42 && (Math.abs(kart.speed) > 48 || autoOffroadAssist)) {
       const lookAhead = 62 + clamp(Math.abs(kart.speed), 0, 280) * 0.28;
       const target = this.getTrackPointAhead(road, lookAhead);
       const desired = target ? Math.atan2(target.y - kart.y, target.x - kart.x) : road.angle;
@@ -1032,28 +1054,42 @@ export class EngineRace {
   getKartRoadAnchor(kart) {
     const points = this.track.waypoints || [];
     if (!kart || points.length < 2) return this.getClosestRoadPoint(kart?.x || 0, kart?.y || 0);
-    const preferred = Number.isInteger(kart.routeSegment) ? kart.routeSegment : 0;
-    let best = null;
-    points.forEach((point, segment) => {
-      const next = points[(segment + 1) % points.length];
-      const projected = projectPointToSegment(point, next, kart.x, kart.y);
-      const rawGap = Math.abs(segment - preferred);
-      const segmentGap = Math.min(rawGap, points.length - rawGap);
-      const continuityPenalty = segmentGap > 2 ? this.track.roadWidth * 0.34 : segmentGap * 2;
-      const headingPenalty = Math.abs(kart.speed) > 24
-        ? Math.abs(angleDelta(kart.angle, projected.angle)) * this.track.roadWidth * 0.08
-        : 0;
-      const score = projected.distance + continuityPenalty + headingPenalty;
-      if (!best || score < best.score) {
-        best = { ...projected, segment, score };
-      }
-    });
-    if (!best || best.distance > this.track.roadWidth * 1.65) {
+    const previous = kart._roadAnchor;
+    if (previous?.sampleX === kart.x && previous?.sampleY === kart.y
+      && previous.segment === kart.routeSegment) return previous;
+    let best;
+    if (!previous) {
       best = this.getClosestRoadPoint(kart.x, kart.y);
+    } else {
+      // Follow the connected road, including off-road recovery. A nearby arm
+      // of a figure eight is not reachable merely because it projects closer.
+      const preferred = kart.routeSegment;
+      const candidates = [preferred, (preferred + 1) % points.length, (preferred + points.length - 1) % points.length];
+      for (const segment of candidates) {
+        const projected = projectPointToSegment(points[segment], points[(segment + 1) % points.length], kart.x, kart.y);
+        const score = projected.distance + (segment === preferred ? 0 : 2);
+        if (!best || score < best.score) best = { ...projected, segment, score };
+      }
     }
     best.factor = clamp(1 - best.distance / (this.track.roadWidth * 0.9), 0, 1);
+    best.sampleX = kart.x;
+    best.sampleY = kart.y;
+    kart._roadAnchor = best;
     kart.routeSegment = best.segment;
     return best;
+  }
+
+  reanchorKartRoute(kart, road) {
+    const points = this.track.waypoints;
+    const anchored = projectPointToSegment(points[road.segment], points[(road.segment + 1) % points.length], kart.x, kart.y);
+    kart._roadAnchor = { ...anchored, segment: road.segment, sampleX: kart.x, sampleY: kart.y,
+      factor: clamp(1 - anchored.distance / (this.track.roadWidth * 0.9), 0, 1) };
+    kart.routeSegment = road.segment;
+    kart.waypoint = (road.segment + 1) % points.length;
+    kart.routeProgress = this.getRouteProgress(kart._roadAnchor);
+    kart.previousRouteProgress = kart.routeProgress;
+    kart.routeInitialized = true;
+    kart._portalRouteTransition = null;
   }
 
   getRouteProgress(road) {
@@ -1064,12 +1100,11 @@ export class EngineRace {
 
   recoverKart(kart, message = null) {
     if (!kart || kart.recoveryCooldown > 0) return false;
-    const road = this.getClosestRoadPoint(kart.x, kart.y);
+    const road = this.getKartRoadAnchor(kart);
     kart.x = road.x;
     kart.y = road.y;
     kart.angle = road.angle;
-    kart.routeSegment = road.segment;
-    kart.waypoint = (road.segment + 1) % this.track.waypoints.length;
+    this.reanchorKartRoute(kart, road);
     kart.speed = Math.max(72, Math.min(Math.abs(kart.speed), 118));
     kart.spin = 0;
     kart.stuckTimer = 0;
@@ -1109,9 +1144,33 @@ export class EngineRace {
         if (!kart.ai) this.showMessage('Tremplin de faille: trick boost');
       }
       if (zone.type === 'portal' && kart.portalCooldown <= 0 && zone.exit) {
+        const entryRoad = this.getKartRoadAnchor(kart);
+        const entryProgress = this.getRouteProgress(entryRoad);
+        const sourceProgress = this.getRouteProgress(this.getClosestRoadPoint(zone.x, zone.y));
+        const sourceGap = Math.abs(((entryProgress - sourceProgress + 1.5) % 1) - 0.5);
+        // At an intersection, only the branch containing this entrance owns
+        // the portal; the other arm must remain an ordinary road crossing.
+        if (sourceGap * this.track.pathMetrics.totalLength > zone.r + this.track.roadWidth * 0.2) return;
+        const exitRoad = this.getClosestRoadPoint(zone.exit.x, zone.exit.y);
+        const exitProgress = this.getRouteProgress(exitRoad);
+        const goesForward = exitProgress >= entryProgress || zone.crossesStart === true;
+        if (!goesForward && kart._backwardPortals?.get(zone) === kart.lap) return;
+        this.updateCheckpoints(kart);
+        if (kart.finished) return;
+        const forwardEntry = kart.speed * Math.cos(kart.angle - entryRoad.angle) > 0;
+        if (!goesForward) {
+          kart._backwardPortals ||= new Map();
+          kart._backwardPortals.set(zone, kart.lap);
+        }
         kart.x = zone.exit.x;
         kart.y = zone.exit.y;
         kart.angle = zone.exit.angle ?? kart.angle;
+        this.reanchorKartRoute(kart, exitRoad);
+        if (goesForward && forwardEntry) {
+          // Only a declared forward link can stand in for skipped gates. A
+          // backwards portal is usable once per lap, never a synthetic lap.
+          kart._portalRouteTransition = { from: entryProgress, to: exitProgress, crossesStart: zone.crossesStart === true };
+        }
         kart.portalCooldown = 1.8;
         kart.boost = Math.max(kart.boost, 0.38 + (kart.ai ? 0 : this.garageStats.boostBonus * 0.45));
         this.spawnParticles(kart.x, kart.y, '#39c5bb', 18);
@@ -1190,6 +1249,7 @@ export class EngineRace {
   }
 
   rollItem(kart) {
+    if (this.track.raceRules?.contactItems === false) return ['boost', 'shield', 'anchor'][Math.floor(Math.abs(this.time * 997 + kart.x + kart.y) % 3)];
     const pool = kart.rank >= 3
       ? ['boost', 'boost', 'projectile', 'shield', 'trap', 'anchor', 'mirror', 'pulse']
       : ['projectile', 'shield', 'trap', 'boost', 'anchor', 'pulse'];
@@ -1215,17 +1275,48 @@ export class EngineRace {
     const checkpointCount = Math.max(1, this.track.checkpoints.length);
     kart.routeProgress = routeProgress;
     kart.checkpoint = Math.min(checkpointCount - 1, Math.floor(routeProgress * checkpointCount));
-    if (routeProgress > 0.4) kart.lapArmed = true;
-    const crossedStart = kart.lapArmed && previousProgress > 0.4 && routeProgress < 0.18 && previousProgress - routeProgress > 0.28;
     kart.previousRouteProgress = routeProgress;
-    if (!crossedStart) return;
-    kart.lap += 1;
-    kart.lapArmed = false;
-    if (!kart.ai) this.showMessage(kart.lap >= this.track.laps ? 'Dernier verrou scelle' : `Tour ${kart.lap + 1}/${this.track.laps}`);
-    if (kart.lap >= this.track.laps) {
-      kart.finished = true;
-      kart.finishTime = this.time;
+    // Rear grid slots can begin on the final segment. Merely seeing progress
+    // near 1 must not award them a free lap at their first start-line crossing.
+    if (!kart.routeInitialized) {
+      kart.routeInitialized = true;
+      return;
     }
+    if (kart.finished) return;
+    const advanceGates = (from, to) => {
+      while (kart.nextLapGate < checkpointCount
+        && from <= kart.nextLapGate / checkpointCount
+        && to >= kart.nextLapGate / checkpointCount) kart.nextLapGate += 1;
+    };
+    const transition = kart._portalRouteTransition;
+    kart._portalRouteTransition = null;
+    const from = transition ? transition.from : previousProgress;
+    const to = transition ? transition.to : routeProgress;
+    const delta = (to - from + 1) % 1;
+    const forward = transition ? to > from || transition.crossesStart : delta > 0 && delta < 0.22;
+    const wraps = forward && to < from;
+    if (!forward) {
+      // Backing over the line cannot leave an armed lap waiting to be cashed
+      // by immediately driving forward over that same line again.
+      if (!transition && from < 0.22 && to > 0.78) kart.nextLapGate = 1;
+      kart.lapArmed = kart.nextLapGate >= checkpointCount;
+      return;
+    }
+    advanceGates(from, wraps ? 1 : to);
+    if (wraps) {
+      const crossedStart = kart.nextLapGate >= checkpointCount;
+      kart.nextLapGate = 1;
+      if (crossedStart) {
+        kart.lap += 1;
+        if (!kart.ai) this.showMessage(kart.lap >= this.track.laps ? 'Dernier verrou scelle' : `Tour ${kart.lap + 1}/${this.track.laps}`);
+        if (kart.lap >= this.track.laps) {
+          kart.finished = true;
+          kart.finishTime = this.time;
+        }
+      }
+      advanceGates(0, to);
+    }
+    kart.lapArmed = kart.nextLapGate >= checkpointCount && !kart.finished;
   }
 
   updateProgressAndRanks() {
@@ -1411,14 +1502,59 @@ export class EngineRace {
     };
   }
 
-  draw(ctx) {
+  draw(ctx, dt = 1 / 60) {
     ctx.clearRect(0, 0, this.width, this.height);
+    if (this.renderer3D) {
+      this.renderer3D.draw(this, dt);
+      this.draw3DOverlay(ctx);
+      return;
+    }
     this.drawRaceCameraBackdrop(ctx);
     this.drawRearRoad(ctx);
     this.drawProjectedRaceObjects(ctx);
     this.drawRearPlayerKart(ctx);
     this.drawSlipstreamWindLines(ctx);
     this.drawHud(ctx);
+  }
+
+  // WebGL owns world rendering only. The existing simulation, UI, minimap,
+  // clock, finish guard and career remain shared by both presentations.
+  draw3DOverlay(ctx) {
+    ctx.save();
+    this.drawTopDownMinimap(ctx);
+    const charge = clamp(this.player.driftCharge / 2.4, 0, 1);
+    const x = this.width / 2 - 100;
+    ctx.fillStyle = 'rgba(5,12,22,0.78)';
+    ctx.fillRect(x - 12, this.height - 48, 224, 32);
+    ctx.fillStyle = charge > .72 ? '#d9b6ff' : charge > .45 ? '#ffb15c' : this.player.color;
+    ctx.fillRect(x, this.height - 27, 200 * charge, 4);
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#effffc';
+    ctx.font = 'bold 11px sans-serif';
+    ctx.fillText(this.player.boost > 0 ? 'TURBO' : this.player.air > 0 ? 'SAUT' : 'DRIFT', this.width / 2, this.height - 33);
+    if (this.countdown > 0) {
+      ctx.fillStyle = 'rgba(0,0,0,.28)';
+      ctx.fillRect(0, 0, this.width, this.height);
+      ctx.fillStyle = '#fff3b8';
+      ctx.font = 'bold 64px sans-serif';
+      ctx.fillText(this.countdown > 1 ? Math.ceil(this.countdown) : 'GO', this.width / 2, this.height * .45);
+    } else if (this.messageTimer > 0) {
+      ctx.font = 'bold 15px sans-serif';
+      ctx.fillStyle = 'rgba(5,12,22,.82)';
+      ctx.fillRect(this.width / 2 - 230, 24, 460, 36);
+      ctx.fillStyle = '#effffc';
+      ctx.fillText(this.message, this.width / 2, 47);
+    }
+    ctx.restore();
+  }
+
+  dispose() {
+    this.renderer3D?.dispose();
+    this.renderer3D = null;
+    this.kartImages.clear();
+    this.kartLiveryImages.clear();
+    this.driverImages.clear();
+    this.setInput({});
   }
 
   drawSlipstreamWindLines(ctx) {
@@ -2004,6 +2140,16 @@ export class EngineRace {
   }
 
   drawProjectedOpponent(ctx, kart, p) {
+    const direction = getKartRelativeDirection(kart.angle, this.player.angle);
+    if (this.drawCharacterKart2D(ctx, kart, p.x, p.y + 32 * p.scale, 94 * p.scale, 80 * p.scale, direction)) {
+      ctx.save();
+      ctx.fillStyle = '#eefdf9';
+      ctx.font = `${Math.max(8, 10 * p.scale)}px sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText(kart.name, p.x, p.y - 62 * p.scale);
+      ctx.restore();
+      return;
+    }
     ctx.save();
     ctx.translate(p.x, p.y - 20 * p.scale);
     ctx.scale(p.scale, p.scale);
@@ -2047,7 +2193,13 @@ export class EngineRace {
     const baseY = this.height - 92;
     const kartW = 218;
     const kartH = 142;
-    if (sprite?.complete && sprite.naturalWidth) {
+    const turn = this.getPlayerInput().turn || 0;
+    const direction = this.player.spin > 0 ? Math.floor(this.time * 10) % 8 : turn < -.25 ? 7 : turn > .25 ? 1 : 0;
+    const personalDrawn = this.drawCharacterKart2D(ctx, this.player, centerX, baseY + 8, kartW, kartH, direction);
+    if (personalDrawn) {
+      // Chassis is the exact orthographic export of the 3D model. Its pilot is
+      // composed separately from that character's registered sprite.
+    } else if (this.player.kartSpec?.heroId === 'arca_mirelle' && sprite?.complete && sprite.naturalWidth) {
       const cols = 4;
       const rows = 4;
       const frameW = sprite.naturalWidth / cols;
@@ -2067,7 +2219,7 @@ export class EngineRace {
       this.drawRearKartActionOverlay(ctx, centerX, baseY, kartW, kartH);
       ctx.restore();
     } else {
-      ctx.fillStyle = '#39c5bb';
+      ctx.fillStyle = this.player.color;
       ctx.strokeStyle = '#050307';
       ctx.lineWidth = 5;
       ctx.beginPath();
@@ -2117,6 +2269,49 @@ export class EngineRace {
       ctx.stroke();
       ctx.restore();
     }
+  }
+
+  getCharacterImage(cache, source) {
+    if (!source) return null;
+    if (!cache.has(source)) {
+      const image = new Image();
+      image.src = source;
+      cache.set(source, image);
+    }
+    const image = cache.get(source);
+    return image.complete && image.naturalWidth > 0 ? image : null;
+  }
+
+  drawCharacterKart2D(ctx, kart, x, bottom, width, height, direction = 0) {
+    const spec = kart.kartSpec;
+    const image = this.getCharacterImage(this.kartImages, spec?.sprite2D?.src);
+    if (!image) return false;
+    const liveryKey = `${spec.sprite2D.src}|${spec.livery?.sourceColor || ''}|${spec.color}`;
+    if (spec.livery && !this.kartLiveryImages.has(liveryKey)) {
+      try { this.kartLiveryImages.set(liveryKey, recolorKartAtlas(image, spec)); }
+      catch { this.kartLiveryImages.set(liveryKey, image); }
+    }
+    const kartImage = this.kartLiveryImages.get(liveryKey) || image;
+    ctx.save();
+    ctx.imageSmoothingEnabled = false;
+    for (const source of spec.driverSprite?.sources || []) {
+      const driver = this.getCharacterImage(this.driverImages, source);
+      if (!driver) continue;
+      const frame = getKartDriverFrame(spec, source);
+      const trim = frame.trim || {};
+      const fw = driver.naturalWidth / frame.columns;
+      const fh = driver.naturalHeight / frame.rows;
+      const sw = Math.max(1, fw - (trim.left || 0) - (trim.right || 0));
+      const sh = Math.max(1, fh - (trim.top || 0) - (trim.bottom || 0)) * frame.upperBodyRatio;
+      const scale = Math.min(width * .46 / sw, height * .70 / sh);
+      ctx.drawImage(driver, frame.col * fw + (trim.left || 0), frame.row * fh + (trim.top || 0), sw, sh,
+        x - sw * scale / 2, bottom - height * .38 - sh * scale, sw * scale, sh * scale);
+      break;
+    }
+    const fw = image.naturalWidth / 8;
+    ctx.drawImage(kartImage, (direction % 8) * fw, 0, fw, image.naturalHeight, x - width / 2, bottom - height, width, height);
+    ctx.restore();
+    return true;
   }
 
   drawRearKartActionOverlay(ctx, centerX, baseY, kartW = 218, kartH = 142) {

@@ -60,6 +60,22 @@ test('a reference from another DLC keeps a directory-attributed file shared', ()
   assert.deepEqual(sharedManifest.assets[0].referencedBy, ['Halo', 'Predators']);
 });
 
+test('kart model and sprite directories retain their universe ownership', () => {
+  const publicPaths = [
+    'public/kart/halo/master-chief/kart.glb',
+    'public/kart/halo/master-chief/kart-directions.png',
+    'public/kart/nexus-de-convergence/arca-mirelle/kart.glb',
+    'public/kart/neon-requiem/iris/kart-directions.png'
+  ];
+  const { manifests, sharedManifest } = buildDlcAssetInventory({
+    packs: [pack('Halo', 'Halo')], publicPaths, references: new Map(),
+    campaignUniverses: ['Neon Requiem']
+  });
+  assert.equal(manifests.get('DLC/Halo').assets.length, 2);
+  assert.equal(sharedManifest.distribution.unclaimedReasons['base-game'], 1);
+  assert.equal(sharedManifest.distribution.unclaimedReasons['original-campaign'], 1);
+});
+
 test('rejects duplicate, unsafe and ambiguous classification inputs', () => {
   const packs = [pack('Halo', 'Halo')];
   assert.throws(() => buildDlcAssetInventory({ packs, publicPaths: ['public/a.png', 'public/a.png'] }), /Duplicate public paths/);

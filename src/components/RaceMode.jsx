@@ -8,7 +8,13 @@ import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import GameHudThemeLayer from './GameHudThemeLayer';
 import ImmersiveDrawer from './ImmersiveDrawer.jsx';
+import { getKartRoster } from '../game/kart/kartRoster.js';
+import { applyKartLivery } from '../game/kart/kartLivery.js';
+import { KartRenderer3D } from '../game/kart/kartRenderer3D.js';
+import { isUniverseInstalled } from '../game/dlcInstallation.js';
+import KartSpritePreview from './KartSpritePreview.jsx';
 import './HubImmersion.css';
+import './RaceKart3D.css';
 
 const CONTROL_KEYS = new Set([
   'ArrowUp',
@@ -58,6 +64,7 @@ export default function RaceMode({
   portalCollection = {},
   setPortalCollection,
   hiddenUniverses = [],
+  unlockedHeroes = null,
   onSessionStart,
   onSessionEnd,
   onPauseRequest,
@@ -66,7 +73,9 @@ export default function RaceMode({
   dedicatedSession = false
 }) {
   const canvasRef = useRef(null);
+  const worldCanvasRef = useRef(null);
   const engineRef = useRef(null);
+  const rendererRef = useRef(null);
   const keysRef = useRef({});
   const keyboardStateRef = useRef(null);
   if (!keyboardStateRef.current) keyboardStateRef.current = createRaceKeyboardState();
@@ -84,6 +93,14 @@ export default function RaceMode({
   const closeRaceMenu = useCallback(() => setRaceMenuOpen(false), []);
   const [trackId, setTrackId] = useState(null);
   const [pilotId, setPilotId] = useState(null);
+  const [renderMode, setRenderMode] = useState('3d');
+  const [cameraMode, setCameraMode] = useState('chase');
+  const [pilotQuery, setPilotQuery] = useState('');
+  const [pilotUniverse, setPilotUniverse] = useState('');
+  const [pilotPage, setPilotPage] = useState(0);
+  const [trackQuery, setTrackQuery] = useState('');
+  const [trackUniverse, setTrackUniverse] = useState('');
+  const [trackPage, setTrackPage] = useState(0);
   const [raceStarted, setRaceStarted] = useState(false);
   const [raceNonce, setRaceNonce] = useState(0);
   const [runtimeError, setRuntimeError] = useState(false);
@@ -129,19 +146,40 @@ export default function RaceMode({
     });
   }, [setPortalCollection]);
 
-  const trackList = useMemo(() => Object.values(RACE_TRACKS).sort((a, b) => a.difficulty - b.difficulty || a.id.localeCompare(b.id)), []);
   const activeHudTheme = resolveActiveHudTheme(portalCollection);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
+  const roster = useMemo(() => getKartRoster({ hiddenUniverses, playerProfile }), [hiddenUniverses, playerProfile]);
+  const rosterUniverses = useMemo(() => [...new Set(roster.map(pilot => pilot.universe))].sort((a, b) => a.localeCompare(b)), [roster]);
+  const ownedPilotIds = useMemo(() => new Set(unlockedHeroes == null
+    ? roster.map(pilot => pilot.heroId)
+    : ['arca_mirelle', 'player_anchor', ...unlockedHeroes]), [roster, unlockedHeroes]);
+  const pilotSpec = useMemo(() => roster.find(pilot => pilot.heroId === pilotId) || null, [roster, pilotId]);
+  const filteredPilots = useMemo(() => roster.filter(pilot => (!pilotUniverse || pilot.universe === pilotUniverse)
+    && `${pilot.name} ${pilot.universe}`.toLocaleLowerCase().includes(pilotQuery.toLocaleLowerCase()))
+    .sort((a, b) => Number(ownedPilotIds.has(b.heroId)) - Number(ownedPilotIds.has(a.heroId))
+      || Number(b.heroId === 'arca_mirelle') - Number(a.heroId === 'arca_mirelle')
+      || a.name.localeCompare(b.name)), [roster, pilotUniverse, pilotQuery, ownedPilotIds]);
+  const pilotPages = Math.max(1, Math.ceil(filteredPilots.length / 12));
+  const visiblePilots = filteredPilots.slice(Math.min(pilotPage, pilotPages - 1) * 12, (Math.min(pilotPage, pilotPages - 1) + 1) * 12);
+  const trackList = useMemo(() => Object.values(RACE_TRACKS)
+    .filter(option => !hiddenUniverseSet.has(option.universe || 'Nexus de Convergence') && isUniverseInstalled(option.universe || 'Nexus de Convergence'))
+    .sort((a, b) => a.difficulty - b.difficulty || a.id.localeCompare(b.id)), [hiddenUniverseSet]);
+  const trackUniverses = useMemo(() => [...new Set(trackList.map(option => option.universe || 'Nexus de Convergence'))].sort((a, b) => a.localeCompare(b)), [trackList]);
+  const filteredTracks = useMemo(() => trackList.filter(option => (!trackUniverse || (option.universe || 'Nexus de Convergence') === trackUniverse)
+    && `${option.name?.fr} ${option.name?.en} ${option.universe || 'Nexus de Convergence'}`.toLocaleLowerCase().includes(trackQuery.toLocaleLowerCase())), [trackList, trackUniverse, trackQuery]);
+  const trackPages = Math.max(1, Math.ceil(filteredTracks.length / 12));
+  const visibleTracks = filteredTracks.slice(Math.min(trackPage, trackPages - 1) * 12, (Math.min(trackPage, trackPages - 1) + 1) * 12);
   const ownedKarts = useMemo(() => (
     (portalCollection.karts || [])
       .map(id => getUnlockableById('kart', id))
       .filter(kart => kart && !hiddenUniverseSet.has(kart.universe))
   ), [hiddenUniverseSet, portalCollection.karts]);
   const selectedKart = ownedKarts.find(kart => kart.id === portalCollection.activeKart) || null;
-  const selectedKartName = selectedKart?.name?.[lang]
-    || selectedKart?.name?.fr
-    || (lang === 'fr' ? 'Chassis Suture Nexus' : 'Nexus Suture Chassis');
+  const displayedKartSpec = useMemo(() => applyKartLivery(pilotSpec, selectedKart), [pilotSpec, selectedKart]);
+  const selectedKartName = pilotSpec?.kartName?.[lang] || pilotSpec?.kartName?.fr
+    || (lang === 'fr' ? 'Kart personnel' : 'Personal kart');
   const track = trackId ? RACE_TRACKS[trackId] : null;
+  const canLaunch = Boolean(pilotSpec && ownedPilotIds.has(pilotSpec.heroId) && trackList.some(option => option.id === trackId));
   const raceMusicStage = useMemo(() => {
     if (!track) {
       return {
@@ -168,8 +206,9 @@ export default function RaceMode({
   // Parent callbacks and collection objects may change without starting a race.
   // A setup is captured at launch/restart; garage upgrades intentionally stay live.
   const raceSetupRef = useRef(null);
-  raceSetupRef.current = { raceMusicStage, selectedKart, lang };
+  raceSetupRef.current = { raceMusicStage, selectedKart, pilotSpec, renderMode, cameraMode, lang };
   useEffect(() => { if (engineRef.current) engineRef.current.lang = lang; }, [lang]);
+  useEffect(() => { rendererRef.current?.setCameraMode(cameraMode); }, [cameraMode]);
   const updateCareerRef = useRef(updateCareer);
   updateCareerRef.current = updateCareer;
 
@@ -229,7 +268,7 @@ export default function RaceMode({
     if (!raceStarted || !RACE_TRACKS[trackId]) return undefined;
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
-    const { raceMusicStage, selectedKart } = raceSetupRef.current;
+    const { raceMusicStage, selectedKart, pilotSpec, renderMode, cameraMode } = raceSetupRef.current;
     const runGuard = createRaceRunGuard();
     runGuardRef.current = runGuard;
     setRuntimeError(false);
@@ -246,11 +285,31 @@ export default function RaceMode({
         result: raceSummary.rank === 1 ? 'victory' : 'complete'
       });
       onSessionEndRef.current?.({ reason: 'completed', report: raceSummary });
-    }, trackId, garageUpgradesRef.current, selectedKart);
+    }, trackId, garageUpgradesRef.current, selectedKart, pilotSpec);
     engine.lang = raceSetupRef.current.lang;
     engineRef.current = engine;
+    const rendererFailure = error => {
+      if (!runGuard.isActive()) return;
+      console.error('Kart 3D renderer unavailable', error);
+      runGuard.dispose();
+      keyboardStateRef.current.clear();
+      keysRef.current = {};
+      keyPulseRef.current = {};
+      touchStateRef.current.clear();
+      engine.setInput({});
+      sound.stopBgm();
+      setRaceMenuOpen(false);
+      setRuntimeError(true);
+    };
+    if (renderMode === '3d') {
+      try {
+        const renderer = new KartRenderer3D(worldCanvasRef.current, { cameraMode, onError: rendererFailure });
+        engine.renderer3D = renderer;
+        rendererRef.current = renderer;
+      } catch (error) { rendererFailure(error); }
+    }
     raceMusicStateRef.current = 'grid';
-    sound.playStageBgm(raceMusicStage, 'grid');
+    if (runGuard.isActive()) sound.playStageBgm(raceMusicStage, 'grid');
     let animationId = 0;
     const simulationClock = createFixedStepClock();
     simulationClockRef.current = simulationClock;
@@ -276,7 +335,7 @@ export default function RaceMode({
         });
         for (let step = 0; step < steps; step += 1) engine.update(COMBAT_STEP_MS / 1000);
         const ctx = canvas.getContext('2d');
-        engine.draw(ctx);
+        engine.draw(ctx, dt);
         snapshotTimer += dt;
         if (snapshotTimer > 0.12) {
           snapshotTimer = 0;
@@ -307,7 +366,8 @@ export default function RaceMode({
             grade: engine.player.finished ? engine.getRaceSummary().grade : null,
             objective: engine.getObjectiveStatus(),
             raceState: telemetry.raceState,
-            trackFactor: telemetry.trackFactor
+            trackFactor: telemetry.trackFactor,
+            missingDrivers: engine.renderer3D?.getTelemetry().drivers.filter(driver => driver.status === 'missing').length || 0
           });
         }
         animationId = requestAnimationFrame(loop);
@@ -385,6 +445,8 @@ export default function RaceMode({
       window.removeEventListener('blur', clearInputs);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       sound.stopBgm();
+      engine.dispose?.();
+      rendererRef.current = null;
       engineRef.current = null;
     };
   }, [raceStarted, trackId, raceNonce]);
@@ -425,7 +487,7 @@ export default function RaceMode({
   };
 
   const startRace = () => {
-    if (sessionPausedRef.current || !pilotId || !trackId) return;
+    if (sessionPausedRef.current || !pilotId || !trackId || !canLaunch) return;
     onSessionStart?.();
     keyboardStateRef.current.clear();
     keysRef.current = {};
@@ -502,7 +564,13 @@ export default function RaceMode({
   const selectedBestTime = career.bestTimes?.[trackId];
 
   const raceSystemPanel = <ImmersiveDrawer open={raceMenuOpen} onClose={closeRaceMenu} lang={lang} title={lang === 'fr' ? 'Garage & carnet de course' : 'Garage & race log'}>
-    <p>{lang === 'fr' ? 'Mirelle pilote en vue arrière : conduite, drift, objets, checkpoints et adversaires IA. La vue de dessus reste limitee a la mini-map.' : 'Mirelle drives in rear view: steering, drift, items, checkpoints and AI rivals. Top-down view stays limited to the minimap.'}</p>
+    <p>{lang === 'fr' ? 'Choisis ton pilote et son kart personnel. Drifte pour charger le turbo, prends les objets sur la piste et franchis les tours face aux adversaires.' : 'Choose your driver and personal kart. Drift to charge a turbo, collect track items and complete laps against rivals.'}</p>
+    {renderMode === '3d' && <label className="kart-camera-setting">{lang === 'fr' ? 'Caméra' : 'Camera'}
+      <select value={cameraMode} onChange={event => setCameraMode(event.target.value)}>
+        <option value="chase">{lang === 'fr' ? 'Poursuite 3D' : '3D chase'}</option>
+        <option value="overview">{lang === 'fr' ? 'Vue aérienne 3D' : '3D overview'}</option>
+      </select>
+    </label>}
     {raceStarted && <p role="status">{lang === 'fr' ? 'Course en pause. Les améliorations conservent la course en cours.' : 'Race paused. Upgrades preserve the current race.'}</p>}
           <div className="race-career-card">
             <span>{lang === 'fr' ? 'Carriere kart' : 'Kart career'}</span>
@@ -515,7 +583,7 @@ export default function RaceMode({
           </div>
           <div className="race-garage-card">
             <span>{lang === 'fr' ? 'Garage Nexus' : 'Nexus garage'}</span>
-            <img src={RACE_ASSETS.hudGarage} alt={lang === 'fr' ? 'Garage et HUD kart de Mirelle' : 'Mirelle kart garage and HUD'} />
+            {displayedKartSpec && <KartSpritePreview spec={displayedKartSpec} kind="kart" className="kart-garage-preview" />}
             <strong>{selectedKartName}</strong>
             <div className="race-upgrade-list">
               {Object.entries(KART_GARAGE_UPGRADES).map(([upgradeId, upgrade]) => {
@@ -566,17 +634,17 @@ export default function RaceMode({
         <div className="race-mode-header">
           <div>
             <div className="portal-focus-kicker">{lang === 'fr' ? 'GRILLE DE DEPART / PREPARATION' : 'STARTING GRID / PREPARATION'}</div>
-            <h3>{lang === 'fr' ? 'Configurer la course A.R.C.A.' : 'Configure the A.R.C.A. race'}</h3>
+            <h3>{lang === 'fr' ? 'Kart · Grand Prix des univers' : 'Kart · Universe Grand Prix'}</h3>
             <p>
               {lang === 'fr'
-                ? 'Choisis explicitement ton pilote et ton circuit. Le moteur reste coupe jusqu a la validation de la grille.'
-                : 'Explicitly choose your pilot and track. The engine stays offline until the grid is confirmed.'}
+                ? 'Ton personnage au volant, son kart et les routes de son univers. Choisis ta grille de départ.'
+                : 'Your character at the wheel, their kart and the roads of their universe. Choose your starting grid.'}
             </p>
           </div>
           <div className="race-mode-pilot">
-            <img className="race-mode-pilot-icon" src={RACE_ASSETS.hudAvatar} alt="Mirelle kart HUD" />
+            {pilotSpec && <KartSpritePreview spec={pilotSpec} />}
             <div>
-              <strong>{pilotId ? 'Mirelle Suture' : (lang === 'fr' ? 'Pilote requis' : 'Pilot required')}</strong>
+              <strong>{pilotSpec?.name || (lang === 'fr' ? 'Pilote requis' : 'Pilot required')}</strong>
               <span>{selectedKartName}</span>
             </div>
           </div>
@@ -585,24 +653,45 @@ export default function RaceMode({
         <div className="race-preflight-grid">
           <section className="race-preflight-section">
             <span className="race-preflight-label">{lang === 'fr' ? '1. PILOTE' : '1. PILOT'}</span>
-            <button type="button" className={`race-pilot-option ${pilotId === 'mirelle' ? 'active' : ''}`} onClick={() => setPilotId('mirelle')}>
-              <img src={RACE_ASSETS.hudAvatar} alt="Mirelle Suture" />
-              <span><strong>Mirelle Suture</strong><small>{lang === 'fr' ? 'Chassis Suture / equilibre' : 'Suture chassis / balanced'}</small></span>
-            </button>
+            <div className="kart-catalog-filters">
+              <input type="search" value={pilotQuery} onChange={event => { setPilotQuery(event.target.value); setPilotPage(0); }} placeholder={lang === 'fr' ? 'Rechercher un personnage…' : 'Search characters…'} aria-label={lang === 'fr' ? 'Rechercher un pilote' : 'Search drivers'} />
+              <select value={pilotUniverse} onChange={event => { setPilotUniverse(event.target.value); setPilotPage(0); }} aria-label={lang === 'fr' ? 'Univers des pilotes' : 'Driver universe'}>
+                <option value="">{lang === 'fr' ? 'Tous les univers' : 'All universes'}</option>
+                {rosterUniverses.map(universe => <option key={universe}>{universe}</option>)}
+              </select>
+            </div>
+            <div className="kart-driver-grid">
+              {visiblePilots.map(pilot => <button key={pilot.id} type="button" data-pilot-id={pilot.heroId}
+                className={`race-pilot-option ${pilot.heroId === pilotId ? 'active' : ''}`}
+                aria-pressed={pilot.heroId === pilotId} disabled={!ownedPilotIds.has(pilot.heroId)}
+                onClick={() => setPilotId(pilot.heroId)}>
+                <KartSpritePreview spec={pilot} />
+                <span><strong>{pilot.name}</strong><small>{pilot.universe}</small>
+                  {!ownedPilotIds.has(pilot.heroId) && <small>{lang === 'fr' ? 'À débloquer dans la collection' : 'Unlock in your collection'}</small>}
+                </span>
+              </button>)}
+            </div>
+            {!visiblePilots.length && <p role="status">{lang === 'fr' ? 'Aucun pilote trouvé.' : 'No drivers found.'}</p>}
+            <div className="kart-catalog-pagination" aria-label={lang === 'fr' ? 'Pages des pilotes' : 'Driver pages'}>
+              <button type="button" disabled={pilotPage <= 0} onClick={() => setPilotPage(page => Math.max(0, page - 1))}>{lang === 'fr' ? 'Précédents' : 'Previous'}</button>
+              <span>{Math.min(pilotPage + 1, pilotPages)} / {pilotPages} · {filteredPilots.length}</span>
+              <button type="button" disabled={pilotPage >= pilotPages - 1} onClick={() => setPilotPage(page => Math.min(pilotPages - 1, page + 1))}>{lang === 'fr' ? 'Suivants' : 'Next'}</button>
+            </div>
           </section>
 
           <section className="race-preflight-section">
-            <span className="race-preflight-label">{lang === 'fr' ? '2. CHASSIS' : '2. CHASSIS'}</span>
-            <div className="race-preflight-karts" role="group" aria-label={lang === 'fr' ? 'Kart actif' : 'Active kart'}>
+            <span className="race-preflight-label">{lang === 'fr' ? '2. CHÂSSIS ET LIVRÉE' : '2. CHASSIS AND LIVERY'}</span>
+            <p className="race-preflight-description">{lang === 'fr' ? 'Le châssis appartient au pilote. Vos karts de collection apportent leur peinture ; les améliorations du garage règlent les performances.' : 'The pilot keeps their personal chassis. Collection karts provide their paint; garage upgrades determine performance.'}</p>
+            <div className="race-preflight-karts" role="group" aria-label={lang === 'fr' ? 'Livrée active' : 'Active livery'}>
               <button
                 type="button"
                 className={`race-kart-option ${!selectedKart ? 'active' : ''}`}
                 onClick={() => selectKart(null)}
                 aria-pressed={!selectedKart}
               >
-                <span style={{ '--kart-color': '#39c5bb' }} aria-hidden="true">K</span>
-                <strong>{lang === 'fr' ? 'Chassis Suture Nexus' : 'Nexus Suture Chassis'}</strong>
-                <small>{lang === 'fr' ? 'Kart de base / performances garage' : 'Base kart / garage performance'}</small>
+                {pilotSpec && <KartSpritePreview spec={pilotSpec} kind="kart" />}
+                <strong>{pilotSpec?.kartName?.[lang] || pilotSpec?.kartName?.fr || (lang === 'fr' ? 'Kart du personnage' : 'Character kart')}</strong>
+                <small>{lang === 'fr' ? 'Châssis et couleurs du personnage' : 'Character chassis and colors'}</small>
               </button>
               {ownedKarts.map(kart => (
                 <button
@@ -612,30 +701,53 @@ export default function RaceMode({
                   onClick={() => selectKart(kart.id)}
                   aria-pressed={selectedKart?.id === kart.id}
                 >
-                  <span style={{ '--kart-color': kart.color }} aria-hidden="true">K</span>
+                  {pilotSpec && <KartSpritePreview spec={applyKartLivery(pilotSpec, kart)} kind="kart" />}
                   <strong>{kart.name[lang] || kart.name.fr}</strong>
-                  <small>{kart.desc[lang] || kart.desc.fr}</small>
+                  <small>{lang === 'fr' ? `Livrée ${kart.universe} · châssis personnel` : `${kart.universe} livery · personal chassis`}</small>
                 </button>
               ))}
             </div>
+            <fieldset className="kart-presentation-choice">
+              <legend>{lang === 'fr' ? 'Vue de course' : 'Race presentation'}</legend>
+              <label><input type="radio" name="kart-render-mode" value="3d" checked={renderMode === '3d'} onChange={() => setRenderMode('3d')} /> 3D</label>
+              <label><input type="radio" name="kart-render-mode" value="2d" checked={renderMode === '2d'} onChange={() => setRenderMode('2d')} /> {lang === 'fr' ? '2D · sprites' : '2D · sprites'}</label>
+            </fieldset>
           </section>
 
           <section className="race-preflight-section">
             <span className="race-preflight-label">{lang === 'fr' ? '3. CIRCUIT' : '3. TRACK'}</span>
+            <div className="kart-catalog-filters">
+              <input type="search" value={trackQuery} onChange={event => { setTrackQuery(event.target.value); setTrackPage(0); }} placeholder={lang === 'fr' ? 'Rechercher un circuit…' : 'Search tracks…'} aria-label={lang === 'fr' ? 'Rechercher un circuit' : 'Search tracks'} />
+              <select value={trackUniverse} onChange={event => { setTrackUniverse(event.target.value); setTrackPage(0); }} aria-label={lang === 'fr' ? 'Univers des circuits' : 'Track universe'}>
+                <option value="">{lang === 'fr' ? 'Tous les univers' : 'All universes'}</option>
+                {trackUniverses.map(universe => <option key={universe}>{universe}</option>)}
+              </select>
+              {pilotSpec && <button type="button" onClick={() => { setTrackUniverse(pilotSpec.universe); setTrackQuery(''); setTrackPage(0); }}>{lang === 'fr' ? 'Univers du pilote' : 'Driver’s universe'}</button>}
+            </div>
             <div className="race-preflight-tracks">
-              {trackList.map(trackOption => (
-                <button key={trackOption.id} type="button" className={`race-track-option ${trackOption.id === trackId ? 'active' : ''}`} onClick={() => selectTrack(trackOption.id)}>
+              {visibleTracks.map(trackOption => (
+                <button key={trackOption.id} type="button" data-track-id={trackOption.id} className={`race-track-option ${trackOption.id === trackId ? 'active' : ''}`} aria-pressed={trackOption.id === trackId} onClick={() => selectTrack(trackOption.id)} title={trackOption.description?.[lang] || trackOption.description?.fr}>
                   <strong>{trackOption.name[lang] || trackOption.name.fr}</strong>
-                  <small>{trackOption.tags.join(' / ')} / D{trackOption.difficulty} / {trackOption.laps} {lang === 'fr' ? 'tours' : 'laps'}</small>
+                  <span>{trackOption.universe || 'Nexus de Convergence'}</span>
+                  <small>{lang === 'fr' ? 'Difficulté' : 'Difficulty'} {trackOption.difficulty} · {trackOption.laps} {lang === 'fr' ? 'tours' : 'laps'}</small>
+                  {trackOption.fidelityStatus && <small className="kart-track-status">{trackOption.fidelityStatus === 'prototype-unverified'
+                    ? (lang === 'fr' ? 'Prototype · décors à détailler' : 'Prototype · scenery in progress')
+                    : (lang === 'fr' ? 'Adaptation · fidélité à valider' : 'Adaptation · fidelity under review')}</small>}
                 </button>
               ))}
+            </div>
+            {!visibleTracks.length && <p role="status">{lang === 'fr' ? 'Aucun circuit trouvé.' : 'No tracks found.'}</p>}
+            <div className="kart-catalog-pagination" aria-label={lang === 'fr' ? 'Pages des circuits' : 'Track pages'}>
+              <button type="button" disabled={trackPage <= 0} onClick={() => setTrackPage(page => Math.max(0, page - 1))}>{lang === 'fr' ? 'Précédents' : 'Previous'}</button>
+              <span>{Math.min(trackPage + 1, trackPages)} / {trackPages} · {filteredTracks.length}</span>
+              <button type="button" disabled={trackPage >= trackPages - 1} onClick={() => setTrackPage(page => Math.min(trackPages - 1, page + 1))}>{lang === 'fr' ? 'Suivants' : 'Next'}</button>
             </div>
           </section>
         </div>
 
         <div className="race-preflight-launch">
           <div>
-            <span>{lang === 'fr' ? 'Pilote' : 'Pilot'}: <strong>{pilotId ? 'Mirelle Suture' : '--'}</strong></span>
+            <span>{lang === 'fr' ? 'Pilote' : 'Pilot'}: <strong>{pilotSpec?.name || '--'}</strong></span>
             <span>{lang === 'fr' ? 'Kart' : 'Kart'}: <strong>{selectedKartName}</strong></span>
             <span>{lang === 'fr' ? 'Circuit' : 'Track'}: <strong>{track ? (track.name[lang] || track.name.fr) : '--'}</strong></span>
           </div>
@@ -643,7 +755,7 @@ export default function RaceMode({
             <input type="checkbox" checked={autoAccelerate} onChange={event => setAutoAccelerate(event.target.checked)} />
             <span>{lang === 'fr' ? 'ACCELERATION ASSISTEE' : 'ASSISTED ACCELERATION'}</span>
           </label>
-          <button type="button" className="btn-retro" disabled={!pilotId || !trackId} onClick={startRace} title={lang === 'fr' ? 'Demarre apres avoir choisi pilote et circuit.' : 'Start after choosing a pilot and track.'}>
+          <button type="button" className="btn-retro" disabled={!canLaunch} onClick={startRace} title={lang === 'fr' ? 'Demarre apres avoir choisi pilote et circuit.' : 'Start after choosing a pilot and track.'}>
             {lang === 'fr' ? 'VALIDER LA GRILLE' : 'CONFIRM GRID'}
           </button>
         </div>
@@ -652,11 +764,11 @@ export default function RaceMode({
   }
 
   return (
-    <div className={`race-mode-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
+    <div className={`race-mode-shell ${renderMode === '3d' ? 'race-world-3d' : ''} ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={activeHudTheme} mode="kart" />
       {raceSystemPanel}
       <div className="race-world-hud" inert={Boolean(summary || runtimeError)}>
-        <div><strong>{track.name[lang] || track.name.fr}</strong><small>Mirelle Suture · {selectedKartName} · {pilotName}</small></div>
+        <div><strong>{track.name[lang] || track.name.fr}</strong><small>{pilotSpec?.name} · {selectedKartName} · {pilotName}</small></div>
         <button type="button" className="btn-retro" onClick={() => setRaceMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'GARAGE / COMMANDES' : 'GARAGE / CONTROLS'}</button>
         {!dedicatedSession && onPauseRequest && <button type="button" className="btn-retro" onClick={onPauseRequest}>PAUSE</button>}
         <div className="race-telemetry" role="region" aria-label={lang === 'fr' ? 'Telemetrie de course' : 'Race telemetry'}>
@@ -678,6 +790,7 @@ export default function RaceMode({
 
       <div className="race-mode-grid">
         <div className="race-canvas-panel">
+          {renderMode === '3d' && <canvas key={raceNonce} ref={worldCanvasRef} width="960" height="540" className="race-webgl-canvas" aria-hidden="true" />}
           <canvas
             ref={canvasRef}
             width="960"
@@ -689,15 +802,18 @@ export default function RaceMode({
             data-speed={snapshot.speed}
             data-lap={snapshot.lap}
             data-track-factor={snapshot.trackFactor.toFixed(2)}
+            data-render-mode={renderMode}
+            data-pilot-id={pilotSpec?.heroId}
           />
           <p className="gameplay-live-status" role="status" aria-live="polite">
             {lang === 'fr'
               ? `Course ${snapshot.raceState}. Position ${snapshot.rank} sur 4. Tour ${snapshot.lap} sur ${track.laps}.`
               : `Race ${snapshot.raceState}. Position ${snapshot.rank} of 4. Lap ${snapshot.lap} of ${track.laps}.`}
           </p>
+          {snapshot.missingDrivers > 0 && <p className="kart-visual-status" role="status">{lang === 'fr' ? 'Une image de pilote n’a pas pu être chargée.' : 'A driver image could not be loaded.'}</p>}
           {runtimeError && !summary && <div className="race-result-banner" role="alert" data-race-runtime-error>
             <strong>{lang === 'fr' ? 'COURSE INTERROMPUE' : 'RACE INTERRUPTED'}</strong>
-            <span>{lang === 'fr' ? 'Le rendu s’est arrêté. Aucun nouveau résultat n’a été attribué.' : 'Rendering stopped. No new result has been awarded.'}</span>
+            <span>{lang === 'fr' ? 'Le rendu s’est arrêté. Recommence ou choisis la vue 2D depuis la grille. Aucun nouveau résultat n’a été attribué.' : 'Rendering stopped. Restart or choose the 2D view on the grid. No new result has been awarded.'}</span>
             <button type="button" autoFocus className="btn-retro" onClick={resetRace}>{lang === 'fr' ? 'RECOMMENCER LA COURSE' : 'RESTART RACE'}</button>
             <button type="button" className="btn-retro" onClick={returnToGrid}>{lang === 'fr' ? 'RETOUR À LA GRILLE' : 'BACK TO GRID'}</button>
           </div>}

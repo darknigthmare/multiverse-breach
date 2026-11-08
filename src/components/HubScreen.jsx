@@ -10978,6 +10978,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
           <RaceMode
             lang={lang}
             playerProfile={playerProfile}
+            unlockedHeroes={unlockedHeroes}
             portalCollection={portalCollection}
             setPortalCollection={setPortalCollection}
             hiddenUniverses={runtimeHiddenUniverses}
