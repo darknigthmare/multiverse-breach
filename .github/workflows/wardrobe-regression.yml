@@ -32,6 +32,8 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
+      - name: Install locked source tooling before structural tests
+        run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Prepare available DLC assets
         run: node scripts/prepareDlcAssets.mjs --available
       - name: Archive exact source without downloading bitmap blobs
@@ -82,7 +84,6 @@ jobs:
       - name: Build sources without regenerating bitmap library
         run: |
           set -euo pipefail
-          npm ci --ignore-scripts --no-audit --no-fund
           npx vite build 2>&1 | tee /tmp/wardrobe-review/build.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
