@@ -44,3 +44,13 @@ node scripts/browserUniverseArchive.mjs
 La recette produit six résultats FR/EN × trois formats, les mesures de géométrie et de texte, et les captures d’ensemble, des personnages, des objets locaux, des missions, du vestiaire et du monde vivant. Elle vérifie les huit catalogues, les interfaces FR/EN, les tailles 12/24/48, la recherche et son effacement, les états vides, le retour entre univers, le chapitre manquant, le focus, l’isolation et l’absence de mutation de progression. Elle utilise les composants réels avec données, médias et sauvegarde parent synthétiques explicitement désignés comme tels. Elle ne prétend pas valider les illustrations de production, leur complétude, ni une session de lecteur d’écran.
 
 **État à la préparation du lot : recette navigateur et captures en attente de CI.** Seuls les artefacts du commit effectivement testé peuvent lever cette réserve. Les captures doivent être inspectées en plus des assertions numériques.
+
+## Première recette CI et corrections issues des captures
+
+Le [run 42467277327](https://github.com/darknigthmare/multiverse-breach/actions/runs/42467277327) a exécuté les tests et le navigateur sur le commit de fusion `6cd7e4d26c93023816bf5b9aaae08e4588794789`. Son arbre `840610df67a4a9f0ade4f0584fe312d5d155220c` est identique à celui du head PR `5fe3fea0b7cb0f608c76e85b2d277dd2ed3df055`. L’artefact `13611699845`, téléchargé une seule fois, a été vérifié par son SHA256 `8224c23bb67d6fe803665526dd63426059f23909ffd94f119a65d33c843ab093`.
+
+Les six variantes ont passé les mesures initiales de géométrie/texte et les parcours des huit catalogues. Elles ont ensuite échoué sur une attente ambiguë du banc d’essai : une recherche numérique de la notice « 61 » trouve aussi les héros dont ATK ou DEF vaut 61, puisque les mots sont recherchés dans les différentes données de la fiche. La fixture utilise désormais un motif narratif unique situé au-delà de la première page ; l’attente d’un seul résultat reste stricte.
+
+L’inspection des trente captures a également montré un défaut visuel réel : le statut d’illustration absente, agrandi à 150 %, sortait de sa vignette de 72 px. Le pictogramme neutre reste maintenant dans la vignette et le statut complet est présenté dans le texte de la fiche. La recette mesure aussi le débordement vertical de ce pictogramme. Les compteurs sur mobile passent en deux colonnes afin de rapprocher les chapitres. Des captures supplémentaires cadrent les cartes elles-mêmes, particulièrement en paysage où un cadrage sur le titre montrait surtout les filtres.
+
+Ce premier run n’a pas exécuté la fin du parcours (vestiaire ouvert et transitions finales entre univers). **La validation complète reste à confirmer sur le prochain commit testé.**

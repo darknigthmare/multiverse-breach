@@ -167,12 +167,11 @@ export default function UniverseArchiveReader({ archive: selectedUniverseArchive
                                 imageRendering: 'pixelated'
                               }}
                             >
-                              {!illustrationReady && <span style={{ display: 'block', padding: '8px', color: '#aaa', fontSize: '.82rem' }}>
-                                {lang === 'fr' ? 'Illustration à venir' : 'Illustration pending'}
-                              </span>}
+                              {!illustrationReady && <span className="universe-archive-illustration-placeholder" aria-hidden="true">?</span>}
                             </div>
                             <div style={{ minWidth: 0 }}>
                               <div style={{ color: enemy.color || '#e74c3c', fontSize: '.85rem', fontWeight: 'bold' }}>{enemy.name}</div>
+                              {!illustrationReady && <p className="universe-archive-illustration-status">{lang === 'fr' ? 'Illustration à venir' : 'Illustration pending'}</p>}
                               <div style={{ color: '#aaa', fontSize: '.82rem', marginTop: '3px' }}>
                                 HP {enemy.hp || '?'} / ATK {enemy.atk || '?'} / SPD {enemy.spd || '?'}
                               </div>

@@ -18,12 +18,12 @@ const focused = async locator => {
   finally { await handle.dispose(); }
 };
 const entryIds = group => group.locator('[data-archive-entry]').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-archive-entry')));
-const fonts = root => root.locator('.universe-archive-header strong, [data-archive-close], #universe-archive-title, .universe-archive-intro p, .universe-archive-lore > summary, .universe-archive-counts dt, .universe-archive-counts dd, [role="tab"], .universe-archive-catalog h3, .universe-archive-filters label > span, .universe-archive-filters input, .universe-archive-filters select, .universe-archive-clear, .universe-archive-pages p, .universe-archive-pages button, .universe-archive-entries article b')
+const fonts = root => root.locator('.universe-archive-header strong, [data-archive-close], #universe-archive-title, .universe-archive-intro p, .universe-archive-lore > summary, .universe-archive-counts dt, .universe-archive-counts dd, [role="tab"], .universe-archive-catalog h3, .universe-archive-filters label > span, .universe-archive-filters input, .universe-archive-filters select, .universe-archive-clear, .universe-archive-pages p, .universe-archive-pages button, .universe-archive-entries article b, .universe-archive-illustration-status')
   .evaluateAll(nodes => nodes.filter(node => node.getClientRects().length).map(node => ({ text: node.textContent.slice(0, 60), size: parseFloat(getComputedStyle(node).fontSize) })));
 const inspectLayout = async (root, viewport, record, key) => {
   const layout = await root.evaluate(node => {
-    const areas = [node, ...node.querySelectorAll('.universe-archive-header, .universe-archive-scroll, .universe-archive-intro, .universe-archive-lore, .universe-archive-counts, .universe-archive-tabs, .universe-archive-columns, .universe-archive-catalog, .universe-archive-filters, .universe-archive-pages, .universe-archive-entries, [data-archive-entry]')]
-      .filter(area => area.getClientRects().length).map(area => ({ name: area.getAttribute('data-archive-entry') || area.className, width: area.clientWidth, scrollWidth: area.scrollWidth, height: area.clientHeight }));
+    const areas = [node, ...node.querySelectorAll('.universe-archive-header, .universe-archive-scroll, .universe-archive-intro, .universe-archive-lore, .universe-archive-counts, .universe-archive-tabs, .universe-archive-columns, .universe-archive-catalog, .universe-archive-filters, .universe-archive-pages, .universe-archive-entries, .universe-archive-illustration-placeholder, [data-archive-entry]')]
+      .filter(area => area.getClientRects().length).map(area => ({ name: area.getAttribute('data-archive-entry') || area.className, width: area.clientWidth, scrollWidth: area.scrollWidth, height: area.clientHeight, scrollHeight: area.scrollHeight }));
     const controls = [...node.querySelectorAll('button, input, select, summary')].filter(control => control.getClientRects().length).map(control => {
       const r = control.getBoundingClientRect();
       return { name: control.getAttribute('aria-label') || control.textContent.slice(0, 60), left: r.left, right: r.right, width: r.width, height: r.height };
@@ -33,6 +33,7 @@ const inspectLayout = async (root, viewport, record, key) => {
   });
   record[key] = layout;
   for (const area of layout.areas) assert.ok(area.scrollWidth <= area.width + 1, `Horizontal overflow: ${JSON.stringify(area)}`);
+  for (const area of layout.areas.filter(area => area.name === 'universe-archive-illustration-placeholder')) assert.ok(area.scrollHeight <= area.height + 1, `Missing illustration placeholder overflowed vertically: ${JSON.stringify(area)}`);
   for (const control of layout.controls) {
     assert.ok(control.width >= 43 && control.height >= 43, `Small target: ${JSON.stringify(control)}`);
     assert.ok(control.left >= 31 && control.right <= viewport.width - 31, `Control escaped the 32px safe area: ${JSON.stringify(control)}`);
@@ -141,6 +142,8 @@ try {
           await group.locator('h3').scrollIntoViewIfNeeded();
           await inspectLayout(root, viewport, record, `${id}Layout`);
           await page.screenshot({ path: resolve(evidence, `${name}-${id}.png`), fullPage: false });
+          await group.locator('[data-archive-entry]').first().scrollIntoViewIfNeeded();
+          await page.screenshot({ path: resolve(evidence, `${name}-${id}-entry.png`), fullPage: false });
         }
       }
       assert.ok((await root.locator('[data-archive-catalog="missions"]').textContent()).includes(fr ? 'Lecture du registre' : 'Read the ledger'));
@@ -148,7 +151,7 @@ try {
       await root.locator('#universe-archive-tab-signatures').click();
       const heroSearch = root.locator('[data-archive-catalog="heroes"]').getByRole('searchbox');
       assert.equal(await heroSearch.inputValue(), 'qa-hero-61');
-      await heroSearch.fill(fr ? 'témoignage numéro 61' : 'account number 61');
+      await heroSearch.fill(fr ? 'témoignage memoire-zenith' : 'account zenith-memory');
       assert.deepEqual(await entryIds(root.locator('[data-archive-catalog="heroes"]')), ['qa-hero-61']);
 
       const wardrobe = root.locator('[data-archive-catalog="enemies"] .character-wardrobe');

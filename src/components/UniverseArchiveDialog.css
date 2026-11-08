@@ -30,7 +30,7 @@
 .universe-archive-lore p:last-child { color: #b7cbd5; }
 .universe-archive-neighbours { display: flex; gap: 8px; flex-wrap: wrap; }
 .universe-archive-neighbours button { flex: 1 1 12rem; }
-.universe-archive-counts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr)); gap: 8px; margin: 14px 0; }
+.universe-archive-counts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 5.5rem), 1fr)); gap: 8px; margin: 14px 0; }
 .universe-archive-counts > div { background: #11222c; border: 1px solid #2c4c57; padding: 8px 10px; }
 .universe-archive-counts dt { color: #b7cbd5; font-size: .8rem; }
 .universe-archive-counts dd { margin: 0; color: var(--archive-accent); font-size: 1.15rem; font-weight: bold; }
@@ -57,6 +57,8 @@
 .universe-archive-entries { display: grid; gap: 10px; }
 .universe-archive-entries article { min-width: 0; }
 .universe-archive-actor > div:last-child > div:first-child { flex-wrap: wrap; }
+.universe-archive-illustration-placeholder { display: grid; place-items: center; width: 100%; height: 100%; color: #b7cbd5; font-size: 1.4rem; }
+.universe-archive-illustration-status { margin: 4px 0; color: #b7cbd5; font-size: .8rem; line-height: 1.5; }
 .universe-archive-empty { margin: 12px 0; font-size: .85rem; color: #b7cbd5; }
 .universe-archive-event-item { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; font-size: .85rem; }
 .universe-archive-event-item img { width: 34px; height: 34px; object-fit: contain; image-rendering: pixelated; }

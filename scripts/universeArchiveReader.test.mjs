@@ -31,6 +31,7 @@ for (const lang of ['fr', 'en']) {
     assert.match(html, /HP 102 ATK 22 DEF 12/);
     assert.ok(html.includes(lang === 'fr' ? 'Notice source numéro 2' : 'Source entry number 2'));
     assert.ok(html.includes(lang === 'fr' ? 'Vestiaire' : 'Wardrobe'));
+    assert.equal((html.match(/class="universe-archive-illustration-status"/g) || []).length, 24, 'Missing illustrations keep a full readable status outside the thumbnail');
     assert.ok(html.includes(lang === 'fr' ? 'Personnages indexés' : 'Indexed characters'));
     assert.match(html, /24 \/ 61/);
     assert.equal(JSON.stringify({ archive: denseArchive, progress: archiveProgress }), original, 'Consultation must preserve source records, inventory and progression');
