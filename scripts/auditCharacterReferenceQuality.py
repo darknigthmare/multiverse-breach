@@ -16,6 +16,7 @@ No source bitmap or catalog file is modified.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import math
@@ -43,7 +44,17 @@ DEFAULT_OUTPUT_PATH = (
 )
 PUBLIC_ROOT = (REPOSITORY_ROOT / "public").resolve()
 EXPECTED_CHARACTER_ARC_ENTRY_COUNT = 1_912
-EXPECTED_UNIQUE_REFERENCE_PATH_COUNT = 1_912
+QUARANTINE_REVIEW_PATH = (
+    REPOSITORY_ROOT / "docs" / "excel"
+    / "star-wars-edition-sprite-review-2026-11-01.csv"
+)
+# Exact dossier/actor/reason bindings from the existing reviewed source-art
+# quarantine. The review CSV pins the incarnation, archived path and SHA.
+EXPECTED_QUARANTINED_SOURCE_ARCS = {
+    9532: ("ahsoka_padawan", "WRONG_FANTASY_MAGE_STAFF_NO_GREEN_SABER"),
+    9543: ("ahsoka", "WRONG_FANTASY_ROBES_NO_TWIN_BLUE_SABERS"),
+    9535: ("darth_revan", "KOTOR_I_WRONG_RED_PURPLE_PAIR"),
+}
 
 ALPHA_OCCUPIED_THRESHOLD = 8
 STRONG_NEIGHBOR_DIFFERENCE = 12
@@ -454,8 +465,69 @@ def load_character_entries() -> list[dict[str, Any]]:
     return sorted(entries, key=lambda entry: int(entry["id"]))
 
 
+def validate_quarantine_selections(
+    entries: list[dict[str, Any]], *, report_rows: bool = False
+) -> int:
+    """Permit absent candidates only for the three exact reviewed editions."""
+    with QUARANTINE_REVIEW_PATH.open("r", encoding="utf-8", newline="") as handle:
+        review_rows = list(csv.DictReader(handle))
+    seen: set[int] = set()
+    for entry in entries:
+        stage_id = entry["id"]
+        if type(stage_id) is not int:
+            raise ValueError("Quarantine selection requires exact integer dossier IDs")
+        raw_paths = entry.get("localReferences") if report_rows else entry.get(
+            "candidatsReferencesLocalesAudit", entry.get("referencesLocalesOpenAI")
+        )
+        policy = entry.get("sourceSpriteQuarantine")
+        binding = EXPECTED_QUARANTINED_SOURCE_ARCS.get(stage_id)
+        if policy is None:
+            if binding or not raw_paths:
+                raise ValueError(f"Unexpected missing or undeclared quarantine candidates: {stage_id}")
+            continue
+        if not binding or not isinstance(policy, dict):
+            raise ValueError(f"Unexpected source-sprite quarantine policy: {stage_id}")
+        actor_id, reason = binding
+        matches = [row for row in review_rows if row["actorId"] == actor_id]
+        if len(matches) != 1:
+            raise ValueError(f"Quarantine review must identify exactly one actor: {actor_id}")
+        review = matches[0]
+        expected = {
+            "heroId": actor_id,
+            "universe": "Star Wars",
+            "incarnation": review["incarnation"],
+            "asset": review["spritePath"],
+            "sha256": review["fileSha256"],
+            "reason": reason,
+            "artApproved": False,
+        }
+        character = entry.get("character" if report_rows else "personnage")
+        universes = entry.get("universes" if report_rows else "univers")
+        if (
+            policy != expected or type(policy.get("artApproved")) is not bool
+            or any(type(policy.get(key)) is not str for key in expected if key != "artApproved")
+            or character != review["character"] or universes != ["Star Wars"]
+            or not any(review[field].startswith("BLOCKED_") for field in (
+                "silhouetteReview", "weaponReview", "animationReview"
+            ))
+            or raw_paths != []
+            or (not report_rows and entry.get("referencesLocalesOpenAI") != [])
+            or (report_rows and (
+                entry.get("classification") != "needs-review"
+                or entry.get("reasons") != ["no-local-reference"]
+            ))
+            or stage_id in seen
+        ):
+            raise ValueError(f"Mismatched source-sprite quarantine identity or selection: {stage_id}")
+        seen.add(stage_id)
+    if seen != set(EXPECTED_QUARANTINED_SOURCE_ARCS):
+        raise ValueError("The three reviewed quarantine policies must all remain explicit")
+    return len(seen)
+
+
 def build_report() -> dict[str, Any]:
     entries = load_character_entries()
+    quarantine_count = validate_quarantine_selections(entries)
     path_usage: dict[str, list[dict[str, Any]]] = {}
     for entry in entries:
         # The catalogue keeps every discovered bitmap in this audit-only field,
@@ -562,6 +634,8 @@ def build_report() -> dict[str, Any]:
                 "localReferences": local_paths,
                 "classification": classification,
                 "reasons": reasons,
+                **({"sourceSpriteQuarantine": entry["sourceSpriteQuarantine"]}
+                   if entry.get("sourceSpriteQuarantine") else {}),
             }
         )
 
@@ -639,6 +713,7 @@ def build_report() -> dict[str, Any]:
                 1 for row in entry_rows if not row["localReferences"]
             ),
             "uniqueReferencePathCount": len(reference_files),
+            "explicitSourceSpriteQuarantineCount": quarantine_count,
             "missingReferenceFileCount": missing_count,
             "referenceClassifications": {
                 category: reference_counts.get(category, 0)
@@ -674,6 +749,12 @@ def canonical_json(report: dict[str, Any]) -> str:
 
 def assert_report_invariants(report: dict[str, Any]) -> None:
     summary = report["summary"]
+    quarantine_count = validate_quarantine_selections(report["entries"], report_rows=True)
+    if (
+        type(summary.get("explicitSourceSpriteQuarantineCount")) is not int
+        or summary["explicitSourceSpriteQuarantineCount"] != quarantine_count
+    ):
+        raise ValueError("Quarantine summary count does not match the exact reviewed rows")
     if (
         summary["characterArcEntryCount"]
         != EXPECTED_CHARACTER_ARC_ENTRY_COUNT
@@ -683,12 +764,13 @@ def assert_report_invariants(report: dict[str, Any]) -> None:
             "arc-personnage entries, found "
             f"{summary['characterArcEntryCount']}."
         )
+    expected_unique_references = summary["characterArcEntryCount"] - quarantine_count
     if (
         summary["uniqueReferencePathCount"]
-        != EXPECTED_UNIQUE_REFERENCE_PATH_COUNT
+        != expected_unique_references
     ):
         raise ValueError(
-            f"Expected {EXPECTED_UNIQUE_REFERENCE_PATH_COUNT} unique current "
+            f"Expected {expected_unique_references} unique current "
             "local references, found "
             f"{summary['uniqueReferencePathCount']}."
         )

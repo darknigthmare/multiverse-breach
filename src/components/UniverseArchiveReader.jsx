@@ -4,6 +4,7 @@ import UniverseArchiveCatalog from './UniverseArchiveCatalog.jsx';
 import CharacterWardrobe from './CharacterWardrobe.jsx';
 import { getCharacterPlaque } from '../game/characterPlaques.js';
 import { getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout } from '../game/spriteAssets.js';
+import { getQuarantinedCanonSprite } from '../game/canonicalSpriteQuarantine.js';
 import { getBattleItemLoreDescription, getEnemyLoreDescription } from '../game/loreDescriptions.js';
 import { archiveSearchText, getArchiveNeighbour } from '../game/universeArchiveView.js';
 import { updateCatalogView } from '../game/catalogPagination.js';
@@ -98,28 +99,36 @@ export default function UniverseArchiveReader({ archive: selectedUniverseArchive
                         const unlocked = unlockedHeroes.includes(hero.id);
                         const stats = getHeroStats(hero);
                         const plaque = getCharacterPlaque(hero);
-                        const portraitSrc = hero.portrait || null;
-                        const spriteSrc = portraitSrc || getHeroSpriteSheetSrc(hero, 'collection');
-                        const spriteLayout = getSpriteSheetLayout(spriteSrc);
+                        const rejectedSourceArt = getQuarantinedCanonSprite(hero);
+                        const portraitSrc = rejectedSourceArt ? null : hero.portrait || null;
+                        const spriteSrc = rejectedSourceArt ? null : portraitSrc || getHeroSpriteSheetSrc(hero, 'collection');
+                        const spriteLayout = getSpriteSheetLayout(spriteSrc || '');
                         return (
                           <article className="universe-archive-actor" data-archive-entry={hero.id} key={hero.id} style={{ display: 'grid', gridTemplateColumns: '84px minmax(0, 1fr)', gap: '9px', padding: '8px', border: `1px solid ${hero.primaryColor}55`, background: `${hero.primaryColor}12`, borderRadius: '4px' }}>
                             <div
                               role="img"
-                              aria-label={`${hero.name} sprite`}
-                              title={lang === 'fr' ? `Plaquette de ${hero.name}` : `${hero.name} sprite sheet`}
+                              aria-label={rejectedSourceArt ? `${hero.name} - art pending review` : `${hero.name} sprite`}
+                              title={rejectedSourceArt ? (lang === 'fr' ? 'Illustration non conforme, remplacement requis' : 'Source art rejected, replacement required') : (lang === 'fr' ? `Plaquette de ${hero.name}` : `${hero.name} sprite sheet`)}
                               style={{
                                 width: '84px',
                                 height: '96px',
                                 alignSelf: 'start',
                                 border: `1px solid ${hero.primaryColor}66`,
                                 backgroundColor: '#050509',
-                                backgroundImage: `url("${spriteSrc}")`,
+                                backgroundImage: spriteSrc ? `url("${spriteSrc}")` : 'none',
                                 backgroundRepeat: 'no-repeat',
                                 backgroundSize: portraitSrc ? 'cover' : `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
                                 backgroundPosition: portraitSrc ? 'center 22%' : '0 0',
-                                imageRendering: 'pixelated'
+                                imageRendering: 'pixelated',
+                                display: 'grid',
+                                placeItems: 'center',
+                                textAlign: 'center',
+                                color: '#f6d18c',
+                                fontSize: '.75rem'
                               }}
-                            />
+                            >
+                              {rejectedSourceArt && (lang === 'fr' ? 'ART À REFAIRE' : 'ART PENDING')}
+                            </div>
                             <div style={{ minWidth: 0 }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
                                 <b style={{ color: hero.primaryColor, fontSize: '.9rem' }}>{hero.name}</b>

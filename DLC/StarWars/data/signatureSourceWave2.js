@@ -6,7 +6,7 @@ export function createSignatureWave2Rows({ hero, saberNote }) {
 }
 
 export function createSignatureWave2Rows2({ hero, saberNote }) {
-  return (hero("Star Wars", "ahsoka_adult", "Ahsoka the White", "White Sabers Combination", "slash", 88, "sw-ahsoka", {"hits":2,"color":"#f4f8ff","note":saberNote}));
+  return (hero("Star Wars", "ahsoka_adult", "Fulcrum Twin-Saber Sweep", "White Sabers Combination", "slash", 88, "sw-ahsoka", {"hits":2,"color":"#f4f8ff","note":saberNote}));
 }
 
 export function createSignatureWave2Rows3({ hero, saberNote }) {

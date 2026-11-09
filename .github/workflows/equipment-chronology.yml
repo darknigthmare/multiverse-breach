@@ -1,0 +1,98 @@
+name: Canonical equipment chronology
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'DLC/**'
+      - 'public/sprites/generated/heroes/star-wars/**'
+      - 'docs/excel/star-wars-edition-sprite-review-2026-11-01.csv'
+      - 'docs/excel/equipment-*.csv'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/**'
+  push:
+    branches: [master]
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'DLC/**'
+      - 'public/sprites/generated/heroes/star-wars/**'
+      - 'docs/excel/star-wars-edition-sprite-review-2026-11-01.csv'
+      - 'docs/excel/equipment-*.csv'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/**'
+permissions:
+  contents: read
+concurrency:
+  group: equipment-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  canon-source-lock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          # These seven historical PNGs are ordinary Git blobs.
+          lfs: false
+          sparse-checkout-cone-mode: false
+          # HEROES_DB loads the full data registry; asset ownership needs the manifests.
+          # Artwork is limited to the seven exact paths below, without a public mirror.
+          sparse-checkout: |
+            /src/game/
+            /src/components/HubScreen.jsx
+            /src/components/FighterMode.jsx
+            /src/components/UniverseArchiveReader.jsx
+            /DLC/*.js
+            /DLC/*.json
+            /DLC/*/data/
+            /DLC/*/manifest.json
+            /DLC/*/assets.json
+            /scripts/energyBladeFallback.test.mjs
+            /scripts/auditCanonicalStarWarsSprites.mjs
+            /scripts/canonicalStarWarsSpriteEvidence.test.mjs
+            /scripts/sourceSceneTestLoader.mjs
+            /scripts/fixtures/ssrTestServer.mjs
+            /scripts/assetSourceResolver.mjs
+            /scripts/dlcAssetPaths.mjs
+            /docs/excel/star-wars-edition-sprite-review-2026-11-01.csv
+            /DLC/StarWars/assets/sprites/generated/heroes/star-wars/ahsoka-padawan.png
+            /DLC/StarWars/assets/sprites/generated/heroes/star-wars/ahsoka.png
+            /DLC/StarWars/assets/sprites/generated/heroes/star-wars/ahsoka-adult.png
+            /DLC/StarWars/assets/sprites/generated/heroes/star-wars/aayla-secura.png
+            /DLC/StarWars/assets/sprites/generated/heroes/star-wars/darth-maul.png
+            /DLC/StarWars/assets/sprites/generated/heroes/star-wars/darth-revan.png
+            /DLC/StarWars/assets/sprites/generated/heroes/star-wars/darth-talon.png
+            /scripts/canonicalEquipmentIncarnations.test.mjs
+            /scripts/exportCanonicalEquipmentChronology.mjs
+            /docs/excel/equipment-incarnation-matrix-2026-11-01.csv
+            /package.json
+            /package-lock.json
+            /.github/workflows/equipment-chronology.yml
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Verify canonical editions and equipment contracts
+        run: |
+          set -euo pipefail
+          node --check src/game/solarOppositesSirenStarWarsPack.js
+          node --check src/game/starWarsEquipmentChronology.js
+          node --check src/game/signatureSourceWave2.js
+          node --check DLC/StarWars/data/solarOppositesSirenStarWarsPack.js
+          node --check DLC/StarWars/data/signatureSourceWave2.js
+          node --check src/game/renderer.js
+          node --check src/game/energyBladeFallback.js
+          node --check src/game/canonicalSpriteQuarantine.js
+          node --check scripts/auditCanonicalStarWarsSprites.mjs
+          node --test --test-concurrency=2 scripts/canonicalEquipmentIncarnations.test.mjs scripts/energyBladeFallback.test.mjs scripts/canonicalStarWarsSpriteEvidence.test.mjs
+      - name: Verify reproducible Excel chronology
+        run: npm run equipment:chronology:check
+      - name: Verify source-sprite file identities and review ledger
+        run: node scripts/auditCanonicalStarWarsSprites.mjs --check

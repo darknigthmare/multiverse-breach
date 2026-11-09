@@ -1,5 +1,6 @@
 import { DISCIPLINE_SPRITE_LAYOUTS, getDisciplineSpriteLayout, getDisciplineSpriteSources } from './disciplineSprites.js';
 import { getCloudMeadowSpriteLayout, getCloudMeadowSpriteSrc } from './cloudMeadowCharacters.js';
+import { getQuarantinedCanonSprite } from './canonicalSpriteQuarantine.js';
 import {
   getMeleeAnimationFrame,
   getMeleeAnimationManifest,
@@ -802,6 +803,7 @@ export const SPRITE_SHEET_LAYOUTS = {
 };
 
 export const getHeroCompleteSpritePack = (hero) => {
+  if (getQuarantinedCanonSprite(hero)) return null;
   if (CORRECTED_HERO_SPRITE_VARIANTS[hero?.id]) return CORRECTED_HERO_SPRITE_VARIANTS[hero.id];
   if (hero?.id === 'arca_mirelle') return MIRELLE_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arca_bastion') return BASTION_COMPLETE_SPRITE_PACK;
@@ -898,6 +900,7 @@ const normalizeHeroMeleeState = state => (
 );
 
 export const getHeroMeleeAnimationFrame = (hero, elapsedMs = 0) => {
+  if (getQuarantinedCanonSprite(hero)) return null;
   const manifest = getMeleeAnimationManifest(hero?.id);
   if (!manifest) return null;
   const state = normalizeHeroMeleeState(hero?.state);
@@ -906,7 +909,7 @@ export const getHeroMeleeAnimationFrame = (hero, elapsedMs = 0) => {
 };
 
 export const getHeroMeleeSpriteSheetSrcs = heroOrId => (
-  getMeleeAnimationSheetSources(heroOrId)
+  getQuarantinedCanonSprite(heroOrId) ? [] : getMeleeAnimationSheetSources(heroOrId)
 );
 
 const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
@@ -935,7 +938,7 @@ const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
   return `/sprites/generated/heroes/${slugifyAsset(hero.universe)}/${slugifyAsset(hero.id)}.png`;
 };
 
-export const getHeroSpriteSheetSources = (hero, context = 'auto') => [...new Set([
+export const getHeroSpriteSheetSources = (hero, context = 'auto') => getQuarantinedCanonSprite(hero) ? [] : [...new Set([
   ...getDisciplineSpriteSources(hero),
   getOriginalHeroSpriteSheetSrc(hero, context)
 ].filter(Boolean))];
