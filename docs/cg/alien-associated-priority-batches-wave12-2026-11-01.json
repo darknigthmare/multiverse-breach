@@ -4,7 +4,7 @@
   "recordedAt": "2026-11-01T00:48:11.027117+00:00",
   "campaign": "wave12-alien-associated-priority",
   "scope": "Alien, Aliens, Alien3, Resurrection, Isolation, Prometheus, Covenant, Romulus, AVP, Predator and associated Prey/films present in the actual roster; exclude unrelated Prey2006/BishopMarvel/other Alien homonyms",
-  "status": "partial-delivery-checkpoint-production-paused-for-workspace-capacity",
+  "status": "active-partial-delivery-needs-source-review-for-remaining",
   "batchSize": 40,
   "subjects": 66,
   "requestedCgSlots": 990,
@@ -12,7 +12,7 @@
     {
       "groupId": "alien-associated-01",
       "owner": "/root/alien_reference_audit",
-      "status": "partial-delivery-production-paused-for-workspace-capacity",
+      "status": "active-partial-delivery-needs-source-review-for-remaining",
       "subjectCount": 40,
       "characterIds": [
         "bishop",
@@ -301,15 +301,16 @@
       "completedCgCharacterIds": [
         "bishop",
         "ripley",
-        "predator"
+        "predator",
+        "hicks"
       ],
       "correctedSpriteCharacterIds": [
         "bishop",
         "ripley",
-        "predator"
+        "predator",
+        "hicks"
       ],
       "remainingCharacterIds": [
-        "hicks",
         "dallas_alien",
         "parker_alien",
         "lambert_alien",
@@ -346,12 +347,21 @@
         "kelly_avpr",
         "city_hunter",
         "dutch"
-      ]
+      ],
+      "completedCgLedgerMeaning": "Fifteen real selected CG exist for each listed ID; the new wave13 exports/runtime imports are pending ROOT finalization and are not inferred from lot assignment.",
+      "correctedSpriteLedgerMeaning": "Referenced corrected atlas installed by CLI; wave13 runtime selector activation is separately pending ROOT.",
+      "cgRuntimeActivationPendingCharacterIds": [
+        "hicks"
+      ],
+      "spriteRuntimeActivationPendingCharacterIds": [
+        "hicks"
+      ],
+      "remainingSourceReviewStatus": "needs-reference-and-incarnation-review-per-character-before-further-production"
     },
     {
       "groupId": "alien-associated-02",
       "owner": "/root/alien_roster_inventory",
-      "status": "partial-delivery-production-paused-for-workspace-capacity",
+      "status": "active-partial-delivery-needs-source-review-for-remaining",
       "subjectCount": 26,
       "characterIds": [
         "anna_predator",
@@ -540,10 +550,12 @@
         }
       ],
       "completedCgCharacterIds": [
-        "greyback_yautja"
+        "greyback_yautja",
+        "feral_predator"
       ],
       "correctedSpriteCharacterIds": [
-        "greyback_yautja"
+        "greyback_yautja",
+        "feral_predator"
       ],
       "remainingCharacterIds": [
         "anna_predator",
@@ -564,14 +576,22 @@
         "fugitive_predator",
         "naru_prey",
         "taabe_prey",
-        "feral_predator",
         "viking_kok",
         "ninja_kok",
         "pilot_kok",
         "dek_badlands",
         "thia_badlands",
         "badlands_scout"
-      ]
+      ],
+      "completedCgLedgerMeaning": "Fifteen real selected CG exist for each listed ID; the new wave13 exports/runtime imports are pending ROOT finalization and are not inferred from lot assignment.",
+      "correctedSpriteLedgerMeaning": "Referenced corrected atlas installed by CLI; wave13 runtime selector activation is separately pending ROOT.",
+      "cgRuntimeActivationPendingCharacterIds": [
+        "feral_predator"
+      ],
+      "spriteRuntimeActivationPendingCharacterIds": [
+        "feral_predator"
+      ],
+      "remainingSourceReviewStatus": "needs-reference-and-incarnation-review-per-character-before-further-production"
     }
   ],
   "baseline": {
@@ -604,33 +624,241 @@
     "Source gaps and incomplete series stay explicit; only real inspected and exported images become deliveries.",
     "Current production is limited by the 32GiB workspace quota; no unsupported storage resize is claimed."
   ],
-  "lastUpdatedAt": "2026-11-02T03:47:37.239393+00:00",
+  "lastUpdatedAt": "2026-11-09T06:47:03.609213+00:00",
   "deliveryCheckpoint": {
-    "newCg": 60,
-    "newCgMedia": 180,
-    "newCorrectedAtlases": 4,
-    "newReviewedSpritePoses": 64,
+    "newCg": 90,
+    "newCgMedia": 270,
+    "newCorrectedAtlases": 6,
+    "newReviewedSpritePoses": 96,
     "completedCgCharacterIds": [
       "bishop",
       "predator",
       "greyback_yautja",
-      "ripley"
+      "ripley",
+      "hicks",
+      "feral_predator"
     ],
     "sourceQualifiedCharacterIds": [
       "bishop",
       "greyback_yautja",
       "predator",
-      "ripley"
+      "ripley",
+      "hicks",
+      "feral_predator"
     ],
-    "remainingCharactersInPriorityScope": 62,
-    "remainingCgSlotsInPriorityScope": 930,
-    "catalogueCg": 1406,
-    "retainedCgVersions": 1500,
-    "registeredCgMedia": 4500,
-    "correctedSpriteMaps": 60,
+    "remainingCharactersInPriorityScope": 60,
+    "remainingCgSlotsInPriorityScope": 900,
+    "catalogueCg": 1436,
+    "retainedCgVersions": 1530,
+    "registeredCgMedia": 4590,
+    "correctedSpriteMaps": 62,
     "originalDispatcherUnchanged": true,
     "activeBackgroundImageGenerationJobsClaimed": 0,
     "automaticFidelityCertifications": 0,
-    "audit": "docs/cg/fidelity-delivery-wave12-2026-11-01.json"
-  }
+    "audit": "docs/cg/fidelity-delivery-wave13-2026-11-09.json",
+    "checkpointDate": "2026-11-09",
+    "recordedAt": "2026-11-09T05:49:30.110608+00:00",
+    "status": "installed-runtime-reviewed-and-final-build-verified",
+    "latestDeliveryWave": 13,
+    "selectedCgAddedAtThisCheckpoint": 30,
+    "selectedAtlasPosesAddedAtThisCheckpoint": 32,
+    "selectedCgInPriorityScope": 90,
+    "cliInstalledCorrectedAtlasCountInPriorityScope": 6,
+    "completedSeriesLedgerCount": 6,
+    "completedSeriesMeaning": "Six complete fifteen-slot series are installed in the current CG registry. All ninety selected priority CG are real artwork; sixty subjects still need production.",
+    "mediaCountStatus": "270 current priority media: source PNG, master WebP and thumbnail WebP for each of ninety CG.",
+    "expectedNewCgMediaAfterPendingExports": 270,
+    "newlySelectedCgDeliveryReceipts": [
+      {
+        "characterId": "hicks",
+        "receipt": "docs/cg/hicks-delivery-receipt-wave13-2026-11-09.json",
+        "selectedCg": 15,
+        "retainedRejectedNativeAttempts": 4,
+        "selectionEvidence": "Fifteen selected real native hashes in provenance; this dispatcher update does not itself generate or visually approve targets.",
+        "canonicalFidelityApproved": false
+      },
+      {
+        "characterId": "feral_predator",
+        "receipt": "docs/cg/feral-predator-delivery-receipt-wave13-2026-11-09.json",
+        "selectedCg": 15,
+        "retainedRejectedNativeAttempts": 7,
+        "selectionEvidence": "Fifteen selected real native hashes in provenance; this dispatcher update does not itself generate or visually approve targets.",
+        "canonicalFidelityApproved": false
+      }
+    ],
+    "newlyCliInstalledAtlasAudits": [
+      {
+        "characterId": "hicks",
+        "audit": "docs/audits/hicks-v2-reference-sprite-fidelity-wave13-2026-11-09.json",
+        "output": "/sprites/generated/heroes/alien/hicks-v2-fidelity-wave13-2026-11-09.png",
+        "imageSha256": "45940c8b7deed2ae81652cc2a4e709c3546e19224251868c677b872552b55617",
+        "installedPoseCount": 16,
+        "status": "installed-and-runtime-renderer-verified",
+        "canonicalFidelityApproved": false
+      },
+      {
+        "characterId": "feral_predator",
+        "audit": "docs/audits/feral-predator-v2-reference-sprite-fidelity-wave13-2026-11-09.json",
+        "output": "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png",
+        "imageSha256": "d849a1132a61aab634b480d8da5194a81b5d1255af7a1105a0cf4cef2db4ee49",
+        "installedPoseCount": 16,
+        "status": "installed-and-runtime-renderer-verified",
+        "canonicalFidelityApproved": false
+      }
+    ],
+    "rootFinalization": {
+      "status": "complete-for-two-wave13-characters",
+      "pendingCharacterIds": [],
+      "selectedCg": 30,
+      "expectedCgMedia": 90,
+      "cliInstalledAtlases": 2,
+      "installedSpritePoses": 32,
+      "cgExports": "90-wave13-cg-media-installed-and-http-byte-exact",
+      "cgRegistryImport": "30-new-current-CG-imported",
+      "atlasRuntimeSelectorActivation": "two-new-selections-and-two-original-variants-verified",
+      "planBibleWorkbookRefresh": "final-plan-bible-global-and-workbook-rebuilt-and-audited",
+      "finalDeliveryFreeze": "verified-with-full-production-build",
+      "allSixRuntimeActivated": true,
+      "noActiveImageGenerationJobsClaimedByThisDispatcher": true,
+      "fullProductionBuild": "pass"
+    },
+    "runtimeCountBasis": "Verified current CG registry and sixty-two corrected runtime sprite selections after wave13 installation.",
+    "expectedRuntimeCountsAfterPendingActivation": {
+      "catalogueCg": 1436,
+      "retainedCgVersions": 1530,
+      "registeredCgMedia": 4590,
+      "correctedSpriteMaps": 62,
+      "status": "verified-current-runtime-counts"
+    },
+    "auditScope": "Current wave13 delivery, all six completed priority series retained, source routing and final build verified.",
+    "finalWorkbookSha256": "bda4014fab60c350d7dd3200624ca903e3f7f7e353aef38ee375e58174496937",
+    "lastVerifiedAt": "2026-11-09T06:47:03.609213+00:00"
+  },
+  "checkpointHistory": [
+    {
+      "lastUpdatedAt": "2026-11-02T03:47:37.239393+00:00",
+      "status": "partial-delivery-checkpoint-production-paused-for-workspace-capacity",
+      "groups": [
+        {
+          "groupId": "alien-associated-01",
+          "status": "partial-delivery-production-paused-for-workspace-capacity",
+          "completedCgCharacterIds": [
+            "bishop",
+            "ripley",
+            "predator"
+          ],
+          "correctedSpriteCharacterIds": [
+            "bishop",
+            "ripley",
+            "predator"
+          ],
+          "remainingCharacterIds": [
+            "hicks",
+            "dallas_alien",
+            "parker_alien",
+            "lambert_alien",
+            "newt_aliens",
+            "ash_alien",
+            "amanda_ripley",
+            "shaw_prometheus",
+            "david8_prometheus",
+            "janek_prometheus",
+            "hicks_aliens",
+            "vasquez_aliens",
+            "bishop_aliens",
+            "ripley_aliens",
+            "newt_hadley",
+            "hudson_aliens",
+            "apone_aliens",
+            "ripley_a3",
+            "dillon_a3",
+            "morse_a3",
+            "ripley8",
+            "call_resurrection",
+            "christie_resurrection",
+            "daniels_covenant",
+            "walter_covenant",
+            "tennessee_covenant",
+            "rain_romulus",
+            "andy_romulus",
+            "tyler_romulus",
+            "lex_avp",
+            "scar_avp",
+            "sebastian_avp",
+            "wolf_avpr",
+            "dallas_avpr",
+            "kelly_avpr",
+            "city_hunter",
+            "dutch"
+          ]
+        },
+        {
+          "groupId": "alien-associated-02",
+          "status": "partial-delivery-production-paused-for-workspace-capacity",
+          "completedCgCharacterIds": [
+            "greyback_yautja"
+          ],
+          "correctedSpriteCharacterIds": [
+            "greyback_yautja"
+          ],
+          "remainingCharacterIds": [
+            "anna_predator",
+            "billy_predator",
+            "mac_predator",
+            "harrigan_predator",
+            "naru",
+            "harrigan_p2_core",
+            "royce_predators_core",
+            "harrigan_p2",
+            "city_hunter_p2",
+            "keyes_p2",
+            "royce_predators",
+            "berserker_predator",
+            "hanzo_predators",
+            "quinn_predator",
+            "casey_predator",
+            "fugitive_predator",
+            "naru_prey",
+            "taabe_prey",
+            "feral_predator",
+            "viking_kok",
+            "ninja_kok",
+            "pilot_kok",
+            "dek_badlands",
+            "thia_badlands",
+            "badlands_scout"
+          ]
+        }
+      ],
+      "deliveryCheckpoint": {
+        "newCg": 60,
+        "newCgMedia": 180,
+        "newCorrectedAtlases": 4,
+        "newReviewedSpritePoses": 64,
+        "completedCgCharacterIds": [
+          "bishop",
+          "predator",
+          "greyback_yautja",
+          "ripley"
+        ],
+        "sourceQualifiedCharacterIds": [
+          "bishop",
+          "greyback_yautja",
+          "predator",
+          "ripley"
+        ],
+        "remainingCharactersInPriorityScope": 62,
+        "remainingCgSlotsInPriorityScope": 930,
+        "catalogueCg": 1406,
+        "retainedCgVersions": 1500,
+        "registeredCgMedia": 4500,
+        "correctedSpriteMaps": 60,
+        "originalDispatcherUnchanged": true,
+        "activeBackgroundImageGenerationJobsClaimed": 0,
+        "automaticFidelityCertifications": 0,
+        "audit": "docs/cg/fidelity-delivery-wave12-2026-11-01.json"
+      },
+      "historicalCheckpointPreserved": true
+    }
+  ]
 }

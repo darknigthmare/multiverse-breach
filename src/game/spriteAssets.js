@@ -39,6 +39,8 @@ export const ROI_BURGONDE_BOSS_SPRITE = '/sprites/generated/bosses/kaamelott/roi
 // Reviewed sprite corrections have their own audited sheets. Historical PNGs
 // remain available with their original provenance and as documented variants.
 export const CORRECTED_CANON_HERO_SPRITES = Object.freeze({
+  hicks: "/sprites/generated/heroes/alien/hicks-v2-fidelity-wave13-2026-11-09.png",
+  feral_predator: "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png",
   ripley: "/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png",
   predator: "/sprites/generated/heroes/predator/predator-v2-fidelity-wave12-2026-11-01.png",
   greyback_yautja: "/sprites/generated/heroes/predator/greyback-yautja-v2-fidelity-wave12-2026-11-01.png",
@@ -102,6 +104,14 @@ export const CORRECTED_CANON_HERO_SPRITES = Object.freeze({
 });
 
 export const CORRECTED_HERO_SPRITE_VARIANTS = Object.freeze({
+  hicks: Object.freeze([
+    Object.freeze({ id: "fidelity-wave13-2026-11-09", label: "Hicks — Aliens 1986, fidélité revue et 16 poses (2026-11-09)", src: CORRECTED_CANON_HERO_SPRITES.hicks, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/alien/hicks.png", current: false })
+  ]),
+  feral_predator: Object.freeze([
+    Object.freeze({ id: "fidelity-wave13-2026-11-09", label: "Feral Predator — Prey 2022, fidélité revue et 16 poses (2026-11-09)", src: CORRECTED_CANON_HERO_SPRITES.feral_predator, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/prey/feral-predator.png", current: false })
+  ]),
   ripley: Object.freeze([
     Object.freeze({ id: "fidelity-wave12-2026-11-01", label: "Ripley — Nostromo 1979, tenue et équipement corrigés", src: CORRECTED_CANON_HERO_SPRITES.ripley, current: true }),
     Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/alien/ripley.png", current: false })

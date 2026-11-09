@@ -48,7 +48,15 @@ export function createEventItemsDb() {
 
 export function createExtraHeroData() {
   return ([
-    { id: 'hicks', name: 'Corporal Hicks', cat: 'tactical', color: '#7f8c8d' },
+    {
+      id: 'hicks', name: 'Corporal Hicks', cat: 'tactical', color: '#7f8c8d',
+      incarnation: 'Aliens (1986) - Corporal Dwayne Hicks, uninjured field appearance',
+      referenceUrl: 'https://www.20thcenturystudios.com/movies/aliens',
+      visualAnchor: 'Michael Biehn as Corporal Dwayne Hicks in Aliens (1986): short swept-back brown hair, light stubble, anatomical left-ear communications headset, worn gray-green Colonial Marine armor with a small red heart accent, camouflage trousers, shin guards and brown combat boots. Keep the legacy Alien roster ID; do not substitute Hudson, an Alien (1979) crew uniform or an acid-injured appearance.',
+      canonStatus: 'source-locked-gameplay-adaptation',
+      visualReviewStatus: 'pending',
+      equipment: ['Compact shotgun', 'Colonial Marine field armor', 'Left-ear communications headset']
+    },
     { id: 'bishop', name: 'Bishop', cat: 'hacker', color: '#bdc3c7' }
   ]);
 }
